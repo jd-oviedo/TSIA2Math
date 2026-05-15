@@ -69,7 +69,7 @@ where a value doesn't apply:
   "category": "Quantitative Reasoning",
   "category_code": "QR",
   "proficiency_level": "",
-  "subtopic": "fractions_ratios_percentages_decimals_proportions",
+  "subtopic": "[FILL IN]",
   "skills_targeted": [],
   "question_text": "",
   "question_format": "multiple_choice",
