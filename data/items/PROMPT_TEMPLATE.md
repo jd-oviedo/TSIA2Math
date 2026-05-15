@@ -4,13 +4,13 @@ items matching the specifications below.
 
 ## Items to Generate
 
-All three items target the same content area: "Apply known functions to model real-world situations."
+All three items target the same content area: "Develop a function to model a situation."
 
 Generate one item at each proficiency level:
 
-1. item_id: QR_B_004 — Basic level
-2. item_id: QR_P_004 — Proficient level  
-3. item_id: QR_A_004 — Advanced level
+1. item_id: QR_B_005 — Basic level
+2. item_id: QR_P_005 — Proficient level  
+3. item_id: QR_A_005 — Advanced level
 
 Use a DIFFERENT context theme for each item. Choose from: everyday_finance, 
 cooking_recipes, sports_recreation, science_application, shopping_retail, 
@@ -69,7 +69,7 @@ where a value doesn't apply:
   "category": "Quantitative Reasoning",
   "category_code": "QR",
   "proficiency_level": "",
-  "subtopic": "[FILL IN]",
+  "subtopic": "writing functions",
   "skills_targeted": [],
   "question_text": "",
   "question_format": "multiple_choice",
