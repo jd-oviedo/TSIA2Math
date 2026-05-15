@@ -4,7 +4,7 @@ items matching the specifications below.
 
 ## Items to Generate
 
-All three items target the same content area: "Develop a function to model a situation."
+All three items target the same content area: "[FILL IN]"
 
 Generate one item at each proficiency level:
 
@@ -69,7 +69,7 @@ where a value doesn't apply:
   "category": "Quantitative Reasoning",
   "category_code": "QR",
   "proficiency_level": "",
-  "subtopic": "writing functions",
+  "subtopic": "[FILL IN]",
   "skills_targeted": [],
   "question_text": "",
   "question_format": "multiple_choice",
