@@ -4,14 +4,13 @@ items matching the specifications below.
 
 ## Items to Generate
 
-All three items target the same content area: "Solve problems with 
-fractions, ratios, percentages, decimals, and proportions."
+All three items target the same content area: "Apply known functions to model real-world situations."
 
 Generate one item at each proficiency level:
 
-1. item_id: QR_B_003 — Basic level
-2. item_id: QR_P_003 — Proficient level  
-3. item_id: QR_A_003 — Advanced level
+1. item_id: QR_B_004 — Basic level
+2. item_id: QR_P_004 — Proficient level  
+3. item_id: QR_A_004 — Advanced level
 
 Use a DIFFERENT context theme for each item. Choose from: everyday_finance, 
 cooking_recipes, sports_recreation, science_application, shopping_retail, 
