@@ -55,4 +55,19 @@
   "created_at": "2026-05-13",
   "last_modified": "2026-05-13",
   "review_notes": null
+},
+{
+  "strategy_hints": [
+    {
+      "strategy": "use_answer_choices",
+      "hint_text": "Try plugging each answer choice back into the original equation.",
+      "trigger_after_seconds": 180
+    },
+    {
+      "strategy": "plug_in_values",
+      "hint_text": "If a variable feels abstract, try substituting a small number to see the pattern.",
+      "trigger_after_seconds": 240
+    }
+  ],
+  "applicable_strategies": ["use_answer_choices", "plug_in_values", "estimate_first", "draw_diagram"]
 }
