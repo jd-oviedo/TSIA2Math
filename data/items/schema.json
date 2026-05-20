@@ -54,10 +54,7 @@
   "author": "jd-oviedo",
   "created_at": "2026-05-13",
   "last_modified": "2026-05-13",
-  "review_notes": null
-},
-
-{
+  "review_notes": null,
   "strategy_hints": [
     {
       "strategy": "use_answer_choices",
