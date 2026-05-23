@@ -1,17 +1,23 @@
 {
+  "schema_version": "2.0",
   "item_id": "AR_P_001",
   "version": 1,
   "status": "draft",
-
   "category": "Algebraic Reasoning",
-  "category_code": "AR",
-  "proficiency_level": "Proficient",
-  "subtopic": "solving_quadratic_by_factoring",
+  "primary_strand": "AR",
+  "secondary_strands": [],
+  "objective": "quadratics",
+  "objective_text": "Work with quadratic equations and expressions",
+  "topic_id": "AR.3.3",
+  "topic": "solving_quadratic_by_factoring",
+  "topic_text": "Solving quadratic equations by factoring",
   "skills_targeted": [
     "solving a quadratic equation that requires factoring",
     "translating a word problem into a quadratic equation"
   ],
-
+  "proficiency_level": "Proficient",
+  "assessment_layer": "CRC",
+  "unit": 4,
   "question_text": "A rectangular garden has a length that is 3 feet longer than its width. The total area of the garden is 40 square feet. If w represents the width of the garden in feet, what is the width?",
   "question_format": "multiple_choice",
   "answer_choices": {
@@ -21,51 +27,38 @@
     "D": "10 feet"
   },
   "correct_answer": "A",
-
   "explanation": "Set up the equation w(w+3) = 40, which expands to w² + 3w - 40 = 0. Factoring gives (w+8)(w-5) = 0, so w = -8 or w = 5. Since width must be positive, w = 5 feet.",
   "distractor_logic": {
     "B": "Confuses the two factors and selects the value from the (w+8) factor",
     "C": "Solves correctly but ignores the physical constraint that width must be positive",
-    "D": "Estimates from the area without setting up the equation; common 'eyeball' guess"
+    "D": "Estimates from the area without setting up the equation"
   },
-
-  "difficulty_level": "Proficient",
-  "difficulty_b": null,
-  "discrimination_a": null,
-  "guessing_c": null,
-
-  "content_context": "geometry_real_world",
-  "context_tags": ["gardening", "area", "rectangle"],
-
+  "applicable_strategies": ["use_answer_choices", "draw_diagram"],
+  "strategy_hints": [
+    {
+      "strategy": "use_answer_choices",
+      "hint_text": "Try each width value. Does width × (width + 3) equal 40?"
+    }
+  ],
+  "calculator_type": "none",
   "estimated_time_seconds": 90,
   "requires_calculator": false,
   "contains_image": false,
   "image_url": null,
-
+  "difficulty_b": null,
+  "discrimination_a": null,
+  "guessing_c": null,
   "exposure_max": 0.20,
   "times_administered": 0,
   "times_correct": 0,
   "dif_flag": null,
-
   "fairness_review_status": "pending",
   "fairness_review_date": null,
   "fairness_review_notes": null,
-
+  "content_context": "geometry_real_world",
+  "context_tags": ["gardening", "area", "rectangle"],
   "author": "jd-oviedo",
-  "created_at": "2026-05-13",
-  "last_modified": "2026-05-13",
-  "review_notes": null,
-  "strategy_hints": [
-    {
-      "strategy": "use_answer_choices",
-      "hint_text": "Try plugging each answer choice back into the original equation.",
-      "trigger_after_seconds": 180
-    },
-    {
-      "strategy": "plug_in_values",
-      "hint_text": "If a variable feels abstract, try substituting a small number to see the pattern.",
-      "trigger_after_seconds": 240
-    }
-  ],
-  "applicable_strategies": ["use_answer_choices", "plug_in_values", "estimate_first", "draw_diagram"]
+  "created_at": "2026-05-20",
+  "last_modified": "2026-05-20",
+  "review_notes": null
 }
