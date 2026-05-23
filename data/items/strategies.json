@@ -1,0 +1,40 @@
+{
+  "strategies": [
+    {
+      "code": "use_answer_choices",
+      "name": "Use the Answer Choices",
+      "default_hint": "Try working backwards. Plug each answer choice into the problem and see which one fits.",
+      "best_for": "Multiple choice items where testing options is faster than solving directly."
+    },
+    {
+      "code": "plug_in_values",
+      "name": "Plug In Numbers",
+      "default_hint": "If a variable feels abstract, substitute a simple number to see how the relationship behaves.",
+      "best_for": "Items with variables in the answer choices or abstract expressions."
+    },
+    {
+      "code": "estimate_first",
+      "name": "Estimate Before Solving",
+      "default_hint": "Make a rough estimate of the answer first. It helps you spot choices that don't make sense.",
+      "best_for": "Computation-heavy items where the answer choices are spread apart."
+    },
+    {
+      "code": "draw_diagram",
+      "name": "Draw It Out",
+      "default_hint": "Sketch the situation. A quick drawing often makes the relationships clearer.",
+      "best_for": "Geometry items, word problems with spatial or physical setups."
+    },
+    {
+      "code": "eliminate_wrong_answers",
+      "name": "Eliminate Wrong Answers",
+      "default_hint": "Rule out answers you know are wrong first. Even removing one or two improves your odds.",
+      "best_for": "Items where some distractors are clearly implausible."
+    },
+    {
+      "code": "identify_key_info",
+      "name": "Find the Key Information",
+      "default_hint": "Underline what the question is actually asking. Separate the important numbers from the extra details.",
+      "best_for": "Multi-step word problems with distracting or excess information."
+    }
+  ]
+}
