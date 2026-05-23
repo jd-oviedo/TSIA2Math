@@ -1,0 +1,75 @@
+CONTEXT — TSIA2Math Schema Migration (Phase 4d)
+
+I'm building TSIA2Math, an adaptive TSIA2 math prep platform. I've finished 
+building a 97-topic taxonomy and finalized a v2.0 item schema. Now I need to 
+migrate my existing 15 items (currently schema v1.0) up to v2.0. Doing this 
+in chat, manually assisted, since it's only 15 items. All taxonomy mappings 
+are already decided (table below) — this is mostly mechanical execution.
+
+THE TAXONOMY (locked):
+- 4 strands: QR (27 topics), AR (32), GR (19), PR (19) = 97 total
+- 3 assessment layers: CRC / DIAGNOSTIC / ENRICHMENT
+- 7 learning-path units: Unit 0 (Foundations) through Unit 6 (Adaptive Sim)
+- Topic IDs use format like QR.1.1, AR.3.3
+- Cross-strand rule: items get primary_strand + secondary_strands array.
+  Boundary: INTERPRETING/SETTING UP = QR; SOLVING an equation = AR. Items 
+  doing both get tagged with both.
+
+SCHEMA v2.0 — fields to add/change on each item:
+- schema_version ("2.0")
+- primary_strand (QR/AR/GR/PR) + keep human-readable "category"
+- secondary_strands (array: [] or ["AR"] or ["AR","QR"])
+- objective + objective_text (bucket above topic)
+- topic_id (formal taxonomy ID) + topic + topic_text
+- assessment_layer (CRC/DIAGNOSTIC/ENRICHMENT)
+- unit (0-5)
+- calculator_type (none/basic/square_root/graphing)
+- applicable_strategies (array of codes) + strategy_hints (array of 
+  {strategy, hint_text}, NO timing field)
+- Rename old "subtopic" -> "topic". Normalize any difficulty_level values 
+  of "1"/"2"/"3" to Basic/Proficient/Advanced. Keep proficiency_level.
+
+STRATEGY LIBRARY (controlled vocab): use_answer_choices, plug_in_values, 
+estimate_first, draw_diagram, eliminate_wrong_answers, identify_key_info
+
+LOCKED TAXONOMY MAPPINGS FOR ALL 15 ITEMS:
+| item_id  | primary | topic_id | secondary | unit | layer       |
+| QR_B_001 | QR      | QR.1.1   | []        | 1    | CRC         |
+| QR_P_001 | QR      | QR.1.1   | []        | 1    | CRC         |
+| QR_A_001 | QR      | QR.1.1   | []        | 1    | CRC         |
+| QR_B_002 | QR      | QR.1.5   | []        | 0    | DIAGNOSTIC  |
+| QR_P_002 | QR      | QR.1.5   | []        | 0    | DIAGNOSTIC  |
+| QR_A_002 | QR      | QR.1.5   | []        | 0    | SEE FLAG    |
+| QR_B_003 | QR      | QR.1.2   | []        | 1    | CRC         |
+| QR_P_003 | QR      | QR.2.4   | []        | 1    | CRC         |
+| QR_A_003 | QR      | QR.2.2   | []        | 1    | CRC         |
+| QR_B_004 | QR      | QR.3.6   | []        | 2    | CRC         |
+| QR_P_004 | QR      | QR.3.3   | [AR]      | 2    | CRC         |
+| QR_A_004 | AR      | AR.2.4   | [QR]      | 2    | CRC         |
+| QR_B_005 | QR      | QR.3.2   | [AR]      | 2    | CRC         |
+| QR_P_005 | QR      | QR.3.3   | [AR]      | 2    | CRC         |
+| QR_A_005 | QR      | QR.4.3   | [AR]      | 2    | CRC         |
+
+OPEN JUDGMENT CALL (resolve in this chat):
+- QR_A_002 layer: it's rationalizing a conjugate denominator — genuinely 
+  advanced, arguably beyond TSIA2 Diagnostic-level foundational content. 
+  Decide: keep DIAGNOSTIC (matches its B/P siblings) or set ENRICHMENT 
+  (matches its actual difficulty). Items in a batch don't have to share a 
+  layer.
+
+NOTES:
+- QR_A_004 keeps its "QR_" item_id even though it's now primary AR — the 
+  id is just a stable label; primary_strand is what matters. Do not rename.
+- objective/objective_text map to the sub-category of each topic_id (e.g., 
+  QR.1.x = "number_sense_and_magnitude", QR.2.x = "proportional_reasoning", 
+  QR.3.x = "linear_expressions_interpretation", QR.4.x = "quantitative_
+  applications", AR.2.x = "linear_equations_inequalities_systems").
+- applicable_strategies + strategy_hints: propose per item, I'll confirm.
+
+WHAT I NEED YOU TO DO:
+Apply the locked mappings to all 15 items. Resolve the QR_A_002 layer 
+question with me. Propose applicable_strategies + strategy_hints per item 
+for my confirmation. Then return all 15 items as one valid v2.0 JSON array, 
+ready to paste into question_bank.json. Quality over speed.
+
+[PASTE question_bank.json HERE]
