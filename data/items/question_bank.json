@@ -1,319 +1,530 @@
 [
-{
-  "item_id": "QR_B_001",
-  "version": 1,
-  "status": "draft",
-  "category": "Quantitative Reasoning",
-  "category_code": "QR",
-  "proficiency_level": "Basic",
-  "subtopic": "comparing_rational_and_irrational_numbers",
-  "skills_targeted": [
-    "estimating the value of the square root of a non-perfect square between two integers",
-    "ordering values of fractions, decimals, and irrational numbers",
-    "interpreting numerical values presented in a data table"
-  ],
-  "question_text": "A science teacher recorded the heights, in meters, that four students measured for the same small tree using different estimation methods. The results are shown in the table below.\n\n| Student | Recorded Height (meters) |\n|---------|--------------------------|\n| Ana     | 13/5                     |\n| Ben     | √7                       |\n| Carla   | 2.5                      |\n| Dan     | √9                       |\n\nWhich student recorded the greatest height?",
-  "question_format": "multiple_choice",
-  "answer_choices": {
-    "A": "Ana",
-    "B": "Ben",
-    "C": "Carla",
-    "D": "Dan"
-  },
-  "correct_answer": "D",
-  "explanation": "Convert each value to a decimal to compare. Ana: 13/5 = 2.6. Ben: √7 is between √4 = 2 and √9 = 3; more precisely, √7 ≈ 2.65. Carla: 2.5. Dan: √9 = 3. Ordering the values: 2.5 < 2.6 < 2.65 < 3, so Carla < Ana < Ben < Dan. Dan's recorded height of 3 meters is the greatest.",
-  "distractor_logic": {
-    "A": "Student converts 13/5 correctly to 2.6 but does not recognize that √9 simplifies to the integer 3; may treat any square root as less than a nearby decimal.",
-    "B": "Student knows √7 is irrational and assumes irrational numbers are automatically larger than rational numbers, or estimates √7 as greater than 3 by confusing it with √9.",
-    "C": "Student misreads 13/5 as 1.35 or 1.6 (inverting or misapplying the fraction-to-decimal conversion), making 2.5 appear to be the largest value.",
-    "D": "Correct answer."
-  },
-  "difficulty_level": "Basic",
-  "difficulty_b": null,
-  "discrimination_a": null,
-  "guessing_c": null,
-  "content_context": "data_interpretation",
-  "context_tags": ["data_table", "measurement", "comparing_numbers", "square_roots"],
-  "estimated_time_seconds": 75,
-  "requires_calculator": false,
-  "contains_image": false,
-  "image_url": null,
-  "exposure_max": 0.20,
-  "times_administered": 0,
-  "times_correct": 0,
-  "dif_flag": null,
-  "fairness_review_status": "pending",
-  "fairness_review_date": null,
-  "fairness_review_notes": null,
-  "author": "jd-oviedo",
-  "created_at": "2026-05-13",
-  "last_modified": "2026-05-13",
-  "review_notes": null
-},
-{
-  "item_id": "QR_P_001",
-  "version": 1,
-  "status": "draft",
-  "category": "Quantitative Reasoning",
-  "category_code": "QR",
-  "proficiency_level": "Proficient",
-  "subtopic": "comparing_rational_and_irrational_numbers",
-  "skills_targeted": [
-    "comparing the magnitudes of rational and irrational numbers expressed in different forms",
-    "estimating the value of an irrational number to compare it with rational values",
-    "interpreting and ordering numerical data presented in a table"
-  ],
-  "question_text": "A surveyor records the lengths of four hiking trail segments using different notation systems. The lengths, in kilometers, are shown in the table below.\n\n| Segment | Length (km) |\n|---------|-------------|\n| I       | √45         |\n| II      | 6.8         |\n| III     | 2π          |\n| IV      | 13/2        |\n\nWhich list correctly orders the segments from shortest to longest?",
-  "question_format": "multiple_choice",
-  "answer_choices": {
-    "A": "III, I, IV, II",
-    "B": "III, IV, I, II",
-    "C": "IV, III, I, II",
-    "D": "II, I, IV, III"
-  },
-  "correct_answer": "B",
-  "explanation": "Convert each value to a decimal approximation to compare. Segment I: √45 lies between √36 = 6 and √49 = 7; since 6.7² = 44.89 and 6.71² ≈ 45.02, √45 ≈ 6.708. Segment II: 6.8 (already a decimal). Segment III: 2π ≈ 2(3.14159) ≈ 6.283. Segment IV: 13/2 = 6.5. Ordering from least to greatest: 6.283 < 6.5 < 6.708 < 6.8, which corresponds to III < IV < I < II. The correct order shortest to longest is III, IV, I, II.",
-  "distractor_logic": {
-    "A": "Student under-estimates √45, treating it as roughly 6.5 or slightly less, and places Segment I before Segment IV instead of after it.",
-    "B": "Correct ordering: III (2π ≈ 6.283) < IV (13/2 = 6.5) < I (√45 ≈ 6.708) < II (6.8).",
-    "C": "Student over-estimates 2π by using π ≈ 3.25 or reasoning that 'π is greater than 3, so 2π must be greater than 6.5,' incorrectly placing Segment III after Segment IV.",
-    "D": "Student computes the values correctly but reverses the requested direction, listing from longest to shortest instead of shortest to longest."
-  },
-  "difficulty_level": "Proficient",
-  "difficulty_b": null,
-  "discrimination_a": null,
-  "guessing_c": null,
-  "content_context": "data_interpretation",
-  "context_tags": ["data_table", "ordering_numbers", "irrational_numbers", "pi", "square_roots"],
-  "estimated_time_seconds": 120,
-  "requires_calculator": false,
-  "contains_image": false,
-  "image_url": null,
-  "exposure_max": 0.20,
-  "times_administered": 0,
-  "times_correct": 0,
-  "dif_flag": null,
-  "fairness_review_status": "pending",
-  "fairness_review_date": null,
-  "fairness_review_notes": null,
-  "author": "jd-oviedo",
-  "created_at": "2026-05-13",
-  "last_modified": "2026-05-13",
-  "review_notes": null
-},
-{
-  "item_id": "QR_A_001",
-  "version": 1,
-  "status": "draft",
-  "category": "Quantitative Reasoning",
-  "category_code": "QR",
-  "proficiency_level": "Advanced",
-  "subtopic": "comparing_rational_and_irrational_numbers",
-  "skills_targeted": [
-    "evaluating and estimating the product of two square roots of non-perfect squares",
-    "comparing expressions that combine rational and irrational components",
-    "ordering numerical values presented in a data table"
-  ],
-  "question_text": "An engineer records four calculated measurements, in meters, from an experiment. Each value is expressed in the form it was derived from. The results are shown in the table below.\n\n| Segment | Measurement (m) |\n|---------|-----------------|\n| I       | √8 · √5         |\n| II      | 32/5            |\n| III     | 3 + π           |\n| IV      | 2π              |\n\nWhich list correctly orders the measurements from least to greatest?",
-  "question_format": "multiple_choice",
-  "answer_choices": {
-    "A": "I, III, IV, II",
-    "B": "IV, III, I, II",
-    "C": "III, IV, I, II",
-    "D": "II, I, IV, III"
-  },
-  "correct_answer": "C",
-  "explanation": "Convert each value to a decimal approximation. Segment I: √8 · √5 = √40, which is between √36 = 6 and √49 = 7; since 6.32² = 39.94 and 6.33² = 40.07, √40 ≈ 6.325. Segment II: 32/5 = 6.400. Segment III: 3 + π ≈ 3 + 3.142 = 6.142. Segment IV: 2π ≈ 2(3.142) = 6.283. To confirm Segment IV < Segment I without a calculator: (2π)² = 4π² ≈ 4(9.87) = 39.48, which is less than (√40)² = 40, so 2π < √40. Ordering from least to greatest: 6.142 < 6.283 < 6.325 < 6.400, which corresponds to III < IV < I < II. The correct order is III, IV, I, II.",
-  "distractor_logic": {
-    "A": "Student computes √8 · √5 by adding rather than multiplying the radicands, getting √8 + √5 ≈ 2.83 + 2.24 ≈ 5.07, and places Segment I as the smallest value.",
-    "B": "Student uses the rough approximation π ≈ 3, which makes 3 + π ≈ 6 and 2π ≈ 6 nearly indistinguishable, and reverses their order based on the visual complexity of the expressions.",
-    "C": "Correct ordering: III (3 + π ≈ 6.142) < IV (2π ≈ 6.283) < I (√8 · √5 = √40 ≈ 6.325) < II (32/5 = 6.400).",
-    "D": "Student computes values correctly but reverses the requested direction, listing from greatest to least instead of least to greatest."
-  },
-  "difficulty_level": "Advanced",
-  "difficulty_b": null,
-  "discrimination_a": null,
-  "guessing_c": null,
-  "content_context": "data_interpretation",
-  "context_tags": ["data_table", "ordering_numbers", "irrational_numbers", "pi", "product_of_square_roots"],
-  "estimated_time_seconds": 150,
-  "requires_calculator": false,
-  "contains_image": false,
-  "image_url": null,
-  "exposure_max": 0.20,
-  "times_administered": 0,
-  "times_correct": 0,
-  "dif_flag": null,
-  "fairness_review_status": "pending",
-  "fairness_review_date": null,
-  "fairness_review_notes": null,
-  "author": "jd-oviedo",
-  "created_at": "2026-05-13",
-  "last_modified": "2026-05-13",
-  "review_notes": null
-},
   {
-  "item_id": "QR_B_002",
-  "version": 1,
-  "status": "draft",
-  "category": "Quantitative Reasoning",
-  "category_code": "QR",
-  "proficiency_level": "Basic",
-  "subtopic": "computations_with_rational_and_irrational_numbers",
-  "skills_targeted": [
-    "estimating the value of a square root of a non-perfect square between two integers",
-    "adding a rational number and an irrational number",
-    "rounding an irrational expression to a specified decimal place"
-  ],
-  "question_text": "A hiker walks a fixed distance of 4 kilometers and then continues for an additional √20 kilometers along a trail. What is the total distance walked, in kilometers, rounded to the nearest tenth?",
-  "question_format": "multiple_choice",
-  "answer_choices": {
-    "A": "8.5",
-    "B": "14.0",
-    "C": "8.0",
-    "D": "4.9"
-  },
-  "correct_answer": "A",
-  "explanation": "The total distance is 4 + √20. To estimate √20, note that 4² = 16 and 5² = 25, so √20 lies between 4 and 5. Refining: 4.4² = 19.36 and 4.5² = 20.25, so √20 ≈ 4.47. Therefore 4 + √20 ≈ 4 + 4.47 = 8.47, which rounds to 8.5 kilometers.",
-  "distractor_logic": {
-    "A": "Correct value: 4 + √20 ≈ 4 + 4.47 ≈ 8.47, which rounds to 8.5.",
-    "B": "Student confuses √20 with 20/2 = 10 (treats taking a square root as halving), then computes 4 + 10 = 14.0.",
-    "C": "Student rounds √20 down to the nearest perfect square root, using √16 = 4 instead of estimating √20 ≈ 4.47, then computes 4 + 4 = 8.0.",
-    "D": "Student incorrectly combines the rational and irrational terms by pulling 4 inside the radical as √(4² + 20) = √36... or as √24 ≈ 4.9; either way, the student fails to recognize that a rational and an irrational cannot be combined into a single radical."
-  },
-  "difficulty_level": "Basic",
-  "difficulty_b": null,
-  "discrimination_a": null,
-  "guessing_c": null,
-  "content_context": "other",
-  "context_tags": ["distance", "addition", "square_root", "estimation"],
-  "estimated_time_seconds": 75,
-  "requires_calculator": false,
-  "contains_image": false,
-  "image_url": null,
-  "exposure_max": 0.20,
-  "times_administered": 0,
-  "times_correct": 0,
-  "dif_flag": null,
-  "fairness_review_status": "pending",
-  "fairness_review_date": null,
-  "fairness_review_notes": null,
-  "author": "jd-oviedo",
-  "created_at": "2026-05-13",
-  "last_modified": "2026-05-13",
-  "review_notes": null
-},
-  {
-  "item_id": "QR_P_002",
-  "version": 1,
-  "status": "draft",
-  "category": "Quantitative Reasoning",
-  "category_code": "QR",
-  "proficiency_level": "Proficient",
-  "subtopic": "computations_with_rational_and_irrational_numbers",
-  "skills_targeted": [
-    "simplifying square roots by factoring out perfect-square factors",
-    "combining like radicals through addition and subtraction",
-    "evaluating a multi-step expression involving rational and irrational terms"
-  ],
-  "question_text": "A crafter is assembling a project that requires a total length of (√50 − √18 + 5) meters of cord. What is the total length of cord needed, in meters, rounded to the nearest tenth?",
-  "question_format": "multiple_choice",
-  "answer_choices": {
-    "A": "7.8",
-    "B": "10.7",
-    "C": "2.8",
-    "D": "16.3"
-  },
-  "correct_answer": "A",
-  "explanation": "Simplify each radical by factoring out the largest perfect-square factor. √50 = √(25 · 2) = 5√2, and √18 = √(9 · 2) = 3√2. Since these are like radicals, combine them: 5√2 − 3√2 = 2√2. The expression becomes 2√2 + 5. Using √2 ≈ 1.414, we have 2√2 ≈ 2.828, so 2√2 + 5 ≈ 7.828, which rounds to 7.8 meters.",
-  "distractor_logic": {
-    "A": "Correct value: √50 − √18 + 5 = 2√2 + 5 ≈ 7.83, which rounds to 7.8.",
-    "B": "Student incorrectly subtracts radicands directly, computing √50 − √18 as √(50 − 18) = √32 ≈ 5.66, then adds 5 to get approximately 10.7.",
-    "C": "Student simplifies the radicals correctly to 2√2 ≈ 2.83 but forgets to add the +5 term at the end, reporting only the radical portion rounded to 2.8.",
-    "D": "Student adds the radicals instead of subtracting them, computing √50 + √18 = 5√2 + 3√2 = 8√2 ≈ 11.31, then adds 5 to get approximately 16.3."
-  },
-  "difficulty_level": "Proficient",
-  "difficulty_b": null,
-  "discrimination_a": null,
-  "guessing_c": null,
-  "content_context": "other",
-  "context_tags": ["radical_simplification", "like_radicals", "square_root", "multi_step"],
-  "estimated_time_seconds": 120,
-  "requires_calculator": false,
-  "contains_image": false,
-  "image_url": null,
-  "exposure_max": 0.20,
-  "times_administered": 0,
-  "times_correct": 0,
-  "dif_flag": null,
-  "fairness_review_status": "pending",
-  "fairness_review_date": null,
-  "fairness_review_notes": null,
-  "author": "jd-oviedo",
-  "created_at": "2026-05-13",
-  "last_modified": "2026-05-13",
-  "review_notes": null
-},
-  {
-  "item_id": "QR_A_002",
-  "version": 1,
-  "status": "draft",
-  "category": "Quantitative Reasoning",
-  "category_code": "QR",
-  "proficiency_level": "Advanced",
-  "subtopic": "computations_with_rational_and_irrational_numbers",
-  "skills_targeted": [
-    "rationalizing a denominator containing a difference of two square roots",
-    "applying the difference-of-squares identity with irrational terms",
-    "evaluating a multi-step expression involving irrational numbers and estimating the result"
-  ],
-  "question_text": "Simplify the expression 6 / (√5 − √2) and express its approximate value as a decimal rounded to the nearest tenth.",
-  "question_format": "multiple_choice",
-  "answer_choices": {
-    "A": "7.3",
-    "B": "5.3",
-    "C": "6.0",
-    "D": "2.0"
-  },
-  "correct_answer": "A",
-  "explanation": "Rationalize the denominator by multiplying numerator and denominator by the conjugate (√5 + √2): 6 / (√5 − √2) · (√5 + √2) / (√5 + √2) = 6(√5 + √2) / [(√5)² − (√2)²] = 6(√5 + √2) / (5 − 2) = 6(√5 + √2) / 3 = 2(√5 + √2) = 2√5 + 2√2. Estimating: √5 ≈ 2.236 and √2 ≈ 1.414, so 2√5 + 2√2 ≈ 4.472 + 2.828 ≈ 7.300, which rounds to 7.3.",
-  "distractor_logic": {
-    "A": "Correct value: rationalizing gives 2(√5 + √2) ≈ 2(2.236 + 1.414) ≈ 7.30, which rounds to 7.3.",
-    "B": "Student rationalizes correctly to 2(√5 + √2) but then incorrectly combines the radicals as √5 + √2 = √(5 + 2) = √7 ≈ 2.646, getting 2 · 2.646 ≈ 5.3. This is the classic error of treating √a + √b as √(a + b).",
-    "C": "Student skips rationalization entirely and roughly estimates √5 − √2 ≈ 1 (rounding 0.82 up to 1), then computes 6 / 1 = 6.0. The error is over-rounding the denominator before dividing.",
-    "D": "Student correctly identifies that (√5 − √2)(√5 + √2) = 3 in the denominator but fails to multiply the numerator by the conjugate, leaving 6 / 3 = 2.0. The error is applying the conjugate to only one side of the fraction."
-  },
-  "difficulty_level": "Advanced",
-  "difficulty_b": null,
-  "discrimination_a": null,
-  "guessing_c": null,
-  "content_context": "generic",
-  "context_tags": ["rationalizing_denominator", "conjugate", "difference_of_squares", "irrational_numbers"],
-  "estimated_time_seconds": 150,
-  "requires_calculator": false,
-  "contains_image": false,
-  "image_url": null,
-  "exposure_max": 0.20,
-  "times_administered": 0,
-  "times_correct": 0,
-  "dif_flag": null,
-  "fairness_review_status": "pending",
-  "fairness_review_date": null,
-  "fairness_review_notes": null,
-  "author": "jd-oviedo",
-  "created_at": "2026-05-13",
-  "last_modified": "2026-05-13",
-  "review_notes": null
-},
-  {
-    "item_id": "QR_B_003",
+    "item_id": "QR_B_001",
+    "schema_version": "2.0",
     "version": 1,
     "status": "draft",
     "category": "Quantitative Reasoning",
-    "category_code": "QR",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.1",
+    "topic": "comparing_rational_and_irrational_numbers",
+    "topic_text": "Comparing Rational and Irrational Numbers",
     "proficiency_level": "Basic",
-    "subtopic": "fractions_ratios_percentages_decimals_proportions",
-    "skills_targeted": ["ordering_fractions_decimals_percents", "comparing_rational_numbers"],
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "estimating the value of the square root of a non-perfect square between two integers",
+      "ordering values of fractions, decimals, and irrational numbers",
+      "interpreting numerical values presented in a data table"
+    ],
+    "question_text": "A science teacher recorded the heights, in meters, that four students measured for the same small tree using different estimation methods. The results are shown in the table below.\n\n| Student | Recorded Height (meters) |\n|---------|--------------------------|\n| Ana     | 13/5                     |\n| Ben     | √7                       |\n| Carla   | 2.5                      |\n| Dan     | √9                       |\n\nWhich student recorded the greatest height?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Ana",
+      "B": "Ben",
+      "C": "Carla",
+      "D": "Dan"
+    },
+    "correct_answer": "D",
+    "explanation": "Convert each value to a decimal to compare. Ana: 13/5 = 2.6. Ben: √7 is between √4 = 2 and √9 = 3; more precisely, √7 ≈ 2.65. Carla: 2.5. Dan: √9 = 3. Ordering the values: 2.5 < 2.6 < 2.65 < 3, so Carla < Ana < Ben < Dan. Dan's recorded height of 3 meters is the greatest.",
+    "distractor_logic": {
+      "A": "Student converts 13/5 correctly to 2.6 but does not recognize that √9 simplifies to the integer 3; may treat any square root as less than a nearby decimal.",
+      "B": "Student knows √7 is irrational and assumes irrational numbers are automatically larger than rational numbers, or estimates √7 as greater than 3 by confusing it with √9.",
+      "C": "Student misreads 13/5 as 1.35 or 1.6 (inverting or misapplying the fraction-to-decimal conversion), making 2.5 appear to be the largest value.",
+      "D": "Correct answer."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "estimate_first",
+      "use_answer_choices",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Bracket each square root between consecutive integers: √7 sits between 2 and 3, and √9 is exactly 3."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Convert each student's value to a decimal and line them up to compare directly."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks for the GREATEST value, and √9 simplifies to the whole number 3."
+      }
+    ],
+    "content_context": "data_interpretation",
+    "context_tags": [
+      "data_table",
+      "measurement",
+      "comparing_numbers",
+      "square_roots"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-13",
+    "last_modified": "2026-05-13",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_001",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.1",
+    "topic": "comparing_rational_and_irrational_numbers",
+    "topic_text": "Comparing Rational and Irrational Numbers",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "comparing the magnitudes of rational and irrational numbers expressed in different forms",
+      "estimating the value of an irrational number to compare it with rational values",
+      "interpreting and ordering numerical data presented in a table"
+    ],
+    "question_text": "A surveyor records the lengths of four hiking trail segments using different notation systems. The lengths, in kilometers, are shown in the table below.\n\n| Segment | Length (km) |\n|---------|-------------|\n| I       | √45         |\n| II      | 6.8         |\n| III     | 2π          |\n| IV      | 13/2        |\n\nWhich list correctly orders the segments from shortest to longest?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "III, I, IV, II",
+      "B": "III, IV, I, II",
+      "C": "IV, III, I, II",
+      "D": "II, I, IV, III"
+    },
+    "correct_answer": "B",
+    "explanation": "Convert each value to a decimal approximation to compare. Segment I: √45 lies between √36 = 6 and √49 = 7; since 6.7² = 44.89 and 6.71² ≈ 45.02, √45 ≈ 6.708. Segment II: 6.8 (already a decimal). Segment III: 2π ≈ 2(3.14159) ≈ 6.283. Segment IV: 13/2 = 6.5. Ordering from least to greatest: 6.283 < 6.5 < 6.708 < 6.8, which corresponds to III < IV < I < II. The correct order shortest to longest is III, IV, I, II.",
+    "distractor_logic": {
+      "A": "Student under-estimates √45, treating it as roughly 6.5 or slightly less, and places Segment I before Segment IV instead of after it.",
+      "B": "Correct ordering: III (2π ≈ 6.283) < IV (13/2 = 6.5) < I (√45 ≈ 6.708) < II (6.8).",
+      "C": "Student over-estimates 2π by using π ≈ 3.25 or reasoning that 'pi is greater than 3, so 2pi must be greater than 6.5,' incorrectly placing Segment III after Segment IV.",
+      "D": "Student computes the values correctly but reverses the requested direction, listing from longest to shortest instead of shortest to longest."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "estimate_first",
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Approximate each value as a decimal — bracket √45 between √36=6 and √49=7, and use π≈3.14 for 2π."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Confirm the requested direction: shortest to longest, not the reverse."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Lock in the smallest value first (2π≈6.28) and eliminate any ordering that doesn't start there."
+      }
+    ],
+    "content_context": "data_interpretation",
+    "context_tags": [
+      "data_table",
+      "ordering_numbers",
+      "irrational_numbers",
+      "pi",
+      "square_roots"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-13",
+    "last_modified": "2026-05-13",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_001",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.1",
+    "topic": "comparing_rational_and_irrational_numbers",
+    "topic_text": "Comparing Rational and Irrational Numbers",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "evaluating and estimating the product of two square roots of non-perfect squares",
+      "comparing expressions that combine rational and irrational components",
+      "ordering numerical values presented in a data table"
+    ],
+    "question_text": "An engineer records four calculated measurements, in meters, from an experiment. Each value is expressed in the form it was derived from. The results are shown in the table below.\n\n| Segment | Measurement (m) |\n|---------|-----------------|\n| I       | √8 · √5         |\n| II      | 32/5            |\n| III     | 3 + π           |\n| IV      | 2π              |\n\nWhich list correctly orders the measurements from least to greatest?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "I, III, IV, II",
+      "B": "IV, III, I, II",
+      "C": "III, IV, I, II",
+      "D": "II, I, IV, III"
+    },
+    "correct_answer": "C",
+    "explanation": "Convert each value to a decimal approximation. Segment I: √8 · √5 = √40, which is between √36 = 6 and √49 = 7; since 6.32² = 39.94 and 6.33² = 40.07, √40 ≈ 6.325. Segment II: 32/5 = 6.400. Segment III: 3 + π ≈ 3 + 3.142 = 6.142. Segment IV: 2π ≈ 2(3.142) = 6.283. To confirm Segment IV < Segment I without a calculator: (2π)² = 4π² ≈ 4(9.87) = 39.48, which is less than (√40)² = 40, so 2π < √40. Ordering from least to greatest: 6.142 < 6.283 < 6.325 < 6.400, which corresponds to III < IV < I < II. The correct order is III, IV, I, II.",
+    "distractor_logic": {
+      "A": "Student computes √8 · √5 by adding rather than multiplying the radicands, getting √8 + √5 ≈ 2.83 + 2.24 ≈ 5.07, and places Segment I as the smallest value.",
+      "B": "Student uses the rough approximation π ≈ 3, which makes 3 + π ≈ 6 and 2π ≈ 6 nearly indistinguishable, and reverses their order based on the visual complexity of the expressions.",
+      "C": "Correct ordering: III (3 + π ≈ 6.142) < IV (2π ≈ 6.283) < I (√8 · √5 = √40 ≈ 6.325) < II (32/5 = 6.400).",
+      "D": "Student computes values correctly but reverses the requested direction, listing from greatest to least instead of least to greatest."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "estimate_first",
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Simplify √8·√5 to √40, then bracket it between √36=6 and √49=7."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "√8·√5 means multiply the radicands (√40), not add them; the order requested is least to greatest."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Pin down the smallest (3+π≈6.14) and largest (32/5=6.4), then eliminate orderings that misplace either."
+      }
+    ],
+    "content_context": "data_interpretation",
+    "context_tags": [
+      "data_table",
+      "ordering_numbers",
+      "irrational_numbers",
+      "pi",
+      "product_of_square_roots"
+    ],
+    "estimated_time_seconds": 150,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-13",
+    "last_modified": "2026-05-13",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_002",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.5",
+    "topic": "computations_with_rational_and_irrational_numbers",
+    "topic_text": "Computations with Rational and Irrational Numbers",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "estimating the value of a square root of a non-perfect square between two integers",
+      "adding a rational number and an irrational number",
+      "rounding an irrational expression to a specified decimal place"
+    ],
+    "question_text": "A hiker walks a fixed distance of 4 kilometers and then continues for an additional √20 kilometers along a trail. What is the total distance walked, in kilometers, rounded to the nearest tenth?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "8.5",
+      "B": "14.0",
+      "C": "8.0",
+      "D": "4.9"
+    },
+    "correct_answer": "A",
+    "explanation": "The total distance is 4 + √20. To estimate √20, note that 4² = 16 and 5² = 25, so √20 lies between 4 and 5. Refining: 4.4² = 19.36 and 4.5² = 20.25, so √20 ≈ 4.47. Therefore 4 + √20 ≈ 4 + 4.47 = 8.47, which rounds to 8.5 kilometers.",
+    "distractor_logic": {
+      "A": "Correct value: 4 + √20 ≈ 4 + 4.47 ≈ 8.47, which rounds to 8.5.",
+      "B": "Student confuses √20 with 20/2 = 10 (treats taking a square root as halving), then computes 4 + 10 = 14.0.",
+      "C": "Student rounds √20 down to the nearest perfect square root, using √16 = 4 instead of estimating √20 ≈ 4.47, then computes 4 + 4 = 8.0.",
+      "D": "Student incorrectly combines the rational and irrational terms by pulling 4 inside the radical as √(4² + 20) = √36... or as √24 ≈ 4.9; either way, the student fails to recognize that a rational and an irrational cannot be combined into a single radical."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "estimate_first",
+      "identify_key_info",
+      "use_answer_choices"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Bracket √20 between √16=4 and √25=5, then refine (4.4²=19.36, 4.5²=20.25)."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A rational and an irrational can't merge into one radical — keep the 4 separate from √20."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Estimate to about 8.5 and match the closest choice."
+      }
+    ],
+    "content_context": "other",
+    "context_tags": [
+      "distance",
+      "addition",
+      "square_root",
+      "estimation"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-13",
+    "last_modified": "2026-05-13",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_002",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.5",
+    "topic": "computations_with_rational_and_irrational_numbers",
+    "topic_text": "Computations with Rational and Irrational Numbers",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "simplifying square roots by factoring out perfect-square factors",
+      "combining like radicals through addition and subtraction",
+      "evaluating a multi-step expression involving rational and irrational terms"
+    ],
+    "question_text": "A crafter is assembling a project that requires a total length of (√50 − √18 + 5) meters of cord. What is the total length of cord needed, in meters, rounded to the nearest tenth?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "7.8",
+      "B": "10.7",
+      "C": "2.8",
+      "D": "16.3"
+    },
+    "correct_answer": "A",
+    "explanation": "Simplify each radical by factoring out the largest perfect-square factor. √50 = √(25 · 2) = 5√2, and √18 = √(9 · 2) = 3√2. Since these are like radicals, combine them: 5√2 − 3√2 = 2√2. The expression becomes 2√2 + 5. Using √2 ≈ 1.414, we have 2√2 ≈ 2.828, so 2√2 + 5 ≈ 7.828, which rounds to 7.8 meters.",
+    "distractor_logic": {
+      "A": "Correct value: √50 − √18 + 5 = 2√2 + 5 ≈ 7.83, which rounds to 7.8.",
+      "B": "Student incorrectly subtracts radicands directly, computing √50 − √18 as √(50 − 18) = √32 ≈ 5.66, then adds 5 to get approximately 10.7.",
+      "C": "Student simplifies the radicals correctly to 2√2 ≈ 2.83 but forgets to add the +5 term at the end, reporting only the radical portion rounded to 2.8.",
+      "D": "Student adds the radicals instead of subtracting them, computing √50 + √18 = 5√2 + 3√2 = 8√2 ≈ 11.31, then adds 5 to get approximately 16.3."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Simplify each radical to a multiple of √2 before combining — these are like radicals."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Use √2≈1.414 to evaluate 2√2+5."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Watch the trap of subtracting radicands (√50−√18 is not √32) and eliminate that result."
+      }
+    ],
+    "content_context": "other",
+    "context_tags": [
+      "radical_simplification",
+      "like_radicals",
+      "square_root",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-13",
+    "last_modified": "2026-05-13",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_002",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.5",
+    "topic": "computations_with_rational_and_irrational_numbers",
+    "topic_text": "Computations with Rational and Irrational Numbers",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 0,
+    "skills_targeted": [
+      "rationalizing a denominator containing a difference of two square roots",
+      "applying the difference-of-squares identity with irrational terms",
+      "evaluating a multi-step expression involving irrational numbers and estimating the result"
+    ],
+    "question_text": "Simplify the expression 6 / (√5 − √2) and express its approximate value as a decimal rounded to the nearest tenth.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "7.3",
+      "B": "5.3",
+      "C": "6.0",
+      "D": "2.0"
+    },
+    "correct_answer": "A",
+    "explanation": "Rationalize the denominator by multiplying numerator and denominator by the conjugate (√5 + √2): 6 / (√5 − √2) · (√5 + √2) / (√5 + √2) = 6(√5 + √2) / [(√5)² − (√2)²] = 6(√5 + √2) / (5 − 2) = 6(√5 + √2) / 3 = 2(√5 + √2) = 2√5 + 2√2. Estimating: √5 ≈ 2.236 and √2 ≈ 1.414, so 2√5 + 2√2 ≈ 4.472 + 2.828 ≈ 7.300, which rounds to 7.3.",
+    "distractor_logic": {
+      "A": "Correct value: rationalizing gives 2(√5 + √2) ≈ 2(2.236 + 1.414) ≈ 7.30, which rounds to 7.3.",
+      "B": "Student rationalizes correctly to 2(√5 + √2) but then incorrectly combines the radicals as √5 + √2 = √(5 + 2) = √7 ≈ 2.646, getting 2 · 2.646 ≈ 5.3. This is the classic error of treating √a + √b as √(a + b).",
+      "C": "Student skips rationalization entirely and roughly estimates √5 − √2 ≈ 1 (rounding 0.82 up to 1), then computes 6 / 1 = 6.0. The error is over-rounding the denominator before dividing.",
+      "D": "Student correctly identifies that (√5 − √2)(√5 + √2) = 3 in the denominator but fails to multiply the numerator by the conjugate, leaving 6 / 3 = 2.0. The error is applying the conjugate to only one side of the fraction."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Multiply numerator and denominator by the conjugate (√5+√2) to clear the radical denominator."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Use √5≈2.236 and √2≈1.414 to evaluate 2(√5+√2)."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Don't collapse √5+√2 into √7 — eliminate the 5.3 distractor."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "rationalizing_denominator",
+      "conjugate",
+      "difference_of_squares",
+      "irrational_numbers"
+    ],
+    "estimated_time_seconds": 150,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-13",
+    "last_modified": "2026-05-13",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_003",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.2",
+    "topic": "fractions_ratios_percentages_decimals_proportions",
+    "topic_text": "Fractions, Ratios, Percentages, Decimals, and Proportions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "ordering_fractions_decimals_percents",
+      "comparing_rational_numbers"
+    ],
     "question_text": "Four runners finished a 5K race and their finishing times are listed below as fractions of an hour. Which list shows the runners in order from FASTEST to SLOWEST?\n\n• Maria: 0.45 hour\n• Devon: 2/5 hour\n• Priya: 47%\n• Tomás: 9/20 hour",
     "question_format": "multiple_choice",
     "answer_choices": {
@@ -329,17 +540,41 @@
       "C": "Misconverts 9/20 as smaller than 2/5 (perhaps by comparing numerators 9 and 2 without accounting for denominators, or by treating 9/20 as 0.09). Places Tomás second instead of tied with Maria.",
       "D": "Treats 2/5 as 0.50 (confusing 2/5 with 1/2 because '5' appears in both) and 9/20 as roughly 0.42, producing an incorrect ordering with Devon near the slow end."
     },
-    "difficulty_level": "1",
+    "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
     "guessing_c": null,
-    "content_context": "sports_recreation",
-    "context_tags": ["running", "race_times", "comparison"],
-    "estimated_time_seconds": 75,
+    "calculator_type": "none",
     "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers",
+      "use_answer_choices"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Faster means a SMALLER time, and every value must first be converted to a decimal."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Devon (0.40) is fastest and Priya (0.47) is slowest — eliminate any list that doesn't start with Devon and end with Priya."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Convert each runner's value to a decimal, then test the orderings."
+      }
+    ],
+    "content_context": "sports_recreation",
+    "context_tags": [
+      "running",
+      "race_times",
+      "comparison"
+    ],
+    "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -353,13 +588,24 @@
   },
   {
     "item_id": "QR_P_003",
+    "schema_version": "2.0",
     "version": 1,
     "status": "draft",
     "category": "Quantitative Reasoning",
-    "category_code": "QR",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.4",
+    "topic": "fractions_ratios_percentages_decimals_proportions",
+    "topic_text": "Fractions, Ratios, Percentages, Decimals, and Proportions",
     "proficiency_level": "Proficient",
-    "subtopic": "fractions_ratios_percentages_decimals_proportions",
-    "skills_targeted": ["percent_discount_sale_price", "applying_percentages_to_calculate_value"],
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "percent_discount_sale_price",
+      "applying_percentages_to_calculate_value"
+    ],
     "question_text": "A pair of running shoes is on sale for 30% off its original price of $84. A customer also has a coupon for an additional 15% off the sale price. What is the final price of the shoes, before tax?",
     "question_format": "multiple_choice",
     "answer_choices": {
@@ -375,17 +621,41 @@
       "C": "Applies only the 30% discount and forgets to apply the 15% coupon: $84 × 0.70 = $58.80, then mistakenly computes 15% OF $84 ($12.60) and subtracts from $84 instead of from the sale price, getting $84 − $12.60 − some rounding noise ≈ $54.60. Captures students who lose track of which base each percent applies to.",
       "D": "Multiplies the two discount percentages (30% × 15% = 4.5%) or misreads the problem as 'final price is 45% of original': $84 × 0.45 = $37.80. Captures confusion between 'percent off' and 'percent of.'"
     },
-    "difficulty_level": "2",
+    "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
     "guessing_c": null,
-    "content_context": "shopping_retail",
-    "context_tags": ["discount", "sale_price", "stacked_percentages"],
-    "estimated_time_seconds": 90,
+    "calculator_type": "none",
     "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Apply the discounts in sequence — the 15% comes off the already-discounted price, not the original $84."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Discounts don't add to 45%; eliminate the $46.20 trap."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "$84 drops to ~$59 after 30% off, then to ~$50 after another 15% — the answer should land just under $50."
+      }
+    ],
+    "content_context": "shopping_retail",
+    "context_tags": [
+      "discount",
+      "sale_price",
+      "stacked_percentages"
+    ],
+    "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -399,13 +669,24 @@
   },
   {
     "item_id": "QR_A_003",
+    "schema_version": "2.0",
     "version": 1,
     "status": "draft",
     "category": "Quantitative Reasoning",
-    "category_code": "QR",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.2",
+    "topic": "fractions_ratios_percentages_decimals_proportions",
+    "topic_text": "Fractions, Ratios, Percentages, Decimals, and Proportions",
     "proficiency_level": "Advanced",
-    "subtopic": "fractions_ratios_percentages_decimals_proportions",
-    "skills_targeted": ["applying_multiple_ratios", "multi_step_proportional_reasoning"],
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "applying_multiple_ratios",
+      "multi_step_proportional_reasoning"
+    ],
     "question_text": "A bakery's bread recipe uses flour, water, and yeast in the ratio 8 : 5 : 1 by weight. The flour itself is a blend of wheat flour and rye flour in the ratio 3 : 1. If the baker prepares a batch using a total of 420 grams of these three ingredients (flour, water, and yeast combined), how many grams of RYE FLOUR does the batch contain?",
     "question_format": "multiple_choice",
     "answer_choices": {
@@ -421,17 +702,41 @@
       "C": "Applies the rye ratio (1 out of 4 parts) directly to a misread total — uses 7 + 1 = 8 parts in the wrong ratio interpretation, or mixes the two ratios into a single chain like 1/(8+5+1) × something, arriving at 70 g through an arithmetic compromise between the two correct sub-answers.",
       "D": "Skips the first ratio entirely and treats '1 part rye out of (8+5+1)=14 parts' of the 420 g total: 420 ÷ 14 = 30 g. Captures students who notice only one ratio in the problem and ignore the nested second ratio."
     },
-    "difficulty_level": "3",
+    "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
     "guessing_c": null,
-    "content_context": "cooking_recipes",
-    "context_tags": ["baking", "ingredient_ratios", "multi_step_ratio"],
-    "estimated_time_seconds": 150,
+    "calculator_type": "none",
     "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Two ratios chain: split 420 g by 8:5:1 to find the flour, then split that flour by 3:1."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the parts — 14 total parts gives the flour (8 parts), then 4 flour-parts split into wheat:rye."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Rye is 1 of 4 flour-parts (÷4), not 1 of 3 — eliminate the 80 g result."
+      }
+    ],
+    "content_context": "cooking_recipes",
+    "context_tags": [
+      "baking",
+      "ingredient_ratios",
+      "multi_step_ratio"
+    ],
+    "estimated_time_seconds": 150,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -445,12 +750,20 @@
   },
   {
     "item_id": "QR_B_004",
+    "schema_version": "2.0",
     "version": 1,
     "status": "draft",
     "category": "Quantitative Reasoning",
-    "category_code": "QR",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "linear_expressions_interpretation",
+    "objective_text": "Linear Expressions and Interpretation",
+    "topic_id": "QR.3.6",
+    "topic": "applying_functions_to_model_real_world",
+    "topic_text": "Applying Functions to Model Real-World Situations",
     "proficiency_level": "Basic",
-    "subtopic": "applying_functions_to_model_real_world",
+    "assessment_layer": "CRC",
+    "unit": 2,
     "skills_targeted": [
       "calculating an average rate of change",
       "evaluating a simple linear model for a given input"
@@ -474,13 +787,37 @@
     "difficulty_b": null,
     "discrimination_a": null,
     "guessing_c": null,
-    "content_context": "travel_distance",
-    "context_tags": ["driving", "rate", "distance_time"],
-    "estimated_time_seconds": 60,
+    "calculator_type": "none",
     "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Rate of change = change in distance ÷ change in time, using BOTH data points."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute directly: (205−70)/(5−2)."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Using a single point (70/2 or 205/5) produces a trap answer — eliminate those."
+      }
+    ],
+    "content_context": "travel_distance",
+    "context_tags": [
+      "driving",
+      "rate",
+      "distance_time"
+    ],
+    "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -494,12 +831,22 @@
   },
   {
     "item_id": "QR_P_004",
+    "schema_version": "2.0",
     "version": 1,
     "status": "draft",
     "category": "Quantitative Reasoning",
-    "category_code": "QR",
+    "primary_strand": "QR",
+    "secondary_strands": [
+      "AR"
+    ],
+    "objective": "linear_expressions_interpretation",
+    "objective_text": "Linear Expressions and Interpretation",
+    "topic_id": "QR.3.3",
+    "topic": "applying_functions_to_model_real_world",
+    "topic_text": "Applying Functions to Model Real-World Situations",
     "proficiency_level": "Proficient",
-    "subtopic": "applying_functions_to_model_real_world",
+    "assessment_layer": "CRC",
+    "unit": 2,
     "skills_targeted": [
       "creating a two-variable expression to represent a situation",
       "identifying an expression that represents a rate of change"
@@ -523,13 +870,37 @@
     "difficulty_b": null,
     "discrimination_a": null,
     "guessing_c": null,
-    "content_context": "everyday_finance",
-    "context_tags": ["membership_fees", "linear_model", "two_variable_expression"],
-    "estimated_time_seconds": 75,
+    "calculator_type": "none",
     "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The one-time $45 is a constant; the $28 is per month, so it multiplies m."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test m=1: the total should be 45+28=73. Check which expression returns that."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any expression that multiplies the one-time fee by m."
+      }
+    ],
+    "content_context": "everyday_finance",
+    "context_tags": [
+      "membership_fees",
+      "linear_model",
+      "two_variable_expression"
+    ],
+    "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -543,12 +914,22 @@
   },
   {
     "item_id": "QR_A_004",
+    "schema_version": "2.0",
     "version": 1,
     "status": "draft",
-    "category": "Quantitative Reasoning",
-    "category_code": "AR",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "linear_equations_inequalities_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "applying_functions_to_model_real_world",
+    "topic_text": "Applying Functions to Model Real-World Situations",
     "proficiency_level": "Advanced",
-    "subtopic": "applying_functions_to_model_real_world",
+    "assessment_layer": "CRC",
+    "unit": 2,
     "skills_targeted": [
       "analyzing a multistep problem and creating a linear equation to represent it",
       "evaluating and comparing multiple rates of change"
@@ -572,13 +953,37 @@
     "difficulty_b": null,
     "discrimination_a": null,
     "guessing_c": null,
-    "content_context": "science_application",
-    "context_tags": ["bacteria_growth", "linear_model", "rate_comparison"],
-    "estimated_time_seconds": 120,
+    "calculator_type": "none",
     "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Set the two growth expressions equal: 200+35h = 80+55h."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check h=6 in both: 200+210=410 and 80+330=410 — they match."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Before the cultures equalize, the one starting higher (A, at 200) is ahead."
+      }
+    ],
+    "content_context": "science_application",
+    "context_tags": [
+      "bacteria_growth",
+      "linear_model",
+      "rate_comparison"
+    ],
+    "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -592,12 +997,22 @@
   },
   {
     "item_id": "QR_B_005",
+    "schema_version": "2.0",
     "version": 1,
     "status": "draft",
     "category": "Quantitative Reasoning",
-    "category_code": "QR",
+    "primary_strand": "QR",
+    "secondary_strands": [
+      "AR"
+    ],
+    "objective": "linear_expressions_interpretation",
+    "objective_text": "Linear Expressions and Interpretation",
+    "topic_id": "QR.3.2",
+    "topic": "writing_functions",
+    "topic_text": "Writing Functions",
     "proficiency_level": "Basic",
-    "subtopic": "writing functions",
+    "assessment_layer": "CRC",
+    "unit": 2,
     "skills_targeted": [
       "identifying a constant rate of change in a real-world context",
       "writing a simple linear function from a verbal description"
@@ -621,13 +1036,37 @@
     "difficulty_b": null,
     "discrimination_a": null,
     "guessing_c": null,
-    "content_context": "construction_measurement",
-    "context_tags": ["water_tank", "filling_rate", "linear_function"],
-    "estimated_time_seconds": 60,
+    "calculator_type": "none",
     "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Starts empty means no constant term; 'per minute' is a rate that multiplies t."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test t=1: a correct function returns 8 gallons."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate options that add or divide instead of multiply."
+      }
+    ],
+    "content_context": "construction_measurement",
+    "context_tags": [
+      "water_tank",
+      "filling_rate",
+      "linear_function"
+    ],
+    "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -641,12 +1080,22 @@
   },
   {
     "item_id": "QR_P_005",
+    "schema_version": "2.0",
     "version": 1,
     "status": "draft",
     "category": "Quantitative Reasoning",
-    "category_code": "QR",
+    "primary_strand": "QR",
+    "secondary_strands": [
+      "AR"
+    ],
+    "objective": "linear_expressions_interpretation",
+    "objective_text": "Linear Expressions and Interpretation",
+    "topic_id": "QR.3.3",
+    "topic": "writing_functions",
+    "topic_text": "Writing Functions",
     "proficiency_level": "Proficient",
-    "subtopic": "writing functions",
+    "assessment_layer": "CRC",
+    "unit": 2,
     "skills_targeted": [
       "creating a two-variable expression to represent a situation",
       "writing a linear function with both a starting value and a rate of change"
@@ -670,13 +1119,37 @@
     "difficulty_b": null,
     "discrimination_a": null,
     "guessing_c": null,
-    "content_context": "everyday_finance",
-    "context_tags": ["small_business", "revenue", "linear_function"],
-    "estimated_time_seconds": 80,
+    "calculator_type": "none",
     "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "$120 is fixed (the constant); $7.50 is per meal, so it multiplies m."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test m=2: 120+15=135. Check which expression returns that."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any expression that multiplies $120 by m."
+      }
+    ],
+    "content_context": "everyday_finance",
+    "context_tags": [
+      "small_business",
+      "revenue",
+      "linear_function"
+    ],
+    "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -690,12 +1163,22 @@
   },
   {
     "item_id": "QR_A_005",
+    "schema_version": "2.0",
     "version": 1,
     "status": "draft",
     "category": "Quantitative Reasoning",
-    "category_code": "QR",
+    "primary_strand": "QR",
+    "secondary_strands": [
+      "AR"
+    ],
+    "objective": "quantitative_applications",
+    "objective_text": "Quantitative Applications",
+    "topic_id": "QR.4.3",
+    "topic": "writing_functions",
+    "topic_text": "Writing Functions",
     "proficiency_level": "Advanced",
-    "subtopic": "writing functions",
+    "assessment_layer": "CRC",
+    "unit": 2,
     "skills_targeted": [
       "analyzing a multistep problem and creating a linear equation to represent it",
       "expressing a percent algebraically",
@@ -720,13 +1203,37 @@
     "difficulty_b": null,
     "discrimination_a": null,
     "guessing_c": null,
-    "content_context": "health_nutrition",
-    "context_tags": ["personal_training", "tiered_pricing", "percent_fee"],
-    "estimated_time_seconds": 120,
+    "calculator_type": "none",
     "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The $40 base covers the first hour, so extra hours are (h−1); the 6% fee scales the whole subtotal as ×1.06."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test h=1: subtotal=40, total=1.06×40=42.40 — only the right expression gives a sensible 1-hour cost."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A 6% fee means ×1.06, not +0.06 and not ×0.06 — eliminate those."
+      }
+    ],
+    "content_context": "health_nutrition",
+    "context_tags": [
+      "personal_training",
+      "tiered_pricing",
+      "percent_fee"
+    ],
+    "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
