@@ -19,7 +19,7 @@
       "ordering_fractions_decimals_percents",
       "comparing_rational_numbers"
     ],
-    "question_text": "Four runners finished a 5K race and their finishing times are listed below as fractions of an hour. Which list shows the runners in order from FASTEST to SLOWEST?\n\n• Maria: 0.45 hour\n• Devon: 2/5 hour\n• Priya: 47%\n• Tomás: 9/20 hour",
+    "question_text": "Four runners finished a 5K race and their finishing times are listed below as fractions of an hour. Which list shows the runners in order from FASTEST to SLOWEST?\n\n• Maria: 0.44 hour\n• Devon: 2/5 hour\n• Priya: 47%\n• Tomás: 9/20 hour",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Devon, Maria, Tomás, Priya",
@@ -28,12 +28,12 @@
       "D": "Maria, Tomás, Devon, Priya"
     },
     "correct_answer": "A",
-    "explanation": "Convert all four values to decimals so they can be compared directly:\n• Maria: 0.45\n• Devon: 2/5 = 0.40\n• Priya: 47% = 0.47\n• Tomás: 9/20 = 0.45\n\nA faster runner has a SMALLER time. Ordering from least to greatest (fastest to slowest):\n0.40 (Devon) < 0.45 (Maria) = 0.45 (Tomás) < 0.47 (Priya).\n\nMaria and Tomás are tied at 0.45, but Maria is listed before Tomás in choice A, which is the only option that correctly places Devon first and Priya last. The correct order is Devon, Maria, Tomás, Priya.",
+    "explanation": "Convert all four values to decimals so they can be compared directly:\n• Maria: 0.44\n• Devon: 2/5 = 0.40\n• Priya: 47% = 0.47\n• Tomás: 9/20 = 0.45\n\nA faster runner has a SMALLER time. Ordering from least to greatest (fastest to slowest): 0.40 (Devon) < 0.44 (Maria) < 0.45 (Tomás) < 0.47 (Priya). The correct order is Devon, Maria, Tomás, Priya.",
     "distractor_logic": {
       "B": "Reverses the direction — orders from slowest to fastest (greatest time first) instead of fastest to slowest. Student understood the conversions but inverted the meaning of 'fastest.'",
-      "C": "Misconverts 9/20 as smaller than 2/5 (perhaps by comparing numerators 9 and 2 without accounting for denominators, or by treating 9/20 as 0.09). Places Tomás second instead of tied with Maria.",
+      "C": "Student misconverts 9/20, treating it as less than 0.44 (for example reading 9/20 as about 0.43), which makes Tomás appear faster than Maria and places Tomás second.",
       "D": "Treats 2/5 as 0.50 (confusing 2/5 with 1/2 because '5' appears in both) and 9/20 as roughly 0.42, producing an incorrect ordering with Devon near the slow end.",
-      "A": "Correct: Devon = 2/5 = 0.40 is fastest, Maria and Tomás tie at 0.45, and Priya = 47% = 0.47 is slowest; this is the only option placing Devon first and Priya last."
+      "A": "Correct: Devon = 2/5 = 0.40 is fastest, then Maria at 0.44, then Tomás = 9/20 = 0.45, and Priya = 47% = 0.47 is slowest."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
