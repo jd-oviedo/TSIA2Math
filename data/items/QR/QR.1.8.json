@@ -1,0 +1,464 @@
+[
+  {
+    "item_id": "QR_B_031",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.8",
+    "topic": "absolute_value",
+    "topic_text": "Absolute Value",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "evaluating the absolute value of a negative integer",
+      "understanding absolute value as distance from zero on the number line"
+    ],
+    "question_text": "What is |−8|?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "−8",
+      "B": "0",
+      "C": "64",
+      "D": "8"
+    },
+    "correct_answer": "D",
+    "explanation": "The absolute value of a number is its distance from zero on the number line, which is always non-negative. The distance from −8 to 0 is 8, so |−8| = 8.",
+    "distractor_logic": {
+      "A": "Student believes absolute value leaves the sign unchanged and returns −8.",
+      "B": "Student thinks |−8| represents the number added to itself to reach zero, giving −8 + 8 = 0.",
+      "C": "Student confuses absolute value with squaring: (−8)² = 64.",
+      "D": "Correct: |−8| = 8, the distance from −8 to zero."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Absolute value means distance from zero — it is always zero or positive."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A negative result is impossible for absolute value — eliminate A."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "absolute_value",
+      "negative_integer",
+      "definition"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-24",
+    "last_modified": "2026-05-24",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_032",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.8",
+    "topic": "absolute_value",
+    "topic_text": "Absolute Value",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "evaluating the absolute value of a difference",
+      "computing the subtraction inside the absolute value before applying it"
+    ],
+    "question_text": "What is |5 − 12|?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "7",
+      "B": "−7",
+      "C": "17",
+      "D": "60"
+    },
+    "correct_answer": "A",
+    "explanation": "Evaluate inside the absolute value first: 5 − 12 = −7. Then take the absolute value: |−7| = 7.",
+    "distractor_logic": {
+      "A": "Correct: 5 − 12 = −7, and |−7| = 7.",
+      "B": "Student computes 5 − 12 = −7 correctly but forgets to apply the absolute value.",
+      "C": "Student adds instead of subtracts: 5 + 12 = 17.",
+      "D": "Student multiplies the two values inside: |5 × 12| = 60, confusing absolute value of a difference with a product."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compute the subtraction inside first, then take the absolute value of that result."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A negative answer is impossible — absolute value is always non-negative."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "absolute_value",
+      "difference",
+      "computation"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-24",
+    "last_modified": "2026-05-24",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_032",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.8",
+    "topic": "absolute_value",
+    "topic_text": "Absolute Value",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "evaluating an expression with multiple absolute value terms",
+      "applying absolute value to each term before combining them"
+    ],
+    "question_text": "What is 2|−5| − |3|?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "13",
+      "B": "−13",
+      "C": "7",
+      "D": "−7"
+    },
+    "correct_answer": "C",
+    "explanation": "Evaluate each absolute value: |−5| = 5 and |3| = 3. Then substitute: 2 × 5 − 3 = 10 − 3 = 7.",
+    "distractor_logic": {
+      "A": "Student strips all negative signs and adds: 2 × 5 + 3 = 13, treating subtraction as addition after taking absolute values.",
+      "B": "Student ignores both absolute values and evaluates 2 × (−5) − 3 = −10 − 3 = −13.",
+      "C": "Correct: 2|−5| − |3| = 2(5) − 3 = 10 − 3 = 7.",
+      "D": "Student ignores the absolute value on −5 but applies absolute value only to 3: 2 × (−5) + 3 = −10 + 3 = −7."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Resolve each absolute value first — |−5| = 5 and |3| = 3 — then compute."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Both B and D apply the subtraction or ignore absolute values — eliminate them."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "absolute_value",
+      "expression",
+      "multi_term"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-24",
+    "last_modified": "2026-05-24",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_033",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.8",
+    "topic": "absolute_value",
+    "topic_text": "Absolute Value",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "applying the order of operations before taking absolute value",
+      "evaluating an exponent inside an absolute value expression"
+    ],
+    "question_text": "What is |4 − 3²|?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "1",
+      "B": "5",
+      "C": "−5",
+      "D": "2"
+    },
+    "correct_answer": "B",
+    "explanation": "Apply the order of operations inside the absolute value: exponent first. 3² = 9. Then subtract: 4 − 9 = −5. Finally, take the absolute value: |−5| = 5.",
+    "distractor_logic": {
+      "A": "Student applies the absolute value before the exponent: |4 − 3| = 1, then squares the result: 1² = 1.",
+      "B": "Correct: 3² = 9, so 4 − 9 = −5, and |−5| = 5.",
+      "C": "Student evaluates 4 − 3² = −5 correctly but forgets to take the absolute value.",
+      "D": "Student treats 3² as 3 × 2 = 6: |4 − 6| = |−2| = 2."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Apply PEMDAS inside the absolute value first: exponent (3² = 9), then subtraction."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "C is negative — absolute value is always non-negative, so C is impossible."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "absolute_value",
+      "order_of_operations",
+      "exponent"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-24",
+    "last_modified": "2026-05-24",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_033",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.8",
+    "topic": "absolute_value",
+    "topic_text": "Absolute Value",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "solving an absolute value equation by considering both cases",
+      "identifying both the positive and negative solutions to an absolute value equation"
+    ],
+    "question_text": "How many solutions does the equation |x − 3| = 5 have, and what are they?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Two solutions: x = 8 and x = −2",
+      "B": "One solution: x = 8 only",
+      "C": "Two solutions: x = 8 and x = 2",
+      "D": "Two solutions: x = 2 and x = −8"
+    },
+    "correct_answer": "A",
+    "explanation": "|x − 3| = 5 means x − 3 = 5 or x − 3 = −5. Case 1: x − 3 = 5 → x = 8. Case 2: x − 3 = −5 → x = −2. There are two solutions: x = 8 and x = −2.",
+    "distractor_logic": {
+      "A": "Correct: x − 3 = 5 gives x = 8, and x − 3 = −5 gives x = −2.",
+      "B": "Student considers only the positive case (x − 3 = 5 → x = 8) and misses the negative case.",
+      "C": "Student finds x = 8 correctly but makes a sign error on the second case: x − 3 = −5 → x = −2, but writes x = 2 instead.",
+      "D": "Student subtracts in the wrong direction for both cases: x = 5 − 3 = 2 and x = −5 − 3 = −8."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "use_answer_choices"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "|expression| = k has two cases: expression = k and expression = −k."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Test both x = 8 and x = −2 by substituting back: |8 − 3| = 5 ✓ and |−2 − 3| = 5 ✓."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "absolute_value_equation",
+      "two_cases",
+      "solving"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-24",
+    "last_modified": "2026-05-24",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_034",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.8",
+    "topic": "absolute_value",
+    "topic_text": "Absolute Value",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "interpreting an absolute value inequality as a bounded interval",
+      "translating |x| ≤ k into an equivalent compound inequality"
+    ],
+    "question_text": "Which of the following correctly represents all values of x for which |x| ≤ 4?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x ≤ 4",
+      "B": "x ≤ −4  or  x ≥ 4",
+      "C": "x = 4  or  x = −4",
+      "D": "−4 ≤ x ≤ 4"
+    },
+    "correct_answer": "D",
+    "explanation": "|x| ≤ 4 means the distance from x to zero is at most 4. This includes all values from −4 to 4 (inclusive): −4 ≤ x ≤ 4.",
+    "distractor_logic": {
+      "A": "Student considers only the upper bound, capturing values to the left of 4 but missing that negative values far from zero (e.g., x = −10) do not satisfy the condition.",
+      "B": "Student reverses the inequality direction, producing the solution for |x| ≥ 4 (values at least 4 units from zero) instead of |x| ≤ 4.",
+      "C": "Student identifies only the boundary points x = 4 and x = −4, not recognizing that all values strictly between them also satisfy the inequality.",
+      "D": "Correct: |x| ≤ 4 is equivalent to −4 ≤ x ≤ 4, the closed interval from −4 to 4."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "|x| ≤ k means x is within k units of zero on both sides: −k ≤ x ≤ k."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "B gives the solution for |x| ≥ 4, not |x| ≤ 4 — the inequality direction is reversed."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "absolute_value_inequality",
+      "interval",
+      "compound_inequality"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-24",
+    "last_modified": "2026-05-24",
+    "review_notes": null
+  }
+]
