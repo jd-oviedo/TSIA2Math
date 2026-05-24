@@ -1,0 +1,695 @@
+[
+  {
+    "item_id": "QR_B_026",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.6",
+    "topic": "rounding_to_a_given_place_value",
+    "topic_text": "Rounding to a Given Place Value",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "rounding a decimal to the nearest tenth",
+      "identifying the correct digit to examine when rounding"
+    ],
+    "question_text": "Round 3.847 to the nearest tenth.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3.9",
+      "B": "4.0",
+      "C": "3.85",
+      "D": "3.8"
+    },
+    "correct_answer": "D",
+    "explanation": "To round to the nearest tenth, look at the hundredths digit: 4. Since 4 < 5, the tenths digit stays the same. 3.847 rounded to the nearest tenth is 3.8.",
+    "distractor_logic": {
+      "A": "Student looks at the thousandths digit (7) instead of the hundredths digit (4), and rounds up to 3.9.",
+      "B": "Student rounds all the way to the nearest whole number rather than the nearest tenth.",
+      "C": "Student rounds to the nearest hundredth (keeping two decimal places) rather than the nearest tenth.",
+      "D": "Correct: the hundredths digit is 4 < 5, so the tenths digit stays at 8, giving 3.8."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "To round to the nearest TENTH, look at the HUNDREDTHS digit (the second decimal place)."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "3.85 has two decimal places — that is the nearest hundredth, not tenth."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "decimal",
+      "nearest_tenth",
+      "rounding"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-24",
+    "last_modified": "2026-05-24",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_027",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.6",
+    "topic": "rounding_to_a_given_place_value",
+    "topic_text": "Rounding to a Given Place Value",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "rounding a whole number to the nearest hundred",
+      "applying the round-half-up rule at the hundreds place"
+    ],
+    "question_text": "Round 4,752 to the nearest hundred.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "4,800",
+      "B": "4,700",
+      "C": "4,750",
+      "D": "5,000"
+    },
+    "correct_answer": "A",
+    "explanation": "To round to the nearest hundred, look at the tens digit: 5. Since 5 ≥ 5, round up: the hundreds digit increases from 7 to 8, giving 4,800.",
+    "distractor_logic": {
+      "A": "Correct: the tens digit is 5, so round up — 4,752 → 4,800.",
+      "B": "Student rounds down despite the tens digit being 5, giving 4,700.",
+      "C": "Student rounds to the nearest ten rather than the nearest hundred.",
+      "D": "Student rounds to the nearest thousand rather than the nearest hundred."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "To round to the nearest HUNDRED, look at the TENS digit."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "4,750 has a non-zero tens digit — that is the nearest ten, not hundred."
+      }
+    ],
+    "content_context": "other",
+    "context_tags": [
+      "whole_number",
+      "nearest_hundred",
+      "rounding"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-24",
+    "last_modified": "2026-05-24",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_028",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.6",
+    "topic": "rounding_to_a_given_place_value",
+    "topic_text": "Rounding to a Given Place Value",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "rounding a decimal when the deciding digit is exactly 5",
+      "applying the round-half-up convention"
+    ],
+    "question_text": "Round 6.350 to the nearest tenth.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6.3",
+      "B": "6.4",
+      "C": "6.35",
+      "D": "6.0"
+    },
+    "correct_answer": "B",
+    "explanation": "To round to the nearest tenth, look at the hundredths digit: 5. Since 5 ≥ 5, round up: the tenths digit increases from 3 to 4, giving 6.4.",
+    "distractor_logic": {
+      "A": "Student rounds down even though the hundredths digit is exactly 5, applying a 'round half down' rule instead of the standard round-half-up convention.",
+      "B": "Correct: the hundredths digit is 5, so round up — 6.350 → 6.4.",
+      "C": "Student rounds to the nearest hundredth (keeping two decimal places) rather than the nearest tenth.",
+      "D": "Student rounds to the nearest whole number rather than the nearest tenth, and rounds down because the tenths digit is 3 < 5."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "When the deciding digit is exactly 5, round UP by convention."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "6.35 has two decimal places — that is the nearest hundredth, not tenth."
+      }
+    ],
+    "content_context": "other",
+    "context_tags": [
+      "decimal",
+      "midpoint_five",
+      "round_half_up"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-24",
+    "last_modified": "2026-05-24",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_027",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.6",
+    "topic": "rounding_to_a_given_place_value",
+    "topic_text": "Rounding to a Given Place Value",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "rounding a decimal to the nearest hundredth in a measurement context",
+      "identifying the correct digit to examine when rounding to hundredths"
+    ],
+    "question_text": "A runner crosses the finish line with a recorded time of 12.638 seconds. What is her time, rounded to the nearest hundredth of a second?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "12.6",
+      "B": "12.7",
+      "C": "12.63",
+      "D": "12.64"
+    },
+    "correct_answer": "D",
+    "explanation": "To round to the nearest hundredth, look at the thousandths digit: 8. Since 8 ≥ 5, round up: the hundredths digit increases from 3 to 4, giving 12.64 seconds.",
+    "distractor_logic": {
+      "A": "Student rounds to the nearest tenth (one decimal place) rather than the nearest hundredth.",
+      "B": "Student rounds to the nearest tenth and rounds up, using the hundredths digit (6 ≥ 5).",
+      "C": "Student rounds down despite the thousandths digit being 8, giving 12.63.",
+      "D": "Correct: thousandths digit = 8 ≥ 5, so round up — 12.638 → 12.64 seconds."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "To round to the nearest HUNDREDTH, look at the THOUSANDTHS digit (third decimal place)."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "12.63 rounds down — the thousandths digit (8) forces a round-up."
+      }
+    ],
+    "content_context": "other",
+    "context_tags": [
+      "decimal",
+      "nearest_hundredth",
+      "measurement"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-24",
+    "last_modified": "2026-05-24",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_028",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.6",
+    "topic": "rounding_to_a_given_place_value",
+    "topic_text": "Rounding to a Given Place Value",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "identifying which decimal value rounds to a given whole number",
+      "applying rounding rules to determine if a value rounds up or down"
+    ],
+    "question_text": "Which of the following values, when rounded to the nearest whole number, equals 15?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "15.499",
+      "B": "14.3",
+      "C": "15.501",
+      "D": "14.48"
+    },
+    "correct_answer": "A",
+    "explanation": "Test each option. 15.499: tenths digit = 4 < 5, so round down → 15. ✓  14.3: tenths digit = 3 < 5, so round down → 14. ✗  15.501: tenths digit = 5 ≥ 5, so round up → 16. ✗  14.48: tenths digit = 4 < 5, so round down → 14. ✗  Only 15.499 rounds to 15.",
+    "distractor_logic": {
+      "A": "Correct: 15.499 has tenths digit 4 < 5, so it rounds down to 15.",
+      "B": "14.3 rounds to 14, not 15 — the integer part is too small.",
+      "C": "15.501 rounds to 16 because the tenths digit is 5 ≥ 5.",
+      "D": "14.48 rounds to 14 because the tenths digit is 4 < 5; a student might incorrectly think that 0.48 is 'close enough to 0.5' to round up to 15."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "use_answer_choices",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Test each option: round it to the nearest whole number and check if you get 15."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "14.3 rounds to 14, not 15 — eliminate it immediately."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "rounding",
+      "identify_value",
+      "nearest_whole"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-24",
+    "last_modified": "2026-05-24",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_029",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.6",
+    "topic": "rounding_to_a_given_place_value",
+    "topic_text": "Rounding to a Given Place Value",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "rounding a decimal price to the nearest cent",
+      "applying hundredths-place rounding in a financial context"
+    ],
+    "question_text": "A store's pricing system calculates an item's cost as $7.956. What is the price rounded to the nearest cent?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$7.95",
+      "B": "$7.957",
+      "C": "$7.96",
+      "D": "$8.00"
+    },
+    "correct_answer": "C",
+    "explanation": "One cent equals one hundredth of a dollar, so round to the nearest hundredth. The thousandths digit is 6 ≥ 5, so round up: the hundredths digit increases from 5 to 6, giving $7.96.",
+    "distractor_logic": {
+      "A": "Student rounds down despite the thousandths digit being 6, keeping $7.95.",
+      "B": "Student does not round at all but adds a digit, producing $7.957.",
+      "C": "Correct: thousandths digit = 6 ≥ 5, so round up — $7.956 → $7.96.",
+      "D": "Student rounds to the nearest dollar rather than the nearest cent."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "One cent = one hundredth of a dollar — round to the nearest hundredth."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "$7.957 adds a digit instead of rounding — eliminate it immediately."
+      }
+    ],
+    "content_context": "shopping_retail",
+    "context_tags": [
+      "money",
+      "nearest_cent",
+      "decimal"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-24",
+    "last_modified": "2026-05-24",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_028",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.6",
+    "topic": "rounding_to_a_given_place_value",
+    "topic_text": "Rounding to a Given Place Value",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "recognizing that sequential rounding can produce a different result than rounding once",
+      "identifying the error introduced by cascaded rounding"
+    ],
+    "question_text": "A student wants to round 2.451 to the nearest tenth. Instead of rounding directly, she first rounds to the nearest hundredth, then rounds that result to the nearest tenth. What does she get, and is it the same as rounding 2.451 directly to the nearest tenth?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2.5; the same result as rounding 2.449 directly",
+      "B": "2.5; a different result — rounding 2.449 directly gives 2.4",
+      "C": "2.4; the same result as rounding 2.449 directly",
+      "D": "2.4; a different result — rounding 2.449 directly gives 2.5"
+    },
+    "correct_answer": "B",
+    "explanation": "Two-step: Round 2.451 to the nearest hundredth — thousandths digit = 1 < 5, so 2.451 → 2.45. Then round 2.45 to the nearest tenth — hundredths digit = 5 ≥ 5, so 2.45 → 2.5. Direct: Round 2.451 to the nearest tenth — hundredths digit = 4 < 5, so 2.451 → 2.4. The two-step approach gives 2.5; direct rounding gives 2.4. They are different.",
+    "distractor_logic": {
+      "A": "Student applies both steps correctly and gets 2.5 but incorrectly concludes this matches direct rounding — direct rounding of 2.451 gives 2.4, not 2.5.",
+      "B": "Correct: 2.451 → 2.45 → 2.5 (two-step) vs 2.451 → 2.4 (direct). The intermediate step inflated the final result.",
+      "C": "Student rounds 2.451 directly to 2.4 correctly but assumes the two-step method produces the same answer.",
+      "D": "Student reverses the outputs — the two-step method gives 2.5, not 2.4, and direct rounding gives 2.4, not 2.5."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Carry out both steps in order, then compare to a single direct rounding of 2.449."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "If both methods gave the same answer, cascaded rounding would never be a problem — it is."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "cascaded_rounding",
+      "rounding_error",
+      "sequential"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-24",
+    "last_modified": "2026-05-24",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_029",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.6",
+    "topic": "rounding_to_a_given_place_value",
+    "topic_text": "Rounding to a Given Place Value",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "converting a fraction to a decimal and rounding to the nearest hundredth",
+      "applying rounding after a long-division calculation"
+    ],
+    "question_text": "What is 17/7, rounded to the nearest hundredth?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2.42",
+      "B": "2.4",
+      "C": "2.43",
+      "D": "2.44"
+    },
+    "correct_answer": "C",
+    "explanation": "Divide: 17 ÷ 7 = 2.4285714... The hundredths digit is 2, and the thousandths digit is 8 ≥ 5, so round up: 2.43.",
+    "distractor_logic": {
+      "A": "Student rounds down despite the thousandths digit being 8, keeping 2.42.",
+      "B": "Student rounds to the nearest tenth (one decimal place) rather than the nearest hundredth.",
+      "C": "Correct: 17 ÷ 7 ≈ 2.4286; thousandths digit = 8 ≥ 5, so round up to 2.43.",
+      "D": "Student applies an extra round-up step to the already-rounded result, advancing from 2.43 to 2.44."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "estimate_first",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "estimate_first",
+        "hint_text": "17 ÷ 7 ≈ 2.43 — divide until you have at least 3 decimal places."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "To round to the nearest hundredth, examine the thousandths digit after dividing."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "fraction_to_decimal",
+      "nearest_hundredth",
+      "division"
+    ],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-24",
+    "last_modified": "2026-05-24",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_030",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "number_sense_and_magnitude",
+    "objective_text": "Number Sense and Magnitude",
+    "topic_id": "QR.1.6",
+    "topic": "rounding_to_a_given_place_value",
+    "topic_text": "Rounding to a Given Place Value",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "rounding a decimal when the rounding causes a carry into the next place",
+      "applying place-value rounding when the hundredths digit is 9"
+    ],
+    "question_text": "Round 9.996 to the nearest hundredth.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "10.00",
+      "B": "9.99",
+      "C": "9.997",
+      "D": "10.10"
+    },
+    "correct_answer": "A",
+    "explanation": "The hundredths digit is 9 and the thousandths digit is 6 ≥ 5, so round up. Adding 1 to 9 in the hundredths place gives 10, which carries: the tenths digit becomes 10 (carries again), and the ones digit becomes 10 (carries again). The result is 10.00.",
+    "distractor_logic": {
+      "A": "Correct: rounding up the 9 in the hundredths place triggers a chain of carries, giving 10.00.",
+      "B": "Student rounds down despite the thousandths digit being 6 ≥ 5, keeping 9.99.",
+      "C": "Student treats 'round to the nearest hundredth' as 'round to the nearest thousandth,' adding rather than removing a digit.",
+      "D": "Student carries the rounding incorrectly, producing 10.10 instead of allowing the carry to propagate cleanly to 10.00."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Round up the 9 in the hundredths place — then follow the carry all the way through."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "9.997 adds a digit instead of rounding — the problem asks for the nearest hundredth."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "rounding",
+      "carry",
+      "nines_digit"
+    ],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-24",
+    "last_modified": "2026-05-24",
+    "review_notes": null
+  }
+]
