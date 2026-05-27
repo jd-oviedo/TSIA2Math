@@ -4298,9 +4298,9 @@
     "correct_answer": "D",
     "explanation": "The side length equals √120. 10² = 100 and 11² = 121. Test 10.9: 10.9² = 118.81. Test 10.95: 10.95² ≈ 119.90. Test 10.96: 10.96² ≈ 120.12. So √120 lies between 10.95 and 10.96, giving √120 ≈ 10.954. Rounded to the nearest tenth, that is 11.0 feet.",
     "distractor_logic": {
-      "A": "Student uses the lower perfect square root √100 = 10 without refining.",
-      "B": "Student computes 10.9² = 118.81 and selects 10.9 without testing whether 11.0 is a closer match for 120.",
-      "C": "Student uses √144 = 12, overshooting by one perfect square.",
+      "A": "Student uses the lower perfect square root √100 = 10.0 and does not refine beyond the integer.",
+      "B": "Student tests 10.9² = 118.81 and concludes √120 ≈ 10.9 without refining to the next tenth.",
+      "C": "Student confuses area with perimeter or uses √144 = 12 instead of √121 ≈ 11.",
       "D": "Correct: √120 ≈ 10.954, which rounds to 11.0 feet."
     },
     "difficulty_level": "Proficient",
@@ -4369,17 +4369,17 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "About 1.0 foot",
-      "B": "About 5 feet",
+      "B": "About 0.4 feet",
       "C": "About 0.5 feet",
-      "D": "About 10 feet"
+      "D": "About 0.6 feet"
     },
     "correct_answer": "C",
-    "explanation": "Estimate each root. √95: 9.7² = 94.09 and 9.75² ≈ 95.06, so √95 ≈ 9.75. √105: 10.2² = 104.04 and 10.25² ≈ 105.06, so √105 ≈ 10.25. Difference: 10.25 − 9.75 = 0.50 feet.",
+    "explanation": "Estimate each root. √95: 9² = 81 and 10² = 100, so √95 is between 9 and 10. Test 9.7: 9.7² = 94.09. Test 9.75: 9.75² ≈ 95.06. So √95 ≈ 9.75. √105: 10² = 100 and 11² = 121. Test 10.2: 10.2² = 104.04. Test 10.25: 10.25² ≈ 105.06. So √105 ≈ 10.25. Difference: 10.25 − 9.75 = 0.50 feet.",
     "distractor_logic": {
-      "A": "Student rounds each root to the nearest integer (√95 ≈ 10, √105 ≈ 10) or rounds to 9 and 10, getting a difference of 1.",
-      "B": "Student subtracts the radicands and halves: (105 − 95) ÷ 2 = 5, confusing the square root of a difference with a simple division.",
-      "C": "Correct: √105 − √95 ≈ 10.25 − 9.75 = 0.50 feet.",
-      "D": "Student subtracts the radicands directly (105 − 95 = 10), ignoring that the square root makes the difference much smaller."
+      "A": "Student rounds √95 ≈ 9.7 down to 9 and √105 ≈ 10.2 up to 10, then subtracts: 10 − 9 = 1 foot.",
+      "B": "Student underestimates √95 as about 9.8 and √105 as about 10.2, giving a difference of 0.4.",
+      "C": "Correct: √95 ≈ 9.75 and √105 ≈ 10.25, so the difference is 10.25 − 9.75 = 0.50 feet.",
+      "D": "Student overestimates √95 as about 9.7 and √105 as about 10.3, giving a difference of 0.6."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -4615,12 +4615,12 @@
       "D": "51"
     },
     "correct_answer": "A",
-    "explanation": "Square the target: 7.3² = 53.29. The nearest integer is 53. Verify: √53 ≈ 7.280, which is 0.020 away from 7.3. √54 ≈ 7.348, which is 0.048 away. Since 0.020 < 0.048, N = 53 gives the square root closest to 7.3.",
+    "explanation": "Square the target: 7.3² = 53.29. The nearest integer is 53, since 53.29 is only 0.29 above 53 but 0.71 below 54. So N = 53 has the square root closest to 7.3.",
     "distractor_logic": {
-      "A": "Correct: 7.3² = 53.29 rounds to 53, and √53 ≈ 7.280 is only 0.020 from 7.3.",
-      "B": "Student uses 7.2² = 51.84 ≈ 52, underestimating by rounding 7.3 down to 7.2.",
+      "A": "Correct: 7.3² = 53.29, which rounds to 53, so √53 is closest to 7.3.",
+      "B": "Student computes 7.3² = 53.29 but rounds down to 52 by mistake, or estimates √52 ≈ 7.2 as the nearest option.",
       "C": "Student rounds 53.29 up to 54 rather than down to 53.",
-      "D": "Student uses 7.1² = 50.41 ≈ 51, underestimating further by rounding to 7.1."
+      "D": "Student uses 7² = 49 as the anchor and picks 51 without squaring 7.3."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -4688,7 +4688,7 @@
       "applying a square root estimate to compute a derived geometric measurement",
       "estimating the perimeter of a square given a non-perfect-square area"
     ],
-    "question_text": "A square tile installation covers an area of 200 square inches. Estimate the perimeter of the tiled area, to the nearest inch.",
+    "question_text": "A square tile installation covers an area of 200 square inches. Estimate the total perimeter of the tiled region, to the nearest inch.",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "56 inches",
@@ -4858,12 +4858,12 @@
       "D": "4.9"
     },
     "correct_answer": "A",
-    "explanation": "The total distance is 4 + √20. To estimate √20, note that 4² = 16 and 5² = 25, so √20 lies between 4 and 5. Refining: 4.4² = 19.36 and 4.5² = 20.25, so √20 ≈ 4.47. Therefore 4 + √20 ≈ 4 + 4.47 = 8.47, which rounds to 8.5 kilometers.",
+    "explanation": "The total distance is 4 + √20. Since 4² = 16 and 5² = 25, √20 lies between 4 and 5. √20 ≈ 4.47, so 4 + √20 ≈ 8.47, which rounds to 8.5 kilometers.",
     "distractor_logic": {
-      "A": "Correct value: 4 + √20 ≈ 4 + 4.47 ≈ 8.47, which rounds to 8.5.",
-      "B": "Student confuses √20 with 20/2 = 10 (treats taking a square root as halving), then computes 4 + 10 = 14.0.",
-      "C": "Student rounds √20 down to the nearest perfect square root, using √16 = 4 instead of estimating √20 ≈ 4.47, then computes 4 + 4 = 8.0.",
-      "D": "Student incorrectly combines the rational and irrational terms by pulling 4 inside the radical as √(4² + 20) = √36... or as √24 ≈ 4.9; either way, the student fails to recognize that a rational and an irrational cannot be combined into a single radical."
+      "A": "Correct: 4 + √20 ≈ 4 + 4.47 ≈ 8.47, which rounds to 8.5.",
+      "B": "Student treats √20 as 20 ÷ 2 = 10 (confuses taking a square root with halving), then computes 4 + 10 = 14.0.",
+      "C": "Student rounds √20 down to the nearest perfect-square root, using √16 = 4 instead of estimating √20 ≈ 4.47, then computes 4 + 4 = 8.0.",
+      "D": "Student incorrectly combines the two terms under one radical by treating 4 + √20 as √(4 + 20) = √24 ≈ 4.9, failing to recognize that a rational number and an irrational number cannot be merged inside a single radical sign."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -4943,10 +4943,10 @@
     "correct_answer": "D",
     "explanation": "Subtracting a negative is the same as adding a positive: −5/6 − (−1/3) = −5/6 + 1/3. Convert to a common denominator of 6: 1/3 = 2/6. Then −5/6 + 2/6 = −3/6 = −1/2.",
     "distractor_logic": {
-      "A": "Student does not convert the double negative to addition and instead subtracts: −5/6 − 1/3 = −5/6 − 2/6 = −7/6.",
-      "B": "Student ignores the negative signs entirely and computes 5/6 − 1/3 = 5/6 − 2/6 = 3/6 = 1/2.",
-      "C": "Student converts 1/3 incorrectly to 1/6 (halving instead of doubling the numerator) and gets −5/6 + 1/6 = −4/6 = −2/3.",
-      "D": "Correct: −5/6 + 2/6 = −3/6 = −1/2."
+      "A": "Student does not recognize that subtracting a negative becomes addition and instead computes −5/6 − 1/3 = −5/6 − 2/6 = −7/6.",
+      "B": "Student ignores all negative signs and computes 5/6 − 1/3 = 5/6 − 2/6 = 3/6 = 1/2.",
+      "C": "Student converts 1/3 to a denominator of 6 by multiplying the denominator by 2 but forgetting to multiply the numerator by the same factor, producing 1/6 instead of 2/6. Then −5/6 + 1/6 = −4/6 = −2/3.",
+      "D": "Correct: −5/6 + 1/3 = −5/6 + 2/6 = −3/6 = −1/2."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -5098,10 +5098,10 @@
     "correct_answer": "A",
     "explanation": "Simplify each radical by factoring out the largest perfect-square factor. √50 = √(25 · 2) = 5√2, and √18 = √(9 · 2) = 3√2. Since these are like radicals, combine them: 5√2 − 3√2 = 2√2. The expression becomes 2√2 + 5. Using √2 ≈ 1.414, we have 2√2 ≈ 2.828, so 2√2 + 5 ≈ 7.828, which rounds to 7.8 meters.",
     "distractor_logic": {
-      "A": "Correct value: √50 − √18 + 5 = 2√2 + 5 ≈ 7.83, which rounds to 7.8.",
-      "B": "Student incorrectly subtracts radicands directly, computing √50 − √18 as √(50 − 18) = √32 ≈ 5.66, then adds 5 to get approximately 10.7.",
-      "C": "Student simplifies the radicals correctly to 2√2 ≈ 2.83 but forgets to add the +5 term at the end, reporting only the radical portion rounded to 2.8.",
-      "D": "Student adds the radicals instead of subtracting them, computing √50 + √18 = 5√2 + 3√2 = 8√2 ≈ 11.31, then adds 5 to get approximately 16.3."
+      "A": "Correct: √50 − √18 + 5 = 2√2 + 5 ≈ 7.83, which rounds to 7.8.",
+      "B": "Student subtracts radicands directly — applying the false rule √a − √b = √(a − b) — computing √50 − √18 as √(50 − 18) = √32 ≈ 5.66, then adds 5 to get approximately 10.7.",
+      "C": "Student simplifies the radicals correctly to 2√2 ≈ 2.83 but forgets to add the +5 term, reporting only the radical portion rounded to 2.8.",
+      "D": "Student misreads the minus sign as a plus and adds the radicals: √50 + √18 = 5√2 + 3√2 = 8√2 ≈ 11.31, then adds 5 to get approximately 16.3."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -5181,10 +5181,10 @@
     "correct_answer": "C",
     "explanation": "Convert each mixed number to an improper fraction. 2 1/3 = 7/3 and 3 3/4 = 15/4. Find the LCD of 3 and 4, which is 12: 7/3 = 28/12 and 15/4 = 45/12. Subtract: 28/12 − 45/12 = −17/12. Convert to a mixed number: −17/12 = −1 5/12.",
     "distractor_logic": {
-      "A": "Student computes the correct magnitude (1 5/12) but does not apply the negative sign, since 2 1/3 < 3 3/4.",
-      "B": "Student correctly computes −17/12 but converts to a mixed number incorrectly, writing −1 7/12 (using 17 − 12 = 7 instead of 5).",
+      "A": "Student computes the correct magnitude (1 5/12) but does not apply the negative sign, since 2 1/3 < 3 3/4 the result must be negative.",
+      "B": "Student correctly converts to 12ths and gets −17/12, but makes an arithmetic slip converting to a mixed number — subtracting 12 from 17 as 17 − 10 = 7 rather than 17 − 12 = 5 — and writes −1 7/12.",
       "C": "Correct: 28/12 − 45/12 = −17/12 = −1 5/12.",
-      "D": "Student correctly computes the fractional difference (3/4 − 1/3 = 5/12) but omits the whole-number part of the result."
+      "D": "Student subtracts only the fractional parts of each mixed number (1/3 − 3/4 = 4/12 − 9/12 = −5/12) and drops the whole-number portion of the computation entirely, reporting −5/12."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -5336,10 +5336,10 @@
     "correct_answer": "A",
     "explanation": "Rationalize the denominator by multiplying numerator and denominator by the conjugate (√5 + √2): 6 / (√5 − √2) · (√5 + √2) / (√5 + √2) = 6(√5 + √2) / [(√5)² − (√2)²] = 6(√5 + √2) / (5 − 2) = 6(√5 + √2) / 3 = 2(√5 + √2) = 2√5 + 2√2. Estimating: √5 ≈ 2.236 and √2 ≈ 1.414, so 2√5 + 2√2 ≈ 4.472 + 2.828 ≈ 7.300, which rounds to 7.3.",
     "distractor_logic": {
-      "A": "Correct value: rationalizing gives 2(√5 + √2) ≈ 2(2.236 + 1.414) ≈ 7.30, which rounds to 7.3.",
-      "B": "Student rationalizes correctly to 2(√5 + √2) but then incorrectly combines the radicals as √5 + √2 = √(5 + 2) = √7 ≈ 2.646, getting 2 · 2.646 ≈ 5.3. This is the classic error of treating √a + √b as √(a + b).",
-      "C": "Student skips rationalization entirely and roughly estimates √5 − √2 ≈ 1 (rounding 0.82 up to 1), then computes 6 / 1 = 6.0. The error is over-rounding the denominator before dividing.",
-      "D": "Student correctly identifies that (√5 − √2)(√5 + √2) = 3 in the denominator but fails to multiply the numerator by the conjugate, leaving 6 / 3 = 2.0. The error is applying the conjugate to only one side of the fraction."
+      "A": "Correct: rationalizing gives 2(√5 + √2) ≈ 2(2.236 + 1.414) ≈ 7.30, which rounds to 7.3.",
+      "B": "Student rationalizes correctly to 2(√5 + √2) but then applies the false rule √a + √b = √(a + b), getting 2·√7 ≈ 2(2.646) ≈ 5.3.",
+      "C": "Student skips rationalization and estimates using whole-number approximations: √5 ≈ 2 and √2 ≈ 1, giving denominator 2 − 1 = 1, and computes 6 ÷ 1 = 6.0.",
+      "D": "Student correctly multiplies the denominator by its conjugate, obtaining (√5 − √2)(√5 + √2) = 3, but does not apply the same conjugate to the numerator — leaving the numerator as 6 rather than 6(√5 + √2) — and computes 6 ÷ 3 = 2.0."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -5419,10 +5419,10 @@
     "correct_answer": "C",
     "explanation": "Simplify √12 by factoring out the largest perfect square: √12 = √(4 × 3) = 2√3. So 2√12 = 2 × 2√3 = 4√3. Now add like radicals: 4√3 + 3√3 = 7√3.",
     "distractor_logic": {
-      "A": "Student adds the coefficients (2 + 3 = 5) without first simplifying √12 = 2√3, treating √12 and √3 as the same radical.",
-      "B": "Student correctly simplifies 2√12 = 4√3 but then forgets to add the 3√3 term.",
+      "A": "Student correctly simplifies √12 = 2√3 but then writes 2√12 = 2√3 (dropping the outer coefficient into the simplified form instead of multiplying: 2 × 2√3 = 4√3), and then adds 2√3 + 3√3 = 5√3.",
+      "B": "Student correctly simplifies 2√12 = 4√3 but then forgets to add the 3√3 term, reporting only 4√3 as the final answer.",
       "C": "Correct: 2√12 = 4√3, so 4√3 + 3√3 = 7√3.",
-      "D": "Student multiplies the coefficients (2 × 3 = 6) instead of adding after simplification."
+      "D": "Student multiplies the coefficients (2 × 3 = 6) instead of adding them after simplification, producing 6√3."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -5496,9 +5496,9 @@
     "correct_answer": "B",
     "explanation": "Simplify each radical. √75 = √(25 × 3) = 5√3. √12 = √(4 × 3) = 2√3, so 2√12 = 4√3. Subtract like radicals: 5√3 − 4√3 = √3.",
     "distractor_logic": {
-      "A": "Student subtracts radicands directly: √75 − 2√12 → √(75 − 12) = √63, ignoring the coefficient 2 and the need to simplify first.",
+      "A": "Student ignores the coefficient 2 on √12 (treating 2√12 as √12) and also applies the false rule √a − √b = √(a − b), computing √75 − √12 = √(75 − 12) = √63.",
       "B": "Correct: √75 = 5√3 and 2√12 = 4√3, so 5√3 − 4√3 = √3.",
-      "C": "Student correctly simplifies √75 = 5√3 but ignores the 2√12 term entirely.",
+      "C": "Student correctly simplifies √75 = 5√3 but treats 2√12 as having coefficient 0 (loses track of the term during multi-step simplification) and reports 5√3.",
       "D": "Student reverses the order of subtraction, computing 2√12 − √75 = 4√3 − 5√3 = −√3."
     },
     "difficulty_level": "Advanced",
@@ -5573,9 +5573,9 @@
     "correct_answer": "D",
     "explanation": "Recognize the difference-of-squares pattern: (a + b)(a − b) = a² − b². Here a = √5 and b = √2, so the product equals (√5)² − (√2)² = 5 − 2 = 3.",
     "distractor_logic": {
-      "A": "Student applies √(a − b) = √(5 − 2) = √3, confusing the product of conjugates with the square root of a difference.",
-      "B": "Student multiplies only the leading terms: √5 × √2 = √10, ignoring the structure of the full product.",
-      "C": "Student adds the radicands instead of subtracting their squares: 5 + 2 = 7.",
+      "A": "Student correctly applies difference of squares and arrives at 5 − 2 = 3, but then takes the square root of that result, writing √3 instead of stopping at 3.",
+      "B": "Student multiplies only the first terms: √5 × √2 = √10, ignoring the full binomial structure of the product.",
+      "C": "Student adds the radicands instead of computing (√5)² − (√2)²: 5 + 2 = 7.",
       "D": "Correct: (√5)² − (√2)² = 5 − 2 = 3."
     },
     "difficulty_level": "Advanced",

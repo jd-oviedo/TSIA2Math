@@ -656,9 +656,9 @@
     "correct_answer": "D",
     "explanation": "The side length equals √120. 10² = 100 and 11² = 121. Test 10.9: 10.9² = 118.81. Test 10.95: 10.95² ≈ 119.90. Test 10.96: 10.96² ≈ 120.12. So √120 lies between 10.95 and 10.96, giving √120 ≈ 10.954. Rounded to the nearest tenth, that is 11.0 feet.",
     "distractor_logic": {
-      "A": "Student uses the lower perfect square root √100 = 10 without refining.",
-      "B": "Student computes 10.9² = 118.81 and selects 10.9 without testing whether 11.0 is a closer match for 120.",
-      "C": "Student uses √144 = 12, overshooting by one perfect square.",
+      "A": "Student uses the lower perfect square root √100 = 10.0 and does not refine beyond the integer.",
+      "B": "Student tests 10.9² = 118.81 and concludes √120 ≈ 10.9 without refining to the next tenth.",
+      "C": "Student confuses area with perimeter or uses √144 = 12 instead of √121 ≈ 11.",
       "D": "Correct: √120 ≈ 10.954, which rounds to 11.0 feet."
     },
     "difficulty_level": "Proficient",
@@ -727,17 +727,17 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "About 1.0 foot",
-      "B": "About 5 feet",
+      "B": "About 0.4 feet",
       "C": "About 0.5 feet",
-      "D": "About 10 feet"
+      "D": "About 0.6 feet"
     },
     "correct_answer": "C",
-    "explanation": "Estimate each root. √95: 9.7² = 94.09 and 9.75² ≈ 95.06, so √95 ≈ 9.75. √105: 10.2² = 104.04 and 10.25² ≈ 105.06, so √105 ≈ 10.25. Difference: 10.25 − 9.75 = 0.50 feet.",
+    "explanation": "Estimate each root. √95: 9² = 81 and 10² = 100, so √95 is between 9 and 10. Test 9.7: 9.7² = 94.09. Test 9.75: 9.75² ≈ 95.06. So √95 ≈ 9.75. √105: 10² = 100 and 11² = 121. Test 10.2: 10.2² = 104.04. Test 10.25: 10.25² ≈ 105.06. So √105 ≈ 10.25. Difference: 10.25 − 9.75 = 0.50 feet.",
     "distractor_logic": {
-      "A": "Student rounds each root to the nearest integer (√95 ≈ 10, √105 ≈ 10) or rounds to 9 and 10, getting a difference of 1.",
-      "B": "Student subtracts the radicands and halves: (105 − 95) ÷ 2 = 5, confusing the square root of a difference with a simple division.",
-      "C": "Correct: √105 − √95 ≈ 10.25 − 9.75 = 0.50 feet.",
-      "D": "Student subtracts the radicands directly (105 − 95 = 10), ignoring that the square root makes the difference much smaller."
+      "A": "Student rounds √95 ≈ 9.7 down to 9 and √105 ≈ 10.2 up to 10, then subtracts: 10 − 9 = 1 foot.",
+      "B": "Student underestimates √95 as about 9.8 and √105 as about 10.2, giving a difference of 0.4.",
+      "C": "Correct: √95 ≈ 9.75 and √105 ≈ 10.25, so the difference is 10.25 − 9.75 = 0.50 feet.",
+      "D": "Student overestimates √95 as about 9.7 and √105 as about 10.3, giving a difference of 0.6."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -973,12 +973,12 @@
       "D": "51"
     },
     "correct_answer": "A",
-    "explanation": "Square the target: 7.3² = 53.29. The nearest integer is 53. Verify: √53 ≈ 7.280, which is 0.020 away from 7.3. √54 ≈ 7.348, which is 0.048 away. Since 0.020 < 0.048, N = 53 gives the square root closest to 7.3.",
+    "explanation": "Square the target: 7.3² = 53.29. The nearest integer is 53, since 53.29 is only 0.29 above 53 but 0.71 below 54. So N = 53 has the square root closest to 7.3.",
     "distractor_logic": {
-      "A": "Correct: 7.3² = 53.29 rounds to 53, and √53 ≈ 7.280 is only 0.020 from 7.3.",
-      "B": "Student uses 7.2² = 51.84 ≈ 52, underestimating by rounding 7.3 down to 7.2.",
+      "A": "Correct: 7.3² = 53.29, which rounds to 53, so √53 is closest to 7.3.",
+      "B": "Student computes 7.3² = 53.29 but rounds down to 52 by mistake, or estimates √52 ≈ 7.2 as the nearest option.",
       "C": "Student rounds 53.29 up to 54 rather than down to 53.",
-      "D": "Student uses 7.1² = 50.41 ≈ 51, underestimating further by rounding to 7.1."
+      "D": "Student uses 7² = 49 as the anchor and picks 51 without squaring 7.3."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1046,7 +1046,7 @@
       "applying a square root estimate to compute a derived geometric measurement",
       "estimating the perimeter of a square given a non-perfect-square area"
     ],
-    "question_text": "A square tile installation covers an area of 200 square inches. Estimate the perimeter of the tiled area, to the nearest inch.",
+    "question_text": "A square tile installation covers an area of 200 square inches. Estimate the total perimeter of the tiled region, to the nearest inch.",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "56 inches",
