@@ -1,0 +1,792 @@
+[
+  {
+    "item_id": "QR_B_058",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.6",
+    "topic": "unit_conversion_within_a_system",
+    "topic_text": "Unit Conversion Within a System",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "selecting the correct direction of conversion (multiply vs divide) when converting to a smaller unit",
+      "applying a conversion factor to a decimal measurement"
+    ],
+    "question_text": "How many inches are in 7.5 feet? (1 foot = 12 inches)",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "0.625 inches",
+      "B": "19.5 inches",
+      "C": "84 inches",
+      "D": "90 inches"
+    },
+    "correct_answer": "D",
+    "explanation": "Converting to a smaller unit requires multiplication. 7.5 feet \u00d7 12 inches/foot = 90 inches.",
+    "distractor_logic": {
+      "A": "Student divides instead of multiplies (7.5 \u00f7 12 = 0.625), converting in the wrong direction.",
+      "B": "Student adds the conversion factor to the measurement (7.5 + 12 = 19.5) instead of multiplying.",
+      "C": "Student drops the decimal and converts only the whole number (7 \u00d7 12 = 84), ignoring the 0.5 foot.",
+      "D": "Correct: 7.5 \u00d7 12 = 90 inches."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Inches are smaller than feet, so the number of inches must be larger. Multiply: 7.5 \u00d7 12."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "7 feet = 84 inches. Half a foot more = 6 more inches \u2192 90."
+      }
+    ],
+    "content_context": "measurement",
+    "context_tags": [
+      "unit_conversion",
+      "customary",
+      "feet_to_inches",
+      "multiplication"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_059",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.6",
+    "topic": "unit_conversion_within_a_system",
+    "topic_text": "Unit Conversion Within a System",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "applying a weight conversion factor to convert pounds to ounces",
+      "correctly including a fractional part of a unit in the conversion"
+    ],
+    "question_text": "How many ounces are in 3.25 pounds? (1 pound = 16 ounces)",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "52 oz",
+      "B": "0.203 oz",
+      "C": "48 oz",
+      "D": "19.25 oz"
+    },
+    "correct_answer": "A",
+    "explanation": "3.25 pounds \u00d7 16 ounces/pound = 52 ounces.",
+    "distractor_logic": {
+      "A": "Correct: 3.25 \u00d7 16 = 52 oz.",
+      "B": "Student divides instead of multiplies (3.25 \u00f7 16 \u2248 0.203), converting in the wrong direction.",
+      "C": "Student converts only the whole number of pounds (3 \u00d7 16 = 48 oz), ignoring the 0.25 lb fractional part.",
+      "D": "Student adds the conversion factor to the measurement (3.25 + 16 = 19.25) instead of multiplying."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ounces are smaller than pounds \u2014 multiply. 3.25 \u00d7 16."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "3 lbs = 48 oz. 0.25 lb = 4 oz. Total = 52 oz."
+      }
+    ],
+    "content_context": "measurement",
+    "context_tags": [
+      "unit_conversion",
+      "customary",
+      "pounds_to_ounces",
+      "decimal"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_060",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.6",
+    "topic": "unit_conversion_within_a_system",
+    "topic_text": "Unit Conversion Within a System",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "dividing by a power of 10 to convert from a smaller to a larger metric unit",
+      "recognizing that converting meters to kilometers requires division by 1,000"
+    ],
+    "question_text": "Convert 4,500 meters to kilometers. (1 kilometer = 1,000 meters)",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "4,500,000 km",
+      "B": "45 km",
+      "C": "4.5 km",
+      "D": "0.45 km"
+    },
+    "correct_answer": "C",
+    "explanation": "Converting to a larger unit requires division. 4,500 m \u00f7 1,000 m/km = 4.5 km.",
+    "distractor_logic": {
+      "A": "Student multiplies by 1,000 instead of dividing (4,500 \u00d7 1,000 = 4,500,000), converting in the wrong direction.",
+      "B": "Student divides by 100 instead of 1,000 (4,500 \u00f7 100 = 45), off by a factor of 10.",
+      "C": "Correct: 4,500 \u00f7 1,000 = 4.5 km.",
+      "D": "Student divides by 10,000 instead of 1,000 (4,500 \u00f7 10,000 = 0.45), off by a factor of 10 in the other direction."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Kilometers are larger than meters, so the answer should be a smaller number. Divide by 1,000."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "1 km = 1,000 m. 4,500 m is 4 full kilometers plus 500 m (half a km) \u2192 4.5 km."
+      }
+    ],
+    "content_context": "measurement",
+    "context_tags": [
+      "unit_conversion",
+      "metric",
+      "meters_to_km",
+      "division"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_061",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.6",
+    "topic": "unit_conversion_within_a_system",
+    "topic_text": "Unit Conversion Within a System",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "chaining multiple conversion factors within the customary system",
+      "correctly computing the number of cups per gallon before applying it"
+    ],
+    "question_text": "How many cups are in 2.5 gallons? (1 gallon = 4 quarts; 1 quart = 2 pints; 1 pint = 2 cups)",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "10 cups",
+      "B": "20 cups",
+      "C": "32 cups",
+      "D": "40 cups"
+    },
+    "correct_answer": "D",
+    "explanation": "1 gallon = 4 qt \u00d7 2 pt/qt \u00d7 2 cups/pt = 16 cups. So 2.5 gallons = 2.5 \u00d7 16 = 40 cups.",
+    "distractor_logic": {
+      "A": "Student converts only to quarts (2.5 \u00d7 4 = 10), stopping one step too early.",
+      "B": "Student converts to pints (2.5 \u00d7 4 \u00d7 2 = 20) but does not complete the final pints-to-cups conversion.",
+      "C": "Student correctly determines 1 gal = 16 cups but uses only the whole number portion (2 \u00d7 16 = 32), dropping the 0.5 gallon.",
+      "D": "Correct: 1 gal = 16 cups; 2.5 \u00d7 16 = 40 cups."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Chain the conversions: 1 gal \u2192 qt \u2192 pt \u2192 cups. Find cups per gallon first, then multiply by 2.5."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "1 gal = 4 \u00d7 2 \u00d7 2 = 16 cups. 2.5 gal = 2.5 \u00d7 16 = 40 cups."
+      }
+    ],
+    "content_context": "cooking",
+    "context_tags": [
+      "unit_conversion",
+      "customary",
+      "volume",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_062",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.6",
+    "topic": "unit_conversion_within_a_system",
+    "topic_text": "Unit Conversion Within a System",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "multiplying by a power of 10 to convert from a larger to a smaller metric unit",
+      "recognizing that converting kilograms to grams requires multiplication by 1,000"
+    ],
+    "question_text": "How many grams are in 3.2 kilograms? (1 kilogram = 1,000 grams)",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3,200 g",
+      "B": "3.2 g",
+      "C": "320 g",
+      "D": "32,000 g"
+    },
+    "correct_answer": "A",
+    "explanation": "Grams are smaller than kilograms, so multiply. 3.2 kg \u00d7 1,000 g/kg = 3,200 g.",
+    "distractor_logic": {
+      "A": "Correct: 3.2 \u00d7 1,000 = 3,200 g.",
+      "B": "Student copies the number (3.2) without applying any conversion, changing only the unit label.",
+      "C": "Student multiplies by 100 instead of 1,000 (3.2 \u00d7 100 = 320), off by a factor of 10.",
+      "D": "Student multiplies by 10,000 instead of 1,000 (3.2 \u00d7 10,000 = 32,000), off by a factor of 10 in the other direction."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Grams are smaller than kilograms \u2014 multiply by 1,000. Move the decimal 3 places to the right."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "3 kg = 3,000 g. 0.2 kg more = 200 g more \u2192 3,200 g."
+      }
+    ],
+    "content_context": "measurement",
+    "context_tags": [
+      "unit_conversion",
+      "metric",
+      "kg_to_grams",
+      "power_of_ten"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_049",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.6",
+    "topic": "unit_conversion_within_a_system",
+    "topic_text": "Unit Conversion Within a System",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "converting to a common unit before comparing two measurements",
+      "computing the difference between measurements expressed in different units"
+    ],
+    "question_text": "Runner A completed a race of 5 kilometers. Runner B completed a race of 5,200 meters. Which runner covered a greater distance, and by how many meters? (1 km = 1,000 m)",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Runner A, by 200 meters",
+      "B": "Runner B, by 200 meters",
+      "C": "Runner B, by 5,195 meters",
+      "D": "They ran the same distance"
+    },
+    "correct_answer": "B",
+    "explanation": "Convert Runner A: 5 km = 5,000 m. Compare: 5,200 m vs 5,000 m. Runner B ran farther by 5,200 \u2212 5,000 = 200 meters.",
+    "distractor_logic": {
+      "A": "Student correctly converts and finds a 200-meter difference but identifies the wrong runner as the winner, stating Runner A ran farther.",
+      "B": "Correct: 5 km = 5,000 m; Runner B ran 5,200 m; difference = 200 m.",
+      "C": "Student subtracts the kilometer value from the meter value without converting (5,200 \u2212 5 = 5,195), treating different units as directly comparable.",
+      "D": "Student sees '5' and '5,200' and rounds to a conclusion without converting, assuming both runners ran 5 of their respective units and calling it a tie."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Convert to the same unit before comparing. 5 km = 5,000 m. Now compare 5,000 m and 5,200 m."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "5,200 \u2212 5,000 = 200 m. Runner B ran 200 meters farther."
+      }
+    ],
+    "content_context": "sports_and_fitness",
+    "context_tags": [
+      "unit_conversion",
+      "metric",
+      "comparison",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_050",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.6",
+    "topic": "unit_conversion_within_a_system",
+    "topic_text": "Unit Conversion Within a System",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "applying a rate over a time period before converting the result to a different unit",
+      "correctly ordering the steps of finding a total quantity and then converting units"
+    ],
+    "question_text": "Water flows through a pipe at 3 gallons per minute. How many fluid ounces of water flow through the pipe in 5 minutes? (1 gallon = 128 fluid ounces)",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "640 fl oz",
+      "B": "384 fl oz",
+      "C": "15 fl oz",
+      "D": "1,920 fl oz"
+    },
+    "correct_answer": "D",
+    "explanation": "Total gallons in 5 min = 3 \u00d7 5 = 15 gallons. Convert: 15 \u00d7 128 = 1,920 fluid ounces.",
+    "distractor_logic": {
+      "A": "Student multiplies the time by the conversion factor (5 \u00d7 128 = 640) without first calculating total gallons using the flow rate.",
+      "B": "Student converts only 1 minute of flow to fluid ounces (3 \u00d7 128 = 384) without multiplying by the 5-minute duration.",
+      "C": "Student correctly finds the total gallons (3 \u00d7 5 = 15) but reports that number as fluid ounces without performing the gallon-to-fluid-ounce conversion.",
+      "D": "Correct: 3 \u00d7 5 = 15 gal; 15 \u00d7 128 = 1,920 fl oz."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Two steps: find total gallons first (rate \u00d7 time), then convert gallons to fluid ounces."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "15 gal \u00d7 128 fl oz/gal = 1,920 fl oz."
+      }
+    ],
+    "content_context": "science_and_engineering",
+    "context_tags": [
+      "unit_conversion",
+      "customary",
+      "volume",
+      "rate_and_conversion"
+    ],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_051",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.6",
+    "topic": "unit_conversion_within_a_system",
+    "topic_text": "Unit Conversion Within a System",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "converting miles to feet before applying a spacing constraint",
+      "adding one to the number of intervals to account for both endpoints"
+    ],
+    "question_text": "Fence posts are placed every 8 feet along a straight fence that is 0.5 miles long, including one post at each end. How many posts are needed? (1 mile = 5,280 feet)",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "331",
+      "B": "330",
+      "C": "33",
+      "D": "660"
+    },
+    "correct_answer": "A",
+    "explanation": "Convert: 0.5 mi \u00d7 5,280 ft/mi = 2,640 ft. Intervals = 2,640 \u00f7 8 = 330. Posts = 330 + 1 = 331 (one post at each end).",
+    "distractor_logic": {
+      "A": "Correct: 2,640 \u00f7 8 = 330 intervals; 330 + 1 = 331 posts.",
+      "B": "Student correctly divides 2,640 by 8 to get 330 but forgets to add the final endpoint post, reporting 330 instead of 331.",
+      "C": "Student divides by 80 instead of 8 (2,640 \u00f7 80 = 33), off by a factor of 10 in the spacing.",
+      "D": "Student uses 4 feet as the spacing (perhaps halving 8) and computes 2,640 \u00f7 4 = 660 posts."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Convert 0.5 miles to feet first. Then divide by 8 to find intervals. Add 1 for the post at the far end."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "0.5 \u00d7 5,280 = 2,640 ft. 2,640 \u00f7 8 = 330 intervals. 330 + 1 = 331 posts."
+      }
+    ],
+    "content_context": "construction",
+    "context_tags": [
+      "unit_conversion",
+      "customary",
+      "fencepost_problem",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_045",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.6",
+    "topic": "unit_conversion_within_a_system",
+    "topic_text": "Unit Conversion Within a System",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "converting a speed given in non-standard time units to miles per hour",
+      "applying dimensional analysis to convert mph to meters per second using two conversion factors"
+    ],
+    "question_text": "A car travels 45 miles in 40 minutes. What is its speed in miles per hour and in meters per second? (Use: 1 mile = 1,600 m; 1 hour = 3,600 seconds)",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "60 mph; 26.7 m/s",
+      "B": "67.5 mph; 26.7 m/s",
+      "C": "67.5 mph; 30 m/s",
+      "D": "67.5 mph; 108 m/s"
+    },
+    "correct_answer": "C",
+    "explanation": "Speed in mph: 45 miles \u00f7 (40/60 hours) = 45 \u00d7 (60/40) = 45 \u00d7 1.5 = 67.5 mph. Convert to m/s: 67.5 mi/hr \u00d7 1,600 m/mi \u00f7 3,600 s/hr = 108,000 \u00f7 3,600 = 30 m/s.",
+    "distractor_logic": {
+      "A": "Student computes mph as 45 mi \u00f7 45 min \u00d7 60 = 60 mph (uses 45 min as denominator instead of 40 min), then correctly converts 60 mph to m/s: 60 \u00d7 1,600 \u00f7 3,600 = 26.7 m/s.",
+      "B": "Student correctly finds 67.5 mph but uses 60 mph (not 67.5) when converting to m/s: 60 \u00d7 1,600 \u00f7 3,600 = 26.7 m/s.",
+      "C": "Correct: 67.5 mph; 67.5 \u00d7 1,600 \u00f7 3,600 = 30 m/s.",
+      "D": "Student correctly finds 67.5 mph and multiplies by 1,600 to get meters per hour (108,000 m/hr) but forgets to divide by 3,600 to convert to m/s, reporting 108 m/s."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Step 1: convert 40 min to hours (40/60 = 2/3 hr), then divide 45 mi by 2/3 hr. Step 2: convert mph \u2192 m/s using both conversion factors."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "67.5 mph \u00d7 1,600 m/mi = 108,000 m/hr. \u00f7 3,600 s/hr = 30 m/s."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "60 mph \u2248 27 m/s. 67.5 mph is faster, so m/s should be somewhat above 27 \u2014 around 30."
+      }
+    ],
+    "content_context": "travel",
+    "context_tags": [
+      "unit_conversion",
+      "speed",
+      "dimensional_analysis",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_046",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.6",
+    "topic": "unit_conversion_within_a_system",
+    "topic_text": "Unit Conversion Within a System",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "converting a flow rate from milliliters per minute to gallons per minute before combining rates",
+      "computing a net rate by subtracting an inflow from an outflow and using it to find elapsed time"
+    ],
+    "question_text": "A 200-gallon tank is full and draining at 1.5 gallons per minute. At the same time, a fill pipe adds water at 1,000 milliliters per minute. How many minutes until the tank is empty? (Use: 1 gallon = 4,000 mL)",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "133 minutes",
+      "B": "114 minutes",
+      "C": "800 minutes",
+      "D": "160 minutes"
+    },
+    "correct_answer": "D",
+    "explanation": "Convert fill rate: 1,000 mL/min \u00f7 4,000 mL/gal = 0.25 gal/min. Net drain rate = 1.5 \u2212 0.25 = 1.25 gal/min. Time to empty = 200 \u00f7 1.25 = 160 minutes.",
+    "distractor_logic": {
+      "A": "Student ignores the fill pipe and divides the tank volume by the drain rate only: 200 \u00f7 1.5 \u2248 133 minutes.",
+      "B": "Student adds the fill rate to the drain rate instead of subtracting (treating both as draining): net = 1.5 + 0.25 = 1.75 gal/min; 200 \u00f7 1.75 \u2248 114 minutes.",
+      "C": "Student correctly converts the fill rate to 0.25 gal/min but uses it alone (ignoring the drain pipe) as the net rate: 200 \u00f7 0.25 = 800 minutes.",
+      "D": "Correct: fill = 0.25 gal/min; net drain = 1.25 gal/min; time = 200 \u00f7 1.25 = 160 minutes."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Convert fill rate to gallons/min first: 1,000 \u00f7 4,000 = 0.25 gal/min. Net drain = drain \u2212 fill = 1.5 \u2212 0.25. Then divide 200 by the net rate."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Net rate = 1.25 gal/min. 200 \u00f7 1.25 = 160 minutes."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "The fill pipe slows the drain slightly. Without it: 200/1.5 \u2248 133 min. With it: should be somewhat longer. 160 min is reasonable."
+      }
+    ],
+    "content_context": "science_and_engineering",
+    "context_tags": [
+      "unit_conversion",
+      "net_rate",
+      "volume",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  }
+]

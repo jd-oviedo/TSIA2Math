@@ -1,0 +1,792 @@
+[
+  {
+    "item_id": "QR_B_053",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.5",
+    "topic": "rates_and_unit_rates",
+    "topic_text": "Rates and Unit Rates",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "dividing a total quantity by the number of units to find a unit rate",
+      "identifying which quantity is the numerator and which is the denominator in a unit rate"
+    ],
+    "question_text": "Five pounds of coffee costs $22.50. What is the cost per pound?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$17.50",
+      "B": "$4.50",
+      "C": "$112.50",
+      "D": "$0.22"
+    },
+    "correct_answer": "B",
+    "explanation": "Unit rate = total cost \u00f7 number of units = $22.50 \u00f7 5 = $4.50 per pound.",
+    "distractor_logic": {
+      "A": "Student subtracts the quantity from the price (22.50 \u2212 5 = $17.50) instead of dividing.",
+      "B": "Correct: $22.50 \u00f7 5 = $4.50 per pound.",
+      "C": "Student multiplies price by quantity (22.50 \u00d7 5 = $112.50) instead of dividing to find the unit rate.",
+      "D": "Student inverts the division, computing quantity \u00f7 price (5 \u00f7 22.50 \u2248 $0.22), finding pounds per dollar instead of dollars per pound."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Unit rate = total \u00f7 number of units. Divide the total cost by the number of pounds."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "5 pounds for ~$22.50. Each pound is roughly $22 \u00f7 5 \u2248 $4\u2013$5. That rules out A, C, and D."
+      }
+    ],
+    "content_context": "grocery_shopping",
+    "context_tags": [
+      "unit_rate",
+      "cost_per_unit",
+      "division",
+      "price"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_054",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.5",
+    "topic": "rates_and_unit_rates",
+    "topic_text": "Rates and Unit Rates",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing unit rates for two items to enable a direct comparison",
+      "identifying the better value by selecting the lower unit rate"
+    ],
+    "question_text": "Brand A sells 12 oz of juice for $2.40. Brand B sells 20 oz of juice for $3.80. Which brand has the lower cost per ounce, and what is that unit rate?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Brand A; $0.20 per oz",
+      "B": "Brand A; $0.19 per oz",
+      "C": "Brand B; $0.19 per oz",
+      "D": "Brand B; $0.20 per oz"
+    },
+    "correct_answer": "C",
+    "explanation": "Brand A: $2.40 \u00f7 12 = $0.20/oz. Brand B: $3.80 \u00f7 20 = $0.19/oz. Brand B has the lower unit rate.",
+    "distractor_logic": {
+      "A": "Student correctly computes Brand A's unit rate ($0.20/oz) but chooses A as the better value without comparing it to Brand B's lower rate.",
+      "B": "Student assigns Brand B's unit rate ($0.19/oz) to Brand A, then selects A as the better value based on the swapped rate.",
+      "C": "Correct: Brand B at $0.19/oz is cheaper than Brand A at $0.20/oz.",
+      "D": "Student correctly identifies Brand B as the better value but reports Brand A's unit rate ($0.20/oz) instead of Brand B's ($0.19/oz)."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compute cost per ounce for each brand separately: total cost \u00f7 ounces. Then compare."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Brand A: ~$2.40 for 12 oz \u2248 $0.20/oz. Brand B: ~$3.80 for 20 oz \u2014 $4.00 \u00f7 20 = $0.20, so slightly less than $0.20."
+      }
+    ],
+    "content_context": "grocery_shopping",
+    "context_tags": [
+      "unit_rate",
+      "comparison",
+      "better_value",
+      "cost_per_unit"
+    ],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_055",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.5",
+    "topic": "rates_and_unit_rates",
+    "topic_text": "Rates and Unit Rates",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "multiplying a unit rate by a given quantity to find a total amount",
+      "recognizing the unit rate as a multiplicative factor"
+    ],
+    "question_text": "A car gets 32 miles per gallon. How many miles can it travel on 11 gallons of gas?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "352 miles",
+      "B": "2.9 miles",
+      "C": "43 miles",
+      "D": "320 miles"
+    },
+    "correct_answer": "A",
+    "explanation": "Total distance = unit rate \u00d7 quantity = 32 miles/gallon \u00d7 11 gallons = 352 miles.",
+    "distractor_logic": {
+      "A": "Correct: 32 \u00d7 11 = 352 miles.",
+      "B": "Student divides the rate by the quantity (32 \u00f7 11 \u2248 2.9), inverting the operation.",
+      "C": "Student adds the rate and quantity (32 + 11 = 43) instead of multiplying.",
+      "D": "Student multiplies correctly but uses 10 gallons instead of 11 (32 \u00d7 10 = 320), dropping the last gallon."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Miles per gallon \u00d7 gallons = total miles. Multiply 32 by 11."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "32 mpg \u00d7 10 gal = 320 miles, plus one more gallon = 32 more miles \u2192 about 352."
+      }
+    ],
+    "content_context": "travel",
+    "context_tags": [
+      "unit_rate",
+      "fuel_efficiency",
+      "multiplication",
+      "apply_rate"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_056",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.5",
+    "topic": "rates_and_unit_rates",
+    "topic_text": "Rates and Unit Rates",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "deriving a unit rate from a given rate relationship",
+      "applying a unit rate to a new quantity to find a total"
+    ],
+    "question_text": "A worker packs 90 boxes in 6 hours. At this rate, how many boxes will the worker pack in 8 hours?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "96",
+      "B": "15",
+      "C": "540",
+      "D": "120"
+    },
+    "correct_answer": "D",
+    "explanation": "Unit rate = 90 boxes \u00f7 6 hours = 15 boxes per hour. In 8 hours: 15 \u00d7 8 = 120 boxes.",
+    "distractor_logic": {
+      "A": "Student adds the total boxes and given hours (90 + 6 = 96) instead of finding and applying the unit rate.",
+      "B": "Student correctly finds the unit rate (15 boxes/hour) but stops there without multiplying by 8 hours.",
+      "C": "Student multiplies the given values together (90 \u00d7 6 = 540) instead of first dividing to find the unit rate.",
+      "D": "Correct: 90 \u00f7 6 = 15 boxes/hr; 15 \u00d7 8 = 120 boxes."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Two steps: find boxes per hour first (90 \u00f7 6), then multiply by 8."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "15 boxes/hr \u00d7 8 hr = 120 boxes."
+      }
+    ],
+    "content_context": "work_and_jobs",
+    "context_tags": [
+      "unit_rate",
+      "work_rate",
+      "multi_step",
+      "apply_rate"
+    ],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_057",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.5",
+    "topic": "rates_and_unit_rates",
+    "topic_text": "Rates and Unit Rates",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "applying unit conversion factors to convert a rate from one set of units to another",
+      "tracking unit cancellation across a multi-factor rate conversion"
+    ],
+    "question_text": "A car travels at 60 miles per hour. What is this speed in feet per second? (1 mile = 5,280 feet; 1 hour = 3,600 seconds)",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "60 ft/s",
+      "B": "3,600 ft/s",
+      "C": "88 ft/s",
+      "D": "528 ft/s"
+    },
+    "correct_answer": "C",
+    "explanation": "60 mi/hr \u00d7 (5,280 ft/mi) \u00f7 (3,600 s/hr) = 60 \u00d7 5,280 \u00f7 3,600 = 316,800 \u00f7 3,600 = 88 ft/s.",
+    "distractor_logic": {
+      "A": "Student reports the original speed (60) without performing any unit conversion.",
+      "B": "Student converts hours to seconds (60 \u00d7 60 = 3,600) but does not convert miles to feet, leaving the rate in miles per second scaled incorrectly.",
+      "C": "Correct: 60 \u00d7 5,280 \u00f7 3,600 = 88 ft/s.",
+      "D": "Student correctly multiplies by 5,280 but divides by 600 instead of 3,600 (using 10 minutes instead of 60 minutes per hour): 60 \u00d7 5,280 \u00f7 600 = 528."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Multiply by the ft/mi conversion (5,280) to get ft/hr, then divide by 3,600 to get ft/s."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "60 mph is a familiar speed. 88 ft/s is the well-known equivalent \u2014 about 1.5 feet every 1/60th of a second."
+      }
+    ],
+    "content_context": "travel",
+    "context_tags": [
+      "unit_rate",
+      "unit_conversion",
+      "speed",
+      "dimensional_analysis"
+    ],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_046",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.5",
+    "topic": "rates_and_unit_rates",
+    "topic_text": "Rates and Unit Rates",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing average rate as total distance divided by total time across multiple segments",
+      "distinguishing average rate from the arithmetic mean of two segment rates"
+    ],
+    "question_text": "On a road trip, a driver travels 180 miles in the first 3 hours, then 80 miles in the next 2 hours. What is the driver's average speed for the entire trip?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "50 mph",
+      "B": "52 mph",
+      "C": "40 mph",
+      "D": "60 mph"
+    },
+    "correct_answer": "B",
+    "explanation": "Total distance = 180 + 80 = 260 miles. Total time = 3 + 2 = 5 hours. Average speed = 260 \u00f7 5 = 52 mph.",
+    "distractor_logic": {
+      "A": "Student averages the two segment speeds arithmetically: (180/3 + 80/2) \u00f7 2 = (60 + 40) \u00f7 2 = 50 mph, rather than dividing total distance by total time.",
+      "B": "Correct: 260 miles \u00f7 5 hours = 52 mph.",
+      "C": "Student uses only the second segment's speed (80 \u00f7 2 = 40 mph), ignoring the first segment.",
+      "D": "Student uses only the first segment's speed (180 \u00f7 3 = 60 mph), ignoring the second segment."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Average speed = total distance \u00f7 total time. Add all miles, add all hours, then divide."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "260 miles \u00f7 5 hours = 52 mph. (Not the average of 60 and 40.)"
+      }
+    ],
+    "content_context": "travel",
+    "context_tags": [
+      "average_rate",
+      "speed",
+      "multi_segment",
+      "total_distance"
+    ],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_047",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.5",
+    "topic": "rates_and_unit_rates",
+    "topic_text": "Rates and Unit Rates",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "expressing individual completion rates as fractions of the whole per unit time",
+      "adding fractional rates and taking the reciprocal to find combined completion time"
+    ],
+    "question_text": "Pipe A can fill a tank in 4 hours and Pipe B can fill the same tank in 6 hours. If both pipes are open at the same time, how many hours will it take to fill the tank?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "5 hours",
+      "B": "10 hours",
+      "C": "2.4 hours",
+      "D": "2 hours"
+    },
+    "correct_answer": "C",
+    "explanation": "Rate A = 1/4 tank/hr; Rate B = 1/6 tank/hr. Combined rate = 1/4 + 1/6 = 3/12 + 2/12 = 5/12 tank/hr. Time = 1 \u00f7 (5/12) = 12/5 = 2.4 hours.",
+    "distractor_logic": {
+      "A": "Student averages the two individual times ((4 + 6) \u00f7 2 = 5 hours) instead of adding rates and taking the reciprocal.",
+      "B": "Student adds the two individual times (4 + 6 = 10 hours) instead of combining rates, assuming pipes work sequentially rather than simultaneously.",
+      "C": "Correct: combined rate = 5/12 tank/hr; time = 12/5 = 2.4 hours.",
+      "D": "Student uses Pipe A's rate for both pipes (1/4 + 1/4 = 1/2 tank/hr), giving a time of 2 hours, neglecting that Pipe B fills more slowly."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Convert each pipe to a rate: A fills 1/4 of the tank per hour, B fills 1/6. Add the rates, then flip to get time."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Together they must finish faster than either alone. The answer must be less than 4 hours. That rules out A and B."
+      }
+    ],
+    "content_context": "science_and_engineering",
+    "context_tags": [
+      "combined_rate",
+      "work_rate",
+      "fraction_addition",
+      "reciprocal"
+    ],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_048",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.5",
+    "topic": "rates_and_unit_rates",
+    "topic_text": "Rates and Unit Rates",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "chaining multiple unit rates and conversion factors across a multi-step calculation",
+      "correctly converting between milliliters and liters as part of a rate problem"
+    ],
+    "question_text": "A leaky faucet drips at 3 drops per second. Each drop has a volume of 0.05 mL. How many liters of water drip from the faucet in one hour? (1 liter = 1,000 mL; 1 hour = 3,600 seconds)",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "0.54 liters",
+      "B": "540 liters",
+      "C": "10.8 liters",
+      "D": "5.4 liters"
+    },
+    "correct_answer": "A",
+    "explanation": "Rate in mL/s = 3 drops/s \u00d7 0.05 mL/drop = 0.15 mL/s. Per hour: 0.15 \u00d7 3,600 = 540 mL. Convert: 540 mL \u00f7 1,000 = 0.54 liters.",
+    "distractor_logic": {
+      "A": "Correct: 3 \u00d7 0.05 \u00d7 3,600 = 540 mL = 0.54 liters.",
+      "B": "Student correctly computes 540 mL but treats milliliters as liters, reporting 540 liters without performing the mL-to-liter conversion.",
+      "C": "Student divides 540 mL by 50 instead of 1,000 (confusing the conversion factor), giving 540 \u00f7 50 = 10.8 liters.",
+      "D": "Student divides 540 mL by 100 instead of 1,000 (applying a 1 L = 100 mL misconception), giving 540 \u00f7 100 = 5.4 liters."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Chain the rates: drops/s \u2192 mL/s \u2192 mL/hr \u2192 L/hr. Keep track of units at each step."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "3 drops/s \u00d7 3,600 s = 10,800 drops/hr \u00d7 0.05 mL = 540 mL. 540 mL is just over half a liter."
+      }
+    ],
+    "content_context": "science_and_engineering",
+    "context_tags": [
+      "unit_rate",
+      "dimensional_analysis",
+      "unit_conversion",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_043",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.5",
+    "topic": "rates_and_unit_rates",
+    "topic_text": "Rates and Unit Rates",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing a closing rate by adding speeds of two objects moving toward each other",
+      "applying the closing rate to find elapsed time and then each object's distance traveled"
+    ],
+    "question_text": "Two trains are 390 miles apart and travel toward each other on parallel tracks. Train A travels at 75 mph and Train B at 55 mph. How many miles does Train A travel before they meet?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "195 miles",
+      "B": "165 miles",
+      "C": "3 miles",
+      "D": "225 miles"
+    },
+    "correct_answer": "D",
+    "explanation": "Closing rate = 75 + 55 = 130 mph. Time to meet = 390 \u00f7 130 = 3 hours. Train A's distance = 75 \u00d7 3 = 225 miles.",
+    "distractor_logic": {
+      "A": "Student splits the total distance equally between the two trains (390 \u00f7 2 = 195 miles each) without accounting for their different speeds.",
+      "B": "Student correctly finds the meeting time (3 hours) but multiplies by Train B's speed (55 \u00d7 3 = 165 miles) instead of Train A's speed.",
+      "C": "Student correctly computes the meeting time (3 hours) but reports 3 as a distance in miles rather than continuing to find Train A's distance.",
+      "D": "Correct: closing rate = 130 mph; time = 3 hours; Train A travels 75 \u00d7 3 = 225 miles."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "When two objects move toward each other, add their speeds to get the closing rate. Time = total gap \u00f7 closing rate."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Closing rate = 130 mph. Time = 390 \u00f7 130 = 3 hr. Train A: 75 \u00d7 3 = 225 mi. Train B: 55 \u00d7 3 = 165 mi. Check: 225 + 165 = 390. \u2713"
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Train A is faster, so it covers more than half of 390 miles. More than 195 miles \u2014 only D fits."
+      }
+    ],
+    "content_context": "travel",
+    "context_tags": [
+      "closing_rate",
+      "relative_speed",
+      "distance_rate_time",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_044",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.5",
+    "topic": "rates_and_unit_rates",
+    "topic_text": "Rates and Unit Rates",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "writing a rate equation with two unknowns expressed in terms of a single variable",
+      "solving a linear equation derived from a combined-rate time constraint"
+    ],
+    "question_text": "A printer prints simple pages at 20 pages per minute and complex pages at 8 pages per minute. A 50-page job containing x simple pages and (50 \u2212 x) complex pages takes exactly 4 minutes. How many simple pages are in the job?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "20",
+      "B": "30",
+      "C": "40",
+      "D": "25"
+    },
+    "correct_answer": "B",
+    "explanation": "Time equation: x/20 + (50 \u2212 x)/8 = 4. Multiply through by 40: 2x + 5(50 \u2212 x) = 160. Expand: 2x + 250 \u2212 5x = 160. Simplify: \u22123x = \u221290 \u2192 x = 30 simple pages. Check: 30/20 + 20/8 = 1.5 + 2.5 = 4 minutes. \u2713",
+    "distractor_logic": {
+      "A": "Student sets up a time equation for simple pages only (4 \u00d7 20 = 80 pages) and divides by the number of page types or applies another incorrect shortcut, arriving at 20.",
+      "B": "Correct: x/20 + (50 \u2212 x)/8 = 4 \u2192 x = 30 simple pages.",
+      "C": "Student guesses or estimates without solving the equation, selecting 40 as a round number near the total, which gives a time of 40/20 + 10/8 = 3.25 min \u2260 4 min.",
+      "D": "Student splits the 50-page job evenly (50 \u00f7 2 = 25 simple, 25 complex) without using the time constraint, giving a time of 25/20 + 25/8 = 4.375 min \u2260 4 min."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Time for simple pages = x/20. Time for complex pages = (50\u2212x)/8. Their sum must equal 4. Set up and solve."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x=30: 30/20 + 20/8 = 1.5 + 2.5 = 4 minutes. \u2713"
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Test each answer choice: which value of x makes x/20 + (50\u2212x)/8 = 4?"
+      }
+    ],
+    "content_context": "technology",
+    "context_tags": [
+      "rate_equation",
+      "algebraic_setup",
+      "combined_rate",
+      "linear_equation"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  }
+]
