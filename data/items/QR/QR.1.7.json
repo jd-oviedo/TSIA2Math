@@ -261,10 +261,10 @@
     "correct_answer": "B",
     "explanation": "Parentheses first: 6 + 2 = 8. Then the exponent: 8² = 64. Then multiplication: 4 × 3 = 12. Then subtract: 64 − 12 = 52.",
     "distractor_logic": {
-      "A": "Student treats the exponent as multiplication by 2 — (6 + 2)² = (6 + 2) × 2 = 16 — then computes 16 − 4 × 3 = 16 − 12 = 4.",
+      "A": "Student confuses squaring with doubling, computing 8² as 8 × 2 = 16 instead of 8 × 8 = 64, then evaluates 16 − 4 × 3 = 16 − 12 = 4.",
       "B": "Correct: (6 + 2)² − 4 × 3 = 8² − 12 = 64 − 12 = 52.",
-      "C": "Student correctly computes (6 + 2)² = 64 but then subtracts only 4 rather than 4 × 3: 64 − 4 = 60.",
-      "D": "Student evaluates left to right after the parentheses: 8² = 64, then 64 − 4 = 60, then 60 × 3 = 180."
+      "C": "Student correctly computes (6 + 2)² = 64 but then subtracts only 4 rather than 4 × 3, giving 64 − 4 = 60.",
+      "D": "Student correctly computes 8² = 64 but then works left to right without applying multiplication priority: 64 − 4 = 60, then 60 × 3 = 180, rather than computing 4 × 3 = 12 first."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -339,10 +339,10 @@
     "correct_answer": "C",
     "explanation": "Parentheses first: 4 − 1 = 3. Then the exponent: 3² = 9. Then multiplication: 3 × 9 = 27. Then add: 27 + 2 = 29.",
     "distractor_logic": {
-      "A": "Student treats the exponent as multiplication by 2: (4 − 1)² = (4 − 1) × 2 = 6, then 3 × 6 + 2 = 18 + 2 = 20.",
-      "B": "Student ignores the exponent entirely: 3 × (4 − 1) + 2 = 3 × 3 + 2 = 9 + 2 = 11.",
+      "A": "Student confuses squaring with doubling, computing (4 − 1)² as (4 − 1) × 2 = 3 × 2 = 6 instead of 3² = 9, then evaluates 3 × 6 + 2 = 18 + 2 = 20.",
+      "B": "Student ignores the exponent entirely, treating (4 − 1)² as just (4 − 1) = 3 and computing 3 × 3 + 2 = 9 + 2 = 11.",
       "C": "Correct: 3 × (4 − 1)² + 2 = 3 × 3² + 2 = 3 × 9 + 2 = 27 + 2 = 29.",
-      "D": "Student ignores the parentheses, treating the expression as (3 × 4 − 1)² + 2 = 11² + 2 = 121 + 2 = 123."
+      "D": "Student ignores the parentheses and evaluates (3 × 4 − 1)² + 2 = 11² + 2 = 121 + 2 = 123, treating the leading 3 × as operating on 4 before the grouping is applied."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -417,9 +417,9 @@
     "correct_answer": "D",
     "explanation": "Evaluate inside the parentheses first, applying multiplication before addition: 2 × 3 = 6, then 6 + 1 = 7. Then the exponent: 4² = 16. Then subtract: 16 − 7 = 9.",
     "distractor_logic": {
-      "A": "Student ignores the parentheses and evaluates left to right: 4² − 2 × 3 + 1 = 16 − 6 + 1 = 11.",
-      "B": "Student uses 4 × 2 = 8 instead of 4² = 16: 8 − (2 × 3 + 1) = 8 − 7 = 1.",
-      "C": "Student adds before multiplying inside the parentheses: 2 × (3 + 1) = 2 × 4 = 8, then 16 − 8 = 8.",
+      "A": "Student ignores the parentheses as a grouping symbol and evaluates 4² − 2 × 3 + 1 with standard precedence (exponent, then ×, then left-to-right): 16 − 6 + 1 = 11.",
+      "B": "Student treats 4² as 4 × 2 = 8 (confuses squaring with doubling) and then subtracts the parenthetical correctly: 8 − 7 = 1.",
+      "C": "Student applies addition before multiplication inside the parentheses: adds 3 + 1 = 4 first, then multiplies 2 × 4 = 8, and subtracts 16 − 8 = 8, violating the order of operations within the group.",
       "D": "Correct: 4² − (2 × 3 + 1) = 16 − (6 + 1) = 16 − 7 = 9."
     },
     "difficulty_level": "Advanced",
