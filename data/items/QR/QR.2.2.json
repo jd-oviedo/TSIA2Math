@@ -1,0 +1,792 @@
+[
+  {
+    "item_id": "QR_B_038",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.2",
+    "topic": "multi_step_proportion_problems",
+    "topic_text": "Multi-Step Proportion Problems",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "setting up a proportion equation from a real-world context",
+      "solving for an unknown using cross-multiplication"
+    ],
+    "question_text": "A car travels 3 miles for every 4 minutes. At this rate, how many miles will it travel in 20 minutes?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "5",
+      "B": "15",
+      "C": "80",
+      "D": "60"
+    },
+    "correct_answer": "B",
+    "explanation": "Set up the proportion: 3/4 = x/20. Cross-multiply: 4x = 60, so x = 15 miles. Alternatively, 20 \u00f7 4 = 5 groups of 4 minutes; 5 \u00d7 3 = 15 miles.",
+    "distractor_logic": {
+      "A": "Student divides 20 by 4 to find the number of groups (20 \u00f7 4 = 5) but stops there instead of multiplying by the 3-mile rate.",
+      "B": "Correct: 3/4 = x/20 \u2192 x = 3 \u00d7 5 = 15 miles.",
+      "C": "Student multiplies both numbers in the denominator position (4 \u00d7 20 = 80) without applying the rate of 3 miles.",
+      "D": "Student multiplies the rate numerator by the full time (3 \u00d7 20 = 60) without accounting for the 4-minute denominator in the rate."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The rate is 3 miles per 4 minutes. Find how many 4-minute groups are in 20 minutes, then scale the miles."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "3/4 = x/20. Multiply both sides by 20: x = 3 \u00d7 20 \u00f7 4 = 15."
+      }
+    ],
+    "content_context": "travel",
+    "context_tags": [
+      "proportion",
+      "rate",
+      "distance",
+      "cross_multiply"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_039",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.2",
+    "topic": "multi_step_proportion_problems",
+    "topic_text": "Multi-Step Proportion Problems",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "deriving a unit rate from a given ratio",
+      "applying a unit rate to find a missing time or quantity"
+    ],
+    "question_text": "A printer can print 12 pages in 3 minutes. At this rate, how many minutes will it take to print 60 pages?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "4",
+      "B": "180",
+      "C": "15",
+      "D": "20"
+    },
+    "correct_answer": "C",
+    "explanation": "Rate = 12 pages \u00f7 3 minutes = 4 pages per minute. Time for 60 pages = 60 \u00f7 4 = 15 minutes.",
+    "distractor_logic": {
+      "A": "Student correctly finds the rate (12 \u00f7 3 = 4 pages/min) but reports the rate itself as the answer instead of using it to find the time.",
+      "B": "Student multiplies the target (60 pages) by the given time (3 min) instead of dividing by the rate, giving 60 \u00d7 3 = 180.",
+      "C": "Correct: rate = 4 pages/min; time = 60 \u00f7 4 = 15 minutes.",
+      "D": "Student divides the target pages by the given time directly (60 \u00f7 3 = 20) without first computing the pages-per-minute rate."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "First find how many pages per minute: 12 \u00f7 3. Then use that rate to find the time for 60 pages."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Rate = 4 pages/min. Set up: 4 \u00d7 t = 60, so t = 15."
+      }
+    ],
+    "content_context": "technology",
+    "context_tags": [
+      "proportion",
+      "unit_rate",
+      "time",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_040",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.2",
+    "topic": "multi_step_proportion_problems",
+    "topic_text": "Multi-Step Proportion Problems",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding a scale factor between two proportional quantities",
+      "applying a scale factor to determine a missing ingredient amount"
+    ],
+    "question_text": "A cookie recipe uses 2 cups of oats to make 24 cookies. How many cups of oats are needed to make 60 cookies?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "5",
+      "B": "12",
+      "C": "3",
+      "D": "48"
+    },
+    "correct_answer": "A",
+    "explanation": "Scale factor = 60 \u00f7 24 = 2.5. Cups of oats needed = 2 \u00d7 2.5 = 5 cups. Or use a proportion: 2/24 = x/60 \u2192 24x = 120 \u2192 x = 5.",
+    "distractor_logic": {
+      "A": "Correct: scale factor = 60 \u00f7 24 = 2.5; oats = 2 \u00d7 2.5 = 5 cups.",
+      "B": "Student inverts the rate, computing cookies per cup (24 \u00f7 2 = 12), and reports that as the number of cups needed.",
+      "C": "Student divides the target cookies by the original cookies (60 \u00f7 24 \u2248 2.5), rounds to 3, and reports the scale factor instead of multiplying it by 2.",
+      "D": "Student multiplies the original cups by the original cookie count (2 \u00d7 24 = 48) rather than using the ratio to scale toward 60 cookies."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The original batch makes 24 cookies with 2 cups. Find by how much you're scaling the batch (60 \u00f7 24), then scale the cups the same way."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "2/24 = x/60. Cross-multiply: 24x = 120, x = 5."
+      }
+    ],
+    "content_context": "cooking",
+    "context_tags": [
+      "proportion",
+      "scale_factor",
+      "recipe",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_041",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.2",
+    "topic": "multi_step_proportion_problems",
+    "topic_text": "Multi-Step Proportion Problems",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing a unit rate from a ratio of tasks to time",
+      "scaling a unit rate to find total time for a different number of tasks"
+    ],
+    "question_text": "A crew completes 2 jobs in 8 hours. Working at the same rate, how many hours will it take the crew to complete 5 jobs?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "8",
+      "B": "40",
+      "C": "10",
+      "D": "20"
+    },
+    "correct_answer": "D",
+    "explanation": "Rate = 2 jobs per 8 hours = 1 job per 4 hours. For 5 jobs: 5 \u00d7 4 = 20 hours. Using a proportion: 2/8 = 5/x \u2192 2x = 40 \u2192 x = 20.",
+    "distractor_logic": {
+      "A": "Student reports the original time (8 hours) without scaling for the increased number of jobs.",
+      "B": "Student multiplies the original time by the target job count (8 \u00d7 5 = 40) without first computing the per-job rate.",
+      "C": "Student adds the original job count to the original time (8 + 2 = 10) instead of using the proportional relationship.",
+      "D": "Correct: 1 job takes 4 hours; 5 jobs take 5 \u00d7 4 = 20 hours."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the time for 1 job first: 8 \u00f7 2 = 4 hours per job. Then multiply by 5."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "2/8 = 5/x \u2192 cross-multiply to solve for x."
+      }
+    ],
+    "content_context": "work_and_jobs",
+    "context_tags": [
+      "proportion",
+      "unit_rate",
+      "time",
+      "jobs"
+    ],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_042",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.2",
+    "topic": "multi_step_proportion_problems",
+    "topic_text": "Multi-Step Proportion Problems",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "identifying corresponding quantities in a similar-figure proportion",
+      "solving a proportion to find an unknown height"
+    ],
+    "question_text": "An 8-foot pole casts a 4-foot shadow. At the same time, a nearby tree casts a 10-foot shadow. How tall is the tree?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "10 ft",
+      "B": "5 ft",
+      "C": "20 ft",
+      "D": "80 ft"
+    },
+    "correct_answer": "C",
+    "explanation": "Set up the proportion (height/shadow): 8/4 = x/10. Cross-multiply: 4x = 80, so x = 20 feet.",
+    "distractor_logic": {
+      "A": "Student reports the tree's shadow length (10 ft) as the tree's height without performing any calculation.",
+      "B": "Student inverts the ratio, using shadow/height (4/8 = 0.5) instead of height/shadow, giving 0.5 \u00d7 10 = 5 ft.",
+      "C": "Correct: 8/4 = x/10 \u2192 x = 20 feet.",
+      "D": "Student multiplies the pole height by the tree shadow without dividing by the pole shadow (8 \u00d7 10 = 80), skipping the proportional division step."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Match corresponding quantities: pole height goes with pole shadow; tree height goes with tree shadow."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "8/4 = x/10. Multiply both sides by 10: x = 8 \u00d7 10 \u00f7 4 = 20."
+      }
+    ],
+    "content_context": "outdoor_measurement",
+    "context_tags": [
+      "proportion",
+      "similar_figures",
+      "shadow",
+      "height"
+    ],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_037",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.2",
+    "topic": "multi_step_proportion_problems",
+    "topic_text": "Multi-Step Proportion Problems",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing a unit price from a given total cost and quantity",
+      "applying a unit price to find total cost and determine remaining budget"
+    ],
+    "question_text": "Gas costs $36 for 9 gallons. Maria has $65 and needs 15 gallons. How much money will she have left after buying 15 gallons of gas?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$5",
+      "B": "$29",
+      "C": "$20",
+      "D": "$60"
+    },
+    "correct_answer": "A",
+    "explanation": "Unit price = $36 \u00f7 9 = $4 per gallon. Cost of 15 gallons = 15 \u00d7 $4 = $60. Change = $65 \u2212 $60 = $5.",
+    "distractor_logic": {
+      "A": "Correct: unit price = $4/gal; 15 gal = $60; change = $65 \u2212 $60 = $5.",
+      "B": "Student subtracts the original cost ($36) from the budget ($65 \u2212 $36 = $29) without computing the cost of 15 gallons.",
+      "C": "Student divides $36 by 12 instead of 9, finding a rate of $3/gal, giving 15 \u00d7 $3 = $45, then $65 \u2212 $45 = $20.",
+      "D": "Student correctly computes the cost of 15 gallons ($60) but reports the cost as the answer instead of calculating the remaining change."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Two steps: find the price per gallon from the given ratio, then find the cost of 15 gallons, then subtract from $65."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "$36 \u00f7 9 = $4/gal. 15 \u00d7 $4 = $60. $65 \u2212 $60 = $5."
+      }
+    ],
+    "content_context": "personal_finance",
+    "context_tags": [
+      "proportion",
+      "unit_price",
+      "budget",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_038",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.2",
+    "topic": "multi_step_proportion_problems",
+    "topic_text": "Multi-Step Proportion Problems",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "writing proportional expressions for two rates and setting them equal",
+      "solving a catch-up problem by equating two rate-based expressions"
+    ],
+    "question_text": "Machine A produces 30 parts per hour. Machine B produces 20 parts per hour but already has a 50-part head start. After how many hours will Machine A have produced the same total number of parts as Machine B?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2 hours",
+      "B": "150 hours",
+      "C": "3 hours",
+      "D": "5 hours"
+    },
+    "correct_answer": "D",
+    "explanation": "Set totals equal: 30t = 20t + 50. Subtract 20t: 10t = 50. Divide: t = 5 hours. Check: A = 30 \u00d7 5 = 150; B = 20 \u00d7 5 + 50 = 150. \u2713",
+    "distractor_logic": {
+      "A": "Student divides the head start by Machine A's rate (50 \u00f7 30 \u2248 1.67) and rounds to 2 hours, ignoring that Machine B is still producing parts during that time.",
+      "B": "Student computes the total parts at the catch-up point (30 \u00d7 5 = 150) rather than the number of hours it takes to reach that point.",
+      "C": "Student divides the head start by Machine B's rate (50 \u00f7 20 = 2.5) and rounds to 3, using B's rate instead of the rate difference between the two machines.",
+      "D": "Correct: 30t = 20t + 50 \u2192 10t = 50 \u2192 t = 5 hours."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A gains on B by 30 \u2212 20 = 10 parts per hour. B has a 50-part lead. How long to close a 50-part gap at 10 parts/hour?"
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try t = 5: A = 150, B = 100 + 50 = 150. Equal!"
+      }
+    ],
+    "content_context": "manufacturing",
+    "context_tags": [
+      "proportion",
+      "rate_comparison",
+      "catch_up",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_039",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.2",
+    "topic": "multi_step_proportion_problems",
+    "topic_text": "Multi-Step Proportion Problems",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing an exact unit price from a decimal total cost",
+      "applying a decimal unit price to find the cost of a different quantity"
+    ],
+    "question_text": "Five pounds of apples cost $6.50. At this rate, how much do 8 pounds of apples cost?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$10.00",
+      "B": "$10.40",
+      "C": "$52.00",
+      "D": "$8.00"
+    },
+    "correct_answer": "B",
+    "explanation": "Unit price = $6.50 \u00f7 5 = $1.30 per pound. Cost for 8 pounds = 8 \u00d7 $1.30 = $10.40. Or: 6.50/5 = x/8 \u2192 5x = 52 \u2192 x = $10.40.",
+    "distractor_logic": {
+      "A": "Student rounds the unit price down to $1.25 per pound (dropping the extra $0.05), giving 8 \u00d7 $1.25 = $10.00.",
+      "B": "Correct: $6.50 \u00f7 5 = $1.30/lb; 8 \u00d7 $1.30 = $10.40.",
+      "C": "Student multiplies the target weight by the full original price (8 \u00d7 $6.50 = $52.00) without computing a per-pound rate.",
+      "D": "Student rounds the unit price to $1.00 per pound and computes 8 \u00d7 $1.00 = $8.00, losing the decimal portion of the rate."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the exact price per pound: $6.50 \u00f7 5. Keep the decimal \u2014 don't round it."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "$1.30/lb \u00d7 8 lbs = $10.40. Or set up 6.50/5 = x/8."
+      }
+    ],
+    "content_context": "grocery_shopping",
+    "context_tags": [
+      "proportion",
+      "unit_price",
+      "decimal",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_037",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.2",
+    "topic": "multi_step_proportion_problems",
+    "topic_text": "Multi-Step Proportion Problems",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "setting up a weighted-average equation to find an unknown volume in a mixture",
+      "solving a multi-step proportional equation involving two different concentrations"
+    ],
+    "question_text": "Solution A is 40% salt and Solution B is 10% salt. How many liters of Solution A must be mixed with 6 liters of Solution B to produce a mixture that is 25% salt?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2 liters",
+      "B": "3 liters",
+      "C": "6 liters",
+      "D": "10 liters"
+    },
+    "correct_answer": "C",
+    "explanation": "Let x = liters of Solution A. Salt equation: 0.40x + 0.10(6) = 0.25(x + 6). Simplify: 0.40x + 0.60 = 0.25x + 1.50. Subtract 0.25x: 0.15x = 0.90. Divide: x = 6 liters.",
+    "distractor_logic": {
+      "A": "Student accounts for the salt needed from A but omits the existing salt from B, solving 0.40x = (0.25 \u2212 0.10) \u00d7 6 \u2192 0.40x = 0.90 \u2192 x \u2248 2 liters.",
+      "B": "Student applies the alligation ratio as a fraction of B's volume: (25 \u2212 10)/(40 \u2212 10) \u00d7 6 = (15/30) \u00d7 6 = 3 liters, misapplying the alligation method.",
+      "C": "Correct: 0.40x + 0.60 = 0.25x + 1.50 \u2192 0.15x = 0.90 \u2192 x = 6 liters.",
+      "D": "Student omits the salt contributed by Solution B, solving 0.40x = 0.25(x + 6) \u2192 0.15x = 1.50 \u2192 x = 10 liters."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Salt in = salt out. Write: (salt from A) + (salt from B) = (salt in mixture). Use 0.40x + 0.10(6) = 0.25(x + 6)."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 6: 0.40(6) + 0.10(6) = 2.4 + 0.6 = 3.0. Mixture = 12 L, target salt = 0.25 \u00d7 12 = 3.0. \u2713"
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "25% is exactly halfway between 10% and 40%, so equal volumes should be needed: 6 liters of A for 6 liters of B."
+      }
+    ],
+    "content_context": "science_and_engineering",
+    "context_tags": [
+      "mixture",
+      "concentration",
+      "proportion",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_038",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.2",
+    "topic": "multi_step_proportion_problems",
+    "topic_text": "Multi-Step Proportion Problems",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "writing distance-rate-time expressions for two objects and setting them equal",
+      "accounting for a time head start when solving a proportional catch-up problem"
+    ],
+    "question_text": "Train A leaves a station at 9:00 AM traveling at 60 mph. Train B leaves the same station at 9:30 AM traveling in the same direction at 90 mph. At what time will Train B catch up to Train A?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "10:30 AM",
+      "B": "10:00 AM",
+      "C": "11:00 AM",
+      "D": "9:50 AM"
+    },
+    "correct_answer": "A",
+    "explanation": "Let t = hours after 9:30 AM. Train A has a 30-minute head start, so its total travel time is t + 0.5 hours. Set distances equal: 90t = 60(t + 0.5). 90t = 60t + 30. 30t = 30. t = 1 hour after 9:30 AM = 10:30 AM. Check: A = 60 \u00d7 1.5 = 90 mi; B = 90 \u00d7 1 = 90 mi. \u2713",
+    "distractor_logic": {
+      "A": "Correct: 90t = 60(t + 0.5) \u2192 t = 1 hr after 9:30 AM = 10:30 AM.",
+      "B": "Student solves correctly (t = 1 hour) but adds that time to Train A's departure (9:00 AM + 1 hr = 10:00 AM) instead of Train B's departure.",
+      "C": "Student divides Train A's speed by the speed difference (60 \u00f7 30 = 2 hours) and adds to 9:00 AM, arriving at 11:00 AM.",
+      "D": "Student divides Train A's 30-minute head-start distance (60 \u00d7 0.5 = 30 mi) by Train B's full speed (30 \u00f7 90 = 1/3 hr = 20 min), then adds to 9:30 AM, giving 9:50 AM."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Train A has a 30-minute (0.5 hr) head start. Let t = hours after 9:30 AM. A's distance = 60(t + 0.5); B's distance = 90t."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try t = 1: B = 90 mi; A = 60 \u00d7 1.5 = 90 mi. Equal at t = 1 hr after 9:30 AM."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "B gains 30 mph on A. A's head-start distance = 60 \u00d7 0.5 = 30 miles. Time to close 30 miles at 30 mph gain = 1 hour."
+      }
+    ],
+    "content_context": "travel",
+    "context_tags": [
+      "distance_rate_time",
+      "catch_up",
+      "proportion",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  }
+]

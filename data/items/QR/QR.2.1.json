@@ -1,0 +1,792 @@
+[
+  {
+    "item_id": "QR_B_033",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.1",
+    "topic": "applying_a_simple_ratio_to_calculate_a_value",
+    "topic_text": "Applying a Simple Ratio to Calculate a Value",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "converting a part-to-part ratio into a part-to-whole fraction",
+      "applying a unit fraction to find a part of a given total"
+    ],
+    "question_text": "A bag contains red and blue marbles in a ratio of 3:5. If there are 240 marbles in the bag, how many are red?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "150",
+      "B": "15",
+      "C": "90",
+      "D": "144"
+    },
+    "correct_answer": "C",
+    "explanation": "The ratio 3:5 means 3 red for every 5 blue, so the whole is 3 + 5 = 8 parts. Red = 3/8 of 240 = (3 \u00d7 240) \u00f7 8 = 720 \u00f7 8 = 90.",
+    "distractor_logic": {
+      "A": "Student identifies the blue part (5 out of 8) instead of the red part, computing 5/8 \u00d7 240 = 150.",
+      "B": "Student multiplies the two ratio numbers together (3 \u00d7 5 = 15) rather than using the ratio to partition the total.",
+      "C": "Correct: 3 out of 3 + 5 = 8 total parts, so red = 3/8 \u00d7 240 = 90.",
+      "D": "Student treats the ratio 3:5 as the fraction 3/5 and computes 3/5 \u00d7 240 = 144, omitting the correct denominator of 8."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The ratio 3:5 means 3 + 5 = 8 total parts. Red is 3 of those 8 parts."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Find how many marbles each part is worth: 240 \u00f7 8 = 30. Then 3 parts \u00d7 30 = 90."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "ratio",
+      "part_to_whole",
+      "marbles",
+      "partition"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_034",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.1",
+    "topic": "applying_a_simple_ratio_to_calculate_a_value",
+    "topic_text": "Applying a Simple Ratio to Calculate a Value",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the value of one ratio unit from a known part",
+      "scaling a ratio unit to find the unknown part"
+    ],
+    "question_text": "Chairs and tables in a classroom are in a ratio of 2:3. If there are 12 chairs, how many tables are there?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "18",
+      "B": "36",
+      "C": "15",
+      "D": "4"
+    },
+    "correct_answer": "A",
+    "explanation": "The ratio chairs:tables = 2:3. Since there are 12 chairs and 2 parts = 12, one part = 12 \u00f7 2 = 6. Tables = 3 parts = 3 \u00d7 6 = 18.",
+    "distractor_logic": {
+      "A": "Correct: 1 ratio unit = 12 \u00f7 2 = 6, so tables = 3 \u00d7 6 = 18.",
+      "B": "Student multiplies the given quantity (12) by the second ratio number (3) directly, giving 12 \u00d7 3 = 36, without first finding the unit value.",
+      "C": "Student adds the second ratio number to the known quantity (12 + 3 = 15) instead of scaling by ratio units.",
+      "D": "Student divides the known quantity by the wrong ratio number (12 \u00f7 3 = 4) instead of dividing by the chairs ratio (2)."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Chairs map to the '2' in the ratio. Use 12 chairs to find the value of 1 ratio unit."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "1 unit = 12 \u00f7 2 = 6. Tables = 3 units = 3 \u00d7 6."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": [
+      "ratio",
+      "unit_value",
+      "classroom",
+      "scaling"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_035",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.1",
+    "topic": "applying_a_simple_ratio_to_calculate_a_value",
+    "topic_text": "Applying a Simple Ratio to Calculate a Value",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "partitioning a total into ratio parts to find a specific group",
+      "distinguishing between ratio parts and the whole"
+    ],
+    "question_text": "In a school club, the ratio of boys to girls is 4:5. If there are 45 students total, how many are girls?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "20",
+      "B": "45",
+      "C": "5",
+      "D": "25"
+    },
+    "correct_answer": "D",
+    "explanation": "Total parts = 4 + 5 = 9. Each part = 45 \u00f7 9 = 5. Girls = 5 parts \u00d7 5 = 25.",
+    "distractor_logic": {
+      "A": "Student correctly computes the unit value and scales correctly but selects boys (4 \u00d7 5 = 20) instead of girls.",
+      "B": "Student reports the total number of students (45) rather than partitioning it by the ratio.",
+      "C": "Student finds the unit value (45 \u00f7 9 = 5) but stops there instead of multiplying by the girls ratio number (5).",
+      "D": "Correct: 45 \u00f7 9 = 5 per part; girls = 5 \u00d7 5 = 25."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Add ratio parts: 4 + 5 = 9 total parts for 45 students. Find how many students each part represents."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Each part = 45 \u00f7 9 = 5. Girls get 5 parts: 5 \u00d7 5 = 25."
+      }
+    ],
+    "content_context": "school_club",
+    "context_tags": [
+      "ratio",
+      "part_to_whole",
+      "school",
+      "partition"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_036",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.1",
+    "topic": "applying_a_simple_ratio_to_calculate_a_value",
+    "topic_text": "Applying a Simple Ratio to Calculate a Value",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "identifying the scale factor between a given quantity and its ratio number",
+      "applying the scale factor to find the unknown quantity in a ratio"
+    ],
+    "question_text": "A recipe uses flour and sugar in a ratio of 2:3. If a baker uses 8 cups of flour, how many cups of sugar are needed?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6",
+      "B": "12",
+      "C": "24",
+      "D": "4"
+    },
+    "correct_answer": "B",
+    "explanation": "Flour is 2 ratio parts and 8 cups, so the scale factor is 8 \u00f7 2 = 4. Sugar = 3 parts \u00d7 4 = 12 cups.",
+    "distractor_logic": {
+      "A": "Student adds the scale factor (4) to the sugar ratio number (3 + 4 = 7) \u2014 wait, this gives 7, not 6. Remap: student adds 4 to flour ratio number and reports 2 + 4 = 6, confusing which quantity to scale.",
+      "B": "Correct: scale factor = 8 \u00f7 2 = 4; sugar = 3 \u00d7 4 = 12 cups.",
+      "C": "Student multiplies both ratio numbers by the known quantity (3 \u00d7 8 = 24) without first finding the unit scale factor.",
+      "D": "Student finds the scale factor (8 \u00f7 2 = 4) but reports it as the answer instead of applying it to the sugar ratio number."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "8 cups of flour corresponds to the '2' in the ratio. Find how many times larger 8 is than 2."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Scale factor = 8 \u00f7 2 = 4. Apply to sugar: 3 \u00d7 4 = 12."
+      }
+    ],
+    "content_context": "cooking",
+    "context_tags": [
+      "ratio",
+      "scale_factor",
+      "recipe",
+      "proportional_scaling"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_037",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.1",
+    "topic": "applying_a_simple_ratio_to_calculate_a_value",
+    "topic_text": "Applying a Simple Ratio to Calculate a Value",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "converting a part-to-part ratio into a part-to-whole fraction",
+      "applying a unit fraction to find a part of a given total"
+    ],
+    "question_text": "A paint mixture uses red and white paint in a ratio of 1:4. If 20 liters of paint are made in total, how many liters of red paint are used?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "16",
+      "B": "5",
+      "C": "4",
+      "D": "20"
+    },
+    "correct_answer": "C",
+    "explanation": "Total parts = 1 + 4 = 5. Each part = 20 \u00f7 5 = 4 liters. Red = 1 part \u00d7 4 = 4 liters.",
+    "distractor_logic": {
+      "A": "Student correctly finds 1 part = 4 liters but scales by 4 instead of 1, computing white paint (4 \u00d7 4 = 16) rather than red.",
+      "B": "Student counts the total number of ratio parts (1 + 4 = 5) and reports that as the answer in liters instead of using it as a divisor.",
+      "C": "Correct: 20 \u00f7 5 = 4 liters per part; red = 1 \u00d7 4 = 4 liters.",
+      "D": "Student does not partition the total and reports the full 20 liters as the red paint quantity."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The ratio 1:4 means 1 + 4 = 5 total parts for the 20-liter mixture."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Each part = 20 \u00f7 5 = 4 liters. Red is 1 part, so 1 \u00d7 4 = 4 liters."
+      }
+    ],
+    "content_context": "art_and_crafts",
+    "context_tags": [
+      "ratio",
+      "part_to_whole",
+      "mixture",
+      "partition"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_034",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.1",
+    "topic": "applying_a_simple_ratio_to_calculate_a_value",
+    "topic_text": "Applying a Simple Ratio to Calculate a Value",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding an unknown quantity using a known part and a ratio",
+      "computing the difference between ratio-related quantities"
+    ],
+    "question_text": "A shelter has dogs and cats in a ratio of 5:8. If there are 40 dogs, how many more cats than dogs are there?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "24",
+      "B": "64",
+      "C": "8",
+      "D": "104"
+    },
+    "correct_answer": "A",
+    "explanation": "Dogs = 5 ratio units = 40, so 1 unit = 40 \u00f7 5 = 8. Cats = 8 units \u00d7 8 = 64. Difference = 64 \u2212 40 = 24.",
+    "distractor_logic": {
+      "A": "Correct: 1 unit = 8; cats = 64; 64 \u2212 40 = 24 more cats than dogs.",
+      "B": "Student correctly finds the number of cats (64) but does not subtract to find the difference, reporting cats as the final answer.",
+      "C": "Student finds the unit value (40 \u00f7 5 = 8) and stops, not applying it to find cats or the difference.",
+      "D": "Student adds dogs and cats (40 + 64 = 104) rather than subtracting to find the difference."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "40 dogs corresponds to the '5' in the ratio. First find the value of 1 ratio unit, then find cats, then the difference."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "1 unit = 40 \u00f7 5 = 8. Cats = 8 \u00d7 8 = 64. Difference = 64 \u2212 40."
+      }
+    ],
+    "content_context": "animal_shelter",
+    "context_tags": [
+      "ratio",
+      "scale_factor",
+      "difference",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_035",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.1",
+    "topic": "applying_a_simple_ratio_to_calculate_a_value",
+    "topic_text": "Applying a Simple Ratio to Calculate a Value",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "extending ratio reasoning to three-part ratios",
+      "identifying and isolating one part of a multi-part ratio"
+    ],
+    "question_text": "A bracelet is made with green, yellow, and red beads in a ratio of 3:1:2. If the bracelet has 60 beads in total, how many yellow beads are there?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "30",
+      "B": "20",
+      "C": "6",
+      "D": "10"
+    },
+    "correct_answer": "D",
+    "explanation": "Total parts = 3 + 1 + 2 = 6. Each part = 60 \u00f7 6 = 10 beads. Yellow = 1 part \u00d7 10 = 10 beads.",
+    "distractor_logic": {
+      "A": "Student correctly computes the unit value (10) but scales by the green ratio number (3 \u00d7 10 = 30), selecting green instead of yellow.",
+      "B": "Student correctly computes the unit value (10) but scales by the red ratio number (2 \u00d7 10 = 20), selecting red instead of yellow.",
+      "C": "Student sums the ratio parts (3 + 1 + 2 = 6) and reports that as the answer instead of using it to find the unit value.",
+      "D": "Correct: total parts = 6; each part = 10; yellow = 1 \u00d7 10 = 10 beads."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Three-part ratio: add all parts (3 + 1 + 2 = 6) to find total parts, then focus on yellow's share (1 part)."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "1 part = 60 \u00f7 6 = 10 beads. Yellow = 1 \u00d7 10 = 10."
+      }
+    ],
+    "content_context": "crafts",
+    "context_tags": [
+      "three_part_ratio",
+      "part_to_whole",
+      "beads",
+      "partition"
+    ],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_036",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.1",
+    "topic": "applying_a_simple_ratio_to_calculate_a_value",
+    "topic_text": "Applying a Simple Ratio to Calculate a Value",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "interpreting a ratio as a scale and applying it to a measurement",
+      "multiplying by a unit rate to find a real-world quantity"
+    ],
+    "question_text": "On a map, 1 centimeter represents 45 miles. If two cities are 7 centimeters apart on the map, what is the actual distance between the cities in miles?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "52",
+      "B": "45",
+      "C": "315",
+      "D": "38"
+    },
+    "correct_answer": "C",
+    "explanation": "The scale ratio is 1 cm : 45 miles. For 7 cm: actual distance = 7 \u00d7 45 = 315 miles.",
+    "distractor_logic": {
+      "A": "Student adds the scale value and the map distance (45 + 7 = 52) instead of multiplying.",
+      "B": "Student reports the scale value (45 miles per cm) without multiplying by the map distance of 7 cm.",
+      "C": "Correct: 7 cm \u00d7 45 miles/cm = 315 miles.",
+      "D": "Student subtracts the map distance from the scale value (45 \u2212 7 = 38) instead of multiplying."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The ratio gives you miles per centimeter. You have 7 centimeters \u2014 multiply to scale up."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "1 cm = 45 miles, so 7 cm = 7 \u00d7 45 miles."
+      }
+    ],
+    "content_context": "map_and_navigation",
+    "context_tags": [
+      "scale",
+      "ratio",
+      "map",
+      "unit_rate"
+    ],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_035",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.1",
+    "topic": "applying_a_simple_ratio_to_calculate_a_value",
+    "topic_text": "Applying a Simple Ratio to Calculate a Value",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "partitioning a total using a ratio and applying separate unit rates to each part",
+      "computing total cost by combining ratio-derived quantities with different rates"
+    ],
+    "question_text": "A fruit punch is made by mixing Juice A and Juice B in a ratio of 3:7 by volume. Juice A costs $4 per liter and Juice B costs $2 per liter. If 50 liters of punch are made, what is the total cost of the ingredients?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$100",
+      "B": "$130",
+      "C": "$150",
+      "D": "$160"
+    },
+    "correct_answer": "B",
+    "explanation": "Total parts = 3 + 7 = 10. Juice A = 3/10 \u00d7 50 = 15 liters; Juice B = 7/10 \u00d7 50 = 35 liters. Cost = 15 \u00d7 $4 + 35 \u00d7 $2 = $60 + $70 = $130.",
+    "distractor_logic": {
+      "A": "Student uses only Juice B's price for the full mixture (50 \u00d7 $2 = $100), ignoring Juice A's cost entirely.",
+      "B": "Correct: Juice A = 15 L \u00d7 $4 = $60; Juice B = 35 L \u00d7 $2 = $70; total = $130.",
+      "C": "Student splits the 50 liters equally (25 L each) instead of using the 3:7 ratio, giving 25 \u00d7 $4 + 25 \u00d7 $2 = $100 + $50 = $150.",
+      "D": "Student misreads the ratio as 4:1 (matching the unit prices), allocating 40 liters to Juice A (40 \u00d7 $4 = $160) and ignoring Juice B."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Split 50 liters using the 3:7 ratio first, then apply each juice's price separately."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Juice A: 3/10 \u00d7 50 = 15 L; Juice B: 7/10 \u00d7 50 = 35 L. Now multiply each by its price and add."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Most of the mix is Juice B (cheaper), so the total should be closer to 50 \u00d7 $2 = $100 than to 50 \u00d7 $4 = $200."
+      }
+    ],
+    "content_context": "food_and_beverage",
+    "context_tags": [
+      "ratio",
+      "unit_rate",
+      "cost",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_036",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.1",
+    "topic": "applying_a_simple_ratio_to_calculate_a_value",
+    "topic_text": "Applying a Simple Ratio to Calculate a Value",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "extracting a part-to-whole fraction from a part-to-part ratio across multiple groups",
+      "combining ratio-based quantities with different group sizes to find an overall proportion"
+    ],
+    "question_text": "Alloy X is made of copper and zinc in a ratio of 3:2. Alloy Y is made of copper and zinc in a ratio of 1:4. A metallurgist combines 100 g of Alloy X with 150 g of Alloy Y. What fraction of the resulting mixture is copper?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "9/25",
+      "B": "2/5",
+      "C": "3/5",
+      "D": "1/5"
+    },
+    "correct_answer": "A",
+    "explanation": "Alloy X: copper fraction = 3/5, so copper from X = 3/5 \u00d7 100 = 60 g. Alloy Y: copper fraction = 1/5, so copper from Y = 1/5 \u00d7 150 = 30 g. Total copper = 90 g; total mixture = 100 + 150 = 250 g. Fraction copper = 90/250 = 9/25.",
+    "distractor_logic": {
+      "A": "Correct: copper from X = 60 g, from Y = 30 g; total = 90/250 = 9/25.",
+      "B": "Student uses 100 g for both alloys (ignoring the actual 150 g of Alloy Y), giving (60 + 20)/(100 + 100) = 80/200 = 2/5.",
+      "C": "Student uses only Alloy X's copper fraction (3/5) as the answer, ignoring Alloy Y entirely.",
+      "D": "Student uses only Alloy Y's copper fraction (1/5) as the answer, ignoring Alloy X entirely."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Convert each ratio to a fraction of copper first: 3:2 \u2192 3/5, and 1:4 \u2192 1/5. The two alloys have different masses."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Copper from X = 3/5 \u00d7 100 = 60 g. Copper from Y = 1/5 \u00d7 150 = 30 g. Total mixture = 250 g."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Alloy X is 60% copper and Alloy Y is only 20% copper. More of the mixture is Alloy Y, so the result should be below 40% copper."
+      }
+    ],
+    "content_context": "science_and_engineering",
+    "context_tags": [
+      "ratio",
+      "mixture",
+      "fraction",
+      "weighted_proportion"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  }
+]
