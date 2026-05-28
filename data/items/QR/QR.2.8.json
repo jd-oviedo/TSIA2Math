@@ -1,0 +1,482 @@
+[
+  {
+    "item_id": "QR_B_068",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.8",
+    "topic": "direct_variation",
+    "topic_text": "Direct Variation",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "checking whether a table of values represents direct variation by computing y/x for each row",
+      "identifying the constant of variation k from a proportional data table"
+    ],
+    "question_text": "A table shows the following values: x = 2, 4, 6, 8 and y = 6, 12, 18, 24. Does y vary directly with x? If so, what is the constant of variation?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "No; the ratio y/x is not constant",
+      "B": "Yes; k = 6",
+      "C": "Yes; k = 3",
+      "D": "Yes; k = 1/3"
+    },
+    "correct_answer": "C",
+    "explanation": "Check y/x for each pair: 6/2 = 3, 12/4 = 3, 18/6 = 3, 24/8 = 3. The ratio is constant, so y varies directly with x and k = 3.",
+    "distractor_logic": {
+      "A": "Student checks whether differences are constant (\u0394y = 6 is constant, suggesting linearity) but confuses the requirement for direct variation, which is a constant ratio y/x, not a constant difference.",
+      "B": "Student identifies the first y-value (6) as the constant of variation rather than computing the ratio y/x = 6/2 = 3.",
+      "C": "Correct: y/x = 3 for all pairs; k = 3.",
+      "D": "Student inverts the ratio, computing x/y = 2/6 = 1/3 instead of y/x = 3."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Direct variation means y = kx, so y/x must be the same for every pair. Compute y/x for each row."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "6/2 = 3, 12/4 = 3, 18/6 = 3, 24/8 = 3. All equal \u2192 direct variation with k = 3."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "direct_variation",
+      "constant_of_variation",
+      "table",
+      "ratio"
+    ],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_069",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.8",
+    "topic": "direct_variation",
+    "topic_text": "Direct Variation",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "finding the constant of variation from a given ordered pair",
+      "using the constant of variation to find a missing output value"
+    ],
+    "question_text": "y varies directly with x. When x = 5, y = 20. What is y when x = 8?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "32",
+      "B": "23",
+      "C": "40",
+      "D": "160"
+    },
+    "correct_answer": "A",
+    "explanation": "Find k: k = y/x = 20/5 = 4. Apply: y = 4 \u00d7 8 = 32.",
+    "distractor_logic": {
+      "A": "Correct: k = 4; y = 4 \u00d7 8 = 32.",
+      "B": "Student adds the change in x to the known y-value (20 + (8 \u2212 5) = 23), treating the relationship as additive rather than proportional.",
+      "C": "Student divides y by 4 instead of x = 5 to find k (20 \u00f7 4 = 5), then computes 5 \u00d7 8 = 40.",
+      "D": "Student multiplies the known y-value by the new x-value directly (20 \u00d7 8 = 160), skipping the step of finding k."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Direct variation: y = kx. Find k first using the given pair: k = 20 \u00f7 5 = 4. Then use y = 4x."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check: y = 4 \u00d7 8 = 32. Verify: 32/8 = 4 = 20/5. \u2713"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "direct_variation",
+      "constant_of_variation",
+      "find_output",
+      "proportional"
+    ],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_055",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.8",
+    "topic": "direct_variation",
+    "topic_text": "Direct Variation",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "writing and solving a direct variation equation from a physical context",
+      "solving for the independent variable given a target value of the dependent variable"
+    ],
+    "question_text": "The distance a spring stretches varies directly with the force applied. A force of 6 newtons stretches the spring 4 centimeters. What force is needed to stretch the spring 10 centimeters?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6.7 N",
+      "B": "16 N",
+      "C": "60 N",
+      "D": "15 N"
+    },
+    "correct_answer": "D",
+    "explanation": "k = stretch/force = 4/6 = 2/3 cm/N. Equation: 10 = (2/3)x. Solve: x = 10 \u00d7 (3/2) = 15 N.",
+    "distractor_logic": {
+      "A": "Student computes k = 4/6 \u2248 0.667 but applies it as a multiplier rather than dividing: force = 10 \u00d7 0.667 \u2248 6.7 N, moving in the wrong direction.",
+      "B": "Student adds the given force and the target stretch (6 + 10 = 16 N) instead of using the proportional relationship.",
+      "C": "Student multiplies the given force by the target stretch (6 \u00d7 10 = 60 N) instead of setting up and solving a direct variation equation.",
+      "D": "Correct: k = 2/3; 10 = (2/3)x \u2192 x = 15 N."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "y = kx where y = stretch and x = force. Find k from the given pair, then solve 10 = kx for x."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "k = 4/6 = 2/3. Equation: 10 = (2/3)x \u2192 x = 15. Check: (2/3)(15) = 10. \u2713"
+      }
+    ],
+    "content_context": "science_and_engineering",
+    "context_tags": [
+      "direct_variation",
+      "Hooke_law",
+      "constant_of_variation",
+      "solve_for_x"
+    ],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_056",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [
+      "AR"
+    ],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.8",
+    "topic": "direct_variation",
+    "topic_text": "Direct Variation",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "identifying direct variation as y = kx with no constant term",
+      "distinguishing direct variation from other linear and non-linear equations"
+    ],
+    "question_text": "Which of the following equations represents a direct variation relationship?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y = 3x + 2",
+      "B": "y = 5",
+      "C": "y = 4x",
+      "D": "y = x\u00b2 + 1"
+    },
+    "correct_answer": "C",
+    "explanation": "Direct variation has the form y = kx, where k \u2260 0 and there is no constant term. Only y = 4x fits this form (k = 4). It passes through the origin and has a constant ratio y/x = 4.",
+    "distractor_logic": {
+      "A": "y = 3x + 2 is linear but not direct variation \u2014 the +2 constant means the line does not pass through the origin, so y/x is not constant.",
+      "B": "y = 5 is a constant function (horizontal line), which does not show any variation with x and cannot be written as y = kx with k \u2260 0.",
+      "C": "Correct: y = 4x has the form y = kx with k = 4. It passes through the origin and y/x = 4 for all x \u2260 0.",
+      "D": "y = x\u00b2 + 1 is a quadratic function, not linear, and does not have a constant ratio y/x."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Direct variation means y = kx exactly \u2014 no added constant, no exponents on x. The line must pass through (0, 0)."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A has a +2 (not through origin). B has no x. D has x\u00b2. Only C is y = kx."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "direct_variation",
+      "equation_identification",
+      "y_intercept",
+      "linear"
+    ],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_049",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.8",
+    "topic": "direct_variation",
+    "topic_text": "Direct Variation",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "finding the constant of variation in a combined direct and inverse variation equation",
+      "applying the variation equation with the solved constant to find an output under new conditions"
+    ],
+    "question_text": "The cost C of a production run varies directly with the number of items n and inversely with the batch size b, so that C = kn/b. When n = 200 and b = 50, the cost is $80. What is the cost when n = 300 and b = 40?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$150",
+      "B": "$120",
+      "C": "$96",
+      "D": "$240"
+    },
+    "correct_answer": "A",
+    "explanation": "Find k: 80 = k(200)/50 \u2192 80 = 4k \u2192 k = 20. Apply: C = 20(300)/40 = 6,000/40 = $150.",
+    "distractor_logic": {
+      "A": "Correct: k = 20; C = 20 \u00d7 300 / 40 = $150.",
+      "B": "Student correctly finds k = 20 but uses the original batch size b = 50 instead of the new b = 40: C = 20 \u00d7 300 / 50 = $120.",
+      "C": "Student scales C by the ratio of the new to old n and the inverse of the new to old b but inverts the batch-size effect: C = 80 \u00d7 (300/200) \u00d7 (40/50) = 80 \u00d7 1.5 \u00d7 0.8 = $96.",
+      "D": "Student ignores the inverse relationship with b and treats the formula as direct variation in both n and b: C = 80 \u00d7 (300/200) \u00d7 (50/40)... or computes 80 \u00d7 3 = $240 using a wrong scale factor."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "First solve for k using the given values. Then substitute k, n = 300, and b = 40 into C = kn/b."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "k = 80 \u00d7 50 / 200 = 20. Then C = 20 \u00d7 300 / 40 = 150."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "More items (300 > 200) increases cost; larger batches reduce it but b decreased (40 < 50), so cost should rise. More than $80 \u2014 A and D fit; D is extreme, A is reasonable."
+      }
+    ],
+    "content_context": "manufacturing",
+    "context_tags": [
+      "direct_variation",
+      "inverse_variation",
+      "constant_of_variation",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_050",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "proportional_reasoning",
+    "objective_text": "Proportional Reasoning",
+    "topic_id": "QR.2.8",
+    "topic": "direct_variation",
+    "topic_text": "Direct Variation",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "reasoning about how a percent change in x propagates to y in a direct variation relationship",
+      "applying the proportional structure of y = kx to determine the effect of scaling x"
+    ],
+    "question_text": "y varies directly with x. If x increases by 40%, by what percent does y change?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "140%",
+      "B": "40%",
+      "C": "4%",
+      "D": "56%"
+    },
+    "correct_answer": "B",
+    "explanation": "Since y = kx, if x becomes 1.4x, then y = k(1.4x) = 1.4(kx) = 1.4y. The new y is 1.4 times the old y, which is a 40% increase.",
+    "distractor_logic": {
+      "A": "Student reports 140% \u2014 the new value of y as a percent of the original \u2014 rather than the 40% increase from the original to the new value.",
+      "B": "Correct: in direct variation, a 40% increase in x produces an equal 40% increase in y.",
+      "C": "Student divides the percent change by 10 (40% \u00f7 10 = 4%), perhaps confusing the problem with a different type of scaling.",
+      "D": "Student applies compound percent reasoning: 40% + 40% \u00d7 40% = 40% + 16% = 56%, incorrectly treating the growth as compounding on itself."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "In y = kx, k is a constant. If x scales by a factor, y scales by the exact same factor. A 40% increase in x \u2192 40% increase in y."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try k = 3, x = 10: y = 30. New x = 14: y = 42. Percent change = (42\u221230)/30 \u00d7 100 = 40%."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Direct variation is the simplest proportional relationship \u2014 whatever percent x changes, y changes by the same percent."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "direct_variation",
+      "percent_change",
+      "proportional_reasoning",
+      "scaling"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-05-27",
+    "last_modified": "2026-05-27",
+    "review_notes": null
+  }
+]
