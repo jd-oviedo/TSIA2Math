@@ -548,7 +548,7 @@
   {
     "item_id": "QR_P_039",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -562,24 +562,24 @@
     "assessment_layer": "CRC",
     "unit": 2,
     "skills_targeted": [
-      "computing an exact unit price from a decimal total cost",
-      "applying a decimal unit price to find the cost of a different quantity"
+      "computing unit rates for two different pricing structures to identify the better value",
+      "applying the per-unit savings across a given quantity to find total savings"
     ],
-    "question_text": "Five pounds of apples cost $6.50. At this rate, how much do 8 pounds of apples cost?",
+    "question_text": "Store A sells apples for $1.80 per 1.5 pounds. Store B sells apples for $2.60 per 2 pounds. How much does a customer save by buying 8 pounds of apples at the cheaper store?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$10.00",
-      "B": "$10.40",
-      "C": "$52.00",
+      "A": "$0.10",
+      "B": "$0.80",
+      "C": "$10.40",
       "D": "$8.00"
     },
     "correct_answer": "B",
-    "explanation": "Unit price = $6.50 \u00f7 5 = $1.30 per pound. Cost for 8 pounds = 8 \u00d7 $1.30 = $10.40. Or: 6.50/5 = x/8 \u2192 5x = 52 \u2192 x = $10.40.",
+    "explanation": "Store A unit price: $1.80 \u00f7 1.5 = $1.20/lb. Store B unit price: $2.60 \u00f7 2 = $1.30/lb. Store A is cheaper by $1.30 \u2212 $1.20 = $0.10/lb. Savings over 8 pounds: $0.10 \u00d7 8 = $0.80.",
     "distractor_logic": {
-      "A": "Student rounds the unit price down to $1.25 per pound (dropping the extra $0.05), giving 8 \u00d7 $1.25 = $10.00.",
-      "B": "Correct: $6.50 \u00f7 5 = $1.30/lb; 8 \u00d7 $1.30 = $10.40.",
-      "C": "Student multiplies the target weight by the full original price (8 \u00d7 $6.50 = $52.00) without computing a per-pound rate.",
-      "D": "Student rounds the unit price to $1.00 per pound and computes 8 \u00d7 $1.00 = $8.00, losing the decimal portion of the rate."
+      "A": "Student correctly finds both unit prices and the per-pound savings ($0.10/lb) but stops there without multiplying by the 8-pound quantity.",
+      "B": "Correct: Store A = $1.20/lb; Store B = $1.30/lb; savings = $0.10/lb \u00d7 8 lb = $0.80.",
+      "C": "Student computes the total cost at Store B ($1.30 \u00d7 8 = $10.40) and reports it as the savings rather than finding the difference between the two stores\u2019 totals.",
+      "D": "Student rounds the unit prices to the nearest dollar ($1.80/1.5 \u2248 $2/lb; $2.60/2 \u2248 $1/lb) and computes a $1.00/lb savings over 8 pounds, giving $8.00."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -594,21 +594,21 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Find the exact price per pound: $6.50 \u00f7 5. Keep the decimal \u2014 don't round it."
+        "hint_text": "Find the price per pound at each store first. Then compare the two rates and multiply the per-pound savings by 8."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "$1.30/lb \u00d7 8 lbs = $10.40. Or set up 6.50/5 = x/8."
+        "hint_text": "Store A: $1.80 \u00f7 1.5 = $1.20/lb. Store B: $2.60 \u00f7 2 = $1.30/lb. Difference: $0.10/lb \u00d7 8 lb = $0.80."
       }
     ],
     "content_context": "grocery_shopping",
     "context_tags": [
-      "proportion",
-      "unit_price",
-      "decimal",
+      "unit_rate",
+      "comparison",
+      "savings",
       "multi_step"
     ],
-    "estimated_time_seconds": 100,
+    "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
     "exposure_max": 0.2,
@@ -621,12 +621,12 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised from single unit-price calculation (flagged as too easy for Proficient) to two-store unit-rate comparison plus savings calculation per QR.2.2 review."
   },
   {
     "item_id": "QR_A_037",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -655,7 +655,7 @@
     "explanation": "Let x = liters of Solution A. Salt equation: 0.40x + 0.10(6) = 0.25(x + 6). Simplify: 0.40x + 0.60 = 0.25x + 1.50. Subtract 0.25x: 0.15x = 0.90. Divide: x = 6 liters.",
     "distractor_logic": {
       "A": "Student accounts for the salt needed from A but omits the existing salt from B, solving 0.40x = (0.25 \u2212 0.10) \u00d7 6 \u2192 0.40x = 0.90 \u2192 x \u2248 2 liters.",
-      "B": "Student applies the alligation ratio as a fraction of B's volume: (25 \u2212 10)/(40 \u2212 10) \u00d7 6 = (15/30) \u00d7 6 = 3 liters, misapplying the alligation method.",
+      "B": "Student applies the alligation method but misreads the result: alligation gives parts of A to parts of B = (25\u221210):(40\u221225) = 15:15 = 1:1, meaning equal volumes are needed. The student then treats 1/(1+1) = 1/2 as A\u2019s fraction of B\u2019s volume (rather than A\u2019s fraction of the total), computing 1/2 \u00d7 6 = 3 liters of A \u2014 an incorrect application of the alligation ratio.",
       "C": "Correct: 0.40x + 0.60 = 0.25x + 1.50 \u2192 0.15x = 0.90 \u2192 x = 6 liters.",
       "D": "Student omits the salt contributed by Solution B, solving 0.40x = 0.25(x + 6) \u2192 0.15x = 1.50 \u2192 x = 10 liters."
     },
@@ -681,7 +681,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "25% is exactly halfway between 10% and 40%, so equal volumes should be needed: 6 liters of A for 6 liters of B."
+        "hint_text": "In this specific problem, 25% is exactly midway between 10% and 40%, so equal volumes of the two solutions happen to produce the target concentration. This shortcut only works when the target is precisely halfway between the two source concentrations \u2014 do not generalize it to other mixture problems."
       }
     ],
     "content_context": "science_and_engineering",
@@ -704,12 +704,12 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised: (1) estimate_first hint rewritten to prevent overgeneralization of the equal-volumes shortcut; (2) distractor B rationale replaced with a genuine alligation misapplication that arithmetically produces 3 liters. Difficulty kept as Advanced per QR.2.2 review."
   },
   {
     "item_id": "QR_A_038",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -740,7 +740,7 @@
       "A": "Correct: 90t = 60(t + 0.5) \u2192 t = 1 hr after 9:30 AM = 10:30 AM.",
       "B": "Student solves correctly (t = 1 hour) but adds that time to Train A's departure (9:00 AM + 1 hr = 10:00 AM) instead of Train B's departure.",
       "C": "Student divides Train A's speed by the speed difference (60 \u00f7 30 = 2 hours) and adds to 9:00 AM, arriving at 11:00 AM.",
-      "D": "Student divides Train A's 30-minute head-start distance (60 \u00d7 0.5 = 30 mi) by Train B's full speed (30 \u00f7 90 = 1/3 hr = 20 min), then adds to 9:30 AM, giving 9:50 AM."
+      "D": "Student correctly computes Train A\u2019s 30-minute head-start distance (60 mph \u00d7 0.5 hr = 30 miles) but then divides that gap by Train B\u2019s full speed (30 \u00f7 90 = 1/3 hr = 20 min) rather than by the relative closing speed (90 \u2212 60 = 30 mph). Adding 20 minutes to 9:30 AM gives 9:50 AM."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -787,6 +787,6 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised: distractor D rationale rewritten to explicitly name the error (uses B\u2019s full speed instead of relative speed to close the gap) per QR.2.2 review."
   }
 ]

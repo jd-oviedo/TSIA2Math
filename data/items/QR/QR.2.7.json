@@ -642,7 +642,7 @@
   {
     "item_id": "QR_A_047",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -661,21 +661,21 @@
       "squaring the linear conversion factor before multiplying by an area measurement",
       "recognizing that area conversion requires applying the linear factor twice"
     ],
-    "question_text": "A room measures 15 feet by 12 feet. What is the area of the room in square meters? (Use: 1 foot = 0.3 meters)",
+    "question_text": "A room measures 15 feet by 12 feet. What is the approximate area of the room in square meters? (Use: 1 foot \u2248 0.3 meters)",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "54 m\u00b2",
       "B": "2,000 m\u00b2",
-      "C": "16.2 m\u00b2",
+      "C": "\u2248 16.2 m\u00b2",
       "D": "1.62 m\u00b2"
     },
     "correct_answer": "C",
-    "explanation": "Area in ft\u00b2 = 15 \u00d7 12 = 180 ft\u00b2. Conversion factor for area: (0.3 m/ft)\u00b2 = 0.09 m\u00b2/ft\u00b2. Area in m\u00b2 = 180 \u00d7 0.09 = 16.2 m\u00b2.",
+    "explanation": "Area in ft\u00b2 = 15 \u00d7 12 = 180 ft\u00b2. Using 1 ft \u2248 0.3 m, the conversion factor for area is (0.3 m/ft)\u00b2 = 0.09 m\u00b2/ft\u00b2. Area \u2248 180 \u00d7 0.09 = 16.2 m\u00b2.",
     "distractor_logic": {
       "A": "Student applies the linear conversion factor (not squared) to the area: 180 \u00d7 0.3 = 54 m\u00b2, forgetting that area units require squaring the conversion factor.",
       "B": "Student inverts the conversion, dividing by the squared factor instead of multiplying: 180 \u00f7 0.09 = 2,000 m\u00b2.",
       "C": "Correct: 180 ft\u00b2 \u00d7 (0.3)\u00b2 m\u00b2/ft\u00b2 = 180 \u00d7 0.09 = 16.2 m\u00b2.",
-      "D": "Student cubes the linear factor instead of squaring it (0.3\u00b3 = 0.027 \u2248 0.009): 180 \u00d7 0.009 = 1.62 m\u00b2."
+      "D": "Student correctly computes the area in m\u00b2 as 180 \u00d7 (0.3)\u00b2 = 180 \u00d7 0.09 = 16.2 m\u00b2, but then divides by 10 once more \u2014 perhaps thinking an additional adjustment is needed to convert between sub-units \u2014 arriving at 16.2 \u00f7 10 = 1.62 m\u00b2."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -722,7 +722,7 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised: (1) distractor D rationale corrected \u2014 previous version claimed 0.3\u00b3 \u2248 0.009 (false: 0.3\u00b3 = 0.027) and 180\u00d70.009=1.62 (false: 180\u00d70.027=4.86). New rationale: student correctly reaches 16.2 m\u00b2 then divides by 10 unnecessarily, giving 1.62. (2) Stem updated to say 'approximate' and use \u2248, answer choice C updated to '\u2248 16.2 m\u00b2', and explanation updated to flag approximation \u2014 per QR.2.7 review."
   },
   {
     "item_id": "QR_A_048",

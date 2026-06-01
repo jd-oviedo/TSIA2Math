@@ -264,7 +264,7 @@
     "correct_answer": "B",
     "explanation": "Flour is 2 ratio parts and 8 cups, so the scale factor is 8 \u00f7 2 = 4. Sugar = 3 parts \u00d7 4 = 12 cups.",
     "distractor_logic": {
-      "A": "Student adds the scale factor (4) to the sugar ratio number (3 + 4 = 7) \u2014 wait, this gives 7, not 6. Remap: student adds 4 to flour ratio number and reports 2 + 4 = 6, confusing which quantity to scale.",
+      "A": "Student subtracts the original flour amount from the new flour amount (8 \u2212 2 = 6) and reports that difference as the cups of sugar needed, confusing the increase in flour with the quantity of sugar required.",
       "B": "Correct: scale factor = 8 \u00f7 2 = 4; sugar = 3 \u00d7 4 = 12 cups.",
       "C": "Student multiplies both ratio numbers by the known quantity (3 \u00d7 8 = 24) without first finding the unit scale factor.",
       "D": "Student finds the scale factor (8 \u00f7 2 = 4) but reports it as the answer instead of applying it to the sugar ratio number."
@@ -337,7 +337,7 @@
       "A": "16",
       "B": "5",
       "C": "4",
-      "D": "20"
+      "D": "8"
     },
     "correct_answer": "C",
     "explanation": "Total parts = 1 + 4 = 5. Each part = 20 \u00f7 5 = 4 liters. Red = 1 part \u00d7 4 = 4 liters.",
@@ -345,7 +345,7 @@
       "A": "Student correctly finds 1 part = 4 liters but scales by 4 instead of 1, computing white paint (4 \u00d7 4 = 16) rather than red.",
       "B": "Student counts the total number of ratio parts (1 + 4 = 5) and reports that as the answer in liters instead of using it as a divisor.",
       "C": "Correct: 20 \u00f7 5 = 4 liters per part; red = 1 \u00d7 4 = 4 liters.",
-      "D": "Student does not partition the total and reports the full 20 liters as the red paint quantity."
+      "D": "Student correctly finds the unit value (20 \u00f7 5 = 4 liters per part) but then multiplies by 2 instead of 1, using the white paint ratio number rather than the red paint ratio number (4 \u00d7 2 = 8 liters)."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -548,7 +548,7 @@
   {
     "item_id": "QR_P_036",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -562,24 +562,24 @@
     "assessment_layer": "CRC",
     "unit": 2,
     "skills_targeted": [
-      "interpreting a ratio as a scale and applying it to a measurement",
-      "multiplying by a unit rate to find a real-world quantity"
+      "applying a map scale in reverse to convert a real-world distance to a map distance",
+      "scaling a computed map distance by a multiplicative factor to find a second map distance"
     ],
-    "question_text": "On a map, 1 centimeter represents 45 miles. If two cities are 7 centimeters apart on the map, what is the actual distance between the cities in miles?",
+    "question_text": "A map uses a scale of 1 cm : 45 km. Two cities are 315 km apart, and their map distance is used as a reference. A cartographer then needs to plot a second pair of cities that are 1.5 times as far apart in real life. How many centimeters apart should the second pair appear on the map?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "52",
-      "B": "45",
-      "C": "315",
-      "D": "38"
+      "A": "10.5 cm",
+      "B": "7 cm",
+      "C": "472.5 cm",
+      "D": "4.7 cm"
     },
-    "correct_answer": "C",
-    "explanation": "The scale ratio is 1 cm : 45 miles. For 7 cm: actual distance = 7 \u00d7 45 = 315 miles.",
+    "correct_answer": "A",
+    "explanation": "Step 1 \u2014 Map distance for first pair: 315 km \u00f7 45 km/cm = 7 cm. Step 2 \u2014 The second pair is 1.5\u00d7 farther: 7 cm \u00d7 1.5 = 10.5 cm.",
     "distractor_logic": {
-      "A": "Student adds the scale value and the map distance (45 + 7 = 52) instead of multiplying.",
-      "B": "Student reports the scale value (45 miles per cm) without multiplying by the map distance of 7 cm.",
-      "C": "Correct: 7 cm \u00d7 45 miles/cm = 315 miles.",
-      "D": "Student subtracts the map distance from the scale value (45 \u2212 7 = 38) instead of multiplying."
+      "A": "Correct: 315 \u00f7 45 = 7 cm; 7 \u00d7 1.5 = 10.5 cm.",
+      "B": "Student correctly converts the first pair\u2019s real distance to the map (315 \u00f7 45 = 7 cm) but stops there, forgetting to apply the 1.5\u00d7 factor for the second pair.",
+      "C": "Student multiplies the real-world distance by the scale factor instead of dividing (315 \u00d7 1.5 = 472.5), treating the answer as a distance in km rather than converting to cm.",
+      "D": "Student correctly finds 7 cm but divides by 1.5 instead of multiplying (7 \u00f7 1.5 \u2248 4.67 cm), inverting the scale-up factor."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -594,11 +594,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The ratio gives you miles per centimeter. You have 7 centimeters \u2014 multiply to scale up."
+        "hint_text": "Two steps: first convert the real distance to a map distance using the scale, then multiply by 1.5 for the second pair."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "1 cm = 45 miles, so 7 cm = 7 \u00d7 45 miles."
+        "hint_text": "315 \u00f7 45 = 7 cm for the first pair. Second pair: 7 \u00d7 1.5 = 10.5 cm."
       }
     ],
     "content_context": "map_and_navigation",
@@ -606,7 +606,7 @@
       "scale",
       "ratio",
       "map",
-      "unit_rate"
+      "multi_step"
     ],
     "estimated_time_seconds": 100,
     "contains_image": false,
@@ -621,12 +621,12 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised from single-step multiplication (flagged as too easy for Proficient) to two-step reverse-proportion + scale-factor item per QR.2.1 review."
   },
   {
     "item_id": "QR_A_035",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -640,24 +640,24 @@
     "assessment_layer": "CRC",
     "unit": 2,
     "skills_targeted": [
-      "partitioning a total using a ratio and applying separate unit rates to each part",
-      "computing total cost by combining ratio-derived quantities with different rates"
+      "partitioning a blend by ratio and applying different unit costs to find a blended cost per liter",
+      "using a blended unit cost to determine the maximum whole-unit quantity purchasable within a budget"
     ],
-    "question_text": "A fruit punch is made by mixing Juice A and Juice B in a ratio of 3:7 by volume. Juice A costs $4 per liter and Juice B costs $2 per liter. If 50 liters of punch are made, what is the total cost of the ingredients?",
+    "question_text": "A fruit punch is made by mixing Juice A and Juice B in a ratio of 3:7 by volume. Juice A costs $4 per liter and Juice B costs $2 per liter. What is the maximum number of full liters of this punch a customer can purchase for $70?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$100",
-      "B": "$130",
-      "C": "$150",
-      "D": "$160"
+      "A": "35 liters",
+      "B": "17 liters",
+      "C": "27 liters",
+      "D": "26 liters"
     },
-    "correct_answer": "B",
-    "explanation": "Total parts = 3 + 7 = 10. Juice A = 3/10 \u00d7 50 = 15 liters; Juice B = 7/10 \u00d7 50 = 35 liters. Cost = 15 \u00d7 $4 + 35 \u00d7 $2 = $60 + $70 = $130.",
+    "correct_answer": "D",
+    "explanation": "Per 10 liters of blend: Juice A = 3 L \u00d7 $4 = $12; Juice B = 7 L \u00d7 $2 = $14; total = $26. Cost per liter of blend = $26 \u00f7 10 = $2.60. Maximum full liters for $70: \u230970 \u00f7 2.60\u230b = \u230926.923\u2026\u230b = 26 liters.",
     "distractor_logic": {
-      "A": "Student uses only Juice B's price for the full mixture (50 \u00d7 $2 = $100), ignoring Juice A's cost entirely.",
-      "B": "Correct: Juice A = 15 L \u00d7 $4 = $60; Juice B = 35 L \u00d7 $2 = $70; total = $130.",
-      "C": "Student splits the 50 liters equally (25 L each) instead of using the 3:7 ratio, giving 25 \u00d7 $4 + 25 \u00d7 $2 = $100 + $50 = $150.",
-      "D": "Student misreads the ratio as 4:1 (matching the unit prices), allocating 40 liters to Juice A (40 \u00d7 $4 = $160) and ignoring Juice B."
+      "A": "Student divides the budget by Juice B\u2019s unit price alone ($70 \u00f7 $2 = 35 liters), ignoring that the blend also contains the more expensive Juice A.",
+      "B": "Student divides the budget by Juice A\u2019s unit price ($70 \u00f7 $4 = 17.5 \u2192 17 liters), applying the most expensive component\u2019s price to the entire blend.",
+      "C": "Student correctly computes the blended cost per liter ($2.60) and divides the budget ($70 \u00f7 $2.60 \u2248 26.9) but rounds up to 27 instead of taking the floor, purchasing more than $70 allows.",
+      "D": "Correct: blended cost = $2.60/L; $70 \u00f7 $2.60 = 26.9\u2026 \u2192 floor = 26 liters."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -673,25 +673,25 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Split 50 liters using the 3:7 ratio first, then apply each juice's price separately."
+        "hint_text": "Find the cost per liter of the blend first: use the 3:7 ratio to compute the cost per 10 liters, then divide by 10."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Juice A: 3/10 \u00d7 50 = 15 L; Juice B: 7/10 \u00d7 50 = 35 L. Now multiply each by its price and add."
+        "hint_text": "Cost per 10 L: 3\u00d7$4 + 7\u00d7$2 = $26. Cost per liter = $2.60. Max liters = \u230970 \u00f7 2.60\u230b = 26."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "Most of the mix is Juice B (cheaper), so the total should be closer to 50 \u00d7 $2 = $100 than to 50 \u00d7 $4 = $200."
+        "hint_text": "The blend is mostly cheap Juice B but has some expensive A. Cost/L is between $2 and $4 \u2014 closer to $2.60. $70 \u00f7 $2.60 \u2248 27, but you can\u2019t exceed $70, so round down."
       }
     ],
     "content_context": "food_and_beverage",
     "context_tags": [
       "ratio",
       "unit_rate",
-      "cost",
-      "multi_step"
+      "blended_cost",
+      "budget_constraint"
     ],
-    "estimated_time_seconds": 130,
+    "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
     "exposure_max": 0.2,
@@ -704,7 +704,7 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised from straightforward ratio+cost item (flagged as insufficiently Advanced) to blended-cost-per-liter + floor-division item per QR.2.1 review."
   },
   {
     "item_id": "QR_A_036",

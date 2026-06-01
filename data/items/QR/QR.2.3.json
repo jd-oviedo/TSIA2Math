@@ -548,7 +548,7 @@
   {
     "item_id": "QR_P_042",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -579,7 +579,7 @@
       "A": "Correct: tax = $2.80, tip = $5.25, total = $43.05.",
       "B": "Student applies the tax to the original ($35 \u00d7 1.08 = $37.80) and then the tip to the post-tax total ($37.80 \u00d7 1.15 \u2248 $43.47), computing tip on the wrong base.",
       "C": "Student applies only the 15% tip to the original bill ($35 \u00d7 1.15 = $40.25), omitting the tax.",
-      "D": "Student combines the two percents (8% + 15% \u2248 20%) and applies a single 20% increase to the original bill ($35 \u00d7 1.20 = $42.00)."
+      "D": "Student adds the two percent rates (8% + 15% = 23%) and rounds 23% down to the nearest round number (20%), then applies a single 20% increase to the original bill: $35 \u00d7 1.20 = $42.00."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -621,12 +621,12 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised: distractor D rationale corrected to accurately describe how a student arrives at $42.00 (adds 8%+15%=23%, rounds down to 20%, applies to $35) per QR.2.3 review."
   },
   {
     "item_id": "QR_A_039",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -640,24 +640,24 @@
     "assessment_layer": "CRC",
     "unit": 2,
     "skills_targeted": [
-      "chaining percent multipliers across multiple time periods",
-      "distinguishing compound percent change from applying percents to the original value"
+      "multiplying successive percent-change multipliers to find a combined multiplier",
+      "interpreting a product of multipliers as a net percent change relative to the original"
     ],
-    "question_text": "An investment of $5,000 increases in value by 10% in the first year and then decreases by 5% in the second year. What is the value of the investment at the end of the second year?",
+    "question_text": "An investment increases in value by 10% in the first year and then decreases by 5% in the second year. What is the net percent change in the value of the investment over the two years?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$5,250",
-      "B": "$5,500",
-      "C": "$5,225",
-      "D": "$4,750"
+      "A": "5% increase",
+      "B": "4.5% increase",
+      "C": "4% increase",
+      "D": "15% increase"
     },
-    "correct_answer": "C",
-    "explanation": "Year 1: $5,000 \u00d7 1.10 = $5,500. Year 2: $5,500 \u00d7 0.95 = $5,225.",
+    "correct_answer": "B",
+    "explanation": "Chain the multipliers: 1.10 \u00d7 0.95 = 1.045. A multiplier of 1.045 means the final value is 104.5% of the original, which is a net increase of 4.5%.",
     "distractor_logic": {
-      "A": "Student applies both percents to the original value instead of chaining them: $5,000 + 10% of $5,000 \u2212 5% of $5,000 = $5,000 + $500 \u2212 $250 = $5,250.",
-      "B": "Student applies only the year 1 gain and stops: $5,000 \u00d7 1.10 = $5,500, omitting the year 2 loss.",
-      "C": "Correct: $5,000 \u00d7 1.10 = $5,500; $5,500 \u00d7 0.95 = $5,225.",
-      "D": "Student applies only the year 2 decrease to the original: $5,000 \u00d7 0.95 = $4,750, omitting the year 1 gain."
+      "A": "Student subtracts the two percent rates directly (10% \u2212 5% = 5%), treating percent changes as additive rather than multiplicative and ignoring that the 5% loss applies to a higher base.",
+      "B": "Correct: 1.10 \u00d7 0.95 = 1.045, a net gain of 4.5%.",
+      "C": "Student correctly computes the combined multiplier (1.10 \u00d7 0.95 = 1.045) but truncates 4.5% to 4%, dropping the 0.5 percentage point from the product.",
+      "D": "Student ignores the direction of the second change, treating the 5% decrease as a 5% increase and adding both rates (10% + 5% = 15%)."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -673,22 +673,22 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Each year's percent applies to that year's starting value, not the original $5,000. Chain the multipliers: \u00d7 1.10, then \u00d7 0.95."
+        "hint_text": "Convert each change to a multiplier: +10% = \u00d71.10; \u22125% = \u00d70.95. Multiply them together to find the combined multiplier, then read off the net percent change."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Year 1: $5,000 \u00d7 1.10 = $5,500. Year 2: $5,500 \u00d7 0.95 = $5,225."
+        "hint_text": "Try $1,000: after year 1 = $1,100; after year 2 = $1,045. Net change = $45 on $1,000 = 4.5% gain."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "A 10% gain then a 5% loss is a net gain less than 5%, so the final value should be between $5,000 and $5,250."
+        "hint_text": "A 10% gain followed by a 5% loss cannot be a simple 5% net gain \u2014 the loss applies to the already-higher value. The net gain must be slightly less than 5%, so look for an answer just below 5%."
       }
     ],
     "content_context": "personal_finance",
     "context_tags": [
       "compound_percent_change",
       "investment",
-      "multi_step",
+      "net_percent",
       "chained_multipliers"
     ],
     "estimated_time_seconds": 130,
@@ -704,12 +704,12 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised from 'find final dollar value' (flagged as insufficiently Advanced; estimate hint also misleading) to 'find net percent change,' which requires interpreting the product of multipliers as a percent \u2014 a more demanding conceptual step. estimate_first hint rewritten. Key changed C\u2192B."
   },
   {
     "item_id": "QR_A_040",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -737,7 +737,7 @@
     "correct_answer": "D",
     "explanation": "Percent increase = (85 \u2212 68) \u00f7 68 \u00d7 100 = 17 \u00f7 68 \u00d7 100 = 25%. A 30% improvement on 68 would require a score of 68 \u00d7 1.30 = 88.4. Since 85 < 88.4, the goal was not met.",
     "distractor_logic": {
-      "A": "Student correctly computes the 25% increase but incorrectly concludes the goal was met, perhaps comparing 25% to 30% without checking the required score.",
+      "A": "Student correctly computes the 25% increase but misinterprets the goal: they read '30% improvement goal' as 'the student must show improvement' rather than 'the student must achieve at least a 30% increase.' Since any positive percent change constitutes improvement in their reading, they conclude the goal was met.",
       "B": "Student uses the raw point change (17 points) as the percent increase rather than dividing by the original score, getting 17% instead of 25%.",
       "C": "Student divides the change by the new score instead of the original (17 \u00f7 85 \u2248 0.20 = 20%) and correctly identifies the goal was not met.",
       "D": "Correct: percent increase = 25%; required score for 30% improvement = 68 \u00d7 1.30 = 88.4 > 85, so goal was not met."
@@ -787,6 +787,6 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised: distractor A rationale corrected \u2014 previous wording was logically contradictory (comparing 25% < 30% would show goal not met, not met). New rationale: student misreads 'improvement goal' as 'any improvement suffices' per QR.2.3 review."
   }
 ]

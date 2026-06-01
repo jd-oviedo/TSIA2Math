@@ -7504,7 +7504,7 @@
     "correct_answer": "B",
     "explanation": "Flour is 2 ratio parts and 8 cups, so the scale factor is 8 ÷ 2 = 4. Sugar = 3 parts × 4 = 12 cups.",
     "distractor_logic": {
-      "A": "Student adds the scale factor (4) to the sugar ratio number (3 + 4 = 7) — wait, this gives 7, not 6. Remap: student adds 4 to flour ratio number and reports 2 + 4 = 6, confusing which quantity to scale.",
+      "A": "Student subtracts the original flour amount from the new flour amount (8 − 2 = 6) and reports that difference as the cups of sugar needed, confusing the increase in flour with the quantity of sugar required.",
       "B": "Correct: scale factor = 8 ÷ 2 = 4; sugar = 3 × 4 = 12 cups.",
       "C": "Student multiplies both ratio numbers by the known quantity (3 × 8 = 24) without first finding the unit scale factor.",
       "D": "Student finds the scale factor (8 ÷ 2 = 4) but reports it as the answer instead of applying it to the sugar ratio number."
@@ -7577,7 +7577,7 @@
       "A": "16",
       "B": "5",
       "C": "4",
-      "D": "20"
+      "D": "8"
     },
     "correct_answer": "C",
     "explanation": "Total parts = 1 + 4 = 5. Each part = 20 ÷ 5 = 4 liters. Red = 1 part × 4 = 4 liters.",
@@ -7585,7 +7585,7 @@
       "A": "Student correctly finds 1 part = 4 liters but scales by 4 instead of 1, computing white paint (4 × 4 = 16) rather than red.",
       "B": "Student counts the total number of ratio parts (1 + 4 = 5) and reports that as the answer in liters instead of using it as a divisor.",
       "C": "Correct: 20 ÷ 5 = 4 liters per part; red = 1 × 4 = 4 liters.",
-      "D": "Student does not partition the total and reports the full 20 liters as the red paint quantity."
+      "D": "Student correctly finds the unit value (20 ÷ 5 = 4 liters per part) but then multiplies by 2 instead of 1, using the white paint ratio number rather than the red paint ratio number (4 × 2 = 8 liters)."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -7788,7 +7788,7 @@
   {
     "item_id": "QR_P_036",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -7802,24 +7802,24 @@
     "assessment_layer": "CRC",
     "unit": 2,
     "skills_targeted": [
-      "interpreting a ratio as a scale and applying it to a measurement",
-      "multiplying by a unit rate to find a real-world quantity"
+      "applying a map scale in reverse to convert a real-world distance to a map distance",
+      "scaling a computed map distance by a multiplicative factor to find a second map distance"
     ],
-    "question_text": "On a map, 1 centimeter represents 45 miles. If two cities are 7 centimeters apart on the map, what is the actual distance between the cities in miles?",
+    "question_text": "A map uses a scale of 1 cm : 45 km. Two cities are 315 km apart, and their map distance is used as a reference. A cartographer then needs to plot a second pair of cities that are 1.5 times as far apart in real life. How many centimeters apart should the second pair appear on the map?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "52",
-      "B": "45",
-      "C": "315",
-      "D": "38"
+      "A": "10.5 cm",
+      "B": "7 cm",
+      "C": "472.5 cm",
+      "D": "4.7 cm"
     },
-    "correct_answer": "C",
-    "explanation": "The scale ratio is 1 cm : 45 miles. For 7 cm: actual distance = 7 × 45 = 315 miles.",
+    "correct_answer": "A",
+    "explanation": "Step 1 — Map distance for first pair: 315 km ÷ 45 km/cm = 7 cm. Step 2 — The second pair is 1.5× farther: 7 cm × 1.5 = 10.5 cm.",
     "distractor_logic": {
-      "A": "Student adds the scale value and the map distance (45 + 7 = 52) instead of multiplying.",
-      "B": "Student reports the scale value (45 miles per cm) without multiplying by the map distance of 7 cm.",
-      "C": "Correct: 7 cm × 45 miles/cm = 315 miles.",
-      "D": "Student subtracts the map distance from the scale value (45 − 7 = 38) instead of multiplying."
+      "A": "Correct: 315 ÷ 45 = 7 cm; 7 × 1.5 = 10.5 cm.",
+      "B": "Student correctly converts the first pair’s real distance to the map (315 ÷ 45 = 7 cm) but stops there, forgetting to apply the 1.5× factor for the second pair.",
+      "C": "Student multiplies the real-world distance by the scale factor instead of dividing (315 × 1.5 = 472.5), treating the answer as a distance in km rather than converting to cm.",
+      "D": "Student correctly finds 7 cm but divides by 1.5 instead of multiplying (7 ÷ 1.5 ≈ 4.67 cm), inverting the scale-up factor."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -7834,11 +7834,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The ratio gives you miles per centimeter. You have 7 centimeters — multiply to scale up."
+        "hint_text": "Two steps: first convert the real distance to a map distance using the scale, then multiply by 1.5 for the second pair."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "1 cm = 45 miles, so 7 cm = 7 × 45 miles."
+        "hint_text": "315 ÷ 45 = 7 cm for the first pair. Second pair: 7 × 1.5 = 10.5 cm."
       }
     ],
     "content_context": "map_and_navigation",
@@ -7846,7 +7846,7 @@
       "scale",
       "ratio",
       "map",
-      "unit_rate"
+      "multi_step"
     ],
     "estimated_time_seconds": 100,
     "contains_image": false,
@@ -7861,12 +7861,12 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised from single-step multiplication (flagged as too easy for Proficient) to two-step reverse-proportion + scale-factor item per QR.2.1 review."
   },
   {
     "item_id": "QR_A_035",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -7880,24 +7880,24 @@
     "assessment_layer": "CRC",
     "unit": 2,
     "skills_targeted": [
-      "partitioning a total using a ratio and applying separate unit rates to each part",
-      "computing total cost by combining ratio-derived quantities with different rates"
+      "partitioning a blend by ratio and applying different unit costs to find a blended cost per liter",
+      "using a blended unit cost to determine the maximum whole-unit quantity purchasable within a budget"
     ],
-    "question_text": "A fruit punch is made by mixing Juice A and Juice B in a ratio of 3:7 by volume. Juice A costs $4 per liter and Juice B costs $2 per liter. If 50 liters of punch are made, what is the total cost of the ingredients?",
+    "question_text": "A fruit punch is made by mixing Juice A and Juice B in a ratio of 3:7 by volume. Juice A costs $4 per liter and Juice B costs $2 per liter. What is the maximum number of full liters of this punch a customer can purchase for $70?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$100",
-      "B": "$130",
-      "C": "$150",
-      "D": "$160"
+      "A": "35 liters",
+      "B": "17 liters",
+      "C": "27 liters",
+      "D": "26 liters"
     },
-    "correct_answer": "B",
-    "explanation": "Total parts = 3 + 7 = 10. Juice A = 3/10 × 50 = 15 liters; Juice B = 7/10 × 50 = 35 liters. Cost = 15 × $4 + 35 × $2 = $60 + $70 = $130.",
+    "correct_answer": "D",
+    "explanation": "Per 10 liters of blend: Juice A = 3 L × $4 = $12; Juice B = 7 L × $2 = $14; total = $26. Cost per liter of blend = $26 ÷ 10 = $2.60. Maximum full liters for $70: ⌉70 ÷ 2.60⌋ = ⌉26.923…⌋ = 26 liters.",
     "distractor_logic": {
-      "A": "Student uses only Juice B's price for the full mixture (50 × $2 = $100), ignoring Juice A's cost entirely.",
-      "B": "Correct: Juice A = 15 L × $4 = $60; Juice B = 35 L × $2 = $70; total = $130.",
-      "C": "Student splits the 50 liters equally (25 L each) instead of using the 3:7 ratio, giving 25 × $4 + 25 × $2 = $100 + $50 = $150.",
-      "D": "Student misreads the ratio as 4:1 (matching the unit prices), allocating 40 liters to Juice A (40 × $4 = $160) and ignoring Juice B."
+      "A": "Student divides the budget by Juice B’s unit price alone ($70 ÷ $2 = 35 liters), ignoring that the blend also contains the more expensive Juice A.",
+      "B": "Student divides the budget by Juice A’s unit price ($70 ÷ $4 = 17.5 → 17 liters), applying the most expensive component’s price to the entire blend.",
+      "C": "Student correctly computes the blended cost per liter ($2.60) and divides the budget ($70 ÷ $2.60 ≈ 26.9) but rounds up to 27 instead of taking the floor, purchasing more than $70 allows.",
+      "D": "Correct: blended cost = $2.60/L; $70 ÷ $2.60 = 26.9… → floor = 26 liters."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -7913,25 +7913,25 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Split 50 liters using the 3:7 ratio first, then apply each juice's price separately."
+        "hint_text": "Find the cost per liter of the blend first: use the 3:7 ratio to compute the cost per 10 liters, then divide by 10."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Juice A: 3/10 × 50 = 15 L; Juice B: 7/10 × 50 = 35 L. Now multiply each by its price and add."
+        "hint_text": "Cost per 10 L: 3×$4 + 7×$2 = $26. Cost per liter = $2.60. Max liters = ⌉70 ÷ 2.60⌋ = 26."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "Most of the mix is Juice B (cheaper), so the total should be closer to 50 × $2 = $100 than to 50 × $4 = $200."
+        "hint_text": "The blend is mostly cheap Juice B but has some expensive A. Cost/L is between $2 and $4 — closer to $2.60. $70 ÷ $2.60 ≈ 27, but you can’t exceed $70, so round down."
       }
     ],
     "content_context": "food_and_beverage",
     "context_tags": [
       "ratio",
       "unit_rate",
-      "cost",
-      "multi_step"
+      "blended_cost",
+      "budget_constraint"
     ],
-    "estimated_time_seconds": 130,
+    "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
     "exposure_max": 0.2,
@@ -7944,7 +7944,7 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised from straightforward ratio+cost item (flagged as insufficiently Advanced) to blended-cost-per-liter + floor-division item per QR.2.1 review."
   },
   {
     "item_id": "QR_A_036",
@@ -8578,7 +8578,7 @@
   {
     "item_id": "QR_P_039",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -8592,24 +8592,24 @@
     "assessment_layer": "CRC",
     "unit": 2,
     "skills_targeted": [
-      "computing an exact unit price from a decimal total cost",
-      "applying a decimal unit price to find the cost of a different quantity"
+      "computing unit rates for two different pricing structures to identify the better value",
+      "applying the per-unit savings across a given quantity to find total savings"
     ],
-    "question_text": "Five pounds of apples cost $6.50. At this rate, how much do 8 pounds of apples cost?",
+    "question_text": "Store A sells apples for $1.80 per 1.5 pounds. Store B sells apples for $2.60 per 2 pounds. How much does a customer save by buying 8 pounds of apples at the cheaper store?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$10.00",
-      "B": "$10.40",
-      "C": "$52.00",
+      "A": "$0.10",
+      "B": "$0.80",
+      "C": "$10.40",
       "D": "$8.00"
     },
     "correct_answer": "B",
-    "explanation": "Unit price = $6.50 ÷ 5 = $1.30 per pound. Cost for 8 pounds = 8 × $1.30 = $10.40. Or: 6.50/5 = x/8 → 5x = 52 → x = $10.40.",
+    "explanation": "Store A unit price: $1.80 ÷ 1.5 = $1.20/lb. Store B unit price: $2.60 ÷ 2 = $1.30/lb. Store A is cheaper by $1.30 − $1.20 = $0.10/lb. Savings over 8 pounds: $0.10 × 8 = $0.80.",
     "distractor_logic": {
-      "A": "Student rounds the unit price down to $1.25 per pound (dropping the extra $0.05), giving 8 × $1.25 = $10.00.",
-      "B": "Correct: $6.50 ÷ 5 = $1.30/lb; 8 × $1.30 = $10.40.",
-      "C": "Student multiplies the target weight by the full original price (8 × $6.50 = $52.00) without computing a per-pound rate.",
-      "D": "Student rounds the unit price to $1.00 per pound and computes 8 × $1.00 = $8.00, losing the decimal portion of the rate."
+      "A": "Student correctly finds both unit prices and the per-pound savings ($0.10/lb) but stops there without multiplying by the 8-pound quantity.",
+      "B": "Correct: Store A = $1.20/lb; Store B = $1.30/lb; savings = $0.10/lb × 8 lb = $0.80.",
+      "C": "Student computes the total cost at Store B ($1.30 × 8 = $10.40) and reports it as the savings rather than finding the difference between the two stores’ totals.",
+      "D": "Student rounds the unit prices to the nearest dollar ($1.80/1.5 ≈ $2/lb; $2.60/2 ≈ $1/lb) and computes a $1.00/lb savings over 8 pounds, giving $8.00."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -8624,21 +8624,21 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Find the exact price per pound: $6.50 ÷ 5. Keep the decimal — don't round it."
+        "hint_text": "Find the price per pound at each store first. Then compare the two rates and multiply the per-pound savings by 8."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "$1.30/lb × 8 lbs = $10.40. Or set up 6.50/5 = x/8."
+        "hint_text": "Store A: $1.80 ÷ 1.5 = $1.20/lb. Store B: $2.60 ÷ 2 = $1.30/lb. Difference: $0.10/lb × 8 lb = $0.80."
       }
     ],
     "content_context": "grocery_shopping",
     "context_tags": [
-      "proportion",
-      "unit_price",
-      "decimal",
+      "unit_rate",
+      "comparison",
+      "savings",
       "multi_step"
     ],
-    "estimated_time_seconds": 100,
+    "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
     "exposure_max": 0.2,
@@ -8651,12 +8651,12 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised from single unit-price calculation (flagged as too easy for Proficient) to two-store unit-rate comparison plus savings calculation per QR.2.2 review."
   },
   {
     "item_id": "QR_A_037",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -8685,7 +8685,7 @@
     "explanation": "Let x = liters of Solution A. Salt equation: 0.40x + 0.10(6) = 0.25(x + 6). Simplify: 0.40x + 0.60 = 0.25x + 1.50. Subtract 0.25x: 0.15x = 0.90. Divide: x = 6 liters.",
     "distractor_logic": {
       "A": "Student accounts for the salt needed from A but omits the existing salt from B, solving 0.40x = (0.25 − 0.10) × 6 → 0.40x = 0.90 → x ≈ 2 liters.",
-      "B": "Student applies the alligation ratio as a fraction of B's volume: (25 − 10)/(40 − 10) × 6 = (15/30) × 6 = 3 liters, misapplying the alligation method.",
+      "B": "Student applies the alligation method but misreads the result: alligation gives parts of A to parts of B = (25−10):(40−25) = 15:15 = 1:1, meaning equal volumes are needed. The student then treats 1/(1+1) = 1/2 as A’s fraction of B’s volume (rather than A’s fraction of the total), computing 1/2 × 6 = 3 liters of A — an incorrect application of the alligation ratio.",
       "C": "Correct: 0.40x + 0.60 = 0.25x + 1.50 → 0.15x = 0.90 → x = 6 liters.",
       "D": "Student omits the salt contributed by Solution B, solving 0.40x = 0.25(x + 6) → 0.15x = 1.50 → x = 10 liters."
     },
@@ -8711,7 +8711,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "25% is exactly halfway between 10% and 40%, so equal volumes should be needed: 6 liters of A for 6 liters of B."
+        "hint_text": "In this specific problem, 25% is exactly midway between 10% and 40%, so equal volumes of the two solutions happen to produce the target concentration. This shortcut only works when the target is precisely halfway between the two source concentrations — do not generalize it to other mixture problems."
       }
     ],
     "content_context": "science_and_engineering",
@@ -8734,12 +8734,12 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised: (1) estimate_first hint rewritten to prevent overgeneralization of the equal-volumes shortcut; (2) distractor B rationale replaced with a genuine alligation misapplication that arithmetically produces 3 liters. Difficulty kept as Advanced per QR.2.2 review."
   },
   {
     "item_id": "QR_A_038",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -8770,7 +8770,7 @@
       "A": "Correct: 90t = 60(t + 0.5) → t = 1 hr after 9:30 AM = 10:30 AM.",
       "B": "Student solves correctly (t = 1 hour) but adds that time to Train A's departure (9:00 AM + 1 hr = 10:00 AM) instead of Train B's departure.",
       "C": "Student divides Train A's speed by the speed difference (60 ÷ 30 = 2 hours) and adds to 9:00 AM, arriving at 11:00 AM.",
-      "D": "Student divides Train A's 30-minute head-start distance (60 × 0.5 = 30 mi) by Train B's full speed (30 ÷ 90 = 1/3 hr = 20 min), then adds to 9:30 AM, giving 9:50 AM."
+      "D": "Student correctly computes Train A’s 30-minute head-start distance (60 mph × 0.5 hr = 30 miles) but then divides that gap by Train B’s full speed (30 ÷ 90 = 1/3 hr = 20 min) rather than by the relative closing speed (90 − 60 = 30 mph). Adding 20 minutes to 9:30 AM gives 9:50 AM."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -8817,7 +8817,7 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised: distractor D rationale rewritten to explicitly name the error (uses B’s full speed instead of relative speed to close the gap) per QR.2.2 review."
   },
   {
     "item_id": "QR_B_043",
@@ -9368,7 +9368,7 @@
   {
     "item_id": "QR_P_042",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -9399,7 +9399,7 @@
       "A": "Correct: tax = $2.80, tip = $5.25, total = $43.05.",
       "B": "Student applies the tax to the original ($35 × 1.08 = $37.80) and then the tip to the post-tax total ($37.80 × 1.15 ≈ $43.47), computing tip on the wrong base.",
       "C": "Student applies only the 15% tip to the original bill ($35 × 1.15 = $40.25), omitting the tax.",
-      "D": "Student combines the two percents (8% + 15% ≈ 20%) and applies a single 20% increase to the original bill ($35 × 1.20 = $42.00)."
+      "D": "Student adds the two percent rates (8% + 15% = 23%) and rounds 23% down to the nearest round number (20%), then applies a single 20% increase to the original bill: $35 × 1.20 = $42.00."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -9441,12 +9441,12 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised: distractor D rationale corrected to accurately describe how a student arrives at $42.00 (adds 8%+15%=23%, rounds down to 20%, applies to $35) per QR.2.3 review."
   },
   {
     "item_id": "QR_A_039",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -9460,24 +9460,24 @@
     "assessment_layer": "CRC",
     "unit": 2,
     "skills_targeted": [
-      "chaining percent multipliers across multiple time periods",
-      "distinguishing compound percent change from applying percents to the original value"
+      "multiplying successive percent-change multipliers to find a combined multiplier",
+      "interpreting a product of multipliers as a net percent change relative to the original"
     ],
-    "question_text": "An investment of $5,000 increases in value by 10% in the first year and then decreases by 5% in the second year. What is the value of the investment at the end of the second year?",
+    "question_text": "An investment increases in value by 10% in the first year and then decreases by 5% in the second year. What is the net percent change in the value of the investment over the two years?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$5,250",
-      "B": "$5,500",
-      "C": "$5,225",
-      "D": "$4,750"
+      "A": "5% increase",
+      "B": "4.5% increase",
+      "C": "4% increase",
+      "D": "15% increase"
     },
-    "correct_answer": "C",
-    "explanation": "Year 1: $5,000 × 1.10 = $5,500. Year 2: $5,500 × 0.95 = $5,225.",
+    "correct_answer": "B",
+    "explanation": "Chain the multipliers: 1.10 × 0.95 = 1.045. A multiplier of 1.045 means the final value is 104.5% of the original, which is a net increase of 4.5%.",
     "distractor_logic": {
-      "A": "Student applies both percents to the original value instead of chaining them: $5,000 + 10% of $5,000 − 5% of $5,000 = $5,000 + $500 − $250 = $5,250.",
-      "B": "Student applies only the year 1 gain and stops: $5,000 × 1.10 = $5,500, omitting the year 2 loss.",
-      "C": "Correct: $5,000 × 1.10 = $5,500; $5,500 × 0.95 = $5,225.",
-      "D": "Student applies only the year 2 decrease to the original: $5,000 × 0.95 = $4,750, omitting the year 1 gain."
+      "A": "Student subtracts the two percent rates directly (10% − 5% = 5%), treating percent changes as additive rather than multiplicative and ignoring that the 5% loss applies to a higher base.",
+      "B": "Correct: 1.10 × 0.95 = 1.045, a net gain of 4.5%.",
+      "C": "Student correctly computes the combined multiplier (1.10 × 0.95 = 1.045) but truncates 4.5% to 4%, dropping the 0.5 percentage point from the product.",
+      "D": "Student ignores the direction of the second change, treating the 5% decrease as a 5% increase and adding both rates (10% + 5% = 15%)."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -9493,22 +9493,22 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Each year's percent applies to that year's starting value, not the original $5,000. Chain the multipliers: × 1.10, then × 0.95."
+        "hint_text": "Convert each change to a multiplier: +10% = ×1.10; −5% = ×0.95. Multiply them together to find the combined multiplier, then read off the net percent change."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Year 1: $5,000 × 1.10 = $5,500. Year 2: $5,500 × 0.95 = $5,225."
+        "hint_text": "Try $1,000: after year 1 = $1,100; after year 2 = $1,045. Net change = $45 on $1,000 = 4.5% gain."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "A 10% gain then a 5% loss is a net gain less than 5%, so the final value should be between $5,000 and $5,250."
+        "hint_text": "A 10% gain followed by a 5% loss cannot be a simple 5% net gain — the loss applies to the already-higher value. The net gain must be slightly less than 5%, so look for an answer just below 5%."
       }
     ],
     "content_context": "personal_finance",
     "context_tags": [
       "compound_percent_change",
       "investment",
-      "multi_step",
+      "net_percent",
       "chained_multipliers"
     ],
     "estimated_time_seconds": 130,
@@ -9524,12 +9524,12 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised from 'find final dollar value' (flagged as insufficiently Advanced; estimate hint also misleading) to 'find net percent change,' which requires interpreting the product of multipliers as a percent — a more demanding conceptual step. estimate_first hint rewritten. Key changed C→B."
   },
   {
     "item_id": "QR_A_040",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -9557,7 +9557,7 @@
     "correct_answer": "D",
     "explanation": "Percent increase = (85 − 68) ÷ 68 × 100 = 17 ÷ 68 × 100 = 25%. A 30% improvement on 68 would require a score of 68 × 1.30 = 88.4. Since 85 < 88.4, the goal was not met.",
     "distractor_logic": {
-      "A": "Student correctly computes the 25% increase but incorrectly concludes the goal was met, perhaps comparing 25% to 30% without checking the required score.",
+      "A": "Student correctly computes the 25% increase but misinterprets the goal: they read '30% improvement goal' as 'the student must show improvement' rather than 'the student must achieve at least a 30% increase.' Since any positive percent change constitutes improvement in their reading, they conclude the goal was met.",
       "B": "Student uses the raw point change (17 points) as the percent increase rather than dividing by the original score, getting 17% instead of 25%.",
       "C": "Student divides the change by the new score instead of the original (17 ÷ 85 ≈ 0.20 = 20%) and correctly identifies the goal was not met.",
       "D": "Correct: percent increase = 25%; required score for 30% improvement = 68 × 1.30 = 88.4 > 85, so goal was not met."
@@ -9607,7 +9607,7 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised: distractor A rationale corrected — previous wording was logically contradictory (comparing 25% < 30% would show goal not met, not met). New rationale: student misreads 'improvement goal' as 'any improvement suffices' per QR.2.3 review."
   },
   {
     "item_id": "QR_B_048",
@@ -10714,7 +10714,7 @@
   {
     "item_id": "QR_B_057",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -10724,7 +10724,7 @@
     "topic_id": "QR.2.5",
     "topic": "rates_and_unit_rates",
     "topic_text": "Rates and Unit Rates",
-    "proficiency_level": "Basic",
+    "proficiency_level": "Proficient",
     "assessment_layer": "CRC",
     "unit": 2,
     "skills_targeted": [
@@ -10743,11 +10743,11 @@
     "explanation": "60 mi/hr × (5,280 ft/mi) ÷ (3,600 s/hr) = 60 × 5,280 ÷ 3,600 = 316,800 ÷ 3,600 = 88 ft/s.",
     "distractor_logic": {
       "A": "Student reports the original speed (60) without performing any unit conversion.",
-      "B": "Student converts hours to seconds (60 × 60 = 3,600) but does not convert miles to feet, leaving the rate in miles per second scaled incorrectly.",
+      "B": "Student multiplies 60 by 60 to eliminate 'per hour' (60 × 60 = 3,600), reasoning by analogy that multiplying by 60 converts hours to minutes and then to seconds, without applying the miles-to-feet conversion (5,280 ft/mi) at all.",
       "C": "Correct: 60 × 5,280 ÷ 3,600 = 88 ft/s.",
       "D": "Student correctly multiplies by 5,280 but divides by 600 instead of 3,600 (using 10 minutes instead of 60 minutes per hour): 60 × 5,280 ÷ 600 = 528."
     },
-    "difficulty_level": "Basic",
+    "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
     "guessing_c": null,
@@ -10764,7 +10764,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "60 mph is a familiar speed. 88 ft/s is the well-known equivalent — about 1.5 feet every 1/60th of a second."
+        "hint_text": "100 ft/s ≈ 68 mph, so 60 mph must be a little under 100 ft/s. Only choice C (88 ft/s) falls in that range."
       }
     ],
     "content_context": "travel",
@@ -10787,7 +10787,7 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised: relabeled Basic → Proficient (two-step dimensional analysis is above Basic calibration); distractor B rationale rewritten to coherently explain how 3,600 is reached; estimate_first hint rewritten per QR.2.5 review."
   },
   {
     "item_id": "QR_P_046",
@@ -11026,7 +11026,7 @@
   {
     "item_id": "QR_A_043",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -11048,7 +11048,7 @@
     "answer_choices": {
       "A": "195 miles",
       "B": "165 miles",
-      "C": "3 miles",
+      "C": "130 miles",
       "D": "225 miles"
     },
     "correct_answer": "D",
@@ -11056,7 +11056,7 @@
     "distractor_logic": {
       "A": "Student splits the total distance equally between the two trains (390 ÷ 2 = 195 miles each) without accounting for their different speeds.",
       "B": "Student correctly finds the meeting time (3 hours) but multiplies by Train B's speed (55 × 3 = 165 miles) instead of Train A's speed.",
-      "C": "Student correctly computes the meeting time (3 hours) but reports 3 as a distance in miles rather than continuing to find Train A's distance.",
+      "C": "Student correctly computes the closing rate (75 + 55 = 130 mph) and the meeting time (390 ÷ 130 = 3 hours) but then reports the closing rate value (130) as Train A’s distance in miles, confusing a speed with a distance.",
       "D": "Correct: closing rate = 130 mph; time = 3 hours; Train A travels 75 × 3 = 225 miles."
     },
     "difficulty_level": "Advanced",
@@ -11104,7 +11104,7 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised: distractor C replaced from 3 miles (trivially eliminated as not a plausible distance) to 130 miles (student conflates the closing rate value with Train A’s distance) per QR.2.5 review. Difficulty kept Advanced."
   },
   {
     "item_id": "QR_A_044",
@@ -12622,7 +12622,7 @@
   {
     "item_id": "QR_A_047",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -12641,21 +12641,21 @@
       "squaring the linear conversion factor before multiplying by an area measurement",
       "recognizing that area conversion requires applying the linear factor twice"
     ],
-    "question_text": "A room measures 15 feet by 12 feet. What is the area of the room in square meters? (Use: 1 foot = 0.3 meters)",
+    "question_text": "A room measures 15 feet by 12 feet. What is the approximate area of the room in square meters? (Use: 1 foot ≈ 0.3 meters)",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "54 m²",
       "B": "2,000 m²",
-      "C": "16.2 m²",
+      "C": "≈ 16.2 m²",
       "D": "1.62 m²"
     },
     "correct_answer": "C",
-    "explanation": "Area in ft² = 15 × 12 = 180 ft². Conversion factor for area: (0.3 m/ft)² = 0.09 m²/ft². Area in m² = 180 × 0.09 = 16.2 m².",
+    "explanation": "Area in ft² = 15 × 12 = 180 ft². Using 1 ft ≈ 0.3 m, the conversion factor for area is (0.3 m/ft)² = 0.09 m²/ft². Area ≈ 180 × 0.09 = 16.2 m².",
     "distractor_logic": {
       "A": "Student applies the linear conversion factor (not squared) to the area: 180 × 0.3 = 54 m², forgetting that area units require squaring the conversion factor.",
       "B": "Student inverts the conversion, dividing by the squared factor instead of multiplying: 180 ÷ 0.09 = 2,000 m².",
       "C": "Correct: 180 ft² × (0.3)² m²/ft² = 180 × 0.09 = 16.2 m².",
-      "D": "Student cubes the linear factor instead of squaring it (0.3³ = 0.027 ≈ 0.009): 180 × 0.009 = 1.62 m²."
+      "D": "Student correctly computes the area in m² as 180 × (0.3)² = 180 × 0.09 = 16.2 m², but then divides by 10 once more — perhaps thinking an additional adjustment is needed to convert between sub-units — arriving at 16.2 ÷ 10 = 1.62 m²."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -12702,7 +12702,7 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised: (1) distractor D rationale corrected — previous version claimed 0.3³ ≈ 0.009 (false: 0.3³ = 0.027) and 180×0.009=1.62 (false: 180×0.027=4.86). New rationale: student correctly reaches 16.2 m² then divides by 10 unnecessarily, giving 1.62. (2) Stem updated to say 'approximate' and use ≈, answer choice C updated to '≈ 16.2 m²', and explanation updated to flag approximation — per QR.2.7 review."
   },
   {
     "item_id": "QR_A_048",

@@ -314,7 +314,7 @@
   {
     "item_id": "QR_B_057",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -324,7 +324,7 @@
     "topic_id": "QR.2.5",
     "topic": "rates_and_unit_rates",
     "topic_text": "Rates and Unit Rates",
-    "proficiency_level": "Basic",
+    "proficiency_level": "Proficient",
     "assessment_layer": "CRC",
     "unit": 2,
     "skills_targeted": [
@@ -343,11 +343,11 @@
     "explanation": "60 mi/hr \u00d7 (5,280 ft/mi) \u00f7 (3,600 s/hr) = 60 \u00d7 5,280 \u00f7 3,600 = 316,800 \u00f7 3,600 = 88 ft/s.",
     "distractor_logic": {
       "A": "Student reports the original speed (60) without performing any unit conversion.",
-      "B": "Student converts hours to seconds (60 \u00d7 60 = 3,600) but does not convert miles to feet, leaving the rate in miles per second scaled incorrectly.",
+      "B": "Student multiplies 60 by 60 to eliminate 'per hour' (60 \u00d7 60 = 3,600), reasoning by analogy that multiplying by 60 converts hours to minutes and then to seconds, without applying the miles-to-feet conversion (5,280 ft/mi) at all.",
       "C": "Correct: 60 \u00d7 5,280 \u00f7 3,600 = 88 ft/s.",
       "D": "Student correctly multiplies by 5,280 but divides by 600 instead of 3,600 (using 10 minutes instead of 60 minutes per hour): 60 \u00d7 5,280 \u00f7 600 = 528."
     },
-    "difficulty_level": "Basic",
+    "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
     "guessing_c": null,
@@ -364,7 +364,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "60 mph is a familiar speed. 88 ft/s is the well-known equivalent \u2014 about 1.5 feet every 1/60th of a second."
+        "hint_text": "100 ft/s \u2248 68 mph, so 60 mph must be a little under 100 ft/s. Only choice C (88 ft/s) falls in that range."
       }
     ],
     "content_context": "travel",
@@ -387,7 +387,7 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised: relabeled Basic \u2192 Proficient (two-step dimensional analysis is above Basic calibration); distractor B rationale rewritten to coherently explain how 3,600 is reached; estimate_first hint rewritten per QR.2.5 review."
   },
   {
     "item_id": "QR_P_046",
@@ -626,7 +626,7 @@
   {
     "item_id": "QR_A_043",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -648,7 +648,7 @@
     "answer_choices": {
       "A": "195 miles",
       "B": "165 miles",
-      "C": "3 miles",
+      "C": "130 miles",
       "D": "225 miles"
     },
     "correct_answer": "D",
@@ -656,7 +656,7 @@
     "distractor_logic": {
       "A": "Student splits the total distance equally between the two trains (390 \u00f7 2 = 195 miles each) without accounting for their different speeds.",
       "B": "Student correctly finds the meeting time (3 hours) but multiplies by Train B's speed (55 \u00d7 3 = 165 miles) instead of Train A's speed.",
-      "C": "Student correctly computes the meeting time (3 hours) but reports 3 as a distance in miles rather than continuing to find Train A's distance.",
+      "C": "Student correctly computes the closing rate (75 + 55 = 130 mph) and the meeting time (390 \u00f7 130 = 3 hours) but then reports the closing rate value (130) as Train A\u2019s distance in miles, confusing a speed with a distance.",
       "D": "Correct: closing rate = 130 mph; time = 3 hours; Train A travels 75 \u00d7 3 = 225 miles."
     },
     "difficulty_level": "Advanced",
@@ -704,7 +704,7 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": "Revised: distractor C replaced from 3 miles (trivially eliminated as not a plausible distance) to 130 miles (student conflates the closing rate value with Train A\u2019s distance) per QR.2.5 review. Difficulty kept Advanced."
   },
   {
     "item_id": "QR_A_044",
