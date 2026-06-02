@@ -1,0 +1,711 @@
+[
+  {
+    "item_id": "AR_B_009",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the excluded value of a rational function with a linear denominator",
+      "applying the rule that a denominator cannot equal zero"
+    ],
+    "question_text": "What is the domain of f(x) = 1 / (x − 5)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "All real numbers except x = 5",
+      "B": "All real numbers except x = −5",
+      "C": "All real numbers except x = 0",
+      "D": "All real numbers"
+    },
+    "correct_answer": "A",
+    "explanation": "A rational function is undefined wherever its denominator equals zero. Set the denominator equal to zero and solve: x − 5 = 0 → x = 5. So x = 5 must be excluded. The domain is all real numbers except x = 5.",
+    "distractor_logic": {
+      "A": "Correct: x − 5 = 0 gives x = 5, which must be excluded from the domain.",
+      "B": "Student makes a sign error when solving x − 5 = 0, reporting x = −5 instead of x = 5.",
+      "C": "Student confuses the domain restriction with a default 'x cannot be zero' rule, or incorrectly sets the numerator (1 = 0) equal to zero to find the excluded value.",
+      "D": "Student does not apply the denominator-cannot-be-zero rule and concludes the function is defined for all real numbers."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Set the denominator equal to zero and solve. The solution is the value that must be excluded from the domain."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try substituting x = 5 into the function. If the denominator becomes zero, that value is excluded."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_function", "domain_restriction", "excluded_value", "linear_denominator"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_010",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a two-step linear equation to find the excluded value of a rational function",
+      "correctly dividing by a coefficient when isolating the variable in a denominator equation"
+    ],
+    "question_text": "What is the domain of g(x) = 7 / (2x + 6)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "All real numbers except x = 3",
+      "B": "All real numbers except x = 6",
+      "C": "All real numbers except x = −6",
+      "D": "All real numbers except x = −3"
+    },
+    "correct_answer": "D",
+    "explanation": "Set the denominator equal to zero and solve:\n2x + 6 = 0\n2x = −6\nx = −3\n\nSo x = −3 must be excluded. The domain is all real numbers except x = −3.",
+    "distractor_logic": {
+      "A": "Student makes a sign error when moving the constant: treats 2x + 6 = 0 as 2x = 6 (drops the negative), giving x = 3.",
+      "B": "Student does not solve the equation and instead reads the constant term (6) directly as the excluded value.",
+      "C": "Student correctly finds 2x = −6 but forgets to divide by 2, reporting x = −6 instead of x = −3.",
+      "D": "Correct: 2x + 6 = 0 → 2x = −6 → x = −3."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Set 2x + 6 = 0 and solve step by step: subtract 6, then divide by 2."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute your answer back into 2x + 6 to verify the denominator equals zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_function", "domain_restriction", "excluded_value", "two_step_equation"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_011",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding the domain of a square root function by requiring the radicand to be non-negative",
+      "solving a linear inequality to express the domain of a radical function"
+    ],
+    "question_text": "What is the domain of h(x) = √(x − 4)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x ≥ 0",
+      "B": "x ≥ −4",
+      "C": "x ≥ 4",
+      "D": "x > 4"
+    },
+    "correct_answer": "C",
+    "explanation": "The expression under a square root (the radicand) must be greater than or equal to zero. Set up the inequality and solve:\nx − 4 ≥ 0\nx ≥ 4\n\nThe domain is all real numbers x ≥ 4, or [4, ∞). Note that x = 4 is included because √0 = 0 is defined.",
+    "distractor_logic": {
+      "A": "Student applies the non-negative rule to x itself rather than to the expression x − 4, writing x ≥ 0 without accounting for the −4 inside the radical.",
+      "B": "Student solves x − 4 ≥ 0 but makes a sign error, adding −4 to both sides instead of +4, arriving at x ≥ −4.",
+      "C": "Correct: x − 4 ≥ 0 → x ≥ 4.",
+      "D": "Student uses a strict inequality (x > 4), thinking the endpoint x = 4 is excluded — but √0 = 0 is defined, so x = 4 belongs to the domain."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Set the expression inside the square root greater than or equal to zero: x − 4 ≥ 0, then solve for x."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test x = 4: √(4 − 4) = √0 = 0 — defined. Test x = 3: √(3 − 4) = √(−1) — undefined. So x = 4 is the boundary."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_function", "domain_restriction", "square_root", "linear_inequality"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_012",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the excluded value of a rational function with a sum in the denominator",
+      "correctly applying the sign when solving a linear equation of the form x + c = 0"
+    ],
+    "question_text": "What is the domain of f(x) = 5 / (x + 8)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "All real numbers except x = −8",
+      "B": "All real numbers except x = 8",
+      "C": "All real numbers",
+      "D": "All real numbers except x = 0"
+    },
+    "correct_answer": "A",
+    "explanation": "Set the denominator equal to zero and solve:\nx + 8 = 0\nx = −8\n\nSo x = −8 must be excluded. The domain is all real numbers except x = −8.",
+    "distractor_logic": {
+      "A": "Correct: x + 8 = 0 → x = −8.",
+      "B": "Student solves x + 8 = 0 but drops the negative sign, reporting x = 8 instead of x = −8.",
+      "C": "Student does not apply the denominator-cannot-be-zero rule and concludes the function is defined for all real numbers.",
+      "D": "Student applies a default rule that 'x cannot be zero' rather than solving for the actual excluded value from the denominator."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Set x + 8 = 0 and solve. Remember: subtracting 8 from both sides gives a negative result."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check your answer by substituting it into x + 8. If the result is 0, you found the correct excluded value."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_function", "domain_restriction", "excluded_value", "sign_error"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_013",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Radical and Rational Functions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding the domain of a square root function whose radicand contains a coefficient",
+      "solving a two-step linear inequality to determine the minimum valid input"
+    ],
+    "question_text": "What is the domain of g(x) = √(3x − 9)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x ≥ 9",
+      "B": "x ≥ 3",
+      "C": "x ≥ −3",
+      "D": "x ≥ 1/3"
+    },
+    "correct_answer": "B",
+    "explanation": "The radicand must be greater than or equal to zero:\n3x − 9 ≥ 0\n3x ≥ 9\nx ≥ 3\n\nThe domain is all real numbers x ≥ 3, or [3, ∞).",
+    "distractor_logic": {
+      "A": "Student correctly isolates 3x ≥ 9 but forgets to divide both sides by 3, reporting x ≥ 9 instead of x ≥ 3.",
+      "B": "Correct: 3x − 9 ≥ 0 → 3x ≥ 9 → x ≥ 3.",
+      "C": "Student misreads the sign of the constant term, solving 3x + 9 ≥ 0 instead of 3x − 9 ≥ 0, which gives 3x ≥ −9 → x ≥ −3.",
+      "D": "Student inverts the division step, computing 1/3 instead of 9/3 when dividing 9 by 3 — treating the operation as taking the reciprocal rather than dividing."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Set the radicand greater than or equal to zero: 3x − 9 ≥ 0. Add 9, then divide by 3."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test x = 3: 3(3) − 9 = 0, and √0 is defined. Test x = 2: 3(2) − 9 = −3, and √(−3) is undefined. So x = 3 is the boundary."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_function", "domain_restriction", "square_root", "coefficient_in_radicand"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_009",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "factoring a quadratic denominator to find all excluded values of a rational function",
+      "identifying two distinct excluded values from a factorable quadratic denominator"
+    ],
+    "question_text": "What is the domain of f(x) = (x + 1) / (x² − x − 6)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "All real numbers except x = 3 and x = −2",
+      "B": "All real numbers except x = −3 and x = 2",
+      "C": "All real numbers except x = 6",
+      "D": "All real numbers except x = 1"
+    },
+    "correct_answer": "A",
+    "explanation": "Set the denominator equal to zero and factor:\nx² − x − 6 = 0\n(x − 3)(x + 2) = 0\nx = 3  or  x = −2\n\nBoth values make the denominator zero, so both must be excluded. The domain is all real numbers except x = 3 and x = −2.\n\nVerify factoring: (x − 3)(x + 2) = x² + 2x − 3x − 6 = x² − x − 6 ✓",
+    "distractor_logic": {
+      "A": "Correct: (x − 3)(x + 2) = 0 gives x = 3 or x = −2.",
+      "B": "Student factors incorrectly as (x + 3)(x − 2) = 0, reversing the signs on both factors and finding x = −3 or x = 2 instead.",
+      "C": "Student does not factor the denominator and instead treats the constant term (−6) as the excluded value, reporting x = 6.",
+      "D": "Student takes the coefficient of the middle term (−1) in x² − x − 6 and reports x = 1 as the excluded value, without solving the equation."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Factor x² − x − 6 by finding two numbers that multiply to −6 and add to −1. Set each factor equal to zero."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check your excluded values by substituting them into x² − x − 6. Each one should make the expression equal to zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_function", "domain_restriction", "quadratic_denominator", "factoring"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_010",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "applying both the radical restriction (radicand ≥ 0) and the rational restriction (denominator ≠ 0) to a combined expression",
+      "intersecting two domain conditions to find the complete domain of a compound function"
+    ],
+    "question_text": "What is the domain of f(x) = √(x + 3) / (x − 1)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x ≥ −3",
+      "B": "x ≥ −3 and x ≠ 1",
+      "C": "x ≠ 1",
+      "D": "x > −3 and x ≠ 1"
+    },
+    "correct_answer": "B",
+    "explanation": "This function has two restrictions:\n\n1. Radical: the radicand must be non-negative.\n   x + 3 ≥ 0 → x ≥ −3\n\n2. Rational: the denominator cannot be zero.\n   x − 1 ≠ 0 → x ≠ 1\n\nBoth conditions must hold simultaneously. The domain is x ≥ −3 and x ≠ 1.\n\nNote: x = −3 is included because f(−3) = √0 / (−3 − 1) = 0 / (−4) = 0, which is defined.",
+    "distractor_logic": {
+      "A": "Student applies only the radical restriction (x ≥ −3) and ignores the denominator restriction, not excluding x = 1.",
+      "B": "Correct: both restrictions applied — x ≥ −3 (radicand non-negative) and x ≠ 1 (denominator nonzero).",
+      "C": "Student applies only the denominator restriction (x ≠ 1) and ignores the radical restriction, allowing negative values of x + 3 under the square root.",
+      "D": "Student applies both restrictions correctly but uses a strict inequality for the radical boundary, writing x > −3 instead of x ≥ −3 — incorrectly excluding x = −3 even though f(−3) = 0 is defined."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "List each restriction separately: set the radicand ≥ 0, and set the denominator ≠ 0. Then combine both conditions."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test x = −3 (radical boundary) and x = 1 (denominator zero). Check which are defined and which are not."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_function", "radical_function", "domain_restriction", "compound_expression"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_011",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "comparing the domains of rational and radical functions to identify which is most restricted",
+      "recognizing that √(x²) is defined for all real numbers while √x requires x ≥ 0"
+    ],
+    "question_text": "Which of the following functions has the most restricted domain (that is, the fewest valid input values)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "f(x) = 1/x",
+      "B": "g(x) = 1/x²",
+      "C": "h(x) = √x",
+      "D": "k(x) = √(x²)"
+    },
+    "correct_answer": "C",
+    "explanation": "Compare the domain of each function:\n\nf(x) = 1/x: defined for all x ≠ 0 — excludes one value.\ng(x) = 1/x²: defined for all x ≠ 0 — also excludes one value (x² = 0 only when x = 0).\nh(x) = √x: requires x ≥ 0 — excludes all negative numbers, which is an infinite set.\nk(x) = √(x²): since x² ≥ 0 for every real number, the radicand is always non-negative. Domain is all real numbers — no restriction.\n\nh(x) = √x has the most restricted domain because it excludes every negative real number.",
+    "distractor_logic": {
+      "A": "Student thinks dividing by a variable is more restrictive than a square root, reasoning that 'division by x' excludes more values than the square root condition — but 1/x excludes only the single point x = 0, while √x excludes all negative numbers.",
+      "B": "Student believes squaring the denominator in 1/x² imposes a stricter restriction than 1/x — but x² = 0 still has only one solution (x = 0), so the domain is the same as for 1/x.",
+      "C": "Correct: h(x) = √x requires x ≥ 0, excluding all negative real numbers — a more restricted domain than either rational function (which each exclude only x = 0) or k(x) (which has no restriction).",
+      "D": "Student assumes √(x²) has the same restriction as √x, not recognizing that squaring x first guarantees a non-negative radicand for all real inputs, making the domain completely unrestricted."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Write out the domain of each function separately, then compare which allows the fewest inputs."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "k(x) = √(x²): since x² is always non-negative, there is no restriction — eliminate it. Then compare the remaining three."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["domain_restriction", "radical_function", "rational_function", "comparison"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_009",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the correct mathematical reason for a domain exclusion in a contextual rational function",
+      "distinguishing between a zero output and an undefined output in a rational function"
+    ],
+    "question_text": "The profit from a school fundraiser is modeled by P(n) = (500n − 1000) / (n − 2), where n is the number of items sold. Which statement best explains why n = 2 must be excluded from the domain?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Because P(2) = 0, meaning no profit is earned at n = 2, so it is not a useful input.",
+      "B": "Because the numerator equals zero at n = 2, meaning the function has a zero there.",
+      "C": "Because n must be greater than 2 for the fundraiser to be profitable.",
+      "D": "Because substituting n = 2 makes the denominator equal to zero, making P(2) undefined."
+    },
+    "correct_answer": "D",
+    "explanation": "Substitute n = 2:\n  Numerator: 500(2) − 1000 = 0\n  Denominator: 2 − 2 = 0\n\nBoth numerator and denominator equal zero, giving the indeterminate form 0/0. This is undefined — not zero. A rational function is excluded from its domain wherever the denominator equals zero, regardless of the numerator's value. Therefore n = 2 must be excluded because it makes the denominator zero.",
+    "distractor_logic": {
+      "A": "Student computes the numerator (500(2) − 1000 = 0) and concludes P(2) = 0, confusing an undefined output (0/0) with a zero output. A zero output would be valid; it is the undefined output that requires exclusion.",
+      "B": "Student correctly identifies that the numerator is zero at n = 2 but applies the wrong rule — a zero numerator (with a nonzero denominator) produces an output of zero, which is perfectly valid. It is the zero denominator that creates the exclusion.",
+      "C": "Student conflates a mathematical domain restriction with a contextual profitability condition, reasoning that n = 2 should be excluded because it doesn't generate profit — but domain restrictions are determined by where the function is undefined, not by whether outputs are desirable.",
+      "D": "Correct: n = 2 makes the denominator n − 2 equal to zero, making P(2) undefined. This is the mathematical reason for the domain exclusion."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute n = 2 into both the numerator and denominator separately. What does each equal? What does that tell you about the output?"
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Domain exclusions in rational functions come from the denominator equaling zero — not from the numerator equaling zero or from contextual limitations."
+      }
+    ],
+    "content_context": "school_fundraiser",
+    "context_tags": ["rational_function", "domain_restriction", "real_world_context", "undefined_vs_zero"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_010",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding the domain of a rational function with a difference-of-squares denominator and a matching numerator factor",
+      "recognizing that canceling a common factor does not restore values excluded by the original denominator"
+    ],
+    "question_text": "Let f(x) = (x + k) / (x² − k²), where k is a positive constant. Which of the following correctly describes the domain of f?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "All real numbers except x = k",
+      "B": "All real numbers, because the (x + k) factors cancel",
+      "C": "All real numbers except x = k and x = −k",
+      "D": "All real numbers except x = k²"
+    },
+    "correct_answer": "C",
+    "explanation": "Factor the denominator using the difference of squares:\nx² − k² = (x − k)(x + k)\n\nThe denominator equals zero when x = k or x = −k. Both values must be excluded from the domain.\n\nNote: the numerator (x + k) shares a factor with the denominator, creating a removable discontinuity (hole) at x = −k. However, cancellation does not change the domain of the original function — x = −k still makes the original denominator zero and remains excluded.\n\nDomain: all real numbers except x = k and x = −k.",
+    "distractor_logic": {
+      "A": "Student factors the denominator correctly and finds x = k and x = −k, but then reasons that since the numerator (x + k) is also zero at x = −k, the expression is '0/0 which simplifies to 0' — incorrectly treating the indeterminate form as a defined output of zero and excluding only x = k.",
+      "B": "Student cancels the common factor (x + k) from numerator and denominator to obtain 1/(x − k), then reads the domain of the simplified form as the domain of the original function — failing to recognize that cancellation does not restore the value x = −k that was excluded before simplification.",
+      "C": "Correct: the denominator (x − k)(x + k) equals zero at both x = k and x = −k, so both must be excluded from the domain of the original function.",
+      "D": "Student sees k² in the expression x² − k² and takes the excluded value to be x = k² — solving x = k² rather than factoring and solving x² = k²."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Factor the denominator first: x² − k² = (x − k)(x + k). The domain excludes every value of x that makes either factor zero."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try substituting x = −k into the original function — not the simplified version. Does the denominator equal zero?"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_function", "domain_restriction", "difference_of_squares", "removable_discontinuity"],
+    "estimated_time_seconds": 150,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  }
+]

@@ -1,0 +1,427 @@
+[
+  {
+    "item_id": "AR_B_005",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.3",
+    "topic": "domain_and_range",
+    "topic_text": "Domain and Range",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "identifying the domain as the set of input values from a set of ordered pairs",
+      "identifying the range as the set of distinct output values from a set of ordered pairs"
+    ],
+    "question_text": "What are the domain and range of the relation {(−2, 3), (0, 5), (1, 3), (4, 7)}?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Domain: {3, 5, 7} and Range: {−2, 0, 1, 4}",
+      "B": "Domain: {−2, 0, 1, 4} and Range: {3, 5, 7}",
+      "C": "Domain: {−2, 0, 1, 4} and Range: {3, 3, 5, 7}",
+      "D": "Domain: {−2, 0, 1, 3, 4} and Range: {3, 5, 7}"
+    },
+    "correct_answer": "B",
+    "explanation": "The domain is the set of all input (x) values: {−2, 0, 1, 4}. The range is the set of all output (y) values. The y-values are 3, 5, 3, and 7 — but since 3 appears twice and a set lists each value once, the range is {3, 5, 7}.",
+    "distractor_logic": {
+      "A": "Student swaps the roles of domain and range, assigning the output values to the domain and the input values to the range.",
+      "B": "Correct: domain = {−2, 0, 1, 4} (all x-values); range = {3, 5, 7} (all distinct y-values).",
+      "C": "Student correctly identifies the domain and range values but lists the repeated output 3 twice, treating the range as an ordered list rather than a set.",
+      "D": "Student notices that the value 3 appears as an output and incorrectly adds it to the domain, conflating the shared numerical value with membership in the input set."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "In each ordered pair (x, y), the first number is an input and the second is an output. Collect all inputs for the domain and all distinct outputs for the range."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The domain comes from x-values only and the range from y-values only — eliminate any choice that mixes them or lists the same value twice."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["domain", "range", "ordered_pairs", "set_notation"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_006",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.3",
+    "topic": "domain_and_range",
+    "topic_text": "Domain and Range",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "reading domain and range from function notation",
+      "recognizing that all defined inputs belong to the domain regardless of whether their outputs are unique"
+    ],
+    "question_text": "A function f has exactly four input-output pairs: f(1) = 6, f(2) = 8, f(3) = 6, and f(4) = 10. What are the domain and range of f?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Domain: {1, 2, 3, 4} and Range: {6, 6, 8, 10}",
+      "B": "Domain: {6, 8, 10} and Range: {1, 2, 3, 4}",
+      "C": "Domain: {1, 2, 3, 4} and Range: {6, 8, 10}",
+      "D": "Domain: {1, 2, 4} and Range: {6, 8, 10}"
+    },
+    "correct_answer": "C",
+    "explanation": "The domain is the set of all inputs: {1, 2, 3, 4}. The range is the set of all distinct outputs: {6, 8, 10}. Although both f(1) and f(3) produce the output 6, the value 6 is listed only once in the range because a set does not repeat elements. All four inputs — including 3 — belong to the domain.",
+    "distractor_logic": {
+      "A": "Student correctly identifies the domain but lists the range as a multiset {6, 6, 8, 10}, repeating 6 twice instead of recognizing that a set contains each element exactly once.",
+      "B": "Student swaps domain and range, assigning the output values to the domain and the input values to the range.",
+      "C": "Correct: domain = {1, 2, 3, 4}; range = {6, 8, 10} (6 listed once).",
+      "D": "Student drops input 3 from the domain because f(3) = 6 repeats an output already seen for f(1), incorrectly reasoning that a repeated output means the corresponding input is not a valid domain element."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Every number that appears as an input belongs to the domain. Every distinct output value belongs to the range."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "All four inputs (1, 2, 3, 4) are defined — eliminate any choice that drops one of them from the domain."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["domain", "range", "function_notation", "set_notation"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_005",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.3",
+    "topic": "domain_and_range",
+    "topic_text": "Domain and Range",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "determining domain and range from the endpoints of a continuous line segment",
+      "expressing domain and range as intervals rather than discrete sets"
+    ],
+    "question_text": "A function is graphed as a line segment with endpoints at (−3, 1) and (5, 9). What are the domain and range of this function?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Domain: [−3, 5] and Range: {1, 9}",
+      "B": "Domain: {−3, 5} and Range: {1, 9}",
+      "C": "Domain: [1, 9] and Range: [−3, 5]",
+      "D": "Domain: [−3, 5] and Range: [1, 9]"
+    },
+    "correct_answer": "D",
+    "explanation": "The line segment runs continuously from x = −3 to x = 5, so every x-value in between is included. The domain is the interval [−3, 5]. The corresponding y-values run continuously from y = 1 to y = 9, so the range is the interval [1, 9]. Because the graph is a connected segment (not just two isolated points), both domain and range must be expressed as intervals, not as sets of individual points.",
+    "distractor_logic": {
+      "A": "Student correctly identifies the domain as an interval [−3, 5] but treats the range as the two endpoint y-values only, listing {1, 9} as a discrete set and ignoring all y-values between them.",
+      "B": "Student treats both domain and range as discrete sets of the endpoint coordinates, listing only the two x-values and the two y-values and ignoring every point along the segment.",
+      "C": "Student swaps domain and range, assigning the y-interval to the domain and the x-interval to the range.",
+      "D": "Correct: the segment spans x ∈ [−3, 5] and y ∈ [1, 9], both expressed as closed intervals."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "For a continuous segment, the domain is all x-values from the left endpoint to the right endpoint, and the range is all y-values from the bottom endpoint to the top endpoint."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Because the graph is a connected line segment — not a scatter of points — both domain and range must be intervals, not sets of two values."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["domain", "range", "line_segment", "interval_notation"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_006",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.3",
+    "topic": "domain_and_range",
+    "topic_text": "Domain and Range",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "computing the range of a quadratic function over a restricted domain",
+      "identifying the minimum value of x² on a symmetric interval"
+    ],
+    "question_text": "The function g is defined for all real numbers x such that −4 ≤ x ≤ 4, and g(x) = x². What are the domain and range of g?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Domain: [−4, 4] and Range: [0, 16]",
+      "B": "Domain: [−4, 4] and Range: [−16, 16]",
+      "C": "Domain: [−4, 4] and Range: [0, 4]",
+      "D": "Domain: [0, 16] and Range: [−4, 4]"
+    },
+    "correct_answer": "A",
+    "explanation": "The domain is given directly: all x with −4 ≤ x ≤ 4, so domain = [−4, 4].\n\nFor the range, evaluate g(x) = x² across this domain. The minimum value occurs at x = 0: g(0) = 0. The maximum occurs at both endpoints: g(−4) = 16 and g(4) = 16. Every value between 0 and 16 is achieved, so range = [0, 16].",
+    "distractor_logic": {
+      "A": "Correct: domain = [−4, 4] (given); range = [0, 16] since x² achieves a minimum of 0 at x = 0 and a maximum of 16 at x = ±4.",
+      "B": "Student applies the squaring to the magnitude of the boundaries but preserves sign, producing −16 as a lower bound — forgetting that x² is always non-negative and cannot produce a negative output.",
+      "C": "Student reads the range endpoints directly from the domain boundaries without squaring, using 0 and 4 instead of 0 and 16.",
+      "D": "Student correctly identifies the domain and range values but swaps them, assigning [0, 16] to the domain and [−4, 4] to the range."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Evaluate g(x) = x² at the endpoints (x = −4 and x = 4) and at x = 0 to find the minimum and maximum outputs."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Squaring any real number always gives a non-negative result — the range cannot include negative values."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["domain", "range", "quadratic_function", "restricted_domain"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_005",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.3",
+    "topic": "domain_and_range",
+    "topic_text": "Domain and Range",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "determining how a horizontal shift affects the domain of a transformed function",
+      "recognizing that a horizontal shift does not alter the range of a function"
+    ],
+    "question_text": "The function f has domain [−2, 6] and range [1, 9]. A new function g is defined by g(x) = f(x − 3). What are the domain and range of g?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Domain: [1, 9] and Range: [1, 9]",
+      "B": "Domain: [−5, 3] and Range: [1, 9]",
+      "C": "Domain: [−2, 6] and Range: [1, 9]",
+      "D": "Domain: [1, 9] and Range: [4, 12]"
+    },
+    "correct_answer": "A",
+    "explanation": "In g(x) = f(x − 3), the expression (x − 3) is the input fed into f. For f to be defined, its input must lie in f's domain [−2, 6]:\n\n  −2 ≤ x − 3 ≤ 6\n\nAdd 3 to all parts:\n\n  1 ≤ x ≤ 9\n\nSo the domain of g is [1, 9] — the domain of f shifted 3 units to the right.\n\nThe range of g is the same as the range of f: g outputs the same values f outputs, just at different inputs. Range of g = [1, 9].",
+    "distractor_logic": {
+      "A": "Correct: subtracting 3 inside the function shifts the domain right by 3 (from [−2, 6] to [1, 9]); the range is unchanged at [1, 9].",
+      "B": "Student subtracts 3 from the domain boundaries instead of adding, shifting the domain left instead of right: [−2 − 3, 6 − 3] = [−5, 3].",
+      "C": "Student recognizes that g is a transformation of f but leaves the domain unchanged at [−2, 6], failing to account for the horizontal shift introduced by (x − 3).",
+      "D": "Student correctly shifts the domain right by 3 to get [1, 9] but also shifts the range up by 3 to get [4, 12], not recognizing that the range is determined by f's output values and is unaffected by the input substitution."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Set the expression inside f — that is, (x − 3) — equal to the boundary values of f's domain and solve for x to find g's domain."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "g(x) = f(x − 3) shifts the graph of f horizontally. The range (output values) is not affected by a horizontal shift."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["domain", "range", "horizontal_shift", "function_transformation"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_006",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.3",
+    "topic": "domain_and_range",
+    "topic_text": "Domain and Range",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "determining the domain and range of a piecewise-defined function",
+      "correctly applying open and closed interval notation to reflect endpoint inclusion"
+    ],
+    "question_text": "A function h is defined as follows:\n  h(x) = x + 2, for −3 ≤ x < 1\n  h(x) = 5,     for  1 ≤ x ≤ 4\n\nWhat are the domain and range of h?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Domain: [−3, 4] and Range: [−1, 5]",
+      "B": "Domain: [−3, 4] and Range: [−1, 3) ∪ {5}",
+      "C": "Domain: [−3, 4] and Range: [−1, 3] ∪ {5}",
+      "D": "Domain: [−3, 4] and Range: (−1, 3) ∪ {5}"
+    },
+    "correct_answer": "B",
+    "explanation": "Domain: the first piece covers −3 ≤ x < 1 and the second covers 1 ≤ x ≤ 4. Together they cover every x in [−3, 4] with no gap, so domain = [−3, 4].\n\nRange of the first piece (h(x) = x + 2 on [−3, 1)):\n  At x = −3: h = −1  (included, closed endpoint)\n  As x → 1⁻: h → 3  (not included, open endpoint)\n  First piece range: [−1, 3)\n\nRange of the second piece (h(x) = 5 on [1, 4]):\n  Constant output: {5}\n\nCombined range: [−1, 3) ∪ {5}",
+    "distractor_logic": {
+      "A": "Student reads the range as a single continuous interval from the minimum output (−1) to the maximum output (5), ignoring the jump discontinuity and treating the function as if it produces all values between −1 and 5.",
+      "B": "Correct: range = [−1, 3) ∪ {5}. The first piece produces outputs in [−1, 3) with 3 excluded because x = 1 is not in the first piece's domain; the second piece adds the isolated value 5.",
+      "C": "Student computes the first piece's range as [−1, 3] — closed at both ends — forgetting that x = 1 is excluded from the first piece (open boundary), so the output h = 3 is never achieved by that piece.",
+      "D": "Student confuses the open boundary at x = 1 (which makes the right end of the first piece's range open at 3) with the left end of the range, incorrectly writing (−1, 3) and excluding the value −1 even though h(−3) = −1 is achieved."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Evaluate h at the boundary inputs: x = −3, just below x = 1, and x = 1. Track whether each boundary is included (closed) or excluded (open)."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check whether x = 1 belongs to the first or second piece — this determines whether the output h = 3 is achieved or skipped."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["domain", "range", "piecewise_function", "interval_notation"],
+    "estimated_time_seconds": 150,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  }
+]

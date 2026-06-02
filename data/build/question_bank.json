@@ -13268,5 +13268,2657 @@
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
     "review_notes": null
+  },
+  {
+    "item_id": "AR_B_001",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.1",
+    "topic": "definition_of_a_function_and_function_notation",
+    "topic_text": "Definition of a Function and Function Notation",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "evaluating a function at a given input value",
+      "applying substitution to a linear function rule"
+    ],
+    "question_text": "Given f(x) = 3x − 4, what is f(5)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "15",
+      "B": "−5",
+      "C": "11",
+      "D": "19"
+    },
+    "correct_answer": "C",
+    "explanation": "To evaluate f(5), substitute x = 5 into the rule f(x) = 3x − 4. f(5) = 3(5) − 4 = 15 − 4 = 11.",
+    "distractor_logic": {
+      "A": "Student computes 3 × 5 = 15 but omits the −4 step, treating the function as f(x) = 3x.",
+      "B": "Student applies subtraction before multiplication: (3 − 4) × 5 = −1 × 5 = −5, violating order of operations.",
+      "C": "Correct: f(5) = 3(5) − 4 = 15 − 4 = 11.",
+      "D": "Student uses f(x) = 3x + 4 (sign flip on the constant), giving 3(5) + 4 = 19."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Replace every x in the rule with 5, then simplify step by step."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The rule is f(x) = 3x − 4. Pay attention to the minus sign before 4."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "function_notation",
+      "linear_function",
+      "substitution",
+      "evaluate"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_002",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.1",
+    "topic": "definition_of_a_function_and_function_notation",
+    "topic_text": "Definition of a Function and Function Notation",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "interpreting function notation as an input-output relationship",
+      "distinguishing the input value from the output value in f(a) = b"
+    ],
+    "question_text": "A function f is defined so that f(7) = 2. Which statement correctly interprets this?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "When the input is 2, the output is 7.",
+      "B": "When the input is 7, the output is 2.",
+      "C": "The function multiplies 7 by 2.",
+      "D": "f is equal to 7 divided by 2."
+    },
+    "correct_answer": "B",
+    "explanation": "The notation f(7) = 2 means the function f takes an input of 7 and produces an output of 2. The value inside the parentheses is always the input; the value on the right side of the equals sign is always the output.",
+    "distractor_logic": {
+      "A": "Student reverses the roles of input and output, reading f(7) = 2 as 'input 2 gives output 7.'",
+      "B": "Correct: f(7) = 2 means the input is 7 and the output is 2.",
+      "C": "Student misreads function notation as multiplication, interpreting f(7) = 2 as f × 7 = 2.",
+      "D": "Student reads 'f(7)' as a fraction (f divided by 7), then equates it to 2."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "In f(7) = 2, the number inside the parentheses is the input and the number after the equals sign is the output."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Function notation is not multiplication or division — eliminate any choice that treats it that way."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "function_notation",
+      "input_output",
+      "interpretation",
+      "basic_definition"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_001",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.1",
+    "topic": "definition_of_a_function_and_function_notation",
+    "topic_text": "Definition of a Function and Function Notation",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "evaluating a quadratic function at a negative input",
+      "applying correct sign rules when substituting negative values"
+    ],
+    "question_text": "Given g(t) = t² − 3t + 1, what is g(−2)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "−1",
+      "B": "11",
+      "C": "3",
+      "D": "1"
+    },
+    "correct_answer": "B",
+    "explanation": "Substitute t = −2 into g(t) = t² − 3t + 1.\ng(−2) = (−2)² − 3(−2) + 1\n     = 4 − (−6) + 1\n     = 4 + 6 + 1\n     = 11",
+    "distractor_logic": {
+      "A": "Student evaluates (−2)² = 4 correctly but treats −3(−2) as −6 instead of +6, giving 4 − 6 + 1 = −1.",
+      "B": "Correct: (−2)² − 3(−2) + 1 = 4 + 6 + 1 = 11.",
+      "C": "Student computes −2² = −4 (fails to square the negative), then gets −4 − 3(−2) + 1 = −4 + 6 + 1 = 3.",
+      "D": "Student evaluates at t = 2 (drops the negative sign) to get 4 − 6 + 1 = −1, then negates the result: −(−1) = 1."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Write (−2) in parentheses everywhere you see t, then simplify one term at a time."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A negative number squared is always positive: (−2)² = 4, not −4."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "function_notation",
+      "quadratic_function",
+      "substitution",
+      "negative_input"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_002",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.1",
+    "topic": "definition_of_a_function_and_function_notation",
+    "topic_text": "Definition of a Function and Function Notation",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "solving for the input value that produces a given output",
+      "interpreting f(n) = k as an equation to solve"
+    ],
+    "question_text": "A function h is defined by h(n) = 2n + 5. For which value of n does h(n) = 13?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6.5",
+      "B": "9",
+      "C": "4",
+      "D": "8"
+    },
+    "correct_answer": "C",
+    "explanation": "Set h(n) equal to 13 and solve for n.\n2n + 5 = 13\n2n = 8\nn = 4\nCheck: h(4) = 2(4) + 5 = 8 + 5 = 13 ✓",
+    "distractor_logic": {
+      "A": "Student ignores the +5 and solves 2n = 13 directly, giving n = 6.5.",
+      "B": "Student adds 5 to both sides instead of subtracting: 2n + 5 = 13 → 2n = 18 → n = 9.",
+      "C": "Correct: 2n + 5 = 13 → 2n = 8 → n = 4.",
+      "D": "Student subtracts 5 correctly (2n = 8) but forgets to divide by 2, reporting n = 8."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "use_answer_choices"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Set 2n + 5 = 13, then undo each operation in reverse order to isolate n."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Substitute each answer choice into h(n) = 2n + 5 and check which one equals 13."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "function_notation",
+      "linear_function",
+      "solve_for_input",
+      "inverse_thinking"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_001",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.1",
+    "topic": "definition_of_a_function_and_function_notation",
+    "topic_text": "Definition of a Function and Function Notation",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "using function notation to set up and solve a quadratic equation",
+      "reasoning about symmetry of a parabola to find a second input with equal output"
+    ],
+    "question_text": "Let f(x) = x² − 6x + 5. If f(k) = f(2), what is a value of k other than 2?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "−2",
+      "B": "3",
+      "C": "5",
+      "D": "4"
+    },
+    "correct_answer": "D",
+    "explanation": "First evaluate f(2): f(2) = 4 − 12 + 5 = −3.\nNow solve f(k) = −3:\nk² − 6k + 5 = −3\nk² − 6k + 8 = 0\n(k − 2)(k − 4) = 0\nk = 2 or k = 4.\nSince k ≠ 2, the answer is k = 4.\n\nAlternatively, the axis of symmetry of f(x) = x² − 6x + 5 is x = 3. Because the parabola is symmetric about x = 3, the input symmetric to x = 2 is x = 4 (both are 1 unit from the axis). So f(2) = f(4).",
+    "distractor_logic": {
+      "A": "Student assumes f(k) = f(2) requires k to be the opposite sign of 2, selecting k = −2 without verifying f(−2) = f(2).",
+      "B": "Student identifies the axis of symmetry (x = 3) but selects the axis itself rather than the symmetric partner of x = 2, which is x = 4.",
+      "C": "Student sets f(k) = 0 instead of f(k) = f(2), solving x² − 6x + 5 = 0 → (x−1)(x−5) = 0, then picks k = 5 (discarding k = 1 because it resembles a starting value).",
+      "D": "Correct: f(2) = −3, and solving k² − 6k + 8 = 0 gives k = 2 or k = 4; the required answer is k = 4."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Start by computing f(2), then set f(k) equal to that value and solve the resulting equation."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The parabola's axis of symmetry is x = −b/(2a). Inputs equidistant from the axis produce equal outputs."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "function_notation",
+      "quadratic_function",
+      "symmetry",
+      "solve_equation"
+    ],
+    "estimated_time_seconds": 150,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_002",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.1",
+    "topic": "definition_of_a_function_and_function_notation",
+    "topic_text": "Definition of a Function and Function Notation",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "interpreting f(x) > 0 as an inequality involving a function's output",
+      "solving a quadratic inequality and expressing the solution set correctly"
+    ],
+    "question_text": "Let f(x) = x² − 4. For which values of x is f(x) > 0?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x < −2 or x > 2",
+      "B": "−2 < x < 2",
+      "C": "x > 2 only",
+      "D": "x < −2 only"
+    },
+    "correct_answer": "A",
+    "explanation": "f(x) > 0 means x² − 4 > 0, so x² > 4.\nTaking the square root of both sides (with absolute value): |x| > 2.\nThis gives x < −2 or x > 2.\n\nYou can verify: f(−3) = 9 − 4 = 5 > 0 ✓ and f(3) = 9 − 4 = 5 > 0 ✓, while f(0) = −4 < 0, confirming the region between −2 and 2 does not satisfy f(x) > 0.",
+    "distractor_logic": {
+      "A": "Correct: x² > 4 means |x| > 2, which gives x < −2 or x > 2.",
+      "B": "Student reverses the inequality direction for quadratics, selecting the region between the roots where f(x) < 0 rather than f(x) > 0.",
+      "C": "Student considers only positive x-values when solving x² > 4, ignoring that negative values with |x| > 2 also satisfy the inequality.",
+      "D": "Student considers only negative x-values when solving x² > 4, ignoring that positive values with x > 2 also satisfy the inequality."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test a value from each answer region — for example, x = 0 and x = 3 — to check whether f(x) > 0."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "f(x) = x² − 4 is a parabola opening upward. It is positive outside its roots, not between them."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "function_notation",
+      "quadratic_inequality",
+      "solution_set",
+      "interval_reasoning"
+    ],
+    "estimated_time_seconds": 150,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_003",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.2",
+    "topic": "recognizing_if_a_relation_is_a_function",
+    "topic_text": "Recognizing if a Relation is a Function",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "identifying whether a set of ordered pairs represents a function",
+      "applying the definition that each input must map to exactly one output"
+    ],
+    "question_text": "Which set of ordered pairs represents a function?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "{(1, 2), (1, 3), (2, 4)}",
+      "B": "{(2, 5), (3, 5), (4, 5)}",
+      "C": "{(0, 1), (0, 2), (0, 3)}",
+      "D": "{(1, 4), (2, 4), (1, 6)}"
+    },
+    "correct_answer": "B",
+    "explanation": "A relation is a function if every input (x-value) maps to exactly one output. In choice B, the inputs 2, 3, and 4 each appear exactly once, so each maps to a single output. The fact that all three outputs are the same value (5) is not a problem — a function can send multiple inputs to the same output. Choices A and D each have a repeated x-value paired with different y-values (x = 1 in both), so one input maps to two outputs — not a function. Choice C has x = 0 paired with three different outputs — also not a function.",
+    "distractor_logic": {
+      "A": "Student checks only the y-values and, seeing no repeated y-values in choice A, incorrectly concludes it must be a function — missing that x = 1 appears twice with different outputs.",
+      "B": "Correct: inputs 2, 3, and 4 each appear exactly once, so each maps to a single output. Repeated outputs do not disqualify a function.",
+      "C": "Student scans y-values only — seeing the three distinct outputs 1, 2, and 3 — and mistakenly accepts choice C, missing that x = 0 is the only input and maps to three different outputs.",
+      "D": "Student focuses on the repeated output value (4 appears twice) and incorrectly concludes that repeated outputs disqualify a relation, then selects D as the 'cleanest' option — but D actually has x = 1 paired with both 4 and 6."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Focus only on the x-values (first number in each pair). If any x-value appears more than once with a different y, it is not a function."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Check each choice for a repeated x-value paired with different y-values. Any choice with that pattern is not a function."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "ordered_pairs",
+      "function_definition",
+      "input_output",
+      "relation"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_004",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.2",
+    "topic": "recognizing_if_a_relation_is_a_function",
+    "topic_text": "Recognizing if a Relation is a Function",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "applying the vertical line test to determine if a graph represents a function",
+      "connecting the vertical line test to the definition of a function"
+    ],
+    "question_text": "A graph is drawn on a coordinate plane. A vertical line drawn at x = 3 crosses the graph at two points: (3, 1) and (3, 5). What does this tell you about the graph?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The graph represents a function because vertical lines always cross graphs at two points.",
+      "B": "The graph does not represent a function because the input x = 3 corresponds to two different outputs.",
+      "C": "The graph represents a function because the two intersection points have different y-values.",
+      "D": "The graph represents a function because each y-value shown (1 and 5) corresponds to only one x-value."
+    },
+    "correct_answer": "B",
+    "explanation": "The vertical line test states that a graph represents a function if and only if every vertical line crosses the graph at most once. Here, the vertical line at x = 3 crosses the graph at two points — (3, 1) and (3, 5). This means the single input x = 3 produces two different outputs (1 and 5), which violates the definition of a function. The graph does not represent a function.",
+    "distractor_logic": {
+      "A": "Student invents a false general rule — that vertical lines always cross graphs twice — and uses it to incorrectly conclude the graph is a function.",
+      "B": "Correct: the vertical line at x = 3 hits two points, meaning one input maps to two outputs — a direct violation of the function definition.",
+      "C": "Student inverts the logic: having two different y-values at the same x is precisely what makes this NOT a function, not evidence that it is one.",
+      "D": "Student confuses the function requirement (each x has one y) with its converse (each y has one x), focusing on the y-values instead of the repeated x-value."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The key fact is that one x-value (x = 3) produces two different y-values. Ask: does this satisfy the definition of a function?"
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any choice that says the graph IS a function — the vertical line crossed at two points, which always means the function test fails."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "vertical_line_test",
+      "graph",
+      "function_definition",
+      "input_output"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_003",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.2",
+    "topic": "recognizing_if_a_relation_is_a_function",
+    "topic_text": "Recognizing if a Relation is a Function",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "identifying a non-function in a table of values by locating a repeated input with different outputs",
+      "distinguishing between repeated outputs (allowed) and repeated inputs with different outputs (not allowed)"
+    ],
+    "question_text": "The table below shows a relation between x and y.\n\n| x  | y |\n|----|---|\n| −1 | 4 |\n|  0 | 2 |\n|  1 | 4 |\n|  2 | 7 |\n|  2 | 1 |\n\nWhich statement best explains whether this relation is a function?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Yes, it is a function because x = −1 and x = 1 both produce y = 4, showing the rule is consistent.",
+      "B": "No, it is not a function because the output y = 4 appears more than once in the table.",
+      "C": "No, it is not a function because x = 2 appears twice with different outputs (7 and 1).",
+      "D": "Yes, it is a function because most x-values in the table appear only once."
+    },
+    "correct_answer": "C",
+    "explanation": "A relation is a function if every input maps to exactly one output. In this table, x = 2 appears twice — once paired with y = 7 and once paired with y = 1. A single input producing two different outputs violates the function definition, so this relation is not a function. The fact that x = −1 and x = 1 both produce y = 4 is not a problem — those are different inputs giving the same output, which is allowed.",
+    "distractor_logic": {
+      "A": "Student misreads the repeated output (y = 4 for x = −1 and x = 1) as evidence of consistency rather than checking whether any single x-value has two different outputs.",
+      "B": "Student applies the wrong criterion — focusing on whether outputs repeat rather than whether inputs repeat. Repeated outputs are allowed in a function; it is repeated inputs with different outputs that disqualify a relation.",
+      "C": "Correct: x = 2 appears twice with two different outputs (7 and 1), meaning one input maps to two outputs — a direct violation of the function definition.",
+      "D": "Student applies a 'majority rule' — because most x-values appear only once, the student concludes the relation is a function, ignoring that a single repeated-input violation is enough to disqualify it."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Scan the x-column for any value that appears more than once. If it does, check whether its y-values differ."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Repeated y-values are never a problem for a function. Only a repeated x paired with different y-values disqualifies a relation."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "table_of_values",
+      "function_definition",
+      "repeated_input",
+      "relation"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_004",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.2",
+    "topic": "recognizing_if_a_relation_is_a_function",
+    "topic_text": "Recognizing if a Relation is a Function",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "determining whether an equation defines y as a function of x",
+      "recognizing that equations yielding two y-values for a single x do not define functions"
+    ],
+    "question_text": "Which equation defines y as a function of x?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = y²",
+      "B": "x² + y² = 25",
+      "C": "|y| = x",
+      "D": "y = x²"
+    },
+    "correct_answer": "D",
+    "explanation": "An equation defines y as a function of x if every x-value produces exactly one y-value.\n\nChoice D: y = x² gives a unique y for every x (e.g., x = 3 → y = 9 only). This is a function.\n\nChoice A: x = y² → y = ±√x, so x = 4 gives y = 2 or y = −2. Two outputs — not a function.\n\nChoice B: x² + y² = 25 is a circle. At x = 0, y = 5 or y = −5. Two outputs — not a function.\n\nChoice C: |y| = x → y = x or y = −x, so x = 3 gives y = 3 or y = −3. Two outputs — not a function.",
+    "distractor_logic": {
+      "A": "Student sees 'x = y²' and thinks isolating x means y is defined as a function, not recognizing that solving for y yields two values (y = ±√x) for most inputs.",
+      "B": "Student recognizes the equation as a familiar algebraic form and assumes any equation with a clean structure defines a function, without testing whether one x can produce two y-values.",
+      "C": "Student thinks absolute value always simplifies to a single output, not recognizing that |y| = x allows both y = x and y = −x as solutions.",
+      "D": "Correct: y = x² assigns exactly one y-value to each x-value, satisfying the definition of a function."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Pick a specific x-value (like x = 4) and substitute it into each equation. If you get two different y-values, it is not a function."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Any equation where solving for y introduces a ± sign produces two outputs for at least one input — eliminate those."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "equation",
+      "function_definition",
+      "two_outputs",
+      "algebraic_relation"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_003",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.2",
+    "topic": "recognizing_if_a_relation_is_a_function",
+    "topic_text": "Recognizing if a Relation is a Function",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "evaluating whether an algebraically-defined relation is a function by computing outputs",
+      "distinguishing the function requirement from the one-to-one (injective) requirement"
+    ],
+    "question_text": "A relation assigns to each integer input n, where 1 ≤ n ≤ 4, the remainder when n² is divided by 5. Which statement correctly describes this relation?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "It is a function because each input produces exactly one output, even though some outputs repeat.",
+      "B": "It is not a function because the output 4 is produced by two different inputs (n = 2 and n = 3).",
+      "C": "It is not a function because the output 1 is produced by two different inputs (n = 1 and n = 4).",
+      "D": "It is a function only if all four outputs are different; since outputs repeat, it fails the function test."
+    },
+    "correct_answer": "A",
+    "explanation": "First, compute each output:\n  n = 1: 1² = 1, remainder when 1 ÷ 5 = 0 r 1 → output 1\n  n = 2: 2² = 4, remainder when 4 ÷ 5 = 0 r 4 → output 4\n  n = 3: 3² = 9, remainder when 9 ÷ 5 = 1 r 4 → output 4\n  n = 4: 4² = 16, remainder when 16 ÷ 5 = 3 r 1 → output 1\n\nThe relation is {(1,1), (2,4), (3,4), (4,1)}. Every input maps to exactly one output — this is a function. The fact that outputs 1 and 4 each appear twice is not a problem. A function only requires each input to have one output; it does not require outputs to be unique (that stricter condition defines a one-to-one function).",
+    "distractor_logic": {
+      "A": "Correct: each input n produces exactly one remainder, so the relation is a function. Repeated outputs do not violate the function definition.",
+      "B": "Student applies the one-to-one (injective) condition — that each output must come from a unique input — rather than the function condition. The output 4 appearing twice is irrelevant to whether the relation is a function.",
+      "C": "Same misconception as B, applied to the output 1 repeating for n = 1 and n = 4. Repeated outputs are permitted; only repeated inputs with different outputs would disqualify the relation.",
+      "D": "Student states a false necessary condition — that all outputs must be distinct. This is the definition of an injective function, not a function in general. The relation here is a valid (non-injective) function."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Compute the remainder when n² is divided by 5 for each value of n from 1 to 4, then list the input-output pairs."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A function requires each input to have exactly one output — it does not require outputs to be unique."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "function_definition",
+      "modular_arithmetic",
+      "one_to_one",
+      "injective"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_004",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.2",
+    "topic": "recognizing_if_a_relation_is_a_function",
+    "topic_text": "Recognizing if a Relation is a Function",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "reasoning about function status for a parameterized equation",
+      "identifying a degenerate case that satisfies the function definition"
+    ],
+    "question_text": "The equation y² = kx defines a relation between x and y. For which value of k, if any, does this equation define y as a function of x?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "k = 1, because y² = x is the standard form of a parabola",
+      "B": "No value of k makes it a function, because y² always yields two solutions",
+      "C": "Any positive value of k, because restricting k to positive values limits y to positive outputs",
+      "D": "k = 0, because then y = 0 for every x, giving exactly one output per input"
+    },
+    "correct_answer": "D",
+    "explanation": "For any nonzero k, the equation y² = kx gives y = ±√(kx) wherever kx > 0, producing two outputs for the same input — not a function.\n\nHowever, when k = 0: y² = 0, so y = 0 for every value of x. Every input maps to the single output 0. This is a constant function, and it satisfies the function definition.\n\nTherefore k = 0 is the one value that makes this equation define y as a function of x.",
+    "distractor_logic": {
+      "A": "Student confuses y² = x (a sideways parabola, not a function of x) with y = x² (an upward parabola, which is a function). The familiar 'parabola' label leads to an incorrect conclusion.",
+      "B": "Student correctly identifies that y² = kx produces two solutions for nonzero k but overgeneralizes, failing to consider the degenerate case k = 0 where y² = 0 forces a unique output.",
+      "C": "Student thinks a positive k restricts y to positive values, but the equation y² = kx still permits y to be negative — the sign of k affects the domain of x where solutions exist, not whether y has two values.",
+      "D": "Correct: when k = 0, y² = 0 forces y = 0 for all x, making this a constant function with exactly one output per input."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try k = 1 and a specific x — does y² = x give one y or two? Then try k = 0 and see what happens."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "For any nonzero k, solving y² = kx for y introduces a ± — that means two outputs. Ask whether any special value of k avoids this."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "function_definition",
+      "parameter",
+      "degenerate_case",
+      "equation"
+    ],
+    "estimated_time_seconds": 150,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_005",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.3",
+    "topic": "domain_and_range",
+    "topic_text": "Domain and Range",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "identifying the domain as the set of input values from a set of ordered pairs",
+      "identifying the range as the set of distinct output values from a set of ordered pairs"
+    ],
+    "question_text": "What are the domain and range of the relation {(−2, 3), (0, 5), (1, 3), (4, 7)}?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Domain: {3, 5, 7} and Range: {−2, 0, 1, 4}",
+      "B": "Domain: {−2, 0, 1, 4} and Range: {3, 5, 7}",
+      "C": "Domain: {−2, 0, 1, 4} and Range: {3, 3, 5, 7}",
+      "D": "Domain: {−2, 0, 1, 3, 4} and Range: {3, 5, 7}"
+    },
+    "correct_answer": "B",
+    "explanation": "The domain is the set of all input (x) values: {−2, 0, 1, 4}. The range is the set of all output (y) values. The y-values are 3, 5, 3, and 7 — but since 3 appears twice and a set lists each value once, the range is {3, 5, 7}.",
+    "distractor_logic": {
+      "A": "Student swaps the roles of domain and range, assigning the output values to the domain and the input values to the range.",
+      "B": "Correct: domain = {−2, 0, 1, 4} (all x-values); range = {3, 5, 7} (all distinct y-values).",
+      "C": "Student correctly identifies the domain and range values but lists the repeated output 3 twice, treating the range as an ordered list rather than a set.",
+      "D": "Student notices that the value 3 appears as an output and incorrectly adds it to the domain, conflating the shared numerical value with membership in the input set."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "In each ordered pair (x, y), the first number is an input and the second is an output. Collect all inputs for the domain and all distinct outputs for the range."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The domain comes from x-values only and the range from y-values only — eliminate any choice that mixes them or lists the same value twice."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "domain",
+      "range",
+      "ordered_pairs",
+      "set_notation"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_006",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.3",
+    "topic": "domain_and_range",
+    "topic_text": "Domain and Range",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "reading domain and range from function notation",
+      "recognizing that all defined inputs belong to the domain regardless of whether their outputs are unique"
+    ],
+    "question_text": "A function f has exactly four input-output pairs: f(1) = 6, f(2) = 8, f(3) = 6, and f(4) = 10. What are the domain and range of f?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Domain: {1, 2, 3, 4} and Range: {6, 6, 8, 10}",
+      "B": "Domain: {6, 8, 10} and Range: {1, 2, 3, 4}",
+      "C": "Domain: {1, 2, 3, 4} and Range: {6, 8, 10}",
+      "D": "Domain: {1, 2, 4} and Range: {6, 8, 10}"
+    },
+    "correct_answer": "C",
+    "explanation": "The domain is the set of all inputs: {1, 2, 3, 4}. The range is the set of all distinct outputs: {6, 8, 10}. Although both f(1) and f(3) produce the output 6, the value 6 is listed only once in the range because a set does not repeat elements. All four inputs — including 3 — belong to the domain.",
+    "distractor_logic": {
+      "A": "Student correctly identifies the domain but lists the range as a multiset {6, 6, 8, 10}, repeating 6 twice instead of recognizing that a set contains each element exactly once.",
+      "B": "Student swaps domain and range, assigning the output values to the domain and the input values to the range.",
+      "C": "Correct: domain = {1, 2, 3, 4}; range = {6, 8, 10} (6 listed once).",
+      "D": "Student drops input 3 from the domain because f(3) = 6 repeats an output already seen for f(1), incorrectly reasoning that a repeated output means the corresponding input is not a valid domain element."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Every number that appears as an input belongs to the domain. Every distinct output value belongs to the range."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "All four inputs (1, 2, 3, 4) are defined — eliminate any choice that drops one of them from the domain."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "domain",
+      "range",
+      "function_notation",
+      "set_notation"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_005",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.3",
+    "topic": "domain_and_range",
+    "topic_text": "Domain and Range",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "determining domain and range from the endpoints of a continuous line segment",
+      "expressing domain and range as intervals rather than discrete sets"
+    ],
+    "question_text": "A function is graphed as a line segment with endpoints at (−3, 1) and (5, 9). What are the domain and range of this function?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Domain: [−3, 5] and Range: {1, 9}",
+      "B": "Domain: {−3, 5} and Range: {1, 9}",
+      "C": "Domain: [1, 9] and Range: [−3, 5]",
+      "D": "Domain: [−3, 5] and Range: [1, 9]"
+    },
+    "correct_answer": "D",
+    "explanation": "The line segment runs continuously from x = −3 to x = 5, so every x-value in between is included. The domain is the interval [−3, 5]. The corresponding y-values run continuously from y = 1 to y = 9, so the range is the interval [1, 9]. Because the graph is a connected segment (not just two isolated points), both domain and range must be expressed as intervals, not as sets of individual points.",
+    "distractor_logic": {
+      "A": "Student correctly identifies the domain as an interval [−3, 5] but treats the range as the two endpoint y-values only, listing {1, 9} as a discrete set and ignoring all y-values between them.",
+      "B": "Student treats both domain and range as discrete sets of the endpoint coordinates, listing only the two x-values and the two y-values and ignoring every point along the segment.",
+      "C": "Student swaps domain and range, assigning the y-interval to the domain and the x-interval to the range.",
+      "D": "Correct: the segment spans x ∈ [−3, 5] and y ∈ [1, 9], both expressed as closed intervals."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "For a continuous segment, the domain is all x-values from the left endpoint to the right endpoint, and the range is all y-values from the bottom endpoint to the top endpoint."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Because the graph is a connected line segment — not a scatter of points — both domain and range must be intervals, not sets of two values."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "domain",
+      "range",
+      "line_segment",
+      "interval_notation"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_006",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.3",
+    "topic": "domain_and_range",
+    "topic_text": "Domain and Range",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "computing the range of a quadratic function over a restricted domain",
+      "identifying the minimum value of x² on a symmetric interval"
+    ],
+    "question_text": "The function g is defined for all real numbers x such that −4 ≤ x ≤ 4, and g(x) = x². What are the domain and range of g?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Domain: [−4, 4] and Range: [0, 16]",
+      "B": "Domain: [−4, 4] and Range: [−16, 16]",
+      "C": "Domain: [−4, 4] and Range: [0, 4]",
+      "D": "Domain: [0, 16] and Range: [−4, 4]"
+    },
+    "correct_answer": "A",
+    "explanation": "The domain is given directly: all x with −4 ≤ x ≤ 4, so domain = [−4, 4].\n\nFor the range, evaluate g(x) = x² across this domain. The minimum value occurs at x = 0: g(0) = 0. The maximum occurs at both endpoints: g(−4) = 16 and g(4) = 16. Every value between 0 and 16 is achieved, so range = [0, 16].",
+    "distractor_logic": {
+      "A": "Correct: domain = [−4, 4] (given); range = [0, 16] since x² achieves a minimum of 0 at x = 0 and a maximum of 16 at x = ±4.",
+      "B": "Student applies the squaring to the magnitude of the boundaries but preserves sign, producing −16 as a lower bound — forgetting that x² is always non-negative and cannot produce a negative output.",
+      "C": "Student reads the range endpoints directly from the domain boundaries without squaring, using 0 and 4 instead of 0 and 16.",
+      "D": "Student correctly identifies the domain and range values but swaps them, assigning [0, 16] to the domain and [−4, 4] to the range."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Evaluate g(x) = x² at the endpoints (x = −4 and x = 4) and at x = 0 to find the minimum and maximum outputs."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Squaring any real number always gives a non-negative result — the range cannot include negative values."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "domain",
+      "range",
+      "quadratic_function",
+      "restricted_domain"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_005",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.3",
+    "topic": "domain_and_range",
+    "topic_text": "Domain and Range",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "determining how a horizontal shift affects the domain of a transformed function",
+      "recognizing that a horizontal shift does not alter the range of a function"
+    ],
+    "question_text": "The function f has domain [−2, 6] and range [1, 9]. A new function g is defined by g(x) = f(x − 3). What are the domain and range of g?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Domain: [1, 9] and Range: [1, 9]",
+      "B": "Domain: [−5, 3] and Range: [1, 9]",
+      "C": "Domain: [−2, 6] and Range: [1, 9]",
+      "D": "Domain: [1, 9] and Range: [4, 12]"
+    },
+    "correct_answer": "A",
+    "explanation": "In g(x) = f(x − 3), the expression (x − 3) is the input fed into f. For f to be defined, its input must lie in f's domain [−2, 6]:\n\n  −2 ≤ x − 3 ≤ 6\n\nAdd 3 to all parts:\n\n  1 ≤ x ≤ 9\n\nSo the domain of g is [1, 9] — the domain of f shifted 3 units to the right.\n\nThe range of g is the same as the range of f: g outputs the same values f outputs, just at different inputs. Range of g = [1, 9].",
+    "distractor_logic": {
+      "A": "Correct: subtracting 3 inside the function shifts the domain right by 3 (from [−2, 6] to [1, 9]); the range is unchanged at [1, 9].",
+      "B": "Student subtracts 3 from the domain boundaries instead of adding, shifting the domain left instead of right: [−2 − 3, 6 − 3] = [−5, 3].",
+      "C": "Student recognizes that g is a transformation of f but leaves the domain unchanged at [−2, 6], failing to account for the horizontal shift introduced by (x − 3).",
+      "D": "Student correctly shifts the domain right by 3 to get [1, 9] but also shifts the range up by 3 to get [4, 12], not recognizing that the range is determined by f's output values and is unaffected by the input substitution."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Set the expression inside f — that is, (x − 3) — equal to the boundary values of f's domain and solve for x to find g's domain."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "g(x) = f(x − 3) shifts the graph of f horizontally. The range (output values) is not affected by a horizontal shift."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "domain",
+      "range",
+      "horizontal_shift",
+      "function_transformation"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_006",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.3",
+    "topic": "domain_and_range",
+    "topic_text": "Domain and Range",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "determining the domain and range of a piecewise-defined function",
+      "correctly applying open and closed interval notation to reflect endpoint inclusion"
+    ],
+    "question_text": "A function h is defined as follows:\n  h(x) = x + 2, for −3 ≤ x < 1\n  h(x) = 5,     for  1 ≤ x ≤ 4\n\nWhat are the domain and range of h?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Domain: [−3, 4] and Range: [−1, 5]",
+      "B": "Domain: [−3, 4] and Range: [−1, 3) ∪ {5}",
+      "C": "Domain: [−3, 4] and Range: [−1, 3] ∪ {5}",
+      "D": "Domain: [−3, 4] and Range: (−1, 3) ∪ {5}"
+    },
+    "correct_answer": "B",
+    "explanation": "Domain: the first piece covers −3 ≤ x < 1 and the second covers 1 ≤ x ≤ 4. Together they cover every x in [−3, 4] with no gap, so domain = [−3, 4].\n\nRange of the first piece (h(x) = x + 2 on [−3, 1)):\n  At x = −3: h = −1  (included, closed endpoint)\n  As x → 1⁻: h → 3  (not included, open endpoint)\n  First piece range: [−1, 3)\n\nRange of the second piece (h(x) = 5 on [1, 4]):\n  Constant output: {5}\n\nCombined range: [−1, 3) ∪ {5}",
+    "distractor_logic": {
+      "A": "Student reads the range as a single continuous interval from the minimum output (−1) to the maximum output (5), ignoring the jump discontinuity and treating the function as if it produces all values between −1 and 5.",
+      "B": "Correct: range = [−1, 3) ∪ {5}. The first piece produces outputs in [−1, 3) with 3 excluded because x = 1 is not in the first piece's domain; the second piece adds the isolated value 5.",
+      "C": "Student computes the first piece's range as [−1, 3] — closed at both ends — forgetting that x = 1 is excluded from the first piece (open boundary), so the output h = 3 is never achieved by that piece.",
+      "D": "Student confuses the open boundary at x = 1 (which makes the right end of the first piece's range open at 3) with the left end of the range, incorrectly writing (−1, 3) and excluding the value −1 even though h(−3) = −1 is achieved."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Evaluate h at the boundary inputs: x = −3, just below x = 1, and x = 1. Track whether each boundary is included (closed) or excluded (open)."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check whether x = 1 belongs to the first or second piece — this determines whether the output h = 3 is achieved or skipped."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "domain",
+      "range",
+      "piecewise_function",
+      "interval_notation"
+    ],
+    "estimated_time_seconds": 150,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_007",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.4",
+    "topic": "distinguishing_function_types",
+    "topic_text": "Distinguishing Function Types",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "identifying a linear function from a table by recognizing constant first differences",
+      "distinguishing linear growth from exponential and quadratic growth patterns"
+    ],
+    "question_text": "Which type of function is best represented by the table of values below?\n\n| x | y |\n|---|---|\n| 0 |  3 |\n| 1 |  7 |\n| 2 | 11 |\n| 3 | 15 |",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Quadratic, because the y-values are positive and increasing",
+      "B": "Linear, because the y-values increase by the same amount each time",
+      "C": "Exponential, because the y-values keep getting larger",
+      "D": "Absolute value, because the differences between consecutive y-values are constant"
+    },
+    "correct_answer": "B",
+    "explanation": "Compute the first differences (the change in y between consecutive rows): 7 − 3 = 4, 11 − 7 = 4, 15 − 11 = 4. The first differences are constant (always 4), which is the defining feature of a linear function. The function is y = 4x + 3.",
+    "distractor_logic": {
+      "A": "Student sees positive, increasing y-values and pattern-matches to 'quadratic' without computing differences — being positive and increasing is not a distinguishing feature of quadratic functions.",
+      "B": "Correct: constant first differences of 4 confirm the function is linear.",
+      "C": "Student sees y-values growing and associates growth with exponential functions, without checking whether the growth is additive (linear) or multiplicative (exponential).",
+      "D": "Student correctly identifies that consecutive differences are constant but misnames the function type, conflating 'constant absolute differences' with the absolute value function."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Subtract each y-value from the next. If those differences are all equal, the function is linear."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Increasing y-values alone do not identify a function type — both linear and exponential functions can increase. Focus on how the y-values change."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "linear_function",
+      "first_differences",
+      "function_type",
+      "table_of_values"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_008",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.4",
+    "topic": "distinguishing_function_types",
+    "topic_text": "Distinguishing Function Types",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "matching a graph description to its function type by key visual features",
+      "recognizing a parabola as the graph of a quadratic function"
+    ],
+    "question_text": "A graph is described as a U-shaped curve that opens upward, with its lowest point at the origin. Which function type does this graph most likely represent?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Linear, because the graph has a lowest point",
+      "B": "Exponential, because the graph curves upward",
+      "C": "Quadratic, because the graph is a U-shaped parabola",
+      "D": "Linear, because the graph passes through the origin"
+    },
+    "correct_answer": "C",
+    "explanation": "A U-shaped curve that opens upward is called a parabola, which is the graph of a quadratic function. The lowest point of a parabola is its vertex. Linear functions produce straight lines and exponential functions produce curves that rise steeply on one side without the symmetric U-shape.",
+    "distractor_logic": {
+      "A": "Student associates a 'lowest point' with a flat minimum or baseline, reasoning that a minimum value implies the graph must eventually level off like a horizontal line — a property of linear functions.",
+      "B": "Student focuses on the upward curvature and associates any curve that bends upward with exponential growth, not distinguishing between the symmetric U-shape of a parabola and the one-sided steep rise of an exponential.",
+      "C": "Correct: a U-shaped curve opening upward is a parabola — the graph of a quadratic function.",
+      "D": "Student recalls that y = x is a linear function that passes through the origin and concludes that any graph through the origin must be linear, not recognizing that y = x² also passes through the origin but is quadratic."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Focus on the shape: U-shaped and symmetric means parabola. Linear means straight line. Exponential means a curve that rises steeply on one side only."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any choice that says 'linear' — a U-shaped curve is never a straight line."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "quadratic_function",
+      "parabola",
+      "graph_features",
+      "function_type"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_007",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.4",
+    "topic": "distinguishing_function_types",
+    "topic_text": "Distinguishing Function Types",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "identifying an exponential function from its equation by locating a variable exponent",
+      "distinguishing exponential functions from power, linear, and quadratic forms"
+    ],
+    "question_text": "Which equation represents an exponential function?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y = 3x + 2",
+      "B": "y = x³",
+      "C": "y = 3 · 2ˣ",
+      "D": "y = x² + 3x"
+    },
+    "correct_answer": "C",
+    "explanation": "An exponential function has the form y = a · bˣ, where the variable x appears in the exponent and the base b is a positive constant.\n\nChoice C: y = 3 · 2ˣ — base 2 is constant, exponent x is variable → exponential.\nChoice A: y = 3x + 2 — x is multiplied by a constant; this is linear.\nChoice B: y = x³ — x is the base and 3 is a fixed exponent; this is a power (cubic) function, not exponential.\nChoice D: y = x² + 3x — highest power of x is 2; this is quadratic.",
+    "distractor_logic": {
+      "A": "Student sees the coefficient 3 and interprets '3x' as '3 to the x,' confusing the multiplicative coefficient of a linear function with an exponential base.",
+      "B": "Student sees an exponent in the expression (the 3 in x³) and concludes the function is exponential, not recognizing that exponential functions require the variable to appear in the exponent position, not the base.",
+      "C": "Correct: y = 3 · 2ˣ has a constant base (2) and a variable exponent (x), which is the defining structure of an exponential function.",
+      "D": "Student sees the exponent 2 in x² and reasons similarly to choice B — 'there is an exponent, so it must be exponential' — without distinguishing between a variable base with fixed exponent (power function) and a fixed base with variable exponent (exponential function)."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "In an exponential function, the variable is in the exponent position and the base is a fixed number. Look for the form a · bˣ."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any equation where x is in the base position — those are linear, quadratic, or power functions, not exponential."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "exponential_function",
+      "function_type",
+      "equation_form",
+      "variable_exponent"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_008",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.4",
+    "topic": "distinguishing_function_types",
+    "topic_text": "Distinguishing Function Types",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "using first and second differences to classify a function from a table",
+      "recognizing constant second differences as the signature of a quadratic function"
+    ],
+    "question_text": "The table below shows values of a function. Which type of function does the table represent, and what is the key feature that supports that conclusion?\n\n| x | y  |\n|---|----|\n| 0 |  1 |\n| 1 |  4 |\n| 2 |  9 |\n| 3 | 16 |\n| 4 | 25 |",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Quadratic, because the second differences of the y-values are constant",
+      "B": "Linear, because the y-values increase as x increases",
+      "C": "Exponential, because the y-values grow faster as x increases",
+      "D": "Linear, because the first differences of the y-values are all positive"
+    },
+    "correct_answer": "A",
+    "explanation": "Compute the first differences: 4−1=3, 9−4=5, 16−9=7, 25−16=9. These are not constant, so the function is not linear.\n\nCompute the second differences: 5−3=2, 7−5=2, 9−7=2. The second differences are constant (all equal to 2), which is the defining feature of a quadratic function.\n\nThe function is y = (x + 1)², which confirms it is quadratic.",
+    "distractor_logic": {
+      "A": "Correct: first differences (3, 5, 7, 9) are not constant, but second differences (2, 2, 2) are constant — the signature of a quadratic function.",
+      "B": "Student observes that y-values increase as x increases and concludes the function must be linear, without checking whether the rate of increase is itself constant.",
+      "C": "Student notices the first differences are growing (3, 5, 7, 9) and interprets 'accelerating growth' as exponential, not distinguishing between additive acceleration (quadratic) and multiplicative growth (exponential).",
+      "D": "Student computes the first differences (3, 5, 7, 9) and notes they are all positive, incorrectly concluding that 'all positive differences' is equivalent to 'constant differences' — the hallmark of a linear function."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compute first differences (subtract consecutive y-values). If they are not constant, compute second differences (subtract consecutive first differences). Constant second differences indicate a quadratic function."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Glance at the y-values: 1, 4, 9, 16, 25. These are perfect squares — a strong signal that the function is quadratic."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "quadratic_function",
+      "second_differences",
+      "function_type",
+      "table_of_values"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_007",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.4",
+    "topic": "distinguishing_function_types",
+    "topic_text": "Distinguishing Function Types",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "using constant first differences to prove a function is linear rather than exponential",
+      "evaluating and critiquing a classification claim using numerical evidence"
+    ],
+    "question_text": "The table below shows values of a function. A student claims the function is exponential. Which of the following calculations proves the student's claim is incorrect?\n\n| x | y  |\n|---|----|\n| 1 |  6 |\n| 2 | 11 |\n| 3 | 16 |\n| 4 | 21 |",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The y-values are all greater than 5, which means the growth rate is too slow to be exponential.",
+      "B": "The consecutive ratios of y-values are constant, which confirms the function is exponential.",
+      "C": "The second differences are constant, which means the function must be quadratic, not exponential.",
+      "D": "The first differences are constant (each y-value increases by 5), which means the function is linear, not exponential."
+    },
+    "correct_answer": "D",
+    "explanation": "Compute the first differences: 11−6=5, 16−11=5, 21−16=5. The first differences are constant at 5, which is the defining feature of a linear function. A linear function cannot be exponential.\n\nTo further confirm, check consecutive ratios (the test for exponential): 11/6 ≈ 1.83, 16/11 ≈ 1.45, 21/16 ≈ 1.31. These ratios are not constant, directly disproving the exponential claim.\n\nThe function is y = 5x + 1, a linear function.",
+    "distractor_logic": {
+      "A": "Student invokes a magnitude-based rule that does not exist — the size of y-values relative to 5 has no bearing on whether a function is exponential. Exponential functions can produce any range of values.",
+      "B": "Student claims consecutive ratios are constant, but 11/6 ≈ 1.83, 16/11 ≈ 1.45, and 21/16 ≈ 1.31 are clearly different. Accepting this choice means agreeing with the student's incorrect claim rather than refuting it.",
+      "C": "Student computes second differences: (16−11)−(11−6) = 5−5 = 0 and (21−16)−(16−11) = 0. Second differences are constant at 0, but a student who applies 'constant second differences = quadratic' without noting that zero second differences specifically indicate linear — not quadratic — misclassifies the result.",
+      "D": "Correct: first differences of 5, 5, 5 are constant, proving the function is linear. A linear function is never exponential, which directly refutes the student's claim."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "To disprove an exponential claim, look for the test that exponential functions fail: compute first differences and consecutive ratios, and see which one exposes the contradiction."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Divide consecutive y-values to check for a constant ratio. Then subtract consecutive y-values to check for a constant difference. Only one of these will be constant."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "linear_function",
+      "exponential_function",
+      "first_differences",
+      "classification"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_008",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.4",
+    "topic": "distinguishing_function_types",
+    "topic_text": "Distinguishing Function Types",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "identifying an exponential function when equations are presented in non-standard or disguised forms",
+      "using algebraic simplification to determine the true function type"
+    ],
+    "question_text": "Which of the following is equivalent to an exponential function?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y = (x + 1)² − x²",
+      "B": "y = 4 · (½)ˣ",
+      "C": "y = x · 2²",
+      "D": "y = (x − 3)(x + 3)"
+    },
+    "correct_answer": "B",
+    "explanation": "Choice B: y = 4 · (½)ˣ has a constant base (½) and a variable exponent (x) — this is an exponential function.\n\nChoice A: Expand (x + 1)² − x² = x² + 2x + 1 − x² = 2x + 1. This simplifies to a linear function.\n\nChoice C: y = x · 2² = x · 4 = 4x. The exponent applies to the constant 2, not to the variable — this is a linear function.\n\nChoice D: (x − 3)(x + 3) = x² − 9. This is a quadratic function.",
+    "distractor_logic": {
+      "A": "Student sees squared terms and classifies the expression as quadratic without expanding — does not recognize that the x² terms cancel, leaving a linear expression.",
+      "B": "Correct: y = 4 · (½)ˣ is exponential because the base (½) is a positive constant and the variable x is in the exponent.",
+      "C": "Student sees '2²' in the expression and focuses on the exponent notation, misreading x · 2² as 'x raised to the 2²' rather than recognizing that 2² is a constant (equal to 4) being multiplied by x.",
+      "D": "Student sees the product of two expressions and associates multiplication with exponential growth, not recognizing that the product of two linear factors is a quadratic function."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Simplify each expression algebraically before classifying. Some expressions look complex but reduce to a familiar function type."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "An exponential function requires the variable to be in the exponent position with a constant base. Check where x appears in each equation."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "exponential_function",
+      "algebraic_simplification",
+      "function_type",
+      "disguised_form"
+    ],
+    "estimated_time_seconds": 150,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_009",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the excluded value of a rational function with a linear denominator",
+      "applying the rule that a denominator cannot equal zero"
+    ],
+    "question_text": "What is the domain of f(x) = 1 / (x − 5)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "All real numbers except x = 5",
+      "B": "All real numbers except x = −5",
+      "C": "All real numbers except x = 0",
+      "D": "All real numbers"
+    },
+    "correct_answer": "A",
+    "explanation": "A rational function is undefined wherever its denominator equals zero. Set the denominator equal to zero and solve: x − 5 = 0 → x = 5. So x = 5 must be excluded. The domain is all real numbers except x = 5.",
+    "distractor_logic": {
+      "A": "Correct: x − 5 = 0 gives x = 5, which must be excluded from the domain.",
+      "B": "Student makes a sign error when solving x − 5 = 0, reporting x = −5 instead of x = 5.",
+      "C": "Student confuses the domain restriction with a default 'x cannot be zero' rule, or incorrectly sets the numerator (1 = 0) equal to zero to find the excluded value.",
+      "D": "Student does not apply the denominator-cannot-be-zero rule and concludes the function is defined for all real numbers."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Set the denominator equal to zero and solve. The solution is the value that must be excluded from the domain."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try substituting x = 5 into the function. If the denominator becomes zero, that value is excluded."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "rational_function",
+      "domain_restriction",
+      "excluded_value",
+      "linear_denominator"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_010",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a two-step linear equation to find the excluded value of a rational function",
+      "correctly dividing by a coefficient when isolating the variable in a denominator equation"
+    ],
+    "question_text": "What is the domain of g(x) = 7 / (2x + 6)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "All real numbers except x = 3",
+      "B": "All real numbers except x = 6",
+      "C": "All real numbers except x = −6",
+      "D": "All real numbers except x = −3"
+    },
+    "correct_answer": "D",
+    "explanation": "Set the denominator equal to zero and solve:\n2x + 6 = 0\n2x = −6\nx = −3\n\nSo x = −3 must be excluded. The domain is all real numbers except x = −3.",
+    "distractor_logic": {
+      "A": "Student makes a sign error when moving the constant: treats 2x + 6 = 0 as 2x = 6 (drops the negative), giving x = 3.",
+      "B": "Student does not solve the equation and instead reads the constant term (6) directly as the excluded value.",
+      "C": "Student correctly finds 2x = −6 but forgets to divide by 2, reporting x = −6 instead of x = −3.",
+      "D": "Correct: 2x + 6 = 0 → 2x = −6 → x = −3."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Set 2x + 6 = 0 and solve step by step: subtract 6, then divide by 2."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute your answer back into 2x + 6 to verify the denominator equals zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "rational_function",
+      "domain_restriction",
+      "excluded_value",
+      "two_step_equation"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_011",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding the domain of a square root function by requiring the radicand to be non-negative",
+      "solving a linear inequality to express the domain of a radical function"
+    ],
+    "question_text": "What is the domain of h(x) = √(x − 4)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x ≥ 0",
+      "B": "x ≥ −4",
+      "C": "x ≥ 4",
+      "D": "x > 4"
+    },
+    "correct_answer": "C",
+    "explanation": "The expression under a square root (the radicand) must be greater than or equal to zero. Set up the inequality and solve:\nx − 4 ≥ 0\nx ≥ 4\n\nThe domain is all real numbers x ≥ 4, or [4, ∞). Note that x = 4 is included because √0 = 0 is defined.",
+    "distractor_logic": {
+      "A": "Student applies the non-negative rule to x itself rather than to the expression x − 4, writing x ≥ 0 without accounting for the −4 inside the radical.",
+      "B": "Student solves x − 4 ≥ 0 but makes a sign error, adding −4 to both sides instead of +4, arriving at x ≥ −4.",
+      "C": "Correct: x − 4 ≥ 0 → x ≥ 4.",
+      "D": "Student uses a strict inequality (x > 4), thinking the endpoint x = 4 is excluded — but √0 = 0 is defined, so x = 4 belongs to the domain."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Set the expression inside the square root greater than or equal to zero: x − 4 ≥ 0, then solve for x."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test x = 4: √(4 − 4) = √0 = 0 — defined. Test x = 3: √(3 − 4) = √(−1) — undefined. So x = 4 is the boundary."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "radical_function",
+      "domain_restriction",
+      "square_root",
+      "linear_inequality"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_012",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the excluded value of a rational function with a sum in the denominator",
+      "correctly applying the sign when solving a linear equation of the form x + c = 0"
+    ],
+    "question_text": "What is the domain of f(x) = 5 / (x + 8)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "All real numbers except x = −8",
+      "B": "All real numbers except x = 8",
+      "C": "All real numbers",
+      "D": "All real numbers except x = 0"
+    },
+    "correct_answer": "A",
+    "explanation": "Set the denominator equal to zero and solve:\nx + 8 = 0\nx = −8\n\nSo x = −8 must be excluded. The domain is all real numbers except x = −8.",
+    "distractor_logic": {
+      "A": "Correct: x + 8 = 0 → x = −8.",
+      "B": "Student solves x + 8 = 0 but drops the negative sign, reporting x = 8 instead of x = −8.",
+      "C": "Student does not apply the denominator-cannot-be-zero rule and concludes the function is defined for all real numbers.",
+      "D": "Student applies a default rule that 'x cannot be zero' rather than solving for the actual excluded value from the denominator."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Set x + 8 = 0 and solve. Remember: subtracting 8 from both sides gives a negative result."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check your answer by substituting it into x + 8. If the result is 0, you found the correct excluded value."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "rational_function",
+      "domain_restriction",
+      "excluded_value",
+      "sign_error"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_013",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Radical and Rational Functions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding the domain of a square root function whose radicand contains a coefficient",
+      "solving a two-step linear inequality to determine the minimum valid input"
+    ],
+    "question_text": "What is the domain of g(x) = √(3x − 9)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x ≥ 9",
+      "B": "x ≥ 3",
+      "C": "x ≥ −3",
+      "D": "x ≥ 1/3"
+    },
+    "correct_answer": "B",
+    "explanation": "The radicand must be greater than or equal to zero:\n3x − 9 ≥ 0\n3x ≥ 9\nx ≥ 3\n\nThe domain is all real numbers x ≥ 3, or [3, ∞).",
+    "distractor_logic": {
+      "A": "Student correctly isolates 3x ≥ 9 but forgets to divide both sides by 3, reporting x ≥ 9 instead of x ≥ 3.",
+      "B": "Correct: 3x − 9 ≥ 0 → 3x ≥ 9 → x ≥ 3.",
+      "C": "Student misreads the sign of the constant term, solving 3x + 9 ≥ 0 instead of 3x − 9 ≥ 0, which gives 3x ≥ −9 → x ≥ −3.",
+      "D": "Student inverts the division step, computing 1/3 instead of 9/3 when dividing 9 by 3 — treating the operation as taking the reciprocal rather than dividing."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Set the radicand greater than or equal to zero: 3x − 9 ≥ 0. Add 9, then divide by 3."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test x = 3: 3(3) − 9 = 0, and √0 is defined. Test x = 2: 3(2) − 9 = −3, and √(−3) is undefined. So x = 3 is the boundary."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "radical_function",
+      "domain_restriction",
+      "square_root",
+      "coefficient_in_radicand"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_009",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "factoring a quadratic denominator to find all excluded values of a rational function",
+      "identifying two distinct excluded values from a factorable quadratic denominator"
+    ],
+    "question_text": "What is the domain of f(x) = (x + 1) / (x² − x − 6)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "All real numbers except x = 3 and x = −2",
+      "B": "All real numbers except x = −3 and x = 2",
+      "C": "All real numbers except x = 6",
+      "D": "All real numbers except x = 1"
+    },
+    "correct_answer": "A",
+    "explanation": "Set the denominator equal to zero and factor:\nx² − x − 6 = 0\n(x − 3)(x + 2) = 0\nx = 3  or  x = −2\n\nBoth values make the denominator zero, so both must be excluded. The domain is all real numbers except x = 3 and x = −2.\n\nVerify factoring: (x − 3)(x + 2) = x² + 2x − 3x − 6 = x² − x − 6 ✓",
+    "distractor_logic": {
+      "A": "Correct: (x − 3)(x + 2) = 0 gives x = 3 or x = −2.",
+      "B": "Student factors incorrectly as (x + 3)(x − 2) = 0, reversing the signs on both factors and finding x = −3 or x = 2 instead.",
+      "C": "Student does not factor the denominator and instead treats the constant term (−6) as the excluded value, reporting x = 6.",
+      "D": "Student takes the coefficient of the middle term (−1) in x² − x − 6 and reports x = 1 as the excluded value, without solving the equation."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Factor x² − x − 6 by finding two numbers that multiply to −6 and add to −1. Set each factor equal to zero."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check your excluded values by substituting them into x² − x − 6. Each one should make the expression equal to zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "rational_function",
+      "domain_restriction",
+      "quadratic_denominator",
+      "factoring"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_010",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "applying both the radical restriction (radicand ≥ 0) and the rational restriction (denominator ≠ 0) to a combined expression",
+      "intersecting two domain conditions to find the complete domain of a compound function"
+    ],
+    "question_text": "What is the domain of f(x) = √(x + 3) / (x − 1)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x ≥ −3",
+      "B": "x ≥ −3 and x ≠ 1",
+      "C": "x ≠ 1",
+      "D": "x > −3 and x ≠ 1"
+    },
+    "correct_answer": "B",
+    "explanation": "This function has two restrictions:\n\n1. Radical: the radicand must be non-negative.\n   x + 3 ≥ 0 → x ≥ −3\n\n2. Rational: the denominator cannot be zero.\n   x − 1 ≠ 0 → x ≠ 1\n\nBoth conditions must hold simultaneously. The domain is x ≥ −3 and x ≠ 1.\n\nNote: x = −3 is included because f(−3) = √0 / (−3 − 1) = 0 / (−4) = 0, which is defined.",
+    "distractor_logic": {
+      "A": "Student applies only the radical restriction (x ≥ −3) and ignores the denominator restriction, not excluding x = 1.",
+      "B": "Correct: both restrictions applied — x ≥ −3 (radicand non-negative) and x ≠ 1 (denominator nonzero).",
+      "C": "Student applies only the denominator restriction (x ≠ 1) and ignores the radical restriction, allowing negative values of x + 3 under the square root.",
+      "D": "Student applies both restrictions correctly but uses a strict inequality for the radical boundary, writing x > −3 instead of x ≥ −3 — incorrectly excluding x = −3 even though f(−3) = 0 is defined."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "List each restriction separately: set the radicand ≥ 0, and set the denominator ≠ 0. Then combine both conditions."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test x = −3 (radical boundary) and x = 1 (denominator zero). Check which are defined and which are not."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "rational_function",
+      "radical_function",
+      "domain_restriction",
+      "compound_expression"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_011",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "comparing the domains of rational and radical functions to identify which is most restricted",
+      "recognizing that √(x²) is defined for all real numbers while √x requires x ≥ 0"
+    ],
+    "question_text": "Which of the following functions has the most restricted domain (that is, the fewest valid input values)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "f(x) = 1/x",
+      "B": "g(x) = 1/x²",
+      "C": "h(x) = √x",
+      "D": "k(x) = √(x²)"
+    },
+    "correct_answer": "C",
+    "explanation": "Compare the domain of each function:\n\nf(x) = 1/x: defined for all x ≠ 0 — excludes one value.\ng(x) = 1/x²: defined for all x ≠ 0 — also excludes one value (x² = 0 only when x = 0).\nh(x) = √x: requires x ≥ 0 — excludes all negative numbers, which is an infinite set.\nk(x) = √(x²): since x² ≥ 0 for every real number, the radicand is always non-negative. Domain is all real numbers — no restriction.\n\nh(x) = √x has the most restricted domain because it excludes every negative real number.",
+    "distractor_logic": {
+      "A": "Student thinks dividing by a variable is more restrictive than a square root, reasoning that 'division by x' excludes more values than the square root condition — but 1/x excludes only the single point x = 0, while √x excludes all negative numbers.",
+      "B": "Student believes squaring the denominator in 1/x² imposes a stricter restriction than 1/x — but x² = 0 still has only one solution (x = 0), so the domain is the same as for 1/x.",
+      "C": "Correct: h(x) = √x requires x ≥ 0, excluding all negative real numbers — a more restricted domain than either rational function (which each exclude only x = 0) or k(x) (which has no restriction).",
+      "D": "Student assumes √(x²) has the same restriction as √x, not recognizing that squaring x first guarantees a non-negative radicand for all real inputs, making the domain completely unrestricted."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Write out the domain of each function separately, then compare which allows the fewest inputs."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "k(x) = √(x²): since x² is always non-negative, there is no restriction — eliminate it. Then compare the remaining three."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "domain_restriction",
+      "radical_function",
+      "rational_function",
+      "comparison"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_009",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the correct mathematical reason for a domain exclusion in a contextual rational function",
+      "distinguishing between a zero output and an undefined output in a rational function"
+    ],
+    "question_text": "The profit from a school fundraiser is modeled by P(n) = (500n − 1000) / (n − 2), where n is the number of items sold. Which statement best explains why n = 2 must be excluded from the domain?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Because P(2) = 0, meaning no profit is earned at n = 2, so it is not a useful input.",
+      "B": "Because the numerator equals zero at n = 2, meaning the function has a zero there.",
+      "C": "Because n must be greater than 2 for the fundraiser to be profitable.",
+      "D": "Because substituting n = 2 makes the denominator equal to zero, making P(2) undefined."
+    },
+    "correct_answer": "D",
+    "explanation": "Substitute n = 2:\n  Numerator: 500(2) − 1000 = 0\n  Denominator: 2 − 2 = 0\n\nBoth numerator and denominator equal zero, giving the indeterminate form 0/0. This is undefined — not zero. A rational function is excluded from its domain wherever the denominator equals zero, regardless of the numerator's value. Therefore n = 2 must be excluded because it makes the denominator zero.",
+    "distractor_logic": {
+      "A": "Student computes the numerator (500(2) − 1000 = 0) and concludes P(2) = 0, confusing an undefined output (0/0) with a zero output. A zero output would be valid; it is the undefined output that requires exclusion.",
+      "B": "Student correctly identifies that the numerator is zero at n = 2 but applies the wrong rule — a zero numerator (with a nonzero denominator) produces an output of zero, which is perfectly valid. It is the zero denominator that creates the exclusion.",
+      "C": "Student conflates a mathematical domain restriction with a contextual profitability condition, reasoning that n = 2 should be excluded because it doesn't generate profit — but domain restrictions are determined by where the function is undefined, not by whether outputs are desirable.",
+      "D": "Correct: n = 2 makes the denominator n − 2 equal to zero, making P(2) undefined. This is the mathematical reason for the domain exclusion."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute n = 2 into both the numerator and denominator separately. What does each equal? What does that tell you about the output?"
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Domain exclusions in rational functions come from the denominator equaling zero — not from the numerator equaling zero or from contextual limitations."
+      }
+    ],
+    "content_context": "school_fundraiser",
+    "context_tags": [
+      "rational_function",
+      "domain_restriction",
+      "real_world_context",
+      "undefined_vs_zero"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_010",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "functions_and_function_notation",
+    "objective_text": "Functions and Function Notation",
+    "topic_id": "AR.1.5",
+    "topic": "domain_restrictions_of_rational_and_radical_functions",
+    "topic_text": "Domain Restrictions of Rational and Radical Functions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding the domain of a rational function with a difference-of-squares denominator and a matching numerator factor",
+      "recognizing that canceling a common factor does not restore values excluded by the original denominator"
+    ],
+    "question_text": "Let f(x) = (x + k) / (x² − k²), where k is a positive constant. Which of the following correctly describes the domain of f?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "All real numbers except x = k",
+      "B": "All real numbers, because the (x + k) factors cancel",
+      "C": "All real numbers except x = k and x = −k",
+      "D": "All real numbers except x = k²"
+    },
+    "correct_answer": "C",
+    "explanation": "Factor the denominator using the difference of squares:\nx² − k² = (x − k)(x + k)\n\nThe denominator equals zero when x = k or x = −k. Both values must be excluded from the domain.\n\nNote: the numerator (x + k) shares a factor with the denominator, creating a removable discontinuity (hole) at x = −k. However, cancellation does not change the domain of the original function — x = −k still makes the original denominator zero and remains excluded.\n\nDomain: all real numbers except x = k and x = −k.",
+    "distractor_logic": {
+      "A": "Student factors the denominator correctly and finds x = k and x = −k, but then reasons that since the numerator (x + k) is also zero at x = −k, the expression is '0/0 which simplifies to 0' — incorrectly treating the indeterminate form as a defined output of zero and excluding only x = k.",
+      "B": "Student cancels the common factor (x + k) from numerator and denominator to obtain 1/(x − k), then reads the domain of the simplified form as the domain of the original function — failing to recognize that cancellation does not restore the value x = −k that was excluded before simplification.",
+      "C": "Correct: the denominator (x − k)(x + k) equals zero at both x = k and x = −k, so both must be excluded from the domain of the original function.",
+      "D": "Student sees k² in the expression x² − k² and takes the excluded value to be x = k² — solving x = k² rather than factoring and solving x² = k²."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Factor the denominator first: x² − k² = (x − k)(x + k). The domain excludes every value of x that makes either factor zero."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try substituting x = −k into the original function — not the simplified version. Does the denominator equal zero?"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "rational_function",
+      "domain_restriction",
+      "difference_of_squares",
+      "removable_discontinuity"
+    ],
+    "estimated_time_seconds": 150,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
   }
 ]
