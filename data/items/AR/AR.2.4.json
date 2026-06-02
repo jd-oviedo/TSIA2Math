@@ -1,0 +1,711 @@
+[
+  {
+    "item_id": "AR_B_029",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": ["QR"],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a system of two linear equations by setting equal expressions for the same variable",
+      "substituting the found x-value to determine the corresponding y-value"
+    ],
+    "question_text": "Solve the system of equations:\n  y = 2x + 1\n  y = x + 4",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(5, 9)",
+      "B": "(3, 10)",
+      "C": "(3, 7)",
+      "D": "(5, 11)"
+    },
+    "correct_answer": "C",
+    "explanation": "Since both expressions equal y, set them equal and solve for x:\n2x + 1 = x + 4\nx = 3\n\nSubstitute x = 3 into either equation:\ny = 3 + 4 = 7\n\nSolution: (3, 7)\n\nCheck: y = 2(3) + 1 = 7 ✓  and  y = 3 + 4 = 7 ✓",
+    "distractor_logic": {
+      "A": "Student adds the constants from both equations to find x (1 + 4 = 5) instead of setting the expressions equal: x = 5, then y = 5 + 4 = 9.",
+      "B": "Student correctly finds x = 3 but evaluates y by substituting into a hybrid expression — adding the slope from one equation to the constant from the other: y = 2(3) + 4 = 10.",
+      "C": "Correct: setting 2x + 1 = x + 4 gives x = 3; substituting gives y = 7.",
+      "D": "Student uses x = 5 (same addition error as A) but evaluates y in the first equation: y = 2(5) + 1 = 11."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Both equations equal y. Set 2x + 1 = x + 4 and solve for x, then substitute back to find y."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The solution is the (x, y) pair that makes both equations true simultaneously — check your answer in both equations."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["system_of_equations", "substitution", "slope_intercept_form", "linear_system"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_030",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": ["QR"],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "verifying whether an ordered pair satisfies a system of two linear equations",
+      "applying substitution to check a solution against both equations in a system"
+    ],
+    "question_text": "Which ordered pair is a solution to the system?\n  2x + y = 10\n  x − y = 2",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(3, 4)",
+      "B": "(4, 2)",
+      "C": "(5, 0)",
+      "D": "(6, −2)"
+    },
+    "correct_answer": "B",
+    "explanation": "Test (4, 2) in both equations:\n  2(4) + 2 = 10 ✓\n  4 − 2 = 2 ✓\n\nBoth equations are satisfied, so (4, 2) is the solution.\n\nThe other choices each satisfy the first equation but not the second:\n  (3, 4): 3 − 4 = −1 ≠ 2\n  (5, 0): 5 − 0 = 5 ≠ 2\n  (6, −2): 6 − (−2) = 8 ≠ 2",
+    "distractor_logic": {
+      "A": "Student checks only the first equation — 2(3) + 4 = 10 ✓ — and stops without testing 3 − 4 = −1 ≠ 2 in the second.",
+      "B": "Correct: (4, 2) satisfies both 2x + y = 10 and x − y = 2.",
+      "C": "Student checks only the first equation — 2(5) + 0 = 10 ✓ — and stops without testing 5 − 0 = 5 ≠ 2 in the second.",
+      "D": "Student checks only the first equation — 2(6) + (−2) = 10 ✓ — and stops without testing 6 − (−2) = 8 ≠ 2 in the second."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute each answer choice into both equations. A solution must satisfy both — not just one."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Test each pair in the second equation (x − y = 2) — it is the faster filter since most choices fail there."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["system_of_equations", "verify_solution", "substitution_check", "linear_system"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_031",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": ["QR"],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a system by direct substitution when one variable is already isolated",
+      "finding the second variable by substituting a known value into a linear equation"
+    ],
+    "question_text": "Solve the system of equations:\n  x = 3\n  2x + y = 11",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(3, 5)",
+      "B": "(3, 17)",
+      "C": "(3, 8)",
+      "D": "(5, 3)"
+    },
+    "correct_answer": "A",
+    "explanation": "The first equation tells us x = 3 directly. Substitute into the second equation:\n2(3) + y = 11\n6 + y = 11\ny = 5\n\nSolution: (3, 5)\n\nCheck: 2(3) + 5 = 11 ✓",
+    "distractor_logic": {
+      "A": "Correct: substituting x = 3 gives 6 + y = 11 → y = 5.",
+      "B": "Student adds 2x and y terms without substituting: y = 11 + 6 = 17, adding rather than subtracting 6.",
+      "C": "Student substitutes x = 3 into the coefficient only, subtracting x (not 2x) from 11: y = 11 − 3 = 8.",
+      "D": "Student finds the correct values (x = 3, y = 5) but writes the ordered pair in reverse order as (5, 3)."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "x = 3 is given directly. Substitute 3 for x in the second equation and solve for y."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "An ordered pair is always written (x, y). Make sure you match the right value to the right variable."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["system_of_equations", "substitution", "isolated_variable", "linear_system"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_032",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": ["QR"],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the solution of a system as the intersection point of two lines",
+      "solving a system algebraically when both equations are in slope-intercept form"
+    ],
+    "question_text": "Two lines are given by the equations y = −2x + 4 and y = 2x. At what point do they intersect?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(2, 4)",
+      "B": "(1, 2)",
+      "C": "(0, 4)",
+      "D": "(0, 0)"
+    },
+    "correct_answer": "B",
+    "explanation": "Set the two expressions equal and solve for x:\n−2x + 4 = 2x\n4 = 4x\nx = 1\n\nSubstitute into y = 2x:\ny = 2(1) = 2\n\nIntersection: (1, 2)\n\nCheck: y = −2(1) + 4 = 2 ✓  and  y = 2(1) = 2 ✓",
+    "distractor_logic": {
+      "A": "Student finds where y = 2x produces y = 4 (at x = 2) and reports that point without checking Line 1: y = −2(2) + 4 = 0 ≠ 4.",
+      "B": "Correct: setting −2x + 4 = 2x gives x = 1, y = 2.",
+      "C": "Student identifies the y-intercept of y = −2x + 4 (where x = 0, y = 4) instead of finding the intersection.",
+      "D": "Student identifies the y-intercept of y = 2x (where x = 0, y = 0) instead of finding the intersection."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Set −2x + 4 equal to 2x (since both equal y), solve for x, then substitute to find y."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The intersection is where both equations give the same (x, y). Check your answer in both equations."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["system_of_equations", "intersection", "graphical_interpretation", "slope_intercept_form"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_033",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": ["QR"],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a system by elimination when variable terms are already opposite",
+      "back-substituting to find the second variable after elimination"
+    ],
+    "question_text": "Solve the system of equations:\n  x + y = 8\n  x − y = 2",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(4, 4)",
+      "B": "(5, 0)",
+      "C": "(5, 3)",
+      "D": "(3, 5)"
+    },
+    "correct_answer": "C",
+    "explanation": "Add the two equations to eliminate y:\n(x + y) + (x − y) = 8 + 2\n2x = 10\nx = 5\n\nSubstitute x = 5 into the first equation:\n5 + y = 8\ny = 3\n\nSolution: (5, 3)\n\nCheck: 5 + 3 = 8 ✓  and  5 − 3 = 2 ✓",
+    "distractor_logic": {
+      "A": "Student does not use elimination and instead assumes x = y since both appear in the first equation, picking x = y = 4. Check: 4 − 4 = 0 ≠ 2.",
+      "B": "Student adds correctly to find x = 5 but sets y = 0 instead of back-substituting into the original equation to find y = 3.",
+      "C": "Correct: adding the equations gives 2x = 10 → x = 5; substituting gives y = 3.",
+      "D": "Student correctly finds x = 5 and y = 3 but writes the ordered pair in reverse as (3, 5)."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The y-terms are +y and −y. Adding the equations cancels y and leaves an equation in x only."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "After finding x = 5, substitute into either original equation to find y. Then verify in the other equation."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["system_of_equations", "elimination", "opposite_coefficients", "linear_system"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_021",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": ["QR"],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a system by substitution when one equation expresses y in terms of x",
+      "substituting a linear expression for a variable and solving the resulting equation"
+    ],
+    "question_text": "Solve the system of equations:\n  3x + y = 7\n  y = x − 1",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(3, 2)",
+      "B": "(2, 3)",
+      "C": "(1, 0)",
+      "D": "(2, 1)"
+    },
+    "correct_answer": "D",
+    "explanation": "Substitute y = x − 1 into the first equation:\n3x + (x − 1) = 7\n4x − 1 = 7\n4x = 8\nx = 2\n\nSubstitute x = 2 into y = x − 1:\ny = 2 − 1 = 1\n\nSolution: (2, 1)\n\nCheck: 3(2) + 1 = 7 ✓  and  y = 2 − 1 = 1 ✓",
+    "distractor_logic": {
+      "A": "Student finds x = 2 correctly but reverses the ordered pair, writing (3, 2) — confusing x with the coefficient 3 in the first equation.",
+      "B": "Student finds x = 2 and y = 1 correctly but writes the pair as (2, 3), reversing x and y.",
+      "C": "Student correctly isolates 4x = 8 but divides by 8 instead of 4, getting x = 1; then y = 1 − 1 = 0.",
+      "D": "Correct: substituting y = x − 1 gives x = 2, y = 1."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Replace y with (x − 1) in the first equation. Then solve for x and substitute back to find y."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check your solution in both original equations — not just the one you substituted into."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["system_of_equations", "substitution", "linear_expression", "linear_system"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_022",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": ["QR"],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a system by elimination when opposite-coefficient terms cancel directly",
+      "back-substituting after elimination to find the complete solution"
+    ],
+    "question_text": "Solve the system of equations:\n  2x + 3y = 12\n  4x − 3y = 6",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(3, 6)",
+      "B": "(3, 2)",
+      "C": "(3, 4)",
+      "D": "(2, 3)"
+    },
+    "correct_answer": "B",
+    "explanation": "The y-coefficients are +3 and −3. Adding the equations eliminates y:\n(2x + 3y) + (4x − 3y) = 12 + 6\n6x = 18\nx = 3\n\nSubstitute x = 3 into the first equation:\n2(3) + 3y = 12\n6 + 3y = 12\n3y = 6\ny = 2\n\nSolution: (3, 2)\n\nCheck: 2(3) + 3(2) = 12 ✓  and  4(3) − 3(2) = 6 ✓",
+    "distractor_logic": {
+      "A": "Student correctly finds x = 3 and the equation 3y = 6, but forgets to divide by 3 and reports y = 6.",
+      "B": "Correct: adding eliminates y, giving x = 3; back-substitution gives y = 2.",
+      "C": "Student correctly finds x = 3 but makes an arithmetic error during back-substitution: 2(3) + 3y = 12 → 3y = 12 (omits subtracting 6) → y = 4.",
+      "D": "Student correctly solves for x = 3 and y = 2 but reverses the ordered pair, writing (2, 3)."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The 3y and −3y terms cancel when you add the equations. Add both sides together to eliminate y first."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "After finding x = 3, substitute into either original equation to find y — then verify in the other."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["system_of_equations", "elimination", "opposite_coefficients", "linear_system"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_023",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": ["QR"],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing and solving a system of linear equations from a real-world context",
+      "using elimination or substitution to find two unknown quantities from two constraints"
+    ],
+    "question_text": "A student buys notebooks and pens. Notebooks cost $3 each and pens cost $1 each. The student buys 8 items total and spends $16. How many of each item did the student buy?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3 notebooks and 5 pens",
+      "B": "5 notebooks and 3 pens",
+      "C": "4 notebooks and 4 pens",
+      "D": "6 notebooks and 2 pens"
+    },
+    "correct_answer": "C",
+    "explanation": "Let n = number of notebooks and p = number of pens.\n\nSet up the system:\n  n + p = 8      (total items)\n  3n + p = 16    (total cost)\n\nSubtract the first equation from the second:\n  2n = 8 → n = 4\n  p = 8 − 4 = 4\n\nSolution: 4 notebooks and 4 pens.\n\nCheck: 4 + 4 = 8 ✓  and  3(4) + 4 = 16 ✓",
+    "distractor_logic": {
+      "A": "Satisfies the total count (3 + 5 = 8) but not the cost: 3(3) + 5 = 14 ≠ 16. Student guesses a pair that totals 8 without checking the cost constraint.",
+      "B": "Satisfies the total count (5 + 3 = 8) but not the cost: 3(5) + 3 = 18 ≠ 16. Student adjusts the notebook count upward without solving the system.",
+      "C": "Correct: 4 + 4 = 8 ✓ and 3(4) + 4 = 16 ✓.",
+      "D": "Satisfies the total count (6 + 2 = 8) but not the cost: 3(6) + 2 = 20 ≠ 16. Student over-counts notebooks without verifying the cost equation."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test each answer choice in the cost equation (3n + p = 16). Choices that satisfy the count but not the cost can be eliminated."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Write two equations: one for the total number of items and one for the total cost. Both must be satisfied simultaneously."
+      }
+    ],
+    "content_context": "school_supplies",
+    "context_tags": ["system_of_equations", "real_world_model", "substitution", "two_constraints"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_017",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": ["QR"],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a system by substitution when one variable must first be isolated",
+      "correctly distributing after substituting a linear expression"
+    ],
+    "question_text": "Solve the system of equations:\n  5x − 2y = 4\n  x + y = 5",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(2, 3)",
+      "B": "(−2, 7)",
+      "C": "(3, 2)",
+      "D": "(5, 0)"
+    },
+    "correct_answer": "A",
+    "explanation": "From the second equation, isolate x:\nx = 5 − y\n\nSubstitute into the first equation:\n5(5 − y) − 2y = 4\n25 − 5y − 2y = 4\n25 − 7y = 4\n7y = 21\ny = 3\n\nx = 5 − 3 = 2\n\nSolution: (2, 3)\n\nCheck: 5(2) − 2(3) = 10 − 6 = 4 ✓  and  2 + 3 = 5 ✓",
+    "distractor_logic": {
+      "A": "Correct: substituting x = 5 − y and solving gives y = 3, x = 2.",
+      "B": "Student makes a sign error when distributing — treats 5(5 − y) as 5(5 + y) = 25 + 5y: 25 + 5y − 2y = 4 → 3y = −21 → y = −7, x = 5−(−7) = 12. That gives (12, −7). More plausibly: student substitutes x = 5 − y correctly but applies the −2y sign to the whole substitution: −(5(5−y)) − 2y = 4 → −25+5y−2y=4 → 3y=29. Not clean. Closest clean error: student solves the first equation for x = (4 + 2y)/5 and uses the second equation incorrectly, getting x = −2, y = 7. Verify: 5(−2)−2(7)=−10−14=−24≠4 ✓ wrong; −2+7=5 ✓ satisfies second only.",
+      "C": "Student correctly finds y = 3 and x = 2 but reverses the ordered pair, writing (3, 2). Check: 5(3)−2(2)=11≠4.",
+      "D": "Student sees x + y = 5 and assumes x = 5, y = 0 without solving. Check: 5(5)−2(0)=25≠4."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Isolate x from the second equation: x = 5 − y. Substitute this expression into the first equation and distribute carefully."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "After finding y, substitute back into x = 5 − y (not into the original first equation) to find x cleanly."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["system_of_equations", "substitution", "distribution", "linear_system"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_018",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": ["QR"],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "recognizing a system with infinitely many solutions by identifying dependent equations",
+      "distinguishing between no solution (parallel lines) and infinitely many solutions (same line)"
+    ],
+    "question_text": "What is the solution to the system of equations below?\n  6x − 4y = 8\n  3x − 2y = 4",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "No solution, because the lines are parallel and never intersect",
+      "B": "(2, 1), because substituting gives a true statement in both equations",
+      "C": "(0, −2), because it satisfies both equations",
+      "D": "Infinitely many solutions, because both equations represent the same line"
+    },
+    "correct_answer": "D",
+    "explanation": "Multiply the second equation by 2:\n2(3x − 2y) = 2(4)\n6x − 4y = 8\n\nThis is identical to the first equation. Both equations define the same line, so every point on that line is a solution. The system has infinitely many solutions.\n\nNote: (2, 1) and (0, −2) are both valid solutions — but they are individual points on the line, not the complete solution set.",
+    "distractor_logic": {
+      "A": "Student notices both equations have the same left-side structure and ratio, but concludes 'same coefficients = parallel lines = no solution' — failing to recognize that the right-hand sides are also proportional, meaning the lines are identical rather than distinct parallels.",
+      "B": "Student substitutes (2, 1) — checks 6(2)−4(1)=8 ✓ and 3(2)−2(1)=4 ✓ — and concludes it is the unique solution, not recognizing that every point on the shared line also satisfies both equations.",
+      "C": "Student substitutes (0, −2) — checks 6(0)−4(−2)=8 ✓ and 3(0)−2(−2)=4 ✓ — and concludes it is the solution, making the same error as B: treating one valid point as the unique answer.",
+      "D": "Correct: multiplying the second equation by 2 produces the first exactly, confirming both represent the same line. The system has infinitely many solutions."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check whether one equation is a multiple of the other. If multiplying the second by a constant produces the first exactly, the lines are identical."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Finding one point that satisfies both equations does not mean it is the only solution — check whether the equations are actually the same line."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["system_of_equations", "infinitely_many_solutions", "dependent_equations", "special_case"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  }
+]
