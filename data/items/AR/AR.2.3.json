@@ -1,0 +1,711 @@
+[
+  {
+    "item_id": "AR_B_024",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.3",
+    "topic": "evaluating_linear_functions_for_a_given_value",
+    "topic_text": "Evaluating Linear Functions for a Given Value",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "evaluating a linear function in slope-intercept form at a given input value",
+      "applying substitution correctly to a two-term linear expression"
+    ],
+    "question_text": "Given f(x) = 2x + 5, what is f(3)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "16",
+      "B": "11",
+      "C": "8",
+      "D": "10"
+    },
+    "correct_answer": "B",
+    "explanation": "Substitute x = 3 into f(x) = 2x + 5:\nf(3) = 2(3) + 5 = 6 + 5 = 11",
+    "distractor_logic": {
+      "A": "Student computes 2(3) = 6 correctly but then adds 5 twice: 6 + 5 + 5 = 16.",
+      "B": "Correct: f(3) = 2(3) + 5 = 6 + 5 = 11.",
+      "C": "Student ignores the coefficient and adds x directly to the constant: 3 + 5 = 8, treating the function as f(x) = x + 5.",
+      "D": "Student adds all three numbers in the expression without multiplying: 2 + 3 + 5 = 10."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Replace x with 3 everywhere it appears: f(3) = 2(3) + 5. Multiply first, then add."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The coefficient 2 multiplies x. Compute 2 × 3 before adding 5."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["linear_function", "slope_intercept_form", "substitution", "evaluate"],
+    "estimated_time_seconds": 45,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_025",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.3",
+    "topic": "evaluating_linear_functions_for_a_given_value",
+    "topic_text": "Evaluating Linear Functions for a Given Value",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "evaluating a linear function with a negative slope at a given input",
+      "correctly handling the sign when substituting into a decreasing linear function"
+    ],
+    "question_text": "Given g(x) = −3x + 7, what is g(4)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "19",
+      "B": "5",
+      "C": "−19",
+      "D": "−5"
+    },
+    "correct_answer": "D",
+    "explanation": "Substitute x = 4 into g(x) = −3x + 7:\ng(4) = −3(4) + 7 = −12 + 7 = −5",
+    "distractor_logic": {
+      "A": "Student treats the slope as positive, computing 3(4) + 7 = 12 + 7 = 19.",
+      "B": "Student computes g(4) = −5 correctly but drops the negative sign, reporting 5.",
+      "C": "Student computes −3(4) = −12 correctly but subtracts 7 instead of adding: −12 − 7 = −19.",
+      "D": "Correct: g(4) = −3(4) + 7 = −12 + 7 = −5."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Replace x with 4: g(4) = −3(4) + 7. Compute −3 × 4 first, then add 7."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The slope is negative (−3). Multiplying −3 by a positive input gives a negative product — keep track of the sign."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["linear_function", "negative_slope", "substitution", "evaluate"],
+    "estimated_time_seconds": 45,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_026",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.3",
+    "topic": "evaluating_linear_functions_for_a_given_value",
+    "topic_text": "Evaluating Linear Functions for a Given Value",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "evaluating a linear function in a real-world cost context",
+      "identifying and applying the per-unit rate and flat fee in a linear model"
+    ],
+    "question_text": "A taxi charges a flat fee of $3.00 plus $2.50 per mile. The total cost is modeled by C(m) = 2.50m + 3, where m is the number of miles. What is the cost of a 6-mile trip?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$18.00",
+      "B": "$15.00",
+      "C": "$21.00",
+      "D": "$22.50"
+    },
+    "correct_answer": "A",
+    "explanation": "Substitute m = 6 into C(m) = 2.50m + 3:\nC(6) = 2.50(6) + 3 = 15 + 3 = $18.00",
+    "distractor_logic": {
+      "A": "Correct: C(6) = 2.50(6) + 3 = 15.00 + 3.00 = $18.00.",
+      "B": "Student computes the per-mile charge (2.50 × 6 = 15) but forgets to add the $3.00 flat fee.",
+      "C": "Student adds the flat fee twice: 2.50(6) + 3 + 3 = 15 + 6 = $21.00.",
+      "D": "Student adds the number of miles to the flat fee before multiplying: (6 + 3) × 2.50 = 9 × 2.50 = $22.50."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute m = 6 into C(m) = 2.50m + 3. Multiply first, then add the flat fee."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The flat fee ($3) is added once, no matter how many miles. The per-mile rate ($2.50) is multiplied by the number of miles."
+      }
+    ],
+    "content_context": "taxi_fare",
+    "context_tags": ["linear_function", "real_world_model", "flat_fee", "per_unit_rate"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_027",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.3",
+    "topic": "evaluating_linear_functions_for_a_given_value",
+    "topic_text": "Evaluating Linear Functions for a Given Value",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "evaluating a linear function at x = 0 to find the y-intercept",
+      "recognizing that the constant term in slope-intercept form is the output when x = 0"
+    ],
+    "question_text": "Given h(x) = 4x − 9, what is h(0)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "4",
+      "B": "9",
+      "C": "−9",
+      "D": "−5"
+    },
+    "correct_answer": "C",
+    "explanation": "Substitute x = 0 into h(x) = 4x − 9:\nh(0) = 4(0) − 9 = 0 − 9 = −9\n\nWhen x = 0, the slope term vanishes and only the constant remains. h(0) is always the y-intercept of a linear function.",
+    "distractor_logic": {
+      "A": "Student returns the slope (4) as the answer instead of evaluating the function at x = 0.",
+      "B": "Student evaluates correctly to get −9 but drops the negative sign, reporting 9.",
+      "C": "Correct: h(0) = 4(0) − 9 = 0 − 9 = −9.",
+      "D": "Student substitutes x = 1 instead of x = 0: h(1) = 4(1) − 9 = 4 − 9 = −5."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Replace x with 0: h(0) = 4(0) − 9. Any number times 0 is 0, so simplify from there."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "When x = 0, the term 4x disappears. The answer is just the constant term."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["linear_function", "y_intercept", "evaluate_at_zero", "slope_intercept_form"],
+    "estimated_time_seconds": 45,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_028",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.3",
+    "topic": "evaluating_linear_functions_for_a_given_value",
+    "topic_text": "Evaluating Linear Functions for a Given Value",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "extending a linear pattern in a table to find the next output value",
+      "identifying and applying the constant rate of change from a table of values"
+    ],
+    "question_text": "A linear function produces the values shown in the table below. What is f(4)?\n\n| x | f(x) |\n|---|------|\n| 1 |   5  |\n| 2 |   8  |\n| 3 |  11  |\n| 4 |   ?  |",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "14",
+      "B": "13",
+      "C": "15",
+      "D": "12"
+    },
+    "correct_answer": "A",
+    "explanation": "The first differences are constant: 8 − 5 = 3 and 11 − 8 = 3. The function increases by 3 for each unit increase in x.\nf(4) = 11 + 3 = 14\n\nAlternatively, the rule is f(x) = 3x + 2 (verify: f(1) = 5, f(2) = 8, f(3) = 11 ✓), so f(4) = 3(4) + 2 = 14.",
+    "distractor_logic": {
+      "A": "Correct: the constant rate of change is 3, so f(4) = 11 + 3 = 14.",
+      "B": "Student identifies the rate of change as 2 (perhaps computing 8 − 6 = 2 or confusing the rate with something else) and adds 2 to f(3): 11 + 2 = 13.",
+      "C": "Student adds the x-value (4) to the previous output instead of adding the rate of change: 11 + 4 = 15.",
+      "D": "Student adds 1 to the previous output — treating x as the increment rather than the rate of change: 11 + 1 = 12."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find how much f(x) changes each time x increases by 1. That constant amount is the rate of change."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "The outputs 5, 8, 11 increase by 3 each time. The next output should be 3 more than 11."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["linear_function", "table_of_values", "rate_of_change", "extend_pattern"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_018",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.3",
+    "topic": "evaluating_linear_functions_for_a_given_value",
+    "topic_text": "Evaluating Linear Functions for a Given Value",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding the input value of a linear function that produces a given output",
+      "solving a linear equation derived from setting a function equal to a specified value"
+    ],
+    "question_text": "A linear function is defined by f(x) = 4x + 2. For what value of x does f(x) = 18?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = 5",
+      "B": "x = 4",
+      "C": "x = 4.5",
+      "D": "x = 2"
+    },
+    "correct_answer": "B",
+    "explanation": "Set f(x) equal to 18 and solve:\n4x + 2 = 18\n4x = 16\nx = 4\n\nCheck: f(4) = 4(4) + 2 = 16 + 2 = 18 ✓",
+    "distractor_logic": {
+      "A": "Student adds 2 to both sides instead of subtracting: 4x = 18 + 2 = 20 → x = 5.",
+      "B": "Correct: 4x + 2 = 18 → 4x = 16 → x = 4.",
+      "C": "Student divides 18 by 4 without subtracting 2 first: 18 ÷ 4 = 4.5.",
+      "D": "Student correctly isolates 4x = 16 but divides by 8 (doubling the coefficient) instead of 4: 16 ÷ 8 = 2."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Set 4x + 2 = 18. Subtract 2 from both sides first, then divide by 4."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "You are looking for the input x that makes the output equal to 18. Solve the equation rather than evaluating."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["linear_function", "reverse_evaluation", "solve_for_input", "slope_intercept_form"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_019",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.3",
+    "topic": "evaluating_linear_functions_for_a_given_value",
+    "topic_text": "Evaluating Linear Functions for a Given Value",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "evaluating a linear cost function at a large input value in a real-world context",
+      "correctly applying a per-unit rate and a fixed fee to compute a total"
+    ],
+    "question_text": "A phone plan charges $25 per month plus $0.10 per text message. The monthly cost is modeled by C(t) = 0.10t + 25, where t is the number of texts sent. What is the monthly bill for a customer who sends 180 texts?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$34.00",
+      "B": "$18.00",
+      "C": "$43.00",
+      "D": "$205.00"
+    },
+    "correct_answer": "C",
+    "explanation": "Substitute t = 180 into C(t) = 0.10t + 25:\nC(180) = 0.10(180) + 25 = 18 + 25 = $43.00",
+    "distractor_logic": {
+      "A": "Student uses half the correct per-text rate ($0.05 instead of $0.10): 0.05(180) + 25 = 9 + 25 = $34.00.",
+      "B": "Student computes only the per-text charge (0.10 × 180 = 18) and forgets to add the $25 monthly fee.",
+      "C": "Correct: C(180) = 0.10(180) + 25 = 18 + 25 = $43.00.",
+      "D": "Student adds the number of texts to the monthly fee instead of computing the per-text charge: 180 + 25 = $205.00."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute t = 180 into C(t) = 0.10t + 25. Multiply 0.10 × 180 first, then add $25."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The $25 monthly fee is fixed. The $0.10 per-text charge depends on the number of texts — multiply it by 180."
+      }
+    ],
+    "content_context": "phone_plan",
+    "context_tags": ["linear_function", "real_world_model", "per_unit_rate", "evaluate"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_020",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.3",
+    "topic": "evaluating_linear_functions_for_a_given_value",
+    "topic_text": "Evaluating Linear Functions for a Given Value",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "interpreting the y-intercept of a linear model in a real-world context",
+      "evaluating a linear function at a specified input and connecting the result to its meaning"
+    ],
+    "question_text": "The temperature inside an oven is modeled by T(m) = 15m + 70, where T is the temperature in °F and m is the number of minutes since the oven was turned on. Which answer correctly interprets T(0) AND gives the value of T(8)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "T(0) = 70 means the oven heats at 70°F per minute; T(8) = 190°F",
+      "B": "T(0) = 70 means the oven starts at 70°F; T(8) = 190°F",
+      "C": "T(0) = 70 means the oven starts at 70°F; T(8) = 120°F",
+      "D": "T(0) = 70 means the oven starts at 70°F; T(8) = 150°F"
+    },
+    "correct_answer": "B",
+    "explanation": "T(0) = 15(0) + 70 = 70°F. Since m = 0 is the moment the oven turns on, T(0) = 70 means the oven's starting temperature is 70°F. The rate of heating is the slope (15°F per minute), not 70.\n\nT(8) = 15(8) + 70 = 120 + 70 = 190°F.",
+    "distractor_logic": {
+      "A": "Student correctly computes T(8) = 190°F but misidentifies T(0) = 70 as the heating rate — confusing the y-intercept (initial value) with the slope (rate of change).",
+      "B": "Correct: T(0) = 70 is the initial temperature, and T(8) = 15(8) + 70 = 190°F.",
+      "C": "Student correctly interprets T(0) but stops after computing the slope portion of T(8): 15(8) = 120, forgetting to add the initial temperature of 70.",
+      "D": "Student correctly interprets T(0) but uses 10 instead of 15 as the slope when computing T(8): 10(8) + 70 = 150°F."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute m = 0 to find T(0), and m = 8 to find T(8). Show each step separately."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "In T(m) = 15m + 70, the slope (15) is the rate of change per minute, and the constant (70) is the starting temperature when m = 0."
+      }
+    ],
+    "content_context": "oven_temperature",
+    "context_tags": ["linear_function", "y_intercept_interpretation", "slope_intercept_form", "real_world_model"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_015",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.3",
+    "topic": "evaluating_linear_functions_for_a_given_value",
+    "topic_text": "Evaluating Linear Functions for a Given Value",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "setting two linear functions equal to find the input where their outputs match",
+      "evaluating both linear functions at the intersection point to confirm the shared output"
+    ],
+    "question_text": "Two parking garages charge the following amounts:\n  Garage A: C_A(h) = 3h + 2\n  Garage B: C_B(h) = h + 8\nwhere h is the number of hours parked. For how many hours do both garages charge the same amount, and what is that cost?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6 hours; $20",
+      "B": "5 hours; $17",
+      "C": "3 hours; $11",
+      "D": "3 hours; $8"
+    },
+    "correct_answer": "C",
+    "explanation": "Set the two cost functions equal and solve for h:\n3h + 2 = h + 8\n2h = 6\nh = 3\n\nEvaluate either function at h = 3:\nC_A(3) = 3(3) + 2 = 11\nC_B(3) = 3 + 8 = 11 ✓\n\nBoth garages charge $11 after 3 hours.",
+    "distractor_logic": {
+      "A": "Student correctly isolates 2h = 6 but forgets to divide by 2, using h = 6 as the number of hours, then evaluates C_A(6) = 3(6) + 2 = 20.",
+      "B": "Student makes a sign error when collecting constants — treating the equation as 3h + 2 = h + 8 → 3h − 2 = h + 8 — and solves to get h = 5, then evaluates C_A(5) = 17.",
+      "C": "Correct: h = 3 hours; cost = $11.",
+      "D": "Student correctly finds h = 3 but reads the cost from the y-intercept of C_B (which is 8) rather than evaluating either function at h = 3."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Set 3h + 2 = h + 8 and solve for h. Then substitute that h-value into either cost function to find the shared cost."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The garages charge the same amount when C_A(h) = C_B(h). Solve that equation first, then evaluate."
+      }
+    ],
+    "content_context": "parking_garage",
+    "context_tags": ["linear_function", "intersection", "real_world_model", "set_equal"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_016",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.3",
+    "topic": "evaluating_linear_functions_for_a_given_value",
+    "topic_text": "Evaluating Linear Functions for a Given Value",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "constructing the equation of a linear function from a slope and a point, then evaluating at a new input",
+      "using point-slope form to find the y-intercept before evaluating"
+    ],
+    "question_text": "A linear function has a slope of 4 and passes through the point (2, 9). What is f(7)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "37",
+      "B": "45",
+      "C": "28",
+      "D": "29"
+    },
+    "correct_answer": "D",
+    "explanation": "Use point-slope form to find the equation:\ny − 9 = 4(x − 2)\ny = 4x − 8 + 9\ny = 4x + 1\n\nVerify: f(2) = 4(2) + 1 = 9 ✓\n\nEvaluate at x = 7:\nf(7) = 4(7) + 1 = 28 + 1 = 29",
+    "distractor_logic": {
+      "A": "Student uses the given y-value (9) directly as the y-intercept instead of finding the correct intercept: f(x) = 4x + 9 → f(7) = 28 + 9 = 37.",
+      "B": "Student makes a sign error when solving for the y-intercept — adding 8 instead of subtracting: b = 9 + 8 = 17 → f(7) = 4(7) + 17 = 45.",
+      "C": "Student computes the slope times the new input but forgets to add the y-intercept: 4 × 7 = 28.",
+      "D": "Correct: y = 4x + 1, so f(7) = 4(7) + 1 = 29."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Use y − 9 = 4(x − 2) to find the equation, then substitute x = 7."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The slope is 4 and the point (2, 9) is on the line. Use these to find the y-intercept b in y = 4x + b before evaluating at x = 7."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["linear_function", "point_slope_form", "construct_equation", "evaluate"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  }
+]

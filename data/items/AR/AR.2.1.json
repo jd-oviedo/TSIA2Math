@@ -1,0 +1,711 @@
+[
+  {
+    "item_id": "AR_B_014",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.1",
+    "topic": "solving_one_variable_linear_equations",
+    "topic_text": "Solving One-Variable Linear Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a one-step linear equation using subtraction",
+      "isolating a variable by applying the inverse operation"
+    ],
+    "question_text": "Solve for x:  x + 9 = 14",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = 23",
+      "B": "x = 5",
+      "C": "x = −5",
+      "D": "x = 14"
+    },
+    "correct_answer": "B",
+    "explanation": "To isolate x, subtract 9 from both sides:\nx + 9 − 9 = 14 − 9\nx = 5\n\nCheck: 5 + 9 = 14 ✓",
+    "distractor_logic": {
+      "A": "Student adds 9 to the right side instead of subtracting, giving 14 + 9 = 23.",
+      "B": "Correct: subtracting 9 from both sides gives x = 5.",
+      "C": "Student subtracts 14 from 9 rather than subtracting 9 from 14, giving 9 − 14 = −5.",
+      "D": "Student ignores the +9 and reads the right-hand side (14) directly as the answer."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "x is being added to 9. To undo addition, subtract 9 from both sides."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute your answer back into x + 9 and check that it equals 14."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["one_step_equation", "addition", "inverse_operation", "linear_equation"],
+    "estimated_time_seconds": 45,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_015",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.1",
+    "topic": "solving_one_variable_linear_equations",
+    "topic_text": "Solving One-Variable Linear Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a one-step linear equation using division",
+      "recognizing that multiplying both sides by the reciprocal isolates the variable"
+    ],
+    "question_text": "Solve for x:  3x = 21",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = 63",
+      "B": "x = 18",
+      "C": "x = 24",
+      "D": "x = 7"
+    },
+    "correct_answer": "D",
+    "explanation": "To isolate x, divide both sides by 3:\n3x ÷ 3 = 21 ÷ 3\nx = 7\n\nCheck: 3(7) = 21 ✓",
+    "distractor_logic": {
+      "A": "Student multiplies instead of divides: 21 × 3 = 63.",
+      "B": "Student subtracts the coefficient instead of dividing: 21 − 3 = 18.",
+      "C": "Student adds the coefficient instead of dividing: 21 + 3 = 24.",
+      "D": "Correct: 21 ÷ 3 = 7."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "x is being multiplied by 3. To undo multiplication, divide both sides by 3."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute your answer back into 3x and check that it equals 21."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["one_step_equation", "multiplication", "inverse_operation", "linear_equation"],
+    "estimated_time_seconds": 45,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_016",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.1",
+    "topic": "solving_one_variable_linear_equations",
+    "topic_text": "Solving One-Variable Linear Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a two-step linear equation in the form ax + b = c",
+      "applying inverse operations in the correct order to isolate the variable"
+    ],
+    "question_text": "Solve for x:  2x + 5 = 13",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = 9",
+      "B": "x = 4",
+      "C": "x = 6.5",
+      "D": "x = 6"
+    },
+    "correct_answer": "B",
+    "explanation": "Subtract 5 from both sides, then divide by 2:\n2x + 5 − 5 = 13 − 5\n2x = 8\nx = 4\n\nCheck: 2(4) + 5 = 8 + 5 = 13 ✓",
+    "distractor_logic": {
+      "A": "Student adds 5 to the right side instead of subtracting: 2x = 13 + 5 = 18 → x = 9.",
+      "B": "Correct: 2x + 5 = 13 → 2x = 8 → x = 4.",
+      "C": "Student divides 13 by 2 before subtracting 5, giving 13 ÷ 2 = 6.5 as the answer.",
+      "D": "Student correctly finds 2x = 8 but then subtracts the coefficient (8 − 2 = 6) instead of dividing by it."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Undo operations in reverse order: subtract 5 first, then divide by 2."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute your answer into 2x + 5 and verify it equals 13."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["two_step_equation", "linear_equation", "inverse_operations", "order_of_operations"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_017",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.1",
+    "topic": "solving_one_variable_linear_equations",
+    "topic_text": "Solving One-Variable Linear Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a two-step equation with a subtracted constant",
+      "correctly adding the constant to both sides before dividing by the coefficient"
+    ],
+    "question_text": "Solve for x:  4x − 6 = 10",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = 1",
+      "B": "x = 2.5",
+      "C": "x = 4",
+      "D": "x = 8"
+    },
+    "correct_answer": "C",
+    "explanation": "Add 6 to both sides, then divide by 4:\n4x − 6 + 6 = 10 + 6\n4x = 16\nx = 4\n\nCheck: 4(4) − 6 = 16 − 6 = 10 ✓",
+    "distractor_logic": {
+      "A": "Student subtracts 6 from the right side instead of adding: 4x = 10 − 6 = 4 → x = 1.",
+      "B": "Student skips the constant and divides 10 by 4 directly: 10 ÷ 4 = 2.5.",
+      "C": "Correct: 4x − 6 = 10 → 4x = 16 → x = 4.",
+      "D": "Student correctly finds 4x = 16 but divides by 2 instead of 4, misreading the coefficient."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The constant (−6) is subtracted from 4x. Undo it by adding 6 to both sides, then divide by 4."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute your answer into 4x − 6 and verify it equals 10."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["two_step_equation", "linear_equation", "subtracted_constant", "inverse_operations"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_018",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.1",
+    "topic": "solving_one_variable_linear_equations",
+    "topic_text": "Solving One-Variable Linear Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a two-step linear equation with the variable on the right side",
+      "correctly isolating the variable when the equation is presented in a non-standard arrangement"
+    ],
+    "question_text": "Solve for x:  7 = 2x + 1",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = 3",
+      "B": "x = 4",
+      "C": "x = 3.5",
+      "D": "x = −3"
+    },
+    "correct_answer": "A",
+    "explanation": "Subtract 1 from both sides, then divide by 2:\n7 − 1 = 2x + 1 − 1\n6 = 2x\nx = 3\n\nCheck: 2(3) + 1 = 6 + 1 = 7 ✓",
+    "distractor_logic": {
+      "A": "Correct: 7 = 2x + 1 → 6 = 2x → x = 3.",
+      "B": "Student adds 1 to both sides instead of subtracting: 2x = 7 + 1 = 8 → x = 4.",
+      "C": "Student divides 7 by 2 without first subtracting 1: 7 ÷ 2 = 3.5.",
+      "D": "Student subtracts 7 from the constant term instead of subtracting 1 from 7: 2x = 1 − 7 = −6 → x = −3."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The variable is on the right side — that's fine. Subtract 1 from both sides first, then divide by 2."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute your answer into 2x + 1 and verify it equals 7."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["two_step_equation", "variable_on_right", "linear_equation", "non_standard_form"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_012",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.1",
+    "topic": "solving_one_variable_linear_equations",
+    "topic_text": "Solving One-Variable Linear Equations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a linear equation with variables on both sides",
+      "collecting like terms across the equals sign before isolating the variable"
+    ],
+    "question_text": "Solve for x:  5x − 4 = 3x + 10",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = 3",
+      "B": "x = 7",
+      "C": "x = −7",
+      "D": "x = 14"
+    },
+    "correct_answer": "B",
+    "explanation": "Subtract 3x from both sides to collect the variable terms, then add 4 to both sides:\n5x − 3x = 10 + 4\n2x = 14\nx = 7\n\nCheck: 5(7) − 4 = 31 and 3(7) + 10 = 31 ✓",
+    "distractor_logic": {
+      "A": "Student moves the variable terms correctly but subtracts the constants instead of adding: 2x = 10 − 4 = 6 → x = 3.",
+      "B": "Correct: 2x = 14 → x = 7.",
+      "C": "Student correctly arrives at 2x = 14 but applies a sign error when dividing, reporting x = −7.",
+      "D": "Student correctly finds 2x = 14 but forgets to divide by 2, reporting x = 14."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Move all x-terms to one side and all constants to the other before solving."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute your answer into both sides separately and confirm they are equal."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["variables_on_both_sides", "linear_equation", "like_terms", "two_step_equation"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_013",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.1",
+    "topic": "solving_one_variable_linear_equations",
+    "topic_text": "Solving One-Variable Linear Equations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "applying the distributive property to expand parentheses before solving",
+      "solving a two-step equation that results from correct distribution"
+    ],
+    "question_text": "Solve for x:  4(x + 3) = 28",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = 7",
+      "B": "x = 6",
+      "C": "x = 4",
+      "D": "x = 3"
+    },
+    "correct_answer": "C",
+    "explanation": "Distribute the 4, then solve:\n4x + 12 = 28\n4x = 16\nx = 4\n\nCheck: 4(4 + 3) = 4(7) = 28 ✓",
+    "distractor_logic": {
+      "A": "Student divides 28 by 4 first (28 ÷ 4 = 7) and stops there, not subtracting 3 to account for the +3 inside the parentheses.",
+      "B": "Student correctly distributes (4x + 12 = 28) but subtracts the coefficient from the remaining constant: 4x = 28 − 4 = 24 → x = 6.",
+      "C": "Correct: 4(x + 3) = 28 → 4x + 12 = 28 → 4x = 16 → x = 4.",
+      "D": "Student correctly distributes and finds 4x = 16 but then divides 16 by the wrong number — using 4 from the term 4x + 12 but computing 12 ÷ 4 = 3 as the answer."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Distribute the 4 to both terms inside the parentheses first: 4(x + 3) = 4x + 12."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute your answer into 4(x + 3) and verify it equals 28."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["distributive_property", "linear_equation", "parentheses", "two_step_equation"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_014",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.1",
+    "topic": "solving_one_variable_linear_equations",
+    "topic_text": "Solving One-Variable Linear Equations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a linear equation that contains a fraction",
+      "isolating the variable by undoing division through multiplication"
+    ],
+    "question_text": "Solve for x:  x/2 + 3 = 7",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = 2",
+      "B": "x = 5",
+      "C": "x = 8",
+      "D": "x = 6"
+    },
+    "correct_answer": "C",
+    "explanation": "Subtract 3 from both sides, then multiply by 2:\nx/2 = 4\nx = 8\n\nCheck: 8/2 + 3 = 4 + 3 = 7 ✓",
+    "distractor_logic": {
+      "A": "Student correctly isolates x/2 = 4 but divides by 2 again instead of multiplying: 4 ÷ 2 = 2.",
+      "B": "Student subtracts the denominator (2) from 7 instead of subtracting the constant (3): 7 − 2 = 5.",
+      "C": "Correct: x/2 + 3 = 7 → x/2 = 4 → x = 8.",
+      "D": "Student correctly finds x/2 = 4 but adds the denominator instead of multiplying: 4 + 2 = 6."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Subtract 3 first to isolate x/2, then multiply both sides by 2 to solve for x."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute your answer into x/2 + 3 and verify it equals 7."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["fractional_coefficient", "linear_equation", "two_step_equation", "multiplication_inverse"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_011",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.1",
+    "topic": "solving_one_variable_linear_equations",
+    "topic_text": "Solving One-Variable Linear Equations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "recognizing when a linear equation has no solution by identifying a contradiction",
+      "interpreting the result when variable terms cancel and a false constant equation remains"
+    ],
+    "question_text": "Solve for x:  3x + 5 = 3x − 2",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "No solution",
+      "B": "x = 7/3",
+      "C": "x = 0",
+      "D": "All real numbers"
+    },
+    "correct_answer": "A",
+    "explanation": "Subtract 3x from both sides:\n3x + 5 − 3x = 3x − 2 − 3x\n5 = −2\n\nThis is a false statement — no value of x makes it true. The equation has no solution.",
+    "distractor_logic": {
+      "A": "Correct: subtracting 3x from both sides yields 5 = −2, a contradiction with no solution.",
+      "B": "Student subtracts 3x from the left side only, leaving 5 = 3x − 2, then solves: 3x = 7 → x = 7/3.",
+      "C": "Student cancels the 3x terms and misinterprets the resulting contradiction (5 = −2) as meaning x = 0 is the answer.",
+      "D": "Student sees that both sides have the same 3x coefficient and concludes the equation must be an identity true for all x, confusing a contradiction with an identity."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Subtract 3x from both sides. If the variable disappears and you're left with a false statement, the equation has no solution."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try any value of x — say x = 0 or x = 1. If neither side equals the other for any x, there is no solution."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["no_solution", "contradiction", "linear_equation", "variables_on_both_sides"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_012",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.1",
+    "topic": "solving_one_variable_linear_equations",
+    "topic_text": "Solving One-Variable Linear Equations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a multi-step linear equation with parentheses on both sides",
+      "correctly distributing and combining like terms across a complex equation"
+    ],
+    "question_text": "Solve for x:  2(3x − 5) = 4(x + 1) − 2",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = −4",
+      "B": "x = 7",
+      "C": "x = 3",
+      "D": "x = 6"
+    },
+    "correct_answer": "D",
+    "explanation": "Distribute on both sides:\n6x − 10 = 4x + 4 − 2\n6x − 10 = 4x + 2\n\nSubtract 4x and add 10 to both sides:\n2x = 12\nx = 6\n\nCheck: left = 2(18 − 5) = 2(13) = 26; right = 4(7) − 2 = 28 − 2 = 26 ✓",
+    "distractor_logic": {
+      "A": "Student distributes correctly on both sides but makes a sign error when collecting constants: 2x = 2 − 10 = −8 → x = −4.",
+      "B": "Student distributes correctly on the left but drops the −2 from the right side: 6x − 10 = 4x + 4 → 2x = 14 → x = 7.",
+      "C": "Student distributes and collects correctly (2x = 12) but divides by 4 instead of 2, misidentifying the coefficient: 12 ÷ 4 = 3.",
+      "D": "Correct: distributing and combining gives 2x = 12 → x = 6."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Distribute on both sides first, then collect all x-terms on one side and all constants on the other."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute your answer into both sides of the original equation and confirm they are equal."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["multi_step_equation", "distributive_property", "parentheses_both_sides", "linear_equation"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  }
+]
