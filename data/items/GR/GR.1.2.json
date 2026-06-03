@@ -1,0 +1,632 @@
+[
+  {
+    "item_id": "GR_B_004",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.2",
+    "topic": "identifying_and_defining_types_of_angles",
+    "topic_text": "Identifying and Defining Types of Angles",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "recalling the definition of complementary angles as a pair summing to 90°",
+      "distinguishing complementary angles from supplementary and vertical angle relationships"
+    ],
+    "question_text": "Two angles have measures that add up to 90°. What type of angle pair is this?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "supplementary",
+      "B": "complementary",
+      "C": "vertical",
+      "D": "adjacent"
+    },
+    "correct_answer": "B",
+    "explanation": "Two angles whose measures sum to 90° are called complementary angles.\n\n- Supplementary angles sum to 180°, not 90°.\n- Vertical angles are the equal opposite pairs formed when two lines intersect — they are not defined by a sum of 90°.\n- Adjacent angles share a common side and vertex, but that positional relationship says nothing about their sum.",
+    "distractor_logic": {
+      "A": "Student confuses complementary (sum = 90°) with supplementary (sum = 180°), swapping the two terms.",
+      "B": "Correct: two angles that sum to 90° are complementary angles.",
+      "C": "Student selects vertical angles, which are equal in measure when formed by intersecting lines, but are not defined by summing to 90°.",
+      "D": "Student selects adjacent, which describes a positional relationship between angles that share a side and vertex — not a relationship defined by a specific sum."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The key information is 'add up to 90°.' That sum is the defining feature — look for the term whose definition includes a sum of exactly 90°."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Think about what each term means: one is about equal angles at an intersection, one is about sharing a side, and two are about specific sums. Eliminate any that don't match a sum of 90°."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["complementary_angles", "angle_relationships", "angle_sum", "definitions"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_005",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.2",
+    "topic": "identifying_and_defining_types_of_angles",
+    "topic_text": "Identifying and Defining Types of Angles",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "recalling the definition of supplementary angles as a pair summing to 180°",
+      "distinguishing supplementary angles from complementary and vertical angle relationships"
+    ],
+    "question_text": "Two angles have measures that add up to 180°. What type of angle pair is this?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "complementary",
+      "B": "vertical",
+      "C": "adjacent",
+      "D": "supplementary"
+    },
+    "correct_answer": "D",
+    "explanation": "Two angles whose measures sum to 180° are called supplementary angles.\n\n- Complementary angles sum to 90°, not 180°.\n- Vertical angles are the opposite, equal pairs formed when two lines intersect — they are defined by position and equality, not by a sum of 180°.\n- Adjacent angles share a common side and vertex, which is a positional description with no specific sum requirement.",
+    "distractor_logic": {
+      "A": "Student confuses supplementary (sum = 180°) with complementary (sum = 90°), swapping the two terms.",
+      "B": "Student selects vertical angles, which are equal in measure at an intersection, but vertical angles are not defined by summing to 180°.",
+      "C": "Student selects adjacent, which describes a positional relationship (sharing a side and vertex) rather than a sum-based relationship.",
+      "D": "Correct: two angles that sum to 180° are supplementary angles."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The key information is 'add up to 180°.' A straight line also measures 180°, which is a helpful way to remember which term goes with this sum."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "One option is the term for angles summing to 90°, not 180°. Another is about equal opposite angles at an intersection. Eliminate those and choose the term defined by a 180° sum."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["supplementary_angles", "angle_relationships", "angle_sum", "definitions"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_006",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.2",
+    "topic": "identifying_and_defining_types_of_angles",
+    "topic_text": "Identifying and Defining Types of Angles",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "recalling the defining property of vertical angles formed by two intersecting lines",
+      "distinguishing vertical angles from complementary and supplementary angle relationships"
+    ],
+    "question_text": "Two straight lines intersect, forming two pairs of opposite angles. Which statement correctly describes the opposite (vertical) angles?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "They are equal in measure.",
+      "B": "They always sum to 90°.",
+      "C": "They always sum to 180°.",
+      "D": "They share a common side."
+    },
+    "correct_answer": "A",
+    "explanation": "When two lines intersect, the angles directly across from each other are called vertical angles, and they are always equal in measure.\n\n- They do not always sum to 90° — that would make each angle 45°, which is only true in special cases.\n- They do not always sum to 180° — that is the property of supplementary angles (or adjacent angles at the intersection, not the vertical pair).\n- Sharing a common side describes adjacent angles, not vertical angles.",
+    "distractor_logic": {
+      "A": "Correct: vertical angles, the opposite pairs formed when two lines intersect, are always equal in measure.",
+      "B": "Student confuses vertical angles with complementary angles, applying the 90° sum rule to a pair that is defined by equality, not by that specific sum.",
+      "C": "Student confuses vertical angles with supplementary angles; adjacent angles at an intersection do sum to 180°, but the vertical (opposite) pair are equal to each other, not supplementary to each other.",
+      "D": "Student confuses vertical angles with adjacent angles; adjacent angles share a common side and vertex, whereas vertical angles are the non-adjacent opposite pairs at an intersection."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Focus on the word 'opposite.' When lines cross, the angles across from each other are special — think about what relationship opposite angles have."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Check each option: does it describe a sum of 90°, a sum of 180°, sharing a side, or something else? Vertical angles are across from each other — they don't share a side, and their relationship isn't about summing to a fixed number."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["vertical_angles", "angle_relationships", "intersecting_lines", "definitions"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_004",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.2",
+    "topic": "identifying_and_defining_types_of_angles",
+    "topic_text": "Identifying and Defining Types of Angles",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "computing the complement of a given angle by subtracting from 90°",
+      "applying the complementary angle relationship to find a missing angle measure"
+    ],
+    "question_text": "Two angles are complementary. One angle measures 34°. What is the measure of the other angle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "146°",
+      "B": "34°",
+      "C": "56°",
+      "D": "64°"
+    },
+    "correct_answer": "C",
+    "explanation": "Complementary angles sum to 90°. To find the missing angle, subtract the given angle from 90°:\n\n90° − 34° = 56°\n\nCheck: 34° + 56° = 90° ✓",
+    "distractor_logic": {
+      "A": "Student subtracts from 180° instead of 90°, applying the supplementary rule rather than the complementary rule: 180° − 34° = 146°.",
+      "B": "Student confuses the complementary relationship with vertical angle equality and reports the original angle measure as the answer.",
+      "C": "Correct: complementary angles sum to 90°, so the missing angle is 90° − 34° = 56°.",
+      "D": "Student makes a subtraction error when computing 90° − 34°, failing to borrow correctly and computing each digit independently (9 − 3 = 6, 0 − 4 → writes 4), yielding 64° instead of 56°."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The key word is 'complementary.' Complementary angles sum to 90°. Subtract the given angle from 90° to find the missing one."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Add your answer to 34° and check that the sum equals exactly 90°."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["complementary_angles", "missing_angle", "angle_sum", "subtraction"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_005",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.2",
+    "topic": "identifying_and_defining_types_of_angles",
+    "topic_text": "Identifying and Defining Types of Angles",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "computing the supplement of a given angle by subtracting from 180°",
+      "applying the supplementary angle relationship to find a missing angle measure"
+    ],
+    "question_text": "Two angles are supplementary. One angle measures 67°. What is the measure of the other angle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "23°",
+      "B": "113°",
+      "C": "67°",
+      "D": "247°"
+    },
+    "correct_answer": "B",
+    "explanation": "Supplementary angles sum to 180°. To find the missing angle, subtract the given angle from 180°:\n\n180° − 67° = 113°\n\nCheck: 67° + 113° = 180° ✓",
+    "distractor_logic": {
+      "A": "Student subtracts from 90° instead of 180°, applying the complementary rule rather than the supplementary rule: 90° − 67° = 23°.",
+      "B": "Correct: supplementary angles sum to 180°, so the missing angle is 180° − 67° = 113°.",
+      "C": "Student confuses the supplementary relationship with vertical angle equality and reports the original angle measure as the answer.",
+      "D": "Student adds the given angle to 180° rather than subtracting it, computing 180° + 67° = 247° instead of 180° − 67° = 113°."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The key word is 'supplementary.' Supplementary angles sum to 180°. Subtract the given angle from 180° to find the missing one."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Add your answer to 67° and check that the sum equals exactly 180°."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["supplementary_angles", "missing_angle", "angle_sum", "subtraction"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_006",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.2",
+    "topic": "identifying_and_defining_types_of_angles",
+    "topic_text": "Identifying and Defining Types of Angles",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "applying the vertical angles theorem to identify an unknown angle at an intersection",
+      "distinguishing the vertical angle relationship from supplementary and complementary relationships"
+    ],
+    "question_text": "Two lines intersect at a point. One of the four angles formed measures 48°. What is the measure of the angle directly across the intersection from it?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "132°",
+      "B": "96°",
+      "C": "42°",
+      "D": "48°"
+    },
+    "correct_answer": "D",
+    "explanation": "The angle directly across the intersection is the vertical angle. Vertical angles are always equal in measure.\n\nTherefore, the vertical angle also measures 48°.\n\nNote: The other two angles at the intersection each measure 180° − 48° = 132°, since adjacent angles at an intersection are supplementary.",
+    "distractor_logic": {
+      "A": "Student finds the supplement of 48° (180° − 48° = 132°), confusing the supplementary relationship of adjacent angles at an intersection with the vertical angle relationship.",
+      "B": "Student doubles the given angle (48° × 2 = 96°), possibly reasoning that 'vertical' implies a multiplicative relationship rather than equality.",
+      "C": "Student subtracts from 90° (90° − 48° = 42°), applying the complementary rule to a vertical angle context.",
+      "D": "Correct: the angle directly across the intersection is a vertical angle, and vertical angles are always equal in measure; the answer is 48°."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The key phrase is 'directly across the intersection.' Angles directly across from each other at an intersection are vertical angles — recall the defining property of vertical angles."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Think about whether the answer should involve subtraction from 90° or 180°, or whether the angle across the intersection simply has a direct relationship to the given angle."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["vertical_angles", "intersecting_lines", "missing_angle", "angle_relationships"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_004",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.2",
+    "topic": "identifying_and_defining_types_of_angles",
+    "topic_text": "Identifying and Defining Types of Angles",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "chaining complementary and supplementary angle relationships across a multi-step problem",
+      "applying two distinct angle sum rules in sequence to find an unknown angle measure"
+    ],
+    "question_text": "Angle A and Angle B are complementary. Angle B and Angle C are supplementary. If Angle A measures 28°, what is the measure of Angle C?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "118°",
+      "B": "152°",
+      "C": "62°",
+      "D": "28°"
+    },
+    "correct_answer": "A",
+    "explanation": "Step 1 — Find Angle B using the complementary relationship:\nAngle A + Angle B = 90°\n28° + Angle B = 90°\nAngle B = 90° − 28° = 62°\n\nStep 2 — Find Angle C using the supplementary relationship:\nAngle B + Angle C = 180°\n62° + Angle C = 180°\nAngle C = 180° − 62° = 118°\n\nCheck: 28° + 62° = 90° ✓ and 62° + 118° = 180° ✓",
+    "distractor_logic": {
+      "A": "Correct: Angle B = 90° − 28° = 62°; then Angle C = 180° − 62° = 118°.",
+      "B": "Student skips the first step and applies the supplementary rule directly to Angle A, computing 180° − 28° = 152° rather than first finding Angle B.",
+      "C": "Student completes only the first step, finding Angle B = 62°, and reports that value as the answer instead of continuing to find Angle C.",
+      "D": "Student applies a vertical angle relationship and reports the original measure of Angle A (28°) as the measure of Angle C."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "There are two separate relationships here: A and B are complementary (sum = 90°), and B and C are supplementary (sum = 180°). Find Angle B first, then use it to find Angle C."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch three angles labeled A, B, and C. Mark A = 28°, then use the complementary rule to label B, then use the supplementary rule to label C."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["complementary_angles", "supplementary_angles", "multi_step", "angle_chain"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_005",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.2",
+    "topic": "identifying_and_defining_types_of_angles",
+    "topic_text": "Identifying and Defining Types of Angles",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "applying vertical angle and supplementary angle relationships together to analyze all four angles at an intersection",
+      "computing and combining angle measures formed by two intersecting lines"
+    ],
+    "question_text": "Two lines intersect, forming four angles. One of the angles measures 73°. What is the sum of the two angles that are NOT equal to 73°?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "107°",
+      "B": "146°",
+      "C": "214°",
+      "D": "360°"
+    },
+    "correct_answer": "C",
+    "explanation": "When two lines intersect, four angles are formed:\n- Two vertical angles equal to 73° each.\n- Two vertical angles equal to 180° − 73° = 107° each (supplementary to the 73° angles).\n\nThe two angles NOT equal to 73° each measure 107°.\nTheir sum: 107° + 107° = 214°\n\nCheck: 73° + 73° + 107° + 107° = 360° (all four angles at a point) ✓",
+    "distractor_logic": {
+      "A": "Student correctly finds the supplement of 73° (107°) but reports only one of the two non-vertical angles rather than their sum.",
+      "B": "Student adds the two vertical angles equal to 73° (73° + 73° = 146°) instead of identifying and summing the other pair.",
+      "C": "Correct: the two angles not equal to 73° each measure 180° − 73° = 107°; their sum is 107° + 107° = 214°.",
+      "D": "Student sums all four angles at the intersection (73° + 73° + 107° + 107° = 360°) rather than isolating the two angles that are not equal to 73°."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["draw_diagram", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch two intersecting lines and label one angle 73°. Use what you know about vertical and supplementary angles to label all four angles, then find the sum of the two that are not 73°."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks for the sum of the two angles that are NOT 73°. First find what those angles measure using the supplementary relationship, then add them together."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["vertical_angles", "supplementary_angles", "intersecting_lines", "multi_step"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_006",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.2",
+    "topic": "identifying_and_defining_types_of_angles",
+    "topic_text": "Identifying and Defining Types of Angles",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "applying ratio reasoning to determine the measures of two supplementary angles",
+      "setting up and solving a proportional relationship within a supplementary angle context"
+    ],
+    "question_text": "Two supplementary angles are in a ratio of 2:3. What are the measures of the two angles?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "36° and 54°",
+      "B": "72° and 108°",
+      "C": "36° and 144°",
+      "D": "60° and 120°"
+    },
+    "correct_answer": "B",
+    "explanation": "Let the two angles be 2k and 3k.\n\nSince the angles are supplementary:\n2k + 3k = 180°\n5k = 180°\nk = 36°\n\nAngle 1 = 2k = 2(36°) = 72°\nAngle 2 = 3k = 3(36°) = 108°\n\nCheck: 72° + 108° = 180° ✓ and 72:108 = 2:3 ✓",
+    "distractor_logic": {
+      "A": "Student applies the ratio to a sum of 90° rather than 180°, confusing supplementary with complementary: 2k + 3k = 90° gives k = 18°, yielding 36° and 54°.",
+      "B": "Correct: setting 2k + 3k = 180° gives k = 36°; the two angles are 2(36°) = 72° and 3(36°) = 108°.",
+      "C": "Student correctly solves for k = 36° but uses k itself as one angle measure and its supplement (180° − 36° = 144°) as the other, rather than computing 2k and 3k.",
+      "D": "Student misreads the ratio 2:3 as meaning one angle is twice the other, setting up x + 2x = 180°, which gives x = 60° and 2x = 120°."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The two key facts are: the angles are supplementary (sum = 180°) and their ratio is 2:3. Let the angles be 2k and 3k, then set their sum equal to 180°."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Once you find the two angle measures, verify them: do they add to 180°, and is their ratio 2:3?"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["supplementary_angles", "ratio_reasoning", "angle_sum", "multi_step"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  }
+]

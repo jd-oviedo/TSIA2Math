@@ -1,0 +1,632 @@
+[
+  {
+    "item_id": "GR_B_001",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.1",
+    "topic": "identifying_common_units_of_measurement",
+    "topic_text": "Identifying Common Units of Measurement",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "identifying the correct unit category for a given measurement context",
+      "distinguishing length units from units belonging to other measurement categories"
+    ],
+    "question_text": "A homeowner wants to measure the length of a bedroom wall before buying baseboards. Which unit is most appropriate for this measurement?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "gallons",
+      "B": "miles",
+      "C": "feet",
+      "D": "degrees Fahrenheit"
+    },
+    "correct_answer": "C",
+    "explanation": "Length is measured with linear units such as inches, feet, yards, or meters. A bedroom wall is typically 8–15 feet long, making feet the most appropriate unit.\n\nThe other options belong to entirely different measurement categories:\n- Gallons measure volume, not length.\n- Miles measure very large distances — far too large for a wall.\n- Degrees Fahrenheit measure temperature, not length.",
+    "distractor_logic": {
+      "A": "Student confuses volume units (gallons) with length units, selecting a unit from the wrong measurement category.",
+      "B": "Student selects a length unit but one that is far too large in magnitude; miles are used for long-distance travel, not indoor measurements.",
+      "C": "Correct: feet is an appropriate customary unit for measuring the length of a bedroom wall.",
+      "D": "Student confuses temperature units (degrees Fahrenheit) with length units, selecting a unit from the wrong measurement category."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The key word is 'length.' Ask yourself: what category of measurement is length, and which units belong to that category?"
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Check each option — does it measure length, or does it measure something else entirely (like volume, temperature, or distance across states)?"
+      }
+    ],
+    "content_context": "home_improvement",
+    "context_tags": ["length", "customary_units", "unit_identification", "real_world_context"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_002",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.1",
+    "topic": "identifying_common_units_of_measurement",
+    "topic_text": "Identifying Common Units of Measurement",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "identifying the correct unit category for a time measurement context",
+      "distinguishing time units from units belonging to other measurement categories"
+    ],
+    "question_text": "A cook wants to record how long it takes to boil a pot of water. Which unit is most appropriate for this measurement?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "minutes",
+      "B": "miles",
+      "C": "liters",
+      "D": "square feet"
+    },
+    "correct_answer": "A",
+    "explanation": "Time is measured with units such as seconds, minutes, hours, or days. Boiling a pot of water typically takes several minutes, making minutes the most appropriate unit.\n\nThe other options belong to different measurement categories:\n- Miles measure distance, not time.\n- Liters measure volume, not time.\n- Square feet measure area, not time.",
+    "distractor_logic": {
+      "A": "Correct: minutes is the standard unit for recording cooking durations such as boiling time.",
+      "B": "Student confuses distance units (miles) with time units, selecting a unit from the wrong measurement category.",
+      "C": "Student confuses volume units (liters) with time units, selecting a unit from the wrong measurement category.",
+      "D": "Student confuses area units (square feet) with time units, selecting a unit from the wrong measurement category."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The key phrase is 'how long it takes.' That tells you this is a time measurement — look for a unit that measures time."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Go through each option and ask: does this unit measure time, or does it measure something else like distance, volume, or area?"
+      }
+    ],
+    "content_context": "cooking",
+    "context_tags": ["time", "customary_units", "unit_identification", "real_world_context"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_003",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.1",
+    "topic": "identifying_common_units_of_measurement",
+    "topic_text": "Identifying Common Units of Measurement",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "identifying the correct unit category for a volume measurement context",
+      "distinguishing volume units from units belonging to other measurement categories"
+    ],
+    "question_text": "A student pours juice into a glass and wants to record the amount. Which unit is most appropriate for this measurement?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "inches",
+      "B": "pounds",
+      "C": "degrees Fahrenheit",
+      "D": "fluid ounces"
+    },
+    "correct_answer": "D",
+    "explanation": "Liquid amounts are measured using volume units such as fluid ounces, cups, pints, quarts, or liters. A glass of juice is typically measured in fluid ounces.\n\nThe other options belong to different measurement categories:\n- Inches measure length, not liquid volume.\n- Pounds measure weight or mass, not liquid volume.\n- Degrees Fahrenheit measure temperature, not volume.",
+    "distractor_logic": {
+      "A": "Student confuses length units (inches) with volume units, selecting a unit from the wrong measurement category.",
+      "B": "Student confuses weight or mass units (pounds) with volume units; while liquids have weight, the amount of liquid in a glass is a volume measurement.",
+      "C": "Student confuses temperature units (degrees Fahrenheit) with volume units, selecting a unit from the wrong measurement category.",
+      "D": "Correct: fluid ounces is a standard customary unit for measuring the volume of liquid in a glass."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The key phrase is 'amount of juice.' Juice is a liquid — look for a unit that measures liquid volume."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Check each option: does it measure liquid volume, or does it measure something else like length, weight, or temperature?"
+      }
+    ],
+    "content_context": "everyday_measurement",
+    "context_tags": ["volume", "customary_units", "unit_identification", "liquid_measurement"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_001",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.1",
+    "topic": "identifying_common_units_of_measurement",
+    "topic_text": "Identifying Common Units of Measurement",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "selecting the most reasonable unit for a given area measurement based on scale",
+      "evaluating the appropriateness of area units relative to real-world context"
+    ],
+    "question_text": "A student wants to report the area of a bedroom floor. Which unit is most appropriate for expressing this measurement?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "square millimeters",
+      "B": "square feet",
+      "C": "acres",
+      "D": "square miles"
+    },
+    "correct_answer": "B",
+    "explanation": "The area of a typical bedroom floor is approximately 120–200 square feet, making square feet the most appropriate and practical unit.\n\n- Square millimeters are an area unit, but they are far too small for room-scale measurement; a typical bedroom would be roughly 16,000,000 square millimeters — an impractical number to work with.\n- Acres are used to measure large plots of land; one acre equals 43,560 square feet, far larger than any bedroom.\n- Square miles measure geographic regions; one square mile equals about 27.9 million square feet.",
+    "distractor_logic": {
+      "A": "Student selects a valid area unit but fails to account for scale; square millimeters are appropriate for very small surfaces, not room-sized floors.",
+      "B": "Correct: square feet is the standard customary unit for residential floor area, and a typical bedroom measures roughly 120–200 square feet.",
+      "C": "Student overgeneralizes 'area unit' to land-measurement units without considering scale; acres are used for large outdoor plots, not indoor rooms.",
+      "D": "Student selects an area unit that is orders of magnitude too large; square miles are used to measure the area of cities or geographic regions, not rooms."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["estimate_first", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Think about the actual size of a bedroom floor before choosing a unit. A bedroom is a small indoor space — which unit gives a manageable number for that scale?"
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Consider the scale of each unit. Some options are used for land or geography; one is tiny enough for a postage stamp. Eliminate anything that doesn't fit a room."
+      }
+    ],
+    "content_context": "home_measurement",
+    "context_tags": ["area", "customary_units", "unit_scale", "unit_identification"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_002",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.1",
+    "topic": "identifying_common_units_of_measurement",
+    "topic_text": "Identifying Common Units of Measurement",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "converting between metric volume units (milliliters and liters)",
+      "applying the relationship 1 liter = 1,000 milliliters to convert a given volume"
+    ],
+    "question_text": "A water bottle contains 2,000 milliliters of water. Which of the following is equivalent to this amount?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "20 liters",
+      "B": "0.2 liters",
+      "C": "2 liters",
+      "D": "200 liters"
+    },
+    "correct_answer": "C",
+    "explanation": "To convert milliliters to liters, divide by 1,000 because 1 liter = 1,000 milliliters.\n\n2,000 ÷ 1,000 = 2 liters\n\nCheck: 2 liters × 1,000 = 2,000 mL ✓",
+    "distractor_logic": {
+      "A": "Student divides by 100 instead of 1,000, treating the conversion factor as 100 mL per liter rather than 1,000 mL per liter; 2,000 ÷ 100 = 20.",
+      "B": "Student moves the decimal point in the wrong direction, effectively multiplying by 0.0001 instead of dividing by 1,000; this inverts the relationship between milliliters and liters.",
+      "C": "Correct: dividing 2,000 mL by the conversion factor of 1,000 mL per liter gives 2 liters.",
+      "D": "Student divides by 10 instead of 1,000, treating the conversion factor as 10 mL per liter rather than 1,000; 2,000 ÷ 10 = 200."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The key relationship is: 1 liter = 1,000 milliliters. To go from milliliters to liters, divide by 1,000."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Multiply your answer by 1,000 and check whether you get back to 2,000 milliliters."
+      }
+    ],
+    "content_context": "everyday_measurement",
+    "context_tags": ["volume", "metric_units", "unit_conversion", "milliliters_to_liters"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_003",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.1",
+    "topic": "identifying_common_units_of_measurement",
+    "topic_text": "Identifying Common Units of Measurement",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "selecting the most appropriate unit for expressing a long road distance",
+      "evaluating unit magnitude relative to a real-world distance context"
+    ],
+    "question_text": "A long-distance road race covers approximately 26 miles. Which unit is most appropriate for expressing this distance?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "miles",
+      "B": "yards",
+      "C": "inches",
+      "D": "centimeters"
+    },
+    "correct_answer": "A",
+    "explanation": "Miles is the standard customary unit for expressing long road distances in the United States, and it gives a practical, manageable number at this scale (26 miles).\n\n- Yards are a customary length unit but too granular for a 26-mile distance; 26 miles = 45,760 yards, an unwieldy number.\n- Inches are appropriate for small lengths, not multi-mile distances; 26 miles ≈ 1,647,360 inches.\n- Centimeters are a metric unit far too small for this scale; 26 miles ≈ 4,184,448 centimeters.",
+    "distractor_logic": {
+      "A": "Correct: miles is the standard customary unit for long road distances in the US, and 26 miles is a practical, reasonable number at this scale.",
+      "B": "Student selects a customary length unit but one too small in magnitude for a multi-mile distance; 26 miles converts to 45,760 yards, making yards an impractical choice for this context.",
+      "C": "Student selects a unit valid for small measurements but far too small for a road race; inches are appropriate for objects measured in the single digits, not distances of several miles.",
+      "D": "Student selects a metric unit that is both the wrong system for US road distances and far too small in magnitude; 26 miles is nearly 4.2 million centimeters."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["estimate_first", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Think about the scale of a road race covering roughly 26 units of whatever you choose. Which choice gives a number that feels like it fits a running course?"
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Consider whether each unit is too small, too large, or from a different measurement system than what is standard for US road distances."
+      }
+    ],
+    "content_context": "athletics",
+    "context_tags": ["length", "customary_units", "unit_scale", "unit_identification"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_001",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.1",
+    "topic": "identifying_common_units_of_measurement",
+    "topic_text": "Identifying Common Units of Measurement",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "selecting appropriate unit pairs for a multi-variable scientific measurement scenario",
+      "matching units to the recorded measurement context rather than applying familiar defaults"
+    ],
+    "question_text": "A scientist records the temperature of a solution as it heats from 20°C to 80°C over 45 minutes. A student needs to report both the temperature change and the time elapsed. Which pair of units is most appropriate?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "degrees Fahrenheit and hours",
+      "B": "degrees Celsius and seconds",
+      "C": "Kelvin and minutes",
+      "D": "degrees Celsius and minutes"
+    },
+    "correct_answer": "D",
+    "explanation": "The scientist recorded temperature in degrees Celsius (20°C to 80°C) and the duration in minutes (45 minutes). The most appropriate units for reporting are therefore degrees Celsius and minutes — the units that match the recorded data.\n\n- Degrees Fahrenheit and hours: neither unit matches what was recorded. The scientist used °C, not °F, and the duration was 45 minutes, not a whole number of hours.\n- Degrees Celsius and seconds: °C is correct, but seconds is impractical for a 45-minute duration (45 min = 2,700 seconds), and it does not match the recorded unit.\n- Kelvin and minutes: minutes is correct, but Kelvin was not the scale used to record the temperature; the data is in °C.",
+    "distractor_logic": {
+      "A": "Student substitutes familiar everyday units (°F for temperature, hours for time) rather than matching the units to the scientist's recorded data.",
+      "B": "Student correctly identifies °C for temperature but selects seconds as the time unit; while 45 minutes can be expressed as 2,700 seconds, seconds is impractical for reporting this duration and does not match the recorded unit.",
+      "C": "Student correctly identifies minutes for time but selects Kelvin for temperature; Kelvin is scientifically valid but was not the unit recorded — the data is in °C, making the pair internally inconsistent with the scenario.",
+      "D": "Correct: degrees Celsius matches the temperature scale the scientist used (20°C to 80°C), and minutes matches the recorded elapsed time (45 minutes)."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Look at the units the scientist actually used in the problem: the temperature was recorded in °C and the time was 45 minutes. The best answer matches those recorded units."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "For each option, ask two questions: does the temperature unit match what was recorded, and does the time unit match what was recorded? Eliminate any pair where either unit doesn't fit."
+      }
+    ],
+    "content_context": "science_lab",
+    "context_tags": ["temperature", "time", "unit_appropriateness", "multi_variable_context"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_002",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.1",
+    "topic": "identifying_common_units_of_measurement",
+    "topic_text": "Identifying Common Units of Measurement",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "converting between customary and metric volume units (gallons to liters)",
+      "applying cross-system unit conversion to a practical measurement scenario"
+    ],
+    "question_text": "A recipe calls for 1 gallon of broth. A student only has a measuring container marked in liters. Approximately how many liters of broth does the student need?\n\n(1 gallon ≈ 3.785 liters)",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "about 1 liter",
+      "B": "about 3.8 liters",
+      "C": "about 10 liters",
+      "D": "about 0.25 liters"
+    },
+    "correct_answer": "B",
+    "explanation": "Using the given conversion:\n1 gallon ≈ 3.785 liters\n\nSo 1 gallon of broth ≈ 3.785 liters, which rounds to about 3.8 liters.\n\nCheck: 3.785 liters × (1 gallon / 3.785 liters) = 1 gallon ✓",
+    "distractor_logic": {
+      "A": "Student assumes a 1-to-1 relationship between gallons and liters, treating the conversion factor as 1 rather than approximately 3.785.",
+      "B": "Correct: applying the given conversion factor of 1 gallon ≈ 3.785 liters gives approximately 3.8 liters.",
+      "C": "Student applies an incorrect conversion factor, possibly confusing gallons with a smaller unit (such as quarts) or misremembering the ratio as approximately 10:1.",
+      "D": "Student inverts the conversion ratio, treating 1 gallon as approximately one-quarter of a liter rather than nearly four liters; this error may arise from confusing the direction of the conversion."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The problem gives you the conversion factor directly: 1 gallon ≈ 3.785 liters. Use that relationship to find how many liters equal 1 gallon."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "A liter is a bit more than a quart, and a gallon holds about 4 quarts — so 1 gallon should be close to, but a little less than, 4 liters. Use that estimate to check your answer."
+      }
+    ],
+    "content_context": "cooking",
+    "context_tags": ["volume", "unit_conversion", "customary_to_metric", "cross_system_conversion"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_003",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "measurement_and_unit_concepts",
+    "objective_text": "Measurement and Unit Concepts",
+    "topic_id": "GR.1.1",
+    "topic": "identifying_common_units_of_measurement",
+    "topic_text": "Identifying Common Units of Measurement",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "converting area measurements from square yards to square feet using the correct area conversion factor",
+      "distinguishing between linear and area unit conversion factors in a multi-step problem"
+    ],
+    "question_text": "A construction project requires covering a rectangular lot that is 50 yards long and 30 yards wide. The material needed is sold by the square foot. How many square feet of material are required?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "1,500 square feet",
+      "B": "4,500 square feet",
+      "C": "13,500 square feet",
+      "D": "500 square feet"
+    },
+    "correct_answer": "C",
+    "explanation": "Step 1 — Find the area in square yards:\n50 yd × 30 yd = 1,500 sq yd\n\nStep 2 — Convert square yards to square feet:\nSince 1 yard = 3 feet, then 1 square yard = 3 ft × 3 ft = 9 square feet.\n1,500 sq yd × 9 sq ft/sq yd = 13,500 square feet\n\nCheck: 13,500 ÷ 9 = 1,500 sq yd ✓",
+    "distractor_logic": {
+      "A": "Student correctly computes the area in square yards (1,500) but stops there, reporting the answer in square yards as if it were already in square feet.",
+      "B": "Student recognizes that 1 yard = 3 feet but incorrectly applies the linear conversion factor (×3) to the area, rather than the area conversion factor (×9); 1,500 × 3 = 4,500.",
+      "C": "Correct: area in square yards is 50 × 30 = 1,500 sq yd; since 1 sq yd = 9 sq ft, the total is 1,500 × 9 = 13,500 square feet.",
+      "D": "Student divides the area by 3 instead of multiplying by 9, inverting the direction of the conversion and using the wrong factor; 1,500 ÷ 3 = 500."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["draw_diagram", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the lot and label the sides in yards. Then redraw it with sides converted to feet (1 yd = 3 ft) to see why the area conversion factor is 9, not 3."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The key relationship is 1 sq yd = 9 sq ft, not 3 sq ft. Because area is two-dimensional, you multiply the linear factor (3) by itself: 3 × 3 = 9."
+      }
+    ],
+    "content_context": "construction",
+    "context_tags": ["area", "unit_conversion", "square_yards_to_square_feet", "multi_step"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-03",
+    "last_modified": "2026-06-03",
+    "review_notes": null
+  }
+]
