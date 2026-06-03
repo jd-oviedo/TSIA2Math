@@ -1,0 +1,427 @@
+[
+  {
+    "item_id": "AR_B_046",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.8",
+    "topic": "literal_equations",
+    "topic_text": "Literal Equations (Solving for a Variable in a Formula)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "isolating a variable in a one-step multiplication formula",
+      "applying the inverse operation of multiplication (division) within a literal equation"
+    ],
+    "question_text": "The formula for distance is d = rt, where d is distance, r is rate, and t is time. Solve this formula for t.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "t = d/r",
+      "B": "t = dr",
+      "C": "t = r/d",
+      "D": "t = d − r"
+    },
+    "correct_answer": "A",
+    "explanation": "To isolate t, divide both sides by r:\nd = rt\nd/r = t\n\nt = d/r\n\nThis works because division is the inverse of multiplication.",
+    "distractor_logic": {
+      "A": "Correct: dividing both sides by r isolates t, giving t = d/r.",
+      "B": "Student multiplies d by r instead of dividing — applies the same operation rather than the inverse.",
+      "C": "Student inverts the fraction, placing r in the numerator and d in the denominator instead of the reverse.",
+      "D": "Student subtracts r from d instead of dividing — treats the multiplication in d = rt as addition."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "t is multiplied by r. To undo multiplication, divide both sides by r."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try d = 60 and r = 30. You should get t = 2. Substitute into each answer choice and check."
+      }
+    ],
+    "content_context": "distance_rate_time",
+    "context_tags": ["literal_equation", "one_step", "inverse_operation", "formula_rearrangement"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_047",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.8",
+    "topic": "literal_equations",
+    "topic_text": "Literal Equations (Solving for a Variable in a Formula)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "isolating a variable in an additive formula by subtracting the other terms",
+      "applying subtraction as the inverse of addition in a multi-term literal equation"
+    ],
+    "question_text": "The perimeter of a triangle is given by P = a + b + c. Solve this formula for b.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "b = P + a + c",
+      "B": "b = P − a − c",
+      "C": "b = P/ac",
+      "D": "b = (P − a)/c"
+    },
+    "correct_answer": "B",
+    "explanation": "To isolate b, subtract a and c from both sides:\nP − a − c = b\n\nb = P − a − c",
+    "distractor_logic": {
+      "A": "Student moves a and c to the right side but adds them instead of subtracting — applies the wrong inverse operation.",
+      "B": "Correct: subtracting a and c from both sides gives b = P − a − c.",
+      "C": "Student misreads the additive formula as a product, dividing P by a × c instead of subtracting a and c.",
+      "D": "Student correctly subtracts a from both sides but then divides by c rather than subtracting it, misidentifying the inverse operation for the second step."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "b is added to a and c. To isolate b, subtract both a and c from both sides."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try P = 15, a = 4, c = 6, so b = 5. Substitute into each answer choice and see which gives 5."
+      }
+    ],
+    "content_context": "triangle_perimeter",
+    "context_tags": ["literal_equation", "one_step", "additive_formula", "formula_rearrangement"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_032",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.8",
+    "topic": "literal_equations",
+    "topic_text": "Literal Equations (Solving for a Variable in a Formula)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "rearranging the slope formula to isolate one of the y-coordinates",
+      "applying two-step inverse operations within a familiar algebraic formula"
+    ],
+    "question_text": "The slope formula is m = (y₂ − y₁) / (x₂ − x₁). Solve this formula for y₂.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y₂ = m / (x₂ − x₁) + y₁",
+      "B": "y₂ = m(x₂ − x₁) − y₁",
+      "C": "y₂ = m(x₂ − x₁) + y₁",
+      "D": "y₂ = (m + y₁)(x₂ − x₁)"
+    },
+    "correct_answer": "C",
+    "explanation": "Step 1 — Multiply both sides by (x₂ − x₁) to clear the denominator:\nm(x₂ − x₁) = y₂ − y₁\n\nStep 2 — Add y₁ to both sides to isolate y₂:\ny₂ = m(x₂ − x₁) + y₁\n\nThis is exactly the point-slope form of a line, rearranged.",
+    "distractor_logic": {
+      "A": "Student divides by (x₂ − x₁) instead of multiplying — applies division where multiplication is needed to clear the denominator.",
+      "B": "Student correctly multiplies both sides by (x₂ − x₁) to get m(x₂ − x₁) = y₂ − y₁, but then subtracts y₁ from both sides instead of adding it, yielding y₂ = m(x₂ − x₁) − y₁.",
+      "C": "Correct: multiplying by (x₂ − x₁) and adding y₁ gives y₂ = m(x₂ − x₁) + y₁.",
+      "D": "Student adds y₁ to m before multiplying by (x₂ − x₁), applying addition and multiplication in the wrong order."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Clear the denominator first by multiplying both sides by (x₂ − x₁), then add y₁ to isolate y₂."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try m = 2, x₁ = 1, x₂ = 4, y₁ = 3. The correct formula should give y₂ = 9. Check each choice."
+      }
+    ],
+    "content_context": "slope_formula",
+    "context_tags": ["literal_equation", "two_step", "slope_formula", "formula_rearrangement"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_033",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.8",
+    "topic": "literal_equations",
+    "topic_text": "Literal Equations (Solving for a Variable in a Formula)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "rearranging the trapezoid area formula to isolate one base",
+      "correctly handling the fraction coefficient and grouped sum in a multi-step literal equation"
+    ],
+    "question_text": "The area of a trapezoid is A = (1/2)(b₁ + b₂)h. Solve this formula for b₁.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "b₁ = 2A − b₂h",
+      "B": "b₁ = A/h − b₂",
+      "C": "b₁ = A − b₂ − h",
+      "D": "b₁ = 2A/h − b₂"
+    },
+    "correct_answer": "D",
+    "explanation": "Step 1 — Multiply both sides by 2 to eliminate the fraction:\n2A = (b₁ + b₂)h\n\nStep 2 — Divide both sides by h:\n2A/h = b₁ + b₂\n\nStep 3 — Subtract b₂ from both sides:\nb₁ = 2A/h − b₂\n\nVerify with A = 24, h = 6, b₂ = 4:\nb₁ = 2(24)/6 − 4 = 48/6 − 4 = 8 − 4 = 4\nCheck: (1/2)(4 + 4)(6) = 24 ✓",
+    "distractor_logic": {
+      "A": "Student correctly multiplies by 2 to get 2A = (b₁ + b₂)h, but then subtracts b₂h from both sides instead of dividing by h — leaving b₁ in an incorrect form.",
+      "B": "Student correctly divides by h and subtracts b₂, but skips multiplying by 2 to clear the 1/2 — giving A/h − b₂ instead of 2A/h − b₂.",
+      "C": "Student misreads the formula as A = b₁ + b₂ + h (treating all factors as additive terms) and isolates b₁ by subtracting b₂ and h.",
+      "D": "Correct: multiplying by 2, dividing by h, and subtracting b₂ gives b₁ = 2A/h − b₂."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Work in reverse order of operations: first multiply both sides by 2 to clear the 1/2, then divide by h, then subtract b₂."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Use A = 24, h = 6, b₂ = 4 (so b₁ = 4). Substitute into each answer choice and check which gives 4."
+      }
+    ],
+    "content_context": "trapezoid_area",
+    "context_tags": ["literal_equation", "two_step", "area_formula", "formula_rearrangement"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_025",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.8",
+    "topic": "literal_equations",
+    "topic_text": "Literal Equations (Solving for a Variable in a Formula)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "solving a literal equation where the target variable appears in multiple terms by factoring",
+      "recognizing x as a common factor and dividing by the resulting binomial coefficient"
+    ],
+    "question_text": "Solve for x:  ax + bx = c",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = c/a + c/b",
+      "B": "x = c/(a + b)",
+      "C": "x = (c − b)/a",
+      "D": "x = c/ab"
+    },
+    "correct_answer": "B",
+    "explanation": "Factor x from the left side:\nax + bx = x(a + b)\n\nSo the equation becomes:\nx(a + b) = c\n\nDivide both sides by (a + b):\nx = c/(a + b)\n\nVerify with a = 2, b = 3, c = 10:\nx = 10/(2 + 3) = 10/5 = 2\nCheck: 2(2) + 3(2) = 4 + 6 = 10 ✓",
+    "distractor_logic": {
+      "A": "Student splits the division across the sum — treats c/(a + b) as c/a + c/b — applying a false rule that division distributes over addition.",
+      "B": "Correct: factoring gives x(a + b) = c, so x = c/(a + b).",
+      "C": "Student does not recognize x as a common factor; instead subtracts b (without x) from both sides, leaving ax = c − b → x = (c − b)/a.",
+      "D": "Student combines a and b by multiplying rather than adding when collecting the factored coefficient: writes x = c/ab instead of c/(a + b)."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "x appears in both terms on the left. Factor it out: ax + bx = x(a + b). Then divide both sides by (a + b)."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try a = 2, b = 3, c = 10. The correct formula should give x = 2. Test each answer choice."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["literal_equation", "factoring", "common_factor", "advanced_rearrangement"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_026",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.8",
+    "topic": "literal_equations",
+    "topic_text": "Literal Equations (Solving for a Variable in a Formula)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "solving a literal equation where the target variable appears on both sides after clearing a denominator",
+      "collecting variable terms, factoring, and dividing by a binomial coefficient in a multi-step literal equation"
+    ],
+    "question_text": "Solve for x:  (x + a)/b = c + x",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = (bc − a)/(1 + b)",
+      "B": "x = (a − bc)/b",
+      "C": "x = (bc − a)/(1 − b)",
+      "D": "x = bc − a + b"
+    },
+    "correct_answer": "C",
+    "explanation": "Step 1 — Multiply both sides by b to clear the denominator:\nx + a = b(c + x) = bc + bx\n\nStep 2 — Move all x-terms to the left:\nx − bx = bc − a\n\nStep 3 — Factor x:\nx(1 − b) = bc − a\n\nStep 4 — Divide both sides by (1 − b):\nx = (bc − a)/(1 − b)\n\nVerify with a = 2, b = 3, c = 1:\nx = (3 − 2)/(1 − 3) = 1/(−2) = −1/2\nCheck: (−1/2 + 2)/3 = (3/2)/3 = 1/2; c + x = 1 − 1/2 = 1/2 ✓",
+    "distractor_logic": {
+      "A": "Student moves bx to the left but adds it to x instead of subtracting: x + bx = bc − a → x(1 + b) = bc − a → x = (bc − a)/(1 + b).",
+      "B": "Student correctly isolates x(1 − b) = bc − a but then divides by b (the coefficient from the original right-hand term) rather than by (1 − b) (the factored coefficient of x).",
+      "C": "Correct: x + a = bc + bx → x − bx = bc − a → x(1 − b) = bc − a → x = (bc − a)/(1 − b).",
+      "D": "Student correctly factors to x(1 − b) = bc − a but then adds (1 − b) to both sides instead of dividing, reporting x = bc − a + b."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try a = 2, b = 3, c = 1. The correct formula should give x = −1/2. Substitute into each answer choice and identify the match."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "After clearing the denominator, x appears on both sides. Collect x-terms on the left, factor out x, then divide by its coefficient."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["literal_equation", "variable_on_both_sides", "factoring", "advanced_rearrangement"],
+    "estimated_time_seconds": 150,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  }
+]

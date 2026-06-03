@@ -1,0 +1,711 @@
+[
+  {
+    "item_id": "AR_B_034",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "determining whether an ordered pair satisfies a linear inequality in two variables",
+      "substituting an ordered pair into an inequality and interpreting the result"
+    ],
+    "question_text": "Which ordered pair is in the solution region of the inequality y < 2x + 1?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(1, 4)",
+      "B": "(−1, 0)",
+      "C": "(0, 0)",
+      "D": "(2, 5)"
+    },
+    "correct_answer": "C",
+    "explanation": "Substitute each pair into y < 2x + 1:\n\n(0, 0): 0 < 2(0) + 1 = 1. Is 0 < 1? Yes ✓\n(1, 4): 4 < 2(1) + 1 = 3. Is 4 < 3? No.\n(−1, 0): 0 < 2(−1) + 1 = −1. Is 0 < −1? No.\n(2, 5): 5 < 2(2) + 1 = 5. Is 5 < 5? No (strict inequality).\n\nOnly (0, 0) satisfies the inequality.",
+    "distractor_logic": {
+      "A": "Student substitutes correctly to get 4 < 3 but reverses the comparison, reading it as 3 < 4 and incorrectly concluding the inequality is satisfied.",
+      "B": "Student evaluates 2(−1) + 1 = −1 correctly but reads 0 < −1 as true, confusing the direction of the number line.",
+      "C": "Correct: 0 < 2(0) + 1 = 1 is true.",
+      "D": "Student misreads the strict inequality y < 2x + 1 as y ≤ 2x + 1 and accepts the boundary point (2, 5) where 5 = 5."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute the x and y values from each pair into y < 2x + 1. The solution is the pair that makes the inequality true."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "For a strict inequality (<), points exactly on the boundary line are NOT included. Check the sign carefully after substituting."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["linear_inequality", "two_variables", "test_point", "solution_region"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_035",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying whether the boundary line of a linear inequality is solid or dashed",
+      "connecting the inequality symbol to the inclusion or exclusion of boundary points"
+    ],
+    "question_text": "Which statement correctly describes the boundary line for the inequality y ≤ 3x − 2?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "A dashed line at y = 3x − 2, because the inequality includes a less-than symbol",
+      "B": "A solid line at y = 3x − 2, because points on the line satisfy y ≤ 3x − 2",
+      "C": "A dashed line at y = 3x − 2, because points on the boundary line never satisfy the inequality",
+      "D": "A solid line at y = 3x − 2, but only for x ≥ 0"
+    },
+    "correct_answer": "B",
+    "explanation": "The inequality y ≤ 3x − 2 uses ≤, which includes equality. A point on the line y = 3x − 2 satisfies y = 3x − 2, which also satisfies y ≤ 3x − 2. Therefore the boundary line is drawn as a solid line.\n\nDashed lines are used only for strict inequalities (< or >), where boundary points are excluded.",
+    "distractor_logic": {
+      "A": "Student confuses the symbols — thinks ≤ (less than or equal to) uses a dashed line like < (strict less than), not recognizing that the 'or equal to' part means the boundary is included.",
+      "B": "Correct: ≤ includes equality, so boundary points satisfy the inequality and the line is solid.",
+      "C": "Student incorrectly states that boundary points never satisfy the inequality — this is only true for strict inequalities (< or >), not for ≤.",
+      "D": "Student correctly identifies the line as solid but adds an unwarranted domain restriction (x ≥ 0) that is not implied by the inequality."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check the inequality symbol: ≤ and ≥ include the boundary (solid line); < and > exclude it (dashed line)."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Dashed lines go with strict inequalities (< or >). Since this uses ≤, eliminate any answer that says dashed."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["linear_inequality", "boundary_line", "solid_vs_dashed", "graphing_inequalities"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_036",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the correct shading direction for a linear inequality using a test point",
+      "connecting the result of a test-point substitution to the location of the solution region"
+    ],
+    "question_text": "For the inequality y > x + 2, which description correctly identifies the solution region?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The region below the line y = x + 2, including the line itself",
+      "B": "The region above the line y = x + 2, not including the line",
+      "C": "The region below the line y = x + 2, not including the line",
+      "D": "The region above the line y = x + 2, including the line"
+    },
+    "correct_answer": "B",
+    "explanation": "Test the point (0, 0): substituting into y > x + 2 gives 0 > 0 + 2, which is 0 > 2 — false. So (0, 0) is NOT in the solution region.\n\nSince (0, 0) lies below the line y = x + 2 and is not in the solution region, the solution region is the opposite side — above the line.\n\nBecause the inequality is strict (>), the boundary line itself is excluded (dashed). The solution region is above the line, not including the line.",
+    "distractor_logic": {
+      "A": "Student flips both the direction and the boundary — concludes 'below, including the line,' which is the exact opposite of the correct region.",
+      "B": "Correct: y > x + 2 describes the region strictly above the dashed line y = x + 2.",
+      "C": "Student correctly identifies that the boundary is dashed (strict inequality) but shades the wrong side — below instead of above.",
+      "D": "Student correctly identifies the region as above the line but misreads the strict inequality (>) as non-strict (≥), incorrectly including the boundary line."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test (0, 0) in the inequality. If it satisfies the inequality, shade the side containing (0, 0). If not, shade the opposite side."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The symbol > is strict — the boundary line is dashed and not included in the solution region."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["linear_inequality", "shading_direction", "test_point", "solution_region"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_037",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying which ordered pair does NOT satisfy a linear inequality in two variables",
+      "testing multiple ordered pairs and selecting the one that fails the inequality"
+    ],
+    "question_text": "Which ordered pair is NOT a solution to the inequality x + y ≥ 5?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(1, 3)",
+      "B": "(3, 2)",
+      "C": "(4, 1)",
+      "D": "(0, 6)"
+    },
+    "correct_answer": "A",
+    "explanation": "Test each pair in x + y ≥ 5:\n\n(1, 3): 1 + 3 = 4. Is 4 ≥ 5? No. ✗ — NOT a solution.\n(3, 2): 3 + 2 = 5 ≥ 5. Yes ✓\n(4, 1): 4 + 1 = 5 ≥ 5. Yes ✓\n(0, 6): 0 + 6 = 6 ≥ 5. Yes ✓\n\nOnly (1, 3) fails the inequality.",
+    "distractor_logic": {
+      "A": "Correct: 1 + 3 = 4 < 5, so (1, 3) does NOT satisfy x + y ≥ 5.",
+      "B": "Student mistakes this for a non-solution: 3 + 2 = 5 ≥ 5 ✓ — the sum equals 5, which satisfies the ≥ condition.",
+      "C": "Student mistakes this for a non-solution: 4 + 1 = 5 ≥ 5 ✓ — like B, the sum equals 5 and satisfies ≥.",
+      "D": "Student overlooks this pair: 0 + 6 = 6 ≥ 5 ✓ — clearly satisfies the inequality."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Add the x and y values for each pair and check whether the sum is at least 5. The one that gives a sum less than 5 is the answer."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Pairs where x + y = 5 still satisfy ≥ 5. Eliminate those and look for the pair with a sum less than 5."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["linear_inequality", "two_variables", "test_point", "non_solution"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_038",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "matching a verbal description of a solution region to the correct inequality",
+      "distinguishing between strict and non-strict inequalities based on boundary inclusion"
+    ],
+    "question_text": "Which inequality represents the set of all points strictly below the line y = −x + 4?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y < −x + 4",
+      "B": "y > −x + 4",
+      "C": "y ≤ −x + 4",
+      "D": "y ≥ −x + 4"
+    },
+    "correct_answer": "A",
+    "explanation": "Points strictly below the line y = −x + 4 have y-values less than the line's y-value at any given x. This is expressed as y < −x + 4.\n\nThe word 'strictly' means the boundary line is not included — so the correct symbol is < (not ≤).",
+    "distractor_logic": {
+      "A": "Correct: y < −x + 4 represents all points strictly below the line (dashed boundary, not included).",
+      "B": "Student inverts the direction — y > −x + 4 represents the region above the line, not below.",
+      "C": "Student correctly identifies the direction (below) but uses ≤ instead of <, incorrectly including the boundary line despite the word 'strictly.'",
+      "D": "Student inverts the direction (above) and uses the non-strict symbol (≥) — the furthest from the correct answer."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "'Strictly below' means y is less than the line's value — use <. The word 'strictly' rules out ≤."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any inequality with > or ≥ — those describe regions above the line, not below."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["linear_inequality", "solution_region", "verbal_description", "strict_inequality"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_024",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing the inequality represented by a described graph given slope, intercept, shading direction, and line type",
+      "connecting graph features (solid vs. dashed, above vs. below) to the correct inequality symbol and direction"
+    ],
+    "question_text": "A graph shows a dashed line passing through (0, 3) and (2, 7), with the region above the line shaded. Which inequality does this graph represent?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y ≥ 2x + 3",
+      "B": "y > 2x + 3",
+      "C": "y < 2x + 3",
+      "D": "y > −2x + 3"
+    },
+    "correct_answer": "B",
+    "explanation": "Find the slope and y-intercept from the two points:\nSlope = (7 − 3) / (2 − 0) = 4 / 2 = 2\ny-intercept = 3\nLine equation: y = 2x + 3\n\nThe line is dashed → strict inequality (< or >).\nThe shaded region is above the line → y > line.\n\nCombined: y > 2x + 3.",
+    "distractor_logic": {
+      "A": "Student correctly identifies the slope (2), intercept (3), and 'above' direction, but misreads the dashed line as solid and uses ≥ instead of >.",
+      "B": "Correct: dashed line → strict symbol; above → greater than; slope 2, intercept 3 → y > 2x + 3.",
+      "C": "Student correctly reads the line equation and the dashed boundary but shades the wrong side — uses < (below) instead of > (above).",
+      "D": "Student correctly reads the boundary type (dashed) and shading direction (above), but computes the slope as −2 (uses run/rise instead of rise/run)."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Three features determine the inequality: the slope and intercept (from the line), the line type (solid = ≤ or ≥; dashed = < or >), and the shading direction (above = >; below = <)."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Pick a point clearly in the shaded region and substitute it into each answer choice. The correct inequality should be satisfied by that point."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["linear_inequality", "write_inequality_from_graph", "slope_intercept", "graphing_inequalities"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_025",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "testing multiple ordered pairs against a linear inequality to identify which set are all solutions",
+      "recognizing the role of strict vs. non-strict inequalities when evaluating boundary points"
+    ],
+    "question_text": "Which set of ordered pairs are ALL solutions to the inequality 2x − y < 4?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "{(3, 1) and (2, −2)}",
+      "B": "{(1, −1) and (3, 1)}",
+      "C": "{(0, 0) and (1, −1)}",
+      "D": "{(0, 0) and (0, −4)}"
+    },
+    "correct_answer": "C",
+    "explanation": "Test each pair in 2x − y < 4:\n\n(0, 0): 2(0) − 0 = 0 < 4 ✓\n(1, −1): 2(1) − (−1) = 3 < 4 ✓\n(3, 1): 2(3) − 1 = 5 < 4? No.\n(2, −2): 2(2) − (−2) = 6 < 4? No.\n(0, −4): 2(0) − (−4) = 4 < 4? No (strict inequality — 4 is not less than 4).\n\nOnly choice C — {(0, 0) and (1, −1)} — has both pairs satisfying the inequality.",
+    "distractor_logic": {
+      "A": "Both pairs fail: 2(3)−1=5 and 2(2)−(−2)=6 are both ≥ 4. Student does not check the inequality carefully for either point.",
+      "B": "(1, −1) satisfies the inequality (3 < 4 ✓), but (3, 1) does not (5 < 4 is false). Student accepts the set after checking only the first pair.",
+      "C": "Correct: both (0, 0) and (1, −1) satisfy 2x − y < 4.",
+      "D": "(0, 0) satisfies the inequality (0 < 4 ✓), but (0, −4) does not: 2(0) − (−4) = 4, and 4 < 4 is false. Student misreads the strict inequality as ≤ and accepts the boundary point."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test both ordered pairs in each answer choice. Both must satisfy the inequality — if either one fails, eliminate that choice."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "For a strict inequality (<), a pair that makes the expression equal to 4 is NOT a solution. Use this to eliminate choices that include boundary points."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["linear_inequality", "two_variables", "test_point", "strict_inequality"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_026",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying a point in the solution region of a linear inequality including the boundary",
+      "substituting into a two-variable inequality with a coefficient on y to verify membership"
+    ],
+    "question_text": "Which ordered pair lies in the solution region of 3x + 2y ≤ 12, including its boundary?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(3, 3)",
+      "B": "(5, 1)",
+      "C": "(4, 0)",
+      "D": "(2, 5)"
+    },
+    "correct_answer": "C",
+    "explanation": "Test each pair in 3x + 2y ≤ 12:\n\n(4, 0): 3(4) + 2(0) = 12 ≤ 12 ✓ — on the boundary, which is included.\n(3, 3): 3(3) + 2(3) = 15 ≤ 12? No.\n(5, 1): 3(5) + 2(1) = 17 ≤ 12? No.\n(2, 5): 3(2) + 2(5) = 16 ≤ 12? No.\n\nOnly (4, 0) satisfies the inequality.",
+    "distractor_logic": {
+      "A": "Student may miscompute 3(3) + 2(3) as 9 + 3 = 12 (treating 2(3) as 3 instead of 6), incorrectly concluding 12 ≤ 12 ✓.",
+      "B": "Student may not substitute carefully: 3(5) + 2(1) = 17, clearly outside the region.",
+      "C": "Correct: 3(4) + 2(0) = 12 ≤ 12. The point is on the boundary, which is included since the inequality uses ≤.",
+      "D": "Student may fail to apply the coefficient 2 to y = 5, computing 3(2) + 5 = 11 ≤ 12 ✓ instead of the correct 3(2) + 2(5) = 16."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute the x and y values from each pair into 3x + 2y. Remember to multiply y by its coefficient (2) before adding."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Since the inequality is ≤, points on the boundary (where 3x + 2y = 12) count as solutions. Look for a pair that gives exactly 12 or less."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["linear_inequality", "two_variables", "boundary_included", "solution_region"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_019",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing a system of linear inequalities from a verbal description of a bounded solution region",
+      "matching shading direction and boundary type to the correct inequality symbols for two constraints"
+    ],
+    "question_text": "A region on a coordinate plane is described as follows: it lies strictly above the line y = x − 1 and strictly below the line y = −x + 5. Which system of inequalities represents this region?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y > x − 1  and  y > −x + 5",
+      "B": "y ≥ x − 1  and  y ≤ −x + 5",
+      "C": "y < x − 1  and  y < −x + 5",
+      "D": "y > x − 1  and  y < −x + 5"
+    },
+    "correct_answer": "D",
+    "explanation": "Translate each constraint:\n\n'Strictly above y = x − 1' → y > x − 1 (strict, so dashed line)\n'Strictly below y = −x + 5' → y < −x + 5 (strict, so dashed line)\n\nThe system is: y > x − 1 and y < −x + 5.\n\nVerify with (2, 2): y > x−1 → 2 > 1 ✓; y < −x+5 → 2 < 3 ✓.",
+    "distractor_logic": {
+      "A": "Student correctly writes y > x − 1 for 'above the first line' but applies the same direction to the second constraint — writing y > −x + 5 (above) instead of y < −x + 5 (below).",
+      "B": "Student correctly identifies both directions (above first line, below second line) but uses non-strict symbols ≥ and ≤, incorrectly including both boundary lines despite the word 'strictly.'",
+      "C": "Student inverts the first constraint — writes y < x − 1 (below) instead of y > x − 1 (above) — and keeps the second direction also wrong, placing the entire region below both lines.",
+      "D": "Correct: y > x − 1 (strictly above the first line) and y < −x + 5 (strictly below the second line)."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "'Strictly above' → y > (dashed line); 'strictly below' → y < (dashed line). Translate each constraint separately before combining."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test the point (2, 2) — it lies between the two lines. Substitute into your chosen system and verify both inequalities are satisfied."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["system_of_inequalities", "bounded_region", "strict_inequality", "graphing_inequalities"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_020",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the ordered pair that satisfies both inequalities in a system simultaneously",
+      "distinguishing between points that satisfy only one constraint and points that satisfy both"
+    ],
+    "question_text": "Which ordered pair is in the solution region of the system of inequalities?\n  y ≥ 2x − 3\n  y < −x + 6",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(4, 1)",
+      "B": "(0, 6)",
+      "C": "(3, 5)",
+      "D": "(1, 2)"
+    },
+    "correct_answer": "D",
+    "explanation": "Test each pair in both inequalities:\n\n(1, 2):\n  y ≥ 2x−3: 2 ≥ 2(1)−3 = −1 ✓\n  y < −x+6: 2 < −1+6 = 5 ✓\n  Both satisfied ✓\n\n(4, 1):\n  y ≥ 2x−3: 1 ≥ 2(4)−3 = 5? No. ✗\n\n(0, 6):\n  y ≥ 2x−3: 6 ≥ −3 ✓\n  y < −x+6: 6 < 6? No (strict). ✗\n\n(3, 5):\n  y ≥ 2x−3: 5 ≥ 3 ✓\n  y < −x+6: 5 < 3? No. ✗",
+    "distractor_logic": {
+      "A": "Student tests only the second inequality: y < −(4)+6 = 2 → 1 < 2 ✓, and accepts (4, 1) without checking the first: 1 ≥ 2(4)−3 = 5 is false.",
+      "B": "Student misreads the strict inequality y < −x+6 as y ≤ −x+6 and accepts (0, 6) where y = −x+6 exactly: 6 = 6 is not strictly less than 6.",
+      "C": "Student tests only the first inequality: 5 ≥ 2(3)−3 = 3 ✓, and accepts (3, 5) without checking the second: 5 < −3+6 = 3 is false.",
+      "D": "Correct: (1, 2) satisfies both y ≥ 2x−3 (2 ≥ −1 ✓) and y < −x+6 (2 < 5 ✓)."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test each ordered pair in both inequalities. Only a pair that satisfies both simultaneously is in the solution region."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Check the strict inequality (y < −x + 6) first — boundary points where y equals −x + 6 are excluded and can be quickly eliminated."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["system_of_inequalities", "solution_region", "test_point", "strict_and_non_strict"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  }
+]

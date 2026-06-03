@@ -18260,5 +18260,3301 @@
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
     "review_notes": null
+  },
+  {
+    "item_id": "AR_B_029",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a system of two linear equations by setting equal expressions for the same variable",
+      "substituting the found x-value to determine the corresponding y-value"
+    ],
+    "question_text": "Solve the system of equations:\n  y = 2x + 1\n  y = x + 4",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(5, 9)",
+      "B": "(3, 10)",
+      "C": "(3, 7)",
+      "D": "(5, 11)"
+    },
+    "correct_answer": "C",
+    "explanation": "Since both expressions equal y, set them equal and solve for x:\n2x + 1 = x + 4\nx = 3\n\nSubstitute x = 3 into either equation:\ny = 3 + 4 = 7\n\nSolution: (3, 7)\n\nCheck: y = 2(3) + 1 = 7 ✓  and  y = 3 + 4 = 7 ✓",
+    "distractor_logic": {
+      "A": "Student adds the constants from both equations to find x (1 + 4 = 5) instead of setting the expressions equal: x = 5, then y = 5 + 4 = 9.",
+      "B": "Student correctly finds x = 3 but evaluates y by substituting into a hybrid expression — adding the slope from one equation to the constant from the other: y = 2(3) + 4 = 10.",
+      "C": "Correct: setting 2x + 1 = x + 4 gives x = 3; substituting gives y = 7.",
+      "D": "Student uses x = 5 (same addition error as A) but evaluates y in the first equation: y = 2(5) + 1 = 11."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Both equations equal y. Set 2x + 1 = x + 4 and solve for x, then substitute back to find y."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The solution is the (x, y) pair that makes both equations true simultaneously — check your answer in both equations."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "system_of_equations",
+      "substitution",
+      "slope_intercept_form",
+      "linear_system"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_030",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "verifying whether an ordered pair satisfies a system of two linear equations",
+      "applying substitution to check a solution against both equations in a system"
+    ],
+    "question_text": "Which ordered pair is a solution to the system?\n  2x + y = 10\n  x − y = 2",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(3, 4)",
+      "B": "(4, 2)",
+      "C": "(5, 0)",
+      "D": "(6, −2)"
+    },
+    "correct_answer": "B",
+    "explanation": "Test (4, 2) in both equations:\n  2(4) + 2 = 10 ✓\n  4 − 2 = 2 ✓\n\nBoth equations are satisfied, so (4, 2) is the solution.\n\nThe other choices each satisfy the first equation but not the second:\n  (3, 4): 3 − 4 = −1 ≠ 2\n  (5, 0): 5 − 0 = 5 ≠ 2\n  (6, −2): 6 − (−2) = 8 ≠ 2",
+    "distractor_logic": {
+      "A": "Student checks only the first equation — 2(3) + 4 = 10 ✓ — and stops without testing 3 − 4 = −1 ≠ 2 in the second.",
+      "B": "Correct: (4, 2) satisfies both 2x + y = 10 and x − y = 2.",
+      "C": "Student checks only the first equation — 2(5) + 0 = 10 ✓ — and stops without testing 5 − 0 = 5 ≠ 2 in the second.",
+      "D": "Student checks only the first equation — 2(6) + (−2) = 10 ✓ — and stops without testing 6 − (−2) = 8 ≠ 2 in the second."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute each answer choice into both equations. A solution must satisfy both — not just one."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Test each pair in the second equation (x − y = 2) — it is the faster filter since most choices fail there."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "system_of_equations",
+      "verify_solution",
+      "substitution_check",
+      "linear_system"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_031",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a system by direct substitution when one variable is already isolated",
+      "finding the second variable by substituting a known value into a linear equation"
+    ],
+    "question_text": "Solve the system of equations:\n  x = 3\n  2x + y = 11",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(3, 5)",
+      "B": "(3, 17)",
+      "C": "(3, 8)",
+      "D": "(5, 3)"
+    },
+    "correct_answer": "A",
+    "explanation": "The first equation tells us x = 3 directly. Substitute into the second equation:\n2(3) + y = 11\n6 + y = 11\ny = 5\n\nSolution: (3, 5)\n\nCheck: 2(3) + 5 = 11 ✓",
+    "distractor_logic": {
+      "A": "Correct: substituting x = 3 gives 6 + y = 11 → y = 5.",
+      "B": "Student adds 2x and y terms without substituting: y = 11 + 6 = 17, adding rather than subtracting 6.",
+      "C": "Student substitutes x = 3 into the coefficient only, subtracting x (not 2x) from 11: y = 11 − 3 = 8.",
+      "D": "Student finds the correct values (x = 3, y = 5) but writes the ordered pair in reverse order as (5, 3)."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "x = 3 is given directly. Substitute 3 for x in the second equation and solve for y."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "An ordered pair is always written (x, y). Make sure you match the right value to the right variable."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "system_of_equations",
+      "substitution",
+      "isolated_variable",
+      "linear_system"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_032",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the solution of a system as the intersection point of two lines",
+      "solving a system algebraically when both equations are in slope-intercept form"
+    ],
+    "question_text": "Two lines are given by the equations y = −2x + 4 and y = 2x. At what point do they intersect?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(2, 4)",
+      "B": "(1, 2)",
+      "C": "(0, 4)",
+      "D": "(0, 0)"
+    },
+    "correct_answer": "B",
+    "explanation": "Set the two expressions equal and solve for x:\n−2x + 4 = 2x\n4 = 4x\nx = 1\n\nSubstitute into y = 2x:\ny = 2(1) = 2\n\nIntersection: (1, 2)\n\nCheck: y = −2(1) + 4 = 2 ✓  and  y = 2(1) = 2 ✓",
+    "distractor_logic": {
+      "A": "Student finds where y = 2x produces y = 4 (at x = 2) and reports that point without checking Line 1: y = −2(2) + 4 = 0 ≠ 4.",
+      "B": "Correct: setting −2x + 4 = 2x gives x = 1, y = 2.",
+      "C": "Student identifies the y-intercept of y = −2x + 4 (where x = 0, y = 4) instead of finding the intersection.",
+      "D": "Student identifies the y-intercept of y = 2x (where x = 0, y = 0) instead of finding the intersection."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Set −2x + 4 equal to 2x (since both equal y), solve for x, then substitute to find y."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The intersection is where both equations give the same (x, y). Check your answer in both equations."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "system_of_equations",
+      "intersection",
+      "graphical_interpretation",
+      "slope_intercept_form"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_033",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a system by elimination when variable terms are already opposite",
+      "back-substituting to find the second variable after elimination"
+    ],
+    "question_text": "Solve the system of equations:\n  x + y = 8\n  x − y = 2",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(4, 4)",
+      "B": "(5, 0)",
+      "C": "(5, 3)",
+      "D": "(3, 5)"
+    },
+    "correct_answer": "C",
+    "explanation": "Add the two equations to eliminate y:\n(x + y) + (x − y) = 8 + 2\n2x = 10\nx = 5\n\nSubstitute x = 5 into the first equation:\n5 + y = 8\ny = 3\n\nSolution: (5, 3)\n\nCheck: 5 + 3 = 8 ✓  and  5 − 3 = 2 ✓",
+    "distractor_logic": {
+      "A": "Student does not use elimination and instead assumes x = y since both appear in the first equation, picking x = y = 4. Check: 4 − 4 = 0 ≠ 2.",
+      "B": "Student adds correctly to find x = 5 but sets y = 0 instead of back-substituting into the original equation to find y = 3.",
+      "C": "Correct: adding the equations gives 2x = 10 → x = 5; substituting gives y = 3.",
+      "D": "Student correctly finds x = 5 and y = 3 but writes the ordered pair in reverse as (3, 5)."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The y-terms are +y and −y. Adding the equations cancels y and leaves an equation in x only."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "After finding x = 5, substitute into either original equation to find y. Then verify in the other equation."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "system_of_equations",
+      "elimination",
+      "opposite_coefficients",
+      "linear_system"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_021",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a system by substitution when one equation expresses y in terms of x",
+      "substituting a linear expression for a variable and solving the resulting equation"
+    ],
+    "question_text": "Solve the system of equations:\n  3x + y = 7\n  y = x − 1",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(3, 2)",
+      "B": "(2, 3)",
+      "C": "(1, 0)",
+      "D": "(2, 1)"
+    },
+    "correct_answer": "D",
+    "explanation": "Substitute y = x − 1 into the first equation:\n3x + (x − 1) = 7\n4x − 1 = 7\n4x = 8\nx = 2\n\nSubstitute x = 2 into y = x − 1:\ny = 2 − 1 = 1\n\nSolution: (2, 1)\n\nCheck: 3(2) + 1 = 7 ✓  and  y = 2 − 1 = 1 ✓",
+    "distractor_logic": {
+      "A": "Student finds x = 2 correctly but reverses the ordered pair, writing (3, 2) — confusing x with the coefficient 3 in the first equation.",
+      "B": "Student finds x = 2 and y = 1 correctly but writes the pair as (2, 3), reversing x and y.",
+      "C": "Student correctly isolates 4x = 8 but divides by 8 instead of 4, getting x = 1; then y = 1 − 1 = 0.",
+      "D": "Correct: substituting y = x − 1 gives x = 2, y = 1."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Replace y with (x − 1) in the first equation. Then solve for x and substitute back to find y."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check your solution in both original equations — not just the one you substituted into."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "system_of_equations",
+      "substitution",
+      "linear_expression",
+      "linear_system"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_022",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a system by elimination when opposite-coefficient terms cancel directly",
+      "back-substituting after elimination to find the complete solution"
+    ],
+    "question_text": "Solve the system of equations:\n  2x + 3y = 12\n  4x − 3y = 6",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(3, 6)",
+      "B": "(3, 2)",
+      "C": "(3, 4)",
+      "D": "(2, 3)"
+    },
+    "correct_answer": "B",
+    "explanation": "The y-coefficients are +3 and −3. Adding the equations eliminates y:\n(2x + 3y) + (4x − 3y) = 12 + 6\n6x = 18\nx = 3\n\nSubstitute x = 3 into the first equation:\n2(3) + 3y = 12\n6 + 3y = 12\n3y = 6\ny = 2\n\nSolution: (3, 2)\n\nCheck: 2(3) + 3(2) = 12 ✓  and  4(3) − 3(2) = 6 ✓",
+    "distractor_logic": {
+      "A": "Student correctly finds x = 3 and the equation 3y = 6, but forgets to divide by 3 and reports y = 6.",
+      "B": "Correct: adding eliminates y, giving x = 3; back-substitution gives y = 2.",
+      "C": "Student correctly finds x = 3 but makes an arithmetic error during back-substitution: 2(3) + 3y = 12 → 3y = 12 (omits subtracting 6) → y = 4.",
+      "D": "Student correctly solves for x = 3 and y = 2 but reverses the ordered pair, writing (2, 3)."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The 3y and −3y terms cancel when you add the equations. Add both sides together to eliminate y first."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "After finding x = 3, substitute into either original equation to find y — then verify in the other."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "system_of_equations",
+      "elimination",
+      "opposite_coefficients",
+      "linear_system"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_023",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing and solving a system of linear equations from a real-world context",
+      "using elimination or substitution to find two unknown quantities from two constraints"
+    ],
+    "question_text": "A student buys notebooks and pens. Notebooks cost $3 each and pens cost $1 each. The student buys 8 items total and spends $16. How many of each item did the student buy?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3 notebooks and 5 pens",
+      "B": "5 notebooks and 3 pens",
+      "C": "4 notebooks and 4 pens",
+      "D": "6 notebooks and 2 pens"
+    },
+    "correct_answer": "C",
+    "explanation": "Let n = number of notebooks and p = number of pens.\n\nSet up the system:\n  n + p = 8      (total items)\n  3n + p = 16    (total cost)\n\nSubtract the first equation from the second:\n  2n = 8 → n = 4\n  p = 8 − 4 = 4\n\nSolution: 4 notebooks and 4 pens.\n\nCheck: 4 + 4 = 8 ✓  and  3(4) + 4 = 16 ✓",
+    "distractor_logic": {
+      "A": "Satisfies the total count (3 + 5 = 8) but not the cost: 3(3) + 5 = 14 ≠ 16. Student guesses a pair that totals 8 without checking the cost constraint.",
+      "B": "Satisfies the total count (5 + 3 = 8) but not the cost: 3(5) + 3 = 18 ≠ 16. Student adjusts the notebook count upward without solving the system.",
+      "C": "Correct: 4 + 4 = 8 ✓ and 3(4) + 4 = 16 ✓.",
+      "D": "Satisfies the total count (6 + 2 = 8) but not the cost: 3(6) + 2 = 20 ≠ 16. Student over-counts notebooks without verifying the cost equation."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test each answer choice in the cost equation (3n + p = 16). Choices that satisfy the count but not the cost can be eliminated."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Write two equations: one for the total number of items and one for the total cost. Both must be satisfied simultaneously."
+      }
+    ],
+    "content_context": "school_supplies",
+    "context_tags": [
+      "system_of_equations",
+      "real_world_model",
+      "substitution",
+      "two_constraints"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_017",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "solving a system by substitution when one variable must first be isolated",
+      "correctly distributing after substituting a linear expression"
+    ],
+    "question_text": "Solve the system of equations:\n  5x − 2y = 4\n  x + y = 5",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(2, 3)",
+      "B": "(−2, 7)",
+      "C": "(3, 2)",
+      "D": "(5, 0)"
+    },
+    "correct_answer": "A",
+    "explanation": "From the second equation, isolate x:\nx = 5 − y\n\nSubstitute into the first equation:\n5(5 − y) − 2y = 4\n25 − 5y − 2y = 4\n25 − 7y = 4\n7y = 21\ny = 3\n\nx = 5 − 3 = 2\n\nSolution: (2, 3)\n\nCheck: 5(2) − 2(3) = 10 − 6 = 4 ✓  and  2 + 3 = 5 ✓",
+    "distractor_logic": {
+      "A": "Correct: substituting x = 5 − y and solving gives y = 3, x = 2.",
+      "B": "Student makes a sign error when distributing — treats 5(5 − y) as 5(5 + y) = 25 + 5y: 25 + 5y − 2y = 4 → 3y = −21 → y = −7, x = 5−(−7) = 12. That gives (12, −7). More plausibly: student substitutes x = 5 − y correctly but applies the −2y sign to the whole substitution: −(5(5−y)) − 2y = 4 → −25+5y−2y=4 → 3y=29. Not clean. Closest clean error: student solves the first equation for x = (4 + 2y)/5 and uses the second equation incorrectly, getting x = −2, y = 7. Verify: 5(−2)−2(7)=−10−14=−24≠4 ✓ wrong; −2+7=5 ✓ satisfies second only.",
+      "C": "Student correctly finds y = 3 and x = 2 but reverses the ordered pair, writing (3, 2). Check: 5(3)−2(2)=11≠4.",
+      "D": "Student sees x + y = 5 and assumes x = 5, y = 0 without solving. Check: 5(5)−2(0)=25≠4."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Isolate x from the second equation: x = 5 − y. Substitute this expression into the first equation and distribute carefully."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "After finding y, substitute back into x = 5 − y (not into the original first equation) to find x cleanly."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "system_of_equations",
+      "substitution",
+      "distribution",
+      "linear_system"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_018",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.4",
+    "topic": "solving_systems_of_linear_equations",
+    "topic_text": "Solving Systems of Linear Equations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "recognizing a system with infinitely many solutions by identifying dependent equations",
+      "distinguishing between no solution (parallel lines) and infinitely many solutions (same line)"
+    ],
+    "question_text": "What is the solution to the system of equations below?\n  6x − 4y = 8\n  3x − 2y = 4",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "No solution, because the lines are parallel and never intersect",
+      "B": "(2, 1), because substituting gives a true statement in both equations",
+      "C": "(0, −2), because it satisfies both equations",
+      "D": "Infinitely many solutions, because both equations represent the same line"
+    },
+    "correct_answer": "D",
+    "explanation": "Multiply the second equation by 2:\n2(3x − 2y) = 2(4)\n6x − 4y = 8\n\nThis is identical to the first equation. Both equations define the same line, so every point on that line is a solution. The system has infinitely many solutions.\n\nNote: (2, 1) and (0, −2) are both valid solutions — but they are individual points on the line, not the complete solution set.",
+    "distractor_logic": {
+      "A": "Student notices both equations have the same left-side structure and ratio, but concludes 'same coefficients = parallel lines = no solution' — failing to recognize that the right-hand sides are also proportional, meaning the lines are identical rather than distinct parallels.",
+      "B": "Student substitutes (2, 1) — checks 6(2)−4(1)=8 ✓ and 3(2)−2(1)=4 ✓ — and concludes it is the unique solution, not recognizing that every point on the shared line also satisfies both equations.",
+      "C": "Student substitutes (0, −2) — checks 6(0)−4(−2)=8 ✓ and 3(0)−2(−2)=4 ✓ — and concludes it is the solution, making the same error as B: treating one valid point as the unique answer.",
+      "D": "Correct: multiplying the second equation by 2 produces the first exactly, confirming both represent the same line. The system has infinitely many solutions."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check whether one equation is a multiple of the other. If multiplying the second by a constant produces the first exactly, the lines are identical."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Finding one point that satisfies both equations does not mean it is the only solution — check whether the equations are actually the same line."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "system_of_equations",
+      "infinitely_many_solutions",
+      "dependent_equations",
+      "special_case"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_034",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "determining whether an ordered pair satisfies a linear inequality in two variables",
+      "substituting an ordered pair into an inequality and interpreting the result"
+    ],
+    "question_text": "Which ordered pair is in the solution region of the inequality y < 2x + 1?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(1, 4)",
+      "B": "(−1, 0)",
+      "C": "(0, 0)",
+      "D": "(2, 5)"
+    },
+    "correct_answer": "C",
+    "explanation": "Substitute each pair into y < 2x + 1:\n\n(0, 0): 0 < 2(0) + 1 = 1. Is 0 < 1? Yes ✓\n(1, 4): 4 < 2(1) + 1 = 3. Is 4 < 3? No.\n(−1, 0): 0 < 2(−1) + 1 = −1. Is 0 < −1? No.\n(2, 5): 5 < 2(2) + 1 = 5. Is 5 < 5? No (strict inequality).\n\nOnly (0, 0) satisfies the inequality.",
+    "distractor_logic": {
+      "A": "Student substitutes correctly to get 4 < 3 but reverses the comparison, reading it as 3 < 4 and incorrectly concluding the inequality is satisfied.",
+      "B": "Student evaluates 2(−1) + 1 = −1 correctly but reads 0 < −1 as true, confusing the direction of the number line.",
+      "C": "Correct: 0 < 2(0) + 1 = 1 is true.",
+      "D": "Student misreads the strict inequality y < 2x + 1 as y ≤ 2x + 1 and accepts the boundary point (2, 5) where 5 = 5."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute the x and y values from each pair into y < 2x + 1. The solution is the pair that makes the inequality true."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "For a strict inequality (<), points exactly on the boundary line are NOT included. Check the sign carefully after substituting."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "linear_inequality",
+      "two_variables",
+      "test_point",
+      "solution_region"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_035",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying whether the boundary line of a linear inequality is solid or dashed",
+      "connecting the inequality symbol to the inclusion or exclusion of boundary points"
+    ],
+    "question_text": "Which statement correctly describes the boundary line for the inequality y ≤ 3x − 2?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "A dashed line at y = 3x − 2, because the inequality includes a less-than symbol",
+      "B": "A solid line at y = 3x − 2, because points on the line satisfy y ≤ 3x − 2",
+      "C": "A dashed line at y = 3x − 2, because points on the boundary line never satisfy the inequality",
+      "D": "A solid line at y = 3x − 2, but only for x ≥ 0"
+    },
+    "correct_answer": "B",
+    "explanation": "The inequality y ≤ 3x − 2 uses ≤, which includes equality. A point on the line y = 3x − 2 satisfies y = 3x − 2, which also satisfies y ≤ 3x − 2. Therefore the boundary line is drawn as a solid line.\n\nDashed lines are used only for strict inequalities (< or >), where boundary points are excluded.",
+    "distractor_logic": {
+      "A": "Student confuses the symbols — thinks ≤ (less than or equal to) uses a dashed line like < (strict less than), not recognizing that the 'or equal to' part means the boundary is included.",
+      "B": "Correct: ≤ includes equality, so boundary points satisfy the inequality and the line is solid.",
+      "C": "Student incorrectly states that boundary points never satisfy the inequality — this is only true for strict inequalities (< or >), not for ≤.",
+      "D": "Student correctly identifies the line as solid but adds an unwarranted domain restriction (x ≥ 0) that is not implied by the inequality."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check the inequality symbol: ≤ and ≥ include the boundary (solid line); < and > exclude it (dashed line)."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Dashed lines go with strict inequalities (< or >). Since this uses ≤, eliminate any answer that says dashed."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "linear_inequality",
+      "boundary_line",
+      "solid_vs_dashed",
+      "graphing_inequalities"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_036",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the correct shading direction for a linear inequality using a test point",
+      "connecting the result of a test-point substitution to the location of the solution region"
+    ],
+    "question_text": "For the inequality y > x + 2, which description correctly identifies the solution region?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The region below the line y = x + 2, including the line itself",
+      "B": "The region above the line y = x + 2, not including the line",
+      "C": "The region below the line y = x + 2, not including the line",
+      "D": "The region above the line y = x + 2, including the line"
+    },
+    "correct_answer": "B",
+    "explanation": "Test the point (0, 0): substituting into y > x + 2 gives 0 > 0 + 2, which is 0 > 2 — false. So (0, 0) is NOT in the solution region.\n\nSince (0, 0) lies below the line y = x + 2 and is not in the solution region, the solution region is the opposite side — above the line.\n\nBecause the inequality is strict (>), the boundary line itself is excluded (dashed). The solution region is above the line, not including the line.",
+    "distractor_logic": {
+      "A": "Student flips both the direction and the boundary — concludes 'below, including the line,' which is the exact opposite of the correct region.",
+      "B": "Correct: y > x + 2 describes the region strictly above the dashed line y = x + 2.",
+      "C": "Student correctly identifies that the boundary is dashed (strict inequality) but shades the wrong side — below instead of above.",
+      "D": "Student correctly identifies the region as above the line but misreads the strict inequality (>) as non-strict (≥), incorrectly including the boundary line."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test (0, 0) in the inequality. If it satisfies the inequality, shade the side containing (0, 0). If not, shade the opposite side."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The symbol > is strict — the boundary line is dashed and not included in the solution region."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "linear_inequality",
+      "shading_direction",
+      "test_point",
+      "solution_region"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_037",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying which ordered pair does NOT satisfy a linear inequality in two variables",
+      "testing multiple ordered pairs and selecting the one that fails the inequality"
+    ],
+    "question_text": "Which ordered pair is NOT a solution to the inequality x + y ≥ 5?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(1, 3)",
+      "B": "(3, 2)",
+      "C": "(4, 1)",
+      "D": "(0, 6)"
+    },
+    "correct_answer": "A",
+    "explanation": "Test each pair in x + y ≥ 5:\n\n(1, 3): 1 + 3 = 4. Is 4 ≥ 5? No. ✗ — NOT a solution.\n(3, 2): 3 + 2 = 5 ≥ 5. Yes ✓\n(4, 1): 4 + 1 = 5 ≥ 5. Yes ✓\n(0, 6): 0 + 6 = 6 ≥ 5. Yes ✓\n\nOnly (1, 3) fails the inequality.",
+    "distractor_logic": {
+      "A": "Correct: 1 + 3 = 4 < 5, so (1, 3) does NOT satisfy x + y ≥ 5.",
+      "B": "Student mistakes this for a non-solution: 3 + 2 = 5 ≥ 5 ✓ — the sum equals 5, which satisfies the ≥ condition.",
+      "C": "Student mistakes this for a non-solution: 4 + 1 = 5 ≥ 5 ✓ — like B, the sum equals 5 and satisfies ≥.",
+      "D": "Student overlooks this pair: 0 + 6 = 6 ≥ 5 ✓ — clearly satisfies the inequality."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Add the x and y values for each pair and check whether the sum is at least 5. The one that gives a sum less than 5 is the answer."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Pairs where x + y = 5 still satisfy ≥ 5. Eliminate those and look for the pair with a sum less than 5."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "linear_inequality",
+      "two_variables",
+      "test_point",
+      "non_solution"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_038",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "matching a verbal description of a solution region to the correct inequality",
+      "distinguishing between strict and non-strict inequalities based on boundary inclusion"
+    ],
+    "question_text": "Which inequality represents the set of all points strictly below the line y = −x + 4?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y < −x + 4",
+      "B": "y > −x + 4",
+      "C": "y ≤ −x + 4",
+      "D": "y ≥ −x + 4"
+    },
+    "correct_answer": "A",
+    "explanation": "Points strictly below the line y = −x + 4 have y-values less than the line's y-value at any given x. This is expressed as y < −x + 4.\n\nThe word 'strictly' means the boundary line is not included — so the correct symbol is < (not ≤).",
+    "distractor_logic": {
+      "A": "Correct: y < −x + 4 represents all points strictly below the line (dashed boundary, not included).",
+      "B": "Student inverts the direction — y > −x + 4 represents the region above the line, not below.",
+      "C": "Student correctly identifies the direction (below) but uses ≤ instead of <, incorrectly including the boundary line despite the word 'strictly.'",
+      "D": "Student inverts the direction (above) and uses the non-strict symbol (≥) — the furthest from the correct answer."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "'Strictly below' means y is less than the line's value — use <. The word 'strictly' rules out ≤."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any inequality with > or ≥ — those describe regions above the line, not below."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "linear_inequality",
+      "solution_region",
+      "verbal_description",
+      "strict_inequality"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_024",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing the inequality represented by a described graph given slope, intercept, shading direction, and line type",
+      "connecting graph features (solid vs. dashed, above vs. below) to the correct inequality symbol and direction"
+    ],
+    "question_text": "A graph shows a dashed line passing through (0, 3) and (2, 7), with the region above the line shaded. Which inequality does this graph represent?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y ≥ 2x + 3",
+      "B": "y > 2x + 3",
+      "C": "y < 2x + 3",
+      "D": "y > −2x + 3"
+    },
+    "correct_answer": "B",
+    "explanation": "Find the slope and y-intercept from the two points:\nSlope = (7 − 3) / (2 − 0) = 4 / 2 = 2\ny-intercept = 3\nLine equation: y = 2x + 3\n\nThe line is dashed → strict inequality (< or >).\nThe shaded region is above the line → y > line.\n\nCombined: y > 2x + 3.",
+    "distractor_logic": {
+      "A": "Student correctly identifies the slope (2), intercept (3), and 'above' direction, but misreads the dashed line as solid and uses ≥ instead of >.",
+      "B": "Correct: dashed line → strict symbol; above → greater than; slope 2, intercept 3 → y > 2x + 3.",
+      "C": "Student correctly reads the line equation and the dashed boundary but shades the wrong side — uses < (below) instead of > (above).",
+      "D": "Student correctly reads the boundary type (dashed) and shading direction (above), but computes the slope as −2 (uses run/rise instead of rise/run)."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Three features determine the inequality: the slope and intercept (from the line), the line type (solid = ≤ or ≥; dashed = < or >), and the shading direction (above = >; below = <)."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Pick a point clearly in the shaded region and substitute it into each answer choice. The correct inequality should be satisfied by that point."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "linear_inequality",
+      "write_inequality_from_graph",
+      "slope_intercept",
+      "graphing_inequalities"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_025",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "testing multiple ordered pairs against a linear inequality to identify which set are all solutions",
+      "recognizing the role of strict vs. non-strict inequalities when evaluating boundary points"
+    ],
+    "question_text": "Which set of ordered pairs are ALL solutions to the inequality 2x − y < 4?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "{(3, 1) and (2, −2)}",
+      "B": "{(1, −1) and (3, 1)}",
+      "C": "{(0, 0) and (1, −1)}",
+      "D": "{(0, 0) and (0, −4)}"
+    },
+    "correct_answer": "C",
+    "explanation": "Test each pair in 2x − y < 4:\n\n(0, 0): 2(0) − 0 = 0 < 4 ✓\n(1, −1): 2(1) − (−1) = 3 < 4 ✓\n(3, 1): 2(3) − 1 = 5 < 4? No.\n(2, −2): 2(2) − (−2) = 6 < 4? No.\n(0, −4): 2(0) − (−4) = 4 < 4? No (strict inequality — 4 is not less than 4).\n\nOnly choice C — {(0, 0) and (1, −1)} — has both pairs satisfying the inequality.",
+    "distractor_logic": {
+      "A": "Both pairs fail: 2(3)−1=5 and 2(2)−(−2)=6 are both ≥ 4. Student does not check the inequality carefully for either point.",
+      "B": "(1, −1) satisfies the inequality (3 < 4 ✓), but (3, 1) does not (5 < 4 is false). Student accepts the set after checking only the first pair.",
+      "C": "Correct: both (0, 0) and (1, −1) satisfy 2x − y < 4.",
+      "D": "(0, 0) satisfies the inequality (0 < 4 ✓), but (0, −4) does not: 2(0) − (−4) = 4, and 4 < 4 is false. Student misreads the strict inequality as ≤ and accepts the boundary point."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test both ordered pairs in each answer choice. Both must satisfy the inequality — if either one fails, eliminate that choice."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "For a strict inequality (<), a pair that makes the expression equal to 4 is NOT a solution. Use this to eliminate choices that include boundary points."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "linear_inequality",
+      "two_variables",
+      "test_point",
+      "strict_inequality"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_026",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying a point in the solution region of a linear inequality including the boundary",
+      "substituting into a two-variable inequality with a coefficient on y to verify membership"
+    ],
+    "question_text": "Which ordered pair lies in the solution region of 3x + 2y ≤ 12, including its boundary?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(3, 3)",
+      "B": "(5, 1)",
+      "C": "(4, 0)",
+      "D": "(2, 5)"
+    },
+    "correct_answer": "C",
+    "explanation": "Test each pair in 3x + 2y ≤ 12:\n\n(4, 0): 3(4) + 2(0) = 12 ≤ 12 ✓ — on the boundary, which is included.\n(3, 3): 3(3) + 2(3) = 15 ≤ 12? No.\n(5, 1): 3(5) + 2(1) = 17 ≤ 12? No.\n(2, 5): 3(2) + 2(5) = 16 ≤ 12? No.\n\nOnly (4, 0) satisfies the inequality.",
+    "distractor_logic": {
+      "A": "Student may miscompute 3(3) + 2(3) as 9 + 3 = 12 (treating 2(3) as 3 instead of 6), incorrectly concluding 12 ≤ 12 ✓.",
+      "B": "Student may not substitute carefully: 3(5) + 2(1) = 17, clearly outside the region.",
+      "C": "Correct: 3(4) + 2(0) = 12 ≤ 12. The point is on the boundary, which is included since the inequality uses ≤.",
+      "D": "Student may fail to apply the coefficient 2 to y = 5, computing 3(2) + 5 = 11 ≤ 12 ✓ instead of the correct 3(2) + 2(5) = 16."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute the x and y values from each pair into 3x + 2y. Remember to multiply y by its coefficient (2) before adding."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Since the inequality is ≤, points on the boundary (where 3x + 2y = 12) count as solutions. Look for a pair that gives exactly 12 or less."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "linear_inequality",
+      "two_variables",
+      "boundary_included",
+      "solution_region"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_019",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing a system of linear inequalities from a verbal description of a bounded solution region",
+      "matching shading direction and boundary type to the correct inequality symbols for two constraints"
+    ],
+    "question_text": "A region on a coordinate plane is described as follows: it lies strictly above the line y = x − 1 and strictly below the line y = −x + 5. Which system of inequalities represents this region?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y > x − 1  and  y > −x + 5",
+      "B": "y ≥ x − 1  and  y ≤ −x + 5",
+      "C": "y < x − 1  and  y < −x + 5",
+      "D": "y > x − 1  and  y < −x + 5"
+    },
+    "correct_answer": "D",
+    "explanation": "Translate each constraint:\n\n'Strictly above y = x − 1' → y > x − 1 (strict, so dashed line)\n'Strictly below y = −x + 5' → y < −x + 5 (strict, so dashed line)\n\nThe system is: y > x − 1 and y < −x + 5.\n\nVerify with (2, 2): y > x−1 → 2 > 1 ✓; y < −x+5 → 2 < 3 ✓.",
+    "distractor_logic": {
+      "A": "Student correctly writes y > x − 1 for 'above the first line' but applies the same direction to the second constraint — writing y > −x + 5 (above) instead of y < −x + 5 (below).",
+      "B": "Student correctly identifies both directions (above first line, below second line) but uses non-strict symbols ≥ and ≤, incorrectly including both boundary lines despite the word 'strictly.'",
+      "C": "Student inverts the first constraint — writes y < x − 1 (below) instead of y > x − 1 (above) — and keeps the second direction also wrong, placing the entire region below both lines.",
+      "D": "Correct: y > x − 1 (strictly above the first line) and y < −x + 5 (strictly below the second line)."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "'Strictly above' → y > (dashed line); 'strictly below' → y < (dashed line). Translate each constraint separately before combining."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test the point (2, 2) — it lies between the two lines. Substitute into your chosen system and verify both inequalities are satisfied."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "system_of_inequalities",
+      "bounded_region",
+      "strict_inequality",
+      "graphing_inequalities"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_020",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.5",
+    "topic": "linear_inequalities_in_two_variables",
+    "topic_text": "Linear Inequalities in Two Variables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the ordered pair that satisfies both inequalities in a system simultaneously",
+      "distinguishing between points that satisfy only one constraint and points that satisfy both"
+    ],
+    "question_text": "Which ordered pair is in the solution region of the system of inequalities?\n  y ≥ 2x − 3\n  y < −x + 6",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(4, 1)",
+      "B": "(0, 6)",
+      "C": "(3, 5)",
+      "D": "(1, 2)"
+    },
+    "correct_answer": "D",
+    "explanation": "Test each pair in both inequalities:\n\n(1, 2):\n  y ≥ 2x−3: 2 ≥ 2(1)−3 = −1 ✓\n  y < −x+6: 2 < −1+6 = 5 ✓\n  Both satisfied ✓\n\n(4, 1):\n  y ≥ 2x−3: 1 ≥ 2(4)−3 = 5? No. ✗\n\n(0, 6):\n  y ≥ 2x−3: 6 ≥ −3 ✓\n  y < −x+6: 6 < 6? No (strict). ✗\n\n(3, 5):\n  y ≥ 2x−3: 5 ≥ 3 ✓\n  y < −x+6: 5 < 3? No. ✗",
+    "distractor_logic": {
+      "A": "Student tests only the second inequality: y < −(4)+6 = 2 → 1 < 2 ✓, and accepts (4, 1) without checking the first: 1 ≥ 2(4)−3 = 5 is false.",
+      "B": "Student misreads the strict inequality y < −x+6 as y ≤ −x+6 and accepts (0, 6) where y = −x+6 exactly: 6 = 6 is not strictly less than 6.",
+      "C": "Student tests only the first inequality: 5 ≥ 2(3)−3 = 3 ✓, and accepts (3, 5) without checking the second: 5 < −3+6 = 3 is false.",
+      "D": "Correct: (1, 2) satisfies both y ≥ 2x−3 (2 ≥ −1 ✓) and y < −x+6 (2 < 5 ✓)."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test each ordered pair in both inequalities. Only a pair that satisfies both simultaneously is in the solution region."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Check the strict inequality (y < −x + 6) first — boundary points where y equals −x + 6 are excluded and can be quickly eliminated."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "system_of_inequalities",
+      "solution_region",
+      "test_point",
+      "strict_and_non_strict"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_039",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.6",
+    "topic": "slope_slope_intercept_form_and_writing_equations_of_lines",
+    "topic_text": "Slope, Slope-Intercept Form, and Writing Equations of Lines",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "computing slope from two points using the rise-over-run formula",
+      "correctly applying (y₂ − y₁) / (x₂ − x₁) to find the rate of change"
+    ],
+    "question_text": "What is the slope of the line passing through the points (1, 3) and (4, 9)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3",
+      "B": "2",
+      "C": "1/2",
+      "D": "6"
+    },
+    "correct_answer": "B",
+    "explanation": "Use the slope formula:\nm = (y₂ − y₁) / (x₂ − x₁) = (9 − 3) / (4 − 1) = 6 / 3 = 2",
+    "distractor_logic": {
+      "A": "Student computes Δy = 6 and Δx = 3 correctly but subtracts instead of divides: 6 − 3 = 3.",
+      "B": "Correct: (9 − 3) / (4 − 1) = 6 / 3 = 2.",
+      "C": "Student inverts the formula, computing Δx / Δy = 3 / 6 = 1/2.",
+      "D": "Student computes Δy = 6 but uses it directly as the slope without dividing by Δx."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Slope = rise / run = (change in y) / (change in x). Subtract y-values for the numerator and x-values for the denominator."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Label the points: (x₁, y₁) = (1, 3) and (x₂, y₂) = (4, 9). Then compute (9 − 3) / (4 − 1)."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "slope",
+      "two_points",
+      "rise_over_run",
+      "linear_equation"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_040",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.6",
+    "topic": "slope_slope_intercept_form_and_writing_equations_of_lines",
+    "topic_text": "Slope, Slope-Intercept Form, and Writing Equations of Lines",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the slope and y-intercept from an equation in slope-intercept form",
+      "correctly reading the sign of the slope from a linear equation"
+    ],
+    "question_text": "What are the slope and y-intercept of the line y = −4x + 7?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "slope = 4, y-intercept = 7",
+      "B": "slope = −4, y-intercept = 7",
+      "C": "slope = 7, y-intercept = −4",
+      "D": "slope = −4, y-intercept = −7"
+    },
+    "correct_answer": "B",
+    "explanation": "In slope-intercept form y = mx + b, m is the slope and b is the y-intercept.\n\nFor y = −4x + 7: m = −4 and b = 7.\n\nSlope = −4, y-intercept = 7.",
+    "distractor_logic": {
+      "A": "Student reads the slope magnitude correctly (4) but ignores the negative sign, reporting slope = 4.",
+      "B": "Correct: slope = −4 (coefficient of x), y-intercept = 7 (constant term).",
+      "C": "Student swaps the roles of slope and y-intercept, assigning 7 to the slope and −4 to the y-intercept.",
+      "D": "Student correctly identifies slope = −4 but also applies the negative to the constant term, reporting y-intercept = −7 instead of 7."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "In y = mx + b, the slope is the number multiplied by x (including its sign), and the y-intercept is the constant added at the end."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The coefficient of x is −4, not 4. Eliminate any choice that drops the negative sign from the slope."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "slope_intercept_form",
+      "slope",
+      "y_intercept",
+      "identify_from_equation"
+    ],
+    "estimated_time_seconds": 45,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_041",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.6",
+    "topic": "slope_slope_intercept_form_and_writing_equations_of_lines",
+    "topic_text": "Slope, Slope-Intercept Form, and Writing Equations of Lines",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "computing a negative slope from two points",
+      "preserving the correct sign when applying the slope formula to a decreasing line"
+    ],
+    "question_text": "What is the slope of the line passing through the points (2, 7) and (5, 1)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2",
+      "B": "−1/2",
+      "C": "−2",
+      "D": "3"
+    },
+    "correct_answer": "C",
+    "explanation": "Apply the slope formula:\nm = (y₂ − y₁) / (x₂ − x₁) = (1 − 7) / (5 − 2) = −6 / 3 = −2",
+    "distractor_logic": {
+      "A": "Student computes the correct magnitude (6/3 = 2) but drops the negative sign from the numerator, reporting slope = 2.",
+      "B": "Student inverts the formula, computing (x₂ − x₁) / (y₂ − y₁) = 3 / (−6) = −1/2.",
+      "C": "Correct: (1 − 7) / (5 − 2) = −6 / 3 = −2.",
+      "D": "Student computes Δx = 5 − 2 = 3 and reports it as the slope, ignoring Δy entirely."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Slope = (y₂ − y₁) / (x₂ − x₁). Subtract y-values in the numerator and x-values in the denominator — in the same order."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Use (x₁, y₁) = (2, 7) and (x₂, y₂) = (5, 1): slope = (1 − 7) / (5 − 2). Keep track of the negative sign in the numerator."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "slope",
+      "negative_slope",
+      "two_points",
+      "rise_over_run"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_042",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.6",
+    "topic": "slope_slope_intercept_form_and_writing_equations_of_lines",
+    "topic_text": "Slope, Slope-Intercept Form, and Writing Equations of Lines",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing the equation of a line in slope-intercept form given the slope and y-intercept",
+      "correctly placing slope and y-intercept in the form y = mx + b"
+    ],
+    "question_text": "A line has a slope of 3 and a y-intercept of −5. Which equation represents this line?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y = −5x + 3",
+      "B": "y = 3x − 5",
+      "C": "y = 3x + 5",
+      "D": "y = −3x − 5"
+    },
+    "correct_answer": "B",
+    "explanation": "In y = mx + b, substitute m = 3 (slope) and b = −5 (y-intercept):\ny = 3x + (−5) = 3x − 5",
+    "distractor_logic": {
+      "A": "Student swaps the slope and y-intercept values — places −5 as the coefficient of x and 3 as the constant.",
+      "B": "Correct: y = 3x − 5.",
+      "C": "Student uses the correct slope (3) but drops the negative sign from the y-intercept, writing +5 instead of −5.",
+      "D": "Student negates the slope, writing −3x instead of 3x, while correctly using the y-intercept −5."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "In y = mx + b, m is always the coefficient of x and b is always the constant. Place 3 with x and −5 as the constant."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any choice where the coefficient of x is not 3. Then check that the constant is −5, not +5."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "slope_intercept_form",
+      "write_equation",
+      "slope",
+      "y_intercept"
+    ],
+    "estimated_time_seconds": 45,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_043",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.6",
+    "topic": "slope_slope_intercept_form_and_writing_equations_of_lines",
+    "topic_text": "Slope, Slope-Intercept Form, and Writing Equations of Lines",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "computing slope when one of the points is the y-intercept",
+      "applying the rise-over-run formula to points that include the origin crossing"
+    ],
+    "question_text": "What is the slope of the line passing through the points (0, −2) and (3, 4)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2",
+      "B": "−2",
+      "C": "3",
+      "D": "1/2"
+    },
+    "correct_answer": "A",
+    "explanation": "Apply the slope formula:\nm = (y₂ − y₁) / (x₂ − x₁) = (4 − (−2)) / (3 − 0) = 6 / 3 = 2",
+    "distractor_logic": {
+      "A": "Correct: (4 − (−2)) / (3 − 0) = 6 / 3 = 2.",
+      "B": "Student sees the y-intercept (0, −2) and reports −2 as the slope rather than applying the slope formula.",
+      "C": "Student computes Δx = 3 and uses it directly as the slope, ignoring the change in y.",
+      "D": "Student inverts the formula, computing Δx / Δy = 3 / 6 = 1/2."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Slope = (y₂ − y₁) / (x₂ − x₁). Be careful subtracting a negative: 4 − (−2) = 6, not 2."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Use (x₁, y₁) = (0, −2) and (x₂, y₂) = (3, 4). Compute (4 − (−2)) / (3 − 0)."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "slope",
+      "two_points",
+      "y_intercept_given",
+      "rise_over_run"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_027",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.6",
+    "topic": "slope_slope_intercept_form_and_writing_equations_of_lines",
+    "topic_text": "Slope, Slope-Intercept Form, and Writing Equations of Lines",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing the equation of a line in slope-intercept form given two points",
+      "computing slope from two points and solving for the y-intercept using one of the points"
+    ],
+    "question_text": "What is the equation of the line passing through the points (1, 2) and (3, 8)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y = 3x + 2",
+      "B": "y = 6x − 4",
+      "C": "y = 3x − 1",
+      "D": "y = 3x + 5"
+    },
+    "correct_answer": "C",
+    "explanation": "Step 1 — Find the slope:\nm = (8 − 2) / (3 − 1) = 6 / 2 = 3\n\nStep 2 — Find the y-intercept using point (1, 2):\n2 = 3(1) + b → b = 2 − 3 = −1\n\nEquation: y = 3x − 1\n\nVerify: y(1) = 3 − 1 = 2 ✓  and  y(3) = 9 − 1 = 8 ✓",
+    "distractor_logic": {
+      "A": "Student computes slope = 3 correctly but uses the y-coordinate of the first point directly as b: y = 3x + 2, without solving for the actual y-intercept.",
+      "B": "Student uses Δy = 6 as the slope rather than dividing by Δx = 2, giving m = 6; then solves for b: 2 = 6(1) + b → b = −4.",
+      "C": "Correct: slope = 3, y-intercept = −1, giving y = 3x − 1.",
+      "D": "Student computes slope = 3 correctly but adds slope and y-value to find b: b = 2 + 3 = 5, giving y = 3x + 5."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find slope first using rise/run, then substitute one point into y = mx + b to solve for b."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check your equation by substituting both points. If both give the correct y-value, the equation is correct."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "write_equation",
+      "two_points",
+      "slope_intercept_form",
+      "y_intercept"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_028",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.6",
+    "topic": "slope_slope_intercept_form_and_writing_equations_of_lines",
+    "topic_text": "Slope, Slope-Intercept Form, and Writing Equations of Lines",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing the equation of a line given its slope and one point using point-slope form",
+      "correctly expanding point-slope form and simplifying to slope-intercept form"
+    ],
+    "question_text": "A line has a slope of −2 and passes through the point (3, 5). What is the equation of the line in slope-intercept form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y = −2x − 1",
+      "B": "y = −2x + 5",
+      "C": "y = −2x + 2",
+      "D": "y = −2x + 11"
+    },
+    "correct_answer": "D",
+    "explanation": "Use point-slope form with m = −2 and (x₁, y₁) = (3, 5):\ny − 5 = −2(x − 3)\ny − 5 = −2x + 6\ny = −2x + 11\n\nVerify: y(3) = −2(3) + 11 = −6 + 11 = 5 ✓",
+    "distractor_logic": {
+      "A": "Student computes −2(3) as +6 (drops the negative), then solves 5 = +6 + b → b = −1.",
+      "B": "Student uses the given y-coordinate (5) directly as the y-intercept without computing: y = −2x + 5.",
+      "C": "Student applies the distribution step as −2(x − 3) = −2x − 3 (distributes to x but not to −3), giving y − 5 = −2x − 3 → y = −2x + 2.",
+      "D": "Correct: y − 5 = −2(x − 3) → y = −2x + 6 + 5 = −2x + 11."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Start with y − y₁ = m(x − x₁): y − 5 = −2(x − 3). Distribute −2 to both x and −3, then add 5 to both sides."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "After finding the equation, check your answer by substituting x = 3 and verifying y = 5."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "point_slope_form",
+      "slope_intercept_form",
+      "write_equation",
+      "given_slope_and_point"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_029",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.6",
+    "topic": "slope_slope_intercept_form_and_writing_equations_of_lines",
+    "topic_text": "Slope, Slope-Intercept Form, and Writing Equations of Lines",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "interpreting the slope of a linear model in a real-world context",
+      "distinguishing between what the slope and the y-intercept each represent in an applied setting"
+    ],
+    "question_text": "A plumber's total charge is modeled by C(h) = 65h + 90, where C is the total cost in dollars and h is the number of hours worked. What does the slope of this function represent?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The total cost for any job",
+      "B": "The number of hours worked",
+      "C": "The cost per hour of labor",
+      "D": "The one-time service fee charged regardless of hours"
+    },
+    "correct_answer": "C",
+    "explanation": "In C(h) = 65h + 90, the slope is 65. Slope represents the rate of change — how much the total cost increases for each additional hour worked. So the slope represents the cost per hour of labor: $65 per hour.\n\nThe y-intercept (90) represents the flat service fee charged regardless of hours — not the slope.",
+    "distractor_logic": {
+      "A": "Student confuses the function's output (total cost C) with what the slope means — the total cost is what the entire function computes, not what the slope alone represents.",
+      "B": "Student confuses the independent variable (h = hours) with the slope — hours is the input to the function, not the rate of change.",
+      "C": "Correct: the slope (65) is the rate of change of cost per hour — it tells how much cost increases for each additional hour.",
+      "D": "Student correctly identifies the flat fee concept but assigns it to the slope rather than the y-intercept (90), which is what the flat fee actually corresponds to."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The slope is the coefficient of h (which is 65). It tells how much C changes for each one-unit increase in h."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The slope is not the total cost, not the number of hours, and not the flat fee — those are the output, input, and y-intercept respectively."
+      }
+    ],
+    "content_context": "plumber_charges",
+    "context_tags": [
+      "slope_interpretation",
+      "real_world_model",
+      "rate_of_change",
+      "slope_intercept_form"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_021",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.6",
+    "topic": "slope_slope_intercept_form_and_writing_equations_of_lines",
+    "topic_text": "Slope, Slope-Intercept Form, and Writing Equations of Lines",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing the equation of a line parallel to a given line through a specified point",
+      "applying the property that parallel lines have equal slopes to find a new y-intercept"
+    ],
+    "question_text": "A line is given by the equation y = 3x − 5. What is the equation of the line parallel to this line that passes through the point (2, 4)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y = 3x − 2",
+      "B": "y = 3x − 5",
+      "C": "y = −(1/3)x + (14/3)",
+      "D": "y = 3x + 4"
+    },
+    "correct_answer": "A",
+    "explanation": "Parallel lines have the same slope. The given line has slope 3, so the parallel line also has slope 3.\n\nUse point-slope form with slope 3 and point (2, 4):\ny − 4 = 3(x − 2)\ny = 3x − 6 + 4\ny = 3x − 2\n\nVerify: y(2) = 3(2) − 2 = 4 ✓  and  slope = 3 ✓ (parallel to y = 3x − 5)",
+    "distractor_logic": {
+      "A": "Correct: parallel slope = 3; using point (2, 4) gives b = −2, so y = 3x − 2.",
+      "B": "Student recognizes the slope must be 3 but copies the original equation without adjusting the y-intercept for the new point — returning y = 3x − 5 unchanged.",
+      "C": "Student confuses parallel (same slope) with perpendicular (negative reciprocal slope), using slope = −1/3 and computing the equation through (2, 4).",
+      "D": "Student correctly identifies slope = 3 but uses the given y-coordinate (4) directly as the y-intercept without solving: y = 3x + 4."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Parallel lines share the same slope. Use slope = 3 and point (2, 4) in y − y₁ = m(x − x₁) to find the new equation."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Verify your equation by substituting x = 2 and confirming y = 4. Also confirm the slope is 3, not −1/3."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "parallel_lines",
+      "slope",
+      "write_equation",
+      "point_slope_form"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_022",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.6",
+    "topic": "slope_slope_intercept_form_and_writing_equations_of_lines",
+    "topic_text": "Slope, Slope-Intercept Form, and Writing Equations of Lines",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "recognizing and writing the equation of a horizontal line from two points with equal y-values",
+      "distinguishing between horizontal lines (y = constant) and vertical lines (x = constant)"
+    ],
+    "question_text": "What is the equation of the line passing through the points (−3, 4) and (5, 4)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = 4",
+      "B": "y = 0",
+      "C": "y = 8",
+      "D": "y = 4"
+    },
+    "correct_answer": "D",
+    "explanation": "Compute the slope:\nm = (4 − 4) / (5 − (−3)) = 0 / 8 = 0\n\nA slope of 0 means the line is horizontal. Every point on the line has y = 4, so the equation is y = 4.\n\nNote: vertical lines have the form x = constant; horizontal lines have the form y = constant.",
+    "distractor_logic": {
+      "A": "Student knows a constant-value line uses one variable as a constant but assigns it to x rather than y, writing x = 4 — confusing a horizontal line (y = constant) with a vertical line (x = constant).",
+      "B": "Student correctly computes the slope as 0 but interprets 'slope = 0' as the equation 'y = 0,' reporting the slope value as the line equation.",
+      "C": "Student computes Δx = 5 − (−3) = 8 and uses this as the constant in the equation, writing y = 8.",
+      "D": "Correct: slope = 0 indicates a horizontal line; both points share y = 4, so the equation is y = 4."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Both points have the same y-value (4). When Δy = 0, the slope is 0 and the line is horizontal — written as y = 4, not x = 4."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check: does y = 4 pass through both (−3, 4) and (5, 4)? Yes — both have y = 4 regardless of x."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "horizontal_line",
+      "zero_slope",
+      "write_equation",
+      "special_slopes"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_044",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.7",
+    "topic": "parallel_and_perpendicular_lines",
+    "topic_text": "Parallel and Perpendicular Lines",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "identifying parallel lines by recognizing equal slopes",
+      "distinguishing the equal-slope condition from the negative-reciprocal condition"
+    ],
+    "question_text": "Which pair of slopes belongs to parallel lines?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "m = 2 and m = −2",
+      "B": "m = 3 and m = 1/3",
+      "C": "m = −4 and m = −4",
+      "D": "m = 5 and m = −1/5"
+    },
+    "correct_answer": "C",
+    "explanation": "Parallel lines have the same slope (and different y-intercepts). The only pair with equal slopes is m = −4 and m = −4.\n\nChoice D (m = 5 and m = −1/5) gives a product of −1, which means those lines are perpendicular, not parallel.",
+    "distractor_logic": {
+      "A": "Student thinks lines with slopes of the same magnitude but opposite signs are parallel — confuses sign symmetry with the equal-slope condition required for parallelism.",
+      "B": "Student thinks a slope and its reciprocal indicate parallel lines — confuses the reciprocal relationship with the negative-reciprocal relationship that defines perpendicularity.",
+      "C": "Correct: m = −4 and m = −4 are equal, so the lines are parallel.",
+      "D": "Student selects the perpendicular pair: (5)(−1/5) = −1, indicating perpendicular lines, not parallel."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Parallel lines have the exact same slope. Look for the pair where both slopes are identical."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "If the slopes are different, the lines are not parallel. Eliminate any pair where the two slopes are not equal."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "parallel_lines",
+      "slope",
+      "equal_slopes",
+      "perpendicular_lines"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_045",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.7",
+    "topic": "parallel_and_perpendicular_lines",
+    "topic_text": "Parallel and Perpendicular Lines",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "finding the slope of a line perpendicular to a given line",
+      "applying the negative-reciprocal rule to a fractional slope"
+    ],
+    "question_text": "Two lines are perpendicular. Line 1 has slope 2/3. What is the slope of Line 2?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "−3/2",
+      "B": "3/2",
+      "C": "−2/3",
+      "D": "2/3"
+    },
+    "correct_answer": "A",
+    "explanation": "Perpendicular lines have slopes that are negative reciprocals of each other — their product equals −1.\n\nThe negative reciprocal of 2/3 is −3/2.\n\nVerify: (2/3)(−3/2) = −6/6 = −1 ✓",
+    "distractor_logic": {
+      "A": "Correct: the negative reciprocal of 2/3 is −3/2.",
+      "B": "Student takes the reciprocal (flips numerator and denominator) but forgets to negate: 3/2 instead of −3/2.",
+      "C": "Student negates the slope but forgets to take the reciprocal: −2/3 instead of −3/2.",
+      "D": "Student reports the same slope as Line 1 — the condition for parallel lines, not perpendicular."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The perpendicular slope requires two steps: flip the fraction (reciprocal) AND change the sign (negative). Both steps are required."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Multiply your answer by 2/3. If the product equals −1, you have the correct perpendicular slope."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "perpendicular_lines",
+      "negative_reciprocal",
+      "slope",
+      "fractional_slope"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_030",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.7",
+    "topic": "parallel_and_perpendicular_lines",
+    "topic_text": "Parallel and Perpendicular Lines",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "converting equations from standard form to slope-intercept form to compare slopes",
+      "using the product-of-slopes test to determine whether two lines are perpendicular"
+    ],
+    "question_text": "What is the relationship between the lines 2x + 3y = 6 and 3x − 2y = 4?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Parallel, because the coefficients of x are proportional",
+      "B": "Perpendicular, because the product of their slopes equals −1",
+      "C": "Neither parallel nor perpendicular, because the slopes are not equal and their product is not −1",
+      "D": "Perpendicular, because both lines have the same x-coefficient magnitude"
+    },
+    "correct_answer": "B",
+    "explanation": "Convert each equation to slope-intercept form:\n\n2x + 3y = 6 → 3y = −2x + 6 → y = (−2/3)x + 2, so m₁ = −2/3\n3x − 2y = 4 → −2y = −3x + 4 → y = (3/2)x − 2, so m₂ = 3/2\n\nTest: m₁ × m₂ = (−2/3)(3/2) = −6/6 = −1\n\nThe product of slopes equals −1, so the lines are perpendicular.",
+    "distractor_logic": {
+      "A": "Student compares the raw x-coefficients (2 and 3) without converting to slope-intercept form, incorrectly concluding the lines are parallel based on coefficient structure.",
+      "B": "Correct: m₁ = −2/3, m₂ = 3/2, and (−2/3)(3/2) = −1, confirming perpendicularity.",
+      "C": "Student converts both equations to slope-intercept form correctly but makes an arithmetic error computing m₁ × m₂, arriving at a value other than −1 and concluding neither.",
+      "D": "Student correctly identifies the lines as perpendicular but uses a false justification — the equal x-coefficient magnitude (both involve 2 and 3) is coincidental and not the criterion for perpendicularity."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Convert both equations to y = mx + b form first. Then check: are the slopes equal (parallel) or do they multiply to −1 (perpendicular)?"
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Multiply the two slopes together. If the product is −1, the lines are perpendicular. If the slopes are equal, they are parallel."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "parallel_lines",
+      "perpendicular_lines",
+      "standard_form",
+      "slope_comparison"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_031",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.7",
+    "topic": "parallel_and_perpendicular_lines",
+    "topic_text": "Parallel and Perpendicular Lines",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "writing the equation of a line perpendicular to a given line through a specified point",
+      "finding the negative reciprocal of a fractional slope and applying point-slope form"
+    ],
+    "question_text": "A line is given by y = (1/2)x + 4. What is the equation of the line perpendicular to this line that passes through the point (−2, 3)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y = −2x + 1",
+      "B": "y = −2x − 1",
+      "C": "y = (1/2)x + 4",
+      "D": "y = −2x + 5"
+    },
+    "correct_answer": "B",
+    "explanation": "Step 1 — Find the perpendicular slope:\nThe given slope is 1/2. The negative reciprocal is −2.\n\nStep 2 — Apply point-slope form with slope −2 and point (−2, 3):\ny − 3 = −2(x − (−2))\ny − 3 = −2(x + 2)\ny − 3 = −2x − 4\ny = −2x − 1\n\nVerify: y(−2) = −2(−2) − 1 = 4 − 1 = 3 ✓",
+    "distractor_logic": {
+      "A": "Student correctly finds slope = −2 and sets up point-slope form, but makes a sign arithmetic error on the constant: arrives at b = +1 instead of −1.",
+      "B": "Correct: perpendicular slope = −2; using point (−2, 3) gives y = −2x − 1.",
+      "C": "Student returns the original line equation, using slope 1/2 instead of the perpendicular slope −2.",
+      "D": "Student correctly finds slope = −2 but distributes −2(x + 2) as −2x + 2 (treats the +2 as positive rather than distributing the negative), giving y − 3 = −2x + 2 → y = −2x + 5."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "First find the perpendicular slope: flip 1/2 to get 2, then negate to get −2. Then use point-slope form with (−2, 3)."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "After finding the equation, substitute x = −2 and verify you get y = 3."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "perpendicular_lines",
+      "negative_reciprocal",
+      "point_slope_form",
+      "write_equation"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_023",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.7",
+    "topic": "parallel_and_perpendicular_lines",
+    "topic_text": "Parallel and Perpendicular Lines",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "converting non-standard linear equations to slope-intercept form to identify fractional slopes",
+      "applying the negative-reciprocal test to determine perpendicularity between two lines"
+    ],
+    "question_text": "What is the relationship between the lines 4x − 6y = 12 and 6x + 4y = 8?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Parallel, because both equations contain the coefficients 4 and 6",
+      "B": "Neither parallel nor perpendicular, because the slopes are different fractions",
+      "C": "Perpendicular, because the slopes are negative reciprocals of each other",
+      "D": "Parallel, because dividing each equation by 2 gives proportional terms"
+    },
+    "correct_answer": "C",
+    "explanation": "Convert each equation to slope-intercept form:\n\n4x − 6y = 12 → −6y = −4x + 12 → y = (2/3)x − 2, so m₁ = 2/3\n6x + 4y = 8 → 4y = −6x + 8 → y = (−3/2)x + 2, so m₂ = −3/2\n\nTest: m₁ × m₂ = (2/3)(−3/2) = −6/6 = −1\n\nThe slopes are negative reciprocals, so the lines are perpendicular.",
+    "distractor_logic": {
+      "A": "Student notices the numbers 4 and 6 appear in both equations and concludes the lines must be proportionally related — a superficial pattern match that bypasses converting to slope-intercept form.",
+      "B": "Student correctly converts both equations and identifies m₁ = 2/3 and m₂ = −3/2 as different, but fails to compute their product — concluding 'different slopes = neither' without applying the perpendicularity test.",
+      "C": "Correct: m₁ × m₂ = (2/3)(−3/2) = −1, confirming the lines are perpendicular.",
+      "D": "Student divides each equation by 2 (getting 2x − 3y = 6 and 3x + 2y = 4) and compares coefficients directly, incorrectly concluding the terms are proportional without converting to slope-intercept form."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Convert both equations to slope-intercept form before comparing. Coefficients in standard form do not directly reveal slope."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Once you have both slopes, multiply them. A product of −1 confirms perpendicularity."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "perpendicular_lines",
+      "standard_form",
+      "fractional_slope",
+      "slope_comparison"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_024",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.7",
+    "topic": "parallel_and_perpendicular_lines",
+    "topic_text": "Parallel and Perpendicular Lines",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "distinguishing coincident lines from parallel lines when two equations represent the same line",
+      "recognizing that identical slope and y-intercept means the lines overlap entirely rather than running parallel"
+    ],
+    "question_text": "What is the relationship between Line 1: y = 2x − 4 and Line 2: 4x − 2y = 8?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "They are parallel, because both lines have slope 2",
+      "B": "They are perpendicular, because 2 × (−2) = −4",
+      "C": "They intersect at exactly one point, because their x-coefficients differ",
+      "D": "They are the same line and share every point in common"
+    },
+    "correct_answer": "D",
+    "explanation": "Convert Line 2 to slope-intercept form:\n4x − 2y = 8\n−2y = −4x + 8\ny = 2x − 4\n\nThis is identical to Line 1. Both lines have slope 2 and y-intercept −4 — they are the same line (coincident), not two distinct parallel lines. Every point on one line is also on the other.",
+    "distractor_logic": {
+      "A": "Student converts Line 2 and correctly finds slope = 2, then stops — concludes 'same slope = parallel' without checking the y-intercept. Parallel distinct lines share slope but have different y-intercepts; these lines share both.",
+      "B": "Student misapplies the perpendicularity test by using −2 (the coefficient of y in Line 2 before division) rather than the actual slope of the converted equation: 2 × (−2) = −4 ≠ −1.",
+      "C": "Student compares x-coefficients between the original forms (coefficient 2 from y = 2x − 4 and coefficient 4 from 4x − 2y = 8) and incorrectly concludes differing coefficients mean a unique intersection point — without converting Line 2.",
+      "D": "Correct: converting Line 2 gives y = 2x − 4, identical to Line 1. The lines are coincident and share infinitely many points."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Convert Line 2 to slope-intercept form completely — check both the slope AND the y-intercept before concluding the relationship."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test a point from Line 1 (like (2, 0)) in Line 2. If it satisfies Line 2 as well, the lines may be the same."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "coincident_lines",
+      "parallel_lines",
+      "slope_intercept_form",
+      "same_line"
+    ],
+    "estimated_time_seconds": 150,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_046",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.8",
+    "topic": "literal_equations",
+    "topic_text": "Literal Equations (Solving for a Variable in a Formula)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "isolating a variable in a one-step multiplication formula",
+      "applying the inverse operation of multiplication (division) within a literal equation"
+    ],
+    "question_text": "The formula for distance is d = rt, where d is distance, r is rate, and t is time. Solve this formula for t.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "t = d/r",
+      "B": "t = dr",
+      "C": "t = r/d",
+      "D": "t = d − r"
+    },
+    "correct_answer": "A",
+    "explanation": "To isolate t, divide both sides by r:\nd = rt\nd/r = t\n\nt = d/r\n\nThis works because division is the inverse of multiplication.",
+    "distractor_logic": {
+      "A": "Correct: dividing both sides by r isolates t, giving t = d/r.",
+      "B": "Student multiplies d by r instead of dividing — applies the same operation rather than the inverse.",
+      "C": "Student inverts the fraction, placing r in the numerator and d in the denominator instead of the reverse.",
+      "D": "Student subtracts r from d instead of dividing — treats the multiplication in d = rt as addition."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "t is multiplied by r. To undo multiplication, divide both sides by r."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try d = 60 and r = 30. You should get t = 2. Substitute into each answer choice and check."
+      }
+    ],
+    "content_context": "distance_rate_time",
+    "context_tags": [
+      "literal_equation",
+      "one_step",
+      "inverse_operation",
+      "formula_rearrangement"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_047",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.8",
+    "topic": "literal_equations",
+    "topic_text": "Literal Equations (Solving for a Variable in a Formula)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "isolating a variable in an additive formula by subtracting the other terms",
+      "applying subtraction as the inverse of addition in a multi-term literal equation"
+    ],
+    "question_text": "The perimeter of a triangle is given by P = a + b + c. Solve this formula for b.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "b = P + a + c",
+      "B": "b = P − a − c",
+      "C": "b = P/ac",
+      "D": "b = (P − a)/c"
+    },
+    "correct_answer": "B",
+    "explanation": "To isolate b, subtract a and c from both sides:\nP − a − c = b\n\nb = P − a − c",
+    "distractor_logic": {
+      "A": "Student moves a and c to the right side but adds them instead of subtracting — applies the wrong inverse operation.",
+      "B": "Correct: subtracting a and c from both sides gives b = P − a − c.",
+      "C": "Student misreads the additive formula as a product, dividing P by a × c instead of subtracting a and c.",
+      "D": "Student correctly subtracts a from both sides but then divides by c rather than subtracting it, misidentifying the inverse operation for the second step."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "b is added to a and c. To isolate b, subtract both a and c from both sides."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try P = 15, a = 4, c = 6, so b = 5. Substitute into each answer choice and see which gives 5."
+      }
+    ],
+    "content_context": "triangle_perimeter",
+    "context_tags": [
+      "literal_equation",
+      "one_step",
+      "additive_formula",
+      "formula_rearrangement"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_032",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.8",
+    "topic": "literal_equations",
+    "topic_text": "Literal Equations (Solving for a Variable in a Formula)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "rearranging the slope formula to isolate one of the y-coordinates",
+      "applying two-step inverse operations within a familiar algebraic formula"
+    ],
+    "question_text": "The slope formula is m = (y₂ − y₁) / (x₂ − x₁). Solve this formula for y₂.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y₂ = m / (x₂ − x₁) + y₁",
+      "B": "y₂ = m(x₂ − x₁) − y₁",
+      "C": "y₂ = m(x₂ − x₁) + y₁",
+      "D": "y₂ = (m + y₁)(x₂ − x₁)"
+    },
+    "correct_answer": "C",
+    "explanation": "Step 1 — Multiply both sides by (x₂ − x₁) to clear the denominator:\nm(x₂ − x₁) = y₂ − y₁\n\nStep 2 — Add y₁ to both sides to isolate y₂:\ny₂ = m(x₂ − x₁) + y₁\n\nThis is exactly the point-slope form of a line, rearranged.",
+    "distractor_logic": {
+      "A": "Student divides by (x₂ − x₁) instead of multiplying — applies division where multiplication is needed to clear the denominator.",
+      "B": "Student correctly multiplies both sides by (x₂ − x₁) to get m(x₂ − x₁) = y₂ − y₁, but then subtracts y₁ from both sides instead of adding it, yielding y₂ = m(x₂ − x₁) − y₁.",
+      "C": "Correct: multiplying by (x₂ − x₁) and adding y₁ gives y₂ = m(x₂ − x₁) + y₁.",
+      "D": "Student adds y₁ to m before multiplying by (x₂ − x₁), applying addition and multiplication in the wrong order."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Clear the denominator first by multiplying both sides by (x₂ − x₁), then add y₁ to isolate y₂."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try m = 2, x₁ = 1, x₂ = 4, y₁ = 3. The correct formula should give y₂ = 9. Check each choice."
+      }
+    ],
+    "content_context": "slope_formula",
+    "context_tags": [
+      "literal_equation",
+      "two_step",
+      "slope_formula",
+      "formula_rearrangement"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_033",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.8",
+    "topic": "literal_equations",
+    "topic_text": "Literal Equations (Solving for a Variable in a Formula)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "rearranging the trapezoid area formula to isolate one base",
+      "correctly handling the fraction coefficient and grouped sum in a multi-step literal equation"
+    ],
+    "question_text": "The area of a trapezoid is A = (1/2)(b₁ + b₂)h. Solve this formula for b₁.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "b₁ = 2A − b₂h",
+      "B": "b₁ = A/h − b₂",
+      "C": "b₁ = A − b₂ − h",
+      "D": "b₁ = 2A/h − b₂"
+    },
+    "correct_answer": "D",
+    "explanation": "Step 1 — Multiply both sides by 2 to eliminate the fraction:\n2A = (b₁ + b₂)h\n\nStep 2 — Divide both sides by h:\n2A/h = b₁ + b₂\n\nStep 3 — Subtract b₂ from both sides:\nb₁ = 2A/h − b₂\n\nVerify with A = 24, h = 6, b₂ = 4:\nb₁ = 2(24)/6 − 4 = 48/6 − 4 = 8 − 4 = 4\nCheck: (1/2)(4 + 4)(6) = 24 ✓",
+    "distractor_logic": {
+      "A": "Student correctly multiplies by 2 to get 2A = (b₁ + b₂)h, but then subtracts b₂h from both sides instead of dividing by h — leaving b₁ in an incorrect form.",
+      "B": "Student correctly divides by h and subtracts b₂, but skips multiplying by 2 to clear the 1/2 — giving A/h − b₂ instead of 2A/h − b₂.",
+      "C": "Student misreads the formula as A = b₁ + b₂ + h (treating all factors as additive terms) and isolates b₁ by subtracting b₂ and h.",
+      "D": "Correct: multiplying by 2, dividing by h, and subtracting b₂ gives b₁ = 2A/h − b₂."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Work in reverse order of operations: first multiply both sides by 2 to clear the 1/2, then divide by h, then subtract b₂."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Use A = 24, h = 6, b₂ = 4 (so b₁ = 4). Substitute into each answer choice and check which gives 4."
+      }
+    ],
+    "content_context": "trapezoid_area",
+    "context_tags": [
+      "literal_equation",
+      "two_step",
+      "area_formula",
+      "formula_rearrangement"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_025",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.8",
+    "topic": "literal_equations",
+    "topic_text": "Literal Equations (Solving for a Variable in a Formula)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "solving a literal equation where the target variable appears in multiple terms by factoring",
+      "recognizing x as a common factor and dividing by the resulting binomial coefficient"
+    ],
+    "question_text": "Solve for x:  ax + bx = c",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = c/a + c/b",
+      "B": "x = c/(a + b)",
+      "C": "x = (c − b)/a",
+      "D": "x = c/ab"
+    },
+    "correct_answer": "B",
+    "explanation": "Factor x from the left side:\nax + bx = x(a + b)\n\nSo the equation becomes:\nx(a + b) = c\n\nDivide both sides by (a + b):\nx = c/(a + b)\n\nVerify with a = 2, b = 3, c = 10:\nx = 10/(2 + 3) = 10/5 = 2\nCheck: 2(2) + 3(2) = 4 + 6 = 10 ✓",
+    "distractor_logic": {
+      "A": "Student splits the division across the sum — treats c/(a + b) as c/a + c/b — applying a false rule that division distributes over addition.",
+      "B": "Correct: factoring gives x(a + b) = c, so x = c/(a + b).",
+      "C": "Student does not recognize x as a common factor; instead subtracts b (without x) from both sides, leaving ax = c − b → x = (c − b)/a.",
+      "D": "Student combines a and b by multiplying rather than adding when collecting the factored coefficient: writes x = c/ab instead of c/(a + b)."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "x appears in both terms on the left. Factor it out: ax + bx = x(a + b). Then divide both sides by (a + b)."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try a = 2, b = 3, c = 10. The correct formula should give x = 2. Test each answer choice."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "literal_equation",
+      "factoring",
+      "common_factor",
+      "advanced_rearrangement"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_026",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.8",
+    "topic": "literal_equations",
+    "topic_text": "Literal Equations (Solving for a Variable in a Formula)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "solving a literal equation where the target variable appears on both sides after clearing a denominator",
+      "collecting variable terms, factoring, and dividing by a binomial coefficient in a multi-step literal equation"
+    ],
+    "question_text": "Solve for x:  (x + a)/b = c + x",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x = (bc − a)/(1 + b)",
+      "B": "x = (a − bc)/b",
+      "C": "x = (bc − a)/(1 − b)",
+      "D": "x = bc − a + b"
+    },
+    "correct_answer": "C",
+    "explanation": "Step 1 — Multiply both sides by b to clear the denominator:\nx + a = b(c + x) = bc + bx\n\nStep 2 — Move all x-terms to the left:\nx − bx = bc − a\n\nStep 3 — Factor x:\nx(1 − b) = bc − a\n\nStep 4 — Divide both sides by (1 − b):\nx = (bc − a)/(1 − b)\n\nVerify with a = 2, b = 3, c = 1:\nx = (3 − 2)/(1 − 3) = 1/(−2) = −1/2\nCheck: (−1/2 + 2)/3 = (3/2)/3 = 1/2; c + x = 1 − 1/2 = 1/2 ✓",
+    "distractor_logic": {
+      "A": "Student moves bx to the left but adds it to x instead of subtracting: x + bx = bc − a → x(1 + b) = bc − a → x = (bc − a)/(1 + b).",
+      "B": "Student correctly isolates x(1 − b) = bc − a but then divides by b (the coefficient from the original right-hand term) rather than by (1 − b) (the factored coefficient of x).",
+      "C": "Correct: x + a = bc + bx → x − bx = bc − a → x(1 − b) = bc − a → x = (bc − a)/(1 − b).",
+      "D": "Student correctly factors to x(1 − b) = bc − a but then adds (1 − b) to both sides instead of dividing, reporting x = bc − a + b."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try a = 2, b = 3, c = 1. The correct formula should give x = −1/2. Substitute into each answer choice and identify the match."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "After clearing the denominator, x appears on both sides. Collect x-terms on the left, factor out x, then divide by its coefficient."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "literal_equation",
+      "variable_on_both_sides",
+      "factoring",
+      "advanced_rearrangement"
+    ],
+    "estimated_time_seconds": 150,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
   }
 ]

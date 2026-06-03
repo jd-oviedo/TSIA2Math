@@ -1,0 +1,427 @@
+[
+  {
+    "item_id": "AR_B_044",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.7",
+    "topic": "parallel_and_perpendicular_lines",
+    "topic_text": "Parallel and Perpendicular Lines",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "identifying parallel lines by recognizing equal slopes",
+      "distinguishing the equal-slope condition from the negative-reciprocal condition"
+    ],
+    "question_text": "Which pair of slopes belongs to parallel lines?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "m = 2 and m = −2",
+      "B": "m = 3 and m = 1/3",
+      "C": "m = −4 and m = −4",
+      "D": "m = 5 and m = −1/5"
+    },
+    "correct_answer": "C",
+    "explanation": "Parallel lines have the same slope (and different y-intercepts). The only pair with equal slopes is m = −4 and m = −4.\n\nChoice D (m = 5 and m = −1/5) gives a product of −1, which means those lines are perpendicular, not parallel.",
+    "distractor_logic": {
+      "A": "Student thinks lines with slopes of the same magnitude but opposite signs are parallel — confuses sign symmetry with the equal-slope condition required for parallelism.",
+      "B": "Student thinks a slope and its reciprocal indicate parallel lines — confuses the reciprocal relationship with the negative-reciprocal relationship that defines perpendicularity.",
+      "C": "Correct: m = −4 and m = −4 are equal, so the lines are parallel.",
+      "D": "Student selects the perpendicular pair: (5)(−1/5) = −1, indicating perpendicular lines, not parallel."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Parallel lines have the exact same slope. Look for the pair where both slopes are identical."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "If the slopes are different, the lines are not parallel. Eliminate any pair where the two slopes are not equal."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["parallel_lines", "slope", "equal_slopes", "perpendicular_lines"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_B_045",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.7",
+    "topic": "parallel_and_perpendicular_lines",
+    "topic_text": "Parallel and Perpendicular Lines",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "finding the slope of a line perpendicular to a given line",
+      "applying the negative-reciprocal rule to a fractional slope"
+    ],
+    "question_text": "Two lines are perpendicular. Line 1 has slope 2/3. What is the slope of Line 2?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "−3/2",
+      "B": "3/2",
+      "C": "−2/3",
+      "D": "2/3"
+    },
+    "correct_answer": "A",
+    "explanation": "Perpendicular lines have slopes that are negative reciprocals of each other — their product equals −1.\n\nThe negative reciprocal of 2/3 is −3/2.\n\nVerify: (2/3)(−3/2) = −6/6 = −1 ✓",
+    "distractor_logic": {
+      "A": "Correct: the negative reciprocal of 2/3 is −3/2.",
+      "B": "Student takes the reciprocal (flips numerator and denominator) but forgets to negate: 3/2 instead of −3/2.",
+      "C": "Student negates the slope but forgets to take the reciprocal: −2/3 instead of −3/2.",
+      "D": "Student reports the same slope as Line 1 — the condition for parallel lines, not perpendicular."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The perpendicular slope requires two steps: flip the fraction (reciprocal) AND change the sign (negative). Both steps are required."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Multiply your answer by 2/3. If the product equals −1, you have the correct perpendicular slope."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["perpendicular_lines", "negative_reciprocal", "slope", "fractional_slope"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_030",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.7",
+    "topic": "parallel_and_perpendicular_lines",
+    "topic_text": "Parallel and Perpendicular Lines",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "converting equations from standard form to slope-intercept form to compare slopes",
+      "using the product-of-slopes test to determine whether two lines are perpendicular"
+    ],
+    "question_text": "What is the relationship between the lines 2x + 3y = 6 and 3x − 2y = 4?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Parallel, because the coefficients of x are proportional",
+      "B": "Perpendicular, because the product of their slopes equals −1",
+      "C": "Neither parallel nor perpendicular, because the slopes are not equal and their product is not −1",
+      "D": "Perpendicular, because both lines have the same x-coefficient magnitude"
+    },
+    "correct_answer": "B",
+    "explanation": "Convert each equation to slope-intercept form:\n\n2x + 3y = 6 → 3y = −2x + 6 → y = (−2/3)x + 2, so m₁ = −2/3\n3x − 2y = 4 → −2y = −3x + 4 → y = (3/2)x − 2, so m₂ = 3/2\n\nTest: m₁ × m₂ = (−2/3)(3/2) = −6/6 = −1\n\nThe product of slopes equals −1, so the lines are perpendicular.",
+    "distractor_logic": {
+      "A": "Student compares the raw x-coefficients (2 and 3) without converting to slope-intercept form, incorrectly concluding the lines are parallel based on coefficient structure.",
+      "B": "Correct: m₁ = −2/3, m₂ = 3/2, and (−2/3)(3/2) = −1, confirming perpendicularity.",
+      "C": "Student converts both equations to slope-intercept form correctly but makes an arithmetic error computing m₁ × m₂, arriving at a value other than −1 and concluding neither.",
+      "D": "Student correctly identifies the lines as perpendicular but uses a false justification — the equal x-coefficient magnitude (both involve 2 and 3) is coincidental and not the criterion for perpendicularity."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Convert both equations to y = mx + b form first. Then check: are the slopes equal (parallel) or do they multiply to −1 (perpendicular)?"
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Multiply the two slopes together. If the product is −1, the lines are perpendicular. If the slopes are equal, they are parallel."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["parallel_lines", "perpendicular_lines", "standard_form", "slope_comparison"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_P_031",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.7",
+    "topic": "parallel_and_perpendicular_lines",
+    "topic_text": "Parallel and Perpendicular Lines",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "writing the equation of a line perpendicular to a given line through a specified point",
+      "finding the negative reciprocal of a fractional slope and applying point-slope form"
+    ],
+    "question_text": "A line is given by y = (1/2)x + 4. What is the equation of the line perpendicular to this line that passes through the point (−2, 3)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y = −2x + 1",
+      "B": "y = −2x − 1",
+      "C": "y = (1/2)x + 4",
+      "D": "y = −2x + 5"
+    },
+    "correct_answer": "B",
+    "explanation": "Step 1 — Find the perpendicular slope:\nThe given slope is 1/2. The negative reciprocal is −2.\n\nStep 2 — Apply point-slope form with slope −2 and point (−2, 3):\ny − 3 = −2(x − (−2))\ny − 3 = −2(x + 2)\ny − 3 = −2x − 4\ny = −2x − 1\n\nVerify: y(−2) = −2(−2) − 1 = 4 − 1 = 3 ✓",
+    "distractor_logic": {
+      "A": "Student correctly finds slope = −2 and sets up point-slope form, but makes a sign arithmetic error on the constant: arrives at b = +1 instead of −1.",
+      "B": "Correct: perpendicular slope = −2; using point (−2, 3) gives y = −2x − 1.",
+      "C": "Student returns the original line equation, using slope 1/2 instead of the perpendicular slope −2.",
+      "D": "Student correctly finds slope = −2 but distributes −2(x + 2) as −2x + 2 (treats the +2 as positive rather than distributing the negative), giving y − 3 = −2x + 2 → y = −2x + 5."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "First find the perpendicular slope: flip 1/2 to get 2, then negate to get −2. Then use point-slope form with (−2, 3)."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "After finding the equation, substitute x = −2 and verify you get y = 3."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["perpendicular_lines", "negative_reciprocal", "point_slope_form", "write_equation"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_023",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.7",
+    "topic": "parallel_and_perpendicular_lines",
+    "topic_text": "Parallel and Perpendicular Lines",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "converting non-standard linear equations to slope-intercept form to identify fractional slopes",
+      "applying the negative-reciprocal test to determine perpendicularity between two lines"
+    ],
+    "question_text": "What is the relationship between the lines 4x − 6y = 12 and 6x + 4y = 8?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Parallel, because both equations contain the coefficients 4 and 6",
+      "B": "Neither parallel nor perpendicular, because the slopes are different fractions",
+      "C": "Perpendicular, because the slopes are negative reciprocals of each other",
+      "D": "Parallel, because dividing each equation by 2 gives proportional terms"
+    },
+    "correct_answer": "C",
+    "explanation": "Convert each equation to slope-intercept form:\n\n4x − 6y = 12 → −6y = −4x + 12 → y = (2/3)x − 2, so m₁ = 2/3\n6x + 4y = 8 → 4y = −6x + 8 → y = (−3/2)x + 2, so m₂ = −3/2\n\nTest: m₁ × m₂ = (2/3)(−3/2) = −6/6 = −1\n\nThe slopes are negative reciprocals, so the lines are perpendicular.",
+    "distractor_logic": {
+      "A": "Student notices the numbers 4 and 6 appear in both equations and concludes the lines must be proportionally related — a superficial pattern match that bypasses converting to slope-intercept form.",
+      "B": "Student correctly converts both equations and identifies m₁ = 2/3 and m₂ = −3/2 as different, but fails to compute their product — concluding 'different slopes = neither' without applying the perpendicularity test.",
+      "C": "Correct: m₁ × m₂ = (2/3)(−3/2) = −1, confirming the lines are perpendicular.",
+      "D": "Student divides each equation by 2 (getting 2x − 3y = 6 and 3x + 2y = 4) and compares coefficients directly, incorrectly concluding the terms are proportional without converting to slope-intercept form."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Convert both equations to slope-intercept form before comparing. Coefficients in standard form do not directly reveal slope."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Once you have both slopes, multiply them. A product of −1 confirms perpendicularity."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["perpendicular_lines", "standard_form", "fractional_slope", "slope_comparison"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  },
+
+  {
+    "item_id": "AR_A_024",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "linear_equations_inequalities_and_systems",
+    "objective_text": "Linear Equations, Inequalities, and Systems",
+    "topic_id": "AR.2.7",
+    "topic": "parallel_and_perpendicular_lines",
+    "topic_text": "Parallel and Perpendicular Lines",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 5,
+    "skills_targeted": [
+      "distinguishing coincident lines from parallel lines when two equations represent the same line",
+      "recognizing that identical slope and y-intercept means the lines overlap entirely rather than running parallel"
+    ],
+    "question_text": "What is the relationship between Line 1: y = 2x − 4 and Line 2: 4x − 2y = 8?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "They are parallel, because both lines have slope 2",
+      "B": "They are perpendicular, because 2 × (−2) = −4",
+      "C": "They intersect at exactly one point, because their x-coefficients differ",
+      "D": "They are the same line and share every point in common"
+    },
+    "correct_answer": "D",
+    "explanation": "Convert Line 2 to slope-intercept form:\n4x − 2y = 8\n−2y = −4x + 8\ny = 2x − 4\n\nThis is identical to Line 1. Both lines have slope 2 and y-intercept −4 — they are the same line (coincident), not two distinct parallel lines. Every point on one line is also on the other.",
+    "distractor_logic": {
+      "A": "Student converts Line 2 and correctly finds slope = 2, then stops — concludes 'same slope = parallel' without checking the y-intercept. Parallel distinct lines share slope but have different y-intercepts; these lines share both.",
+      "B": "Student misapplies the perpendicularity test by using −2 (the coefficient of y in Line 2 before division) rather than the actual slope of the converted equation: 2 × (−2) = −4 ≠ −1.",
+      "C": "Student compares x-coefficients between the original forms (coefficient 2 from y = 2x − 4 and coefficient 4 from 4x − 2y = 8) and incorrectly concludes differing coefficients mean a unique intersection point — without converting Line 2.",
+      "D": "Correct: converting Line 2 gives y = 2x − 4, identical to Line 1. The lines are coincident and share infinitely many points."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Convert Line 2 to slope-intercept form completely — check both the slope AND the y-intercept before concluding the relationship."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test a point from Line 1 (like (2, 0)) in Line 2. If it satisfies Line 2 as well, the lines may be the same."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["coincident_lines", "parallel_lines", "slope_intercept_form", "same_line"],
+    "estimated_time_seconds": 150,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-02",
+    "last_modified": "2026-06-02",
+    "review_notes": null
+  }
+]
