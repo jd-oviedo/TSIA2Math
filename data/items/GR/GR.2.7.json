@@ -1,0 +1,1052 @@
+[
+  {
+    "item_id": "GR_B_039",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.7",
+    "topic": "expressing_perimeter_area_or_volume_with_algebraic_expressions",
+    "topic_text": "Expressing Perimeter, Area, or Volume with Algebraic Expressions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing a simplified algebraic expression for the perimeter of a rectangle with one variable side",
+      "correctly distributing the factor of 2 across both length and width in P = 2(l + w)"
+    ],
+    "question_text": "A rectangle has a length of x and a width of 5. Which expression represents the perimeter of the rectangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x + 5",
+      "B": "2x + 10",
+      "C": "5x",
+      "D": "2x + 5"
+    },
+    "correct_answer": "B",
+    "explanation": "The perimeter of a rectangle is P = 2(l + w):\nP = 2(x + 5) = 2x + 10",
+    "distractor_logic": {
+      "A": "Student adds length and width without multiplying by 2: x + 5.",
+      "B": "Correct: P = 2(x + 5) = 2x + 10.",
+      "C": "Student multiplies length by width instead of applying the perimeter formula: x × 5 = 5x.",
+      "D": "Student applies the factor of 2 to the variable term only and leaves the constant unchanged: 2x + 5."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The perimeter formula is P = 2(l + w). Substitute l = x and w = 5, then distribute the 2 to both terms inside the parentheses."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 3: your expression should give P = 2(3 + 5) = 16. Check which answer choice equals 16 when x = 3."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangle", "perimeter", "algebraic_expression", "distribution"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_040",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.7",
+    "topic": "expressing_perimeter_area_or_volume_with_algebraic_expressions",
+    "topic_text": "Expressing Perimeter, Area, or Volume with Algebraic Expressions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing a simplified algebraic expression for the perimeter of a square with a variable side",
+      "applying P = 4s to a monomial side expression and simplifying"
+    ],
+    "question_text": "A square has a side length of 3x. Which expression represents the perimeter of the square?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "12x",
+      "B": "3x",
+      "C": "9x²",
+      "D": "9x"
+    },
+    "correct_answer": "A",
+    "explanation": "The perimeter of a square is P = 4s:\nP = 4 × 3x = 12x",
+    "distractor_logic": {
+      "A": "Correct: P = 4 × 3x = 12x.",
+      "B": "Student reports one side length rather than multiplying by 4: 3x.",
+      "C": "Student computes the area instead of the perimeter: (3x)² = 9x².",
+      "D": "Student multiplies by 3 instead of 4, confusing a square (4 sides) with a triangle (3 sides): 3 × 3x = 9x."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A square has 4 equal sides. The perimeter is P = 4s = 4 × 3x. Multiply the coefficient and x together."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 2: one side = 6, so P = 4 × 6 = 24. Which expression equals 24 when x = 2?"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["square", "perimeter", "algebraic_expression", "monomial"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_041",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.7",
+    "topic": "expressing_perimeter_area_or_volume_with_algebraic_expressions",
+    "topic_text": "Expressing Perimeter, Area, or Volume with Algebraic Expressions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing an algebraic expression for the area of a rectangle with one variable side",
+      "distinguishing area from perimeter when one dimension is expressed as a variable"
+    ],
+    "question_text": "A rectangle has a length of x and a width of 8. Which expression represents the area of the rectangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2x + 16",
+      "B": "x + 8",
+      "C": "8x",
+      "D": "8x²"
+    },
+    "correct_answer": "C",
+    "explanation": "The area of a rectangle is A = l × w:\nA = x × 8 = 8x",
+    "distractor_logic": {
+      "A": "Student computes the perimeter instead of the area: 2(x + 8) = 2x + 16.",
+      "B": "Student adds length and width instead of multiplying: x + 8.",
+      "C": "Correct: A = x × 8 = 8x.",
+      "D": "Student squares x in the product instead of multiplying x by the constant 8: 8x²."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Area = length × width = x × 8 = 8x. This is a product, not a sum — don't add the dimensions."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Area is a product of the two dimensions. Eliminate any expression that involves addition, and choose the one that multiplies x by 8."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangle", "area", "algebraic_expression", "variable_dimension"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_042",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.7",
+    "topic": "expressing_perimeter_area_or_volume_with_algebraic_expressions",
+    "topic_text": "Expressing Perimeter, Area, or Volume with Algebraic Expressions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing a simplified algebraic expression for the perimeter of a triangle with all variable sides",
+      "combining like terms and integer constants when simplifying a triangle perimeter expression"
+    ],
+    "question_text": "A triangle has sides x, (x + 3), and (2x − 1). Which expression represents the perimeter of the triangle in simplified form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "4x + 3",
+      "B": "4x − 2",
+      "C": "3x + 2",
+      "D": "4x + 2"
+    },
+    "correct_answer": "D",
+    "explanation": "The perimeter is the sum of all three sides:\nP = x + (x + 3) + (2x − 1)\nP = (x + x + 2x) + (3 − 1)\nP = 4x + 2",
+    "distractor_logic": {
+      "A": "Student sums the x-terms correctly (4x) but adds only the positive constant (3) while ignoring the −1: 4x + 3.",
+      "B": "Student sums the x-terms correctly (4x) but applies a sign error to the constants, subtracting 3 instead of adding: 4x − 2.",
+      "C": "Student undercounts the x-coefficient, treating 2x as x: x + x + x = 3x; then correctly adds constants: 3x + 2.",
+      "D": "Correct: (x + x + 2x) + (3 − 1) = 4x + 2."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Add all three sides. Group x-terms separately from constants: (x + x + 2x) + (3 + (−1))."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 2: sides are 2, 5, and 3; perimeter = 10. Which expression gives 10 when x = 2?"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["triangle", "perimeter", "algebraic_expression", "combining_like_terms"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_043",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.7",
+    "topic": "expressing_perimeter_area_or_volume_with_algebraic_expressions",
+    "topic_text": "Expressing Perimeter, Area, or Volume with Algebraic Expressions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing a simplified algebraic expression for the perimeter of a rectangle with both dimensions expressed as variable terms",
+      "combining like terms after distributing the factor of 2 across two binomial-style dimensions"
+    ],
+    "question_text": "A rectangle has a length of 2x and a width of (x + 1). Which expression represents the perimeter of the rectangle in simplified form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3x + 1",
+      "B": "6x + 2",
+      "C": "2x² + 2x",
+      "D": "6x + 4"
+    },
+    "correct_answer": "B",
+    "explanation": "The perimeter of a rectangle is P = 2(l + w):\nP = 2(2x + x + 1) = 2(3x + 1) = 6x + 2",
+    "distractor_logic": {
+      "A": "Student adds l + w without multiplying by 2: 2x + (x + 1) = 3x + 1.",
+      "B": "Correct: P = 2(3x + 1) = 6x + 2.",
+      "C": "Student multiplies l × w (area) instead of applying the perimeter formula: 2x(x + 1) = 2x² + 2x.",
+      "D": "Student computes P = 2(l + w) correctly for the x-terms (6x) but uses w = (x + 2) instead of (x + 1), adding an extra 1 to the constant: 2(3x + 2) = 6x + 4."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Substitute into P = 2(l + w): 2(2x + x + 1) = 2(3x + 1). Distribute the 2 to both terms inside."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 1: l = 2, w = 2; P = 2(2 + 2) = 8. Which expression gives 8 when x = 1?"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangle", "perimeter", "algebraic_expression", "two_variable_sides", "combining_like_terms"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_039",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.7",
+    "topic": "expressing_perimeter_area_or_volume_with_algebraic_expressions",
+    "topic_text": "Expressing Perimeter, Area, or Volume with Algebraic Expressions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing a simplified algebraic expression for the area of a rectangle by distributing a constant across a binomial",
+      "expanding a product of the form k(x + c) to produce a simplified area expression"
+    ],
+    "question_text": "A rectangle has a length of (x + 4) and a width of 3. Which expression represents the area of the rectangle in simplified form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3x + 4",
+      "B": "x + 7",
+      "C": "3x + 12",
+      "D": "3x² + 12x"
+    },
+    "correct_answer": "C",
+    "explanation": "The area of a rectangle is A = l × w:\nA = 3(x + 4) = 3x + 12",
+    "distractor_logic": {
+      "A": "Student multiplies 3 by x but does not distribute to the +4: 3x + 4.",
+      "B": "Student adds width and length instead of multiplying: 3 + (x + 4) = x + 7.",
+      "C": "Correct: A = 3(x + 4) = 3x + 12.",
+      "D": "Student treats (x + 4) as if it were (x² + 4x) before multiplying: 3(x² + 4x) = 3x² + 12x."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Area = l × w = (x + 4) × 3. Distribute the 3: multiply it by x AND by 4."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 2: l = 6, w = 3; A = 18. Which expression gives 18 when x = 2?"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangle", "area", "algebraic_expression", "distribution", "binomial"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_040",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.7",
+    "topic": "expressing_perimeter_area_or_volume_with_algebraic_expressions",
+    "topic_text": "Expressing Perimeter, Area, or Volume with Algebraic Expressions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing a simplified algebraic expression for the area of a triangle whose base and height are both variable",
+      "applying A = ½bh and simplifying when the product of two variable expressions is involved"
+    ],
+    "question_text": "A triangle has a base of 2x and a height of (x + 6). Which expression represents the area of the triangle in simplified form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x² + 6x",
+      "B": "2x² + 12x",
+      "C": "2x + 6",
+      "D": "x² + 6"
+    },
+    "correct_answer": "A",
+    "explanation": "The area of a triangle is A = ½ × b × h:\nA = ½ × 2x × (x + 6)\nA = x(x + 6)\nA = x² + 6x",
+    "distractor_logic": {
+      "A": "Correct: ½ × 2x × (x + 6) = x(x + 6) = x² + 6x.",
+      "B": "Student omits the ½ factor: 2x(x + 6) = 2x² + 12x.",
+      "C": "Student correctly finds ½ × 2x = x but then adds x + (x + 6) = 2x + 6 instead of multiplying x × (x + 6).",
+      "D": "Student multiplies x × x = x² correctly but drops the 6x term from the expansion: x² + 6."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Use A = ½bh. The ½ and 2x simplify to x, giving A = x(x + 6). Expand by multiplying x by each term in the parentheses."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 2: b = 4, h = 8; A = ½ × 4 × 8 = 16. Which expression gives 16 when x = 2?"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["triangle", "area", "algebraic_expression", "half_factor", "polynomial"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_041",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.7",
+    "topic": "expressing_perimeter_area_or_volume_with_algebraic_expressions",
+    "topic_text": "Expressing Perimeter, Area, or Volume with Algebraic Expressions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing a simplified algebraic expression for the area of a parallelogram by distributing a constant across a binomial base",
+      "correctly applying A = bh with a binomial base expression"
+    ],
+    "question_text": "A parallelogram has a base of (3x + 2) and a perpendicular height of 4. Which expression represents the area of the parallelogram in simplified form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3x + 6",
+      "B": "12x + 2",
+      "C": "6x + 4",
+      "D": "12x + 8"
+    },
+    "correct_answer": "D",
+    "explanation": "The area of a parallelogram is A = b × h:\nA = 4(3x + 2) = 12x + 8",
+    "distractor_logic": {
+      "A": "Student adds height and base instead of multiplying: 4 + (3x + 2) = 3x + 6.",
+      "B": "Student distributes 4 to the x-term only and leaves the constant unchanged: 4 × 3x + 2 = 12x + 2.",
+      "C": "Student applies a ½ factor (as if using the triangle formula): ½ × 4 × (3x + 2) = 2(3x + 2) = 6x + 4.",
+      "D": "Correct: A = 4(3x + 2) = 12x + 8."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Area of a parallelogram = b × h = (3x + 2) × 4. Distribute 4 to both terms: 4 × 3x and 4 × 2."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 1: base = 5, height = 4; A = 20. Which expression gives 20 when x = 1?"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["parallelogram", "area", "algebraic_expression", "distribution", "binomial"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_042",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.7",
+    "topic": "expressing_perimeter_area_or_volume_with_algebraic_expressions",
+    "topic_text": "Expressing Perimeter, Area, or Volume with Algebraic Expressions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing a simplified algebraic expression for the perimeter of a composite rectilinear figure with variable sides",
+      "combining like terms and integer constants carefully when one side contains a subtracted constant"
+    ],
+    "question_text": "An L-shaped figure has sides labeled x, 4, (x − 2), 3, 2, and 7 going around its boundary. Which expression represents the perimeter of the figure in simplified form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2x + 12",
+      "B": "2x + 14",
+      "C": "2x + 16",
+      "D": "x + 14"
+    },
+    "correct_answer": "B",
+    "explanation": "Add all six side lengths:\nP = x + 4 + (x − 2) + 3 + 2 + 7\nCombine x-terms: x + x = 2x\nCombine constants: 4 + (−2) + 3 + 2 + 7 = 14\nP = 2x + 14",
+    "distractor_logic": {
+      "A": "Student incorrectly sums the constants, using a different value for one side (e.g., 5 instead of 7): 4 − 2 + 3 + 2 + 5 = 12, giving 2x + 12.",
+      "B": "Correct: 2x + (4 − 2 + 3 + 2 + 7) = 2x + 14.",
+      "C": "Student ignores the −2 in (x − 2) when summing constants, treating it as +2: 4 + 2 + 3 + 2 + 7 = 18; but still gets 2x for the variable part — wait, if (x − 2) is treated as (x + 2) then: x + x = 2x and 4 + 2 + 3 + 2 + 7 = 18... 2x+18 not 2x+16. Let me recalculate: if student drops the −2 entirely (treats the side as just x): constants=4+3+2+7=16; 2x+16.",
+      "D": "Student counts only one x-variable term and misses the x in (x − 2): x + (−2) + 4 + 3 + 2 + 7 = x + 14."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Group x-terms and constant terms separately. The side (x − 2) contributes one x and a −2 to the constant sum. Don't forget to include the negative sign."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 5: sides are 5, 4, 3, 3, 2, 7; sum = 24. Which expression gives 24 when x = 5?"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["composite_figure", "perimeter", "algebraic_expression", "combining_like_terms", "L_shape"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_043",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.7",
+    "topic": "expressing_perimeter_area_or_volume_with_algebraic_expressions",
+    "topic_text": "Expressing Perimeter, Area, or Volume with Algebraic Expressions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing an exact algebraic expression for the area of a circle with a variable radius",
+      "correctly squaring a binomial radius expression to form the area expression in terms of π"
+    ],
+    "question_text": "A circle has a radius of (x + 2). Which expression represents the area of the circle? Leave your answer in terms of π.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "π(x² + 4)",
+      "B": "2π(x + 2)",
+      "C": "π(x² + 4x + 4)",
+      "D": "π(x + 2)"
+    },
+    "correct_answer": "C",
+    "explanation": "The area of a circle is A = πr²:\nA = π(x + 2)²\nA = π(x² + 4x + 4)",
+    "distractor_logic": {
+      "A": "Student expands (x + 2)² incorrectly as x² + 4, omitting the middle term 2(x)(2) = 4x.",
+      "B": "Student uses the circumference formula instead of the area formula: C = 2πr = 2π(x + 2).",
+      "C": "Correct: A = π(x + 2)² = π(x² + 4x + 4).",
+      "D": "Student omits the squaring step, writing A = πr instead of A = πr²: π(x + 2)."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Area of a circle = πr². Square the entire radius expression: (x + 2)² = x² + 4x + 4. Don't forget the middle term."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 0: r = 2; A = π(4) = 4π. Which expression gives 4π when x = 0?"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["circle", "area", "algebraic_expression", "binomial_squared", "exact_form"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_039",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.7",
+    "topic": "expressing_perimeter_area_or_volume_with_algebraic_expressions",
+    "topic_text": "Expressing Perimeter, Area, or Volume with Algebraic Expressions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing a simplified algebraic expression for the total area of a composite figure made of a rectangle and a triangle",
+      "combining area expressions from two different shapes into one simplified polynomial expression"
+    ],
+    "question_text": "A composite figure consists of a rectangle with length 2x and width 5, topped by a triangle with the same base (2x) and a height of x. Which expression represents the total area of the figure in simplified form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x² + 10x",
+      "B": "2x² + 10x",
+      "C": "x² + 10x + 10",
+      "D": "11x"
+    },
+    "correct_answer": "A",
+    "explanation": "Rectangle area: 2x × 5 = 10x\nTriangle area: ½ × 2x × x = x²\nTotal: 10x + x² = x² + 10x",
+    "distractor_logic": {
+      "A": "Correct: rectangle area = 10x; triangle area = ½ × 2x × x = x²; total = x² + 10x.",
+      "B": "Student omits the ½ factor in the triangle area: 2x × x = 2x²; total = 2x² + 10x.",
+      "C": "Student adds a phantom constant term (+10) that has no basis in the given dimensions: x² + 10x + 10.",
+      "D": "Student computes triangle area as ½ × 2x = x (applies ½ to base only, ignoring the height x): rectangle 10x + triangle x = 11x."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["draw_diagram", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Label the rectangle and triangle separately. Compute each area expression independently: rectangle = 2x × 5, triangle = ½ × 2x × x. Then add."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "For the triangle: A = ½ × base × height = ½ × 2x × x. The ½ and the 2 in the base cancel, leaving x × x = x²."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["composite_figure", "area", "algebraic_expression", "polynomial", "rectangle_triangle"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_040",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.7",
+    "topic": "expressing_perimeter_area_or_volume_with_algebraic_expressions",
+    "topic_text": "Expressing Perimeter, Area, or Volume with Algebraic Expressions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing a simplified algebraic expression for the volume of a cylinder with a binomial radius",
+      "correctly squaring a binomial radius and retaining π as a factor in the volume expression"
+    ],
+    "question_text": "A cylinder has a radius of (x + 1) and a height of 5. Which expression represents the volume of the cylinder in simplified form? Leave π as a factor.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "5π(x + 1)",
+      "B": "5π(x² + 1)",
+      "C": "10π(x + 1)²",
+      "D": "5π(x² + 2x + 1)"
+    },
+    "correct_answer": "D",
+    "explanation": "The volume of a cylinder is V = πr²h:\nV = π(x + 1)² × 5\nV = 5π(x + 1)²\nV = 5π(x² + 2x + 1)",
+    "distractor_logic": {
+      "A": "Student uses V = πrh instead of πr²h, omitting the squaring of the radius: 5π(x + 1).",
+      "B": "Student squares (x + 1) incorrectly as (x² + 1), omitting the middle term: 5π(x² + 1).",
+      "C": "Student doubles the entire expression, applying an extra factor of 2: 2 × 5π(x + 1)² = 10π(x + 1)².",
+      "D": "Correct: V = 5π(x + 1)² = 5π(x² + 2x + 1)."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Use V = πr²h. Square the entire radius: (x + 1)² = x² + 2x + 1. Don't forget the middle term 2(x)(1) = 2x."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 0: r = 1, h = 5; V = π(1)(5) = 5π. Which expression gives 5π when x = 0?"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["cylinder", "volume", "algebraic_expression", "binomial_squared", "polynomial"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_041",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.7",
+    "topic": "expressing_perimeter_area_or_volume_with_algebraic_expressions",
+    "topic_text": "Expressing Perimeter, Area, or Volume with Algebraic Expressions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing and simplifying the difference of two rectangle area expressions",
+      "expanding two binomial products and subtracting the resulting polynomials"
+    ],
+    "question_text": "Rectangle 1 has length (2x + 3) and width 4. Rectangle 2 has length (x + 1) and width 6. Which expression represents the difference in their areas (Area 1 − Area 2) in simplified form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2x + 18",
+      "B": "2x + 6",
+      "C": "14x + 18",
+      "D": "2x − 6"
+    },
+    "correct_answer": "B",
+    "explanation": "Area 1 = 4(2x + 3) = 8x + 12\nArea 2 = 6(x + 1) = 6x + 6\n\nDifference: (8x + 12) − (6x + 6) = 2x + 6",
+    "distractor_logic": {
+      "A": "Student correctly subtracts the x-terms (2x) but adds the constants instead of subtracting: 12 + 6 = 18, giving 2x + 18.",
+      "B": "Correct: (8x + 12) − (6x + 6) = 2x + 6.",
+      "C": "Student adds both area expressions instead of subtracting: (8x + 12) + (6x + 6) = 14x + 18.",
+      "D": "Student correctly subtracts the x-terms (2x) but reverses the constant subtraction: 6 − 12 = −6, giving 2x − 6."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compute each area expression first: A₁ = 4(2x+3) and A₂ = 6(x+1). Then subtract A₂ from A₁ carefully, keeping track of signs."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 1: A₁ = 4(5) = 20; A₂ = 6(2) = 12; difference = 8. Which expression gives 8 when x = 1?"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangle", "area", "algebraic_expression", "polynomial_subtraction", "comparison"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_042",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.7",
+    "topic": "expressing_perimeter_area_or_volume_with_algebraic_expressions",
+    "topic_text": "Expressing Perimeter, Area, or Volume with Algebraic Expressions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing a fully simplified algebraic expression for the surface area of a rectangular prism with two variable dimensions",
+      "computing three distinct face areas algebraically and applying the factor of 2 to produce the surface area expression"
+    ],
+    "question_text": "A rectangular prism has a length of x, a width of (x + 2), and a height of 3. Which expression represents the surface area of the prism in simplified form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x² + 8x + 6",
+      "B": "2x² + 16x + 6",
+      "C": "2x² + 16x + 12",
+      "D": "2x² + 16x + 24"
+    },
+    "correct_answer": "C",
+    "explanation": "SA = 2(lw + lh + wh)\nlw = x(x + 2) = x² + 2x\nlh = x × 3 = 3x\nwh = 3(x + 2) = 3x + 6\n\nSum: (x² + 2x) + 3x + (3x + 6) = x² + 8x + 6\n\nSA = 2(x² + 8x + 6) = 2x² + 16x + 12",
+    "distractor_logic": {
+      "A": "Student correctly computes lw + lh + wh = x² + 8x + 6 but omits the factor of 2: x² + 8x + 6.",
+      "B": "Student applies the factor of 2 to the x²-term and x-terms but not to the constant: 2x² + 16x + 6.",
+      "C": "Correct: 2(x² + 8x + 6) = 2x² + 16x + 12.",
+      "D": "Student applies the factor of 4 to the constant instead of 2: 2x² + 16x + 4(6) = 2x² + 16x + 24."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compute each face-area product (lw, lh, wh) algebraically, add them, then multiply the entire sum by 2."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 1: l=1, w=3, h=3; SA = 2(3+3+9) = 2(15) = 30. Which expression gives 30 when x = 1?"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangular_prism", "surface_area", "algebraic_expression", "polynomial", "multi_step"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_043",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.7",
+    "topic": "expressing_perimeter_area_or_volume_with_algebraic_expressions",
+    "topic_text": "Expressing Perimeter, Area, or Volume with Algebraic Expressions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "writing a simplified algebraic expression for the volume of a square pyramid with variable base and height",
+      "expanding a product within the ⅓ factor and simplifying each resulting term"
+    ],
+    "question_text": "A square pyramid has a base side length of x and a height of (x + 3). Which expression represents the volume of the pyramid in simplified form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "(1/3)x³ + x²",
+      "B": "x³ + 3x²",
+      "C": "(1/3)x² + x",
+      "D": "(1/3)x³ + 3x²"
+    },
+    "correct_answer": "A",
+    "explanation": "The volume of a square pyramid is V = ⅓s²h:\nV = ⅓ × x² × (x + 3)\nV = ⅓(x³ + 3x²)\nV = (1/3)x³ + x²\n\nNote: ⅓ × 3x² = x²",
+    "distractor_logic": {
+      "A": "Correct: V = ⅓(x³ + 3x²) = (1/3)x³ + x².",
+      "B": "Student omits the ⅓ factor entirely: x²(x + 3) = x³ + 3x².",
+      "C": "Student uses s instead of s² in the formula: ⅓ × x × (x + 3) = (1/3)(x² + 3x) = (1/3)x² + x.",
+      "D": "Student correctly applies ⅓ to the x³ term but fails to simplify ⅓ × 3x² = x², leaving it as 3x²: (1/3)x³ + 3x²."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Use V = ⅓s²h = ⅓ × x² × (x + 3). Distribute x² through the parentheses first, then divide each term by 3. Notice that ⅓ × 3x² simplifies to x²."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 3: s=3, h=6; V = ⅓×9×6 = 18. Which expression gives 18 when x = 3?"
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["square_pyramid", "volume", "algebraic_expression", "polynomial", "one_third_factor"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  }
+]
