@@ -1,0 +1,1052 @@
+[
+  {
+    "item_id": "PR_B_017",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "classifying a variable as categorical based on its values being named labels rather than numeric quantities",
+      "distinguishing categorical variables from numerical variables when values are non-numeric response options"
+    ],
+    "question_text": "A survey asks students to name their favorite season: Spring, Summer, Fall, or Winter. Which type of variable is 'favorite season'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Numerical",
+      "B": "Continuous",
+      "C": "Categorical",
+      "D": "Discrete"
+    },
+    "correct_answer": "C",
+    "explanation": "The values of this variable — Spring, Summer, Fall, Winter — are named labels, not numbers. Variables whose values are names or categories are classified as categorical.\n\nFavorite season is a categorical variable.",
+    "distractor_logic": {
+      "A": "Student reasons that because there are four seasons, the variable involves counting and is therefore numerical — but the values themselves are labels, not quantities.",
+      "B": "Student confuses the measurement scale term 'continuous' with a data type classification; continuous applies to numerical variables measured on an unbroken scale, not to labeled responses.",
+      "C": "Correct: the values are named categories with no inherent numeric meaning.",
+      "D": "Student confuses 'discrete' — a subtype of numerical variables counted in whole numbers — with a categorical variable whose values happen to be a fixed set of options."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask: are the values numbers, or are they names and labels? Spring, Summer, Fall, and Winter are names — that signals categorical."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Discrete and continuous both describe numerical variables. Since the values here are season names — not numbers — both of those options can be eliminated."
+      }
+    ],
+    "content_context": "survey",
+    "context_tags": ["categorical_variable", "data_classification", "variable_type", "survey_response"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_018",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "classifying a measured quantity as continuous based on its ability to take any value within a range",
+      "distinguishing continuous from discrete numerical variables when the variable involves physical measurement"
+    ],
+    "question_text": "A scientist records the exact weight in grams of 20 soil samples. Which type of variable is 'weight of a soil sample'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Continuous",
+      "B": "Categorical",
+      "C": "Discrete",
+      "D": "Nominal"
+    },
+    "correct_answer": "A",
+    "explanation": "Weight is a physical measurement that can take any value within a range — for example, a sample could weigh 5.1 g, 5.13 g, or 5.137 g. Variables that can take any value on a continuous scale are classified as continuous.\n\nWeight is a continuous variable.",
+    "distractor_logic": {
+      "A": "Correct: weight is measured on an unbroken scale and can take infinitely many values within any interval.",
+      "B": "Student misclassifies the variable as categorical, perhaps thinking the 20 samples represent 20 named groups rather than 20 measurements of the same type of quantity.",
+      "C": "Student classifies weight as discrete, possibly reasoning that the scientist recorded a finite number of measurements — but discreteness refers to the values the variable can take, not the sample size.",
+      "D": "Student applies 'nominal,' a term for categorical variables with no natural order, to a measurement variable — a category error."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask: can this variable take fractional or decimal values between any two measurements? Weight in grams can — 5.2 g is just as valid as 5 g or 5.25 g. That signals continuous."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Weight is a number, not a label — eliminate categorical and nominal. Then ask whether the values are restricted to whole numbers: weight is not, so eliminate discrete."
+      }
+    ],
+    "content_context": "science",
+    "context_tags": ["continuous_variable", "data_classification", "measurement", "physical_quantity"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_019",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "classifying a counted whole-number quantity as discrete",
+      "distinguishing discrete from continuous when the variable represents a count of events rather than a measurement"
+    ],
+    "question_text": "A teacher records the number of absences for each student in a class. Which type of variable is 'number of absences'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Continuous",
+      "B": "Categorical",
+      "C": "Nominal",
+      "D": "Discrete"
+    },
+    "correct_answer": "D",
+    "explanation": "Absences are counted in whole numbers — a student can have 0, 1, 2, or 3 absences, but not 1.5 absences. Variables that take only whole-number values and are obtained by counting are classified as discrete.\n\nNumber of absences is a discrete variable.",
+    "distractor_logic": {
+      "A": "Student reasons that absences involve numbers and therefore classifies the variable as continuous — but continuous variables can take any value on an unbroken scale, including decimals, which absences cannot.",
+      "B": "Student misclassifies the count as categorical, possibly thinking that each absence total is a separate group or label.",
+      "C": "Student applies 'nominal,' a term for unordered categorical labels, to a counted numerical variable — a category error.",
+      "D": "Correct: absences are counted in whole-number increments and cannot take fractional values, making this a discrete variable."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask: can a student have 1.5 absences? No — absences can only be whole numbers. Variables restricted to countable whole-number values are discrete."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Absences are numbers, not labels — eliminate categorical and nominal. Then ask whether fractional values are possible: they are not, so eliminate continuous."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": ["discrete_variable", "data_classification", "count_data", "whole_numbers"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_020",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "selecting a bar graph as the appropriate display for the frequency of a categorical variable",
+      "distinguishing a bar graph from graph types that require numerical or time-ordered data"
+    ],
+    "question_text": "A student collects data on the hair color of 30 classmates and wants to display the frequency of each hair color. Which graph type is most appropriate?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Scatter plot",
+      "B": "Bar graph",
+      "C": "Histogram",
+      "D": "Line graph"
+    },
+    "correct_answer": "B",
+    "explanation": "Hair color is a categorical variable. A bar graph displays the frequency of each category using separate, clearly labeled bars — it is the standard choice for categorical frequency data.\n\nA bar graph is the most appropriate display.",
+    "distractor_logic": {
+      "A": "A scatter plot requires two numerical variables to show a relationship; hair color is categorical and there is only one variable here.",
+      "B": "Correct: a bar graph is designed to display the frequency of each category in a categorical dataset.",
+      "C": "A histogram is used to display the distribution of a continuous numerical variable grouped into intervals; hair color is not numerical.",
+      "D": "A line graph is used to show trends over time or changes across an ordered numerical scale; hair color has no natural ordering or time component."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Hair color is a categorical variable — it has named groups, not numbers. The graph type for categorical frequency data is a bar graph."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A scatter plot needs two numeric variables. A histogram needs continuous numeric data. A line graph needs ordered or time-based data. Hair color fits none of those — eliminate all three."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": ["bar_graph", "graph_selection", "categorical_variable", "frequency_display"],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_021",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "classifying a binary yes/no response variable as categorical",
+      "recognizing that a variable with only two labeled outcomes is categorical, not numerical"
+    ],
+    "question_text": "A medical study records whether each patient responded 'Yes' or 'No' to a new treatment. Which type of variable is the patient's treatment response?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Discrete",
+      "B": "Continuous",
+      "C": "Categorical",
+      "D": "Numerical"
+    },
+    "correct_answer": "C",
+    "explanation": "The variable takes only two values — 'Yes' and 'No' — which are labels, not numbers. Variables whose values are named categories are classified as categorical, regardless of how many categories there are.\n\nTreatment response is a categorical variable.",
+    "distractor_logic": {
+      "A": "Student reasons that there are only two possible outcomes and a finite count is involved, confusing a binary categorical variable with a discrete numerical variable.",
+      "B": "Student misapplies 'continuous' to the response variable, perhaps thinking the study involves medical measurements that are continuous.",
+      "C": "Correct: Yes and No are labels with no numerical meaning, making this a categorical variable.",
+      "D": "Student generalizes that any variable in a study involving numbers elsewhere must itself be numerical — but the response variable here has no numeric values."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Focus on the values the variable actually takes: 'Yes' and 'No.' Those are labels, not numbers. Any variable whose values are labels is categorical."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Discrete and continuous both describe numerical variables. Since 'Yes' and 'No' are not numbers, eliminate both of those options."
+      }
+    ],
+    "content_context": "healthcare",
+    "context_tags": ["categorical_variable", "binary_variable", "data_classification", "yes_no_response"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_017",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "selecting a histogram as the appropriate display for the distribution of a continuous numerical variable",
+      "justifying why alternative graph types are unsuitable for displaying a large continuous dataset"
+    ],
+    "question_text": "A researcher records the annual income in dollars of 500 households and wants to display the distribution of incomes. Which graph type is most appropriate, and why?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Histogram — because income is a continuous numerical variable, and a histogram groups the values into intervals to show the shape of the distribution across 500 data points.",
+      "B": "Pie chart — because income can be divided into slices representing each household's share of the total income collected.",
+      "C": "Bar graph — because income is a numerical variable and bar graphs are designed to display any numerical data clearly.",
+      "D": "Line graph — because 500 data points form a long sequence that is best connected by a line to show how values progress."
+    },
+    "correct_answer": "A",
+    "explanation": "Annual income is a continuous numerical variable that can take a wide range of values. A histogram groups continuous data into intervals (bins) and displays the frequency of values within each interval, making the overall shape — whether the distribution is symmetric, skewed, or has multiple peaks — directly visible.\n\nA histogram is the most appropriate graph for displaying the distribution of a large continuous variable.",
+    "distractor_logic": {
+      "A": "Correct: income is continuous, and a histogram is the standard tool for displaying the distribution of continuous numerical data.",
+      "B": "A pie chart shows each category's share of a whole — it would require treating each household as a separate named slice, which is impractical for 500 households and does not display distribution shape.",
+      "C": "A bar graph is designed for categorical data; using it for a continuous variable like income would require artificial grouping into named categories and would not convey distributional shape as clearly as a histogram.",
+      "D": "A line graph implies a trend or sequence over time; income data collected across 500 households has no inherent time order, so a line connecting the values would be misleading."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The goal is to show the distribution of a continuous numerical variable across 500 values. The graph type designed specifically for this purpose groups continuous data into intervals — that is a histogram."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A pie chart shows proportions of a whole for categories — not a distribution of continuous values. A line graph requires time-ordered data. A bar graph is for categorical labels. Eliminate all three."
+      }
+    ],
+    "content_context": "economics",
+    "context_tags": ["histogram", "graph_selection", "continuous_variable", "distribution_shape"],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_018",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "selecting a scatter plot as the appropriate display for investigating the relationship between two continuous numerical variables",
+      "distinguishing a relationship question from a distribution or frequency question when choosing a graph type"
+    ],
+    "question_text": "A student wants to investigate the relationship between the number of hours studied and the test score earned by each of 25 students. Which graph type is most appropriate?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Bar graph",
+      "B": "Pictograph",
+      "C": "Histogram",
+      "D": "Scatter plot"
+    },
+    "correct_answer": "D",
+    "explanation": "The student has two numerical variables — hours studied and test score — and wants to examine whether they are related. A scatter plot places one variable on each axis and plots a point for each student, making patterns of association (positive, negative, or no relationship) directly visible.\n\nA scatter plot is the most appropriate graph for exploring the relationship between two continuous numerical variables.",
+    "distractor_logic": {
+      "A": "A bar graph compares the frequency or magnitude of categories; it cannot display the relationship between two continuous variables across individual data points.",
+      "B": "A pictograph uses symbols to represent frequency counts for categories; it is not suited for displaying two numerical variables or their relationship.",
+      "C": "A histogram shows the distribution of a single continuous variable; it cannot simultaneously display two variables or reveal how they relate to each other.",
+      "D": "Correct: a scatter plot is specifically designed to show the relationship between two numerical variables by plotting each individual's pair of values as a single point."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The key word is 'relationship' between two numerical variables. The graph type built specifically to show relationships between two numerical variables is a scatter plot."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Bar graphs and pictographs require categorical groups on one axis. Histograms display one variable at a time. None of those can show a relationship between two continuous variables simultaneously."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": ["scatter_plot", "graph_selection", "two_variable_relationship", "study_habits"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_019",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying why a histogram is an inappropriate choice for a categorical variable",
+      "articulating the correct alternative graph type and the conceptual reason for the switch"
+    ],
+    "question_text": "A dataset lists the types of transportation used by employees to commute to work: Bus, Car, Bicycle, and Walking, with a frequency count for each type. A student displays this data using a histogram. Which statement best explains why a histogram is not appropriate here?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "A histogram is appropriate because it can display any data that has frequency counts on the vertical axis, regardless of the variable type.",
+      "B": "A histogram is appropriate because the dataset has exactly four categories, which matches the number of bars typically used in a histogram.",
+      "C": "A histogram is not appropriate because transportation type is a categorical variable; a bar graph should be used instead to display the frequency count for each named category.",
+      "D": "A histogram is not appropriate because the categories are not listed in alphabetical order, and histograms require data to be sorted before display."
+    },
+    "correct_answer": "C",
+    "explanation": "A histogram is designed for continuous numerical data — it groups values into intervals along a number line. Transportation type (Bus, Car, Bicycle, Walking) consists of named categories with no numerical scale, so the intervals that define a histogram have no meaning here.\n\nA bar graph is the correct choice: it displays frequency counts for distinct, named categories using separate labeled bars.",
+    "distractor_logic": {
+      "A": "Student incorrectly generalizes that any frequency display is a histogram; the variable type — not just the presence of frequency counts — determines whether a histogram is appropriate.",
+      "B": "Student confuses the number of bars in a bar graph with the number of bins in a histogram; histogram bins represent intervals of a continuous scale, not named categories.",
+      "C": "Correct: transportation type is categorical, and histograms are for continuous numerical data — a bar graph is the appropriate substitute.",
+      "D": "Student invents a false ordering rule; histograms require that the horizontal axis represents a continuous numerical scale, not that categories be alphabetically sorted."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask: is transportation type a number or a label? It is a label — categorical. Histograms are built for numerical continuous data, not named categories."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Options A and B both claim a histogram is appropriate — but if the variable is categorical, a histogram cannot be correct. Eliminate both, then compare C and D for accuracy."
+      }
+    ],
+    "content_context": "workplace",
+    "context_tags": ["histogram", "bar_graph", "graph_selection", "categorical_variable"],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_020",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "selecting a pie chart as the appropriate display for part-to-whole proportional data",
+      "recognizing when percentages summing to 100% signal a part-to-whole relationship best shown by a pie chart"
+    ],
+    "question_text": "A student tracks how a monthly budget of $2,000 is allocated across five categories. The percentages are: Rent = 40%, Food = 25%, Transportation = 15%, Entertainment = 10%, Savings = 10%. Which graph type best displays each category's share of the total budget?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Line graph",
+      "B": "Pie chart",
+      "C": "Scatter plot",
+      "D": "Histogram"
+    },
+    "correct_answer": "B",
+    "explanation": "The five percentages sum to 100%, meaning each category represents a specific share of the whole budget. A pie chart is designed to display part-to-whole relationships — each slice shows one category's proportion of the total.\n\nA pie chart is the most appropriate graph for this data.",
+    "distractor_logic": {
+      "A": "A line graph is used to show trends or change over time; budget allocation percentages have no time component and no natural ordering that a line would convey.",
+      "B": "Correct: the five percentages sum to 100% and represent distinct shares of a whole — exactly the kind of data a pie chart is designed to display.",
+      "C": "A scatter plot requires two continuous numerical variables to show a relationship; budget categories and their percentages do not form a two-variable dataset suitable for a scatter plot.",
+      "D": "A histogram displays the distribution of a continuous numerical variable across intervals; budget category percentages are discrete named proportions, not a continuous measurement."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The percentages sum to 100% — each category is a piece of the whole budget. The graph type built for part-to-whole proportions is a pie chart."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A scatter plot needs two continuous variables. A histogram needs a continuous distribution. A line graph needs time-ordered data. None of those fit budget category percentages."
+      }
+    ],
+    "content_context": "personal_finance",
+    "context_tags": ["pie_chart", "graph_selection", "part_to_whole", "budget_allocation"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_021",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "evaluating a claim that a bar graph is interchangeable with a line graph for discrete time-series data",
+      "explaining the conceptual difference between what a bar graph and a line graph communicate about time-ordered data"
+    ],
+    "question_text": "A line graph shows the number of students enrolled in an after-school program each year from 2015 to 2024. A classmate claims that a bar graph would work just as well. Which response best evaluates this claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "No — a bar graph cannot display data that changes over time; only line graphs are valid for time-series data.",
+      "B": "No — a bar graph would be misleading because it cannot show whether enrollment increased or decreased between years.",
+      "C": "Yes — both graphs can display the same enrollment counts, and a bar graph is actually more precise for discrete yearly data because it does not imply continuity between the individual yearly values.",
+      "D": "Yes — either graph could display the enrollment counts, but the line graph is generally preferred for time-series data because it more clearly emphasizes the trend direction."
+    },
+    "correct_answer": "C",
+    "explanation": "A bar graph and a line graph can both display discrete yearly enrollment counts. However, a line graph implies continuity — the connecting line suggests that enrollment changes smoothly between plotted points, which is not literally true for data recorded once per year.\n\nA bar graph treats each year as an independent, separate count without implying what happens in between — making it technically more precise for discrete yearly data. The classmate's claim that it 'would work just as well' is correct, and the bar graph is arguably a more honest representation of discrete values.",
+    "distractor_logic": {
+      "A": "Student applies an absolute rule that does not exist; bar graphs are regularly used for time-series categorical comparisons, including year-to-year data.",
+      "B": "Student incorrectly claims a bar graph cannot show directional change; comparing adjacent bar heights directly shows whether enrollment went up or down each year.",
+      "C": "Correct: both displays work, and the bar graph is more precise for discrete yearly data because it avoids implying continuity between annual measurements.",
+      "D": "Student correctly notes that both work but defers to line graph preference — missing the more precise statistical point that bar graphs better represent discrete (non-continuous) time data."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask what the line between data points on a line graph implies. It suggests a smooth, continuous change — but enrollment is only recorded once per year, not continuously. A bar graph avoids that implication."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Options A and B both say 'No' and claim the bar graph cannot do something — but bar graphs can clearly show year-to-year changes. If those claims are false, eliminate both A and B."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": ["bar_graph", "line_graph", "graph_selection", "discrete_time_series"],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_017",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "selecting a histogram over alternative graph types to reveal the shape of a continuous distribution",
+      "explaining why a box plot is insufficient for detecting bimodality while a histogram is not"
+    ],
+    "question_text": "A student records the daily high temperature in a city for all 365 days of the year and wants to display the overall shape of the temperature distribution — including whether it is roughly symmetric, skewed, or bimodal. Which graph type best serves this purpose, and why?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Scatter plot — because plotting each of the 365 temperatures as individual points against their day number makes the full distribution visible.",
+      "B": "Bar graph — because temperature is a numerical variable and bar graphs are the standard tool for displaying numerical data.",
+      "C": "Box plot — because it shows the median, quartiles, and outliers, giving the most complete picture of distribution shape including potential bimodality.",
+      "D": "Histogram — because it groups the 365 continuous values into intervals and displays the frequency of each interval, making the overall shape of the distribution — including symmetry, skew, and multiple peaks — directly visible."
+    },
+    "correct_answer": "D",
+    "explanation": "A histogram groups continuous data into intervals and displays the frequency within each interval as a bar. With 365 temperature values, a histogram reveals whether the distribution is symmetric, skewed to one side, or bimodal (two peaks) — precisely the features the student wants to examine.\n\nKey limitation of the alternatives: a box plot summarizes the distribution using five statistics (minimum, Q1, median, Q3, maximum) but cannot distinguish a symmetric unimodal distribution from a bimodal one — both could produce identical box plots. A histogram preserves this detail.",
+    "distractor_logic": {
+      "A": "A scatter plot of temperature vs. day number shows how temperature changes over time across the year, not the shape of the distribution — it would display a seasonal cycle, not a frequency histogram shape.",
+      "B": "A bar graph requires categorical groupings on the horizontal axis; using it for continuous temperature data would require artificially naming intervals, and it would not convey distributional shape as naturally as a histogram.",
+      "C": "A box plot is a useful summary but cannot detect bimodality — two distinct temperature peaks (e.g., mild spring and hot summer) could produce the same box plot as a single symmetric distribution.",
+      "D": "Correct: a histogram directly displays distributional shape for continuous data, including symmetry, skew, and the presence of one or more peaks."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The goal is to see distribution shape — symmetric, skewed, or bimodal. The graph type that displays shape by grouping values into frequency intervals is a histogram. Ask whether each alternative can reveal two peaks if they exist."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A scatter plot shows change over time, not shape. A bar graph needs categories. A box plot hides bimodality. Eliminate all three and confirm that only the histogram serves the stated goal."
+      }
+    ],
+    "content_context": "weather",
+    "context_tags": ["histogram", "distribution_shape", "graph_selection", "bimodality"],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_018",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "evaluating when a pie chart is misleading relative to a bar graph for a comparison task",
+      "distinguishing between a part-to-whole display purpose and an individual comparison display purpose"
+    ],
+    "question_text": "A student creates a pie chart to display the points scored by five basketball players in a single game: Player A = 18, Player B = 22, Player C = 15, Player D = 9, Player E = 31. A classmate argues the pie chart is a misleading choice. Which statement best explains the classmate's concern?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The pie chart is misleading because it can only display two categories; a dataset with five players requires a different graph type.",
+      "B": "The pie chart is misleading because it frames each player's score as a share of the team's total points, when the actual goal is to compare individual performances — a bar graph makes player-to-player differences easier to read and interpret accurately.",
+      "C": "The pie chart is acceptable because the five scores sum to a total, making each player's contribution a valid proportion of the whole.",
+      "D": "The pie chart is misleading because pie charts require data to be listed in descending order, and the scores are given in player order rather than ranked order."
+    },
+    "correct_answer": "B",
+    "explanation": "A pie chart is appropriate when the goal is to show each category's share of a whole. The scores do sum to a total (95 points), so technically each slice represents a proportion — but when the goal is to compare individual values, pie charts are harder to read accurately than bar graphs. It is difficult to judge whether Player B's slice (22 pts) is meaningfully larger than Player C's (15 pts) just by comparing wedge angles.\n\nA bar graph makes those comparisons direct and precise. The classmate's concern is that the pie chart's part-to-whole framing is not the right tool for a player-to-player comparison task.",
+    "distractor_logic": {
+      "A": "Student applies a false structural limit — pie charts have no maximum category count. The concern is conceptual, not structural.",
+      "B": "Correct: the pie chart's design emphasizes proportion-of-whole, which is not the primary goal here; a bar graph makes individual score comparisons more readable and accurate.",
+      "C": "Student uses the summation argument to dismiss the concern — while the proportions are technically valid, this ignores the readability and interpretive purpose issue that the classmate raised.",
+      "D": "Student invents a false ordering requirement; pie charts have no required sort order, and the concern is about purpose and readability, not data ordering."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask: what is the actual goal — showing each player's share of total points, or comparing individual scores? If the goal is comparison, ask which graph type makes differences between values easiest to see."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Options A and D both state false structural rules about pie charts. Eliminate them. Then decide whether the scores-as-proportions argument in C actually addresses the classmate's readability concern."
+      }
+    ],
+    "content_context": "sports",
+    "context_tags": ["pie_chart", "bar_graph", "graph_selection", "misleading_representation"],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_019",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "explaining how aggregating individual data points into group averages conceals within-group variability and relationship strength",
+      "identifying a scatter plot as the superior representation when the research goal requires preserving individual data point detail"
+    ],
+    "question_text": "A researcher studies the relationship between sleep hours per night and GPA for 80 students. The researcher displays the data as a bar graph with sleep-hour groups on the horizontal axis and the average GPA for each group on the vertical axis. A statistician argues this display loses important information. What does the statistician most likely mean?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The statistician means that bar graphs cannot display more than ten categories on the horizontal axis, so grouping sleep hours into more than ten ranges would exceed the display limit.",
+      "B": "The statistician means that the horizontal axis should show GPA and the vertical axis should show sleep hours — the axes are simply reversed from the conventional orientation.",
+      "C": "The statistician means that averaging GPA within each sleep-hour group conceals how much individual GPAs vary within that group, and that a scatter plot of all 80 individual data points would better reveal the actual relationship between sleep and GPA and its strength.",
+      "D": "The statistician means that a line graph should be used instead because sleep hours are a numerical variable measured over time."
+    },
+    "correct_answer": "C",
+    "explanation": "When the researcher averages GPA within each sleep-hour group, individual variation is hidden. Two groups with the same average GPA could have very different spreads — one tightly clustered, one widely scattered. The bar graph also cannot reveal whether the relationship between sleep and GPA is linear, curved, or driven by outliers.\n\nA scatter plot preserves every student's individual data point, making the shape, strength, and consistency of the relationship directly visible — which is exactly what a researcher studying this association needs.",
+    "distractor_logic": {
+      "A": "Student applies a false structural limit — bar graphs have no maximum category count. The statistician's concern is about information loss through averaging, not display capacity.",
+      "B": "Student focuses on axis orientation rather than the conceptual problem; reversing the axes would not restore the individual data points lost through group averaging.",
+      "C": "Correct: averaging collapses individual variation into a single representative value per group, hiding the true spread and shape of the relationship that a scatter plot would preserve.",
+      "D": "Student misidentifies sleep hours as a time-series variable; in this study, sleep hours is a predictor variable for each student at a single time point, not a measurement recorded over time."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The statistician says information is lost. Ask: what does averaging do to the individual data? It collapses 80 distinct (sleep, GPA) pairs into a few group means — hiding variability and the shape of the true relationship."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Options A and D both cite false structural constraints — bar graph limits and time-series requirements. Eliminate both. Option B addresses axis orientation, not information loss. The concern must be about what averaging conceals."
+      }
+    ],
+    "content_context": "health_fitness",
+    "context_tags": ["scatter_plot", "bar_graph", "information_loss", "aggregation_vs_individual"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_020",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "evaluating whether a histogram is appropriate for both a continuous and a small discrete numerical variable",
+      "distinguishing the representational difference between a histogram and a bar graph for discrete data with few possible values"
+    ],
+    "question_text": "A student claims that both of the following datasets should be displayed using a histogram. Dataset 1: the final exam scores (0–100) of 200 students. Dataset 2: the number of pets owned by each of 30 households, where values range from 0 to 5. Which response correctly evaluates this claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The student is correct for both datasets; histograms are appropriate for any numerical data regardless of whether the variable is discrete or continuous.",
+      "B": "The student is incorrect for both datasets; histograms require data to be measured in equal time intervals, which neither dataset satisfies.",
+      "C": "The student is correct for Dataset 2 but not Dataset 1; exam scores span too wide a range for a histogram to display meaningfully, while pet counts are small enough to bin effectively.",
+      "D": "The student is correct for Dataset 1 but not Dataset 2; exam scores are continuous and well-suited for a histogram, while the number of pets is a small discrete variable with only six possible values — a bar graph more precisely represents its discrete nature."
+    },
+    "correct_answer": "D",
+    "explanation": "Dataset 1 — Exam scores (0–100): a continuous variable with many possible values across a wide range. A histogram that groups scores into intervals (e.g., 0–9, 10–19, …) is the natural and appropriate display.\n\nDataset 2 — Number of pets (0–5): a discrete variable with only six possible whole-number values. A histogram implies continuous data and would suggest that fractional values (like 1.5 pets) are possible between the bars. A bar graph with gaps between bars more accurately represents the discrete nature of the variable.\n\nThe student is correct for Dataset 1 but not Dataset 2.",
+    "distractor_logic": {
+      "A": "Student overgeneralizes — histograms are not appropriate for all numerical data. Small discrete variables with few possible values are better represented by bar graphs, which do not imply continuity.",
+      "B": "Student applies a false requirement — histograms do not require time intervals. They require a continuous (or large-range) numerical variable on the horizontal axis.",
+      "C": "Student reverses the correct application: exam scores (wide range, continuous) are exactly what histograms are built for, while pet counts (small discrete set) are better served by a bar graph.",
+      "D": "Correct: the histogram fits the continuous exam score distribution; the bar graph fits the small discrete pet-count variable."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "For each dataset, ask two questions: (1) Is the variable continuous or discrete? (2) How many distinct values can it take? A histogram implies continuous data — if a variable is discrete with very few possible values, a bar graph is more honest."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Option B claims histograms require time intervals — that is false; eliminate it. Option C reverses the correct assignment. Option A ignores the discrete-vs-continuous distinction entirely. Check which option correctly identifies continuous vs. discrete for each dataset."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": ["histogram", "bar_graph", "discrete_vs_continuous", "graph_selection"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_021",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "selecting the graph type that best reveals both a repeating seasonal pattern and its year-to-year consistency in a time-series dataset",
+      "explaining why averaging across years or displaying distribution shape is insufficient when year-to-year consistency is the analytical goal"
+    ],
+    "question_text": "A dataset records the monthly average temperature in a city for each month over 10 years, producing 120 data points. A student wants to determine whether temperatures follow a consistent seasonal pattern — rising in summer and falling in winter — and whether that pattern holds across all 10 years. Which graph type and approach best serves this goal?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "A line graph plotting all 120 monthly values in chronological order, because the connected time-series display makes recurring seasonal peaks and troughs directly visible and allows comparison of the pattern's consistency across all 10 years.",
+      "B": "A histogram, because grouping the 120 temperatures into intervals reveals whether the distribution is bimodal, which would indicate the presence of seasonal variation.",
+      "C": "A scatter plot with month number (1–12) on the horizontal axis and temperature on the vertical axis, because it shows the relationship between month and temperature across all data points.",
+      "D": "A bar graph with one bar per month showing the average temperature across all 10 years, because averaging removes year-to-year noise and presents the cleanest picture of the typical seasonal pattern."
+    },
+    "correct_answer": "A",
+    "explanation": "To assess both the seasonal pattern and its consistency across years, the student needs a display that preserves the time order of all 120 data points. A line graph plotted in chronological order shows:\n• The repeating peaks (summer) and troughs (winter) that constitute the seasonal pattern\n• Whether those peaks and troughs are consistent in timing and magnitude across each of the 10 years\n\nWhy the alternatives fall short:\n• A histogram reveals distributional shape but destroys time order — the student cannot see the seasonal cycle or compare year to year.\n• A scatter plot by month number merges all 10 years' data for each month, making year-to-year consistency invisible.\n• A bar graph of monthly averages shows the typical seasonal pattern but eliminates individual year information — if one year had an unusually cold summer, it would be hidden in the average.",
+    "distractor_logic": {
+      "A": "Correct: a chronological line graph preserves time order across all 120 points, making seasonal cycles and their year-to-year consistency directly readable.",
+      "B": "A histogram shows whether the temperature distribution has one or two peaks, which could suggest seasonal variation, but it cannot reveal the seasonal cycle's structure or whether the pattern is consistent across years.",
+      "C": "Plotting by month number (1–12) collapses all 10 years onto a single horizontal axis — the student sees the average seasonal shape but cannot distinguish any one year from another or assess year-to-year consistency.",
+      "D": "Averaging across 10 years smooths away the very year-to-year variation the student wants to examine — if consistency is the goal, averaging destroys the evidence needed to evaluate it."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The student has two goals: see the seasonal pattern AND assess year-to-year consistency. Any display that averages years together or destroys time order cannot serve the second goal. Ask which option preserves both the cycle and the individual years."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A histogram destroys time order. A scatter plot by month collapses years together. A monthly average bar graph hides individual year variation. If the goal includes year-to-year consistency, all three are insufficient — eliminate them."
+      }
+    ],
+    "content_context": "weather",
+    "context_tags": ["line_graph", "time_series", "seasonal_pattern", "graph_selection"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  }
+]

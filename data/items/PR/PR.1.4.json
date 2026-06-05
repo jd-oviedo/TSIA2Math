@@ -1,0 +1,1052 @@
+[
+  {
+    "item_id": "PR_B_012",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "extracting a single cell value from a described one-way table by matching the correct row label",
+      "avoiding substitution of an adjacent row's value for the target category"
+    ],
+    "question_text": "A table shows the number of books checked out from a library by genre. Fiction = 34, Nonfiction = 21, Mystery = 18, Science Fiction = 27. How many Mystery books were checked out?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "21",
+      "B": "18",
+      "C": "27",
+      "D": "34"
+    },
+    "correct_answer": "B",
+    "explanation": "Locate the Mystery row in the table. The value recorded for Mystery is 18.\n\n18 Mystery books were checked out.",
+    "distractor_logic": {
+      "A": "Student reads the Nonfiction row (21) instead of the Mystery row.",
+      "B": "Correct: the Mystery row shows a value of 18.",
+      "C": "Student reads the Science Fiction row (27) instead of the Mystery row.",
+      "D": "Student reads the Fiction row (34), the largest value in the table, instead of the Mystery row."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the row labeled Mystery and read the value in the Count column. Do not read values from other genre rows."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Each answer choice matches a different genre's count. Confirm you are reading the Mystery row specifically before selecting."
+      }
+    ],
+    "content_context": "library",
+    "context_tags": ["one_way_table", "direct_reading", "single_cell", "genre_frequency"],
+    "estimated_time_seconds": 55,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_013",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "locating a single cell in a two-way table by correctly identifying both its row and column",
+      "avoiding row or column confusion when extracting a value from a described two-way table"
+    ],
+    "question_text": "A two-way table shows the lunch preferences of students in two grade levels. The rows are labeled 9th Grade and 10th Grade. The columns are labeled Pizza, Sandwich, and Salad. The cell values are: 9th Grade — Pizza = 12, Sandwich = 8, Salad = 5; 10th Grade — Pizza = 9, Sandwich = 11, Salad = 7. How many 10th graders prefer Sandwich?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "8",
+      "B": "9",
+      "C": "11",
+      "D": "7"
+    },
+    "correct_answer": "C",
+    "explanation": "Locate the cell at the intersection of the 10th Grade row and the Sandwich column.\n\nThe value in that cell is 11.\n\n11 tenth graders prefer Sandwich.",
+    "distractor_logic": {
+      "A": "Student reads the 9th Grade Sandwich cell (8) instead of the 10th Grade Sandwich cell.",
+      "B": "Student reads the 10th Grade Pizza cell (9) — correct row but wrong column.",
+      "C": "Correct: the 10th Grade and Sandwich intersection contains 11.",
+      "D": "Student reads the 10th Grade Salad cell (7) — correct row but wrong column."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Two-way tables require two steps: find the correct row (10th Grade) and the correct column (Sandwich), then read the cell where they intersect."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The 10th Grade row contains three values: 9, 11, and 7. The question asks specifically for Sandwich — confirm which column header says Sandwich before reading the value."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": ["two_way_table", "single_cell", "direct_reading", "lunch_preference"],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_014",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "scanning all rows of a one-way table to identify the minimum value",
+      "distinguishing the minimum from low but non-minimum values in a multi-row table"
+    ],
+    "question_text": "A table shows the number of visitors to a museum each day of the week. Monday = 45, Tuesday = 38, Wednesday = 52, Thursday = 41, Friday = 67, Saturday = 89, Sunday = 74. Which day had the fewest visitors?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Monday",
+      "B": "Thursday",
+      "C": "Wednesday",
+      "D": "Tuesday"
+    },
+    "correct_answer": "D",
+    "explanation": "Compare all seven values:\nMon = 45, Tue = 38, Wed = 52, Thu = 41, Fri = 67, Sat = 89, Sun = 74\n\nThe smallest value is 38, which belongs to Tuesday.\n\nTuesday had the fewest visitors.",
+    "distractor_logic": {
+      "A": "Student selects Monday (45), a low value, without comparing it against Tuesday (38) and Thursday (41).",
+      "B": "Student selects Thursday (41), the second-lowest value, without confirming that Tuesday (38) is lower.",
+      "C": "Student selects Wednesday (52), which is near the middle of the range, possibly confusing it with a lower value.",
+      "D": "Correct: Tuesday's count of 38 is the lowest among all seven days."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Read all seven values before deciding. The fewest visitors means the smallest number — check every row before selecting."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Friday, Saturday, and Sunday all have values above 60, so they cannot be the minimum. Focus your comparison on the weekday values."
+      }
+    ],
+    "content_context": "tourism",
+    "context_tags": ["one_way_table", "minimum_value", "comparison", "museum_visitors"],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_015",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "reading a specific cell from a two-way table using both a row and column condition simultaneously",
+      "distinguishing between the Passed and Failed columns when reading a two-way outcomes table"
+    ],
+    "question_text": "A two-way table shows the number of students who passed or failed a math test, by class period. The rows are Period 1, Period 2, and Period 3. The columns are Passed and Failed. The cell values are: Period 1 — Passed = 22, Failed = 6; Period 2 — Passed = 18, Failed = 9; Period 3 — Passed = 25, Failed = 4. How many students in Period 1 failed the test?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6",
+      "B": "22",
+      "C": "9",
+      "D": "4"
+    },
+    "correct_answer": "A",
+    "explanation": "Locate the cell at the intersection of the Period 1 row and the Failed column.\n\nThe value in that cell is 6.\n\n6 students in Period 1 failed the math test.",
+    "distractor_logic": {
+      "A": "Correct: the Period 1 and Failed cell contains 6.",
+      "B": "Student reads the Period 1 Passed cell (22) — correct row but wrong column.",
+      "C": "Student reads the Period 2 Failed cell (9) — correct column but wrong row.",
+      "D": "Student reads the Period 3 Failed cell (4) — correct column but wrong row."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the Period 1 row first, then move across to the Failed column. The answer is at that intersection — not in the Passed column."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The question asks about students who failed, not passed. If your answer is 22, you are reading the Passed column for Period 1. Switch to the Failed column."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": ["two_way_table", "single_cell", "pass_fail", "class_period"],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_016",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying the row with the maximum value in a one-way table",
+      "comparing all row values before concluding which product has the highest sales"
+    ],
+    "question_text": "A table shows the number of units sold for three products in one month. Product X = 130, Product Y = 95, Product Z = 115. Which product had the highest sales?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Product Y",
+      "B": "Product X",
+      "C": "Product Z",
+      "D": "Products X and Z are tied for the highest sales."
+    },
+    "correct_answer": "B",
+    "explanation": "Compare the three sales figures:\nProduct X = 130, Product Y = 95, Product Z = 115\n\nProduct X has the highest value at 130.\n\nProduct X had the highest sales.",
+    "distractor_logic": {
+      "A": "Student selects Product Y (95), the lowest value, possibly confusing alphabetical order with rank order.",
+      "B": "Correct: Product X's sales of 130 exceed both Product Y (95) and Product Z (115).",
+      "C": "Student selects Product Z (115), the second-highest value, without comparing it against Product X (130).",
+      "D": "Student incorrectly concludes that X and Z are tied; 130 ≠ 115, so no tie exists."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compare all three values: 130, 95, and 115. The largest number identifies the top-selling product."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Product Z (115) is less than Product X (130), so they are not tied and Z is not the highest. Eliminate any option that claims a tie or selects Z."
+      }
+    ],
+    "content_context": "business",
+    "context_tags": ["one_way_table", "maximum_value", "comparison", "product_sales"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_012",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "summing all cells in a specified column of a two-way table to find a column total",
+      "distinguishing between a single cell value and a full column total in a two-way table"
+    ],
+    "question_text": "A two-way table shows the number of male and female students enrolled in three clubs. The rows are labeled Male and Female. The columns are labeled Chess, Drama, and Robotics. The cell values are: Male — Chess = 8, Drama = 14, Robotics = 20; Female — Chess = 11, Drama = 18, Robotics = 15. What is the total number of students enrolled in Drama?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "18",
+      "B": "14",
+      "C": "32",
+      "D": "26"
+    },
+    "correct_answer": "C",
+    "explanation": "The Drama column contains two values — one for each row:\nMale Drama = 14\nFemale Drama = 18\n\nTotal: 14 + 18 = 32\n\n32 students in total are enrolled in Drama.",
+    "distractor_logic": {
+      "A": "Student reads only the Female Drama cell (18) without adding the Male Drama cell.",
+      "B": "Student reads only the Male Drama cell (14) without adding the Female Drama cell.",
+      "C": "Correct: 14 + 18 = 32.",
+      "D": "Student adds the Male Chess cell (8) and Female Drama cell (18) instead of both Drama cells: 8 + 18 = 26."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The total for Drama requires adding both the Male Drama cell and the Female Drama cell — one value from each row in the Drama column."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "If your answer is 14 or 18, you have only read one cell from the Drama column. The total must include both rows."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": ["two_way_table", "column_total", "addition", "club_enrollment"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_013",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "summing all row values in a one-way table to compute a grand total",
+      "recognizing when a row is omitted from the sum and correcting the error"
+    ],
+    "question_text": "A table shows the number of customer complaints received by a company each quarter. Q1 = 42, Q2 = 67, Q3 = 55, Q4 = 38. What is the total number of complaints received across all four quarters?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "164",
+      "B": "197",
+      "C": "160",
+      "D": "202"
+    },
+    "correct_answer": "D",
+    "explanation": "Add all four quarterly values:\n42 + 67 = 109\n109 + 55 = 164\n164 + 38 = 202\n\nThe total number of complaints across all four quarters is 202.",
+    "distractor_logic": {
+      "A": "Student sums only the first three quarters and omits Q4: 42 + 67 + 55 = 164.",
+      "B": "Student misreads Q2 as 62 instead of 67, then adds correctly: 42 + 62 + 55 + 38 = 197.",
+      "C": "Student sums only Q2, Q3, and Q4, omitting Q1: 67 + 55 + 38 = 160.",
+      "D": "Correct: 42 + 67 + 55 + 38 = 202."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks for the total across all four quarters — make sure to include Q1, Q2, Q3, and Q4. Add them in order to avoid skipping one."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Round each value: 40 + 70 + 55 + 40 = 205. The exact answer should be close to 200. Eliminate any option that is far from that range."
+      }
+    ],
+    "content_context": "business",
+    "context_tags": ["one_way_table", "grand_total", "addition", "quarterly_data"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_014",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "isolating a single column of a two-way table and computing the difference between two specified cells",
+      "selecting the correct column for comparison rather than mixing values across columns"
+    ],
+    "question_text": "A two-way table shows survey results on pet ownership by housing type. The rows are House and Apartment. The columns are Owns Pet and No Pet. The cell values are: House — Owns Pet = 48, No Pet = 22; Apartment — Owns Pet = 31, No Pet = 44. How many more apartment residents do not own a pet than house residents who do not own a pet?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "22",
+      "B": "13",
+      "C": "75",
+      "D": "17"
+    },
+    "correct_answer": "A",
+    "explanation": "The question asks about residents who do NOT own a pet — use the No Pet column only.\n\nApartment No Pet = 44\nHouse No Pet = 22\n\nDifference: 44 − 22 = 22\n\n22 more apartment residents do not own a pet compared to house residents who do not own a pet.",
+    "distractor_logic": {
+      "A": "Correct: 44 − 22 = 22 using only the No Pet column.",
+      "B": "Student subtracts Apartment No Pet from Apartment Owns Pet instead of comparing the No Pet column across housing types: 44 − 31 = 13.",
+      "C": "Student adds the entire Apartment row (Owns Pet + No Pet) instead of isolating the No Pet column: 31 + 44 = 75.",
+      "D": "Student compares the Owns Pet column instead of the No Pet column: House Owns Pet − Apartment Owns Pet = 48 − 31 = 17."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question specifies 'do not own a pet' — that means you only need values from the No Pet column. Read Apartment No Pet and House No Pet, then subtract."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The answer must come from subtracting two values in the No Pet column. Any answer that uses the Owns Pet column or adds values across a row is using the wrong cells."
+      }
+    ],
+    "content_context": "survey",
+    "context_tags": ["two_way_table", "column_comparison", "difference", "pet_ownership"],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_015",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "summing a full column across all rows of a two-way table to find a column total",
+      "distinguishing between a row total and a column total when both are required by different questions"
+    ],
+    "question_text": "A two-way table shows the number of students who prefer morning or afternoon classes, by year. The rows are Freshman and Sophomore. The columns are Morning and Afternoon. The cell values are: Freshman — Morning = 30, Afternoon = 20; Sophomore — Morning = 25, Afternoon = 35. What is the total number of students who prefer Morning classes?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "30",
+      "B": "55",
+      "C": "25",
+      "D": "50"
+    },
+    "correct_answer": "B",
+    "explanation": "The Morning column contains one value per row:\nFreshman Morning = 30\nSophomore Morning = 25\n\nTotal: 30 + 25 = 55\n\n55 students in total prefer Morning classes.",
+    "distractor_logic": {
+      "A": "Student reads only the Freshman Morning cell (30) without adding the Sophomore Morning cell.",
+      "B": "Correct: 30 + 25 = 55.",
+      "C": "Student reads only the Sophomore Morning cell (25) without adding the Freshman Morning cell.",
+      "D": "Student sums the Freshman row (Morning + Afternoon) instead of the Morning column: 30 + 20 = 50."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A column total means adding every value in that column across all rows. Find Morning values for both Freshman and Sophomore, then add them."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "If your answer is 30 or 25, you only read one row's Morning value. The total must include both. If your answer is 50, you summed a row instead of a column."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": ["two_way_table", "column_total", "addition", "class_preference"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_016",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "ranking all row values in a one-way table to identify the second-lowest entry",
+      "distinguishing the second-lowest value from the minimum and from mid-range values"
+    ],
+    "question_text": "A table shows the number of members in five community organizations. Org A = 85, Org B = 120, Org C = 95, Org D = 110, Org E = 75. Which organization has the second-lowest membership count?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Org E",
+      "B": "Org C",
+      "C": "Org A",
+      "D": "Org D"
+    },
+    "correct_answer": "C",
+    "explanation": "Rank all five values from lowest to highest:\n1st (lowest): Org E = 75\n2nd: Org A = 85\n3rd: Org C = 95\n4th: Org D = 110\n5th (highest): Org B = 120\n\nOrg A has the second-lowest membership count at 85.",
+    "distractor_logic": {
+      "A": "Student selects Org E (75), which is the lowest — not the second-lowest.",
+      "B": "Student selects Org C (95), which is the third-lowest value in the ranking.",
+      "C": "Correct: after Org E (75), Org A (85) is the next lowest.",
+      "D": "Student selects Org D (110), which is the fourth-lowest value."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "First identify the lowest value (Org E = 75). Then find the next smallest among the remaining four organizations."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Org E is the lowest, not the second-lowest — eliminate it. Then compare Org A (85), Org C (95), Org D (110), and Org B (120) to find the smallest of those four."
+      }
+    ],
+    "content_context": "community",
+    "context_tags": ["one_way_table", "ranking", "second_lowest", "membership_count"],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_012",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing a conditional percentage from a two-way table using the correct row total as the denominator",
+      "distinguishing between a group-specific rate and the overall rate when selecting a denominator"
+    ],
+    "question_text": "A two-way table shows the results of a science exam by gender. The rows are Male and Female. The columns are Passed, Failed, and Total. The values are: Male — Passed = 36, Failed = 12, Total = 48; Female — Passed = 44, Failed = 8, Total = 52; Overall Total — Passed = 80, Failed = 20, Grand Total = 100. What percentage of male students failed the exam?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "25%",
+      "B": "12%",
+      "C": "20%",
+      "D": "33%"
+    },
+    "correct_answer": "A",
+    "explanation": "The question asks about male students only — use the Male row total as the denominator.\n\nMale Failed = 12\nMale Total = 48\n\n12 ÷ 48 = 0.25 = 25%\n\n25% of male students failed the exam.",
+    "distractor_logic": {
+      "A": "Correct: 12 ÷ 48 = 25%.",
+      "B": "Student uses the grand total as the denominator instead of the male row total: 12 ÷ 100 = 12%.",
+      "C": "Student computes the overall failure rate across all students instead of the male-specific rate: 20 ÷ 100 = 20%.",
+      "D": "Student divides failed males by passed males instead of total males: 12 ÷ 36 ≈ 33%."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks about male students specifically. The denominator must be the total number of male students (48), not the grand total. Divide male failures by male total."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "If your denominator is 100, you are computing an overall rate, not a male-specific rate. The male row total (48) is the correct denominator here."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": ["two_way_table", "conditional_percentage", "row_total_denominator", "pass_fail"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_013",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing a conditional proportion from a two-way table using a column total as the denominator",
+      "identifying which marginal total serves as the denominator when the condition is defined by a column category"
+    ],
+    "question_text": "A two-way table shows how customers rated a restaurant's food and service. The rows are Good Food and Poor Food. The columns are Good Service, Poor Service, and Total. The values are: Good Food — Good Service = 55, Poor Service = 15, Total = 70; Poor Food — Good Service = 10, Poor Service = 20, Total = 30; Column Totals — Good Service = 65, Poor Service = 35, Grand Total = 100. What percentage of customers who rated the service as Poor also rated the food as Poor? Round to the nearest whole percent.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "20%",
+      "B": "67%",
+      "C": "29%",
+      "D": "57%"
+    },
+    "correct_answer": "D",
+    "explanation": "The condition is 'rated service as Poor' — so the denominator is the total number of customers who gave Poor Service ratings.\n\nPoor Service Total = 35\nPoor Food AND Poor Service = 20\n\n20 ÷ 35 ≈ 0.5714 ≈ 57%\n\nApproximately 57% of customers who rated the service as Poor also rated the food as Poor.",
+    "distractor_logic": {
+      "A": "Student uses the grand total as the denominator: 20 ÷ 100 = 20%.",
+      "B": "Student uses the Poor Food row total as the denominator instead of the Poor Service column total: 20 ÷ 30 ≈ 67%.",
+      "C": "Student selects the wrong cell — uses Poor Food with Good Service (10) as the numerator instead of Poor Food with Poor Service (20): 10 ÷ 35 ≈ 29%.",
+      "D": "Correct: 20 ÷ 35 ≈ 57%."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The phrase 'of customers who rated the service as Poor' defines the group — use the Poor Service column total (35) as your denominator. Then find the cell for Poor Food AND Poor Service as the numerator."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Using the grand total (100) as the denominator gives you an overall rate, not a conditional rate. The denominator must be restricted to the Poor Service column total."
+      }
+    ],
+    "content_context": "food_service",
+    "context_tags": ["two_way_table", "conditional_proportion", "column_total_denominator", "customer_ratings"],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_014",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing completion rates for two groups from a two-way table and comparing their ratio to a stated claim",
+      "identifying when a claim conflates raw counts with rates and correcting the comparison"
+    ],
+    "question_text": "A two-way table shows the number of employees who completed or did not complete a training program, by department. The rows are Sales and Marketing. The columns are Completed, Not Completed, and Total. The values are: Sales — Completed = 40, Not Completed = 10, Total = 50; Marketing — Completed = 30, Not Completed = 20, Total = 50; Column Totals — Completed = 70, Not Completed = 30, Grand Total = 100. A manager claims that Sales employees are twice as likely to complete the training as Marketing employees. Which response correctly evaluates this claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "No — the completion rates cannot be compared because the table does not provide individual employee records.",
+      "B": "No — Sales completed at 80% and Marketing at 60%; the ratio of completion rates is approximately 1.3, not 2, so the claim overstates the difference.",
+      "C": "Yes — 40 Sales completions is exactly twice the 20 Marketing employees who did not complete the training, which confirms the claim.",
+      "D": "Yes — Sales completed 40 out of 50 (80%) and Marketing completed 30 out of 50 (60%); since 80 is roughly double 40, the claim holds."
+    },
+    "correct_answer": "B",
+    "explanation": "Compute each department's completion rate:\nSales: 40 ÷ 50 = 0.80 = 80%\nMarketing: 30 ÷ 50 = 0.60 = 60%\n\nRatio of rates: 80% ÷ 60% ≈ 1.33\n\nSales employees complete the training at a rate roughly 1.3 times that of Marketing — not twice. The manager's claim overstates the difference.",
+    "distractor_logic": {
+      "A": "Student incorrectly claims the table lacks sufficient information; department totals are provided and the rates are directly computable.",
+      "B": "Correct: 80% ÷ 60% ≈ 1.33, which is meaningfully less than 2.",
+      "C": "Student compares Sales completions (40) to Marketing non-completions (20) — two quantities from different columns that have no meaningful relationship to a likelihood comparison.",
+      "D": "Student correctly computes Sales at 80% but then compares 80 to 40 (Marketing's raw count rather than its rate of 60%), arriving at a false 2:1 ratio."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A claim about likelihood requires comparing rates, not raw counts. Compute the completion rate for each department (completions ÷ department total), then divide one rate by the other."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "For the claim to hold, the ratio of completion rates must equal 2. Compute 80% ÷ 60% and check whether the result is 2. If it is not, the claim is false — regardless of what the raw counts suggest."
+      }
+    ],
+    "content_context": "workplace",
+    "context_tags": ["two_way_table", "rate_comparison", "claim_evaluation", "conditional_proportion"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_015",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing a conditional percentage from a two-way table using a row total as the denominator",
+      "distinguishing the proportion within a subgroup from the proportion in the overall population"
+    ],
+    "question_text": "A two-way table shows whether students play a sport and/or a musical instrument. The rows are Plays Sport and No Sport. The columns are Plays Instrument, No Instrument, and Total. The values are: Plays Sport — Plays Instrument = 18, No Instrument = 27, Total = 45; No Sport — Plays Instrument = 12, No Instrument = 23, Total = 35; Column Totals — Plays Instrument = 30, No Instrument = 50, Grand Total = 80. What percentage of students who play a sport also play an instrument? Round to the nearest whole percent.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "38%",
+      "B": "60%",
+      "C": "40%",
+      "D": "23%"
+    },
+    "correct_answer": "C",
+    "explanation": "The condition is 'students who play a sport' — so the denominator is the Plays Sport row total.\n\nPlays Sport Total = 45\nPlays Sport AND Plays Instrument = 18\n\n18 ÷ 45 = 0.40 = 40%\n\n40% of students who play a sport also play an instrument.",
+    "distractor_logic": {
+      "A": "Student uses the total instrument players divided by the grand total: 30 ÷ 80 = 37.5% ≈ 38% — this is the overall instrument-playing rate, not the sport-conditional rate.",
+      "B": "Student computes the proportion of sport players who do NOT play an instrument instead of those who do: 27 ÷ 45 = 60% — the complement of the correct answer.",
+      "C": "Correct: 18 ÷ 45 = 40%.",
+      "D": "Student uses the grand total as the denominator: 18 ÷ 80 = 22.5% ≈ 23%."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The phrase 'of students who play a sport' restricts the group — use the Plays Sport row total (45) as the denominator. The numerator is the cell where Plays Sport and Plays Instrument intersect."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Using 80 as the denominator gives you an overall rate across all students, not a sport-conditional rate. Using 27 as the numerator gives the complement — students who play sport but no instrument. Check both."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": ["two_way_table", "conditional_percentage", "row_total_denominator", "extracurricular"],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_016",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "evaluating a 'more than half' claim using a conditional proportion derived from a two-way table",
+      "selecting the correct cell and column total to form the conditional fraction when the condition is defined by a column category"
+    ],
+    "question_text": "A two-way table shows the number of patients who tested positive or negative for two conditions. The rows are Condition A Positive and Condition A Negative. The columns are Condition B Positive, Condition B Negative, and Total. The values are: Condition A Positive — Condition B Positive = 22, Condition B Negative = 18, Total = 40; Condition A Negative — Condition B Positive = 13, Condition B Negative = 47, Total = 60; Column Totals — Condition B Positive = 35, Condition B Negative = 65, Grand Total = 100. A doctor states: 'More than half of all patients who tested positive for Condition B also tested positive for Condition A.' Which response correctly evaluates this claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "No — only 22 out of 100 total patients had both conditions, which is less than half of all patients.",
+      "B": "No — the correct proportion is 22 out of 40 Condition A Positive patients, which gives 55% — just over half, so the claim is barely supported.",
+      "C": "No — only 13 out of 35 patients who tested positive for Condition B also tested positive for Condition A, which is approximately 37% and less than half.",
+      "D": "Yes — 22 out of 35 patients who tested positive for Condition B also tested positive for Condition A, which is approximately 63% and exceeds half."
+    },
+    "correct_answer": "D",
+    "explanation": "The claim is about patients who tested positive for Condition B — so the denominator is the Condition B Positive column total.\n\nCondition B Positive Total = 35\nCondition A Positive AND Condition B Positive = 22\n\n22 ÷ 35 ≈ 0.629 ≈ 63%\n\n63% exceeds 50%, so the doctor's claim is correct.",
+    "distractor_logic": {
+      "A": "Student uses the grand total (100) as the denominator: 22 ÷ 100 = 22%, which is less than half — but this uses the wrong denominator for a conditional claim.",
+      "B": "Student uses the Condition A Positive row total (40) as the denominator instead of the Condition B Positive column total (35): 22 ÷ 40 = 55%. The conclusion happens to be directionally correct, but the denominator is wrong for the stated condition.",
+      "C": "Student selects the wrong cell — uses Condition A Negative and Condition B Positive (13) as the numerator instead of Condition A Positive and Condition B Positive (22): 13 ÷ 35 ≈ 37%.",
+      "D": "Correct: the condition is Condition B Positive, so the denominator is 35; the numerator is 22; 22 ÷ 35 ≈ 63% > 50%."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The claim is about patients who tested positive for Condition B — that column total (35) is the denominator. The numerator is the cell where Condition B Positive and Condition A Positive intersect."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Using 100 as the denominator tests whether 22% of all patients had both conditions — not what the doctor claimed. The claim is specifically about the subgroup who tested positive for Condition B."
+      }
+    ],
+    "content_context": "healthcare",
+    "context_tags": ["two_way_table", "conditional_proportion", "column_total_denominator", "claim_evaluation"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  }
+]

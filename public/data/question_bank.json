@@ -34369,5 +34369,2345 @@
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
     "review_notes": null
+  },
+  {
+    "item_id": "PR_B_012",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "extracting a single cell value from a described one-way table by matching the correct row label",
+      "avoiding substitution of an adjacent row's value for the target category"
+    ],
+    "question_text": "A table shows the number of books checked out from a library by genre. Fiction = 34, Nonfiction = 21, Mystery = 18, Science Fiction = 27. How many Mystery books were checked out?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "21",
+      "B": "18",
+      "C": "27",
+      "D": "34"
+    },
+    "correct_answer": "B",
+    "explanation": "Locate the Mystery row in the table. The value recorded for Mystery is 18.\n\n18 Mystery books were checked out.",
+    "distractor_logic": {
+      "A": "Student reads the Nonfiction row (21) instead of the Mystery row.",
+      "B": "Correct: the Mystery row shows a value of 18.",
+      "C": "Student reads the Science Fiction row (27) instead of the Mystery row.",
+      "D": "Student reads the Fiction row (34), the largest value in the table, instead of the Mystery row."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the row labeled Mystery and read the value in the Count column. Do not read values from other genre rows."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Each answer choice matches a different genre's count. Confirm you are reading the Mystery row specifically before selecting."
+      }
+    ],
+    "content_context": "library",
+    "context_tags": [
+      "one_way_table",
+      "direct_reading",
+      "single_cell",
+      "genre_frequency"
+    ],
+    "estimated_time_seconds": 55,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_013",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "locating a single cell in a two-way table by correctly identifying both its row and column",
+      "avoiding row or column confusion when extracting a value from a described two-way table"
+    ],
+    "question_text": "A two-way table shows the lunch preferences of students in two grade levels. The rows are labeled 9th Grade and 10th Grade. The columns are labeled Pizza, Sandwich, and Salad. The cell values are: 9th Grade — Pizza = 12, Sandwich = 8, Salad = 5; 10th Grade — Pizza = 9, Sandwich = 11, Salad = 7. How many 10th graders prefer Sandwich?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "8",
+      "B": "9",
+      "C": "11",
+      "D": "7"
+    },
+    "correct_answer": "C",
+    "explanation": "Locate the cell at the intersection of the 10th Grade row and the Sandwich column.\n\nThe value in that cell is 11.\n\n11 tenth graders prefer Sandwich.",
+    "distractor_logic": {
+      "A": "Student reads the 9th Grade Sandwich cell (8) instead of the 10th Grade Sandwich cell.",
+      "B": "Student reads the 10th Grade Pizza cell (9) — correct row but wrong column.",
+      "C": "Correct: the 10th Grade and Sandwich intersection contains 11.",
+      "D": "Student reads the 10th Grade Salad cell (7) — correct row but wrong column."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Two-way tables require two steps: find the correct row (10th Grade) and the correct column (Sandwich), then read the cell where they intersect."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The 10th Grade row contains three values: 9, 11, and 7. The question asks specifically for Sandwich — confirm which column header says Sandwich before reading the value."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": [
+      "two_way_table",
+      "single_cell",
+      "direct_reading",
+      "lunch_preference"
+    ],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_014",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "scanning all rows of a one-way table to identify the minimum value",
+      "distinguishing the minimum from low but non-minimum values in a multi-row table"
+    ],
+    "question_text": "A table shows the number of visitors to a museum each day of the week. Monday = 45, Tuesday = 38, Wednesday = 52, Thursday = 41, Friday = 67, Saturday = 89, Sunday = 74. Which day had the fewest visitors?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Monday",
+      "B": "Thursday",
+      "C": "Wednesday",
+      "D": "Tuesday"
+    },
+    "correct_answer": "D",
+    "explanation": "Compare all seven values:\nMon = 45, Tue = 38, Wed = 52, Thu = 41, Fri = 67, Sat = 89, Sun = 74\n\nThe smallest value is 38, which belongs to Tuesday.\n\nTuesday had the fewest visitors.",
+    "distractor_logic": {
+      "A": "Student selects Monday (45), a low value, without comparing it against Tuesday (38) and Thursday (41).",
+      "B": "Student selects Thursday (41), the second-lowest value, without confirming that Tuesday (38) is lower.",
+      "C": "Student selects Wednesday (52), which is near the middle of the range, possibly confusing it with a lower value.",
+      "D": "Correct: Tuesday's count of 38 is the lowest among all seven days."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Read all seven values before deciding. The fewest visitors means the smallest number — check every row before selecting."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Friday, Saturday, and Sunday all have values above 60, so they cannot be the minimum. Focus your comparison on the weekday values."
+      }
+    ],
+    "content_context": "tourism",
+    "context_tags": [
+      "one_way_table",
+      "minimum_value",
+      "comparison",
+      "museum_visitors"
+    ],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_015",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "reading a specific cell from a two-way table using both a row and column condition simultaneously",
+      "distinguishing between the Passed and Failed columns when reading a two-way outcomes table"
+    ],
+    "question_text": "A two-way table shows the number of students who passed or failed a math test, by class period. The rows are Period 1, Period 2, and Period 3. The columns are Passed and Failed. The cell values are: Period 1 — Passed = 22, Failed = 6; Period 2 — Passed = 18, Failed = 9; Period 3 — Passed = 25, Failed = 4. How many students in Period 1 failed the test?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6",
+      "B": "22",
+      "C": "9",
+      "D": "4"
+    },
+    "correct_answer": "A",
+    "explanation": "Locate the cell at the intersection of the Period 1 row and the Failed column.\n\nThe value in that cell is 6.\n\n6 students in Period 1 failed the math test.",
+    "distractor_logic": {
+      "A": "Correct: the Period 1 and Failed cell contains 6.",
+      "B": "Student reads the Period 1 Passed cell (22) — correct row but wrong column.",
+      "C": "Student reads the Period 2 Failed cell (9) — correct column but wrong row.",
+      "D": "Student reads the Period 3 Failed cell (4) — correct column but wrong row."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the Period 1 row first, then move across to the Failed column. The answer is at that intersection — not in the Passed column."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The question asks about students who failed, not passed. If your answer is 22, you are reading the Passed column for Period 1. Switch to the Failed column."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": [
+      "two_way_table",
+      "single_cell",
+      "pass_fail",
+      "class_period"
+    ],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_016",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying the row with the maximum value in a one-way table",
+      "comparing all row values before concluding which product has the highest sales"
+    ],
+    "question_text": "A table shows the number of units sold for three products in one month. Product X = 130, Product Y = 95, Product Z = 115. Which product had the highest sales?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Product Y",
+      "B": "Product X",
+      "C": "Product Z",
+      "D": "Products X and Z are tied for the highest sales."
+    },
+    "correct_answer": "B",
+    "explanation": "Compare the three sales figures:\nProduct X = 130, Product Y = 95, Product Z = 115\n\nProduct X has the highest value at 130.\n\nProduct X had the highest sales.",
+    "distractor_logic": {
+      "A": "Student selects Product Y (95), the lowest value, possibly confusing alphabetical order with rank order.",
+      "B": "Correct: Product X's sales of 130 exceed both Product Y (95) and Product Z (115).",
+      "C": "Student selects Product Z (115), the second-highest value, without comparing it against Product X (130).",
+      "D": "Student incorrectly concludes that X and Z are tied; 130 ≠ 115, so no tie exists."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compare all three values: 130, 95, and 115. The largest number identifies the top-selling product."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Product Z (115) is less than Product X (130), so they are not tied and Z is not the highest. Eliminate any option that claims a tie or selects Z."
+      }
+    ],
+    "content_context": "business",
+    "context_tags": [
+      "one_way_table",
+      "maximum_value",
+      "comparison",
+      "product_sales"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_012",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "summing all cells in a specified column of a two-way table to find a column total",
+      "distinguishing between a single cell value and a full column total in a two-way table"
+    ],
+    "question_text": "A two-way table shows the number of male and female students enrolled in three clubs. The rows are labeled Male and Female. The columns are labeled Chess, Drama, and Robotics. The cell values are: Male — Chess = 8, Drama = 14, Robotics = 20; Female — Chess = 11, Drama = 18, Robotics = 15. What is the total number of students enrolled in Drama?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "18",
+      "B": "14",
+      "C": "32",
+      "D": "26"
+    },
+    "correct_answer": "C",
+    "explanation": "The Drama column contains two values — one for each row:\nMale Drama = 14\nFemale Drama = 18\n\nTotal: 14 + 18 = 32\n\n32 students in total are enrolled in Drama.",
+    "distractor_logic": {
+      "A": "Student reads only the Female Drama cell (18) without adding the Male Drama cell.",
+      "B": "Student reads only the Male Drama cell (14) without adding the Female Drama cell.",
+      "C": "Correct: 14 + 18 = 32.",
+      "D": "Student adds the Male Chess cell (8) and Female Drama cell (18) instead of both Drama cells: 8 + 18 = 26."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The total for Drama requires adding both the Male Drama cell and the Female Drama cell — one value from each row in the Drama column."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "If your answer is 14 or 18, you have only read one cell from the Drama column. The total must include both rows."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": [
+      "two_way_table",
+      "column_total",
+      "addition",
+      "club_enrollment"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_013",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "summing all row values in a one-way table to compute a grand total",
+      "recognizing when a row is omitted from the sum and correcting the error"
+    ],
+    "question_text": "A table shows the number of customer complaints received by a company each quarter. Q1 = 42, Q2 = 67, Q3 = 55, Q4 = 38. What is the total number of complaints received across all four quarters?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "164",
+      "B": "197",
+      "C": "160",
+      "D": "202"
+    },
+    "correct_answer": "D",
+    "explanation": "Add all four quarterly values:\n42 + 67 = 109\n109 + 55 = 164\n164 + 38 = 202\n\nThe total number of complaints across all four quarters is 202.",
+    "distractor_logic": {
+      "A": "Student sums only the first three quarters and omits Q4: 42 + 67 + 55 = 164.",
+      "B": "Student misreads Q2 as 62 instead of 67, then adds correctly: 42 + 62 + 55 + 38 = 197.",
+      "C": "Student sums only Q2, Q3, and Q4, omitting Q1: 67 + 55 + 38 = 160.",
+      "D": "Correct: 42 + 67 + 55 + 38 = 202."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks for the total across all four quarters — make sure to include Q1, Q2, Q3, and Q4. Add them in order to avoid skipping one."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Round each value: 40 + 70 + 55 + 40 = 205. The exact answer should be close to 200. Eliminate any option that is far from that range."
+      }
+    ],
+    "content_context": "business",
+    "context_tags": [
+      "one_way_table",
+      "grand_total",
+      "addition",
+      "quarterly_data"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_014",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "isolating a single column of a two-way table and computing the difference between two specified cells",
+      "selecting the correct column for comparison rather than mixing values across columns"
+    ],
+    "question_text": "A two-way table shows survey results on pet ownership by housing type. The rows are House and Apartment. The columns are Owns Pet and No Pet. The cell values are: House — Owns Pet = 48, No Pet = 22; Apartment — Owns Pet = 31, No Pet = 44. How many more apartment residents do not own a pet than house residents who do not own a pet?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "22",
+      "B": "13",
+      "C": "75",
+      "D": "17"
+    },
+    "correct_answer": "A",
+    "explanation": "The question asks about residents who do NOT own a pet — use the No Pet column only.\n\nApartment No Pet = 44\nHouse No Pet = 22\n\nDifference: 44 − 22 = 22\n\n22 more apartment residents do not own a pet compared to house residents who do not own a pet.",
+    "distractor_logic": {
+      "A": "Correct: 44 − 22 = 22 using only the No Pet column.",
+      "B": "Student subtracts Apartment No Pet from Apartment Owns Pet instead of comparing the No Pet column across housing types: 44 − 31 = 13.",
+      "C": "Student adds the entire Apartment row (Owns Pet + No Pet) instead of isolating the No Pet column: 31 + 44 = 75.",
+      "D": "Student compares the Owns Pet column instead of the No Pet column: House Owns Pet − Apartment Owns Pet = 48 − 31 = 17."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question specifies 'do not own a pet' — that means you only need values from the No Pet column. Read Apartment No Pet and House No Pet, then subtract."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The answer must come from subtracting two values in the No Pet column. Any answer that uses the Owns Pet column or adds values across a row is using the wrong cells."
+      }
+    ],
+    "content_context": "survey",
+    "context_tags": [
+      "two_way_table",
+      "column_comparison",
+      "difference",
+      "pet_ownership"
+    ],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_015",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "summing a full column across all rows of a two-way table to find a column total",
+      "distinguishing between a row total and a column total when both are required by different questions"
+    ],
+    "question_text": "A two-way table shows the number of students who prefer morning or afternoon classes, by year. The rows are Freshman and Sophomore. The columns are Morning and Afternoon. The cell values are: Freshman — Morning = 30, Afternoon = 20; Sophomore — Morning = 25, Afternoon = 35. What is the total number of students who prefer Morning classes?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "30",
+      "B": "55",
+      "C": "25",
+      "D": "50"
+    },
+    "correct_answer": "B",
+    "explanation": "The Morning column contains one value per row:\nFreshman Morning = 30\nSophomore Morning = 25\n\nTotal: 30 + 25 = 55\n\n55 students in total prefer Morning classes.",
+    "distractor_logic": {
+      "A": "Student reads only the Freshman Morning cell (30) without adding the Sophomore Morning cell.",
+      "B": "Correct: 30 + 25 = 55.",
+      "C": "Student reads only the Sophomore Morning cell (25) without adding the Freshman Morning cell.",
+      "D": "Student sums the Freshman row (Morning + Afternoon) instead of the Morning column: 30 + 20 = 50."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A column total means adding every value in that column across all rows. Find Morning values for both Freshman and Sophomore, then add them."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "If your answer is 30 or 25, you only read one row's Morning value. The total must include both. If your answer is 50, you summed a row instead of a column."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": [
+      "two_way_table",
+      "column_total",
+      "addition",
+      "class_preference"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_016",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "ranking all row values in a one-way table to identify the second-lowest entry",
+      "distinguishing the second-lowest value from the minimum and from mid-range values"
+    ],
+    "question_text": "A table shows the number of members in five community organizations. Org A = 85, Org B = 120, Org C = 95, Org D = 110, Org E = 75. Which organization has the second-lowest membership count?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Org E",
+      "B": "Org C",
+      "C": "Org A",
+      "D": "Org D"
+    },
+    "correct_answer": "C",
+    "explanation": "Rank all five values from lowest to highest:\n1st (lowest): Org E = 75\n2nd: Org A = 85\n3rd: Org C = 95\n4th: Org D = 110\n5th (highest): Org B = 120\n\nOrg A has the second-lowest membership count at 85.",
+    "distractor_logic": {
+      "A": "Student selects Org E (75), which is the lowest — not the second-lowest.",
+      "B": "Student selects Org C (95), which is the third-lowest value in the ranking.",
+      "C": "Correct: after Org E (75), Org A (85) is the next lowest.",
+      "D": "Student selects Org D (110), which is the fourth-lowest value."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "First identify the lowest value (Org E = 75). Then find the next smallest among the remaining four organizations."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Org E is the lowest, not the second-lowest — eliminate it. Then compare Org A (85), Org C (95), Org D (110), and Org B (120) to find the smallest of those four."
+      }
+    ],
+    "content_context": "community",
+    "context_tags": [
+      "one_way_table",
+      "ranking",
+      "second_lowest",
+      "membership_count"
+    ],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_012",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing a conditional percentage from a two-way table using the correct row total as the denominator",
+      "distinguishing between a group-specific rate and the overall rate when selecting a denominator"
+    ],
+    "question_text": "A two-way table shows the results of a science exam by gender. The rows are Male and Female. The columns are Passed, Failed, and Total. The values are: Male — Passed = 36, Failed = 12, Total = 48; Female — Passed = 44, Failed = 8, Total = 52; Overall Total — Passed = 80, Failed = 20, Grand Total = 100. What percentage of male students failed the exam?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "25%",
+      "B": "12%",
+      "C": "20%",
+      "D": "33%"
+    },
+    "correct_answer": "A",
+    "explanation": "The question asks about male students only — use the Male row total as the denominator.\n\nMale Failed = 12\nMale Total = 48\n\n12 ÷ 48 = 0.25 = 25%\n\n25% of male students failed the exam.",
+    "distractor_logic": {
+      "A": "Correct: 12 ÷ 48 = 25%.",
+      "B": "Student uses the grand total as the denominator instead of the male row total: 12 ÷ 100 = 12%.",
+      "C": "Student computes the overall failure rate across all students instead of the male-specific rate: 20 ÷ 100 = 20%.",
+      "D": "Student divides failed males by passed males instead of total males: 12 ÷ 36 ≈ 33%."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks about male students specifically. The denominator must be the total number of male students (48), not the grand total. Divide male failures by male total."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "If your denominator is 100, you are computing an overall rate, not a male-specific rate. The male row total (48) is the correct denominator here."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": [
+      "two_way_table",
+      "conditional_percentage",
+      "row_total_denominator",
+      "pass_fail"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_013",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing a conditional proportion from a two-way table using a column total as the denominator",
+      "identifying which marginal total serves as the denominator when the condition is defined by a column category"
+    ],
+    "question_text": "A two-way table shows how customers rated a restaurant's food and service. The rows are Good Food and Poor Food. The columns are Good Service, Poor Service, and Total. The values are: Good Food — Good Service = 55, Poor Service = 15, Total = 70; Poor Food — Good Service = 10, Poor Service = 20, Total = 30; Column Totals — Good Service = 65, Poor Service = 35, Grand Total = 100. What percentage of customers who rated the service as Poor also rated the food as Poor? Round to the nearest whole percent.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "20%",
+      "B": "67%",
+      "C": "29%",
+      "D": "57%"
+    },
+    "correct_answer": "D",
+    "explanation": "The condition is 'rated service as Poor' — so the denominator is the total number of customers who gave Poor Service ratings.\n\nPoor Service Total = 35\nPoor Food AND Poor Service = 20\n\n20 ÷ 35 ≈ 0.5714 ≈ 57%\n\nApproximately 57% of customers who rated the service as Poor also rated the food as Poor.",
+    "distractor_logic": {
+      "A": "Student uses the grand total as the denominator: 20 ÷ 100 = 20%.",
+      "B": "Student uses the Poor Food row total as the denominator instead of the Poor Service column total: 20 ÷ 30 ≈ 67%.",
+      "C": "Student selects the wrong cell — uses Poor Food with Good Service (10) as the numerator instead of Poor Food with Poor Service (20): 10 ÷ 35 ≈ 29%.",
+      "D": "Correct: 20 ÷ 35 ≈ 57%."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The phrase 'of customers who rated the service as Poor' defines the group — use the Poor Service column total (35) as your denominator. Then find the cell for Poor Food AND Poor Service as the numerator."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Using the grand total (100) as the denominator gives you an overall rate, not a conditional rate. The denominator must be restricted to the Poor Service column total."
+      }
+    ],
+    "content_context": "food_service",
+    "context_tags": [
+      "two_way_table",
+      "conditional_proportion",
+      "column_total_denominator",
+      "customer_ratings"
+    ],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_014",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing completion rates for two groups from a two-way table and comparing their ratio to a stated claim",
+      "identifying when a claim conflates raw counts with rates and correcting the comparison"
+    ],
+    "question_text": "A two-way table shows the number of employees who completed or did not complete a training program, by department. The rows are Sales and Marketing. The columns are Completed, Not Completed, and Total. The values are: Sales — Completed = 40, Not Completed = 10, Total = 50; Marketing — Completed = 30, Not Completed = 20, Total = 50; Column Totals — Completed = 70, Not Completed = 30, Grand Total = 100. A manager claims that Sales employees are twice as likely to complete the training as Marketing employees. Which response correctly evaluates this claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "No — the completion rates cannot be compared because the table does not provide individual employee records.",
+      "B": "No — Sales completed at 80% and Marketing at 60%; the ratio of completion rates is approximately 1.3, not 2, so the claim overstates the difference.",
+      "C": "Yes — 40 Sales completions is exactly twice the 20 Marketing employees who did not complete the training, which confirms the claim.",
+      "D": "Yes — Sales completed 40 out of 50 (80%) and Marketing completed 30 out of 50 (60%); since 80 is roughly double 40, the claim holds."
+    },
+    "correct_answer": "B",
+    "explanation": "Compute each department's completion rate:\nSales: 40 ÷ 50 = 0.80 = 80%\nMarketing: 30 ÷ 50 = 0.60 = 60%\n\nRatio of rates: 80% ÷ 60% ≈ 1.33\n\nSales employees complete the training at a rate roughly 1.3 times that of Marketing — not twice. The manager's claim overstates the difference.",
+    "distractor_logic": {
+      "A": "Student incorrectly claims the table lacks sufficient information; department totals are provided and the rates are directly computable.",
+      "B": "Correct: 80% ÷ 60% ≈ 1.33, which is meaningfully less than 2.",
+      "C": "Student compares Sales completions (40) to Marketing non-completions (20) — two quantities from different columns that have no meaningful relationship to a likelihood comparison.",
+      "D": "Student correctly computes Sales at 80% but then compares 80 to 40 (Marketing's raw count rather than its rate of 60%), arriving at a false 2:1 ratio."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A claim about likelihood requires comparing rates, not raw counts. Compute the completion rate for each department (completions ÷ department total), then divide one rate by the other."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "For the claim to hold, the ratio of completion rates must equal 2. Compute 80% ÷ 60% and check whether the result is 2. If it is not, the claim is false — regardless of what the raw counts suggest."
+      }
+    ],
+    "content_context": "workplace",
+    "context_tags": [
+      "two_way_table",
+      "rate_comparison",
+      "claim_evaluation",
+      "conditional_proportion"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_015",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing a conditional percentage from a two-way table using a row total as the denominator",
+      "distinguishing the proportion within a subgroup from the proportion in the overall population"
+    ],
+    "question_text": "A two-way table shows whether students play a sport and/or a musical instrument. The rows are Plays Sport and No Sport. The columns are Plays Instrument, No Instrument, and Total. The values are: Plays Sport — Plays Instrument = 18, No Instrument = 27, Total = 45; No Sport — Plays Instrument = 12, No Instrument = 23, Total = 35; Column Totals — Plays Instrument = 30, No Instrument = 50, Grand Total = 80. What percentage of students who play a sport also play an instrument? Round to the nearest whole percent.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "38%",
+      "B": "60%",
+      "C": "40%",
+      "D": "23%"
+    },
+    "correct_answer": "C",
+    "explanation": "The condition is 'students who play a sport' — so the denominator is the Plays Sport row total.\n\nPlays Sport Total = 45\nPlays Sport AND Plays Instrument = 18\n\n18 ÷ 45 = 0.40 = 40%\n\n40% of students who play a sport also play an instrument.",
+    "distractor_logic": {
+      "A": "Student uses the total instrument players divided by the grand total: 30 ÷ 80 = 37.5% ≈ 38% — this is the overall instrument-playing rate, not the sport-conditional rate.",
+      "B": "Student computes the proportion of sport players who do NOT play an instrument instead of those who do: 27 ÷ 45 = 60% — the complement of the correct answer.",
+      "C": "Correct: 18 ÷ 45 = 40%.",
+      "D": "Student uses the grand total as the denominator: 18 ÷ 80 = 22.5% ≈ 23%."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The phrase 'of students who play a sport' restricts the group — use the Plays Sport row total (45) as the denominator. The numerator is the cell where Plays Sport and Plays Instrument intersect."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Using 80 as the denominator gives you an overall rate across all students, not a sport-conditional rate. Using 27 as the numerator gives the complement — students who play sport but no instrument. Check both."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": [
+      "two_way_table",
+      "conditional_percentage",
+      "row_total_denominator",
+      "extracurricular"
+    ],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_016",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.4",
+    "topic": "reading_and_interpreting_tables_and_two_way_tables",
+    "topic_text": "Reading and Interpreting Tables and Two-Way Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "evaluating a 'more than half' claim using a conditional proportion derived from a two-way table",
+      "selecting the correct cell and column total to form the conditional fraction when the condition is defined by a column category"
+    ],
+    "question_text": "A two-way table shows the number of patients who tested positive or negative for two conditions. The rows are Condition A Positive and Condition A Negative. The columns are Condition B Positive, Condition B Negative, and Total. The values are: Condition A Positive — Condition B Positive = 22, Condition B Negative = 18, Total = 40; Condition A Negative — Condition B Positive = 13, Condition B Negative = 47, Total = 60; Column Totals — Condition B Positive = 35, Condition B Negative = 65, Grand Total = 100. A doctor states: 'More than half of all patients who tested positive for Condition B also tested positive for Condition A.' Which response correctly evaluates this claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "No — only 22 out of 100 total patients had both conditions, which is less than half of all patients.",
+      "B": "No — the correct proportion is 22 out of 40 Condition A Positive patients, which gives 55% — just over half, so the claim is barely supported.",
+      "C": "No — only 13 out of 35 patients who tested positive for Condition B also tested positive for Condition A, which is approximately 37% and less than half.",
+      "D": "Yes — 22 out of 35 patients who tested positive for Condition B also tested positive for Condition A, which is approximately 63% and exceeds half."
+    },
+    "correct_answer": "D",
+    "explanation": "The claim is about patients who tested positive for Condition B — so the denominator is the Condition B Positive column total.\n\nCondition B Positive Total = 35\nCondition A Positive AND Condition B Positive = 22\n\n22 ÷ 35 ≈ 0.629 ≈ 63%\n\n63% exceeds 50%, so the doctor's claim is correct.",
+    "distractor_logic": {
+      "A": "Student uses the grand total (100) as the denominator: 22 ÷ 100 = 22%, which is less than half — but this uses the wrong denominator for a conditional claim.",
+      "B": "Student uses the Condition A Positive row total (40) as the denominator instead of the Condition B Positive column total (35): 22 ÷ 40 = 55%. The conclusion happens to be directionally correct, but the denominator is wrong for the stated condition.",
+      "C": "Student selects the wrong cell — uses Condition A Negative and Condition B Positive (13) as the numerator instead of Condition A Positive and Condition B Positive (22): 13 ÷ 35 ≈ 37%.",
+      "D": "Correct: the condition is Condition B Positive, so the denominator is 35; the numerator is 22; 22 ÷ 35 ≈ 63% > 50%."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The claim is about patients who tested positive for Condition B — that column total (35) is the denominator. The numerator is the cell where Condition B Positive and Condition A Positive intersect."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Using 100 as the denominator tests whether 22% of all patients had both conditions — not what the doctor claimed. The claim is specifically about the subgroup who tested positive for Condition B."
+      }
+    ],
+    "content_context": "healthcare",
+    "context_tags": [
+      "two_way_table",
+      "conditional_proportion",
+      "column_total_denominator",
+      "claim_evaluation"
+    ],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_017",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "classifying a variable as categorical based on its values being named labels rather than numeric quantities",
+      "distinguishing categorical variables from numerical variables when values are non-numeric response options"
+    ],
+    "question_text": "A survey asks students to name their favorite season: Spring, Summer, Fall, or Winter. Which type of variable is 'favorite season'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Numerical",
+      "B": "Continuous",
+      "C": "Categorical",
+      "D": "Discrete"
+    },
+    "correct_answer": "C",
+    "explanation": "The values of this variable — Spring, Summer, Fall, Winter — are named labels, not numbers. Variables whose values are names or categories are classified as categorical.\n\nFavorite season is a categorical variable.",
+    "distractor_logic": {
+      "A": "Student reasons that because there are four seasons, the variable involves counting and is therefore numerical — but the values themselves are labels, not quantities.",
+      "B": "Student confuses the measurement scale term 'continuous' with a data type classification; continuous applies to numerical variables measured on an unbroken scale, not to labeled responses.",
+      "C": "Correct: the values are named categories with no inherent numeric meaning.",
+      "D": "Student confuses 'discrete' — a subtype of numerical variables counted in whole numbers — with a categorical variable whose values happen to be a fixed set of options."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask: are the values numbers, or are they names and labels? Spring, Summer, Fall, and Winter are names — that signals categorical."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Discrete and continuous both describe numerical variables. Since the values here are season names — not numbers — both of those options can be eliminated."
+      }
+    ],
+    "content_context": "survey",
+    "context_tags": [
+      "categorical_variable",
+      "data_classification",
+      "variable_type",
+      "survey_response"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_018",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "classifying a measured quantity as continuous based on its ability to take any value within a range",
+      "distinguishing continuous from discrete numerical variables when the variable involves physical measurement"
+    ],
+    "question_text": "A scientist records the exact weight in grams of 20 soil samples. Which type of variable is 'weight of a soil sample'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Continuous",
+      "B": "Categorical",
+      "C": "Discrete",
+      "D": "Nominal"
+    },
+    "correct_answer": "A",
+    "explanation": "Weight is a physical measurement that can take any value within a range — for example, a sample could weigh 5.1 g, 5.13 g, or 5.137 g. Variables that can take any value on a continuous scale are classified as continuous.\n\nWeight is a continuous variable.",
+    "distractor_logic": {
+      "A": "Correct: weight is measured on an unbroken scale and can take infinitely many values within any interval.",
+      "B": "Student misclassifies the variable as categorical, perhaps thinking the 20 samples represent 20 named groups rather than 20 measurements of the same type of quantity.",
+      "C": "Student classifies weight as discrete, possibly reasoning that the scientist recorded a finite number of measurements — but discreteness refers to the values the variable can take, not the sample size.",
+      "D": "Student applies 'nominal,' a term for categorical variables with no natural order, to a measurement variable — a category error."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask: can this variable take fractional or decimal values between any two measurements? Weight in grams can — 5.2 g is just as valid as 5 g or 5.25 g. That signals continuous."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Weight is a number, not a label — eliminate categorical and nominal. Then ask whether the values are restricted to whole numbers: weight is not, so eliminate discrete."
+      }
+    ],
+    "content_context": "science",
+    "context_tags": [
+      "continuous_variable",
+      "data_classification",
+      "measurement",
+      "physical_quantity"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_019",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "classifying a counted whole-number quantity as discrete",
+      "distinguishing discrete from continuous when the variable represents a count of events rather than a measurement"
+    ],
+    "question_text": "A teacher records the number of absences for each student in a class. Which type of variable is 'number of absences'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Continuous",
+      "B": "Categorical",
+      "C": "Nominal",
+      "D": "Discrete"
+    },
+    "correct_answer": "D",
+    "explanation": "Absences are counted in whole numbers — a student can have 0, 1, 2, or 3 absences, but not 1.5 absences. Variables that take only whole-number values and are obtained by counting are classified as discrete.\n\nNumber of absences is a discrete variable.",
+    "distractor_logic": {
+      "A": "Student reasons that absences involve numbers and therefore classifies the variable as continuous — but continuous variables can take any value on an unbroken scale, including decimals, which absences cannot.",
+      "B": "Student misclassifies the count as categorical, possibly thinking that each absence total is a separate group or label.",
+      "C": "Student applies 'nominal,' a term for unordered categorical labels, to a counted numerical variable — a category error.",
+      "D": "Correct: absences are counted in whole-number increments and cannot take fractional values, making this a discrete variable."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask: can a student have 1.5 absences? No — absences can only be whole numbers. Variables restricted to countable whole-number values are discrete."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Absences are numbers, not labels — eliminate categorical and nominal. Then ask whether fractional values are possible: they are not, so eliminate continuous."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": [
+      "discrete_variable",
+      "data_classification",
+      "count_data",
+      "whole_numbers"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_020",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "selecting a bar graph as the appropriate display for the frequency of a categorical variable",
+      "distinguishing a bar graph from graph types that require numerical or time-ordered data"
+    ],
+    "question_text": "A student collects data on the hair color of 30 classmates and wants to display the frequency of each hair color. Which graph type is most appropriate?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Scatter plot",
+      "B": "Bar graph",
+      "C": "Histogram",
+      "D": "Line graph"
+    },
+    "correct_answer": "B",
+    "explanation": "Hair color is a categorical variable. A bar graph displays the frequency of each category using separate, clearly labeled bars — it is the standard choice for categorical frequency data.\n\nA bar graph is the most appropriate display.",
+    "distractor_logic": {
+      "A": "A scatter plot requires two numerical variables to show a relationship; hair color is categorical and there is only one variable here.",
+      "B": "Correct: a bar graph is designed to display the frequency of each category in a categorical dataset.",
+      "C": "A histogram is used to display the distribution of a continuous numerical variable grouped into intervals; hair color is not numerical.",
+      "D": "A line graph is used to show trends over time or changes across an ordered numerical scale; hair color has no natural ordering or time component."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Hair color is a categorical variable — it has named groups, not numbers. The graph type for categorical frequency data is a bar graph."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A scatter plot needs two numeric variables. A histogram needs continuous numeric data. A line graph needs ordered or time-based data. Hair color fits none of those — eliminate all three."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": [
+      "bar_graph",
+      "graph_selection",
+      "categorical_variable",
+      "frequency_display"
+    ],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_021",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "classifying a binary yes/no response variable as categorical",
+      "recognizing that a variable with only two labeled outcomes is categorical, not numerical"
+    ],
+    "question_text": "A medical study records whether each patient responded 'Yes' or 'No' to a new treatment. Which type of variable is the patient's treatment response?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Discrete",
+      "B": "Continuous",
+      "C": "Categorical",
+      "D": "Numerical"
+    },
+    "correct_answer": "C",
+    "explanation": "The variable takes only two values — 'Yes' and 'No' — which are labels, not numbers. Variables whose values are named categories are classified as categorical, regardless of how many categories there are.\n\nTreatment response is a categorical variable.",
+    "distractor_logic": {
+      "A": "Student reasons that there are only two possible outcomes and a finite count is involved, confusing a binary categorical variable with a discrete numerical variable.",
+      "B": "Student misapplies 'continuous' to the response variable, perhaps thinking the study involves medical measurements that are continuous.",
+      "C": "Correct: Yes and No are labels with no numerical meaning, making this a categorical variable.",
+      "D": "Student generalizes that any variable in a study involving numbers elsewhere must itself be numerical — but the response variable here has no numeric values."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Focus on the values the variable actually takes: 'Yes' and 'No.' Those are labels, not numbers. Any variable whose values are labels is categorical."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Discrete and continuous both describe numerical variables. Since 'Yes' and 'No' are not numbers, eliminate both of those options."
+      }
+    ],
+    "content_context": "healthcare",
+    "context_tags": [
+      "categorical_variable",
+      "binary_variable",
+      "data_classification",
+      "yes_no_response"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_017",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "selecting a histogram as the appropriate display for the distribution of a continuous numerical variable",
+      "justifying why alternative graph types are unsuitable for displaying a large continuous dataset"
+    ],
+    "question_text": "A researcher records the annual income in dollars of 500 households and wants to display the distribution of incomes. Which graph type is most appropriate, and why?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Histogram — because income is a continuous numerical variable, and a histogram groups the values into intervals to show the shape of the distribution across 500 data points.",
+      "B": "Pie chart — because income can be divided into slices representing each household's share of the total income collected.",
+      "C": "Bar graph — because income is a numerical variable and bar graphs are designed to display any numerical data clearly.",
+      "D": "Line graph — because 500 data points form a long sequence that is best connected by a line to show how values progress."
+    },
+    "correct_answer": "A",
+    "explanation": "Annual income is a continuous numerical variable that can take a wide range of values. A histogram groups continuous data into intervals (bins) and displays the frequency of values within each interval, making the overall shape — whether the distribution is symmetric, skewed, or has multiple peaks — directly visible.\n\nA histogram is the most appropriate graph for displaying the distribution of a large continuous variable.",
+    "distractor_logic": {
+      "A": "Correct: income is continuous, and a histogram is the standard tool for displaying the distribution of continuous numerical data.",
+      "B": "A pie chart shows each category's share of a whole — it would require treating each household as a separate named slice, which is impractical for 500 households and does not display distribution shape.",
+      "C": "A bar graph is designed for categorical data; using it for a continuous variable like income would require artificial grouping into named categories and would not convey distributional shape as clearly as a histogram.",
+      "D": "A line graph implies a trend or sequence over time; income data collected across 500 households has no inherent time order, so a line connecting the values would be misleading."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The goal is to show the distribution of a continuous numerical variable across 500 values. The graph type designed specifically for this purpose groups continuous data into intervals — that is a histogram."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A pie chart shows proportions of a whole for categories — not a distribution of continuous values. A line graph requires time-ordered data. A bar graph is for categorical labels. Eliminate all three."
+      }
+    ],
+    "content_context": "economics",
+    "context_tags": [
+      "histogram",
+      "graph_selection",
+      "continuous_variable",
+      "distribution_shape"
+    ],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_018",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "selecting a scatter plot as the appropriate display for investigating the relationship between two continuous numerical variables",
+      "distinguishing a relationship question from a distribution or frequency question when choosing a graph type"
+    ],
+    "question_text": "A student wants to investigate the relationship between the number of hours studied and the test score earned by each of 25 students. Which graph type is most appropriate?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Bar graph",
+      "B": "Pictograph",
+      "C": "Histogram",
+      "D": "Scatter plot"
+    },
+    "correct_answer": "D",
+    "explanation": "The student has two numerical variables — hours studied and test score — and wants to examine whether they are related. A scatter plot places one variable on each axis and plots a point for each student, making patterns of association (positive, negative, or no relationship) directly visible.\n\nA scatter plot is the most appropriate graph for exploring the relationship between two continuous numerical variables.",
+    "distractor_logic": {
+      "A": "A bar graph compares the frequency or magnitude of categories; it cannot display the relationship between two continuous variables across individual data points.",
+      "B": "A pictograph uses symbols to represent frequency counts for categories; it is not suited for displaying two numerical variables or their relationship.",
+      "C": "A histogram shows the distribution of a single continuous variable; it cannot simultaneously display two variables or reveal how they relate to each other.",
+      "D": "Correct: a scatter plot is specifically designed to show the relationship between two numerical variables by plotting each individual's pair of values as a single point."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The key word is 'relationship' between two numerical variables. The graph type built specifically to show relationships between two numerical variables is a scatter plot."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Bar graphs and pictographs require categorical groups on one axis. Histograms display one variable at a time. None of those can show a relationship between two continuous variables simultaneously."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": [
+      "scatter_plot",
+      "graph_selection",
+      "two_variable_relationship",
+      "study_habits"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_019",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying why a histogram is an inappropriate choice for a categorical variable",
+      "articulating the correct alternative graph type and the conceptual reason for the switch"
+    ],
+    "question_text": "A dataset lists the types of transportation used by employees to commute to work: Bus, Car, Bicycle, and Walking, with a frequency count for each type. A student displays this data using a histogram. Which statement best explains why a histogram is not appropriate here?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "A histogram is appropriate because it can display any data that has frequency counts on the vertical axis, regardless of the variable type.",
+      "B": "A histogram is appropriate because the dataset has exactly four categories, which matches the number of bars typically used in a histogram.",
+      "C": "A histogram is not appropriate because transportation type is a categorical variable; a bar graph should be used instead to display the frequency count for each named category.",
+      "D": "A histogram is not appropriate because the categories are not listed in alphabetical order, and histograms require data to be sorted before display."
+    },
+    "correct_answer": "C",
+    "explanation": "A histogram is designed for continuous numerical data — it groups values into intervals along a number line. Transportation type (Bus, Car, Bicycle, Walking) consists of named categories with no numerical scale, so the intervals that define a histogram have no meaning here.\n\nA bar graph is the correct choice: it displays frequency counts for distinct, named categories using separate labeled bars.",
+    "distractor_logic": {
+      "A": "Student incorrectly generalizes that any frequency display is a histogram; the variable type — not just the presence of frequency counts — determines whether a histogram is appropriate.",
+      "B": "Student confuses the number of bars in a bar graph with the number of bins in a histogram; histogram bins represent intervals of a continuous scale, not named categories.",
+      "C": "Correct: transportation type is categorical, and histograms are for continuous numerical data — a bar graph is the appropriate substitute.",
+      "D": "Student invents a false ordering rule; histograms require that the horizontal axis represents a continuous numerical scale, not that categories be alphabetically sorted."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask: is transportation type a number or a label? It is a label — categorical. Histograms are built for numerical continuous data, not named categories."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Options A and B both claim a histogram is appropriate — but if the variable is categorical, a histogram cannot be correct. Eliminate both, then compare C and D for accuracy."
+      }
+    ],
+    "content_context": "workplace",
+    "context_tags": [
+      "histogram",
+      "bar_graph",
+      "graph_selection",
+      "categorical_variable"
+    ],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_020",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "selecting a pie chart as the appropriate display for part-to-whole proportional data",
+      "recognizing when percentages summing to 100% signal a part-to-whole relationship best shown by a pie chart"
+    ],
+    "question_text": "A student tracks how a monthly budget of $2,000 is allocated across five categories. The percentages are: Rent = 40%, Food = 25%, Transportation = 15%, Entertainment = 10%, Savings = 10%. Which graph type best displays each category's share of the total budget?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Line graph",
+      "B": "Pie chart",
+      "C": "Scatter plot",
+      "D": "Histogram"
+    },
+    "correct_answer": "B",
+    "explanation": "The five percentages sum to 100%, meaning each category represents a specific share of the whole budget. A pie chart is designed to display part-to-whole relationships — each slice shows one category's proportion of the total.\n\nA pie chart is the most appropriate graph for this data.",
+    "distractor_logic": {
+      "A": "A line graph is used to show trends or change over time; budget allocation percentages have no time component and no natural ordering that a line would convey.",
+      "B": "Correct: the five percentages sum to 100% and represent distinct shares of a whole — exactly the kind of data a pie chart is designed to display.",
+      "C": "A scatter plot requires two continuous numerical variables to show a relationship; budget categories and their percentages do not form a two-variable dataset suitable for a scatter plot.",
+      "D": "A histogram displays the distribution of a continuous numerical variable across intervals; budget category percentages are discrete named proportions, not a continuous measurement."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The percentages sum to 100% — each category is a piece of the whole budget. The graph type built for part-to-whole proportions is a pie chart."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A scatter plot needs two continuous variables. A histogram needs a continuous distribution. A line graph needs time-ordered data. None of those fit budget category percentages."
+      }
+    ],
+    "content_context": "personal_finance",
+    "context_tags": [
+      "pie_chart",
+      "graph_selection",
+      "part_to_whole",
+      "budget_allocation"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_021",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "evaluating a claim that a bar graph is interchangeable with a line graph for discrete time-series data",
+      "explaining the conceptual difference between what a bar graph and a line graph communicate about time-ordered data"
+    ],
+    "question_text": "A line graph shows the number of students enrolled in an after-school program each year from 2015 to 2024. A classmate claims that a bar graph would work just as well. Which response best evaluates this claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "No — a bar graph cannot display data that changes over time; only line graphs are valid for time-series data.",
+      "B": "No — a bar graph would be misleading because it cannot show whether enrollment increased or decreased between years.",
+      "C": "Yes — both graphs can display the same enrollment counts, and a bar graph is actually more precise for discrete yearly data because it does not imply continuity between the individual yearly values.",
+      "D": "Yes — either graph could display the enrollment counts, but the line graph is generally preferred for time-series data because it more clearly emphasizes the trend direction."
+    },
+    "correct_answer": "C",
+    "explanation": "A bar graph and a line graph can both display discrete yearly enrollment counts. However, a line graph implies continuity — the connecting line suggests that enrollment changes smoothly between plotted points, which is not literally true for data recorded once per year.\n\nA bar graph treats each year as an independent, separate count without implying what happens in between — making it technically more precise for discrete yearly data. The classmate's claim that it 'would work just as well' is correct, and the bar graph is arguably a more honest representation of discrete values.",
+    "distractor_logic": {
+      "A": "Student applies an absolute rule that does not exist; bar graphs are regularly used for time-series categorical comparisons, including year-to-year data.",
+      "B": "Student incorrectly claims a bar graph cannot show directional change; comparing adjacent bar heights directly shows whether enrollment went up or down each year.",
+      "C": "Correct: both displays work, and the bar graph is more precise for discrete yearly data because it avoids implying continuity between annual measurements.",
+      "D": "Student correctly notes that both work but defers to line graph preference — missing the more precise statistical point that bar graphs better represent discrete (non-continuous) time data."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask what the line between data points on a line graph implies. It suggests a smooth, continuous change — but enrollment is only recorded once per year, not continuously. A bar graph avoids that implication."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Options A and B both say 'No' and claim the bar graph cannot do something — but bar graphs can clearly show year-to-year changes. If those claims are false, eliminate both A and B."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": [
+      "bar_graph",
+      "line_graph",
+      "graph_selection",
+      "discrete_time_series"
+    ],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_017",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "selecting a histogram over alternative graph types to reveal the shape of a continuous distribution",
+      "explaining why a box plot is insufficient for detecting bimodality while a histogram is not"
+    ],
+    "question_text": "A student records the daily high temperature in a city for all 365 days of the year and wants to display the overall shape of the temperature distribution — including whether it is roughly symmetric, skewed, or bimodal. Which graph type best serves this purpose, and why?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Scatter plot — because plotting each of the 365 temperatures as individual points against their day number makes the full distribution visible.",
+      "B": "Bar graph — because temperature is a numerical variable and bar graphs are the standard tool for displaying numerical data.",
+      "C": "Box plot — because it shows the median, quartiles, and outliers, giving the most complete picture of distribution shape including potential bimodality.",
+      "D": "Histogram — because it groups the 365 continuous values into intervals and displays the frequency of each interval, making the overall shape of the distribution — including symmetry, skew, and multiple peaks — directly visible."
+    },
+    "correct_answer": "D",
+    "explanation": "A histogram groups continuous data into intervals and displays the frequency within each interval as a bar. With 365 temperature values, a histogram reveals whether the distribution is symmetric, skewed to one side, or bimodal (two peaks) — precisely the features the student wants to examine.\n\nKey limitation of the alternatives: a box plot summarizes the distribution using five statistics (minimum, Q1, median, Q3, maximum) but cannot distinguish a symmetric unimodal distribution from a bimodal one — both could produce identical box plots. A histogram preserves this detail.",
+    "distractor_logic": {
+      "A": "A scatter plot of temperature vs. day number shows how temperature changes over time across the year, not the shape of the distribution — it would display a seasonal cycle, not a frequency histogram shape.",
+      "B": "A bar graph requires categorical groupings on the horizontal axis; using it for continuous temperature data would require artificially naming intervals, and it would not convey distributional shape as naturally as a histogram.",
+      "C": "A box plot is a useful summary but cannot detect bimodality — two distinct temperature peaks (e.g., mild spring and hot summer) could produce the same box plot as a single symmetric distribution.",
+      "D": "Correct: a histogram directly displays distributional shape for continuous data, including symmetry, skew, and the presence of one or more peaks."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The goal is to see distribution shape — symmetric, skewed, or bimodal. The graph type that displays shape by grouping values into frequency intervals is a histogram. Ask whether each alternative can reveal two peaks if they exist."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A scatter plot shows change over time, not shape. A bar graph needs categories. A box plot hides bimodality. Eliminate all three and confirm that only the histogram serves the stated goal."
+      }
+    ],
+    "content_context": "weather",
+    "context_tags": [
+      "histogram",
+      "distribution_shape",
+      "graph_selection",
+      "bimodality"
+    ],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_018",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "evaluating when a pie chart is misleading relative to a bar graph for a comparison task",
+      "distinguishing between a part-to-whole display purpose and an individual comparison display purpose"
+    ],
+    "question_text": "A student creates a pie chart to display the points scored by five basketball players in a single game: Player A = 18, Player B = 22, Player C = 15, Player D = 9, Player E = 31. A classmate argues the pie chart is a misleading choice. Which statement best explains the classmate's concern?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The pie chart is misleading because it can only display two categories; a dataset with five players requires a different graph type.",
+      "B": "The pie chart is misleading because it frames each player's score as a share of the team's total points, when the actual goal is to compare individual performances — a bar graph makes player-to-player differences easier to read and interpret accurately.",
+      "C": "The pie chart is acceptable because the five scores sum to a total, making each player's contribution a valid proportion of the whole.",
+      "D": "The pie chart is misleading because pie charts require data to be listed in descending order, and the scores are given in player order rather than ranked order."
+    },
+    "correct_answer": "B",
+    "explanation": "A pie chart is appropriate when the goal is to show each category's share of a whole. The scores do sum to a total (95 points), so technically each slice represents a proportion — but when the goal is to compare individual values, pie charts are harder to read accurately than bar graphs. It is difficult to judge whether Player B's slice (22 pts) is meaningfully larger than Player C's (15 pts) just by comparing wedge angles.\n\nA bar graph makes those comparisons direct and precise. The classmate's concern is that the pie chart's part-to-whole framing is not the right tool for a player-to-player comparison task.",
+    "distractor_logic": {
+      "A": "Student applies a false structural limit — pie charts have no maximum category count. The concern is conceptual, not structural.",
+      "B": "Correct: the pie chart's design emphasizes proportion-of-whole, which is not the primary goal here; a bar graph makes individual score comparisons more readable and accurate.",
+      "C": "Student uses the summation argument to dismiss the concern — while the proportions are technically valid, this ignores the readability and interpretive purpose issue that the classmate raised.",
+      "D": "Student invents a false ordering requirement; pie charts have no required sort order, and the concern is about purpose and readability, not data ordering."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask: what is the actual goal — showing each player's share of total points, or comparing individual scores? If the goal is comparison, ask which graph type makes differences between values easiest to see."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Options A and D both state false structural rules about pie charts. Eliminate them. Then decide whether the scores-as-proportions argument in C actually addresses the classmate's readability concern."
+      }
+    ],
+    "content_context": "sports",
+    "context_tags": [
+      "pie_chart",
+      "bar_graph",
+      "graph_selection",
+      "misleading_representation"
+    ],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_019",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "explaining how aggregating individual data points into group averages conceals within-group variability and relationship strength",
+      "identifying a scatter plot as the superior representation when the research goal requires preserving individual data point detail"
+    ],
+    "question_text": "A researcher studies the relationship between sleep hours per night and GPA for 80 students. The researcher displays the data as a bar graph with sleep-hour groups on the horizontal axis and the average GPA for each group on the vertical axis. A statistician argues this display loses important information. What does the statistician most likely mean?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The statistician means that bar graphs cannot display more than ten categories on the horizontal axis, so grouping sleep hours into more than ten ranges would exceed the display limit.",
+      "B": "The statistician means that the horizontal axis should show GPA and the vertical axis should show sleep hours — the axes are simply reversed from the conventional orientation.",
+      "C": "The statistician means that averaging GPA within each sleep-hour group conceals how much individual GPAs vary within that group, and that a scatter plot of all 80 individual data points would better reveal the actual relationship between sleep and GPA and its strength.",
+      "D": "The statistician means that a line graph should be used instead because sleep hours are a numerical variable measured over time."
+    },
+    "correct_answer": "C",
+    "explanation": "When the researcher averages GPA within each sleep-hour group, individual variation is hidden. Two groups with the same average GPA could have very different spreads — one tightly clustered, one widely scattered. The bar graph also cannot reveal whether the relationship between sleep and GPA is linear, curved, or driven by outliers.\n\nA scatter plot preserves every student's individual data point, making the shape, strength, and consistency of the relationship directly visible — which is exactly what a researcher studying this association needs.",
+    "distractor_logic": {
+      "A": "Student applies a false structural limit — bar graphs have no maximum category count. The statistician's concern is about information loss through averaging, not display capacity.",
+      "B": "Student focuses on axis orientation rather than the conceptual problem; reversing the axes would not restore the individual data points lost through group averaging.",
+      "C": "Correct: averaging collapses individual variation into a single representative value per group, hiding the true spread and shape of the relationship that a scatter plot would preserve.",
+      "D": "Student misidentifies sleep hours as a time-series variable; in this study, sleep hours is a predictor variable for each student at a single time point, not a measurement recorded over time."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The statistician says information is lost. Ask: what does averaging do to the individual data? It collapses 80 distinct (sleep, GPA) pairs into a few group means — hiding variability and the shape of the true relationship."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Options A and D both cite false structural constraints — bar graph limits and time-series requirements. Eliminate both. Option B addresses axis orientation, not information loss. The concern must be about what averaging conceals."
+      }
+    ],
+    "content_context": "health_fitness",
+    "context_tags": [
+      "scatter_plot",
+      "bar_graph",
+      "information_loss",
+      "aggregation_vs_individual"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_020",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "evaluating whether a histogram is appropriate for both a continuous and a small discrete numerical variable",
+      "distinguishing the representational difference between a histogram and a bar graph for discrete data with few possible values"
+    ],
+    "question_text": "A student claims that both of the following datasets should be displayed using a histogram. Dataset 1: the final exam scores (0–100) of 200 students. Dataset 2: the number of pets owned by each of 30 households, where values range from 0 to 5. Which response correctly evaluates this claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The student is correct for both datasets; histograms are appropriate for any numerical data regardless of whether the variable is discrete or continuous.",
+      "B": "The student is incorrect for both datasets; histograms require data to be measured in equal time intervals, which neither dataset satisfies.",
+      "C": "The student is correct for Dataset 2 but not Dataset 1; exam scores span too wide a range for a histogram to display meaningfully, while pet counts are small enough to bin effectively.",
+      "D": "The student is correct for Dataset 1 but not Dataset 2; exam scores are continuous and well-suited for a histogram, while the number of pets is a small discrete variable with only six possible values — a bar graph more precisely represents its discrete nature."
+    },
+    "correct_answer": "D",
+    "explanation": "Dataset 1 — Exam scores (0–100): a continuous variable with many possible values across a wide range. A histogram that groups scores into intervals (e.g., 0–9, 10–19, …) is the natural and appropriate display.\n\nDataset 2 — Number of pets (0–5): a discrete variable with only six possible whole-number values. A histogram implies continuous data and would suggest that fractional values (like 1.5 pets) are possible between the bars. A bar graph with gaps between bars more accurately represents the discrete nature of the variable.\n\nThe student is correct for Dataset 1 but not Dataset 2.",
+    "distractor_logic": {
+      "A": "Student overgeneralizes — histograms are not appropriate for all numerical data. Small discrete variables with few possible values are better represented by bar graphs, which do not imply continuity.",
+      "B": "Student applies a false requirement — histograms do not require time intervals. They require a continuous (or large-range) numerical variable on the horizontal axis.",
+      "C": "Student reverses the correct application: exam scores (wide range, continuous) are exactly what histograms are built for, while pet counts (small discrete set) are better served by a bar graph.",
+      "D": "Correct: the histogram fits the continuous exam score distribution; the bar graph fits the small discrete pet-count variable."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "For each dataset, ask two questions: (1) Is the variable continuous or discrete? (2) How many distinct values can it take? A histogram implies continuous data — if a variable is discrete with very few possible values, a bar graph is more honest."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Option B claims histograms require time intervals — that is false; eliminate it. Option C reverses the correct assignment. Option A ignores the discrete-vs-continuous distinction entirely. Check which option correctly identifies continuous vs. discrete for each dataset."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": [
+      "histogram",
+      "bar_graph",
+      "discrete_vs_continuous",
+      "graph_selection"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_021",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.5",
+    "topic": "classifying_data_and_choosing_appropriate_representations",
+    "topic_text": "Classifying Data and Choosing Appropriate Representations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "selecting the graph type that best reveals both a repeating seasonal pattern and its year-to-year consistency in a time-series dataset",
+      "explaining why averaging across years or displaying distribution shape is insufficient when year-to-year consistency is the analytical goal"
+    ],
+    "question_text": "A dataset records the monthly average temperature in a city for each month over 10 years, producing 120 data points. A student wants to determine whether temperatures follow a consistent seasonal pattern — rising in summer and falling in winter — and whether that pattern holds across all 10 years. Which graph type and approach best serves this goal?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "A line graph plotting all 120 monthly values in chronological order, because the connected time-series display makes recurring seasonal peaks and troughs directly visible and allows comparison of the pattern's consistency across all 10 years.",
+      "B": "A histogram, because grouping the 120 temperatures into intervals reveals whether the distribution is bimodal, which would indicate the presence of seasonal variation.",
+      "C": "A scatter plot with month number (1–12) on the horizontal axis and temperature on the vertical axis, because it shows the relationship between month and temperature across all data points.",
+      "D": "A bar graph with one bar per month showing the average temperature across all 10 years, because averaging removes year-to-year noise and presents the cleanest picture of the typical seasonal pattern."
+    },
+    "correct_answer": "A",
+    "explanation": "To assess both the seasonal pattern and its consistency across years, the student needs a display that preserves the time order of all 120 data points. A line graph plotted in chronological order shows:\n• The repeating peaks (summer) and troughs (winter) that constitute the seasonal pattern\n• Whether those peaks and troughs are consistent in timing and magnitude across each of the 10 years\n\nWhy the alternatives fall short:\n• A histogram reveals distributional shape but destroys time order — the student cannot see the seasonal cycle or compare year to year.\n• A scatter plot by month number merges all 10 years' data for each month, making year-to-year consistency invisible.\n• A bar graph of monthly averages shows the typical seasonal pattern but eliminates individual year information — if one year had an unusually cold summer, it would be hidden in the average.",
+    "distractor_logic": {
+      "A": "Correct: a chronological line graph preserves time order across all 120 points, making seasonal cycles and their year-to-year consistency directly readable.",
+      "B": "A histogram shows whether the temperature distribution has one or two peaks, which could suggest seasonal variation, but it cannot reveal the seasonal cycle's structure or whether the pattern is consistent across years.",
+      "C": "Plotting by month number (1–12) collapses all 10 years onto a single horizontal axis — the student sees the average seasonal shape but cannot distinguish any one year from another or assess year-to-year consistency.",
+      "D": "Averaging across 10 years smooths away the very year-to-year variation the student wants to examine — if consistency is the goal, averaging destroys the evidence needed to evaluate it."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The student has two goals: see the seasonal pattern AND assess year-to-year consistency. Any display that averages years together or destroys time order cannot serve the second goal. Ask which option preserves both the cycle and the individual years."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A histogram destroys time order. A scatter plot by month collapses years together. A monthly average bar graph hides individual year variation. If the goal includes year-to-year consistency, all three are insufficient — eliminate them."
+      }
+    ],
+    "content_context": "weather",
+    "context_tags": [
+      "line_graph",
+      "time_series",
+      "seasonal_pattern",
+      "graph_selection"
+    ],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
   }
 ]
