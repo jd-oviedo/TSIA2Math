@@ -1,0 +1,1052 @@
+[
+  {
+    "item_id": "GR_B_024",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.4",
+    "topic": "inverse_measurement_problems",
+    "topic_text": "Inverse Measurement Problems",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the missing length of a rectangle given its perimeter and width",
+      "applying the inverse of P = 2(l + w) to isolate the unknown length"
+    ],
+    "question_text": "A rectangle has a perimeter of 38 ft and a width of 7 ft. What is the length?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "31 ft",
+      "B": "24 ft",
+      "C": "19 ft",
+      "D": "12 ft"
+    },
+    "correct_answer": "D",
+    "explanation": "Use the perimeter formula and solve for length:\nP = 2(l + w)\n38 = 2(l + 7)\n19 = l + 7\nl = 19 − 7 = 12 ft\n\nCheck: 2(12 + 7) = 2(19) = 38 ✓",
+    "distractor_logic": {
+      "A": "Student subtracts the width from the perimeter without first dividing by 2: 38 − 7 = 31 ft.",
+      "B": "Student subtracts both widths from the perimeter (38 − 7 − 7 = 24) but forgets to divide by 2 at the final step, reporting half the correct sum instead.",
+      "C": "Student divides the perimeter by 2 (38 ÷ 2 = 19) but stops there without subtracting the width, reporting the half-perimeter as the length.",
+      "D": "Correct: 38 ÷ 2 = 19; 19 − 7 = 12 ft."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Substitute what you know into P = 2(l + w). Then solve for l in two steps: divide both sides by 2 first, then subtract the width."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check your answer: substitute l = 12 and w = 7 into 2(l + w) and confirm the result is 38."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangle", "perimeter", "missing_length", "inverse_reasoning"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_025",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.4",
+    "topic": "inverse_measurement_problems",
+    "topic_text": "Inverse Measurement Problems",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the missing width of a rectangle given its area and length",
+      "applying the inverse of A = lw by dividing the area by the known dimension"
+    ],
+    "question_text": "A rectangle has an area of 72 m² and a length of 9 m. What is the width?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "63 m",
+      "B": "8 m",
+      "C": "648 m",
+      "D": "36 m"
+    },
+    "correct_answer": "B",
+    "explanation": "Using A = lw, solve for width:\nw = A ÷ l = 72 ÷ 9 = 8 m\n\nCheck: 9 × 8 = 72 ✓",
+    "distractor_logic": {
+      "A": "Student subtracts the length from the area instead of dividing: 72 − 9 = 63 m.",
+      "B": "Correct: w = A ÷ l = 72 ÷ 9 = 8 m.",
+      "C": "Student multiplies the area by the length instead of dividing: 72 × 9 = 648 m.",
+      "D": "Student divides by 2 instead of by 9, applying a halving operation unrelated to the formula: 72 ÷ 2 = 36 m."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Rearrange A = lw to solve for w: divide both sides by l. That means dividing 72 by 9."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check your answer: multiply your width by 9 and confirm the product is 72."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangle", "area", "missing_width", "inverse_reasoning"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_026",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.4",
+    "topic": "inverse_measurement_problems",
+    "topic_text": "Inverse Measurement Problems",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the height of a triangle given its area and base",
+      "applying the inverse of A = ½bh, including the factor of 2 when isolating the height"
+    ],
+    "question_text": "A triangle has an area of 40 cm² and a base of 10 cm. What is the height?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "8 cm",
+      "B": "4 cm",
+      "C": "20 cm",
+      "D": "400 cm"
+    },
+    "correct_answer": "A",
+    "explanation": "Using A = ½bh, solve for height:\nh = 2A ÷ b = (2 × 40) ÷ 10 = 80 ÷ 10 = 8 cm\n\nCheck: ½ × 10 × 8 = 40 ✓",
+    "distractor_logic": {
+      "A": "Correct: h = 2A ÷ b = 80 ÷ 10 = 8 cm.",
+      "B": "Student divides the area by the base without multiplying by 2 first: 40 ÷ 10 = 4 cm.",
+      "C": "Student divides the area by 2 only and forgets to also divide by the base: 40 ÷ 2 = 20 cm.",
+      "D": "Student multiplies area by base instead of dividing: 40 × 10 = 400 cm."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Rearrange A = ½bh to solve for h: multiply both sides by 2 first, then divide by b. The formula gives h = 2A ÷ b."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check your answer: substitute h = 8 and b = 10 into ½ × 10 × 8 and confirm it equals 40."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["triangle", "area", "missing_height", "inverse_reasoning"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_027",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.4",
+    "topic": "inverse_measurement_problems",
+    "topic_text": "Inverse Measurement Problems",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the side length of a square given its area by taking a square root",
+      "applying the inverse of A = s² to isolate the side length"
+    ],
+    "question_text": "A square has an area of 49 yd². What is the side length of the square?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "24.5 yd",
+      "B": "12.25 yd",
+      "C": "7 yd",
+      "D": "2,401 yd"
+    },
+    "correct_answer": "C",
+    "explanation": "Using A = s², solve for side length:\ns = √A = √49 = 7 yd\n\nCheck: 7² = 49 ✓",
+    "distractor_logic": {
+      "A": "Student divides the area by 2 instead of taking the square root: 49 ÷ 2 = 24.5 yd.",
+      "B": "Student divides the area by 4 (the number of sides of a square) instead of taking the square root: 49 ÷ 4 = 12.25 yd.",
+      "C": "Correct: s = √49 = 7 yd.",
+      "D": "Student squares the area instead of taking the square root: 49² = 2,401 yd."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A square's area is s². To find s from the area, take the square root: s = √49."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check your answer: square your result and confirm it equals 49."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["square", "area", "missing_side", "square_root", "inverse_reasoning"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_028",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.4",
+    "topic": "inverse_measurement_problems",
+    "topic_text": "Inverse Measurement Problems",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the side length of a regular hexagon given its perimeter",
+      "dividing the perimeter by the number of sides to isolate the side length"
+    ],
+    "question_text": "A regular hexagon has a perimeter of 66 in. What is the length of each side?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "60 in",
+      "B": "11 in",
+      "C": "396 in",
+      "D": "33 in"
+    },
+    "correct_answer": "B",
+    "explanation": "A regular hexagon has 6 equal sides. To find one side length, divide the perimeter by 6:\ns = P ÷ 6 = 66 ÷ 6 = 11 in\n\nCheck: 6 × 11 = 66 ✓",
+    "distractor_logic": {
+      "A": "Student subtracts the number of sides from the perimeter instead of dividing: 66 − 6 = 60 in.",
+      "B": "Correct: s = 66 ÷ 6 = 11 in.",
+      "C": "Student multiplies the perimeter by the number of sides instead of dividing: 66 × 6 = 396 in.",
+      "D": "Student divides by 2 instead of 6, using half the perimeter rather than a sixth: 66 ÷ 2 = 33 in."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A regular hexagon has 6 equal sides. The perimeter is the total of all 6 — divide by 6 to find one side."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Multiply your answer by 6 and confirm the result equals 66."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["hexagon", "perimeter", "missing_side", "inverse_reasoning"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_024",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.4",
+    "topic": "inverse_measurement_problems",
+    "topic_text": "Inverse Measurement Problems",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the height of a parallelogram given its area and base",
+      "applying the inverse of A = bh to isolate the missing height"
+    ],
+    "question_text": "A parallelogram has an area of 96 cm² and a base of 12 cm. What is the height of the parallelogram?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "8 cm",
+      "B": "84 cm",
+      "C": "48 cm",
+      "D": "1,152 cm"
+    },
+    "correct_answer": "A",
+    "explanation": "Using A = bh, solve for height:\nh = A ÷ b = 96 ÷ 12 = 8 cm\n\nCheck: 12 × 8 = 96 ✓",
+    "distractor_logic": {
+      "A": "Correct: h = A ÷ b = 96 ÷ 12 = 8 cm.",
+      "B": "Student subtracts the base from the area instead of dividing: 96 − 12 = 84 cm.",
+      "C": "Student divides by 2 (applying the triangle formula's ½ to the parallelogram): 96 ÷ 2 = 48 cm.",
+      "D": "Student multiplies the area by the base instead of dividing: 96 × 12 = 1,152 cm."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The parallelogram area formula is A = bh — no ½ factor. To find h, divide both sides by b: h = A ÷ b."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check: multiply your height by 12 and confirm the product is 96."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["parallelogram", "area", "missing_height", "inverse_reasoning"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_025",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.4",
+    "topic": "inverse_measurement_problems",
+    "topic_text": "Inverse Measurement Problems",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the missing base of a trapezoid given its area, height, and one base",
+      "applying the inverse of A = ½(b₁ + b₂)h to isolate the unknown base"
+    ],
+    "question_text": "A trapezoid has an area of 90 m², a height of 10 m, and one base of 8 m. What is the length of the other base?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "82 m",
+      "B": "18 m",
+      "C": "10 m",
+      "D": "9 m"
+    },
+    "correct_answer": "C",
+    "explanation": "Using A = ½(b₁ + b₂)h, solve for b₂:\n90 = ½(8 + b₂)(10)\n90 = 5(8 + b₂)\n18 = 8 + b₂\nb₂ = 18 − 8 = 10 m\n\nCheck: ½(8 + 10)(10) = ½(18)(10) = 90 ✓",
+    "distractor_logic": {
+      "A": "Student subtracts the known base from the area instead of working through the formula: 90 − 8 = 82 m.",
+      "B": "Student correctly finds the sum of the two bases (b₁ + b₂ = 18) but reports that sum as the missing base rather than subtracting the known base: 18 − 8 = 10.",
+      "C": "Correct: 90 = 5(8 + b₂) → 18 = 8 + b₂ → b₂ = 10 m.",
+      "D": "Student divides the area by the height only (without accounting for the ½): 90 ÷ 10 = 9 m, and reports this directly as the missing base."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Substitute the known values into A = ½(b₁ + b₂)h. Simplify step by step: divide both sides by ½h first, then subtract the known base."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check your answer: substitute both bases and the height into ½(b₁ + b₂)h and confirm the result is 90."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["trapezoid", "area", "missing_base", "inverse_reasoning"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_026",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.4",
+    "topic": "inverse_measurement_problems",
+    "topic_text": "Inverse Measurement Problems",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the radius of a circle given its area using A = πr²",
+      "dividing by π and taking the square root to isolate the radius in a two-step inverse process"
+    ],
+    "question_text": "A circle has an area of 153.86 cm². Using π ≈ 3.14, what is the radius of the circle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "49 cm",
+      "B": "24.5 cm",
+      "C": "3.14 cm",
+      "D": "7 cm"
+    },
+    "correct_answer": "D",
+    "explanation": "Using A = πr², solve for r:\nr² = A ÷ π = 153.86 ÷ 3.14 = 49\nr = √49 = 7 cm\n\nCheck: 3.14 × 7² = 3.14 × 49 = 153.86 ✓",
+    "distractor_logic": {
+      "A": "Student correctly finds r² = 49 but stops there without taking the square root, reporting r² as the radius.",
+      "B": "Student finds r² = 49 and then halves it rather than taking the square root: 49 ÷ 2 = 24.5 cm.",
+      "C": "Student reports π ≈ 3.14 as the answer, confusing the value of the constant with the radius.",
+      "D": "Correct: r² = 153.86 ÷ 3.14 = 49; r = √49 = 7 cm."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Rearrange A = πr²: divide A by π to get r², then take the square root to get r. Both steps are required."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check: square your radius and multiply by 3.14 — the result should equal 153.86."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["circle", "area", "missing_radius", "square_root", "inverse_reasoning"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_027",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.4",
+    "topic": "inverse_measurement_problems",
+    "topic_text": "Inverse Measurement Problems",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the base of a triangle given its area and height",
+      "correctly applying the factor of 2 when isolating the base in A = ½bh"
+    ],
+    "question_text": "A triangle has an area of 37.5 in² and a height of 5 in. What is the base of the triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "15 in",
+      "B": "7.5 in",
+      "C": "3.75 in",
+      "D": "187.5 in"
+    },
+    "correct_answer": "A",
+    "explanation": "Using A = ½bh, solve for base:\nb = 2A ÷ h = (2 × 37.5) ÷ 5 = 75 ÷ 5 = 15 in\n\nCheck: ½ × 15 × 5 = 37.5 ✓",
+    "distractor_logic": {
+      "A": "Correct: b = 2A ÷ h = 75 ÷ 5 = 15 in.",
+      "B": "Student divides the area by the height without first multiplying by 2: 37.5 ÷ 5 = 7.5 in.",
+      "C": "Student divides the area by twice the height (2h = 10) instead of multiplying A by 2 then dividing by h: 37.5 ÷ 10 = 3.75 in.",
+      "D": "Student multiplies the area by the height instead of dividing: 37.5 × 5 = 187.5 in."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Rearrange A = ½bh: multiply both sides by 2 first, then divide by h. The formula gives b = 2A ÷ h."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check your answer: substitute b = 15 and h = 5 into ½ × b × h and confirm the result is 37.5."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["triangle", "area", "missing_base", "inverse_reasoning", "decimal_dimensions"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_028",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.4",
+    "topic": "inverse_measurement_problems",
+    "topic_text": "Inverse Measurement Problems",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the dimensions of a rectangle when one side is expressed as a multiple of the other and the perimeter is known",
+      "setting up and solving a one-variable equation from a perimeter and ratio constraint"
+    ],
+    "question_text": "A rectangle has a perimeter of 56 cm. The length is 3 times the width. What is the width?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "14 cm",
+      "B": "7 cm",
+      "C": "21 cm",
+      "D": "28 cm"
+    },
+    "correct_answer": "B",
+    "explanation": "Let w = width and l = 3w.\n\nSubstitute into the perimeter formula:\nP = 2(l + w) = 2(3w + w) = 2(4w) = 8w\n56 = 8w\nw = 7 cm\n\nCheck: l = 3 × 7 = 21 cm; P = 2(21 + 7) = 2(28) = 56 ✓",
+    "distractor_logic": {
+      "A": "Student finds l + w = 28 (half the perimeter) and divides by 2 again: 28 ÷ 2 = 14 cm, conflating the sum of dimensions with the width.",
+      "B": "Correct: w = 56 ÷ 8 = 7 cm.",
+      "C": "Student finds the width correctly (7 cm) but reports the length instead: l = 3 × 7 = 21 cm.",
+      "D": "Student divides the perimeter by 2 and reports that as the answer: 56 ÷ 2 = 28 cm."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Express both dimensions in terms of w: l = 3w. Substitute into P = 2(l + w) and solve the resulting equation for w."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Once you find w, compute l = 3w and verify: 2(l + w) should equal 56."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangle", "perimeter", "ratio_constraint", "inverse_reasoning", "AR_cross_strand"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_024",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.4",
+    "topic": "inverse_measurement_problems",
+    "topic_text": "Inverse Measurement Problems",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "solving for an unknown variable in a rectangle's algebraic dimension expression given the area",
+      "setting up and solving a linear equation from an area constraint with one algebraic dimension"
+    ],
+    "question_text": "A rectangle has dimensions (x + 5) and 4. Its area is 48. What is the value of x?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "12",
+      "B": "43",
+      "C": "7",
+      "D": "3"
+    },
+    "correct_answer": "C",
+    "explanation": "Set up the area equation:\nA = (x + 5) × 4 = 48\n4(x + 5) = 48\nx + 5 = 12\nx = 12 − 5 = 7\n\nCheck: (7 + 5) × 4 = 12 × 4 = 48 ✓",
+    "distractor_logic": {
+      "A": "Student divides the area by 4 (getting 12) and reports that result as x without subtracting 5: 48 ÷ 4 = 12.",
+      "B": "Student subtracts 5 from the area instead of solving the equation: 48 − 5 = 43.",
+      "C": "Correct: 4(x + 5) = 48 → x + 5 = 12 → x = 7.",
+      "D": "Student divides the area by 4 to get 12, then divides again by 4: 12 ÷ 4 = 3."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Write the area equation: (x + 5) × 4 = 48. Divide both sides by 4 to isolate (x + 5), then subtract 5 to find x."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute your x back: (x + 5) × 4 should equal 48. Check that both steps — division and subtraction — were completed."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangle", "area", "algebraic_expression", "solve_for_x", "AR_cross_strand"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_025",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.4",
+    "topic": "inverse_measurement_problems",
+    "topic_text": "Inverse Measurement Problems",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "solving for an unknown variable in a triangle's algebraic side expressions given the perimeter",
+      "combining like terms across three algebraic side expressions and solving the resulting equation"
+    ],
+    "question_text": "A triangle has sides (2x + 1), (x + 4), and (3x − 2). Its perimeter is 45. What is the value of x?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6",
+      "B": "8",
+      "C": "7.5",
+      "D": "7"
+    },
+    "correct_answer": "D",
+    "explanation": "Add all three sides and set equal to the perimeter:\n(2x + 1) + (x + 4) + (3x − 2) = 45\n6x + 3 = 45\n6x = 42\nx = 7\n\nCheck: sides = 2(7)+1=15, 7+4=11, 3(7)−2=19; sum = 15+11+19 = 45 ✓",
+    "distractor_logic": {
+      "A": "Student correctly forms 6x + 3 = 45 → 6x = 42, but then divides by 7 instead of 6: 42 ÷ 7 = 6.",
+      "B": "Student miscounts the x-coefficient when combining like terms, treating the expression as 5x + 3 = 45: 5x = 42, x ≈ 8.",
+      "C": "Student correctly forms 6x + 3 = 45 but then sets 6x = 45 (ignores subtracting the constant 3): 45 ÷ 6 = 7.5.",
+      "D": "Correct: 6x + 3 = 45 → 6x = 42 → x = 7."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Add all three side expressions and combine like terms. Set the resulting expression equal to 45 and solve for x."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute your x into all three sides, compute each length, and verify the three values sum to 45."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["triangle", "perimeter", "algebraic_sides", "solve_for_x", "AR_cross_strand"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_026",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.4",
+    "topic": "inverse_measurement_problems",
+    "topic_text": "Inverse Measurement Problems",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the height of a triangle in a composite figure given the total area and the rectangle component's area",
+      "isolating a missing dimension by subtracting known component areas from the total"
+    ],
+    "question_text": "A composite figure consists of a rectangle with length 8 m and height 10 m, topped by a triangle with the same base (8 m). The total area of the figure is 104 m². What is the height of the triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3 m",
+      "B": "6 m",
+      "C": "13 m",
+      "D": "24 m"
+    },
+    "correct_answer": "B",
+    "explanation": "Step 1 — Find the rectangle's area:\nA_rect = 8 × 10 = 80 m²\n\nStep 2 — Find the triangle's area by subtraction:\nA_tri = 104 − 80 = 24 m²\n\nStep 3 — Solve for the triangle's height:\n½ × 8 × h = 24\n4h = 24\nh = 6 m\n\nCheck: 80 + ½(8)(6) = 80 + 24 = 104 ✓",
+    "distractor_logic": {
+      "A": "Student finds the triangle area (24 m²) correctly but omits the ½ factor when solving for h: 8h = 24 → h = 3 m.",
+      "B": "Correct: triangle area = 104 − 80 = 24 m²; ½ × 8 × h = 24 → h = 6 m.",
+      "C": "Student divides the total area by the base without isolating the triangle area first: 104 ÷ 8 = 13 m.",
+      "D": "Student correctly finds the triangle area (24) but reports it directly as the height rather than solving ½bh = 24 for h."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["draw_diagram", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Label the rectangle and triangle separately. Compute the rectangle's area, subtract it from the total to find the triangle's area, then solve ½bh = triangle area for h."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The total area minus the rectangle's area gives the triangle's area. From there, use A = ½bh and solve for h — don't forget the ½."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["composite_figure", "area", "inverse_reasoning", "triangle_height", "multi_step"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_027",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.4",
+    "topic": "inverse_measurement_problems",
+    "topic_text": "Inverse Measurement Problems",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "solving for an unknown variable in a trapezoid's algebraic base expressions given the area and height",
+      "combining algebraic bases, applying the trapezoid area formula, and solving the resulting linear equation"
+    ],
+    "question_text": "A trapezoid has parallel bases (x + 2) and (2x − 1) and a height of 6. Its area is 57. What is the value of x?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6",
+      "B": "19",
+      "C": "9.5",
+      "D": "3"
+    },
+    "correct_answer": "A",
+    "explanation": "Set up the area equation:\n57 = ½((x + 2) + (2x − 1))(6)\n57 = ½(3x + 1)(6)\n57 = 3(3x + 1)\n57 = 9x + 3\n54 = 9x\nx = 6\n\nCheck: bases = (6+2)=8 and (2×6−1)=11; A = ½(8+11)(6) = ½(19)(6) = 57 ✓",
+    "distractor_logic": {
+      "A": "Correct: solving 9x + 3 = 57 gives 9x = 54 → x = 6.",
+      "B": "Student correctly finds the sum of the two bases (b₁ + b₂ = 19) but reports that value as x rather than continuing to solve the equation.",
+      "C": "Student correctly finds ½(b₁ + b₂) = 9.5 (half the sum of bases) and reports that as x rather than solving for x algebraically.",
+      "D": "Student forms the equation correctly but rounds 54 ÷ 9 = 6 to 3 due to a division error, or divides 9x = 54 by 18 instead of 9."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Substitute into A = ½(b₁ + b₂)h. Combine the algebraic bases first, simplify, then solve the resulting equation for x step by step."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute your x back into both base expressions, then verify: ½(b₁ + b₂)(6) should equal 57."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["trapezoid", "area", "algebraic_bases", "solve_for_x", "AR_cross_strand"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_028",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.4",
+    "topic": "inverse_measurement_problems",
+    "topic_text": "Inverse Measurement Problems",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the dimensions of a rectangle from a perimeter and a linear relationship between sides",
+      "chaining the inverse perimeter solution into an area calculation as a two-stage problem"
+    ],
+    "question_text": "A rectangle's length is 5 more than its width. Its perimeter is 62 cm. What is the area of the rectangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "31 cm²",
+      "B": "13 cm²",
+      "C": "234 cm²",
+      "D": "169 cm²"
+    },
+    "correct_answer": "C",
+    "explanation": "Step 1 — Express the length in terms of width:\nl = w + 5\n\nStep 2 — Substitute into the perimeter formula:\n62 = 2(l + w) = 2((w + 5) + w) = 2(2w + 5) = 4w + 10\n52 = 4w\nw = 13 cm\nl = 13 + 5 = 18 cm\n\nStep 3 — Compute the area:\nA = l × w = 18 × 13 = 234 cm²\n\nCheck: P = 2(18 + 13) = 2(31) = 62 ✓",
+    "distractor_logic": {
+      "A": "Student finds l + w = 31 (half the perimeter) and reports that as the area.",
+      "B": "Student finds the width (w = 13) and reports it as the area without computing l × w.",
+      "C": "Correct: w = 13 cm, l = 18 cm; A = 18 × 13 = 234 cm².",
+      "D": "Student finds w = 13 cm correctly but forgets to add 5 for the length, using l = w = 13: A = 13 × 13 = 169 cm²."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "There are two stages: first use the perimeter and the l = w + 5 relationship to find both dimensions, then multiply them to find the area."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "After finding w and l, verify the perimeter: 2(l + w) should equal 62. Then compute the area as l × w."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangle", "perimeter", "area", "linear_relationship", "multi_step", "AR_cross_strand"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  }
+]

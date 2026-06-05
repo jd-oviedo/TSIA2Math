@@ -1,0 +1,1052 @@
+[
+  {
+    "item_id": "GR_B_009",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.1",
+    "topic": "perimeter_of_polygons_and_multi_sided_figures",
+    "topic_text": "Perimeter of Polygons and Multi-Sided Figures",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the perimeter of a rectangle using the formula P = 2(l + w)",
+      "distinguishing perimeter from area in a rectangle context"
+    ],
+    "question_text": "A rectangle has a length of 8 cm and a width of 5 cm. What is the perimeter of the rectangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "26 cm",
+      "B": "40 cm",
+      "C": "13 cm",
+      "D": "20 cm"
+    },
+    "correct_answer": "A",
+    "explanation": "The perimeter of a rectangle is found using the formula:\nP = 2(l + w)\nP = 2(8 + 5)\nP = 2(13)\nP = 26 cm\n\nCheck: 8 + 5 + 8 + 5 = 26 ✓",
+    "distractor_logic": {
+      "A": "Correct: applying P = 2(l + w) gives 2(8 + 5) = 2(13) = 26 cm.",
+      "B": "Student multiplies length by width (8 × 5 = 40), computing the area of the rectangle instead of the perimeter.",
+      "C": "Student adds only one length and one width (8 + 5 = 13), finding half the perimeter rather than the full perimeter.",
+      "D": "Student multiplies the number of sides of a rectangle (4) by the width only (4 × 5 = 20), ignoring the length entirely."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A rectangle has two pairs of equal sides. The perimeter adds up all four sides: both lengths and both widths."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute l = 8 and w = 5 into P = 2(l + w), then simplify step by step."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangle", "perimeter", "formula_application", "two_dimensions"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_010",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.1",
+    "topic": "perimeter_of_polygons_and_multi_sided_figures",
+    "topic_text": "Perimeter of Polygons and Multi-Sided Figures",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the perimeter of a triangle by summing all three side lengths",
+      "recognizing that every side must be included in a perimeter calculation"
+    ],
+    "question_text": "A triangle has sides measuring 7 ft, 9 ft, and 11 ft. What is the perimeter of the triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "693 ft",
+      "B": "18 ft",
+      "C": "27 ft",
+      "D": "9 ft"
+    },
+    "correct_answer": "C",
+    "explanation": "The perimeter of a triangle is the sum of all three side lengths:\nP = 7 + 9 + 11 = 27 ft",
+    "distractor_logic": {
+      "A": "Student multiplies all three sides together instead of adding them: 7 × 9 × 11 = 693 ft.",
+      "B": "Student adds only two of the three sides and omits the middle value: 7 + 11 = 18 ft.",
+      "C": "Correct: the perimeter is the sum of all three sides: 7 + 9 + 11 = 27 ft.",
+      "D": "Student reports only one side length (9 ft) rather than summing all three sides."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Perimeter means the total distance around the figure. For a triangle, that means adding all three sides — don't leave any out."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The perimeter must be larger than any single side. Eliminate any answer smaller than the longest side."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["triangle", "perimeter", "side_sum", "polygon"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_011",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.1",
+    "topic": "perimeter_of_polygons_and_multi_sided_figures",
+    "topic_text": "Perimeter of Polygons and Multi-Sided Figures",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the perimeter of a regular pentagon using P = n × s",
+      "applying the number of sides of a regular polygon correctly to find its perimeter"
+    ],
+    "question_text": "A regular pentagon has a side length of 6 m. What is the perimeter of the pentagon?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6 m",
+      "B": "30 m",
+      "C": "24 m",
+      "D": "36 m"
+    },
+    "correct_answer": "B",
+    "explanation": "A regular pentagon has 5 equal sides. The perimeter is:\nP = n × s = 5 × 6 = 30 m",
+    "distractor_logic": {
+      "A": "Student reports the length of one side (6 m) without multiplying by the number of sides.",
+      "B": "Correct: a regular pentagon has 5 sides, so P = 5 × 6 = 30 m.",
+      "C": "Student multiplies by 4 instead of 5, treating the pentagon as if it were a quadrilateral: 4 × 6 = 24 m.",
+      "D": "Student multiplies by 6 instead of 5, confusing a pentagon (5 sides) with a hexagon (6 sides): 6 × 6 = 36 m."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The key information is that the pentagon is regular (all sides equal) and has a side length of 6 m. Count the number of sides a pentagon has, then multiply."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The perimeter must be larger than one side length. Eliminate 6 m right away. Then think carefully about how many sides a pentagon has."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["pentagon", "regular_polygon", "perimeter", "formula_application"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_012",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.1",
+    "topic": "perimeter_of_polygons_and_multi_sided_figures",
+    "topic_text": "Perimeter of Polygons and Multi-Sided Figures",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the perimeter of an irregular quadrilateral by summing all four given side lengths",
+      "recognizing that all sides of an irregular polygon must be included in the perimeter sum"
+    ],
+    "question_text": "An irregular quadrilateral has sides measuring 4 in, 7 in, 4 in, and 9 in. What is the perimeter?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "20 in",
+      "B": "26 in",
+      "C": "32 in",
+      "D": "24 in"
+    },
+    "correct_answer": "D",
+    "explanation": "The perimeter of any polygon is the sum of all its side lengths:\nP = 4 + 7 + 4 + 9 = 24 in",
+    "distractor_logic": {
+      "A": "Student omits one of the two 4-inch sides, summing only three sides: 4 + 7 + 9 = 20 in.",
+      "B": "Student treats the figure as a rectangle, pairing the two smallest sides and two largest, and applying P = 2(l + w): 2(4 + 9) = 26 in.",
+      "C": "Student treats the figure as a rectangle using the two largest sides: 2(7 + 9) = 32 in.",
+      "D": "Correct: the perimeter is the sum of all four sides: 4 + 7 + 4 + 9 = 24 in."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "An irregular quadrilateral does not have a special formula — just add all four sides. Make sure to include every side, even if two of them are equal."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "List all four side lengths and add them one at a time: 4 + 7 = 11, then 11 + 4 = 15, then 15 + 9 = 24."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadrilateral", "irregular_polygon", "perimeter", "side_sum"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_013",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.1",
+    "topic": "perimeter_of_polygons_and_multi_sided_figures",
+    "topic_text": "Perimeter of Polygons and Multi-Sided Figures",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the perimeter of a regular hexagon using P = n × s",
+      "distinguishing hexagons from other regular polygons by their side count"
+    ],
+    "question_text": "A regular hexagon has a side length of 5 yd. What is the perimeter of the hexagon?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "30 yd",
+      "B": "5 yd",
+      "C": "25 yd",
+      "D": "35 yd"
+    },
+    "correct_answer": "A",
+    "explanation": "A regular hexagon has 6 equal sides. The perimeter is:\nP = n × s = 6 × 5 = 30 yd",
+    "distractor_logic": {
+      "A": "Correct: a regular hexagon has 6 sides, so P = 6 × 5 = 30 yd.",
+      "B": "Student reports the length of one side (5 yd) without multiplying by the number of sides.",
+      "C": "Student multiplies by 5 instead of 6, confusing a hexagon (6 sides) with a pentagon (5 sides): 5 × 5 = 25 yd.",
+      "D": "Student multiplies by 7 instead of 6, confusing a hexagon (6 sides) with a heptagon (7 sides): 7 × 5 = 35 yd."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The key is knowing how many sides a hexagon has. 'Hex' means six — multiply the side length by 6."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The perimeter must be greater than one side (5 yd). Eliminate 5 yd. Then recall that 'hex' = 6 sides to choose the right multiplier."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["hexagon", "regular_polygon", "perimeter", "formula_application"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_009",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.1",
+    "topic": "perimeter_of_polygons_and_multi_sided_figures",
+    "topic_text": "Perimeter of Polygons and Multi-Sided Figures",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "applying the rectangle perimeter formula in reverse to find a missing side length",
+      "using a known perimeter and one dimension to solve for the other dimension"
+    ],
+    "question_text": "A rectangle has a perimeter of 54 cm and a length of 18 cm. What is the width of the rectangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "36 cm",
+      "B": "27 cm",
+      "C": "9 cm",
+      "D": "3 cm"
+    },
+    "correct_answer": "C",
+    "explanation": "Use the perimeter formula and solve for the width:\nP = 2(l + w)\n54 = 2(18 + w)\n27 = 18 + w\nw = 27 − 18 = 9 cm\n\nCheck: 2(18 + 9) = 2(27) = 54 ✓",
+    "distractor_logic": {
+      "A": "Student subtracts only the length from the perimeter without dividing by 2 first: 54 − 18 = 36 cm.",
+      "B": "Student divides the perimeter by 2 and reports that result as the width, rather than continuing to subtract the length: 54 ÷ 2 = 27 cm.",
+      "C": "Correct: dividing by 2 gives 27, then subtracting the length gives 27 − 18 = 9 cm.",
+      "D": "Student divides the perimeter by the length instead of applying the formula: 54 ÷ 18 = 3 cm."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "You know P and l — substitute them into P = 2(l + w) and solve for w. Start by dividing both sides by 2."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Once you find w, check it: substitute both dimensions back into 2(l + w) and confirm the result equals 54."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangle", "perimeter", "missing_dimension", "inverse_reasoning"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_010",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.1",
+    "topic": "perimeter_of_polygons_and_multi_sided_figures",
+    "topic_text": "Perimeter of Polygons and Multi-Sided Figures",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the side length of a regular polygon given its perimeter",
+      "dividing the perimeter by the number of sides to isolate the side length"
+    ],
+    "question_text": "A regular octagon has a perimeter of 96 m. What is the length of each side?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "768 m",
+      "B": "12 m",
+      "C": "88 m",
+      "D": "24 m"
+    },
+    "correct_answer": "B",
+    "explanation": "A regular octagon has 8 equal sides. To find the side length, divide the perimeter by the number of sides:\ns = P ÷ n = 96 ÷ 8 = 12 m\n\nCheck: 8 × 12 = 96 ✓",
+    "distractor_logic": {
+      "A": "Student multiplies the perimeter by the number of sides instead of dividing: 96 × 8 = 768 m.",
+      "B": "Correct: dividing the perimeter by the 8 sides gives 96 ÷ 8 = 12 m.",
+      "C": "Student subtracts the number of sides from the perimeter instead of dividing: 96 − 8 = 88 m.",
+      "D": "Student divides by 4 instead of 8, using half the correct number of sides: 96 ÷ 4 = 24 m."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A regular octagon has 8 equal sides. If all sides are equal and you know the total perimeter, divide to find one side: s = P ÷ 8."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Multiply your answer by 8 and check that it equals 96."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["octagon", "regular_polygon", "perimeter", "missing_side"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_011",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.1",
+    "topic": "perimeter_of_polygons_and_multi_sided_figures",
+    "topic_text": "Perimeter of Polygons and Multi-Sided Figures",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the perimeter of an isosceles triangle using two equal sides and a distinct base",
+      "recognizing that all three sides of a triangle contribute to the perimeter"
+    ],
+    "question_text": "An isosceles triangle has two equal sides of 13 ft each and a base of 10 ft. What is the perimeter of the triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "46 ft",
+      "B": "130 ft",
+      "C": "26 ft",
+      "D": "36 ft"
+    },
+    "correct_answer": "D",
+    "explanation": "The perimeter is the sum of all three sides:\nP = 13 + 13 + 10 = 36 ft",
+    "distractor_logic": {
+      "A": "Student treats the triangle as a four-sided figure, adding both equal sides and counting the base twice: 13 + 13 + 10 + 10 = 46 ft.",
+      "B": "Student multiplies the two equal sides by the base instead of adding: 13 × 10 = 130 ft.",
+      "C": "Student adds only the two equal sides and omits the base: 13 + 13 = 26 ft.",
+      "D": "Correct: the perimeter is the sum of all three sides: 13 + 13 + 10 = 36 ft."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "An isosceles triangle has exactly three sides: two equal legs and one base. The perimeter adds all three — don't forget the base."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The perimeter must include all three sides. Eliminate any answer that could only come from adding two sides or multiplying."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["triangle", "isosceles", "perimeter", "side_sum"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_012",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.1",
+    "topic": "perimeter_of_polygons_and_multi_sided_figures",
+    "topic_text": "Perimeter of Polygons and Multi-Sided Figures",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the perimeter of a composite rectilinear figure by summing all labeled side lengths",
+      "tracking all sides of an irregular multi-sided figure to avoid omissions"
+    ],
+    "question_text": "An L-shaped figure has the following side lengths going around its boundary: 10 m, 4 m, 6 m, 4 m, 4 m, and 8 m. What is the perimeter of the figure?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "36 m",
+      "B": "32 m",
+      "C": "40 m",
+      "D": "80 m"
+    },
+    "correct_answer": "A",
+    "explanation": "The perimeter is the sum of all six side lengths:\nP = 10 + 4 + 6 + 4 + 4 + 8\nP = 14 + 6 + 4 + 4 + 8\nP = 20 + 4 + 4 + 8\nP = 36 m",
+    "distractor_logic": {
+      "A": "Correct: summing all six sides gives 10 + 4 + 6 + 4 + 4 + 8 = 36 m.",
+      "B": "Student omits one of the three 4 m sides, summing only five sides: 10 + 4 + 6 + 4 + 8 = 32 m.",
+      "C": "Student approximates the figure as a rectangle using the two longest sides: 2(10 + 10) = 40 m, or adds a phantom side not present in the figure.",
+      "D": "Student computes an area-like product using the two longest exterior dimensions instead of summing side lengths: 10 × 8 = 80 m."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "This figure has six sides — count them and make sure you include every one. A common error is skipping a repeated value."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Add the sides one at a time and keep a running total: 10 + 4 = 14, + 6 = 20, + 4 = 24, + 4 = 28, + 8 = 36."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["composite_figure", "L_shape", "perimeter", "six_sided"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_013",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.1",
+    "topic": "perimeter_of_polygons_and_multi_sided_figures",
+    "topic_text": "Perimeter of Polygons and Multi-Sided Figures",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the side length of a square given its perimeter",
+      "applying the inverse of P = 4s to solve for the side length"
+    ],
+    "question_text": "A square has a perimeter of 52 in. What is the length of one side?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "48 in",
+      "B": "208 in",
+      "C": "13 in",
+      "D": "26 in"
+    },
+    "correct_answer": "C",
+    "explanation": "A square has 4 equal sides. To find the side length, divide the perimeter by 4:\ns = P ÷ 4 = 52 ÷ 4 = 13 in\n\nCheck: 4 × 13 = 52 ✓",
+    "distractor_logic": {
+      "A": "Student subtracts the number of sides from the perimeter instead of dividing: 52 − 4 = 48 in.",
+      "B": "Student multiplies the perimeter by the number of sides instead of dividing: 52 × 4 = 208 in.",
+      "C": "Correct: a square has 4 equal sides, so s = 52 ÷ 4 = 13 in.",
+      "D": "Student divides by 2 instead of 4, as if the square had only two pairs of sides to split: 52 ÷ 2 = 26 in."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A square has 4 equal sides, so P = 4s. Rearrange to find s: divide the perimeter by 4."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Multiply your answer by 4 to check: if it equals 52, you're correct."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["square", "perimeter", "missing_side", "inverse_reasoning"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_009",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.1",
+    "topic": "perimeter_of_polygons_and_multi_sided_figures",
+    "topic_text": "Perimeter of Polygons and Multi-Sided Figures",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "determining the perimeter of a composite rectilinear figure after a corner notch is removed",
+      "recognizing that removing a rectangular corner notch from a rectangle does not change the total perimeter"
+    ],
+    "question_text": "A rectangular yard is 20 ft long and 14 ft wide. A square section with a side length of 5 ft is cut from one corner of the yard. What is the perimeter of the resulting figure?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "58 ft",
+      "B": "68 ft",
+      "C": "78 ft",
+      "D": "63 ft"
+    },
+    "correct_answer": "B",
+    "explanation": "When a square corner is removed from a rectangle, two sides of the original rectangle are each shortened by 5 ft, but two new interior sides of 5 ft each are added at the notch.\n\nOriginal rectangle perimeter: P = 2(20 + 14) = 2(34) = 68 ft\n\nNet change from the notch: −5 ft − 5 ft + 5 ft + 5 ft = 0 ft\n\nPerimeter of the resulting figure: 68 ft\n\nAlternatively, trace all six sides directly:\n20 + 9 + 5 + 5 + 15 + 14 = 68 ft ✓",
+    "distractor_logic": {
+      "A": "Student subtracts the two sides removed by the notch (5 + 5 = 10 ft) from the original perimeter but does not account for the two new interior sides added: 68 − 10 = 58 ft.",
+      "B": "Correct: removing a rectangular corner notch replaces two shortened sides with two equal new sides, leaving the perimeter unchanged at 2(20 + 14) = 68 ft.",
+      "C": "Student adds the two new interior sides of the notch (5 + 5 = 10 ft) to the original perimeter without subtracting the shortened portions: 68 + 10 = 78 ft.",
+      "D": "Student subtracts only one of the two 5 ft notch sides from the original perimeter: 68 − 5 = 63 ft."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["draw_diagram", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the rectangle and the removed corner. Label all six sides of the resulting figure and add them up — don't forget the two new interior sides created by the cut."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The notch removes two partial sides but adds two new sides of equal length. Think about whether the total perimeter increases, decreases, or stays the same."
+      }
+    ],
+    "content_context": "home_improvement",
+    "context_tags": ["composite_figure", "perimeter", "notch", "rectangle", "advanced_reasoning"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_010",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.1",
+    "topic": "perimeter_of_polygons_and_multi_sided_figures",
+    "topic_text": "Perimeter of Polygons and Multi-Sided Figures",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "converting mixed units before computing the perimeter of a rectangle",
+      "applying the unit conversion 1 yard = 3 feet within a perimeter problem"
+    ],
+    "question_text": "A rectangular garden is 3 yards long and 5 feet wide. What is the perimeter of the garden in feet?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "16 ft",
+      "B": "22 ft",
+      "C": "14 ft",
+      "D": "28 ft"
+    },
+    "correct_answer": "D",
+    "explanation": "Step 1 — Convert the length to feet:\n3 yards × 3 ft/yd = 9 feet\n\nStep 2 — Compute the perimeter with consistent units:\nP = 2(l + w) = 2(9 + 5) = 2(14) = 28 ft\n\nCheck: 9 + 5 + 9 + 5 = 28 ✓",
+    "distractor_logic": {
+      "A": "Student uses the length in yards without converting, treating yards as feet: 2(3 + 5) = 16 ft.",
+      "B": "Student adds 3 to the length instead of multiplying by 3 during conversion (3 yd → 3 + 3 = 6 ft instead of 9 ft): 2(6 + 5) = 22 ft.",
+      "C": "Student converts correctly to 9 ft but forgets to multiply by 2, reporting only l + w: 9 + 5 = 14 ft.",
+      "D": "Correct: converting 3 yd to 9 ft, then P = 2(9 + 5) = 28 ft."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The dimensions are in different units — yards and feet can't be combined directly. Convert yards to feet first (1 yd = 3 ft), then apply the perimeter formula."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "After converting, substitute both values in feet into P = 2(l + w) and simplify."
+      }
+    ],
+    "content_context": "gardening",
+    "context_tags": ["rectangle", "perimeter", "unit_conversion", "yards_to_feet", "mixed_units"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_011",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.1",
+    "topic": "perimeter_of_polygons_and_multi_sided_figures",
+    "topic_text": "Perimeter of Polygons and Multi-Sided Figures",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "evaluating algebraic side expressions by substituting a given value of x to find each side length",
+      "summing substituted side lengths to compute the perimeter of an irregular polygon"
+    ],
+    "question_text": "A quadrilateral has side lengths 2x, x + 3, 3x − 1, and 8, where x = 5. What is the perimeter of the quadrilateral?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "40",
+      "B": "41",
+      "C": "34",
+      "D": "32"
+    },
+    "correct_answer": "A",
+    "explanation": "Substitute x = 5 into each side expression:\n• 2x = 2(5) = 10\n• x + 3 = 5 + 3 = 8\n• 3x − 1 = 3(5) − 1 = 15 − 1 = 14\n• 8 = 8\n\nPerimeter = 10 + 8 + 14 + 8 = 40",
+    "distractor_logic": {
+      "A": "Correct: substituting x = 5 gives sides of 10, 8, 14, and 8; their sum is 40.",
+      "B": "Student evaluates 3x − 1 as 3x only, ignoring the subtraction: 3(5) = 15 instead of 14; total becomes 10 + 8 + 15 + 8 = 41.",
+      "C": "Student uses x = 4 instead of x = 5 throughout: 8 + 7 + 11 + 8 = 34.",
+      "D": "Student omits the constant side (8) from the sum, adding only the three variable sides: 10 + 8 + 14 = 32."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Substitute x = 5 into every side expression first. Evaluate each one completely — including any addition or subtraction in the expression — before adding the sides together."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Replace x with 5 in each expression: 2(5), 5 + 3, 3(5) − 1, and 8. Then add all four results."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadrilateral", "perimeter", "algebraic_expressions", "substitution"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_012",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.1",
+    "topic": "perimeter_of_polygons_and_multi_sided_figures",
+    "topic_text": "Perimeter of Polygons and Multi-Sided Figures",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "determining an unknown side length of an irregular polygon using the total perimeter and known sides",
+      "applying subtraction to isolate the missing side from a known perimeter total"
+    ],
+    "question_text": "An irregular pentagon has a perimeter of 55 ft. Four of the five sides measure 8 ft, 12 ft, 9 ft, and 11 ft. What is the length of the fifth side?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "40 ft",
+      "B": "95 ft",
+      "C": "15 ft",
+      "D": "11 ft"
+    },
+    "correct_answer": "C",
+    "explanation": "The sum of all five sides equals the perimeter. To find the missing side, subtract the sum of the four known sides from the total perimeter:\n\nSum of known sides: 8 + 12 + 9 + 11 = 40 ft\nMissing side: 55 − 40 = 15 ft\n\nCheck: 8 + 12 + 9 + 11 + 15 = 55 ✓",
+    "distractor_logic": {
+      "A": "Student computes the sum of the four known sides (40 ft) but reports that sum as the answer rather than subtracting it from the perimeter.",
+      "B": "Student adds the four known sides to the perimeter instead of subtracting: 55 + 40 = 95 ft.",
+      "C": "Correct: the missing side is 55 − (8 + 12 + 9 + 11) = 55 − 40 = 15 ft.",
+      "D": "Student reports the largest of the four known sides (11 ft), confusing 'missing side' with 'greatest known side.'"
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The perimeter is the total of all five sides. You know four of them — add those four, then subtract from the total perimeter to find the fifth."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Once you find the missing side, add all five sides together and verify the sum equals 55 ft."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["pentagon", "perimeter", "missing_side", "inverse_reasoning"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_013",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.1",
+    "topic": "perimeter_of_polygons_and_multi_sided_figures",
+    "topic_text": "Perimeter of Polygons and Multi-Sided Figures",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the perimeter of a regular hexagon and converting the result to a different unit",
+      "chaining a perimeter calculation with a feet-to-inches unit conversion"
+    ],
+    "question_text": "A regular hexagon has a side length of 2.5 feet. What is the perimeter of the hexagon in inches?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "15 inches",
+      "B": "180 inches",
+      "C": "30 inches",
+      "D": "150 inches"
+    },
+    "correct_answer": "B",
+    "explanation": "Step 1 — Find the perimeter in feet:\nP = 6 × 2.5 = 15 feet\n\nStep 2 — Convert to inches (1 foot = 12 inches):\n15 × 12 = 180 inches",
+    "distractor_logic": {
+      "A": "Student correctly computes the perimeter in feet (6 × 2.5 = 15) but stops there without converting to inches, reporting 15 inches instead of 15 feet.",
+      "B": "Correct: P = 6 × 2.5 = 15 ft; converting gives 15 × 12 = 180 inches.",
+      "C": "Student converts the side length to inches first (2.5 × 12 = 30 in) but then reports that single converted side length rather than multiplying by 6 to find the full perimeter.",
+      "D": "Student converts the side to inches correctly (30 in) but multiplies by 5 instead of 6, confusing a hexagon (6 sides) with a pentagon (5 sides): 5 × 30 = 150 inches."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "There are two steps: find the perimeter in feet first (6 sides × 2.5 ft), then convert that perimeter to inches using 1 ft = 12 in."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check your answer by working backwards: divide the inch total by 12 to get feet, then divide by 6 to confirm you get 2.5 ft per side."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["hexagon", "perimeter", "unit_conversion", "feet_to_inches", "multi_step"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  }
+]

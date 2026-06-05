@@ -1,0 +1,1052 @@
+[
+  {
+    "item_id": "GR_B_019",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.3",
+    "topic": "area_of_2d_figures",
+    "topic_text": "Area of 2D Figures",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the area of a rectangle using A = lw",
+      "distinguishing area from perimeter in a rectangle context"
+    ],
+    "question_text": "A rectangle has a length of 11 m and a width of 7 m. What is the area of the rectangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "36 m²",
+      "B": "18 m²",
+      "C": "77 m²",
+      "D": "154 m²"
+    },
+    "correct_answer": "C",
+    "explanation": "The area of a rectangle is:\nA = l × w = 11 × 7 = 77 m²",
+    "distractor_logic": {
+      "A": "Student computes the perimeter instead of the area: 2(11 + 7) = 36 m².",
+      "B": "Student adds length and width instead of multiplying: 11 + 7 = 18 m².",
+      "C": "Correct: A = l × w = 11 × 7 = 77 m².",
+      "D": "Student doubles the area after computing it correctly: 2 × 77 = 154 m²."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Area measures the space inside a figure. For a rectangle, multiply length by width: A = l × w."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute l = 11 and w = 7 into A = lw: A = 11 × 7."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangle", "area", "formula_application", "two_dimensions"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_020",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.3",
+    "topic": "area_of_2d_figures",
+    "topic_text": "Area of 2D Figures",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the area of a triangle using A = ½bh",
+      "recognizing that the ½ factor is required in the triangle area formula"
+    ],
+    "question_text": "A triangle has a base of 10 ft and a height of 6 ft. What is the area of the triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "30 ft²",
+      "B": "60 ft²",
+      "C": "16 ft²",
+      "D": "32 ft²"
+    },
+    "correct_answer": "A",
+    "explanation": "The area of a triangle is:\nA = ½ × b × h = ½ × 10 × 6 = 30 ft²",
+    "distractor_logic": {
+      "A": "Correct: A = ½ × 10 × 6 = 30 ft².",
+      "B": "Student omits the ½ factor, computing A = b × h = 10 × 6 = 60 ft².",
+      "C": "Student adds base and height instead of multiplying: 10 + 6 = 16 ft².",
+      "D": "Student adds base and height then doubles, applying a perimeter-like operation: 2(10 + 6) = 32 ft²."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The area of a triangle is half the area of a rectangle with the same base and height: A = ½ × b × h."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute b = 10 and h = 6 into A = ½bh: A = ½ × 10 × 6 = 5 × 6 = 30."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["triangle", "area", "formula_application", "half_factor"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_021",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.3",
+    "topic": "area_of_2d_figures",
+    "topic_text": "Area of 2D Figures",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the area of a parallelogram using A = bh",
+      "recognizing that the area formula for a parallelogram does not include a ½ factor"
+    ],
+    "question_text": "A parallelogram has a base of 9 cm and a perpendicular height of 5 cm. What is the area of the parallelogram?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "14 cm²",
+      "B": "90 cm²",
+      "C": "22.5 cm²",
+      "D": "45 cm²"
+    },
+    "correct_answer": "D",
+    "explanation": "The area of a parallelogram is:\nA = b × h = 9 × 5 = 45 cm²\n\nNote: unlike a triangle, there is no ½ factor in the parallelogram area formula.",
+    "distractor_logic": {
+      "A": "Student adds base and height instead of multiplying: 9 + 5 = 14 cm².",
+      "B": "Student doubles the correct area: 2 × 45 = 90 cm².",
+      "C": "Student applies the triangle formula instead of the parallelogram formula: ½ × 9 × 5 = 22.5 cm².",
+      "D": "Correct: A = b × h = 9 × 5 = 45 cm²."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The area of a parallelogram is base times perpendicular height: A = bh. There is no ½ — that belongs to the triangle formula."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any answer that comes from adding b and h. Then decide whether a ½ factor is needed — it is not for a parallelogram."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["parallelogram", "area", "formula_application", "perpendicular_height"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_022",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.3",
+    "topic": "area_of_2d_figures",
+    "topic_text": "Area of 2D Figures",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the area of a trapezoid using A = ½(b₁ + b₂)h",
+      "correctly applying the ½ factor and summing both bases in the trapezoid area formula"
+    ],
+    "question_text": "A trapezoid has parallel bases of 8 in and 12 in and a height of 5 in. What is the area of the trapezoid?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "100 in²",
+      "B": "50 in²",
+      "C": "25 in²",
+      "D": "200 in²"
+    },
+    "correct_answer": "B",
+    "explanation": "The area of a trapezoid is:\nA = ½(b₁ + b₂) × h\nA = ½(8 + 12) × 5\nA = ½(20) × 5\nA = 10 × 5\nA = 50 in²",
+    "distractor_logic": {
+      "A": "Student omits the ½ factor: (8 + 12) × 5 = 20 × 5 = 100 in².",
+      "B": "Correct: A = ½(8 + 12)(5) = ½(20)(5) = 50 in².",
+      "C": "Student applies the ½ factor twice: ½ × ½ × 20 × 5 = 25 in².",
+      "D": "Student omits the ½ factor and then doubles the result: 2 × (20 × 5) = 200 in²."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A trapezoid has two parallel bases. Add them together, multiply by the height, then multiply by ½: A = ½(b₁ + b₂)h."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Step by step: 8 + 12 = 20; 20 × 5 = 100; 100 × ½ = 50."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["trapezoid", "area", "formula_application", "two_bases"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_023",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.3",
+    "topic": "area_of_2d_figures",
+    "topic_text": "Area of 2D Figures",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the area of a circle using A = πr²",
+      "distinguishing the circle area formula from the circumference formula"
+    ],
+    "question_text": "A circle has a radius of 4 yd. Using π ≈ 3.14, what is the area of the circle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "25.12 yd²",
+      "B": "12.56 yd²",
+      "C": "50.24 yd²",
+      "D": "200.96 yd²"
+    },
+    "correct_answer": "C",
+    "explanation": "The area of a circle is:\nA = πr² = 3.14 × 4² = 3.14 × 16 = 50.24 yd²",
+    "distractor_logic": {
+      "A": "Student applies the circumference formula instead of the area formula: C = 2πr = 2 × 3.14 × 4 = 25.12 yd².",
+      "B": "Student uses πr without squaring the radius: 3.14 × 4 = 12.56 yd².",
+      "C": "Correct: A = πr² = 3.14 × 16 = 50.24 yd².",
+      "D": "Student uses the diameter (8 yd) in place of the radius in A = πr²: 3.14 × 8² = 3.14 × 64 = 200.96 yd²."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The area formula for a circle is A = πr². Square the radius first, then multiply by π."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute r = 4: first compute 4² = 16, then A = 3.14 × 16."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["circle", "area", "formula_application", "radius_squared"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_019",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.3",
+    "topic": "area_of_2d_figures",
+    "topic_text": "Area of 2D Figures",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding a missing dimension of a rectangle given its area and one side length",
+      "applying the inverse of A = lw to isolate the unknown width"
+    ],
+    "question_text": "A rectangle has an area of 96 cm² and a length of 16 cm. What is the width of the rectangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6 cm",
+      "B": "80 cm",
+      "C": "1,536 cm",
+      "D": "48 cm"
+    },
+    "correct_answer": "A",
+    "explanation": "Using A = lw, solve for width:\nw = A ÷ l = 96 ÷ 16 = 6 cm\n\nCheck: 16 × 6 = 96 ✓",
+    "distractor_logic": {
+      "A": "Correct: w = A ÷ l = 96 ÷ 16 = 6 cm.",
+      "B": "Student subtracts the length from the area instead of dividing: 96 − 16 = 80 cm.",
+      "C": "Student multiplies area by length instead of dividing: 96 × 16 = 1,536 cm.",
+      "D": "Student divides by 2 instead of 16: 96 ÷ 2 = 48 cm."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "You know A and l — rearrange A = lw to solve for w: divide both sides by l."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check your answer: multiply your width by 16 and confirm the product equals 96."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangle", "area", "missing_dimension", "inverse_reasoning"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_020",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.3",
+    "topic": "area_of_2d_figures",
+    "topic_text": "Area of 2D Figures",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the area of a triangle with two-digit dimensions using A = ½bh",
+      "correctly sequencing the multiplication and halving steps in the triangle area formula"
+    ],
+    "question_text": "A triangle has a base of 13 m and a height of 8 m. What is the area of the triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "104 m²",
+      "B": "10.5 m²",
+      "C": "21 m²",
+      "D": "52 m²"
+    },
+    "correct_answer": "D",
+    "explanation": "The area of a triangle is:\nA = ½ × b × h = ½ × 13 × 8 = ½ × 104 = 52 m²",
+    "distractor_logic": {
+      "A": "Student omits the ½ factor: 13 × 8 = 104 m².",
+      "B": "Student adds base and height then takes ½ instead of multiplying: ½(13 + 8) = ½(21) = 10.5 m².",
+      "C": "Student adds base and height without applying the formula: 13 + 8 = 21 m².",
+      "D": "Correct: A = ½ × 13 × 8 = ½ × 104 = 52 m²."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Use A = ½bh. Multiply base and height first, then take half: ½ × 13 × 8 = ½ × 104."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute b = 13 and h = 8: 13 × 8 = 104, then 104 ÷ 2 = 52."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["triangle", "area", "formula_application", "two_digit_dimensions"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_021",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.3",
+    "topic": "area_of_2d_figures",
+    "topic_text": "Area of 2D Figures",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the area of a parallelogram using the perpendicular height rather than the slant side",
+      "distinguishing the perpendicular height from the slant side in a parallelogram area problem"
+    ],
+    "question_text": "A parallelogram has a base of 14 cm, a perpendicular height of 6 cm, and a slant side of 8 cm. What is the area of the parallelogram?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "112 cm²",
+      "B": "84 cm²",
+      "C": "42 cm²",
+      "D": "168 cm²"
+    },
+    "correct_answer": "B",
+    "explanation": "The area of a parallelogram uses the perpendicular height, not the slant side:\nA = b × h = 14 × 6 = 84 cm²\n\nThe slant side (8 cm) is not used in the area calculation.",
+    "distractor_logic": {
+      "A": "Student uses the slant side (8 cm) instead of the perpendicular height (6 cm): 14 × 8 = 112 cm².",
+      "B": "Correct: A = b × h = 14 × 6 = 84 cm².",
+      "C": "Student applies the triangle formula (½bh) to the parallelogram: ½ × 14 × 6 = 42 cm².",
+      "D": "Student applies the formula correctly but doubles the result: 2 × 84 = 168 cm²."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "For a parallelogram, only the perpendicular height is used in the area formula — not the slant side. Identify which measurement is the true height."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The slant side (8 cm) is extra information designed to distract. Use only the base (14 cm) and the perpendicular height (6 cm)."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["parallelogram", "area", "perpendicular_height", "slant_side", "irrelevant_information"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_022",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.3",
+    "topic": "area_of_2d_figures",
+    "topic_text": "Area of 2D Figures",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the height of a trapezoid given its area and both base lengths",
+      "applying the inverse of A = ½(b₁ + b₂)h to solve for the missing height"
+    ],
+    "question_text": "A trapezoid has parallel bases of 7 ft and 11 ft and an area of 54 ft². What is the height of the trapezoid?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3 ft",
+      "B": "9 ft",
+      "C": "6 ft",
+      "D": "108 ft"
+    },
+    "correct_answer": "C",
+    "explanation": "Using A = ½(b₁ + b₂)h, solve for h:\n54 = ½(7 + 11)h\n54 = ½(18)h\n54 = 9h\nh = 54 ÷ 9 = 6 ft\n\nCheck: ½(7 + 11)(6) = ½(18)(6) = 54 ✓",
+    "distractor_logic": {
+      "A": "Student divides the area by the sum of the bases (18) instead of by 9: 54 ÷ 18 = 3 ft.",
+      "B": "Student correctly simplifies to 54 = 9h but reports the coefficient 9 as the answer rather than dividing: h appears to be 9 instead of 54 ÷ 9 = 6.",
+      "C": "Correct: 54 = ½(18)h → 54 = 9h → h = 6 ft.",
+      "D": "Student multiplies the area by 2 instead of solving the equation: 54 × 2 = 108 ft."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Substitute the known values into A = ½(b₁ + b₂)h and isolate h. Start by adding the bases and applying the ½."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check your answer: ½(7 + 11)(h) should equal 54. Substitute your h and verify."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["trapezoid", "area", "missing_height", "inverse_reasoning"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_023",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.3",
+    "topic": "area_of_2d_figures",
+    "topic_text": "Area of 2D Figures",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "finding the radius of a circle given its area using A = πr²",
+      "applying a square root after dividing the area by π to isolate the radius"
+    ],
+    "question_text": "A circle has an area of 78.5 cm². Using π ≈ 3.14, what is the radius of the circle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "5 cm",
+      "B": "25 cm",
+      "C": "12.5 cm",
+      "D": "10 cm"
+    },
+    "correct_answer": "A",
+    "explanation": "Using A = πr², solve for r:\nr² = A ÷ π = 78.5 ÷ 3.14 = 25\nr = √25 = 5 cm\n\nCheck: 3.14 × 5² = 3.14 × 25 = 78.5 ✓",
+    "distractor_logic": {
+      "A": "Correct: r² = 78.5 ÷ 3.14 = 25; r = √25 = 5 cm.",
+      "B": "Student finds r² = 25 correctly but reports that value as the radius without taking the square root.",
+      "C": "Student divides by 2π instead of π: 78.5 ÷ (2 × 3.14) = 78.5 ÷ 6.28 = 12.5 cm.",
+      "D": "Student finds r = 5 correctly but then doubles it, confusing radius with diameter: 2 × 5 = 10 cm."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Rearrange A = πr² to solve for r: first divide A by π, then take the square root. Both steps are required."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check your answer: square your radius and multiply by 3.14 — the result should equal 78.5."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["circle", "area", "missing_radius", "square_root", "inverse_reasoning"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_019",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.3",
+    "topic": "area_of_2d_figures",
+    "topic_text": "Area of 2D Figures",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the total area of a composite figure made of a rectangle and a triangle",
+      "summing the areas of individual components to find the total area of a composite shape"
+    ],
+    "question_text": "A composite figure consists of a rectangle with a base of 10 m and a height of 6 m, topped by a triangle with the same base (10 m) and a triangular height of 4 m. What is the total area of the figure?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "100 m²",
+      "B": "60 m²",
+      "C": "20 m²",
+      "D": "80 m²"
+    },
+    "correct_answer": "D",
+    "explanation": "Compute each region separately and add:\n\nRectangle: A₁ = 10 × 6 = 60 m²\nTriangle: A₂ = ½ × 10 × 4 = 20 m²\n\nTotal area: 60 + 20 = 80 m²",
+    "distractor_logic": {
+      "A": "Student treats the entire figure as a single rectangle using the combined height (6 + 4 = 10 m): 10 × 10 = 100 m².",
+      "B": "Student computes the rectangle area correctly (60 m²) but omits the triangle entirely.",
+      "C": "Student computes the triangle area correctly (20 m²) but omits the rectangle entirely.",
+      "D": "Correct: rectangle area (60 m²) + triangle area (20 m²) = 80 m²."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["draw_diagram", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the figure and label the rectangle and triangle separately. Compute each area using its own formula, then add the results."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The figure has two distinct parts — a rectangle and a triangle. Each uses a different formula: A = lw for the rectangle and A = ½bh for the triangle."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["composite_figure", "area", "rectangle", "triangle", "decomposition"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_020",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.3",
+    "topic": "area_of_2d_figures",
+    "topic_text": "Area of 2D Figures",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "evaluating algebraic dimension expressions by substituting a given value of x",
+      "computing the area of a rectangle whose dimensions are given as algebraic expressions"
+    ],
+    "question_text": "A rectangle has a length of (2x + 3) and a width of x, where x = 4. What is the area of the rectangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "32",
+      "B": "44",
+      "C": "30",
+      "D": "88"
+    },
+    "correct_answer": "B",
+    "explanation": "Substitute x = 4 into each dimension:\nLength = 2(4) + 3 = 8 + 3 = 11\nWidth = 4\n\nArea = l × w = 11 × 4 = 44",
+    "distractor_logic": {
+      "A": "Student evaluates the length as 2x (drops the +3): 2(4) = 8; A = 8 × 4 = 32.",
+      "B": "Correct: length = 2(4) + 3 = 11; width = 4; A = 11 × 4 = 44.",
+      "C": "Student computes the perimeter instead of the area: 2(11 + 4) = 2(15) = 30.",
+      "D": "Student doubles the width (uses 2x = 8 instead of x = 4) for the width: A = 11 × 8 = 88."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute x = 4 into each expression separately: evaluate (2x + 3) and x before multiplying."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks for area, not perimeter. Multiply the two dimensions after substituting — don't add them."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rectangle", "area", "algebraic_expressions", "substitution", "AR_cross_strand"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_021",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.3",
+    "topic": "area_of_2d_figures",
+    "topic_text": "Area of 2D Figures",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the remaining area of a rectangle after subtracting the area of a circular cutout",
+      "applying the area formulas for a rectangle and a circle within a composite subtraction context"
+    ],
+    "question_text": "A rectangular wall is 15 ft wide and 10 ft tall. A circular window with a radius of 2 ft is cut out of the wall. What is the remaining area of the wall? Use π ≈ 3.14.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "150 ft²",
+      "B": "162.56 ft²",
+      "C": "137.44 ft²",
+      "D": "99.76 ft²"
+    },
+    "correct_answer": "C",
+    "explanation": "Step 1 — Rectangle area:\nA_rect = 15 × 10 = 150 ft²\n\nStep 2 — Circle area:\nA_circle = πr² = 3.14 × 2² = 3.14 × 4 = 12.56 ft²\n\nStep 3 — Remaining area:\n150 − 12.56 = 137.44 ft²",
+    "distractor_logic": {
+      "A": "Student computes the rectangle area (150 ft²) but does not subtract the circular cutout, ignoring the window entirely.",
+      "B": "Student adds the circle area to the rectangle area instead of subtracting: 150 + 12.56 = 162.56 ft².",
+      "C": "Correct: 150 − 12.56 = 137.44 ft².",
+      "D": "Student uses the diameter (4 ft) instead of the radius (2 ft) in the area formula: π × 4² = 3.14 × 16 = 50.24; 150 − 50.24 = 99.76 ft²."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["draw_diagram", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the wall with the circular window marked inside it. The remaining area is the wall minus the window — subtract the circle's area from the rectangle's area."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Two formulas are needed: A = lw for the wall and A = πr² for the window. Compute each, then subtract the smaller from the larger."
+      }
+    ],
+    "content_context": "home_improvement",
+    "context_tags": ["composite_figure", "area", "subtraction", "rectangle", "circle"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_022",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.3",
+    "topic": "area_of_2d_figures",
+    "topic_text": "Area of 2D Figures",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "substituting a given value of x into algebraic base expressions to find trapezoid dimensions",
+      "computing the area of a trapezoid whose bases are defined by algebraic expressions"
+    ],
+    "question_text": "A trapezoid has parallel bases of (3x) and (x + 2) and a height of 8, where x = 5. What is the area of the trapezoid?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "88",
+      "B": "176",
+      "C": "44",
+      "D": "80"
+    },
+    "correct_answer": "A",
+    "explanation": "Substitute x = 5 into each base expression:\nb₁ = 3(5) = 15\nb₂ = 5 + 2 = 7\nh = 8\n\nA = ½(b₁ + b₂)h\nA = ½(15 + 7)(8)\nA = ½(22)(8)\nA = ½(176)\nA = 88",
+    "distractor_logic": {
+      "A": "Correct: substituting x = 5 gives b₁ = 15, b₂ = 7; A = ½(22)(8) = 88.",
+      "B": "Student omits the ½ factor: (15 + 7)(8) = 22 × 8 = 176.",
+      "C": "Student applies the ½ factor twice: ½ × ½ × 22 × 8 = 44.",
+      "D": "Student evaluates b₂ as x rather than x + 2 (drops the constant): b₂ = 5; A = ½(15 + 5)(8) = ½(20)(8) = 80."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute x = 5 into both base expressions first: 3(5) and (5 + 2). Then apply the trapezoid formula with those evaluated values."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The trapezoid formula is A = ½(b₁ + b₂)h. After substituting, make sure to include the ½ factor — it is easy to miss when working with multiple steps."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["trapezoid", "area", "algebraic_expressions", "substitution", "AR_cross_strand"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_023",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": ["AR"],
+    "objective": "perimeter_area_surface_area_and_volume",
+    "objective_text": "Perimeter, Area, Surface Area, and Volume",
+    "topic_id": "GR.2.3",
+    "topic": "area_of_2d_figures",
+    "topic_text": "Area of 2D Figures",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing and comparing the areas of four different 2D figures using their respective formulas",
+      "identifying the figure with the greatest area by correctly applying triangle, rectangle, parallelogram, and circle area formulas"
+    ],
+    "question_text": "Four figures are described below. Which has the greatest area? Use π ≈ 3.14.\n\n• Figure W: Triangle with base 20 cm and height 10 cm\n• Figure X: Rectangle with length 11 cm and width 8 cm\n• Figure Y: Parallelogram with base 15 cm and height 6 cm\n• Figure Z: Circle with radius 5 cm",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Figure Z (the circle)",
+      "B": "Figure W (the triangle)",
+      "C": "Figure X (the rectangle)",
+      "D": "Figure Y (the parallelogram)"
+    },
+    "correct_answer": "B",
+    "explanation": "Compute each area:\n• Figure W (Triangle): A = ½ × 20 × 10 = 100 cm²\n• Figure X (Rectangle): A = 11 × 8 = 88 cm²\n• Figure Y (Parallelogram): A = 15 × 6 = 90 cm²\n• Figure Z (Circle): A = 3.14 × 5² = 3.14 × 25 = 78.5 cm²\n\nRanking: W (100) > Y (90) > X (88) > Z (78.5)\n\nFigure W (the triangle) has the greatest area at 100 cm².",
+    "distractor_logic": {
+      "A": "Student misapplies the circle formula using A = πr (no squaring): 3.14 × 5 = 15.7; and misapplies the triangle formula as ½b (no height): ½ × 20 = 10 — causing the circle to appear largest by comparison with the deflated triangle value.",
+      "B": "Correct: applying all four formulas correctly gives W = 100, Y = 90, X = 88, Z = 78.5; Figure W has the greatest area.",
+      "C": "Student omits the ½ factor in the triangle formula but then divides by 10 arbitrarily, deflating the triangle area: 20 × 10 ÷ 10 = 20, making the rectangle (88) appear greatest.",
+      "D": "Student applies the triangle formula as ½bh but uses height = 10/2 = 5 (halves the height by mistake): ½ × 20 × 5 = 50, making the parallelogram (90) appear greatest."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Apply the correct formula for each figure type: ½bh for the triangle, lw for the rectangle, bh for the parallelogram, and πr² for the circle. Compute all four before comparing."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Before computing precisely, estimate each area to narrow down the candidates. The triangle with base 20 and height 10 is large — check whether other figures can exceed it."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["area_comparison", "triangle", "rectangle", "parallelogram", "circle", "multi_formula"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-04",
+    "last_modified": "2026-06-04",
+    "review_notes": null
+  }
+]
