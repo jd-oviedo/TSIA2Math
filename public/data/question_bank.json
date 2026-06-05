@@ -31795,5 +31795,2579 @@
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
     "review_notes": null
+  },
+  {
+    "item_id": "PR_B_001",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.1",
+    "topic": "sorting_and_counting_data",
+    "topic_text": "Sorting and Counting Data",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "counting how many times a specific value appears in a small dataset",
+      "recognizing repeated values in a list by scanning systematically"
+    ],
+    "question_text": "A teacher recorded the following quiz scores for 7 students: 84, 71, 90, 65, 78, 90, 71. How many students scored exactly 71?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2",
+      "B": "3",
+      "C": "1",
+      "D": "4"
+    },
+    "correct_answer": "A",
+    "explanation": "To count how many students scored exactly 71, scan the list systematically:\n84 — no\n71 — yes (1)\n90 — no\n65 — no\n78 — no\n90 — no\n71 — yes (2)\n\nExactly 2 students scored 71.",
+    "distractor_logic": {
+      "A": "Correct: scanning the list finds 71 appearing at positions 2 and 7, giving a count of 2.",
+      "B": "Student over-counts by also including one of the repeated 90s, treating any repeated value as a match.",
+      "C": "Student stops scanning after finding the first 71 and concludes there is only 1 student with that score.",
+      "D": "Student counts all repeated values in the list (71 appears twice, 90 appears twice) and totals them: 2 + 2 = 4."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks only about scores of exactly 71. Go through the list one value at a time and put a tally mark each time you see 71."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "If you can find at least two 71s in the list, you can immediately rule out any answer less than 2."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": [
+      "quiz_scores",
+      "counting",
+      "frequency",
+      "data_list"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_002",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.1",
+    "topic": "sorting_and_counting_data",
+    "topic_text": "Sorting and Counting Data",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "counting category frequency from a raw data list",
+      "distinguishing one category from others in a mixed list"
+    ],
+    "question_text": "A teacher asked 8 students to name their favorite subject. The responses were: Math, Science, Math, English, Math, Science, English, Math. How many students chose Math?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3",
+      "B": "2",
+      "C": "4",
+      "D": "5"
+    },
+    "correct_answer": "C",
+    "explanation": "Count each time Math appears in the list:\nMath (1), Science, Math (2), English, Math (3), Science, English, Math (4)\n\nMath appears 4 times. 4 students chose Math.",
+    "distractor_logic": {
+      "A": "Student loses count and stops after the third Math entry, missing the final occurrence.",
+      "B": "Student counts the number of non-Math categories (Science and English) and uses that as the Math count, confusing distinct groups with frequency.",
+      "C": "Correct: systematically counting each Math response gives a total of 4.",
+      "D": "Student over-counts by including one Science response alongside the four Math responses, possibly misreading the list."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Focus only on the word Math in the list. Cross off or tally each occurrence as you go so you do not skip or double-count."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The list has 8 total responses split among Math, Science, and English. If Math had fewer than 3 responses, at least one of the other two subjects would need more than 3 — check whether that is realistic given the list."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": [
+      "categorical_data",
+      "counting",
+      "frequency",
+      "favorite_subject"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_003",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.1",
+    "topic": "sorting_and_counting_data",
+    "topic_text": "Sorting and Counting Data",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "counting values that satisfy a simple inequality condition",
+      "applying a threshold criterion to a raw data list"
+    ],
+    "question_text": "The high temperatures (in °F) recorded over 8 days were: 73, 68, 75, 68, 80, 73, 68, 75. How many days had a temperature below 74°F?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3",
+      "B": "4",
+      "C": "7",
+      "D": "5"
+    },
+    "correct_answer": "D",
+    "explanation": "Identify each value that is strictly less than 74:\n73 — yes (1)\n68 — yes (2)\n75 — no\n68 — yes (3)\n80 — no\n73 — yes (4)\n68 — yes (5)\n75 — no\n\n5 days had a temperature below 74°F.",
+    "distractor_logic": {
+      "A": "Student counts only the three occurrences of 68, the lowest value in the list, and ignores the 73s.",
+      "B": "Student correctly identifies the three 68s and one 73 but misses the second 73 in the list.",
+      "C": "Student applies a threshold of 'at most 75' instead of 'below 74,' counting all values except 80: 73, 68, 75, 68, 73, 68, 75 = 7.",
+      "D": "Correct: five values — three 68s and two 73s — are strictly less than 74."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The condition is strictly below 74°F — values of 74 or higher do not count. Go through each temperature one at a time and mark only the ones less than 74."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "There are 8 values total. If your count is close to 8, you may be using the wrong threshold. Check that 75 and 80 are excluded."
+      }
+    ],
+    "content_context": "weather",
+    "context_tags": [
+      "temperature",
+      "counting",
+      "inequality",
+      "threshold"
+    ],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_001",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.1",
+    "topic": "sorting_and_counting_data",
+    "topic_text": "Sorting and Counting Data",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "applying two simultaneous conditions to filter a dataset",
+      "distinguishing between count of entries and count of distinct values"
+    ],
+    "question_text": "A dataset lists the number of siblings reported by 10 students: 0, 2, 1, 3, 2, 0, 1, 2, 3, 1. How many students reported having 2 or more siblings?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3",
+      "B": "5",
+      "C": "4",
+      "D": "2"
+    },
+    "correct_answer": "B",
+    "explanation": "Identify each entry that is 2 or greater:\n0 — no\n2 — yes (1)\n1 — no\n3 — yes (2)\n2 — yes (3)\n0 — no\n1 — no\n2 — yes (4)\n3 — yes (5)\n1 — no\n\n5 students reported 2 or more siblings.",
+    "distractor_logic": {
+      "A": "Student counts only the three entries equal to exactly 2, ignoring the two students who reported 3 siblings.",
+      "B": "Correct: applying the condition ≥ 2 to each entry gives five qualifying students.",
+      "C": "Student miscounts by missing one of the three 2-sibling entries, perhaps skipping the third occurrence in the list.",
+      "D": "Student counts the number of distinct values that satisfy ≥ 2 (the values 2 and 3) rather than counting individual student entries."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks how many students — meaning how many entries in the list — meet the condition, not how many different values qualify. Check each number in the list one at a time."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "There are values of 2 and 3 in the list. Count how many total entries are 2 or 3. Any answer less than 3 is almost certainly missing some of those entries."
+      }
+    ],
+    "content_context": "survey",
+    "context_tags": [
+      "counting",
+      "inequality",
+      "two_conditions",
+      "frequency"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_002",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.1",
+    "topic": "sorting_and_counting_data",
+    "topic_text": "Sorting and Counting Data",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "computing the difference between two category frequencies from a described table",
+      "selecting the correct pair of values to compare when answering a comparison question"
+    ],
+    "question_text": "A frequency table shows the color preferences of 12 students. Red was chosen by 4 students, Blue by 3 students, and Green by 5 students. How many more students preferred Green than Red?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "1",
+      "B": "2",
+      "C": "9",
+      "D": "3"
+    },
+    "correct_answer": "A",
+    "explanation": "The question asks for the difference between the Green frequency and the Red frequency:\n5 (Green) − 4 (Red) = 1\n\n1 more student preferred Green than Red.",
+    "distractor_logic": {
+      "A": "Correct: 5 − 4 = 1.",
+      "B": "Student subtracts Blue from Green instead of Red from Green: 5 − 3 = 2.",
+      "C": "Student adds Green and Red instead of subtracting: 5 + 4 = 9.",
+      "D": "Student reads the Blue frequency (3) as the answer, confusing the Blue count with the requested difference."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks 'how many more Green than Red' — that means Green minus Red. Identify those two numbers from the table before doing any arithmetic."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The total across all three colors is 12. Any answer greater than the difference between the two largest frequencies in the table is too large to be a difference between just two categories."
+      }
+    ],
+    "content_context": "survey",
+    "context_tags": [
+      "frequency_table",
+      "comparison",
+      "subtraction",
+      "categorical_data"
+    ],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_003",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.1",
+    "topic": "sorting_and_counting_data",
+    "topic_text": "Sorting and Counting Data",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "identifying which values repeat in a dataset by sorting or scanning",
+      "distinguishing between repeated entries and the count of distinct repeated values"
+    ],
+    "question_text": "A list of 9 test scores is: 55, 72, 88, 55, 66, 72, 91, 55, 80. How many distinct values appear more than once in this dataset?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3",
+      "B": "5",
+      "C": "2",
+      "D": "1"
+    },
+    "correct_answer": "C",
+    "explanation": "Sorted list: 55, 55, 55, 66, 72, 72, 80, 88, 91\n\nIdentify values that appear more than once:\n• 55 appears 3 times — qualifies\n• 72 appears 2 times — qualifies\n• All other values (66, 80, 88, 91) appear exactly once — do not qualify\n\n2 distinct values appear more than once.",
+    "distractor_logic": {
+      "A": "Student counts the number of times 55 appears (3 occurrences) and uses that as the answer, confusing the frequency of one value with the count of repeated values.",
+      "B": "Student counts the total number of entries that are repeated — three 55s and two 72s — giving 5 individual occurrences rather than 2 distinct values.",
+      "C": "Correct: only 55 and 72 appear more than once, so there are 2 distinct repeated values.",
+      "D": "Student identifies only 55 as repeating (the most visibly frequent value) and overlooks 72, which appears twice."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks for distinct values — meaning how many different numbers repeat, not how many total entries are repeated. Sort or group the list first, then check each value's count."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Check whether 72 appears more than once in the list. If it does, the answer must be at least 2. That rules out any answer of 1."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": [
+      "test_scores",
+      "frequency",
+      "repeated_values",
+      "sorting"
+    ],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_001",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.1",
+    "topic": "sorting_and_counting_data",
+    "topic_text": "Sorting and Counting Data",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "identifying a sorting error in a partially ordered list",
+      "locating the exact position where ascending order is violated"
+    ],
+    "question_text": "A student claims to have arranged the following values in ascending order: 14, 18, 22, 19, 27, 31. Which statement correctly identifies the error in the student's list?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "14 and 18 are out of order — 18 should come before 14.",
+      "B": "22 is correctly placed because it is greater than 18.",
+      "C": "27 and 31 are out of order — 31 should come before 27.",
+      "D": "19 and 22 are out of order — 19 should appear before 22."
+    },
+    "correct_answer": "D",
+    "explanation": "In ascending order, each value must be less than or equal to the next.\n\nChecking the list:\n14 → 18: 14 < 18 ✓\n18 → 22: 18 < 22 ✓\n22 → 19: 22 > 19 ✗ — this violates ascending order\n19 → 27: would be fine if 19 were in the correct position\n27 → 31: 27 < 31 ✓\n\nThe error is that 19 appears after 22. In a correctly sorted list, 19 should come before 22.",
+    "distractor_logic": {
+      "A": "Student misidentifies the beginning of the list as the error; 14 < 18 is correct ascending order.",
+      "B": "Student incorrectly confirms 22's placement is fine without checking what comes after it — 22 > 19 violates ascending order.",
+      "C": "Student looks at the end of the list; 27 < 31 is correctly ordered.",
+      "D": "Correct: the transition from 22 to 19 breaks ascending order — 19 should precede 22."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check each consecutive pair in the list. In ascending order, each number must be less than or equal to the one that follows it. Find the pair where that rule breaks down."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Compare the first two values and the last two values — if those pairs are in correct order, the error must be somewhere in the middle of the list."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "sorting",
+      "ascending_order",
+      "error_identification",
+      "number_sequence"
+    ],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_002",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.1",
+    "topic": "sorting_and_counting_data",
+    "topic_text": "Sorting and Counting Data",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "reasoning about how adding values to a dataset affects an existing count",
+      "recognizing that count conditions are independent of new values outside the threshold"
+    ],
+    "question_text": "A sorted dataset of 12 values contains exactly 5 values that are less than 40. Three new values — all greater than 40 — are added to the dataset. How many values in the updated dataset are less than 40?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "8",
+      "B": "5",
+      "C": "3",
+      "D": "9"
+    },
+    "correct_answer": "B",
+    "explanation": "The question asks how many values are less than 40 after three new values — all greater than 40 — are added.\n\nThe three new values are all greater than 40, so none of them satisfy the condition 'less than 40.' Adding them does not change the count of values below the threshold.\n\nThe count of values less than 40 remains 5.",
+    "distractor_logic": {
+      "A": "Student adds the 3 new values to the existing count of 5, as if the new values also fall below 40: 5 + 3 = 8.",
+      "B": "Correct: values above the threshold do not affect the count of values below it. The count stays at 5.",
+      "C": "Student counts only the 3 newly added values, losing track of the original 5 that were already below 40.",
+      "D": "Student adds 3 to 5 and then adds 1 more from an off-by-one error: 5 + 3 + 1 = 9."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask yourself: do the new values fall below 40? If they are all greater than 40, they cannot change how many values are less than 40. Focus on what the new values actually are before deciding whether the count changes."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The original count of values below 40 was 5. If the new values are all above 40, can adding them increase the number below 40? If not, rule out any answer greater than 5."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "threshold_counting",
+      "dataset_update",
+      "reasoning",
+      "conditional_count"
+    ],
+    "estimated_time_seconds": 115,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_003",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.1",
+    "topic": "sorting_and_counting_data",
+    "topic_text": "Sorting and Counting Data",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "re-sorting a dataset after a new value is inserted and applying a strict inequality to the updated list",
+      "tracking how a single insertion changes a count without reprocessing the entire list from scratch"
+    ],
+    "question_text": "A dataset contains 8 values sorted in ascending order: 10, 12, 15, 15, 20, 22, 25, 30. A value of 14 is added to the dataset. After inserting 14 in its correct sorted position, how many values in the updated dataset are less than 15?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2",
+      "B": "4",
+      "C": "3",
+      "D": "5"
+    },
+    "correct_answer": "C",
+    "explanation": "Insert 14 into the sorted list:\n10, 12, 14, 15, 15, 20, 22, 25, 30\n\nNow count values strictly less than 15:\n10 — yes (1)\n12 — yes (2)\n14 — yes (3)\n15 — no (equal to 15, not less than)\n15 — no\n…remaining values are all greater than 15\n\n3 values are less than 15.",
+    "distractor_logic": {
+      "A": "Student counts the values less than 15 in the original list (10 and 12) and forgets to include the newly added 14, giving 2.",
+      "B": "Student applies ≤ 14 to the updated list (10, 12, 14) and then mistakenly also includes one of the 15s, arriving at 4.",
+      "C": "Correct: after inserting 14, the values strictly less than 15 are 10, 12, and 14 — a total of 3.",
+      "D": "Student uses ≤ 15 as the threshold instead of < 15, counting 10, 12, 14, 15, 15 = 5 values."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The condition is strictly less than 15 — values equal to 15 do not count. First, write out the updated sorted list with 14 inserted. Then scan for values below 15."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The original list had 2 values below 15. The new value of 14 is also below 15, so the count must increase by at least 1. Rule out any answer less than 3."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "sorted_list",
+      "insertion",
+      "strict_inequality",
+      "threshold_counting"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_004",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "tallying raw categorical data and recording correct frequencies in a two-column table",
+      "matching each category label to its accurate count without transposing values"
+    ],
+    "question_text": "A student surveys 5 friends about their favorite fruit. The responses are: Apple, Banana, Apple, Orange, Apple. The student records the results in a two-column table with the headers Fruit and Count. Which described table is correct?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Apple = 3, Banana = 1, Orange = 1",
+      "B": "Apple = 2, Banana = 1, Orange = 2",
+      "C": "Apple = 3, Banana = 2, Orange = 0",
+      "D": "Apple = 1, Banana = 1, Orange = 3"
+    },
+    "correct_answer": "A",
+    "explanation": "Count each fruit in the response list:\nApple: Apple, Apple, Apple → 3\nBanana: Banana → 1\nOrange: Orange → 1\n\nThe correct table shows Apple = 3, Banana = 1, Orange = 1.",
+    "distractor_logic": {
+      "A": "Correct: Apple appears 3 times, Banana once, and Orange once.",
+      "B": "Student miscounts Apple as 2 and Orange as 2, perhaps splitting one Apple response into the Orange column.",
+      "C": "Student counts Banana twice (possibly double-tallying the single Banana response) and records Orange as 0, omitting it entirely.",
+      "D": "Student reverses the counts for Apple and Orange, recording Apple = 1 and Orange = 3."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Go through the response list one item at a time and tally each fruit separately. Apple, Banana, and Orange each need their own count before you fill in the table."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The five responses include at least one of each fruit, so any table showing a count of 0 for any category can be ruled out immediately."
+      }
+    ],
+    "content_context": "survey",
+    "context_tags": [
+      "frequency_table",
+      "categorical_data",
+      "tallying",
+      "constructing_tables"
+    ],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_005",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "transferring values from a described bar graph into a matching frequency table",
+      "preserving the correct pairing of category labels and bar heights when recording data"
+    ],
+    "question_text": "A bar graph shows the number of books read each month. The horizontal axis lists three months: January, February, and March. The bar for January reaches the 4 mark, the bar for February reaches the 7 mark, and the bar for March reaches the 5 mark on the vertical axis. A student records the data in a table. Which table correctly matches the graph?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "January = 4, February = 5, March = 7",
+      "B": "January = 4, February = 7, March = 5",
+      "C": "January = 7, February = 4, March = 5",
+      "D": "January = 5, February = 7, March = 4"
+    },
+    "correct_answer": "B",
+    "explanation": "Match each month's bar height directly:\nJanuary → bar reaches 4 → 4\nFebruary → bar reaches 7 → 7\nMarch → bar reaches 5 → 5\n\nThe correct table is January = 4, February = 7, March = 5.",
+    "distractor_logic": {
+      "A": "Student swaps the values for February and March, recording February = 5 and March = 7 instead of the reverse.",
+      "B": "Correct: each month's value is read directly from its corresponding bar height.",
+      "C": "Student swaps the values for January and February, recording January = 7 and February = 4.",
+      "D": "Student swaps the values for January and March, recording January = 5 and March = 4."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Read each bar one at a time and pair it with its month before moving on. January's bar, then February's bar, then March's bar — keep them in order."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "January's bar reaches 4. Any table that does not show January = 4 can be eliminated immediately."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "bar_graph",
+      "frequency_table",
+      "reading_graphs",
+      "constructing_tables"
+    ],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_006",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "encoding given frequency values into the correct rows of a two-column table",
+      "avoiding transposition errors when multiple numeric values must be assigned to distinct categories"
+    ],
+    "question_text": "A survey found that 6 students prefer cats, 9 prefer dogs, and 3 prefer fish. A classmate constructs a two-column table with the headers Pet and Number of Students. Which described table correctly represents this data?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Cats = 6, Dogs = 3, Fish = 9",
+      "B": "Cats = 9, Dogs = 6, Fish = 3",
+      "C": "Cats = 6, Dogs = 9, Fish = 3",
+      "D": "Cats = 3, Dogs = 9, Fish = 6"
+    },
+    "correct_answer": "C",
+    "explanation": "Match each pet to its stated count from the survey:\nCats → 6\nDogs → 9\nFish → 3\n\nThe correct table shows Cats = 6, Dogs = 9, Fish = 3.",
+    "distractor_logic": {
+      "A": "Student swaps the counts for Dogs and Fish, recording Dogs = 3 and Fish = 9.",
+      "B": "Student swaps the counts for Cats and Dogs, recording Cats = 9 and Dogs = 6.",
+      "C": "Correct: each pet is paired with its accurate count from the survey.",
+      "D": "Student swaps the counts for Cats and Fish, recording Cats = 3 and Fish = 6."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check each pet one at a time: Cats=6, Dogs=9, Fish=3. Find the table where all three match exactly."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Dogs has the largest count (9). Any table where Dogs does not equal 9 can be ruled out."
+      }
+    ],
+    "content_context": "survey",
+    "context_tags": [
+      "frequency_table",
+      "categorical_data",
+      "constructing_tables",
+      "pet_preference"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_004",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "identifying a bar height error in a described graph by comparing it to source data",
+      "determining which data value was incorrectly substituted and naming the source of the error"
+    ],
+    "question_text": "A student constructs a bar graph for the following daily step counts: Monday = 5,000; Tuesday = 8,000; Wednesday = 6,000; Thursday = 3,000. In the student's graph, the bar for Wednesday reaches the 8,000 mark on the vertical axis. Which statement correctly identifies the error and its likely cause?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The Wednesday bar should reach 5,000; the student used Monday's value for Wednesday.",
+      "B": "The Wednesday bar should reach 3,000; the student confused Wednesday with Thursday.",
+      "C": "The Wednesday bar is correct at 8,000; Wednesday and Tuesday have the same step count in this dataset.",
+      "D": "The Wednesday bar should reach 6,000; the student used Tuesday's value for Wednesday instead of Wednesday's actual value."
+    },
+    "correct_answer": "D",
+    "explanation": "According to the source data, Wednesday's step count is 6,000. The student's graph shows the Wednesday bar at 8,000, which is Tuesday's value.\n\nThe error: the student placed Tuesday's value (8,000) on the Wednesday bar instead of Wednesday's correct value (6,000).",
+    "distractor_logic": {
+      "A": "Student identifies a real error but names the wrong source value — Monday's count is 5,000, not what appears on the Wednesday bar.",
+      "B": "Student identifies a real error but traces it to Thursday's value (3,000) rather than Tuesday's (8,000), which is what the bar actually shows.",
+      "C": "Student incorrectly accepts the graph as accurate and invents a false equivalence between Wednesday and Tuesday that does not exist in the data.",
+      "D": "Correct: the Wednesday bar shows 8,000, which is Tuesday's value — the student shifted Tuesday's count one day to the right."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find Wednesday's value in the source data first, then compare it to what the bar actually shows. The difference between those two numbers tells you what the error is."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The Wednesday bar shows 8,000. Check which day in the source data has a count of 8,000 — that tells you whose value was accidentally used."
+      }
+    ],
+    "content_context": "health_fitness",
+    "context_tags": [
+      "bar_graph",
+      "error_identification",
+      "constructing_graphs",
+      "data_encoding"
+    ],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_005",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "verifying that a frequency table's row values sum to the stated total",
+      "computing the correct total from given frequencies and comparing it to a claimed value"
+    ],
+    "question_text": "A frequency table shows the color preferences of 20 students. The table lists four colors with the following frequencies: Red = 5, Blue = 8, Green = 3, Yellow = 4. A student computes the total number of students as 20. Is the student's total correct?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Yes — 5 + 8 + 3 + 4 = 20, so the total is correct.",
+      "B": "No — the frequencies sum to 22, not 20; the student added 2 extra.",
+      "C": "No — the frequencies sum to 21; the student made an arithmetic error.",
+      "D": "No — the frequencies sum to 18; the student omitted the Yellow row when adding."
+    },
+    "correct_answer": "A",
+    "explanation": "Add the four frequencies:\n5 + 8 = 13\n13 + 3 = 16\n16 + 4 = 20\n\nThe frequencies sum to exactly 20. The student's total is correct.",
+    "distractor_logic": {
+      "A": "Correct: 5 + 8 + 3 + 4 = 20, which matches the stated total.",
+      "B": "Student misreads Blue as 10 instead of 8 and arrives at 5 + 10 + 3 + 4 = 22, incorrectly concluding the total is wrong.",
+      "C": "Student makes a mid-addition arithmetic slip, perhaps computing 5 + 8 + 4 + 4 = 21 by misreading Green as 4.",
+      "D": "Student drops the Yellow frequency entirely and sums only three rows: 5 + 8 + 3 = 16, then arrives at 18 through a separate arithmetic error — or reads Yellow = 2 and adds 5 + 8 + 3 + 2 = 18."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Add the four frequencies in order: Red + Blue + Green + Yellow. Compare your sum to the student's claimed total of 20."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Round the frequencies to nearby easy numbers to check the ballpark: 5 + 8 + 3 + 4 is close to 5 + 8 + 3 + 4 = 20. If your estimate is near 20, the total is likely correct — then verify with exact addition."
+      }
+    ],
+    "content_context": "survey",
+    "context_tags": [
+      "frequency_table",
+      "totals",
+      "verification",
+      "addition"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_006",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "computing the correct frequency for a value in a frequency table by counting occurrences in a raw list",
+      "distinguishing between a data value and its frequency when filling in a table"
+    ],
+    "question_text": "A student is given the following list of hours studied by 6 students: 1, 3, 2, 4, 1, 3. The student constructs a frequency table and records the frequency for '3 hours' as 3. What is the correct frequency for '3 hours,' and what error did the student most likely make?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The correct frequency is 3; the student's table is accurate.",
+      "B": "The correct frequency is 2; the student recorded the data value (3) as the frequency instead of counting how many times 3 appears in the list.",
+      "C": "The correct frequency is 1; the student counted only the first occurrence of 3 in the list and stopped.",
+      "D": "The correct frequency is 4; the student counted all values in the list that are greater than 1, arriving at 3, 2, 4, 3 = 4 entries."
+    },
+    "correct_answer": "B",
+    "explanation": "Scan the list for the value 3:\n1 — no\n3 — yes (1)\n2 — no\n4 — no\n1 — no\n3 — yes (2)\n\nThe value 3 appears exactly 2 times. The correct frequency is 2.\n\nThe student's error: recording the data value (3) as the frequency rather than counting how many times 3 occurs.",
+    "distractor_logic": {
+      "A": "Student accepts the recorded frequency of 3 without verifying it against the list, not recognizing that a count of occurrences is required.",
+      "B": "Correct: the value 3 appears twice in the list; the student confused the value with its frequency.",
+      "C": "Student finds the first occurrence of 3 in the list and stops counting, resulting in a frequency of 1.",
+      "D": "Student applies a threshold condition (greater than 1) instead of counting exact matches for the value 3, finding four entries that satisfy the inequality."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A frequency counts how many times a value appears — it is not the value itself. Go through the list and tally only the entries that equal 3."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "There are only 6 values in the list. Scan for 3s: if you can find two of them, the frequency cannot be 1 or 3."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": [
+      "frequency_table",
+      "constructing_tables",
+      "tallying",
+      "value_vs_frequency"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_004",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "evaluating whether a chosen graph type is appropriate for a given categorical dataset",
+      "explaining why a line graph misrepresents categorical preference data with no time component"
+    ],
+    "question_text": "A student records the preferred exercise of 10 people: Running, Cycling, Swimming, Running, Running, Cycling, Swimming, Running, Cycling, Swimming. To display the distribution of preferences, the student chooses a line graph. Which statement best explains why a line graph is not appropriate for this data?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "A line graph cannot display more than two categories on the horizontal axis.",
+      "B": "A line graph is appropriate; the student's choice is correct for any dataset with three or more responses.",
+      "C": "A line graph requires a continuous numerical scale on the horizontal axis and therefore cannot display categorical labels at all.",
+      "D": "A line graph implies a trend or change across ordered intervals; since exercise preference has no natural order or time component, a bar graph or pie chart would better represent the frequency of each category."
+    },
+    "correct_answer": "D",
+    "explanation": "Line graphs are used to show how a quantity changes over time or across a continuous, ordered scale. Exercise preference is a categorical variable with no inherent order and no time dimension.\n\nUsing a line graph would falsely suggest that preferences change in a meaningful sequence from Running to Cycling to Swimming. A bar graph or pie chart correctly displays the count or proportion of each category without implying trend or order.",
+    "distractor_logic": {
+      "A": "Student applies a false structural rule — line graphs have no categorical limit. The real issue is conceptual, not a display capacity constraint.",
+      "B": "Student incorrectly generalizes that line graphs are always valid for any dataset with multiple responses, ignoring the requirement for ordered or time-based data.",
+      "C": "Student overstates the constraint — line graphs can use categorical labels on the horizontal axis (e.g., months or named groups); the actual problem is the implied trend, not an axis-type restriction.",
+      "D": "Correct: the core issue is that a line graph communicates sequential change, which is misleading for unordered categorical preference data."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask two questions about the data: (1) Is there a meaningful order to the categories? (2) Does the data show change over time? If the answer to both is no, a line graph is likely the wrong choice."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Rule out any option that states a hard structural limit (like a category count cap) — those are not real constraints on line graphs. Focus on what a line graph communicates to a reader."
+      }
+    ],
+    "content_context": "health_fitness",
+    "context_tags": [
+      "graph_selection",
+      "categorical_data",
+      "line_graph",
+      "representation_choice"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_005",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "diagnosing a structural error in a described table caused by swapped column headers",
+      "distinguishing between a header correction and a data correction as the appropriate fix"
+    ],
+    "question_text": "A student constructs a two-column table to show student absence counts. The table is supposed to have the headers 'Student Name' and 'Number of Absences.' Instead, the headers are reversed: the left column is labeled 'Number of Absences' and contains names like Maria and James, while the right column is labeled 'Student Name' and contains counts like 4 and 2. The data values themselves are correct. Which action correctly fixes the table?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Swap the data in every row so that names appear in the left column and counts appear in the right column, leaving the headers unchanged.",
+      "B": "Delete the Number of Absences column entirely, since student names are sufficient to identify the data.",
+      "C": "Swap the two column headers so that 'Student Name' labels the column containing names and 'Number of Absences' labels the column containing counts.",
+      "D": "Add a third column labeled 'Total' to reorganize the layout and correct the structural error."
+    },
+    "correct_answer": "C",
+    "explanation": "The problem states that the data values are correct — names and counts are in their proper rows. The only error is that the two column headers are swapped.\n\nThe fix is to swap the headers: place 'Student Name' above the column containing names and 'Number of Absences' above the column containing counts. No data needs to move.",
+    "distractor_logic": {
+      "A": "Student correctly identifies that the columns are mismatched but applies the fix to the data instead of the headers — moving data is unnecessary and creates more work when only the labels are wrong.",
+      "B": "Student misunderstands the purpose of the table and removes a necessary column rather than correcting the labeling error.",
+      "C": "Correct: since the data is accurate and only the headers are swapped, swapping the headers is the precise and minimal fix.",
+      "D": "Student adds an unrelated column that does not address the header error and would further complicate the table's structure."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The problem says the data values are correct — only the headers are wrong. That means the fix should target the headers, not the data."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Rule out any option that deletes or adds columns — the table already has the right structure. The only thing out of place is the labeling."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": [
+      "table_structure",
+      "header_error",
+      "error_correction",
+      "constructing_tables"
+    ],
+    "estimated_time_seconds": 115,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_006",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "verifying that category frequencies in a table sum to the stated dataset size",
+      "identifying an overcount error by comparing the frequency total to the known number of data points"
+    ],
+    "question_text": "A student constructs a frequency table for a dataset of 20 values. The table has four categories with the following recorded frequencies: Category A = 7, Category B = 5, Category C = 4, Category D = 6. The student claims the table is complete and accurate. Which statement correctly evaluates the student's claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The student is incorrect; the frequencies sum to 22, which exceeds the dataset size of 20, so at least one frequency must be recorded incorrectly.",
+      "B": "The student is correct; the four frequencies are internally consistent and the table is accurate.",
+      "C": "The student is incorrect; the frequencies sum to 21, which does not match the dataset size of 20.",
+      "D": "The student is incorrect; a complete frequency table must have exactly five categories, so a fifth category is missing."
+    },
+    "correct_answer": "A",
+    "explanation": "Add the four recorded frequencies:\n7 + 5 = 12\n12 + 4 = 16\n16 + 6 = 22\n\nThe frequencies sum to 22, but the dataset contains only 20 values. Since 22 > 20, the table overcounts by 2. At least one frequency is recorded incorrectly.\n\nThe student's claim that the table is complete and accurate is incorrect.",
+    "distractor_logic": {
+      "A": "Correct: 7 + 5 + 4 + 6 = 22, which exceeds the dataset size of 20 — the table contains an error.",
+      "B": "Student accepts the table without computing the total, treating the presence of four labeled categories as sufficient evidence of accuracy.",
+      "C": "Student makes an arithmetic slip when summing: perhaps computing 7 + 5 + 4 + 6 as 7 + 5 = 12, 12 + 4 = 16, 16 + 4 = 20... or misreads Category D as 5, giving 7 + 5 + 4 + 5 = 21.",
+      "D": "Student applies a false structural rule — frequency tables have no required number of categories. The error is in the frequency values, not the number of rows."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A complete and accurate frequency table must have frequencies that sum to the total number of data points. Add the four frequencies and compare the result to 20."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Round the frequencies: 7 + 5 + 4 + 6 is close to 7 + 5 + 4 + 6 = 22. Since 22 is noticeably larger than 20, the table is likely overcounting — verify with exact addition."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "frequency_table",
+      "verification",
+      "overcount_error",
+      "totals"
+    ],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_007",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "extracting a single value from a described bar graph by matching a category label to its bar height",
+      "avoiding substitution of an adjacent bar's value for the target category"
+    ],
+    "question_text": "A bar graph shows the number of students enrolled in four school clubs. The bar for Art reaches 12, the bar for Drama reaches 8, the bar for Science reaches 15, and the bar for Math reaches 10 on the vertical axis. How many students are enrolled in the Science club?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "15",
+      "B": "12",
+      "C": "10",
+      "D": "8"
+    },
+    "correct_answer": "A",
+    "explanation": "Locate the Science bar in the graph. It reaches the 15 mark on the vertical axis.\n\n15 students are enrolled in the Science club.",
+    "distractor_logic": {
+      "A": "Correct: the Science bar reaches 15.",
+      "B": "Student reads the Art bar (12) instead of the Science bar.",
+      "C": "Student reads the Math bar (10) instead of the Science bar.",
+      "D": "Student reads the Drama bar (8) instead of the Science bar."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the bar labeled Science and read straight across to the vertical axis. Ignore the other bars."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Each answer choice matches a different club's bar height. Confirm which label belongs to Science before reading its value."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": [
+      "bar_graph",
+      "direct_reading",
+      "single_value",
+      "club_enrollment"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_008",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying a pictograph key to convert symbol count to actual quantity",
+      "reading the correct row of a pictograph before applying the key value"
+    ],
+    "question_text": "A pictograph shows the number of pizzas sold each day. Each symbol represents 4 pizzas. Monday's row shows 3 symbols, Tuesday's row shows 5 symbols, and Wednesday's row shows 2 symbols. How many pizzas were sold on Tuesday?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "5",
+      "B": "20",
+      "C": "8",
+      "D": "12"
+    },
+    "correct_answer": "B",
+    "explanation": "Read Tuesday's row: 5 symbols.\nApply the key: 5 symbols × 4 pizzas per symbol = 20 pizzas.\n\n20 pizzas were sold on Tuesday.",
+    "distractor_logic": {
+      "A": "Student reads Tuesday's symbol count (5) directly as the answer without multiplying by the key value of 4.",
+      "B": "Correct: 5 symbols × 4 = 20 pizzas.",
+      "C": "Student reads Wednesday's row (2 symbols) instead of Tuesday's and applies the key: 2 × 4 = 8.",
+      "D": "Student reads Monday's row (3 symbols) instead of Tuesday's and applies the key: 3 × 4 = 12."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "First locate Tuesday's row, then count its symbols. Finally, multiply that count by 4 (the key value). Do not use Monday's or Wednesday's row."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The key says each symbol = 4 pizzas, so the answer must be a multiple of 4. Eliminate any choice that is not divisible by 4."
+      }
+    ],
+    "content_context": "food_service",
+    "context_tags": [
+      "pictograph",
+      "key_value",
+      "multiplication",
+      "direct_reading"
+    ],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_009",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "reading a single data point from a described line graph by matching the correct week label to its plotted value",
+      "avoiding substitution of an adjacent week's value when the target week is not the highest or most salient point"
+    ],
+    "question_text": "A line graph tracks a student's weekly quiz scores over four weeks. The plotted points are: Week 1 = 70, Week 2 = 75, Week 3 = 68, Week 4 = 80. What was the student's quiz score in Week 3?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "75",
+      "B": "80",
+      "C": "68",
+      "D": "70"
+    },
+    "correct_answer": "C",
+    "explanation": "Locate the Week 3 data point on the line graph. It is plotted at the 68 mark on the vertical axis.\n\nThe student's Week 3 quiz score was 68.",
+    "distractor_logic": {
+      "A": "Student reads the Week 2 data point (75) instead of Week 3.",
+      "B": "Student reads the Week 4 data point (80), which is the highest point on the graph and visually salient.",
+      "C": "Correct: the Week 3 data point is plotted at 68.",
+      "D": "Student reads the Week 1 data point (70) instead of Week 3."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Count along the horizontal axis to find Week 3 specifically — it is the third point from the left. Read straight across to the vertical axis from that point only."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Week 3's score is lower than Week 2 and Week 4. If your answer is 75 or 80, you may be reading the wrong week's data point."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": [
+      "line_graph",
+      "direct_reading",
+      "quiz_scores",
+      "single_value"
+    ],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_010",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying the tallest bar in a described bar graph to determine the maximum category",
+      "comparing all bar heights before selecting the highest rather than stopping at the first large value"
+    ],
+    "question_text": "A bar graph shows monthly rainfall in inches for five months. The bar for January reaches 3, February reaches 5, March reaches 3, April reaches 7, and May reaches 4 on the vertical axis. Which month had the highest rainfall?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "February",
+      "B": "March",
+      "C": "May",
+      "D": "April"
+    },
+    "correct_answer": "D",
+    "explanation": "Compare all five bar heights:\nJanuary = 3, February = 5, March = 3, April = 7, May = 4\n\nThe tallest bar belongs to April at 7 inches. April had the highest rainfall.",
+    "distractor_logic": {
+      "A": "Student selects February (5 inches), the second-highest bar, without checking the remaining months.",
+      "B": "Student selects March (3 inches), confusing it with another month or misreading the bar heights.",
+      "C": "Student selects May (4 inches), perhaps stopping their comparison before reaching April.",
+      "D": "Correct: April's bar reaches 7, the highest value among all five months."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Read every bar height before choosing an answer. The question asks for the highest across all five months — check each one before deciding."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "February reaches 5 inches. Any bar taller than 5 must be checked — April's bar reaches 7, so February cannot be the highest."
+      }
+    ],
+    "content_context": "weather",
+    "context_tags": [
+      "bar_graph",
+      "maximum_value",
+      "comparison",
+      "rainfall"
+    ],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_011",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "reading the correct row of a pictograph and applying the key to find a specific person's total",
+      "distinguishing between the raw symbol count and the actual quantity after applying the key"
+    ],
+    "question_text": "A pictograph shows the number of books read by three students over the summer. Each symbol represents 2 books. Ana's row shows 4 symbols, Ben's row shows 3 symbols, and Cara's row shows 6 symbols. How many books did Ana read?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "8",
+      "B": "4",
+      "C": "12",
+      "D": "6"
+    },
+    "correct_answer": "A",
+    "explanation": "Read Ana's row: 4 symbols.\nApply the key: 4 symbols × 2 books per symbol = 8 books.\n\nAna read 8 books.",
+    "distractor_logic": {
+      "A": "Correct: 4 symbols × 2 = 8 books.",
+      "B": "Student reads Ana's symbol count (4) as the final answer without applying the key.",
+      "C": "Student reads Cara's row (6 symbols) instead of Ana's and applies the key: 6 × 2 = 12.",
+      "D": "Student reads Ben's row (3 symbols) instead of Ana's and applies the key: 3 × 2 = 6."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find Ana's row specifically, count her symbols, then multiply by 2. Do not use Ben's or Cara's symbol counts."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The key says each symbol equals 2 books, so the answer must be even. All choices here are even — so confirm you are reading Ana's row and not another student's."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": [
+      "pictograph",
+      "key_value",
+      "multiplication",
+      "reading_comprehension"
+    ],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_007",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing the difference between two specific bar heights in a described bar graph",
+      "selecting the correct pair of categories to subtract based on the question's wording"
+    ],
+    "question_text": "A bar graph shows monthly sales in units for five months. The bars reach the following heights: January = 40, February = 55, March = 50, April = 65, May = 45. How many more units were sold in April than in January?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "20",
+      "B": "25",
+      "C": "105",
+      "D": "15"
+    },
+    "correct_answer": "B",
+    "explanation": "Identify the two values:\nApril = 65, January = 40\n\nSubtract: 65 − 40 = 25\n\n25 more units were sold in April than in January.",
+    "distractor_logic": {
+      "A": "Student subtracts May from April instead of January from April: 65 − 45 = 20.",
+      "B": "Correct: 65 − 40 = 25.",
+      "C": "Student adds April and January instead of subtracting: 65 + 40 = 105.",
+      "D": "Student subtracts March from April instead of January from April: 65 − 50 = 15."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks specifically about April and January. Read those two bars only, then subtract the smaller from the larger."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The question asks 'how many more' — that means subtraction, not addition. Eliminate any answer that could only come from adding the two values together."
+      }
+    ],
+    "content_context": "business",
+    "context_tags": [
+      "bar_graph",
+      "difference",
+      "comparison",
+      "monthly_sales"
+    ],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_008",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "reading two non-adjacent data points from a described line graph and computing their sum",
+      "avoiding substitution of adjacent data points when the question specifies non-consecutive days"
+    ],
+    "question_text": "A line graph tracks daily high temperatures in degrees Fahrenheit for one week. The plotted points are: Monday = 72, Tuesday = 78, Wednesday = 85, Thursday = 80, Friday = 74. What is the sum of the temperatures on Tuesday and Thursday?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "163",
+      "B": "155",
+      "C": "158",
+      "D": "165"
+    },
+    "correct_answer": "C",
+    "explanation": "Read the two specified data points:\nTuesday = 78, Thursday = 80\n\nAdd: 78 + 80 = 158\n\nThe sum of Tuesday's and Thursday's temperatures is 158°F.",
+    "distractor_logic": {
+      "A": "Student reads Tuesday correctly (78) but uses Wednesday's value (85) instead of Thursday's: 78 + 85 = 163.",
+      "B": "Student misreads Tuesday's temperature as 75 instead of 78, then adds Thursday's correct value: 75 + 80 = 155.",
+      "C": "Correct: 78 + 80 = 158.",
+      "D": "Student uses Wednesday and Thursday instead of Tuesday and Thursday: 85 + 80 = 165."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks for Tuesday and Thursday only — skip Monday, Wednesday, and Friday entirely. Read those two data points, then add them."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Tuesday = 78 and Thursday = 80. Their sum should be close to 160. Eliminate any answer that is significantly higher than 160, which would suggest Wednesday's value (85) was used by mistake."
+      }
+    ],
+    "content_context": "weather",
+    "context_tags": [
+      "line_graph",
+      "sum",
+      "two_values",
+      "temperature"
+    ],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_009",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "ranking all bar heights in a described bar graph to identify the second-highest category",
+      "distinguishing between the highest and second-highest values without conflating them"
+    ],
+    "question_text": "A bar graph shows the number of cars of each color in a parking lot. The bars reach the following heights: Red = 14, Blue = 22, White = 18, Black = 30, Silver = 16. Which color has the second-highest count?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "White",
+      "B": "Silver",
+      "C": "Red",
+      "D": "Blue"
+    },
+    "correct_answer": "D",
+    "explanation": "Rank all five values from highest to lowest:\n1st: Black = 30\n2nd: Blue = 22\n3rd: White = 18\n4th: Silver = 16\n5th: Red = 14\n\nBlue has the second-highest count at 22.",
+    "distractor_logic": {
+      "A": "Student identifies White (18) as second, stopping the ranking after Black and skipping Blue.",
+      "B": "Student selects Silver (16), placing it higher in the ranking than the data supports.",
+      "C": "Student selects Red (14), the lowest count, possibly misreading the bar heights.",
+      "D": "Correct: after Black (30), Blue (22) is the next highest."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "First find the highest bar (Black = 30), then set that aside and find the next highest among the remaining four bars."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Black is clearly the highest at 30. Any bar lower than Blue (22) cannot be second — eliminate Red, Silver, and White if their values fall below 22."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "bar_graph",
+      "ranking",
+      "second_highest",
+      "comparison"
+    ],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_010",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying a pictograph key to two rows and computing the difference between resulting quantities",
+      "correctly converting symbol counts to actual values before subtracting"
+    ],
+    "question_text": "A pictograph shows the number of glasses of water a person drank each day for five days. Each symbol represents 3 glasses. Monday shows 4 symbols, Tuesday shows 3 symbols, Wednesday shows 5 symbols, Thursday shows 4 symbols, and Friday shows 2 symbols. How many more glasses did the person drink on Wednesday than on Friday?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "9",
+      "B": "3",
+      "C": "6",
+      "D": "15"
+    },
+    "correct_answer": "A",
+    "explanation": "Convert each day's symbols to glasses:\nWednesday: 5 symbols × 3 = 15 glasses\nFriday: 2 symbols × 3 = 6 glasses\n\nDifference: 15 − 6 = 9\n\nThe person drank 9 more glasses on Wednesday than on Friday.",
+    "distractor_logic": {
+      "A": "Correct: 15 − 6 = 9.",
+      "B": "Student subtracts symbol counts directly without applying the key: 5 − 2 = 3.",
+      "C": "Student computes Friday's quantity correctly (2 × 3 = 6) but uses that value as the final answer instead of computing the difference.",
+      "D": "Student computes Wednesday's quantity correctly (5 × 3 = 15) but uses that value as the final answer instead of computing the difference."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Two steps are needed: first convert both Wednesday and Friday symbol counts to actual glasses using the key, then subtract Friday's total from Wednesday's total."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The answer must be less than Wednesday's total glasses (15). Eliminate any answer equal to or greater than 15, since that would mean Friday contributed nothing or less."
+      }
+    ],
+    "content_context": "health_fitness",
+    "context_tags": [
+      "pictograph",
+      "key_value",
+      "difference",
+      "two_rows"
+    ],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_011",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying a decrease between consecutive data points on a described line graph",
+      "comparing each consecutive pair of values to determine direction of change"
+    ],
+    "question_text": "A line graph shows a store's daily revenue for five days. The plotted values are: Monday = $200, Tuesday = $350, Wednesday = $300, Thursday = $250, Friday = $400. On which day did revenue decrease compared to the previous day?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Tuesday",
+      "B": "Wednesday",
+      "C": "Friday",
+      "D": "Monday"
+    },
+    "correct_answer": "B",
+    "explanation": "Compare each consecutive pair:\nMon → Tue: $200 → $350 — increase\nTue → Wed: $350 → $300 — decrease ✓\nWed → Thu: $300 → $250 — also a decrease\nThu → Fri: $250 → $400 — increase\n\nWednesday is the first day listed among the answer choices where revenue fell compared to the prior day ($350 → $300).\n\nNote: Thursday also decreased, but it is not offered as an answer choice.",
+    "distractor_logic": {
+      "A": "Student selects Tuesday, but Tuesday's revenue ($350) was higher than Monday's ($200) — that is an increase, not a decrease.",
+      "B": "Correct: Wednesday's revenue ($300) was lower than Tuesday's ($350), confirming a decrease.",
+      "C": "Student selects Friday, but Friday's revenue ($400) was higher than Thursday's ($250) — that is an increase.",
+      "D": "Student selects Monday, but Monday has no previous day to compare against in this dataset."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "For each day in the answer choices, compare its revenue to the day before it. A decrease means the value went down from the previous day."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Monday has no previous day in this dataset, so it cannot show a decrease. Tuesday's value ($350) is higher than Monday's ($200), so that is an increase. Eliminate both."
+      }
+    ],
+    "content_context": "business",
+    "context_tags": [
+      "line_graph",
+      "decrease",
+      "consecutive_comparison",
+      "revenue"
+    ],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_007",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing month-to-month changes across all intervals on a described line graph to evaluate a consistency claim",
+      "distinguishing between an overall increasing trend and a uniform rate of increase"
+    ],
+    "question_text": "A line graph shows a city's monthly average temperature in degrees Fahrenheit for six months: January = 42, February = 48, March = 57, April = 66, May = 72, June = 78. A student claims the graph shows a consistent increase of exactly 6°F each month. Which response correctly evaluates the student's claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The student is correct; the graph shows a steady 6°F increase every month from January through June.",
+      "B": "The student is incorrect; the graph shows the temperature decreased in at least one of the six months.",
+      "C": "The student is incorrect; while some monthly increases are 6°F, the increases from February to March and from March to April are each 9°F, so the rate of increase is not consistent.",
+      "D": "The student is incorrect; the graph shows the temperature stayed the same between two consecutive months."
+    },
+    "correct_answer": "C",
+    "explanation": "Compute each month-to-month change:\nJan → Feb: 48 − 42 = 6°F\nFeb → Mar: 57 − 48 = 9°F\nMar → Apr: 66 − 57 = 9°F\nApr → May: 72 − 66 = 6°F\nMay → Jun: 78 − 72 = 6°F\n\nThree intervals show a 6°F increase, but two intervals (Feb→Mar and Mar→Apr) show a 9°F increase. The rate of increase is not consistent.\n\nThe student's claim is incorrect.",
+    "distractor_logic": {
+      "A": "Student checks only the first and last intervals (both 6°F) and generalizes without verifying every consecutive pair.",
+      "B": "Student incorrectly concludes the temperature dropped at some point — all five changes are positive; the temperature only increases across these six months.",
+      "C": "Correct: two of the five month-to-month changes are 9°F, not 6°F, disproving the consistency claim.",
+      "D": "Student incorrectly concludes that two consecutive months had identical temperatures — no two consecutive values in this dataset are equal."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "To test a consistency claim, compute every consecutive difference — not just the first and last. If even one interval differs from the claimed rate, the claim is false."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The temperatures only go up across all six months, so any option claiming a decrease or a flat interval can be ruled out immediately."
+      }
+    ],
+    "content_context": "weather",
+    "context_tags": [
+      "line_graph",
+      "rate_of_change",
+      "consistency_claim",
+      "temperature_trend"
+    ],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_008",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing combined totals for all consecutive two-hour windows in a described bar graph to identify the maximum",
+      "evaluating a student's claim by systematically checking every possible pair, not just the claimed one"
+    ],
+    "question_text": "A bar graph shows the number of customers at a store each hour: 9AM = 20, 10AM = 35, 11AM = 50, 12PM = 45, 1PM = 30, 2PM = 55. A student claims that the busiest consecutive two-hour window is 11AM–12PM. Which response correctly evaluates this claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The student is incorrect; the busiest two-hour window is 10AM–11AM with 85 combined customers.",
+      "B": "The student is incorrect; the busiest two-hour window is 1PM–2PM with 85 combined customers.",
+      "C": "The student is incorrect; the busiest two-hour window is 9AM–10AM with 55 combined customers.",
+      "D": "The student is correct; 11AM–12PM has 50 + 45 = 95 combined customers, which is the highest total of any consecutive two-hour window."
+    },
+    "correct_answer": "D",
+    "explanation": "Compute the combined customer count for every consecutive two-hour window:\n9AM–10AM: 20 + 35 = 55\n10AM–11AM: 35 + 50 = 85\n11AM–12PM: 50 + 45 = 95\n12PM–1PM: 45 + 30 = 75\n1PM–2PM: 30 + 55 = 85\n\nThe highest combined total is 95, belonging to 11AM–12PM. The student's claim is correct.",
+    "distractor_logic": {
+      "A": "Student correctly computes 10AM–11AM = 85 but fails to check 11AM–12PM = 95, incorrectly concluding 85 is the maximum.",
+      "B": "Student correctly computes 1PM–2PM = 85 but again fails to compare against 11AM–12PM = 95.",
+      "C": "Student stops at the first window (9AM–10AM = 55) without computing the remaining pairs.",
+      "D": "Correct: after computing all five consecutive windows, 11AM–12PM = 95 is the highest combined total."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "To verify the claim, compute the combined total for every pair of consecutive hours — not just 11AM–12PM. Only then can you confirm whether 95 is truly the highest."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Options A and B both claim a maximum of 85. If 11AM–12PM = 50 + 45 = 95, then 95 > 85, and both of those options are wrong regardless of which other window they cite."
+      }
+    ],
+    "content_context": "business",
+    "context_tags": [
+      "bar_graph",
+      "consecutive_pairs",
+      "maximum_window",
+      "claim_evaluation"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_009",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "scanning all consecutive intervals on a described line graph to locate the single interval where values decreased",
+      "computing the magnitude of a decrease and distinguishing it from increases in adjacent intervals"
+    ],
+    "question_text": "A line graph tracks a student's monthly savings over six months: January = $50, February = $80, March = $110, April = $90, May = $130, June = $160. Between which two consecutive months did savings decrease, and by how much?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Between January and February, savings decreased by $30.",
+      "B": "Between March and April, savings decreased by $20.",
+      "C": "Between April and May, savings decreased by $40.",
+      "D": "Between May and June, savings decreased by $30."
+    },
+    "correct_answer": "B",
+    "explanation": "Compute each month-to-month change:\nJan → Feb: $80 − $50 = +$30 (increase)\nFeb → Mar: $110 − $80 = +$30 (increase)\nMar → Apr: $90 − $110 = −$20 (decrease) ✓\nApr → May: $130 − $90 = +$40 (increase)\nMay → Jun: $160 − $130 = +$30 (increase)\n\nSavings decreased only between March and April, falling by $20.",
+    "distractor_logic": {
+      "A": "Student misidentifies the direction of the January-to-February change; savings increased by $30 (from $50 to $80), not decreased.",
+      "B": "Correct: March ($110) to April ($90) is the only interval where savings fell, by $20.",
+      "C": "Student misidentifies the direction of the April-to-May change; savings increased by $40 (from $90 to $130), not decreased.",
+      "D": "Student misidentifies the direction of the May-to-June change; savings increased by $30 (from $130 to $160), not decreased."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A decrease means the later month's value is smaller than the earlier month's. Compute each consecutive difference and look for the one negative result."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Check whether savings actually went up or down between January and February. If they went up, eliminate that option. Do the same for each option before choosing."
+      }
+    ],
+    "content_context": "personal_finance",
+    "context_tags": [
+      "line_graph",
+      "decrease",
+      "consecutive_change",
+      "savings"
+    ],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_010",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying a pictograph key to all rows and summing the results to evaluate a total claim",
+      "identifying whether a stated total is an undercount or overcount and computing the correct value"
+    ],
+    "question_text": "A pictograph shows the miles walked by four friends over a weekend. Each symbol represents 5 miles. Aisha's row shows 6 symbols, Ben's shows 4 symbols, Carlos's shows 7 symbols, and Dana's shows 3 symbols. A student claims the four friends walked a total of 95 miles combined. Which response correctly evaluates this claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The student is correct; the total is 95 miles.",
+      "B": "The student is incorrect; the actual total is 105 miles — the student undercounted Carlos's row by one symbol.",
+      "C": "The student is incorrect; the actual total is 100 miles — the student's total is 5 miles short.",
+      "D": "The student is incorrect; the actual total is 90 miles — the student overcounted Ben's row by one symbol."
+    },
+    "correct_answer": "C",
+    "explanation": "Convert each row to miles:\nAisha: 6 × 5 = 30 miles\nBen: 4 × 5 = 20 miles\nCarlos: 7 × 5 = 35 miles\nDana: 3 × 5 = 15 miles\n\nTotal: 30 + 20 + 35 + 15 = 100 miles\n\nThe student claimed 95 miles. The actual total is 100 miles — the student undercounted by 5 miles.",
+    "distractor_logic": {
+      "A": "Student accepts the claimed total of 95 without computing the actual sum from the pictograph.",
+      "B": "Student misreads Carlos's row as 8 symbols instead of 7: 30 + 20 + 40 + 15 = 105, then incorrectly attributes the discrepancy to Carlos.",
+      "C": "Correct: 30 + 20 + 35 + 15 = 100; the student's claim of 95 is 5 miles short.",
+      "D": "Student misreads Ben's row as 2 symbols instead of 4: 30 + 10 + 35 + 15 = 90, then incorrectly concludes the student overcounted."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Convert every row to miles using the key (×5), then add all four totals. Compare your sum to the claimed 95 to determine whether the student undercounted or overcounted."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "The four friends have 6 + 4 + 7 + 3 = 20 total symbols. Multiply: 20 × 5 = 100. Since 100 ≠ 95, the claim is wrong — and the correct total is 100."
+      }
+    ],
+    "content_context": "health_fitness",
+    "context_tags": [
+      "pictograph",
+      "total_computation",
+      "claim_evaluation",
+      "key_value"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_011",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing the mean from described bar graph values and comparing individual values to that mean",
+      "evaluating a count-above-average claim by computing the average first, then applying it as a threshold"
+    ],
+    "question_text": "A bar graph shows test scores for five students: Ana = 72, Ben = 88, Cara = 95, Dan = 65, Eva = 80. A student claims that exactly two students scored above the class average. Which response correctly evaluates this claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The student is incorrect; only one student scored above the class average of 80.",
+      "B": "The student is incorrect; three students scored above the class average of 80.",
+      "C": "The student is incorrect; the class average is 82, and only Cara scored above it.",
+      "D": "The student is correct; the class average is 80, and Ben (88) and Cara (95) are the only two students who scored above it."
+    },
+    "correct_answer": "D",
+    "explanation": "Compute the class average:\n(72 + 88 + 95 + 65 + 80) ÷ 5 = 400 ÷ 5 = 80\n\nIdentify scores strictly above 80:\nAna = 72 — no\nBen = 88 — yes\nCara = 95 — yes\nDan = 65 — no\nEva = 80 — no (equal to the average, not above it)\n\nExactly two students scored above the class average. The student's claim is correct.",
+    "distractor_logic": {
+      "A": "Student computes the correct average of 80 but counts only Cara (95) as above it, overlooking Ben (88 > 80).",
+      "B": "Student computes the correct average of 80 but includes Eva (80) in the above-average group by using ≥ 80 instead of strictly > 80, giving a count of three.",
+      "C": "Student miscalculates the average — perhaps summing only three of the five scores (88 + 95 + 80 = 263... not 82) or using an incorrect divisor — arriving at 82, then correctly finding only Cara exceeds that threshold.",
+      "D": "Correct: average = 80, and only Ben (88) and Cara (95) are strictly above it."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compute the class average first: add all five scores and divide by 5. Then count only the students whose scores are strictly greater than that average — equal does not count as above."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Once you find the average is 80, check Eva's score (also 80). Equal to the average is not above it — if any option counts Eva as above average, eliminate it."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": [
+      "bar_graph",
+      "mean",
+      "above_average",
+      "claim_evaluation"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
   }
 ]

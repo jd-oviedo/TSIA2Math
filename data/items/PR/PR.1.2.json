@@ -1,0 +1,632 @@
+[
+  {
+    "item_id": "PR_B_004",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "tallying raw categorical data and recording correct frequencies in a two-column table",
+      "matching each category label to its accurate count without transposing values"
+    ],
+    "question_text": "A student surveys 5 friends about their favorite fruit. The responses are: Apple, Banana, Apple, Orange, Apple. The student records the results in a two-column table with the headers Fruit and Count. Which described table is correct?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Apple = 3, Banana = 1, Orange = 1",
+      "B": "Apple = 2, Banana = 1, Orange = 2",
+      "C": "Apple = 3, Banana = 2, Orange = 0",
+      "D": "Apple = 1, Banana = 1, Orange = 3"
+    },
+    "correct_answer": "A",
+    "explanation": "Count each fruit in the response list:\nApple: Apple, Apple, Apple → 3\nBanana: Banana → 1\nOrange: Orange → 1\n\nThe correct table shows Apple = 3, Banana = 1, Orange = 1.",
+    "distractor_logic": {
+      "A": "Correct: Apple appears 3 times, Banana once, and Orange once.",
+      "B": "Student miscounts Apple as 2 and Orange as 2, perhaps splitting one Apple response into the Orange column.",
+      "C": "Student counts Banana twice (possibly double-tallying the single Banana response) and records Orange as 0, omitting it entirely.",
+      "D": "Student reverses the counts for Apple and Orange, recording Apple = 1 and Orange = 3."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Go through the response list one item at a time and tally each fruit separately. Apple, Banana, and Orange each need their own count before you fill in the table."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The five responses include at least one of each fruit, so any table showing a count of 0 for any category can be ruled out immediately."
+      }
+    ],
+    "content_context": "survey",
+    "context_tags": ["frequency_table", "categorical_data", "tallying", "constructing_tables"],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_005",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "transferring values from a described bar graph into a matching frequency table",
+      "preserving the correct pairing of category labels and bar heights when recording data"
+    ],
+    "question_text": "A bar graph shows the number of books read each month. The horizontal axis lists three months: January, February, and March. The bar for January reaches the 4 mark, the bar for February reaches the 7 mark, and the bar for March reaches the 5 mark on the vertical axis. A student records the data in a table. Which table correctly matches the graph?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "January = 4, February = 5, March = 7",
+      "B": "January = 4, February = 7, March = 5",
+      "C": "January = 7, February = 4, March = 5",
+      "D": "January = 5, February = 7, March = 4"
+    },
+    "correct_answer": "B",
+    "explanation": "Match each month's bar height directly:\nJanuary → bar reaches 4 → 4\nFebruary → bar reaches 7 → 7\nMarch → bar reaches 5 → 5\n\nThe correct table is January = 4, February = 7, March = 5.",
+    "distractor_logic": {
+      "A": "Student swaps the values for February and March, recording February = 5 and March = 7 instead of the reverse.",
+      "B": "Correct: each month's value is read directly from its corresponding bar height.",
+      "C": "Student swaps the values for January and February, recording January = 7 and February = 4.",
+      "D": "Student swaps the values for January and March, recording January = 5 and March = 4."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Read each bar one at a time and pair it with its month before moving on. January's bar, then February's bar, then March's bar — keep them in order."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "January's bar reaches 4. Any table that does not show January = 4 can be eliminated immediately."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["bar_graph", "frequency_table", "reading_graphs", "constructing_tables"],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_006",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Basic",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "encoding given frequency values into the correct rows of a two-column table",
+      "avoiding transposition errors when multiple numeric values must be assigned to distinct categories"
+    ],
+    "question_text": "A survey found that 6 students prefer cats, 9 prefer dogs, and 3 prefer fish. A classmate constructs a two-column table with the headers Pet and Number of Students. Which described table correctly represents this data?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Cats = 6, Dogs = 3, Fish = 9",
+      "B": "Cats = 9, Dogs = 6, Fish = 3",
+      "C": "Cats = 6, Dogs = 9, Fish = 3",
+      "D": "Cats = 3, Dogs = 9, Fish = 6"
+    },
+    "correct_answer": "C",
+    "explanation": "Match each pet to its stated count from the survey:\nCats → 6\nDogs → 9\nFish → 3\n\nThe correct table shows Cats = 6, Dogs = 9, Fish = 3.",
+    "distractor_logic": {
+      "A": "Student swaps the counts for Dogs and Fish, recording Dogs = 3 and Fish = 9.",
+      "B": "Student swaps the counts for Cats and Dogs, recording Cats = 9 and Dogs = 6.",
+      "C": "Correct: each pet is paired with its accurate count from the survey.",
+      "D": "Student swaps the counts for Cats and Fish, recording Cats = 3 and Fish = 6."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check each pet one at a time: Cats=6, Dogs=9, Fish=3. Find the table where all three match exactly."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Dogs has the largest count (9). Any table where Dogs does not equal 9 can be ruled out."
+      }
+    ],
+    "content_context": "survey",
+    "context_tags": ["frequency_table", "categorical_data", "constructing_tables", "pet_preference"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_004",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "identifying a bar height error in a described graph by comparing it to source data",
+      "determining which data value was incorrectly substituted and naming the source of the error"
+    ],
+    "question_text": "A student constructs a bar graph for the following daily step counts: Monday = 5,000; Tuesday = 8,000; Wednesday = 6,000; Thursday = 3,000. In the student's graph, the bar for Wednesday reaches the 8,000 mark on the vertical axis. Which statement correctly identifies the error and its likely cause?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The Wednesday bar should reach 5,000; the student used Monday's value for Wednesday.",
+      "B": "The Wednesday bar should reach 3,000; the student confused Wednesday with Thursday.",
+      "C": "The Wednesday bar is correct at 8,000; Wednesday and Tuesday have the same step count in this dataset.",
+      "D": "The Wednesday bar should reach 6,000; the student used Tuesday's value for Wednesday instead of Wednesday's actual value."
+    },
+    "correct_answer": "D",
+    "explanation": "According to the source data, Wednesday's step count is 6,000. The student's graph shows the Wednesday bar at 8,000, which is Tuesday's value.\n\nThe error: the student placed Tuesday's value (8,000) on the Wednesday bar instead of Wednesday's correct value (6,000).",
+    "distractor_logic": {
+      "A": "Student identifies a real error but names the wrong source value — Monday's count is 5,000, not what appears on the Wednesday bar.",
+      "B": "Student identifies a real error but traces it to Thursday's value (3,000) rather than Tuesday's (8,000), which is what the bar actually shows.",
+      "C": "Student incorrectly accepts the graph as accurate and invents a false equivalence between Wednesday and Tuesday that does not exist in the data.",
+      "D": "Correct: the Wednesday bar shows 8,000, which is Tuesday's value — the student shifted Tuesday's count one day to the right."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find Wednesday's value in the source data first, then compare it to what the bar actually shows. The difference between those two numbers tells you what the error is."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The Wednesday bar shows 8,000. Check which day in the source data has a count of 8,000 — that tells you whose value was accidentally used."
+      }
+    ],
+    "content_context": "health_fitness",
+    "context_tags": ["bar_graph", "error_identification", "constructing_graphs", "data_encoding"],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_005",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "verifying that a frequency table's row values sum to the stated total",
+      "computing the correct total from given frequencies and comparing it to a claimed value"
+    ],
+    "question_text": "A frequency table shows the color preferences of 20 students. The table lists four colors with the following frequencies: Red = 5, Blue = 8, Green = 3, Yellow = 4. A student computes the total number of students as 20. Is the student's total correct?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Yes — 5 + 8 + 3 + 4 = 20, so the total is correct.",
+      "B": "No — the frequencies sum to 22, not 20; the student added 2 extra.",
+      "C": "No — the frequencies sum to 21; the student made an arithmetic error.",
+      "D": "No — the frequencies sum to 18; the student omitted the Yellow row when adding."
+    },
+    "correct_answer": "A",
+    "explanation": "Add the four frequencies:\n5 + 8 = 13\n13 + 3 = 16\n16 + 4 = 20\n\nThe frequencies sum to exactly 20. The student's total is correct.",
+    "distractor_logic": {
+      "A": "Correct: 5 + 8 + 3 + 4 = 20, which matches the stated total.",
+      "B": "Student misreads Blue as 10 instead of 8 and arrives at 5 + 10 + 3 + 4 = 22, incorrectly concluding the total is wrong.",
+      "C": "Student makes a mid-addition arithmetic slip, perhaps computing 5 + 8 + 4 + 4 = 21 by misreading Green as 4.",
+      "D": "Student drops the Yellow frequency entirely and sums only three rows: 5 + 8 + 3 = 16, then arrives at 18 through a separate arithmetic error — or reads Yellow = 2 and adds 5 + 8 + 3 + 2 = 18."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Add the four frequencies in order: Red + Blue + Green + Yellow. Compare your sum to the student's claimed total of 20."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Round the frequencies to nearby easy numbers to check the ballpark: 5 + 8 + 3 + 4 is close to 5 + 8 + 3 + 4 = 20. If your estimate is near 20, the total is likely correct — then verify with exact addition."
+      }
+    ],
+    "content_context": "survey",
+    "context_tags": ["frequency_table", "totals", "verification", "addition"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_006",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "computing the correct frequency for a value in a frequency table by counting occurrences in a raw list",
+      "distinguishing between a data value and its frequency when filling in a table"
+    ],
+    "question_text": "A student is given the following list of hours studied by 6 students: 1, 3, 2, 4, 1, 3. The student constructs a frequency table and records the frequency for '3 hours' as 3. What is the correct frequency for '3 hours,' and what error did the student most likely make?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The correct frequency is 3; the student's table is accurate.",
+      "B": "The correct frequency is 2; the student recorded the data value (3) as the frequency instead of counting how many times 3 appears in the list.",
+      "C": "The correct frequency is 1; the student counted only the first occurrence of 3 in the list and stopped.",
+      "D": "The correct frequency is 4; the student counted all values in the list that are greater than 1, arriving at 3, 2, 4, 3 = 4 entries."
+    },
+    "correct_answer": "B",
+    "explanation": "Scan the list for the value 3:\n1 — no\n3 — yes (1)\n2 — no\n4 — no\n1 — no\n3 — yes (2)\n\nThe value 3 appears exactly 2 times. The correct frequency is 2.\n\nThe student's error: recording the data value (3) as the frequency rather than counting how many times 3 occurs.",
+    "distractor_logic": {
+      "A": "Student accepts the recorded frequency of 3 without verifying it against the list, not recognizing that a count of occurrences is required.",
+      "B": "Correct: the value 3 appears twice in the list; the student confused the value with its frequency.",
+      "C": "Student finds the first occurrence of 3 in the list and stops counting, resulting in a frequency of 1.",
+      "D": "Student applies a threshold condition (greater than 1) instead of counting exact matches for the value 3, finding four entries that satisfy the inequality."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A frequency counts how many times a value appears — it is not the value itself. Go through the list and tally only the entries that equal 3."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "There are only 6 values in the list. Scan for 3s: if you can find two of them, the frequency cannot be 1 or 3."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": ["frequency_table", "constructing_tables", "tallying", "value_vs_frequency"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_004",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "evaluating whether a chosen graph type is appropriate for a given categorical dataset",
+      "explaining why a line graph misrepresents categorical preference data with no time component"
+    ],
+    "question_text": "A student records the preferred exercise of 10 people: Running, Cycling, Swimming, Running, Running, Cycling, Swimming, Running, Cycling, Swimming. To display the distribution of preferences, the student chooses a line graph. Which statement best explains why a line graph is not appropriate for this data?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "A line graph cannot display more than two categories on the horizontal axis.",
+      "B": "A line graph is appropriate; the student's choice is correct for any dataset with three or more responses.",
+      "C": "A line graph requires a continuous numerical scale on the horizontal axis and therefore cannot display categorical labels at all.",
+      "D": "A line graph implies a trend or change across ordered intervals; since exercise preference has no natural order or time component, a bar graph or pie chart would better represent the frequency of each category."
+    },
+    "correct_answer": "D",
+    "explanation": "Line graphs are used to show how a quantity changes over time or across a continuous, ordered scale. Exercise preference is a categorical variable with no inherent order and no time dimension.\n\nUsing a line graph would falsely suggest that preferences change in a meaningful sequence from Running to Cycling to Swimming. A bar graph or pie chart correctly displays the count or proportion of each category without implying trend or order.",
+    "distractor_logic": {
+      "A": "Student applies a false structural rule — line graphs have no categorical limit. The real issue is conceptual, not a display capacity constraint.",
+      "B": "Student incorrectly generalizes that line graphs are always valid for any dataset with multiple responses, ignoring the requirement for ordered or time-based data.",
+      "C": "Student overstates the constraint — line graphs can use categorical labels on the horizontal axis (e.g., months or named groups); the actual problem is the implied trend, not an axis-type restriction.",
+      "D": "Correct: the core issue is that a line graph communicates sequential change, which is misleading for unordered categorical preference data."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask two questions about the data: (1) Is there a meaningful order to the categories? (2) Does the data show change over time? If the answer to both is no, a line graph is likely the wrong choice."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Rule out any option that states a hard structural limit (like a category count cap) — those are not real constraints on line graphs. Focus on what a line graph communicates to a reader."
+      }
+    ],
+    "content_context": "health_fitness",
+    "context_tags": ["graph_selection", "categorical_data", "line_graph", "representation_choice"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_005",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "diagnosing a structural error in a described table caused by swapped column headers",
+      "distinguishing between a header correction and a data correction as the appropriate fix"
+    ],
+    "question_text": "A student constructs a two-column table to show student absence counts. The table is supposed to have the headers 'Student Name' and 'Number of Absences.' Instead, the headers are reversed: the left column is labeled 'Number of Absences' and contains names like Maria and James, while the right column is labeled 'Student Name' and contains counts like 4 and 2. The data values themselves are correct. Which action correctly fixes the table?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Swap the data in every row so that names appear in the left column and counts appear in the right column, leaving the headers unchanged.",
+      "B": "Delete the Number of Absences column entirely, since student names are sufficient to identify the data.",
+      "C": "Swap the two column headers so that 'Student Name' labels the column containing names and 'Number of Absences' labels the column containing counts.",
+      "D": "Add a third column labeled 'Total' to reorganize the layout and correct the structural error."
+    },
+    "correct_answer": "C",
+    "explanation": "The problem states that the data values are correct — names and counts are in their proper rows. The only error is that the two column headers are swapped.\n\nThe fix is to swap the headers: place 'Student Name' above the column containing names and 'Number of Absences' above the column containing counts. No data needs to move.",
+    "distractor_logic": {
+      "A": "Student correctly identifies that the columns are mismatched but applies the fix to the data instead of the headers — moving data is unnecessary and creates more work when only the labels are wrong.",
+      "B": "Student misunderstands the purpose of the table and removes a necessary column rather than correcting the labeling error.",
+      "C": "Correct: since the data is accurate and only the headers are swapped, swapping the headers is the precise and minimal fix.",
+      "D": "Student adds an unrelated column that does not address the header error and would further complicate the table's structure."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The problem says the data values are correct — only the headers are wrong. That means the fix should target the headers, not the data."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Rule out any option that deletes or adds columns — the table already has the right structure. The only thing out of place is the labeling."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": ["table_structure", "header_error", "error_correction", "constructing_tables"],
+    "estimated_time_seconds": 115,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_006",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.2",
+    "topic": "constructing_simple_graphs_and_tables",
+    "topic_text": "Constructing Simple Graphs and Tables",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "DIAGNOSTIC",
+    "unit": 0,
+    "skills_targeted": [
+      "verifying that category frequencies in a table sum to the stated dataset size",
+      "identifying an overcount error by comparing the frequency total to the known number of data points"
+    ],
+    "question_text": "A student constructs a frequency table for a dataset of 20 values. The table has four categories with the following recorded frequencies: Category A = 7, Category B = 5, Category C = 4, Category D = 6. The student claims the table is complete and accurate. Which statement correctly evaluates the student's claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The student is incorrect; the frequencies sum to 22, which exceeds the dataset size of 20, so at least one frequency must be recorded incorrectly.",
+      "B": "The student is correct; the four frequencies are internally consistent and the table is accurate.",
+      "C": "The student is incorrect; the frequencies sum to 21, which does not match the dataset size of 20.",
+      "D": "The student is incorrect; a complete frequency table must have exactly five categories, so a fifth category is missing."
+    },
+    "correct_answer": "A",
+    "explanation": "Add the four recorded frequencies:\n7 + 5 = 12\n12 + 4 = 16\n16 + 6 = 22\n\nThe frequencies sum to 22, but the dataset contains only 20 values. Since 22 > 20, the table overcounts by 2. At least one frequency is recorded incorrectly.\n\nThe student's claim that the table is complete and accurate is incorrect.",
+    "distractor_logic": {
+      "A": "Correct: 7 + 5 + 4 + 6 = 22, which exceeds the dataset size of 20 — the table contains an error.",
+      "B": "Student accepts the table without computing the total, treating the presence of four labeled categories as sufficient evidence of accuracy.",
+      "C": "Student makes an arithmetic slip when summing: perhaps computing 7 + 5 + 4 + 6 as 7 + 5 = 12, 12 + 4 = 16, 16 + 4 = 20... or misreads Category D as 5, giving 7 + 5 + 4 + 5 = 21.",
+      "D": "Student applies a false structural rule — frequency tables have no required number of categories. The error is in the frequency values, not the number of rows."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A complete and accurate frequency table must have frequencies that sum to the total number of data points. Add the four frequencies and compare the result to 20."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Round the frequencies: 7 + 5 + 4 + 6 is close to 7 + 5 + 4 + 6 = 22. Since 22 is noticeably larger than 20, the table is likely overcounting — verify with exact addition."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["frequency_table", "verification", "overcount_error", "totals"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  }
+]

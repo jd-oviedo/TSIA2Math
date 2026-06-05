@@ -1,0 +1,1052 @@
+[
+  {
+    "item_id": "PR_B_007",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "extracting a single value from a described bar graph by matching a category label to its bar height",
+      "avoiding substitution of an adjacent bar's value for the target category"
+    ],
+    "question_text": "A bar graph shows the number of students enrolled in four school clubs. The bar for Art reaches 12, the bar for Drama reaches 8, the bar for Science reaches 15, and the bar for Math reaches 10 on the vertical axis. How many students are enrolled in the Science club?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "15",
+      "B": "12",
+      "C": "10",
+      "D": "8"
+    },
+    "correct_answer": "A",
+    "explanation": "Locate the Science bar in the graph. It reaches the 15 mark on the vertical axis.\n\n15 students are enrolled in the Science club.",
+    "distractor_logic": {
+      "A": "Correct: the Science bar reaches 15.",
+      "B": "Student reads the Art bar (12) instead of the Science bar.",
+      "C": "Student reads the Math bar (10) instead of the Science bar.",
+      "D": "Student reads the Drama bar (8) instead of the Science bar."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the bar labeled Science and read straight across to the vertical axis. Ignore the other bars."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Each answer choice matches a different club's bar height. Confirm which label belongs to Science before reading its value."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": ["bar_graph", "direct_reading", "single_value", "club_enrollment"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_008",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying a pictograph key to convert symbol count to actual quantity",
+      "reading the correct row of a pictograph before applying the key value"
+    ],
+    "question_text": "A pictograph shows the number of pizzas sold each day. Each symbol represents 4 pizzas. Monday's row shows 3 symbols, Tuesday's row shows 5 symbols, and Wednesday's row shows 2 symbols. How many pizzas were sold on Tuesday?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "5",
+      "B": "20",
+      "C": "8",
+      "D": "12"
+    },
+    "correct_answer": "B",
+    "explanation": "Read Tuesday's row: 5 symbols.\nApply the key: 5 symbols × 4 pizzas per symbol = 20 pizzas.\n\n20 pizzas were sold on Tuesday.",
+    "distractor_logic": {
+      "A": "Student reads Tuesday's symbol count (5) directly as the answer without multiplying by the key value of 4.",
+      "B": "Correct: 5 symbols × 4 = 20 pizzas.",
+      "C": "Student reads Wednesday's row (2 symbols) instead of Tuesday's and applies the key: 2 × 4 = 8.",
+      "D": "Student reads Monday's row (3 symbols) instead of Tuesday's and applies the key: 3 × 4 = 12."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "First locate Tuesday's row, then count its symbols. Finally, multiply that count by 4 (the key value). Do not use Monday's or Wednesday's row."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The key says each symbol = 4 pizzas, so the answer must be a multiple of 4. Eliminate any choice that is not divisible by 4."
+      }
+    ],
+    "content_context": "food_service",
+    "context_tags": ["pictograph", "key_value", "multiplication", "direct_reading"],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_009",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "reading a single data point from a described line graph by matching the correct week label to its plotted value",
+      "avoiding substitution of an adjacent week's value when the target week is not the highest or most salient point"
+    ],
+    "question_text": "A line graph tracks a student's weekly quiz scores over four weeks. The plotted points are: Week 1 = 70, Week 2 = 75, Week 3 = 68, Week 4 = 80. What was the student's quiz score in Week 3?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "75",
+      "B": "80",
+      "C": "68",
+      "D": "70"
+    },
+    "correct_answer": "C",
+    "explanation": "Locate the Week 3 data point on the line graph. It is plotted at the 68 mark on the vertical axis.\n\nThe student's Week 3 quiz score was 68.",
+    "distractor_logic": {
+      "A": "Student reads the Week 2 data point (75) instead of Week 3.",
+      "B": "Student reads the Week 4 data point (80), which is the highest point on the graph and visually salient.",
+      "C": "Correct: the Week 3 data point is plotted at 68.",
+      "D": "Student reads the Week 1 data point (70) instead of Week 3."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Count along the horizontal axis to find Week 3 specifically — it is the third point from the left. Read straight across to the vertical axis from that point only."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Week 3's score is lower than Week 2 and Week 4. If your answer is 75 or 80, you may be reading the wrong week's data point."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": ["line_graph", "direct_reading", "quiz_scores", "single_value"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_010",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying the tallest bar in a described bar graph to determine the maximum category",
+      "comparing all bar heights before selecting the highest rather than stopping at the first large value"
+    ],
+    "question_text": "A bar graph shows monthly rainfall in inches for five months. The bar for January reaches 3, February reaches 5, March reaches 3, April reaches 7, and May reaches 4 on the vertical axis. Which month had the highest rainfall?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "February",
+      "B": "March",
+      "C": "May",
+      "D": "April"
+    },
+    "correct_answer": "D",
+    "explanation": "Compare all five bar heights:\nJanuary = 3, February = 5, March = 3, April = 7, May = 4\n\nThe tallest bar belongs to April at 7 inches. April had the highest rainfall.",
+    "distractor_logic": {
+      "A": "Student selects February (5 inches), the second-highest bar, without checking the remaining months.",
+      "B": "Student selects March (3 inches), confusing it with another month or misreading the bar heights.",
+      "C": "Student selects May (4 inches), perhaps stopping their comparison before reaching April.",
+      "D": "Correct: April's bar reaches 7, the highest value among all five months."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Read every bar height before choosing an answer. The question asks for the highest across all five months — check each one before deciding."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "February reaches 5 inches. Any bar taller than 5 must be checked — April's bar reaches 7, so February cannot be the highest."
+      }
+    ],
+    "content_context": "weather",
+    "context_tags": ["bar_graph", "maximum_value", "comparison", "rainfall"],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_011",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "reading the correct row of a pictograph and applying the key to find a specific person's total",
+      "distinguishing between the raw symbol count and the actual quantity after applying the key"
+    ],
+    "question_text": "A pictograph shows the number of books read by three students over the summer. Each symbol represents 2 books. Ana's row shows 4 symbols, Ben's row shows 3 symbols, and Cara's row shows 6 symbols. How many books did Ana read?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "8",
+      "B": "4",
+      "C": "12",
+      "D": "6"
+    },
+    "correct_answer": "A",
+    "explanation": "Read Ana's row: 4 symbols.\nApply the key: 4 symbols × 2 books per symbol = 8 books.\n\nAna read 8 books.",
+    "distractor_logic": {
+      "A": "Correct: 4 symbols × 2 = 8 books.",
+      "B": "Student reads Ana's symbol count (4) as the final answer without applying the key.",
+      "C": "Student reads Cara's row (6 symbols) instead of Ana's and applies the key: 6 × 2 = 12.",
+      "D": "Student reads Ben's row (3 symbols) instead of Ana's and applies the key: 3 × 2 = 6."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find Ana's row specifically, count her symbols, then multiply by 2. Do not use Ben's or Cara's symbol counts."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The key says each symbol equals 2 books, so the answer must be even. All choices here are even — so confirm you are reading Ana's row and not another student's."
+      }
+    ],
+    "content_context": "school",
+    "context_tags": ["pictograph", "key_value", "multiplication", "reading_comprehension"],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_007",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing the difference between two specific bar heights in a described bar graph",
+      "selecting the correct pair of categories to subtract based on the question's wording"
+    ],
+    "question_text": "A bar graph shows monthly sales in units for five months. The bars reach the following heights: January = 40, February = 55, March = 50, April = 65, May = 45. How many more units were sold in April than in January?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "20",
+      "B": "25",
+      "C": "105",
+      "D": "15"
+    },
+    "correct_answer": "B",
+    "explanation": "Identify the two values:\nApril = 65, January = 40\n\nSubtract: 65 − 40 = 25\n\n25 more units were sold in April than in January.",
+    "distractor_logic": {
+      "A": "Student subtracts May from April instead of January from April: 65 − 45 = 20.",
+      "B": "Correct: 65 − 40 = 25.",
+      "C": "Student adds April and January instead of subtracting: 65 + 40 = 105.",
+      "D": "Student subtracts March from April instead of January from April: 65 − 50 = 15."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks specifically about April and January. Read those two bars only, then subtract the smaller from the larger."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The question asks 'how many more' — that means subtraction, not addition. Eliminate any answer that could only come from adding the two values together."
+      }
+    ],
+    "content_context": "business",
+    "context_tags": ["bar_graph", "difference", "comparison", "monthly_sales"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_008",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "reading two non-adjacent data points from a described line graph and computing their sum",
+      "avoiding substitution of adjacent data points when the question specifies non-consecutive days"
+    ],
+    "question_text": "A line graph tracks daily high temperatures in degrees Fahrenheit for one week. The plotted points are: Monday = 72, Tuesday = 78, Wednesday = 85, Thursday = 80, Friday = 74. What is the sum of the temperatures on Tuesday and Thursday?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "163",
+      "B": "155",
+      "C": "158",
+      "D": "165"
+    },
+    "correct_answer": "C",
+    "explanation": "Read the two specified data points:\nTuesday = 78, Thursday = 80\n\nAdd: 78 + 80 = 158\n\nThe sum of Tuesday's and Thursday's temperatures is 158°F.",
+    "distractor_logic": {
+      "A": "Student reads Tuesday correctly (78) but uses Wednesday's value (85) instead of Thursday's: 78 + 85 = 163.",
+      "B": "Student misreads Tuesday's temperature as 75 instead of 78, then adds Thursday's correct value: 75 + 80 = 155.",
+      "C": "Correct: 78 + 80 = 158.",
+      "D": "Student uses Wednesday and Thursday instead of Tuesday and Thursday: 85 + 80 = 165."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks for Tuesday and Thursday only — skip Monday, Wednesday, and Friday entirely. Read those two data points, then add them."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Tuesday = 78 and Thursday = 80. Their sum should be close to 160. Eliminate any answer that is significantly higher than 160, which would suggest Wednesday's value (85) was used by mistake."
+      }
+    ],
+    "content_context": "weather",
+    "context_tags": ["line_graph", "sum", "two_values", "temperature"],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_009",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "ranking all bar heights in a described bar graph to identify the second-highest category",
+      "distinguishing between the highest and second-highest values without conflating them"
+    ],
+    "question_text": "A bar graph shows the number of cars of each color in a parking lot. The bars reach the following heights: Red = 14, Blue = 22, White = 18, Black = 30, Silver = 16. Which color has the second-highest count?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "White",
+      "B": "Silver",
+      "C": "Red",
+      "D": "Blue"
+    },
+    "correct_answer": "D",
+    "explanation": "Rank all five values from highest to lowest:\n1st: Black = 30\n2nd: Blue = 22\n3rd: White = 18\n4th: Silver = 16\n5th: Red = 14\n\nBlue has the second-highest count at 22.",
+    "distractor_logic": {
+      "A": "Student identifies White (18) as second, stopping the ranking after Black and skipping Blue.",
+      "B": "Student selects Silver (16), placing it higher in the ranking than the data supports.",
+      "C": "Student selects Red (14), the lowest count, possibly misreading the bar heights.",
+      "D": "Correct: after Black (30), Blue (22) is the next highest."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "First find the highest bar (Black = 30), then set that aside and find the next highest among the remaining four bars."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Black is clearly the highest at 30. Any bar lower than Blue (22) cannot be second — eliminate Red, Silver, and White if their values fall below 22."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["bar_graph", "ranking", "second_highest", "comparison"],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_010",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying a pictograph key to two rows and computing the difference between resulting quantities",
+      "correctly converting symbol counts to actual values before subtracting"
+    ],
+    "question_text": "A pictograph shows the number of glasses of water a person drank each day for five days. Each symbol represents 3 glasses. Monday shows 4 symbols, Tuesday shows 3 symbols, Wednesday shows 5 symbols, Thursday shows 4 symbols, and Friday shows 2 symbols. How many more glasses did the person drink on Wednesday than on Friday?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "9",
+      "B": "3",
+      "C": "6",
+      "D": "15"
+    },
+    "correct_answer": "A",
+    "explanation": "Convert each day's symbols to glasses:\nWednesday: 5 symbols × 3 = 15 glasses\nFriday: 2 symbols × 3 = 6 glasses\n\nDifference: 15 − 6 = 9\n\nThe person drank 9 more glasses on Wednesday than on Friday.",
+    "distractor_logic": {
+      "A": "Correct: 15 − 6 = 9.",
+      "B": "Student subtracts symbol counts directly without applying the key: 5 − 2 = 3.",
+      "C": "Student computes Friday's quantity correctly (2 × 3 = 6) but uses that value as the final answer instead of computing the difference.",
+      "D": "Student computes Wednesday's quantity correctly (5 × 3 = 15) but uses that value as the final answer instead of computing the difference."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Two steps are needed: first convert both Wednesday and Friday symbol counts to actual glasses using the key, then subtract Friday's total from Wednesday's total."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The answer must be less than Wednesday's total glasses (15). Eliminate any answer equal to or greater than 15, since that would mean Friday contributed nothing or less."
+      }
+    ],
+    "content_context": "health_fitness",
+    "context_tags": ["pictograph", "key_value", "difference", "two_rows"],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_011",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying a decrease between consecutive data points on a described line graph",
+      "comparing each consecutive pair of values to determine direction of change"
+    ],
+    "question_text": "A line graph shows a store's daily revenue for five days. The plotted values are: Monday = $200, Tuesday = $350, Wednesday = $300, Thursday = $250, Friday = $400. On which day did revenue decrease compared to the previous day?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Tuesday",
+      "B": "Wednesday",
+      "C": "Friday",
+      "D": "Monday"
+    },
+    "correct_answer": "B",
+    "explanation": "Compare each consecutive pair:\nMon → Tue: $200 → $350 — increase\nTue → Wed: $350 → $300 — decrease ✓\nWed → Thu: $300 → $250 — also a decrease\nThu → Fri: $250 → $400 — increase\n\nWednesday is the first day listed among the answer choices where revenue fell compared to the prior day ($350 → $300).\n\nNote: Thursday also decreased, but it is not offered as an answer choice.",
+    "distractor_logic": {
+      "A": "Student selects Tuesday, but Tuesday's revenue ($350) was higher than Monday's ($200) — that is an increase, not a decrease.",
+      "B": "Correct: Wednesday's revenue ($300) was lower than Tuesday's ($350), confirming a decrease.",
+      "C": "Student selects Friday, but Friday's revenue ($400) was higher than Thursday's ($250) — that is an increase.",
+      "D": "Student selects Monday, but Monday has no previous day to compare against in this dataset."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "For each day in the answer choices, compare its revenue to the day before it. A decrease means the value went down from the previous day."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Monday has no previous day in this dataset, so it cannot show a decrease. Tuesday's value ($350) is higher than Monday's ($200), so that is an increase. Eliminate both."
+      }
+    ],
+    "content_context": "business",
+    "context_tags": ["line_graph", "decrease", "consecutive_comparison", "revenue"],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_007",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing month-to-month changes across all intervals on a described line graph to evaluate a consistency claim",
+      "distinguishing between an overall increasing trend and a uniform rate of increase"
+    ],
+    "question_text": "A line graph shows a city's monthly average temperature in degrees Fahrenheit for six months: January = 42, February = 48, March = 57, April = 66, May = 72, June = 78. A student claims the graph shows a consistent increase of exactly 6°F each month. Which response correctly evaluates the student's claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The student is correct; the graph shows a steady 6°F increase every month from January through June.",
+      "B": "The student is incorrect; the graph shows the temperature decreased in at least one of the six months.",
+      "C": "The student is incorrect; while some monthly increases are 6°F, the increases from February to March and from March to April are each 9°F, so the rate of increase is not consistent.",
+      "D": "The student is incorrect; the graph shows the temperature stayed the same between two consecutive months."
+    },
+    "correct_answer": "C",
+    "explanation": "Compute each month-to-month change:\nJan → Feb: 48 − 42 = 6°F\nFeb → Mar: 57 − 48 = 9°F\nMar → Apr: 66 − 57 = 9°F\nApr → May: 72 − 66 = 6°F\nMay → Jun: 78 − 72 = 6°F\n\nThree intervals show a 6°F increase, but two intervals (Feb→Mar and Mar→Apr) show a 9°F increase. The rate of increase is not consistent.\n\nThe student's claim is incorrect.",
+    "distractor_logic": {
+      "A": "Student checks only the first and last intervals (both 6°F) and generalizes without verifying every consecutive pair.",
+      "B": "Student incorrectly concludes the temperature dropped at some point — all five changes are positive; the temperature only increases across these six months.",
+      "C": "Correct: two of the five month-to-month changes are 9°F, not 6°F, disproving the consistency claim.",
+      "D": "Student incorrectly concludes that two consecutive months had identical temperatures — no two consecutive values in this dataset are equal."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "To test a consistency claim, compute every consecutive difference — not just the first and last. If even one interval differs from the claimed rate, the claim is false."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The temperatures only go up across all six months, so any option claiming a decrease or a flat interval can be ruled out immediately."
+      }
+    ],
+    "content_context": "weather",
+    "context_tags": ["line_graph", "rate_of_change", "consistency_claim", "temperature_trend"],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_008",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing combined totals for all consecutive two-hour windows in a described bar graph to identify the maximum",
+      "evaluating a student's claim by systematically checking every possible pair, not just the claimed one"
+    ],
+    "question_text": "A bar graph shows the number of customers at a store each hour: 9AM = 20, 10AM = 35, 11AM = 50, 12PM = 45, 1PM = 30, 2PM = 55. A student claims that the busiest consecutive two-hour window is 11AM–12PM. Which response correctly evaluates this claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The student is incorrect; the busiest two-hour window is 10AM–11AM with 85 combined customers.",
+      "B": "The student is incorrect; the busiest two-hour window is 1PM–2PM with 85 combined customers.",
+      "C": "The student is incorrect; the busiest two-hour window is 9AM–10AM with 55 combined customers.",
+      "D": "The student is correct; 11AM–12PM has 50 + 45 = 95 combined customers, which is the highest total of any consecutive two-hour window."
+    },
+    "correct_answer": "D",
+    "explanation": "Compute the combined customer count for every consecutive two-hour window:\n9AM–10AM: 20 + 35 = 55\n10AM–11AM: 35 + 50 = 85\n11AM–12PM: 50 + 45 = 95\n12PM–1PM: 45 + 30 = 75\n1PM–2PM: 30 + 55 = 85\n\nThe highest combined total is 95, belonging to 11AM–12PM. The student's claim is correct.",
+    "distractor_logic": {
+      "A": "Student correctly computes 10AM–11AM = 85 but fails to check 11AM–12PM = 95, incorrectly concluding 85 is the maximum.",
+      "B": "Student correctly computes 1PM–2PM = 85 but again fails to compare against 11AM–12PM = 95.",
+      "C": "Student stops at the first window (9AM–10AM = 55) without computing the remaining pairs.",
+      "D": "Correct: after computing all five consecutive windows, 11AM–12PM = 95 is the highest combined total."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "To verify the claim, compute the combined total for every pair of consecutive hours — not just 11AM–12PM. Only then can you confirm whether 95 is truly the highest."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Options A and B both claim a maximum of 85. If 11AM–12PM = 50 + 45 = 95, then 95 > 85, and both of those options are wrong regardless of which other window they cite."
+      }
+    ],
+    "content_context": "business",
+    "context_tags": ["bar_graph", "consecutive_pairs", "maximum_window", "claim_evaluation"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_009",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "scanning all consecutive intervals on a described line graph to locate the single interval where values decreased",
+      "computing the magnitude of a decrease and distinguishing it from increases in adjacent intervals"
+    ],
+    "question_text": "A line graph tracks a student's monthly savings over six months: January = $50, February = $80, March = $110, April = $90, May = $130, June = $160. Between which two consecutive months did savings decrease, and by how much?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Between January and February, savings decreased by $30.",
+      "B": "Between March and April, savings decreased by $20.",
+      "C": "Between April and May, savings decreased by $40.",
+      "D": "Between May and June, savings decreased by $30."
+    },
+    "correct_answer": "B",
+    "explanation": "Compute each month-to-month change:\nJan → Feb: $80 − $50 = +$30 (increase)\nFeb → Mar: $110 − $80 = +$30 (increase)\nMar → Apr: $90 − $110 = −$20 (decrease) ✓\nApr → May: $130 − $90 = +$40 (increase)\nMay → Jun: $160 − $130 = +$30 (increase)\n\nSavings decreased only between March and April, falling by $20.",
+    "distractor_logic": {
+      "A": "Student misidentifies the direction of the January-to-February change; savings increased by $30 (from $50 to $80), not decreased.",
+      "B": "Correct: March ($110) to April ($90) is the only interval where savings fell, by $20.",
+      "C": "Student misidentifies the direction of the April-to-May change; savings increased by $40 (from $90 to $130), not decreased.",
+      "D": "Student misidentifies the direction of the May-to-June change; savings increased by $30 (from $130 to $160), not decreased."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A decrease means the later month's value is smaller than the earlier month's. Compute each consecutive difference and look for the one negative result."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Check whether savings actually went up or down between January and February. If they went up, eliminate that option. Do the same for each option before choosing."
+      }
+    ],
+    "content_context": "personal_finance",
+    "context_tags": ["line_graph", "decrease", "consecutive_change", "savings"],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_010",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying a pictograph key to all rows and summing the results to evaluate a total claim",
+      "identifying whether a stated total is an undercount or overcount and computing the correct value"
+    ],
+    "question_text": "A pictograph shows the miles walked by four friends over a weekend. Each symbol represents 5 miles. Aisha's row shows 6 symbols, Ben's shows 4 symbols, Carlos's shows 7 symbols, and Dana's shows 3 symbols. A student claims the four friends walked a total of 95 miles combined. Which response correctly evaluates this claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The student is correct; the total is 95 miles.",
+      "B": "The student is incorrect; the actual total is 105 miles — the student undercounted Carlos's row by one symbol.",
+      "C": "The student is incorrect; the actual total is 100 miles — the student's total is 5 miles short.",
+      "D": "The student is incorrect; the actual total is 90 miles — the student overcounted Ben's row by one symbol."
+    },
+    "correct_answer": "C",
+    "explanation": "Convert each row to miles:\nAisha: 6 × 5 = 30 miles\nBen: 4 × 5 = 20 miles\nCarlos: 7 × 5 = 35 miles\nDana: 3 × 5 = 15 miles\n\nTotal: 30 + 20 + 35 + 15 = 100 miles\n\nThe student claimed 95 miles. The actual total is 100 miles — the student undercounted by 5 miles.",
+    "distractor_logic": {
+      "A": "Student accepts the claimed total of 95 without computing the actual sum from the pictograph.",
+      "B": "Student misreads Carlos's row as 8 symbols instead of 7: 30 + 20 + 40 + 15 = 105, then incorrectly attributes the discrepancy to Carlos.",
+      "C": "Correct: 30 + 20 + 35 + 15 = 100; the student's claim of 95 is 5 miles short.",
+      "D": "Student misreads Ben's row as 2 symbols instead of 4: 30 + 10 + 35 + 15 = 90, then incorrectly concludes the student overcounted."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Convert every row to miles using the key (×5), then add all four totals. Compare your sum to the claimed 95 to determine whether the student undercounted or overcounted."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "The four friends have 6 + 4 + 7 + 3 = 20 total symbols. Multiply: 20 × 5 = 100. Since 100 ≠ 95, the claim is wrong — and the correct total is 100."
+      }
+    ],
+    "content_context": "health_fitness",
+    "context_tags": ["pictograph", "total_computation", "claim_evaluation", "key_value"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_011",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_representation_and_interpretation",
+    "objective_text": "Data Representation and Interpretation",
+    "topic_id": "PR.1.3",
+    "topic": "reading_bar_graphs_line_graphs_and_pictographs",
+    "topic_text": "Reading Bar Graphs, Line Graphs, and Pictographs",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing the mean from described bar graph values and comparing individual values to that mean",
+      "evaluating a count-above-average claim by computing the average first, then applying it as a threshold"
+    ],
+    "question_text": "A bar graph shows test scores for five students: Ana = 72, Ben = 88, Cara = 95, Dan = 65, Eva = 80. A student claims that exactly two students scored above the class average. Which response correctly evaluates this claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The student is incorrect; only one student scored above the class average of 80.",
+      "B": "The student is incorrect; three students scored above the class average of 80.",
+      "C": "The student is incorrect; the class average is 82, and only Cara scored above it.",
+      "D": "The student is correct; the class average is 80, and Ben (88) and Cara (95) are the only two students who scored above it."
+    },
+    "correct_answer": "D",
+    "explanation": "Compute the class average:\n(72 + 88 + 95 + 65 + 80) ÷ 5 = 400 ÷ 5 = 80\n\nIdentify scores strictly above 80:\nAna = 72 — no\nBen = 88 — yes\nCara = 95 — yes\nDan = 65 — no\nEva = 80 — no (equal to the average, not above it)\n\nExactly two students scored above the class average. The student's claim is correct.",
+    "distractor_logic": {
+      "A": "Student computes the correct average of 80 but counts only Cara (95) as above it, overlooking Ben (88 > 80).",
+      "B": "Student computes the correct average of 80 but includes Eva (80) in the above-average group by using ≥ 80 instead of strictly > 80, giving a count of three.",
+      "C": "Student miscalculates the average — perhaps summing only three of the five scores (88 + 95 + 80 = 263... not 82) or using an incorrect divisor — arriving at 82, then correctly finding only Cara exceeds that threshold.",
+      "D": "Correct: average = 80, and only Ben (88) and Cara (95) are strictly above it."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compute the class average first: add all five scores and divide by 5. Then count only the students whose scores are strictly greater than that average — equal does not count as above."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Once you find the average is 80, check Eva's score (also 80). Equal to the average is not above it — if any option counts Eva as above average, eliminate it."
+      }
+    ],
+    "content_context": "classroom",
+    "context_tags": ["bar_graph", "mean", "above_average", "claim_evaluation"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-05",
+    "last_modified": "2026-06-05",
+    "review_notes": null
+  }
+]
