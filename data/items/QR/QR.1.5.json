@@ -1,6 +1,6 @@
 [
   {
-    "item_id": "QR_B_002",
+    "item_id": "QR_B_007",
     "schema_version": "2.0",
     "version": 1,
     "status": "draft",
@@ -163,7 +163,7 @@
   {
     "item_id": "QR_B_025",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -186,7 +186,7 @@
       "A": "−1.0",
       "B": "1.0",
       "C": "0.1",
-      "D": "−0.1"
+      "D": "2.9"
     },
     "correct_answer": "B",
     "explanation": "The product of two negative numbers is positive. 0.4 × 2.5 = 1.0, and since both factors are negative, the result is +1.0.",
@@ -194,7 +194,7 @@
       "A": "Student computes 0.4 × 2.5 = 1.0 correctly but applies a negative sign, believing that a result involving two negatives is still negative.",
       "B": "Correct: (−0.4) × (−2.5) = +1.0.",
       "C": "Student misaligns the decimal point, computing 4 × 25 = 100 but placing the decimal incorrectly to get 0.1 instead of 1.0.",
-      "D": "Student misaligns the decimal as in C and also incorrectly assigns a negative sign."
+      "D": "Student correctly determines the result must be positive (two negatives multiply to a positive) but then adds the absolute values instead of multiplying: 0.4 + 2.5 = 2.9."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -234,11 +234,11 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
-    "last_modified": "2026-05-24",
+    "last_modified": "2026-06-06",
     "review_notes": null
   },
   {
-    "item_id": "QR_P_002",
+    "item_id": "QR_P_007",
     "schema_version": "2.0",
     "version": 1,
     "status": "draft",
@@ -476,9 +476,9 @@
     "review_notes": null
   },
   {
-    "item_id": "QR_A_002",
+    "item_id": "QR_A_007",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -505,7 +505,7 @@
       "D": "2.0"
     },
     "correct_answer": "A",
-    "explanation": "Rationalize the denominator by multiplying numerator and denominator by the conjugate (√5 + √2): 6 / (√5 − √2) · (√5 + √2) / (√5 + √2) = 6(√5 + √2) / [(√5)² − (√2)²] = 6(√5 + √2) / (5 − 2) = 6(√5 + √2) / 3 = 2(√5 + √2) = 2√5 + 2√2. Estimating: √5 ≈ 2.236 and √2 ≈ 1.414, so 2√5 + 2√2 ≈ 4.472 + 2.828 ≈ 7.300, which rounds to 7.3.",
+    "explanation": "Rationalize the denominator by multiplying numerator and denominator by the conjugate (√5 + √2): 6 / (√5 − √2) · (√5 + √2) / (√5 + √2) = 6(√5 + √2) / [(√5)² − (√2)²] = 6(√5 + √2) / (5 − 2) = 6(√5 + √2) / 3 = 2(√5 + √2) = 2√5 + 2√2. Estimating: bracket each radical before computing. √5 is between 2.2 and 2.3 (since 2.2² = 4.84 and 2.3² = 5.29), so use √5 ≈ 2.2. √2 is between 1.4 and 1.5 (since 1.4² = 1.96), so use √2 ≈ 1.4. Then 2√5 + 2√2 ≈ 2(2.2) + 2(1.4) = 4.4 + 2.8 = 7.2. This is close enough to confirm 7.3 over the other choices, which fall at 5.3, 6.0, and 2.0.",
     "distractor_logic": {
       "A": "Correct: rationalizing gives 2(√5 + √2) ≈ 2(2.236 + 1.414) ≈ 7.30, which rounds to 7.3.",
       "B": "Student rationalizes correctly to 2(√5 + √2) but then applies the false rule √a + √b = √(a + b), getting 2·√7 ≈ 2(2.646) ≈ 5.3.",
@@ -556,13 +556,13 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-05-13",
-    "last_modified": "2026-05-24",
+    "last_modified": "2026-06-06",
     "review_notes": null
   },
   {
     "item_id": "QR_A_025",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -576,24 +576,26 @@
     "assessment_layer": "DIAGNOSTIC",
     "unit": 0,
     "skills_targeted": [
-      "simplifying a square root by factoring out a perfect-square factor",
-      "combining like radical terms through addition"
+      "simplifying square roots by factoring out perfect-square factors",
+      "combining like radical terms through addition",
+      "rationalizing a denominator containing a sum of a radical and a rational number",
+      "applying the difference-of-squares identity in the rationalization step"
     ],
-    "question_text": "Simplify: 2√12 + 3√3.",
+    "question_text": "Simplify the expression (2√12 + 3√3) / (√3 + 1), rationalizing the denominator.",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "5√3",
-      "B": "4√3",
-      "C": "7√3",
-      "D": "6√3"
+      "A": "(21 − 7√3) / 2",
+      "B": "7√3 / 2",
+      "C": "7(√3 − 1)",
+      "D": "(21 + 7√3) / 2"
     },
-    "correct_answer": "C",
-    "explanation": "Simplify √12 by factoring out the largest perfect square: √12 = √(4 × 3) = 2√3. So 2√12 = 2 × 2√3 = 4√3. Now add like radicals: 4√3 + 3√3 = 7√3.",
+    "correct_answer": "A",
+    "explanation": "First simplify the numerator. √12 = √(4 × 3) = 2√3, so 2√12 = 4√3. The numerator becomes 4√3 + 3√3 = 7√3. The expression is now 7√3 / (√3 + 1). Rationalize by multiplying numerator and denominator by the conjugate (√3 − 1): 7√3(√3 − 1) / [(√3 + 1)(√3 − 1)]. Denominator: (√3)² − 1² = 3 − 1 = 2. Numerator: 7√3 · √3 − 7√3 · 1 = 7(3) − 7√3 = 21 − 7√3. Result: (21 − 7√3) / 2.",
     "distractor_logic": {
-      "A": "Student correctly simplifies √12 = 2√3 but then writes 2√12 = 2√3 (dropping the outer coefficient into the simplified form instead of multiplying: 2 × 2√3 = 4√3), and then adds 2√3 + 3√3 = 5√3.",
-      "B": "Student correctly simplifies 2√12 = 4√3 but then forgets to add the 3√3 term, reporting only 4√3 as the final answer.",
-      "C": "Correct: 2√12 = 4√3, so 4√3 + 3√3 = 7√3.",
-      "D": "Student multiplies the coefficients (2 × 3 = 6) instead of adding them after simplification, producing 6√3."
+      "A": "Correct: simplify to 7√3, rationalize using (√3 − 1), expand to get (21 − 7√3) / 2.",
+      "B": "Student correctly simplifies the numerator to 7√3 and rationalizes the denominator to 2, but expands only the √3 · √3 = 3 part of the numerator and drops the −7√3 term, writing 21/2 ... then writes 7√3/2 by confusing the pre-rationalization form with the final result.",
+      "C": "Student correctly simplifies the numerator to 7√3 but then attempts to cancel (√3 + 1) from numerator and denominator as if 7√3 = 7(√3 + 1) − 7, treating the denominator as a factor of the numerator rather than rationalizing it properly, and writes 7(√3 − 1).",
+      "D": "Student multiplies by (√3 + 1) / (√3 + 1) instead of the conjugate (√3 − 1) / (√3 − 1), computing denominator (√3 + 1)² instead of (√3)² − 1², and the sign on the √3 term in the numerator flips to positive: (21 + 7√3) / 2."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -603,25 +605,32 @@
     "requires_calculator": false,
     "applicable_strategies": [
       "identify_key_info",
+      "estimate_first",
       "eliminate_wrong_answers"
     ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "√12 = √(4 × 3) = 2√3 — simplify before combining."
+        "hint_text": "Simplify the numerator first: 2√12 = 4√3, so the numerator combines to 7√3 before you rationalize."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Use √3 ≈ 1.7: 7(1.7) = 11.9, divided by (1.7 + 1) = 2.7 gives roughly 4.4. Check: (21 − 7(1.7))/2 = (21 − 11.9)/2 = 9.1/2 ≈ 4.55. Consistent — use this to confirm your answer choice."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Adding coefficients before simplifying (giving 5√3) skips the required step — eliminate it."
+        "hint_text": "The rationalized result should not still have (√3 + 1) in it — eliminate any answer that looks like it skipped rationalization."
       }
     ],
     "content_context": "generic",
     "context_tags": [
       "simplifying_radicals",
       "like_radicals",
-      "addition"
+      "rationalizing_denominator",
+      "conjugate",
+      "multi_step"
     ],
-    "estimated_time_seconds": 120,
+    "estimated_time_seconds": 150,
     "contains_image": false,
     "image_url": null,
     "exposure_max": 0.2,
@@ -633,7 +642,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
-    "last_modified": "2026-05-24",
+    "last_modified": "2026-06-06",
     "review_notes": null
   },
   {
@@ -716,7 +725,7 @@
   {
     "item_id": "QR_A_027",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -730,24 +739,26 @@
     "assessment_layer": "DIAGNOSTIC",
     "unit": 0,
     "skills_targeted": [
-      "recognizing and applying the difference-of-squares pattern with irrational terms",
-      "evaluating a product of conjugate irrational expressions"
+      "recognizing the conjugate of a binomial radical expression",
+      "applying the difference-of-squares identity with irrational terms",
+      "rationalizing a denominator by multiplying by the conjugate",
+      "simplifying the resulting rational expression"
     ],
-    "question_text": "What is (√5 + √2)(√5 − √2)?",
+    "question_text": "Simplify the expression 10 / (√5 + √2), rationalizing the denominator.",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "√3",
-      "B": "√10",
-      "C": "7",
-      "D": "3"
+      "A": "10/3",
+      "B": "(10√5 − 10√2) / 3",
+      "C": "(10√5 + 10√2) / 3",
+      "D": "10√3 / 3"
     },
-    "correct_answer": "D",
-    "explanation": "Recognize the difference-of-squares pattern: (a + b)(a − b) = a² − b². Here a = √5 and b = √2, so the product equals (√5)² − (√2)² = 5 − 2 = 3.",
+    "correct_answer": "B",
+    "explanation": "Rationalize the denominator by multiplying numerator and denominator by the conjugate (√5 − √2): 10 / (√5 + √2) · (√5 − √2) / (√5 − √2). Denominator: (√5)² − (√2)² = 5 − 2 = 3. Numerator: 10(√5 − √2) = 10√5 − 10√2. Result: (10√5 − 10√2) / 3. This cannot be simplified further since 10√5 and 10√2 are unlike radicals.",
     "distractor_logic": {
-      "A": "Student correctly applies difference of squares and arrives at 5 − 2 = 3, but then takes the square root of that result, writing √3 instead of stopping at 3.",
-      "B": "Student multiplies only the first terms: √5 × √2 = √10, ignoring the full binomial structure of the product.",
-      "C": "Student adds the radicands instead of computing (√5)² − (√2)²: 5 + 2 = 7.",
-      "D": "Correct: (√5)² − (√2)² = 5 − 2 = 3."
+      "A": "Student correctly computes the denominator as (√5)² − (√2)² = 3 but does not distribute the conjugate through the numerator — treating the numerator as remaining 10 — and writes 10/3.",
+      "B": "Correct: multiplying by the conjugate gives denominator 3 and numerator 10√5 − 10√2, yielding (10√5 − 10√2) / 3.",
+      "C": "Student multiplies by (√5 + √2) / (√5 + √2) — the original denominator rather than its conjugate — producing a positive sign on both radical terms in the numerator: (10√5 + 10√2) / (√5 + √2)² ... then incorrectly computes the denominator as 3 anyway, writing (10√5 + 10√2) / 3.",
+      "D": "Student correctly distributes to get 10(√5 − √2) in the numerator but then applies the false rule √a − √b = √(a − b) to the radical expression, computing √5 − √2 as √(5 − 2) = √3, and writes 10√3 / 3."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -757,25 +768,32 @@
     "requires_calculator": false,
     "applicable_strategies": [
       "identify_key_info",
+      "estimate_first",
       "eliminate_wrong_answers"
     ],
     "strategy_hints": [
-      {
-        "strategy": "identify_key_info",
-        "hint_text": "Recognize the pattern (a + b)(a − b) = a² − b²: here a = √5, b = √2."
-      },
-      {
-        "strategy": "eliminate_wrong_answers",
-        "hint_text": "The product of conjugate radicals is always rational — eliminate √3 and √10."
-      }
+     {
+      "strategy": "identify_key_info",
+      "hint_text": "The conjugate of (√5 + √2) is (√5 − √2). Multiply both top and bottom by it — the denominator becomes the difference of squares: 5 − 2 = 3."
+     },
+     {
+      "strategy": "estimate_first",
+      "hint_text": "Use √5 ≈ 2.2 and √2 ≈ 1.4: 10 / (2.2 + 1.4) = 10 / 3.6 ≈ 2.8. Check answer B: (10(2.2) − 10(1.4)) / 3 = (22 − 14) / 3 = 8 / 3 ≈ 2.7. Consistent."
+     },
+     {
+      "strategy": "eliminate_wrong_answers",
+      "hint_text": "The conjugate must be applied to both numerator and denominator — any answer that looks like only the denominator changed is wrong. Also, √5 − √2 ≠ √3."
+     }
     ],
     "content_context": "generic",
     "context_tags": [
+      "rationalizing_denominator",
       "difference_of_squares",
-      "conjugates",
-      "irrational_product"
+      "conjugate",
+      "irrational_numbers",
+      "multi_step"
     ],
-    "estimated_time_seconds": 130,
+    "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
     "exposure_max": 0.2,
@@ -787,7 +805,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
-    "last_modified": "2026-05-24",
+    "last_modified": "2026-06-06",
     "review_notes": null
   }
 ]
