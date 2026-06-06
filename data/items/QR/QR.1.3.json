@@ -859,7 +859,7 @@
   {
     "item_id": "QR_A_016",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -876,12 +876,12 @@
       "converting a repeating decimal to a fraction using the repeating-block method",
       "identifying the fractional equivalent of a two-digit repeating decimal"
     ],
-    "question_text": "Which fraction is equivalent to the decimal 0.272727...?",
+    "question_text": "Which fraction in simplest form is equivalent to the decimal 0.272727...?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "27/100",
       "B": "3/11",
-      "C": "3/10",
+      "C": "9/33",
       "D": "27/999"
     },
     "correct_answer": "B",
@@ -889,7 +889,7 @@
     "distractor_logic": {
       "A": "Student reads 0.27 as 27/100, ignoring the repeating nature of the decimal and treating it as a terminating two-decimal value.",
       "B": "Correct: 0.272727... = 27/99 = 3/11.",
-      "C": "Student oversimplifies, reading only the leading digit to write 3/10 = 0.3.",
+      "C": "Student correctly identifies the repeating block as 27 and uses 99 as the denominator, producing 27/99, but then simplifies incorrectly — dividing numerator and denominator by 3 only once to get 9/33 rather than continuing to fully reduce to 3/11.",
       "D": "Student applies the repeating-block method but uses 999 (for a three-digit period) instead of 99 (for a two-digit period), producing an incorrect denominator."
     },
     "difficulty_level": "Advanced",
@@ -935,7 +935,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
-    "last_modified": "2026-05-24",
+    "last_modified": "2026-06-06",
     "review_notes": null
   },
   {
@@ -1023,7 +1023,7 @@
   {
     "item_id": "QR_A_018",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -1053,8 +1053,8 @@
     "distractor_logic": {
       "A": "Correct: 7/9 = 0.777..., which is greater than all other options.",
       "B": "Student compares numerators and denominators directly, reasoning that 8 > 7 and 11 is close to 9, and concludes 8/11 is largest without computing decimals.",
-      "C": "Student picks 5/7 because 5 and 7 appear large relative to the fraction, or misjudges the decimal expansion.",
-      "D": "Student simplifies 4/6 = 2/3 = 0.666... correctly but then incorrectly places it above 7/9 by reasoning that 2/3 is a 'nice' fraction."
+      "C": "Student estimates 5 ÷ 7 ≈ 0.714 and rounds to 0.72, then compares rounded values — 0.72 vs. 0.78 for 7/9 — and selects 5/7 after a rounding error inflates its apparent value.",
+      "D": "Student simplifies 4/6 to 2/3 but then converts incorrectly, computing 2 ÷ 3 as 0.6 (stopping after one step of long division) rather than continuing to 0.666... — the truncated result 0.6 is then compared against similarly rough estimates of the other fractions, and the student selects 4/6 believing it is close to 0.7."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1099,7 +1099,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
-    "last_modified": "2026-05-24",
+    "last_modified": "2026-06-06",
     "review_notes": null
   },
   {
