@@ -84,7 +84,7 @@
     "review_notes": null
   },
   {
-    "item_id": "QR_B_006",
+    "item_id": "QR_B_002",
     "schema_version": "2.0",
     "version": 1,
     "status": "draft",
@@ -167,7 +167,7 @@
     "review_notes": null
   },
   {
-    "item_id": "QR_B_007",
+    "item_id": "QR_B_003",
     "schema_version": "2.0",
     "version": 1,
     "status": "draft",
@@ -250,9 +250,9 @@
     "review_notes": null
   },
   {
-    "item_id": "QR_B_008",
+    "item_id": "QR_B_004",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -281,7 +281,7 @@
     "explanation": "√13 lies between √9 = 3 and √16 = 4, and closer to 4 since 13 is closer to 16. Refining, 3.6² = 12.96, which is very close to 13, so √13 ≈ 3.6.",
     "distractor_logic": {
       "A": "Correct: 3.6² = 12.96 ≈ 13, so √13 ≈ 3.6.",
-      "B": "Student overestimates, placing √13 nearer to 4 than it belongs, or confuses it with the square root of a larger number.",
+      "B": "Student overshoots the bracket, placing √13 above 4 when 4² = 16 > 13 means √13 must be less than 4.",
       "C": "Student halves the radicand (13 ÷ 2 = 6.5), treating the square root as division by two.",
       "D": "Student squares the radicand (13² = 169) instead of taking its square root, reversing the operation."
     },
@@ -327,7 +327,7 @@
     "review_notes": null
   },
   {
-    "item_id": "QR_B_009",
+    "item_id": "QR_B_005",
     "schema_version": "2.0",
     "version": 1,
     "status": "draft",
@@ -494,7 +494,7 @@
     "review_notes": null
   },
   {
-    "item_id": "QR_P_006",
+    "item_id": "QR_P_002",
     "schema_version": "2.0",
     "version": 1,
     "status": "draft",
@@ -577,7 +577,7 @@
     "review_notes": null
   },
   {
-    "item_id": "QR_P_007",
+    "item_id": "QR_P_003",
     "schema_version": "2.0",
     "version": 1,
     "status": "draft",
@@ -660,7 +660,7 @@
     "review_notes": null
   },
   {
-    "item_id": "QR_P_008",
+    "item_id": "QR_P_004",
     "schema_version": "2.0",
     "version": 1,
     "status": "draft",
@@ -742,7 +742,7 @@
     "review_notes": null
   },
   {
-    "item_id": "QR_P_009",
+    "item_id": "QR_P_005",
     "schema_version": "2.0",
     "version": 1,
     "status": "draft",
@@ -909,7 +909,7 @@
     "review_notes": null
   },
   {
-    "item_id": "QR_A_006",
+    "item_id": "QR_A_002",
     "schema_version": "2.0",
     "version": 1,
     "status": "draft",
@@ -992,7 +992,7 @@
     "review_notes": null
   },
   {
-    "item_id": "QR_A_007",
+    "item_id": "QR_A_003",
     "schema_version": "2.0",
     "version": 1,
     "status": "draft",
@@ -1074,9 +1074,9 @@
     "review_notes": null
   },
   {
-    "item_id": "QR_A_008",
+    "item_id": "QR_A_004",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -1102,12 +1102,12 @@
       "D": "II, III, I, IV"
     },
     "correct_answer": "A",
-    "explanation": "Simplify and estimate each. Value I: 2√6 = √24 ≈ 4.90. Value II: π + 1.5 ≈ 3.14 + 1.5 = 4.64. Value III: √23 ≈ 4.80 (note 4.8² = 23.04 > 23, so √23 < 4.8). Value IV: 24/5 = 4.8. Ordering from least to greatest: 4.64 < 4.80 < 4.8 < 4.90, which is II, III, IV, I.",
+    "explanation": "Simplify and estimate each. Value I: 2√6 = √24 ≈ 4.866. Value II: π + 1.5 ≈ 3.14 + 1.5 = 4.642. Value III: √23 ≈ 4.796 (note 4.8² = 23.04 > 23, so √23 < 4.8). Value IV: 24/5 = 4.800. Ordering from least to greatest: 4.642 < 4.796 < 4.800 < 4.899, which is II, III, IV, I.",
     "distractor_logic": {
-      "A": "Correct: π + 1.5 ≈ 4.64 < √23 ≈ 4.80 < 24/5 = 4.8 < 2√6 = √24 ≈ 4.90.",
-      "B": "Student places 24/5 below √23, overestimating √23 as more than 4.8 rather than checking that 4.8² = 23.04 > 23.",
+      "A": "Correct: π + 1.5 ≈ 4.642 < √23 ≈ 4.796 < 24/5 = 4.800 < 2√6 = √24 ≈ 4.899.",
+      "B": "Student places 24/5 below √23, overestimating √23 as more than 4.800 rather than checking that 4.8² = 23.04 > 23.",
       "C": "Student orders the values from greatest to least, reversing the requested direction.",
-      "D": "Student simplifies 2√6 to √24 ≈ 4.90 correctly but places it before 24/5, swapping the two largest values."
+      "D": "Student simplifies 2√6 to √24 ≈ 4.899 correctly but places it before 24/5, swapping the two largest values."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1157,7 +1157,7 @@
     "review_notes": null
   },
   {
-    "item_id": "QR_A_009",
+    "item_id": "QR_A_005",
     "schema_version": "2.0",
     "version": 1,
     "status": "draft",
