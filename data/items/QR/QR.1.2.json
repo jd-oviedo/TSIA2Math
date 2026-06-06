@@ -1,6 +1,6 @@
 [
   {
-    "item_id": "QR_B_003",
+    "item_id": "QR_B_006",
     "schema_version": "2.0",
     "version": 1,
     "status": "draft",
@@ -890,7 +890,7 @@
   {
     "item_id": "QR_A_011",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -919,9 +919,9 @@
     "explanation": "Convert each factor to a decimal: 1.17; 118% = 1.18; 7/6 ≈ 1.167; 1 1/5 = 1.2. Comparing 1.17, 1.18, 1.167, and 1.2, the smallest is Investment III (7/6 ≈ 1.167).",
     "distractor_logic": {
       "A": "Student rounds 7/6 up to 1.17 and so cannot tell it apart from Investment I, choosing the explicit 1.17.",
-      "B": "Student treats 118% as the smallest because it is the only percent shown.",
+      "B": "Student rounds 7/6 up to 1.18 and concludes it equals Investment II (118%), then picks Investment II as smallest because both appear to share the same value — misidentifying a rounding artifact as a tie.",
       "C": "Correct: 7/6 ≈ 1.167 is the smallest once every factor is written as a decimal.",
-      "D": "Student converts 1 1/5 as 1.05 (treating 1/5 as 0.05), making it appear smallest."
+      "D": "Student reads 1 1/5 as 1.15 by writing the numerator and denominator digits as '.15' instead of converting 1/5 = 0.2, producing a value that appears smaller than 7/6 ≈ 1.167."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
