@@ -628,7 +628,7 @@
   {
     "item_id": "QR_P_023",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
@@ -654,7 +654,7 @@
       "D": "11.0 feet"
     },
     "correct_answer": "D",
-    "explanation": "The side length equals √120. 10² = 100 and 11² = 121. Test 10.9: 10.9² = 118.81. Test 10.95: 10.95² ≈ 119.90. Test 10.96: 10.96² ≈ 120.12. So √120 lies between 10.95 and 10.96, giving √120 ≈ 10.954. Rounded to the nearest tenth, that is 11.0 feet.",
+    "explanation": "The side length equals √120. The nearest perfect squares are 10² = 100 and 11² = 121. Since 121 is only 1 away from 120 and 100 is 20 away, √120 is much closer to 11 than to 10. That means √120 is just barely less than 11 — close enough that it rounds up to 11.0. The side length is 11.0 feet.",
     "distractor_logic": {
       "A": "Student uses the lower perfect square root √100 = 10.0 and does not refine beyond the integer.",
       "B": "Student tests 10.9² = 118.81 and concludes √120 ≈ 10.9 without refining to the next tenth.",
@@ -700,7 +700,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
-    "last_modified": "2026-05-24",
+    "last_modified": "2026-06-06",
     "review_notes": null
   },
   {
