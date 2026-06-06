@@ -280,9 +280,9 @@
     "review_notes": null
   },
   {
-    "item_id": "PR_B_021",
+    "item_id": "PR_A_022",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
@@ -630,9 +630,9 @@
     "review_notes": null
   },
   {
-    "item_id": "PR_P_021",
+    "item_id": "PR_A_022",
     "schema_version": "2.0",
-    "version": 1,
+    "version": 2,
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
@@ -642,7 +642,7 @@
     "topic_id": "PR.1.5",
     "topic": "classifying_data_and_choosing_appropriate_representations",
     "topic_text": "Classifying Data and Choosing Appropriate Representations",
-    "proficiency_level": "Proficient",
+    "proficiency_level": "Advanced",
     "assessment_layer": "CRC",
     "unit": 4,
     "skills_targeted": [
