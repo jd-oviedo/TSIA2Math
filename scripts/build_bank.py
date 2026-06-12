@@ -21,7 +21,7 @@ from collections import Counter
 # which directory you run it from.
 ROOT = Path(__file__).resolve().parent.parent
 ITEMS_DIR = ROOT / "data" / "items"
-BUILD_DIR = ROOT / "data" / "build"
+BUILD_DIR = ROOT / "public" / "data"
 OUT_FILE = BUILD_DIR / "question_bank.json"
 
 # ---- schema v2.0: the single source of truth --------------------------------
