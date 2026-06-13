@@ -1,3 +1,4 @@
+cat > app/theme/themes.ts << 'EOF'
 export type ThemeName = "sand" | "ember" | "abyss";
 
 export interface Theme {
@@ -51,6 +52,7 @@ export const themes: Record<ThemeName, Theme> = {
       "--ec-table-row-alt": "rgba(26, 26, 46, 0.02)",
       "--ec-table-border": "rgba(26, 26, 46, 0.07)",
       "--ec-slash-color": "#f5f0e8",
+      "--ec-adaptive-signal": "#2a8f93",
     },
   },
 
@@ -98,6 +100,7 @@ export const themes: Record<ThemeName, Theme> = {
       "--ec-table-row-alt": "rgba(255, 255, 255, 0.02)",
       "--ec-table-border": "rgba(255, 255, 255, 0.06)",
       "--ec-slash-color": "#1a1208",
+      "--ec-adaptive-signal": "#F2A541",
     },
   },
 
@@ -145,6 +148,8 @@ export const themes: Record<ThemeName, Theme> = {
       "--ec-table-row-alt": "rgba(255, 255, 255, 0.02)",
       "--ec-table-border": "rgba(255, 255, 255, 0.06)",
       "--ec-slash-color": "#0d1220",
+      "--ec-adaptive-signal": "#7ACCCF",
     },
   },
 };
+EOF

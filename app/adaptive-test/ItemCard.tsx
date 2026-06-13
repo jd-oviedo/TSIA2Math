@@ -308,7 +308,7 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
               animation: "ecpulse 2s ease-in-out infinite",
             }}
           />
-          <span style={{ fontSize: "11px", color: "var(--ec-accent)", opacity: 0.7 }}>
+          <span style={{ fontSize: "11px", color: "var(--ec-adaptive-signal)", opacity: 0.9 }}>
             Adjusting to your level…
           </span>
           <style>{`@keyframes ecpulse { 0%,100%{opacity:0.7;transform:scale(1)} 50%{opacity:0.25;transform:scale(0.6)} }`}</style>
