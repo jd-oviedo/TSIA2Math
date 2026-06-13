@@ -1,4 +1,4 @@
-import type { Item, ItemValidationError, LoadResult, ProficiencyLevel, Response } from "./types";
+import type { Item, ItemValidationError, LoadResult, ProficiencyLevel, Response } from "./type";
 
 export const TSIA2_MIN = 910;
 export const TSIA2_MAX = 990;

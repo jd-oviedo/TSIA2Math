@@ -1,6 +1,6 @@
 "use client";
 
-import type { Response } from "./types";
+import type { Response } from "./type";
 import { TSIA2_PASSING, thetaToScore, buildCategoryBreakdown } from "./engine";
 
 interface Props {

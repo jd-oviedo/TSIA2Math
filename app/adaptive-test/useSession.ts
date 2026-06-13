@@ -1,7 +1,7 @@
 "use client";
 
 import { useReducer, useCallback } from "react";
-import type { Item, Response, SessionState } from "./types";
+import type { Item, Response, SessionState } from "./type";
 import {
   DEFAULT_MAX_ITEMS,
   STARTING_DIFFICULTY,

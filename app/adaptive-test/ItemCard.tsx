@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { Item } from "./types";
+import type { Item } from "./type";
 
 interface Props {
   item: Item;
