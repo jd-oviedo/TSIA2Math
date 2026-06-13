@@ -1,4 +1,3 @@
-cat > app/theme/themes.ts << 'EOF'
 export type ThemeName = "sand" | "ember" | "abyss";
 
 export interface Theme {
@@ -152,4 +151,3 @@ export const themes: Record<ThemeName, Theme> = {
     },
   },
 };
-EOF
