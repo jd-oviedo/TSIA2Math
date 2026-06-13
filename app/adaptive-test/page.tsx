@@ -7,6 +7,7 @@ import { validateItems } from "./engine";
 import ItemCard from "./ItemCard";
 import ResultsSummary from "./ResultsSummary";
 import type { ItemValidationError } from "./types";
+import { supabase } from "../lib/supabase";
 
 const MAX_ITEMS = 20;
 
@@ -30,24 +31,30 @@ export default function AdaptiveTestPage() {
 
   useEffect(() => {
     if (state.phase !== "loading") return;
-    fetch("/data/question_bank.json")
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
-        return res.json();
-      })
-      .then((raw: unknown) => {
-        if (!Array.isArray(raw)) throw new Error("question_bank.json must be a JSON array.");
-        const { items, errors } = validateItems(raw);
+
+    async function fetchItems() {
+      try {
+        const { data, error } = await supabase
+          .from("questions")
+          .select("*")
+          .eq("status", "draft");
+
+        if (error) throw new Error(error.message);
+        if (!data || data.length === 0) throw new Error("No items found in the question bank.");
+
+        const { items, errors } = validateItems(data);
         if (items.length === 0) throw new Error("No valid items found in the question bank.");
         if (errors.length > 0) {
           console.warn("[CAT Engine] Skipped malformed items:", errors);
         }
         loadItems(items);
         (window as unknown as Record<string, unknown>).__catValidationErrors = errors;
-      })
-      .catch((err: unknown) => {
+      } catch (err: unknown) {
         loadError(err instanceof Error ? err.message : String(err));
-      });
+      }
+    }
+
+    fetchItems();
   }, [state.phase, loadItems, loadError]);
 
   if (state.phase === "loading") {
