@@ -6,7 +6,7 @@ import { useSession } from "./useSession";
 import { validateItems } from "./engine";
 import ItemCard from "./ItemCard";
 import ResultsSummary from "./ResultsSummary";
-import type { ItemValidationError } from "./types";
+import type { ItemValidationError } from "./type";
 import { supabase } from "../lib/supabase";
 
 const MAX_ITEMS = 20;
