@@ -26,51 +26,117 @@ export default function ResultsSummary({ responses, theta, onRestart }: Props) {
   const breakdown = buildCategoryBreakdown(responses);
 
   return (
-    <div className="w-full max-w-2xl mx-auto flex flex-col gap-6">
-      <div className={`rounded-2xl p-8 text-center shadow-sm border-2 ${passed ? "bg-emerald-50 border-emerald-300" : "bg-rose-50 border-rose-300"}`}>
-        <p className="text-sm font-semibold uppercase tracking-widest text-slate-500 mb-2">
+    <div style={{ width: "100%", maxWidth: "640px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "20px" }}>
+
+      {/* Score hero */}
+      <div
+        style={{
+          background: "var(--ec-glass-bg)",
+          border: "1px solid",
+          borderColor: passed ? "var(--ec-correct-border)" : "var(--ec-incorrect-border)",
+          borderRadius: "20px",
+          padding: "40px 24px",
+          textAlign: "center",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: "15%",
+            right: "15%",
+            height: "1px",
+            background: "var(--ec-glass-top)",
+          }}
+        />
+        <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-ink-muted)", marginBottom: "12px" }}>
           Estimated TSIA2 Score
         </p>
-        <p className={`text-7xl font-extrabold ${passed ? "text-emerald-600" : "text-rose-500"}`}>
+        <p style={{ fontSize: "80px", fontWeight: 800, lineHeight: 1, color: passed ? "var(--ec-accent)" : "var(--ec-warm)", marginBottom: "12px" }}>
           {finalScore}
         </p>
-        <p className={`mt-2 text-lg font-semibold ${passed ? "text-emerald-700" : "text-rose-600"}`}>
-          {passed ? "✅ Likely College-Ready" : "📚 Keep Practicing"}
+        <p style={{ fontSize: "16px", fontWeight: 600, color: passed ? "var(--ec-accent)" : "var(--ec-warm)", marginBottom: "8px" }}>
+          {passed ? "College Ready" : "Keep Practicing"}
         </p>
-        <p className="mt-1 text-sm text-slate-500">
+        <p style={{ fontSize: "12px", color: "var(--ec-ink-muted)" }}>
           Passing threshold: {TSIA2_PASSING} · Scale: 910–990
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
+      {/* Stat cards */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "12px" }}>
         {[
           { label: "Correct", value: `${correct} / ${total}` },
           { label: "Accuracy", value: `${pct}%` },
           { label: "Avg. Time", value: `${avgTime}s` },
         ].map(({ label, value }) => (
-          <div key={label} className="bg-white rounded-xl border border-slate-200 p-4 text-center shadow-sm">
-            <p className="text-2xl font-bold text-indigo-700">{value}</p>
-            <p className="text-xs text-slate-500 mt-1">{label}</p>
+          <div
+            key={label}
+            style={{
+              background: "var(--ec-glass-bg)",
+              border: "1px solid var(--ec-glass-border)",
+              borderRadius: "14px",
+              padding: "18px 14px",
+              textAlign: "center",
+            }}
+          >
+            <p style={{ fontSize: "24px", fontWeight: 700, color: "var(--ec-accent)", marginBottom: "4px" }}>{value}</p>
+            <p style={{ fontSize: "11px", color: "var(--ec-ink-muted)", letterSpacing: "0.04em" }}>{label}</p>
           </div>
         ))}
       </div>
 
+      {/* Strand breakdown */}
       {breakdown.length > 0 && (
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-          <h2 className="text-sm font-semibold text-slate-700 mb-4 uppercase tracking-wide">
+        <div
+          style={{
+            background: "var(--ec-glass-bg)",
+            border: "1px solid var(--ec-glass-border)",
+            borderRadius: "18px",
+            padding: "24px 22px",
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: "10%",
+              right: "10%",
+              height: "1px",
+              background: "var(--ec-glass-top)",
+            }}
+          />
+          <h2 style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--ec-ink-muted)", marginBottom: "20px" }}>
             Category Breakdown
           </h2>
-          <div className="flex flex-col gap-4">
+          <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
             {breakdown.map(({ strand, correct, total, pct }) => (
               <div key={strand}>
-                <div className="flex justify-between text-sm mb-1">
-                  <span className="font-medium text-slate-700">{STRAND_LABEL[strand] ?? strand}</span>
-                  <span className="text-slate-500">{correct}/{total} ({pct}%)</span>
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px" }}>
+                  <span style={{ fontSize: "13px", fontWeight: 500, color: "var(--ec-ink)" }}>
+                    {STRAND_LABEL[strand] ?? strand}
+                  </span>
+                  <span style={{ fontSize: "12px", color: "var(--ec-ink-muted)" }}>
+                    {correct}/{total} · {pct}%
+                  </span>
                 </div>
-                <div className="w-full h-2.5 bg-slate-100 rounded-full">
+                <div style={{ width: "100%", height: "4px", background: "var(--ec-progress-track)", borderRadius: "99px", overflow: "hidden" }}>
                   <div
-                    className={`h-2.5 rounded-full ${pct >= 70 ? "bg-emerald-500" : pct >= 50 ? "bg-amber-400" : "bg-rose-400"}`}
-                    style={{ width: `${pct}%` }}
+                    style={{
+                      height: "100%",
+                      width: `${pct}%`,
+                      background: pct >= 70
+                        ? "linear-gradient(90deg, var(--ec-progress-start), var(--ec-accent))"
+                        : pct >= 50
+                        ? "linear-gradient(90deg, var(--ec-progress-start), var(--ec-progress-end))"
+                        : "var(--ec-warm)",
+                      borderRadius: "99px",
+                      transition: "width 0.6s ease",
+                    }}
                   />
                 </div>
               </div>
@@ -79,39 +145,67 @@ export default function ResultsSummary({ responses, theta, onRestart }: Props) {
         </div>
       )}
 
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-        <h2 className="text-sm font-semibold text-slate-700 mb-4 uppercase tracking-wide">
+      {/* Response history */}
+      <div
+        style={{
+          background: "var(--ec-glass-bg)",
+          border: "1px solid var(--ec-glass-border)",
+          borderRadius: "18px",
+          padding: "24px 22px",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: "10%",
+            right: "10%",
+            height: "1px",
+            background: "var(--ec-glass-top)",
+          }}
+        />
+        <h2 style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--ec-ink-muted)", marginBottom: "16px" }}>
           Response History
         </h2>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+        <div style={{ overflowX: "auto" }}>
+          <table style={{ width: "100%", fontSize: "13px", borderCollapse: "collapse" }}>
             <thead>
-              <tr className="text-xs text-slate-400 uppercase border-b border-slate-100">
-                <th className="pb-2 text-left">#</th>
-                <th className="pb-2 text-left">Item</th>
-                <th className="pb-2 text-left">Difficulty</th>
-                <th className="pb-2 text-left">Your Answer</th>
-                <th className="pb-2 text-left">Result</th>
-                <th className="pb-2 text-right">Score</th>
+              <tr style={{ borderBottom: "1px solid var(--ec-table-border)" }}>
+                {["#", "Item", "Level", "Answer", "Result", "Score"].map((h, i) => (
+                  <th key={h} style={{ paddingBottom: "10px", textAlign: i === 5 ? "right" : "left", fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--ec-ink-faint)" }}>
+                    {h}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
               {responses.map((r, i) => (
-                <tr key={r.item.item_id} className="border-b border-slate-50 hover:bg-slate-50">
-                  <td className="py-2 text-slate-400">{i + 1}</td>
-                  <td className="py-2 font-mono text-xs text-slate-600">{r.item.item_id}</td>
-                  <td className="py-2">
-                    <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                      r.item.proficiency_level === "Advanced" ? "bg-rose-100 text-rose-700"
-                      : r.item.proficiency_level === "Proficient" ? "bg-amber-100 text-amber-700"
-                      : "bg-emerald-100 text-emerald-700"
-                    }`}>
+                <tr key={r.item.item_id} style={{ borderBottom: "1px solid var(--ec-table-border)" }}>
+                  <td style={{ padding: "10px 0", color: "var(--ec-ink-muted)", fontSize: "12px" }}>{i + 1}</td>
+                  <td style={{ padding: "10px 8px 10px 0", fontFamily: "monospace", fontSize: "11px", color: "var(--ec-ink-muted)" }}>{r.item.item_id}</td>
+                  <td style={{ padding: "10px 8px 10px 0" }}>
+                    <span style={{
+                      fontSize: "10px",
+                      fontWeight: 700,
+                      padding: "2px 7px",
+                      borderRadius: "4px",
+                      background: "var(--ec-badge-bg)",
+                      color: "var(--ec-badge-color)",
+                      border: "1px solid var(--ec-badge-border)",
+                    }}>
                       {r.item.proficiency_level[0]}
                     </span>
                   </td>
-                  <td className="py-2 font-semibold">{r.selectedAnswer}</td>
-                  <td className="py-2">{r.isCorrect ? "✅" : "❌"}</td>
-                  <td className="py-2 text-right font-mono text-indigo-700">{r.scoreAfter}</td>
+                  <td style={{ padding: "10px 8px 10px 0", fontWeight: 600, color: "var(--ec-ink)" }}>{r.selectedAnswer}</td>
+                  <td style={{ padding: "10px 8px 10px 0", fontSize: "13px" }}>
+                    {r.isCorrect
+                      ? <span style={{ color: "var(--ec-accent)", fontWeight: 700 }}>✓</span>
+                      : <span style={{ color: "var(--ec-warm)", fontWeight: 700 }}>✗</span>
+                    }
+                  </td>
+                  <td style={{ padding: "10px 0", textAlign: "right", fontFamily: "monospace", fontSize: "12px", color: "var(--ec-accent)" }}>{r.scoreAfter}</td>
                 </tr>
               ))}
             </tbody>
@@ -119,12 +213,26 @@ export default function ResultsSummary({ responses, theta, onRestart }: Props) {
         </div>
       </div>
 
+      {/* Restart */}
       <button
         onClick={onRestart}
-        className="w-full py-3 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition-colors"
+        style={{
+          width: "100%",
+          padding: "15px",
+          background: "var(--ec-btn-bg)",
+          color: "var(--ec-btn-text)",
+          border: "1px solid var(--ec-accent-border)",
+          borderRadius: "14px",
+          fontFamily: "inherit",
+          fontSize: "15px",
+          fontWeight: 700,
+          cursor: "pointer",
+          letterSpacing: "0.01em",
+        }}
       >
         Take Another Test
       </button>
+
     </div>
   );
 }
