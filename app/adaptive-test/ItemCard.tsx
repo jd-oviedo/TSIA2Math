@@ -12,6 +12,23 @@ interface Props {
 
 const CHOICE_KEYS = ["A", "B", "C", "D"] as const;
 
+// Fixed letter style — never shrinks, always 32x32, always centered
+const LETTER_BASE: React.CSSProperties = {
+  flexShrink: 0,
+  width: "32px",
+  height: "32px",
+  minWidth: "32px",
+  minHeight: "32px",
+  borderRadius: "50%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: "12px",
+  fontWeight: 700,
+  lineHeight: 1,
+  transition: "background 0.18s, border-color 0.18s, color 0.18s",
+};
+
 export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Props) {
   const [selected, setSelected] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
@@ -36,7 +53,7 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
       const rows = tableLines.slice(2).map((row) => row.split("|").map((c) => c.trim()).filter(Boolean));
       parts.push(
         <div key={key++} style={{ overflowX: "auto", margin: "16px 0" }}>
-          <table style={{ minWidth: "100%", borderCollapse: "collapse", fontSize: "13px" }}>
+          <table style={{ minWidth: "100%", borderCollapse: "collapse", fontSize: "14px" }}>
             <thead>
               <tr>
                 {headers.map((h, i) => (
@@ -63,7 +80,7 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
       if (line.startsWith("|")) { tableLines.push(line); }
       else {
         if (tableLines.length > 0) flushTable();
-        if (line.trim()) parts.push(<p key={key++} style={{ marginBottom: "8px", color: "var(--ec-ink)", lineHeight: 1.65 }}>{line}</p>);
+        if (line.trim()) parts.push(<p key={key++} style={{ marginBottom: "8px", color: "var(--ec-ink)", lineHeight: 1.65, margin: "0 0 6px" }}>{line}</p>);
       }
     }
     if (tableLines.length > 0) flushTable();
@@ -75,12 +92,24 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
 
   const getChoiceStyle = (key: string): React.CSSProperties => {
     const base: React.CSSProperties = {
-      display: "flex", alignItems: "center", gap: "14px", width: "100%", textAlign: "left",
-      borderRadius: "16px", padding: "16px 20px", cursor: revealed ? "default" : "pointer",
-      fontFamily: "inherit", fontSize: "15px", lineHeight: 1.5,
-      border: "1px solid var(--ec-line)", background: "var(--ec-surface)",
-      color: "var(--ec-ink)", transition: "all 0.18s ease",
+      display: "flex",
+      alignItems: "center",
+      gap: "14px",
+      width: "100%",
+      textAlign: "left",
+      borderRadius: "16px",
+      padding: "15px 20px",
+      cursor: revealed ? "default" : "pointer",
+      fontFamily: "inherit",
+      fontSize: "16px",
+      lineHeight: 1.5,
+      border: "1px solid var(--ec-line)",
+      background: "var(--ec-surface)",
+      color: "var(--ec-ink)",
+      transition: "background 0.18s, border-color 0.18s, opacity 0.18s",
       boxShadow: "var(--ec-shadow)",
+      // prevent browser from shrinking disabled buttons
+      WebkitAppearance: "none",
     };
     if (!revealed) {
       if (selected === key) return { ...base, border: "1px solid var(--ec-accent)", background: "var(--ec-accent-soft)" };
@@ -88,23 +117,23 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
     }
     if (key === item.correct_answer) return { ...base, border: "1px solid var(--ec-green-border)", background: "var(--ec-green-bg)" };
     if (key === selected) return { ...base, border: "1px solid var(--ec-red-border)", background: "var(--ec-red-bg)" };
-    return { ...base, opacity: 0.4 };
+    return { ...base, opacity: 0.38 };
   };
 
   const getLetterStyle = (key: string): React.CSSProperties => {
-    const base: React.CSSProperties = {
-      flexShrink: 0, width: "32px", height: "32px", borderRadius: "50%",
-      border: "1.5px solid var(--ec-line)", display: "flex", alignItems: "center",
-      justifyContent: "center", fontSize: "12px", fontWeight: 700,
-      color: "var(--ec-ink-muted)", background: "transparent", transition: "all 0.18s ease",
-    };
     if (!revealed) {
-      if (selected === key) return { ...base, background: "var(--ec-accent)", borderColor: "var(--ec-accent)", color: "#fff" };
-      return base;
+      if (selected === key) {
+        return { ...LETTER_BASE, background: "var(--ec-accent)", border: "1.5px solid var(--ec-accent)", color: "#fff" };
+      }
+      return { ...LETTER_BASE, background: "transparent", border: "1.5px solid var(--ec-line)", color: "var(--ec-ink-muted)" };
     }
-    if (key === item.correct_answer) return { ...base, background: "var(--ec-green)", borderColor: "var(--ec-green)", color: "#fff" };
-    if (key === selected) return { ...base, background: "var(--ec-red)", borderColor: "var(--ec-red)", color: "#fff" };
-    return base;
+    if (key === item.correct_answer) {
+      return { ...LETTER_BASE, background: "var(--ec-green)", border: "1.5px solid var(--ec-green)", color: "#fff" };
+    }
+    if (key === selected) {
+      return { ...LETTER_BASE, background: "var(--ec-red)", border: "1.5px solid var(--ec-red)", color: "#fff" };
+    }
+    return { ...LETTER_BASE, background: "transparent", border: "1.5px solid var(--ec-line)", color: "var(--ec-ink-faint)" };
   };
 
   return (
@@ -112,23 +141,28 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
 
       {/* Progress */}
       <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "4px" }}>
-        <span style={{ fontSize: "13px", fontWeight: 600, color: "var(--ec-ink-muted)", letterSpacing: "0.04em", flexShrink: 0 }}>
+        <span style={{ fontSize: "13px", fontWeight: 600, color: "var(--ec-ink-muted)", letterSpacing: "0.04em", flexShrink: 0, fontVariantNumeric: "tabular-nums" }}>
           {String(itemNumber).padStart(2, "0")} / {String(totalItems).padStart(2, "0")}
         </span>
         <div style={{ flex: 1, height: "4px", background: "var(--ec-line)", borderRadius: "999px", overflow: "hidden" }}>
           <div style={{ height: "100%", width: `${progressPct}%`, background: "var(--ec-accent)", borderRadius: "999px", transition: "width 0.5s ease" }} />
         </div>
-        <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.13em", textTransform: "uppercase", color: "var(--ec-accent)", background: "var(--ec-accent-soft)", border: "1px solid rgba(15,105,186,0.18)", borderRadius: "999px", padding: "4px 12px", flexShrink: 0 }}>
+        <span style={{
+          fontSize: "11px", fontWeight: 700, letterSpacing: "0.13em", textTransform: "uppercase",
+          color: "var(--ec-accent)", background: "var(--ec-accent-soft)",
+          border: "1px solid var(--ec-accent-soft)",
+          borderRadius: "999px", padding: "4px 12px", flexShrink: 0,
+        }}>
           {item.proficiency_level}
         </span>
       </div>
 
       {/* Question card */}
       <div style={{ background: "var(--ec-surface)", border: "1px solid var(--ec-line)", borderRadius: "20px", padding: "28px 30px", boxShadow: "var(--ec-shadow)" }}>
-        <div style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.13em", textTransform: "uppercase", color: "var(--ec-accent)", marginBottom: "14px" }}>
+        <div style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--ec-accent)", marginBottom: "14px" }}>
           {item.objective_text} · {item.topic_text}
         </div>
-        <div style={{ fontSize: "22px", fontWeight: 500, color: "var(--ec-ink)", lineHeight: 1.6, fontFamily: "'Georgia', serif" }}>
+        <div style={{ fontSize: "20px", fontWeight: 500, color: "var(--ec-ink)", lineHeight: 1.65, fontFamily: "Georgia, 'Times New Roman', serif" }}>
           {renderQuestionText(item.question_text)}
         </div>
       </div>
@@ -136,16 +170,21 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
       {/* Choices */}
       <div style={{ display: "flex", flexDirection: "column", gap: "9px" }}>
         {CHOICE_KEYS.filter((k) => k in item.answer_choices).map((key) => (
-          <button key={key} onClick={() => handleSelect(key)} disabled={revealed} style={getChoiceStyle(key)}>
+          <button
+            key={key}
+            onClick={() => handleSelect(key)}
+            disabled={revealed}
+            style={getChoiceStyle(key)}
+          >
             <span style={getLetterStyle(key)}>{key}</span>
-            <span style={{ flex: 1, color: "var(--ec-ink)", fontSize: "16px", fontFamily: "'Georgia', serif", fontWeight: 400 }}>
+            <span style={{ flex: 1, color: "var(--ec-ink)", fontSize: "16px", fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 400 }}>
               {item.answer_choices[key]}
             </span>
             {revealed && key === item.correct_answer && (
-              <span style={{ marginLeft: "auto", flexShrink: 0, color: "var(--ec-green)", fontSize: "15px", fontWeight: 700 }}>✓</span>
+              <span style={{ marginLeft: "auto", flexShrink: 0, color: "var(--ec-green)", fontSize: "16px", fontWeight: 700 }}>✓</span>
             )}
             {revealed && key === selected && key !== item.correct_answer && (
-              <span style={{ marginLeft: "auto", flexShrink: 0, color: "var(--ec-red)", fontSize: "15px", fontWeight: 700 }}>✗</span>
+              <span style={{ marginLeft: "auto", flexShrink: 0, color: "var(--ec-red)", fontSize: "16px", fontWeight: 700 }}>✗</span>
             )}
           </button>
         ))}
@@ -157,11 +196,11 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
           <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.13em", textTransform: "uppercase", color: "var(--ec-orange)", marginBottom: "10px" }}>
             {isCorrect ? "Nice work" : "Where your thinking broke down"}
           </p>
-          <p style={{ fontSize: "15px", color: "var(--ec-ink)", lineHeight: 1.65, fontFamily: "'Georgia', serif" }}>
+          <p style={{ fontSize: "15px", color: "var(--ec-ink)", lineHeight: 1.7, fontFamily: "Georgia, 'Times New Roman', serif", margin: 0 }}>
             {item.explanation}
           </p>
           {selected && !isCorrect && item.distractor_logic[selected] && (
-            <p style={{ fontSize: "13px", color: "var(--ec-ink-muted)", lineHeight: 1.6, fontStyle: "italic", marginTop: "10px", paddingTop: "10px", borderTop: "1px solid var(--ec-line)" }}>
+            <p style={{ fontSize: "13px", color: "var(--ec-ink-muted)", lineHeight: 1.6, fontStyle: "italic", marginTop: "10px", paddingTop: "10px", borderTop: "1px solid var(--ec-line)", fontFamily: "Georgia, 'Times New Roman', serif" }}>
               {item.distractor_logic[selected]}
             </p>
           )}
@@ -171,7 +210,7 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
       {/* Adaptive signal */}
       {revealed && (
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--ec-accent)", animation: "ecpulse 1.6s ease-in-out infinite" }} />
+          <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--ec-accent)", animation: "ecpulse 1.6s ease-in-out infinite", flexShrink: 0 }} />
           <span style={{ fontSize: "12px", color: "var(--ec-ink-muted)" }}>Adjusting to your level…</span>
           <style>{`@keyframes ecpulse { 0%,100%{opacity:0.3;transform:scale(0.8)} 50%{opacity:1;transform:scale(1)} }`}</style>
         </div>
@@ -180,11 +219,42 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
       {/* Action buttons */}
       <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "4px" }}>
         {!revealed ? (
-          <button onClick={handleSubmit} disabled={!selected} style={{ padding: "13px 28px", background: selected ? "var(--ec-btn-bg)" : "var(--ec-line)", color: selected ? "var(--ec-btn-text)" : "var(--ec-ink-faint)", border: "none", borderRadius: "14px", fontFamily: "inherit", fontSize: "15px", fontWeight: 700, cursor: selected ? "pointer" : "not-allowed", transition: "all 0.18s ease", boxShadow: selected ? "var(--ec-shadow-btn)" : "none" }}>
+          <button
+            onClick={handleSubmit}
+            disabled={!selected}
+            style={{
+              padding: "13px 28px",
+              background: selected ? "var(--ec-btn-bg)" : "var(--ec-line)",
+              color: selected ? "var(--ec-btn-text)" : "var(--ec-ink-faint)",
+              border: "none",
+              borderRadius: "14px",
+              fontFamily: "inherit",
+              fontSize: "15px",
+              fontWeight: 700,
+              cursor: selected ? "pointer" : "not-allowed",
+              transition: "all 0.18s ease",
+              boxShadow: selected ? "var(--ec-shadow-btn)" : "none",
+            }}
+          >
             Submit
           </button>
         ) : (
-          <button onClick={handleNext} style={{ padding: "13px 28px", background: "var(--ec-btn-bg)", color: "var(--ec-btn-text)", border: "none", borderRadius: "14px", fontFamily: "inherit", fontSize: "15px", fontWeight: 700, cursor: "pointer", transition: "all 0.18s ease", boxShadow: "var(--ec-shadow-btn)" }}>
+          <button
+            onClick={handleNext}
+            style={{
+              padding: "13px 28px",
+              background: "var(--ec-btn-bg)",
+              color: "var(--ec-btn-text)",
+              border: "none",
+              borderRadius: "14px",
+              fontFamily: "inherit",
+              fontSize: "15px",
+              fontWeight: 700,
+              cursor: "pointer",
+              transition: "all 0.18s ease",
+              boxShadow: "var(--ec-shadow-btn)",
+            }}
+          >
             Next question →
           </button>
         )}
