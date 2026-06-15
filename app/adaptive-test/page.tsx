@@ -9,13 +9,12 @@ import ResultsSummary from "./ResultsSummary";
 import type { ItemValidationError } from "./type";
 import { supabase } from "../lib/supabase";
 import { useTheme } from "../theme/useTheme";
-import { themes, type ThemeName } from "../theme/themes";
 
 const MAX_ITEMS = 20;
 
 function CipherMark() {
   return (
-    <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+    <svg width="28" height="28" viewBox="0 0 26 26" fill="none">
       <defs>
         <linearGradient id="ec-ring" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#7ACCCF" />
@@ -30,103 +29,84 @@ function CipherMark() {
   );
 }
 
-function ThemeSwitcher() {
+function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const options: ThemeName[] = ["sand", "ember", "abyss"];
+  const isDark = theme === "dark";
 
   return (
-    <div
+    <button
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      aria-label="Switch light or dark mode"
       style={{
         display: "flex",
         alignItems: "center",
-        gap: "2px",
-        background: "var(--ec-pill-track)",
-        borderRadius: "99px",
-        padding: "3px",
+        justifyContent: "center",
+        width: "44px",
+        height: "44px",
+        borderRadius: "50%",
+        border: "1px solid var(--ec-line)",
+        background: "var(--ec-surface)",
+        cursor: "pointer",
+        boxShadow: "var(--ec-shadow)",
+        transition: "background 0.3s, border-color 0.3s",
+        color: "var(--ec-ink-muted)",
       }}
     >
-      {options.map((t) => (
-        <button
-          key={t}
-          onClick={() => setTheme(t)}
-          style={{
-            padding: "5px 13px",
-            borderRadius: "99px",
-            border: theme === t ? "1px solid var(--ec-accent-border)" : "1px solid transparent",
-            background: theme === t ? "var(--ec-pill-active-bg)" : "transparent",
-            color: theme === t ? "var(--ec-pill-active-text)" : "var(--ec-pill-inactive-text)",
-            fontFamily: "inherit",
-            fontSize: "11px",
-            fontWeight: 600,
-            cursor: "pointer",
-            letterSpacing: "0.03em",
-            transition: "all 0.18s ease",
-          }}
-        >
-          {themes[t].label}
-        </button>
-      ))}
+      {isDark ? (
+        // moon
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+        </svg>
+      ) : (
+        // sun
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+          <circle cx="12" cy="12" r="4" />
+          <line x1="12" y1="2" x2="12" y2="4.5" />
+          <line x1="12" y1="19.5" x2="12" y2="22" />
+          <line x1="2" y1="12" x2="4.5" y2="12" />
+          <line x1="19.5" y1="12" x2="22" y2="12" />
+          <line x1="4.9" y1="4.9" x2="6.6" y2="6.6" />
+          <line x1="17.4" y1="17.4" x2="19.1" y2="19.1" />
+          <line x1="4.9" y1="19.1" x2="6.6" y2="17.4" />
+          <line x1="17.4" y1="6.6" x2="19.1" y2="4.9" />
+        </svg>
+      )}
+    </button>
+  );
+}
+
+function Blobs() {
+  return (
+    <div style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 0, overflow: "hidden" }}>
+      <div style={{ position: "absolute", top: "-180px", left: "-160px", width: "520px", height: "520px", borderRadius: "50%", background: "var(--ec-blob-a)", filter: "blur(90px)" }} />
+      <div style={{ position: "absolute", top: "-140px", right: "-140px", width: "460px", height: "460px", borderRadius: "50%", background: "var(--ec-blob-b)", filter: "blur(90px)" }} />
+      <div style={{ position: "absolute", bottom: "-200px", left: "30%", width: "540px", height: "540px", borderRadius: "50%", background: "var(--ec-blob-c)", filter: "blur(100px)" }} />
     </div>
   );
 }
 
 function Shell({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--ec-bg)" }}>
-      <header
-        style={{
-          borderBottom: "1px solid var(--ec-header-border)",
-          background: "var(--ec-header-bg)",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
-          position: "sticky",
-          top: 0,
-          zIndex: 10,
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "768px",
-            margin: "0 auto",
-            padding: "12px 20px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <Link
-            href="/"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "9px",
-              textDecoration: "none",
-            }}
-          >
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--ec-bg)", position: "relative" }}>
+      <Blobs />
+      <header style={{
+        borderBottom: "1px solid var(--ec-header-border)",
+        background: "var(--ec-header-bg)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        position: "sticky",
+        top: 0,
+        zIndex: 10,
+      }}>
+        <div style={{ maxWidth: "800px", margin: "0 auto", padding: "10px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <Link href="/" style={{ display: "flex", alignItems: "center", gap: "9px", textDecoration: "none" }}>
             <CipherMark />
-            <span
-              style={{
-                fontSize: "16px",
-                fontWeight: 700,
-                color: "var(--ec-ink)",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              EdCipher
-            </span>
+            <span style={{ fontSize: "16px", fontWeight: 700, color: "var(--ec-ink)", letterSpacing: "-0.02em" }}>EdCipher</span>
           </Link>
-          <ThemeSwitcher />
+          <ThemeToggle />
         </div>
       </header>
-      <main
-        style={{
-          flex: 1,
-          maxWidth: "768px",
-          margin: "0 auto",
-          width: "100%",
-          padding: "32px 20px",
-        }}
-      >
+      <main style={{ flex: 1, maxWidth: "800px", margin: "0 auto", width: "100%", padding: "32px 24px 80px", position: "relative", zIndex: 1 }}>
         {children}
       </main>
     </div>
@@ -135,22 +115,8 @@ function Shell({ children }: { children: React.ReactNode }) {
 
 function ValidationErrorList({ errors }: { errors: ItemValidationError[] }) {
   return (
-    <div
-      style={{
-        marginTop: "16px",
-        background: "var(--ec-incorrect-bg)",
-        border: "1px solid var(--ec-incorrect-border)",
-        borderRadius: "12px",
-        padding: "16px",
-        fontSize: "13px",
-        color: "var(--ec-ink)",
-        maxHeight: "192px",
-        overflowY: "auto",
-      }}
-    >
-      <p style={{ fontWeight: 600, marginBottom: "8px", color: "var(--ec-warm)" }}>
-        {errors.length} malformed item(s) skipped
-      </p>
+    <div style={{ marginTop: "16px", background: "var(--ec-red-bg)", border: "1px solid var(--ec-red-border)", borderRadius: "12px", padding: "16px", fontSize: "13px", color: "var(--ec-ink)", maxHeight: "192px", overflowY: "auto" }}>
+      <p style={{ fontWeight: 600, marginBottom: "8px", color: "var(--ec-red)" }}>{errors.length} malformed item(s) skipped</p>
       <ul style={{ listStyle: "disc", paddingLeft: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
         {errors.map((e) => (
           <li key={e.item_id} style={{ color: "var(--ec-ink-muted)" }}>
@@ -167,17 +133,11 @@ export default function AdaptiveTestPage() {
 
   useEffect(() => {
     if (state.phase !== "loading") return;
-
     async function fetchItems() {
       try {
-        const { data, error } = await supabase
-          .from("questions")
-          .select("*")
-          .eq("status", "draft");
-
+        const { data, error } = await supabase.from("questions").select("*").eq("status", "draft");
         if (error) throw new Error(error.message);
         if (!data || data.length === 0) throw new Error("No items found in the question bank.");
-
         const { items, errors } = validateItems(data);
         if (items.length === 0) throw new Error("No valid items found in the question bank.");
         if (errors.length > 0) console.warn("[CAT Engine] Skipped malformed items:", errors);
@@ -187,7 +147,6 @@ export default function AdaptiveTestPage() {
         loadError(err instanceof Error ? err.message : String(err));
       }
     }
-
     fetchItems();
   }, [state.phase, loadItems, loadError]);
 
@@ -195,17 +154,7 @@ export default function AdaptiveTestPage() {
     return (
       <Shell>
         <div style={{ textAlign: "center", padding: "80px 0" }}>
-          <div
-            style={{
-              width: "40px",
-              height: "40px",
-              border: "3px solid var(--ec-accent-border)",
-              borderTopColor: "var(--ec-accent)",
-              borderRadius: "50%",
-              margin: "0 auto 16px",
-              animation: "spin 0.8s linear infinite",
-            }}
-          />
+          <div style={{ width: "40px", height: "40px", border: "3px solid var(--ec-line)", borderTopColor: "var(--ec-accent)", borderRadius: "50%", margin: "0 auto 16px", animation: "spin 0.8s linear infinite" }} />
           <p style={{ color: "var(--ec-ink-muted)", fontSize: "14px" }}>Loading question bank…</p>
           <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
         </div>
@@ -218,25 +167,9 @@ export default function AdaptiveTestPage() {
       <Shell>
         <div style={{ maxWidth: "480px", margin: "0 auto", textAlign: "center", padding: "64px 0" }}>
           <p style={{ fontSize: "48px", marginBottom: "16px" }}>⚠️</p>
-          <h2 style={{ fontSize: "20px", fontWeight: 700, color: "var(--ec-warm)", marginBottom: "8px" }}>
-            Failed to load question bank
-          </h2>
+          <h2 style={{ fontSize: "20px", fontWeight: 700, color: "var(--ec-orange)", marginBottom: "8px" }}>Failed to load question bank</h2>
           <p style={{ color: "var(--ec-ink-muted)", fontSize: "14px" }}>{state.loadError}</p>
-          <button
-            onClick={restart}
-            style={{
-              marginTop: "24px",
-              padding: "12px 28px",
-              background: "var(--ec-btn-bg)",
-              color: "var(--ec-btn-text)",
-              border: "1px solid var(--ec-accent-border)",
-              borderRadius: "12px",
-              fontFamily: "inherit",
-              fontSize: "14px",
-              fontWeight: 600,
-              cursor: "pointer",
-            }}
-          >
+          <button onClick={restart} style={{ marginTop: "24px", padding: "12px 28px", background: "var(--ec-btn-bg)", color: "var(--ec-btn-text)", border: "none", borderRadius: "12px", fontFamily: "inherit", fontSize: "14px", fontWeight: 600, cursor: "pointer" }}>
             Retry
           </button>
         </div>
@@ -245,98 +178,42 @@ export default function AdaptiveTestPage() {
   }
 
   if (state.phase === "ready") {
-    const validationErrors =
-      typeof window !== "undefined"
-        ? ((window as unknown as Record<string, unknown>).__catValidationErrors as ItemValidationError[] | undefined)
-        : undefined;
+    const validationErrors = typeof window !== "undefined"
+      ? ((window as unknown as Record<string, unknown>).__catValidationErrors as ItemValidationError[] | undefined)
+      : undefined;
 
     return (
       <Shell>
-        <div
-          style={{
-            maxWidth: "480px",
-            margin: "0 auto",
-            textAlign: "center",
-            padding: "64px 0",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "20px",
-          }}
-        >
+        <div style={{ maxWidth: "520px", margin: "0 auto", textAlign: "center", padding: "64px 0", display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
           <div>
-            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--ec-ink-muted)", marginBottom: "10px" }}>
+            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-accent)", marginBottom: "12px" }}>
               TSIA2 Adaptive Practice
             </p>
-            <h1
-              style={{
-                fontSize: "32px",
-                fontWeight: 700,
-                color: "var(--ec-ink)",
-                letterSpacing: "-0.02em",
-                lineHeight: 1.1,
-              }}
-            >
-              Ready to find your level?
+            <h1 style={{ fontSize: "34px", fontWeight: 800, color: "var(--ec-ink)", letterSpacing: "-0.025em", lineHeight: 1.1 }}>
+              Let&rsquo;s find exactly where you are.
             </h1>
           </div>
-
-          <p style={{ fontSize: "14px", color: "var(--ec-ink-muted)", lineHeight: 1.6 }}>
+          <p style={{ fontSize: "15px", color: "var(--ec-ink-muted)", lineHeight: 1.65 }}>
             {state.allItems.length} items loaded · {MAX_ITEMS} questions · adapts as you go
           </p>
-
-          <div
-            style={{
-              background: "var(--ec-glass-bg)",
-              border: "1px solid var(--ec-glass-border)",
-              borderRadius: "16px",
-              padding: "20px 24px",
-              width: "100%",
-              textAlign: "left",
-              display: "flex",
-              flexDirection: "column",
-              gap: "10px",
-            }}
-          >
+          <div style={{ background: "var(--ec-surface)", border: "1px solid var(--ec-line)", borderRadius: "18px", padding: "22px 26px", width: "100%", textAlign: "left", display: "flex", flexDirection: "column", gap: "12px", boxShadow: "var(--ec-shadow)" }}>
             {[
               ["Starts at", "Proficient difficulty"],
               ["Adapts", "after every answer"],
               ["Score", "estimated on 910–990 scale"],
               ["Passing", "950 or above"],
             ].map(([label, value]) => (
-              <div key={label} style={{ display: "flex", justifyContent: "space-between", fontSize: "13px" }}>
+              <div key={label} style={{ display: "flex", justifyContent: "space-between", fontSize: "14px" }}>
                 <span style={{ color: "var(--ec-ink-muted)" }}>{label}</span>
                 <span style={{ color: "var(--ec-ink)", fontWeight: 500 }}>{value}</span>
               </div>
             ))}
           </div>
-
-          {validationErrors && validationErrors.length > 0 && (
-            <ValidationErrorList errors={validationErrors} />
-          )}
-
-          <button
-            onClick={start}
-            style={{
-              width: "100%",
-              padding: "15px",
-              background: "var(--ec-btn-bg)",
-              color: "var(--ec-btn-text)",
-              border: "1px solid var(--ec-accent-border)",
-              borderRadius: "14px",
-              fontFamily: "inherit",
-              fontSize: "15px",
-              fontWeight: 700,
-              cursor: "pointer",
-              letterSpacing: "0.01em",
-            }}
-          >
+          {validationErrors && validationErrors.length > 0 && <ValidationErrorList errors={validationErrors} />}
+          <button onClick={start} style={{ width: "100%", padding: "16px", background: "var(--ec-btn-bg)", color: "var(--ec-btn-text)", border: "none", borderRadius: "14px", fontFamily: "inherit", fontSize: "15px", fontWeight: 700, cursor: "pointer", letterSpacing: "-0.01em", boxShadow: "var(--ec-shadow-btn)" }}>
             Begin Test
           </button>
-
-          <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)" }}>
-            no account needed · results shown at the end
-          </p>
+          <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)" }}>no account needed · results shown at the end</p>
         </div>
       </Shell>
     );
@@ -345,12 +222,7 @@ export default function AdaptiveTestPage() {
   if (state.phase === "active" && state.currentItem) {
     return (
       <Shell>
-        <ItemCard
-          item={state.currentItem}
-          itemNumber={state.responses.length + 1}
-          totalItems={state.maxItems}
-          onAnswer={answer}
-        />
+        <ItemCard item={state.currentItem} itemNumber={state.responses.length + 1} totalItems={state.maxItems} onAnswer={answer} />
       </Shell>
     );
   }

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { themes, type ThemeName } from "./themes";
 
 interface ThemeContextValue {
@@ -8,24 +8,30 @@ interface ThemeContextValue {
   setTheme: (t: ThemeName) => void;
 }
 
-export const ThemeContext = createContext<ThemeContextValue | null>(null);
+const ThemeContext = createContext<ThemeContextValue>({
+  theme: "light",
+  setTheme: () => {},
+});
 
-const STORAGE_KEY = "ec-theme";
+export function useThemeContext() {
+  return useContext(ThemeContext);
+}
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<ThemeName>("sand");
+  const [theme, setThemeState] = useState<ThemeName>("light");
 
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY) as ThemeName | null;
-    if (saved && saved in themes) setThemeState(saved);
+    const stored = localStorage.getItem("ec-theme") as ThemeName | null;
+    if (stored && (stored === "light" || stored === "dark")) {
+      setThemeState(stored);
+    }
   }, []);
 
   useEffect(() => {
     const vars = themes[theme].vars;
     const root = document.documentElement;
     Object.entries(vars).forEach(([k, v]) => root.style.setProperty(k, v));
-    root.setAttribute("data-theme", theme);
-    localStorage.setItem(STORAGE_KEY, theme);
+    localStorage.setItem("ec-theme", theme);
   }, [theme]);
 
   const setTheme = (t: ThemeName) => setThemeState(t);
