@@ -65,9 +65,9 @@ export function Header() {
           fontWeight: 700,
           color: "var(--ec-ink)",
           fontFamily: "'Playfair Display', Georgia, serif",
-          letterSpacing: "-0.01em",
+          letterSpacing: "-0.02em",
         }}>
-          EdCipher
+          EdCipher - TSIA2 Math
         </span>
       </Link>
       <ThemeToggle />
