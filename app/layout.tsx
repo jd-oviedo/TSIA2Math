@@ -11,7 +11,7 @@ const hanken = Hanken_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "EdCipher Math – TSIA2 Prep",
+  title: "UnpackMath – TSIA2 Prep",
   description: "Computer-adaptive TSIA2 math practice",
 };
 

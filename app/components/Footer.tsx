@@ -9,7 +9,7 @@ export function Footer() {
       color: "var(--ec-ink-faint)",
       letterSpacing: "0.04em",
     }}>
-      © 2026 EdCipher Math
+      © 2026 UnpackMath
     </footer>
   );
 }

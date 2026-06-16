@@ -55,7 +55,7 @@ export function Header() {
       <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
         <Image
           src="/cipher-wheel.png"
-          alt="EdCipher logo"
+          alt="UnpackMath logo"
           width={32}
           height={32}
           style={{ objectFit: "contain" }}
@@ -67,7 +67,7 @@ export function Header() {
           fontFamily: "'LXGW WenKai Mono TC', monospace",
           letterSpacing: "-0.01em",
         }}>
-          EdCipher - TSIA2 Math Practice Test
+          UnpackMath – TSIA2 Math Practice Test
         </span>
       </Link>
       <ThemeToggle />
