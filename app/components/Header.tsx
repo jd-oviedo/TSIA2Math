@@ -64,8 +64,8 @@ export function Header() {
           fontSize: "18px",
           fontWeight: 700,
           color: "var(--ec-ink)",
-          fontFamily: "'Playfair Display', Georgia, serif",
-          letterSpacing: "-0.02em",
+          fontFamily: "'LXGW WenKai Mono TC', monospace",
+          letterSpacing: "-0.01em",
         }}>
           EdCipher - TSIA2 Math Practice Test
         </span>
