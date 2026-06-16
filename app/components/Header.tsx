@@ -54,7 +54,7 @@ export function Header() {
     }}>
       <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
         <Image
-          src="/cipher-wheel.png"
+          src="/unpackmath-logo.png"
           alt="UnpackMath logo"
           width={32}
           height={32}
