@@ -8,6 +8,7 @@ import ResultsSummary from "./ResultsSummary";
 import type { ItemValidationError } from "./type";
 import { supabase } from "../lib/supabase";
 import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
 
 const MAX_ITEMS = 20;
 
@@ -31,6 +32,7 @@ function Shell({ children }: { children: React.ReactNode }) {
       <main style={{ flex: 1, maxWidth: "800px", margin: "0 auto", width: "100%", padding: "24px 24px 80px", position: "relative", zIndex: 1 }}>
         {children}
       </main>
+      <Footer />
     </div>
   );
 }
