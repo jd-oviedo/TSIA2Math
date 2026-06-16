@@ -67,7 +67,7 @@ export function Header() {
           fontFamily: "'Playfair Display', Georgia, serif",
           letterSpacing: "-0.02em",
         }}>
-          EdCipher - TSIA2 Math
+          EdCipher - TSIA2 Math Practice Test
         </span>
       </Link>
       <ThemeToggle />
