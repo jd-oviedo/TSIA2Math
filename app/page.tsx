@@ -20,15 +20,15 @@ export default function Home() {
         <div style={{ maxWidth: "540px", width: "100%", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
 
           <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--ec-accent)" }}>
-            TSIA2 College Placement Prep
+            TSIA2 Math Prep
           </p>
 
           <h1 style={{ fontSize: "clamp(34px, 6vw, 54px)", fontWeight: 800, color: "var(--ec-ink)", letterSpacing: "-0.03em", lineHeight: 1.08, margin: 0 }}>
-            Math that adapts<br />to where you are.
+            Get your TSIA2 score before test day.
           </h1>
 
           <p style={{ fontSize: "17px", color: "var(--ec-ink-muted)", lineHeight: 1.65, maxWidth: "400px", margin: 0 }}>
-            Computer-adaptive practice built for the TSIA2. Every question adjusts to your level so you always work exactly where it counts.
+            A computer-adaptive practice test built for the TSIA2. Every question adjusts to your level so you always work exactly where it counts.
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "10px", width: "100%", maxWidth: "340px" }}>
