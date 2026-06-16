@@ -1,79 +1,15 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
 import { useSession } from "./useSession";
 import { validateItems } from "./engine";
 import ItemCard from "./ItemCard";
 import ResultsSummary from "./ResultsSummary";
 import type { ItemValidationError } from "./type";
 import { supabase } from "../lib/supabase";
-import { useTheme } from "../theme/useTheme";
+import { Header } from "../components/Header";
 
 const MAX_ITEMS = 20;
-
-function CipherMark() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 26 26" fill="none">
-      <defs>
-        <linearGradient id="ec-ring" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#7ACCCF" />
-          <stop offset="100%" stopColor="#F2A541" />
-        </linearGradient>
-      </defs>
-      <ellipse cx="13" cy="13" rx="10.5" ry="10.5" stroke="url(#ec-ring)" strokeWidth="2.2" fill="none" />
-      <line x1="5" y1="5" x2="21" y2="21" stroke="var(--ec-slash-color)" strokeWidth="3.4" strokeLinecap="round" />
-      <line x1="6" y1="6" x2="9.5" y2="9.5" stroke="url(#ec-ring)" strokeWidth="2.2" strokeLinecap="round" />
-      <line x1="16.5" y1="16.5" x2="20" y2="20" stroke="url(#ec-ring)" strokeWidth="2.2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const isDark = theme === "dark";
-
-  return (
-    <button
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      aria-label="Switch light or dark mode"
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "44px",
-        height: "44px",
-        borderRadius: "50%",
-        border: "1px solid var(--ec-line)",
-        background: "var(--ec-surface)",
-        cursor: "pointer",
-        boxShadow: "var(--ec-shadow)",
-        transition: "background 0.3s, border-color 0.3s",
-        color: "var(--ec-ink-muted)",
-      }}
-    >
-      {isDark ? (
-        // moon
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
-        </svg>
-      ) : (
-        // sun
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-          <circle cx="12" cy="12" r="4" />
-          <line x1="12" y1="2" x2="12" y2="4.5" />
-          <line x1="12" y1="19.5" x2="12" y2="22" />
-          <line x1="2" y1="12" x2="4.5" y2="12" />
-          <line x1="19.5" y1="12" x2="22" y2="12" />
-          <line x1="4.9" y1="4.9" x2="6.6" y2="6.6" />
-          <line x1="17.4" y1="17.4" x2="19.1" y2="19.1" />
-          <line x1="4.9" y1="19.1" x2="6.6" y2="17.4" />
-          <line x1="17.4" y1="6.6" x2="19.1" y2="4.9" />
-        </svg>
-      )}
-    </button>
-  );
-}
 
 function Blobs() {
   return (
@@ -89,24 +25,10 @@ function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--ec-bg)", position: "relative" }}>
       <Blobs />
-      <header style={{
-        borderBottom: "1px solid var(--ec-header-border)",
-        background: "var(--ec-header-bg)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        position: "sticky",
-        top: 0,
-        zIndex: 10,
-      }}>
-        <div style={{ maxWidth: "800px", margin: "0 auto", padding: "10px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <Link href="/" style={{ display: "flex", alignItems: "center", gap: "9px", textDecoration: "none" }}>
-            <CipherMark />
-            <span style={{ fontSize: "16px", fontWeight: 700, color: "var(--ec-ink)", letterSpacing: "-0.02em" }}>EdCipher</span>
-          </Link>
-          <ThemeToggle />
-        </div>
-      </header>
-      <main style={{ flex: 1, maxWidth: "800px", margin: "0 auto", width: "100%", padding: "32px 24px 80px", position: "relative", zIndex: 1 }}>
+      <div style={{ position: "relative", zIndex: 1 }}>
+        <Header />
+      </div>
+      <main style={{ flex: 1, maxWidth: "800px", margin: "0 auto", width: "100%", padding: "24px 24px 80px", position: "relative", zIndex: 1 }}>
         {children}
       </main>
     </div>
@@ -184,7 +106,7 @@ export default function AdaptiveTestPage() {
 
     return (
       <Shell>
-        <div style={{ maxWidth: "520px", margin: "0 auto", textAlign: "center", padding: "64px 0", display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
+        <div style={{ maxWidth: "520px", margin: "0 auto", textAlign: "center", padding: "40px 0 64px", display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
           <div>
             <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-accent)", marginBottom: "12px" }}>
               TSIA2 Adaptive Practice

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk } from "next/font/google";
+import { Hanken_Grotesk, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./theme/ThemeProvider";
 
@@ -10,6 +10,13 @@ const hanken = Hanken_Grotesk({
   display: "swap",
 });
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "EdCipher Math – TSIA2 Prep",
   description: "Computer-adaptive TSIA2 math practice",
@@ -17,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={hanken.variable}>
+    <html lang="en" className={`${hanken.variable} ${playfair.variable}`}>
       <body
         className="min-h-screen"
         style={{

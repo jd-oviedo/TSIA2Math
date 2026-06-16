@@ -12,7 +12,9 @@ interface Props {
 const STRAND_LABEL: Record<string, string> = {
   QR: "Quantitative Reasoning",
   AR: "Algebraic Reasoning",
+  GR: "Geometric & Spatial Reasoning",
   GS: "Geometric & Spatial Reasoning",
+  PR: "Probabilistic & Statistical Reasoning",
   PS: "Probabilistic & Statistical Reasoning",
 };
 
@@ -26,118 +28,91 @@ export default function ResultsSummary({ responses, theta, onRestart }: Props) {
   const breakdown = buildCategoryBreakdown(responses);
 
   return (
-    <div style={{ width: "100%", maxWidth: "640px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "20px" }}>
+    <div style={{ width: "100%", maxWidth: "620px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "16px", paddingBottom: "40px" }}>
 
       {/* Score hero */}
-      <div
-        style={{
-          background: "var(--ec-glass-bg)",
-          border: "1px solid",
-          borderColor: passed ? "var(--ec-correct-border)" : "var(--ec-incorrect-border)",
-          borderRadius: "20px",
-          padding: "40px 24px",
-          textAlign: "center",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: "15%",
-            right: "15%",
-            height: "1px",
-            background: "var(--ec-glass-top)",
-          }}
-        />
-        <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-ink-muted)", marginBottom: "12px" }}>
+      <div style={{
+        background: "var(--ec-surface)",
+        border: "1px solid var(--ec-line)",
+        borderRadius: "20px",
+        padding: "44px 28px 36px",
+        textAlign: "center",
+        boxShadow: "var(--ec-shadow)",
+      }}>
+        <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--ec-ink-faint)", marginBottom: "16px" }}>
           Estimated TSIA2 Score
         </p>
-        <p style={{ fontSize: "80px", fontWeight: 800, lineHeight: 1, color: passed ? "var(--ec-accent)" : "var(--ec-warm)", marginBottom: "12px" }}>
+        <p style={{
+          fontSize: "88px",
+          fontWeight: 800,
+          lineHeight: 1,
+          color: "var(--ec-ink)",
+          marginBottom: "14px",
+          letterSpacing: "-0.04em",
+          fontFamily: "var(--font-hanken), system-ui, sans-serif",
+        }}>
           {finalScore}
         </p>
-        <p style={{ fontSize: "16px", fontWeight: 600, color: passed ? "var(--ec-accent)" : "var(--ec-warm)", marginBottom: "8px" }}>
+        <p style={{ fontSize: "15px", fontWeight: 600, color: passed ? "var(--ec-green)" : "var(--ec-orange)", marginBottom: "8px" }}>
           {passed ? "College Ready" : "Keep Practicing"}
         </p>
-        <p style={{ fontSize: "12px", color: "var(--ec-ink-muted)" }}>
+        <p style={{ fontSize: "12px", color: "var(--ec-ink-faint)" }}>
           Passing threshold: {TSIA2_PASSING} · Scale: 910–990
         </p>
       </div>
 
-      {/* Stat cards */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "12px" }}>
+      {/* Stat row */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px" }}>
         {[
           { label: "Correct", value: `${correct} / ${total}` },
           { label: "Accuracy", value: `${pct}%` },
           { label: "Avg. Time", value: `${avgTime}s` },
         ].map(({ label, value }) => (
-          <div
-            key={label}
-            style={{
-              background: "var(--ec-glass-bg)",
-              border: "1px solid var(--ec-glass-border)",
-              borderRadius: "14px",
-              padding: "18px 14px",
-              textAlign: "center",
-            }}
-          >
-            <p style={{ fontSize: "24px", fontWeight: 700, color: "var(--ec-accent)", marginBottom: "4px" }}>{value}</p>
-            <p style={{ fontSize: "11px", color: "var(--ec-ink-muted)", letterSpacing: "0.04em" }}>{label}</p>
+          <div key={label} style={{
+            background: "var(--ec-surface)",
+            border: "1px solid var(--ec-line)",
+            borderRadius: "16px",
+            padding: "20px 14px",
+            textAlign: "center",
+            boxShadow: "var(--ec-shadow)",
+          }}>
+            <p style={{ fontSize: "26px", fontWeight: 800, color: "var(--ec-accent)", marginBottom: "4px", letterSpacing: "-0.02em" }}>{value}</p>
+            <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)", letterSpacing: "0.04em" }}>{label}</p>
           </div>
         ))}
       </div>
 
       {/* Strand breakdown */}
       {breakdown.length > 0 && (
-        <div
-          style={{
-            background: "var(--ec-glass-bg)",
-            border: "1px solid var(--ec-glass-border)",
-            borderRadius: "18px",
-            padding: "24px 22px",
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: "10%",
-              right: "10%",
-              height: "1px",
-              background: "var(--ec-glass-top)",
-            }}
-          />
-          <h2 style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--ec-ink-muted)", marginBottom: "20px" }}>
+        <div style={{
+          background: "var(--ec-surface)",
+          border: "1px solid var(--ec-line)",
+          borderRadius: "20px",
+          padding: "26px 24px",
+          boxShadow: "var(--ec-shadow)",
+        }}>
+          <h2 style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-ink-faint)", marginBottom: "22px" }}>
             Category Breakdown
           </h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
             {breakdown.map(({ strand, correct, total, pct }) => (
               <div key={strand}>
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px" }}>
-                  <span style={{ fontSize: "13px", fontWeight: 500, color: "var(--ec-ink)" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "8px" }}>
+                  <span style={{ fontSize: "14px", fontWeight: 500, color: "var(--ec-ink)" }}>
                     {STRAND_LABEL[strand] ?? strand}
                   </span>
                   <span style={{ fontSize: "12px", color: "var(--ec-ink-muted)" }}>
                     {correct}/{total} · {pct}%
                   </span>
                 </div>
-                <div style={{ width: "100%", height: "4px", background: "var(--ec-progress-track)", borderRadius: "99px", overflow: "hidden" }}>
-                  <div
-                    style={{
-                      height: "100%",
-                      width: `${pct}%`,
-                      background: pct >= 70
-                        ? "linear-gradient(90deg, var(--ec-progress-start), var(--ec-accent))"
-                        : pct >= 50
-                        ? "linear-gradient(90deg, var(--ec-progress-start), var(--ec-progress-end))"
-                        : "var(--ec-warm)",
-                      borderRadius: "99px",
-                      transition: "width 0.6s ease",
-                    }}
-                  />
+                <div style={{ width: "100%", height: "4px", background: "var(--ec-line)", borderRadius: "999px", overflow: "hidden" }}>
+                  <div style={{
+                    height: "100%",
+                    width: `${pct}%`,
+                    background: pct >= 70 ? "var(--ec-green)" : pct >= 50 ? "var(--ec-accent)" : "var(--ec-orange)",
+                    borderRadius: "999px",
+                    transition: "width 0.7s ease",
+                  }} />
                 </div>
               </div>
             ))}
@@ -146,35 +121,30 @@ export default function ResultsSummary({ responses, theta, onRestart }: Props) {
       )}
 
       {/* Response history */}
-      <div
-        style={{
-          background: "var(--ec-glass-bg)",
-          border: "1px solid var(--ec-glass-border)",
-          borderRadius: "18px",
-          padding: "24px 22px",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: "10%",
-            right: "10%",
-            height: "1px",
-            background: "var(--ec-glass-top)",
-          }}
-        />
-        <h2 style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--ec-ink-muted)", marginBottom: "16px" }}>
+      <div style={{
+        background: "var(--ec-surface)",
+        border: "1px solid var(--ec-line)",
+        borderRadius: "20px",
+        padding: "26px 24px",
+        boxShadow: "var(--ec-shadow)",
+      }}>
+        <h2 style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-ink-faint)", marginBottom: "16px" }}>
           Response History
         </h2>
         <div style={{ overflowX: "auto" }}>
           <table style={{ width: "100%", fontSize: "13px", borderCollapse: "collapse" }}>
             <thead>
-              <tr style={{ borderBottom: "1px solid var(--ec-table-border)" }}>
-                {["#", "Item", "Level", "Answer", "Result", "Score"].map((h, i) => (
-                  <th key={h} style={{ paddingBottom: "10px", textAlign: i === 5 ? "right" : "left", fontSize: "10px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--ec-ink-faint)" }}>
+              <tr style={{ borderBottom: "1px solid var(--ec-line)" }}>
+                {["#", "Level", "Answer", "Result", "Score"].map((h, i) => (
+                  <th key={h} style={{
+                    paddingBottom: "10px",
+                    textAlign: i === 4 ? "right" : "left",
+                    fontSize: "10px",
+                    fontWeight: 700,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: "var(--ec-ink-faint)",
+                  }}>
                     {h}
                   </th>
                 ))}
@@ -182,30 +152,27 @@ export default function ResultsSummary({ responses, theta, onRestart }: Props) {
             </thead>
             <tbody>
               {responses.map((r, i) => (
-                <tr key={r.item.item_id} style={{ borderBottom: "1px solid var(--ec-table-border)" }}>
-                  <td style={{ padding: "10px 0", color: "var(--ec-ink-muted)", fontSize: "12px" }}>{i + 1}</td>
-                  <td style={{ padding: "10px 8px 10px 0", fontFamily: "monospace", fontSize: "11px", color: "var(--ec-ink-muted)" }}>{r.item.item_id}</td>
-                  <td style={{ padding: "10px 8px 10px 0" }}>
+                <tr key={r.item.item_id} style={{ borderBottom: "1px solid var(--ec-line)" }}>
+                  <td style={{ padding: "11px 0", color: "var(--ec-ink-muted)", fontSize: "13px", width: "32px" }}>{i + 1}</td>
+                  <td style={{ padding: "11px 12px 11px 0" }}>
                     <span style={{
-                      fontSize: "10px",
-                      fontWeight: 700,
-                      padding: "2px 7px",
-                      borderRadius: "4px",
-                      background: "var(--ec-badge-bg)",
-                      color: "var(--ec-badge-color)",
-                      border: "1px solid var(--ec-badge-border)",
+                      fontSize: "10px", fontWeight: 700, padding: "2px 8px", borderRadius: "99px",
+                      background: "var(--ec-accent-soft)", color: "var(--ec-accent)",
+                      border: "1px solid rgba(15,105,186,0.15)",
                     }}>
                       {r.item.proficiency_level[0]}
                     </span>
                   </td>
-                  <td style={{ padding: "10px 8px 10px 0", fontWeight: 600, color: "var(--ec-ink)" }}>{r.selectedAnswer}</td>
-                  <td style={{ padding: "10px 8px 10px 0", fontSize: "13px" }}>
+                  <td style={{ padding: "11px 12px 11px 0", fontWeight: 600, color: "var(--ec-ink)", fontSize: "13px" }}>{r.selectedAnswer}</td>
+                  <td style={{ padding: "11px 12px 11px 0", fontSize: "14px" }}>
                     {r.isCorrect
-                      ? <span style={{ color: "var(--ec-accent)", fontWeight: 700 }}>✓</span>
-                      : <span style={{ color: "var(--ec-warm)", fontWeight: 700 }}>✗</span>
+                      ? <span style={{ color: "var(--ec-green)", fontWeight: 700 }}>✓</span>
+                      : <span style={{ color: "var(--ec-red)", fontWeight: 700 }}>✗</span>
                     }
                   </td>
-                  <td style={{ padding: "10px 0", textAlign: "right", fontFamily: "monospace", fontSize: "12px", color: "var(--ec-accent)" }}>{r.scoreAfter}</td>
+                  <td style={{ padding: "11px 0", textAlign: "right", fontSize: "13px", fontWeight: 600, color: "var(--ec-accent)", fontVariantNumeric: "tabular-nums" }}>
+                    {r.scoreAfter}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -218,16 +185,17 @@ export default function ResultsSummary({ responses, theta, onRestart }: Props) {
         onClick={onRestart}
         style={{
           width: "100%",
-          padding: "15px",
+          padding: "16px",
           background: "var(--ec-btn-bg)",
           color: "var(--ec-btn-text)",
-          border: "1px solid var(--ec-accent-border)",
+          border: "none",
           borderRadius: "14px",
           fontFamily: "inherit",
           fontSize: "15px",
           fontWeight: 700,
           cursor: "pointer",
-          letterSpacing: "0.01em",
+          letterSpacing: "-0.01em",
+          boxShadow: "var(--ec-shadow-btn)",
         }}
       >
         Take Another Test
