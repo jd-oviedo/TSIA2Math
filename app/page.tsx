@@ -24,7 +24,7 @@ export default function Home() {
           </p>
 
           <h1 style={{ fontSize: "clamp(34px, 6vw, 54px)", fontWeight: 800, color: "var(--ec-ink)", letterSpacing: "-0.03em", lineHeight: 1.08, margin: 0 }}>
-            Get your TSIA2 score before test day.
+            Get your score before test day.
           </h1>
 
           <p style={{ fontSize: "17px", color: "var(--ec-ink-muted)", lineHeight: 1.65, maxWidth: "400px", margin: 0 }}>
