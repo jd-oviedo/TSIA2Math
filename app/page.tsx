@@ -19,7 +19,7 @@ export default function Home() {
       <main style={{ flex: 1, position: "relative", zIndex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 24px 80px" }}>
         <div style={{ maxWidth: "540px", width: "100%", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
 
-          <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--ec-accent)" }}>
+          <p style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--ec-accent)" }}>
             TSIA2 Math Prep
           </p>
 
