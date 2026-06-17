@@ -64,10 +64,10 @@ export function Header() {
           fontSize: "18px",
           fontWeight: 700,
           color: "var(--ec-ink)",
-          fontFamily: "'LXGW WenKai Mono TC', monospace",
-          letterSpacing: "-0.01em",
+          fontFamily: "var(--font-kodchasan, 'Kodchasan', sans-serif)",
+          letterSpacing: "0.04em",
         }}>
-          UnpackMath – TSIA2 Math Practice Test
+          UnpackMath
         </span>
       </Link>
       <ThemeToggle />
