@@ -26,10 +26,10 @@ function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--ec-bg)", position: "relative" }}>
       <Blobs />
-      <div style={{ position: "relative", zIndex: 1 }}>
+      <div style={{ position: "relative", zIndex: 50 }}>
         <Header />
       </div>
-      <main style={{ flex: 1, maxWidth: "800px", margin: "0 auto", width: "100%", padding: "80px 24px 80px", position: "relative", zIndex: 1 }}>
+      <main style={{ flex: 1, maxWidth: "800px", margin: "0 auto", width: "100%", padding: "80px 24px 80px", position: "relative", zIndex: 50 }}>
         {children}
       </main>
       <Footer />
