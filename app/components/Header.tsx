@@ -4,22 +4,14 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "../theme/useTheme";
-import { themes, type ThemeName } from "../theme/themes";
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const isDark = (theme as string) === "abyss" || (theme as string) === "ember";
-
-  const cycle = () => {
-    if (theme === "sand") setTheme("abyss");
-    else if (theme === "abyss") setTheme("ember");
-    else setTheme("sand");
-  };
-
+  const isDark = theme === "dark";
   return (
     <button
-      onClick={cycle}
-      aria-label="Switch theme"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      aria-label="Switch light or dark mode"
       style={{
         display: "flex",
         alignItems: "center",
@@ -27,7 +19,7 @@ function ThemeToggle() {
         width: "34px",
         height: "34px",
         borderRadius: "50%",
-        border: "1px solid var(--ec-card-border)",
+        border: "1px solid var(--ec-line)",
         background: "rgba(255,255,255,0.18)",
         backdropFilter: "blur(8px)",
         WebkitBackdropFilter: "blur(8px)",
@@ -76,19 +68,16 @@ export function Header() {
           borderRadius: "999px",
           maxWidth: "800px",
           width: "100%",
-          background: scrolled
-            ? "var(--ec-header-bg)"
-            : "var(--ec-header-bg)",
+          background: "var(--ec-header-bg)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
           border: "1px solid var(--ec-header-border)",
           boxShadow: scrolled
             ? "0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.10)"
             : "0 4px 20px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06)",
-          transition: "box-shadow 0.25s ease, background 0.25s ease",
+          transition: "box-shadow 0.25s ease",
         }}
       >
-        {/* Logo + wordmark */}
         <Link
           href="/"
           style={{
@@ -104,10 +93,10 @@ export function Header() {
               width: "36px",
               height: "36px",
               borderRadius: "10px",
-              background: "var(--ec-glass-bg)",
+              background: "rgba(255,255,255,0.25)",
               backdropFilter: "blur(8px)",
               WebkitBackdropFilter: "blur(8px)",
-              border: "1px solid var(--ec-glass-border)",
+              border: "1px solid rgba(255,255,255,0.35)",
               boxShadow: "0 4px 12px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.08)",
               display: "flex",
               alignItems: "center",
@@ -137,52 +126,8 @@ export function Header() {
           </span>
         </Link>
 
-        {/* Right side: theme switcher pill + toggle */}
-        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
-          <ThemeSwitcher />
-          <ThemeToggle />
-        </div>
+        <ThemeToggle />
       </nav>
-    </div>
-  );
-}
-
-function ThemeSwitcher() {
-  const { theme, setTheme } = useTheme();
-  const options: ThemeName[] = ["sand", "ember", "abyss"];
-
-  return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "2px",
-        background: "var(--ec-pill-track)",
-        borderRadius: "99px",
-        padding: "3px",
-      }}
-    >
-      {options.map((t) => (
-        <button
-          key={t}
-          onClick={() => setTheme(t)}
-          style={{
-            padding: "5px 13px",
-            borderRadius: "99px",
-            border: theme === t ? "1px solid var(--ec-accent-border)" : "1px solid transparent",
-            background: theme === t ? "var(--ec-pill-active-bg)" : "transparent",
-            color: theme === t ? "var(--ec-pill-active-text)" : "var(--ec-pill-inactive-text)",
-            fontFamily: "inherit",
-            fontSize: "11px",
-            fontWeight: 600,
-            cursor: "pointer",
-            letterSpacing: "0.03em",
-            transition: "all 0.18s ease",
-          }}
-        >
-          {themes[t].label}
-        </button>
-      ))}
     </div>
   );
 }

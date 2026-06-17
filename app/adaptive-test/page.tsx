@@ -29,7 +29,7 @@ function Shell({ children }: { children: React.ReactNode }) {
       <div style={{ position: "relative", zIndex: 1 }}>
         <Header />
       </div>
-      <main style={{ flex: 1, maxWidth: "800px", margin: "0 auto", width: "100%", padding: "24px 24px 80px", position: "relative", zIndex: 1 }}>
+      <main style={{ flex: 1, maxWidth: "800px", margin: "0 auto", width: "100%", padding: "80px 24px 80px", position: "relative", zIndex: 1 }}>
         {children}
       </main>
       <Footer />
