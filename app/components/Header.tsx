@@ -8,7 +8,7 @@ import { themes, type ThemeName } from "../theme/themes";
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const isDark = theme === "abyss" || theme === "ember";
+  const isDark = (theme as string) === "abyss" || (theme as string) === "ember";
 
   const cycle = () => {
     if (theme === "sand") setTheme("abyss");
