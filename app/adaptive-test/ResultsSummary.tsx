@@ -61,6 +61,40 @@ export default function ResultsSummary({ responses, theta, onRestart }: Props) {
         </p>
       </div>
 
+      {/* Sign-in prompt */}
+      <div style={{
+        background: "var(--ec-surface)",
+        border: "1px solid var(--ec-line)",
+        borderRadius: "16px",
+        padding: "20px 24px",
+        boxShadow: "var(--ec-shadow)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: "16px",
+        flexWrap: "wrap",
+      }}>
+        <p style={{ fontSize: "13px", color: "var(--ec-ink-muted)", margin: 0 }}>
+          Sign in to save this result and track your progress over time.
+        </p>
+        
+        <a  href="/login"
+          style={{
+            flexShrink: 0,
+            padding: "10px 20px",
+            background: "var(--ec-btn-bg)",
+            color: "var(--ec-btn-text)",
+            borderRadius: "10px",
+            fontSize: "13px",
+            fontWeight: 700,
+            textDecoration: "none",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Sign in with Google
+        </a>
+      </div>
+
       {/* Stat row */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px" }}>
         {[
