@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "../theme/useTheme";
 
@@ -78,8 +77,8 @@ export function Header() {
           transition: "box-shadow 0.25s ease",
         }}
       >
-        <Link
-          href="/"
+        <a
+          href="https://www.unpackmath.com"
           style={{
             display: "flex",
             alignItems: "center",
@@ -124,7 +123,7 @@ export function Header() {
           >
             UnpackMath
           </span>
-        </Link>
+        </a>
 
         <ThemeToggle />
       </nav>
