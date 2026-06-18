@@ -110,6 +110,9 @@ export default function AdaptiveTestPage() {
       <Shell>
         <div style={{ maxWidth: "520px", margin: "0 auto", textAlign: "center", padding: "40px 0 64px", display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
           <div>
+            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-ink-faint)", marginBottom: "6px" }}>
+              Before you begin
+            </p>
             <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-accent)", marginBottom: "12px" }}>
               TSIA2 Adaptive Practice
             </p>
@@ -122,10 +125,10 @@ export default function AdaptiveTestPage() {
           </p>
           <div style={{ background: "var(--ec-surface)", border: "1px solid var(--ec-line)", borderRadius: "18px", padding: "22px 26px", width: "100%", textAlign: "left", display: "flex", flexDirection: "column", gap: "12px", boxShadow: "var(--ec-shadow)" }}>
             {[
-              ["Starts at", "Proficient difficulty"],
-              ["Adapts", "after every answer"],
-              ["Score", "estimated on 910–990 scale"],
-              ["Passing", "950 or above"],
+              ["Starting level", "Proficient difficulty"],
+              ["Adjusts", "after every answer"],
+              ["Estimated score", "910–990 scale"],
+              ["College-ready", "950 or above"],
             ].map(([label, value]) => (
               <div key={label} style={{ display: "flex", justifyContent: "space-between", fontSize: "14px" }}>
                 <span style={{ color: "var(--ec-ink-muted)" }}>{label}</span>

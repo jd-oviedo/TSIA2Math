@@ -43,7 +43,7 @@ export default function Home() {
                 boxShadow: "var(--ec-shadow-btn)",
               }}
             >
-              Start Practice Test
+              Start My Practice Test
             </Link>
             <p style={{ fontSize: "12px", color: "var(--ec-ink-faint)", margin: 0 }}>
               no account needed · free to use
