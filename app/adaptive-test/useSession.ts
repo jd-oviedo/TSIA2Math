@@ -5,6 +5,7 @@ import type { Item, Response, SessionState } from "./type";
 import {
   DEFAULT_MAX_ITEMS,
   STARTING_DIFFICULTY,
+  buildStrandQueue,
   nextDifficulty,
   selectNextItem,
   updateTheta,
@@ -30,6 +31,7 @@ function makeInitialState(maxItems = DEFAULT_MAX_ITEMS): SessionState {
     responses: [],
     maxItems,
     itemStartTime: 0,
+    strandQueue: [],
   };
 }
 
@@ -42,7 +44,9 @@ function reducer(state: SessionState, action: Action): SessionState {
       return { ...state, phase: "error", loadError: action.message };
 
     case "START": {
-      const item = selectNextItem(state.allItems, new Set(), STARTING_DIFFICULTY);
+      const strandQueue = buildStrandQueue();
+      const firstStrand = strandQueue[0];
+      const item = selectNextItem(state.allItems, new Set(), STARTING_DIFFICULTY, firstStrand);
       if (!item) return { ...state, phase: "error", loadError: "No items available to start the test." };
       return {
         ...state,
@@ -53,6 +57,7 @@ function reducer(state: SessionState, action: Action): SessionState {
         theta: 0,
         responses: [],
         itemStartTime: Date.now(),
+        strandQueue: strandQueue.slice(1),
       };
     }
 
@@ -78,7 +83,12 @@ function reducer(state: SessionState, action: Action): SessionState {
       const newDifficulty = nextDifficulty(state.currentDifficulty, isCorrect);
       const newSeenIds = new Set<string>(state.seenIds);
       newSeenIds.add(state.currentItem.item_id);
-      const nextItem = selectNextItem(state.allItems, newSeenIds, newDifficulty);
+
+      const nextStrand = state.strandQueue[0];
+      if (!nextStrand) {
+        return { ...state, phase: "complete", responses: newResponses, theta: newTheta };
+      }
+      const nextItem = selectNextItem(state.allItems, newSeenIds, newDifficulty, nextStrand);
 
       if (!nextItem) {
         return { ...state, phase: "complete", responses: newResponses, theta: newTheta };
@@ -94,6 +104,7 @@ function reducer(state: SessionState, action: Action): SessionState {
         seenIds: newSeenIds,
         currentItem: nextItem,
         itemStartTime: action.nowMs,
+        strandQueue: state.strandQueue.slice(1),
       };
     }
 

@@ -1,4 +1,4 @@
-import type { Item, ItemValidationError, LoadResult, ProficiencyLevel, Response } from "./type";
+import type { Item, ItemValidationError, LoadResult, ProficiencyLevel, Response, Strand } from "./type";
 
 export const TSIA2_MIN = 910;
 export const TSIA2_MAX = 990;
@@ -8,6 +8,15 @@ export const THETA_MAX = 3;
 export const THETA_STEP = 0.5;
 export const DEFAULT_MAX_ITEMS = 20;
 export const STARTING_DIFFICULTY: ProficiencyLevel = "Proficient";
+
+// Official TSIA2 CRC strand quotas (20 items total per testing experience).
+// Source: College Board TSIA2 Mathematics Test Specifications v1.4.
+export const STRAND_QUOTAS: Record<Strand, number> = {
+  QR: 6,
+  AR: 7,
+  GR: 3,
+  PR: 4,
+};
 
 const REQUIRED_FIELDS: (keyof Item)[] = [
   "item_id",
@@ -29,6 +38,24 @@ export function nextDifficulty(current: ProficiencyLevel, correct: boolean): Pro
   const idx = difficultyIndex(current);
   if (correct) return DIFFICULTY_ORDER[Math.min(idx + 1, 2)];
   return DIFFICULTY_ORDER[Math.max(idx - 1, 0)];
+}
+/**
+ * Builds a randomized strand sequence for one testing experience, respecting
+ * fixed strand quotas (e.g. 6 QR, 7 AR, 3 GR, 4 PR). The order is shuffled
+ * per test so the strand sequence feels organic rather than four visible
+ * blocks, while every test still ends up with the exact same count per strand.
+ */
+export function buildStrandQueue(quotas: Record<Strand, number> = STRAND_QUOTAS): Strand[] {
+  const pool: Strand[] = [];
+  (Object.keys(quotas) as Strand[]).forEach((strand) => {
+    for (let i = 0; i < quotas[strand]; i++) pool.push(strand);
+  });
+  // Fisher-Yates shuffle
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return pool;
 }
 
 export function validateItems(raw: unknown[]): LoadResult {
@@ -55,7 +82,8 @@ export function validateItems(raw: unknown[]): LoadResult {
 export function selectNextItem(
   items: Item[],
   seenIds: Set<string>,
-  targetDifficulty: ProficiencyLevel
+  targetDifficulty: ProficiencyLevel,
+  targetStrand: Strand
 ): Item | null {
   const tiers: ProficiencyLevel[] = [targetDifficulty];
   const idx = difficultyIndex(targetDifficulty);
@@ -64,8 +92,10 @@ export function selectNextItem(
   const allTiers = DIFFICULTY_ORDER.filter((t) => !tiers.includes(t));
   tiers.push(...allTiers);
 
+  const strandItems = items.filter((i) => i.primary_strand === targetStrand);
+
   for (const tier of tiers) {
-    const pool = items.filter((i) => i.proficiency_level === tier && !seenIds.has(i.item_id));
+    const pool = strandItems.filter((i) => i.proficiency_level === tier && !seenIds.has(i.item_id));
     if (pool.length > 0) {
       return pool[Math.floor(Math.random() * pool.length)];
     }

@@ -1,5 +1,5 @@
 export type ProficiencyLevel = "Basic" | "Proficient" | "Advanced";
-export type Strand = "QR" | "AR" | "GS" | "PS";
+export type Strand = "QR" | "AR" | "GR" | "PR";
 
 export interface StrategyHint {
   strategy: string;
@@ -85,4 +85,5 @@ export interface SessionState {
   responses: Response[];
   maxItems: number;
   itemStartTime: number;
+  strandQueue: Strand[];
 }
