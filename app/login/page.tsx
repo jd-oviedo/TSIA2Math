@@ -46,8 +46,31 @@ export default function LoginPage() {
         <Header />
       </div>
       <main style={{ flex: 1, position: "relative", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 24px 80px" }}>
-        <div style={{ maxWidth: "420px", width: "100%", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
-          <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-accent)", margin: 0 }}>
+        <div style={{
+          maxWidth: "440px",
+          width: "100%",
+          textAlign: "center",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "20px",
+          background: "var(--ec-surface)",
+          border: "1px solid var(--ec-line)",
+          borderRadius: "24px",
+          padding: "48px 36px",
+          boxShadow: "var(--ec-shadow)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+        }}>
+          <p style={{
+            fontFamily: "var(--font-kodchasan, 'Kodchasan', sans-serif)",
+            fontSize: "12px",
+            fontWeight: 700,
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            color: "var(--ec-accent)",
+            margin: 0,
+          }}>
             UnpackMath Account
           </p>
           <h1 style={{ fontSize: "clamp(28px, 5vw, 38px)", fontWeight: 800, color: "var(--ec-ink)", letterSpacing: "-0.03em", lineHeight: 1.1, margin: 0 }}>
@@ -56,33 +79,32 @@ export default function LoginPage() {
           <p style={{ fontSize: "15px", color: "var(--ec-ink-muted)", lineHeight: 1.6, maxWidth: "340px", margin: 0 }}>
             Track your scores over time and pick up right where you left off.
           </p>
-          <div style={{ background: "var(--ec-surface)", border: "1px solid var(--ec-line)", borderRadius: "18px", padding: "28px 26px", width: "100%", boxShadow: "var(--ec-shadow)", marginTop: "8px" }}>
-            <button
-              onClick={handleGoogleLogin}
-              disabled={loading}
-              style={{
-                width: "100%",
-                padding: "14px 20px",
-                borderRadius: "12px",
-                border: "1px solid var(--ec-line)",
-                background: "#fff",
-                color: "#1f1f1f",
-                cursor: loading ? "default" : "pointer",
-                fontSize: "15px",
-                fontWeight: 600,
-                fontFamily: "inherit",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "12px",
-                opacity: loading ? 0.6 : 1,
-                boxShadow: "var(--ec-shadow-btn)",
-              }}
-            >
-              <GoogleIcon />
-              {loading ? "redirecting…" : "Continue with Google"}
-            </button>
-          </div>
+          <button
+            onClick={handleGoogleLogin}
+            disabled={loading}
+            style={{
+              width: "100%",
+              padding: "14px 20px",
+              borderRadius: "12px",
+              border: "1px solid var(--ec-line)",
+              background: "#fff",
+              color: "#1f1f1f",
+              cursor: loading ? "default" : "pointer",
+              fontSize: "15px",
+              fontWeight: 600,
+              fontFamily: "inherit",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "12px",
+              opacity: loading ? 0.6 : 1,
+              boxShadow: "var(--ec-shadow-btn)",
+              marginTop: "8px",
+            }}
+          >
+            <GoogleIcon />
+            {loading ? "redirecting…" : "Continue with Google"}
+          </button>
           <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)", margin: 0 }}>
             no spam · we only use this to save your results
           </p>
