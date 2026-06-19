@@ -5,6 +5,7 @@ import type { Item, Response, SessionState } from "./type";
 import {
   DEFAULT_MAX_ITEMS,
   STARTING_DIFFICULTY,
+  STARTING_THETA,
   buildStrandQueue,
   nextDifficulty,
   selectNextItem,
@@ -27,7 +28,7 @@ function makeInitialState(maxItems = DEFAULT_MAX_ITEMS): SessionState {
     seenIds: new Set(),
     currentItem: null,
     currentDifficulty: STARTING_DIFFICULTY,
-    theta: 0,
+    theta: STARTING_THETA,
     responses: [],
     maxItems,
     itemStartTime: 0,
@@ -54,7 +55,7 @@ function reducer(state: SessionState, action: Action): SessionState {
         seenIds: new Set([item.item_id]),
         currentItem: item,
         currentDifficulty: STARTING_DIFFICULTY,
-        theta: 0,
+        theta: STARTING_THETA,
         responses: [],
         itemStartTime: Date.now(),
         strandQueue: strandQueue.slice(1),
@@ -64,7 +65,7 @@ function reducer(state: SessionState, action: Action): SessionState {
     case "ANSWER": {
       if (!state.currentItem) return state;
       const isCorrect = action.selectedAnswer === state.currentItem.correct_answer;
-      const newTheta = updateTheta(state.theta, isCorrect);
+      const newTheta = updateTheta(state.theta, isCorrect, state.currentItem.proficiency_level);
       const newScore = thetaToScore(newTheta);
       const response: Response = {
         item: state.currentItem,
