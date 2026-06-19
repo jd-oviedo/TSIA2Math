@@ -78,7 +78,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: itemsError.message }, { status: 500 });
   }
 
-  const itemMap = new Map
+  const itemMap = new Map <
     string,
     Pick<Item, "item_id" | "correct_answer" | "primary_strand" | "proficiency_level">
   >((items ?? []).map((i) => [i.item_id, i]));
