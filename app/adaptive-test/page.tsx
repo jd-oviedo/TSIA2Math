@@ -1,16 +1,38 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSession } from "./useSession";
 import { validateItems } from "./engine";
 import ItemCard from "./ItemCard";
 import ResultsSummary from "./ResultsSummary";
-import type { ItemValidationError } from "./type";
+import type { ItemValidationError, Response } from "./type";
 import { supabase } from "../lib/supabase";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 
 const MAX_ITEMS = 20;
+async function saveSession(responses: Response[], maxItems: number) {
+  try {
+    const res = await fetch("/api/sessions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        max_items: maxItems,
+        responses: responses.map((r) => ({
+          item_id: r.item.item_id,
+          selected_answer: r.selectedAnswer,
+          elapsed_ms: r.elapsedMs,
+        })),
+      }),
+    });
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      console.error("[saveSession] failed:", res.status, body.error ?? res.statusText);
+    }
+  } catch (err) {
+    console.error("[saveSession] network error:", err);
+  }
+}
 
 function Blobs() {
   return (
@@ -54,6 +76,17 @@ function ValidationErrorList({ errors }: { errors: ItemValidationError[] }) {
 
 export default function AdaptiveTestPage() {
   const { state, loadItems, loadError, start, answer, restart } = useSession(MAX_ITEMS);
+  const savedRef = useRef(false);
+
+useEffect(() => {
+  if (state.phase === "complete" && !savedRef.current) {
+    savedRef.current = true;
+    saveSession(state.responses, state.maxItems);
+  }
+  if (state.phase !== "complete") {
+    savedRef.current = false;
+  }
+}, [state.phase, state.responses, state.maxItems]);
 
   useEffect(() => {
     if (state.phase !== "loading") return;
