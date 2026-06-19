@@ -89,7 +89,7 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
 
           {sessionId ? (
             <a
-              href={`/login?next=${encodeURIComponent("/adaptive-test")}&session_id=${encodeURIComponent(sessionId)}`}
+              href={`/login?next=${encodeURIComponent("/dashboard")}&session_id=${encodeURIComponent(sessionId)}`}
               style={{
                 flexShrink: 0,
                 padding: "10px 20px",
@@ -106,7 +106,7 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
             </a>
           ) : saveFailed ? (
             <a
-              href={`/login?next=${encodeURIComponent("/adaptive-test")}`}
+              href={`/login?next=${encodeURIComponent("/dashboard")}`}
               style={{
                 flexShrink: 0,
                 padding: "10px 20px",
