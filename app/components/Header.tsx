@@ -141,7 +141,7 @@ export function Footer() {
         color: "var(--ec-ink-muted)",
       }}
     >
-      <p style={{ margin: 0 }}>
+      <p style={{ margin: 0, fontFamily: "var(--font-kodchasan, Kodchasan, sans-serif)" }}>
         &copy; {new Date().getFullYear()} JDOM LLC &middot;{" "}
         <a href="/privacy" style={{ color: "inherit", textDecoration: "underline" }}>privacy</a>
         {" "}&middot;{" "}

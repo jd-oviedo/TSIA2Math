@@ -76,7 +76,7 @@ export default function LoginPage() {
           <h1 style={{ fontSize: "clamp(28px, 5vw, 38px)", fontWeight: 800, color: "var(--ec-ink)", letterSpacing: "-0.03em", lineHeight: 1.1, margin: 0, fontFamily: "var(--font-kodchasan, Kodchasan, sans-serif)" }}>
             Sign in to save your progress.
           </h1>
-          <p style={{ fontSize: "15px", color: "var(--ec-ink-muted)", lineHeight: 1.6, maxWidth: "340px", margin: 0 }}>
+          <p style={{ fontSize: "17px", color: "var(--ec-ink-muted)", lineHeight: 1.6, maxWidth: "340px", margin: 0 }}>
             Track your scores over time and pick up right where you left off.
           </p>
           <button
