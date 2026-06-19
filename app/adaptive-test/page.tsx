@@ -108,7 +108,22 @@ export default function AdaptiveTestPage() {
 
     return (
       <Shell>
-        <div style={{ maxWidth: "520px", margin: "0 auto", textAlign: "center", padding: "40px 0 64px", display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
+        <div style={{
+          maxWidth: "520px",
+          margin: "0 auto",
+          textAlign: "center",
+          padding: "44px 36px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "20px",
+          background: "var(--ec-glass-bg)",
+          border: "1px solid var(--ec-glass-border)",
+          borderRadius: "20px",
+          boxShadow: "var(--ec-shadow)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+        }}>
           <div>
             <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-ink-faint)", marginBottom: "6px" }}>
               Before you begin
@@ -116,7 +131,7 @@ export default function AdaptiveTestPage() {
             <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-accent)", marginBottom: "12px" }}>
               TSIA2 Adaptive Practice
             </p>
-            <h1 style={{ fontSize: "34px", fontWeight: 800, color: "var(--ec-ink)", letterSpacing: "-0.025em", lineHeight: 1.1 }}>
+            <h1 style={{ fontSize: "34px", fontWeight: 800, color: "var(--ec-ink)", letterSpacing: "-0.025em", lineHeight: 1.1, fontFamily: "var(--font-kodchasan, Kodchasan, sans-serif)" }}>
               Let&rsquo;s find exactly where you are.
             </h1>
           </div>
