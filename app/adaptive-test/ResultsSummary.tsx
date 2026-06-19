@@ -3,12 +3,14 @@
 import type { Response } from "./type";
 import { TSIA2_PASSING, thetaToScore, buildCategoryBreakdown } from "./engine";
 
-const SHOW_SIGNIN_PROMPT = false; // flip to true once results persistence is built
+const SHOW_SIGNIN_PROMPT = true;
 
 interface Props {
   responses: Response[];
   theta: number;
   onRestart: () => void;
+  sessionId: string | null;
+  saveFailed: boolean;
 }
 
 const STRAND_LABEL: Record<string, string> = {
@@ -20,7 +22,7 @@ const STRAND_LABEL: Record<string, string> = {
   PS: "Probabilistic & Statistical Reasoning",
 };
 
-export default function ResultsSummary({ responses, theta, onRestart }: Props) {
+export default function ResultsSummary({ responses, theta, onRestart, sessionId, saveFailed }: Props) {
   const finalScore = thetaToScore(theta);
   const passed = finalScore >= TSIA2_PASSING;
   const correct = responses.filter((r) => r.isCorrect).length;
@@ -78,24 +80,64 @@ export default function ResultsSummary({ responses, theta, onRestart }: Props) {
           flexWrap: "wrap",
         }}>
           <p style={{ fontSize: "13px", color: "var(--ec-ink-muted)", margin: 0 }}>
-            Sign in to save this result and track your progress over time.
+            {sessionId
+              ? "Sign in to save this result and track your progress over time."
+              : saveFailed
+              ? "This result couldn't be saved, but you can still sign in to save future attempts."
+              : "Saving your result…"}
           </p>
-          
-          <a  href="/login"
-            style={{
-              flexShrink: 0,
-              padding: "10px 20px",
-              background: "var(--ec-btn-bg)",
-              color: "var(--ec-btn-text)",
-              borderRadius: "10px",
-              fontSize: "13px",
-              fontWeight: 700,
-              textDecoration: "none",
-              whiteSpace: "nowrap",
-            }}
-          >
-            Sign in with Google
-          </a>
+
+          {sessionId ? (
+            <a
+              href={`/login?next=${encodeURIComponent("/adaptive-test")}&session_id=${encodeURIComponent(sessionId)}`}
+              style={{
+                flexShrink: 0,
+                padding: "10px 20px",
+                background: "var(--ec-btn-bg)",
+                color: "var(--ec-btn-text)",
+                borderRadius: "10px",
+                fontSize: "13px",
+                fontWeight: 700,
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Sign in with Google
+            </a>
+          ) : saveFailed ? (
+            <a
+              href={`/login?next=${encodeURIComponent("/adaptive-test")}`}
+              style={{
+                flexShrink: 0,
+                padding: "10px 20px",
+                background: "var(--ec-btn-bg)",
+                color: "var(--ec-btn-text)",
+                borderRadius: "10px",
+                fontSize: "13px",
+                fontWeight: 700,
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Sign in with Google
+            </a>
+          ) : (
+            <span
+              style={{
+                flexShrink: 0,
+                padding: "10px 20px",
+                background: "var(--ec-line)",
+                color: "var(--ec-ink-faint)",
+                borderRadius: "10px",
+                fontSize: "13px",
+                fontWeight: 700,
+                whiteSpace: "nowrap",
+                cursor: "default",
+              }}
+            >
+              Saving…
+            </span>
+          )}
         </div>
       )}
 

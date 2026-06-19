@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { supabase } from "../lib/supabase";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
@@ -26,19 +27,94 @@ function GoogleIcon() {
   );
 }
 
-export default function LoginPage() {
+function LoginCard() {
   const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
 
   const handleGoogleLogin = async () => {
     setLoading(true);
+    const callbackUrl = new URL(`${window.location.origin}/auth/callback`);
+    const next = searchParams.get("next");
+    const sessionId = searchParams.get("session_id");
+    if (next) callbackUrl.searchParams.set("next", next);
+    if (sessionId) callbackUrl.searchParams.set("session_id", sessionId);
+
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
+        redirectTo: callbackUrl.toString(),
       },
     });
   };
 
+  return (
+    <div style={{
+      maxWidth: "440px",
+      width: "100%",
+      textAlign: "center",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "20px",
+      background: "var(--ec-glass-bg)",
+      border: "1px solid var(--ec-glass-border)",
+      borderRadius: "20px",
+      padding: "48px 36px",
+      boxShadow: "var(--ec-shadow)",
+      backdropFilter: "blur(16px)",
+      WebkitBackdropFilter: "blur(16px)",
+    }}>
+      <p style={{
+        fontFamily: "var(--font-kodchasan, 'Kodchasan', sans-serif)",
+        fontSize: "12px",
+        fontWeight: 700,
+        letterSpacing: "0.18em",
+        textTransform: "uppercase",
+        color: "var(--ec-accent)",
+        margin: 0,
+      }}>
+        UnpackMath Account
+      </p>
+      <h1 style={{ fontSize: "clamp(28px, 5vw, 38px)", fontWeight: 800, color: "var(--ec-ink)", letterSpacing: "-0.03em", lineHeight: 1.1, margin: 0, fontFamily: "var(--font-kodchasan, Kodchasan, sans-serif)" }}>
+        Sign in to save your progress.
+      </h1>
+      <p style={{ fontSize: "17px", color: "var(--ec-ink-muted)", lineHeight: 1.6, maxWidth: "340px", margin: 0 }}>
+        Track your scores over time and pick up right where you left off.
+      </p>
+      <button
+        onClick={handleGoogleLogin}
+        disabled={loading}
+        style={{
+          width: "100%",
+          padding: "14px 20px",
+          borderRadius: "12px",
+          border: "1px solid var(--ec-line)",
+          background: "#fff",
+          color: "#1f1f1f",
+          cursor: loading ? "default" : "pointer",
+          fontSize: "15px",
+          fontWeight: 600,
+          fontFamily: "inherit",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "12px",
+          opacity: loading ? 0.6 : 1,
+          boxShadow: "var(--ec-shadow-btn)",
+          marginTop: "8px",
+        }}
+      >
+        <GoogleIcon />
+        {loading ? "redirecting…" : "Continue with Google"}
+      </button>
+      <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)", margin: 0 }}>
+        no spam · we only use this to save your results
+      </p>
+    </div>
+  );
+}
+
+export default function LoginPage() {
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--ec-bg)", position: "relative" }}>
       <Blobs />
@@ -46,69 +122,9 @@ export default function LoginPage() {
         <Header />
       </div>
       <main style={{ flex: 1, position: "relative", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 24px 80px" }}>
-        <div style={{
-          maxWidth: "440px",
-          width: "100%",
-          textAlign: "center",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "20px",
-          background: "var(--ec-glass-bg)",
-          border: "1px solid var(--ec-glass-border)",
-          borderRadius: "20px",
-          padding: "48px 36px",
-          boxShadow: "var(--ec-shadow)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-        }}>
-          <p style={{
-            fontFamily: "var(--font-kodchasan, 'Kodchasan', sans-serif)",
-            fontSize: "12px",
-            fontWeight: 700,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "var(--ec-accent)",
-            margin: 0,
-          }}>
-            UnpackMath Account
-          </p>
-          <h1 style={{ fontSize: "clamp(28px, 5vw, 38px)", fontWeight: 800, color: "var(--ec-ink)", letterSpacing: "-0.03em", lineHeight: 1.1, margin: 0, fontFamily: "var(--font-kodchasan, Kodchasan, sans-serif)" }}>
-            Sign in to save your progress.
-          </h1>
-          <p style={{ fontSize: "17px", color: "var(--ec-ink-muted)", lineHeight: 1.6, maxWidth: "340px", margin: 0 }}>
-            Track your scores over time and pick up right where you left off.
-          </p>
-          <button
-            onClick={handleGoogleLogin}
-            disabled={loading}
-            style={{
-              width: "100%",
-              padding: "14px 20px",
-              borderRadius: "12px",
-              border: "1px solid var(--ec-line)",
-              background: "#fff",
-              color: "#1f1f1f",
-              cursor: loading ? "default" : "pointer",
-              fontSize: "15px",
-              fontWeight: 600,
-              fontFamily: "inherit",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "12px",
-              opacity: loading ? 0.6 : 1,
-              boxShadow: "var(--ec-shadow-btn)",
-              marginTop: "8px",
-            }}
-          >
-            <GoogleIcon />
-            {loading ? "redirecting…" : "Continue with Google"}
-          </button>
-          <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)", margin: 0 }}>
-            no spam · we only use this to save your results
-          </p>
-        </div>
+        <Suspense fallback={null}>
+          <LoginCard />
+        </Suspense>
       </main>
       <Footer />
     </div>

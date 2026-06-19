@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSession } from "./useSession";
 import { validateItems } from "./engine";
 import ItemCard from "./ItemCard";
@@ -11,7 +11,7 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 
 const MAX_ITEMS = 20;
-async function saveSession(responses: Response[], maxItems: number) {
+async function saveSession(responses: Response[], maxItems: number): Promise<{ sessionId: string | null; failed: boolean }> {
   try {
     const res = await fetch("/api/sessions", {
       method: "POST",
@@ -28,9 +28,13 @@ async function saveSession(responses: Response[], maxItems: number) {
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));
       console.error("[saveSession] failed:", res.status, body.error ?? res.statusText);
+      return { sessionId: null, failed: true };
     }
+    const body = await res.json();
+    return { sessionId: body.session_id ?? null, failed: !body.session_id };
   } catch (err) {
     console.error("[saveSession] network error:", err);
+    return { sessionId: null, failed: true };
   }
 }
 
@@ -77,14 +81,21 @@ function ValidationErrorList({ errors }: { errors: ItemValidationError[] }) {
 export default function AdaptiveTestPage() {
   const { state, loadItems, loadError, start, answer, restart } = useSession(MAX_ITEMS);
   const savedRef = useRef(false);
+  const [savedSessionId, setSavedSessionId] = useState<string | null>(null);
+  const [saveFailed, setSaveFailed] = useState(false);
 
 useEffect(() => {
   if (state.phase === "complete" && !savedRef.current) {
     savedRef.current = true;
-    saveSession(state.responses, state.maxItems);
+    saveSession(state.responses, state.maxItems).then(({ sessionId, failed }) => {
+      setSavedSessionId(sessionId);
+      setSaveFailed(failed);
+    });
   }
   if (state.phase !== "complete") {
     savedRef.current = false;
+    setSavedSessionId(null);
+    setSaveFailed(false);
   }
 }, [state.phase, state.responses, state.maxItems]);
 
@@ -206,7 +217,7 @@ useEffect(() => {
   if (state.phase === "complete") {
     return (
       <Shell>
-        <ResultsSummary responses={state.responses} theta={state.theta} onRestart={restart} />
+        <ResultsSummary responses={state.responses} theta={state.theta} onRestart={restart} sessionId={savedSessionId} saveFailed={saveFailed} />
       </Shell>
     );
   }
