@@ -116,7 +116,7 @@ export default function AdaptiveTestPage() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "20px",
+          gap: "16px",
           background: "var(--ec-glass-bg)",
           border: "1px solid var(--ec-glass-border)",
           borderRadius: "20px",
@@ -125,17 +125,17 @@ export default function AdaptiveTestPage() {
           WebkitBackdropFilter: "blur(16px)",
         }}>
           <div>
-            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-ink-faint)", marginBottom: "6px" }}>
+            <p style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-ink-faint)", marginBottom: "4px" }}>
               Before you begin
             </p>
-            <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-accent)", marginBottom: "12px" }}>
+            <p style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-accent)", marginBottom: "8px" }}>
               TSIA2 Adaptive Practice
             </p>
             <h1 style={{ fontSize: "34px", fontWeight: 800, color: "var(--ec-ink)", letterSpacing: "-0.025em", lineHeight: 1.1, fontFamily: "var(--font-kodchasan, Kodchasan, sans-serif)" }}>
-              Let&rsquo;s find exactly where you are.
+              Let&rsquo;s find exactly<br />where you are.
             </h1>
           </div>
-          <p style={{ fontSize: "15px", color: "var(--ec-ink-muted)", lineHeight: 1.65 }}>
+          <p style={{ fontSize: "15px", color: "var(--ec-ink-muted)", lineHeight: 1.65, margin: 0 }}>
             {state.allItems.length} items loaded · {MAX_ITEMS} questions · adapts as you go
           </p>
           <div style={{ background: "var(--ec-surface)", border: "1px solid var(--ec-line)", borderRadius: "18px", padding: "22px 26px", width: "100%", textAlign: "left", display: "flex", flexDirection: "column", gap: "12px", boxShadow: "var(--ec-shadow)" }}>
@@ -145,9 +145,10 @@ export default function AdaptiveTestPage() {
               ["Estimated score", "910–990 scale"],
               ["College-ready", "950 or above"],
             ].map(([label, value]) => (
-              <div key={label} style={{ display: "flex", justifyContent: "space-between", fontSize: "14px" }}>
-                <span style={{ color: "var(--ec-ink-muted)" }}>{label}</span>
-                <span style={{ color: "var(--ec-ink)", fontWeight: 500 }}>{value}</span>
+              <div key={label} style={{ display: "flex", alignItems: "baseline", fontSize: "14px", gap: "8px" }}>
+                <span style={{ color: "var(--ec-ink-muted)", whiteSpace: "nowrap" }}>{label}</span>
+                <span style={{ flex: 1, borderBottom: "2px dotted var(--ec-line)", marginBottom: "3px" }} />
+                <span style={{ color: "var(--ec-ink)", fontWeight: 500, whiteSpace: "nowrap" }}>{value}</span>
               </div>
             ))}
           </div>
@@ -155,7 +156,7 @@ export default function AdaptiveTestPage() {
           <button onClick={start} style={{ width: "100%", padding: "16px", background: "var(--ec-btn-bg)", color: "var(--ec-btn-text)", border: "none", borderRadius: "14px", fontFamily: "inherit", fontSize: "15px", fontWeight: 700, cursor: "pointer", letterSpacing: "-0.01em", boxShadow: "var(--ec-shadow-btn)" }}>
             Begin Test
           </button>
-          <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)" }}>no account needed · results shown at the end</p>
+          <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)", margin: 0 }}>no account needed · results shown at the end</p>
         </div>
       </Shell>
     );
