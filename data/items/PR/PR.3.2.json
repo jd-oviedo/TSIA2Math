@@ -1,0 +1,1040 @@
+[
+  {
+    "item_id": "PR_B_049",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "probability_sample_spaces_and_set_foundations",
+    "objective_text": "Probability, Sample Spaces, and Set Foundations",
+    "topic_id": "PR.3.2",
+    "topic": "probability_of_an_event_and_its_complement",
+    "topic_text": "Probability of an Event and Its Complement",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying the complement rule P(not A) = 1 minus P(A)",
+      "recognizing that an event and its complement sum to 1"
+    ],
+    "question_text": "The probability that a planted seed will sprout is 0.2. What is the probability that the seed will NOT sprout?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "0.2",
+      "B": "0.5",
+      "C": "0.8",
+      "D": "0.6"
+    },
+    "correct_answer": "C",
+    "explanation": "An event and its complement add to 1. The probability the seed does not sprout is 1 - 0.2 = 0.8.",
+    "distractor_logic": {
+      "A": "Student reports the probability that the seed sprouts (the event itself) instead of its complement.",
+      "B": "Student assumes the complement of any event is an even chance of 0.5.",
+      "C": "Correct: 1 - 0.2 = 0.8.",
+      "D": "Student subtracts the event probability twice (1 - 0.2 - 0.2) instead of once."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The event and its complement together must total 1. Subtract the given probability from 1 a single time."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["complement_rule", "decimal_probability", "single_event"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-20",
+    "last_modified": "2026-06-20",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_050",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "probability_sample_spaces_and_set_foundations",
+    "objective_text": "Probability, Sample Spaces, and Set Foundations",
+    "topic_id": "PR.3.2",
+    "topic": "probability_of_an_event_and_its_complement",
+    "topic_text": "Probability of an Event and Its Complement",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying the complement rule to a probability given as a fraction",
+      "subtracting a fraction from 1 correctly"
+    ],
+    "question_text": "When a marble is drawn at random from a bag, the probability that it is blue is 3/8. What is the probability that the marble is NOT blue?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "5/8",
+      "B": "3/8",
+      "C": "1/2",
+      "D": "3/5"
+    },
+    "correct_answer": "A",
+    "explanation": "The complement is 1 - 3/8. Writing 1 as 8/8 gives 8/8 - 3/8 = 5/8.",
+    "distractor_logic": {
+      "A": "Correct: 1 - 3/8 = 8/8 - 3/8 = 5/8.",
+      "B": "Student reports the probability that the marble is blue (the event itself) instead of its complement.",
+      "C": "Student assumes the complement is always an even chance of 1/2.",
+      "D": "Student forms a ratio of blue to non-blue (3 over 8 - 3 = 3/5) instead of subtracting from 1."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Rewrite 1 as a fraction with the same denominator as the given probability, then subtract."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["complement_rule", "fraction_probability", "single_event"],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-20",
+    "last_modified": "2026-06-20",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_051",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "probability_sample_spaces_and_set_foundations",
+    "objective_text": "Probability, Sample Spaces, and Set Foundations",
+    "topic_id": "PR.3.2",
+    "topic": "probability_of_an_event_and_its_complement",
+    "topic_text": "Probability of an Event and Its Complement",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing a complement directly from a described two-category sample space",
+      "recognizing that the complement count plus the event count equals the total"
+    ],
+    "question_text": "A jar holds 9 buttons: 4 are striped and 5 are solid. If one button is drawn at random, what is the probability that it is NOT striped?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "4/9",
+      "B": "4/5",
+      "C": "1/2",
+      "D": "5/9"
+    },
+    "correct_answer": "D",
+    "explanation": "Not striped means one of the 5 solid buttons out of 9 total, so P(not striped) = 5/9. This also equals 1 - 4/9.",
+    "distractor_logic": {
+      "A": "Student reports the probability of drawing a striped button (the event itself) instead of its complement.",
+      "B": "Student forms a ratio of striped to solid (4 to 5) instead of dividing the not-striped count by the total.",
+      "C": "Student assumes the complement is always an even chance of 1/2.",
+      "D": "Correct: not striped is the 5 solid buttons out of 9, which is 5/9, the same as 1 - 4/9."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Not striped means every button that is solid. Put the solid count over the total number of buttons."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A choice equal to the probability of striped is answering the wrong event. The denominator must be the total of 9."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["complement_rule", "two_category", "sample_space", "single_event"],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-20",
+    "last_modified": "2026-06-20",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_052",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "probability_sample_spaces_and_set_foundations",
+    "objective_text": "Probability, Sample Spaces, and Set Foundations",
+    "topic_id": "PR.3.2",
+    "topic": "probability_of_an_event_and_its_complement",
+    "topic_text": "Probability of an Event and Its Complement",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying the complement rule to a probability given as a percentage",
+      "subtracting a percentage from 100 percent"
+    ],
+    "question_text": "On an assembly line, the probability that a part is defective is 15%. What is the probability that a part is NOT defective?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "15%",
+      "B": "85%",
+      "C": "50%",
+      "D": "70%"
+    },
+    "correct_answer": "B",
+    "explanation": "An event and its complement add to 100%. The probability a part is not defective is 100% - 15% = 85%.",
+    "distractor_logic": {
+      "A": "Student reports the probability that a part is defective (the event itself) instead of its complement.",
+      "B": "Correct: 100% - 15% = 85%.",
+      "C": "Student assumes the complement is always an even chance of 50%.",
+      "D": "Student subtracts the defective rate twice (100% - 15% - 15%) instead of once."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Percentages of an event and its complement total 100%. Subtract the given percentage from 100% one time."
+      }
+    ],
+    "content_context": "manufacturing",
+    "context_tags": ["complement_rule", "percent_probability", "single_event"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-20",
+    "last_modified": "2026-06-20",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_053",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "probability_sample_spaces_and_set_foundations",
+    "objective_text": "Probability, Sample Spaces, and Set Foundations",
+    "topic_id": "PR.3.2",
+    "topic": "probability_of_an_event_and_its_complement",
+    "topic_text": "Probability of an Event and Its Complement",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing the complement of a multiple-of-a-number event over a numbered sample space",
+      "counting favorable outcomes for the complement after identifying the event outcomes"
+    ],
+    "question_text": "A bag contains 12 chips numbered 1 through 12. One chip is drawn at random. What is the probability that the chip is NOT a multiple of 3?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "1/3",
+      "B": "1/2",
+      "C": "2/3",
+      "D": "3/4"
+    },
+    "correct_answer": "C",
+    "explanation": "The multiples of 3 from 1 to 12 are 3, 6, 9, and 12, which is 4 chips. The other 8 chips are not multiples of 3, so P(not a multiple of 3) = 8/12 = 2/3. This also equals 1 - 4/12.",
+    "distractor_logic": {
+      "A": "Student reports the probability of drawing a multiple of 3 (the event itself), 4 out of 12, instead of the complement.",
+      "B": "Student forms a ratio of multiples to non-multiples (4 to 8) instead of dividing the non-multiple count by the total.",
+      "C": "Correct: 4 chips are multiples of 3, so 8 of the 12 are not, giving 8/12 = 2/3.",
+      "D": "Student drops 12 from the list of multiples, counting only 3, 6, 9, so 9 chips appear to be non-multiples, giving 9/12 = 3/4."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "First list the multiples of 3 up to 12. Every other chip belongs to the complement."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Write 1 through 12 and cross out each multiple of 3. The chips left uncrossed are your favorable outcomes for 'not a multiple of 3'."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["complement_rule", "multiples", "numbered_chips", "interim_count"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-20",
+    "last_modified": "2026-06-20",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_048",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "probability_sample_spaces_and_set_foundations",
+    "objective_text": "Probability, Sample Spaces, and Set Foundations",
+    "topic_id": "PR.3.2",
+    "topic": "probability_of_an_event_and_its_complement",
+    "topic_text": "Probability of an Event and Its Complement",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "using the complement to solve an 'at least one' problem instead of summing outcomes",
+      "identifying that the complement of 'at least one head' is 'no heads'"
+    ],
+    "question_text": "A fair coin is flipped twice. What is the probability of getting at least one head?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3/4",
+      "B": "1/4",
+      "C": "1/2",
+      "D": "1"
+    },
+    "correct_answer": "A",
+    "explanation": "The complement of 'at least one head' is 'no heads', which is tails-tails. P(TT) = 1/2 times 1/2 = 1/4, so P(at least one head) = 1 - 1/4 = 3/4.",
+    "distractor_logic": {
+      "A": "Correct: P(no heads) = P(TT) = 1/4, so P(at least one head) = 1 - 1/4 = 3/4.",
+      "B": "Student finds the complement P(no heads) = 1/4 correctly but forgets to subtract it from 1.",
+      "C": "Student treats 'at least one head in two flips' as the probability of a head on a single flip.",
+      "D": "Student adds the two single-flip head probabilities (1/2 + 1/2) and concludes at least one head is certain."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["draw_diagram", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "List the four equally likely outcomes HH, HT, TH, TT. 'At least one head' is every outcome except one."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The opposite of 'at least one head' is 'zero heads'. Find that first, then subtract from 1."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["complement_rule", "at_least_one", "coin_flip", "shortcut"],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-20",
+    "last_modified": "2026-06-20",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_049",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "probability_sample_spaces_and_set_foundations",
+    "objective_text": "Probability, Sample Spaces, and Set Foundations",
+    "topic_id": "PR.3.2",
+    "topic": "probability_of_an_event_and_its_complement",
+    "topic_text": "Probability of an Event and Its Complement",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "using the complement as a shortcut rather than summing many favorable outcomes",
+      "identifying the small set of event outcomes before taking the complement"
+    ],
+    "question_text": "A spinner has 10 equal sections numbered 1 through 10. What is the probability that a single spin lands on a number that is NOT a multiple of 4?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "1/5",
+      "B": "1/4",
+      "C": "7/10",
+      "D": "4/5"
+    },
+    "correct_answer": "D",
+    "explanation": "The multiples of 4 from 1 to 10 are 4 and 8, which is 2 sections. The other 8 sections are not multiples of 4, so P = 8/10 = 4/5. This also equals 1 - 2/10.",
+    "distractor_logic": {
+      "A": "Student reports the probability of landing on a multiple of 4 (the event itself), 2 out of 10, instead of the complement.",
+      "B": "Student forms a ratio of multiples to non-multiples (2 to 8) instead of dividing the non-multiple count by the total.",
+      "C": "Student counts 2 as a multiple of 4, treating three sections (2, 4, 8) as multiples, so 7 sections appear non-multiple, giving 7/10.",
+      "D": "Correct: only 4 and 8 are multiples of 4, so 8 of the 10 sections are not, giving 8/10 = 4/5."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "There are only a couple of multiples of 4 up to 10. Counting those and subtracting from the total is faster than counting all the non-multiples."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A choice equal to the probability of landing on a multiple of 4 is answering the wrong event. Rule it out."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["complement_rule", "multiples", "spinner", "shortcut"],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-20",
+    "last_modified": "2026-06-20",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_050",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "probability_sample_spaces_and_set_foundations",
+    "objective_text": "Probability, Sample Spaces, and Set Foundations",
+    "topic_id": "PR.3.2",
+    "topic": "probability_of_an_event_and_its_complement",
+    "topic_text": "Probability of an Event and Its Complement",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing the complement of a 'prime number' event over a numbered sample space",
+      "correctly excluding 1 from the set of primes before taking the complement"
+    ],
+    "question_text": "A set of 10 cards is numbered 1 through 10. One card is drawn at random. What is the probability that the number drawn is NOT prime?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2/5",
+      "B": "3/5",
+      "C": "1/2",
+      "D": "2/3"
+    },
+    "correct_answer": "B",
+    "explanation": "The primes from 1 to 10 are 2, 3, 5, and 7, which is 4 cards. Note that 1 is not prime. The other 6 cards are not prime, so P(not prime) = 6/10 = 3/5.",
+    "distractor_logic": {
+      "A": "Student reports the probability of drawing a prime (the event itself), 4 out of 10, instead of the complement.",
+      "B": "Correct: there are 4 primes (2, 3, 5, 7), so 6 of the 10 cards are not prime, giving 6/10 = 3/5.",
+      "C": "Student counts 1 as prime, making five primes, so five cards appear non-prime, giving 5/10 = 1/2.",
+      "D": "Student forms a ratio of primes to non-primes (4 to 6) instead of dividing the non-prime count by the total."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "List the primes from 1 to 10 first, remembering that 1 is not prime. Everything else is the complement."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Write 1 through 10 and mark each prime. Count the unmarked numbers over a denominator of 10."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["complement_rule", "prime_numbers", "numbered_cards", "shortcut"],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-20",
+    "last_modified": "2026-06-20",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_051",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "probability_sample_spaces_and_set_foundations",
+    "objective_text": "Probability, Sample Spaces, and Set Foundations",
+    "topic_id": "PR.3.2",
+    "topic": "probability_of_an_event_and_its_complement",
+    "topic_text": "Probability of an Event and Its Complement",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "finding the complement of a combined event by summing the parts first",
+      "subtracting a combined percentage from 100 percent"
+    ],
+    "question_text": "In a survey, 30% of people said they prefer tea and 45% said they prefer coffee. The rest prefer neither. What is the probability that a randomly selected person prefers neither tea nor coffee?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "25%",
+      "B": "75%",
+      "C": "70%",
+      "D": "55%"
+    },
+    "correct_answer": "A",
+    "explanation": "Tea and coffee together account for 30% + 45% = 75%. The complement, those who prefer neither, is 100% - 75% = 25%.",
+    "distractor_logic": {
+      "A": "Correct: 30% + 45% = 75% prefer one of the two, so 100% - 75% = 25% prefer neither.",
+      "B": "Student adds the tea and coffee preferences to 75% but reports that combined total instead of subtracting it from 100%.",
+      "C": "Student takes the complement of only the tea preference (100% - 30%), ignoring the coffee group.",
+      "D": "Student takes the complement of only the coffee preference (100% - 45%), ignoring the tea group."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Combine the two stated groups into one percentage first. 'Neither' is the complement of that combined group."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Taking the complement of just one group leaves the other group uncounted. Make sure both tea and coffee are subtracted."
+      }
+    ],
+    "content_context": "survey",
+    "context_tags": ["complement_rule", "combined_event", "percent_probability", "neither"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-20",
+    "last_modified": "2026-06-20",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_052",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "probability_sample_spaces_and_set_foundations",
+    "objective_text": "Probability, Sample Spaces, and Set Foundations",
+    "topic_id": "PR.3.2",
+    "topic": "probability_of_an_event_and_its_complement",
+    "topic_text": "Probability of an Event and Its Complement",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "interpreting 'at least' as an inequality that includes the boundary value",
+      "using the complement to confirm an 'at least' probability"
+    ],
+    "question_text": "A card is drawn at random from cards numbered 1 through 6. What is the probability that the number drawn is at least 3?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "1/3",
+      "B": "1/2",
+      "C": "5/6",
+      "D": "2/3"
+    },
+    "correct_answer": "D",
+    "explanation": "'At least 3' includes 3 and every number above it: 3, 4, 5, 6, which is 4 of the 6 cards. P = 4/6 = 2/3. As a check, the complement (1 and 2) is 2/6, and 1 - 2/6 = 2/3.",
+    "distractor_logic": {
+      "A": "Student finds the complement, the cards 1 and 2 (2 out of 6), but forgets to subtract it from 1.",
+      "B": "Student reads 'at least 3' as 'greater than 3', counting only 4, 5, 6 (3 out of 6).",
+      "C": "Student reads 'at least 3' as 'at least 2', including 2 and counting 2, 3, 4, 5, 6 (5 out of 6).",
+      "D": "Correct: 'at least 3' is 3, 4, 5, 6, which is 4 out of 6 = 2/3."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "'At least 3' means 3 counts too, not just the numbers above 3. List every qualifying card."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Write 1 through 6 and circle the values that are 3 or more. Count the circles over 6."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["complement_rule", "at_least", "inequality_event", "numbered_cards"],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-20",
+    "last_modified": "2026-06-20",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_050",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "probability_sample_spaces_and_set_foundations",
+    "objective_text": "Probability, Sample Spaces, and Set Foundations",
+    "topic_id": "PR.3.2",
+    "topic": "probability_of_an_event_and_its_complement",
+    "topic_text": "Probability of an Event and Its Complement",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying the complement rule to an 'at least one' problem over two independent trials",
+      "computing the probability that a result never occurs across repeated trials"
+    ],
+    "question_text": "A fair six-sided die is rolled twice. What is the probability of rolling at least one 6?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "25/36",
+      "B": "1/3",
+      "C": "11/36",
+      "D": "1/6"
+    },
+    "correct_answer": "C",
+    "explanation": "The complement of 'at least one 6' is 'no 6 on either roll'. Each roll avoids 6 with probability 5/6, so P(no 6) = (5/6)(5/6) = 25/36. Then P(at least one 6) = 1 - 25/36 = 11/36.",
+    "distractor_logic": {
+      "A": "Student computes P(no 6 on either roll) = (5/6)(5/6) = 25/36 correctly but forgets to subtract it from 1.",
+      "B": "Student adds the two single-roll probabilities (1/6 + 1/6 = 1/3) instead of using the complement.",
+      "C": "Correct: P(no 6) = (5/6)(5/6) = 25/36, so P(at least one 6) = 1 - 25/36 = 11/36.",
+      "D": "Student treats 'at least one 6 in two rolls' as the probability of a 6 on a single roll."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The opposite of 'at least one 6' is 'no 6 at all'. Find the chance of avoiding 6 on both rolls, then subtract from 1."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Rolling at least one 6 in two tries is fairly unlikely but not tiny, so expect an answer well below 1/2. Use that to sanity-check."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["complement_rule", "at_least_one", "independent_trials", "dice"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-20",
+    "last_modified": "2026-06-20",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_051",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "probability_sample_spaces_and_set_foundations",
+    "objective_text": "Probability, Sample Spaces, and Set Foundations",
+    "topic_id": "PR.3.2",
+    "topic": "probability_of_an_event_and_its_complement",
+    "topic_text": "Probability of an Event and Its Complement",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying the complement rule to an 'at least once' problem over two independent spins",
+      "computing the probability that an event is avoided on every trial"
+    ],
+    "question_text": "A spinner has 5 equal sections, exactly one of which is red. The spinner is spun twice. What is the probability of landing on red at least once?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "16/25",
+      "B": "9/25",
+      "C": "2/5",
+      "D": "1/5"
+    },
+    "correct_answer": "B",
+    "explanation": "The complement of 'red at least once' is 'no red on either spin'. Each spin avoids red with probability 4/5, so P(no red) = (4/5)(4/5) = 16/25. Then P(red at least once) = 1 - 16/25 = 9/25.",
+    "distractor_logic": {
+      "A": "Student computes P(no red on either spin) = (4/5)(4/5) = 16/25 correctly but forgets to subtract it from 1.",
+      "B": "Correct: P(no red) = (4/5)(4/5) = 16/25, so P(red at least once) = 1 - 16/25 = 9/25.",
+      "C": "Student adds the two single-spin probabilities (1/5 + 1/5 = 2/5) instead of using the complement.",
+      "D": "Student treats 'red at least once in two spins' as the probability of red on a single spin."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the chance of avoiding red on both spins first, then subtract that from 1 to get 'at least once'."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Two spins at a 1/5 chance each should give something noticeably less than 1/2. Use that to rule out large answers."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["complement_rule", "at_least_one", "independent_trials", "spinner"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-20",
+    "last_modified": "2026-06-20",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_052",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "probability_sample_spaces_and_set_foundations",
+    "objective_text": "Probability, Sample Spaces, and Set Foundations",
+    "topic_id": "PR.3.2",
+    "topic": "probability_of_an_event_and_its_complement",
+    "topic_text": "Probability of an Event and Its Complement",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "combining two given complement probabilities to find an 'at least one' result",
+      "multiplying the probabilities of two independent non-events before subtracting from 1"
+    ],
+    "question_text": "A forecast gives the probability of NO rain on Saturday as 0.8 and the probability of NO rain on Sunday as 0.5. Assuming the two days are independent, what is the probability that it rains on at least one of the two days?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "0.6",
+      "B": "0.4",
+      "C": "0.7",
+      "D": "0.1"
+    },
+    "correct_answer": "A",
+    "explanation": "The complement of 'rain on at least one day' is 'no rain on both days'. P(no rain both) = 0.8 times 0.5 = 0.4, so P(rain at least one day) = 1 - 0.4 = 0.6.",
+    "distractor_logic": {
+      "A": "Correct: P(no rain on both days) = 0.8 times 0.5 = 0.4, so P(rain on at least one day) = 1 - 0.4 = 0.6.",
+      "B": "Student computes P(no rain on both days) = 0.8 times 0.5 = 0.4 correctly but forgets to subtract it from 1.",
+      "C": "Student converts to rain probabilities (0.2 and 0.5) and adds them instead of subtracting the product of the no-rain probabilities from 1.",
+      "D": "Student multiplies the two rain probabilities (0.2 times 0.5 = 0.1), finding the chance of rain on both days instead of at least one."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The givens are already the 'no rain' probabilities. The complement of 'rain at least once' is 'no rain on both days', which is their product."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Adding probabilities of separate days double counts the overlap. The correct path multiplies the no-rain chances first."
+      }
+    ],
+    "content_context": "weather",
+    "context_tags": ["complement_rule", "at_least_one", "independent_events", "compound"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-20",
+    "last_modified": "2026-06-20",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_053",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "probability_sample_spaces_and_set_foundations",
+    "objective_text": "Probability, Sample Spaces, and Set Foundations",
+    "topic_id": "PR.3.2",
+    "topic": "probability_of_an_event_and_its_complement",
+    "topic_text": "Probability of an Event and Its Complement",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "finding the complement of a compound 'or' event over a numbered sample space",
+      "counting a union without double-counting a value common to both conditions"
+    ],
+    "question_text": "A jar holds 20 chips numbered 1 through 20. One chip is drawn at random. What is the probability that the number is NOT a multiple of 4 and NOT a multiple of 5?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2/5",
+      "B": "11/20",
+      "C": "4/5",
+      "D": "3/5"
+    },
+    "correct_answer": "D",
+    "explanation": "Multiples of 4 are 4, 8, 12, 16, 20. Multiples of 5 are 5, 10, 15, 20. The combined list, counting 20 only once, is 4, 5, 8, 10, 12, 15, 16, 20, which is 8 numbers. The complement is 20 - 8 = 12 numbers, so P = 12/20 = 3/5.",
+    "distractor_logic": {
+      "A": "Student reports the probability of being a multiple of 4 or 5 (the event itself), 8 out of 20, instead of its complement.",
+      "B": "Student counts 20 twice because it is a multiple of both 4 and 5, treating the 'multiple of 4 or 5' group as 9 instead of 8, leaving 11 out of 20.",
+      "C": "Student excludes only the four multiples of 5 and ignores the multiples of 4, leaving 16 out of 20.",
+      "D": "Correct: 8 numbers are a multiple of 4 or 5, so 12 of the 20 chips are neither, giving 12/20 = 3/5."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "List the multiples of 4 and the multiples of 5 separately, then combine them. Watch for a number that appears in both lists so you count it once."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Write 1 through 20 and cross out every multiple of 4 and every multiple of 5. The chips left uncrossed are the favorable outcomes."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["complement_rule", "compound_event", "union", "numbered_chips"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-20",
+    "last_modified": "2026-06-20",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_054",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "probability_sample_spaces_and_set_foundations",
+    "objective_text": "Probability, Sample Spaces, and Set Foundations",
+    "topic_id": "PR.3.2",
+    "topic": "probability_of_an_event_and_its_complement",
+    "topic_text": "Probability of an Event and Its Complement",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "reverse-reasoning from a stated complement probability and a count back to another count",
+      "using the complement to recover a total before finding the event count"
+    ],
+    "question_text": "At a club, the probability that a randomly chosen member is NOT a senior is 0.6. There are 18 members who are not seniors. How many members are seniors?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "30",
+      "B": "18",
+      "C": "12",
+      "D": "45"
+    },
+    "correct_answer": "C",
+    "explanation": "The 18 non-seniors make up 0.6 of the club, so the total membership is 18 divided by 0.6 = 30. The seniors are the complement: 30 - 18 = 12, which also equals 0.4 times 30.",
+    "distractor_logic": {
+      "A": "Student correctly finds the total membership (18 divided by 0.6 = 30) but reports the total instead of the number of seniors.",
+      "B": "Student reports the given non-senior count instead of computing the number of seniors.",
+      "C": "Correct: total is 18 divided by 0.6 = 30, so seniors are 30 - 18 = 12.",
+      "D": "Student divides the non-senior count by the senior probability (18 divided by 0.4 = 45), applying the wrong fraction to the non-senior group."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The 18 members correspond to the 0.6, not to the seniors. Use them to find the total first, then subtract to get the seniors."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "If the total is your candidate value, check that 0.6 of it equals 18 and that the leftover matches the seniors you report."
+      }
+    ],
+    "content_context": "club_membership",
+    "context_tags": ["complement_rule", "reverse_reasoning", "unknown_count", "two_category"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-20",
+    "last_modified": "2026-06-20",
+    "review_notes": null
+  }
+]

@@ -484,5 +484,565 @@
     "created_at": "2026-06-19",
     "last_modified": "2026-06-19",
     "review_notes": null
+  },
+  {
+    "item_id": "PR_P_038",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.4",
+    "topic": "comparing_distributions_using_measures_of_center_and_spread",
+    "topic_text": "Comparing distributions using measures of center and spread",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "choosing the median when an outlier distorts the mean",
+      "comparing the typical values of two groups"
+    ],
+    "question_text": "Neighborhood X has most homes near $200,000, plus one mansion at $2,000,000. Neighborhood Y has homes mostly near $250,000, fairly even. To compare a typical home price, which measure should be used, and which neighborhood likely has the higher typical price?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The median, and Neighborhood Y has the higher typical price.",
+      "B": "The mean, and Neighborhood X has the higher typical price.",
+      "C": "The median, and Neighborhood X has the higher typical price.",
+      "D": "The mean, and the two neighborhoods are about equal."
+    },
+    "correct_answer": "A",
+    "explanation": "The mansion is an outlier that inflates Neighborhood X's mean, so the median better reflects a typical home. By median, Y's typical home (near $250,000) is higher than X's (near $200,000).",
+    "distractor_logic": {
+      "A": "Correct: the median resists the mansion outlier, and Y's typical home exceeds X's.",
+      "B": "Student uses the mean, which the $2,000,000 mansion inflates, wrongly making X look higher.",
+      "C": "Student chooses the right measure but misreads which neighborhood is higher, swayed by the mansion.",
+      "D": "Student uses the outlier-sensitive mean and concludes equality, missing that the mansion distorts X's mean upward."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A single very expensive home pulls the mean up. Ask which measure ignores that one extreme value."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "When one outlier dominates, the mean is the misleading choice. Favor the median for a typical value."
+      }
+    ],
+    "content_context": "home_prices",
+    "context_tags": ["comparing_distributions", "median_vs_mean", "outlier", "typical_value"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_039",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.4",
+    "topic": "comparing_distributions_using_measures_of_center_and_spread",
+    "topic_text": "Comparing distributions using measures of center and spread",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+    "reading a center and a spread together to compare two datasets",
+    "separating the higher average from the more consistent set"
+    ],
+    "question_text": "Student A's quiz scores have a mean of 85 and a range of 6. Student B's quiz scores have a mean of 88 and a range of 22. Which statement best compares the two students?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+    "A": "Student A scores higher on average and is more consistent.",
+    "B": "Student B scores higher on average, but Student A is more consistent.",
+    "C": "Student B is both higher-scoring and more consistent.",
+    "D": "The two students perform identically."
+    },
+    "correct_answer": "B",
+    "explanation": "Student B's mean (88) is higher than Student A's (85), so B scores higher on average. But A's range (6) is much smaller than B's (22), so A is more consistent.",
+    "distractor_logic": {
+    "A": "Student reads Student A as higher-scoring, reversing the means.",
+    "B": "Correct: B has the higher mean, while A's smaller range shows greater consistency.",
+    "C": "Student assumes the higher-scoring student must also be more consistent, conflating center with spread.",
+    "D": "Student ignores both the 3-point mean gap and the large difference in range."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+    {
+    "strategy": "identify_key_info",
+    "hint_text": "Two facts matter here: which mean is higher (center) and which range is smaller (consistency). Check them separately."
+    },
+    {
+    "strategy": "eliminate_wrong_answers",
+    "hint_text": "The higher average and the greater consistency can belong to different students. Do not assume one implies the other."
+    }
+    ],
+    "content_context": "quiz_scores",
+    "context_tags": ["comparing_distributions", "center_and_spread", "consistency", "comparison"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+    },
+    {
+    "item_id": "PR_P_040",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.4",
+    "topic": "comparing_distributions_using_measures_of_center_and_spread",
+    "topic_text": "Comparing distributions using measures of center and spread",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+    "trading a slightly lower mean for much greater consistency",
+    "judging predictability by spread"
+    ],
+    "question_text": "Service A has a mean delivery time of 30 minutes with a range of 5 minutes. Service B has a mean of 28 minutes with a range of 45 minutes. A customer who values predictable delivery should choose which service, and why?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+   "A": "Service B, because its lower average of 28 minutes makes it faster overall.",
+    "B": "Service A, because its small range means delivery times are predictable, even though its average is slightly higher.",
+    "C": "Service B, because a larger range means it can sometimes deliver very quickly.",
+    "D": "Either, since the averages are only 2 minutes apart."
+    },
+    "correct_answer": "B",
+    "explanation": "Predictability depends on spread. Service A's range of 5 minutes is far tighter than Service B's 45 minutes, so A's times are dependable. The 2-minute mean difference does not outweigh that.",
+    "distractor_logic": {
+    "A": "Student focuses only on the lower mean, ignoring that B's times vary widely.",
+    "B": "Correct: A's much smaller range makes its delivery times predictable, which is what the customer values.",
+    "C": "Student fixates on B's possible fast deliveries while ignoring the equally possible very slow ones.",
+    "D": "Student attends only to the small gap in means and dismisses the large difference in spread."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+    {
+    "strategy": "identify_key_info",
+    "hint_text": "Predictable means low spread. Compare the ranges before weighing the small difference in averages."
+    },
+    {
+    "strategy": "eliminate_wrong_answers",
+    "hint_text": "A wide range cuts both ways: very fast and very slow. That is the opposite of predictable."
+    }
+    ],
+    "content_context": "delivery_times",
+    "context_tags": ["comparing_distributions", "predictability", "range", "tradeoff"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+    },
+    {
+    "item_id": "PR_A_038",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.4",
+    "topic": "comparing_distributions_using_measures_of_center_and_spread",
+    "topic_text": "Comparing distributions using measures of center and spread",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+    "choosing the most representative measure of center under skew",
+    "computing both the mean and median to justify the choice"
+    ],
+    "question_text": "A small company has 9 employees earning $40,000 each and 1 owner earning $400,000. Which measure of center best represents a typical employee's pay, and what is its value?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+    "A": "The mean, $76,000, because it uses everyone's salary.",
+    "B": "The median, $40,000, because the owner's high salary distorts the mean.",
+    "C": "The median, $76,000.",
+    "D": "The mean, $40,000."
+    },
+    "correct_answer": "B",
+    "explanation": "The mean is (9 times 40,000 + 400,000) / 10 = 760,000 / 10 = $76,000, which no ordinary employee actually earns. The median is $40,000, the middle salary, and it better represents a typical employee.",
+    "distractor_logic": {
+    "A": "Student prefers the mean because it uses all values, not recognizing that the $400,000 salary pulls it far above typical pay.",
+    "B": "Correct: the median, $40,000, resists the owner's outlier salary and reflects a typical employee.",
+    "C": "Student chooses the right measure (median) but reports the mean's value, $76,000, as if it were the median.",
+    "D": "Student chooses the mean but reports the median's value, mixing up the two measures."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+    {
+    "strategy": "identify_key_info",
+    "hint_text": "Compute both the mean and the median, then ask which one an ordinary employee's pay actually matches."
+    },
+   {
+    "strategy": "eliminate_wrong_answers",
+    "hint_text": "Pair the right measure with the right value. The median is the middle salary, not the inflated average."
+    }
+    ],
+    "content_context": "salaries",
+    "context_tags": ["comparing_distributions", "median_vs_mean", "outlier", "representative_measure"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+    },
+    {
+    "item_id": "PR_A_039",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.4",
+    "topic": "comparing_distributions_using_measures_of_center_and_spread",
+    "topic_text": "Comparing distributions using measures of center and spread",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+    "comparing three datasets across mean, median, and range",
+    "testing each claim against all three measures"
+    ],
+    "question_text": "Three datasets are P: 5, 5, 5, 5, 5; Q: 1, 3, 5, 7, 9; and R: 5, 5, 5, 5, 25. Which statement is true?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+    "A": "All three datasets have the same median.",
+    "B": "All three datasets have the same mean.",
+    "C": "Datasets P and R have the same mean.",
+    "D": "Dataset Q has the largest range of the three."
+    },
+    "correct_answer": "A",
+    "explanation": "Each dataset's middle value is 5, so all three share a median of 5. Their means differ (P and Q are 5, R is 9), and R has the largest range (20) rather than Q (8).",
+    "distractor_logic": {
+    "A": "Correct: the middle value of each dataset is 5, so all three medians equal 5.",
+    "B": "Student assumes equal medians imply equal means, but R's mean is 9 because of its value 25.",
+    "C": "Student overlooks that R's value 25 raises its mean to 9, while P's mean is 5.",
+    "D": "Student judges Q as most spread by its even spacing, but R's range (20) exceeds Q's (8)."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+    {
+    "strategy": "identify_key_info",
+    "hint_text": "Find the median, mean, and range of each set, then test each statement against those values."
+    },
+    {
+    "strategy": "eliminate_wrong_answers",
+    "hint_text": "One large value in R changes its mean and range but not its median. Use that to rule out false claims."
+    }
+    ],
+    "content_context": "generic",
+    "context_tags": ["comparing_distributions", "multiple_measures", "three_datasets", "median"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+    },
+    {
+    "item_id": "PR_A_040",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.4",
+    "topic": "comparing_distributions_using_measures_of_center_and_spread",
+    "topic_text": "Comparing distributions using measures of center and spread",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+    "selecting the right measure when a low outlier is present",
+    "identifying the direction an outlier shifts the mean"
+    ],
+    "question_text": "Daily website visits are usually between 100 and 120, but one day a server outage dropped visits to just 2. To report a typical day, which measure is most appropriate, and how does the outage day affect the mean?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+    "A": "The mean, because it accounts for the outage day.",
+    "B": "The median, because the outage day pulls the mean above a typical day's visits.",
+    "C": "The range, because it best shows the typical number of visits.",
+    "D": "The median, because the outage day pulls the mean below a typical day's visits."
+    },
+    "correct_answer": "D",
+    "explanation": "The single very low value (2) drags the mean below a normal day, so it understates typical traffic. The median ignores that one extreme and better reflects a typical day.",
+    "distractor_logic": {
+    "A": "Student includes the outlier through the mean, which understates a typical day.",
+    "B": "Student chooses the right measure but states the wrong direction; a low outlier pulls the mean down, not up.",
+    "C": "Student confuses the range, a spread measure, with a measure of typical value.",
+    "D": "Correct: the low outage value lowers the mean, so the median better represents a typical day."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+    {
+    "strategy": "identify_key_info",
+    "hint_text": "A single tiny value drags the mean toward it. Decide whether that makes the mean too high or too low."
+    },
+    {
+    "strategy": "eliminate_wrong_answers",
+    "hint_text": "The range measures spread, not a typical value, so it cannot be the right measure of center here."
+    }
+    ],
+    "content_context": "website_traffic",
+    "context_tags": ["comparing_distributions", "median_vs_mean", "low_outlier", "skew_direction"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+    },
+    {
+    "item_id": "PR_A_041",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.4",
+    "topic": "comparing_distributions_using_measures_of_center_and_spread",
+    "topic_text": "Comparing distributions using measures of center and spread",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+    "inferring distribution shape from the mean and median",
+    "reading a mean above the median as a high-side skew"
+    ],
+    "question_text": "Dataset A has a mean of 50 and a median of 50. Dataset B has a mean of 65 and a median of 50. What can you conclude about Dataset B compared to Dataset A?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+    "A": "Dataset B is symmetric, like Dataset A.",
+    "B": "Dataset B likely has high outliers or a right tail pulling its mean above its median.",
+    "C": "Dataset B likely has low outliers pulling its mean below its median.",
+    "D": "Dataset B has a smaller spread than Dataset A."
+    },
+    "correct_answer": "B",
+    "explanation": "When the mean sits above the median, larger values are stretching the average upward. Dataset B's mean (65) exceeds its median (50), signaling high values or a right tail. Dataset A, with equal mean and median, is symmetric.",
+    "distractor_logic": {
+    "A": "Student ignores that B's mean and median differ, which rules out symmetry.",
+    "B": "Correct: a mean above the median points to high values pulling the average up.",
+    "C": "Student identifies a skew but the wrong direction; a mean above the median indicates high values, not low ones.",
+    "D": "Student draws a conclusion about spread, which the mean and median alone do not determine."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+    {
+    "strategy": "identify_key_info",
+    "hint_text": "Compare the mean to the median. When the mean is higher, something is pulling it up from the high end."
+    },
+    {
+    "strategy": "eliminate_wrong_answers",
+    "hint_text": "Equal mean and median signal symmetry, so any set where they differ is not symmetric."
+    }
+    ],
+    "content_context": "generic",
+    "context_tags": ["comparing_distributions", "skew", "mean_vs_median", "shape_inference"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+    },
+    {
+    "item_id": "PR_A_042",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+  "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.4",
+    "topic": "comparing_distributions_using_measures_of_center_and_spread",
+    "topic_text": "Comparing distributions using measures of center and spread",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+    "comparing three groups on center and spread at once",
+    "selecting the conclusion supported by both measures"
+    ],
+    "question_text": "Three classes took the same exam. Class 1: mean 75, range 8. Class 2: mean 75, range 30. Class 3: mean 82, range 8. Which conclusion is best supported?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+    "A": "Class 2 performed best because its large range shows some very high scores.",
+    "B": "Class 1 and Class 2 performed identically because they have the same mean.",
+    "C": "Class 3 had the highest average and was as consistent as Class 1.",
+    "D": "Class 3 was the least consistent because it had the highest mean."
+   },
+    "correct_answer": "C",
+    "explanation": "Class 3's mean (82) is the highest, and its range (8) matches Class 1's, so it is the highest-scoring and equally consistent. Class 2 shares Class 1's mean but is far less consistent (range 30).",
+    "distractor_logic": {
+    "A": "Student treats a large range as evidence of strong performance, ignoring that it also includes very low scores and that the mean is no higher than Class 1's.",
+    "B": "Student equates equal means with identical performance, ignoring that Class 2's range (30) is far larger than Class 1's (8).",
+    "C": "Correct: Class 3 has the highest mean and a range equal to Class 1's, so it is both top-scoring and consistent.",
+    "D": "Student wrongly links a higher mean to lower consistency; consistency depends on range, and Class 3's range is small."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+    {
+    "strategy": "identify_key_info",
+    "hint_text": "Track two things per class: the mean (how high) and the range (how consistent). The best conclusion fits both."
+    },
+    {
+    "strategy": "eliminate_wrong_answers",
+    "hint_text": "A higher mean does not make a class less consistent. Consistency comes from a smaller range."
+    }
+    ],
+    "content_context": "exam_scores",
+    "context_tags": ["comparing_distributions", "multiple_measures", "three_datasets", "center_and_spread"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
   }
 ]
