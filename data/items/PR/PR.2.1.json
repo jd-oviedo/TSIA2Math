@@ -1,0 +1,1044 @@
+[
+  {
+    "item_id": "PR_B_022",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.1",
+    "topic": "calculating_mean_median_mode_and_range",
+    "topic_text": "Calculating mean, median, mode, and range",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing the arithmetic mean of a small dataset",
+      "distinguishing the mean from the median and the mode"
+    ],
+    "question_text": "Five classmates each reported how many books they read over the summer: 4, 4, 7, 10, and 5. What is the mean number of books read?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6",
+      "B": "4",
+      "C": "5",
+      "D": "7"
+    },
+    "correct_answer": "A",
+    "explanation": "Add all five values: 4 + 4 + 7 + 10 + 5 = 30. Divide by the number of values, 5: 30 / 5 = 6. The mean is 6 books.",
+    "distractor_logic": {
+      "A": "Correct: (4 + 4 + 7 + 10 + 5) / 5 = 30 / 5 = 6.",
+      "B": "Student reports the mode (4 appears twice) instead of computing the mean.",
+      "C": "Student reports the median; sorted, the values are 4, 4, 5, 7, 10 with middle value 5.",
+      "D": "Student averages only the smallest and largest values, (4 + 10) / 2 = 7, instead of using all five."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Mean means add every value, then divide by how many values there are. Count carefully: there are 5 numbers, so divide the total by 5."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "The values cluster between 4 and 10, so the mean should land somewhere in the middle of that range. Anything outside 4 to 10 can be ruled out."
+      }
+    ],
+    "content_context": "reading_log",
+    "context_tags": ["mean", "central_tendency", "small_dataset", "books_read"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_023",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.1",
+    "topic": "calculating_mean_median_mode_and_range",
+    "topic_text": "Calculating mean, median, mode, and range",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "finding the median by ordering a dataset first",
+      "distinguishing the median from the mean and the mode"
+    ],
+    "question_text": "A student earned these quiz scores: 12, 7, 15, 9, and 7. What is the median score?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "7",
+      "B": "10",
+      "C": "15",
+      "D": "9"
+    },
+    "correct_answer": "D",
+    "explanation": "Order the scores from least to greatest: 7, 7, 9, 12, 15. With five values, the median is the middle (third) value, which is 9.",
+    "distractor_logic": {
+      "A": "Student reports the mode (7 appears twice) instead of the median.",
+      "B": "Student computes the mean, (12 + 7 + 15 + 9 + 7) / 5 = 50 / 5 = 10, instead of the median.",
+      "C": "Student takes the middle value of the unordered list (12, 7, 15, 9, 7), which is 15, without sorting first.",
+      "D": "Correct: ordered as 7, 7, 9, 12, 15, the middle of five values is 9."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The median is the middle value, but only after the numbers are in order. Sort them first, then find the one in the center."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Any answer you get without first sorting the list is suspect. Reorder, then locate the third of five values."
+      }
+    ],
+    "content_context": "quiz_scores",
+    "context_tags": ["median", "ordering_data", "central_tendency", "quiz_scores"],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_024",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.1",
+    "topic": "calculating_mean_median_mode_and_range",
+    "topic_text": "Calculating mean, median, mode, and range",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying the mode as the most frequently occurring value",
+      "distinguishing the mode from the median, range, and maximum"
+    ],
+    "question_text": "Over one week, a phone recorded the number of voicemails received each day: 2, 2, 2, 7, 9, 11, and 13. What is the mode?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2",
+      "B": "7",
+      "C": "11",
+      "D": "13"
+    },
+    "correct_answer": "A",
+    "explanation": "The mode is the value that appears most often. The value 2 appears three times, while every other value appears once. The mode is 2.",
+    "distractor_logic": {
+      "A": "Correct: 2 occurs three times, more frequently than any other value.",
+      "B": "Student reports the median; ordered, the seven values have 7 as the middle value.",
+      "C": "Student computes the range, 13 - 2 = 11, instead of the mode.",
+      "D": "Student picks the largest value, reading 'most' as 'greatest' rather than 'most frequent.'"
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Mode is about frequency, not size. Look for the value that repeats most often, not the biggest number."
+      }
+    ],
+    "content_context": "daily_counts",
+    "context_tags": ["mode", "most_frequent", "central_tendency", "frequency"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_025",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.1",
+    "topic": "calculating_mean_median_mode_and_range",
+    "topic_text": "Calculating mean, median, mode, and range",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing the range as maximum minus minimum",
+      "distinguishing the range from the median and the maximum"
+    ],
+    "question_text": "The daily high temperatures, in degrees Fahrenheit, for five days were 14, 9, 21, 6, and 18. What is the range of the temperatures?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "14",
+      "B": "21",
+      "C": "15",
+      "D": "27"
+    },
+    "correct_answer": "C",
+    "explanation": "The range is the largest value minus the smallest value. The maximum is 21 and the minimum is 6, so the range is 21 - 6 = 15.",
+    "distractor_logic": {
+      "A": "Student reports the median; ordered as 6, 9, 14, 18, 21, the middle value is 14.",
+      "B": "Student reports the maximum value, 21, instead of the difference between the extremes.",
+      "C": "Correct: range = maximum - minimum = 21 - 6 = 15.",
+      "D": "Student adds the largest and smallest values, 21 + 6 = 27, instead of subtracting."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Range measures spread: find the highest and lowest values, then subtract the lowest from the highest."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Range is a single distance, not one of the temperatures themselves. Rule out answers equal to a value in the list."
+      }
+    ],
+    "content_context": "temperatures",
+    "context_tags": ["range", "spread", "max_min", "temperatures"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_026",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.1",
+    "topic": "calculating_mean_median_mode_and_range",
+    "topic_text": "Calculating mean, median, mode, and range",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing the mean of a dataset that includes a zero",
+      "recognizing that a value of zero still counts toward n"
+    ],
+    "question_text": "A soccer player scored these numbers of goals across five games: 0, 6, 9, 7, and 8. What is the mean number of goals per game?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "5",
+      "B": "6",
+      "C": "7",
+      "D": "7.5"
+    },
+    "correct_answer": "B",
+    "explanation": "Add all five values: 0 + 6 + 9 + 7 + 8 = 30. The zero-goal game still counts as one of the five games, so divide by 5: 30 / 5 = 6.",
+    "distractor_logic": {
+      "A": "Student adds correctly to 30 but divides by 6, miscounting the number of games. 30 / 6 = 5.",
+      "B": "Correct: (0 + 6 + 9 + 7 + 8) / 5 = 30 / 5 = 6.",
+      "C": "Student reports the median; ordered as 0, 6, 7, 8, 9, the middle value is 7.",
+      "D": "Student treats the 0 as 'no data' and drops it, dividing by 4: 30 / 4 = 7.5."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A game with 0 goals is still a game. Keep it in the count: there are 5 values, so divide the total by 5."
+      }
+    ],
+    "content_context": "goals_scored",
+    "context_tags": ["mean", "zero_value", "central_tendency", "sports"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_021",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.1",
+    "topic": "calculating_mean_median_mode_and_range",
+    "topic_text": "Calculating mean, median, mode, and range",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "finding the median of an even-sized dataset by averaging the two middle values",
+      "ordering a dataset before locating the middle"
+    ],
+    "question_text": "Six students reported how many hours they studied last week: 6, 21, 10, 16, 8, and 11. What is the median number of hours?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "10",
+      "B": "12",
+      "C": "13.5",
+      "D": "10.5"
+    },
+    "correct_answer": "D",
+    "explanation": "Order the values: 6, 8, 10, 11, 16, 21. With an even count of six, the median is the average of the two middle values, 10 and 11: (10 + 11) / 2 = 10.5.",
+    "distractor_logic": {
+      "A": "Student takes only the lower of the two middle values, 10, instead of averaging the two middles.",
+      "B": "Student computes the mean, (6 + 21 + 10 + 16 + 8 + 11) / 6 = 72 / 6 = 12, instead of the median.",
+      "C": "Student averages only the smallest and largest values, (6 + 21) / 2 = 13.5.",
+      "D": "Correct: ordered as 6, 8, 10, 11, 16, 21, the two middle values average to (10 + 11) / 2 = 10.5."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Six values means no single middle. After sorting, take the two values in the center and average them."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "With an even count, the median often is not one of the listed values. An answer that lands between the two middle numbers is the strong candidate."
+      }
+    ],
+    "content_context": "study_hours",
+    "context_tags": ["median", "even_count", "averaging_middles", "central_tendency"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_022",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.1",
+    "topic": "calculating_mean_median_mode_and_range",
+    "topic_text": "Calculating mean, median, mode, and range",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing both the mean and the median of the same dataset",
+      "finding the difference between two measures of center"
+    ],
+    "question_text": "A small fundraiser collected these donations, in dollars: 3, 5, 6, 8, and 28. By how much does the mean exceed the median?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2",
+      "B": "6",
+      "C": "4",
+      "D": "10"
+    },
+    "correct_answer": "C",
+    "explanation": "The mean is (3 + 5 + 6 + 8 + 28) / 5 = 50 / 5 = 10. The median, the middle of 3, 5, 6, 8, 28, is 6. The mean exceeds the median by 10 - 6 = 4.",
+    "distractor_logic": {
+      "A": "Student uses an incorrect median of 8 (the fourth value, off by one position), giving 10 - 8 = 2.",
+      "B": "Student reports the median value itself rather than the difference between the two measures.",
+      "C": "Correct: mean = 50 / 5 = 10, median = 6, and 10 - 6 = 4.",
+      "D": "Student reports the mean value itself rather than how much it exceeds the median."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "This needs two measures, not one. Compute the mean, compute the median, then subtract the median from the mean."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "The single large donation of 28 pulls the mean above the middle value, so expect the mean to be the larger of the two."
+      }
+    ],
+    "content_context": "donations",
+    "context_tags": ["mean", "median", "difference", "skew"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_023",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.1",
+    "topic": "calculating_mean_median_mode_and_range",
+    "topic_text": "Calculating mean, median, mode, and range",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "locating the median of a seven-value dataset after ordering",
+      "distinguishing the median from the mean"
+    ],
+    "question_text": "A player scored these points across seven games: 34, 12, 28, 15, 41, 19, and 26. What is the median number of points?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "15",
+      "B": "26",
+      "C": "25",
+      "D": "28"
+    },
+    "correct_answer": "B",
+    "explanation": "Order the values: 12, 15, 19, 26, 28, 34, 41. With seven values, the median is the fourth one, which is 26.",
+    "distractor_logic": {
+      "A": "Student takes the middle of the unordered list (34, 12, 28, 15, 41, 19, 26), whose fourth value is 15, without sorting first.",
+      "B": "Correct: ordered as 12, 15, 19, 26, 28, 34, 41, the fourth of seven values is 26.",
+      "C": "Student computes the mean, (34 + 12 + 28 + 15 + 41 + 19 + 26) / 7 = 175 / 7 = 25, instead of the median.",
+      "D": "Student sorts correctly but miscounts the middle position, picking the fifth value, 28, instead of the fourth."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Sort all seven values, then count in to the exact center. With seven values, the fourth one from either end is the median."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Check that you sorted before counting. The middle of the original unsorted list is a classic trap answer here."
+      }
+    ],
+    "content_context": "game_points",
+    "context_tags": ["median", "ordering_data", "off_by_one", "central_tendency"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_024",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.1",
+    "topic": "calculating_mean_median_mode_and_range",
+    "topic_text": "Calculating mean, median, mode, and range",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing the range of a dataset that includes negative values",
+      "correctly identifying the least value among negative numbers"
+    ],
+    "question_text": "The low temperatures one week, in degrees Celsius, were -4, 9, -1, 12, 5, and -7. What is the range of these temperatures?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "19",
+      "B": "5",
+      "C": "12",
+      "D": "16"
+    },
+    "correct_answer": "A",
+    "explanation": "The maximum is 12 and the minimum is -7. The range is the maximum minus the minimum: 12 - (-7) = 12 + 7 = 19.",
+    "distractor_logic": {
+      "A": "Correct: range = maximum - minimum = 12 - (-7) = 19.",
+      "B": "Student drops the negative sign on -7 and computes 12 - 7 = 5.",
+      "C": "Student reports the maximum value, 12, instead of the difference between the extremes.",
+      "D": "Student picks -4 as the minimum, treating it as smaller than -7, and computes 12 - (-4) = 16."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the highest and lowest values first. With negatives, the most negative number is the smallest, so -7 is below -4."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Place the values on a number line. The distance from the leftmost point (-7) to the rightmost (12) is the range."
+      }
+    ],
+    "content_context": "temperatures",
+    "context_tags": ["range", "negative_numbers", "spread", "temperatures"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_025",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.1",
+    "topic": "calculating_mean_median_mode_and_range",
+    "topic_text": "Calculating mean, median, mode, and range",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "finding the median from a frequency description by accounting for repeated values",
+      "distinguishing the median from the mode and the mean"
+    ],
+    "question_text": "On a quiz, five students scored 6, three students scored 8, and two students scored 10. What is the median score for the class?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6",
+      "B": "8",
+      "C": "7",
+      "D": "7.4"
+    },
+    "correct_answer": "C",
+    "explanation": "There are 10 scores in all. Written in order they are 6, 6, 6, 6, 6, 8, 8, 8, 10, 10. With an even count, average the fifth and sixth values, 6 and 8: (6 + 8) / 2 = 7.",
+    "distractor_logic": {
+      "A": "Student reports the mode, 6, the most frequent score, instead of the median.",
+      "B": "Student finds the median of the three distinct scores {6, 8, 10}, taking 8, while ignoring how many students earned each score.",
+      "C": "Correct: across all 10 ordered scores, the fifth and sixth values are 6 and 8, so the median is (6 + 8) / 2 = 7.",
+      "D": "Student computes the mean, (5 times 6 + 3 times 8 + 2 times 10) / 10 = 74 / 10 = 7.4, instead of the median."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Each score is earned by several students, so write the full list of 10 scores before finding the middle."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "List the scores out in order as a row of 10 numbers, then mark the fifth and sixth to find the center."
+      }
+    ],
+    "content_context": "quiz_scores",
+    "context_tags": ["median", "frequency_data", "expanding_frequencies", "central_tendency"],
+    "estimated_time_seconds": 115,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_023",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.1",
+    "topic": "calculating_mean_median_mode_and_range",
+    "topic_text": "Calculating mean, median, mode, and range",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "recomputing a mean after a new value is added by using the running total",
+      "updating the count n when the dataset grows"
+    ],
+    "question_text": "A dataset of 3 values has a mean of 8. A fourth value, 12, is added to the dataset. What is the mean of the four values?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "8",
+      "B": "9",
+      "C": "10",
+      "D": "12"
+    },
+    "correct_answer": "B",
+    "explanation": "The original three values total 3 times 8 = 24. Adding 12 gives a new total of 36 across four values: 36 / 4 = 9.",
+    "distractor_logic": {
+      "A": "Student assumes adding a single value leaves the mean unchanged and keeps 8.",
+      "B": "Correct: original total = 3 times 8 = 24; new total = 24 + 12 = 36; new mean = 36 / 4 = 9.",
+      "C": "Student averages the old mean with the new value, (8 + 12) / 2 = 10, instead of rebuilding from the total.",
+      "D": "Student divides the new total by the old count, 36 / 3 = 12, forgetting that n grew to 4."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A mean hides a total. Turn the old mean back into a sum (3 times 8), add the new value, then divide by the new count of 4."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Pick three numbers averaging 8, such as 8, 8, 8. Add 12 and recompute the mean to check your method."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["mean", "adding_a_value", "reconstructing_total", "central_tendency"],
+    "estimated_time_seconds": 125,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_024",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.1",
+    "topic": "calculating_mean_median_mode_and_range",
+    "topic_text": "Calculating mean, median, mode, and range",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "reasoning about how an outlier affects the mean versus the median",
+      "recognizing the median's resistance to extreme values"
+    ],
+    "question_text": "Consider the dataset 10, 12, 13, 14, 15. If the value 15 is changed to 95, which measure of center is LEAST affected, and why?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The mean, because it takes every value into account.",
+      "B": "The median, because it depends on the middle position rather than the size of the values.",
+      "C": "The range, because it uses only two values.",
+      "D": "All three change by the same amount."
+    },
+    "correct_answer": "B",
+    "explanation": "The median is the middle value of the ordered set. Changing 15 to 95 leaves the middle value at 13, so the median does not move. The mean is pulled upward because it uses the new large value, and the range is not a measure of center.",
+    "distractor_logic": {
+      "A": "Student believes using every value makes the mean stable, when relying on every value is exactly why the mean is dragged toward the outlier.",
+      "B": "Correct: the middle value stays 13 regardless of how large the top value grows, so the median is least affected.",
+      "C": "Student treats the range as a measure of center and assumes few inputs means little change, but the changed value is one of the range's endpoints, so the range changes the most.",
+      "D": "Student assumes all statistics respond equally, ignoring that some measures resist outliers while others do not."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["eliminate_wrong_answers", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Test each measure against the change. Recompute the mean and the median with 95 in place of 15 and see which one actually moves."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The question asks for a measure of center. The range describes spread, so it is not the answer regardless of how much it changes."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["median", "outlier", "resistance", "measures_of_center"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_025",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.1",
+    "topic": "calculating_mean_median_mode_and_range",
+    "topic_text": "Calculating mean, median, mode, and range",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "reconstructing a total from a known mean",
+      "using mode information to account for known repeated values"
+    ],
+    "question_text": "A dataset of 5 numbers has a mean of 10 and a mode of 7, where 7 appears exactly twice. What is the sum of the other three numbers?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "29",
+      "B": "43",
+      "C": "50",
+      "D": "36"
+    },
+    "correct_answer": "D",
+    "explanation": "The five numbers total 5 times 10 = 50. Two of them are 7, accounting for 14. The remaining three numbers sum to 50 - 14 = 36.",
+    "distractor_logic": {
+      "A": "Student subtracts 7 three times (50 - 21 = 29), over-counting how often the mode occurs.",
+      "B": "Student subtracts a single 7 (50 - 7 = 43), forgetting the mode appears twice.",
+      "C": "Student reports the full total of 50, forgetting to remove the two known values.",
+      "D": "Correct: total = 5 times 10 = 50; the two 7s sum to 14; remaining three sum to 50 - 14 = 36."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Convert the mean into a total first (5 times 10). 'Mode of 7 appearing twice' tells you two of the values are 7 each."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Build an example: 7, 7, and three numbers that sum to your answer. Check that all five average to 10."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["mean", "mode", "reverse_reasoning", "sum_constraint"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_026",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.1",
+    "topic": "calculating_mean_median_mode_and_range",
+    "topic_text": "Calculating mean, median, mode, and range",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "finding a removed value by comparing totals before and after",
+      "tracking the change in count when a value is removed"
+    ],
+    "question_text": "A set of 8 numbers has a mean of 50. When one number is removed, the remaining 7 numbers have a mean of 52. What number was removed?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "36",
+      "B": "2",
+      "C": "16",
+      "D": "66"
+    },
+    "correct_answer": "A",
+    "explanation": "The original total is 8 times 50 = 400. The remaining total is 7 times 52 = 364. The removed number is 400 - 364 = 36.",
+    "distractor_logic": {
+      "A": "Correct: original total = 8 times 50 = 400; remaining total = 7 times 52 = 364; removed = 400 - 364 = 36.",
+      "B": "Student assumes the removed value equals the change in the mean, 52 - 50 = 2.",
+      "C": "Student keeps the count at 8 for the smaller set, computing 8 times 52 - 8 times 50 = 16.",
+      "D": "Student pairs each mean with the wrong count, computing 8 times 52 - 7 times 50 = 66."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Turn both means into totals. The removed number is simply the original total minus the new total."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Notice the mean rose after removal, so the removed number must be below 50. That rules out any large answer."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["mean", "removing_a_value", "reverse_reasoning", "totals"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_027",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.1",
+    "topic": "calculating_mean_median_mode_and_range",
+    "topic_text": "Calculating mean, median, mode, and range",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "combining range and mean to find an unknown extreme value",
+      "recomputing a mean after removing a known value"
+    ],
+    "question_text": "A dataset of 6 values has a mean of 20 and a range of 26. Its smallest value is 4. If the largest value is removed, what is the mean of the remaining 5 values?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "15",
+      "B": "20",
+      "C": "18",
+      "D": "24"
+    },
+    "correct_answer": "C",
+    "explanation": "The largest value is smallest plus range: 4 + 26 = 30. The original total is 6 times 20 = 120. Removing 30 leaves 120 - 30 = 90 across 5 values: 90 / 5 = 18.",
+    "distractor_logic": {
+      "A": "Student divides the new total by the original count, 90 / 6 = 15, forgetting the set shrank to 5.",
+      "B": "Student assumes removing one value leaves the mean unchanged, keeping 20.",
+      "C": "Correct: largest = 4 + 26 = 30; new total = 120 - 30 = 90; new mean = 90 / 5 = 18.",
+      "D": "Student reduces the count to 5 but forgets to subtract the removed value, computing 120 / 5 = 24."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Range is largest minus smallest, so the largest value is 4 + 26. Then rebuild the total from the mean before removing it."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "After removing one value, only 5 remain, so the final division must be by 5, not 6."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["mean", "range", "removing_a_value", "multi_step"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  }
+]

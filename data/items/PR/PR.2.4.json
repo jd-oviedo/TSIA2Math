@@ -1,0 +1,488 @@
+[
+  {
+    "item_id": "PR_B_037",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.4",
+    "topic": "comparing_distributions_using_measures_of_center_and_spread",
+    "topic_text": "Comparing distributions using measures of center and spread",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "comparing the means of two small datasets",
+      "computing a mean to support the comparison"
+    ],
+    "question_text": "Dataset A is 10, 20, 30. Dataset B is 14, 16, 24. Which dataset has the greater mean, and what is that mean?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Dataset A, with a mean of 20.",
+      "B": "Dataset B, with a mean of 18.",
+      "C": "Dataset A, with a mean of 30.",
+      "D": "The two datasets have equal means."
+    },
+    "correct_answer": "A",
+    "explanation": "Dataset A has mean (10 + 20 + 30) / 3 = 20, and Dataset B has mean (14 + 16 + 24) / 3 = 18. Dataset A is greater, with a mean of 20.",
+    "distractor_logic": {
+      "A": "Correct: A's mean is 20 and B's mean is 18, so A is greater.",
+      "B": "Student computes both means but selects B as greater, perhaps comparing only the first values (14 is greater than 10) and generalizing.",
+      "C": "Student takes the largest value of Dataset A, 30, as its mean instead of averaging.",
+      "D": "Student assumes the means are equal because both datasets contain the same number of values."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compute each dataset's mean separately, then compare the two results."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A mean cannot equal a dataset's largest value unless all values are equal, so rule that option out."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["comparing_distributions", "mean", "comparison", "center"],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_038",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.4",
+    "topic": "comparing_distributions_using_measures_of_center_and_spread",
+    "topic_text": "Comparing distributions using measures of center and spread",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "comparing the ranges of two datasets",
+      "distinguishing the range from the maximum value"
+    ],
+    "question_text": "Dataset A is 5, 8, 12, 20. Dataset B is 9, 10, 11, 30. Which dataset has the greater range, and what is that range?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Dataset A, with a range of 15.",
+      "B": "Dataset B, with a range of 30.",
+      "C": "Dataset B, with a range of 21.",
+      "D": "The two datasets have the same range."
+    },
+    "correct_answer": "C",
+    "explanation": "Dataset A's range is 20 - 5 = 15, and Dataset B's range is 30 - 9 = 21. Dataset B is greater, with a range of 21.",
+    "distractor_logic": {
+      "A": "Student computes Dataset A's range correctly as 15 but concludes A is more spread out.",
+      "B": "Student identifies Dataset B but reports its maximum value (30) as the range instead of max minus min.",
+      "C": "Correct: B's range is 30 - 9 = 21, greater than A's 20 - 5 = 15.",
+      "D": "Student assumes equal ranges because both datasets rise from single digits to the 20s or 30s."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Range is the largest value minus the smallest. Compute it for each dataset, then compare."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["comparing_distributions", "range", "spread", "comparison"],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_039",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.4",
+    "topic": "comparing_distributions_using_measures_of_center_and_spread",
+    "topic_text": "Comparing distributions using measures of center and spread",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "comparing the medians of two datasets",
+      "locating the median of an odd-sized dataset"
+    ],
+    "question_text": "Dataset A is 4, 9, 11, 14, 16. Dataset B is 6, 7, 8, 20, 25. Which dataset has the greater median, and what is that median?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Dataset B, because it contains larger values overall.",
+      "B": "Dataset A, with a median of 11.",
+      "C": "Dataset A, with a median of 9.",
+      "D": "The two medians are equal."
+    },
+    "correct_answer": "B",
+    "explanation": "Each dataset has five values, so the median is the third one. Dataset A's median is 11 and Dataset B's median is 8. Dataset A is greater, with a median of 11.",
+    "distractor_logic": {
+      "A": "Student judges by the largest values in Dataset B (20 and 25) rather than the middle value; B's median is only 8.",
+      "B": "Correct: A's median is 11, greater than B's median of 8.",
+      "C": "Student selects Dataset A correctly but miscounts the middle, choosing 9 (the second value) instead of 11.",
+      "D": "Student assumes equal medians without locating each middle value."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The median is the middle value, not the largest. Find the third value of each five-number set."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Large values at the end of a set do not raise its median. Focus on the center of each."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["comparing_distributions", "median", "center", "comparison"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_040",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.4",
+    "topic": "comparing_distributions_using_measures_of_center_and_spread",
+    "topic_text": "Comparing distributions using measures of center and spread",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "comparing means when one dataset contains a large value",
+      "recognizing that a single large value can raise a mean"
+    ],
+    "question_text": "Dataset A is 3, 4, 5, 6, 7. Dataset B is 2, 3, 4, 5, 26. Which dataset has the greater mean, and what is that mean?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Dataset A, because most of its values are larger than B's.",
+      "B": "The two datasets have equal means.",
+      "C": "Dataset A, with a mean of 5, since B has more small numbers.",
+      "D": "Dataset B, with a mean of 8."
+    },
+    "correct_answer": "D",
+    "explanation": "Dataset A has mean 25 / 5 = 5. Dataset B has mean 40 / 5 = 8, lifted by its large value 26. Dataset B is greater, with a mean of 8.",
+    "distractor_logic": {
+      "A": "Student compares the first four values, where A's are mostly larger, and overlooks B's value 26, which raises B's mean above A's.",
+      "B": "Student assumes equal means because both datasets cluster in the low single digits, ignoring B's large value.",
+      "C": "Student computes A's mean (5) correctly but concludes A is greater, dismissing the one large value that makes B's mean higher.",
+      "D": "Correct: B's mean is 40 / 5 = 8, greater than A's 5."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compute each full mean. A single large value, like 26 in B, can lift a mean noticeably."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Do not decide by the first few values alone. Add every value before comparing."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["comparing_distributions", "mean", "outlier_effect", "comparison"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_041",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.4",
+    "topic": "comparing_distributions_using_measures_of_center_and_spread",
+    "topic_text": "Comparing distributions using measures of center and spread",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "comparing ranges while ignoring equal centers",
+      "distinguishing spread from center"
+    ],
+    "question_text": "Dataset A is 10, 12, 14, 16, 18. Dataset B is 1, 13, 14, 15, 40. Which dataset has the greater range, and what is that range?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Dataset B, with a range of 39.",
+      "B": "Dataset A, because its values rise in even steps.",
+      "C": "The two datasets are equally spread, since both have a median of 14.",
+      "D": "Dataset B, with a range of 40."
+    },
+    "correct_answer": "A",
+    "explanation": "Dataset A's range is 18 - 10 = 8, and Dataset B's range is 40 - 1 = 39. Dataset B is far more spread, with a range of 39.",
+    "distractor_logic": {
+      "A": "Correct: B's range is 40 - 1 = 39, much larger than A's 18 - 10 = 8.",
+      "B": "Student treats an even, steady pattern as more spread, but range depends only on the extremes, where B is wider.",
+      "C": "Student compares the medians (both 14) and wrongly treats equal centers as equal spread.",
+      "D": "Student identifies Dataset B but uses its maximum value (40) as the range instead of max minus min (40 - 1 = 39)."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Range looks only at the smallest and largest values, not at the pattern in between."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Equal medians do not mean equal spread. A matching center can still hide very different ranges."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["comparing_distributions", "range", "center_vs_spread", "comparison"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_036",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.4",
+    "topic": "comparing_distributions_using_measures_of_center_and_spread",
+    "topic_text": "Comparing distributions using measures of center and spread",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "using range to compare consistency at equal means",
+      "interpreting a smaller range as greater consistency"
+    ],
+    "question_text": "Two players each average 20 points per game. Player A's scores range from 18 to 22. Player B's scores range from 5 to 35. Which player is more consistent, and why?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Player B, because a larger range shows more scoring ability.",
+      "B": "Player A, because a smaller range means scores stay closer to the average.",
+      "C": "They are equally consistent, because they have the same average.",
+      "D": "Player B, because a higher maximum of 35 means more consistent high scoring."
+    },
+    "correct_answer": "B",
+    "explanation": "Both players average 20, so the difference is in spread. Player A's range is 4 (18 to 22), far smaller than Player B's range of 30 (5 to 35), so Player A's scores are more consistent.",
+    "distractor_logic": {
+      "A": "Student treats a larger range as a strength rather than as greater variability, confusing spread with skill.",
+      "B": "Correct: equal means, so the smaller range (A's 4 versus B's 30) marks the more consistent player.",
+      "C": "Student equates equal means with equal consistency, ignoring that consistency depends on spread.",
+      "D": "Student focuses on a single high game rather than how tightly the scores cluster around the average."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "When two averages match, consistency comes down to spread. Compare the ranges."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A wider range means scores swing more, which is the opposite of consistent. Rule out answers that praise a large range."
+      }
+    ],
+    "content_context": "sports_performance",
+    "context_tags": ["comparing_distributions", "consistency", "range", "center_and_spread"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_037",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "measures_of_center_and_spread",
+    "objective_text": "Measures of Center and Spread",
+    "topic_id": "PR.2.4",
+    "topic": "comparing_distributions_using_measures_of_center_and_spread",
+    "topic_text": "Comparing distributions using measures of center and spread",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "weighing a center near a target against spread",
+      "choosing the option that is both on target and consistent"
+    ],
+    "question_text": "Machine A produces bolts with a mean length of 30 mm and a range of 1 mm. Machine B produces bolts with a mean length of 32 mm and a range of 8 mm. The target length is 30 mm. Which machine is better for hitting the target reliably, and why?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Machine B, because its higher mean of 32 mm exceeds the target.",
+      "B": "Machine B, because a larger range gives more length options.",
+      "C": "Machine A, because its mean is on target and its small range keeps bolts close to 30 mm.",
+      "D": "Either machine, because both averages are near 30 mm."
+    },
+    "correct_answer": "C",
+    "explanation": "Machine A's mean is exactly 30 mm and its range is just 1 mm, so its bolts stay near the target. Machine B is centered 2 mm high and varies over 8 mm, so it hits the target less reliably.",
+    "distractor_logic": {
+      "A": "Student treats a higher mean as better, even though the goal is to hit 30 mm exactly, not exceed it.",
+      "B": "Student views a wider range as flexibility rather than as inconsistency around the target.",
+      "C": "Correct: A is centered on target and tightly grouped, so it hits 30 mm most reliably.",
+      "D": "Student dismisses the spread difference, treating ranges of 1 mm and 8 mm as equivalent because the means are close."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Reliability here means being on the target of 30 mm and varying little. Check both the mean and the range."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A mean above the target is not an advantage when the goal is to hit it exactly."
+      }
+    ],
+    "content_context": "manufacturing",
+    "context_tags": ["comparing_distributions", "target_value", "spread", "center_and_spread"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-19",
+    "last_modified": "2026-06-19",
+    "review_notes": null
+  }
+]
