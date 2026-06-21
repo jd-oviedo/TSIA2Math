@@ -86,34 +86,33 @@ export default function AdaptiveTestPage() {
   const [savedSessionId, setSavedSessionId] = useState<string | null>(null);
   const [saveFailed, setSaveFailed] = useState(false);
 
-useEffect(() => {
   useEffect(() => {
-  if (state.responses.length > prevResponseCountRef.current) {
-    const latest = state.responses[state.responses.length - 1];
-    posthog.capture("item_answered", {
-      item_id: latest.item.item_id,
-      strand: latest.item.primary_strand,
-      proficiency_level: latest.item.proficiency_level,
-      is_correct: latest.isCorrect,
-      question_number: state.responses.length,
-      time_spent_seconds: Math.round(latest.elapsedMs / 1000),
-    });
-  }
-  prevResponseCountRef.current = state.responses.length;
-}, [state.responses]);
-  if (state.phase === "complete" && !savedRef.current) {
-    savedRef.current = true;
-    saveSession(state.responses, state.maxItems).then(({ sessionId, failed }) => {
-      setSavedSessionId(sessionId);
-      setSaveFailed(failed);
-    });
-  }
-  if (state.phase !== "complete") {
-    savedRef.current = false;
-    setSavedSessionId(null);
-    setSaveFailed(false);
-  }
-}, [state.phase, state.responses, state.maxItems]);
+    if (state.responses.length > prevResponseCountRef.current) {
+      const latest = state.responses[state.responses.length - 1];
+      posthog.capture("item_answered", {
+        item_id: latest.item.item_id,
+        strand: latest.item.primary_strand,
+        proficiency_level: latest.item.proficiency_level,
+        is_correct: latest.isCorrect,
+        question_number: state.responses.length,
+        time_spent_seconds: Math.round(latest.elapsedMs / 1000),
+      });
+    }
+    prevResponseCountRef.current = state.responses.length;
+
+    if (state.phase === "complete" && !savedRef.current) {
+      savedRef.current = true;
+      saveSession(state.responses, state.maxItems).then(({ sessionId, failed }) => {
+        setSavedSessionId(sessionId);
+        setSaveFailed(failed);
+      });
+    }
+    if (state.phase !== "complete") {
+      savedRef.current = false;
+      setSavedSessionId(null);
+      setSaveFailed(false);
+    }
+  }, [state.phase, state.responses, state.maxItems]);
 
   useEffect(() => {
     if (state.phase !== "loading") return;
