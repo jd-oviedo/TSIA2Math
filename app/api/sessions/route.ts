@@ -1,3 +1,4 @@
+import { PostHog } from "posthog-node";
 import { NextResponse } from "next/server";
 import { createAdminClient } from "../../lib/supabase-admin";
 import { createClient as createServerClient } from "../../lib/supabase-server";
@@ -7,6 +8,7 @@ import {
   TIER_B,
   updateTheta,
   thetaToScore,
+  TSIA2_PASSING,
 } from "../../adaptive-test/engine";
 import type { Item, ProficiencyLevel, Strand } from "../../adaptive-test/type";
 
@@ -22,6 +24,7 @@ interface IncomingResponse {
 interface IncomingBody {
   responses: IncomingResponse[];
   max_items: number;
+  posthog_distinct_id?: string;
 }
 
 function isValidBody(body: unknown): body is IncomingBody {
@@ -184,6 +187,26 @@ export async function POST(request: Request) {
       console.error(`[api/sessions] exposure increment failed for ${r.item_id}:`, rpcError.message);
     }
   }
+// Fire test_completed server-side, tied to the same correctness data we
+  // just persisted. Server-side capture can't be lost to ad blockers the
+  // way client events sometimes can.
+  const posthogClient = new PostHog(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+    host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+  });
 
+  posthogClient.capture({
+    distinctId: body.posthog_distinct_id ?? userId ?? session.id,
+    event: "test_completed",
+    properties: {
+      final_score: finalScore,
+      final_theta: finalTheta,
+      passed: finalScore >= TSIA2_PASSING,
+      strand_breakdown: strandBreakdown,
+      is_authenticated: userId !== null,
+      max_items: body.max_items,
+    },
+  });
+
+  await posthogClient.shutdown();
   return NextResponse.json({ session_id: session.id, final_score: finalScore }, { status: 201 });
 }

@@ -2,6 +2,7 @@
 
 import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import posthog from 'posthog-js';
 import { supabase } from "../lib/supabase";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
@@ -32,6 +33,7 @@ function LoginCard() {
   const searchParams = useSearchParams();
 
   const handleGoogleLogin = async () => {
+    posthog.capture('sign_in_clicked', { session_id: searchParams.get('session_id') });
     setLoading(true);
     const callbackUrl = new URL(`${window.location.origin}/auth/callback`);
     const next = searchParams.get("next");
