@@ -58,7 +58,7 @@ export default function Home() {
             </p>
           </div>
           <div style={{ display: "flex", gap: "36px", marginTop: "8px" }}>
-            {[["465+", "practice items"], ["4", "math strands"], ["20", "questions per test"]].map(([num, label]) => (
+            {[["1,000+", "practice items"], ["4", "math strands"], ["20", "questions per test"]].map(([num, label]) => (
               <div key={label} style={{ textAlign: "center" }}>
                 <div style={{ fontSize: "22px", fontWeight: 800, color: "var(--ec-ink)", letterSpacing: "-0.02em" }}>{num}</div>
                 <div style={{ fontSize: "11px", color: "var(--ec-ink-muted)", marginTop: "2px" }}>{label}</div>
