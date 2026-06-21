@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "./theme/ThemeProvider";
+import { PostHogProvider } from "./providers";
 import { Kodchasan } from "next/font/google";
 
 const kodchasan = Kodchasan({
@@ -22,7 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className="min-h-screen"
         style={{ background: "var(--ec-bg)", color: "var(--ec-ink)" }}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <PostHogProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </PostHogProvider>
       </body>
     </html>
   );
