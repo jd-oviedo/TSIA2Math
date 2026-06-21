@@ -9,6 +9,7 @@ import type { ItemValidationError, Response } from "./type";
 import { supabase } from "../lib/supabase";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import posthog from "posthog-js";
 
 const MAX_ITEMS = 20;
 async function saveSession(responses: Response[], maxItems: number): Promise<{ sessionId: string | null; failed: boolean }> {
@@ -81,10 +82,25 @@ function ValidationErrorList({ errors }: { errors: ItemValidationError[] }) {
 export default function AdaptiveTestPage() {
   const { state, loadItems, loadError, start, answer, restart } = useSession(MAX_ITEMS);
   const savedRef = useRef(false);
+  const prevResponseCountRef = useRef(0);
   const [savedSessionId, setSavedSessionId] = useState<string | null>(null);
   const [saveFailed, setSaveFailed] = useState(false);
 
 useEffect(() => {
+  useEffect(() => {
+  if (state.responses.length > prevResponseCountRef.current) {
+    const latest = state.responses[state.responses.length - 1];
+    posthog.capture("item_answered", {
+      item_id: latest.item.item_id,
+      strand: latest.item.primary_strand,
+      proficiency_level: latest.item.proficiency_level,
+      is_correct: latest.isCorrect,
+      question_number: state.responses.length,
+      time_spent_seconds: Math.round(latest.elapsedMs / 1000),
+    });
+  }
+  prevResponseCountRef.current = state.responses.length;
+}, [state.responses]);
   if (state.phase === "complete" && !savedRef.current) {
     savedRef.current = true;
     saveSession(state.responses, state.maxItems).then(({ sessionId, failed }) => {
@@ -197,7 +213,13 @@ useEffect(() => {
             ))}
           </div>
           {validationErrors && validationErrors.length > 0 && <ValidationErrorList errors={validationErrors} />}
-          <button onClick={start} style={{ width: "100%", padding: "16px", background: "var(--ec-btn-bg)", color: "var(--ec-btn-text)", border: "none", borderRadius: "14px", fontFamily: "inherit", fontSize: "15px", fontWeight: 700, cursor: "pointer", letterSpacing: "-0.01em", boxShadow: "var(--ec-shadow-btn)" }}>
+          <button
+            onClick={() => {
+              posthog.capture("test_started", { item_count: state.allItems.length });
+              start();
+            }}
+            style={{ width: "100%", padding: "16px", background: "var(--ec-btn-bg)", color: "var(--ec-btn-text)", border: "none", borderRadius: "14px", fontFamily: "inherit", fontSize: "15px", fontWeight: 700, cursor: "pointer", letterSpacing: "-0.01em", boxShadow: "var(--ec-shadow-btn)" }}
+          >
             Begin Test
           </button>
           <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)", margin: 0 }}>no account needed · results shown at the end</p>
