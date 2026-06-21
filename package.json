@@ -18,7 +18,8 @@
     "posthog-js": "^1.391.2",
     "posthog-node": "^5.38.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/node": "^20",

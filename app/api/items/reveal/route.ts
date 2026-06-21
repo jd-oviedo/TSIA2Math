@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "../../../lib/supabase-admin";
 import { revealRateLimit, getClientIp, rateLimitHeaders, safeLimit } from "../../../lib/rate-limit";
+import { revealBodySchema, formatZodError } from "../../../lib/schemas";
 
 // Returns answer-bearing fields for exactly one item, scoped to the option
 // the student actually picked. Never returns the full distractor_logic
@@ -11,24 +12,8 @@ import { revealRateLimit, getClientIp, rateLimitHeaders, safeLimit } from "../..
 // explanation/distractor_logic for the entire bank on page load), but it is
 // still a per-item oracle: someone with the full list of item_ids (which the
 // public bulk load legitimately exposes) could call this once per item and
-// reconstruct the answer key slowly. Rate limiting this route is the next
-// real mitigation for that, separate from this fix.
-
-interface IncomingBody {
-  item_id: string;
-  selected_answer: string;
-}
-
-function isValidBody(body: unknown): body is IncomingBody {
-  if (typeof body !== "object" || body === null) return false;
-  const b = body as Record<string, unknown>;
-  return (
-    typeof b.item_id === "string" &&
-    b.item_id.length > 0 &&
-    typeof b.selected_answer === "string" &&
-    b.selected_answer.length > 0
-  );
-}
+// reconstruct the answer key slowly. Rate limiting on this route is the
+// mitigation for that.
 
 export async function POST(request: Request) {
   const ip = getClientIp(request);
@@ -40,16 +25,18 @@ export async function POST(request: Request) {
     );
   }
 
-  let body: unknown;
+  let rawBody: unknown;
   try {
-    body = await request.json();
+    rawBody = await request.json();
   } catch {
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
-  if (!isValidBody(body)) {
-    return NextResponse.json({ error: "Malformed request body" }, { status: 400 });
+  const parsed = revealBodySchema.safeParse(rawBody);
+  if (!parsed.success) {
+    return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }
+  const body = parsed.data;
 
   const admin = createAdminClient();
   const { data, error } = await admin

@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { createAdminClient } from "../../lib/supabase-admin";
 import { createClient as createServerClient } from "../../lib/supabase-server";
 import { sessionsRateLimit, getClientIp, rateLimitHeaders, safeLimit } from "../../lib/rate-limit";
+import { sessionsBodySchema, formatZodError } from "../../lib/schemas";
 import {
   STARTING_THETA,
   STARTING_DIFFICULTY,
@@ -12,37 +13,6 @@ import {
   TSIA2_PASSING,
 } from "../../adaptive-test/engine";
 import type { Item, ProficiencyLevel, Strand } from "../../adaptive-test/type";
-
-// Only the fields a client can legitimately know about its own answer.
-// Notably absent: is_correct, theta_after, score_after — those are derived
-// server-side from the real item bank, never trusted from the client.
-interface IncomingResponse {
-  item_id: string;
-  selected_answer: string;
-  elapsed_ms: number;
-}
-
-interface IncomingBody {
-  responses: IncomingResponse[];
-  max_items: number;
-  posthog_distinct_id?: string;
-}
-
-function isValidBody(body: unknown): body is IncomingBody {
-  if (typeof body !== "object" || body === null) return false;
-  const b = body as Record<string, unknown>;
-  if (typeof b.max_items !== "number" || b.max_items <= 0) return false;
-  if (!Array.isArray(b.responses) || b.responses.length === 0) return false;
-  return b.responses.every((r) => {
-    if (typeof r !== "object" || r === null) return false;
-    const rr = r as Record<string, unknown>;
-    return (
-      typeof rr.item_id === "string" &&
-      typeof rr.selected_answer === "string" &&
-      typeof rr.elapsed_ms === "number"
-    );
-  });
-}
 
 export async function POST(request: Request) {
   const ip = getClientIp(request);
@@ -54,16 +24,18 @@ export async function POST(request: Request) {
     );
   }
 
-  let body: unknown;
+  let rawBody: unknown;
   try {
-    body = await request.json();
+    rawBody = await request.json();
   } catch {
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
-  if (!isValidBody(body)) {
-    return NextResponse.json({ error: "Malformed request body" }, { status: 400 });
+  const parsed = sessionsBodySchema.safeParse(rawBody);
+  if (!parsed.success) {
+    return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }
+  const body = parsed.data;
 
   const admin = createAdminClient();
 
