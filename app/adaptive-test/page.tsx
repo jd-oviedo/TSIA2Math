@@ -118,7 +118,7 @@ export default function AdaptiveTestPage() {
     if (state.phase !== "loading") return;
     async function fetchItems() {
       try {
-        const { data, error } = await supabase.from("questions").select("*").eq("status", "draft");
+        const { data, error } = await supabase.from("questions_public").select("*").eq("status", "draft");
         if (error) throw new Error(error.message);
         if (!data || data.length === 0) throw new Error("No items found in the question bank.");
         const { items, errors } = validateItems(data);
