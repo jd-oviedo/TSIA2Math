@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import { TSIA2_PASSING } from "../adaptive-test/engine";
+import posthog from "posthog-js";
 
 interface SessionRow {
   id: string;
@@ -23,6 +24,7 @@ export default function DashboardList() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    posthog.capture("dashboard_viewed");
     let cancelled = false;
     async function load() {
       const { data, error } = await supabase
