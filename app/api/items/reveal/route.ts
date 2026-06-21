@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "../../../lib/supabase-admin";
+import { revealRateLimit, getClientIp, rateLimitHeaders, safeLimit } from "../../../lib/rate-limit";
 
 // Returns answer-bearing fields for exactly one item, scoped to the option
 // the student actually picked. Never returns the full distractor_logic
@@ -30,6 +31,15 @@ function isValidBody(body: unknown): body is IncomingBody {
 }
 
 export async function POST(request: Request) {
+  const ip = getClientIp(request);
+  const { success, reset } = await safeLimit(revealRateLimit, ip);
+  if (!success) {
+    return NextResponse.json(
+      { error: "Too many requests. Please slow down." },
+      { status: 429, headers: rateLimitHeaders(reset) }
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();

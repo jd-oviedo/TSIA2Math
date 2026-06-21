@@ -2,6 +2,7 @@ import { PostHog } from "posthog-node";
 import { NextResponse } from "next/server";
 import { createAdminClient } from "../../lib/supabase-admin";
 import { createClient as createServerClient } from "../../lib/supabase-server";
+import { sessionsRateLimit, getClientIp, rateLimitHeaders, safeLimit } from "../../lib/rate-limit";
 import {
   STARTING_THETA,
   STARTING_DIFFICULTY,
@@ -44,6 +45,15 @@ function isValidBody(body: unknown): body is IncomingBody {
 }
 
 export async function POST(request: Request) {
+  const ip = getClientIp(request);
+  const { success, reset } = await safeLimit(sessionsRateLimit, ip);
+  if (!success) {
+    return NextResponse.json(
+      { error: "Too many requests. Please slow down and try again shortly." },
+      { status: 429, headers: rateLimitHeaders(reset) }
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();
