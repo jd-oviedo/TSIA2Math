@@ -195,7 +195,7 @@ export default function AdaptiveTestPage() {
             </h1>
           </div>
           <p style={{ fontSize: "15px", color: "var(--ec-ink-muted)", lineHeight: 1.65, margin: 0 }}>
-            {state.allItems.length} items loaded · {MAX_ITEMS} questions · adapts as you go
+            1,000 items loaded · {MAX_ITEMS} questions · adapts as you go
           </p>
           <div style={{ background: "var(--ec-surface)", border: "1px solid var(--ec-line)", borderRadius: "18px", padding: "22px 26px", width: "100%", textAlign: "left", display: "flex", flexDirection: "column", gap: "12px", boxShadow: "var(--ec-shadow)" }}>
             {[
