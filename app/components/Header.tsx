@@ -89,8 +89,8 @@ export function Header() {
         >
           <div
             style={{
-              width: "36px",
-              height: "36px",
+              width: "42px",
+              height: "42px",
               borderRadius: "10px",
               background: "rgba(255,255,255,0.25)",
               backdropFilter: "blur(8px)",
@@ -107,8 +107,8 @@ export function Header() {
             <Image
               src="/unpackmath-logo.png"
               alt="UnpackMath logo"
-              width={24}
-              height={24}
+              width={30}
+              height={30}
               style={{ objectFit: "contain" }}
             />
           </div>
