@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import type { Item } from "./type";
+import type { PublicItem, RevealData } from "./type";
 
 interface Props {
-  item: Item;
+  item: PublicItem;
   itemNumber: number;
   totalItems: number;
-  onAnswer: (answer: string) => void;
+  onAnswer: (answer: string, isCorrect: boolean) => void;
 }
 
 const CHOICE_KEYS = ["A", "B", "C", "D"] as const;
@@ -32,10 +32,40 @@ const LETTER_BASE: React.CSSProperties = {
 export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Props) {
   const [selected, setSelected] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
+  const [revealing, setRevealing] = useState(false);
+  const [revealData, setRevealData] = useState<RevealData | null>(null);
+  const [revealError, setRevealError] = useState(false);
 
-  const handleSelect = (key: string) => { if (revealed) return; setSelected(key); };
-  const handleSubmit = () => { if (!selected || revealed) return; setRevealed(true); };
-  const handleNext = () => { if (!selected) return; onAnswer(selected); setSelected(null); setRevealed(false); };
+  const handleSelect = (key: string) => { if (revealed || revealing) return; setSelected(key); };
+
+  const handleSubmit = async () => {
+    if (!selected || revealed || revealing) return;
+    setRevealing(true);
+    setRevealError(false);
+    try {
+      const res = await fetch("/api/items/reveal", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ item_id: item.item_id, selected_answer: selected }),
+      });
+      if (!res.ok) throw new Error("Failed to check answer");
+      const data: RevealData = await res.json();
+      setRevealData(data);
+      setRevealed(true);
+    } catch {
+      setRevealError(true);
+    } finally {
+      setRevealing(false);
+    }
+  };
+
+  const handleNext = () => {
+    if (!selected || !revealData) return;
+    onAnswer(selected, revealData.is_correct);
+    setSelected(null);
+    setRevealed(false);
+    setRevealData(null);
+  };
 
   const renderQuestionText = (text: string) => {
     const lines = text.split("\n");
@@ -88,7 +118,7 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
   };
 
   const progressPct = ((itemNumber - 1) / totalItems) * 100;
-  const isCorrect = selected === item.correct_answer;
+  const isCorrect = revealData?.is_correct ?? false;
 
   const getChoiceStyle = (key: string): React.CSSProperties => {
     const base: React.CSSProperties = {
@@ -115,7 +145,7 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
       if (selected === key) return { ...base, border: "1px solid var(--ec-accent)", background: "var(--ec-accent-soft)" };
       return base;
     }
-    if (key === item.correct_answer) return { ...base, border: "1px solid var(--ec-green-border)", background: "var(--ec-green-bg)" };
+    if (key === revealData?.correct_answer) return { ...base, border: "1px solid var(--ec-green-border)", background: "var(--ec-green-bg)" };
     if (key === selected) return { ...base, border: "1px solid var(--ec-red-border)", background: "var(--ec-red-bg)" };
     return { ...base, opacity: 0.38 };
   };
@@ -127,7 +157,7 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
       }
       return { ...LETTER_BASE, background: "transparent", border: "1.5px solid var(--ec-line)", color: "var(--ec-ink-muted)" };
     }
-    if (key === item.correct_answer) {
+    if (key === revealData?.correct_answer) {
       return { ...LETTER_BASE, background: "var(--ec-green)", border: "1.5px solid var(--ec-green)", color: "#fff" };
     }
     if (key === selected) {
@@ -180,10 +210,10 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
             <span style={{ flex: 1, color: "var(--ec-ink)", fontSize: "16px", fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 400 }}>
               {item.answer_choices[key]}
             </span>
-            {revealed && key === item.correct_answer && (
+            {revealed && key === revealData?.correct_answer && (
               <span style={{ marginLeft: "auto", flexShrink: 0, color: "var(--ec-green)", fontSize: "16px", fontWeight: 700 }}>✓</span>
             )}
-            {revealed && key === selected && key !== item.correct_answer && (
+            {revealed && key === selected && key !== revealData?.correct_answer && (
               <span style={{ marginLeft: "auto", flexShrink: 0, color: "var(--ec-red)", fontSize: "16px", fontWeight: 700 }}>✗</span>
             )}
           </button>
@@ -191,19 +221,27 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
       </div>
 
       {/* Explanation */}
-      {revealed && (
+      {revealed && revealData && (
         <div style={{ background: "var(--ec-orange-bg)", border: "1px solid var(--ec-orange-border)", borderRadius: "18px", padding: "20px 24px" }}>
           <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.13em", textTransform: "uppercase", color: "var(--ec-orange)", marginBottom: "10px" }}>
             {isCorrect ? "Nice work" : "Where your thinking broke down"}
           </p>
           <p style={{ fontSize: "15px", color: "var(--ec-ink)", lineHeight: 1.7, fontFamily: "Georgia, 'Times New Roman', serif", margin: 0 }}>
-            {item.explanation}
+            {revealData.explanation}
           </p>
-          {selected && !isCorrect && item.distractor_logic[selected] && (
+          {selected && !isCorrect && revealData.distractor_note && (
             <p style={{ fontSize: "13px", color: "var(--ec-ink-muted)", lineHeight: 1.6, fontStyle: "italic", marginTop: "10px", paddingTop: "10px", borderTop: "1px solid var(--ec-line)", fontFamily: "Georgia, 'Times New Roman', serif" }}>
-              {item.distractor_logic[selected]}
+              {revealData.distractor_note}
             </p>
           )}
+        </div>
+      )}
+
+      {revealError && (
+        <div style={{ background: "var(--ec-red-bg)", border: "1px solid var(--ec-red-border)", borderRadius: "18px", padding: "16px 20px" }}>
+          <p style={{ fontSize: "13px", color: "var(--ec-red)", margin: 0 }}>
+            Couldn&rsquo;t check that answer. Check your connection and try Submit again.
+          </p>
         </div>
       )}
 
@@ -221,22 +259,22 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
         {!revealed ? (
           <button
             onClick={handleSubmit}
-            disabled={!selected}
+            disabled={!selected || revealing}
             style={{
               padding: "13px 28px",
-              background: selected ? "var(--ec-btn-bg)" : "var(--ec-line)",
-              color: selected ? "var(--ec-btn-text)" : "var(--ec-ink-faint)",
+              background: selected && !revealing ? "var(--ec-btn-bg)" : "var(--ec-line)",
+              color: selected && !revealing ? "var(--ec-btn-text)" : "var(--ec-ink-faint)",
               border: "none",
               borderRadius: "14px",
               fontFamily: "inherit",
               fontSize: "15px",
               fontWeight: 700,
-              cursor: selected ? "pointer" : "not-allowed",
+              cursor: selected && !revealing ? "pointer" : "not-allowed",
               transition: "all 0.18s ease",
-              boxShadow: selected ? "var(--ec-shadow-btn)" : "none",
+              boxShadow: selected && !revealing ? "var(--ec-shadow-btn)" : "none",
             }}
           >
-            Submit
+            {revealing ? "Checking…" : "Submit"}
           </button>
         ) : (
           <button

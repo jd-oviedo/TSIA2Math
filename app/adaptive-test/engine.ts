@@ -1,4 +1,4 @@
-import type { Item, ItemValidationError, LoadResult, ProficiencyLevel, Response, Strand } from "./type";
+import type { ItemValidationError, LoadResult, ProficiencyLevel, PublicItem, Response, Strand } from "./type";
 
 export const TSIA2_MIN = 910;
 export const TSIA2_MAX = 990;
@@ -40,14 +40,12 @@ export const STRAND_QUOTAS: Record<Strand, number> = {
   PR: 4,
 };
 
-const REQUIRED_FIELDS: (keyof Item)[] = [
+const REQUIRED_FIELDS: (keyof PublicItem)[] = [
   "item_id",
   "primary_strand",
   "proficiency_level",
   "question_text",
   "answer_choices",
-  "correct_answer",
-  "explanation",
 ];
 
 const DIFFICULTY_ORDER: ProficiencyLevel[] = ["Basic", "Proficient", "Advanced"];
@@ -81,7 +79,7 @@ export function buildStrandQueue(quotas: Record<Strand, number> = STRAND_QUOTAS)
 }
 
 export function validateItems(raw: unknown[]): LoadResult {
-  const items: Item[] = [];
+  const items: PublicItem[] = [];
   const errors: ItemValidationError[] = [];
 
   raw.forEach((obj, index) => {
@@ -94,7 +92,7 @@ export function validateItems(raw: unknown[]): LoadResult {
     if (missing.length > 0) {
       errors.push({ item_id: String(record.item_id ?? `[index ${index}]`), missing });
     } else {
-      items.push(record as unknown as Item);
+      items.push(record as unknown as PublicItem);
     }
   });
 
@@ -102,11 +100,11 @@ export function validateItems(raw: unknown[]): LoadResult {
 }
 
 export function selectNextItem(
-  items: Item[],
+  items: PublicItem[],
   seenIds: Set<string>,
   targetDifficulty: ProficiencyLevel,
   targetStrand: Strand
-): Item | null {
+): PublicItem | null {
   const tiers: ProficiencyLevel[] = [targetDifficulty];
   const idx = difficultyIndex(targetDifficulty);
   if (idx > 0) tiers.push(DIFFICULTY_ORDER[idx - 1]);

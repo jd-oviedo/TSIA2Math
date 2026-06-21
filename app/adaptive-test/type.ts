@@ -6,6 +6,10 @@ export interface StrategyHint {
   hint_text: string;
 }
 
+// Full schema, matches the DB row exactly. Includes answer-bearing fields
+// (correct_answer, explanation, distractor_logic). Server-side use only —
+// never import this as the type of anything that reaches the browser before
+// an item has been answered. See PublicItem below for what the client gets.
 export interface Item {
   item_id: string;
   schema_version: string;
@@ -55,18 +59,35 @@ export interface Item {
   review_notes: string | null;
 }
 
+// What actually ships to the browser during a live test — same shape minus
+// every answer-bearing field. This is also what `questions_public` (the DB
+// view) returns, so the client-side shape and the DB-enforced shape match by
+// construction.
+export type PublicItem = Omit<Item, "correct_answer" | "explanation" | "distractor_logic">;
+
+// Returned by POST /api/items/reveal, once per question, only after the
+// student has submitted an answer for that specific item.
+export interface RevealData {
+  correct_answer: string;
+  is_correct: boolean;
+  explanation: string;
+  // The misconception note for the option the student actually picked.
+  // Null when they got it right, or when the picked key has no entry.
+  distractor_note: string | null;
+}
+
 export interface ItemValidationError {
   item_id: string;
   missing: string[];
 }
 
 export interface LoadResult {
-  items: Item[];
+  items: PublicItem[];
   errors: ItemValidationError[];
 }
 
 export interface Response {
-  item: Item;
+  item: PublicItem;
   selectedAnswer: string;
   isCorrect: boolean;
   thetaAfter: number;
@@ -77,9 +98,9 @@ export interface Response {
 export interface SessionState {
   phase: "loading" | "ready" | "active" | "complete" | "error";
   loadError: string | null;
-  allItems: Item[];
+  allItems: PublicItem[];
   seenIds: Set<string>;
-  currentItem: Item | null;
+  currentItem: PublicItem | null;
   currentDifficulty: ProficiencyLevel;
   theta: number;
   responses: Response[];

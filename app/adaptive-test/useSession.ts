@@ -1,7 +1,7 @@
 "use client";
 
 import { useReducer, useCallback } from "react";
-import type { Item, Response, SessionState } from "./type";
+import type { PublicItem, Response, SessionState } from "./type";
 import {
   DEFAULT_MAX_ITEMS,
   STARTING_DIFFICULTY,
@@ -14,10 +14,10 @@ import {
 } from "./engine";
 
 type Action =
-  | { type: "LOAD_SUCCESS"; items: Item[] }
+  | { type: "LOAD_SUCCESS"; items: PublicItem[] }
   | { type: "LOAD_ERROR"; message: string }
   | { type: "START" }
-  | { type: "ANSWER"; selectedAnswer: string; nowMs: number }
+  | { type: "ANSWER"; selectedAnswer: string; isCorrect: boolean; nowMs: number }
   | { type: "RESTART" };
 
 function makeInitialState(maxItems = DEFAULT_MAX_ITEMS): SessionState {
@@ -64,7 +64,7 @@ function reducer(state: SessionState, action: Action): SessionState {
 
     case "ANSWER": {
       if (!state.currentItem) return state;
-      const isCorrect = action.selectedAnswer === state.currentItem.correct_answer;
+      const isCorrect = action.isCorrect;
       const newTheta = updateTheta(state.theta, isCorrect, state.currentItem.proficiency_level);
       const newScore = thetaToScore(newTheta);
       const response: Response = {
@@ -120,7 +120,7 @@ function reducer(state: SessionState, action: Action): SessionState {
 export function useSession(maxItems = DEFAULT_MAX_ITEMS) {
   const [state, dispatch] = useReducer(reducer, undefined, () => makeInitialState(maxItems));
 
-  const loadItems = useCallback((items: Item[]) => {
+  const loadItems = useCallback((items: PublicItem[]) => {
     dispatch({ type: "LOAD_SUCCESS", items });
   }, []);
 
@@ -132,8 +132,8 @@ export function useSession(maxItems = DEFAULT_MAX_ITEMS) {
     dispatch({ type: "START" });
   }, []);
 
-  const answer = useCallback((selectedAnswer: string) => {
-    dispatch({ type: "ANSWER", selectedAnswer, nowMs: Date.now() });
+  const answer = useCallback((selectedAnswer: string, isCorrect: boolean) => {
+    dispatch({ type: "ANSWER", selectedAnswer, isCorrect, nowMs: Date.now() });
   }, []);
 
   const restart = useCallback(() => {
