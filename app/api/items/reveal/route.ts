@@ -1,13 +1,13 @@
 import { NextResponse } from 'next/server'
-import { createAdminClient } from '@/app/lib/supabase-admin'
-import { createServerClient } from '@/app/lib/supabase-server'
-import { safeLimit, revealLimiter } from '@/app/lib/rate-limit'
-import { revealBodySchema } from '@/app/lib/schemas'
+import { createAdminClient } from '../../../lib/supabase-admin'
+import { createClient as createServerClient } from '../../../lib/supabase-server'
+import { safeLimit, revealRateLimit, getClientIp } from '../../../lib/rate-limit'
+import { revealBodySchema } from '../../../lib/schemas'
 
 export async function POST(req: Request) {
-  const ip = req.headers.get('x-forwarded-for') ?? 'unknown'
-  const limited = await safeLimit(revealLimiter, ip)
-  if (limited) return NextResponse.json({ error: 'Too many requests' }, { status: 429 })
+  const ip = getClientIp(req)
+  const limited = await safeLimit(revealRateLimit, ip)
+  if (!limited.success) return NextResponse.json({ error: 'Too many requests' }, { status: 429 })
 
   const body = await req.json()
   const parsed = revealBodySchema.safeParse(body)

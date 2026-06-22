@@ -61,7 +61,7 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
 
   const handleNext = () => {
     if (!selected || !revealData) return;
-    onAnswer(selected, revealData.iscorrect);
+    onAnswer(selected, revealData.isCorrect);
     setSelected(null);
     setRevealed(false);
     setRevealData(null);
@@ -118,7 +118,7 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
   };
 
   const progressPct = ((itemNumber - 1) / totalItems) * 100;
-  const isCorrect = revealData?.iscorrect ?? false;
+  const isCorrect = revealData?.isCorrect ?? false;
 
   const getChoiceStyle = (key: string): React.CSSProperties => {
     const base: React.CSSProperties = {
