@@ -154,7 +154,19 @@ export async function POST(request: Request) {
   if (responsesError) {
     return NextResponse.json({ error: responsesError.message }, { status: 500 });
   }
-
+// Audit log: record the completed test submission
+  await admin.from("audit_log").insert({
+    user_id: userId,
+    action: "test_completed",
+    table_name: "sessions",
+    record_id: session.id,
+    metadata: {
+      final_score: finalScore,
+      passed: finalScore >= TSIA2_PASSING,
+      strand_breakdown: strandBreakdown,
+      item_count: responseRows.length,
+    },
+  });
   // Exposure tracking: increment times_administered (and times_correct
   // where applicable) for every item actually shown, so future sessions
   // can implement Conditional Randomesque exposure control. Best-effort —
