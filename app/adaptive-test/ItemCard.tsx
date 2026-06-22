@@ -61,7 +61,7 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
 
   const handleNext = () => {
     if (!selected || !revealData) return;
-    onAnswer(selected, revealData.is_correct);
+    onAnswer(selected, revealData.iscorrect);
     setSelected(null);
     setRevealed(false);
     setRevealData(null);
@@ -118,7 +118,7 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
   };
 
   const progressPct = ((itemNumber - 1) / totalItems) * 100;
-  const isCorrect = revealData?.is_correct ?? false;
+  const isCorrect = revealData?.iscorrect ?? false;
 
   const getChoiceStyle = (key: string): React.CSSProperties => {
     const base: React.CSSProperties = {
@@ -226,12 +226,21 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
           <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.13em", textTransform: "uppercase", color: "var(--ec-orange)", marginBottom: "10px" }}>
             {isCorrect ? "Nice work" : "Where your thinking broke down"}
           </p>
-          <p style={{ fontSize: "15px", color: "var(--ec-ink)", lineHeight: 1.7, fontFamily: "Georgia, 'Times New Roman', serif", margin: 0 }}>
-            {revealData.explanation}
-          </p>
-          {selected && !isCorrect && revealData.distractor_note && (
-            <p style={{ fontSize: "13px", color: "var(--ec-ink-muted)", lineHeight: 1.6, fontStyle: "italic", marginTop: "10px", paddingTop: "10px", borderTop: "1px solid var(--ec-line)", fontFamily: "Georgia, 'Times New Roman', serif" }}>
-              {revealData.distractor_note}
+
+          {revealData.explanation !== null ? (
+            <>
+              <p style={{ fontSize: "15px", color: "var(--ec-ink)", lineHeight: 1.7, fontFamily: "Georgia, 'Times New Roman', serif", margin: 0 }}>
+                {revealData.explanation}
+              </p>
+              {selected && !isCorrect && revealData.distractor_note && (
+                <p style={{ fontSize: "13px", color: "var(--ec-ink-muted)", lineHeight: 1.6, fontStyle: "italic", marginTop: "10px", paddingTop: "10px", borderTop: "1px solid var(--ec-line)", fontFamily: "Georgia, 'Times New Roman', serif" }}>
+                  {revealData.distractor_note}
+                </p>
+              )}
+            </>
+          ) : (
+            <p style={{ fontSize: "15px", color: "var(--ec-ink)", lineHeight: 1.7, fontFamily: "Georgia, 'Times New Roman', serif", margin: 0 }}>
+              Sign in to see why this answer is correct and where the other choices go wrong.
             </p>
           )}
         </div>

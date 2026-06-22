@@ -1,65 +1,43 @@
-import { NextResponse } from "next/server";
-import { createAdminClient } from "../../../lib/supabase-admin";
-import { revealRateLimit, getClientIp, rateLimitHeaders, safeLimit } from "../../../lib/rate-limit";
-import { revealBodySchema, formatZodError } from "../../../lib/schemas";
+import { NextResponse } from 'next/server'
+import { createAdminClient } from '@/app/lib/supabase-admin'
+import { createServerClient } from '@/app/lib/supabase-server'
+import { safeLimit, revealLimiter } from '@/app/lib/rate-limit'
+import { revealBodySchema } from '@/app/lib/schemas'
 
-// Returns answer-bearing fields for exactly one item, scoped to the option
-// the student actually picked. Never returns the full distractor_logic
-// object — only the entry for selected_answer — so a single call can't be
-// used to harvest the misconception map for options the student didn't pick.
-//
-// This closes the bulk-load leak (the old client code pulled correct_answer/
-// explanation/distractor_logic for the entire bank on page load), but it is
-// still a per-item oracle: someone with the full list of item_ids (which the
-// public bulk load legitimately exposes) could call this once per item and
-// reconstruct the answer key slowly. Rate limiting on this route is the
-// mitigation for that.
+export async function POST(req: Request) {
+  const ip = req.headers.get('x-forwarded-for') ?? 'unknown'
+  const limited = await safeLimit(revealLimiter, ip)
+  if (limited) return NextResponse.json({ error: 'Too many requests' }, { status: 429 })
 
-export async function POST(request: Request) {
-  const ip = getClientIp(request);
-  const { success, reset } = await safeLimit(revealRateLimit, ip);
-  if (!success) {
-    return NextResponse.json(
-      { error: "Too many requests. Please slow down." },
-      { status: 429, headers: rateLimitHeaders(reset) }
-    );
-  }
+  const body = await req.json()
+  const parsed = revealBodySchema.safeParse(body)
+  if (!parsed.success) return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
 
-  let rawBody: unknown;
-  try {
-    rawBody = await request.json();
-  } catch {
-    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
-  }
+  const { item_id, selected_answer } = parsed.data
 
-  const parsed = revealBodySchema.safeParse(rawBody);
-  if (!parsed.success) {
-    return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
-  }
-  const body = parsed.data;
+  // Check session -- anonymous users get isCorrect only
+  const supabase = await createServerClient()
+  const { data: { session } } = await supabase.auth.getSession()
+  const isAuthenticated = !!session
 
-  const admin = createAdminClient();
-  const { data, error } = await admin
-    .from("questions")
-    .select("correct_answer, explanation, distractor_logic")
-    .eq("item_id", body.item_id)
-    .eq("status", "draft")
-    .single();
+  // Admin client to access answer-bearing fields
+  const admin = createAdminClient()
+  const { data: item, error } = await admin
+    .from('questions')
+    .select('correct_answer, explanation, distractor_logic')
+    .eq('item_id', item_id)
+    .single()
 
-  if (error || !data) {
-    return NextResponse.json({ error: "Item not found" }, { status: 404 });
-  }
+  if (error || !item) return NextResponse.json({ error: 'Item not found' }, { status: 404 })
 
-  const isCorrect = body.selected_answer === data.correct_answer;
-  const distractorLogic = (data.distractor_logic ?? {}) as Record<string, string>;
+  const isCorrect = item.correct_answer === selected_answer
 
-  return NextResponse.json(
-    {
-      correct_answer: data.correct_answer,
-      is_correct: isCorrect,
-      explanation: data.explanation,
-      distractor_note: isCorrect ? null : distractorLogic[body.selected_answer] ?? null,
-    },
-    { status: 200 }
-  );
+  return NextResponse.json({
+    isCorrect,
+    correct_answer: item.correct_answer,
+    explanation: isAuthenticated ? (item.explanation as string) : null,
+    distractor_note: isAuthenticated
+      ? (item.distractor_logic as Record<string, string>)[selected_answer]
+      : null,
+  })
 }

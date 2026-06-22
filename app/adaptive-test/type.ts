@@ -67,13 +67,11 @@ export type PublicItem = Omit<Item, "correct_answer" | "explanation" | "distract
 
 // Returned by POST /api/items/reveal, once per question, only after the
 // student has submitted an answer for that specific item.
-export interface RevealData {
-  correct_answer: string;
-  is_correct: boolean;
-  explanation: string;
-  // The misconception note for the option the student actually picked.
-  // Null when they got it right, or when the picked key has no entry.
-  distractor_note: string | null;
+export type RevealData = {
+  isCorrect: boolean
+  correct_answer: string
+  explanation: string | null
+  distractor_note: string | null
 }
 
 export interface ItemValidationError {
