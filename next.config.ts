@@ -15,7 +15,7 @@ const SUPABASE_HOST = "https://*.supabase.co";
 const cspDirectives = [
   // Only load scripts from our own origin. PostHog injects its own script
   // from the host defined below; we allow that explicitly.
-  `script-src 'self' 'unsafe-eval' ${POSTHOG_HOST}`,
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${POSTHOG_HOST}`,
 
   // Inline styles are used throughout via JSX style={{}} props. 'unsafe-inline'
   // is the correct tradeoff here: our risk is not CSS injection (we have no
