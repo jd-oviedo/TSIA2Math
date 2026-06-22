@@ -228,21 +228,41 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
           </p>
 
           {revealData.explanation !== null ? (
-            <>
-              <p style={{ fontSize: "15px", color: "var(--ec-ink)", lineHeight: 1.7, fontFamily: "Georgia, 'Times New Roman', serif", margin: 0 }}>
-                {revealData.explanation}
-              </p>
-              {selected && !isCorrect && revealData.distractor_note && (
-                <p style={{ fontSize: "13px", color: "var(--ec-ink-muted)", lineHeight: 1.6, fontStyle: "italic", marginTop: "10px", paddingTop: "10px", borderTop: "1px solid var(--ec-line)", fontFamily: "Georgia, 'Times New Roman', serif" }}>
-                  {revealData.distractor_note}
-                </p>
-              )}
-            </>
-          ) : (
-            <p style={{ fontSize: "15px", color: "var(--ec-ink)", lineHeight: 1.7, fontFamily: "Georgia, 'Times New Roman', serif", margin: 0 }}>
-              Sign in to see why this answer is correct and where the other choices go wrong.
-            </p>
-          )}
+  <>
+    <p style={{ fontSize: "15px", color: "var(--ec-ink)", lineHeight: 1.7, fontFamily: "Georgia, 'Times New Roman', serif", margin: 0 }}>
+      {revealData.explanation}
+    </p>
+    {selected && !isCorrect && revealData.distractor_note && (
+      <p style={{ fontSize: "13px", color: "var(--ec-ink-muted)", lineHeight: 1.6, fontStyle: "italic", marginTop: "10px", paddingTop: "10px", borderTop: "1px solid var(--ec-line)", fontFamily: "Georgia, 'Times New Roman', serif" }}>
+        {revealData.distractor_note}
+      </p>
+    )}
+  </>
+) : (
+  <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+    <p style={{ fontSize: "15px", color: "var(--ec-ink)", lineHeight: 1.7, fontFamily: "Georgia, 'Times New Roman', serif", margin: 0 }}>
+      Sign in to see why this answer is correct and where the other choices go wrong.
+    </p>
+    <button
+      onClick={() => { window.location.href = '/login' }}
+      style={{
+        alignSelf: "flex-start",
+        padding: "10px 20px",
+        background: "var(--ec-btn-bg)",
+        color: "var(--ec-btn-text)",
+        border: "none",
+        borderRadius: "10px",
+        fontFamily: "inherit",
+        fontSize: "14px",
+        fontWeight: 700,
+        cursor: "pointer",
+        boxShadow: "var(--ec-shadow-btn)",
+      }}
+    >
+      Sign in with Google
+    </button>
+  </div>
+)}
         </div>
       )}
 
