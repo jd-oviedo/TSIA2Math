@@ -128,6 +128,7 @@ export async function POST(request: Request) {
     .from("sessions")
     .insert({
       user_id: userId,
+      teacher_id: userId,
       completed_at: new Date().toISOString(),
       final_theta: finalTheta,
       final_score: finalScore,
