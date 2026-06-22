@@ -110,8 +110,14 @@ function LoginCard() {
         {loading ? "redirecting…" : "Continue with Google"}
       </button>
       <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)", margin: 0 }}>
-        no spam · we only use this to save your results
-      </p>
+  no spam · we only use this to save your results
+</p>
+<p style={{ fontSize: "11px", color: "var(--ec-ink-faint)", margin: 0, lineHeight: 1.6 }}>
+  By signing in, you agree to our{" "}
+  <a href="https://www.unpackmath.com/terms" style={{ color: "var(--ec-accent)", textDecoration: "none" }}>Terms of Use</a>
+  {" "}and{" "}
+  <a href="https://www.unpackmath.com/privacy" style={{ color: "var(--ec-accent)", textDecoration: "none" }}>Privacy Policy</a>.
+</p>
     </div>
   );
 }
