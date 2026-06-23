@@ -20,7 +20,7 @@
       "ordering values of fractions, decimals, and irrational numbers",
       "interpreting numerical values presented in a data table"
     ],
-    "question_text": "A science teacher recorded the heights, in meters, that four students measured for the same small tree using different estimation methods. The results are shown in the table below.\n\n| Student | Recorded Height (meters) |\n|---------|--------------------------|\n| Ana     | $\\frac{13}{5}$                     |\n| Ben     | $\\sqrt{7}$                       |\n| Carla   | 2.5                      |\n| Dan     | $\\sqrt{9}$                       |\n\nWhich student recorded the greatest height?",
+    "question_text": "A science teacher recorded the heights, in meters, that four students measured for the same small tree using different estimation methods. The results are shown in the table below.\n\n| Student | Recorded Height (meters) |\n|---------|--------------------------|\n| Ana     | 13/5                     |\n| Ben     | $\\sqrt{7}$                       |\n| Carla   | 2.5                      |\n| Dan     | $\\sqrt{9}$                       |\n\nWhich student recorded the greatest height?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Ana",
@@ -29,11 +29,11 @@
       "D": "Dan"
     },
     "correct_answer": "D",
-    "explanation": "Convert each value to a decimal to compare. Ana: $\\frac{13}{5}$ = 2.6. Ben: $\\sqrt{7}$ is between $\\sqrt{4}$ = 2 and $\\sqrt{9}$ = 3; more precisely, $\\sqrt{7}$ $\\approx$ 2.65. Carla: 2.5. Dan: $\\sqrt{9}$ = 3. Ordering the values: 2.5 < 2.6 < 2.65 < 3, so Carla < Ana < Ben < Dan. Dan's recorded height of 3 meters is the greatest.",
+    "explanation": "Convert each value to a decimal to compare. Ana: 13/5 = 2.6. Ben: $\\sqrt{7}$ is between $\\sqrt{4}$ = 2 and $\\sqrt{9}$ = 3; more precisely, $\\sqrt{7}$ $\\approx$ 2.65. Carla: 2.5. Dan: $\\sqrt{9}$ = 3. Ordering the values: 2.5 < 2.6 < 2.65 < 3, so Carla < Ana < Ben < Dan. Dan's recorded height of 3 meters is the greatest.",
     "distractor_logic": {
-      "A": "Student converts $\\frac{13}{5}$ correctly to 2.6 but does not recognize that $\\sqrt{9}$ simplifies to the integer 3; may treat any square root as less than a nearby decimal.",
+      "A": "Student converts 13/5 correctly to 2.6 but does not recognize that $\\sqrt{9}$ simplifies to the integer 3; may treat any square root as less than a nearby decimal.",
       "B": "Student knows $\\sqrt{7}$ is irrational and assumes irrational numbers are automatically larger than rational numbers, or estimates $\\sqrt{7}$ as greater than 3 by confusing it with $\\sqrt{9}$.",
-      "C": "Student misreads $\\frac{13}{5}$ as 1.35 or 1.6 (inverting or misapplying the fraction-to-decimal conversion), making 2.5 appear to be the largest value.",
+      "C": "Student misreads 13/5 as 1.35 or 1.6 (inverting or misapplying the fraction-to-decimal conversion), making 2.5 appear to be the largest value.",
       "D": "Correct answer."
     },
     "difficulty_level": "Basic",
@@ -186,7 +186,7 @@
       "comparing the magnitude of a square root to a whole number by comparing radicands",
       "ordering rational numbers and an irrational number expressed in different forms"
     ],
-    "question_text": "A carpenter compares the lengths of four shelves, measured in feet:\n\n• Shelf W: $\\sqrt{17}$\n• Shelf X: 4\n• Shelf Y: $\\frac{15}{4}$\n• Shelf Z: 3.9\n\nWhich shelf is the longest?",
+    "question_text": "A carpenter compares the lengths of four shelves, measured in feet:\n\n• Shelf W: $\\sqrt{17}$\n• Shelf X: 4\n• Shelf Y: 15/4\n• Shelf Z: 3.9\n\nWhich shelf is the longest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Shelf W",
@@ -195,11 +195,11 @@
       "D": "Shelf Z"
     },
     "correct_answer": "A",
-    "explanation": "Convert each length to a decimal. Shelf W: $\\sqrt{17}$ is just above 4 because 17 > 16 = $4^{2}$, so $\\sqrt{17}$ $\\approx$ 4.12. Shelf X: 4. Shelf Y: $\\frac{15}{4}$ = 3.75. Shelf Z: 3.9. Comparing 4.12, 4, 3.75, and 3.9, Shelf W ($\\sqrt{17}$) is the longest.",
+    "explanation": "Convert each length to a decimal. Shelf W: $\\sqrt{17}$ is just above 4 because 17 > 16 = $4^{2}$, so $\\sqrt{17}$ $\\approx$ 4.12. Shelf X: 4. Shelf Y: 15/4 = 3.75. Shelf Z: 3.9. Comparing 4.12, 4, 3.75, and 3.9, Shelf W ($\\sqrt{17}$) is the longest.",
     "distractor_logic": {
       "A": "Correct: since 17 > 16, $\\sqrt{17}$ > 4, making it the largest value at about 4.12.",
       "B": "Student assumes a square root must be smaller than a nearby whole number and treats $\\sqrt{17}$ as less than 4, choosing the whole number 4.",
-      "C": "Student misconverts $\\frac{15}{4}$ (reading it as about 4.25 instead of 3.75), making Shelf Y appear longest.",
+      "C": "Student misconverts 15/4 (reading it as about 4.25 instead of 3.75), making Shelf Y appear longest.",
       "D": "Student rounds $\\sqrt{17}$ down to 4 or below and selects the largest remaining decimal, 3.9, not recognizing that $\\sqrt{17}$ exceeds 4."
     },
     "difficulty_level": "Basic",
@@ -346,19 +346,19 @@
       "estimating the value of a square root between two integers",
       "ordering a fraction, an irrational number, and a whole number"
     ],
-    "question_text": "A cook measures three quantities, in cups: $\\sqrt{8}$, $\\frac{5}{2}$, and 3. Which list orders these quantities from least to greatest?",
+    "question_text": "A cook measures three quantities, in cups: $\\sqrt{8}$, 5/2, and 3. Which list orders these quantities from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$\\frac{5}{2}$, $\\sqrt{8}$, 3",
-      "B": "$\\sqrt{8}$, $\\frac{5}{2}$, 3",
-      "C": "$\\frac{5}{2}$, 3, $\\sqrt{8}$",
-      "D": "3, $\\sqrt{8}$, $\\frac{5}{2}$"
+      "A": "5/2, $\\sqrt{8}$, 3",
+      "B": "$\\sqrt{8}$, 5/2, 3",
+      "C": "5/2, 3, $\\sqrt{8}$",
+      "D": "3, $\\sqrt{8}$, 5/2"
     },
     "correct_answer": "A",
-    "explanation": "Convert each value to a decimal. $\\frac{5}{2}$ = 2.5; $\\sqrt{8}$ lies between $\\sqrt{4}$ = 2 and $\\sqrt{9}$ = 3, with $\\sqrt{8}$ $\\approx$ 2.83; and 3 is a whole number. Ordering 2.5 < 2.83 < 3 gives $\\frac{5}{2}$, $\\sqrt{8}$, 3.",
+    "explanation": "Convert each value to a decimal. 5/2 = 2.5; $\\sqrt{8}$ lies between $\\sqrt{4}$ = 2 and $\\sqrt{9}$ = 3, with $\\sqrt{8}$ $\\approx$ 2.83; and 3 is a whole number. Ordering 2.5 < 2.83 < 3 gives 5/2, $\\sqrt{8}$, 3.",
     "distractor_logic": {
-      "A": "Correct: $\\frac{5}{2}$ = 2.5 < $\\sqrt{8}$ $\\approx$ 2.83 < 3.",
-      "B": "Student underestimates $\\sqrt{8}$ (treating it as roughly 2.4 or less) and places it below $\\frac{5}{2}$ = 2.5.",
+      "A": "Correct: 5/2 = 2.5 < $\\sqrt{8}$ $\\approx$ 2.83 < 3.",
+      "B": "Student underestimates $\\sqrt{8}$ (treating it as roughly 2.4 or less) and places it below 5/2 = 2.5.",
       "C": "Student overestimates $\\sqrt{8}$, assuming the irrational value must exceed the whole number 3.",
       "D": "Student reverses the order or treats the whole number 3 as smallest because the other two are written as a fraction and a radical."
     },
@@ -380,7 +380,7 @@
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "Convert $\\frac{5}{2}$ to 2.5, then place $\\sqrt{8}$ between 2.5 and 3."
+        "hint_text": "Convert 5/2 to 2.5, then place $\\sqrt{8}$ between 2.5 and 3."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -429,7 +429,7 @@
       "estimating the value of an irrational number to compare it with rational values",
       "interpreting and ordering numerical data presented in a table"
     ],
-    "question_text": "A surveyor records the lengths of four hiking trail segments using different notation systems. The lengths, in kilometers, are shown in the table below.\n\n| Segment | Length (km) |\n|---------|-------------|\n| I       | $\\sqrt{45}$         |\n| II      | 6.8         |\n| III     | 2$\\pi$          |\n| IV      | $\\frac{13}{2}$        |\n\nWhich list correctly orders the segments from shortest to longest?",
+    "question_text": "A surveyor records the lengths of four hiking trail segments using different notation systems. The lengths, in kilometers, are shown in the table below.\n\n| Segment | Length (km) |\n|---------|-------------|\n| I       | $\\sqrt{45}$         |\n| II      | 6.8         |\n| III     | 2$\\pi$          |\n| IV      | 13/2        |\n\nWhich list correctly orders the segments from shortest to longest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "III, I, IV, II",
@@ -438,10 +438,10 @@
       "D": "II, I, IV, III"
     },
     "correct_answer": "B",
-    "explanation": "Convert each value to a decimal approximation to compare. Segment I: $\\sqrt{45}$ lies between $\\sqrt{36}$ = 6 and $\\sqrt{49}$ = 7; since 6.$7^{2}$ = 44.89 and 6.$71^{2}$ $\\approx$ 45.02, $\\sqrt{45}$ $\\approx$ 6.708. Segment II: 6.8 (already a decimal). Segment III: 2$\\pi$ $\\approx$ 2(3.14159) $\\approx$ 6.283. Segment IV: $\\frac{13}{2}$ = 6.5. Ordering from least to greatest: 6.283 < 6.5 < 6.708 < 6.8, which corresponds to III < IV < I < II. The correct order shortest to longest is III, IV, I, II.",
+    "explanation": "Convert each value to a decimal approximation to compare. Segment I: $\\sqrt{45}$ lies between $\\sqrt{36}$ = 6 and $\\sqrt{49}$ = 7; since 6.$7^{2}$ = 44.89 and 6.$71^{2}$ $\\approx$ 45.02, $\\sqrt{45}$ $\\approx$ 6.708. Segment II: 6.8 (already a decimal). Segment III: 2$\\pi$ $\\approx$ 2(3.14159) $\\approx$ 6.283. Segment IV: 13/2 = 6.5. Ordering from least to greatest: 6.283 < 6.5 < 6.708 < 6.8, which corresponds to III < IV < I < II. The correct order shortest to longest is III, IV, I, II.",
     "distractor_logic": {
       "A": "Student under-estimates $\\sqrt{45}$, treating it as roughly 6.5 or slightly less, and places Segment I before Segment IV instead of after it.",
-      "B": "Correct ordering: III (2$\\pi$ $\\approx$ 6.283) < IV ($\\frac{13}{2}$ = 6.5) < I ($\\sqrt{45}$ $\\approx$ 6.708) < II (6.8).",
+      "B": "Correct ordering: III (2$\\pi$ $\\approx$ 6.283) < IV (13/2 = 6.5) < I ($\\sqrt{45}$ $\\approx$ 6.708) < II (6.8).",
       "C": "Student over-estimates 2$\\pi$ by using $\\pi$ $\\approx$ 3.25 or reasoning that 'pi is greater than 3, so 2pi must be greater than 6.5,' incorrectly placing Segment III after Segment IV.",
       "D": "Student computes the values correctly but reverses the requested direction, listing from longest to shortest instead of shortest to longest."
     },
@@ -513,7 +513,7 @@
       "estimating and comparing values that include square roots and multiples of pi",
       "ordering a set of rational and irrational numbers in a specified direction"
     ],
-    "question_text": "A stage crew compares the lengths of four cables, measured in meters:\n\n• Cable I: $\\sqrt{80}$\n• Cable II: $\\frac{26}{3}$\n• Cable III: 8.8\n• Cable IV: 3$\\pi$\n\nWhich list orders the cables from greatest to least length?",
+    "question_text": "A stage crew compares the lengths of four cables, measured in meters:\n\n• Cable I: $\\sqrt{80}$\n• Cable II: 26/3\n• Cable III: 8.8\n• Cable IV: 3$\\pi$\n\nWhich list orders the cables from greatest to least length?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "IV, I, III, II",
@@ -522,12 +522,12 @@
       "D": "IV, I, II, III"
     },
     "correct_answer": "A",
-    "explanation": "Convert each value. Cable I: $\\sqrt{80}$ is just under 9 because $9^{2}$ = 81, so $\\sqrt{80}$ $\\approx$ 8.94. Cable II: $\\frac{26}{3}$ $\\approx$ 8.67. Cable III: 8.8. Cable IV: 3$\\pi$ $\\approx$ 3(3.1416) $\\approx$ 9.42. Ordering from greatest to least: 9.42 > 8.94 > 8.8 > 8.67, which is IV, I, III, II.",
+    "explanation": "Convert each value. Cable I: $\\sqrt{80}$ is just under 9 because $9^{2}$ = 81, so $\\sqrt{80}$ $\\approx$ 8.94. Cable II: 26/3 $\\approx$ 8.67. Cable III: 8.8. Cable IV: 3$\\pi$ $\\approx$ 3(3.1416) $\\approx$ 9.42. Ordering from greatest to least: 9.42 > 8.94 > 8.8 > 8.67, which is IV, I, III, II.",
     "distractor_logic": {
-      "A": "Correct: 3$\\pi$ $\\approx$ 9.42 > $\\sqrt{80}$ $\\approx$ 8.94 > 8.8 > $\\frac{26}{3}$ $\\approx$ 8.67.",
+      "A": "Correct: 3$\\pi$ $\\approx$ 9.42 > $\\sqrt{80}$ $\\approx$ 8.94 > 8.8 > 26/3 $\\approx$ 8.67.",
       "B": "Student orders the cables from least to greatest, reversing the requested direction.",
       "C": "Student places $\\sqrt{80}$ ahead of 3$\\pi$, estimating 3$\\pi$ with $\\pi$ $\\approx$ 3 (giving 9) and $\\sqrt{80}$ near $\\sqrt{81}$ = 9, then breaking the near-tie the wrong way.",
-      "D": "Student identifies the top two correctly but swaps 8.8 and $\\frac{26}{3}$, misconverting $\\frac{26}{3}$ as about 8.9."
+      "D": "Student identifies the top two correctly but swaps 8.8 and 26/3, misconverting 26/3 as about 8.9."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -543,7 +543,7 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Estimate each: $\\sqrt{80}$ just under 9, 3$\\pi$ just over 9.4, $\\frac{26}{3}$ $\\approx$ 8.67."
+        "hint_text": "Estimate each: $\\sqrt{80}$ just under 9, 3$\\pi$ just over 9.4, 26/3 $\\approx$ 8.67."
       },
       {
         "strategy": "identify_key_info",
@@ -601,11 +601,11 @@
     "answer_choices": {
       "A": "$\\sqrt{35}$",
       "B": "$\\sqrt{24}$",
-      "C": "$\\frac{13}{2}$",
+      "C": "13/2",
       "D": "$\\sqrt{37}$"
     },
     "correct_answer": "A",
-    "explanation": "A square root $\\sqrt{}$N lies between 5 and 6 exactly when 25 < N < 36. Checking each: $\\sqrt{35}$ → 25 < 35 < 36, so $\\sqrt{35}$ $\\approx$ 5.92 is between 5 and 6. $\\sqrt{24}$ → 24 < 25, so $\\sqrt{24}$ $\\approx$ 4.90 is below 5. $\\frac{13}{2}$ = 6.5 is above 6. $\\sqrt{37}$ → 37 > 36, so $\\sqrt{37}$ $\\approx$ 6.08 is above 6. Only $\\sqrt{35}$ qualifies.",
+    "explanation": "A square root $\\sqrt{}$N lies between 5 and 6 exactly when 25 < N < 36. Checking each: $\\sqrt{35}$ → 25 < 35 < 36, so $\\sqrt{35}$ $\\approx$ 5.92 is between 5 and 6. $\\sqrt{24}$ → 24 < 25, so $\\sqrt{24}$ $\\approx$ 4.90 is below 5. 13/2 = 6.5 is above 6. $\\sqrt{37}$ → 37 > 36, so $\\sqrt{37}$ $\\approx$ 6.08 is above 6. Only $\\sqrt{35}$ qualifies.",
     "distractor_logic": {
       "A": "Correct: 25 < 35 < 36, so $\\sqrt{35}$ $\\approx$ 5.92 falls strictly between 5 and 6.",
       "B": "Student estimates $\\sqrt{24}$ as roughly 5 (since 24 is near 25) and assumes it falls in range, missing that 24 < 25 makes $\\sqrt{24}$ < 5.",
@@ -761,7 +761,7 @@
       "ordering negative rational and irrational numbers",
       "applying the effect of negative signs on the ordering of values"
     ],
-    "question_text": "A diver logs four changes in depth, in meters, where negative values indicate moving downward:\n\n• Reading I: -$\\sqrt{10}$\n• Reading II: -3.0\n• Reading III: $\\frac{-10}{3}$\n• Reading IV: -3.2\n\nWhich list orders the readings from least to greatest?",
+    "question_text": "A diver logs four changes in depth, in meters, where negative values indicate moving downward:\n\n• Reading I: -$\\sqrt{10}$\n• Reading II: -3.0\n• Reading III: -10/3\n• Reading IV: -3.2\n\nWhich list orders the readings from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "III, IV, I, II",
@@ -770,9 +770,9 @@
       "D": "I, III, IV, II"
     },
     "correct_answer": "A",
-    "explanation": "Convert each value. -$\\sqrt{10}$ $\\approx$ -3.16 (since $\\sqrt{10}$ $\\approx$ 3.16). -3.0. $\\frac{-10}{3}$ $\\approx$ -3.33. -3.2. For negative numbers, the value with the greatest distance from zero is the least. Ordering from least to greatest: -3.33 < -3.2 < -3.16 < -3.0, which is III, IV, I, II.",
+    "explanation": "Convert each value. -$\\sqrt{10}$ $\\approx$ -3.16 (since $\\sqrt{10}$ $\\approx$ 3.16). -3.0. -10/3 $\\approx$ -3.33. -3.2. For negative numbers, the value with the greatest distance from zero is the least. Ordering from least to greatest: -3.33 < -3.2 < -3.16 < -3.0, which is III, IV, I, II.",
     "distractor_logic": {
-      "A": "Correct: $\\frac{-10}{3}$ $\\approx$ -3.33 < -3.2 < -$\\sqrt{10}$ $\\approx$ -3.16 < -3.0.",
+      "A": "Correct: -10/3 $\\approx$ -3.33 < -3.2 < -$\\sqrt{10}$ $\\approx$ -3.16 < -3.0.",
       "B": "Student orders the readings from greatest to least, reversing the requested direction.",
       "C": "Student knows $\\sqrt{10}$ $\\approx$ 3.16 < 3.2 but forgets that the negative sign flips the comparison, placing -$\\sqrt{10}$ below -3.2.",
       "D": "Student overestimates $\\sqrt{10}$ as about 3.3 or more, making -$\\sqrt{10}$ the most negative value."
@@ -844,7 +844,7 @@
       "comparing expressions that combine rational and irrational components",
       "ordering numerical values presented in a data table"
     ],
-    "question_text": "An engineer records four calculated measurements, in meters, from an experiment. Each value is expressed in the form it was derived from. The results are shown in the table below.\n\n| Segment | Measurement (m) |\n|---------|-----------------|\n| I       | $\\sqrt{8}$ · $\\sqrt{5}$         |\n| II      | $\\frac{32}{5}$            |\n| III     | 3 + $\\pi$           |\n| IV      | 2$\\pi$              |\n\nWhich list correctly orders the measurements from least to greatest?",
+    "question_text": "An engineer records four calculated measurements, in meters, from an experiment. Each value is expressed in the form it was derived from. The results are shown in the table below.\n\n| Segment | Measurement (m) |\n|---------|-----------------|\n| I       | $\\sqrt{8}$ · $\\sqrt{5}$         |\n| II      | 32/5            |\n| III     | 3 + $\\pi$           |\n| IV      | 2$\\pi$              |\n\nWhich list correctly orders the measurements from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "I, III, IV, II",
@@ -853,11 +853,11 @@
       "D": "II, I, IV, III"
     },
     "correct_answer": "C",
-    "explanation": "Convert each value to a decimal approximation. Segment I: $\\sqrt{8}$ · $\\sqrt{5}$ = $\\sqrt{40}$, which is between $\\sqrt{36}$ = 6 and $\\sqrt{49}$ = 7; since 6.$32^{2}$ = 39.94 and 6.$33^{2}$ = 40.07, $\\sqrt{40}$ $\\approx$ 6.325. Segment II: $\\frac{32}{5}$ = 6.400. Segment III: 3 + $\\pi$ $\\approx$ 3 + 3.142 = 6.142. Segment IV: 2$\\pi$ $\\approx$ 2(3.142) = 6.283. To confirm Segment IV < Segment I without a calculator: (2$\\pi$ $)^{2}$ = 4$\\pi$² $\\approx$ 4(9.87) = 39.48, which is less than ($\\sqrt{40}$ $)^{2}$ = 40, so 2$\\pi$ < $\\sqrt{40}$. Ordering from least to greatest: 6.142 < 6.283 < 6.325 < 6.400, which corresponds to III < IV < I < II. The correct order is III, IV, I, II.",
+    "explanation": "Convert each value to a decimal approximation. Segment I: $\\sqrt{8}$ · $\\sqrt{5}$ = $\\sqrt{40}$, which is between $\\sqrt{36}$ = 6 and $\\sqrt{49}$ = 7; since 6.$32^{2}$ = 39.94 and 6.$33^{2}$ = 40.07, $\\sqrt{40}$ $\\approx$ 6.325. Segment II: 32/5 = 6.400. Segment III: 3 + $\\pi$ $\\approx$ 3 + 3.142 = 6.142. Segment IV: 2$\\pi$ $\\approx$ 2(3.142) = 6.283. To confirm Segment IV < Segment I without a calculator: (2$\\pi$ $)^{2}$ = 4$\\pi$² $\\approx$ 4(9.87) = 39.48, which is less than ($\\sqrt{40}$ $)^{2}$ = 40, so 2$\\pi$ < $\\sqrt{40}$. Ordering from least to greatest: 6.142 < 6.283 < 6.325 < 6.400, which corresponds to III < IV < I < II. The correct order is III, IV, I, II.",
     "distractor_logic": {
       "A": "Student computes $\\sqrt{8}$ · $\\sqrt{5}$ by adding rather than multiplying the radicands, getting $\\sqrt{8}$ + $\\sqrt{5}$ $\\approx$ 2.83 + 2.24 $\\approx$ 5.07, and places Segment I as the smallest value.",
       "B": "Student uses the rough approximation $\\pi$ $\\approx$ 3, which makes 3 + $\\pi$ $\\approx$ 6 and 2$\\pi$ $\\approx$ 6 nearly indistinguishable, and reverses their order based on the visual complexity of the expressions.",
-      "C": "Correct ordering: III (3 + $\\pi$ $\\approx$ 6.142) < IV (2$\\pi$ $\\approx$ 6.283) < I ($\\sqrt{8}$ · $\\sqrt{5}$ = $\\sqrt{40}$ $\\approx$ 6.325) < II ($\\frac{32}{5}$ = 6.400).",
+      "C": "Correct ordering: III (3 + $\\pi$ $\\approx$ 6.142) < IV (2$\\pi$ $\\approx$ 6.283) < I ($\\sqrt{8}$ · $\\sqrt{5}$ = $\\sqrt{40}$ $\\approx$ 6.325) < II (32/5 = 6.400).",
       "D": "Student computes values correctly but reverses the requested direction, listing from greatest to least instead of least to greatest."
     },
     "difficulty_level": "Advanced",
@@ -882,7 +882,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Pin down the smallest (3+$\\pi$ $\\approx$6.14) and largest ($\\frac{32}{5}$=6.4), then eliminate orderings that misplace either."
+        "hint_text": "Pin down the smallest (3+$\\pi$ $\\approx$6.14) and largest (32/5=6.4), then eliminate orderings that misplace either."
       }
     ],
     "content_context": "data_interpretation",
@@ -928,7 +928,7 @@
       "simplifying sums and multiples of square roots before comparing",
       "ordering closely valued rational and irrational expressions"
     ],
-    "question_text": "Four measurements, in meters, are recorded in the forms below:\n\n• Measurement I: $\\sqrt{18}$ + $\\sqrt{2}$\n• Measurement II: 2$\\sqrt{7}$\n• Measurement III: $\\frac{11}{2}$\n• Measurement IV: $\\sqrt{30}$\n\nWhich list orders the measurements from least to greatest?",
+    "question_text": "Four measurements, in meters, are recorded in the forms below:\n\n• Measurement I: $\\sqrt{18}$ + $\\sqrt{2}$\n• Measurement II: 2$\\sqrt{7}$\n• Measurement III: 11/2\n• Measurement IV: $\\sqrt{30}$\n\nWhich list orders the measurements from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "II, IV, III, I",
@@ -937,12 +937,12 @@
       "D": "II, IV, I, III"
     },
     "correct_answer": "A",
-    "explanation": "Simplify and estimate each. Measurement I: $\\sqrt{18}$ + $\\sqrt{2}$ = 3$\\sqrt{2}$ + $\\sqrt{2}$ = 4$\\sqrt{2}$ = $\\sqrt{32}$ $\\approx$ 5.66. Measurement II: 2$\\sqrt{7}$ = $\\sqrt{28}$ $\\approx$ 5.29. Measurement III: $\\frac{11}{2}$ = 5.5. Measurement IV: $\\sqrt{30}$ $\\approx$ 5.48 (note 5.$5^{2}$ = 30.25 > 30, so $\\sqrt{30}$ < 5.5). Ordering from least to greatest: 5.29 < 5.48 < 5.5 < 5.66, which is II, IV, III, I.",
+    "explanation": "Simplify and estimate each. Measurement I: $\\sqrt{18}$ + $\\sqrt{2}$ = 3$\\sqrt{2}$ + $\\sqrt{2}$ = 4$\\sqrt{2}$ = $\\sqrt{32}$ $\\approx$ 5.66. Measurement II: 2$\\sqrt{7}$ = $\\sqrt{28}$ $\\approx$ 5.29. Measurement III: 11/2 = 5.5. Measurement IV: $\\sqrt{30}$ $\\approx$ 5.48 (note 5.$5^{2}$ = 30.25 > 30, so $\\sqrt{30}$ < 5.5). Ordering from least to greatest: 5.29 < 5.48 < 5.5 < 5.66, which is II, IV, III, I.",
     "distractor_logic": {
-      "A": "Correct: 2$\\sqrt{7}$ $\\approx$ 5.29 < $\\sqrt{30}$ $\\approx$ 5.48 < $\\frac{11}{2}$ = 5.5 < $\\sqrt{18}$ + $\\sqrt{2}$ = 4$\\sqrt{2}$ $\\approx$ 5.66.",
-      "B": "Student places $\\sqrt{30}$ above $\\frac{11}{2}$, overestimating $\\sqrt{30}$ as 5.5 or more rather than checking that 5.$5^{2}$ = 30.25 > 30.",
+      "A": "Correct: 2$\\sqrt{7}$ $\\approx$ 5.29 < $\\sqrt{30}$ $\\approx$ 5.48 < 11/2 = 5.5 < $\\sqrt{18}$ + $\\sqrt{2}$ = 4$\\sqrt{2}$ $\\approx$ 5.66.",
+      "B": "Student places $\\sqrt{30}$ above 11/2, overestimating $\\sqrt{30}$ as 5.5 or more rather than checking that 5.$5^{2}$ = 30.25 > 30.",
       "C": "Student orders the measurements from greatest to least, reversing the requested direction.",
-      "D": "Student simplifies $\\sqrt{18}$ + $\\sqrt{2}$ to 4$\\sqrt{2}$ $\\approx$ 5.66 correctly but misplaces it below $\\frac{11}{2}$, swapping the two largest values."
+      "D": "Student simplifies $\\sqrt{18}$ + $\\sqrt{2}$ to 4$\\sqrt{2}$ $\\approx$ 5.66 correctly but misplaces it below 11/2, swapping the two largest values."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -962,7 +962,7 @@
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "$\\sqrt{30}$ and $\\frac{11}{2}$ are nearly tied — 5.$5^{2}$ = 30.25 > 30, so $\\sqrt{30}$ < 5.5."
+        "hint_text": "$\\sqrt{30}$ and 11/2 are nearly tied — 5.$5^{2}$ = 30.25 > 30, so $\\sqrt{30}$ < 5.5."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -1017,15 +1017,15 @@
       "A": "3$\\sqrt{2}$",
       "B": "2$\\sqrt{5}$",
       "C": "$\\sqrt{19}$",
-      "D": "$\\frac{13}{3}$"
+      "D": "13/3"
     },
     "correct_answer": "B",
-    "explanation": "Rewrite each coefficient-times-radical expression as a single square root by squaring the coefficient into the radicand. 3$\\sqrt{2}$ = $\\sqrt{(9·2)}$ = $\\sqrt{18}$ $\\approx$ 4.24. 2$\\sqrt{5}$ = $\\sqrt{(4·5)}$ = $\\sqrt{20}$ $\\approx$ 4.47. $\\sqrt{19}$ $\\approx$ 4.36. $\\frac{13}{3}$ $\\approx$ 4.33. Comparing $\\sqrt{18}$, $\\sqrt{20}$, $\\sqrt{19}$, and 4.33, the greatest is 2$\\sqrt{5}$ = $\\sqrt{20}$.",
+    "explanation": "Rewrite each coefficient-times-radical expression as a single square root by squaring the coefficient into the radicand. 3$\\sqrt{2}$ = $\\sqrt{(9·2)}$ = $\\sqrt{18}$ $\\approx$ 4.24. 2$\\sqrt{5}$ = $\\sqrt{(4·5)}$ = $\\sqrt{20}$ $\\approx$ 4.47. $\\sqrt{19}$ $\\approx$ 4.36. 13/3 $\\approx$ 4.33. Comparing $\\sqrt{18}$, $\\sqrt{20}$, $\\sqrt{19}$, and 4.33, the greatest is 2$\\sqrt{5}$ = $\\sqrt{20}$.",
     "distractor_logic": {
       "A": "Student assumes the expression with the largest coefficient (3) is greatest, not realizing 3$\\sqrt{2}$ = $\\sqrt{18}$ is the smallest of the radicals.",
       "B": "Correct: 2$\\sqrt{5}$ = $\\sqrt{20}$ $\\approx$ 4.47 is greatest, since 20 is the largest radicand once each expression is written under a single root.",
       "C": "Student compares only the number shown under the radical and picks $\\sqrt{19}$ because 19 looks large, without converting the others to single radicals.",
-      "D": "Student avoids the radicals and selects the rational value $\\frac{13}{3}$, or misjudges it as larger than the irrational expressions."
+      "D": "Student avoids the radicals and selects the rational value 13/3, or misjudges it as larger than the irrational expressions."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1093,7 +1093,7 @@
       "simplifying products of square roots and expressions involving pi",
       "ordering very closely valued expressions using a squaring comparison"
     ],
-    "question_text": "Four values are listed below:\n\n• Value I: 2$\\sqrt{6}$\n• Value II: $\\pi$ + 1.5\n• Value III: $\\sqrt{23}$\n• Value IV: $\\frac{24}{5}$\n\nWhich list orders the values from least to greatest?",
+    "question_text": "Four values are listed below:\n\n• Value I: 2$\\sqrt{6}$\n• Value II: $\\pi$ + 1.5\n• Value III: $\\sqrt{23}$\n• Value IV: 24/5\n\nWhich list orders the values from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "II, III, IV, I",
@@ -1102,12 +1102,12 @@
       "D": "II, III, I, IV"
     },
     "correct_answer": "A",
-    "explanation": "Simplify and estimate each. Value I: 2$\\sqrt{6}$ = $\\sqrt{24}$ $\\approx$ 4.90. Value II: $\\pi$ + 1.5 $\\approx$ 3.14 + 1.5 = 4.64. Value III: $\\sqrt{23}$ $\\approx$ 4.80 (note 4.$8^{2}$ = 23.04 > 23, so $\\sqrt{23}$ < 4.8). Value IV: $\\frac{24}{5}$ = 4.8. Ordering from least to greatest: 4.64 < 4.80 < 4.8 < 4.90, which is II, III, IV, I.",
+    "explanation": "Simplify and estimate each. Value I: 2$\\sqrt{6}$ = $\\sqrt{24}$ $\\approx$ 4.90. Value II: $\\pi$ + 1.5 $\\approx$ 3.14 + 1.5 = 4.64. Value III: $\\sqrt{23}$ $\\approx$ 4.80 (note 4.$8^{2}$ = 23.04 > 23, so $\\sqrt{23}$ < 4.8). Value IV: 24/5 = 4.8. Ordering from least to greatest: 4.64 < 4.80 < 4.8 < 4.90, which is II, III, IV, I.",
     "distractor_logic": {
-      "A": "Correct: $\\pi$ + 1.5 $\\approx$ 4.64 < $\\sqrt{23}$ $\\approx$ 4.80 < $\\frac{24}{5}$ = 4.8 < 2$\\sqrt{6}$ = $\\sqrt{24}$ $\\approx$ 4.90.",
-      "B": "Student places $\\frac{24}{5}$ below $\\sqrt{23}$, overestimating $\\sqrt{23}$ as more than 4.8 rather than checking that 4.$8^{2}$ = 23.04 > 23.",
+      "A": "Correct: $\\pi$ + 1.5 $\\approx$ 4.64 < $\\sqrt{23}$ $\\approx$ 4.80 < 24/5 = 4.8 < 2$\\sqrt{6}$ = $\\sqrt{24}$ $\\approx$ 4.90.",
+      "B": "Student places 24/5 below $\\sqrt{23}$, overestimating $\\sqrt{23}$ as more than 4.8 rather than checking that 4.$8^{2}$ = 23.04 > 23.",
       "C": "Student orders the values from greatest to least, reversing the requested direction.",
-      "D": "Student simplifies 2$\\sqrt{6}$ to $\\sqrt{24}$ $\\approx$ 4.90 correctly but places it before $\\frac{24}{5}$, swapping the two largest values."
+      "D": "Student simplifies 2$\\sqrt{6}$ to $\\sqrt{24}$ $\\approx$ 4.90 correctly but places it before 24/5, swapping the two largest values."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1127,7 +1127,7 @@
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "$\\sqrt{23}$ and $\\frac{24}{5}$ are nearly tied — 4.$8^{2}$ = 23.04 > 23, so $\\sqrt{23}$ < 4.8."
+        "hint_text": "$\\sqrt{23}$ and 24/5 are nearly tied — 4.$8^{2}$ = 23.04 > 23, so $\\sqrt{23}$ < 4.8."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -1258,7 +1258,7 @@
       "ordering_fractions_decimals_percents",
       "comparing_rational_numbers"
     ],
-    "question_text": "Four runners finished a 5K race and their finishing times are listed below as fractions of an hour. Which list shows the runners in order from FASTEST to SLOWEST?\n\n• Maria: 0.44 hour\n• Devon: $\\frac{2}{5}$ hour\n• Priya: 47%\n• Tomás: $\\frac{9}{20}$ hour",
+    "question_text": "Four runners finished a 5K race and their finishing times are listed below as fractions of an hour. Which list shows the runners in order from FASTEST to SLOWEST?\n\n• Maria: 0.44 hour\n• Devon: 2/5 hour\n• Priya: 47%\n• Tomás: 9/20 hour",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Devon, Maria, Tomás, Priya",
@@ -1267,12 +1267,12 @@
       "D": "Maria, Tomás, Devon, Priya"
     },
     "correct_answer": "A",
-    "explanation": "Convert all four values to decimals so they can be compared directly:\n• Maria: 0.44\n• Devon: $\\frac{2}{5}$ = 0.40\n• Priya: 47% = 0.47\n• Tomás: $\\frac{9}{20}$ = 0.45\n\nA faster runner has a SMALLER time. Ordering from least to greatest (fastest to slowest): 0.40 (Devon) < 0.44 (Maria) < 0.45 (Tomás) < 0.47 (Priya). The correct order is Devon, Maria, Tomás, Priya.",
+    "explanation": "Convert all four values to decimals so they can be compared directly:\n• Maria: 0.44\n• Devon: 2/5 = 0.40\n• Priya: 47% = 0.47\n• Tomás: 9/20 = 0.45\n\nA faster runner has a SMALLER time. Ordering from least to greatest (fastest to slowest): 0.40 (Devon) < 0.44 (Maria) < 0.45 (Tomás) < 0.47 (Priya). The correct order is Devon, Maria, Tomás, Priya.",
     "distractor_logic": {
       "B": "Reverses the direction — orders from slowest to fastest (greatest time first) instead of fastest to slowest. Student understood the conversions but inverted the meaning of 'fastest.'",
-      "C": "Student misconverts $\\frac{9}{20}$, treating it as less than 0.44 (for example reading $\\frac{9}{20}$ as about 0.43), which makes Tomás appear faster than Maria and places Tomás second.",
-      "D": "Treats $\\frac{2}{5}$ as 0.50 (confusing $\\frac{2}{5}$ with $\\frac{1}{2}$ because '5' appears in both) and $\\frac{9}{20}$ as roughly 0.42, producing an incorrect ordering with Devon near the slow end.",
-      "A": "Correct: Devon = $\\frac{2}{5}$ = 0.40 is fastest, then Maria at 0.44, then Tomás = $\\frac{9}{20}$ = 0.45, and Priya = 47% = 0.47 is slowest."
+      "C": "Student misconverts 9/20, treating it as less than 0.44 (for example reading 9/20 as about 0.43), which makes Tomás appear faster than Maria and places Tomás second.",
+      "D": "Treats 2/5 as 0.50 (confusing 2/5 with 1/2 because '5' appears in both) and 9/20 as roughly 0.42, producing an incorrect ordering with Devon near the slow end.",
+      "A": "Correct: Devon = 2/5 = 0.40 is fastest, then Maria at 0.44, then Tomás = 9/20 = 0.45, and Priya = 47% = 0.47 is slowest."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -1340,7 +1340,7 @@
       "converting between fractions, decimals, and percents to compare them",
       "identifying the greatest of several rational numbers in different forms"
     ],
-    "question_text": "Four students reported their quiz scores in different forms:\n\n• Aisha: 0.7\n• Marco: 72%\n• Lena: $\\frac{5}{8}$\n• Tariq: $\\frac{3}{4}$\n\nWhose score is the highest?",
+    "question_text": "Four students reported their quiz scores in different forms:\n\n• Aisha: 0.7\n• Marco: 72%\n• Lena: 5/8\n• Tariq: 3/4\n\nWhose score is the highest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Aisha",
@@ -1349,12 +1349,12 @@
       "D": "Tariq"
     },
     "correct_answer": "D",
-    "explanation": "Convert each score to a decimal. Aisha: 0.7. Marco: 72% = 0.72. Lena: $\\frac{5}{8}$ = 0.625. Tariq: $\\frac{3}{4}$ = 0.75. Comparing 0.7, 0.72, 0.625, and 0.75, the highest is Tariq's $\\frac{3}{4}$.",
+    "explanation": "Convert each score to a decimal. Aisha: 0.7. Marco: 72% = 0.72. Lena: 5/8 = 0.625. Tariq: 3/4 = 0.75. Comparing 0.7, 0.72, 0.625, and 0.75, the highest is Tariq's 3/4.",
     "distractor_logic": {
       "A": "Student does not convert the fractions and picks the largest value that is already written as a decimal.",
       "B": "Student treats 72% as the largest because 72 is the biggest number shown, without converting it to 0.72.",
-      "C": "Student misconverts $\\frac{5}{8}$ (for example as 0.85 by flipping the division), making Lena's score look highest.",
-      "D": "Correct: $\\frac{3}{4}$ = 0.75 is the largest once every score is written as a decimal."
+      "C": "Student misconverts 5/8 (for example as 0.85 by flipping the division), making Lena's score look highest.",
+      "D": "Correct: 3/4 = 0.75 is the largest once every score is written as a decimal."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -1378,7 +1378,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "$\\frac{5}{8}$ = 0.625 is clearly the lowest — eliminate it right away."
+        "hint_text": "5/8 = 0.625 is clearly the lowest — eliminate it right away."
       }
     ],
     "content_context": "other",
@@ -1422,7 +1422,7 @@
       "comparing rational numbers in different forms to the benchmark 1/2",
       "determining whether a fraction, decimal, or percent is greater than one half"
     ],
-    "question_text": "In four different polls, the fraction of people who answered 'yes' is reported below. In which poll did MORE than half of the people answer 'yes'?\n\n• Poll I: $\\frac{2}{5}$\n• Poll II: 0.45\n• Poll III: 48%\n• Poll IV: $\\frac{5}{9}$",
+    "question_text": "In four different polls, the fraction of people who answered 'yes' is reported below. In which poll did MORE than half of the people answer 'yes'?\n\n• Poll I: 2/5\n• Poll II: 0.45\n• Poll III: 48%\n• Poll IV: 5/9",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Poll I",
@@ -1431,11 +1431,11 @@
       "D": "Poll III"
     },
     "correct_answer": "C",
-    "explanation": "More than half means greater than $\\frac{1}{2}$ = 0.5. Convert each: $\\frac{2}{5}$ = 0.40, 0.45, 48% = 0.48, and $\\frac{5}{9}$ $\\approx$ 0.556. Only $\\frac{5}{9}$ is greater than 0.5 (since $\\frac{5}{9}$ is more than 4.$\\frac{5}{9}$ = $\\frac{1}{2}$), so Poll IV is the only one above one half.",
+    "explanation": "More than half means greater than 1/2 = 0.5. Convert each: 2/5 = 0.40, 0.45, 48% = 0.48, and 5/9 $\\approx$ 0.556. Only 5/9 is greater than 0.5 (since 5/9 is more than 4.5/9 = 1/2), so Poll IV is the only one above one half.",
     "distractor_logic": {
-      "A": "Student reasons that 2 out of 5 is 'more than half' by looking at the numbers rather than converting $\\frac{2}{5}$ to 0.40.",
+      "A": "Student reasons that 2 out of 5 is 'more than half' by looking at the numbers rather than converting 2/5 to 0.40.",
       "B": "Student misreads 0.45 as greater than 0.5.",
-      "C": "Correct: $\\frac{5}{9}$ $\\approx$ 0.556 is the only value above 0.5.",
+      "C": "Correct: 5/9 $\\approx$ 0.556 is the only value above 0.5.",
       "D": "Student rounds 48% up to 'about half or more,' treating it as greater than 50%."
     },
     "difficulty_level": "Basic",
@@ -1452,7 +1452,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "$\\frac{1}{2}$ = 0.5 — compare every value to 0.5."
+        "hint_text": "1/2 = 0.5 — compare every value to 0.5."
       },
       {
         "strategy": "estimate_first",
@@ -1504,21 +1504,21 @@
       "recognizing equivalent forms of a rational number",
       "converting a fraction to its decimal and percent equivalents"
     ],
-    "question_text": "A pitcher of juice is $\\frac{3}{5}$ full. Which of the following is equal to $\\frac{3}{5}$?",
+    "question_text": "A pitcher of juice is 3/5 full. Which of the following is equal to 3/5?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "60%",
       "B": "0.35",
-      "C": "$\\frac{5}{3}$",
+      "C": "5/3",
       "D": "3.5"
     },
     "correct_answer": "A",
-    "explanation": "Divide to convert: 3 $\\div$ 5 = 0.6, and 0.6 = 60%. So $\\frac{3}{5}$ = 0.6 = 60%.",
+    "explanation": "Divide to convert: 3 $\\div$ 5 = 0.6, and 0.6 = 60%. So 3/5 = 0.6 = 60%.",
     "distractor_logic": {
-      "A": "Correct: $\\frac{3}{5}$ = 0.6 = 60%.",
+      "A": "Correct: 3/5 = 0.6 = 60%.",
       "B": "Student writes the digits 3 and 5 as 0.35 instead of dividing 3 by 5.",
-      "C": "Student flips the fraction to $\\frac{5}{3}$ instead of finding an equivalent form.",
-      "D": "Student reads '$\\frac{3}{5}$' as the number 3.5 rather than dividing 3 by 5."
+      "C": "Student flips the fraction to 5/3 instead of finding an equivalent form.",
+      "D": "Student reads '3/5' as the number 3.5 rather than dividing 3 by 5."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -1533,11 +1533,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "$\\frac{3}{5}$ as a decimal is 3 $\\div$ 5 = 0.6, which is 60%."
+        "hint_text": "3/5 as a decimal is 3 $\\div$ 5 = 0.6, which is 60%."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "0.35, $\\frac{5}{3}$, and 3.5 are each a different value — rule them out."
+        "hint_text": "0.35, 5/3, and 3.5 are each a different value — rule them out."
       }
     ],
     "content_context": "other",
@@ -1580,21 +1580,21 @@
       "ordering a decimal, a fraction, and a percent from least to greatest",
       "converting mixed forms to a common representation before ordering"
     ],
-    "question_text": "Three phones show their battery levels in different forms: 0.4, $\\frac{3}{8}$, and 35%. Which list orders the battery levels from least to greatest?",
+    "question_text": "Three phones show their battery levels in different forms: 0.4, 3/8, and 35%. Which list orders the battery levels from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$\\frac{3}{8}$, 35%, 0.4",
-      "B": "35%, $\\frac{3}{8}$, 0.4",
-      "C": "0.4, $\\frac{3}{8}$, 35%",
-      "D": "35%, 0.4, $\\frac{3}{8}$"
+      "A": "3/8, 35%, 0.4",
+      "B": "35%, 3/8, 0.4",
+      "C": "0.4, 3/8, 35%",
+      "D": "35%, 0.4, 3/8"
     },
     "correct_answer": "B",
-    "explanation": "Convert each to a decimal: 0.4; $\\frac{3}{8}$ = 0.375; 35% = 0.35. Ordering 0.35 < 0.375 < 0.4 gives 35%, $\\frac{3}{8}$, 0.4.",
+    "explanation": "Convert each to a decimal: 0.4; 3/8 = 0.375; 35% = 0.35. Ordering 0.35 < 0.375 < 0.4 gives 35%, 3/8, 0.4.",
     "distractor_logic": {
-      "A": "Student underestimates $\\frac{3}{8}$ (treating it as about 0.3) and places it below 35%.",
-      "B": "Correct: 35% = 0.35 < $\\frac{3}{8}$ = 0.375 < 0.4.",
+      "A": "Student underestimates 3/8 (treating it as about 0.3) and places it below 35%.",
+      "B": "Correct: 35% = 0.35 < 3/8 = 0.375 < 0.4.",
       "C": "Student orders the levels from greatest to least, reversing the requested direction.",
-      "D": "Student overestimates $\\frac{3}{8}$ (treating it as more than 0.4) and places it last."
+      "D": "Student overestimates 3/8 (treating it as more than 0.4) and places it last."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -1657,7 +1657,7 @@
       "ordering four rational numbers given in mixed forms",
       "ordering values in a specified direction from greatest to least"
     ],
-    "question_text": "Four basketball players' free-throw rates are reported in different forms:\n\n• Player I: 0.82\n• Player II: $\\frac{4}{5}$\n• Player III: 83%\n• Player IV: $\\frac{17}{20}$\n\nWhich list orders the rates from greatest to least?",
+    "question_text": "Four basketball players' free-throw rates are reported in different forms:\n\n• Player I: 0.82\n• Player II: 4/5\n• Player III: 83%\n• Player IV: 17/20\n\nWhich list orders the rates from greatest to least?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "IV, III, I, II",
@@ -1666,12 +1666,12 @@
       "D": "IV, III, II, I"
     },
     "correct_answer": "A",
-    "explanation": "Convert each rate to a decimal: 0.82; $\\frac{4}{5}$ = 0.80; 83% = 0.83; $\\frac{17}{20}$ = 0.85. Ordering from greatest to least: 0.85 > 0.83 > 0.82 > 0.80, which is IV, III, I, II.",
+    "explanation": "Convert each rate to a decimal: 0.82; 4/5 = 0.80; 83% = 0.83; 17/20 = 0.85. Ordering from greatest to least: 0.85 > 0.83 > 0.82 > 0.80, which is IV, III, I, II.",
     "distractor_logic": {
-      "A": "Correct: $\\frac{17}{20}$ = 0.85 > 83% = 0.83 > 0.82 > $\\frac{4}{5}$ = 0.80.",
+      "A": "Correct: 17/20 = 0.85 > 83% = 0.83 > 0.82 > 4/5 = 0.80.",
       "B": "Student orders the rates from least to greatest, reversing the requested direction.",
-      "C": "Student places 83% ahead of $\\frac{17}{20}$, miscomputing $\\frac{17}{20}$ as 0.83 or less.",
-      "D": "Student swaps the bottom two, converting $\\frac{4}{5}$ as more than 0.82."
+      "C": "Student places 83% ahead of 17/20, miscomputing 17/20 as 0.83 or less.",
+      "D": "Student swaps the bottom two, converting 4/5 as more than 0.82."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -1695,7 +1695,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "$\\frac{17}{20}$ = 0.85 is the highest, so any list not starting with IV is out."
+        "hint_text": "17/20 = 0.85 is the highest, so any list not starting with IV is out."
       }
     ],
     "content_context": "sports_recreation",
@@ -1740,7 +1740,7 @@
       "comparing a mixed number, a decimal, a percent, and a fraction greater than one",
       "converting a mixed number to a decimal to compare magnitudes"
     ],
-    "question_text": "Four lengths of ribbon are recorded in different forms, in meters:\n\n• Ribbon I: 1.3\n• Ribbon II: 128%\n• Ribbon III: $\\frac{9}{7}$\n• Ribbon IV: 1 $\\frac{1}{3}$\n\nWhich ribbon is the longest?",
+    "question_text": "Four lengths of ribbon are recorded in different forms, in meters:\n\n• Ribbon I: 1.3\n• Ribbon II: 128%\n• Ribbon III: 9/7\n• Ribbon IV: 1 1/3\n\nWhich ribbon is the longest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Ribbon I",
@@ -1749,12 +1749,12 @@
       "D": "Ribbon IV"
     },
     "correct_answer": "D",
-    "explanation": "Convert each length to a decimal: 1.3; 128% = 1.28; $\\frac{9}{7}$ $\\approx$ 1.286; 1 $\\frac{1}{3}$ = 1 + 0.333 = 1.333. Comparing 1.3, 1.28, 1.286, and 1.333, the longest is Ribbon IV (1 $\\frac{1}{3}$).",
+    "explanation": "Convert each length to a decimal: 1.3; 128% = 1.28; 9/7 $\\approx$ 1.286; 1 1/3 = 1 + 0.333 = 1.333. Comparing 1.3, 1.28, 1.286, and 1.333, the longest is Ribbon IV (1 1/3).",
     "distractor_logic": {
-      "A": "Student treats 1 $\\frac{1}{3}$ as about 1.3 and so cannot tell it apart from Ribbon I, choosing the explicit 1.3.",
+      "A": "Student treats 1 1/3 as about 1.3 and so cannot tell it apart from Ribbon I, choosing the explicit 1.3.",
       "B": "Student treats 128% as the largest because 128 is the biggest number shown, rather than converting it to 1.28.",
-      "C": "Student misconverts $\\frac{9}{7}$ as greater than 1 $\\frac{1}{3}$.",
-      "D": "Correct: 1 $\\frac{1}{3}$ = 1.333 is the largest once every length is written as a decimal."
+      "C": "Student misconverts 9/7 as greater than 1 1/3.",
+      "D": "Correct: 1 1/3 = 1.333 is the largest once every length is written as a decimal."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -1770,7 +1770,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "1 $\\frac{1}{3}$ means 1 + 0.333 = 1.333, not 1.3."
+        "hint_text": "1 1/3 means 1 + 0.333 = 1.333, not 1.3."
       },
       {
         "strategy": "estimate_first",
@@ -1826,17 +1826,17 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "0.58",
-      "B": "$\\frac{5}{8}$",
+      "B": "5/8",
       "C": "72%",
-      "D": "$\\frac{3}{4}$"
+      "D": "3/4"
     },
     "correct_answer": "B",
-    "explanation": "A value qualifies only if it is above 0.6 and below 0.7. Convert each: 0.58 (below 0.6); $\\frac{5}{8}$ = 0.625 (between 0.6 and 0.7); 72% = 0.72 (above 0.7); $\\frac{3}{4}$ = 0.75 (above 0.7). Only $\\frac{5}{8}$ falls strictly between 0.6 and 0.7.",
+    "explanation": "A value qualifies only if it is above 0.6 and below 0.7. Convert each: 0.58 (below 0.6); 5/8 = 0.625 (between 0.6 and 0.7); 72% = 0.72 (above 0.7); 3/4 = 0.75 (above 0.7). Only 5/8 falls strictly between 0.6 and 0.7.",
     "distractor_logic": {
       "A": "Student rounds 0.58 up into the range, ignoring that it is below the lower bound of 0.6.",
-      "B": "Correct: $\\frac{5}{8}$ = 0.625, which is between 0.6 and 0.7.",
+      "B": "Correct: 5/8 = 0.625, which is between 0.6 and 0.7.",
       "C": "Student includes 72% = 0.72, ignoring that it is above the upper bound of 0.7.",
-      "D": "Student converts $\\frac{3}{4}$ as about 0.7 (an underestimate) and includes it in the range."
+      "D": "Student converts 3/4 as about 0.7 (an underestimate) and includes it in the range."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -1860,7 +1860,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "0.58 is below the range and $\\frac{3}{4}$ is above it — eliminate them."
+        "hint_text": "0.58 is below the range and 3/4 is above it — eliminate them."
       }
     ],
     "content_context": "other",
@@ -1904,7 +1904,7 @@
       "ordering negative rational numbers given in mixed forms",
       "applying the effect of a negative sign on the order of values"
     ],
-    "question_text": "An accountant logs four changes to a balance, in dollars, where negative values are losses:\n\n• Change I: -0.35\n• Change II: $\\frac{-1}{4}$\n• Change III: -30%\n• Change IV: $\\frac{-2}{5}$\n\nWhich list orders the changes from least to greatest?",
+    "question_text": "An accountant logs four changes to a balance, in dollars, where negative values are losses:\n\n• Change I: -0.35\n• Change II: -1/4\n• Change III: -30%\n• Change IV: -2/5\n\nWhich list orders the changes from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "II, III, I, IV",
@@ -1913,12 +1913,12 @@
       "D": "I, IV, III, II"
     },
     "correct_answer": "C",
-    "explanation": "Convert each to a decimal: -0.35; $\\frac{-1}{4}$ = -0.25; -30% = -0.30; $\\frac{-2}{5}$ = -0.40. For negatives, the value farthest from zero is the least. Ordering from least to greatest: -0.40 < -0.35 < -0.30 < -0.25, which is IV, I, III, II.",
+    "explanation": "Convert each to a decimal: -0.35; -1/4 = -0.25; -30% = -0.30; -2/5 = -0.40. For negatives, the value farthest from zero is the least. Ordering from least to greatest: -0.40 < -0.35 < -0.30 < -0.25, which is IV, I, III, II.",
     "distractor_logic": {
       "A": "Student orders the changes from greatest to least, reversing the requested direction.",
-      "B": "Student places $\\frac{-1}{4}$ = -0.25 before -30% = -0.30, forgetting that the negative sign flips the order of the magnitudes.",
-      "C": "Correct: $\\frac{-2}{5}$ = -0.40 < -0.35 < -30% = -0.30 < $\\frac{-1}{4}$ = -0.25.",
-      "D": "Student treats -0.35 as more negative than $\\frac{-2}{5}$ = -0.40, misjudging which loss is larger."
+      "B": "Student places -1/4 = -0.25 before -30% = -0.30, forgetting that the negative sign flips the order of the magnitudes.",
+      "C": "Correct: -2/5 = -0.40 < -0.35 < -30% = -0.30 < -1/4 = -0.25.",
+      "D": "Student treats -0.35 as more negative than -2/5 = -0.40, misjudging which loss is larger."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -1942,7 +1942,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "$\\frac{-2}{5}$ = -0.40 is the most negative, so any order not starting with IV is out."
+        "hint_text": "-2/5 = -0.40 is the most negative, so any order not starting with IV is out."
       }
     ],
     "content_context": "everyday_finance",
@@ -1986,21 +1986,21 @@
       "comparing a fraction to a percent precisely by converting to a common form",
       "distinguishing a value from a rounded version of itself"
     ],
-    "question_text": "A student scored $\\frac{5}{8}$ on a quiz. The passing benchmark is 62%. Which statement correctly compares the student's score to the benchmark?",
+    "question_text": "A student scored 5/8 on a quiz. The passing benchmark is 62%. Which statement correctly compares the student's score to the benchmark?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$\\frac{5}{8}$ is equal to 62%",
-      "B": "$\\frac{5}{8}$ is greater than 62%",
-      "C": "$\\frac{5}{8}$ is less than 62%",
-      "D": "$\\frac{5}{8}$ is equal to 58%"
+      "A": "5/8 is equal to 62%",
+      "B": "5/8 is greater than 62%",
+      "C": "5/8 is less than 62%",
+      "D": "5/8 is equal to 58%"
     },
     "correct_answer": "B",
-    "explanation": "Convert $\\frac{5}{8}$ to a percent: 5 $\\div$ 8 = 0.625 = 62.5%. Since 62.5% is greater than 62%, the student's score is greater than the benchmark.",
+    "explanation": "Convert 5/8 to a percent: 5 $\\div$ 8 = 0.625 = 62.5%. Since 62.5% is greater than 62%, the student's score is greater than the benchmark.",
     "distractor_logic": {
       "A": "Student rounds 62.5% down to 62% and concludes the two are equal.",
-      "B": "Correct: $\\frac{5}{8}$ = 62.5%, which is greater than 62%.",
-      "C": "Student converts $\\frac{5}{8}$ as 0.62 or less and concludes it is below the benchmark.",
-      "D": "Student writes the digits of $\\frac{5}{8}$ as 58% instead of dividing 5 by 8."
+      "B": "Correct: 5/8 = 62.5%, which is greater than 62%.",
+      "C": "Student converts 5/8 as 0.62 or less and concludes it is below the benchmark.",
+      "D": "Student writes the digits of 5/8 as 58% instead of dividing 5 by 8."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -2015,11 +2015,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "$\\frac{5}{8}$ = 0.625 = 62.5%, just above 62%."
+        "hint_text": "5/8 = 0.625 = 62.5%, just above 62%."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "They are not equal, and $\\frac{5}{8}$ is not 58% — rule those out."
+        "hint_text": "They are not equal, and 5/8 is not 58% — rule those out."
       }
     ],
     "content_context": "other",
@@ -2063,7 +2063,7 @@
       "ordering four closely valued rational numbers in mixed forms",
       "converting fractions to decimals precisely enough to break near ties"
     ],
-    "question_text": "Four baseball players' batting averages are recorded in different forms:\n\n• Player I: $\\frac{7}{16}$\n• Player II: 0.43\n• Player III: 44%\n• Player IV: $\\frac{4}{9}$\n\nWhich list orders the averages from least to greatest?",
+    "question_text": "Four baseball players' batting averages are recorded in different forms:\n\n• Player I: 7/16\n• Player II: 0.43\n• Player III: 44%\n• Player IV: 4/9\n\nWhich list orders the averages from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "II, III, I, IV",
@@ -2072,12 +2072,12 @@
       "D": "II, I, III, IV"
     },
     "correct_answer": "D",
-    "explanation": "Convert each to a decimal: $\\frac{7}{16}$ = 0.4375; 0.43; 44% = 0.44; $\\frac{4}{9}$ $\\approx$ 0.4444. Ordering from least to greatest: 0.43 < 0.4375 < 0.44 < 0.4444, which is II, I, III, IV.",
+    "explanation": "Convert each to a decimal: 7/16 = 0.4375; 0.43; 44% = 0.44; 4/9 $\\approx$ 0.4444. Ordering from least to greatest: 0.43 < 0.4375 < 0.44 < 0.4444, which is II, I, III, IV.",
     "distractor_logic": {
-      "A": "Student places 44% before $\\frac{7}{16}$, miscomputing $\\frac{7}{16}$ as more than 0.44.",
-      "B": "Student assumes the values are already in order and lists them as written, placing $\\frac{7}{16}$ first because it is the only plain fraction.",
-      "C": "Student swaps the top two, treating 44% as greater than $\\frac{4}{9}$.",
-      "D": "Correct: 0.43 < $\\frac{7}{16}$ = 0.4375 < 44% = 0.44 < $\\frac{4}{9}$ $\\approx$ 0.4444."
+      "A": "Student places 44% before 7/16, miscomputing 7/16 as more than 0.44.",
+      "B": "Student assumes the values are already in order and lists them as written, placing 7/16 first because it is the only plain fraction.",
+      "C": "Student swaps the top two, treating 44% as greater than 4/9.",
+      "D": "Correct: 0.43 < 7/16 = 0.4375 < 44% = 0.44 < 4/9 $\\approx$ 0.4444."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -2097,7 +2097,7 @@
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "These are nearly tied — $\\frac{7}{16}$ = 0.4375 sits between 0.43 and 0.44."
+        "hint_text": "These are nearly tied — 7/16 = 0.4375 sits between 0.43 and 0.44."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -2146,7 +2146,7 @@
       "comparing rational numbers greater than one given in mixed forms",
       "converting a mixed number and a percent over 100 to decimals"
     ],
-    "question_text": "Four investments grew by the factors shown below:\n\n• Investment I: 1.17\n• Investment II: 118%\n• Investment III: $\\frac{7}{6}$\n• Investment IV: 1 $\\frac{1}{5}$\n\nWhich investment grew by the SMALLEST factor?",
+    "question_text": "Four investments grew by the factors shown below:\n\n• Investment I: 1.17\n• Investment II: 118%\n• Investment III: 7/6\n• Investment IV: 1 1/5\n\nWhich investment grew by the SMALLEST factor?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Investment I",
@@ -2155,12 +2155,12 @@
       "D": "Investment IV"
     },
     "correct_answer": "C",
-    "explanation": "Convert each factor to a decimal: 1.17; 118% = 1.18; $\\frac{7}{6}$ $\\approx$ 1.167; 1 $\\frac{1}{5}$ = 1.2. Comparing 1.17, 1.18, 1.167, and 1.2, the smallest is Investment III ($\\frac{7}{6}$ $\\approx$ 1.167).",
+    "explanation": "Convert each factor to a decimal: 1.17; 118% = 1.18; 7/6 $\\approx$ 1.167; 1 1/5 = 1.2. Comparing 1.17, 1.18, 1.167, and 1.2, the smallest is Investment III (7/6 $\\approx$ 1.167).",
     "distractor_logic": {
-      "A": "Student rounds $\\frac{7}{6}$ up to 1.17 and so cannot tell it apart from Investment I, choosing the explicit 1.17.",
+      "A": "Student rounds 7/6 up to 1.17 and so cannot tell it apart from Investment I, choosing the explicit 1.17.",
       "B": "Student treats 118% as the smallest because it is the only percent shown.",
-      "C": "Correct: $\\frac{7}{6}$ $\\approx$ 1.167 is the smallest once every factor is written as a decimal.",
-      "D": "Student converts 1 $\\frac{1}{5}$ as 1.05 (treating $\\frac{1}{5}$ as 0.05), making it appear smallest."
+      "C": "Correct: 7/6 $\\approx$ 1.167 is the smallest once every factor is written as a decimal.",
+      "D": "Student converts 1 1/5 as 1.05 (treating 1/5 as 0.05), making it appear smallest."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -2176,7 +2176,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "1 $\\frac{1}{5}$ = 1.2 and 118% = 1.18 — convert everything past the decimal carefully."
+        "hint_text": "1 1/5 = 1.2 and 118% = 1.18 — convert everything past the decimal carefully."
       },
       {
         "strategy": "estimate_first",
@@ -2184,7 +2184,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "1 $\\frac{1}{5}$ = 1.2 is the largest, not the smallest — eliminate it."
+        "hint_text": "1 1/5 = 1.2 is the largest, not the smallest — eliminate it."
       }
     ],
     "content_context": "everyday_finance",
@@ -2229,7 +2229,7 @@
       "ordering four closely valued rational numbers greater than one",
       "ordering mixed forms in a specified direction"
     ],
-    "question_text": "Four values are listed below:\n\n• Value I: $\\frac{11}{8}$\n• Value II: 1.38\n• Value III: 137%\n• Value IV: 1 $\\frac{2}{5}$\n\nWhich list orders the values from greatest to least?",
+    "question_text": "Four values are listed below:\n\n• Value I: 11/8\n• Value II: 1.38\n• Value III: 137%\n• Value IV: 1 2/5\n\nWhich list orders the values from greatest to least?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "IV, II, I, III",
@@ -2238,12 +2238,12 @@
       "D": "II, IV, I, III"
     },
     "correct_answer": "A",
-    "explanation": "Convert each to a decimal: $\\frac{11}{8}$ = 1.375; 1.38; 137% = 1.37; 1 $\\frac{2}{5}$ = 1.40. Ordering from greatest to least: 1.40 > 1.38 > 1.375 > 1.37, which is IV, II, I, III.",
+    "explanation": "Convert each to a decimal: 11/8 = 1.375; 1.38; 137% = 1.37; 1 2/5 = 1.40. Ordering from greatest to least: 1.40 > 1.38 > 1.375 > 1.37, which is IV, II, I, III.",
     "distractor_logic": {
-      "A": "Correct: 1 $\\frac{2}{5}$ = 1.40 > 1.38 > $\\frac{11}{8}$ = 1.375 > 137% = 1.37.",
+      "A": "Correct: 1 2/5 = 1.40 > 1.38 > 11/8 = 1.375 > 137% = 1.37.",
       "B": "Student orders the values from least to greatest, reversing the requested direction.",
-      "C": "Student places 137% = 1.37 ahead of $\\frac{11}{8}$ = 1.375, miscomputing the near tie.",
-      "D": "Student swaps the top two, converting 1 $\\frac{2}{5}$ as less than 1.38."
+      "C": "Student places 137% = 1.37 ahead of 11/8 = 1.375, miscomputing the near tie.",
+      "D": "Student swaps the top two, converting 1 2/5 as less than 1.38."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -2263,11 +2263,11 @@
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "$\\frac{11}{8}$ = 1.375 and 137% = 1.37 are nearly tied — keep all three decimal places."
+        "hint_text": "11/8 = 1.375 and 137% = 1.37 are nearly tied — keep all three decimal places."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "1 $\\frac{2}{5}$ = 1.40 is the greatest, so any list not starting with IV is out."
+        "hint_text": "1 2/5 = 1.40 is the greatest, so any list not starting with IV is out."
       }
     ],
     "content_context": "generic",
@@ -2312,21 +2312,21 @@
       "determining whether a value falls between two fractions",
       "converting fractional bounds to decimals to test an interval"
     ],
-    "question_text": "A tank is 'within range' when its fill level, written as a decimal, is strictly between $\\frac{5}{6}$ and $\\frac{7}{8}$. Which of the following readings is within range?",
+    "question_text": "A tank is 'within range' when its fill level, written as a decimal, is strictly between 5/6 and 7/8. Which of the following readings is within range?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "0.82",
       "B": "0.86",
       "C": "88%",
-      "D": "$\\frac{9}{10}$"
+      "D": "9/10"
     },
     "correct_answer": "B",
-    "explanation": "Convert the bounds: $\\frac{5}{6}$ $\\approx$ 0.833 and $\\frac{7}{8}$ = 0.875. A reading qualifies only if it is above 0.833 and below 0.875. Checking each: 0.82 (below 0.833); 0.86 (between); 88% = 0.88 (above 0.875); $\\frac{9}{10}$ = 0.90 (above 0.875). Only 0.86 is within range.",
+    "explanation": "Convert the bounds: 5/6 $\\approx$ 0.833 and 7/8 = 0.875. A reading qualifies only if it is above 0.833 and below 0.875. Checking each: 0.82 (below 0.833); 0.86 (between); 88% = 0.88 (above 0.875); 9/10 = 0.90 (above 0.875). Only 0.86 is within range.",
     "distractor_logic": {
-      "A": "Student underestimates $\\frac{5}{6}$ (treating it as about 0.8) and includes 0.82.",
-      "B": "Correct: 0.86 is between $\\frac{5}{6}$ $\\approx$ 0.833 and $\\frac{7}{8}$ = 0.875.",
-      "C": "Student overestimates the upper bound or rounds $\\frac{7}{8}$ up, including 88% = 0.88.",
-      "D": "Student does not check the upper bound of 0.875 and includes $\\frac{9}{10}$ = 0.90."
+      "A": "Student underestimates 5/6 (treating it as about 0.8) and includes 0.82.",
+      "B": "Correct: 0.86 is between 5/6 $\\approx$ 0.833 and 7/8 = 0.875.",
+      "C": "Student overestimates the upper bound or rounds 7/8 up, including 88% = 0.88.",
+      "D": "Student does not check the upper bound of 0.875 and includes 9/10 = 0.90."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -2342,7 +2342,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The bounds are $\\frac{5}{6}$ $\\approx$ 0.833 and $\\frac{7}{8}$ = 0.875 — convert them first."
+        "hint_text": "The bounds are 5/6 $\\approx$ 0.833 and 7/8 = 0.875 — convert them first."
       },
       {
         "strategy": "estimate_first",
@@ -2350,7 +2350,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "0.82 is below the range and $\\frac{9}{10}$ is above it — eliminate them."
+        "hint_text": "0.82 is below the range and 9/10 is above it — eliminate them."
       }
     ],
     "content_context": "other",
@@ -2394,7 +2394,7 @@
       "comparing a fraction and a decimal and quantifying the difference",
       "expressing the difference between two rational numbers in percentage points"
     ],
-    "question_text": "A store's online sales make up $\\frac{5}{8}$ of its total, and its in-store sales make up 0.6 of its total. Which is larger, and by how much (in percentage points)?",
+    "question_text": "A store's online sales make up 5/8 of its total, and its in-store sales make up 0.6 of its total. Which is larger, and by how much (in percentage points)?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "In-store is larger, by 2.5 percentage points",
@@ -2403,12 +2403,12 @@
       "D": "They are equal"
     },
     "correct_answer": "C",
-    "explanation": "Convert both to percents: $\\frac{5}{8}$ = 0.625 = 62.5%, and 0.6 = 60%. Online sales (62.5%) are larger than in-store sales (60%), and the difference is 62.5% - 60% = 2.5 percentage points.",
+    "explanation": "Convert both to percents: 5/8 = 0.625 = 62.5%, and 0.6 = 60%. Online sales (62.5%) are larger than in-store sales (60%), and the difference is 62.5% - 60% = 2.5 percentage points.",
     "distractor_logic": {
       "A": "Student finds the correct gap of 2.5 points but reverses which share is larger.",
       "B": "Student correctly identifies online as larger but miscomputes the gap as 5 points.",
-      "C": "Correct: $\\frac{5}{8}$ = 62.5% is larger than 60% by 2.5 percentage points.",
-      "D": "Student rounds $\\frac{5}{8}$ down to 0.6 and concludes the two shares are equal."
+      "C": "Correct: 5/8 = 62.5% is larger than 60% by 2.5 percentage points.",
+      "D": "Student rounds 5/8 down to 0.6 and concludes the two shares are equal."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -2424,7 +2424,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "$\\frac{5}{8}$ = 62.5% and 0.6 = 60% — compare both the size and the gap."
+        "hint_text": "5/8 = 62.5% and 0.6 = 60% — compare both the size and the gap."
       },
       {
         "strategy": "estimate_first",
@@ -2432,7 +2432,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "$\\frac{5}{8}$ is not equal to 0.6, so 'equal' is out."
+        "hint_text": "5/8 is not equal to 0.6, so 'equal' is out."
       }
     ],
     "content_context": "shopping_retail",
@@ -2476,7 +2476,7 @@
       "converting a fraction to its decimal equivalent by dividing",
       "recognizing the decimal equivalent of a common fraction"
     ],
-    "question_text": "A cookie recipe calls for $\\frac{3}{4}$ cup of sugar. What is the decimal equivalent of $\\frac{3}{4}$?",
+    "question_text": "A cookie recipe calls for 3/4 cup of sugar. What is the decimal equivalent of 3/4?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "0.75",
@@ -2556,18 +2556,18 @@
     "question_text": "A job is 0.6 of the way complete. Which fraction is equivalent to 0.6?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$\\frac{1}{6}$",
-      "B": "$\\frac{3}{5}$",
-      "C": "$\\frac{2}{3}$",
-      "D": "$\\frac{5}{3}$"
+      "A": "1/6",
+      "B": "3/5",
+      "C": "2/3",
+      "D": "5/3"
     },
     "correct_answer": "B",
-    "explanation": "Write 0.6 as a fraction over its place value: 0.6 = $\\frac{6}{10}$. Simplify by dividing numerator and denominator by 2: $\\frac{6}{10}$ = $\\frac{3}{5}$.",
+    "explanation": "Write 0.6 as a fraction over its place value: 0.6 = 6/10. Simplify by dividing numerator and denominator by 2: 6/10 = 3/5.",
     "distractor_logic": {
-      "A": "Student reads the decimal digit 6 as the denominator, writing $\\frac{1}{6}$ instead of recognizing that 0.6 = $\\frac{6}{10}$.",
-      "B": "Correct: 0.6 = $\\frac{6}{10}$ = $\\frac{3}{5}$.",
-      "C": "Student confuses 0.6 with 0.667 $\\approx$ $\\frac{2}{3}$, rounding the decimal before converting.",
-      "D": "Student inverts the fraction, writing $\\frac{5}{3}$ instead of $\\frac{3}{5}$."
+      "A": "Student reads the decimal digit 6 as the denominator, writing 1/6 instead of recognizing that 0.6 = 6/10.",
+      "B": "Correct: 0.6 = 6/10 = 3/5.",
+      "C": "Student confuses 0.6 with 0.667 $\\approx$ 2/3, rounding the decimal before converting.",
+      "D": "Student inverts the fraction, writing 5/3 instead of 3/5."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -2582,11 +2582,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "0.6 = $\\frac{6}{10}$ — simplify by dividing both parts by 2."
+        "hint_text": "0.6 = 6/10 — simplify by dividing both parts by 2."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "$\\frac{5}{3}$ is greater than 1 and $\\frac{1}{6}$ is about 0.17 — eliminate both."
+        "hint_text": "5/3 is greater than 1 and 1/6 is about 0.17 — eliminate both."
       }
     ],
     "content_context": "other",
@@ -2633,18 +2633,18 @@
     "question_text": "Which of the following is NOT equal to 0.25?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$\\frac{1}{4}$",
-      "B": "$\\frac{25}{100}$",
-      "C": "$\\frac{5}{20}$",
-      "D": "$\\frac{2}{5}$"
+      "A": "1/4",
+      "B": "25/100",
+      "C": "5/20",
+      "D": "2/5"
     },
     "correct_answer": "D",
     "explanation": "Test each option by converting to a decimal. A: 1 $\\div$ 4 = 0.25. B: 25 $\\div$ 100 = 0.25. C: 5 $\\div$ 20 = 0.25. D: 2 $\\div$ 5 = 0.4. Options A, B, and C all equal 0.25; only D equals 0.4, which is not 0.25.",
     "distractor_logic": {
-      "A": "Student converts $\\frac{1}{4}$ as 0.4 by treating the denominator 4 as a tenths digit, incorrectly concluding that $\\frac{1}{4}$ $\\neq$ 0.25.",
-      "B": "Student sees the large denominator 100 and assumes $\\frac{25}{100}$ must differ from 0.25, without simplifying or dividing.",
-      "C": "Student does not simplify $\\frac{5}{20}$ = $\\frac{1}{4}$ and treats the unsimplified fraction as unequal to 0.25.",
-      "D": "Correct: $\\frac{2}{5}$ = 0.4, which is the only option not equal to 0.25."
+      "A": "Student converts 1/4 as 0.4 by treating the denominator 4 as a tenths digit, incorrectly concluding that 1/4 $\\neq$ 0.25.",
+      "B": "Student sees the large denominator 100 and assumes 25/100 must differ from 0.25, without simplifying or dividing.",
+      "C": "Student does not simplify 5/20 = 1/4 and treats the unsimplified fraction as unequal to 0.25.",
+      "D": "Correct: 2/5 = 0.4, which is the only option not equal to 0.25."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -2707,7 +2707,7 @@
       "computing the decimal equivalent of a fraction through long division",
       "recognizing the decimal equivalent of eighths"
     ],
-    "question_text": "A carpenter cuts a board into sections that are each $\\frac{3}{8}$ of a meter long. What is the decimal equivalent of $\\frac{3}{8}$?",
+    "question_text": "A carpenter cuts a board into sections that are each 3/8 of a meter long. What is the decimal equivalent of 3/8?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "0.3",
@@ -2721,7 +2721,7 @@
       "A": "Student reads the numerator 3 as 3 tenths, ignoring the denominator entirely.",
       "B": "Student concatenates the digits 3 and 8 to get 0.38 instead of dividing.",
       "C": "Correct: 3 $\\div$ 8 = 0.375.",
-      "D": "Student computes $\\frac{5}{8}$ = 0.625 instead of $\\frac{3}{8}$, using 5 as the numerator."
+      "D": "Student computes 5/8 = 0.625 instead of 3/8, using 5 as the numerator."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -2740,7 +2740,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "$\\frac{3}{8}$ is less than $\\frac{1}{2}$ = 0.5, so the answer must be below 0.5."
+        "hint_text": "3/8 is less than 1/2 = 0.5, so the answer must be below 0.5."
       }
     ],
     "content_context": "construction_measurement",
@@ -2784,7 +2784,7 @@
       "recognizing that some fractions produce repeating decimals",
       "expressing a repeating decimal with correct notation"
     ],
-    "question_text": "Which decimal correctly represents $\\frac{2}{3}$?",
+    "question_text": "Which decimal correctly represents 2/3?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "0.23",
@@ -2793,12 +2793,12 @@
       "D": "0.667"
     },
     "correct_answer": "B",
-    "explanation": "Divide: 2 $\\div$ 3 = 0.666... The digit 6 repeats without end. No finite decimal (such as 0.66 or 0.667) exactly equals $\\frac{2}{3}$ — only 0.666... correctly represents it.",
+    "explanation": "Divide: 2 $\\div$ 3 = 0.666... The digit 6 repeats without end. No finite decimal (such as 0.66 or 0.667) exactly equals 2/3 — only 0.666... correctly represents it.",
     "distractor_logic": {
       "A": "Student reads the digits 2 and 3 directly, writing 0.23 instead of dividing 2 by 3.",
       "B": "Correct: 2 $\\div$ 3 = 0.666..., with the digit 6 repeating indefinitely.",
       "C": "Student stops the division after two decimal places, truncating the repeating decimal to 0.66.",
-      "D": "Student rounds the repeating decimal to three decimal places, writing 0.667 instead of recognizing that no finite decimal exactly equals $\\frac{2}{3}$."
+      "D": "Student rounds the repeating decimal to three decimal places, writing 0.667 instead of recognizing that no finite decimal exactly equals 2/3."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -2861,7 +2861,7 @@
       "computing the decimal equivalent of a fraction with denominator 8",
       "distinguishing between exact and approximate decimal representations"
     ],
-    "question_text": "A lab scale reads $\\frac{7}{8}$ of a gram. What is the decimal equivalent of $\\frac{7}{8}$?",
+    "question_text": "A lab scale reads 7/8 of a gram. What is the decimal equivalent of 7/8?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "0.78",
@@ -2895,7 +2895,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "$\\frac{7}{8}$ is just below 1, so the answer should be between 0.8 and 1.0."
+        "hint_text": "7/8 is just below 1, so the answer should be between 0.8 and 1.0."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -2946,16 +2946,16 @@
     "question_text": "A fabric strip measures 0.375 meters. Which fraction is equivalent to 0.375?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$\\frac{3}{8}$",
-      "B": "$\\frac{3}{7}$",
-      "C": "$\\frac{37}{100}$",
-      "D": "$\\frac{3}{80}$"
+      "A": "3/8",
+      "B": "3/7",
+      "C": "37/100",
+      "D": "3/80"
     },
     "correct_answer": "A",
-    "explanation": "Write 0.375 as a fraction over its place value: 0.375 = $\\frac{375}{1000}$. Simplify by dividing top and bottom by 125: $\\frac{375}{1000}$ = $\\frac{3}{8}$.",
+    "explanation": "Write 0.375 as a fraction over its place value: 0.375 = 375/1000. Simplify by dividing top and bottom by 125: 375/1000 = 3/8.",
     "distractor_logic": {
-      "A": "Correct: 0.375 = $\\frac{375}{1000}$ = $\\frac{3}{8}$.",
-      "B": "Student reads the digits 3 and 7 from 0.375 and writes $\\frac{3}{7}$, ignoring the 5 and place value.",
+      "A": "Correct: 0.375 = 375/1000 = 3/8.",
+      "B": "Student reads the digits 3 and 7 from 0.375 and writes 3/7, ignoring the 5 and place value.",
       "C": "Student reads 0.375 as '37 hundredths,' dropping the last digit and using the wrong denominator.",
       "D": "Student misplaces the decimal by a factor of 10, using 80 as the denominator instead of 8."
     },
@@ -2973,15 +2973,15 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "0.375 = $\\frac{375}{1000}$ — simplify by dividing top and bottom by 125."
+        "hint_text": "0.375 = 375/1000 — simplify by dividing top and bottom by 125."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "0.375 is close to 0.4 = $\\frac{2}{5}$, so the fraction should be slightly less than $\\frac{2}{5}$."
+        "hint_text": "0.375 is close to 0.4 = 2/5, so the fraction should be slightly less than 2/5."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "$\\frac{3}{80}$ = 0.0375, not 0.375 — eliminate it immediately."
+        "hint_text": "3/80 = 0.0375, not 0.375 — eliminate it immediately."
       }
     ],
     "content_context": "other",
@@ -3025,7 +3025,7 @@
       "computing the decimal equivalent of a fraction that produces a repeating decimal",
       "recognizing the repeating block in a decimal expansion"
     ],
-    "question_text": "A worker completes $\\frac{5}{6}$ of a task each hour. What is the decimal equivalent of $\\frac{5}{6}$?",
+    "question_text": "A worker completes 5/6 of a task each hour. What is the decimal equivalent of 5/6?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "0.56",
@@ -3058,7 +3058,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "0.56 is digit-stacking, and 0.8 = $\\frac{4}{5}$, not $\\frac{5}{6}$ — eliminate both."
+        "hint_text": "0.56 is digit-stacking, and 0.8 = 4/5, not 5/6 — eliminate both."
       }
     ],
     "content_context": "other",
@@ -3105,18 +3105,18 @@
     "question_text": "Which of the following fractions has a TERMINATING decimal?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$\\frac{1}{3}$",
-      "B": "$\\frac{5}{8}$",
-      "C": "$\\frac{5}{6}$",
-      "D": "$\\frac{7}{12}$"
+      "A": "1/3",
+      "B": "5/8",
+      "C": "5/6",
+      "D": "7/12"
     },
     "correct_answer": "B",
-    "explanation": "A fraction in lowest terms produces a terminating decimal when its denominator has no prime factors other than 2 or 5. Checking each: $\\frac{1}{3}$ — denominator 3 has a factor of 3 (repeating). $\\frac{5}{8}$ — denominator 8 = $2^{3}$ has only the factor 2 (terminating: $\\frac{5}{8}$ = 0.625). $\\frac{5}{6}$ — denominator 6 = 2 $\\times$ 3 has a factor of 3 (repeating). $\\frac{7}{12}$ — denominator 12 = 4 $\\times$ 3 has a factor of 3 (repeating). Only $\\frac{5}{8}$ terminates.",
+    "explanation": "A fraction in lowest terms produces a terminating decimal when its denominator has no prime factors other than 2 or 5. Checking each: 1/3 — denominator 3 has a factor of 3 (repeating). 5/8 — denominator 8 = $2^{3}$ has only the factor 2 (terminating: 5/8 = 0.625). 5/6 — denominator 6 = 2 $\\times$ 3 has a factor of 3 (repeating). 7/12 — denominator 12 = 4 $\\times$ 3 has a factor of 3 (repeating). Only 5/8 terminates.",
     "distractor_logic": {
-      "A": "$\\frac{1}{3}$ = 0.333..., a repeating decimal; the denominator 3 is not a factor of any power of 10.",
-      "B": "Correct: $\\frac{5}{8}$ = 0.625; the denominator 8 = $2^{3}$ has only the factor 2, so the decimal terminates.",
-      "C": "$\\frac{5}{6}$ = 0.8333...; the denominator 6 = 2 $\\times$ 3 contains a factor of 3, so the decimal repeats.",
-      "D": "$\\frac{7}{12}$ = 0.5833...; the denominator 12 = 4 $\\times$ 3 contains a factor of 3, so the decimal repeats."
+      "A": "1/3 = 0.333..., a repeating decimal; the denominator 3 is not a factor of any power of 10.",
+      "B": "Correct: 5/8 = 0.625; the denominator 8 = $2^{3}$ has only the factor 2, so the decimal terminates.",
+      "C": "5/6 = 0.8333...; the denominator 6 = 2 $\\times$ 3 contains a factor of 3, so the decimal repeats.",
+      "D": "7/12 = 0.5833...; the denominator 12 = 4 $\\times$ 3 contains a factor of 3, so the decimal repeats."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -3179,7 +3179,7 @@
       "converting a mixed number to its decimal equivalent",
       "separating the whole number and fractional parts before converting"
     ],
-    "question_text": "A road trip takes 2 $\\frac{3}{4}$ hours. What is the decimal equivalent of 2 $\\frac{3}{4}$?",
+    "question_text": "A road trip takes 2 3/4 hours. What is the decimal equivalent of 2 3/4?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "2.75",
@@ -3188,12 +3188,12 @@
       "D": "2.25"
     },
     "correct_answer": "A",
-    "explanation": "Convert the fractional part separately: $\\frac{3}{4}$ = 0.75. Add to the whole number: 2 + 0.75 = 2.75.",
+    "explanation": "Convert the fractional part separately: 3/4 = 0.75. Add to the whole number: 2 + 0.75 = 2.75.",
     "distractor_logic": {
-      "A": "Correct: $\\frac{3}{4}$ = 0.75, so 2 $\\frac{3}{4}$ = 2.75.",
-      "B": "Student converts $\\frac{3}{4}$ as 3 tenths (0.3), adding to get 2.3 instead of 2.75.",
+      "A": "Correct: 3/4 = 0.75, so 2 3/4 = 2.75.",
+      "B": "Student converts 3/4 as 3 tenths (0.3), adding to get 2.3 instead of 2.75.",
       "C": "Student reads the digits 2, 3, and 4 directly to write 2.34.",
-      "D": "Student uses $\\frac{1}{4}$ = 0.25 instead of $\\frac{3}{4}$ = 0.75, computing 2 + 0.25 = 2.25."
+      "D": "Student uses 1/4 = 0.25 instead of 3/4 = 0.75, computing 2 + 0.25 = 2.25."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -3208,11 +3208,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Convert the fractional part separately: $\\frac{3}{4}$ = 0.75, then add to 2."
+        "hint_text": "Convert the fractional part separately: 3/4 = 0.75, then add to 2."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "2 $\\frac{3}{4}$ is between 2.5 and 3, so the answer must be in that range."
+        "hint_text": "2 3/4 is between 2.5 and 3, so the answer must be in that range."
       }
     ],
     "content_context": "travel_distance",
@@ -3256,7 +3256,7 @@
       "computing the decimal equivalent of a fraction with denominator 9",
       "recognizing the repeating digit pattern in ninths"
     ],
-    "question_text": "What is the decimal equivalent of $\\frac{5}{9}$?",
+    "question_text": "What is the decimal equivalent of 5/9?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "0.59",
@@ -3265,7 +3265,7 @@
       "D": "0.555..."
     },
     "correct_answer": "D",
-    "explanation": "Divide: 5 $\\div$ 9 = 0.555... (the 5 repeats forever). In general, any fraction n/9 produces a decimal where the digit n repeats: $\\frac{1}{9}$ = 0.111..., $\\frac{2}{9}$ = 0.222..., and so on.",
+    "explanation": "Divide: 5 $\\div$ 9 = 0.555... (the 5 repeats forever). In general, any fraction n/9 produces a decimal where the digit n repeats: 1/9 = 0.111..., 2/9 = 0.222..., and so on.",
     "distractor_logic": {
       "A": "Student concatenates the digits 5 and 9 to write 0.59 instead of dividing.",
       "B": "Student rounds the repeating decimal to a single decimal place, losing the repeating part.",
@@ -3336,17 +3336,17 @@
     "question_text": "Which fraction is equivalent to the decimal 0.272727...?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$\\frac{27}{100}$",
-      "B": "$\\frac{3}{11}$",
-      "C": "$\\frac{3}{10}$",
-      "D": "$\\frac{27}{999}$"
+      "A": "27/100",
+      "B": "3/11",
+      "C": "3/10",
+      "D": "27/999"
     },
     "correct_answer": "B",
-    "explanation": "Let x = 0.272727... Since two digits repeat, multiply both sides by 100: 100x = 27.272727... Subtract: 100x - x = 27, so 99x = 27, giving x = $\\frac{27}{99}$. Simplify by dividing by 9: $\\frac{27}{99}$ = $\\frac{3}{11}$. Verify: 3 $\\div$ 11 = 0.272727... ✓",
+    "explanation": "Let x = 0.272727... Since two digits repeat, multiply both sides by 100: 100x = 27.272727... Subtract: 100x - x = 27, so 99x = 27, giving x = 27/99. Simplify by dividing by 9: 27/99 = 3/11. Verify: 3 $\\div$ 11 = 0.272727... ✓",
     "distractor_logic": {
-      "A": "Student reads 0.27 as $\\frac{27}{100}$, ignoring the repeating nature of the decimal and treating it as a terminating two-decimal value.",
-      "B": "Correct: 0.272727... = $\\frac{27}{99}$ = $\\frac{3}{11}$.",
-      "C": "Student oversimplifies, reading only the leading digit to write $\\frac{3}{10}$ = 0.3.",
+      "A": "Student reads 0.27 as 27/100, ignoring the repeating nature of the decimal and treating it as a terminating two-decimal value.",
+      "B": "Correct: 0.272727... = 27/99 = 3/11.",
+      "C": "Student oversimplifies, reading only the leading digit to write 3/10 = 0.3.",
       "D": "Student applies the repeating-block method but uses 999 (for a three-digit period) instead of 99 (for a two-digit period), producing an incorrect denominator."
     },
     "difficulty_level": "Advanced",
@@ -3367,11 +3367,11 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "0.272727... $\\approx$ 0.27, which is close to $\\frac{3}{11}$ $\\approx$ 0.273 — verify with division."
+        "hint_text": "0.272727... $\\approx$ 0.27, which is close to 3/11 $\\approx$ 0.273 — verify with division."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "$\\frac{27}{100}$ is only accurate to two decimal places; the true value repeats — eliminate it."
+        "hint_text": "27/100 is only accurate to two decimal places; the true value repeats — eliminate it."
       }
     ],
     "content_context": "generic",
@@ -3415,7 +3415,7 @@
       "computing the decimal equivalent of a fraction with a mixed repeating pattern",
       "identifying the correct decimal notation for a non-purely-repeating decimal"
     ],
-    "question_text": "A precision instrument reads $\\frac{7}{12}$ of a unit. What is the decimal equivalent of $\\frac{7}{12}$?",
+    "question_text": "A precision instrument reads 7/12 of a unit. What is the decimal equivalent of 7/12?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "0.712",
@@ -3449,7 +3449,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "$\\frac{7}{12}$ is just above $\\frac{1}{2}$ = 0.5, so the answer must be slightly above 0.5."
+        "hint_text": "7/12 is just above 1/2 = 0.5, so the answer must be slightly above 0.5."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -3500,18 +3500,18 @@
     "question_text": "Which of the following fractions has the GREATEST decimal equivalent?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$\\frac{7}{9}$",
-      "B": "$\\frac{8}{11}$",
-      "C": "$\\frac{5}{7}$",
-      "D": "$\\frac{4}{6}$"
+      "A": "7/9",
+      "B": "8/11",
+      "C": "5/7",
+      "D": "4/6"
     },
     "correct_answer": "A",
-    "explanation": "Convert each fraction to a decimal: $\\frac{7}{9}$ = 0.777...; $\\frac{8}{11}$ = 0.7272...; $\\frac{5}{7}$ = 0.7142...; $\\frac{4}{6}$ = $\\frac{2}{3}$ = 0.666... Comparing all four, $\\frac{7}{9}$ = 0.777... is the greatest.",
+    "explanation": "Convert each fraction to a decimal: 7/9 = 0.777...; 8/11 = 0.7272...; 5/7 = 0.7142...; 4/6 = 2/3 = 0.666... Comparing all four, 7/9 = 0.777... is the greatest.",
     "distractor_logic": {
-      "A": "Correct: $\\frac{7}{9}$ = 0.777..., which is greater than all other options.",
-      "B": "Student compares numerators and denominators directly, reasoning that 8 > 7 and 11 is close to 9, and concludes $\\frac{8}{11}$ is largest without computing decimals.",
-      "C": "Student picks $\\frac{5}{7}$ because 5 and 7 appear large relative to the fraction, or misjudges the decimal expansion.",
-      "D": "Student simplifies $\\frac{4}{6}$ = $\\frac{2}{3}$ = 0.666... correctly but then incorrectly places it above $\\frac{7}{9}$ by reasoning that $\\frac{2}{3}$ is a 'nice' fraction."
+      "A": "Correct: 7/9 = 0.777..., which is greater than all other options.",
+      "B": "Student compares numerators and denominators directly, reasoning that 8 > 7 and 11 is close to 9, and concludes 8/11 is largest without computing decimals.",
+      "C": "Student picks 5/7 because 5 and 7 appear large relative to the fraction, or misjudges the decimal expansion.",
+      "D": "Student simplifies 4/6 = 2/3 = 0.666... correctly but then incorrectly places it above 7/9 by reasoning that 2/3 is a 'nice' fraction."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -3535,7 +3535,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "$\\frac{4}{6}$ = $\\frac{2}{3}$ $\\approx$ 0.667 is the smallest — eliminate it first."
+        "hint_text": "4/6 = 2/3 $\\approx$ 0.667 is the smallest — eliminate it first."
       }
     ],
     "content_context": "data_interpretation",
@@ -3582,17 +3582,17 @@
     "question_text": "Which fraction is equivalent to the decimal 0.41666... (the digit 6 repeats indefinitely)?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$\\frac{41}{100}$",
-      "B": "$\\frac{5}{11}$",
-      "C": "$\\frac{41}{99}$",
-      "D": "$\\frac{5}{12}$"
+      "A": "41/100",
+      "B": "5/11",
+      "C": "41/99",
+      "D": "5/12"
     },
     "correct_answer": "D",
-    "explanation": "Let x = 0.41666... Multiply by 10: 10x = 4.1666... Multiply by 100: 100x = 41.666... Subtract: 100x - 10x = 37.5, so 90x = 37.5, giving x = 37.$\\frac{5}{90}$ = $\\frac{375}{900}$ = $\\frac{5}{12}$. Verify: 5 $\\div$ 12 = 0.41666... ✓",
+    "explanation": "Let x = 0.41666... Multiply by 10: 10x = 4.1666... Multiply by 100: 100x = 41.666... Subtract: 100x - 10x = 37.5, so 90x = 37.5, giving x = 37.5/90 = 375/900 = 5/12. Verify: 5 $\\div$ 12 = 0.41666... ✓",
     "distractor_logic": {
-      "A": "Student reads 0.41 as $\\frac{41}{100}$, treating the decimal as if it terminates and ignoring the repeating part.",
-      "B": "Student approximates 0.41666... as roughly 0.45, recalls that fractions over 11 produce two-digit repeating decimals, and selects $\\frac{5}{11}$; but $\\frac{5}{11}$ = 0.4545..., which does not match.",
-      "C": "Student applies the pure-repeating rule (x/99 for two digits), but 0.41 is not the repeating block — producing $\\frac{41}{99}$ = 0.414141..., not 0.41666...",
+      "A": "Student reads 0.41 as 41/100, treating the decimal as if it terminates and ignoring the repeating part.",
+      "B": "Student approximates 0.41666... as roughly 0.45, recalls that fractions over 11 produce two-digit repeating decimals, and selects 5/11; but 5/11 = 0.4545..., which does not match.",
+      "C": "Student applies the pure-repeating rule (x/99 for two digits), but 0.41 is not the repeating block — producing 41/99 = 0.414141..., not 0.41666...",
       "D": "Correct: 5 $\\div$ 12 = 0.41666..., confirmed by long division."
     },
     "difficulty_level": "Advanced",
@@ -3609,15 +3609,15 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Verify each option with long division: only $\\frac{5}{12}$ produces 0.41666..."
+        "hint_text": "Verify each option with long division: only 5/12 produces 0.41666..."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "$\\frac{5}{12}$ $\\approx$ 0.417, which matches 0.41666... — confirm with division."
+        "hint_text": "5/12 $\\approx$ 0.417, which matches 0.41666... — confirm with division."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "$\\frac{41}{100}$ = 0.41 and terminates — the given decimal doesn't, so eliminate it."
+        "hint_text": "41/100 = 0.41 and terminates — the given decimal doesn't, so eliminate it."
       }
     ],
     "content_context": "other",
@@ -4932,21 +4932,21 @@
       "subtracting a negative fraction by converting to addition",
       "finding a common denominator for fractions with unlike denominators"
     ],
-    "question_text": "What is $\\frac{-5}{6}$ - ($\\frac{-1}{3}$)?",
+    "question_text": "What is -5/6 - (-1/3)?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$\\frac{-7}{6}$",
-      "B": "$\\frac{1}{2}$",
-      "C": "$\\frac{-2}{3}$",
-      "D": "$\\frac{-1}{2}$"
+      "A": "-7/6",
+      "B": "1/2",
+      "C": "-2/3",
+      "D": "-1/2"
     },
     "correct_answer": "D",
-    "explanation": "Subtracting a negative is the same as adding a positive: $\\frac{-5}{6}$ - ($\\frac{-1}{3}$) = $\\frac{-5}{6}$ + $\\frac{1}{3}$. Convert to a common denominator of 6: $\\frac{1}{3}$ = $\\frac{2}{6}$. Then $\\frac{-5}{6}$ + $\\frac{2}{6}$ = $\\frac{-3}{6}$ = $\\frac{-1}{2}$.",
+    "explanation": "Subtracting a negative is the same as adding a positive: -5/6 - (-1/3) = -5/6 + 1/3. Convert to a common denominator of 6: 1/3 = 2/6. Then -5/6 + 2/6 = -3/6 = -1/2.",
     "distractor_logic": {
-      "A": "Student does not recognize that subtracting a negative becomes addition and instead computes $\\frac{-5}{6}$ - $\\frac{1}{3}$ = $\\frac{-5}{6}$ - $\\frac{2}{6}$ = $\\frac{-7}{6}$.",
-      "B": "Student ignores all negative signs and computes $\\frac{5}{6}$ - $\\frac{1}{3}$ = $\\frac{5}{6}$ - $\\frac{2}{6}$ = $\\frac{3}{6}$ = $\\frac{1}{2}$.",
-      "C": "Student converts $\\frac{1}{3}$ to a denominator of 6 by multiplying the denominator by 2 but forgetting to multiply the numerator by the same factor, producing $\\frac{1}{6}$ instead of $\\frac{2}{6}$. Then $\\frac{-5}{6}$ + $\\frac{1}{6}$ = $\\frac{-4}{6}$ = $\\frac{-2}{3}$.",
-      "D": "Correct: $\\frac{-5}{6}$ + $\\frac{1}{3}$ = $\\frac{-5}{6}$ + $\\frac{2}{6}$ = $\\frac{-3}{6}$ = $\\frac{-1}{2}$."
+      "A": "Student does not recognize that subtracting a negative becomes addition and instead computes -5/6 - 1/3 = -5/6 - 2/6 = -7/6.",
+      "B": "Student ignores all negative signs and computes 5/6 - 1/3 = 5/6 - 2/6 = 3/6 = 1/2.",
+      "C": "Student converts 1/3 to a denominator of 6 by multiplying the denominator by 2 but forgetting to multiply the numerator by the same factor, producing 1/6 instead of 2/6. Then -5/6 + 1/6 = -4/6 = -2/3.",
+      "D": "Correct: -5/6 + 1/3 = -5/6 + 2/6 = -3/6 = -1/2."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -4961,11 +4961,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Subtracting $\\frac{-1}{3}$ is the same as adding +$\\frac{1}{3}$. Then find the LCD of 6."
+        "hint_text": "Subtracting -1/3 is the same as adding +1/3. Then find the LCD of 6."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "The result must be negative since $\\frac{-5}{6}$ dominates — eliminate any positive answer."
+        "hint_text": "The result must be negative since -5/6 dominates — eliminate any positive answer."
       }
     ],
     "content_context": "other",
@@ -5170,21 +5170,21 @@
       "subtracting mixed numbers with unlike denominators",
       "converting mixed numbers to improper fractions before computing"
     ],
-    "question_text": "What is 2 $\\frac{1}{3}$ - 3 $\\frac{3}{4}$?",
+    "question_text": "What is 2 1/3 - 3 3/4?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "1 $\\frac{5}{12}$",
-      "B": "-1 $\\frac{7}{12}$",
-      "C": "-1 $\\frac{5}{12}$",
-      "D": "$\\frac{-5}{12}$"
+      "A": "1 5/12",
+      "B": "-1 7/12",
+      "C": "-1 5/12",
+      "D": "-5/12"
     },
     "correct_answer": "C",
-    "explanation": "Convert each mixed number to an improper fraction. 2 $\\frac{1}{3}$ = $\\frac{7}{3}$ and 3 $\\frac{3}{4}$ = $\\frac{15}{4}$. Find the LCD of 3 and 4, which is 12: $\\frac{7}{3}$ = $\\frac{28}{12}$ and $\\frac{15}{4}$ = $\\frac{45}{12}$. Subtract: $\\frac{28}{12}$ - $\\frac{45}{12}$ = $\\frac{-17}{12}$. Convert to a mixed number: $\\frac{-17}{12}$ = -1 $\\frac{5}{12}$.",
+    "explanation": "Convert each mixed number to an improper fraction. 2 1/3 = 7/3 and 3 3/4 = 15/4. Find the LCD of 3 and 4, which is 12: 7/3 = 28/12 and 15/4 = 45/12. Subtract: 28/12 - 45/12 = -17/12. Convert to a mixed number: -17/12 = -1 5/12.",
     "distractor_logic": {
-      "A": "Student computes the correct magnitude (1 $\\frac{5}{12}$) but does not apply the negative sign, since 2 $\\frac{1}{3}$ < 3 $\\frac{3}{4}$ the result must be negative.",
-      "B": "Student correctly converts to 12ths and gets $\\frac{-17}{12}$, but makes an arithmetic slip converting to a mixed number — subtracting 12 from 17 as 17 - 10 = 7 rather than 17 - 12 = 5 — and writes -1 $\\frac{7}{12}$.",
-      "C": "Correct: $\\frac{28}{12}$ - $\\frac{45}{12}$ = $\\frac{-17}{12}$ = -1 $\\frac{5}{12}$.",
-      "D": "Student subtracts only the fractional parts of each mixed number ($\\frac{1}{3}$ - $\\frac{3}{4}$ = $\\frac{4}{12}$ - $\\frac{9}{12}$ = $\\frac{-5}{12}$) and drops the whole-number portion of the computation entirely, reporting $\\frac{-5}{12}$."
+      "A": "Student computes the correct magnitude (1 5/12) but does not apply the negative sign, since 2 1/3 < 3 3/4 the result must be negative.",
+      "B": "Student correctly converts to 12ths and gets -17/12, but makes an arithmetic slip converting to a mixed number — subtracting 12 from 17 as 17 - 10 = 7 rather than 17 - 12 = 5 — and writes -1 7/12.",
+      "C": "Correct: 28/12 - 45/12 = -17/12 = -1 5/12.",
+      "D": "Student subtracts only the fractional parts of each mixed number (1/3 - 3/4 = 4/12 - 9/12 = -5/12) and drops the whole-number portion of the computation entirely, reporting -5/12."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -5203,7 +5203,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "2 $\\frac{1}{3}$ $\\approx$ 2.3 and 3 $\\frac{3}{4}$ = 3.75 — the result is about -1.4, so look for an answer near -1 $\\frac{1}{2}$."
+        "hint_text": "2 1/3 $\\approx$ 2.3 and 3 3/4 = 3.75 — the result is about -1.4, so look for an answer near -1 1/2."
       }
     ],
     "content_context": "other",
@@ -5247,21 +5247,21 @@
       "dividing a fraction by a negative fraction using the keep-change-flip method",
       "applying order of operations to a multi-step rational expression"
     ],
-    "question_text": "What is $\\frac{3}{4}$ $\\div$ ($\\frac{-1}{2}$) + 1?",
+    "question_text": "What is 3/4 $\\div$ (-1/2) + 1?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$\\frac{5}{2}$",
-      "B": "$\\frac{-3}{2}$",
-      "C": "-2 $\\frac{1}{2}$",
-      "D": "$\\frac{-1}{2}$"
+      "A": "5/2",
+      "B": "-3/2",
+      "C": "-2 1/2",
+      "D": "-1/2"
     },
     "correct_answer": "D",
-    "explanation": "Apply order of operations: division before addition. $\\frac{3}{4}$ $\\div$ ($\\frac{-1}{2}$) = $\\frac{3}{4}$ $\\times$ ($\\frac{-2}{1}$) = $\\frac{-3}{2}$. Then $\\frac{-3}{2}$ + 1 = $\\frac{-3}{2}$ + $\\frac{2}{2}$ = $\\frac{-1}{2}$.",
+    "explanation": "Apply order of operations: division before addition. 3/4 $\\div$ (-1/2) = 3/4 $\\times$ (-2/1) = -3/2. Then -3/2 + 1 = -3/2 + 2/2 = -1/2.",
     "distractor_logic": {
-      "A": "Student ignores the negative sign on $\\frac{1}{2}$, computing $\\frac{3}{4}$ $\\div$ ($\\frac{1}{2}$) + 1 = $\\frac{3}{2}$ + 1 = $\\frac{5}{2}$.",
-      "B": "Student correctly computes $\\frac{3}{4}$ $\\div$ ($\\frac{-1}{2}$) = $\\frac{-3}{2}$ but stops there, forgetting to add 1.",
-      "C": "Student adds -1 instead of +1 at the end (confused by the negative context), getting $\\frac{-3}{2}$ - 1 = $\\frac{-5}{2}$ = -2 $\\frac{1}{2}$.",
-      "D": "Correct: $\\frac{3}{4}$ $\\div$ ($\\frac{-1}{2}$) = $\\frac{-3}{2}$, and $\\frac{-3}{2}$ + 1 = $\\frac{-1}{2}$."
+      "A": "Student ignores the negative sign on 1/2, computing 3/4 $\\div$ (1/2) + 1 = 3/2 + 1 = 5/2.",
+      "B": "Student correctly computes 3/4 $\\div$ (-1/2) = -3/2 but stops there, forgetting to add 1.",
+      "C": "Student adds -1 instead of +1 at the end (confused by the negative context), getting -3/2 - 1 = -5/2 = -2 1/2.",
+      "D": "Correct: 3/4 $\\div$ (-1/2) = -3/2, and -3/2 + 1 = -1/2."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -5276,11 +5276,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Division comes before addition: compute $\\frac{3}{4}$ $\\div$ ($\\frac{-1}{2}$) first."
+        "hint_text": "Division comes before addition: compute 3/4 $\\div$ (-1/2) first."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "The result of $\\frac{3}{4}$ $\\div$ ($\\frac{-1}{2}$) is negative — any answer far from zero is likely wrong."
+        "hint_text": "The result of 3/4 $\\div$ (-1/2) is negative — any answer far from zero is likely wrong."
       }
     ],
     "content_context": "other",
@@ -6178,7 +6178,7 @@
       "converting a fraction to a decimal and rounding to the nearest hundredth",
       "applying rounding after a long-division calculation"
     ],
-    "question_text": "What is $\\frac{17}{7}$, rounded to the nearest hundredth?",
+    "question_text": "What is 17/7, rounded to the nearest hundredth?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "2.42",
@@ -7268,12 +7268,12 @@
       "D": "144"
     },
     "correct_answer": "C",
-    "explanation": "The ratio 3:5 means 3 red for every 5 blue, so the whole is 3 + 5 = 8 parts. Red = $\\frac{3}{8}$ of 240 = (3 $\\times$ 240) $\\div$ 8 = 720 $\\div$ 8 = 90.",
+    "explanation": "The ratio 3:5 means 3 red for every 5 blue, so the whole is 3 + 5 = 8 parts. Red = 3/8 of 240 = (3 $\\times$ 240) $\\div$ 8 = 720 $\\div$ 8 = 90.",
     "distractor_logic": {
-      "A": "Student identifies the blue part (5 out of 8) instead of the red part, computing $\\frac{5}{8}$ $\\times$ 240 = 150.",
+      "A": "Student identifies the blue part (5 out of 8) instead of the red part, computing 5/8 $\\times$ 240 = 150.",
       "B": "Student multiplies the two ratio numbers together (3 $\\times$ 5 = 15) rather than using the ratio to partition the total.",
-      "C": "Correct: 3 out of 3 + 5 = 8 total parts, so red = $\\frac{3}{8}$ $\\times$ 240 = 90.",
-      "D": "Student treats the ratio 3:5 as the fraction $\\frac{3}{5}$ and computes $\\frac{3}{5}$ $\\times$ 240 = 144, omitting the correct denominator of 8."
+      "C": "Correct: 3 out of 3 + 5 = 8 total parts, so red = 3/8 $\\times$ 240 = 90.",
+      "D": "Student treats the ratio 3:5 as the fraction 3/5 and computes 3/5 $\\times$ 240 = 144, omitting the correct denominator of 8."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -7969,18 +7969,18 @@
     "question_text": "Alloy X is made of copper and zinc in a ratio of 3:2. Alloy Y is made of copper and zinc in a ratio of 1:4. A metallurgist combines 100 g of Alloy X with 150 g of Alloy Y. What fraction of the resulting mixture is copper?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$\\frac{9}{25}$",
-      "B": "$\\frac{2}{5}$",
-      "C": "$\\frac{3}{5}$",
-      "D": "$\\frac{1}{5}$"
+      "A": "9/25",
+      "B": "2/5",
+      "C": "3/5",
+      "D": "1/5"
     },
     "correct_answer": "A",
-    "explanation": "Alloy X: copper fraction = $\\frac{3}{5}$, so copper from X = $\\frac{3}{5}$ $\\times$ 100 = 60 g. Alloy Y: copper fraction = $\\frac{1}{5}$, so copper from Y = $\\frac{1}{5}$ $\\times$ 150 = 30 g. Total copper = 90 g; total mixture = 100 + 150 = 250 g. Fraction copper = $\\frac{90}{250}$ = $\\frac{9}{25}$.",
+    "explanation": "Alloy X: copper fraction = 3/5, so copper from X = 3/5 $\\times$ 100 = 60 g. Alloy Y: copper fraction = 1/5, so copper from Y = 1/5 $\\times$ 150 = 30 g. Total copper = 90 g; total mixture = 100 + 150 = 250 g. Fraction copper = 90/250 = 9/25.",
     "distractor_logic": {
-      "A": "Correct: copper from X = 60 g, from Y = 30 g; total = $\\frac{90}{250}$ = $\\frac{9}{25}$.",
-      "B": "Student uses 100 g for both alloys (ignoring the actual 150 g of Alloy Y), giving (60 + 20)/(100 + 100) = $\\frac{80}{200}$ = $\\frac{2}{5}$.",
-      "C": "Student uses only Alloy X's copper fraction ($\\frac{3}{5}$) as the answer, ignoring Alloy Y entirely.",
-      "D": "Student uses only Alloy Y's copper fraction ($\\frac{1}{5}$) as the answer, ignoring Alloy X entirely."
+      "A": "Correct: copper from X = 60 g, from Y = 30 g; total = 90/250 = 9/25.",
+      "B": "Student uses 100 g for both alloys (ignoring the actual 150 g of Alloy Y), giving (60 + 20)/(100 + 100) = 80/200 = 2/5.",
+      "C": "Student uses only Alloy X's copper fraction (3/5) as the answer, ignoring Alloy Y entirely.",
+      "D": "Student uses only Alloy Y's copper fraction (1/5) as the answer, ignoring Alloy X entirely."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -7996,11 +7996,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Convert each ratio to a fraction of copper first: 3:2 → $\\frac{3}{5}$, and 1:4 → $\\frac{1}{5}$. The two alloys have different masses."
+        "hint_text": "Convert each ratio to a fraction of copper first: 3:2 → 3/5, and 1:4 → 1/5. The two alloys have different masses."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Copper from X = $\\frac{3}{5}$ $\\times$ 100 = 60 g. Copper from Y = $\\frac{1}{5}$ $\\times$ 150 = 30 g. Total mixture = 250 g."
+        "hint_text": "Copper from X = 3/5 $\\times$ 100 = 60 g. Copper from Y = 1/5 $\\times$ 150 = 30 g. Total mixture = 250 g."
       },
       {
         "strategy": "estimate_first",
@@ -8058,10 +8058,10 @@
       "D": "60"
     },
     "correct_answer": "B",
-    "explanation": "Set up the proportion: $\\frac{3}{4}$ = x/20. Cross-multiply: 4x = 60, so x = 15 miles. Alternatively, 20 $\\div$ 4 = 5 groups of 4 minutes; 5 $\\times$ 3 = 15 miles.",
+    "explanation": "Set up the proportion: 3/4 = x/20. Cross-multiply: 4x = 60, so x = 15 miles. Alternatively, 20 $\\div$ 4 = 5 groups of 4 minutes; 5 $\\times$ 3 = 15 miles.",
     "distractor_logic": {
       "A": "Student divides 20 by 4 to find the number of groups (20 $\\div$ 4 = 5) but stops there instead of multiplying by the 3-mile rate.",
-      "B": "Correct: $\\frac{3}{4}$ = x/20 → x = 3 $\\times$ 5 = 15 miles.",
+      "B": "Correct: 3/4 = x/20 → x = 3 $\\times$ 5 = 15 miles.",
       "C": "Student multiplies both numbers in the denominator position (4 $\\times$ 20 = 80) without applying the rate of 3 miles.",
       "D": "Student multiplies the rate numerator by the full time (3 $\\times$ 20 = 60) without accounting for the 4-minute denominator in the rate."
     },
@@ -8082,7 +8082,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "$\\frac{3}{4}$ = x/20. Multiply both sides by 20: x = 3 $\\times$ 20 $\\div$ 4 = 15."
+        "hint_text": "3/4 = x/20. Multiply both sides by 20: x = 3 $\\times$ 20 $\\div$ 4 = 15."
       }
     ],
     "content_context": "travel",
@@ -8214,7 +8214,7 @@
       "D": "48"
     },
     "correct_answer": "A",
-    "explanation": "Scale factor = 60 $\\div$ 24 = 2.5. Cups of oats needed = 2 $\\times$ 2.5 = 5 cups. Or use a proportion: $\\frac{2}{24}$ = x/60 → 24x = 120 → x = 5.",
+    "explanation": "Scale factor = 60 $\\div$ 24 = 2.5. Cups of oats needed = 2 $\\times$ 2.5 = 5 cups. Or use a proportion: 2/24 = x/60 → 24x = 120 → x = 5.",
     "distractor_logic": {
       "A": "Correct: scale factor = 60 $\\div$ 24 = 2.5; oats = 2 $\\times$ 2.5 = 5 cups.",
       "B": "Student inverts the rate, computing cookies per cup (24 $\\div$ 2 = 12), and reports that as the number of cups needed.",
@@ -8238,7 +8238,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "$\\frac{2}{24}$ = x/60. Cross-multiply: 24x = 120, x = 5."
+        "hint_text": "2/24 = x/60. Cross-multiply: 24x = 120, x = 5."
       }
     ],
     "content_context": "cooking",
@@ -8292,7 +8292,7 @@
       "D": "20"
     },
     "correct_answer": "D",
-    "explanation": "Rate = 2 jobs per 8 hours = 1 job per 4 hours. For 5 jobs: 5 $\\times$ 4 = 20 hours. Using a proportion: $\\frac{2}{8}$ = 5/x → 2x = 40 → x = 20.",
+    "explanation": "Rate = 2 jobs per 8 hours = 1 job per 4 hours. For 5 jobs: 5 $\\times$ 4 = 20 hours. Using a proportion: 2/8 = 5/x → 2x = 40 → x = 20.",
     "distractor_logic": {
       "A": "Student reports the original time (8 hours) without scaling for the increased number of jobs.",
       "B": "Student multiplies the original time by the target job count (8 $\\times$ 5 = 40) without first computing the per-job rate.",
@@ -8316,7 +8316,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "$\\frac{2}{8}$ = 5/x → cross-multiply to solve for x."
+        "hint_text": "2/8 = 5/x → cross-multiply to solve for x."
       }
     ],
     "content_context": "work_and_jobs",
@@ -8370,11 +8370,11 @@
       "D": "80 ft"
     },
     "correct_answer": "C",
-    "explanation": "Set up the proportion (height/shadow): $\\frac{8}{4}$ = x/10. Cross-multiply: 4x = 80, so x = 20 feet.",
+    "explanation": "Set up the proportion (height/shadow): 8/4 = x/10. Cross-multiply: 4x = 80, so x = 20 feet.",
     "distractor_logic": {
       "A": "Student reports the tree's shadow length (10 ft) as the tree's height without performing any calculation.",
-      "B": "Student inverts the ratio, using shadow/height ($\\frac{4}{8}$ = 0.5) instead of height/shadow, giving 0.5 $\\times$ 10 = 5 ft.",
-      "C": "Correct: $\\frac{8}{4}$ = x/10 → x = 20 feet.",
+      "B": "Student inverts the ratio, using shadow/height (4/8 = 0.5) instead of height/shadow, giving 0.5 $\\times$ 10 = 5 ft.",
+      "C": "Correct: 8/4 = x/10 → x = 20 feet.",
       "D": "Student multiplies the pole height by the tree shadow without dividing by the pole shadow (8 $\\times$ 10 = 80), skipping the proportional division step."
     },
     "difficulty_level": "Basic",
@@ -8394,7 +8394,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "$\\frac{8}{4}$ = x/10. Multiply both sides by 10: x = 8 $\\times$ 10 $\\div$ 4 = 20."
+        "hint_text": "8/4 = x/10. Multiply both sides by 10: x = 8 $\\times$ 10 $\\div$ 4 = 20."
       }
     ],
     "content_context": "outdoor_measurement",
@@ -8685,7 +8685,7 @@
     "explanation": "Let x = liters of Solution A. Salt equation: 0.40x + 0.10(6) = 0.25(x + 6). Simplify: 0.40x + 0.60 = 0.25x + 1.50. Subtract 0.25x: 0.15x = 0.90. Divide: x = 6 liters.",
     "distractor_logic": {
       "A": "Student accounts for the salt needed from A but omits the existing salt from B, solving 0.40x = (0.25 - 0.10) $\\times$ 6 → 0.40x = 0.90 → x $\\approx$ 2 liters.",
-      "B": "Student applies the alligation method but misreads the result: alligation gives parts of A to parts of B = (25-10):(40-25) = 15:15 = 1:1, meaning equal volumes are needed. The student then treats 1/(1+1) = $\\frac{1}{2}$ as A’s fraction of B’s volume (rather than A’s fraction of the total), computing $\\frac{1}{2}$ $\\times$ 6 = 3 liters of A — an incorrect application of the alligation ratio.",
+      "B": "Student applies the alligation method but misreads the result: alligation gives parts of A to parts of B = (25-10):(40-25) = 15:15 = 1:1, meaning equal volumes are needed. The student then treats 1/(1+1) = 1/2 as A’s fraction of B’s volume (rather than A’s fraction of the total), computing 1/2 $\\times$ 6 = 3 liters of A — an incorrect application of the alligation ratio.",
       "C": "Correct: 0.40x + 0.60 = 0.25x + 1.50 → 0.15x = 0.90 → x = 6 liters.",
       "D": "Student omits the salt contributed by Solution B, solving 0.40x = 0.25(x + 6) → 0.15x = 1.50 → x = 10 liters."
     },
@@ -8770,7 +8770,7 @@
       "A": "Correct: 90t = 60(t + 0.5) → t = 1 hr after 9:30 AM = 10:30 AM.",
       "B": "Student solves correctly (t = 1 hour) but adds that time to Train A's departure (9:00 AM + 1 hr = 10:00 AM) instead of Train B's departure.",
       "C": "Student divides Train A's speed by the speed difference (60 $\\div$ 30 = 2 hours) and adds to 9:00 AM, arriving at 11:00 AM.",
-      "D": "Student correctly computes Train A’s 30-minute head-start distance (60 mph $\\times$ 0.5 hr = 30 miles) but then divides that gap by Train B’s full speed (30 $\\div$ 90 = $\\frac{1}{3}$ hr = 20 min) rather than by the relative closing speed (90 - 60 = 30 mph). Adding 20 minutes to 9:30 AM gives 9:50 AM."
+      "D": "Student correctly computes Train A’s 30-minute head-start distance (60 mph $\\times$ 0.5 hr = 30 miles) but then divides that gap by Train B’s full speed (30 $\\div$ 90 = 1/3 hr = 20 min) rather than by the relative closing speed (90 - 60 = 30 mph). Adding 20 minutes to 9:30 AM gives 9:50 AM."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -9008,8 +9008,8 @@
     "distractor_logic": {
       "A": "Correct: 15 $\\div$ 0.60 = 25.",
       "B": "Student multiplies instead of divides: 15 $\\times$ 0.60 = 9, finding a part of the part rather than the whole.",
-      "C": "Student confuses 60% with $\\frac{1}{5}$ (20%) and multiplies: 15 $\\times$ 5 = 75, using the wrong percent-to-fraction conversion.",
-      "D": "Student confuses 60% with $\\frac{1}{6}$ and multiplies: 15 $\\times$ 6 = 90, using the reciprocal of the wrong fraction."
+      "C": "Student confuses 60% with 1/5 (20%) and multiplies: 15 $\\times$ 5 = 75, using the wrong percent-to-fraction conversion.",
+      "D": "Student confuses 60% with 1/6 and multiplies: 15 $\\times$ 6 = 90, using the reciprocal of the wrong fraction."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -9580,11 +9580,11 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Actual % increase = $\\frac{17}{68}$ $\\times$ 100 = 25%. Required score = 68 $\\times$ 1.30 = 88.4. Is 85 $\\geq$ 88.4?"
+        "hint_text": "Actual % increase = 17/68 $\\times$ 100 = 25%. Required score = 68 $\\times$ 1.30 = 88.4. Is 85 $\\geq$ 88.4?"
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "$\\frac{17}{68}$ is close to $\\frac{17}{70}$ $\\approx$ 24%, so the increase is near 25%. A 30% increase on ~70 points would need about 21 more points, giving ~89, which is above 85."
+        "hint_text": "17/68 is close to 17/70 $\\approx$ 24%, so the increase is near 25%. A 30% increase on ~70 points would need about 21 more points, giving ~89, which is above 85."
       }
     ],
     "content_context": "academic_performance",
@@ -9798,7 +9798,7 @@
     "distractor_logic": {
       "A": "Student applies the 8% rate to the commission itself (320 $\\times$ 0.08 = $25.60) rather than solving for the unknown sales total.",
       "B": "Student adds the commission rate as a whole number to the earned commission (320 + 8 = $328) instead of writing an equation.",
-      "C": "Student estimates $\\frac{1}{0}$.08 $\\approx$ 12 and multiplies (320 $\\times$ 12 = $3,840) instead of using the exact divisor of 0.08.",
+      "C": "Student estimates 1/0.08 $\\approx$ 12 and multiplies (320 $\\times$ 12 = $3,840) instead of using the exact divisor of 0.08.",
       "D": "Correct: 0.08x = 320 → x = 320 $\\div$ 0.08 = $4,000."
     },
     "difficulty_level": "Basic",
@@ -10291,7 +10291,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "Going from 30% to 20% is a $\\frac{1}{3}$ reduction in concentration, so volume must increase by 50%: 10 $\\times$ 1.5 = 15 total → add 5 liters."
+        "hint_text": "Going from 30% to 20% is a 1/3 reduction in concentration, so volume must increase by 50%: 10 $\\times$ 1.5 = 15 total → add 5 liters."
       }
     ],
     "content_context": "science_and_engineering",
@@ -10374,7 +10374,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "A 20% discount means you keep 80% of the marked-up price. To recover 100% of cost from 80%, the markup must be $\\frac{1}{0}$.80 = 1.25, or 25%."
+        "hint_text": "A 20% discount means you keep 80% of the marked-up price. To recover 100% of cost from 80%, the markup must be 1/0.80 = 1.25, or 25%."
       }
     ],
     "content_context": "retail_shopping",
@@ -10820,7 +10820,7 @@
     "correct_answer": "B",
     "explanation": "Total distance = 180 + 80 = 260 miles. Total time = 3 + 2 = 5 hours. Average speed = 260 $\\div$ 5 = 52 mph.",
     "distractor_logic": {
-      "A": "Student averages the two segment speeds arithmetically: ($\\frac{180}{3}$ + $\\frac{80}{2}$) $\\div$ 2 = (60 + 40) $\\div$ 2 = 50 mph, rather than dividing total distance by total time.",
+      "A": "Student averages the two segment speeds arithmetically: (180/3 + 80/2) $\\div$ 2 = (60 + 40) $\\div$ 2 = 50 mph, rather than dividing total distance by total time.",
       "B": "Correct: 260 miles $\\div$ 5 hours = 52 mph.",
       "C": "Student uses only the second segment's speed (80 $\\div$ 2 = 40 mph), ignoring the first segment.",
       "D": "Student uses only the first segment's speed (180 $\\div$ 3 = 60 mph), ignoring the second segment."
@@ -10896,12 +10896,12 @@
       "D": "2 hours"
     },
     "correct_answer": "C",
-    "explanation": "Rate A = $\\frac{1}{4}$ tank/hr; Rate B = $\\frac{1}{6}$ tank/hr. Combined rate = $\\frac{1}{4}$ + $\\frac{1}{6}$ = $\\frac{3}{12}$ + $\\frac{2}{12}$ = $\\frac{5}{12}$ tank/hr. Time = 1 $\\div$ ($\\frac{5}{12}$) = $\\frac{12}{5}$ = 2.4 hours.",
+    "explanation": "Rate A = 1/4 tank/hr; Rate B = 1/6 tank/hr. Combined rate = 1/4 + 1/6 = 3/12 + 2/12 = 5/12 tank/hr. Time = 1 $\\div$ (5/12) = 12/5 = 2.4 hours.",
     "distractor_logic": {
       "A": "Student averages the two individual times ((4 + 6) $\\div$ 2 = 5 hours) instead of adding rates and taking the reciprocal.",
       "B": "Student adds the two individual times (4 + 6 = 10 hours) instead of combining rates, assuming pipes work sequentially rather than simultaneously.",
-      "C": "Correct: combined rate = $\\frac{5}{12}$ tank/hr; time = $\\frac{12}{5}$ = 2.4 hours.",
-      "D": "Student uses Pipe A's rate for both pipes ($\\frac{1}{4}$ + $\\frac{1}{4}$ = $\\frac{1}{2}$ tank/hr), giving a time of 2 hours, neglecting that Pipe B fills more slowly."
+      "C": "Correct: combined rate = 5/12 tank/hr; time = 12/5 = 2.4 hours.",
+      "D": "Student uses Pipe A's rate for both pipes (1/4 + 1/4 = 1/2 tank/hr), giving a time of 2 hours, neglecting that Pipe B fills more slowly."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -10916,7 +10916,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Convert each pipe to a rate: A fills $\\frac{1}{4}$ of the tank per hour, B fills $\\frac{1}{6}$. Add the rates, then flip to get time."
+        "hint_text": "Convert each pipe to a rate: A fills 1/4 of the tank per hour, B fills 1/6. Add the rates, then flip to get time."
       },
       {
         "strategy": "estimate_first",
@@ -11135,12 +11135,12 @@
       "D": "25"
     },
     "correct_answer": "B",
-    "explanation": "Time equation: x/20 + (50 - x)/8 = 4. Multiply through by 40: 2x + 5(50 - x) = 160. Expand: 2x + 250 - 5x = 160. Simplify: -3x = -90 → x = 30 simple pages. Check: $\\frac{30}{20}$ + $\\frac{20}{8}$ = 1.5 + 2.5 = 4 minutes. ✓",
+    "explanation": "Time equation: x/20 + (50 - x)/8 = 4. Multiply through by 40: 2x + 5(50 - x) = 160. Expand: 2x + 250 - 5x = 160. Simplify: -3x = -90 → x = 30 simple pages. Check: 30/20 + 20/8 = 1.5 + 2.5 = 4 minutes. ✓",
     "distractor_logic": {
       "A": "Student sets up a time equation for simple pages only (4 $\\times$ 20 = 80 pages) and divides by the number of page types or applies another incorrect shortcut, arriving at 20.",
       "B": "Correct: x/20 + (50 - x)/8 = 4 → x = 30 simple pages.",
-      "C": "Student guesses or estimates without solving the equation, selecting 40 as a round number near the total, which gives a time of $\\frac{40}{20}$ + $\\frac{10}{8}$ = 3.25 min $\\neq$ 4 min.",
-      "D": "Student splits the 50-page job evenly (50 $\\div$ 2 = 25 simple, 25 complex) without using the time constraint, giving a time of $\\frac{25}{20}$ + $\\frac{25}{8}$ = 4.375 min $\\neq$ 4 min."
+      "C": "Student guesses or estimates without solving the equation, selecting 40 as a round number near the total, which gives a time of 40/20 + 10/8 = 3.25 min $\\neq$ 4 min.",
+      "D": "Student splits the 50-page job evenly (50 $\\div$ 2 = 25 simple, 25 complex) without using the time constraint, giving a time of 25/20 + 25/8 = 4.375 min $\\neq$ 4 min."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -11160,7 +11160,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try x=30: $\\frac{30}{20}$ + $\\frac{20}{8}$ = 1.5 + 2.5 = 4 minutes. ✓"
+        "hint_text": "Try x=30: 30/20 + 20/8 = 1.5 + 2.5 = 4 minutes. ✓"
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -11842,7 +11842,7 @@
       "D": "67.5 mph; 108 m/s"
     },
     "correct_answer": "C",
-    "explanation": "Speed in mph: 45 miles $\\div$ ($\\frac{40}{60}$ hours) = 45 $\\times$ ($\\frac{60}{40}$) = 45 $\\times$ 1.5 = 67.5 mph. Convert to m/s: 67.5 mi/hr $\\times$ 1,600 m/mi $\\div$ 3,600 s/hr = 108,000 $\\div$ 3,600 = 30 m/s.",
+    "explanation": "Speed in mph: 45 miles $\\div$ (40/60 hours) = 45 $\\times$ (60/40) = 45 $\\times$ 1.5 = 67.5 mph. Convert to m/s: 67.5 mi/hr $\\times$ 1,600 m/mi $\\div$ 3,600 s/hr = 108,000 $\\div$ 3,600 = 30 m/s.",
     "distractor_logic": {
       "A": "Student computes mph as 45 mi $\\div$ 45 min $\\times$ 60 = 60 mph (uses 45 min as denominator instead of 40 min), then correctly converts 60 mph to m/s: 60 $\\times$ 1,600 $\\div$ 3,600 = 26.7 m/s.",
       "B": "Student correctly finds 67.5 mph but uses 60 mph (not 67.5) when converting to m/s: 60 $\\times$ 1,600 $\\div$ 3,600 = 26.7 m/s.",
@@ -11863,7 +11863,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Step 1: convert 40 min to hours ($\\frac{40}{60}$ = $\\frac{2}{3}$ hr), then divide 45 mi by $\\frac{2}{3}$ hr. Step 2: convert mph → m/s using both conversion factors."
+        "hint_text": "Step 1: convert 40 min to hours (40/60 = 2/3 hr), then divide 45 mi by 2/3 hr. Step 2: convert mph → m/s using both conversion factors."
       },
       {
         "strategy": "plug_in_values",
@@ -11954,7 +11954,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "The fill pipe slows the drain slightly. Without it: $\\frac{200}{1}$.5 $\\approx$ 133 min. With it: should be somewhat longer. 160 min is reasonable."
+        "hint_text": "The fill pipe slows the drain slightly. Without it: 200/1.5 $\\approx$ 133 min. With it: should be somewhat longer. 160 min is reasonable."
       }
     ],
     "content_context": "science_and_engineering",
@@ -12081,7 +12081,7 @@
       "applying the Celsius-to-Fahrenheit formula with correct order of operations",
       "multiplying by the fractional conversion factor before adding the constant offset"
     ],
-    "question_text": "Convert 25°C to Fahrenheit. Use the formula: F = ($\\frac{9}{5}$)C + 32",
+    "question_text": "Convert 25°C to Fahrenheit. Use the formula: F = (9/5)C + 32",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "77°F",
@@ -12090,12 +12090,12 @@
       "D": "82°F"
     },
     "correct_answer": "A",
-    "explanation": "F = ($\\frac{9}{5}$)(25) + 32 = 45 + 32 = 77°F.",
+    "explanation": "F = (9/5)(25) + 32 = 45 + 32 = 77°F.",
     "distractor_logic": {
-      "A": "Correct: ($\\frac{9}{5}$)(25) + 32 = 45 + 32 = 77°F.",
+      "A": "Correct: (9/5)(25) + 32 = 45 + 32 = 77°F.",
       "B": "Student skips the multiplication step and only adds 32 to the Celsius value (25 + 32 = 57°F).",
-      "C": "Student correctly multiplies ($\\frac{9}{5}$)(25) = 45 but forgets to add the 32-degree offset.",
-      "D": "Student uses 2 instead of $\\frac{9}{5}$ (= 1.8) as the conversion factor: 25 $\\times$ 2 + 32 = 82°F."
+      "C": "Student correctly multiplies (9/5)(25) = 45 but forgets to add the 32-degree offset.",
+      "D": "Student uses 2 instead of 9/5 (= 1.8) as the conversion factor: 25 $\\times$ 2 + 32 = 82°F."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -12110,11 +12110,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The formula has two steps: first multiply C by $\\frac{9}{5}$, then add 32. Don't skip either step."
+        "hint_text": "The formula has two steps: first multiply C by 9/5, then add 32. Don't skip either step."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "$\\frac{9}{5}$ of 25 = 45. Then 45 + 32 = 77°F."
+        "hint_text": "9/5 of 25 = 45. Then 45 + 32 = 77°F."
       }
     ],
     "content_context": "science_and_engineering",
@@ -12401,7 +12401,7 @@
       "applying the Fahrenheit-to-Celsius formula with correct order of operations",
       "subtracting 32 before multiplying by the fractional conversion factor"
     ],
-    "question_text": "Normal human body temperature is 98.6°F. What is this temperature in Celsius? Use the formula: C = ($\\frac{5}{9}$)(F - 32)",
+    "question_text": "Normal human body temperature is 98.6°F. What is this temperature in Celsius? Use the formula: C = (5/9)(F - 32)",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "37°C",
@@ -12410,12 +12410,12 @@
       "D": "66.6°C"
     },
     "correct_answer": "A",
-    "explanation": "C = ($\\frac{5}{9}$)(98.6 - 32) = ($\\frac{5}{9}$)(66.6) = 333 $\\div$ 9 = 37°C.",
+    "explanation": "C = (5/9)(98.6 - 32) = (5/9)(66.6) = 333 $\\div$ 9 = 37°C.",
     "distractor_logic": {
-      "A": "Correct: ($\\frac{5}{9}$)(66.6) = 37°C.",
-      "B": "Student applies the Celsius-to-Fahrenheit formula instead of its inverse: ($\\frac{9}{5}$)(98.6) + 32 $\\approx$ 209.5°C.",
-      "C": "Student multiplies F by $\\frac{5}{9}$ without first subtracting 32: ($\\frac{5}{9}$)(98.6) $\\approx$ 54.8°C, skipping the required offset.",
-      "D": "Student subtracts 32 correctly (98.6 - 32 = 66.6) but forgets to multiply by $\\frac{5}{9}$, reporting the intermediate result as the final answer."
+      "A": "Correct: (5/9)(66.6) = 37°C.",
+      "B": "Student applies the Celsius-to-Fahrenheit formula instead of its inverse: (9/5)(98.6) + 32 $\\approx$ 209.5°C.",
+      "C": "Student multiplies F by 5/9 without first subtracting 32: (5/9)(98.6) $\\approx$ 54.8°C, skipping the required offset.",
+      "D": "Student subtracts 32 correctly (98.6 - 32 = 66.6) but forgets to multiply by 5/9, reporting the intermediate result as the final answer."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -12430,11 +12430,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The formula subtracts 32 FIRST, then multiplies by $\\frac{5}{9}$. Order matters: C = ($\\frac{5}{9}$)(F - 32)."
+        "hint_text": "The formula subtracts 32 FIRST, then multiplies by 5/9. Order matters: C = (5/9)(F - 32)."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "98.6 - 32 = 66.6. Then ($\\frac{5}{9}$)(66.6) = 5 $\\times$ 66.6 / 9 = 333 / 9 = 37°C."
+        "hint_text": "98.6 - 32 = 66.6. Then (5/9)(66.6) = 5 $\\times$ 66.6 / 9 = 333 / 9 = 37°C."
       }
     ],
     "content_context": "health_and_medicine",
@@ -12815,15 +12815,15 @@
       "A": "No; the ratio y/x is not constant",
       "B": "Yes; k = 6",
       "C": "Yes; k = 3",
-      "D": "Yes; k = $\\frac{1}{3}$"
+      "D": "Yes; k = 1/3"
     },
     "correct_answer": "C",
-    "explanation": "Check y/x for each pair: $\\frac{6}{2}$ = 3, $\\frac{12}{4}$ = 3, $\\frac{18}{6}$ = 3, $\\frac{24}{8}$ = 3. The ratio is constant, so y varies directly with x and k = 3.",
+    "explanation": "Check y/x for each pair: 6/2 = 3, 12/4 = 3, 18/6 = 3, 24/8 = 3. The ratio is constant, so y varies directly with x and k = 3.",
     "distractor_logic": {
       "A": "Student checks whether differences are constant ($\\Delta$y = 6 is constant, suggesting linearity) but confuses the requirement for direct variation, which is a constant ratio y/x, not a constant difference.",
-      "B": "Student identifies the first y-value (6) as the constant of variation rather than computing the ratio y/x = $\\frac{6}{2}$ = 3.",
+      "B": "Student identifies the first y-value (6) as the constant of variation rather than computing the ratio y/x = 6/2 = 3.",
       "C": "Correct: y/x = 3 for all pairs; k = 3.",
-      "D": "Student inverts the ratio, computing x/y = $\\frac{2}{6}$ = $\\frac{1}{3}$ instead of y/x = 3."
+      "D": "Student inverts the ratio, computing x/y = 2/6 = 1/3 instead of y/x = 3."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -12842,7 +12842,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "$\\frac{6}{2}$ = 3, $\\frac{12}{4}$ = 3, $\\frac{18}{6}$ = 3, $\\frac{24}{8}$ = 3. All equal → direct variation with k = 3."
+        "hint_text": "6/2 = 3, 12/4 = 3, 18/6 = 3, 24/8 = 3. All equal → direct variation with k = 3."
       }
     ],
     "content_context": "generic",
@@ -12896,7 +12896,7 @@
       "D": "160"
     },
     "correct_answer": "A",
-    "explanation": "Find k: k = y/x = $\\frac{20}{5}$ = 4. Apply: y = 4 $\\times$ 8 = 32.",
+    "explanation": "Find k: k = y/x = 20/5 = 4. Apply: y = 4 $\\times$ 8 = 32.",
     "distractor_logic": {
       "A": "Correct: k = 4; y = 4 $\\times$ 8 = 32.",
       "B": "Student adds the change in x to the known y-value (20 + (8 - 5) = 23), treating the relationship as additive rather than proportional.",
@@ -12920,7 +12920,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check: y = 4 $\\times$ 8 = 32. Verify: $\\frac{32}{8}$ = 4 = $\\frac{20}{5}$. ✓"
+        "hint_text": "Check: y = 4 $\\times$ 8 = 32. Verify: 32/8 = 4 = 20/5. ✓"
       }
     ],
     "content_context": "generic",
@@ -12974,12 +12974,12 @@
       "D": "15 N"
     },
     "correct_answer": "D",
-    "explanation": "k = stretch/force = $\\frac{4}{6}$ = $\\frac{2}{3}$ cm/N. Equation: 10 = ($\\frac{2}{3}$)x. Solve: x = 10 $\\times$ ($\\frac{3}{2}$) = 15 N.",
+    "explanation": "k = stretch/force = 4/6 = 2/3 cm/N. Equation: 10 = (2/3)x. Solve: x = 10 $\\times$ (3/2) = 15 N.",
     "distractor_logic": {
-      "A": "Student computes k = $\\frac{4}{6}$ $\\approx$ 0.667 but applies it as a multiplier rather than dividing: force = 10 $\\times$ 0.667 $\\approx$ 6.7 N, moving in the wrong direction.",
+      "A": "Student computes k = 4/6 $\\approx$ 0.667 but applies it as a multiplier rather than dividing: force = 10 $\\times$ 0.667 $\\approx$ 6.7 N, moving in the wrong direction.",
       "B": "Student adds the given force and the target stretch (6 + 10 = 16 N) instead of using the proportional relationship.",
       "C": "Student multiplies the given force by the target stretch (6 $\\times$ 10 = 60 N) instead of setting up and solving a direct variation equation.",
-      "D": "Correct: k = $\\frac{2}{3}$; 10 = ($\\frac{2}{3}$)x → x = 15 N."
+      "D": "Correct: k = 2/3; 10 = (2/3)x → x = 15 N."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -12998,7 +12998,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "k = $\\frac{4}{6}$ = $\\frac{2}{3}$. Equation: 10 = ($\\frac{2}{3}$)x → x = 15. Check: ($\\frac{2}{3}$)(15) = 10. ✓"
+        "hint_text": "k = 4/6 = 2/3. Equation: 10 = (2/3)x → x = 15. Check: (2/3)(15) = 10. ✓"
       }
     ],
     "content_context": "science_and_engineering",
@@ -13132,12 +13132,12 @@
       "D": "$240"
     },
     "correct_answer": "A",
-    "explanation": "Find k: 80 = k(200)/50 → 80 = 4k → k = 20. Apply: C = 20(300)/40 = 6,$\\frac{000}{40}$ = $150.",
+    "explanation": "Find k: 80 = k(200)/50 → 80 = 4k → k = 20. Apply: C = 20(300)/40 = 6,000/40 = $150.",
     "distractor_logic": {
       "A": "Correct: k = 20; C = 20 $\\times$ 300 / 40 = $150.",
       "B": "Student correctly finds k = 20 but uses the original batch size b = 50 instead of the new b = 40: C = 20 $\\times$ 300 / 50 = $120.",
-      "C": "Student scales C by the ratio of the new to old n and the inverse of the new to old b but inverts the batch-size effect: C = 80 $\\times$ ($\\frac{300}{200}$) $\\times$ ($\\frac{40}{50}$) = 80 $\\times$ 1.5 $\\times$ 0.8 = $96.",
-      "D": "Student ignores the inverse relationship with b and treats the formula as direct variation in both n and b: C = 80 $\\times$ ($\\frac{300}{200}$) $\\times$ ($\\frac{50}{40}$)... or computes 80 $\\times$ 3 = $240 using a wrong scale factor."
+      "C": "Student scales C by the ratio of the new to old n and the inverse of the new to old b but inverts the batch-size effect: C = 80 $\\times$ (300/200) $\\times$ (40/50) = 80 $\\times$ 1.5 $\\times$ 0.8 = $96.",
+      "D": "Student ignores the inverse relationship with b and treats the formula as direct variation in both n and b: C = 80 $\\times$ (300/200) $\\times$ (50/40)... or computes 80 $\\times$ 3 = $240 using a wrong scale factor."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -15014,10 +15014,10 @@
       "D": "The first differences are constant (each y-value increases by 5), which means the function is linear, not exponential."
     },
     "correct_answer": "D",
-    "explanation": "Compute the first differences: 11-6=5, 16-11=5, 21-16=5. The first differences are constant at 5, which is the defining feature of a linear function. A linear function cannot be exponential.\n\nTo further confirm, check consecutive ratios (the test for exponential): $\\frac{11}{6}$ $\\approx$ 1.83, $\\frac{16}{11}$ $\\approx$ 1.45, $\\frac{21}{16}$ $\\approx$ 1.31. These ratios are not constant, directly disproving the exponential claim.\n\nThe function is y = 5x + 1, a linear function.",
+    "explanation": "Compute the first differences: 11-6=5, 16-11=5, 21-16=5. The first differences are constant at 5, which is the defining feature of a linear function. A linear function cannot be exponential.\n\nTo further confirm, check consecutive ratios (the test for exponential): 11/6 $\\approx$ 1.83, 16/11 $\\approx$ 1.45, 21/16 $\\approx$ 1.31. These ratios are not constant, directly disproving the exponential claim.\n\nThe function is y = 5x + 1, a linear function.",
     "distractor_logic": {
       "A": "Student invokes a magnitude-based rule that does not exist — the size of y-values relative to 5 has no bearing on whether a function is exponential. Exponential functions can produce any range of values.",
-      "B": "Student claims consecutive ratios are constant, but $\\frac{11}{6}$ $\\approx$ 1.83, $\\frac{16}{11}$ $\\approx$ 1.45, and $\\frac{21}{16}$ $\\approx$ 1.31 are clearly different. Accepting this choice means agreeing with the student's incorrect claim rather than refuting it.",
+      "B": "Student claims consecutive ratios are constant, but 11/6 $\\approx$ 1.83, 16/11 $\\approx$ 1.45, and 21/16 $\\approx$ 1.31 are clearly different. Accepting this choice means agreeing with the student's incorrect claim rather than refuting it.",
       "C": "Student computes second differences: (16-11)-(11-6) = 5-5 = 0 and (21-16)-(16-11) = 0. Second differences are constant at 0, but a student who applies 'constant second differences = quadratic' without noting that zero second differences specifically indicate linear — not quadratic — misclassifies the result.",
       "D": "Correct: first differences of 5, 5, 5 are constant, proving the function is linear. A linear function is never exponential, which directly refutes the student's claim."
     },
@@ -15479,7 +15479,7 @@
       "A": "x $\\geq$ 9",
       "B": "x $\\geq$ 3",
       "C": "x $\\geq$ -3",
-      "D": "x $\\geq$ $\\frac{1}{3}$"
+      "D": "x $\\geq$ 1/3"
     },
     "correct_answer": "B",
     "explanation": "The radicand must be greater than or equal to zero:\n3x - 9 $\\geq$ 0\n3x $\\geq$ 9\nx $\\geq$ 3\n\nThe domain is all real numbers x $\\geq$ 3, or [3, $\\infty$).",
@@ -15487,7 +15487,7 @@
       "A": "Student correctly isolates 3x $\\geq$ 9 but forgets to divide both sides by 3, reporting x $\\geq$ 9 instead of x $\\geq$ 3.",
       "B": "Correct: 3x - 9 $\\geq$ 0 → 3x $\\geq$ 9 → x $\\geq$ 3.",
       "C": "Student misreads the sign of the constant term, solving 3x + 9 $\\geq$ 0 instead of 3x - 9 $\\geq$ 0, which gives 3x $\\geq$ -9 → x $\\geq$ -3.",
-      "D": "Student inverts the division step, computing $\\frac{1}{3}$ instead of $\\frac{9}{3}$ when dividing 9 by 3 — treating the operation as taking the reciprocal rather than dividing."
+      "D": "Student inverts the division step, computing 1/3 instead of 9/3 when dividing 9 by 3 — treating the operation as taking the reciprocal rather than dividing."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -15794,9 +15794,9 @@
       "D": "Because substituting n = 2 makes the denominator equal to zero, making P(2) undefined."
     },
     "correct_answer": "D",
-    "explanation": "Substitute n = 2:\n  Numerator: 500(2) - 1000 = 0\n  Denominator: 2 - 2 = 0\n\nBoth numerator and denominator equal zero, giving the indeterminate form $\\frac{0}{0}$. This is undefined — not zero. A rational function is excluded from its domain wherever the denominator equals zero, regardless of the numerator's value. Therefore n = 2 must be excluded because it makes the denominator zero.",
+    "explanation": "Substitute n = 2:\n  Numerator: 500(2) - 1000 = 0\n  Denominator: 2 - 2 = 0\n\nBoth numerator and denominator equal zero, giving the indeterminate form 0/0. This is undefined — not zero. A rational function is excluded from its domain wherever the denominator equals zero, regardless of the numerator's value. Therefore n = 2 must be excluded because it makes the denominator zero.",
     "distractor_logic": {
-      "A": "Student computes the numerator (500(2) - 1000 = 0) and concludes P(2) = 0, confusing an undefined output ($\\frac{0}{0}$) with a zero output. A zero output would be valid; it is the undefined output that requires exclusion.",
+      "A": "Student computes the numerator (500(2) - 1000 = 0) and concludes P(2) = 0, confusing an undefined output (0/0) with a zero output. A zero output would be valid; it is the undefined output that requires exclusion.",
       "B": "Student correctly identifies that the numerator is zero at n = 2 but applies the wrong rule — a zero numerator (with a nonzero denominator) produces an output of zero, which is perfectly valid. It is the zero denominator that creates the exclusion.",
       "C": "Student conflates a mathematical domain restriction with a contextual profitability condition, reasoning that n = 2 should be excluded because it doesn't generate profit — but domain restrictions are determined by where the function is undefined, not by whether outputs are desirable.",
       "D": "Correct: n = 2 makes the denominator n - 2 equal to zero, making P(2) undefined. This is the mathematical reason for the domain exclusion."
@@ -15874,7 +15874,7 @@
     "correct_answer": "C",
     "explanation": "Factor the denominator using the difference of squares:\n$x^{2}$ - $k^{2}$ = (x - k)(x + k)\n\nThe denominator equals zero when x = k or x = -k. Both values must be excluded from the domain.\n\nNote: the numerator (x + k) shares a factor with the denominator, creating a removable discontinuity (hole) at x = -k. However, cancellation does not change the domain of the original function — x = -k still makes the original denominator zero and remains excluded.\n\nDomain: all real numbers except x = k and x = -k.",
     "distractor_logic": {
-      "A": "Student factors the denominator correctly and finds x = k and x = -k, but then reasons that since the numerator (x + k) is also zero at x = -k, the expression is '$\\frac{0}{0}$ which simplifies to 0' — incorrectly treating the indeterminate form as a defined output of zero and excluding only x = k.",
+      "A": "Student factors the denominator correctly and finds x = k and x = -k, but then reasons that since the numerator (x + k) is also zero at x = -k, the expression is '0/0 which simplifies to 0' — incorrectly treating the indeterminate form as a defined output of zero and excluding only x = k.",
       "B": "Student cancels the common factor (x + k) from numerator and denominator to obtain 1/(x - k), then reads the domain of the simplified form as the domain of the original function — failing to recognize that cancellation does not restore the value x = -k that was excluded before simplification.",
       "C": "Correct: the denominator (x - k)(x + k) equals zero at both x = k and x = -k, so both must be excluded from the domain of the original function.",
       "D": "Student sees $k^{2}$ in the expression $x^{2}$ - $k^{2}$ and takes the excluded value to be x = $k^{2}$ — solving x = $k^{2}$ rather than factoring and solving $x^{2}$ = $k^{2}$."
@@ -16496,7 +16496,7 @@
       "D": "x = 6"
     },
     "correct_answer": "C",
-    "explanation": "Subtract 3 from both sides, then multiply by 2:\nx/2 = 4\nx = 8\n\nCheck: $\\frac{8}{2}$ + 3 = 4 + 3 = 7 ✓",
+    "explanation": "Subtract 3 from both sides, then multiply by 2:\nx/2 = 4\nx = 8\n\nCheck: 8/2 + 3 = 4 + 3 = 7 ✓",
     "distractor_logic": {
       "A": "Student correctly isolates x/2 = 4 but divides by 2 again instead of multiplying: 4 $\\div$ 2 = 2.",
       "B": "Student subtracts the denominator (2) from 7 instead of subtracting the constant (3): 7 - 2 = 5.",
@@ -16569,7 +16569,7 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "No solution",
-      "B": "x = $\\frac{7}{3}$",
+      "B": "x = 7/3",
       "C": "x = 0",
       "D": "All real numbers"
     },
@@ -16577,7 +16577,7 @@
     "explanation": "Subtract 3x from both sides:\n3x + 5 - 3x = 3x - 2 - 3x\n5 = -2\n\nThis is a false statement — no value of x makes it true. The equation has no solution.",
     "distractor_logic": {
       "A": "Correct: subtracting 3x from both sides yields 5 = -2, a contradiction with no solution.",
-      "B": "Student subtracts 3x from the left side only, leaving 5 = 3x - 2, then solves: 3x = 7 → x = $\\frac{7}{3}$.",
+      "B": "Student subtracts 3x from the left side only, leaving 5 = 3x - 2, then solves: 3x = 7 → x = 7/3.",
       "C": "Student cancels the 3x terms and misinterprets the resulting contradiction (5 = -2) as meaning x = 0 is the answer.",
       "D": "Student sees that both sides have the same 3x coefficient and concludes the equation must be an identity true for all x, confusing a contradiction with an identity."
     },
@@ -16808,7 +16808,7 @@
       "D": "x < 36"
     },
     "correct_answer": "D",
-    "explanation": "Multiply both sides by 3:\n(x/3) $\\times$ 3 < 12 $\\times$ 3\nx < 36\n\nMultiplying by a positive number does not change the inequality direction. Check: x = 30 → $\\frac{30}{3}$ = 10 < 12 ✓",
+    "explanation": "Multiply both sides by 3:\n(x/3) $\\times$ 3 < 12 $\\times$ 3\nx < 36\n\nMultiplying by a positive number does not change the inequality direction. Check: x = 30 → 30/3 = 10 < 12 ✓",
     "distractor_logic": {
       "A": "Student divides 12 by 3 instead of multiplying: 12 $\\div$ 3 = 4, giving x < 4.",
       "B": "Student subtracts 3 from 12 instead of multiplying: 12 - 3 = 9, giving x < 9.",
@@ -16832,7 +16832,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Test x = 30: does $\\frac{30}{3}$ = 10 < 12? If yes, your answer should include x = 30."
+        "hint_text": "Test x = 30: does 30/3 = 10 < 12? If yes, your answer should include x = 30."
       }
     ],
     "content_context": "generic",
@@ -17348,18 +17348,18 @@
     "question_text": "Solve for x:  -2(3x - 1) > 4(x + 2)",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x < $\\frac{-3}{5}$",
-      "B": "x > $\\frac{-3}{5}$",
-      "C": "x < $\\frac{3}{5}$",
-      "D": "x > $\\frac{3}{5}$"
+      "A": "x < -3/5",
+      "B": "x > -3/5",
+      "C": "x < 3/5",
+      "D": "x > 3/5"
     },
     "correct_answer": "A",
-    "explanation": "Distribute on both sides:\n-6x + 2 > 4x + 8\n\nSubtract 4x from both sides and subtract 2 from both sides:\n-10x > 6\n\nDivide by -10 and flip the inequality direction:\nx < 6 $\\div$ (-10)\nx < $\\frac{-3}{5}$\n\nCheck: x = -1 → left = -2(-4) = 8, right = 4(1) = 4. 8 > 4 ✓ (x = -1 < $\\frac{-3}{5}$ satisfies); x = 0 → left = 2, right = 8. 2 > 8? No ✓ (x = 0 > $\\frac{-3}{5}$, correctly excluded)",
+    "explanation": "Distribute on both sides:\n-6x + 2 > 4x + 8\n\nSubtract 4x from both sides and subtract 2 from both sides:\n-10x > 6\n\nDivide by -10 and flip the inequality direction:\nx < 6 $\\div$ (-10)\nx < -3/5\n\nCheck: x = -1 → left = -2(-4) = 8, right = 4(1) = 4. 8 > 4 ✓ (x = -1 < -3/5 satisfies); x = 0 → left = 2, right = 8. 2 > 8? No ✓ (x = 0 > -3/5, correctly excluded)",
     "distractor_logic": {
-      "A": "Correct: distributing and collecting gives -10x > 6; dividing by -10 and flipping gives x < $\\frac{-3}{5}$.",
-      "B": "Student correctly distributes and collects (-10x > 6) but forgets to flip the inequality when dividing by -10, writing x > $\\frac{-3}{5}$.",
-      "C": "Student divides 6 by 10 without applying the negative sign on the coefficient, computing 6 $\\div$ 10 = $\\frac{3}{5}$ and writing x < $\\frac{3}{5}$.",
-      "D": "Student divides 6 by 10 (ignoring the negative coefficient) and also fails to flip the direction, writing x > $\\frac{3}{5}$."
+      "A": "Correct: distributing and collecting gives -10x > 6; dividing by -10 and flipping gives x < -3/5.",
+      "B": "Student correctly distributes and collects (-10x > 6) but forgets to flip the inequality when dividing by -10, writing x > -3/5.",
+      "C": "Student divides 6 by 10 without applying the negative sign on the coefficient, computing 6 $\\div$ 10 = 3/5 and writing x < 3/5.",
+      "D": "Student divides 6 by 10 (ignoring the negative coefficient) and also fails to flip the direction, writing x > 3/5."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -19866,7 +19866,7 @@
     "answer_choices": {
       "A": "3",
       "B": "2",
-      "C": "$\\frac{1}{2}$",
+      "C": "1/2",
       "D": "6"
     },
     "correct_answer": "B",
@@ -19874,7 +19874,7 @@
     "distractor_logic": {
       "A": "Student computes $\\Delta$y = 6 and $\\Delta$x = 3 correctly but subtracts instead of divides: 6 - 3 = 3.",
       "B": "Correct: (9 - 3) / (4 - 1) = 6 / 3 = 2.",
-      "C": "Student inverts the formula, computing $\\Delta$x / $\\Delta$y = 3 / 6 = $\\frac{1}{2}$.",
+      "C": "Student inverts the formula, computing $\\Delta$x / $\\Delta$y = 3 / 6 = 1/2.",
       "D": "Student computes $\\Delta$y = 6 but uses it directly as the slope without dividing by $\\Delta$x."
     },
     "difficulty_level": "Basic",
@@ -20021,15 +20021,15 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "2",
-      "B": "$\\frac{-1}{2}$",
+      "B": "-1/2",
       "C": "-2",
       "D": "3"
     },
     "correct_answer": "C",
     "explanation": "Apply the slope formula:\nm = ($y_{2}$ - $y_{1}$) / ($x_{2}$ - $x_{1}$) = (1 - 7) / (5 - 2) = -6 / 3 = -2",
     "distractor_logic": {
-      "A": "Student computes the correct magnitude ($\\frac{6}{3}$ = 2) but drops the negative sign from the numerator, reporting slope = 2.",
-      "B": "Student inverts the formula, computing ($x_{2}$ - $x_{1}$) / ($y_{2}$ - $y_{1}$) = 3 / (-6) = $\\frac{-1}{2}$.",
+      "A": "Student computes the correct magnitude (6/3 = 2) but drops the negative sign from the numerator, reporting slope = 2.",
+      "B": "Student inverts the formula, computing ($x_{2}$ - $x_{1}$) / ($y_{2}$ - $y_{1}$) = 3 / (-6) = -1/2.",
       "C": "Correct: (1 - 7) / (5 - 2) = -6 / 3 = -2.",
       "D": "Student computes $\\Delta$x = 5 - 2 = 3 and reports it as the slope, ignoring $\\Delta$y entirely."
     },
@@ -20179,7 +20179,7 @@
       "A": "2",
       "B": "-2",
       "C": "3",
-      "D": "$\\frac{1}{2}$"
+      "D": "1/2"
     },
     "correct_answer": "A",
     "explanation": "Apply the slope formula:\nm = ($y_{2}$ - $y_{1}$) / ($x_{2}$ - $x_{1}$) = (4 - (-2)) / (3 - 0) = 6 / 3 = 2",
@@ -20187,7 +20187,7 @@
       "A": "Correct: (4 - (-2)) / (3 - 0) = 6 / 3 = 2.",
       "B": "Student sees the y-intercept (0, -2) and reports -2 as the slope rather than applying the slope formula.",
       "C": "Student computes $\\Delta$x = 3 and uses it directly as the slope, ignoring the change in y.",
-      "D": "Student inverts the formula, computing $\\Delta$x / $\\Delta$y = 3 / 6 = $\\frac{1}{2}$."
+      "D": "Student inverts the formula, computing $\\Delta$x / $\\Delta$y = 3 / 6 = 1/2."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -20490,7 +20490,7 @@
     "answer_choices": {
       "A": "y = 3x - 2",
       "B": "y = 3x - 5",
-      "C": "y = -($\\frac{1}{3}$)x + ($\\frac{14}{3}$)",
+      "C": "y = -(1/3)x + (14/3)",
       "D": "y = 3x + 4"
     },
     "correct_answer": "A",
@@ -20498,7 +20498,7 @@
     "distractor_logic": {
       "A": "Correct: parallel slope = 3; using point (2, 4) gives b = -2, so y = 3x - 2.",
       "B": "Student recognizes the slope must be 3 but copies the original equation without adjusting the y-intercept for the new point — returning y = 3x - 5 unchanged.",
-      "C": "Student confuses parallel (same slope) with perpendicular (negative reciprocal slope), using slope = $\\frac{-1}{3}$ and computing the equation through (2, 4).",
+      "C": "Student confuses parallel (same slope) with perpendicular (negative reciprocal slope), using slope = -1/3 and computing the equation through (2, 4).",
       "D": "Student correctly identifies slope = 3 but uses the given y-coordinate (4) directly as the y-intercept without solving: y = 3x + 4."
     },
     "difficulty_level": "Advanced",
@@ -20518,7 +20518,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Verify your equation by substituting x = 2 and confirming y = 4. Also confirm the slope is 3, not $\\frac{-1}{3}$."
+        "hint_text": "Verify your equation by substituting x = 2 and confirming y = 4. Also confirm the slope is 3, not -1/3."
       }
     ],
     "content_context": "generic",
@@ -20645,17 +20645,17 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "m = 2 and m = -2",
-      "B": "m = 3 and m = $\\frac{1}{3}$",
+      "B": "m = 3 and m = 1/3",
       "C": "m = -4 and m = -4",
-      "D": "m = 5 and m = $\\frac{-1}{5}$"
+      "D": "m = 5 and m = -1/5"
     },
     "correct_answer": "C",
-    "explanation": "Parallel lines have the same slope (and different y-intercepts). The only pair with equal slopes is m = -4 and m = -4.\n\nChoice D (m = 5 and m = $\\frac{-1}{5}$) gives a product of -1, which means those lines are perpendicular, not parallel.",
+    "explanation": "Parallel lines have the same slope (and different y-intercepts). The only pair with equal slopes is m = -4 and m = -4.\n\nChoice D (m = 5 and m = -1/5) gives a product of -1, which means those lines are perpendicular, not parallel.",
     "distractor_logic": {
       "A": "Student thinks lines with slopes of the same magnitude but opposite signs are parallel — confuses sign symmetry with the equal-slope condition required for parallelism.",
       "B": "Student thinks a slope and its reciprocal indicate parallel lines — confuses the reciprocal relationship with the negative-reciprocal relationship that defines perpendicularity.",
       "C": "Correct: m = -4 and m = -4 are equal, so the lines are parallel.",
-      "D": "Student selects the perpendicular pair: (5)($\\frac{-1}{5}$) = -1, indicating perpendicular lines, not parallel."
+      "D": "Student selects the perpendicular pair: (5)(-1/5) = -1, indicating perpendicular lines, not parallel."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -20719,20 +20719,20 @@
       "finding the slope of a line perpendicular to a given line",
       "applying the negative-reciprocal rule to a fractional slope"
     ],
-    "question_text": "Two lines are perpendicular. Line 1 has slope $\\frac{2}{3}$. What is the slope of Line 2?",
+    "question_text": "Two lines are perpendicular. Line 1 has slope 2/3. What is the slope of Line 2?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$\\frac{-3}{2}$",
-      "B": "$\\frac{3}{2}$",
-      "C": "$\\frac{-2}{3}$",
-      "D": "$\\frac{2}{3}$"
+      "A": "-3/2",
+      "B": "3/2",
+      "C": "-2/3",
+      "D": "2/3"
     },
     "correct_answer": "A",
-    "explanation": "Perpendicular lines have slopes that are negative reciprocals of each other — their product equals -1.\n\nThe negative reciprocal of $\\frac{2}{3}$ is $\\frac{-3}{2}$.\n\nVerify: ($\\frac{2}{3}$)($\\frac{-3}{2}$) = $\\frac{-6}{6}$ = -1 ✓",
+    "explanation": "Perpendicular lines have slopes that are negative reciprocals of each other — their product equals -1.\n\nThe negative reciprocal of 2/3 is -3/2.\n\nVerify: (2/3)(-3/2) = -6/6 = -1 ✓",
     "distractor_logic": {
-      "A": "Correct: the negative reciprocal of $\\frac{2}{3}$ is $\\frac{-3}{2}$.",
-      "B": "Student takes the reciprocal (flips numerator and denominator) but forgets to negate: $\\frac{3}{2}$ instead of $\\frac{-3}{2}$.",
-      "C": "Student negates the slope but forgets to take the reciprocal: $\\frac{-2}{3}$ instead of $\\frac{-3}{2}$.",
+      "A": "Correct: the negative reciprocal of 2/3 is -3/2.",
+      "B": "Student takes the reciprocal (flips numerator and denominator) but forgets to negate: 3/2 instead of -3/2.",
+      "C": "Student negates the slope but forgets to take the reciprocal: -2/3 instead of -3/2.",
       "D": "Student reports the same slope as Line 1 — the condition for parallel lines, not perpendicular."
     },
     "difficulty_level": "Basic",
@@ -20752,7 +20752,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Multiply your answer by $\\frac{2}{3}$. If the product equals -1, you have the correct perpendicular slope."
+        "hint_text": "Multiply your answer by 2/3. If the product equals -1, you have the correct perpendicular slope."
       }
     ],
     "content_context": "generic",
@@ -20806,10 +20806,10 @@
       "D": "Perpendicular, because both lines have the same x-coefficient magnitude"
     },
     "correct_answer": "B",
-    "explanation": "Convert each equation to slope-intercept form:\n\n2x + 3y = 6 → 3y = -2x + 6 → y = ($\\frac{-2}{3}$)x + 2, so $m_{1}$ = $\\frac{-2}{3}$\n3x - 2y = 4 → -2y = -3x + 4 → y = ($\\frac{3}{2}$)x - 2, so $m_{2}$ = $\\frac{3}{2}$\n\nTest: $m_{1}$ $\\times$ $m_{2}$ = ($\\frac{-2}{3}$)($\\frac{3}{2}$) = $\\frac{-6}{6}$ = -1\n\nThe product of slopes equals -1, so the lines are perpendicular.",
+    "explanation": "Convert each equation to slope-intercept form:\n\n2x + 3y = 6 → 3y = -2x + 6 → y = (-2/3)x + 2, so $m_{1}$ = -2/3\n3x - 2y = 4 → -2y = -3x + 4 → y = (3/2)x - 2, so $m_{2}$ = 3/2\n\nTest: $m_{1}$ $\\times$ $m_{2}$ = (-2/3)(3/2) = -6/6 = -1\n\nThe product of slopes equals -1, so the lines are perpendicular.",
     "distractor_logic": {
       "A": "Student compares the raw x-coefficients (2 and 3) without converting to slope-intercept form, incorrectly concluding the lines are parallel based on coefficient structure.",
-      "B": "Correct: $m_{1}$ = $\\frac{-2}{3}$, $m_{2}$ = $\\frac{3}{2}$, and ($\\frac{-2}{3}$)($\\frac{3}{2}$) = -1, confirming perpendicularity.",
+      "B": "Correct: $m_{1}$ = -2/3, $m_{2}$ = 3/2, and (-2/3)(3/2) = -1, confirming perpendicularity.",
       "C": "Student converts both equations to slope-intercept form correctly but makes an arithmetic error computing $m_{1}$ $\\times$ $m_{2}$, arriving at a value other than -1 and concluding neither.",
       "D": "Student correctly identifies the lines as perpendicular but uses a false justification — the equal x-coefficient magnitude (both involve 2 and 3) is coincidental and not the criterion for perpendicularity."
     },
@@ -20875,20 +20875,20 @@
       "writing the equation of a line perpendicular to a given line through a specified point",
       "finding the negative reciprocal of a fractional slope and applying point-slope form"
     ],
-    "question_text": "A line is given by y = ($\\frac{1}{2}$)x + 4. What is the equation of the line perpendicular to this line that passes through the point (-2, 3)?",
+    "question_text": "A line is given by y = (1/2)x + 4. What is the equation of the line perpendicular to this line that passes through the point (-2, 3)?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "y = -2x + 1",
       "B": "y = -2x - 1",
-      "C": "y = ($\\frac{1}{2}$)x + 4",
+      "C": "y = (1/2)x + 4",
       "D": "y = -2x + 5"
     },
     "correct_answer": "B",
-    "explanation": "Step 1 — Find the perpendicular slope:\nThe given slope is $\\frac{1}{2}$. The negative reciprocal is -2.\n\nStep 2 — Apply point-slope form with slope -2 and point (-2, 3):\ny - 3 = -2(x - (-2))\ny - 3 = -2(x + 2)\ny - 3 = -2x - 4\ny = -2x - 1\n\nVerify: y(-2) = -2(-2) - 1 = 4 - 1 = 3 ✓",
+    "explanation": "Step 1 — Find the perpendicular slope:\nThe given slope is 1/2. The negative reciprocal is -2.\n\nStep 2 — Apply point-slope form with slope -2 and point (-2, 3):\ny - 3 = -2(x - (-2))\ny - 3 = -2(x + 2)\ny - 3 = -2x - 4\ny = -2x - 1\n\nVerify: y(-2) = -2(-2) - 1 = 4 - 1 = 3 ✓",
     "distractor_logic": {
       "A": "Student correctly finds slope = -2 and sets up point-slope form, but makes a sign arithmetic error on the constant: arrives at b = +1 instead of -1.",
       "B": "Correct: perpendicular slope = -2; using point (-2, 3) gives y = -2x - 1.",
-      "C": "Student returns the original line equation, using slope $\\frac{1}{2}$ instead of the perpendicular slope -2.",
+      "C": "Student returns the original line equation, using slope 1/2 instead of the perpendicular slope -2.",
       "D": "Student correctly finds slope = -2 but distributes -2(x + 2) as -2x + 2 (treats the +2 as positive rather than distributing the negative), giving y - 3 = -2x + 2 → y = -2x + 5."
     },
     "difficulty_level": "Proficient",
@@ -20904,7 +20904,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "First find the perpendicular slope: flip $\\frac{1}{2}$ to get 2, then negate to get -2. Then use point-slope form with (-2, 3)."
+        "hint_text": "First find the perpendicular slope: flip 1/2 to get 2, then negate to get -2. Then use point-slope form with (-2, 3)."
       },
       {
         "strategy": "plug_in_values",
@@ -20962,11 +20962,11 @@
       "D": "Parallel, because dividing each equation by 2 gives proportional terms"
     },
     "correct_answer": "C",
-    "explanation": "Convert each equation to slope-intercept form:\n\n4x - 6y = 12 → -6y = -4x + 12 → y = ($\\frac{2}{3}$)x - 2, so $m_{1}$ = $\\frac{2}{3}$\n6x + 4y = 8 → 4y = -6x + 8 → y = ($\\frac{-3}{2}$)x + 2, so $m_{2}$ = $\\frac{-3}{2}$\n\nTest: $m_{1}$ $\\times$ $m_{2}$ = ($\\frac{2}{3}$)($\\frac{-3}{2}$) = $\\frac{-6}{6}$ = -1\n\nThe slopes are negative reciprocals, so the lines are perpendicular.",
+    "explanation": "Convert each equation to slope-intercept form:\n\n4x - 6y = 12 → -6y = -4x + 12 → y = (2/3)x - 2, so $m_{1}$ = 2/3\n6x + 4y = 8 → 4y = -6x + 8 → y = (-3/2)x + 2, so $m_{2}$ = -3/2\n\nTest: $m_{1}$ $\\times$ $m_{2}$ = (2/3)(-3/2) = -6/6 = -1\n\nThe slopes are negative reciprocals, so the lines are perpendicular.",
     "distractor_logic": {
       "A": "Student notices the numbers 4 and 6 appear in both equations and concludes the lines must be proportionally related — a superficial pattern match that bypasses converting to slope-intercept form.",
-      "B": "Student correctly converts both equations and identifies $m_{1}$ = $\\frac{2}{3}$ and $m_{2}$ = $\\frac{-3}{2}$ as different, but fails to compute their product — concluding 'different slopes = neither' without applying the perpendicularity test.",
-      "C": "Correct: $m_{1}$ $\\times$ $m_{2}$ = ($\\frac{2}{3}$)($\\frac{-3}{2}$) = -1, confirming the lines are perpendicular.",
+      "B": "Student correctly converts both equations and identifies $m_{1}$ = 2/3 and $m_{2}$ = -3/2 as different, but fails to compute their product — concluding 'different slopes = neither' without applying the perpendicularity test.",
+      "C": "Correct: $m_{1}$ $\\times$ $m_{2}$ = (2/3)(-3/2) = -1, confirming the lines are perpendicular.",
       "D": "Student divides each equation by 2 (getting 2x - 3y = 6 and 3x + 2y = 4) and compares coefficients directly, incorrectly concluding the terms are proportional without converting to slope-intercept form."
     },
     "difficulty_level": "Advanced",
@@ -21343,7 +21343,7 @@
       "rearranging the trapezoid area formula to isolate one base",
       "correctly handling the fraction coefficient and grouped sum in a multi-step literal equation"
     ],
-    "question_text": "The area of a trapezoid is A = ($\\frac{1}{2}$)($b_{1}$ + $b_{2}$)h. Solve this formula for $b_{1}$.",
+    "question_text": "The area of a trapezoid is A = (1/2)($b_{1}$ + $b_{2}$)h. Solve this formula for $b_{1}$.",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "$b_{1}$ = 2A - $b_{2}$h",
@@ -21352,10 +21352,10 @@
       "D": "$b_{1}$ = 2A/h - $b_{2}$"
     },
     "correct_answer": "D",
-    "explanation": "Step 1 — Multiply both sides by 2 to eliminate the fraction:\n2A = ($b_{1}$ + $b_{2}$)h\n\nStep 2 — Divide both sides by h:\n2A/h = $b_{1}$ + $b_{2}$\n\nStep 3 — Subtract $b_{2}$ from both sides:\n$b_{1}$ = 2A/h - $b_{2}$\n\nVerify with A = 24, h = 6, $b_{2}$ = 4:\n$b_{1}$ = 2(24)/6 - 4 = $\\frac{48}{6}$ - 4 = 8 - 4 = 4\nCheck: ($\\frac{1}{2}$)(4 + 4)(6) = 24 ✓",
+    "explanation": "Step 1 — Multiply both sides by 2 to eliminate the fraction:\n2A = ($b_{1}$ + $b_{2}$)h\n\nStep 2 — Divide both sides by h:\n2A/h = $b_{1}$ + $b_{2}$\n\nStep 3 — Subtract $b_{2}$ from both sides:\n$b_{1}$ = 2A/h - $b_{2}$\n\nVerify with A = 24, h = 6, $b_{2}$ = 4:\n$b_{1}$ = 2(24)/6 - 4 = 48/6 - 4 = 8 - 4 = 4\nCheck: (1/2)(4 + 4)(6) = 24 ✓",
     "distractor_logic": {
       "A": "Student correctly multiplies by 2 to get 2A = ($b_{1}$ + $b_{2}$)h, but then subtracts $b_{2}$h from both sides instead of dividing by h — leaving $b_{1}$ in an incorrect form.",
-      "B": "Student correctly divides by h and subtracts $b_{2}$, but skips multiplying by 2 to clear the $\\frac{1}{2}$ — giving A/h - $b_{2}$ instead of 2A/h - $b_{2}$.",
+      "B": "Student correctly divides by h and subtracts $b_{2}$, but skips multiplying by 2 to clear the 1/2 — giving A/h - $b_{2}$ instead of 2A/h - $b_{2}$.",
       "C": "Student misreads the formula as A = $b_{1}$ + $b_{2}$ + h (treating all factors as additive terms) and isolates $b_{1}$ by subtracting $b_{2}$ and h.",
       "D": "Correct: multiplying by 2, dividing by h, and subtracting $b_{2}$ gives $b_{1}$ = 2A/h - $b_{2}$."
     },
@@ -21372,7 +21372,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Work in reverse order of operations: first multiply both sides by 2 to clear the $\\frac{1}{2}$, then divide by h, then subtract $b_{2}$."
+        "hint_text": "Work in reverse order of operations: first multiply both sides by 2 to clear the 1/2, then divide by h, then subtract $b_{2}$."
       },
       {
         "strategy": "plug_in_values",
@@ -21430,7 +21430,7 @@
       "D": "x = c/ab"
     },
     "correct_answer": "B",
-    "explanation": "Factor x from the left side:\nax + bx = x(a + b)\n\nSo the equation becomes:\nx(a + b) = c\n\nDivide both sides by (a + b):\nx = c/(a + b)\n\nVerify with a = 2, b = 3, c = 10:\nx = 10/(2 + 3) = $\\frac{10}{5}$ = 2\nCheck: 2(2) + 3(2) = 4 + 6 = 10 ✓",
+    "explanation": "Factor x from the left side:\nax + bx = x(a + b)\n\nSo the equation becomes:\nx(a + b) = c\n\nDivide both sides by (a + b):\nx = c/(a + b)\n\nVerify with a = 2, b = 3, c = 10:\nx = 10/(2 + 3) = 10/5 = 2\nCheck: 2(2) + 3(2) = 4 + 6 = 10 ✓",
     "distractor_logic": {
       "A": "Student splits the division across the sum — treats c/(a + b) as c/a + c/b — applying a false rule that division distributes over addition.",
       "B": "Correct: factoring gives x(a + b) = c, so x = c/(a + b).",
@@ -21508,7 +21508,7 @@
       "D": "x = bc - a + b"
     },
     "correct_answer": "C",
-    "explanation": "Step 1 — Multiply both sides by b to clear the denominator:\nx + a = b(c + x) = bc + bx\n\nStep 2 — Move all x-terms to the left:\nx - bx = bc - a\n\nStep 3 — Factor x:\nx(1 - b) = bc - a\n\nStep 4 — Divide both sides by (1 - b):\nx = (bc - a)/(1 - b)\n\nVerify with a = 2, b = 3, c = 1:\nx = (3 - 2)/(1 - 3) = 1/(-2) = $\\frac{-1}{2}$\nCheck: ($\\frac{-1}{2}$ + 2)/3 = ($\\frac{3}{2}$)/3 = $\\frac{1}{2}$; c + x = 1 - $\\frac{1}{2}$ = $\\frac{1}{2}$ ✓",
+    "explanation": "Step 1 — Multiply both sides by b to clear the denominator:\nx + a = b(c + x) = bc + bx\n\nStep 2 — Move all x-terms to the left:\nx - bx = bc - a\n\nStep 3 — Factor x:\nx(1 - b) = bc - a\n\nStep 4 — Divide both sides by (1 - b):\nx = (bc - a)/(1 - b)\n\nVerify with a = 2, b = 3, c = 1:\nx = (3 - 2)/(1 - 3) = 1/(-2) = -1/2\nCheck: (-1/2 + 2)/3 = (3/2)/3 = 1/2; c + x = 1 - 1/2 = 1/2 ✓",
     "distractor_logic": {
       "A": "Student moves bx to the left but adds it to x instead of subtracting: x + bx = bc - a → x(1 + b) = bc - a → x = (bc - a)/(1 + b).",
       "B": "Student correctly isolates x(1 - b) = bc - a but then divides by b (the coefficient from the original right-hand term) rather than by (1 - b) (the factored coefficient of x).",
@@ -21528,7 +21528,7 @@
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try a = 2, b = 3, c = 1. The correct formula should give x = $\\frac{-1}{2}$. Substitute into each answer choice and identify the match."
+        "hint_text": "Try a = 2, b = 3, c = 1. The correct formula should give x = -1/2. Substitute into each answer choice and identify the match."
       },
       {
         "strategy": "identify_key_info",
@@ -23371,7 +23371,7 @@
       "estimating a scale reading at a fractional position between labeled tick marks",
       "converting an estimated scale reading from Celsius to Fahrenheit using the standard conversion formula"
     ],
-    "question_text": "A thermometer scale is marked in degrees Celsius at every 5°C: 0°C, 5°C, 10°C, 15°C, and 20°C. The mercury sits approximately three-quarters of the way between the 10°C and 15°C marks. A student needs to report this temperature in degrees Fahrenheit.\n\nUse the formula: F = ($\\frac{9}{5}$)C + 32\n\nWhich of the following is closest to the correct Fahrenheit temperature?",
+    "question_text": "A thermometer scale is marked in degrees Celsius at every 5°C: 0°C, 5°C, 10°C, 15°C, and 20°C. The mercury sits approximately three-quarters of the way between the 10°C and 15°C marks. A student needs to report this temperature in degrees Fahrenheit.\n\nUse the formula: F = (9/5)C + 32\n\nWhich of the following is closest to the correct Fahrenheit temperature?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "about 25°F",
@@ -23380,12 +23380,12 @@
       "D": "about 40°F"
     },
     "correct_answer": "B",
-    "explanation": "Step 1 — Estimate the Celsius reading:\nThe interval from 10°C to 15°C spans 5°C.\nThree-quarters of the way through: 10 + ($\\frac{3}{4}$)(5) = 10 + 3.75 = 13.75°C\n\nStep 2 — Convert to Fahrenheit:\nF = ($\\frac{9}{5}$)(13.75) + 32\nF = (9 $\\times$ 13.75) $\\div$ 5 + 32\nF = 123.75 $\\div$ 5 + 32\nF = 24.75 + 32\nF = 56.75°F $\\approx$ 57°F",
+    "explanation": "Step 1 — Estimate the Celsius reading:\nThe interval from 10°C to 15°C spans 5°C.\nThree-quarters of the way through: 10 + (3/4)(5) = 10 + 3.75 = 13.75°C\n\nStep 2 — Convert to Fahrenheit:\nF = (9/5)(13.75) + 32\nF = (9 $\\times$ 13.75) $\\div$ 5 + 32\nF = 123.75 $\\div$ 5 + 32\nF = 24.75 + 32\nF = 56.75°F $\\approx$ 57°F",
     "distractor_logic": {
-      "A": "Student correctly estimates the Celsius reading as 13.75°C but omits the +32 step in the conversion formula, computing only ($\\frac{9}{5}$)(13.75) $\\approx$ 24.75°F $\\approx$ 25°F.",
-      "B": "Correct: three-quarters of the way from 10°C to 15°C is 13.75°C; applying F = ($\\frac{9}{5}$)(13.75) + 32 gives 24.75 + 32 = 56.75°F $\\approx$ 57°F.",
-      "C": "Student estimates the mercury as halfway between the tick marks rather than three-quarters of the way, reading approximately 12.5°C; converting gives ($\\frac{9}{5}$)(12.5) + 32 = 22.5 + 32 = 54.5°F $\\approx$ 55°F.",
-      "D": "Student inverts the conversion coefficient, using ($\\frac{5}{9}$) instead of ($\\frac{9}{5}$): ($\\frac{5}{9}$)(13.75) + 32 $\\approx$ 7.6 + 32 $\\approx$ 40°F."
+      "A": "Student correctly estimates the Celsius reading as 13.75°C but omits the +32 step in the conversion formula, computing only (9/5)(13.75) $\\approx$ 24.75°F $\\approx$ 25°F.",
+      "B": "Correct: three-quarters of the way from 10°C to 15°C is 13.75°C; applying F = (9/5)(13.75) + 32 gives 24.75 + 32 = 56.75°F $\\approx$ 57°F.",
+      "C": "Student estimates the mercury as halfway between the tick marks rather than three-quarters of the way, reading approximately 12.5°C; converting gives (9/5)(12.5) + 32 = 22.5 + 32 = 54.5°F $\\approx$ 55°F.",
+      "D": "Student inverts the conversion coefficient, using (5/9) instead of (9/5): (5/9)(13.75) + 32 $\\approx$ 7.6 + 32 $\\approx$ 40°F."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -23400,7 +23400,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "There are two steps: first estimate the Celsius reading using the 'three-quarters' position between 10°C and 15°C, then apply the full conversion formula F = ($\\frac{9}{5}$)C + 32 — both parts are required."
+        "hint_text": "There are two steps: first estimate the Celsius reading using the 'three-quarters' position between 10°C and 15°C, then apply the full conversion formula F = (9/5)C + 32 — both parts are required."
       },
       {
         "strategy": "estimate_first",
@@ -25414,12 +25414,12 @@
       "D": "9.42 cm"
     },
     "correct_answer": "C",
-    "explanation": "Arc length is a fraction of the full circumference determined by the central angle:\n\nStep 1 — Find the full circumference:\nC = 2$\\pi$r = 2 $\\times$ 3.14 $\\times$ 12 = 75.36 cm\n\nStep 2 — Take the fraction corresponding to 90°:\nArc length = (90° $\\div$ 360°) $\\times$ 75.36 = ($\\frac{1}{4}$) $\\times$ 75.36 = 18.84 cm",
+    "explanation": "Arc length is a fraction of the full circumference determined by the central angle:\n\nStep 1 — Find the full circumference:\nC = 2$\\pi$r = 2 $\\times$ 3.14 $\\times$ 12 = 75.36 cm\n\nStep 2 — Take the fraction corresponding to 90°:\nArc length = (90° $\\div$ 360°) $\\times$ 75.36 = (1/4) $\\times$ 75.36 = 18.84 cm",
     "distractor_logic": {
       "A": "Student computes the full circumference (2 $\\times$ 3.14 $\\times$ 12 = 75.36 cm) but does not apply the 90° fraction, reporting the entire circumference as the arc length.",
       "B": "Student takes half the circumference (180° fraction) instead of a quarter (90° fraction): 75.36 $\\div$ 2 = 37.68 cm.",
-      "C": "Correct: arc length = ($\\frac{90}{360}$) $\\times$ 2$\\pi$r = ($\\frac{1}{4}$) $\\times$ 75.36 = 18.84 cm.",
-      "D": "Student uses C = $\\pi$r instead of C = 2$\\pi$r when computing the full circumference, then takes the quarter: ($\\frac{1}{4}$) $\\times$ 3.14 $\\times$ 12 = ($\\frac{1}{4}$) $\\times$ 37.68 = 9.42 cm."
+      "C": "Correct: arc length = (90/360) $\\times$ 2$\\pi$r = (1/4) $\\times$ 75.36 = 18.84 cm.",
+      "D": "Student uses C = $\\pi$r instead of C = 2$\\pi$r when computing the full circumference, then takes the quarter: (1/4) $\\times$ 3.14 $\\times$ 12 = (1/4) $\\times$ 37.68 = 9.42 cm."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -25434,7 +25434,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "A 90° arc is one-quarter of a full circle (360°). Find the full circumference first, then multiply by $\\frac{1}{4}$."
+        "hint_text": "A 90° arc is one-quarter of a full circle (360°). Find the full circumference first, then multiply by 1/4."
       },
       {
         "strategy": "estimate_first",
@@ -26942,7 +26942,7 @@
       "A": "Student misapplies the circle formula using A = $\\pi$r (no squaring): 3.14 $\\times$ 5 = 15.7; and misapplies the triangle formula as $\\frac{1}{2}$b (no height): $\\frac{1}{2}$ $\\times$ 20 = 10 — causing the circle to appear largest by comparison with the deflated triangle value.",
       "B": "Correct: applying all four formulas correctly gives W = 100, Y = 90, X = 88, Z = 78.5; Figure W has the greatest area.",
       "C": "Student omits the $\\frac{1}{2}$ factor in the triangle formula but then divides by 10 arbitrarily, deflating the triangle area: 20 $\\times$ 10 $\\div$ 10 = 20, making the rectangle (88) appear greatest.",
-      "D": "Student applies the triangle formula as $\\frac{1}{2}$bh but uses height = $\\frac{10}{2}$ = 5 (halves the height by mistake): $\\frac{1}{2}$ $\\times$ 20 $\\times$ 5 = 50, making the parallelogram (90) appear greatest."
+      "D": "Student applies the triangle formula as $\\frac{1}{2}$bh but uses height = 10/2 = 5 (halves the height by mistake): $\\frac{1}{2}$ $\\times$ 20 $\\times$ 5 = 50, making the parallelogram (90) appear greatest."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -29968,11 +29968,11 @@
       "D": "28.26 $ft^{3}$"
     },
     "correct_answer": "B",
-    "explanation": "The volume of a sphere is:\nV = ($\\frac{4}{3}$) $\\times$ $\\pi$ $\\times$ $r^{3}$\nV = ($\\frac{4}{3}$) $\\times$ 3.14 $\\times$ $3^{3}$\nV = ($\\frac{4}{3}$) $\\times$ 3.14 $\\times$ 27\nV = ($\\frac{4}{3}$) $\\times$ 84.78\nV = 113.04 $ft^{3}$",
+    "explanation": "The volume of a sphere is:\nV = (4/3) $\\times$ $\\pi$ $\\times$ $r^{3}$\nV = (4/3) $\\times$ 3.14 $\\times$ $3^{3}$\nV = (4/3) $\\times$ 3.14 $\\times$ 27\nV = (4/3) $\\times$ 84.78\nV = 113.04 $ft^{3}$",
     "distractor_logic": {
-      "A": "Student omits the ($\\frac{4}{3}$) factor, computing V = $\\pi$ $r^{3}$: 3.14 $\\times$ 27 = 84.78 $ft^{3}$.",
-      "B": "Correct: V = ($\\frac{4}{3}$) $\\times$ 3.14 $\\times$ 27 = 113.04 $ft^{3}$.",
-      "C": "Student uses 4$\\pi$ $r^{3}$ instead of ($\\frac{4}{3}$)$\\pi$ $r^{3}$, omitting the division by 3: 4 $\\times$ 3.14 $\\times$ 27 = 339.12 $ft^{3}$.",
+      "A": "Student omits the (4/3) factor, computing V = $\\pi$ $r^{3}$: 3.14 $\\times$ 27 = 84.78 $ft^{3}$.",
+      "B": "Correct: V = (4/3) $\\times$ 3.14 $\\times$ 27 = 113.04 $ft^{3}$.",
+      "C": "Student uses 4$\\pi$ $r^{3}$ instead of (4/3)$\\pi$ $r^{3}$, omitting the division by 3: 4 $\\times$ 3.14 $\\times$ 27 = 339.12 $ft^{3}$.",
       "D": "Student applies the cone formula ($\\frac{1}{3}$ $\\pi$ $r^{2}$h) using h = r = 3: $\\frac{1}{3}$ $\\times$ 3.14 $\\times$ 9 $\\times$ 3 = 28.26 $ft^{3}$."
     },
     "difficulty_level": "Proficient",
@@ -29988,11 +29988,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The sphere volume formula is V = ($\\frac{4}{3}$)$\\pi$ $r^{3}$. Cube the radius first ($3^{3}$ = 27), then multiply by ($\\frac{4}{3}$) $\\times$ $\\pi$."
+        "hint_text": "The sphere volume formula is V = (4/3)$\\pi$ $r^{3}$. Cube the radius first ($3^{3}$ = 27), then multiply by (4/3) $\\times$ $\\pi$."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "$r^{3}$ = 27; 3.14 $\\times$ 27 = 84.78; then 84.78 $\\times$ ($\\frac{4}{3}$) = 84.78 $\\times$ 4 $\\div$ 3 = 339.12 $\\div$ 3 = 113.04."
+        "hint_text": "$r^{3}$ = 27; 3.14 $\\times$ 27 = 84.78; then 84.78 $\\times$ (4/3) = 84.78 $\\times$ 4 $\\div$ 3 = 339.12 $\\div$ 3 = 113.04."
       }
     ],
     "content_context": "generic",
@@ -30535,7 +30535,7 @@
       "D": "12 cm"
     },
     "correct_answer": "B",
-    "explanation": "Using V = ($\\frac{4}{3}$)$\\pi$ $r^{3}$, solve for r:\n$r^{3}$ = 3V $\\div$ (4$\\pi$) = (3 $\\times$ 904.32) $\\div$ (4 $\\times$ 3.14) = 2,712.96 $\\div$ 12.56 = 216\nr = ∛216 = 6 cm\n\nCheck: ($\\frac{4}{3}$) $\\times$ 3.14 $\\times$ $6^{3}$ = ($\\frac{4}{3}$) $\\times$ 3.14 $\\times$ 216 = ($\\frac{4}{3}$) $\\times$ 678.24 = 904.32 ✓",
+    "explanation": "Using V = (4/3)$\\pi$ $r^{3}$, solve for r:\n$r^{3}$ = 3V $\\div$ (4$\\pi$) = (3 $\\times$ 904.32) $\\div$ (4 $\\times$ 3.14) = 2,712.96 $\\div$ 12.56 = 216\nr = ∛216 = 6 cm\n\nCheck: (4/3) $\\times$ 3.14 $\\times$ $6^{3}$ = (4/3) $\\times$ 3.14 $\\times$ 216 = (4/3) $\\times$ 678.24 = 904.32 ✓",
     "distractor_logic": {
       "A": "Student correctly finds $r^{3}$ = 216 but stops without taking the cube root, reporting $r^{3}$ as the radius.",
       "B": "Correct: $r^{3}$ = 216; r = ∛216 = 6 cm.",
@@ -30555,11 +30555,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Rearrange V = ($\\frac{4}{3}$)$\\pi$ $r^{3}$: multiply V by 3, divide by 4$\\pi$ to get $r^{3}$, then take the cube root. All three steps are required."
+        "hint_text": "Rearrange V = (4/3)$\\pi$ $r^{3}$: multiply V by 3, divide by 4$\\pi$ to get $r^{3}$, then take the cube root. All three steps are required."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check: cube your answer and compute ($\\frac{4}{3}$) $\\times$ 3.14 $\\times$ $r^{3}$. The result should equal 904.32."
+        "hint_text": "Check: cube your answer and compute (4/3) $\\times$ 3.14 $\\times$ $r^{3}$. The result should equal 904.32."
       }
     ],
     "content_context": "generic",
@@ -31750,7 +31750,7 @@
     "distractor_logic": {
       "A": "Correct: V = $\\frac{1}{3}$($x^{3}$ + $3x^{2}$) = (1/$3)x^{3}$ + $x^{2}$.",
       "B": "Student omits the $\\frac{1}{3}$ factor entirely: $x^{2}$(x + 3) = $x^{3}$ + $3x^{2}$.",
-      "C": "Student uses s instead of $s^{2}$ in the formula: $\\frac{1}{3}$ $\\times$ x $\\times$ (x + 3) = ($\\frac{1}{3}$)($x^{2}$ + 3x) = (1/$3)x^{2}$ + x.",
+      "C": "Student uses s instead of $s^{2}$ in the formula: $\\frac{1}{3}$ $\\times$ x $\\times$ (x + 3) = (1/3)($x^{2}$ + 3x) = (1/$3)x^{2}$ + x.",
       "D": "Student correctly applies $\\frac{1}{3}$ to the $x^{3}$ term but fails to simplify $\\frac{1}{3}$ $\\times$ $3x^{2}$ = $x^{2}$, leaving it as $3x^{2}$: (1/$3)x^{3}$ + $3x^{2}$."
     },
     "difficulty_level": "Advanced",
