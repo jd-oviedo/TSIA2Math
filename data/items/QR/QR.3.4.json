@@ -1,0 +1,1052 @@
+[
+  {
+    "item_id": "QR_B_085",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.4",
+    "topic": "interpreting_slope_intercept_meaning_in_context",
+    "topic_text": "Interpreting Slope/Intercept Meaning in Context",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "interpreting the constant term of a linear model as the fixed starting value",
+      "distinguishing the y-intercept from the slope in a real-world context"
+    ],
+    "question_text": "A plumber's charge is modeled by C = 15h + 40, where C is the total cost in dollars and h is the number of hours worked. What does the 40 represent?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The fixed fee charged before any hours are worked.",
+      "B": "The cost added for each hour worked.",
+      "C": "The total cost of the job.",
+      "D": "The cost per dollar earned."
+    },
+    "correct_answer": "A",
+    "explanation": "In C = 15h + 40, the 40 is the constant term, the cost when h = 0. It represents the fixed fee charged before any hours are worked. The 15 is the slope, the cost per hour.",
+    "distractor_logic": {
+      "A": "Correct: the constant 40 is the cost at zero hours, the fixed starting fee.",
+      "B": "Student swaps slope and intercept, describing the constant 40 with the per-hour rate language that belongs to the coefficient 15.",
+      "C": "Student calls the constant the total cost, but the total depends on h and is not fixed at 40.",
+      "D": "Student invents a per-dollar interpretation that does not match the constant term."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask what the cost would be at zero hours. The number that stands alone is the value when the variable is zero."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate the choice that uses per-hour language, since that describes the coefficient, not the standalone constant."
+      }
+    ],
+    "content_context": "plumbing_charge",
+    "context_tags": ["slope_intercept", "y_intercept", "fixed_fee", "interpretation"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_086",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.4",
+    "topic": "interpreting_slope_intercept_meaning_in_context",
+    "topic_text": "Interpreting Slope/Intercept Meaning in Context",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "interpreting the coefficient of a linear model as the rate of change in context",
+      "distinguishing the slope from the starting value in a real-world equation"
+    ],
+    "question_text": "A car's distance from home is modeled by d = 60t + 5, where d is distance in miles and t is time in hours. What does the 60 represent?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The distance the car was from home at the start.",
+      "B": "The total distance the car travels.",
+      "C": "The car's speed in miles per hour.",
+      "D": "The number of hours driven."
+    },
+    "correct_answer": "C",
+    "explanation": "In d = 60t + 5, the 60 is the coefficient of t, the slope. It tells how many miles the distance increases for each additional hour, which is the car's speed: 60 miles per hour. The 5 is the starting distance.",
+    "distractor_logic": {
+      "A": "Student swaps slope and intercept, describing the coefficient 60 with the starting-value language that belongs to the constant 5.",
+      "B": "Student calls the rate the total distance, but the total depends on t and is not fixed at 60.",
+      "C": "Correct: the coefficient 60 is the rate of change, the speed in miles per hour.",
+      "D": "Student confuses the rate with the variable t, calling 60 a number of hours."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask how much the distance grows for each additional hour. The number attached to t answers that."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate the choice that uses starting-value language, since that describes the standalone constant, not the coefficient."
+      }
+    ],
+    "content_context": "car_travel",
+    "context_tags": ["slope_intercept", "slope", "rate_of_change", "interpretation"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_087",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.4",
+    "topic": "interpreting_slope_intercept_meaning_in_context",
+    "topic_text": "Interpreting Slope/Intercept Meaning in Context",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "interpreting the constant term of a savings model as the initial amount",
+      "distinguishing the starting balance from the weekly rate of change"
+    ],
+    "question_text": "A student's savings are modeled by y = 8x + 25, where y is the total saved in dollars and x is the number of weeks. What does the 25 represent?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The amount already saved before any weeks pass.",
+      "B": "The amount saved each week.",
+      "C": "The total amount saved.",
+      "D": "The number of weeks needed to save."
+    },
+    "correct_answer": "A",
+    "explanation": "In y = 8x + 25, the 25 is the constant term, the savings when x = 0. It is the amount already saved before any weeks pass. The 8 is the weekly rate.",
+    "distractor_logic": {
+      "A": "Correct: the constant 25 is the starting balance at zero weeks.",
+      "B": "Student swaps slope and intercept, describing the constant 25 with the per-week rate language that belongs to the coefficient 8.",
+      "C": "Student calls the constant the total saved, but the total grows with x and is not fixed at 25.",
+      "D": "Student confuses the starting balance with the variable x, calling 25 a number of weeks."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask how much was saved at week zero. The number standing alone gives the value before the variable grows."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate the choice that uses per-week language, since that describes the coefficient, not the constant."
+      }
+    ],
+    "content_context": "student_savings",
+    "context_tags": ["slope_intercept", "y_intercept", "initial_value", "interpretation"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_088",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.4",
+    "topic": "interpreting_slope_intercept_meaning_in_context",
+    "topic_text": "Interpreting Slope/Intercept Meaning in Context",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "interpreting the coefficient of a profit model as the per-item rate",
+      "distinguishing the per-item rate from the fixed startup cost"
+    ],
+    "question_text": "A small business models its profit as P = 3n + 50, where P is profit in dollars and n is the number of items sold. Wait, the business actually models profit as P = 3n - 50, where the 50 is a fixed startup cost. What does the 3 represent?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The fixed startup cost.",
+      "B": "The total profit.",
+      "C": "The number of items sold.",
+      "D": "The profit earned for each item sold."
+    },
+    "correct_answer": "D",
+    "explanation": "In P = 3n - 50, the 3 is the coefficient of n, the slope. It tells how much profit increases for each additional item sold: $3 per item. The 50 is the fixed startup cost subtracted from earnings.",
+    "distractor_logic": {
+      "A": "Student swaps slope and intercept, describing the coefficient 3 with the fixed-cost language that belongs to the constant 50.",
+      "B": "Student calls the per-item rate the total profit, but the total depends on n and is not fixed at 3.",
+      "C": "Student confuses the rate with the variable n, calling 3 a number of items.",
+      "D": "Correct: the coefficient 3 is the profit earned for each additional item sold."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask how much profit changes for each additional item. The number attached to n answers that."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate the choice that uses fixed-cost language, since that describes the standalone constant, not the coefficient."
+      }
+    ],
+    "content_context": "small_business_profit",
+    "context_tags": ["slope_intercept", "slope", "per_item_rate", "interpretation"],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_089",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.4",
+    "topic": "interpreting_slope_intercept_meaning_in_context",
+    "topic_text": "Interpreting Slope/Intercept Meaning in Context",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "interpreting the constant term of a linear model as the initial quantity present",
+      "distinguishing the starting quantity from the per-person rate of change"
+    ],
+    "question_text": "The amount of soup in a pot is modeled by T = 2p + 10, where T is the total cups of soup and p is the number of people served portions. What does the 10 represent?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The cups of soup used per person.",
+      "B": "The total cups of soup.",
+      "C": "The number of people served.",
+      "D": "The cups of soup already in the pot before any portions."
+    },
+    "correct_answer": "D",
+    "explanation": "Reading the model T = 2p + 10, the 10 is the constant term, the value of T when p = 0. It represents the cups of soup already in the pot before any portions are added. The 2 is the per-person rate.",
+    "distractor_logic": {
+      "A": "Student swaps slope and intercept, describing the constant 10 with the per-person language that belongs to the coefficient 2.",
+      "B": "Student calls the constant the total, but the total depends on p and is not fixed at 10.",
+      "C": "Student confuses the starting amount with the variable p, calling 10 a number of people.",
+      "D": "Correct: the constant 10 is the amount already present when p = 0, before any portions."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask how much soup there is when zero people have been served. The standalone number gives the value at p = 0."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate the choice that uses per-person language, since that describes the coefficient, not the constant."
+      }
+    ],
+    "content_context": "serving_soup",
+    "context_tags": ["slope_intercept", "y_intercept", "initial_value", "interpretation"],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_072",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.4",
+    "topic": "interpreting_slope_intercept_meaning_in_context",
+    "topic_text": "Interpreting Slope/Intercept Meaning in Context",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "matching a described context to the correct slope-intercept equation",
+      "placing the fixed fee as the constant and the per-unit rate as the coefficient"
+    ],
+    "question_text": "A tutor charges a one-time $30 registration fee plus $4 per session. Let c be the total cost and s be the number of sessions. Which equation correctly models the total cost?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "c = 30s + 4",
+      "B": "c = 4s - 30",
+      "C": "c = 4s + 30",
+      "D": "c = 30s - 4"
+    },
+    "correct_answer": "C",
+    "explanation": "The $4 per session is the rate, so it multiplies s: 4s. The $30 registration fee is charged once, so it is the constant added on: c = 4s + 30.",
+    "distractor_logic": {
+      "A": "Student swaps slope and intercept, making the $30 fee the per-session rate and the $4 the constant: c = 30s + 4.",
+      "B": "Student subtracts the registration fee instead of adding it: c = 4s - 30.",
+      "C": "Correct: $4 per session gives 4s, and the one-time $30 fee is the constant: c = 4s + 30.",
+      "D": "Student swaps slope and intercept and also subtracts, making $30 the rate and subtracting $4: c = 30s - 4."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Decide which charge repeats per session and which happens once. The repeating charge multiplies s; the one-time charge is the constant."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate equations that attach the per-session rate to the wrong number or that subtract the fee instead of adding it."
+      }
+    ],
+    "content_context": "tutoring_fees",
+    "context_tags": ["slope_intercept", "match_equation", "rate_and_fee", "interpretation"],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_073",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.4",
+    "topic": "interpreting_slope_intercept_meaning_in_context",
+    "topic_text": "Interpreting Slope/Intercept Meaning in Context",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "interpreting a negative slope as a decrease per unit in context",
+      "distinguishing the negative rate of change from the starting value"
+    ],
+    "question_text": "A person's weight during a program is modeled by w = -3m + 200, where w is weight in pounds and m is the number of months. What does the -3 represent?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The person loses 3 pounds each month.",
+      "B": "The person's weight decreases from 200 pounds.",
+      "C": "The person gains 3 pounds each month.",
+      "D": "The program lasts 3 months."
+    },
+    "correct_answer": "A",
+    "explanation": "In w = -3m + 200, the -3 is the slope, the change in weight per month. A negative slope means the weight decreases, so the person loses 3 pounds each month. The 200 is the starting weight.",
+    "distractor_logic": {
+      "A": "Correct: the slope -3 means the weight drops by 3 pounds for each additional month.",
+      "B": "Student swaps slope and intercept, attaching the decreasing-from-200 language to the constant rather than reading the rate -3.",
+      "C": "Student ignores the negative sign, reading the slope as a gain of 3 pounds instead of a loss.",
+      "D": "Student confuses the rate with the variable m, calling 3 a number of months."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The number attached to m is the monthly change. Pay attention to its sign to decide whether weight goes up or down."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate the choice that ignores the negative sign and the one that describes the starting weight instead of the rate."
+      }
+    ],
+    "content_context": "weight_program",
+    "context_tags": ["slope_intercept", "negative_slope", "rate_of_change", "interpretation"],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_074",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.4",
+    "topic": "interpreting_slope_intercept_meaning_in_context",
+    "topic_text": "Interpreting Slope/Intercept Meaning in Context",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "explaining why the y-intercept of a context equation has a specific value",
+      "separating the fixed starting value from the per-unit rate when justifying the intercept"
+    ],
+    "question_text": "A car rental is modeled by C = 0.20d + 50, where C is the cost in dollars and d is the miles driven. Which statement correctly explains why the y-intercept is 50?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Because the cost rises by $50 for each mile driven.",
+      "B": "Because the cost reaches $50 after 50 miles.",
+      "C": "Because the rental costs $50 per mile.",
+      "D": "Because there is a $50 base charge before any miles are driven."
+    },
+    "correct_answer": "D",
+    "explanation": "The y-intercept is the cost when d = 0, that is, before any miles are driven. The $50 is the fixed base charge applied regardless of distance. The $0.20 is the per-mile rate.",
+    "distractor_logic": {
+      "A": "Student swaps slope and intercept, describing the $50 constant with the per-mile rate language that belongs to the coefficient 0.20.",
+      "B": "Student ties the $50 to a specific mileage (50 miles), but the intercept is the value at zero miles, not at 50 miles.",
+      "C": "Student again uses per-mile language for the constant, mislabeling the fixed charge as a rate.",
+      "D": "Correct: the y-intercept is the cost at zero miles, the fixed $50 base charge."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The y-intercept is the cost when miles driven is zero. Ask what charge applies before any driving happens."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any explanation that describes the $50 as a per-mile rate or ties it to a specific nonzero mileage."
+      }
+    ],
+    "content_context": "car_rental",
+    "context_tags": ["slope_intercept", "y_intercept", "base_charge", "interpretation"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_075",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.4",
+    "topic": "interpreting_slope_intercept_meaning_in_context",
+    "topic_text": "Interpreting Slope/Intercept Meaning in Context",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "matching a described draining situation to the correct equation with a negative slope",
+      "placing the initial amount as the constant and the rate of decrease as a negative coefficient"
+    ],
+    "question_text": "A tank starts with 500 gallons and drains at 20 gallons per hour. Let v be the volume in gallons and t be the time in hours. Which equation correctly models the volume?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "v = 20t + 500",
+      "B": "v = -20t + 500",
+      "C": "v = 500t - 20",
+      "D": "v = -500t + 20"
+    },
+    "correct_answer": "B",
+    "explanation": "The tank starts at 500 gallons, so 500 is the constant. It drains 20 gallons each hour, a decrease, so the rate is -20. The model is v = -20t + 500.",
+    "distractor_logic": {
+      "A": "Student uses the correct numbers but keeps the rate positive, ignoring that draining is a decrease: v = 20t + 500.",
+      "B": "Correct: the starting 500 is the constant and the draining rate is -20, giving v = -20t + 500.",
+      "C": "Student swaps slope and intercept, making 500 the hourly rate and 20 the constant: v = 500t - 20.",
+      "D": "Student swaps slope and intercept and applies the sign to the wrong number: v = -500t + 20."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Identify the starting amount and the hourly change. Draining means the rate is negative; the starting amount is the constant."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate equations that keep the draining rate positive or that put 500 as the per-hour rate."
+      }
+    ],
+    "content_context": "draining_tank",
+    "context_tags": ["slope_intercept", "negative_slope", "match_equation", "interpretation"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_076",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.4",
+    "topic": "interpreting_slope_intercept_meaning_in_context",
+    "topic_text": "Interpreting Slope/Intercept Meaning in Context",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "interpreting a small decimal coefficient as a per-unit rate in context",
+      "distinguishing the per-minute rate from the fixed monthly charge"
+    ],
+    "question_text": "A phone plan is modeled by C = 0.10m + 25, where C is the monthly cost in dollars and m is the number of minutes used. What does the 0.10 represent?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The fixed monthly charge.",
+      "B": "The number of minutes included for free.",
+      "C": "The cost of each minute used.",
+      "D": "The total monthly cost."
+    },
+    "correct_answer": "C",
+    "explanation": "In C = 0.10m + 25, the 0.10 is the coefficient of m, the slope. It is the cost added for each minute used: $0.10 per minute. The 25 is the fixed monthly charge.",
+    "distractor_logic": {
+      "A": "Student swaps slope and intercept, describing the coefficient 0.10 with the fixed-charge language that belongs to the constant 25.",
+      "B": "Student misreads the per-minute rate as a count of free minutes, which is not what the coefficient measures.",
+      "C": "Correct: the coefficient 0.10 is the cost charged for each minute used.",
+      "D": "Student calls the per-minute rate the total cost, but the total depends on m and is not fixed at 0.10."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask how much the cost grows for each extra minute. The number attached to m gives that per-minute amount."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate the choice that uses fixed-charge language, since that describes the standalone constant, not the coefficient."
+      }
+    ],
+    "content_context": "phone_plan",
+    "context_tags": ["slope_intercept", "slope", "per_minute_rate", "interpretation"],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_066",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.4",
+    "topic": "interpreting_slope_intercept_meaning_in_context",
+    "topic_text": "Interpreting Slope/Intercept Meaning in Context",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "comparing two contextual equations by interpreting the difference in their slopes",
+      "translating a slope difference into a statement about real-world rates"
+    ],
+    "question_text": "Two gyms model membership cost in dollars after x months. Gym A is C = 2x + 80 and Gym B is C = 5x + 20. Which statement correctly interprets the difference in their slopes?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Gym B's monthly cost rises $3 faster per month than Gym A's.",
+      "B": "Gym A costs more overall because its starting value is higher.",
+      "C": "Gym B is always more expensive than Gym A.",
+      "D": "Gym A's cost rises faster because 80 is greater than 20."
+    },
+    "correct_answer": "A",
+    "explanation": "The slope is the monthly rate. Gym A rises $2 per month and Gym B rises $5 per month. The difference in slopes is 5 - 2 = 3, so Gym B's cost rises $3 faster each month than Gym A's. The intercepts (80 and 20) are the starting fees, not the rates.",
+    "distractor_logic": {
+      "A": "Correct: the slopes 2 and 5 differ by 3, so Gym B's monthly cost rises $3 faster per month.",
+      "B": "Student bases a claim about overall cost on the intercept alone, ignoring that the higher slope of Gym B eventually overtakes Gym A.",
+      "C": "Student assumes the steeper slope makes Gym B always more expensive, but Gym A's higher starting fee makes it more expensive at first.",
+      "D": "Student swaps slope and intercept, treating the larger starting fee 80 as evidence of a faster rate of increase."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The slope is the monthly rate; the constant is the starting fee. Compare the slopes to judge how fast each cost rises."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any statement that judges the rate of increase using the starting fee or that ignores how the lines cross over time."
+      }
+    ],
+    "content_context": "gym_membership",
+    "context_tags": ["slope_intercept", "comparing_slopes", "rate_of_change", "interpretation"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_067",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.4",
+    "topic": "interpreting_slope_intercept_meaning_in_context",
+    "topic_text": "Interpreting Slope/Intercept Meaning in Context",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "evaluating multiple interpretations of a linear model and identifying the incorrect one",
+      "distinguishing a valid slope or intercept interpretation from a flawed one"
+    ],
+    "question_text": "The temperature of a cooling oven is modeled by T = -4d + 100, where T is temperature in degrees and d is the number of minutes since it was turned off. Which interpretation is INCORRECT?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The temperature was 100 degrees when the oven was turned off.",
+      "B": "The 100 means the temperature drops 100 degrees in total.",
+      "C": "The temperature falls 4 degrees each minute.",
+      "D": "The negative slope shows the oven is cooling."
+    },
+    "correct_answer": "B",
+    "explanation": "The 100 is the y-intercept, the temperature at d = 0, when the oven was just turned off. It is the starting temperature, not a total drop. Statements A, C, and D all correctly read the model, so the incorrect one is B.",
+    "distractor_logic": {
+      "A": "This is a correct interpretation: the intercept 100 is the temperature at zero minutes, so it is not the incorrect statement being sought.",
+      "B": "Correct choice: this interpretation is incorrect because it treats the starting temperature 100 as a total decrease, confusing the intercept with a change.",
+      "C": "This is a correct interpretation: the slope -4 means the temperature falls 4 degrees per minute, so it is not the incorrect statement.",
+      "D": "This is a correct interpretation: a negative slope does indicate cooling, so it is not the incorrect statement."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check each statement against the model. The intercept is a starting value, and the slope is a per-minute change. Find the claim that misuses one of them."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Set aside the statements that correctly read the slope and the starting temperature. The remaining one is the error."
+      }
+    ],
+    "content_context": "cooling_oven",
+    "context_tags": ["slope_intercept", "error_analysis", "y_intercept", "interpretation"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_068",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.4",
+    "topic": "interpreting_slope_intercept_meaning_in_context",
+    "topic_text": "Interpreting Slope/Intercept Meaning in Context",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "interpreting a negative slope in a falling-object context",
+      "distinguishing the rate of decrease from the starting height and from a positive change"
+    ],
+    "question_text": "The height of a drone descending is modeled by h = -16t + 48, where h is height in feet and t is time in seconds. What does the -16 tell you about the drone?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The drone started 16 feet above the ground.",
+      "B": "The drone rises 16 feet each second.",
+      "C": "The drone descends 16 feet each second.",
+      "D": "The drone takes 16 seconds to land."
+    },
+    "correct_answer": "C",
+    "explanation": "In h = -16t + 48, the -16 is the slope, the change in height per second. A negative slope means the height decreases, so the drone descends 16 feet each second. The 48 is the starting height.",
+    "distractor_logic": {
+      "A": "Student swaps slope and intercept, attaching the starting-height meaning to the -16 instead of reading it as a rate.",
+      "B": "Student ignores the negative sign, reading the slope as a rise of 16 feet rather than a descent.",
+      "C": "Correct: the slope -16 means the drone's height drops 16 feet each second.",
+      "D": "Student confuses the rate with a time, treating 16 as the number of seconds to land."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The number attached to t is the per-second change in height. Its negative sign tells you the direction of that change."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate the choice that drops the negative sign and the one that describes the starting height instead of the rate."
+      }
+    ],
+    "content_context": "descending_drone",
+    "context_tags": ["slope_intercept", "negative_slope", "rate_of_change", "interpretation"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_069",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.4",
+    "topic": "interpreting_slope_intercept_meaning_in_context",
+    "topic_text": "Interpreting Slope/Intercept Meaning in Context",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "interpreting both slope and intercept correctly when comparing two contextual models",
+      "identifying the statement that assigns the rate and the starting value to the right roles"
+    ],
+    "question_text": "Two streaming services model yearly cost in dollars over x years. Service A is C = 120x + 0 and Service B is C = 96x + 60. Which statement correctly interprets both the slope and the intercept of Service B?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Service B charges $96 per year with a one-time $60 setup fee.",
+      "B": "Service B charges $60 per year with a one-time $96 setup fee.",
+      "C": "Service B charges $156 per year with no setup fee.",
+      "D": "Service B charges $96 once and $60 per year after that."
+    },
+    "correct_answer": "A",
+    "explanation": "In C = 96x + 60, the slope 96 is the yearly rate and the intercept 60 is the cost at x = 0, a one-time setup fee. So Service B charges $96 per year plus a one-time $60 fee.",
+    "distractor_logic": {
+      "A": "Correct: the slope 96 is the yearly charge and the intercept 60 is the one-time setup fee.",
+      "B": "Student swaps slope and intercept, making $60 the yearly rate and $96 the setup fee.",
+      "C": "Student adds the slope and intercept into one yearly rate of 156 and erases the setup fee.",
+      "D": "Student swaps the roles, treating the slope 96 as a one-time charge and the intercept 60 as the yearly rate."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The coefficient of x is the per-year rate; the constant is the cost at year zero. Match each number to the right role."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any statement that swaps the yearly rate with the setup fee or that merges the two numbers into one rate."
+      }
+    ],
+    "content_context": "streaming_services",
+    "context_tags": ["slope_intercept", "comparing_models", "setup_fee", "interpretation"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_070",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.4",
+    "topic": "interpreting_slope_intercept_meaning_in_context",
+    "topic_text": "Interpreting Slope/Intercept Meaning in Context",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "interpreting a negative slope in a depletion context with correct units",
+      "distinguishing the rate of decrease from the starting amount and from a sign error"
+    ],
+    "question_text": "The fuel remaining in a generator is modeled by f = -5x + 120, where f is fuel in liters and x is the number of hours run. What does the -5 represent?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The generator uses 5 liters of fuel each hour.",
+      "B": "The fuel decreases from 120 liters over time.",
+      "C": "The generator gains 5 liters of fuel each hour.",
+      "D": "The generator starts with 5 liters of fuel."
+    },
+    "correct_answer": "A",
+    "explanation": "In f = -5x + 120, the -5 is the slope, the change in fuel per hour. A negative slope means the fuel decreases, so the generator uses 5 liters each hour. The 120 is the starting fuel.",
+    "distractor_logic": {
+      "A": "Correct: the slope -5 means the fuel drops by 5 liters for each hour the generator runs.",
+      "B": "Student swaps slope and intercept, attaching the decreasing-from-120 language to the constant rather than reading the rate -5.",
+      "C": "Student ignores the negative sign, reading the slope as a gain of 5 liters instead of a loss.",
+      "D": "Student confuses the rate with the starting amount, treating 5 as the initial fuel rather than 120."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The number attached to x is the hourly change in fuel. Read its sign to decide whether fuel rises or falls."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate the choice that drops the negative sign and the ones that describe the starting amount instead of the rate."
+      }
+    ],
+    "content_context": "generator_fuel",
+    "context_tags": ["slope_intercept", "negative_slope", "rate_of_change", "interpretation"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  }
+]

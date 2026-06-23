@@ -1,0 +1,1052 @@
+[
+  {
+    "item_id": "QR_B_070",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.1",
+    "topic": "translating_verbal_descriptions_to_algebraic_expressions",
+    "topic_text": "Translating Verbal Descriptions to Algebraic Expressions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "mapping the phrase 'more than' to addition",
+      "writing a single-operation expression from a verbal phrase"
+    ],
+    "question_text": "Which expression represents 'eight more than a number x'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x - 8",
+      "B": "8 - x",
+      "C": "x + 8",
+      "D": "8x"
+    },
+    "correct_answer": "C",
+    "explanation": "'More than' signals addition. 'Eight more than a number x' means start with x and add 8, giving x + 8. Addition does not depend on order, so x + 8 is the same value as 8 + x.",
+    "distractor_logic": {
+      "A": "Student interprets 'more than' as subtraction, writing x - 8.",
+      "B": "Student treats the phrase as subtraction and orders the terms as they appear in the words: 8 - x.",
+      "C": "Correct: 'eight more than a number x' adds 8 to x, giving x + 8.",
+      "D": "Student reads 'more' as a scaling cue and multiplies instead of adding: 8x."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the operation word in the phrase. 'More than' points to one specific operation. Decide what is being combined with what."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Rule out any choice that subtracts, divides, or multiplies, since this phrase signals only one operation."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["verbal_to_algebraic", "addition", "single_operation"],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_071",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.1",
+    "topic": "translating_verbal_descriptions_to_algebraic_expressions",
+    "topic_text": "Translating Verbal Descriptions to Algebraic Expressions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "mapping the phrase 'less than' to subtraction in the correct order",
+      "determining which quantity is the minuend in a verbal subtraction phrase"
+    ],
+    "question_text": "Which expression represents 'five less than a number y'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "y - 5",
+      "B": "5 - y",
+      "C": "y + 5",
+      "D": "5y"
+    },
+    "correct_answer": "A",
+    "explanation": "'Less than' signals subtraction, and the quantity that comes after 'than' is the starting amount. 'Five less than a number y' means take y and subtract 5: y - 5. The order matters, because subtraction is not commutative.",
+    "distractor_logic": {
+      "A": "Correct: 'five less than a number y' subtracts 5 from y, giving y - 5.",
+      "B": "Student reverses the subtraction order, writing the numbers in the order they appear in the words: 5 - y.",
+      "C": "Student confuses 'less than' with 'more than' and adds: y + 5.",
+      "D": "Student reads 'less' as a multiplication cue and multiplies: 5y."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The quantity named right after 'than' is what you start with. Decide which number gets subtracted from which."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try y = 10. 'Five less than 10' should give a specific number. Check which expression produces that same result."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["verbal_to_algebraic", "subtraction", "order_of_terms", "single_operation"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_072",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.1",
+    "topic": "translating_verbal_descriptions_to_algebraic_expressions",
+    "topic_text": "Translating Verbal Descriptions to Algebraic Expressions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "mapping the phrase 'product of' to multiplication",
+      "distinguishing multiplication from other operations in a verbal phrase"
+    ],
+    "question_text": "Which expression represents 'the product of a number m and 6'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "m + 6",
+      "B": "m - 6",
+      "C": "m/6",
+      "D": "6m"
+    },
+    "correct_answer": "D",
+    "explanation": "'Product' is the result of multiplication. 'The product of a number m and 6' means m times 6, written 6m. The order does not change the value, since multiplication is commutative.",
+    "distractor_logic": {
+      "A": "Student confuses 'product' with 'sum' and adds: m + 6.",
+      "B": "Student confuses 'product' with 'difference' and subtracts: m - 6.",
+      "C": "Student confuses 'product' with 'quotient' and divides: m/6.",
+      "D": "Correct: 'the product of m and 6' multiplies the two quantities, giving 6m."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The word 'product' names the result of one specific operation. Identify that operation before choosing."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Three of these choices use operations that produce a sum, a difference, or a quotient. Eliminate those."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["verbal_to_algebraic", "multiplication", "single_operation"],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_073",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.1",
+    "topic": "translating_verbal_descriptions_to_algebraic_expressions",
+    "topic_text": "Translating Verbal Descriptions to Algebraic Expressions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "mapping the phrase 'divided by' to division in the correct order",
+      "determining which quantity is the dividend in a verbal division phrase"
+    ],
+    "question_text": "Which expression represents 'a number k divided by 4'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "4/k",
+      "B": "k/4",
+      "C": "4k",
+      "D": "k - 4"
+    },
+    "correct_answer": "B",
+    "explanation": "'Divided by' signals division, and the quantity named before 'divided by' is the dividend (the number being split). 'A number k divided by 4' means k divided into 4 parts: k/4. Order matters, because division is not commutative.",
+    "distractor_logic": {
+      "A": "Student reverses the division order, placing 4 as the dividend: 4/k.",
+      "B": "Correct: 'a number k divided by 4' makes k the dividend, giving k/4.",
+      "C": "Student confuses 'divided by' with multiplication: 4k.",
+      "D": "Student confuses 'divided by' with subtraction: k - 4."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The quantity named before 'divided by' is the one being split up. Decide which number goes on top."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try k = 8. 'A number 8 divided by 4' should give one clear value. Check which expression matches it."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["verbal_to_algebraic", "division", "order_of_terms", "single_operation"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_074",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.1",
+    "topic": "translating_verbal_descriptions_to_algebraic_expressions",
+    "topic_text": "Translating Verbal Descriptions to Algebraic Expressions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "mapping the word 'twice' to multiplication by 2",
+      "distinguishing 'twice' from additive and exponential interpretations"
+    ],
+    "question_text": "Which expression represents 'twice a number w'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "w + 2",
+      "B": "w^2",
+      "C": "2w",
+      "D": "w - 2"
+    },
+    "correct_answer": "C",
+    "explanation": "'Twice' means two times. 'Twice a number w' means 2 multiplied by w, written 2w.",
+    "distractor_logic": {
+      "A": "Student interprets 'twice' as 'two more' and adds: w + 2.",
+      "B": "Student confuses 'twice' with 'squared' and raises w to the second power: w^2.",
+      "C": "Correct: 'twice a number w' is two times w, giving 2w.",
+      "D": "Student interprets 'twice' as 'two less' and subtracts: w - 2."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "'Twice' describes how many times you take the number, not how much you add or what power you raise it to."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Two of these choices add or subtract, and one uses an exponent. Decide whether 'twice' calls for any of those."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["verbal_to_algebraic", "multiplication", "single_operation"],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_057",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.1",
+    "topic": "translating_verbal_descriptions_to_algebraic_expressions",
+    "topic_text": "Translating Verbal Descriptions to Algebraic Expressions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "translating a phrase with a sum inside a product into a grouped expression",
+      "recognizing when parentheses are required to preserve meaning"
+    ],
+    "question_text": "Which expression represents 'twice the sum of a number x and 4'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2(x + 4)",
+      "B": "2x + 4",
+      "C": "x + 6",
+      "D": "8x"
+    },
+    "correct_answer": "A",
+    "explanation": "First find 'the sum of a number x and 4', which is (x + 4). 'Twice' that whole sum means multiplying the entire group by 2: 2(x + 4). The parentheses are required so that both x and 4 are doubled. Expanded, this is 2x + 8.",
+    "distractor_logic": {
+      "A": "Correct: 'twice the sum of x and 4' doubles the whole group, giving 2(x + 4).",
+      "B": "Student drops the parentheses and doubles only the first term: 2x + 4. This fails to double the 4.",
+      "C": "Student reads 'twice' as 'add 2' rather than 'multiply by 2': 2 + (x + 4) = x + 6.",
+      "D": "Student reads 'sum' as 'product' and computes 2 times (4 times x): 8x."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Build the phrase in stages: first write the sum, then decide what 'twice' does to that entire sum."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 3. Find 'the sum of 3 and 4', then take twice that. Check which expression gives the same number."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["verbal_to_algebraic", "grouping", "distribution", "two_operations"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_058",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.1",
+    "topic": "translating_verbal_descriptions_to_algebraic_expressions",
+    "topic_text": "Translating Verbal Descriptions to Algebraic Expressions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "translating a two-operation phrase combining multiplication and subtraction",
+      "preserving subtraction order when a 'less than' phrase wraps a product"
+    ],
+    "question_text": "Which expression represents '6 less than three times a number y'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6 - 3y",
+      "B": "3y + 6",
+      "C": "3(y - 6)",
+      "D": "3y - 6"
+    },
+    "correct_answer": "D",
+    "explanation": "'Three times a number y' is 3y. '6 less than' that quantity means subtracting 6 from 3y: 3y - 6. The quantity named after 'than' (here, 3y) is what you start with.",
+    "distractor_logic": {
+      "A": "Student reverses the subtraction order, writing 6 - 3y instead of subtracting 6 from 3y.",
+      "B": "Student confuses 'less than' with 'more than' and adds: 3y + 6.",
+      "C": "Student subtracts 6 from y before multiplying by 3, incorrectly grouping: 3(y - 6) = 3y - 18.",
+      "D": "Correct: '6 less than three times y' subtracts 6 from 3y, giving 3y - 6."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Build the bigger quantity first ('three times y'), then apply 'less than' to that whole quantity. Watch which amount comes first in the subtraction."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "One choice adds instead of subtracts, and one groups the subtraction inside the multiplication. Test whether either matches the phrase."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["verbal_to_algebraic", "subtraction", "order_of_terms", "two_operations"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_059",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.1",
+    "topic": "translating_verbal_descriptions_to_algebraic_expressions",
+    "topic_text": "Translating Verbal Descriptions to Algebraic Expressions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "translating a two-operation phrase combining division and addition",
+      "preserving division order and keeping an added term outside the quotient"
+    ],
+    "question_text": "Which expression represents 'the quotient of a number n and 4, increased by 7'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "4/n + 7",
+      "B": "n/4 + 7",
+      "C": "(n + 7)/4",
+      "D": "n/4 - 7"
+    },
+    "correct_answer": "B",
+    "explanation": "'The quotient of a number n and 4' is n/4, with n as the dividend. 'Increased by 7' adds 7 to that quotient, and the 7 stays outside the division: n/4 + 7.",
+    "distractor_logic": {
+      "A": "Student reverses the division order, making 4 the dividend: 4/n + 7.",
+      "B": "Correct: the quotient n/4 is increased by 7, giving n/4 + 7.",
+      "C": "Student adds 7 before dividing, pulling it into the numerator: (n + 7)/4.",
+      "D": "Student confuses 'increased by' with 'decreased by' and subtracts: n/4 - 7."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Form the quotient first and decide which number is on top. Then decide whether the 7 attaches before or after the division."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try n = 8. Find the quotient, then increase it by 7. Check which expression produces that same result."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["verbal_to_algebraic", "division", "order_of_terms", "two_operations"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_060",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.1",
+    "topic": "translating_verbal_descriptions_to_algebraic_expressions",
+    "topic_text": "Translating Verbal Descriptions to Algebraic Expressions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "translating a real-world cost situation into a linear expression",
+      "distinguishing a per-unit rate from a fixed fee when assigning coefficients"
+    ],
+    "question_text": "A taxi charges a $3 flat fee plus $2 for each mile driven. If m represents the number of miles, which expression represents the total cost in dollars?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3m + 2",
+      "B": "5m",
+      "C": "2m + 3",
+      "D": "2(m + 3)"
+    },
+    "correct_answer": "C",
+    "explanation": "The $2 charge applies to each mile, so it multiplies m: 2m. The $3 flat fee is charged once, regardless of miles, so it is added on its own: 2m + 3.",
+    "distractor_logic": {
+      "A": "Student swaps the roles, treating $3 as the per-mile rate and $2 as the flat fee: 3m + 2.",
+      "B": "Student merges the flat fee into the per-mile rate, charging $5 per mile: 5m.",
+      "C": "Correct: $2 per mile gives 2m, and the one-time $3 fee is added: 2m + 3.",
+      "D": "Student multiplies the flat fee by the per-mile rate, applying $2 to the $3 as well: 2(m + 3) = 2m + 6."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Separate the charge that depends on miles from the charge that happens only once. Only one of them should multiply m."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Ask whether the flat fee should grow as miles increase. Rule out choices where the $3 is tied to m."
+      }
+    ],
+    "content_context": "taxi_fare",
+    "context_tags": ["verbal_to_algebraic", "cost_model", "rate_and_fee", "two_operations"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_061",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.1",
+    "topic": "translating_verbal_descriptions_to_algebraic_expressions",
+    "topic_text": "Translating Verbal Descriptions to Algebraic Expressions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "translating a phrase with a difference inside a product into a grouped expression",
+      "preserving both subtraction order and grouping when a quantity is multiplied"
+    ],
+    "question_text": "Which expression represents 'the quantity of a number p minus 8, multiplied by 4'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "4(p - 8)",
+      "B": "4p - 8",
+      "C": "4(8 - p)",
+      "D": "p - 32"
+    },
+    "correct_answer": "A",
+    "explanation": "'The quantity of a number p minus 8' is the group (p - 8). Multiplying that whole quantity by 4 means the 4 applies to the entire group: 4(p - 8). Expanded, this is 4p - 32.",
+    "distractor_logic": {
+      "A": "Correct: the whole quantity (p - 8) is multiplied by 4, giving 4(p - 8).",
+      "B": "Student drops the parentheses and multiplies only p by 4: 4p - 8. This fails to multiply the 8.",
+      "C": "Student reverses the subtraction inside the group: 4(8 - p).",
+      "D": "Student multiplies only the 8 by 4 and leaves p untouched: p - 32."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The words 'the quantity of' tell you to group first. Decide what is inside the group before deciding what multiplies it."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try p = 10. Find 'p minus 8', then multiply that result by 4. Check which expression gives the same value."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["verbal_to_algebraic", "grouping", "subtraction", "two_operations"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_051",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.1",
+    "topic": "translating_verbal_descriptions_to_algebraic_expressions",
+    "topic_text": "Translating Verbal Descriptions to Algebraic Expressions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "translating a three-operation nested phrase into a grouped expression",
+      "coordinating grouping and subtraction order across multiple operations"
+    ],
+    "question_text": "Which expression represents '7 less than the product of 3 and the sum of a number x and 2'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3x + 2 - 7",
+      "B": "3(x + 2) - 7",
+      "C": "7 - 3(x + 2)",
+      "D": "3(x + 2) + 7"
+    },
+    "correct_answer": "B",
+    "explanation": "Work from the inside out. 'The sum of a number x and 2' is (x + 2). 'The product of 3 and' that sum is 3(x + 2). '7 less than' that product subtracts 7 from it: 3(x + 2) - 7.",
+    "distractor_logic": {
+      "A": "Student drops the grouping and multiplies only x by 3, then attaches the rest: 3x + 2 - 7.",
+      "B": "Correct: 3 multiplies the full sum (x + 2), and 7 is subtracted from that product: 3(x + 2) - 7.",
+      "C": "Student reverses the subtraction order for '7 less than': 7 - 3(x + 2).",
+      "D": "Student confuses 'less than' with 'more than' and adds 7 instead of subtracting: 3(x + 2) + 7."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Translate from the inside out: the sum first, then what multiplies it, then what is taken away and in which order."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 1. Build the sum, multiply by 3, then subtract 7. Check which expression matches that final value."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["verbal_to_algebraic", "grouping", "subtraction", "multi_operation"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_052",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.1",
+    "topic": "translating_verbal_descriptions_to_algebraic_expressions",
+    "topic_text": "Translating Verbal Descriptions to Algebraic Expressions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "translating a full verbal relationship into a linear equation",
+      "selecting the correct setup among plausible order and sign variations"
+    ],
+    "question_text": "A number n, when tripled and then increased by 5, gives the same result as 4 less than twice the number. Which equation represents this relationship?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "3n + 5 = 2n - 4",
+      "B": "3n + 5 = 4 - 2n",
+      "C": "3n + 5 = 2n + 4",
+      "D": "3(n + 5) = 2n - 4"
+    },
+    "correct_answer": "A",
+    "explanation": "'Tripled and then increased by 5' is 3n + 5. '4 less than twice the number' is 2n - 4, where 4 is subtracted from 2n. 'Gives the same result as' means the two sides are equal: 3n + 5 = 2n - 4.",
+    "distractor_logic": {
+      "A": "Correct: 3n + 5 equals 2n - 4, with 4 subtracted from twice the number.",
+      "B": "Student reverses the subtraction order on the right side, writing 4 - 2n instead of 2n - 4.",
+      "C": "Student confuses '4 less than' with '4 more than' and adds: 2n + 4.",
+      "D": "Student groups the +5 with the tripling, writing 3(n + 5) instead of 3n + 5."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Translate each side separately, then connect them with the phrase that signals equality. Watch the order in '4 less than'."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Check each side against the words. Rule out any equation that reverses the subtraction or groups the +5 into the tripling."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["verbal_to_algebraic", "linear_equation", "order_of_terms", "multi_operation"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_053",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.1",
+    "topic": "translating_verbal_descriptions_to_algebraic_expressions",
+    "topic_text": "Translating Verbal Descriptions to Algebraic Expressions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "translating a real-world situation with three quantities into a linear expression",
+      "combining two fixed fees while keeping a single per-hour rate attached to the variable"
+    ],
+    "question_text": "A plumber charges a $40 service fee, $25 for each hour of labor over h hours, and a flat $15 disposal fee. Which expression represents the total charge in dollars?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "25h + 40",
+      "B": "80h",
+      "C": "15h + 65",
+      "D": "25h + 55"
+    },
+    "correct_answer": "D",
+    "explanation": "Only the $25 labor charge depends on hours, so it multiplies h: 25h. The $40 service fee and the $15 disposal fee are both one-time charges, so they add together as a constant: 40 + 15 = 55. The total is 25h + 55.",
+    "distractor_logic": {
+      "A": "Student includes only one of the two fixed fees, dropping the $15 disposal fee: 25h + 40.",
+      "B": "Student treats all three dollar amounts as per-hour rates and adds them onto h: (40 + 25 + 15)h = 80h.",
+      "C": "Student attaches the per-hour label to the wrong amount, making $15 the hourly rate and adding the other two as fixed: 15h + 65.",
+      "D": "Correct: $25 per hour gives 25h, and the two fixed fees combine to 55, giving 25h + 55."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Sort each charge into one of two buckets: depends on hours, or charged once. Only one charge should multiply h."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Decide which single amount is truly per-hour, then check that the remaining fees are added as a constant. Rule out choices that violate either."
+      }
+    ],
+    "content_context": "plumbing_service",
+    "context_tags": ["verbal_to_algebraic", "cost_model", "rate_and_fee", "multi_operation"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_054",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.1",
+    "topic": "translating_verbal_descriptions_to_algebraic_expressions",
+    "topic_text": "Translating Verbal Descriptions to Algebraic Expressions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "translating an average (a grouped sum divided by 2) followed by a second operation",
+      "keeping a grouped quotient intact while applying a later subtraction"
+    ],
+    "question_text": "Which expression represents 'the average of a number x and 12, decreased by 3'?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "x + 12/2 - 3",
+      "B": "(x + 12 - 3)/2",
+      "C": "(x + 12)/2 - 3",
+      "D": "(x + 12)/2 + 3"
+    },
+    "correct_answer": "C",
+    "explanation": "The average of x and 12 adds them first, then divides the whole sum by 2: (x + 12)/2. 'Decreased by 3' subtracts 3 from that average, and the 3 stays outside the division: (x + 12)/2 - 3.",
+    "distractor_logic": {
+      "A": "Student divides only the 12 by 2 instead of the full sum, dropping the grouping: x + 12/2 - 3.",
+      "B": "Student pulls the -3 inside the average, subtracting before dividing: (x + 12 - 3)/2.",
+      "C": "Correct: the grouped sum is divided by 2 to form the average, then 3 is subtracted: (x + 12)/2 - 3.",
+      "D": "Student confuses 'decreased by' with 'increased by' and adds 3: (x + 12)/2 + 3."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "An average adds the values first and divides the entire sum. Decide whether the later change happens inside or outside that division."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try x = 8. Average it with 12, then decrease by 3. Check which expression produces that same number."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["verbal_to_algebraic", "average", "grouping", "multi_operation"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_055",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.1",
+    "topic": "translating_verbal_descriptions_to_algebraic_expressions",
+    "topic_text": "Translating Verbal Descriptions to Algebraic Expressions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 1,
+    "skills_targeted": [
+      "translating an algebraic expression back into a precise verbal description",
+      "distinguishing grouping, subtraction order, and sign across competing descriptions"
+    ],
+    "question_text": "The expression 5(n - 2) + 8 models a situation. Which verbal description matches it exactly?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Five times the quantity of a number n minus 2, then 8 less",
+      "B": "Eight more than five times the quantity of a number n minus 2",
+      "C": "Eight more than five times a number n, then minus 2",
+      "D": "Five times the quantity of 2 minus a number n, plus 8"
+    },
+    "correct_answer": "B",
+    "explanation": "In 5(n - 2) + 8, the group (n - 2) is multiplied by 5, then 8 is added. Reading it in words: five times the quantity (n minus 2), with 8 more added on. That matches choice B.",
+    "distractor_logic": {
+      "A": "Describes 5(n - 2) - 8, subtracting 8 instead of adding it: a sign error on the constant.",
+      "B": "Correct: 5(n - 2) + 8 is 'eight more than five times the quantity of n minus 2.'",
+      "C": "Describes 5n - 2 + 8, dropping the grouping so that 5 multiplies only n, not the full quantity (n - 2).",
+      "D": "Describes 5(2 - n) + 8, reversing the subtraction order inside the group."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "use_answer_choices"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Read the expression in pieces: what is grouped, what multiplies the group, and what is added or subtracted at the end."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Translate each description back into symbols and compare it to the original expression. The match must agree on grouping, order, and sign."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["verbal_to_algebraic", "expression_to_words", "grouping", "multi_operation"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  }
+]

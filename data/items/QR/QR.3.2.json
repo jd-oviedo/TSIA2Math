@@ -1,0 +1,1052 @@
+[
+  {
+    "item_id": "QR_B_075",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.2",
+    "topic": "identifying_expressions_that_represent_rates_of_change",
+    "topic_text": "Identifying Expressions That Represent Rates of Change",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "identifying the coefficient of the variable as the rate of change in a linear expression",
+      "distinguishing the rate from the constant term and from the full term"
+    ],
+    "question_text": "In the expression 7x + 4, which value represents the rate of change?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "7",
+      "B": "4",
+      "C": "11",
+      "D": "7x"
+    },
+    "correct_answer": "A",
+    "explanation": "In a linear expression of the form ax + b, the rate of change is the coefficient a, because it is how much the expression changes for each one-unit increase in x. Here a = 7, so the rate of change is 7.",
+    "distractor_logic": {
+      "A": "Correct: the coefficient 7 is the rate of change, the amount added for each one-unit increase in x.",
+      "B": "Student selects the constant term 4, which is the starting value, not the rate of change.",
+      "C": "Student adds the coefficient and the constant, 7 + 4 = 11, treating the sum as the rate.",
+      "D": "Student selects the entire variable term 7x rather than just the coefficient that measures the rate."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The rate of change is the number attached to the variable, not the number standing alone. Find which part of the expression multiplies x."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Rule out the standalone constant and any value formed by combining the two numbers, since the rate is a single coefficient."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rate_of_change", "coefficient", "linear_expression"],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_076",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.2",
+    "topic": "identifying_expressions_that_represent_rates_of_change",
+    "topic_text": "Identifying Expressions That Represent Rates of Change",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "recognizing which part of the general form mx + b represents the rate of change",
+      "distinguishing the slope coefficient from the constant, the variable, and the term"
+    ],
+    "question_text": "A linear expression is written in the form mx + b. Which part represents the rate of change?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "b",
+      "B": "m",
+      "C": "x",
+      "D": "mx"
+    },
+    "correct_answer": "B",
+    "explanation": "In mx + b, the rate of change is m, the coefficient of the variable, because it tells how much the expression changes for each one-unit increase in x. The constant b is the starting value.",
+    "distractor_logic": {
+      "A": "Student selects the constant b, which is the starting value, not the rate of change.",
+      "B": "Correct: m is the coefficient of the variable and represents the rate of change.",
+      "C": "Student selects the variable x itself rather than the coefficient that scales it.",
+      "D": "Student selects the full term mx instead of isolating the coefficient m as the rate."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask which part changes the output as x grows by 1. The standing-alone constant does not change; the multiplier of x does."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate the constant and the variable on its own. The rate is the number that multiplies the variable."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rate_of_change", "slope", "general_form"],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_077",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.2",
+    "topic": "identifying_expressions_that_represent_rates_of_change",
+    "topic_text": "Identifying Expressions That Represent Rates of Change",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "interpreting the coefficient of a linear cost expression as a per-unit rate of change",
+      "stating the rate of change as a per-one-unit increase rather than a total or a ratio"
+    ],
+    "question_text": "The total cost in dollars of a service is given by 6n + 15, where n is the number of units ordered. Which statement correctly identifies the rate of change?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The cost increases by 15 for each increase of 1 in n.",
+      "B": "The cost increases by 21 for each increase of 1 in n.",
+      "C": "The cost increases by 6 for each increase of 1 in n.",
+      "D": "The cost increases by 1 for each increase of 6 in n."
+    },
+    "correct_answer": "C",
+    "explanation": "The rate of change is the coefficient of n, which is 6. For each additional unit ordered, the cost rises by 6 dollars. The 15 is the fixed starting cost and does not change with n.",
+    "distractor_logic": {
+      "A": "Student treats the constant term 15 as the rate, describing the fixed starting cost as a per-unit increase.",
+      "B": "Student adds the coefficient and the constant, 6 + 15 = 21, and reports the sum as the rate.",
+      "C": "Correct: the coefficient 6 is the rate, so cost rises by 6 for each one-unit increase in n.",
+      "D": "Student inverts the relationship, describing a change of 1 for every 6 units rather than 6 for every 1 unit."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The rate tells you how much cost is added for one more unit. Find the number tied directly to n."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate statements that use the fixed starting amount or that change the per-unit direction of the comparison."
+      }
+    ],
+    "content_context": "service_pricing",
+    "context_tags": ["rate_of_change", "coefficient", "cost_model", "per_unit"],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_078",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.2",
+    "topic": "identifying_expressions_that_represent_rates_of_change",
+    "topic_text": "Identifying Expressions That Represent Rates of Change",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "identifying the per-hour charge in a described situation as the rate of change",
+      "distinguishing a per-unit rate from a one-time fee and from the total-cost expression"
+    ],
+    "question_text": "A parking garage charges a $5 entry fee plus $3 for each hour parked. Which of the following is the rate of change of the total cost?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$5",
+      "B": "$8",
+      "C": "3h + 5",
+      "D": "$3 per hour"
+    },
+    "correct_answer": "D",
+    "explanation": "The rate of change is the amount the total cost increases for each additional hour, which is $3 per hour. The $5 entry fee is charged once and does not depend on the number of hours, so it is the starting value, not the rate.",
+    "distractor_logic": {
+      "A": "Student selects the one-time entry fee of $5, which is the fixed starting cost, not a per-hour rate.",
+      "B": "Student adds the entry fee and the hourly charge, 5 + 3 = 8, and reports that sum as the rate.",
+      "C": "Student selects the full total-cost expression 3h + 5 rather than isolating the per-hour rate.",
+      "D": "Correct: $3 per hour is the amount added for each additional hour, which is the rate of change."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the charge that depends on how long you park. The fee that happens only once is not the rate."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate the one-time fee, the combined sum, and the whole expression. The rate is a single per-hour amount."
+      }
+    ],
+    "content_context": "parking_garage",
+    "context_tags": ["rate_of_change", "rate_and_fee", "cost_model", "per_unit"],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_079",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.2",
+    "topic": "identifying_expressions_that_represent_rates_of_change",
+    "topic_text": "Identifying Expressions That Represent Rates of Change",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "identifying the per-minute fill rate in a described situation as the rate of change",
+      "distinguishing the rate from the initial amount and from the total expression"
+    ],
+    "question_text": "A pool already holds 12 gallons of water and is being filled at 8 gallons per minute. Which value represents the rate of change of the total amount of water?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "8 gallons per minute",
+      "B": "12 gallons",
+      "C": "20 gallons",
+      "D": "8t + 12"
+    },
+    "correct_answer": "A",
+    "explanation": "The rate of change is how fast the amount of water grows, which is 8 gallons per minute. The 12 gallons already in the pool is the starting amount, and it does not change as time passes.",
+    "distractor_logic": {
+      "A": "Correct: 8 gallons per minute is the amount added each minute, which is the rate of change.",
+      "B": "Student selects the 12 gallons already present, which is the starting amount, not the rate.",
+      "C": "Student adds the fill rate and the starting amount, 8 + 12 = 20, and reports the sum as the rate.",
+      "D": "Student selects the full expression for total water, 8t + 12, instead of isolating the per-minute rate."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the quantity that tells how fast the water grows each minute. The amount already in the pool does not change over time."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate the starting amount, the combined total, and the full expression. The rate is a single per-minute amount."
+      }
+    ],
+    "content_context": "filling_pool",
+    "context_tags": ["rate_of_change", "fill_rate", "initial_value", "per_unit"],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_062",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.2",
+    "topic": "identifying_expressions_that_represent_rates_of_change",
+    "topic_text": "Identifying Expressions That Represent Rates of Change",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "computing the rate of change from a table of values as change in y over change in x",
+      "distinguishing the rate from the starting value and from the inverted ratio"
+    ],
+    "question_text": "A table shows that when x = 1, 2, 3, 4, the corresponding values of y are 10, 13, 16, 19. What is the rate of change of y with respect to x?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "1/3",
+      "B": "3",
+      "C": "10",
+      "D": "7"
+    },
+    "correct_answer": "B",
+    "explanation": "The rate of change is the change in y divided by the change in x. Each time x increases by 1, y increases by 3 (10 to 13 to 16 to 19), so the rate of change is 3/1 = 3.",
+    "distractor_logic": {
+      "A": "Student inverts the ratio, dividing the change in x by the change in y to get 1/3 instead of 3.",
+      "B": "Correct: y increases by 3 for each increase of 1 in x, so the rate of change is 3.",
+      "C": "Student reports the first y-value, 10, as the rate rather than the change between values.",
+      "D": "Student finds the starting value (the y-value when x = 0, which is 10 - 3 = 7) instead of the rate of change."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Look at how much y changes each time x goes up by 1. The rate is that change in y divided by the change in x."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Check the gaps between consecutive y-values before choosing. A steady gap is the rate of change."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rate_of_change", "table_of_values", "slope_from_table"],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_063",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.2",
+    "topic": "identifying_expressions_that_represent_rates_of_change",
+    "topic_text": "Identifying Expressions That Represent Rates of Change",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "recognizing that two different linear expressions can share the same rate of change",
+      "matching rate of change by coefficient rather than by constant term or sign"
+    ],
+    "question_text": "Which expression has the same rate of change as 2x + 5?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "5x + 2",
+      "B": "3x + 5",
+      "C": "2x - 1",
+      "D": "-2x + 5"
+    },
+    "correct_answer": "C",
+    "explanation": "The rate of change is the coefficient of x, which is 2 in 2x + 5. Any expression with a coefficient of 2 has the same rate of change. 2x - 1 has coefficient 2, so it matches. A different constant does not change the rate.",
+    "distractor_logic": {
+      "A": "Student swaps the roles of the coefficient and constant, matching the 5 and 2 in reverse; 5x + 2 has rate 5, not 2.",
+      "B": "Student matches the shared constant 5 instead of the coefficient; 3x + 5 has rate 3, not 2.",
+      "C": "Correct: 2x - 1 has coefficient 2, the same rate of change as 2x + 5; the different constant is irrelevant.",
+      "D": "Student ignores the sign of the coefficient; -2x + 5 has rate -2, which is not the same as 2."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The rate of change lives in the coefficient of x only. Compare coefficients, not constants."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Rule out any expression whose coefficient of x differs in value or sign from the original, even if the constant matches."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rate_of_change", "coefficient", "equivalent_rate"],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_064",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.2",
+    "topic": "identifying_expressions_that_represent_rates_of_change",
+    "topic_text": "Identifying Expressions That Represent Rates of Change",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "recognizing a constant (unchanging) quantity as having a rate of change of zero",
+      "distinguishing a zero rate of change from situations with a nonzero rate"
+    ],
+    "question_text": "Which situation describes a quantity with a rate of change of zero?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "A tank gains 50 liters each hour.",
+      "B": "A tank starts at 50 liters and loses 2 liters each hour.",
+      "C": "A tank gains 50 liters total over 10 hours.",
+      "D": "A tank holds a steady 50 liters, with none added or removed."
+    },
+    "correct_answer": "D",
+    "explanation": "A rate of change of zero means the quantity does not change over time. Only the tank that stays at a steady 50 liters has no change, so its rate of change is zero. The others all change by some nonzero amount per hour.",
+    "distractor_logic": {
+      "A": "Student overlooks that gaining 50 liters each hour is a rate of change of +50, not zero.",
+      "B": "Student treats a steady starting value of 50 as 'no change,' missing that losing 2 liters each hour is a rate of -2.",
+      "C": "Student sees a fixed total of 50 and reads it as unchanging, missing that 50 liters over 10 hours is a rate of 5 per hour.",
+      "D": "Correct: a steady amount with nothing added or removed does not change, so the rate of change is zero."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask whether the quantity actually changes as time passes. A zero rate means it stays exactly the same."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any situation where the amount goes up or down per hour, even slowly. Only a truly steady amount qualifies."
+      }
+    ],
+    "content_context": "water_tank",
+    "context_tags": ["rate_of_change", "zero_rate", "constant_vs_linear"],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_065",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.2",
+    "topic": "identifying_expressions_that_represent_rates_of_change",
+    "topic_text": "Identifying Expressions That Represent Rates of Change",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "identifying the rate of change from a described pattern of values over time",
+      "distinguishing the per-step change from the starting value and the final value"
+    ],
+    "question_text": "A plant's height is recorded each week and forms the pattern 4, 6, 8, 10 centimeters. What is the rate of change in centimeters per week?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2",
+      "B": "4",
+      "C": "10",
+      "D": "1/2"
+    },
+    "correct_answer": "A",
+    "explanation": "The rate of change is how much the height grows each week. The values rise by 2 each week (4 to 6 to 8 to 10), so the rate of change is 2 centimeters per week.",
+    "distractor_logic": {
+      "A": "Correct: the height increases by 2 centimeters each week, so the rate of change is 2.",
+      "B": "Student reports the starting height of 4 as the rate instead of the weekly increase.",
+      "C": "Student reports the final value of 10 as the rate rather than the change between weeks.",
+      "D": "Student inverts the ratio, dividing the change in week by the change in height (1 week per 2 cm) to get 1/2."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Look at how much the height grows from one week to the next, not at where it starts or ends."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Check the gap between each pair of consecutive values. A steady gap is the weekly rate of change."
+      }
+    ],
+    "content_context": "plant_growth",
+    "context_tags": ["rate_of_change", "pattern", "per_week"],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_066",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.2",
+    "topic": "identifying_expressions_that_represent_rates_of_change",
+    "topic_text": "Identifying Expressions That Represent Rates of Change",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "comparing the rates of change of two linear expressions that differ only in their constant",
+      "recognizing that the constant term does not affect the rate of change"
+    ],
+    "question_text": "The expressions 4x + 1 and 4x + 9 are compared. Which statement about their rates of change is true?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "4x + 9 has a greater rate of change because 9 is greater than 1.",
+      "B": "They have the same rate of change.",
+      "C": "4x + 1 has a greater rate of change because it is written first.",
+      "D": "Their rates of change differ by 8."
+    },
+    "correct_answer": "B",
+    "explanation": "The rate of change is the coefficient of x. Both expressions have a coefficient of 4, so they have the same rate of change. The constants 1 and 9 only shift the starting value; they do not affect the rate.",
+    "distractor_logic": {
+      "A": "Student compares the constant terms and treats the larger constant as a larger rate, but the constant is not the rate.",
+      "B": "Correct: both expressions have coefficient 4, so their rates of change are equal regardless of the different constants.",
+      "C": "Student picks a rate based on the order the expressions are written, which has no bearing on the rate of change.",
+      "D": "Student subtracts the constants, 9 - 1 = 8, and reports that difference as a difference in rate of change."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compare only the coefficients of x. The constant tells you the starting value, not the rate."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any statement that bases the rate on the constants or on the order the expressions appear."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rate_of_change", "coefficient", "comparing_expressions"],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_056",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.2",
+    "topic": "identifying_expressions_that_represent_rates_of_change",
+    "topic_text": "Identifying Expressions That Represent Rates of Change",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "comparing two rates of change expressed in different units by converting to a common per-unit basis",
+      "recognizing that a rate of change does not depend on the quantity used"
+    ],
+    "question_text": "Plan A charges $0.20 per text message. Plan B charges $1.80 per dozen text messages. Which plan has the greater rate of change in cost per single text?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Plan B, because $1.80 is far larger than $0.20.",
+      "B": "Plan B, because pricing by the dozen is always cheaper per item.",
+      "C": "Plan A, because $1.80 per dozen is $0.15 per text, which is less than $0.20.",
+      "D": "It cannot be determined without knowing how many texts are sent."
+    },
+    "correct_answer": "C",
+    "explanation": "To compare fairly, convert Plan B to a per-text rate: $1.80 per dozen is 1.80 / 12 = $0.15 per text. Plan A is $0.20 per text. Since 0.20 is greater than 0.15, Plan A has the greater rate of change per text.",
+    "distractor_logic": {
+      "A": "Student compares the raw numbers 1.80 and 0.20 directly, ignoring that Plan B's price covers a dozen texts, not one.",
+      "B": "Student applies a false general rule that bulk pricing is always cheaper per item, without checking the actual per-text values.",
+      "C": "Correct: Plan B is $1.80 / 12 = $0.15 per text, which is less than Plan A's $0.20, so Plan A's rate is greater.",
+      "D": "Student believes the rate of change depends on the number of texts, but a constant per-text rate is the same at any quantity."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The two prices are quoted in different units. Put both on the same per-text basis before comparing."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Estimate Plan B's per-text cost by splitting its dozen price across 12 texts, then compare to Plan A."
+      }
+    ],
+    "content_context": "phone_plans",
+    "context_tags": ["rate_of_change", "unit_conversion", "comparing_rates", "per_unit"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_057",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.2",
+    "topic": "identifying_expressions_that_represent_rates_of_change",
+    "topic_text": "Identifying Expressions That Represent Rates of Change",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "detecting when a stated rate of change does not match the coefficient of an expression",
+      "correctly identifying the coefficient as the rate and the constant as the fixed value"
+    ],
+    "question_text": "A company's cost is modeled by C = 5n + 200, where n is the number of units produced. The company claims that the cost rises by $200 for each additional unit. What is the error in this claim?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The cost rises by $5 per unit; the $200 is the fixed starting cost, not the per-unit rate.",
+      "B": "The cost rises by $205 per unit, combining both numbers in the expression.",
+      "C": "There is no error; the $200 is correctly the rate of change.",
+      "D": "The cost rises by $200 per unit and the $5 is the fixed starting cost."
+    },
+    "correct_answer": "A",
+    "explanation": "In C = 5n + 200, the rate of change is the coefficient of n, which is 5. The cost rises by $5 for each additional unit. The $200 is the constant, the fixed cost when n = 0. The claim wrongly treats the constant as the per-unit rate.",
+    "distractor_logic": {
+      "A": "Correct: the coefficient 5 is the per-unit rate; the $200 is the fixed starting cost, so the claim mislabels the constant as the rate.",
+      "B": "Student adds the coefficient and the constant, 5 + 200 = 205, and reports the sum as the per-unit rate.",
+      "C": "Student accepts the company's claim, repeating the error of treating the constant $200 as the rate of change.",
+      "D": "Student swaps the roles of the two numbers, keeping $200 as the rate and calling $5 the fixed cost, which reverses the correct meanings."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Identify which number multiplies n and which stands alone. The multiplier of n is the per-unit rate."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any choice that uses the standalone number as the rate or that combines the two numbers."
+      }
+    ],
+    "content_context": "production_cost",
+    "context_tags": ["rate_of_change", "coefficient", "error_analysis", "cost_model"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_058",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.2",
+    "topic": "identifying_expressions_that_represent_rates_of_change",
+    "topic_text": "Identifying Expressions That Represent Rates of Change",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "comparing rates of change stated over different time units by reducing to a common hourly rate",
+      "recognizing that the largest total does not necessarily mean the greatest rate of change"
+    ],
+    "question_text": "Three workers describe their pay. Ana earns $18 per hour. Ben earns $140 for an 8-hour day. Carla earns $700 for a 40-hour week. Who has the greatest rate of change in pay per hour?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Carla, because $700 is the largest amount.",
+      "B": "Ana, because $18 per hour exceeds Ben's $17.50 and Carla's $17.50.",
+      "C": "Ben, because $140 per day is the highest daily figure.",
+      "D": "They all earn the same hourly rate."
+    },
+    "correct_answer": "B",
+    "explanation": "Reduce each to dollars per hour. Ana is $18 per hour. Ben is 140 / 8 = $17.50 per hour. Carla is 700 / 40 = $17.50 per hour. Ana's $18 is the greatest hourly rate of change.",
+    "distractor_logic": {
+      "A": "Student compares total amounts and picks the largest, $700, ignoring that it is spread across 40 hours.",
+      "B": "Correct: per hour, Ana earns $18, Ben earns $17.50, and Carla earns $17.50, so Ana's rate is greatest.",
+      "C": "Student compares the daily figure $140 against an hourly figure without converting to a common unit.",
+      "D": "Student assumes all three rates are equal, overlooking that Ana's $18 differs from the other two workers' $17.50."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Each pay rate is stated over a different time span. Convert each to the same per-hour basis before comparing."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Estimate Ben's and Carla's hourly pay by splitting their totals across the hours given, then compare to Ana's."
+      }
+    ],
+    "content_context": "hourly_wages",
+    "context_tags": ["rate_of_change", "unit_conversion", "comparing_rates", "per_hour"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_059",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.2",
+    "topic": "identifying_expressions_that_represent_rates_of_change",
+    "topic_text": "Identifying Expressions That Represent Rates of Change",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "modeling a rate of change when the variable is measured in a non-standard unit",
+      "converting a per-page rate into a per-ream rate before writing the expression"
+    ],
+    "question_text": "A printer's ink costs $0.25 per page, and one ream equals 500 pages. Which expression represents the total ink cost, in dollars, for a job of r reams?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "0.25r",
+      "B": "500r",
+      "C": "125r",
+      "D": "0.25r + 500"
+    },
+    "correct_answer": "C",
+    "explanation": "Each ream is 500 pages, and each page costs $0.25, so one ream costs 500 x 0.25 = $125. The cost rate per ream is $125, so for r reams the total cost is 125r.",
+    "distractor_logic": {
+      "A": "Student applies the per-page rate of $0.25 directly to reams, ignoring that each ream contains 500 pages.",
+      "B": "Student uses the pages-per-ream count of 500 as the cost rate, dropping the $0.25 per-page price entirely.",
+      "C": "Correct: one ream costs 500 x 0.25 = $125, so the per-ream rate is 125 and the total for r reams is 125r.",
+      "D": "Student treats the 500 pages per ream as a fixed add-on cost rather than a factor in the per-ream rate."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The cost is given per page, but the variable counts reams. Find the cost of one whole ream first."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try r = 1. One ream is 500 pages at $0.25 each. Check which expression gives that one-ream cost."
+      }
+    ],
+    "content_context": "printing_cost",
+    "context_tags": ["rate_of_change", "unit_conversion", "per_unit", "cost_model"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_060",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.2",
+    "topic": "identifying_expressions_that_represent_rates_of_change",
+    "topic_text": "Identifying Expressions That Represent Rates of Change",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "comparing what the coefficients of two linear expressions reveal about their rates of change",
+      "separating the rate of change from the starting value when interpreting two models"
+    ],
+    "question_text": "Two savings plans give the balance in dollars after x weeks: Plan 1 is 3x + 12 and Plan 2 is 5x + 4. Which statement correctly compares what the coefficients reveal?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Plan 1 saves faster because it starts with $12.",
+      "B": "Both plans save at the same rate because both are linear.",
+      "C": "Plan 1 saves faster because 3 + 12 = 15 is more than 5 + 4 = 9.",
+      "D": "Plan 2 saves faster at $5 per week versus $3 per week, though Plan 1 starts with more."
+    },
+    "correct_answer": "D",
+    "explanation": "The rate of change is the coefficient of x. Plan 1 saves $3 per week and Plan 2 saves $5 per week, so Plan 2 saves faster. The constants 12 and 4 are the starting balances, so Plan 1 begins with more but grows more slowly.",
+    "distractor_logic": {
+      "A": "Student uses the starting balance $12 as evidence of a faster saving rate, but the starting value is the constant, not the rate.",
+      "B": "Student assumes that because both expressions are linear they must share the same rate, ignoring that the coefficients differ.",
+      "C": "Student adds each expression's coefficient and constant and compares the sums, treating the sum as the rate of change.",
+      "D": "Correct: Plan 2's coefficient 5 exceeds Plan 1's coefficient 3, so Plan 2 saves faster; the constants only set the starting balances."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Separate each expression into its rate (the coefficient of x) and its starting value (the constant). Compare only the rates."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any statement that bases the saving speed on the starting value or on a sum of the two numbers."
+      }
+    ],
+    "content_context": "savings_plans",
+    "context_tags": ["rate_of_change", "coefficient", "comparing_expressions", "starting_value"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  }
+]
