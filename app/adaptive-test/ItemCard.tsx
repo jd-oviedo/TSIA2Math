@@ -1,5 +1,6 @@
 "use client";
 
+import MathText from "../components/MathText";
 import { useState } from "react";
 import type { PublicItem, RevealData } from "./type";
 
@@ -208,8 +209,8 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
           >
             <span style={getLetterStyle(key)}>{key}</span>
             <span style={{ flex: 1, color: "var(--ec-ink)", fontSize: "16px", fontFamily: "Georgia, 'Times New Roman', serif", fontWeight: 400 }}>
-              {item.answer_choices[key]}
-            </span>
+  <MathText text={item.answer_choices[key]} />
+</span>
             {revealed && key === revealData?.correct_answer && (
               <span style={{ marginLeft: "auto", flexShrink: 0, color: "var(--ec-green)", fontSize: "16px", fontWeight: 700 }}>✓</span>
             )}
@@ -230,12 +231,12 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
           {revealData.explanation !== null ? (
   <>
     <p style={{ fontSize: "15px", color: "var(--ec-ink)", lineHeight: 1.7, fontFamily: "Georgia, 'Times New Roman', serif", margin: 0 }}>
-      {revealData.explanation}
-    </p>
+  <MathText text={revealData.explanation} />
+</p>
     {selected && !isCorrect && revealData.distractor_note && (
       <p style={{ fontSize: "13px", color: "var(--ec-ink-muted)", lineHeight: 1.6, fontStyle: "italic", marginTop: "10px", paddingTop: "10px", borderTop: "1px solid var(--ec-line)", fontFamily: "Georgia, 'Times New Roman', serif" }}>
-        {revealData.distractor_note}
-      </p>
+  <MathText text={revealData.distractor_note} />
+</p>
     )}
   </>
 ) : (
