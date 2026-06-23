@@ -96,7 +96,7 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
               {rows.map((row, ri) => (
                 <tr key={ri}>
                   {row.map((cell, ci) => (
-                    <td key={ci} style={{ padding: "8px 14px", color: "var(--ec-ink-muted)", borderBottom: "1px solid var(--ec-line)" }}>{cell}</td>
+                    <td key={ci} style={{ padding: "8px 14px", color: "var(--ec-ink-muted)", borderBottom: "1px solid var(--ec-line)" }}><MathText text={cell} /></td>
                   ))}
                 </tr>
               ))}
@@ -111,7 +111,7 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
       if (line.startsWith("|")) { tableLines.push(line); }
       else {
         if (tableLines.length > 0) flushTable();
-        if (line.trim()) parts.push(<p key={key++} style={{ marginBottom: "8px", color: "var(--ec-ink)", lineHeight: 1.65, margin: "0 0 6px" }}>{line}</p>);
+        if (line.trim()) parts.push(<p key={key++} style={{ marginBottom: "8px", color: "var(--ec-ink)", lineHeight: 1.65, margin: "0 0 6px" }}><MathText text={line} /></p>);
       }
     }
     if (tableLines.length > 0) flushTable();
