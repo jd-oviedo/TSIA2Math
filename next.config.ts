@@ -23,10 +23,10 @@ const cspDirectives = [
   // user-supplied style content), and avoiding it would require nonce
   // infrastructure that buys nothing meaningful for this app's threat model.
   // Google Fonts injects a <style> tag, so fonts.googleapis.com is also needed.
-  `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com`,
+  `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net`,
 
   // Fonts served from Google's CDN.
-  `font-src 'self' https://fonts.gstatic.com`,
+  `font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net`,
 
   // API calls: Supabase (DB + auth REST), PostHog analytics.
   // No Upstash here — it's server-to-server only.
