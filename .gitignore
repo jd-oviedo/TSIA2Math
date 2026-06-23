@@ -6,3 +6,9 @@ next-env.d.ts
 
 # Sentry Config File
 .env.sentry-build-plugin
+migrate_math.py
+migrate_fractions.py
+fix_currency.py
+upload_to_supabase.py
+public/data/question_bank.backup.json
+public/data/question_bank.backup2.json
