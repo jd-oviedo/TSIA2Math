@@ -31,7 +31,9 @@ function parseMathSegments(input: string): Segment[] {
 }
 
 export default function MathText({ text, className }: MathTextProps) {
-  const parts = parseMathSegments(text);
+  // Unescape \$ (currency) so it renders as plain $ not LaTeX
+  const cleaned = text.replace(/\\\$/g, "$");
+  const parts = parseMathSegments(cleaned);
   return (
     <span className={className}>
       {parts.map((part, i) => {

@@ -20413,18 +20413,18 @@
     "question_text": "Which of the following functions has the most restricted domain (that is, the fewest valid input values)?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "f(x) = 1/x",
-      "B": "g(x) = 1/x²",
-      "C": "h(x) = √x",
-      "D": "k(x) = √(x²)"
+      "A": "f(x) = $\\frac{1}{x}$",
+      "B": "g(x) = $\\frac{1}{x^{2}}$",
+      "C": "h(x) = $\\sqrt{x}$",
+      "D": "k(x) = $\\sqrt{x^{2}}$"
     },
     "correct_answer": "C",
-    "explanation": "Compare the domain of each function:\n\nf(x) = 1/x: defined for all x ≠ 0 — excludes one value.\ng(x) = 1/x²: defined for all x ≠ 0 — also excludes one value (x² = 0 only when x = 0).\nh(x) = √x: requires x ≥ 0 — excludes all negative numbers, which is an infinite set.\nk(x) = √(x²): since x² ≥ 0 for every real number, the radicand is always non-negative. Domain is all real numbers — no restriction.\n\nh(x) = √x has the most restricted domain because it excludes every negative real number.",
+    "explanation": "Compare the domain of each function:\n\nf(x) = $\\frac{1}{x}$: defined for all x $\\neq$ 0 — excludes one value.\ng(x) = $\\frac{1}{x^{2}}$: defined for all x $\\neq$ 0 — also excludes one value ($x^{2}$ = 0 only when x = 0).\nh(x) = $\\sqrt{x}$: requires x $\\geq$ 0 — excludes all negative numbers, which is an infinite set.\nk(x) = $\\sqrt{x^{2}}$: since $x^{2}$ $\\geq$ 0 for every real number, the radicand is always non-negative. Domain is all real numbers — no restriction.\n\nh(x) = $\\sqrt{x}$ has the most restricted domain because it excludes every negative real number.",
     "distractor_logic": {
       "A": "Student thinks dividing by a variable is more restrictive than a square root, reasoning that 'division by x' excludes more values than the square root condition — but 1/x excludes only the single point x = 0, while √x excludes all negative numbers.",
       "B": "Student believes squaring the denominator in 1/x² imposes a stricter restriction than 1/x — but x² = 0 still has only one solution (x = 0), so the domain is the same as for 1/x.",
       "C": "Correct: h(x) = √x requires x ≥ 0, excluding all negative real numbers — a more restricted domain than either rational function (which each exclude only x = 0) or k(x) (which has no restriction).",
-      "D": "Student assumes √(x²) has the same restriction as √x, not recognizing that squaring x first guarantees a non-negative radicand for all real inputs, making the domain completely unrestricted."
+      "D": "Student assumes $\\sqrt{x^{2}}$ has the same restriction as $\\sqrt{x}$, not recognizing that squaring x first guarantees a non-negative radicand for all real inputs, making the domain completely unrestricted."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
