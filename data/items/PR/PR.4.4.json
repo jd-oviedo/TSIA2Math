@@ -1,0 +1,1052 @@
+[
+  {
+    "item_id": "PR_B_081",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_analysis_and_inference",
+    "objective_text": "Data Analysis and Inference",
+    "topic_id": "PR.4.4",
+    "topic": "drawing_conclusions_and_making_predictions_from_data",
+    "topic_text": "Drawing Conclusions and Making Predictions from Data",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying the conclusion directly supported by a described data set",
+      "rejecting conclusions that overstate or generalize beyond the data"
+    ],
+    "question_text": "A school survey found that students who ate breakfast reported feeling more alert during first period than students who skipped it. Which conclusion is directly supported by this data?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Students who ate breakfast tended to report feeling more alert in first period.",
+      "B": "Eating breakfast makes every student more alert.",
+      "C": "All students who skip breakfast feel tired during first period.",
+      "D": "Breakfast is the most important meal of the day."
+    },
+    "correct_answer": "A",
+    "explanation": "The data describe a tendency: breakfast-eaters reported more alertness on average. The supported conclusion restates that tendency without claiming it holds for everyone or that breakfast is the cause.",
+    "distractor_logic": {
+      "A": "Correct: this restates the observed tendency that breakfast-eaters reported feeling more alert, without overreaching.",
+      "B": "Student treats an average tendency as a guaranteed cause-and-effect that applies to every individual.",
+      "C": "Student overgeneralizes a tendency into an absolute claim about all breakfast-skippers.",
+      "D": "Student draws a broad value judgment that the data about first-period alertness do not support."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the choice that says no more than what the data actually observed: a tendency, not a guarantee."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Rule out choices using words like 'every,' 'all,' or 'most important' that go beyond what was measured."
+      }
+    ],
+    "content_context": "academic_performance",
+    "context_tags": ["conclusion", "supported_claim", "overgeneralization", "survey"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_082",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_analysis_and_inference",
+    "objective_text": "Data Analysis and Inference",
+    "topic_id": "PR.4.4",
+    "topic": "drawing_conclusions_and_making_predictions_from_data",
+    "topic_text": "Drawing Conclusions and Making Predictions from Data",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying the conclusion directly supported by an observed association",
+      "rejecting causal and reverse-causal overstatements of an association"
+    ],
+    "question_text": "A store tracked its sales and found that on days with higher temperatures, ice cream sales were higher. Which statement is directly supported by this data?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Hot weather makes people buy ice cream.",
+      "B": "On hotter days, ice cream sales tended to be higher.",
+      "C": "Buying ice cream causes the temperature to rise.",
+      "D": "Ice cream will always sell out on hot days."
+    },
+    "correct_answer": "B",
+    "explanation": "The data show an association between temperature and sales. The supported statement restates that association without claiming one variable causes the other or predicting a guaranteed outcome.",
+    "distractor_logic": {
+      "A": "Student turns an observed association into a causal claim the data do not establish.",
+      "B": "Correct: this restates the observed association between higher temperatures and higher ice cream sales.",
+      "C": "Student reverses the direction into an implausible causal claim that sales drive temperature.",
+      "D": "Student converts a tendency into an absolute prediction using 'always.'"
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The data show two things moving together. Pick the choice that says only that, without claiming a cause."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate choices that assert cause, reverse cause, or use 'always.'"
+      }
+    ],
+    "content_context": "retail_sales",
+    "context_tags": ["conclusion", "association", "correlation_not_causation", "supported_claim"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_083",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_analysis_and_inference",
+    "objective_text": "Data Analysis and Inference",
+    "topic_id": "PR.4.4",
+    "topic": "drawing_conclusions_and_making_predictions_from_data",
+    "topic_text": "Drawing Conclusions and Making Predictions from Data",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "interpreting an average as a measure of a typical value",
+      "distinguishing a mean from claims about every value or the maximum"
+    ],
+    "question_text": "A class of 30 students took a test, and the average (mean) score was 85. Which conclusion is supported by this information?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Every student in the class scored exactly 85.",
+      "B": "Most students in the class scored above 85.",
+      "C": "The typical score in the class was around 85.",
+      "D": "The highest score in the class was 85."
+    },
+    "correct_answer": "C",
+    "explanation": "A mean of 85 describes a typical or central value for the class. It does not tell us that every student scored 85, that most scored above it, or that 85 was the highest score.",
+    "distractor_logic": {
+      "A": "Student treats the mean as if every individual value equals it.",
+      "B": "Student assumes the mean implies most scores are above it, which a mean does not guarantee.",
+      "C": "Correct: a mean of 85 indicates a typical score around 85 for the class.",
+      "D": "Student confuses the mean with the maximum value."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "An average describes a center, not every value and not the extremes. Match that idea to the choices."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate choices that treat the mean as 'every,' 'most above,' or 'highest.'"
+      }
+    ],
+    "content_context": "academic_performance",
+    "context_tags": ["conclusion", "mean", "typical_value", "interpretation"],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_084",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_analysis_and_inference",
+    "objective_text": "Data Analysis and Inference",
+    "topic_id": "PR.4.4",
+    "topic": "drawing_conclusions_and_making_predictions_from_data",
+    "topic_text": "Drawing Conclusions and Making Predictions from Data",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying a conclusion directly supported by a frequency count",
+      "distinguishing a supported summary from an unsupported prediction or generalization"
+    ],
+    "question_text": "A weather log shows that it rained on 8 of the past 10 days in a town. Which conclusion is directly supported by this data?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "It will definitely rain tomorrow.",
+      "B": "It rains 80% of the time in this town throughout the year.",
+      "C": "It never rains in this town during the summer.",
+      "D": "It rained on the majority of the past 10 days."
+    },
+    "correct_answer": "D",
+    "explanation": "The log covers 10 days, and rain on 8 of them means it rained on most of those days. The data do not predict tomorrow, describe the whole year, or rule out dry summer days.",
+    "distractor_logic": {
+      "A": "Student turns past frequency into a certain prediction about a future day.",
+      "B": "Student generalizes a 10-day sample to the entire year as if it were representative.",
+      "C": "Student makes an unsupported absolute claim about a season the data do not cover.",
+      "D": "Correct: rain on 8 of 10 days means it rained on the majority of the past 10 days."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Stick to what the 10-day log actually counts. Avoid choices about tomorrow or the whole year."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate predictions ('will'), year-long generalizations, and absolute 'never' claims."
+      }
+    ],
+    "content_context": "weather",
+    "context_tags": ["conclusion", "frequency", "supported_claim", "overgeneralization"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_B_085",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_analysis_and_inference",
+    "objective_text": "Data Analysis and Inference",
+    "topic_id": "PR.4.4",
+    "topic": "drawing_conclusions_and_making_predictions_from_data",
+    "topic_text": "Drawing Conclusions and Making Predictions from Data",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying the conclusion supported by an observed association on a specific group",
+      "rejecting causal, absolute, and sole-factor overstatements"
+    ],
+    "question_text": "On one basketball team, the data showed that taller players scored more points on average than shorter players. Which statement does this data support?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "On this team, taller players tended to score more points.",
+      "B": "Being tall makes a player score more points.",
+      "C": "Short players on the team are unable to score.",
+      "D": "Height is the only factor that determines how many points a player scores."
+    },
+    "correct_answer": "A",
+    "explanation": "The data describe a tendency on one specific team. The supported statement restates that tendency without claiming height causes scoring, that short players cannot score, or that height is the only factor.",
+    "distractor_logic": {
+      "A": "Correct: this restates the observed tendency for this team without overreaching.",
+      "B": "Student converts an association into a causal claim the data do not establish.",
+      "C": "Student turns a tendency into an absolute claim that short players cannot score at all.",
+      "D": "Student treats one associated factor as the sole determinant of scoring."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Look for the choice limited to this team and to a tendency, not a cause or an absolute rule."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate choices claiming cause, 'unable,' or 'only factor.'"
+      }
+    ],
+    "content_context": "sports",
+    "context_tags": ["conclusion", "association", "correlation_not_causation", "supported_claim"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_080",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_analysis_and_inference",
+    "objective_text": "Data Analysis and Inference",
+    "topic_id": "PR.4.4",
+    "topic": "drawing_conclusions_and_making_predictions_from_data",
+    "topic_text": "Drawing Conclusions and Making Predictions from Data",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "distinguishing correlation from causation in a described study",
+      "recognizing that an association alone does not establish a causal direction"
+    ],
+    "question_text": "A study found that towns with more public libraries also tended to have higher average reading scores. Which conclusion is valid based on this data?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Building more libraries causes reading scores to rise.",
+      "B": "There is an association between the number of libraries and reading scores, but the data alone do not show that one causes the other.",
+      "C": "Higher reading scores cause towns to build more libraries.",
+      "D": "Libraries and reading scores have no real relationship."
+    },
+    "correct_answer": "B",
+    "explanation": "The study shows that libraries and reading scores move together, an association. An association by itself does not establish which variable, if either, causes the other, so the valid conclusion notes the link without asserting cause.",
+    "distractor_logic": {
+      "A": "Student treats an observed association as proof that libraries cause higher reading scores.",
+      "B": "Correct: the data show an association, but they do not establish a causal direction.",
+      "C": "Student asserts a causal direction (scores cause libraries) that the data do not establish.",
+      "D": "Student denies the association even though the data clearly show the two move together."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Two things moving together is an association. Ask whether the data also show which one causes the other."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any choice asserting a cause, in either direction, and any choice denying the link entirely."
+      }
+    ],
+    "content_context": "education",
+    "context_tags": ["conclusion", "correlation_not_causation", "association", "validity"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_081",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_analysis_and_inference",
+    "objective_text": "Data Analysis and Inference",
+    "topic_id": "PR.4.4",
+    "topic": "drawing_conclusions_and_making_predictions_from_data",
+    "topic_text": "Drawing Conclusions and Making Predictions from Data",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "recognizing a prediction that falls within the range of the data as interpolation",
+      "judging whether a model is being applied appropriately within its data range"
+    ],
+    "question_text": "A linear model was built from data on students who studied between 1 and 8 hours, and it predicts scores well within that range. A teacher wants to use it to predict the score of a student who studied 6 hours. Is this an appropriate use of the model?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "No, because a model can never predict an individual student's score.",
+      "B": "Yes, because a model works for any number of study hours.",
+      "C": "Yes, because 6 hours falls within the 1-to-8-hour range used to build the model (interpolation).",
+      "D": "No, because 6 hours is too few hours to be worth modeling."
+    },
+    "correct_answer": "C",
+    "explanation": "Predicting at 6 hours uses the model within the range of data it was built on, which is interpolation and is generally appropriate. Predictions are most trustworthy inside the range of the original data.",
+    "distractor_logic": {
+      "A": "Student over-rejects all model predictions, ignoring that interpolation within the data range is reasonable.",
+      "B": "Student ignores the model's data range, assuming it applies to any input.",
+      "C": "Correct: 6 hours is inside the 1-to-8-hour data range, so this is interpolation and is appropriate.",
+      "D": "Student raises an irrelevant objection about the amount of study time rather than the data range."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check whether the prediction point falls inside the range of the data the model was built from."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate choices that reject all predictions or that ignore the model's data range entirely."
+      }
+    ],
+    "content_context": "education",
+    "context_tags": ["prediction", "interpolation", "data_range", "model_use"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_082",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_analysis_and_inference",
+    "objective_text": "Data Analysis and Inference",
+    "topic_id": "PR.4.4",
+    "topic": "drawing_conclusions_and_making_predictions_from_data",
+    "topic_text": "Drawing Conclusions and Making Predictions from Data",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "recognizing a prediction far outside the data range as unreliable extrapolation",
+      "rejecting the assumption that a fitted trend continues indefinitely"
+    ],
+    "question_text": "The same model, built from data on students who studied 1 to 8 hours, is now used to predict the score of a student who studied 20 hours. Is this an appropriate use of the model?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Yes, because a straight line continues forever mathematically.",
+      "B": "Yes, because more studying always produces a higher score.",
+      "C": "No, because linear models are never accurate.",
+      "D": "No, because 20 hours is far outside the 1-to-8-hour data range, making the prediction unreliable extrapolation."
+    },
+    "correct_answer": "D",
+    "explanation": "Twenty hours lies well beyond the 1-to-8-hour range the model was built on. Predicting there is extrapolation, and the relationship may not continue in the same way outside the observed data, so the prediction is unreliable.",
+    "distractor_logic": {
+      "A": "Student justifies extrapolation by the math of a line, ignoring that the data only support the observed range.",
+      "B": "Student assumes the observed trend continues without limit, which the data do not guarantee.",
+      "C": "Student over-rejects linear models in general rather than identifying the specific extrapolation problem.",
+      "D": "Correct: 20 hours is far outside the data range, so the prediction is unreliable extrapolation."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compare the prediction point to the data range. A point far outside it signals extrapolation."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate choices that assume the line or trend continues forever, and the choice that rejects all linear models."
+      }
+    ],
+    "content_context": "education",
+    "context_tags": ["prediction", "extrapolation", "data_range", "model_use"],
+    "estimated_time_seconds": 115,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_083",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_analysis_and_inference",
+    "objective_text": "Data Analysis and Inference",
+    "topic_id": "PR.4.4",
+    "topic": "drawing_conclusions_and_making_predictions_from_data",
+    "topic_text": "Drawing Conclusions and Making Predictions from Data",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "evaluating whether a sample supports generalizing to a broader population",
+      "recognizing that a single-site sample may not represent the whole population"
+    ],
+    "question_text": "A researcher surveyed 50 students at one high school and found that 70% preferred online homework. Can this result be reliably generalized to all high school students nationwide?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Not reliably, because students at one high school may not represent all high school students nationwide.",
+      "B": "Yes, because 50 students is a large enough sample to support any conclusion.",
+      "C": "Yes, because 70% is a clear majority.",
+      "D": "No, because surveys are never accurate."
+    },
+    "correct_answer": "A",
+    "explanation": "The sample comes from a single high school, which may differ from high schools elsewhere. A result from one site cannot be reliably generalized to all students nationwide, regardless of the percentage found.",
+    "distractor_logic": {
+      "A": "Correct: a single-school sample may not represent the national population, so the result cannot be reliably generalized.",
+      "B": "Student assumes sample size alone justifies generalization, ignoring whether the sample represents the population.",
+      "C": "Student treats a clear majority within the sample as evidence that it represents the whole population.",
+      "D": "Student over-rejects all surveys instead of identifying the specific representativeness problem."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask whether the sampled group (one school) fairly represents the larger group (all students nationwide)."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate choices that rely on sample size or majority alone, and the choice rejecting all surveys."
+      }
+    ],
+    "content_context": "education",
+    "context_tags": ["generalization", "sample_to_population", "representativeness", "validity"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_P_084",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_analysis_and_inference",
+    "objective_text": "Data Analysis and Inference",
+    "topic_id": "PR.4.4",
+    "topic": "drawing_conclusions_and_making_predictions_from_data",
+    "topic_text": "Drawing Conclusions and Making Predictions from Data",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "selecting the most defensible conclusion from a strong association",
+      "separating a described association from an unproven causal claim"
+    ],
+    "question_text": "A study found a strong positive association between the hours people spend exercising and their self-reported mood. Which is the most defensible conclusion?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Exercising more causes people to have a better mood.",
+      "B": "People who exercised more tended to report a better mood, though the study does not establish that exercise caused it.",
+      "C": "Being in a better mood causes people to exercise more.",
+      "D": "Mood and exercise cannot possibly be related."
+    },
+    "correct_answer": "B",
+    "explanation": "A strong positive association means the two variables move together, which the most defensible conclusion reports. Because this is an association and not a controlled experiment, it does not establish that exercise causes the better mood.",
+    "distractor_logic": {
+      "A": "Student asserts that exercise causes the better mood, which an association alone cannot establish.",
+      "B": "Correct: it reports the association while noting the study does not prove exercise caused the mood.",
+      "C": "Student asserts the reverse causal direction as fact, which the data also do not establish.",
+      "D": "Student denies any relationship despite the strong association the study found."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Report what the association shows, then check whether the study could rule out other explanations for it."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate both causal directions stated as fact and the choice denying any relationship."
+      }
+    ],
+    "content_context": "health",
+    "context_tags": ["conclusion", "correlation_not_causation", "association", "validity"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_082",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_analysis_and_inference",
+    "objective_text": "Data Analysis and Inference",
+    "topic_id": "PR.4.4",
+    "topic": "drawing_conclusions_and_making_predictions_from_data",
+    "topic_text": "Drawing Conclusions and Making Predictions from Data",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying a confounding variable that explains a spurious association",
+      "rejecting a direct causal claim in favor of a common-cause explanation"
+    ],
+    "question_text": "A study of elementary school children found that those with larger shoe sizes tended to have stronger reading ability. What is the most reasonable explanation for this association?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Having larger feet improves a child's reading ability.",
+      "B": "Practicing reading causes children's feet to grow.",
+      "C": "Age is a confounding variable: older children tend to have both larger feet and stronger reading skills.",
+      "D": "Shoe size should be used to assign children to reading groups."
+    },
+    "correct_answer": "C",
+    "explanation": "Older children generally have both larger feet and more developed reading skills, so age drives both variables. Age is a confounding variable that creates the association without either trait causing the other.",
+    "distractor_logic": {
+      "A": "Student accepts a direct causal claim that larger feet improve reading, ignoring the confounder.",
+      "B": "Student proposes an implausible reverse causal claim that reading makes feet grow.",
+      "C": "Correct: age is a confounding variable that produces both larger feet and stronger reading skills, explaining the link without direct causation.",
+      "D": "Student misapplies the spurious association to a decision, treating shoe size as a useful predictor of reading placement."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask whether a third factor could be driving both variables at once rather than one causing the other."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate the two direct causal claims and the choice that acts on the spurious link."
+      }
+    ],
+    "content_context": "education",
+    "context_tags": ["confounding_variable", "spurious_association", "correlation_not_causation", "conclusion"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_083",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_analysis_and_inference",
+    "objective_text": "Data Analysis and Inference",
+    "topic_id": "PR.4.4",
+    "topic": "drawing_conclusions_and_making_predictions_from_data",
+    "topic_text": "Drawing Conclusions and Making Predictions from Data",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying which study design supports a cause-and-effect conclusion",
+      "distinguishing a controlled experiment from observational or biased designs"
+    ],
+    "question_text": "Researchers want to determine whether a new tutoring program actually improves test scores. Which study design would best support a cause-and-effect conclusion?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "An observational survey comparing students who chose tutoring with those who did not.",
+      "B": "Interviewing only the students who said they enjoyed the program.",
+      "C": "Comparing this year's scores to last year's without accounting for other changes.",
+      "D": "A controlled experiment that randomly assigns students to tutoring or no tutoring."
+    },
+    "correct_answer": "D",
+    "explanation": "Random assignment to a tutoring group or a no-tutoring group balances other factors across the groups, so a difference in scores can be attributed to the tutoring. A controlled, randomized experiment is what supports a cause-and-effect conclusion.",
+    "distractor_logic": {
+      "A": "Students who choose tutoring may differ from those who do not, so this observational design leaves confounding factors uncontrolled.",
+      "B": "Interviewing only students who enjoyed the program introduces selection bias and cannot establish cause.",
+      "C": "Comparing years without controlling other changes leaves many confounding factors uncontrolled.",
+      "D": "Correct: a randomized controlled experiment balances other factors and supports a cause-and-effect conclusion."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Cause-and-effect conclusions need a design that controls other factors, typically through random assignment."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate designs that let groups self-select, interview only fans, or ignore other year-to-year changes."
+      }
+    ],
+    "content_context": "education",
+    "context_tags": ["study_design", "experiment_vs_observational", "causation", "conclusion"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_084",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_analysis_and_inference",
+    "objective_text": "Data Analysis and Inference",
+    "topic_id": "PR.4.4",
+    "topic": "drawing_conclusions_and_making_predictions_from_data",
+    "topic_text": "Drawing Conclusions and Making Predictions from Data",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "evaluating the reliability of a prediction far beyond the data range",
+      "recognizing that a good in-range fit does not guarantee out-of-range accuracy"
+    ],
+    "question_text": "A linear model fits a company's revenue closely for years 1 through 5. A manager uses it to predict revenue in year 30. Which evaluation of this prediction is most sound?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The prediction is unreliable because it extends far beyond the data, and real growth may not stay linear over such a long span.",
+      "B": "The prediction is reliable because the model fit years 1 through 5 very closely.",
+      "C": "The prediction is reliable because linear models give exact results.",
+      "D": "The prediction is unreliable because linear models can never predict anything."
+    },
+    "correct_answer": "A",
+    "explanation": "Year 30 is far outside the years 1 to 5 the model was fit on. A close fit within the observed range does not guarantee the same relationship holds 25 years later, so extending the model that far makes the prediction unreliable.",
+    "distractor_logic": {
+      "A": "Correct: predicting year 30 from years 1 to 5 is far-range extrapolation, and the linear pattern may not hold over such a long span.",
+      "B": "Student assumes a good in-range fit guarantees accuracy far outside the data range.",
+      "C": "Student claims false precision, treating linear models as exact.",
+      "D": "Student over-rejects linear models entirely instead of identifying the specific extrapolation problem."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Note how far the prediction year is from the data years, and whether a linear trend is likely to hold that long."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate choices that equate in-range fit with far-range accuracy, claim exactness, or reject all models."
+      }
+    ],
+    "content_context": "business_finance",
+    "context_tags": ["prediction", "extrapolation", "reliability", "data_range"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_085",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_analysis_and_inference",
+    "objective_text": "Data Analysis and Inference",
+    "topic_id": "PR.4.4",
+    "topic": "drawing_conclusions_and_making_predictions_from_data",
+    "topic_text": "Drawing Conclusions and Making Predictions from Data",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying a common cause behind a spurious association",
+      "explaining why a causal conclusion from correlated trends is flawed"
+    ],
+    "question_text": "Over several summers, a beach town observed that ice cream sales and sunburn cases rose and fell together. A new manager concluded that buying ice cream causes sunburns. What is the flaw in this reasoning, and the better conclusion?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "There is no flaw; the matching trends show that ice cream causes sunburns.",
+      "B": "Both rise because of a common factor, hot sunny weather that brings more beachgoers, so they are linked by a confounder rather than by cause and effect.",
+      "C": "The flaw is the direction; in fact sunburns cause people to buy more ice cream.",
+      "D": "There is no real relationship between ice cream sales and sunburn cases."
+    },
+    "correct_answer": "B",
+    "explanation": "Hot, sunny weather increases both ice cream purchases and time in the sun, which raises sunburn cases. The two trends move together because of this shared cause, not because one causes the other, so the manager's causal conclusion is unfounded.",
+    "distractor_logic": {
+      "A": "Student accepts the spurious causal claim because the trends move together.",
+      "B": "Correct: hot sunny weather is a common factor driving both, so the link is a confounder, not cause and effect.",
+      "C": "Student fixes only the direction and still asserts a direct cause the data do not support.",
+      "D": "Student denies the real association even though the two clearly rise and fall together."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Look for a shared cause that could raise both quantities at the same time."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate choices that accept a direct cause, only flip the direction, or deny the association entirely."
+      }
+    ],
+    "content_context": "retail_sales",
+    "context_tags": ["confounding_variable", "common_cause", "correlation_not_causation", "conclusion"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  },
+  {
+    "item_id": "PR_A_086",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Probabilistic and Statistical Reasoning",
+    "primary_strand": "PR",
+    "secondary_strands": [],
+    "objective": "data_analysis_and_inference",
+    "objective_text": "Data Analysis and Inference",
+    "topic_id": "PR.4.4",
+    "topic": "drawing_conclusions_and_making_predictions_from_data",
+    "topic_text": "Drawing Conclusions and Making Predictions from Data",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "evaluating whether a single-site sample supports a nationwide claim",
+      "identifying an overgeneralization from a non-representative sample"
+    ],
+    "question_text": "A poll conducted on one college campus found that 65% of those surveyed supported a new policy. A reporter then wrote that 'most people in the country support the policy.' What is the main problem with the reporter's statement?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "A 65% result is too small a majority to report on at all.",
+      "B": "The statement is fine, since 65% is over half and therefore proves nationwide support.",
+      "C": "One college campus is not a representative sample of the whole country, so the result cannot be generalized that broadly.",
+      "D": "Polls can never measure public opinion accurately."
+    },
+    "correct_answer": "C",
+    "explanation": "The poll sampled one college campus, whose students may not reflect the country as a whole. Generalizing a single-campus result to the entire nation is an overgeneralization from a non-representative sample, which is the central flaw.",
+    "distractor_logic": {
+      "A": "Student raises an irrelevant objection about the size of the majority rather than the representativeness of the sample.",
+      "B": "Student accepts the overgeneralization, treating a campus majority as proof of nationwide support.",
+      "C": "Correct: one campus is not representative of the whole country, so the nationwide claim is unsupported.",
+      "D": "Student over-rejects all polling instead of identifying the specific representativeness problem."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compare who was sampled (one campus) to whom the claim is about (the whole country)."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate objections about majority size and blanket claims that polls are never accurate."
+      }
+    ],
+    "content_context": "civics",
+    "context_tags": ["generalization", "sample_to_population", "representativeness", "conclusion"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
+  }
+]
