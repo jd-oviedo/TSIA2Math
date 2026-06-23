@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "survey",
-    "context_tags": ["categorical_variable", "data_classification", "variable_type", "survey_response"],
+    "context_tags": [
+      "categorical_variable",
+      "data_classification",
+      "variable_type",
+      "survey_response"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -111,7 +119,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -123,11 +134,16 @@
       }
     ],
     "content_context": "science",
-    "context_tags": ["continuous_variable", "data_classification", "measurement", "physical_quantity"],
+    "context_tags": [
+      "continuous_variable",
+      "data_classification",
+      "measurement",
+      "physical_quantity"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -181,7 +197,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -193,11 +212,16 @@
       }
     ],
     "content_context": "classroom",
-    "context_tags": ["discrete_variable", "data_classification", "count_data", "whole_numbers"],
+    "context_tags": [
+      "discrete_variable",
+      "data_classification",
+      "count_data",
+      "whole_numbers"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -251,7 +275,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -263,11 +290,16 @@
       }
     ],
     "content_context": "school",
-    "context_tags": ["bar_graph", "graph_selection", "categorical_variable", "frequency_display"],
+    "context_tags": [
+      "bar_graph",
+      "graph_selection",
+      "categorical_variable",
+      "frequency_display"
+    ],
     "estimated_time_seconds": 65,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -321,7 +353,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -333,11 +368,16 @@
       }
     ],
     "content_context": "healthcare",
-    "context_tags": ["categorical_variable", "binary_variable", "data_classification", "yes_no_response"],
+    "context_tags": [
+      "categorical_variable",
+      "binary_variable",
+      "data_classification",
+      "yes_no_response"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -391,7 +431,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -403,11 +446,16 @@
       }
     ],
     "content_context": "economics",
-    "context_tags": ["histogram", "graph_selection", "continuous_variable", "distribution_shape"],
+    "context_tags": [
+      "histogram",
+      "graph_selection",
+      "continuous_variable",
+      "distribution_shape"
+    ],
     "estimated_time_seconds": 95,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -461,7 +509,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -473,11 +524,16 @@
       }
     ],
     "content_context": "classroom",
-    "context_tags": ["scatter_plot", "graph_selection", "two_variable_relationship", "study_habits"],
+    "context_tags": [
+      "scatter_plot",
+      "graph_selection",
+      "two_variable_relationship",
+      "study_habits"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -531,7 +587,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -543,11 +602,16 @@
       }
     ],
     "content_context": "workplace",
-    "context_tags": ["histogram", "bar_graph", "graph_selection", "categorical_variable"],
+    "context_tags": [
+      "histogram",
+      "bar_graph",
+      "graph_selection",
+      "categorical_variable"
+    ],
     "estimated_time_seconds": 95,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -579,7 +643,7 @@
       "selecting a pie chart as the appropriate display for part-to-whole proportional data",
       "recognizing when percentages summing to 100% signal a part-to-whole relationship best shown by a pie chart"
     ],
-    "question_text": "A student tracks how a monthly budget of $2,000 is allocated across five categories. The percentages are: Rent = 40%, Food = 25%, Transportation = 15%, Entertainment = 10%, Savings = 10%. Which graph type best displays each category's share of the total budget?",
+    "question_text": "A student tracks how a monthly budget of \\$2,000 is allocated across five categories. The percentages are: Rent = 40%, Food = 25%, Transportation = 15%, Entertainment = 10%, Savings = 10%. Which graph type best displays each category's share of the total budget?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Line graph",
@@ -601,7 +665,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -613,11 +680,16 @@
       }
     ],
     "content_context": "personal_finance",
-    "context_tags": ["pie_chart", "graph_selection", "part_to_whole", "budget_allocation"],
+    "context_tags": [
+      "pie_chart",
+      "graph_selection",
+      "part_to_whole",
+      "budget_allocation"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -671,7 +743,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -683,11 +758,16 @@
       }
     ],
     "content_context": "school",
-    "context_tags": ["bar_graph", "line_graph", "graph_selection", "discrete_time_series"],
+    "context_tags": [
+      "bar_graph",
+      "line_graph",
+      "graph_selection",
+      "discrete_time_series"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -741,7 +821,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -753,11 +836,16 @@
       }
     ],
     "content_context": "weather",
-    "context_tags": ["histogram", "distribution_shape", "graph_selection", "bimodality"],
+    "context_tags": [
+      "histogram",
+      "distribution_shape",
+      "graph_selection",
+      "bimodality"
+    ],
     "estimated_time_seconds": 130,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -811,7 +899,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -823,11 +914,16 @@
       }
     ],
     "content_context": "sports",
-    "context_tags": ["pie_chart", "bar_graph", "graph_selection", "misleading_representation"],
+    "context_tags": [
+      "pie_chart",
+      "bar_graph",
+      "graph_selection",
+      "misleading_representation"
+    ],
     "estimated_time_seconds": 130,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -881,7 +977,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -893,11 +992,16 @@
       }
     ],
     "content_context": "health_fitness",
-    "context_tags": ["scatter_plot", "bar_graph", "information_loss", "aggregation_vs_individual"],
+    "context_tags": [
+      "scatter_plot",
+      "bar_graph",
+      "information_loss",
+      "aggregation_vs_individual"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -951,7 +1055,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -963,11 +1070,16 @@
       }
     ],
     "content_context": "school",
-    "context_tags": ["histogram", "bar_graph", "discrete_vs_continuous", "graph_selection"],
+    "context_tags": [
+      "histogram",
+      "bar_graph",
+      "discrete_vs_continuous",
+      "graph_selection"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -1021,7 +1133,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -1033,11 +1148,16 @@
       }
     ],
     "content_context": "weather",
-    "context_tags": ["line_graph", "time_series", "seasonal_pattern", "graph_selection"],
+    "context_tags": [
+      "line_graph",
+      "time_series",
+      "seasonal_pattern",
+      "graph_selection"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

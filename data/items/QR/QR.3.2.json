@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rate_of_change", "coefficient", "linear_expression"],
+    "context_tags": [
+      "rate_of_change",
+      "coefficient",
+      "linear_expression"
+    ],
     "estimated_time_seconds": 70,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -111,7 +118,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -123,11 +133,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rate_of_change", "slope", "general_form"],
+    "context_tags": [
+      "rate_of_change",
+      "slope",
+      "general_form"
+    ],
     "estimated_time_seconds": 65,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -181,7 +195,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -193,11 +210,16 @@
       }
     ],
     "content_context": "service_pricing",
-    "context_tags": ["rate_of_change", "coefficient", "cost_model", "per_unit"],
+    "context_tags": [
+      "rate_of_change",
+      "coefficient",
+      "cost_model",
+      "per_unit"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -229,21 +251,21 @@
       "identifying the per-hour charge in a described situation as the rate of change",
       "distinguishing a per-unit rate from a one-time fee and from the total-cost expression"
     ],
-    "question_text": "A parking garage charges a $5 entry fee plus $3 for each hour parked. Which of the following is the rate of change of the total cost?",
+    "question_text": "A parking garage charges a \\$5 entry fee plus \\$3 for each hour parked. Which of the following is the rate of change of the total cost?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$5",
-      "B": "$8",
+      "A": "\\$5",
+      "B": "\\$8",
       "C": "3h + 5",
-      "D": "$3 per hour"
+      "D": "\\$3 per hour"
     },
     "correct_answer": "D",
-    "explanation": "The rate of change is the amount the total cost increases for each additional hour, which is $3 per hour. The $5 entry fee is charged once and does not depend on the number of hours, so it is the starting value, not the rate.",
+    "explanation": "The rate of change is the amount the total cost increases for each additional hour, which is \\$3 per hour. The \\$5 entry fee is charged once and does not depend on the number of hours, so it is the starting value, not the rate.",
     "distractor_logic": {
-      "A": "Student selects the one-time entry fee of $5, which is the fixed starting cost, not a per-hour rate.",
+      "A": "Student selects the one-time entry fee of \\$5, which is the fixed starting cost, not a per-hour rate.",
       "B": "Student adds the entry fee and the hourly charge, 5 + 3 = 8, and reports that sum as the rate.",
       "C": "Student selects the full total-cost expression 3h + 5 rather than isolating the per-hour rate.",
-      "D": "Correct: $3 per hour is the amount added for each additional hour, which is the rate of change."
+      "D": "Correct: \\$3 per hour is the amount added for each additional hour, which is the rate of change."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -251,7 +273,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -263,11 +288,16 @@
       }
     ],
     "content_context": "parking_garage",
-    "context_tags": ["rate_of_change", "rate_and_fee", "cost_model", "per_unit"],
+    "context_tags": [
+      "rate_of_change",
+      "rate_and_fee",
+      "cost_model",
+      "per_unit"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -321,7 +351,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -333,11 +366,16 @@
       }
     ],
     "content_context": "filling_pool",
-    "context_tags": ["rate_of_change", "fill_rate", "initial_value", "per_unit"],
+    "context_tags": [
+      "rate_of_change",
+      "fill_rate",
+      "initial_value",
+      "per_unit"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -391,7 +429,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -403,11 +444,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rate_of_change", "table_of_values", "slope_from_table"],
+    "context_tags": [
+      "rate_of_change",
+      "table_of_values",
+      "slope_from_table"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -461,7 +506,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -473,11 +521,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rate_of_change", "coefficient", "equivalent_rate"],
+    "context_tags": [
+      "rate_of_change",
+      "coefficient",
+      "equivalent_rate"
+    ],
     "estimated_time_seconds": 95,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -531,7 +583,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -543,11 +598,15 @@
       }
     ],
     "content_context": "water_tank",
-    "context_tags": ["rate_of_change", "zero_rate", "constant_vs_linear"],
+    "context_tags": [
+      "rate_of_change",
+      "zero_rate",
+      "constant_vs_linear"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -601,7 +660,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -613,11 +675,15 @@
       }
     ],
     "content_context": "plant_growth",
-    "context_tags": ["rate_of_change", "pattern", "per_week"],
+    "context_tags": [
+      "rate_of_change",
+      "pattern",
+      "per_week"
+    ],
     "estimated_time_seconds": 95,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -671,7 +737,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -683,11 +752,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rate_of_change", "coefficient", "comparing_expressions"],
+    "context_tags": [
+      "rate_of_change",
+      "coefficient",
+      "comparing_expressions"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -719,20 +792,20 @@
       "comparing two rates of change expressed in different units by converting to a common per-unit basis",
       "recognizing that a rate of change does not depend on the quantity used"
     ],
-    "question_text": "Plan A charges $0.20 per text message. Plan B charges $1.80 per dozen text messages. Which plan has the greater rate of change in cost per single text?",
+    "question_text": "Plan A charges \\$0.20 per text message. Plan B charges \\$1.80 per dozen text messages. Which plan has the greater rate of change in cost per single text?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "Plan B, because $1.80 is far larger than $0.20.",
+      "A": "Plan B, because \\$1.80 is far larger than \\$0.20.",
       "B": "Plan B, because pricing by the dozen is always cheaper per item.",
-      "C": "Plan A, because $1.80 per dozen is $0.15 per text, which is less than $0.20.",
+      "C": "Plan A, because \\$1.80 per dozen is \\$0.15 per text, which is less than \\$0.20.",
       "D": "It cannot be determined without knowing how many texts are sent."
     },
     "correct_answer": "C",
-    "explanation": "To compare fairly, convert Plan B to a per-text rate: $1.80 per dozen is 1.80 / 12 = $0.15 per text. Plan A is $0.20 per text. Since 0.20 is greater than 0.15, Plan A has the greater rate of change per text.",
+    "explanation": "To compare fairly, convert Plan B to a per-text rate: \\$1.80 per dozen is 1.80 / 12 = \\$0.15 per text. Plan A is \\$0.20 per text. Since 0.20 is greater than 0.15, Plan A has the greater rate of change per text.",
     "distractor_logic": {
       "A": "Student compares the raw numbers 1.80 and 0.20 directly, ignoring that Plan B's price covers a dozen texts, not one.",
       "B": "Student applies a false general rule that bulk pricing is always cheaper per item, without checking the actual per-text values.",
-      "C": "Correct: Plan B is $1.80 / 12 = $0.15 per text, which is less than Plan A's $0.20, so Plan A's rate is greater.",
+      "C": "Correct: Plan B is \\$1.80 / 12 = \\$0.15 per text, which is less than Plan A's \\$0.20, so Plan A's rate is greater.",
       "D": "Student believes the rate of change depends on the number of texts, but a constant per-text rate is the same at any quantity."
     },
     "difficulty_level": "Advanced",
@@ -741,7 +814,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -753,11 +829,16 @@
       }
     ],
     "content_context": "phone_plans",
-    "context_tags": ["rate_of_change", "unit_conversion", "comparing_rates", "per_unit"],
+    "context_tags": [
+      "rate_of_change",
+      "unit_conversion",
+      "comparing_rates",
+      "per_unit"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -789,21 +870,21 @@
       "detecting when a stated rate of change does not match the coefficient of an expression",
       "correctly identifying the coefficient as the rate and the constant as the fixed value"
     ],
-    "question_text": "A company's cost is modeled by C = 5n + 200, where n is the number of units produced. The company claims that the cost rises by $200 for each additional unit. What is the error in this claim?",
+    "question_text": "A company's cost is modeled by C = 5n + 200, where n is the number of units produced. The company claims that the cost rises by \\$200 for each additional unit. What is the error in this claim?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "The cost rises by $5 per unit; the $200 is the fixed starting cost, not the per-unit rate.",
-      "B": "The cost rises by $205 per unit, combining both numbers in the expression.",
-      "C": "There is no error; the $200 is correctly the rate of change.",
-      "D": "The cost rises by $200 per unit and the $5 is the fixed starting cost."
+      "A": "The cost rises by \\$5 per unit; the \\$200 is the fixed starting cost, not the per-unit rate.",
+      "B": "The cost rises by \\$205 per unit, combining both numbers in the expression.",
+      "C": "There is no error; the \\$200 is correctly the rate of change.",
+      "D": "The cost rises by \\$200 per unit and the \\$5 is the fixed starting cost."
     },
     "correct_answer": "A",
-    "explanation": "In C = 5n + 200, the rate of change is the coefficient of n, which is 5. The cost rises by $5 for each additional unit. The $200 is the constant, the fixed cost when n = 0. The claim wrongly treats the constant as the per-unit rate.",
+    "explanation": "In C = 5n + 200, the rate of change is the coefficient of n, which is 5. The cost rises by \\$5 for each additional unit. The \\$200 is the constant, the fixed cost when n = 0. The claim wrongly treats the constant as the per-unit rate.",
     "distractor_logic": {
-      "A": "Correct: the coefficient 5 is the per-unit rate; the $200 is the fixed starting cost, so the claim mislabels the constant as the rate.",
+      "A": "Correct: the coefficient 5 is the per-unit rate; the \\$200 is the fixed starting cost, so the claim mislabels the constant as the rate.",
       "B": "Student adds the coefficient and the constant, 5 + 200 = 205, and reports the sum as the per-unit rate.",
-      "C": "Student accepts the company's claim, repeating the error of treating the constant $200 as the rate of change.",
-      "D": "Student swaps the roles of the two numbers, keeping $200 as the rate and calling $5 the fixed cost, which reverses the correct meanings."
+      "C": "Student accepts the company's claim, repeating the error of treating the constant \\$200 as the rate of change.",
+      "D": "Student swaps the roles of the two numbers, keeping \\$200 as the rate and calling \\$5 the fixed cost, which reverses the correct meanings."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -811,7 +892,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -823,11 +907,16 @@
       }
     ],
     "content_context": "production_cost",
-    "context_tags": ["rate_of_change", "coefficient", "error_analysis", "cost_model"],
+    "context_tags": [
+      "rate_of_change",
+      "coefficient",
+      "error_analysis",
+      "cost_model"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -859,21 +948,21 @@
       "comparing rates of change stated over different time units by reducing to a common hourly rate",
       "recognizing that the largest total does not necessarily mean the greatest rate of change"
     ],
-    "question_text": "Three workers describe their pay. Ana earns $18 per hour. Ben earns $140 for an 8-hour day. Carla earns $700 for a 40-hour week. Who has the greatest rate of change in pay per hour?",
+    "question_text": "Three workers describe their pay. Ana earns \\$18 per hour. Ben earns \\$140 for an 8-hour day. Carla earns \\$700 for a 40-hour week. Who has the greatest rate of change in pay per hour?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "Carla, because $700 is the largest amount.",
-      "B": "Ana, because $18 per hour exceeds Ben's $17.50 and Carla's $17.50.",
-      "C": "Ben, because $140 per day is the highest daily figure.",
+      "A": "Carla, because \\$700 is the largest amount.",
+      "B": "Ana, because \\$18 per hour exceeds Ben's \\$17.50 and Carla's \\$17.50.",
+      "C": "Ben, because \\$140 per day is the highest daily figure.",
       "D": "They all earn the same hourly rate."
     },
     "correct_answer": "B",
-    "explanation": "Reduce each to dollars per hour. Ana is $18 per hour. Ben is 140 / 8 = $17.50 per hour. Carla is 700 / 40 = $17.50 per hour. Ana's $18 is the greatest hourly rate of change.",
+    "explanation": "Reduce each to dollars per hour. Ana is \\$18 per hour. Ben is 140 / 8 = \\$17.50 per hour. Carla is 700 / 40 = \\$17.50 per hour. Ana's \\$18 is the greatest hourly rate of change.",
     "distractor_logic": {
-      "A": "Student compares total amounts and picks the largest, $700, ignoring that it is spread across 40 hours.",
-      "B": "Correct: per hour, Ana earns $18, Ben earns $17.50, and Carla earns $17.50, so Ana's rate is greatest.",
-      "C": "Student compares the daily figure $140 against an hourly figure without converting to a common unit.",
-      "D": "Student assumes all three rates are equal, overlooking that Ana's $18 differs from the other two workers' $17.50."
+      "A": "Student compares total amounts and picks the largest, \\$700, ignoring that it is spread across 40 hours.",
+      "B": "Correct: per hour, Ana earns \\$18, Ben earns \\$17.50, and Carla earns \\$17.50, so Ana's rate is greatest.",
+      "C": "Student compares the daily figure \\$140 against an hourly figure without converting to a common unit.",
+      "D": "Student assumes all three rates are equal, overlooking that Ana's \\$18 differs from the other two workers' \\$17.50."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -881,7 +970,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -893,11 +985,16 @@
       }
     ],
     "content_context": "hourly_wages",
-    "context_tags": ["rate_of_change", "unit_conversion", "comparing_rates", "per_hour"],
+    "context_tags": [
+      "rate_of_change",
+      "unit_conversion",
+      "comparing_rates",
+      "per_hour"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -929,7 +1026,7 @@
       "modeling a rate of change when the variable is measured in a non-standard unit",
       "converting a per-page rate into a per-ream rate before writing the expression"
     ],
-    "question_text": "A printer's ink costs $0.25 per page, and one ream equals 500 pages. Which expression represents the total ink cost, in dollars, for a job of r reams?",
+    "question_text": "A printer's ink costs \\$0.25 per page, and one ream equals 500 pages. Which expression represents the total ink cost, in dollars, for a job of r reams?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "0.25r",
@@ -938,11 +1035,11 @@
       "D": "0.25r + 500"
     },
     "correct_answer": "C",
-    "explanation": "Each ream is 500 pages, and each page costs $0.25, so one ream costs 500 x 0.25 = $125. The cost rate per ream is $125, so for r reams the total cost is 125r.",
+    "explanation": "Each ream is 500 pages, and each page costs \\$0.25, so one ream costs 500 x 0.25 = \\$125. The cost rate per ream is \\$125, so for r reams the total cost is 125r.",
     "distractor_logic": {
-      "A": "Student applies the per-page rate of $0.25 directly to reams, ignoring that each ream contains 500 pages.",
-      "B": "Student uses the pages-per-ream count of 500 as the cost rate, dropping the $0.25 per-page price entirely.",
-      "C": "Correct: one ream costs 500 x 0.25 = $125, so the per-ream rate is 125 and the total for r reams is 125r.",
+      "A": "Student applies the per-page rate of \\$0.25 directly to reams, ignoring that each ream contains 500 pages.",
+      "B": "Student uses the pages-per-ream count of 500 as the cost rate, dropping the \\$0.25 per-page price entirely.",
+      "C": "Correct: one ream costs 500 x 0.25 = \\$125, so the per-ream rate is 125 and the total for r reams is 125r.",
       "D": "Student treats the 500 pages per ream as a fixed add-on cost rather than a factor in the per-ream rate."
     },
     "difficulty_level": "Advanced",
@@ -951,7 +1048,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -959,15 +1059,20 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try r = 1. One ream is 500 pages at $0.25 each. Check which expression gives that one-ream cost."
+        "hint_text": "Try r = 1. One ream is 500 pages at \\$0.25 each. Check which expression gives that one-ream cost."
       }
     ],
     "content_context": "printing_cost",
-    "context_tags": ["rate_of_change", "unit_conversion", "per_unit", "cost_model"],
+    "context_tags": [
+      "rate_of_change",
+      "unit_conversion",
+      "per_unit",
+      "cost_model"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -1002,15 +1107,15 @@
     "question_text": "Two savings plans give the balance in dollars after x weeks: Plan 1 is 3x + 12 and Plan 2 is 5x + 4. Which statement correctly compares what the coefficients reveal?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "Plan 1 saves faster because it starts with $12.",
+      "A": "Plan 1 saves faster because it starts with \\$12.",
       "B": "Both plans save at the same rate because both are linear.",
       "C": "Plan 1 saves faster because 3 + 12 = 15 is more than 5 + 4 = 9.",
-      "D": "Plan 2 saves faster at $5 per week versus $3 per week, though Plan 1 starts with more."
+      "D": "Plan 2 saves faster at \\$5 per week versus \\$3 per week, though Plan 1 starts with more."
     },
     "correct_answer": "D",
-    "explanation": "The rate of change is the coefficient of x. Plan 1 saves $3 per week and Plan 2 saves $5 per week, so Plan 2 saves faster. The constants 12 and 4 are the starting balances, so Plan 1 begins with more but grows more slowly.",
+    "explanation": "The rate of change is the coefficient of x. Plan 1 saves \\$3 per week and Plan 2 saves \\$5 per week, so Plan 2 saves faster. The constants 12 and 4 are the starting balances, so Plan 1 begins with more but grows more slowly.",
     "distractor_logic": {
-      "A": "Student uses the starting balance $12 as evidence of a faster saving rate, but the starting value is the constant, not the rate.",
+      "A": "Student uses the starting balance \\$12 as evidence of a faster saving rate, but the starting value is the constant, not the rate.",
       "B": "Student assumes that because both expressions are linear they must share the same rate, ignoring that the coefficients differ.",
       "C": "Student adds each expression's coefficient and constant and compares the sums, treating the sum as the rate of change.",
       "D": "Correct: Plan 2's coefficient 5 exceeds Plan 1's coefficient 3, so Plan 2 saves faster; the constants only set the starting balances."
@@ -1021,7 +1126,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -1033,11 +1141,16 @@
       }
     ],
     "content_context": "savings_plans",
-    "context_tags": ["rate_of_change", "coefficient", "comparing_expressions", "starting_value"],
+    "context_tags": [
+      "rate_of_change",
+      "coefficient",
+      "comparing_expressions",
+      "starting_value"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

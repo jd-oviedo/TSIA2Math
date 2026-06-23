@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["slope", "two_points", "rise_over_run", "linear_equation"],
+    "context_tags": [
+      "slope",
+      "two_points",
+      "rise_over_run",
+      "linear_equation"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -69,7 +77,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_B_040",
     "schema_version": "2.0",
@@ -112,7 +119,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -124,11 +134,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["slope_intercept_form", "slope", "y_intercept", "identify_from_equation"],
+    "context_tags": [
+      "slope_intercept_form",
+      "slope",
+      "y_intercept",
+      "identify_from_equation"
+    ],
     "estimated_time_seconds": 45,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -140,7 +155,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_B_041",
     "schema_version": "2.0",
@@ -183,7 +197,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -195,11 +212,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["slope", "negative_slope", "two_points", "rise_over_run"],
+    "context_tags": [
+      "slope",
+      "negative_slope",
+      "two_points",
+      "rise_over_run"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -211,7 +233,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_B_042",
     "schema_version": "2.0",
@@ -254,7 +275,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -266,11 +290,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["slope_intercept_form", "write_equation", "slope", "y_intercept"],
+    "context_tags": [
+      "slope_intercept_form",
+      "write_equation",
+      "slope",
+      "y_intercept"
+    ],
     "estimated_time_seconds": 45,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -282,7 +311,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_B_043",
     "schema_version": "2.0",
@@ -325,7 +353,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -337,11 +368,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["slope", "two_points", "y_intercept_given", "rise_over_run"],
+    "context_tags": [
+      "slope",
+      "two_points",
+      "y_intercept_given",
+      "rise_over_run"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -353,7 +389,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_P_027",
     "schema_version": "2.0",
@@ -396,7 +431,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -408,11 +446,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["write_equation", "two_points", "slope_intercept_form", "y_intercept"],
+    "context_tags": [
+      "write_equation",
+      "two_points",
+      "slope_intercept_form",
+      "y_intercept"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -424,7 +467,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_P_028",
     "schema_version": "2.0",
@@ -467,7 +509,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -479,11 +524,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["point_slope_form", "slope_intercept_form", "write_equation", "given_slope_and_point"],
+    "context_tags": [
+      "point_slope_form",
+      "slope_intercept_form",
+      "write_equation",
+      "given_slope_and_point"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -495,7 +545,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_P_029",
     "schema_version": "2.0",
@@ -525,7 +574,7 @@
       "D": "The one-time service fee charged regardless of hours"
     },
     "correct_answer": "C",
-    "explanation": "In C(h) = 65h + 90, the slope is 65. Slope represents the rate of change — how much the total cost increases for each additional hour worked. So the slope represents the cost per hour of labor: $65 per hour.\n\nThe y-intercept (90) represents the flat service fee charged regardless of hours — not the slope.",
+    "explanation": "In C(h) = 65h + 90, the slope is 65. Slope represents the rate of change — how much the total cost increases for each additional hour worked. So the slope represents the cost per hour of labor: \\$65 per hour.\n\nThe y-intercept (90) represents the flat service fee charged regardless of hours — not the slope.",
     "distractor_logic": {
       "A": "Student confuses the function's output (total cost C) with what the slope means — the total cost is what the entire function computes, not what the slope alone represents.",
       "B": "Student confuses the independent variable (h = hours) with the slope — hours is the input to the function, not the rate of change.",
@@ -538,7 +587,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -550,11 +602,16 @@
       }
     ],
     "content_context": "plumber_charges",
-    "context_tags": ["slope_interpretation", "real_world_model", "rate_of_change", "slope_intercept_form"],
+    "context_tags": [
+      "slope_interpretation",
+      "real_world_model",
+      "rate_of_change",
+      "slope_intercept_form"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -566,7 +623,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_A_021",
     "schema_version": "2.0",
@@ -609,7 +665,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -621,11 +680,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["parallel_lines", "slope", "write_equation", "point_slope_form"],
+    "context_tags": [
+      "parallel_lines",
+      "slope",
+      "write_equation",
+      "point_slope_form"
+    ],
     "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -637,7 +701,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_A_022",
     "schema_version": "2.0",
@@ -680,7 +743,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -692,11 +758,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["horizontal_line", "zero_slope", "write_equation", "special_slopes"],
+    "context_tags": [
+      "horizontal_line",
+      "zero_slope",
+      "write_equation",
+      "special_slopes"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

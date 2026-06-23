@@ -41,7 +41,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -49,11 +51,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["line_of_best_fit", "slope", "slope_intercept_form", "linear_model"],
+    "context_tags": [
+      "line_of_best_fit",
+      "slope",
+      "slope_intercept_form",
+      "linear_model"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -107,7 +114,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -115,11 +124,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["line_of_best_fit", "y_intercept", "slope_intercept_form", "linear_model"],
+    "context_tags": [
+      "line_of_best_fit",
+      "y_intercept",
+      "slope_intercept_form",
+      "linear_model"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -138,7 +152,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.2",
@@ -173,7 +189,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -185,11 +204,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["line_of_best_fit", "prediction", "substitution", "linear_model"],
+    "context_tags": [
+      "line_of_best_fit",
+      "prediction",
+      "substitution",
+      "linear_model"
+    ],
     "estimated_time_seconds": 70,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -208,7 +232,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.2",
@@ -243,7 +269,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -255,11 +284,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["line_of_best_fit", "prediction", "negative_slope", "linear_model"],
+    "context_tags": [
+      "line_of_best_fit",
+      "prediction",
+      "negative_slope",
+      "linear_model"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -278,7 +312,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.2",
@@ -294,15 +330,15 @@
     "question_text": "A company models the cost of an order as y = 1.5x + 2, where x is the number of items ordered and y is the total cost in dollars. What does the slope of 1.5 represent in this context?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "The cost increases by $1.50 for each additional item.",
-      "B": "The total cost is $1.50 regardless of the number of items.",
-      "C": "The order costs $3.50 in total.",
-      "D": "The cost decreases by $0.50 for each additional item."
+      "A": "The cost increases by \\$1.50 for each additional item.",
+      "B": "The total cost is \\$1.50 regardless of the number of items.",
+      "C": "The order costs \\$3.50 in total.",
+      "D": "The cost decreases by \\$0.50 for each additional item."
     },
     "correct_answer": "A",
-    "explanation": "The slope in a linear model is the rate of change: how much y changes for each one-unit increase in x. Here, for each additional item ordered, the cost rises by $1.50. The 2 is the fixed starting cost, not the slope.",
+    "explanation": "The slope in a linear model is the rate of change: how much y changes for each one-unit increase in x. Here, for each additional item ordered, the cost rises by \\$1.50. The 2 is the fixed starting cost, not the slope.",
     "distractor_logic": {
-      "A": "Correct: the slope 1.5 means the cost rises by $1.50 for each additional item ordered.",
+      "A": "Correct: the slope 1.5 means the cost rises by \\$1.50 for each additional item ordered.",
       "B": "Student treats the slope as a fixed total rather than a per-item rate of change.",
       "C": "Student adds the slope and intercept (1.5 + 2 = 3.5) and reports it as a single total.",
       "D": "Student subtracts the intercept from the slope (1.5 - 2 = -0.5) and misreads the rate as a decrease."
@@ -313,7 +349,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -321,11 +359,16 @@
       }
     ],
     "content_context": "retail_sales",
-    "context_tags": ["line_of_best_fit", "slope", "rate_of_change", "interpretation"],
+    "context_tags": [
+      "line_of_best_fit",
+      "slope",
+      "rate_of_change",
+      "interpretation"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -344,7 +387,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.2",
@@ -379,7 +424,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -391,11 +439,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["line_of_best_fit", "slope", "two_points", "rise_over_run"],
+    "context_tags": [
+      "line_of_best_fit",
+      "slope",
+      "two_points",
+      "rise_over_run"
+    ],
     "estimated_time_seconds": 95,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -414,7 +467,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.2",
@@ -449,7 +504,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -461,11 +519,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["line_of_best_fit", "slope", "negative_slope", "two_points"],
+    "context_tags": [
+      "line_of_best_fit",
+      "slope",
+      "negative_slope",
+      "two_points"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -484,7 +547,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.2",
@@ -519,7 +584,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -531,11 +599,16 @@
       }
     ],
     "content_context": "science_experiment",
-    "context_tags": ["line_of_best_fit", "prediction", "substitution", "bacteria_growth"],
+    "context_tags": [
+      "line_of_best_fit",
+      "prediction",
+      "substitution",
+      "bacteria_growth"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -554,7 +627,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.2",
@@ -589,7 +664,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -601,11 +679,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["line_of_best_fit", "writing_equation", "two_points", "y_intercept"],
+    "context_tags": [
+      "line_of_best_fit",
+      "writing_equation",
+      "two_points",
+      "y_intercept"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -624,7 +707,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.2",
@@ -659,7 +744,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -671,11 +759,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["line_of_best_fit", "slope", "two_points", "rise_over_run"],
+    "context_tags": [
+      "line_of_best_fit",
+      "slope",
+      "two_points",
+      "rise_over_run"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -694,7 +787,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.2",
@@ -729,7 +824,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -741,11 +839,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["linear_model", "reverse_reasoning", "solving_for_x", "prediction"],
+    "context_tags": [
+      "linear_model",
+      "reverse_reasoning",
+      "solving_for_x",
+      "prediction"
+    ],
     "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -764,7 +867,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.2",
@@ -799,7 +904,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -811,11 +919,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["linear_model", "model_comparison", "residuals", "goodness_of_fit"],
+    "context_tags": [
+      "linear_model",
+      "model_comparison",
+      "residuals",
+      "goodness_of_fit"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -834,7 +947,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.2",
@@ -869,7 +984,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -881,11 +999,16 @@
       }
     ],
     "content_context": "gardening",
-    "context_tags": ["linear_model", "slope", "interpretation", "rate_of_change"],
+    "context_tags": [
+      "linear_model",
+      "slope",
+      "interpretation",
+      "rate_of_change"
+    ],
     "estimated_time_seconds": 125,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -904,7 +1027,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.2",
@@ -921,7 +1046,7 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "The fixed base charge that applies even when no minutes are used.",
-      "B": "The bill increases by $20 for each additional minute.",
+      "B": "The bill increases by \\$20 for each additional minute.",
       "C": "The total monthly bill for any amount of usage.",
       "D": "The cost of using exactly 20 minutes."
     },
@@ -939,7 +1064,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -951,11 +1079,16 @@
       }
     ],
     "content_context": "telecommunications",
-    "context_tags": ["linear_model", "y_intercept", "interpretation", "fixed_cost"],
+    "context_tags": [
+      "linear_model",
+      "y_intercept",
+      "interpretation",
+      "fixed_cost"
+    ],
     "estimated_time_seconds": 125,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -974,7 +1107,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.2",
@@ -1009,7 +1144,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -1021,11 +1159,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["linear_model", "reverse_reasoning", "decimal_slope", "solving_for_x"],
+    "context_tags": [
+      "linear_model",
+      "reverse_reasoning",
+      "decimal_slope",
+      "solving_for_x"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

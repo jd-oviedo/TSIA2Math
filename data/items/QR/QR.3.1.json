@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["verbal_to_algebraic", "addition", "single_operation"],
+    "context_tags": [
+      "verbal_to_algebraic",
+      "addition",
+      "single_operation"
+    ],
     "estimated_time_seconds": 70,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -111,7 +118,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -123,11 +133,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["verbal_to_algebraic", "subtraction", "order_of_terms", "single_operation"],
+    "context_tags": [
+      "verbal_to_algebraic",
+      "subtraction",
+      "order_of_terms",
+      "single_operation"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -181,7 +196,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -193,11 +211,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["verbal_to_algebraic", "multiplication", "single_operation"],
+    "context_tags": [
+      "verbal_to_algebraic",
+      "multiplication",
+      "single_operation"
+    ],
     "estimated_time_seconds": 65,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -251,7 +273,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -263,11 +288,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["verbal_to_algebraic", "division", "order_of_terms", "single_operation"],
+    "context_tags": [
+      "verbal_to_algebraic",
+      "division",
+      "order_of_terms",
+      "single_operation"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -321,7 +351,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -333,11 +366,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["verbal_to_algebraic", "multiplication", "single_operation"],
+    "context_tags": [
+      "verbal_to_algebraic",
+      "multiplication",
+      "single_operation"
+    ],
     "estimated_time_seconds": 65,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -391,7 +428,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -403,11 +443,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["verbal_to_algebraic", "grouping", "distribution", "two_operations"],
+    "context_tags": [
+      "verbal_to_algebraic",
+      "grouping",
+      "distribution",
+      "two_operations"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -461,7 +506,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -473,11 +521,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["verbal_to_algebraic", "subtraction", "order_of_terms", "two_operations"],
+    "context_tags": [
+      "verbal_to_algebraic",
+      "subtraction",
+      "order_of_terms",
+      "two_operations"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -531,7 +584,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -543,11 +599,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["verbal_to_algebraic", "division", "order_of_terms", "two_operations"],
+    "context_tags": [
+      "verbal_to_algebraic",
+      "division",
+      "order_of_terms",
+      "two_operations"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -579,7 +640,7 @@
       "translating a real-world cost situation into a linear expression",
       "distinguishing a per-unit rate from a fixed fee when assigning coefficients"
     ],
-    "question_text": "A taxi charges a $3 flat fee plus $2 for each mile driven. If m represents the number of miles, which expression represents the total cost in dollars?",
+    "question_text": "A taxi charges a \\$3 flat fee plus \\$2 for each mile driven. If m represents the number of miles, which expression represents the total cost in dollars?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "3m + 2",
@@ -588,12 +649,12 @@
       "D": "2(m + 3)"
     },
     "correct_answer": "C",
-    "explanation": "The $2 charge applies to each mile, so it multiplies m: 2m. The $3 flat fee is charged once, regardless of miles, so it is added on its own: 2m + 3.",
+    "explanation": "The \\$2 charge applies to each mile, so it multiplies m: 2m. The \\$3 flat fee is charged once, regardless of miles, so it is added on its own: 2m + 3.",
     "distractor_logic": {
-      "A": "Student swaps the roles, treating $3 as the per-mile rate and $2 as the flat fee: 3m + 2.",
-      "B": "Student merges the flat fee into the per-mile rate, charging $5 per mile: 5m.",
-      "C": "Correct: $2 per mile gives 2m, and the one-time $3 fee is added: 2m + 3.",
-      "D": "Student multiplies the flat fee by the per-mile rate, applying $2 to the $3 as well: 2(m + 3) = 2m + 6."
+      "A": "Student swaps the roles, treating \\$3 as the per-mile rate and \\$2 as the flat fee: 3m + 2.",
+      "B": "Student merges the flat fee into the per-mile rate, charging \\$5 per mile: 5m.",
+      "C": "Correct: \\$2 per mile gives 2m, and the one-time \\$3 fee is added: 2m + 3.",
+      "D": "Student multiplies the flat fee by the per-mile rate, applying \\$2 to the \\$3 as well: 2(m + 3) = 2m + 6."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -601,7 +662,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -609,15 +673,20 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Ask whether the flat fee should grow as miles increase. Rule out choices where the $3 is tied to m."
+        "hint_text": "Ask whether the flat fee should grow as miles increase. Rule out choices where the \\$3 is tied to m."
       }
     ],
     "content_context": "taxi_fare",
-    "context_tags": ["verbal_to_algebraic", "cost_model", "rate_and_fee", "two_operations"],
+    "context_tags": [
+      "verbal_to_algebraic",
+      "cost_model",
+      "rate_and_fee",
+      "two_operations"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -671,7 +740,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -683,11 +755,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["verbal_to_algebraic", "grouping", "subtraction", "two_operations"],
+    "context_tags": [
+      "verbal_to_algebraic",
+      "grouping",
+      "subtraction",
+      "two_operations"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -741,7 +818,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -753,11 +833,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["verbal_to_algebraic", "grouping", "subtraction", "multi_operation"],
+    "context_tags": [
+      "verbal_to_algebraic",
+      "grouping",
+      "subtraction",
+      "multi_operation"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -811,7 +896,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -823,11 +911,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["verbal_to_algebraic", "linear_equation", "order_of_terms", "multi_operation"],
+    "context_tags": [
+      "verbal_to_algebraic",
+      "linear_equation",
+      "order_of_terms",
+      "multi_operation"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -859,7 +952,7 @@
       "translating a real-world situation with three quantities into a linear expression",
       "combining two fixed fees while keeping a single per-hour rate attached to the variable"
     ],
-    "question_text": "A plumber charges a $40 service fee, $25 for each hour of labor over h hours, and a flat $15 disposal fee. Which expression represents the total charge in dollars?",
+    "question_text": "A plumber charges a \\$40 service fee, \\$25 for each hour of labor over h hours, and a flat \\$15 disposal fee. Which expression represents the total charge in dollars?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "25h + 40",
@@ -868,12 +961,12 @@
       "D": "25h + 55"
     },
     "correct_answer": "D",
-    "explanation": "Only the $25 labor charge depends on hours, so it multiplies h: 25h. The $40 service fee and the $15 disposal fee are both one-time charges, so they add together as a constant: 40 + 15 = 55. The total is 25h + 55.",
+    "explanation": "Only the \\$25 labor charge depends on hours, so it multiplies h: 25h. The \\$40 service fee and the \\$15 disposal fee are both one-time charges, so they add together as a constant: 40 + 15 = 55. The total is 25h + 55.",
     "distractor_logic": {
-      "A": "Student includes only one of the two fixed fees, dropping the $15 disposal fee: 25h + 40.",
+      "A": "Student includes only one of the two fixed fees, dropping the \\$15 disposal fee: 25h + 40.",
       "B": "Student treats all three dollar amounts as per-hour rates and adds them onto h: (40 + 25 + 15)h = 80h.",
-      "C": "Student attaches the per-hour label to the wrong amount, making $15 the hourly rate and adding the other two as fixed: 15h + 65.",
-      "D": "Correct: $25 per hour gives 25h, and the two fixed fees combine to 55, giving 25h + 55."
+      "C": "Student attaches the per-hour label to the wrong amount, making \\$15 the hourly rate and adding the other two as fixed: 15h + 65.",
+      "D": "Correct: \\$25 per hour gives 25h, and the two fixed fees combine to 55, giving 25h + 55."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -881,7 +974,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -893,11 +989,16 @@
       }
     ],
     "content_context": "plumbing_service",
-    "context_tags": ["verbal_to_algebraic", "cost_model", "rate_and_fee", "multi_operation"],
+    "context_tags": [
+      "verbal_to_algebraic",
+      "cost_model",
+      "rate_and_fee",
+      "multi_operation"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -951,7 +1052,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -963,11 +1067,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["verbal_to_algebraic", "average", "grouping", "multi_operation"],
+    "context_tags": [
+      "verbal_to_algebraic",
+      "average",
+      "grouping",
+      "multi_operation"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -1021,7 +1130,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "use_answer_choices"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "use_answer_choices"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -1033,11 +1145,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["verbal_to_algebraic", "expression_to_words", "grouping", "multi_operation"],
+    "context_tags": [
+      "verbal_to_algebraic",
+      "expression_to_words",
+      "grouping",
+      "multi_operation"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

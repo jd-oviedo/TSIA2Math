@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["one_step_inequality", "subtraction", "inequality_direction", "linear_inequality"],
+    "context_tags": [
+      "one_step_inequality",
+      "subtraction",
+      "inequality_direction",
+      "linear_inequality"
+    ],
     "estimated_time_seconds": 45,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -69,7 +77,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_B_020",
     "schema_version": "2.0",
@@ -112,7 +119,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -124,11 +134,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["one_step_inequality", "multiplication", "fractional_variable", "linear_inequality"],
+    "context_tags": [
+      "one_step_inequality",
+      "multiplication",
+      "fractional_variable",
+      "linear_inequality"
+    ],
     "estimated_time_seconds": 45,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -140,7 +155,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_B_021",
     "schema_version": "2.0",
@@ -183,7 +197,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -195,11 +212,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["one_step_inequality", "negative_coefficient", "flip_inequality", "linear_inequality"],
+    "context_tags": [
+      "one_step_inequality",
+      "negative_coefficient",
+      "flip_inequality",
+      "linear_inequality"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -211,7 +233,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_B_022",
     "schema_version": "2.0",
@@ -254,7 +275,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -266,11 +290,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["two_step_inequality", "positive_coefficient", "linear_inequality", "inverse_operations"],
+    "context_tags": [
+      "two_step_inequality",
+      "positive_coefficient",
+      "linear_inequality",
+      "inverse_operations"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -282,7 +311,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_B_023",
     "schema_version": "2.0",
@@ -325,7 +353,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -337,11 +368,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["two_step_inequality", "negative_coefficient", "flip_inequality", "linear_inequality"],
+    "context_tags": [
+      "two_step_inequality",
+      "negative_coefficient",
+      "flip_inequality",
+      "linear_inequality"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -353,7 +389,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_P_015",
     "schema_version": "2.0",
@@ -396,7 +431,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -408,11 +446,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["variables_on_both_sides", "linear_inequality", "like_terms", "two_step_inequality"],
+    "context_tags": [
+      "variables_on_both_sides",
+      "linear_inequality",
+      "like_terms",
+      "two_step_inequality"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -424,7 +467,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_P_016",
     "schema_version": "2.0",
@@ -467,7 +509,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -479,11 +524,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["distributive_property", "linear_inequality", "variables_on_both_sides", "multi_step"],
+    "context_tags": [
+      "distributive_property",
+      "linear_inequality",
+      "variables_on_both_sides",
+      "multi_step"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -495,7 +545,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_P_017",
     "schema_version": "2.0",
@@ -538,7 +587,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -550,11 +602,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_inequality", "three_part_inequality", "boundary_notation", "linear_inequality"],
+    "context_tags": [
+      "compound_inequality",
+      "three_part_inequality",
+      "boundary_notation",
+      "linear_inequality"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -566,7 +623,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_A_013",
     "schema_version": "2.0",
@@ -609,7 +665,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -621,11 +680,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["multi_step_inequality", "negative_coefficient", "distributive_property", "flip_inequality"],
+    "context_tags": [
+      "multi_step_inequality",
+      "negative_coefficient",
+      "distributive_property",
+      "flip_inequality"
+    ],
     "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -637,7 +701,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_A_014",
     "schema_version": "2.0",
@@ -658,7 +721,7 @@
       "writing and solving a linear inequality from a real-world context",
       "interpreting 'more than' as a strict inequality and identifying the correct boundary"
     ],
-    "question_text": "A student earns $12 per hour tutoring. They have already earned $24 this week and want to earn more than $168 total. Which inequality represents the number of additional hours, h, they must work, and what is the solution?",
+    "question_text": "A student earns \\$12 per hour tutoring. They have already earned \\$24 this week and want to earn more than \\$168 total. Which inequality represents the number of additional hours, h, they must work, and what is the solution?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "12h + 24 ≥ 168; h ≥ 12",
@@ -667,12 +730,12 @@
       "D": "12h + 24 > 168; h > 14"
     },
     "correct_answer": "C",
-    "explanation": "The total earnings are 12h + 24. The student wants this to be more than $168 (strict inequality):\n12h + 24 > 168\n12h > 144\nh > 12\n\nThe student must work more than 12 additional hours.\n\nCheck: h = 13 → 12(13) + 24 = 180 > 168 ✓; h = 12 → 12(12) + 24 = 168 > 168? No ✓ (strict inequality excludes h = 12)",
+    "explanation": "The total earnings are 12h + 24. The student wants this to be more than \\$168 (strict inequality):\n12h + 24 > 168\n12h > 144\nh > 12\n\nThe student must work more than 12 additional hours.\n\nCheck: h = 13 → 12(13) + 24 = 180 > 168 ✓; h = 12 → 12(12) + 24 = 168 > 168? No ✓ (strict inequality excludes h = 12)",
     "distractor_logic": {
       "A": "Student sets up the correct expression but uses ≥ instead of > for 'more than,' giving h ≥ 12 — incorrectly including h = 12 even though 12(12) + 24 = 168 is not strictly more than 168.",
-      "B": "Student sets up the correct inequality but ignores the $24 already earned, solving 12h > 168 → h > 14.",
+      "B": "Student sets up the correct inequality but ignores the \\$24 already earned, solving 12h > 168 → h > 14.",
       "C": "Correct: 12h + 24 > 168 → 12h > 144 → h > 12.",
-      "D": "Student adds $24 to $168 instead of subtracting: 12h > 168 + 24 = 192 → h > 16."
+      "D": "Student adds \\$24 to \\$168 instead of subtracting: 12h > 168 + 24 = 192 → h > 16."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -680,7 +743,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -688,15 +754,20 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Test h = 12 and h = 13. Which one earns more than $168? That tells you whether the boundary is strict or non-strict."
+        "hint_text": "Test h = 12 and h = 13. Which one earns more than \\$168? That tells you whether the boundary is strict or non-strict."
       }
     ],
     "content_context": "tutoring_earnings",
-    "context_tags": ["real_world_inequality", "linear_inequality", "strict_inequality", "setup_and_solve"],
+    "context_tags": [
+      "real_world_inequality",
+      "linear_inequality",
+      "strict_inequality",
+      "setup_and_solve"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

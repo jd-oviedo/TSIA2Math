@@ -19,7 +19,7 @@
       "computing percent increase from an original and a new value",
       "using the original value as the denominator in percent change"
     ],
-    "question_text": "The price of a concert ticket rose from $60 to $75. What is the percent increase in price?",
+    "question_text": "The price of a concert ticket rose from \\$60 to \\$75. What is the percent increase in price?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "25%",
@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "entertainment",
-    "context_tags": ["percent_change", "percent_increase", "ticket_price", "over_time"],
+    "context_tags": [
+      "percent_change",
+      "percent_increase",
+      "ticket_price",
+      "over_time"
+    ],
     "estimated_time_seconds": 70,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -111,7 +119,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -123,11 +134,16 @@
       }
     ],
     "content_context": "web_traffic",
-    "context_tags": ["percent_change", "percent_decrease", "website_visitors", "direction"],
+    "context_tags": [
+      "percent_change",
+      "percent_decrease",
+      "website_visitors",
+      "direction"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -181,7 +197,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -193,11 +212,16 @@
       }
     ],
     "content_context": "community_organization",
-    "context_tags": ["percent_change", "percent_increase", "membership", "doubling"],
+    "context_tags": [
+      "percent_change",
+      "percent_increase",
+      "membership",
+      "doubling"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -251,7 +275,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -263,11 +290,16 @@
       }
     ],
     "content_context": "manufacturing",
-    "context_tags": ["percent_change", "percent_decrease", "production", "over_time"],
+    "context_tags": [
+      "percent_change",
+      "percent_decrease",
+      "production",
+      "over_time"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -321,7 +353,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -333,11 +368,16 @@
       }
     ],
     "content_context": "food_service",
-    "context_tags": ["percent_change", "percent_increase", "bakery", "production"],
+    "context_tags": [
+      "percent_change",
+      "percent_increase",
+      "bakery",
+      "production"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -356,7 +396,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.3",
@@ -391,7 +433,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -403,11 +448,16 @@
       }
     ],
     "content_context": "demographics",
-    "context_tags": ["percent_change", "population_growth", "absolute_vs_percent", "over_time"],
+    "context_tags": [
+      "percent_change",
+      "population_growth",
+      "absolute_vs_percent",
+      "over_time"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -426,7 +476,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.3",
@@ -439,7 +491,7 @@
       "computing percent decrease when the change is given rather than the new value",
       "distinguishing the percent decrease from the percent remaining"
     ],
-    "question_text": "A laptop originally priced at $600 was reduced by $90 during a sale. What is the percent decrease in price?",
+    "question_text": "A laptop originally priced at \\$600 was reduced by \\$90 during a sale. What is the percent decrease in price?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "90% decrease",
@@ -448,7 +500,7 @@
       "D": "1.5% decrease"
     },
     "correct_answer": "C",
-    "explanation": "The change is a drop of $90 from the original $600. Percent change is (90 / 600) x 100 = 15% decrease.",
+    "explanation": "The change is a drop of \\$90 from the original \\$600. Percent change is (90 / 600) x 100 = 15% decrease.",
     "distractor_logic": {
       "A": "Student reports the absolute reduction of 90 as if it were the percent change.",
       "B": "Student computes the remaining price as a percent of the original (510/600 = 85%) instead of the percent decrease.",
@@ -461,11 +513,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The change is already given as the $90 reduction. Divide that change by the original price."
+        "hint_text": "The change is already given as the \\$90 reduction. Divide that change by the original price."
       },
       {
         "strategy": "plug_in_values",
@@ -473,11 +528,16 @@
       }
     ],
     "content_context": "retail_sales",
-    "context_tags": ["percent_change", "percent_decrease", "discount", "absolute_vs_percent"],
+    "context_tags": [
+      "percent_change",
+      "percent_decrease",
+      "discount",
+      "absolute_vs_percent"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -496,7 +556,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.3",
@@ -509,7 +571,7 @@
       "computing percent change across two labeled time periods",
       "stating the correct direction when a quantity declines over time"
     ],
-    "question_text": "A company reported revenue of $5 million in 2020 and $4 million in 2021. What is the percent change in revenue from 2020 to 2021?",
+    "question_text": "A company reported revenue of \\$5 million in 2020 and \\$4 million in 2021. What is the percent change in revenue from 2020 to 2021?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "20% increase",
@@ -518,7 +580,7 @@
       "D": "20% decrease"
     },
     "correct_answer": "D",
-    "explanation": "From 2020 to 2021, revenue went from $5 million (original) to $4 million (new). Percent change is ((4 - 5) / 5) x 100 = (-1 / 5) x 100 = -20%, a 20% decrease.",
+    "explanation": "From 2020 to 2021, revenue went from \\$5 million (original) to \\$4 million (new). Percent change is ((4 - 5) / 5) x 100 = (-1 / 5) x 100 = -20%, a 20% decrease.",
     "distractor_logic": {
       "A": "Student computes the magnitude correctly but labels the direction backward as an increase.",
       "B": "Student reports the new value as a percent of the original (4/5 = 80%) and mislabels it as the decrease.",
@@ -531,7 +593,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -543,11 +608,16 @@
       }
     ],
     "content_context": "business_finance",
-    "context_tags": ["percent_change", "percent_decrease", "revenue", "direction"],
+    "context_tags": [
+      "percent_change",
+      "percent_decrease",
+      "revenue",
+      "direction"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -566,7 +636,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.3",
@@ -601,7 +673,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -613,11 +688,16 @@
       }
     ],
     "content_context": "retail_sales",
-    "context_tags": ["percent_change", "percent_increase", "units_sold", "over_time"],
+    "context_tags": [
+      "percent_change",
+      "percent_increase",
+      "units_sold",
+      "over_time"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -636,7 +716,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.3",
@@ -671,7 +753,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -683,11 +768,16 @@
       }
     ],
     "content_context": "environment",
-    "context_tags": ["percent_change", "percent_decrease", "water_level", "over_time"],
+    "context_tags": [
+      "percent_change",
+      "percent_decrease",
+      "water_level",
+      "over_time"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -706,7 +796,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.3",
@@ -719,7 +811,7 @@
       "computing the net effect of two successive percent changes",
       "recognizing that a percent increase and an equal percent decrease do not cancel"
     ],
-    "question_text": "A stock priced at $100 rose 20% in one month, then fell 20% the next month. What is the net percent change in the stock's price over the two months?",
+    "question_text": "A stock priced at \\$100 rose 20% in one month, then fell 20% the next month. What is the net percent change in the stock's price over the two months?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "0% (no net change)",
@@ -741,7 +833,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -753,11 +848,16 @@
       }
     ],
     "content_context": "investing",
-    "context_tags": ["percent_change", "successive_change", "net_change", "compounding"],
+    "context_tags": [
+      "percent_change",
+      "successive_change",
+      "net_change",
+      "compounding"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -776,7 +876,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.3",
@@ -789,11 +891,11 @@
       "comparing two percent changes computed from different base values",
       "recognizing that a larger absolute change can be a smaller percent change"
     ],
-    "question_text": "Stock A rose from $20 to $25. Stock B rose from $50 to $60. Which stock had the greater percent increase?",
+    "question_text": "Stock A rose from \\$20 to \\$25. Stock B rose from \\$50 to \\$60. Which stock had the greater percent increase?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Stock A, because its 25% increase exceeds Stock B's 20% increase.",
-      "B": "Stock B, because it rose by $10 while Stock A rose by only $5.",
+      "B": "Stock B, because it rose by \\$10 while Stock A rose by only \\$5.",
       "C": "The two increases were equal.",
       "D": "Stock B, because it has the higher final price."
     },
@@ -801,7 +903,7 @@
     "explanation": "Stock A: (25 - 20)/20 = 5/20 = 25%. Stock B: (60 - 50)/50 = 10/50 = 20%. Even though Stock B rose by more dollars, Stock A had the greater percent increase.",
     "distractor_logic": {
       "A": "Correct: Stock A increased 25% (5/20) versus Stock B's 20% (10/50), so Stock A's percent increase is greater.",
-      "B": "Student compares absolute dollar changes ($10 vs $5) instead of percent changes.",
+      "B": "Student compares absolute dollar changes (\\$10 vs \\$5) instead of percent changes.",
       "C": "Student assumes the increases must be equal without computing each percent relative to its own base.",
       "D": "Student uses the higher final price as the basis for comparison rather than the percent change."
     },
@@ -811,7 +913,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -823,11 +928,16 @@
       }
     ],
     "content_context": "investing",
-    "context_tags": ["percent_change", "comparison", "percent_increase", "different_bases"],
+    "context_tags": [
+      "percent_change",
+      "comparison",
+      "percent_increase",
+      "different_bases"
+    ],
     "estimated_time_seconds": 130,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -846,7 +956,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.3",
@@ -859,21 +971,21 @@
       "reverse-reasoning from a percent increase and a final value to the original value",
       "recognizing that the new value equals the original times one plus the percent"
     ],
-    "question_text": "After a 25% increase, the price of an item is now $75. What was the original price before the increase?",
+    "question_text": "After a 25% increase, the price of an item is now \\$75. What was the original price before the increase?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$56.25",
-      "B": "$93.75",
-      "C": "$100",
-      "D": "$60"
+      "A": "\\$56.25",
+      "B": "\\$93.75",
+      "C": "\\$100",
+      "D": "\\$60"
     },
     "correct_answer": "D",
-    "explanation": "A 25% increase means the new price is 1.25 times the original: 75 = 1.25 x original. So original = 75 / 1.25 = $60. Check: $60 increased by 25% is 60 + 15 = $75.",
+    "explanation": "A 25% increase means the new price is 1.25 times the original: 75 = 1.25 x original. So original = 75 / 1.25 = \\$60. Check: \\$60 increased by 25% is 60 + 15 = \\$75.",
     "distractor_logic": {
-      "A": "Student subtracts 25% of the new price from the new price: 75 - (0.25 x 75) = 75 - 18.75 = $56.25, instead of dividing by 1.25.",
-      "B": "Student increases the new price by another 25%: 75 x 1.25 = $93.75, applying the change forward instead of reversing it.",
-      "C": "Student treats the $75 as 75% of the original, computing 75 / 0.75 = $100, confusing an increase with a decrease.",
-      "D": "Correct: 75 / 1.25 = $60, and $60 increased by 25% returns $75."
+      "A": "Student subtracts 25% of the new price from the new price: 75 - (0.25 x 75) = 75 - 18.75 = \\$56.25, instead of dividing by 1.25.",
+      "B": "Student increases the new price by another 25%: 75 x 1.25 = \\$93.75, applying the change forward instead of reversing it.",
+      "C": "Student treats the \\$75 as 75% of the original, computing 75 / 0.75 = \\$100, confusing an increase with a decrease.",
+      "D": "Correct: 75 / 1.25 = \\$60, and \\$60 increased by 25% returns \\$75."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -881,7 +993,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -889,15 +1004,20 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Test a candidate original by increasing it 25% and checking whether you land on $75."
+        "hint_text": "Test a candidate original by increasing it 25% and checking whether you land on \\$75."
       }
     ],
     "content_context": "retail_sales",
-    "context_tags": ["percent_change", "reverse_reasoning", "original_value", "percent_increase"],
+    "context_tags": [
+      "percent_change",
+      "reverse_reasoning",
+      "original_value",
+      "percent_increase"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -916,7 +1036,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.3",
@@ -951,7 +1073,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -963,11 +1088,16 @@
       }
     ],
     "content_context": "demographics",
-    "context_tags": ["percent_change", "successive_change", "compounding", "population_growth"],
+    "context_tags": [
+      "percent_change",
+      "successive_change",
+      "compounding",
+      "population_growth"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -986,7 +1116,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "data_analysis_and_inference",
     "objective_text": "Data Analysis and Inference",
     "topic_id": "PR.4.3",
@@ -999,10 +1131,10 @@
       "comparing two percent decreases computed from different base values",
       "recognizing that different absolute changes can yield equal percent changes"
     ],
-    "question_text": "Item X dropped in price from $200 to $150. Item Y dropped from $80 to $60. Which item had the greater percent decrease?",
+    "question_text": "Item X dropped in price from \\$200 to \\$150. Item Y dropped from \\$80 to \\$60. Which item had the greater percent decrease?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "Item X, because it dropped by $50 while Item Y dropped by only $20.",
+      "A": "Item X, because it dropped by \\$50 while Item Y dropped by only \\$20.",
       "B": "They had equal percent decreases; both fell by 25%.",
       "C": "Item Y, because smaller starting numbers always give a larger percent change.",
       "D": "Item X, because it started at a higher price."
@@ -1010,7 +1142,7 @@
     "correct_answer": "B",
     "explanation": "Item X: (200 - 150)/200 = 50/200 = 25%. Item Y: (80 - 60)/80 = 20/80 = 25%. Despite different dollar drops, both items decreased by the same 25%.",
     "distractor_logic": {
-      "A": "Student compares absolute dollar drops ($50 vs $20) rather than percent decreases.",
+      "A": "Student compares absolute dollar drops (\\$50 vs \\$20) rather than percent decreases.",
       "B": "Correct: X is 50/200 = 25% and Y is 20/80 = 25%, so the percent decreases are equal.",
       "C": "Student assumes smaller starting values automatically produce a larger percent change without computing.",
       "D": "Student uses the higher starting price as the basis for comparison instead of the percent change."
@@ -1021,7 +1153,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -1033,11 +1168,16 @@
       }
     ],
     "content_context": "retail_sales",
-    "context_tags": ["percent_change", "comparison", "percent_decrease", "different_bases"],
+    "context_tags": [
+      "percent_change",
+      "comparison",
+      "percent_decrease",
+      "different_bases"
+    ],
     "estimated_time_seconds": 130,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

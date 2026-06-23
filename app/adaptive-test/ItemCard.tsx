@@ -230,13 +230,13 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
 
           {revealData.explanation !== null ? (
   <>
-    <p style={{ fontSize: "15px", color: "var(--ec-ink)", lineHeight: 1.7, fontFamily: "Georgia, 'Times New Roman', serif", margin: 0 }}>
-  <MathText text={revealData.explanation} />
-</p>
+    <div style={{ fontSize: "15px", color: "var(--ec-ink)", lineHeight: 1.7, fontFamily: "Georgia, 'Times New Roman', serif", margin: 0 }}>
+  {renderQuestionText(revealData.explanation)}
+</div>
     {selected && !isCorrect && revealData.distractor_note && (
-      <p style={{ fontSize: "13px", color: "var(--ec-ink-muted)", lineHeight: 1.6, fontStyle: "italic", marginTop: "10px", paddingTop: "10px", borderTop: "1px solid var(--ec-line)", fontFamily: "Georgia, 'Times New Roman', serif" }}>
-  <MathText text={revealData.distractor_note} />
-</p>
+      <div style={{ fontSize: "13px", color: "var(--ec-ink-muted)", lineHeight: 1.6, fontStyle: "italic", marginTop: "10px", paddingTop: "10px", borderTop: "1px solid var(--ec-line)", fontFamily: "Georgia, 'Times New Roman', serif" }}>
+  {renderQuestionText(revealData.distractor_note)}
+</div>
     )}
   </>
 ) : (

@@ -19,7 +19,7 @@
       "writing a total-cost expression from two quantities with given per-unit prices",
       "attaching each per-unit price to the correct variable"
     ],
-    "question_text": "Apples cost $2 each and oranges cost $3 each. If a represents the number of apples and o represents the number of oranges, which expression represents the total cost in dollars?",
+    "question_text": "Apples cost \\$2 each and oranges cost \\$3 each. If a represents the number of apples and o represents the number of oranges, which expression represents the total cost in dollars?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "2a + 3o",
@@ -28,10 +28,10 @@
       "D": "5(a + o)"
     },
     "correct_answer": "A",
-    "explanation": "Each apple costs $2, so a apples cost 2a. Each orange costs $3, so o oranges cost 3o. The total cost is the sum: 2a + 3o.",
+    "explanation": "Each apple costs \\$2, so a apples cost 2a. Each orange costs \\$3, so o oranges cost 3o. The total cost is the sum: 2a + 3o.",
     "distractor_logic": {
       "A": "Correct: 2a is the cost of the apples and 3o is the cost of the oranges, so the total is 2a + 3o.",
-      "B": "Student swaps the prices, attaching $3 to apples and $2 to oranges: 3a + 2o.",
+      "B": "Student swaps the prices, attaching \\$3 to apples and \\$2 to oranges: 3a + 2o.",
       "C": "Student counts the fruit but drops the prices entirely, writing a + o.",
       "D": "Student adds the two prices into a single rate and applies it to all fruit: 5(a + o)."
     },
@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -49,15 +52,19 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try a = 1 apple and o = 1 orange. The total should be $5. Check which expression gives that."
+        "hint_text": "Try a = 1 apple and o = 1 orange. The total should be \\$5. Check which expression gives that."
       }
     ],
     "content_context": "grocery_shopping",
-    "context_tags": ["two_variable", "total_cost", "per_unit_price"],
+    "context_tags": [
+      "two_variable",
+      "total_cost",
+      "per_unit_price"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -89,7 +96,7 @@
       "writing a total-revenue expression from two ticket types with given prices",
       "recognizing that each price multiplies its own quantity before summing"
     ],
-    "question_text": "A theater sells adult tickets for $12 each and child tickets for $8 each. If x is the number of adult tickets and y is the number of child tickets, which expression represents the total revenue in dollars?",
+    "question_text": "A theater sells adult tickets for \\$12 each and child tickets for \\$8 each. If x is the number of adult tickets and y is the number of child tickets, which expression represents the total revenue in dollars?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "8x + 12y",
@@ -98,9 +105,9 @@
       "D": "12 + 8 + x + y"
     },
     "correct_answer": "B",
-    "explanation": "Each adult ticket brings in $12, so x adult tickets give 12x. Each child ticket brings in $8, so y child tickets give 8y. Total revenue is 12x + 8y.",
+    "explanation": "Each adult ticket brings in \\$12, so x adult tickets give 12x. Each child ticket brings in \\$8, so y child tickets give 8y. Total revenue is 12x + 8y.",
     "distractor_logic": {
-      "A": "Student swaps the prices, attaching $8 to adult tickets and $12 to child tickets: 8x + 12y.",
+      "A": "Student swaps the prices, attaching \\$8 to adult tickets and \\$12 to child tickets: 8x + 12y.",
       "B": "Correct: 12x is the adult revenue and 8y is the child revenue, so the total is 12x + 8y.",
       "C": "Student adds the two prices into one rate and applies it to all tickets: 20(x + y).",
       "D": "Student adds the prices and the quantities separately without multiplying price by quantity: 12 + 8 + x + y."
@@ -111,7 +118,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -119,15 +129,19 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try x = 1 adult and y = 1 child. Revenue should be $20. Check which expression matches and reflects each price separately."
+        "hint_text": "Try x = 1 adult and y = 1 child. Revenue should be \\$20. Check which expression matches and reflects each price separately."
       }
     ],
     "content_context": "theater_tickets",
-    "context_tags": ["two_variable", "total_revenue", "per_unit_price"],
+    "context_tags": [
+      "two_variable",
+      "total_revenue",
+      "per_unit_price"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -159,7 +173,7 @@
       "writing a total-cost expression where one item has a per-unit price of one dollar",
       "recognizing that a price of $1 gives a coefficient of 1 on its variable"
     ],
-    "question_text": "Pencils cost $1 each and notebooks cost $4 each. If p is the number of pencils and n is the number of notebooks, which expression represents the total cost in dollars?",
+    "question_text": "Pencils cost \\$1 each and notebooks cost \\$4 each. If p is the number of pencils and n is the number of notebooks, which expression represents the total cost in dollars?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "4p + n",
@@ -168,12 +182,12 @@
       "D": "p + 4 + n"
     },
     "correct_answer": "C",
-    "explanation": "Each pencil costs $1, so p pencils cost 1p, written simply as p. Each notebook costs $4, so n notebooks cost 4n. The total cost is p + 4n.",
+    "explanation": "Each pencil costs \\$1, so p pencils cost 1p, written simply as p. Each notebook costs \\$4, so n notebooks cost 4n. The total cost is p + 4n.",
     "distractor_logic": {
-      "A": "Student swaps the prices, attaching $4 to pencils and $1 to notebooks: 4p + n.",
+      "A": "Student swaps the prices, attaching \\$4 to pencils and \\$1 to notebooks: 4p + n.",
       "B": "Student adds the two prices into one rate and applies it to all items: 5(p + n).",
-      "C": "Correct: pencils cost $1 each (coefficient 1) and notebooks cost $4 each, giving p + 4n.",
-      "D": "Student treats the $4 notebook price as a one-time flat charge rather than a per-notebook rate: p + 4 + n."
+      "C": "Correct: pencils cost \\$1 each (coefficient 1) and notebooks cost \\$4 each, giving p + 4n.",
+      "D": "Student treats the \\$4 notebook price as a one-time flat charge rather than a per-notebook rate: p + 4 + n."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -181,23 +195,30 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "A price of $1 each still multiplies its variable; it just looks like the variable by itself. Make sure the $4 multiplies its own quantity."
+        "hint_text": "A price of \\$1 each still multiplies its variable; it just looks like the variable by itself. Make sure the \\$4 multiplies its own quantity."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try p = 2 pencils and n = 2 notebooks. The total should be $10. Check which expression gives that."
+        "hint_text": "Try p = 2 pencils and n = 2 notebooks. The total should be \\$10. Check which expression gives that."
       }
     ],
     "content_context": "school_supplies",
-    "context_tags": ["two_variable", "total_cost", "coefficient_of_one"],
+    "context_tags": [
+      "two_variable",
+      "total_cost",
+      "coefficient_of_one"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -251,7 +272,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -263,11 +287,15 @@
       }
     ],
     "content_context": "parking_lot",
-    "context_tags": ["two_variable", "total_quantity", "per_item_count"],
+    "context_tags": [
+      "two_variable",
+      "total_quantity",
+      "per_item_count"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -321,7 +349,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -333,11 +364,15 @@
       }
     ],
     "content_context": "marbles",
-    "context_tags": ["two_variable", "total_weight", "per_item_weight"],
+    "context_tags": [
+      "two_variable",
+      "total_weight",
+      "per_item_weight"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -356,7 +391,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "interpreting_linear_expressions_and_equations",
     "objective_text": "Interpreting Linear Expressions and Equations",
     "topic_id": "QR.3.3",
@@ -391,7 +428,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -403,11 +443,16 @@
       }
     ],
     "content_context": "retail_inventory",
-    "context_tags": ["two_variable", "multiplicative_relationship", "substitution", "total_quantity"],
+    "context_tags": [
+      "two_variable",
+      "multiplicative_relationship",
+      "substitution",
+      "total_quantity"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -426,7 +471,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "interpreting_linear_expressions_and_equations",
     "objective_text": "Interpreting Linear Expressions and Equations",
     "topic_id": "QR.3.3",
@@ -461,7 +508,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -473,11 +523,16 @@
       }
     ],
     "content_context": "farm_animals",
-    "context_tags": ["two_variable", "additive_relationship", "substitution", "total_quantity"],
+    "context_tags": [
+      "two_variable",
+      "additive_relationship",
+      "substitution",
+      "total_quantity"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -496,7 +551,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "interpreting_linear_expressions_and_equations",
     "objective_text": "Interpreting Linear Expressions and Equations",
     "topic_id": "QR.3.3",
@@ -509,7 +566,7 @@
       "expressing a second quantity in terms of the first using a 'more than' relationship",
       "writing a total-cost expression that keeps a grouped quantity intact under a price"
     ],
-    "question_text": "A school orders calculators at $9 each and rulers at $2 each, ordering 5 more rulers than calculators. If x represents the number of calculators, which expression represents the total cost in dollars?",
+    "question_text": "A school orders calculators at \\$9 each and rulers at \\$2 each, ordering 5 more rulers than calculators. If x represents the number of calculators, which expression represents the total cost in dollars?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "9x + 2x + 5",
@@ -518,12 +575,12 @@
       "D": "9x + 2(x + 5)"
     },
     "correct_answer": "D",
-    "explanation": "There are 5 more rulers than calculators, so the number of rulers is (x + 5). Calculators cost 9x, and rulers cost 2(x + 5) because the $2 price applies to every ruler. The total cost is 9x + 2(x + 5).",
+    "explanation": "There are 5 more rulers than calculators, so the number of rulers is (x + 5). Calculators cost 9x, and rulers cost 2(x + 5) because the \\$2 price applies to every ruler. The total cost is 9x + 2(x + 5).",
     "distractor_logic": {
-      "A": "Student fails to multiply the $2 price across the whole ruler count, writing 2x + 5 instead of 2(x + 5): 9x + 2x + 5.",
+      "A": "Student fails to multiply the \\$2 price across the whole ruler count, writing 2x + 5 instead of 2(x + 5): 9x + 2x + 5.",
       "B": "Student reverses the relationship to 5 fewer rulers than calculators, writing (x - 5): 9x + 2(x - 5).",
       "C": "Student attaches the '5 more' to the calculators instead of the rulers: 9(x + 5) + 2x.",
-      "D": "Correct: rulers number (x + 5) at $2 each and calculators cost 9x, giving 9x + 2(x + 5)."
+      "D": "Correct: rulers number (x + 5) at \\$2 each and calculators cost 9x, giving 9x + 2(x + 5)."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -531,7 +588,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -539,15 +599,20 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try x = 10 calculators, so 15 rulers. Compute the cost, then check which expression matches with the $2 covering all rulers."
+        "hint_text": "Try x = 10 calculators, so 15 rulers. Compute the cost, then check which expression matches with the \\$2 covering all rulers."
       }
     ],
     "content_context": "school_order",
-    "context_tags": ["two_variable", "additive_relationship", "distribution", "total_cost"],
+    "context_tags": [
+      "two_variable",
+      "additive_relationship",
+      "distribution",
+      "total_cost"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -566,7 +631,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "interpreting_linear_expressions_and_equations",
     "objective_text": "Interpreting Linear Expressions and Equations",
     "topic_id": "QR.3.3",
@@ -579,7 +646,7 @@
       "expressing one quantity as a multiple of another and applying separate prices",
       "writing a total-revenue expression after substituting the relationship between quantities"
     ],
-    "question_text": "An event has three times as many students as adults. Adult tickets cost $10 and student tickets cost $6. If a represents the number of adults, which expression represents the total ticket revenue in dollars?",
+    "question_text": "An event has three times as many students as adults. Adult tickets cost \\$10 and student tickets cost \\$6. If a represents the number of adults, which expression represents the total ticket revenue in dollars?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "10a + 6(3a)",
@@ -590,7 +657,7 @@
     "correct_answer": "A",
     "explanation": "There are three times as many students as adults, so the number of students is 3a. Adult revenue is 10a, and student revenue is 6 times the number of students, 6(3a). The total is 10a + 6(3a), which equals 28a.",
     "distractor_logic": {
-      "A": "Correct: students number 3a at $6 each, so 6(3a), plus adult revenue 10a, giving 10a + 6(3a).",
+      "A": "Correct: students number 3a at \\$6 each, so 6(3a), plus adult revenue 10a, giving 10a + 6(3a).",
       "B": "Student treats students and adults as equal in number, dropping the 'three times' factor: 10a + 6a.",
       "C": "Student applies the factor of 3 to the adult price instead of the student count: 30a + 6a.",
       "D": "Student multiplies the wrong group by 3, tripling the adults and leaving students as a single a: 10(3a) + 6a."
@@ -601,7 +668,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -613,11 +683,16 @@
       }
     ],
     "content_context": "event_tickets",
-    "context_tags": ["two_variable", "multiplicative_relationship", "substitution", "total_revenue"],
+    "context_tags": [
+      "two_variable",
+      "multiplicative_relationship",
+      "substitution",
+      "total_revenue"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -636,7 +711,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "interpreting_linear_expressions_and_equations",
     "objective_text": "Interpreting Linear Expressions and Equations",
     "topic_id": "QR.3.3",
@@ -671,7 +748,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -683,11 +763,16 @@
       }
     ],
     "content_context": "rectangular_garden",
-    "context_tags": ["two_variable", "additive_relationship", "perimeter", "substitution"],
+    "context_tags": [
+      "two_variable",
+      "additive_relationship",
+      "perimeter",
+      "substitution"
+    ],
     "estimated_time_seconds": 115,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -706,7 +791,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "interpreting_linear_expressions_and_equations",
     "objective_text": "Interpreting Linear Expressions and Equations",
     "topic_id": "QR.3.3",
@@ -719,7 +806,7 @@
       "setting up a system of two equations modeling a count constraint and a value constraint",
       "distinguishing the total-count equation from the total-value equation"
     ],
-    "question_text": "A bookstore sold novels at $12 each and magazines at $5 each. One Saturday it sold 40 items in total and collected $360 in revenue. If n is the number of novels and m is the number of magazines, which system of equations models this situation?",
+    "question_text": "A bookstore sold novels at \\$12 each and magazines at \\$5 each. One Saturday it sold 40 items in total and collected \\$360 in revenue. If n is the number of novels and m is the number of magazines, which system of equations models this situation?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "n + m = 40 and 5n + 12m = 360",
@@ -728,9 +815,9 @@
       "D": "12n + 5m = 360 and 17(n + m) = 360"
     },
     "correct_answer": "C",
-    "explanation": "The total count gives n + m = 40. The revenue uses each item's price: novels bring 12n and magazines bring 5m, totaling $360, so 12n + 5m = 360. Together these form the correct system.",
+    "explanation": "The total count gives n + m = 40. The revenue uses each item's price: novels bring 12n and magazines bring 5m, totaling \\$360, so 12n + 5m = 360. Together these form the correct system.",
     "distractor_logic": {
-      "A": "Student swaps the two prices in the revenue equation, attaching $5 to novels and $12 to magazines: 5n + 12m = 360.",
+      "A": "Student swaps the two prices in the revenue equation, attaching \\$5 to novels and \\$12 to magazines: 5n + 12m = 360.",
       "B": "Student reuses the total count of 40 as the revenue total, writing 12n + 5m = 40 instead of 360.",
       "C": "Correct: n + m = 40 captures the count and 12n + 5m = 360 captures the revenue using the correct prices.",
       "D": "Student adds the two prices into one rate, writing 17(n + m) = 360, and drops the separate count equation."
@@ -741,7 +828,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -753,11 +843,16 @@
       }
     ],
     "content_context": "bookstore_sales",
-    "context_tags": ["two_variable", "system_of_equations", "count_and_value", "modeling"],
+    "context_tags": [
+      "two_variable",
+      "system_of_equations",
+      "count_and_value",
+      "modeling"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -772,72 +867,82 @@
   {
     "item_id": "QR_A_062",
     "schema_version": "2.0",
-"version": 1,
-"status": "draft",
-"category": "Quantitative Reasoning",
-"primary_strand": "QR",
-"secondary_strands": ["AR"],
-"objective": "interpreting_linear_expressions_and_equations",
-"objective_text": "Interpreting Linear Expressions and Equations",
-"topic_id": "QR.3.3",
-"topic": "creating_a_two_variable_expression_from_a_situation",
-"topic_text": "Creating a Two-Variable Expression from a Situation",
-"proficiency_level": "Advanced",
-"assessment_layer": "CRC",
-"unit": 2,
-"skills_targeted": [
-  "building a linear cost equation from a situation and using it to solve for a quantity",
-  "isolating the variable by reversing the fixed fee before dividing by the rate"
-],
-"question_text": "A gym charges a $20 sign-up fee plus $5 per month. The total cost is modeled by C = 5x + 20, where x is the number of months. If a member has paid $70 in total, how many months have they been a member?",
-"question_format": "multiple_choice",
-"answer_choices": {
-  "A": "14",
-  "B": "18",
-  "C": "6",
-  "D": "10"
-},
-"correct_answer": "D",
-"explanation": "Set the total equal to 70: 5x + 20 = 70. Subtract the fixed fee: 5x = 50. Divide by the monthly rate: x = 10. The member has been enrolled for 10 months.",
-"distractor_logic": {
-  "A": "Student divides the full $70 by the monthly rate without first removing the $20 fee: 70 / 5 = 14.",
-  "B": "Student adds the fee instead of subtracting it before dividing: (70 + 20) / 5 = 18.",
-  "C": "Student subtracts the $20 fee twice before dividing: (70 - 20 - 20) / 5 = 6.",
-  "D": "Correct: 5x + 20 = 70 gives 5x = 50, so x = 10 months."
-},
-"difficulty_level": "Advanced",
-"difficulty_b": null,
-"discrimination_a": null,
-"guessing_c": null,
-"calculator_type": "none",
-"requires_calculator": false,
-"applicable_strategies": ["identify_key_info", "plug_in_values"],
-"strategy_hints": [
-  {
-    "strategy": "identify_key_info",
-    "hint_text": "Set the cost equation equal to the amount paid. Remove the one-time fee before dividing by the monthly rate."
-  },
-  {
-    "strategy": "plug_in_values",
-    "hint_text": "Test a candidate number of months in C = 5x + 20 and see which one produces exactly $70."
-  }
-],
-"content_context": "gym_membership",
-"context_tags": ["two_variable", "linear_equation", "solve_for_unknown", "rate_and_fee"],
-"estimated_time_seconds": 135,
-"contains_image": false,
-"image_url": null,
-"exposure_max": 0.20,
-"times_administered": 0,
-"times_correct": 0,
-"dif_flag": null,
-"fairness_review_status": "pending",
-"fairness_review_date": null,
-"fairness_review_notes": null,
-"author": "jd-oviedo",
-"created_at": "2026-06-22",
-"last_modified": "2026-06-22",
-"review_notes": null
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [
+      "AR"
+    ],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.3",
+    "topic": "creating_a_two_variable_expression_from_a_situation",
+    "topic_text": "Creating a Two-Variable Expression from a Situation",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 2,
+    "skills_targeted": [
+      "building a linear cost equation from a situation and using it to solve for a quantity",
+      "isolating the variable by reversing the fixed fee before dividing by the rate"
+    ],
+    "question_text": "A gym charges a \\$20 sign-up fee plus \\$5 per month. The total cost is modeled by C = 5x + 20, where x is the number of months. If a member has paid \\$70 in total, how many months have they been a member?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "14",
+      "B": "18",
+      "C": "6",
+      "D": "10"
+    },
+    "correct_answer": "D",
+    "explanation": "Set the total equal to 70: 5x + 20 = 70. Subtract the fixed fee: 5x = 50. Divide by the monthly rate: x = 10. The member has been enrolled for 10 months.",
+    "distractor_logic": {
+      "A": "Student divides the full \\$70 by the monthly rate without first removing the \\$20 fee: 70 / 5 = 14.",
+      "B": "Student adds the fee instead of subtracting it before dividing: (70 + 20) / 5 = 18.",
+      "C": "Student subtracts the \\$20 fee twice before dividing: (70 - 20 - 20) / 5 = 6.",
+      "D": "Correct: 5x + 20 = 70 gives 5x = 50, so x = 10 months."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Set the cost equation equal to the amount paid. Remove the one-time fee before dividing by the monthly rate."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test a candidate number of months in C = 5x + 20 and see which one produces exactly \\$70."
+      }
+    ],
+    "content_context": "gym_membership",
+    "context_tags": [
+      "two_variable",
+      "linear_equation",
+      "solve_for_unknown",
+      "rate_and_fee"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-22",
+    "last_modified": "2026-06-22",
+    "review_notes": null
   },
   {
     "item_id": "QR_A_063",
@@ -846,7 +951,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "interpreting_linear_expressions_and_equations",
     "objective_text": "Interpreting Linear Expressions and Equations",
     "topic_id": "QR.3.3",
@@ -881,7 +988,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -893,7 +1003,12 @@
       }
     ],
     "content_context": "vendor_profit",
-    "context_tags": ["two_variable", "linear_equation", "break_even", "solve_for_unknown"],
+    "context_tags": [
+      "two_variable",
+      "linear_equation",
+      "break_even",
+      "solve_for_unknown"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
@@ -916,7 +1031,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "interpreting_linear_expressions_and_equations",
     "objective_text": "Interpreting Linear Expressions and Equations",
     "topic_id": "QR.3.3",
@@ -929,7 +1046,7 @@
       "writing a two-variable cost expression with two separate per-unit rates and a fixed fee",
       "assigning each rate to its correct variable while keeping the fee as a constant"
     ],
-    "question_text": "A contractor charges a $50 flat fee, $30 for each hour of labor, and $0.40 for each square foot of material. If h is the number of labor hours and s is the number of square feet, which expression represents the total charge in dollars?",
+    "question_text": "A contractor charges a \\$50 flat fee, \\$30 for each hour of labor, and \\$0.40 for each square foot of material. If h is the number of labor hours and s is the number of square feet, which expression represents the total charge in dollars?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "30h + 0.40s",
@@ -938,12 +1055,12 @@
       "D": "30h + 40s + 50"
     },
     "correct_answer": "B",
-    "explanation": "Labor depends on hours: 30h. Material depends on square feet: 0.40s. The $50 flat fee is charged once as a constant. The total is 30h + 0.40s + 50.",
+    "explanation": "Labor depends on hours: 30h. Material depends on square feet: 0.40s. The \\$50 flat fee is charged once as a constant. The total is 30h + 0.40s + 50.",
     "distractor_logic": {
-      "A": "Student includes both per-unit rates but omits the $50 flat fee entirely: 30h + 0.40s.",
-      "B": "Correct: 30h for labor, 0.40s for material, plus the one-time $50 fee, giving 30h + 0.40s + 50.",
-      "C": "Student attaches the flat fee to the hours as a rate and strands the $30 as a constant: 50h + 30 + 0.40s.",
-      "D": "Student misreads the material rate as $40 per square foot instead of $0.40: 30h + 40s + 50."
+      "A": "Student includes both per-unit rates but omits the \\$50 flat fee entirely: 30h + 0.40s.",
+      "B": "Correct: 30h for labor, 0.40s for material, plus the one-time \\$50 fee, giving 30h + 0.40s + 50.",
+      "C": "Student attaches the flat fee to the hours as a rate and strands the \\$30 as a constant: 50h + 30 + 0.40s.",
+      "D": "Student misreads the material rate as \\$40 per square foot instead of \\$0.40: 30h + 40s + 50."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -951,7 +1068,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -963,7 +1083,12 @@
       }
     ],
     "content_context": "contractor_billing",
-    "context_tags": ["two_variable", "multiple_rates", "fixed_fee", "total_cost"],
+    "context_tags": [
+      "two_variable",
+      "multiple_rates",
+      "fixed_fee",
+      "total_cost"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
@@ -986,7 +1111,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "interpreting_linear_expressions_and_equations",
     "objective_text": "Interpreting Linear Expressions and Equations",
     "topic_id": "QR.3.3",
@@ -999,7 +1126,7 @@
       "expressing one quantity in terms of another and building a total-value equation",
       "applying separate prices to a grouped quantity to model a revenue total"
     ],
-    "question_text": "A stand sells 20 more hot dogs than pretzels. Hot dogs sell for $4 each and pretzels for $3 each, and total sales are $300. If p represents the number of pretzels, which equation models this situation?",
+    "question_text": "A stand sells 20 more hot dogs than pretzels. Hot dogs sell for \\$4 each and pretzels for \\$3 each, and total sales are \\$300. If p represents the number of pretzels, which equation models this situation?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "4p + 3(p + 20) = 300",
@@ -1008,11 +1135,11 @@
       "D": "4(p - 20) + 3p = 300"
     },
     "correct_answer": "C",
-    "explanation": "There are 20 more hot dogs than pretzels, so hot dogs number (p + 20). Hot dog sales are 4(p + 20) and pretzel sales are 3p. Setting the total to $300 gives 4(p + 20) + 3p = 300.",
+    "explanation": "There are 20 more hot dogs than pretzels, so hot dogs number (p + 20). Hot dog sales are 4(p + 20) and pretzel sales are 3p. Setting the total to \\$300 gives 4(p + 20) + 3p = 300.",
     "distractor_logic": {
       "A": "Student attaches the \"20 more\" to the pretzels instead of the hot dogs, writing 3(p + 20) and 4p.",
-      "B": "Student uses the correct setup on the left but sets it equal to the 20-item difference instead of the $300 total.",
-      "C": "Correct: hot dogs number (p + 20) at $4 and pretzels number p at $3, so 4(p + 20) + 3p = 300.",
+      "B": "Student uses the correct setup on the left but sets it equal to the 20-item difference instead of the \\$300 total.",
+      "C": "Correct: hot dogs number (p + 20) at \\$4 and pretzels number p at \\$3, so 4(p + 20) + 3p = 300.",
       "D": "Student reverses the relationship to 20 fewer hot dogs than pretzels, writing (p - 20)."
     },
     "difficulty_level": "Advanced",
@@ -1021,7 +1148,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -1033,7 +1163,12 @@
       }
     ],
     "content_context": "concession_stand",
-    "context_tags": ["two_variable", "additive_relationship", "total_value", "modeling"],
+    "context_tags": [
+      "two_variable",
+      "additive_relationship",
+      "total_value",
+      "modeling"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,

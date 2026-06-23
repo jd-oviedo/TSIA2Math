@@ -6,7 +6,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.3",
@@ -41,7 +43,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +58,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["inverse_mean", "missing_value", "total_from_mean", "reverse_reasoning"],
+    "context_tags": [
+      "inverse_mean",
+      "missing_value",
+      "total_from_mean",
+      "reverse_reasoning"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -76,7 +86,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.3",
@@ -111,7 +123,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -119,11 +133,16 @@
       }
     ],
     "content_context": "quiz_scores",
-    "context_tags": ["inverse_mean", "missing_value", "five_values", "reverse_reasoning"],
+    "context_tags": [
+      "inverse_mean",
+      "missing_value",
+      "five_values",
+      "reverse_reasoning"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -142,7 +161,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.3",
@@ -177,7 +198,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -189,11 +213,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["inverse_mean", "missing_value", "three_values", "reverse_reasoning"],
+    "context_tags": [
+      "inverse_mean",
+      "missing_value",
+      "three_values",
+      "reverse_reasoning"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -212,7 +241,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.3",
@@ -247,7 +278,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -255,11 +288,16 @@
       }
     ],
     "content_context": "temperatures",
-    "context_tags": ["inverse_mean", "missing_value", "four_values", "temperatures"],
+    "context_tags": [
+      "inverse_mean",
+      "missing_value",
+      "four_values",
+      "temperatures"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -278,7 +316,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.3",
@@ -313,7 +353,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -325,11 +368,16 @@
       }
     ],
     "content_context": "game_points",
-    "context_tags": ["inverse_mean", "missing_value", "four_values", "sports"],
+    "context_tags": [
+      "inverse_mean",
+      "missing_value",
+      "four_values",
+      "sports"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -348,7 +396,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.3",
@@ -383,7 +433,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -395,11 +448,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["inverse_range", "missing_maximum", "range_reasoning", "reverse_reasoning"],
+    "context_tags": [
+      "inverse_range",
+      "missing_maximum",
+      "range_reasoning",
+      "reverse_reasoning"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -418,7 +476,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.3",
@@ -453,7 +513,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -461,11 +523,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["inverse_mean", "missing_value", "six_values", "reverse_reasoning"],
+    "context_tags": [
+      "inverse_mean",
+      "missing_value",
+      "six_values",
+      "reverse_reasoning"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -484,7 +551,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.3",
@@ -519,7 +588,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -531,11 +603,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["inverse_range", "missing_minimum", "range_reasoning", "reverse_reasoning"],
+    "context_tags": [
+      "inverse_range",
+      "missing_minimum",
+      "range_reasoning",
+      "reverse_reasoning"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -554,7 +631,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.3",
@@ -567,21 +646,21 @@
       "recovering a five-day total from a daily mean",
       "finding one missing day's value"
     ],
-    "question_text": "Over 5 days, a store's mean daily sales were $340. Sales for four of the days were $310, $385, $290, and $360. What were the sales on the fifth day?",
+    "question_text": "Over 5 days, a store's mean daily sales were \\$340. Sales for four of the days were \\$310, \\$385, \\$290, and \\$360. What were the sales on the fifth day?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$269",
-      "B": "$336.25",
-      "C": "$340",
-      "D": "$355"
+      "A": "\\$269",
+      "B": "\\$336.25",
+      "C": "\\$340",
+      "D": "\\$355"
     },
     "correct_answer": "D",
-    "explanation": "Five days averaging $340 total 5 times 340 = $1,700. The four known days add to 310 + 385 + 290 + 360 = $1,345, so the fifth day is 1700 - 1345 = $355.",
+    "explanation": "Five days averaging \\$340 total 5 times 340 = \\$1,700. The four known days add to 310 + 385 + 290 + 360 = \\$1,345, so the fifth day is 1700 - 1345 = \\$355.",
     "distractor_logic": {
-      "A": "Student divides the four-day total by 5 ($1,345 / 5 = $269) as if no day were missing.",
-      "B": "Student averages the four known days, $1,345 / 4 = $336.25, instead of solving for the fifth.",
-      "C": "Student assumes the fifth day equals the mean, $340.",
-      "D": "Correct: total = 5 times 340 = $1,700; 1700 - 1345 = $355."
+      "A": "Student divides the four-day total by 5 (\\$1,345 / 5 = \\$269) as if no day were missing.",
+      "B": "Student averages the four known days, \\$1,345 / 4 = \\$336.25, instead of solving for the fifth.",
+      "C": "Student assumes the fifth day equals the mean, \\$340.",
+      "D": "Correct: total = 5 times 340 = \\$1,700; 1700 - 1345 = \\$355."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -589,19 +668,26 @@
     "guessing_c": null,
     "calculator_type": "basic",
     "requires_calculator": true,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Five days at $340 each averages to a $1,700 total. Subtract the four known days to find the fifth."
+        "hint_text": "Five days at \\$340 each averages to a \\$1,700 total. Subtract the four known days to find the fifth."
       }
     ],
     "content_context": "store_sales",
-    "context_tags": ["inverse_mean", "missing_value", "five_values", "sales"],
+    "context_tags": [
+      "inverse_mean",
+      "missing_value",
+      "five_values",
+      "sales"
+    ],
     "estimated_time_seconds": 115,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -620,7 +706,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.3",
@@ -655,7 +743,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -667,11 +758,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["inverse_range", "missing_maximum", "range_reasoning", "reverse_reasoning"],
+    "context_tags": [
+      "inverse_range",
+      "missing_maximum",
+      "range_reasoning",
+      "reverse_reasoning"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -690,7 +786,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.3",
@@ -725,7 +823,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -737,11 +838,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["inverse_mean", "inverse_range", "two_missing_values", "two_condition"],
+    "context_tags": [
+      "inverse_mean",
+      "inverse_range",
+      "two_missing_values",
+      "two_condition"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -760,7 +866,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.3",
@@ -795,7 +903,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -807,11 +918,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["inverse_range", "possible_values", "maximum_value", "two_solutions"],
+    "context_tags": [
+      "inverse_range",
+      "possible_values",
+      "maximum_value",
+      "two_solutions"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -830,7 +946,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.3",
@@ -865,7 +983,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -877,11 +998,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["inverse_mean", "inverse_range", "two_missing_values", "system_of_conditions"],
+    "context_tags": [
+      "inverse_mean",
+      "inverse_range",
+      "two_missing_values",
+      "system_of_conditions"
+    ],
     "estimated_time_seconds": 150,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -900,7 +1026,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.3",
@@ -935,7 +1063,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -947,11 +1078,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["inverse_mean", "possible_values", "minimum_value", "constraint_reasoning"],
+    "context_tags": [
+      "inverse_mean",
+      "possible_values",
+      "minimum_value",
+      "constraint_reasoning"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -970,7 +1106,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.3",
@@ -1005,7 +1143,10 @@
     "guessing_c": null,
     "calculator_type": "basic",
     "requires_calculator": true,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -1017,11 +1158,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["inverse_range", "missing_value", "multi_step", "mean_after_recovery"],
+    "context_tags": [
+      "inverse_range",
+      "missing_value",
+      "multi_step",
+      "mean_after_recovery"
+    ],
     "estimated_time_seconds": 150,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

@@ -404,21 +404,21 @@
       "rounding a decimal price to the nearest cent",
       "applying hundredths-place rounding in a financial context"
     ],
-    "question_text": "A store's pricing system calculates an item's cost as $7.956. What is the price rounded to the nearest cent?",
+    "question_text": "A store's pricing system calculates an item's cost as \\$7.956. What is the price rounded to the nearest cent?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$7.95",
-      "B": "$7.957",
-      "C": "$7.96",
-      "D": "$8.00"
+      "A": "\\$7.95",
+      "B": "\\$7.957",
+      "C": "\\$7.96",
+      "D": "\\$8.00"
     },
     "correct_answer": "C",
-    "explanation": "One cent equals one hundredth of a dollar, so round to the nearest hundredth. The thousandths digit is 6 ≥ 5, so round up: the hundredths digit increases from 5 to 6, giving $7.96.",
+    "explanation": "One cent equals one hundredth of a dollar, so round to the nearest hundredth. The thousandths digit is 6 ≥ 5, so round up: the hundredths digit increases from 5 to 6, giving \\$7.96.",
     "distractor_logic": {
-      "A": "Student rounds down despite the thousandths digit being 6 ≥ 5, keeping the hundredths digit at 5 and producing $7.95.",
-      "B": "Student misunderstands rounding as 'increment the rightmost digit': bumps the 6 in the thousandths place to 7 while keeping three decimal places, giving $7.957 instead of trimming to two places.",
-      "C": "Correct: thousandths digit = 6 ≥ 5, so round up — $7.956 → $7.96.",
-      "D": "Student rounds to the nearest dollar rather than the nearest cent (hundredth), giving $8.00."
+      "A": "Student rounds down despite the thousandths digit being 6 ≥ 5, keeping the hundredths digit at 5 and producing \\$7.95.",
+      "B": "Student misunderstands rounding as 'increment the rightmost digit': bumps the 6 in the thousandths place to 7 while keeping three decimal places, giving \\$7.957 instead of trimming to two places.",
+      "C": "Correct: thousandths digit = 6 ≥ 5, so round up — \\$7.956 → \\$7.96.",
+      "D": "Student rounds to the nearest dollar rather than the nearest cent (hundredth), giving \\$8.00."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -437,7 +437,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "$7.957 adds a digit instead of rounding — eliminate it immediately."
+        "hint_text": "\\$7.957 adds a digit instead of rounding — eliminate it immediately."
       }
     ],
     "content_context": "shopping_retail",

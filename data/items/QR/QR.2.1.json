@@ -28,12 +28,12 @@
       "D": "144"
     },
     "correct_answer": "C",
-    "explanation": "The ratio 3:5 means 3 red for every 5 blue, so the whole is 3 + 5 = 8 parts. Red = 3/8 of 240 = (3 \u00d7 240) \u00f7 8 = 720 \u00f7 8 = 90.",
+    "explanation": "The ratio 3:5 means 3 red for every 5 blue, so the whole is 3 + 5 = 8 parts. Red = 3/8 of 240 = (3 × 240) ÷ 8 = 720 ÷ 8 = 90.",
     "distractor_logic": {
-      "A": "Student identifies the blue part (5 out of 8) instead of the red part, computing 5/8 \u00d7 240 = 150.",
-      "B": "Student multiplies the two ratio numbers together (3 \u00d7 5 = 15) rather than using the ratio to partition the total.",
-      "C": "Correct: 3 out of 3 + 5 = 8 total parts, so red = 3/8 \u00d7 240 = 90.",
-      "D": "Student treats the ratio 3:5 as the fraction 3/5 and computes 3/5 \u00d7 240 = 144, omitting the correct denominator of 8."
+      "A": "Student identifies the blue part (5 out of 8) instead of the red part, computing 5/8 × 240 = 150.",
+      "B": "Student multiplies the two ratio numbers together (3 × 5 = 15) rather than using the ratio to partition the total.",
+      "C": "Correct: 3 out of 3 + 5 = 8 total parts, so red = 3/8 × 240 = 90.",
+      "D": "Student treats the ratio 3:5 as the fraction 3/5 and computes 3/5 × 240 = 144, omitting the correct denominator of 8."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -52,7 +52,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Find how many marbles each part is worth: 240 \u00f7 8 = 30. Then 3 parts \u00d7 30 = 90."
+        "hint_text": "Find how many marbles each part is worth: 240 ÷ 8 = 30. Then 3 parts × 30 = 90."
       }
     ],
     "content_context": "generic",
@@ -106,12 +106,12 @@
       "D": "4"
     },
     "correct_answer": "A",
-    "explanation": "The ratio chairs:tables = 2:3. Since there are 12 chairs and 2 parts = 12, one part = 12 \u00f7 2 = 6. Tables = 3 parts = 3 \u00d7 6 = 18.",
+    "explanation": "The ratio chairs:tables = 2:3. Since there are 12 chairs and 2 parts = 12, one part = 12 ÷ 2 = 6. Tables = 3 parts = 3 × 6 = 18.",
     "distractor_logic": {
-      "A": "Correct: 1 ratio unit = 12 \u00f7 2 = 6, so tables = 3 \u00d7 6 = 18.",
-      "B": "Student multiplies the given quantity (12) by the second ratio number (3) directly, giving 12 \u00d7 3 = 36, without first finding the unit value.",
+      "A": "Correct: 1 ratio unit = 12 ÷ 2 = 6, so tables = 3 × 6 = 18.",
+      "B": "Student multiplies the given quantity (12) by the second ratio number (3) directly, giving 12 × 3 = 36, without first finding the unit value.",
       "C": "Student adds the second ratio number to the known quantity (12 + 3 = 15) instead of scaling by ratio units.",
-      "D": "Student divides the known quantity by the wrong ratio number (12 \u00f7 3 = 4) instead of dividing by the chairs ratio (2)."
+      "D": "Student divides the known quantity by the wrong ratio number (12 ÷ 3 = 4) instead of dividing by the chairs ratio (2)."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -130,7 +130,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "1 unit = 12 \u00f7 2 = 6. Tables = 3 units = 3 \u00d7 6."
+        "hint_text": "1 unit = 12 ÷ 2 = 6. Tables = 3 units = 3 × 6."
       }
     ],
     "content_context": "classroom",
@@ -184,12 +184,12 @@
       "D": "25"
     },
     "correct_answer": "D",
-    "explanation": "Total parts = 4 + 5 = 9. Each part = 45 \u00f7 9 = 5. Girls = 5 parts \u00d7 5 = 25.",
+    "explanation": "Total parts = 4 + 5 = 9. Each part = 45 ÷ 9 = 5. Girls = 5 parts × 5 = 25.",
     "distractor_logic": {
-      "A": "Student correctly computes the unit value and scales correctly but selects boys (4 \u00d7 5 = 20) instead of girls.",
+      "A": "Student correctly computes the unit value and scales correctly but selects boys (4 × 5 = 20) instead of girls.",
       "B": "Student reports the total number of students (45) rather than partitioning it by the ratio.",
-      "C": "Student finds the unit value (45 \u00f7 9 = 5) but stops there instead of multiplying by the girls ratio number (5).",
-      "D": "Correct: 45 \u00f7 9 = 5 per part; girls = 5 \u00d7 5 = 25."
+      "C": "Student finds the unit value (45 ÷ 9 = 5) but stops there instead of multiplying by the girls ratio number (5).",
+      "D": "Correct: 45 ÷ 9 = 5 per part; girls = 5 × 5 = 25."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -208,7 +208,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Each part = 45 \u00f7 9 = 5. Girls get 5 parts: 5 \u00d7 5 = 25."
+        "hint_text": "Each part = 45 ÷ 9 = 5. Girls get 5 parts: 5 × 5 = 25."
       }
     ],
     "content_context": "school_club",
@@ -262,12 +262,12 @@
       "D": "4"
     },
     "correct_answer": "B",
-    "explanation": "Flour is 2 ratio parts and 8 cups, so the scale factor is 8 \u00f7 2 = 4. Sugar = 3 parts \u00d7 4 = 12 cups.",
+    "explanation": "Flour is 2 ratio parts and 8 cups, so the scale factor is 8 ÷ 2 = 4. Sugar = 3 parts × 4 = 12 cups.",
     "distractor_logic": {
-      "A": "Student subtracts the original flour amount from the new flour amount (8 \u2212 2 = 6) and reports that difference as the cups of sugar needed, confusing the increase in flour with the quantity of sugar required.",
-      "B": "Correct: scale factor = 8 \u00f7 2 = 4; sugar = 3 \u00d7 4 = 12 cups.",
-      "C": "Student multiplies both ratio numbers by the known quantity (3 \u00d7 8 = 24) without first finding the unit scale factor.",
-      "D": "Student finds the scale factor (8 \u00f7 2 = 4) but reports it as the answer instead of applying it to the sugar ratio number."
+      "A": "Student subtracts the original flour amount from the new flour amount (8 − 2 = 6) and reports that difference as the cups of sugar needed, confusing the increase in flour with the quantity of sugar required.",
+      "B": "Correct: scale factor = 8 ÷ 2 = 4; sugar = 3 × 4 = 12 cups.",
+      "C": "Student multiplies both ratio numbers by the known quantity (3 × 8 = 24) without first finding the unit scale factor.",
+      "D": "Student finds the scale factor (8 ÷ 2 = 4) but reports it as the answer instead of applying it to the sugar ratio number."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -286,7 +286,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Scale factor = 8 \u00f7 2 = 4. Apply to sugar: 3 \u00d7 4 = 12."
+        "hint_text": "Scale factor = 8 ÷ 2 = 4. Apply to sugar: 3 × 4 = 12."
       }
     ],
     "content_context": "cooking",
@@ -340,12 +340,12 @@
       "D": "8"
     },
     "correct_answer": "C",
-    "explanation": "Total parts = 1 + 4 = 5. Each part = 20 \u00f7 5 = 4 liters. Red = 1 part \u00d7 4 = 4 liters.",
+    "explanation": "Total parts = 1 + 4 = 5. Each part = 20 ÷ 5 = 4 liters. Red = 1 part × 4 = 4 liters.",
     "distractor_logic": {
-      "A": "Student correctly finds 1 part = 4 liters but scales by 4 instead of 1, computing white paint (4 \u00d7 4 = 16) rather than red.",
+      "A": "Student correctly finds 1 part = 4 liters but scales by 4 instead of 1, computing white paint (4 × 4 = 16) rather than red.",
       "B": "Student counts the total number of ratio parts (1 + 4 = 5) and reports that as the answer in liters instead of using it as a divisor.",
-      "C": "Correct: 20 \u00f7 5 = 4 liters per part; red = 1 \u00d7 4 = 4 liters.",
-      "D": "Student correctly finds the unit value (20 \u00f7 5 = 4 liters per part) but then multiplies by 2 instead of 1, using the white paint ratio number rather than the red paint ratio number (4 \u00d7 2 = 8 liters)."
+      "C": "Correct: 20 ÷ 5 = 4 liters per part; red = 1 × 4 = 4 liters.",
+      "D": "Student correctly finds the unit value (20 ÷ 5 = 4 liters per part) but then multiplies by 2 instead of 1, using the white paint ratio number rather than the red paint ratio number (4 × 2 = 8 liters)."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -364,7 +364,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Each part = 20 \u00f7 5 = 4 liters. Red is 1 part, so 1 \u00d7 4 = 4 liters."
+        "hint_text": "Each part = 20 ÷ 5 = 4 liters. Red is 1 part, so 1 × 4 = 4 liters."
       }
     ],
     "content_context": "art_and_crafts",
@@ -418,11 +418,11 @@
       "D": "104"
     },
     "correct_answer": "A",
-    "explanation": "Dogs = 5 ratio units = 40, so 1 unit = 40 \u00f7 5 = 8. Cats = 8 units \u00d7 8 = 64. Difference = 64 \u2212 40 = 24.",
+    "explanation": "Dogs = 5 ratio units = 40, so 1 unit = 40 ÷ 5 = 8. Cats = 8 units × 8 = 64. Difference = 64 − 40 = 24.",
     "distractor_logic": {
-      "A": "Correct: 1 unit = 8; cats = 64; 64 \u2212 40 = 24 more cats than dogs.",
+      "A": "Correct: 1 unit = 8; cats = 64; 64 − 40 = 24 more cats than dogs.",
       "B": "Student correctly finds the number of cats (64) but does not subtract to find the difference, reporting cats as the final answer.",
-      "C": "Student finds the unit value (40 \u00f7 5 = 8) and stops, not applying it to find cats or the difference.",
+      "C": "Student finds the unit value (40 ÷ 5 = 8) and stops, not applying it to find cats or the difference.",
       "D": "Student adds dogs and cats (40 + 64 = 104) rather than subtracting to find the difference."
     },
     "difficulty_level": "Proficient",
@@ -442,7 +442,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "1 unit = 40 \u00f7 5 = 8. Cats = 8 \u00d7 8 = 64. Difference = 64 \u2212 40."
+        "hint_text": "1 unit = 40 ÷ 5 = 8. Cats = 8 × 8 = 64. Difference = 64 − 40."
       }
     ],
     "content_context": "animal_shelter",
@@ -496,12 +496,12 @@
       "D": "10"
     },
     "correct_answer": "D",
-    "explanation": "Total parts = 3 + 1 + 2 = 6. Each part = 60 \u00f7 6 = 10 beads. Yellow = 1 part \u00d7 10 = 10 beads.",
+    "explanation": "Total parts = 3 + 1 + 2 = 6. Each part = 60 ÷ 6 = 10 beads. Yellow = 1 part × 10 = 10 beads.",
     "distractor_logic": {
-      "A": "Student correctly computes the unit value (10) but scales by the green ratio number (3 \u00d7 10 = 30), selecting green instead of yellow.",
-      "B": "Student correctly computes the unit value (10) but scales by the red ratio number (2 \u00d7 10 = 20), selecting red instead of yellow.",
+      "A": "Student correctly computes the unit value (10) but scales by the green ratio number (3 × 10 = 30), selecting green instead of yellow.",
+      "B": "Student correctly computes the unit value (10) but scales by the red ratio number (2 × 10 = 20), selecting red instead of yellow.",
       "C": "Student sums the ratio parts (3 + 1 + 2 = 6) and reports that as the answer instead of using it to find the unit value.",
-      "D": "Correct: total parts = 6; each part = 10; yellow = 1 \u00d7 10 = 10 beads."
+      "D": "Correct: total parts = 6; each part = 10; yellow = 1 × 10 = 10 beads."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -520,7 +520,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "1 part = 60 \u00f7 6 = 10 beads. Yellow = 1 \u00d7 10 = 10."
+        "hint_text": "1 part = 60 ÷ 6 = 10 beads. Yellow = 1 × 10 = 10."
       }
     ],
     "content_context": "crafts",
@@ -574,12 +574,12 @@
       "D": "4.7 cm"
     },
     "correct_answer": "A",
-    "explanation": "Step 1 \u2014 Map distance for first pair: 315 km \u00f7 45 km/cm = 7 cm. Step 2 \u2014 The second pair is 1.5\u00d7 farther: 7 cm \u00d7 1.5 = 10.5 cm.",
+    "explanation": "Step 1 — Map distance for first pair: 315 km ÷ 45 km/cm = 7 cm. Step 2 — The second pair is 1.5× farther: 7 cm × 1.5 = 10.5 cm.",
     "distractor_logic": {
-      "A": "Correct: 315 \u00f7 45 = 7 cm; 7 \u00d7 1.5 = 10.5 cm.",
-      "B": "Student correctly converts the first pair\u2019s real distance to the map (315 \u00f7 45 = 7 cm) but stops there, forgetting to apply the 1.5\u00d7 factor for the second pair.",
-      "C": "Student multiplies the real-world distance by the scale factor instead of dividing (315 \u00d7 1.5 = 472.5), treating the answer as a distance in km rather than converting to cm.",
-      "D": "Student correctly finds 7 cm but divides by 1.5 instead of multiplying (7 \u00f7 1.5 \u2248 4.67 cm), inverting the scale-up factor."
+      "A": "Correct: 315 ÷ 45 = 7 cm; 7 × 1.5 = 10.5 cm.",
+      "B": "Student correctly converts the first pair’s real distance to the map (315 ÷ 45 = 7 cm) but stops there, forgetting to apply the 1.5× factor for the second pair.",
+      "C": "Student multiplies the real-world distance by the scale factor instead of dividing (315 × 1.5 = 472.5), treating the answer as a distance in km rather than converting to cm.",
+      "D": "Student correctly finds 7 cm but divides by 1.5 instead of multiplying (7 ÷ 1.5 ≈ 4.67 cm), inverting the scale-up factor."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -598,7 +598,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "315 \u00f7 45 = 7 cm for the first pair. Second pair: 7 \u00d7 1.5 = 10.5 cm."
+        "hint_text": "315 ÷ 45 = 7 cm for the first pair. Second pair: 7 × 1.5 = 10.5 cm."
       }
     ],
     "content_context": "map_and_navigation",
@@ -643,7 +643,7 @@
       "partitioning a blend by ratio and applying different unit costs to find a blended cost per liter",
       "using a blended unit cost to determine the maximum whole-unit quantity purchasable within a budget"
     ],
-    "question_text": "A fruit punch is made by mixing Juice A and Juice B in a ratio of 3:7 by volume. Juice A costs $4 per liter and Juice B costs $2 per liter. What is the maximum number of full liters of this punch a customer can purchase for $70?",
+    "question_text": "A fruit punch is made by mixing Juice A and Juice B in a ratio of 3:7 by volume. Juice A costs \\$4 per liter and Juice B costs \\$2 per liter. What is the maximum number of full liters of this punch a customer can purchase for \\$70?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "35 liters",
@@ -652,12 +652,12 @@
       "D": "26 liters"
     },
     "correct_answer": "D",
-    "explanation": "Per 10 liters of blend: Juice A = 3 L \u00d7 $4 = $12; Juice B = 7 L \u00d7 $2 = $14; total = $26. Cost per liter of blend = $26 \u00f7 10 = $2.60. Maximum full liters for $70: \u230970 \u00f7 2.60\u230b = \u230926.923\u2026\u230b = 26 liters.",
+    "explanation": "Per 10 liters of blend: Juice A = 3 L × \\$4 = \\$12; Juice B = 7 L × \\$2 = \\$14; total = \\$26. Cost per liter of blend = \\$26 ÷ 10 = \\$2.60. Maximum full liters for \\$70: ⌉70 ÷ 2.60⌋ = ⌉26.923…⌋ = 26 liters.",
     "distractor_logic": {
-      "A": "Student divides the budget by Juice B\u2019s unit price alone ($70 \u00f7 $2 = 35 liters), ignoring that the blend also contains the more expensive Juice A.",
-      "B": "Student divides the budget by Juice A\u2019s unit price ($70 \u00f7 $4 = 17.5 \u2192 17 liters), applying the most expensive component\u2019s price to the entire blend.",
-      "C": "Student correctly computes the blended cost per liter ($2.60) and divides the budget ($70 \u00f7 $2.60 \u2248 26.9) but rounds up to 27 instead of taking the floor, purchasing more than $70 allows.",
-      "D": "Correct: blended cost = $2.60/L; $70 \u00f7 $2.60 = 26.9\u2026 \u2192 floor = 26 liters."
+      "A": "Student divides the budget by Juice B’s unit price alone (\\$70 ÷ \\$2 = 35 liters), ignoring that the blend also contains the more expensive Juice A.",
+      "B": "Student divides the budget by Juice A’s unit price (\\$70 ÷ \\$4 = 17.5 → 17 liters), applying the most expensive component’s price to the entire blend.",
+      "C": "Student correctly computes the blended cost per liter (\\$2.60) and divides the budget (\\$70 ÷ \\$2.60 ≈ 26.9) but rounds up to 27 instead of taking the floor, purchasing more than \\$70 allows.",
+      "D": "Correct: blended cost = \\$2.60/L; \\$70 ÷ \\$2.60 = 26.9… → floor = 26 liters."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -677,11 +677,11 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Cost per 10 L: 3\u00d7$4 + 7\u00d7$2 = $26. Cost per liter = $2.60. Max liters = \u230970 \u00f7 2.60\u230b = 26."
+        "hint_text": "Cost per 10 L: 3×\\$4 + 7×\\$2 = \\$26. Cost per liter = \\$2.60. Max liters = ⌉70 ÷ 2.60⌋ = 26."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "The blend is mostly cheap Juice B but has some expensive A. Cost/L is between $2 and $4 \u2014 closer to $2.60. $70 \u00f7 $2.60 \u2248 27, but you can\u2019t exceed $70, so round down."
+        "hint_text": "The blend is mostly cheap Juice B but has some expensive A. Cost/L is between \\$2 and \\$4 — closer to \\$2.60. \\$70 ÷ \\$2.60 ≈ 27, but you can’t exceed \\$70, so round down."
       }
     ],
     "content_context": "food_and_beverage",
@@ -735,7 +735,7 @@
       "D": "1/5"
     },
     "correct_answer": "A",
-    "explanation": "Alloy X: copper fraction = 3/5, so copper from X = 3/5 \u00d7 100 = 60 g. Alloy Y: copper fraction = 1/5, so copper from Y = 1/5 \u00d7 150 = 30 g. Total copper = 90 g; total mixture = 100 + 150 = 250 g. Fraction copper = 90/250 = 9/25.",
+    "explanation": "Alloy X: copper fraction = 3/5, so copper from X = 3/5 × 100 = 60 g. Alloy Y: copper fraction = 1/5, so copper from Y = 1/5 × 150 = 30 g. Total copper = 90 g; total mixture = 100 + 150 = 250 g. Fraction copper = 90/250 = 9/25.",
     "distractor_logic": {
       "A": "Correct: copper from X = 60 g, from Y = 30 g; total = 90/250 = 9/25.",
       "B": "Student uses 100 g for both alloys (ignoring the actual 150 g of Alloy Y), giving (60 + 20)/(100 + 100) = 80/200 = 2/5.",
@@ -756,11 +756,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Convert each ratio to a fraction of copper first: 3:2 \u2192 3/5, and 1:4 \u2192 1/5. The two alloys have different masses."
+        "hint_text": "Convert each ratio to a fraction of copper first: 3:2 → 3/5, and 1:4 → 1/5. The two alloys have different masses."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Copper from X = 3/5 \u00d7 100 = 60 g. Copper from Y = 1/5 \u00d7 150 = 30 g. Total mixture = 250 g."
+        "hint_text": "Copper from X = 3/5 × 100 = 60 g. Copper from Y = 1/5 × 150 = 30 g. Total mixture = 250 g."
       },
       {
         "strategy": "estimate_first",

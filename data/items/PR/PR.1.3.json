@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "school",
-    "context_tags": ["bar_graph", "direct_reading", "single_value", "club_enrollment"],
+    "context_tags": [
+      "bar_graph",
+      "direct_reading",
+      "single_value",
+      "club_enrollment"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -111,7 +119,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -123,11 +134,16 @@
       }
     ],
     "content_context": "food_service",
-    "context_tags": ["pictograph", "key_value", "multiplication", "direct_reading"],
+    "context_tags": [
+      "pictograph",
+      "key_value",
+      "multiplication",
+      "direct_reading"
+    ],
     "estimated_time_seconds": 65,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -181,7 +197,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -193,11 +212,16 @@
       }
     ],
     "content_context": "classroom",
-    "context_tags": ["line_graph", "direct_reading", "quiz_scores", "single_value"],
+    "context_tags": [
+      "line_graph",
+      "direct_reading",
+      "quiz_scores",
+      "single_value"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -251,7 +275,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -263,11 +290,16 @@
       }
     ],
     "content_context": "weather",
-    "context_tags": ["bar_graph", "maximum_value", "comparison", "rainfall"],
+    "context_tags": [
+      "bar_graph",
+      "maximum_value",
+      "comparison",
+      "rainfall"
+    ],
     "estimated_time_seconds": 65,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -321,7 +353,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -333,11 +368,16 @@
       }
     ],
     "content_context": "school",
-    "context_tags": ["pictograph", "key_value", "multiplication", "reading_comprehension"],
+    "context_tags": [
+      "pictograph",
+      "key_value",
+      "multiplication",
+      "reading_comprehension"
+    ],
     "estimated_time_seconds": 65,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -391,7 +431,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -403,11 +446,16 @@
       }
     ],
     "content_context": "business",
-    "context_tags": ["bar_graph", "difference", "comparison", "monthly_sales"],
+    "context_tags": [
+      "bar_graph",
+      "difference",
+      "comparison",
+      "monthly_sales"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -461,7 +509,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -473,11 +524,16 @@
       }
     ],
     "content_context": "weather",
-    "context_tags": ["line_graph", "sum", "two_values", "temperature"],
+    "context_tags": [
+      "line_graph",
+      "sum",
+      "two_values",
+      "temperature"
+    ],
     "estimated_time_seconds": 95,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -531,7 +587,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -543,11 +602,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["bar_graph", "ranking", "second_highest", "comparison"],
+    "context_tags": [
+      "bar_graph",
+      "ranking",
+      "second_highest",
+      "comparison"
+    ],
     "estimated_time_seconds": 95,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -601,7 +665,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -613,11 +680,16 @@
       }
     ],
     "content_context": "health_fitness",
-    "context_tags": ["pictograph", "key_value", "difference", "two_rows"],
+    "context_tags": [
+      "pictograph",
+      "key_value",
+      "difference",
+      "two_rows"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -649,7 +721,7 @@
       "identifying a decrease between consecutive data points on a described line graph",
       "comparing each consecutive pair of values to determine direction of change"
     ],
-    "question_text": "A line graph shows a store's daily revenue for five days. The plotted values are: Monday = $200, Tuesday = $350, Wednesday = $300, Thursday = $250, Friday = $400. On which day did revenue decrease compared to the previous day?",
+    "question_text": "A line graph shows a store's daily revenue for five days. The plotted values are: Monday = \\$200, Tuesday = \\$350, Wednesday = \\$300, Thursday = \\$250, Friday = \\$400. On which day did revenue decrease compared to the previous day?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Tuesday",
@@ -658,11 +730,11 @@
       "D": "Monday"
     },
     "correct_answer": "B",
-    "explanation": "Compare each consecutive pair:\nMon → Tue: $200 → $350 — increase\nTue → Wed: $350 → $300 — decrease ✓\nWed → Thu: $300 → $250 — also a decrease\nThu → Fri: $250 → $400 — increase\n\nWednesday is the first day listed among the answer choices where revenue fell compared to the prior day ($350 → $300).\n\nNote: Thursday also decreased, but it is not offered as an answer choice.",
+    "explanation": "Compare each consecutive pair:\nMon → Tue: \\$200 → \\$350 — increase\nTue → Wed: \\$350 → \\$300 — decrease ✓\nWed → Thu: \\$300 → \\$250 — also a decrease\nThu → Fri: \\$250 → \\$400 — increase\n\nWednesday is the first day listed among the answer choices where revenue fell compared to the prior day (\\$350 → \\$300).\n\nNote: Thursday also decreased, but it is not offered as an answer choice.",
     "distractor_logic": {
-      "A": "Student selects Tuesday, but Tuesday's revenue ($350) was higher than Monday's ($200) — that is an increase, not a decrease.",
-      "B": "Correct: Wednesday's revenue ($300) was lower than Tuesday's ($350), confirming a decrease.",
-      "C": "Student selects Friday, but Friday's revenue ($400) was higher than Thursday's ($250) — that is an increase.",
+      "A": "Student selects Tuesday, but Tuesday's revenue (\\$350) was higher than Monday's (\\$200) — that is an increase, not a decrease.",
+      "B": "Correct: Wednesday's revenue (\\$300) was lower than Tuesday's (\\$350), confirming a decrease.",
+      "C": "Student selects Friday, but Friday's revenue (\\$400) was higher than Thursday's (\\$250) — that is an increase.",
       "D": "Student selects Monday, but Monday has no previous day to compare against in this dataset."
     },
     "difficulty_level": "Proficient",
@@ -671,7 +743,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -679,15 +754,20 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Monday has no previous day in this dataset, so it cannot show a decrease. Tuesday's value ($350) is higher than Monday's ($200), so that is an increase. Eliminate both."
+        "hint_text": "Monday has no previous day in this dataset, so it cannot show a decrease. Tuesday's value (\\$350) is higher than Monday's (\\$200), so that is an increase. Eliminate both."
       }
     ],
     "content_context": "business",
-    "context_tags": ["line_graph", "decrease", "consecutive_comparison", "revenue"],
+    "context_tags": [
+      "line_graph",
+      "decrease",
+      "consecutive_comparison",
+      "revenue"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -741,7 +821,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -753,11 +836,16 @@
       }
     ],
     "content_context": "weather",
-    "context_tags": ["line_graph", "rate_of_change", "consistency_claim", "temperature_trend"],
+    "context_tags": [
+      "line_graph",
+      "rate_of_change",
+      "consistency_claim",
+      "temperature_trend"
+    ],
     "estimated_time_seconds": 130,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -811,7 +899,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -823,11 +914,16 @@
       }
     ],
     "content_context": "business",
-    "context_tags": ["bar_graph", "consecutive_pairs", "maximum_window", "claim_evaluation"],
+    "context_tags": [
+      "bar_graph",
+      "consecutive_pairs",
+      "maximum_window",
+      "claim_evaluation"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -859,21 +955,21 @@
       "scanning all consecutive intervals on a described line graph to locate the single interval where values decreased",
       "computing the magnitude of a decrease and distinguishing it from increases in adjacent intervals"
     ],
-    "question_text": "A line graph tracks a student's monthly savings over six months: January = $50, February = $80, March = $110, April = $90, May = $130, June = $160. Between which two consecutive months did savings decrease, and by how much?",
+    "question_text": "A line graph tracks a student's monthly savings over six months: January = \\$50, February = \\$80, March = \\$110, April = \\$90, May = \\$130, June = \\$160. Between which two consecutive months did savings decrease, and by how much?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "Between January and February, savings decreased by $30.",
-      "B": "Between March and April, savings decreased by $20.",
-      "C": "Between April and May, savings decreased by $40.",
-      "D": "Between May and June, savings decreased by $30."
+      "A": "Between January and February, savings decreased by \\$30.",
+      "B": "Between March and April, savings decreased by \\$20.",
+      "C": "Between April and May, savings decreased by \\$40.",
+      "D": "Between May and June, savings decreased by \\$30."
     },
     "correct_answer": "B",
-    "explanation": "Compute each month-to-month change:\nJan → Feb: $80 − $50 = +$30 (increase)\nFeb → Mar: $110 − $80 = +$30 (increase)\nMar → Apr: $90 − $110 = −$20 (decrease) ✓\nApr → May: $130 − $90 = +$40 (increase)\nMay → Jun: $160 − $130 = +$30 (increase)\n\nSavings decreased only between March and April, falling by $20.",
+    "explanation": "Compute each month-to-month change:\nJan → Feb: \\$80 − \\$50 = +\\$30 (increase)\nFeb → Mar: \\$110 − \\$80 = +\\$30 (increase)\nMar → Apr: \\$90 − \\$110 = −\\$20 (decrease) ✓\nApr → May: \\$130 − \\$90 = +\\$40 (increase)\nMay → Jun: \\$160 − \\$130 = +\\$30 (increase)\n\nSavings decreased only between March and April, falling by \\$20.",
     "distractor_logic": {
-      "A": "Student misidentifies the direction of the January-to-February change; savings increased by $30 (from $50 to $80), not decreased.",
-      "B": "Correct: March ($110) to April ($90) is the only interval where savings fell, by $20.",
-      "C": "Student misidentifies the direction of the April-to-May change; savings increased by $40 (from $90 to $130), not decreased.",
-      "D": "Student misidentifies the direction of the May-to-June change; savings increased by $30 (from $130 to $160), not decreased."
+      "A": "Student misidentifies the direction of the January-to-February change; savings increased by \\$30 (from \\$50 to \\$80), not decreased.",
+      "B": "Correct: March (\\$110) to April (\\$90) is the only interval where savings fell, by \\$20.",
+      "C": "Student misidentifies the direction of the April-to-May change; savings increased by \\$40 (from \\$90 to \\$130), not decreased.",
+      "D": "Student misidentifies the direction of the May-to-June change; savings increased by \\$30 (from \\$130 to \\$160), not decreased."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -881,7 +977,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -893,11 +992,16 @@
       }
     ],
     "content_context": "personal_finance",
-    "context_tags": ["line_graph", "decrease", "consecutive_change", "savings"],
+    "context_tags": [
+      "line_graph",
+      "decrease",
+      "consecutive_change",
+      "savings"
+    ],
     "estimated_time_seconds": 130,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -951,7 +1055,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -963,11 +1070,16 @@
       }
     ],
     "content_context": "health_fitness",
-    "context_tags": ["pictograph", "total_computation", "claim_evaluation", "key_value"],
+    "context_tags": [
+      "pictograph",
+      "total_computation",
+      "claim_evaluation",
+      "key_value"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -1021,7 +1133,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -1033,11 +1148,16 @@
       }
     ],
     "content_context": "classroom",
-    "context_tags": ["bar_graph", "mean", "above_average", "claim_evaluation"],
+    "context_tags": [
+      "bar_graph",
+      "mean",
+      "above_average",
+      "claim_evaluation"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

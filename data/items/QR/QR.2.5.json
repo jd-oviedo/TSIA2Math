@@ -19,21 +19,21 @@
       "dividing a total quantity by the number of units to find a unit rate",
       "identifying which quantity is the numerator and which is the denominator in a unit rate"
     ],
-    "question_text": "Five pounds of coffee costs $22.50. What is the cost per pound?",
+    "question_text": "Five pounds of coffee costs \\$22.50. What is the cost per pound?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "$17.50",
-      "B": "$4.50",
-      "C": "$112.50",
-      "D": "$0.22"
+      "A": "\\$17.50",
+      "B": "\\$4.50",
+      "C": "\\$112.50",
+      "D": "\\$0.22"
     },
     "correct_answer": "B",
-    "explanation": "Unit rate = total cost \u00f7 number of units = $22.50 \u00f7 5 = $4.50 per pound.",
+    "explanation": "Unit rate = total cost ÷ number of units = \\$22.50 ÷ 5 = \\$4.50 per pound.",
     "distractor_logic": {
-      "A": "Student subtracts the quantity from the price (22.50 \u2212 5 = $17.50) instead of dividing.",
-      "B": "Correct: $22.50 \u00f7 5 = $4.50 per pound.",
-      "C": "Student multiplies price by quantity (22.50 \u00d7 5 = $112.50) instead of dividing to find the unit rate.",
-      "D": "Student inverts the division, computing quantity \u00f7 price (5 \u00f7 22.50 \u2248 $0.22), finding pounds per dollar instead of dollars per pound."
+      "A": "Student subtracts the quantity from the price (22.50 − 5 = \\$17.50) instead of dividing.",
+      "B": "Correct: \\$22.50 ÷ 5 = \\$4.50 per pound.",
+      "C": "Student multiplies price by quantity (22.50 × 5 = \\$112.50) instead of dividing to find the unit rate.",
+      "D": "Student inverts the division, computing quantity ÷ price (5 ÷ 22.50 ≈ \\$0.22), finding pounds per dollar instead of dollars per pound."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -48,11 +48,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Unit rate = total \u00f7 number of units. Divide the total cost by the number of pounds."
+        "hint_text": "Unit rate = total ÷ number of units. Divide the total cost by the number of pounds."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "5 pounds for ~$22.50. Each pound is roughly $22 \u00f7 5 \u2248 $4\u2013$5. That rules out A, C, and D."
+        "hint_text": "5 pounds for ~\\$22.50. Each pound is roughly \\$22 ÷ 5 ≈ \\$4–\\$5. That rules out A, C, and D."
       }
     ],
     "content_context": "grocery_shopping",
@@ -97,21 +97,21 @@
       "computing unit rates for two items to enable a direct comparison",
       "identifying the better value by selecting the lower unit rate"
     ],
-    "question_text": "Brand A sells 12 oz of juice for $2.40. Brand B sells 20 oz of juice for $3.80. Which brand has the lower cost per ounce, and what is that unit rate?",
+    "question_text": "Brand A sells 12 oz of juice for \\$2.40. Brand B sells 20 oz of juice for \\$3.80. Which brand has the lower cost per ounce, and what is that unit rate?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "Brand A; $0.20 per oz",
-      "B": "Brand A; $0.19 per oz",
-      "C": "Brand B; $0.19 per oz",
-      "D": "Brand B; $0.20 per oz"
+      "A": "Brand A; \\$0.20 per oz",
+      "B": "Brand A; \\$0.19 per oz",
+      "C": "Brand B; \\$0.19 per oz",
+      "D": "Brand B; \\$0.20 per oz"
     },
     "correct_answer": "C",
-    "explanation": "Brand A: $2.40 \u00f7 12 = $0.20/oz. Brand B: $3.80 \u00f7 20 = $0.19/oz. Brand B has the lower unit rate.",
+    "explanation": "Brand A: \\$2.40 ÷ 12 = \\$0.20/oz. Brand B: \\$3.80 ÷ 20 = \\$0.19/oz. Brand B has the lower unit rate.",
     "distractor_logic": {
-      "A": "Student correctly computes Brand A's unit rate ($0.20/oz) but chooses A as the better value without comparing it to Brand B's lower rate.",
-      "B": "Student assigns Brand B's unit rate ($0.19/oz) to Brand A, then selects A as the better value based on the swapped rate.",
-      "C": "Correct: Brand B at $0.19/oz is cheaper than Brand A at $0.20/oz.",
-      "D": "Student correctly identifies Brand B as the better value but reports Brand A's unit rate ($0.20/oz) instead of Brand B's ($0.19/oz)."
+      "A": "Student correctly computes Brand A's unit rate (\\$0.20/oz) but chooses A as the better value without comparing it to Brand B's lower rate.",
+      "B": "Student assigns Brand B's unit rate (\\$0.19/oz) to Brand A, then selects A as the better value based on the swapped rate.",
+      "C": "Correct: Brand B at \\$0.19/oz is cheaper than Brand A at \\$0.20/oz.",
+      "D": "Student correctly identifies Brand B as the better value but reports Brand A's unit rate (\\$0.20/oz) instead of Brand B's (\\$0.19/oz)."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -126,11 +126,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Compute cost per ounce for each brand separately: total cost \u00f7 ounces. Then compare."
+        "hint_text": "Compute cost per ounce for each brand separately: total cost ÷ ounces. Then compare."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "Brand A: ~$2.40 for 12 oz \u2248 $0.20/oz. Brand B: ~$3.80 for 20 oz \u2014 $4.00 \u00f7 20 = $0.20, so slightly less than $0.20."
+        "hint_text": "Brand A: ~\\$2.40 for 12 oz ≈ \\$0.20/oz. Brand B: ~\\$3.80 for 20 oz — \\$4.00 ÷ 20 = \\$0.20, so slightly less than \\$0.20."
       }
     ],
     "content_context": "grocery_shopping",
@@ -184,12 +184,12 @@
       "D": "320 miles"
     },
     "correct_answer": "A",
-    "explanation": "Total distance = unit rate \u00d7 quantity = 32 miles/gallon \u00d7 11 gallons = 352 miles.",
+    "explanation": "Total distance = unit rate × quantity = 32 miles/gallon × 11 gallons = 352 miles.",
     "distractor_logic": {
-      "A": "Correct: 32 \u00d7 11 = 352 miles.",
-      "B": "Student divides the rate by the quantity (32 \u00f7 11 \u2248 2.9), inverting the operation.",
+      "A": "Correct: 32 × 11 = 352 miles.",
+      "B": "Student divides the rate by the quantity (32 ÷ 11 ≈ 2.9), inverting the operation.",
       "C": "Student adds the rate and quantity (32 + 11 = 43) instead of multiplying.",
-      "D": "Student multiplies correctly but uses 10 gallons instead of 11 (32 \u00d7 10 = 320), dropping the last gallon."
+      "D": "Student multiplies correctly but uses 10 gallons instead of 11 (32 × 10 = 320), dropping the last gallon."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -204,11 +204,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Miles per gallon \u00d7 gallons = total miles. Multiply 32 by 11."
+        "hint_text": "Miles per gallon × gallons = total miles. Multiply 32 by 11."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "32 mpg \u00d7 10 gal = 320 miles, plus one more gallon = 32 more miles \u2192 about 352."
+        "hint_text": "32 mpg × 10 gal = 320 miles, plus one more gallon = 32 more miles → about 352."
       }
     ],
     "content_context": "travel",
@@ -262,12 +262,12 @@
       "D": "120"
     },
     "correct_answer": "D",
-    "explanation": "Unit rate = 90 boxes \u00f7 6 hours = 15 boxes per hour. In 8 hours: 15 \u00d7 8 = 120 boxes.",
+    "explanation": "Unit rate = 90 boxes ÷ 6 hours = 15 boxes per hour. In 8 hours: 15 × 8 = 120 boxes.",
     "distractor_logic": {
       "A": "Student adds the total boxes and given hours (90 + 6 = 96) instead of finding and applying the unit rate.",
       "B": "Student correctly finds the unit rate (15 boxes/hour) but stops there without multiplying by 8 hours.",
-      "C": "Student multiplies the given values together (90 \u00d7 6 = 540) instead of first dividing to find the unit rate.",
-      "D": "Correct: 90 \u00f7 6 = 15 boxes/hr; 15 \u00d7 8 = 120 boxes."
+      "C": "Student multiplies the given values together (90 × 6 = 540) instead of first dividing to find the unit rate.",
+      "D": "Correct: 90 ÷ 6 = 15 boxes/hr; 15 × 8 = 120 boxes."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -282,11 +282,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Two steps: find boxes per hour first (90 \u00f7 6), then multiply by 8."
+        "hint_text": "Two steps: find boxes per hour first (90 ÷ 6), then multiply by 8."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "15 boxes/hr \u00d7 8 hr = 120 boxes."
+        "hint_text": "15 boxes/hr × 8 hr = 120 boxes."
       }
     ],
     "content_context": "work_and_jobs",
@@ -340,12 +340,12 @@
       "D": "528 ft/s"
     },
     "correct_answer": "C",
-    "explanation": "60 mi/hr \u00d7 (5,280 ft/mi) \u00f7 (3,600 s/hr) = 60 \u00d7 5,280 \u00f7 3,600 = 316,800 \u00f7 3,600 = 88 ft/s.",
+    "explanation": "60 mi/hr × (5,280 ft/mi) ÷ (3,600 s/hr) = 60 × 5,280 ÷ 3,600 = 316,800 ÷ 3,600 = 88 ft/s.",
     "distractor_logic": {
       "A": "Student reports the original speed (60) without performing any unit conversion.",
-      "B": "Student multiplies 60 by 60 to eliminate 'per hour' (60 \u00d7 60 = 3,600), reasoning by analogy that multiplying by 60 converts hours to minutes and then to seconds, without applying the miles-to-feet conversion (5,280 ft/mi) at all.",
-      "C": "Correct: 60 \u00d7 5,280 \u00f7 3,600 = 88 ft/s.",
-      "D": "Student correctly multiplies by 5,280 but divides by 600 instead of 3,600 (using 10 minutes instead of 60 minutes per hour): 60 \u00d7 5,280 \u00f7 600 = 528."
+      "B": "Student multiplies 60 by 60 to eliminate 'per hour' (60 × 60 = 3,600), reasoning by analogy that multiplying by 60 converts hours to minutes and then to seconds, without applying the miles-to-feet conversion (5,280 ft/mi) at all.",
+      "C": "Correct: 60 × 5,280 ÷ 3,600 = 88 ft/s.",
+      "D": "Student correctly multiplies by 5,280 but divides by 600 instead of 3,600 (using 10 minutes instead of 60 minutes per hour): 60 × 5,280 ÷ 600 = 528."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -364,7 +364,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "100 ft/s \u2248 68 mph, so 60 mph must be a little under 100 ft/s. Only choice C (88 ft/s) falls in that range."
+        "hint_text": "100 ft/s ≈ 68 mph, so 60 mph must be a little under 100 ft/s. Only choice C (88 ft/s) falls in that range."
       }
     ],
     "content_context": "travel",
@@ -387,7 +387,7 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": "Revised: relabeled Basic \u2192 Proficient (two-step dimensional analysis is above Basic calibration); distractor B rationale rewritten to coherently explain how 3,600 is reached; estimate_first hint rewritten per QR.2.5 review."
+    "review_notes": "Revised: relabeled Basic → Proficient (two-step dimensional analysis is above Basic calibration); distractor B rationale rewritten to coherently explain how 3,600 is reached; estimate_first hint rewritten per QR.2.5 review."
   },
   {
     "item_id": "QR_P_046",
@@ -418,12 +418,12 @@
       "D": "60 mph"
     },
     "correct_answer": "B",
-    "explanation": "Total distance = 180 + 80 = 260 miles. Total time = 3 + 2 = 5 hours. Average speed = 260 \u00f7 5 = 52 mph.",
+    "explanation": "Total distance = 180 + 80 = 260 miles. Total time = 3 + 2 = 5 hours. Average speed = 260 ÷ 5 = 52 mph.",
     "distractor_logic": {
-      "A": "Student averages the two segment speeds arithmetically: (180/3 + 80/2) \u00f7 2 = (60 + 40) \u00f7 2 = 50 mph, rather than dividing total distance by total time.",
-      "B": "Correct: 260 miles \u00f7 5 hours = 52 mph.",
-      "C": "Student uses only the second segment's speed (80 \u00f7 2 = 40 mph), ignoring the first segment.",
-      "D": "Student uses only the first segment's speed (180 \u00f7 3 = 60 mph), ignoring the second segment."
+      "A": "Student averages the two segment speeds arithmetically: (180/3 + 80/2) ÷ 2 = (60 + 40) ÷ 2 = 50 mph, rather than dividing total distance by total time.",
+      "B": "Correct: 260 miles ÷ 5 hours = 52 mph.",
+      "C": "Student uses only the second segment's speed (80 ÷ 2 = 40 mph), ignoring the first segment.",
+      "D": "Student uses only the first segment's speed (180 ÷ 3 = 60 mph), ignoring the second segment."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -438,11 +438,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Average speed = total distance \u00f7 total time. Add all miles, add all hours, then divide."
+        "hint_text": "Average speed = total distance ÷ total time. Add all miles, add all hours, then divide."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "260 miles \u00f7 5 hours = 52 mph. (Not the average of 60 and 40.)"
+        "hint_text": "260 miles ÷ 5 hours = 52 mph. (Not the average of 60 and 40.)"
       }
     ],
     "content_context": "travel",
@@ -496,9 +496,9 @@
       "D": "2 hours"
     },
     "correct_answer": "C",
-    "explanation": "Rate A = 1/4 tank/hr; Rate B = 1/6 tank/hr. Combined rate = 1/4 + 1/6 = 3/12 + 2/12 = 5/12 tank/hr. Time = 1 \u00f7 (5/12) = 12/5 = 2.4 hours.",
+    "explanation": "Rate A = 1/4 tank/hr; Rate B = 1/6 tank/hr. Combined rate = 1/4 + 1/6 = 3/12 + 2/12 = 5/12 tank/hr. Time = 1 ÷ (5/12) = 12/5 = 2.4 hours.",
     "distractor_logic": {
-      "A": "Student averages the two individual times ((4 + 6) \u00f7 2 = 5 hours) instead of adding rates and taking the reciprocal.",
+      "A": "Student averages the two individual times ((4 + 6) ÷ 2 = 5 hours) instead of adding rates and taking the reciprocal.",
       "B": "Student adds the two individual times (4 + 6 = 10 hours) instead of combining rates, assuming pipes work sequentially rather than simultaneously.",
       "C": "Correct: combined rate = 5/12 tank/hr; time = 12/5 = 2.4 hours.",
       "D": "Student uses Pipe A's rate for both pipes (1/4 + 1/4 = 1/2 tank/hr), giving a time of 2 hours, neglecting that Pipe B fills more slowly."
@@ -574,12 +574,12 @@
       "D": "5.4 liters"
     },
     "correct_answer": "A",
-    "explanation": "Rate in mL/s = 3 drops/s \u00d7 0.05 mL/drop = 0.15 mL/s. Per hour: 0.15 \u00d7 3,600 = 540 mL. Convert: 540 mL \u00f7 1,000 = 0.54 liters.",
+    "explanation": "Rate in mL/s = 3 drops/s × 0.05 mL/drop = 0.15 mL/s. Per hour: 0.15 × 3,600 = 540 mL. Convert: 540 mL ÷ 1,000 = 0.54 liters.",
     "distractor_logic": {
-      "A": "Correct: 3 \u00d7 0.05 \u00d7 3,600 = 540 mL = 0.54 liters.",
+      "A": "Correct: 3 × 0.05 × 3,600 = 540 mL = 0.54 liters.",
       "B": "Student correctly computes 540 mL but treats milliliters as liters, reporting 540 liters without performing the mL-to-liter conversion.",
-      "C": "Student divides 540 mL by 50 instead of 1,000 (confusing the conversion factor), giving 540 \u00f7 50 = 10.8 liters.",
-      "D": "Student divides 540 mL by 100 instead of 1,000 (applying a 1 L = 100 mL misconception), giving 540 \u00f7 100 = 5.4 liters."
+      "C": "Student divides 540 mL by 50 instead of 1,000 (confusing the conversion factor), giving 540 ÷ 50 = 10.8 liters.",
+      "D": "Student divides 540 mL by 100 instead of 1,000 (applying a 1 L = 100 mL misconception), giving 540 ÷ 100 = 5.4 liters."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -594,11 +594,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Chain the rates: drops/s \u2192 mL/s \u2192 mL/hr \u2192 L/hr. Keep track of units at each step."
+        "hint_text": "Chain the rates: drops/s → mL/s → mL/hr → L/hr. Keep track of units at each step."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "3 drops/s \u00d7 3,600 s = 10,800 drops/hr \u00d7 0.05 mL = 540 mL. 540 mL is just over half a liter."
+        "hint_text": "3 drops/s × 3,600 s = 10,800 drops/hr × 0.05 mL = 540 mL. 540 mL is just over half a liter."
       }
     ],
     "content_context": "science_and_engineering",
@@ -652,12 +652,12 @@
       "D": "225 miles"
     },
     "correct_answer": "D",
-    "explanation": "Closing rate = 75 + 55 = 130 mph. Time to meet = 390 \u00f7 130 = 3 hours. Train A's distance = 75 \u00d7 3 = 225 miles.",
+    "explanation": "Closing rate = 75 + 55 = 130 mph. Time to meet = 390 ÷ 130 = 3 hours. Train A's distance = 75 × 3 = 225 miles.",
     "distractor_logic": {
-      "A": "Student splits the total distance equally between the two trains (390 \u00f7 2 = 195 miles each) without accounting for their different speeds.",
-      "B": "Student correctly finds the meeting time (3 hours) but multiplies by Train B's speed (55 \u00d7 3 = 165 miles) instead of Train A's speed.",
-      "C": "Student correctly computes the closing rate (75 + 55 = 130 mph) and the meeting time (390 \u00f7 130 = 3 hours) but then reports the closing rate value (130) as Train A\u2019s distance in miles, confusing a speed with a distance.",
-      "D": "Correct: closing rate = 130 mph; time = 3 hours; Train A travels 75 \u00d7 3 = 225 miles."
+      "A": "Student splits the total distance equally between the two trains (390 ÷ 2 = 195 miles each) without accounting for their different speeds.",
+      "B": "Student correctly finds the meeting time (3 hours) but multiplies by Train B's speed (55 × 3 = 165 miles) instead of Train A's speed.",
+      "C": "Student correctly computes the closing rate (75 + 55 = 130 mph) and the meeting time (390 ÷ 130 = 3 hours) but then reports the closing rate value (130) as Train A’s distance in miles, confusing a speed with a distance.",
+      "D": "Correct: closing rate = 130 mph; time = 3 hours; Train A travels 75 × 3 = 225 miles."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -673,15 +673,15 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "When two objects move toward each other, add their speeds to get the closing rate. Time = total gap \u00f7 closing rate."
+        "hint_text": "When two objects move toward each other, add their speeds to get the closing rate. Time = total gap ÷ closing rate."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Closing rate = 130 mph. Time = 390 \u00f7 130 = 3 hr. Train A: 75 \u00d7 3 = 225 mi. Train B: 55 \u00d7 3 = 165 mi. Check: 225 + 165 = 390. \u2713"
+        "hint_text": "Closing rate = 130 mph. Time = 390 ÷ 130 = 3 hr. Train A: 75 × 3 = 225 mi. Train B: 55 × 3 = 165 mi. Check: 225 + 165 = 390. ✓"
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "Train A is faster, so it covers more than half of 390 miles. More than 195 miles \u2014 only D fits."
+        "hint_text": "Train A is faster, so it covers more than half of 390 miles. More than 195 miles — only D fits."
       }
     ],
     "content_context": "travel",
@@ -704,7 +704,7 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": "Revised: distractor C replaced from 3 miles (trivially eliminated as not a plausible distance) to 130 miles (student conflates the closing rate value with Train A\u2019s distance) per QR.2.5 review. Difficulty kept Advanced."
+    "review_notes": "Revised: distractor C replaced from 3 miles (trivially eliminated as not a plausible distance) to 130 miles (student conflates the closing rate value with Train A’s distance) per QR.2.5 review. Difficulty kept Advanced."
   },
   {
     "item_id": "QR_A_044",
@@ -726,7 +726,7 @@
       "writing a rate equation with two unknowns expressed in terms of a single variable",
       "solving a linear equation derived from a combined-rate time constraint"
     ],
-    "question_text": "A printer prints simple pages at 20 pages per minute and complex pages at 8 pages per minute. A 50-page job containing x simple pages and (50 \u2212 x) complex pages takes exactly 4 minutes. How many simple pages are in the job?",
+    "question_text": "A printer prints simple pages at 20 pages per minute and complex pages at 8 pages per minute. A 50-page job containing x simple pages and (50 − x) complex pages takes exactly 4 minutes. How many simple pages are in the job?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "20",
@@ -735,12 +735,12 @@
       "D": "25"
     },
     "correct_answer": "B",
-    "explanation": "Time equation: x/20 + (50 \u2212 x)/8 = 4. Multiply through by 40: 2x + 5(50 \u2212 x) = 160. Expand: 2x + 250 \u2212 5x = 160. Simplify: \u22123x = \u221290 \u2192 x = 30 simple pages. Check: 30/20 + 20/8 = 1.5 + 2.5 = 4 minutes. \u2713",
+    "explanation": "Time equation: x/20 + (50 − x)/8 = 4. Multiply through by 40: 2x + 5(50 − x) = 160. Expand: 2x + 250 − 5x = 160. Simplify: −3x = −90 → x = 30 simple pages. Check: 30/20 + 20/8 = 1.5 + 2.5 = 4 minutes. ✓",
     "distractor_logic": {
-      "A": "Student sets up a time equation for simple pages only (4 \u00d7 20 = 80 pages) and divides by the number of page types or applies another incorrect shortcut, arriving at 20.",
-      "B": "Correct: x/20 + (50 \u2212 x)/8 = 4 \u2192 x = 30 simple pages.",
-      "C": "Student guesses or estimates without solving the equation, selecting 40 as a round number near the total, which gives a time of 40/20 + 10/8 = 3.25 min \u2260 4 min.",
-      "D": "Student splits the 50-page job evenly (50 \u00f7 2 = 25 simple, 25 complex) without using the time constraint, giving a time of 25/20 + 25/8 = 4.375 min \u2260 4 min."
+      "A": "Student sets up a time equation for simple pages only (4 × 20 = 80 pages) and divides by the number of page types or applies another incorrect shortcut, arriving at 20.",
+      "B": "Correct: x/20 + (50 − x)/8 = 4 → x = 30 simple pages.",
+      "C": "Student guesses or estimates without solving the equation, selecting 40 as a round number near the total, which gives a time of 40/20 + 10/8 = 3.25 min ≠ 4 min.",
+      "D": "Student splits the 50-page job evenly (50 ÷ 2 = 25 simple, 25 complex) without using the time constraint, giving a time of 25/20 + 25/8 = 4.375 min ≠ 4 min."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -756,15 +756,15 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Time for simple pages = x/20. Time for complex pages = (50\u2212x)/8. Their sum must equal 4. Set up and solve."
+        "hint_text": "Time for simple pages = x/20. Time for complex pages = (50−x)/8. Their sum must equal 4. Set up and solve."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try x=30: 30/20 + 20/8 = 1.5 + 2.5 = 4 minutes. \u2713"
+        "hint_text": "Try x=30: 30/20 + 20/8 = 1.5 + 2.5 = 4 minutes. ✓"
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Test each answer choice: which value of x makes x/20 + (50\u2212x)/8 = 4?"
+        "hint_text": "Test each answer choice: which value of x makes x/20 + (50−x)/8 = 4?"
       }
     ],
     "content_context": "technology",
