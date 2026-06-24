@@ -82,7 +82,16 @@ export default function AdaptiveTestPage() {
   const prevResponseCountRef = useRef(0);
   const [savedSessionId, setSavedSessionId] = useState<string | null>(null);
   const [saveFailed, setSaveFailed] = useState(false);
-
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+useEffect(() => {
+  supabase.auth.getSession().then(({ data: { session } }) => {
+    setIsAuthenticated(!!session);
+  });
+  const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    setIsAuthenticated(!!session);
+  });
+  return () => subscription.unsubscribe();
+}, []);
   useEffect(() => {
     if (state.responses.length > prevResponseCountRef.current) {
       const latest = state.responses[state.responses.length - 1];
@@ -227,7 +236,7 @@ export default function AdaptiveTestPage() {
   if (state.phase === "active" && state.currentItem) {
     return (
       <Shell>
-        <ItemCard item={state.currentItem} itemNumber={state.responses.length + 1} totalItems={state.maxItems} onAnswer={answer} />
+        <ItemCard item={state.currentItem} itemNumber={state.responses.length + 1} totalItems={state.maxItems} onAnswer={answer} isAuthenticated={isAuthenticated} />
       </Shell>
     );
   }

@@ -62,3 +62,14 @@ export type SessionsBody = z.infer<typeof sessionsBodySchema>;
 export function formatZodError(error: z.ZodError): string {
   return error.issues[0]?.message ?? "Malformed request body";
 }
+export const flagSchema = z.object({
+  item_id: z.string().regex(/^[A-Za-z0-9_]+$/),
+  category: z.enum([
+    "symbols_or_math_look_wrong",
+    "answer_seems_incorrect",
+    "explanation_unclear_or_wrong",
+    "question_has_typo_or_is_confusing",
+    "other",
+  ]),
+  comment: z.string().max(500).optional(),
+});

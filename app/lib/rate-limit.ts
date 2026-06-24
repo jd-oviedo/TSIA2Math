@@ -20,6 +20,11 @@ export const revealRateLimit = new Ratelimit({
   prefix: "ratelimit:reveal",
   analytics: true,
 });
+export const flagRateLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(10, "15 m"),
+  prefix: "unpackmath:flag",
+});
 
 // /api/sessions — completed-test submissions. Generous enough for someone
 // genuinely retaking the practice test several times in one sitting, tight

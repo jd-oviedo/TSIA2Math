@@ -9,6 +9,7 @@ interface Props {
   itemNumber: number;
   totalItems: number;
   onAnswer: (answer: string, isCorrect: boolean) => void;
+  isAuthenticated: boolean;
 }
 
 const CHOICE_KEYS = ["A", "B", "C", "D"] as const;
@@ -30,12 +31,15 @@ const LETTER_BASE: React.CSSProperties = {
   transition: "background 0.18s, border-color 0.18s, color 0.18s",
 };
 
-export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Props) {
+export default function ItemCard({ item, itemNumber, totalItems, onAnswer, isAuthenticated }: Props) {
   const [selected, setSelected] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [revealing, setRevealing] = useState(false);
   const [revealData, setRevealData] = useState<RevealData | null>(null);
   const [revealError, setRevealError] = useState(false);
+  const [flagState, setFlagState] = useState<"idle" | "open" | "submitting" | "done" | "error">("idle");
+  const [flagCategory, setFlagCategory] = useState("");
+  const [flagComment, setFlagComment] = useState("");
 
   const handleSelect = (key: string) => { if (revealed || revealing) return; setSelected(key); };
 
@@ -61,12 +65,34 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
   };
 
   const handleNext = () => {
-    if (!selected || !revealData) return;
-    onAnswer(selected, revealData.isCorrect);
-    setSelected(null);
-    setRevealed(false);
-    setRevealData(null);
-  };
+  if (!selected || !revealData) return;
+  onAnswer(selected, revealData.isCorrect);
+  setSelected(null);
+  setRevealed(false);
+  setRevealData(null);
+  setFlagState("idle");
+  setFlagCategory("");
+  setFlagComment("");
+};
+const handleFlagSubmit = async () => {
+  if (!flagCategory) return;
+  setFlagState("submitting");
+  try {
+    const res = await fetch("/api/items/flag", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        item_id: item.item_id,
+        category: flagCategory,
+        comment: flagComment.trim() || undefined,
+      }),
+    });
+    if (!res.ok) throw new Error();
+    setFlagState("done");
+  } catch {
+    setFlagState("error");
+  }
+};
 
   const renderQuestionText = (text: string) => {
     const lines = text.split("\n");
@@ -238,7 +264,67 @@ export default function ItemCard({ item, itemNumber, totalItems, onAnswer }: Pro
   {renderQuestionText(revealData.distractor_note)}
 </div>
     )}
-  </>
+  {isAuthenticated && (
+        <div style={{ marginTop: "16px", paddingTop: "14px", borderTop: "1px solid var(--ec-line)" }}>
+          {flagState === "idle" && (
+            <button
+              onClick={() => setFlagState("open")}
+              style={{ background: "none", border: "none", padding: 0, fontSize: "12px", color: "var(--ec-ink-muted)", cursor: "pointer", fontFamily: "inherit", textDecoration: "underline" }}
+            >
+              Flag an issue with this question
+            </button>
+          )}
+          {flagState === "open" && (
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              <select
+                value={flagCategory}
+                onChange={(e) => setFlagCategory(e.target.value)}
+                style={{ fontSize: "13px", padding: "8px 10px", borderRadius: "8px", border: "1px solid var(--ec-line)", background: "var(--ec-surface)", color: flagCategory ? "var(--ec-ink)" : "var(--ec-ink-muted)", fontFamily: "inherit" }}
+              >
+                <option value="" disabled>Select a category</option>
+                <option value="symbols_or_math_look_wrong">Symbols or math look wrong (e.g. fraction shows as 1/2 instead of stacked)</option>
+                <option value="answer_seems_incorrect">Answer seems incorrect</option>
+                <option value="explanation_unclear_or_wrong">Explanation is unclear or has an error</option>
+                <option value="question_has_typo_or_is_confusing">Question has a typo or is confusing</option>
+                <option value="other">Other</option>
+              </select>
+              <textarea
+                value={flagComment}
+                onChange={(e) => setFlagComment(e.target.value)}
+                placeholder="Describe the issue... (optional)"
+                maxLength={500}
+                rows={3}
+                style={{ fontSize: "13px", padding: "8px 10px", borderRadius: "8px", border: "1px solid var(--ec-line)", background: "var(--ec-surface)", color: "var(--ec-ink)", fontFamily: "inherit", resize: "vertical" }}
+              />
+              <div style={{ display: "flex", gap: "8px" }}>
+                <button
+                  onClick={handleFlagSubmit}
+                  disabled={!flagCategory}
+                  style={{ padding: "8px 16px", background: flagCategory ? "var(--ec-btn-bg)" : "var(--ec-line)", color: flagCategory ? "var(--ec-btn-text)" : "var(--ec-ink-faint)", border: "none", borderRadius: "8px", fontSize: "13px", fontWeight: 700, cursor: flagCategory ? "pointer" : "not-allowed", fontFamily: "inherit" }}
+                >
+                  Submit
+                </button>
+                <button
+                  onClick={() => { setFlagState("idle"); setFlagCategory(""); setFlagComment(""); }}
+                  style={{ padding: "8px 16px", background: "none", border: "1px solid var(--ec-line)", borderRadius: "8px", fontSize: "13px", color: "var(--ec-ink-muted)", cursor: "pointer", fontFamily: "inherit" }}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
+          {flagState === "submitting" && (
+            <p style={{ fontSize: "12px", color: "var(--ec-ink-muted)", margin: 0 }}>Submitting...</p>
+          )}
+          {flagState === "done" && (
+            <p style={{ fontSize: "12px", color: "var(--ec-ink-muted)", margin: 0 }}>Thanks for the feedback.</p>
+          )}
+          {flagState === "error" && (
+            <p style={{ fontSize: "12px", color: "var(--ec-red)", margin: 0 }}>Couldn&rsquo;t submit -- try again.</p>
+          )}
+        </div>
+      )}
+    </>
 ) : (
   <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
     <p style={{ fontSize: "15px", color: "var(--ec-ink)", lineHeight: 1.7, fontFamily: "Georgia, 'Times New Roman', serif", margin: 0 }}>
