@@ -22,13 +22,13 @@
     "question_text": "The formula for distance is d = rt, where d is distance, r is rate, and t is time. Solve this formula for t.",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "t = d/r",
+      "A": "$t = \\frac{d}{r}$",
       "B": "t = dr",
-      "C": "t = r/d",
-      "D": "t = d − r"
+      "C": "$t = \\frac{r}{d}$",
+      "D": "t = d - r"
     },
     "correct_answer": "A",
-    "explanation": "To isolate t, divide both sides by r:\nd = rt\nd/r = t\n\nt = d/r\n\nThis works because division is the inverse of multiplication.",
+    "explanation": "To isolate t, divide both sides by r:\nd = rt\n$\\frac{d}{r} = t$\n\n$t = \\frac{d}{r}$\n\nThis works because division is the inverse of multiplication.",
     "distractor_logic": {
       "A": "Correct: dividing both sides by r isolates t, giving t = d/r.",
       "B": "Student multiplies d by r instead of dividing — applies the same operation rather than the inverse.",
@@ -101,9 +101,9 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "b = P + a + c",
-      "B": "b = P − a − c",
-      "C": "b = P/ac",
-      "D": "b = (P − a)/c"
+      "B": "b = P - a - c",
+      "C": "$b = \\frac{P}{ac}$",
+      "D": "$b = \\frac{P - a}{c}$"
     },
     "correct_answer": "B",
     "explanation": "To isolate b, subtract a and c from both sides:\nP − a − c = b\n\nb = P − a − c",
@@ -175,16 +175,16 @@
       "rearranging the slope formula to isolate one of the y-coordinates",
       "applying two-step inverse operations within a familiar algebraic formula"
     ],
-    "question_text": "The slope formula is m = $\\frac{y₂ − y₁}{x₂ − x₁}$. Solve this formula for y₂.",
+    "question_text": "The slope formula is $m = \\frac{y_2 - y_1}{x_2 - x_1}$. Solve this formula for $y_2$.",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "y₂ = m / (x₂ − x₁) + y₁",
-      "B": "y₂ = m(x₂ − x₁) − y₁",
-      "C": "y₂ = m(x₂ − x₁) + y₁",
-      "D": "y₂ = (m + y₁)(x₂ − x₁)"
+      "A": "$y_2 = \\frac{m}{x_2 - x_1} + y_1$",
+      "B": "$y_2 = m(x_2 - x_1) - y_1$",
+      "C": "$y_2 = m(x_2 - x_1) + y_1$",
+      "D": "$y_2 = (m + y_1)(x_2 - x_1)$"
     },
     "correct_answer": "C",
-    "explanation": "Step 1 — Multiply both sides by (x₂ − x₁) to clear the denominator:\nm(x₂ − x₁) = y₂ − y₁\n\nStep 2 — Add y₁ to both sides to isolate y₂:\ny₂ = m(x₂ − x₁) + y₁\n\nThis is exactly the point-slope form of a line, rearranged.",
+    "explanation": "Step 1 — Multiply both sides by $(x_2 - x_1)$ to clear the denominator:\n$m(x_2 - x_1) = y_2 - y_1$\n\nStep 2 — Add $y_1$ to both sides to isolate $y_2$:\n$y_2 = m(x_2 - x_1) + y_1$\n\nThis is exactly the point-slope form of a line, rearranged.",
     "distractor_logic": {
       "A": "Student divides by (x₂ − x₁) instead of multiplying — applies division where multiplication is needed to clear the denominator.",
       "B": "Student correctly multiplies both sides by (x₂ − x₁) to get m(x₂ − x₁) = y₂ − y₁, but then subtracts y₁ from both sides instead of adding it, yielding y₂ = m(x₂ − x₁) − y₁.",
@@ -253,16 +253,16 @@
       "rearranging the trapezoid area formula to isolate one base",
       "correctly handling the fraction coefficient and grouped sum in a multi-step literal equation"
     ],
-    "question_text": "The area of a trapezoid is A = ($\\frac{1}{2}$)(b₁ + b₂)h. Solve this formula for b₁.",
+    "question_text": "The area of a trapezoid is $A = \\frac{1}{2}(b_1 + b_2)h$. Solve this formula for $b_1$.",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "b₁ = 2A − b₂h",
-      "B": "b₁ = A/h − b₂",
-      "C": "b₁ = A − b₂ − h",
-      "D": "b₁ = 2A/h − b₂"
+      "A": "$b_1 = 2A - b_2 h$",
+      "B": "$b_1 = \\frac{A}{h} - b_2$",
+      "C": "$b_1 = A - b_2 - h$",
+      "D": "$b_1 = \\frac{2A}{h} - b_2$"
     },
     "correct_answer": "D",
-    "explanation": "Step 1 — Multiply both sides by 2 to eliminate the fraction:\n2A = (b₁ + b₂)h\n\nStep 2 — Divide both sides by h:\n2A/h = b₁ + b₂\n\nStep 3 — Subtract b₂ from both sides:\nb₁ = 2A/h − b₂\n\nVerify with A = 24, h = 6, b₂ = 4:\nb₁ = 2(24)/6 − 4 = $\\frac{48}{6}$ − 4 = 8 − 4 = 4\nCheck: ($\\frac{1}{2}$)(4 + 4)(6) = 24 ✓",
+    "explanation": "Step 1 — Multiply both sides by 2 to eliminate the fraction:\n$2A = (b_1 + b_2)h$\n\nStep 2 — Divide both sides by h:\n$\\frac{2A}{h} = b_1 + b_2$\n\nStep 3 — Subtract $b_2$ from both sides:\n$b_1 = \\frac{2A}{h} - b_2$\n\nVerify with A = 24, h = 6, $b_2$ = 4:\n$b_1 = \\frac{2(24)}{6} - 4 = \\frac{48}{6} - 4 = 8 - 4 = 4$\nCheck: $\\frac{1}{2}(4 + 4)(6) = 24$ ✓",
     "distractor_logic": {
       "A": "Student correctly multiplies by 2 to get 2A = (b₁ + b₂)h, but then subtracts b₂h from both sides instead of dividing by h — leaving b₁ in an incorrect form.",
       "B": "Student correctly divides by h and subtracts b₂, but skips multiplying by 2 to clear the $\\frac{1}{2}$ — giving A/h − b₂ instead of 2A/h − b₂.",
@@ -334,13 +334,13 @@
     "question_text": "Solve for x:  ax + bx = c",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x = c/a + c/b",
-      "B": "x = c/(a + b)",
-      "C": "x = (c − b)/a",
-      "D": "x = c/ab"
+      "A": "$x = \\frac{c}{a} + \\frac{c}{b}$",
+      "B": "$x = \\frac{c}{a + b}$",
+      "C": "$x = \\frac{c - b}{a}$",
+      "D": "$x = \\frac{c}{ab}$"
     },
     "correct_answer": "B",
-    "explanation": "Factor x from the left side:\nax + bx = x(a + b)\n\nSo the equation becomes:\nx(a + b) = c\n\nDivide both sides by (a + b):\nx = c/(a + b)\n\nVerify with a = 2, b = 3, c = 10:\nx = 10/(2 + 3) = $\\frac{10}{5}$ = 2\nCheck: 2(2) + 3(2) = 4 + 6 = 10 ✓",
+    "explanation": "Factor x from the left side:\nax + bx = x(a + b)\n\nSo the equation becomes:\nx(a + b) = c\n\nDivide both sides by (a + b):\n$x = \\frac{c}{a + b}$\n\nVerify with a = 2, b = 3, c = 10:\n$x = \\frac{10}{2 + 3} = \\frac{10}{5} = 2$\nCheck: 2(2) + 3(2) = 4 + 6 = 10 ✓",
     "distractor_logic": {
       "A": "Student splits the division across the sum — treats c/(a + b) as c/a + c/b — applying a false rule that division distributes over addition.",
       "B": "Correct: factoring gives x(a + b) = c, so x = c/(a + b).",
@@ -409,13 +409,13 @@
       "solving a literal equation where the target variable appears on both sides after clearing a denominator",
       "collecting variable terms, factoring, and dividing by a binomial coefficient in a multi-step literal equation"
     ],
-    "question_text": "Solve for x:  (x + a)/b = c + x",
+    "question_text": "Solve for x: $\\frac{x + a}{b} = c + x$",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x = $\\frac{bc − a}{1 + b}$",
-      "B": "x = (a − bc)/b",
-      "C": "x = $\\frac{bc − a}{1 − b}$",
-      "D": "x = bc − a + b"
+      "A": "$x = \\frac{bc - a}{1 + b}$",
+      "B": "$x = \\frac{a - bc}{b}$",
+      "C": "$x = \\frac{bc - a}{1 - b}$",
+      "D": "x = bc - a + b"
     },
     "correct_answer": "C",
     "explanation": "Step 1 — Multiply both sides by b to clear the denominator:\nx + a = b(c + x) = bc + bx\n\nStep 2 — Move all x-terms to the left:\nx − bx = bc − a\n\nStep 3 — Factor x:\nx(1 − b) = bc − a\n\nStep 4 — Divide both sides by (1 − b):\nx = $\\frac{bc − a}{1 − b}$\n\nVerify with a = 2, b = 3, c = 1:\nx = $\\frac{3 − 2}{1 − 3}$ = 1/(−2) = −$\\frac{1}{2}$\nCheck: (−$\\frac{1}{2}$ + 2)/3 = ($\\frac{3}{2}$)/3 = $\\frac{1}{2}$; c + x = 1 − $\\frac{1}{2}$ = $\\frac{1}{2}$ ✓",
