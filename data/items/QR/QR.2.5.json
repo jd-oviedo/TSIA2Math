@@ -420,7 +420,7 @@
     "correct_answer": "B",
     "explanation": "Total distance = 180 + 80 = 260 miles. Total time = 3 + 2 = 5 hours. Average speed = 260 ÷ 5 = 52 mph.",
     "distractor_logic": {
-      "A": "Student averages the two segment speeds arithmetically: (180/3 + 80/2) ÷ 2 = (60 + 40) ÷ 2 = 50 mph, rather than dividing total distance by total time.",
+      "A": "Student averages the two segment speeds arithmetically: ($\\frac{180}{3}$ + $\\frac{80}{2}$) ÷ 2 = (60 + 40) ÷ 2 = 50 mph, rather than dividing total distance by total time.",
       "B": "Correct: 260 miles ÷ 5 hours = 52 mph.",
       "C": "Student uses only the second segment's speed (80 ÷ 2 = 40 mph), ignoring the first segment.",
       "D": "Student uses only the first segment's speed (180 ÷ 3 = 60 mph), ignoring the second segment."
@@ -496,12 +496,12 @@
       "D": "2 hours"
     },
     "correct_answer": "C",
-    "explanation": "Rate A = 1/4 tank/hr; Rate B = 1/6 tank/hr. Combined rate = 1/4 + 1/6 = 3/12 + 2/12 = 5/12 tank/hr. Time = 1 ÷ (5/12) = 12/5 = 2.4 hours.",
+    "explanation": "Rate A = $\\frac{1}{4}$ tank/hr; Rate B = $\\frac{1}{6}$ tank/hr. Combined rate = $\\frac{1}{4}$ + $\\frac{1}{6}$ = $\\frac{3}{12}$ + $\\frac{2}{12}$ = $\\frac{5}{12}$ tank/hr. Time = 1 ÷ ($\\frac{5}{12}$) = $\\frac{12}{5}$ = 2.4 hours.",
     "distractor_logic": {
       "A": "Student averages the two individual times ((4 + 6) ÷ 2 = 5 hours) instead of adding rates and taking the reciprocal.",
       "B": "Student adds the two individual times (4 + 6 = 10 hours) instead of combining rates, assuming pipes work sequentially rather than simultaneously.",
-      "C": "Correct: combined rate = 5/12 tank/hr; time = 12/5 = 2.4 hours.",
-      "D": "Student uses Pipe A's rate for both pipes (1/4 + 1/4 = 1/2 tank/hr), giving a time of 2 hours, neglecting that Pipe B fills more slowly."
+      "C": "Correct: combined rate = $\\frac{5}{12}$ tank/hr; time = $\\frac{12}{5}$ = 2.4 hours.",
+      "D": "Student uses Pipe A's rate for both pipes ($\\frac{1}{4}$ + $\\frac{1}{4}$ = $\\frac{1}{2}$ tank/hr), giving a time of 2 hours, neglecting that Pipe B fills more slowly."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -516,7 +516,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Convert each pipe to a rate: A fills 1/4 of the tank per hour, B fills 1/6. Add the rates, then flip to get time."
+        "hint_text": "Convert each pipe to a rate: A fills $\\frac{1}{4}$ of the tank per hour, B fills $\\frac{1}{6}$. Add the rates, then flip to get time."
       },
       {
         "strategy": "estimate_first",
@@ -735,12 +735,12 @@
       "D": "25"
     },
     "correct_answer": "B",
-    "explanation": "Time equation: x/20 + (50 − x)/8 = 4. Multiply through by 40: 2x + 5(50 − x) = 160. Expand: 2x + 250 − 5x = 160. Simplify: −3x = −90 → x = 30 simple pages. Check: 30/20 + 20/8 = 1.5 + 2.5 = 4 minutes. ✓",
+    "explanation": "Time equation: $\\frac{x}{20}$ + (50 − x)/8 = 4. Multiply through by 40: 2x + 5(50 − x) = 160. Expand: 2x + 250 − 5x = 160. Simplify: −3x = −90 → x = 30 simple pages. Check: $\\frac{30}{20}$ + $\\frac{20}{8}$ = 1.5 + 2.5 = 4 minutes. ✓",
     "distractor_logic": {
       "A": "Student sets up a time equation for simple pages only (4 × 20 = 80 pages) and divides by the number of page types or applies another incorrect shortcut, arriving at 20.",
-      "B": "Correct: x/20 + (50 − x)/8 = 4 → x = 30 simple pages.",
-      "C": "Student guesses or estimates without solving the equation, selecting 40 as a round number near the total, which gives a time of 40/20 + 10/8 = 3.25 min ≠ 4 min.",
-      "D": "Student splits the 50-page job evenly (50 ÷ 2 = 25 simple, 25 complex) without using the time constraint, giving a time of 25/20 + 25/8 = 4.375 min ≠ 4 min."
+      "B": "Correct: $\\frac{x}{20}$ + (50 − x)/8 = 4 → x = 30 simple pages.",
+      "C": "Student guesses or estimates without solving the equation, selecting 40 as a round number near the total, which gives a time of $\\frac{40}{20}$ + $\\frac{10}{8}$ = 3.25 min ≠ 4 min.",
+      "D": "Student splits the 50-page job evenly (50 ÷ 2 = 25 simple, 25 complex) without using the time constraint, giving a time of $\\frac{25}{20}$ + $\\frac{25}{8}$ = 4.375 min ≠ 4 min."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -756,15 +756,15 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Time for simple pages = x/20. Time for complex pages = (50−x)/8. Their sum must equal 4. Set up and solve."
+        "hint_text": "Time for simple pages = $\\frac{x}{20}$. Time for complex pages = (50−x)/8. Their sum must equal 4. Set up and solve."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try x=30: 30/20 + 20/8 = 1.5 + 2.5 = 4 minutes. ✓"
+        "hint_text": "Try x=30: $\\frac{30}{20}$ + $\\frac{20}{8}$ = 1.5 + 2.5 = 4 minutes. ✓"
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Test each answer choice: which value of x makes x/20 + (50−x)/8 = 4?"
+        "hint_text": "Test each answer choice: which value of x makes $\\frac{x}{20}$ + (50−x)/8 = 4?"
       }
     ],
     "content_context": "technology",

@@ -558,7 +558,7 @@
       "converting a fraction to a decimal and rounding to the nearest hundredth",
       "applying rounding after a long-division calculation"
     ],
-    "question_text": "What is 17/7, rounded to the nearest hundredth?",
+    "question_text": "What is $\\frac{17}{7}$, rounded to the nearest hundredth?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "2.42",

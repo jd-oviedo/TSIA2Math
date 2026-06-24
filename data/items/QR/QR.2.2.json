@@ -28,10 +28,10 @@
       "D": "60"
     },
     "correct_answer": "B",
-    "explanation": "Set up the proportion: 3/4 = x/20. Cross-multiply: 4x = 60, so x = 15 miles. Alternatively, 20 ÷ 4 = 5 groups of 4 minutes; 5 × 3 = 15 miles.",
+    "explanation": "Set up the proportion: $\\frac{3}{4}$ = $\\frac{x}{20}$. Cross-multiply: 4x = 60, so x = 15 miles. Alternatively, 20 ÷ 4 = 5 groups of 4 minutes; 5 × 3 = 15 miles.",
     "distractor_logic": {
       "A": "Student divides 20 by 4 to find the number of groups (20 ÷ 4 = 5) but stops there instead of multiplying by the 3-mile rate.",
-      "B": "Correct: 3/4 = x/20 → x = 3 × 5 = 15 miles.",
+      "B": "Correct: $\\frac{3}{4}$ = $\\frac{x}{20}$ → x = 3 × 5 = 15 miles.",
       "C": "Student multiplies both numbers in the denominator position (4 × 20 = 80) without applying the rate of 3 miles.",
       "D": "Student multiplies the rate numerator by the full time (3 × 20 = 60) without accounting for the 4-minute denominator in the rate."
     },
@@ -52,7 +52,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "3/4 = x/20. Multiply both sides by 20: x = 3 × 20 ÷ 4 = 15."
+        "hint_text": "$\\frac{3}{4}$ = $\\frac{x}{20}$. Multiply both sides by 20: x = 3 × 20 ÷ 4 = 15."
       }
     ],
     "content_context": "travel",
@@ -184,7 +184,7 @@
       "D": "48"
     },
     "correct_answer": "A",
-    "explanation": "Scale factor = 60 ÷ 24 = 2.5. Cups of oats needed = 2 × 2.5 = 5 cups. Or use a proportion: 2/24 = x/60 → 24x = 120 → x = 5.",
+    "explanation": "Scale factor = 60 ÷ 24 = 2.5. Cups of oats needed = 2 × 2.5 = 5 cups. Or use a proportion: $\\frac{2}{24}$ = $\\frac{x}{60}$ → 24x = 120 → x = 5.",
     "distractor_logic": {
       "A": "Correct: scale factor = 60 ÷ 24 = 2.5; oats = 2 × 2.5 = 5 cups.",
       "B": "Student inverts the rate, computing cookies per cup (24 ÷ 2 = 12), and reports that as the number of cups needed.",
@@ -208,7 +208,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "2/24 = x/60. Cross-multiply: 24x = 120, x = 5."
+        "hint_text": "$\\frac{2}{24}$ = $\\frac{x}{60}$. Cross-multiply: 24x = 120, x = 5."
       }
     ],
     "content_context": "cooking",
@@ -262,7 +262,7 @@
       "D": "20"
     },
     "correct_answer": "D",
-    "explanation": "Rate = 2 jobs per 8 hours = 1 job per 4 hours. For 5 jobs: 5 × 4 = 20 hours. Using a proportion: 2/8 = 5/x → 2x = 40 → x = 20.",
+    "explanation": "Rate = 2 jobs per 8 hours = 1 job per 4 hours. For 5 jobs: 5 × 4 = 20 hours. Using a proportion: $\\frac{2}{8}$ = $\\frac{5}{x}$ → 2x = 40 → x = 20.",
     "distractor_logic": {
       "A": "Student reports the original time (8 hours) without scaling for the increased number of jobs.",
       "B": "Student multiplies the original time by the target job count (8 × 5 = 40) without first computing the per-job rate.",
@@ -286,7 +286,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "2/8 = 5/x → cross-multiply to solve for x."
+        "hint_text": "$\\frac{2}{8}$ = $\\frac{5}{x}$ → cross-multiply to solve for x."
       }
     ],
     "content_context": "work_and_jobs",
@@ -340,11 +340,11 @@
       "D": "80 ft"
     },
     "correct_answer": "C",
-    "explanation": "Set up the proportion (height/shadow): 8/4 = x/10. Cross-multiply: 4x = 80, so x = 20 feet.",
+    "explanation": "Set up the proportion (height/shadow): $\\frac{8}{4}$ = $\\frac{x}{10}$. Cross-multiply: 4x = 80, so x = 20 feet.",
     "distractor_logic": {
       "A": "Student reports the tree's shadow length (10 ft) as the tree's height without performing any calculation.",
-      "B": "Student inverts the ratio, using shadow/height (4/8 = 0.5) instead of height/shadow, giving 0.5 × 10 = 5 ft.",
-      "C": "Correct: 8/4 = x/10 → x = 20 feet.",
+      "B": "Student inverts the ratio, using shadow/height ($\\frac{4}{8}$ = 0.5) instead of height/shadow, giving 0.5 × 10 = 5 ft.",
+      "C": "Correct: $\\frac{8}{4}$ = $\\frac{x}{10}$ → x = 20 feet.",
       "D": "Student multiplies the pole height by the tree shadow without dividing by the pole shadow (8 × 10 = 80), skipping the proportional division step."
     },
     "difficulty_level": "Basic",
@@ -364,7 +364,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "8/4 = x/10. Multiply both sides by 10: x = 8 × 10 ÷ 4 = 20."
+        "hint_text": "$\\frac{8}{4}$ = $\\frac{x}{10}$. Multiply both sides by 10: x = 8 × 10 ÷ 4 = 20."
       }
     ],
     "content_context": "outdoor_measurement",
@@ -655,7 +655,7 @@
     "explanation": "Let x = liters of Solution A. Salt equation: 0.40x + 0.10(6) = 0.25(x + 6). Simplify: 0.40x + 0.60 = 0.25x + 1.50. Subtract 0.25x: 0.15x = 0.90. Divide: x = 6 liters.",
     "distractor_logic": {
       "A": "Student accounts for the salt needed from A but omits the existing salt from B, solving 0.40x = (0.25 − 0.10) × 6 → 0.40x = 0.90 → x ≈ 2 liters.",
-      "B": "Student applies the alligation method but misreads the result: alligation gives parts of A to parts of B = (25−10):(40−25) = 15:15 = 1:1, meaning equal volumes are needed. The student then treats 1/(1+1) = 1/2 as A’s fraction of B’s volume (rather than A’s fraction of the total), computing 1/2 × 6 = 3 liters of A — an incorrect application of the alligation ratio.",
+      "B": "Student applies the alligation method but misreads the result: alligation gives parts of A to parts of B = (25−10):(40−25) = 15:15 = 1:1, meaning equal volumes are needed. The student then treats 1/(1+1) = $\\frac{1}{2}$ as A’s fraction of B’s volume (rather than A’s fraction of the total), computing $\\frac{1}{2}$ × 6 = 3 liters of A — an incorrect application of the alligation ratio.",
       "C": "Correct: 0.40x + 0.60 = 0.25x + 1.50 → 0.15x = 0.90 → x = 6 liters.",
       "D": "Student omits the salt contributed by Solution B, solving 0.40x = 0.25(x + 6) → 0.15x = 1.50 → x = 10 liters."
     },
@@ -740,7 +740,7 @@
       "A": "Correct: 90t = 60(t + 0.5) → t = 1 hr after 9:30 AM = 10:30 AM.",
       "B": "Student solves correctly (t = 1 hour) but adds that time to Train A's departure (9:00 AM + 1 hr = 10:00 AM) instead of Train B's departure.",
       "C": "Student divides Train A's speed by the speed difference (60 ÷ 30 = 2 hours) and adds to 9:00 AM, arriving at 11:00 AM.",
-      "D": "Student correctly computes Train A’s 30-minute head-start distance (60 mph × 0.5 hr = 30 miles) but then divides that gap by Train B’s full speed (30 ÷ 90 = 1/3 hr = 20 min) rather than by the relative closing speed (90 − 60 = 30 mph). Adding 20 minutes to 9:30 AM gives 9:50 AM."
+      "D": "Student correctly computes Train A’s 30-minute head-start distance (60 mph × 0.5 hr = 30 miles) but then divides that gap by Train B’s full speed (30 ÷ 90 = $\\frac{1}{3}$ hr = 20 min) rather than by the relative closing speed (90 − 60 = 30 mph). Adding 20 minutes to 9:30 AM gives 9:50 AM."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

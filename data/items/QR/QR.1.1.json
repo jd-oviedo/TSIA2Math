@@ -20,7 +20,7 @@
       "ordering values of fractions, decimals, and irrational numbers",
       "interpreting numerical values presented in a data table"
     ],
-    "question_text": "A science teacher recorded the heights, in meters, that four students measured for the same small tree using different estimation methods. The results are shown in the table below.\n\n| Student | Recorded Height (meters) |\n|---------|--------------------------|\n| Ana     | 13/5                     |\n| Ben     | √7                       |\n| Carla   | 2.5                      |\n| Dan     | √9                       |\n\nWhich student recorded the greatest height?",
+    "question_text": "A science teacher recorded the heights, in meters, that four students measured for the same small tree using different estimation methods. The results are shown in the table below.\n\n| Student | Recorded Height (meters) |\n|---------|--------------------------|\n| Ana     | $\\frac{13}{5}$                     |\n| Ben     | √7                       |\n| Carla   | 2.5                      |\n| Dan     | √9                       |\n\nWhich student recorded the greatest height?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Ana",
@@ -29,11 +29,11 @@
       "D": "Dan"
     },
     "correct_answer": "D",
-    "explanation": "Convert each value to a decimal to compare. Ana: 13/5 = 2.6. Ben: √7 is between √4 = 2 and √9 = 3; more precisely, √7 ≈ 2.65. Carla: 2.5. Dan: √9 = 3. Ordering the values: 2.5 < 2.6 < 2.65 < 3, so Carla < Ana < Ben < Dan. Dan's recorded height of 3 meters is the greatest.",
+    "explanation": "Convert each value to a decimal to compare. Ana: $\\frac{13}{5}$ = 2.6. Ben: √7 is between √4 = 2 and √9 = 3; more precisely, √7 ≈ 2.65. Carla: 2.5. Dan: √9 = 3. Ordering the values: 2.5 < 2.6 < 2.65 < 3, so Carla < Ana < Ben < Dan. Dan's recorded height of 3 meters is the greatest.",
     "distractor_logic": {
-      "A": "Student converts 13/5 correctly to 2.6 but does not recognize that √9 simplifies to the integer 3; may treat any square root as less than a nearby decimal.",
+      "A": "Student converts $\\frac{13}{5}$ correctly to 2.6 but does not recognize that √9 simplifies to the integer 3; may treat any square root as less than a nearby decimal.",
       "B": "Student knows √7 is irrational and assumes irrational numbers are automatically larger than rational numbers, or estimates √7 as greater than 3 by confusing it with √9.",
-      "C": "Student misreads 13/5 as 1.35 or 1.6 (inverting or misapplying the fraction-to-decimal conversion), making 2.5 appear to be the largest value.",
+      "C": "Student misreads $\\frac{13}{5}$ as 1.35 or 1.6 (inverting or misapplying the fraction-to-decimal conversion), making 2.5 appear to be the largest value.",
       "D": "Correct answer."
     },
     "difficulty_level": "Basic",
@@ -186,7 +186,7 @@
       "comparing the magnitude of a square root to a whole number by comparing radicands",
       "ordering rational numbers and an irrational number expressed in different forms"
     ],
-    "question_text": "A carpenter compares the lengths of four shelves, measured in feet:\n\n• Shelf W: √17\n• Shelf X: 4\n• Shelf Y: 15/4\n• Shelf Z: 3.9\n\nWhich shelf is the longest?",
+    "question_text": "A carpenter compares the lengths of four shelves, measured in feet:\n\n• Shelf W: √17\n• Shelf X: 4\n• Shelf Y: $\\frac{15}{4}$\n• Shelf Z: 3.9\n\nWhich shelf is the longest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Shelf W",
@@ -195,11 +195,11 @@
       "D": "Shelf Z"
     },
     "correct_answer": "A",
-    "explanation": "Convert each length to a decimal. Shelf W: √17 is just above 4 because 17 > 16 = 4², so √17 ≈ 4.12. Shelf X: 4. Shelf Y: 15/4 = 3.75. Shelf Z: 3.9. Comparing 4.12, 4, 3.75, and 3.9, Shelf W (√17) is the longest.",
+    "explanation": "Convert each length to a decimal. Shelf W: √17 is just above 4 because 17 > 16 = 4², so √17 ≈ 4.12. Shelf X: 4. Shelf Y: $\\frac{15}{4}$ = 3.75. Shelf Z: 3.9. Comparing 4.12, 4, 3.75, and 3.9, Shelf W (√17) is the longest.",
     "distractor_logic": {
       "A": "Correct: since 17 > 16, √17 > 4, making it the largest value at about 4.12.",
       "B": "Student assumes a square root must be smaller than a nearby whole number and treats √17 as less than 4, choosing the whole number 4.",
-      "C": "Student misconverts 15/4 (reading it as about 4.25 instead of 3.75), making Shelf Y appear longest.",
+      "C": "Student misconverts $\\frac{15}{4}$ (reading it as about 4.25 instead of 3.75), making Shelf Y appear longest.",
       "D": "Student rounds √17 down to 4 or below and selects the largest remaining decimal, 3.9, not recognizing that √17 exceeds 4."
     },
     "difficulty_level": "Basic",
@@ -346,19 +346,19 @@
       "estimating the value of a square root between two integers",
       "ordering a fraction, an irrational number, and a whole number"
     ],
-    "question_text": "A cook measures three quantities, in cups: √8, 5/2, and 3. Which list orders these quantities from least to greatest?",
+    "question_text": "A cook measures three quantities, in cups: √8, $\\frac{5}{2}$, and 3. Which list orders these quantities from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "5/2, √8, 3",
-      "B": "√8, 5/2, 3",
-      "C": "5/2, 3, √8",
-      "D": "3, √8, 5/2"
+      "A": "$\\frac{5}{2}$, √8, 3",
+      "B": "√8, $\\frac{5}{2}$, 3",
+      "C": "$\\frac{5}{2}$, 3, √8",
+      "D": "3, √8, $\\frac{5}{2}$"
     },
     "correct_answer": "A",
-    "explanation": "Convert each value to a decimal. 5/2 = 2.5; √8 lies between √4 = 2 and √9 = 3, with √8 ≈ 2.83; and 3 is a whole number. Ordering 2.5 < 2.83 < 3 gives 5/2, √8, 3.",
+    "explanation": "Convert each value to a decimal. $\\frac{5}{2}$ = 2.5; √8 lies between √4 = 2 and √9 = 3, with √8 ≈ 2.83; and 3 is a whole number. Ordering 2.5 < 2.83 < 3 gives $\\frac{5}{2}$, √8, 3.",
     "distractor_logic": {
-      "A": "Correct: 5/2 = 2.5 < √8 ≈ 2.83 < 3.",
-      "B": "Student underestimates √8 (treating it as roughly 2.4 or less) and places it below 5/2 = 2.5.",
+      "A": "Correct: $\\frac{5}{2}$ = 2.5 < √8 ≈ 2.83 < 3.",
+      "B": "Student underestimates √8 (treating it as roughly 2.4 or less) and places it below $\\frac{5}{2}$ = 2.5.",
       "C": "Student overestimates √8, assuming the irrational value must exceed the whole number 3.",
       "D": "Student reverses the order or treats the whole number 3 as smallest because the other two are written as a fraction and a radical."
     },
@@ -380,7 +380,7 @@
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "Convert 5/2 to 2.5, then place √8 between 2.5 and 3."
+        "hint_text": "Convert $\\frac{5}{2}$ to 2.5, then place √8 between 2.5 and 3."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -429,7 +429,7 @@
       "estimating the value of an irrational number to compare it with rational values",
       "interpreting and ordering numerical data presented in a table"
     ],
-    "question_text": "A surveyor records the lengths of four hiking trail segments using different notation systems. The lengths, in kilometers, are shown in the table below.\n\n| Segment | Length (km) |\n|---------|-------------|\n| I       | √45         |\n| II      | 6.8         |\n| III     | 2π          |\n| IV      | 13/2        |\n\nWhich list correctly orders the segments from shortest to longest?",
+    "question_text": "A surveyor records the lengths of four hiking trail segments using different notation systems. The lengths, in kilometers, are shown in the table below.\n\n| Segment | Length (km) |\n|---------|-------------|\n| I       | √45         |\n| II      | 6.8         |\n| III     | 2π          |\n| IV      | $\\frac{13}{2}$        |\n\nWhich list correctly orders the segments from shortest to longest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "III, I, IV, II",
@@ -438,10 +438,10 @@
       "D": "II, I, IV, III"
     },
     "correct_answer": "B",
-    "explanation": "Convert each value to a decimal approximation to compare. Segment I: √45 lies between √36 = 6 and √49 = 7; since 6.7² = 44.89 and 6.71² ≈ 45.02, √45 ≈ 6.708. Segment II: 6.8 (already a decimal). Segment III: 2π ≈ 2(3.14159) ≈ 6.283. Segment IV: 13/2 = 6.5. Ordering from least to greatest: 6.283 < 6.5 < 6.708 < 6.8, which corresponds to III < IV < I < II. The correct order shortest to longest is III, IV, I, II.",
+    "explanation": "Convert each value to a decimal approximation to compare. Segment I: √45 lies between √36 = 6 and √49 = 7; since 6.7² = 44.89 and 6.71² ≈ 45.02, √45 ≈ 6.708. Segment II: 6.8 (already a decimal). Segment III: 2π ≈ 2(3.14159) ≈ 6.283. Segment IV: $\\frac{13}{2}$ = 6.5. Ordering from least to greatest: 6.283 < 6.5 < 6.708 < 6.8, which corresponds to III < IV < I < II. The correct order shortest to longest is III, IV, I, II.",
     "distractor_logic": {
       "A": "Student under-estimates √45, treating it as roughly 6.5 or slightly less, and places Segment I before Segment IV instead of after it.",
-      "B": "Correct ordering: III (2π ≈ 6.283) < IV (13/2 = 6.5) < I (√45 ≈ 6.708) < II (6.8).",
+      "B": "Correct ordering: III (2π ≈ 6.283) < IV ($\\frac{13}{2}$ = 6.5) < I (√45 ≈ 6.708) < II (6.8).",
       "C": "Student over-estimates 2π by using π ≈ 3.25 or reasoning that 'pi is greater than 3, so 2pi must be greater than 6.5,' incorrectly placing Segment III after Segment IV.",
       "D": "Student computes the values correctly but reverses the requested direction, listing from longest to shortest instead of shortest to longest."
     },
@@ -513,7 +513,7 @@
       "estimating and comparing values that include square roots and multiples of pi",
       "ordering a set of rational and irrational numbers in a specified direction"
     ],
-    "question_text": "A stage crew compares the lengths of four cables, measured in meters:\n\n• Cable I: √80\n• Cable II: 26/3\n• Cable III: 8.8\n• Cable IV: 3π\n\nWhich list orders the cables from greatest to least length?",
+    "question_text": "A stage crew compares the lengths of four cables, measured in meters:\n\n• Cable I: √80\n• Cable II: $\\frac{26}{3}$\n• Cable III: 8.8\n• Cable IV: 3π\n\nWhich list orders the cables from greatest to least length?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "IV, I, III, II",
@@ -522,12 +522,12 @@
       "D": "IV, I, II, III"
     },
     "correct_answer": "A",
-    "explanation": "Convert each value. Cable I: √80 is just under 9 because 9² = 81, so √80 ≈ 8.94. Cable II: 26/3 ≈ 8.67. Cable III: 8.8. Cable IV: 3π ≈ 3(3.1416) ≈ 9.42. Ordering from greatest to least: 9.42 > 8.94 > 8.8 > 8.67, which is IV, I, III, II.",
+    "explanation": "Convert each value. Cable I: √80 is just under 9 because 9² = 81, so √80 ≈ 8.94. Cable II: $\\frac{26}{3}$ ≈ 8.67. Cable III: 8.8. Cable IV: 3π ≈ 3(3.1416) ≈ 9.42. Ordering from greatest to least: 9.42 > 8.94 > 8.8 > 8.67, which is IV, I, III, II.",
     "distractor_logic": {
-      "A": "Correct: 3π ≈ 9.42 > √80 ≈ 8.94 > 8.8 > 26/3 ≈ 8.67.",
+      "A": "Correct: 3π ≈ 9.42 > √80 ≈ 8.94 > 8.8 > $\\frac{26}{3}$ ≈ 8.67.",
       "B": "Student orders the cables from least to greatest, reversing the requested direction.",
       "C": "Student places √80 ahead of 3π, estimating 3π with π ≈ 3 (giving 9) and √80 near √81 = 9, then breaking the near-tie the wrong way.",
-      "D": "Student identifies the top two correctly but swaps 8.8 and 26/3, misconverting 26/3 as about 8.9."
+      "D": "Student identifies the top two correctly but swaps 8.8 and $\\frac{26}{3}$, misconverting $\\frac{26}{3}$ as about 8.9."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -543,7 +543,7 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Estimate each: √80 just under 9, 3π just over 9.4, 26/3 ≈ 8.67."
+        "hint_text": "Estimate each: √80 just under 9, 3π just over 9.4, $\\frac{26}{3}$ ≈ 8.67."
       },
       {
         "strategy": "identify_key_info",
@@ -601,11 +601,11 @@
     "answer_choices": {
       "A": "√35",
       "B": "√24",
-      "C": "13/2",
+      "C": "$\\frac{13}{2}$",
       "D": "√37"
     },
     "correct_answer": "A",
-    "explanation": "A square root √N lies between 5 and 6 exactly when 25 < N < 36. Checking each: √35 → 25 < 35 < 36, so √35 ≈ 5.92 is between 5 and 6. √24 → 24 < 25, so √24 ≈ 4.90 is below 5. 13/2 = 6.5 is above 6. √37 → 37 > 36, so √37 ≈ 6.08 is above 6. Only √35 qualifies.",
+    "explanation": "A square root √N lies between 5 and 6 exactly when 25 < N < 36. Checking each: √35 → 25 < 35 < 36, so √35 ≈ 5.92 is between 5 and 6. √24 → 24 < 25, so √24 ≈ 4.90 is below 5. $\\frac{13}{2}$ = 6.5 is above 6. √37 → 37 > 36, so √37 ≈ 6.08 is above 6. Only √35 qualifies.",
     "distractor_logic": {
       "A": "Correct: 25 < 35 < 36, so √35 ≈ 5.92 falls strictly between 5 and 6.",
       "B": "Student estimates √24 as roughly 5 (since 24 is near 25) and assumes it falls in range, missing that 24 < 25 makes √24 < 5.",
@@ -761,7 +761,7 @@
       "ordering negative rational and irrational numbers",
       "applying the effect of negative signs on the ordering of values"
     ],
-    "question_text": "A diver logs four changes in depth, in meters, where negative values indicate moving downward:\n\n• Reading I: −√10\n• Reading II: −3.0\n• Reading III: −10/3\n• Reading IV: −3.2\n\nWhich list orders the readings from least to greatest?",
+    "question_text": "A diver logs four changes in depth, in meters, where negative values indicate moving downward:\n\n• Reading I: −√10\n• Reading II: −3.0\n• Reading III: −$\\frac{10}{3}$\n• Reading IV: −3.2\n\nWhich list orders the readings from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "III, IV, I, II",
@@ -770,9 +770,9 @@
       "D": "I, III, IV, II"
     },
     "correct_answer": "A",
-    "explanation": "Convert each value. −√10 ≈ −3.16 (since √10 ≈ 3.16). −3.0. −10/3 ≈ −3.33. −3.2. For negative numbers, the value with the greatest distance from zero is the least. Ordering from least to greatest: −3.33 < −3.2 < −3.16 < −3.0, which is III, IV, I, II.",
+    "explanation": "Convert each value. −√10 ≈ −3.16 (since √10 ≈ 3.16). −3.0. −$\\frac{10}{3}$ ≈ −3.33. −3.2. For negative numbers, the value with the greatest distance from zero is the least. Ordering from least to greatest: −3.33 < −3.2 < −3.16 < −3.0, which is III, IV, I, II.",
     "distractor_logic": {
-      "A": "Correct: −10/3 ≈ −3.33 < −3.2 < −√10 ≈ −3.16 < −3.0.",
+      "A": "Correct: −$\\frac{10}{3}$ ≈ −3.33 < −3.2 < −√10 ≈ −3.16 < −3.0.",
       "B": "Student orders the readings from greatest to least, reversing the requested direction.",
       "C": "Student knows √10 ≈ 3.16 < 3.2 but forgets that the negative sign flips the comparison, placing −√10 below −3.2.",
       "D": "Student overestimates √10 as about 3.3 or more, making −√10 the most negative value."
@@ -844,7 +844,7 @@
       "comparing expressions that combine rational and irrational components",
       "ordering numerical values presented in a data table"
     ],
-    "question_text": "An engineer records four calculated measurements, in meters, from an experiment. Each value is expressed in the form it was derived from. The results are shown in the table below.\n\n| Segment | Measurement (m) |\n|---------|-----------------|\n| I       | √8 · √5         |\n| II      | 32/5            |\n| III     | 3 + π           |\n| IV      | 2π              |\n\nWhich list correctly orders the measurements from least to greatest?",
+    "question_text": "An engineer records four calculated measurements, in meters, from an experiment. Each value is expressed in the form it was derived from. The results are shown in the table below.\n\n| Segment | Measurement (m) |\n|---------|-----------------|\n| I       | √8 · √5         |\n| II      | $\\frac{32}{5}$            |\n| III     | 3 + π           |\n| IV      | 2π              |\n\nWhich list correctly orders the measurements from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "I, III, IV, II",
@@ -853,11 +853,11 @@
       "D": "II, I, IV, III"
     },
     "correct_answer": "C",
-    "explanation": "Convert each value to a decimal approximation. Segment I: √8 · √5 = √40, which is between √36 = 6 and √49 = 7; since 6.32² = 39.94 and 6.33² = 40.07, √40 ≈ 6.325. Segment II: 32/5 = 6.400. Segment III: 3 + π ≈ 3 + 3.142 = 6.142. Segment IV: 2π ≈ 2(3.142) = 6.283. To confirm Segment IV < Segment I without a calculator: (2π)² = 4π² ≈ 4(9.87) = 39.48, which is less than (√40)² = 40, so 2π < √40. Ordering from least to greatest: 6.142 < 6.283 < 6.325 < 6.400, which corresponds to III < IV < I < II. The correct order is III, IV, I, II.",
+    "explanation": "Convert each value to a decimal approximation. Segment I: √8 · √5 = √40, which is between √36 = 6 and √49 = 7; since 6.32² = 39.94 and 6.33² = 40.07, √40 ≈ 6.325. Segment II: $\\frac{32}{5}$ = 6.400. Segment III: 3 + π ≈ 3 + 3.142 = 6.142. Segment IV: 2π ≈ 2(3.142) = 6.283. To confirm Segment IV < Segment I without a calculator: (2π)² = 4π² ≈ 4(9.87) = 39.48, which is less than (√40)² = 40, so 2π < √40. Ordering from least to greatest: 6.142 < 6.283 < 6.325 < 6.400, which corresponds to III < IV < I < II. The correct order is III, IV, I, II.",
     "distractor_logic": {
       "A": "Student computes √8 · √5 by adding rather than multiplying the radicands, getting √8 + √5 ≈ 2.83 + 2.24 ≈ 5.07, and places Segment I as the smallest value.",
       "B": "Student uses the rough approximation π ≈ 3, which makes 3 + π ≈ 6 and 2π ≈ 6 nearly indistinguishable, and reverses their order based on the visual complexity of the expressions.",
-      "C": "Correct ordering: III (3 + π ≈ 6.142) < IV (2π ≈ 6.283) < I (√8 · √5 = √40 ≈ 6.325) < II (32/5 = 6.400).",
+      "C": "Correct ordering: III (3 + π ≈ 6.142) < IV (2π ≈ 6.283) < I (√8 · √5 = √40 ≈ 6.325) < II ($\\frac{32}{5}$ = 6.400).",
       "D": "Student computes values correctly but reverses the requested direction, listing from greatest to least instead of least to greatest."
     },
     "difficulty_level": "Advanced",
@@ -882,7 +882,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Pin down the smallest (3+π≈6.14) and largest (32/5=6.4), then eliminate orderings that misplace either."
+        "hint_text": "Pin down the smallest (3+π≈6.14) and largest ($\\frac{32}{5}$=6.4), then eliminate orderings that misplace either."
       }
     ],
     "content_context": "data_interpretation",
@@ -928,7 +928,7 @@
       "simplifying sums and multiples of square roots before comparing",
       "ordering closely valued rational and irrational expressions"
     ],
-    "question_text": "Four measurements, in meters, are recorded in the forms below:\n\n• Measurement I: √18 + √2\n• Measurement II: 2√7\n• Measurement III: 11/2\n• Measurement IV: √30\n\nWhich list orders the measurements from least to greatest?",
+    "question_text": "Four measurements, in meters, are recorded in the forms below:\n\n• Measurement I: √18 + √2\n• Measurement II: 2√7\n• Measurement III: $\\frac{11}{2}$\n• Measurement IV: √30\n\nWhich list orders the measurements from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "II, IV, III, I",
@@ -937,12 +937,12 @@
       "D": "II, IV, I, III"
     },
     "correct_answer": "A",
-    "explanation": "Simplify and estimate each. Measurement I: √18 + √2 = 3√2 + √2 = 4√2 = √32 ≈ 5.66. Measurement II: 2√7 = √28 ≈ 5.29. Measurement III: 11/2 = 5.5. Measurement IV: √30 ≈ 5.48 (note 5.5² = 30.25 > 30, so √30 < 5.5). Ordering from least to greatest: 5.29 < 5.48 < 5.5 < 5.66, which is II, IV, III, I.",
+    "explanation": "Simplify and estimate each. Measurement I: √18 + √2 = 3√2 + √2 = 4√2 = √32 ≈ 5.66. Measurement II: 2√7 = √28 ≈ 5.29. Measurement III: $\\frac{11}{2}$ = 5.5. Measurement IV: √30 ≈ 5.48 (note 5.5² = 30.25 > 30, so √30 < 5.5). Ordering from least to greatest: 5.29 < 5.48 < 5.5 < 5.66, which is II, IV, III, I.",
     "distractor_logic": {
-      "A": "Correct: 2√7 ≈ 5.29 < √30 ≈ 5.48 < 11/2 = 5.5 < √18 + √2 = 4√2 ≈ 5.66.",
-      "B": "Student places √30 above 11/2, overestimating √30 as 5.5 or more rather than checking that 5.5² = 30.25 > 30.",
+      "A": "Correct: 2√7 ≈ 5.29 < √30 ≈ 5.48 < $\\frac{11}{2}$ = 5.5 < √18 + √2 = 4√2 ≈ 5.66.",
+      "B": "Student places √30 above $\\frac{11}{2}$, overestimating √30 as 5.5 or more rather than checking that 5.5² = 30.25 > 30.",
       "C": "Student orders the measurements from greatest to least, reversing the requested direction.",
-      "D": "Student simplifies √18 + √2 to 4√2 ≈ 5.66 correctly but misplaces it below 11/2, swapping the two largest values."
+      "D": "Student simplifies √18 + √2 to 4√2 ≈ 5.66 correctly but misplaces it below $\\frac{11}{2}$, swapping the two largest values."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -962,7 +962,7 @@
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "√30 and 11/2 are nearly tied — 5.5² = 30.25 > 30, so √30 < 5.5."
+        "hint_text": "√30 and $\\frac{11}{2}$ are nearly tied — 5.5² = 30.25 > 30, so √30 < 5.5."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -1017,15 +1017,15 @@
       "A": "3√2",
       "B": "2√5",
       "C": "√19",
-      "D": "13/3"
+      "D": "$\\frac{13}{3}$"
     },
     "correct_answer": "B",
-    "explanation": "Rewrite each coefficient-times-radical expression as a single square root by squaring the coefficient into the radicand. 3√2 = √(9·2) = √18 ≈ 4.24. 2√5 = √(4·5) = √20 ≈ 4.47. √19 ≈ 4.36. 13/3 ≈ 4.33. Comparing √18, √20, √19, and 4.33, the greatest is 2√5 = √20.",
+    "explanation": "Rewrite each coefficient-times-radical expression as a single square root by squaring the coefficient into the radicand. 3√2 = √(9·2) = √18 ≈ 4.24. 2√5 = √(4·5) = √20 ≈ 4.47. √19 ≈ 4.36. $\\frac{13}{3}$ ≈ 4.33. Comparing √18, √20, √19, and 4.33, the greatest is 2√5 = √20.",
     "distractor_logic": {
       "A": "Student assumes the expression with the largest coefficient (3) is greatest, not realizing 3√2 = √18 is the smallest of the radicals.",
       "B": "Correct: 2√5 = √20 ≈ 4.47 is greatest, since 20 is the largest radicand once each expression is written under a single root.",
       "C": "Student compares only the number shown under the radical and picks √19 because 19 looks large, without converting the others to single radicals.",
-      "D": "Student avoids the radicals and selects the rational value 13/3, or misjudges it as larger than the irrational expressions."
+      "D": "Student avoids the radicals and selects the rational value $\\frac{13}{3}$, or misjudges it as larger than the irrational expressions."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1093,7 +1093,7 @@
       "simplifying products of square roots and expressions involving pi",
       "ordering very closely valued expressions using a squaring comparison"
     ],
-    "question_text": "Four values are listed below:\n\n• Value I: 2√6\n• Value II: π + 1.5\n• Value III: √23\n• Value IV: 24/5\n\nWhich list orders the values from least to greatest?",
+    "question_text": "Four values are listed below:\n\n• Value I: 2√6\n• Value II: π + 1.5\n• Value III: √23\n• Value IV: $\\frac{24}{5}$\n\nWhich list orders the values from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "II, III, IV, I",
@@ -1102,12 +1102,12 @@
       "D": "II, III, I, IV"
     },
     "correct_answer": "A",
-    "explanation": "Simplify and estimate each. Value I: 2√6 = √24 ≈ 4.866. Value II: π + 1.5 ≈ 3.14 + 1.5 = 4.642. Value III: √23 ≈ 4.796 (note 4.8² = 23.04 > 23, so √23 < 4.8). Value IV: 24/5 = 4.800. Ordering from least to greatest: 4.642 < 4.796 < 4.800 < 4.899, which is II, III, IV, I.",
+    "explanation": "Simplify and estimate each. Value I: 2√6 = √24 ≈ 4.866. Value II: π + 1.5 ≈ 3.14 + 1.5 = 4.642. Value III: √23 ≈ 4.796 (note 4.8² = 23.04 > 23, so √23 < 4.8). Value IV: $\\frac{24}{5}$ = 4.800. Ordering from least to greatest: 4.642 < 4.796 < 4.800 < 4.899, which is II, III, IV, I.",
     "distractor_logic": {
-      "A": "Correct: π + 1.5 ≈ 4.642 < √23 ≈ 4.796 < 24/5 = 4.800 < 2√6 = √24 ≈ 4.899.",
-      "B": "Student places 24/5 below √23, overestimating √23 as more than 4.800 rather than checking that 4.8² = 23.04 > 23.",
+      "A": "Correct: π + 1.5 ≈ 4.642 < √23 ≈ 4.796 < $\\frac{24}{5}$ = 4.800 < 2√6 = √24 ≈ 4.899.",
+      "B": "Student places $\\frac{24}{5}$ below √23, overestimating √23 as more than 4.800 rather than checking that 4.8² = 23.04 > 23.",
       "C": "Student orders the values from greatest to least, reversing the requested direction.",
-      "D": "Student simplifies 2√6 to √24 ≈ 4.899 correctly but places it before 24/5, swapping the two largest values."
+      "D": "Student simplifies 2√6 to √24 ≈ 4.899 correctly but places it before $\\frac{24}{5}$, swapping the two largest values."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1127,7 +1127,7 @@
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "√23 and 24/5 are nearly tied — 4.8² = 23.04 > 23, so √23 < 4.8."
+        "hint_text": "√23 and $\\frac{24}{5}$ are nearly tied — 4.8² = 23.04 > 23, so √23 < 4.8."
       },
       {
         "strategy": "eliminate_wrong_answers",

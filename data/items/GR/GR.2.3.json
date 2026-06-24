@@ -6,7 +6,9 @@
     "status": "draft",
     "category": "Geometric and Spatial Reasoning",
     "primary_strand": "GR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "perimeter_area_surface_area_and_volume",
     "objective_text": "Perimeter, Area, Surface Area, and Volume",
     "topic_id": "GR.2.3",
@@ -41,7 +43,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +58,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rectangle", "area", "formula_application", "two_dimensions"],
+    "context_tags": [
+      "rectangle",
+      "area",
+      "formula_application",
+      "two_dimensions"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -76,7 +86,9 @@
     "status": "draft",
     "category": "Geometric and Spatial Reasoning",
     "primary_strand": "GR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "perimeter_area_surface_area_and_volume",
     "objective_text": "Perimeter, Area, Surface Area, and Volume",
     "topic_id": "GR.2.3",
@@ -111,7 +123,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -123,11 +138,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["triangle", "area", "formula_application", "half_factor"],
+    "context_tags": [
+      "triangle",
+      "area",
+      "formula_application",
+      "half_factor"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -146,7 +166,9 @@
     "status": "draft",
     "category": "Geometric and Spatial Reasoning",
     "primary_strand": "GR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "perimeter_area_surface_area_and_volume",
     "objective_text": "Perimeter, Area, Surface Area, and Volume",
     "topic_id": "GR.2.3",
@@ -181,7 +203,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -193,11 +218,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["parallelogram", "area", "formula_application", "perpendicular_height"],
+    "context_tags": [
+      "parallelogram",
+      "area",
+      "formula_application",
+      "perpendicular_height"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -216,7 +246,9 @@
     "status": "draft",
     "category": "Geometric and Spatial Reasoning",
     "primary_strand": "GR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "perimeter_area_surface_area_and_volume",
     "objective_text": "Perimeter, Area, Surface Area, and Volume",
     "topic_id": "GR.2.3",
@@ -251,7 +283,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -263,11 +298,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["trapezoid", "area", "formula_application", "two_bases"],
+    "context_tags": [
+      "trapezoid",
+      "area",
+      "formula_application",
+      "two_bases"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -286,7 +326,9 @@
     "status": "draft",
     "category": "Geometric and Spatial Reasoning",
     "primary_strand": "GR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "perimeter_area_surface_area_and_volume",
     "objective_text": "Perimeter, Area, Surface Area, and Volume",
     "topic_id": "GR.2.3",
@@ -321,7 +363,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -333,11 +378,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["circle", "area", "formula_application", "radius_squared"],
+    "context_tags": [
+      "circle",
+      "area",
+      "formula_application",
+      "radius_squared"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -356,7 +406,9 @@
     "status": "draft",
     "category": "Geometric and Spatial Reasoning",
     "primary_strand": "GR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "perimeter_area_surface_area_and_volume",
     "objective_text": "Perimeter, Area, Surface Area, and Volume",
     "topic_id": "GR.2.3",
@@ -391,7 +443,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -403,11 +458,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rectangle", "area", "missing_dimension", "inverse_reasoning"],
+    "context_tags": [
+      "rectangle",
+      "area",
+      "missing_dimension",
+      "inverse_reasoning"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -426,7 +486,9 @@
     "status": "draft",
     "category": "Geometric and Spatial Reasoning",
     "primary_strand": "GR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "perimeter_area_surface_area_and_volume",
     "objective_text": "Perimeter, Area, Surface Area, and Volume",
     "topic_id": "GR.2.3",
@@ -461,7 +523,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -473,11 +538,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["triangle", "area", "formula_application", "two_digit_dimensions"],
+    "context_tags": [
+      "triangle",
+      "area",
+      "formula_application",
+      "two_digit_dimensions"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -496,7 +566,9 @@
     "status": "draft",
     "category": "Geometric and Spatial Reasoning",
     "primary_strand": "GR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "perimeter_area_surface_area_and_volume",
     "objective_text": "Perimeter, Area, Surface Area, and Volume",
     "topic_id": "GR.2.3",
@@ -531,7 +603,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -543,11 +618,17 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["parallelogram", "area", "perpendicular_height", "slant_side", "irrelevant_information"],
+    "context_tags": [
+      "parallelogram",
+      "area",
+      "perpendicular_height",
+      "slant_side",
+      "irrelevant_information"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -566,7 +647,9 @@
     "status": "draft",
     "category": "Geometric and Spatial Reasoning",
     "primary_strand": "GR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "perimeter_area_surface_area_and_volume",
     "objective_text": "Perimeter, Area, Surface Area, and Volume",
     "topic_id": "GR.2.3",
@@ -601,7 +684,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -613,11 +699,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["trapezoid", "area", "missing_height", "inverse_reasoning"],
+    "context_tags": [
+      "trapezoid",
+      "area",
+      "missing_height",
+      "inverse_reasoning"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -636,7 +727,9 @@
     "status": "draft",
     "category": "Geometric and Spatial Reasoning",
     "primary_strand": "GR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "perimeter_area_surface_area_and_volume",
     "objective_text": "Perimeter, Area, Surface Area, and Volume",
     "topic_id": "GR.2.3",
@@ -671,7 +764,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -683,11 +779,17 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["circle", "area", "missing_radius", "square_root", "inverse_reasoning"],
+    "context_tags": [
+      "circle",
+      "area",
+      "missing_radius",
+      "square_root",
+      "inverse_reasoning"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -706,7 +808,9 @@
     "status": "draft",
     "category": "Geometric and Spatial Reasoning",
     "primary_strand": "GR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "perimeter_area_surface_area_and_volume",
     "objective_text": "Perimeter, Area, Surface Area, and Volume",
     "topic_id": "GR.2.3",
@@ -741,7 +845,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["draw_diagram", "identify_key_info"],
+    "applicable_strategies": [
+      "draw_diagram",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "draw_diagram",
@@ -753,11 +860,17 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["composite_figure", "area", "rectangle", "triangle", "decomposition"],
+    "context_tags": [
+      "composite_figure",
+      "area",
+      "rectangle",
+      "triangle",
+      "decomposition"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -776,7 +889,9 @@
     "status": "draft",
     "category": "Geometric and Spatial Reasoning",
     "primary_strand": "GR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "perimeter_area_surface_area_and_volume",
     "objective_text": "Perimeter, Area, Surface Area, and Volume",
     "topic_id": "GR.2.3",
@@ -811,7 +926,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -823,11 +941,17 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rectangle", "area", "algebraic_expressions", "substitution", "AR_cross_strand"],
+    "context_tags": [
+      "rectangle",
+      "area",
+      "algebraic_expressions",
+      "substitution",
+      "AR_cross_strand"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -846,7 +970,9 @@
     "status": "draft",
     "category": "Geometric and Spatial Reasoning",
     "primary_strand": "GR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "perimeter_area_surface_area_and_volume",
     "objective_text": "Perimeter, Area, Surface Area, and Volume",
     "topic_id": "GR.2.3",
@@ -881,7 +1007,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["draw_diagram", "identify_key_info"],
+    "applicable_strategies": [
+      "draw_diagram",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "draw_diagram",
@@ -893,11 +1022,17 @@
       }
     ],
     "content_context": "home_improvement",
-    "context_tags": ["composite_figure", "area", "subtraction", "rectangle", "circle"],
+    "context_tags": [
+      "composite_figure",
+      "area",
+      "subtraction",
+      "rectangle",
+      "circle"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -916,7 +1051,9 @@
     "status": "draft",
     "category": "Geometric and Spatial Reasoning",
     "primary_strand": "GR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "perimeter_area_surface_area_and_volume",
     "objective_text": "Perimeter, Area, Surface Area, and Volume",
     "topic_id": "GR.2.3",
@@ -951,7 +1088,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -963,11 +1103,17 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["trapezoid", "area", "algebraic_expressions", "substitution", "AR_cross_strand"],
+    "context_tags": [
+      "trapezoid",
+      "area",
+      "algebraic_expressions",
+      "substitution",
+      "AR_cross_strand"
+    ],
     "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -986,7 +1132,9 @@
     "status": "draft",
     "category": "Geometric and Spatial Reasoning",
     "primary_strand": "GR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "perimeter_area_surface_area_and_volume",
     "objective_text": "Perimeter, Area, Surface Area, and Volume",
     "topic_id": "GR.2.3",
@@ -1013,7 +1161,7 @@
       "A": "Student misapplies the circle formula using A = πr (no squaring): 3.14 × 5 = 15.7; and misapplies the triangle formula as ½b (no height): ½ × 20 = 10 — causing the circle to appear largest by comparison with the deflated triangle value.",
       "B": "Correct: applying all four formulas correctly gives W = 100, Y = 90, X = 88, Z = 78.5; Figure W has the greatest area.",
       "C": "Student omits the ½ factor in the triangle formula but then divides by 10 arbitrarily, deflating the triangle area: 20 × 10 ÷ 10 = 20, making the rectangle (88) appear greatest.",
-      "D": "Student applies the triangle formula as ½bh but uses height = 10/2 = 5 (halves the height by mistake): ½ × 20 × 5 = 50, making the parallelogram (90) appear greatest."
+      "D": "Student applies the triangle formula as ½bh but uses height = $\\frac{10}{2}$ = 5 (halves the height by mistake): ½ × 20 × 5 = 50, making the parallelogram (90) appear greatest."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1021,7 +1169,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -1033,11 +1184,18 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["area_comparison", "triangle", "rectangle", "parallelogram", "circle", "multi_formula"],
+    "context_tags": [
+      "area_comparison",
+      "triangle",
+      "rectangle",
+      "parallelogram",
+      "circle",
+      "multi_formula"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

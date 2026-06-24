@@ -21,7 +21,7 @@
       "multiplying by a cross-system conversion factor to convert miles to kilometers",
       "selecting the correct direction of conversion when moving between measurement systems"
     ],
-    "question_text": "A marathon is 26.2 miles long. Approximately how many kilometers is this? (Use: 1 mile \u2248 1.6 km)",
+    "question_text": "A marathon is 26.2 miles long. Approximately how many kilometers is this? (Use: 1 mile ≈ 1.6 km)",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "16.4 km",
@@ -30,12 +30,12 @@
       "D": "24.6 km"
     },
     "correct_answer": "C",
-    "explanation": "Multiply by the conversion factor: 26.2 miles \u00d7 1.6 km/mile = 41.92 \u2248 41.9 km.",
+    "explanation": "Multiply by the conversion factor: 26.2 miles × 1.6 km/mile = 41.92 ≈ 41.9 km.",
     "distractor_logic": {
-      "A": "Student divides instead of multiplies (26.2 \u00f7 1.6 \u2248 16.4), applying the conversion in the wrong direction.",
+      "A": "Student divides instead of multiplies (26.2 ÷ 1.6 ≈ 16.4), applying the conversion in the wrong direction.",
       "B": "Student adds the conversion factor to the distance (26.2 + 1.6 = 27.8) instead of multiplying.",
-      "C": "Correct: 26.2 \u00d7 1.6 = 41.92 \u2248 41.9 km.",
-      "D": "Student subtracts the conversion factor from the distance (26.2 \u2212 1.6 = 24.6) instead of multiplying."
+      "C": "Correct: 26.2 × 1.6 = 41.92 ≈ 41.9 km.",
+      "D": "Student subtracts the conversion factor from the distance (26.2 − 1.6 = 24.6) instead of multiplying."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -50,11 +50,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Kilometers are shorter than miles, so the number of km must be larger. Multiply: 26.2 \u00d7 1.6."
+        "hint_text": "Kilometers are shorter than miles, so the number of km must be larger. Multiply: 26.2 × 1.6."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "25 miles \u00d7 1.6 = 40 km. A little more than 25 miles gives a little more than 40 km."
+        "hint_text": "25 miles × 1.6 = 40 km. A little more than 25 miles gives a little more than 40 km."
       }
     ],
     "content_context": "sports_and_fitness",
@@ -101,21 +101,21 @@
       "applying the Celsius-to-Fahrenheit formula with correct order of operations",
       "multiplying by the fractional conversion factor before adding the constant offset"
     ],
-    "question_text": "Convert 25\u00b0C to Fahrenheit. Use the formula: F = (9/5)C + 32",
+    "question_text": "Convert 25°C to Fahrenheit. Use the formula: F = ($\\frac{9}{5}$)C + 32",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "77\u00b0F",
-      "B": "57\u00b0F",
-      "C": "45\u00b0F",
-      "D": "82\u00b0F"
+      "A": "77°F",
+      "B": "57°F",
+      "C": "45°F",
+      "D": "82°F"
     },
     "correct_answer": "A",
-    "explanation": "F = (9/5)(25) + 32 = 45 + 32 = 77\u00b0F.",
+    "explanation": "F = ($\\frac{9}{5}$)(25) + 32 = 45 + 32 = 77°F.",
     "distractor_logic": {
-      "A": "Correct: (9/5)(25) + 32 = 45 + 32 = 77\u00b0F.",
-      "B": "Student skips the multiplication step and only adds 32 to the Celsius value (25 + 32 = 57\u00b0F).",
-      "C": "Student correctly multiplies (9/5)(25) = 45 but forgets to add the 32-degree offset.",
-      "D": "Student uses 2 instead of 9/5 (= 1.8) as the conversion factor: 25 \u00d7 2 + 32 = 82\u00b0F."
+      "A": "Correct: ($\\frac{9}{5}$)(25) + 32 = 45 + 32 = 77°F.",
+      "B": "Student skips the multiplication step and only adds 32 to the Celsius value (25 + 32 = 57°F).",
+      "C": "Student correctly multiplies ($\\frac{9}{5}$)(25) = 45 but forgets to add the 32-degree offset.",
+      "D": "Student uses 2 instead of $\\frac{9}{5}$ (= 1.8) as the conversion factor: 25 × 2 + 32 = 82°F."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -130,11 +130,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The formula has two steps: first multiply C by 9/5, then add 32. Don't skip either step."
+        "hint_text": "The formula has two steps: first multiply C by $\\frac{9}{5}$, then add 32. Don't skip either step."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "9/5 of 25 = 45. Then 45 + 32 = 77\u00b0F."
+        "hint_text": "$\\frac{9}{5}$ of 25 = 45. Then 45 + 32 = 77°F."
       }
     ],
     "content_context": "science_and_engineering",
@@ -181,7 +181,7 @@
       "dividing by the conversion factor to convert from a lighter unit to a heavier unit",
       "recognizing that kilograms are larger than pounds so the converted number is smaller"
     ],
-    "question_text": "A person weighs 154 pounds. Approximately how many kilograms is this? (Use: 1 kg \u2248 2.2 lbs)",
+    "question_text": "A person weighs 154 pounds. Approximately how many kilograms is this? (Use: 1 kg ≈ 2.2 lbs)",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "338.8 kg",
@@ -190,12 +190,12 @@
       "D": "70 kg"
     },
     "correct_answer": "D",
-    "explanation": "Kilograms are larger than pounds, so divide: 154 lbs \u00f7 2.2 lbs/kg = 70 kg.",
+    "explanation": "Kilograms are larger than pounds, so divide: 154 lbs ÷ 2.2 lbs/kg = 70 kg.",
     "distractor_logic": {
-      "A": "Student multiplies instead of divides (154 \u00d7 2.2 = 338.8), converting in the wrong direction.",
-      "B": "Student subtracts the conversion factor from the weight (154 \u2212 2.2 = 151.8) instead of dividing.",
+      "A": "Student multiplies instead of divides (154 × 2.2 = 338.8), converting in the wrong direction.",
+      "B": "Student subtracts the conversion factor from the weight (154 − 2.2 = 151.8) instead of dividing.",
       "C": "Student adds the conversion factor to the weight (154 + 2.2 = 156.2) instead of dividing.",
-      "D": "Correct: 154 \u00f7 2.2 = 70 kg."
+      "D": "Correct: 154 ÷ 2.2 = 70 kg."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -214,7 +214,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "140 lbs \u00f7 2.2 \u2248 63.6 kg. 154 lbs is a bit more \u2014 around 70 kg."
+        "hint_text": "140 lbs ÷ 2.2 ≈ 63.6 kg. 154 lbs is a bit more — around 70 kg."
       }
     ],
     "content_context": "health_and_medicine",
@@ -261,7 +261,7 @@
       "dividing by the liters-per-gallon conversion factor to convert liters to gallons",
       "recognizing that gallons are larger than liters so the result is a smaller number"
     ],
-    "question_text": "A bottle holds 12 liters of water. Approximately how many gallons is this? (Use: 1 gallon \u2248 3.8 liters)",
+    "question_text": "A bottle holds 12 liters of water. Approximately how many gallons is this? (Use: 1 gallon ≈ 3.8 liters)",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "45.6 gal",
@@ -270,11 +270,11 @@
       "D": "0.32 gal"
     },
     "correct_answer": "B",
-    "explanation": "Gallons are larger than liters, so divide: 12 L \u00f7 3.8 L/gal \u2248 3.16 \u2248 3.2 gallons.",
+    "explanation": "Gallons are larger than liters, so divide: 12 L ÷ 3.8 L/gal ≈ 3.16 ≈ 3.2 gallons.",
     "distractor_logic": {
-      "A": "Student multiplies instead of divides (12 \u00d7 3.8 = 45.6), converting in the wrong direction.",
-      "B": "Correct: 12 \u00f7 3.8 \u2248 3.2 gallons.",
-      "C": "Student subtracts the conversion factor from the volume (12 \u2212 3.8 = 8.2) instead of dividing.",
+      "A": "Student multiplies instead of divides (12 × 3.8 = 45.6), converting in the wrong direction.",
+      "B": "Correct: 12 ÷ 3.8 ≈ 3.2 gallons.",
+      "C": "Student subtracts the conversion factor from the volume (12 − 3.8 = 8.2) instead of dividing.",
       "D": "Student divides 1.2 by 3.8 instead of 12 by 3.8, dropping a factor of 10 from the numerator."
     },
     "difficulty_level": "Basic",
@@ -290,11 +290,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "1 gallon \u2248 3.8 liters, so a gallon is bigger. The number of gallons is smaller than 12. Divide: 12 \u00f7 3.8."
+        "hint_text": "1 gallon ≈ 3.8 liters, so a gallon is bigger. The number of gallons is smaller than 12. Divide: 12 ÷ 3.8."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "12 \u00f7 4 = 3, so the answer is close to 3. Only B is near 3."
+        "hint_text": "12 ÷ 4 = 3, so the answer is close to 3. Only B is near 3."
       }
     ],
     "content_context": "everyday_life",
@@ -350,12 +350,12 @@
       "D": "36 cm"
     },
     "correct_answer": "C",
-    "explanation": "18 inches \u00d7 2.54 cm/inch = 45.72 cm.",
+    "explanation": "18 inches × 2.54 cm/inch = 45.72 cm.",
     "distractor_logic": {
-      "A": "Student divides instead of multiplies (18 \u00f7 2.54 \u2248 7.09), converting in the wrong direction.",
+      "A": "Student divides instead of multiplies (18 ÷ 2.54 ≈ 7.09), converting in the wrong direction.",
       "B": "Student adds the conversion factor to the measurement (18 + 2.54 = 20.54) instead of multiplying.",
-      "C": "Correct: 18 \u00d7 2.54 = 45.72 cm.",
-      "D": "Student rounds the conversion factor from 2.54 to 2 and computes 18 \u00d7 2 = 36 cm, losing precision from the approximation."
+      "C": "Correct: 18 × 2.54 = 45.72 cm.",
+      "D": "Student rounds the conversion factor from 2.54 to 2 and computes 18 × 2 = 36 cm, losing precision from the approximation."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -370,11 +370,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Centimeters are smaller than inches, so the number of cm must be larger. Multiply: 18 \u00d7 2.54."
+        "hint_text": "Centimeters are smaller than inches, so the number of cm must be larger. Multiply: 18 × 2.54."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "18 \u00d7 2.5 = 45. A little more than 45 \u2014 only C is in that range."
+        "hint_text": "18 × 2.5 = 45. A little more than 45 — only C is in that range."
       }
     ],
     "content_context": "measurement",
@@ -421,21 +421,21 @@
       "applying the Fahrenheit-to-Celsius formula with correct order of operations",
       "subtracting 32 before multiplying by the fractional conversion factor"
     ],
-    "question_text": "Normal human body temperature is 98.6\u00b0F. What is this temperature in Celsius? Use the formula: C = (5/9)(F \u2212 32)",
+    "question_text": "Normal human body temperature is 98.6°F. What is this temperature in Celsius? Use the formula: C = ($\\frac{5}{9}$)(F − 32)",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "37\u00b0C",
-      "B": "209.5\u00b0C",
-      "C": "54.8\u00b0C",
-      "D": "66.6\u00b0C"
+      "A": "37°C",
+      "B": "209.5°C",
+      "C": "54.8°C",
+      "D": "66.6°C"
     },
     "correct_answer": "A",
-    "explanation": "C = (5/9)(98.6 \u2212 32) = (5/9)(66.6) = 333 \u00f7 9 = 37\u00b0C.",
+    "explanation": "C = ($\\frac{5}{9}$)(98.6 − 32) = ($\\frac{5}{9}$)(66.6) = 333 ÷ 9 = 37°C.",
     "distractor_logic": {
-      "A": "Correct: (5/9)(66.6) = 37\u00b0C.",
-      "B": "Student applies the Celsius-to-Fahrenheit formula instead of its inverse: (9/5)(98.6) + 32 \u2248 209.5\u00b0C.",
-      "C": "Student multiplies F by 5/9 without first subtracting 32: (5/9)(98.6) \u2248 54.8\u00b0C, skipping the required offset.",
-      "D": "Student subtracts 32 correctly (98.6 \u2212 32 = 66.6) but forgets to multiply by 5/9, reporting the intermediate result as the final answer."
+      "A": "Correct: ($\\frac{5}{9}$)(66.6) = 37°C.",
+      "B": "Student applies the Celsius-to-Fahrenheit formula instead of its inverse: ($\\frac{9}{5}$)(98.6) + 32 ≈ 209.5°C.",
+      "C": "Student multiplies F by $\\frac{5}{9}$ without first subtracting 32: ($\\frac{5}{9}$)(98.6) ≈ 54.8°C, skipping the required offset.",
+      "D": "Student subtracts 32 correctly (98.6 − 32 = 66.6) but forgets to multiply by $\\frac{5}{9}$, reporting the intermediate result as the final answer."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -450,11 +450,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The formula subtracts 32 FIRST, then multiplies by 5/9. Order matters: C = (5/9)(F \u2212 32)."
+        "hint_text": "The formula subtracts 32 FIRST, then multiplies by $\\frac{5}{9}$. Order matters: C = ($\\frac{5}{9}$)(F − 32)."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "98.6 \u2212 32 = 66.6. Then (5/9)(66.6) = 5 \u00d7 66.6 / 9 = 333 / 9 = 37\u00b0C."
+        "hint_text": "98.6 − 32 = 66.6. Then ($\\frac{5}{9}$)(66.6) = 5 × 66.$\\frac{6}{9}$ = $\\frac{333}{9}$ = 37°C."
       }
     ],
     "content_context": "health_and_medicine",
@@ -501,7 +501,7 @@
       "converting kilograms to pounds before applying a purchasing constraint",
       "rounding up to a whole number of bags when a fractional bag is not available"
     ],
-    "question_text": "A recipe requires 6 kilograms of flour. The grocery store sells flour only in 5-pound bags. What is the minimum number of bags needed? (Use: 1 kg \u2248 2.2 lbs)",
+    "question_text": "A recipe requires 6 kilograms of flour. The grocery store sells flour only in 5-pound bags. What is the minimum number of bags needed? (Use: 1 kg ≈ 2.2 lbs)",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "2 bags",
@@ -510,12 +510,12 @@
       "D": "3 bags"
     },
     "correct_answer": "D",
-    "explanation": "Convert: 6 kg \u00d7 2.2 lbs/kg = 13.2 lbs needed. Bags required: 13.2 \u00f7 5 = 2.64 \u2192 round up to 3 bags (since partial bags aren't sold).",
+    "explanation": "Convert: 6 kg × 2.2 lbs/kg = 13.2 lbs needed. Bags required: 13.2 ÷ 5 = 2.64 → round up to 3 bags (since partial bags aren't sold).",
     "distractor_logic": {
-      "A": "Student correctly converts and divides (13.2 \u00f7 5 = 2.64) but rounds down to 2 bags, which would not provide enough flour.",
-      "B": "Student overestimates the conversion (e.g., uses 1 kg \u2248 3 lbs: 6 \u00d7 3 = 18 lbs; 18 \u00f7 5 = 3.6 \u2192 4 bags), arriving at too many bags.",
-      "C": "Student reports the converted weight in pounds (13.2 lbs \u2248 13) as the number of bags, confusing units.",
-      "D": "Correct: 6 kg = 13.2 lbs; 13.2 \u00f7 5 = 2.64 \u2192 3 bags needed."
+      "A": "Student correctly converts and divides (13.2 ÷ 5 = 2.64) but rounds down to 2 bags, which would not provide enough flour.",
+      "B": "Student overestimates the conversion (e.g., uses 1 kg ≈ 3 lbs: 6 × 3 = 18 lbs; 18 ÷ 5 = 3.6 → 4 bags), arriving at too many bags.",
+      "C": "Student reports the converted weight in pounds (13.2 lbs ≈ 13) as the number of bags, confusing units.",
+      "D": "Correct: 6 kg = 13.2 lbs; 13.2 ÷ 5 = 2.64 → 3 bags needed."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -534,7 +534,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "6 \u00d7 2.2 = 13.2 lbs. 13.2 \u00f7 5 = 2.64 \u2192 need 3 bags."
+        "hint_text": "6 × 2.2 = 13.2 lbs. 13.2 ÷ 5 = 2.64 → need 3 bags."
       }
     ],
     "content_context": "cooking",
@@ -590,12 +590,12 @@
       "D": "Car B, by 36 km/h"
     },
     "correct_answer": "B",
-    "explanation": "Convert Car B: 60 mph \u00d7 1.6 km/mi = 96 km/h. Compare: 96 km/h > 90 km/h. Car B is faster by 96 \u2212 90 = 6 km/h.",
+    "explanation": "Convert Car B: 60 mph × 1.6 km/mi = 96 km/h. Compare: 96 km/h > 90 km/h. Car B is faster by 96 − 90 = 6 km/h.",
     "distractor_logic": {
-      "A": "Student compares the numbers directly without converting (90 \u2212 60 = 30), treating km/h and mph as equivalent units.",
+      "A": "Student compares the numbers directly without converting (90 − 60 = 30), treating km/h and mph as equivalent units.",
       "B": "Correct: Car B = 96 km/h; Car B is faster by 6 km/h.",
       "C": "Student correctly converts Car B (96 km/h) and finds the 6 km/h difference but assigns the win to Car A.",
-      "D": "Student correctly converts Car B (96 km/h) but subtracts Car B's original mph value instead of Car A's km/h speed: 96 \u2212 60 = 36 km/h."
+      "D": "Student correctly converts Car B (96 km/h) but subtracts Car B's original mph value instead of Car A's km/h speed: 96 − 60 = 36 km/h."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -614,7 +614,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "60 \u00d7 1.6 = 96 km/h. Now: 96 vs 90. Car B wins by 6 km/h."
+        "hint_text": "60 × 1.6 = 96 km/h. Now: 96 vs 90. Car B wins by 6 km/h."
       }
     ],
     "content_context": "travel",
@@ -661,21 +661,21 @@
       "squaring the linear conversion factor before multiplying by an area measurement",
       "recognizing that area conversion requires applying the linear factor twice"
     ],
-    "question_text": "A room measures 15 feet by 12 feet. What is the approximate area of the room in square meters? (Use: 1 foot \u2248 0.3 meters)",
+    "question_text": "A room measures 15 feet by 12 feet. What is the approximate area of the room in square meters? (Use: 1 foot ≈ 0.3 meters)",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "54 m\u00b2",
-      "B": "2,000 m\u00b2",
-      "C": "\u2248 16.2 m\u00b2",
-      "D": "1.62 m\u00b2"
+      "A": "54 m²",
+      "B": "2,000 m²",
+      "C": "≈ 16.2 m²",
+      "D": "1.62 m²"
     },
     "correct_answer": "C",
-    "explanation": "Area in ft\u00b2 = 15 \u00d7 12 = 180 ft\u00b2. Using 1 ft \u2248 0.3 m, the conversion factor for area is (0.3 m/ft)\u00b2 = 0.09 m\u00b2/ft\u00b2. Area \u2248 180 \u00d7 0.09 = 16.2 m\u00b2.",
+    "explanation": "Area in ft² = 15 × 12 = 180 ft². Using 1 ft ≈ 0.3 m, the conversion factor for area is (0.3 m/ft)² = 0.09 m²/ft². Area ≈ 180 × 0.09 = 16.2 m².",
     "distractor_logic": {
-      "A": "Student applies the linear conversion factor (not squared) to the area: 180 \u00d7 0.3 = 54 m\u00b2, forgetting that area units require squaring the conversion factor.",
-      "B": "Student inverts the conversion, dividing by the squared factor instead of multiplying: 180 \u00f7 0.09 = 2,000 m\u00b2.",
-      "C": "Correct: 180 ft\u00b2 \u00d7 (0.3)\u00b2 m\u00b2/ft\u00b2 = 180 \u00d7 0.09 = 16.2 m\u00b2.",
-      "D": "Student correctly computes the area in m\u00b2 as 180 \u00d7 (0.3)\u00b2 = 180 \u00d7 0.09 = 16.2 m\u00b2, but then divides by 10 once more \u2014 perhaps thinking an additional adjustment is needed to convert between sub-units \u2014 arriving at 16.2 \u00f7 10 = 1.62 m\u00b2."
+      "A": "Student applies the linear conversion factor (not squared) to the area: 180 × 0.3 = 54 m², forgetting that area units require squaring the conversion factor.",
+      "B": "Student inverts the conversion, dividing by the squared factor instead of multiplying: 180 ÷ 0.09 = 2,000 m².",
+      "C": "Correct: 180 ft² × (0.3)² m²/ft² = 180 × 0.09 = 16.2 m².",
+      "D": "Student correctly computes the area in m² as 180 × (0.3)² = 180 × 0.09 = 16.2 m², but then divides by 10 once more — perhaps thinking an additional adjustment is needed to convert between sub-units — arriving at 16.2 ÷ 10 = 1.62 m²."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -691,15 +691,15 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Area is measured in square units. When converting ft\u00b2 to m\u00b2, you must square the conversion factor: (0.3)\u00b2 = 0.09 m\u00b2/ft\u00b2."
+        "hint_text": "Area is measured in square units. When converting ft² to m², you must square the conversion factor: (0.3)² = 0.09 m²/ft²."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "180 ft\u00b2 \u00d7 0.09 = 16.2 m\u00b2. (Not 180 \u00d7 0.3, because that only converts one dimension.)"
+        "hint_text": "180 ft² × 0.09 = 16.2 m². (Not 180 × 0.3, because that only converts one dimension.)"
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "A 15\u00d712 ft room is moderate-sized. 16 m\u00b2 \u2248 172 ft\u00b2, which is close. 54 m\u00b2 would be enormous; 1.6 m\u00b2 would be a closet."
+        "hint_text": "A 15×12 ft room is moderate-sized. 16 m² ≈ 172 ft², which is close. 54 m² would be enormous; 1.6 m² would be a closet."
       }
     ],
     "content_context": "construction",
@@ -722,7 +722,7 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": "Revised: (1) distractor D rationale corrected \u2014 previous version claimed 0.3\u00b3 \u2248 0.009 (false: 0.3\u00b3 = 0.027) and 180\u00d70.009=1.62 (false: 180\u00d70.027=4.86). New rationale: student correctly reaches 16.2 m\u00b2 then divides by 10 unnecessarily, giving 1.62. (2) Stem updated to say 'approximate' and use \u2248, answer choice C updated to '\u2248 16.2 m\u00b2', and explanation updated to flag approximation \u2014 per QR.2.7 review."
+    "review_notes": "Revised: (1) distractor D rationale corrected — previous version claimed 0.3³ ≈ 0.009 (false: 0.3³ = 0.027) and 180×0.009=1.62 (false: 180×0.027=4.86). New rationale: student correctly reaches 16.2 m² then divides by 10 unnecessarily, giving 1.62. (2) Stem updated to say 'approximate' and use ≈, answer choice C updated to '≈ 16.2 m²', and explanation updated to flag approximation — per QR.2.7 review."
   },
   {
     "item_id": "QR_A_048",
@@ -755,12 +755,12 @@
       "D": "They are approximately equal in fuel efficiency"
     },
     "correct_answer": "A",
-    "explanation": "Convert 35 mpg to km/L: 35 mi/gal \u00d7 1.6 km/mi \u00f7 3.8 L/gal = 56 \u00f7 3.8 \u2248 14.7 km/L. Convert to L/100km: 100 \u00f7 14.7 \u2248 6.8 L/100km. Since 6.8 < 7, the US car uses less fuel per 100 km and is more efficient.",
+    "explanation": "Convert 35 mpg to km/L: 35 mi/gal × 1.6 km/mi ÷ 3.8 L/gal = 56 ÷ 3.8 ≈ 14.7 km/L. Convert to L/100km: 100 ÷ 14.7 ≈ 6.8 L/100km. Since 6.8 < 7, the US car uses less fuel per 100 km and is more efficient.",
     "distractor_logic": {
-      "A": "Correct: US car \u2248 6.8 L/100km < 7 L/100km, so the US car is more fuel efficient.",
+      "A": "Correct: US car ≈ 6.8 L/100km < 7 L/100km, so the US car is more fuel efficient.",
       "B": "Student assumes the European car wins because it is stated in L/100km (the standard of comparison used) without converting the US car, or misinterprets a higher L/100km as more efficient.",
-      "C": "Student correctly converts the US car to km/L (\u2248 14.7) but stops before converting to L/100km, leaving the two cars in incomparable units and unable to draw the correct conclusion.",
-      "D": "Student rounds both values aggressively (35 mpg \u2248 'about 7 L/100km') and declares a tie, losing the small but meaningful 0.2 L/100km difference in efficiency."
+      "C": "Student correctly converts the US car to km/L (≈ 14.7) but stops before converting to L/100km, leaving the two cars in incomparable units and unable to draw the correct conclusion.",
+      "D": "Student rounds both values aggressively (35 mpg ≈ 'about 7 L/100km') and declares a tie, losing the small but meaningful 0.2 L/100km difference in efficiency."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -780,7 +780,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "35 \u00d7 1.6 = 56 km/gal. 56 \u00f7 3.8 \u2248 14.7 km/L. 100 \u00f7 14.7 \u2248 6.8 L/100km. Compare: 6.8 vs 7."
+        "hint_text": "35 × 1.6 = 56 km/gal. 56 ÷ 3.8 ≈ 14.7 km/L. 100 ÷ 14.7 ≈ 6.8 L/100km. Compare: 6.8 vs 7."
       },
       {
         "strategy": "estimate_first",

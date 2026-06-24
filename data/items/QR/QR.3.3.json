@@ -412,7 +412,7 @@
       "A": "2h",
       "B": "3h",
       "C": "2 + h",
-      "D": "(3/2)h"
+      "D": "($\\frac{3}{2}$)h"
     },
     "correct_answer": "B",
     "explanation": "There are twice as many shirts as hats, so the number of shirts is 2h. The total is shirts plus hats: 2h + h = 3h.",
@@ -420,7 +420,7 @@
       "A": "Student writes the number of shirts (2h) but forgets to add the hats to get the total.",
       "B": "Correct: shirts are 2h, and adding the hats gives 2h + h = 3h.",
       "C": "Student reads 'twice as many' as 'two more than,' writing 2 + h instead of 2h, then omits the total.",
-      "D": "Student reverses the relationship, treating hats as twice the shirts so shirts are h/2, giving h/2 + h = (3/2)h."
+      "D": "Student reverses the relationship, treating hats as twice the shirts so shirts are $\\frac{h}{2}$, giving $\\frac{h}{2}$ + h = ($\\frac{3}{2}$)h."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -897,7 +897,7 @@
     "correct_answer": "D",
     "explanation": "Set the total equal to 70: 5x + 20 = 70. Subtract the fixed fee: 5x = 50. Divide by the monthly rate: x = 10. The member has been enrolled for 10 months.",
     "distractor_logic": {
-      "A": "Student divides the full \\$70 by the monthly rate without first removing the \\$20 fee: 70 / 5 = 14.",
+      "A": "Student divides the full \\$70 by the monthly rate without first removing the \\$20 fee: $\\frac{70}{5}$ = 14.",
       "B": "Student adds the fee instead of subtracting it before dividing: (70 + 20) / 5 = 18.",
       "C": "Student subtracts the \\$20 fee twice before dividing: (70 - 20 - 20) / 5 = 6.",
       "D": "Correct: 5x + 20 = 70 gives 5x = 50, so x = 10 months."
@@ -975,7 +975,7 @@
       "D": "25"
     },
     "correct_answer": "D",
-    "explanation": "Break-even means P = 0. Set 8u - 200 = 0, so 8u = 200, and u = 200 / 8 = 25. The vendor must sell 25 units.",
+    "explanation": "Break-even means P = 0. Set 8u - 200 = 0, so 8u = 200, and u = $\\frac{200}{8}$ = 25. The vendor must sell 25 units.",
     "distractor_logic": {
       "A": "Student multiplies the two numbers instead of dividing: 8 x 200 = 1600.",
       "B": "Student subtracts the rate from the fixed cost: 200 - 8 = 192.",

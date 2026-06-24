@@ -25,15 +25,15 @@
       "A": "No; the ratio y/x is not constant",
       "B": "Yes; k = 6",
       "C": "Yes; k = 3",
-      "D": "Yes; k = 1/3"
+      "D": "Yes; k = $\\frac{1}{3}$"
     },
     "correct_answer": "C",
-    "explanation": "Check y/x for each pair: 6/2 = 3, 12/4 = 3, 18/6 = 3, 24/8 = 3. The ratio is constant, so y varies directly with x and k = 3.",
+    "explanation": "Check y/x for each pair: $\\frac{6}{2}$ = 3, $\\frac{12}{4}$ = 3, $\\frac{18}{6}$ = 3, $\\frac{24}{8}$ = 3. The ratio is constant, so y varies directly with x and k = 3.",
     "distractor_logic": {
       "A": "Student checks whether differences are constant (Δy = 6 is constant, suggesting linearity) but confuses the requirement for direct variation, which is a constant ratio y/x, not a constant difference.",
-      "B": "Student identifies the first y-value (6) as the constant of variation rather than computing the ratio y/x = 6/2 = 3.",
+      "B": "Student identifies the first y-value (6) as the constant of variation rather than computing the ratio y/x = $\\frac{6}{2}$ = 3.",
       "C": "Correct: y/x = 3 for all pairs; k = 3.",
-      "D": "Student inverts the ratio, computing x/y = 2/6 = 1/3 instead of y/x = 3."
+      "D": "Student inverts the ratio, computing x/y = $\\frac{2}{6}$ = $\\frac{1}{3}$ instead of y/x = 3."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -52,7 +52,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "6/2 = 3, 12/4 = 3, 18/6 = 3, 24/8 = 3. All equal → direct variation with k = 3."
+        "hint_text": "$\\frac{6}{2}$ = 3, $\\frac{12}{4}$ = 3, $\\frac{18}{6}$ = 3, $\\frac{24}{8}$ = 3. All equal → direct variation with k = 3."
       }
     ],
     "content_context": "generic",
@@ -106,7 +106,7 @@
       "D": "160"
     },
     "correct_answer": "A",
-    "explanation": "Find k: k = y/x = 20/5 = 4. Apply: y = 4 × 8 = 32.",
+    "explanation": "Find k: k = y/x = $\\frac{20}{5}$ = 4. Apply: y = 4 × 8 = 32.",
     "distractor_logic": {
       "A": "Correct: k = 4; y = 4 × 8 = 32.",
       "B": "Student adds the change in x to the known y-value (20 + (8 − 5) = 23), treating the relationship as additive rather than proportional.",
@@ -130,7 +130,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check: y = 4 × 8 = 32. Verify: 32/8 = 4 = 20/5. ✓"
+        "hint_text": "Check: y = 4 × 8 = 32. Verify: $\\frac{32}{8}$ = 4 = $\\frac{20}{5}$. ✓"
       }
     ],
     "content_context": "generic",
@@ -184,12 +184,12 @@
       "D": "15 N"
     },
     "correct_answer": "D",
-    "explanation": "k = stretch/force = 4/6 = 2/3 cm/N. Equation: 10 = (2/3)x. Solve: x = 10 × (3/2) = 15 N.",
+    "explanation": "k = stretch/force = $\\frac{4}{6}$ = $\\frac{2}{3}$ cm/N. Equation: 10 = ($\\frac{2}{3}$)x. Solve: x = 10 × ($\\frac{3}{2}$) = 15 N.",
     "distractor_logic": {
-      "A": "Student computes k = 4/6 ≈ 0.667 but applies it as a multiplier rather than dividing: force = 10 × 0.667 ≈ 6.7 N, moving in the wrong direction.",
+      "A": "Student computes k = $\\frac{4}{6}$ ≈ 0.667 but applies it as a multiplier rather than dividing: force = 10 × 0.667 ≈ 6.7 N, moving in the wrong direction.",
       "B": "Student adds the given force and the target stretch (6 + 10 = 16 N) instead of using the proportional relationship.",
       "C": "Student multiplies the given force by the target stretch (6 × 10 = 60 N) instead of setting up and solving a direct variation equation.",
-      "D": "Correct: k = 2/3; 10 = (2/3)x → x = 15 N."
+      "D": "Correct: k = $\\frac{2}{3}$; 10 = ($\\frac{2}{3}$)x → x = 15 N."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -208,7 +208,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "k = 4/6 = 2/3. Equation: 10 = (2/3)x → x = 15. Check: (2/3)(15) = 10. ✓"
+        "hint_text": "k = $\\frac{4}{6}$ = $\\frac{2}{3}$. Equation: 10 = ($\\frac{2}{3}$)x → x = 15. Check: ($\\frac{2}{3}$)(15) = 10. ✓"
       }
     ],
     "content_context": "science_and_engineering",
@@ -342,12 +342,12 @@
       "D": "\\$240"
     },
     "correct_answer": "A",
-    "explanation": "Find k: 80 = k(200)/50 → 80 = 4k → k = 20. Apply: C = 20(300)/40 = 6,000/40 = \\$150.",
+    "explanation": "Find k: 80 = k(200)/50 → 80 = 4k → k = 20. Apply: C = 20(300)/40 = 6,$\\frac{000}{40}$ = \\$150.",
     "distractor_logic": {
-      "A": "Correct: k = 20; C = 20 × 300 / 40 = \\$150.",
-      "B": "Student correctly finds k = 20 but uses the original batch size b = 50 instead of the new b = 40: C = 20 × 300 / 50 = \\$120.",
-      "C": "Student scales C by the ratio of the new to old n and the inverse of the new to old b but inverts the batch-size effect: C = 80 × (300/200) × (40/50) = 80 × 1.5 × 0.8 = \\$96.",
-      "D": "Student ignores the inverse relationship with b and treats the formula as direct variation in both n and b: C = 80 × (300/200) × (50/40)... or computes 80 × 3 = \\$240 using a wrong scale factor."
+      "A": "Correct: k = 20; C = 20 × $\\frac{300}{40}$ = \\$150.",
+      "B": "Student correctly finds k = 20 but uses the original batch size b = 50 instead of the new b = 40: C = 20 × $\\frac{300}{50}$ = \\$120.",
+      "C": "Student scales C by the ratio of the new to old n and the inverse of the new to old b but inverts the batch-size effect: C = 80 × ($\\frac{300}{200}$) × ($\\frac{40}{50}$) = 80 × 1.5 × 0.8 = \\$96.",
+      "D": "Student ignores the inverse relationship with b and treats the formula as direct variation in both n and b: C = 80 × ($\\frac{300}{200}$) × ($\\frac{50}{40}$)... or computes 80 × 3 = \\$240 using a wrong scale factor."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -367,7 +367,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "k = 80 × 50 / 200 = 20. Then C = 20 × 300 / 40 = 150."
+        "hint_text": "k = 80 × $\\frac{50}{200}$ = 20. Then C = 20 × $\\frac{300}{40}$ = 150."
       },
       {
         "strategy": "estimate_first",

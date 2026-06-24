@@ -405,18 +405,18 @@
     "question_text": "A line of best fit passes through the points (2, 5) and (6, 17). What is the slope of this line?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "1/3",
+      "A": "$\\frac{1}{3}$",
       "B": "3",
       "C": "1.5",
       "D": "5.5"
     },
     "correct_answer": "B",
-    "explanation": "Slope is rise over run: (y2 - y1) / (x2 - x1) = (17 - 5) / (6 - 2) = 12 / 4 = 3.",
+    "explanation": "Slope is rise over run: $\\frac{y2 - y1}{x2 - x1}$ = $\\frac{17 - 5}{6 - 2}$ = $\\frac{12}{4}$ = 3.",
     "distractor_logic": {
-      "A": "Student inverts the ratio, computing run over rise: (6 - 2)/(17 - 5) = 4/12 = 1/3.",
-      "B": "Correct: (17 - 5)/(6 - 2) = 12/4 = 3.",
-      "C": "Student adds the x-values in the denominator: (17 - 5)/(6 + 2) = 12/8 = 1.5.",
-      "D": "Student adds the y-values in the numerator: (17 + 5)/(6 - 2) = 22/4 = 5.5."
+      "A": "Student inverts the ratio, computing run over rise: $\\frac{6 - 2}{17 - 5}$ = $\\frac{4}{12}$ = $\\frac{1}{3}$.",
+      "B": "Correct: $\\frac{17 - 5}{6 - 2}$ = $\\frac{12}{4}$ = 3.",
+      "C": "Student adds the x-values in the denominator: $\\frac{17 - 5}{6 + 2}$ = $\\frac{12}{8}$ = 1.5.",
+      "D": "Student adds the y-values in the numerator: $\\frac{17 + 5}{6 - 2}$ = $\\frac{22}{4}$ = 5.5."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -487,16 +487,16 @@
     "answer_choices": {
       "A": "-2",
       "B": "2",
-      "C": "-4/3",
-      "D": "-1/2"
+      "C": "$\\frac{-4}{3}$",
+      "D": "$\\frac{-1}{2}$"
     },
     "correct_answer": "A",
-    "explanation": "Slope is (y2 - y1)/(x2 - x1) = (2 - 10)/(5 - 1) = -8/4 = -2. The y-values decrease as x increases, so the slope is negative.",
+    "explanation": "Slope is $\\frac{y2 - y1}{x2 - x1}$ = $\\frac{2 - 10}{5 - 1}$ = $\\frac{-8}{4}$ = -2. The y-values decrease as x increases, so the slope is negative.",
     "distractor_logic": {
-      "A": "Correct: (2 - 10)/(5 - 1) = -8/4 = -2.",
+      "A": "Correct: $\\frac{2 - 10}{5 - 1}$ = $\\frac{-8}{4}$ = -2.",
       "B": "Student computes the magnitude correctly but drops the negative sign, reporting 2.",
-      "C": "Student adds the x-values in the denominator: -8/(5 + 1) = -8/6 = -4/3.",
-      "D": "Student inverts the ratio to run over rise: (5 - 1)/(2 - 10) = 4/(-8) = -1/2."
+      "C": "Student adds the x-values in the denominator: -8/(5 + 1) = $\\frac{-8}{6}$ = $\\frac{-4}{3}$.",
+      "D": "Student inverts the ratio to run over rise: $\\frac{5 - 1}{2 - 10}$ = 4/(-8) = $\\frac{-1}{2}$."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -646,17 +646,17 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "y = 4x + 3",
-      "B": "y = (1/3)x + 4",
+      "B": "y = ($\\frac{1}{3}$)x + 4",
       "C": "y = 3x - 4",
       "D": "y = 3x + 4"
     },
     "correct_answer": "D",
-    "explanation": "The slope is (13 - 4)/(3 - 0) = 9/3 = 3. Because one point has x = 0, its y-value 4 is the y-intercept. So the equation is y = 3x + 4.",
+    "explanation": "The slope is $\\frac{13 - 4}{3 - 0}$ = $\\frac{9}{3}$ = 3. Because one point has x = 0, its y-value 4 is the y-intercept. So the equation is y = 3x + 4.",
     "distractor_logic": {
       "A": "Student swaps slope and intercept, placing the intercept 4 as the slope and the slope 3 as the intercept.",
-      "B": "Student inverts the slope to run over rise, (3 - 0)/(13 - 4) = 3/9 = 1/3, while keeping the correct intercept.",
+      "B": "Student inverts the slope to run over rise, $\\frac{3 - 0}{13 - 4}$ = $\\frac{3}{9}$ = $\\frac{1}{3}$, while keeping the correct intercept.",
       "C": "Student computes the slope correctly but flips the sign of the intercept, using -4 instead of 4.",
-      "D": "Correct: slope = 9/3 = 3 and the point (0, 4) gives intercept 4, so y = 3x + 4."
+      "D": "Correct: slope = $\\frac{9}{3}$ = 3 and the point (0, 4) gives intercept 4, so y = 3x + 4."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -726,17 +726,17 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "5",
-      "B": "1/5",
-      "C": "15/7",
-      "D": "35/3"
+      "B": "$\\frac{1}{5}$",
+      "C": "$\\frac{15}{7}$",
+      "D": "$\\frac{35}{3}$"
     },
     "correct_answer": "A",
-    "explanation": "Slope is (50 - 20)/(10 - 4) = 30/6 = 5.",
+    "explanation": "Slope is $\\frac{50 - 20}{10 - 4}$ = $\\frac{30}{6}$ = 5.",
     "distractor_logic": {
-      "A": "Correct: (50 - 20)/(10 - 4) = 30/6 = 5.",
-      "B": "Student inverts the ratio to run over rise: (10 - 4)/(50 - 20) = 6/30 = 1/5.",
-      "C": "Student adds the x-values in the denominator: (50 - 20)/(10 + 4) = 30/14 = 15/7.",
-      "D": "Student adds the y-values in the numerator: (50 + 20)/(10 - 4) = 70/6 = 35/3."
+      "A": "Correct: $\\frac{50 - 20}{10 - 4}$ = $\\frac{30}{6}$ = 5.",
+      "B": "Student inverts the ratio to run over rise: $\\frac{10 - 4}{50 - 20}$ = $\\frac{6}{30}$ = $\\frac{1}{5}$.",
+      "C": "Student adds the x-values in the denominator: $\\frac{50 - 20}{10 + 4}$ = $\\frac{30}{14}$ = $\\frac{15}{7}$.",
+      "D": "Student adds the y-values in the numerator: $\\frac{50 + 20}{10 - 4}$ = $\\frac{70}{6}$ = $\\frac{35}{3}$."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -814,9 +814,9 @@
     "explanation": "Set y = 35: 35 = 4x + 7. Subtract 7 from both sides: 28 = 4x. Divide by 4: x = 7.",
     "distractor_logic": {
       "A": "Student subtracts the intercept but forgets to divide by the slope, stopping at 35 - 7 = 28.",
-      "B": "Correct: 35 - 7 = 28, then 28 / 4 = 7.",
-      "C": "Student divides by the slope but ignores the intercept, computing 35 / 4 = 8.75.",
-      "D": "Student adds the intercept instead of subtracting it before dividing: (35 + 7)/4 = 42/4 = 10.5."
+      "B": "Correct: 35 - 7 = 28, then $\\frac{28}{4}$ = 7.",
+      "C": "Student divides by the slope but ignores the intercept, computing $\\frac{35}{4}$ = 8.75.",
+      "D": "Student adds the intercept instead of subtracting it before dividing: (35 + 7)/4 = $\\frac{42}{4}$ = 10.5."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1131,12 +1131,12 @@
       "D": "24.8"
     },
     "correct_answer": "B",
-    "explanation": "Set y = 28: 28 = 1.25x + 3. Subtract 3: 25 = 1.25x. Divide by 1.25: x = 25 / 1.25 = 20 (since 1.25 times 20 equals 25).",
+    "explanation": "Set y = 28: 28 = 1.25x + 3. Subtract 3: 25 = 1.25x. Divide by 1.25: x = $\\frac{25}{1}$.25 = 20 (since 1.25 times 20 equals 25).",
     "distractor_logic": {
       "A": "Student subtracts the intercept but forgets to divide by the slope, stopping at 28 - 3 = 25.",
-      "B": "Correct: 28 - 3 = 25, then 25 / 1.25 = 20.",
-      "C": "Student divides by the slope but ignores the intercept: 28 / 1.25 = 22.4.",
-      "D": "Student adds the intercept instead of subtracting before dividing: (28 + 3)/1.25 = 31/1.25 = 24.8."
+      "B": "Correct: 28 - 3 = 25, then $\\frac{25}{1}$.25 = 20.",
+      "C": "Student divides by the slope but ignores the intercept: $\\frac{28}{1}$.25 = 22.4.",
+      "D": "Student adds the intercept instead of subtracting before dividing: (28 + 3)/1.25 = $\\frac{31}{1}$.25 = 24.8."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

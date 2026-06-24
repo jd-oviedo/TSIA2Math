@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "measurement_tools",
-    "context_tags": ["ruler", "scale_reading", "length", "labeled_tick_marks"],
+    "context_tags": [
+      "ruler",
+      "scale_reading",
+      "length",
+      "labeled_tick_marks"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -111,7 +119,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -123,11 +134,16 @@
       }
     ],
     "content_context": "measurement_tools",
-    "context_tags": ["thermometer", "scale_reading", "temperature", "labeled_tick_marks"],
+    "context_tags": [
+      "thermometer",
+      "scale_reading",
+      "temperature",
+      "labeled_tick_marks"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -181,7 +197,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["estimate_first", "identify_key_info"],
+    "applicable_strategies": [
+      "estimate_first",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "estimate_first",
@@ -193,11 +212,16 @@
       }
     ],
     "content_context": "measurement_tools",
-    "context_tags": ["ruler", "scale_reading", "interpolation", "midpoint"],
+    "context_tags": [
+      "ruler",
+      "scale_reading",
+      "interpolation",
+      "midpoint"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -251,7 +275,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -263,11 +290,16 @@
       }
     ],
     "content_context": "measurement_tools",
-    "context_tags": ["number_line", "scale_reading", "interval_calculation", "unlabeled_tick_marks"],
+    "context_tags": [
+      "number_line",
+      "scale_reading",
+      "interval_calculation",
+      "unlabeled_tick_marks"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -321,7 +353,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -333,11 +368,16 @@
       }
     ],
     "content_context": "measurement_tools",
-    "context_tags": ["ruler", "scale_precision", "subdivisions", "decimal_measurement"],
+    "context_tags": [
+      "ruler",
+      "scale_precision",
+      "subdivisions",
+      "decimal_measurement"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -369,7 +409,7 @@
       "estimating a scale reading at a fractional position between labeled tick marks",
       "converting an estimated scale reading from Celsius to Fahrenheit using the standard conversion formula"
     ],
-    "question_text": "A thermometer scale is marked in degrees Celsius at every 5°C: 0°C, 5°C, 10°C, 15°C, and 20°C. The mercury sits approximately three-quarters of the way between the 10°C and 15°C marks. A student needs to report this temperature in degrees Fahrenheit.\n\nUse the formula: F = (9/5)C + 32\n\nWhich of the following is closest to the correct Fahrenheit temperature?",
+    "question_text": "A thermometer scale is marked in degrees Celsius at every 5°C: 0°C, 5°C, 10°C, 15°C, and 20°C. The mercury sits approximately three-quarters of the way between the 10°C and 15°C marks. A student needs to report this temperature in degrees Fahrenheit.\n\nUse the formula: F = ($\\frac{9}{5}$)C + 32\n\nWhich of the following is closest to the correct Fahrenheit temperature?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "about 25°F",
@@ -378,12 +418,12 @@
       "D": "about 40°F"
     },
     "correct_answer": "B",
-    "explanation": "Step 1 — Estimate the Celsius reading:\nThe interval from 10°C to 15°C spans 5°C.\nThree-quarters of the way through: 10 + (3/4)(5) = 10 + 3.75 = 13.75°C\n\nStep 2 — Convert to Fahrenheit:\nF = (9/5)(13.75) + 32\nF = (9 × 13.75) ÷ 5 + 32\nF = 123.75 ÷ 5 + 32\nF = 24.75 + 32\nF = 56.75°F ≈ 57°F",
+    "explanation": "Step 1 — Estimate the Celsius reading:\nThe interval from 10°C to 15°C spans 5°C.\nThree-quarters of the way through: 10 + ($\\frac{3}{4}$)(5) = 10 + 3.75 = 13.75°C\n\nStep 2 — Convert to Fahrenheit:\nF = ($\\frac{9}{5}$)(13.75) + 32\nF = (9 × 13.75) ÷ 5 + 32\nF = 123.75 ÷ 5 + 32\nF = 24.75 + 32\nF = 56.75°F ≈ 57°F",
     "distractor_logic": {
-      "A": "Student correctly estimates the Celsius reading as 13.75°C but omits the +32 step in the conversion formula, computing only (9/5)(13.75) ≈ 24.75°F ≈ 25°F.",
-      "B": "Correct: three-quarters of the way from 10°C to 15°C is 13.75°C; applying F = (9/5)(13.75) + 32 gives 24.75 + 32 = 56.75°F ≈ 57°F.",
-      "C": "Student estimates the mercury as halfway between the tick marks rather than three-quarters of the way, reading approximately 12.5°C; converting gives (9/5)(12.5) + 32 = 22.5 + 32 = 54.5°F ≈ 55°F.",
-      "D": "Student inverts the conversion coefficient, using (5/9) instead of (9/5): (5/9)(13.75) + 32 ≈ 7.6 + 32 ≈ 40°F."
+      "A": "Student correctly estimates the Celsius reading as 13.75°C but omits the +32 step in the conversion formula, computing only ($\\frac{9}{5}$)(13.75) ≈ 24.75°F ≈ 25°F.",
+      "B": "Correct: three-quarters of the way from 10°C to 15°C is 13.75°C; applying F = ($\\frac{9}{5}$)(13.75) + 32 gives 24.75 + 32 = 56.75°F ≈ 57°F.",
+      "C": "Student estimates the mercury as halfway between the tick marks rather than three-quarters of the way, reading approximately 12.5°C; converting gives ($\\frac{9}{5}$)(12.5) + 32 = 22.5 + 32 = 54.5°F ≈ 55°F.",
+      "D": "Student inverts the conversion coefficient, using ($\\frac{5}{9}$) instead of ($\\frac{9}{5}$): ($\\frac{5}{9}$)(13.75) + 32 ≈ 7.6 + 32 ≈ 40°F."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -391,11 +431,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "There are two steps: first estimate the Celsius reading using the 'three-quarters' position between 10°C and 15°C, then apply the full conversion formula F = (9/5)C + 32 — both parts are required."
+        "hint_text": "There are two steps: first estimate the Celsius reading using the 'three-quarters' position between 10°C and 15°C, then apply the full conversion formula F = ($\\frac{9}{5}$)C + 32 — both parts are required."
       },
       {
         "strategy": "estimate_first",
@@ -403,11 +446,17 @@
       }
     ],
     "content_context": "science_lab",
-    "context_tags": ["thermometer", "scale_reading", "interpolation", "unit_conversion", "celsius_to_fahrenheit"],
+    "context_tags": [
+      "thermometer",
+      "scale_reading",
+      "interpolation",
+      "unit_conversion",
+      "celsius_to_fahrenheit"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

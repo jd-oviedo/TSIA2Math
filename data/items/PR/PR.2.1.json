@@ -28,9 +28,9 @@
       "D": "7"
     },
     "correct_answer": "A",
-    "explanation": "Add all five values: 4 + 4 + 7 + 10 + 5 = 30. Divide by the number of values, 5: 30 / 5 = 6. The mean is 6 books.",
+    "explanation": "Add all five values: 4 + 4 + 7 + 10 + 5 = 30. Divide by the number of values, 5: $\\frac{30}{5}$ = 6. The mean is 6 books.",
     "distractor_logic": {
-      "A": "Correct: (4 + 4 + 7 + 10 + 5) / 5 = 30 / 5 = 6.",
+      "A": "Correct: (4 + 4 + 7 + 10 + 5) / 5 = $\\frac{30}{5}$ = 6.",
       "B": "Student reports the mode (4 appears twice) instead of computing the mean.",
       "C": "Student reports the median; sorted, the values are 4, 4, 5, 7, 10 with middle value 5.",
       "D": "Student averages only the smallest and largest values, (4 + 10) / 2 = 7, instead of using all five."
@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "reading_log",
-    "context_tags": ["mean", "central_tendency", "small_dataset", "books_read"],
+    "context_tags": [
+      "mean",
+      "central_tendency",
+      "small_dataset",
+      "books_read"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -101,7 +109,7 @@
     "explanation": "Order the scores from least to greatest: 7, 7, 9, 12, 15. With five values, the median is the middle (third) value, which is 9.",
     "distractor_logic": {
       "A": "Student reports the mode (7 appears twice) instead of the median.",
-      "B": "Student computes the mean, (12 + 7 + 15 + 9 + 7) / 5 = 50 / 5 = 10, instead of the median.",
+      "B": "Student computes the mean, (12 + 7 + 15 + 9 + 7) / 5 = $\\frac{50}{5}$ = 10, instead of the median.",
       "C": "Student takes the middle value of the unordered list (12, 7, 15, 9, 7), which is 15, without sorting first.",
       "D": "Correct: ordered as 7, 7, 9, 12, 15, the middle of five values is 9."
     },
@@ -111,7 +119,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -123,11 +134,16 @@
       }
     ],
     "content_context": "quiz_scores",
-    "context_tags": ["median", "ordering_data", "central_tendency", "quiz_scores"],
+    "context_tags": [
+      "median",
+      "ordering_data",
+      "central_tendency",
+      "quiz_scores"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -181,7 +197,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -189,11 +207,16 @@
       }
     ],
     "content_context": "daily_counts",
-    "context_tags": ["mode", "most_frequent", "central_tendency", "frequency"],
+    "context_tags": [
+      "mode",
+      "most_frequent",
+      "central_tendency",
+      "frequency"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -247,7 +270,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -259,11 +285,16 @@
       }
     ],
     "content_context": "temperatures",
-    "context_tags": ["range", "spread", "max_min", "temperatures"],
+    "context_tags": [
+      "range",
+      "spread",
+      "max_min",
+      "temperatures"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -304,12 +335,12 @@
       "D": "7.5"
     },
     "correct_answer": "B",
-    "explanation": "Add all five values: 0 + 6 + 9 + 7 + 8 = 30. The zero-goal game still counts as one of the five games, so divide by 5: 30 / 5 = 6.",
+    "explanation": "Add all five values: 0 + 6 + 9 + 7 + 8 = 30. The zero-goal game still counts as one of the five games, so divide by 5: $\\frac{30}{5}$ = 6.",
     "distractor_logic": {
-      "A": "Student adds correctly to 30 but divides by 6, miscounting the number of games. 30 / 6 = 5.",
-      "B": "Correct: (0 + 6 + 9 + 7 + 8) / 5 = 30 / 5 = 6.",
+      "A": "Student adds correctly to 30 but divides by 6, miscounting the number of games. $\\frac{30}{6}$ = 5.",
+      "B": "Correct: (0 + 6 + 9 + 7 + 8) / 5 = $\\frac{30}{5}$ = 6.",
       "C": "Student reports the median; ordered as 0, 6, 7, 8, 9, the middle value is 7.",
-      "D": "Student treats the 0 as 'no data' and drops it, dividing by 4: 30 / 4 = 7.5."
+      "D": "Student treats the 0 as 'no data' and drops it, dividing by 4: $\\frac{30}{4}$ = 7.5."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -317,7 +348,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -325,11 +358,16 @@
       }
     ],
     "content_context": "goals_scored",
-    "context_tags": ["mean", "zero_value", "central_tendency", "sports"],
+    "context_tags": [
+      "mean",
+      "zero_value",
+      "central_tendency",
+      "sports"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -373,7 +411,7 @@
     "explanation": "Order the values: 6, 8, 10, 11, 16, 21. With an even count of six, the median is the average of the two middle values, 10 and 11: (10 + 11) / 2 = 10.5.",
     "distractor_logic": {
       "A": "Student takes only the lower of the two middle values, 10, instead of averaging the two middles.",
-      "B": "Student computes the mean, (6 + 21 + 10 + 16 + 8 + 11) / 6 = 72 / 6 = 12, instead of the median.",
+      "B": "Student computes the mean, (6 + 21 + 10 + 16 + 8 + 11) / 6 = $\\frac{72}{6}$ = 12, instead of the median.",
       "C": "Student averages only the smallest and largest values, (6 + 21) / 2 = 13.5.",
       "D": "Correct: ordered as 6, 8, 10, 11, 16, 21, the two middle values average to (10 + 11) / 2 = 10.5."
     },
@@ -383,7 +421,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -395,11 +436,16 @@
       }
     ],
     "content_context": "study_hours",
-    "context_tags": ["median", "even_count", "averaging_middles", "central_tendency"],
+    "context_tags": [
+      "median",
+      "even_count",
+      "averaging_middles",
+      "central_tendency"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -440,11 +486,11 @@
       "D": "10"
     },
     "correct_answer": "C",
-    "explanation": "The mean is (3 + 5 + 6 + 8 + 28) / 5 = 50 / 5 = 10. The median, the middle of 3, 5, 6, 8, 28, is 6. The mean exceeds the median by 10 - 6 = 4.",
+    "explanation": "The mean is (3 + 5 + 6 + 8 + 28) / 5 = $\\frac{50}{5}$ = 10. The median, the middle of 3, 5, 6, 8, 28, is 6. The mean exceeds the median by 10 - 6 = 4.",
     "distractor_logic": {
       "A": "Student uses an incorrect median of 8 (the fourth value, off by one position), giving 10 - 8 = 2.",
       "B": "Student reports the median value itself rather than the difference between the two measures.",
-      "C": "Correct: mean = 50 / 5 = 10, median = 6, and 10 - 6 = 4.",
+      "C": "Correct: mean = $\\frac{50}{5}$ = 10, median = 6, and 10 - 6 = 4.",
       "D": "Student reports the mean value itself rather than how much it exceeds the median."
     },
     "difficulty_level": "Proficient",
@@ -453,7 +499,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -465,11 +514,16 @@
       }
     ],
     "content_context": "donations",
-    "context_tags": ["mean", "median", "difference", "skew"],
+    "context_tags": [
+      "mean",
+      "median",
+      "difference",
+      "skew"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -514,7 +568,7 @@
     "distractor_logic": {
       "A": "Student takes the middle of the unordered list (34, 12, 28, 15, 41, 19, 26), whose fourth value is 15, without sorting first.",
       "B": "Correct: ordered as 12, 15, 19, 26, 28, 34, 41, the fourth of seven values is 26.",
-      "C": "Student computes the mean, (34 + 12 + 28 + 15 + 41 + 19 + 26) / 7 = 175 / 7 = 25, instead of the median.",
+      "C": "Student computes the mean, (34 + 12 + 28 + 15 + 41 + 19 + 26) / 7 = $\\frac{175}{7}$ = 25, instead of the median.",
       "D": "Student sorts correctly but miscounts the middle position, picking the fifth value, 28, instead of the fourth."
     },
     "difficulty_level": "Proficient",
@@ -523,7 +577,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -535,11 +592,16 @@
       }
     ],
     "content_context": "game_points",
-    "context_tags": ["median", "ordering_data", "off_by_one", "central_tendency"],
+    "context_tags": [
+      "median",
+      "ordering_data",
+      "off_by_one",
+      "central_tendency"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -593,7 +655,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -605,11 +670,16 @@
       }
     ],
     "content_context": "temperatures",
-    "context_tags": ["range", "negative_numbers", "spread", "temperatures"],
+    "context_tags": [
+      "range",
+      "negative_numbers",
+      "spread",
+      "temperatures"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -655,7 +725,7 @@
       "A": "Student reports the mode, 6, the most frequent score, instead of the median.",
       "B": "Student finds the median of the three distinct scores {6, 8, 10}, taking 8, while ignoring how many students earned each score.",
       "C": "Correct: across all 10 ordered scores, the fifth and sixth values are 6 and 8, so the median is (6 + 8) / 2 = 7.",
-      "D": "Student computes the mean, (5 times 6 + 3 times 8 + 2 times 10) / 10 = 74 / 10 = 7.4, instead of the median."
+      "D": "Student computes the mean, (5 times 6 + 3 times 8 + 2 times 10) / 10 = $\\frac{74}{10}$ = 7.4, instead of the median."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -663,7 +733,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -675,11 +748,16 @@
       }
     ],
     "content_context": "quiz_scores",
-    "context_tags": ["median", "frequency_data", "expanding_frequencies", "central_tendency"],
+    "context_tags": [
+      "median",
+      "frequency_data",
+      "expanding_frequencies",
+      "central_tendency"
+    ],
     "estimated_time_seconds": 115,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -720,12 +798,12 @@
       "D": "12"
     },
     "correct_answer": "B",
-    "explanation": "The original three values total 3 times 8 = 24. Adding 12 gives a new total of 36 across four values: 36 / 4 = 9.",
+    "explanation": "The original three values total 3 times 8 = 24. Adding 12 gives a new total of 36 across four values: $\\frac{36}{4}$ = 9.",
     "distractor_logic": {
       "A": "Student assumes adding a single value leaves the mean unchanged and keeps 8.",
-      "B": "Correct: original total = 3 times 8 = 24; new total = 24 + 12 = 36; new mean = 36 / 4 = 9.",
+      "B": "Correct: original total = 3 times 8 = 24; new total = 24 + 12 = 36; new mean = $\\frac{36}{4}$ = 9.",
       "C": "Student averages the old mean with the new value, (8 + 12) / 2 = 10, instead of rebuilding from the total.",
-      "D": "Student divides the new total by the old count, 36 / 3 = 12, forgetting that n grew to 4."
+      "D": "Student divides the new total by the old count, $\\frac{36}{3}$ = 12, forgetting that n grew to 4."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -733,7 +811,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -745,11 +826,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["mean", "adding_a_value", "reconstructing_total", "central_tendency"],
+    "context_tags": [
+      "mean",
+      "adding_a_value",
+      "reconstructing_total",
+      "central_tendency"
+    ],
     "estimated_time_seconds": 125,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -803,7 +889,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["eliminate_wrong_answers", "identify_key_info"],
+    "applicable_strategies": [
+      "eliminate_wrong_answers",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "eliminate_wrong_answers",
@@ -815,11 +904,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["median", "outlier", "resistance", "measures_of_center"],
+    "context_tags": [
+      "median",
+      "outlier",
+      "resistance",
+      "measures_of_center"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -873,7 +967,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -885,11 +982,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["mean", "mode", "reverse_reasoning", "sum_constraint"],
+    "context_tags": [
+      "mean",
+      "mode",
+      "reverse_reasoning",
+      "sum_constraint"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -943,7 +1045,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -955,11 +1060,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["mean", "removing_a_value", "reverse_reasoning", "totals"],
+    "context_tags": [
+      "mean",
+      "removing_a_value",
+      "reverse_reasoning",
+      "totals"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -1000,12 +1110,12 @@
       "D": "24"
     },
     "correct_answer": "C",
-    "explanation": "The largest value is smallest plus range: 4 + 26 = 30. The original total is 6 times 20 = 120. Removing 30 leaves 120 - 30 = 90 across 5 values: 90 / 5 = 18.",
+    "explanation": "The largest value is smallest plus range: 4 + 26 = 30. The original total is 6 times 20 = 120. Removing 30 leaves 120 - 30 = 90 across 5 values: $\\frac{90}{5}$ = 18.",
     "distractor_logic": {
-      "A": "Student divides the new total by the original count, 90 / 6 = 15, forgetting the set shrank to 5.",
+      "A": "Student divides the new total by the original count, $\\frac{90}{6}$ = 15, forgetting the set shrank to 5.",
       "B": "Student assumes removing one value leaves the mean unchanged, keeping 20.",
-      "C": "Correct: largest = 4 + 26 = 30; new total = 120 - 30 = 90; new mean = 90 / 5 = 18.",
-      "D": "Student reduces the count to 5 but forgets to subtract the removed value, computing 120 / 5 = 24."
+      "C": "Correct: largest = 4 + 26 = 30; new total = 120 - 30 = 90; new mean = $\\frac{90}{5}$ = 18.",
+      "D": "Student reduces the count to 5 but forgets to subtract the removed value, computing $\\frac{120}{5}$ = 24."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1013,7 +1123,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -1025,11 +1138,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["mean", "range", "removing_a_value", "multi_step"],
+    "context_tags": [
+      "mean",
+      "range",
+      "removing_a_value",
+      "multi_step"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

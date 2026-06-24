@@ -257,12 +257,12 @@
       "D": "Dataset B, with a mean of 8."
     },
     "correct_answer": "D",
-    "explanation": "Dataset A has mean 25 / 5 = 5. Dataset B has mean 40 / 5 = 8, lifted by its large value 26. Dataset B is greater, with a mean of 8.",
+    "explanation": "Dataset A has mean $\\frac{25}{5}$ = 5. Dataset B has mean $\\frac{40}{5}$ = 8, lifted by its large value 26. Dataset B is greater, with a mean of 8.",
     "distractor_logic": {
       "A": "Student compares the first four values, where A's are mostly larger, and overlooks B's value 26, which raises B's mean above A's.",
       "B": "Student assumes equal means because both datasets cluster in the low single digits, ignoring B's large value.",
       "C": "Student computes A's mean (5) correctly but concludes A is greater, dismissing the one large value that makes B's mean higher.",
-      "D": "Correct: B's mean is 40 / 5 = 8, greater than A's 5."
+      "D": "Correct: B's mean is $\\frac{40}{5}$ = 8, greater than A's 5."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -803,7 +803,7 @@
       "D": "The mean, \\$40,000."
     },
     "correct_answer": "B",
-    "explanation": "The mean is (9 times 40,000 + 400,000) / 10 = 760,000 / 10 = \\$76,000, which no ordinary employee actually earns. The median is \\$40,000, the middle salary, and it better represents a typical employee.",
+    "explanation": "The mean is (9 times 40,000 + 400,000) / 10 = 760,$\\frac{000}{10}$ = \\$76,000, which no ordinary employee actually earns. The median is \\$40,000, the middle salary, and it better represents a typical employee.",
     "distractor_logic": {
       "A": "Student prefers the mean because it uses all values, not recognizing that the \\$400,000 salary pulls it far above typical pay.",
       "B": "Correct: the median, \\$40,000, resists the owner's outlier salary and reflects a typical employee.",

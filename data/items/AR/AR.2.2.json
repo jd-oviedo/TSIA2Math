@@ -97,7 +97,7 @@
       "solving a one-step inequality involving a fractional variable by multiplying by a positive number",
       "recognizing that multiplying by a positive value preserves the inequality direction"
     ],
-    "question_text": "Solve for x:  x/3 < 12",
+    "question_text": "Solve for x:  $\\frac{x}{3}$ < 12",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "x < 4",
@@ -106,7 +106,7 @@
       "D": "x < 36"
     },
     "correct_answer": "D",
-    "explanation": "Multiply both sides by 3:\n(x/3) × 3 < 12 × 3\nx < 36\n\nMultiplying by a positive number does not change the inequality direction. Check: x = 30 → 30/3 = 10 < 12 ✓",
+    "explanation": "Multiply both sides by 3:\n($\\frac{x}{3}$) × 3 < 12 × 3\nx < 36\n\nMultiplying by a positive number does not change the inequality direction. Check: x = 30 → $\\frac{30}{3}$ = 10 < 12 ✓",
     "distractor_logic": {
       "A": "Student divides 12 by 3 instead of multiplying: 12 ÷ 3 = 4, giving x < 4.",
       "B": "Student subtracts 3 from 12 instead of multiplying: 12 − 3 = 9, giving x < 9.",
@@ -130,7 +130,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Test x = 30: does 30/3 = 10 < 12? If yes, your answer should include x = 30."
+        "hint_text": "Test x = 30: does $\\frac{30}{3}$ = 10 < 12? If yes, your answer should include x = 30."
       }
     ],
     "content_context": "generic",
@@ -646,18 +646,18 @@
     "question_text": "Solve for x:  −2(3x − 1) > 4(x + 2)",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x < −3/5",
-      "B": "x > −3/5",
-      "C": "x < 3/5",
-      "D": "x > 3/5"
+      "A": "x < −$\\frac{3}{5}$",
+      "B": "x > −$\\frac{3}{5}$",
+      "C": "x < $\\frac{3}{5}$",
+      "D": "x > $\\frac{3}{5}$"
     },
     "correct_answer": "A",
-    "explanation": "Distribute on both sides:\n−6x + 2 > 4x + 8\n\nSubtract 4x from both sides and subtract 2 from both sides:\n−10x > 6\n\nDivide by −10 and flip the inequality direction:\nx < 6 ÷ (−10)\nx < −3/5\n\nCheck: x = −1 → left = −2(−4) = 8, right = 4(1) = 4. 8 > 4 ✓ (x = −1 < −3/5 satisfies); x = 0 → left = 2, right = 8. 2 > 8? No ✓ (x = 0 > −3/5, correctly excluded)",
+    "explanation": "Distribute on both sides:\n−6x + 2 > 4x + 8\n\nSubtract 4x from both sides and subtract 2 from both sides:\n−10x > 6\n\nDivide by −10 and flip the inequality direction:\nx < 6 ÷ (−10)\nx < −$\\frac{3}{5}$\n\nCheck: x = −1 → left = −2(−4) = 8, right = 4(1) = 4. 8 > 4 ✓ (x = −1 < −$\\frac{3}{5}$ satisfies); x = 0 → left = 2, right = 8. 2 > 8? No ✓ (x = 0 > −$\\frac{3}{5}$, correctly excluded)",
     "distractor_logic": {
-      "A": "Correct: distributing and collecting gives −10x > 6; dividing by −10 and flipping gives x < −3/5.",
-      "B": "Student correctly distributes and collects (−10x > 6) but forgets to flip the inequality when dividing by −10, writing x > −3/5.",
-      "C": "Student divides 6 by 10 without applying the negative sign on the coefficient, computing 6 ÷ 10 = 3/5 and writing x < 3/5.",
-      "D": "Student divides 6 by 10 (ignoring the negative coefficient) and also fails to flip the direction, writing x > 3/5."
+      "A": "Correct: distributing and collecting gives −10x > 6; dividing by −10 and flipping gives x < −$\\frac{3}{5}$.",
+      "B": "Student correctly distributes and collects (−10x > 6) but forgets to flip the inequality when dividing by −10, writing x > −$\\frac{3}{5}$.",
+      "C": "Student divides 6 by 10 without applying the negative sign on the coefficient, computing 6 ÷ 10 = $\\frac{3}{5}$ and writing x < $\\frac{3}{5}$.",
+      "D": "Student divides 6 by 10 (ignoring the negative coefficient) and also fails to flip the direction, writing x > $\\frac{3}{5}$."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

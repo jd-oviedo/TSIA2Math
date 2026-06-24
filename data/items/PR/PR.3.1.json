@@ -22,17 +22,17 @@
     "question_text": "A spinner is divided into 8 equal sections: 3 red, 2 blue, 2 green, and 1 yellow. If the spinner is spun once, what is the probability that it lands on red?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "3/8",
-      "B": "3/4",
-      "C": "3/5",
-      "D": "5/8"
+      "A": "$\\frac{3}{8}$",
+      "B": "$\\frac{3}{4}$",
+      "C": "$\\frac{3}{5}$",
+      "D": "$\\frac{5}{8}$"
     },
     "correct_answer": "A",
-    "explanation": "Probability is favorable outcomes divided by total outcomes. There are 3 red sections out of 8 equal sections total, so P(red) = 3/8.",
+    "explanation": "Probability is favorable outcomes divided by total outcomes. There are 3 red sections out of 8 equal sections total, so P(red) = $\\frac{3}{8}$.",
     "distractor_logic": {
-      "A": "Correct: 3 red sections out of 8 total sections gives P(red) = 3/8.",
-      "B": "Student divides the 3 red sections by the number of colors (4) instead of the number of sections, getting 3/4.",
-      "C": "Student compares red to non-red (3 to 5) as a ratio instead of dividing by the total, getting 3/5.",
+      "A": "Correct: 3 red sections out of 8 total sections gives P(red) = $\\frac{3}{8}$.",
+      "B": "Student divides the 3 red sections by the number of colors (4) instead of the number of sections, getting $\\frac{3}{4}$.",
+      "C": "Student compares red to non-red (3 to 5) as a ratio instead of dividing by the total, getting $\\frac{3}{5}$.",
       "D": "Student finds the probability of NOT landing on red (5 non-red sections out of 8) instead of the probability of red."
     },
     "difficulty_level": "Basic",
@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["spinner", "simple_probability", "single_event", "sample_space"],
+    "context_tags": [
+      "spinner",
+      "simple_probability",
+      "single_event",
+      "sample_space"
+    ],
     "estimated_time_seconds": 70,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -92,17 +100,17 @@
     "question_text": "A box contains 6 pens: 2 black, 3 blue, and 1 red. If one pen is selected at random, what is the probability of selecting a black pen?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "2/5",
-      "B": "1/3",
-      "C": "1/2",
-      "D": "2/3"
+      "A": "$\\frac{2}{5}$",
+      "B": "$\\frac{1}{3}$",
+      "C": "$\\frac{1}{2}$",
+      "D": "$\\frac{2}{3}$"
     },
     "correct_answer": "B",
-    "explanation": "There are 2 black pens out of 6 pens total, so P(black) = 2/6, which simplifies to 1/3.",
+    "explanation": "There are 2 black pens out of 6 pens total, so P(black) = $\\frac{2}{6}$, which simplifies to $\\frac{1}{3}$.",
     "distractor_logic": {
-      "A": "Student miscounts the total as 5 pens (dropping the red pen), getting 2 black out of 5, or 2/5.",
-      "B": "Correct: 2 black pens out of 6 total gives 2/6 = 1/3.",
-      "C": "Student compares black to non-black (2 to 4) instead of black to the total, getting 2/4 = 1/2.",
+      "A": "Student miscounts the total as 5 pens (dropping the red pen), getting 2 black out of 5, or $\\frac{2}{5}$.",
+      "B": "Correct: 2 black pens out of 6 total gives $\\frac{2}{6}$ = $\\frac{1}{3}$.",
+      "C": "Student compares black to non-black (2 to 4) instead of black to the total, getting $\\frac{2}{4}$ = $\\frac{1}{2}$.",
       "D": "Student finds P(not black), counting 4 non-black pens out of 6, instead of P(black)."
     },
     "difficulty_level": "Basic",
@@ -111,7 +119,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -119,11 +129,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["objects_in_container", "simple_probability", "single_event"],
+    "context_tags": [
+      "objects_in_container",
+      "simple_probability",
+      "single_event"
+    ],
     "estimated_time_seconds": 65,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -158,18 +172,18 @@
     "question_text": "A standard six-sided die is rolled once. What is the probability of rolling a 2 or a 5?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "1/6",
-      "B": "2/5",
-      "C": "1/3",
-      "D": "1/2"
+      "A": "$\\frac{1}{6}$",
+      "B": "$\\frac{2}{5}$",
+      "C": "$\\frac{1}{3}$",
+      "D": "$\\frac{1}{2}$"
     },
     "correct_answer": "C",
-    "explanation": "The favorable outcomes are 2 and 5, which is 2 outcomes out of the 6 faces. P = 2/6 = 1/3.",
+    "explanation": "The favorable outcomes are 2 and 5, which is 2 outcomes out of the 6 faces. P = $\\frac{2}{6}$ = $\\frac{1}{3}$.",
     "distractor_logic": {
       "A": "Student counts only one favorable face instead of both 2 and 5, getting 1 out of 6.",
       "B": "Student uses the value 5 from the phrase '2 or 5' as the denominator, getting 2 out of 5.",
-      "C": "Correct: two favorable faces (2 and 5) out of 6 gives 2/6 = 1/3.",
-      "D": "Student divides the 2 favorable faces by the 4 non-favorable faces instead of by the total, getting 2/4 = 1/2."
+      "C": "Correct: two favorable faces (2 and 5) out of 6 gives $\\frac{2}{6}$ = $\\frac{1}{3}$.",
+      "D": "Student divides the 2 favorable faces by the 4 non-favorable faces instead of by the total, getting $\\frac{2}{4}$ = $\\frac{1}{2}$."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -177,7 +191,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -189,11 +206,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["die", "simple_probability", "compound_outcome", "single_event"],
+    "context_tags": [
+      "die",
+      "simple_probability",
+      "compound_outcome",
+      "single_event"
+    ],
     "estimated_time_seconds": 70,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -228,18 +250,18 @@
     "question_text": "A bag holds 10 marbles: 6 white and 4 black. If one marble is drawn at random, what is the probability of drawing a black marble?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "2/3",
-      "B": "3/5",
-      "C": "1/4",
-      "D": "2/5"
+      "A": "$\\frac{2}{3}$",
+      "B": "$\\frac{3}{5}$",
+      "C": "$\\frac{1}{4}$",
+      "D": "$\\frac{2}{5}$"
     },
     "correct_answer": "D",
-    "explanation": "There are 4 black marbles out of 10 total, so P(black) = 4/10 = 2/5.",
+    "explanation": "There are 4 black marbles out of 10 total, so P(black) = $\\frac{4}{10}$ = $\\frac{2}{5}$.",
     "distractor_logic": {
-      "A": "Student compares black to white (4 to 6) as a ratio instead of black to the total, getting 4/6 = 2/3.",
+      "A": "Student compares black to white (4 to 6) as a ratio instead of black to the total, getting $\\frac{4}{6}$ = $\\frac{2}{3}$.",
       "B": "Student finds P(white) = 6 out of 10 instead of P(black).",
       "C": "Student reads '4 black' as a 1-in-4 chance, confusing the count with the denominator.",
-      "D": "Correct: 4 black marbles out of 10 total gives 4/10 = 2/5."
+      "D": "Correct: 4 black marbles out of 10 total gives $\\frac{4}{10}$ = $\\frac{2}{5}$."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -247,7 +269,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -255,11 +279,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["marbles", "simple_probability", "single_event", "two_category"],
+    "context_tags": [
+      "marbles",
+      "simple_probability",
+      "single_event",
+      "two_category"
+    ],
     "estimated_time_seconds": 65,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -294,18 +323,18 @@
     "question_text": "A set of 10 cards is numbered 1 through 10. One card is drawn at random. What is the probability of drawing a card with a number greater than 7?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "3/10",
-      "B": "2/5",
-      "C": "3/7",
-      "D": "1/5"
+      "A": "$\\frac{3}{10}$",
+      "B": "$\\frac{2}{5}$",
+      "C": "$\\frac{3}{7}$",
+      "D": "$\\frac{1}{5}$"
     },
     "correct_answer": "A",
-    "explanation": "The numbers greater than 7 are 8, 9, and 10, which is 3 favorable outcomes out of 10 cards. P = 3/10.",
+    "explanation": "The numbers greater than 7 are 8, 9, and 10, which is 3 favorable outcomes out of 10 cards. P = $\\frac{3}{10}$.",
     "distractor_logic": {
-      "A": "Correct: the cards greater than 7 are 8, 9, and 10, giving 3 out of 10 = 3/10.",
-      "B": "Student includes 7 itself, reading 'greater than 7' as '7 or greater', counting 4 out of 10 = 2/5.",
-      "C": "Student divides the 3 favorable cards by 7 (the threshold value) instead of by the 10 cards, getting 3/7.",
-      "D": "Student counts only 8 and 9 as greater than 7, dropping 10, getting 2 out of 10 = 1/5."
+      "A": "Correct: the cards greater than 7 are 8, 9, and 10, giving 3 out of 10 = $\\frac{3}{10}$.",
+      "B": "Student includes 7 itself, reading 'greater than 7' as '7 or greater', counting 4 out of 10 = $\\frac{2}{5}$.",
+      "C": "Student divides the 3 favorable cards by 7 (the threshold value) instead of by the 10 cards, getting $\\frac{3}{7}$.",
+      "D": "Student counts only 8 and 9 as greater than 7, dropping 10, getting 2 out of 10 = $\\frac{1}{5}$."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -313,7 +342,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -325,11 +357,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["numbered_cards", "simple_probability", "inequality_event", "single_event"],
+    "context_tags": [
+      "numbered_cards",
+      "simple_probability",
+      "inequality_event",
+      "single_event"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -364,18 +401,18 @@
     "question_text": "A bag contains 10 marbles: 4 red, 3 blue, 2 green, and 1 yellow. If one marble is drawn at random, what is the probability of drawing a red or yellow marble?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "2/5",
-      "B": "1/2",
-      "C": "1/10",
-      "D": "5/9"
+      "A": "$\\frac{2}{5}$",
+      "B": "$\\frac{1}{2}$",
+      "C": "$\\frac{1}{10}$",
+      "D": "$\\frac{5}{9}$"
     },
     "correct_answer": "B",
-    "explanation": "Red and yellow are separate outcomes, so add them: 4 red plus 1 yellow is 5 favorable marbles out of 10 total. P = 5/10 = 1/2.",
+    "explanation": "Red and yellow are separate outcomes, so add them: 4 red plus 1 yellow is 5 favorable marbles out of 10 total. P = $\\frac{5}{10}$ = $\\frac{1}{2}$.",
     "distractor_logic": {
       "A": "Student counts only red (4 out of 10), forgetting to add the yellow outcome.",
-      "B": "Correct: 4 red plus 1 yellow is 5 favorable out of 10, giving 5/10 = 1/2.",
+      "B": "Correct: 4 red plus 1 yellow is 5 favorable out of 10, giving $\\frac{5}{10}$ = $\\frac{1}{2}$.",
       "C": "Student counts only yellow (1 out of 10), forgetting to add the red outcomes.",
-      "D": "Student finds the 5 favorable marbles but miscounts the total as 9, dropping one marble, getting 5/9."
+      "D": "Student finds the 5 favorable marbles but miscounts the total as 9, dropping one marble, getting $\\frac{5}{9}$."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -383,7 +420,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -395,11 +435,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["marbles", "or_event", "mutually_exclusive", "simple_probability"],
+    "context_tags": [
+      "marbles",
+      "or_event",
+      "mutually_exclusive",
+      "simple_probability"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -434,16 +479,16 @@
     "question_text": "A set of 12 cards is numbered 1 through 12. One card is drawn at random. What is the probability of drawing a card with a prime number?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "1/2",
-      "B": "1/3",
-      "C": "5/12",
-      "D": "5/11"
+      "A": "$\\frac{1}{2}$",
+      "B": "$\\frac{1}{3}$",
+      "C": "$\\frac{5}{12}$",
+      "D": "$\\frac{5}{11}$"
     },
     "correct_answer": "C",
-    "explanation": "The prime numbers from 1 to 12 are 2, 3, 5, 7, and 11, which is 5 favorable cards out of 12. P = 5/12. Note that 1 is not prime.",
+    "explanation": "The prime numbers from 1 to 12 are 2, 3, 5, 7, and 11, which is 5 favorable cards out of 12. P = $\\frac{5}{12}$. Note that 1 is not prime.",
     "distractor_logic": {
-      "A": "Student counts 1 as a prime, getting 6 primes (1, 2, 3, 5, 7, 11) out of 12, which is 6/12 = 1/2.",
-      "B": "Student drops 11 from the prime list, counting only 2, 3, 5, 7 (4 out of 12), getting 4/12 = 1/3.",
+      "A": "Student counts 1 as a prime, getting 6 primes (1, 2, 3, 5, 7, 11) out of 12, which is $\\frac{6}{12}$ = $\\frac{1}{2}$.",
+      "B": "Student drops 11 from the prime list, counting only 2, 3, 5, 7 (4 out of 12), getting $\\frac{4}{12}$ = $\\frac{1}{3}$.",
       "C": "Correct: the primes from 1 to 12 are 2, 3, 5, 7, 11, giving 5 out of 12.",
       "D": "Student finds 5 primes but miscounts the total as 11 by starting the count at 2 instead of 1."
     },
@@ -453,7 +498,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -465,11 +513,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["numbered_cards", "prime_numbers", "simple_probability", "interim_count"],
+    "context_tags": [
+      "numbered_cards",
+      "prime_numbers",
+      "simple_probability",
+      "interim_count"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -504,18 +557,18 @@
     "question_text": "A spinner has 8 equal sections numbered 1 through 8. What is the probability that a single spin lands on a number that is odd or greater than 5?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "7/8",
-      "B": "1/2",
-      "C": "3/8",
-      "D": "3/4"
+      "A": "$\\frac{7}{8}$",
+      "B": "$\\frac{1}{2}$",
+      "C": "$\\frac{3}{8}$",
+      "D": "$\\frac{3}{4}$"
     },
     "correct_answer": "D",
-    "explanation": "Odd numbers are 1, 3, 5, 7. Numbers greater than 5 are 6, 7, 8. The combined set, counting 7 only once, is 1, 3, 5, 6, 7, 8, which is 6 outcomes out of 8. P = 6/8 = 3/4.",
+    "explanation": "Odd numbers are 1, 3, 5, 7. Numbers greater than 5 are 6, 7, 8. The combined set, counting 7 only once, is 1, 3, 5, 6, 7, 8, which is 6 outcomes out of 8. P = $\\frac{6}{8}$ = $\\frac{3}{4}$.",
     "distractor_logic": {
       "A": "Student adds the 4 odd outcomes and the 3 'greater than 5' outcomes as 7, double-counting 7 (which belongs to both groups) instead of counting the combined set once.",
       "B": "Student counts only the odd outcomes (4 out of 8), ignoring the 'greater than 5' condition.",
       "C": "Student counts only the 'greater than 5' outcomes 6, 7, 8 (3 out of 8), ignoring the odd condition.",
-      "D": "Correct: the combined set 1, 3, 5, 6, 7, 8 has 6 outcomes out of 8, giving 6/8 = 3/4."
+      "D": "Correct: the combined set 1, 3, 5, 6, 7, 8 has 6 outcomes out of 8, giving $\\frac{6}{8}$ = $\\frac{3}{4}$."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -523,7 +576,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["draw_diagram", "identify_key_info"],
+    "applicable_strategies": [
+      "draw_diagram",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "draw_diagram",
@@ -535,11 +591,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["spinner", "or_event", "overlapping_events", "union"],
+    "context_tags": [
+      "spinner",
+      "or_event",
+      "overlapping_events",
+      "union"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -574,17 +635,17 @@
     "question_text": "A bag contains 10 marbles: 6 red, 3 blue, and 1 green. If one marble is drawn at random, what is the probability that it is NOT red?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "2/5",
-      "B": "3/5",
-      "C": "2/3",
-      "D": "3/10"
+      "A": "$\\frac{2}{5}$",
+      "B": "$\\frac{3}{5}$",
+      "C": "$\\frac{2}{3}$",
+      "D": "$\\frac{3}{10}$"
     },
     "correct_answer": "A",
-    "explanation": "Marbles that are not red are the 3 blue plus the 1 green, which is 4 out of 10. P(not red) = 4/10 = 2/5.",
+    "explanation": "Marbles that are not red are the 3 blue plus the 1 green, which is 4 out of 10. P(not red) = $\\frac{4}{10}$ = $\\frac{2}{5}$.",
     "distractor_logic": {
-      "A": "Correct: 'not red' is 3 blue plus 1 green, which is 4 out of 10, giving 4/10 = 2/5.",
+      "A": "Correct: 'not red' is 3 blue plus 1 green, which is 4 out of 10, giving $\\frac{4}{10}$ = $\\frac{2}{5}$.",
       "B": "Student finds P(red) = 6 out of 10 instead of P(not red).",
-      "C": "Student compares the 4 not-red marbles to the 6 red marbles as a ratio instead of dividing by the total, getting 4/6 = 2/3.",
+      "C": "Student compares the 4 not-red marbles to the 6 red marbles as a ratio instead of dividing by the total, getting $\\frac{4}{6}$ = $\\frac{2}{3}$.",
       "D": "Student counts only blue as 'not red', forgetting the green marble, getting 3 out of 10."
     },
     "difficulty_level": "Proficient",
@@ -593,7 +654,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -605,11 +669,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["marbles", "complement_event", "not_event", "simple_probability"],
+    "context_tags": [
+      "marbles",
+      "complement_event",
+      "not_event",
+      "simple_probability"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -644,17 +713,17 @@
     "question_text": "A set of 20 cards is numbered 1 through 20. One card is drawn at random. What is the probability of drawing a card that is a multiple of 4?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "1/5",
-      "B": "1/4",
-      "C": "1/2",
-      "D": "3/20"
+      "A": "$\\frac{1}{5}$",
+      "B": "$\\frac{1}{4}$",
+      "C": "$\\frac{1}{2}$",
+      "D": "$\\frac{3}{20}$"
     },
     "correct_answer": "B",
-    "explanation": "The multiples of 4 from 1 to 20 are 4, 8, 12, 16, and 20, which is 5 favorable cards out of 20. P = 5/20 = 1/4.",
+    "explanation": "The multiples of 4 from 1 to 20 are 4, 8, 12, 16, and 20, which is 5 favorable cards out of 20. P = $\\frac{5}{20}$ = $\\frac{1}{4}$.",
     "distractor_logic": {
-      "A": "Student drops 20 from the list of multiples (4, 8, 12, 16), counting 4 out of 20, which gives 1/5.",
-      "B": "Correct: the multiples of 4 from 1 to 20 are 4, 8, 12, 16, 20, giving 5 out of 20 = 1/4.",
-      "C": "Student counts multiples of 2 instead of multiples of 4, getting 10 out of 20 = 1/2.",
+      "A": "Student drops 20 from the list of multiples (4, 8, 12, 16), counting 4 out of 20, which gives $\\frac{1}{5}$.",
+      "B": "Correct: the multiples of 4 from 1 to 20 are 4, 8, 12, 16, 20, giving 5 out of 20 = $\\frac{1}{4}$.",
+      "C": "Student counts multiples of 2 instead of multiples of 4, getting 10 out of 20 = $\\frac{1}{2}$.",
       "D": "Student counts the factors of 4 (1, 2, 4) instead of the multiples of 4, getting 3 out of 20."
     },
     "difficulty_level": "Proficient",
@@ -663,7 +732,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -675,11 +747,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["numbered_cards", "multiples", "simple_probability", "interim_count"],
+    "context_tags": [
+      "numbered_cards",
+      "multiples",
+      "simple_probability",
+      "interim_count"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -711,7 +788,7 @@
       "reverse-reasoning from a stated probability to an unknown count in the sample space",
       "setting up favorable over total when one category count is unknown"
     ],
-    "question_text": "A bag contains only red and blue marbles. There are 12 blue marbles, and the probability of drawing a red marble is 1/4. How many red marbles are in the bag?",
+    "question_text": "A bag contains only red and blue marbles. There are 12 blue marbles, and the probability of drawing a red marble is $\\frac{1}{4}$. How many red marbles are in the bag?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "3",
@@ -720,11 +797,11 @@
       "D": "48"
     },
     "correct_answer": "C",
-    "explanation": "Let r be the number of red marbles. Then r/(r + 12) = 1/4. Cross-multiplying gives 4r = r + 12, so 3r = 12 and r = 4.",
+    "explanation": "Let r be the number of red marbles. Then r/(r + 12) = $\\frac{1}{4}$. Cross-multiplying gives 4r = r + 12, so 3r = 12 and r = 4.",
     "distractor_logic": {
-      "A": "Student sets r/12 = 1/4 (treating the 12 blue as the total) and solves r = 3, instead of using r/(r + 12).",
-      "B": "Student solves for the total number of marbles, since blue is 3/4 of the total the total is 16, but reports the total instead of the red count.",
-      "C": "Correct: r/(r + 12) = 1/4 gives 4r = r + 12, so 3r = 12 and r = 4.",
+      "A": "Student sets $\\frac{r}{12}$ = $\\frac{1}{4}$ (treating the 12 blue as the total) and solves r = 3, instead of using r/(r + 12).",
+      "B": "Student solves for the total number of marbles, since blue is $\\frac{3}{4}$ of the total the total is 16, but reports the total instead of the red count.",
+      "C": "Correct: r/(r + 12) = $\\frac{1}{4}$ gives 4r = r + 12, so 3r = 12 and r = 4.",
       "D": "Student multiplies the 12 blue marbles by the denominator 4, getting 48, instead of setting up the proportion."
     },
     "difficulty_level": "Advanced",
@@ -733,7 +810,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -741,15 +821,20 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Test each option as the red count, add it to 12 for the total, and check which one makes the probability of red equal exactly 1/4."
+        "hint_text": "Test each option as the red count, add it to 12 for the total, and check which one makes the probability of red equal exactly $\\frac{1}{4}$."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["marbles", "reverse_reasoning", "unknown_count", "proportion"],
+    "context_tags": [
+      "marbles",
+      "reverse_reasoning",
+      "unknown_count",
+      "proportion"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -781,7 +866,7 @@
       "reverse-reasoning from a probability and a partial count to the size of the full sample space",
       "interpreting a probability as a part-to-whole relationship to recover the whole"
     ],
-    "question_text": "In a class, the probability that a randomly chosen student plays a sport is 3/5. If 18 students play a sport, how many students are in the class?",
+    "question_text": "In a class, the probability that a randomly chosen student plays a sport is $\\frac{3}{5}$. If 18 students play a sport, how many students are in the class?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "12",
@@ -790,12 +875,12 @@
       "D": "30"
     },
     "correct_answer": "D",
-    "explanation": "If 18/N = 3/5, then 3N = 18 times 5 = 90, so N = 30. Check: 18 out of 30 is 3/5.",
+    "explanation": "If $\\frac{18}{N}$ = $\\frac{3}{5}$, then 3N = 18 times 5 = 90, so N = 30. Check: 18 out of 30 is $\\frac{3}{5}$.",
     "distractor_logic": {
-      "A": "Student finds the number who do NOT play a sport (2/5 of 30 is 12) and reports that instead of the class size.",
+      "A": "Student finds the number who do NOT play a sport ($\\frac{2}{5}$ of 30 is 12) and reports that instead of the class size.",
       "B": "Student multiplies 18 by the denominator 5 to get 90 but never divides by the numerator 3.",
-      "C": "Student recognizes that 1/5 equals 6 students but adds only one fifth to 18 (18 plus 6) instead of the two fifths needed to reach the whole class.",
-      "D": "Correct: 18/N = 3/5 gives 3N = 90, so N = 30."
+      "C": "Student recognizes that $\\frac{1}{5}$ equals 6 students but adds only one fifth to 18 (18 plus 6) instead of the two fifths needed to reach the whole class.",
+      "D": "Correct: $\\frac{18}{N}$ = $\\frac{3}{5}$ gives 3N = 90, so N = 30."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -803,23 +888,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The 18 students are the favorable part and 3/5 is the part-to-whole fraction. Set 18 over the unknown total equal to 3/5."
+        "hint_text": "The 18 students are the favorable part and $\\frac{3}{5}$ is the part-to-whole fraction. Set 18 over the unknown total equal to $\\frac{3}{5}$."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "For each option, treat it as the class size and check whether 18 out of that total reduces to 3/5."
+        "hint_text": "For each option, treat it as the class size and check whether 18 out of that total reduces to $\\frac{3}{5}$."
       }
     ],
     "content_context": "school_sports",
-    "context_tags": ["reverse_reasoning", "part_to_whole", "unknown_total", "proportion"],
+    "context_tags": [
+      "reverse_reasoning",
+      "part_to_whole",
+      "unknown_total",
+      "proportion"
+    ],
     "estimated_time_seconds": 130,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -851,7 +944,7 @@
       "reverse-reasoning from a probability to an unknown count in the other category",
       "expressing favorable over total when the unknown appears only in the denominator"
     ],
-    "question_text": "A jar contains 8 green marbles and some yellow marbles. The probability of drawing a green marble is 2/3. How many yellow marbles are in the jar?",
+    "question_text": "A jar contains 8 green marbles and some yellow marbles. The probability of drawing a green marble is $\\frac{2}{3}$. How many yellow marbles are in the jar?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "4",
@@ -860,10 +953,10 @@
       "D": "24"
     },
     "correct_answer": "A",
-    "explanation": "Let y be the number of yellow marbles. Then 8/(8 + y) = 2/3. Cross-multiplying gives 24 = 2(8 + y) = 16 + 2y, so 2y = 8 and y = 4.",
+    "explanation": "Let y be the number of yellow marbles. Then 8/(8 + y) = $\\frac{2}{3}$. Cross-multiplying gives 24 = 2(8 + y) = 16 + 2y, so 2y = 8 and y = 4.",
     "distractor_logic": {
-      "A": "Correct: 8/(8 + y) = 2/3 gives 24 = 16 + 2y, so 2y = 8 and y = 4.",
-      "B": "Student sets 8/y = 2/3 (treating yellow as the total) and solves y = 12, instead of using 8/(8 + y).",
+      "A": "Correct: 8/(8 + y) = $\\frac{2}{3}$ gives 24 = 16 + 2y, so 2y = 8 and y = 4.",
+      "B": "Student sets $\\frac{8}{y}$ = $\\frac{2}{3}$ (treating yellow as the total) and solves y = 12, instead of using 8/(8 + y).",
       "C": "Student multiplies the 8 green marbles by the numerator 2 to get 16, instead of setting up the proportion.",
       "D": "Student multiplies the 8 green marbles by the denominator 3 to get 24, instead of setting up the proportion."
     },
@@ -873,7 +966,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -881,15 +977,20 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Test each option as the yellow count, build the total, and check which makes the probability of green equal 2/3."
+        "hint_text": "Test each option as the yellow count, build the total, and check which makes the probability of green equal $\\frac{2}{3}$."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["marbles", "reverse_reasoning", "unknown_count", "proportion"],
+    "context_tags": [
+      "marbles",
+      "reverse_reasoning",
+      "unknown_count",
+      "proportion"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -924,18 +1025,18 @@
     "question_text": "A bag has 4 red and 6 blue marbles. If 2 more red marbles are added to the bag, what is the new probability of drawing a red marble?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "3/5",
-      "B": "1/2",
-      "C": "1/3",
-      "D": "2/5"
+      "A": "$\\frac{3}{5}$",
+      "B": "$\\frac{1}{2}$",
+      "C": "$\\frac{1}{3}$",
+      "D": "$\\frac{2}{5}$"
     },
     "correct_answer": "B",
-    "explanation": "After adding 2 red marbles there are 4 + 2 = 6 red marbles and 6 + 6 = 12 marbles total. The new probability is 6/12 = 1/2.",
+    "explanation": "After adding 2 red marbles there are 4 + 2 = 6 red marbles and 6 + 6 = 12 marbles total. The new probability is $\\frac{6}{12}$ = $\\frac{1}{2}$.",
     "distractor_logic": {
-      "A": "Student adds the 2 new marbles to the red count (6) but forgets they also raise the total, getting 6/10 = 3/5.",
-      "B": "Correct: after adding, there are 6 red out of 12 total, giving 6/12 = 1/2.",
-      "C": "Student adds the 2 new marbles to the total (12) but forgets they were red, leaving red at 4, getting 4/12 = 1/3.",
-      "D": "Student computes the original probability (4 red out of 10) and ignores the added marbles, getting 4/10 = 2/5."
+      "A": "Student adds the 2 new marbles to the red count (6) but forgets they also raise the total, getting $\\frac{6}{10}$ = $\\frac{3}{5}$.",
+      "B": "Correct: after adding, there are 6 red out of 12 total, giving $\\frac{6}{12}$ = $\\frac{1}{2}$.",
+      "C": "Student adds the 2 new marbles to the total (12) but forgets they were red, leaving red at 4, getting $\\frac{4}{12}$ = $\\frac{1}{3}$.",
+      "D": "Student computes the original probability (4 red out of 10) and ignores the added marbles, getting $\\frac{4}{10}$ = $\\frac{2}{5}$."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -943,7 +1044,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -955,11 +1059,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["marbles", "changing_sample_space", "adding_items", "simple_probability"],
+    "context_tags": [
+      "marbles",
+      "changing_sample_space",
+      "adding_items",
+      "simple_probability"
+    ],
     "estimated_time_seconds": 125,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -994,18 +1103,18 @@
     "question_text": "A bag has 5 red and 7 green marbles. If 3 green marbles are removed from the bag, what is the new probability of drawing a green marble?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "1/3",
-      "B": "7/9",
-      "C": "4/9",
-      "D": "7/12"
+      "A": "$\\frac{1}{3}$",
+      "B": "$\\frac{7}{9}$",
+      "C": "$\\frac{4}{9}$",
+      "D": "$\\frac{7}{12}$"
     },
     "correct_answer": "C",
-    "explanation": "After removing 3 green marbles there are 7 - 3 = 4 green marbles and 12 - 3 = 9 marbles total. The new probability is 4/9.",
+    "explanation": "After removing 3 green marbles there are 7 - 3 = 4 green marbles and 12 - 3 = 9 marbles total. The new probability is $\\frac{4}{9}$.",
     "distractor_logic": {
-      "A": "Student removes the 3 green from the green count (4) but forgets the total also shrank, getting 4/12 = 1/3.",
-      "B": "Student removes the 3 from the total (9) but forgets the green count dropped, leaving green at 7, getting 7/9.",
-      "C": "Correct: after removing 3 green, there are 4 green out of 9 total, giving 4/9.",
-      "D": "Student computes the original probability (7 green out of 12) and ignores the removed marbles, getting 7/12."
+      "A": "Student removes the 3 green from the green count (4) but forgets the total also shrank, getting $\\frac{4}{12}$ = $\\frac{1}{3}$.",
+      "B": "Student removes the 3 from the total (9) but forgets the green count dropped, leaving green at 7, getting $\\frac{7}{9}$.",
+      "C": "Correct: after removing 3 green, there are 4 green out of 9 total, giving $\\frac{4}{9}$.",
+      "D": "Student computes the original probability (7 green out of 12) and ignores the removed marbles, getting $\\frac{7}{12}$."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1013,7 +1122,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -1025,11 +1137,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["marbles", "changing_sample_space", "removing_items", "simple_probability"],
+    "context_tags": [
+      "marbles",
+      "changing_sample_space",
+      "removing_items",
+      "simple_probability"
+    ],
     "estimated_time_seconds": 130,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

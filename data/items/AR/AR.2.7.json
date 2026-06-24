@@ -23,17 +23,17 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "m = 2 and m = −2",
-      "B": "m = 3 and m = 1/3",
+      "B": "m = 3 and m = $\\frac{1}{3}$",
       "C": "m = −4 and m = −4",
-      "D": "m = 5 and m = −1/5"
+      "D": "m = 5 and m = −$\\frac{1}{5}$"
     },
     "correct_answer": "C",
-    "explanation": "Parallel lines have the same slope (and different y-intercepts). The only pair with equal slopes is m = −4 and m = −4.\n\nChoice D (m = 5 and m = −1/5) gives a product of −1, which means those lines are perpendicular, not parallel.",
+    "explanation": "Parallel lines have the same slope (and different y-intercepts). The only pair with equal slopes is m = −4 and m = −4.\n\nChoice D (m = 5 and m = −$\\frac{1}{5}$) gives a product of −1, which means those lines are perpendicular, not parallel.",
     "distractor_logic": {
       "A": "Student thinks lines with slopes of the same magnitude but opposite signs are parallel — confuses sign symmetry with the equal-slope condition required for parallelism.",
       "B": "Student thinks a slope and its reciprocal indicate parallel lines — confuses the reciprocal relationship with the negative-reciprocal relationship that defines perpendicularity.",
       "C": "Correct: m = −4 and m = −4 are equal, so the lines are parallel.",
-      "D": "Student selects the perpendicular pair: (5)(−1/5) = −1, indicating perpendicular lines, not parallel."
+      "D": "Student selects the perpendicular pair: (5)(−$\\frac{1}{5}$) = −1, indicating perpendicular lines, not parallel."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["parallel_lines", "slope", "equal_slopes", "perpendicular_lines"],
+    "context_tags": [
+      "parallel_lines",
+      "slope",
+      "equal_slopes",
+      "perpendicular_lines"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -69,7 +77,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_B_045",
     "schema_version": "2.0",
@@ -90,20 +97,20 @@
       "finding the slope of a line perpendicular to a given line",
       "applying the negative-reciprocal rule to a fractional slope"
     ],
-    "question_text": "Two lines are perpendicular. Line 1 has slope 2/3. What is the slope of Line 2?",
+    "question_text": "Two lines are perpendicular. Line 1 has slope $\\frac{2}{3}$. What is the slope of Line 2?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "−3/2",
-      "B": "3/2",
-      "C": "−2/3",
-      "D": "2/3"
+      "A": "−$\\frac{3}{2}$",
+      "B": "$\\frac{3}{2}$",
+      "C": "−$\\frac{2}{3}$",
+      "D": "$\\frac{2}{3}$"
     },
     "correct_answer": "A",
-    "explanation": "Perpendicular lines have slopes that are negative reciprocals of each other — their product equals −1.\n\nThe negative reciprocal of 2/3 is −3/2.\n\nVerify: (2/3)(−3/2) = −6/6 = −1 ✓",
+    "explanation": "Perpendicular lines have slopes that are negative reciprocals of each other — their product equals −1.\n\nThe negative reciprocal of $\\frac{2}{3}$ is −$\\frac{3}{2}$.\n\nVerify: ($\\frac{2}{3}$)(−$\\frac{3}{2}$) = −$\\frac{6}{6}$ = −1 ✓",
     "distractor_logic": {
-      "A": "Correct: the negative reciprocal of 2/3 is −3/2.",
-      "B": "Student takes the reciprocal (flips numerator and denominator) but forgets to negate: 3/2 instead of −3/2.",
-      "C": "Student negates the slope but forgets to take the reciprocal: −2/3 instead of −3/2.",
+      "A": "Correct: the negative reciprocal of $\\frac{2}{3}$ is −$\\frac{3}{2}$.",
+      "B": "Student takes the reciprocal (flips numerator and denominator) but forgets to negate: $\\frac{3}{2}$ instead of −$\\frac{3}{2}$.",
+      "C": "Student negates the slope but forgets to take the reciprocal: −$\\frac{2}{3}$ instead of −$\\frac{3}{2}$.",
       "D": "Student reports the same slope as Line 1 — the condition for parallel lines, not perpendicular."
     },
     "difficulty_level": "Basic",
@@ -112,7 +119,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -120,15 +130,20 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Multiply your answer by 2/3. If the product equals −1, you have the correct perpendicular slope."
+        "hint_text": "Multiply your answer by $\\frac{2}{3}$. If the product equals −1, you have the correct perpendicular slope."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["perpendicular_lines", "negative_reciprocal", "slope", "fractional_slope"],
+    "context_tags": [
+      "perpendicular_lines",
+      "negative_reciprocal",
+      "slope",
+      "fractional_slope"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -140,7 +155,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_P_030",
     "schema_version": "2.0",
@@ -170,10 +184,10 @@
       "D": "Perpendicular, because both lines have the same x-coefficient magnitude"
     },
     "correct_answer": "B",
-    "explanation": "Convert each equation to slope-intercept form:\n\n2x + 3y = 6 → 3y = −2x + 6 → y = (−2/3)x + 2, so m₁ = −2/3\n3x − 2y = 4 → −2y = −3x + 4 → y = (3/2)x − 2, so m₂ = 3/2\n\nTest: m₁ × m₂ = (−2/3)(3/2) = −6/6 = −1\n\nThe product of slopes equals −1, so the lines are perpendicular.",
+    "explanation": "Convert each equation to slope-intercept form:\n\n2x + 3y = 6 → 3y = −2x + 6 → y = (−$\\frac{2}{3}$)x + 2, so m₁ = −$\\frac{2}{3}$\n3x − 2y = 4 → −2y = −3x + 4 → y = ($\\frac{3}{2}$)x − 2, so m₂ = $\\frac{3}{2}$\n\nTest: m₁ × m₂ = (−$\\frac{2}{3}$)($\\frac{3}{2}$) = −$\\frac{6}{6}$ = −1\n\nThe product of slopes equals −1, so the lines are perpendicular.",
     "distractor_logic": {
       "A": "Student compares the raw x-coefficients (2 and 3) without converting to slope-intercept form, incorrectly concluding the lines are parallel based on coefficient structure.",
-      "B": "Correct: m₁ = −2/3, m₂ = 3/2, and (−2/3)(3/2) = −1, confirming perpendicularity.",
+      "B": "Correct: m₁ = −$\\frac{2}{3}$, m₂ = $\\frac{3}{2}$, and (−$\\frac{2}{3}$)($\\frac{3}{2}$) = −1, confirming perpendicularity.",
       "C": "Student converts both equations to slope-intercept form correctly but makes an arithmetic error computing m₁ × m₂, arriving at a value other than −1 and concluding neither.",
       "D": "Student correctly identifies the lines as perpendicular but uses a false justification — the equal x-coefficient magnitude (both involve 2 and 3) is coincidental and not the criterion for perpendicularity."
     },
@@ -183,7 +197,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -195,11 +212,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["parallel_lines", "perpendicular_lines", "standard_form", "slope_comparison"],
+    "context_tags": [
+      "parallel_lines",
+      "perpendicular_lines",
+      "standard_form",
+      "slope_comparison"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -211,7 +233,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_P_031",
     "schema_version": "2.0",
@@ -232,20 +253,20 @@
       "writing the equation of a line perpendicular to a given line through a specified point",
       "finding the negative reciprocal of a fractional slope and applying point-slope form"
     ],
-    "question_text": "A line is given by y = (1/2)x + 4. What is the equation of the line perpendicular to this line that passes through the point (−2, 3)?",
+    "question_text": "A line is given by y = ($\\frac{1}{2}$)x + 4. What is the equation of the line perpendicular to this line that passes through the point (−2, 3)?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "y = −2x + 1",
       "B": "y = −2x − 1",
-      "C": "y = (1/2)x + 4",
+      "C": "y = ($\\frac{1}{2}$)x + 4",
       "D": "y = −2x + 5"
     },
     "correct_answer": "B",
-    "explanation": "Step 1 — Find the perpendicular slope:\nThe given slope is 1/2. The negative reciprocal is −2.\n\nStep 2 — Apply point-slope form with slope −2 and point (−2, 3):\ny − 3 = −2(x − (−2))\ny − 3 = −2(x + 2)\ny − 3 = −2x − 4\ny = −2x − 1\n\nVerify: y(−2) = −2(−2) − 1 = 4 − 1 = 3 ✓",
+    "explanation": "Step 1 — Find the perpendicular slope:\nThe given slope is $\\frac{1}{2}$. The negative reciprocal is −2.\n\nStep 2 — Apply point-slope form with slope −2 and point (−2, 3):\ny − 3 = −2(x − (−2))\ny − 3 = −2(x + 2)\ny − 3 = −2x − 4\ny = −2x − 1\n\nVerify: y(−2) = −2(−2) − 1 = 4 − 1 = 3 ✓",
     "distractor_logic": {
       "A": "Student correctly finds slope = −2 and sets up point-slope form, but makes a sign arithmetic error on the constant: arrives at b = +1 instead of −1.",
       "B": "Correct: perpendicular slope = −2; using point (−2, 3) gives y = −2x − 1.",
-      "C": "Student returns the original line equation, using slope 1/2 instead of the perpendicular slope −2.",
+      "C": "Student returns the original line equation, using slope $\\frac{1}{2}$ instead of the perpendicular slope −2.",
       "D": "Student correctly finds slope = −2 but distributes −2(x + 2) as −2x + 2 (treats the +2 as positive rather than distributing the negative), giving y − 3 = −2x + 2 → y = −2x + 5."
     },
     "difficulty_level": "Proficient",
@@ -254,11 +275,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "First find the perpendicular slope: flip 1/2 to get 2, then negate to get −2. Then use point-slope form with (−2, 3)."
+        "hint_text": "First find the perpendicular slope: flip $\\frac{1}{2}$ to get 2, then negate to get −2. Then use point-slope form with (−2, 3)."
       },
       {
         "strategy": "plug_in_values",
@@ -266,11 +290,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["perpendicular_lines", "negative_reciprocal", "point_slope_form", "write_equation"],
+    "context_tags": [
+      "perpendicular_lines",
+      "negative_reciprocal",
+      "point_slope_form",
+      "write_equation"
+    ],
     "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -282,7 +311,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_A_023",
     "schema_version": "2.0",
@@ -312,11 +340,11 @@
       "D": "Parallel, because dividing each equation by 2 gives proportional terms"
     },
     "correct_answer": "C",
-    "explanation": "Convert each equation to slope-intercept form:\n\n4x − 6y = 12 → −6y = −4x + 12 → y = (2/3)x − 2, so m₁ = 2/3\n6x + 4y = 8 → 4y = −6x + 8 → y = (−3/2)x + 2, so m₂ = −3/2\n\nTest: m₁ × m₂ = (2/3)(−3/2) = −6/6 = −1\n\nThe slopes are negative reciprocals, so the lines are perpendicular.",
+    "explanation": "Convert each equation to slope-intercept form:\n\n4x − 6y = 12 → −6y = −4x + 12 → y = ($\\frac{2}{3}$)x − 2, so m₁ = $\\frac{2}{3}$\n6x + 4y = 8 → 4y = −6x + 8 → y = (−$\\frac{3}{2}$)x + 2, so m₂ = −$\\frac{3}{2}$\n\nTest: m₁ × m₂ = ($\\frac{2}{3}$)(−$\\frac{3}{2}$) = −$\\frac{6}{6}$ = −1\n\nThe slopes are negative reciprocals, so the lines are perpendicular.",
     "distractor_logic": {
       "A": "Student notices the numbers 4 and 6 appear in both equations and concludes the lines must be proportionally related — a superficial pattern match that bypasses converting to slope-intercept form.",
-      "B": "Student correctly converts both equations and identifies m₁ = 2/3 and m₂ = −3/2 as different, but fails to compute their product — concluding 'different slopes = neither' without applying the perpendicularity test.",
-      "C": "Correct: m₁ × m₂ = (2/3)(−3/2) = −1, confirming the lines are perpendicular.",
+      "B": "Student correctly converts both equations and identifies m₁ = $\\frac{2}{3}$ and m₂ = −$\\frac{3}{2}$ as different, but fails to compute their product — concluding 'different slopes = neither' without applying the perpendicularity test.",
+      "C": "Correct: m₁ × m₂ = ($\\frac{2}{3}$)(−$\\frac{3}{2}$) = −1, confirming the lines are perpendicular.",
       "D": "Student divides each equation by 2 (getting 2x − 3y = 6 and 3x + 2y = 4) and compares coefficients directly, incorrectly concluding the terms are proportional without converting to slope-intercept form."
     },
     "difficulty_level": "Advanced",
@@ -325,7 +353,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -337,11 +368,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["perpendicular_lines", "standard_form", "fractional_slope", "slope_comparison"],
+    "context_tags": [
+      "perpendicular_lines",
+      "standard_form",
+      "fractional_slope",
+      "slope_comparison"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -353,7 +389,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_A_024",
     "schema_version": "2.0",
@@ -396,7 +431,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -408,11 +446,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["coincident_lines", "parallel_lines", "slope_intercept_form", "same_line"],
+    "context_tags": [
+      "coincident_lines",
+      "parallel_lines",
+      "slope_intercept_form",
+      "same_line"
+    ],
     "estimated_time_seconds": 150,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

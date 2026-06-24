@@ -28,12 +28,12 @@
       "D": "144"
     },
     "correct_answer": "C",
-    "explanation": "The ratio 3:5 means 3 red for every 5 blue, so the whole is 3 + 5 = 8 parts. Red = 3/8 of 240 = (3 × 240) ÷ 8 = 720 ÷ 8 = 90.",
+    "explanation": "The ratio 3:5 means 3 red for every 5 blue, so the whole is 3 + 5 = 8 parts. Red = $\\frac{3}{8}$ of 240 = (3 × 240) ÷ 8 = 720 ÷ 8 = 90.",
     "distractor_logic": {
-      "A": "Student identifies the blue part (5 out of 8) instead of the red part, computing 5/8 × 240 = 150.",
+      "A": "Student identifies the blue part (5 out of 8) instead of the red part, computing $\\frac{5}{8}$ × 240 = 150.",
       "B": "Student multiplies the two ratio numbers together (3 × 5 = 15) rather than using the ratio to partition the total.",
-      "C": "Correct: 3 out of 3 + 5 = 8 total parts, so red = 3/8 × 240 = 90.",
-      "D": "Student treats the ratio 3:5 as the fraction 3/5 and computes 3/5 × 240 = 144, omitting the correct denominator of 8."
+      "C": "Correct: 3 out of 3 + 5 = 8 total parts, so red = $\\frac{3}{8}$ × 240 = 90.",
+      "D": "Student treats the ratio 3:5 as the fraction $\\frac{3}{5}$ and computes $\\frac{3}{5}$ × 240 = 144, omitting the correct denominator of 8."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -729,18 +729,18 @@
     "question_text": "Alloy X is made of copper and zinc in a ratio of 3:2. Alloy Y is made of copper and zinc in a ratio of 1:4. A metallurgist combines 100 g of Alloy X with 150 g of Alloy Y. What fraction of the resulting mixture is copper?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "9/25",
-      "B": "2/5",
-      "C": "3/5",
-      "D": "1/5"
+      "A": "$\\frac{9}{25}$",
+      "B": "$\\frac{2}{5}$",
+      "C": "$\\frac{3}{5}$",
+      "D": "$\\frac{1}{5}$"
     },
     "correct_answer": "A",
-    "explanation": "Alloy X: copper fraction = 3/5, so copper from X = 3/5 × 100 = 60 g. Alloy Y: copper fraction = 1/5, so copper from Y = 1/5 × 150 = 30 g. Total copper = 90 g; total mixture = 100 + 150 = 250 g. Fraction copper = 90/250 = 9/25.",
+    "explanation": "Alloy X: copper fraction = $\\frac{3}{5}$, so copper from X = $\\frac{3}{5}$ × 100 = 60 g. Alloy Y: copper fraction = $\\frac{1}{5}$, so copper from Y = $\\frac{1}{5}$ × 150 = 30 g. Total copper = 90 g; total mixture = 100 + 150 = 250 g. Fraction copper = $\\frac{90}{250}$ = $\\frac{9}{25}$.",
     "distractor_logic": {
-      "A": "Correct: copper from X = 60 g, from Y = 30 g; total = 90/250 = 9/25.",
-      "B": "Student uses 100 g for both alloys (ignoring the actual 150 g of Alloy Y), giving (60 + 20)/(100 + 100) = 80/200 = 2/5.",
-      "C": "Student uses only Alloy X's copper fraction (3/5) as the answer, ignoring Alloy Y entirely.",
-      "D": "Student uses only Alloy Y's copper fraction (1/5) as the answer, ignoring Alloy X entirely."
+      "A": "Correct: copper from X = 60 g, from Y = 30 g; total = $\\frac{90}{250}$ = $\\frac{9}{25}$.",
+      "B": "Student uses 100 g for both alloys (ignoring the actual 150 g of Alloy Y), giving $\\frac{60 + 20}{100 + 100}$ = $\\frac{80}{200}$ = $\\frac{2}{5}$.",
+      "C": "Student uses only Alloy X's copper fraction ($\\frac{3}{5}$) as the answer, ignoring Alloy Y entirely.",
+      "D": "Student uses only Alloy Y's copper fraction ($\\frac{1}{5}$) as the answer, ignoring Alloy X entirely."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -756,11 +756,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Convert each ratio to a fraction of copper first: 3:2 → 3/5, and 1:4 → 1/5. The two alloys have different masses."
+        "hint_text": "Convert each ratio to a fraction of copper first: 3:2 → $\\frac{3}{5}$, and 1:4 → $\\frac{1}{5}$. The two alloys have different masses."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Copper from X = 3/5 × 100 = 60 g. Copper from Y = 1/5 × 150 = 30 g. Total mixture = 250 g."
+        "hint_text": "Copper from X = $\\frac{3}{5}$ × 100 = 60 g. Copper from Y = $\\frac{1}{5}$ × 150 = 30 g. Total mixture = 250 g."
       },
       {
         "strategy": "estimate_first",

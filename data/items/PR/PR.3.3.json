@@ -22,18 +22,18 @@
     "question_text": "A fair coin is flipped and a fair six-sided die is rolled. The two actions are independent. What is the probability of getting heads on the coin AND rolling a 4 on the die?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "1/2",
-      "B": "1/12",
-      "C": "1/6",
-      "D": "2/3"
+      "A": "$\\frac{1}{2}$",
+      "B": "$\\frac{1}{12}$",
+      "C": "$\\frac{1}{6}$",
+      "D": "$\\frac{2}{3}$"
     },
     "correct_answer": "B",
-    "explanation": "For independent events, multiply the probabilities. P(heads) = 1/2 and P(rolling a 4) = 1/6, so P(both) = 1/2 times 1/6 = 1/12.",
+    "explanation": "For independent events, multiply the probabilities. P(heads) = $\\frac{1}{2}$ and P(rolling a 4) = $\\frac{1}{6}$, so P(both) = $\\frac{1}{2}$ times $\\frac{1}{6}$ = $\\frac{1}{12}$.",
     "distractor_logic": {
-      "A": "Student reports only the coin probability (1/2) and ignores the die event.",
-      "B": "Correct: 1/2 times 1/6 = 1/12.",
-      "C": "Student reports only the die probability (1/6) and ignores the coin event.",
-      "D": "Student adds the probabilities (1/2 + 1/6 = 4/6 = 2/3) instead of multiplying them."
+      "A": "Student reports only the coin probability ($\\frac{1}{2}$) and ignores the die event.",
+      "B": "Correct: $\\frac{1}{2}$ times $\\frac{1}{6}$ = $\\frac{1}{12}$.",
+      "C": "Student reports only the die probability ($\\frac{1}{6}$) and ignores the coin event.",
+      "D": "Student adds the probabilities ($\\frac{1}{2}$ + $\\frac{1}{6}$ = $\\frac{4}{6}$ = $\\frac{2}{3}$) instead of multiplying them."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -41,7 +41,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -49,11 +51,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_probability", "independent_events", "and_event", "coin_die"],
+    "context_tags": [
+      "compound_probability",
+      "independent_events",
+      "and_event",
+      "coin_die"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -88,18 +95,18 @@
     "question_text": "Spinner 1 has 4 equal sections, one of which is red. Spinner 2 has 5 equal sections, one of which is blue. Each spinner is spun once, independently. What is the probability that Spinner 1 lands on red AND Spinner 2 lands on blue?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "1/20",
-      "B": "9/20",
-      "C": "1/4",
-      "D": "1/5"
+      "A": "$\\frac{1}{20}$",
+      "B": "$\\frac{9}{20}$",
+      "C": "$\\frac{1}{4}$",
+      "D": "$\\frac{1}{5}$"
     },
     "correct_answer": "A",
-    "explanation": "The spins are independent, so multiply: P(red) = 1/4 and P(blue) = 1/5, giving P(both) = 1/4 times 1/5 = 1/20.",
+    "explanation": "The spins are independent, so multiply: P(red) = $\\frac{1}{4}$ and P(blue) = $\\frac{1}{5}$, giving P(both) = $\\frac{1}{4}$ times $\\frac{1}{5}$ = $\\frac{1}{20}$.",
     "distractor_logic": {
-      "A": "Correct: 1/4 times 1/5 = 1/20.",
-      "B": "Student adds the probabilities (1/4 + 1/5 = 5/20 + 4/20 = 9/20) instead of multiplying them.",
-      "C": "Student reports only Spinner 1's probability (1/4) and ignores Spinner 2.",
-      "D": "Student reports only Spinner 2's probability (1/5) and ignores Spinner 1."
+      "A": "Correct: $\\frac{1}{4}$ times $\\frac{1}{5}$ = $\\frac{1}{20}$.",
+      "B": "Student adds the probabilities ($\\frac{1}{4}$ + $\\frac{1}{5}$ = $\\frac{5}{20}$ + $\\frac{4}{20}$ = $\\frac{9}{20}$) instead of multiplying them.",
+      "C": "Student reports only Spinner 1's probability ($\\frac{1}{4}$) and ignores Spinner 2.",
+      "D": "Student reports only Spinner 2's probability ($\\frac{1}{5}$) and ignores Spinner 1."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -107,7 +114,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -115,11 +124,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_probability", "independent_events", "and_event", "spinners"],
+    "context_tags": [
+      "compound_probability",
+      "independent_events",
+      "and_event",
+      "spinners"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -154,18 +168,18 @@
     "question_text": "A fair six-sided die is rolled twice. The two rolls are independent. What is the probability of rolling a 5 on both rolls?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "1/3",
-      "B": "1/18",
-      "C": "1/36",
-      "D": "1/6"
+      "A": "$\\frac{1}{3}$",
+      "B": "$\\frac{1}{18}$",
+      "C": "$\\frac{1}{36}$",
+      "D": "$\\frac{1}{6}$"
     },
     "correct_answer": "C",
-    "explanation": "The rolls are independent, so multiply: P(5) = 1/6 each, giving P(5 then 5) = 1/6 times 1/6 = 1/36.",
+    "explanation": "The rolls are independent, so multiply: P(5) = $\\frac{1}{6}$ each, giving P(5 then 5) = $\\frac{1}{6}$ times $\\frac{1}{6}$ = $\\frac{1}{36}$.",
     "distractor_logic": {
-      "A": "Student adds the two single-roll probabilities (1/6 + 1/6 = 1/3) instead of multiplying.",
-      "B": "Student multiplies but adds the numerators over the product of denominators (treating it as 2/36 = 1/18) instead of multiplying numerators.",
-      "C": "Correct: 1/6 times 1/6 = 1/36.",
-      "D": "Student treats 'a 5 on both rolls' as a single event with probability 1/6."
+      "A": "Student adds the two single-roll probabilities ($\\frac{1}{6}$ + $\\frac{1}{6}$ = $\\frac{1}{3}$) instead of multiplying.",
+      "B": "Student multiplies but adds the numerators over the product of denominators (treating it as $\\frac{2}{36}$ = $\\frac{1}{18}$) instead of multiplying numerators.",
+      "C": "Correct: $\\frac{1}{6}$ times $\\frac{1}{6}$ = $\\frac{1}{36}$.",
+      "D": "Student treats 'a 5 on both rolls' as a single event with probability $\\frac{1}{6}$."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -173,19 +187,26 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Each roll has its own 1/6 chance. For both to happen, multiply the two chances together."
+        "hint_text": "Each roll has its own $\\frac{1}{6}$ chance. For both to happen, multiply the two chances together."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_probability", "independent_events", "repeated_trials", "dice"],
+    "context_tags": [
+      "compound_probability",
+      "independent_events",
+      "repeated_trials",
+      "dice"
+    ],
     "estimated_time_seconds": 70,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -220,18 +241,18 @@
     "question_text": "A bag contains 2 red marbles and 3 blue marbles. A marble is drawn at random, its color is noted, and it is returned to the bag (with replacement) before a second marble is drawn. What is the probability that both draws are red?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "4/25",
-      "B": "4/5",
-      "C": "1/10",
-      "D": "2/5"
+      "A": "$\\frac{4}{25}$",
+      "B": "$\\frac{4}{5}$",
+      "C": "$\\frac{1}{10}$",
+      "D": "$\\frac{2}{5}$"
     },
     "correct_answer": "A",
-    "explanation": "Because the marble is replaced, the draws are independent and the probability of red stays 2/5 each time. P(both red) = 2/5 times 2/5 = 4/25.",
+    "explanation": "Because the marble is replaced, the draws are independent and the probability of red stays $\\frac{2}{5}$ each time. P(both red) = $\\frac{2}{5}$ times $\\frac{2}{5}$ = $\\frac{4}{25}$.",
     "distractor_logic": {
-      "A": "Correct: with replacement, 2/5 times 2/5 = 4/25.",
-      "B": "Student adds the two probabilities (2/5 + 2/5 = 4/5) instead of multiplying them.",
-      "C": "Student treats the draws as being without replacement, using 2/5 times 1/4 = 2/20 = 1/10 despite the marble being returned.",
-      "D": "Student reports the probability of a single red draw (2/5) instead of both."
+      "A": "Correct: with replacement, $\\frac{2}{5}$ times $\\frac{2}{5}$ = $\\frac{4}{25}$.",
+      "B": "Student adds the two probabilities ($\\frac{2}{5}$ + $\\frac{2}{5}$ = $\\frac{4}{5}$) instead of multiplying them.",
+      "C": "Student treats the draws as being without replacement, using $\\frac{2}{5}$ times $\\frac{1}{4}$ = $\\frac{2}{20}$ = $\\frac{1}{10}$ despite the marble being returned.",
+      "D": "Student reports the probability of a single red draw ($\\frac{2}{5}$) instead of both."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -239,7 +260,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -251,11 +275,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_probability", "with_replacement", "independent_events", "marbles"],
+    "context_tags": [
+      "compound_probability",
+      "with_replacement",
+      "independent_events",
+      "marbles"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -290,18 +319,18 @@
     "question_text": "A fair coin is flipped and a spinner with 3 equal sections (red, green, and yellow) is spun. The two actions are independent. What is the probability of getting tails AND landing on green?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "1/2",
-      "B": "5/6",
-      "C": "1/3",
-      "D": "1/6"
+      "A": "$\\frac{1}{2}$",
+      "B": "$\\frac{5}{6}$",
+      "C": "$\\frac{1}{3}$",
+      "D": "$\\frac{1}{6}$"
     },
     "correct_answer": "D",
-    "explanation": "The events are independent, so multiply: P(tails) = 1/2 and P(green) = 1/3, giving P(both) = 1/2 times 1/3 = 1/6.",
+    "explanation": "The events are independent, so multiply: P(tails) = $\\frac{1}{2}$ and P(green) = $\\frac{1}{3}$, giving P(both) = $\\frac{1}{2}$ times $\\frac{1}{3}$ = $\\frac{1}{6}$.",
     "distractor_logic": {
-      "A": "Student reports only the coin probability (1/2) and ignores the spinner.",
-      "B": "Student adds the probabilities (1/2 + 1/3 = 3/6 + 2/6 = 5/6) instead of multiplying them.",
-      "C": "Student reports only the spinner probability (1/3) and ignores the coin.",
-      "D": "Correct: 1/2 times 1/3 = 1/6."
+      "A": "Student reports only the coin probability ($\\frac{1}{2}$) and ignores the spinner.",
+      "B": "Student adds the probabilities ($\\frac{1}{2}$ + $\\frac{1}{3}$ = $\\frac{3}{6}$ + $\\frac{2}{6}$ = $\\frac{5}{6}$) instead of multiplying them.",
+      "C": "Student reports only the spinner probability ($\\frac{1}{3}$) and ignores the coin.",
+      "D": "Correct: $\\frac{1}{2}$ times $\\frac{1}{3}$ = $\\frac{1}{6}$."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -309,7 +338,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -317,11 +348,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_probability", "independent_events", "and_event", "coin_spinner"],
+    "context_tags": [
+      "compound_probability",
+      "independent_events",
+      "and_event",
+      "coin_spinner"
+    ],
     "estimated_time_seconds": 70,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -340,7 +376,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.3",
@@ -356,18 +394,18 @@
     "question_text": "A bag contains 3 red marbles and 5 blue marbles. Two marbles are drawn at random without replacement. What is the probability that both marbles are red?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "3/32",
-      "B": "3/28",
-      "C": "9/64",
-      "D": "3/8"
+      "A": "$\\frac{3}{32}$",
+      "B": "$\\frac{3}{28}$",
+      "C": "$\\frac{9}{64}$",
+      "D": "$\\frac{3}{8}$"
     },
     "correct_answer": "B",
-    "explanation": "Without replacement, the second draw depends on the first. P(first red) = 3/8. After removing one red, 2 reds remain out of 7 marbles, so P(second red) = 2/7. P(both red) = 3/8 times 2/7 = 6/56 = 3/28.",
+    "explanation": "Without replacement, the second draw depends on the first. P(first red) = $\\frac{3}{8}$. After removing one red, 2 reds remain out of 7 marbles, so P(second red) = $\\frac{2}{7}$. P(both red) = $\\frac{3}{8}$ times $\\frac{2}{7}$ = $\\frac{6}{56}$ = $\\frac{3}{28}$.",
     "distractor_logic": {
-      "A": "Student reduces the red count for the second draw but forgets the total also drops, using 3/8 times 2/8 = 6/64 = 3/32.",
-      "B": "Correct: 3/8 times 2/7 = 6/56 = 3/28.",
-      "C": "Student treats the draws as with replacement, using 3/8 times 3/8 = 9/64.",
-      "D": "Student reports only the first draw's probability (3/8)."
+      "A": "Student reduces the red count for the second draw but forgets the total also drops, using $\\frac{3}{8}$ times $\\frac{2}{8}$ = $\\frac{6}{64}$ = $\\frac{3}{32}$.",
+      "B": "Correct: $\\frac{3}{8}$ times $\\frac{2}{7}$ = $\\frac{6}{56}$ = $\\frac{3}{28}$.",
+      "C": "Student treats the draws as with replacement, using $\\frac{3}{8}$ times $\\frac{3}{8}$ = $\\frac{9}{64}$.",
+      "D": "Student reports only the first draw's probability ($\\frac{3}{8}$)."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -375,7 +413,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -387,11 +428,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_probability", "without_replacement", "dependent_events", "marbles"],
+    "context_tags": [
+      "compound_probability",
+      "without_replacement",
+      "dependent_events",
+      "marbles"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -410,7 +456,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.3",
@@ -426,18 +474,18 @@
     "question_text": "A set of 10 cards has 4 winning cards and 6 losing cards. Two cards are drawn at random without replacement. What is the probability that both cards are winning cards?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "4/25",
-      "B": "3/25",
-      "C": "2/15",
-      "D": "2/5"
+      "A": "$\\frac{4}{25}$",
+      "B": "$\\frac{3}{25}$",
+      "C": "$\\frac{2}{15}$",
+      "D": "$\\frac{2}{5}$"
     },
     "correct_answer": "C",
-    "explanation": "P(first winning) = 4/10. After removing one winner, 3 winners remain out of 9 cards, so P(second winning) = 3/9. P(both) = 4/10 times 3/9 = 12/90 = 2/15.",
+    "explanation": "P(first winning) = $\\frac{4}{10}$. After removing one winner, 3 winners remain out of 9 cards, so P(second winning) = $\\frac{3}{9}$. P(both) = $\\frac{4}{10}$ times $\\frac{3}{9}$ = $\\frac{12}{90}$ = $\\frac{2}{15}$.",
     "distractor_logic": {
-      "A": "Student treats the draws as with replacement, using 4/10 times 4/10 = 16/100 = 4/25.",
-      "B": "Student reduces the winner count for the second draw but keeps the total at 10, using 4/10 times 3/10 = 12/100 = 3/25.",
-      "C": "Correct: 4/10 times 3/9 = 12/90 = 2/15.",
-      "D": "Student reports only the first draw's probability (4/10 = 2/5)."
+      "A": "Student treats the draws as with replacement, using $\\frac{4}{10}$ times $\\frac{4}{10}$ = $\\frac{16}{100}$ = $\\frac{4}{25}$.",
+      "B": "Student reduces the winner count for the second draw but keeps the total at 10, using $\\frac{4}{10}$ times $\\frac{3}{10}$ = $\\frac{12}{100}$ = $\\frac{3}{25}$.",
+      "C": "Correct: $\\frac{4}{10}$ times $\\frac{3}{9}$ = $\\frac{12}{90}$ = $\\frac{2}{15}$.",
+      "D": "Student reports only the first draw's probability ($\\frac{4}{10}$ = $\\frac{2}{5}$)."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -445,7 +493,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -457,11 +508,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_probability", "without_replacement", "dependent_events", "cards"],
+    "context_tags": [
+      "compound_probability",
+      "without_replacement",
+      "dependent_events",
+      "cards"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -480,7 +536,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.3",
@@ -496,18 +554,18 @@
     "question_text": "A bag holds 4 green marbles and 6 yellow marbles. Two marbles are drawn at random without replacement. What is the probability that the first marble is green and the second marble is yellow?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "6/25",
-      "B": "2/5",
-      "C": "4/15",
-      "D": "2/15"
+      "A": "$\\frac{6}{25}$",
+      "B": "$\\frac{2}{5}$",
+      "C": "$\\frac{4}{15}$",
+      "D": "$\\frac{2}{15}$"
     },
     "correct_answer": "C",
-    "explanation": "P(first green) = 4/10. The green marble is removed, leaving 6 yellow out of 9 marbles, so P(second yellow) = 6/9. P(green then yellow) = 4/10 times 6/9 = 24/90 = 4/15.",
+    "explanation": "P(first green) = $\\frac{4}{10}$. The green marble is removed, leaving 6 yellow out of 9 marbles, so P(second yellow) = $\\frac{6}{9}$. P(green then yellow) = $\\frac{4}{10}$ times $\\frac{6}{9}$ = $\\frac{24}{90}$ = $\\frac{4}{15}$.",
     "distractor_logic": {
-      "A": "Student keeps the total at 10 for the second draw, using 4/10 times 6/10 = 24/100 = 6/25, ignoring that a marble was removed.",
-      "B": "Student reports only the first draw's probability (4/10 = 2/5).",
-      "C": "Correct: 4/10 times 6/9 = 24/90 = 4/15.",
-      "D": "Student wrongly lowers the yellow count for the second draw (using 3/9), applying the without-replacement reduction to the wrong color: 4/10 times 3/9 = 2/15."
+      "A": "Student keeps the total at 10 for the second draw, using $\\frac{4}{10}$ times $\\frac{6}{10}$ = $\\frac{24}{100}$ = $\\frac{6}{25}$, ignoring that a marble was removed.",
+      "B": "Student reports only the first draw's probability ($\\frac{4}{10}$ = $\\frac{2}{5}$).",
+      "C": "Correct: $\\frac{4}{10}$ times $\\frac{6}{9}$ = $\\frac{24}{90}$ = $\\frac{4}{15}$.",
+      "D": "Student wrongly lowers the yellow count for the second draw (using $\\frac{3}{9}$), applying the without-replacement reduction to the wrong color: $\\frac{4}{10}$ times $\\frac{3}{9}$ = $\\frac{2}{15}$."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,7 +573,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -523,11 +583,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_probability", "without_replacement", "ordered_draw", "marbles"],
+    "context_tags": [
+      "compound_probability",
+      "without_replacement",
+      "ordered_draw",
+      "marbles"
+    ],
     "estimated_time_seconds": 115,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -546,7 +611,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.3",
@@ -562,18 +629,18 @@
     "question_text": "A bag contains 2 red, 2 blue, and 1 green marble. Two marbles are drawn at random without replacement. What is the probability that both marbles are blue?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "4/25",
-      "B": "2/25",
-      "C": "2/5",
-      "D": "1/10"
+      "A": "$\\frac{4}{25}$",
+      "B": "$\\frac{2}{25}$",
+      "C": "$\\frac{2}{5}$",
+      "D": "$\\frac{1}{10}$"
     },
     "correct_answer": "D",
-    "explanation": "P(first blue) = 2/5. After removing one blue, 1 blue remains out of 4 marbles, so P(second blue) = 1/4. P(both blue) = 2/5 times 1/4 = 2/20 = 1/10.",
+    "explanation": "P(first blue) = $\\frac{2}{5}$. After removing one blue, 1 blue remains out of 4 marbles, so P(second blue) = $\\frac{1}{4}$. P(both blue) = $\\frac{2}{5}$ times $\\frac{1}{4}$ = $\\frac{2}{20}$ = $\\frac{1}{10}$.",
     "distractor_logic": {
-      "A": "Student treats the draws as with replacement, using 2/5 times 2/5 = 4/25.",
-      "B": "Student reduces the blue count for the second draw but keeps the total at 5, using 2/5 times 1/5 = 2/25.",
-      "C": "Student reports only the first draw's probability (2/5).",
-      "D": "Correct: 2/5 times 1/4 = 2/20 = 1/10."
+      "A": "Student treats the draws as with replacement, using $\\frac{2}{5}$ times $\\frac{2}{5}$ = $\\frac{4}{25}$.",
+      "B": "Student reduces the blue count for the second draw but keeps the total at 5, using $\\frac{2}{5}$ times $\\frac{1}{5}$ = $\\frac{2}{25}$.",
+      "C": "Student reports only the first draw's probability ($\\frac{2}{5}$).",
+      "D": "Correct: $\\frac{2}{5}$ times $\\frac{1}{4}$ = $\\frac{2}{20}$ = $\\frac{1}{10}$."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -581,7 +648,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -593,11 +663,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_probability", "without_replacement", "dependent_events", "marbles"],
+    "context_tags": [
+      "compound_probability",
+      "without_replacement",
+      "dependent_events",
+      "marbles"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -616,7 +691,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.3",
@@ -632,18 +709,18 @@
     "question_text": "A spinner has 4 equal sections numbered 1 through 4, and a separate set of 10 cards is numbered 1 through 10. The spinner is spun and a card is drawn, independently. What is the probability that the spinner lands on an even number AND the card is a multiple of 3?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "3/20",
-      "B": "4/5",
-      "C": "1/2",
-      "D": "3/10"
+      "A": "$\\frac{3}{20}$",
+      "B": "$\\frac{4}{5}$",
+      "C": "$\\frac{1}{2}$",
+      "D": "$\\frac{3}{10}$"
     },
     "correct_answer": "A",
-    "explanation": "P(even spinner) = 2/4 = 1/2 (the numbers 2 and 4). P(multiple of 3 on the card) = 3/10 (the cards 3, 6, 9). The events are independent, so P(both) = 1/2 times 3/10 = 3/20.",
+    "explanation": "P(even spinner) = $\\frac{2}{4}$ = $\\frac{1}{2}$ (the numbers 2 and 4). P(multiple of 3 on the card) = $\\frac{3}{10}$ (the cards 3, 6, 9). The events are independent, so P(both) = $\\frac{1}{2}$ times $\\frac{3}{10}$ = $\\frac{3}{20}$.",
     "distractor_logic": {
-      "A": "Correct: 1/2 times 3/10 = 3/20.",
-      "B": "Student adds the two probabilities (1/2 + 3/10 = 5/10 + 3/10 = 8/10 = 4/5) instead of multiplying.",
-      "C": "Student reports only the spinner probability (1/2) and ignores the card.",
-      "D": "Student reports only the card probability (3/10) and ignores the spinner."
+      "A": "Correct: $\\frac{1}{2}$ times $\\frac{3}{10}$ = $\\frac{3}{20}$.",
+      "B": "Student adds the two probabilities ($\\frac{1}{2}$ + $\\frac{3}{10}$ = $\\frac{5}{10}$ + $\\frac{3}{10}$ = $\\frac{8}{10}$ = $\\frac{4}{5}$) instead of multiplying.",
+      "C": "Student reports only the spinner probability ($\\frac{1}{2}$) and ignores the card.",
+      "D": "Student reports only the card probability ($\\frac{3}{10}$) and ignores the spinner."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -651,7 +728,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -663,11 +743,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_probability", "independent_events", "multi_outcome", "spinner_cards"],
+    "context_tags": [
+      "compound_probability",
+      "independent_events",
+      "multi_outcome",
+      "spinner_cards"
+    ],
     "estimated_time_seconds": 115,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -686,7 +771,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.3",
@@ -702,18 +789,18 @@
     "question_text": "A bag contains 5 red marbles and 5 blue marbles. Three marbles are drawn at random without replacement. What is the probability that all three are red?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "1/8",
-      "B": "2/9",
-      "C": "1/12",
-      "D": "3/50"
+      "A": "$\\frac{1}{8}$",
+      "B": "$\\frac{2}{9}$",
+      "C": "$\\frac{1}{12}$",
+      "D": "$\\frac{3}{50}$"
     },
     "correct_answer": "C",
-    "explanation": "Each draw lowers both counts. P = 5/10 times 4/9 times 3/8 = 60/720 = 1/12.",
+    "explanation": "Each draw lowers both counts. P = $\\frac{5}{10}$ times $\\frac{4}{9}$ times $\\frac{3}{8}$ = $\\frac{60}{720}$ = $\\frac{1}{12}$.",
     "distractor_logic": {
-      "A": "Student treats the draws as with replacement, using (5/10) cubed = 1/8.",
-      "B": "Student stops after two draws, using 5/10 times 4/9 = 20/90 = 2/9.",
-      "C": "Correct: 5/10 times 4/9 times 3/8 = 60/720 = 1/12.",
-      "D": "Student reduces the red count each draw but keeps the total at 10, using 5/10 times 4/10 times 3/10 = 60/1000 = 3/50."
+      "A": "Student treats the draws as with replacement, using ($\\frac{5}{10}$) cubed = $\\frac{1}{8}$.",
+      "B": "Student stops after two draws, using $\\frac{5}{10}$ times $\\frac{4}{9}$ = $\\frac{20}{90}$ = $\\frac{2}{9}$.",
+      "C": "Correct: $\\frac{5}{10}$ times $\\frac{4}{9}$ times $\\frac{3}{8}$ = $\\frac{60}{720}$ = $\\frac{1}{12}$.",
+      "D": "Student reduces the red count each draw but keeps the total at 10, using $\\frac{5}{10}$ times $\\frac{4}{10}$ times $\\frac{3}{10}$ = $\\frac{60}{1000}$ = $\\frac{3}{50}$."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -721,7 +808,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -733,11 +823,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_probability", "without_replacement", "three_draws", "marbles"],
+    "context_tags": [
+      "compound_probability",
+      "without_replacement",
+      "three_draws",
+      "marbles"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -756,7 +851,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.3",
@@ -772,18 +869,18 @@
     "question_text": "A bag contains 4 red marbles and 2 white marbles. Two marbles are drawn at random without replacement, and separately a fair coin is flipped once. What is the probability that both marbles are red AND the coin shows heads?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "1/5",
-      "B": "2/9",
-      "C": "2/5",
-      "D": "9/10"
+      "A": "$\\frac{1}{5}$",
+      "B": "$\\frac{2}{9}$",
+      "C": "$\\frac{2}{5}$",
+      "D": "$\\frac{9}{10}$"
     },
     "correct_answer": "A",
-    "explanation": "P(first red) = 4/6 and P(second red) = 3/5 after one red is removed, so P(both red) = 4/6 times 3/5 = 12/30 = 2/5. The coin is independent, so multiply by P(heads) = 1/2: 2/5 times 1/2 = 1/5.",
+    "explanation": "P(first red) = $\\frac{4}{6}$ and P(second red) = $\\frac{3}{5}$ after one red is removed, so P(both red) = $\\frac{4}{6}$ times $\\frac{3}{5}$ = $\\frac{12}{30}$ = $\\frac{2}{5}$. The coin is independent, so multiply by P(heads) = $\\frac{1}{2}$: $\\frac{2}{5}$ times $\\frac{1}{2}$ = $\\frac{1}{5}$.",
     "distractor_logic": {
-      "A": "Correct: (4/6 times 3/5) times 1/2 = 2/5 times 1/2 = 1/5.",
-      "B": "Student treats the marble draws as with replacement, using 4/6 times 4/6 times 1/2 = 16/72 = 2/9.",
-      "C": "Student computes both reds correctly (2/5) but drops the coin event entirely.",
-      "D": "Student adds the coin probability instead of multiplying, using 2/5 + 1/2 = 9/10."
+      "A": "Correct: ($\\frac{4}{6}$ times $\\frac{3}{5}$) times $\\frac{1}{2}$ = $\\frac{2}{5}$ times $\\frac{1}{2}$ = $\\frac{1}{5}$.",
+      "B": "Student treats the marble draws as with replacement, using $\\frac{4}{6}$ times $\\frac{4}{6}$ times $\\frac{1}{2}$ = $\\frac{16}{72}$ = $\\frac{2}{9}$.",
+      "C": "Student computes both reds correctly ($\\frac{2}{5}$) but drops the coin event entirely.",
+      "D": "Student adds the coin probability instead of multiplying, using $\\frac{2}{5}$ + $\\frac{1}{2}$ = $\\frac{9}{10}$."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -791,7 +888,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -803,11 +903,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_probability", "mixed_events", "without_replacement", "independent_coin"],
+    "context_tags": [
+      "compound_probability",
+      "mixed_events",
+      "without_replacement",
+      "independent_coin"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -826,7 +931,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.3",
@@ -842,18 +949,18 @@
     "question_text": "A bag contains 4 red marbles and 6 blue marbles. Two marbles are drawn at random without replacement. What is the probability that the two marbles are NOT both red (that is, at least one is blue)?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "2/15",
-      "B": "21/25",
-      "C": "1/3",
-      "D": "13/15"
+      "A": "$\\frac{2}{15}$",
+      "B": "$\\frac{21}{25}$",
+      "C": "$\\frac{1}{3}$",
+      "D": "$\\frac{13}{15}$"
     },
     "correct_answer": "D",
-    "explanation": "First find P(both red) = 4/10 times 3/9 = 12/90 = 2/15. 'Not both red' is the complement, so P(not both red) = 1 - 2/15 = 13/15.",
+    "explanation": "First find P(both red) = $\\frac{4}{10}$ times $\\frac{3}{9}$ = $\\frac{12}{90}$ = $\\frac{2}{15}$. 'Not both red' is the complement, so P(not both red) = 1 - $\\frac{2}{15}$ = $\\frac{13}{15}$.",
     "distractor_logic": {
-      "A": "Student computes P(both red) = 2/15 correctly but reports it without taking the complement.",
-      "B": "Student treats the draws as with replacement when finding both red, using 1 - (4/10 times 4/10) = 1 - 4/25 = 21/25.",
-      "C": "Student finds P(both blue) = 6/10 times 5/9 = 1/3 instead of the complement of both red.",
-      "D": "Correct: P(both red) = 4/10 times 3/9 = 2/15, so P(not both red) = 1 - 2/15 = 13/15."
+      "A": "Student computes P(both red) = $\\frac{2}{15}$ correctly but reports it without taking the complement.",
+      "B": "Student treats the draws as with replacement when finding both red, using 1 - ($\\frac{4}{10}$ times $\\frac{4}{10}$) = 1 - $\\frac{4}{25}$ = $\\frac{21}{25}$.",
+      "C": "Student finds P(both blue) = $\\frac{6}{10}$ times $\\frac{5}{9}$ = $\\frac{1}{3}$ instead of the complement of both red.",
+      "D": "Correct: P(both red) = $\\frac{4}{10}$ times $\\frac{3}{9}$ = $\\frac{2}{15}$, so P(not both red) = 1 - $\\frac{2}{15}$ = $\\frac{13}{15}$."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -861,7 +968,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -873,11 +983,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_probability", "complement_rule", "without_replacement", "at_least_one"],
+    "context_tags": [
+      "compound_probability",
+      "complement_rule",
+      "without_replacement",
+      "at_least_one"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -896,7 +1011,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.3",
@@ -912,18 +1029,18 @@
     "question_text": "A bag contains 4 red, 3 blue, and 3 green marbles. Three marbles are drawn at random without replacement. What is the probability of drawing a red, then a blue, then a green, in that order?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "2/45",
-      "B": "1/20",
-      "C": "1/30",
-      "D": "2/15"
+      "A": "$\\frac{2}{45}$",
+      "B": "$\\frac{1}{20}$",
+      "C": "$\\frac{1}{30}$",
+      "D": "$\\frac{2}{15}$"
     },
     "correct_answer": "B",
-    "explanation": "P(red first) = 4/10. After removing it, P(blue) = 3/9. After removing the blue, P(green) = 3/8. Multiplying: 4/10 times 3/9 times 3/8 = 36/720 = 1/20.",
+    "explanation": "P(red first) = $\\frac{4}{10}$. After removing it, P(blue) = $\\frac{3}{9}$. After removing the blue, P(green) = $\\frac{3}{8}$. Multiplying: $\\frac{4}{10}$ times $\\frac{3}{9}$ times $\\frac{3}{8}$ = $\\frac{36}{720}$ = $\\frac{1}{20}$.",
     "distractor_logic": {
-      "A": "Student forgets the total drops again for the third draw, keeping it at 9: 4/10 times 3/9 times 3/9 = 36/810 = 2/45.",
-      "B": "Correct: 4/10 times 3/9 times 3/8 = 36/720 = 1/20.",
-      "C": "Student miscounts green as 2 instead of 3, using 4/10 times 3/9 times 2/8 = 24/720 = 1/30.",
-      "D": "Student stops after the first two draws, using 4/10 times 3/9 = 12/90 = 2/15."
+      "A": "Student forgets the total drops again for the third draw, keeping it at 9: $\\frac{4}{10}$ times $\\frac{3}{9}$ times $\\frac{3}{9}$ = $\\frac{36}{810}$ = $\\frac{2}{45}$.",
+      "B": "Correct: $\\frac{4}{10}$ times $\\frac{3}{9}$ times $\\frac{3}{8}$ = $\\frac{36}{720}$ = $\\frac{1}{20}$.",
+      "C": "Student miscounts green as 2 instead of 3, using $\\frac{4}{10}$ times $\\frac{3}{9}$ times $\\frac{2}{8}$ = $\\frac{24}{720}$ = $\\frac{1}{30}$.",
+      "D": "Student stops after the first two draws, using $\\frac{4}{10}$ times $\\frac{3}{9}$ = $\\frac{12}{90}$ = $\\frac{2}{15}$."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -931,7 +1048,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -943,11 +1063,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_probability", "without_replacement", "three_draws", "ordered_draw"],
+    "context_tags": [
+      "compound_probability",
+      "without_replacement",
+      "three_draws",
+      "ordered_draw"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -966,7 +1091,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.3",
@@ -979,21 +1106,21 @@
       "reverse-reasoning from a compound probability of repeated independent trials to a single-trial probability",
       "recognizing that three identical independent trials multiply to a cube"
     ],
-    "question_text": "A spinner is spun three times. Each spin is independent and identical. The probability that all three spins land on blue is 1/8. What is the probability that a single spin lands on blue?",
+    "question_text": "A spinner is spun three times. Each spin is independent and identical. The probability that all three spins land on blue is $\\frac{1}{8}$. What is the probability that a single spin lands on blue?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "3/8",
-      "B": "1/8",
-      "C": "1/2",
-      "D": "1/24"
+      "A": "$\\frac{3}{8}$",
+      "B": "$\\frac{1}{8}$",
+      "C": "$\\frac{1}{2}$",
+      "D": "$\\frac{1}{24}$"
     },
     "correct_answer": "C",
-    "explanation": "For three identical independent spins, P(all blue) = P(blue) times P(blue) times P(blue) = P(blue) cubed. Since P(blue) cubed = 1/8, P(blue) is the cube root of 1/8, which is 1/2.",
+    "explanation": "For three identical independent spins, P(all blue) = P(blue) times P(blue) times P(blue) = P(blue) cubed. Since P(blue) cubed = $\\frac{1}{8}$, P(blue) is the cube root of $\\frac{1}{8}$, which is $\\frac{1}{2}$.",
     "distractor_logic": {
-      "A": "Student multiplies the compound probability by 3 (1/8 times 3 = 3/8) instead of taking the cube root.",
-      "B": "Student reports the compound probability (1/8) as if it were the single-spin probability.",
-      "C": "Correct: P(blue) cubed = 1/8, so P(blue) = 1/2.",
-      "D": "Student divides the compound probability by 3 (1/8 divided by 3 = 1/24) instead of taking the cube root."
+      "A": "Student multiplies the compound probability by 3 ($\\frac{1}{8}$ times 3 = $\\frac{3}{8}$) instead of taking the cube root.",
+      "B": "Student reports the compound probability ($\\frac{1}{8}$) as if it were the single-spin probability.",
+      "C": "Correct: P(blue) cubed = $\\frac{1}{8}$, so P(blue) = $\\frac{1}{2}$.",
+      "D": "Student divides the compound probability by 3 ($\\frac{1}{8}$ divided by 3 = $\\frac{1}{24}$) instead of taking the cube root."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1001,23 +1128,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "use_answer_choices"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "use_answer_choices"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try each answer as the single-spin probability and cube it. The one that gives 1/8 is correct."
+        "hint_text": "Try each answer as the single-spin probability and cube it. The one that gives $\\frac{1}{8}$ is correct."
       },
       {
         "strategy": "use_answer_choices",
-        "hint_text": "You need a value that multiplies by itself three times to make 1/8. Test the choices by cubing them."
+        "hint_text": "You need a value that multiplies by itself three times to make $\\frac{1}{8}$. Test the choices by cubing them."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["compound_probability", "reverse_reasoning", "independent_trials", "cube_root"],
+    "context_tags": [
+      "compound_probability",
+      "reverse_reasoning",
+      "independent_trials",
+      "cube_root"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

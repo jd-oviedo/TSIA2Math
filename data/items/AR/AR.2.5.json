@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["linear_inequality", "two_variables", "test_point", "solution_region"],
+    "context_tags": [
+      "linear_inequality",
+      "two_variables",
+      "test_point",
+      "solution_region"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -69,7 +77,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_B_035",
     "schema_version": "2.0",
@@ -112,7 +119,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -124,11 +134,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["linear_inequality", "boundary_line", "solid_vs_dashed", "graphing_inequalities"],
+    "context_tags": [
+      "linear_inequality",
+      "boundary_line",
+      "solid_vs_dashed",
+      "graphing_inequalities"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -140,7 +155,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_B_036",
     "schema_version": "2.0",
@@ -183,7 +197,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -195,11 +212,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["linear_inequality", "shading_direction", "test_point", "solution_region"],
+    "context_tags": [
+      "linear_inequality",
+      "shading_direction",
+      "test_point",
+      "solution_region"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -211,7 +233,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_B_037",
     "schema_version": "2.0",
@@ -254,7 +275,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -266,11 +290,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["linear_inequality", "two_variables", "test_point", "non_solution"],
+    "context_tags": [
+      "linear_inequality",
+      "two_variables",
+      "test_point",
+      "non_solution"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -282,7 +311,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_B_038",
     "schema_version": "2.0",
@@ -325,7 +353,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -337,11 +368,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["linear_inequality", "solution_region", "verbal_description", "strict_inequality"],
+    "context_tags": [
+      "linear_inequality",
+      "solution_region",
+      "verbal_description",
+      "strict_inequality"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -353,7 +389,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_P_024",
     "schema_version": "2.0",
@@ -383,7 +418,7 @@
       "D": "y > −2x + 3"
     },
     "correct_answer": "B",
-    "explanation": "Find the slope and y-intercept from the two points:\nSlope = (7 − 3) / (2 − 0) = 4 / 2 = 2\ny-intercept = 3\nLine equation: y = 2x + 3\n\nThe line is dashed → strict inequality (< or >).\nThe shaded region is above the line → y > line.\n\nCombined: y > 2x + 3.",
+    "explanation": "Find the slope and y-intercept from the two points:\nSlope = $\\frac{7 − 3}{2 − 0}$ = $\\frac{4}{2}$ = 2\ny-intercept = 3\nLine equation: y = 2x + 3\n\nThe line is dashed → strict inequality (< or >).\nThe shaded region is above the line → y > line.\n\nCombined: y > 2x + 3.",
     "distractor_logic": {
       "A": "Student correctly identifies the slope (2), intercept (3), and 'above' direction, but misreads the dashed line as solid and uses ≥ instead of >.",
       "B": "Correct: dashed line → strict symbol; above → greater than; slope 2, intercept 3 → y > 2x + 3.",
@@ -396,7 +431,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -408,11 +446,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["linear_inequality", "write_inequality_from_graph", "slope_intercept", "graphing_inequalities"],
+    "context_tags": [
+      "linear_inequality",
+      "write_inequality_from_graph",
+      "slope_intercept",
+      "graphing_inequalities"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -424,7 +467,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_P_025",
     "schema_version": "2.0",
@@ -467,7 +509,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -479,11 +524,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["linear_inequality", "two_variables", "test_point", "strict_inequality"],
+    "context_tags": [
+      "linear_inequality",
+      "two_variables",
+      "test_point",
+      "strict_inequality"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -495,7 +545,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_P_026",
     "schema_version": "2.0",
@@ -538,7 +587,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -550,11 +602,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["linear_inequality", "two_variables", "boundary_included", "solution_region"],
+    "context_tags": [
+      "linear_inequality",
+      "two_variables",
+      "boundary_included",
+      "solution_region"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -566,7 +623,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_A_019",
     "schema_version": "2.0",
@@ -609,7 +665,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -621,11 +680,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["system_of_inequalities", "bounded_region", "strict_inequality", "graphing_inequalities"],
+    "context_tags": [
+      "system_of_inequalities",
+      "bounded_region",
+      "strict_inequality",
+      "graphing_inequalities"
+    ],
     "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -637,7 +701,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_A_020",
     "schema_version": "2.0",
@@ -680,7 +743,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -692,11 +758,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["system_of_inequalities", "solution_region", "test_point", "strict_and_non_strict"],
+    "context_tags": [
+      "system_of_inequalities",
+      "solution_region",
+      "test_point",
+      "strict_and_non_strict"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

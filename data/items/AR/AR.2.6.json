@@ -17,22 +17,22 @@
     "unit": 3,
     "skills_targeted": [
       "computing slope from two points using the rise-over-run formula",
-      "correctly applying (y₂ − y₁) / (x₂ − x₁) to find the rate of change"
+      "correctly applying $\\frac{(y_2 - y_1)}{(x_2 - x_1)}$ to find the rate of change"
     ],
-    "question_text": "What is the slope of the line passing through the points (1, 3) and (4, 9)?",
+    "question_text": "What is the slope of the line passing through the points \n(1, 3) and (4, 9)?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "3",
       "B": "2",
-      "C": "1/2",
+      "C": "$\\frac{1}{2}$",
       "D": "6"
     },
     "correct_answer": "B",
-    "explanation": "Use the slope formula:\nm = (y₂ − y₁) / (x₂ − x₁) = (9 − 3) / (4 − 1) = 6 / 3 = 2",
+    "explanation": "Use the slope formula:\n$m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{9 - 3}{4 - 1} = \\frac{6}{3} = 2$",
     "distractor_logic": {
       "A": "Student computes Δy = 6 and Δx = 3 correctly but subtracts instead of divides: 6 − 3 = 3.",
-      "B": "Correct: (9 − 3) / (4 − 1) = 6 / 3 = 2.",
-      "C": "Student inverts the formula, computing Δx / Δy = 3 / 6 = 1/2.",
+      "B": "Correct: $\\frac{9 - 3}{4 - 1}$ = $\\frac{6}{3}$ = 2.",
+      "C": "Student inverts the formula, computing $\\frac{Δx}{Δy}$ = $\\frac{3}{6}$ = $\\frac{1}{2}$.",
       "D": "Student computes Δy = 6 but uses it directly as the slope without dividing by Δx."
     },
     "difficulty_level": "Basic",
@@ -48,11 +48,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Slope = rise / run = (change in y) / (change in x). Subtract y-values for the numerator and x-values for the denominator."
+        "hint_text": "$Slope = \\frac{rise}{run} = \\frac{change in y}{change in x}$. Subtract y-values for the numerator and x-values for the denominator."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Label the points: (x₁, y₁) = (1, 3) and (x₂, y₂) = (4, 9). Then compute (9 − 3) / (4 − 1)."
+        "hint_text": "Label the points: $(x_1, y_1) = (1, 3)$ and $(x_2, y_2) = (4, 9)$. Then compute $\\frac{9 - 3}{4 - 1}$."
       }
     ],
     "content_context": "generic",
@@ -73,8 +73,8 @@
     "fairness_review_date": null,
     "fairness_review_notes": null,
     "author": "jd-oviedo",
-    "created_at": "2026-06-02",
-    "last_modified": "2026-06-02",
+    "created_at": "2026-06-24",
+    "last_modified": "2026-06-24",
     "review_notes": null
   },
   {
@@ -175,20 +175,20 @@
       "computing a negative slope from two points",
       "preserving the correct sign when applying the slope formula to a decreasing line"
     ],
-    "question_text": "What is the slope of the line passing through the points (2, 7) and (5, 1)?",
+    "question_text": "What is the slope of the line passing through the points \n(2, 7) and (5, 1)?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "2",
-      "B": "−1/2",
+      "B": "$\\frac{-1}{2}$",
       "C": "−2",
       "D": "3"
     },
     "correct_answer": "C",
-    "explanation": "Apply the slope formula:\nm = (y₂ − y₁) / (x₂ − x₁) = (1 − 7) / (5 − 2) = −6 / 3 = −2",
+    "explanation": "Apply the slope formula:\n$m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{1 - 7}{5 - 2} = \\frac{-6}{3} = -2$",
     "distractor_logic": {
-      "A": "Student computes the correct magnitude (6/3 = 2) but drops the negative sign from the numerator, reporting slope = 2.",
-      "B": "Student inverts the formula, computing (x₂ − x₁) / (y₂ − y₁) = 3 / (−6) = −1/2.",
-      "C": "Correct: (1 − 7) / (5 − 2) = −6 / 3 = −2.",
+      "A": "Student computes the correct magnitude ($\\frac{6}{3}$ = 2) but drops the negative sign from the numerator, reporting slope = 2.",
+      "B": "Student inverts the formula, computing $\\frac{x_2 - x_1}{y_2 - y_1} = \\frac{3}{-6} = \\frac{-1}{2}.",
+      "C": "Correct: $\\frac{(1 - 7)}{(5 - 2)} = \\frac{-6}{3}$ = −2.",
       "D": "Student computes Δx = 5 − 2 = 3 and reports it as the slope, ignoring Δy entirely."
     },
     "difficulty_level": "Basic",
@@ -204,11 +204,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Slope = (y₂ − y₁) / (x₂ − x₁). Subtract y-values in the numerator and x-values in the denominator — in the same order."
+        "hint_text": "$Slope = \\frac{y_2 - y_1}{x_2 - x_1}$. Subtract y-values in the numerator and x-values in the denominator — in the same order."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Use (x₁, y₁) = (2, 7) and (x₂, y₂) = (5, 1): slope = (1 − 7) / (5 − 2). Keep track of the negative sign in the numerator."
+        "hint_text": "Use $(x_1, y_1)$ = (2, 7) and $(x_2, y_2)$ = (5, 1): $slope = \\frac{1 - 7}{5 - 2}$. Keep track of the negative sign in the numerator."
       }
     ],
     "content_context": "generic",
@@ -229,8 +229,8 @@
     "fairness_review_date": null,
     "fairness_review_notes": null,
     "author": "jd-oviedo",
-    "created_at": "2026-06-02",
-    "last_modified": "2026-06-02",
+    "created_at": "2026-06-24",
+    "last_modified": "2026-06-24",
     "review_notes": null
   },
   {
@@ -337,15 +337,15 @@
       "A": "2",
       "B": "−2",
       "C": "3",
-      "D": "1/2"
+      "D": "$\\frac{1}{2}$"
     },
     "correct_answer": "A",
-    "explanation": "Apply the slope formula:\nm = (y₂ − y₁) / (x₂ − x₁) = (4 − (−2)) / (3 − 0) = 6 / 3 = 2",
+    "explanation": "Apply the slope formula:\n$m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{4 - (-2)}{3 - 0} = \\frac{6}{3} = 2$",
     "distractor_logic": {
-      "A": "Correct: (4 − (−2)) / (3 − 0) = 6 / 3 = 2.",
+      "A": "Correct: $\\frac{(4 - (-2))}{(3 - 0)} = \\frac{6}{3} = 2$.",
       "B": "Student sees the y-intercept (0, −2) and reports −2 as the slope rather than applying the slope formula.",
       "C": "Student computes Δx = 3 and uses it directly as the slope, ignoring the change in y.",
-      "D": "Student inverts the formula, computing Δx / Δy = 3 / 6 = 1/2."
+      "D": "Student inverts the formula, computing $\\frac{Δx}{Δy} = \\frac{3}{6} = \\frac{1}{2}$."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -360,11 +360,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Slope = (y₂ − y₁) / (x₂ − x₁). Be careful subtracting a negative: 4 − (−2) = 6, not 2."
+        "hint_text": "$Slope = \\frac{y_2 - y_1}{x_2 - x_1}. Be careful subtracting a negative: 4 − (−2) = 6, not 2."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Use (x₁, y₁) = (0, −2) and (x₂, y₂) = (3, 4). Compute (4 − (−2)) / (3 − 0)."
+        "hint_text": "Use $(x_1, y_2)$ = (0, −2) and $(x_2, y_2)$ = (3, 4). Compute $\\frac{(4 - (-2))}{(3 - 0)}$."
       }
     ],
     "content_context": "generic",
@@ -385,8 +385,8 @@
     "fairness_review_date": null,
     "fairness_review_notes": null,
     "author": "jd-oviedo",
-    "created_at": "2026-06-02",
-    "last_modified": "2026-06-02",
+    "created_at": "2026-06-24",
+    "last_modified": "2026-06-24",
     "review_notes": null
   },
   {
@@ -409,7 +409,7 @@
       "writing the equation of a line in slope-intercept form given two points",
       "computing slope from two points and solving for the y-intercept using one of the points"
     ],
-    "question_text": "What is the equation of the line passing through the points (1, 2) and (3, 8)?",
+    "question_text": "What is the equation of the line passing through the points \n(1, 2) and (3, 8)?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "y = 3x + 2",
@@ -418,7 +418,7 @@
       "D": "y = 3x + 5"
     },
     "correct_answer": "C",
-    "explanation": "Step 1 — Find the slope:\nm = (8 − 2) / (3 − 1) = 6 / 2 = 3\n\nStep 2 — Find the y-intercept using point (1, 2):\n2 = 3(1) + b → b = 2 − 3 = −1\n\nEquation: y = 3x − 1\n\nVerify: y(1) = 3 − 1 = 2 ✓  and  y(3) = 9 − 1 = 8 ✓",
+    "explanation": "Step 1 — Find the slope:\nm = $\\frac{8 − 2}{3 − 1}$ = $\\frac{6}{2}$ = 3\n\nStep 2 — Find the y-intercept using point (1, 2):\n2 = 3(1) + b → b = 2 − 3 = −1\n\nEquation: y = 3x − 1\n\nVerify: y(1) = 3 − 1 = 2 ✓  and  y(3) = 9 − 1 = 8 ✓",
     "distractor_logic": {
       "A": "Student computes slope = 3 correctly but uses the y-coordinate of the first point directly as b: y = 3x + 2, without solving for the actual y-intercept.",
       "B": "Student uses Δy = 6 as the slope rather than dividing by Δx = 2, giving m = 6; then solves for b: 2 = 6(1) + b → b = −4.",
@@ -438,7 +438,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Find slope first using rise/run, then substitute one point into y = mx + b to solve for b."
+        "hint_text": "Find slope first using $\\frac{rise}{run}$, then substitute one point into y = mx + b to solve for b."
       },
       {
         "strategy": "plug_in_values",
@@ -463,8 +463,8 @@
     "fairness_review_date": null,
     "fairness_review_notes": null,
     "author": "jd-oviedo",
-    "created_at": "2026-06-02",
-    "last_modified": "2026-06-02",
+    "created_at": "2026-06-24",
+    "last_modified": "2026-06-24",
     "review_notes": null
   },
   {
@@ -648,7 +648,7 @@
     "answer_choices": {
       "A": "y = 3x − 2",
       "B": "y = 3x − 5",
-      "C": "y = −(1/3)x + (14/3)",
+      "C": "y = −($\\frac{1}{3}$)x + ($\\frac{14}{3}$)",
       "D": "y = 3x + 4"
     },
     "correct_answer": "A",
@@ -656,7 +656,7 @@
     "distractor_logic": {
       "A": "Correct: parallel slope = 3; using point (2, 4) gives b = −2, so y = 3x − 2.",
       "B": "Student recognizes the slope must be 3 but copies the original equation without adjusting the y-intercept for the new point — returning y = 3x − 5 unchanged.",
-      "C": "Student confuses parallel (same slope) with perpendicular (negative reciprocal slope), using slope = −1/3 and computing the equation through (2, 4).",
+      "C": "Student confuses parallel (same slope) with perpendicular (negative reciprocal slope), using slope = −$\\frac{1}{3}$ and computing the equation through (2, 4).",
       "D": "Student correctly identifies slope = 3 but uses the given y-coordinate (4) directly as the y-intercept without solving: y = 3x + 4."
     },
     "difficulty_level": "Advanced",
@@ -676,7 +676,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Verify your equation by substituting x = 2 and confirming y = 4. Also confirm the slope is 3, not −1/3."
+        "hint_text": "Verify your equation by substituting x = 2 and confirming y = 4. Also confirm the slope is 3, not −$\\frac{1}{3}$."
       }
     ],
     "content_context": "generic",
@@ -730,7 +730,7 @@
       "D": "y = 4"
     },
     "correct_answer": "D",
-    "explanation": "Compute the slope:\nm = (4 − 4) / (5 − (−3)) = 0 / 8 = 0\n\nA slope of 0 means the line is horizontal. Every point on the line has y = 4, so the equation is y = 4.\n\nNote: vertical lines have the form x = constant; horizontal lines have the form y = constant.",
+    "explanation": "Compute the slope:\n$m = \\frac{(4 - 4)}{(5 - (-3))} = \\frac{0}{8}$ = 0\n\nA slope of 0 means the line is horizontal. Every point on the line has y = 4, so the equation is y = 4.\n\nNote: vertical lines have the form x = constant; horizontal lines have the form y = constant.",
     "distractor_logic": {
       "A": "Student knows a constant-value line uses one variable as a constant but assigns it to x rather than y, writing x = 4 — confusing a horizontal line (y = constant) with a vertical line (x = constant).",
       "B": "Student correctly computes the slope as 0 but interprets 'slope = 0' as the equation 'y = 0,' reporting the slope value as the line equation.",

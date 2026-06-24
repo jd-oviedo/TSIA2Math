@@ -22,18 +22,18 @@
     "question_text": "In a class of 30 students, 18 play a sport. Of the students who play a sport, 12 are also in band. Given that a student plays a sport, what is the probability that the student is in band?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "2/3",
-      "B": "2/5",
-      "C": "3/5",
-      "D": "1/3"
+      "A": "$\\frac{2}{3}$",
+      "B": "$\\frac{2}{5}$",
+      "C": "$\\frac{3}{5}$",
+      "D": "$\\frac{1}{3}$"
     },
     "correct_answer": "A",
-    "explanation": "The condition 'plays a sport' restricts attention to the 18 sport players. Of those, 12 are in band, so P(band given sport) = 12/18 = 2/3.",
+    "explanation": "The condition 'plays a sport' restricts attention to the 18 sport players. Of those, 12 are in band, so P(band given sport) = $\\frac{12}{18}$ = $\\frac{2}{3}$.",
     "distractor_logic": {
-      "A": "Correct: among the 18 sport players, 12 are in band, so 12/18 = 2/3.",
-      "B": "Student divides by the whole class of 30 instead of the 18 sport players, getting 12/30 = 2/5.",
-      "C": "Student reports the probability of playing a sport (18/30 = 3/5) and ignores the band information.",
-      "D": "Student uses the 6 sport players who are not in band (18 - 12) as the numerator, getting 6/18 = 1/3."
+      "A": "Correct: among the 18 sport players, 12 are in band, so $\\frac{12}{18}$ = $\\frac{2}{3}$.",
+      "B": "Student divides by the whole class of 30 instead of the 18 sport players, getting $\\frac{12}{30}$ = $\\frac{2}{5}$.",
+      "C": "Student reports the probability of playing a sport ($\\frac{18}{30}$ = $\\frac{3}{5}$) and ignores the band information.",
+      "D": "Student uses the 6 sport players who are not in band (18 - 12) as the numerator, getting $\\frac{6}{18}$ = $\\frac{1}{3}$."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -41,7 +41,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -49,11 +51,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["conditional_probability", "given_condition", "subgroup_denominator"],
+    "context_tags": [
+      "conditional_probability",
+      "given_condition",
+      "subgroup_denominator"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -88,18 +94,18 @@
     "question_text": "A bag has 10 marbles: 6 are red and 4 are blue. Of the red marbles, 2 have a star printed on them. A marble is drawn and it is red. Given that it is red, what is the probability that it has a star?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "1/5",
-      "B": "3/5",
-      "C": "1/3",
-      "D": "1/2"
+      "A": "$\\frac{1}{5}$",
+      "B": "$\\frac{3}{5}$",
+      "C": "$\\frac{1}{3}$",
+      "D": "$\\frac{1}{2}$"
     },
     "correct_answer": "C",
-    "explanation": "Given the marble is red, only the 6 red marbles matter. Of those, 2 have a star, so P(star given red) = 2/6 = 1/3.",
+    "explanation": "Given the marble is red, only the 6 red marbles matter. Of those, 2 have a star, so P(star given red) = $\\frac{2}{6}$ = $\\frac{1}{3}$.",
     "distractor_logic": {
-      "A": "Student divides by all 10 marbles instead of the 6 red ones, getting 2/10 = 1/5.",
-      "B": "Student reports the probability of drawing red (6/10 = 3/5) and ignores the star condition.",
-      "C": "Correct: among the 6 red marbles, 2 have a star, so 2/6 = 1/3.",
-      "D": "Student forms a ratio of star reds to non-star reds (2 to 4) instead of dividing by all 6 reds, getting 2/4 = 1/2."
+      "A": "Student divides by all 10 marbles instead of the 6 red ones, getting $\\frac{2}{10}$ = $\\frac{1}{5}$.",
+      "B": "Student reports the probability of drawing red ($\\frac{6}{10}$ = $\\frac{3}{5}$) and ignores the star condition.",
+      "C": "Correct: among the 6 red marbles, 2 have a star, so $\\frac{2}{6}$ = $\\frac{1}{3}$.",
+      "D": "Student forms a ratio of star reds to non-star reds (2 to 4) instead of dividing by all 6 reds, getting $\\frac{2}{4}$ = $\\frac{1}{2}$."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -107,7 +113,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -115,11 +123,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["conditional_probability", "given_condition", "subgroup_denominator", "marbles"],
+    "context_tags": [
+      "conditional_probability",
+      "given_condition",
+      "subgroup_denominator",
+      "marbles"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -154,18 +167,18 @@
     "question_text": "In a survey of 40 people, 25 own a dog. Of the dog owners, 15 also own a cat. Given that a person owns a dog, what is the probability that the person also owns a cat?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "3/5",
-      "B": "3/8",
-      "C": "5/8",
-      "D": "2/5"
+      "A": "$\\frac{3}{5}$",
+      "B": "$\\frac{3}{8}$",
+      "C": "$\\frac{5}{8}$",
+      "D": "$\\frac{2}{5}$"
     },
     "correct_answer": "A",
-    "explanation": "Given the person owns a dog, only the 25 dog owners matter. Of those, 15 own a cat, so P(cat given dog) = 15/25 = 3/5.",
+    "explanation": "Given the person owns a dog, only the 25 dog owners matter. Of those, 15 own a cat, so P(cat given dog) = $\\frac{15}{25}$ = $\\frac{3}{5}$.",
     "distractor_logic": {
-      "A": "Correct: among the 25 dog owners, 15 own a cat, so 15/25 = 3/5.",
-      "B": "Student divides by all 40 people instead of the 25 dog owners, getting 15/40 = 3/8.",
-      "C": "Student reports the probability of owning a dog (25/40 = 5/8) and ignores the cat condition.",
-      "D": "Student uses the 10 dog owners without a cat (25 - 15) as the numerator, getting 10/25 = 2/5."
+      "A": "Correct: among the 25 dog owners, 15 own a cat, so $\\frac{15}{25}$ = $\\frac{3}{5}$.",
+      "B": "Student divides by all 40 people instead of the 25 dog owners, getting $\\frac{15}{40}$ = $\\frac{3}{8}$.",
+      "C": "Student reports the probability of owning a dog ($\\frac{25}{40}$ = $\\frac{5}{8}$) and ignores the cat condition.",
+      "D": "Student uses the 10 dog owners without a cat (25 - 15) as the numerator, getting $\\frac{10}{25}$ = $\\frac{2}{5}$."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -173,7 +186,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -181,11 +196,15 @@
       }
     ],
     "content_context": "survey",
-    "context_tags": ["conditional_probability", "given_condition", "subgroup_denominator"],
+    "context_tags": [
+      "conditional_probability",
+      "given_condition",
+      "subgroup_denominator"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -220,18 +239,18 @@
     "question_text": "A set of 20 cards has 8 red cards. Of the red cards, 3 are marked with a star. A card is drawn and it is red. Given that it is red, what is the probability that it is marked with a star?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "3/20",
-      "B": "2/5",
-      "C": "3/5",
-      "D": "3/8"
+      "A": "$\\frac{3}{20}$",
+      "B": "$\\frac{2}{5}$",
+      "C": "$\\frac{3}{5}$",
+      "D": "$\\frac{3}{8}$"
     },
     "correct_answer": "D",
-    "explanation": "Given the card is red, only the 8 red cards matter. Of those, 3 are marked, so P(marked given red) = 3/8.",
+    "explanation": "Given the card is red, only the 8 red cards matter. Of those, 3 are marked, so P(marked given red) = $\\frac{3}{8}$.",
     "distractor_logic": {
-      "A": "Student divides by all 20 cards instead of the 8 red ones, getting 3/20.",
-      "B": "Student reports the probability of drawing red (8/20 = 2/5) and ignores the marked condition.",
-      "C": "Student forms a ratio of marked reds to unmarked reds (3 to 5) instead of dividing by all 8 reds, getting 3/5.",
-      "D": "Correct: among the 8 red cards, 3 are marked, so 3/8."
+      "A": "Student divides by all 20 cards instead of the 8 red ones, getting $\\frac{3}{20}$.",
+      "B": "Student reports the probability of drawing red ($\\frac{8}{20}$ = $\\frac{2}{5}$) and ignores the marked condition.",
+      "C": "Student forms a ratio of marked reds to unmarked reds (3 to 5) instead of dividing by all 8 reds, getting $\\frac{3}{5}$.",
+      "D": "Correct: among the 8 red cards, 3 are marked, so $\\frac{3}{8}$."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -239,7 +258,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -247,11 +268,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["conditional_probability", "given_condition", "subgroup_denominator", "cards"],
+    "context_tags": [
+      "conditional_probability",
+      "given_condition",
+      "subgroup_denominator",
+      "cards"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -286,18 +312,18 @@
     "question_text": "A club has 24 members. 15 of them are seniors. Of the seniors, 10 are officers. Given that a member is a senior, what is the probability that the member is an officer?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "5/12",
-      "B": "2/3",
-      "C": "5/8",
-      "D": "1/3"
+      "A": "$\\frac{5}{12}$",
+      "B": "$\\frac{2}{3}$",
+      "C": "$\\frac{5}{8}$",
+      "D": "$\\frac{1}{3}$"
     },
     "correct_answer": "B",
-    "explanation": "Given the member is a senior, only the 15 seniors matter. Of those, 10 are officers, so P(officer given senior) = 10/15 = 2/3.",
+    "explanation": "Given the member is a senior, only the 15 seniors matter. Of those, 10 are officers, so P(officer given senior) = $\\frac{10}{15}$ = $\\frac{2}{3}$.",
     "distractor_logic": {
-      "A": "Student divides by all 24 members instead of the 15 seniors, getting 10/24 = 5/12.",
-      "B": "Correct: among the 15 seniors, 10 are officers, so 10/15 = 2/3.",
-      "C": "Student reports the probability of being a senior (15/24 = 5/8) and ignores the officer condition.",
-      "D": "Student uses the 5 seniors who are not officers (15 - 10) as the numerator, getting 5/15 = 1/3."
+      "A": "Student divides by all 24 members instead of the 15 seniors, getting $\\frac{10}{24}$ = $\\frac{5}{12}$.",
+      "B": "Correct: among the 15 seniors, 10 are officers, so $\\frac{10}{15}$ = $\\frac{2}{3}$.",
+      "C": "Student reports the probability of being a senior ($\\frac{15}{24}$ = $\\frac{5}{8}$) and ignores the officer condition.",
+      "D": "Student uses the 5 seniors who are not officers (15 - 10) as the numerator, getting $\\frac{5}{15}$ = $\\frac{1}{3}$."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -305,7 +331,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -313,11 +341,15 @@
       }
     ],
     "content_context": "club_membership",
-    "context_tags": ["conditional_probability", "given_condition", "subgroup_denominator"],
+    "context_tags": [
+      "conditional_probability",
+      "given_condition",
+      "subgroup_denominator"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -336,7 +368,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.4",
@@ -352,18 +386,18 @@
     "question_text": "A group of students was surveyed: 12 like both soccer and basketball, 8 like soccer but not basketball, 6 like basketball but not soccer, and 4 like neither. Given that a student likes soccer, what is the probability that the student also likes basketball?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "3/10",
-      "B": "3/5",
-      "C": "2/5",
-      "D": "2/3"
+      "A": "$\\frac{3}{10}$",
+      "B": "$\\frac{3}{5}$",
+      "C": "$\\frac{2}{5}$",
+      "D": "$\\frac{2}{3}$"
     },
     "correct_answer": "B",
-    "explanation": "The soccer group is 12 + 8 = 20 students. Of those, 12 also like basketball, so P(basketball given soccer) = 12/20 = 3/5.",
+    "explanation": "The soccer group is 12 + 8 = 20 students. Of those, 12 also like basketball, so P(basketball given soccer) = $\\frac{12}{20}$ = $\\frac{3}{5}$.",
     "distractor_logic": {
-      "A": "Student uses the 6 basketball-only students as the numerator over the soccer group, getting 6/20 = 3/10.",
-      "B": "Correct: the soccer group is 12 + 8 = 20, of whom 12 like basketball, so 12/20 = 3/5.",
-      "C": "Student divides by all 30 students (12 + 8 + 6 + 4) instead of the 20 soccer fans, getting 12/30 = 2/5.",
-      "D": "Student conditions on basketball instead of soccer, using the basketball group of 12 + 6 = 18 to get 12/18 = 2/3."
+      "A": "Student uses the 6 basketball-only students as the numerator over the soccer group, getting $\\frac{6}{20}$ = $\\frac{3}{10}$.",
+      "B": "Correct: the soccer group is 12 + 8 = 20, of whom 12 like basketball, so $\\frac{12}{20}$ = $\\frac{3}{5}$.",
+      "C": "Student divides by all 30 students (12 + 8 + 6 + 4) instead of the 20 soccer fans, getting $\\frac{12}{30}$ = $\\frac{2}{5}$.",
+      "D": "Student conditions on basketball instead of soccer, using the basketball group of 12 + 6 = 18 to get $\\frac{12}{18}$ = $\\frac{2}{3}$."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -371,7 +405,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -383,11 +420,16 @@
       }
     ],
     "content_context": "survey",
-    "context_tags": ["conditional_probability", "two_way_table", "derived_total", "reversal_trap"],
+    "context_tags": [
+      "conditional_probability",
+      "two_way_table",
+      "derived_total",
+      "reversal_trap"
+    ],
     "estimated_time_seconds": 115,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -406,7 +448,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.4",
@@ -422,18 +466,18 @@
     "question_text": "A bag contains 5 red marbles and 3 green marbles. Two marbles are drawn without replacement. Given that the first marble drawn is red, what is the probability that the second marble is also red?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "4/7",
-      "B": "5/8",
-      "C": "5/7",
-      "D": "1/2"
+      "A": "$\\frac{4}{7}$",
+      "B": "$\\frac{5}{8}$",
+      "C": "$\\frac{5}{7}$",
+      "D": "$\\frac{1}{2}$"
     },
     "correct_answer": "A",
-    "explanation": "After a red marble is removed, 4 red marbles remain out of 7 total. So P(second red given first red) = 4/7.",
+    "explanation": "After a red marble is removed, 4 red marbles remain out of 7 total. So P(second red given first red) = $\\frac{4}{7}$.",
     "distractor_logic": {
-      "A": "Correct: after one red is removed, 4 reds remain out of 7, so 4/7.",
-      "B": "Student ignores the condition and reports the probability of red on the first draw, 5/8.",
-      "C": "Student lowers the total to 7 but forgets to lower the red count, using 5/7.",
-      "D": "Student lowers the red count to 4 but forgets to lower the total, using 4/8 = 1/2."
+      "A": "Correct: after one red is removed, 4 reds remain out of 7, so $\\frac{4}{7}$.",
+      "B": "Student ignores the condition and reports the probability of red on the first draw, $\\frac{5}{8}$.",
+      "C": "Student lowers the total to 7 but forgets to lower the red count, using $\\frac{5}{7}$.",
+      "D": "Student lowers the red count to 4 but forgets to lower the total, using $\\frac{4}{8}$ = $\\frac{1}{2}$."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -441,7 +485,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -453,11 +500,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["conditional_probability", "without_replacement", "sequential", "marbles"],
+    "context_tags": [
+      "conditional_probability",
+      "without_replacement",
+      "sequential",
+      "marbles"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -476,7 +528,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.4",
@@ -492,18 +546,18 @@
     "question_text": "Of 40 people at an event, 22 are adults and 18 are children. In total, 30 people passed a quiz, and 16 of the adults passed. Given that a person is an adult, what is the probability that the person passed the quiz?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "2/5",
-      "B": "11/20",
-      "C": "8/11",
-      "D": "8/15"
+      "A": "$\\frac{2}{5}$",
+      "B": "$\\frac{11}{20}$",
+      "C": "$\\frac{8}{11}$",
+      "D": "$\\frac{8}{15}$"
     },
     "correct_answer": "C",
-    "explanation": "Given the person is an adult, the denominator is the 22 adults. Of those, 16 passed, so P(passed given adult) = 16/22 = 8/11.",
+    "explanation": "Given the person is an adult, the denominator is the 22 adults. Of those, 16 passed, so P(passed given adult) = $\\frac{16}{22}$ = $\\frac{8}{11}$.",
     "distractor_logic": {
-      "A": "Student divides by all 40 people instead of the 22 adults, getting 16/40 = 2/5.",
-      "B": "Student reports the probability of being an adult (22/40 = 11/20) and ignores the quiz result.",
-      "C": "Correct: among the 22 adults, 16 passed, so 16/22 = 8/11.",
-      "D": "Student conditions on having passed instead of being an adult, using the 30 passers to get 16/30 = 8/15."
+      "A": "Student divides by all 40 people instead of the 22 adults, getting $\\frac{16}{40}$ = $\\frac{2}{5}$.",
+      "B": "Student reports the probability of being an adult ($\\frac{22}{40}$ = $\\frac{11}{20}$) and ignores the quiz result.",
+      "C": "Correct: among the 22 adults, 16 passed, so $\\frac{16}{22}$ = $\\frac{8}{11}$.",
+      "D": "Student conditions on having passed instead of being an adult, using the 30 passers to get $\\frac{16}{30}$ = $\\frac{8}{15}$."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -511,7 +565,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -523,11 +580,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["conditional_probability", "two_way_table", "reversal_trap", "subgroup_denominator"],
+    "context_tags": [
+      "conditional_probability",
+      "two_way_table",
+      "reversal_trap",
+      "subgroup_denominator"
+    ],
     "estimated_time_seconds": 115,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -546,7 +608,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.4",
@@ -568,7 +632,7 @@
       "D": "40%"
     },
     "correct_answer": "D",
-    "explanation": "P(art given Spanish) = P(both) divided by P(Spanish) = 24% divided by 60% = 0.24 / 0.60 = 0.40, which is 40%.",
+    "explanation": "P(art given Spanish) = P(both) divided by P(Spanish) = 24% divided by 60% = 0.$\\frac{24}{0}$.60 = 0.40, which is 40%.",
     "distractor_logic": {
       "A": "Student reports the joint probability of taking both (24%) without dividing by the Spanish probability.",
       "B": "Student subtracts the two percentages (60% - 24% = 36%) instead of dividing.",
@@ -581,7 +645,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -589,11 +655,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["conditional_probability", "ratio_of_probabilities", "percent_probability", "joint_probability"],
+    "context_tags": [
+      "conditional_probability",
+      "ratio_of_probabilities",
+      "percent_probability",
+      "joint_probability"
+    ],
     "estimated_time_seconds": 115,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -612,7 +683,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.4",
@@ -628,18 +701,18 @@
     "question_text": "A bag contains 4 red marbles and 6 blue marbles. Two marbles are drawn without replacement. Given that the first marble drawn is blue, what is the probability that the second marble is red?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "2/5",
-      "B": "4/9",
-      "C": "1/3",
-      "D": "5/9"
+      "A": "$\\frac{2}{5}$",
+      "B": "$\\frac{4}{9}$",
+      "C": "$\\frac{1}{3}$",
+      "D": "$\\frac{5}{9}$"
     },
     "correct_answer": "B",
-    "explanation": "Removing a blue marble leaves the 4 red marbles unchanged but lowers the total to 9. So P(second red given first blue) = 4/9.",
+    "explanation": "Removing a blue marble leaves the 4 red marbles unchanged but lowers the total to 9. So P(second red given first blue) = $\\frac{4}{9}$.",
     "distractor_logic": {
-      "A": "Student ignores the condition and uses the starting probability of red, 4/10 = 2/5.",
-      "B": "Correct: the red count stays at 4 while the total drops to 9, so 4/9.",
-      "C": "Student wrongly lowers the red count to 3, as if the first marble had been red, using 3/9 = 1/3.",
-      "D": "Student computes the probability that the second marble is blue (5 blue left out of 9), getting 5/9, instead of red."
+      "A": "Student ignores the condition and uses the starting probability of red, $\\frac{4}{10}$ = $\\frac{2}{5}$.",
+      "B": "Correct: the red count stays at 4 while the total drops to 9, so $\\frac{4}{9}$.",
+      "C": "Student wrongly lowers the red count to 3, as if the first marble had been red, using $\\frac{3}{9}$ = $\\frac{1}{3}$.",
+      "D": "Student computes the probability that the second marble is blue (5 blue left out of 9), getting $\\frac{5}{9}$, instead of red."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -647,7 +720,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -659,11 +735,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["conditional_probability", "without_replacement", "sequential", "marbles"],
+    "context_tags": [
+      "conditional_probability",
+      "without_replacement",
+      "sequential",
+      "marbles"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -682,7 +763,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.4",
@@ -698,18 +781,18 @@
     "question_text": "Among 100 people, 40 are men and 60 are women. 30 of the men own a car and 24 of the women own a car. Given that a randomly chosen person owns a car, what is the probability that the person is a man?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "2/5",
-      "B": "3/10",
-      "C": "5/9",
-      "D": "3/4"
+      "A": "$\\frac{2}{5}$",
+      "B": "$\\frac{3}{10}$",
+      "C": "$\\frac{5}{9}$",
+      "D": "$\\frac{3}{4}$"
     },
     "correct_answer": "C",
-    "explanation": "The condition is 'owns a car'. The car owners total 30 + 24 = 54. Of those, 30 are men, so P(man given car owner) = 30/54 = 5/9.",
+    "explanation": "The condition is 'owns a car'. The car owners total 30 + 24 = 54. Of those, 30 are men, so P(man given car owner) = $\\frac{30}{54}$ = $\\frac{5}{9}$.",
     "distractor_logic": {
-      "A": "Student reports the probability of being a man overall (40/100 = 2/5), ignoring the car-owner condition.",
-      "B": "Student divides the men-with-cars by all 100 people, getting 30/100 = 3/10, instead of by the car owners.",
-      "C": "Correct: there are 54 car owners, of whom 30 are men, so 30/54 = 5/9.",
-      "D": "Student reverses the condition and computes the probability that a man owns a car (30/40 = 3/4) rather than the probability a car owner is a man."
+      "A": "Student reports the probability of being a man overall ($\\frac{40}{100}$ = $\\frac{2}{5}$), ignoring the car-owner condition.",
+      "B": "Student divides the men-with-cars by all 100 people, getting $\\frac{30}{100}$ = $\\frac{3}{10}$, instead of by the car owners.",
+      "C": "Correct: there are 54 car owners, of whom 30 are men, so $\\frac{30}{54}$ = $\\frac{5}{9}$.",
+      "D": "Student reverses the condition and computes the probability that a man owns a car ($\\frac{30}{40}$ = $\\frac{3}{4}$) rather than the probability a car owner is a man."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -717,7 +800,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -729,11 +815,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["conditional_probability", "reversal_trap", "two_way_table", "derived_total"],
+    "context_tags": [
+      "conditional_probability",
+      "reversal_trap",
+      "two_way_table",
+      "derived_total"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -752,7 +843,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.4",
@@ -768,18 +861,18 @@
     "question_text": "In a group of 60 students, 35 take math, 30 take science, and 15 take both. Given that a student takes at least one of the two subjects, what is the probability that the student takes both?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "3/13",
-      "B": "3/10",
-      "C": "3/7",
-      "D": "1/4"
+      "A": "$\\frac{3}{13}$",
+      "B": "$\\frac{3}{10}$",
+      "C": "$\\frac{3}{7}$",
+      "D": "$\\frac{1}{4}$"
     },
     "correct_answer": "B",
-    "explanation": "The number taking at least one subject is 35 + 30 - 15 = 50. Of those, 15 take both, so P(both given at least one) = 15/50 = 3/10.",
+    "explanation": "The number taking at least one subject is 35 + 30 - 15 = 50. Of those, 15 take both, so P(both given at least one) = $\\frac{15}{50}$ = $\\frac{3}{10}$.",
     "distractor_logic": {
-      "A": "Student forgets to subtract the overlap and uses 35 + 30 = 65 as the 'at least one' total, getting 15/65 = 3/13.",
-      "B": "Correct: at least one is 35 + 30 - 15 = 50, of whom 15 take both, so 15/50 = 3/10.",
-      "C": "Student conditions on taking math only, using the 35 math students to get 15/35 = 3/7.",
-      "D": "Student divides by all 60 students instead of the 'at least one' group, getting 15/60 = 1/4."
+      "A": "Student forgets to subtract the overlap and uses 35 + 30 = 65 as the 'at least one' total, getting $\\frac{15}{65}$ = $\\frac{3}{13}$.",
+      "B": "Correct: at least one is 35 + 30 - 15 = 50, of whom 15 take both, so $\\frac{15}{50}$ = $\\frac{3}{10}$.",
+      "C": "Student conditions on taking math only, using the 35 math students to get $\\frac{15}{35}$ = $\\frac{3}{7}$.",
+      "D": "Student divides by all 60 students instead of the 'at least one' group, getting $\\frac{15}{60}$ = $\\frac{1}{4}$."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -787,7 +880,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -799,11 +895,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["conditional_probability", "inclusion_exclusion", "union_condition", "two_events"],
+    "context_tags": [
+      "conditional_probability",
+      "inclusion_exclusion",
+      "union_condition",
+      "two_events"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -822,7 +923,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.4",
@@ -838,18 +941,18 @@
     "question_text": "A bag contains 3 red, 4 blue, and 5 green marbles. Two marbles are drawn without replacement. Given that neither marble drawn is green, what is the probability that both marbles are red?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "1/7",
-      "B": "1/22",
-      "C": "9/49",
-      "D": "6/49"
+      "A": "$\\frac{1}{7}$",
+      "B": "$\\frac{1}{22}$",
+      "C": "$\\frac{9}{49}$",
+      "D": "$\\frac{6}{49}$"
     },
     "correct_answer": "A",
-    "explanation": "The condition 'neither is green' restricts the draws to the 7 non-green marbles (3 red and 4 blue). Within that group, P(both red) = 3/7 times 2/6 = 6/42 = 1/7.",
+    "explanation": "The condition 'neither is green' restricts the draws to the 7 non-green marbles (3 red and 4 blue). Within that group, P(both red) = $\\frac{3}{7}$ times $\\frac{2}{6}$ = $\\frac{6}{42}$ = $\\frac{1}{7}$.",
     "distractor_logic": {
-      "A": "Correct: among the 7 non-green marbles, 3/7 times 2/6 = 6/42 = 1/7.",
-      "B": "Student ignores the condition and draws from all 12 marbles, using 3/12 times 2/11 = 6/132 = 1/22.",
-      "C": "Student uses the restricted group of 7 but treats the draws as with replacement, using 3/7 times 3/7 = 9/49.",
-      "D": "Student uses the restricted group of 7 but forgets the total drops for the second draw, using 3/7 times 2/7 = 6/49."
+      "A": "Correct: among the 7 non-green marbles, $\\frac{3}{7}$ times $\\frac{2}{6}$ = $\\frac{6}{42}$ = $\\frac{1}{7}$.",
+      "B": "Student ignores the condition and draws from all 12 marbles, using $\\frac{3}{12}$ times $\\frac{2}{11}$ = $\\frac{6}{132}$ = $\\frac{1}{22}$.",
+      "C": "Student uses the restricted group of 7 but treats the draws as with replacement, using $\\frac{3}{7}$ times $\\frac{3}{7}$ = $\\frac{9}{49}$.",
+      "D": "Student uses the restricted group of 7 but forgets the total drops for the second draw, using $\\frac{3}{7}$ times $\\frac{2}{7}$ = $\\frac{6}{49}$."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -857,7 +960,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -869,11 +975,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["conditional_probability", "restricted_sample_space", "without_replacement", "compound"],
+    "context_tags": [
+      "conditional_probability",
+      "restricted_sample_space",
+      "without_replacement",
+      "compound"
+    ],
     "estimated_time_seconds": 150,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -892,7 +1003,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.4",
@@ -914,12 +1027,12 @@
       "D": "0.75"
     },
     "correct_answer": "D",
-    "explanation": "P(study and pass) = 0.5 times 0.6 = 0.30. P(no study and pass) = 0.5 times 0.2 = 0.10. So P(pass) = 0.30 + 0.10 = 0.40. Then P(studied given passed) = 0.30 / 0.40 = 0.75.",
+    "explanation": "P(study and pass) = 0.5 times 0.6 = 0.30. P(no study and pass) = 0.5 times 0.2 = 0.10. So P(pass) = 0.30 + 0.10 = 0.40. Then P(studied given passed) = 0.$\\frac{30}{0}$.40 = 0.75.",
     "distractor_logic": {
       "A": "Student reports the joint probability P(study and pass) = 0.30 without dividing by the total pass probability.",
       "B": "Student reports the reversed conditional P(pass given study) = 0.60 instead of P(study given pass).",
       "C": "Student reports the prior probability of studying (0.50), ignoring that the student passed.",
-      "D": "Correct: P(studied given passed) = 0.30 / 0.40 = 0.75."
+      "D": "Correct: P(studied given passed) = 0.$\\frac{30}{0}$.40 = 0.75."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -927,7 +1040,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -939,11 +1055,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["conditional_probability", "reversal_trap", "probability_tree", "weighted_paths"],
+    "context_tags": [
+      "conditional_probability",
+      "reversal_trap",
+      "probability_tree",
+      "weighted_paths"
+    ],
     "estimated_time_seconds": 150,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -962,7 +1083,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["QR"],
+    "secondary_strands": [
+      "QR"
+    ],
     "objective": "probability_sample_spaces_and_set_foundations",
     "objective_text": "Probability, Sample Spaces, and Set Foundations",
     "topic_id": "PR.3.4",
@@ -978,18 +1101,18 @@
     "question_text": "Of 80 people surveyed, 50 prefer tea and 30 prefer coffee. Among the tea drinkers, 30 take sugar. Among the coffee drinkers, 12 take sugar. Given that a person takes sugar, what is the probability that the person prefers coffee?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "3/20",
-      "B": "2/5",
-      "C": "2/7",
-      "D": "3/8"
+      "A": "$\\frac{3}{20}$",
+      "B": "$\\frac{2}{5}$",
+      "C": "$\\frac{2}{7}$",
+      "D": "$\\frac{3}{8}$"
     },
     "correct_answer": "C",
-    "explanation": "The condition is 'takes sugar'. The sugar takers total 30 + 12 = 42. Of those, 12 prefer coffee, so P(coffee given sugar) = 12/42 = 2/7.",
+    "explanation": "The condition is 'takes sugar'. The sugar takers total 30 + 12 = 42. Of those, 12 prefer coffee, so P(coffee given sugar) = $\\frac{12}{42}$ = $\\frac{2}{7}$.",
     "distractor_logic": {
-      "A": "Student divides the coffee-and-sugar count by all 80 people, getting 12/80 = 3/20, instead of by the sugar takers.",
-      "B": "Student reverses the condition and computes P(sugar given coffee) = 12/30 = 2/5.",
-      "C": "Correct: there are 42 sugar takers, of whom 12 prefer coffee, so 12/42 = 2/7.",
-      "D": "Student reports the probability of preferring coffee overall (30/80 = 3/8), ignoring the sugar condition."
+      "A": "Student divides the coffee-and-sugar count by all 80 people, getting $\\frac{12}{80}$ = $\\frac{3}{20}$, instead of by the sugar takers.",
+      "B": "Student reverses the condition and computes P(sugar given coffee) = $\\frac{12}{30}$ = $\\frac{2}{5}$.",
+      "C": "Correct: there are 42 sugar takers, of whom 12 prefer coffee, so $\\frac{12}{42}$ = $\\frac{2}{7}$.",
+      "D": "Student reports the probability of preferring coffee overall ($\\frac{30}{80}$ = $\\frac{3}{8}$), ignoring the sugar condition."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -997,7 +1120,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -1009,11 +1135,16 @@
       }
     ],
     "content_context": "survey",
-    "context_tags": ["conditional_probability", "reversal_trap", "derived_total", "subgroup_denominator"],
+    "context_tags": [
+      "conditional_probability",
+      "reversal_trap",
+      "derived_total",
+      "subgroup_denominator"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

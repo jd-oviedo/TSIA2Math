@@ -410,15 +410,15 @@
     "question_text": "A table shows that when x = 1, 2, 3, 4, the corresponding values of y are 10, 13, 16, 19. What is the rate of change of y with respect to x?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "1/3",
+      "A": "$\\frac{1}{3}$",
       "B": "3",
       "C": "10",
       "D": "7"
     },
     "correct_answer": "B",
-    "explanation": "The rate of change is the change in y divided by the change in x. Each time x increases by 1, y increases by 3 (10 to 13 to 16 to 19), so the rate of change is 3/1 = 3.",
+    "explanation": "The rate of change is the change in y divided by the change in x. Each time x increases by 1, y increases by 3 (10 to 13 to 16 to 19), so the rate of change is $\\frac{3}{1}$ = 3.",
     "distractor_logic": {
-      "A": "Student inverts the ratio, dividing the change in x by the change in y to get 1/3 instead of 3.",
+      "A": "Student inverts the ratio, dividing the change in x by the change in y to get $\\frac{1}{3}$ instead of 3.",
       "B": "Correct: y increases by 3 for each increase of 1 in x, so the rate of change is 3.",
       "C": "Student reports the first y-value, 10, as the rate rather than the change between values.",
       "D": "Student finds the starting value (the y-value when x = 0, which is 10 - 3 = 7) instead of the rate of change."
@@ -644,7 +644,7 @@
       "A": "2",
       "B": "4",
       "C": "10",
-      "D": "1/2"
+      "D": "$\\frac{1}{2}$"
     },
     "correct_answer": "A",
     "explanation": "The rate of change is how much the height grows each week. The values rise by 2 each week (4 to 6 to 8 to 10), so the rate of change is 2 centimeters per week.",
@@ -652,7 +652,7 @@
       "A": "Correct: the height increases by 2 centimeters each week, so the rate of change is 2.",
       "B": "Student reports the starting height of 4 as the rate instead of the weekly increase.",
       "C": "Student reports the final value of 10 as the rate rather than the change between weeks.",
-      "D": "Student inverts the ratio, dividing the change in week by the change in height (1 week per 2 cm) to get 1/2."
+      "D": "Student inverts the ratio, dividing the change in week by the change in height (1 week per 2 cm) to get $\\frac{1}{2}$."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -957,7 +957,7 @@
       "D": "They all earn the same hourly rate."
     },
     "correct_answer": "B",
-    "explanation": "Reduce each to dollars per hour. Ana is \\$18 per hour. Ben is 140 / 8 = \\$17.50 per hour. Carla is 700 / 40 = \\$17.50 per hour. Ana's \\$18 is the greatest hourly rate of change.",
+    "explanation": "Reduce each to dollars per hour. Ana is \\$18 per hour. Ben is 140 / 8 = \\$17.50 per hour. Carla is $\\frac{700}{40}$ = \\$17.50 per hour. Ana's \\$18 is the greatest hourly rate of change.",
     "distractor_logic": {
       "A": "Student compares total amounts and picks the largest, \\$700, ignoring that it is spread across 40 hours.",
       "B": "Correct: per hour, Ana earns \\$18, Ben earns \\$17.50, and Carla earns \\$17.50, so Ana's rate is greatest.",

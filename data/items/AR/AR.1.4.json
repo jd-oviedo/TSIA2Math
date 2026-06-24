@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["linear_function", "first_differences", "function_type", "table_of_values"],
+    "context_tags": [
+      "linear_function",
+      "first_differences",
+      "function_type",
+      "table_of_values"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -69,7 +77,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_B_008",
     "schema_version": "2.0",
@@ -112,7 +119,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -124,11 +134,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["quadratic_function", "parabola", "graph_features", "function_type"],
+    "context_tags": [
+      "quadratic_function",
+      "parabola",
+      "graph_features",
+      "function_type"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -140,7 +155,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_P_007",
     "schema_version": "2.0",
@@ -183,7 +197,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -195,11 +212,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["exponential_function", "function_type", "equation_form", "variable_exponent"],
+    "context_tags": [
+      "exponential_function",
+      "function_type",
+      "equation_form",
+      "variable_exponent"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -211,7 +233,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_P_008",
     "schema_version": "2.0",
@@ -254,7 +275,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -266,11 +290,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["quadratic_function", "second_differences", "function_type", "table_of_values"],
+    "context_tags": [
+      "quadratic_function",
+      "second_differences",
+      "function_type",
+      "table_of_values"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -282,7 +311,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_A_007",
     "schema_version": "2.0",
@@ -312,10 +340,10 @@
       "D": "The first differences are constant (each y-value increases by 5), which means the function is linear, not exponential."
     },
     "correct_answer": "D",
-    "explanation": "Compute the first differences: 11−6=5, 16−11=5, 21−16=5. The first differences are constant at 5, which is the defining feature of a linear function. A linear function cannot be exponential.\n\nTo further confirm, check consecutive ratios (the test for exponential): 11/6 ≈ 1.83, 16/11 ≈ 1.45, 21/16 ≈ 1.31. These ratios are not constant, directly disproving the exponential claim.\n\nThe function is y = 5x + 1, a linear function.",
+    "explanation": "Compute the first differences: 11−6=5, 16−11=5, 21−16=5. The first differences are constant at 5, which is the defining feature of a linear function. A linear function cannot be exponential.\n\nTo further confirm, check consecutive ratios (the test for exponential): $\\frac{11}{6}$ ≈ 1.83, $\\frac{16}{11}$ ≈ 1.45, $\\frac{21}{16}$ ≈ 1.31. These ratios are not constant, directly disproving the exponential claim.\n\nThe function is y = 5x + 1, a linear function.",
     "distractor_logic": {
       "A": "Student invokes a magnitude-based rule that does not exist — the size of y-values relative to 5 has no bearing on whether a function is exponential. Exponential functions can produce any range of values.",
-      "B": "Student claims consecutive ratios are constant, but 11/6 ≈ 1.83, 16/11 ≈ 1.45, and 21/16 ≈ 1.31 are clearly different. Accepting this choice means agreeing with the student's incorrect claim rather than refuting it.",
+      "B": "Student claims consecutive ratios are constant, but $\\frac{11}{6}$ ≈ 1.83, $\\frac{16}{11}$ ≈ 1.45, and $\\frac{21}{16}$ ≈ 1.31 are clearly different. Accepting this choice means agreeing with the student's incorrect claim rather than refuting it.",
       "C": "Student computes second differences: (16−11)−(11−6) = 5−5 = 0 and (21−16)−(16−11) = 0. Second differences are constant at 0, but a student who applies 'constant second differences = quadratic' without noting that zero second differences specifically indicate linear — not quadratic — misclassifies the result.",
       "D": "Correct: first differences of 5, 5, 5 are constant, proving the function is linear. A linear function is never exponential, which directly refutes the student's claim."
     },
@@ -325,7 +353,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -337,11 +368,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["linear_function", "exponential_function", "first_differences", "classification"],
+    "context_tags": [
+      "linear_function",
+      "exponential_function",
+      "first_differences",
+      "classification"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -353,7 +389,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_A_008",
     "schema_version": "2.0",
@@ -396,7 +431,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -408,11 +446,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["exponential_function", "algebraic_simplification", "function_type", "disguised_form"],
+    "context_tags": [
+      "exponential_function",
+      "algebraic_simplification",
+      "function_type",
+      "disguised_form"
+    ],
     "estimated_time_seconds": 150,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

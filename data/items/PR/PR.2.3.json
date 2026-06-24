@@ -113,7 +113,7 @@
     "explanation": "Five scores averaging 8 total 5 times 8 = 40. The four known scores add to 6 + 9 + 7 + 8 = 30, so the fifth score is 40 - 30 = 10.",
     "distractor_logic": {
       "A": "Student multiplies the mean by 4 known values (4 times 8 = 32) instead of 5, then 32 - 30 = 2.",
-      "B": "Student averages the four known scores, 30 / 4 = 7.5, instead of solving for the missing one.",
+      "B": "Student averages the four known scores, $\\frac{30}{4}$ = 7.5, instead of solving for the missing one.",
       "C": "Student assumes the missing score equals the mean, 8.",
       "D": "Correct: total = 5 times 8 = 40; 40 - 30 = 10."
     },
@@ -189,7 +189,7 @@
     "distractor_logic": {
       "A": "Correct: total = 3 times 12 = 36; 36 - 27 = 9.",
       "B": "Student assumes the missing number equals the mean, 12.",
-      "C": "Student averages the two known numbers, 27 / 2 = 13.5, instead of solving for the third.",
+      "C": "Student averages the two known numbers, $\\frac{27}{2}$ = 13.5, instead of solving for the third.",
       "D": "Student subtracts the mean from the sum of the known numbers, 27 - 12 = 15."
     },
     "difficulty_level": "Basic",
@@ -268,7 +268,7 @@
     "explanation": "Four readings averaging 18 total 4 times 18 = 72. The three known readings add to 15 + 21 + 12 = 48, so the fourth is 72 - 48 = 24.",
     "distractor_logic": {
       "A": "Student multiplies the mean by 3 known readings (3 times 18 = 54) instead of 4, then 54 - 48 = 6.",
-      "B": "Student averages the three known readings, 48 / 3 = 16, instead of solving for the fourth.",
+      "B": "Student averages the three known readings, $\\frac{48}{3}$ = 16, instead of solving for the fourth.",
       "C": "Correct: total = 4 times 18 = 72; 72 - 48 = 24.",
       "D": "Student subtracts the mean from the sum of the known readings, 48 - 18 = 30."
     },
@@ -342,7 +342,7 @@
     "correct_answer": "B",
     "explanation": "Four games averaging 16 points total 4 times 16 = 64. The three known games add to 12 + 18 + 15 = 45, so the fourth game is 64 - 45 = 19.",
     "distractor_logic": {
-      "A": "Student averages the three known games, 45 / 3 = 15, instead of solving for the fourth.",
+      "A": "Student averages the three known games, $\\frac{45}{3}$ = 15, instead of solving for the fourth.",
       "B": "Correct: total = 4 times 16 = 64; 64 - 45 = 19.",
       "C": "Student assumes the missing game equals the mean, 16.",
       "D": "Student multiplies the mean by one more than the count (5 times 16 = 80) then 80 - 45 = 35."
@@ -503,7 +503,7 @@
     "explanation": "Six numbers averaging 25 total 6 times 25 = 150. The five known numbers add to 20 + 30 + 18 + 27 + 22 = 117, so the sixth is 150 - 117 = 33.",
     "distractor_logic": {
       "A": "Student multiplies the mean by 5 known values (5 times 25 = 125) instead of 6, then 125 - 117 = 8.",
-      "B": "Student averages the five known numbers, 117 / 5 = 23.4, instead of solving for the sixth.",
+      "B": "Student averages the five known numbers, $\\frac{117}{5}$ = 23.4, instead of solving for the sixth.",
       "C": "Student assumes the missing number equals the mean, 25.",
       "D": "Correct: total = 6 times 25 = 150; 150 - 117 = 33."
     },
@@ -1130,12 +1130,12 @@
       "D": "36.67"
     },
     "correct_answer": "B",
-    "explanation": "The smallest known value is 18, so x = 18 + 20 = 38. The four values 18, 38, 30, 24 total 110, and the mean is 110 / 4 = 27.5.",
+    "explanation": "The smallest known value is 18, so x = 18 + 20 = 38. The four values 18, 38, 30, 24 total 110, and the mean is $\\frac{110}{4}$ = 27.5.",
     "distractor_logic": {
-      "A": "Student uses the range itself (20) as x, then averages 18, 20, 30, 24 to get 92 / 4 = 23.",
-      "B": "Correct: x = 18 + 20 = 38; (18 + 38 + 30 + 24) / 4 = 110 / 4 = 27.5.",
-      "C": "Student finds x by adding the range to the largest known value (30) instead of the minimum, getting x = 50 and a mean of 122 / 4 = 30.5.",
-      "D": "Student finds x = 38 correctly but divides the total by 3 instead of 4, getting 110 / 3, about 36.67."
+      "A": "Student uses the range itself (20) as x, then averages 18, 20, 30, 24 to get $\\frac{92}{4}$ = 23.",
+      "B": "Correct: x = 18 + 20 = 38; (18 + 38 + 30 + 24) / 4 = $\\frac{110}{4}$ = 27.5.",
+      "C": "Student finds x by adding the range to the largest known value (30) instead of the minimum, getting x = 50 and a mean of $\\frac{122}{4}$ = 30.5.",
+      "D": "Student finds x = 38 correctly but divides the total by 3 instead of 4, getting $\\frac{110}{3}$, about 36.67."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

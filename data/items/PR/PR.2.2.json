@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "course_grading",
-    "context_tags": ["weighted_mean", "percentage_weights", "two_category", "grades"],
+    "context_tags": [
+      "weighted_mean",
+      "percentage_weights",
+      "two_category",
+      "grades"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -98,12 +106,12 @@
       "D": "74"
     },
     "correct_answer": "D",
-    "explanation": "Multiply each score by its weight, add, then divide by the total weight 10: (5 times 60 + 3 times 80 + 2 times 100) / 10 = (300 + 240 + 200) / 10 = 740 / 10 = 74.",
+    "explanation": "Multiply each score by its weight, add, then divide by the total weight 10: (5 times 60 + 3 times 80 + 2 times 100) / 10 = (300 + 240 + 200) / 10 = $\\frac{740}{10}$ = 74.",
     "distractor_logic": {
-      "A": "Student swaps two of the three weights, using 3 and 5 on the project and quizzes: (3 times 60 + 5 times 80 + 2 times 100) / 10 = 780 / 10 = 78.",
+      "A": "Student swaps two of the three weights, using 3 and 5 on the project and quizzes: (3 times 60 + 5 times 80 + 2 times 100) / 10 = $\\frac{780}{10}$ = 78.",
       "B": "Student takes the simple unweighted mean, (60 + 80 + 100) / 3 = 80, ignoring the weights.",
-      "C": "Student fully reverses the weights to 2, 3, 5: (2 times 60 + 3 times 80 + 5 times 100) / 10 = 860 / 10 = 86.",
-      "D": "Correct: (5 times 60 + 3 times 80 + 2 times 100) / 10 = 740 / 10 = 74."
+      "C": "Student fully reverses the weights to 2, 3, 5: (2 times 60 + 3 times 80 + 5 times 100) / 10 = $\\frac{860}{10}$ = 86.",
+      "D": "Correct: (5 times 60 + 3 times 80 + 2 times 100) / 10 = $\\frac{740}{10}$ = 74."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -111,7 +119,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -119,11 +129,16 @@
       }
     ],
     "content_context": "course_grading",
-    "context_tags": ["weighted_mean", "weights_total_ten", "three_category", "grades"],
+    "context_tags": [
+      "weighted_mean",
+      "weights_total_ten",
+      "three_category",
+      "grades"
+    ],
     "estimated_time_seconds": 85,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -177,7 +192,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -189,11 +207,16 @@
       }
     ],
     "content_context": "course_grading",
-    "context_tags": ["weighted_mean", "percentage_weights", "three_category", "grades"],
+    "context_tags": [
+      "weighted_mean",
+      "percentage_weights",
+      "three_category",
+      "grades"
+    ],
     "estimated_time_seconds": 85,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -247,7 +270,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -259,11 +285,16 @@
       }
     ],
     "content_context": "competition_judging",
-    "context_tags": ["weighted_mean", "percentage_weights", "two_category", "judging"],
+    "context_tags": [
+      "weighted_mean",
+      "percentage_weights",
+      "two_category",
+      "judging"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -304,12 +335,12 @@
       "D": "7"
     },
     "correct_answer": "C",
-    "explanation": "Weight each point value by how many questions carry it, then divide by the total number of questions: (3 times 4 + 2 times 9) / 5 = (12 + 18) / 5 = 30 / 5 = 6.",
+    "explanation": "Weight each point value by how many questions carry it, then divide by the total number of questions: (3 times 4 + 2 times 9) / 5 = (12 + 18) / 5 = $\\frac{30}{5}$ = 6.",
     "distractor_logic": {
       "A": "Student reports the most common point value (4, on three questions) instead of computing the mean.",
       "B": "Student averages the two distinct point values, (4 + 9) / 2 = 6.5, ignoring how many questions carry each.",
-      "C": "Correct: (3 times 4 + 2 times 9) / 5 = 30 / 5 = 6.",
-      "D": "Student swaps the two counts, treating it as 2 fours and 3 nines: (2 times 4 + 3 times 9) / 5 = 35 / 5 = 7."
+      "C": "Correct: (3 times 4 + 2 times 9) / 5 = $\\frac{30}{5}$ = 6.",
+      "D": "Student swaps the two counts, treating it as 2 fours and 3 nines: (2 times 4 + 3 times 9) / 5 = $\\frac{35}{5}$ = 7."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -317,7 +348,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -325,11 +358,16 @@
       }
     ],
     "content_context": "test_points",
-    "context_tags": ["weighted_mean", "frequency_weights", "counts", "test_design"],
+    "context_tags": [
+      "weighted_mean",
+      "frequency_weights",
+      "counts",
+      "test_design"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -370,12 +408,12 @@
       "D": "85.8"
     },
     "correct_answer": "A",
-    "explanation": "The ratio parts total 5 + 3 + 2 = 10, so weight each score by its part and divide by 10: (5 times 78 + 3 times 90 + 2 times 84) / 10 = (390 + 270 + 168) / 10 = 828 / 10 = 82.8.",
+    "explanation": "The ratio parts total 5 + 3 + 2 = 10, so weight each score by its part and divide by 10: (5 times 78 + 3 times 90 + 2 times 84) / 10 = (390 + 270 + 168) / 10 = $\\frac{828}{10}$ = 82.8.",
     "distractor_logic": {
-      "A": "Correct: (5 times 78 + 3 times 90 + 2 times 84) / 10 = 828 / 10 = 82.8.",
+      "A": "Correct: (5 times 78 + 3 times 90 + 2 times 84) / 10 = $\\frac{828}{10}$ = 82.8.",
       "B": "Student takes the simple unweighted mean, (78 + 90 + 84) / 3 = 84, ignoring the ratio.",
-      "C": "Student reverses the ratio to 2 : 3 : 5: (2 times 78 + 3 times 90 + 5 times 84) / 10 = 846 / 10 = 84.6.",
-      "D": "Student matches the largest weight to the largest score: (5 times 90 + 3 times 84 + 2 times 78) / 10 = 858 / 10 = 85.8."
+      "C": "Student reverses the ratio to 2 : 3 : 5: (2 times 78 + 3 times 90 + 5 times 84) / 10 = $\\frac{846}{10}$ = 84.6.",
+      "D": "Student matches the largest weight to the largest score: (5 times 90 + 3 times 84 + 2 times 78) / 10 = $\\frac{858}{10}$ = 85.8."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -383,7 +421,10 @@
     "guessing_c": null,
     "calculator_type": "basic",
     "requires_calculator": true,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -395,11 +436,16 @@
       }
     ],
     "content_context": "course_grading",
-    "context_tags": ["weighted_mean", "ratio_weights", "converting_ratios", "grades"],
+    "context_tags": [
+      "weighted_mean",
+      "ratio_weights",
+      "converting_ratios",
+      "grades"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -453,7 +499,10 @@
     "guessing_c": null,
     "calculator_type": "basic",
     "requires_calculator": true,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -465,11 +514,16 @@
       }
     ],
     "content_context": "course_grading",
-    "context_tags": ["weighted_mean", "missing_weight", "percentage_weights", "grades"],
+    "context_tags": [
+      "weighted_mean",
+      "missing_weight",
+      "percentage_weights",
+      "grades"
+    ],
     "estimated_time_seconds": 115,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -510,12 +564,12 @@
       "D": "87.5"
     },
     "correct_answer": "D",
-    "explanation": "Weight each grade by its credit hours and divide by the total credits (4 + 3 + 1 = 8): (4 times 90 + 3 times 80 + 1 times 100) / 8 = (360 + 240 + 100) / 8 = 700 / 8 = 87.5.",
+    "explanation": "Weight each grade by its credit hours and divide by the total credits (4 + 3 + 1 = 8): (4 times 90 + 3 times 80 + 1 times 100) / 8 = (360 + 240 + 100) / 8 = $\\frac{700}{8}$ = 87.5.",
     "distractor_logic": {
-      "A": "Student drops the 1-credit course and averages only the other two by credits: (4 times 90 + 3 times 80) / 7 = 600 / 7, about 85.7.",
+      "A": "Student drops the 1-credit course and averages only the other two by credits: (4 times 90 + 3 times 80) / 7 = $\\frac{600}{7}$, about 85.7.",
       "B": "Student takes the simple unweighted mean, (90 + 80 + 100) / 3 = 90, ignoring the credit weights.",
-      "C": "Student reverses the credit weights to 1, 3, 4: (1 times 90 + 3 times 80 + 4 times 100) / 8 = 730 / 8 = 91.25.",
-      "D": "Correct: (4 times 90 + 3 times 80 + 1 times 100) / 8 = 700 / 8 = 87.5."
+      "C": "Student reverses the credit weights to 1, 3, 4: (1 times 90 + 3 times 80 + 4 times 100) / 8 = $\\frac{730}{8}$ = 91.25.",
+      "D": "Correct: (4 times 90 + 3 times 80 + 1 times 100) / 8 = $\\frac{700}{8}$ = 87.5."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -523,7 +577,9 @@
     "guessing_c": null,
     "calculator_type": "basic",
     "requires_calculator": true,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -531,11 +587,16 @@
       }
     ],
     "content_context": "gpa_credits",
-    "context_tags": ["weighted_mean", "credit_weights", "total_weight", "gpa"],
+    "context_tags": [
+      "weighted_mean",
+      "credit_weights",
+      "total_weight",
+      "gpa"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -576,11 +637,11 @@
       "D": "85"
     },
     "correct_answer": "C",
-    "explanation": "Weight each average by its section size, then divide by the total number of students: (20 times 75 + 30 times 85) / 50 = (1500 + 2550) / 50 = 4050 / 50 = 81. The larger section, with the higher average, pulls the result above the midpoint.",
+    "explanation": "Weight each average by its section size, then divide by the total number of students: (20 times 75 + 30 times 85) / 50 = (1500 + 2550) / 50 = $\\frac{4050}{50}$ = 81. The larger section, with the higher average, pulls the result above the midpoint.",
     "distractor_logic": {
-      "A": "Student swaps the section sizes: (30 times 75 + 20 times 85) / 50 = 3950 / 50 = 79.",
+      "A": "Student swaps the section sizes: (30 times 75 + 20 times 85) / 50 = $\\frac{3950}{50}$ = 79.",
       "B": "Student averages the two section averages, (75 + 85) / 2 = 80, ignoring how many students are in each.",
-      "C": "Correct: (20 times 75 + 30 times 85) / 50 = 4050 / 50 = 81.",
+      "C": "Correct: (20 times 75 + 30 times 85) / 50 = $\\frac{4050}{50}$ = 81.",
       "D": "Student uses the larger section's average of 85, assuming the bigger group simply sets the combined average."
     },
     "difficulty_level": "Proficient",
@@ -589,7 +650,10 @@
     "guessing_c": null,
     "calculator_type": "basic",
     "requires_calculator": true,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -601,11 +665,16 @@
       }
     ],
     "content_context": "class_sections",
-    "context_tags": ["weighted_mean", "group_size_weights", "combining_groups", "averages"],
+    "context_tags": [
+      "weighted_mean",
+      "group_size_weights",
+      "combining_groups",
+      "averages"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -646,11 +715,11 @@
       "D": "5"
     },
     "correct_answer": "B",
-    "explanation": "Weight each rating by how many people gave it, then divide by the total number of people (10 + 6 + 4 = 20): (10 times 5 + 6 times 4 + 4 times 2) / 20 = (50 + 24 + 8) / 20 = 82 / 20 = 4.1.",
+    "explanation": "Weight each rating by how many people gave it, then divide by the total number of people (10 + 6 + 4 = 20): (10 times 5 + 6 times 4 + 4 times 2) / 20 = (50 + 24 + 8) / 20 = $\\frac{82}{20}$ = 4.1.",
     "distractor_logic": {
       "A": "Student averages the three distinct rating values, (5 + 4 + 2) / 3, about 3.67, ignoring how many people chose each.",
-      "B": "Correct: (10 times 5 + 6 times 4 + 4 times 2) / 20 = 82 / 20 = 4.1.",
-      "C": "Student mismatches the counts to the ratings (4 people to 5, 6 to 4, 10 to 2): (4 times 5 + 6 times 4 + 10 times 2) / 20 = 64 / 20 = 3.2.",
+      "B": "Correct: (10 times 5 + 6 times 4 + 4 times 2) / 20 = $\\frac{82}{20}$ = 4.1.",
+      "C": "Student mismatches the counts to the ratings (4 people to 5, 6 to 4, 10 to 2): (4 times 5 + 6 times 4 + 10 times 2) / 20 = $\\frac{64}{20}$ = 3.2.",
       "D": "Student reports the most common rating, 5, given by the largest group, instead of the mean."
     },
     "difficulty_level": "Proficient",
@@ -659,7 +728,9 @@
     "guessing_c": null,
     "calculator_type": "basic",
     "requires_calculator": true,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -667,11 +738,16 @@
       }
     ],
     "content_context": "survey_ratings",
-    "context_tags": ["weighted_mean", "frequency_weights", "survey", "mean_rating"],
+    "context_tags": [
+      "weighted_mean",
+      "frequency_weights",
+      "survey",
+      "mean_rating"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -690,7 +766,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.2",
@@ -725,7 +803,10 @@
     "guessing_c": null,
     "calculator_type": "basic",
     "requires_calculator": true,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -737,11 +818,16 @@
       }
     ],
     "content_context": "course_grading",
-    "context_tags": ["weighted_mean", "missing_score", "reverse_reasoning", "grades"],
+    "context_tags": [
+      "weighted_mean",
+      "missing_score",
+      "reverse_reasoning",
+      "grades"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -795,7 +881,10 @@
     "guessing_c": null,
     "calculator_type": "basic",
     "requires_calculator": true,
-    "applicable_strategies": ["eliminate_wrong_answers", "identify_key_info"],
+    "applicable_strategies": [
+      "eliminate_wrong_answers",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "eliminate_wrong_answers",
@@ -807,11 +896,16 @@
       }
     ],
     "content_context": "course_grading",
-    "context_tags": ["weighted_mean", "comparing_schemes", "weighting_effect", "grades"],
+    "context_tags": [
+      "weighted_mean",
+      "comparing_schemes",
+      "weighting_effect",
+      "grades"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -830,7 +924,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.2",
@@ -865,7 +961,10 @@
     "guessing_c": null,
     "calculator_type": "basic",
     "requires_calculator": true,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -877,11 +976,16 @@
       }
     ],
     "content_context": "course_grading",
-    "context_tags": ["weighted_mean", "missing_weight", "reverse_reasoning", "grades"],
+    "context_tags": [
+      "weighted_mean",
+      "missing_weight",
+      "reverse_reasoning",
+      "grades"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -900,7 +1004,9 @@
     "status": "draft",
     "category": "Probabilistic and Statistical Reasoning",
     "primary_strand": "PR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "measures_of_center_and_spread",
     "objective_text": "Measures of Center and Spread",
     "topic_id": "PR.2.2",
@@ -922,7 +1028,7 @@
       "D": "21.5"
     },
     "correct_answer": "B",
-    "explanation": "The known parts contribute 0.40 times 80 + 0.35 times 90 = 32 + 31.5 = 63.5. So 0.25 times F = 85 - 63.5 = 21.5, and F = 21.5 / 0.25 = 86.",
+    "explanation": "The known parts contribute 0.40 times 80 + 0.35 times 90 = 32 + 31.5 = 63.5. So 0.25 times F = 85 - 63.5 = 21.5, and F = 21.$\\frac{5}{0}$.25 = 86.",
     "distractor_logic": {
       "A": "Student ignores the weights and solves the unweighted equation (80 + 90 + F) / 3 = 85, giving F = 85.",
       "B": "Correct: 0.40 times 80 + 0.35 times 90 + 0.25 times F = 85; 0.25 times F = 21.5; F = 86.",
@@ -935,7 +1041,10 @@
     "guessing_c": null,
     "calculator_type": "basic",
     "requires_calculator": true,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -947,11 +1056,16 @@
       }
     ],
     "content_context": "course_grading",
-    "context_tags": ["weighted_mean", "missing_score", "three_category", "grades"],
+    "context_tags": [
+      "weighted_mean",
+      "missing_score",
+      "three_category",
+      "grades"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -1005,7 +1119,10 @@
     "guessing_c": null,
     "calculator_type": "basic",
     "requires_calculator": true,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -1017,11 +1134,16 @@
       }
     ],
     "content_context": "course_grading",
-    "context_tags": ["weighted_mean", "comparing_schemes", "difference", "grades"],
+    "context_tags": [
+      "weighted_mean",
+      "comparing_schemes",
+      "difference",
+      "grades"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

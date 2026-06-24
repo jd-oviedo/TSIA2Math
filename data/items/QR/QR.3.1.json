@@ -179,7 +179,7 @@
     "answer_choices": {
       "A": "m + 6",
       "B": "m - 6",
-      "C": "m/6",
+      "C": "$\\frac{m}{6}$",
       "D": "6m"
     },
     "correct_answer": "D",
@@ -187,7 +187,7 @@
     "distractor_logic": {
       "A": "Student confuses 'product' with 'sum' and adds: m + 6.",
       "B": "Student confuses 'product' with 'difference' and subtracts: m - 6.",
-      "C": "Student confuses 'product' with 'quotient' and divides: m/6.",
+      "C": "Student confuses 'product' with 'quotient' and divides: $\\frac{m}{6}$.",
       "D": "Correct: 'the product of m and 6' multiplies the two quantities, giving 6m."
     },
     "difficulty_level": "Basic",
@@ -254,16 +254,16 @@
     "question_text": "Which expression represents 'a number k divided by 4'?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "4/k",
-      "B": "k/4",
+      "A": "$\\frac{4}{k}$",
+      "B": "$\\frac{k}{4}$",
       "C": "4k",
       "D": "k - 4"
     },
     "correct_answer": "B",
-    "explanation": "'Divided by' signals division, and the quantity named before 'divided by' is the dividend (the number being split). 'A number k divided by 4' means k divided into 4 parts: k/4. Order matters, because division is not commutative.",
+    "explanation": "'Divided by' signals division, and the quantity named before 'divided by' is the dividend (the number being split). 'A number k divided by 4' means k divided into 4 parts: $\\frac{k}{4}$. Order matters, because division is not commutative.",
     "distractor_logic": {
-      "A": "Student reverses the division order, placing 4 as the dividend: 4/k.",
-      "B": "Correct: 'a number k divided by 4' makes k the dividend, giving k/4.",
+      "A": "Student reverses the division order, placing 4 as the dividend: $\\frac{4}{k}$.",
+      "B": "Correct: 'a number k divided by 4' makes k the dividend, giving $\\frac{k}{4}$.",
       "C": "Student confuses 'divided by' with multiplication: 4k.",
       "D": "Student confuses 'divided by' with subtraction: k - 4."
     },
@@ -333,7 +333,7 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "w + 2",
-      "B": "w^2",
+      "B": "$w^{2}$",
       "C": "2w",
       "D": "w - 2"
     },
@@ -341,7 +341,7 @@
     "explanation": "'Twice' means two times. 'Twice a number w' means 2 multiplied by w, written 2w.",
     "distractor_logic": {
       "A": "Student interprets 'twice' as 'two more' and adds: w + 2.",
-      "B": "Student confuses 'twice' with 'squared' and raises w to the second power: w^2.",
+      "B": "Student confuses 'twice' with 'squared' and raises w to the second power: $w^{2}$.",
       "C": "Correct: 'twice a number w' is two times w, giving 2w.",
       "D": "Student interprets 'twice' as 'two less' and subtracts: w - 2."
     },
@@ -565,18 +565,18 @@
     "question_text": "Which expression represents 'the quotient of a number n and 4, increased by 7'?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "4/n + 7",
-      "B": "n/4 + 7",
+      "A": "$\\frac{4}{n}$ + 7",
+      "B": "$\\frac{n}{4}$ + 7",
       "C": "(n + 7)/4",
-      "D": "n/4 - 7"
+      "D": "$\\frac{n}{4}$ - 7"
     },
     "correct_answer": "B",
-    "explanation": "'The quotient of a number n and 4' is n/4, with n as the dividend. 'Increased by 7' adds 7 to that quotient, and the 7 stays outside the division: n/4 + 7.",
+    "explanation": "'The quotient of a number n and 4' is $\\frac{n}{4}$, with n as the dividend. 'Increased by 7' adds 7 to that quotient, and the 7 stays outside the division: $\\frac{n}{4}$ + 7.",
     "distractor_logic": {
-      "A": "Student reverses the division order, making 4 the dividend: 4/n + 7.",
-      "B": "Correct: the quotient n/4 is increased by 7, giving n/4 + 7.",
+      "A": "Student reverses the division order, making 4 the dividend: $\\frac{4}{n}$ + 7.",
+      "B": "Correct: the quotient $\\frac{n}{4}$ is increased by 7, giving $\\frac{n}{4}$ + 7.",
       "C": "Student adds 7 before dividing, pulling it into the numerator: (n + 7)/4.",
-      "D": "Student confuses 'increased by' with 'decreased by' and subtracts: n/4 - 7."
+      "D": "Student confuses 'increased by' with 'decreased by' and subtracts: $\\frac{n}{4}$ - 7."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -1033,7 +1033,7 @@
     "question_text": "Which expression represents 'the average of a number x and 12, decreased by 3'?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x + 12/2 - 3",
+      "A": "x + $\\frac{12}{2}$ - 3",
       "B": "(x + 12 - 3)/2",
       "C": "(x + 12)/2 - 3",
       "D": "(x + 12)/2 + 3"
@@ -1041,7 +1041,7 @@
     "correct_answer": "C",
     "explanation": "The average of x and 12 adds them first, then divides the whole sum by 2: (x + 12)/2. 'Decreased by 3' subtracts 3 from that average, and the 3 stays outside the division: (x + 12)/2 - 3.",
     "distractor_logic": {
-      "A": "Student divides only the 12 by 2 instead of the full sum, dropping the grouping: x + 12/2 - 3.",
+      "A": "Student divides only the 12 by 2 instead of the full sum, dropping the grouping: x + $\\frac{12}{2}$ - 3.",
       "B": "Student pulls the -3 inside the average, subtracting before dividing: (x + 12 - 3)/2.",
       "C": "Correct: the grouped sum is divided by 2 to form the average, then 3 is subtracted: (x + 12)/2 - 3.",
       "D": "Student confuses 'decreased by' with 'increased by' and adds 3: (x + 12)/2 + 3."

@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "distance_rate_time",
-    "context_tags": ["literal_equation", "one_step", "inverse_operation", "formula_rearrangement"],
+    "context_tags": [
+      "literal_equation",
+      "one_step",
+      "inverse_operation",
+      "formula_rearrangement"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -69,7 +77,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_B_047",
     "schema_version": "2.0",
@@ -112,7 +119,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -124,11 +134,16 @@
       }
     ],
     "content_context": "triangle_perimeter",
-    "context_tags": ["literal_equation", "one_step", "additive_formula", "formula_rearrangement"],
+    "context_tags": [
+      "literal_equation",
+      "one_step",
+      "additive_formula",
+      "formula_rearrangement"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -140,7 +155,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_P_032",
     "schema_version": "2.0",
@@ -161,7 +175,7 @@
       "rearranging the slope formula to isolate one of the y-coordinates",
       "applying two-step inverse operations within a familiar algebraic formula"
     ],
-    "question_text": "The slope formula is m = (y₂ − y₁) / (x₂ − x₁). Solve this formula for y₂.",
+    "question_text": "The slope formula is m = $\\frac{y₂ − y₁}{x₂ − x₁}$. Solve this formula for y₂.",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "y₂ = m / (x₂ − x₁) + y₁",
@@ -183,7 +197,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -195,11 +212,16 @@
       }
     ],
     "content_context": "slope_formula",
-    "context_tags": ["literal_equation", "two_step", "slope_formula", "formula_rearrangement"],
+    "context_tags": [
+      "literal_equation",
+      "two_step",
+      "slope_formula",
+      "formula_rearrangement"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -211,7 +233,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_P_033",
     "schema_version": "2.0",
@@ -232,7 +253,7 @@
       "rearranging the trapezoid area formula to isolate one base",
       "correctly handling the fraction coefficient and grouped sum in a multi-step literal equation"
     ],
-    "question_text": "The area of a trapezoid is A = (1/2)(b₁ + b₂)h. Solve this formula for b₁.",
+    "question_text": "The area of a trapezoid is A = ($\\frac{1}{2}$)(b₁ + b₂)h. Solve this formula for b₁.",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "b₁ = 2A − b₂h",
@@ -241,10 +262,10 @@
       "D": "b₁ = 2A/h − b₂"
     },
     "correct_answer": "D",
-    "explanation": "Step 1 — Multiply both sides by 2 to eliminate the fraction:\n2A = (b₁ + b₂)h\n\nStep 2 — Divide both sides by h:\n2A/h = b₁ + b₂\n\nStep 3 — Subtract b₂ from both sides:\nb₁ = 2A/h − b₂\n\nVerify with A = 24, h = 6, b₂ = 4:\nb₁ = 2(24)/6 − 4 = 48/6 − 4 = 8 − 4 = 4\nCheck: (1/2)(4 + 4)(6) = 24 ✓",
+    "explanation": "Step 1 — Multiply both sides by 2 to eliminate the fraction:\n2A = (b₁ + b₂)h\n\nStep 2 — Divide both sides by h:\n2A/h = b₁ + b₂\n\nStep 3 — Subtract b₂ from both sides:\nb₁ = 2A/h − b₂\n\nVerify with A = 24, h = 6, b₂ = 4:\nb₁ = 2(24)/6 − 4 = $\\frac{48}{6}$ − 4 = 8 − 4 = 4\nCheck: ($\\frac{1}{2}$)(4 + 4)(6) = 24 ✓",
     "distractor_logic": {
       "A": "Student correctly multiplies by 2 to get 2A = (b₁ + b₂)h, but then subtracts b₂h from both sides instead of dividing by h — leaving b₁ in an incorrect form.",
-      "B": "Student correctly divides by h and subtracts b₂, but skips multiplying by 2 to clear the 1/2 — giving A/h − b₂ instead of 2A/h − b₂.",
+      "B": "Student correctly divides by h and subtracts b₂, but skips multiplying by 2 to clear the $\\frac{1}{2}$ — giving A/h − b₂ instead of 2A/h − b₂.",
       "C": "Student misreads the formula as A = b₁ + b₂ + h (treating all factors as additive terms) and isolates b₁ by subtracting b₂ and h.",
       "D": "Correct: multiplying by 2, dividing by h, and subtracting b₂ gives b₁ = 2A/h − b₂."
     },
@@ -254,11 +275,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Work in reverse order of operations: first multiply both sides by 2 to clear the 1/2, then divide by h, then subtract b₂."
+        "hint_text": "Work in reverse order of operations: first multiply both sides by 2 to clear the $\\frac{1}{2}$, then divide by h, then subtract b₂."
       },
       {
         "strategy": "plug_in_values",
@@ -266,11 +290,16 @@
       }
     ],
     "content_context": "trapezoid_area",
-    "context_tags": ["literal_equation", "two_step", "area_formula", "formula_rearrangement"],
+    "context_tags": [
+      "literal_equation",
+      "two_step",
+      "area_formula",
+      "formula_rearrangement"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -282,7 +311,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_A_025",
     "schema_version": "2.0",
@@ -312,7 +340,7 @@
       "D": "x = c/ab"
     },
     "correct_answer": "B",
-    "explanation": "Factor x from the left side:\nax + bx = x(a + b)\n\nSo the equation becomes:\nx(a + b) = c\n\nDivide both sides by (a + b):\nx = c/(a + b)\n\nVerify with a = 2, b = 3, c = 10:\nx = 10/(2 + 3) = 10/5 = 2\nCheck: 2(2) + 3(2) = 4 + 6 = 10 ✓",
+    "explanation": "Factor x from the left side:\nax + bx = x(a + b)\n\nSo the equation becomes:\nx(a + b) = c\n\nDivide both sides by (a + b):\nx = c/(a + b)\n\nVerify with a = 2, b = 3, c = 10:\nx = 10/(2 + 3) = $\\frac{10}{5}$ = 2\nCheck: 2(2) + 3(2) = 4 + 6 = 10 ✓",
     "distractor_logic": {
       "A": "Student splits the division across the sum — treats c/(a + b) as c/a + c/b — applying a false rule that division distributes over addition.",
       "B": "Correct: factoring gives x(a + b) = c, so x = c/(a + b).",
@@ -325,7 +353,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -337,11 +368,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["literal_equation", "factoring", "common_factor", "advanced_rearrangement"],
+    "context_tags": [
+      "literal_equation",
+      "factoring",
+      "common_factor",
+      "advanced_rearrangement"
+    ],
     "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -353,7 +389,6 @@
     "last_modified": "2026-06-02",
     "review_notes": null
   },
-
   {
     "item_id": "AR_A_026",
     "schema_version": "2.0",
@@ -377,17 +412,17 @@
     "question_text": "Solve for x:  (x + a)/b = c + x",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x = (bc − a)/(1 + b)",
+      "A": "x = $\\frac{bc − a}{1 + b}$",
       "B": "x = (a − bc)/b",
-      "C": "x = (bc − a)/(1 − b)",
+      "C": "x = $\\frac{bc − a}{1 − b}$",
       "D": "x = bc − a + b"
     },
     "correct_answer": "C",
-    "explanation": "Step 1 — Multiply both sides by b to clear the denominator:\nx + a = b(c + x) = bc + bx\n\nStep 2 — Move all x-terms to the left:\nx − bx = bc − a\n\nStep 3 — Factor x:\nx(1 − b) = bc − a\n\nStep 4 — Divide both sides by (1 − b):\nx = (bc − a)/(1 − b)\n\nVerify with a = 2, b = 3, c = 1:\nx = (3 − 2)/(1 − 3) = 1/(−2) = −1/2\nCheck: (−1/2 + 2)/3 = (3/2)/3 = 1/2; c + x = 1 − 1/2 = 1/2 ✓",
+    "explanation": "Step 1 — Multiply both sides by b to clear the denominator:\nx + a = b(c + x) = bc + bx\n\nStep 2 — Move all x-terms to the left:\nx − bx = bc − a\n\nStep 3 — Factor x:\nx(1 − b) = bc − a\n\nStep 4 — Divide both sides by (1 − b):\nx = $\\frac{bc − a}{1 − b}$\n\nVerify with a = 2, b = 3, c = 1:\nx = $\\frac{3 − 2}{1 − 3}$ = 1/(−2) = −$\\frac{1}{2}$\nCheck: (−$\\frac{1}{2}$ + 2)/3 = ($\\frac{3}{2}$)/3 = $\\frac{1}{2}$; c + x = 1 − $\\frac{1}{2}$ = $\\frac{1}{2}$ ✓",
     "distractor_logic": {
-      "A": "Student moves bx to the left but adds it to x instead of subtracting: x + bx = bc − a → x(1 + b) = bc − a → x = (bc − a)/(1 + b).",
+      "A": "Student moves bx to the left but adds it to x instead of subtracting: x + bx = bc − a → x(1 + b) = bc − a → x = $\\frac{bc − a}{1 + b}$.",
       "B": "Student correctly isolates x(1 − b) = bc − a but then divides by b (the coefficient from the original right-hand term) rather than by (1 − b) (the factored coefficient of x).",
-      "C": "Correct: x + a = bc + bx → x − bx = bc − a → x(1 − b) = bc − a → x = (bc − a)/(1 − b).",
+      "C": "Correct: x + a = bc + bx → x − bx = bc − a → x(1 − b) = bc − a → x = $\\frac{bc − a}{1 − b}$.",
       "D": "Student correctly factors to x(1 − b) = bc − a but then adds (1 − b) to both sides instead of dividing, reporting x = bc − a + b."
     },
     "difficulty_level": "Advanced",
@@ -396,11 +431,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try a = 2, b = 3, c = 1. The correct formula should give x = −1/2. Substitute into each answer choice and identify the match."
+        "hint_text": "Try a = 2, b = 3, c = 1. The correct formula should give x = −$\\frac{1}{2}$. Substitute into each answer choice and identify the match."
       },
       {
         "strategy": "identify_key_info",
@@ -408,11 +446,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["literal_equation", "variable_on_both_sides", "factoring", "advanced_rearrangement"],
+    "context_tags": [
+      "literal_equation",
+      "variable_on_both_sides",
+      "factoring",
+      "advanced_rearrangement"
+    ],
     "estimated_time_seconds": 150,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,

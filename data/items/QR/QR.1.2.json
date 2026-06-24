@@ -19,7 +19,7 @@
       "ordering_fractions_decimals_percents",
       "comparing_rational_numbers"
     ],
-    "question_text": "Four runners finished a 5K race and their finishing times are listed below as fractions of an hour. Which list shows the runners in order from FASTEST to SLOWEST?\n\n• Maria: 0.44 hour\n• Devon: 2/5 hour\n• Priya: 47%\n• Tomás: 9/20 hour",
+    "question_text": "Four runners finished a 5K race and their finishing times are listed below as fractions of an hour. Which list shows the runners in order from FASTEST to SLOWEST?\n\n• Maria: 0.44 hour\n• Devon: $\\frac{2}{5}$ hour\n• Priya: 47%\n• Tomás: $\\frac{9}{20}$ hour",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Devon, Maria, Tomás, Priya",
@@ -28,12 +28,12 @@
       "D": "Maria, Tomás, Devon, Priya"
     },
     "correct_answer": "A",
-    "explanation": "Convert all four values to decimals so they can be compared directly:\n• Maria: 0.44\n• Devon: 2/5 = 0.40\n• Priya: 47% = 0.47\n• Tomás: 9/20 = 0.45\n\nA faster runner has a SMALLER time. Ordering from least to greatest (fastest to slowest): 0.40 (Devon) < 0.44 (Maria) < 0.45 (Tomás) < 0.47 (Priya). The correct order is Devon, Maria, Tomás, Priya.",
+    "explanation": "Convert all four values to decimals so they can be compared directly:\n• Maria: 0.44\n• Devon: $\\frac{2}{5}$ = 0.40\n• Priya: 47% = 0.47\n• Tomás: $\\frac{9}{20}$ = 0.45\n\nA faster runner has a SMALLER time. Ordering from least to greatest (fastest to slowest): 0.40 (Devon) < 0.44 (Maria) < 0.45 (Tomás) < 0.47 (Priya). The correct order is Devon, Maria, Tomás, Priya.",
     "distractor_logic": {
       "B": "Reverses the direction — orders from slowest to fastest (greatest time first) instead of fastest to slowest. Student understood the conversions but inverted the meaning of 'fastest.'",
-      "C": "Student misconverts 9/20, treating it as less than 0.44 (for example reading 9/20 as about 0.43), which makes Tomás appear faster than Maria and places Tomás second.",
-      "D": "Treats 2/5 as 0.50 (confusing 2/5 with 1/2 because '5' appears in both) and 9/20 as roughly 0.42, producing an incorrect ordering with Devon near the slow end.",
-      "A": "Correct: Devon = 2/5 = 0.40 is fastest, then Maria at 0.44, then Tomás = 9/20 = 0.45, and Priya = 47% = 0.47 is slowest."
+      "C": "Student misconverts $\\frac{9}{20}$, treating it as less than 0.44 (for example reading $\\frac{9}{20}$ as about 0.43), which makes Tomás appear faster than Maria and places Tomás second.",
+      "D": "Treats $\\frac{2}{5}$ as 0.50 (confusing $\\frac{2}{5}$ with $\\frac{1}{2}$ because '5' appears in both) and $\\frac{9}{20}$ as roughly 0.42, producing an incorrect ordering with Devon near the slow end.",
+      "A": "Correct: Devon = $\\frac{2}{5}$ = 0.40 is fastest, then Maria at 0.44, then Tomás = $\\frac{9}{20}$ = 0.45, and Priya = 47% = 0.47 is slowest."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -101,7 +101,7 @@
       "converting between fractions, decimals, and percents to compare them",
       "identifying the greatest of several rational numbers in different forms"
     ],
-    "question_text": "Four students reported their quiz scores in different forms:\n\n• Aisha: 0.7\n• Marco: 72%\n• Lena: 5/8\n• Tariq: 3/4\n\nWhose score is the highest?",
+    "question_text": "Four students reported their quiz scores in different forms:\n\n• Aisha: 0.7\n• Marco: 72%\n• Lena: $\\frac{5}{8}$\n• Tariq: $\\frac{3}{4}$\n\nWhose score is the highest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Aisha",
@@ -110,12 +110,12 @@
       "D": "Tariq"
     },
     "correct_answer": "D",
-    "explanation": "Convert each score to a decimal. Aisha: 0.7. Marco: 72% = 0.72. Lena: 5/8 = 0.625. Tariq: 3/4 = 0.75. Comparing 0.7, 0.72, 0.625, and 0.75, the highest is Tariq's 3/4.",
+    "explanation": "Convert each score to a decimal. Aisha: 0.7. Marco: 72% = 0.72. Lena: $\\frac{5}{8}$ = 0.625. Tariq: $\\frac{3}{4}$ = 0.75. Comparing 0.7, 0.72, 0.625, and 0.75, the highest is Tariq's $\\frac{3}{4}$.",
     "distractor_logic": {
       "A": "Student does not convert the fractions and picks the largest value that is already written as a decimal.",
       "B": "Student treats 72% as the largest because 72 is the biggest number shown, without converting it to 0.72.",
-      "C": "Student misconverts 5/8 (for example as 0.85 by flipping the division), making Lena's score look highest.",
-      "D": "Correct: 3/4 = 0.75 is the largest once every score is written as a decimal."
+      "C": "Student misconverts $\\frac{5}{8}$ (for example as 0.85 by flipping the division), making Lena's score look highest.",
+      "D": "Correct: $\\frac{3}{4}$ = 0.75 is the largest once every score is written as a decimal."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -139,7 +139,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "5/8 = 0.625 is clearly the lowest — eliminate it right away."
+        "hint_text": "$\\frac{5}{8}$ = 0.625 is clearly the lowest — eliminate it right away."
       }
     ],
     "content_context": "other",
@@ -183,7 +183,7 @@
       "comparing rational numbers in different forms to the benchmark 1/2",
       "determining whether a fraction, decimal, or percent is greater than one half"
     ],
-    "question_text": "In four different polls, the fraction of people who answered 'yes' is reported below. In which poll did MORE than half of the people answer 'yes'?\n\n• Poll I: 2/5\n• Poll II: 0.45\n• Poll III: 48%\n• Poll IV: 5/9",
+    "question_text": "In four different polls, the fraction of people who answered 'yes' is reported below. In which poll did MORE than half of the people answer 'yes'?\n\n• Poll I: $\\frac{2}{5}$\n• Poll II: 0.45\n• Poll III: 48%\n• Poll IV: $\\frac{5}{9}$",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Poll I",
@@ -192,11 +192,11 @@
       "D": "Poll III"
     },
     "correct_answer": "C",
-    "explanation": "More than half means greater than 1/2 = 0.5. Convert each: 2/5 = 0.40, 0.45, 48% = 0.48, and 5/9 ≈ 0.556. Only 5/9 is greater than 0.5 (since 5/9 is more than 4.5/9 = 1/2), so Poll IV is the only one above one half.",
+    "explanation": "More than half means greater than $\\frac{1}{2}$ = 0.5. Convert each: $\\frac{2}{5}$ = 0.40, 0.45, 48% = 0.48, and $\\frac{5}{9}$ ≈ 0.556. Only $\\frac{5}{9}$ is greater than 0.5 (since $\\frac{5}{9}$ is more than 4.$\\frac{5}{9}$ = $\\frac{1}{2}$), so Poll IV is the only one above one half.",
     "distractor_logic": {
-      "A": "Student reasons that 2 out of 5 is 'more than half' by looking at the numbers rather than converting 2/5 to 0.40.",
+      "A": "Student reasons that 2 out of 5 is 'more than half' by looking at the numbers rather than converting $\\frac{2}{5}$ to 0.40.",
       "B": "Student misreads 0.45 as greater than 0.5.",
-      "C": "Correct: 5/9 ≈ 0.556 is the only value above 0.5.",
+      "C": "Correct: $\\frac{5}{9}$ ≈ 0.556 is the only value above 0.5.",
       "D": "Student rounds 48% up to 'about half or more,' treating it as greater than 50%."
     },
     "difficulty_level": "Basic",
@@ -213,7 +213,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "1/2 = 0.5 — compare every value to 0.5."
+        "hint_text": "$\\frac{1}{2}$ = 0.5 — compare every value to 0.5."
       },
       {
         "strategy": "estimate_first",
@@ -265,21 +265,21 @@
       "recognizing equivalent forms of a rational number",
       "converting a fraction to its decimal and percent equivalents"
     ],
-    "question_text": "A pitcher of juice is 3/5 full. Which of the following is equal to 3/5?",
+    "question_text": "A pitcher of juice is $\\frac{3}{5}$ full. Which of the following is equal to $\\frac{3}{5}$?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "60%",
       "B": "0.35",
-      "C": "5/3",
+      "C": "$\\frac{5}{3}$",
       "D": "3.5"
     },
     "correct_answer": "A",
-    "explanation": "Divide to convert: 3 ÷ 5 = 0.6, and 0.6 = 60%. So 3/5 = 0.6 = 60%.",
+    "explanation": "Divide to convert: 3 ÷ 5 = 0.6, and 0.6 = 60%. So $\\frac{3}{5}$ = 0.6 = 60%.",
     "distractor_logic": {
-      "A": "Correct: 3/5 = 0.6 = 60%.",
+      "A": "Correct: $\\frac{3}{5}$ = 0.6 = 60%.",
       "B": "Student writes the digits 3 and 5 as 0.35 instead of dividing 3 by 5.",
-      "C": "Student flips the fraction to 5/3 instead of finding an equivalent form.",
-      "D": "Student reads '3/5' as the number 3.5 rather than dividing 3 by 5."
+      "C": "Student flips the fraction to $\\frac{5}{3}$ instead of finding an equivalent form.",
+      "D": "Student reads '$\\frac{3}{5}$' as the number 3.5 rather than dividing 3 by 5."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -294,11 +294,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "3/5 as a decimal is 3 ÷ 5 = 0.6, which is 60%."
+        "hint_text": "$\\frac{3}{5}$ as a decimal is 3 ÷ 5 = 0.6, which is 60%."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "0.35, 5/3, and 3.5 are each a different value — rule them out."
+        "hint_text": "0.35, $\\frac{5}{3}$, and 3.5 are each a different value — rule them out."
       }
     ],
     "content_context": "other",
@@ -341,21 +341,21 @@
       "ordering a decimal, a fraction, and a percent from least to greatest",
       "converting mixed forms to a common representation before ordering"
     ],
-    "question_text": "Three phones show their battery levels in different forms: 0.4, 3/8, and 35%. Which list orders the battery levels from least to greatest?",
+    "question_text": "Three phones show their battery levels in different forms: 0.4, $\\frac{3}{8}$, and 35%. Which list orders the battery levels from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "3/8, 35%, 0.4",
-      "B": "35%, 3/8, 0.4",
-      "C": "0.4, 3/8, 35%",
-      "D": "35%, 0.4, 3/8"
+      "A": "$\\frac{3}{8}$, 35%, 0.4",
+      "B": "35%, $\\frac{3}{8}$, 0.4",
+      "C": "0.4, $\\frac{3}{8}$, 35%",
+      "D": "35%, 0.4, $\\frac{3}{8}$"
     },
     "correct_answer": "B",
-    "explanation": "Convert each to a decimal: 0.4; 3/8 = 0.375; 35% = 0.35. Ordering 0.35 < 0.375 < 0.4 gives 35%, 3/8, 0.4.",
+    "explanation": "Convert each to a decimal: 0.4; $\\frac{3}{8}$ = 0.375; 35% = 0.35. Ordering 0.35 < 0.375 < 0.4 gives 35%, $\\frac{3}{8}$, 0.4.",
     "distractor_logic": {
-      "A": "Student underestimates 3/8 (treating it as about 0.3) and places it below 35%.",
-      "B": "Correct: 35% = 0.35 < 3/8 = 0.375 < 0.4.",
+      "A": "Student underestimates $\\frac{3}{8}$ (treating it as about 0.3) and places it below 35%.",
+      "B": "Correct: 35% = 0.35 < $\\frac{3}{8}$ = 0.375 < 0.4.",
       "C": "Student orders the levels from greatest to least, reversing the requested direction.",
-      "D": "Student overestimates 3/8 (treating it as more than 0.4) and places it last."
+      "D": "Student overestimates $\\frac{3}{8}$ (treating it as more than 0.4) and places it last."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -418,7 +418,7 @@
       "ordering four rational numbers given in mixed forms",
       "ordering values in a specified direction from greatest to least"
     ],
-    "question_text": "Four basketball players' free-throw rates are reported in different forms:\n\n• Player I: 0.82\n• Player II: 4/5\n• Player III: 83%\n• Player IV: 17/20\n\nWhich list orders the rates from greatest to least?",
+    "question_text": "Four basketball players' free-throw rates are reported in different forms:\n\n• Player I: 0.82\n• Player II: $\\frac{4}{5}$\n• Player III: 83%\n• Player IV: $\\frac{17}{20}$\n\nWhich list orders the rates from greatest to least?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "IV, III, I, II",
@@ -427,12 +427,12 @@
       "D": "IV, III, II, I"
     },
     "correct_answer": "A",
-    "explanation": "Convert each rate to a decimal: 0.82; 4/5 = 0.80; 83% = 0.83; 17/20 = 0.85. Ordering from greatest to least: 0.85 > 0.83 > 0.82 > 0.80, which is IV, III, I, II.",
+    "explanation": "Convert each rate to a decimal: 0.82; $\\frac{4}{5}$ = 0.80; 83% = 0.83; $\\frac{17}{20}$ = 0.85. Ordering from greatest to least: 0.85 > 0.83 > 0.82 > 0.80, which is IV, III, I, II.",
     "distractor_logic": {
-      "A": "Correct: 17/20 = 0.85 > 83% = 0.83 > 0.82 > 4/5 = 0.80.",
+      "A": "Correct: $\\frac{17}{20}$ = 0.85 > 83% = 0.83 > 0.82 > $\\frac{4}{5}$ = 0.80.",
       "B": "Student orders the rates from least to greatest, reversing the requested direction.",
-      "C": "Student places 83% ahead of 17/20, miscomputing 17/20 as 0.83 or less.",
-      "D": "Student swaps the bottom two, converting 4/5 as more than 0.82."
+      "C": "Student places 83% ahead of $\\frac{17}{20}$, miscomputing $\\frac{17}{20}$ as 0.83 or less.",
+      "D": "Student swaps the bottom two, converting $\\frac{4}{5}$ as more than 0.82."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -456,7 +456,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "17/20 = 0.85 is the highest, so any list not starting with IV is out."
+        "hint_text": "$\\frac{17}{20}$ = 0.85 is the highest, so any list not starting with IV is out."
       }
     ],
     "content_context": "sports_recreation",
@@ -501,7 +501,7 @@
       "comparing a mixed number, a decimal, a percent, and a fraction greater than one",
       "converting a mixed number to a decimal to compare magnitudes"
     ],
-    "question_text": "Four lengths of ribbon are recorded in different forms, in meters:\n\n• Ribbon I: 1.3\n• Ribbon II: 128%\n• Ribbon III: 9/7\n• Ribbon IV: 1 1/3\n\nWhich ribbon is the longest?",
+    "question_text": "Four lengths of ribbon are recorded in different forms, in meters:\n\n• Ribbon I: 1.3\n• Ribbon II: 128%\n• Ribbon III: $\\frac{9}{7}$\n• Ribbon IV: 1 $\\frac{1}{3}$\n\nWhich ribbon is the longest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Ribbon I",
@@ -510,12 +510,12 @@
       "D": "Ribbon IV"
     },
     "correct_answer": "D",
-    "explanation": "Convert each length to a decimal: 1.3; 128% = 1.28; 9/7 ≈ 1.286; 1 1/3 = 1 + 0.333 = 1.333. Comparing 1.3, 1.28, 1.286, and 1.333, the longest is Ribbon IV (1 1/3).",
+    "explanation": "Convert each length to a decimal: 1.3; 128% = 1.28; $\\frac{9}{7}$ ≈ 1.286; 1 $\\frac{1}{3}$ = 1 + 0.333 = 1.333. Comparing 1.3, 1.28, 1.286, and 1.333, the longest is Ribbon IV (1 $\\frac{1}{3}$).",
     "distractor_logic": {
-      "A": "Student treats 1 1/3 as about 1.3 and so cannot tell it apart from Ribbon I, choosing the explicit 1.3.",
+      "A": "Student treats 1 $\\frac{1}{3}$ as about 1.3 and so cannot tell it apart from Ribbon I, choosing the explicit 1.3.",
       "B": "Student treats 128% as the largest because 128 is the biggest number shown, rather than converting it to 1.28.",
-      "C": "Student misconverts 9/7 as greater than 1 1/3.",
-      "D": "Correct: 1 1/3 = 1.333 is the largest once every length is written as a decimal."
+      "C": "Student misconverts $\\frac{9}{7}$ as greater than 1 $\\frac{1}{3}$.",
+      "D": "Correct: 1 $\\frac{1}{3}$ = 1.333 is the largest once every length is written as a decimal."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -531,7 +531,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "1 1/3 means 1 + 0.333 = 1.333, not 1.3."
+        "hint_text": "1 $\\frac{1}{3}$ means 1 + 0.333 = 1.333, not 1.3."
       },
       {
         "strategy": "estimate_first",
@@ -587,17 +587,17 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "0.58",
-      "B": "5/8",
+      "B": "$\\frac{5}{8}$",
       "C": "72%",
-      "D": "3/4"
+      "D": "$\\frac{3}{4}$"
     },
     "correct_answer": "B",
-    "explanation": "A value qualifies only if it is above 0.6 and below 0.7. Convert each: 0.58 (below 0.6); 5/8 = 0.625 (between 0.6 and 0.7); 72% = 0.72 (above 0.7); 3/4 = 0.75 (above 0.7). Only 5/8 falls strictly between 0.6 and 0.7.",
+    "explanation": "A value qualifies only if it is above 0.6 and below 0.7. Convert each: 0.58 (below 0.6); $\\frac{5}{8}$ = 0.625 (between 0.6 and 0.7); 72% = 0.72 (above 0.7); $\\frac{3}{4}$ = 0.75 (above 0.7). Only $\\frac{5}{8}$ falls strictly between 0.6 and 0.7.",
     "distractor_logic": {
       "A": "Student rounds 0.58 up into the range, ignoring that it is below the lower bound of 0.6.",
-      "B": "Correct: 5/8 = 0.625, which is between 0.6 and 0.7.",
+      "B": "Correct: $\\frac{5}{8}$ = 0.625, which is between 0.6 and 0.7.",
       "C": "Student includes 72% = 0.72, ignoring that it is above the upper bound of 0.7.",
-      "D": "Student converts 3/4 as about 0.7 (an underestimate) and includes it in the range."
+      "D": "Student converts $\\frac{3}{4}$ as about 0.7 (an underestimate) and includes it in the range."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -621,7 +621,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "0.58 is below the range and 3/4 is above it — eliminate them."
+        "hint_text": "0.58 is below the range and $\\frac{3}{4}$ is above it — eliminate them."
       }
     ],
     "content_context": "other",
@@ -665,7 +665,7 @@
       "ordering negative rational numbers given in mixed forms",
       "applying the effect of a negative sign on the order of values"
     ],
-    "question_text": "An accountant logs four changes to a balance, in dollars, where negative values are losses:\n\n• Change I: −0.35\n• Change II: −1/4\n• Change III: −30%\n• Change IV: −2/5\n\nWhich list orders the changes from least to greatest?",
+    "question_text": "An accountant logs four changes to a balance, in dollars, where negative values are losses:\n\n• Change I: −0.35\n• Change II: −$\\frac{1}{4}$\n• Change III: −30%\n• Change IV: −$\\frac{2}{5}$\n\nWhich list orders the changes from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "II, III, I, IV",
@@ -674,12 +674,12 @@
       "D": "I, IV, III, II"
     },
     "correct_answer": "C",
-    "explanation": "Convert each to a decimal: −0.35; −1/4 = −0.25; −30% = −0.30; −2/5 = −0.40. For negatives, the value farthest from zero is the least. Ordering from least to greatest: −0.40 < −0.35 < −0.30 < −0.25, which is IV, I, III, II.",
+    "explanation": "Convert each to a decimal: −0.35; −$\\frac{1}{4}$ = −0.25; −30% = −0.30; −$\\frac{2}{5}$ = −0.40. For negatives, the value farthest from zero is the least. Ordering from least to greatest: −0.40 < −0.35 < −0.30 < −0.25, which is IV, I, III, II.",
     "distractor_logic": {
       "A": "Student orders the changes from greatest to least, reversing the requested direction.",
-      "B": "Student places −1/4 = −0.25 before −30% = −0.30, forgetting that the negative sign flips the order of the magnitudes.",
-      "C": "Correct: −2/5 = −0.40 < −0.35 < −30% = −0.30 < −1/4 = −0.25.",
-      "D": "Student treats −0.35 as more negative than −2/5 = −0.40, misjudging which loss is larger."
+      "B": "Student places −$\\frac{1}{4}$ = −0.25 before −30% = −0.30, forgetting that the negative sign flips the order of the magnitudes.",
+      "C": "Correct: −$\\frac{2}{5}$ = −0.40 < −0.35 < −30% = −0.30 < −$\\frac{1}{4}$ = −0.25.",
+      "D": "Student treats −0.35 as more negative than −$\\frac{2}{5}$ = −0.40, misjudging which loss is larger."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -703,7 +703,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "−2/5 = −0.40 is the most negative, so any order not starting with IV is out."
+        "hint_text": "−$\\frac{2}{5}$ = −0.40 is the most negative, so any order not starting with IV is out."
       }
     ],
     "content_context": "everyday_finance",
@@ -747,21 +747,21 @@
       "comparing a fraction to a percent precisely by converting to a common form",
       "distinguishing a value from a rounded version of itself"
     ],
-    "question_text": "A student scored 5/8 on a quiz. The passing benchmark is 62%. Which statement correctly compares the student's score to the benchmark?",
+    "question_text": "A student scored $\\frac{5}{8}$ on a quiz. The passing benchmark is 62%. Which statement correctly compares the student's score to the benchmark?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "5/8 is equal to 62%",
-      "B": "5/8 is greater than 62%",
-      "C": "5/8 is less than 62%",
-      "D": "5/8 is equal to 58%"
+      "A": "$\\frac{5}{8}$ is equal to 62%",
+      "B": "$\\frac{5}{8}$ is greater than 62%",
+      "C": "$\\frac{5}{8}$ is less than 62%",
+      "D": "$\\frac{5}{8}$ is equal to 58%"
     },
     "correct_answer": "B",
-    "explanation": "Convert 5/8 to a percent: 5 ÷ 8 = 0.625 = 62.5%. Since 62.5% is greater than 62%, the student's score is greater than the benchmark.",
+    "explanation": "Convert $\\frac{5}{8}$ to a percent: 5 ÷ 8 = 0.625 = 62.5%. Since 62.5% is greater than 62%, the student's score is greater than the benchmark.",
     "distractor_logic": {
       "A": "Student rounds 62.5% down to 62% and concludes the two are equal.",
-      "B": "Correct: 5/8 = 62.5%, which is greater than 62%.",
-      "C": "Student converts 5/8 as 0.62 or less and concludes it is below the benchmark.",
-      "D": "Student writes the digits of 5/8 as 58% instead of dividing 5 by 8."
+      "B": "Correct: $\\frac{5}{8}$ = 62.5%, which is greater than 62%.",
+      "C": "Student converts $\\frac{5}{8}$ as 0.62 or less and concludes it is below the benchmark.",
+      "D": "Student writes the digits of $\\frac{5}{8}$ as 58% instead of dividing 5 by 8."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -776,11 +776,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "5/8 = 0.625 = 62.5%, just above 62%."
+        "hint_text": "$\\frac{5}{8}$ = 0.625 = 62.5%, just above 62%."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "They are not equal, and 5/8 is not 58% — rule those out."
+        "hint_text": "They are not equal, and $\\frac{5}{8}$ is not 58% — rule those out."
       }
     ],
     "content_context": "other",
@@ -824,7 +824,7 @@
       "ordering four closely valued rational numbers in mixed forms",
       "converting fractions to decimals precisely enough to break near ties"
     ],
-    "question_text": "Four baseball players' batting averages are recorded in different forms:\n\n• Player I: 7/16\n• Player II: 0.43\n• Player III: 44%\n• Player IV: 4/9\n\nWhich list orders the averages from least to greatest?",
+    "question_text": "Four baseball players' batting averages are recorded in different forms:\n\n• Player I: $\\frac{7}{16}$\n• Player II: 0.43\n• Player III: 44%\n• Player IV: $\\frac{4}{9}$\n\nWhich list orders the averages from least to greatest?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "II, III, I, IV",
@@ -833,12 +833,12 @@
       "D": "II, I, III, IV"
     },
     "correct_answer": "D",
-    "explanation": "Convert each to a decimal: 7/16 = 0.4375; 0.43; 44% = 0.44; 4/9 ≈ 0.4444. Ordering from least to greatest: 0.43 < 0.4375 < 0.44 < 0.4444, which is II, I, III, IV.",
+    "explanation": "Convert each to a decimal: $\\frac{7}{16}$ = 0.4375; 0.43; 44% = 0.44; $\\frac{4}{9}$ ≈ 0.4444. Ordering from least to greatest: 0.43 < 0.4375 < 0.44 < 0.4444, which is II, I, III, IV.",
     "distractor_logic": {
-      "A": "Student places 44% before 7/16, miscomputing 7/16 as more than 0.44.",
-      "B": "Student assumes the values are already in order and lists them as written, placing 7/16 first because it is the only plain fraction.",
-      "C": "Student swaps the top two, treating 44% as greater than 4/9.",
-      "D": "Correct: 0.43 < 7/16 = 0.4375 < 44% = 0.44 < 4/9 ≈ 0.4444."
+      "A": "Student places 44% before $\\frac{7}{16}$, miscomputing $\\frac{7}{16}$ as more than 0.44.",
+      "B": "Student assumes the values are already in order and lists them as written, placing $\\frac{7}{16}$ first because it is the only plain fraction.",
+      "C": "Student swaps the top two, treating 44% as greater than $\\frac{4}{9}$.",
+      "D": "Correct: 0.43 < $\\frac{7}{16}$ = 0.4375 < 44% = 0.44 < $\\frac{4}{9}$ ≈ 0.4444."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -858,7 +858,7 @@
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "These are nearly tied — 7/16 = 0.4375 sits between 0.43 and 0.44."
+        "hint_text": "These are nearly tied — $\\frac{7}{16}$ = 0.4375 sits between 0.43 and 0.44."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -907,7 +907,7 @@
       "comparing rational numbers greater than one given in mixed forms",
       "converting a mixed number and a percent over 100 to decimals"
     ],
-    "question_text": "Four investments grew by the factors shown below:\n\n• Investment I: 1.17\n• Investment II: 118%\n• Investment III: 7/6\n• Investment IV: 1 1/5\n\nWhich investment grew by the SMALLEST factor?",
+    "question_text": "Four investments grew by the factors shown below:\n\n• Investment I: 1.17\n• Investment II: 118%\n• Investment III: $\\frac{7}{6}$\n• Investment IV: 1 $\\frac{1}{5}$\n\nWhich investment grew by the SMALLEST factor?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Investment I",
@@ -916,12 +916,12 @@
       "D": "Investment IV"
     },
     "correct_answer": "C",
-    "explanation": "Convert each factor to a decimal: 1.17; 118% = 1.18; 7/6 ≈ 1.167; 1 1/5 = 1.2. Comparing 1.17, 1.18, 1.167, and 1.2, the smallest is Investment III (7/6 ≈ 1.167).",
+    "explanation": "Convert each factor to a decimal: 1.17; 118% = 1.18; $\\frac{7}{6}$ ≈ 1.167; 1 $\\frac{1}{5}$ = 1.2. Comparing 1.17, 1.18, 1.167, and 1.2, the smallest is Investment III ($\\frac{7}{6}$ ≈ 1.167).",
     "distractor_logic": {
-      "A": "Student rounds 7/6 up to 1.17 and so cannot tell it apart from Investment I, choosing the explicit 1.17.",
-      "B": "Student rounds 7/6 up to 1.18 and concludes it equals Investment II (118%), then picks Investment II as smallest because both appear to share the same value — misidentifying a rounding artifact as a tie.",
-      "C": "Correct: 7/6 ≈ 1.167 is the smallest once every factor is written as a decimal.",
-      "D": "Student reads 1 1/5 as 1.15 by writing the numerator and denominator digits as '.15' instead of converting 1/5 = 0.2, producing a value that appears smaller than 7/6 ≈ 1.167."
+      "A": "Student rounds $\\frac{7}{6}$ up to 1.17 and so cannot tell it apart from Investment I, choosing the explicit 1.17.",
+      "B": "Student rounds $\\frac{7}{6}$ up to 1.18 and concludes it equals Investment II (118%), then picks Investment II as smallest because both appear to share the same value — misidentifying a rounding artifact as a tie.",
+      "C": "Correct: $\\frac{7}{6}$ ≈ 1.167 is the smallest once every factor is written as a decimal.",
+      "D": "Student reads 1 $\\frac{1}{5}$ as 1.15 by writing the numerator and denominator digits as '.15' instead of converting $\\frac{1}{5}$ = 0.2, producing a value that appears smaller than $\\frac{7}{6}$ ≈ 1.167."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -937,7 +937,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "1 1/5 = 1.2 and 118% = 1.18 — convert everything past the decimal carefully."
+        "hint_text": "1 $\\frac{1}{5}$ = 1.2 and 118% = 1.18 — convert everything past the decimal carefully."
       },
       {
         "strategy": "estimate_first",
@@ -945,7 +945,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "1 1/5 = 1.2 is the largest, not the smallest — eliminate it."
+        "hint_text": "1 $\\frac{1}{5}$ = 1.2 is the largest, not the smallest — eliminate it."
       }
     ],
     "content_context": "everyday_finance",
@@ -990,7 +990,7 @@
       "ordering four closely valued rational numbers greater than one",
       "ordering mixed forms in a specified direction"
     ],
-    "question_text": "Four values are listed below:\n\n• Value I: 11/8\n• Value II: 1.38\n• Value III: 137%\n• Value IV: 1 2/5\n\nWhich list orders the values from greatest to least?",
+    "question_text": "Four values are listed below:\n\n• Value I: $\\frac{11}{8}$\n• Value II: 1.38\n• Value III: 137%\n• Value IV: 1 $\\frac{2}{5}$\n\nWhich list orders the values from greatest to least?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "IV, II, I, III",
@@ -999,12 +999,12 @@
       "D": "II, IV, I, III"
     },
     "correct_answer": "A",
-    "explanation": "Convert each to a decimal: 11/8 = 1.375; 1.38; 137% = 1.37; 1 2/5 = 1.40. Ordering from greatest to least: 1.40 > 1.38 > 1.375 > 1.37, which is IV, II, I, III.",
+    "explanation": "Convert each to a decimal: $\\frac{11}{8}$ = 1.375; 1.38; 137% = 1.37; 1 $\\frac{2}{5}$ = 1.40. Ordering from greatest to least: 1.40 > 1.38 > 1.375 > 1.37, which is IV, II, I, III.",
     "distractor_logic": {
-      "A": "Correct: 1 2/5 = 1.40 > 1.38 > 11/8 = 1.375 > 137% = 1.37.",
+      "A": "Correct: 1 $\\frac{2}{5}$ = 1.40 > 1.38 > $\\frac{11}{8}$ = 1.375 > 137% = 1.37.",
       "B": "Student orders the values from least to greatest, reversing the requested direction.",
-      "C": "Student places 137% = 1.37 ahead of 11/8 = 1.375, miscomputing the near tie.",
-      "D": "Student swaps the top two, converting 1 2/5 as less than 1.38."
+      "C": "Student places 137% = 1.37 ahead of $\\frac{11}{8}$ = 1.375, miscomputing the near tie.",
+      "D": "Student swaps the top two, converting 1 $\\frac{2}{5}$ as less than 1.38."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1024,11 +1024,11 @@
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "11/8 = 1.375 and 137% = 1.37 are nearly tied — keep all three decimal places."
+        "hint_text": "$\\frac{11}{8}$ = 1.375 and 137% = 1.37 are nearly tied — keep all three decimal places."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "1 2/5 = 1.40 is the greatest, so any list not starting with IV is out."
+        "hint_text": "1 $\\frac{2}{5}$ = 1.40 is the greatest, so any list not starting with IV is out."
       }
     ],
     "content_context": "generic",
@@ -1073,21 +1073,21 @@
       "determining whether a value falls between two fractions",
       "converting fractional bounds to decimals to test an interval"
     ],
-    "question_text": "A tank is 'within range' when its fill level, written as a decimal, is strictly between 5/6 and 7/8. Which of the following readings is within range?",
+    "question_text": "A tank is 'within range' when its fill level, written as a decimal, is strictly between $\\frac{5}{6}$ and $\\frac{7}{8}$. Which of the following readings is within range?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "0.82",
       "B": "0.86",
       "C": "88%",
-      "D": "9/10"
+      "D": "$\\frac{9}{10}$"
     },
     "correct_answer": "B",
-    "explanation": "Convert the bounds: 5/6 ≈ 0.833 and 7/8 = 0.875. A reading qualifies only if it is above 0.833 and below 0.875. Checking each: 0.82 (below 0.833); 0.86 (between); 88% = 0.88 (above 0.875); 9/10 = 0.90 (above 0.875). Only 0.86 is within range.",
+    "explanation": "Convert the bounds: $\\frac{5}{6}$ ≈ 0.833 and $\\frac{7}{8}$ = 0.875. A reading qualifies only if it is above 0.833 and below 0.875. Checking each: 0.82 (below 0.833); 0.86 (between); 88% = 0.88 (above 0.875); $\\frac{9}{10}$ = 0.90 (above 0.875). Only 0.86 is within range.",
     "distractor_logic": {
-      "A": "Student underestimates 5/6 (treating it as about 0.8) and includes 0.82.",
-      "B": "Correct: 0.86 is between 5/6 ≈ 0.833 and 7/8 = 0.875.",
-      "C": "Student overestimates the upper bound or rounds 7/8 up, including 88% = 0.88.",
-      "D": "Student does not check the upper bound of 0.875 and includes 9/10 = 0.90."
+      "A": "Student underestimates $\\frac{5}{6}$ (treating it as about 0.8) and includes 0.82.",
+      "B": "Correct: 0.86 is between $\\frac{5}{6}$ ≈ 0.833 and $\\frac{7}{8}$ = 0.875.",
+      "C": "Student overestimates the upper bound or rounds $\\frac{7}{8}$ up, including 88% = 0.88.",
+      "D": "Student does not check the upper bound of 0.875 and includes $\\frac{9}{10}$ = 0.90."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1103,7 +1103,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The bounds are 5/6 ≈ 0.833 and 7/8 = 0.875 — convert them first."
+        "hint_text": "The bounds are $\\frac{5}{6}$ ≈ 0.833 and $\\frac{7}{8}$ = 0.875 — convert them first."
       },
       {
         "strategy": "estimate_first",
@@ -1111,7 +1111,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "0.82 is below the range and 9/10 is above it — eliminate them."
+        "hint_text": "0.82 is below the range and $\\frac{9}{10}$ is above it — eliminate them."
       }
     ],
     "content_context": "other",
@@ -1155,7 +1155,7 @@
       "comparing a fraction and a decimal and quantifying the difference",
       "expressing the difference between two rational numbers in percentage points"
     ],
-    "question_text": "A store's online sales make up 5/8 of its total, and its in-store sales make up 0.6 of its total. Which is larger, and by how much (in percentage points)?",
+    "question_text": "A store's online sales make up $\\frac{5}{8}$ of its total, and its in-store sales make up 0.6 of its total. Which is larger, and by how much (in percentage points)?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "In-store is larger, by 2.5 percentage points",
@@ -1164,12 +1164,12 @@
       "D": "They are equal"
     },
     "correct_answer": "C",
-    "explanation": "Convert both to percents: 5/8 = 0.625 = 62.5%, and 0.6 = 60%. Online sales (62.5%) are larger than in-store sales (60%), and the difference is 62.5% − 60% = 2.5 percentage points.",
+    "explanation": "Convert both to percents: $\\frac{5}{8}$ = 0.625 = 62.5%, and 0.6 = 60%. Online sales (62.5%) are larger than in-store sales (60%), and the difference is 62.5% − 60% = 2.5 percentage points.",
     "distractor_logic": {
       "A": "Student finds the correct gap of 2.5 points but reverses which share is larger.",
       "B": "Student correctly identifies online as larger but miscomputes the gap as 5 points.",
-      "C": "Correct: 5/8 = 62.5% is larger than 60% by 2.5 percentage points.",
-      "D": "Student rounds 5/8 down to 0.6 and concludes the two shares are equal."
+      "C": "Correct: $\\frac{5}{8}$ = 62.5% is larger than 60% by 2.5 percentage points.",
+      "D": "Student rounds $\\frac{5}{8}$ down to 0.6 and concludes the two shares are equal."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1185,7 +1185,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "5/8 = 62.5% and 0.6 = 60% — compare both the size and the gap."
+        "hint_text": "$\\frac{5}{8}$ = 62.5% and 0.6 = 60% — compare both the size and the gap."
       },
       {
         "strategy": "estimate_first",
@@ -1193,7 +1193,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "5/8 is not equal to 0.6, so 'equal' is out."
+        "hint_text": "$\\frac{5}{8}$ is not equal to 0.6, so 'equal' is out."
       }
     ],
     "content_context": "shopping_retail",

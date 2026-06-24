@@ -19,7 +19,7 @@
       "identifying the excluded value of a rational function with a linear denominator",
       "applying the rule that a denominator cannot equal zero"
     ],
-    "question_text": "What is the domain of f(x) = 1 / (x − 5)?",
+    "question_text": "What is the domain of $f(x) = \\frac{1}{x - 5}$?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "All real numbers except x = 5",
@@ -65,8 +65,8 @@
     "fairness_review_date": null,
     "fairness_review_notes": null,
     "author": "jd-oviedo",
-    "created_at": "2026-06-02",
-    "last_modified": "2026-06-02",
+    "created_at": "2026-06-24",
+    "last_modified": "2026-06-24",
     "review_notes": null
   },
 
@@ -90,7 +90,7 @@
       "solving a two-step linear equation to find the excluded value of a rational function",
       "correctly dividing by a coefficient when isolating the variable in a denominator equation"
     ],
-    "question_text": "What is the domain of g(x) = 7 / (2x + 6)?",
+    "question_text": "What is the domain of $g(x) = \\frac{7}{2x + 6}$?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "All real numbers except x = 3",
@@ -136,8 +136,8 @@
     "fairness_review_date": null,
     "fairness_review_notes": null,
     "author": "jd-oviedo",
-    "created_at": "2026-06-02",
-    "last_modified": "2026-06-02",
+    "created_at": "2026-06-24",
+    "last_modified": "2026-06-24",
     "review_notes": null
   },
 
@@ -161,7 +161,7 @@
       "finding the domain of a square root function by requiring the radicand to be non-negative",
       "solving a linear inequality to express the domain of a radical function"
     ],
-    "question_text": "What is the domain of h(x) = √(x − 4)?",
+    "question_text": "What is the domain of h(x) = $\\sqrt{x - 4}$?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "x ≥ 0",
@@ -170,12 +170,12 @@
       "D": "x > 4"
     },
     "correct_answer": "C",
-    "explanation": "The expression under a square root (the radicand) must be greater than or equal to zero. Set up the inequality and solve:\nx − 4 ≥ 0\nx ≥ 4\n\nThe domain is all real numbers x ≥ 4, or [4, ∞). Note that x = 4 is included because √0 = 0 is defined.",
+    "explanation": "The expression under a square root (the radicand) must be greater than or equal to zero. Set up the inequality and solve:\nx − 4 ≥ 0\nx ≥ 4\n\nThe domain is all real numbers x ≥ 4, or [4, ∞). Note that x = 4 is included because $\\sqrt{0}$ = 0 is defined.",
     "distractor_logic": {
       "A": "Student applies the non-negative rule to x itself rather than to the expression x − 4, writing x ≥ 0 without accounting for the −4 inside the radical.",
       "B": "Student solves x − 4 ≥ 0 but makes a sign error, adding −4 to both sides instead of +4, arriving at x ≥ −4.",
       "C": "Correct: x − 4 ≥ 0 → x ≥ 4.",
-      "D": "Student uses a strict inequality (x > 4), thinking the endpoint x = 4 is excluded — but √0 = 0 is defined, so x = 4 belongs to the domain."
+      "D": "Student uses a strict inequality (x > 4), thinking the endpoint x = 4 is excluded — but $\\sqrt{0}$ = 0 is defined, so x = 4 belongs to the domain."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -207,8 +207,8 @@
     "fairness_review_date": null,
     "fairness_review_notes": null,
     "author": "jd-oviedo",
-    "created_at": "2026-06-02",
-    "last_modified": "2026-06-02",
+    "created_at": "2026-06-24",
+    "last_modified": "2026-06-24",
     "review_notes": null
   },
 
@@ -232,7 +232,7 @@
       "identifying the excluded value of a rational function with a sum in the denominator",
       "correctly applying the sign when solving a linear equation of the form x + c = 0"
     ],
-    "question_text": "What is the domain of f(x) = 5 / (x + 8)?",
+    "question_text": "What is the domain of $f(x) = \\frac{5}{x + 8}$?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "All real numbers except x = −8",
@@ -278,8 +278,8 @@
     "fairness_review_date": null,
     "fairness_review_notes": null,
     "author": "jd-oviedo",
-    "created_at": "2026-06-02",
-    "last_modified": "2026-06-02",
+    "created_at": "2026-06-24",
+    "last_modified": "2026-06-24",
     "review_notes": null
   },
 
@@ -303,13 +303,13 @@
       "finding the domain of a square root function whose radicand contains a coefficient",
       "solving a two-step linear inequality to determine the minimum valid input"
     ],
-    "question_text": "What is the domain of g(x) = √(3x − 9)?",
+    "question_text": "What is the domain of g(x) = $\\sqrt{3x - 9}$?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "x ≥ 9",
       "B": "x ≥ 3",
       "C": "x ≥ −3",
-      "D": "x ≥ 1/3"
+      "D": "x ≥ $\\frac{1}{3}$"
     },
     "correct_answer": "B",
     "explanation": "The radicand must be greater than or equal to zero:\n3x − 9 ≥ 0\n3x ≥ 9\nx ≥ 3\n\nThe domain is all real numbers x ≥ 3, or [3, ∞).",
@@ -317,7 +317,7 @@
       "A": "Student correctly isolates 3x ≥ 9 but forgets to divide both sides by 3, reporting x ≥ 9 instead of x ≥ 3.",
       "B": "Correct: 3x − 9 ≥ 0 → 3x ≥ 9 → x ≥ 3.",
       "C": "Student misreads the sign of the constant term, solving 3x + 9 ≥ 0 instead of 3x − 9 ≥ 0, which gives 3x ≥ −9 → x ≥ −3.",
-      "D": "Student inverts the division step, computing 1/3 instead of 9/3 when dividing 9 by 3 — treating the operation as taking the reciprocal rather than dividing."
+      "D": "Student inverts the division step, computing $\\frac{1}{3}$ instead of $\\frac{9}{3}$ when dividing 9 by 3 — treating the operation as taking the reciprocal rather than dividing."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -333,7 +333,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Test x = 3: 3(3) − 9 = 0, and √0 is defined. Test x = 2: 3(2) − 9 = −3, and √(−3) is undefined. So x = 3 is the boundary."
+        "hint_text": "Test x = 3: 3(3) − 9 = 0, and √0 is defined. Test x = 2: 3(2) − 9 = −3, and $\\sqrt{-3}$ is undefined. So x = 3 is the boundary."
       }
     ],
     "content_context": "generic",
@@ -349,8 +349,8 @@
     "fairness_review_date": null,
     "fairness_review_notes": null,
     "author": "jd-oviedo",
-    "created_at": "2026-06-02",
-    "last_modified": "2026-06-02",
+    "created_at": "2026-06-24",
+    "last_modified": "2026-06-24",
     "review_notes": null
   },
 
@@ -374,7 +374,7 @@
       "factoring a quadratic denominator to find all excluded values of a rational function",
       "identifying two distinct excluded values from a factorable quadratic denominator"
     ],
-    "question_text": "What is the domain of f(x) = (x + 1) / (x² − x − 6)?",
+    "question_text": "What is the domain of $f(x) = \\frac{x + 1}{x² − x − 6}$?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "All real numbers except x = 3 and x = −2",
@@ -420,8 +420,8 @@
     "fairness_review_date": null,
     "fairness_review_notes": null,
     "author": "jd-oviedo",
-    "created_at": "2026-06-02",
-    "last_modified": "2026-06-02",
+    "created_at": "2026-06-24",
+    "last_modified": "2026-06-24",
     "review_notes": null
   },
 
@@ -445,7 +445,7 @@
       "applying both the radical restriction (radicand ≥ 0) and the rational restriction (denominator ≠ 0) to a combined expression",
       "intersecting two domain conditions to find the complete domain of a compound function"
     ],
-    "question_text": "What is the domain of f(x) = √(x + 3) / (x − 1)?",
+    "question_text": "What is the domain of $f(x) = \\frac{\\sqrt{x + 3}}{x - 1}$?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "x ≥ −3",
@@ -454,7 +454,7 @@
       "D": "x > −3 and x ≠ 1"
     },
     "correct_answer": "B",
-    "explanation": "This function has two restrictions:\n\n1. Radical: the radicand must be non-negative.\n   x + 3 ≥ 0 → x ≥ −3\n\n2. Rational: the denominator cannot be zero.\n   x − 1 ≠ 0 → x ≠ 1\n\nBoth conditions must hold simultaneously. The domain is x ≥ −3 and x ≠ 1.\n\nNote: x = −3 is included because f(−3) = √0 / (−3 − 1) = 0 / (−4) = 0, which is defined.",
+    "explanation": "This function has two restrictions:\n\n1. Radical: the radicand must be non-negative.\n   x + 3 ≥ 0 → x ≥ −3\n\n2. Rational: the denominator cannot be zero.\n   x − 1 ≠ 0 → x ≠ 1\n\nBoth conditions must hold simultaneously. The domain is x ≥ −3 and x ≠ 1.\n\nNote: x = −3 is included because $f(−3) = \\frac{\\sqrt{0}}{-3 - 1}$ = $\\frac{0}{-4}$ = 0, which is defined.",
     "distractor_logic": {
       "A": "Student applies only the radical restriction (x ≥ −3) and ignores the denominator restriction, not excluding x = 1.",
       "B": "Correct: both restrictions applied — x ≥ −3 (radicand non-negative) and x ≠ 1 (denominator nonzero).",
@@ -491,8 +491,8 @@
     "fairness_review_date": null,
     "fairness_review_notes": null,
     "author": "jd-oviedo",
-    "created_at": "2026-06-02",
-    "last_modified": "2026-06-02",
+    "created_at": "2026-06-24",
+    "last_modified": "2026-06-24",
     "review_notes": null
   },
 
@@ -527,9 +527,9 @@
     "correct_answer": "C",
     "explanation": "Compare the domain of each function:\n\nf(x) = $\\frac{1}{x}$: defined for all x $\\neq$ 0 — excludes one value.\ng(x) = $\\frac{1}{x^{2}}$: defined for all x $\\neq$ 0 — also excludes one value ($x^{2}$ = 0 only when x = 0).\nh(x) = $\\sqrt{x}$: requires x $\\geq$ 0 — excludes all negative numbers, which is an infinite set.\nk(x) = $\\sqrt{x^{2}}$: since $x^{2}$ $\\geq$ 0 for every real number, the radicand is always non-negative. Domain is all real numbers — no restriction.\n\nh(x) = $\\sqrt{x}$ has the most restricted domain because it excludes every negative real number.",
     "distractor_logic": {
-      "A": "Student thinks dividing by a variable is more restrictive than a square root, reasoning that 'division by x' excludes more values than the square root condition — but 1/x excludes only the single point x = 0, while √x excludes all negative numbers.",
-      "B": "Student believes squaring the denominator in 1/x² imposes a stricter restriction than 1/x — but x² = 0 still has only one solution (x = 0), so the domain is the same as for 1/x.",
-      "C": "Correct: h(x) = √x requires x ≥ 0, excluding all negative real numbers — a more restricted domain than either rational function (which each exclude only x = 0) or k(x) (which has no restriction).",
+      "A": "Student thinks dividing by a variable is more restrictive than a square root, reasoning that 'division by x' excludes more values than the square root condition — but $\\frac{1}{x}$ excludes only the single point x = 0, while $\\sqrt{x}$ excludes all negative numbers.",
+      "B": "Student believes squaring the denominator in $\\frac{1}{x^{2}}$ imposes a stricter restriction than $\\frac{1}{x}$ — but x^{2} = 0 still has only one solution (x = 0), so the domain is the same as for $\\frac{1}{x}$.",
+      "C": "Correct: h(x) = $\\sqrt{x}$ requires x ≥ 0, excluding all negative real numbers — a more restricted domain than either rational function (which each exclude only x = 0) or k(x) (which has no restriction).",
       "D": "Student assumes $\\sqrt{x^{2}}$ has the same restriction as $\\sqrt{x}$, not recognizing that squaring x first guarantees a non-negative radicand for all real inputs, making the domain completely unrestricted."
     },
     "difficulty_level": "Proficient",
@@ -587,7 +587,7 @@
       "identifying the correct mathematical reason for a domain exclusion in a contextual rational function",
       "distinguishing between a zero output and an undefined output in a rational function"
     ],
-    "question_text": "The profit from a school fundraiser is modeled by P(n) = (500n − 1000) / (n − 2), where n is the number of items sold. Which statement best explains why n = 2 must be excluded from the domain?",
+    "question_text": "The profit from a school fundraiser is modeled by $P(n) = \\fract{500n - 1000}{n - 2}$, where n is the number of items sold. Which statement best explains why n = 2 must be excluded from the domain?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Because P(2) = 0, meaning no profit is earned at n = 2, so it is not a useful input.",
@@ -596,9 +596,9 @@
       "D": "Because substituting n = 2 makes the denominator equal to zero, making P(2) undefined."
     },
     "correct_answer": "D",
-    "explanation": "Substitute n = 2:\n  Numerator: 500(2) − 1000 = 0\n  Denominator: 2 − 2 = 0\n\nBoth numerator and denominator equal zero, giving the indeterminate form 0/0. This is undefined — not zero. A rational function is excluded from its domain wherever the denominator equals zero, regardless of the numerator's value. Therefore n = 2 must be excluded because it makes the denominator zero.",
+    "explanation": "Substitute n = 2:\n  Numerator: 500(2) − 1000 = 0\n  Denominator: 2 − 2 = 0\n\nBoth numerator and denominator equal zero, giving the indeterminate form $\\frac{0}{0}$. This is undefined — not zero. A rational function is excluded from its domain wherever the denominator equals zero, regardless of the numerator's value. Therefore n = 2 must be excluded because it makes the denominator zero.",
     "distractor_logic": {
-      "A": "Student computes the numerator (500(2) − 1000 = 0) and concludes P(2) = 0, confusing an undefined output (0/0) with a zero output. A zero output would be valid; it is the undefined output that requires exclusion.",
+      "A": "Student computes the numerator (500(2) − 1000 = 0) and concludes P(2) = 0, confusing an undefined output $\\frac{0}{0}$ with a zero output. A zero output would be valid; it is the undefined output that requires exclusion.",
       "B": "Student correctly identifies that the numerator is zero at n = 2 but applies the wrong rule — a zero numerator (with a nonzero denominator) produces an output of zero, which is perfectly valid. It is the zero denominator that creates the exclusion.",
       "C": "Student conflates a mathematical domain restriction with a contextual profitability condition, reasoning that n = 2 should be excluded because it doesn't generate profit — but domain restrictions are determined by where the function is undefined, not by whether outputs are desirable.",
       "D": "Correct: n = 2 makes the denominator n − 2 equal to zero, making P(2) undefined. This is the mathematical reason for the domain exclusion."
@@ -658,21 +658,21 @@
       "finding the domain of a rational function with a difference-of-squares denominator and a matching numerator factor",
       "recognizing that canceling a common factor does not restore values excluded by the original denominator"
     ],
-    "question_text": "Let f(x) = (x + k) / (x² − k²), where k is a positive constant. Which of the following correctly describes the domain of f?",
+    "question_text": "Let $f(x) = \\frac{x + k}{x^{2} - k^{2}}$, where k is a positive constant. Which of the following correctly describes the domain of f?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "All real numbers except x = k",
       "B": "All real numbers, because the (x + k) factors cancel",
       "C": "All real numbers except x = k and x = −k",
-      "D": "All real numbers except x = k²"
+      "D": "All real numbers except x = k^{2}"
     },
     "correct_answer": "C",
     "explanation": "Factor the denominator using the difference of squares:\nx² − k² = (x − k)(x + k)\n\nThe denominator equals zero when x = k or x = −k. Both values must be excluded from the domain.\n\nNote: the numerator (x + k) shares a factor with the denominator, creating a removable discontinuity (hole) at x = −k. However, cancellation does not change the domain of the original function — x = −k still makes the original denominator zero and remains excluded.\n\nDomain: all real numbers except x = k and x = −k.",
     "distractor_logic": {
-      "A": "Student factors the denominator correctly and finds x = k and x = −k, but then reasons that since the numerator (x + k) is also zero at x = −k, the expression is '0/0 which simplifies to 0' — incorrectly treating the indeterminate form as a defined output of zero and excluding only x = k.",
-      "B": "Student cancels the common factor (x + k) from numerator and denominator to obtain 1/(x − k), then reads the domain of the simplified form as the domain of the original function — failing to recognize that cancellation does not restore the value x = −k that was excluded before simplification.",
+      "A": "Student factors the denominator correctly and finds x = k and x = −k, but then reasons that since the numerator (x + k) is also zero at x = −k, the expression is '$\\frac{0}{0}$ which simplifies to 0' — incorrectly treating the indeterminate form as a defined output of zero and excluding only x = k.",
+      "B": "Student cancels the common factor (x + k) from numerator and denominator to obtain $\\frac{1}{x - k}, then reads the domain of the simplified form as the domain of the original function — failing to recognize that cancellation does not restore the value x = −k that was excluded before simplification.",
       "C": "Correct: the denominator (x − k)(x + k) equals zero at both x = k and x = −k, so both must be excluded from the domain of the original function.",
-      "D": "Student sees k² in the expression x² − k² and takes the excluded value to be x = k² — solving x = k² rather than factoring and solving x² = k²."
+      "D": "Student sees k^{2} in the expression x^{2} − k^{2} and takes the excluded value to be x = k^{2} — solving x = k^{2} rather than factoring and solving x^{2} = k^{2}."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

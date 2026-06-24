@@ -188,8 +188,8 @@
     "distractor_logic": {
       "A": "Correct: 15 ÷ 0.60 = 25.",
       "B": "Student multiplies instead of divides: 15 × 0.60 = 9, finding a part of the part rather than the whole.",
-      "C": "Student confuses 60% with 1/5 (20%) and multiplies: 15 × 5 = 75, using the wrong percent-to-fraction conversion.",
-      "D": "Student confuses 60% with 1/6 and multiplies: 15 × 6 = 90, using the reciprocal of the wrong fraction."
+      "C": "Student confuses 60% with $\\frac{1}{5}$ (20%) and multiplies: 15 × 5 = 75, using the wrong percent-to-fraction conversion.",
+      "D": "Student confuses 60% with $\\frac{1}{6}$ and multiplies: 15 × 6 = 90, using the reciprocal of the wrong fraction."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -760,11 +760,11 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Actual % increase = 17/68 × 100 = 25%. Required score = 68 × 1.30 = 88.4. Is 85 ≥ 88.4?"
+        "hint_text": "Actual % increase = $\\frac{17}{68}$ × 100 = 25%. Required score = 68 × 1.30 = 88.4. Is 85 ≥ 88.4?"
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "17/68 is close to 17/70 ≈ 24%, so the increase is near 25%. A 30% increase on ~70 points would need about 21 more points, giving ~89, which is above 85."
+        "hint_text": "$\\frac{17}{68}$ is close to $\\frac{17}{70}$ ≈ 24%, so the increase is near 25%. A 30% increase on ~70 points would need about 21 more points, giving ~89, which is above 85."
       }
     ],
     "content_context": "academic_performance",
