@@ -12,7 +12,23 @@ interface Segment {
   content: string;
 }
 
-// Only treat $...$ as math if content contains LaTeX indicators
+const ISOLATED_SYMBOLS: Record<string, string> = {
+  "\\approx": "≈",
+  "\\times": "×",
+  "\\div": "÷",
+  "\\leq": "≤",
+  "\\geq": "≥",
+  "\\neq": "≠",
+  "\\Delta": "Δ",
+  "\\pi": "π",
+};
+
+function replaceIsolatedSymbols(s: string): string {
+  return s.replace(/\$(\\\w+)\$/g, (match, cmd) => {
+    return ISOLATED_SYMBOLS[cmd] ?? match;
+  });
+}
+
 function looksLikeMath(content: string): boolean {
   return /[\\^_{}\[\]]|\\frac|\\sqrt|\\times|\\div|\\leq|\\geq|\\neq|\\approx|\\pi|\\Delta|\\infty/.test(content);
 }
@@ -31,7 +47,6 @@ function parseMathSegments(input: string): Segment[] {
     if (looksLikeMath(content)) {
       segments.push({ type: "math", content });
     } else {
-      // Not real math — render as plain text with the $ delimiters restored
       segments.push({ type: "text", content: `$${content}$` });
     }
     lastIndex = regex.lastIndex;
@@ -45,8 +60,7 @@ function parseMathSegments(input: string): Segment[] {
 }
 
 export default function MathText({ text, className }: MathTextProps) {
-  // Normalize \$ to $ so currency renders as plain text
-  const cleaned = text.replace(/\\\$/g, "$");
+  const cleaned = replaceIsolatedSymbols(text.replace(/\\\$/g, "$"));
   const parts = parseMathSegments(cleaned);
 
   return (
