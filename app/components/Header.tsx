@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useTheme } from "../theme/useTheme";
+import { supabase } from "../lib/supabase";
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -33,13 +34,36 @@ function ThemeToggle() {
   );
 }
 
+type NavRole = "teacher" | "student" | "anon";
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [navRole, setNavRole] = useState<NavRole>("anon");
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 16);
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  useEffect(() => {
+    async function checkRole() {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) { setNavRole("anon"); return; }
+
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("role, subscription_status")
+        .eq("id", session.user.id)
+        .single();
+
+      if (profile?.role === "teacher" && profile?.subscription_status === "active") {
+        setNavRole("teacher");
+      } else if (session) {
+        setNavRole("student");
+      }
+    }
+    checkRole();
   }, []);
 
   return (
@@ -77,8 +101,8 @@ export function Header() {
           transition: "box-shadow 0.25s ease",
         }}
       >
-        <a
-          href="https://www.unpackmath.com"
+        
+        <a  href="https://www.unpackmath.com"
           style={{
             display: "flex",
             alignItems: "center",
@@ -125,7 +149,44 @@ export function Header() {
           </span>
         </a>
 
-        <ThemeToggle />
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          {navRole === "teacher" && (
+            
+            <a  href="/teacher"
+              style={{
+                fontSize: "13px",
+                fontWeight: 600,
+                color: "#C68A2F",
+                textDecoration: "none",
+                padding: "6px 14px",
+                borderRadius: "999px",
+                border: "1px solid rgba(198,138,47,0.35)",
+                background: "rgba(198,138,47,0.08)",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Teacher Dashboard
+            </a>
+          )}
+          {navRole === "student" && (
+            
+            <a  href="/dashboard"
+              style={{
+                fontSize: "13px",
+                fontWeight: 600,
+                color: "var(--ec-ink-muted)",
+                textDecoration: "none",
+                padding: "6px 14px",
+                borderRadius: "999px",
+                border: "1px solid var(--ec-line)",
+                whiteSpace: "nowrap",
+              }}
+            >
+              My Dashboard
+            </a>
+          )}
+          <ThemeToggle />
+        </div>
       </nav>
     </div>
   );
