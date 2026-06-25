@@ -564,7 +564,17 @@ export default function TeacherDashboard() {
   const { strandPct, avgScore, crCount, crPct, weakStrand, totalAttempts } = computeStats(RAW_STUDENTS);
 
   const [activeClass, setActiveClass] = useState<{ id: string; name: string; joinCode: string } | null>(null);
-
+useEffect(() => {
+  supabase
+    .from('profiles')
+    .select('subscription_status')
+    .single()
+    .then(({ data }) => {
+      if (data?.subscription_status !== 'active') {
+        window.location.href = '/teacher/inactive';
+      }
+    });
+}, []);
 useEffect(() => {
   supabase
     .from('classes')
