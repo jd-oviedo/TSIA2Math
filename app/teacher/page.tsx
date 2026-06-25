@@ -167,9 +167,7 @@ function Sidebar({ activeNav, teacherName, teacherEmail }: {
       {/* Brand */}
       <div style={{ padding: '22px 18px 18px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ width: 34, height: 34, borderRadius: 9, background: 'rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', flex: '0 0 34px' }}>
-            <LogoMark />
-          </div>
+          <img src="/unpackmath-logo.png" alt="UnpackMath" style={{ width: 36, height: 36, objectFit: 'contain' }} />
           <span style={{ fontFamily: "'Kodchasan', sans-serif", fontWeight: 600, fontSize: 17, letterSpacing: -0.2, color: '#fff' }}>UnpackMath</span>
         </div>
         <div style={{ marginTop: 14, display: 'inline-flex', alignItems: 'center', gap: 6, border: '1px solid rgba(198,138,47,0.45)', color: '#E7BE7B', fontSize: 9, fontWeight: 700, letterSpacing: 1.4, padding: '3px 8px', borderRadius: 5 }}>
