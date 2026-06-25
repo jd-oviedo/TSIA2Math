@@ -91,15 +91,17 @@ export async function sendTeacherInvite({
     </html>
   `;
 
-  const { error } = await resend.emails.send({
+  const { data, error } = await resend.emails.send({
     from: "UnpackMath <juan@unpackmath.com>",
     to: toEmail,
     subject: `You've been invited to ${className} on UnpackMath`,
     html,
   });
 
+  console.log("[email] resend response data:", JSON.stringify(data));
+  console.log("[email] resend response error:", JSON.stringify(error));
+
   if (error) {
     console.error("[email] failed to send invite:", error);
     throw new Error(error.message);
-  }
-}
+}}
