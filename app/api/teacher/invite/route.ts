@@ -3,6 +3,7 @@ import { requireTeacher } from "../../../lib/auth";
 import { createAdminClient } from "../../../lib/supabase-admin";
 import { inviteSchema, formatZodError } from "../../../lib/schemas";
 import { z } from "zod";
+import { sendTeacherInvite } from "../../../lib/email";
 
 export async function POST(req: Request) {
   const profile = await requireTeacher();
@@ -29,7 +30,9 @@ export async function POST(req: Request) {
 
   const { email, class_id } = parsed;
   const admin = createAdminClient();
-
+// Get teacher email for the invite message
+  const { data: teacherData } = await admin.auth.admin.getUserById(profile.id);
+  const teacherEmail = teacherData?.user?.email ?? "Your teacher";
   // Verify class belongs to this teacher
   const { data: cls, error: clsError } = await admin
     .from("classes")
@@ -89,4 +92,25 @@ export async function POST(req: Request) {
   }
 
   return NextResponse.json({ status: "invited", email });
+  // Get the class join code for the email
+  const { data: clsWithCode } = await admin
+    .from("classes")
+    .select("join_code, name")
+    .eq("id", class_id)
+    .single();
+
+  if (clsWithCode) {
+    try {
+      await sendTeacherInvite({
+        toEmail: email,
+        teacherEmail,
+        className: clsWithCode.name,
+        joinCode: clsWithCode.join_code,
+      });
+    } catch (emailErr) {
+      // Email failure is non-fatal -- the invite row exists, student
+      // will still be auto-enrolled when they sign up
+      console.error("[invite] email send failed:", emailErr);
+    }
+  }
 }
