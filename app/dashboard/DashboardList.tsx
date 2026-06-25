@@ -10,7 +10,112 @@ interface SessionRow {
   created_at: string;
   final_score: number | null;
 }
+function JoinClassPanel() {
+  const [code, setCode] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
+  const handleJoin = async () => {
+    const trimmed = code.trim().toUpperCase();
+    if (trimmed.length !== 6) {
+      setError("Join codes are 6 characters.");
+      return;
+    }
+    setLoading(true);
+    setError(null);
+    setSuccess(null);
+
+    const res = await fetch("/api/enroll", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ join_code: trimmed }),
+    });
+
+    const data = await res.json();
+    setLoading(false);
+
+    if (!res.ok) {
+      setError(data.error ?? "Something went wrong.");
+    } else {
+      setSuccess(`You've joined ${data.class_name}.`);
+      setCode("");
+    }
+  };
+
+  return (
+    <div style={{
+      background: "var(--ec-surface)",
+      border: "1px solid var(--ec-line)",
+      borderRadius: "14px",
+      padding: "20px 24px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+    }}>
+      <div>
+        <p style={{ fontSize: "14px", fontWeight: 700, color: "var(--ec-ink)", margin: "0 0 4px" }}>
+          Join a class
+        </p>
+        <p style={{ fontSize: "13px", color: "var(--ec-ink-muted)", margin: 0 }}>
+          Enter the 6-character code your teacher shared with you.
+        </p>
+      </div>
+
+      <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+        <input
+          value={code}
+          onChange={(e) => {
+            setCode(e.target.value.toUpperCase().slice(0, 6));
+            setError(null);
+            setSuccess(null);
+          }}
+          onKeyDown={(e) => e.key === "Enter" && handleJoin()}
+          placeholder="e.g. XK7R2P"
+          maxLength={6}
+          style={{
+            fontFamily: "monospace",
+            fontSize: "15px",
+            fontWeight: 700,
+            letterSpacing: "0.12em",
+            padding: "9px 14px",
+            borderRadius: "10px",
+            border: "1px solid var(--ec-line)",
+            background: "var(--ec-bg)",
+            color: "var(--ec-ink)",
+            width: "140px",
+            textTransform: "uppercase",
+          }}
+        />
+        <button
+          onClick={handleJoin}
+          disabled={loading || code.trim().length !== 6}
+          style={{
+            padding: "9px 18px",
+            borderRadius: "10px",
+            border: "none",
+            background: code.trim().length === 6 ? "#0f1e35" : "var(--ec-line)",
+            color: code.trim().length === 6 ? "#fff" : "var(--ec-ink-muted)",
+            fontSize: "13px",
+            fontWeight: 700,
+            cursor: code.trim().length === 6 ? "pointer" : "default",
+            fontFamily: "inherit",
+            transition: "background 0.15s",
+          }}
+        >
+          {loading ? "Joining..." : "Join"}
+        </button>
+      </div>
+
+      {error && (
+        <p style={{ fontSize: "13px", color: "var(--ec-orange)", margin: 0 }}>{error}</p>
+      )}
+      {success && (
+        <p style={{ fontSize: "13px", color: "var(--ec-green)", margin: 0, fontWeight: 600 }}>{success}</p>
+      )}
+    </div>
+  );
+}
 interface FlagRow {
   id: string;
   created_at: string;
@@ -238,17 +343,22 @@ export default function DashboardList() {
 
       {tab === "history" && (
         sessions.length === 0 ? (
-          <div style={{ background: "var(--ec-surface)", border: "1px solid var(--ec-line)", borderRadius: "16px", padding: "40px 24px", textAlign: "center" }}>
-            <p style={{ fontSize: "14px", color: "var(--ec-ink-muted)", margin: 0 }}>
-              No saved attempts yet. Take a practice test to see your results here.
-            </p>
-            <a href="/adaptive-test" style={{ display: "inline-block", marginTop: "16px", padding: "10px 22px", background: "var(--ec-btn-bg)", color: "var(--ec-btn-text)", borderRadius: "10px", fontSize: "13px", fontWeight: 700, textDecoration: "none" }}>
-              Start a practice test
-            </a>
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            <JoinClassPanel />
+            <div style={{ background: "var(--ec-surface)", border: "1px solid var(--ec-line)", borderRadius: "16px", padding: "40px 24px", textAlign: "center" }}>
+              <p style={{ fontSize: "14px", color: "var(--ec-ink-muted)", margin: 0 }}>
+                No saved attempts yet. Take a practice test to see your results here.
+              </p>
+              <a href="/adaptive-test" style={{ display: "inline-block", marginTop: "16px", padding: "10px 22px", background: "var(--ec-btn-bg)", color: "var(--ec-btn-text)", borderRadius: "10px", fontSize: "13px", fontWeight: 700, textDecoration: "none" }}>
+                Start a practice test
+              </a>
+            </div>
           </div>
-        ) : (
-          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-            {sessions.map((s) => {
+          ) : (
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            <JoinClassPanel />
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              {sessions.map((s) => {
               const score = s.final_score;
               const passed = score !== null && score >= TSIA2_PASSING;
               return (
@@ -271,6 +381,7 @@ export default function DashboardList() {
               );
             })}
           </div>
+         </div>
         )
       )}
 
