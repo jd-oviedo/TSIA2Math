@@ -439,7 +439,7 @@ export default function TeacherDashboard({ initialClasses }: { initialClasses: C
                           {row.latest_session ? timeAgo(row.latest_session.completed_at) : "--"}
                         </td>
                         <td style={{ padding: "10px" }}>
-                          <a href={`/teacher/student/${row.student_id}`} style={{ fontSize: "11px", color: "#185FA5", textDecoration: "none" }}>
+                          <a href={`/teacher/student/${row.student_id}?class_id=${selectedClassId}`} style={{ fontSize: "11px", color: "#185FA5", textDecoration: "none" }}>
                             View &rsaquo;
                           </a>
                         </td>
