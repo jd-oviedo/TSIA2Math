@@ -92,7 +92,7 @@ export async function sendTeacherInvite({
   `;
 
   const { data, error } = await resend.emails.send({
-    from: "UnpackMath <juan@unpackmath.com>",
+    from: "UnpackMath <no-reply@unpackmath.com>",
     to: toEmail,
     subject: `You've been invited to ${className} on UnpackMath`,
     html,
