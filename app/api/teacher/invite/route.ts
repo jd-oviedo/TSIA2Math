@@ -91,7 +91,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: inviteError.message }, { status: 500 });
   }
 
-  return NextResponse.json({ status: "invited", email });
   // Get the class join code for the email
   const { data: clsWithCode } = await admin
     .from("classes")
@@ -108,9 +107,9 @@ export async function POST(req: Request) {
         joinCode: clsWithCode.join_code,
       });
     } catch (emailErr) {
-      // Email failure is non-fatal -- the invite row exists, student
-      // will still be auto-enrolled when they sign up
       console.error("[invite] email send failed:", emailErr);
     }
   }
+
+  return NextResponse.json({ status: "invited", email });
 }
