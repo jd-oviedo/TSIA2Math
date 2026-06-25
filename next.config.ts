@@ -3,8 +3,8 @@ import type { NextConfig } from "next";
 
 // PostHog host: update this if you ever switch PostHog regions or use a
 // self-hosted instance. The NEXT_PUBLIC_POSTHOG_HOST env var should match.
-const POSTHOG_HOST = "https://us.posthog.com";
-const POSTHOG_ASSETS = "https://us-assets.i.posthog.com";
+const POSTHOG_HOST = "https://*.posthog.com";
+const POSTHOG_ASSETS = "https://*.i.posthog.com";
 const SENTRY_INGEST = "https://*.ingest.us.sentry.io";
 
 // Your Supabase project URL — tighten this to your exact project subdomain
