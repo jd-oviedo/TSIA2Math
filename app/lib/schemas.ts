@@ -73,3 +73,9 @@ export const flagSchema = z.object({
   ]),
   comment: z.string().max(500).optional(),
 });
+export const inviteSchema = z.object({
+  email: z.string().email("Must be a valid email address"),
+  class_id: z.string().uuid("Must be a valid class ID"),
+});
+
+export type InviteBody = z.infer<typeof inviteSchema>;

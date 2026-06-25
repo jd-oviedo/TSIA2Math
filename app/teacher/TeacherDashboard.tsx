@@ -149,6 +149,10 @@ export default function TeacherDashboard({ initialClasses }: { initialClasses: C
   const [creatingClass, setCreatingClass] = useState(false);
   const [showNewClass, setShowNewClass] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [showInvite, setShowInvite] = useState(false);
+  const [inviteEmail, setInviteEmail] = useState("");
+  const [inviting, setInviting] = useState(false);
+  const [inviteResult, setInviteResult] = useState<{ ok: boolean; message: string } | null>(null);
 
   const selectedClass = classes.find((c) => c.id === selectedClassId) ?? null;
 
@@ -209,6 +213,28 @@ export default function TeacherDashboard({ initialClasses }: { initialClasses: C
     navigator.clipboard.writeText(selectedClass.join_code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+  const sendInvite = async () => {
+    const email = inviteEmail.trim();
+    if (!email || !selectedClassId) return;
+    setInviting(true);
+    setInviteResult(null);
+    const res = await fetch("/api/teacher/invite", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, class_id: selectedClassId }),
+    });
+    const data = await res.json();
+    setInviting(false);
+    if (!res.ok) {
+      setInviteResult({ ok: false, message: data.error ?? "Something went wrong." });
+    } else {
+      const msg = data.status === "enrolled"
+        ? `${email} was already registered and has been enrolled.`
+        : `Invite sent to ${email}. They'll be enrolled when they sign up.`;
+      setInviteResult({ ok: true, message: msg });
+      setInviteEmail("");
+    }
   };
 
   // Summary stats
@@ -345,6 +371,35 @@ export default function TeacherDashboard({ initialClasses }: { initialClasses: C
               <button onClick={copyJoinLink} style={{ fontSize: "11px", color: "#185FA5", background: "none", border: "none", cursor: "pointer", padding: 0 }}>
                 {copied ? "Copied!" : "Copy"}
               </button>
+              <div style={{ width: "1px", height: "20px", background: "var(--ec-line)", margin: "0 4px" }} />
+              {showInvite ? (
+                <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+                  <input
+                    value={inviteEmail}
+                    onChange={(e) => { setInviteEmail(e.target.value); setInviteResult(null); }}
+                    onKeyDown={(e) => e.key === "Enter" && sendInvite()}
+                    placeholder="student@email.com"
+                    autoFocus
+                    type="email"
+                    style={{ padding: "4px 8px", fontSize: "12px", borderRadius: "6px", border: "0.5px solid var(--ec-line)", background: "var(--ec-bg)", color: "var(--ec-ink)", width: "180px" }}
+                  />
+                  <button onClick={sendInvite} disabled={inviting || !inviteEmail.trim()} style={{ fontSize: "11px", color: "#fff", background: "#0f1e35", border: "none", borderRadius: "6px", padding: "4px 10px", cursor: "pointer" }}>
+                    {inviting ? "Sending..." : "Invite"}
+                  </button>
+                  <button onClick={() => { setShowInvite(false); setInviteEmail(""); setInviteResult(null); }} style={{ fontSize: "11px", color: "var(--ec-ink-muted)", background: "none", border: "none", cursor: "pointer" }}>
+                    Cancel
+                  </button>
+                  {inviteResult && (
+                    <span style={{ fontSize: "11px", color: inviteResult.ok ? "var(--ec-green)" : "var(--ec-orange)", whiteSpace: "nowrap" }}>
+                      {inviteResult.message}
+                    </span>
+                  )}
+                </div>
+              ) : (
+                <button onClick={() => setShowInvite(true)} style={{ fontSize: "11px", color: "var(--ec-ink-muted)", background: "none", border: "none", cursor: "pointer", padding: "0 4px" }}>
+                  + Invite by email
+                </button>
+              )}
             </div>
           )}
         </div>
