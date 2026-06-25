@@ -4,6 +4,8 @@ import type { NextConfig } from "next";
 // PostHog host: update this if you ever switch PostHog regions or use a
 // self-hosted instance. The NEXT_PUBLIC_POSTHOG_HOST env var should match.
 const POSTHOG_HOST = "https://us.posthog.com";
+const POSTHOG_ASSETS = "https://us-assets.i.posthog.com";
+const SENTRY_INGEST = "https://*.ingest.us.sentry.io";
 
 // Your Supabase project URL — tighten this to your exact project subdomain
 // rather than the wildcard if you want a stricter connect-src. The wildcard
@@ -16,7 +18,7 @@ const SUPABASE_HOST = "https://*.supabase.co";
 const cspDirectives = [
   // Only load scripts from our own origin. PostHog injects its own script
   // from the host defined below; we allow that explicitly.
-  `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${POSTHOG_HOST}`,
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${POSTHOG_HOST} ${POSTHOG_ASSETS}`,
 
   // Inline styles are used throughout via JSX style={{}} props. 'unsafe-inline'
   // is the correct tradeoff here: our risk is not CSS injection (we have no
@@ -30,7 +32,7 @@ const cspDirectives = [
 
   // API calls: Supabase (DB + auth REST), PostHog analytics.
   // No Upstash here — it's server-to-server only.
-  `connect-src 'self' ${SUPABASE_HOST} ${POSTHOG_HOST}`,
+  `connect-src 'self' ${SUPABASE_HOST} ${POSTHOG_HOST} ${POSTHOG_ASSETS} ${SENTRY_INGEST}`,
 
   // Google OAuth redirect. 'self' covers our own /auth/callback route.
   `frame-ancestors 'none'`,
