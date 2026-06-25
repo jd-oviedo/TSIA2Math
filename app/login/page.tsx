@@ -31,15 +31,18 @@ function GoogleIcon() {
 function LoginCard() {
   const [loading, setLoading] = useState(false);
   const searchParams = useSearchParams();
+  const role = searchParams.get("role");
+  const isTeacherFlow = role === "teacher";
 
   const handleGoogleLogin = async () => {
     posthog.capture('sign_in_clicked', { session_id: searchParams.get('session_id') });
     setLoading(true);
     const callbackUrl = new URL(`${window.location.origin}/auth/callback`);
-    const next = searchParams.get("next");
+    const next = searchParams.get("next") ?? (isTeacherFlow ? "/teacher" : "/");
     const sessionId = searchParams.get("session_id");
     if (next) callbackUrl.searchParams.set("next", next);
     if (sessionId) callbackUrl.searchParams.set("session_id", sessionId);
+    if (isTeacherFlow) callbackUrl.searchParams.set("role", "teacher");
 
     await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -78,10 +81,10 @@ function LoginCard() {
         UnpackMath Account
       </p>
       <h1 style={{ fontSize: "clamp(28px, 5vw, 38px)", fontWeight: 800, color: "var(--ec-ink)", letterSpacing: "-0.03em", lineHeight: 1.1, margin: 0, fontFamily: "var(--font-kodchasan, Kodchasan, sans-serif)" }}>
-        Sign in to save your progress.
+        {isTeacherFlow ? "Sign in to your teacher portal." : "Sign in to save your progress."}
       </h1>
       <p style={{ fontSize: "17px", color: "var(--ec-ink-muted)", lineHeight: 1.6, maxWidth: "340px", margin: 0 }}>
-        Track your scores over time and pick up right where you left off.
+        {isTeacherFlow ? "Access your class roster, strand data, and misconception dashboard." : "Track your scores over time and pick up right where you left off."}
       </p>
       <button
         onClick={handleGoogleLogin}
@@ -109,6 +112,36 @@ function LoginCard() {
         <GoogleIcon />
         {loading ? "redirecting…" : "Continue with Google"}
       </button>
+      {!isTeacherFlow && (
+        <>
+          <div style={{ width: "100%", display: "flex", alignItems: "center", gap: "12px" }}>
+            <div style={{ flex: 1, height: "1px", background: "var(--ec-line)" }} />
+            <span style={{ fontSize: "12px", color: "var(--ec-ink-faint)", whiteSpace: "nowrap" }}>are you a teacher?</span>
+            <div style={{ flex: 1, height: "1px", background: "var(--ec-line)" }} />
+          </div>
+          <a href="/login?role=teacher"
+            style={{
+              width: "100%",
+              padding: "12px 20px",
+              borderRadius: "12px",
+              border: "1px solid var(--ec-line)",
+              background: "transparent",
+              color: "var(--ec-ink-muted)",
+              fontSize: "14px",
+              fontWeight: 600,
+              fontFamily: "inherit",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+              textDecoration: "none",
+              boxSizing: "border-box",
+            }}
+          >
+            Sign in as a teacher
+          </a>
+        </>
+      )}
       <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)", margin: 0 }}>
   no spam · we only use this to save your results
 </p>

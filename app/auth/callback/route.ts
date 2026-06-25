@@ -26,7 +26,18 @@ export async function GET(request: Request) {
         console.error('[auth/callback] failed to claim session:', claimError.message)
       }
     }
-
+  // If the user came through the teacher signup flow, elevate their role.
+    // subscription_status stays inactive until Stripe confirms payment.
+    if (!error && data.user) {
+      const roleParam = searchParams.get("role");
+      if (roleParam === "teacher") {
+        const admin = createAdminClient();
+        await admin
+          .from("profiles")
+          .update({ role: "teacher" })
+          .eq("id", data.user.id);
+      }
+    }
     if (!error) {
       return NextResponse.redirect(`${origin}${next}`)
     }
