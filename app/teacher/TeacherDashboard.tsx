@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import posthog from "posthog-js";
+import MathText from "../components/MathText";
 
 type ClassRow = {
   id: string;
@@ -478,7 +479,7 @@ export default function TeacherDashboard({ initialClasses }: { initialClasses: C
                         {mc.rank}
                       </div>
                       <div style={{ fontSize: "13px", fontWeight: 500, color: "var(--ec-ink)", lineHeight: 1.4 }}>
-                        {mc.distractor_text}
+                        <MathText text={mc.distractor_text} />
                       </div>
                     </div>
                     <div style={{ display: "flex", gap: "4px", marginBottom: "10px", flexWrap: "wrap" }}>
