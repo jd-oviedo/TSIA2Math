@@ -41,7 +41,7 @@ export async function GET(req: Request) {
 
   const studentIds = enrollments.map((e) => e.student_id);
 
-  // Get most recent session ID per student
+  // Get most recent session per student
   const { data: sessions } = await admin
     .from("sessions")
     .select("id, user_id, created_at")
@@ -50,10 +50,13 @@ export async function GET(req: Request) {
 
   const latestSessionIds: string[] = [];
   const seenStudents = new Set<string>();
+  const sessionToStudent = new Map<string, string>();
+
   for (const s of sessions ?? []) {
     if (!seenStudents.has(s.user_id)) {
       seenStudents.add(s.user_id);
       latestSessionIds.push(s.id);
+      sessionToStudent.set(s.id, s.user_id);
     }
   }
 
@@ -61,10 +64,11 @@ export async function GET(req: Request) {
     return NextResponse.json({ misconceptions: [] });
   }
 
-  // Get all wrong responses from those sessions
+  // Get wrong responses from those sessions
+  // responses links to sessions via session_id, not directly to user_id
   const { data: responses, error: respError } = await admin
     .from("responses")
-    .select("item_id, selected_answer, user_id")
+    .select("item_id, selected_answer, session_id")
     .in("session_id", latestSessionIds)
     .eq("is_correct", false);
 
@@ -76,10 +80,10 @@ export async function GET(req: Request) {
     return NextResponse.json({ misconceptions: [] });
   }
 
-  // Get unique item IDs from wrong responses
+  // Get unique item IDs
   const itemIds = [...new Set(responses.map((r) => r.item_id))];
 
-  // Fetch distractor_logic, strand, topic from questions (admin only)
+  // Fetch distractor_logic from questions (admin only)
   const { data: questions, error: qError } = await admin
     .from("questions")
     .select("item_id, primary_strand, topic_id, distractor_logic")
@@ -93,7 +97,7 @@ export async function GET(req: Request) {
     (questions ?? []).map((q) => [q.item_id, q])
   );
 
-  // Aggregate: group by item_id + selected_answer
+  // Aggregate by item_id + selected_answer
   type AggEntry = {
     key: string;
     item_id: string;
@@ -114,7 +118,6 @@ export async function GET(req: Request) {
     const distractorText =
       q.distractor_logic?.[r.selected_answer] ?? "Unknown misconception";
 
-    // Skip the correct answer entry
     if (distractorText.startsWith("Correct:")) continue;
 
     const key = `${r.item_id}__${r.selected_answer}`;
@@ -130,12 +133,15 @@ export async function GET(req: Request) {
         affected_students: new Set(),
       });
     }
+
     const entry = aggMap.get(key)!;
     entry.frequency += 1;
-    entry.affected_students.add(r.user_id);
+
+    // Map session back to student for affected_students count
+    const studentId = sessionToStudent.get(r.session_id);
+    if (studentId) entry.affected_students.add(studentId);
   }
 
-  // Sort by frequency descending, return top 10
   const misconceptions = [...aggMap.values()]
     .sort((a, b) => b.frequency - a.frequency)
     .slice(0, 10)
