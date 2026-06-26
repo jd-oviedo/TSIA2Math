@@ -1,0 +1,1052 @@
+[
+  {
+    "item_id": "QR_B_107",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.1",
+    "topic": "proportional_relationship_problems_in_context",
+    "topic_text": "Proportional Relationship Problems in Context",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding a unit rate from a given quantity and total cost",
+      "scaling a unit rate to a new quantity by multiplication"
+    ],
+    "question_text": "A package of 4 notebooks costs \\$6. At the same price per notebook, how much would 12 notebooks cost?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$18",
+      "B": "\\$2",
+      "C": "\\$1.50",
+      "D": "\\$12"
+    },
+    "correct_answer": "A",
+    "explanation": "Find the cost of one notebook by dividing the total by the number of notebooks:\n$6 \\div 4 = 1.50$\n\nMultiply the unit price by the new quantity:\n$1.50 \\times 12 = 18$\n\nTwelve notebooks cost \\$18.",
+    "distractor_logic": {
+      "A": "Correct: one notebook costs $6 \\div 4 = 1.50$, so 12 notebooks cost $1.50 \\times 12 = 18$ dollars.",
+      "B": "Student inverts the scale factor, using the original quantity over the new quantity: $\\frac{4}{12} \\times 6 = 2$ dollars.",
+      "C": "Student finds the unit price ($6 \\div 4 = 1.50$) and reports it as the final answer without scaling up to 12 notebooks.",
+      "D": "Student multiplies the unit price by the increase in quantity ($12 - 4 = 8$) instead of the full new quantity: $1.50 \\times 8 = 12$ dollars."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the cost of a single notebook first, then multiply by the number of notebooks you want."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Divide each answer choice by 12 and check which gives the same per-notebook price as the original package."
+      }
+    ],
+    "content_context": "pricing",
+    "context_tags": ["unit_rate", "scaling", "pricing", "real_world"],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_108",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.1",
+    "topic": "proportional_relationship_problems_in_context",
+    "topic_text": "Proportional Relationship Problems in Context",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "determining a scale factor between an original and a new quantity",
+      "applying a scale factor to a measured ingredient amount"
+    ],
+    "question_text": "A cookie recipe uses 3 cups of flour to make 12 cookies. How many cups of flour are needed to make 30 cookies?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "1.2 cups",
+      "B": "7.5 cups",
+      "C": "2.5 cups",
+      "D": "10 cups"
+    },
+    "correct_answer": "B",
+    "explanation": "Find the scale factor from 12 cookies to 30 cookies:\n$30 \\div 12 = 2.5$\n\nMultiply the flour amount by the scale factor:\n$3 \\times 2.5 = 7.5$\n\nThe recipe needs 7.5 cups of flour.",
+    "distractor_logic": {
+      "A": "Student inverts the scale factor, using the original count over the new count: $\\frac{12}{30} \\times 3 = 1.2$ cups.",
+      "B": "Correct: the scale factor is $30 \\div 12 = 2.5$, so the flour needed is $3 \\times 2.5 = 7.5$ cups.",
+      "C": "Student finds the scale factor ($30 \\div 12 = 2.5$) and reports it as cups without multiplying by the flour amount.",
+      "D": "Student divides the new cookie count by the flour amount instead of by the original cookie count: $30 \\div 3 = 10$ cups."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Figure out how many times larger 30 cookies is than 12 cookies, then apply that same factor to the flour."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "More cookies means more flour, so any choice less than 3 cups cannot be right."
+      }
+    ],
+    "content_context": "recipe",
+    "context_tags": ["scaling", "recipe", "proportion", "real_world"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_109",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.1",
+    "topic": "proportional_relationship_problems_in_context",
+    "topic_text": "Proportional Relationship Problems in Context",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "computing a unit rate of miles per gallon from given values",
+      "applying a unit rate to a new quantity of gallons"
+    ],
+    "question_text": "A car travels 150 miles using 5 gallons of gas. At this rate, how far can the car travel on 8 gallons of gas?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "30 miles",
+      "B": "93.75 miles",
+      "C": "240 miles",
+      "D": "90 miles"
+    },
+    "correct_answer": "C",
+    "explanation": "Find the miles per gallon:\n$150 \\div 5 = 30$\n\nMultiply the rate by the new number of gallons:\n$30 \\times 8 = 240$\n\nThe car can travel 240 miles.",
+    "distractor_logic": {
+      "A": "Student finds the rate ($150 \\div 5 = 30$ miles per gallon) and reports it as the distance without multiplying by 8 gallons.",
+      "B": "Student inverts the scale factor, using the original gallons over the new gallons: $\\frac{5}{8} \\times 150 = 93.75$ miles.",
+      "C": "Correct: the rate is $150 \\div 5 = 30$ miles per gallon, so on 8 gallons the car travels $30 \\times 8 = 240$ miles.",
+      "D": "Student applies the rate only to the additional 3 gallons ($8 - 5 = 3$): $30 \\times 3 = 90$ miles."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find how many miles the car gets from a single gallon, then multiply by the number of gallons available."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Eight gallons is more than five, so the distance should be larger than 150 miles."
+      }
+    ],
+    "content_context": "fuel_efficiency",
+    "context_tags": ["unit_rate", "distance", "fuel_efficiency", "real_world"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_110",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.1",
+    "topic": "proportional_relationship_problems_in_context",
+    "topic_text": "Proportional Relationship Problems in Context",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "computing a price per pound from a total cost and weight",
+      "applying a unit price to a new weight"
+    ],
+    "question_text": "At a market, 5 pounds of apples cost \\$10. At the same rate, how much would 8 pounds of apples cost?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$6.25",
+      "B": "\\$2",
+      "C": "\\$1.25",
+      "D": "\\$16"
+    },
+    "correct_answer": "D",
+    "explanation": "Find the price per pound:\n$10 \\div 5 = 2$\n\nMultiply the unit price by the new weight:\n$2 \\times 8 = 16$\n\nEight pounds of apples cost \\$16.",
+    "distractor_logic": {
+      "A": "Student inverts the scale factor, using the original weight over the new weight: $\\frac{5}{8} \\times 10 = 6.25$ dollars.",
+      "B": "Student finds the price per pound ($10 \\div 5 = 2$) and reports it as the final answer without scaling to 8 pounds.",
+      "C": "Student divides the known cost by the new weight instead of the original weight: $10 \\div 8 = 1.25$ dollars.",
+      "D": "Correct: the price per pound is $10 \\div 5 = 2$, so 8 pounds cost $2 \\times 8 = 16$ dollars."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the cost of one pound first, then multiply by the number of pounds you want."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Divide each answer choice by 8 and check which gives the same per-pound price as the original."
+      }
+    ],
+    "content_context": "pricing",
+    "context_tags": ["unit_rate", "pricing", "grocery", "real_world"],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_111",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.1",
+    "topic": "proportional_relationship_problems_in_context",
+    "topic_text": "Proportional Relationship Problems in Context",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "determining a scale factor from an original to a new time interval",
+      "applying a scale factor to a printed page count"
+    ],
+    "question_text": "A printer prints 6 pages in 15 seconds. At this rate, how many pages will it print in 45 seconds?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2 pages",
+      "B": "18 pages",
+      "C": "9 pages",
+      "D": "12 pages"
+    },
+    "correct_answer": "B",
+    "explanation": "Find how many times longer 45 seconds is than 15 seconds:\n$45 \\div 15 = 3$\n\nMultiply the page count by that factor:\n$6 \\times 3 = 18$\n\nThe printer prints 18 pages.",
+    "distractor_logic": {
+      "A": "Student inverts the scale factor, using the original time over the new time: $\\frac{15}{45} \\times 6 = 2$ pages.",
+      "B": "Correct: the time scale factor is $45 \\div 15 = 3$, so the printer prints $6 \\times 3 = 18$ pages.",
+      "C": "Student finds the scale factor ($45 \\div 15 = 3$) but adds it to the original page count instead of multiplying: $6 + 3 = 9$ pages.",
+      "D": "Student applies the rate only to the additional 30 seconds ($45 - 15 = 30$): $\\frac{30}{15} \\times 6 = 12$ pages."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compare the new time to the original time to find how many times more pages will print."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Forty-five seconds is three times fifteen seconds, so expect roughly three times as many pages."
+      }
+    ],
+    "content_context": "rate",
+    "context_tags": ["scaling", "rate", "printing", "real_world"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_094",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.1",
+    "topic": "proportional_relationship_problems_in_context",
+    "topic_text": "Proportional Relationship Problems in Context",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "calculating a percent of a base amount",
+      "combining a tip with the original bill to find a total"
+    ],
+    "question_text": "A restaurant bill is \\$50. A customer wants to leave a 15% tip. What is the total amount the customer pays?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$57.50",
+      "B": "\\$7.50",
+      "C": "\\$65",
+      "D": "\\$75"
+    },
+    "correct_answer": "A",
+    "explanation": "Find 15% of the bill:\n$0.15 \\times 50 = 7.50$\n\nAdd the tip to the original bill:\n$50 + 7.50 = 57.50$\n\nThe customer pays \\$57.50.",
+    "distractor_logic": {
+      "A": "Correct: the tip is $0.15 \\times 50 = 7.50$, and the total is $50 + 7.50 = 57.50$ dollars.",
+      "B": "Student computes the tip amount ($0.15 \\times 50 = 7.50$) and reports it as the total, forgetting to add the original bill.",
+      "C": "Student adds a flat \\$15 instead of 15% of the bill: $50 + 15 = 65$ dollars.",
+      "D": "Student multiplies the bill by 1.5 instead of 1.15, treating 15% as 50%: $50 \\times 1.5 = 75$ dollars."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The total is the original bill plus the tip. Find the tip as a percent of the bill, then add it on."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "A 15% tip is a bit more than one-tenth of the bill, so the total should be a little above \\$55."
+      }
+    ],
+    "content_context": "financial_literacy",
+    "context_tags": ["percent", "tip", "financial_literacy", "real_world"],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_095",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": ["AR"],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.1",
+    "topic": "proportional_relationship_problems_in_context",
+    "topic_text": "Proportional Relationship Problems in Context",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "setting up a proportion equation from a pay-rate scenario",
+      "solving the proportion for an unknown earnings amount"
+    ],
+    "question_text": "A worker earns \\$54 for 4 hours of work. At the same rate, how much will the worker earn for 10 hours?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$540",
+      "B": "\\$135",
+      "C": "\\$13.50",
+      "D": "\\$81"
+    },
+    "correct_answer": "B",
+    "explanation": "Set up a proportion with x as the earnings for 10 hours:\n$\\frac{54}{4} = \\frac{x}{10}$\n\nCross-multiply:\n$4x = 540$\n\nDivide both sides by 4:\n$x = 135$\n\nThe worker earns \\$135.",
+    "distractor_logic": {
+      "A": "Student cross-multiplies to get $4x = 540$ but reports 540 without dividing by 4.",
+      "B": "Correct: $\\frac{54}{4} = \\frac{x}{10}$ gives $4x = 540$, so $x = 135$ dollars.",
+      "C": "Student finds the hourly rate ($54 \\div 4 = 13.50$) and reports it as the answer without scaling to 10 hours.",
+      "D": "Student computes earnings for only the additional 6 hours ($10 - 4 = 6$): $6 \\times 13.50 = 81$ dollars."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Write a proportion that sets dollars over hours equal for both situations, then solve for the unknown earnings."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Ten hours is more than four hours, so the pay must be greater than \\$54."
+      }
+    ],
+    "content_context": "financial_literacy",
+    "context_tags": ["proportion", "wages", "solve_for_unknown", "real_world"],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_096",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.1",
+    "topic": "proportional_relationship_problems_in_context",
+    "topic_text": "Proportional Relationship Problems in Context",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "calculating a percent discount from a base price",
+      "subtracting a discount to find a sale price"
+    ],
+    "question_text": "A jacket originally costs \\$80. It is on sale for 25% off. What is the sale price?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$20",
+      "B": "\\$100",
+      "C": "\\$55",
+      "D": "\\$60"
+    },
+    "correct_answer": "D",
+    "explanation": "Find the discount, which is 25% of \\$80:\n$0.25 \\times 80 = 20$\n\nSubtract the discount from the original price:\n$80 - 20 = 60$\n\nThe sale price is \\$60.",
+    "distractor_logic": {
+      "A": "Student computes the discount amount ($0.25 \\times 80 = 20$) and reports it as the sale price instead of subtracting it.",
+      "B": "Student adds the discount instead of subtracting it: $80 + 20 = 100$ dollars.",
+      "C": "Student subtracts a flat \\$25 instead of 25% of the price: $80 - 25 = 55$ dollars.",
+      "D": "Correct: the discount is $0.25 \\times 80 = 20$, so the sale price is $80 - 20 = 60$ dollars."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find how many dollars 25% of the price is, then take that amount off the original."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A discount lowers the price, so any choice at or above \\$80 cannot be the sale price."
+      }
+    ],
+    "content_context": "financial_literacy",
+    "context_tags": ["percent", "discount", "financial_literacy", "real_world"],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_097",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.1",
+    "topic": "proportional_relationship_problems_in_context",
+    "topic_text": "Proportional Relationship Problems in Context",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "computing a total time from a multi-day schedule",
+      "applying a production rate to a derived total time"
+    ],
+    "question_text": "A factory produces 3 cars every 4 hours. The factory operates 8 hours per day for 5 days. How many cars does it produce in that time?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6 cars",
+      "B": "120 cars",
+      "C": "30 cars",
+      "D": "10 cars"
+    },
+    "correct_answer": "C",
+    "explanation": "First find the total operating time:\n$5 \\times 8 = 40$ hours\n\nFind how many 4-hour blocks are in 40 hours:\n$40 \\div 4 = 10$\n\nMultiply by the 3 cars per block:\n$10 \\times 3 = 30$\n\nThe factory produces 30 cars.",
+    "distractor_logic": {
+      "A": "Student uses only one day's 8 hours instead of all 5 days: $\\frac{8}{4} \\times 3 = 6$ cars.",
+      "B": "Student multiplies the total hours by 3 cars, ignoring the 4-hour interval: $40 \\times 3 = 120$ cars.",
+      "C": "Correct: total time is $5 \\times 8 = 40$ hours, which is $40 \\div 4 = 10$ blocks, giving $10 \\times 3 = 30$ cars.",
+      "D": "Student finds the number of 4-hour blocks ($40 \\div 4 = 10$) and reports it as cars without multiplying by 3."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the total number of hours worked first, then use the production rate on that total."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the 5 days as blocks of 8 hours to see how many hours of production there are altogether."
+      }
+    ],
+    "content_context": "manufacturing",
+    "context_tags": ["rate", "multi_step", "manufacturing", "real_world"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_098",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": ["AR"],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.1",
+    "topic": "proportional_relationship_problems_in_context",
+    "topic_text": "Proportional Relationship Problems in Context",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "setting up a reverse-percent equation from a known increased value",
+      "solving for the original amount before a percent increase"
+    ],
+    "question_text": "After a 20% increase, a subscription costs \\$18 per month. What was the original monthly price before the increase?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$15",
+      "B": "\\$14.40",
+      "C": "\\$21.60",
+      "D": "\\$3.60"
+    },
+    "correct_answer": "A",
+    "explanation": "The new price is 120% of the original. Let x be the original price:\n$1.20x = 18$\n\nDivide both sides by 1.20:\n$x = 18 \\div 1.20 = 15$\n\nThe original price was \\$15.",
+    "distractor_logic": {
+      "A": "Correct: the new price is 120% of the original, so $1.20x = 18$ gives $x = 18 \\div 1.20 = 15$ dollars.",
+      "B": "Student subtracts 20% of the new price instead of dividing by 1.20: $18 - (0.20 \\times 18) = 18 - 3.60 = 14.40$ dollars.",
+      "C": "Student applies a 20% increase again instead of reversing it: $18 \\times 1.20 = 21.60$ dollars.",
+      "D": "Student computes only 20% of the new price and reports that amount: $0.20 \\times 18 = 3.60$ dollars."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The \\$18 already includes the increase, so it represents more than 100% of the original. Work backward from that."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Take each answer choice, increase it by 20%, and check which one lands on \\$18."
+      }
+    ],
+    "content_context": "financial_literacy",
+    "context_tags": ["percent_increase", "reverse_percent", "financial_literacy", "real_world"],
+    "estimated_time_seconds": 115,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_088",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": ["AR"],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.1",
+    "topic": "proportional_relationship_problems_in_context",
+    "topic_text": "Proportional Relationship Problems in Context",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "determining a scale factor between a model and original dimension",
+      "reverse-reasoning to find an unknown original measurement"
+    ],
+    "question_text": "A photo is enlarged so that all dimensions scale proportionally. In the enlarged photo, the width is 18 inches and the height is 24 inches. If the enlarged width corresponds to an original width of 6 inches, what was the original height?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "8 inches",
+      "B": "72 inches",
+      "C": "6 inches",
+      "D": "12 inches"
+    },
+    "correct_answer": "A",
+    "explanation": "Find the enlargement factor using the widths:\n$18 \\div 6 = 3$\n\nThe enlarged photo is 3 times the original, so divide the enlarged height by 3:\n$24 \\div 3 = 8$\n\nThe original height was 8 inches.",
+    "distractor_logic": {
+      "A": "Correct: the scale factor is $18 \\div 6 = 3$, so the original height is $24 \\div 3 = 8$ inches.",
+      "B": "Student multiplies by the scale factor instead of dividing, scaling the wrong direction: $24 \\times 3 = 72$ inches.",
+      "C": "Student assumes the original height equals the original width, reporting 6 inches by confusing the two dimensions.",
+      "D": "Student subtracts the width difference from the enlarged height instead of dividing: $24 - (18 - 6) = 12$ inches."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Use the two widths to find how many times bigger the enlargement is, then undo that scaling on the height."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The original is smaller than the enlargement, so the original height must be less than 24 inches."
+      }
+    ],
+    "content_context": "scaling",
+    "context_tags": ["scale_factor", "reverse_proportion", "dimensions", "real_world"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_089",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.1",
+    "topic": "proportional_relationship_problems_in_context",
+    "topic_text": "Proportional Relationship Problems in Context",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "computing distance from two different rates over a common time",
+      "comparing two proportional results by finding their difference"
+    ],
+    "question_text": "A runner covers 3 miles in 24 minutes. A cyclist covers 3 miles in 9 minutes. If both keep their pace, how much farther will the cyclist travel than the runner in 60 minutes?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "7.5 miles",
+      "B": "12.5 miles",
+      "C": "20 miles",
+      "D": "27.5 miles"
+    },
+    "correct_answer": "B",
+    "explanation": "Runner's distance in 60 minutes:\n$60 \\times \\frac{3}{24} = 60 \\times 0.125 = 7.5$ miles\n\nCyclist's distance in 60 minutes:\n$60 \\times \\frac{3}{9} = 60 \\times \\frac{1}{3} = 20$ miles\n\nSubtract to find how much farther the cyclist goes:\n$20 - 7.5 = 12.5$ miles",
+    "distractor_logic": {
+      "A": "Student computes only the runner's distance ($60 \\times \\frac{3}{24} = 7.5$) and reports it instead of the difference.",
+      "B": "Correct: the cyclist travels 20 miles and the runner travels 7.5 miles, so the difference is $20 - 7.5 = 12.5$ miles.",
+      "C": "Student computes only the cyclist's distance ($60 \\times \\frac{3}{9} = 20$) and reports it, forgetting to subtract the runner's distance.",
+      "D": "Student adds the two distances instead of subtracting: $20 + 7.5 = 27.5$ miles."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find each person's distance over the full 60 minutes separately, then compare the two results."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "The cyclist is much faster, so the gap between them should be a large positive number of miles."
+      }
+    ],
+    "content_context": "rate",
+    "context_tags": ["rate_comparison", "distance", "difference", "real_world"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_090",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.1",
+    "topic": "proportional_relationship_problems_in_context",
+    "topic_text": "Proportional Relationship Problems in Context",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "applying a tiered unit-rate structure to a single order",
+      "splitting a quantity across two price tiers correctly"
+    ],
+    "question_text": "A wholesaler sells widgets at \\$3 each for the first 20 widgets and \\$2 each for every widget beyond 20. What is the total cost of an order of 50 widgets?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$150",
+      "B": "\\$100",
+      "C": "\\$120",
+      "D": "\\$130"
+    },
+    "correct_answer": "C",
+    "explanation": "Cost of the first 20 widgets:\n$20 \\times 3 = 60$\n\nWidgets beyond 20:\n$50 - 20 = 30$\n\nCost of those 30 widgets:\n$30 \\times 2 = 60$\n\nTotal:\n$60 + 60 = 120$\n\nThe order costs \\$120.",
+    "distractor_logic": {
+      "A": "Student applies the \\$3 rate to all 50 widgets, ignoring the tier: $50 \\times 3 = 150$ dollars.",
+      "B": "Student applies the \\$2 rate to all 50 widgets, using only the discounted tier: $50 \\times 2 = 100$ dollars.",
+      "C": "Correct: $20 \\times 3 = 60$ for the first tier plus $30 \\times 2 = 60$ for the rest gives $60 + 60 = 120$ dollars.",
+      "D": "Student reverses the tier rates, charging \\$2 for the first 20 and \\$3 for the rest: $20 \\times 2 + 30 \\times 3 = 40 + 90 = 130$ dollars."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Separate the order into the first 20 widgets and the widgets beyond 20, then price each group at its own rate."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Picture two groups: a block of 20 at one price and the remaining widgets at another, then add the two costs."
+      }
+    ],
+    "content_context": "pricing",
+    "context_tags": ["tiered_pricing", "unit_rate", "multi_step", "real_world"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_091",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": ["AR"],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.1",
+    "topic": "proportional_relationship_problems_in_context",
+    "topic_text": "Proportional Relationship Problems in Context",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "setting up a reverse-percent equation from a depreciated value",
+      "solving for an original value before a percent decrease"
+    ],
+    "question_text": "A car's value depreciated by 15% over one year and is now worth \\$17,000. What was the car worth one year ago?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$19,550",
+      "B": "\\$14,450",
+      "C": "\\$2,550",
+      "D": "\\$20,000"
+    },
+    "correct_answer": "D",
+    "explanation": "After losing 15%, the car retains 85% of its original value. Let x be the original value:\n$0.85x = 17000$\n\nDivide both sides by 0.85:\n$x = 17000 \\div 0.85 = 20000$\n\nThe car was worth \\$20,000 one year ago.",
+    "distractor_logic": {
+      "A": "Student applies a 15% increase to the current value instead of reversing the decrease: $17000 \\times 1.15 = 19550$ dollars.",
+      "B": "Student subtracts another 15% instead of working backward: $17000 \\times 0.85 = 14450$ dollars.",
+      "C": "Student computes only 15% of the current value: $0.15 \\times 17000 = 2550$ dollars.",
+      "D": "Correct: the current value is 85% of the original, so $0.85x = 17000$ gives $x = 17000 \\div 0.85 = 20000$ dollars."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "basic",
+    "requires_calculator": true,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The current value is what remains after losing 15%, so it equals 85% of the original. Work backward from that percent."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Take each answer choice, reduce it by 15%, and check which one lands on \\$17,000."
+      }
+    ],
+    "content_context": "financial_literacy",
+    "context_tags": ["percent_decrease", "reverse_percent", "depreciation", "real_world"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_092",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.1",
+    "topic": "proportional_relationship_problems_in_context",
+    "topic_text": "Proportional Relationship Problems in Context",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding a difference in measured values before applying a scale",
+      "converting a scaled difference to actual units using a ratio"
+    ],
+    "question_text": "A scale model uses a ratio of 1 inch to 8 feet. On the model, a building is 9 inches tall and a flagpole beside it is 1.5 inches tall. What is the actual height difference between the building and the flagpole?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "60 feet",
+      "B": "72 feet",
+      "C": "7.5 feet",
+      "D": "84 feet"
+    },
+    "correct_answer": "A",
+    "explanation": "Find the height difference on the model:\n$9 - 1.5 = 7.5$ inches\n\nConvert to actual feet using the scale (1 inch is 8 feet):\n$7.5 \\times 8 = 60$\n\nThe actual height difference is 60 feet.",
+    "distractor_logic": {
+      "A": "Correct: the model difference is $9 - 1.5 = 7.5$ inches, and $7.5 \\times 8 = 60$ feet.",
+      "B": "Student converts only the building's height and reports it, ignoring the flagpole: $9 \\times 8 = 72$ feet.",
+      "C": "Student finds the model difference ($9 - 1.5 = 7.5$ inches) but forgets to convert it to feet using the scale.",
+      "D": "Student converts both heights and adds them instead of finding the difference: $9 \\times 8 = 72$ and $1.5 \\times 8 = 12$, then $72 + 12 = 84$ feet."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the difference on the model first, then scale that single difference up to actual feet."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The difference must be smaller than the building's full actual height, so rule out anything that large or larger."
+      }
+    ],
+    "content_context": "scaling",
+    "context_tags": ["scale_factor", "difference", "unit_conversion", "real_world"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  }
+]

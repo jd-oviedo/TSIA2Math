@@ -1,0 +1,410 @@
+[
+  {
+    "item_id": "QR_B_105",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.8",
+    "topic": "distributive_property",
+    "topic_text": "Distributive Property",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 0,
+    "skills_targeted": [
+      "applying the distributive property to a single-term factor over a two-term sum",
+      "multiplying the factor by both terms inside the parentheses"
+    ],
+    "question_text": "Use the distributive property to expand $3(x + 4)$.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$3x + 12$",
+      "B": "$3x + 4$",
+      "C": "$3x + 7$",
+      "D": "$x + 12$"
+    },
+    "correct_answer": "A",
+    "explanation": "Multiply the 3 by each term inside the parentheses:\n$3(x + 4) = 3 \\times x + 3 \\times 4 = 3x + 12$",
+    "distractor_logic": {
+      "A": "Correct: $3 \\times x = 3x$ and $3 \\times 4 = 12$, giving $3x + 12$.",
+      "B": "Student multiplies the 3 by the x but copies the $+4$ unchanged, distributing to only the first term: $3x + 4$.",
+      "C": "Student multiplies the 3 by the x but then adds the 3 and the 4 instead of multiplying: $3 + 4 = 7$, giving $3x + 7$.",
+      "D": "Student multiplies $3 \\times 4 = 12$ but forgets to apply the 3 to the x term, leaving $x + 12$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The factor outside the parentheses multiplies every term inside, not just the first one."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["distributive_property", "expanding_expressions", "single_factor"],
+    "estimated_time_seconds": 60,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-25",
+    "last_modified": "2026-06-25",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_106",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.8",
+    "topic": "distributive_property",
+    "topic_text": "Distributive Property",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 0,
+    "skills_targeted": [
+      "applying the distributive property over a difference",
+      "multiplying a factor by a negative term inside the parentheses"
+    ],
+    "question_text": "Use the distributive property to expand $2(3x - 5)$.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$6x - 5$",
+      "B": "$5x - 10$",
+      "C": "$6x + 10$",
+      "D": "$6x - 10$"
+    },
+    "correct_answer": "D",
+    "explanation": "Multiply the 2 by each term inside, keeping the sign:\n$2(3x - 5) = 2 \\times 3x - 2 \\times 5 = 6x - 10$",
+    "distractor_logic": {
+      "A": "Student multiplies the 2 by the $3x$ but copies the $-5$ unchanged, distributing to only the first term: $6x - 5$.",
+      "B": "Student adds the 2 and the 3 to form the x-coefficient instead of multiplying: $2 + 3 = 5$, giving $5x - 10$.",
+      "C": "Student multiplies $2 \\times 3x = 6x$ correctly but mishandles the sign on $2 \\times (-5)$, writing $+10$ instead of $-10$: $6x + 10$.",
+      "D": "Correct: $2 \\times 3x = 6x$ and $2 \\times (-5) = -10$, giving $6x - 10$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Multiply the outside factor by both terms inside, and carry the minus sign on the second term through the multiplication."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["distributive_property", "expanding_expressions", "negative_term", "sign_tracking"],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-25",
+    "last_modified": "2026-06-25",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_092",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.8",
+    "topic": "distributive_property",
+    "topic_text": "Distributive Property",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 0,
+    "skills_targeted": [
+      "distributing a factor over a binomial and then combining like terms",
+      "adding a term outside the parentheses to the distributed result"
+    ],
+    "question_text": "Simplify $4(x + 2) + 3x$ using the distributive property.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$7x + 2$",
+      "B": "$7x + 8$",
+      "C": "$15x$",
+      "D": "$4x + 8$"
+    },
+    "correct_answer": "B",
+    "explanation": "Distribute the 4 first:\n$4(x + 2) = 4x + 8$\n\nThen combine with the $3x$:\n$4x + 8 + 3x = 7x + 8$",
+    "distractor_logic": {
+      "A": "Student distributes the 4 to the x but copies the $+2$ unchanged, then adds the $3x$: $4x + 2 + 3x = 7x + 2$.",
+      "B": "Correct: $4(x + 2) = 4x + 8$, then $4x + 8 + 3x = 7x + 8$.",
+      "C": "Student reaches $7x + 8$ but combines the unlike terms into one: $7 + 8 = 15$, giving $15x$.",
+      "D": "Student distributes the 4 correctly to get $4x + 8$ but forgets to add the $3x$ term outside the parentheses."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Expand the parentheses first by multiplying the 4 through both terms, then combine that result with the term sitting outside."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["distributive_property", "combining_like_terms", "multi_step"],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-25",
+    "last_modified": "2026-06-25",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_093",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.8",
+    "topic": "distributive_property",
+    "topic_text": "Distributive Property",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 0,
+    "skills_targeted": [
+      "distributing a positive factor and a leading negative across two binomials",
+      "applying the subtraction to every term in the second group"
+    ],
+    "question_text": "Simplify $2(3x - 1) - (x + 5)$ using the distributive property.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$5x - 7$",
+      "B": "$5x + 3$",
+      "C": "$7x + 3$",
+      "D": "$5x - 6$"
+    },
+    "correct_answer": "A",
+    "explanation": "Distribute both factors, including the minus in front of the second group:\n$2(3x - 1) = 6x - 2$\n$-(x + 5) = -x - 5$\n\nCombine like terms:\n$6x - x = 5x$ and $-2 - 5 = -7$\n\nThe simplified expression is $5x - 7$.",
+    "distractor_logic": {
+      "A": "Correct: $2(3x - 1) = 6x - 2$ and $-(x + 5) = -x - 5$, so $6x - x = 5x$ and $-2 - 5 = -7$, giving $5x - 7$.",
+      "B": "Student applies the minus to the x but not to the $+5$, writing $-x + 5$: $6x - 2 - x + 5 = 5x + 3$.",
+      "C": "Student ignores the minus in front of the second group entirely, adding it: $6x - 2 + x + 5 = 7x + 3$.",
+      "D": "Student multiplies 2 by $3x$ but forgets to multiply 2 by the $-1$, writing $6x - 1$: $6x - 1 - x - 5 = 5x - 6$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The minus sign in front of the second parentheses flips the sign of every term inside it, not just the first."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Find the x-coefficient first: distributing both groups gives $6x - x = 5x$, so any choice without a $5x$ term mishandled a distribution."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["distributive_property", "negative_group", "sign_tracking", "combining_like_terms"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-25",
+    "last_modified": "2026-06-25",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_086",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.8",
+    "topic": "distributive_property",
+    "topic_text": "Distributive Property",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 0,
+    "skills_targeted": [
+      "factoring a linear expression by extracting the greatest common factor",
+      "verifying that a factored form is completely factored"
+    ],
+    "question_text": "Which expression is the completely factored form of $8x + 12$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$2(4x + 6)$",
+      "B": "$4(2x + 12)$",
+      "C": "$4(2x + 3)$",
+      "D": "$4(8x + 12)$"
+    },
+    "correct_answer": "C",
+    "explanation": "The greatest common factor of $8x$ and $12$ is $4$:\n$8x \\div 4 = 2x$ and $12 \\div 4 = 3$\n\nSo $8x + 12 = 4(2x + 3)$. Check by expanding: $4 \\times 2x = 8x$ and $4 \\times 3 = 12$.",
+    "distractor_logic": {
+      "A": "Student factors out 2, a common factor but not the greatest. $2(4x + 6)$ does equal $8x + 12$, but $4x$ and $6$ still share a factor of 2, so it is not completely factored.",
+      "B": "Student divides the x-term by the GCF ($8x \\div 4 = 2x$) but copies the constant 12 unchanged inside, giving $4(2x + 12)$, which expands to $8x + 48$.",
+      "C": "Correct: the GCF is 4, and $8x + 12 = 4(2x + 3)$.",
+      "D": "Student writes the GCF of 4 in front but copies both original terms inside without dividing, giving $4(8x + 12)$, which expands to $32x + 48$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "use_answer_choices"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the largest number that divides both $8$ and $12$ evenly, then divide each term by it. A completely factored form leaves no common factor inside the parentheses."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Expand each choice and check two things: that it equals $8x + 12$, and that the terms left inside share no further common factor."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["distributive_property", "factoring", "greatest_common_factor", "reverse_distribution"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-25",
+    "last_modified": "2026-06-25",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_087",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "interpreting_linear_expressions_and_equations",
+    "objective_text": "Interpreting Linear Expressions and Equations",
+    "topic_id": "QR.3.8",
+    "topic": "distributive_property",
+    "topic_text": "Distributive Property",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 0,
+    "skills_targeted": [
+      "distributing a negative factor and a positive factor across two binomials",
+      "combining like terms while tracking multiple sign changes"
+    ],
+    "question_text": "Simplify $-2(x - 3) + 4(2x - 1)$ using the distributive property.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$6x - 10$",
+      "B": "$6x + 2$",
+      "C": "$6x + 5$",
+      "D": "$8x$"
+    },
+    "correct_answer": "B",
+    "explanation": "Distribute each factor, watching the signs:\n$-2(x - 3) = -2x + 6$\n$4(2x - 1) = 8x - 4$\n\nCombine like terms:\n$-2x + 8x = 6x$ and $6 - 4 = 2$\n\nThe simplified expression is $6x + 2$.",
+    "distractor_logic": {
+      "A": "Student mishandles the double negative, computing $-2 \\times (-3)$ as $-6$ instead of $+6$: $-2x - 6 + 8x - 4 = 6x - 10$.",
+      "B": "Correct: $-2(x - 3) = -2x + 6$ and $4(2x - 1) = 8x - 4$, so $-2x + 8x = 6x$ and $6 - 4 = 2$, giving $6x + 2$.",
+      "C": "Student multiplies 4 by $2x$ but forgets to multiply 4 by the $-1$, writing $8x - 1$: $-2x + 6 + 8x - 1 = 6x + 5$.",
+      "D": "Student reaches $6x + 2$ but combines the unlike terms into one: $6 + 2 = 8$, giving $8x$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Distribute each factor to both terms in its parentheses. A negative times a negative gives a positive, so watch the $-2 \\times (-3)$ carefully."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Find the constant term by handling both products fully. A choice with the wrong constant dropped or flipped a sign during distribution."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["distributive_property", "negative_factor", "double_negative", "sign_tracking"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-25",
+    "last_modified": "2026-06-25",
+    "review_notes": null
+  }
+]

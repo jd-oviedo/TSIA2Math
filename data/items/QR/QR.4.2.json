@@ -1,0 +1,1052 @@
+[
+  {
+    "item_id": "QR_B_112",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.2",
+    "topic": "multi_step_problems_combining_proportional_and_linear_reasoning",
+    "topic_text": "Multi-Step Problems Combining Proportional and Linear Reasoning",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the per-unit rate and the fixed fee in a two-component cost",
+      "computing a total cost as rate times quantity plus a fixed fee"
+    ],
+    "question_text": "A plumber charges \\$45 per hour of work plus a flat \\$30 travel fee. What is the total cost of a 3-hour job?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$135",
+      "B": "\\$165",
+      "C": "\\$30",
+      "D": "\\$225"
+    },
+    "correct_answer": "B",
+    "explanation": "Find the labor cost first:\n$45 \\times 3 = 135$\n\nAdd the flat travel fee:\n$135 + 30 = 165$\n\nThe total cost is \\$165.",
+    "distractor_logic": {
+      "A": "Student computes only the labor cost ($45 \\times 3 = 135$) and forgets to add the flat travel fee.",
+      "B": "Correct: labor is $45 \\times 3 = 135$, plus the \\$30 fee gives $135 + 30 = 165$ dollars.",
+      "C": "Student reports only the flat travel fee, ignoring the hourly labor charge.",
+      "D": "Student adds the fee to the hourly rate before multiplying, treating the fee as part of the per-hour cost: $(45 + 30) \\times 3 = 225$ dollars."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "There are two parts: an amount that depends on the hours worked and a fee charged once. Find the hourly part, then add the one-time fee."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The total must be more than the labor alone, so any choice equal to or less than the hourly cost cannot be right."
+      }
+    ],
+    "content_context": "financial_literacy",
+    "context_tags": ["two_component_cost", "fixed_fee", "hourly_rate", "real_world"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_113",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.2",
+    "topic": "multi_step_problems_combining_proportional_and_linear_reasoning",
+    "topic_text": "Multi-Step Problems Combining Proportional and Linear Reasoning",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "computing a recurring monthly charge over a number of months",
+      "adding a one-time fee to a recurring total"
+    ],
+    "question_text": "A gym charges \\$25 per month plus a one-time \\$40 signup fee. What is the total cost for 6 months of membership?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$150",
+      "B": "\\$40",
+      "C": "\\$190",
+      "D": "\\$165"
+    },
+    "correct_answer": "C",
+    "explanation": "Find the cost of the monthly charges:\n$25 \\times 6 = 150$\n\nAdd the one-time signup fee:\n$150 + 40 = 190$\n\nThe total cost is \\$190.",
+    "distractor_logic": {
+      "A": "Student computes only the monthly charges ($25 \\times 6 = 150$) and forgets the one-time signup fee.",
+      "B": "Student reports only the signup fee, ignoring the monthly charges.",
+      "C": "Correct: monthly charges are $25 \\times 6 = 150$, plus the \\$40 signup fee gives $150 + 40 = 190$ dollars.",
+      "D": "Student counts only 5 months instead of 6: $25 \\times 5 + 40 = 165$ dollars."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The signup fee is paid once, not every month. Find the total monthly cost first, then add the fee a single time."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Six months of charges alone is already \\$150, so the total should be somewhat above that."
+      }
+    ],
+    "content_context": "financial_literacy",
+    "context_tags": ["two_component_cost", "fixed_fee", "monthly_rate", "real_world"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_114",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.2",
+    "topic": "multi_step_problems_combining_proportional_and_linear_reasoning",
+    "topic_text": "Multi-Step Problems Combining Proportional and Linear Reasoning",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "computing a per-ticket cost across multiple tickets",
+      "adding a single booking fee to a per-ticket total"
+    ],
+    "question_text": "An online box office sells movie tickets for \\$9 each and adds a one-time \\$3 booking fee per order. What is the total cost of an order for 4 tickets?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$36",
+      "B": "\\$3",
+      "C": "\\$48",
+      "D": "\\$39"
+    },
+    "correct_answer": "D",
+    "explanation": "Find the cost of the tickets:\n$9 \\times 4 = 36$\n\nAdd the one-time booking fee:\n$36 + 3 = 39$\n\nThe total cost is \\$39.",
+    "distractor_logic": {
+      "A": "Student computes only the ticket cost ($9 \\times 4 = 36$) and forgets the booking fee.",
+      "B": "Student reports only the booking fee, ignoring the cost of the tickets.",
+      "C": "Student adds the booking fee to the ticket price before multiplying, charging the fee on every ticket: $(9 + 3) \\times 4 = 48$ dollars.",
+      "D": "Correct: tickets cost $9 \\times 4 = 36$, plus the \\$3 booking fee gives $36 + 3 = 39$ dollars."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The booking fee is charged once for the whole order, not on each ticket. Find the ticket total first, then add the fee once."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The total should be just a little more than the cost of the tickets alone, since only one small fee is added."
+      }
+    ],
+    "content_context": "pricing",
+    "context_tags": ["two_component_cost", "booking_fee", "per_unit_rate", "real_world"],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_115",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.2",
+    "topic": "multi_step_problems_combining_proportional_and_linear_reasoning",
+    "topic_text": "Multi-Step Problems Combining Proportional and Linear Reasoning",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "computing a per-mile charge over a given distance",
+      "adding a flat pickup fee to a per-mile total"
+    ],
+    "question_text": "A taxi charges \\$3 per mile plus a flat \\$4 pickup fee. What is the total fare for a 5-mile trip?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$19",
+      "B": "\\$15",
+      "C": "\\$4",
+      "D": "\\$35"
+    },
+    "correct_answer": "A",
+    "explanation": "Find the per-mile charge:\n$3 \\times 5 = 15$\n\nAdd the flat pickup fee:\n$15 + 4 = 19$\n\nThe total fare is \\$19.",
+    "distractor_logic": {
+      "A": "Correct: the mileage charge is $3 \\times 5 = 15$, plus the \\$4 pickup fee gives $15 + 4 = 19$ dollars.",
+      "B": "Student computes only the mileage charge ($3 \\times 5 = 15$) and forgets the pickup fee.",
+      "C": "Student reports only the flat pickup fee, ignoring the per-mile charge.",
+      "D": "Student adds the pickup fee to the per-mile rate before multiplying, charging the fee on every mile: $(3 + 4) \\times 5 = 35$ dollars."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The pickup fee is paid once, not per mile. Find the mileage cost first, then add the single fee."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "The fare should be a bit more than the mileage cost of \\$15, since only one small fee is added on."
+      }
+    ],
+    "content_context": "financial_literacy",
+    "context_tags": ["two_component_cost", "flat_fee", "per_mile_rate", "real_world"],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_B_116",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.2",
+    "topic": "multi_step_problems_combining_proportional_and_linear_reasoning",
+    "topic_text": "Multi-Step Problems Combining Proportional and Linear Reasoning",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "computing a per-guest catering charge for a number of guests",
+      "adding a fixed setup fee to a per-guest total"
+    ],
+    "question_text": "A caterer charges \\$12 per guest plus a fixed \\$50 setup fee. What is the total cost for an event with 10 guests?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$120",
+      "B": "\\$170",
+      "C": "\\$50",
+      "D": "\\$158"
+    },
+    "correct_answer": "B",
+    "explanation": "Find the per-guest charge:\n$12 \\times 10 = 120$\n\nAdd the fixed setup fee:\n$120 + 50 = 170$\n\nThe total cost is \\$170.",
+    "distractor_logic": {
+      "A": "Student computes only the per-guest charge ($12 \\times 10 = 120$) and forgets the fixed setup fee.",
+      "B": "Correct: the per-guest charge is $12 \\times 10 = 120$, plus the \\$50 setup fee gives $120 + 50 = 170$ dollars.",
+      "C": "Student reports only the fixed setup fee, ignoring the per-guest charge.",
+      "D": "Student counts only 9 guests instead of 10: $12 \\times 9 + 50 = 158$ dollars."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The setup fee is charged once for the whole event. Find the per-guest total first, then add the fee a single time."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The total must be more than the per-guest cost of \\$120, so any smaller choice cannot be right."
+      }
+    ],
+    "content_context": "pricing",
+    "context_tags": ["two_component_cost", "setup_fee", "per_guest_rate", "real_world"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_099",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": ["AR"],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.2",
+    "topic": "multi_step_problems_combining_proportional_and_linear_reasoning",
+    "topic_text": "Multi-Step Problems Combining Proportional and Linear Reasoning",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "setting up a linear equation from a two-component cost scenario",
+      "solving for an unknown quantity given a known total"
+    ],
+    "question_text": "A craft vendor charges \\$4 per item plus a flat \\$12 handling fee per order. A customer's total order came to \\$40. How many items did the customer buy?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "10 items",
+      "B": "28 items",
+      "C": "7 items",
+      "D": "13 items"
+    },
+    "correct_answer": "C",
+    "explanation": "Let n be the number of items. Set up the equation:\n$4n + 12 = 40$\n\nSubtract the handling fee from both sides:\n$4n = 28$\n\nDivide by the per-item price:\n$n = 7$\n\nThe customer bought 7 items.",
+    "distractor_logic": {
+      "A": "Student divides the total by the per-item price without first subtracting the handling fee: $40 \\div 4 = 10$ items.",
+      "B": "Student subtracts the handling fee correctly ($40 - 12 = 28$) but reports that dollar amount as the number of items, forgetting to divide by the per-item price.",
+      "C": "Correct: $4n + 12 = 40$ gives $4n = 28$, so $n = 7$ items.",
+      "D": "Student adds the handling fee instead of subtracting it before dividing: $(40 + 12) \\div 4 = 13$ items."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The total includes a fixed fee plus a per-item cost. Remove the fixed fee first, then see how many items the rest pays for."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Take each answer choice, multiply it by \\$4, add the \\$12 fee, and check which one gives \\$40."
+      }
+    ],
+    "content_context": "financial_literacy",
+    "context_tags": ["linear_equation", "two_component_cost", "solve_for_unknown", "real_world"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_100",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.2",
+    "topic": "multi_step_problems_combining_proportional_and_linear_reasoning",
+    "topic_text": "Multi-Step Problems Combining Proportional and Linear Reasoning",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "computing the total for two different two-component pricing models",
+      "comparing two totals to determine which is cheaper and by how much"
+    ],
+    "question_text": "A dance studio offers two payment options. Option A is a \\$30 flat registration fee plus \\$5 per class. Option B is \\$10 per class with no registration fee. For a student taking 8 classes, which option is cheaper, and by how much?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Option B is cheaper by \\$10",
+      "B": "Option A is cheaper by \\$10",
+      "C": "Option A is cheaper by \\$40",
+      "D": "Option A is cheaper by \\$50"
+    },
+    "correct_answer": "B",
+    "explanation": "Find the total for each option for 8 classes.\nOption A:\n$30 + 5 \\times 8 = 30 + 40 = 70$\nOption B:\n$10 \\times 8 = 80$\n\nOption A costs \\$70 and Option B costs \\$80, so Option A is cheaper by $80 - 70 = 10$ dollars.",
+    "distractor_logic": {
+      "A": "Student computes both totals correctly but reverses which is cheaper, naming Option B instead of Option A.",
+      "B": "Correct: Option A totals $30 + 40 = 70$ and Option B totals $80$, so Option A is cheaper by \\$10.",
+      "C": "Student omits the \\$30 registration fee from Option A, computing it as $5 \\times 8 = 40$, giving a difference of $80 - 40 = 40$ dollars.",
+      "D": "Student omits the per-class charge from Option A, using only the \\$30 registration fee, giving a difference of $80 - 30 = 50$ dollars."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Option A has both a one-time fee and a per-class cost. Compute the full total for each option before comparing."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Find each total first; the difference cannot be larger than either total, so very large gaps can be ruled out."
+      }
+    ],
+    "content_context": "pricing",
+    "context_tags": ["comparison", "two_component_cost", "pricing_models", "real_world"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_101",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": ["AR"],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.2",
+    "topic": "multi_step_problems_combining_proportional_and_linear_reasoning",
+    "topic_text": "Multi-Step Problems Combining Proportional and Linear Reasoning",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "setting up a linear equation from an hourly-rate-plus-fee scenario",
+      "solving for the number of hours given a total cost"
+    ],
+    "question_text": "A tutoring service charges \\$25 per hour plus a one-time \\$50 registration fee. A family paid \\$200 in total. How many hours of tutoring did they purchase?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "8 hours",
+      "B": "10 hours",
+      "C": "4 hours",
+      "D": "6 hours"
+    },
+    "correct_answer": "D",
+    "explanation": "Let h be the number of hours. Set up the equation:\n$25h + 50 = 200$\n\nSubtract the registration fee from both sides:\n$25h = 150$\n\nDivide by the hourly rate:\n$h = 6$\n\nThe family purchased 6 hours of tutoring.",
+    "distractor_logic": {
+      "A": "Student divides the total by the hourly rate without first subtracting the registration fee: $200 \\div 25 = 8$ hours.",
+      "B": "Student adds the registration fee instead of subtracting it before dividing: $(200 + 50) \\div 25 = 10$ hours.",
+      "C": "Student divides the total by the registration fee instead of the hourly rate: $200 \\div 50 = 4$ hours.",
+      "D": "Correct: $25h + 50 = 200$ gives $25h = 150$, so $h = 6$ hours."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The registration fee is paid once. Remove it from the total first, then see how many hours the remaining amount covers."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Take each answer choice, multiply by \\$25, add the \\$50 fee, and check which one gives \\$200."
+      }
+    ],
+    "content_context": "financial_literacy",
+    "context_tags": ["linear_equation", "two_component_cost", "solve_for_unknown", "real_world"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_102",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": ["AR"],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.2",
+    "topic": "multi_step_problems_combining_proportional_and_linear_reasoning",
+    "topic_text": "Multi-Step Problems Combining Proportional and Linear Reasoning",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "setting up a linear equation from a fixed-cost-plus-per-unit scenario",
+      "solving for the quantity producible within a budget"
+    ],
+    "question_text": "A small workshop spends a fixed \\$80 to set up production plus \\$4 to make each phone case. The workshop has a budget of \\$200. How many phone cases can it make while staying within budget?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "30 cases",
+      "B": "50 cases",
+      "C": "70 cases",
+      "D": "120 cases"
+    },
+    "correct_answer": "A",
+    "explanation": "Let c be the number of cases. Set up the equation using the full budget:\n$4c + 80 = 200$\n\nSubtract the fixed setup cost:\n$4c = 120$\n\nDivide by the per-case cost:\n$c = 30$\n\nThe workshop can make 30 cases.",
+    "distractor_logic": {
+      "A": "Correct: $4c + 80 = 200$ gives $4c = 120$, so $c = 30$ cases.",
+      "B": "Student divides the budget by the per-case cost without subtracting the fixed setup cost: $200 \\div 4 = 50$ cases.",
+      "C": "Student adds the setup cost instead of subtracting it before dividing: $(200 + 80) \\div 4 = 70$ cases.",
+      "D": "Student subtracts the setup cost correctly ($200 - 80 = 120$) but reports that dollar amount as the number of cases, forgetting to divide by the per-case cost."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The setup cost is paid once before any cases are made. Take it out of the budget first, then see how many cases the rest pays for."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Test a choice by computing setup plus per-case cost; any result over \\$200 means too many cases."
+      }
+    ],
+    "content_context": "manufacturing",
+    "context_tags": ["linear_equation", "budget_constraint", "solve_for_unknown", "real_world"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_P_103",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.2",
+    "topic": "multi_step_problems_combining_proportional_and_linear_reasoning",
+    "topic_text": "Multi-Step Problems Combining Proportional and Linear Reasoning",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "computing totals for two shipping models with different fee structures",
+      "comparing the totals to determine which company is cheaper and by how much"
+    ],
+    "question_text": "Company X ships boxes for \\$8 per box plus a \\$20 flat delivery fee. Company Y ships boxes for \\$12 per box with free delivery. For an order of 6 boxes, which company is cheaper, and by how much?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Company Y is cheaper by \\$4",
+      "B": "Company X is cheaper by \\$24",
+      "C": "Company X is cheaper by \\$4",
+      "D": "Company X is cheaper by \\$52"
+    },
+    "correct_answer": "C",
+    "explanation": "Find the total for each company for 6 boxes.\nCompany X:\n$8 \\times 6 + 20 = 48 + 20 = 68$\nCompany Y:\n$12 \\times 6 = 72$\n\nCompany X costs \\$68 and Company Y costs \\$72, so Company X is cheaper by $72 - 68 = 4$ dollars.",
+    "distractor_logic": {
+      "A": "Student computes both totals correctly but reverses which is cheaper, naming Company Y instead of Company X.",
+      "B": "Student omits the \\$20 delivery fee from Company X, computing it as $8 \\times 6 = 48$, giving a difference of $72 - 48 = 24$ dollars.",
+      "C": "Correct: Company X totals $48 + 20 = 68$ and Company Y totals $72$, so Company X is cheaper by \\$4.",
+      "D": "Student omits the per-box charge from Company X, using only the \\$20 delivery fee, giving a difference of $72 - 20 = 52$ dollars."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Company X has both a per-box cost and a flat fee. Add both parts for X, then compare to Y's per-box total."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Compute each company's full total first; the difference between two close totals should be small."
+      }
+    ],
+    "content_context": "pricing",
+    "context_tags": ["comparison", "two_component_cost", "shipping", "real_world"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_093",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": ["AR"],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.2",
+    "topic": "multi_step_problems_combining_proportional_and_linear_reasoning",
+    "topic_text": "Multi-Step Problems Combining Proportional and Linear Reasoning",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "setting two two-component cost models equal to each other",
+      "solving for the break-even quantity between two plans"
+    ],
+    "question_text": "A streaming service offers two plans. Plan A costs \\$15 per month with no setup fee. Plan B charges a one-time \\$150 setup fee plus \\$10 per month. After how many months do the two plans cost the same total amount?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "10 months",
+      "B": "15 months",
+      "C": "6 months",
+      "D": "30 months"
+    },
+    "correct_answer": "D",
+    "explanation": "Set the two total costs equal, where m is the number of months:\n$15m = 150 + 10m$\n\nSubtract $10m$ from both sides:\n$5m = 150$\n\nDivide by 5:\n$m = 30$\n\nThe two plans cost the same at 30 months.",
+    "distractor_logic": {
+      "A": "Student divides the setup fee by Plan A's monthly rate, ignoring that the gap each month is the difference between the two rates: $150 \\div 15 = 10$ months.",
+      "B": "Student divides the setup fee by Plan B's monthly rate instead of by the difference between the two rates: $150 \\div 10 = 15$ months.",
+      "C": "Student adds the two monthly rates instead of subtracting them: $150 \\div (15 + 10) = 6$ months.",
+      "D": "Correct: $15m = 150 + 10m$ gives $5m = 150$, so $m = 30$ months."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Write a total-cost expression for each plan in terms of months, then set the two expressions equal and solve."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try each answer choice as the number of months, compute both totals, and find where they match."
+      }
+    ],
+    "content_context": "financial_literacy",
+    "context_tags": ["break_even", "two_component_cost", "comparison", "real_world"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_094",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": ["AR"],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.2",
+    "topic": "multi_step_problems_combining_proportional_and_linear_reasoning",
+    "topic_text": "Multi-Step Problems Combining Proportional and Linear Reasoning",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "expressing one quantity as a multiple of another within a revenue equation",
+      "solving a combined linear equation for the base quantity"
+    ],
+    "question_text": "A food truck sells taco plates for \\$10 each and drinks for \\$4 each. On one day it sold 3 times as many drinks as taco plates, and its total revenue was \\$220. How many taco plates did it sell?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "10 plates",
+      "B": "22 plates",
+      "C": "30 plates",
+      "D": "55 plates"
+    },
+    "correct_answer": "A",
+    "explanation": "Let p be the number of taco plates. The number of drinks is $3p$. Total revenue:\n$10p + 4(3p) = 220$\n\nCombine like terms:\n$10p + 12p = 22p = 220$\n\nDivide by 22:\n$p = 10$\n\nThe food truck sold 10 taco plates.",
+    "distractor_logic": {
+      "A": "Correct: $10p + 4(3p) = 22p = 220$, so $p = 10$ plates.",
+      "B": "Student ignores the drink revenue entirely and divides total revenue by the plate price: $220 \\div 10 = 22$.",
+      "C": "Student solves the equation correctly to find 10 plates but reports the number of drinks ($3 \\times 10 = 30$) instead of plates.",
+      "D": "Student divides the total revenue by the drink price: $220 \\div 4 = 55$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Let the number of plates be the unknown, write the number of drinks in terms of it, then build one revenue equation."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test a plate count by also computing three times as many drinks, then check whether the combined revenue is \\$220."
+      }
+    ],
+    "content_context": "financial_literacy",
+    "context_tags": ["linear_equation", "two_rates", "solve_for_unknown", "real_world"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_095",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": [],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.2",
+    "topic": "multi_step_problems_combining_proportional_and_linear_reasoning",
+    "topic_text": "Multi-Step Problems Combining Proportional and Linear Reasoning",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "computing totals for three different two-component pricing models",
+      "comparing three totals to determine the cheapest option at a given quantity"
+    ],
+    "question_text": "A teacher needs a 200-page document printed and compares three shops. Shop X charges \\$0.10 per page plus a \\$5 flat fee. Shop Y charges \\$0.05 per page plus a \\$20 flat fee. Shop Z charges \\$0.15 per page with no flat fee. Which shop is cheapest for the 200-page job, and what is its total?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Shop Y, total \\$30",
+      "B": "Shop X, total \\$20",
+      "C": "Shop X, total \\$25",
+      "D": "Shop Z, total \\$30"
+    },
+    "correct_answer": "C",
+    "explanation": "Compute each shop's total for 200 pages.\nShop X:\n$0.10 \\times 200 + 5 = 20 + 5 = 25$\nShop Y:\n$0.05 \\times 200 + 20 = 10 + 20 = 30$\nShop Z:\n$0.15 \\times 200 = 30$\n\nShop X is the cheapest at \\$25.",
+    "distractor_logic": {
+      "A": "Student picks Shop Y because it has the lowest per-page rate, ignoring that its larger flat fee makes its total ($30$) higher than Shop X.",
+      "B": "Student correctly identifies Shop X as cheapest but omits its \\$5 flat fee, reporting only the per-page cost: $0.10 \\times 200 = 20$ dollars.",
+      "C": "Correct: Shop X totals $20 + 5 = 25$, which is less than Shop Y ($30$) and Shop Z ($30$).",
+      "D": "Student picks Shop Z because it has no flat fee, ignoring that its higher per-page rate makes its total ($30$) higher than Shop X."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Each shop has a per-page cost and possibly a flat fee. Compute the full total for all three before deciding which is cheapest."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A low per-page rate or a missing flat fee does not guarantee the lowest total; only the full computed totals decide it."
+      }
+    ],
+    "content_context": "pricing",
+    "context_tags": ["comparison", "two_component_cost", "three_options", "real_world"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_096",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": ["AR"],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.2",
+    "topic": "multi_step_problems_combining_proportional_and_linear_reasoning",
+    "topic_text": "Multi-Step Problems Combining Proportional and Linear Reasoning",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "computing a target total from a two-component model",
+      "solving for the per-unit rate that makes a second model match that total"
+    ],
+    "question_text": "Company A charges a \\$40 setup fee plus \\$15 per hour. Company B charges only an hourly rate with no setup fee. For a 4-hour job, what hourly rate would Company B need to charge so that its total equals Company A's total?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$15 per hour",
+      "B": "\\$25 per hour",
+      "C": "\\$100 per hour",
+      "D": "\\$35 per hour"
+    },
+    "correct_answer": "B",
+    "explanation": "First find Company A's total for the 4-hour job:\n$40 + 15 \\times 4 = 40 + 60 = 100$\n\nCompany B has no setup fee, so its total is its hourly rate times 4 hours. Let r be that rate:\n$4r = 100$\n\nDivide by 4:\n$r = 25$\n\nCompany B would need to charge \\$25 per hour.",
+    "distractor_logic": {
+      "A": "Student matches only Company A's hourly rate, ignoring that A's setup fee must also be covered by B's per-hour charge: reports \\$15 per hour.",
+      "B": "Correct: Company A's total is $40 + 60 = 100$, so Company B needs $4r = 100$, giving $r = 25$ dollars per hour.",
+      "C": "Student reports Company A's full total (\\$100) as the hourly rate, forgetting to divide by the 4 hours.",
+      "D": "Student adds the setup fee to Company A's total before dividing, counting the setup fee twice: $(100 + 40) \\div 4 = 35$ dollars per hour."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find Company A's total dollar amount first. Company B must reach that same total using only an hourly rate over 4 hours."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test each rate by multiplying it by 4 hours and checking whether it equals Company A's total."
+      }
+    ],
+    "content_context": "financial_literacy",
+    "context_tags": ["solve_for_rate", "two_component_cost", "comparison", "real_world"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "QR_A_097",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Quantitative Reasoning",
+    "primary_strand": "QR",
+    "secondary_strands": ["AR"],
+    "objective": "quantitative_applications_in_context",
+    "objective_text": "Quantitative Applications in Context",
+    "topic_id": "QR.4.2",
+    "topic": "multi_step_problems_combining_proportional_and_linear_reasoning",
+    "topic_text": "Multi-Step Problems Combining Proportional and Linear Reasoning",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding a net weekly rate from a deposit and a withdrawal",
+      "solving a linear equation with a starting value for the number of weeks"
+    ],
+    "question_text": "Mia already has \\$140 saved. Each week she adds \\$30 to her savings but also spends \\$10 from it on transit. At this rate, after how many weeks will her savings reach \\$260?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "4 weeks",
+      "B": "3 weeks",
+      "C": "13 weeks",
+      "D": "6 weeks"
+    },
+    "correct_answer": "D",
+    "explanation": "Each week her savings change by the deposit minus the spending:\n$30 - 10 = 20$ dollars per week\n\nLet w be the number of weeks. Starting from \\$140:\n$140 + 20w = 260$\n\nSubtract 140 from both sides:\n$20w = 120$\n\nDivide by 20:\n$w = 6$\n\nHer savings reach \\$260 after 6 weeks.",
+    "distractor_logic": {
+      "A": "Student ignores the weekly transit spending and uses only the \\$30 deposit as the weekly rate: $120 \\div 30 = 4$ weeks.",
+      "B": "Student adds the deposit and spending instead of subtracting them, using \\$40 per week: $120 \\div 40 = 3$ weeks.",
+      "C": "Student uses the correct \\$20 net weekly change but ignores the \\$140 already saved, dividing the full goal by the rate: $260 \\div 20 = 13$ weeks.",
+      "D": "Correct: the net weekly change is $30 - 10 = 20$, so $140 + 20w = 260$ gives $20w = 120$ and $w = 6$ weeks."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Two things happen each week: money comes in and money goes out. Find the net change per week before setting up the equation, and remember she already has a starting amount."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "She only needs \\$120 more than her starting savings, so the number of weeks should be modest."
+      }
+    ],
+    "content_context": "financial_literacy",
+    "context_tags": ["linear_equation", "net_rate", "starting_value", "real_world"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  }
+]
