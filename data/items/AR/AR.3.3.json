@@ -1,0 +1,702 @@
+[
+  {
+    "item_id": "AR_B_059",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.3",
+    "topic": "solving_quadratic_equations_by_factoring",
+    "topic_text": "Solving Quadratic Equations by Factoring",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "factoring a monic quadratic in standard form",
+      "applying the zero product property to find both solutions with correct signs"
+    ],
+    "question_text": "Solve for $x$: $x^{2} + 5x + 6 = 0$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 2$ and $x = 3$",
+      "B": "$x = -1$ and $x = -6$",
+      "C": "$x = 2$ and $x = -3$",
+      "D": "$x = -2$ and $x = -3$"
+    },
+    "correct_answer": "D",
+    "explanation": "Factor the quadratic:\n$x^{2} + 5x + 6 = (x + 2)(x + 3)$\n\nApply the zero product property:\n$x + 2 = 0 \\Rightarrow x = -2$\n$x + 3 = 0 \\Rightarrow x = -3$\n\nThe solutions are $x = -2$ and $x = -3$.",
+    "distractor_logic": {
+      "A": "Student factors correctly to $(x + 2)(x + 3)$ but reports the numbers inside the factors without flipping signs, writing $x = 2$ and $x = 3$ instead of $x = -2$ and $x = -3$.",
+      "B": "Student picks a wrong factor pair, using $(x + 1)(x + 6)$, which gives $x^{2} + 7x + 6$, and reports $x = -1$ and $x = -6$.",
+      "C": "Student flips the sign on only one factor, reading $(x + 2)(x - 3)$ and reporting $x = 2$ and $x = -3$.",
+      "D": "Correct: $(x + 2)(x + 3) = 0$ gives $x = -2$ and $x = -3$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "After factoring, set each factor equal to zero. The solution from a factor like $(x + 2)$ is the value that makes it zero, not the number written inside."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute each candidate solution back into the original equation and keep only the values that make it equal zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_equation", "factoring", "zero_product_property", "monic"],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_060",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.3",
+    "topic": "solving_quadratic_equations_by_factoring",
+    "topic_text": "Solving Quadratic Equations by Factoring",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "factoring a monic quadratic in standard form",
+      "applying the zero product property to find both solutions with correct signs"
+    ],
+    "question_text": "Solve for $x$: $x^{2} + 7x + 12 = 0$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = -3$ and $x = -4$",
+      "B": "$x = 3$ and $x = 4$",
+      "C": "$x = -2$ and $x = -6$",
+      "D": "$x = -1$ and $x = -12$"
+    },
+    "correct_answer": "A",
+    "explanation": "Factor the quadratic:\n$x^{2} + 7x + 12 = (x + 3)(x + 4)$\n\nApply the zero product property:\n$x + 3 = 0 \\Rightarrow x = -3$\n$x + 4 = 0 \\Rightarrow x = -4$\n\nThe solutions are $x = -3$ and $x = -4$.",
+    "distractor_logic": {
+      "A": "Correct: $(x + 3)(x + 4) = 0$ gives $x = -3$ and $x = -4$.",
+      "B": "Student factors correctly to $(x + 3)(x + 4)$ but reports the numbers inside the factors without flipping signs, writing $x = 3$ and $x = 4$.",
+      "C": "Student picks a wrong factor pair, using $(x + 2)(x + 6)$, which gives $x^{2} + 8x + 12$, and reports $x = -2$ and $x = -6$.",
+      "D": "Student picks another wrong factor pair, using $(x + 1)(x + 12)$, which gives $x^{2} + 13x + 12$, and reports $x = -1$ and $x = -12$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "use_answer_choices"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find two integers that multiply to the constant and add to the middle coefficient, then set each factor equal to zero."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Substitute each pair into the original equation and keep the pair that makes both sides zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_equation", "factoring", "zero_product_property", "monic"],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_061",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.3",
+    "topic": "solving_quadratic_equations_by_factoring",
+    "topic_text": "Solving Quadratic Equations by Factoring",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "factoring a monic quadratic with a positive constant and negative middle term",
+      "applying the zero product property to find both positive solutions"
+    ],
+    "question_text": "Solve for $x$: $x^{2} - 7x + 10 = 0$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = -2$ and $x = -5$",
+      "B": "$x = 1$ and $x = 10$",
+      "C": "$x = 2$ and $x = 5$",
+      "D": "$x = 2$ and $x = -5$"
+    },
+    "correct_answer": "C",
+    "explanation": "Factor the quadratic:\n$x^{2} - 7x + 10 = (x - 2)(x - 5)$\n\nApply the zero product property:\n$x - 2 = 0 \\Rightarrow x = 2$\n$x - 5 = 0 \\Rightarrow x = 5$\n\nThe solutions are $x = 2$ and $x = 5$.",
+    "distractor_logic": {
+      "A": "Student factors correctly to $(x - 2)(x - 5)$ but reports the numbers inside the factors without flipping signs, writing $x = -2$ and $x = -5$.",
+      "B": "Student picks a wrong factor pair, using $(x - 1)(x - 10)$, which gives $x^{2} - 11x + 10$, and reports $x = 1$ and $x = 10$.",
+      "C": "Correct: $(x - 2)(x - 5) = 0$ gives $x = 2$ and $x = 5$.",
+      "D": "Student flips the sign on only one factor, reading $(x - 2)(x + 5)$ and reporting $x = 2$ and $x = -5$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A factor of $(x - 2)$ gives the solution $x = 2$, the value that makes the factor zero. Set each factor equal to zero."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test each pair in the original equation and keep the values that make both sides zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_equation", "factoring", "zero_product_property", "positive_roots"],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_062",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.3",
+    "topic": "solving_quadratic_equations_by_factoring",
+    "topic_text": "Solving Quadratic Equations by Factoring",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "factoring a monic quadratic with a negative constant term",
+      "applying the zero product property to find solutions of opposite sign"
+    ],
+    "question_text": "Solve for $x$: $x^{2} - x - 6 = 0$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 3$ and $x = 2$",
+      "B": "$x = 3$ and $x = -2$",
+      "C": "$x = -3$ and $x = 2$",
+      "D": "$x = -3$ and $x = -2$"
+    },
+    "correct_answer": "B",
+    "explanation": "Factor the quadratic:\n$x^{2} - x - 6 = (x - 3)(x + 2)$\n\nApply the zero product property:\n$x - 3 = 0 \\Rightarrow x = 3$\n$x + 2 = 0 \\Rightarrow x = -2$\n\nThe solutions are $x = 3$ and $x = -2$.",
+    "distractor_logic": {
+      "A": "Student ignores the negative on the constant, factoring as $(x - 3)(x - 2)$ for a product of $+6$, and reports $x = 3$ and $x = 2$.",
+      "B": "Correct: $(x - 3)(x + 2) = 0$ gives $x = 3$ and $x = -2$.",
+      "C": "Student reports the numbers inside the factors $(x - 3)(x + 2)$ without flipping signs, writing $x = -3$ and $x = 2$.",
+      "D": "Student assigns both signs as negative, treating the factors as $(x + 3)(x + 2)$ for a product of $+6$, and reports $x = -3$ and $x = -2$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A negative constant means the two solutions have opposite signs. After factoring, set each factor equal to zero and solve."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute each pair into the original equation; only one pair makes both sides zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_equation", "factoring", "zero_product_property", "negative_constant"],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_063",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.3",
+    "topic": "solving_quadratic_equations_by_factoring",
+    "topic_text": "Solving Quadratic Equations by Factoring",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "factoring a monic quadratic with a negative constant and positive middle term",
+      "applying the zero product property to find solutions of opposite sign"
+    ],
+    "question_text": "Solve for $x$: $x^{2} + 4x - 5 = 0$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 5$ and $x = -1$",
+      "B": "$x = -5$ and $x = -1$",
+      "C": "$x = 5$ and $x = 1$",
+      "D": "$x = -5$ and $x = 1$"
+    },
+    "correct_answer": "D",
+    "explanation": "Factor the quadratic:\n$x^{2} + 4x - 5 = (x + 5)(x - 1)$\n\nApply the zero product property:\n$x + 5 = 0 \\Rightarrow x = -5$\n$x - 1 = 0 \\Rightarrow x = 1$\n\nThe solutions are $x = -5$ and $x = 1$.",
+    "distractor_logic": {
+      "A": "Student reports the numbers inside the factors $(x + 5)(x - 1)$ without flipping signs, writing $x = 5$ and $x = -1$.",
+      "B": "Student takes the sign of the constant term in each factor directly as the solution, reporting both as the values that appear, $x = -5$ and $x = -1$, flipping only the first.",
+      "C": "Student ignores the signs entirely and reports the magnitudes, $x = 5$ and $x = 1$.",
+      "D": "Correct: $(x + 5)(x - 1) = 0$ gives $x = -5$ and $x = 1$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "use_answer_choices"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Each factor gives a solution: the value that makes that factor zero. Reverse the sign inside the factor to get the solution."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Substitute each pair into the original equation and keep the pair that makes both sides zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_equation", "factoring", "zero_product_property", "negative_constant"],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_041",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.3",
+    "topic": "solving_quadratic_equations_by_factoring",
+    "topic_text": "Solving Quadratic Equations by Factoring",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "rearranging a quadratic equation into standard form before factoring",
+      "applying the zero product property to find both solutions"
+    ],
+    "question_text": "Solve for $x$: $x^{2} + 3x = 10$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 2$ and $x = -5$",
+      "B": "$x = -2$ and $x = 5$",
+      "C": "$x = -5$ and $x = -2$",
+      "D": "$x = 10$ and $x = -3$"
+    },
+    "correct_answer": "A",
+    "explanation": "Rearrange into standard form:\n$x^{2} + 3x - 10 = 0$\n\nFactor:\n$(x + 5)(x - 2) = 0$\n\nApply the zero product property:\n$x + 5 = 0 \\Rightarrow x = -5$\n$x - 2 = 0 \\Rightarrow x = 2$\n\nThe solutions are $x = 2$ and $x = -5$.",
+    "distractor_logic": {
+      "A": "Correct: standard form gives $(x + 5)(x - 2) = 0$, so $x = -5$ and $x = 2$.",
+      "B": "Student reports the numbers inside the factors $(x + 5)(x - 2)$ without flipping signs, writing $x = 5$ and $x = -2$.",
+      "C": "Student rearranges and factors correctly but flips the sign on the second solution only, reporting $x = -5$ and $x = -2$.",
+      "D": "Student does not rearrange into standard form and instead reads the constant and the $x$-coefficient from the original equation as the solutions, reporting $x = 10$ and $x = -3$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Move all terms to one side so the equation equals zero before factoring. Then set each factor equal to zero."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test each answer choice by substituting both values into the original equation and checking that both sides are equal."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_equation", "factoring", "standard_form", "rearrangement"],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_042",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.3",
+    "topic": "solving_quadratic_equations_by_factoring",
+    "topic_text": "Solving Quadratic Equations by Factoring",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "recognizing a perfect square trinomial that produces a single repeated solution",
+      "applying the zero product property when both factors are identical"
+    ],
+    "question_text": "Solve for $x$: $x^{2} - 6x + 9 = 0$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 3$ and $x = -3$",
+      "B": "$x = 3$ only",
+      "C": "$x = -3$ only",
+      "D": "$x = 3$ and $x = 9$"
+    },
+    "correct_answer": "B",
+    "explanation": "Factor the quadratic:\n$x^{2} - 6x + 9 = (x - 3)(x - 3) = (x - 3)^{2}$\n\nApply the zero product property:\n$x - 3 = 0 \\Rightarrow x = 3$\n\nBoth factors are identical, so there is one repeated solution: $x = 3$.",
+    "distractor_logic": {
+      "A": "Student treats the expression as a difference of squares, factoring as $(x - 3)(x + 3)$, and reports $x = 3$ and $x = -3$.",
+      "B": "Correct: $(x - 3)^{2} = 0$ gives the single repeated solution $x = 3$.",
+      "C": "Student factors to $(x - 3)^{2}$ but reports the number inside the factor without flipping the sign, writing $x = -3$.",
+      "D": "Student reports the root from the factor and the constant term of the original equation, writing $x = 3$ and $x = 9$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check whether the trinomial is a perfect square. If both factors are the same, the equation has one repeated solution."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Test whether the constant in the original equation could be a solution by substituting it; this rules out choices that include unrelated values."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_equation", "perfect_square_trinomial", "repeated_root", "zero_product_property"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_043",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.3",
+    "topic": "solving_quadratic_equations_by_factoring",
+    "topic_text": "Solving Quadratic Equations by Factoring",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "factoring a non-monic quadratic equation in standard form",
+      "solving a binomial factor with a leading coefficient to find a fractional solution"
+    ],
+    "question_text": "Solve for $x$: $2x^{2} - 5x - 3 = 0$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = \\frac{1}{2}$ and $x = -3$",
+      "B": "$x = -1$ and $x = 3$",
+      "C": "$x = -\\frac{1}{2}$ and $x = 3$",
+      "D": "$x = \\frac{1}{2}$ and $x = 3$"
+    },
+    "correct_answer": "C",
+    "explanation": "Factor the non-monic quadratic:\n$2x^{2} - 5x - 3 = (2x + 1)(x - 3)$\n\nApply the zero product property:\n$2x + 1 = 0 \\Rightarrow x = -\\frac{1}{2}$\n$x - 3 = 0 \\Rightarrow x = 3$\n\nThe solutions are $x = -\\frac{1}{2}$ and $x = 3$.",
+    "distractor_logic": {
+      "A": "Student solves $2x + 1 = 0$ but drops the negative sign, reporting $x = \\frac{1}{2}$, and pairs it with a sign-flipped second solution $x = -3$.",
+      "B": "Student ignores the leading coefficient of $2$, reading the factor $(2x + 1)$ as if it were $(x + 1)$ and reporting $x = -1$ and $x = 3$.",
+      "C": "Correct: $(2x + 1)(x - 3) = 0$ gives $x = -\\frac{1}{2}$ and $x = 3$.",
+      "D": "Student solves $2x + 1 = 0$ but drops the negative sign, reporting $x = \\frac{1}{2}$, while keeping the correct $x = 3$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "When a factor has a coefficient on $x$, such as $(2x + 1)$, solve the full equation $2x + 1 = 0$ for $x$ rather than just reading the constant."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute each candidate solution into the original equation, including the fractional one, and keep the values that make it zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_equation", "non_monic", "fractional_solution", "zero_product_property"],
+    "estimated_time_seconds": 115,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_032",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.3",
+    "topic": "solving_quadratic_equations_by_factoring",
+    "topic_text": "Solving Quadratic Equations by Factoring",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "using a known solution to determine an unknown coefficient in a quadratic equation",
+      "substituting a root into the equation and solving for the parameter"
+    ],
+    "question_text": "The equation $x^{2} + kx - 12 = 0$ has $x = 3$ as one of its solutions. What is the value of $k$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$k = 1$",
+      "B": "$k = -1$",
+      "C": "$k = -4$",
+      "D": "$k = 4$"
+    },
+    "correct_answer": "A",
+    "explanation": "Since $x = 3$ is a solution, substitute it into the equation:\n$(3)^{2} + k(3) - 12 = 0$\n$9 + 3k - 12 = 0$\n$3k - 3 = 0$\n$3k = 3$\n$k = 1$",
+    "distractor_logic": {
+      "A": "Correct: substituting $x = 3$ gives $9 + 3k - 12 = 0$, so $3k = 3$ and $k = 1$.",
+      "B": "Student substitutes correctly but makes a sign error when isolating $k$, solving $3k = -3$ to get $k = -1$.",
+      "C": "Student finds the other solution of the equation, $x = -4$, and reports it as $k$ instead of solving for the coefficient.",
+      "D": "Student finds the other solution $x = -4$, then reports its magnitude with a flipped sign as $k = 4$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A solution makes the equation true. Substitute the known $x$-value into the equation, then solve the resulting equation for $k$."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Replace $x$ with $3$ everywhere it appears, simplify the numeric terms, and isolate $k$."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_equation", "unknown_coefficient", "substitution", "reverse_reasoning"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_033",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.3",
+    "topic": "solving_quadratic_equations_by_factoring",
+    "topic_text": "Solving Quadratic Equations by Factoring",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "determining the number of real solutions from the factored structure of a quadratic",
+      "recognizing that a repeated factor produces a single solution"
+    ],
+    "question_text": "How many distinct real solutions does the equation $x^{2} + 6x + 9 = 0$ have?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Two distinct real solutions, $x = 3$ and $x = -3$",
+      "B": "One distinct real solution, $x = -3$",
+      "C": "No real solutions",
+      "D": "Two distinct real solutions, $x = -3$ and $x = -9$"
+    },
+    "correct_answer": "B",
+    "explanation": "Factor the quadratic:\n$x^{2} + 6x + 9 = (x + 3)(x + 3) = (x + 3)^{2}$\n\nBoth factors are identical, so setting $(x + 3)^{2} = 0$ gives:\n$x + 3 = 0 \\Rightarrow x = -3$\n\nThere is one distinct real solution, $x = -3$ (a repeated root).",
+    "distractor_logic": {
+      "A": "Student treats the expression as a difference of squares, factoring as $(x + 3)(x - 3)$, and reports two solutions $x = 3$ and $x = -3$.",
+      "B": "Correct: $(x + 3)^{2} = 0$ has the single repeated solution $x = -3$.",
+      "C": "Student confuses the perfect square trinomial with the unfactorable sum $x^{2} + 9$ and concludes there are no real solutions.",
+      "D": "Student factors to $(x + 3)^{2}$ but reads the root and the constant term of the original equation as two separate solutions, $x = -3$ and $x = -9$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Factor first. If the two factors are identical, the equation has one repeated solution, not two distinct ones."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A perfect square trinomial does factor, so it has at least one real solution. Eliminate the no-solution choice."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_equation", "perfect_square_trinomial", "repeated_root", "number_of_solutions"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  }
+]

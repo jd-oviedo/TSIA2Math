@@ -1,0 +1,702 @@
+[
+  {
+    "item_id": "AR_B_064",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.4",
+    "topic": "solving_quadratic_equations_using_the_quadratic_formula",
+    "topic_text": "Solving Quadratic Equations Using the Quadratic Formula",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "substituting coefficients into the quadratic formula with correct signs",
+      "computing a perfect-square discriminant and simplifying to two rational solutions"
+    ],
+    "question_text": "Use the quadratic formula to solve $x^{2} - 5x + 6 = 0$.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 2$ and $x = 3$",
+      "B": "$x = 6$ and $x = -1$",
+      "C": "$x = -2$ and $x = -3$",
+      "D": "$x = 4$ and $x = 6$"
+    },
+    "correct_answer": "A",
+    "explanation": "Identify $a = 1$, $b = -5$, $c = 6$.\n$x = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a} = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm \\sqrt{1}}{2} = \\frac{5 \\pm 1}{2}$\n\n$x = \\frac{6}{2} = 3$ or $x = \\frac{4}{2} = 2$.\n\nThe solutions are $x = 2$ and $x = 3$.",
+    "distractor_logic": {
+      "A": "Correct: $x = \\frac{5 \\pm \\sqrt{1}}{2} = \\frac{5 \\pm 1}{2}$, giving $x = 2$ and $x = 3$.",
+      "B": "Student computes the discriminant as $b^{2} + 4ac = 25 + 24 = 49$ instead of $b^{2} - 4ac$: $x = \\frac{5 \\pm 7}{2}$, giving $x = 6$ and $x = -1$.",
+      "C": "Student uses $+b$ instead of $-b$ in the numerator: $x = \\frac{-5 \\pm 1}{2}$, giving $x = -2$ and $x = -3$.",
+      "D": "Student forgets to divide by $2a$ and computes $5 \\pm 1$ directly, giving $x = 4$ and $x = 6$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Write down $a$, $b$, and $c$ from standard form first, paying attention to the sign of $b$ and the minus sign inside the discriminant."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute each candidate pair into the original equation and keep the values that make both sides equal."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_formula", "perfect_square_discriminant", "rational_solutions", "standard_form"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_065",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.4",
+    "topic": "solving_quadratic_equations_using_the_quadratic_formula",
+    "topic_text": "Solving Quadratic Equations Using the Quadratic Formula",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "substituting coefficients into the quadratic formula with correct signs",
+      "dividing the entire numerator by $2a$ to find both solutions"
+    ],
+    "question_text": "Use the quadratic formula to solve $x^{2} - 6x + 8 = 0$.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = -2$ and $x = -4$",
+      "B": "$x = 2$ and $x = 4$",
+      "C": "$x = 5$ and $x = 7$",
+      "D": "$x = 4$ and $x = 8$"
+    },
+    "correct_answer": "B",
+    "explanation": "Identify $a = 1$, $b = -6$, $c = 8$.\n$x = \\frac{6 \\pm \\sqrt{36 - 32}}{2} = \\frac{6 \\pm \\sqrt{4}}{2} = \\frac{6 \\pm 2}{2}$\n\n$x = \\frac{8}{2} = 4$ or $x = \\frac{4}{2} = 2$.\n\nThe solutions are $x = 2$ and $x = 4$.",
+    "distractor_logic": {
+      "A": "Student uses $+b$ instead of $-b$ in the numerator: $x = \\frac{-6 \\pm 2}{2}$, giving $x = -2$ and $x = -4$.",
+      "B": "Correct: $x = \\frac{6 \\pm \\sqrt{4}}{2} = \\frac{6 \\pm 2}{2}$, giving $x = 2$ and $x = 4$.",
+      "C": "Student divides only the radical term by $2a$ and leaves $-b$ undivided: $6 \\pm \\frac{2}{2} = 6 \\pm 1$, giving $x = 5$ and $x = 7$.",
+      "D": "Student forgets to divide by $2a$ and computes $6 \\pm 2$ directly, giving $x = 4$ and $x = 8$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The entire numerator, including the $-b$ term, must be divided by $2a$, not just the square-root part."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Substitute a candidate pair into the original equation; any pair that fails to make both sides zero can be ruled out."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_formula", "perfect_square_discriminant", "dividing_by_2a", "rational_solutions"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_066",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.4",
+    "topic": "solving_quadratic_equations_using_the_quadratic_formula",
+    "topic_text": "Solving Quadratic Equations Using the Quadratic Formula",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying the quadratic formula to an equation with a negative constant term",
+      "simplifying a perfect-square discriminant to two solutions of opposite sign"
+    ],
+    "question_text": "Use the quadratic formula to solve $x^{2} + x - 6 = 0$.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 1$ and $x = -6$",
+      "B": "$x = 3$ and $x = -2$",
+      "C": "$x = 2$ and $x = -3$",
+      "D": "$x = 4$ and $x = -6$"
+    },
+    "correct_answer": "C",
+    "explanation": "Identify $a = 1$, $b = 1$, $c = -6$.\n$x = \\frac{-1 \\pm \\sqrt{1 - 4(1)(-6)}}{2} = \\frac{-1 \\pm \\sqrt{1 + 24}}{2} = \\frac{-1 \\pm \\sqrt{25}}{2} = \\frac{-1 \\pm 5}{2}$\n\n$x = \\frac{4}{2} = 2$ or $x = \\frac{-6}{2} = -3$.\n\nThe solutions are $x = 2$ and $x = -3$.",
+    "distractor_logic": {
+      "A": "Student does not use the formula and instead reads the coefficient of $x$ and the constant directly as the solutions, giving $x = 1$ and $x = -6$.",
+      "B": "Student uses $+b$ instead of $-b$ in the numerator: $x = \\frac{1 \\pm 5}{2}$, giving $x = 3$ and $x = -2$.",
+      "C": "Correct: $x = \\frac{-1 \\pm \\sqrt{25}}{2} = \\frac{-1 \\pm 5}{2}$, giving $x = 2$ and $x = -3$.",
+      "D": "Student forgets to divide by $2a$ and computes $-1 \\pm 5$ directly, giving $x = 4$ and $x = -6$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Watch the sign of $c$: a negative constant makes $-4ac$ positive, which increases the discriminant."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test each candidate pair in the original equation and keep only the values that make it equal zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_formula", "negative_constant", "perfect_square_discriminant", "opposite_sign_solutions"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_067",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.4",
+    "topic": "solving_quadratic_equations_using_the_quadratic_formula",
+    "topic_text": "Solving Quadratic Equations Using the Quadratic Formula",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying the quadratic formula to an equation with a negative constant term",
+      "simplifying a perfect-square discriminant to two solutions of opposite sign"
+    ],
+    "question_text": "Use the quadratic formula to solve $x^{2} - 4x - 5 = 0$.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 5$ and $x = -1$",
+      "B": "$x = 1$ and $x = -5$",
+      "C": "$x = 10$ and $x = -2$",
+      "D": "$x = 7$ and $x = 1$"
+    },
+    "correct_answer": "A",
+    "explanation": "Identify $a = 1$, $b = -4$, $c = -5$.\n$x = \\frac{4 \\pm \\sqrt{16 - 4(1)(-5)}}{2} = \\frac{4 \\pm \\sqrt{16 + 20}}{2} = \\frac{4 \\pm \\sqrt{36}}{2} = \\frac{4 \\pm 6}{2}$\n\n$x = \\frac{10}{2} = 5$ or $x = \\frac{-2}{2} = -1$.\n\nThe solutions are $x = 5$ and $x = -1$.",
+    "distractor_logic": {
+      "A": "Correct: $x = \\frac{4 \\pm \\sqrt{36}}{2} = \\frac{4 \\pm 6}{2}$, giving $x = 5$ and $x = -1$.",
+      "B": "Student uses $+b$ instead of $-b$ in the numerator: $x = \\frac{-4 \\pm 6}{2}$, giving $x = 1$ and $x = -5$.",
+      "C": "Student forgets to divide by $2a$ and computes $4 \\pm 6$ directly, giving $x = 10$ and $x = -2$.",
+      "D": "Student divides only the radical term by $2a$ and leaves $-b$ undivided: $4 \\pm \\frac{6}{2} = 4 \\pm 3$, giving $x = 7$ and $x = 1$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Both $-b$ and the square-root term sit over the same denominator $2a$. Divide the whole numerator, not just one piece."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Substitute a candidate pair into the original equation and discard any pair that does not make both sides zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_formula", "negative_constant", "perfect_square_discriminant", "dividing_by_2a"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_068",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.4",
+    "topic": "solving_quadratic_equations_using_the_quadratic_formula",
+    "topic_text": "Solving Quadratic Equations Using the Quadratic Formula",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "substituting coefficients into the quadratic formula with correct signs",
+      "computing a perfect-square discriminant and simplifying to two rational solutions"
+    ],
+    "question_text": "Use the quadratic formula to solve $x^{2} - 7x + 12 = 0$.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = -3$ and $x = -4$",
+      "B": "$x = 7$ and $x = 12$",
+      "C": "$x = 6$ and $x = 8$",
+      "D": "$x = 3$ and $x = 4$"
+    },
+    "correct_answer": "D",
+    "explanation": "Identify $a = 1$, $b = -7$, $c = 12$.\n$x = \\frac{7 \\pm \\sqrt{49 - 48}}{2} = \\frac{7 \\pm \\sqrt{1}}{2} = \\frac{7 \\pm 1}{2}$\n\n$x = \\frac{8}{2} = 4$ or $x = \\frac{6}{2} = 3$.\n\nThe solutions are $x = 3$ and $x = 4$.",
+    "distractor_logic": {
+      "A": "Student uses $+b$ instead of $-b$ in the numerator: $x = \\frac{-7 \\pm 1}{2}$, giving $x = -3$ and $x = -4$.",
+      "B": "Student does not use the formula and reads the coefficient of $x$ and the constant directly as the solutions, giving $x = 7$ and $x = 12$.",
+      "C": "Student forgets to divide by $2a$ and computes $7 \\pm 1$ directly, giving $x = 6$ and $x = 8$.",
+      "D": "Correct: $x = \\frac{7 \\pm \\sqrt{1}}{2} = \\frac{7 \\pm 1}{2}$, giving $x = 3$ and $x = 4$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Substitute $a$, $b$, and $c$ carefully, then remember the entire numerator is divided by $2a$."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Check each pair in the original equation; only the correct pair makes both sides zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_formula", "perfect_square_discriminant", "rational_solutions", "standard_form"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_044",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.4",
+    "topic": "solving_quadratic_equations_using_the_quadratic_formula",
+    "topic_text": "Solving Quadratic Equations Using the Quadratic Formula",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying the quadratic formula to a non-monic equation",
+      "dividing by $2a$ when the leading coefficient is greater than 1 to produce a fractional solution"
+    ],
+    "question_text": "Use the quadratic formula to solve $2x^{2} - 5x + 2 = 0$.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 4$ and $x = 1$",
+      "B": "$x = 2$ and $x = \\frac{1}{2}$",
+      "C": "$x = 2$ and $x = 8$",
+      "D": "$x = -2$ and $x = -\\frac{1}{2}$"
+    },
+    "correct_answer": "B",
+    "explanation": "Identify $a = 2$, $b = -5$, $c = 2$.\n$x = \\frac{5 \\pm \\sqrt{25 - 16}}{4} = \\frac{5 \\pm \\sqrt{9}}{4} = \\frac{5 \\pm 3}{4}$\n\n$x = \\frac{8}{4} = 2$ or $x = \\frac{2}{4} = \\frac{1}{2}$.\n\nThe solutions are $x = 2$ and $x = \\frac{1}{2}$.",
+    "distractor_logic": {
+      "A": "Student divides by $a = 2$ instead of $2a = 4$: $\\frac{5 \\pm 3}{2}$, giving $x = 4$ and $x = 1$.",
+      "B": "Correct: $x = \\frac{5 \\pm \\sqrt{9}}{4} = \\frac{5 \\pm 3}{4}$, giving $x = 2$ and $x = \\frac{1}{2}$.",
+      "C": "Student forgets to divide by $2a$ and computes $5 \\pm 3$ directly, giving $x = 2$ and $x = 8$.",
+      "D": "Student uses $+b$ instead of $-b$ in the numerator: $\\frac{-5 \\pm 3}{4}$, giving $x = -\\frac{1}{2}$ and $x = -2$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The denominator is $2a$. With $a = 2$, that denominator is $4$, not $2$."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test each candidate, including the fractional one, in the original equation and keep the values that make it zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_formula", "non_monic", "fractional_solution", "dividing_by_2a"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_045",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.4",
+    "topic": "solving_quadratic_equations_using_the_quadratic_formula",
+    "topic_text": "Solving Quadratic Equations Using the Quadratic Formula",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "rearranging an equation into standard form before applying the quadratic formula",
+      "identifying the correct signs of $b$ and $c$ after moving all terms to one side"
+    ],
+    "question_text": "Use the quadratic formula to solve $x^{2} = 2x + 3$.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 2$ and $x = 3$",
+      "B": "$x = 1$ and $x = -3$",
+      "C": "$x = 3$ and $x = -1$",
+      "D": "$x = 6$ and $x = -2$"
+    },
+    "correct_answer": "C",
+    "explanation": "First rearrange into standard form by moving all terms to one side:\n$x^{2} - 2x - 3 = 0$\n\nIdentify $a = 1$, $b = -2$, $c = -3$.\n$x = \\frac{2 \\pm \\sqrt{4 - 4(1)(-3)}}{2} = \\frac{2 \\pm \\sqrt{4 + 12}}{2} = \\frac{2 \\pm \\sqrt{16}}{2} = \\frac{2 \\pm 4}{2}$\n\n$x = \\frac{6}{2} = 3$ or $x = \\frac{-2}{2} = -1$.\n\nThe solutions are $x = 3$ and $x = -1$.",
+    "distractor_logic": {
+      "A": "Student does not rearrange into standard form and reads the coefficients on the right side, $2$ and $3$, as the solutions.",
+      "B": "Student rearranges correctly but uses $+b$ instead of $-b$ in the numerator: $\\frac{-2 \\pm 4}{2}$, giving $x = 1$ and $x = -3$.",
+      "C": "Correct: standard form is $x^{2} - 2x - 3 = 0$, so $x = \\frac{2 \\pm \\sqrt{16}}{2} = \\frac{2 \\pm 4}{2}$, giving $x = 3$ and $x = -1$.",
+      "D": "Student rearranges and finds the discriminant correctly but forgets to divide by $2a$, computing $2 \\pm 4$ directly to get $x = 6$ and $x = -2$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Move every term to one side so the equation equals zero before identifying $a$, $b$, and $c$."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Substitute a candidate pair into the original equation $x^{2} = 2x + 3$ and discard any pair that does not balance both sides."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_formula", "rearrangement", "standard_form", "negative_constant"],
+    "estimated_time_seconds": 115,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_046",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.4",
+    "topic": "solving_quadratic_equations_using_the_quadratic_formula",
+    "topic_text": "Solving Quadratic Equations Using the Quadratic Formula",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying the quadratic formula to a non-monic equation with a negative constant",
+      "dividing by $2a$ to produce one fractional and one integer solution"
+    ],
+    "question_text": "Use the quadratic formula to solve $3x^{2} + 5x - 2 = 0$.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 2$ and $x = -\\frac{1}{3}$",
+      "B": "$x = \\frac{2}{3}$ and $x = -4$",
+      "C": "$x = 2$ and $x = -12$",
+      "D": "$x = \\frac{1}{3}$ and $x = -2$"
+    },
+    "correct_answer": "D",
+    "explanation": "Identify $a = 3$, $b = 5$, $c = -2$.\n$x = \\frac{-5 \\pm \\sqrt{25 - 4(3)(-2)}}{6} = \\frac{-5 \\pm \\sqrt{25 + 24}}{6} = \\frac{-5 \\pm \\sqrt{49}}{6} = \\frac{-5 \\pm 7}{6}$\n\n$x = \\frac{2}{6} = \\frac{1}{3}$ or $x = \\frac{-12}{6} = -2$.\n\nThe solutions are $x = \\frac{1}{3}$ and $x = -2$.",
+    "distractor_logic": {
+      "A": "Student uses $+b$ instead of $-b$ in the numerator: $\\frac{5 \\pm 7}{6}$, giving $x = 2$ and $x = -\\frac{1}{3}$.",
+      "B": "Student divides by $a = 3$ instead of $2a = 6$: $\\frac{-5 \\pm 7}{3}$, giving $x = \\frac{2}{3}$ and $x = -4$.",
+      "C": "Student forgets to divide by $2a$ and computes $-5 \\pm 7$ directly, giving $x = 2$ and $x = -12$.",
+      "D": "Correct: $x = \\frac{-5 \\pm \\sqrt{49}}{6} = \\frac{-5 \\pm 7}{6}$, giving $x = \\frac{1}{3}$ and $x = -2$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "With $a = 3$, the denominator $2a$ is $6$. Apply $-b$ at the start, and watch the sign of $c$ inside the discriminant."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute each candidate, including the fraction, into the original equation and keep the values that make it zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_formula", "non_monic", "negative_constant", "fractional_solution"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_034",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.4",
+    "topic": "solving_quadratic_equations_using_the_quadratic_formula",
+    "topic_text": "Solving Quadratic Equations Using the Quadratic Formula",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying the quadratic formula when the discriminant is not a perfect square",
+      "simplifying a radical and reducing the resulting expression to simplified radical form"
+    ],
+    "question_text": "Use the quadratic formula to solve $x^{2} - 4x + 1 = 0$. Give the answer in simplified radical form.",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 2 \\pm \\sqrt{3}$",
+      "B": "$x = 4 \\pm 2\\sqrt{3}$",
+      "C": "$x = 2 \\pm \\sqrt{5}$",
+      "D": "$x = -2 \\pm \\sqrt{3}$"
+    },
+    "correct_answer": "A",
+    "explanation": "Identify $a = 1$, $b = -4$, $c = 1$.\n$x = \\frac{4 \\pm \\sqrt{16 - 4}}{2} = \\frac{4 \\pm \\sqrt{12}}{2}$\n\nSimplify the radical: $\\sqrt{12} = 2\\sqrt{3}$.\n$x = \\frac{4 \\pm 2\\sqrt{3}}{2} = 2 \\pm \\sqrt{3}$\n\nThe solutions are $x = 2 \\pm \\sqrt{3}$.",
+    "distractor_logic": {
+      "A": "Correct: $x = \\frac{4 \\pm 2\\sqrt{3}}{2} = 2 \\pm \\sqrt{3}$.",
+      "B": "Student simplifies the radical but forgets to divide the whole numerator by $2a$, leaving $x = 4 \\pm 2\\sqrt{3}$.",
+      "C": "Student computes the discriminant as $b^{2} + 4ac = 16 + 4 = 20$ instead of $b^{2} - 4ac$: $\\sqrt{20} = 2\\sqrt{5}$, giving $x = \\frac{4 \\pm 2\\sqrt{5}}{2} = 2 \\pm \\sqrt{5}$.",
+      "D": "Student uses $+b$ instead of $-b$ in the numerator: $\\frac{-4 \\pm 2\\sqrt{3}}{2} = -2 \\pm \\sqrt{3}$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "When the discriminant is not a perfect square, simplify the radical, then divide every term in the numerator by $2a$, including the $-b$ term."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The $-b$ term and the radical share the denominator $2a$. Eliminate any choice where only part of the numerator was divided."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_formula", "non_perfect_square_discriminant", "simplified_radical_form", "radical_simplification"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_035",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.4",
+    "topic": "solving_quadratic_equations_using_the_quadratic_formula",
+    "topic_text": "Solving Quadratic Equations Using the Quadratic Formula",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "using the discriminant to determine the number of real solutions without solving fully",
+      "interpreting a negative discriminant as the absence of real solutions"
+    ],
+    "question_text": "How many real solutions does the equation $2x^{2} + 3x + 4 = 0$ have?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Two distinct real solutions",
+      "B": "No real solutions",
+      "C": "One repeated real solution",
+      "D": "Exactly one real solution, $x = -\\frac{3}{4}$"
+    },
+    "correct_answer": "B",
+    "explanation": "The number of real solutions is determined by the discriminant $b^{2} - 4ac$.\nIdentify $a = 2$, $b = 3$, $c = 4$.\n$b^{2} - 4ac = 9 - 4(2)(4) = 9 - 32 = -23$\n\nThe discriminant is negative, so the equation has no real solutions.",
+    "distractor_logic": {
+      "A": "Student computes the discriminant as $b^{2} + 4ac = 9 + 32 = 41$ instead of $b^{2} - 4ac$. Since $41 > 0$, the student concludes there are two distinct real solutions.",
+      "B": "Correct: $b^{2} - 4ac = 9 - 32 = -23 < 0$, so there are no real solutions.",
+      "C": "Student computes the discriminant correctly as negative but mistakenly associates a negative discriminant with a single repeated solution rather than none.",
+      "D": "Student computes the axis of symmetry $x = -\\frac{b}{2a} = -\\frac{3}{4}$ and reports it as a single real solution, confusing the vertex location with a root."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "You do not need to solve fully. Compute $b^{2} - 4ac$ and check its sign: positive gives two solutions, zero gives one, negative gives none."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Be careful with the minus sign inside the discriminant, and remember a negative discriminant means no real solutions, not one."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["quadratic_formula", "discriminant", "number_of_solutions", "no_real_solutions"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  }
+]

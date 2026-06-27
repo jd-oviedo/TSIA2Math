@@ -1,0 +1,702 @@
+[
+  {
+    "item_id": "AR_B_069",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.5",
+    "topic": "identifying_the_maximum_or_minimum_of_a_quadratic",
+    "topic_text": "Identifying the Maximum or Minimum of a Quadratic",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "reading the vertex of a parabola directly from vertex form",
+      "applying the sign convention for $h$ in $y = a(x - h)^{2} + k$"
+    ],
+    "question_text": "What is the vertex of the parabola $y = 2(x - 3)^{2} + 5$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$(3, 5)$",
+      "B": "$(-3, 5)$",
+      "C": "$(3, -5)$",
+      "D": "$(5, 3)$"
+    },
+    "correct_answer": "A",
+    "explanation": "In vertex form $y = a(x - h)^{2} + k$, the vertex is at $(h, k)$.\nHere $y = 2(x - 3)^{2} + 5$, so $h = 3$ and $k = 5$.\nThe vertex is $(3, 5)$.",
+    "distractor_logic": {
+      "A": "Correct: vertex form gives $h = 3$ and $k = 5$, so the vertex is $(3, 5)$.",
+      "B": "Student misreads the sign of $h$, taking the $-3$ inside the parentheses literally as the $x$-coordinate instead of recognizing $h = 3$, giving $(-3, 5)$.",
+      "C": "Student flips the sign of $k$, reporting the vertex as $(3, -5)$.",
+      "D": "Student swaps the two coordinates, reporting $(5, 3)$ instead of $(3, 5)$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compare the equation to the form $y = a(x - h)^{2} + k$. The $x$-coordinate of the vertex is the value that makes the squared term zero."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The first coordinate is the $x$-value, the second is the $y$-value. Eliminate any choice where these are swapped."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["vertex_form", "vertex", "parabola", "h_sign"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_070",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.5",
+    "topic": "identifying_the_maximum_or_minimum_of_a_quadratic",
+    "topic_text": "Identifying the Maximum or Minimum of a Quadratic",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "determining whether a parabola has a maximum or minimum from the sign of the leading coefficient",
+      "connecting the direction of opening to the existence of a maximum or minimum"
+    ],
+    "question_text": "Does the parabola $y = -3(x + 2)^{2} + 7$ have a maximum or a minimum?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "A minimum",
+      "B": "A maximum",
+      "C": "Neither a maximum nor a minimum",
+      "D": "It depends on the value of $k$"
+    },
+    "correct_answer": "B",
+    "explanation": "The sign of the leading coefficient $a$ determines the direction of opening.\nHere $a = -3$, which is negative, so the parabola opens downward.\nA downward-opening parabola has a highest point, so it has a maximum.",
+    "distractor_logic": {
+      "A": "Student reverses the direction rule, associating a negative leading coefficient with a minimum instead of a maximum.",
+      "B": "Correct: $a = -3 < 0$, so the parabola opens downward and has a maximum.",
+      "C": "Student believes a parabola in vertex form has no extreme point, overlooking that every parabola has either a maximum or a minimum at its vertex.",
+      "D": "Student thinks the constant $k$ determines whether there is a maximum or minimum, when it is the sign of $a$ that decides the direction of opening."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Look only at the sign of the leading coefficient. A positive coefficient opens up; a negative coefficient opens down."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Every parabola has exactly one extreme point at its vertex, so any choice claiming there is neither can be eliminated."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["vertex_form", "leading_coefficient", "maximum_minimum", "direction_of_opening"],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_071",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.5",
+    "topic": "identifying_the_maximum_or_minimum_of_a_quadratic",
+    "topic_text": "Identifying the Maximum or Minimum of a Quadratic",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "reading the vertex of a parabola directly from vertex form",
+      "applying the sign conventions for both $h$ and $k$"
+    ],
+    "question_text": "What is the vertex of the parabola $y = (x - 4)^{2} - 1$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$(-4, -1)$",
+      "B": "$(4, 1)$",
+      "C": "$(4, -1)$",
+      "D": "$(-1, 4)$"
+    },
+    "correct_answer": "C",
+    "explanation": "In vertex form $y = a(x - h)^{2} + k$, the vertex is at $(h, k)$.\nHere $y = (x - 4)^{2} - 1$, so $h = 4$ and $k = -1$.\nThe vertex is $(4, -1)$.",
+    "distractor_logic": {
+      "A": "Student misreads the sign of $h$, taking the $-4$ inside the parentheses literally instead of recognizing $h = 4$, giving $(-4, -1)$.",
+      "B": "Student flips the sign of $k$, reporting $(4, 1)$ instead of $(4, -1)$.",
+      "C": "Correct: vertex form gives $h = 4$ and $k = -1$, so the vertex is $(4, -1)$.",
+      "D": "Student swaps the coordinates, reporting $(-1, 4)$ instead of $(4, -1)$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The $x$-coordinate is the value that makes $(x - h)$ equal zero; the $y$-coordinate is the constant added at the end."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Check the order of the coordinates and the sign that makes the squared term zero."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["vertex_form", "vertex", "h_sign", "k_sign"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_072",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.5",
+    "topic": "identifying_the_maximum_or_minimum_of_a_quadratic",
+    "topic_text": "Identifying the Maximum or Minimum of a Quadratic",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "determining whether a quadratic in standard form has a maximum or minimum from the sign of the leading coefficient",
+      "recognizing that a positive leading coefficient produces a minimum"
+    ],
+    "question_text": "Does the quadratic $y = x^{2} - 8$ have a maximum or a minimum?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "A maximum",
+      "B": "No maximum or minimum",
+      "C": "A maximum at $x = 8$",
+      "D": "A minimum"
+    },
+    "correct_answer": "D",
+    "explanation": "The sign of the leading coefficient $a$ determines the direction of opening.\nHere $a = 1$, which is positive, so the parabola opens upward.\nAn upward-opening parabola has a lowest point, so it has a minimum.",
+    "distractor_logic": {
+      "A": "Student reverses the direction rule, associating a positive leading coefficient with a maximum instead of a minimum.",
+      "B": "Student believes that without a middle $bx$ term the parabola has no extreme point, overlooking that the vertex still exists at $x = 0$.",
+      "C": "Student confuses the constant $-8$ with an $x$-location and reports a maximum at $x = 8$, both reversing the direction and misplacing the vertex.",
+      "D": "Correct: $a = 1 > 0$, so the parabola opens upward and has a minimum."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Focus on the sign of the coefficient on $x^{2}$. A positive coefficient means the parabola opens upward."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Every parabola has one extreme point, so eliminate any choice claiming there is none."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["standard_form", "leading_coefficient", "maximum_minimum", "direction_of_opening"],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_073",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.5",
+    "topic": "identifying_the_maximum_or_minimum_of_a_quadratic",
+    "topic_text": "Identifying the Maximum or Minimum of a Quadratic",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying the maximum value of a downward-opening parabola from vertex form",
+      "distinguishing the maximum value (the $y$-coordinate) from the $x$-coordinate of the vertex"
+    ],
+    "question_text": "The parabola $y = -\\frac{1}{2}(x - 6)^{2} + 10$ has a maximum. What is the maximum value of $y$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$10$",
+      "B": "$6$",
+      "C": "$-10$",
+      "D": "$16$"
+    },
+    "correct_answer": "A",
+    "explanation": "In vertex form $y = a(x - h)^{2} + k$, the vertex is at $(h, k)$.\nHere $h = 6$ and $k = 10$, so the vertex is $(6, 10)$.\nSince $a = -\\frac{1}{2} < 0$, the parabola opens downward and the vertex is the highest point.\nThe maximum value of $y$ is the $y$-coordinate of the vertex, $10$.",
+    "distractor_logic": {
+      "A": "Correct: the vertex is $(6, 10)$ and the parabola opens downward, so the maximum value of $y$ is $10$.",
+      "B": "Student reports the $x$-coordinate of the vertex, $6$, instead of the maximum value of $y$.",
+      "C": "Student flips the sign of $k$, reporting the maximum value as $-10$.",
+      "D": "Student adds the two vertex coordinates, $6 + 10 = 16$, instead of identifying the $y$-value alone."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The maximum value is a $y$-value. Find the vertex first, then read the $y$-coordinate, not the $x$-coordinate."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The question asks for the value of $y$, so eliminate any choice that reports an $x$-coordinate or combines both coordinates."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["vertex_form", "maximum_value", "vertex", "component_distinction"],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_047",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.5",
+    "topic": "identifying_the_maximum_or_minimum_of_a_quadratic",
+    "topic_text": "Identifying the Maximum or Minimum of a Quadratic",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing the axis of symmetry of a quadratic in standard form using $x = -\\frac{b}{2a}$",
+      "distinguishing the axis of symmetry (an $x$-value) from the vertex $y$-coordinate"
+    ],
+    "question_text": "What is the axis of symmetry of $y = x^{2} - 6x + 5$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = -3$",
+      "B": "$x = 6$",
+      "C": "$x = 3$",
+      "D": "$x = -4$"
+    },
+    "correct_answer": "C",
+    "explanation": "The axis of symmetry is $x = -\\frac{b}{2a}$.\nHere $a = 1$ and $b = -6$.\n$x = -\\frac{-6}{2(1)} = \\frac{6}{2} = 3$\n\nThe axis of symmetry is $x = 3$.",
+    "distractor_logic": {
+      "A": "Student forgets the leading negative in the formula, computing $\\frac{-6}{2} = -3$ instead of $-\\frac{-6}{2} = 3$.",
+      "B": "Student divides by $a$ instead of $2a$, or omits the division entirely, computing $-\\frac{-6}{1} = 6$.",
+      "C": "Correct: $x = -\\frac{-6}{2(1)} = 3$.",
+      "D": "Student computes the vertex $y$-coordinate instead of the axis of symmetry: $f(3) = 9 - 18 + 5 = -4$, reporting a $y$-value when asked for the $x$-value."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Use $x = -\\frac{b}{2a}$. Apply the leading negative sign and divide by $2a$, not just $a$."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The axis of symmetry is an $x$-value. Eliminate any choice that is actually a $y$-coordinate of the vertex."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["standard_form", "axis_of_symmetry", "vertex", "component_distinction"],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_048",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.5",
+    "topic": "identifying_the_maximum_or_minimum_of_a_quadratic",
+    "topic_text": "Identifying the Maximum or Minimum of a Quadratic",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "computing the axis of symmetry then evaluating the function to find the minimum value",
+      "distinguishing the minimum value (a $y$-coordinate) from the $x$-coordinate of the vertex"
+    ],
+    "question_text": "What is the minimum value of $y = x^{2} + 4x + 1$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$-2$",
+      "B": "$-3$",
+      "C": "$1$",
+      "D": "$3$"
+    },
+    "correct_answer": "B",
+    "explanation": "First find the axis of symmetry: $x = -\\frac{b}{2a} = -\\frac{4}{2(1)} = -2$.\nThen evaluate the function at $x = -2$ to find the minimum value:\n$y = (-2)^{2} + 4(-2) + 1 = 4 - 8 + 1 = -3$\n\nThe minimum value is $-3$.",
+    "distractor_logic": {
+      "A": "Student finds the axis of symmetry $x = -2$ and reports it as the minimum value, giving the $x$-coordinate instead of the $y$-coordinate.",
+      "B": "Correct: at $x = -2$, $y = 4 - 8 + 1 = -3$, so the minimum value is $-3$.",
+      "C": "Student reports the constant term $1$ as the minimum, assuming the minimum occurs at $x = 0$ rather than at the vertex.",
+      "D": "Student evaluates correctly in magnitude but drops the sign, reporting $3$ instead of $-3$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The minimum value is a $y$-value. Find the $x$ of the vertex first, then substitute it back into the function."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "After locating the vertex $x$-value, plug it into the original equation to compute the corresponding $y$-value."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["standard_form", "minimum_value", "axis_of_symmetry", "vertex_evaluation"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_049",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.5",
+    "topic": "identifying_the_maximum_or_minimum_of_a_quadratic",
+    "topic_text": "Identifying the Maximum or Minimum of a Quadratic",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "finding the vertex of a non-monic quadratic in standard form",
+      "evaluating the function at the axis of symmetry to find the vertex $y$-coordinate"
+    ],
+    "question_text": "What is the vertex of $y = 2x^{2} - 8x + 3$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$(-2, -5)$",
+      "B": "$(2, 5)$",
+      "C": "$(2, 3)$",
+      "D": "$(2, -5)$"
+    },
+    "correct_answer": "D",
+    "explanation": "Find the axis of symmetry: $x = -\\frac{b}{2a} = -\\frac{-8}{2(2)} = \\frac{8}{4} = 2$.\nEvaluate the function at $x = 2$:\n$y = 2(2)^{2} - 8(2) + 3 = 8 - 16 + 3 = -5$\n\nThe vertex is $(2, -5)$.",
+    "distractor_logic": {
+      "A": "Student forgets the leading negative in the axis formula, computing $\\frac{-8}{4} = -2$, then evaluates to get the $y$-value, giving $(-2, -5)$.",
+      "B": "Student finds $x = 2$ correctly but flips the sign of the vertex $y$-coordinate, reporting $(2, 5)$.",
+      "C": "Student finds $x = 2$ but reports the constant term $3$ as the $y$-coordinate instead of evaluating the function, giving $(2, 3)$.",
+      "D": "Correct: $x = 2$ and $y = 8 - 16 + 3 = -5$, so the vertex is $(2, -5)$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Use $x = -\\frac{b}{2a}$ with $a = 2$, so the denominator is $4$. Then substitute that $x$-value back to find $y$."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Do not assume the constant term is the vertex $y$-value; evaluate the full function at the vertex $x$-value."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["standard_form", "non_monic", "vertex", "vertex_evaluation"],
+    "estimated_time_seconds": 115,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_036",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.5",
+    "topic": "identifying_the_maximum_or_minimum_of_a_quadratic",
+    "topic_text": "Identifying the Maximum or Minimum of a Quadratic",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "modeling a real-world maximum with a quadratic and finding the maximum value",
+      "interpreting the vertex $y$-coordinate as the maximum height rather than the time at which it occurs"
+    ],
+    "question_text": "A ball is thrown upward and its height in feet after $t$ seconds is given by $h(t) = -16t^{2} + 64t + 5$. What is the maximum height the ball reaches?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$2$ feet",
+      "B": "$5$ feet",
+      "C": "$69$ feet",
+      "D": "$64$ feet"
+    },
+    "correct_answer": "C",
+    "explanation": "The maximum occurs at the vertex. Find the time at the vertex:\n$t = -\\frac{b}{2a} = -\\frac{64}{2(-16)} = -\\frac{64}{-32} = 2$ seconds.\n\nEvaluate the height at $t = 2$:\n$h(2) = -16(2)^{2} + 64(2) + 5 = -64 + 128 + 5 = 69$\n\nThe maximum height is $69$ feet.",
+    "distractor_logic": {
+      "A": "Student finds the time at which the maximum occurs, $t = 2$ seconds, and reports it as the maximum height, confusing the input with the output.",
+      "B": "Student reports the constant term $5$, which is the initial height at $t = 0$, not the maximum height.",
+      "C": "Correct: at $t = 2$, $h(2) = -64 + 128 + 5 = 69$ feet.",
+      "D": "Student reports the coefficient $64$ from the equation as the maximum height instead of evaluating the function at the vertex."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Maximum height is a height value. Find the time at the vertex first, then substitute it into the height function."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "After finding the vertex time, plug it back into $h(t)$ to get the height; do not report the time itself."
+      }
+    ],
+    "content_context": "projectile_motion",
+    "context_tags": ["maximum_value", "vertex", "context_interpretation", "projectile"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_037",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.5",
+    "topic": "identifying_the_maximum_or_minimum_of_a_quadratic",
+    "topic_text": "Identifying the Maximum or Minimum of a Quadratic",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "determining a coefficient that places the axis of symmetry at a specified location",
+      "solving $-\\frac{b}{2a} = $ target for the unknown coefficient $b$"
+    ],
+    "question_text": "For what value of $b$ does the parabola $y = x^{2} + bx + 7$ have its axis of symmetry at $x = 3$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$b = 6$",
+      "B": "$b = -6$",
+      "C": "$b = 3$",
+      "D": "$b = -3$"
+    },
+    "correct_answer": "B",
+    "explanation": "The axis of symmetry is $x = -\\frac{b}{2a}$, with $a = 1$.\nSet it equal to the target:\n$-\\frac{b}{2} = 3$\n$-b = 6$\n$b = -6$\n\nCheck: $y = x^{2} - 6x + 7$ has axis $-\\frac{-6}{2} = 3$.",
+    "distractor_logic": {
+      "A": "Student drops the leading negative, solving $\\frac{b}{2} = 3$ to get $b = 6$ instead of $b = -6$.",
+      "B": "Correct: $-\\frac{b}{2} = 3$ gives $b = -6$.",
+      "C": "Student sets $b$ equal to the target axis value directly, reporting $b = 3$ without applying the formula.",
+      "D": "Student applies the negative sign but forgets to multiply by $2$, solving $-b = 3$ to get $b = -3$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Set the axis-of-symmetry formula $-\\frac{b}{2a}$ equal to the target $x$-value, then solve for $b$."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Test a candidate $b$ by writing the equation and checking that $-\\frac{b}{2a}$ equals $3$."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["standard_form", "axis_of_symmetry", "unknown_coefficient", "reverse_reasoning"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  }
+]

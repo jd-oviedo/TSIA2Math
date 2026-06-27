@@ -1,0 +1,702 @@
+[
+  {
+    "item_id": "AR_B_074",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.6",
+    "topic": "identifying_a_quadratic_equation_that_corresponds_to_a_given_graph",
+    "topic_text": "Identifying a Quadratic Equation That Corresponds to a Given Graph",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "writing factored form from described x-intercepts using opposite signs",
+      "matching the direction of opening to the sign of the leading coefficient"
+    ],
+    "question_text": "A parabola opens upward and crosses the x-axis at $x = -1$ and $x = 4$. Which equation represents this parabola?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$y = -(x + 1)(x - 4)$",
+      "B": "$y = (x + 1)(x - 4)$",
+      "C": "$y = (x - 1)(x + 4)$",
+      "D": "$y = -(x - 1)(x + 4)$"
+    },
+    "correct_answer": "B",
+    "explanation": "An x-intercept at $x = r$ corresponds to a factor of $(x - r)$.\nIntercept at $x = -1$ gives the factor $(x + 1)$; intercept at $x = 4$ gives the factor $(x - 4)$.\nThe parabola opens upward, so the leading coefficient is positive.\nThe equation is $y = (x + 1)(x - 4)$.",
+    "distractor_logic": {
+      "A": "Student uses the correct factors but the wrong sign on the leading coefficient: $y = -(x + 1)(x - 4)$ opens downward, not upward.",
+      "B": "Correct: factors $(x + 1)$ and $(x - 4)$ match the intercepts, and the positive leading coefficient opens upward.",
+      "C": "Student writes the factors with the same signs as the intercepts instead of opposite signs: $(x - 1)(x + 4)$ has intercepts at $x = 1$ and $x = -4$.",
+      "D": "Student flips both the factor signs and the leading coefficient: $y = -(x - 1)(x + 4)$ has the wrong intercepts and opens downward."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "An intercept at $x = r$ becomes the factor $(x - r)$, so the sign inside the factor is opposite the intercept. Then match the sign of the leading coefficient to the direction of opening."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any choice that opens the wrong way, then any choice whose factors give the wrong intercepts."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["graph_to_equation", "x_intercepts", "factored_form", "direction_of_opening"],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_075",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.6",
+    "topic": "identifying_a_quadratic_equation_that_corresponds_to_a_given_graph",
+    "topic_text": "Identifying a Quadratic Equation That Corresponds to a Given Graph",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "writing factored form from described x-intercepts using opposite signs",
+      "matching the direction of opening to the sign of the leading coefficient"
+    ],
+    "question_text": "A parabola opens upward and crosses the x-axis at $x = 2$ and $x = 5$. Which equation represents this parabola?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$y = (x - 2)(x - 5)$",
+      "B": "$y = (x + 2)(x + 5)$",
+      "C": "$y = -(x - 2)(x - 5)$",
+      "D": "$y = (x - 2)(x + 5)$"
+    },
+    "correct_answer": "A",
+    "explanation": "An x-intercept at $x = r$ corresponds to a factor of $(x - r)$.\nIntercepts at $x = 2$ and $x = 5$ give factors $(x - 2)$ and $(x - 5)$.\nThe parabola opens upward, so the leading coefficient is positive.\nThe equation is $y = (x - 2)(x - 5)$.",
+    "distractor_logic": {
+      "A": "Correct: factors $(x - 2)$ and $(x - 5)$ match the intercepts, and the positive leading coefficient opens upward.",
+      "B": "Student writes the factors with the same signs as the intercepts instead of opposite signs: $(x + 2)(x + 5)$ has intercepts at $x = -2$ and $x = -5$.",
+      "C": "Student uses the correct factors but the wrong sign on the leading coefficient: $y = -(x - 2)(x - 5)$ opens downward.",
+      "D": "Student flips the sign on one factor: $(x - 2)(x + 5)$ has an intercept at $x = -5$ instead of $x = 5$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Each intercept $x = r$ gives the factor $(x - r)$. A parabola opening upward has a positive leading coefficient."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Rule out the choice that opens downward, then any choice whose factors produce the wrong intercepts."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["graph_to_equation", "x_intercepts", "factored_form", "direction_of_opening"],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_076",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.6",
+    "topic": "identifying_a_quadratic_equation_that_corresponds_to_a_given_graph",
+    "topic_text": "Identifying a Quadratic Equation That Corresponds to a Given Graph",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "writing factored form from described x-intercepts for a downward-opening parabola",
+      "applying a negative leading coefficient to match downward opening"
+    ],
+    "question_text": "A parabola opens downward and crosses the x-axis at $x = -3$ and $x = 1$. Which equation represents this parabola?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$y = (x + 3)(x - 1)$",
+      "B": "$y = -(x - 3)(x + 1)$",
+      "C": "$y = (x - 3)(x + 1)$",
+      "D": "$y = -(x + 3)(x - 1)$"
+    },
+    "correct_answer": "D",
+    "explanation": "An x-intercept at $x = r$ corresponds to a factor of $(x - r)$.\nIntercept at $x = -3$ gives $(x + 3)$; intercept at $x = 1$ gives $(x - 1)$.\nThe parabola opens downward, so the leading coefficient is negative.\nThe equation is $y = -(x + 3)(x - 1)$.",
+    "distractor_logic": {
+      "A": "Student uses the correct factors but forgets the negative leading coefficient: $y = (x + 3)(x - 1)$ opens upward, not downward.",
+      "B": "Student flips the sign inside both factors: $-(x - 3)(x + 1)$ has intercepts at $x = 3$ and $x = -1$.",
+      "C": "Student flips the factor signs and also drops the negative coefficient: $(x - 3)(x + 1)$ has the wrong intercepts and opens upward.",
+      "D": "Correct: factors $(x + 3)$ and $(x - 1)$ match the intercepts, and the negative leading coefficient opens downward."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Write each factor as $(x - r)$ from the intercepts, then attach a negative leading coefficient because the parabola opens downward."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "First eliminate any choice that opens upward, then check the remaining choices for the correct intercepts."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["graph_to_equation", "x_intercepts", "downward_opening", "negative_leading_coefficient"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_077",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.6",
+    "topic": "identifying_a_quadratic_equation_that_corresponds_to_a_given_graph",
+    "topic_text": "Identifying a Quadratic Equation That Corresponds to a Given Graph",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "writing factored form when one x-intercept is at the origin",
+      "matching the direction of opening to the sign of the leading coefficient"
+    ],
+    "question_text": "A parabola opens upward and crosses the x-axis at $x = 0$ and $x = 6$. Which equation represents this parabola?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$y = x(x + 6)$",
+      "B": "$y = -x(x - 6)$",
+      "C": "$y = x(x - 6)$",
+      "D": "$y = x(x - 3)$"
+    },
+    "correct_answer": "C",
+    "explanation": "An x-intercept at $x = r$ corresponds to a factor of $(x - r)$.\nIntercept at $x = 0$ gives the factor $x$; intercept at $x = 6$ gives the factor $(x - 6)$.\nThe parabola opens upward, so the leading coefficient is positive.\nThe equation is $y = x(x - 6)$.",
+    "distractor_logic": {
+      "A": "Student flips the sign inside the second factor: $x(x + 6)$ has an intercept at $x = -6$ instead of $x = 6$.",
+      "B": "Student uses the correct factors but the wrong sign on the leading coefficient: $y = -x(x - 6)$ opens downward.",
+      "C": "Correct: factors $x$ and $(x - 6)$ match the intercepts, and the positive leading coefficient opens upward.",
+      "D": "Student uses the wrong value for the second intercept: $x(x - 3)$ crosses at $x = 3$ instead of $x = 6$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "An intercept at the origin gives the factor $x$ on its own. The other intercept $x = r$ gives the factor $(x - r)$."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate the choice that opens downward, then check which remaining choice gives an intercept at $x = 6$."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["graph_to_equation", "x_intercepts", "origin_intercept", "factored_form"],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_078",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.6",
+    "topic": "identifying_a_quadratic_equation_that_corresponds_to_a_given_graph",
+    "topic_text": "Identifying a Quadratic Equation That Corresponds to a Given Graph",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "matching a parabola with symmetric x-intercepts to its standard-form equation",
+      "recognizing that symmetric intercepts produce a difference of squares"
+    ],
+    "question_text": "A parabola opens upward and crosses the x-axis at $x = -2$ and $x = 2$. Which equation represents this parabola?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$y = -x^{2} + 4$",
+      "B": "$y = x^{2} - 4$",
+      "C": "$y = x^{2} + 4$",
+      "D": "$y = x^{2} - 4x + 4$"
+    },
+    "correct_answer": "B",
+    "explanation": "Intercepts at $x = -2$ and $x = 2$ give factors $(x + 2)$ and $(x - 2)$.\n$(x + 2)(x - 2) = x^{2} - 4$\nThe parabola opens upward, so the positive leading coefficient is correct.\nThe equation is $y = x^{2} - 4$.",
+    "distractor_logic": {
+      "A": "Student uses the correct factors but the wrong sign on the leading coefficient: $y = -x^{2} + 4$ opens downward.",
+      "B": "Correct: $(x + 2)(x - 2) = x^{2} - 4$, and the positive leading coefficient opens upward.",
+      "C": "Student treats the expression as a sum of squares: $y = x^{2} + 4$ has no real x-intercepts at all.",
+      "D": "Student squares a single factor instead of multiplying two distinct factors: $(x - 2)^{2} = x^{2} - 4x + 4$ has only one intercept, at $x = 2$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Symmetric intercepts at $x = -r$ and $x = r$ multiply to $x^{2} - r^{2}$. Then check the sign of the leading coefficient."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A parabola that crosses the x-axis twice must have real intercepts, so eliminate any choice that has none."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["graph_to_equation", "symmetric_intercepts", "difference_of_squares", "standard_form"],
+    "estimated_time_seconds": 90,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_050",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.6",
+    "topic": "identifying_a_quadratic_equation_that_corresponds_to_a_given_graph",
+    "topic_text": "Identifying a Quadratic Equation That Corresponds to a Given Graph",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "writing vertex-form equation from a described vertex and direction of opening",
+      "applying the sign convention for $h$ and $k$ in vertex form"
+    ],
+    "question_text": "A parabola opens upward with its vertex at $(2, -1)$. Which equation could represent this parabola?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$y = (x - 2)^{2} - 1$",
+      "B": "$y = (x + 2)^{2} - 1$",
+      "C": "$y = (x - 2)^{2} + 1$",
+      "D": "$y = -(x - 2)^{2} - 1$"
+    },
+    "correct_answer": "A",
+    "explanation": "In vertex form $y = a(x - h)^{2} + k$, the vertex is at $(h, k)$.\nA vertex at $(2, -1)$ gives $h = 2$ and $k = -1$, so $y = a(x - 2)^{2} - 1$.\nThe parabola opens upward, so $a$ is positive; the simplest choice is $a = 1$.\nThe equation is $y = (x - 2)^{2} - 1$.",
+    "distractor_logic": {
+      "A": "Correct: vertex $(2, -1)$ gives $(x - 2)^{2} - 1$, and the positive leading coefficient opens upward.",
+      "B": "Student misreads the sign of $h$, writing $(x + 2)^{2}$, which places the vertex at $x = -2$ instead of $x = 2$.",
+      "C": "Student flips the sign of $k$, writing $+1$, which places the vertex at $(2, 1)$ instead of $(2, -1)$.",
+      "D": "Student uses the correct vertex but a negative leading coefficient: $y = -(x - 2)^{2} - 1$ opens downward."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Write the vertex form $y = a(x - h)^{2} + k$ using the vertex coordinates, then choose the sign of $a$ to match the direction of opening."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Check that the squared term places the vertex at the right $x$-value and that the constant gives the right $y$-value."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["graph_to_equation", "vertex_form", "h_sign", "k_sign"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_051",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.6",
+    "topic": "identifying_a_quadratic_equation_that_corresponds_to_a_given_graph",
+    "topic_text": "Identifying a Quadratic Equation That Corresponds to a Given Graph",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "recognizing that a vertex on the x-axis produces a single repeated x-intercept",
+      "distinguishing a vertex-on-axis parabola from one with two separate intercepts"
+    ],
+    "question_text": "A parabola opens upward and touches the x-axis at exactly one point, its vertex, located at $(-3, 0)$. Which equation represents this parabola?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$y = (x - 3)^{2}$",
+      "B": "$y = x^{2} - 9$",
+      "C": "$y = (x + 3)^{2}$",
+      "D": "$y = -(x + 3)^{2}$"
+    },
+    "correct_answer": "C",
+    "explanation": "A parabola whose vertex sits on the x-axis touches the axis at exactly one point, so it has a repeated root at that x-value.\nThe vertex is at $(-3, 0)$, so the repeated factor is $(x + 3)$ and the equation is $y = (x + 3)^{2}$.\nThe positive leading coefficient matches the upward opening.",
+    "distractor_logic": {
+      "A": "Student misreads the sign of $h$, writing $(x - 3)^{2}$, which places the vertex at $x = 3$ instead of $x = -3$.",
+      "B": "Student treats the single touch point as two separate intercepts, factoring as $(x + 3)(x - 3) = x^{2} - 9$, which crosses the axis at two points and has its vertex at $(0, -9)$, not on the axis.",
+      "C": "Correct: the repeated factor $(x + 3)^{2}$ gives a vertex at $(-3, 0)$ touching the x-axis once, opening upward.",
+      "D": "Student uses the correct vertex but a negative leading coefficient: $y = -(x + 3)^{2}$ opens downward."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A vertex on the x-axis means the parabola has one repeated root there, so the equation is a perfect square of a single factor."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any choice that crosses the axis at two points or opens the wrong direction."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["graph_to_equation", "vertex_on_axis", "repeated_root", "intercept_vertex_distinction"],
+    "estimated_time_seconds": 115,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_052",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.6",
+    "topic": "identifying_a_quadratic_equation_that_corresponds_to_a_given_graph",
+    "topic_text": "Identifying a Quadratic Equation That Corresponds to a Given Graph",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "using a described point to determine the leading coefficient of a factored-form parabola",
+      "eliminating equations that match the intercepts but fail a tested point"
+    ],
+    "question_text": "A parabola opens upward, crosses the x-axis at $x = 1$ and $x = 3$, and passes through the point $(0, 6)$. Which equation represents this parabola?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$y = (x - 1)(x - 3)$",
+      "B": "$y = 2(x + 1)(x + 3)$",
+      "C": "$y = 3(x - 1)(x - 3)$",
+      "D": "$y = 2(x - 1)(x - 3)$"
+    },
+    "correct_answer": "D",
+    "explanation": "The intercepts give factors $(x - 1)$ and $(x - 3)$, so $y = a(x - 1)(x - 3)$.\nUse the point $(0, 6)$ to find $a$:\n$6 = a(0 - 1)(0 - 3) = a(3)$\n$a = 2$\n\nThe equation is $y = 2(x - 1)(x - 3)$.",
+    "distractor_logic": {
+      "A": "Student stops at $a = 1$ without using the given point. At $x = 0$, $y = (-1)(-3) = 3$, which does not pass through $(0, 6)$.",
+      "B": "Student flips the signs inside the factors: $2(x + 1)(x + 3)$ has intercepts at $x = -1$ and $x = -3$, not $x = 1$ and $x = 3$.",
+      "C": "Student uses the wrong leading coefficient. At $x = 0$, $y = 3(-1)(-3) = 9$, which does not pass through $(0, 6)$.",
+      "D": "Correct: factors match the intercepts and $a = 2$ makes the parabola pass through $(0, 6)$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Write the factored form from the intercepts, then substitute the given point to solve for the leading coefficient."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Test the point $(0, 6)$ in each remaining choice and keep only the equation that produces $y = 6$ when $x = 0$."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["graph_to_equation", "x_intercepts", "leading_coefficient", "point_test"],
+    "estimated_time_seconds": 120,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_038",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.6",
+    "topic": "identifying_a_quadratic_equation_that_corresponds_to_a_given_graph",
+    "topic_text": "Identifying a Quadratic Equation That Corresponds to a Given Graph",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "combining vertex, direction of opening, and a y-intercept to uniquely identify a parabola",
+      "using the y-intercept to solve for the leading coefficient in vertex form"
+    ],
+    "question_text": "A parabola opens downward with its vertex at $(1, 8)$ and a y-intercept at $(0, 6)$. Which equation represents this parabola?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$y = -2(x - 1)^{2} + 8$",
+      "B": "$y = -2(x + 1)^{2} + 8$",
+      "C": "$y = 2(x - 1)^{2} + 8$",
+      "D": "$y = -(x - 1)^{2} + 8$"
+    },
+    "correct_answer": "A",
+    "explanation": "Start from vertex form with the vertex $(1, 8)$: $y = a(x - 1)^{2} + 8$.\nUse the y-intercept $(0, 6)$ to find $a$:\n$6 = a(0 - 1)^{2} + 8 = a + 8$\n$a = -2$\n\nThe leading coefficient is negative, matching the downward opening.\nThe equation is $y = -2(x - 1)^{2} + 8$.",
+    "distractor_logic": {
+      "A": "Correct: vertex $(1, 8)$ and the point $(0, 6)$ give $a = -2$, with the negative coefficient opening downward.",
+      "B": "Student misreads the sign of $h$, writing $(x + 1)^{2}$, which places the vertex at $x = -1$ instead of $x = 1$.",
+      "C": "Student uses the correct vertex and magnitude but the wrong sign on $a$: $y = 2(x - 1)^{2} + 8$ opens upward, and would not pass below the vertex through $(0, 6)$.",
+      "D": "Student uses $a = -1$ instead of solving with the point. At $x = 0$, $y = -(1) + 8 = 7$, which does not pass through $(0, 6)$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Build vertex form from the vertex, then substitute the y-intercept to solve for the leading coefficient, and confirm its sign matches the opening."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate choices with the wrong vertex or wrong opening, then test the y-intercept in the survivors."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["graph_to_equation", "vertex_form", "y_intercept", "leading_coefficient"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_039",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "quadratics",
+    "objective_text": "Quadratics",
+    "topic_id": "AR.3.6",
+    "topic": "identifying_a_quadratic_equation_that_corresponds_to_a_given_graph",
+    "topic_text": "Identifying a Quadratic Equation That Corresponds to a Given Graph",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "translating a described transformation of the parent function into vertex form",
+      "applying the correct direction of horizontal and vertical shifts"
+    ],
+    "question_text": "The graph of $y = x^{2}$ is shifted $4$ units to the right and $3$ units down. Which equation represents the resulting parabola?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$y = (x + 4)^{2} - 3$",
+      "B": "$y = (x - 4)^{2} + 3$",
+      "C": "$y = (x - 4)^{2} - 3$",
+      "D": "$y = (x + 4)^{2} + 3$"
+    },
+    "correct_answer": "C",
+    "explanation": "A horizontal shift right by $h$ units replaces $x$ with $(x - h)$, so a shift right $4$ gives $(x - 4)^{2}$.\nA vertical shift down $3$ units subtracts $3$, giving $- 3$.\nThe equation is $y = (x - 4)^{2} - 3$.",
+    "distractor_logic": {
+      "A": "Student reverses the horizontal shift direction, using $(x + 4)$ for a right shift; $(x + 4)^{2}$ actually shifts the graph left.",
+      "B": "Student reverses the vertical shift direction, adding $3$ for a downward shift instead of subtracting.",
+      "C": "Correct: right $4$ gives $(x - 4)^{2}$ and down $3$ gives $- 3$, so $y = (x - 4)^{2} - 3$.",
+      "D": "Student reverses both shift directions, shifting left and up instead of right and down."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A shift right by $h$ replaces $x$ with $(x - h)$, which looks like a minus sign. A downward shift subtracts from the whole expression."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Decide the horizontal direction first to eliminate half the choices, then settle the vertical direction."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["graph_to_equation", "transformations", "horizontal_shift", "vertical_shift"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-26",
+    "last_modified": "2026-06-26",
+    "review_notes": null
+  }
+]
