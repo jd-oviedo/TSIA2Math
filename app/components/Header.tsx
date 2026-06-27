@@ -131,8 +131,8 @@ export function Header() {
             <Image
               src="/unpackmath-logo.png"
               alt="UnpackMath logo"
-              width={36}
-              height={36}
+              width={42}
+              height={42}
               style={{ objectFit: "contain" }}
             />
           </div>

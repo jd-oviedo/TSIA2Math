@@ -14,6 +14,10 @@ const kodchasan = Kodchasan({
 export const metadata: Metadata = {
   title: "UnpackMath – TSIA2 Prep",
   description: "Computer-adaptive TSIA2 math practice",
+  icons: [
+    { rel: "icon", url: "/favicon.png?v=1", type: "image/png" },
+    { rel: "shortcut icon", url: "/favicon.ico?v=1" },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
