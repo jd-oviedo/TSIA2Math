@@ -1,0 +1,702 @@
+[
+  {
+    "item_id": "AR_B_091",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.3",
+    "topic": "adding_and_subtracting_polynomials",
+    "topic_text": "Adding and Subtracting Polynomials",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "adding two polynomials by combining like terms grouped by degree",
+      "tracking the sign of each coefficient when summing like terms"
+    ],
+    "question_text": "Which expression is equivalent to $(3x^{2} + 2x + 1) + (x^{2} - 4x + 3)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$4x^{2} - 2x + 4$",
+      "B": "$4x^{2} + 6x + 4$",
+      "C": "$2x^{2} + 4$",
+      "D": "$3x^{2} - 2x + 4$"
+    },
+    "correct_answer": "A",
+    "explanation": "Combine like terms by degree:\n$x^{2}$ terms: $3x^{2} + x^{2} = 4x^{2}$\n$x$ terms: $2x + (-4x) = -2x$\nConstants: $1 + 3 = 4$\n\nResult: $4x^{2} - 2x + 4$",
+    "distractor_logic": {
+      "A": "Correct: combining like terms gives $4x^{2} - 2x + 4$.",
+      "B": "Student treats the $-4x$ as $+4x$, adding magnitudes $2x + 4x = 6x$: $4x^{2} + 6x + 4$.",
+      "C": "Student combines all variable terms regardless of degree, summing $3 + 2 + 1 - 4 = 2$ into a single $x^{2}$ term: $2x^{2} + 4$.",
+      "D": "Student carries only the first $x^{2}$ term and forgets to add the second polynomial's $x^{2}$, leaving $3x^{2} - 2x + 4$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Group terms by degree first. Only terms with the same power of $x$ combine, and watch the sign in front of each coefficient."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Compute the constant term on its own first, then eliminate any choice whose constant does not match."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["polynomial_addition", "combining_like_terms", "coefficient_signs"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_092",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.3",
+    "topic": "adding_and_subtracting_polynomials",
+    "topic_text": "Adding and Subtracting Polynomials",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "adding two polynomials with negative coefficients by combining like terms",
+      "preserving the sign of each term while summing across two polynomials"
+    ],
+    "question_text": "Which expression is equivalent to $(4x^{2} - x + 5) + (2x^{2} + 6x - 1)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$6x^{2} + 7x + 4$",
+      "B": "$6x^{2} + 5x + 6$",
+      "C": "$6x^{2} + 5x + 4$",
+      "D": "$6x^{2} + 7x + 6$"
+    },
+    "correct_answer": "C",
+    "explanation": "Combine like terms by degree:\n$x^{2}$ terms: $4x^{2} + 2x^{2} = 6x^{2}$\n$x$ terms: $-x + 6x = 5x$\nConstants: $5 + (-1) = 4$\n\nResult: $6x^{2} + 5x + 4$",
+    "distractor_logic": {
+      "A": "Student ignores the negative on $-x$, computing $1x + 6x = 7x$: $6x^{2} + 7x + 4$.",
+      "B": "Student ignores the negative on the constant $-1$, computing $5 + 1 = 6$: $6x^{2} + 5x + 6$.",
+      "C": "Correct: combining like terms gives $6x^{2} + 5x + 4$.",
+      "D": "Student ignores both negative signs, computing $1x + 6x = 7x$ and $5 + 1 = 6$: $6x^{2} + 7x + 6$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A term like $-x$ has a coefficient of $-1$. Keep each coefficient's sign when you combine it with the matching term."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute $x = 1$ into the original expression and into each choice; the choice that gives the same value is correct."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["polynomial_addition", "combining_like_terms", "negative_coefficients"],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_093",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.3",
+    "topic": "adding_and_subtracting_polynomials",
+    "topic_text": "Adding and Subtracting Polynomials",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "adding two polynomials where the leading term has an implied coefficient of 1",
+      "combining like terms across mixed positive and negative coefficients"
+    ],
+    "question_text": "Which expression is equivalent to $(x^{2} + 7x - 3) + (5x^{2} - 2x + 8)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$6x^{2} + 9x + 5$",
+      "B": "$6x^{2} + 5x + 5$",
+      "C": "$6x^{2} + 5x + 11$",
+      "D": "$5x^{2} + 5x + 5$"
+    },
+    "correct_answer": "B",
+    "explanation": "Combine like terms by degree:\n$x^{2}$ terms: $x^{2} + 5x^{2} = 6x^{2}$\n$x$ terms: $7x + (-2x) = 5x$\nConstants: $-3 + 8 = 5$\n\nResult: $6x^{2} + 5x + 5$",
+    "distractor_logic": {
+      "A": "Student ignores the negative on $-2x$, computing $7x + 2x = 9x$: $6x^{2} + 9x + 5$.",
+      "B": "Correct: combining like terms gives $6x^{2} + 5x + 5$.",
+      "C": "Student ignores the negative on the constant $-3$, computing $3 + 8 = 11$: $6x^{2} + 5x + 11$.",
+      "D": "Student overlooks the implied coefficient of 1 on the first $x^{2}$ term, carrying only $5x^{2}$: $5x^{2} + 5x + 5$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A bare $x^{2}$ has a coefficient of 1. Count it when you add the $x^{2}$ terms together."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Find the combined $x^{2}$ coefficient first and eliminate any choice whose leading coefficient does not match."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["polynomial_addition", "combining_like_terms", "implied_coefficient"],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_094",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.3",
+    "topic": "adding_and_subtracting_polynomials",
+    "topic_text": "Adding and Subtracting Polynomials",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "adding two polynomials where one is missing a term and the sum of the x-terms is negative",
+      "determining the correct sign of a combined middle term"
+    ],
+    "question_text": "Which expression is equivalent to $(6x^{2} + 3x) + (x^{2} - 8x + 5)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$7x^{2} + 11x + 5$",
+      "B": "$7x^{2} + 5x + 5$",
+      "C": "$6x^{2} - 5x + 5$",
+      "D": "$7x^{2} - 5x + 5$"
+    },
+    "correct_answer": "D",
+    "explanation": "Combine like terms by degree:\n$x^{2}$ terms: $6x^{2} + x^{2} = 7x^{2}$\n$x$ terms: $3x + (-8x) = -5x$\nConstants: $0 + 5 = 5$\n\nResult: $7x^{2} - 5x + 5$",
+    "distractor_logic": {
+      "A": "Student ignores the negative on $-8x$, computing $3x + 8x = 11x$: $7x^{2} + 11x + 5$.",
+      "B": "Student finds the correct magnitude of the middle term ($|3 - 8| = 5$) but assigns it a positive sign instead of negative: $7x^{2} + 5x + 5$.",
+      "C": "Student overlooks the implied coefficient of 1 on the second $x^{2}$ term, carrying only $6x^{2}$: $6x^{2} - 5x + 5$.",
+      "D": "Correct: combining like terms gives $7x^{2} - 5x + 5$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "When you add a positive and a negative coefficient, the result takes the sign of the larger-magnitude term. Decide that sign before writing the middle term."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "First polynomial has no constant, so the constant comes only from the second. Confirm the constant, then check the sign of the middle term."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["polynomial_addition", "combining_like_terms", "missing_term", "coefficient_signs"],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_095",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.3",
+    "topic": "adding_and_subtracting_polynomials",
+    "topic_text": "Adding and Subtracting Polynomials",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "recognizing when opposite x-terms cancel to zero during addition",
+      "combining like terms when one degree drops out of the sum"
+    ],
+    "question_text": "Which expression is equivalent to $(5x^{2} - 4x - 2) + (3x^{2} + 4x + 7)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$8x^{2} + 8x + 5$",
+      "B": "$8x^{2} + 5$",
+      "C": "$8x^{2} + 9$",
+      "D": "$8x^{2} + 4x + 5$"
+    },
+    "correct_answer": "B",
+    "explanation": "Combine like terms by degree:\n$x^{2}$ terms: $5x^{2} + 3x^{2} = 8x^{2}$\n$x$ terms: $-4x + 4x = 0$\nConstants: $-2 + 7 = 5$\n\nThe $x$ terms cancel, so the result is $8x^{2} + 5$.",
+    "distractor_logic": {
+      "A": "Student adds the magnitudes of the x-coefficients ($4 + 4 = 8$) instead of recognizing $-4x + 4x = 0$: $8x^{2} + 8x + 5$.",
+      "B": "Correct: the x-terms cancel and the constants give $-2 + 7 = 5$, so $8x^{2} + 5$.",
+      "C": "Student correctly cancels the x-terms but ignores the negative on the constant $-2$, computing $2 + 7 = 9$: $8x^{2} + 9$.",
+      "D": "Student combines like terms but drops the $-4x$, carrying only the $+4x$ from the second polynomial: $8x^{2} + 4x + 5$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Combine each group of like terms separately, and check whether any group sums to zero before assuming a term must appear in the answer."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Add the constants on their own first, then decide whether the middle term survives or cancels."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["polynomial_addition", "combining_like_terms", "term_cancellation"],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_061",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.3",
+    "topic": "adding_and_subtracting_polynomials",
+    "topic_text": "Adding and Subtracting Polynomials",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "subtracting one polynomial from another by distributing the negative to every term",
+      "combining like terms after correctly distributing a subtraction"
+    ],
+    "question_text": "Which expression is equivalent to $(5x^{2} + 3x - 2) - (2x^{2} - x + 4)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$3x^{2} + 4x - 6$",
+      "B": "$3x^{2} + 2x + 2$",
+      "C": "$7x^{2} + 2x + 2$",
+      "D": "$3x^{2} + 2x - 6$"
+    },
+    "correct_answer": "A",
+    "explanation": "Distribute the negative across every term of the second polynomial:\n$5x^{2} + 3x - 2 - 2x^{2} + x - 4$\n\nCombine like terms:\n$x^{2}$ terms: $5x^{2} - 2x^{2} = 3x^{2}$\n$x$ terms: $3x + x = 4x$\nConstants: $-2 - 4 = -6$\n\nResult: $3x^{2} + 4x - 6$",
+    "distractor_logic": {
+      "A": "Correct: distributing the negative gives $5x^{2} + 3x - 2 - 2x^{2} + x - 4 = 3x^{2} + 4x - 6$.",
+      "B": "Student distributes the negative to the first term only ($-2x^{2} - x + 4$): $x$ terms $3x - x = 2x$, constants $-2 + 4 = 2$, giving $3x^{2} + 2x + 2$.",
+      "C": "Student adds instead of subtracting, combining $(5x^{2} + 3x - 2) + (2x^{2} - x + 4)$: $7x^{2} + 2x + 2$.",
+      "D": "Student distributes the negative to the first and last terms but leaves the middle $-x$ unchanged ($-2x^{2} - x - 4$): $x$ terms $3x - x = 2x$, constants $-2 - 4 = -6$, giving $3x^{2} + 2x - 6$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Before combining, change the sign of every term inside the subtracted parentheses, not just the first one."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The constant comes from $-2$ minus $4$. Settle that value first and eliminate choices with a different constant."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["polynomial_subtraction", "distributing_negative", "combining_like_terms"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_062",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.3",
+    "topic": "adding_and_subtracting_polynomials",
+    "topic_text": "Adding and Subtracting Polynomials",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "subtracting polynomials where the leading terms cancel and a middle-term sign flips",
+      "distributing a negative across all terms before combining like terms"
+    ],
+    "question_text": "Which expression is equivalent to $(3x^{2} - 2x + 6) - (3x^{2} - 7x + 1)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$-9x + 7$",
+      "B": "$6x^{2} - 9x + 7$",
+      "C": "$5x + 7$",
+      "D": "$5x + 5$"
+    },
+    "correct_answer": "D",
+    "explanation": "Distribute the negative across every term of the second polynomial:\n$3x^{2} - 2x + 6 - 3x^{2} + 7x - 1$\n\nCombine like terms:\n$x^{2}$ terms: $3x^{2} - 3x^{2} = 0$\n$x$ terms: $-2x + 7x = 5x$\nConstants: $6 - 1 = 5$\n\nThe $x^{2}$ terms cancel, so the result is $5x + 5$.",
+    "distractor_logic": {
+      "A": "Student distributes the negative to the first term only ($-3x^{2} - 7x + 1$): $x$ terms $-2x - 7x = -9x$, constants $6 + 1 = 7$, giving $-9x + 7$.",
+      "B": "Student adds instead of subtracting, combining $(3x^{2} - 2x + 6) + (3x^{2} - 7x + 1)$: $x^{2}$ terms $6x^{2}$, $x$ terms $-9x$, constants $7$, giving $6x^{2} - 9x + 7$.",
+      "C": "Student distributes the negative to the $x^{2}$ and $x$ terms but leaves the constant $+1$ unchanged ($-3x^{2} + 7x + 1$): constants $6 + 1 = 7$, giving $5x + 7$.",
+      "D": "Correct: distributing the negative gives $3x^{2} - 2x + 6 - 3x^{2} + 7x - 1 = 5x + 5$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Flip the sign of every term in the subtracted polynomial, including its constant, then combine. Notice what happens to the $x^{2}$ terms."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute $x = 1$ into the original expression and into each choice; the matching value is correct."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["polynomial_subtraction", "distributing_negative", "term_cancellation", "sign_flip"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_063",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.3",
+    "topic": "adding_and_subtracting_polynomials",
+    "topic_text": "Adding and Subtracting Polynomials",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "subtracting one polynomial from another with full distribution of the negative",
+      "recognizing that terms of different degree cannot be merged after combining"
+    ],
+    "question_text": "Which expression is equivalent to $(7x^{2} + x - 5) - (4x^{2} + 6x - 9)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$3x^{2} + 7x - 14$",
+      "B": "$11x^{2} + 7x - 14$",
+      "C": "$3x^{2} - 5x + 4$",
+      "D": "$-2x^{2} + 4$"
+    },
+    "correct_answer": "C",
+    "explanation": "Distribute the negative across every term of the second polynomial:\n$7x^{2} + x - 5 - 4x^{2} - 6x + 9$\n\nCombine like terms:\n$x^{2}$ terms: $7x^{2} - 4x^{2} = 3x^{2}$\n$x$ terms: $x - 6x = -5x$\nConstants: $-5 + 9 = 4$\n\nResult: $3x^{2} - 5x + 4$",
+    "distractor_logic": {
+      "A": "Student distributes the negative to the first term only ($-4x^{2} + 6x - 9$): $x$ terms $x + 6x = 7x$, constants $-5 - 9 = -14$, giving $3x^{2} + 7x - 14$.",
+      "B": "Student adds instead of subtracting, combining $(7x^{2} + x - 5) + (4x^{2} + 6x - 9)$: $11x^{2} + 7x - 14$.",
+      "C": "Correct: distributing the negative gives $7x^{2} + x - 5 - 4x^{2} - 6x + 9 = 3x^{2} - 5x + 4$.",
+      "D": "Student reaches $3x^{2} - 5x + 4$ correctly but then merges the $x^{2}$ and $x$ terms as if they were like terms, $3 - 5 = -2$: $-2x^{2} + 4$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Distribute the negative to all three terms of the second polynomial. Then remember that $x^{2}$ and $x$ terms stay separate; they never combine into one term."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Determine the leading $x^{2}$ coefficient first and eliminate choices that do not match it, then check the sign of the middle term."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["polynomial_subtraction", "distributing_negative", "combining_like_terms"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_046",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.3",
+    "topic": "adding_and_subtracting_polynomials",
+    "topic_text": "Adding and Subtracting Polynomials",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "distributing a negative scalar across a polynomial before combining three groups",
+      "tracking signs through scalar distribution and a subtraction simultaneously"
+    ],
+    "question_text": "Which expression is equivalent to $(2x^{2} - 3x) - 2(x^{2} + x - 5) + (x - 1)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$-4x + 9$",
+      "B": "$-x - 6$",
+      "C": "$-4x - 11$",
+      "D": "$4x^{2} - 11$"
+    },
+    "correct_answer": "A",
+    "explanation": "Distribute the $-2$ across the middle group:\n$-2(x^{2} + x - 5) = -2x^{2} - 2x + 10$\n\nNow combine all three groups:\n$2x^{2} - 3x - 2x^{2} - 2x + 10 + x - 1$\n$x^{2}$ terms: $2x^{2} - 2x^{2} = 0$\n$x$ terms: $-3x - 2x + x = -4x$\nConstants: $10 - 1 = 9$\n\nThe $x^{2}$ terms cancel, so the result is $-4x + 9$.",
+    "distractor_logic": {
+      "A": "Correct: after distributing $-2$ to get $-2x^{2} - 2x + 10$ and combining, the $x^{2}$ terms cancel and the result is $-4x + 9$.",
+      "B": "Student multiplies only the first term of $(x^{2} + x - 5)$ by $-2$, leaving the rest unchanged ($-2x^{2} + x - 5$): $x$ terms $-3x + x + x = -x$, constants $-5 - 1 = -6$, giving $-x - 6$.",
+      "C": "Student distributes $-2$ but computes $-2 \\times (-5)$ as $-10$ instead of $+10$ ($-2x^{2} - 2x - 10$): constants $-10 - 1 = -11$, giving $-4x - 11$.",
+      "D": "Student treats the subtraction as addition, distributing $+2$ instead of $-2$ ($2x^{2} + 2x - 10$): $x^{2}$ terms $4x^{2}$, $x$ terms $-3x + 2x + x = 0$, constants $-11$, giving $4x^{2} - 11$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Distribute the $-2$ to every term inside its parentheses, including the constant, and mind that $-2$ times a negative becomes positive. Only then combine."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute $x = 1$ into the original expression and into each choice; the choice that gives the same value is correct."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["polynomial_operations", "scalar_distribution", "combining_like_terms", "sign_tracking"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_047",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.3",
+    "topic": "adding_and_subtracting_polynomials",
+    "topic_text": "Adding and Subtracting Polynomials",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "combining three polynomials involving both addition and subtraction",
+      "distributing a negative across every term of a subtracted polynomial"
+    ],
+    "question_text": "Which expression is equivalent to $(4x^{2} - 2x + 1) + (x^{2} + 5x - 3) - (2x^{2} - x + 6)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$3x^{2} + 2x + 4$",
+      "B": "$3x^{2} + 4x - 8$",
+      "C": "$7x^{2} + 2x + 4$",
+      "D": "$3x^{2} + 4x + 4$"
+    },
+    "correct_answer": "B",
+    "explanation": "Distribute the negative across the third polynomial:\n$4x^{2} - 2x + 1 + x^{2} + 5x - 3 - 2x^{2} + x - 6$\n\nCombine like terms:\n$x^{2}$ terms: $4x^{2} + x^{2} - 2x^{2} = 3x^{2}$\n$x$ terms: $-2x + 5x + x = 4x$\nConstants: $1 - 3 - 6 = -8$\n\nResult: $3x^{2} + 4x - 8$",
+    "distractor_logic": {
+      "A": "Student distributes the subtraction to the first term of the third polynomial only ($-2x^{2} - x + 6$): $x$ terms $-2x + 5x - x = 2x$, constants $1 - 3 + 6 = 4$, giving $3x^{2} + 2x + 4$.",
+      "B": "Correct: distributing the negative gives $-2x^{2} + x - 6$, and combining all three yields $3x^{2} + 4x - 8$.",
+      "C": "Student adds all three polynomials, failing to subtract the third ($+2x^{2} - x + 6$): $x^{2}$ terms $7x^{2}$, $x$ terms $2x$, constants $4$, giving $7x^{2} + 2x + 4$.",
+      "D": "Student distributes the negative to the $x^{2}$ and $x$ terms but leaves the constant $+6$ unchanged ($-2x^{2} + x + 6$): constants $1 - 3 + 6 = 4$, giving $3x^{2} + 4x + 4$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Only the third polynomial is subtracted. Change the sign of all three of its terms before combining anything."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Work out the constant term across all three polynomials first and eliminate any choice whose constant does not match."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["polynomial_operations", "distributing_negative", "combining_like_terms", "three_polynomials"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  }
+]

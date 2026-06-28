@@ -1,0 +1,702 @@
+[
+  {
+    "item_id": "AR_B_106",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.6",
+    "topic": "combining_rational_expressions",
+    "topic_text": "Combining Rational Expressions (using GCF/common denominators)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "adding two rational expressions that already share a common denominator",
+      "recognizing that a shared denominator is kept, not combined, when adding numerators"
+    ],
+    "question_text": "Simplify: $\\frac{3}{x} + \\frac{5}{x}$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{8}{x}$",
+      "B": "$\\frac{8}{2x}$",
+      "C": "$\\frac{15}{x}$",
+      "D": "$\\frac{8}{x^{2}}$"
+    },
+    "correct_answer": "A",
+    "explanation": "The two fractions already share the denominator $x$. Add the numerators and keep the common denominator:\n$\\frac{3}{x} + \\frac{5}{x} = \\frac{3 + 5}{x} = \\frac{8}{x}$",
+    "distractor_logic": {
+      "A": "Correct: with a shared denominator, add numerators and keep the denominator: $\\frac{3 + 5}{x} = \\frac{8}{x}$.",
+      "B": "Student adds the denominators as well as the numerators: $\\frac{3 + 5}{x + x} = \\frac{8}{2x}$.",
+      "C": "Student multiplies the numerators instead of adding them: $\\frac{3 \\cdot 5}{x} = \\frac{15}{x}$.",
+      "D": "Student treats the identical denominators as different and multiplies them to form a common denominator, while adding the numerators without adjusting: $\\frac{3 + 5}{x \\cdot x} = \\frac{8}{x^{2}}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check the denominators first. If they are already the same, you do not change the denominator at all when you combine."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The denominator should stay as it is when both fractions already share it. Eliminate any choice whose denominator changed."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_expressions", "common_denominator", "adding_fractions"],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_107",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.6",
+    "topic": "combining_rational_expressions",
+    "topic_text": "Combining Rational Expressions (using GCF/common denominators)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "rewriting one fraction so two rational expressions share a common denominator when one denominator is a multiple of the other",
+      "scaling a numerator to match a new denominator before adding"
+    ],
+    "question_text": "Simplify: $\\frac{1}{x} + \\frac{1}{2x}$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{2}{2x}$",
+      "B": "$\\frac{3}{2x}$",
+      "C": "$\\frac{2}{3x}$",
+      "D": "$\\frac{2}{2x^{2}}$"
+    },
+    "correct_answer": "B",
+    "explanation": "The least common denominator is $2x$. Rewrite the first fraction with that denominator:\n$\\frac{1}{x} = \\frac{2}{2x}$\n\nNow add:\n$\\frac{2}{2x} + \\frac{1}{2x} = \\frac{3}{2x}$",
+    "distractor_logic": {
+      "A": "Student uses the correct common denominator $2x$ but adds the original numerators without rescaling $\\frac{1}{x}$ to $\\frac{2}{2x}$: $\\frac{1 + 1}{2x} = \\frac{2}{2x}$.",
+      "B": "Correct: rewrite $\\frac{1}{x}$ as $\\frac{2}{2x}$, then $\\frac{2}{2x} + \\frac{1}{2x} = \\frac{3}{2x}$.",
+      "C": "Student adds the denominators instead of finding a common one: $\\frac{1 + 1}{x + 2x} = \\frac{2}{3x}$.",
+      "D": "Student multiplies the denominators to form $x \\cdot 2x = 2x^{2}$ and adds the numerators without adjusting them: $\\frac{1 + 1}{2x^{2}} = \\frac{2}{2x^{2}}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "One denominator is a multiple of the other. Find the smaller denominator that both divide into, then rewrite each fraction over it before adding."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try $x = 1$: the original becomes $\\frac{1}{1} + \\frac{1}{2}$. Check which answer choice gives that same value at $x = 1$."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_expressions", "common_denominator", "scaling_numerators"],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_108",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.6",
+    "topic": "combining_rational_expressions",
+    "topic_text": "Combining Rational Expressions (using GCF/common denominators)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "subtracting two rational expressions when one denominator is a multiple of the other",
+      "rescaling a numerator to a common denominator before subtracting"
+    ],
+    "question_text": "Simplify: $\\frac{5}{x} - \\frac{3}{2x}$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{13}{2x}$",
+      "B": "$\\frac{2}{2x}$",
+      "C": "$\\frac{7}{2x}$",
+      "D": "$-\\frac{2}{x}$"
+    },
+    "correct_answer": "C",
+    "explanation": "The least common denominator is $2x$. Rewrite the first fraction:\n$\\frac{5}{x} = \\frac{10}{2x}$\n\nNow subtract:\n$\\frac{10}{2x} - \\frac{3}{2x} = \\frac{7}{2x}$",
+    "distractor_logic": {
+      "A": "Student rescales correctly to $\\frac{10}{2x}$ but adds instead of subtracting: $\\frac{10 + 3}{2x} = \\frac{13}{2x}$.",
+      "B": "Student uses the common denominator $2x$ but subtracts the original numerators without rescaling $\\frac{5}{x}$ to $\\frac{10}{2x}$: $\\frac{5 - 3}{2x} = \\frac{2}{2x}$.",
+      "C": "Correct: rewrite $\\frac{5}{x}$ as $\\frac{10}{2x}$, then $\\frac{10}{2x} - \\frac{3}{2x} = \\frac{7}{2x}$.",
+      "D": "Student subtracts the denominators as well as the numerators: $\\frac{5 - 3}{x - 2x} = \\frac{2}{-x} = -\\frac{2}{x}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Rewrite the fraction with the smaller denominator so both share $2x$ before you subtract. Adjust its numerator to match."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The operation is subtraction, and both terms are positive, so the result should be positive and smaller than the first fraction. Rule out choices that ignore the rescaling step."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_expressions", "common_denominator", "subtracting_fractions"],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_109",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.6",
+    "topic": "combining_rational_expressions",
+    "topic_text": "Combining Rational Expressions (using GCF/common denominators)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "adding two rational expressions that already share a common denominator",
+      "keeping a shared denominator unchanged when combining numerators"
+    ],
+    "question_text": "Simplify: $\\frac{4}{x} + \\frac{3}{x}$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{7}{2x}$",
+      "B": "$\\frac{12}{x}$",
+      "C": "$\\frac{7}{x^{2}}$",
+      "D": "$\\frac{7}{x}$"
+    },
+    "correct_answer": "D",
+    "explanation": "Both fractions share the denominator $x$. Add the numerators and keep the denominator:\n$\\frac{4}{x} + \\frac{3}{x} = \\frac{4 + 3}{x} = \\frac{7}{x}$",
+    "distractor_logic": {
+      "A": "Student adds the denominators along with the numerators: $\\frac{4 + 3}{x + x} = \\frac{7}{2x}$.",
+      "B": "Student multiplies the numerators instead of adding them: $\\frac{4 \\cdot 3}{x} = \\frac{12}{x}$.",
+      "C": "Student treats the identical denominators as different and multiplies them, adding numerators without adjusting: $\\frac{4 + 3}{x \\cdot x} = \\frac{7}{x^{2}}$.",
+      "D": "Correct: with a shared denominator, add numerators and keep the denominator: $\\frac{4 + 3}{x} = \\frac{7}{x}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The denominators are already identical. When that is true, the denominator does not change as you combine."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Adding fractions never multiplies the numerators and never doubles a denominator that was already shared. Eliminate choices that did either."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_expressions", "common_denominator", "adding_fractions"],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_110",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.6",
+    "topic": "combining_rational_expressions",
+    "topic_text": "Combining Rational Expressions (using GCF/common denominators)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "subtracting two rational expressions that share a common denominator",
+      "subtracting numerators in the correct order while keeping the shared denominator"
+    ],
+    "question_text": "Simplify: $\\frac{8}{x} - \\frac{3}{x}$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{5}{x}$",
+      "B": "$\\frac{11}{x}$",
+      "C": "$\\frac{5}{x^{2}}$",
+      "D": "$-\\frac{5}{x}$"
+    },
+    "correct_answer": "A",
+    "explanation": "Both fractions share the denominator $x$. Subtract the numerators in the given order and keep the denominator:\n$\\frac{8}{x} - \\frac{3}{x} = \\frac{8 - 3}{x} = \\frac{5}{x}$",
+    "distractor_logic": {
+      "A": "Correct: with a shared denominator, subtract numerators and keep the denominator: $\\frac{8 - 3}{x} = \\frac{5}{x}$.",
+      "B": "Student adds the numerators instead of subtracting them: $\\frac{8 + 3}{x} = \\frac{11}{x}$.",
+      "C": "Student subtracts the numerators correctly but multiplies the identical denominators: $\\frac{8 - 3}{x \\cdot x} = \\frac{5}{x^{2}}$.",
+      "D": "Student subtracts the numerators in the reverse order: $\\frac{3 - 8}{x} = -\\frac{5}{x}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The denominators match, so keep that denominator and subtract the top numbers in the order they are written."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try $x = 1$: the original is $8 - 3$. Check which choice matches that value at $x = 1$."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_expressions", "common_denominator", "subtracting_fractions"],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_070",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.6",
+    "topic": "combining_rational_expressions",
+    "topic_text": "Combining Rational Expressions (using GCF/common denominators)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "finding the common denominator of two rational expressions with distinct linear denominators",
+      "scaling each numerator by the opposite denominator before adding"
+    ],
+    "question_text": "Simplify: $\\frac{3}{x+1} + \\frac{2}{x-1}$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{5}{x^{2}-1}$",
+      "B": "$\\frac{5x-1}{x^{2}-1}$",
+      "C": "$\\frac{5}{2x}$",
+      "D": "$\\frac{5x+1}{x^{2}-1}$"
+    },
+    "correct_answer": "B",
+    "explanation": "The denominators have no common factor, so the LCD is their product $(x+1)(x-1) = x^{2}-1$. Rescale each numerator by the opposite denominator:\n$\\frac{3(x-1)}{x^{2}-1} + \\frac{2(x+1)}{x^{2}-1}$\n\nExpand the numerators:\n$\\frac{(3x-3) + (2x+2)}{x^{2}-1} = \\frac{5x-1}{x^{2}-1}$",
+    "distractor_logic": {
+      "A": "Student finds the correct LCD $x^{2}-1$ but adds the original numerators without rescaling them: $\\frac{3 + 2}{x^{2}-1} = \\frac{5}{x^{2}-1}$.",
+      "B": "Correct: $\\frac{3(x-1) + 2(x+1)}{x^{2}-1} = \\frac{3x-3+2x+2}{x^{2}-1} = \\frac{5x-1}{x^{2}-1}$.",
+      "C": "Student adds the denominators instead of finding a common one: $\\frac{3 + 2}{(x+1) + (x-1)} = \\frac{5}{2x}$.",
+      "D": "Student rescales each numerator by its own denominator instead of the opposite one: $3(x+1) + 2(x-1) = 3x+3+2x-2 = 5x+1$, giving $\\frac{5x+1}{x^{2}-1}$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "When the denominators share no common factor, the common denominator is their product. Each numerator must be multiplied by the denominator it is missing."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try $x = 2$ in the original and in each answer choice. Only the equivalent expression will match the original's value."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_expressions", "common_denominator", "linear_denominators", "scaling_numerators"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_071",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.6",
+    "topic": "combining_rational_expressions",
+    "topic_text": "Combining Rational Expressions (using GCF/common denominators)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "subtracting two rational expressions with distinct linear denominators over a common denominator",
+      "distributing a negative sign to every term of a rescaled numerator"
+    ],
+    "question_text": "Simplify: $\\frac{4}{x-2} - \\frac{1}{x+3}$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{3}{x^{2}+x-6}$",
+      "B": "$\\frac{3}{2x+1}$",
+      "C": "$\\frac{3x+10}{x^{2}+x-6}$",
+      "D": "$\\frac{3x+14}{x^{2}+x-6}$"
+    },
+    "correct_answer": "D",
+    "explanation": "The LCD is $(x-2)(x+3) = x^{2}+x-6$. Rescale each numerator by the opposite denominator:\n$\\frac{4(x+3)}{x^{2}+x-6} - \\frac{1(x-2)}{x^{2}+x-6}$\n\nDistribute the negative sign to every term of the second numerator:\n$\\frac{(4x+12) - (x-2)}{x^{2}+x-6} = \\frac{4x+12-x+2}{x^{2}+x-6} = \\frac{3x+14}{x^{2}+x-6}$",
+    "distractor_logic": {
+      "A": "Student finds the correct LCD but subtracts the original numerators without rescaling: $\\frac{4 - 1}{x^{2}+x-6} = \\frac{3}{x^{2}+x-6}$.",
+      "B": "Student adds the denominators instead of finding a common one: $\\frac{4 - 1}{(x-2) + (x+3)} = \\frac{3}{2x+1}$.",
+      "C": "Student rescales correctly but distributes the negative sign to only the first term of the second numerator: $4x+12 - x - 2 = 3x+10$, giving $\\frac{3x+10}{x^{2}+x-6}$.",
+      "D": "Correct: $\\frac{4(x+3) - (x-2)}{x^{2}+x-6} = \\frac{4x+12-x+2}{x^{2}+x-6} = \\frac{3x+14}{x^{2}+x-6}$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "After rescaling, the minus sign in front of the second fraction applies to every term of its numerator, not just the first one. Track that sign carefully."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The combined numerator must come from rescaling both fractions, so it should contain an $x$ term. Eliminate any choice whose numerator is just a constant."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_expressions", "common_denominator", "linear_denominators", "sign_distribution"],
+    "estimated_time_seconds": 115,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_072",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.6",
+    "topic": "combining_rational_expressions",
+    "topic_text": "Combining Rational Expressions (using GCF/common denominators)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "adding two rational expressions with distinct linear denominators using their product as the common denominator",
+      "rescaling both numerators before combining"
+    ],
+    "question_text": "Simplify: $\\frac{2}{x} + \\frac{3}{x+2}$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{5x+4}{x(x+2)}$",
+      "B": "$\\frac{5}{x(x+2)}$",
+      "C": "$\\frac{5}{2x+2}$",
+      "D": "$\\frac{2x+7}{x(x+2)}$"
+    },
+    "correct_answer": "A",
+    "explanation": "The denominators share no common factor, so the LCD is $x(x+2)$. Rescale each numerator by the opposite denominator:\n$\\frac{2(x+2)}{x(x+2)} + \\frac{3x}{x(x+2)}$\n\nExpand and combine:\n$\\frac{(2x+4) + 3x}{x(x+2)} = \\frac{5x+4}{x(x+2)}$",
+    "distractor_logic": {
+      "A": "Correct: $\\frac{2(x+2) + 3x}{x(x+2)} = \\frac{2x+4+3x}{x(x+2)} = \\frac{5x+4}{x(x+2)}$.",
+      "B": "Student finds the correct LCD but adds the original numerators without rescaling: $\\frac{2 + 3}{x(x+2)} = \\frac{5}{x(x+2)}$.",
+      "C": "Student adds the denominators instead of finding a common one: $\\frac{2 + 3}{x + (x+2)} = \\frac{5}{2x+2}$.",
+      "D": "Student rescales the first fraction but leaves the second numerator unscaled: $\\frac{2(x+2) + 3}{x(x+2)} = \\frac{2x+4+3}{x(x+2)} = \\frac{2x+7}{x(x+2)}$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Both fractions must be rewritten over the product of the denominators. Each numerator gets multiplied by the factor its own denominator is missing."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try $x = 1$ in the original and in each choice. Only the equivalent expression matches the original's value."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_expressions", "common_denominator", "linear_denominators", "scaling_numerators"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_052",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.6",
+    "topic": "combining_rational_expressions",
+    "topic_text": "Combining Rational Expressions (using GCF/common denominators)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "factoring a difference of squares to identify the least common denominator",
+      "rescaling and combining rational expressions when one denominator is a factor of the other"
+    ],
+    "question_text": "Simplify: $\\frac{1}{x^{2}-4} + \\frac{2}{x+2}$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{3}{x^{2}+x-2}$",
+      "B": "$\\frac{2x-1}{x^{2}-4}$",
+      "C": "$\\frac{2x-3}{x^{2}-4}$",
+      "D": "$\\frac{3}{x^{2}-4}$"
+    },
+    "correct_answer": "C",
+    "explanation": "Factor the first denominator: $x^{2}-4 = (x+2)(x-2)$. The LCD is $(x+2)(x-2) = x^{2}-4$, so only the second fraction needs rescaling by $(x-2)$:\n$\\frac{1}{x^{2}-4} + \\frac{2(x-2)}{x^{2}-4}$\n\nExpand and combine:\n$\\frac{1 + (2x-4)}{x^{2}-4} = \\frac{2x-3}{x^{2}-4}$",
+    "distractor_logic": {
+      "A": "Student never factors $x^{2}-4$, treats the denominators as unrelated, and adds them: $(x^{2}-4) + (x+2) = x^{2}+x-2$, with numerators added unadjusted: $\\frac{3}{x^{2}+x-2}$.",
+      "B": "Student factors and rescales but distributes $2(x-2)$ incorrectly as $2x-2$ instead of $2x-4$: $\\frac{1 + 2x - 2}{x^{2}-4} = \\frac{2x-1}{x^{2}-4}$.",
+      "C": "Correct: with LCD $(x+2)(x-2) = x^{2}-4$, $\\frac{1 + 2(x-2)}{x^{2}-4} = \\frac{1+2x-4}{x^{2}-4} = \\frac{2x-3}{x^{2}-4}$.",
+      "D": "Student factors and finds the correct LCD but adds the original numerators without rescaling the second fraction: $\\frac{1 + 2}{x^{2}-4} = \\frac{3}{x^{2}-4}$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Factor the quadratic denominator first. You may find that one denominator is already a factor of the other, so only one fraction needs rescaling."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Once the quadratic denominator is factored, the common denominator should still be $x^{2}-4$. Eliminate any choice whose denominator is something else."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_expressions", "difference_of_squares", "factoring", "common_denominator"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_053",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.6",
+    "topic": "combining_rational_expressions",
+    "topic_text": "Combining Rational Expressions (using GCF/common denominators)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "factoring a difference of squares to find the least common denominator before subtracting",
+      "distributing a negative sign across a rescaled numerator"
+    ],
+    "question_text": "Simplify: $\\frac{x}{x^{2}-9} - \\frac{1}{x-3}$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{x-1}{x^{2}-9}$",
+      "B": "$\\frac{-3}{x^{2}-9}$",
+      "C": "$\\frac{3}{x^{2}-9}$",
+      "D": "$\\frac{x-1}{x^{2}-x-6}$"
+    },
+    "correct_answer": "B",
+    "explanation": "Factor the first denominator: $x^{2}-9 = (x+3)(x-3)$. The LCD is $(x+3)(x-3) = x^{2}-9$, so the second fraction is rescaled by $(x+3)$:\n$\\frac{x}{x^{2}-9} - \\frac{1(x+3)}{x^{2}-9}$\n\nDistribute the negative across the rescaled numerator:\n$\\frac{x - (x+3)}{x^{2}-9} = \\frac{x-x-3}{x^{2}-9} = \\frac{-3}{x^{2}-9}$",
+    "distractor_logic": {
+      "A": "Student factors and finds the correct LCD but subtracts the original numerators without rescaling the second fraction: $\\frac{x - 1}{x^{2}-9}$.",
+      "B": "Correct: with LCD $(x+3)(x-3) = x^{2}-9$, $\\frac{x - (x+3)}{x^{2}-9} = \\frac{x-x-3}{x^{2}-9} = \\frac{-3}{x^{2}-9}$.",
+      "C": "Student rescales correctly but applies the negative sign to only the first term of $(x+3)$: $x - x + 3 = 3$, giving $\\frac{3}{x^{2}-9}$.",
+      "D": "Student never factors $x^{2}-9$, treats the denominators as unrelated, and subtracts them: $(x^{2}-9) - (x-3) = x^{2}-x-6$, with numerators subtracted unadjusted: $\\frac{x-1}{x^{2}-x-6}$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Factor the quadratic denominator first to reveal the common denominator. Then watch how the minus sign in front of the second fraction acts on every term of its rescaled numerator."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "After factoring, the common denominator should remain $x^{2}-9$. Rule out any choice with a different denominator, then check the sign work in the numerator."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rational_expressions", "difference_of_squares", "factoring", "sign_distribution"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  }
+]
