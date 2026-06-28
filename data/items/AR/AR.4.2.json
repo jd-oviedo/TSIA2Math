@@ -1,0 +1,702 @@
+[
+  {
+    "item_id": "AR_B_086",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.2",
+    "topic": "multiplying_polynomials",
+    "topic_text": "Multiplying Polynomials (including FOIL)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "multiplying two monomials by multiplying coefficients and adding exponents",
+      "applying the product rule for exponents to a monomial product"
+    ],
+    "question_text": "Which expression is equivalent to $(4x^{2})(3x^{3})$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$12x^{6}$",
+      "B": "$12x^{5}$",
+      "C": "$7x^{5}$",
+      "D": "$12x^{3}$"
+    },
+    "correct_answer": "B",
+    "explanation": "Multiply the coefficients and add the exponents:\n$4 \\cdot 3 = 12$\n$x^{2} \\cdot x^{3} = x^{2+3} = x^{5}$\n\nThe product is $12x^{5}$.",
+    "distractor_logic": {
+      "A": "Student multiplies the exponents instead of adding them: the coefficient $4 \\cdot 3 = 12$ is correct, but $2 \\cdot 3 = 6$ gives $12x^{6}$.",
+      "B": "Correct: $4 \\cdot 3 = 12$ and $x^{2} \\cdot x^{3} = x^{5}$, giving $12x^{5}$.",
+      "C": "Student adds the coefficients instead of multiplying them: $4 + 3 = 7$, while adding the exponents correctly, giving $7x^{5}$.",
+      "D": "Student keeps the larger of the two exponents instead of adding them, taking $x^{3}$ rather than $x^{2+3}$, giving $12x^{3}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "When multiplying powers with the same base, multiply the coefficients and add the exponents. Check both operations separately."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute a value like $x = 2$ into the original product and into each choice. The choice that gives the same value is equivalent."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["monomial_product", "product_rule", "exponents", "polynomial_multiplication"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-27",
+    "last_modified": "2026-06-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_087",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.2",
+    "topic": "multiplying_polynomials",
+    "topic_text": "Multiplying Polynomials (including FOIL)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying the distributive property to multiply a monomial by a binomial",
+      "multiplying a variable by a variable using the product rule for exponents"
+    ],
+    "question_text": "Which expression is equivalent to $3x(x + 5)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$3x^{2} + 5$",
+      "B": "$3x^{2} + 5x$",
+      "C": "$3x^{2} + 15x$",
+      "D": "$18x$"
+    },
+    "correct_answer": "C",
+    "explanation": "Distribute $3x$ to both terms inside the parentheses:\n$3x \\cdot x = 3x^{2}$\n$3x \\cdot 5 = 15x$\n\nThe product is $3x^{2} + 15x$.",
+    "distractor_logic": {
+      "A": "Student distributes $3x$ to the first term only and copies the $+5$ unchanged: $3x \\cdot x = 3x^{2}$, then $+5$, giving $3x^{2} + 5$.",
+      "B": "Student distributes the full $3x$ to the first term but multiplies only the variable $x$ into the second term, dropping the coefficient 3: $x \\cdot 5 = 5x$, giving $3x^{2} + 5x$.",
+      "C": "Correct: $3x \\cdot x = 3x^{2}$ and $3x \\cdot 5 = 15x$, giving $3x^{2} + 15x$.",
+      "D": "Student treats $x \\cdot x$ as $x$ (failing to add exponents): $3x \\cdot x = 3x$ and $3x \\cdot 5 = 15x$, then combines to $18x$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Multiply the monomial outside by each term inside the parentheses, one at a time. Both terms get multiplied."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Try $x = 2$ in the original expression and in each choice. Only the equivalent expression will match."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["distributive_property", "monomial_binomial", "polynomial_multiplication", "exponents"],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-27",
+    "last_modified": "2026-06-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_088",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.2",
+    "topic": "multiplying_polynomials",
+    "topic_text": "Multiplying Polynomials (including FOIL)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "distributing a monomial across a binomial that contains a subtraction",
+      "preserving the sign of each term during distribution"
+    ],
+    "question_text": "Which expression is equivalent to $2x(3x - 4)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$6x^{2} - 8x$",
+      "B": "$6x^{2} - 4$",
+      "C": "$6x^{2} + 8x$",
+      "D": "$-2x$"
+    },
+    "correct_answer": "A",
+    "explanation": "Distribute $2x$ to both terms, keeping each sign:\n$2x \\cdot 3x = 6x^{2}$\n$2x \\cdot (-4) = -8x$\n\nThe product is $6x^{2} - 8x$.",
+    "distractor_logic": {
+      "A": "Correct: $2x \\cdot 3x = 6x^{2}$ and $2x \\cdot (-4) = -8x$, giving $6x^{2} - 8x$.",
+      "B": "Student distributes $2x$ to the first term only and copies the $-4$ unchanged: $2x \\cdot 3x = 6x^{2}$, then $-4$, giving $6x^{2} - 4$.",
+      "C": "Student distributes correctly but treats the subtraction as addition, dropping the negative sign: $2x \\cdot 4 = 8x$ kept positive, giving $6x^{2} + 8x$.",
+      "D": "Student treats $x \\cdot x$ as $x$ (failing to add exponents): $2x \\cdot 3x = 6x$ and $2x \\cdot 4 = 8x$, giving $6x - 8x = -2x$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Multiply $2x$ by each term inside the parentheses separately, and carry the sign of each term."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Distributing a monomial across a binomial gives two terms, each multiplied. Eliminate any choice where the second term was not multiplied by $2x$."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["distributive_property", "monomial_binomial", "sign_handling", "polynomial_multiplication"],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-27",
+    "last_modified": "2026-06-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_089",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.2",
+    "topic": "multiplying_polynomials",
+    "topic_text": "Multiplying Polynomials (including FOIL)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "multiplying two monomials with a negative coefficient",
+      "applying the product rule for exponents while tracking the sign of the product"
+    ],
+    "question_text": "Which expression is equivalent to $(-5x^{3})(2x^{2})$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$-10x^{6}$",
+      "B": "$10x^{5}$",
+      "C": "$-3x^{5}$",
+      "D": "$-10x^{5}$"
+    },
+    "correct_answer": "D",
+    "explanation": "Multiply the coefficients and add the exponents:\n$-5 \\cdot 2 = -10$\n$x^{3} \\cdot x^{2} = x^{3+2} = x^{5}$\n\nThe product is $-10x^{5}$.",
+    "distractor_logic": {
+      "A": "Student multiplies the exponents instead of adding them: $3 \\cdot 2 = 6$, giving $-10x^{6}$.",
+      "B": "Student multiplies the coefficients and exponents correctly but drops the negative sign, treating a negative times a positive as positive, giving $10x^{5}$.",
+      "C": "Student adds the coefficients instead of multiplying them: $-5 + 2 = -3$, giving $-3x^{5}$.",
+      "D": "Correct: $-5 \\cdot 2 = -10$ and $x^{3} \\cdot x^{2} = x^{5}$, giving $-10x^{5}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Multiply the coefficients (watch the sign) and add the exponents when the bases are the same."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A negative times a positive is negative, so the coefficient must be negative. Eliminate any choice with a positive coefficient."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["monomial_product", "product_rule", "negative_coefficient", "exponents"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-27",
+    "last_modified": "2026-06-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_090",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.2",
+    "topic": "multiplying_polynomials",
+    "topic_text": "Multiplying Polynomials (including FOIL)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "distributing a higher-degree monomial across a binomial",
+      "adding exponents correctly when multiplying the variable terms"
+    ],
+    "question_text": "Which expression is equivalent to $4x^{2}(x + 3)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$4x^{3} + 12x^{2}$",
+      "B": "$4x^{3} + 3$",
+      "C": "$16x^{2}$",
+      "D": "$4x^{3} + 7x^{2}$"
+    },
+    "correct_answer": "A",
+    "explanation": "Distribute $4x^{2}$ to both terms:\n$4x^{2} \\cdot x = 4x^{3}$\n$4x^{2} \\cdot 3 = 12x^{2}$\n\nThe product is $4x^{3} + 12x^{2}$.",
+    "distractor_logic": {
+      "A": "Correct: $4x^{2} \\cdot x = 4x^{3}$ and $4x^{2} \\cdot 3 = 12x^{2}$, giving $4x^{3} + 12x^{2}$.",
+      "B": "Student distributes $4x^{2}$ to the first term only and copies the $+3$ unchanged: $4x^{2} \\cdot x = 4x^{3}$, then $+3$, giving $4x^{3} + 3$.",
+      "C": "Student treats $x^{2} \\cdot x$ as $x^{2}$ (failing to add exponents): $4x^{2} \\cdot x = 4x^{2}$ and $4x^{2} \\cdot 3 = 12x^{2}$, then combines the two like terms to $16x^{2}$.",
+      "D": "Student adds the coefficient and the constant ($4 + 3 = 7$) instead of multiplying when finding the second term: $4x^{2} \\cdot 3$ treated as $7x^{2}$, giving $4x^{3} + 7x^{2}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Multiply $4x^{2}$ by each term inside. When multiplying $x^{2}$ by $x$, add the exponents."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute $x = 2$ into the original and each choice. Only the equivalent expression will give the same value."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["distributive_property", "monomial_binomial", "exponents", "polynomial_multiplication"],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-27",
+    "last_modified": "2026-06-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_058",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.2",
+    "topic": "multiplying_polynomials",
+    "topic_text": "Multiplying Polynomials (including FOIL)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying FOIL to multiply two binomials and combining the resulting like terms",
+      "computing all four products including the Outer and Inner terms"
+    ],
+    "question_text": "Which expression is equivalent to $(x + 4)(x + 6)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x^{2} + 24$",
+      "B": "$x^{2} + 6x + 24$",
+      "C": "$x^{2} + 10x + 24$",
+      "D": "$x^{2} + 10x + 10$"
+    },
+    "correct_answer": "C",
+    "explanation": "Apply FOIL:\nFirst: $x \\cdot x = x^{2}$\nOuter: $x \\cdot 6 = 6x$\nInner: $4 \\cdot x = 4x$\nLast: $4 \\cdot 6 = 24$\n\nCombine the middle terms:\n$x^{2} + (6x + 4x) + 24 = x^{2} + 10x + 24$",
+    "distractor_logic": {
+      "A": "Student multiplies the First and Last terms only, omitting the Outer and Inner products: $x \\cdot x = x^{2}$ and $4 \\cdot 6 = 24$, giving $x^{2} + 24$ with no middle term.",
+      "B": "Student includes the Outer product $6x$ but omits the Inner product $4x$, giving $x^{2} + 6x + 24$.",
+      "C": "Correct: FOIL gives First $x^{2}$, Outer $6x$, Inner $4x$, Last $24$, which combine to $x^{2} + 10x + 24$.",
+      "D": "Student adds the last terms instead of multiplying them: $4 + 6 = 10$ for the constant, giving $x^{2} + 10x + 10$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute $x = 1$ into the original product and into each choice. The choice that matches is equivalent."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A product of two binomials has four sub-products. A choice missing a middle term skipped the Outer and Inner products."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["foil", "binomial_product", "combining_like_terms", "polynomial_multiplication"],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-27",
+    "last_modified": "2026-06-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_059",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.2",
+    "topic": "multiplying_polynomials",
+    "topic_text": "Multiplying Polynomials (including FOIL)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying FOIL to a binomial product with mixed signs",
+      "combining signed middle terms and tracking the sign of the constant product"
+    ],
+    "question_text": "Which expression is equivalent to $(x - 5)(x + 2)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x^{2} + 3x - 10$",
+      "B": "$x^{2} - 3x - 10$",
+      "C": "$x^{2} - 10$",
+      "D": "$x^{2} - 3x + 10$"
+    },
+    "correct_answer": "B",
+    "explanation": "Apply FOIL:\nFirst: $x \\cdot x = x^{2}$\nOuter: $x \\cdot 2 = 2x$\nInner: $-5 \\cdot x = -5x$\nLast: $-5 \\cdot 2 = -10$\n\nCombine the middle terms:\n$x^{2} + (2x - 5x) - 10 = x^{2} - 3x - 10$",
+    "distractor_logic": {
+      "A": "Student combines the middle terms with the wrong sign, treating $2x - 5x$ as $+3x$ instead of $-3x$, giving $x^{2} + 3x - 10$.",
+      "B": "Correct: FOIL gives First $x^{2}$, Outer $2x$, Inner $-5x$, Last $-10$, which combine to $x^{2} - 3x - 10$.",
+      "C": "Student multiplies the First and Last terms only, omitting the Outer and Inner products: $x \\cdot x = x^{2}$ and $(-5)(2) = -10$, giving $x^{2} - 10$.",
+      "D": "Student computes the Last product with the wrong sign, treating $(-5)(2)$ as $+10$, giving $x^{2} - 3x + 10$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute $x = 1$ into the original and each choice. The one that gives the same value is equivalent."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Track the sign of each product carefully. The Inner product uses the $-5$, and the Last product multiplies two terms with different signs."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["foil", "binomial_product", "sign_handling", "polynomial_multiplication"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-27",
+    "last_modified": "2026-06-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_060",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.2",
+    "topic": "multiplying_polynomials",
+    "topic_text": "Multiplying Polynomials (including FOIL)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying FOIL to a binomial product with a leading coefficient",
+      "combining the Outer and Inner products with correct signs"
+    ],
+    "question_text": "Which expression is equivalent to $(3x + 2)(x - 4)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$3x^{2} - 8$",
+      "B": "$3x^{2} - 14x - 8$",
+      "C": "$3x^{2} - 10x + 8$",
+      "D": "$3x^{2} - 10x - 8$"
+    },
+    "correct_answer": "D",
+    "explanation": "Apply FOIL:\nFirst: $3x \\cdot x = 3x^{2}$\nOuter: $3x \\cdot (-4) = -12x$\nInner: $2 \\cdot x = 2x$\nLast: $2 \\cdot (-4) = -8$\n\nCombine the middle terms:\n$3x^{2} + (-12x + 2x) - 8 = 3x^{2} - 10x - 8$",
+    "distractor_logic": {
+      "A": "Student multiplies the First and Last terms only, omitting the Outer and Inner products: $3x \\cdot x = 3x^{2}$ and $(2)(-4) = -8$, giving $3x^{2} - 8$.",
+      "B": "Student makes both middle products negative, treating the Inner product as $-2x$ instead of $+2x$: $-12x - 2x = -14x$, giving $3x^{2} - 14x - 8$.",
+      "C": "Student computes the Last product with the wrong sign, treating $(2)(-4)$ as $+8$, giving $3x^{2} - 10x + 8$.",
+      "D": "Correct: FOIL gives First $3x^{2}$, Outer $-12x$, Inner $2x$, Last $-8$, which combine to $3x^{2} - 10x - 8$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute $x = 1$ into the original product and each choice. Only the equivalent one matches."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The Last product is $(2)(-4) = -8$, so the constant term must be $-8$. Eliminate any choice with a different constant, then check the middle term."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["foil", "binomial_product", "leading_coefficient", "sign_handling"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-27",
+    "last_modified": "2026-06-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_044",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.2",
+    "topic": "multiplying_polynomials",
+    "topic_text": "Multiplying Polynomials (including FOIL)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "multiplying a binomial by a trinomial using the distributive property",
+      "combining like terms across the resulting products"
+    ],
+    "question_text": "Which expression is equivalent to $(x + 2)(x^{2} - 3x + 1)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x^{3} - x^{2} - 5x + 2$",
+      "B": "$x^{3} - 3x^{2} + x$",
+      "C": "$x^{3} - x^{2} + 7x + 2$",
+      "D": "$x^{3} - 5x^{2} - 5x + 2$"
+    },
+    "correct_answer": "A",
+    "explanation": "Distribute each term of $(x + 2)$ across the trinomial:\n$x(x^{2} - 3x + 1) = x^{3} - 3x^{2} + x$\n$2(x^{2} - 3x + 1) = 2x^{2} - 6x + 2$\n\nCombine like terms:\n$x^{3} + (-3x^{2} + 2x^{2}) + (x - 6x) + 2 = x^{3} - x^{2} - 5x + 2$",
+    "distractor_logic": {
+      "A": "Correct: $x(x^{2} - 3x + 1) = x^{3} - 3x^{2} + x$ and $2(x^{2} - 3x + 1) = 2x^{2} - 6x + 2$, combining to $x^{3} - x^{2} - 5x + 2$.",
+      "B": "Student distributes only the first term of the binomial ($x$) and never multiplies by $2$: $x(x^{2} - 3x + 1) = x^{3} - 3x^{2} + x$.",
+      "C": "Student makes a sign error on $2 \\cdot (-3x)$, computing $+6x$ instead of $-6x$. The $x$ terms then combine as $x + 6x = 7x$, giving $x^{3} - x^{2} + 7x + 2$.",
+      "D": "Student combines the $x^{2}$ terms incorrectly, adding the magnitudes of $-3x^{2}$ and $2x^{2}$ to get $-5x^{2}$ instead of $-x^{2}$, giving $x^{3} - 5x^{2} - 5x + 2$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Each term of the binomial multiplies every term of the trinomial. Distribute the $x$ first, then the $2$, then collect like terms by degree."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute $x = 1$ into the original and each choice. Only the equivalent expression gives the same value."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["polynomial_multiplication", "distributive_property", "binomial_trinomial", "combining_like_terms"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-27",
+    "last_modified": "2026-06-27",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_045",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.2",
+    "topic": "multiplying_polynomials",
+    "topic_text": "Multiplying Polynomials (including FOIL)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "expanding a squared binomial including the doubled cross-product middle term",
+      "applying the pattern $(a - b)^{2} = a^{2} - 2ab + b^{2}$"
+    ],
+    "question_text": "Which expression is equivalent to $(2x - 5)^{2}$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$4x^{2} + 25$",
+      "B": "$4x^{2} - 20x + 25$",
+      "C": "$4x^{2} - 10x + 25$",
+      "D": "$4x^{2} - 20x - 25$"
+    },
+    "correct_answer": "B",
+    "explanation": "A squared binomial follows $(a - b)^{2} = a^{2} - 2ab + b^{2}$ with $a = 2x$ and $b = 5$:\n$(2x)^{2} = 4x^{2}$\n$-2(2x)(5) = -20x$\n$(5)^{2} = 25$\n\nThe expansion is $4x^{2} - 20x + 25$.",
+    "distractor_logic": {
+      "A": "Student squares each term independently and omits the middle term: $(2x)^{2} + (-5)^{2} = 4x^{2} + 25$, forgetting the $-2ab$ term.",
+      "B": "Correct: $(2x)^{2} - 2(2x)(5) + (5)^{2} = 4x^{2} - 20x + 25$.",
+      "C": "Student includes the cross product only once instead of twice (one of the Outer or Inner products but not both): $(2x)(-5) = -10x$, giving $4x^{2} - 10x + 25$.",
+      "D": "Student computes the last term as $-25$, treating $(-5)^{2}$ as negative, giving $4x^{2} - 20x - 25$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Squaring a binomial means multiplying it by itself, so there is a middle term. Treat $(2x - 5)^{2}$ as $(2x - 5)(2x - 5)$ and use FOIL."
+      },
+      {
+        "strategy": "plug_in_values",
+        "hint_text": "Substitute $x = 1$: the original is $(2 - 5)^{2} = 9$. Only the equivalent expression equals $9$ at $x = 1$."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["perfect_square_binomial", "binomial_squared", "foil", "polynomial_multiplication"],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-27",
+    "last_modified": "2026-06-27",
+    "review_notes": null
+  }
+]
