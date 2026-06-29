@@ -1,0 +1,702 @@
+[
+  {
+    "item_id": "AR_B_116",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.8",
+    "topic": "simplifying_and_operating_with_radical_expressions",
+    "topic_text": "Simplifying and Operating with Radical Expressions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying the largest perfect-square factor of a radicand",
+      "extracting the square root of a perfect-square factor to simplify a radical"
+    ],
+    "question_text": "Which expression is equivalent to $\\sqrt{48}$ in simplest radical form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$2\\sqrt{12}$",
+      "B": "$4\\sqrt{3}$",
+      "C": "$16\\sqrt{3}$",
+      "D": "$8\\sqrt{3}$"
+    },
+    "correct_answer": "B",
+    "explanation": "Find the largest perfect-square factor of 48:\n$48 = 16 \\cdot 3$\n$\\sqrt{48} = \\sqrt{16}\\sqrt{3} = 4\\sqrt{3}$\n\nSince 3 has no perfect-square factors, $4\\sqrt{3}$ is fully simplified.",
+    "distractor_logic": {
+      "A": "Student factors $48 = 4 \\cdot 12$ and extracts $\\sqrt{4} = 2$, but 4 is not the largest perfect-square factor, leaving the unsimplified $2\\sqrt{12}$.",
+      "B": "Correct: $\\sqrt{48} = \\sqrt{16 \\cdot 3} = \\sqrt{16}\\sqrt{3} = 4\\sqrt{3}$.",
+      "C": "Student factors $48 = 16 \\cdot 3$ and recognizes 16 as a perfect square but moves 16 outside the radical instead of its square root, $\\sqrt{16} = 4$.",
+      "D": "Student factors $48 = 16 \\cdot 3$ but evaluates $\\sqrt{16}$ as 8, treating the square root as half the number, instead of 4."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Look for the largest perfect-square factor of 48, such as 4, 9, 16, or 25, before extracting its root."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The number left under the radical should have no perfect-square factors remaining. Eliminate any choice whose radicand can still be reduced."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_simplification", "perfect_square_factor", "square_root"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_117",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.8",
+    "topic": "simplifying_and_operating_with_radical_expressions",
+    "topic_text": "Simplifying and Operating with Radical Expressions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying a perfect-square factor of a radicand",
+      "writing a simplified radical with the coefficient and radicand in correct positions"
+    ],
+    "question_text": "Which expression is equivalent to $\\sqrt{75}$ in simplest radical form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$25\\sqrt{3}$",
+      "B": "$3\\sqrt{5}$",
+      "C": "$5\\sqrt{3}$",
+      "D": "$5\\sqrt{15}$"
+    },
+    "correct_answer": "C",
+    "explanation": "Find the largest perfect-square factor of 75:\n$75 = 25 \\cdot 3$\n$\\sqrt{75} = \\sqrt{25}\\sqrt{3} = 5\\sqrt{3}$\n\nSince 3 has no perfect-square factors, $5\\sqrt{3}$ is fully simplified.",
+    "distractor_logic": {
+      "A": "Student factors $75 = 25 \\cdot 3$ and recognizes 25 as a perfect square but moves 25 outside the radical instead of its square root, $\\sqrt{25} = 5$.",
+      "B": "Student finds the correct simplified parts, a 5 and a 3, but places them in the wrong positions, writing the coefficient as 3 and the radicand as 5.",
+      "C": "Correct: $\\sqrt{75} = \\sqrt{25 \\cdot 3} = \\sqrt{25}\\sqrt{3} = 5\\sqrt{3}$.",
+      "D": "Student extracts the root 5 correctly but divides the radicand by 5 instead of by 25, leaving $5\\sqrt{15}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the largest perfect-square factor of 75. The square root of that factor becomes the coefficient outside the radical."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Square the coefficient and multiply by the radicand for each choice. Only the correct simplification multiplies back to 75."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_simplification", "perfect_square_factor", "square_root"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_118",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.8",
+    "topic": "simplifying_and_operating_with_radical_expressions",
+    "topic_text": "Simplifying and Operating with Radical Expressions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying the largest perfect-square factor of a radicand",
+      "extracting the square root of a perfect-square factor to simplify a radical"
+    ],
+    "question_text": "Which expression is equivalent to $\\sqrt{32}$ in simplest radical form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$2\\sqrt{8}$",
+      "B": "$16\\sqrt{2}$",
+      "C": "$8\\sqrt{2}$",
+      "D": "$4\\sqrt{2}$"
+    },
+    "correct_answer": "D",
+    "explanation": "Find the largest perfect-square factor of 32:\n$32 = 16 \\cdot 2$\n$\\sqrt{32} = \\sqrt{16}\\sqrt{2} = 4\\sqrt{2}$\n\nSince 2 has no perfect-square factors, $4\\sqrt{2}$ is fully simplified.",
+    "distractor_logic": {
+      "A": "Student factors $32 = 4 \\cdot 8$ and extracts $\\sqrt{4} = 2$, but 4 is not the largest perfect-square factor, leaving the unsimplified $2\\sqrt{8}$.",
+      "B": "Student factors $32 = 16 \\cdot 2$ and recognizes 16 as a perfect square but moves 16 outside the radical instead of its square root, $\\sqrt{16} = 4$.",
+      "C": "Student factors $32 = 16 \\cdot 2$ but evaluates $\\sqrt{16}$ as 8, treating the square root as half the number, instead of 4.",
+      "D": "Correct: $\\sqrt{32} = \\sqrt{16 \\cdot 2} = \\sqrt{16}\\sqrt{2} = 4\\sqrt{2}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Find the largest perfect-square factor of 32. Smaller perfect-square factors leave a radicand that can still be simplified."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A fully simplified radical has no remaining perfect-square factor under the radical. Rule out any choice with a radicand like 8 that can still be reduced."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_simplification", "perfect_square_factor", "square_root"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_119",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.8",
+    "topic": "simplifying_and_operating_with_radical_expressions",
+    "topic_text": "Simplifying and Operating with Radical Expressions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "evaluating the square root of a sum by combining terms inside the radical first",
+      "recognizing that a radical does not distribute over addition"
+    ],
+    "question_text": "What is the value of $\\sqrt{36 + 64}$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$10$",
+      "B": "$14$",
+      "C": "$100$",
+      "D": "$50$"
+    },
+    "correct_answer": "A",
+    "explanation": "Combine the terms inside the radical before taking the square root:\n$\\sqrt{36 + 64} = \\sqrt{100} = 10$\n\nA square root does not distribute over addition, so $\\sqrt{36 + 64}$ is not the same as $\\sqrt{36} + \\sqrt{64}$.",
+    "distractor_logic": {
+      "A": "Correct: Add inside the radical first, then take the root: $\\sqrt{36 + 64} = \\sqrt{100} = 10$.",
+      "B": "Student splits the radical over addition, $\\sqrt{36 + 64} = \\sqrt{36} + \\sqrt{64} = 6 + 8 = 14$. A radical does not distribute over addition.",
+      "C": "Student adds the values inside the radical to get 100 but forgets to take the square root, reporting 100.",
+      "D": "Student adds inside the radical to get 100 but evaluates $\\sqrt{100}$ as 50, treating the square root as half the number, instead of 10."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The operations inside the radical must be completed before the square root is taken."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A square root cannot be split across a sum. Eliminate the choice that comes from taking the root of each term separately."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["square_root", "radical_over_addition", "order_of_operations"],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_120",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.8",
+    "topic": "simplifying_and_operating_with_radical_expressions",
+    "topic_text": "Simplifying and Operating with Radical Expressions",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "identifying the perfect-square factor of a radicand",
+      "extracting the square root of a perfect-square factor to simplify a radical"
+    ],
+    "question_text": "Which expression is equivalent to $\\sqrt{98}$ in simplest radical form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$49\\sqrt{2}$",
+      "B": "$7\\sqrt{2}$",
+      "C": "$2\\sqrt{49}$",
+      "D": "$7\\sqrt{14}$"
+    },
+    "correct_answer": "B",
+    "explanation": "Find the largest perfect-square factor of 98:\n$98 = 49 \\cdot 2$\n$\\sqrt{98} = \\sqrt{49}\\sqrt{2} = 7\\sqrt{2}$\n\nSince 2 has no perfect-square factors, $7\\sqrt{2}$ is fully simplified.",
+    "distractor_logic": {
+      "A": "Student factors $98 = 49 \\cdot 2$ and recognizes 49 as a perfect square but moves 49 outside the radical instead of its square root, $\\sqrt{49} = 7$.",
+      "B": "Correct: $\\sqrt{98} = \\sqrt{49 \\cdot 2} = \\sqrt{49}\\sqrt{2} = 7\\sqrt{2}$.",
+      "C": "Student factors $98 = 2 \\cdot 49$ and pulls the 2 outside the radical, leaving the perfect square 49 inside instead of extracting it.",
+      "D": "Student extracts the root 7 correctly but divides the radicand by 7 instead of by 49, leaving $7\\sqrt{14}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Identify the perfect-square factor of 98 and take its square root to find the coefficient."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A fully simplified radical leaves no perfect square under the radical sign. Eliminate any choice whose radicand is itself a perfect square."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_simplification", "perfect_square_factor", "square_root"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_076",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.8",
+    "topic": "simplifying_and_operating_with_radical_expressions",
+    "topic_text": "Simplifying and Operating with Radical Expressions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "simplifying radicals to reveal like radical terms",
+      "adding like radicals by combining coefficients while keeping the radicand unchanged"
+    ],
+    "question_text": "Which expression is equivalent to $3\\sqrt{8} + 2\\sqrt{50}$ in simplest form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$5\\sqrt{58}$",
+      "B": "$8\\sqrt{2}$",
+      "C": "$16\\sqrt{2}$",
+      "D": "$32$"
+    },
+    "correct_answer": "C",
+    "explanation": "Simplify each radical first:\n$3\\sqrt{8} = 3 \\cdot 2\\sqrt{2} = 6\\sqrt{2}$\n$2\\sqrt{50} = 2 \\cdot 5\\sqrt{2} = 10\\sqrt{2}$\n\nThe terms are now like radicals, so add the coefficients:\n$6\\sqrt{2} + 10\\sqrt{2} = 16\\sqrt{2}$",
+    "distractor_logic": {
+      "A": "Student adds the coefficients and the radicands directly without simplifying either radical: $(3 + 2)\\sqrt{8 + 50} = 5\\sqrt{58}$.",
+      "B": "Student simplifies $3\\sqrt{8} = 6\\sqrt{2}$ correctly but when simplifying $2\\sqrt{50}$ removes the perfect-square factor 25 without carrying its root out front, getting $2\\sqrt{2}$ instead of $10\\sqrt{2}$; then $6\\sqrt{2} + 2\\sqrt{2} = 8\\sqrt{2}$.",
+      "C": "Correct: $3\\sqrt{8} = 6\\sqrt{2}$ and $2\\sqrt{50} = 10\\sqrt{2}$, so $6\\sqrt{2} + 10\\sqrt{2} = 16\\sqrt{2}$.",
+      "D": "Student simplifies correctly to $6\\sqrt{2} + 10\\sqrt{2}$ but adds the radicands as well as the coefficients: $16\\sqrt{2 + 2} = 16\\sqrt{4} = 32$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Simplify each radical to its simplest form first; only then can you tell whether the terms share the same radicand and can be combined."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "When adding like radicals, the radicand stays the same and only the coefficients change. Eliminate any choice where the radicand changed."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["adding_radicals", "like_radicals", "radical_simplification"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_077",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.8",
+    "topic": "simplifying_and_operating_with_radical_expressions",
+    "topic_text": "Simplifying and Operating with Radical Expressions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "multiplying two radicals by combining their radicands under one radical",
+      "simplifying the resulting radical by extracting a perfect-square factor"
+    ],
+    "question_text": "Which expression is equivalent to $\\sqrt{6} \\cdot \\sqrt{10}$ in simplest radical form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$2\\sqrt{15}$",
+      "B": "$\\sqrt{60}$",
+      "C": "$\\sqrt{16}$",
+      "D": "$4\\sqrt{15}$"
+    },
+    "correct_answer": "A",
+    "explanation": "Multiply the radicands under one radical:\n$\\sqrt{6} \\cdot \\sqrt{10} = \\sqrt{6 \\cdot 10} = \\sqrt{60}$\n\nSimplify by extracting the largest perfect-square factor:\n$\\sqrt{60} = \\sqrt{4 \\cdot 15} = 2\\sqrt{15}$",
+    "distractor_logic": {
+      "A": "Correct: $\\sqrt{6} \\cdot \\sqrt{10} = \\sqrt{60} = \\sqrt{4 \\cdot 15} = 2\\sqrt{15}$.",
+      "B": "Student multiplies the radicands correctly to get $\\sqrt{60}$ but does not simplify the result; 60 still has the perfect-square factor 4.",
+      "C": "Student adds the radicands instead of multiplying them: $\\sqrt{6 + 10} = \\sqrt{16}$.",
+      "D": "Student multiplies to get $\\sqrt{60} = \\sqrt{4 \\cdot 15}$ but moves the 4 outside the radical instead of its square root, $\\sqrt{4} = 2$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "When multiplying square roots, the radicands multiply under a single radical. Then check the product for a perfect-square factor."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Multiplying two square roots keeps a radical in the answer unless the product is a perfect square. Then look for any remaining perfect-square factor to rule out unsimplified forms."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["multiplying_radicals", "radical_simplification", "product_of_radicals"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_078",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.8",
+    "topic": "simplifying_and_operating_with_radical_expressions",
+    "topic_text": "Simplifying and Operating with Radical Expressions",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "simplifying radicals to reveal like radical terms",
+      "subtracting like radicals by combining coefficients while keeping the radicand unchanged"
+    ],
+    "question_text": "Which expression is equivalent to $\\sqrt{45} - \\sqrt{20}$ in simplest form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$5$",
+      "B": "$5\\sqrt{5}$",
+      "C": "$0$",
+      "D": "$\\sqrt{5}$"
+    },
+    "correct_answer": "D",
+    "explanation": "Simplify each radical first:\n$\\sqrt{45} = 3\\sqrt{5}$\n$\\sqrt{20} = 2\\sqrt{5}$\n\nThe terms are like radicals, so subtract the coefficients:\n$3\\sqrt{5} - 2\\sqrt{5} = 1\\sqrt{5} = \\sqrt{5}$",
+    "distractor_logic": {
+      "A": "Student subtracts the values under one radical instead of simplifying each term: $\\sqrt{45 - 20} = \\sqrt{25} = 5$. A radical does not distribute over subtraction.",
+      "B": "Student simplifies $\\sqrt{45} = 3\\sqrt{5}$ and $\\sqrt{20} = 2\\sqrt{5}$ correctly but adds the coefficients instead of subtracting: $3\\sqrt{5} + 2\\sqrt{5} = 5\\sqrt{5}$.",
+      "C": "Student simplifies to $3\\sqrt{5} - 2\\sqrt{5}$ but subtracts the radicands as well as the coefficients: $(3 - 2)\\sqrt{5 - 5} = 1\\sqrt{0} = 0$.",
+      "D": "Correct: $\\sqrt{45} = 3\\sqrt{5}$ and $\\sqrt{20} = 2\\sqrt{5}$, so $3\\sqrt{5} - 2\\sqrt{5} = 1\\sqrt{5} = \\sqrt{5}$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Simplify each radical first to check whether the two terms share the same radicand and can be combined."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Combining like radicals changes only the coefficients, not the radicand. Eliminate any choice where the radicand changed or disappeared."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["subtracting_radicals", "like_radicals", "radical_simplification"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_056",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.8",
+    "topic": "simplifying_and_operating_with_radical_expressions",
+    "topic_text": "Simplifying and Operating with Radical Expressions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "factoring a variable radicand into perfect-square and remaining factors",
+      "extracting both numeric and variable square roots from a radical"
+    ],
+    "question_text": "Which expression is equivalent to $\\sqrt{12x^{3}}$ for $x \\geq 0$, in simplest radical form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$2x\\sqrt{3x}$",
+      "B": "$2\\sqrt{3x^{3}}$",
+      "C": "$2x\\sqrt{3}$",
+      "D": "$4x\\sqrt{3x}$"
+    },
+    "correct_answer": "A",
+    "explanation": "Factor the radicand into perfect-square factors and remaining factors:\n$12x^{3} = 4x^{2} \\cdot 3x$\n$\\sqrt{12x^{3}} = \\sqrt{4x^{2}} \\cdot \\sqrt{3x} = 2x\\sqrt{3x}$\n\nThe factor $3x$ has no perfect-square factors, so $2x\\sqrt{3x}$ is fully simplified.",
+    "distractor_logic": {
+      "A": "Correct: $\\sqrt{12x^{3}} = \\sqrt{4x^{2} \\cdot 3x} = \\sqrt{4x^{2}}\\sqrt{3x} = 2x\\sqrt{3x}$.",
+      "B": "Student extracts the numeric perfect square $\\sqrt{4} = 2$ but does not simplify the variable part, leaving all of $x^{3}$ under the radical: $2\\sqrt{3x^{3}}$.",
+      "C": "Student extracts $\\sqrt{x^{2}} = x$ but treats $x^{3}$ as a perfect square, dropping the leftover factor of $x$ that should remain under the radical: $2x\\sqrt{3}$.",
+      "D": "Student factors $12x^{3} = 4x^{2} \\cdot 3x$ correctly but moves the 4 outside the radical instead of its square root, $\\sqrt{4} = 2$: $4x\\sqrt{3x}$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Separate the radicand into a perfect-square part, both number and variable, and a leftover part. An odd power of a variable leaves one factor of that variable under the radical."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A fully simplified radical has no perfect-square factor left under the radical, including variable squares. Eliminate any choice that still hides one."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_simplification", "variable_radicand", "perfect_square_factor", "square_root"],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_057",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.8",
+    "topic": "simplifying_and_operating_with_radical_expressions",
+    "topic_text": "Simplifying and Operating with Radical Expressions",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "rationalizing a denominator by multiplying numerator and denominator by the radical",
+      "reducing the resulting coefficient to write the expression in simplest form"
+    ],
+    "question_text": "Which expression is equivalent to $\\frac{6}{\\sqrt{3}}$ with a rationalized denominator, in simplest form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$2$",
+      "B": "$2\\sqrt{3}$",
+      "C": "$6$",
+      "D": "$\\frac{6\\sqrt{3}}{3}$"
+    },
+    "correct_answer": "B",
+    "explanation": "Multiply the numerator and denominator by $\\sqrt{3}$ to clear the radical from the denominator:\n$\\frac{6}{\\sqrt{3}} \\cdot \\frac{\\sqrt{3}}{\\sqrt{3}} = \\frac{6\\sqrt{3}}{\\sqrt{3} \\cdot \\sqrt{3}} = \\frac{6\\sqrt{3}}{3}$\n\nReduce the coefficient:\n$\\frac{6\\sqrt{3}}{3} = 2\\sqrt{3}$",
+    "distractor_logic": {
+      "A": "Student multiplies only the denominator by $\\sqrt{3}$, forgetting to multiply the numerator: $\\frac{6}{\\sqrt{3} \\cdot \\sqrt{3}} = \\frac{6}{3} = 2$.",
+      "B": "Correct: $\\frac{6}{\\sqrt{3}} \\cdot \\frac{\\sqrt{3}}{\\sqrt{3}} = \\frac{6\\sqrt{3}}{3} = 2\\sqrt{3}$.",
+      "C": "Student multiplies only the numerator by $\\sqrt{3}$, then cancels the $\\sqrt{3}$ in the numerator and denominator: $\\frac{6\\sqrt{3}}{\\sqrt{3}} = 6$.",
+      "D": "Student rationalizes correctly to $\\frac{6\\sqrt{3}}{3}$ but does not reduce $\\frac{6}{3}$ to 2, leaving the answer unsimplified."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "To clear a radical from the denominator, multiply both the numerator and the denominator by that radical so the denominator becomes a whole number."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A correctly rationalized result has no radical in the denominator. Check each choice for whether the denominator is free of radicals and whether the coefficient is fully reduced."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["rationalizing_denominator", "radical_simplification", "simplest_radical_form"],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-28",
+    "last_modified": "2026-06-28",
+    "review_notes": null
+  }
+]

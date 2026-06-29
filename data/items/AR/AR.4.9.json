@@ -1,0 +1,702 @@
+[
+  {
+    "item_id": "AR_B_121",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.9",
+    "topic": "solving_radical_equations",
+    "topic_text": "Solving Radical Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "squaring both sides of a square root equation to remove the radical",
+      "solving the resulting linear equation for the variable"
+    ],
+    "question_text": "Solve for $x$: $\\sqrt{x + 3} = 4$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 1$",
+      "B": "$x = 5$",
+      "C": "$x = 13$",
+      "D": "$x = 19$"
+    },
+    "correct_answer": "C",
+    "explanation": "Square both sides to remove the radical:\n$(\\sqrt{x + 3})^{2} = 4^{2}$\n$x + 3 = 16$\n\nSubtract 3 from both sides:\n$x = 13$\n\nCheck: $\\sqrt{13 + 3} = \\sqrt{16} = 4$.",
+    "distractor_logic": {
+      "A": "Student does not square the right side, solving $x + 3 = 4$ as if no radical were present: $x = 1$.",
+      "B": "Student doubles the 4 instead of squaring it, using $4^{2} = 8$: $x + 3 = 8$ gives $x = 5$.",
+      "C": "Correct: squaring both sides gives $x + 3 = 16$, so $x = 13$.",
+      "D": "Student squares correctly to 16 but adds 3 instead of subtracting when isolating $x$: $x = 16 + 3 = 19$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "use_answer_choices"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The radical is already alone on the left. Square both sides to undo the square root, then isolate $x$."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Substitute each choice for $x$ into $\\sqrt{x + 3}$. The correct value makes the radical equal to 4."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_equation", "square_both_sides", "linear_solution"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_122",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.9",
+    "topic": "solving_radical_equations",
+    "topic_text": "Solving Radical Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "squaring both sides of a square root equation to remove the radical",
+      "isolating the variable in the resulting linear equation"
+    ],
+    "question_text": "Solve for $x$: $\\sqrt{x - 2} = 5$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 27$",
+      "B": "$x = 7$",
+      "C": "$x = 12$",
+      "D": "$x = 23$"
+    },
+    "correct_answer": "A",
+    "explanation": "Square both sides to remove the radical:\n$(\\sqrt{x - 2})^{2} = 5^{2}$\n$x - 2 = 25$\n\nAdd 2 to both sides:\n$x = 27$\n\nCheck: $\\sqrt{27 - 2} = \\sqrt{25} = 5$.",
+    "distractor_logic": {
+      "A": "Correct: squaring both sides gives $x - 2 = 25$, so $x = 27$.",
+      "B": "Student does not square the right side, solving $x - 2 = 5$ as if no radical were present: $x = 7$.",
+      "C": "Student doubles the 5 instead of squaring it, using $5^{2} = 10$: $x - 2 = 10$ gives $x = 12$.",
+      "D": "Student squares correctly to 25 but subtracts 2 instead of adding when isolating $x$: $x = 25 - 2 = 23$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Square both sides first to clear the square root, then undo the subtraction inside to isolate $x$."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Any value of $x$ smaller than what makes the radicand a perfect square that equals 25 will not satisfy the equation. Test your candidate by substituting it back."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_equation", "square_both_sides", "isolating_variable"],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_123",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.9",
+    "topic": "solving_radical_equations",
+    "topic_text": "Solving Radical Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "squaring both sides of a radical equation with a coefficient inside the radical",
+      "dividing by the coefficient to solve for the variable"
+    ],
+    "question_text": "Solve for $x$: $\\sqrt{2x} = 6$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 3$",
+      "B": "$x = 18$",
+      "C": "$x = 6$",
+      "D": "$x = 36$"
+    },
+    "correct_answer": "B",
+    "explanation": "Square both sides to remove the radical:\n$(\\sqrt{2x})^{2} = 6^{2}$\n$2x = 36$\n\nDivide both sides by 2:\n$x = 18$\n\nCheck: $\\sqrt{2 \\cdot 18} = \\sqrt{36} = 6$.",
+    "distractor_logic": {
+      "A": "Student does not square the right side, solving $2x = 6$ as if no radical were present: $x = 3$.",
+      "B": "Correct: squaring both sides gives $2x = 36$, so $x = 18$.",
+      "C": "Student doubles the 6 instead of squaring it, using $6^{2} = 12$: $2x = 12$ gives $x = 6$.",
+      "D": "Student squares to $2x = 36$ but forgets to divide by 2, reporting $x = 36$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "use_answer_choices"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "After squaring both sides, the coefficient on $x$ is still there. Remember to divide it out as your last step."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Substitute each choice into $\\sqrt{2x}$. The correct value makes the radical equal to 6."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_equation", "coefficient_inside_radical", "square_both_sides"],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_124",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.9",
+    "topic": "solving_radical_equations",
+    "topic_text": "Solving Radical Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "isolating a radical term before squaring both sides",
+      "solving the resulting linear equation for the variable"
+    ],
+    "question_text": "Solve for $x$: $\\sqrt{x} + 1 = 4$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 15$",
+      "B": "$x = 3$",
+      "C": "$x = 25$",
+      "D": "$x = 9$"
+    },
+    "correct_answer": "D",
+    "explanation": "Isolate the radical first by subtracting 1 from both sides:\n$\\sqrt{x} = 3$\n\nSquare both sides:\n$x = 9$\n\nCheck: $\\sqrt{9} + 1 = 3 + 1 = 4$.",
+    "distractor_logic": {
+      "A": "Student squares before isolating the radical, treating each piece separately: $x + 1 = 16$ gives $x = 15$.",
+      "B": "Student isolates correctly to $\\sqrt{x} = 3$ but does not square, reporting $x = 3$.",
+      "C": "Student adds 1 to the right side instead of subtracting it, getting $\\sqrt{x} = 5$, then squares to $x = 25$.",
+      "D": "Correct: isolating gives $\\sqrt{x} = 3$, and squaring gives $x = 9$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Get the square root by itself before you square. The constant outside the radical must be moved first."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Substitute each candidate back into $\\sqrt{x} + 1$. Only one makes the full left side equal to 4."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_equation", "isolate_radical_first", "square_both_sides"],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_B_125",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.9",
+    "topic": "solving_radical_equations",
+    "topic_text": "Solving Radical Equations",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "squaring both sides of a radical equation and isolating a variable with a coefficient",
+      "performing inverse operations in the correct order"
+    ],
+    "question_text": "Solve for $x$: $\\sqrt{2x + 4} = 6$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 16$",
+      "B": "$x = 4$",
+      "C": "$x = 20$",
+      "D": "$x = 32$"
+    },
+    "correct_answer": "A",
+    "explanation": "Square both sides to remove the radical:\n$(\\sqrt{2x + 4})^{2} = 6^{2}$\n$2x + 4 = 36$\n\nSubtract 4, then divide by 2:\n$2x = 32$\n$x = 16$\n\nCheck: $\\sqrt{2 \\cdot 16 + 4} = \\sqrt{36} = 6$.",
+    "distractor_logic": {
+      "A": "Correct: squaring gives $2x + 4 = 36$, so $2x = 32$ and $x = 16$.",
+      "B": "Student doubles the 6 instead of squaring it, using $6^{2} = 12$: $2x + 4 = 12$ gives $2x = 8$ and $x = 4$.",
+      "C": "Student adds 4 instead of subtracting when isolating, getting $2x = 36 + 4 = 40$, so $x = 20$.",
+      "D": "Student squares and subtracts correctly to $2x = 32$ but forgets to divide by 2, reporting $x = 32$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "use_answer_choices"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "After squaring, undo the operations inside the radical in reverse order: subtract the constant first, then divide by the coefficient."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Substitute each choice into $\\sqrt{2x + 4}$. The correct value makes the radical equal to 6."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_equation", "square_both_sides", "inverse_operations"],
+    "estimated_time_seconds": 85,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_079",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.9",
+    "topic": "solving_radical_equations",
+    "topic_text": "Solving Radical Equations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "squaring both sides of a radical equation to produce a quadratic",
+      "factoring and verifying that both candidate solutions satisfy the original equation"
+    ],
+    "question_text": "Solve for $x$: $\\sqrt{7x - 10} = x$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 5$ only",
+      "B": "$x = 2$ and $x = 5$",
+      "C": "$x = -2$ and $x = -5$",
+      "D": "$x = 7$ and $x = 10$"
+    },
+    "correct_answer": "B",
+    "explanation": "Square both sides:\n$7x - 10 = x^{2}$\n\nRearrange into standard form:\n$x^{2} - 7x + 10 = 0$\n$(x - 2)(x - 5) = 0$\n\nSo $x = 2$ or $x = 5$. Check both:\n$x = 2$: $\\sqrt{14 - 10} = \\sqrt{4} = 2$ (valid)\n$x = 5$: $\\sqrt{35 - 10} = \\sqrt{25} = 5$ (valid)\n\nBoth solutions are valid.",
+    "distractor_logic": {
+      "A": "Student assumes the smaller root must be extraneous and discards $x = 2$ without checking, keeping only $x = 5$.",
+      "B": "Correct: $(x - 2)(x - 5) = 0$ gives $x = 2$ and $x = 5$, and both check in the original equation.",
+      "C": "Student factors with the wrong signs as $(x + 2)(x + 5)$ and reads the roots as $x = -2$ and $x = -5$.",
+      "D": "Student reads the coefficient 7 and the constant 10 directly as the solutions instead of factoring."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "use_answer_choices"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Squaring both sides produces a quadratic. After factoring, test each candidate in the original equation; squaring can introduce roots that do not actually work."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Substitute each value back into $\\sqrt{7x - 10} = x$. A value is a solution only if both sides come out equal."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_equation", "quadratic_after_squaring", "two_valid_solutions"],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_080",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.9",
+    "topic": "solving_radical_equations",
+    "topic_text": "Solving Radical Equations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "solving a radical equation that produces a quadratic after squaring",
+      "checking candidate solutions and rejecting an extraneous root"
+    ],
+    "question_text": "Solve for $x$: $\\sqrt{3x + 4} = x$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 4$ and $x = -1$",
+      "B": "$x = -4$ and $x = 1$",
+      "C": "$x = 4$",
+      "D": "No real solution"
+    },
+    "correct_answer": "C",
+    "explanation": "Square both sides:\n$3x + 4 = x^{2}$\n\nRearrange into standard form:\n$x^{2} - 3x - 4 = 0$\n$(x - 4)(x + 1) = 0$\n\nSo $x = 4$ or $x = -1$. Check both:\n$x = 4$: $\\sqrt{12 + 4} = \\sqrt{16} = 4$ (valid)\n$x = -1$: $\\sqrt{-3 + 4} = \\sqrt{1} = 1$, but the right side is $-1$, so $1 \\neq -1$ (extraneous)\n\nOnly $x = 4$ is valid.",
+    "distractor_logic": {
+      "A": "Student solves the quadratic correctly but does not check the candidates, accepting the extraneous root $x = -1$ along with $x = 4$.",
+      "B": "Student reads the numbers inside the factors $(x - 4)(x + 1)$ directly as the roots, getting $x = -4$ and $x = 1$.",
+      "C": "Correct: the candidates are $x = 4$ and $x = -1$, but $x = -1$ fails the check, so only $x = 4$ is valid.",
+      "D": "Student makes a sign error moving the constant, forming $x^{2} - 3x + 4 = 0$ (discriminant $9 - 16 < 0$) and concludes there is no real solution."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Squaring gives a quadratic with two candidates. Substitute each one back into the original equation; a candidate that makes the two sides unequal must be rejected."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The right side equals the square root, which is never negative. Any candidate that makes the right side negative cannot be a true solution."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_equation", "extraneous_solution", "checking_solutions"],
+    "estimated_time_seconds": 115,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_P_081",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.9",
+    "topic": "solving_radical_equations",
+    "topic_text": "Solving Radical Equations",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "isolating a radical term before squaring both sides",
+      "solving the resulting linear equation with a coefficient inside the radical"
+    ],
+    "question_text": "Solve for $x$: $\\sqrt{3x - 2} + 4 = 9$",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 4$",
+      "B": "$x = 27$",
+      "C": "$x = 57$",
+      "D": "$x = 9$"
+    },
+    "correct_answer": "D",
+    "explanation": "Isolate the radical by subtracting 4 from both sides:\n$\\sqrt{3x - 2} = 5$\n\nSquare both sides:\n$3x - 2 = 25$\n\nAdd 2, then divide by 3:\n$3x = 27$\n$x = 9$\n\nCheck: $\\sqrt{27 - 2} + 4 = \\sqrt{25} + 4 = 5 + 4 = 9$.",
+    "distractor_logic": {
+      "A": "Student isolates to $\\sqrt{3x - 2} = 5$ but doubles instead of squaring, using $5^{2} = 10$: $3x - 2 = 10$ gives $3x = 12$ and $x = 4$.",
+      "B": "Student reaches $3x = 27$ correctly but forgets to divide by 3, reporting $x = 27$.",
+      "C": "Student adds 4 to the right side instead of subtracting it from both sides, getting $\\sqrt{3x - 2} = 13$, then $3x - 2 = 169$ and $x = 57$.",
+      "D": "Correct: isolating gives $\\sqrt{3x - 2} = 5$, squaring gives $3x - 2 = 25$, so $x = 9$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "use_answer_choices"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Move the constant outside the radical to the other side before squaring. Squaring while the $+4$ is still attached changes the equation."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Substitute each choice into $\\sqrt{3x - 2} + 4$. The correct value makes the full left side equal to 9."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_equation", "isolate_radical_first", "linear_solution"],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_058",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.9",
+    "topic": "solving_radical_equations",
+    "topic_text": "Solving Radical Equations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "solving a radical equation with a binomial on the non-radical side",
+      "identifying and rejecting an extraneous solution after squaring"
+    ],
+    "question_text": "Solve for $x$: $\\sqrt{2x + 3} = x - 6$. Which value(s) of $x$ satisfy the equation?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 11$",
+      "B": "$x = 3$ and $x = 11$",
+      "C": "$x = 3$",
+      "D": "No real solution"
+    },
+    "correct_answer": "A",
+    "explanation": "Square both sides:\n$2x + 3 = (x - 6)^{2} = x^{2} - 12x + 36$\n\nRearrange into standard form:\n$x^{2} - 14x + 33 = 0$\n$(x - 11)(x - 3) = 0$\n\nSo $x = 11$ or $x = 3$. Check both:\n$x = 11$: $\\sqrt{22 + 3} = \\sqrt{25} = 5$, and $11 - 6 = 5$ (valid)\n$x = 3$: $\\sqrt{6 + 3} = \\sqrt{9} = 3$, but $3 - 6 = -3$, so $3 \\neq -3$ (extraneous)\n\nOnly $x = 11$ is valid.",
+    "distractor_logic": {
+      "A": "Correct: the candidates are $x = 11$ and $x = 3$, but $x = 3$ fails the check, leaving only $x = 11$.",
+      "B": "Student solves the quadratic correctly but does not check the candidates, accepting the extraneous root $x = 3$ along with $x = 11$.",
+      "C": "Student picks the extraneous candidate and rejects the valid one, reporting only $x = 3$.",
+      "D": "Student squares the binomial term by term as $x^{2} + 36$, omitting the middle term, forming $x^{2} - 2x + 33 = 0$ (discriminant $4 - 132 < 0$) and concludes no real solution."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Squaring a binomial side requires the full expansion, including the middle term. After solving, check each candidate in the original equation."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The left side is a square root, so it cannot be negative. Any candidate that makes the right side $x - 6$ negative must be rejected."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_equation", "extraneous_solution", "binomial_side", "checking_solutions"],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null
+  },
+  {
+    "item_id": "AR_A_059",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.9",
+    "topic": "solving_radical_equations",
+    "topic_text": "Solving Radical Equations",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "solving a radical equation that produces a quadratic with two valid solutions",
+      "verifying each candidate solution in the original equation"
+    ],
+    "question_text": "Solve for $x$: $\\sqrt{5x - 9} = x - 1$. Which value(s) of $x$ satisfy the equation?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$x = 5$ only",
+      "B": "$x = -2$ and $x = -5$",
+      "C": "$x = 2$ and $x = 5$",
+      "D": "No real solution"
+    },
+    "correct_answer": "C",
+    "explanation": "Square both sides:\n$5x - 9 = (x - 1)^{2} = x^{2} - 2x + 1$\n\nRearrange into standard form:\n$x^{2} - 7x + 10 = 0$\n$(x - 2)(x - 5) = 0$\n\nSo $x = 2$ or $x = 5$. Check both:\n$x = 2$: $\\sqrt{10 - 9} = \\sqrt{1} = 1$, and $2 - 1 = 1$ (valid)\n$x = 5$: $\\sqrt{25 - 9} = \\sqrt{16} = 4$, and $5 - 1 = 4$ (valid)\n\nBoth solutions are valid.",
+    "distractor_logic": {
+      "A": "Student assumes the smaller candidate must be extraneous and discards $x = 2$ without checking, keeping only $x = 5$.",
+      "B": "Student factors with the wrong signs as $(x + 2)(x + 5)$ and reads the roots as $x = -2$ and $x = -5$.",
+      "C": "Correct: $(x - 2)(x - 5) = 0$ gives $x = 2$ and $x = 5$, and both check in the original equation.",
+      "D": "Student squares the binomial term by term as $x^{2} + 1$, omitting the middle term, forming $x^{2} - 5x + 10 = 0$ (discriminant $25 - 40 < 0$) and concludes no real solution."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": ["identify_key_info", "use_answer_choices"],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Expand the binomial side fully, including the middle term, before solving the quadratic. Then check every candidate; checking can confirm a root, not only reject one."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Substitute each value into both sides of $\\sqrt{5x - 9} = x - 1$. Keep every value for which the two sides are equal."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": ["radical_equation", "quadratic_after_squaring", "two_valid_solutions", "checking_solutions"],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.20,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null
+  }
+]
