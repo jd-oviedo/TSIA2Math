@@ -216,9 +216,9 @@ const handleFlagSubmit = async () => {
 
       {/* Question card */}
       <div style={{ background: "var(--ec-surface)", border: "1px solid var(--ec-line)", borderRadius: "20px", padding: "28px 30px", boxShadow: "var(--ec-shadow)" }}>
-        <div style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--ec-accent)", marginBottom: "14px" }}>
-          {item.objective_text} · {item.topic_text}
-        </div>
+        <div style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--ec-accent)", marginBottom: "14px", fontFamily: "var(--font-kodchasan), sans-serif" }}>
+  {item.category}: {item.objective_text}
+</div>
         <div style={{ fontSize: "20px", fontWeight: 500, color: "var(--ec-ink)", lineHeight: 1.65, fontFamily: "Georgia, 'Times New Roman', serif" }}>
           {renderQuestionText(item.question_text)}
         </div>
