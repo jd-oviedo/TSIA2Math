@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "academic_performance",
-    "context_tags": ["conclusion", "supported_claim", "overgeneralization", "survey"],
+    "context_tags": [
+      "conclusion",
+      "supported_claim",
+      "overgeneralization",
+      "survey"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -67,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_082",
@@ -111,7 +121,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -123,11 +136,16 @@
       }
     ],
     "content_context": "retail_sales",
-    "context_tags": ["conclusion", "association", "correlation_not_causation", "supported_claim"],
+    "context_tags": [
+      "conclusion",
+      "association",
+      "correlation_not_causation",
+      "supported_claim"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -137,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_083",
@@ -181,7 +201,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -193,11 +216,16 @@
       }
     ],
     "content_context": "academic_performance",
-    "context_tags": ["conclusion", "mean", "typical_value", "interpretation"],
+    "context_tags": [
+      "conclusion",
+      "mean",
+      "typical_value",
+      "interpretation"
+    ],
     "estimated_time_seconds": 70,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -207,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_084",
@@ -251,7 +281,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -263,11 +296,16 @@
       }
     ],
     "content_context": "weather",
-    "context_tags": ["conclusion", "frequency", "supported_claim", "overgeneralization"],
+    "context_tags": [
+      "conclusion",
+      "frequency",
+      "supported_claim",
+      "overgeneralization"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -277,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_085",
@@ -321,7 +361,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -333,11 +376,16 @@
       }
     ],
     "content_context": "sports",
-    "context_tags": ["conclusion", "association", "correlation_not_causation", "supported_claim"],
+    "context_tags": [
+      "conclusion",
+      "association",
+      "correlation_not_causation",
+      "supported_claim"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -347,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_080",
@@ -391,7 +441,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -403,11 +456,16 @@
       }
     ],
     "content_context": "education",
-    "context_tags": ["conclusion", "correlation_not_causation", "association", "validity"],
+    "context_tags": [
+      "conclusion",
+      "correlation_not_causation",
+      "association",
+      "validity"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -417,7 +475,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_081",
@@ -461,7 +521,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -473,11 +536,16 @@
       }
     ],
     "content_context": "education",
-    "context_tags": ["prediction", "interpolation", "data_range", "model_use"],
+    "context_tags": [
+      "prediction",
+      "interpolation",
+      "data_range",
+      "model_use"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -487,7 +555,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_082",
@@ -531,7 +601,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -543,11 +616,16 @@
       }
     ],
     "content_context": "education",
-    "context_tags": ["prediction", "extrapolation", "data_range", "model_use"],
+    "context_tags": [
+      "prediction",
+      "extrapolation",
+      "data_range",
+      "model_use"
+    ],
     "estimated_time_seconds": 115,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -557,7 +635,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_083",
@@ -601,7 +681,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -613,11 +696,16 @@
       }
     ],
     "content_context": "education",
-    "context_tags": ["generalization", "sample_to_population", "representativeness", "validity"],
+    "context_tags": [
+      "generalization",
+      "sample_to_population",
+      "representativeness",
+      "validity"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -627,7 +715,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_084",
@@ -671,7 +761,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -683,11 +776,16 @@
       }
     ],
     "content_context": "health",
-    "context_tags": ["conclusion", "correlation_not_causation", "association", "validity"],
+    "context_tags": [
+      "conclusion",
+      "correlation_not_causation",
+      "association",
+      "validity"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -697,7 +795,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_082",
@@ -741,7 +841,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -753,11 +856,16 @@
       }
     ],
     "content_context": "education",
-    "context_tags": ["confounding_variable", "spurious_association", "correlation_not_causation", "conclusion"],
+    "context_tags": [
+      "confounding_variable",
+      "spurious_association",
+      "correlation_not_causation",
+      "conclusion"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -767,7 +875,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_083",
@@ -811,7 +921,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -823,11 +936,16 @@
       }
     ],
     "content_context": "education",
-    "context_tags": ["study_design", "experiment_vs_observational", "causation", "conclusion"],
+    "context_tags": [
+      "study_design",
+      "experiment_vs_observational",
+      "causation",
+      "conclusion"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -837,7 +955,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_084",
@@ -881,7 +1001,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -893,11 +1016,16 @@
       }
     ],
     "content_context": "business_finance",
-    "context_tags": ["prediction", "extrapolation", "reliability", "data_range"],
+    "context_tags": [
+      "prediction",
+      "extrapolation",
+      "reliability",
+      "data_range"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -907,7 +1035,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_085",
@@ -951,7 +1081,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -963,11 +1096,16 @@
       }
     ],
     "content_context": "retail_sales",
-    "context_tags": ["confounding_variable", "common_cause", "correlation_not_causation", "conclusion"],
+    "context_tags": [
+      "confounding_variable",
+      "common_cause",
+      "correlation_not_causation",
+      "conclusion"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -977,7 +1115,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_086",
@@ -1021,7 +1161,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -1033,11 +1176,16 @@
       }
     ],
     "content_context": "civics",
-    "context_tags": ["generalization", "sample_to_population", "representativeness", "conclusion"],
+    "context_tags": [
+      "generalization",
+      "sample_to_population",
+      "representativeness",
+      "conclusion"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -1047,6 +1195,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

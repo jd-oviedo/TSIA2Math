@@ -1,0 +1,1239 @@
+[
+  {
+    "item_id": "GR_B_044",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.1",
+    "topic": "pythagorean_theorem",
+    "topic_text": "Pythagorean Theorem",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "applying the Pythagorean theorem to find the hypotenuse from two known legs",
+      "recognizing the hypotenuse as the side computed from the sum of the squared legs"
+    ],
+    "question_text": "A right triangle has legs of length 6 and 8. What is the length of the hypotenuse?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "14",
+      "B": "10",
+      "C": "48",
+      "D": "100"
+    },
+    "correct_answer": "B",
+    "explanation": "Apply the Pythagorean theorem, where the hypotenuse is $c$:\n$a^{2} + b^{2} = c^{2}$\n$6^{2} + 8^{2} = c^{2}$\n$36 + 64 = c^{2}$\n$c^{2} = 100$\n$c = \\sqrt{100} = 10$",
+    "distractor_logic": {
+      "A": "Student adds the two legs directly without squaring: $6 + 8 = 14$.",
+      "B": "Correct: $\\sqrt{6^{2} + 8^{2}} = \\sqrt{36 + 64} = \\sqrt{100} = 10$.",
+      "C": "Student multiplies the two legs instead of applying the Pythagorean theorem: $6 \\times 8 = 48$.",
+      "D": "Student computes $6^{2} + 8^{2} = 100$ but forgets to take the square root, reporting 100."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "draw_diagram",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the right triangle and label the two given sides as legs. The hypotenuse is the side opposite the right angle, and it is the value you are solving for."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Both given lengths are legs, so they are the $a$ and $b$ in $a^{2} + b^{2} = c^{2}$. Remember the final step is to take a square root."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "pythagorean_theorem",
+      "right_triangle",
+      "hypotenuse",
+      "missing_side"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "figure_type": "right_triangle",
+    "figure_props": {
+      "leg1": "6",
+      "leg2": "8",
+      "unknown": "hypotenuse"
+    },
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_045",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.1",
+    "topic": "pythagorean_theorem",
+    "topic_text": "Pythagorean Theorem",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "applying the Pythagorean theorem to find a missing leg given the hypotenuse and one leg",
+      "distinguishing the subtraction setup for a missing leg from the addition setup for a hypotenuse"
+    ],
+    "question_text": "A right triangle has a hypotenuse of length 13 and one leg of length 5. What is the length of the other leg?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "12",
+      "B": "18",
+      "C": "8",
+      "D": "144"
+    },
+    "correct_answer": "A",
+    "explanation": "The hypotenuse is $c = 13$, so solve for the missing leg $b$:\n$a^{2} + b^{2} = c^{2}$\n$5^{2} + b^{2} = 13^{2}$\n$25 + b^{2} = 169$\n$b^{2} = 144$\n$b = \\sqrt{144} = 12$",
+    "distractor_logic": {
+      "A": "Correct: $\\sqrt{13^{2} - 5^{2}} = \\sqrt{169 - 25} = \\sqrt{144} = 12$.",
+      "B": "Student adds the two given lengths instead of working with their squares: $5 + 13 = 18$.",
+      "C": "Student subtracts the given lengths directly instead of subtracting their squares: $13 - 5 = 8$.",
+      "D": "Student computes $13^{2} - 5^{2} = 144$ but forgets to take the square root, reporting 144."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The longest side, 13, is the hypotenuse, so it is $c$. You are solving for a leg, which means you subtract the squares rather than add them."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Label the hypotenuse and the known leg on a sketch. Set up $a^{2} + b^{2} = c^{2}$ with the hypotenuse on its own side, then isolate the unknown leg."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "pythagorean_theorem",
+      "right_triangle",
+      "missing_leg",
+      "hypotenuse"
+    ],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "figure_type": "right_triangle",
+    "figure_props": {
+      "leg1": "5",
+      "hypotenuse": "13",
+      "unknown": "leg2"
+    },
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_046",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.1",
+    "topic": "pythagorean_theorem",
+    "topic_text": "Pythagorean Theorem",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "applying the Pythagorean theorem to find the hypotenuse from two legs",
+      "recognizing that the hypotenuse is a new side to compute, not the longest given leg"
+    ],
+    "question_text": "A right triangle has legs of length 8 and 15. What is the length of the hypotenuse?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "15",
+      "B": "23",
+      "C": "289",
+      "D": "17"
+    },
+    "correct_answer": "D",
+    "explanation": "Both given sides are legs, so they are $a$ and $b$:\n$a^{2} + b^{2} = c^{2}$\n$8^{2} + 15^{2} = c^{2}$\n$64 + 225 = c^{2}$\n$c^{2} = 289$\n$c = \\sqrt{289} = 17$",
+    "distractor_logic": {
+      "A": "Student treats the longer leg as the hypotenuse, assuming the longest given number must already be the hypotenuse, and reports 15 without computing.",
+      "B": "Student adds the two legs directly without squaring: $8 + 15 = 23$.",
+      "C": "Student computes $8^{2} + 15^{2} = 289$ but forgets to take the square root, reporting 289.",
+      "D": "Correct: $\\sqrt{8^{2} + 15^{2}} = \\sqrt{64 + 225} = \\sqrt{289} = 17$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The two given sides meet at the right angle, so both are legs. The hypotenuse is a separate, longer side you must compute, not one of the numbers already given."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the right angle with the two legs forming it. The hypotenuse stretches across from one leg's end to the other. Solve for that side using the theorem."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "pythagorean_theorem",
+      "right_triangle",
+      "hypotenuse",
+      "leg_confusion"
+    ],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "figure_type": "right_triangle",
+    "figure_props": {
+      "leg1": "8",
+      "leg2": "15",
+      "unknown": "hypotenuse"
+    },
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_047",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.1",
+    "topic": "pythagorean_theorem",
+    "topic_text": "Pythagorean Theorem",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "applying the Pythagorean theorem to find a missing leg given the hypotenuse and one leg",
+      "subtracting the square of the known leg from the square of the hypotenuse"
+    ],
+    "question_text": "A right triangle has a hypotenuse of length 25 and one leg of length 7. What is the length of the other leg?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "32",
+      "B": "18",
+      "C": "24",
+      "D": "576"
+    },
+    "correct_answer": "C",
+    "explanation": "The hypotenuse is $c = 25$, so solve for the missing leg $b$:\n$a^{2} + b^{2} = c^{2}$\n$7^{2} + b^{2} = 25^{2}$\n$49 + b^{2} = 625$\n$b^{2} = 576$\n$b = \\sqrt{576} = 24$",
+    "distractor_logic": {
+      "A": "Student adds the two given lengths instead of working with their squares: $7 + 25 = 32$.",
+      "B": "Student subtracts the given lengths directly instead of subtracting their squares: $25 - 7 = 18$.",
+      "C": "Correct: $\\sqrt{25^{2} - 7^{2}} = \\sqrt{625 - 49} = \\sqrt{576} = 24$.",
+      "D": "Student computes $25^{2} - 7^{2} = 576$ but forgets to take the square root, reporting 576."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The hypotenuse 25 is the longest side and sits alone as $c$. Because you are finding a leg, the known leg's square gets subtracted from the hypotenuse's square."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Mark the hypotenuse opposite the right angle and the known leg along one side. Set up the theorem and isolate the unknown leg before taking the square root."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "pythagorean_theorem",
+      "right_triangle",
+      "missing_leg",
+      "hypotenuse"
+    ],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "figure_type": "right_triangle",
+    "figure_props": {
+      "leg1": "7",
+      "hypotenuse": "25",
+      "unknown": "leg2"
+    },
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_B_048",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.1",
+    "topic": "pythagorean_theorem",
+    "topic_text": "Pythagorean Theorem",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "applying the Pythagorean theorem to find a missing leg given the hypotenuse and one leg",
+      "identifying the correct subtraction of squares for a missing leg"
+    ],
+    "question_text": "A right triangle has a hypotenuse of length 20 and one leg of length 12. What is the length of the other leg?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "16",
+      "B": "32",
+      "C": "8",
+      "D": "256"
+    },
+    "correct_answer": "A",
+    "explanation": "The hypotenuse is $c = 20$, so solve for the missing leg $b$:\n$a^{2} + b^{2} = c^{2}$\n$12^{2} + b^{2} = 20^{2}$\n$144 + b^{2} = 400$\n$b^{2} = 256$\n$b = \\sqrt{256} = 16$",
+    "distractor_logic": {
+      "A": "Correct: $\\sqrt{20^{2} - 12^{2}} = \\sqrt{400 - 144} = \\sqrt{256} = 16$.",
+      "B": "Student adds the two given lengths instead of working with their squares: $12 + 20 = 32$.",
+      "C": "Student subtracts the given lengths directly instead of subtracting their squares: $20 - 12 = 8$.",
+      "D": "Student computes $20^{2} - 12^{2} = 256$ but forgets to take the square root, reporting 256."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The hypotenuse 20 is the longest side, so it is $c$. Finding a leg means subtracting the known leg's square from the hypotenuse's square."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A leg must be shorter than the hypotenuse of 20, so any choice of 20 or larger can be ruled out before computing."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "pythagorean_theorem",
+      "right_triangle",
+      "missing_leg",
+      "hypotenuse"
+    ],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "figure_type": "right_triangle",
+    "figure_props": {
+      "leg1": "12",
+      "hypotenuse": "20",
+      "unknown": "leg2"
+    },
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_044",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.1",
+    "topic": "pythagorean_theorem",
+    "topic_text": "Pythagorean Theorem",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding a missing leg with the Pythagorean theorem, then using it in a second computation",
+      "computing the perimeter of a right triangle after determining all three sides"
+    ],
+    "question_text": "A right triangle has a hypotenuse of length 26 and one leg of length 24. What is the perimeter of the triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "60",
+      "B": "50",
+      "C": "36",
+      "D": "120"
+    },
+    "correct_answer": "A",
+    "explanation": "First find the missing leg:\n$24^{2} + b^{2} = 26^{2}$\n$576 + b^{2} = 676$\n$b^{2} = 100$\n$b = \\sqrt{100} = 10$\n\nThen add all three sides for the perimeter:\n$24 + 10 + 26 = 60$",
+    "distractor_logic": {
+      "A": "Correct: the missing leg is $\\sqrt{676 - 576} = \\sqrt{100} = 10$, so the perimeter is $24 + 10 + 26 = 60$.",
+      "B": "Student finds the missing leg correctly but leaves it out of the perimeter, adding only the two originally given sides: $24 + 26 = 50$.",
+      "C": "Student leaves out the originally given leg of 24, adding only the computed leg and the hypotenuse: $10 + 26 = 36$.",
+      "D": "Student computes the area instead of the perimeter, using the two legs: $\\frac{1}{2} \\times 24 \\times 10 = 120$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "This is a two-step problem: first solve for the missing leg, then add all three side lengths. Perimeter requires every side, including the one you computed and the one given."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Label all three sides on a sketch once the missing leg is found, so none gets dropped when you sum them for the perimeter."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "pythagorean_theorem",
+      "right_triangle",
+      "perimeter",
+      "missing_leg"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "figure_type": "right_triangle",
+    "figure_props": {
+      "leg1": "24",
+      "hypotenuse": "26",
+      "unknown": "leg2"
+    },
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_045",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.1",
+    "topic": "pythagorean_theorem",
+    "topic_text": "Pythagorean Theorem",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "applying the converse of the Pythagorean theorem to test whether three sides form a right triangle",
+      "verifying each candidate set rather than relying on its resemblance to a known triple"
+    ],
+    "question_text": "Which of the following sets of three side lengths forms a right triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "8, 15, and 16",
+      "B": "12, 16, and 21",
+      "C": "9, 40, and 41",
+      "D": "7, 24, and 26"
+    },
+    "correct_answer": "C",
+    "explanation": "By the converse of the Pythagorean theorem, three sides form a right triangle when the sum of the squares of the two shorter sides equals the square of the longest side.\n\nTest 9, 40, 41:\n$9^{2} + 40^{2} = 81 + 1600 = 1681$\n$41^{2} = 1681$\n\nSince $1681 = 1681$, this set forms a right triangle.",
+    "distractor_logic": {
+      "A": "Student assumes this resembles the 8-15-17 triple closely enough. Verifying: $8^{2} + 15^{2} = 289$, but $16^{2} = 256$, and $289 \\neq 256$, so it is not a right triangle.",
+      "B": "Student assumes this resembles the 12-16-20 triple. Verifying: $12^{2} + 16^{2} = 400$, but $21^{2} = 441$, and $400 \\neq 441$, so it is not a right triangle.",
+      "C": "Correct: $9^{2} + 40^{2} = 81 + 1600 = 1681 = 41^{2}$, so the converse confirms a right triangle.",
+      "D": "Student assumes this resembles the 7-24-25 triple. Verifying: $7^{2} + 24^{2} = 625$, but $26^{2} = 676$, and $625 \\neq 676$, so it is not a right triangle."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "use_answer_choices",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "For each set, square the two smaller numbers, add them, and compare to the square of the largest number. Only one set will produce an exact match."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A set that is close to a known triple but not exact will fail the check. Test each one rather than choosing by resemblance alone."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "pythagorean_theorem",
+      "converse",
+      "right_triangle",
+      "triples"
+    ],
+    "estimated_time_seconds": 115,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_046",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.1",
+    "topic": "pythagorean_theorem",
+    "topic_text": "Pythagorean Theorem",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding a missing leg with the Pythagorean theorem, then computing the triangle's area",
+      "using the two legs as base and height for the area of a right triangle"
+    ],
+    "question_text": "A right triangle has a hypotenuse of length 15 and one leg of length 9. What is the area of the triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "36",
+      "B": "54",
+      "C": "90",
+      "D": "108"
+    },
+    "correct_answer": "B",
+    "explanation": "First find the missing leg:\n$9^{2} + b^{2} = 15^{2}$\n$81 + b^{2} = 225$\n$b^{2} = 144$\n$b = \\sqrt{144} = 12$\n\nThe two legs are the base and height, so the area is:\n$\\frac{1}{2} \\times 9 \\times 12 = 54$",
+    "distractor_logic": {
+      "A": "Student computes the perimeter instead of the area: $9 + 12 + 15 = 36$.",
+      "B": "Correct: the missing leg is $\\sqrt{225 - 81} = 12$, and the area is $\\frac{1}{2} \\times 9 \\times 12 = 54$.",
+      "C": "Student uses the hypotenuse as the second dimension instead of the found leg: $\\frac{1}{2} \\times 12 \\times 15 = 90$.",
+      "D": "Student multiplies the two legs but forgets the factor of $\\frac{1}{2}$: $9 \\times 12 = 108$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "First solve for the missing leg. For a right triangle, the two legs serve as the base and height in the area formula, not the hypotenuse."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the right angle so you can see the two legs meeting there. Those two sides are what multiply in the area formula, and remember the factor of one-half."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "pythagorean_theorem",
+      "right_triangle",
+      "area",
+      "missing_leg"
+    ],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "figure_type": "right_triangle",
+    "figure_props": {
+      "leg1": "9",
+      "hypotenuse": "15",
+      "unknown": "leg2"
+    },
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_P_047",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.1",
+    "topic": "pythagorean_theorem",
+    "topic_text": "Pythagorean Theorem",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "recognizing the diagonal of a rectangle as the hypotenuse of a right triangle",
+      "applying the Pythagorean theorem to the length and width to find the diagonal"
+    ],
+    "question_text": "A rectangle has a length of 24 cm and a width of 7 cm. What is the length of its diagonal?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "31",
+      "B": "168",
+      "C": "625",
+      "D": "25"
+    },
+    "correct_answer": "D",
+    "explanation": "The diagonal of a rectangle is the hypotenuse of a right triangle whose legs are the length and width:\n$d^{2} = 24^{2} + 7^{2}$\n$d^{2} = 576 + 49$\n$d^{2} = 625$\n$d = \\sqrt{625} = 25$",
+    "distractor_logic": {
+      "A": "Student adds the length and width directly without squaring: $24 + 7 = 31$.",
+      "B": "Student computes the area of the rectangle instead of the diagonal: $24 \\times 7 = 168$.",
+      "C": "Student computes $24^{2} + 7^{2} = 625$ but forgets to take the square root, reporting 625.",
+      "D": "Correct: $\\sqrt{24^{2} + 7^{2}} = \\sqrt{576 + 49} = \\sqrt{625} = 25$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "draw_diagram",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Draw the rectangle and one diagonal. That diagonal splits it into two right triangles, with the length and width as the legs and the diagonal as the hypotenuse."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The diagonal is the hypotenuse, so the length and width are the legs to square and add. Do not forget the final square root."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "pythagorean_theorem",
+      "rectangle",
+      "diagonal",
+      "hypotenuse"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_048",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.1",
+    "topic": "pythagorean_theorem",
+    "topic_text": "Pythagorean Theorem",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding the hypotenuse from two legs, then computing the perimeter",
+      "carrying a computed hypotenuse forward into a second step without dropping a side"
+    ],
+    "question_text": "A right triangle has legs of length 12 and 35. What is the perimeter of the triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "47",
+      "B": "84",
+      "C": "37",
+      "D": "94"
+    },
+    "correct_answer": "B",
+    "explanation": "First find the hypotenuse:\n$c^{2} = 12^{2} + 35^{2}$\n$c^{2} = 144 + 1225$\n$c^{2} = 1369$\n$c = \\sqrt{1369} = 37$\n\nThen add all three sides for the perimeter:\n$12 + 35 + 37 = 84$",
+    "distractor_logic": {
+      "A": "Student finds the hypotenuse but leaves it out of the perimeter, adding only the two legs: $12 + 35 = 47$.",
+      "B": "Correct: the hypotenuse is $\\sqrt{144 + 1225} = \\sqrt{1369} = 37$, so the perimeter is $12 + 35 + 37 = 84$.",
+      "C": "Student reports only the hypotenuse, 37, treating the single computed side as the final answer.",
+      "D": "Student computes the hypotenuse incorrectly as the sum of the legs, $12 + 35 = 47$, then uses that as the hypotenuse: $12 + 35 + 47 = 94$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Both given sides are legs, so first compute the hypotenuse, then sum all three sides. The perimeter is not finished once the hypotenuse is found."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Label the two legs and the hypotenuse on a sketch. Perimeter means going all the way around, so all three labeled sides are added."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "pythagorean_theorem",
+      "right_triangle",
+      "perimeter",
+      "hypotenuse"
+    ],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "figure_type": "right_triangle",
+    "figure_props": {
+      "leg1": "12",
+      "leg2": "35",
+      "unknown": "hypotenuse"
+    },
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null
+  },
+  {
+    "item_id": "GR_A_044",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.1",
+    "topic": "pythagorean_theorem",
+    "topic_text": "Pythagorean Theorem",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "applying the Pythagorean theorem twice to find the space diagonal of a rectangular solid",
+      "carrying a computed face diagonal into a second application of the theorem"
+    ],
+    "question_text": "A rectangular box has dimensions 3 by 4 by 12. What is the length of the space diagonal (the straight-line distance between two opposite corners)?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "5",
+      "B": "19",
+      "C": "169",
+      "D": "13"
+    },
+    "correct_answer": "D",
+    "explanation": "First find the diagonal across the base, using the two base dimensions as legs:\n$d_{1}^{2} = 3^{2} + 4^{2} = 9 + 16 = 25$\n$d_{1} = \\sqrt{25} = 5$\n\nThen use that base diagonal and the height as legs of a second right triangle:\n$d^{2} = d_{1}^{2} + 12^{2} = 25 + 144 = 169$\n$d = \\sqrt{169} = 13$",
+    "distractor_logic": {
+      "A": "Student finds the base diagonal $\\sqrt{3^{2} + 4^{2}} = 5$ but stops there, not continuing to the space diagonal.",
+      "B": "Student adds the three dimensions directly: $3 + 4 + 12 = 19$.",
+      "C": "Student correctly squares and sums all three dimensions, $9 + 16 + 144 = 169$, but forgets to take the final square root.",
+      "D": "Correct: base diagonal is $\\sqrt{9 + 16} = 5$, then the space diagonal is $\\sqrt{25 + 144} = \\sqrt{169} = 13$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "draw_diagram",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the box and draw the diagonal across the bottom face first. That base diagonal becomes one leg of a second right triangle whose other leg is the height."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "This needs the theorem applied twice. The first result feeds into the second, so do not stop after the base diagonal."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "pythagorean_theorem",
+      "rectangular_solid",
+      "space_diagonal",
+      "two_step"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_045",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.1",
+    "topic": "pythagorean_theorem",
+    "topic_text": "Pythagorean Theorem",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "reverse-reasoning from a hypotenuse and a relationship between the legs to find a leg",
+      "setting up the Pythagorean theorem with the legs expressed in terms of one unknown"
+    ],
+    "question_text": "In a right triangle, one leg is 7 longer than the other, and the hypotenuse is 13. What is the length of the longer leg?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "5",
+      "B": "10",
+      "C": "12",
+      "D": "6"
+    },
+    "correct_answer": "C",
+    "explanation": "Let the shorter leg be $x$, so the longer leg is $x + 7$:\n$x^{2} + (x + 7)^{2} = 13^{2}$\n$x^{2} + x^{2} + 14x + 49 = 169$\n$2x^{2} + 14x - 120 = 0$\n$x^{2} + 7x - 60 = 0$\n$(x + 12)(x - 5) = 0$\n$x = 5$\n\nThe legs are 5 and 12, so the longer leg is 12.",
+    "distractor_logic": {
+      "A": "Student solves correctly and finds the shorter leg, 5, but reports it as the longer leg.",
+      "B": "Student sets up a linear equation, treating the legs as summing to the hypotenuse: $x + (x + 7) = 13$, giving $x = 3$ and a longer leg of 10.",
+      "C": "Correct: solving $x^{2} + (x+7)^{2} = 169$ gives $x = 5$, so the legs are 5 and 12 and the longer leg is 12.",
+      "D": "Student subtracts the difference from the hypotenuse: $13 - 7 = 6$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "use_answer_choices",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "If a choice is the longer leg, the shorter leg is 7 less. Test whether those two legs satisfy $a^{2} + b^{2} = 13^{2}$ exactly."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Name the shorter leg with a variable and write the longer leg as that plus 7. The hypotenuse goes on its own side of the squared equation, not added to a leg."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "pythagorean_theorem",
+      "right_triangle",
+      "reverse_reasoning",
+      "missing_leg"
+    ],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_046",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.1",
+    "topic": "pythagorean_theorem",
+    "topic_text": "Pythagorean Theorem",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "combining displacements along perpendicular directions before applying the Pythagorean theorem",
+      "distinguishing straight-line displacement from total path length"
+    ],
+    "question_text": "A hiker walks 3 km east, then 15 km north, then 5 km east. What is the straight-line distance from the hiker's starting point to the ending point?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "23",
+      "B": "17",
+      "C": "15",
+      "D": "289"
+    },
+    "correct_answer": "B",
+    "explanation": "First combine the displacements in each direction. The two eastward legs add to a net east displacement:\n$3 + 5 = 8$ km east\n\nThe north displacement is 15 km. These are perpendicular, so the straight-line distance is the hypotenuse:\n$d^{2} = 8^{2} + 15^{2} = 64 + 225 = 289$\n$d = \\sqrt{289} = 17$",
+    "distractor_logic": {
+      "A": "Student adds all the distances walked, giving the total path length rather than the straight-line displacement: $3 + 15 + 5 = 23$.",
+      "B": "Correct: net east is $3 + 5 = 8$, north is 15, so $\\sqrt{8^{2} + 15^{2}} = \\sqrt{289} = 17$.",
+      "C": "Student uses only the north displacement, ignoring the eastward distance entirely, reporting 15.",
+      "D": "Student combines the displacements correctly into $8^{2} + 15^{2} = 289$ but forgets to take the square root."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "draw_diagram",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Plot the path on a grid. Notice the two eastward moves combine into one net east distance, while the north move stands alone. The straight-line distance closes the right triangle."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Total distance walked is not the same as straight-line distance. Add same-direction legs first, then use the perpendicular pair as the legs of a right triangle."
+      }
+    ],
+    "content_context": "navigation",
+    "context_tags": [
+      "pythagorean_theorem",
+      "displacement",
+      "navigation",
+      "two_step"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_047",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.1",
+    "topic": "pythagorean_theorem",
+    "topic_text": "Pythagorean Theorem",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding a missing rectangle side from the diagonal, then computing the area",
+      "treating the diagonal as the hypotenuse rather than as a side of the rectangle"
+    ],
+    "question_text": "A rectangle has a diagonal of 26 cm and a length of 24 cm. What is the area of the rectangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "240",
+      "B": "624",
+      "C": "68",
+      "D": "100"
+    },
+    "correct_answer": "A",
+    "explanation": "The diagonal is the hypotenuse of a right triangle whose legs are the length and width. Find the width:\n$24^{2} + w^{2} = 26^{2}$\n$576 + w^{2} = 676$\n$w^{2} = 100$\n$w = \\sqrt{100} = 10$\n\nThen the area is length times width:\n$24 \\times 10 = 240$",
+    "distractor_logic": {
+      "A": "Correct: the width is $\\sqrt{676 - 576} = \\sqrt{100} = 10$, so the area is $24 \\times 10 = 240$.",
+      "B": "Student uses the diagonal as the second side, multiplying length by diagonal: $24 \\times 26 = 624$.",
+      "C": "Student finds the width, 10, but computes the perimeter instead of the area: $2(24 + 10) = 68$.",
+      "D": "Student finds $w^{2} = 100$ and reports 100 as the area, forgetting to take the square root for the width first."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "draw_diagram",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Draw the rectangle with its diagonal. The diagonal is the hypotenuse and the length is one leg, so solve for the other leg (the width) before finding area."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The diagonal is not a side of the rectangle, so it cannot be multiplied directly into the area. First recover the width, then multiply length by width."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "pythagorean_theorem",
+      "rectangle",
+      "diagonal",
+      "area"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_048",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.1",
+    "topic": "pythagorean_theorem",
+    "topic_text": "Pythagorean Theorem",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "using a leg ratio and the hypotenuse to determine all three sides of a right triangle",
+      "computing the perimeter after scaling a Pythagorean triple",
+      "recognizing that the hypotenuse, not the leg sum, equals the largest ratio part"
+    ],
+    "question_text": "The legs of a right triangle are in the ratio 3 to 4, and the hypotenuse is 35. What is the perimeter of the triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "60",
+      "B": "49",
+      "C": "84",
+      "D": "70"
+    },
+    "correct_answer": "C",
+    "explanation": "Legs in the ratio 3 to 4 with a hypotenuse correspond to the 3-4-5 family, so the sides are $3k$, $4k$, and $5k$. The hypotenuse is the longest, so:\n$5k = 35$\n$k = 7$\n\nThe sides are $3(7) = 21$, $4(7) = 28$, and 35. The perimeter is:\n$21 + 28 + 35 = 84$",
+    "distractor_logic": {
+      "A": "Student sets the leg sum equal to 35 instead of the hypotenuse: $3k + 4k = 35$ gives $k = 5$, sides 15, 20, 25, perimeter 60.",
+      "B": "Student finds the legs 21 and 28 correctly but leaves the hypotenuse out of the perimeter: $21 + 28 = 49$.",
+      "C": "Correct: $5k = 35$ gives $k = 7$, so the sides are 21, 28, and 35, and the perimeter is $21 + 28 + 35 = 84$.",
+      "D": "Student assumes the two legs together equal the hypotenuse and computes the perimeter as twice the hypotenuse: $2 \\times 35 = 70$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A 3 to 4 leg ratio places the triangle in the 3-4-5 family, so the hypotenuse matches the 5 part. Find the scale factor from the hypotenuse before sizing the legs."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The hypotenuse alone is 35, so a perimeter must be larger than 35 and include all three sides. Any value that omits a side can be ruled out."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "pythagorean_theorem",
+      "right_triangle",
+      "ratio",
+      "perimeter"
+    ],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "figure_type": "right_triangle",
+    "figure_props": {
+      "leg1": "21",
+      "leg2": "28",
+      "unknown": "hypotenuse"
+    },
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null
+  }
+]

@@ -19,20 +19,20 @@
       "evaluating a function at a given input value",
       "applying substitution to a linear function rule"
     ],
-    "question_text": "Given f(x) = 3x − 4, what is f(5)?",
+    "question_text": "Given f(x) = 3x \u2212 4, what is f(5)?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "15",
-      "B": "−5",
+      "B": "\u22125",
       "C": "11",
       "D": "19"
     },
     "correct_answer": "C",
-    "explanation": "To evaluate f(5), substitute x = 5 into the rule f(x) = 3x − 4. f(5) = 3(5) − 4 = 15 − 4 = 11.",
+    "explanation": "To evaluate f(5), substitute x = 5 into the rule f(x) = 3x \u2212 4. f(5) = 3(5) \u2212 4 = 15 \u2212 4 = 11.",
     "distractor_logic": {
-      "A": "Student computes 3 × 5 = 15 but omits the −4 step, treating the function as f(x) = 3x.",
-      "B": "Student applies subtraction before multiplication: (3 − 4) × 5 = −1 × 5 = −5, violating order of operations.",
-      "C": "Correct: f(5) = 3(5) − 4 = 15 − 4 = 11.",
+      "A": "Student computes 3 \u00d7 5 = 15 but omits the \u22124 step, treating the function as f(x) = 3x.",
+      "B": "Student applies subtraction before multiplication: (3 \u2212 4) \u00d7 5 = \u22121 \u00d7 5 = \u22125, violating order of operations.",
+      "C": "Correct: f(5) = 3(5) \u2212 4 = 15 \u2212 4 = 11.",
       "D": "Student uses f(x) = 3x + 4 (sign flip on the constant), giving 3(5) + 4 = 19."
     },
     "difficulty_level": "Basic",
@@ -52,7 +52,7 @@
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "The rule is f(x) = 3x − 4. Pay attention to the minus sign before 4."
+        "hint_text": "The rule is f(x) = 3x \u2212 4. Pay attention to the minus sign before 4."
       }
     ],
     "content_context": "generic",
@@ -75,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_002",
@@ -110,7 +112,7 @@
     "distractor_logic": {
       "A": "Student reverses the roles of input and output, reading f(7) = 2 as 'input 2 gives output 7.'",
       "B": "Correct: f(7) = 2 means the input is 7 and the output is 2.",
-      "C": "Student misreads function notation as multiplication, interpreting f(7) = 2 as f × 7 = 2.",
+      "C": "Student misreads function notation as multiplication, interpreting f(7) = 2 as f \u00d7 7 = 2.",
       "D": "Student reads 'f(7)' as a fraction (f divided by 7), then equates it to 2."
     },
     "difficulty_level": "Basic",
@@ -130,7 +132,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Function notation is not multiplication or division — eliminate any choice that treats it that way."
+        "hint_text": "Function notation is not multiplication or division \u2014 eliminate any choice that treats it that way."
       }
     ],
     "content_context": "generic",
@@ -153,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_001",
@@ -175,21 +179,21 @@
       "evaluating a quadratic function at a negative input",
       "applying correct sign rules when substituting negative values"
     ],
-    "question_text": "Given g(t) = t² − 3t + 1, what is g(−2)?",
+    "question_text": "Given g(t) = t\u00b2 \u2212 3t + 1, what is g(\u22122)?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "−1",
+      "A": "\u22121",
       "B": "11",
       "C": "3",
       "D": "1"
     },
     "correct_answer": "B",
-    "explanation": "Substitute t = −2 into g(t) = t² − 3t + 1.\ng(−2) = (−2)² − 3(−2) + 1\n     = 4 − (−6) + 1\n     = 4 + 6 + 1\n     = 11",
+    "explanation": "Substitute t = \u22122 into g(t) = t\u00b2 \u2212 3t + 1.\ng(\u22122) = (\u22122)\u00b2 \u2212 3(\u22122) + 1\n     = 4 \u2212 (\u22126) + 1\n     = 4 + 6 + 1\n     = 11",
     "distractor_logic": {
-      "A": "Student evaluates (−2)² = 4 correctly but treats −3(−2) as −6 instead of +6, giving 4 − 6 + 1 = −1.",
-      "B": "Correct: (−2)² − 3(−2) + 1 = 4 + 6 + 1 = 11.",
-      "C": "Student computes −2² = −4 (fails to square the negative), then gets −4 − 3(−2) + 1 = −4 + 6 + 1 = 3.",
-      "D": "Student evaluates at t = 2 (drops the negative sign) to get 4 − 6 + 1 = −1, then negates the result: −(−1) = 1."
+      "A": "Student evaluates (\u22122)\u00b2 = 4 correctly but treats \u22123(\u22122) as \u22126 instead of +6, giving 4 \u2212 6 + 1 = \u22121.",
+      "B": "Correct: (\u22122)\u00b2 \u2212 3(\u22122) + 1 = 4 + 6 + 1 = 11.",
+      "C": "Student computes \u22122\u00b2 = \u22124 (fails to square the negative), then gets \u22124 \u2212 3(\u22122) + 1 = \u22124 + 6 + 1 = 3.",
+      "D": "Student evaluates at t = 2 (drops the negative sign) to get 4 \u2212 6 + 1 = \u22121, then negates the result: \u2212(\u22121) = 1."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -204,11 +208,11 @@
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
-        "hint_text": "Write (−2) in parentheses everywhere you see t, then simplify one term at a time."
+        "hint_text": "Write (\u22122) in parentheses everywhere you see t, then simplify one term at a time."
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "A negative number squared is always positive: (−2)² = 4, not −4."
+        "hint_text": "A negative number squared is always positive: (\u22122)\u00b2 = 4, not \u22124."
       }
     ],
     "content_context": "generic",
@@ -231,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_002",
@@ -262,11 +268,11 @@
       "D": "8"
     },
     "correct_answer": "C",
-    "explanation": "Set h(n) equal to 13 and solve for n.\n2n + 5 = 13\n2n = 8\nn = 4\nCheck: h(4) = 2(4) + 5 = 8 + 5 = 13 ✓",
+    "explanation": "Set h(n) equal to 13 and solve for n.\n2n + 5 = 13\n2n = 8\nn = 4\nCheck: h(4) = 2(4) + 5 = 8 + 5 = 13 \u2713",
     "distractor_logic": {
       "A": "Student ignores the +5 and solves 2n = 13 directly, giving n = 6.5.",
-      "B": "Student adds 5 to both sides instead of subtracting: 2n + 5 = 13 → 2n = 18 → n = 9.",
-      "C": "Correct: 2n + 5 = 13 → 2n = 8 → n = 4.",
+      "B": "Student adds 5 to both sides instead of subtracting: 2n + 5 = 13 \u2192 2n = 18 \u2192 n = 9.",
+      "C": "Correct: 2n + 5 = 13 \u2192 2n = 8 \u2192 n = 4.",
       "D": "Student subtracts 5 correctly (2n = 8) but forgets to divide by 2, reporting n = 8."
     },
     "difficulty_level": "Proficient",
@@ -309,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_A_001",
@@ -331,21 +339,21 @@
       "using function notation to set up and solve a quadratic equation",
       "reasoning about symmetry of a parabola to find a second input with equal output"
     ],
-    "question_text": "Let f(x) = x² − 6x + 5. If f(k) = f(2), what is a value of k other than 2?",
+    "question_text": "Let f(x) = x\u00b2 \u2212 6x + 5. If f(k) = f(2), what is a value of k other than 2?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "−2",
+      "A": "\u22122",
       "B": "3",
       "C": "5",
       "D": "4"
     },
     "correct_answer": "D",
-    "explanation": "First evaluate f(2): f(2) = 4 − 12 + 5 = −3.\nNow solve f(k) = −3:\nk² − 6k + 5 = −3\nk² − 6k + 8 = 0\n(k − 2)(k − 4) = 0\nk = 2 or k = 4.\nSince k ≠ 2, the answer is k = 4.\n\nAlternatively, the axis of symmetry of f(x) = x² − 6x + 5 is x = 3. Because the parabola is symmetric about x = 3, the input symmetric to x = 2 is x = 4 (both are 1 unit from the axis). So f(2) = f(4).",
+    "explanation": "First evaluate f(2): f(2) = 4 \u2212 12 + 5 = \u22123.\nNow solve f(k) = \u22123:\nk\u00b2 \u2212 6k + 5 = \u22123\nk\u00b2 \u2212 6k + 8 = 0\n(k \u2212 2)(k \u2212 4) = 0\nk = 2 or k = 4.\nSince k \u2260 2, the answer is k = 4.\n\nAlternatively, the axis of symmetry of f(x) = x\u00b2 \u2212 6x + 5 is x = 3. Because the parabola is symmetric about x = 3, the input symmetric to x = 2 is x = 4 (both are 1 unit from the axis). So f(2) = f(4).",
     "distractor_logic": {
-      "A": "Student assumes f(k) = f(2) requires k to be the opposite sign of 2, selecting k = −2 without verifying f(−2) = f(2).",
+      "A": "Student assumes f(k) = f(2) requires k to be the opposite sign of 2, selecting k = \u22122 without verifying f(\u22122) = f(2).",
       "B": "Student identifies the axis of symmetry (x = 3) but selects the axis itself rather than the symmetric partner of x = 2, which is x = 4.",
-      "C": "Student sets f(k) = 0 instead of f(k) = f(2), solving x² − 6x + 5 = 0 → (x−1)(x−5) = 0, then picks k = 5 (discarding k = 1 because it resembles a starting value).",
-      "D": "Correct: f(2) = −3, and solving k² − 6k + 8 = 0 gives k = 2 or k = 4; the required answer is k = 4."
+      "C": "Student sets f(k) = 0 instead of f(k) = f(2), solving x\u00b2 \u2212 6x + 5 = 0 \u2192 (x\u22121)(x\u22125) = 0, then picks k = 5 (discarding k = 1 because it resembles a starting value).",
+      "D": "Correct: f(2) = \u22123, and solving k\u00b2 \u2212 6k + 8 = 0 gives k = 2 or k = 4; the required answer is k = 4."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -364,7 +372,7 @@
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "The parabola's axis of symmetry is x = −b/(2a). Inputs equidistant from the axis produce equal outputs."
+        "hint_text": "The parabola's axis of symmetry is x = \u2212b/(2a). Inputs equidistant from the axis produce equal outputs."
       }
     ],
     "content_context": "generic",
@@ -387,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_A_002",
@@ -409,21 +419,21 @@
       "interpreting f(x) > 0 as an inequality involving a function's output",
       "solving a quadratic inequality and expressing the solution set correctly"
     ],
-    "question_text": "Let f(x) = x² − 4. For which values of x is f(x) > 0?",
+    "question_text": "Let f(x) = x\u00b2 \u2212 4. For which values of x is f(x) > 0?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x < −2 or x > 2",
-      "B": "−2 < x < 2",
+      "A": "x < \u22122 or x > 2",
+      "B": "\u22122 < x < 2",
       "C": "x > 2 only",
-      "D": "x < −2 only"
+      "D": "x < \u22122 only"
     },
     "correct_answer": "A",
-    "explanation": "f(x) > 0 means x² − 4 > 0, so x² > 4.\nTaking the square root of both sides (with absolute value): |x| > 2.\nThis gives x < −2 or x > 2.\n\nYou can verify: f(−3) = 9 − 4 = 5 > 0 ✓ and f(3) = 9 − 4 = 5 > 0 ✓, while f(0) = −4 < 0, confirming the region between −2 and 2 does not satisfy f(x) > 0.",
+    "explanation": "f(x) > 0 means x\u00b2 \u2212 4 > 0, so x\u00b2 > 4.\nTaking the square root of both sides (with absolute value): |x| > 2.\nThis gives x < \u22122 or x > 2.\n\nYou can verify: f(\u22123) = 9 \u2212 4 = 5 > 0 \u2713 and f(3) = 9 \u2212 4 = 5 > 0 \u2713, while f(0) = \u22124 < 0, confirming the region between \u22122 and 2 does not satisfy f(x) > 0.",
     "distractor_logic": {
-      "A": "Correct: x² > 4 means |x| > 2, which gives x < −2 or x > 2.",
+      "A": "Correct: x\u00b2 > 4 means |x| > 2, which gives x < \u22122 or x > 2.",
       "B": "Student reverses the inequality direction for quadratics, selecting the region between the roots where f(x) < 0 rather than f(x) > 0.",
-      "C": "Student considers only positive x-values when solving x² > 4, ignoring that negative values with |x| > 2 also satisfy the inequality.",
-      "D": "Student considers only negative x-values when solving x² > 4, ignoring that positive values with x > 2 also satisfy the inequality."
+      "C": "Student considers only positive x-values when solving x\u00b2 > 4, ignoring that negative values with |x| > 2 also satisfy the inequality.",
+      "D": "Student considers only negative x-values when solving x\u00b2 > 4, ignoring that positive values with x > 2 also satisfy the inequality."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -438,11 +448,11 @@
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
-        "hint_text": "Test a value from each answer region — for example, x = 0 and x = 3 — to check whether f(x) > 0."
+        "hint_text": "Test a value from each answer region \u2014 for example, x = 0 and x = 3 \u2014 to check whether f(x) > 0."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "f(x) = x² − 4 is a parabola opening upward. It is positive outside its roots, not between them."
+        "hint_text": "f(x) = x\u00b2 \u2212 4 is a parabola opening upward. It is positive outside its roots, not between them."
       }
     ],
     "content_context": "generic",
@@ -465,6 +475,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

@@ -30,10 +30,10 @@
     "correct_answer": "B",
     "explanation": "Use the slope formula:\n$m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{9 - 3}{4 - 1} = \\frac{6}{3} = 2$",
     "distractor_logic": {
-      "A": "Student computes Δy = 6 and Δx = 3 correctly but subtracts instead of divides: 6 − 3 = 3.",
+      "A": "Student computes \u0394y = 6 and \u0394x = 3 correctly but subtracts instead of divides: 6 \u2212 3 = 3.",
       "B": "Correct: $\\frac{9 - 3}{4 - 1}$ = $\\frac{6}{3}$ = 2.",
-      "C": "Student inverts the formula, computing $\\frac{Δx}{Δy}$ = $\\frac{3}{6}$ = $\\frac{1}{2}$.",
-      "D": "Student computes Δy = 6 but uses it directly as the slope without dividing by Δx."
+      "C": "Student inverts the formula, computing $\\frac{\u0394x}{\u0394y}$ = $\\frac{3}{6}$ = $\\frac{1}{2}$.",
+      "D": "Student computes \u0394y = 6 but uses it directly as the slope without dividing by \u0394x."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -75,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_040",
@@ -97,21 +99,21 @@
       "identifying the slope and y-intercept from an equation in slope-intercept form",
       "correctly reading the sign of the slope from a linear equation"
     ],
-    "question_text": "What are the slope and y-intercept of the line y = −4x + 7?",
+    "question_text": "What are the slope and y-intercept of the line y = \u22124x + 7?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "slope = 4, y-intercept = 7",
-      "B": "slope = −4, y-intercept = 7",
-      "C": "slope = 7, y-intercept = −4",
-      "D": "slope = −4, y-intercept = −7"
+      "B": "slope = \u22124, y-intercept = 7",
+      "C": "slope = 7, y-intercept = \u22124",
+      "D": "slope = \u22124, y-intercept = \u22127"
     },
     "correct_answer": "B",
-    "explanation": "In slope-intercept form y = mx + b, m is the slope and b is the y-intercept.\n\nFor y = −4x + 7: m = −4 and b = 7.\n\nSlope = −4, y-intercept = 7.",
+    "explanation": "In slope-intercept form y = mx + b, m is the slope and b is the y-intercept.\n\nFor y = \u22124x + 7: m = \u22124 and b = 7.\n\nSlope = \u22124, y-intercept = 7.",
     "distractor_logic": {
       "A": "Student reads the slope magnitude correctly (4) but ignores the negative sign, reporting slope = 4.",
-      "B": "Correct: slope = −4 (coefficient of x), y-intercept = 7 (constant term).",
-      "C": "Student swaps the roles of slope and y-intercept, assigning 7 to the slope and −4 to the y-intercept.",
-      "D": "Student correctly identifies slope = −4 but also applies the negative to the constant term, reporting y-intercept = −7 instead of 7."
+      "B": "Correct: slope = \u22124 (coefficient of x), y-intercept = 7 (constant term).",
+      "C": "Student swaps the roles of slope and y-intercept, assigning 7 to the slope and \u22124 to the y-intercept.",
+      "D": "Student correctly identifies slope = \u22124 but also applies the negative to the constant term, reporting y-intercept = \u22127 instead of 7."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -130,7 +132,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "The coefficient of x is −4, not 4. Eliminate any choice that drops the negative sign from the slope."
+        "hint_text": "The coefficient of x is \u22124, not 4. Eliminate any choice that drops the negative sign from the slope."
       }
     ],
     "content_context": "generic",
@@ -153,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_041",
@@ -180,7 +184,7 @@
     "answer_choices": {
       "A": "2",
       "B": "$\\frac{-1}{2}$",
-      "C": "−2",
+      "C": "\u22122",
       "D": "3"
     },
     "correct_answer": "C",
@@ -188,8 +192,8 @@
     "distractor_logic": {
       "A": "Student computes the correct magnitude ($\\frac{6}{3}$ = 2) but drops the negative sign from the numerator, reporting slope = 2.",
       "B": "Student inverts the formula, computing $\\frac{x_2 - x_1}{y_2 - y_1} = \\frac{3}{-6} = \\frac{-1}{2}.",
-      "C": "Correct: $\\frac{(1 - 7)}{(5 - 2)} = \\frac{-6}{3}$ = −2.",
-      "D": "Student computes Δx = 5 − 2 = 3 and reports it as the slope, ignoring Δy entirely."
+      "C": "Correct: $\\frac{(1 - 7)}{(5 - 2)} = \\frac{-6}{3}$ = \u22122.",
+      "D": "Student computes \u0394x = 5 \u2212 2 = 3 and reports it as the slope, ignoring \u0394y entirely."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -204,7 +208,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "$Slope = \\frac{y_2 - y_1}{x_2 - x_1}$. Subtract y-values in the numerator and x-values in the denominator — in the same order."
+        "hint_text": "$Slope = \\frac{y_2 - y_1}{x_2 - x_1}$. Subtract y-values in the numerator and x-values in the denominator \u2014 in the same order."
       },
       {
         "strategy": "plug_in_values",
@@ -231,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_042",
@@ -253,21 +259,21 @@
       "writing the equation of a line in slope-intercept form given the slope and y-intercept",
       "correctly placing slope and y-intercept in the form y = mx + b"
     ],
-    "question_text": "A line has a slope of 3 and a y-intercept of −5. Which equation represents this line?",
+    "question_text": "A line has a slope of 3 and a y-intercept of \u22125. Which equation represents this line?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "y = −5x + 3",
-      "B": "y = 3x − 5",
+      "A": "y = \u22125x + 3",
+      "B": "y = 3x \u2212 5",
       "C": "y = 3x + 5",
-      "D": "y = −3x − 5"
+      "D": "y = \u22123x \u2212 5"
     },
     "correct_answer": "B",
-    "explanation": "In y = mx + b, substitute m = 3 (slope) and b = −5 (y-intercept):\ny = 3x + (−5) = 3x − 5",
+    "explanation": "In y = mx + b, substitute m = 3 (slope) and b = \u22125 (y-intercept):\ny = 3x + (\u22125) = 3x \u2212 5",
     "distractor_logic": {
-      "A": "Student swaps the slope and y-intercept values — places −5 as the coefficient of x and 3 as the constant.",
-      "B": "Correct: y = 3x − 5.",
-      "C": "Student uses the correct slope (3) but drops the negative sign from the y-intercept, writing +5 instead of −5.",
-      "D": "Student negates the slope, writing −3x instead of 3x, while correctly using the y-intercept −5."
+      "A": "Student swaps the slope and y-intercept values \u2014 places \u22125 as the coefficient of x and 3 as the constant.",
+      "B": "Correct: y = 3x \u2212 5.",
+      "C": "Student uses the correct slope (3) but drops the negative sign from the y-intercept, writing +5 instead of \u22125.",
+      "D": "Student negates the slope, writing \u22123x instead of 3x, while correctly using the y-intercept \u22125."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -282,11 +288,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "In y = mx + b, m is always the coefficient of x and b is always the constant. Place 3 with x and −5 as the constant."
+        "hint_text": "In y = mx + b, m is always the coefficient of x and b is always the constant. Place 3 with x and \u22125 as the constant."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Eliminate any choice where the coefficient of x is not 3. Then check that the constant is −5, not +5."
+        "hint_text": "Eliminate any choice where the coefficient of x is not 3. Then check that the constant is \u22125, not +5."
       }
     ],
     "content_context": "generic",
@@ -309,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_043",
@@ -331,11 +339,11 @@
       "computing slope when one of the points is the y-intercept",
       "applying the rise-over-run formula to points that include the origin crossing"
     ],
-    "question_text": "What is the slope of the line passing through the points (0, −2) and (3, 4)?",
+    "question_text": "What is the slope of the line passing through the points (0, \u22122) and (3, 4)?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "2",
-      "B": "−2",
+      "B": "\u22122",
       "C": "3",
       "D": "$\\frac{1}{2}$"
     },
@@ -343,9 +351,9 @@
     "explanation": "Apply the slope formula:\n$m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{4 - (-2)}{3 - 0} = \\frac{6}{3} = 2$",
     "distractor_logic": {
       "A": "Correct: $\\frac{(4 - (-2))}{(3 - 0)} = \\frac{6}{3} = 2$.",
-      "B": "Student sees the y-intercept (0, −2) and reports −2 as the slope rather than applying the slope formula.",
-      "C": "Student computes Δx = 3 and uses it directly as the slope, ignoring the change in y.",
-      "D": "Student inverts the formula, computing $\\frac{Δx}{Δy} = \\frac{3}{6} = \\frac{1}{2}$."
+      "B": "Student sees the y-intercept (0, \u22122) and reports \u22122 as the slope rather than applying the slope formula.",
+      "C": "Student computes \u0394x = 3 and uses it directly as the slope, ignoring the change in y.",
+      "D": "Student inverts the formula, computing $\\frac{\u0394x}{\u0394y} = \\frac{3}{6} = \\frac{1}{2}$."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -360,11 +368,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "$Slope = \\frac{y_2 - y_1}{x_2 - x_1}. Be careful subtracting a negative: 4 − (−2) = 6, not 2."
+        "hint_text": "$Slope = \\frac{y_2 - y_1}{x_2 - x_1}. Be careful subtracting a negative: 4 \u2212 (\u22122) = 6, not 2."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Use $(x_1, y_2)$ = (0, −2) and $(x_2, y_2)$ = (3, 4). Compute $\\frac{(4 - (-2))}{(3 - 0)}$."
+        "hint_text": "Use $(x_1, y_2)$ = (0, \u22122) and $(x_2, y_2)$ = (3, 4). Compute $\\frac{(4 - (-2))}{(3 - 0)}$."
       }
     ],
     "content_context": "generic",
@@ -387,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_027",
@@ -413,16 +423,16 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "y = 3x + 2",
-      "B": "y = 6x − 4",
-      "C": "y = 3x − 1",
+      "B": "y = 6x \u2212 4",
+      "C": "y = 3x \u2212 1",
       "D": "y = 3x + 5"
     },
     "correct_answer": "C",
-    "explanation": "Step 1 — Find the slope:\nm = $\\frac{8 − 2}{3 − 1}$ = $\\frac{6}{2}$ = 3\n\nStep 2 — Find the y-intercept using point (1, 2):\n2 = 3(1) + b → b = 2 − 3 = −1\n\nEquation: y = 3x − 1\n\nVerify: y(1) = 3 − 1 = 2 ✓  and  y(3) = 9 − 1 = 8 ✓",
+    "explanation": "Step 1 \u2014 Find the slope:\nm = $\\frac{8 \u2212 2}{3 \u2212 1}$ = $\\frac{6}{2}$ = 3\n\nStep 2 \u2014 Find the y-intercept using point (1, 2):\n2 = 3(1) + b \u2192 b = 2 \u2212 3 = \u22121\n\nEquation: y = 3x \u2212 1\n\nVerify: y(1) = 3 \u2212 1 = 2 \u2713  and  y(3) = 9 \u2212 1 = 8 \u2713",
     "distractor_logic": {
       "A": "Student computes slope = 3 correctly but uses the y-coordinate of the first point directly as b: y = 3x + 2, without solving for the actual y-intercept.",
-      "B": "Student uses Δy = 6 as the slope rather than dividing by Δx = 2, giving m = 6; then solves for b: 2 = 6(1) + b → b = −4.",
-      "C": "Correct: slope = 3, y-intercept = −1, giving y = 3x − 1.",
+      "B": "Student uses \u0394y = 6 as the slope rather than dividing by \u0394x = 2, giving m = 6; then solves for b: 2 = 6(1) + b \u2192 b = \u22124.",
+      "C": "Correct: slope = 3, y-intercept = \u22121, giving y = 3x \u2212 1.",
       "D": "Student computes slope = 3 correctly but adds slope and y-value to find b: b = 2 + 3 = 5, giving y = 3x + 5."
     },
     "difficulty_level": "Proficient",
@@ -465,7 +475,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_028",
@@ -487,21 +499,21 @@
       "writing the equation of a line given its slope and one point using point-slope form",
       "correctly expanding point-slope form and simplifying to slope-intercept form"
     ],
-    "question_text": "A line has a slope of −2 and passes through the point (3, 5). What is the equation of the line in slope-intercept form?",
+    "question_text": "A line has a slope of \u22122 and passes through the point (3, 5). What is the equation of the line in slope-intercept form?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "y = −2x − 1",
-      "B": "y = −2x + 5",
-      "C": "y = −2x + 2",
-      "D": "y = −2x + 11"
+      "A": "y = \u22122x \u2212 1",
+      "B": "y = \u22122x + 5",
+      "C": "y = \u22122x + 2",
+      "D": "y = \u22122x + 11"
     },
     "correct_answer": "D",
-    "explanation": "Use point-slope form with m = −2 and (x₁, y₁) = (3, 5):\ny − 5 = −2(x − 3)\ny − 5 = −2x + 6\ny = −2x + 11\n\nVerify: y(3) = −2(3) + 11 = −6 + 11 = 5 ✓",
+    "explanation": "Use point-slope form with m = \u22122 and (x\u2081, y\u2081) = (3, 5):\ny \u2212 5 = \u22122(x \u2212 3)\ny \u2212 5 = \u22122x + 6\ny = \u22122x + 11\n\nVerify: y(3) = \u22122(3) + 11 = \u22126 + 11 = 5 \u2713",
     "distractor_logic": {
-      "A": "Student computes −2(3) as +6 (drops the negative), then solves 5 = +6 + b → b = −1.",
-      "B": "Student uses the given y-coordinate (5) directly as the y-intercept without computing: y = −2x + 5.",
-      "C": "Student applies the distribution step as −2(x − 3) = −2x − 3 (distributes to x but not to −3), giving y − 5 = −2x − 3 → y = −2x + 2.",
-      "D": "Correct: y − 5 = −2(x − 3) → y = −2x + 6 + 5 = −2x + 11."
+      "A": "Student computes \u22122(3) as +6 (drops the negative), then solves 5 = +6 + b \u2192 b = \u22121.",
+      "B": "Student uses the given y-coordinate (5) directly as the y-intercept without computing: y = \u22122x + 5.",
+      "C": "Student applies the distribution step as \u22122(x \u2212 3) = \u22122x \u2212 3 (distributes to x but not to \u22123), giving y \u2212 5 = \u22122x \u2212 3 \u2192 y = \u22122x + 2.",
+      "D": "Correct: y \u2212 5 = \u22122(x \u2212 3) \u2192 y = \u22122x + 6 + 5 = \u22122x + 11."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -516,7 +528,7 @@
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
-        "hint_text": "Start with y − y₁ = m(x − x₁): y − 5 = −2(x − 3). Distribute −2 to both x and −3, then add 5 to both sides."
+        "hint_text": "Start with y \u2212 y\u2081 = m(x \u2212 x\u2081): y \u2212 5 = \u22122(x \u2212 3). Distribute \u22122 to both x and \u22123, then add 5 to both sides."
       },
       {
         "strategy": "identify_key_info",
@@ -543,7 +555,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_029",
@@ -574,11 +588,11 @@
       "D": "The one-time service fee charged regardless of hours"
     },
     "correct_answer": "C",
-    "explanation": "In C(h) = 65h + 90, the slope is 65. Slope represents the rate of change — how much the total cost increases for each additional hour worked. So the slope represents the cost per hour of labor: \\$65 per hour.\n\nThe y-intercept (90) represents the flat service fee charged regardless of hours — not the slope.",
+    "explanation": "In C(h) = 65h + 90, the slope is 65. Slope represents the rate of change \u2014 how much the total cost increases for each additional hour worked. So the slope represents the cost per hour of labor: \\$65 per hour.\n\nThe y-intercept (90) represents the flat service fee charged regardless of hours \u2014 not the slope.",
     "distractor_logic": {
-      "A": "Student confuses the function's output (total cost C) with what the slope means — the total cost is what the entire function computes, not what the slope alone represents.",
-      "B": "Student confuses the independent variable (h = hours) with the slope — hours is the input to the function, not the rate of change.",
-      "C": "Correct: the slope (65) is the rate of change of cost per hour — it tells how much cost increases for each additional hour.",
+      "A": "Student confuses the function's output (total cost C) with what the slope means \u2014 the total cost is what the entire function computes, not what the slope alone represents.",
+      "B": "Student confuses the independent variable (h = hours) with the slope \u2014 hours is the input to the function, not the rate of change.",
+      "C": "Correct: the slope (65) is the rate of change of cost per hour \u2014 it tells how much cost increases for each additional hour.",
       "D": "Student correctly identifies the flat fee concept but assigns it to the slope rather than the y-intercept (90), which is what the flat fee actually corresponds to."
     },
     "difficulty_level": "Proficient",
@@ -598,7 +612,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "The slope is not the total cost, not the number of hours, and not the flat fee — those are the output, input, and y-intercept respectively."
+        "hint_text": "The slope is not the total cost, not the number of hours, and not the flat fee \u2014 those are the output, input, and y-intercept respectively."
       }
     ],
     "content_context": "plumber_charges",
@@ -621,7 +635,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_A_021",
@@ -643,20 +659,20 @@
       "writing the equation of a line parallel to a given line through a specified point",
       "applying the property that parallel lines have equal slopes to find a new y-intercept"
     ],
-    "question_text": "A line is given by the equation y = 3x − 5. What is the equation of the line parallel to this line that passes through the point (2, 4)?",
+    "question_text": "A line is given by the equation y = 3x \u2212 5. What is the equation of the line parallel to this line that passes through the point (2, 4)?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "y = 3x − 2",
-      "B": "y = 3x − 5",
-      "C": "y = −($\\frac{1}{3}$)x + ($\\frac{14}{3}$)",
+      "A": "y = 3x \u2212 2",
+      "B": "y = 3x \u2212 5",
+      "C": "y = \u2212($\\frac{1}{3}$)x + ($\\frac{14}{3}$)",
       "D": "y = 3x + 4"
     },
     "correct_answer": "A",
-    "explanation": "Parallel lines have the same slope. The given line has slope 3, so the parallel line also has slope 3.\n\nUse point-slope form with slope 3 and point (2, 4):\ny − 4 = 3(x − 2)\ny = 3x − 6 + 4\ny = 3x − 2\n\nVerify: y(2) = 3(2) − 2 = 4 ✓  and  slope = 3 ✓ (parallel to y = 3x − 5)",
+    "explanation": "Parallel lines have the same slope. The given line has slope 3, so the parallel line also has slope 3.\n\nUse point-slope form with slope 3 and point (2, 4):\ny \u2212 4 = 3(x \u2212 2)\ny = 3x \u2212 6 + 4\ny = 3x \u2212 2\n\nVerify: y(2) = 3(2) \u2212 2 = 4 \u2713  and  slope = 3 \u2713 (parallel to y = 3x \u2212 5)",
     "distractor_logic": {
-      "A": "Correct: parallel slope = 3; using point (2, 4) gives b = −2, so y = 3x − 2.",
-      "B": "Student recognizes the slope must be 3 but copies the original equation without adjusting the y-intercept for the new point — returning y = 3x − 5 unchanged.",
-      "C": "Student confuses parallel (same slope) with perpendicular (negative reciprocal slope), using slope = −$\\frac{1}{3}$ and computing the equation through (2, 4).",
+      "A": "Correct: parallel slope = 3; using point (2, 4) gives b = \u22122, so y = 3x \u2212 2.",
+      "B": "Student recognizes the slope must be 3 but copies the original equation without adjusting the y-intercept for the new point \u2014 returning y = 3x \u2212 5 unchanged.",
+      "C": "Student confuses parallel (same slope) with perpendicular (negative reciprocal slope), using slope = \u2212$\\frac{1}{3}$ and computing the equation through (2, 4).",
       "D": "Student correctly identifies slope = 3 but uses the given y-coordinate (4) directly as the y-intercept without solving: y = 3x + 4."
     },
     "difficulty_level": "Advanced",
@@ -672,11 +688,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Parallel lines share the same slope. Use slope = 3 and point (2, 4) in y − y₁ = m(x − x₁) to find the new equation."
+        "hint_text": "Parallel lines share the same slope. Use slope = 3 and point (2, 4) in y \u2212 y\u2081 = m(x \u2212 x\u2081) to find the new equation."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Verify your equation by substituting x = 2 and confirming y = 4. Also confirm the slope is 3, not −$\\frac{1}{3}$."
+        "hint_text": "Verify your equation by substituting x = 2 and confirming y = 4. Also confirm the slope is 3, not \u2212$\\frac{1}{3}$."
       }
     ],
     "content_context": "generic",
@@ -699,7 +715,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_A_022",
@@ -721,7 +739,7 @@
       "recognizing and writing the equation of a horizontal line from two points with equal y-values",
       "distinguishing between horizontal lines (y = constant) and vertical lines (x = constant)"
     ],
-    "question_text": "What is the equation of the line passing through the points (−3, 4) and (5, 4)?",
+    "question_text": "What is the equation of the line passing through the points (\u22123, 4) and (5, 4)?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "x = 4",
@@ -732,9 +750,9 @@
     "correct_answer": "D",
     "explanation": "Compute the slope:\n$m = \\frac{(4 - 4)}{(5 - (-3))} = \\frac{0}{8}$ = 0\n\nA slope of 0 means the line is horizontal. Every point on the line has y = 4, so the equation is y = 4.\n\nNote: vertical lines have the form x = constant; horizontal lines have the form y = constant.",
     "distractor_logic": {
-      "A": "Student knows a constant-value line uses one variable as a constant but assigns it to x rather than y, writing x = 4 — confusing a horizontal line (y = constant) with a vertical line (x = constant).",
+      "A": "Student knows a constant-value line uses one variable as a constant but assigns it to x rather than y, writing x = 4 \u2014 confusing a horizontal line (y = constant) with a vertical line (x = constant).",
       "B": "Student correctly computes the slope as 0 but interprets 'slope = 0' as the equation 'y = 0,' reporting the slope value as the line equation.",
-      "C": "Student computes Δx = 5 − (−3) = 8 and uses this as the constant in the equation, writing y = 8.",
+      "C": "Student computes \u0394x = 5 \u2212 (\u22123) = 8 and uses this as the constant in the equation, writing y = 8.",
       "D": "Correct: slope = 0 indicates a horizontal line; both points share y = 4, so the equation is y = 4."
     },
     "difficulty_level": "Advanced",
@@ -750,11 +768,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Both points have the same y-value (4). When Δy = 0, the slope is 0 and the line is horizontal — written as y = 4, not x = 4."
+        "hint_text": "Both points have the same y-value (4). When \u0394y = 0, the slope is 0 and the line is horizontal \u2014 written as y = 4, not x = 4."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check: does y = 4 pass through both (−3, 4) and (5, 4)? Yes — both have y = 4 regardless of x."
+        "hint_text": "Check: does y = 4 pass through both (\u22123, 4) and (5, 4)? Yes \u2014 both have y = 4 regardless of x."
       }
     ],
     "content_context": "generic",
@@ -777,6 +795,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

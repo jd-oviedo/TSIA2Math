@@ -75,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_086",
@@ -153,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_087",
@@ -231,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_088",
@@ -309,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_089",
@@ -387,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_072",
@@ -465,7 +475,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_073",
@@ -543,7 +555,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_074",
@@ -621,7 +635,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_075",
@@ -699,7 +715,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_076",
@@ -777,7 +795,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_066",
@@ -855,7 +875,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_067",
@@ -933,7 +955,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_068",
@@ -1011,7 +1035,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_069",
@@ -1089,7 +1115,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_070",
@@ -1167,6 +1195,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

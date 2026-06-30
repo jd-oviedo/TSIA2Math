@@ -28,12 +28,12 @@
       "D": "100.8"
     },
     "correct_answer": "C",
-    "explanation": "Translate: x + 0.20x = 84, so 1.20x = 84. Divide: x = 84 ÷ 1.20 = 70.",
+    "explanation": "Translate: x + 0.20x = 84, so 1.20x = 84. Divide: x = 84 \u00f7 1.20 = 70.",
     "distractor_logic": {
-      "A": "Student finds 20% of the given result (0.20 × 84 = 16.8) rather than setting up an equation to find the original number.",
-      "B": "Student subtracts 20 directly from 84 (84 − 20 = 64) instead of dividing 84 by 1.20.",
-      "C": "Correct: 1.20x = 84 → x = 70.",
-      "D": "Student applies another 20% increase to 84 (84 × 1.20 = 100.8), moving further from the original instead of reversing the operation."
+      "A": "Student finds 20% of the given result (0.20 \u00d7 84 = 16.8) rather than setting up an equation to find the original number.",
+      "B": "Student subtracts 20 directly from 84 (84 \u2212 20 = 64) instead of dividing 84 by 1.20.",
+      "C": "Correct: 1.20x = 84 \u2192 x = 70.",
+      "D": "Student applies another 20% increase to 84 (84 \u00d7 1.20 = 100.8), moving further from the original instead of reversing the operation."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -52,7 +52,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check: 70 + 20% of 70 = 70 + 14 = 84. ✓"
+        "hint_text": "Check: 70 + 20% of 70 = 70 + 14 = 84. \u2713"
       }
     ],
     "content_context": "generic",
@@ -75,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_049",
@@ -106,11 +108,11 @@
       "D": "\\$79"
     },
     "correct_answer": "A",
-    "explanation": "A 25% discount means the sale price is 75% of the original. Equation: 0.75x = 54. Solve: x = 54 ÷ 0.75 = \\$72.",
+    "explanation": "A 25% discount means the sale price is 75% of the original. Equation: 0.75x = 54. Solve: x = 54 \u00f7 0.75 = \\$72.",
     "distractor_logic": {
-      "A": "Correct: 0.75x = 54 → x = \\$72.",
-      "B": "Student adds 25% of the sale price to the sale price (54 + 0.25 × 54 = \\$67.50), applying the percent to the wrong base.",
-      "C": "Student applies another 25% discount to the sale price (54 × 0.75 = \\$40.50), moving further from the original.",
+      "A": "Correct: 0.75x = 54 \u2192 x = \\$72.",
+      "B": "Student adds 25% of the sale price to the sale price (54 + 0.25 \u00d7 54 = \\$67.50), applying the percent to the wrong base.",
+      "C": "Student applies another 25% discount to the sale price (54 \u00d7 0.75 = \\$40.50), moving further from the original.",
       "D": "Student adds the percent number directly to the sale price (54 + 25 = \\$79) without converting to a decimal or using the correct formula."
     },
     "difficulty_level": "Basic",
@@ -126,11 +128,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "25% off means you pay 75% of the original. So 0.75 × original = \\$54. Divide to find the original."
+        "hint_text": "25% off means you pay 75% of the original. So 0.75 \u00d7 original = \\$54. Divide to find the original."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check: 75% of \\$72 = 0.75 × 72 = \\$54. ✓"
+        "hint_text": "Check: 75% of \\$72 = 0.75 \u00d7 72 = \\$54. \u2713"
       }
     ],
     "content_context": "retail_shopping",
@@ -153,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_050",
@@ -184,12 +188,12 @@
       "D": "\\$4,000"
     },
     "correct_answer": "D",
-    "explanation": "Commission = 8% of sales. Equation: 0.08x = 320. Solve: x = 320 ÷ 0.08 = \\$4,000.",
+    "explanation": "Commission = 8% of sales. Equation: 0.08x = 320. Solve: x = 320 \u00f7 0.08 = \\$4,000.",
     "distractor_logic": {
-      "A": "Student applies the 8% rate to the commission itself (320 × 0.08 = \\$25.60) rather than solving for the unknown sales total.",
+      "A": "Student applies the 8% rate to the commission itself (320 \u00d7 0.08 = \\$25.60) rather than solving for the unknown sales total.",
       "B": "Student adds the commission rate as a whole number to the earned commission (320 + 8 = \\$328) instead of writing an equation.",
-      "C": "Student estimates $\\frac{1}{0}$.08 ≈ 12 and multiplies (320 × 12 = \\$3,840) instead of using the exact divisor of 0.08.",
-      "D": "Correct: 0.08x = 320 → x = 320 ÷ 0.08 = \\$4,000."
+      "C": "Student estimates $\\frac{1}{0}$.08 \u2248 12 and multiplies (320 \u00d7 12 = \\$3,840) instead of using the exact divisor of 0.08.",
+      "D": "Correct: 0.08x = 320 \u2192 x = 320 \u00f7 0.08 = \\$4,000."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -204,11 +208,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "8% of total sales = \\$320. Write: 0.08 × sales = 320, then divide both sides by 0.08."
+        "hint_text": "8% of total sales = \\$320. Write: 0.08 \u00d7 sales = 320, then divide both sides by 0.08."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check: 8% of \\$4,000 = 0.08 × 4,000 = \\$320. ✓"
+        "hint_text": "Check: 8% of \\$4,000 = 0.08 \u00d7 4,000 = \\$320. \u2713"
       }
     ],
     "content_context": "work_and_jobs",
@@ -231,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_051",
@@ -262,12 +268,12 @@
       "D": "\\$47.00"
     },
     "correct_answer": "B",
-    "explanation": "Total = pre-tax price × 1.06. Equation: 1.06x = 53. Solve: x = 53 ÷ 1.06 = \\$50.",
+    "explanation": "Total = pre-tax price \u00d7 1.06. Equation: 1.06x = 53. Solve: x = 53 \u00f7 1.06 = \\$50.",
     "distractor_logic": {
-      "A": "Student subtracts 6% of the total from the total (53 − 0.06 × 53 = 53 − 3.18 = \\$49.82), applying the tax rate to the wrong base.",
-      "B": "Correct: 1.06x = 53 → x = \\$50.",
-      "C": "Student adds 6% of the total to the total (53 + 0.06 × 53 = \\$56.18), adding tax again to an amount that already includes it.",
-      "D": "Student subtracts the tax rate as a whole number from the total (53 − 6 = \\$47) without converting to a decimal or using the correct formula."
+      "A": "Student subtracts 6% of the total from the total (53 \u2212 0.06 \u00d7 53 = 53 \u2212 3.18 = \\$49.82), applying the tax rate to the wrong base.",
+      "B": "Correct: 1.06x = 53 \u2192 x = \\$50.",
+      "C": "Student adds 6% of the total to the total (53 + 0.06 \u00d7 53 = \\$56.18), adding tax again to an amount that already includes it.",
+      "D": "Student subtracts the tax rate as a whole number from the total (53 \u2212 6 = \\$47) without converting to a decimal or using the correct formula."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -282,11 +288,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "\\$53 is the total AFTER tax. That means: pre-tax × 1.06 = \\$53. Divide to find pre-tax."
+        "hint_text": "\\$53 is the total AFTER tax. That means: pre-tax \u00d7 1.06 = \\$53. Divide to find pre-tax."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check: \\$50 × 1.06 = \\$53. ✓"
+        "hint_text": "Check: \\$50 \u00d7 1.06 = \\$53. \u2713"
       }
     ],
     "content_context": "retail_shopping",
@@ -309,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_052",
@@ -340,11 +348,11 @@
       "D": "168"
     },
     "correct_answer": "C",
-    "explanation": "40% of 120 = 0.40 × 120 = 48. The other number = 120 − 48 = 72.",
+    "explanation": "40% of 120 = 0.40 \u00d7 120 = 48. The other number = 120 \u2212 48 = 72.",
     "distractor_logic": {
       "A": "Student correctly finds the first number (40% of 120 = 48) but reports it as the answer instead of finding the other number.",
-      "B": "Student subtracts the percent value directly from the total (120 − 40 = 80) instead of computing 40% of 120 first.",
-      "C": "Correct: 0.40 × 120 = 48; other number = 120 − 48 = 72.",
+      "B": "Student subtracts the percent value directly from the total (120 \u2212 40 = 80) instead of computing 40% of 120 first.",
+      "C": "Correct: 0.40 \u00d7 120 = 48; other number = 120 \u2212 48 = 72.",
       "D": "Student adds 40% of 120 to the total (120 + 48 = 168) instead of subtracting to find the complement."
     },
     "difficulty_level": "Basic",
@@ -364,7 +372,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "40% of 120 = 48. So the other number = 120 − 48 = 72. Check: 48 + 72 = 120. ✓"
+        "hint_text": "40% of 120 = 48. So the other number = 120 \u2212 48 = 72. Check: 48 + 72 = 120. \u2713"
       }
     ],
     "content_context": "generic",
@@ -387,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_043",
@@ -418,12 +428,12 @@
       "D": "\\$38,800"
     },
     "correct_answer": "A",
-    "explanation": "Equation: 1,200 + 0.05s = 2,000. Subtract 1,200: 0.05s = 800. Divide: s = 800 ÷ 0.05 = \\$16,000.",
+    "explanation": "Equation: 1,200 + 0.05s = 2,000. Subtract 1,200: 0.05s = 800. Divide: s = 800 \u00f7 0.05 = \\$16,000.",
     "distractor_logic": {
-      "A": "Correct: 0.05s = 800 → s = \\$16,000.",
-      "B": "Student ignores the base salary and divides the entire \\$2,000 goal by the commission rate: 2,000 ÷ 0.05 = \\$40,000.",
-      "C": "Student finds the earnings gap (2,000 − 1,200 = \\$800) but stops there without dividing by the commission rate to find required sales.",
-      "D": "Student divides the full \\$2,000 goal by the rate (2,000 ÷ 0.05 = \\$40,000) and then subtracts the base salary (40,000 − 1,200 = \\$38,800), applying operations in the wrong order."
+      "A": "Correct: 0.05s = 800 \u2192 s = \\$16,000.",
+      "B": "Student ignores the base salary and divides the entire \\$2,000 goal by the commission rate: 2,000 \u00f7 0.05 = \\$40,000.",
+      "C": "Student finds the earnings gap (2,000 \u2212 1,200 = \\$800) but stops there without dividing by the commission rate to find required sales.",
+      "D": "Student divides the full \\$2,000 goal by the rate (2,000 \u00f7 0.05 = \\$40,000) and then subtracts the base salary (40,000 \u2212 1,200 = \\$38,800), applying operations in the wrong order."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -442,7 +452,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check: 1,200 + 0.05 × 16,000 = 1,200 + 800 = \\$2,000. ✓"
+        "hint_text": "Check: 1,200 + 0.05 \u00d7 16,000 = 1,200 + 800 = \\$2,000. \u2713"
       }
     ],
     "content_context": "work_and_jobs",
@@ -465,7 +475,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_044",
@@ -496,12 +508,12 @@
       "D": "30"
     },
     "correct_answer": "D",
-    "explanation": "If 40% passed, then 60% failed. Equation: 0.60n = 18. Solve: n = 18 ÷ 0.60 = 30 students.",
+    "explanation": "If 40% passed, then 60% failed. Equation: 0.60n = 18. Solve: n = 18 \u00f7 0.60 = 30 students.",
     "distractor_logic": {
       "A": "Student reports the number of students who failed (18) without setting up an equation to find the total class size.",
-      "B": "Student uses the percent who passed (40%) instead of the percent who failed (60%): 18 ÷ 0.40 = 45.",
-      "C": "Student adds 40% of the failing count to the failing count (18 + 0.40 × 18 = 18 + 7.2 ≈ 25) rather than identifying the complementary percent and dividing.",
-      "D": "Correct: 60% failed → 0.60n = 18 → n = 30."
+      "B": "Student uses the percent who passed (40%) instead of the percent who failed (60%): 18 \u00f7 0.40 = 45.",
+      "C": "Student adds 40% of the failing count to the failing count (18 + 0.40 \u00d7 18 = 18 + 7.2 \u2248 25) rather than identifying the complementary percent and dividing.",
+      "D": "Correct: 60% failed \u2192 0.60n = 18 \u2192 n = 30."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -516,11 +528,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "If 40% passed, then 100% − 40% = 60% failed. The 18 who failed represent 60% of the total. Write: 0.60 × total = 18."
+        "hint_text": "If 40% passed, then 100% \u2212 40% = 60% failed. The 18 who failed represent 60% of the total. Write: 0.60 \u00d7 total = 18."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check: 60% of 30 = 18 failed. 40% of 30 = 12 passed. 18 + 12 = 30. ✓"
+        "hint_text": "Check: 60% of 30 = 18 failed. 40% of 30 = 12 passed. 18 + 12 = 30. \u2713"
       }
     ],
     "content_context": "academic_performance",
@@ -543,7 +555,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_045",
@@ -574,12 +588,12 @@
       "D": "\\$113"
     },
     "correct_answer": "B",
-    "explanation": "Combined multiplier = 1.30 × 1.10 = 1.43. Equation: 1.43w = 143. Solve: w = 143 ÷ 1.43 = \\$100.",
+    "explanation": "Combined multiplier = 1.30 \u00d7 1.10 = 1.43. Equation: 1.43w = 143. Solve: w = 143 \u00f7 1.43 = \\$100.",
     "distractor_logic": {
-      "A": "Student applies only the first 30% markup: 143 ÷ 1.30 ≈ \\$110, ignoring the second 10% markup.",
-      "B": "Correct: 1.30 × 1.10 = 1.43; w = 143 ÷ 1.43 = \\$100.",
-      "C": "Student adds the two markup percents (30% + 10% = 40%) and subtracts that as dollars: 143 − 40 = \\$103.",
-      "D": "Student subtracts only the first markup percent as a dollar amount: 143 − 30 = \\$113."
+      "A": "Student applies only the first 30% markup: 143 \u00f7 1.30 \u2248 \\$110, ignoring the second 10% markup.",
+      "B": "Correct: 1.30 \u00d7 1.10 = 1.43; w = 143 \u00f7 1.43 = \\$100.",
+      "C": "Student adds the two markup percents (30% + 10% = 40%) and subtracts that as dollars: 143 \u2212 40 = \\$103.",
+      "D": "Student subtracts only the first markup percent as a dollar amount: 143 \u2212 30 = \\$113."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -594,11 +608,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Two successive markups: × 1.30, then × 1.10. Combined: 1.30 × 1.10 = 1.43. Then divide \\$143 by 1.43."
+        "hint_text": "Two successive markups: \u00d7 1.30, then \u00d7 1.10. Combined: 1.30 \u00d7 1.10 = 1.43. Then divide \\$143 by 1.43."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check: \\$100 × 1.30 = \\$130; \\$130 × 1.10 = \\$143. ✓"
+        "hint_text": "Check: \\$100 \u00d7 1.30 = \\$130; \\$130 \u00d7 1.10 = \\$143. \u2713"
       }
     ],
     "content_context": "retail_shopping",
@@ -621,7 +635,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_041",
@@ -652,12 +668,12 @@
       "D": "15 liters"
     },
     "correct_answer": "C",
-    "explanation": "Acid stays constant: 0.30 × 10 = 3 liters of acid. After adding w liters of water: 3 ÷ (10 + w) = 0.20. Multiply both sides by (10 + w): 3 = 0.20(10 + w) = 2 + 0.20w. Subtract 2: 0.20w = 1. Divide: w = 5 liters.",
+    "explanation": "Acid stays constant: 0.30 \u00d7 10 = 3 liters of acid. After adding w liters of water: 3 \u00f7 (10 + w) = 0.20. Multiply both sides by (10 + w): 3 = 0.20(10 + w) = 2 + 0.20w. Subtract 2: 0.20w = 1. Divide: w = 5 liters.",
     "distractor_logic": {
-      "A": "Student computes the volume of acid in the original solution (0.30 × 10 = 3 liters) and reports that as the water to add.",
-      "B": "Student subtracts the target concentration from the original concentration and multiplies by volume (0.30 − 0.20) × 10 = 1 liter, treating the percent difference as a volume without using an equation.",
-      "C": "Correct: 3 ÷ (10 + w) = 0.20 → w = 5 liters.",
-      "D": "Student correctly uses C₁V₁ = C₂V₂ to find the new total volume (0.30 × 10 = 0.20 × V₂ → V₂ = 15 L) but reports 15 liters instead of the added water (15 − 10 = 5 liters)."
+      "A": "Student computes the volume of acid in the original solution (0.30 \u00d7 10 = 3 liters) and reports that as the water to add.",
+      "B": "Student subtracts the target concentration from the original concentration and multiplies by volume (0.30 \u2212 0.20) \u00d7 10 = 1 liter, treating the percent difference as a volume without using an equation.",
+      "C": "Correct: 3 \u00f7 (10 + w) = 0.20 \u2192 w = 5 liters.",
+      "D": "Student correctly uses C\u2081V\u2081 = C\u2082V\u2082 to find the new total volume (0.30 \u00d7 10 = 0.20 \u00d7 V\u2082 \u2192 V\u2082 = 15 L) but reports 15 liters instead of the added water (15 \u2212 10 = 5 liters)."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -673,15 +689,15 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The amount of acid doesn't change — only the volume grows. Acid = 0.30 × 10 = 3 L. Set up: 3 ÷ (10 + w) = 0.20."
+        "hint_text": "The amount of acid doesn't change \u2014 only the volume grows. Acid = 0.30 \u00d7 10 = 3 L. Set up: 3 \u00f7 (10 + w) = 0.20."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try w = 5: acid fraction = 3 ÷ 15 = 0.20 = 20%. ✓"
+        "hint_text": "Try w = 5: acid fraction = 3 \u00f7 15 = 0.20 = 20%. \u2713"
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "Going from 30% to 20% is a $\\frac{1}{3}$ reduction in concentration, so volume must increase by 50%: 10 × 1.5 = 15 total → add 5 liters."
+        "hint_text": "Going from 30% to 20% is a $\\frac{1}{3}$ reduction in concentration, so volume must increase by 50%: 10 \u00d7 1.5 = 15 total \u2192 add 5 liters."
       }
     ],
     "content_context": "science_and_engineering",
@@ -704,7 +720,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_042",
@@ -735,12 +753,12 @@
       "D": "44%"
     },
     "correct_answer": "A",
-    "explanation": "For break-even: c × (1 + m) × 0.80 = c. Divide both sides by c: (1 + m) × 0.80 = 1. Divide by 0.80: 1 + m = 1.25. So m = 0.25 = 25%. Check: mark up 25% then discount 20%: c × 1.25 × 0.80 = c × 1.00 = c. ✓",
+    "explanation": "For break-even: c \u00d7 (1 + m) \u00d7 0.80 = c. Divide both sides by c: (1 + m) \u00d7 0.80 = 1. Divide by 0.80: 1 + m = 1.25. So m = 0.25 = 25%. Check: mark up 25% then discount 20%: c \u00d7 1.25 \u00d7 0.80 = c \u00d7 1.00 = c. \u2713",
     "distractor_logic": {
-      "A": "Correct: (1 + m) × 0.80 = 1 → 1 + m = 1.25 → m = 25%.",
+      "A": "Correct: (1 + m) \u00d7 0.80 = 1 \u2192 1 + m = 1.25 \u2192 m = 25%.",
       "B": "Student assumes the markup must equal the coupon rate for break-even (20% markup offsets 20% coupon), not recognizing that a 20% discount on the marked-up price requires more than a 20% markup to recover cost.",
       "C": "Student reports the coupon multiplier (0.80) as a percent (80%), confusing the discount factor with the required markup rate.",
-      "D": "Student reasons that to offset a 20% loss, a 20% markup is needed plus an additional 20% of that markup (20% + 20% × 20% = 20% + 4% = 24%), then doubles it (24% + 20% = 44%), misapplying compound reasoning."
+      "D": "Student reasons that to offset a 20% loss, a 20% markup is needed plus an additional 20% of that markup (20% + 20% \u00d7 20% = 20% + 4% = 24%), then doubles it (24% + 20% = 44%), misapplying compound reasoning."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -756,11 +774,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Break-even means final price = cost. Set up: c × (1 + m) × 0.80 = c. Divide both sides by c, then solve for m."
+        "hint_text": "Break-even means final price = cost. Set up: c \u00d7 (1 + m) \u00d7 0.80 = c. Divide both sides by c, then solve for m."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try 25%: c × 1.25 × 0.80 = c × 1.00 = c. ✓ That's break-even."
+        "hint_text": "Try 25%: c \u00d7 1.25 \u00d7 0.80 = c \u00d7 1.00 = c. \u2713 That's break-even."
       },
       {
         "strategy": "estimate_first",
@@ -787,6 +805,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

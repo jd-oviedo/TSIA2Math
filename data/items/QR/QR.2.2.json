@@ -28,12 +28,12 @@
       "D": "60"
     },
     "correct_answer": "B",
-    "explanation": "Set up the proportion: $\\frac{3}{4}$ = $\\frac{x}{20}$. Cross-multiply: 4x = 60, so x = 15 miles. Alternatively, 20 ÷ 4 = 5 groups of 4 minutes; 5 × 3 = 15 miles.",
+    "explanation": "Set up the proportion: $\\frac{3}{4}$ = $\\frac{x}{20}$. Cross-multiply: 4x = 60, so x = 15 miles. Alternatively, 20 \u00f7 4 = 5 groups of 4 minutes; 5 \u00d7 3 = 15 miles.",
     "distractor_logic": {
-      "A": "Student divides 20 by 4 to find the number of groups (20 ÷ 4 = 5) but stops there instead of multiplying by the 3-mile rate.",
-      "B": "Correct: $\\frac{3}{4}$ = $\\frac{x}{20}$ → x = 3 × 5 = 15 miles.",
-      "C": "Student multiplies both numbers in the denominator position (4 × 20 = 80) without applying the rate of 3 miles.",
-      "D": "Student multiplies the rate numerator by the full time (3 × 20 = 60) without accounting for the 4-minute denominator in the rate."
+      "A": "Student divides 20 by 4 to find the number of groups (20 \u00f7 4 = 5) but stops there instead of multiplying by the 3-mile rate.",
+      "B": "Correct: $\\frac{3}{4}$ = $\\frac{x}{20}$ \u2192 x = 3 \u00d7 5 = 15 miles.",
+      "C": "Student multiplies both numbers in the denominator position (4 \u00d7 20 = 80) without applying the rate of 3 miles.",
+      "D": "Student multiplies the rate numerator by the full time (3 \u00d7 20 = 60) without accounting for the 4-minute denominator in the rate."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -52,7 +52,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "$\\frac{3}{4}$ = $\\frac{x}{20}$. Multiply both sides by 20: x = 3 × 20 ÷ 4 = 15."
+        "hint_text": "$\\frac{3}{4}$ = $\\frac{x}{20}$. Multiply both sides by 20: x = 3 \u00d7 20 \u00f7 4 = 15."
       }
     ],
     "content_context": "travel",
@@ -75,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_039",
@@ -106,12 +108,12 @@
       "D": "20"
     },
     "correct_answer": "C",
-    "explanation": "Rate = 12 pages ÷ 3 minutes = 4 pages per minute. Time for 60 pages = 60 ÷ 4 = 15 minutes.",
+    "explanation": "Rate = 12 pages \u00f7 3 minutes = 4 pages per minute. Time for 60 pages = 60 \u00f7 4 = 15 minutes.",
     "distractor_logic": {
-      "A": "Student correctly finds the rate (12 ÷ 3 = 4 pages/min) but reports the rate itself as the answer instead of using it to find the time.",
-      "B": "Student multiplies the target (60 pages) by the given time (3 min) instead of dividing by the rate, giving 60 × 3 = 180.",
-      "C": "Correct: rate = 4 pages/min; time = 60 ÷ 4 = 15 minutes.",
-      "D": "Student divides the target pages by the given time directly (60 ÷ 3 = 20) without first computing the pages-per-minute rate."
+      "A": "Student correctly finds the rate (12 \u00f7 3 = 4 pages/min) but reports the rate itself as the answer instead of using it to find the time.",
+      "B": "Student multiplies the target (60 pages) by the given time (3 min) instead of dividing by the rate, giving 60 \u00d7 3 = 180.",
+      "C": "Correct: rate = 4 pages/min; time = 60 \u00f7 4 = 15 minutes.",
+      "D": "Student divides the target pages by the given time directly (60 \u00f7 3 = 20) without first computing the pages-per-minute rate."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -126,11 +128,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "First find how many pages per minute: 12 ÷ 3. Then use that rate to find the time for 60 pages."
+        "hint_text": "First find how many pages per minute: 12 \u00f7 3. Then use that rate to find the time for 60 pages."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Rate = 4 pages/min. Set up: 4 × t = 60, so t = 15."
+        "hint_text": "Rate = 4 pages/min. Set up: 4 \u00d7 t = 60, so t = 15."
       }
     ],
     "content_context": "technology",
@@ -153,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_040",
@@ -184,12 +188,12 @@
       "D": "48"
     },
     "correct_answer": "A",
-    "explanation": "Scale factor = 60 ÷ 24 = 2.5. Cups of oats needed = 2 × 2.5 = 5 cups. Or use a proportion: $\\frac{2}{24}$ = $\\frac{x}{60}$ → 24x = 120 → x = 5.",
+    "explanation": "Scale factor = 60 \u00f7 24 = 2.5. Cups of oats needed = 2 \u00d7 2.5 = 5 cups. Or use a proportion: $\\frac{2}{24}$ = $\\frac{x}{60}$ \u2192 24x = 120 \u2192 x = 5.",
     "distractor_logic": {
-      "A": "Correct: scale factor = 60 ÷ 24 = 2.5; oats = 2 × 2.5 = 5 cups.",
-      "B": "Student inverts the rate, computing cookies per cup (24 ÷ 2 = 12), and reports that as the number of cups needed.",
-      "C": "Student divides the target cookies by the original cookies (60 ÷ 24 ≈ 2.5), rounds to 3, and reports the scale factor instead of multiplying it by 2.",
-      "D": "Student multiplies the original cups by the original cookie count (2 × 24 = 48) rather than using the ratio to scale toward 60 cookies."
+      "A": "Correct: scale factor = 60 \u00f7 24 = 2.5; oats = 2 \u00d7 2.5 = 5 cups.",
+      "B": "Student inverts the rate, computing cookies per cup (24 \u00f7 2 = 12), and reports that as the number of cups needed.",
+      "C": "Student divides the target cookies by the original cookies (60 \u00f7 24 \u2248 2.5), rounds to 3, and reports the scale factor instead of multiplying it by 2.",
+      "D": "Student multiplies the original cups by the original cookie count (2 \u00d7 24 = 48) rather than using the ratio to scale toward 60 cookies."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -204,7 +208,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The original batch makes 24 cookies with 2 cups. Find by how much you're scaling the batch (60 ÷ 24), then scale the cups the same way."
+        "hint_text": "The original batch makes 24 cookies with 2 cups. Find by how much you're scaling the batch (60 \u00f7 24), then scale the cups the same way."
       },
       {
         "strategy": "plug_in_values",
@@ -231,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_041",
@@ -262,12 +268,12 @@
       "D": "20"
     },
     "correct_answer": "D",
-    "explanation": "Rate = 2 jobs per 8 hours = 1 job per 4 hours. For 5 jobs: 5 × 4 = 20 hours. Using a proportion: $\\frac{2}{8}$ = $\\frac{5}{x}$ → 2x = 40 → x = 20.",
+    "explanation": "Rate = 2 jobs per 8 hours = 1 job per 4 hours. For 5 jobs: 5 \u00d7 4 = 20 hours. Using a proportion: $\\frac{2}{8}$ = $\\frac{5}{x}$ \u2192 2x = 40 \u2192 x = 20.",
     "distractor_logic": {
       "A": "Student reports the original time (8 hours) without scaling for the increased number of jobs.",
-      "B": "Student multiplies the original time by the target job count (8 × 5 = 40) without first computing the per-job rate.",
+      "B": "Student multiplies the original time by the target job count (8 \u00d7 5 = 40) without first computing the per-job rate.",
       "C": "Student adds the original job count to the original time (8 + 2 = 10) instead of using the proportional relationship.",
-      "D": "Correct: 1 job takes 4 hours; 5 jobs take 5 × 4 = 20 hours."
+      "D": "Correct: 1 job takes 4 hours; 5 jobs take 5 \u00d7 4 = 20 hours."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -282,11 +288,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Find the time for 1 job first: 8 ÷ 2 = 4 hours per job. Then multiply by 5."
+        "hint_text": "Find the time for 1 job first: 8 \u00f7 2 = 4 hours per job. Then multiply by 5."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "$\\frac{2}{8}$ = $\\frac{5}{x}$ → cross-multiply to solve for x."
+        "hint_text": "$\\frac{2}{8}$ = $\\frac{5}{x}$ \u2192 cross-multiply to solve for x."
       }
     ],
     "content_context": "work_and_jobs",
@@ -309,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_042",
@@ -343,9 +351,9 @@
     "explanation": "Set up the proportion (height/shadow): $\\frac{8}{4}$ = $\\frac{x}{10}$. Cross-multiply: 4x = 80, so x = 20 feet.",
     "distractor_logic": {
       "A": "Student reports the tree's shadow length (10 ft) as the tree's height without performing any calculation.",
-      "B": "Student inverts the ratio, using shadow/height ($\\frac{4}{8}$ = 0.5) instead of height/shadow, giving 0.5 × 10 = 5 ft.",
-      "C": "Correct: $\\frac{8}{4}$ = $\\frac{x}{10}$ → x = 20 feet.",
-      "D": "Student multiplies the pole height by the tree shadow without dividing by the pole shadow (8 × 10 = 80), skipping the proportional division step."
+      "B": "Student inverts the ratio, using shadow/height ($\\frac{4}{8}$ = 0.5) instead of height/shadow, giving 0.5 \u00d7 10 = 5 ft.",
+      "C": "Correct: $\\frac{8}{4}$ = $\\frac{x}{10}$ \u2192 x = 20 feet.",
+      "D": "Student multiplies the pole height by the tree shadow without dividing by the pole shadow (8 \u00d7 10 = 80), skipping the proportional division step."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -364,7 +372,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "$\\frac{8}{4}$ = $\\frac{x}{10}$. Multiply both sides by 10: x = 8 × 10 ÷ 4 = 20."
+        "hint_text": "$\\frac{8}{4}$ = $\\frac{x}{10}$. Multiply both sides by 10: x = 8 \u00d7 10 \u00f7 4 = 20."
       }
     ],
     "content_context": "outdoor_measurement",
@@ -387,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_037",
@@ -418,11 +428,11 @@
       "D": "\\$60"
     },
     "correct_answer": "A",
-    "explanation": "Unit price = \\$36 ÷ 9 = \\$4 per gallon. Cost of 15 gallons = 15 × \\$4 = \\$60. Change = \\$65 − \\$60 = \\$5.",
+    "explanation": "Unit price = \\$36 \u00f7 9 = \\$4 per gallon. Cost of 15 gallons = 15 \u00d7 \\$4 = \\$60. Change = \\$65 \u2212 \\$60 = \\$5.",
     "distractor_logic": {
-      "A": "Correct: unit price = \\$4/gal; 15 gal = \\$60; change = \\$65 − \\$60 = \\$5.",
-      "B": "Student subtracts the original cost (\\$36) from the budget (\\$65 − \\$36 = \\$29) without computing the cost of 15 gallons.",
-      "C": "Student divides \\$36 by 12 instead of 9, finding a rate of \\$3/gal, giving 15 × \\$3 = \\$45, then \\$65 − \\$45 = \\$20.",
+      "A": "Correct: unit price = \\$4/gal; 15 gal = \\$60; change = \\$65 \u2212 \\$60 = \\$5.",
+      "B": "Student subtracts the original cost (\\$36) from the budget (\\$65 \u2212 \\$36 = \\$29) without computing the cost of 15 gallons.",
+      "C": "Student divides \\$36 by 12 instead of 9, finding a rate of \\$3/gal, giving 15 \u00d7 \\$3 = \\$45, then \\$65 \u2212 \\$45 = \\$20.",
       "D": "Student correctly computes the cost of 15 gallons (\\$60) but reports the cost as the answer instead of calculating the remaining change."
     },
     "difficulty_level": "Proficient",
@@ -442,7 +452,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "\\$36 ÷ 9 = \\$4/gal. 15 × \\$4 = \\$60. \\$65 − \\$60 = \\$5."
+        "hint_text": "\\$36 \u00f7 9 = \\$4/gal. 15 \u00d7 \\$4 = \\$60. \\$65 \u2212 \\$60 = \\$5."
       }
     ],
     "content_context": "personal_finance",
@@ -465,7 +475,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_038",
@@ -496,12 +508,12 @@
       "D": "5 hours"
     },
     "correct_answer": "D",
-    "explanation": "Set totals equal: 30t = 20t + 50. Subtract 20t: 10t = 50. Divide: t = 5 hours. Check: A = 30 × 5 = 150; B = 20 × 5 + 50 = 150. ✓",
+    "explanation": "Set totals equal: 30t = 20t + 50. Subtract 20t: 10t = 50. Divide: t = 5 hours. Check: A = 30 \u00d7 5 = 150; B = 20 \u00d7 5 + 50 = 150. \u2713",
     "distractor_logic": {
-      "A": "Student divides the head start by Machine A's rate (50 ÷ 30 ≈ 1.67) and rounds to 2 hours, ignoring that Machine B is still producing parts during that time.",
-      "B": "Student computes the total parts at the catch-up point (30 × 5 = 150) rather than the number of hours it takes to reach that point.",
-      "C": "Student divides the head start by Machine B's rate (50 ÷ 20 = 2.5) and rounds to 3, using B's rate instead of the rate difference between the two machines.",
-      "D": "Correct: 30t = 20t + 50 → 10t = 50 → t = 5 hours."
+      "A": "Student divides the head start by Machine A's rate (50 \u00f7 30 \u2248 1.67) and rounds to 2 hours, ignoring that Machine B is still producing parts during that time.",
+      "B": "Student computes the total parts at the catch-up point (30 \u00d7 5 = 150) rather than the number of hours it takes to reach that point.",
+      "C": "Student divides the head start by Machine B's rate (50 \u00f7 20 = 2.5) and rounds to 3, using B's rate instead of the rate difference between the two machines.",
+      "D": "Correct: 30t = 20t + 50 \u2192 10t = 50 \u2192 t = 5 hours."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -516,7 +528,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "A gains on B by 30 − 20 = 10 parts per hour. B has a 50-part lead. How long to close a 50-part gap at 10 parts/hour?"
+        "hint_text": "A gains on B by 30 \u2212 20 = 10 parts per hour. B has a 50-part lead. How long to close a 50-part gap at 10 parts/hour?"
       },
       {
         "strategy": "plug_in_values",
@@ -543,7 +555,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_039",
@@ -574,12 +588,12 @@
       "D": "\\$8.00"
     },
     "correct_answer": "B",
-    "explanation": "Store A unit price: \\$1.80 ÷ 1.5 = \\$1.20/lb. Store B unit price: \\$2.60 ÷ 2 = \\$1.30/lb. Store A is cheaper by \\$1.30 − \\$1.20 = \\$0.10/lb. Savings over 8 pounds: \\$0.10 × 8 = \\$0.80.",
+    "explanation": "Store A unit price: \\$1.80 \u00f7 1.5 = \\$1.20/lb. Store B unit price: \\$2.60 \u00f7 2 = \\$1.30/lb. Store A is cheaper by \\$1.30 \u2212 \\$1.20 = \\$0.10/lb. Savings over 8 pounds: \\$0.10 \u00d7 8 = \\$0.80.",
     "distractor_logic": {
       "A": "Student correctly finds both unit prices and the per-pound savings (\\$0.10/lb) but stops there without multiplying by the 8-pound quantity.",
-      "B": "Correct: Store A = \\$1.20/lb; Store B = \\$1.30/lb; savings = \\$0.10/lb × 8 lb = \\$0.80.",
-      "C": "Student computes the total cost at Store B (\\$1.30 × 8 = \\$10.40) and reports it as the savings rather than finding the difference between the two stores’ totals.",
-      "D": "Student rounds the unit prices to the nearest dollar (\\$1.80/1.5 ≈ \\$2/lb; \\$2.60/2 ≈ \\$1/lb) and computes a \\$1.00/lb savings over 8 pounds, giving \\$8.00."
+      "B": "Correct: Store A = \\$1.20/lb; Store B = \\$1.30/lb; savings = \\$0.10/lb \u00d7 8 lb = \\$0.80.",
+      "C": "Student computes the total cost at Store B (\\$1.30 \u00d7 8 = \\$10.40) and reports it as the savings rather than finding the difference between the two stores\u2019 totals.",
+      "D": "Student rounds the unit prices to the nearest dollar (\\$1.80/1.5 \u2248 \\$2/lb; \\$2.60/2 \u2248 \\$1/lb) and computes a \\$1.00/lb savings over 8 pounds, giving \\$8.00."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -598,7 +612,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Store A: \\$1.80 ÷ 1.5 = \\$1.20/lb. Store B: \\$2.60 ÷ 2 = \\$1.30/lb. Difference: \\$0.10/lb × 8 lb = \\$0.80."
+        "hint_text": "Store A: \\$1.80 \u00f7 1.5 = \\$1.20/lb. Store B: \\$2.60 \u00f7 2 = \\$1.30/lb. Difference: \\$0.10/lb \u00d7 8 lb = \\$0.80."
       }
     ],
     "content_context": "grocery_shopping",
@@ -621,7 +635,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": "Revised from single unit-price calculation (flagged as too easy for Proficient) to two-store unit-rate comparison plus savings calculation per QR.2.2 review."
+    "review_notes": "Revised from single unit-price calculation (flagged as too easy for Proficient) to two-store unit-rate comparison plus savings calculation per QR.2.2 review.",
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_037",
@@ -654,10 +670,10 @@
     "correct_answer": "C",
     "explanation": "Let x = liters of Solution A. Salt equation: 0.40x + 0.10(6) = 0.25(x + 6). Simplify: 0.40x + 0.60 = 0.25x + 1.50. Subtract 0.25x: 0.15x = 0.90. Divide: x = 6 liters.",
     "distractor_logic": {
-      "A": "Student accounts for the salt needed from A but omits the existing salt from B, solving 0.40x = (0.25 − 0.10) × 6 → 0.40x = 0.90 → x ≈ 2 liters.",
-      "B": "Student applies the alligation method but misreads the result: alligation gives parts of A to parts of B = (25−10):(40−25) = 15:15 = 1:1, meaning equal volumes are needed. The student then treats 1/(1+1) = $\\frac{1}{2}$ as A’s fraction of B’s volume (rather than A’s fraction of the total), computing $\\frac{1}{2}$ × 6 = 3 liters of A — an incorrect application of the alligation ratio.",
-      "C": "Correct: 0.40x + 0.60 = 0.25x + 1.50 → 0.15x = 0.90 → x = 6 liters.",
-      "D": "Student omits the salt contributed by Solution B, solving 0.40x = 0.25(x + 6) → 0.15x = 1.50 → x = 10 liters."
+      "A": "Student accounts for the salt needed from A but omits the existing salt from B, solving 0.40x = (0.25 \u2212 0.10) \u00d7 6 \u2192 0.40x = 0.90 \u2192 x \u2248 2 liters.",
+      "B": "Student applies the alligation method but misreads the result: alligation gives parts of A to parts of B = (25\u221210):(40\u221225) = 15:15 = 1:1, meaning equal volumes are needed. The student then treats 1/(1+1) = $\\frac{1}{2}$ as A\u2019s fraction of B\u2019s volume (rather than A\u2019s fraction of the total), computing $\\frac{1}{2}$ \u00d7 6 = 3 liters of A \u2014 an incorrect application of the alligation ratio.",
+      "C": "Correct: 0.40x + 0.60 = 0.25x + 1.50 \u2192 0.15x = 0.90 \u2192 x = 6 liters.",
+      "D": "Student omits the salt contributed by Solution B, solving 0.40x = 0.25(x + 6) \u2192 0.15x = 1.50 \u2192 x = 10 liters."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -677,11 +693,11 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try x = 6: 0.40(6) + 0.10(6) = 2.4 + 0.6 = 3.0. Mixture = 12 L, target salt = 0.25 × 12 = 3.0. ✓"
+        "hint_text": "Try x = 6: 0.40(6) + 0.10(6) = 2.4 + 0.6 = 3.0. Mixture = 12 L, target salt = 0.25 \u00d7 12 = 3.0. \u2713"
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "In this specific problem, 25% is exactly midway between 10% and 40%, so equal volumes of the two solutions happen to produce the target concentration. This shortcut only works when the target is precisely halfway between the two source concentrations — do not generalize it to other mixture problems."
+        "hint_text": "In this specific problem, 25% is exactly midway between 10% and 40%, so equal volumes of the two solutions happen to produce the target concentration. This shortcut only works when the target is precisely halfway between the two source concentrations \u2014 do not generalize it to other mixture problems."
       }
     ],
     "content_context": "science_and_engineering",
@@ -704,7 +720,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": "Revised: (1) estimate_first hint rewritten to prevent overgeneralization of the equal-volumes shortcut; (2) distractor B rationale replaced with a genuine alligation misapplication that arithmetically produces 3 liters. Difficulty kept as Advanced per QR.2.2 review."
+    "review_notes": "Revised: (1) estimate_first hint rewritten to prevent overgeneralization of the equal-volumes shortcut; (2) distractor B rationale replaced with a genuine alligation misapplication that arithmetically produces 3 liters. Difficulty kept as Advanced per QR.2.2 review.",
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_038",
@@ -735,12 +753,12 @@
       "D": "9:50 AM"
     },
     "correct_answer": "A",
-    "explanation": "Let t = hours after 9:30 AM. Train A has a 30-minute head start, so its total travel time is t + 0.5 hours. Set distances equal: 90t = 60(t + 0.5). 90t = 60t + 30. 30t = 30. t = 1 hour after 9:30 AM = 10:30 AM. Check: A = 60 × 1.5 = 90 mi; B = 90 × 1 = 90 mi. ✓",
+    "explanation": "Let t = hours after 9:30 AM. Train A has a 30-minute head start, so its total travel time is t + 0.5 hours. Set distances equal: 90t = 60(t + 0.5). 90t = 60t + 30. 30t = 30. t = 1 hour after 9:30 AM = 10:30 AM. Check: A = 60 \u00d7 1.5 = 90 mi; B = 90 \u00d7 1 = 90 mi. \u2713",
     "distractor_logic": {
-      "A": "Correct: 90t = 60(t + 0.5) → t = 1 hr after 9:30 AM = 10:30 AM.",
+      "A": "Correct: 90t = 60(t + 0.5) \u2192 t = 1 hr after 9:30 AM = 10:30 AM.",
       "B": "Student solves correctly (t = 1 hour) but adds that time to Train A's departure (9:00 AM + 1 hr = 10:00 AM) instead of Train B's departure.",
-      "C": "Student divides Train A's speed by the speed difference (60 ÷ 30 = 2 hours) and adds to 9:00 AM, arriving at 11:00 AM.",
-      "D": "Student correctly computes Train A’s 30-minute head-start distance (60 mph × 0.5 hr = 30 miles) but then divides that gap by Train B’s full speed (30 ÷ 90 = $\\frac{1}{3}$ hr = 20 min) rather than by the relative closing speed (90 − 60 = 30 mph). Adding 20 minutes to 9:30 AM gives 9:50 AM."
+      "C": "Student divides Train A's speed by the speed difference (60 \u00f7 30 = 2 hours) and adds to 9:00 AM, arriving at 11:00 AM.",
+      "D": "Student correctly computes Train A\u2019s 30-minute head-start distance (60 mph \u00d7 0.5 hr = 30 miles) but then divides that gap by Train B\u2019s full speed (30 \u00f7 90 = $\\frac{1}{3}$ hr = 20 min) rather than by the relative closing speed (90 \u2212 60 = 30 mph). Adding 20 minutes to 9:30 AM gives 9:50 AM."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -760,11 +778,11 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try t = 1: B = 90 mi; A = 60 × 1.5 = 90 mi. Equal at t = 1 hr after 9:30 AM."
+        "hint_text": "Try t = 1: B = 90 mi; A = 60 \u00d7 1.5 = 90 mi. Equal at t = 1 hr after 9:30 AM."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "B gains 30 mph on A. A's head-start distance = 60 × 0.5 = 30 miles. Time to close 30 miles at 30 mph gain = 1 hour."
+        "hint_text": "B gains 30 mph on A. A's head-start distance = 60 \u00d7 0.5 = 30 miles. Time to close 30 miles at 30 mph gain = 1 hour."
       }
     ],
     "content_context": "travel",
@@ -787,6 +805,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": "Revised: distractor D rationale rewritten to explicitly name the error (uses B’s full speed instead of relative speed to close the gap) per QR.2.2 review."
+    "review_notes": "Revised: distractor D rationale rewritten to explicitly name the error (uses B\u2019s full speed instead of relative speed to close the gap) per QR.2.2 review.",
+    "figure_type": null,
+    "figure_props": null
   }
 ]

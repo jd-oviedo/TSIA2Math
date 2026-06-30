@@ -31,9 +31,9 @@
     "explanation": "To isolate t, divide both sides by r:\nd = rt\n$\\frac{d}{r} = t$\n\n$t = \\frac{d}{r}$\n\nThis works because division is the inverse of multiplication.",
     "distractor_logic": {
       "A": "Correct: dividing both sides by r isolates t, giving t = d/r.",
-      "B": "Student multiplies d by r instead of dividing — applies the same operation rather than the inverse.",
+      "B": "Student multiplies d by r instead of dividing \u2014 applies the same operation rather than the inverse.",
       "C": "Student inverts the fraction, placing r in the numerator and d in the denominator instead of the reverse.",
-      "D": "Student subtracts r from d instead of dividing — treats the multiplication in d = rt as addition."
+      "D": "Student subtracts r from d instead of dividing \u2014 treats the multiplication in d = rt as addition."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -75,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_047",
@@ -106,11 +108,11 @@
       "D": "$b = \\frac{P - a}{c}$"
     },
     "correct_answer": "B",
-    "explanation": "To isolate b, subtract a and c from both sides:\nP − a − c = b\n\nb = P − a − c",
+    "explanation": "To isolate b, subtract a and c from both sides:\nP \u2212 a \u2212 c = b\n\nb = P \u2212 a \u2212 c",
     "distractor_logic": {
-      "A": "Student moves a and c to the right side but adds them instead of subtracting — applies the wrong inverse operation.",
-      "B": "Correct: subtracting a and c from both sides gives b = P − a − c.",
-      "C": "Student misreads the additive formula as a product, dividing P by a × c instead of subtracting a and c.",
+      "A": "Student moves a and c to the right side but adds them instead of subtracting \u2014 applies the wrong inverse operation.",
+      "B": "Correct: subtracting a and c from both sides gives b = P \u2212 a \u2212 c.",
+      "C": "Student misreads the additive formula as a product, dividing P by a \u00d7 c instead of subtracting a and c.",
       "D": "Student correctly subtracts a from both sides but then divides by c rather than subtracting it, misidentifying the inverse operation for the second step."
     },
     "difficulty_level": "Basic",
@@ -153,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_032",
@@ -184,12 +188,12 @@
       "D": "$y_2 = (m + y_1)(x_2 - x_1)$"
     },
     "correct_answer": "C",
-    "explanation": "Step 1 — Multiply both sides by $(x_2 - x_1)$ to clear the denominator:\n$m(x_2 - x_1) = y_2 - y_1$\n\nStep 2 — Add $y_1$ to both sides to isolate $y_2$:\n$y_2 = m(x_2 - x_1) + y_1$\n\nThis is exactly the point-slope form of a line, rearranged.",
+    "explanation": "Step 1 \u2014 Multiply both sides by $(x_2 - x_1)$ to clear the denominator:\n$m(x_2 - x_1) = y_2 - y_1$\n\nStep 2 \u2014 Add $y_1$ to both sides to isolate $y_2$:\n$y_2 = m(x_2 - x_1) + y_1$\n\nThis is exactly the point-slope form of a line, rearranged.",
     "distractor_logic": {
-      "A": "Student divides by (x₂ − x₁) instead of multiplying — applies division where multiplication is needed to clear the denominator.",
-      "B": "Student correctly multiplies both sides by (x₂ − x₁) to get m(x₂ − x₁) = y₂ − y₁, but then subtracts y₁ from both sides instead of adding it, yielding y₂ = m(x₂ − x₁) − y₁.",
-      "C": "Correct: multiplying by (x₂ − x₁) and adding y₁ gives y₂ = m(x₂ − x₁) + y₁.",
-      "D": "Student adds y₁ to m before multiplying by (x₂ − x₁), applying addition and multiplication in the wrong order."
+      "A": "Student divides by (x\u2082 \u2212 x\u2081) instead of multiplying \u2014 applies division where multiplication is needed to clear the denominator.",
+      "B": "Student correctly multiplies both sides by (x\u2082 \u2212 x\u2081) to get m(x\u2082 \u2212 x\u2081) = y\u2082 \u2212 y\u2081, but then subtracts y\u2081 from both sides instead of adding it, yielding y\u2082 = m(x\u2082 \u2212 x\u2081) \u2212 y\u2081.",
+      "C": "Correct: multiplying by (x\u2082 \u2212 x\u2081) and adding y\u2081 gives y\u2082 = m(x\u2082 \u2212 x\u2081) + y\u2081.",
+      "D": "Student adds y\u2081 to m before multiplying by (x\u2082 \u2212 x\u2081), applying addition and multiplication in the wrong order."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -204,11 +208,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Clear the denominator first by multiplying both sides by (x₂ − x₁), then add y₁ to isolate y₂."
+        "hint_text": "Clear the denominator first by multiplying both sides by (x\u2082 \u2212 x\u2081), then add y\u2081 to isolate y\u2082."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try m = 2, x₁ = 1, x₂ = 4, y₁ = 3. The correct formula should give y₂ = 9. Check each choice."
+        "hint_text": "Try m = 2, x\u2081 = 1, x\u2082 = 4, y\u2081 = 3. The correct formula should give y\u2082 = 9. Check each choice."
       }
     ],
     "content_context": "slope_formula",
@@ -231,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_033",
@@ -262,12 +268,12 @@
       "D": "$b_1 = \\frac{2A}{h} - b_2$"
     },
     "correct_answer": "D",
-    "explanation": "Step 1 — Multiply both sides by 2 to eliminate the fraction:\n$2A = (b_1 + b_2)h$\n\nStep 2 — Divide both sides by h:\n$\\frac{2A}{h} = b_1 + b_2$\n\nStep 3 — Subtract $b_2$ from both sides:\n$b_1 = \\frac{2A}{h} - b_2$\n\nVerify with A = 24, h = 6, $b_2$ = 4:\n$b_1 = \\frac{2(24)}{6} - 4 = \\frac{48}{6} - 4 = 8 - 4 = 4$\nCheck: $\\frac{1}{2}(4 + 4)(6) = 24$ ✓",
+    "explanation": "Step 1 \u2014 Multiply both sides by 2 to eliminate the fraction:\n$2A = (b_1 + b_2)h$\n\nStep 2 \u2014 Divide both sides by h:\n$\\frac{2A}{h} = b_1 + b_2$\n\nStep 3 \u2014 Subtract $b_2$ from both sides:\n$b_1 = \\frac{2A}{h} - b_2$\n\nVerify with A = 24, h = 6, $b_2$ = 4:\n$b_1 = \\frac{2(24)}{6} - 4 = \\frac{48}{6} - 4 = 8 - 4 = 4$\nCheck: $\\frac{1}{2}(4 + 4)(6) = 24$ \u2713",
     "distractor_logic": {
-      "A": "Student correctly multiplies by 2 to get 2A = (b₁ + b₂)h, but then subtracts b₂h from both sides instead of dividing by h — leaving b₁ in an incorrect form.",
-      "B": "Student correctly divides by h and subtracts b₂, but skips multiplying by 2 to clear the $\\frac{1}{2}$ — giving A/h − b₂ instead of 2A/h − b₂.",
-      "C": "Student misreads the formula as A = b₁ + b₂ + h (treating all factors as additive terms) and isolates b₁ by subtracting b₂ and h.",
-      "D": "Correct: multiplying by 2, dividing by h, and subtracting b₂ gives b₁ = 2A/h − b₂."
+      "A": "Student correctly multiplies by 2 to get 2A = (b\u2081 + b\u2082)h, but then subtracts b\u2082h from both sides instead of dividing by h \u2014 leaving b\u2081 in an incorrect form.",
+      "B": "Student correctly divides by h and subtracts b\u2082, but skips multiplying by 2 to clear the $\\frac{1}{2}$ \u2014 giving A/h \u2212 b\u2082 instead of 2A/h \u2212 b\u2082.",
+      "C": "Student misreads the formula as A = b\u2081 + b\u2082 + h (treating all factors as additive terms) and isolates b\u2081 by subtracting b\u2082 and h.",
+      "D": "Correct: multiplying by 2, dividing by h, and subtracting b\u2082 gives b\u2081 = 2A/h \u2212 b\u2082."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -282,11 +288,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Work in reverse order of operations: first multiply both sides by 2 to clear the $\\frac{1}{2}$, then divide by h, then subtract b₂."
+        "hint_text": "Work in reverse order of operations: first multiply both sides by 2 to clear the $\\frac{1}{2}$, then divide by h, then subtract b\u2082."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Use A = 24, h = 6, b₂ = 4 (so b₁ = 4). Substitute into each answer choice and check which gives 4."
+        "hint_text": "Use A = 24, h = 6, b\u2082 = 4 (so b\u2081 = 4). Substitute into each answer choice and check which gives 4."
       }
     ],
     "content_context": "trapezoid_area",
@@ -309,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_A_025",
@@ -340,11 +348,11 @@
       "D": "$x = \\frac{c}{ab}$"
     },
     "correct_answer": "B",
-    "explanation": "Factor x from the left side:\nax + bx = x(a + b)\n\nSo the equation becomes:\nx(a + b) = c\n\nDivide both sides by (a + b):\n$x = \\frac{c}{a + b}$\n\nVerify with a = 2, b = 3, c = 10:\n$x = \\frac{10}{2 + 3} = \\frac{10}{5} = 2$\nCheck: 2(2) + 3(2) = 4 + 6 = 10 ✓",
+    "explanation": "Factor x from the left side:\nax + bx = x(a + b)\n\nSo the equation becomes:\nx(a + b) = c\n\nDivide both sides by (a + b):\n$x = \\frac{c}{a + b}$\n\nVerify with a = 2, b = 3, c = 10:\n$x = \\frac{10}{2 + 3} = \\frac{10}{5} = 2$\nCheck: 2(2) + 3(2) = 4 + 6 = 10 \u2713",
     "distractor_logic": {
-      "A": "Student splits the division across the sum — treats c/(a + b) as c/a + c/b — applying a false rule that division distributes over addition.",
+      "A": "Student splits the division across the sum \u2014 treats c/(a + b) as c/a + c/b \u2014 applying a false rule that division distributes over addition.",
       "B": "Correct: factoring gives x(a + b) = c, so x = c/(a + b).",
-      "C": "Student does not recognize x as a common factor; instead subtracts b (without x) from both sides, leaving ax = c − b → x = (c − b)/a.",
+      "C": "Student does not recognize x as a common factor; instead subtracts b (without x) from both sides, leaving ax = c \u2212 b \u2192 x = (c \u2212 b)/a.",
       "D": "Student combines a and b by multiplying rather than adding when collecting the factored coefficient: writes x = c/ab instead of c/(a + b)."
     },
     "difficulty_level": "Advanced",
@@ -387,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_A_026",
@@ -418,12 +428,12 @@
       "D": "x = bc - a + b"
     },
     "correct_answer": "C",
-    "explanation": "Step 1 — Multiply both sides by b to clear the denominator:\nx + a = b(c + x) = bc + bx\n\nStep 2 — Move all x-terms to the left:\nx − bx = bc − a\n\nStep 3 — Factor x:\nx(1 − b) = bc − a\n\nStep 4 — Divide both sides by (1 − b):\nx = $\\frac{bc − a}{1 − b}$\n\nVerify with a = 2, b = 3, c = 1:\nx = $\\frac{3 − 2}{1 − 3}$ = 1/(−2) = −$\\frac{1}{2}$\nCheck: (−$\\frac{1}{2}$ + 2)/3 = ($\\frac{3}{2}$)/3 = $\\frac{1}{2}$; c + x = 1 − $\\frac{1}{2}$ = $\\frac{1}{2}$ ✓",
+    "explanation": "Step 1 \u2014 Multiply both sides by b to clear the denominator:\nx + a = b(c + x) = bc + bx\n\nStep 2 \u2014 Move all x-terms to the left:\nx \u2212 bx = bc \u2212 a\n\nStep 3 \u2014 Factor x:\nx(1 \u2212 b) = bc \u2212 a\n\nStep 4 \u2014 Divide both sides by (1 \u2212 b):\nx = $\\frac{bc \u2212 a}{1 \u2212 b}$\n\nVerify with a = 2, b = 3, c = 1:\nx = $\\frac{3 \u2212 2}{1 \u2212 3}$ = 1/(\u22122) = \u2212$\\frac{1}{2}$\nCheck: (\u2212$\\frac{1}{2}$ + 2)/3 = ($\\frac{3}{2}$)/3 = $\\frac{1}{2}$; c + x = 1 \u2212 $\\frac{1}{2}$ = $\\frac{1}{2}$ \u2713",
     "distractor_logic": {
-      "A": "Student moves bx to the left but adds it to x instead of subtracting: x + bx = bc − a → x(1 + b) = bc − a → x = $\\frac{bc − a}{1 + b}$.",
-      "B": "Student correctly isolates x(1 − b) = bc − a but then divides by b (the coefficient from the original right-hand term) rather than by (1 − b) (the factored coefficient of x).",
-      "C": "Correct: x + a = bc + bx → x − bx = bc − a → x(1 − b) = bc − a → x = $\\frac{bc − a}{1 − b}$.",
-      "D": "Student correctly factors to x(1 − b) = bc − a but then adds (1 − b) to both sides instead of dividing, reporting x = bc − a + b."
+      "A": "Student moves bx to the left but adds it to x instead of subtracting: x + bx = bc \u2212 a \u2192 x(1 + b) = bc \u2212 a \u2192 x = $\\frac{bc \u2212 a}{1 + b}$.",
+      "B": "Student correctly isolates x(1 \u2212 b) = bc \u2212 a but then divides by b (the coefficient from the original right-hand term) rather than by (1 \u2212 b) (the factored coefficient of x).",
+      "C": "Correct: x + a = bc + bx \u2192 x \u2212 bx = bc \u2212 a \u2192 x(1 \u2212 b) = bc \u2212 a \u2192 x = $\\frac{bc \u2212 a}{1 \u2212 b}$.",
+      "D": "Student correctly factors to x(1 \u2212 b) = bc \u2212 a but then adds (1 \u2212 b) to both sides instead of dividing, reporting x = bc \u2212 a + b."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -438,7 +448,7 @@
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try a = 2, b = 3, c = 1. The correct formula should give x = −$\\frac{1}{2}$. Substitute into each answer choice and identify the match."
+        "hint_text": "Try a = 2, b = 3, c = 1. The correct formula should give x = \u2212$\\frac{1}{2}$. Substitute into each answer choice and identify the match."
       },
       {
         "strategy": "identify_key_info",
@@ -465,6 +475,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

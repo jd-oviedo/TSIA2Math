@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "library",
-    "context_tags": ["one_way_table", "direct_reading", "single_cell", "genre_frequency"],
+    "context_tags": [
+      "one_way_table",
+      "direct_reading",
+      "single_cell",
+      "genre_frequency"
+    ],
     "estimated_time_seconds": 55,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -67,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_013",
@@ -89,7 +99,7 @@
       "locating a single cell in a two-way table by correctly identifying both its row and column",
       "avoiding row or column confusion when extracting a value from a described two-way table"
     ],
-    "question_text": "A two-way table shows the lunch preferences of students in two grade levels. The rows are labeled 9th Grade and 10th Grade. The columns are labeled Pizza, Sandwich, and Salad. The cell values are: 9th Grade — Pizza = 12, Sandwich = 8, Salad = 5; 10th Grade — Pizza = 9, Sandwich = 11, Salad = 7. How many 10th graders prefer Sandwich?",
+    "question_text": "A two-way table shows the lunch preferences of students in two grade levels. The rows are labeled 9th Grade and 10th Grade. The columns are labeled Pizza, Sandwich, and Salad. The cell values are: 9th Grade \u2014 Pizza = 12, Sandwich = 8, Salad = 5; 10th Grade \u2014 Pizza = 9, Sandwich = 11, Salad = 7. How many 10th graders prefer Sandwich?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "8",
@@ -101,9 +111,9 @@
     "explanation": "Locate the cell at the intersection of the 10th Grade row and the Sandwich column.\n\nThe value in that cell is 11.\n\n11 tenth graders prefer Sandwich.",
     "distractor_logic": {
       "A": "Student reads the 9th Grade Sandwich cell (8) instead of the 10th Grade Sandwich cell.",
-      "B": "Student reads the 10th Grade Pizza cell (9) — correct row but wrong column.",
+      "B": "Student reads the 10th Grade Pizza cell (9) \u2014 correct row but wrong column.",
       "C": "Correct: the 10th Grade and Sandwich intersection contains 11.",
-      "D": "Student reads the 10th Grade Salad cell (7) — correct row but wrong column."
+      "D": "Student reads the 10th Grade Salad cell (7) \u2014 correct row but wrong column."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -111,7 +121,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -119,15 +132,20 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "The 10th Grade row contains three values: 9, 11, and 7. The question asks specifically for Sandwich — confirm which column header says Sandwich before reading the value."
+        "hint_text": "The 10th Grade row contains three values: 9, 11, and 7. The question asks specifically for Sandwich \u2014 confirm which column header says Sandwich before reading the value."
       }
     ],
     "content_context": "school",
-    "context_tags": ["two_way_table", "single_cell", "direct_reading", "lunch_preference"],
+    "context_tags": [
+      "two_way_table",
+      "single_cell",
+      "direct_reading",
+      "lunch_preference"
+    ],
     "estimated_time_seconds": 65,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -137,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_014",
@@ -181,11 +201,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Read all seven values before deciding. The fewest visitors means the smallest number — check every row before selecting."
+        "hint_text": "Read all seven values before deciding. The fewest visitors means the smallest number \u2014 check every row before selecting."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -193,11 +216,16 @@
       }
     ],
     "content_context": "tourism",
-    "context_tags": ["one_way_table", "minimum_value", "comparison", "museum_visitors"],
+    "context_tags": [
+      "one_way_table",
+      "minimum_value",
+      "comparison",
+      "museum_visitors"
+    ],
     "estimated_time_seconds": 65,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -207,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_015",
@@ -229,7 +259,7 @@
       "reading a specific cell from a two-way table using both a row and column condition simultaneously",
       "distinguishing between the Passed and Failed columns when reading a two-way outcomes table"
     ],
-    "question_text": "A two-way table shows the number of students who passed or failed a math test, by class period. The rows are Period 1, Period 2, and Period 3. The columns are Passed and Failed. The cell values are: Period 1 — Passed = 22, Failed = 6; Period 2 — Passed = 18, Failed = 9; Period 3 — Passed = 25, Failed = 4. How many students in Period 1 failed the test?",
+    "question_text": "A two-way table shows the number of students who passed or failed a math test, by class period. The rows are Period 1, Period 2, and Period 3. The columns are Passed and Failed. The cell values are: Period 1 \u2014 Passed = 22, Failed = 6; Period 2 \u2014 Passed = 18, Failed = 9; Period 3 \u2014 Passed = 25, Failed = 4. How many students in Period 1 failed the test?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "6",
@@ -241,9 +271,9 @@
     "explanation": "Locate the cell at the intersection of the Period 1 row and the Failed column.\n\nThe value in that cell is 6.\n\n6 students in Period 1 failed the math test.",
     "distractor_logic": {
       "A": "Correct: the Period 1 and Failed cell contains 6.",
-      "B": "Student reads the Period 1 Passed cell (22) — correct row but wrong column.",
-      "C": "Student reads the Period 2 Failed cell (9) — correct column but wrong row.",
-      "D": "Student reads the Period 3 Failed cell (4) — correct column but wrong row."
+      "B": "Student reads the Period 1 Passed cell (22) \u2014 correct row but wrong column.",
+      "C": "Student reads the Period 2 Failed cell (9) \u2014 correct column but wrong row.",
+      "D": "Student reads the Period 3 Failed cell (4) \u2014 correct column but wrong row."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -251,11 +281,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Find the Period 1 row first, then move across to the Failed column. The answer is at that intersection — not in the Passed column."
+        "hint_text": "Find the Period 1 row first, then move across to the Failed column. The answer is at that intersection \u2014 not in the Passed column."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -263,11 +296,16 @@
       }
     ],
     "content_context": "classroom",
-    "context_tags": ["two_way_table", "single_cell", "pass_fail", "class_period"],
+    "context_tags": [
+      "two_way_table",
+      "single_cell",
+      "pass_fail",
+      "class_period"
+    ],
     "estimated_time_seconds": 65,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -277,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_016",
@@ -313,7 +353,7 @@
       "A": "Student selects Product Y (95), the lowest value, possibly confusing alphabetical order with rank order.",
       "B": "Correct: Product X's sales of 130 exceed both Product Y (95) and Product Z (115).",
       "C": "Student selects Product Z (115), the second-highest value, without comparing it against Product X (130).",
-      "D": "Student incorrectly concludes that X and Z are tied; 130 ≠ 115, so no tie exists."
+      "D": "Student incorrectly concludes that X and Z are tied; 130 \u2260 115, so no tie exists."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -321,7 +361,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -333,11 +376,16 @@
       }
     ],
     "content_context": "business",
-    "context_tags": ["one_way_table", "maximum_value", "comparison", "product_sales"],
+    "context_tags": [
+      "one_way_table",
+      "maximum_value",
+      "comparison",
+      "product_sales"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -347,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_012",
@@ -369,7 +419,7 @@
       "summing all cells in a specified column of a two-way table to find a column total",
       "distinguishing between a single cell value and a full column total in a two-way table"
     ],
-    "question_text": "A two-way table shows the number of male and female students enrolled in three clubs. The rows are labeled Male and Female. The columns are labeled Chess, Drama, and Robotics. The cell values are: Male — Chess = 8, Drama = 14, Robotics = 20; Female — Chess = 11, Drama = 18, Robotics = 15. What is the total number of students enrolled in Drama?",
+    "question_text": "A two-way table shows the number of male and female students enrolled in three clubs. The rows are labeled Male and Female. The columns are labeled Chess, Drama, and Robotics. The cell values are: Male \u2014 Chess = 8, Drama = 14, Robotics = 20; Female \u2014 Chess = 11, Drama = 18, Robotics = 15. What is the total number of students enrolled in Drama?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "18",
@@ -378,7 +428,7 @@
       "D": "26"
     },
     "correct_answer": "C",
-    "explanation": "The Drama column contains two values — one for each row:\nMale Drama = 14\nFemale Drama = 18\n\nTotal: 14 + 18 = 32\n\n32 students in total are enrolled in Drama.",
+    "explanation": "The Drama column contains two values \u2014 one for each row:\nMale Drama = 14\nFemale Drama = 18\n\nTotal: 14 + 18 = 32\n\n32 students in total are enrolled in Drama.",
     "distractor_logic": {
       "A": "Student reads only the Female Drama cell (18) without adding the Male Drama cell.",
       "B": "Student reads only the Male Drama cell (14) without adding the Female Drama cell.",
@@ -391,11 +441,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The total for Drama requires adding both the Male Drama cell and the Female Drama cell — one value from each row in the Drama column."
+        "hint_text": "The total for Drama requires adding both the Male Drama cell and the Female Drama cell \u2014 one value from each row in the Drama column."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -403,11 +456,16 @@
       }
     ],
     "content_context": "school",
-    "context_tags": ["two_way_table", "column_total", "addition", "club_enrollment"],
+    "context_tags": [
+      "two_way_table",
+      "column_total",
+      "addition",
+      "club_enrollment"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -417,7 +475,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_013",
@@ -461,11 +521,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The question asks for the total across all four quarters — make sure to include Q1, Q2, Q3, and Q4. Add them in order to avoid skipping one."
+        "hint_text": "The question asks for the total across all four quarters \u2014 make sure to include Q1, Q2, Q3, and Q4. Add them in order to avoid skipping one."
       },
       {
         "strategy": "estimate_first",
@@ -473,11 +536,16 @@
       }
     ],
     "content_context": "business",
-    "context_tags": ["one_way_table", "grand_total", "addition", "quarterly_data"],
+    "context_tags": [
+      "one_way_table",
+      "grand_total",
+      "addition",
+      "quarterly_data"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -487,7 +555,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_014",
@@ -509,7 +579,7 @@
       "isolating a single column of a two-way table and computing the difference between two specified cells",
       "selecting the correct column for comparison rather than mixing values across columns"
     ],
-    "question_text": "A two-way table shows survey results on pet ownership by housing type. The rows are House and Apartment. The columns are Owns Pet and No Pet. The cell values are: House — Owns Pet = 48, No Pet = 22; Apartment — Owns Pet = 31, No Pet = 44. How many more apartment residents do not own a pet than house residents who do not own a pet?",
+    "question_text": "A two-way table shows survey results on pet ownership by housing type. The rows are House and Apartment. The columns are Owns Pet and No Pet. The cell values are: House \u2014 Owns Pet = 48, No Pet = 22; Apartment \u2014 Owns Pet = 31, No Pet = 44. How many more apartment residents do not own a pet than house residents who do not own a pet?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "22",
@@ -518,12 +588,12 @@
       "D": "17"
     },
     "correct_answer": "A",
-    "explanation": "The question asks about residents who do NOT own a pet — use the No Pet column only.\n\nApartment No Pet = 44\nHouse No Pet = 22\n\nDifference: 44 − 22 = 22\n\n22 more apartment residents do not own a pet compared to house residents who do not own a pet.",
+    "explanation": "The question asks about residents who do NOT own a pet \u2014 use the No Pet column only.\n\nApartment No Pet = 44\nHouse No Pet = 22\n\nDifference: 44 \u2212 22 = 22\n\n22 more apartment residents do not own a pet compared to house residents who do not own a pet.",
     "distractor_logic": {
-      "A": "Correct: 44 − 22 = 22 using only the No Pet column.",
-      "B": "Student subtracts Apartment No Pet from Apartment Owns Pet instead of comparing the No Pet column across housing types: 44 − 31 = 13.",
+      "A": "Correct: 44 \u2212 22 = 22 using only the No Pet column.",
+      "B": "Student subtracts Apartment No Pet from Apartment Owns Pet instead of comparing the No Pet column across housing types: 44 \u2212 31 = 13.",
       "C": "Student adds the entire Apartment row (Owns Pet + No Pet) instead of isolating the No Pet column: 31 + 44 = 75.",
-      "D": "Student compares the Owns Pet column instead of the No Pet column: House Owns Pet − Apartment Owns Pet = 48 − 31 = 17."
+      "D": "Student compares the Owns Pet column instead of the No Pet column: House Owns Pet \u2212 Apartment Owns Pet = 48 \u2212 31 = 17."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -531,11 +601,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The question specifies 'do not own a pet' — that means you only need values from the No Pet column. Read Apartment No Pet and House No Pet, then subtract."
+        "hint_text": "The question specifies 'do not own a pet' \u2014 that means you only need values from the No Pet column. Read Apartment No Pet and House No Pet, then subtract."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -543,11 +616,16 @@
       }
     ],
     "content_context": "survey",
-    "context_tags": ["two_way_table", "column_comparison", "difference", "pet_ownership"],
+    "context_tags": [
+      "two_way_table",
+      "column_comparison",
+      "difference",
+      "pet_ownership"
+    ],
     "estimated_time_seconds": 95,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -557,7 +635,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_015",
@@ -579,7 +659,7 @@
       "summing a full column across all rows of a two-way table to find a column total",
       "distinguishing between a row total and a column total when both are required by different questions"
     ],
-    "question_text": "A two-way table shows the number of students who prefer morning or afternoon classes, by year. The rows are Freshman and Sophomore. The columns are Morning and Afternoon. The cell values are: Freshman — Morning = 30, Afternoon = 20; Sophomore — Morning = 25, Afternoon = 35. What is the total number of students who prefer Morning classes?",
+    "question_text": "A two-way table shows the number of students who prefer morning or afternoon classes, by year. The rows are Freshman and Sophomore. The columns are Morning and Afternoon. The cell values are: Freshman \u2014 Morning = 30, Afternoon = 20; Sophomore \u2014 Morning = 25, Afternoon = 35. What is the total number of students who prefer Morning classes?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "30",
@@ -601,7 +681,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -613,11 +696,16 @@
       }
     ],
     "content_context": "school",
-    "context_tags": ["two_way_table", "column_total", "addition", "class_preference"],
+    "context_tags": [
+      "two_way_table",
+      "column_total",
+      "addition",
+      "class_preference"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -627,7 +715,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_016",
@@ -660,7 +750,7 @@
     "correct_answer": "C",
     "explanation": "Rank all five values from lowest to highest:\n1st (lowest): Org E = 75\n2nd: Org A = 85\n3rd: Org C = 95\n4th: Org D = 110\n5th (highest): Org B = 120\n\nOrg A has the second-lowest membership count at 85.",
     "distractor_logic": {
-      "A": "Student selects Org E (75), which is the lowest — not the second-lowest.",
+      "A": "Student selects Org E (75), which is the lowest \u2014 not the second-lowest.",
       "B": "Student selects Org C (95), which is the third-lowest value in the ranking.",
       "C": "Correct: after Org E (75), Org A (85) is the next lowest.",
       "D": "Student selects Org D (110), which is the fourth-lowest value."
@@ -671,7 +761,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -679,15 +772,20 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Org E is the lowest, not the second-lowest — eliminate it. Then compare Org A (85), Org C (95), Org D (110), and Org B (120) to find the smallest of those four."
+        "hint_text": "Org E is the lowest, not the second-lowest \u2014 eliminate it. Then compare Org A (85), Org C (95), Org D (110), and Org B (120) to find the smallest of those four."
       }
     ],
     "content_context": "community",
-    "context_tags": ["one_way_table", "ranking", "second_lowest", "membership_count"],
+    "context_tags": [
+      "one_way_table",
+      "ranking",
+      "second_lowest",
+      "membership_count"
+    ],
     "estimated_time_seconds": 95,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -697,7 +795,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_012",
@@ -719,7 +819,7 @@
       "computing a conditional percentage from a two-way table using the correct row total as the denominator",
       "distinguishing between a group-specific rate and the overall rate when selecting a denominator"
     ],
-    "question_text": "A two-way table shows the results of a science exam by gender. The rows are Male and Female. The columns are Passed, Failed, and Total. The values are: Male — Passed = 36, Failed = 12, Total = 48; Female — Passed = 44, Failed = 8, Total = 52; Overall Total — Passed = 80, Failed = 20, Grand Total = 100. What percentage of male students failed the exam?",
+    "question_text": "A two-way table shows the results of a science exam by gender. The rows are Male and Female. The columns are Passed, Failed, and Total. The values are: Male \u2014 Passed = 36, Failed = 12, Total = 48; Female \u2014 Passed = 44, Failed = 8, Total = 52; Overall Total \u2014 Passed = 80, Failed = 20, Grand Total = 100. What percentage of male students failed the exam?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "25%",
@@ -728,12 +828,12 @@
       "D": "33%"
     },
     "correct_answer": "A",
-    "explanation": "The question asks about male students only — use the Male row total as the denominator.\n\nMale Failed = 12\nMale Total = 48\n\n12 ÷ 48 = 0.25 = 25%\n\n25% of male students failed the exam.",
+    "explanation": "The question asks about male students only \u2014 use the Male row total as the denominator.\n\nMale Failed = 12\nMale Total = 48\n\n12 \u00f7 48 = 0.25 = 25%\n\n25% of male students failed the exam.",
     "distractor_logic": {
-      "A": "Correct: 12 ÷ 48 = 25%.",
-      "B": "Student uses the grand total as the denominator instead of the male row total: 12 ÷ 100 = 12%.",
-      "C": "Student computes the overall failure rate across all students instead of the male-specific rate: 20 ÷ 100 = 20%.",
-      "D": "Student divides failed males by passed males instead of total males: 12 ÷ 36 ≈ 33%."
+      "A": "Correct: 12 \u00f7 48 = 25%.",
+      "B": "Student uses the grand total as the denominator instead of the male row total: 12 \u00f7 100 = 12%.",
+      "C": "Student computes the overall failure rate across all students instead of the male-specific rate: 20 \u00f7 100 = 20%.",
+      "D": "Student divides failed males by passed males instead of total males: 12 \u00f7 36 \u2248 33%."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -741,7 +841,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -753,11 +856,16 @@
       }
     ],
     "content_context": "classroom",
-    "context_tags": ["two_way_table", "conditional_percentage", "row_total_denominator", "pass_fail"],
+    "context_tags": [
+      "two_way_table",
+      "conditional_percentage",
+      "row_total_denominator",
+      "pass_fail"
+    ],
     "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -767,7 +875,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_013",
@@ -789,7 +899,7 @@
       "computing a conditional proportion from a two-way table using a column total as the denominator",
       "identifying which marginal total serves as the denominator when the condition is defined by a column category"
     ],
-    "question_text": "A two-way table shows how customers rated a restaurant's food and service. The rows are Good Food and Poor Food. The columns are Good Service, Poor Service, and Total. The values are: Good Food — Good Service = 55, Poor Service = 15, Total = 70; Poor Food — Good Service = 10, Poor Service = 20, Total = 30; Column Totals — Good Service = 65, Poor Service = 35, Grand Total = 100. What percentage of customers who rated the service as Poor also rated the food as Poor? Round to the nearest whole percent.",
+    "question_text": "A two-way table shows how customers rated a restaurant's food and service. The rows are Good Food and Poor Food. The columns are Good Service, Poor Service, and Total. The values are: Good Food \u2014 Good Service = 55, Poor Service = 15, Total = 70; Poor Food \u2014 Good Service = 10, Poor Service = 20, Total = 30; Column Totals \u2014 Good Service = 65, Poor Service = 35, Grand Total = 100. What percentage of customers who rated the service as Poor also rated the food as Poor? Round to the nearest whole percent.",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "20%",
@@ -798,12 +908,12 @@
       "D": "57%"
     },
     "correct_answer": "D",
-    "explanation": "The condition is 'rated service as Poor' — so the denominator is the total number of customers who gave Poor Service ratings.\n\nPoor Service Total = 35\nPoor Food AND Poor Service = 20\n\n20 ÷ 35 ≈ 0.5714 ≈ 57%\n\nApproximately 57% of customers who rated the service as Poor also rated the food as Poor.",
+    "explanation": "The condition is 'rated service as Poor' \u2014 so the denominator is the total number of customers who gave Poor Service ratings.\n\nPoor Service Total = 35\nPoor Food AND Poor Service = 20\n\n20 \u00f7 35 \u2248 0.5714 \u2248 57%\n\nApproximately 57% of customers who rated the service as Poor also rated the food as Poor.",
     "distractor_logic": {
-      "A": "Student uses the grand total as the denominator: 20 ÷ 100 = 20%.",
-      "B": "Student uses the Poor Food row total as the denominator instead of the Poor Service column total: 20 ÷ 30 ≈ 67%.",
-      "C": "Student selects the wrong cell — uses Poor Food with Good Service (10) as the numerator instead of Poor Food with Poor Service (20): 10 ÷ 35 ≈ 29%.",
-      "D": "Correct: 20 ÷ 35 ≈ 57%."
+      "A": "Student uses the grand total as the denominator: 20 \u00f7 100 = 20%.",
+      "B": "Student uses the Poor Food row total as the denominator instead of the Poor Service column total: 20 \u00f7 30 \u2248 67%.",
+      "C": "Student selects the wrong cell \u2014 uses Poor Food with Good Service (10) as the numerator instead of Poor Food with Poor Service (20): 10 \u00f7 35 \u2248 29%.",
+      "D": "Correct: 20 \u00f7 35 \u2248 57%."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -811,11 +921,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The phrase 'of customers who rated the service as Poor' defines the group — use the Poor Service column total (35) as your denominator. Then find the cell for Poor Food AND Poor Service as the numerator."
+        "hint_text": "The phrase 'of customers who rated the service as Poor' defines the group \u2014 use the Poor Service column total (35) as your denominator. Then find the cell for Poor Food AND Poor Service as the numerator."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -823,11 +936,16 @@
       }
     ],
     "content_context": "food_service",
-    "context_tags": ["two_way_table", "conditional_proportion", "column_total_denominator", "customer_ratings"],
+    "context_tags": [
+      "two_way_table",
+      "conditional_proportion",
+      "column_total_denominator",
+      "customer_ratings"
+    ],
     "estimated_time_seconds": 130,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -837,7 +955,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_014",
@@ -859,20 +979,20 @@
       "computing completion rates for two groups from a two-way table and comparing their ratio to a stated claim",
       "identifying when a claim conflates raw counts with rates and correcting the comparison"
     ],
-    "question_text": "A two-way table shows the number of employees who completed or did not complete a training program, by department. The rows are Sales and Marketing. The columns are Completed, Not Completed, and Total. The values are: Sales — Completed = 40, Not Completed = 10, Total = 50; Marketing — Completed = 30, Not Completed = 20, Total = 50; Column Totals — Completed = 70, Not Completed = 30, Grand Total = 100. A manager claims that Sales employees are twice as likely to complete the training as Marketing employees. Which response correctly evaluates this claim?",
+    "question_text": "A two-way table shows the number of employees who completed or did not complete a training program, by department. The rows are Sales and Marketing. The columns are Completed, Not Completed, and Total. The values are: Sales \u2014 Completed = 40, Not Completed = 10, Total = 50; Marketing \u2014 Completed = 30, Not Completed = 20, Total = 50; Column Totals \u2014 Completed = 70, Not Completed = 30, Grand Total = 100. A manager claims that Sales employees are twice as likely to complete the training as Marketing employees. Which response correctly evaluates this claim?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "No — the completion rates cannot be compared because the table does not provide individual employee records.",
-      "B": "No — Sales completed at 80% and Marketing at 60%; the ratio of completion rates is approximately 1.3, not 2, so the claim overstates the difference.",
-      "C": "Yes — 40 Sales completions is exactly twice the 20 Marketing employees who did not complete the training, which confirms the claim.",
-      "D": "Yes — Sales completed 40 out of 50 (80%) and Marketing completed 30 out of 50 (60%); since 80 is roughly double 40, the claim holds."
+      "A": "No \u2014 the completion rates cannot be compared because the table does not provide individual employee records.",
+      "B": "No \u2014 Sales completed at 80% and Marketing at 60%; the ratio of completion rates is approximately 1.3, not 2, so the claim overstates the difference.",
+      "C": "Yes \u2014 40 Sales completions is exactly twice the 20 Marketing employees who did not complete the training, which confirms the claim.",
+      "D": "Yes \u2014 Sales completed 40 out of 50 (80%) and Marketing completed 30 out of 50 (60%); since 80 is roughly double 40, the claim holds."
     },
     "correct_answer": "B",
-    "explanation": "Compute each department's completion rate:\nSales: 40 ÷ 50 = 0.80 = 80%\nMarketing: 30 ÷ 50 = 0.60 = 60%\n\nRatio of rates: 80% ÷ 60% ≈ 1.33\n\nSales employees complete the training at a rate roughly 1.3 times that of Marketing — not twice. The manager's claim overstates the difference.",
+    "explanation": "Compute each department's completion rate:\nSales: 40 \u00f7 50 = 0.80 = 80%\nMarketing: 30 \u00f7 50 = 0.60 = 60%\n\nRatio of rates: 80% \u00f7 60% \u2248 1.33\n\nSales employees complete the training at a rate roughly 1.3 times that of Marketing \u2014 not twice. The manager's claim overstates the difference.",
     "distractor_logic": {
       "A": "Student incorrectly claims the table lacks sufficient information; department totals are provided and the rates are directly computable.",
-      "B": "Correct: 80% ÷ 60% ≈ 1.33, which is meaningfully less than 2.",
-      "C": "Student compares Sales completions (40) to Marketing non-completions (20) — two quantities from different columns that have no meaningful relationship to a likelihood comparison.",
+      "B": "Correct: 80% \u00f7 60% \u2248 1.33, which is meaningfully less than 2.",
+      "C": "Student compares Sales completions (40) to Marketing non-completions (20) \u2014 two quantities from different columns that have no meaningful relationship to a likelihood comparison.",
       "D": "Student correctly computes Sales at 80% but then compares 80 to 40 (Marketing's raw count rather than its rate of 60%), arriving at a false 2:1 ratio."
     },
     "difficulty_level": "Advanced",
@@ -881,23 +1001,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "A claim about likelihood requires comparing rates, not raw counts. Compute the completion rate for each department (completions ÷ department total), then divide one rate by the other."
+        "hint_text": "A claim about likelihood requires comparing rates, not raw counts. Compute the completion rate for each department (completions \u00f7 department total), then divide one rate by the other."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "For the claim to hold, the ratio of completion rates must equal 2. Compute 80% ÷ 60% and check whether the result is 2. If it is not, the claim is false — regardless of what the raw counts suggest."
+        "hint_text": "For the claim to hold, the ratio of completion rates must equal 2. Compute 80% \u00f7 60% and check whether the result is 2. If it is not, the claim is false \u2014 regardless of what the raw counts suggest."
       }
     ],
     "content_context": "workplace",
-    "context_tags": ["two_way_table", "rate_comparison", "claim_evaluation", "conditional_proportion"],
+    "context_tags": [
+      "two_way_table",
+      "rate_comparison",
+      "claim_evaluation",
+      "conditional_proportion"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -907,7 +1035,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_015",
@@ -929,7 +1059,7 @@
       "computing a conditional percentage from a two-way table using a row total as the denominator",
       "distinguishing the proportion within a subgroup from the proportion in the overall population"
     ],
-    "question_text": "A two-way table shows whether students play a sport and/or a musical instrument. The rows are Plays Sport and No Sport. The columns are Plays Instrument, No Instrument, and Total. The values are: Plays Sport — Plays Instrument = 18, No Instrument = 27, Total = 45; No Sport — Plays Instrument = 12, No Instrument = 23, Total = 35; Column Totals — Plays Instrument = 30, No Instrument = 50, Grand Total = 80. What percentage of students who play a sport also play an instrument? Round to the nearest whole percent.",
+    "question_text": "A two-way table shows whether students play a sport and/or a musical instrument. The rows are Plays Sport and No Sport. The columns are Plays Instrument, No Instrument, and Total. The values are: Plays Sport \u2014 Plays Instrument = 18, No Instrument = 27, Total = 45; No Sport \u2014 Plays Instrument = 12, No Instrument = 23, Total = 35; Column Totals \u2014 Plays Instrument = 30, No Instrument = 50, Grand Total = 80. What percentage of students who play a sport also play an instrument? Round to the nearest whole percent.",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "38%",
@@ -938,12 +1068,12 @@
       "D": "23%"
     },
     "correct_answer": "C",
-    "explanation": "The condition is 'students who play a sport' — so the denominator is the Plays Sport row total.\n\nPlays Sport Total = 45\nPlays Sport AND Plays Instrument = 18\n\n18 ÷ 45 = 0.40 = 40%\n\n40% of students who play a sport also play an instrument.",
+    "explanation": "The condition is 'students who play a sport' \u2014 so the denominator is the Plays Sport row total.\n\nPlays Sport Total = 45\nPlays Sport AND Plays Instrument = 18\n\n18 \u00f7 45 = 0.40 = 40%\n\n40% of students who play a sport also play an instrument.",
     "distractor_logic": {
-      "A": "Student uses the total instrument players divided by the grand total: 30 ÷ 80 = 37.5% ≈ 38% — this is the overall instrument-playing rate, not the sport-conditional rate.",
-      "B": "Student computes the proportion of sport players who do NOT play an instrument instead of those who do: 27 ÷ 45 = 60% — the complement of the correct answer.",
-      "C": "Correct: 18 ÷ 45 = 40%.",
-      "D": "Student uses the grand total as the denominator: 18 ÷ 80 = 22.5% ≈ 23%."
+      "A": "Student uses the total instrument players divided by the grand total: 30 \u00f7 80 = 37.5% \u2248 38% \u2014 this is the overall instrument-playing rate, not the sport-conditional rate.",
+      "B": "Student computes the proportion of sport players who do NOT play an instrument instead of those who do: 27 \u00f7 45 = 60% \u2014 the complement of the correct answer.",
+      "C": "Correct: 18 \u00f7 45 = 40%.",
+      "D": "Student uses the grand total as the denominator: 18 \u00f7 80 = 22.5% \u2248 23%."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -951,23 +1081,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The phrase 'of students who play a sport' restricts the group — use the Plays Sport row total (45) as the denominator. The numerator is the cell where Plays Sport and Plays Instrument intersect."
+        "hint_text": "The phrase 'of students who play a sport' restricts the group \u2014 use the Plays Sport row total (45) as the denominator. The numerator is the cell where Plays Sport and Plays Instrument intersect."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Using 80 as the denominator gives you an overall rate across all students, not a sport-conditional rate. Using 27 as the numerator gives the complement — students who play sport but no instrument. Check both."
+        "hint_text": "Using 80 as the denominator gives you an overall rate across all students, not a sport-conditional rate. Using 27 as the numerator gives the complement \u2014 students who play sport but no instrument. Check both."
       }
     ],
     "content_context": "school",
-    "context_tags": ["two_way_table", "conditional_percentage", "row_total_denominator", "extracurricular"],
+    "context_tags": [
+      "two_way_table",
+      "conditional_percentage",
+      "row_total_denominator",
+      "extracurricular"
+    ],
     "estimated_time_seconds": 130,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -977,7 +1115,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_016",
@@ -999,21 +1139,21 @@
       "evaluating a 'more than half' claim using a conditional proportion derived from a two-way table",
       "selecting the correct cell and column total to form the conditional fraction when the condition is defined by a column category"
     ],
-    "question_text": "A two-way table shows the number of patients who tested positive or negative for two conditions. The rows are Condition A Positive and Condition A Negative. The columns are Condition B Positive, Condition B Negative, and Total. The values are: Condition A Positive — Condition B Positive = 22, Condition B Negative = 18, Total = 40; Condition A Negative — Condition B Positive = 13, Condition B Negative = 47, Total = 60; Column Totals — Condition B Positive = 35, Condition B Negative = 65, Grand Total = 100. A doctor states: 'More than half of all patients who tested positive for Condition B also tested positive for Condition A.' Which response correctly evaluates this claim?",
+    "question_text": "A two-way table shows the number of patients who tested positive or negative for two conditions. The rows are Condition A Positive and Condition A Negative. The columns are Condition B Positive, Condition B Negative, and Total. The values are: Condition A Positive \u2014 Condition B Positive = 22, Condition B Negative = 18, Total = 40; Condition A Negative \u2014 Condition B Positive = 13, Condition B Negative = 47, Total = 60; Column Totals \u2014 Condition B Positive = 35, Condition B Negative = 65, Grand Total = 100. A doctor states: 'More than half of all patients who tested positive for Condition B also tested positive for Condition A.' Which response correctly evaluates this claim?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "No — only 22 out of 100 total patients had both conditions, which is less than half of all patients.",
-      "B": "No — the correct proportion is 22 out of 40 Condition A Positive patients, which gives 55% — just over half, so the claim is barely supported.",
-      "C": "No — only 13 out of 35 patients who tested positive for Condition B also tested positive for Condition A, which is approximately 37% and less than half.",
-      "D": "Yes — 22 out of 35 patients who tested positive for Condition B also tested positive for Condition A, which is approximately 63% and exceeds half."
+      "A": "No \u2014 only 22 out of 100 total patients had both conditions, which is less than half of all patients.",
+      "B": "No \u2014 the correct proportion is 22 out of 40 Condition A Positive patients, which gives 55% \u2014 just over half, so the claim is barely supported.",
+      "C": "No \u2014 only 13 out of 35 patients who tested positive for Condition B also tested positive for Condition A, which is approximately 37% and less than half.",
+      "D": "Yes \u2014 22 out of 35 patients who tested positive for Condition B also tested positive for Condition A, which is approximately 63% and exceeds half."
     },
     "correct_answer": "D",
-    "explanation": "The claim is about patients who tested positive for Condition B — so the denominator is the Condition B Positive column total.\n\nCondition B Positive Total = 35\nCondition A Positive AND Condition B Positive = 22\n\n22 ÷ 35 ≈ 0.629 ≈ 63%\n\n63% exceeds 50%, so the doctor's claim is correct.",
+    "explanation": "The claim is about patients who tested positive for Condition B \u2014 so the denominator is the Condition B Positive column total.\n\nCondition B Positive Total = 35\nCondition A Positive AND Condition B Positive = 22\n\n22 \u00f7 35 \u2248 0.629 \u2248 63%\n\n63% exceeds 50%, so the doctor's claim is correct.",
     "distractor_logic": {
-      "A": "Student uses the grand total (100) as the denominator: 22 ÷ 100 = 22%, which is less than half — but this uses the wrong denominator for a conditional claim.",
-      "B": "Student uses the Condition A Positive row total (40) as the denominator instead of the Condition B Positive column total (35): 22 ÷ 40 = 55%. The conclusion happens to be directionally correct, but the denominator is wrong for the stated condition.",
-      "C": "Student selects the wrong cell — uses Condition A Negative and Condition B Positive (13) as the numerator instead of Condition A Positive and Condition B Positive (22): 13 ÷ 35 ≈ 37%.",
-      "D": "Correct: the condition is Condition B Positive, so the denominator is 35; the numerator is 22; 22 ÷ 35 ≈ 63% > 50%."
+      "A": "Student uses the grand total (100) as the denominator: 22 \u00f7 100 = 22%, which is less than half \u2014 but this uses the wrong denominator for a conditional claim.",
+      "B": "Student uses the Condition A Positive row total (40) as the denominator instead of the Condition B Positive column total (35): 22 \u00f7 40 = 55%. The conclusion happens to be directionally correct, but the denominator is wrong for the stated condition.",
+      "C": "Student selects the wrong cell \u2014 uses Condition A Negative and Condition B Positive (13) as the numerator instead of Condition A Positive and Condition B Positive (22): 13 \u00f7 35 \u2248 37%.",
+      "D": "Correct: the condition is Condition B Positive, so the denominator is 35; the numerator is 22; 22 \u00f7 35 \u2248 63% > 50%."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1021,23 +1161,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The claim is about patients who tested positive for Condition B — that column total (35) is the denominator. The numerator is the cell where Condition B Positive and Condition A Positive intersect."
+        "hint_text": "The claim is about patients who tested positive for Condition B \u2014 that column total (35) is the denominator. The numerator is the cell where Condition B Positive and Condition A Positive intersect."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Using 100 as the denominator tests whether 22% of all patients had both conditions — not what the doctor claimed. The claim is specifically about the subgroup who tested positive for Condition B."
+        "hint_text": "Using 100 as the denominator tests whether 22% of all patients had both conditions \u2014 not what the doctor claimed. The claim is specifically about the subgroup who tested positive for Condition B."
       }
     ],
     "content_context": "healthcare",
-    "context_tags": ["two_way_table", "conditional_proportion", "column_total_denominator", "claim_evaluation"],
+    "context_tags": [
+      "two_way_table",
+      "conditional_proportion",
+      "column_total_denominator",
+      "claim_evaluation"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -1047,6 +1195,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

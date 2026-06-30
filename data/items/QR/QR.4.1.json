@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "pricing",
-    "context_tags": ["unit_rate", "scaling", "pricing", "real_world"],
+    "context_tags": [
+      "unit_rate",
+      "scaling",
+      "pricing",
+      "real_world"
+    ],
     "estimated_time_seconds": 70,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -67,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_108",
@@ -111,7 +121,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -123,11 +136,16 @@
       }
     ],
     "content_context": "recipe",
-    "context_tags": ["scaling", "recipe", "proportion", "real_world"],
+    "context_tags": [
+      "scaling",
+      "recipe",
+      "proportion",
+      "real_world"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -137,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_109",
@@ -181,7 +201,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -193,11 +216,16 @@
       }
     ],
     "content_context": "fuel_efficiency",
-    "context_tags": ["unit_rate", "distance", "fuel_efficiency", "real_world"],
+    "context_tags": [
+      "unit_rate",
+      "distance",
+      "fuel_efficiency",
+      "real_world"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -207,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_110",
@@ -251,7 +281,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -263,11 +296,16 @@
       }
     ],
     "content_context": "pricing",
-    "context_tags": ["unit_rate", "pricing", "grocery", "real_world"],
+    "context_tags": [
+      "unit_rate",
+      "pricing",
+      "grocery",
+      "real_world"
+    ],
     "estimated_time_seconds": 70,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -277,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_111",
@@ -321,7 +361,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -333,11 +376,16 @@
       }
     ],
     "content_context": "rate",
-    "context_tags": ["scaling", "rate", "printing", "real_world"],
+    "context_tags": [
+      "scaling",
+      "rate",
+      "printing",
+      "real_world"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -347,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_094",
@@ -391,7 +441,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -403,11 +456,16 @@
       }
     ],
     "content_context": "financial_literacy",
-    "context_tags": ["percent", "tip", "financial_literacy", "real_world"],
+    "context_tags": [
+      "percent",
+      "tip",
+      "financial_literacy",
+      "real_world"
+    ],
     "estimated_time_seconds": 95,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -417,7 +475,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_095",
@@ -426,7 +486,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.1",
@@ -461,7 +523,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -473,11 +538,16 @@
       }
     ],
     "content_context": "financial_literacy",
-    "context_tags": ["proportion", "wages", "solve_for_unknown", "real_world"],
+    "context_tags": [
+      "proportion",
+      "wages",
+      "solve_for_unknown",
+      "real_world"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -487,7 +557,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_096",
@@ -531,7 +603,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -543,11 +618,16 @@
       }
     ],
     "content_context": "financial_literacy",
-    "context_tags": ["percent", "discount", "financial_literacy", "real_world"],
+    "context_tags": [
+      "percent",
+      "discount",
+      "financial_literacy",
+      "real_world"
+    ],
     "estimated_time_seconds": 95,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -557,7 +637,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_097",
@@ -601,7 +683,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -613,11 +698,16 @@
       }
     ],
     "content_context": "manufacturing",
-    "context_tags": ["rate", "multi_step", "manufacturing", "real_world"],
+    "context_tags": [
+      "rate",
+      "multi_step",
+      "manufacturing",
+      "real_world"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -627,7 +717,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_098",
@@ -636,7 +728,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.1",
@@ -671,7 +765,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -683,11 +780,16 @@
       }
     ],
     "content_context": "financial_literacy",
-    "context_tags": ["percent_increase", "reverse_percent", "financial_literacy", "real_world"],
+    "context_tags": [
+      "percent_increase",
+      "reverse_percent",
+      "financial_literacy",
+      "real_world"
+    ],
     "estimated_time_seconds": 115,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -697,7 +799,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_088",
@@ -706,7 +810,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.1",
@@ -741,7 +847,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -753,11 +862,16 @@
       }
     ],
     "content_context": "scaling",
-    "context_tags": ["scale_factor", "reverse_proportion", "dimensions", "real_world"],
+    "context_tags": [
+      "scale_factor",
+      "reverse_proportion",
+      "dimensions",
+      "real_world"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -767,7 +881,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_089",
@@ -811,7 +927,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -823,11 +942,16 @@
       }
     ],
     "content_context": "rate",
-    "context_tags": ["rate_comparison", "distance", "difference", "real_world"],
+    "context_tags": [
+      "rate_comparison",
+      "distance",
+      "difference",
+      "real_world"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -837,7 +961,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_090",
@@ -881,7 +1007,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "draw_diagram"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -893,11 +1022,16 @@
       }
     ],
     "content_context": "pricing",
-    "context_tags": ["tiered_pricing", "unit_rate", "multi_step", "real_world"],
+    "context_tags": [
+      "tiered_pricing",
+      "unit_rate",
+      "multi_step",
+      "real_world"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -907,7 +1041,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_091",
@@ -916,7 +1052,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.1",
@@ -951,7 +1089,10 @@
     "guessing_c": null,
     "calculator_type": "basic",
     "requires_calculator": true,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -963,11 +1104,16 @@
       }
     ],
     "content_context": "financial_literacy",
-    "context_tags": ["percent_decrease", "reverse_percent", "depreciation", "real_world"],
+    "context_tags": [
+      "percent_decrease",
+      "reverse_percent",
+      "depreciation",
+      "real_world"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -977,7 +1123,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_092",
@@ -1021,7 +1169,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -1033,11 +1184,16 @@
       }
     ],
     "content_context": "scaling",
-    "context_tags": ["scale_factor", "difference", "unit_conversion", "real_world"],
+    "context_tags": [
+      "scale_factor",
+      "difference",
+      "unit_conversion",
+      "real_world"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -1047,6 +1203,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

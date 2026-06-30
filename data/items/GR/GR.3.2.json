@@ -1,0 +1,1202 @@
+[
+  {
+    "item_id": "GR_B_049",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.2",
+    "topic": "special_right_triangles",
+    "topic_text": "Special Right Triangles (30-60-90 and 45-45-90)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "applying the 45-45-90 ratio to find the hypotenuse from a known leg",
+      "distinguishing the 45-45-90 ratio from the 30-60-90 ratio"
+    ],
+    "question_text": "A 45-45-90 right triangle has a leg of length 5. What is the length of the hypotenuse?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$5\\sqrt{2}$",
+      "B": "$10$",
+      "C": "$\\frac{5\\sqrt{2}}{2}$",
+      "D": "$5\\sqrt{3}$"
+    },
+    "correct_answer": "A",
+    "explanation": "In a 45-45-90 triangle the sides are in the ratio $1 : 1 : \\sqrt{2}$, so the hypotenuse equals a leg times $\\sqrt{2}$:\n$\\text{hypotenuse} = 5 \\times \\sqrt{2} = 5\\sqrt{2}$",
+    "distractor_logic": {
+      "A": "Correct: hypotenuse $= 5\\sqrt{2}$, since in a 45-45-90 triangle the hypotenuse is a leg times $\\sqrt{2}$.",
+      "B": "Student applies the 30-60-90 hypotenuse rule (hypotenuse $= 2 \\times$ short leg) to a 45-45-90 triangle: $2 \\times 5 = 10$.",
+      "C": "Student divides the leg by $\\sqrt{2}$ instead of multiplying: $\\frac{5}{\\sqrt{2}} = \\frac{5\\sqrt{2}}{2}$.",
+      "D": "Student uses the $\\sqrt{3}$ factor from the 30-60-90 triangle instead of the $\\sqrt{2}$ factor: $5\\sqrt{3}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Decide which special triangle this is by its angles. A 45-45-90 triangle has two equal legs, and its hypotenuse relates to a leg by a factor of $\\sqrt{2}$. Check whether you are going from the leg to the hypotenuse or the reverse."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the triangle, mark both 45-degree angles, and label the known leg. The hypotenuse is always the side opposite the right angle."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "special_right_triangle",
+      "45_45_90",
+      "hypotenuse",
+      "radical_form"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_B_050",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.2",
+    "topic": "special_right_triangles",
+    "topic_text": "Special Right Triangles (30-60-90 and 45-45-90)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding a leg of a 45-45-90 triangle from a known hypotenuse",
+      "dividing by $\\sqrt{2}$ to reverse the 45-45-90 hypotenuse relationship"
+    ],
+    "question_text": "A 45-45-90 right triangle has a hypotenuse of length $8\\sqrt{2}$. What is the length of each leg?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$16$",
+      "B": "$4\\sqrt{2}$",
+      "C": "$8$",
+      "D": "$8\\sqrt{2}$"
+    },
+    "correct_answer": "C",
+    "explanation": "In a 45-45-90 triangle the hypotenuse is a leg times $\\sqrt{2}$, so to find a leg divide the hypotenuse by $\\sqrt{2}$:\n$\\text{leg} = \\frac{8\\sqrt{2}}{\\sqrt{2}} = 8$",
+    "distractor_logic": {
+      "A": "Student multiplies the hypotenuse by $\\sqrt{2}$ instead of dividing: $8\\sqrt{2} \\times \\sqrt{2} = 16$.",
+      "B": "Student divides the hypotenuse by 2 (the 30-60-90 hypotenuse rule) instead of by $\\sqrt{2}$: $\\frac{8\\sqrt{2}}{2} = 4\\sqrt{2}$.",
+      "C": "Correct: $\\frac{8\\sqrt{2}}{\\sqrt{2}} = 8$.",
+      "D": "Student assumes the leg equals the hypotenuse, applying no ratio at all: $8\\sqrt{2}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "You are given the hypotenuse and asked for a leg. In a 45-45-90 triangle the leg is the smaller measurement, so the operation that undoes 'times $\\sqrt{2}$' is what you need."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A leg must be shorter than the hypotenuse. Eliminate any choice that is larger than $8\\sqrt{2}$."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "special_right_triangle",
+      "45_45_90",
+      "leg",
+      "radical_form"
+    ],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_B_051",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.2",
+    "topic": "special_right_triangles",
+    "topic_text": "Special Right Triangles (30-60-90 and 45-45-90)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "applying the 30-60-90 ratio to find the hypotenuse from the short leg",
+      "identifying that the hypotenuse is twice the short leg"
+    ],
+    "question_text": "In a 30-60-90 right triangle, the side opposite the 30-degree angle has length 7. What is the length of the hypotenuse?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$7\\sqrt{3}$",
+      "B": "$14$",
+      "C": "$7\\sqrt{2}$",
+      "D": "$21$"
+    },
+    "correct_answer": "B",
+    "explanation": "The side opposite the 30-degree angle is the short leg. In a 30-60-90 triangle the sides are in the ratio $1 : \\sqrt{3} : 2$ (short leg : long leg : hypotenuse), so the hypotenuse is twice the short leg:\n$\\text{hypotenuse} = 2 \\times 7 = 14$",
+    "distractor_logic": {
+      "A": "Student finds the long leg (short leg times $\\sqrt{3}$) instead of the hypotenuse: $7\\sqrt{3}$.",
+      "B": "Correct: hypotenuse $= 2 \\times 7 = 14$.",
+      "C": "Student applies the 45-45-90 factor $\\sqrt{2}$ instead of the 30-60-90 hypotenuse rule: $7\\sqrt{2}$.",
+      "D": "Student multiplies the short leg by 3 instead of by 2: $7 \\times 3 = 21$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The side opposite the smallest angle is the shortest side. In a 30-60-90 triangle, the hypotenuse relates to that short leg by a whole-number factor, not a radical."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Label the 30, 60, and 90 degree angles, then mark which side sits opposite each. The hypotenuse is opposite the right angle."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "special_right_triangle",
+      "30_60_90",
+      "hypotenuse",
+      "short_leg"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_B_052",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.2",
+    "topic": "special_right_triangles",
+    "topic_text": "Special Right Triangles (30-60-90 and 45-45-90)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "applying the 30-60-90 ratio to find the long leg from the short leg",
+      "using the $\\sqrt{3}$ factor for the side opposite the 60-degree angle"
+    ],
+    "question_text": "In a 30-60-90 right triangle, the side opposite the 30-degree angle has length 6. What is the length of the side opposite the 60-degree angle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$12$",
+      "B": "$6\\sqrt{2}$",
+      "C": "$18$",
+      "D": "$6\\sqrt{3}$"
+    },
+    "correct_answer": "D",
+    "explanation": "The side opposite the 30-degree angle is the short leg; the side opposite the 60-degree angle is the long leg. The long leg is the short leg times $\\sqrt{3}$:\n$\\text{long leg} = 6 \\times \\sqrt{3} = 6\\sqrt{3}$",
+    "distractor_logic": {
+      "A": "Student finds the hypotenuse (short leg times 2) instead of the long leg: $2 \\times 6 = 12$.",
+      "B": "Student applies the 45-45-90 factor $\\sqrt{2}$ instead of the 30-60-90 long-leg factor $\\sqrt{3}$: $6\\sqrt{2}$.",
+      "C": "Student multiplies by 3 instead of by $\\sqrt{3}$: $6 \\times 3 = 18$.",
+      "D": "Correct: long leg $= 6\\sqrt{3}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Match each side to the angle it is opposite. The long leg sits opposite the 60-degree angle and relates to the short leg by a $\\sqrt{3}$ factor, not a 3."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the triangle and write the ratio $1 : \\sqrt{3} : 2$ next to the short leg, long leg, and hypotenuse in order."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "special_right_triangle",
+      "30_60_90",
+      "long_leg",
+      "radical_form"
+    ],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_B_053",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.2",
+    "topic": "special_right_triangles",
+    "topic_text": "Special Right Triangles (30-60-90 and 45-45-90)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding the short leg of a 30-60-90 triangle from the hypotenuse",
+      "halving the hypotenuse to reverse the 30-60-90 hypotenuse relationship"
+    ],
+    "question_text": "In a 30-60-90 right triangle, the hypotenuse has length 18. What is the length of the side opposite the 30-degree angle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$9$",
+      "B": "$6\\sqrt{3}$",
+      "C": "$9\\sqrt{2}$",
+      "D": "$36$"
+    },
+    "correct_answer": "A",
+    "explanation": "The side opposite the 30-degree angle is the short leg. Since the hypotenuse is twice the short leg, divide the hypotenuse by 2:\n$\\text{short leg} = \\frac{18}{2} = 9$",
+    "distractor_logic": {
+      "A": "Correct: short leg $= \\frac{18}{2} = 9$.",
+      "B": "Student divides the hypotenuse by $\\sqrt{3}$ (the long-leg relationship) instead of by 2: $\\frac{18}{\\sqrt{3}} = 6\\sqrt{3}$.",
+      "C": "Student divides the hypotenuse by $\\sqrt{2}$, applying the 45-45-90 relationship: $\\frac{18}{\\sqrt{2}} = 9\\sqrt{2}$.",
+      "D": "Student multiplies the hypotenuse by 2 instead of dividing: $18 \\times 2 = 36$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The short leg sits opposite the 30-degree angle and is the smallest side. The hypotenuse is twice that short leg, so reverse that relationship."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The short leg must be smaller than the hypotenuse of 18. Eliminate any choice that is 18 or larger."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "special_right_triangle",
+      "30_60_90",
+      "short_leg",
+      "hypotenuse"
+    ],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_049",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.2",
+    "topic": "special_right_triangles",
+    "topic_text": "Special Right Triangles (30-60-90 and 45-45-90)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding the hypotenuse of a 45-45-90 triangle from a leg",
+      "summing all three sides to compute the perimeter in radical form"
+    ],
+    "question_text": "A 45-45-90 right triangle has legs of length 4. What is the perimeter of the triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$8 + 4\\sqrt{3}$",
+      "B": "$16$",
+      "C": "$8 + 4\\sqrt{2}$",
+      "D": "$4 + 4\\sqrt{2}$"
+    },
+    "correct_answer": "C",
+    "explanation": "Both legs are 4, and the hypotenuse is a leg times $\\sqrt{2}$:\n$\\text{hypotenuse} = 4\\sqrt{2}$\nThe perimeter is the sum of all three sides:\n$4 + 4 + 4\\sqrt{2} = 8 + 4\\sqrt{2}$",
+    "distractor_logic": {
+      "A": "Student uses the 30-60-90 long-leg factor $\\sqrt{3}$ for the hypotenuse: $4 + 4 + 4\\sqrt{3} = 8 + 4\\sqrt{3}$.",
+      "B": "Student uses the 30-60-90 hypotenuse rule (hypotenuse $= 2 \\times$ leg $= 8$): $4 + 4 + 8 = 16$.",
+      "C": "Correct: $4 + 4 + 4\\sqrt{2} = 8 + 4\\sqrt{2}$.",
+      "D": "Student includes only one leg with the hypotenuse, dropping the second leg: $4 + 4\\sqrt{2}$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A 45-45-90 triangle has two equal legs. Find the hypotenuse first, then remember the perimeter adds all three sides, not just two."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch and label both legs and the hypotenuse separately so you do not forget a side when you add them up."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "special_right_triangle",
+      "45_45_90",
+      "perimeter",
+      "radical_form"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_050",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.2",
+    "topic": "special_right_triangles",
+    "topic_text": "Special Right Triangles (30-60-90 and 45-45-90)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying short and long legs in a 30-60-90 real-world setup",
+      "finding the long leg from the short leg using the $\\sqrt{3}$ factor"
+    ],
+    "question_text": "A ramp is built in the shape of a 30-60-90 right triangle. The vertical height of the ramp, opposite the 30-degree angle, is 9 feet. What is the length of the horizontal base of the ramp, opposite the 60-degree angle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$18$",
+      "B": "$9\\sqrt{3}$",
+      "C": "$9\\sqrt{2}$",
+      "D": "$27$"
+    },
+    "correct_answer": "B",
+    "explanation": "The vertical height is opposite the 30-degree angle, so it is the short leg. The horizontal base is opposite the 60-degree angle, so it is the long leg. The long leg is the short leg times $\\sqrt{3}$:\n$\\text{long leg} = 9 \\times \\sqrt{3} = 9\\sqrt{3}$",
+    "distractor_logic": {
+      "A": "Student finds the hypotenuse (short leg times 2) instead of the long leg: $2 \\times 9 = 18$.",
+      "B": "Correct: long leg $= 9\\sqrt{3}$.",
+      "C": "Student applies the 45-45-90 factor $\\sqrt{2}$ instead of the 30-60-90 long-leg factor: $9\\sqrt{2}$.",
+      "D": "Student multiplies by 3 instead of $\\sqrt{3}$: $9 \\times 3 = 27$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Match each described side to the angle it is opposite before choosing a ratio. The height is opposite 30 degrees, the base is opposite 60 degrees."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the ramp as a right triangle, mark the 30 and 60 degree angles, and label the vertical and horizontal sides to their opposite angles."
+      }
+    ],
+    "content_context": "ramp",
+    "context_tags": [
+      "special_right_triangle",
+      "30_60_90",
+      "real_world",
+      "long_leg"
+    ],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_051",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.2",
+    "topic": "special_right_triangles",
+    "topic_text": "Special Right Triangles (30-60-90 and 45-45-90)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding a leg of a 45-45-90 triangle from a whole-number hypotenuse",
+      "rationalizing the result of dividing by $\\sqrt{2}$"
+    ],
+    "question_text": "A 45-45-90 right triangle has a hypotenuse of length 10. What is the length of each leg in simplified radical form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$10\\sqrt{2}$",
+      "B": "$5$",
+      "C": "$\\frac{10\\sqrt{3}}{3}$",
+      "D": "$5\\sqrt{2}$"
+    },
+    "correct_answer": "D",
+    "explanation": "To find a leg from the hypotenuse, divide by $\\sqrt{2}$ and rationalize:\n$\\text{leg} = \\frac{10}{\\sqrt{2}} = \\frac{10\\sqrt{2}}{2} = 5\\sqrt{2}$",
+    "distractor_logic": {
+      "A": "Student multiplies the hypotenuse by $\\sqrt{2}$ instead of dividing: $10 \\times \\sqrt{2} = 10\\sqrt{2}$.",
+      "B": "Student divides the hypotenuse by 2 (the 30-60-90 hypotenuse rule) instead of by $\\sqrt{2}$: $\\frac{10}{2} = 5$.",
+      "C": "Student divides by $\\sqrt{3}$ rather than $\\sqrt{2}$, applying a 30-60-90 relationship: $\\frac{10}{\\sqrt{3}} = \\frac{10\\sqrt{3}}{3}$.",
+      "D": "Correct: $\\frac{10}{\\sqrt{2}} = 5\\sqrt{2}$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A leg of a 45-45-90 triangle is found by dividing the hypotenuse by $\\sqrt{2}$. Simplified radical form means you rationalize the denominator afterward."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Each leg must be shorter than the hypotenuse of 10. Eliminate any choice larger than 10."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "special_right_triangle",
+      "45_45_90",
+      "leg",
+      "rationalize"
+    ],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_052",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.2",
+    "topic": "special_right_triangles",
+    "topic_text": "Special Right Triangles (30-60-90 and 45-45-90)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "reversing the long-leg relationship to find the short leg of a 30-60-90 triangle",
+      "using the short leg to find the hypotenuse in two steps"
+    ],
+    "question_text": "In a 30-60-90 right triangle, the longer leg has length $5\\sqrt{3}$. What is the length of the hypotenuse?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$10$",
+      "B": "$10\\sqrt{3}$",
+      "C": "$5$",
+      "D": "$\\frac{5\\sqrt{3}}{2}$"
+    },
+    "correct_answer": "A",
+    "explanation": "The long leg equals the short leg times $\\sqrt{3}$, so divide to find the short leg:\n$\\text{short leg} = \\frac{5\\sqrt{3}}{\\sqrt{3}} = 5$\nThe hypotenuse is twice the short leg:\n$\\text{hypotenuse} = 2 \\times 5 = 10$",
+    "distractor_logic": {
+      "A": "Correct: short leg $= 5$, hypotenuse $= 2 \\times 5 = 10$.",
+      "B": "Student treats the given long leg as if it were the short leg and doubles it: $2 \\times 5\\sqrt{3} = 10\\sqrt{3}$.",
+      "C": "Student correctly finds the short leg of 5 but stops there, reporting the short leg instead of the hypotenuse.",
+      "D": "Student halves the long leg directly instead of first dividing by $\\sqrt{3}$: $\\frac{5\\sqrt{3}}{2}$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Work in two steps: the long leg gives you the short leg, and the short leg gives you the hypotenuse. Do not skip back to the short leg."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Write the ratio $1 : \\sqrt{3} : 2$ beside the short leg, long leg, and hypotenuse, then place the known long leg in its correct spot."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "special_right_triangle",
+      "30_60_90",
+      "hypotenuse",
+      "reverse_reasoning"
+    ],
+    "estimated_time_seconds": 115,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_053",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.2",
+    "topic": "special_right_triangles",
+    "topic_text": "Special Right Triangles (30-60-90 and 45-45-90)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "recognizing the diagonal of a square as the hypotenuse of a 45-45-90 triangle",
+      "finding the side of a square from its diagonal"
+    ],
+    "question_text": "A square garden has a diagonal of length $14\\sqrt{2}$ meters. What is the side length of the garden?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$28$",
+      "B": "$14$",
+      "C": "$7\\sqrt{2}$",
+      "D": "$14\\sqrt{2}$"
+    },
+    "correct_answer": "B",
+    "explanation": "The diagonal of a square splits it into two 45-45-90 triangles, where the diagonal is the hypotenuse and the sides are the legs. The diagonal equals a side times $\\sqrt{2}$, so divide:\n$\\text{side} = \\frac{14\\sqrt{2}}{\\sqrt{2}} = 14$",
+    "distractor_logic": {
+      "A": "Student multiplies the diagonal by $\\sqrt{2}$ instead of dividing: $14\\sqrt{2} \\times \\sqrt{2} = 28$.",
+      "B": "Correct: $\\frac{14\\sqrt{2}}{\\sqrt{2}} = 14$.",
+      "C": "Student divides the diagonal by 2 instead of by $\\sqrt{2}$: $\\frac{14\\sqrt{2}}{2} = 7\\sqrt{2}$.",
+      "D": "Student assumes the side equals the diagonal, applying no relationship: $14\\sqrt{2}$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "draw_diagram",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Draw the square and its diagonal. The diagonal is the hypotenuse of a 45-45-90 triangle, and the square's sides are the equal legs."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "You are given the diagonal (the hypotenuse) and asked for a side (a leg), so you reverse the 'times $\\sqrt{2}$' relationship."
+      }
+    ],
+    "content_context": "garden",
+    "context_tags": [
+      "special_right_triangle",
+      "45_45_90",
+      "square_diagonal",
+      "real_world"
+    ],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_049",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.2",
+    "topic": "special_right_triangles",
+    "topic_text": "Special Right Triangles (30-60-90 and 45-45-90)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "recognizing the altitude of an equilateral triangle as a 30-60-90 long leg",
+      "finding the height of an equilateral triangle from its side length"
+    ],
+    "question_text": "An equilateral triangle has a side length of 12. What is the height of the triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$12\\sqrt{3}$",
+      "B": "$6\\sqrt{2}$",
+      "C": "$6\\sqrt{3}$",
+      "D": "$6$"
+    },
+    "correct_answer": "C",
+    "explanation": "The altitude of an equilateral triangle splits it into two 30-60-90 triangles. The full side (12) becomes the hypotenuse, and half the base becomes the short leg:\n$\\text{short leg} = \\frac{12}{2} = 6$\nThe height is the long leg, which is the short leg times $\\sqrt{3}$:\n$\\text{height} = 6\\sqrt{3}$",
+    "distractor_logic": {
+      "A": "Student treats the full side of 12 as the short leg and multiplies by $\\sqrt{3}$: $12\\sqrt{3}$.",
+      "B": "Student finds the short leg of 6 correctly but applies the 45-45-90 factor $\\sqrt{2}$: $6\\sqrt{2}$.",
+      "C": "Correct: short leg $= 6$, height (long leg) $= 6\\sqrt{3}$.",
+      "D": "Student stops after halving the base and reports the short leg of 6 as the height."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "draw_diagram",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Drop the altitude from one vertex to the opposite side. This creates two 30-60-90 triangles where the full side is the hypotenuse and half the base is the short leg."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The height is the long leg of one of those 30-60-90 triangles, not the hypotenuse and not half the base."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "special_right_triangle",
+      "30_60_90",
+      "equilateral_triangle",
+      "altitude"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_050",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.2",
+    "topic": "special_right_triangles",
+    "topic_text": "Special Right Triangles (30-60-90 and 45-45-90)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "reverse-reasoning from the area of a 45-45-90 triangle to its leg length",
+      "using the equal legs as base and height in the area formula"
+    ],
+    "question_text": "A 45-45-90 right triangle has an area of 32 square units. What is the length of each leg?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$4\\sqrt{2}$",
+      "B": "$8\\sqrt{2}$",
+      "C": "$64$",
+      "D": "$8$"
+    },
+    "correct_answer": "D",
+    "explanation": "In a 45-45-90 triangle the two legs are equal and serve as the base and height. Let the leg be $\\ell$:\n$\\frac{1}{2}\\ell^{2} = 32$\n$\\ell^{2} = 64$\n$\\ell = 8$",
+    "distractor_logic": {
+      "A": "Student forgets the factor $\\frac{1}{2}$ in the area formula, solving $\\ell^{2} = 32$, so $\\ell = \\sqrt{32} = 4\\sqrt{2}$.",
+      "B": "Student finds the correct leg of 8 but reports the hypotenuse instead: $8\\sqrt{2}$.",
+      "C": "Student solves $\\ell^{2} = 64$ correctly but forgets to take the square root, reporting 64.",
+      "D": "Correct: $\\frac{1}{2}\\ell^{2} = 32$, so $\\ell^{2} = 64$ and $\\ell = 8$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "use_answer_choices"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The two legs of a 45-45-90 triangle are equal, so they act as base and height. Set up the area formula with the same value for both."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Test a choice by squaring it, halving, and checking whether you get 32. The leg, not the hypotenuse, is what the area formula uses."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "special_right_triangle",
+      "45_45_90",
+      "area",
+      "reverse_reasoning"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_051",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.2",
+    "topic": "special_right_triangles",
+    "topic_text": "Special Right Triangles (30-60-90 and 45-45-90)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding both legs of a 30-60-90 triangle from the hypotenuse",
+      "computing the area using the short leg and long leg"
+    ],
+    "question_text": "A 30-60-90 right triangle has a hypotenuse of length 20. What is the area of the triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$50\\sqrt{3}$",
+      "B": "$50$",
+      "C": "$100\\sqrt{3}$",
+      "D": "$200\\sqrt{3}$"
+    },
+    "correct_answer": "A",
+    "explanation": "From the hypotenuse, find the short leg and long leg:\n$\\text{short leg} = \\frac{20}{2} = 10$\n$\\text{long leg} = 10\\sqrt{3}$\nThe two legs form the base and height, so the area is:\n$\\frac{1}{2} \\times 10 \\times 10\\sqrt{3} = 50\\sqrt{3}$",
+    "distractor_logic": {
+      "A": "Correct: legs are 10 and $10\\sqrt{3}$, area $= \\frac{1}{2}(10)(10\\sqrt{3}) = 50\\sqrt{3}$.",
+      "B": "Student treats both legs as 10 (ignoring the $\\sqrt{3}$ on the long leg): $\\frac{1}{2}(10)(10) = 50$.",
+      "C": "Student uses the hypotenuse of 20 as one of the legs: $\\frac{1}{2}(20)(10\\sqrt{3}) = 100\\sqrt{3}$.",
+      "D": "Student treats the hypotenuse 20 as the short leg, making the long leg $20\\sqrt{3}$: $\\frac{1}{2}(20)(20\\sqrt{3}) = 200\\sqrt{3}$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The two legs (not the hypotenuse) form the base and height for area. Find the short leg from the hypotenuse first, then the long leg."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the triangle, label the hypotenuse, then work out both legs before placing them into the area formula."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "special_right_triangle",
+      "30_60_90",
+      "area",
+      "multi_step"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_052",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.2",
+    "topic": "special_right_triangles",
+    "topic_text": "Special Right Triangles (30-60-90 and 45-45-90)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "using a 30-60-90 triangle formed by a rectangle's diagonal to find both side lengths",
+      "computing the area of the rectangle from those sides"
+    ],
+    "question_text": "A rectangle has a diagonal of length 8 that makes a 30-degree angle with the longer side. What is the area of the rectangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$8\\sqrt{3}$",
+      "B": "$16\\sqrt{3}$",
+      "C": "$16$",
+      "D": "$32$"
+    },
+    "correct_answer": "B",
+    "explanation": "The diagonal is the hypotenuse of a 30-60-90 triangle. The side opposite the 30-degree angle (shorter side) is the short leg, and the side adjacent to it (longer side) is the long leg:\n$\\text{short side} = \\frac{8}{2} = 4$\n$\\text{long side} = 4\\sqrt{3}$\nThe area of the rectangle is length times width:\n$4 \\times 4\\sqrt{3} = 16\\sqrt{3}$",
+    "distractor_logic": {
+      "A": "Student finds the area of one of the two right triangles instead of the full rectangle: $\\frac{1}{2}(4)(4\\sqrt{3}) = 8\\sqrt{3}$.",
+      "B": "Correct: sides are 4 and $4\\sqrt{3}$, area $= 4 \\times 4\\sqrt{3} = 16\\sqrt{3}$.",
+      "C": "Student drops the $\\sqrt{3}$ on the longer side, treating both sides as 4: $4 \\times 4 = 16$.",
+      "D": "Student uses the diagonal of 8 as the longer side: $8 \\times 4 = 32$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "draw_diagram",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Draw the rectangle with its diagonal. The diagonal is the hypotenuse, and the 30-degree angle tells you which side is the short leg and which is the long leg."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The side opposite the 30-degree angle is the short leg. The rectangle's area uses the two sides, not the diagonal."
+      }
+    ],
+    "content_context": "rectangle",
+    "context_tags": [
+      "special_right_triangle",
+      "30_60_90",
+      "rectangle_diagonal",
+      "area"
+    ],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_053",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.2",
+    "topic": "special_right_triangles",
+    "topic_text": "Special Right Triangles (30-60-90 and 45-45-90)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "reverse-reasoning from the area of an equilateral triangle to its side length",
+      "using the 30-60-90-based area relationship for equilateral triangles"
+    ],
+    "question_text": "An equilateral triangle has an area of $25\\sqrt{3}$ square inches. What is the length of one side?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$5$",
+      "B": "$5\\sqrt{2}$",
+      "C": "$10$",
+      "D": "$100$"
+    },
+    "correct_answer": "C",
+    "explanation": "The altitude of an equilateral triangle with side $s$ is the long leg of a 30-60-90 triangle, equal to $\\frac{s\\sqrt{3}}{2}$. The area is:\n$\\frac{1}{2} \\times s \\times \\frac{s\\sqrt{3}}{2} = \\frac{s^{2}\\sqrt{3}}{4}$\nSet equal to the given area:\n$\\frac{s^{2}\\sqrt{3}}{4} = 25\\sqrt{3}$\n$s^{2} = 100$\n$s = 10$",
+    "distractor_logic": {
+      "A": "Student omits the $\\frac{1}{4}$ factor, solving $s^{2}\\sqrt{3} = 25\\sqrt{3}$, so $s^{2} = 25$ and $s = 5$.",
+      "B": "Student uses $\\frac{1}{2}$ instead of $\\frac{1}{4}$, solving $\\frac{s^{2}\\sqrt{3}}{2} = 25\\sqrt{3}$, so $s^{2} = 50$ and $s = 5\\sqrt{2}$.",
+      "C": "Correct: $\\frac{s^{2}\\sqrt{3}}{4} = 25\\sqrt{3}$ gives $s^{2} = 100$, so $s = 10$.",
+      "D": "Student solves $s^{2} = 100$ correctly but forgets to take the square root, reporting 100."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "use_answer_choices"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The height of an equilateral triangle comes from a 30-60-90 triangle: it is $\\frac{s\\sqrt{3}}{2}$. Build the area from the side and that height."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Test a side length by computing the height, then the area, and check whether it matches $25\\sqrt{3}$. Remember to take the square root at the end."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "special_right_triangle",
+      "30_60_90",
+      "equilateral_triangle",
+      "reverse_reasoning"
+    ],
+    "estimated_time_seconds": 150,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  }
+]

@@ -75,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_008",
@@ -106,12 +108,12 @@
       "D": "12"
     },
     "correct_answer": "B",
-    "explanation": "Read Tuesday's row: 5 symbols.\nApply the key: 5 symbols × 4 pizzas per symbol = 20 pizzas.\n\n20 pizzas were sold on Tuesday.",
+    "explanation": "Read Tuesday's row: 5 symbols.\nApply the key: 5 symbols \u00d7 4 pizzas per symbol = 20 pizzas.\n\n20 pizzas were sold on Tuesday.",
     "distractor_logic": {
       "A": "Student reads Tuesday's symbol count (5) directly as the answer without multiplying by the key value of 4.",
-      "B": "Correct: 5 symbols × 4 = 20 pizzas.",
-      "C": "Student reads Wednesday's row (2 symbols) instead of Tuesday's and applies the key: 2 × 4 = 8.",
-      "D": "Student reads Monday's row (3 symbols) instead of Tuesday's and applies the key: 3 × 4 = 12."
+      "B": "Correct: 5 symbols \u00d7 4 = 20 pizzas.",
+      "C": "Student reads Wednesday's row (2 symbols) instead of Tuesday's and applies the key: 2 \u00d7 4 = 8.",
+      "D": "Student reads Monday's row (3 symbols) instead of Tuesday's and applies the key: 3 \u00d7 4 = 12."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -153,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_009",
@@ -204,7 +208,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Count along the horizontal axis to find Week 3 specifically — it is the third point from the left. Read straight across to the vertical axis from that point only."
+        "hint_text": "Count along the horizontal axis to find Week 3 specifically \u2014 it is the third point from the left. Read straight across to the vertical axis from that point only."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -231,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_010",
@@ -282,11 +288,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Read every bar height before choosing an answer. The question asks for the highest across all five months — check each one before deciding."
+        "hint_text": "Read every bar height before choosing an answer. The question asks for the highest across all five months \u2014 check each one before deciding."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "February reaches 5 inches. Any bar taller than 5 must be checked — April's bar reaches 7, so February cannot be the highest."
+        "hint_text": "February reaches 5 inches. Any bar taller than 5 must be checked \u2014 April's bar reaches 7, so February cannot be the highest."
       }
     ],
     "content_context": "weather",
@@ -309,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_011",
@@ -340,12 +348,12 @@
       "D": "6"
     },
     "correct_answer": "A",
-    "explanation": "Read Ana's row: 4 symbols.\nApply the key: 4 symbols × 2 books per symbol = 8 books.\n\nAna read 8 books.",
+    "explanation": "Read Ana's row: 4 symbols.\nApply the key: 4 symbols \u00d7 2 books per symbol = 8 books.\n\nAna read 8 books.",
     "distractor_logic": {
-      "A": "Correct: 4 symbols × 2 = 8 books.",
+      "A": "Correct: 4 symbols \u00d7 2 = 8 books.",
       "B": "Student reads Ana's symbol count (4) as the final answer without applying the key.",
-      "C": "Student reads Cara's row (6 symbols) instead of Ana's and applies the key: 6 × 2 = 12.",
-      "D": "Student reads Ben's row (3 symbols) instead of Ana's and applies the key: 3 × 2 = 6."
+      "C": "Student reads Cara's row (6 symbols) instead of Ana's and applies the key: 6 \u00d7 2 = 12.",
+      "D": "Student reads Ben's row (3 symbols) instead of Ana's and applies the key: 3 \u00d7 2 = 6."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -364,7 +372,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "The key says each symbol equals 2 books, so the answer must be even. All choices here are even — so confirm you are reading Ana's row and not another student's."
+        "hint_text": "The key says each symbol equals 2 books, so the answer must be even. All choices here are even \u2014 so confirm you are reading Ana's row and not another student's."
       }
     ],
     "content_context": "school",
@@ -387,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_007",
@@ -418,12 +428,12 @@
       "D": "15"
     },
     "correct_answer": "B",
-    "explanation": "Identify the two values:\nApril = 65, January = 40\n\nSubtract: 65 − 40 = 25\n\n25 more units were sold in April than in January.",
+    "explanation": "Identify the two values:\nApril = 65, January = 40\n\nSubtract: 65 \u2212 40 = 25\n\n25 more units were sold in April than in January.",
     "distractor_logic": {
-      "A": "Student subtracts May from April instead of January from April: 65 − 45 = 20.",
-      "B": "Correct: 65 − 40 = 25.",
+      "A": "Student subtracts May from April instead of January from April: 65 \u2212 45 = 20.",
+      "B": "Correct: 65 \u2212 40 = 25.",
       "C": "Student adds April and January instead of subtracting: 65 + 40 = 105.",
-      "D": "Student subtracts March from April instead of January from April: 65 − 50 = 15."
+      "D": "Student subtracts March from April instead of January from April: 65 \u2212 50 = 15."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -442,7 +452,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "The question asks 'how many more' — that means subtraction, not addition. Eliminate any answer that could only come from adding the two values together."
+        "hint_text": "The question asks 'how many more' \u2014 that means subtraction, not addition. Eliminate any answer that could only come from adding the two values together."
       }
     ],
     "content_context": "business",
@@ -465,7 +475,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_008",
@@ -496,7 +508,7 @@
       "D": "165"
     },
     "correct_answer": "C",
-    "explanation": "Read the two specified data points:\nTuesday = 78, Thursday = 80\n\nAdd: 78 + 80 = 158\n\nThe sum of Tuesday's and Thursday's temperatures is 158°F.",
+    "explanation": "Read the two specified data points:\nTuesday = 78, Thursday = 80\n\nAdd: 78 + 80 = 158\n\nThe sum of Tuesday's and Thursday's temperatures is 158\u00b0F.",
     "distractor_logic": {
       "A": "Student reads Tuesday correctly (78) but uses Wednesday's value (85) instead of Thursday's: 78 + 85 = 163.",
       "B": "Student misreads Tuesday's temperature as 75 instead of 78, then adds Thursday's correct value: 75 + 80 = 155.",
@@ -516,7 +528,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The question asks for Tuesday and Thursday only — skip Monday, Wednesday, and Friday entirely. Read those two data points, then add them."
+        "hint_text": "The question asks for Tuesday and Thursday only \u2014 skip Monday, Wednesday, and Friday entirely. Read those two data points, then add them."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -543,7 +555,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_009",
@@ -598,7 +612,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Black is clearly the highest at 30. Any bar lower than Blue (22) cannot be second — eliminate Red, Silver, and White if their values fall below 22."
+        "hint_text": "Black is clearly the highest at 30. Any bar lower than Blue (22) cannot be second \u2014 eliminate Red, Silver, and White if their values fall below 22."
       }
     ],
     "content_context": "generic",
@@ -621,7 +635,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_010",
@@ -652,12 +668,12 @@
       "D": "15"
     },
     "correct_answer": "A",
-    "explanation": "Convert each day's symbols to glasses:\nWednesday: 5 symbols × 3 = 15 glasses\nFriday: 2 symbols × 3 = 6 glasses\n\nDifference: 15 − 6 = 9\n\nThe person drank 9 more glasses on Wednesday than on Friday.",
+    "explanation": "Convert each day's symbols to glasses:\nWednesday: 5 symbols \u00d7 3 = 15 glasses\nFriday: 2 symbols \u00d7 3 = 6 glasses\n\nDifference: 15 \u2212 6 = 9\n\nThe person drank 9 more glasses on Wednesday than on Friday.",
     "distractor_logic": {
-      "A": "Correct: 15 − 6 = 9.",
-      "B": "Student subtracts symbol counts directly without applying the key: 5 − 2 = 3.",
-      "C": "Student computes Friday's quantity correctly (2 × 3 = 6) but uses that value as the final answer instead of computing the difference.",
-      "D": "Student computes Wednesday's quantity correctly (5 × 3 = 15) but uses that value as the final answer instead of computing the difference."
+      "A": "Correct: 15 \u2212 6 = 9.",
+      "B": "Student subtracts symbol counts directly without applying the key: 5 \u2212 2 = 3.",
+      "C": "Student computes Friday's quantity correctly (2 \u00d7 3 = 6) but uses that value as the final answer instead of computing the difference.",
+      "D": "Student computes Wednesday's quantity correctly (5 \u00d7 3 = 15) but uses that value as the final answer instead of computing the difference."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -699,7 +715,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_011",
@@ -730,11 +748,11 @@
       "D": "Monday"
     },
     "correct_answer": "B",
-    "explanation": "Compare each consecutive pair:\nMon → Tue: \\$200 → \\$350 — increase\nTue → Wed: \\$350 → \\$300 — decrease ✓\nWed → Thu: \\$300 → \\$250 — also a decrease\nThu → Fri: \\$250 → \\$400 — increase\n\nWednesday is the first day listed among the answer choices where revenue fell compared to the prior day (\\$350 → \\$300).\n\nNote: Thursday also decreased, but it is not offered as an answer choice.",
+    "explanation": "Compare each consecutive pair:\nMon \u2192 Tue: \\$200 \u2192 \\$350 \u2014 increase\nTue \u2192 Wed: \\$350 \u2192 \\$300 \u2014 decrease \u2713\nWed \u2192 Thu: \\$300 \u2192 \\$250 \u2014 also a decrease\nThu \u2192 Fri: \\$250 \u2192 \\$400 \u2014 increase\n\nWednesday is the first day listed among the answer choices where revenue fell compared to the prior day (\\$350 \u2192 \\$300).\n\nNote: Thursday also decreased, but it is not offered as an answer choice.",
     "distractor_logic": {
-      "A": "Student selects Tuesday, but Tuesday's revenue (\\$350) was higher than Monday's (\\$200) — that is an increase, not a decrease.",
+      "A": "Student selects Tuesday, but Tuesday's revenue (\\$350) was higher than Monday's (\\$200) \u2014 that is an increase, not a decrease.",
       "B": "Correct: Wednesday's revenue (\\$300) was lower than Tuesday's (\\$350), confirming a decrease.",
-      "C": "Student selects Friday, but Friday's revenue (\\$400) was higher than Thursday's (\\$250) — that is an increase.",
+      "C": "Student selects Friday, but Friday's revenue (\\$400) was higher than Thursday's (\\$250) \u2014 that is an increase.",
       "D": "Student selects Monday, but Monday has no previous day to compare against in this dataset."
     },
     "difficulty_level": "Proficient",
@@ -777,7 +795,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_007",
@@ -799,21 +819,21 @@
       "computing month-to-month changes across all intervals on a described line graph to evaluate a consistency claim",
       "distinguishing between an overall increasing trend and a uniform rate of increase"
     ],
-    "question_text": "A line graph shows a city's monthly average temperature in degrees Fahrenheit for six months: January = 42, February = 48, March = 57, April = 66, May = 72, June = 78. A student claims the graph shows a consistent increase of exactly 6°F each month. Which response correctly evaluates the student's claim?",
+    "question_text": "A line graph shows a city's monthly average temperature in degrees Fahrenheit for six months: January = 42, February = 48, March = 57, April = 66, May = 72, June = 78. A student claims the graph shows a consistent increase of exactly 6\u00b0F each month. Which response correctly evaluates the student's claim?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "The student is correct; the graph shows a steady 6°F increase every month from January through June.",
+      "A": "The student is correct; the graph shows a steady 6\u00b0F increase every month from January through June.",
       "B": "The student is incorrect; the graph shows the temperature decreased in at least one of the six months.",
-      "C": "The student is incorrect; while some monthly increases are 6°F, the increases from February to March and from March to April are each 9°F, so the rate of increase is not consistent.",
+      "C": "The student is incorrect; while some monthly increases are 6\u00b0F, the increases from February to March and from March to April are each 9\u00b0F, so the rate of increase is not consistent.",
       "D": "The student is incorrect; the graph shows the temperature stayed the same between two consecutive months."
     },
     "correct_answer": "C",
-    "explanation": "Compute each month-to-month change:\nJan → Feb: 48 − 42 = 6°F\nFeb → Mar: 57 − 48 = 9°F\nMar → Apr: 66 − 57 = 9°F\nApr → May: 72 − 66 = 6°F\nMay → Jun: 78 − 72 = 6°F\n\nThree intervals show a 6°F increase, but two intervals (Feb→Mar and Mar→Apr) show a 9°F increase. The rate of increase is not consistent.\n\nThe student's claim is incorrect.",
+    "explanation": "Compute each month-to-month change:\nJan \u2192 Feb: 48 \u2212 42 = 6\u00b0F\nFeb \u2192 Mar: 57 \u2212 48 = 9\u00b0F\nMar \u2192 Apr: 66 \u2212 57 = 9\u00b0F\nApr \u2192 May: 72 \u2212 66 = 6\u00b0F\nMay \u2192 Jun: 78 \u2212 72 = 6\u00b0F\n\nThree intervals show a 6\u00b0F increase, but two intervals (Feb\u2192Mar and Mar\u2192Apr) show a 9\u00b0F increase. The rate of increase is not consistent.\n\nThe student's claim is incorrect.",
     "distractor_logic": {
-      "A": "Student checks only the first and last intervals (both 6°F) and generalizes without verifying every consecutive pair.",
-      "B": "Student incorrectly concludes the temperature dropped at some point — all five changes are positive; the temperature only increases across these six months.",
-      "C": "Correct: two of the five month-to-month changes are 9°F, not 6°F, disproving the consistency claim.",
-      "D": "Student incorrectly concludes that two consecutive months had identical temperatures — no two consecutive values in this dataset are equal."
+      "A": "Student checks only the first and last intervals (both 6\u00b0F) and generalizes without verifying every consecutive pair.",
+      "B": "Student incorrectly concludes the temperature dropped at some point \u2014 all five changes are positive; the temperature only increases across these six months.",
+      "C": "Correct: two of the five month-to-month changes are 9\u00b0F, not 6\u00b0F, disproving the consistency claim.",
+      "D": "Student incorrectly concludes that two consecutive months had identical temperatures \u2014 no two consecutive values in this dataset are equal."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -828,7 +848,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "To test a consistency claim, compute every consecutive difference — not just the first and last. If even one interval differs from the claimed rate, the claim is false."
+        "hint_text": "To test a consistency claim, compute every consecutive difference \u2014 not just the first and last. If even one interval differs from the claimed rate, the claim is false."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -855,7 +875,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_008",
@@ -877,21 +899,21 @@
       "computing combined totals for all consecutive two-hour windows in a described bar graph to identify the maximum",
       "evaluating a student's claim by systematically checking every possible pair, not just the claimed one"
     ],
-    "question_text": "A bar graph shows the number of customers at a store each hour: 9AM = 20, 10AM = 35, 11AM = 50, 12PM = 45, 1PM = 30, 2PM = 55. A student claims that the busiest consecutive two-hour window is 11AM–12PM. Which response correctly evaluates this claim?",
+    "question_text": "A bar graph shows the number of customers at a store each hour: 9AM = 20, 10AM = 35, 11AM = 50, 12PM = 45, 1PM = 30, 2PM = 55. A student claims that the busiest consecutive two-hour window is 11AM\u201312PM. Which response correctly evaluates this claim?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "The student is incorrect; the busiest two-hour window is 10AM–11AM with 85 combined customers.",
-      "B": "The student is incorrect; the busiest two-hour window is 1PM–2PM with 85 combined customers.",
-      "C": "The student is incorrect; the busiest two-hour window is 9AM–10AM with 55 combined customers.",
-      "D": "The student is correct; 11AM–12PM has 50 + 45 = 95 combined customers, which is the highest total of any consecutive two-hour window."
+      "A": "The student is incorrect; the busiest two-hour window is 10AM\u201311AM with 85 combined customers.",
+      "B": "The student is incorrect; the busiest two-hour window is 1PM\u20132PM with 85 combined customers.",
+      "C": "The student is incorrect; the busiest two-hour window is 9AM\u201310AM with 55 combined customers.",
+      "D": "The student is correct; 11AM\u201312PM has 50 + 45 = 95 combined customers, which is the highest total of any consecutive two-hour window."
     },
     "correct_answer": "D",
-    "explanation": "Compute the combined customer count for every consecutive two-hour window:\n9AM–10AM: 20 + 35 = 55\n10AM–11AM: 35 + 50 = 85\n11AM–12PM: 50 + 45 = 95\n12PM–1PM: 45 + 30 = 75\n1PM–2PM: 30 + 55 = 85\n\nThe highest combined total is 95, belonging to 11AM–12PM. The student's claim is correct.",
+    "explanation": "Compute the combined customer count for every consecutive two-hour window:\n9AM\u201310AM: 20 + 35 = 55\n10AM\u201311AM: 35 + 50 = 85\n11AM\u201312PM: 50 + 45 = 95\n12PM\u20131PM: 45 + 30 = 75\n1PM\u20132PM: 30 + 55 = 85\n\nThe highest combined total is 95, belonging to 11AM\u201312PM. The student's claim is correct.",
     "distractor_logic": {
-      "A": "Student correctly computes 10AM–11AM = 85 but fails to check 11AM–12PM = 95, incorrectly concluding 85 is the maximum.",
-      "B": "Student correctly computes 1PM–2PM = 85 but again fails to compare against 11AM–12PM = 95.",
-      "C": "Student stops at the first window (9AM–10AM = 55) without computing the remaining pairs.",
-      "D": "Correct: after computing all five consecutive windows, 11AM–12PM = 95 is the highest combined total."
+      "A": "Student correctly computes 10AM\u201311AM = 85 but fails to check 11AM\u201312PM = 95, incorrectly concluding 85 is the maximum.",
+      "B": "Student correctly computes 1PM\u20132PM = 85 but again fails to compare against 11AM\u201312PM = 95.",
+      "C": "Student stops at the first window (9AM\u201310AM = 55) without computing the remaining pairs.",
+      "D": "Correct: after computing all five consecutive windows, 11AM\u201312PM = 95 is the highest combined total."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -906,11 +928,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "To verify the claim, compute the combined total for every pair of consecutive hours — not just 11AM–12PM. Only then can you confirm whether 95 is truly the highest."
+        "hint_text": "To verify the claim, compute the combined total for every pair of consecutive hours \u2014 not just 11AM\u201312PM. Only then can you confirm whether 95 is truly the highest."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Options A and B both claim a maximum of 85. If 11AM–12PM = 50 + 45 = 95, then 95 > 85, and both of those options are wrong regardless of which other window they cite."
+        "hint_text": "Options A and B both claim a maximum of 85. If 11AM\u201312PM = 50 + 45 = 95, then 95 > 85, and both of those options are wrong regardless of which other window they cite."
       }
     ],
     "content_context": "business",
@@ -933,7 +955,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_009",
@@ -964,7 +988,7 @@
       "D": "Between May and June, savings decreased by \\$30."
     },
     "correct_answer": "B",
-    "explanation": "Compute each month-to-month change:\nJan → Feb: \\$80 − \\$50 = +\\$30 (increase)\nFeb → Mar: \\$110 − \\$80 = +\\$30 (increase)\nMar → Apr: \\$90 − \\$110 = −\\$20 (decrease) ✓\nApr → May: \\$130 − \\$90 = +\\$40 (increase)\nMay → Jun: \\$160 − \\$130 = +\\$30 (increase)\n\nSavings decreased only between March and April, falling by \\$20.",
+    "explanation": "Compute each month-to-month change:\nJan \u2192 Feb: \\$80 \u2212 \\$50 = +\\$30 (increase)\nFeb \u2192 Mar: \\$110 \u2212 \\$80 = +\\$30 (increase)\nMar \u2192 Apr: \\$90 \u2212 \\$110 = \u2212\\$20 (decrease) \u2713\nApr \u2192 May: \\$130 \u2212 \\$90 = +\\$40 (increase)\nMay \u2192 Jun: \\$160 \u2212 \\$130 = +\\$30 (increase)\n\nSavings decreased only between March and April, falling by \\$20.",
     "distractor_logic": {
       "A": "Student misidentifies the direction of the January-to-February change; savings increased by \\$30 (from \\$50 to \\$80), not decreased.",
       "B": "Correct: March (\\$110) to April (\\$90) is the only interval where savings fell, by \\$20.",
@@ -1011,7 +1035,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_010",
@@ -1037,12 +1063,12 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "The student is correct; the total is 95 miles.",
-      "B": "The student is incorrect; the actual total is 105 miles — the student undercounted Carlos's row by one symbol.",
-      "C": "The student is incorrect; the actual total is 100 miles — the student's total is 5 miles short.",
-      "D": "The student is incorrect; the actual total is 90 miles — the student overcounted Ben's row by one symbol."
+      "B": "The student is incorrect; the actual total is 105 miles \u2014 the student undercounted Carlos's row by one symbol.",
+      "C": "The student is incorrect; the actual total is 100 miles \u2014 the student's total is 5 miles short.",
+      "D": "The student is incorrect; the actual total is 90 miles \u2014 the student overcounted Ben's row by one symbol."
     },
     "correct_answer": "C",
-    "explanation": "Convert each row to miles:\nAisha: 6 × 5 = 30 miles\nBen: 4 × 5 = 20 miles\nCarlos: 7 × 5 = 35 miles\nDana: 3 × 5 = 15 miles\n\nTotal: 30 + 20 + 35 + 15 = 100 miles\n\nThe student claimed 95 miles. The actual total is 100 miles — the student undercounted by 5 miles.",
+    "explanation": "Convert each row to miles:\nAisha: 6 \u00d7 5 = 30 miles\nBen: 4 \u00d7 5 = 20 miles\nCarlos: 7 \u00d7 5 = 35 miles\nDana: 3 \u00d7 5 = 15 miles\n\nTotal: 30 + 20 + 35 + 15 = 100 miles\n\nThe student claimed 95 miles. The actual total is 100 miles \u2014 the student undercounted by 5 miles.",
     "distractor_logic": {
       "A": "Student accepts the claimed total of 95 without computing the actual sum from the pictograph.",
       "B": "Student misreads Carlos's row as 8 symbols instead of 7: 30 + 20 + 40 + 15 = 105, then incorrectly attributes the discrepancy to Carlos.",
@@ -1062,11 +1088,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Convert every row to miles using the key (×5), then add all four totals. Compare your sum to the claimed 95 to determine whether the student undercounted or overcounted."
+        "hint_text": "Convert every row to miles using the key (\u00d75), then add all four totals. Compare your sum to the claimed 95 to determine whether the student undercounted or overcounted."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "The four friends have 6 + 4 + 7 + 3 = 20 total symbols. Multiply: 20 × 5 = 100. Since 100 ≠ 95, the claim is wrong — and the correct total is 100."
+        "hint_text": "The four friends have 6 + 4 + 7 + 3 = 20 total symbols. Multiply: 20 \u00d7 5 = 100. Since 100 \u2260 95, the claim is wrong \u2014 and the correct total is 100."
       }
     ],
     "content_context": "health_fitness",
@@ -1089,7 +1115,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_011",
@@ -1120,11 +1148,11 @@
       "D": "The student is correct; the class average is 80, and Ben (88) and Cara (95) are the only two students who scored above it."
     },
     "correct_answer": "D",
-    "explanation": "Compute the class average:\n(72 + 88 + 95 + 65 + 80) ÷ 5 = 400 ÷ 5 = 80\n\nIdentify scores strictly above 80:\nAna = 72 — no\nBen = 88 — yes\nCara = 95 — yes\nDan = 65 — no\nEva = 80 — no (equal to the average, not above it)\n\nExactly two students scored above the class average. The student's claim is correct.",
+    "explanation": "Compute the class average:\n(72 + 88 + 95 + 65 + 80) \u00f7 5 = 400 \u00f7 5 = 80\n\nIdentify scores strictly above 80:\nAna = 72 \u2014 no\nBen = 88 \u2014 yes\nCara = 95 \u2014 yes\nDan = 65 \u2014 no\nEva = 80 \u2014 no (equal to the average, not above it)\n\nExactly two students scored above the class average. The student's claim is correct.",
     "distractor_logic": {
       "A": "Student computes the correct average of 80 but counts only Cara (95) as above it, overlooking Ben (88 > 80).",
-      "B": "Student computes the correct average of 80 but includes Eva (80) in the above-average group by using ≥ 80 instead of strictly > 80, giving a count of three.",
-      "C": "Student miscalculates the average — perhaps summing only three of the five scores (88 + 95 + 80 = 263... not 82) or using an incorrect divisor — arriving at 82, then correctly finding only Cara exceeds that threshold.",
+      "B": "Student computes the correct average of 80 but includes Eva (80) in the above-average group by using \u2265 80 instead of strictly > 80, giving a count of three.",
+      "C": "Student miscalculates the average \u2014 perhaps summing only three of the five scores (88 + 95 + 80 = 263... not 82) or using an incorrect divisor \u2014 arriving at 82, then correctly finding only Cara exceeds that threshold.",
       "D": "Correct: average = 80, and only Ben (88) and Cara (95) are strictly above it."
     },
     "difficulty_level": "Advanced",
@@ -1140,11 +1168,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Compute the class average first: add all five scores and divide by 5. Then count only the students whose scores are strictly greater than that average — equal does not count as above."
+        "hint_text": "Compute the class average first: add all five scores and divide by 5. Then count only the students whose scores are strictly greater than that average \u2014 equal does not count as above."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Once you find the average is 80, check Eva's score (also 80). Equal to the average is not above it — if any option counts Eva as above average, eliminate it."
+        "hint_text": "Once you find the average is 80, check Eva's score (also 80). Equal to the average is not above it \u2014 if any option counts Eva as above average, eliminate it."
       }
     ],
     "content_context": "classroom",
@@ -1167,6 +1195,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

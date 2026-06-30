@@ -28,9 +28,9 @@
       "D": "Absolute value, because the differences between consecutive y-values are constant"
     },
     "correct_answer": "B",
-    "explanation": "Compute the first differences (the change in y between consecutive rows): 7 − 3 = 4, 11 − 7 = 4, 15 − 11 = 4. The first differences are constant (always 4), which is the defining feature of a linear function. The function is y = 4x + 3.",
+    "explanation": "Compute the first differences (the change in y between consecutive rows): 7 \u2212 3 = 4, 11 \u2212 7 = 4, 15 \u2212 11 = 4. The first differences are constant (always 4), which is the defining feature of a linear function. The function is y = 4x + 3.",
     "distractor_logic": {
-      "A": "Student sees positive, increasing y-values and pattern-matches to 'quadratic' without computing differences — being positive and increasing is not a distinguishing feature of quadratic functions.",
+      "A": "Student sees positive, increasing y-values and pattern-matches to 'quadratic' without computing differences \u2014 being positive and increasing is not a distinguishing feature of quadratic functions.",
       "B": "Correct: constant first differences of 4 confirm the function is linear.",
       "C": "Student sees y-values growing and associates growth with exponential functions, without checking whether the growth is additive (linear) or multiplicative (exponential).",
       "D": "Student correctly identifies that consecutive differences are constant but misnames the function type, conflating 'constant absolute differences' with the absolute value function."
@@ -52,7 +52,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Increasing y-values alone do not identify a function type — both linear and exponential functions can increase. Focus on how the y-values change."
+        "hint_text": "Increasing y-values alone do not identify a function type \u2014 both linear and exponential functions can increase. Focus on how the y-values change."
       }
     ],
     "content_context": "generic",
@@ -75,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_008",
@@ -108,10 +110,10 @@
     "correct_answer": "C",
     "explanation": "A U-shaped curve that opens upward is called a parabola, which is the graph of a quadratic function. The lowest point of a parabola is its vertex. Linear functions produce straight lines and exponential functions produce curves that rise steeply on one side without the symmetric U-shape.",
     "distractor_logic": {
-      "A": "Student associates a 'lowest point' with a flat minimum or baseline, reasoning that a minimum value implies the graph must eventually level off like a horizontal line — a property of linear functions.",
+      "A": "Student associates a 'lowest point' with a flat minimum or baseline, reasoning that a minimum value implies the graph must eventually level off like a horizontal line \u2014 a property of linear functions.",
       "B": "Student focuses on the upward curvature and associates any curve that bends upward with exponential growth, not distinguishing between the symmetric U-shape of a parabola and the one-sided steep rise of an exponential.",
-      "C": "Correct: a U-shaped curve opening upward is a parabola — the graph of a quadratic function.",
-      "D": "Student recalls that y = x is a linear function that passes through the origin and concludes that any graph through the origin must be linear, not recognizing that y = x² also passes through the origin but is quadratic."
+      "C": "Correct: a U-shaped curve opening upward is a parabola \u2014 the graph of a quadratic function.",
+      "D": "Student recalls that y = x is a linear function that passes through the origin and concludes that any graph through the origin must be linear, not recognizing that y = x\u00b2 also passes through the origin but is quadratic."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -130,7 +132,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Eliminate any choice that says 'linear' — a U-shaped curve is never a straight line."
+        "hint_text": "Eliminate any choice that says 'linear' \u2014 a U-shaped curve is never a straight line."
       }
     ],
     "content_context": "generic",
@@ -153,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_007",
@@ -179,17 +183,17 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "y = 3x + 2",
-      "B": "y = x³",
-      "C": "y = 3 · 2ˣ",
-      "D": "y = x² + 3x"
+      "B": "y = x\u00b3",
+      "C": "y = 3 \u00b7 2\u02e3",
+      "D": "y = x\u00b2 + 3x"
     },
     "correct_answer": "C",
-    "explanation": "An exponential function has the form y = a · bˣ, where the variable x appears in the exponent and the base b is a positive constant.\n\nChoice C: y = 3 · 2ˣ — base 2 is constant, exponent x is variable → exponential.\nChoice A: y = 3x + 2 — x is multiplied by a constant; this is linear.\nChoice B: y = x³ — x is the base and 3 is a fixed exponent; this is a power (cubic) function, not exponential.\nChoice D: y = x² + 3x — highest power of x is 2; this is quadratic.",
+    "explanation": "An exponential function has the form y = a \u00b7 b\u02e3, where the variable x appears in the exponent and the base b is a positive constant.\n\nChoice C: y = 3 \u00b7 2\u02e3 \u2014 base 2 is constant, exponent x is variable \u2192 exponential.\nChoice A: y = 3x + 2 \u2014 x is multiplied by a constant; this is linear.\nChoice B: y = x\u00b3 \u2014 x is the base and 3 is a fixed exponent; this is a power (cubic) function, not exponential.\nChoice D: y = x\u00b2 + 3x \u2014 highest power of x is 2; this is quadratic.",
     "distractor_logic": {
       "A": "Student sees the coefficient 3 and interprets '3x' as '3 to the x,' confusing the multiplicative coefficient of a linear function with an exponential base.",
-      "B": "Student sees an exponent in the expression (the 3 in x³) and concludes the function is exponential, not recognizing that exponential functions require the variable to appear in the exponent position, not the base.",
-      "C": "Correct: y = 3 · 2ˣ has a constant base (2) and a variable exponent (x), which is the defining structure of an exponential function.",
-      "D": "Student sees the exponent 2 in x² and reasons similarly to choice B — 'there is an exponent, so it must be exponential' — without distinguishing between a variable base with fixed exponent (power function) and a fixed base with variable exponent (exponential function)."
+      "B": "Student sees an exponent in the expression (the 3 in x\u00b3) and concludes the function is exponential, not recognizing that exponential functions require the variable to appear in the exponent position, not the base.",
+      "C": "Correct: y = 3 \u00b7 2\u02e3 has a constant base (2) and a variable exponent (x), which is the defining structure of an exponential function.",
+      "D": "Student sees the exponent 2 in x\u00b2 and reasons similarly to choice B \u2014 'there is an exponent, so it must be exponential' \u2014 without distinguishing between a variable base with fixed exponent (power function) and a fixed base with variable exponent (exponential function)."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -204,11 +208,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "In an exponential function, the variable is in the exponent position and the base is a fixed number. Look for the form a · bˣ."
+        "hint_text": "In an exponential function, the variable is in the exponent position and the base is a fixed number. Look for the form a \u00b7 b\u02e3."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Eliminate any equation where x is in the base position — those are linear, quadratic, or power functions, not exponential."
+        "hint_text": "Eliminate any equation where x is in the base position \u2014 those are linear, quadratic, or power functions, not exponential."
       }
     ],
     "content_context": "generic",
@@ -231,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_008",
@@ -262,12 +268,12 @@
       "D": "Linear, because the first differences of the y-values are all positive"
     },
     "correct_answer": "A",
-    "explanation": "Compute the first differences: 4−1=3, 9−4=5, 16−9=7, 25−16=9. These are not constant, so the function is not linear.\n\nCompute the second differences: 5−3=2, 7−5=2, 9−7=2. The second differences are constant (all equal to 2), which is the defining feature of a quadratic function.\n\nThe function is y = (x + 1)², which confirms it is quadratic.",
+    "explanation": "Compute the first differences: 4\u22121=3, 9\u22124=5, 16\u22129=7, 25\u221216=9. These are not constant, so the function is not linear.\n\nCompute the second differences: 5\u22123=2, 7\u22125=2, 9\u22127=2. The second differences are constant (all equal to 2), which is the defining feature of a quadratic function.\n\nThe function is y = (x + 1)\u00b2, which confirms it is quadratic.",
     "distractor_logic": {
-      "A": "Correct: first differences (3, 5, 7, 9) are not constant, but second differences (2, 2, 2) are constant — the signature of a quadratic function.",
+      "A": "Correct: first differences (3, 5, 7, 9) are not constant, but second differences (2, 2, 2) are constant \u2014 the signature of a quadratic function.",
       "B": "Student observes that y-values increase as x increases and concludes the function must be linear, without checking whether the rate of increase is itself constant.",
       "C": "Student notices the first differences are growing (3, 5, 7, 9) and interprets 'accelerating growth' as exponential, not distinguishing between additive acceleration (quadratic) and multiplicative growth (exponential).",
-      "D": "Student computes the first differences (3, 5, 7, 9) and notes they are all positive, incorrectly concluding that 'all positive differences' is equivalent to 'constant differences' — the hallmark of a linear function."
+      "D": "Student computes the first differences (3, 5, 7, 9) and notes they are all positive, incorrectly concluding that 'all positive differences' is equivalent to 'constant differences' \u2014 the hallmark of a linear function."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -286,7 +292,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "Glance at the y-values: 1, 4, 9, 16, 25. These are perfect squares — a strong signal that the function is quadratic."
+        "hint_text": "Glance at the y-values: 1, 4, 9, 16, 25. These are perfect squares \u2014 a strong signal that the function is quadratic."
       }
     ],
     "content_context": "generic",
@@ -309,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_A_007",
@@ -340,11 +348,11 @@
       "D": "The first differences are constant (each y-value increases by 5), which means the function is linear, not exponential."
     },
     "correct_answer": "D",
-    "explanation": "Compute the first differences: 11−6=5, 16−11=5, 21−16=5. The first differences are constant at 5, which is the defining feature of a linear function. A linear function cannot be exponential.\n\nTo further confirm, check consecutive ratios (the test for exponential): $\\frac{11}{6}$ ≈ 1.83, $\\frac{16}{11}$ ≈ 1.45, $\\frac{21}{16}$ ≈ 1.31. These ratios are not constant, directly disproving the exponential claim.\n\nThe function is y = 5x + 1, a linear function.",
+    "explanation": "Compute the first differences: 11\u22126=5, 16\u221211=5, 21\u221216=5. The first differences are constant at 5, which is the defining feature of a linear function. A linear function cannot be exponential.\n\nTo further confirm, check consecutive ratios (the test for exponential): $\\frac{11}{6}$ \u2248 1.83, $\\frac{16}{11}$ \u2248 1.45, $\\frac{21}{16}$ \u2248 1.31. These ratios are not constant, directly disproving the exponential claim.\n\nThe function is y = 5x + 1, a linear function.",
     "distractor_logic": {
-      "A": "Student invokes a magnitude-based rule that does not exist — the size of y-values relative to 5 has no bearing on whether a function is exponential. Exponential functions can produce any range of values.",
-      "B": "Student claims consecutive ratios are constant, but $\\frac{11}{6}$ ≈ 1.83, $\\frac{16}{11}$ ≈ 1.45, and $\\frac{21}{16}$ ≈ 1.31 are clearly different. Accepting this choice means agreeing with the student's incorrect claim rather than refuting it.",
-      "C": "Student computes second differences: (16−11)−(11−6) = 5−5 = 0 and (21−16)−(16−11) = 0. Second differences are constant at 0, but a student who applies 'constant second differences = quadratic' without noting that zero second differences specifically indicate linear — not quadratic — misclassifies the result.",
+      "A": "Student invokes a magnitude-based rule that does not exist \u2014 the size of y-values relative to 5 has no bearing on whether a function is exponential. Exponential functions can produce any range of values.",
+      "B": "Student claims consecutive ratios are constant, but $\\frac{11}{6}$ \u2248 1.83, $\\frac{16}{11}$ \u2248 1.45, and $\\frac{21}{16}$ \u2248 1.31 are clearly different. Accepting this choice means agreeing with the student's incorrect claim rather than refuting it.",
+      "C": "Student computes second differences: (16\u221211)\u2212(11\u22126) = 5\u22125 = 0 and (21\u221216)\u2212(16\u221211) = 0. Second differences are constant at 0, but a student who applies 'constant second differences = quadratic' without noting that zero second differences specifically indicate linear \u2014 not quadratic \u2014 misclassifies the result.",
       "D": "Correct: first differences of 5, 5, 5 are constant, proving the function is linear. A linear function is never exponential, which directly refutes the student's claim."
     },
     "difficulty_level": "Advanced",
@@ -387,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_A_008",
@@ -412,17 +422,17 @@
     "question_text": "Which of the following is equivalent to an exponential function?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "y = (x + 1)² − x²",
-      "B": "y = 4 · (½)ˣ",
-      "C": "y = x · 2²",
-      "D": "y = (x − 3)(x + 3)"
+      "A": "y = (x + 1)\u00b2 \u2212 x\u00b2",
+      "B": "y = 4 \u00b7 (\u00bd)\u02e3",
+      "C": "y = x \u00b7 2\u00b2",
+      "D": "y = (x \u2212 3)(x + 3)"
     },
     "correct_answer": "B",
-    "explanation": "Choice B: y = 4 · (½)ˣ has a constant base (½) and a variable exponent (x) — this is an exponential function.\n\nChoice A: Expand (x + 1)² − x² = x² + 2x + 1 − x² = 2x + 1. This simplifies to a linear function.\n\nChoice C: y = x · 2² = x · 4 = 4x. The exponent applies to the constant 2, not to the variable — this is a linear function.\n\nChoice D: (x − 3)(x + 3) = x² − 9. This is a quadratic function.",
+    "explanation": "Choice B: y = 4 \u00b7 (\u00bd)\u02e3 has a constant base (\u00bd) and a variable exponent (x) \u2014 this is an exponential function.\n\nChoice A: Expand (x + 1)\u00b2 \u2212 x\u00b2 = x\u00b2 + 2x + 1 \u2212 x\u00b2 = 2x + 1. This simplifies to a linear function.\n\nChoice C: y = x \u00b7 2\u00b2 = x \u00b7 4 = 4x. The exponent applies to the constant 2, not to the variable \u2014 this is a linear function.\n\nChoice D: (x \u2212 3)(x + 3) = x\u00b2 \u2212 9. This is a quadratic function.",
     "distractor_logic": {
-      "A": "Student sees squared terms and classifies the expression as quadratic without expanding — does not recognize that the x² terms cancel, leaving a linear expression.",
-      "B": "Correct: y = 4 · (½)ˣ is exponential because the base (½) is a positive constant and the variable x is in the exponent.",
-      "C": "Student sees '2²' in the expression and focuses on the exponent notation, misreading x · 2² as 'x raised to the 2²' rather than recognizing that 2² is a constant (equal to 4) being multiplied by x.",
+      "A": "Student sees squared terms and classifies the expression as quadratic without expanding \u2014 does not recognize that the x\u00b2 terms cancel, leaving a linear expression.",
+      "B": "Correct: y = 4 \u00b7 (\u00bd)\u02e3 is exponential because the base (\u00bd) is a positive constant and the variable x is in the exponent.",
+      "C": "Student sees '2\u00b2' in the expression and focuses on the exponent notation, misreading x \u00b7 2\u00b2 as 'x raised to the 2\u00b2' rather than recognizing that 2\u00b2 is a constant (equal to 4) being multiplied by x.",
       "D": "Student sees the product of two expressions and associates multiplication with exponential growth, not recognizing that the product of two linear factors is a quadratic function."
     },
     "difficulty_level": "Advanced",
@@ -465,6 +475,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

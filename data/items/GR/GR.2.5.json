@@ -22,18 +22,18 @@
     "question_text": "A rectangular prism has a length of 6 cm, a width of 4 cm, and a height of 3 cm. What is the surface area of the prism?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "108 cm²",
-      "B": "72 cm²",
-      "C": "54 cm²",
-      "D": "144 cm²"
+      "A": "108 cm\u00b2",
+      "B": "72 cm\u00b2",
+      "C": "54 cm\u00b2",
+      "D": "144 cm\u00b2"
     },
     "correct_answer": "A",
-    "explanation": "The surface area of a rectangular prism is:\nSA = 2(lw + lh + wh)\nSA = 2(6×4 + 6×3 + 4×3)\nSA = 2(24 + 18 + 12)\nSA = 2(54)\nSA = 108 cm²",
+    "explanation": "The surface area of a rectangular prism is:\nSA = 2(lw + lh + wh)\nSA = 2(6\u00d74 + 6\u00d73 + 4\u00d73)\nSA = 2(24 + 18 + 12)\nSA = 2(54)\nSA = 108 cm\u00b2",
     "distractor_logic": {
-      "A": "Correct: SA = 2(24 + 18 + 12) = 2(54) = 108 cm².",
-      "B": "Student computes volume (l × w × h) instead of surface area: 6 × 4 × 3 = 72 cm³.",
-      "C": "Student omits the factor of 2, summing the three distinct face areas without accounting for each face's opposite pair: 24 + 18 + 12 = 54 cm².",
-      "D": "Student applies the formula correctly but replaces lh with l² when computing: 2(24 + 36 + 12) = 2(72) = 144 cm²."
+      "A": "Correct: SA = 2(24 + 18 + 12) = 2(54) = 108 cm\u00b2.",
+      "B": "Student computes volume (l \u00d7 w \u00d7 h) instead of surface area: 6 \u00d7 4 \u00d7 3 = 72 cm\u00b3.",
+      "C": "Student omits the factor of 2, summing the three distinct face areas without accounting for each face's opposite pair: 24 + 18 + 12 = 54 cm\u00b2.",
+      "D": "Student applies the formula correctly but replaces lh with l\u00b2 when computing: 2(24 + 36 + 12) = 2(72) = 144 cm\u00b2."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rectangular_prism", "surface_area", "formula_application", "3d_figures"],
+    "context_tags": [
+      "rectangular_prism",
+      "surface_area",
+      "formula_application",
+      "3d_figures"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -67,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-04",
     "last_modified": "2026-06-04",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_B_030",
@@ -86,24 +96,24 @@
     "assessment_layer": "CRC",
     "unit": 3,
     "skills_targeted": [
-      "computing the surface area of a cube using SA = 6s²",
+      "computing the surface area of a cube using SA = 6s\u00b2",
       "distinguishing the cube surface area formula from the volume formula"
     ],
     "question_text": "A cube has a side length of 5 m. What is the surface area of the cube?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "25 m²",
-      "B": "750 m³",
-      "C": "150 m²",
-      "D": "125 m³"
+      "A": "25 m\u00b2",
+      "B": "750 m\u00b3",
+      "C": "150 m\u00b2",
+      "D": "125 m\u00b3"
     },
     "correct_answer": "C",
-    "explanation": "The surface area of a cube is:\nSA = 6s² = 6 × 5² = 6 × 25 = 150 m²",
+    "explanation": "The surface area of a cube is:\nSA = 6s\u00b2 = 6 \u00d7 5\u00b2 = 6 \u00d7 25 = 150 m\u00b2",
     "distractor_logic": {
-      "A": "Student computes only one face area (s² = 25) without multiplying by the 6 faces.",
-      "B": "Student uses SA = 6s³, incorrectly cubing the side length before multiplying by 6: 6 × 125 = 750 m³.",
-      "C": "Correct: SA = 6s² = 6 × 25 = 150 m².",
-      "D": "Student computes the volume of the cube (s³) instead of the surface area: 5³ = 125 m³."
+      "A": "Student computes only one face area (s\u00b2 = 25) without multiplying by the 6 faces.",
+      "B": "Student uses SA = 6s\u00b3, incorrectly cubing the side length before multiplying by 6: 6 \u00d7 125 = 750 m\u00b3.",
+      "C": "Correct: SA = 6s\u00b2 = 6 \u00d7 25 = 150 m\u00b2.",
+      "D": "Student computes the volume of the cube (s\u00b3) instead of the surface area: 5\u00b3 = 125 m\u00b3."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -111,23 +121,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "A cube has 6 identical square faces. The area of one face is s². Multiply by 6: SA = 6s²."
+        "hint_text": "A cube has 6 identical square faces. The area of one face is s\u00b2. Multiply by 6: SA = 6s\u00b2."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Surface area is measured in square units (cm², m²), not cubic units. Eliminate any answer in cubic units right away."
+        "hint_text": "Surface area is measured in square units (cm\u00b2, m\u00b2), not cubic units. Eliminate any answer in cubic units right away."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["cube", "surface_area", "formula_application", "3d_figures"],
+    "context_tags": [
+      "cube",
+      "surface_area",
+      "formula_application",
+      "3d_figures"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -137,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-04",
     "last_modified": "2026-06-04",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_B_031",
@@ -156,24 +176,24 @@
     "assessment_layer": "CRC",
     "unit": 3,
     "skills_targeted": [
-      "computing the surface area of a cylinder using SA = 2πr² + 2πrh",
+      "computing the surface area of a cylinder using SA = 2\u03c0r\u00b2 + 2\u03c0rh",
       "correctly combining the two circular base areas with the lateral surface area of a cylinder"
     ],
-    "question_text": "A cylinder has a radius of 3 ft and a height of 10 ft. Using π ≈ 3.14, what is the surface area of the cylinder?",
+    "question_text": "A cylinder has a radius of 3 ft and a height of 10 ft. Using \u03c0 \u2248 3.14, what is the surface area of the cylinder?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "188.4 ft²",
-      "B": "244.92 ft²",
-      "C": "216.66 ft²",
-      "D": "56.52 ft²"
+      "A": "188.4 ft\u00b2",
+      "B": "244.92 ft\u00b2",
+      "C": "216.66 ft\u00b2",
+      "D": "56.52 ft\u00b2"
     },
     "correct_answer": "B",
-    "explanation": "The surface area of a cylinder is:\nSA = 2πr² + 2πrh\nSA = 2(3.14)(3²) + 2(3.14)(3)(10)\nSA = 2(3.14)(9) + 2(3.14)(30)\nSA = 56.52 + 188.4\nSA = 244.92 ft²",
+    "explanation": "The surface area of a cylinder is:\nSA = 2\u03c0r\u00b2 + 2\u03c0rh\nSA = 2(3.14)(3\u00b2) + 2(3.14)(3)(10)\nSA = 2(3.14)(9) + 2(3.14)(30)\nSA = 56.52 + 188.4\nSA = 244.92 ft\u00b2",
     "distractor_logic": {
-      "A": "Student computes only the lateral surface area (2πrh) and omits both circular bases: 2 × 3.14 × 3 × 10 = 188.4 ft².",
-      "B": "Correct: SA = 56.52 + 188.4 = 244.92 ft².",
-      "C": "Student includes only one circular base instead of two: πr² + 2πrh = 28.26 + 188.4 = 216.66 ft².",
-      "D": "Student computes only the area of both circular bases and omits the lateral surface: 2πr² = 2 × 3.14 × 9 = 56.52 ft²."
+      "A": "Student computes only the lateral surface area (2\u03c0rh) and omits both circular bases: 2 \u00d7 3.14 \u00d7 3 \u00d7 10 = 188.4 ft\u00b2.",
+      "B": "Correct: SA = 56.52 + 188.4 = 244.92 ft\u00b2.",
+      "C": "Student includes only one circular base instead of two: \u03c0r\u00b2 + 2\u03c0rh = 28.26 + 188.4 = 216.66 ft\u00b2.",
+      "D": "Student computes only the area of both circular bases and omits the lateral surface: 2\u03c0r\u00b2 = 2 \u00d7 3.14 \u00d7 9 = 56.52 ft\u00b2."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -181,23 +201,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "A cylinder has three surfaces: two circular bases (top and bottom) and one lateral (side) surface. The formula SA = 2πr² + 2πrh accounts for all three."
+        "hint_text": "A cylinder has three surfaces: two circular bases (top and bottom) and one lateral (side) surface. The formula SA = 2\u03c0r\u00b2 + 2\u03c0rh accounts for all three."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Compute each part separately: 2πr² = 2(3.14)(9) = 56.52; 2πrh = 2(3.14)(3)(10) = 188.4. Then add: 56.52 + 188.4."
+        "hint_text": "Compute each part separately: 2\u03c0r\u00b2 = 2(3.14)(9) = 56.52; 2\u03c0rh = 2(3.14)(3)(10) = 188.4. Then add: 56.52 + 188.4."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["cylinder", "surface_area", "formula_application", "3d_figures"],
+    "context_tags": [
+      "cylinder",
+      "surface_area",
+      "formula_application",
+      "3d_figures"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -207,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-04",
     "last_modified": "2026-06-04",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_B_032",
@@ -241,7 +271,7 @@
     "explanation": "A rectangular prism has 6 faces arranged in 3 pairs. The surface area is the sum of all face areas:\nSA = 2(lw + lh + wh)\n\nThis accounts for the top/bottom pair (lw each), the front/back pair (lh each), and the left/right pair (wh each).",
     "distractor_logic": {
       "A": "Student writes the sum of one face in each pair but omits the factor of 2, missing the three opposite faces.",
-      "B": "Student writes the volume formula (l × w × h) rather than the surface area formula.",
+      "B": "Student writes the volume formula (l \u00d7 w \u00d7 h) rather than the surface area formula.",
       "C": "Student doubles the volume formula, producing an expression that has no geometric meaning for surface area.",
       "D": "Correct: SA = 2(lw + lh + wh) accounts for all three pairs of opposite faces."
     },
@@ -251,7 +281,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -263,11 +296,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rectangular_prism", "surface_area", "formula_identification", "3d_figures"],
+    "context_tags": [
+      "rectangular_prism",
+      "surface_area",
+      "formula_identification",
+      "3d_figures"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -277,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-04",
     "last_modified": "2026-06-04",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_B_033",
@@ -296,24 +336,24 @@
     "assessment_layer": "CRC",
     "unit": 3,
     "skills_targeted": [
-      "computing the surface area of a cube with a larger side length using SA = 6s²",
+      "computing the surface area of a cube with a larger side length using SA = 6s\u00b2",
       "correctly squaring the side length before multiplying by 6"
     ],
     "question_text": "A cube has a side length of 8 in. What is the surface area of the cube?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "384 in²",
-      "B": "48 in²",
-      "C": "512 in³",
-      "D": "64 in²"
+      "A": "384 in\u00b2",
+      "B": "48 in\u00b2",
+      "C": "512 in\u00b3",
+      "D": "64 in\u00b2"
     },
     "correct_answer": "A",
-    "explanation": "The surface area of a cube is:\nSA = 6s² = 6 × 8² = 6 × 64 = 384 in²",
+    "explanation": "The surface area of a cube is:\nSA = 6s\u00b2 = 6 \u00d7 8\u00b2 = 6 \u00d7 64 = 384 in\u00b2",
     "distractor_logic": {
-      "A": "Correct: SA = 6 × 8² = 6 × 64 = 384 in².",
-      "B": "Student uses SA = 6s instead of 6s², treating the side length as if it were already squared: 6 × 8 = 48 in².",
-      "C": "Student computes the volume of the cube instead of the surface area: 8³ = 512 in³.",
-      "D": "Student computes one face area only (s²) without multiplying by 6: 8² = 64 in²."
+      "A": "Correct: SA = 6 \u00d7 8\u00b2 = 6 \u00d7 64 = 384 in\u00b2.",
+      "B": "Student uses SA = 6s instead of 6s\u00b2, treating the side length as if it were already squared: 6 \u00d7 8 = 48 in\u00b2.",
+      "C": "Student computes the volume of the cube instead of the surface area: 8\u00b3 = 512 in\u00b3.",
+      "D": "Student computes one face area only (s\u00b2) without multiplying by 6: 8\u00b2 = 64 in\u00b2."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -321,23 +361,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The cube has 6 identical square faces, each with area s² = 8² = 64. Multiply by 6 to get the total surface area."
+        "hint_text": "The cube has 6 identical square faces, each with area s\u00b2 = 8\u00b2 = 64. Multiply by 6 to get the total surface area."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Surface area uses square units, not cubic units. Eliminate any answer labeled in³ immediately, then check which remaining option uses 6 × s²."
+        "hint_text": "Surface area uses square units, not cubic units. Eliminate any answer labeled in\u00b3 immediately, then check which remaining option uses 6 \u00d7 s\u00b2."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["cube", "surface_area", "formula_application", "3d_figures"],
+    "context_tags": [
+      "cube",
+      "surface_area",
+      "formula_application",
+      "3d_figures"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -347,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-04",
     "last_modified": "2026-06-04",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_P_029",
@@ -367,23 +417,23 @@
     "unit": 3,
     "skills_targeted": [
       "computing the surface area of a triangular prism by summing two triangular bases and three rectangular lateral faces",
-      "correctly applying the ½bh formula for the triangular faces in a prism surface area problem"
+      "correctly applying the \u00bdbh formula for the triangular faces in a prism surface area problem"
     ],
     "question_text": "A triangular prism has an equilateral triangle as its base. The triangle has a side length of 6 cm and a height of 5.2 cm. The prism has a length (depth) of 10 cm. What is the surface area of the prism?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "180 cm²",
-      "B": "242.4 cm²",
-      "C": "211.2 cm²",
-      "D": "195.6 cm²"
+      "A": "180 cm\u00b2",
+      "B": "242.4 cm\u00b2",
+      "C": "211.2 cm\u00b2",
+      "D": "195.6 cm\u00b2"
     },
     "correct_answer": "C",
-    "explanation": "The surface area of a triangular prism has two components:\n\n1. Two triangular bases:\n   2 × (½ × 6 × 5.2) = 2 × 15.6 = 31.2 cm²\n\n2. Three rectangular lateral faces (equilateral triangle: all 3 sides = 6 cm):\n   3 × (6 × 10) = 3 × 60 = 180 cm²\n\nTotal SA = 31.2 + 180 = 211.2 cm²",
+    "explanation": "The surface area of a triangular prism has two components:\n\n1. Two triangular bases:\n   2 \u00d7 (\u00bd \u00d7 6 \u00d7 5.2) = 2 \u00d7 15.6 = 31.2 cm\u00b2\n\n2. Three rectangular lateral faces (equilateral triangle: all 3 sides = 6 cm):\n   3 \u00d7 (6 \u00d7 10) = 3 \u00d7 60 = 180 cm\u00b2\n\nTotal SA = 31.2 + 180 = 211.2 cm\u00b2",
     "distractor_logic": {
-      "A": "Student computes only the three rectangular lateral faces and omits both triangular bases: 3 × 6 × 10 = 180 cm².",
-      "B": "Student omits the ½ factor when computing the triangular bases: 2(6 × 5.2) + 3(6 × 10) = 62.4 + 180 = 242.4 cm².",
-      "C": "Correct: 2(½ × 6 × 5.2) + 3(6 × 10) = 31.2 + 180 = 211.2 cm².",
-      "D": "Student includes only one triangular base instead of two: (½ × 6 × 5.2) + 3(6 × 10) = 15.6 + 180 = 195.6 cm²."
+      "A": "Student computes only the three rectangular lateral faces and omits both triangular bases: 3 \u00d7 6 \u00d7 10 = 180 cm\u00b2.",
+      "B": "Student omits the \u00bd factor when computing the triangular bases: 2(6 \u00d7 5.2) + 3(6 \u00d7 10) = 62.4 + 180 = 242.4 cm\u00b2.",
+      "C": "Correct: 2(\u00bd \u00d7 6 \u00d7 5.2) + 3(6 \u00d7 10) = 31.2 + 180 = 211.2 cm\u00b2.",
+      "D": "Student includes only one triangular base instead of two: (\u00bd \u00d7 6 \u00d7 5.2) + 3(6 \u00d7 10) = 15.6 + 180 = 195.6 cm\u00b2."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -391,7 +441,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -399,15 +452,20 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Triangular base area = ½ × 6 × 5.2 = 15.6; two bases = 31.2. Each rectangular face = 6 × 10 = 60; three faces = 180. Total = 211.2."
+        "hint_text": "Triangular base area = \u00bd \u00d7 6 \u00d7 5.2 = 15.6; two bases = 31.2. Each rectangular face = 6 \u00d7 10 = 60; three faces = 180. Total = 211.2."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["triangular_prism", "surface_area", "equilateral_triangle", "3d_figures"],
+    "context_tags": [
+      "triangular_prism",
+      "surface_area",
+      "equilateral_triangle",
+      "3d_figures"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -417,7 +475,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-04",
     "last_modified": "2026-06-04",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_P_030",
@@ -436,24 +496,24 @@
     "assessment_layer": "CRC",
     "unit": 3,
     "skills_targeted": [
-      "computing the surface area of a square pyramid using SA = s² + 2sl",
-      "correctly applying the ½ factor to each triangular face in a pyramid surface area problem"
+      "computing the surface area of a square pyramid using SA = s\u00b2 + 2sl",
+      "correctly applying the \u00bd factor to each triangular face in a pyramid surface area problem"
     ],
     "question_text": "A square pyramid has a base side length of 8 m and a slant height of 10 m. What is the surface area of the pyramid?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "160 m²",
-      "B": "224 m²",
-      "C": "320 m²",
-      "D": "384 m²"
+      "A": "160 m\u00b2",
+      "B": "224 m\u00b2",
+      "C": "320 m\u00b2",
+      "D": "384 m\u00b2"
     },
     "correct_answer": "B",
-    "explanation": "The surface area of a square pyramid is:\nSA = s² + 4(½sl) = s² + 2sl\nSA = 8² + 2(8)(10)\nSA = 64 + 160\nSA = 224 m²",
+    "explanation": "The surface area of a square pyramid is:\nSA = s\u00b2 + 4(\u00bdsl) = s\u00b2 + 2sl\nSA = 8\u00b2 + 2(8)(10)\nSA = 64 + 160\nSA = 224 m\u00b2",
     "distractor_logic": {
-      "A": "Student computes only the lateral area of the four triangular faces and omits the square base: 4 × (½ × 8 × 10) = 4 × 40 = 160 m².",
-      "B": "Correct: SA = 64 + 2(8)(10) = 64 + 160 = 224 m².",
-      "C": "Student omits the base and drops the ½ factor from the triangular faces: 4 × (8 × 10) = 4 × 80 = 320 m².",
-      "D": "Student includes the square base but omits the ½ factor when computing the triangular faces: 64 + 4(8 × 10) = 64 + 320 = 384 m²."
+      "A": "Student computes only the lateral area of the four triangular faces and omits the square base: 4 \u00d7 (\u00bd \u00d7 8 \u00d7 10) = 4 \u00d7 40 = 160 m\u00b2.",
+      "B": "Correct: SA = 64 + 2(8)(10) = 64 + 160 = 224 m\u00b2.",
+      "C": "Student omits the base and drops the \u00bd factor from the triangular faces: 4 \u00d7 (8 \u00d7 10) = 4 \u00d7 80 = 320 m\u00b2.",
+      "D": "Student includes the square base but omits the \u00bd factor when computing the triangular faces: 64 + 4(8 \u00d7 10) = 64 + 320 = 384 m\u00b2."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -461,23 +521,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "A square pyramid has one square base and four triangular faces. The base area is s². Each triangular face area is ½sl. Compute both and add."
+        "hint_text": "A square pyramid has one square base and four triangular faces. The base area is s\u00b2. Each triangular face area is \u00bdsl. Compute both and add."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Base: 8² = 64. Lateral: 4 × ½ × 8 × 10 = 4 × 40 = 160. Total: 64 + 160 = 224."
+        "hint_text": "Base: 8\u00b2 = 64. Lateral: 4 \u00d7 \u00bd \u00d7 8 \u00d7 10 = 4 \u00d7 40 = 160. Total: 64 + 160 = 224."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["square_pyramid", "surface_area", "slant_height", "3d_figures"],
+    "context_tags": [
+      "square_pyramid",
+      "surface_area",
+      "slant_height",
+      "3d_figures"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -487,7 +555,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-04",
     "last_modified": "2026-06-04",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_P_031",
@@ -506,24 +576,24 @@
     "assessment_layer": "CRC",
     "unit": 3,
     "skills_targeted": [
-      "computing the surface area of a cone using SA = πr² + πrl",
+      "computing the surface area of a cone using SA = \u03c0r\u00b2 + \u03c0rl",
       "correctly combining the circular base area with the lateral surface area of a cone"
     ],
-    "question_text": "A cone has a radius of 5 cm and a slant height of 13 cm. Using π ≈ 3.14, what is the surface area of the cone?",
+    "question_text": "A cone has a radius of 5 cm and a slant height of 13 cm. Using \u03c0 \u2248 3.14, what is the surface area of the cone?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "282.6 cm²",
-      "B": "204.1 cm²",
-      "C": "78.5 cm²",
-      "D": "361.1 cm²"
+      "A": "282.6 cm\u00b2",
+      "B": "204.1 cm\u00b2",
+      "C": "78.5 cm\u00b2",
+      "D": "361.1 cm\u00b2"
     },
     "correct_answer": "A",
-    "explanation": "The surface area of a cone is:\nSA = πr² + πrl\nSA = 3.14(5²) + 3.14(5)(13)\nSA = 3.14(25) + 3.14(65)\nSA = 78.5 + 204.1\nSA = 282.6 cm²",
+    "explanation": "The surface area of a cone is:\nSA = \u03c0r\u00b2 + \u03c0rl\nSA = 3.14(5\u00b2) + 3.14(5)(13)\nSA = 3.14(25) + 3.14(65)\nSA = 78.5 + 204.1\nSA = 282.6 cm\u00b2",
     "distractor_logic": {
-      "A": "Correct: SA = πr² + πrl = 78.5 + 204.1 = 282.6 cm².",
-      "B": "Student computes only the lateral surface area (πrl) and omits the circular base: 3.14 × 5 × 13 = 204.1 cm².",
-      "C": "Student computes only the circular base area (πr²) and omits the lateral surface: 3.14 × 25 = 78.5 cm².",
-      "D": "Student counts two circular bases instead of one (using 2πr² instead of πr²): 2(78.5) + 204.1 = 157 + 204.1 = 361.1 cm²."
+      "A": "Correct: SA = \u03c0r\u00b2 + \u03c0rl = 78.5 + 204.1 = 282.6 cm\u00b2.",
+      "B": "Student computes only the lateral surface area (\u03c0rl) and omits the circular base: 3.14 \u00d7 5 \u00d7 13 = 204.1 cm\u00b2.",
+      "C": "Student computes only the circular base area (\u03c0r\u00b2) and omits the lateral surface: 3.14 \u00d7 25 = 78.5 cm\u00b2.",
+      "D": "Student counts two circular bases instead of one (using 2\u03c0r\u00b2 instead of \u03c0r\u00b2): 2(78.5) + 204.1 = 157 + 204.1 = 361.1 cm\u00b2."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -531,23 +601,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "A cone has two surfaces: one circular base (πr²) and one lateral curved surface (πrl). Add both — unlike a cylinder, a cone has only one base."
+        "hint_text": "A cone has two surfaces: one circular base (\u03c0r\u00b2) and one lateral curved surface (\u03c0rl). Add both \u2014 unlike a cylinder, a cone has only one base."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Base: 3.14 × 25 = 78.5. Lateral: 3.14 × 5 × 13 = 204.1. Total: 78.5 + 204.1 = 282.6."
+        "hint_text": "Base: 3.14 \u00d7 25 = 78.5. Lateral: 3.14 \u00d7 5 \u00d7 13 = 204.1. Total: 78.5 + 204.1 = 282.6."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["cone", "surface_area", "slant_height", "3d_figures"],
+    "context_tags": [
+      "cone",
+      "surface_area",
+      "slant_height",
+      "3d_figures"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -557,7 +635,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-04",
     "last_modified": "2026-06-04",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_P_032",
@@ -576,24 +656,24 @@
     "assessment_layer": "CRC",
     "unit": 3,
     "skills_targeted": [
-      "computing the surface area of a sphere using SA = 4πr²",
+      "computing the surface area of a sphere using SA = 4\u03c0r\u00b2",
       "correctly applying the factor of 4 in the sphere surface area formula"
     ],
-    "question_text": "A sphere has a radius of 6 ft. Using π ≈ 3.14, what is the surface area of the sphere?",
+    "question_text": "A sphere has a radius of 6 ft. Using \u03c0 \u2248 3.14, what is the surface area of the sphere?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "113.04 ft²",
-      "B": "226.08 ft²",
-      "C": "75.36 ft²",
-      "D": "452.16 ft²"
+      "A": "113.04 ft\u00b2",
+      "B": "226.08 ft\u00b2",
+      "C": "75.36 ft\u00b2",
+      "D": "452.16 ft\u00b2"
     },
     "correct_answer": "D",
-    "explanation": "The surface area of a sphere is:\nSA = 4πr² = 4 × 3.14 × 6²= 4 × 3.14 × 36 = 452.16 ft²",
+    "explanation": "The surface area of a sphere is:\nSA = 4\u03c0r\u00b2 = 4 \u00d7 3.14 \u00d7 6\u00b2= 4 \u00d7 3.14 \u00d7 36 = 452.16 ft\u00b2",
     "distractor_logic": {
-      "A": "Student uses πr² (factor of 1 instead of 4): 3.14 × 36 = 113.04 ft².",
-      "B": "Student uses 2πr² (factor of 2 instead of 4): 2 × 3.14 × 36 = 226.08 ft².",
-      "C": "Student uses 4πr instead of 4πr² (does not square the radius): 4 × 3.14 × 6 = 75.36 ft².",
-      "D": "Correct: SA = 4πr² = 4 × 3.14 × 36 = 452.16 ft²."
+      "A": "Student uses \u03c0r\u00b2 (factor of 1 instead of 4): 3.14 \u00d7 36 = 113.04 ft\u00b2.",
+      "B": "Student uses 2\u03c0r\u00b2 (factor of 2 instead of 4): 2 \u00d7 3.14 \u00d7 36 = 226.08 ft\u00b2.",
+      "C": "Student uses 4\u03c0r instead of 4\u03c0r\u00b2 (does not square the radius): 4 \u00d7 3.14 \u00d7 6 = 75.36 ft\u00b2.",
+      "D": "Correct: SA = 4\u03c0r\u00b2 = 4 \u00d7 3.14 \u00d7 36 = 452.16 ft\u00b2."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -601,23 +681,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The surface area of a sphere is SA = 4πr². Square the radius first, then multiply by 4 and by π."
+        "hint_text": "The surface area of a sphere is SA = 4\u03c0r\u00b2. Square the radius first, then multiply by 4 and by \u03c0."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "r² = 36. Then 4 × 3.14 × 36 = 12.56 × 36 = 452.16."
+        "hint_text": "r\u00b2 = 36. Then 4 \u00d7 3.14 \u00d7 36 = 12.56 \u00d7 36 = 452.16."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["sphere", "surface_area", "formula_application", "3d_figures"],
+    "context_tags": [
+      "sphere",
+      "surface_area",
+      "formula_application",
+      "3d_figures"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -627,7 +715,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-04",
     "last_modified": "2026-06-04",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_P_033",
@@ -647,9 +737,9 @@
     "unit": 3,
     "skills_targeted": [
       "finding the height of a cylinder given its surface area and radius",
-      "applying the inverse of SA = 2πr² + 2πrh to isolate the unknown height"
+      "applying the inverse of SA = 2\u03c0r\u00b2 + 2\u03c0rh to isolate the unknown height"
     ],
-    "question_text": "A cylinder has a radius of 4 m and a surface area of 276.32 m². Using π ≈ 3.14, what is the height of the cylinder?",
+    "question_text": "A cylinder has a radius of 4 m and a surface area of 276.32 m\u00b2. Using \u03c0 \u2248 3.14, what is the height of the cylinder?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "11 m",
@@ -658,12 +748,12 @@
       "D": "1.75 m"
     },
     "correct_answer": "C",
-    "explanation": "Using SA = 2πr² + 2πrh, solve for h:\n276.32 = 2(3.14)(4²) + 2(3.14)(4)h\n276.32 = 2(3.14)(16) + 25.12h\n276.32 = 100.48 + 25.12h\n175.84 = 25.12h\nh = 175.84 ÷ 25.12 = 7 m\n\nCheck: 2(3.14)(16) + 2(3.14)(4)(7) = 100.48 + 175.84 = 276.32 ✓",
+    "explanation": "Using SA = 2\u03c0r\u00b2 + 2\u03c0rh, solve for h:\n276.32 = 2(3.14)(4\u00b2) + 2(3.14)(4)h\n276.32 = 2(3.14)(16) + 25.12h\n276.32 = 100.48 + 25.12h\n175.84 = 25.12h\nh = 175.84 \u00f7 25.12 = 7 m\n\nCheck: 2(3.14)(16) + 2(3.14)(4)(7) = 100.48 + 175.84 = 276.32 \u2713",
     "distractor_logic": {
-      "A": "Student divides the total surface area by 2πr without first subtracting the base areas: 276.32 ÷ 25.12 = 11 m.",
-      "B": "Student correctly isolates 175.84 but divides by 2 × 25.12 = 50.24 instead of 25.12: 175.84 ÷ 50.24 = 3.5 m.",
-      "C": "Correct: 276.32 − 100.48 = 175.84; 175.84 ÷ 25.12 = 7 m.",
-      "D": "Student correctly isolates 175.84 but divides by 2πr² = 100.48 instead of 2πr = 25.12: 175.84 ÷ 100.48 = 1.75 m."
+      "A": "Student divides the total surface area by 2\u03c0r without first subtracting the base areas: 276.32 \u00f7 25.12 = 11 m.",
+      "B": "Student correctly isolates 175.84 but divides by 2 \u00d7 25.12 = 50.24 instead of 25.12: 175.84 \u00f7 50.24 = 3.5 m.",
+      "C": "Correct: 276.32 \u2212 100.48 = 175.84; 175.84 \u00f7 25.12 = 7 m.",
+      "D": "Student correctly isolates 175.84 but divides by 2\u03c0r\u00b2 = 100.48 instead of 2\u03c0r = 25.12: 175.84 \u00f7 100.48 = 1.75 m."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -671,11 +761,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Compute 2πr² first (the base area contribution), subtract it from the total SA, then divide the remainder by 2πr to find h."
+        "hint_text": "Compute 2\u03c0r\u00b2 first (the base area contribution), subtract it from the total SA, then divide the remainder by 2\u03c0r to find h."
       },
       {
         "strategy": "plug_in_values",
@@ -683,11 +776,17 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["cylinder", "surface_area", "missing_height", "inverse_reasoning", "3d_figures"],
+    "context_tags": [
+      "cylinder",
+      "surface_area",
+      "missing_height",
+      "inverse_reasoning",
+      "3d_figures"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -697,7 +796,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-04",
     "last_modified": "2026-06-04",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_A_029",
@@ -719,21 +820,21 @@
       "computing the total external surface area of a composite solid formed by a cylinder placed on top of a rectangular prism",
       "correctly accounting for the shared interface area that is interior and not part of the external surface"
     ],
-    "question_text": "A composite solid consists of a rectangular prism (length = 10 cm, width = 10 cm, height = 8 cm) with a cylinder (radius = 3 cm, height = 6 cm) resting on the center of the prism's top face. What is the total external surface area of the composite solid? Use π ≈ 3.14.",
+    "question_text": "A composite solid consists of a rectangular prism (length = 10 cm, width = 10 cm, height = 8 cm) with a cylinder (radius = 3 cm, height = 6 cm) resting on the center of the prism's top face. What is the total external surface area of the composite solid? Use \u03c0 \u2248 3.14.",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "520 cm²",
-      "B": "633.04 cm²",
-      "C": "661.30 cm²",
-      "D": "689.56 cm²"
+      "A": "520 cm\u00b2",
+      "B": "633.04 cm\u00b2",
+      "C": "661.30 cm\u00b2",
+      "D": "689.56 cm\u00b2"
     },
     "correct_answer": "B",
-    "explanation": "Step 1 — Rectangular prism SA:\nSA_prism = 2(10×10 + 10×8 + 10×8) = 2(100 + 80 + 80) = 2(260) = 520 cm²\n\nStep 2 — Remove the cylinder's footprint from the prism top (interior interface):\nCircle area = πr² = 3.14 × 9 = 28.26 cm²\nExposed prism = 520 − 28.26 = 491.74 cm²\n\nStep 3 — Cylinder's exposed surface (lateral + top only; bottom is the interface):\nLateral = 2πrh = 2 × 3.14 × 3 × 6 = 113.04 cm²\nTop = πr² = 28.26 cm²\nCylinder contribution = 113.04 + 28.26 = 141.30 cm²\n\nTotal = 491.74 + 141.30 = 633.04 cm²\n\nNote: The footprint subtracted from the prism and the top added for the cylinder cancel each other (both equal 28.26 cm²), so Total = 520 + 113.04 = 633.04 cm².",
+    "explanation": "Step 1 \u2014 Rectangular prism SA:\nSA_prism = 2(10\u00d710 + 10\u00d78 + 10\u00d78) = 2(100 + 80 + 80) = 2(260) = 520 cm\u00b2\n\nStep 2 \u2014 Remove the cylinder's footprint from the prism top (interior interface):\nCircle area = \u03c0r\u00b2 = 3.14 \u00d7 9 = 28.26 cm\u00b2\nExposed prism = 520 \u2212 28.26 = 491.74 cm\u00b2\n\nStep 3 \u2014 Cylinder's exposed surface (lateral + top only; bottom is the interface):\nLateral = 2\u03c0rh = 2 \u00d7 3.14 \u00d7 3 \u00d7 6 = 113.04 cm\u00b2\nTop = \u03c0r\u00b2 = 28.26 cm\u00b2\nCylinder contribution = 113.04 + 28.26 = 141.30 cm\u00b2\n\nTotal = 491.74 + 141.30 = 633.04 cm\u00b2\n\nNote: The footprint subtracted from the prism and the top added for the cylinder cancel each other (both equal 28.26 cm\u00b2), so Total = 520 + 113.04 = 633.04 cm\u00b2.",
     "distractor_logic": {
-      "A": "Student computes the rectangular prism surface area (520 cm²) but ignores the cylinder entirely.",
-      "B": "Correct: 520 − 28.26 + 113.04 + 28.26 = 520 + 113.04 = 633.04 cm².",
-      "C": "Student correctly removes the footprint from the prism but then adds the cylinder's full surface area including both circular bases: 491.74 + (113.04 + 28.26 + 28.26) = 491.74 + 169.56 = 661.30 cm².",
-      "D": "Student adds the prism's full surface area to the cylinder's full surface area without removing the shared interface at all: 520 + (113.04 + 28.26 + 28.26) = 520 + 169.56 = 689.56 cm²."
+      "A": "Student computes the rectangular prism surface area (520 cm\u00b2) but ignores the cylinder entirely.",
+      "B": "Correct: 520 \u2212 28.26 + 113.04 + 28.26 = 520 + 113.04 = 633.04 cm\u00b2.",
+      "C": "Student correctly removes the footprint from the prism but then adds the cylinder's full surface area including both circular bases: 491.74 + (113.04 + 28.26 + 28.26) = 491.74 + 169.56 = 661.30 cm\u00b2.",
+      "D": "Student adds the prism's full surface area to the cylinder's full surface area without removing the shared interface at all: 520 + (113.04 + 28.26 + 28.26) = 520 + 169.56 = 689.56 cm\u00b2."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -741,23 +842,32 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["draw_diagram", "identify_key_info"],
+    "applicable_strategies": [
+      "draw_diagram",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "draw_diagram",
-        "hint_text": "Sketch the composite solid. The cylinder rests on the prism — their shared circle is interior. Subtract that circle from the prism top and add only the cylinder's lateral surface and top circle."
+        "hint_text": "Sketch the composite solid. The cylinder rests on the prism \u2014 their shared circle is interior. Subtract that circle from the prism top and add only the cylinder's lateral surface and top circle."
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "Where the cylinder meets the prism, neither surface is visible from outside. Remove the footprint circle from the prism's top and include only the cylinder's lateral area and top circle — not its bottom."
+        "hint_text": "Where the cylinder meets the prism, neither surface is visible from outside. Remove the footprint circle from the prism's top and include only the cylinder's lateral area and top circle \u2014 not its bottom."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["composite_solid", "surface_area", "cylinder", "rectangular_prism", "interface_area"],
+    "context_tags": [
+      "composite_solid",
+      "surface_area",
+      "cylinder",
+      "rectangular_prism",
+      "interface_area"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -767,7 +877,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-04",
     "last_modified": "2026-06-04",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_A_030",
@@ -789,7 +901,7 @@
       "finding the missing height of a rectangular prism given its surface area and two known dimensions",
       "applying the inverse of SA = 2(lw + lh + wh) to isolate the unknown height"
     ],
-    "question_text": "A rectangular prism has a length of 6 cm, a width of 4 cm, and an unknown height h. Its surface area is 148 cm². What is the height?",
+    "question_text": "A rectangular prism has a length of 6 cm, a width of 4 cm, and an unknown height h. Its surface area is 148 cm\u00b2. What is the height?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "7.4 cm",
@@ -798,12 +910,12 @@
       "D": "5 cm"
     },
     "correct_answer": "D",
-    "explanation": "Using SA = 2(lw + lh + wh), substitute known values and solve for h:\n148 = 2(6×4 + 6×h + 4×h)\n148 = 2(24 + 10h)\n74 = 24 + 10h\n50 = 10h\nh = 5 cm\n\nCheck: 2(24 + 30 + 20) = 2(74) = 148 ✓",
+    "explanation": "Using SA = 2(lw + lh + wh), substitute known values and solve for h:\n148 = 2(6\u00d74 + 6\u00d7h + 4\u00d7h)\n148 = 2(24 + 10h)\n74 = 24 + 10h\n50 = 10h\nh = 5 cm\n\nCheck: 2(24 + 30 + 20) = 2(74) = 148 \u2713",
     "distractor_logic": {
-      "A": "Student divides the total SA by the h-coefficient (20h → coefficient 20) without first subtracting the base area contribution: 148 ÷ 20 = 7.4 cm.",
-      "B": "Student correctly isolates 10h = 50... wait — student correctly finds that 10h = 50 but reports 10h = 100 (doubles the isolated term before dividing): 100 cm.",
-      "C": "Student correctly sets up 10h = 50 but divides by 20 instead of 10: 50 ÷ 20 = 2.5 cm.",
-      "D": "Correct: 148 = 2(24 + 10h) → 74 = 24 + 10h → 10h = 50 → h = 5 cm."
+      "A": "Student divides the total SA by the h-coefficient (20h \u2192 coefficient 20) without first subtracting the base area contribution: 148 \u00f7 20 = 7.4 cm.",
+      "B": "Student correctly isolates 10h = 50... wait \u2014 student correctly finds that 10h = 50 but reports 10h = 100 (doubles the isolated term before dividing): 100 cm.",
+      "C": "Student correctly sets up 10h = 50 but divides by 20 instead of 10: 50 \u00f7 20 = 2.5 cm.",
+      "D": "Correct: 148 = 2(24 + 10h) \u2192 74 = 24 + 10h \u2192 10h = 50 \u2192 h = 5 cm."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -811,7 +923,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -823,11 +938,17 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rectangular_prism", "surface_area", "missing_height", "inverse_reasoning", "3d_figures"],
+    "context_tags": [
+      "rectangular_prism",
+      "surface_area",
+      "missing_height",
+      "inverse_reasoning",
+      "3d_figures"
+    ],
     "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -837,7 +958,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-04",
     "last_modified": "2026-06-04",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_A_031",
@@ -859,20 +982,20 @@
       "comparing the surface areas of a cube and a rectangular prism with equal volumes",
       "recognizing that equal volumes do not imply equal surface areas"
     ],
-    "question_text": "A cube has a side length of 4 cm. A rectangular prism has dimensions 8 cm × 2 cm × 4 cm. Both figures have the same volume. Which figure has the greater surface area, and by how much?",
+    "question_text": "A cube has a side length of 4 cm. A rectangular prism has dimensions 8 cm \u00d7 2 cm \u00d7 4 cm. Both figures have the same volume. Which figure has the greater surface area, and by how much?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "The cube, by 16 cm²",
-      "B": "The prism, by 8 cm²",
-      "C": "The prism, by 16 cm²",
+      "A": "The cube, by 16 cm\u00b2",
+      "B": "The prism, by 8 cm\u00b2",
+      "C": "The prism, by 16 cm\u00b2",
       "D": "They have the same surface area"
     },
     "correct_answer": "C",
-    "explanation": "Volume check: 4³ = 64 cm³; 8 × 2 × 4 = 64 cm³ ✓ (equal volumes confirmed)\n\nCube SA: 6s² = 6 × 16 = 96 cm²\n\nPrism SA: 2(lw + lh + wh)\n= 2(8×2 + 8×4 + 2×4)\n= 2(16 + 32 + 8)\n= 2(56)\n= 112 cm²\n\nDifference: 112 − 96 = 16 cm²\n\nThe rectangular prism has the greater surface area by 16 cm².",
+    "explanation": "Volume check: 4\u00b3 = 64 cm\u00b3; 8 \u00d7 2 \u00d7 4 = 64 cm\u00b3 \u2713 (equal volumes confirmed)\n\nCube SA: 6s\u00b2 = 6 \u00d7 16 = 96 cm\u00b2\n\nPrism SA: 2(lw + lh + wh)\n= 2(8\u00d72 + 8\u00d74 + 2\u00d74)\n= 2(16 + 32 + 8)\n= 2(56)\n= 112 cm\u00b2\n\nDifference: 112 \u2212 96 = 16 cm\u00b2\n\nThe rectangular prism has the greater surface area by 16 cm\u00b2.",
     "distractor_logic": {
-      "A": "Student reverses the comparison, incorrectly concluding the cube has the larger surface area, and uses the correct difference of 16 cm².",
-      "B": "Student correctly identifies the prism as larger but halves the difference: 16 ÷ 2 = 8 cm².",
-      "C": "Correct: prism SA = 112 cm²; cube SA = 96 cm²; difference = 16 cm².",
+      "A": "Student reverses the comparison, incorrectly concluding the cube has the larger surface area, and uses the correct difference of 16 cm\u00b2.",
+      "B": "Student correctly identifies the prism as larger but halves the difference: 16 \u00f7 2 = 8 cm\u00b2.",
+      "C": "Correct: prism SA = 112 cm\u00b2; cube SA = 96 cm\u00b2; difference = 16 cm\u00b2.",
       "D": "Student assumes that equal volumes imply equal surface areas, not recognizing that shape affects both independently."
     },
     "difficulty_level": "Advanced",
@@ -881,7 +1004,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -889,15 +1015,21 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Cube: 6 × 4² = 96. Prism: 2(16 + 32 + 8) = 112. Subtract to find the difference."
+        "hint_text": "Cube: 6 \u00d7 4\u00b2 = 96. Prism: 2(16 + 32 + 8) = 112. Subtract to find the difference."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["surface_area_comparison", "cube", "rectangular_prism", "equal_volume", "3d_figures"],
+    "context_tags": [
+      "surface_area_comparison",
+      "cube",
+      "rectangular_prism",
+      "equal_volume",
+      "3d_figures"
+    ],
     "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -907,7 +1039,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-04",
     "last_modified": "2026-06-04",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_A_032",
@@ -929,7 +1063,7 @@
       "applying surface area concepts to a real-world painting problem involving walls and a ceiling",
       "computing partial surface area (excluding one face) and determining the number of paint cans needed by rounding up"
     ],
-    "question_text": "A rectangular room has a length of 14 ft, a width of 10 ft, and a height of 9 ft. A painter will paint all four walls and the ceiling but not the floor. One can of paint covers 350 ft². How many full cans of paint are needed?",
+    "question_text": "A rectangular room has a length of 14 ft, a width of 10 ft, and a height of 9 ft. A painter will paint all four walls and the ceiling but not the floor. One can of paint covers 350 ft\u00b2. How many full cans of paint are needed?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "2 cans",
@@ -938,12 +1072,12 @@
       "D": "4 cans"
     },
     "correct_answer": "A",
-    "explanation": "Step 1 — Area of four walls:\n2(lh + wh) = 2(14×9 + 10×9) = 2(126 + 90) = 2(216) = 432 ft²\n\nStep 2 — Ceiling area:\nlw = 14 × 10 = 140 ft²\n\nStep 3 — Total paintable area:\n432 + 140 = 572 ft²\n\nStep 4 — Number of cans:\n572 ÷ 350 = 1.634... → round up to 2 full cans",
+    "explanation": "Step 1 \u2014 Area of four walls:\n2(lh + wh) = 2(14\u00d79 + 10\u00d79) = 2(126 + 90) = 2(216) = 432 ft\u00b2\n\nStep 2 \u2014 Ceiling area:\nlw = 14 \u00d7 10 = 140 ft\u00b2\n\nStep 3 \u2014 Total paintable area:\n432 + 140 = 572 ft\u00b2\n\nStep 4 \u2014 Number of cans:\n572 \u00f7 350 = 1.634... \u2192 round up to 2 full cans",
     "distractor_logic": {
-      "A": "Correct: 572 ÷ 350 = 1.634 → 2 full cans.",
-      "B": "Student includes the floor in the paintable area: 432 + 140 + 140 = 712 ft²; 712 ÷ 350 = 2.034 → 3 cans.",
-      "C": "Student paints only the floor area (a misreading): 140 ÷ 350 = 0.4 → rounds up to 1 can.",
-      "D": "Student uses the product of all three dimensions (treating volume as the area to paint): 14 × 10 × 9 = 1,260 ft²; 1,260 ÷ 350 = 3.6 → 4 cans."
+      "A": "Correct: 572 \u00f7 350 = 1.634 \u2192 2 full cans.",
+      "B": "Student includes the floor in the paintable area: 432 + 140 + 140 = 712 ft\u00b2; 712 \u00f7 350 = 2.034 \u2192 3 cans.",
+      "C": "Student paints only the floor area (a misreading): 140 \u00f7 350 = 0.4 \u2192 rounds up to 1 can.",
+      "D": "Student uses the product of all three dimensions (treating volume as the area to paint): 14 \u00d7 10 \u00d7 9 = 1,260 ft\u00b2; 1,260 \u00f7 350 = 3.6 \u2192 4 cans."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -951,23 +1085,32 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Only the four walls and the ceiling are painted — not the floor. Compute the four wall areas using 2(lh + wh), add the ceiling (lw), then divide by 350 and round up."
+        "hint_text": "Only the four walls and the ceiling are painted \u2014 not the floor. Compute the four wall areas using 2(lh + wh), add the ceiling (lw), then divide by 350 and round up."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "The total paintable area is about 572 ft². One can covers 350 ft², so you need more than 1 but less than 2 full cans — which means you must buy 2."
+        "hint_text": "The total paintable area is about 572 ft\u00b2. One can covers 350 ft\u00b2, so you need more than 1 but less than 2 full cans \u2014 which means you must buy 2."
       }
     ],
     "content_context": "home_improvement",
-    "context_tags": ["surface_area", "real_world", "painting", "rectangular_room", "ceiling_and_walls"],
+    "context_tags": [
+      "surface_area",
+      "real_world",
+      "painting",
+      "rectangular_room",
+      "ceiling_and_walls"
+    ],
     "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -977,7 +1120,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-04",
     "last_modified": "2026-06-04",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_A_033",
@@ -996,10 +1141,10 @@
     "assessment_layer": "CRC",
     "unit": 3,
     "skills_targeted": [
-      "finding the radius of a sphere given its surface area using SA = 4πr²",
-      "dividing by 4π and taking the square root to isolate the radius in a two-step inverse process"
+      "finding the radius of a sphere given its surface area using SA = 4\u03c0r\u00b2",
+      "dividing by 4\u03c0 and taking the square root to isolate the radius in a two-step inverse process"
     ],
-    "question_text": "A sphere has a surface area of 200.96 cm². Using π ≈ 3.14, what is the radius of the sphere?",
+    "question_text": "A sphere has a surface area of 200.96 cm\u00b2. Using \u03c0 \u2248 3.14, what is the radius of the sphere?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "16 cm",
@@ -1008,12 +1153,12 @@
       "D": "2 cm"
     },
     "correct_answer": "B",
-    "explanation": "Using SA = 4πr², solve for r:\nr² = SA ÷ (4π) = 200.96 ÷ (4 × 3.14) = 200.96 ÷ 12.56 = 16\nr = √16 = 4 cm\n\nCheck: 4 × 3.14 × 4² = 12.56 × 16 = 200.96 ✓",
+    "explanation": "Using SA = 4\u03c0r\u00b2, solve for r:\nr\u00b2 = SA \u00f7 (4\u03c0) = 200.96 \u00f7 (4 \u00d7 3.14) = 200.96 \u00f7 12.56 = 16\nr = \u221a16 = 4 cm\n\nCheck: 4 \u00d7 3.14 \u00d7 4\u00b2 = 12.56 \u00d7 16 = 200.96 \u2713",
     "distractor_logic": {
-      "A": "Student correctly finds r² = 16 but stops there without taking the square root, reporting r² as the radius.",
-      "B": "Correct: r² = 200.96 ÷ 12.56 = 16; r = √16 = 4 cm.",
-      "C": "Student finds r = 4 cm correctly but then doubles it, confusing radius with diameter: 2 × 4 = 8 cm.",
-      "D": "Student takes the square root twice: √(√16) = √4 = 2 cm."
+      "A": "Student correctly finds r\u00b2 = 16 but stops there without taking the square root, reporting r\u00b2 as the radius.",
+      "B": "Correct: r\u00b2 = 200.96 \u00f7 12.56 = 16; r = \u221a16 = 4 cm.",
+      "C": "Student finds r = 4 cm correctly but then doubles it, confusing radius with diameter: 2 \u00d7 4 = 8 cm.",
+      "D": "Student takes the square root twice: \u221a(\u221a16) = \u221a4 = 2 cm."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1021,23 +1166,32 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Rearrange SA = 4πr²: divide SA by 4π to get r², then take the square root to get r. Both steps are required."
+        "hint_text": "Rearrange SA = 4\u03c0r\u00b2: divide SA by 4\u03c0 to get r\u00b2, then take the square root to get r. Both steps are required."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check: square your radius and multiply by 4 × 3.14. The result should equal 200.96."
+        "hint_text": "Check: square your radius and multiply by 4 \u00d7 3.14. The result should equal 200.96."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["sphere", "surface_area", "missing_radius", "square_root", "inverse_reasoning"],
+    "context_tags": [
+      "sphere",
+      "surface_area",
+      "missing_radius",
+      "square_root",
+      "inverse_reasoning"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -1047,6 +1201,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-04",
     "last_modified": "2026-06-04",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

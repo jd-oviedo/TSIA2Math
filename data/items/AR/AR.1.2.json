@@ -28,12 +28,12 @@
       "D": "{(1, 4), (2, 4), (1, 6)}"
     },
     "correct_answer": "B",
-    "explanation": "A relation is a function if every input (x-value) maps to exactly one output. In choice B, the inputs 2, 3, and 4 each appear exactly once, so each maps to a single output. The fact that all three outputs are the same value (5) is not a problem — a function can send multiple inputs to the same output. Choices A and D each have a repeated x-value paired with different y-values (x = 1 in both), so one input maps to two outputs — not a function. Choice C has x = 0 paired with three different outputs — also not a function.",
+    "explanation": "A relation is a function if every input (x-value) maps to exactly one output. In choice B, the inputs 2, 3, and 4 each appear exactly once, so each maps to a single output. The fact that all three outputs are the same value (5) is not a problem \u2014 a function can send multiple inputs to the same output. Choices A and D each have a repeated x-value paired with different y-values (x = 1 in both), so one input maps to two outputs \u2014 not a function. Choice C has x = 0 paired with three different outputs \u2014 also not a function.",
     "distractor_logic": {
-      "A": "Student checks only the y-values and, seeing no repeated y-values in choice A, incorrectly concludes it must be a function — missing that x = 1 appears twice with different outputs.",
+      "A": "Student checks only the y-values and, seeing no repeated y-values in choice A, incorrectly concludes it must be a function \u2014 missing that x = 1 appears twice with different outputs.",
       "B": "Correct: inputs 2, 3, and 4 each appear exactly once, so each maps to a single output. Repeated outputs do not disqualify a function.",
-      "C": "Student scans y-values only — seeing the three distinct outputs 1, 2, and 3 — and mistakenly accepts choice C, missing that x = 0 is the only input and maps to three different outputs.",
-      "D": "Student focuses on the repeated output value (4 appears twice) and incorrectly concludes that repeated outputs disqualify a relation, then selects D as the 'cleanest' option — but D actually has x = 1 paired with both 4 and 6."
+      "C": "Student scans y-values only \u2014 seeing the three distinct outputs 1, 2, and 3 \u2014 and mistakenly accepts choice C, missing that x = 0 is the only input and maps to three different outputs.",
+      "D": "Student focuses on the repeated output value (4 appears twice) and incorrectly concludes that repeated outputs disqualify a relation, then selects D as the 'cleanest' option \u2014 but D actually has x = 1 paired with both 4 and 6."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["ordered_pairs", "function_definition", "input_output", "relation"],
+    "context_tags": [
+      "ordered_pairs",
+      "function_definition",
+      "input_output",
+      "relation"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -67,9 +75,10 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
-
   {
     "item_id": "AR_B_004",
     "schema_version": "2.0",
@@ -99,10 +108,10 @@
       "D": "The graph represents a function because each y-value shown (1 and 5) corresponds to only one x-value."
     },
     "correct_answer": "B",
-    "explanation": "The vertical line test states that a graph represents a function if and only if every vertical line crosses the graph at most once. Here, the vertical line at x = 3 crosses the graph at two points — (3, 1) and (3, 5). This means the single input x = 3 produces two different outputs (1 and 5), which violates the definition of a function. The graph does not represent a function.",
+    "explanation": "The vertical line test states that a graph represents a function if and only if every vertical line crosses the graph at most once. Here, the vertical line at x = 3 crosses the graph at two points \u2014 (3, 1) and (3, 5). This means the single input x = 3 produces two different outputs (1 and 5), which violates the definition of a function. The graph does not represent a function.",
     "distractor_logic": {
-      "A": "Student invents a false general rule — that vertical lines always cross graphs twice — and uses it to incorrectly conclude the graph is a function.",
-      "B": "Correct: the vertical line at x = 3 hits two points, meaning one input maps to two outputs — a direct violation of the function definition.",
+      "A": "Student invents a false general rule \u2014 that vertical lines always cross graphs twice \u2014 and uses it to incorrectly conclude the graph is a function.",
+      "B": "Correct: the vertical line at x = 3 hits two points, meaning one input maps to two outputs \u2014 a direct violation of the function definition.",
       "C": "Student inverts the logic: having two different y-values at the same x is precisely what makes this NOT a function, not evidence that it is one.",
       "D": "Student confuses the function requirement (each x has one y) with its converse (each y has one x), focusing on the y-values instead of the repeated x-value."
     },
@@ -112,7 +121,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -120,15 +132,20 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Eliminate any choice that says the graph IS a function — the vertical line crossed at two points, which always means the function test fails."
+        "hint_text": "Eliminate any choice that says the graph IS a function \u2014 the vertical line crossed at two points, which always means the function test fails."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["vertical_line_test", "graph", "function_definition", "input_output"],
+    "context_tags": [
+      "vertical_line_test",
+      "graph",
+      "function_definition",
+      "input_output"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -138,9 +155,10 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
-
   {
     "item_id": "AR_P_003",
     "schema_version": "2.0",
@@ -161,21 +179,21 @@
       "identifying a non-function in a table of values by locating a repeated input with different outputs",
       "distinguishing between repeated outputs (allowed) and repeated inputs with different outputs (not allowed)"
     ],
-    "question_text": "The table below shows a relation between x and y.\n\n| x  | y |\n|----|---|\n| −1 | 4 |\n|  0 | 2 |\n|  1 | 4 |\n|  2 | 7 |\n|  2 | 1 |\n\nWhich statement best explains whether this relation is a function?",
+    "question_text": "The table below shows a relation between x and y.\n\n| x  | y |\n|----|---|\n| \u22121 | 4 |\n|  0 | 2 |\n|  1 | 4 |\n|  2 | 7 |\n|  2 | 1 |\n\nWhich statement best explains whether this relation is a function?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "Yes, it is a function because x = −1 and x = 1 both produce y = 4, showing the rule is consistent.",
+      "A": "Yes, it is a function because x = \u22121 and x = 1 both produce y = 4, showing the rule is consistent.",
       "B": "No, it is not a function because the output y = 4 appears more than once in the table.",
       "C": "No, it is not a function because x = 2 appears twice with different outputs (7 and 1).",
       "D": "Yes, it is a function because most x-values in the table appear only once."
     },
     "correct_answer": "C",
-    "explanation": "A relation is a function if every input maps to exactly one output. In this table, x = 2 appears twice — once paired with y = 7 and once paired with y = 1. A single input producing two different outputs violates the function definition, so this relation is not a function. The fact that x = −1 and x = 1 both produce y = 4 is not a problem — those are different inputs giving the same output, which is allowed.",
+    "explanation": "A relation is a function if every input maps to exactly one output. In this table, x = 2 appears twice \u2014 once paired with y = 7 and once paired with y = 1. A single input producing two different outputs violates the function definition, so this relation is not a function. The fact that x = \u22121 and x = 1 both produce y = 4 is not a problem \u2014 those are different inputs giving the same output, which is allowed.",
     "distractor_logic": {
-      "A": "Student misreads the repeated output (y = 4 for x = −1 and x = 1) as evidence of consistency rather than checking whether any single x-value has two different outputs.",
-      "B": "Student applies the wrong criterion — focusing on whether outputs repeat rather than whether inputs repeat. Repeated outputs are allowed in a function; it is repeated inputs with different outputs that disqualify a relation.",
-      "C": "Correct: x = 2 appears twice with two different outputs (7 and 1), meaning one input maps to two outputs — a direct violation of the function definition.",
-      "D": "Student applies a 'majority rule' — because most x-values appear only once, the student concludes the relation is a function, ignoring that a single repeated-input violation is enough to disqualify it."
+      "A": "Student misreads the repeated output (y = 4 for x = \u22121 and x = 1) as evidence of consistency rather than checking whether any single x-value has two different outputs.",
+      "B": "Student applies the wrong criterion \u2014 focusing on whether outputs repeat rather than whether inputs repeat. Repeated outputs are allowed in a function; it is repeated inputs with different outputs that disqualify a relation.",
+      "C": "Correct: x = 2 appears twice with two different outputs (7 and 1), meaning one input maps to two outputs \u2014 a direct violation of the function definition.",
+      "D": "Student applies a 'majority rule' \u2014 because most x-values appear only once, the student concludes the relation is a function, ignoring that a single repeated-input violation is enough to disqualify it."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -183,7 +201,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -195,11 +216,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["table_of_values", "function_definition", "repeated_input", "relation"],
+    "context_tags": [
+      "table_of_values",
+      "function_definition",
+      "repeated_input",
+      "relation"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -209,9 +235,10 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
-
   {
     "item_id": "AR_P_004",
     "schema_version": "2.0",
@@ -235,18 +262,18 @@
     "question_text": "Which equation defines y as a function of x?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x = y²",
-      "B": "x² + y² = 25",
+      "A": "x = y\u00b2",
+      "B": "x\u00b2 + y\u00b2 = 25",
       "C": "|y| = x",
-      "D": "y = x²"
+      "D": "y = x\u00b2"
     },
     "correct_answer": "D",
-    "explanation": "An equation defines y as a function of x if every x-value produces exactly one y-value.\n\nChoice D: y = x² gives a unique y for every x (e.g., x = 3 → y = 9 only). This is a function.\n\nChoice A: x = y² → y = ±√x, so x = 4 gives y = 2 or y = −2. Two outputs — not a function.\n\nChoice B: x² + y² = 25 is a circle. At x = 0, y = 5 or y = −5. Two outputs — not a function.\n\nChoice C: |y| = x → y = x or y = −x, so x = 3 gives y = 3 or y = −3. Two outputs — not a function.",
+    "explanation": "An equation defines y as a function of x if every x-value produces exactly one y-value.\n\nChoice D: y = x\u00b2 gives a unique y for every x (e.g., x = 3 \u2192 y = 9 only). This is a function.\n\nChoice A: x = y\u00b2 \u2192 y = \u00b1\u221ax, so x = 4 gives y = 2 or y = \u22122. Two outputs \u2014 not a function.\n\nChoice B: x\u00b2 + y\u00b2 = 25 is a circle. At x = 0, y = 5 or y = \u22125. Two outputs \u2014 not a function.\n\nChoice C: |y| = x \u2192 y = x or y = \u2212x, so x = 3 gives y = 3 or y = \u22123. Two outputs \u2014 not a function.",
     "distractor_logic": {
-      "A": "Student sees 'x = y²' and thinks isolating x means y is defined as a function, not recognizing that solving for y yields two values (y = ±√x) for most inputs.",
+      "A": "Student sees 'x = y\u00b2' and thinks isolating x means y is defined as a function, not recognizing that solving for y yields two values (y = \u00b1\u221ax) for most inputs.",
       "B": "Student recognizes the equation as a familiar algebraic form and assumes any equation with a clean structure defines a function, without testing whether one x can produce two y-values.",
-      "C": "Student thinks absolute value always simplifies to a single output, not recognizing that |y| = x allows both y = x and y = −x as solutions.",
-      "D": "Correct: y = x² assigns exactly one y-value to each x-value, satisfying the definition of a function."
+      "C": "Student thinks absolute value always simplifies to a single output, not recognizing that |y| = x allows both y = x and y = \u2212x as solutions.",
+      "D": "Correct: y = x\u00b2 assigns exactly one y-value to each x-value, satisfying the definition of a function."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -254,7 +281,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -262,15 +292,20 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Any equation where solving for y introduces a ± sign produces two outputs for at least one input — eliminate those."
+        "hint_text": "Any equation where solving for y introduces a \u00b1 sign produces two outputs for at least one input \u2014 eliminate those."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["equation", "function_definition", "two_outputs", "algebraic_relation"],
+    "context_tags": [
+      "equation",
+      "function_definition",
+      "two_outputs",
+      "algebraic_relation"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -280,9 +315,10 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
-
   {
     "item_id": "AR_A_003",
     "schema_version": "2.0",
@@ -303,7 +339,7 @@
       "evaluating whether an algebraically-defined relation is a function by computing outputs",
       "distinguishing the function requirement from the one-to-one (injective) requirement"
     ],
-    "question_text": "A relation assigns to each integer input n, where 1 ≤ n ≤ 4, the remainder when n² is divided by 5. Which statement correctly describes this relation?",
+    "question_text": "A relation assigns to each integer input n, where 1 \u2264 n \u2264 4, the remainder when n\u00b2 is divided by 5. Which statement correctly describes this relation?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "It is a function because each input produces exactly one output, even though some outputs repeat.",
@@ -312,12 +348,12 @@
       "D": "It is a function only if all four outputs are different; since outputs repeat, it fails the function test."
     },
     "correct_answer": "A",
-    "explanation": "First, compute each output:\n  n = 1: 1² = 1, remainder when 1 ÷ 5 = 0 r 1 → output 1\n  n = 2: 2² = 4, remainder when 4 ÷ 5 = 0 r 4 → output 4\n  n = 3: 3² = 9, remainder when 9 ÷ 5 = 1 r 4 → output 4\n  n = 4: 4² = 16, remainder when 16 ÷ 5 = 3 r 1 → output 1\n\nThe relation is {(1,1), (2,4), (3,4), (4,1)}. Every input maps to exactly one output — this is a function. The fact that outputs 1 and 4 each appear twice is not a problem. A function only requires each input to have one output; it does not require outputs to be unique (that stricter condition defines a one-to-one function).",
+    "explanation": "First, compute each output:\n  n = 1: 1\u00b2 = 1, remainder when 1 \u00f7 5 = 0 r 1 \u2192 output 1\n  n = 2: 2\u00b2 = 4, remainder when 4 \u00f7 5 = 0 r 4 \u2192 output 4\n  n = 3: 3\u00b2 = 9, remainder when 9 \u00f7 5 = 1 r 4 \u2192 output 4\n  n = 4: 4\u00b2 = 16, remainder when 16 \u00f7 5 = 3 r 1 \u2192 output 1\n\nThe relation is {(1,1), (2,4), (3,4), (4,1)}. Every input maps to exactly one output \u2014 this is a function. The fact that outputs 1 and 4 each appear twice is not a problem. A function only requires each input to have one output; it does not require outputs to be unique (that stricter condition defines a one-to-one function).",
     "distractor_logic": {
       "A": "Correct: each input n produces exactly one remainder, so the relation is a function. Repeated outputs do not violate the function definition.",
-      "B": "Student applies the one-to-one (injective) condition — that each output must come from a unique input — rather than the function condition. The output 4 appearing twice is irrelevant to whether the relation is a function.",
+      "B": "Student applies the one-to-one (injective) condition \u2014 that each output must come from a unique input \u2014 rather than the function condition. The output 4 appearing twice is irrelevant to whether the relation is a function.",
       "C": "Same misconception as B, applied to the output 1 repeating for n = 1 and n = 4. Repeated outputs are permitted; only repeated inputs with different outputs would disqualify the relation.",
-      "D": "Student states a false necessary condition — that all outputs must be distinct. This is the definition of an injective function, not a function in general. The relation here is a valid (non-injective) function."
+      "D": "Student states a false necessary condition \u2014 that all outputs must be distinct. This is the definition of an injective function, not a function in general. The relation here is a valid (non-injective) function."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -325,23 +361,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
-        "hint_text": "Compute the remainder when n² is divided by 5 for each value of n from 1 to 4, then list the input-output pairs."
+        "hint_text": "Compute the remainder when n\u00b2 is divided by 5 for each value of n from 1 to 4, then list the input-output pairs."
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "A function requires each input to have exactly one output — it does not require outputs to be unique."
+        "hint_text": "A function requires each input to have exactly one output \u2014 it does not require outputs to be unique."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["function_definition", "modular_arithmetic", "one_to_one", "injective"],
+    "context_tags": [
+      "function_definition",
+      "modular_arithmetic",
+      "one_to_one",
+      "injective"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -351,9 +395,10 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
-
   {
     "item_id": "AR_A_004",
     "schema_version": "2.0",
@@ -374,21 +419,21 @@
       "reasoning about function status for a parameterized equation",
       "identifying a degenerate case that satisfies the function definition"
     ],
-    "question_text": "The equation y² = kx defines a relation between x and y. For which value of k, if any, does this equation define y as a function of x?",
+    "question_text": "The equation y\u00b2 = kx defines a relation between x and y. For which value of k, if any, does this equation define y as a function of x?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "k = 1, because y² = x is the standard form of a parabola",
-      "B": "No value of k makes it a function, because y² always yields two solutions",
+      "A": "k = 1, because y\u00b2 = x is the standard form of a parabola",
+      "B": "No value of k makes it a function, because y\u00b2 always yields two solutions",
       "C": "Any positive value of k, because restricting k to positive values limits y to positive outputs",
       "D": "k = 0, because then y = 0 for every x, giving exactly one output per input"
     },
     "correct_answer": "D",
-    "explanation": "For any nonzero k, the equation y² = kx gives y = ±√(kx) wherever kx > 0, producing two outputs for the same input — not a function.\n\nHowever, when k = 0: y² = 0, so y = 0 for every value of x. Every input maps to the single output 0. This is a constant function, and it satisfies the function definition.\n\nTherefore k = 0 is the one value that makes this equation define y as a function of x.",
+    "explanation": "For any nonzero k, the equation y\u00b2 = kx gives y = \u00b1\u221a(kx) wherever kx > 0, producing two outputs for the same input \u2014 not a function.\n\nHowever, when k = 0: y\u00b2 = 0, so y = 0 for every value of x. Every input maps to the single output 0. This is a constant function, and it satisfies the function definition.\n\nTherefore k = 0 is the one value that makes this equation define y as a function of x.",
     "distractor_logic": {
-      "A": "Student confuses y² = x (a sideways parabola, not a function of x) with y = x² (an upward parabola, which is a function). The familiar 'parabola' label leads to an incorrect conclusion.",
-      "B": "Student correctly identifies that y² = kx produces two solutions for nonzero k but overgeneralizes, failing to consider the degenerate case k = 0 where y² = 0 forces a unique output.",
-      "C": "Student thinks a positive k restricts y to positive values, but the equation y² = kx still permits y to be negative — the sign of k affects the domain of x where solutions exist, not whether y has two values.",
-      "D": "Correct: when k = 0, y² = 0 forces y = 0 for all x, making this a constant function with exactly one output per input."
+      "A": "Student confuses y\u00b2 = x (a sideways parabola, not a function of x) with y = x\u00b2 (an upward parabola, which is a function). The familiar 'parabola' label leads to an incorrect conclusion.",
+      "B": "Student correctly identifies that y\u00b2 = kx produces two solutions for nonzero k but overgeneralizes, failing to consider the degenerate case k = 0 where y\u00b2 = 0 forces a unique output.",
+      "C": "Student thinks a positive k restricts y to positive values, but the equation y\u00b2 = kx still permits y to be negative \u2014 the sign of k affects the domain of x where solutions exist, not whether y has two values.",
+      "D": "Correct: when k = 0, y\u00b2 = 0 forces y = 0 for all x, making this a constant function with exactly one output per input."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -396,23 +441,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try k = 1 and a specific x — does y² = x give one y or two? Then try k = 0 and see what happens."
+        "hint_text": "Try k = 1 and a specific x \u2014 does y\u00b2 = x give one y or two? Then try k = 0 and see what happens."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "For any nonzero k, solving y² = kx for y introduces a ± — that means two outputs. Ask whether any special value of k avoids this."
+        "hint_text": "For any nonzero k, solving y\u00b2 = kx for y introduces a \u00b1 \u2014 that means two outputs. Ask whether any special value of k avoids this."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["function_definition", "parameter", "degenerate_case", "equation"],
+    "context_tags": [
+      "function_definition",
+      "parameter",
+      "degenerate_case",
+      "equation"
+    ],
     "estimated_time_seconds": 150,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -422,6 +475,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]
