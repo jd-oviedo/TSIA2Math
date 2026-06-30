@@ -46,6 +46,8 @@ export interface Item {
   estimated_time_seconds: number;
   contains_image: boolean;
   image_url: string | null;
+  figure_type: string | null;
+  figure_props: Record<string, string> | null;
   exposure_max: number;
   times_administered: number;
   times_correct: number;

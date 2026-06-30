@@ -28,7 +28,7 @@
       "D": "4"
     },
     "correct_answer": "A",
-    "explanation": "To count how many students scored exactly 71, scan the list systematically:\n84 — no\n71 — yes (1)\n90 — no\n65 — no\n78 — no\n90 — no\n71 — yes (2)\n\nExactly 2 students scored 71.",
+    "explanation": "To count how many students scored exactly 71, scan the list systematically:\n84 \u2014 no\n71 \u2014 yes (1)\n90 \u2014 no\n65 \u2014 no\n78 \u2014 no\n90 \u2014 no\n71 \u2014 yes (2)\n\nExactly 2 students scored 71.",
     "distractor_logic": {
       "A": "Correct: scanning the list finds 71 appearing at positions 2 and 7, giving a count of 2.",
       "B": "Student over-counts by also including one of the repeated 90s, treating any repeated value as a match.",
@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "classroom",
-    "context_tags": ["quiz_scores", "counting", "frequency", "data_list"],
+    "context_tags": [
+      "quiz_scores",
+      "counting",
+      "frequency",
+      "data_list"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -67,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_002",
@@ -111,7 +121,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -119,15 +132,20 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "The list has 8 total responses split among Math, Science, and English. If Math had fewer than 3 responses, at least one of the other two subjects would need more than 3 — check whether that is realistic given the list."
+        "hint_text": "The list has 8 total responses split among Math, Science, and English. If Math had fewer than 3 responses, at least one of the other two subjects would need more than 3 \u2014 check whether that is realistic given the list."
       }
     ],
     "content_context": "classroom",
-    "context_tags": ["categorical_data", "counting", "frequency", "favorite_subject"],
+    "context_tags": [
+      "categorical_data",
+      "counting",
+      "frequency",
+      "favorite_subject"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -137,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_003",
@@ -159,7 +179,7 @@
       "counting values that satisfy a simple inequality condition",
       "applying a threshold criterion to a raw data list"
     ],
-    "question_text": "The high temperatures (in °F) recorded over 8 days were: 73, 68, 75, 68, 80, 73, 68, 75. How many days had a temperature below 74°F?",
+    "question_text": "The high temperatures (in \u00b0F) recorded over 8 days were: 73, 68, 75, 68, 80, 73, 68, 75. How many days had a temperature below 74\u00b0F?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "3",
@@ -168,12 +188,12 @@
       "D": "5"
     },
     "correct_answer": "D",
-    "explanation": "Identify each value that is strictly less than 74:\n73 — yes (1)\n68 — yes (2)\n75 — no\n68 — yes (3)\n80 — no\n73 — yes (4)\n68 — yes (5)\n75 — no\n\n5 days had a temperature below 74°F.",
+    "explanation": "Identify each value that is strictly less than 74:\n73 \u2014 yes (1)\n68 \u2014 yes (2)\n75 \u2014 no\n68 \u2014 yes (3)\n80 \u2014 no\n73 \u2014 yes (4)\n68 \u2014 yes (5)\n75 \u2014 no\n\n5 days had a temperature below 74\u00b0F.",
     "distractor_logic": {
       "A": "Student counts only the three occurrences of 68, the lowest value in the list, and ignores the 73s.",
       "B": "Student correctly identifies the three 68s and one 73 but misses the second 73 in the list.",
       "C": "Student applies a threshold of 'at most 75' instead of 'below 74,' counting all values except 80: 73, 68, 75, 68, 73, 68, 75 = 7.",
-      "D": "Correct: five values — three 68s and two 73s — are strictly less than 74."
+      "D": "Correct: five values \u2014 three 68s and two 73s \u2014 are strictly less than 74."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -181,11 +201,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The condition is strictly below 74°F — values of 74 or higher do not count. Go through each temperature one at a time and mark only the ones less than 74."
+        "hint_text": "The condition is strictly below 74\u00b0F \u2014 values of 74 or higher do not count. Go through each temperature one at a time and mark only the ones less than 74."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -193,11 +216,16 @@
       }
     ],
     "content_context": "weather",
-    "context_tags": ["temperature", "counting", "inequality", "threshold"],
+    "context_tags": [
+      "temperature",
+      "counting",
+      "inequality",
+      "threshold"
+    ],
     "estimated_time_seconds": 65,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -207,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_001",
@@ -238,12 +268,12 @@
       "D": "2"
     },
     "correct_answer": "B",
-    "explanation": "Identify each entry that is 2 or greater:\n0 — no\n2 — yes (1)\n1 — no\n3 — yes (2)\n2 — yes (3)\n0 — no\n1 — no\n2 — yes (4)\n3 — yes (5)\n1 — no\n\n5 students reported 2 or more siblings.",
+    "explanation": "Identify each entry that is 2 or greater:\n0 \u2014 no\n2 \u2014 yes (1)\n1 \u2014 no\n3 \u2014 yes (2)\n2 \u2014 yes (3)\n0 \u2014 no\n1 \u2014 no\n2 \u2014 yes (4)\n3 \u2014 yes (5)\n1 \u2014 no\n\n5 students reported 2 or more siblings.",
     "distractor_logic": {
       "A": "Student counts only the three entries equal to exactly 2, ignoring the two students who reported 3 siblings.",
-      "B": "Correct: applying the condition ≥ 2 to each entry gives five qualifying students.",
+      "B": "Correct: applying the condition \u2265 2 to each entry gives five qualifying students.",
       "C": "Student miscounts by missing one of the three 2-sibling entries, perhaps skipping the third occurrence in the list.",
-      "D": "Student counts the number of distinct values that satisfy ≥ 2 (the values 2 and 3) rather than counting individual student entries."
+      "D": "Student counts the number of distinct values that satisfy \u2265 2 (the values 2 and 3) rather than counting individual student entries."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -251,11 +281,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The question asks how many students — meaning how many entries in the list — meet the condition, not how many different values qualify. Check each number in the list one at a time."
+        "hint_text": "The question asks how many students \u2014 meaning how many entries in the list \u2014 meet the condition, not how many different values qualify. Check each number in the list one at a time."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -263,11 +296,16 @@
       }
     ],
     "content_context": "survey",
-    "context_tags": ["counting", "inequality", "two_conditions", "frequency"],
+    "context_tags": [
+      "counting",
+      "inequality",
+      "two_conditions",
+      "frequency"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -277,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_002",
@@ -308,10 +348,10 @@
       "D": "3"
     },
     "correct_answer": "A",
-    "explanation": "The question asks for the difference between the Green frequency and the Red frequency:\n5 (Green) − 4 (Red) = 1\n\n1 more student preferred Green than Red.",
+    "explanation": "The question asks for the difference between the Green frequency and the Red frequency:\n5 (Green) \u2212 4 (Red) = 1\n\n1 more student preferred Green than Red.",
     "distractor_logic": {
-      "A": "Correct: 5 − 4 = 1.",
-      "B": "Student subtracts Blue from Green instead of Red from Green: 5 − 3 = 2.",
+      "A": "Correct: 5 \u2212 4 = 1.",
+      "B": "Student subtracts Blue from Green instead of Red from Green: 5 \u2212 3 = 2.",
       "C": "Student adds Green and Red instead of subtracting: 5 + 4 = 9.",
       "D": "Student reads the Blue frequency (3) as the answer, confusing the Blue count with the requested difference."
     },
@@ -321,11 +361,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The question asks 'how many more Green than Red' — that means Green minus Red. Identify those two numbers from the table before doing any arithmetic."
+        "hint_text": "The question asks 'how many more Green than Red' \u2014 that means Green minus Red. Identify those two numbers from the table before doing any arithmetic."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -333,11 +376,16 @@
       }
     ],
     "content_context": "survey",
-    "context_tags": ["frequency_table", "comparison", "subtraction", "categorical_data"],
+    "context_tags": [
+      "frequency_table",
+      "comparison",
+      "subtraction",
+      "categorical_data"
+    ],
     "estimated_time_seconds": 85,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -347,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_003",
@@ -378,10 +428,10 @@
       "D": "1"
     },
     "correct_answer": "C",
-    "explanation": "Sorted list: 55, 55, 55, 66, 72, 72, 80, 88, 91\n\nIdentify values that appear more than once:\n• 55 appears 3 times — qualifies\n• 72 appears 2 times — qualifies\n• All other values (66, 80, 88, 91) appear exactly once — do not qualify\n\n2 distinct values appear more than once.",
+    "explanation": "Sorted list: 55, 55, 55, 66, 72, 72, 80, 88, 91\n\nIdentify values that appear more than once:\n\u2022 55 appears 3 times \u2014 qualifies\n\u2022 72 appears 2 times \u2014 qualifies\n\u2022 All other values (66, 80, 88, 91) appear exactly once \u2014 do not qualify\n\n2 distinct values appear more than once.",
     "distractor_logic": {
       "A": "Student counts the number of times 55 appears (3 occurrences) and uses that as the answer, confusing the frequency of one value with the count of repeated values.",
-      "B": "Student counts the total number of entries that are repeated — three 55s and two 72s — giving 5 individual occurrences rather than 2 distinct values.",
+      "B": "Student counts the total number of entries that are repeated \u2014 three 55s and two 72s \u2014 giving 5 individual occurrences rather than 2 distinct values.",
       "C": "Correct: only 55 and 72 appear more than once, so there are 2 distinct repeated values.",
       "D": "Student identifies only 55 as repeating (the most visibly frequent value) and overlooks 72, which appears twice."
     },
@@ -391,11 +441,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The question asks for distinct values — meaning how many different numbers repeat, not how many total entries are repeated. Sort or group the list first, then check each value's count."
+        "hint_text": "The question asks for distinct values \u2014 meaning how many different numbers repeat, not how many total entries are repeated. Sort or group the list first, then check each value's count."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -403,11 +456,16 @@
       }
     ],
     "content_context": "classroom",
-    "context_tags": ["test_scores", "frequency", "repeated_values", "sorting"],
+    "context_tags": [
+      "test_scores",
+      "frequency",
+      "repeated_values",
+      "sorting"
+    ],
     "estimated_time_seconds": 95,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -417,7 +475,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_001",
@@ -442,18 +502,18 @@
     "question_text": "A student claims to have arranged the following values in ascending order: 14, 18, 22, 19, 27, 31. Which statement correctly identifies the error in the student's list?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "14 and 18 are out of order — 18 should come before 14.",
+      "A": "14 and 18 are out of order \u2014 18 should come before 14.",
       "B": "22 is correctly placed because it is greater than 18.",
-      "C": "27 and 31 are out of order — 31 should come before 27.",
-      "D": "19 and 22 are out of order — 19 should appear before 22."
+      "C": "27 and 31 are out of order \u2014 31 should come before 27.",
+      "D": "19 and 22 are out of order \u2014 19 should appear before 22."
     },
     "correct_answer": "D",
-    "explanation": "In ascending order, each value must be less than or equal to the next.\n\nChecking the list:\n14 → 18: 14 < 18 ✓\n18 → 22: 18 < 22 ✓\n22 → 19: 22 > 19 ✗ — this violates ascending order\n19 → 27: would be fine if 19 were in the correct position\n27 → 31: 27 < 31 ✓\n\nThe error is that 19 appears after 22. In a correctly sorted list, 19 should come before 22.",
+    "explanation": "In ascending order, each value must be less than or equal to the next.\n\nChecking the list:\n14 \u2192 18: 14 < 18 \u2713\n18 \u2192 22: 18 < 22 \u2713\n22 \u2192 19: 22 > 19 \u2717 \u2014 this violates ascending order\n19 \u2192 27: would be fine if 19 were in the correct position\n27 \u2192 31: 27 < 31 \u2713\n\nThe error is that 19 appears after 22. In a correctly sorted list, 19 should come before 22.",
     "distractor_logic": {
       "A": "Student misidentifies the beginning of the list as the error; 14 < 18 is correct ascending order.",
-      "B": "Student incorrectly confirms 22's placement is fine without checking what comes after it — 22 > 19 violates ascending order.",
+      "B": "Student incorrectly confirms 22's placement is fine without checking what comes after it \u2014 22 > 19 violates ascending order.",
       "C": "Student looks at the end of the list; 27 < 31 is correctly ordered.",
-      "D": "Correct: the transition from 22 to 19 breaks ascending order — 19 should precede 22."
+      "D": "Correct: the transition from 22 to 19 breaks ascending order \u2014 19 should precede 22."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -461,7 +521,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -469,15 +532,20 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Compare the first two values and the last two values — if those pairs are in correct order, the error must be somewhere in the middle of the list."
+        "hint_text": "Compare the first two values and the last two values \u2014 if those pairs are in correct order, the error must be somewhere in the middle of the list."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["sorting", "ascending_order", "error_identification", "number_sequence"],
+    "context_tags": [
+      "sorting",
+      "ascending_order",
+      "error_identification",
+      "number_sequence"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -487,7 +555,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_002",
@@ -509,7 +579,7 @@
       "reasoning about how adding values to a dataset affects an existing count",
       "recognizing that count conditions are independent of new values outside the threshold"
     ],
-    "question_text": "A sorted dataset of 12 values contains exactly 5 values that are less than 40. Three new values — all greater than 40 — are added to the dataset. How many values in the updated dataset are less than 40?",
+    "question_text": "A sorted dataset of 12 values contains exactly 5 values that are less than 40. Three new values \u2014 all greater than 40 \u2014 are added to the dataset. How many values in the updated dataset are less than 40?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "8",
@@ -518,7 +588,7 @@
       "D": "9"
     },
     "correct_answer": "B",
-    "explanation": "The question asks how many values are less than 40 after three new values — all greater than 40 — are added.\n\nThe three new values are all greater than 40, so none of them satisfy the condition 'less than 40.' Adding them does not change the count of values below the threshold.\n\nThe count of values less than 40 remains 5.",
+    "explanation": "The question asks how many values are less than 40 after three new values \u2014 all greater than 40 \u2014 are added.\n\nThe three new values are all greater than 40, so none of them satisfy the condition 'less than 40.' Adding them does not change the count of values below the threshold.\n\nThe count of values less than 40 remains 5.",
     "distractor_logic": {
       "A": "Student adds the 3 new values to the existing count of 5, as if the new values also fall below 40: 5 + 3 = 8.",
       "B": "Correct: values above the threshold do not affect the count of values below it. The count stays at 5.",
@@ -531,7 +601,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -543,11 +616,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["threshold_counting", "dataset_update", "reasoning", "conditional_count"],
+    "context_tags": [
+      "threshold_counting",
+      "dataset_update",
+      "reasoning",
+      "conditional_count"
+    ],
     "estimated_time_seconds": 115,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -557,7 +635,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_003",
@@ -588,12 +668,12 @@
       "D": "5"
     },
     "correct_answer": "C",
-    "explanation": "Insert 14 into the sorted list:\n10, 12, 14, 15, 15, 20, 22, 25, 30\n\nNow count values strictly less than 15:\n10 — yes (1)\n12 — yes (2)\n14 — yes (3)\n15 — no (equal to 15, not less than)\n15 — no\n…remaining values are all greater than 15\n\n3 values are less than 15.",
+    "explanation": "Insert 14 into the sorted list:\n10, 12, 14, 15, 15, 20, 22, 25, 30\n\nNow count values strictly less than 15:\n10 \u2014 yes (1)\n12 \u2014 yes (2)\n14 \u2014 yes (3)\n15 \u2014 no (equal to 15, not less than)\n15 \u2014 no\n\u2026remaining values are all greater than 15\n\n3 values are less than 15.",
     "distractor_logic": {
       "A": "Student counts the values less than 15 in the original list (10 and 12) and forgets to include the newly added 14, giving 2.",
-      "B": "Student applies ≤ 14 to the updated list (10, 12, 14) and then mistakenly also includes one of the 15s, arriving at 4.",
-      "C": "Correct: after inserting 14, the values strictly less than 15 are 10, 12, and 14 — a total of 3.",
-      "D": "Student uses ≤ 15 as the threshold instead of < 15, counting 10, 12, 14, 15, 15 = 5 values."
+      "B": "Student applies \u2264 14 to the updated list (10, 12, 14) and then mistakenly also includes one of the 15s, arriving at 4.",
+      "C": "Correct: after inserting 14, the values strictly less than 15 are 10, 12, and 14 \u2014 a total of 3.",
+      "D": "Student uses \u2264 15 as the threshold instead of < 15, counting 10, 12, 14, 15, 15 = 5 values."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -601,11 +681,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The condition is strictly less than 15 — values equal to 15 do not count. First, write out the updated sorted list with 14 inserted. Then scan for values below 15."
+        "hint_text": "The condition is strictly less than 15 \u2014 values equal to 15 do not count. First, write out the updated sorted list with 14 inserted. Then scan for values below 15."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -613,11 +696,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["sorted_list", "insertion", "strict_inequality", "threshold_counting"],
+    "context_tags": [
+      "sorted_list",
+      "insertion",
+      "strict_inequality",
+      "threshold_counting"
+    ],
     "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -627,6 +715,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

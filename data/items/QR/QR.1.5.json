@@ -20,7 +20,7 @@
       "adding a rational number and an irrational number",
       "rounding an irrational expression to a specified decimal place"
     ],
-    "question_text": "A hiker walks a fixed distance of 4 kilometers and then continues for an additional √20 kilometers along a trail. What is the total distance walked, in kilometers, rounded to the nearest tenth?",
+    "question_text": "A hiker walks a fixed distance of 4 kilometers and then continues for an additional \u221a20 kilometers along a trail. What is the total distance walked, in kilometers, rounded to the nearest tenth?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "8.5",
@@ -29,12 +29,12 @@
       "D": "4.9"
     },
     "correct_answer": "A",
-    "explanation": "The total distance is 4 + √20. Since 4² = 16 and 5² = 25, √20 lies between 4 and 5. √20 ≈ 4.47, so 4 + √20 ≈ 8.47, which rounds to 8.5 kilometers.",
+    "explanation": "The total distance is 4 + \u221a20. Since 4\u00b2 = 16 and 5\u00b2 = 25, \u221a20 lies between 4 and 5. \u221a20 \u2248 4.47, so 4 + \u221a20 \u2248 8.47, which rounds to 8.5 kilometers.",
     "distractor_logic": {
-      "A": "Correct: 4 + √20 ≈ 4 + 4.47 ≈ 8.47, which rounds to 8.5.",
-      "B": "Student treats √20 as 20 ÷ 2 = 10 (confuses taking a square root with halving), then computes 4 + 10 = 14.0.",
-      "C": "Student rounds √20 down to the nearest perfect-square root, using √16 = 4 instead of estimating √20 ≈ 4.47, then computes 4 + 4 = 8.0.",
-      "D": "Student incorrectly combines the two terms under one radical by treating 4 + √20 as √(4 + 20) = √24 ≈ 4.9, failing to recognize that a rational number and an irrational number cannot be merged inside a single radical sign."
+      "A": "Correct: 4 + \u221a20 \u2248 4 + 4.47 \u2248 8.47, which rounds to 8.5.",
+      "B": "Student treats \u221a20 as 20 \u00f7 2 = 10 (confuses taking a square root with halving), then computes 4 + 10 = 14.0.",
+      "C": "Student rounds \u221a20 down to the nearest perfect-square root, using \u221a16 = 4 instead of estimating \u221a20 \u2248 4.47, then computes 4 + 4 = 8.0.",
+      "D": "Student incorrectly combines the two terms under one radical by treating 4 + \u221a20 as \u221a(4 + 20) = \u221a24 \u2248 4.9, failing to recognize that a rational number and an irrational number cannot be merged inside a single radical sign."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -50,11 +50,11 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Bracket √20 between √16=4 and √25=5, then refine (4.4²=19.36, 4.5²=20.25)."
+        "hint_text": "Bracket \u221a20 between \u221a16=4 and \u221a25=5, then refine (4.4\u00b2=19.36, 4.5\u00b2=20.25)."
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "A rational and an irrational can't merge into one radical — keep the 4 separate from √20."
+        "hint_text": "A rational and an irrational can't merge into one radical \u2014 keep the 4 separate from \u221a20."
       },
       {
         "strategy": "use_answer_choices",
@@ -81,7 +81,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-13",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_024",
@@ -103,21 +105,21 @@
       "subtracting a negative fraction by converting to addition",
       "finding a common denominator for fractions with unlike denominators"
     ],
-    "question_text": "What is −$\\frac{5}{6}$ − (−$\\frac{1}{3}$)?",
+    "question_text": "What is \u2212$\\frac{5}{6}$ \u2212 (\u2212$\\frac{1}{3}$)?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "−$\\frac{7}{6}$",
+      "A": "\u2212$\\frac{7}{6}$",
       "B": "$\\frac{1}{2}$",
-      "C": "−$\\frac{2}{3}$",
-      "D": "−$\\frac{1}{2}$"
+      "C": "\u2212$\\frac{2}{3}$",
+      "D": "\u2212$\\frac{1}{2}$"
     },
     "correct_answer": "D",
-    "explanation": "Subtracting a negative is the same as adding a positive: −$\\frac{5}{6}$ − (−$\\frac{1}{3}$) = −$\\frac{5}{6}$ + $\\frac{1}{3}$. Convert to a common denominator of 6: $\\frac{1}{3}$ = $\\frac{2}{6}$. Then −$\\frac{5}{6}$ + $\\frac{2}{6}$ = −$\\frac{3}{6}$ = −$\\frac{1}{2}$.",
+    "explanation": "Subtracting a negative is the same as adding a positive: \u2212$\\frac{5}{6}$ \u2212 (\u2212$\\frac{1}{3}$) = \u2212$\\frac{5}{6}$ + $\\frac{1}{3}$. Convert to a common denominator of 6: $\\frac{1}{3}$ = $\\frac{2}{6}$. Then \u2212$\\frac{5}{6}$ + $\\frac{2}{6}$ = \u2212$\\frac{3}{6}$ = \u2212$\\frac{1}{2}$.",
     "distractor_logic": {
-      "A": "Student does not recognize that subtracting a negative becomes addition and instead computes −$\\frac{5}{6}$ − $\\frac{1}{3}$ = −$\\frac{5}{6}$ − $\\frac{2}{6}$ = −$\\frac{7}{6}$.",
-      "B": "Student ignores all negative signs and computes $\\frac{5}{6}$ − $\\frac{1}{3}$ = $\\frac{5}{6}$ − $\\frac{2}{6}$ = $\\frac{3}{6}$ = $\\frac{1}{2}$.",
-      "C": "Student converts $\\frac{1}{3}$ to a denominator of 6 by multiplying the denominator by 2 but forgetting to multiply the numerator by the same factor, producing $\\frac{1}{6}$ instead of $\\frac{2}{6}$. Then −$\\frac{5}{6}$ + $\\frac{1}{6}$ = −$\\frac{4}{6}$ = −$\\frac{2}{3}$.",
-      "D": "Correct: −$\\frac{5}{6}$ + $\\frac{1}{3}$ = −$\\frac{5}{6}$ + $\\frac{2}{6}$ = −$\\frac{3}{6}$ = −$\\frac{1}{2}$."
+      "A": "Student does not recognize that subtracting a negative becomes addition and instead computes \u2212$\\frac{5}{6}$ \u2212 $\\frac{1}{3}$ = \u2212$\\frac{5}{6}$ \u2212 $\\frac{2}{6}$ = \u2212$\\frac{7}{6}$.",
+      "B": "Student ignores all negative signs and computes $\\frac{5}{6}$ \u2212 $\\frac{1}{3}$ = $\\frac{5}{6}$ \u2212 $\\frac{2}{6}$ = $\\frac{3}{6}$ = $\\frac{1}{2}$.",
+      "C": "Student converts $\\frac{1}{3}$ to a denominator of 6 by multiplying the denominator by 2 but forgetting to multiply the numerator by the same factor, producing $\\frac{1}{6}$ instead of $\\frac{2}{6}$. Then \u2212$\\frac{5}{6}$ + $\\frac{1}{6}$ = \u2212$\\frac{4}{6}$ = \u2212$\\frac{2}{3}$.",
+      "D": "Correct: \u2212$\\frac{5}{6}$ + $\\frac{1}{3}$ = \u2212$\\frac{5}{6}$ + $\\frac{2}{6}$ = \u2212$\\frac{3}{6}$ = \u2212$\\frac{1}{2}$."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -132,11 +134,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Subtracting −$\\frac{1}{3}$ is the same as adding +$\\frac{1}{3}$. Then find the LCD of 6."
+        "hint_text": "Subtracting \u2212$\\frac{1}{3}$ is the same as adding +$\\frac{1}{3}$. Then find the LCD of 6."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "The result must be negative since −$\\frac{5}{6}$ dominates — eliminate any positive answer."
+        "hint_text": "The result must be negative since \u2212$\\frac{5}{6}$ dominates \u2014 eliminate any positive answer."
       }
     ],
     "content_context": "other",
@@ -158,7 +160,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_025",
@@ -180,20 +184,20 @@
       "multiplying two negative decimals",
       "applying the sign rule for multiplication of two negative numbers"
     ],
-    "question_text": "What is (−0.4) × (−2.5)?",
+    "question_text": "What is (\u22120.4) \u00d7 (\u22122.5)?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "−1.0",
+      "A": "\u22121.0",
       "B": "1.0",
       "C": "0.1",
       "D": "2.9"
     },
     "correct_answer": "B",
-    "explanation": "The product of two negative numbers is positive. 0.4 × 2.5 = 1.0, and since both factors are negative, the result is +1.0.",
+    "explanation": "The product of two negative numbers is positive. 0.4 \u00d7 2.5 = 1.0, and since both factors are negative, the result is +1.0.",
     "distractor_logic": {
-      "A": "Student computes 0.4 × 2.5 = 1.0 correctly but applies a negative sign, believing that a result involving two negatives is still negative.",
-      "B": "Correct: (−0.4) × (−2.5) = +1.0.",
-      "C": "Student misaligns the decimal point, computing 4 × 25 = 100 but placing the decimal incorrectly to get 0.1 instead of 1.0.",
+      "A": "Student computes 0.4 \u00d7 2.5 = 1.0 correctly but applies a negative sign, believing that a result involving two negatives is still negative.",
+      "B": "Correct: (\u22120.4) \u00d7 (\u22122.5) = +1.0.",
+      "C": "Student misaligns the decimal point, computing 4 \u00d7 25 = 100 but placing the decimal incorrectly to get 0.1 instead of 1.0.",
       "D": "Student correctly determines the result must be positive (two negatives multiply to a positive) but then adds the absolute values instead of multiplying: 0.4 + 2.5 = 2.9."
     },
     "difficulty_level": "Basic",
@@ -209,11 +213,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Two negatives multiply to a positive: (−)(−) = (+)."
+        "hint_text": "Two negatives multiply to a positive: (\u2212)(\u2212) = (+)."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "The answer must be positive — eliminate A and D immediately."
+        "hint_text": "The answer must be positive \u2014 eliminate A and D immediately."
       }
     ],
     "content_context": "other",
@@ -235,7 +239,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-06-06",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_007",
@@ -258,7 +264,7 @@
       "combining like radicals through addition and subtraction",
       "evaluating a multi-step expression involving rational and irrational terms"
     ],
-    "question_text": "A crafter is assembling a project that requires a total length of (√50 − √18 + 5) meters of cord. What is the total length of cord needed, in meters, rounded to the nearest tenth?",
+    "question_text": "A crafter is assembling a project that requires a total length of (\u221a50 \u2212 \u221a18 + 5) meters of cord. What is the total length of cord needed, in meters, rounded to the nearest tenth?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "7.8",
@@ -267,12 +273,12 @@
       "D": "16.3"
     },
     "correct_answer": "A",
-    "explanation": "Simplify each radical by factoring out the largest perfect-square factor. √50 = √(25 · 2) = 5√2, and √18 = √(9 · 2) = 3√2. Since these are like radicals, combine them: 5√2 − 3√2 = 2√2. The expression becomes 2√2 + 5. Using √2 ≈ 1.414, we have 2√2 ≈ 2.828, so 2√2 + 5 ≈ 7.828, which rounds to 7.8 meters.",
+    "explanation": "Simplify each radical by factoring out the largest perfect-square factor. \u221a50 = \u221a(25 \u00b7 2) = 5\u221a2, and \u221a18 = \u221a(9 \u00b7 2) = 3\u221a2. Since these are like radicals, combine them: 5\u221a2 \u2212 3\u221a2 = 2\u221a2. The expression becomes 2\u221a2 + 5. Using \u221a2 \u2248 1.414, we have 2\u221a2 \u2248 2.828, so 2\u221a2 + 5 \u2248 7.828, which rounds to 7.8 meters.",
     "distractor_logic": {
-      "A": "Correct: √50 − √18 + 5 = 2√2 + 5 ≈ 7.83, which rounds to 7.8.",
-      "B": "Student subtracts radicands directly — applying the false rule √a − √b = √(a − b) — computing √50 − √18 as √(50 − 18) = √32 ≈ 5.66, then adds 5 to get approximately 10.7.",
-      "C": "Student simplifies the radicals correctly to 2√2 ≈ 2.83 but forgets to add the +5 term, reporting only the radical portion rounded to 2.8.",
-      "D": "Student misreads the minus sign as a plus and adds the radicals: √50 + √18 = 5√2 + 3√2 = 8√2 ≈ 11.31, then adds 5 to get approximately 16.3."
+      "A": "Correct: \u221a50 \u2212 \u221a18 + 5 = 2\u221a2 + 5 \u2248 7.83, which rounds to 7.8.",
+      "B": "Student subtracts radicands directly \u2014 applying the false rule \u221aa \u2212 \u221ab = \u221a(a \u2212 b) \u2014 computing \u221a50 \u2212 \u221a18 as \u221a(50 \u2212 18) = \u221a32 \u2248 5.66, then adds 5 to get approximately 10.7.",
+      "C": "Student simplifies the radicals correctly to 2\u221a2 \u2248 2.83 but forgets to add the +5 term, reporting only the radical portion rounded to 2.8.",
+      "D": "Student misreads the minus sign as a plus and adds the radicals: \u221a50 + \u221a18 = 5\u221a2 + 3\u221a2 = 8\u221a2 \u2248 11.31, then adds 5 to get approximately 16.3."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -288,15 +294,15 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Simplify each radical to a multiple of √2 before combining — these are like radicals."
+        "hint_text": "Simplify each radical to a multiple of \u221a2 before combining \u2014 these are like radicals."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "Use √2≈1.414 to evaluate 2√2+5."
+        "hint_text": "Use \u221a2\u22481.414 to evaluate 2\u221a2+5."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Watch the trap of subtracting radicands (√50−√18 is not √32) and eliminate that result."
+        "hint_text": "Watch the trap of subtracting radicands (\u221a50\u2212\u221a18 is not \u221a32) and eliminate that result."
       }
     ],
     "content_context": "other",
@@ -319,7 +325,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-13",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_025",
@@ -341,21 +349,21 @@
       "subtracting mixed numbers with unlike denominators",
       "converting mixed numbers to improper fractions before computing"
     ],
-    "question_text": "What is 2 $\\frac{1}{3}$ − 3 $\\frac{3}{4}$?",
+    "question_text": "What is 2 $\\frac{1}{3}$ \u2212 3 $\\frac{3}{4}$?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "1 $\\frac{5}{12}$",
-      "B": "−1 $\\frac{7}{12}$",
-      "C": "−1 $\\frac{5}{12}$",
-      "D": "−$\\frac{5}{12}$"
+      "B": "\u22121 $\\frac{7}{12}$",
+      "C": "\u22121 $\\frac{5}{12}$",
+      "D": "\u2212$\\frac{5}{12}$"
     },
     "correct_answer": "C",
-    "explanation": "Convert each mixed number to an improper fraction. 2 $\\frac{1}{3}$ = $\\frac{7}{3}$ and 3 $\\frac{3}{4}$ = $\\frac{15}{4}$. Find the LCD of 3 and 4, which is 12: $\\frac{7}{3}$ = $\\frac{28}{12}$ and $\\frac{15}{4}$ = $\\frac{45}{12}$. Subtract: $\\frac{28}{12}$ − $\\frac{45}{12}$ = −$\\frac{17}{12}$. Convert to a mixed number: −$\\frac{17}{12}$ = −1 $\\frac{5}{12}$.",
+    "explanation": "Convert each mixed number to an improper fraction. 2 $\\frac{1}{3}$ = $\\frac{7}{3}$ and 3 $\\frac{3}{4}$ = $\\frac{15}{4}$. Find the LCD of 3 and 4, which is 12: $\\frac{7}{3}$ = $\\frac{28}{12}$ and $\\frac{15}{4}$ = $\\frac{45}{12}$. Subtract: $\\frac{28}{12}$ \u2212 $\\frac{45}{12}$ = \u2212$\\frac{17}{12}$. Convert to a mixed number: \u2212$\\frac{17}{12}$ = \u22121 $\\frac{5}{12}$.",
     "distractor_logic": {
       "A": "Student computes the correct magnitude (1 $\\frac{5}{12}$) but does not apply the negative sign, since 2 $\\frac{1}{3}$ < 3 $\\frac{3}{4}$ the result must be negative.",
-      "B": "Student correctly converts to 12ths and gets −$\\frac{17}{12}$, but makes an arithmetic slip converting to a mixed number — subtracting 12 from 17 as 17 − 10 = 7 rather than 17 − 12 = 5 — and writes −1 $\\frac{7}{12}$.",
-      "C": "Correct: $\\frac{28}{12}$ − $\\frac{45}{12}$ = −$\\frac{17}{12}$ = −1 $\\frac{5}{12}$.",
-      "D": "Student subtracts only the fractional parts of each mixed number ($\\frac{1}{3}$ − $\\frac{3}{4}$ = $\\frac{4}{12}$ − $\\frac{9}{12}$ = −$\\frac{5}{12}$) and drops the whole-number portion of the computation entirely, reporting −$\\frac{5}{12}$."
+      "B": "Student correctly converts to 12ths and gets \u2212$\\frac{17}{12}$, but makes an arithmetic slip converting to a mixed number \u2014 subtracting 12 from 17 as 17 \u2212 10 = 7 rather than 17 \u2212 12 = 5 \u2014 and writes \u22121 $\\frac{7}{12}$.",
+      "C": "Correct: $\\frac{28}{12}$ \u2212 $\\frac{45}{12}$ = \u2212$\\frac{17}{12}$ = \u22121 $\\frac{5}{12}$.",
+      "D": "Student subtracts only the fractional parts of each mixed number ($\\frac{1}{3}$ \u2212 $\\frac{3}{4}$ = $\\frac{4}{12}$ \u2212 $\\frac{9}{12}$ = \u2212$\\frac{5}{12}$) and drops the whole-number portion of the computation entirely, reporting \u2212$\\frac{5}{12}$."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -374,7 +382,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "2 $\\frac{1}{3}$ ≈ 2.3 and 3 $\\frac{3}{4}$ = 3.75 — the result is about −1.4, so look for an answer near −1 $\\frac{1}{2}$."
+        "hint_text": "2 $\\frac{1}{3}$ \u2248 2.3 and 3 $\\frac{3}{4}$ = 3.75 \u2014 the result is about \u22121.4, so look for an answer near \u22121 $\\frac{1}{2}$."
       }
     ],
     "content_context": "other",
@@ -396,7 +404,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_026",
@@ -418,21 +428,21 @@
       "dividing a fraction by a negative fraction using the keep-change-flip method",
       "applying order of operations to a multi-step rational expression"
     ],
-    "question_text": "What is $\\frac{3}{4}$ ÷ (−$\\frac{1}{2}$) + 1?",
+    "question_text": "What is $\\frac{3}{4}$ \u00f7 (\u2212$\\frac{1}{2}$) + 1?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "$\\frac{5}{2}$",
-      "B": "−$\\frac{3}{2}$",
-      "C": "−2 $\\frac{1}{2}$",
-      "D": "−$\\frac{1}{2}$"
+      "B": "\u2212$\\frac{3}{2}$",
+      "C": "\u22122 $\\frac{1}{2}$",
+      "D": "\u2212$\\frac{1}{2}$"
     },
     "correct_answer": "D",
-    "explanation": "Apply order of operations: division before addition. $\\frac{3}{4}$ ÷ (−$\\frac{1}{2}$) = $\\frac{3}{4}$ × (−$\\frac{2}{1}$) = −$\\frac{3}{2}$. Then −$\\frac{3}{2}$ + 1 = −$\\frac{3}{2}$ + $\\frac{2}{2}$ = −$\\frac{1}{2}$.",
+    "explanation": "Apply order of operations: division before addition. $\\frac{3}{4}$ \u00f7 (\u2212$\\frac{1}{2}$) = $\\frac{3}{4}$ \u00d7 (\u2212$\\frac{2}{1}$) = \u2212$\\frac{3}{2}$. Then \u2212$\\frac{3}{2}$ + 1 = \u2212$\\frac{3}{2}$ + $\\frac{2}{2}$ = \u2212$\\frac{1}{2}$.",
     "distractor_logic": {
-      "A": "Student ignores the negative sign on $\\frac{1}{2}$, computing $\\frac{3}{4}$ ÷ ($\\frac{1}{2}$) + 1 = $\\frac{3}{2}$ + 1 = $\\frac{5}{2}$.",
-      "B": "Student correctly computes $\\frac{3}{4}$ ÷ (−$\\frac{1}{2}$) = −$\\frac{3}{2}$ but stops there, forgetting to add 1.",
-      "C": "Student adds −1 instead of +1 at the end (confused by the negative context), getting −$\\frac{3}{2}$ − 1 = −$\\frac{5}{2}$ = −2 $\\frac{1}{2}$.",
-      "D": "Correct: $\\frac{3}{4}$ ÷ (−$\\frac{1}{2}$) = −$\\frac{3}{2}$, and −$\\frac{3}{2}$ + 1 = −$\\frac{1}{2}$."
+      "A": "Student ignores the negative sign on $\\frac{1}{2}$, computing $\\frac{3}{4}$ \u00f7 ($\\frac{1}{2}$) + 1 = $\\frac{3}{2}$ + 1 = $\\frac{5}{2}$.",
+      "B": "Student correctly computes $\\frac{3}{4}$ \u00f7 (\u2212$\\frac{1}{2}$) = \u2212$\\frac{3}{2}$ but stops there, forgetting to add 1.",
+      "C": "Student adds \u22121 instead of +1 at the end (confused by the negative context), getting \u2212$\\frac{3}{2}$ \u2212 1 = \u2212$\\frac{5}{2}$ = \u22122 $\\frac{1}{2}$.",
+      "D": "Correct: $\\frac{3}{4}$ \u00f7 (\u2212$\\frac{1}{2}$) = \u2212$\\frac{3}{2}$, and \u2212$\\frac{3}{2}$ + 1 = \u2212$\\frac{1}{2}$."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -447,11 +457,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Division comes before addition: compute $\\frac{3}{4}$ ÷ (−$\\frac{1}{2}$) first."
+        "hint_text": "Division comes before addition: compute $\\frac{3}{4}$ \u00f7 (\u2212$\\frac{1}{2}$) first."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "The result of $\\frac{3}{4}$ ÷ (−$\\frac{1}{2}$) is negative — any answer far from zero is likely wrong."
+        "hint_text": "The result of $\\frac{3}{4}$ \u00f7 (\u2212$\\frac{1}{2}$) is negative \u2014 any answer far from zero is likely wrong."
       }
     ],
     "content_context": "other",
@@ -473,7 +483,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_007",
@@ -496,7 +508,7 @@
       "applying the difference-of-squares identity with irrational terms",
       "evaluating a multi-step expression involving irrational numbers and estimating the result"
     ],
-    "question_text": "Simplify the expression 6 / (√5 − √2) and express its approximate value as a decimal rounded to the nearest tenth.",
+    "question_text": "Simplify the expression 6 / (\u221a5 \u2212 \u221a2) and express its approximate value as a decimal rounded to the nearest tenth.",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "7.3",
@@ -505,12 +517,12 @@
       "D": "2.0"
     },
     "correct_answer": "A",
-    "explanation": "Rationalize the denominator by multiplying numerator and denominator by the conjugate (√5 + √2): 6 / (√5 − √2) · $\\frac{√5 + √2}{√5 + √2}$ = 6(√5 + √2) / [(√5)² − (√2)²] = 6$\\frac{√5 + √2}{5 − 2}$ = 6(√5 + √2) / 3 = 2(√5 + √2) = 2√5 + 2√2. Estimating: bracket each radical before computing. √5 is between 2.2 and 2.3 (since 2.2² = 4.84 and 2.3² = 5.29), so use √5 ≈ 2.2. √2 is between 1.4 and 1.5 (since 1.4² = 1.96), so use √2 ≈ 1.4. Then 2√5 + 2√2 ≈ 2(2.2) + 2(1.4) = 4.4 + 2.8 = 7.2. This is close enough to confirm 7.3 over the other choices, which fall at 5.3, 6.0, and 2.0.",
+    "explanation": "Rationalize the denominator by multiplying numerator and denominator by the conjugate (\u221a5 + \u221a2): 6 / (\u221a5 \u2212 \u221a2) \u00b7 $\\frac{\u221a5 + \u221a2}{\u221a5 + \u221a2}$ = 6(\u221a5 + \u221a2) / [(\u221a5)\u00b2 \u2212 (\u221a2)\u00b2] = 6$\\frac{\u221a5 + \u221a2}{5 \u2212 2}$ = 6(\u221a5 + \u221a2) / 3 = 2(\u221a5 + \u221a2) = 2\u221a5 + 2\u221a2. Estimating: bracket each radical before computing. \u221a5 is between 2.2 and 2.3 (since 2.2\u00b2 = 4.84 and 2.3\u00b2 = 5.29), so use \u221a5 \u2248 2.2. \u221a2 is between 1.4 and 1.5 (since 1.4\u00b2 = 1.96), so use \u221a2 \u2248 1.4. Then 2\u221a5 + 2\u221a2 \u2248 2(2.2) + 2(1.4) = 4.4 + 2.8 = 7.2. This is close enough to confirm 7.3 over the other choices, which fall at 5.3, 6.0, and 2.0.",
     "distractor_logic": {
-      "A": "Correct: rationalizing gives 2(√5 + √2) ≈ 2(2.236 + 1.414) ≈ 7.30, which rounds to 7.3.",
-      "B": "Student rationalizes correctly to 2(√5 + √2) but then applies the false rule √a + √b = √(a + b), getting 2·√7 ≈ 2(2.646) ≈ 5.3.",
-      "C": "Student skips rationalization and estimates using whole-number approximations: √5 ≈ 2 and √2 ≈ 1, giving denominator 2 − 1 = 1, and computes 6 ÷ 1 = 6.0.",
-      "D": "Student correctly multiplies the denominator by its conjugate, obtaining (√5 − √2)(√5 + √2) = 3, but does not apply the same conjugate to the numerator — leaving the numerator as 6 rather than 6(√5 + √2) — and computes 6 ÷ 3 = 2.0."
+      "A": "Correct: rationalizing gives 2(\u221a5 + \u221a2) \u2248 2(2.236 + 1.414) \u2248 7.30, which rounds to 7.3.",
+      "B": "Student rationalizes correctly to 2(\u221a5 + \u221a2) but then applies the false rule \u221aa + \u221ab = \u221a(a + b), getting 2\u00b7\u221a7 \u2248 2(2.646) \u2248 5.3.",
+      "C": "Student skips rationalization and estimates using whole-number approximations: \u221a5 \u2248 2 and \u221a2 \u2248 1, giving denominator 2 \u2212 1 = 1, and computes 6 \u00f7 1 = 6.0.",
+      "D": "Student correctly multiplies the denominator by its conjugate, obtaining (\u221a5 \u2212 \u221a2)(\u221a5 + \u221a2) = 3, but does not apply the same conjugate to the numerator \u2014 leaving the numerator as 6 rather than 6(\u221a5 + \u221a2) \u2014 and computes 6 \u00f7 3 = 2.0."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -526,15 +538,15 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Multiply numerator and denominator by the conjugate (√5+√2) to clear the radical denominator."
+        "hint_text": "Multiply numerator and denominator by the conjugate (\u221a5+\u221a2) to clear the radical denominator."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "Use √5≈2.236 and √2≈1.414 to evaluate 2(√5+√2)."
+        "hint_text": "Use \u221a5\u22482.236 and \u221a2\u22481.414 to evaluate 2(\u221a5+\u221a2)."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Don't collapse √5+√2 into √7 — eliminate the 5.3 distractor."
+        "hint_text": "Don't collapse \u221a5+\u221a2 into \u221a7 \u2014 eliminate the 5.3 distractor."
       }
     ],
     "content_context": "generic",
@@ -557,7 +569,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-13",
     "last_modified": "2026-06-06",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_025",
@@ -581,21 +595,21 @@
       "rationalizing a denominator containing a sum of a radical and a rational number",
       "applying the difference-of-squares identity in the rationalization step"
     ],
-    "question_text": "Simplify the expression $\\frac{2√12 + 3√3}{√3 + 1}$, rationalizing the denominator.",
+    "question_text": "Simplify the expression $\\frac{2\u221a12 + 3\u221a3}{\u221a3 + 1}$, rationalizing the denominator.",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "(21 − 7√3) / 2",
-      "B": "7√$\\frac{3}{2}$",
-      "C": "7(√3 − 1)",
-      "D": "(21 + 7√3) / 2"
+      "A": "(21 \u2212 7\u221a3) / 2",
+      "B": "7\u221a$\\frac{3}{2}$",
+      "C": "7(\u221a3 \u2212 1)",
+      "D": "(21 + 7\u221a3) / 2"
     },
     "correct_answer": "A",
-    "explanation": "First simplify the numerator. √12 = √(4 × 3) = 2√3, so 2√12 = 4√3. The numerator becomes 4√3 + 3√3 = 7√3. The expression is now 7√3 / (√3 + 1). Rationalize by multiplying numerator and denominator by the conjugate (√3 − 1): 7√3(√3 − 1) / [(√3 + 1)(√3 − 1)]. Denominator: (√3)² − 1² = 3 − 1 = 2. Numerator: 7√3 · √3 − 7√3 · 1 = 7(3) − 7√3 = 21 − 7√3. Result: (21 − 7√3) / 2.",
+    "explanation": "First simplify the numerator. \u221a12 = \u221a(4 \u00d7 3) = 2\u221a3, so 2\u221a12 = 4\u221a3. The numerator becomes 4\u221a3 + 3\u221a3 = 7\u221a3. The expression is now 7\u221a3 / (\u221a3 + 1). Rationalize by multiplying numerator and denominator by the conjugate (\u221a3 \u2212 1): 7\u221a3(\u221a3 \u2212 1) / [(\u221a3 + 1)(\u221a3 \u2212 1)]. Denominator: (\u221a3)\u00b2 \u2212 1\u00b2 = 3 \u2212 1 = 2. Numerator: 7\u221a3 \u00b7 \u221a3 \u2212 7\u221a3 \u00b7 1 = 7(3) \u2212 7\u221a3 = 21 \u2212 7\u221a3. Result: (21 \u2212 7\u221a3) / 2.",
     "distractor_logic": {
-      "A": "Correct: simplify to 7√3, rationalize using (√3 − 1), expand to get (21 − 7√3) / 2.",
-      "B": "Student correctly simplifies the numerator to 7√3 and rationalizes the denominator to 2, but expands only the √3 · √3 = 3 part of the numerator and drops the −7√3 term, writing $\\frac{21}{2}$ ... then writes 7√$\\frac{3}{2}$ by confusing the pre-rationalization form with the final result.",
-      "C": "Student correctly simplifies the numerator to 7√3 but then attempts to cancel (√3 + 1) from numerator and denominator as if 7√3 = 7(√3 + 1) − 7, treating the denominator as a factor of the numerator rather than rationalizing it properly, and writes 7(√3 − 1).",
-      "D": "Student multiplies by $\\frac{√3 + 1}{√3 + 1}$ instead of the conjugate $\\frac{√3 − 1}{√3 − 1}$, computing denominator (√3 + 1)² instead of (√3)² − 1², and the sign on the √3 term in the numerator flips to positive: (21 + 7√3) / 2."
+      "A": "Correct: simplify to 7\u221a3, rationalize using (\u221a3 \u2212 1), expand to get (21 \u2212 7\u221a3) / 2.",
+      "B": "Student correctly simplifies the numerator to 7\u221a3 and rationalizes the denominator to 2, but expands only the \u221a3 \u00b7 \u221a3 = 3 part of the numerator and drops the \u22127\u221a3 term, writing $\\frac{21}{2}$ ... then writes 7\u221a$\\frac{3}{2}$ by confusing the pre-rationalization form with the final result.",
+      "C": "Student correctly simplifies the numerator to 7\u221a3 but then attempts to cancel (\u221a3 + 1) from numerator and denominator as if 7\u221a3 = 7(\u221a3 + 1) \u2212 7, treating the denominator as a factor of the numerator rather than rationalizing it properly, and writes 7(\u221a3 \u2212 1).",
+      "D": "Student multiplies by $\\frac{\u221a3 + 1}{\u221a3 + 1}$ instead of the conjugate $\\frac{\u221a3 \u2212 1}{\u221a3 \u2212 1}$, computing denominator (\u221a3 + 1)\u00b2 instead of (\u221a3)\u00b2 \u2212 1\u00b2, and the sign on the \u221a3 term in the numerator flips to positive: (21 + 7\u221a3) / 2."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -611,15 +625,15 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Simplify the numerator first: 2√12 = 4√3, so the numerator combines to 7√3 before you rationalize."
+        "hint_text": "Simplify the numerator first: 2\u221a12 = 4\u221a3, so the numerator combines to 7\u221a3 before you rationalize."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "Use √3 ≈ 1.7: 7(1.7) = 11.9, divided by (1.7 + 1) = 2.7 gives roughly 4.4. Check: (21 − 7(1.7))/2 = (21 − 11.9)/2 = 9.$\\frac{1}{2}$ ≈ 4.55. Consistent — use this to confirm your answer choice."
+        "hint_text": "Use \u221a3 \u2248 1.7: 7(1.7) = 11.9, divided by (1.7 + 1) = 2.7 gives roughly 4.4. Check: (21 \u2212 7(1.7))/2 = (21 \u2212 11.9)/2 = 9.$\\frac{1}{2}$ \u2248 4.55. Consistent \u2014 use this to confirm your answer choice."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "The rationalized result should not still have (√3 + 1) in it — eliminate any answer that looks like it skipped rationalization."
+        "hint_text": "The rationalized result should not still have (\u221a3 + 1) in it \u2014 eliminate any answer that looks like it skipped rationalization."
       }
     ],
     "content_context": "generic",
@@ -643,7 +657,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-06-06",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_026",
@@ -665,21 +681,21 @@
       "simplifying square roots before subtracting like radical terms",
       "recognizing and avoiding the radicand-subtraction error"
     ],
-    "question_text": "Simplify: √75 − 2√12.",
+    "question_text": "Simplify: \u221a75 \u2212 2\u221a12.",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "√63",
-      "B": "√3",
-      "C": "5√3",
-      "D": "−√3"
+      "A": "\u221a63",
+      "B": "\u221a3",
+      "C": "5\u221a3",
+      "D": "\u2212\u221a3"
     },
     "correct_answer": "B",
-    "explanation": "Simplify each radical. √75 = √(25 × 3) = 5√3. √12 = √(4 × 3) = 2√3, so 2√12 = 4√3. Subtract like radicals: 5√3 − 4√3 = √3.",
+    "explanation": "Simplify each radical. \u221a75 = \u221a(25 \u00d7 3) = 5\u221a3. \u221a12 = \u221a(4 \u00d7 3) = 2\u221a3, so 2\u221a12 = 4\u221a3. Subtract like radicals: 5\u221a3 \u2212 4\u221a3 = \u221a3.",
     "distractor_logic": {
-      "A": "Student ignores the coefficient 2 on √12 (treating 2√12 as √12) and also applies the false rule √a − √b = √(a − b), computing √75 − √12 = √(75 − 12) = √63.",
-      "B": "Correct: √75 = 5√3 and 2√12 = 4√3, so 5√3 − 4√3 = √3.",
-      "C": "Student correctly simplifies √75 = 5√3 but treats 2√12 as having coefficient 0 (loses track of the term during multi-step simplification) and reports 5√3.",
-      "D": "Student reverses the order of subtraction, computing 2√12 − √75 = 4√3 − 5√3 = −√3."
+      "A": "Student ignores the coefficient 2 on \u221a12 (treating 2\u221a12 as \u221a12) and also applies the false rule \u221aa \u2212 \u221ab = \u221a(a \u2212 b), computing \u221a75 \u2212 \u221a12 = \u221a(75 \u2212 12) = \u221a63.",
+      "B": "Correct: \u221a75 = 5\u221a3 and 2\u221a12 = 4\u221a3, so 5\u221a3 \u2212 4\u221a3 = \u221a3.",
+      "C": "Student correctly simplifies \u221a75 = 5\u221a3 but treats 2\u221a12 as having coefficient 0 (loses track of the term during multi-step simplification) and reports 5\u221a3.",
+      "D": "Student reverses the order of subtraction, computing 2\u221a12 \u2212 \u221a75 = 4\u221a3 \u2212 5\u221a3 = \u2212\u221a3."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -694,11 +710,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Simplify √75 = 5√3 and 2√12 = 4√3 before subtracting."
+        "hint_text": "Simplify \u221a75 = 5\u221a3 and 2\u221a12 = 4\u221a3 before subtracting."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Subtracting radicands directly (√63) ignores both the coefficient and the need to simplify — eliminate it."
+        "hint_text": "Subtracting radicands directly (\u221a63) ignores both the coefficient and the need to simplify \u2014 eliminate it."
       }
     ],
     "content_context": "generic",
@@ -720,7 +736,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_027",
@@ -744,21 +762,21 @@
       "rationalizing a denominator by multiplying by the conjugate",
       "simplifying the resulting rational expression"
     ],
-    "question_text": "Simplify the expression 10 / (√5 + √2), rationalizing the denominator.",
+    "question_text": "Simplify the expression 10 / (\u221a5 + \u221a2), rationalizing the denominator.",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "$\\frac{10}{3}$",
-      "B": "(10√5 − 10√2) / 3",
-      "C": "(10√5 + 10√2) / 3",
-      "D": "10√$\\frac{3}{3}$"
+      "B": "(10\u221a5 \u2212 10\u221a2) / 3",
+      "C": "(10\u221a5 + 10\u221a2) / 3",
+      "D": "10\u221a$\\frac{3}{3}$"
     },
     "correct_answer": "B",
-    "explanation": "Rationalize the denominator by multiplying numerator and denominator by the conjugate (√5 − √2): 10 / (√5 + √2) · $\\frac{√5 − √2}{√5 − √2}$. Denominator: (√5)² − (√2)² = 5 − 2 = 3. Numerator: 10(√5 − √2) = 10√5 − 10√2. Result: (10√5 − 10√2) / 3. This cannot be simplified further since 10√5 and 10√2 are unlike radicals.",
+    "explanation": "Rationalize the denominator by multiplying numerator and denominator by the conjugate (\u221a5 \u2212 \u221a2): 10 / (\u221a5 + \u221a2) \u00b7 $\\frac{\u221a5 \u2212 \u221a2}{\u221a5 \u2212 \u221a2}$. Denominator: (\u221a5)\u00b2 \u2212 (\u221a2)\u00b2 = 5 \u2212 2 = 3. Numerator: 10(\u221a5 \u2212 \u221a2) = 10\u221a5 \u2212 10\u221a2. Result: (10\u221a5 \u2212 10\u221a2) / 3. This cannot be simplified further since 10\u221a5 and 10\u221a2 are unlike radicals.",
     "distractor_logic": {
-      "A": "Student correctly computes the denominator as (√5)² − (√2)² = 3 but does not distribute the conjugate through the numerator — treating the numerator as remaining 10 — and writes $\\frac{10}{3}$.",
-      "B": "Correct: multiplying by the conjugate gives denominator 3 and numerator 10√5 − 10√2, yielding (10√5 − 10√2) / 3.",
-      "C": "Student multiplies by $\\frac{√5 + √2}{√5 + √2}$ — the original denominator rather than its conjugate — producing a positive sign on both radical terms in the numerator: $\\frac{10√5 + 10√2}{√5 + √2}$² ... then incorrectly computes the denominator as 3 anyway, writing (10√5 + 10√2) / 3.",
-      "D": "Student correctly distributes to get 10(√5 − √2) in the numerator but then applies the false rule √a − √b = √(a − b) to the radical expression, computing √5 − √2 as √(5 − 2) = √3, and writes 10√$\\frac{3}{3}$."
+      "A": "Student correctly computes the denominator as (\u221a5)\u00b2 \u2212 (\u221a2)\u00b2 = 3 but does not distribute the conjugate through the numerator \u2014 treating the numerator as remaining 10 \u2014 and writes $\\frac{10}{3}$.",
+      "B": "Correct: multiplying by the conjugate gives denominator 3 and numerator 10\u221a5 \u2212 10\u221a2, yielding (10\u221a5 \u2212 10\u221a2) / 3.",
+      "C": "Student multiplies by $\\frac{\u221a5 + \u221a2}{\u221a5 + \u221a2}$ \u2014 the original denominator rather than its conjugate \u2014 producing a positive sign on both radical terms in the numerator: $\\frac{10\u221a5 + 10\u221a2}{\u221a5 + \u221a2}$\u00b2 ... then incorrectly computes the denominator as 3 anyway, writing (10\u221a5 + 10\u221a2) / 3.",
+      "D": "Student correctly distributes to get 10(\u221a5 \u2212 \u221a2) in the numerator but then applies the false rule \u221aa \u2212 \u221ab = \u221a(a \u2212 b) to the radical expression, computing \u221a5 \u2212 \u221a2 as \u221a(5 \u2212 2) = \u221a3, and writes 10\u221a$\\frac{3}{3}$."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -774,15 +792,15 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The conjugate of (√5 + √2) is (√5 − √2). Multiply both top and bottom by it — the denominator becomes the difference of squares: 5 − 2 = 3."
+        "hint_text": "The conjugate of (\u221a5 + \u221a2) is (\u221a5 \u2212 \u221a2). Multiply both top and bottom by it \u2014 the denominator becomes the difference of squares: 5 \u2212 2 = 3."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "Use √5 ≈ 2.2 and √2 ≈ 1.4: 10 / (2.2 + 1.4) = $\\frac{10}{3}$.6 ≈ 2.8. Check answer B: (10(2.2) − 10(1.4)) / 3 = (22 − 14) / 3 = $\\frac{8}{3}$ ≈ 2.7. Consistent."
+        "hint_text": "Use \u221a5 \u2248 2.2 and \u221a2 \u2248 1.4: 10 / (2.2 + 1.4) = $\\frac{10}{3}$.6 \u2248 2.8. Check answer B: (10(2.2) \u2212 10(1.4)) / 3 = (22 \u2212 14) / 3 = $\\frac{8}{3}$ \u2248 2.7. Consistent."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "The conjugate must be applied to both numerator and denominator — any answer that looks like only the denominator changed is wrong. Also, √5 − √2 ≠ √3."
+        "hint_text": "The conjugate must be applied to both numerator and denominator \u2014 any answer that looks like only the denominator changed is wrong. Also, \u221a5 \u2212 \u221a2 \u2260 \u221a3."
       }
     ],
     "content_context": "generic",
@@ -806,6 +824,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-06-06",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

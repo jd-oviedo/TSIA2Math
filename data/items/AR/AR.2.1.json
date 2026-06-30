@@ -24,15 +24,15 @@
     "answer_choices": {
       "A": "x = 23",
       "B": "x = 5",
-      "C": "x = −5",
+      "C": "x = \u22125",
       "D": "x = 14"
     },
     "correct_answer": "B",
-    "explanation": "To isolate x, subtract 9 from both sides:\nx + 9 − 9 = 14 − 9\nx = 5\n\nCheck: 5 + 9 = 14 ✓",
+    "explanation": "To isolate x, subtract 9 from both sides:\nx + 9 \u2212 9 = 14 \u2212 9\nx = 5\n\nCheck: 5 + 9 = 14 \u2713",
     "distractor_logic": {
       "A": "Student adds 9 to the right side instead of subtracting, giving 14 + 9 = 23.",
       "B": "Correct: subtracting 9 from both sides gives x = 5.",
-      "C": "Student subtracts 14 from 9 rather than subtracting 9 from 14, giving 9 − 14 = −5.",
+      "C": "Student subtracts 14 from 9 rather than subtracting 9 from 14, giving 9 \u2212 14 = \u22125.",
       "D": "Student ignores the +9 and reads the right-hand side (14) directly as the answer."
     },
     "difficulty_level": "Basic",
@@ -75,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_015",
@@ -106,12 +108,12 @@
       "D": "x = 7"
     },
     "correct_answer": "D",
-    "explanation": "To isolate x, divide both sides by 3:\n3x ÷ 3 = 21 ÷ 3\nx = 7\n\nCheck: 3(7) = 21 ✓",
+    "explanation": "To isolate x, divide both sides by 3:\n3x \u00f7 3 = 21 \u00f7 3\nx = 7\n\nCheck: 3(7) = 21 \u2713",
     "distractor_logic": {
-      "A": "Student multiplies instead of divides: 21 × 3 = 63.",
-      "B": "Student subtracts the coefficient instead of dividing: 21 − 3 = 18.",
+      "A": "Student multiplies instead of divides: 21 \u00d7 3 = 63.",
+      "B": "Student subtracts the coefficient instead of dividing: 21 \u2212 3 = 18.",
       "C": "Student adds the coefficient instead of dividing: 21 + 3 = 24.",
-      "D": "Correct: 21 ÷ 3 = 7."
+      "D": "Correct: 21 \u00f7 3 = 7."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -153,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_016",
@@ -184,12 +188,12 @@
       "D": "x = 6"
     },
     "correct_answer": "B",
-    "explanation": "Subtract 5 from both sides, then divide by 2:\n2x + 5 − 5 = 13 − 5\n2x = 8\nx = 4\n\nCheck: 2(4) + 5 = 8 + 5 = 13 ✓",
+    "explanation": "Subtract 5 from both sides, then divide by 2:\n2x + 5 \u2212 5 = 13 \u2212 5\n2x = 8\nx = 4\n\nCheck: 2(4) + 5 = 8 + 5 = 13 \u2713",
     "distractor_logic": {
-      "A": "Student adds 5 to the right side instead of subtracting: 2x = 13 + 5 = 18 → x = 9.",
-      "B": "Correct: 2x + 5 = 13 → 2x = 8 → x = 4.",
-      "C": "Student divides 13 by 2 before subtracting 5, giving 13 ÷ 2 = 6.5 as the answer.",
-      "D": "Student correctly finds 2x = 8 but then subtracts the coefficient (8 − 2 = 6) instead of dividing by it."
+      "A": "Student adds 5 to the right side instead of subtracting: 2x = 13 + 5 = 18 \u2192 x = 9.",
+      "B": "Correct: 2x + 5 = 13 \u2192 2x = 8 \u2192 x = 4.",
+      "C": "Student divides 13 by 2 before subtracting 5, giving 13 \u00f7 2 = 6.5 as the answer.",
+      "D": "Student correctly finds 2x = 8 but then subtracts the coefficient (8 \u2212 2 = 6) instead of dividing by it."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -231,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_017",
@@ -253,7 +259,7 @@
       "solving a two-step equation with a subtracted constant",
       "correctly adding the constant to both sides before dividing by the coefficient"
     ],
-    "question_text": "Solve for x:  4x − 6 = 10",
+    "question_text": "Solve for x:  4x \u2212 6 = 10",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "x = 1",
@@ -262,11 +268,11 @@
       "D": "x = 8"
     },
     "correct_answer": "C",
-    "explanation": "Add 6 to both sides, then divide by 4:\n4x − 6 + 6 = 10 + 6\n4x = 16\nx = 4\n\nCheck: 4(4) − 6 = 16 − 6 = 10 ✓",
+    "explanation": "Add 6 to both sides, then divide by 4:\n4x \u2212 6 + 6 = 10 + 6\n4x = 16\nx = 4\n\nCheck: 4(4) \u2212 6 = 16 \u2212 6 = 10 \u2713",
     "distractor_logic": {
-      "A": "Student subtracts 6 from the right side instead of adding: 4x = 10 − 6 = 4 → x = 1.",
-      "B": "Student skips the constant and divides 10 by 4 directly: 10 ÷ 4 = 2.5.",
-      "C": "Correct: 4x − 6 = 10 → 4x = 16 → x = 4.",
+      "A": "Student subtracts 6 from the right side instead of adding: 4x = 10 \u2212 6 = 4 \u2192 x = 1.",
+      "B": "Student skips the constant and divides 10 by 4 directly: 10 \u00f7 4 = 2.5.",
+      "C": "Correct: 4x \u2212 6 = 10 \u2192 4x = 16 \u2192 x = 4.",
       "D": "Student correctly finds 4x = 16 but divides by 2 instead of 4, misreading the coefficient."
     },
     "difficulty_level": "Basic",
@@ -282,11 +288,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The constant (−6) is subtracted from 4x. Undo it by adding 6 to both sides, then divide by 4."
+        "hint_text": "The constant (\u22126) is subtracted from 4x. Undo it by adding 6 to both sides, then divide by 4."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Substitute your answer into 4x − 6 and verify it equals 10."
+        "hint_text": "Substitute your answer into 4x \u2212 6 and verify it equals 10."
       }
     ],
     "content_context": "generic",
@@ -309,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_018",
@@ -337,15 +345,15 @@
       "A": "x = 3",
       "B": "x = 4",
       "C": "x = 3.5",
-      "D": "x = −3"
+      "D": "x = \u22123"
     },
     "correct_answer": "A",
-    "explanation": "Subtract 1 from both sides, then divide by 2:\n7 − 1 = 2x + 1 − 1\n6 = 2x\nx = 3\n\nCheck: 2(3) + 1 = 6 + 1 = 7 ✓",
+    "explanation": "Subtract 1 from both sides, then divide by 2:\n7 \u2212 1 = 2x + 1 \u2212 1\n6 = 2x\nx = 3\n\nCheck: 2(3) + 1 = 6 + 1 = 7 \u2713",
     "distractor_logic": {
-      "A": "Correct: 7 = 2x + 1 → 6 = 2x → x = 3.",
-      "B": "Student adds 1 to both sides instead of subtracting: 2x = 7 + 1 = 8 → x = 4.",
-      "C": "Student divides 7 by 2 without first subtracting 1: 7 ÷ 2 = 3.5.",
-      "D": "Student subtracts 7 from the constant term instead of subtracting 1 from 7: 2x = 1 − 7 = −6 → x = −3."
+      "A": "Correct: 7 = 2x + 1 \u2192 6 = 2x \u2192 x = 3.",
+      "B": "Student adds 1 to both sides instead of subtracting: 2x = 7 + 1 = 8 \u2192 x = 4.",
+      "C": "Student divides 7 by 2 without first subtracting 1: 7 \u00f7 2 = 3.5.",
+      "D": "Student subtracts 7 from the constant term instead of subtracting 1 from 7: 2x = 1 \u2212 7 = \u22126 \u2192 x = \u22123."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -360,7 +368,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The variable is on the right side — that's fine. Subtract 1 from both sides first, then divide by 2."
+        "hint_text": "The variable is on the right side \u2014 that's fine. Subtract 1 from both sides first, then divide by 2."
       },
       {
         "strategy": "plug_in_values",
@@ -387,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_012",
@@ -409,20 +419,20 @@
       "solving a linear equation with variables on both sides",
       "collecting like terms across the equals sign before isolating the variable"
     ],
-    "question_text": "Solve for x:  5x − 4 = 3x + 10",
+    "question_text": "Solve for x:  5x \u2212 4 = 3x + 10",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "x = 3",
       "B": "x = 7",
-      "C": "x = −7",
+      "C": "x = \u22127",
       "D": "x = 14"
     },
     "correct_answer": "B",
-    "explanation": "Subtract 3x from both sides to collect the variable terms, then add 4 to both sides:\n5x − 3x = 10 + 4\n2x = 14\nx = 7\n\nCheck: 5(7) − 4 = 31 and 3(7) + 10 = 31 ✓",
+    "explanation": "Subtract 3x from both sides to collect the variable terms, then add 4 to both sides:\n5x \u2212 3x = 10 + 4\n2x = 14\nx = 7\n\nCheck: 5(7) \u2212 4 = 31 and 3(7) + 10 = 31 \u2713",
     "distractor_logic": {
-      "A": "Student moves the variable terms correctly but subtracts the constants instead of adding: 2x = 10 − 4 = 6 → x = 3.",
-      "B": "Correct: 2x = 14 → x = 7.",
-      "C": "Student correctly arrives at 2x = 14 but applies a sign error when dividing, reporting x = −7.",
+      "A": "Student moves the variable terms correctly but subtracts the constants instead of adding: 2x = 10 \u2212 4 = 6 \u2192 x = 3.",
+      "B": "Correct: 2x = 14 \u2192 x = 7.",
+      "C": "Student correctly arrives at 2x = 14 but applies a sign error when dividing, reporting x = \u22127.",
       "D": "Student correctly finds 2x = 14 but forgets to divide by 2, reporting x = 14."
     },
     "difficulty_level": "Proficient",
@@ -465,7 +475,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_013",
@@ -496,12 +508,12 @@
       "D": "x = 3"
     },
     "correct_answer": "C",
-    "explanation": "Distribute the 4, then solve:\n4x + 12 = 28\n4x = 16\nx = 4\n\nCheck: 4(4 + 3) = 4(7) = 28 ✓",
+    "explanation": "Distribute the 4, then solve:\n4x + 12 = 28\n4x = 16\nx = 4\n\nCheck: 4(4 + 3) = 4(7) = 28 \u2713",
     "distractor_logic": {
-      "A": "Student divides 28 by 4 first (28 ÷ 4 = 7) and stops there, not subtracting 3 to account for the +3 inside the parentheses.",
-      "B": "Student correctly distributes (4x + 12 = 28) but subtracts the coefficient from the remaining constant: 4x = 28 − 4 = 24 → x = 6.",
-      "C": "Correct: 4(x + 3) = 28 → 4x + 12 = 28 → 4x = 16 → x = 4.",
-      "D": "Student correctly distributes and finds 4x = 16 but then divides 16 by the wrong number — using 4 from the term 4x + 12 but computing 12 ÷ 4 = 3 as the answer."
+      "A": "Student divides 28 by 4 first (28 \u00f7 4 = 7) and stops there, not subtracting 3 to account for the +3 inside the parentheses.",
+      "B": "Student correctly distributes (4x + 12 = 28) but subtracts the coefficient from the remaining constant: 4x = 28 \u2212 4 = 24 \u2192 x = 6.",
+      "C": "Correct: 4(x + 3) = 28 \u2192 4x + 12 = 28 \u2192 4x = 16 \u2192 x = 4.",
+      "D": "Student correctly distributes and finds 4x = 16 but then divides 16 by the wrong number \u2014 using 4 from the term 4x + 12 but computing 12 \u00f7 4 = 3 as the answer."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -543,7 +555,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_014",
@@ -574,11 +588,11 @@
       "D": "x = 6"
     },
     "correct_answer": "C",
-    "explanation": "Subtract 3 from both sides, then multiply by 2:\n$\\frac{x}{2}$ = 4\nx = 8\n\nCheck: $\\frac{8}{2}$ + 3 = 4 + 3 = 7 ✓",
+    "explanation": "Subtract 3 from both sides, then multiply by 2:\n$\\frac{x}{2}$ = 4\nx = 8\n\nCheck: $\\frac{8}{2}$ + 3 = 4 + 3 = 7 \u2713",
     "distractor_logic": {
-      "A": "Student correctly isolates $\\frac{x}{2}$ = 4 but divides by 2 again instead of multiplying: 4 ÷ 2 = 2.",
-      "B": "Student subtracts the denominator (2) from 7 instead of subtracting the constant (3): 7 − 2 = 5.",
-      "C": "Correct: $\\frac{x}{2}$ + 3 = 7 → $\\frac{x}{2}$ = 4 → x = 8.",
+      "A": "Student correctly isolates $\\frac{x}{2}$ = 4 but divides by 2 again instead of multiplying: 4 \u00f7 2 = 2.",
+      "B": "Student subtracts the denominator (2) from 7 instead of subtracting the constant (3): 7 \u2212 2 = 5.",
+      "C": "Correct: $\\frac{x}{2}$ + 3 = 7 \u2192 $\\frac{x}{2}$ = 4 \u2192 x = 8.",
       "D": "Student correctly finds $\\frac{x}{2}$ = 4 but adds the denominator instead of multiplying: 4 + 2 = 6."
     },
     "difficulty_level": "Proficient",
@@ -621,7 +635,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_A_011",
@@ -643,7 +659,7 @@
       "recognizing when a linear equation has no solution by identifying a contradiction",
       "interpreting the result when variable terms cancel and a false constant equation remains"
     ],
-    "question_text": "Solve for x:  3x + 5 = 3x − 2",
+    "question_text": "Solve for x:  3x + 5 = 3x \u2212 2",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "No solution",
@@ -652,11 +668,11 @@
       "D": "All real numbers"
     },
     "correct_answer": "A",
-    "explanation": "Subtract 3x from both sides:\n3x + 5 − 3x = 3x − 2 − 3x\n5 = −2\n\nThis is a false statement — no value of x makes it true. The equation has no solution.",
+    "explanation": "Subtract 3x from both sides:\n3x + 5 \u2212 3x = 3x \u2212 2 \u2212 3x\n5 = \u22122\n\nThis is a false statement \u2014 no value of x makes it true. The equation has no solution.",
     "distractor_logic": {
-      "A": "Correct: subtracting 3x from both sides yields 5 = −2, a contradiction with no solution.",
-      "B": "Student subtracts 3x from the left side only, leaving 5 = 3x − 2, then solves: 3x = 7 → x = $\\frac{7}{3}$.",
-      "C": "Student cancels the 3x terms and misinterprets the resulting contradiction (5 = −2) as meaning x = 0 is the answer.",
+      "A": "Correct: subtracting 3x from both sides yields 5 = \u22122, a contradiction with no solution.",
+      "B": "Student subtracts 3x from the left side only, leaving 5 = 3x \u2212 2, then solves: 3x = 7 \u2192 x = $\\frac{7}{3}$.",
+      "C": "Student cancels the 3x terms and misinterprets the resulting contradiction (5 = \u22122) as meaning x = 0 is the answer.",
       "D": "Student sees that both sides have the same 3x coefficient and concludes the equation must be an identity true for all x, confusing a contradiction with an identity."
     },
     "difficulty_level": "Advanced",
@@ -676,7 +692,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try any value of x — say x = 0 or x = 1. If neither side equals the other for any x, there is no solution."
+        "hint_text": "Try any value of x \u2014 say x = 0 or x = 1. If neither side equals the other for any x, there is no solution."
       }
     ],
     "content_context": "generic",
@@ -699,7 +715,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_A_012",
@@ -721,21 +739,21 @@
       "solving a multi-step linear equation with parentheses on both sides",
       "correctly distributing and combining like terms across a complex equation"
     ],
-    "question_text": "Solve for x:  2(3x − 5) = 4(x + 1) − 2",
+    "question_text": "Solve for x:  2(3x \u2212 5) = 4(x + 1) \u2212 2",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x = −4",
+      "A": "x = \u22124",
       "B": "x = 7",
       "C": "x = 3",
       "D": "x = 6"
     },
     "correct_answer": "D",
-    "explanation": "Distribute on both sides:\n6x − 10 = 4x + 4 − 2\n6x − 10 = 4x + 2\n\nSubtract 4x and add 10 to both sides:\n2x = 12\nx = 6\n\nCheck: left = 2(18 − 5) = 2(13) = 26; right = 4(7) − 2 = 28 − 2 = 26 ✓",
+    "explanation": "Distribute on both sides:\n6x \u2212 10 = 4x + 4 \u2212 2\n6x \u2212 10 = 4x + 2\n\nSubtract 4x and add 10 to both sides:\n2x = 12\nx = 6\n\nCheck: left = 2(18 \u2212 5) = 2(13) = 26; right = 4(7) \u2212 2 = 28 \u2212 2 = 26 \u2713",
     "distractor_logic": {
-      "A": "Student distributes correctly on both sides but makes a sign error when collecting constants: 2x = 2 − 10 = −8 → x = −4.",
-      "B": "Student distributes correctly on the left but drops the −2 from the right side: 6x − 10 = 4x + 4 → 2x = 14 → x = 7.",
-      "C": "Student distributes and collects correctly (2x = 12) but divides by 4 instead of 2, misidentifying the coefficient: 12 ÷ 4 = 3.",
-      "D": "Correct: distributing and combining gives 2x = 12 → x = 6."
+      "A": "Student distributes correctly on both sides but makes a sign error when collecting constants: 2x = 2 \u2212 10 = \u22128 \u2192 x = \u22124.",
+      "B": "Student distributes correctly on the left but drops the \u22122 from the right side: 6x \u2212 10 = 4x + 4 \u2192 2x = 14 \u2192 x = 7.",
+      "C": "Student distributes and collects correctly (2x = 12) but divides by 4 instead of 2, misidentifying the coefficient: 12 \u00f7 4 = 3.",
+      "D": "Correct: distributing and combining gives 2x = 12 \u2192 x = 6."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -777,6 +795,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

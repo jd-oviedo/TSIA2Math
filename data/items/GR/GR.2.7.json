@@ -34,7 +34,7 @@
     "distractor_logic": {
       "A": "Student adds length and width without multiplying by 2: x + 5.",
       "B": "Correct: P = 2(x + 5) = 2x + 10.",
-      "C": "Student multiplies length by width instead of applying the perimeter formula: x × 5 = 5x.",
+      "C": "Student multiplies length by width instead of applying the perimeter formula: x \u00d7 5 = 5x.",
       "D": "Student applies the factor of 2 to the variable term only and leaves the constant unchanged: 2x + 5."
     },
     "difficulty_level": "Basic",
@@ -77,7 +77,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_B_040",
@@ -106,16 +108,16 @@
     "answer_choices": {
       "A": "12x",
       "B": "3x",
-      "C": "9x²",
+      "C": "9x\u00b2",
       "D": "9x"
     },
     "correct_answer": "A",
-    "explanation": "The perimeter of a square is P = 4s:\nP = 4 × 3x = 12x",
+    "explanation": "The perimeter of a square is P = 4s:\nP = 4 \u00d7 3x = 12x",
     "distractor_logic": {
-      "A": "Correct: P = 4 × 3x = 12x.",
+      "A": "Correct: P = 4 \u00d7 3x = 12x.",
       "B": "Student reports one side length rather than multiplying by 4: 3x.",
-      "C": "Student computes the area instead of the perimeter: (3x)² = 9x².",
-      "D": "Student multiplies by 3 instead of 4, confusing a square (4 sides) with a triangle (3 sides): 3 × 3x = 9x."
+      "C": "Student computes the area instead of the perimeter: (3x)\u00b2 = 9x\u00b2.",
+      "D": "Student multiplies by 3 instead of 4, confusing a square (4 sides) with a triangle (3 sides): 3 \u00d7 3x = 9x."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -130,11 +132,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "A square has 4 equal sides. The perimeter is P = 4s = 4 × 3x. Multiply the coefficient and x together."
+        "hint_text": "A square has 4 equal sides. The perimeter is P = 4s = 4 \u00d7 3x. Multiply the coefficient and x together."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try x = 2: one side = 6, so P = 4 × 6 = 24. Which expression equals 24 when x = 2?"
+        "hint_text": "Try x = 2: one side = 6, so P = 4 \u00d7 6 = 24. Which expression equals 24 when x = 2?"
       }
     ],
     "content_context": "generic",
@@ -157,7 +159,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_B_041",
@@ -187,15 +191,15 @@
       "A": "2x + 16",
       "B": "x + 8",
       "C": "8x",
-      "D": "8x²"
+      "D": "8x\u00b2"
     },
     "correct_answer": "C",
-    "explanation": "The area of a rectangle is A = l × w:\nA = x × 8 = 8x",
+    "explanation": "The area of a rectangle is A = l \u00d7 w:\nA = x \u00d7 8 = 8x",
     "distractor_logic": {
       "A": "Student computes the perimeter instead of the area: 2(x + 8) = 2x + 16.",
       "B": "Student adds length and width instead of multiplying: x + 8.",
-      "C": "Correct: A = x × 8 = 8x.",
-      "D": "Student squares x in the product instead of multiplying x by the constant 8: 8x²."
+      "C": "Correct: A = x \u00d7 8 = 8x.",
+      "D": "Student squares x in the product instead of multiplying x by the constant 8: 8x\u00b2."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -210,7 +214,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Area = length × width = x × 8 = 8x. This is a product, not a sum — don't add the dimensions."
+        "hint_text": "Area = length \u00d7 width = x \u00d7 8 = 8x. This is a product, not a sum \u2014 don't add the dimensions."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -237,7 +241,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_B_042",
@@ -261,21 +267,21 @@
       "writing a simplified algebraic expression for the perimeter of a triangle with all variable sides",
       "combining like terms and integer constants when simplifying a triangle perimeter expression"
     ],
-    "question_text": "A triangle has sides x, (x + 3), and (2x − 1). Which expression represents the perimeter of the triangle in simplified form?",
+    "question_text": "A triangle has sides x, (x + 3), and (2x \u2212 1). Which expression represents the perimeter of the triangle in simplified form?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "4x + 3",
-      "B": "4x − 2",
+      "B": "4x \u2212 2",
       "C": "3x + 2",
       "D": "4x + 2"
     },
     "correct_answer": "D",
-    "explanation": "The perimeter is the sum of all three sides:\nP = x + (x + 3) + (2x − 1)\nP = (x + x + 2x) + (3 − 1)\nP = 4x + 2",
+    "explanation": "The perimeter is the sum of all three sides:\nP = x + (x + 3) + (2x \u2212 1)\nP = (x + x + 2x) + (3 \u2212 1)\nP = 4x + 2",
     "distractor_logic": {
-      "A": "Student sums the x-terms correctly (4x) but adds only the positive constant (3) while ignoring the −1: 4x + 3.",
-      "B": "Student sums the x-terms correctly (4x) but applies a sign error to the constants, subtracting 3 instead of adding: 4x − 2.",
+      "A": "Student sums the x-terms correctly (4x) but adds only the positive constant (3) while ignoring the \u22121: 4x + 3.",
+      "B": "Student sums the x-terms correctly (4x) but applies a sign error to the constants, subtracting 3 instead of adding: 4x \u2212 2.",
       "C": "Student undercounts the x-coefficient, treating 2x as x: x + x + x = 3x; then correctly adds constants: 3x + 2.",
-      "D": "Correct: (x + x + 2x) + (3 − 1) = 4x + 2."
+      "D": "Correct: (x + x + 2x) + (3 \u2212 1) = 4x + 2."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -290,7 +296,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Add all three sides. Group x-terms separately from constants: (x + x + 2x) + (3 + (−1))."
+        "hint_text": "Add all three sides. Group x-terms separately from constants: (x + x + 2x) + (3 + (\u22121))."
       },
       {
         "strategy": "plug_in_values",
@@ -317,7 +323,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_B_043",
@@ -346,7 +354,7 @@
     "answer_choices": {
       "A": "3x + 1",
       "B": "6x + 2",
-      "C": "2x² + 2x",
+      "C": "2x\u00b2 + 2x",
       "D": "6x + 4"
     },
     "correct_answer": "B",
@@ -354,7 +362,7 @@
     "distractor_logic": {
       "A": "Student adds l + w without multiplying by 2: 2x + (x + 1) = 3x + 1.",
       "B": "Correct: P = 2(3x + 1) = 6x + 2.",
-      "C": "Student multiplies l × w (area) instead of applying the perimeter formula: 2x(x + 1) = 2x² + 2x.",
+      "C": "Student multiplies l \u00d7 w (area) instead of applying the perimeter formula: 2x(x + 1) = 2x\u00b2 + 2x.",
       "D": "Student computes P = 2(l + w) correctly for the x-terms (6x) but uses w = (x + 2) instead of (x + 1), adding an extra 1 to the constant: 2(3x + 2) = 6x + 4."
     },
     "difficulty_level": "Basic",
@@ -398,7 +406,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_P_039",
@@ -428,15 +438,15 @@
       "A": "3x + 4",
       "B": "x + 7",
       "C": "3x + 12",
-      "D": "3x² + 12x"
+      "D": "3x\u00b2 + 12x"
     },
     "correct_answer": "C",
-    "explanation": "The area of a rectangle is A = l × w:\nA = 3(x + 4) = 3x + 12",
+    "explanation": "The area of a rectangle is A = l \u00d7 w:\nA = 3(x + 4) = 3x + 12",
     "distractor_logic": {
       "A": "Student multiplies 3 by x but does not distribute to the +4: 3x + 4.",
       "B": "Student adds width and length instead of multiplying: 3 + (x + 4) = x + 7.",
       "C": "Correct: A = 3(x + 4) = 3x + 12.",
-      "D": "Student treats (x + 4) as if it were (x² + 4x) before multiplying: 3(x² + 4x) = 3x² + 12x."
+      "D": "Student treats (x + 4) as if it were (x\u00b2 + 4x) before multiplying: 3(x\u00b2 + 4x) = 3x\u00b2 + 12x."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -451,7 +461,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Area = l × w = (x + 4) × 3. Distribute the 3: multiply it by x AND by 4."
+        "hint_text": "Area = l \u00d7 w = (x + 4) \u00d7 3. Distribute the 3: multiply it by x AND by 4."
       },
       {
         "strategy": "plug_in_values",
@@ -479,7 +489,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_P_040",
@@ -501,23 +513,23 @@
     "unit": 3,
     "skills_targeted": [
       "writing a simplified algebraic expression for the area of a triangle whose base and height are both variable",
-      "applying A = ½bh and simplifying when the product of two variable expressions is involved"
+      "applying A = \u00bdbh and simplifying when the product of two variable expressions is involved"
     ],
     "question_text": "A triangle has a base of 2x and a height of (x + 6). Which expression represents the area of the triangle in simplified form?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x² + 6x",
-      "B": "2x² + 12x",
+      "A": "x\u00b2 + 6x",
+      "B": "2x\u00b2 + 12x",
       "C": "2x + 6",
-      "D": "x² + 6"
+      "D": "x\u00b2 + 6"
     },
     "correct_answer": "A",
-    "explanation": "The area of a triangle is A = ½ × b × h:\nA = ½ × 2x × (x + 6)\nA = x(x + 6)\nA = x² + 6x",
+    "explanation": "The area of a triangle is A = \u00bd \u00d7 b \u00d7 h:\nA = \u00bd \u00d7 2x \u00d7 (x + 6)\nA = x(x + 6)\nA = x\u00b2 + 6x",
     "distractor_logic": {
-      "A": "Correct: ½ × 2x × (x + 6) = x(x + 6) = x² + 6x.",
-      "B": "Student omits the ½ factor: 2x(x + 6) = 2x² + 12x.",
-      "C": "Student correctly finds ½ × 2x = x but then adds x + (x + 6) = 2x + 6 instead of multiplying x × (x + 6).",
-      "D": "Student multiplies x × x = x² correctly but drops the 6x term from the expansion: x² + 6."
+      "A": "Correct: \u00bd \u00d7 2x \u00d7 (x + 6) = x(x + 6) = x\u00b2 + 6x.",
+      "B": "Student omits the \u00bd factor: 2x(x + 6) = 2x\u00b2 + 12x.",
+      "C": "Student correctly finds \u00bd \u00d7 2x = x but then adds x + (x + 6) = 2x + 6 instead of multiplying x \u00d7 (x + 6).",
+      "D": "Student multiplies x \u00d7 x = x\u00b2 correctly but drops the 6x term from the expansion: x\u00b2 + 6."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -532,11 +544,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Use A = ½bh. The ½ and 2x simplify to x, giving A = x(x + 6). Expand by multiplying x by each term in the parentheses."
+        "hint_text": "Use A = \u00bdbh. The \u00bd and 2x simplify to x, giving A = x(x + 6). Expand by multiplying x by each term in the parentheses."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try x = 2: b = 4, h = 8; A = ½ × 4 × 8 = 16. Which expression gives 16 when x = 2?"
+        "hint_text": "Try x = 2: b = 4, h = 8; A = \u00bd \u00d7 4 \u00d7 8 = 16. Which expression gives 16 when x = 2?"
       }
     ],
     "content_context": "generic",
@@ -560,7 +572,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_P_041",
@@ -593,11 +607,11 @@
       "D": "12x + 8"
     },
     "correct_answer": "D",
-    "explanation": "The area of a parallelogram is A = b × h:\nA = 4(3x + 2) = 12x + 8",
+    "explanation": "The area of a parallelogram is A = b \u00d7 h:\nA = 4(3x + 2) = 12x + 8",
     "distractor_logic": {
       "A": "Student adds height and base instead of multiplying: 4 + (3x + 2) = 3x + 6.",
-      "B": "Student distributes 4 to the x-term only and leaves the constant unchanged: 4 × 3x + 2 = 12x + 2.",
-      "C": "Student applies a ½ factor (as if using the triangle formula): ½ × 4 × (3x + 2) = 2(3x + 2) = 6x + 4.",
+      "B": "Student distributes 4 to the x-term only and leaves the constant unchanged: 4 \u00d7 3x + 2 = 12x + 2.",
+      "C": "Student applies a \u00bd factor (as if using the triangle formula): \u00bd \u00d7 4 \u00d7 (3x + 2) = 2(3x + 2) = 6x + 4.",
       "D": "Correct: A = 4(3x + 2) = 12x + 8."
     },
     "difficulty_level": "Proficient",
@@ -613,7 +627,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Area of a parallelogram = b × h = (3x + 2) × 4. Distribute 4 to both terms: 4 × 3x and 4 × 2."
+        "hint_text": "Area of a parallelogram = b \u00d7 h = (3x + 2) \u00d7 4. Distribute 4 to both terms: 4 \u00d7 3x and 4 \u00d7 2."
       },
       {
         "strategy": "plug_in_values",
@@ -641,7 +655,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_P_042",
@@ -665,7 +681,7 @@
       "writing a simplified algebraic expression for the perimeter of a composite rectilinear figure with variable sides",
       "combining like terms and integer constants carefully when one side contains a subtracted constant"
     ],
-    "question_text": "An L-shaped figure has sides labeled x, 4, (x − 2), 3, 2, and 7 going around its boundary. Which expression represents the perimeter of the figure in simplified form?",
+    "question_text": "An L-shaped figure has sides labeled x, 4, (x \u2212 2), 3, 2, and 7 going around its boundary. Which expression represents the perimeter of the figure in simplified form?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "2x + 12",
@@ -674,12 +690,12 @@
       "D": "x + 14"
     },
     "correct_answer": "B",
-    "explanation": "Add all six side lengths:\nP = x + 4 + (x − 2) + 3 + 2 + 7\nCombine x-terms: x + x = 2x\nCombine constants: 4 + (−2) + 3 + 2 + 7 = 14\nP = 2x + 14",
+    "explanation": "Add all six side lengths:\nP = x + 4 + (x \u2212 2) + 3 + 2 + 7\nCombine x-terms: x + x = 2x\nCombine constants: 4 + (\u22122) + 3 + 2 + 7 = 14\nP = 2x + 14",
     "distractor_logic": {
-      "A": "Student incorrectly sums the constants, using a different value for one side (e.g., 5 instead of 7): 4 − 2 + 3 + 2 + 5 = 12, giving 2x + 12.",
-      "B": "Correct: 2x + (4 − 2 + 3 + 2 + 7) = 2x + 14.",
+      "A": "Student incorrectly sums the constants, using a different value for one side (e.g., 5 instead of 7): 4 \u2212 2 + 3 + 2 + 5 = 12, giving 2x + 12.",
+      "B": "Correct: 2x + (4 \u2212 2 + 3 + 2 + 7) = 2x + 14.",
       "C": "Student ignores the -2 in (x - 2) when summing constants, treating it as +2, then drops the -2 entirely: constants = 4 + 3 + 2 + 7 = 16, giving 2x + 16.",
-      "D": "Student counts only one x-variable term and misses the x in (x − 2): x + (−2) + 4 + 3 + 2 + 7 = x + 14."
+      "D": "Student counts only one x-variable term and misses the x in (x \u2212 2): x + (\u22122) + 4 + 3 + 2 + 7 = x + 14."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -694,7 +710,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Group x-terms and constant terms separately. The side (x − 2) contributes one x and a −2 to the constant sum. Don't forget to include the negative sign."
+        "hint_text": "Group x-terms and constant terms separately. The side (x \u2212 2) contributes one x and a \u22122 to the constant sum. Don't forget to include the negative sign."
       },
       {
         "strategy": "plug_in_values",
@@ -722,7 +738,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_P_043",
@@ -744,23 +762,23 @@
     "unit": 3,
     "skills_targeted": [
       "writing an exact algebraic expression for the area of a circle with a variable radius",
-      "correctly squaring a binomial radius expression to form the area expression in terms of π"
+      "correctly squaring a binomial radius expression to form the area expression in terms of \u03c0"
     ],
-    "question_text": "A circle has a radius of (x + 2). Which expression represents the area of the circle? Leave your answer in terms of π.",
+    "question_text": "A circle has a radius of (x + 2). Which expression represents the area of the circle? Leave your answer in terms of \u03c0.",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "π(x² + 4)",
-      "B": "2π(x + 2)",
-      "C": "π(x² + 4x + 4)",
-      "D": "π(x + 2)"
+      "A": "\u03c0(x\u00b2 + 4)",
+      "B": "2\u03c0(x + 2)",
+      "C": "\u03c0(x\u00b2 + 4x + 4)",
+      "D": "\u03c0(x + 2)"
     },
     "correct_answer": "C",
-    "explanation": "The area of a circle is A = πr²:\nA = π(x + 2)²\nA = π(x² + 4x + 4)",
+    "explanation": "The area of a circle is A = \u03c0r\u00b2:\nA = \u03c0(x + 2)\u00b2\nA = \u03c0(x\u00b2 + 4x + 4)",
     "distractor_logic": {
-      "A": "Student expands (x + 2)² incorrectly as x² + 4, omitting the middle term 2(x)(2) = 4x.",
-      "B": "Student uses the circumference formula instead of the area formula: C = 2πr = 2π(x + 2).",
-      "C": "Correct: A = π(x + 2)² = π(x² + 4x + 4).",
-      "D": "Student omits the squaring step, writing A = πr instead of A = πr²: π(x + 2)."
+      "A": "Student expands (x + 2)\u00b2 incorrectly as x\u00b2 + 4, omitting the middle term 2(x)(2) = 4x.",
+      "B": "Student uses the circumference formula instead of the area formula: C = 2\u03c0r = 2\u03c0(x + 2).",
+      "C": "Correct: A = \u03c0(x + 2)\u00b2 = \u03c0(x\u00b2 + 4x + 4).",
+      "D": "Student omits the squaring step, writing A = \u03c0r instead of A = \u03c0r\u00b2: \u03c0(x + 2)."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -775,11 +793,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Area of a circle = πr². Square the entire radius expression: (x + 2)² = x² + 4x + 4. Don't forget the middle term."
+        "hint_text": "Area of a circle = \u03c0r\u00b2. Square the entire radius expression: (x + 2)\u00b2 = x\u00b2 + 4x + 4. Don't forget the middle term."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try x = 0: r = 2; A = π(4) = 4π. Which expression gives 4π when x = 0?"
+        "hint_text": "Try x = 0: r = 2; A = \u03c0(4) = 4\u03c0. Which expression gives 4\u03c0 when x = 0?"
       }
     ],
     "content_context": "generic",
@@ -803,7 +821,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_A_039",
@@ -830,18 +850,18 @@
     "question_text": "A composite figure consists of a rectangle with length 2x and width 5, topped by a triangle with the same base (2x) and a height of x. Which expression represents the total area of the figure in simplified form?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x² + 10x",
-      "B": "2x² + 10x",
-      "C": "x² + 10x + 10",
+      "A": "x\u00b2 + 10x",
+      "B": "2x\u00b2 + 10x",
+      "C": "x\u00b2 + 10x + 10",
       "D": "11x"
     },
     "correct_answer": "A",
-    "explanation": "Rectangle area: 2x × 5 = 10x\nTriangle area: ½ × 2x × x = x²\nTotal: 10x + x² = x² + 10x",
+    "explanation": "Rectangle area: 2x \u00d7 5 = 10x\nTriangle area: \u00bd \u00d7 2x \u00d7 x = x\u00b2\nTotal: 10x + x\u00b2 = x\u00b2 + 10x",
     "distractor_logic": {
-      "A": "Correct: rectangle area = 10x; triangle area = ½ × 2x × x = x²; total = x² + 10x.",
-      "B": "Student omits the ½ factor in the triangle area: 2x × x = 2x²; total = 2x² + 10x.",
-      "C": "Student adds a phantom constant term (+10) that has no basis in the given dimensions: x² + 10x + 10.",
-      "D": "Student computes triangle area as ½ × 2x = x (applies ½ to base only, ignoring the height x): rectangle 10x + triangle x = 11x."
+      "A": "Correct: rectangle area = 10x; triangle area = \u00bd \u00d7 2x \u00d7 x = x\u00b2; total = x\u00b2 + 10x.",
+      "B": "Student omits the \u00bd factor in the triangle area: 2x \u00d7 x = 2x\u00b2; total = 2x\u00b2 + 10x.",
+      "C": "Student adds a phantom constant term (+10) that has no basis in the given dimensions: x\u00b2 + 10x + 10.",
+      "D": "Student computes triangle area as \u00bd \u00d7 2x = x (applies \u00bd to base only, ignoring the height x): rectangle 10x + triangle x = 11x."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -856,11 +876,11 @@
     "strategy_hints": [
       {
         "strategy": "draw_diagram",
-        "hint_text": "Label the rectangle and triangle separately. Compute each area expression independently: rectangle = 2x × 5, triangle = ½ × 2x × x. Then add."
+        "hint_text": "Label the rectangle and triangle separately. Compute each area expression independently: rectangle = 2x \u00d7 5, triangle = \u00bd \u00d7 2x \u00d7 x. Then add."
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "For the triangle: A = ½ × base × height = ½ × 2x × x. The ½ and the 2 in the base cancel, leaving x × x = x²."
+        "hint_text": "For the triangle: A = \u00bd \u00d7 base \u00d7 height = \u00bd \u00d7 2x \u00d7 x. The \u00bd and the 2 in the base cancel, leaving x \u00d7 x = x\u00b2."
       }
     ],
     "content_context": "generic",
@@ -884,7 +904,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_A_040",
@@ -906,23 +928,23 @@
     "unit": 3,
     "skills_targeted": [
       "writing a simplified algebraic expression for the volume of a cylinder with a binomial radius",
-      "correctly squaring a binomial radius and retaining π as a factor in the volume expression"
+      "correctly squaring a binomial radius and retaining \u03c0 as a factor in the volume expression"
     ],
-    "question_text": "A cylinder has a radius of (x + 1) and a height of 5. Which expression represents the volume of the cylinder in simplified form? Leave π as a factor.",
+    "question_text": "A cylinder has a radius of (x + 1) and a height of 5. Which expression represents the volume of the cylinder in simplified form? Leave \u03c0 as a factor.",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "5π(x + 1)",
-      "B": "5π(x² + 1)",
-      "C": "10π(x + 1)²",
-      "D": "5π(x² + 2x + 1)"
+      "A": "5\u03c0(x + 1)",
+      "B": "5\u03c0(x\u00b2 + 1)",
+      "C": "10\u03c0(x + 1)\u00b2",
+      "D": "5\u03c0(x\u00b2 + 2x + 1)"
     },
     "correct_answer": "D",
-    "explanation": "The volume of a cylinder is V = πr²h:\nV = π(x + 1)² × 5\nV = 5π(x + 1)²\nV = 5π(x² + 2x + 1)",
+    "explanation": "The volume of a cylinder is V = \u03c0r\u00b2h:\nV = \u03c0(x + 1)\u00b2 \u00d7 5\nV = 5\u03c0(x + 1)\u00b2\nV = 5\u03c0(x\u00b2 + 2x + 1)",
     "distractor_logic": {
-      "A": "Student uses V = πrh instead of πr²h, omitting the squaring of the radius: 5π(x + 1).",
-      "B": "Student squares (x + 1) incorrectly as (x² + 1), omitting the middle term: 5π(x² + 1).",
-      "C": "Student doubles the entire expression, applying an extra factor of 2: 2 × 5π(x + 1)² = 10π(x + 1)².",
-      "D": "Correct: V = 5π(x + 1)² = 5π(x² + 2x + 1)."
+      "A": "Student uses V = \u03c0rh instead of \u03c0r\u00b2h, omitting the squaring of the radius: 5\u03c0(x + 1).",
+      "B": "Student squares (x + 1) incorrectly as (x\u00b2 + 1), omitting the middle term: 5\u03c0(x\u00b2 + 1).",
+      "C": "Student doubles the entire expression, applying an extra factor of 2: 2 \u00d7 5\u03c0(x + 1)\u00b2 = 10\u03c0(x + 1)\u00b2.",
+      "D": "Correct: V = 5\u03c0(x + 1)\u00b2 = 5\u03c0(x\u00b2 + 2x + 1)."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -937,11 +959,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Use V = πr²h. Square the entire radius: (x + 1)² = x² + 2x + 1. Don't forget the middle term 2(x)(1) = 2x."
+        "hint_text": "Use V = \u03c0r\u00b2h. Square the entire radius: (x + 1)\u00b2 = x\u00b2 + 2x + 1. Don't forget the middle term 2(x)(1) = 2x."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try x = 0: r = 1, h = 5; V = π(1)(5) = 5π. Which expression gives 5π when x = 0?"
+        "hint_text": "Try x = 0: r = 1, h = 5; V = \u03c0(1)(5) = 5\u03c0. Which expression gives 5\u03c0 when x = 0?"
       }
     ],
     "content_context": "generic",
@@ -965,7 +987,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_A_041",
@@ -989,21 +1013,21 @@
       "writing and simplifying the difference of two rectangle area expressions",
       "expanding two binomial products and subtracting the resulting polynomials"
     ],
-    "question_text": "Rectangle 1 has length (2x + 3) and width 4. Rectangle 2 has length (x + 1) and width 6. Which expression represents the difference in their areas (Area 1 − Area 2) in simplified form?",
+    "question_text": "Rectangle 1 has length (2x + 3) and width 4. Rectangle 2 has length (x + 1) and width 6. Which expression represents the difference in their areas (Area 1 \u2212 Area 2) in simplified form?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "2x + 18",
       "B": "2x + 6",
       "C": "14x + 18",
-      "D": "2x − 6"
+      "D": "2x \u2212 6"
     },
     "correct_answer": "B",
-    "explanation": "Area 1 = 4(2x + 3) = 8x + 12\nArea 2 = 6(x + 1) = 6x + 6\n\nDifference: (8x + 12) − (6x + 6) = 2x + 6",
+    "explanation": "Area 1 = 4(2x + 3) = 8x + 12\nArea 2 = 6(x + 1) = 6x + 6\n\nDifference: (8x + 12) \u2212 (6x + 6) = 2x + 6",
     "distractor_logic": {
       "A": "Student correctly subtracts the x-terms (2x) but adds the constants instead of subtracting: 12 + 6 = 18, giving 2x + 18.",
-      "B": "Correct: (8x + 12) − (6x + 6) = 2x + 6.",
+      "B": "Correct: (8x + 12) \u2212 (6x + 6) = 2x + 6.",
       "C": "Student adds both area expressions instead of subtracting: (8x + 12) + (6x + 6) = 14x + 18.",
-      "D": "Student correctly subtracts the x-terms (2x) but reverses the constant subtraction: 6 − 12 = −6, giving 2x − 6."
+      "D": "Student correctly subtracts the x-terms (2x) but reverses the constant subtraction: 6 \u2212 12 = \u22126, giving 2x \u2212 6."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1018,11 +1042,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Compute each area expression first: A₁ = 4(2x+3) and A₂ = 6(x+1). Then subtract A₂ from A₁ carefully, keeping track of signs."
+        "hint_text": "Compute each area expression first: A\u2081 = 4(2x+3) and A\u2082 = 6(x+1). Then subtract A\u2082 from A\u2081 carefully, keeping track of signs."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try x = 1: A₁ = 4(5) = 20; A₂ = 6(2) = 12; difference = 8. Which expression gives 8 when x = 1?"
+        "hint_text": "Try x = 1: A\u2081 = 4(5) = 20; A\u2082 = 6(2) = 12; difference = 8. Which expression gives 8 when x = 1?"
       }
     ],
     "content_context": "generic",
@@ -1046,7 +1070,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_A_042",
@@ -1073,18 +1099,18 @@
     "question_text": "A rectangular prism has a length of x, a width of (x + 2), and a height of 3. Which expression represents the surface area of the prism in simplified form?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x² + 8x + 6",
-      "B": "2x² + 16x + 6",
-      "C": "2x² + 16x + 12",
-      "D": "2x² + 16x + 24"
+      "A": "x\u00b2 + 8x + 6",
+      "B": "2x\u00b2 + 16x + 6",
+      "C": "2x\u00b2 + 16x + 12",
+      "D": "2x\u00b2 + 16x + 24"
     },
     "correct_answer": "C",
-    "explanation": "SA = 2(lw + lh + wh)\nlw = x(x + 2) = x² + 2x\nlh = x × 3 = 3x\nwh = 3(x + 2) = 3x + 6\n\nSum: (x² + 2x) + 3x + (3x + 6) = x² + 8x + 6\n\nSA = 2(x² + 8x + 6) = 2x² + 16x + 12",
+    "explanation": "SA = 2(lw + lh + wh)\nlw = x(x + 2) = x\u00b2 + 2x\nlh = x \u00d7 3 = 3x\nwh = 3(x + 2) = 3x + 6\n\nSum: (x\u00b2 + 2x) + 3x + (3x + 6) = x\u00b2 + 8x + 6\n\nSA = 2(x\u00b2 + 8x + 6) = 2x\u00b2 + 16x + 12",
     "distractor_logic": {
-      "A": "Student correctly computes lw + lh + wh = x² + 8x + 6 but omits the factor of 2: x² + 8x + 6.",
-      "B": "Student applies the factor of 2 to the x²-term and x-terms but not to the constant: 2x² + 16x + 6.",
-      "C": "Correct: 2(x² + 8x + 6) = 2x² + 16x + 12.",
-      "D": "Student applies the factor of 4 to the constant instead of 2: 2x² + 16x + 4(6) = 2x² + 16x + 24."
+      "A": "Student correctly computes lw + lh + wh = x\u00b2 + 8x + 6 but omits the factor of 2: x\u00b2 + 8x + 6.",
+      "B": "Student applies the factor of 2 to the x\u00b2-term and x-terms but not to the constant: 2x\u00b2 + 16x + 6.",
+      "C": "Correct: 2(x\u00b2 + 8x + 6) = 2x\u00b2 + 16x + 12.",
+      "D": "Student applies the factor of 4 to the constant instead of 2: 2x\u00b2 + 16x + 4(6) = 2x\u00b2 + 16x + 24."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1127,7 +1153,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_A_043",
@@ -1149,23 +1177,23 @@
     "unit": 3,
     "skills_targeted": [
       "writing a simplified algebraic expression for the volume of a square pyramid with variable base and height",
-      "expanding a product within the ⅓ factor and simplifying each resulting term"
+      "expanding a product within the \u2153 factor and simplifying each resulting term"
     ],
     "question_text": "A square pyramid has a base side length of x and a height of (x + 3). Which expression represents the volume of the pyramid in simplified form?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "($\\frac{1}{3}$)x³ + x²",
-      "B": "x³ + 3x²",
-      "C": "($\\frac{1}{3}$)x² + x",
-      "D": "($\\frac{1}{3}$)x³ + 3x²"
+      "A": "($\\frac{1}{3}$)x\u00b3 + x\u00b2",
+      "B": "x\u00b3 + 3x\u00b2",
+      "C": "($\\frac{1}{3}$)x\u00b2 + x",
+      "D": "($\\frac{1}{3}$)x\u00b3 + 3x\u00b2"
     },
     "correct_answer": "A",
-    "explanation": "The volume of a square pyramid is V = ⅓s²h:\nV = ⅓ × x² × (x + 3)\nV = ⅓(x³ + 3x²)\nV = ($\\frac{1}{3}$)x³ + x²\n\nNote: ⅓ × 3x² = x²",
+    "explanation": "The volume of a square pyramid is V = \u2153s\u00b2h:\nV = \u2153 \u00d7 x\u00b2 \u00d7 (x + 3)\nV = \u2153(x\u00b3 + 3x\u00b2)\nV = ($\\frac{1}{3}$)x\u00b3 + x\u00b2\n\nNote: \u2153 \u00d7 3x\u00b2 = x\u00b2",
     "distractor_logic": {
-      "A": "Correct: V = ⅓(x³ + 3x²) = ($\\frac{1}{3}$)x³ + x².",
-      "B": "Student omits the ⅓ factor entirely: x²(x + 3) = x³ + 3x².",
-      "C": "Student uses s instead of s² in the formula: ⅓ × x × (x + 3) = ($\\frac{1}{3}$)(x² + 3x) = ($\\frac{1}{3}$)x² + x.",
-      "D": "Student correctly applies ⅓ to the x³ term but fails to simplify ⅓ × 3x² = x², leaving it as 3x²: ($\\frac{1}{3}$)x³ + 3x²."
+      "A": "Correct: V = \u2153(x\u00b3 + 3x\u00b2) = ($\\frac{1}{3}$)x\u00b3 + x\u00b2.",
+      "B": "Student omits the \u2153 factor entirely: x\u00b2(x + 3) = x\u00b3 + 3x\u00b2.",
+      "C": "Student uses s instead of s\u00b2 in the formula: \u2153 \u00d7 x \u00d7 (x + 3) = ($\\frac{1}{3}$)(x\u00b2 + 3x) = ($\\frac{1}{3}$)x\u00b2 + x.",
+      "D": "Student correctly applies \u2153 to the x\u00b3 term but fails to simplify \u2153 \u00d7 3x\u00b2 = x\u00b2, leaving it as 3x\u00b2: ($\\frac{1}{3}$)x\u00b3 + 3x\u00b2."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1180,11 +1208,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Use V = ⅓s²h = ⅓ × x² × (x + 3). Distribute x² through the parentheses first, then divide each term by 3. Notice that ⅓ × 3x² simplifies to x²."
+        "hint_text": "Use V = \u2153s\u00b2h = \u2153 \u00d7 x\u00b2 \u00d7 (x + 3). Distribute x\u00b2 through the parentheses first, then divide each term by 3. Notice that \u2153 \u00d7 3x\u00b2 simplifies to x\u00b2."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try x = 3: s=3, h=6; V = ⅓×9×6 = 18. Which expression gives 18 when x = 3?"
+        "hint_text": "Try x = 3: s=3, h=6; V = \u2153\u00d79\u00d76 = 18. Which expression gives 18 when x = 3?"
       }
     ],
     "content_context": "generic",
@@ -1208,6 +1236,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

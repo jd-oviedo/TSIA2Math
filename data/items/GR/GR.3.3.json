@@ -1,0 +1,1197 @@
+[
+  {
+    "item_id": "GR_B_054",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.3",
+    "topic": "basic_trigonometric_ratios",
+    "topic_text": "Basic Trigonometric Ratios (Sine, Cosine, Tangent)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the opposite side and hypotenuse relative to a reference angle",
+      "expressing the sine ratio as opposite over hypotenuse"
+    ],
+    "question_text": "A right triangle has an acute angle $\\theta$. Relative to $\\theta$, the opposite side has length 3, the adjacent side has length 4, and the hypotenuse has length 5. What is the value of $\\sin(\\theta)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{3}{5}$",
+      "B": "$\\frac{4}{5}$",
+      "C": "$\\frac{3}{4}$",
+      "D": "$\\frac{4}{3}$"
+    },
+    "correct_answer": "A",
+    "explanation": "The sine of an angle is the ratio of the opposite side to the hypotenuse:\n$\\sin(\\theta) = \\frac{\\text{opposite}}{\\text{hypotenuse}} = \\frac{3}{5}$",
+    "distractor_logic": {
+      "A": "Correct: $\\sin(\\theta) = \\frac{\\text{opposite}}{\\text{hypotenuse}} = \\frac{3}{5}$.",
+      "B": "Student used $\\frac{\\text{adjacent}}{\\text{hypotenuse}} = \\frac{4}{5}$, which is $\\cos(\\theta)$, not $\\sin(\\theta)$.",
+      "C": "Student used $\\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{3}{4}$, which is $\\tan(\\theta)$, not $\\sin(\\theta)$.",
+      "D": "Student inverted the ratio, computing $\\frac{\\text{adjacent}}{\\text{opposite}} = \\frac{4}{3}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Sine uses the side opposite the angle over the hypotenuse. Locate which side is opposite $\\theta$ and which is the longest side before writing the ratio."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The sine of an acute angle in a right triangle is always less than 1, so any ratio greater than 1 can be ruled out."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "trig_ratios",
+      "sine",
+      "right_triangle",
+      "ratio_identification"
+    ],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_B_055",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.3",
+    "topic": "basic_trigonometric_ratios",
+    "topic_text": "Basic Trigonometric Ratios (Sine, Cosine, Tangent)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the adjacent side and hypotenuse relative to a reference angle",
+      "expressing the cosine ratio as adjacent over hypotenuse"
+    ],
+    "question_text": "A right triangle has an acute angle $\\theta$. Relative to $\\theta$, the opposite side has length 5, the adjacent side has length 12, and the hypotenuse has length 13. What is the value of $\\cos(\\theta)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{5}{13}$",
+      "B": "$\\frac{12}{13}$",
+      "C": "$\\frac{5}{12}$",
+      "D": "$\\frac{12}{5}$"
+    },
+    "correct_answer": "B",
+    "explanation": "The cosine of an angle is the ratio of the adjacent side to the hypotenuse:\n$\\cos(\\theta) = \\frac{\\text{adjacent}}{\\text{hypotenuse}} = \\frac{12}{13}$",
+    "distractor_logic": {
+      "A": "Student used $\\frac{\\text{opposite}}{\\text{hypotenuse}} = \\frac{5}{13}$, which is $\\sin(\\theta)$, not $\\cos(\\theta)$.",
+      "B": "Correct: $\\cos(\\theta) = \\frac{\\text{adjacent}}{\\text{hypotenuse}} = \\frac{12}{13}$.",
+      "C": "Student used $\\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{5}{12}$, which is $\\tan(\\theta)$, not $\\cos(\\theta)$.",
+      "D": "Student inverted the ratio, computing $\\frac{\\text{adjacent}}{\\text{opposite}} = \\frac{12}{5}$ rather than adjacent over hypotenuse."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Cosine uses the side adjacent to the angle over the hypotenuse. Identify which side touches $\\theta$ and is not the hypotenuse."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The cosine of an acute angle is always less than 1, so any value greater than 1 can be eliminated immediately."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "trig_ratios",
+      "cosine",
+      "right_triangle",
+      "ratio_identification"
+    ],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_B_056",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.3",
+    "topic": "basic_trigonometric_ratios",
+    "topic_text": "Basic Trigonometric Ratios (Sine, Cosine, Tangent)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the opposite and adjacent sides relative to a reference angle",
+      "expressing the tangent ratio as opposite over adjacent"
+    ],
+    "question_text": "A right triangle has an acute angle $\\theta$. Relative to $\\theta$, the opposite side has length 8, the adjacent side has length 15, and the hypotenuse has length 17. What is the value of $\\tan(\\theta)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{8}{17}$",
+      "B": "$\\frac{15}{17}$",
+      "C": "$\\frac{8}{15}$",
+      "D": "$\\frac{15}{8}$"
+    },
+    "correct_answer": "C",
+    "explanation": "The tangent of an angle is the ratio of the opposite side to the adjacent side:\n$\\tan(\\theta) = \\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{8}{15}$",
+    "distractor_logic": {
+      "A": "Student used $\\frac{\\text{opposite}}{\\text{hypotenuse}} = \\frac{8}{17}$, which is $\\sin(\\theta)$, not $\\tan(\\theta)$.",
+      "B": "Student used $\\frac{\\text{adjacent}}{\\text{hypotenuse}} = \\frac{15}{17}$, which is $\\cos(\\theta)$, not $\\tan(\\theta)$.",
+      "C": "Correct: $\\tan(\\theta) = \\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{8}{15}$.",
+      "D": "Student inverted the tangent ratio, computing $\\frac{\\text{adjacent}}{\\text{opposite}} = \\frac{15}{8}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Tangent uses the two legs only: the side opposite the angle over the side adjacent to it. The hypotenuse is not part of the tangent ratio."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "trig_ratios",
+      "tangent",
+      "right_triangle",
+      "ratio_inversion"
+    ],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_B_057",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.3",
+    "topic": "basic_trigonometric_ratios",
+    "topic_text": "Basic Trigonometric Ratios (Sine, Cosine, Tangent)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the opposite side and hypotenuse relative to a reference angle",
+      "expressing the sine ratio as opposite over hypotenuse"
+    ],
+    "question_text": "A right triangle has an acute angle $\\theta$. Relative to $\\theta$, the opposite side has length 7, the adjacent side has length 24, and the hypotenuse has length 25. What is the value of $\\sin(\\theta)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{24}{25}$",
+      "B": "$\\frac{7}{24}$",
+      "C": "$\\frac{25}{7}$",
+      "D": "$\\frac{7}{25}$"
+    },
+    "correct_answer": "D",
+    "explanation": "The sine of an angle is the ratio of the opposite side to the hypotenuse:\n$\\sin(\\theta) = \\frac{\\text{opposite}}{\\text{hypotenuse}} = \\frac{7}{25}$",
+    "distractor_logic": {
+      "A": "Student used $\\frac{\\text{adjacent}}{\\text{hypotenuse}} = \\frac{24}{25}$, which is $\\cos(\\theta)$, not $\\sin(\\theta)$.",
+      "B": "Student used $\\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{7}{24}$, which is $\\tan(\\theta)$, not $\\sin(\\theta)$.",
+      "C": "Student inverted the ratio, computing $\\frac{\\text{hypotenuse}}{\\text{opposite}} = \\frac{25}{7}$.",
+      "D": "Correct: $\\sin(\\theta) = \\frac{\\text{opposite}}{\\text{hypotenuse}} = \\frac{7}{25}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Sine pairs the opposite side with the hypotenuse. Confirm the hypotenuse is the longest side before placing values into the ratio."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A sine value for an acute angle must be between 0 and 1, so any ratio of 1 or more can be ruled out."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "trig_ratios",
+      "sine",
+      "right_triangle",
+      "ratio_identification"
+    ],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_B_058",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.3",
+    "topic": "basic_trigonometric_ratios",
+    "topic_text": "Basic Trigonometric Ratios (Sine, Cosine, Tangent)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the adjacent side and hypotenuse relative to a reference angle",
+      "expressing the cosine ratio as adjacent over hypotenuse"
+    ],
+    "question_text": "A right triangle has an acute angle $\\theta$. Relative to $\\theta$, the opposite side has length 40, the adjacent side has length 9, and the hypotenuse has length 41. What is the value of $\\cos(\\theta)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{40}{41}$",
+      "B": "$\\frac{9}{41}$",
+      "C": "$\\frac{40}{9}$",
+      "D": "$\\frac{41}{9}$"
+    },
+    "correct_answer": "B",
+    "explanation": "The cosine of an angle is the ratio of the adjacent side to the hypotenuse:\n$\\cos(\\theta) = \\frac{\\text{adjacent}}{\\text{hypotenuse}} = \\frac{9}{41}$",
+    "distractor_logic": {
+      "A": "Student used $\\frac{\\text{opposite}}{\\text{hypotenuse}} = \\frac{40}{41}$, which is $\\sin(\\theta)$, not $\\cos(\\theta)$.",
+      "B": "Correct: $\\cos(\\theta) = \\frac{\\text{adjacent}}{\\text{hypotenuse}} = \\frac{9}{41}$.",
+      "C": "Student used $\\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{40}{9}$, which is $\\tan(\\theta)$, not $\\cos(\\theta)$.",
+      "D": "Student inverted the ratio, computing $\\frac{\\text{hypotenuse}}{\\text{adjacent}} = \\frac{41}{9}$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Cosine pairs the adjacent side with the hypotenuse. The side adjacent to $\\theta$ is the leg that touches the angle but is not the hypotenuse."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The cosine of an acute angle is less than 1, so any value greater than 1 can be eliminated."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "trig_ratios",
+      "cosine",
+      "right_triangle",
+      "ratio_identification"
+    ],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_054",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.3",
+    "topic": "basic_trigonometric_ratios",
+    "topic_text": "Basic Trigonometric Ratios (Sine, Cosine, Tangent)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "evaluating the sine of a special angle to find a missing side",
+      "selecting sine as the correct ratio relating the hypotenuse to the opposite side"
+    ],
+    "question_text": "A right triangle has a hypotenuse of length 12 and an acute angle measuring $60^{\\circ}$. What is the length of the side opposite the $60^{\\circ}$ angle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "6",
+      "B": "$6\\sqrt{3}$",
+      "C": "$8\\sqrt{3}$",
+      "D": "$12\\sqrt{3}$"
+    },
+    "correct_answer": "B",
+    "explanation": "The side opposite the angle relates to the hypotenuse through sine:\n$\\sin(60^{\\circ}) = \\frac{\\text{opposite}}{12}$\n$\\text{opposite} = 12 \\cdot \\sin(60^{\\circ}) = 12 \\cdot \\frac{\\sqrt{3}}{2} = 6\\sqrt{3}$",
+    "distractor_logic": {
+      "A": "Student used $\\cos(60^{\\circ}) = \\frac{1}{2}$, finding $12 \\cdot \\frac{1}{2} = 6$, which is the side adjacent to the $60^{\\circ}$ angle, not the opposite side.",
+      "B": "Correct: $\\text{opposite} = 12 \\cdot \\sin(60^{\\circ}) = 12 \\cdot \\frac{\\sqrt{3}}{2} = 6\\sqrt{3}$.",
+      "C": "Student divided by the sine instead of multiplying: $\\frac{12}{\\sin(60^{\\circ})} = \\frac{12}{\\frac{\\sqrt{3}}{2}} = 8\\sqrt{3}$.",
+      "D": "Student used $\\tan(60^{\\circ}) = \\sqrt{3}$ instead of sine: $12 \\cdot \\sqrt{3} = 12\\sqrt{3}$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "You know the hypotenuse and want the side opposite the angle. Which ratio connects the opposite side to the hypotenuse?"
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the triangle, mark the $60^{\\circ}$ angle, and label the hypotenuse. Then identify which leg sits across from the angle before choosing your ratio."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "trig_ratios",
+      "special_angle",
+      "sine",
+      "missing_side"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_055",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.3",
+    "topic": "basic_trigonometric_ratios",
+    "topic_text": "Basic Trigonometric Ratios (Sine, Cosine, Tangent)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "using a known trig ratio to reconstruct the side lengths of a right triangle",
+      "computing a second trig ratio for the same angle"
+    ],
+    "question_text": "For an acute angle $\\theta$ in a right triangle, $\\sin(\\theta) = \\frac{3}{5}$. What is the value of $\\cos(\\theta)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{4}{3}$",
+      "B": "$\\frac{3}{4}$",
+      "C": "$\\frac{4}{5}$",
+      "D": "$\\frac{5}{4}$"
+    },
+    "correct_answer": "C",
+    "explanation": "Since $\\sin(\\theta) = \\frac{3}{5}$, the opposite side is 3 and the hypotenuse is 5. Find the adjacent side:\n$\\text{adjacent} = \\sqrt{5^{2} - 3^{2}} = \\sqrt{25 - 9} = \\sqrt{16} = 4$\n$\\cos(\\theta) = \\frac{\\text{adjacent}}{\\text{hypotenuse}} = \\frac{4}{5}$",
+    "distractor_logic": {
+      "A": "Student found the adjacent side correctly as 4 but placed it over the opposite side, computing $\\frac{\\text{adjacent}}{\\text{opposite}} = \\frac{4}{3}$.",
+      "B": "Student reported the tangent ratio $\\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{3}{4}$ instead of cosine.",
+      "C": "Correct: the adjacent side is $\\sqrt{25 - 9} = 4$, so $\\cos(\\theta) = \\frac{4}{5}$.",
+      "D": "Student inverted the cosine ratio, computing $\\frac{\\text{hypotenuse}}{\\text{adjacent}} = \\frac{5}{4}$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A sine value tells you the opposite side and the hypotenuse. You will need the third side to write the cosine ratio."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Draw a right triangle, label the opposite leg and hypotenuse from the sine value, then use the Pythagorean theorem to find the missing leg."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "trig_ratios",
+      "sine",
+      "cosine",
+      "pythagorean_theorem"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_056",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.3",
+    "topic": "basic_trigonometric_ratios",
+    "topic_text": "Basic Trigonometric Ratios (Sine, Cosine, Tangent)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "evaluating the cosine of a special angle to find a missing leg",
+      "applying the exact value of a 45 degree trig ratio"
+    ],
+    "question_text": "A right triangle has a hypotenuse of length 8 and an acute angle measuring $45^{\\circ}$. What is the length of one of its legs?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$4\\sqrt{2}$",
+      "B": "$8\\sqrt{2}$",
+      "C": "4",
+      "D": "$4\\sqrt{3}$"
+    },
+    "correct_answer": "A",
+    "explanation": "A leg relates to the hypotenuse through the cosine of the $45^{\\circ}$ angle:\n$\\text{leg} = 8 \\cdot \\cos(45^{\\circ}) = 8 \\cdot \\frac{\\sqrt{2}}{2} = 4\\sqrt{2}$",
+    "distractor_logic": {
+      "A": "Correct: $\\text{leg} = 8 \\cdot \\cos(45^{\\circ}) = 8 \\cdot \\frac{\\sqrt{2}}{2} = 4\\sqrt{2}$.",
+      "B": "Student multiplied the hypotenuse by $\\sqrt{2}$ instead of $\\frac{\\sqrt{2}}{2}$: $8 \\cdot \\sqrt{2} = 8\\sqrt{2}$.",
+      "C": "Student treated $\\cos(45^{\\circ})$ as $\\frac{1}{2}$ and halved the hypotenuse: $8 \\cdot \\frac{1}{2} = 4$.",
+      "D": "Student applied the $30$-$60$-$90$ ratio $\\frac{\\sqrt{3}}{2}$ instead of the $45$-$45$-$90$ ratio: $8 \\cdot \\frac{\\sqrt{3}}{2} = 4\\sqrt{3}$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "In a $45^{\\circ}$ right triangle the two legs are equal. Use the exact value of $\\cos(45^{\\circ})$ to relate a leg to the hypotenuse."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A leg must be shorter than the hypotenuse of 8. Any answer that comes out larger than 8 can be ruled out."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "trig_ratios",
+      "special_angle",
+      "cosine",
+      "radical_form"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_057",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.3",
+    "topic": "basic_trigonometric_ratios",
+    "topic_text": "Basic Trigonometric Ratios (Sine, Cosine, Tangent)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "evaluating the sine of a non-special angle to find a missing side",
+      "selecting sine to relate the hypotenuse and the opposite side"
+    ],
+    "question_text": "A right triangle has a hypotenuse of length 20 and an acute angle measuring $28^{\\circ}$. To the nearest tenth, what is the length of the side opposite the $28^{\\circ}$ angle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "17.7",
+      "B": "10.6",
+      "C": "42.6",
+      "D": "9.4"
+    },
+    "correct_answer": "D",
+    "explanation": "The side opposite the angle relates to the hypotenuse through sine:\n$\\text{opposite} = 20 \\cdot \\sin(28^{\\circ}) \\approx 20 \\cdot 0.4695 \\approx 9.4$",
+    "distractor_logic": {
+      "A": "Student used cosine instead of sine, finding the adjacent side: $20 \\cdot \\cos(28^{\\circ}) \\approx 17.7$.",
+      "B": "Student used tangent instead of sine: $20 \\cdot \\tan(28^{\\circ}) \\approx 10.6$.",
+      "C": "Student divided by the sine instead of multiplying: $\\frac{20}{\\sin(28^{\\circ})} \\approx 42.6$.",
+      "D": "Correct: $\\text{opposite} = 20 \\cdot \\sin(28^{\\circ}) \\approx 9.4$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "graphing",
+    "requires_calculator": true,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "You know the hypotenuse and want the opposite side, so sine is the ratio that connects them. Multiply the hypotenuse by the sine of the angle."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The side opposite a $28^{\\circ}$ angle is the shorter leg, so it must be well under half the hypotenuse. Rule out any answer near or above 20."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "trig_ratios",
+      "non_special_angle",
+      "sine",
+      "missing_side"
+    ],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_058",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.3",
+    "topic": "basic_trigonometric_ratios",
+    "topic_text": "Basic Trigonometric Ratios (Sine, Cosine, Tangent)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "using a known cosine ratio and the hypotenuse to find a leg",
+      "scaling a trig ratio to the actual side lengths of a triangle"
+    ],
+    "question_text": "For an acute angle $\\theta$ in a right triangle, $\\cos(\\theta) = \\frac{4}{5}$. If the hypotenuse has length 20, what is the length of the side adjacent to $\\theta$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "16",
+      "B": "12",
+      "C": "25",
+      "D": "4"
+    },
+    "correct_answer": "A",
+    "explanation": "Cosine is adjacent over hypotenuse, so:\n$\\cos(\\theta) = \\frac{\\text{adjacent}}{20} = \\frac{4}{5}$\n$\\text{adjacent} = 20 \\cdot \\frac{4}{5} = 16$",
+    "distractor_logic": {
+      "A": "Correct: $\\text{adjacent} = 20 \\cdot \\frac{4}{5} = 16$.",
+      "B": "Student used the sine value $\\frac{3}{5}$ from the $3$-$4$-$5$ family and found the opposite leg instead: $20 \\cdot \\frac{3}{5} = 12$.",
+      "C": "Student inverted the ratio, multiplying by $\\frac{\\text{hypotenuse}}{\\text{adjacent}}$ form: $20 \\cdot \\frac{5}{4} = 25$.",
+      "D": "Student read the numerator of the ratio as the literal side length, ignoring the hypotenuse scaling, reporting 4."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "use_answer_choices"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Cosine equals adjacent over hypotenuse. You know the cosine and the hypotenuse, so solve the proportion for the adjacent side."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Check each choice by dividing it by the hypotenuse of 20. The correct adjacent side will give back the ratio $\\frac{4}{5}$."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "trig_ratios",
+      "cosine",
+      "missing_side",
+      "ratio_scaling"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_054",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.3",
+    "topic": "basic_trigonometric_ratios",
+    "topic_text": "Basic Trigonometric Ratios (Sine, Cosine, Tangent)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "selecting the correct trig ratio from two given legs",
+      "using an inverse tangent function to find an angle measure"
+    ],
+    "question_text": "A right triangle has one leg of length 9 and another leg of length 12. The acute angle $\\theta$ is located at the vertex where the leg of length 12 meets the hypotenuse. To the nearest degree, what is the measure of $\\theta$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$41^{\\circ}$",
+      "B": "$49^{\\circ}$",
+      "C": "$37^{\\circ}$",
+      "D": "$53^{\\circ}$"
+    },
+    "correct_answer": "C",
+    "explanation": "Relative to $\\theta$, the leg of 9 is opposite and the leg of 12 is adjacent, so tangent applies:\n$\\tan(\\theta) = \\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{9}{12} = 0.75$\n$\\theta = \\tan^{-1}(0.75) \\approx 37^{\\circ}$",
+    "distractor_logic": {
+      "A": "Student treated the leg of 12 as the hypotenuse and 9 as adjacent, computing $\\cos^{-1}\\left(\\frac{9}{12}\\right) \\approx 41^{\\circ}$.",
+      "B": "Student treated the adjacent leg of 12 as the hypotenuse, computing $\\sin^{-1}\\left(\\frac{9}{12}\\right) \\approx 49^{\\circ}$.",
+      "C": "Correct: $\\tan(\\theta) = \\frac{9}{12}$, so $\\theta = \\tan^{-1}(0.75) \\approx 37^{\\circ}$.",
+      "D": "Student inverted the tangent ratio, computing $\\tan^{-1}\\left(\\frac{12}{9}\\right) \\approx 53^{\\circ}$, which is the measure of the other acute angle."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "graphing",
+    "requires_calculator": true,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Both known sides are legs, so neither is the hypotenuse. The ratio that uses two legs is tangent. Decide which leg is opposite $\\theta$ and which is adjacent."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the triangle and place $\\theta$ at the stated vertex. Label the leg across from it as opposite and the leg touching it as adjacent before choosing your inverse function."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "trig_ratios",
+      "inverse_tangent",
+      "angle_measure",
+      "two_legs"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_055",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.3",
+    "topic": "basic_trigonometric_ratios",
+    "topic_text": "Basic Trigonometric Ratios (Sine, Cosine, Tangent)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "selecting cosine to relate the adjacent side and hypotenuse",
+      "solving for the hypotenuse using the exact value of a special angle"
+    ],
+    "question_text": "A right triangle has an acute angle measuring $30^{\\circ}$. The side adjacent to the $30^{\\circ}$ angle has length $6\\sqrt{3}$. What is the length of the hypotenuse?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$12\\sqrt{3}$",
+      "B": "9",
+      "C": "6",
+      "D": "12"
+    },
+    "correct_answer": "D",
+    "explanation": "The adjacent side and hypotenuse are related by cosine:\n$\\cos(30^{\\circ}) = \\frac{\\text{adjacent}}{\\text{hypotenuse}} = \\frac{\\sqrt{3}}{2}$\n$\\text{hypotenuse} = \\frac{6\\sqrt{3}}{\\frac{\\sqrt{3}}{2}} = 6\\sqrt{3} \\cdot \\frac{2}{\\sqrt{3}} = 12$",
+    "distractor_logic": {
+      "A": "Student used $\\sin(30^{\\circ}) = \\frac{1}{2}$, treating the given side as opposite: $\\frac{6\\sqrt{3}}{\\frac{1}{2}} = 12\\sqrt{3}$.",
+      "B": "Student multiplied by $\\cos(30^{\\circ})$ instead of dividing: $6\\sqrt{3} \\cdot \\frac{\\sqrt{3}}{2} = 9$.",
+      "C": "Student found the side opposite the $30^{\\circ}$ angle using $\\tan(30^{\\circ})$ and reported it as the hypotenuse: $6\\sqrt{3} \\cdot \\frac{1}{\\sqrt{3}} = 6$.",
+      "D": "Correct: $\\text{hypotenuse} = \\frac{6\\sqrt{3}}{\\cos(30^{\\circ})} = \\frac{6\\sqrt{3}}{\\frac{\\sqrt{3}}{2}} = 12$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "You know the side adjacent to the angle and want the hypotenuse. Cosine connects those two sides. Solve the equation for the hypotenuse rather than for a leg."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The hypotenuse must be the longest side, so it has to be larger than the given adjacent side of $6\\sqrt{3} \\approx 10.4$. Rule out anything smaller."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "trig_ratios",
+      "special_angle",
+      "cosine",
+      "hypotenuse"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_056",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.3",
+    "topic": "basic_trigonometric_ratios",
+    "topic_text": "Basic Trigonometric Ratios (Sine, Cosine, Tangent)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "reconstructing all three sides from a known tangent ratio",
+      "combining sine and cosine of the same angle"
+    ],
+    "question_text": "For an acute angle $\\theta$ in a right triangle, $\\tan(\\theta) = \\frac{5}{12}$. What is the value of $\\sin(\\theta) + \\cos(\\theta)$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{17}{13}$",
+      "B": "1",
+      "C": "$\\frac{7}{13}$",
+      "D": "$\\frac{12}{13}$"
+    },
+    "correct_answer": "A",
+    "explanation": "From $\\tan(\\theta) = \\frac{5}{12}$, the opposite side is 5 and the adjacent side is 12. Find the hypotenuse:\n$\\text{hypotenuse} = \\sqrt{5^{2} + 12^{2}} = \\sqrt{169} = 13$\n$\\sin(\\theta) + \\cos(\\theta) = \\frac{5}{13} + \\frac{12}{13} = \\frac{17}{13}$",
+    "distractor_logic": {
+      "A": "Correct: with hypotenuse $\\sqrt{5^{2} + 12^{2}} = 13$, $\\sin(\\theta) + \\cos(\\theta) = \\frac{5}{13} + \\frac{12}{13} = \\frac{17}{13}$.",
+      "B": "Student found the hypotenuse by adding the legs ($5 + 12 = 17$) instead of using the Pythagorean theorem, giving $\\frac{5}{17} + \\frac{12}{17} = 1$.",
+      "C": "Student subtracted the two ratios instead of adding: $\\frac{12}{13} - \\frac{5}{13} = \\frac{7}{13}$.",
+      "D": "Student reported only $\\cos(\\theta)$ and stopped, omitting the sine term: $\\frac{12}{13}$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Tangent gives you both legs. You will need the hypotenuse before you can write sine and cosine, so find it first."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the triangle with the two legs from the tangent ratio, then use the Pythagorean theorem to get the hypotenuse before adding the two ratios."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "trig_ratios",
+      "tangent",
+      "sine",
+      "cosine"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_057",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.3",
+    "topic": "basic_trigonometric_ratios",
+    "topic_text": "Basic Trigonometric Ratios (Sine, Cosine, Tangent)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "selecting sine when the opposite side and hypotenuse are known",
+      "using an inverse sine function to find an angle measure"
+    ],
+    "question_text": "In a right triangle, the side opposite an acute angle $\\theta$ has length 15 and the hypotenuse has length 17. To the nearest degree, what is the measure of $\\theta$?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$28^{\\circ}$",
+      "B": "$62^{\\circ}$",
+      "C": "$41^{\\circ}$",
+      "D": "$49^{\\circ}$"
+    },
+    "correct_answer": "B",
+    "explanation": "The opposite side and hypotenuse are related by sine:\n$\\sin(\\theta) = \\frac{\\text{opposite}}{\\text{hypotenuse}} = \\frac{15}{17} \\approx 0.882$\n$\\theta = \\sin^{-1}(0.882) \\approx 62^{\\circ}$",
+    "distractor_logic": {
+      "A": "Student used cosine instead of sine, computing $\\cos^{-1}\\left(\\frac{15}{17}\\right) \\approx 28^{\\circ}$, which is the complementary angle.",
+      "B": "Correct: $\\sin(\\theta) = \\frac{15}{17}$, so $\\theta = \\sin^{-1}(0.882) \\approx 62^{\\circ}$.",
+      "C": "Student fed the ratio into the inverse tangent instead of inverse sine, computing $\\tan^{-1}\\left(\\frac{15}{17}\\right) \\approx 41^{\\circ}$.",
+      "D": "Student inverted the ratio before applying the inverse function, computing $\\tan^{-1}\\left(\\frac{17}{15}\\right) \\approx 49^{\\circ}$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "graphing",
+    "requires_calculator": true,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "You know the opposite side and the hypotenuse, so sine is the ratio that links them. Use the inverse sine to recover the angle."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The opposite side (15) is almost as long as the hypotenuse (17), so the angle must be large, closer to $90^{\\circ}$ than to $0^{\\circ}$. Rule out the small angles."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "trig_ratios",
+      "inverse_sine",
+      "angle_measure",
+      "non_special_angle"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_058",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "right_triangles_and_trigonometry",
+    "objective_text": "Right Triangles and Trigonometry",
+    "topic_id": "GR.3.3",
+    "topic": "basic_trigonometric_ratios",
+    "topic_text": "Basic Trigonometric Ratios (Sine, Cosine, Tangent)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "finding a missing side from a known sine ratio using the Pythagorean theorem",
+      "expressing a tangent ratio in simplest radical form"
+    ],
+    "question_text": "For an acute angle $\\theta$ in a right triangle, $\\sin(\\theta) = \\frac{2}{3}$. What is $\\tan(\\theta)$, expressed in simplest radical form?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$\\frac{\\sqrt{5}}{2}$",
+      "B": "$\\frac{2}{3}$",
+      "C": "$\\frac{2\\sqrt{5}}{5}$",
+      "D": "$\\frac{2\\sqrt{13}}{13}$"
+    },
+    "correct_answer": "C",
+    "explanation": "Since $\\sin(\\theta) = \\frac{2}{3}$, the opposite side is 2 and the hypotenuse is 3. Find the adjacent side:\n$\\text{adjacent} = \\sqrt{3^{2} - 2^{2}} = \\sqrt{9 - 4} = \\sqrt{5}$\n$\\tan(\\theta) = \\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{2}{\\sqrt{5}} = \\frac{2\\sqrt{5}}{5}$",
+    "distractor_logic": {
+      "A": "Student inverted the tangent ratio, writing $\\frac{\\text{adjacent}}{\\text{opposite}} = \\frac{\\sqrt{5}}{2}$.",
+      "B": "Student reported the sine value as the tangent, using $\\frac{\\text{opposite}}{\\text{hypotenuse}} = \\frac{2}{3}$.",
+      "C": "Correct: the adjacent side is $\\sqrt{9 - 4} = \\sqrt{5}$, so $\\tan(\\theta) = \\frac{2}{\\sqrt{5}} = \\frac{2\\sqrt{5}}{5}$.",
+      "D": "Student added inside the radical instead of subtracting when finding the adjacent side, $\\sqrt{3^{2} + 2^{2}} = \\sqrt{13}$, giving $\\frac{2}{\\sqrt{13}} = \\frac{2\\sqrt{13}}{13}$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The sine value gives you the opposite side and the hypotenuse. Tangent needs the adjacent side, so find the missing leg first."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Draw the triangle, label the opposite leg and hypotenuse from the sine value, and use the Pythagorean theorem to get the adjacent leg before forming the tangent ratio."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "trig_ratios",
+      "tangent",
+      "radical_form",
+      "pythagorean_theorem"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  }
+]

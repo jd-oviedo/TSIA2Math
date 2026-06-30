@@ -1,0 +1,813 @@
+[
+  {
+    "item_id": "AR_B_136",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.12",
+    "topic": "exponential_growth_and_decay_models",
+    "topic_text": "Exponential Growth and Decay Models (including Compound Interest, Depreciation)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "selecting the correct exponential growth model for a described percent-increase scenario",
+      "converting a percent growth rate into a growth factor of the form (1 + r)"
+    ],
+    "question_text": "A town's population grows by 4% each year, starting from an initial population $P$. Which equation models the population after $t$ years?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$A = P(1.04)^{t}$",
+      "B": "$A = P(0.96)^{t}$",
+      "C": "$A = P(5)^{t}$",
+      "D": "$A = P(1 + 0.04t)$"
+    },
+    "correct_answer": "A",
+    "explanation": "A quantity that increases by a fixed percent each period follows the exponential growth model $A = P(1 + r)^{t}$.\nConvert the percent to a decimal: 4% becomes $0.04$.\nThe growth factor is $1 + 0.04 = 1.04$, raised to the number of years:\n$A = P(1.04)^{t}$",
+    "distractor_logic": {
+      "A": "Correct: a 4% annual increase gives a growth factor of $1 + 0.04 = 1.04$, so $A = P(1.04)^{t}$.",
+      "B": "Student subtracts the rate instead of adding it, using a decay factor $1 - 0.04 = 0.96$ as if the population were shrinking: $A = P(0.96)^{t}$.",
+      "C": "Student fails to convert the percent to a decimal, using $1 + 4 = 5$ as the growth factor: $A = P(5)^{t}$.",
+      "D": "Student applies the rate linearly as in simple interest, $A = P(1 + 0.04t)$, instead of compounding it exponentially."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Decide first whether the quantity is growing or shrinking. A percent increase each period means an exponential model with a factor greater than 1, raised to the number of periods."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A model that adds the rate only once, with no exponent on the factor, is linear and cannot capture growth that compounds yearly. Eliminate it."
+      }
+    ],
+    "content_context": "population_growth",
+    "context_tags": [
+      "exponential_growth",
+      "growth_model",
+      "percent_increase"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "AR_B_137",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.12",
+    "topic": "exponential_growth_and_decay_models",
+    "topic_text": "Exponential Growth and Decay Models (including Compound Interest, Depreciation)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "selecting the correct exponential decay model for a described percent-decrease scenario",
+      "converting a percent decay rate into a decay factor of the form (1 - r)"
+    ],
+    "question_text": "A car loses 15% of its value each year. Starting from an initial value $P$, which equation models the car's value after $t$ years?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "$A = P(1.15)^{t}$",
+      "B": "$A = P(0.15)^{t}$",
+      "C": "$A = P(0.85)^{t}$",
+      "D": "$A = P(1 - 0.15t)$"
+    },
+    "correct_answer": "C",
+    "explanation": "A quantity that decreases by a fixed percent each period follows the exponential decay model $A = P(1 - r)^{t}$.\nConvert the percent to a decimal: 15% becomes $0.15$.\nThe decay factor is $1 - 0.15 = 0.85$, raised to the number of years:\n$A = P(0.85)^{t}$",
+    "distractor_logic": {
+      "A": "Student treats the loss as a gain, adding the rate to build a growth factor $1 + 0.15 = 1.15$ instead of a decay factor: $A = P(1.15)^{t}$.",
+      "B": "Student uses the rate itself as the factor, forgetting that the value retained each year is $1 - r$, not $r$: $A = P(0.15)^{t}$.",
+      "C": "Correct: a 15% annual loss gives a decay factor of $1 - 0.15 = 0.85$, so $A = P(0.85)^{t}$.",
+      "D": "Student applies the rate linearly, $A = P(1 - 0.15t)$, instead of compounding the decay exponentially."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A quantity that loses a fixed percent each year shrinks, so its factor must be less than 1. Subtract the decimal rate from 1 to find that factor."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Eliminate any factor greater than 1, since the value is decreasing, and eliminate any linear form that applies the rate only once."
+      }
+    ],
+    "content_context": "car_depreciation",
+    "context_tags": [
+      "exponential_decay",
+      "decay_model",
+      "depreciation",
+      "percent_decrease"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "AR_B_138",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.12",
+    "topic": "exponential_growth_and_decay_models",
+    "topic_text": "Exponential Growth and Decay Models (including Compound Interest, Depreciation)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "recovering the annual growth rate from a given exponential growth factor",
+      "distinguishing the growth factor (1 + r) from the rate r itself"
+    ],
+    "question_text": "An investment is modeled by the equation $A = 500(1.08)^{t}$, where $t$ is the time in years. What is the annual growth rate?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "108%",
+      "B": "8%",
+      "C": "1.08%",
+      "D": "0.08%"
+    },
+    "correct_answer": "B",
+    "explanation": "In the model $A = P(1 + r)^{t}$, the number in parentheses is the growth factor $1 + r$.\nHere the factor is $1.08$, so $1 + r = 1.08$, which gives $r = 0.08$.\nConvert to a percent: $0.08 = 8\\%$.",
+    "distractor_logic": {
+      "A": "Student reports the entire growth factor $1.08$ as the rate, reading it as 108% instead of subtracting 1 first.",
+      "B": "Correct: $1 + r = 1.08$ gives $r = 0.08 = 8\\%$.",
+      "C": "Student reads the decimal $1.08$ directly as a percent, reporting 1.08%.",
+      "D": "Student finds $r = 0.08$ correctly but mis-converts the decimal to a percent, reporting 0.08% instead of multiplying by 100 to get 8%."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The number in parentheses is the growth factor, equal to 1 plus the decimal rate. Subtract 1 first, then convert the decimal to a percent."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The rate is the part above 1, not the whole factor. Eliminate any choice as large as or larger than the full factor."
+      }
+    ],
+    "content_context": "investment",
+    "context_tags": [
+      "exponential_growth",
+      "growth_rate",
+      "growth_factor"
+    ],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "AR_B_139",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.12",
+    "topic": "exponential_growth_and_decay_models",
+    "topic_text": "Exponential Growth and Decay Models (including Compound Interest, Depreciation)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "recovering the annual decay rate from a given exponential decay factor",
+      "distinguishing the decay factor (1 - r) from the rate r itself"
+    ],
+    "question_text": "The value of a piece of equipment is modeled by $A = 800(0.85)^{t}$, where $t$ is the time in years. What is the annual rate of decay?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "85%",
+      "B": "115%",
+      "C": "0.15%",
+      "D": "15%"
+    },
+    "correct_answer": "D",
+    "explanation": "In the decay model $A = P(1 - r)^{t}$, the number in parentheses is the decay factor $1 - r$.\nHere the factor is $0.85$, so $1 - r = 0.85$, which gives $r = 0.15$.\nConvert to a percent: $0.15 = 15\\%$.",
+    "distractor_logic": {
+      "A": "Student reports the decay factor $0.85$ as the rate, reading it as 85% instead of recognizing it as the portion retained.",
+      "B": "Student treats the scenario as growth, building $1 + 0.15 = 1.15$ and reporting it as 115%.",
+      "C": "Student finds $r = 0.15$ correctly but mis-converts the decimal to a percent, reporting 0.15% instead of 15%.",
+      "D": "Correct: $1 - r = 0.85$ gives $r = 0.15 = 15\\%$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "For a shrinking quantity, the factor in parentheses is 1 minus the decimal rate. Subtract the factor from 1, then convert to a percent."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "The decay factor is what remains, not what is lost, so the rate cannot equal the factor itself. Eliminate that choice and any rate above 100%."
+      }
+    ],
+    "content_context": "equipment_depreciation",
+    "context_tags": [
+      "exponential_decay",
+      "decay_rate",
+      "decay_factor"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "AR_B_140",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.12",
+    "topic": "exponential_growth_and_decay_models",
+    "topic_text": "Exponential Growth and Decay Models (including Compound Interest, Depreciation)",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "constructing a growth factor from a stated percent increase",
+      "converting a percent rate to a decimal before building the factor"
+    ],
+    "question_text": "A bacteria culture increases by 25% every hour. What is the hourly growth factor for this model?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "0.75",
+      "B": "0.25",
+      "C": "1.25",
+      "D": "26"
+    },
+    "correct_answer": "C",
+    "explanation": "The growth factor in an exponential model is $1 + r$, where $r$ is the rate as a decimal.\nConvert the percent: 25% becomes $0.25$.\nThe growth factor is $1 + 0.25 = 1.25$.",
+    "distractor_logic": {
+      "A": "Student subtracts the rate instead of adding it, $1 - 0.25 = 0.75$, treating the increase as a decrease.",
+      "B": "Student uses the decimal rate $0.25$ as the factor, forgetting to add it to 1.",
+      "C": "Correct: $1 + 0.25 = 1.25$.",
+      "D": "Student fails to convert the percent to a decimal, computing $1 + 25 = 26$."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Convert the percent to a decimal first, then add it to 1 to build the growth factor."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "Since the quantity grows, the factor must be a little more than 1. A value below 1 or far above it cannot be right."
+      }
+    ],
+    "content_context": "bacteria_growth",
+    "context_tags": [
+      "exponential_growth",
+      "growth_factor",
+      "percent_increase"
+    ],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "AR_P_088",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.12",
+    "topic": "exponential_growth_and_decay_models",
+    "topic_text": "Exponential Growth and Decay Models (including Compound Interest, Depreciation)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying an exponential decay model to compute a value after several periods",
+      "raising a decay factor to the correct number of periods"
+    ],
+    "question_text": "A car is worth \\$20{,}000 today and depreciates 10% per year. What is its value after 3 years?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$14{,}580",
+      "B": "\\$26{,}620",
+      "C": "\\$14{,}000",
+      "D": "\\$18{,}000"
+    },
+    "correct_answer": "A",
+    "explanation": "Depreciation is decay, so use $A = P(1 - r)^{t}$ with $P = 20000$, $r = 0.10$, $t = 3$.\nThe decay factor is $1 - 0.10 = 0.90$:\n$A = 20000(0.90)^{3} = 20000(0.729) = 14580$\n\nThe car is worth \\$14{,}580 after 3 years.",
+    "distractor_logic": {
+      "A": "Correct: $20000(0.90)^{3} = 20000(0.729) = 14580$.",
+      "B": "Student applies a growth model to a decay scenario, using $1 + 0.10 = 1.10$: $20000(1.10)^{3} = 20000(1.331) = 26620$.",
+      "C": "Student uses linear depreciation, subtracting 10% of the original value three times: $20000 - (0.10 \\cdot 20000 \\cdot 3) = 20000 - 6000 = 14000$.",
+      "D": "Student applies the decay for only one year instead of three: $20000(0.90) = 18000$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "basic",
+    "requires_calculator": true,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Depreciation is decay: build a factor of 1 minus the decimal rate, raise it to the number of years, then multiply by the starting value."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "The value drops each year but should stay well above zero after three years. A result above the original price signals a growth-decay mix-up."
+      }
+    ],
+    "content_context": "car_depreciation",
+    "context_tags": [
+      "exponential_decay",
+      "depreciation",
+      "compound_decay"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "AR_P_089",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.12",
+    "topic": "exponential_growth_and_decay_models",
+    "topic_text": "Exponential Growth and Decay Models (including Compound Interest, Depreciation)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying an exponential growth model to compute a value after several periods",
+      "distinguishing compound growth from repeated simple addition of a rate"
+    ],
+    "question_text": "A town has a population of 8,000 and grows 5% per year. What will the population be after 2 years?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "7,220",
+      "B": "8,820",
+      "C": "8,800",
+      "D": "8,400"
+    },
+    "correct_answer": "B",
+    "explanation": "Use $A = P(1 + r)^{t}$ with $P = 8000$, $r = 0.05$, $t = 2$.\nThe growth factor is $1 + 0.05 = 1.05$:\n$A = 8000(1.05)^{2} = 8000(1.1025) = 8820$",
+    "distractor_logic": {
+      "A": "Student applies a decay model to a growth scenario, using $1 - 0.05 = 0.95$: $8000(0.95)^{2} = 8000(0.9025) = 7220$.",
+      "B": "Correct: $8000(1.05)^{2} = 8000(1.1025) = 8820$.",
+      "C": "Student uses linear growth, adding 5% of the original twice: $8000 + (0.05 \\cdot 8000 \\cdot 2) = 8000 + 800 = 8800$.",
+      "D": "Student applies the growth for only one year instead of two: $8000(1.05) = 8400$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "basic",
+    "requires_calculator": true,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Growth uses a factor of 1 plus the decimal rate, raised to the number of years. Apply the exponent before multiplying by the starting population."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Compounding for two years gives slightly more than adding the yearly increase twice. Eliminate any choice equal to the one-year result or below the starting population."
+      }
+    ],
+    "content_context": "population_growth",
+    "context_tags": [
+      "exponential_growth",
+      "compound_growth",
+      "population"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "AR_P_090",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.12",
+    "topic": "exponential_growth_and_decay_models",
+    "topic_text": "Exponential Growth and Decay Models (including Compound Interest, Depreciation)",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying annually compounded interest as an exponential growth model",
+      "distinguishing compound interest from simple interest over multiple years"
+    ],
+    "question_text": "A savings account starts with \\$1{,}000 and earns 6% interest compounded annually. How much is in the account after 2 years?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$1{,}120.00",
+      "B": "\\$883.60",
+      "C": "\\$1{,}060.00",
+      "D": "\\$1{,}123.60"
+    },
+    "correct_answer": "D",
+    "explanation": "Interest compounded annually follows $A = P(1 + r)^{t}$ with $P = 1000$, $r = 0.06$, $t = 2$.\nThe factor is $1 + 0.06 = 1.06$:\n$A = 1000(1.06)^{2} = 1000(1.1236) = 1123.60$",
+    "distractor_logic": {
+      "A": "Student uses simple interest, $A = P(1 + rt) = 1000(1 + 0.06 \\cdot 2) = 1000(1.12) = 1120$, instead of compounding.",
+      "B": "Student applies a decay factor to a growth scenario, using $1 - 0.06 = 0.94$: $1000(0.94)^{2} = 1000(0.8836) = 883.60$.",
+      "C": "Student applies the interest for only one year instead of two: $1000(1.06) = 1060$.",
+      "D": "Correct: $1000(1.06)^{2} = 1000(1.1236) = 1123.60$."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "basic",
+    "requires_calculator": true,
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Annual compounding uses a factor of 1 plus the decimal rate, raised to the number of years. This grows a little faster than simple interest."
+      },
+      {
+        "strategy": "estimate_first",
+        "hint_text": "After two years of compounding, the balance should be slightly above the simple-interest result and above the starting amount. Use that to check your choice."
+      }
+    ],
+    "content_context": "compound_interest",
+    "context_tags": [
+      "compound_interest",
+      "exponential_growth",
+      "annual_compounding"
+    ],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "AR_A_064",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.12",
+    "topic": "exponential_growth_and_decay_models",
+    "topic_text": "Exponential Growth and Decay Models (including Compound Interest, Depreciation)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "applying the compound interest formula with a non-annual compounding period",
+      "correctly dividing the rate by n and multiplying the exponent by n"
+    ],
+    "question_text": "\\$2{,}000 is invested at an 8% annual interest rate, compounded quarterly. Using $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$, what is the account value after 1 year?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$2{,}160.00",
+      "B": "\\$2{,}720.98",
+      "C": "\\$2{,}164.86",
+      "D": "\\$2{,}040.00"
+    },
+    "correct_answer": "C",
+    "explanation": "Use $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$ with $P = 2000$, $r = 0.08$, $n = 4$, $t = 1$.\nDivide the rate by the number of periods: $\\frac{0.08}{4} = 0.02$.\nMultiply the exponent by $n$: $nt = 4 \\cdot 1 = 4$.\n$A = 2000(1.02)^{4} = 2000(1.08243216) = 2164.86$",
+    "distractor_logic": {
+      "A": "Student compounds annually instead of quarterly, using $n = 1$: $2000(1.08)^{1} = 2160$.",
+      "B": "Student fails to divide the rate by $n$, using $(1 + 0.08)^{4}$ instead of $(1 + 0.02)^{4}$: $2000(1.08)^{4} = 2000(1.36048896) = 2720.98$.",
+      "C": "Correct: $2000(1.02)^{4} = 2000(1.08243216) = 2164.86$.",
+      "D": "Student divides the rate by $n$ but fails to multiply the exponent by $n$, using $(1.02)^{1}$: $2000(1.02) = 2040$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "basic",
+    "requires_calculator": true,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Divide the annual rate by the number of compounding periods per year, and multiply the exponent by that same number. Both adjustments are required."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Quarterly compounding gives a result slightly above plain annual compounding at the same rate. Eliminate the choice equal to the annual result and any value far larger."
+      }
+    ],
+    "content_context": "compound_interest",
+    "context_tags": [
+      "compound_interest",
+      "quarterly_compounding",
+      "exponential_growth"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "AR_A_065",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Algebraic Reasoning",
+    "primary_strand": "AR",
+    "secondary_strands": [
+      "QR"
+    ],
+    "objective": "polynomial_rational_radical_exponential",
+    "objective_text": "Polynomial, Rational, Radical, and Exponential Expressions and Equations",
+    "topic_id": "AR.4.12",
+    "topic": "exponential_growth_and_decay_models",
+    "topic_text": "Exponential Growth and Decay Models (including Compound Interest, Depreciation)",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 4,
+    "skills_targeted": [
+      "working backward from a final amount to find the initial value in a growth model",
+      "reversing exponential growth by dividing by the compound factor"
+    ],
+    "question_text": "After 2 years of 10% annual growth, an investment is worth \\$6{,}050. Using $A = P(1 + r)^{t}$, what was the initial amount invested?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "\\$5{,}000.00",
+      "B": "\\$5{,}041.67",
+      "C": "\\$7{,}469.14",
+      "D": "\\$7{,}320.50"
+    },
+    "correct_answer": "A",
+    "explanation": "Use $A = P(1 + r)^{t}$ with $A = 6050$, $r = 0.10$, $t = 2$.\nThe compound factor is $(1.10)^{2} = 1.21$:\n$6050 = P(1.21)$\nSolve for $P$ by dividing:\n$P = \\frac{6050}{1.21} = 5000$",
+    "distractor_logic": {
+      "A": "Correct: $P = \\frac{6050}{(1.10)^{2}} = \\frac{6050}{1.21} = 5000$.",
+      "B": "Student uses simple growth, dividing by $(1 + rt) = 1.20$ instead of $(1 + r)^{t} = 1.21$: $\\frac{6050}{1.20} = 5041.67$.",
+      "C": "Student applies a decay factor instead of growth, dividing by $(0.90)^{2} = 0.81$: $\\frac{6050}{0.81} = 7469.14$.",
+      "D": "Student grows the final amount forward instead of reversing it, multiplying by the factor: $6050 \\cdot 1.21 = 7320.50$."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "basic",
+    "requires_calculator": true,
+    "applicable_strategies": [
+      "identify_key_info",
+      "use_answer_choices"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "To find the starting amount, divide the final amount by the full compound factor. Build that factor from 1 plus the decimal rate, raised to the number of years."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Take each choice, grow it forward by the two-year factor, and check which one lands on the given final amount."
+      }
+    ],
+    "content_context": "investment",
+    "context_tags": [
+      "exponential_growth",
+      "reverse_reasoning",
+      "initial_value"
+    ],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-29",
+    "last_modified": "2026-06-29",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  }
+]

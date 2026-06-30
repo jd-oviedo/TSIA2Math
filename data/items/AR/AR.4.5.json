@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_expression", "simplifying", "common_factor", "monomial"],
+    "context_tags": [
+      "rational_expression",
+      "simplifying",
+      "common_factor",
+      "monomial"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -67,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-28",
     "last_modified": "2026-06-28",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_102",
@@ -111,7 +121,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -123,11 +136,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_expression", "simplifying", "greatest_common_factor", "monomial"],
+    "context_tags": [
+      "rational_expression",
+      "simplifying",
+      "greatest_common_factor",
+      "monomial"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -137,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-28",
     "last_modified": "2026-06-28",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_103",
@@ -181,7 +201,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -193,11 +216,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_expression", "difference_of_squares", "simplifying", "binomial_factor"],
+    "context_tags": [
+      "rational_expression",
+      "difference_of_squares",
+      "simplifying",
+      "binomial_factor"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -207,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-28",
     "last_modified": "2026-06-28",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_104",
@@ -251,7 +281,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -263,11 +296,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_expression", "difference_of_squares", "simplifying", "binomial_factor"],
+    "context_tags": [
+      "rational_expression",
+      "difference_of_squares",
+      "simplifying",
+      "binomial_factor"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -277,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-28",
     "last_modified": "2026-06-28",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_105",
@@ -321,7 +361,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -333,11 +376,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_expression", "simplifying", "greatest_common_factor", "monomial"],
+    "context_tags": [
+      "rational_expression",
+      "simplifying",
+      "greatest_common_factor",
+      "monomial"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -347,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-28",
     "last_modified": "2026-06-28",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_067",
@@ -391,7 +441,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -403,11 +456,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_expression", "factoring_trinomial", "difference_of_squares", "simplifying"],
+    "context_tags": [
+      "rational_expression",
+      "factoring_trinomial",
+      "difference_of_squares",
+      "simplifying"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -417,7 +475,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-28",
     "last_modified": "2026-06-28",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_068",
@@ -461,7 +521,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -473,11 +536,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_expression", "perfect_square_trinomial", "difference_of_squares", "simplifying"],
+    "context_tags": [
+      "rational_expression",
+      "perfect_square_trinomial",
+      "difference_of_squares",
+      "simplifying"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -487,7 +555,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-28",
     "last_modified": "2026-06-28",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_069",
@@ -531,7 +601,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -543,11 +616,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_expression", "factoring_trinomial", "difference_of_squares", "simplifying"],
+    "context_tags": [
+      "rational_expression",
+      "factoring_trinomial",
+      "difference_of_squares",
+      "simplifying"
+    ],
     "estimated_time_seconds": 115,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -557,7 +635,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-28",
     "last_modified": "2026-06-28",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_A_050",
@@ -601,7 +681,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -613,11 +696,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_expression", "common_factor", "difference_of_squares", "factoring_trinomial"],
+    "context_tags": [
+      "rational_expression",
+      "common_factor",
+      "difference_of_squares",
+      "factoring_trinomial"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -627,7 +715,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-28",
     "last_modified": "2026-06-28",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_A_051",
@@ -671,7 +761,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -683,11 +776,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_expression", "domain_restriction", "factoring", "removable_discontinuity"],
+    "context_tags": [
+      "rational_expression",
+      "domain_restriction",
+      "factoring",
+      "removable_discontinuity"
+    ],
     "estimated_time_seconds": 145,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -697,6 +795,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-28",
     "last_modified": "2026-06-28",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

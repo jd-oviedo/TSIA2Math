@@ -19,7 +19,7 @@
       "identifying the two consecutive integers a square root lies between",
       "using perfect squares to bound a square root estimate"
     ],
-    "question_text": "Between which two consecutive whole numbers does √85 lie?",
+    "question_text": "Between which two consecutive whole numbers does \u221a85 lie?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "8 and 9",
@@ -28,11 +28,11 @@
       "D": "84 and 86"
     },
     "correct_answer": "C",
-    "explanation": "Find the perfect squares on either side of 85. 9² = 81 and 10² = 100, and 81 < 85 < 100, so √85 lies between 9 and 10.",
+    "explanation": "Find the perfect squares on either side of 85. 9\u00b2 = 81 and 10\u00b2 = 100, and 81 < 85 < 100, so \u221a85 lies between 9 and 10.",
     "distractor_logic": {
-      "A": "Student uses the perfect squares 64 (= 8²) and 81 (= 9²) instead of locating 85 between 81 = 9² and 100 = 10².",
-      "B": "Student halves the radicand (85 ÷ 2 ≈ 42.5) and reports the integers around it.",
-      "C": "Correct: 9² = 81 < 85 < 100 = 10², so √85 lies between 9 and 10.",
+      "A": "Student uses the perfect squares 64 (= 8\u00b2) and 81 (= 9\u00b2) instead of locating 85 between 81 = 9\u00b2 and 100 = 10\u00b2.",
+      "B": "Student halves the radicand (85 \u00f7 2 \u2248 42.5) and reports the integers around it.",
+      "C": "Correct: 9\u00b2 = 81 < 85 < 100 = 10\u00b2, so \u221a85 lies between 9 and 10.",
       "D": "Student places the estimate near the radicand itself, choosing integers on either side of 85 rather than finding its square root."
     },
     "difficulty_level": "Basic",
@@ -48,11 +48,11 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Find the perfect squares on either side of 85: 9² = 81 and 10² = 100."
+        "hint_text": "Find the perfect squares on either side of 85: 9\u00b2 = 81 and 10\u00b2 = 100."
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "You only need the two whole numbers √85 sits between, not its exact value."
+        "hint_text": "You only need the two whole numbers \u221a85 sits between, not its exact value."
       }
     ],
     "content_context": "generic",
@@ -74,7 +74,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_020",
@@ -96,7 +98,7 @@
       "estimating a square root to one decimal place using nearby perfect squares",
       "selecting the most accurate single-decimal estimate for a square root"
     ],
-    "question_text": "Which is the best one-decimal-place estimate for √30?",
+    "question_text": "Which is the best one-decimal-place estimate for \u221a30?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "5.5",
@@ -105,12 +107,12 @@
       "D": "5"
     },
     "correct_answer": "A",
-    "explanation": "√25 = 5 and √36 = 6, so √30 lies between 5 and 6. Testing 5.5: 5.5² = 30.25, which is very close to 30. Since √30 ≈ 5.477, the best one-decimal estimate is 5.5.",
+    "explanation": "\u221a25 = 5 and \u221a36 = 6, so \u221a30 lies between 5 and 6. Testing 5.5: 5.5\u00b2 = 30.25, which is very close to 30. Since \u221a30 \u2248 5.477, the best one-decimal estimate is 5.5.",
     "distractor_logic": {
-      "A": "Correct: 5.5² = 30.25 ≈ 30, and √30 ≈ 5.477 rounds to 5.5.",
-      "B": "Student rounds up to the next perfect square root (√36 = 6) without refining.",
-      "C": "Student halves the radicand (30 ÷ 2 = 15) instead of estimating its square root.",
-      "D": "Student rounds down to the lower perfect square root (√25 = 5) without refining."
+      "A": "Correct: 5.5\u00b2 = 30.25 \u2248 30, and \u221a30 \u2248 5.477 rounds to 5.5.",
+      "B": "Student rounds up to the next perfect square root (\u221a36 = 6) without refining.",
+      "C": "Student halves the radicand (30 \u00f7 2 = 15) instead of estimating its square root.",
+      "D": "Student rounds down to the lower perfect square root (\u221a25 = 5) without refining."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -125,11 +127,11 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "√25 = 5 and √36 = 6 — test 5.5: 5.5² = 30.25 ≈ 30."
+        "hint_text": "\u221a25 = 5 and \u221a36 = 6 \u2014 test 5.5: 5.5\u00b2 = 30.25 \u2248 30."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Halving (15) and the nearest perfect square roots (5, 6) are clearly off — eliminate them."
+        "hint_text": "Halving (15) and the nearest perfect square roots (5, 6) are clearly off \u2014 eliminate them."
       }
     ],
     "content_context": "other",
@@ -151,7 +153,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_021",
@@ -173,7 +177,7 @@
       "determining the closest whole number to a square root",
       "comparing the distance of a radicand from adjacent perfect squares"
     ],
-    "question_text": "A fence post needs to be √70 feet tall. Which whole number is closest to √70?",
+    "question_text": "A fence post needs to be \u221a70 feet tall. Which whole number is closest to \u221a70?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "7",
@@ -182,12 +186,12 @@
       "D": "8"
     },
     "correct_answer": "D",
-    "explanation": "8² = 64 and 9² = 81. The value 70 is 6 away from 64 and 11 away from 81, so it is closer to 64. This means √70 is closer to 8 than to 9. (In fact, √70 ≈ 8.37.)",
+    "explanation": "8\u00b2 = 64 and 9\u00b2 = 81. The value 70 is 6 away from 64 and 11 away from 81, so it is closer to 64. This means \u221a70 is closer to 8 than to 9. (In fact, \u221a70 \u2248 8.37.)",
     "distractor_logic": {
-      "A": "Student undershoots, using √49 = 7 rather than the correct bounding squares 8² = 64 and 9² = 81.",
+      "A": "Student undershoots, using \u221a49 = 7 rather than the correct bounding squares 8\u00b2 = 64 and 9\u00b2 = 81.",
       "B": "Student rounds up to the higher bounding integer without checking which perfect square is closer to 70.",
-      "C": "Student halves the radicand (70 ÷ 2 = 35) instead of estimating the square root.",
-      "D": "Correct: 70 is 6 away from 64 = 8² and 11 away from 81 = 9², so √70 is closest to 8."
+      "C": "Student halves the radicand (70 \u00f7 2 = 35) instead of estimating the square root.",
+      "D": "Correct: 70 is 6 away from 64 = 8\u00b2 and 11 away from 81 = 9\u00b2, so \u221a70 is closest to 8."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -202,11 +206,11 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Compare 70 to both 8² = 64 and 9² = 81 to see which it's closer to."
+        "hint_text": "Compare 70 to both 8\u00b2 = 64 and 9\u00b2 = 81 to see which it's closer to."
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "Closer radicand means closer square root — compare the gaps, not the roots."
+        "hint_text": "Closer radicand means closer square root \u2014 compare the gaps, not the roots."
       }
     ],
     "content_context": "construction_measurement",
@@ -228,7 +232,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_022",
@@ -250,7 +256,7 @@
       "identifying a decimal value that falls between two given square roots",
       "estimating square roots to place them on a number line"
     ],
-    "question_text": "Which of the following values lies between √40 and √50?",
+    "question_text": "Which of the following values lies between \u221a40 and \u221a50?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "6",
@@ -259,12 +265,12 @@
       "D": "4.7"
     },
     "correct_answer": "B",
-    "explanation": "Estimate each root: √40 lies between √36 = 6 and √49 = 7, so √40 ≈ 6.32. √50 lies between √49 = 7 and √64 = 8, so √50 ≈ 7.07. A value that falls strictly between them must be greater than 6.32 and less than 7.07. Of the choices, only 6.5 satisfies 6.32 < 6.5 < 7.07.",
+    "explanation": "Estimate each root: \u221a40 lies between \u221a36 = 6 and \u221a49 = 7, so \u221a40 \u2248 6.32. \u221a50 lies between \u221a49 = 7 and \u221a64 = 8, so \u221a50 \u2248 7.07. A value that falls strictly between them must be greater than 6.32 and less than 7.07. Of the choices, only 6.5 satisfies 6.32 < 6.5 < 7.07.",
     "distractor_logic": {
-      "A": "Student knows √40 is above 6 (since 6² = 36 < 40) but selects 6 itself, which is below √40 ≈ 6.32.",
-      "B": "Correct: 6.32 ≈ √40 < 6.5 < 7.07 ≈ √50.",
-      "C": "Student overestimates √50, treating it as about 7.1 or more, so 7.1 appears to fall within the range.",
-      "D": "Student misestimates the bounds, perhaps believing √40 ≈ 4, and picks a value below the true range."
+      "A": "Student knows \u221a40 is above 6 (since 6\u00b2 = 36 < 40) but selects 6 itself, which is below \u221a40 \u2248 6.32.",
+      "B": "Correct: 6.32 \u2248 \u221a40 < 6.5 < 7.07 \u2248 \u221a50.",
+      "C": "Student overestimates \u221a50, treating it as about 7.1 or more, so 7.1 appears to fall within the range.",
+      "D": "Student misestimates the bounds, perhaps believing \u221a40 \u2248 4, and picks a value below the true range."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -279,11 +285,11 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Estimate √40 ≈ 6.3 and √50 ≈ 7.1 using nearby perfect squares."
+        "hint_text": "Estimate \u221a40 \u2248 6.3 and \u221a50 \u2248 7.1 using nearby perfect squares."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "6 is below √40 and 7.1 is above √50 — eliminate both ends first."
+        "hint_text": "6 is below \u221a40 and 7.1 is above \u221a50 \u2014 eliminate both ends first."
       }
     ],
     "content_context": "generic",
@@ -305,7 +311,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_023",
@@ -327,21 +335,21 @@
       "identifying the nearest perfect square root to a given square root",
       "comparing the distance of a radicand from adjacent perfect squares"
     ],
-    "question_text": "To which perfect square root is √60 closest?",
+    "question_text": "To which perfect square root is \u221a60 closest?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "√49 = 7",
-      "B": "√64 = 8",
-      "C": "√100 = 10",
-      "D": "√36 = 6"
+      "A": "\u221a49 = 7",
+      "B": "\u221a64 = 8",
+      "C": "\u221a100 = 10",
+      "D": "\u221a36 = 6"
     },
     "correct_answer": "B",
-    "explanation": "The perfect squares on either side of 60 are 49 (= 7²) and 64 (= 8²). The distance from 60 to 49 is 11, and the distance from 60 to 64 is only 4. Since 60 is much closer to 64, √60 is closest to √64 = 8. (In fact, √60 ≈ 7.75, which is nearer to 8.)",
+    "explanation": "The perfect squares on either side of 60 are 49 (= 7\u00b2) and 64 (= 8\u00b2). The distance from 60 to 49 is 11, and the distance from 60 to 64 is only 4. Since 60 is much closer to 64, \u221a60 is closest to \u221a64 = 8. (In fact, \u221a60 \u2248 7.75, which is nearer to 8.)",
     "distractor_logic": {
-      "A": "Student identifies 7 as the lower bound for √60 (since 7² = 49 < 60) but does not check which bound 60 is closer to.",
-      "B": "Correct: 60 is only 4 away from 64 = 8², compared to 11 away from 49 = 7², so √60 is closest to √64 = 8.",
+      "A": "Student identifies 7 as the lower bound for \u221a60 (since 7\u00b2 = 49 < 60) but does not check which bound 60 is closer to.",
+      "B": "Correct: 60 is only 4 away from 64 = 8\u00b2, compared to 11 away from 49 = 7\u00b2, so \u221a60 is closest to \u221a64 = 8.",
       "C": "Student rounds toward the nearest multiple of 10 under the radical, treating 60 as close to 100.",
-      "D": "Student undershoots by one step, using √36 = 6 instead of √49 = 7 as the lower bound."
+      "D": "Student undershoots by one step, using \u221a36 = 6 instead of \u221a49 = 7 as the lower bound."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -356,7 +364,7 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Measure the gap from 60 to each nearby perfect square: 60 − 49 = 11 vs 64 − 60 = 4."
+        "hint_text": "Measure the gap from 60 to each nearby perfect square: 60 \u2212 49 = 11 vs 64 \u2212 60 = 4."
       },
       {
         "strategy": "identify_key_info",
@@ -382,7 +390,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_020",
@@ -404,7 +414,7 @@
       "estimating a square root to the nearest tenth by squaring decimal candidates",
       "refining a square root estimate by comparing trial squares to the radicand"
     ],
-    "question_text": "A scientist records a measurement as √55 centimeters. What is this length, rounded to the nearest tenth?",
+    "question_text": "A scientist records a measurement as \u221a55 centimeters. What is this length, rounded to the nearest tenth?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "7.0",
@@ -413,12 +423,12 @@
       "D": "8.0"
     },
     "correct_answer": "C",
-    "explanation": "√49 = 7 and √64 = 8, so √55 is between 7 and 8. Test 7.4: 7.4² = 54.76. Test 7.5: 7.5² = 56.25. Since 54.76 < 55 < 56.25, √55 is between 7.4 and 7.5. The gap from 54.76 to 55 is 0.24, while the gap from 55 to 56.25 is 1.25, so √55 is much closer to 7.4. In fact, √55 ≈ 7.416, which rounds to 7.4.",
+    "explanation": "\u221a49 = 7 and \u221a64 = 8, so \u221a55 is between 7 and 8. Test 7.4: 7.4\u00b2 = 54.76. Test 7.5: 7.5\u00b2 = 56.25. Since 54.76 < 55 < 56.25, \u221a55 is between 7.4 and 7.5. The gap from 54.76 to 55 is 0.24, while the gap from 55 to 56.25 is 1.25, so \u221a55 is much closer to 7.4. In fact, \u221a55 \u2248 7.416, which rounds to 7.4.",
     "distractor_logic": {
-      "A": "Student rounds to the lower bounding integer (√49 = 7) without refining.",
-      "B": "Student uses the midpoint of the 7-to-8 range as the default estimate without testing whether √55 falls above or below 7.5.",
-      "C": "Correct: 7.4² = 54.76 < 55 and 55 − 54.76 = 0.24 << 56.25 − 55 = 1.25, so √55 ≈ 7.4.",
-      "D": "Student rounds to the upper bounding integer (√64 = 8) without refining."
+      "A": "Student rounds to the lower bounding integer (\u221a49 = 7) without refining.",
+      "B": "Student uses the midpoint of the 7-to-8 range as the default estimate without testing whether \u221a55 falls above or below 7.5.",
+      "C": "Correct: 7.4\u00b2 = 54.76 < 55 and 55 \u2212 54.76 = 0.24 << 56.25 \u2212 55 = 1.25, so \u221a55 \u2248 7.4.",
+      "D": "Student rounds to the upper bounding integer (\u221a64 = 8) without refining."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -434,15 +444,15 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Test 7.4² = 54.76 and 7.5² = 56.25 to bracket √55."
+        "hint_text": "Test 7.4\u00b2 = 54.76 and 7.5\u00b2 = 56.25 to bracket \u221a55."
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "Compare the gap from each trial square to 55 — the smaller gap wins."
+        "hint_text": "Compare the gap from each trial square to 55 \u2014 the smaller gap wins."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "7.0 and 8.0 are the bounding integers, not refined estimates — eliminate them."
+        "hint_text": "7.0 and 8.0 are the bounding integers, not refined estimates \u2014 eliminate them."
       }
     ],
     "content_context": "science_application",
@@ -464,7 +474,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_021",
@@ -486,7 +498,7 @@
       "determining whether a square root is closer to the lower or upper bounding integer",
       "estimating a square root to the nearest tenth using trial squares"
     ],
-    "question_text": "Which statement correctly describes √37 and its best one-decimal-place estimate?",
+    "question_text": "Which statement correctly describes \u221a37 and its best one-decimal-place estimate?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Closer to 7; estimate 7.0",
@@ -495,12 +507,12 @@
       "D": "Closer to 6; estimate 6.1"
     },
     "correct_answer": "D",
-    "explanation": "6² = 36 and 7² = 49. The value 37 is only 1 away from 36 = 6² and 12 away from 49 = 7², so √37 is much closer to 6. Refining: 6.1² = 37.21 ≈ 37, confirming √37 ≈ 6.08. The best one-decimal estimate is 6.1.",
+    "explanation": "6\u00b2 = 36 and 7\u00b2 = 49. The value 37 is only 1 away from 36 = 6\u00b2 and 12 away from 49 = 7\u00b2, so \u221a37 is much closer to 6. Refining: 6.1\u00b2 = 37.21 \u2248 37, confirming \u221a37 \u2248 6.08. The best one-decimal estimate is 6.1.",
     "distractor_logic": {
-      "A": "Student rounds √37 all the way up to 7 by treating 37 as close to 49 = 7² rather than recognizing it is only 1 away from 36 = 6².",
-      "B": "Student correctly identifies √37 as closer to 6 but uses the midpoint 6.5 rather than checking by squaring.",
-      "C": "Student gives internally inconsistent reasoning — pointing toward 7 but then using the midpoint 6.5.",
-      "D": "Correct: 37 is 1 away from 36 = 6², so √37 is just above 6; 6.1² = 37.21 confirms √37 ≈ 6.1."
+      "A": "Student rounds \u221a37 all the way up to 7 by treating 37 as close to 49 = 7\u00b2 rather than recognizing it is only 1 away from 36 = 6\u00b2.",
+      "B": "Student correctly identifies \u221a37 as closer to 6 but uses the midpoint 6.5 rather than checking by squaring.",
+      "C": "Student gives internally inconsistent reasoning \u2014 pointing toward 7 but then using the midpoint 6.5.",
+      "D": "Correct: 37 is 1 away from 36 = 6\u00b2, so \u221a37 is just above 6; 6.1\u00b2 = 37.21 confirms \u221a37 \u2248 6.1."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,11 +527,11 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Compare 37 to both 6² = 36 and 7² = 49 — 37 is only 1 from 36."
+        "hint_text": "Compare 37 to both 6\u00b2 = 36 and 7\u00b2 = 49 \u2014 37 is only 1 from 36."
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "Test 6.1² = 37.21 to confirm the one-decimal estimate."
+        "hint_text": "Test 6.1\u00b2 = 37.21 to confirm the one-decimal estimate."
       }
     ],
     "content_context": "generic",
@@ -541,7 +553,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_022",
@@ -563,19 +577,19 @@
       "evaluating a given estimate of a square root by squaring and comparing to the radicand",
       "identifying whether an estimate of a square root is too high or too low"
     ],
-    "question_text": "A student estimates √62 ≈ 7.8. Which statement correctly evaluates this estimate?",
+    "question_text": "A student estimates \u221a62 \u2248 7.8. Which statement correctly evaluates this estimate?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "Too low, because 7.8² = 60.84 < 62",
-      "B": "Too high, because 7.8² = 60.84 > 62",
+      "A": "Too low, because 7.8\u00b2 = 60.84 < 62",
+      "B": "Too high, because 7.8\u00b2 = 60.84 > 62",
       "C": "Correct, because 7.8 is between 7 and 8",
-      "D": "Too high, because √64 = 8 and 8 > 7.8"
+      "D": "Too high, because \u221a64 = 8 and 8 > 7.8"
     },
     "correct_answer": "A",
-    "explanation": "Square the estimate: 7.8² = 60.84. Since 60.84 < 62, the estimate 7.8 is less than √62, making it too low. (In fact, √62 ≈ 7.874.)",
+    "explanation": "Square the estimate: 7.8\u00b2 = 60.84. Since 60.84 < 62, the estimate 7.8 is less than \u221a62, making it too low. (In fact, \u221a62 \u2248 7.874.)",
     "distractor_logic": {
-      "A": "Correct: 7.8² = 60.84 < 62, so √62 > 7.8 — the estimate is too low.",
-      "B": "Student computes 7.8² = 60.84 correctly but reverses the inequality, concluding 60.84 > 62.",
+      "A": "Correct: 7.8\u00b2 = 60.84 < 62, so \u221a62 > 7.8 \u2014 the estimate is too low.",
+      "B": "Student computes 7.8\u00b2 = 60.84 correctly but reverses the inequality, concluding 60.84 > 62.",
       "C": "Student checks only that 7.8 falls in the range 7 to 8 without squaring to test accuracy.",
       "D": "Student compares 7.8 to the next perfect square root (8) and concludes it must be too high because 8 > 7.8, without squaring 7.8."
     },
@@ -593,7 +607,7 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Square the estimate: 7.8² = 60.84. Compare to 62."
+        "hint_text": "Square the estimate: 7.8\u00b2 = 60.84. Compare to 62."
       },
       {
         "strategy": "identify_key_info",
@@ -601,7 +615,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Being between 7 and 8 only shows it's in range — it doesn't confirm accuracy."
+        "hint_text": "Being between 7 and 8 only shows it's in range \u2014 it doesn't confirm accuracy."
       }
     ],
     "content_context": "other",
@@ -623,7 +637,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_023",
@@ -654,12 +670,12 @@
       "D": "11.0 feet"
     },
     "correct_answer": "D",
-    "explanation": "The side length equals √120. The nearest perfect squares are 10² = 100 and 11² = 121. Since 121 is only 1 away from 120 and 100 is 20 away, √120 is much closer to 11 than to 10. That means √120 is just barely less than 11 — close enough that it rounds up to 11.0. The side length is 11.0 feet.",
+    "explanation": "The side length equals \u221a120. The nearest perfect squares are 10\u00b2 = 100 and 11\u00b2 = 121. Since 121 is only 1 away from 120 and 100 is 20 away, \u221a120 is much closer to 11 than to 10. That means \u221a120 is just barely less than 11 \u2014 close enough that it rounds up to 11.0. The side length is 11.0 feet.",
     "distractor_logic": {
-      "A": "Student uses the lower perfect square root √100 = 10.0 and does not refine beyond the integer.",
-      "B": "Student tests 10.9² = 118.81 and concludes √120 ≈ 10.9 without refining to the next tenth.",
-      "C": "Student confuses area with perimeter or uses √144 = 12 instead of √121 ≈ 11.",
-      "D": "Correct: √120 ≈ 10.954, which rounds to 11.0 feet."
+      "A": "Student uses the lower perfect square root \u221a100 = 10.0 and does not refine beyond the integer.",
+      "B": "Student tests 10.9\u00b2 = 118.81 and concludes \u221a120 \u2248 10.9 without refining to the next tenth.",
+      "C": "Student confuses area with perimeter or uses \u221a144 = 12 instead of \u221a121 \u2248 11.",
+      "D": "Correct: \u221a120 \u2248 10.954, which rounds to 11.0 feet."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -674,11 +690,11 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "11² = 121 is very close to 120 — test 10.9 and 10.95 to bracket √120."
+        "hint_text": "11\u00b2 = 121 is very close to 120 \u2014 test 10.9 and 10.95 to bracket \u221a120."
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "The side length is √120, not 120 ÷ 4."
+        "hint_text": "The side length is \u221a120, not 120 \u00f7 4."
       }
     ],
     "content_context": "other",
@@ -701,7 +717,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-06-06",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_024",
@@ -723,7 +741,7 @@
       "estimating two square roots and computing the difference between them",
       "applying estimation to compare physical quantities"
     ],
-    "question_text": "Two steel beams have lengths of √95 feet and √105 feet. Approximately how much longer is the longer beam, to the nearest tenth of a foot?",
+    "question_text": "Two steel beams have lengths of \u221a95 feet and \u221a105 feet. Approximately how much longer is the longer beam, to the nearest tenth of a foot?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "About 1.0 foot",
@@ -732,12 +750,12 @@
       "D": "About 0.6 feet"
     },
     "correct_answer": "C",
-    "explanation": "Estimate each root. √95: 9² = 81 and 10² = 100, so √95 is between 9 and 10. Test 9.7: 9.7² = 94.09. Test 9.75: 9.75² ≈ 95.06. So √95 ≈ 9.75. √105: 10² = 100 and 11² = 121. Test 10.2: 10.2² = 104.04. Test 10.25: 10.25² ≈ 105.06. So √105 ≈ 10.25. Difference: 10.25 − 9.75 = 0.50 feet.",
+    "explanation": "Estimate each root. \u221a95: 9\u00b2 = 81 and 10\u00b2 = 100, so \u221a95 is between 9 and 10. Test 9.7: 9.7\u00b2 = 94.09. Test 9.75: 9.75\u00b2 \u2248 95.06. So \u221a95 \u2248 9.75. \u221a105: 10\u00b2 = 100 and 11\u00b2 = 121. Test 10.2: 10.2\u00b2 = 104.04. Test 10.25: 10.25\u00b2 \u2248 105.06. So \u221a105 \u2248 10.25. Difference: 10.25 \u2212 9.75 = 0.50 feet.",
     "distractor_logic": {
-      "A": "Student rounds √95 ≈ 9.7 down to 9 and √105 ≈ 10.2 up to 10, then subtracts: 10 − 9 = 1 foot.",
-      "B": "Student underestimates √95 as about 9.8 and √105 as about 10.2, giving a difference of 0.4.",
-      "C": "Correct: √95 ≈ 9.75 and √105 ≈ 10.25, so the difference is 10.25 − 9.75 = 0.50 feet.",
-      "D": "Student overestimates √95 as about 9.7 and √105 as about 10.3, giving a difference of 0.6."
+      "A": "Student rounds \u221a95 \u2248 9.7 down to 9 and \u221a105 \u2248 10.2 up to 10, then subtracts: 10 \u2212 9 = 1 foot.",
+      "B": "Student underestimates \u221a95 as about 9.8 and \u221a105 as about 10.2, giving a difference of 0.4.",
+      "C": "Correct: \u221a95 \u2248 9.75 and \u221a105 \u2248 10.25, so the difference is 10.25 \u2212 9.75 = 0.50 feet.",
+      "D": "Student overestimates \u221a95 as about 9.7 and \u221a105 as about 10.3, giving a difference of 0.6."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -752,11 +770,11 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Estimate each root separately: 9.75² ≈ 95 and 10.25² ≈ 105."
+        "hint_text": "Estimate each root separately: 9.75\u00b2 \u2248 95 and 10.25\u00b2 \u2248 105."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Subtracting radicands (10 feet) ignores the square root — eliminate that trap."
+        "hint_text": "Subtracting radicands (10 feet) ignores the square root \u2014 eliminate that trap."
       }
     ],
     "content_context": "construction_measurement",
@@ -778,7 +796,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_020",
@@ -800,7 +820,7 @@
       "using given trial squares to identify the closest one-decimal-place estimate",
       "refining a square root estimate by comparing squared trial values to the radicand"
     ],
-    "question_text": "Using the facts that 4.8² = 23.04 and 4.9² = 24.01, what is the best one-decimal-place estimate for √24?",
+    "question_text": "Using the facts that 4.8\u00b2 = 23.04 and 4.9\u00b2 = 24.01, what is the best one-decimal-place estimate for \u221a24?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "4.8",
@@ -809,12 +829,12 @@
       "D": "4.9"
     },
     "correct_answer": "D",
-    "explanation": "Since 4.8² = 23.04 < 24 < 24.01 = 4.9², √24 lies between 4.8 and 4.9. The gap from 4.8² to 24 is 24 − 23.04 = 0.96, while the gap from 4.9² to 24 is 24.01 − 24 = 0.01. Because √24 is almost exactly equal to 4.9, the best one-decimal estimate is 4.9.",
+    "explanation": "Since 4.8\u00b2 = 23.04 < 24 < 24.01 = 4.9\u00b2, \u221a24 lies between 4.8 and 4.9. The gap from 4.8\u00b2 to 24 is 24 \u2212 23.04 = 0.96, while the gap from 4.9\u00b2 to 24 is 24.01 \u2212 24 = 0.01. Because \u221a24 is almost exactly equal to 4.9, the best one-decimal estimate is 4.9.",
     "distractor_logic": {
-      "A": "Student sees that 4.8² = 23.04 < 24 and selects 4.8 without examining 4.9².",
-      "B": "Student rounds up to the nearest perfect square root, using √25 = 5.0.",
+      "A": "Student sees that 4.8\u00b2 = 23.04 < 24 and selects 4.8 without examining 4.9\u00b2.",
+      "B": "Student rounds up to the nearest perfect square root, using \u221a25 = 5.0.",
       "C": "Student uses the midpoint of 4 and 5 rather than the given trial squares.",
-      "D": "Correct: 4.9² = 24.01 ≈ 24, making 4.9 the closest one-decimal estimate."
+      "D": "Correct: 4.9\u00b2 = 24.01 \u2248 24, making 4.9 the closest one-decimal estimate."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -830,15 +850,15 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Both 4.8 and 4.9 bracket 24 — compare the gaps to see which is closer."
+        "hint_text": "Both 4.8 and 4.9 bracket 24 \u2014 compare the gaps to see which is closer."
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "24.01 − 24 = 0.01, nearly zero. √24 is almost exactly 4.9."
+        "hint_text": "24.01 \u2212 24 = 0.01, nearly zero. \u221a24 is almost exactly 4.9."
       },
       {
         "strategy": "use_answer_choices",
-        "hint_text": "Compute 4.9² = 24.01 directly to confirm — it's only 0.01 above 24."
+        "hint_text": "Compute 4.9\u00b2 = 24.01 directly to confirm \u2014 it's only 0.01 above 24."
       }
     ],
     "content_context": "generic",
@@ -860,7 +880,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_021",
@@ -882,7 +904,7 @@
       "estimating a square root of a larger non-perfect square to one decimal place",
       "selecting the most accurate estimate by comparing squared trial values"
     ],
-    "question_text": "What is the most accurate one-decimal-place estimate for √130?",
+    "question_text": "What is the most accurate one-decimal-place estimate for \u221a130?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "11.4",
@@ -891,11 +913,11 @@
       "D": "12"
     },
     "correct_answer": "A",
-    "explanation": "11² = 121 and 12² = 144. √130 lies between 11 and 12. Test 11.4: 11.4² = 129.96. Test 11.5: 11.5² = 132.25. Since 130 − 129.96 = 0.04 and 132.25 − 130 = 2.25, √130 is extremely close to 11.4. (In fact, √130 ≈ 11.402.)",
+    "explanation": "11\u00b2 = 121 and 12\u00b2 = 144. \u221a130 lies between 11 and 12. Test 11.4: 11.4\u00b2 = 129.96. Test 11.5: 11.5\u00b2 = 132.25. Since 130 \u2212 129.96 = 0.04 and 132.25 \u2212 130 = 2.25, \u221a130 is extremely close to 11.4. (In fact, \u221a130 \u2248 11.402.)",
     "distractor_logic": {
-      "A": "Correct: 11.4² = 129.96 ≈ 130, confirming √130 ≈ 11.4.",
-      "B": "Student undershoots; 11.2² = 125.44 is too far below 130.",
-      "C": "Student uses the midpoint of 11 and 12, but 11.5² = 132.25 overshoots 130 by more than 2.",
+      "A": "Correct: 11.4\u00b2 = 129.96 \u2248 130, confirming \u221a130 \u2248 11.4.",
+      "B": "Student undershoots; 11.2\u00b2 = 125.44 is too far below 130.",
+      "C": "Student uses the midpoint of 11 and 12, but 11.5\u00b2 = 132.25 overshoots 130 by more than 2.",
       "D": "Student rounds up to the next perfect square root without refining."
     },
     "difficulty_level": "Advanced",
@@ -912,15 +934,15 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Test 11.4² = 129.96 and 11.5² = 132.25 to bracket √130."
+        "hint_text": "Test 11.4\u00b2 = 129.96 and 11.5\u00b2 = 132.25 to bracket \u221a130."
       },
       {
         "strategy": "use_answer_choices",
-        "hint_text": "Square each choice and compare to 130 — the closest wins."
+        "hint_text": "Square each choice and compare to 130 \u2014 the closest wins."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "11.2² = 125.44 is far below 130 — eliminate it immediately."
+        "hint_text": "11.2\u00b2 = 125.44 is far below 130 \u2014 eliminate it immediately."
       }
     ],
     "content_context": "other",
@@ -942,7 +964,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_022",
@@ -973,12 +997,12 @@
       "D": "51"
     },
     "correct_answer": "A",
-    "explanation": "Square the target: 7.3² = 53.29. The nearest integer is 53, since 53.29 is only 0.29 above 53 but 0.71 below 54. So N = 53 has the square root closest to 7.3.",
+    "explanation": "Square the target: 7.3\u00b2 = 53.29. The nearest integer is 53, since 53.29 is only 0.29 above 53 but 0.71 below 54. So N = 53 has the square root closest to 7.3.",
     "distractor_logic": {
-      "A": "Correct: 7.3² = 53.29, which rounds to 53, so √53 is closest to 7.3.",
-      "B": "Student computes 7.3² = 53.29 but rounds down to 52 by mistake, or estimates √52 ≈ 7.2 as the nearest option.",
+      "A": "Correct: 7.3\u00b2 = 53.29, which rounds to 53, so \u221a53 is closest to 7.3.",
+      "B": "Student computes 7.3\u00b2 = 53.29 but rounds down to 52 by mistake, or estimates \u221a52 \u2248 7.2 as the nearest option.",
       "C": "Student rounds 53.29 up to 54 rather than down to 53.",
-      "D": "Student uses 7² = 49 as the anchor and picks 51 without squaring 7.3."
+      "D": "Student uses 7\u00b2 = 49 as the anchor and picks 51 without squaring 7.3."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -994,15 +1018,15 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Square the target: 7.3² = 53.29. The nearest integer is the answer."
+        "hint_text": "Square the target: 7.3\u00b2 = 53.29. The nearest integer is the answer."
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "This is the inverse problem — square the decimal, then round to the nearest integer."
+        "hint_text": "This is the inverse problem \u2014 square the decimal, then round to the nearest integer."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "51 and 52 come from squaring 7.1 and 7.2, not 7.3 — eliminate them."
+        "hint_text": "51 and 52 come from squaring 7.1 and 7.2, not 7.3 \u2014 eliminate them."
       }
     ],
     "content_context": "generic",
@@ -1024,7 +1048,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_023",
@@ -1055,12 +1081,12 @@
       "D": "50 inches"
     },
     "correct_answer": "B",
-    "explanation": "The side length is √200. 14² = 196 and 15² = 225. Test 14.1: 14.1² = 198.81. Test 14.14: 14.14² ≈ 199.94 ≈ 200. So √200 ≈ 14.14. The perimeter is 4 × √200 ≈ 4 × 14.14 = 56.57, which rounds to 57 inches.",
+    "explanation": "The side length is \u221a200. 14\u00b2 = 196 and 15\u00b2 = 225. Test 14.1: 14.1\u00b2 = 198.81. Test 14.14: 14.14\u00b2 \u2248 199.94 \u2248 200. So \u221a200 \u2248 14.14. The perimeter is 4 \u00d7 \u221a200 \u2248 4 \u00d7 14.14 = 56.57, which rounds to 57 inches.",
     "distractor_logic": {
-      "A": "Student estimates √200 ≈ 14 (the lower bounding integer, since 14² = 196) and computes 4 × 14 = 56.",
-      "B": "Correct: 4 × √200 ≈ 4 × 14.14 ≈ 56.57, which rounds to 57 inches.",
-      "C": "Student estimates √200 ≈ 15 (the upper bounding integer) and computes 4 × 15 = 60.",
-      "D": "Student divides the area by 4 (200 ÷ 4 = 50) rather than computing 4 times the side length."
+      "A": "Student estimates \u221a200 \u2248 14 (the lower bounding integer, since 14\u00b2 = 196) and computes 4 \u00d7 14 = 56.",
+      "B": "Correct: 4 \u00d7 \u221a200 \u2248 4 \u00d7 14.14 \u2248 56.57, which rounds to 57 inches.",
+      "C": "Student estimates \u221a200 \u2248 15 (the upper bounding integer) and computes 4 \u00d7 15 = 60.",
+      "D": "Student divides the area by 4 (200 \u00f7 4 = 50) rather than computing 4 times the side length."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1075,11 +1101,11 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "14² = 196 is close to 200 — test 14.14 to confirm √200 ≈ 14.14."
+        "hint_text": "14\u00b2 = 196 is close to 200 \u2014 test 14.14 to confirm \u221a200 \u2248 14.14."
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "Perimeter = 4 × side length = 4 × √200, not 200 ÷ 4."
+        "hint_text": "Perimeter = 4 \u00d7 side length = 4 \u00d7 \u221a200, not 200 \u00f7 4."
       }
     ],
     "content_context": "construction_measurement",
@@ -1102,7 +1128,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_024",
@@ -1124,21 +1152,21 @@
       "comparing two estimates of a square root by squaring each and measuring the error",
       "determining which estimate is more accurate using the squaring method"
     ],
-    "question_text": "One student estimates √47 ≈ 6.8 and another estimates √47 ≈ 7.0. Which statement correctly identifies the more accurate estimate and explains why?",
+    "question_text": "One student estimates \u221a47 \u2248 6.8 and another estimates \u221a47 \u2248 7.0. Which statement correctly identifies the more accurate estimate and explains why?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "7.0, because 47 is close to 49 = 7², so √47 ≈ 7",
-      "B": "6.8, because 6.8² = 46.24 is closer to 47 than 7.0² = 49",
+      "A": "7.0, because 47 is close to 49 = 7\u00b2, so \u221a47 \u2248 7",
+      "B": "6.8, because 6.8\u00b2 = 46.24 is closer to 47 than 7.0\u00b2 = 49",
       "C": "They are equal, because both are rounded to one decimal place",
       "D": "6.8, because it is further from both perfect square roots and thus a safer estimate"
     },
     "correct_answer": "B",
-    "explanation": "Square both estimates and compare to 47. 6.8² = 46.24, which is 0.76 away from 47. 7.0² = 49, which is 2 away from 47. Since 0.76 < 2, the estimate 6.8 is more accurate. (√47 ≈ 6.856, confirming 6.8 is the better estimate.)",
+    "explanation": "Square both estimates and compare to 47. 6.8\u00b2 = 46.24, which is 0.76 away from 47. 7.0\u00b2 = 49, which is 2 away from 47. Since 0.76 < 2, the estimate 6.8 is more accurate. (\u221a47 \u2248 6.856, confirming 6.8 is the better estimate.)",
     "distractor_logic": {
-      "A": "Student correctly identifies that 49 = 7² is a nearby perfect square, but does not verify by squaring — 47 is 2 units from 49, while 46.24 = 6.8² is only 0.76 units from 47.",
-      "B": "Correct: |46.24 − 47| = 0.76 < |49 − 47| = 2, so 6.8 is the more accurate estimate.",
+      "A": "Student correctly identifies that 49 = 7\u00b2 is a nearby perfect square, but does not verify by squaring \u2014 47 is 2 units from 49, while 46.24 = 6.8\u00b2 is only 0.76 units from 47.",
+      "B": "Correct: |46.24 \u2212 47| = 0.76 < |49 \u2212 47| = 2, so 6.8 is the more accurate estimate.",
       "C": "Student focuses on the format of the estimates (both have one decimal place) rather than verifying accuracy by squaring.",
-      "D": "Student selects the correct estimate but gives nonsensical reasoning — distance from perfect square roots has no bearing on accuracy."
+      "D": "Student selects the correct estimate but gives nonsensical reasoning \u2014 distance from perfect square roots has no bearing on accuracy."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1154,15 +1182,15 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Square both estimates: 6.8² = 46.24 and 7.0² = 49. Compare each to 47."
+        "hint_text": "Square both estimates: 6.8\u00b2 = 46.24 and 7.0\u00b2 = 49. Compare each to 47."
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "Accuracy means the square is closest to 47 — measure the gap, not the position."
+        "hint_text": "Accuracy means the square is closest to 47 \u2014 measure the gap, not the position."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Number of decimal places has nothing to do with accuracy — eliminate C."
+        "hint_text": "Number of decimal places has nothing to do with accuracy \u2014 eliminate C."
       }
     ],
     "content_context": "other",
@@ -1184,6 +1212,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-24",
     "last_modified": "2026-05-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

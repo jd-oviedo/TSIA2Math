@@ -28,7 +28,7 @@
       "D": "5 inches"
     },
     "correct_answer": "C",
-    "explanation": "The object's right edge aligns exactly with the tick mark labeled 3. Since the left edge starts at 0 and the right edge is at 3, the length of the object is 3 inches.\n\nNo interpolation is needed — the edge lands directly on a labeled mark.",
+    "explanation": "The object's right edge aligns exactly with the tick mark labeled 3. Since the left edge starts at 0 and the right edge is at 3, the length of the object is 3 inches.\n\nNo interpolation is needed \u2014 the edge lands directly on a labeled mark.",
     "distractor_logic": {
       "A": "Student reads one tick mark to the left of the object's right edge, reporting the adjacent label (2) rather than the label the edge aligns with.",
       "B": "Student reads one tick mark to the right of the object's right edge, reporting the adjacent label (4) rather than the label the edge aligns with.",
@@ -52,7 +52,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "The edge lands directly on a labeled mark — no estimating needed. Eliminate any answer that isn't the label at that exact position."
+        "hint_text": "The edge lands directly on a labeled mark \u2014 no estimating needed. Eliminate any answer that isn't the label at that exact position."
       }
     ],
     "content_context": "measurement_tools",
@@ -75,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-03",
     "last_modified": "2026-06-03",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_B_008",
@@ -97,21 +99,21 @@
       "reading a temperature value at a clearly labeled tick mark on a described thermometer",
       "matching a mercury level to the correct label on a uniform temperature scale"
     ],
-    "question_text": "A thermometer has tick marks labeled at every 10 degrees: 0°F, 10°F, 20°F, 30°F, 40°F, and 50°F. The mercury level sits exactly at the tick mark labeled 30. What temperature does the thermometer show?",
+    "question_text": "A thermometer has tick marks labeled at every 10 degrees: 0\u00b0F, 10\u00b0F, 20\u00b0F, 30\u00b0F, 40\u00b0F, and 50\u00b0F. The mercury level sits exactly at the tick mark labeled 30. What temperature does the thermometer show?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "30°F",
-      "B": "3°F",
-      "C": "20°F",
-      "D": "40°F"
+      "A": "30\u00b0F",
+      "B": "3\u00b0F",
+      "C": "20\u00b0F",
+      "D": "40\u00b0F"
     },
     "correct_answer": "A",
-    "explanation": "The mercury aligns exactly with the tick mark labeled 30°F. No interpolation is needed — the reading is directly indicated by the label.\n\nThe temperature is 30°F.",
+    "explanation": "The mercury aligns exactly with the tick mark labeled 30\u00b0F. No interpolation is needed \u2014 the reading is directly indicated by the label.\n\nThe temperature is 30\u00b0F.",
     "distractor_logic": {
-      "A": "Correct: the mercury aligns exactly with the tick mark labeled 30°F, so the temperature is 30°F.",
-      "B": "Student reads only the leading digit '3' from the label '30,' dropping the units place and reporting 3°F instead of 30°F.",
-      "C": "Student reads one tick mark below the mercury level, reporting the label immediately beneath the mercury (20°F) rather than the label the mercury aligns with.",
-      "D": "Student reads one tick mark above the mercury level, reporting the label immediately above the mercury (40°F) rather than the label the mercury aligns with."
+      "A": "Correct: the mercury aligns exactly with the tick mark labeled 30\u00b0F, so the temperature is 30\u00b0F.",
+      "B": "Student reads only the leading digit '3' from the label '30,' dropping the units place and reporting 3\u00b0F instead of 30\u00b0F.",
+      "C": "Student reads one tick mark below the mercury level, reporting the label immediately beneath the mercury (20\u00b0F) rather than the label the mercury aligns with.",
+      "D": "Student reads one tick mark above the mercury level, reporting the label immediately above the mercury (40\u00b0F) rather than the label the mercury aligns with."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -126,7 +128,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The mercury sits exactly at a labeled tick mark — read the full label at that position, including all digits."
+        "hint_text": "The mercury sits exactly at a labeled tick mark \u2014 read the full label at that position, including all digits."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -153,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-03",
     "last_modified": "2026-06-03",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_P_007",
@@ -184,7 +188,7 @@
       "D": "5 cm"
     },
     "correct_answer": "D",
-    "explanation": "Each labeled interval spans 2 cm (for example, from 4 cm to 6 cm). The single unlabeled tick mark sits at the midpoint of that interval.\n\nMidpoint of [4, 6] = (4 + 6) ÷ 2 = 5 cm\n\nThe object's right edge aligns with this midpoint, so its length is 5 cm.",
+    "explanation": "Each labeled interval spans 2 cm (for example, from 4 cm to 6 cm). The single unlabeled tick mark sits at the midpoint of that interval.\n\nMidpoint of [4, 6] = (4 + 6) \u00f7 2 = 5 cm\n\nThe object's right edge aligns with this midpoint, so its length is 5 cm.",
     "distractor_logic": {
       "A": "Student snaps to the nearest labeled tick mark below the object's edge, reporting 4 cm rather than interpolating to the unlabeled midpoint between 4 cm and 6 cm.",
       "B": "Student snaps to the nearest labeled tick mark above the object's edge, reporting 6 cm rather than interpolating to the unlabeled midpoint between 4 cm and 6 cm.",
@@ -204,11 +208,11 @@
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "The unlabeled mark is between 4 cm and 6 cm. The midpoint of any interval is halfway between the two endpoints — find halfway between 4 and 6."
+        "hint_text": "The unlabeled mark is between 4 cm and 6 cm. The midpoint of any interval is halfway between the two endpoints \u2014 find halfway between 4 and 6."
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "Each labeled interval spans 2 cm, and the unlabeled mark is exactly in the middle. Half of 2 cm is 1 cm — so the unlabeled mark is 1 cm past the lower labeled mark."
+        "hint_text": "Each labeled interval spans 2 cm, and the unlabeled mark is exactly in the middle. Half of 2 cm is 1 cm \u2014 so the unlabeled mark is 1 cm past the lower labeled mark."
       }
     ],
     "content_context": "measurement_tools",
@@ -231,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-03",
     "last_modified": "2026-06-03",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_P_008",
@@ -262,12 +268,12 @@
       "D": "10"
     },
     "correct_answer": "B",
-    "explanation": "Step 1 — Find the interval between consecutive tick marks:\nThe labels go from 50 to 75, a span of 25 units. There are 5 equal intervals between each pair of labeled marks (since every fifth tick mark is labeled).\nEach interval = 25 ÷ 5 = 5 units.\n\nStep 2 — Find the value at the second tick mark after 50:\nFirst tick after 50: 50 + 5 = 55\nSecond tick after 50: 55 + 5 = 60\n\nThe measurement is 60.",
+    "explanation": "Step 1 \u2014 Find the interval between consecutive tick marks:\nThe labels go from 50 to 75, a span of 25 units. There are 5 equal intervals between each pair of labeled marks (since every fifth tick mark is labeled).\nEach interval = 25 \u00f7 5 = 5 units.\n\nStep 2 \u2014 Find the value at the second tick mark after 50:\nFirst tick after 50: 50 + 5 = 55\nSecond tick after 50: 55 + 5 = 60\n\nThe measurement is 60.",
     "distractor_logic": {
       "A": "Student ignores the unlabeled tick marks and jumps directly to the next labeled mark (75), treating 'the second mark after 50' as the next label rather than the second unlabeled interval.",
-      "B": "Correct: each interval is 25 ÷ 5 = 5 units; the second tick mark after 50 is at 50 + 2(5) = 60.",
+      "B": "Correct: each interval is 25 \u00f7 5 = 5 units; the second tick mark after 50 is at 50 + 2(5) = 60.",
       "C": "Student correctly determines the interval size (5 units) but reads the first unlabeled tick mark after 50 rather than the second, giving 50 + 5 = 55.",
-      "D": "Student correctly computes the two-interval increment (2 × 5 = 10) but reports that increment as the answer rather than adding it to the starting label of 50."
+      "D": "Student correctly computes the two-interval increment (2 \u00d7 5 = 10) but reports that increment as the answer rather than adding it to the starting label of 50."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -286,7 +292,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check your answer: is it exactly 2 intervals past 50, and does each interval equal 25 ÷ 5 = 5 units?"
+        "hint_text": "Check your answer: is it exactly 2 intervals past 50, and does each interval equal 25 \u00f7 5 = 5 units?"
       }
     ],
     "content_context": "measurement_tools",
@@ -309,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-03",
     "last_modified": "2026-06-03",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_A_007",
@@ -340,12 +348,12 @@
       "D": "0.01 cm"
     },
     "correct_answer": "C",
-    "explanation": "Between each pair of labeled centimeter marks, there are 9 unlabeled tick marks. These 9 marks divide each 1 cm interval into 10 equal parts.\n\nSize of each small division = 1 cm ÷ 10 = 0.1 cm\n\nThe smallest measurement the ruler can precisely indicate is 0.1 cm (equivalent to 1 millimeter).",
+    "explanation": "Between each pair of labeled centimeter marks, there are 9 unlabeled tick marks. These 9 marks divide each 1 cm interval into 10 equal parts.\n\nSize of each small division = 1 cm \u00f7 10 = 0.1 cm\n\nThe smallest measurement the ruler can precisely indicate is 0.1 cm (equivalent to 1 millimeter).",
     "distractor_logic": {
       "A": "Student reads only the labeled centimeter tick marks and concludes the smallest measurable unit is 1 cm, ignoring the 9 unlabeled subdivisions within each centimeter interval.",
       "B": "Student confuses 9 unlabeled marks with a bisection of the interval, estimating the smallest division as 0.5 cm rather than recognizing that 9 unlabeled marks create 10 equal parts of 0.1 cm each.",
-      "C": "Correct: 9 unlabeled tick marks divide each 1 cm interval into 10 equal parts; the smallest readable division is 1 ÷ 10 = 0.1 cm.",
-      "D": "Student applies an extra factor of 10, computing 1 ÷ 100 = 0.01 cm rather than 1 ÷ 10 = 0.1 cm, possibly confusing the number of divisions with a two-step decimal shift."
+      "C": "Correct: 9 unlabeled tick marks divide each 1 cm interval into 10 equal parts; the smallest readable division is 1 \u00f7 10 = 0.1 cm.",
+      "D": "Student applies an extra factor of 10, computing 1 \u00f7 100 = 0.01 cm rather than 1 \u00f7 10 = 0.1 cm, possibly confusing the number of divisions with a two-step decimal shift."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -360,7 +368,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Count how many equal parts the unlabeled tick marks create within each centimeter interval. Nine marks between two points create 10 parts — then divide 1 cm by that number."
+        "hint_text": "Count how many equal parts the unlabeled tick marks create within each centimeter interval. Nine marks between two points create 10 parts \u2014 then divide 1 cm by that number."
       },
       {
         "strategy": "estimate_first",
@@ -387,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-03",
     "last_modified": "2026-06-03",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_A_008",
@@ -409,21 +419,21 @@
       "estimating a scale reading at a fractional position between labeled tick marks",
       "converting an estimated scale reading from Celsius to Fahrenheit using the standard conversion formula"
     ],
-    "question_text": "A thermometer scale is marked in degrees Celsius at every 5°C: 0°C, 5°C, 10°C, 15°C, and 20°C. The mercury sits approximately three-quarters of the way between the 10°C and 15°C marks. A student needs to report this temperature in degrees Fahrenheit.\n\nUse the formula: F = ($\\frac{9}{5}$)C + 32\n\nWhich of the following is closest to the correct Fahrenheit temperature?",
+    "question_text": "A thermometer scale is marked in degrees Celsius at every 5\u00b0C: 0\u00b0C, 5\u00b0C, 10\u00b0C, 15\u00b0C, and 20\u00b0C. The mercury sits approximately three-quarters of the way between the 10\u00b0C and 15\u00b0C marks. A student needs to report this temperature in degrees Fahrenheit.\n\nUse the formula: F = ($\\frac{9}{5}$)C + 32\n\nWhich of the following is closest to the correct Fahrenheit temperature?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "about 25°F",
-      "B": "about 57°F",
-      "C": "about 55°F",
-      "D": "about 40°F"
+      "A": "about 25\u00b0F",
+      "B": "about 57\u00b0F",
+      "C": "about 55\u00b0F",
+      "D": "about 40\u00b0F"
     },
     "correct_answer": "B",
-    "explanation": "Step 1 — Estimate the Celsius reading:\nThe interval from 10°C to 15°C spans 5°C.\nThree-quarters of the way through: 10 + ($\\frac{3}{4}$)(5) = 10 + 3.75 = 13.75°C\n\nStep 2 — Convert to Fahrenheit:\nF = ($\\frac{9}{5}$)(13.75) + 32\nF = (9 × 13.75) ÷ 5 + 32\nF = 123.75 ÷ 5 + 32\nF = 24.75 + 32\nF = 56.75°F ≈ 57°F",
+    "explanation": "Step 1 \u2014 Estimate the Celsius reading:\nThe interval from 10\u00b0C to 15\u00b0C spans 5\u00b0C.\nThree-quarters of the way through: 10 + ($\\frac{3}{4}$)(5) = 10 + 3.75 = 13.75\u00b0C\n\nStep 2 \u2014 Convert to Fahrenheit:\nF = ($\\frac{9}{5}$)(13.75) + 32\nF = (9 \u00d7 13.75) \u00f7 5 + 32\nF = 123.75 \u00f7 5 + 32\nF = 24.75 + 32\nF = 56.75\u00b0F \u2248 57\u00b0F",
     "distractor_logic": {
-      "A": "Student correctly estimates the Celsius reading as 13.75°C but omits the +32 step in the conversion formula, computing only ($\\frac{9}{5}$)(13.75) ≈ 24.75°F ≈ 25°F.",
-      "B": "Correct: three-quarters of the way from 10°C to 15°C is 13.75°C; applying F = ($\\frac{9}{5}$)(13.75) + 32 gives 24.75 + 32 = 56.75°F ≈ 57°F.",
-      "C": "Student estimates the mercury as halfway between the tick marks rather than three-quarters of the way, reading approximately 12.5°C; converting gives ($\\frac{9}{5}$)(12.5) + 32 = 22.5 + 32 = 54.5°F ≈ 55°F.",
-      "D": "Student inverts the conversion coefficient, using ($\\frac{5}{9}$) instead of ($\\frac{9}{5}$): ($\\frac{5}{9}$)(13.75) + 32 ≈ 7.6 + 32 ≈ 40°F."
+      "A": "Student correctly estimates the Celsius reading as 13.75\u00b0C but omits the +32 step in the conversion formula, computing only ($\\frac{9}{5}$)(13.75) \u2248 24.75\u00b0F \u2248 25\u00b0F.",
+      "B": "Correct: three-quarters of the way from 10\u00b0C to 15\u00b0C is 13.75\u00b0C; applying F = ($\\frac{9}{5}$)(13.75) + 32 gives 24.75 + 32 = 56.75\u00b0F \u2248 57\u00b0F.",
+      "C": "Student estimates the mercury as halfway between the tick marks rather than three-quarters of the way, reading approximately 12.5\u00b0C; converting gives ($\\frac{9}{5}$)(12.5) + 32 = 22.5 + 32 = 54.5\u00b0F \u2248 55\u00b0F.",
+      "D": "Student inverts the conversion coefficient, using ($\\frac{5}{9}$) instead of ($\\frac{9}{5}$): ($\\frac{5}{9}$)(13.75) + 32 \u2248 7.6 + 32 \u2248 40\u00b0F."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -438,11 +448,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "There are two steps: first estimate the Celsius reading using the 'three-quarters' position between 10°C and 15°C, then apply the full conversion formula F = ($\\frac{9}{5}$)C + 32 — both parts are required."
+        "hint_text": "There are two steps: first estimate the Celsius reading using the 'three-quarters' position between 10\u00b0C and 15\u00b0C, then apply the full conversion formula F = ($\\frac{9}{5}$)C + 32 \u2014 both parts are required."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "Three-quarters of the way from 10°C to 15°C should give a temperature a little below 15°C. After converting, the Fahrenheit result should be well above freezing (32°F) — use that to check your answer's reasonableness."
+        "hint_text": "Three-quarters of the way from 10\u00b0C to 15\u00b0C should give a temperature a little below 15\u00b0C. After converting, the Fahrenheit result should be well above freezing (32\u00b0F) \u2014 use that to check your answer's reasonableness."
       }
     ],
     "content_context": "science_lab",
@@ -466,6 +476,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-03",
     "last_modified": "2026-06-03",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

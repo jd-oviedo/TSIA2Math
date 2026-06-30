@@ -23,15 +23,15 @@
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "All real numbers except x = 5",
-      "B": "All real numbers except x = −5",
+      "B": "All real numbers except x = \u22125",
       "C": "All real numbers except x = 0",
       "D": "All real numbers"
     },
     "correct_answer": "A",
-    "explanation": "A rational function is undefined wherever its denominator equals zero. Set the denominator equal to zero and solve: x − 5 = 0 → x = 5. So x = 5 must be excluded. The domain is all real numbers except x = 5.",
+    "explanation": "A rational function is undefined wherever its denominator equals zero. Set the denominator equal to zero and solve: x \u2212 5 = 0 \u2192 x = 5. So x = 5 must be excluded. The domain is all real numbers except x = 5.",
     "distractor_logic": {
-      "A": "Correct: x − 5 = 0 gives x = 5, which must be excluded from the domain.",
-      "B": "Student makes a sign error when solving x − 5 = 0, reporting x = −5 instead of x = 5.",
+      "A": "Correct: x \u2212 5 = 0 gives x = 5, which must be excluded from the domain.",
+      "B": "Student makes a sign error when solving x \u2212 5 = 0, reporting x = \u22125 instead of x = 5.",
       "C": "Student confuses the domain restriction with a default 'x cannot be zero' rule, or incorrectly sets the numerator (1 = 0) equal to zero to find the excluded value.",
       "D": "Student does not apply the denominator-cannot-be-zero rule and concludes the function is defined for all real numbers."
     },
@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_function", "domain_restriction", "excluded_value", "linear_denominator"],
+    "context_tags": [
+      "rational_function",
+      "domain_restriction",
+      "excluded_value",
+      "linear_denominator"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -67,9 +75,10 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
-
   {
     "item_id": "AR_B_010",
     "schema_version": "2.0",
@@ -95,16 +104,16 @@
     "answer_choices": {
       "A": "All real numbers except x = 3",
       "B": "All real numbers except x = 6",
-      "C": "All real numbers except x = −6",
-      "D": "All real numbers except x = −3"
+      "C": "All real numbers except x = \u22126",
+      "D": "All real numbers except x = \u22123"
     },
     "correct_answer": "D",
-    "explanation": "Set the denominator equal to zero and solve:\n2x + 6 = 0\n2x = −6\nx = −3\n\nSo x = −3 must be excluded. The domain is all real numbers except x = −3.",
+    "explanation": "Set the denominator equal to zero and solve:\n2x + 6 = 0\n2x = \u22126\nx = \u22123\n\nSo x = \u22123 must be excluded. The domain is all real numbers except x = \u22123.",
     "distractor_logic": {
       "A": "Student makes a sign error when moving the constant: treats 2x + 6 = 0 as 2x = 6 (drops the negative), giving x = 3.",
       "B": "Student does not solve the equation and instead reads the constant term (6) directly as the excluded value.",
-      "C": "Student correctly finds 2x = −6 but forgets to divide by 2, reporting x = −6 instead of x = −3.",
-      "D": "Correct: 2x + 6 = 0 → 2x = −6 → x = −3."
+      "C": "Student correctly finds 2x = \u22126 but forgets to divide by 2, reporting x = \u22126 instead of x = \u22123.",
+      "D": "Correct: 2x + 6 = 0 \u2192 2x = \u22126 \u2192 x = \u22123."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -112,7 +121,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -124,11 +136,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_function", "domain_restriction", "excluded_value", "two_step_equation"],
+    "context_tags": [
+      "rational_function",
+      "domain_restriction",
+      "excluded_value",
+      "two_step_equation"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -138,9 +155,10 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
-
   {
     "item_id": "AR_B_011",
     "schema_version": "2.0",
@@ -164,18 +182,18 @@
     "question_text": "What is the domain of h(x) = $\\sqrt{x - 4}$?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x ≥ 0",
-      "B": "x ≥ −4",
-      "C": "x ≥ 4",
+      "A": "x \u2265 0",
+      "B": "x \u2265 \u22124",
+      "C": "x \u2265 4",
       "D": "x > 4"
     },
     "correct_answer": "C",
-    "explanation": "The expression under a square root (the radicand) must be greater than or equal to zero. Set up the inequality and solve:\nx − 4 ≥ 0\nx ≥ 4\n\nThe domain is all real numbers x ≥ 4, or [4, ∞). Note that x = 4 is included because $\\sqrt{0}$ = 0 is defined.",
+    "explanation": "The expression under a square root (the radicand) must be greater than or equal to zero. Set up the inequality and solve:\nx \u2212 4 \u2265 0\nx \u2265 4\n\nThe domain is all real numbers x \u2265 4, or [4, \u221e). Note that x = 4 is included because $\\sqrt{0}$ = 0 is defined.",
     "distractor_logic": {
-      "A": "Student applies the non-negative rule to x itself rather than to the expression x − 4, writing x ≥ 0 without accounting for the −4 inside the radical.",
-      "B": "Student solves x − 4 ≥ 0 but makes a sign error, adding −4 to both sides instead of +4, arriving at x ≥ −4.",
-      "C": "Correct: x − 4 ≥ 0 → x ≥ 4.",
-      "D": "Student uses a strict inequality (x > 4), thinking the endpoint x = 4 is excluded — but $\\sqrt{0}$ = 0 is defined, so x = 4 belongs to the domain."
+      "A": "Student applies the non-negative rule to x itself rather than to the expression x \u2212 4, writing x \u2265 0 without accounting for the \u22124 inside the radical.",
+      "B": "Student solves x \u2212 4 \u2265 0 but makes a sign error, adding \u22124 to both sides instead of +4, arriving at x \u2265 \u22124.",
+      "C": "Correct: x \u2212 4 \u2265 0 \u2192 x \u2265 4.",
+      "D": "Student uses a strict inequality (x > 4), thinking the endpoint x = 4 is excluded \u2014 but $\\sqrt{0}$ = 0 is defined, so x = 4 belongs to the domain."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -183,23 +201,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Set the expression inside the square root greater than or equal to zero: x − 4 ≥ 0, then solve for x."
+        "hint_text": "Set the expression inside the square root greater than or equal to zero: x \u2212 4 \u2265 0, then solve for x."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Test x = 4: √(4 − 4) = √0 = 0 — defined. Test x = 3: √(3 − 4) = √(−1) — undefined. So x = 4 is the boundary."
+        "hint_text": "Test x = 4: \u221a(4 \u2212 4) = \u221a0 = 0 \u2014 defined. Test x = 3: \u221a(3 \u2212 4) = \u221a(\u22121) \u2014 undefined. So x = 4 is the boundary."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["radical_function", "domain_restriction", "square_root", "linear_inequality"],
+    "context_tags": [
+      "radical_function",
+      "domain_restriction",
+      "square_root",
+      "linear_inequality"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -209,9 +235,10 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
-
   {
     "item_id": "AR_B_012",
     "schema_version": "2.0",
@@ -235,16 +262,16 @@
     "question_text": "What is the domain of $f(x) = \\frac{5}{x + 8}$?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "All real numbers except x = −8",
+      "A": "All real numbers except x = \u22128",
       "B": "All real numbers except x = 8",
       "C": "All real numbers",
       "D": "All real numbers except x = 0"
     },
     "correct_answer": "A",
-    "explanation": "Set the denominator equal to zero and solve:\nx + 8 = 0\nx = −8\n\nSo x = −8 must be excluded. The domain is all real numbers except x = −8.",
+    "explanation": "Set the denominator equal to zero and solve:\nx + 8 = 0\nx = \u22128\n\nSo x = \u22128 must be excluded. The domain is all real numbers except x = \u22128.",
     "distractor_logic": {
-      "A": "Correct: x + 8 = 0 → x = −8.",
-      "B": "Student solves x + 8 = 0 but drops the negative sign, reporting x = 8 instead of x = −8.",
+      "A": "Correct: x + 8 = 0 \u2192 x = \u22128.",
+      "B": "Student solves x + 8 = 0 but drops the negative sign, reporting x = 8 instead of x = \u22128.",
       "C": "Student does not apply the denominator-cannot-be-zero rule and concludes the function is defined for all real numbers.",
       "D": "Student applies a default rule that 'x cannot be zero' rather than solving for the actual excluded value from the denominator."
     },
@@ -254,7 +281,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -266,11 +296,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_function", "domain_restriction", "excluded_value", "sign_error"],
+    "context_tags": [
+      "rational_function",
+      "domain_restriction",
+      "excluded_value",
+      "sign_error"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -280,9 +315,10 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
-
   {
     "item_id": "AR_B_013",
     "schema_version": "2.0",
@@ -306,18 +342,18 @@
     "question_text": "What is the domain of g(x) = $\\sqrt{3x - 9}$?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x ≥ 9",
-      "B": "x ≥ 3",
-      "C": "x ≥ −3",
-      "D": "x ≥ $\\frac{1}{3}$"
+      "A": "x \u2265 9",
+      "B": "x \u2265 3",
+      "C": "x \u2265 \u22123",
+      "D": "x \u2265 $\\frac{1}{3}$"
     },
     "correct_answer": "B",
-    "explanation": "The radicand must be greater than or equal to zero:\n3x − 9 ≥ 0\n3x ≥ 9\nx ≥ 3\n\nThe domain is all real numbers x ≥ 3, or [3, ∞).",
+    "explanation": "The radicand must be greater than or equal to zero:\n3x \u2212 9 \u2265 0\n3x \u2265 9\nx \u2265 3\n\nThe domain is all real numbers x \u2265 3, or [3, \u221e).",
     "distractor_logic": {
-      "A": "Student correctly isolates 3x ≥ 9 but forgets to divide both sides by 3, reporting x ≥ 9 instead of x ≥ 3.",
-      "B": "Correct: 3x − 9 ≥ 0 → 3x ≥ 9 → x ≥ 3.",
-      "C": "Student misreads the sign of the constant term, solving 3x + 9 ≥ 0 instead of 3x − 9 ≥ 0, which gives 3x ≥ −9 → x ≥ −3.",
-      "D": "Student inverts the division step, computing $\\frac{1}{3}$ instead of $\\frac{9}{3}$ when dividing 9 by 3 — treating the operation as taking the reciprocal rather than dividing."
+      "A": "Student correctly isolates 3x \u2265 9 but forgets to divide both sides by 3, reporting x \u2265 9 instead of x \u2265 3.",
+      "B": "Correct: 3x \u2212 9 \u2265 0 \u2192 3x \u2265 9 \u2192 x \u2265 3.",
+      "C": "Student misreads the sign of the constant term, solving 3x + 9 \u2265 0 instead of 3x \u2212 9 \u2265 0, which gives 3x \u2265 \u22129 \u2192 x \u2265 \u22123.",
+      "D": "Student inverts the division step, computing $\\frac{1}{3}$ instead of $\\frac{9}{3}$ when dividing 9 by 3 \u2014 treating the operation as taking the reciprocal rather than dividing."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -325,23 +361,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Set the radicand greater than or equal to zero: 3x − 9 ≥ 0. Add 9, then divide by 3."
+        "hint_text": "Set the radicand greater than or equal to zero: 3x \u2212 9 \u2265 0. Add 9, then divide by 3."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Test x = 3: 3(3) − 9 = 0, and √0 is defined. Test x = 2: 3(2) − 9 = −3, and $\\sqrt{-3}$ is undefined. So x = 3 is the boundary."
+        "hint_text": "Test x = 3: 3(3) \u2212 9 = 0, and \u221a0 is defined. Test x = 2: 3(2) \u2212 9 = \u22123, and $\\sqrt{-3}$ is undefined. So x = 3 is the boundary."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["radical_function", "domain_restriction", "square_root", "coefficient_in_radicand"],
+    "context_tags": [
+      "radical_function",
+      "domain_restriction",
+      "square_root",
+      "coefficient_in_radicand"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -351,9 +395,10 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
-
   {
     "item_id": "AR_P_009",
     "schema_version": "2.0",
@@ -374,21 +419,21 @@
       "factoring a quadratic denominator to find all excluded values of a rational function",
       "identifying two distinct excluded values from a factorable quadratic denominator"
     ],
-    "question_text": "What is the domain of $f(x) = \\frac{x + 1}{x² − x − 6}$?",
+    "question_text": "What is the domain of $f(x) = \\frac{x + 1}{x\u00b2 \u2212 x \u2212 6}$?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "All real numbers except x = 3 and x = −2",
-      "B": "All real numbers except x = −3 and x = 2",
+      "A": "All real numbers except x = 3 and x = \u22122",
+      "B": "All real numbers except x = \u22123 and x = 2",
       "C": "All real numbers except x = 6",
       "D": "All real numbers except x = 1"
     },
     "correct_answer": "A",
-    "explanation": "Set the denominator equal to zero and factor:\nx² − x − 6 = 0\n(x − 3)(x + 2) = 0\nx = 3  or  x = −2\n\nBoth values make the denominator zero, so both must be excluded. The domain is all real numbers except x = 3 and x = −2.\n\nVerify factoring: (x − 3)(x + 2) = x² + 2x − 3x − 6 = x² − x − 6 ✓",
+    "explanation": "Set the denominator equal to zero and factor:\nx\u00b2 \u2212 x \u2212 6 = 0\n(x \u2212 3)(x + 2) = 0\nx = 3  or  x = \u22122\n\nBoth values make the denominator zero, so both must be excluded. The domain is all real numbers except x = 3 and x = \u22122.\n\nVerify factoring: (x \u2212 3)(x + 2) = x\u00b2 + 2x \u2212 3x \u2212 6 = x\u00b2 \u2212 x \u2212 6 \u2713",
     "distractor_logic": {
-      "A": "Correct: (x − 3)(x + 2) = 0 gives x = 3 or x = −2.",
-      "B": "Student factors incorrectly as (x + 3)(x − 2) = 0, reversing the signs on both factors and finding x = −3 or x = 2 instead.",
-      "C": "Student does not factor the denominator and instead treats the constant term (−6) as the excluded value, reporting x = 6.",
-      "D": "Student takes the coefficient of the middle term (−1) in x² − x − 6 and reports x = 1 as the excluded value, without solving the equation."
+      "A": "Correct: (x \u2212 3)(x + 2) = 0 gives x = 3 or x = \u22122.",
+      "B": "Student factors incorrectly as (x + 3)(x \u2212 2) = 0, reversing the signs on both factors and finding x = \u22123 or x = 2 instead.",
+      "C": "Student does not factor the denominator and instead treats the constant term (\u22126) as the excluded value, reporting x = 6.",
+      "D": "Student takes the coefficient of the middle term (\u22121) in x\u00b2 \u2212 x \u2212 6 and reports x = 1 as the excluded value, without solving the equation."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -396,23 +441,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Factor x² − x − 6 by finding two numbers that multiply to −6 and add to −1. Set each factor equal to zero."
+        "hint_text": "Factor x\u00b2 \u2212 x \u2212 6 by finding two numbers that multiply to \u22126 and add to \u22121. Set each factor equal to zero."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check your excluded values by substituting them into x² − x − 6. Each one should make the expression equal to zero."
+        "hint_text": "Check your excluded values by substituting them into x\u00b2 \u2212 x \u2212 6. Each one should make the expression equal to zero."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_function", "domain_restriction", "quadratic_denominator", "factoring"],
+    "context_tags": [
+      "rational_function",
+      "domain_restriction",
+      "quadratic_denominator",
+      "factoring"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -422,9 +475,10 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
-
   {
     "item_id": "AR_P_010",
     "schema_version": "2.0",
@@ -442,24 +496,24 @@
     "assessment_layer": "CRC",
     "unit": 3,
     "skills_targeted": [
-      "applying both the radical restriction (radicand ≥ 0) and the rational restriction (denominator ≠ 0) to a combined expression",
+      "applying both the radical restriction (radicand \u2265 0) and the rational restriction (denominator \u2260 0) to a combined expression",
       "intersecting two domain conditions to find the complete domain of a compound function"
     ],
     "question_text": "What is the domain of $f(x) = \\frac{\\sqrt{x + 3}}{x - 1}$?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x ≥ −3",
-      "B": "x ≥ −3 and x ≠ 1",
-      "C": "x ≠ 1",
-      "D": "x > −3 and x ≠ 1"
+      "A": "x \u2265 \u22123",
+      "B": "x \u2265 \u22123 and x \u2260 1",
+      "C": "x \u2260 1",
+      "D": "x > \u22123 and x \u2260 1"
     },
     "correct_answer": "B",
-    "explanation": "This function has two restrictions:\n\n1. Radical: the radicand must be non-negative.\n   x + 3 ≥ 0 → x ≥ −3\n\n2. Rational: the denominator cannot be zero.\n   x − 1 ≠ 0 → x ≠ 1\n\nBoth conditions must hold simultaneously. The domain is x ≥ −3 and x ≠ 1.\n\nNote: x = −3 is included because $f(−3) = \\frac{\\sqrt{0}}{-3 - 1}$ = $\\frac{0}{-4}$ = 0, which is defined.",
+    "explanation": "This function has two restrictions:\n\n1. Radical: the radicand must be non-negative.\n   x + 3 \u2265 0 \u2192 x \u2265 \u22123\n\n2. Rational: the denominator cannot be zero.\n   x \u2212 1 \u2260 0 \u2192 x \u2260 1\n\nBoth conditions must hold simultaneously. The domain is x \u2265 \u22123 and x \u2260 1.\n\nNote: x = \u22123 is included because $f(\u22123) = \\frac{\\sqrt{0}}{-3 - 1}$ = $\\frac{0}{-4}$ = 0, which is defined.",
     "distractor_logic": {
-      "A": "Student applies only the radical restriction (x ≥ −3) and ignores the denominator restriction, not excluding x = 1.",
-      "B": "Correct: both restrictions applied — x ≥ −3 (radicand non-negative) and x ≠ 1 (denominator nonzero).",
-      "C": "Student applies only the denominator restriction (x ≠ 1) and ignores the radical restriction, allowing negative values of x + 3 under the square root.",
-      "D": "Student applies both restrictions correctly but uses a strict inequality for the radical boundary, writing x > −3 instead of x ≥ −3 — incorrectly excluding x = −3 even though f(−3) = 0 is defined."
+      "A": "Student applies only the radical restriction (x \u2265 \u22123) and ignores the denominator restriction, not excluding x = 1.",
+      "B": "Correct: both restrictions applied \u2014 x \u2265 \u22123 (radicand non-negative) and x \u2260 1 (denominator nonzero).",
+      "C": "Student applies only the denominator restriction (x \u2260 1) and ignores the radical restriction, allowing negative values of x + 3 under the square root.",
+      "D": "Student applies both restrictions correctly but uses a strict inequality for the radical boundary, writing x > \u22123 instead of x \u2265 \u22123 \u2014 incorrectly excluding x = \u22123 even though f(\u22123) = 0 is defined."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -467,23 +521,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "List each restriction separately: set the radicand ≥ 0, and set the denominator ≠ 0. Then combine both conditions."
+        "hint_text": "List each restriction separately: set the radicand \u2265 0, and set the denominator \u2260 0. Then combine both conditions."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Test x = −3 (radical boundary) and x = 1 (denominator zero). Check which are defined and which are not."
+        "hint_text": "Test x = \u22123 (radical boundary) and x = 1 (denominator zero). Check which are defined and which are not."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_function", "radical_function", "domain_restriction", "compound_expression"],
+    "context_tags": [
+      "rational_function",
+      "radical_function",
+      "domain_restriction",
+      "compound_expression"
+    ],
     "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -493,9 +555,10 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
-
   {
     "item_id": "AR_P_011",
     "schema_version": "2.0",
@@ -514,7 +577,7 @@
     "unit": 3,
     "skills_targeted": [
       "comparing the domains of rational and radical functions to identify which is most restricted",
-      "recognizing that √(x²) is defined for all real numbers while √x requires x ≥ 0"
+      "recognizing that \u221a(x\u00b2) is defined for all real numbers while \u221ax requires x \u2265 0"
     ],
     "question_text": "Which of the following functions has the most restricted domain (that is, the fewest valid input values)?",
     "question_format": "multiple_choice",
@@ -525,11 +588,11 @@
       "D": "k(x) = $\\sqrt{x^{2}}$"
     },
     "correct_answer": "C",
-    "explanation": "Compare the domain of each function:\n\nf(x) = $\\frac{1}{x}$: defined for all x $\\neq$ 0 — excludes one value.\ng(x) = $\\frac{1}{x^{2}}$: defined for all x $\\neq$ 0 — also excludes one value ($x^{2}$ = 0 only when x = 0).\nh(x) = $\\sqrt{x}$: requires x $\\geq$ 0 — excludes all negative numbers, which is an infinite set.\nk(x) = $\\sqrt{x^{2}}$: since $x^{2}$ $\\geq$ 0 for every real number, the radicand is always non-negative. Domain is all real numbers — no restriction.\n\nh(x) = $\\sqrt{x}$ has the most restricted domain because it excludes every negative real number.",
+    "explanation": "Compare the domain of each function:\n\nf(x) = $\\frac{1}{x}$: defined for all x $\\neq$ 0 \u2014 excludes one value.\ng(x) = $\\frac{1}{x^{2}}$: defined for all x $\\neq$ 0 \u2014 also excludes one value ($x^{2}$ = 0 only when x = 0).\nh(x) = $\\sqrt{x}$: requires x $\\geq$ 0 \u2014 excludes all negative numbers, which is an infinite set.\nk(x) = $\\sqrt{x^{2}}$: since $x^{2}$ $\\geq$ 0 for every real number, the radicand is always non-negative. Domain is all real numbers \u2014 no restriction.\n\nh(x) = $\\sqrt{x}$ has the most restricted domain because it excludes every negative real number.",
     "distractor_logic": {
-      "A": "Student thinks dividing by a variable is more restrictive than a square root, reasoning that 'division by x' excludes more values than the square root condition — but $\\frac{1}{x}$ excludes only the single point x = 0, while $\\sqrt{x}$ excludes all negative numbers.",
-      "B": "Student believes squaring the denominator in $\\frac{1}{x^{2}}$ imposes a stricter restriction than $\\frac{1}{x}$ — but x^{2} = 0 still has only one solution (x = 0), so the domain is the same as for $\\frac{1}{x}$.",
-      "C": "Correct: h(x) = $\\sqrt{x}$ requires x ≥ 0, excluding all negative real numbers — a more restricted domain than either rational function (which each exclude only x = 0) or k(x) (which has no restriction).",
+      "A": "Student thinks dividing by a variable is more restrictive than a square root, reasoning that 'division by x' excludes more values than the square root condition \u2014 but $\\frac{1}{x}$ excludes only the single point x = 0, while $\\sqrt{x}$ excludes all negative numbers.",
+      "B": "Student believes squaring the denominator in $\\frac{1}{x^{2}}$ imposes a stricter restriction than $\\frac{1}{x}$ \u2014 but x^{2} = 0 still has only one solution (x = 0), so the domain is the same as for $\\frac{1}{x}$.",
+      "C": "Correct: h(x) = $\\sqrt{x}$ requires x \u2265 0, excluding all negative real numbers \u2014 a more restricted domain than either rational function (which each exclude only x = 0) or k(x) (which has no restriction).",
       "D": "Student assumes $\\sqrt{x^{2}}$ has the same restriction as $\\sqrt{x}$, not recognizing that squaring x first guarantees a non-negative radicand for all real inputs, making the domain completely unrestricted."
     },
     "difficulty_level": "Proficient",
@@ -538,7 +601,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -546,15 +612,20 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "k(x) = √(x²): since x² is always non-negative, there is no restriction — eliminate it. Then compare the remaining three."
+        "hint_text": "k(x) = \u221a(x\u00b2): since x\u00b2 is always non-negative, there is no restriction \u2014 eliminate it. Then compare the remaining three."
       }
     ],
     "content_context": "generic",
-    "context_tags": ["domain_restriction", "radical_function", "rational_function", "comparison"],
+    "context_tags": [
+      "domain_restriction",
+      "radical_function",
+      "rational_function",
+      "comparison"
+    ],
     "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -564,9 +635,10 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
-
   {
     "item_id": "AR_A_009",
     "schema_version": "2.0",
@@ -596,12 +668,12 @@
       "D": "Because substituting n = 2 makes the denominator equal to zero, making P(2) undefined."
     },
     "correct_answer": "D",
-    "explanation": "Substitute n = 2:\n  Numerator: 500(2) − 1000 = 0\n  Denominator: 2 − 2 = 0\n\nBoth numerator and denominator equal zero, giving the indeterminate form $\\frac{0}{0}$. This is undefined — not zero. A rational function is excluded from its domain wherever the denominator equals zero, regardless of the numerator's value. Therefore n = 2 must be excluded because it makes the denominator zero.",
+    "explanation": "Substitute n = 2:\n  Numerator: 500(2) \u2212 1000 = 0\n  Denominator: 2 \u2212 2 = 0\n\nBoth numerator and denominator equal zero, giving the indeterminate form $\\frac{0}{0}$. This is undefined \u2014 not zero. A rational function is excluded from its domain wherever the denominator equals zero, regardless of the numerator's value. Therefore n = 2 must be excluded because it makes the denominator zero.",
     "distractor_logic": {
-      "A": "Student computes the numerator (500(2) − 1000 = 0) and concludes P(2) = 0, confusing an undefined output $\\frac{0}{0}$ with a zero output. A zero output would be valid; it is the undefined output that requires exclusion.",
-      "B": "Student correctly identifies that the numerator is zero at n = 2 but applies the wrong rule — a zero numerator (with a nonzero denominator) produces an output of zero, which is perfectly valid. It is the zero denominator that creates the exclusion.",
-      "C": "Student conflates a mathematical domain restriction with a contextual profitability condition, reasoning that n = 2 should be excluded because it doesn't generate profit — but domain restrictions are determined by where the function is undefined, not by whether outputs are desirable.",
-      "D": "Correct: n = 2 makes the denominator n − 2 equal to zero, making P(2) undefined. This is the mathematical reason for the domain exclusion."
+      "A": "Student computes the numerator (500(2) \u2212 1000 = 0) and concludes P(2) = 0, confusing an undefined output $\\frac{0}{0}$ with a zero output. A zero output would be valid; it is the undefined output that requires exclusion.",
+      "B": "Student correctly identifies that the numerator is zero at n = 2 but applies the wrong rule \u2014 a zero numerator (with a nonzero denominator) produces an output of zero, which is perfectly valid. It is the zero denominator that creates the exclusion.",
+      "C": "Student conflates a mathematical domain restriction with a contextual profitability condition, reasoning that n = 2 should be excluded because it doesn't generate profit \u2014 but domain restrictions are determined by where the function is undefined, not by whether outputs are desirable.",
+      "D": "Correct: n = 2 makes the denominator n \u2212 2 equal to zero, making P(2) undefined. This is the mathematical reason for the domain exclusion."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -609,7 +681,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["plug_in_values", "identify_key_info"],
+    "applicable_strategies": [
+      "plug_in_values",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "plug_in_values",
@@ -617,15 +692,20 @@
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "Domain exclusions in rational functions come from the denominator equaling zero — not from the numerator equaling zero or from contextual limitations."
+        "hint_text": "Domain exclusions in rational functions come from the denominator equaling zero \u2014 not from the numerator equaling zero or from contextual limitations."
       }
     ],
     "content_context": "school_fundraiser",
-    "context_tags": ["rational_function", "domain_restriction", "real_world_context", "undefined_vs_zero"],
+    "context_tags": [
+      "rational_function",
+      "domain_restriction",
+      "real_world_context",
+      "undefined_vs_zero"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -635,9 +715,10 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
-
   {
     "item_id": "AR_A_010",
     "schema_version": "2.0",
@@ -663,16 +744,16 @@
     "answer_choices": {
       "A": "All real numbers except x = k",
       "B": "All real numbers, because the (x + k) factors cancel",
-      "C": "All real numbers except x = k and x = −k",
+      "C": "All real numbers except x = k and x = \u2212k",
       "D": "All real numbers except x = k^{2}"
     },
     "correct_answer": "C",
-    "explanation": "Factor the denominator using the difference of squares:\nx² − k² = (x − k)(x + k)\n\nThe denominator equals zero when x = k or x = −k. Both values must be excluded from the domain.\n\nNote: the numerator (x + k) shares a factor with the denominator, creating a removable discontinuity (hole) at x = −k. However, cancellation does not change the domain of the original function — x = −k still makes the original denominator zero and remains excluded.\n\nDomain: all real numbers except x = k and x = −k.",
+    "explanation": "Factor the denominator using the difference of squares:\nx\u00b2 \u2212 k\u00b2 = (x \u2212 k)(x + k)\n\nThe denominator equals zero when x = k or x = \u2212k. Both values must be excluded from the domain.\n\nNote: the numerator (x + k) shares a factor with the denominator, creating a removable discontinuity (hole) at x = \u2212k. However, cancellation does not change the domain of the original function \u2014 x = \u2212k still makes the original denominator zero and remains excluded.\n\nDomain: all real numbers except x = k and x = \u2212k.",
     "distractor_logic": {
-      "A": "Student factors the denominator correctly and finds x = k and x = −k, but then reasons that since the numerator (x + k) is also zero at x = −k, the expression is '$\\frac{0}{0}$ which simplifies to 0' — incorrectly treating the indeterminate form as a defined output of zero and excluding only x = k.",
-      "B": "Student cancels the common factor (x + k) from numerator and denominator to obtain $\\frac{1}{x - k}, then reads the domain of the simplified form as the domain of the original function — failing to recognize that cancellation does not restore the value x = −k that was excluded before simplification.",
-      "C": "Correct: the denominator (x − k)(x + k) equals zero at both x = k and x = −k, so both must be excluded from the domain of the original function.",
-      "D": "Student sees k^{2} in the expression x^{2} − k^{2} and takes the excluded value to be x = k^{2} — solving x = k^{2} rather than factoring and solving x^{2} = k^{2}."
+      "A": "Student factors the denominator correctly and finds x = k and x = \u2212k, but then reasons that since the numerator (x + k) is also zero at x = \u2212k, the expression is '$\\frac{0}{0}$ which simplifies to 0' \u2014 incorrectly treating the indeterminate form as a defined output of zero and excluding only x = k.",
+      "B": "Student cancels the common factor (x + k) from numerator and denominator to obtain $\\frac{1}{x - k}, then reads the domain of the simplified form as the domain of the original function \u2014 failing to recognize that cancellation does not restore the value x = \u2212k that was excluded before simplification.",
+      "C": "Correct: the denominator (x \u2212 k)(x + k) equals zero at both x = k and x = \u2212k, so both must be excluded from the domain of the original function.",
+      "D": "Student sees k^{2} in the expression x^{2} \u2212 k^{2} and takes the excluded value to be x = k^{2} \u2014 solving x = k^{2} rather than factoring and solving x^{2} = k^{2}."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -680,23 +761,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Factor the denominator first: x² − k² = (x − k)(x + k). The domain excludes every value of x that makes either factor zero."
+        "hint_text": "Factor the denominator first: x\u00b2 \u2212 k\u00b2 = (x \u2212 k)(x + k). The domain excludes every value of x that makes either factor zero."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try substituting x = −k into the original function — not the simplified version. Does the denominator equal zero?"
+        "hint_text": "Try substituting x = \u2212k into the original function \u2014 not the simplified version. Does the denominator equal zero?"
       }
     ],
     "content_context": "generic",
-    "context_tags": ["rational_function", "domain_restriction", "difference_of_squares", "removable_discontinuity"],
+    "context_tags": [
+      "rational_function",
+      "domain_restriction",
+      "difference_of_squares",
+      "removable_discontinuity"
+    ],
     "estimated_time_seconds": 150,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -706,6 +795,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
     "last_modified": "2026-06-02",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

@@ -47,8 +47,8 @@ function parseMathSegments(input: string): Segment[] {
     if (looksLikeMath(content)) {
       segments.push({ type: "math", content });
     } else {
-      segments.push({ type: "text", content: `$${content}$` });
-    }
+  segments.push({ type: "text", content: content });
+}
     lastIndex = regex.lastIndex;
   }
 

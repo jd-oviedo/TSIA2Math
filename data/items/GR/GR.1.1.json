@@ -28,7 +28,7 @@
       "D": "degrees Fahrenheit"
     },
     "correct_answer": "C",
-    "explanation": "Length is measured with linear units such as inches, feet, yards, or meters. A bedroom wall is typically 8–15 feet long, making feet the most appropriate unit.\n\nThe other options belong to entirely different measurement categories:\n- Gallons measure volume, not length.\n- Miles measure very large distances — far too large for a wall.\n- Degrees Fahrenheit measure temperature, not length.",
+    "explanation": "Length is measured with linear units such as inches, feet, yards, or meters. A bedroom wall is typically 8\u201315 feet long, making feet the most appropriate unit.\n\nThe other options belong to entirely different measurement categories:\n- Gallons measure volume, not length.\n- Miles measure very large distances \u2014 far too large for a wall.\n- Degrees Fahrenheit measure temperature, not length.",
     "distractor_logic": {
       "A": "Student confuses volume units (gallons) with length units, selecting a unit from the wrong measurement category.",
       "B": "Student selects a length unit but one that is far too large in magnitude; miles are used for long-distance travel, not indoor measurements.",
@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -49,15 +52,20 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "Check each option — does it measure length, or does it measure something else entirely (like volume, temperature, or distance across states)?"
+        "hint_text": "Check each option \u2014 does it measure length, or does it measure something else entirely (like volume, temperature, or distance across states)?"
       }
     ],
     "content_context": "home_improvement",
-    "context_tags": ["length", "customary_units", "unit_identification", "real_world_context"],
+    "context_tags": [
+      "length",
+      "customary_units",
+      "unit_identification",
+      "real_world_context"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -67,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-03",
     "last_modified": "2026-06-03",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_B_002",
@@ -111,11 +121,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The key phrase is 'how long it takes.' That tells you this is a time measurement — look for a unit that measures time."
+        "hint_text": "The key phrase is 'how long it takes.' That tells you this is a time measurement \u2014 look for a unit that measures time."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -123,11 +136,16 @@
       }
     ],
     "content_context": "cooking",
-    "context_tags": ["time", "customary_units", "unit_identification", "real_world_context"],
+    "context_tags": [
+      "time",
+      "customary_units",
+      "unit_identification",
+      "real_world_context"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -137,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-03",
     "last_modified": "2026-06-03",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_B_003",
@@ -181,11 +201,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The key phrase is 'amount of juice.' Juice is a liquid — look for a unit that measures liquid volume."
+        "hint_text": "The key phrase is 'amount of juice.' Juice is a liquid \u2014 look for a unit that measures liquid volume."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -193,11 +216,16 @@
       }
     ],
     "content_context": "everyday_measurement",
-    "context_tags": ["volume", "customary_units", "unit_identification", "liquid_measurement"],
+    "context_tags": [
+      "volume",
+      "customary_units",
+      "unit_identification",
+      "liquid_measurement"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -207,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-03",
     "last_modified": "2026-06-03",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_P_001",
@@ -238,10 +268,10 @@
       "D": "square miles"
     },
     "correct_answer": "B",
-    "explanation": "The area of a typical bedroom floor is approximately 120–200 square feet, making square feet the most appropriate and practical unit.\n\n- Square millimeters are an area unit, but they are far too small for room-scale measurement; a typical bedroom would be roughly 16,000,000 square millimeters — an impractical number to work with.\n- Acres are used to measure large plots of land; one acre equals 43,560 square feet, far larger than any bedroom.\n- Square miles measure geographic regions; one square mile equals about 27.9 million square feet.",
+    "explanation": "The area of a typical bedroom floor is approximately 120\u2013200 square feet, making square feet the most appropriate and practical unit.\n\n- Square millimeters are an area unit, but they are far too small for room-scale measurement; a typical bedroom would be roughly 16,000,000 square millimeters \u2014 an impractical number to work with.\n- Acres are used to measure large plots of land; one acre equals 43,560 square feet, far larger than any bedroom.\n- Square miles measure geographic regions; one square mile equals about 27.9 million square feet.",
     "distractor_logic": {
       "A": "Student selects a valid area unit but fails to account for scale; square millimeters are appropriate for very small surfaces, not room-sized floors.",
-      "B": "Correct: square feet is the standard customary unit for residential floor area, and a typical bedroom measures roughly 120–200 square feet.",
+      "B": "Correct: square feet is the standard customary unit for residential floor area, and a typical bedroom measures roughly 120\u2013200 square feet.",
       "C": "Student overgeneralizes 'area unit' to land-measurement units without considering scale; acres are used for large outdoor plots, not indoor rooms.",
       "D": "Student selects an area unit that is orders of magnitude too large; square miles are used to measure the area of cities or geographic regions, not rooms."
     },
@@ -251,11 +281,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["estimate_first", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "estimate_first",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "estimate_first",
-        "hint_text": "Think about the actual size of a bedroom floor before choosing a unit. A bedroom is a small indoor space — which unit gives a manageable number for that scale?"
+        "hint_text": "Think about the actual size of a bedroom floor before choosing a unit. A bedroom is a small indoor space \u2014 which unit gives a manageable number for that scale?"
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -263,11 +296,16 @@
       }
     ],
     "content_context": "home_measurement",
-    "context_tags": ["area", "customary_units", "unit_scale", "unit_identification"],
+    "context_tags": [
+      "area",
+      "customary_units",
+      "unit_scale",
+      "unit_identification"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -277,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-03",
     "last_modified": "2026-06-03",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_P_002",
@@ -308,12 +348,12 @@
       "D": "200 liters"
     },
     "correct_answer": "C",
-    "explanation": "To convert milliliters to liters, divide by 1,000 because 1 liter = 1,000 milliliters.\n\n2,000 ÷ 1,000 = 2 liters\n\nCheck: 2 liters × 1,000 = 2,000 mL ✓",
+    "explanation": "To convert milliliters to liters, divide by 1,000 because 1 liter = 1,000 milliliters.\n\n2,000 \u00f7 1,000 = 2 liters\n\nCheck: 2 liters \u00d7 1,000 = 2,000 mL \u2713",
     "distractor_logic": {
-      "A": "Student divides by 100 instead of 1,000, treating the conversion factor as 100 mL per liter rather than 1,000 mL per liter; 2,000 ÷ 100 = 20.",
+      "A": "Student divides by 100 instead of 1,000, treating the conversion factor as 100 mL per liter rather than 1,000 mL per liter; 2,000 \u00f7 100 = 20.",
       "B": "Student moves the decimal point in the wrong direction, effectively multiplying by 0.0001 instead of dividing by 1,000; this inverts the relationship between milliliters and liters.",
       "C": "Correct: dividing 2,000 mL by the conversion factor of 1,000 mL per liter gives 2 liters.",
-      "D": "Student divides by 10 instead of 1,000, treating the conversion factor as 10 mL per liter rather than 1,000; 2,000 ÷ 10 = 200."
+      "D": "Student divides by 10 instead of 1,000, treating the conversion factor as 10 mL per liter rather than 1,000; 2,000 \u00f7 10 = 200."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -321,7 +361,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -333,11 +376,16 @@
       }
     ],
     "content_context": "everyday_measurement",
-    "context_tags": ["volume", "metric_units", "unit_conversion", "milliliters_to_liters"],
+    "context_tags": [
+      "volume",
+      "metric_units",
+      "unit_conversion",
+      "milliliters_to_liters"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -347,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-03",
     "last_modified": "2026-06-03",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_P_003",
@@ -378,7 +428,7 @@
       "D": "centimeters"
     },
     "correct_answer": "A",
-    "explanation": "Miles is the standard customary unit for expressing long road distances in the United States, and it gives a practical, manageable number at this scale (26 miles).\n\n- Yards are a customary length unit but too granular for a 26-mile distance; 26 miles = 45,760 yards, an unwieldy number.\n- Inches are appropriate for small lengths, not multi-mile distances; 26 miles ≈ 1,647,360 inches.\n- Centimeters are a metric unit far too small for this scale; 26 miles ≈ 4,184,448 centimeters.",
+    "explanation": "Miles is the standard customary unit for expressing long road distances in the United States, and it gives a practical, manageable number at this scale (26 miles).\n\n- Yards are a customary length unit but too granular for a 26-mile distance; 26 miles = 45,760 yards, an unwieldy number.\n- Inches are appropriate for small lengths, not multi-mile distances; 26 miles \u2248 1,647,360 inches.\n- Centimeters are a metric unit far too small for this scale; 26 miles \u2248 4,184,448 centimeters.",
     "distractor_logic": {
       "A": "Correct: miles is the standard customary unit for long road distances in the US, and 26 miles is a practical, reasonable number at this scale.",
       "B": "Student selects a customary length unit but one too small in magnitude for a multi-mile distance; 26 miles converts to 45,760 yards, making yards an impractical choice for this context.",
@@ -391,7 +441,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["estimate_first", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "estimate_first",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "estimate_first",
@@ -403,11 +456,16 @@
       }
     ],
     "content_context": "athletics",
-    "context_tags": ["length", "customary_units", "unit_scale", "unit_identification"],
+    "context_tags": [
+      "length",
+      "customary_units",
+      "unit_scale",
+      "unit_identification"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -417,7 +475,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-03",
     "last_modified": "2026-06-03",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_A_001",
@@ -439,7 +499,7 @@
       "selecting appropriate unit pairs for a multi-variable scientific measurement scenario",
       "matching units to the recorded measurement context rather than applying familiar defaults"
     ],
-    "question_text": "A scientist records the temperature of a solution as it heats from 20°C to 80°C over 45 minutes. A student needs to report both the temperature change and the time elapsed. Which pair of units is most appropriate?",
+    "question_text": "A scientist records the temperature of a solution as it heats from 20\u00b0C to 80\u00b0C over 45 minutes. A student needs to report both the temperature change and the time elapsed. Which pair of units is most appropriate?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "degrees Fahrenheit and hours",
@@ -448,12 +508,12 @@
       "D": "degrees Celsius and minutes"
     },
     "correct_answer": "D",
-    "explanation": "The scientist recorded temperature in degrees Celsius (20°C to 80°C) and the duration in minutes (45 minutes). The most appropriate units for reporting are therefore degrees Celsius and minutes — the units that match the recorded data.\n\n- Degrees Fahrenheit and hours: neither unit matches what was recorded. The scientist used °C, not °F, and the duration was 45 minutes, not a whole number of hours.\n- Degrees Celsius and seconds: °C is correct, but seconds is impractical for a 45-minute duration (45 min = 2,700 seconds), and it does not match the recorded unit.\n- Kelvin and minutes: minutes is correct, but Kelvin was not the scale used to record the temperature; the data is in °C.",
+    "explanation": "The scientist recorded temperature in degrees Celsius (20\u00b0C to 80\u00b0C) and the duration in minutes (45 minutes). The most appropriate units for reporting are therefore degrees Celsius and minutes \u2014 the units that match the recorded data.\n\n- Degrees Fahrenheit and hours: neither unit matches what was recorded. The scientist used \u00b0C, not \u00b0F, and the duration was 45 minutes, not a whole number of hours.\n- Degrees Celsius and seconds: \u00b0C is correct, but seconds is impractical for a 45-minute duration (45 min = 2,700 seconds), and it does not match the recorded unit.\n- Kelvin and minutes: minutes is correct, but Kelvin was not the scale used to record the temperature; the data is in \u00b0C.",
     "distractor_logic": {
-      "A": "Student substitutes familiar everyday units (°F for temperature, hours for time) rather than matching the units to the scientist's recorded data.",
-      "B": "Student correctly identifies °C for temperature but selects seconds as the time unit; while 45 minutes can be expressed as 2,700 seconds, seconds is impractical for reporting this duration and does not match the recorded unit.",
-      "C": "Student correctly identifies minutes for time but selects Kelvin for temperature; Kelvin is scientifically valid but was not the unit recorded — the data is in °C, making the pair internally inconsistent with the scenario.",
-      "D": "Correct: degrees Celsius matches the temperature scale the scientist used (20°C to 80°C), and minutes matches the recorded elapsed time (45 minutes)."
+      "A": "Student substitutes familiar everyday units (\u00b0F for temperature, hours for time) rather than matching the units to the scientist's recorded data.",
+      "B": "Student correctly identifies \u00b0C for temperature but selects seconds as the time unit; while 45 minutes can be expressed as 2,700 seconds, seconds is impractical for reporting this duration and does not match the recorded unit.",
+      "C": "Student correctly identifies minutes for time but selects Kelvin for temperature; Kelvin is scientifically valid but was not the unit recorded \u2014 the data is in \u00b0C, making the pair internally inconsistent with the scenario.",
+      "D": "Correct: degrees Celsius matches the temperature scale the scientist used (20\u00b0C to 80\u00b0C), and minutes matches the recorded elapsed time (45 minutes)."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -461,11 +521,14 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Look at the units the scientist actually used in the problem: the temperature was recorded in °C and the time was 45 minutes. The best answer matches those recorded units."
+        "hint_text": "Look at the units the scientist actually used in the problem: the temperature was recorded in \u00b0C and the time was 45 minutes. The best answer matches those recorded units."
       },
       {
         "strategy": "eliminate_wrong_answers",
@@ -473,11 +536,16 @@
       }
     ],
     "content_context": "science_lab",
-    "context_tags": ["temperature", "time", "unit_appropriateness", "multi_variable_context"],
+    "context_tags": [
+      "temperature",
+      "time",
+      "unit_appropriateness",
+      "multi_variable_context"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -487,7 +555,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-03",
     "last_modified": "2026-06-03",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_A_002",
@@ -509,7 +579,7 @@
       "converting between customary and metric volume units (gallons to liters)",
       "applying cross-system unit conversion to a practical measurement scenario"
     ],
-    "question_text": "A recipe calls for 1 gallon of broth. A student only has a measuring container marked in liters. Approximately how many liters of broth does the student need?\n\n(1 gallon ≈ 3.785 liters)",
+    "question_text": "A recipe calls for 1 gallon of broth. A student only has a measuring container marked in liters. Approximately how many liters of broth does the student need?\n\n(1 gallon \u2248 3.785 liters)",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "about 1 liter",
@@ -518,10 +588,10 @@
       "D": "about 0.25 liters"
     },
     "correct_answer": "B",
-    "explanation": "Using the given conversion:\n1 gallon ≈ 3.785 liters\n\nSo 1 gallon of broth ≈ 3.785 liters, which rounds to about 3.8 liters.\n\nCheck: 3.785 liters × (1 gallon / 3.785 liters) = 1 gallon ✓",
+    "explanation": "Using the given conversion:\n1 gallon \u2248 3.785 liters\n\nSo 1 gallon of broth \u2248 3.785 liters, which rounds to about 3.8 liters.\n\nCheck: 3.785 liters \u00d7 (1 gallon / 3.785 liters) = 1 gallon \u2713",
     "distractor_logic": {
       "A": "Student assumes a 1-to-1 relationship between gallons and liters, treating the conversion factor as 1 rather than approximately 3.785.",
-      "B": "Correct: applying the given conversion factor of 1 gallon ≈ 3.785 liters gives approximately 3.8 liters.",
+      "B": "Correct: applying the given conversion factor of 1 gallon \u2248 3.785 liters gives approximately 3.8 liters.",
       "C": "Student applies an incorrect conversion factor, possibly confusing gallons with a smaller unit (such as quarts) or misremembering the ratio as approximately 10:1.",
       "D": "Student inverts the conversion ratio, treating 1 gallon as approximately one-quarter of a liter rather than nearly four liters; this error may arise from confusing the direction of the conversion."
     },
@@ -531,23 +601,31 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "estimate_first"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "estimate_first"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The problem gives you the conversion factor directly: 1 gallon ≈ 3.785 liters. Use that relationship to find how many liters equal 1 gallon."
+        "hint_text": "The problem gives you the conversion factor directly: 1 gallon \u2248 3.785 liters. Use that relationship to find how many liters equal 1 gallon."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "A liter is a bit more than a quart, and a gallon holds about 4 quarts — so 1 gallon should be close to, but a little less than, 4 liters. Use that estimate to check your answer."
+        "hint_text": "A liter is a bit more than a quart, and a gallon holds about 4 quarts \u2014 so 1 gallon should be close to, but a little less than, 4 liters. Use that estimate to check your answer."
       }
     ],
     "content_context": "cooking",
-    "context_tags": ["volume", "unit_conversion", "customary_to_metric", "cross_system_conversion"],
+    "context_tags": [
+      "volume",
+      "unit_conversion",
+      "customary_to_metric",
+      "cross_system_conversion"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -557,7 +635,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-03",
     "last_modified": "2026-06-03",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "GR_A_003",
@@ -588,12 +668,12 @@
       "D": "500 square feet"
     },
     "correct_answer": "C",
-    "explanation": "Step 1 — Find the area in square yards:\n50 yd × 30 yd = 1,500 sq yd\n\nStep 2 — Convert square yards to square feet:\nSince 1 yard = 3 feet, then 1 square yard = 3 ft × 3 ft = 9 square feet.\n1,500 sq yd × 9 sq ft/sq yd = 13,500 square feet\n\nCheck: 13,500 ÷ 9 = 1,500 sq yd ✓",
+    "explanation": "Step 1 \u2014 Find the area in square yards:\n50 yd \u00d7 30 yd = 1,500 sq yd\n\nStep 2 \u2014 Convert square yards to square feet:\nSince 1 yard = 3 feet, then 1 square yard = 3 ft \u00d7 3 ft = 9 square feet.\n1,500 sq yd \u00d7 9 sq ft/sq yd = 13,500 square feet\n\nCheck: 13,500 \u00f7 9 = 1,500 sq yd \u2713",
     "distractor_logic": {
       "A": "Student correctly computes the area in square yards (1,500) but stops there, reporting the answer in square yards as if it were already in square feet.",
-      "B": "Student recognizes that 1 yard = 3 feet but incorrectly applies the linear conversion factor (×3) to the area, rather than the area conversion factor (×9); 1,500 × 3 = 4,500.",
-      "C": "Correct: area in square yards is 50 × 30 = 1,500 sq yd; since 1 sq yd = 9 sq ft, the total is 1,500 × 9 = 13,500 square feet.",
-      "D": "Student divides the area by 3 instead of multiplying by 9, inverting the direction of the conversion and using the wrong factor; 1,500 ÷ 3 = 500."
+      "B": "Student recognizes that 1 yard = 3 feet but incorrectly applies the linear conversion factor (\u00d73) to the area, rather than the area conversion factor (\u00d79); 1,500 \u00d7 3 = 4,500.",
+      "C": "Correct: area in square yards is 50 \u00d7 30 = 1,500 sq yd; since 1 sq yd = 9 sq ft, the total is 1,500 \u00d7 9 = 13,500 square feet.",
+      "D": "Student divides the area by 3 instead of multiplying by 9, inverting the direction of the conversion and using the wrong factor; 1,500 \u00f7 3 = 500."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -601,7 +681,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["draw_diagram", "identify_key_info"],
+    "applicable_strategies": [
+      "draw_diagram",
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "draw_diagram",
@@ -609,15 +692,20 @@
       },
       {
         "strategy": "identify_key_info",
-        "hint_text": "The key relationship is 1 sq yd = 9 sq ft, not 3 sq ft. Because area is two-dimensional, you multiply the linear factor (3) by itself: 3 × 3 = 9."
+        "hint_text": "The key relationship is 1 sq yd = 9 sq ft, not 3 sq ft. Because area is two-dimensional, you multiply the linear factor (3) by itself: 3 \u00d7 3 = 9."
       }
     ],
     "content_context": "construction",
-    "context_tags": ["area", "unit_conversion", "square_yards_to_square_feet", "multi_step"],
+    "context_tags": [
+      "area",
+      "unit_conversion",
+      "square_yards_to_square_feet",
+      "multi_step"
+    ],
     "estimated_time_seconds": 120,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -627,6 +715,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-03",
     "last_modified": "2026-06-03",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

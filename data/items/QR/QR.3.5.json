@@ -41,7 +41,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -49,11 +51,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["combining_like_terms", "coefficients", "simplifying_expressions"],
+    "context_tags": [
+      "combining_like_terms",
+      "coefficients",
+      "simplifying_expressions"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -63,7 +69,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_091",
@@ -107,7 +115,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -115,11 +125,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["combining_like_terms", "subtraction", "constant_term"],
+    "context_tags": [
+      "combining_like_terms",
+      "subtraction",
+      "constant_term"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -129,7 +143,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_092",
@@ -173,7 +189,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -181,11 +199,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["combining_like_terms", "two_variables", "unlike_terms"],
+    "context_tags": [
+      "combining_like_terms",
+      "two_variables",
+      "unlike_terms"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -195,7 +217,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_093",
@@ -239,7 +263,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -247,11 +273,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["combining_like_terms", "negative_signs", "double_negative"],
+    "context_tags": [
+      "combining_like_terms",
+      "negative_signs",
+      "double_negative"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -261,7 +291,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_094",
@@ -305,7 +337,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -313,11 +347,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["combining_like_terms", "multiple_groups", "constant_term"],
+    "context_tags": [
+      "combining_like_terms",
+      "multiple_groups",
+      "constant_term"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -327,7 +365,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_077",
@@ -371,7 +411,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -379,11 +421,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["combining_like_terms", "sign_tracking", "interleaved_terms"],
+    "context_tags": [
+      "combining_like_terms",
+      "sign_tracking",
+      "interleaved_terms"
+    ],
     "estimated_time_seconds": 90,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -393,7 +439,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_078",
@@ -437,7 +485,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -445,11 +495,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["distributing_subtraction", "sign_tracking", "parentheses"],
+    "context_tags": [
+      "distributing_subtraction",
+      "sign_tracking",
+      "parentheses"
+    ],
     "estimated_time_seconds": 95,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -459,7 +513,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_079",
@@ -503,7 +559,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -511,11 +569,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["distributive_property", "combining_like_terms", "multi_step"],
+    "context_tags": [
+      "distributive_property",
+      "combining_like_terms",
+      "multi_step"
+    ],
     "estimated_time_seconds": 95,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -525,7 +587,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_080",
@@ -569,7 +633,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -577,11 +643,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["combining_like_terms", "negative_signs", "interleaved_terms"],
+    "context_tags": [
+      "combining_like_terms",
+      "negative_signs",
+      "interleaved_terms"
+    ],
     "estimated_time_seconds": 95,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -591,7 +661,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_081",
@@ -635,7 +707,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -647,11 +722,16 @@
       }
     ],
     "content_context": "landscaping",
-    "context_tags": ["combining_like_terms", "cost_model", "real_world", "linear_expression"],
+    "context_tags": [
+      "combining_like_terms",
+      "cost_model",
+      "real_world",
+      "linear_expression"
+    ],
     "estimated_time_seconds": 100,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -661,7 +741,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_071",
@@ -705,7 +787,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -717,11 +802,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["distributive_property", "sign_tracking", "combining_like_terms", "negative_factor"],
+    "context_tags": [
+      "distributive_property",
+      "sign_tracking",
+      "combining_like_terms",
+      "negative_factor"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -731,7 +821,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_072",
@@ -775,7 +867,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -787,11 +882,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["distributive_property", "sign_tracking", "terms_canceling", "double_negative"],
+    "context_tags": [
+      "distributive_property",
+      "sign_tracking",
+      "terms_canceling",
+      "double_negative"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -801,7 +901,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_073",
@@ -845,7 +947,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -857,11 +962,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["distributive_property", "combining_like_terms", "mixed_signs", "multi_step"],
+    "context_tags": [
+      "distributive_property",
+      "combining_like_terms",
+      "mixed_signs",
+      "multi_step"
+    ],
     "estimated_time_seconds": 130,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -871,7 +981,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_074",
@@ -915,7 +1027,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -927,11 +1042,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["distributive_property", "two_variables", "sign_tracking", "combining_like_terms"],
+    "context_tags": [
+      "distributive_property",
+      "two_variables",
+      "sign_tracking",
+      "combining_like_terms"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -941,7 +1061,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_075",
@@ -985,7 +1107,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -997,11 +1122,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["distributive_property", "double_negative", "sign_tracking", "combining_like_terms"],
+    "context_tags": [
+      "distributive_property",
+      "double_negative",
+      "sign_tracking",
+      "combining_like_terms"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -1011,6 +1141,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-24",
     "last_modified": "2026-06-24",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

@@ -41,7 +41,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -53,11 +56,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["polynomial_simplification", "combining_like_terms", "quadratic_terms"],
+    "context_tags": [
+      "polynomial_simplification",
+      "combining_like_terms",
+      "quadratic_terms"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -67,7 +74,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-27",
     "last_modified": "2026-06-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_082",
@@ -111,7 +120,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -119,11 +130,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["polynomial_simplification", "combining_like_terms", "sign_tracking"],
+    "context_tags": [
+      "polynomial_simplification",
+      "combining_like_terms",
+      "sign_tracking"
+    ],
     "estimated_time_seconds": 60,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -133,7 +148,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-27",
     "last_modified": "2026-06-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_083",
@@ -177,7 +194,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -189,11 +209,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["polynomial_simplification", "combining_like_terms", "constants"],
+    "context_tags": [
+      "polynomial_simplification",
+      "combining_like_terms",
+      "constants"
+    ],
     "estimated_time_seconds": 70,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -203,7 +227,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-27",
     "last_modified": "2026-06-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_084",
@@ -247,7 +273,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -255,11 +283,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["polynomial_simplification", "combining_like_terms", "sign_tracking"],
+    "context_tags": [
+      "polynomial_simplification",
+      "combining_like_terms",
+      "sign_tracking"
+    ],
     "estimated_time_seconds": 70,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -269,7 +301,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-27",
     "last_modified": "2026-06-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_B_085",
@@ -313,7 +347,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -325,11 +362,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["polynomial_simplification", "combining_like_terms", "exponents"],
+    "context_tags": [
+      "polynomial_simplification",
+      "combining_like_terms",
+      "exponents"
+    ],
     "estimated_time_seconds": 75,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -339,7 +380,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-27",
     "last_modified": "2026-06-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_055",
@@ -383,7 +426,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -395,11 +441,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["polynomial_simplification", "combining_like_terms", "cubic_terms", "sign_tracking"],
+    "context_tags": [
+      "polynomial_simplification",
+      "combining_like_terms",
+      "cubic_terms",
+      "sign_tracking"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -409,7 +460,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-27",
     "last_modified": "2026-06-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_056",
@@ -453,7 +506,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -465,11 +521,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["polynomial_simplification", "distributing_negative", "combining_like_terms"],
+    "context_tags": [
+      "polynomial_simplification",
+      "distributing_negative",
+      "combining_like_terms"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -479,7 +539,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-27",
     "last_modified": "2026-06-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_P_057",
@@ -523,7 +585,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -535,11 +600,15 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["polynomial_simplification", "combining_like_terms", "two_variable_terms"],
+    "context_tags": [
+      "polynomial_simplification",
+      "combining_like_terms",
+      "two_variable_terms"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -549,7 +618,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-27",
     "last_modified": "2026-06-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_A_042",
@@ -593,7 +664,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -605,11 +679,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["polynomial_simplification", "distributive_property", "combining_like_terms", "quadratic_terms"],
+    "context_tags": [
+      "polynomial_simplification",
+      "distributive_property",
+      "combining_like_terms",
+      "quadratic_terms"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -619,7 +698,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-27",
     "last_modified": "2026-06-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "AR_A_043",
@@ -663,7 +744,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "plug_in_values"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "plug_in_values"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -675,11 +759,16 @@
       }
     ],
     "content_context": "generic",
-    "context_tags": ["polynomial_simplification", "distributive_property", "distributing_negative", "combining_like_terms"],
+    "context_tags": [
+      "polynomial_simplification",
+      "distributive_property",
+      "distributing_negative",
+      "combining_like_terms"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -689,6 +778,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-27",
     "last_modified": "2026-06-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

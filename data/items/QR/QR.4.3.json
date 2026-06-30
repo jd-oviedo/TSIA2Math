@@ -6,7 +6,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.3",
@@ -41,7 +43,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -49,11 +53,15 @@
       }
     ],
     "content_context": "savings",
-    "context_tags": ["linear_equation", "savings", "rate_and_starting_value"],
+    "context_tags": [
+      "linear_equation",
+      "savings",
+      "rate_and_starting_value"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -63,7 +71,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_118",
@@ -72,7 +82,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.3",
@@ -107,7 +119,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -115,11 +129,15 @@
       }
     ],
     "content_context": "phone_plan",
-    "context_tags": ["linear_equation", "flat_fee", "per_unit_rate"],
+    "context_tags": [
+      "linear_equation",
+      "flat_fee",
+      "per_unit_rate"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -129,7 +147,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_119",
@@ -138,7 +158,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.3",
@@ -173,7 +195,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -185,11 +210,15 @@
       }
     ],
     "content_context": "draining_tank",
-    "context_tags": ["linear_equation", "negative_rate", "decreasing_quantity"],
+    "context_tags": [
+      "linear_equation",
+      "negative_rate",
+      "decreasing_quantity"
+    ],
     "estimated_time_seconds": 85,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -199,7 +228,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_120",
@@ -208,7 +239,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.3",
@@ -243,7 +276,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -251,11 +286,15 @@
       }
     ],
     "content_context": "transportation",
-    "context_tags": ["linear_equation", "base_fee", "per_mile_rate"],
+    "context_tags": [
+      "linear_equation",
+      "base_fee",
+      "per_mile_rate"
+    ],
     "estimated_time_seconds": 85,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -265,7 +304,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_121",
@@ -274,7 +315,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.3",
@@ -309,7 +352,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -317,11 +362,15 @@
       }
     ],
     "content_context": "plant_growth",
-    "context_tags": ["linear_equation", "growth_rate", "initial_value"],
+    "context_tags": [
+      "linear_equation",
+      "growth_rate",
+      "initial_value"
+    ],
     "estimated_time_seconds": 80,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -331,7 +380,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_104",
@@ -340,7 +391,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.3",
@@ -375,7 +428,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -383,11 +438,16 @@
       }
     ],
     "content_context": "candle_burning",
-    "context_tags": ["linear_equation", "rate_from_two_points", "negative_rate", "find_intercept"],
+    "context_tags": [
+      "linear_equation",
+      "rate_from_two_points",
+      "negative_rate",
+      "find_intercept"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -397,7 +457,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_105",
@@ -406,7 +468,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.3",
@@ -441,7 +505,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -449,11 +515,15 @@
       }
     ],
     "content_context": "gym_membership",
-    "context_tags": ["linear_equation", "infer_starting_value", "fixed_fee_plus_rate"],
+    "context_tags": [
+      "linear_equation",
+      "infer_starting_value",
+      "fixed_fee_plus_rate"
+    ],
     "estimated_time_seconds": 105,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -463,7 +533,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_106",
@@ -472,7 +544,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.3",
@@ -507,7 +581,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -515,11 +591,15 @@
       }
     ],
     "content_context": "business_revenue",
-    "context_tags": ["linear_equation", "rate_from_two_points", "find_intercept"],
+    "context_tags": [
+      "linear_equation",
+      "rate_from_two_points",
+      "find_intercept"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -529,7 +609,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_107",
@@ -538,7 +620,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.3",
@@ -573,7 +657,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -585,11 +672,15 @@
       }
     ],
     "content_context": "water_tank",
-    "context_tags": ["linear_equation", "negative_rate", "rate_from_two_points"],
+    "context_tags": [
+      "linear_equation",
+      "negative_rate",
+      "rate_from_two_points"
+    ],
     "estimated_time_seconds": 110,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -599,7 +690,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_108",
@@ -608,7 +701,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.3",
@@ -643,7 +738,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -651,11 +748,15 @@
       }
     ],
     "content_context": "club_membership",
-    "context_tags": ["linear_equation", "infer_starting_value", "project_future_value"],
+    "context_tags": [
+      "linear_equation",
+      "infer_starting_value",
+      "project_future_value"
+    ],
     "estimated_time_seconds": 115,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -665,7 +766,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_098",
@@ -674,7 +777,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.3",
@@ -709,7 +814,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "use_answer_choices"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "use_answer_choices"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -721,11 +829,16 @@
       }
     ],
     "content_context": "savings",
-    "context_tags": ["linear_equation", "set_expressions_equal", "comparison", "solve_for_unknown"],
+    "context_tags": [
+      "linear_equation",
+      "set_expressions_equal",
+      "comparison",
+      "solve_for_unknown"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -735,7 +848,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_099",
@@ -744,7 +859,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.3",
@@ -779,7 +896,9 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info"],
+    "applicable_strategies": [
+      "identify_key_info"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -787,11 +906,15 @@
       }
     ],
     "content_context": "subscription_revenue",
-    "context_tags": ["linear_equation", "parameter_change", "rate_vs_constant"],
+    "context_tags": [
+      "linear_equation",
+      "parameter_change",
+      "rate_vs_constant"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -801,7 +924,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_100",
@@ -810,7 +935,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.3",
@@ -845,7 +972,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "use_answer_choices"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "use_answer_choices"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -857,11 +987,16 @@
       }
     ],
     "content_context": "catering",
-    "context_tags": ["linear_equation", "reverse_reasoning", "two_component_cost", "solve_for_unknown"],
+    "context_tags": [
+      "linear_equation",
+      "reverse_reasoning",
+      "two_component_cost",
+      "solve_for_unknown"
+    ],
     "estimated_time_seconds": 135,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -871,7 +1006,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_101",
@@ -880,7 +1017,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.3",
@@ -915,7 +1054,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -927,11 +1069,16 @@
       }
     ],
     "content_context": "water_tanks",
-    "context_tags": ["linear_equation", "set_expressions_equal", "increasing_and_decreasing", "comparison"],
+    "context_tags": [
+      "linear_equation",
+      "set_expressions_equal",
+      "increasing_and_decreasing",
+      "comparison"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -941,7 +1088,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_102",
@@ -950,7 +1099,9 @@
     "status": "draft",
     "category": "Quantitative Reasoning",
     "primary_strand": "QR",
-    "secondary_strands": ["AR"],
+    "secondary_strands": [
+      "AR"
+    ],
     "objective": "quantitative_applications_in_context",
     "objective_text": "Quantitative Applications in Context",
     "topic_id": "QR.4.3",
@@ -985,7 +1136,10 @@
     "guessing_c": null,
     "calculator_type": "none",
     "requires_calculator": false,
-    "applicable_strategies": ["identify_key_info", "eliminate_wrong_answers"],
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
@@ -997,11 +1151,16 @@
       }
     ],
     "content_context": "savings_plans",
-    "context_tags": ["linear_equation", "compare_rates", "rate_vs_starting_value", "fastest_growth"],
+    "context_tags": [
+      "linear_equation",
+      "compare_rates",
+      "rate_vs_starting_value",
+      "fastest_growth"
+    ],
     "estimated_time_seconds": 140,
     "contains_image": false,
     "image_url": null,
-    "exposure_max": 0.20,
+    "exposure_max": 0.2,
     "times_administered": 0,
     "times_correct": 0,
     "dif_flag": null,
@@ -1011,6 +1170,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-26",
     "last_modified": "2026-06-26",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

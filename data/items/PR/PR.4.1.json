@@ -70,7 +70,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_067",
@@ -143,7 +145,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_068",
@@ -221,7 +225,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_069",
@@ -294,7 +300,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_B_070",
@@ -367,7 +375,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_065",
@@ -440,7 +450,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_066",
@@ -518,7 +530,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_067",
@@ -540,7 +554,7 @@
       "recognizing a curved (non-linear) pattern as having no single linear direction",
       "resisting the urge to force a positive or negative label onto a U-shaped pattern"
     ],
-    "question_text": "A scatterplot has an x-axis labeled 'Average Daily Temperature (°F)' (ranging 30 to 100) and a y-axis labeled 'Monthly Energy Bill ($)' (ranging 0 to 250). The points form a clear U-shape: bills are high (around \\$200) at low temperatures, drop to a low (around \\$80) near 65–70°F, then rise again to high (around \\$200) at high temperatures. Which best describes the linear association?",
+    "question_text": "A scatterplot has an x-axis labeled 'Average Daily Temperature (\u00b0F)' (ranging 30 to 100) and a y-axis labeled 'Monthly Energy Bill ($)' (ranging 0 to 250). The points form a clear U-shape: bills are high (around \\$200) at low temperatures, drop to a low (around \\$80) near 65\u201370\u00b0F, then rise again to high (around \\$200) at high temperatures. Which best describes the linear association?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Strong positive association.",
@@ -596,7 +610,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_068",
@@ -618,7 +634,7 @@
       "judging strength by clustering rather than by the steepness of the trend",
       "classifying a tight downward pattern as strong negative"
     ],
-    "question_text": "A scatterplot has an x-axis labeled 'Outdoor Temperature (°F)' (ranging 30 to 90) and a y-axis labeled 'Cups of Hot Chocolate Sold' (ranging 0 to 60). The points cluster tightly along a line that falls from left to right, with little scatter. Which best describes the linear association?",
+    "question_text": "A scatterplot has an x-axis labeled 'Outdoor Temperature (\u00b0F)' (ranging 30 to 90) and a y-axis labeled 'Cups of Hot Chocolate Sold' (ranging 0 to 60). The points cluster tightly along a line that falls from left to right, with little scatter. Which best describes the linear association?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Strong negative association.",
@@ -669,7 +685,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_P_069",
@@ -747,7 +765,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_067",
@@ -825,7 +845,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_068",
@@ -903,7 +925,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_069",
@@ -981,7 +1005,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_070",
@@ -1059,7 +1085,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "PR_A_071",
@@ -1137,6 +1165,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
     "last_modified": "2026-06-22",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]

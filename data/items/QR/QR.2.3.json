@@ -28,12 +28,12 @@
       "D": "28"
     },
     "correct_answer": "D",
-    "explanation": "Convert 35% to a decimal: 35% = 0.35. Multiply: 0.35 × 80 = 28.",
+    "explanation": "Convert 35% to a decimal: 35% = 0.35. Multiply: 0.35 \u00d7 80 = 28.",
     "distractor_logic": {
-      "A": "Student subtracts the percent from the whole number (80 − 35 = 45) instead of multiplying by the decimal form of the percent.",
-      "B": "Student uses 70% instead of 35%, doubling the percent before multiplying: 0.70 × 80 = 56.",
+      "A": "Student subtracts the percent from the whole number (80 \u2212 35 = 45) instead of multiplying by the decimal form of the percent.",
+      "B": "Student uses 70% instead of 35%, doubling the percent before multiplying: 0.70 \u00d7 80 = 56.",
       "C": "Student adds the percent to the whole number (80 + 35 = 115) instead of computing a percent of the whole.",
-      "D": "Correct: 35% = 0.35; 0.35 × 80 = 28."
+      "D": "Correct: 35% = 0.35; 0.35 \u00d7 80 = 28."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -75,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_044",
@@ -106,12 +108,12 @@
       "D": "400%"
     },
     "correct_answer": "B",
-    "explanation": "Divide the part by the whole: 18 ÷ 72 = 0.25. Convert to percent: 0.25 × 100 = 25%.",
+    "explanation": "Divide the part by the whole: 18 \u00f7 72 = 0.25. Convert to percent: 0.25 \u00d7 100 = 25%.",
     "distractor_logic": {
-      "A": "Student inverts the division (72 ÷ 18 = 4) and labels the result as a percent without multiplying by 100.",
-      "B": "Correct: 18 ÷ 72 = 0.25 = 25%.",
-      "C": "Student subtracts the part from the whole (72 − 18 = 54) and labels the difference as a percent.",
-      "D": "Student inverts the division (72 ÷ 18 = 4) and then correctly multiplies by 100, giving 400% instead of 25%."
+      "A": "Student inverts the division (72 \u00f7 18 = 4) and labels the result as a percent without multiplying by 100.",
+      "B": "Correct: 18 \u00f7 72 = 0.25 = 25%.",
+      "C": "Student subtracts the part from the whole (72 \u2212 18 = 54) and labels the difference as a percent.",
+      "D": "Student inverts the division (72 \u00f7 18 = 4) and then correctly multiplies by 100, giving 400% instead of 25%."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -126,7 +128,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "The formula is: percent = part ÷ whole × 100. Here, part = 18 and whole = 72."
+        "hint_text": "The formula is: percent = part \u00f7 whole \u00d7 100. Here, part = 18 and whole = 72."
       },
       {
         "strategy": "estimate_first",
@@ -153,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_045",
@@ -184,12 +188,12 @@
       "D": "90"
     },
     "correct_answer": "A",
-    "explanation": "Use the formula: whole = part ÷ percent. Whole = 15 ÷ 0.60 = 25.",
+    "explanation": "Use the formula: whole = part \u00f7 percent. Whole = 15 \u00f7 0.60 = 25.",
     "distractor_logic": {
-      "A": "Correct: 15 ÷ 0.60 = 25.",
-      "B": "Student multiplies instead of divides: 15 × 0.60 = 9, finding a part of the part rather than the whole.",
-      "C": "Student confuses 60% with $\\frac{1}{5}$ (20%) and multiplies: 15 × 5 = 75, using the wrong percent-to-fraction conversion.",
-      "D": "Student confuses 60% with $\\frac{1}{6}$ and multiplies: 15 × 6 = 90, using the reciprocal of the wrong fraction."
+      "A": "Correct: 15 \u00f7 0.60 = 25.",
+      "B": "Student multiplies instead of divides: 15 \u00d7 0.60 = 9, finding a part of the part rather than the whole.",
+      "C": "Student confuses 60% with $\\frac{1}{5}$ (20%) and multiplies: 15 \u00d7 5 = 75, using the wrong percent-to-fraction conversion.",
+      "D": "Student confuses 60% with $\\frac{1}{6}$ and multiplies: 15 \u00d7 6 = 90, using the reciprocal of the wrong fraction."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -204,11 +208,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "You know the part (15) and the percent (60%). To find the whole, divide: whole = 15 ÷ 0.60."
+        "hint_text": "You know the part (15) and the percent (60%). To find the whole, divide: whole = 15 \u00f7 0.60."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check: 60% of 25 = 0.60 × 25 = 15. ✓"
+        "hint_text": "Check: 60% of 25 = 0.60 \u00d7 25 = 15. \u2713"
       }
     ],
     "content_context": "generic",
@@ -231,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_046",
@@ -262,12 +268,12 @@
       "D": "130%"
     },
     "correct_answer": "C",
-    "explanation": "Change = \\$52 − \\$40 = \\$12. Percent increase = (change ÷ original) × 100 = (12 ÷ 40) × 100 = 30%.",
+    "explanation": "Change = \\$52 \u2212 \\$40 = \\$12. Percent increase = (change \u00f7 original) \u00d7 100 = (12 \u00f7 40) \u00d7 100 = 30%.",
     "distractor_logic": {
       "A": "Student uses the dollar amount of the change (\\$12) directly as the percent, skipping the step of dividing by the original price.",
-      "B": "Student divides the change by the new price instead of the original: 12 ÷ 52 ≈ 0.23 = 23%.",
-      "C": "Correct: (52 − 40) ÷ 40 × 100 = 12 ÷ 40 × 100 = 30%.",
-      "D": "Student divides the new price by the original (52 ÷ 40 = 1.30) and converts to a percent, giving 130% — the ratio of prices, not the percent change."
+      "B": "Student divides the change by the new price instead of the original: 12 \u00f7 52 \u2248 0.23 = 23%.",
+      "C": "Correct: (52 \u2212 40) \u00f7 40 \u00d7 100 = 12 \u00f7 40 \u00d7 100 = 30%.",
+      "D": "Student divides the new price by the original (52 \u00f7 40 = 1.30) and converts to a percent, giving 130% \u2014 the ratio of prices, not the percent change."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -282,7 +288,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Percent increase = (new − original) ÷ original × 100. The original price is \\$40."
+        "hint_text": "Percent increase = (new \u2212 original) \u00f7 original \u00d7 100. The original price is \\$40."
       },
       {
         "strategy": "estimate_first",
@@ -309,7 +315,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_047",
@@ -340,12 +348,12 @@
       "D": "125%"
     },
     "correct_answer": "B",
-    "explanation": "Change = 2,500 − 2,000 = 500. Percent decrease = (500 ÷ 2,500) × 100 = 20%.",
+    "explanation": "Change = 2,500 \u2212 2,000 = 500. Percent decrease = (500 \u00f7 2,500) \u00d7 100 = 20%.",
     "distractor_logic": {
-      "A": "Student divides the change by the new population instead of the original: 500 ÷ 2,000 = 0.25 = 25%.",
-      "B": "Correct: 500 ÷ 2,500 × 100 = 20%.",
-      "C": "Student computes the ratio of the new value to the original (2,000 ÷ 2,500 = 0.80 = 80%), finding the percent remaining rather than the percent decrease.",
-      "D": "Student inverts the ratio, dividing the original by the new value (2,500 ÷ 2,000 = 1.25 = 125%), and reports that as the percent change."
+      "A": "Student divides the change by the new population instead of the original: 500 \u00f7 2,000 = 0.25 = 25%.",
+      "B": "Correct: 500 \u00f7 2,500 \u00d7 100 = 20%.",
+      "C": "Student computes the ratio of the new value to the original (2,000 \u00f7 2,500 = 0.80 = 80%), finding the percent remaining rather than the percent decrease.",
+      "D": "Student inverts the ratio, dividing the original by the new value (2,500 \u00f7 2,000 = 1.25 = 125%), and reports that as the percent change."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -360,7 +368,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Percent decrease = (original − new) ÷ original × 100. Always divide by the original (2,500), not the new value."
+        "hint_text": "Percent decrease = (original \u2212 new) \u00f7 original \u00d7 100. Always divide by the original (2,500), not the new value."
       },
       {
         "strategy": "estimate_first",
@@ -387,7 +395,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_040",
@@ -418,12 +428,12 @@
       "D": "\\$192"
     },
     "correct_answer": "D",
-    "explanation": "After 20% markup: \\$200 × 1.20 = \\$240. After 20% discount on the new price: \\$240 × 0.80 = \\$192. The final price is \\$192, not \\$200, because the 20% discount applies to the higher marked-up price.",
+    "explanation": "After 20% markup: \\$200 \u00d7 1.20 = \\$240. After 20% discount on the new price: \\$240 \u00d7 0.80 = \\$192. The final price is \\$192, not \\$200, because the 20% discount applies to the higher marked-up price.",
     "distractor_logic": {
       "A": "Student assumes a 20% increase followed by a 20% decrease returns to the original price, not recognizing that the discount applies to the higher marked-up price.",
-      "B": "Student correctly applies the 20% markup (\\$200 × 1.20 = \\$240) but stops before applying the discount.",
-      "C": "Student applies only the 20% discount to the original price (\\$200 × 0.80 = \\$160), ignoring the prior markup entirely.",
-      "D": "Correct: \\$200 × 1.20 × 0.80 = \\$240 × 0.80 = \\$192."
+      "B": "Student correctly applies the 20% markup (\\$200 \u00d7 1.20 = \\$240) but stops before applying the discount.",
+      "C": "Student applies only the 20% discount to the original price (\\$200 \u00d7 0.80 = \\$160), ignoring the prior markup entirely.",
+      "D": "Correct: \\$200 \u00d7 1.20 \u00d7 0.80 = \\$240 \u00d7 0.80 = \\$192."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -442,7 +452,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Step 1: \\$200 × 1.20 = \\$240. Step 2: \\$240 × 0.80 = \\$192."
+        "hint_text": "Step 1: \\$200 \u00d7 1.20 = \\$240. Step 2: \\$240 \u00d7 0.80 = \\$192."
       }
     ],
     "content_context": "retail_shopping",
@@ -465,7 +475,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_041",
@@ -496,10 +508,10 @@
       "D": "\\$44,000"
     },
     "correct_answer": "B",
-    "explanation": "Let x = original salary. After a 15% increase: x × 1.15 = \\$46,000. Solve: x = 46,000 ÷ 1.15 = \\$40,000.",
+    "explanation": "Let x = original salary. After a 15% increase: x \u00d7 1.15 = \\$46,000. Solve: x = 46,000 \u00f7 1.15 = \\$40,000.",
     "distractor_logic": {
-      "A": "Student subtracts 15% of the new salary instead of dividing by 1.15: \\$46,000 − 0.15 × \\$46,000 = \\$46,000 − \\$6,900 = \\$39,100.",
-      "B": "Correct: \\$46,000 ÷ 1.15 = \\$40,000.",
+      "A": "Student subtracts 15% of the new salary instead of dividing by 1.15: \\$46,000 \u2212 0.15 \u00d7 \\$46,000 = \\$46,000 \u2212 \\$6,900 = \\$39,100.",
+      "B": "Correct: \\$46,000 \u00f7 1.15 = \\$40,000.",
       "C": "Student adds 15% of the new salary to the new salary (moving in the wrong direction): \\$46,000 + \\$6,900 = \\$52,900.",
       "D": "Student estimates the original by subtracting a rough dollar amount rather than applying the correct percent formula, arriving at an approximate but incorrect value of \\$44,000."
     },
@@ -516,11 +528,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "\\$46,000 is the salary AFTER the 15% raise. That means \\$46,000 = original × 1.15. Divide to find the original."
+        "hint_text": "\\$46,000 is the salary AFTER the 15% raise. That means \\$46,000 = original \u00d7 1.15. Divide to find the original."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check: \\$40,000 × 1.15 = \\$40,000 + \\$6,000 = \\$46,000. ✓"
+        "hint_text": "Check: \\$40,000 \u00d7 1.15 = \\$40,000 + \\$6,000 = \\$46,000. \u2713"
       }
     ],
     "content_context": "personal_finance",
@@ -543,7 +555,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_042",
@@ -577,9 +591,9 @@
     "explanation": "Tax = 8% of \\$35 = \\$2.80. Tip = 15% of \\$35 = \\$5.25. Total = \\$35 + \\$2.80 + \\$5.25 = \\$43.05.",
     "distractor_logic": {
       "A": "Correct: tax = \\$2.80, tip = \\$5.25, total = \\$43.05.",
-      "B": "Student applies the tax to the original (\\$35 × 1.08 = \\$37.80) and then the tip to the post-tax total (\\$37.80 × 1.15 ≈ \\$43.47), computing tip on the wrong base.",
-      "C": "Student applies only the 15% tip to the original bill (\\$35 × 1.15 = \\$40.25), omitting the tax.",
-      "D": "Student adds the two percent rates (8% + 15% = 23%) and rounds 23% down to the nearest round number (20%), then applies a single 20% increase to the original bill: \\$35 × 1.20 = \\$42.00."
+      "B": "Student applies the tax to the original (\\$35 \u00d7 1.08 = \\$37.80) and then the tip to the post-tax total (\\$37.80 \u00d7 1.15 \u2248 \\$43.47), computing tip on the wrong base.",
+      "C": "Student applies only the 15% tip to the original bill (\\$35 \u00d7 1.15 = \\$40.25), omitting the tax.",
+      "D": "Student adds the two percent rates (8% + 15% = 23%) and rounds 23% down to the nearest round number (20%), then applies a single 20% increase to the original bill: \\$35 \u00d7 1.20 = \\$42.00."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -621,7 +635,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": "Revised: distractor D rationale corrected to accurately describe how a student arrives at $42.00 (adds 8%+15%=23%, rounds down to 20%, applies to $35) per QR.2.3 review."
+    "review_notes": "Revised: distractor D rationale corrected to accurately describe how a student arrives at $42.00 (adds 8%+15%=23%, rounds down to 20%, applies to $35) per QR.2.3 review.",
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_039",
@@ -652,11 +668,11 @@
       "D": "15% increase"
     },
     "correct_answer": "B",
-    "explanation": "Chain the multipliers: 1.10 × 0.95 = 1.045. A multiplier of 1.045 means the final value is 104.5% of the original, which is a net increase of 4.5%.",
+    "explanation": "Chain the multipliers: 1.10 \u00d7 0.95 = 1.045. A multiplier of 1.045 means the final value is 104.5% of the original, which is a net increase of 4.5%.",
     "distractor_logic": {
-      "A": "Student subtracts the two percent rates directly (10% − 5% = 5%), treating percent changes as additive rather than multiplicative and ignoring that the 5% loss applies to a higher base.",
-      "B": "Correct: 1.10 × 0.95 = 1.045, a net gain of 4.5%.",
-      "C": "Student correctly computes the combined multiplier (1.10 × 0.95 = 1.045) but truncates 4.5% to 4%, dropping the 0.5 percentage point from the product.",
+      "A": "Student subtracts the two percent rates directly (10% \u2212 5% = 5%), treating percent changes as additive rather than multiplicative and ignoring that the 5% loss applies to a higher base.",
+      "B": "Correct: 1.10 \u00d7 0.95 = 1.045, a net gain of 4.5%.",
+      "C": "Student correctly computes the combined multiplier (1.10 \u00d7 0.95 = 1.045) but truncates 4.5% to 4%, dropping the 0.5 percentage point from the product.",
       "D": "Student ignores the direction of the second change, treating the 5% decrease as a 5% increase and adding both rates (10% + 5% = 15%)."
     },
     "difficulty_level": "Advanced",
@@ -673,7 +689,7 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Convert each change to a multiplier: +10% = ×1.10; −5% = ×0.95. Multiply them together to find the combined multiplier, then read off the net percent change."
+        "hint_text": "Convert each change to a multiplier: +10% = \u00d71.10; \u22125% = \u00d70.95. Multiply them together to find the combined multiplier, then read off the net percent change."
       },
       {
         "strategy": "plug_in_values",
@@ -681,7 +697,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "A 10% gain followed by a 5% loss cannot be a simple 5% net gain — the loss applies to the already-higher value. The net gain must be slightly less than 5%, so look for an answer just below 5%."
+        "hint_text": "A 10% gain followed by a 5% loss cannot be a simple 5% net gain \u2014 the loss applies to the already-higher value. The net gain must be slightly less than 5%, so look for an answer just below 5%."
       }
     ],
     "content_context": "personal_finance",
@@ -704,7 +720,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": "Revised from 'find final dollar value' (flagged as insufficiently Advanced; estimate hint also misleading) to 'find net percent change,' which requires interpreting the product of multipliers as a percent — a more demanding conceptual step. estimate_first hint rewritten. Key changed C→B."
+    "review_notes": "Revised from 'find final dollar value' (flagged as insufficiently Advanced; estimate hint also misleading) to 'find net percent change,' which requires interpreting the product of multipliers as a percent \u2014 a more demanding conceptual step. estimate_first hint rewritten. Key changed C\u2192B.",
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_040",
@@ -735,12 +753,12 @@
       "D": "25% increase; goal was not met"
     },
     "correct_answer": "D",
-    "explanation": "Percent increase = (85 − 68) ÷ 68 × 100 = 17 ÷ 68 × 100 = 25%. A 30% improvement on 68 would require a score of 68 × 1.30 = 88.4. Since 85 < 88.4, the goal was not met.",
+    "explanation": "Percent increase = (85 \u2212 68) \u00f7 68 \u00d7 100 = 17 \u00f7 68 \u00d7 100 = 25%. A 30% improvement on 68 would require a score of 68 \u00d7 1.30 = 88.4. Since 85 < 88.4, the goal was not met.",
     "distractor_logic": {
       "A": "Student correctly computes the 25% increase but misinterprets the goal: they read '30% improvement goal' as 'the student must show improvement' rather than 'the student must achieve at least a 30% increase.' Since any positive percent change constitutes improvement in their reading, they conclude the goal was met.",
       "B": "Student uses the raw point change (17 points) as the percent increase rather than dividing by the original score, getting 17% instead of 25%.",
-      "C": "Student divides the change by the new score instead of the original (17 ÷ 85 ≈ 0.20 = 20%) and correctly identifies the goal was not met.",
-      "D": "Correct: percent increase = 25%; required score for 30% improvement = 68 × 1.30 = 88.4 > 85, so goal was not met."
+      "C": "Student divides the change by the new score instead of the original (17 \u00f7 85 \u2248 0.20 = 20%) and correctly identifies the goal was not met.",
+      "D": "Correct: percent increase = 25%; required score for 30% improvement = 68 \u00d7 1.30 = 88.4 > 85, so goal was not met."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -760,11 +778,11 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Actual % increase = $\\frac{17}{68}$ × 100 = 25%. Required score = 68 × 1.30 = 88.4. Is 85 ≥ 88.4?"
+        "hint_text": "Actual % increase = $\\frac{17}{68}$ \u00d7 100 = 25%. Required score = 68 \u00d7 1.30 = 88.4. Is 85 \u2265 88.4?"
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "$\\frac{17}{68}$ is close to $\\frac{17}{70}$ ≈ 24%, so the increase is near 25%. A 30% increase on ~70 points would need about 21 more points, giving ~89, which is above 85."
+        "hint_text": "$\\frac{17}{68}$ is close to $\\frac{17}{70}$ \u2248 24%, so the increase is near 25%. A 30% increase on ~70 points would need about 21 more points, giving ~89, which is above 85."
       }
     ],
     "content_context": "academic_performance",
@@ -787,6 +805,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": "Revised: distractor A rationale corrected — previous wording was logically contradictory (comparing 25% < 30% would show goal not met, not met). New rationale: student misreads 'improvement goal' as 'any improvement suffices' per QR.2.3 review."
+    "review_notes": "Revised: distractor A rationale corrected \u2014 previous wording was logically contradictory (comparing 25% < 30% would show goal not met, not met). New rationale: student misreads 'improvement goal' as 'any improvement suffices' per QR.2.3 review.",
+    "figure_type": null,
+    "figure_props": null
   }
 ]

@@ -30,7 +30,7 @@
     "correct_answer": "C",
     "explanation": "Check y/x for each pair: $\\frac{6}{2}$ = 3, $\\frac{12}{4}$ = 3, $\\frac{18}{6}$ = 3, $\\frac{24}{8}$ = 3. The ratio is constant, so y varies directly with x and k = 3.",
     "distractor_logic": {
-      "A": "Student checks whether differences are constant (Δy = 6 is constant, suggesting linearity) but confuses the requirement for direct variation, which is a constant ratio y/x, not a constant difference.",
+      "A": "Student checks whether differences are constant (\u0394y = 6 is constant, suggesting linearity) but confuses the requirement for direct variation, which is a constant ratio y/x, not a constant difference.",
       "B": "Student identifies the first y-value (6) as the constant of variation rather than computing the ratio y/x = $\\frac{6}{2}$ = 3.",
       "C": "Correct: y/x = 3 for all pairs; k = 3.",
       "D": "Student inverts the ratio, computing x/y = $\\frac{2}{6}$ = $\\frac{1}{3}$ instead of y/x = 3."
@@ -52,7 +52,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "$\\frac{6}{2}$ = 3, $\\frac{12}{4}$ = 3, $\\frac{18}{6}$ = 3, $\\frac{24}{8}$ = 3. All equal → direct variation with k = 3."
+        "hint_text": "$\\frac{6}{2}$ = 3, $\\frac{12}{4}$ = 3, $\\frac{18}{6}$ = 3, $\\frac{24}{8}$ = 3. All equal \u2192 direct variation with k = 3."
       }
     ],
     "content_context": "generic",
@@ -75,7 +75,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_B_069",
@@ -106,12 +108,12 @@
       "D": "160"
     },
     "correct_answer": "A",
-    "explanation": "Find k: k = y/x = $\\frac{20}{5}$ = 4. Apply: y = 4 × 8 = 32.",
+    "explanation": "Find k: k = y/x = $\\frac{20}{5}$ = 4. Apply: y = 4 \u00d7 8 = 32.",
     "distractor_logic": {
-      "A": "Correct: k = 4; y = 4 × 8 = 32.",
-      "B": "Student adds the change in x to the known y-value (20 + (8 − 5) = 23), treating the relationship as additive rather than proportional.",
-      "C": "Student divides y by 4 instead of x = 5 to find k (20 ÷ 4 = 5), then computes 5 × 8 = 40.",
-      "D": "Student multiplies the known y-value by the new x-value directly (20 × 8 = 160), skipping the step of finding k."
+      "A": "Correct: k = 4; y = 4 \u00d7 8 = 32.",
+      "B": "Student adds the change in x to the known y-value (20 + (8 \u2212 5) = 23), treating the relationship as additive rather than proportional.",
+      "C": "Student divides y by 4 instead of x = 5 to find k (20 \u00f7 4 = 5), then computes 5 \u00d7 8 = 40.",
+      "D": "Student multiplies the known y-value by the new x-value directly (20 \u00d7 8 = 160), skipping the step of finding k."
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -126,11 +128,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Direct variation: y = kx. Find k first using the given pair: k = 20 ÷ 5 = 4. Then use y = 4x."
+        "hint_text": "Direct variation: y = kx. Find k first using the given pair: k = 20 \u00f7 5 = 4. Then use y = 4x."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Check: y = 4 × 8 = 32. Verify: $\\frac{32}{8}$ = 4 = $\\frac{20}{5}$. ✓"
+        "hint_text": "Check: y = 4 \u00d7 8 = 32. Verify: $\\frac{32}{8}$ = 4 = $\\frac{20}{5}$. \u2713"
       }
     ],
     "content_context": "generic",
@@ -153,7 +155,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_055",
@@ -184,12 +188,12 @@
       "D": "15 N"
     },
     "correct_answer": "D",
-    "explanation": "k = stretch/force = $\\frac{4}{6}$ = $\\frac{2}{3}$ cm/N. Equation: 10 = ($\\frac{2}{3}$)x. Solve: x = 10 × ($\\frac{3}{2}$) = 15 N.",
+    "explanation": "k = stretch/force = $\\frac{4}{6}$ = $\\frac{2}{3}$ cm/N. Equation: 10 = ($\\frac{2}{3}$)x. Solve: x = 10 \u00d7 ($\\frac{3}{2}$) = 15 N.",
     "distractor_logic": {
-      "A": "Student computes k = $\\frac{4}{6}$ ≈ 0.667 but applies it as a multiplier rather than dividing: force = 10 × 0.667 ≈ 6.7 N, moving in the wrong direction.",
+      "A": "Student computes k = $\\frac{4}{6}$ \u2248 0.667 but applies it as a multiplier rather than dividing: force = 10 \u00d7 0.667 \u2248 6.7 N, moving in the wrong direction.",
       "B": "Student adds the given force and the target stretch (6 + 10 = 16 N) instead of using the proportional relationship.",
-      "C": "Student multiplies the given force by the target stretch (6 × 10 = 60 N) instead of setting up and solving a direct variation equation.",
-      "D": "Correct: k = $\\frac{2}{3}$; 10 = ($\\frac{2}{3}$)x → x = 15 N."
+      "C": "Student multiplies the given force by the target stretch (6 \u00d7 10 = 60 N) instead of setting up and solving a direct variation equation.",
+      "D": "Correct: k = $\\frac{2}{3}$; 10 = ($\\frac{2}{3}$)x \u2192 x = 15 N."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -208,7 +212,7 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "k = $\\frac{4}{6}$ = $\\frac{2}{3}$. Equation: 10 = ($\\frac{2}{3}$)x → x = 15. Check: ($\\frac{2}{3}$)(15) = 10. ✓"
+        "hint_text": "k = $\\frac{4}{6}$ = $\\frac{2}{3}$. Equation: 10 = ($\\frac{2}{3}$)x \u2192 x = 15. Check: ($\\frac{2}{3}$)(15) = 10. \u2713"
       }
     ],
     "content_context": "science_and_engineering",
@@ -231,7 +235,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_P_056",
@@ -261,15 +267,15 @@
       "A": "y = 3x + 2",
       "B": "y = 5",
       "C": "y = 4x",
-      "D": "y = x² + 1"
+      "D": "y = x\u00b2 + 1"
     },
     "correct_answer": "C",
-    "explanation": "Direct variation has the form y = kx, where k ≠ 0 and there is no constant term. Only y = 4x fits this form (k = 4). It passes through the origin and has a constant ratio y/x = 4.",
+    "explanation": "Direct variation has the form y = kx, where k \u2260 0 and there is no constant term. Only y = 4x fits this form (k = 4). It passes through the origin and has a constant ratio y/x = 4.",
     "distractor_logic": {
-      "A": "y = 3x + 2 is linear but not direct variation — the +2 constant means the line does not pass through the origin, so y/x is not constant.",
-      "B": "y = 5 is a constant function (horizontal line), which does not show any variation with x and cannot be written as y = kx with k ≠ 0.",
-      "C": "Correct: y = 4x has the form y = kx with k = 4. It passes through the origin and y/x = 4 for all x ≠ 0.",
-      "D": "y = x² + 1 is a quadratic function, not linear, and does not have a constant ratio y/x."
+      "A": "y = 3x + 2 is linear but not direct variation \u2014 the +2 constant means the line does not pass through the origin, so y/x is not constant.",
+      "B": "y = 5 is a constant function (horizontal line), which does not show any variation with x and cannot be written as y = kx with k \u2260 0.",
+      "C": "Correct: y = 4x has the form y = kx with k = 4. It passes through the origin and y/x = 4 for all x \u2260 0.",
+      "D": "y = x\u00b2 + 1 is a quadratic function, not linear, and does not have a constant ratio y/x."
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -284,11 +290,11 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "Direct variation means y = kx exactly — no added constant, no exponents on x. The line must pass through (0, 0)."
+        "hint_text": "Direct variation means y = kx exactly \u2014 no added constant, no exponents on x. The line must pass through (0, 0)."
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "A has a +2 (not through origin). B has no x. D has x². Only C is y = kx."
+        "hint_text": "A has a +2 (not through origin). B has no x. D has x\u00b2. Only C is y = kx."
       }
     ],
     "content_context": "generic",
@@ -311,7 +317,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_049",
@@ -342,12 +350,12 @@
       "D": "\\$240"
     },
     "correct_answer": "A",
-    "explanation": "Find k: 80 = k(200)/50 → 80 = 4k → k = 20. Apply: C = 20(300)/40 = 6,$\\frac{000}{40}$ = \\$150.",
+    "explanation": "Find k: 80 = k(200)/50 \u2192 80 = 4k \u2192 k = 20. Apply: C = 20(300)/40 = 6,$\\frac{000}{40}$ = \\$150.",
     "distractor_logic": {
-      "A": "Correct: k = 20; C = 20 × $\\frac{300}{40}$ = \\$150.",
-      "B": "Student correctly finds k = 20 but uses the original batch size b = 50 instead of the new b = 40: C = 20 × $\\frac{300}{50}$ = \\$120.",
-      "C": "Student scales C by the ratio of the new to old n and the inverse of the new to old b but inverts the batch-size effect: C = 80 × ($\\frac{300}{200}$) × ($\\frac{40}{50}$) = 80 × 1.5 × 0.8 = \\$96.",
-      "D": "Student ignores the inverse relationship with b and treats the formula as direct variation in both n and b: C = 80 × ($\\frac{300}{200}$) × ($\\frac{50}{40}$)... or computes 80 × 3 = \\$240 using a wrong scale factor."
+      "A": "Correct: k = 20; C = 20 \u00d7 $\\frac{300}{40}$ = \\$150.",
+      "B": "Student correctly finds k = 20 but uses the original batch size b = 50 instead of the new b = 40: C = 20 \u00d7 $\\frac{300}{50}$ = \\$120.",
+      "C": "Student scales C by the ratio of the new to old n and the inverse of the new to old b but inverts the batch-size effect: C = 80 \u00d7 ($\\frac{300}{200}$) \u00d7 ($\\frac{40}{50}$) = 80 \u00d7 1.5 \u00d7 0.8 = \\$96.",
+      "D": "Student ignores the inverse relationship with b and treats the formula as direct variation in both n and b: C = 80 \u00d7 ($\\frac{300}{200}$) \u00d7 ($\\frac{50}{40}$)... or computes 80 \u00d7 3 = \\$240 using a wrong scale factor."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -367,11 +375,11 @@
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "k = 80 × $\\frac{50}{200}$ = 20. Then C = 20 × $\\frac{300}{40}$ = 150."
+        "hint_text": "k = 80 \u00d7 $\\frac{50}{200}$ = 20. Then C = 20 \u00d7 $\\frac{300}{40}$ = 150."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "More items (300 > 200) increases cost; larger batches reduce it but b decreased (40 < 50), so cost should rise. More than \\$80 — A and D fit; D is extreme, A is reasonable."
+        "hint_text": "More items (300 > 200) increases cost; larger batches reduce it but b decreased (40 < 50), so cost should rise. More than \\$80 \u2014 A and D fit; D is extreme, A is reasonable."
       }
     ],
     "content_context": "manufacturing",
@@ -394,7 +402,9 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   },
   {
     "item_id": "QR_A_050",
@@ -427,10 +437,10 @@
     "correct_answer": "B",
     "explanation": "Since y = kx, if x becomes 1.4x, then y = k(1.4x) = 1.4(kx) = 1.4y. The new y is 1.4 times the old y, which is a 40% increase.",
     "distractor_logic": {
-      "A": "Student reports 140% — the new value of y as a percent of the original — rather than the 40% increase from the original to the new value.",
+      "A": "Student reports 140% \u2014 the new value of y as a percent of the original \u2014 rather than the 40% increase from the original to the new value.",
       "B": "Correct: in direct variation, a 40% increase in x produces an equal 40% increase in y.",
-      "C": "Student divides the percent change by 10 (40% ÷ 10 = 4%), perhaps confusing the problem with a different type of scaling.",
-      "D": "Student applies compound percent reasoning: 40% + 40% × 40% = 40% + 16% = 56%, incorrectly treating the growth as compounding on itself."
+      "C": "Student divides the percent change by 10 (40% \u00f7 10 = 4%), perhaps confusing the problem with a different type of scaling.",
+      "D": "Student applies compound percent reasoning: 40% + 40% \u00d7 40% = 40% + 16% = 56%, incorrectly treating the growth as compounding on itself."
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -446,15 +456,15 @@
     "strategy_hints": [
       {
         "strategy": "identify_key_info",
-        "hint_text": "In y = kx, k is a constant. If x scales by a factor, y scales by the exact same factor. A 40% increase in x → 40% increase in y."
+        "hint_text": "In y = kx, k is a constant. If x scales by a factor, y scales by the exact same factor. A 40% increase in x \u2192 40% increase in y."
       },
       {
         "strategy": "plug_in_values",
-        "hint_text": "Try k = 3, x = 10: y = 30. New x = 14: y = 42. Percent change = (42−30)/30 × 100 = 40%."
+        "hint_text": "Try k = 3, x = 10: y = 30. New x = 14: y = 42. Percent change = (42\u221230)/30 \u00d7 100 = 40%."
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "Direct variation is the simplest proportional relationship — whatever percent x changes, y changes by the same percent."
+        "hint_text": "Direct variation is the simplest proportional relationship \u2014 whatever percent x changes, y changes by the same percent."
       }
     ],
     "content_context": "generic",
@@ -477,6 +487,8 @@
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
     "last_modified": "2026-05-27",
-    "review_notes": null
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
   }
 ]
