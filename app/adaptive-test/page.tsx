@@ -53,7 +53,7 @@ function Shell({ children }: { children: React.ReactNode }) {
       <div style={{ position: "relative" }}>
         <Header />
       </div>
-      <main style={{ flex: 1, maxWidth: "800px", margin: "0 auto", width: "100%", padding: "80px 24px 80px" }}>
+      <main style={{ flex: 1, maxWidth: "800px", margin: "0 auto", width: "100%", padding: "110px 24px 80px" }}>
         {children}
       </main>
       <Footer />
