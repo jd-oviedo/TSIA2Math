@@ -63,7 +63,7 @@ function Shell({ children }: { children: React.ReactNode }) {
 
 function ValidationErrorList({ errors }: { errors: ItemValidationError[] }) {
   return (
-    <div style={{ marginTop: "16px", background: "var(--ec-red-bg)", border: "1px solid var(--ec-red-border)", borderRadius: "12px", padding: "16px", fontSize: "13px", color: "var(--ec-ink)", maxHeight: "192px", overflowY: "auto" }}>
+    <div style={{ marginTop: "24px", background: "var(--ec-red-bg)", border: "1px solid var(--ec-red-border)", borderRadius: "12px", padding: "16px", fontSize: "13px", color: "var(--ec-ink)", maxHeight: "192px", overflowY: "auto" }}>
       <p style={{ fontWeight: 600, marginBottom: "8px", color: "var(--ec-red)" }}>{errors.length} malformed item(s) skipped</p>
       <ul style={{ listStyle: "disc", paddingLeft: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
         {errors.map((e) => (
@@ -181,7 +181,7 @@ useEffect(() => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "16px",
+          gap: "24px",
           background: "var(--ec-glass-bg)",
           border: "1px solid var(--ec-glass-border)",
           borderRadius: "20px",
