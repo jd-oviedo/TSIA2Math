@@ -1,0 +1,1200 @@
+[
+  {
+    "item_id": "GR_B_069",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.2",
+    "topic": "using_transformations_to_investigate_congruence_and_similarity",
+    "topic_text": "Using Transformations to Investigate Congruence and Similarity",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "recognizing that a translation is a rigid motion",
+      "identifying that a rigid motion preserves both size and shape"
+    ],
+    "question_text": "A figure is translated 5 units to the right. Which statement best describes the image compared to the original figure?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The image is similar to the original but not congruent.",
+      "B": "The image is neither similar nor congruent to the original.",
+      "C": "The image is congruent to the original.",
+      "D": "The image is congruent only if the translation distance is less than the figure's width."
+    },
+    "correct_answer": "C",
+    "explanation": "A translation is a rigid motion. It slides every point the same distance and direction, so the image has exactly the same size and shape as the original. Figures with the same size and shape are congruent.",
+    "distractor_logic": {
+      "A": "Student believes moving a figure changes its size, confusing a translation with a dilation, and downgrades the result to similar-only.",
+      "B": "Student believes any transformation distorts the figure, incorrectly concluding the image is neither similar nor congruent.",
+      "C": "Correct: a translation is a rigid motion, so the image is congruent to the original.",
+      "D": "Student invents a false conditional, believing congruence depends on how far the figure is moved relative to its own size."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Ask whether the transformation changes the figure's size, its shape, both, or neither. A transformation that changes neither produces a congruent image."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Rule out any statement that claims the figure changes size or shape if the transformation only slides it without stretching or shrinking."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "translation",
+      "congruence",
+      "rigid_motion"
+    ],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_B_070",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.2",
+    "topic": "using_transformations_to_investigate_congruence_and_similarity",
+    "topic_text": "Using Transformations to Investigate Congruence and Similarity",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "recognizing that a dilation with a scale factor other than 1 changes size",
+      "distinguishing similarity from congruence"
+    ],
+    "question_text": "A triangle is dilated about the origin by a scale factor of 2. Which statement best describes the image compared to the original triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The image is congruent to the original.",
+      "B": "The image is similar to the original but not congruent.",
+      "C": "The image is neither similar nor congruent to the original.",
+      "D": "The image is the same size as the original but a different shape."
+    },
+    "correct_answer": "B",
+    "explanation": "A dilation with a scale factor of 2 multiplies every distance from the center by 2. The angles stay the same, so the shape is preserved, but the side lengths double, so the size changes. Same shape with different size means the image is similar but not congruent.",
+    "distractor_logic": {
+      "A": "Student treats a dilation as a rigid motion, believing it preserves congruence even though the scale factor changes the size.",
+      "B": "Correct: a dilation with scale factor 2 preserves shape but not size, so the image is similar but not congruent.",
+      "C": "Student believes changing the size destroys the shape relationship, incorrectly concluding the image is neither similar nor congruent.",
+      "D": "Student reverses what a dilation preserves, thinking size stays fixed while shape changes."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A dilation changes distances from the center by the scale factor. Decide whether that changes the shape, the size, or both, then match it to the right relationship."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Congruent means identical size and shape. If the scale factor is not 1, the size changes, so congruence can be ruled out immediately."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "dilation",
+      "similarity",
+      "scale_factor",
+      "congruence"
+    ],
+    "estimated_time_seconds": 75,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_B_071",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.2",
+    "topic": "using_transformations_to_investigate_congruence_and_similarity",
+    "topic_text": "Using Transformations to Investigate Congruence and Similarity",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "recognizing that a rotation is a rigid motion",
+      "identifying that a rotation preserves congruence regardless of the angle"
+    ],
+    "question_text": "A rectangle is rotated $90^{\\circ}$ about the origin. Which statement best describes the image compared to the original rectangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The image is similar to the original but not congruent.",
+      "B": "The image is neither similar nor congruent to the original.",
+      "C": "The image is congruent to the original only if it is rotated $180^{\\circ}$.",
+      "D": "The image is congruent to the original."
+    },
+    "correct_answer": "D",
+    "explanation": "A rotation is a rigid motion. It turns the figure about a fixed point without changing any distances or angles, so the image has the same size and shape as the original. That makes the image congruent to the original, and this is true for any angle of rotation.",
+    "distractor_logic": {
+      "A": "Student believes turning a figure changes its size, confusing a rotation with a dilation.",
+      "B": "Student believes a rotation distorts the figure, incorrectly concluding the image is neither similar nor congruent.",
+      "C": "Student adds a false condition on the angle, believing congruence only results from a half-turn rather than from any rotation.",
+      "D": "Correct: a rotation is a rigid motion, so the image is congruent to the original for any rotation angle."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Consider whether turning a figure about a point changes any of its side lengths or angles. If nothing about the figure's measurements changes, the image is congruent."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Be suspicious of any answer that makes congruence depend on a specific rotation angle. A rigid motion preserves size and shape no matter the angle."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "rotation",
+      "congruence",
+      "rigid_motion"
+    ],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_B_072",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.2",
+    "topic": "using_transformations_to_investigate_congruence_and_similarity",
+    "topic_text": "Using Transformations to Investigate Congruence and Similarity",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "recognizing that a reflection is a rigid motion",
+      "understanding that reversing orientation does not change congruence"
+    ],
+    "question_text": "A triangle is reflected over the y-axis. Which statement best describes the image compared to the original triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The image is congruent to the original.",
+      "B": "The image is similar but not congruent, because reflection reverses orientation.",
+      "C": "The image is neither similar nor congruent, because the figure is flipped.",
+      "D": "The image is a dilation of the original."
+    },
+    "correct_answer": "A",
+    "explanation": "A reflection is a rigid motion. It flips the figure across a line, reversing its orientation, but every side length and angle stays the same. Reversing orientation does not change size or shape, so the image is congruent to the original.",
+    "distractor_logic": {
+      "A": "Correct: a reflection is a rigid motion, so the image is congruent to the original even though its orientation is reversed.",
+      "B": "Student assumes that reversing orientation is a kind of size change and downgrades the relationship to similar-only.",
+      "C": "Student believes flipping the figure destroys the size and shape relationship entirely.",
+      "D": "Student mislabels the reflection as a dilation, confusing a flip across a line with a resizing about a point."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A reflection reverses which way the figure faces. Ask whether flipping the figure changes any side length or angle, or only its orientation."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A dilation resizes; a reflection does not. Any answer that describes a size change or a resizing can be ruled out for a reflection."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "reflection",
+      "congruence",
+      "orientation",
+      "rigid_motion"
+    ],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_B_073",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.2",
+    "topic": "using_transformations_to_investigate_congruence_and_similarity",
+    "topic_text": "Using Transformations to Investigate Congruence and Similarity",
+    "proficiency_level": "Basic",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "distinguishing rigid motions from a dilation",
+      "identifying which transformation fails to preserve congruence"
+    ],
+    "question_text": "Which of the following transformations produces an image that is NOT congruent to the original figure?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "A translation 3 units up",
+      "B": "A reflection over the x-axis",
+      "C": "A dilation by a scale factor of 3",
+      "D": "A rotation of $180^{\\circ}$ about the origin"
+    },
+    "correct_answer": "C",
+    "explanation": "Translations, reflections, and rotations are rigid motions: they preserve both size and shape, so their images are congruent to the original. A dilation with a scale factor of 3 multiplies every distance by 3, changing the size. The dilation is the only transformation listed that does not produce a congruent image.",
+    "distractor_logic": {
+      "A": "Student believes sliding a figure changes it, incorrectly flagging the translation as the non-congruent transformation.",
+      "B": "Student believes flipping a figure changes its size, incorrectly flagging the reflection.",
+      "C": "Correct: a dilation with scale factor 3 changes the size, so its image is similar but not congruent, unlike the three rigid motions.",
+      "D": "Student believes turning a figure changes its size, incorrectly flagging the rotation."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "eliminate_wrong_answers",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Three of these are rigid motions that keep the figure the same size. Rule those out and the remaining one is the transformation that changes size."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Look for the transformation with a scale factor. A scale factor other than 1 is the signal that size, and therefore congruence, is not preserved."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "dilation",
+      "rigid_motion",
+      "congruence",
+      "scale_factor"
+    ],
+    "estimated_time_seconds": 80,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_069",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.2",
+    "topic": "using_transformations_to_investigate_congruence_and_similarity",
+    "topic_text": "Using Transformations to Investigate Congruence and Similarity",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "analyzing a sequence of two rigid motions",
+      "concluding that a composition of rigid motions preserves congruence"
+    ],
+    "question_text": "A figure is reflected over the x-axis and then translated 4 units to the right. How does the final image compare to the original figure?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Congruent to the original",
+      "B": "Similar to the original but not congruent",
+      "C": "Neither similar nor congruent to the original",
+      "D": "Congruent to the original only if the figure is symmetric"
+    },
+    "correct_answer": "A",
+    "explanation": "Both steps are rigid motions. A reflection preserves size and shape, and a translation preserves size and shape. Performing one rigid motion after another still preserves size and shape, so the final image is congruent to the original.",
+    "distractor_logic": {
+      "A": "Correct: a reflection followed by a translation is a composition of two rigid motions, so the final image is congruent.",
+      "B": "Student assumes that applying two transformations must change the size, downgrading the result to similar-only.",
+      "C": "Student believes stacking transformations distorts the figure, concluding it is neither similar nor congruent.",
+      "D": "Student adds a false condition, believing congruence after a reflection depends on the figure having symmetry."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check each step in the sequence. If every step preserves size and shape, the whole sequence does too."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "No step here has a scale factor, so no step changes the size. Rule out any answer that claims the size changed."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "composition",
+      "reflection",
+      "translation",
+      "congruence"
+    ],
+    "estimated_time_seconds": 95,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_070",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.2",
+    "topic": "using_transformations_to_investigate_congruence_and_similarity",
+    "topic_text": "Using Transformations to Investigate Congruence and Similarity",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "analyzing a sequence that includes a dilation and a rigid motion",
+      "concluding that a sequence containing a dilation produces a similar figure"
+    ],
+    "question_text": "A triangle is dilated about the origin by a scale factor of 3 and then rotated $90^{\\circ}$ about the origin. How does the final image compare to the original triangle?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Congruent to the original",
+      "B": "Similar to the original but not congruent",
+      "C": "Neither similar nor congruent to the original",
+      "D": "Congruent to the original, because the rotation restores the original size"
+    },
+    "correct_answer": "B",
+    "explanation": "The dilation with scale factor 3 triples every side length, which changes the size but preserves the shape. The rotation that follows is a rigid motion and does not change size or shape. Because the sequence includes a dilation, the final image has the same shape but a different size, so it is similar but not congruent.",
+    "distractor_logic": {
+      "A": "Student treats the dilation as if it preserves congruence, ignoring that the scale factor of 3 changes the size.",
+      "B": "Correct: a dilation followed by a rotation preserves shape but not size, so the final image is similar but not congruent.",
+      "C": "Student believes combining a dilation with a rotation destroys the shape relationship entirely.",
+      "D": "Student believes a rotation can undo the size change caused by a dilation, incorrectly restoring congruence."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Scan the sequence for a scale factor. A single dilation with a scale factor other than 1 is enough to make the final image similar rather than congruent."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A rotation cannot reverse a size change from a dilation. Rule out any answer claiming the rotation restores the original size."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "composition",
+      "dilation",
+      "rotation",
+      "similarity"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_071",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.2",
+    "topic": "using_transformations_to_investigate_congruence_and_similarity",
+    "topic_text": "Using Transformations to Investigate Congruence and Similarity",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "analyzing a sequence of two rotations",
+      "recognizing that repeated rigid motions still preserve congruence"
+    ],
+    "question_text": "A quadrilateral is rotated $90^{\\circ}$ counterclockwise about the origin and then rotated $180^{\\circ}$ about the origin. How does the final image compare to the original quadrilateral?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Larger than the original after the two rotations",
+      "B": "Similar to the original but not congruent",
+      "C": "Neither similar nor congruent to the original",
+      "D": "Congruent to the original"
+    },
+    "correct_answer": "D",
+    "explanation": "Both steps are rotations, and a rotation is a rigid motion that preserves size and shape. Two rotations in a row still preserve size and shape. The combined effect is equivalent to a single rotation, so the final image is congruent to the original.",
+    "distractor_logic": {
+      "A": "Student believes each rotation compounds the figure's size, incorrectly concluding the image grows.",
+      "B": "Student believes applying more than one transformation changes the size, downgrading the result to similar-only.",
+      "C": "Student believes stacking two rotations distorts the figure, concluding it is neither similar nor congruent.",
+      "D": "Correct: a composition of two rotations is still a rigid motion, so the final image is congruent to the original."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check whether either step has a scale factor. Rotations do not, so neither step changes the size of the figure."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Rotations do not resize figures, so an image cannot grow just from being rotated twice. Rule out any answer that claims a size change."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "composition",
+      "rotation",
+      "congruence",
+      "rigid_motion"
+    ],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_072",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.2",
+    "topic": "using_transformations_to_investigate_congruence_and_similarity",
+    "topic_text": "Using Transformations to Investigate Congruence and Similarity",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "analyzing a sequence that includes a dilation with a fractional scale factor",
+      "recognizing that a scale factor less than 1 still breaks congruence"
+    ],
+    "question_text": "A figure is dilated about the origin by a scale factor of $\\frac{1}{2}$ and then reflected over the y-axis. How does the final image compare to the original figure?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Congruent to the original",
+      "B": "Congruent to the original, because a scale factor less than 1 does not affect congruence",
+      "C": "Similar to the original but not congruent",
+      "D": "Neither similar nor congruent to the original"
+    },
+    "correct_answer": "C",
+    "explanation": "The dilation with scale factor $\\frac{1}{2}$ halves every side length, which changes the size but keeps the shape. The reflection that follows is a rigid motion and does not change size or shape. Because the sequence includes a dilation, the final image is similar but not congruent, even though the figure got smaller rather than larger.",
+    "distractor_logic": {
+      "A": "Student treats the dilation as if it preserves congruence, ignoring that a scale factor of $\\frac{1}{2}$ changes the size.",
+      "B": "Student believes only scale factors greater than 1 break congruence, incorrectly assuming shrinking preserves it.",
+      "C": "Correct: a dilation with scale factor $\\frac{1}{2}$ followed by a reflection preserves shape but not size, so the image is similar but not congruent.",
+      "D": "Student believes shrinking and then flipping the figure destroys the shape relationship entirely."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A scale factor changes size whether it is greater than 1 or between 0 and 1. Ask whether the figure is still the same size after a scale factor of one-half."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Any dilation with a scale factor other than 1 breaks congruence. Rule out answers claiming the image stays congruent just because it got smaller."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "composition",
+      "dilation",
+      "reflection",
+      "similarity"
+    ],
+    "estimated_time_seconds": 105,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_073",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.2",
+    "topic": "using_transformations_to_investigate_congruence_and_similarity",
+    "topic_text": "Using Transformations to Investigate Congruence and Similarity",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying which measurements a similarity transformation preserves",
+      "connecting a scale factor to the change in side lengths"
+    ],
+    "question_text": "A triangle is translated 2 units down and then dilated about the origin by a scale factor of 4. Which statement about the final image is true?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "The image is congruent to the original, so all side lengths are unchanged.",
+      "B": "The image is similar to the original, so all angle measures are preserved and all side lengths are multiplied by 4.",
+      "C": "The image is similar to the original, so all side lengths are preserved but the angle measures change.",
+      "D": "The image is neither similar nor congruent to the original."
+    },
+    "correct_answer": "B",
+    "explanation": "The translation is a rigid motion and changes nothing about size or shape. The dilation with scale factor 4 multiplies every side length by 4 while keeping every angle the same. A dilation preserves angle measures and scales side lengths, so the image is similar to the original with side lengths four times as long.",
+    "distractor_logic": {
+      "A": "Student treats the dilation as a rigid motion, believing the side lengths are unchanged and the image is congruent.",
+      "B": "Correct: the dilation preserves angle measures and multiplies each side length by the scale factor of 4, so the image is similar.",
+      "C": "Student reverses what a similarity transformation preserves, thinking side lengths stay fixed while angles change.",
+      "D": "Student believes combining a translation with a dilation breaks the shape relationship, concluding neither similar nor congruent."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "A dilation keeps angles the same and multiplies side lengths by the scale factor. Match the statement that describes both of those effects correctly."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Similar figures always keep angle measures equal. Rule out any answer that says the angles change."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "composition",
+      "dilation",
+      "similarity",
+      "scale_factor"
+    ],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_069",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.2",
+    "topic": "using_transformations_to_investigate_congruence_and_similarity",
+    "topic_text": "Using Transformations to Investigate Congruence and Similarity",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying a dilation from preimage and image coordinates",
+      "classifying the relationship as similar and justifying with the scale factor"
+    ],
+    "question_text": "Triangle $ABC$ has vertices $A(1, 1)$, $B(2, 3)$, and $C(4, 1)$. Its image has vertices $A'(2, 2)$, $B'(4, 6)$, and $C'(8, 2)$. Which statement best describes the relationship between the two triangles and the transformation that maps one to the other?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Similar; a dilation about the origin with scale factor 2",
+      "B": "Congruent; a translation",
+      "C": "Similar; a dilation about the origin with scale factor 4",
+      "D": "Congruent; a dilation about the origin with scale factor 2"
+    },
+    "correct_answer": "A",
+    "explanation": "Compare each vertex with its image:\n$A(1, 1) \\to A'(2, 2)$\n$B(2, 3) \\to B'(4, 6)$\n$C(4, 1) \\to C'(8, 2)$\n\nEvery coordinate is multiplied by 2, so the transformation is a dilation about the origin with scale factor 2. A dilation preserves shape but not size, so the triangles are similar but not congruent.",
+    "distractor_logic": {
+      "A": "Correct: each coordinate is multiplied by 2, so it is a dilation with scale factor 2, making the triangles similar but not congruent.",
+      "B": "Student sees that the figure moved and picks a translation, and wrongly calls the result congruent without checking that the coordinates were multiplied, not shifted by a constant.",
+      "C": "Student confuses the area ratio with the linear scale factor. The area grows by a factor of $2^{2} = 4$, and the student reports 4 as the scale factor instead of 2.",
+      "D": "Student correctly identifies the dilation and the scale factor of 2 but treats the dilation as if it preserves congruence."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "use_answer_choices"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compare each image coordinate to its original. Decide whether the same number was added to each (a translation) or each was multiplied by the same number (a dilation)."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "For each candidate, check whether it accounts for the size change. A dilation changes size, so its result cannot also be congruent."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "identify_transformation",
+      "dilation",
+      "similarity",
+      "scale_factor"
+    ],
+    "estimated_time_seconds": 135,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_070",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.2",
+    "topic": "using_transformations_to_investigate_congruence_and_similarity",
+    "topic_text": "Using Transformations to Investigate Congruence and Similarity",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying a rigid motion from preimage and image coordinates",
+      "testing a candidate transformation rule against every vertex"
+    ],
+    "question_text": "Triangle $ABC$ has vertices $A(1, 2)$, $B(3, 2)$, and $C(3, 5)$. Its image has vertices $A'(-2, 1)$, $B'(-2, 3)$, and $C'(-5, 3)$. Which statement best describes the relationship between the two triangles and the transformation that maps one to the other?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Congruent; a rotation $90^{\\circ}$ counterclockwise about the origin",
+      "B": "Similar; a dilation about the origin",
+      "C": "Congruent; a reflection over the y-axis",
+      "D": "Neither similar nor congruent; the image has a different shape"
+    },
+    "correct_answer": "A",
+    "explanation": "Test the rule for a $90^{\\circ}$ counterclockwise rotation, $(x, y) \\to (-y, x)$:\n$A(1, 2) \\to (-2, 1)$, matching $A'$\n$B(3, 2) \\to (-2, 3)$, matching $B'$\n$C(3, 5) \\to (-5, 3)$, matching $C'$\n\nAll three vertices map correctly. A rotation is a rigid motion, so the triangles are congruent.",
+    "distractor_logic": {
+      "A": "Correct: $(x, y) \\to (-y, x)$ maps all three vertices to their images, so it is a $90^{\\circ}$ counterclockwise rotation and the triangles are congruent.",
+      "B": "Student sees the coordinates change and assumes a size change, picking a dilation even though the side lengths are unchanged.",
+      "C": "Student sees the negative x-coordinates in the image and assumes a reflection over the y-axis. That rule $(x, y) \\to (-x, y)$ sends $A(1, 2) \\to (-1, 2)$, which does not match $A'(-2, 1)$.",
+      "D": "Student cannot match a rule and concludes the shape changed, overlooking that a rotation preserves the shape exactly."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "use_answer_choices",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Apply each candidate rule to one vertex first. Keep only the rules that produce the correct image for that vertex, then confirm with the others."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "Compare a side length in the original to the matching side in the image. If the lengths match, rule out any answer that claims a size change."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "identify_transformation",
+      "rotation",
+      "congruence",
+      "reverse_reasoning"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_071",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.2",
+    "topic": "using_transformations_to_investigate_congruence_and_similarity",
+    "topic_text": "Using Transformations to Investigate Congruence and Similarity",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying a two-step sequence of rigid motions from coordinates",
+      "verifying a composition against every vertex before classifying"
+    ],
+    "question_text": "Triangle $ABC$ has vertices $A(2, 1)$, $B(4, 1)$, and $C(4, 4)$. Its image has vertices $A'(2, 4)$, $B'(4, 4)$, and $C'(4, 1)$. Which statement best describes the relationship and the sequence that maps one to the other?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Similar; a dilation followed by a translation",
+      "B": "Congruent; a reflection over the x-axis followed by a translation 5 units up",
+      "C": "Congruent; a rotation $180^{\\circ}$ about the origin",
+      "D": "Congruent; a reflection over the y-axis followed by a translation"
+    },
+    "correct_answer": "B",
+    "explanation": "Apply a reflection over the x-axis first, $(x, y) \\to (x, -y)$:\n$A(2, 1) \\to (2, -1)$, $B(4, 1) \\to (4, -1)$, $C(4, 4) \\to (4, -4)$\n\nThen translate 5 units up, $(x, y) \\to (x, y + 5)$:\n$(2, -1) \\to (2, 4)$, $(4, -1) \\to (4, 4)$, $(4, -4) \\to (4, 1)$\n\nThe results match $A'$, $B'$, and $C'$. Both steps are rigid motions, so the triangles are congruent.",
+    "distractor_logic": {
+      "A": "Student assumes a size change and picks a dilation, but the side lengths are identical (for example $AB = 2$ and $A'B' = 2$), so no dilation occurred.",
+      "B": "Correct: a reflection over the x-axis followed by a translation 5 units up maps all three vertices, and both steps are rigid, so the triangles are congruent.",
+      "C": "Student picks a single half-turn. The $180^{\\circ}$ rule $(x, y) \\to (-x, -y)$ sends $A(2, 1) \\to (-2, -1)$, which does not match $A'(2, 4)$.",
+      "D": "Student chooses the wrong reflection axis. Reflecting over the y-axis sends $A(2, 1) \\to (-2, 1)$, and no single translation then maps all three vertices to the image."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "use_answer_choices",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Test each proposed sequence on one vertex, carrying it through both steps in order. Discard any sequence that fails to land on the correct image point."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Plot the original and image triangles on a grid. Compare their sizes first to decide between congruent and similar, then trace how the figure was flipped and shifted."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "identify_transformation",
+      "composition",
+      "reflection",
+      "congruence"
+    ],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_072",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.2",
+    "topic": "using_transformations_to_investigate_congruence_and_similarity",
+    "topic_text": "Using Transformations to Investigate Congruence and Similarity",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying a sequence of a dilation and a reflection from coordinates",
+      "classifying the relationship as similar and justifying with the scale factor"
+    ],
+    "question_text": "Triangle $ABC$ has vertices $A(1, 0)$, $B(2, 0)$, and $C(2, 2)$. Its image has vertices $A'(-3, 0)$, $B'(-6, 0)$, and $C'(-6, 6)$. Which statement best describes the relationship and the sequence that maps one to the other?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Congruent; a reflection over the y-axis only",
+      "B": "Similar; a dilation with scale factor 3 followed by a reflection over the x-axis",
+      "C": "Similar; a dilation with scale factor 3 followed by a reflection over the y-axis",
+      "D": "Congruent; a dilation with scale factor 3 followed by a reflection over the y-axis"
+    },
+    "correct_answer": "C",
+    "explanation": "Apply a dilation with scale factor 3 first, $(x, y) \\to (3x, 3y)$:\n$A(1, 0) \\to (3, 0)$, $B(2, 0) \\to (6, 0)$, $C(2, 2) \\to (6, 6)$\n\nThen reflect over the y-axis, $(x, y) \\to (-x, y)$:\n$(3, 0) \\to (-3, 0)$, $(6, 0) \\to (-6, 0)$, $(6, 6) \\to (-6, 6)$\n\nThe results match the image. Because the sequence includes a dilation, the triangles are similar but not congruent.",
+    "distractor_logic": {
+      "A": "Student sees the negative x-coordinates and picks a reflection alone. Reflecting $A(1, 0)$ over the y-axis gives $(-1, 0)$, not $(-3, 0)$, so a dilation is also required.",
+      "B": "Student chooses the wrong reflection axis. After the dilation, reflecting over the x-axis sends $(3, 0) \\to (3, 0)$, which does not match $A'(-3, 0)$.",
+      "C": "Correct: a dilation with scale factor 3 followed by a reflection over the y-axis maps all three vertices, and the dilation makes the triangles similar but not congruent.",
+      "D": "Student identifies the correct sequence but treats the dilation as if it preserves congruence, overlooking the size change."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "use_answer_choices",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Carry one vertex through each proposed sequence in order. Discard any sequence that fails to land on the matching image point."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Compare a side length in the original to its image. If the image is larger, a dilation is involved, so the relationship is similar rather than congruent."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "identify_transformation",
+      "composition",
+      "dilation",
+      "similarity"
+    ],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_073",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.2",
+    "topic": "using_transformations_to_investigate_congruence_and_similarity",
+    "topic_text": "Using Transformations to Investigate Congruence and Similarity",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "CRC",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying a dilation with a fractional scale factor from coordinates",
+      "distinguishing the correct scale factor from its inverse and its square"
+    ],
+    "question_text": "Triangle $ABC$ has vertices $A(2, 4)$, $B(6, 4)$, and $C(6, 8)$. Its image has vertices $A'(1, 2)$, $B'(3, 2)$, and $C'(3, 4)$. Which statement best describes the relationship and the transformation that maps one to the other?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "Congruent; a translation toward the origin",
+      "B": "Similar; a dilation about the origin with scale factor 2",
+      "C": "Similar; a dilation about the origin with scale factor $\\frac{1}{4}$",
+      "D": "Similar; a dilation about the origin with scale factor $\\frac{1}{2}$"
+    },
+    "correct_answer": "D",
+    "explanation": "Compare each vertex with its image:\n$A(2, 4) \\to A'(1, 2)$\n$B(6, 4) \\to B'(3, 2)$\n$C(6, 8) \\to C'(3, 4)$\n\nEvery coordinate is multiplied by $\\frac{1}{2}$, so the transformation is a dilation about the origin with scale factor $\\frac{1}{2}$. A dilation preserves shape but not size, so the triangles are similar but not congruent.",
+    "distractor_logic": {
+      "A": "Student sees the figure move closer to the origin and picks a translation, but the coordinates were halved rather than shifted by a constant, and the image is smaller, so it cannot be congruent.",
+      "B": "Student inverts the ratio, comparing original to image instead of image to original. A scale factor of 2 would enlarge $A(2, 4)$ to $(4, 8)$, not shrink it to $(1, 2)$.",
+      "C": "Student confuses the area ratio with the linear scale factor. The area shrinks by a factor of $\\left(\\frac{1}{2}\\right)^{2} = \\frac{1}{4}$, and the student reports $\\frac{1}{4}$ as the scale factor instead of $\\frac{1}{2}$.",
+      "D": "Correct: each coordinate is multiplied by $\\frac{1}{2}$, so it is a dilation with scale factor $\\frac{1}{2}$, making the triangles similar but not congruent."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "use_answer_choices"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Divide an image coordinate by its matching original coordinate to find the scale factor. Make sure you divide image by original, not the other way around."
+      },
+      {
+        "strategy": "use_answer_choices",
+        "hint_text": "Test a scale factor on one vertex before committing. The correct factor must turn every original coordinate into its image coordinate."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "identify_transformation",
+      "dilation",
+      "similarity",
+      "fractional_scale_factor"
+    ],
+    "estimated_time_seconds": 145,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  }
+]
