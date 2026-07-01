@@ -1,0 +1,479 @@
+[
+  {
+    "item_id": "GR_B_076",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.4",
+    "topic": "symmetry_of_plane_figures",
+    "topic_text": "Symmetry of Plane Figures",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the number of lines of symmetry in an equilateral triangle",
+      "recognizing that each axis passes through a vertex and the midpoint of the opposite side"
+    ],
+    "question_text": "How many lines of symmetry does an equilateral triangle have?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "1",
+      "B": "3",
+      "C": "6",
+      "D": "2"
+    },
+    "correct_answer": "B",
+    "explanation": "An equilateral triangle has one line of symmetry through each vertex and the midpoint of the opposite side. Because it has three vertices, there are three such lines.",
+    "distractor_logic": {
+      "A": "Student sees only the single upright axis, treating the equilateral triangle as if it were an isosceles triangle with just one line of symmetry.",
+      "B": "Correct: one axis runs through each vertex to the opposite side's midpoint, and three vertices give three lines.",
+      "C": "Student double-counts each of the three axes, once toward the vertex and once toward the opposite side, reporting 6 instead of 3.",
+      "D": "Student finds two of the three axes but overlooks the third."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "draw_diagram",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the triangle and try folding it along different lines so the two halves land exactly on each other. Count each distinct fold line that works."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "For a regular figure, a line of symmetry runs from each vertex through the middle of the opposite side. Count how many vertices there are."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "symmetry",
+      "lines_of_symmetry",
+      "equilateral_triangle"
+    ],
+    "estimated_time_seconds": 65,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_B_077",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.4",
+    "topic": "symmetry_of_plane_figures",
+    "topic_text": "Symmetry of Plane Figures",
+    "proficiency_level": "Basic",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the number of lines of symmetry in a square",
+      "recognizing both the mid-side axes and the diagonal axes of a square"
+    ],
+    "question_text": "How many lines of symmetry does a square have?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2",
+      "B": "8",
+      "C": "4",
+      "D": "1"
+    },
+    "correct_answer": "C",
+    "explanation": "A square has four lines of symmetry: one horizontal and one vertical through the midpoints of opposite sides, plus the two diagonals. That gives four axes in total.",
+    "distractor_logic": {
+      "A": "Student counts only the horizontal and vertical mid-side axes and overlooks the two diagonal lines of symmetry.",
+      "B": "Student double-counts each of the four axes, once in each direction, reporting 8 instead of 4.",
+      "C": "Correct: two mid-side axes plus two diagonals give four lines of symmetry.",
+      "D": "Student counts only the single vertical axis."
+    },
+    "difficulty_level": "Basic",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "draw_diagram",
+      "identify_key_info"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch the square and test fold lines. Remember to try the diagonals as well as the horizontal and vertical lines through the middle."
+      },
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Check two kinds of axes: those through the midpoints of opposite sides, and those through opposite corners. Count all that make the halves match."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "symmetry",
+      "lines_of_symmetry",
+      "square"
+    ],
+    "estimated_time_seconds": 70,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_076",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.4",
+    "topic": "symmetry_of_plane_figures",
+    "topic_text": "Symmetry of Plane Figures",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 3,
+    "skills_targeted": [
+      "identifying the number of lines of symmetry in a non-square rectangle",
+      "recognizing that the diagonals of a non-square rectangle are not lines of symmetry"
+    ],
+    "question_text": "How many lines of symmetry does a rectangle that is not a square have?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "2",
+      "B": "4",
+      "C": "1",
+      "D": "0"
+    },
+    "correct_answer": "A",
+    "explanation": "A non-square rectangle has exactly two lines of symmetry: the horizontal line and the vertical line through the midpoints of opposite sides. Its diagonals are not lines of symmetry, because folding along a diagonal does not make the two halves match when the sides have different lengths.",
+    "distractor_logic": {
+      "A": "Correct: only the two mid-side axes work; a non-square rectangle has two lines of symmetry.",
+      "B": "Student incorrectly counts the diagonals as lines of symmetry the way they would for a square, reporting 4 instead of 2.",
+      "C": "Student finds only one of the two mid-side axes.",
+      "D": "Student believes a rectangle has no line symmetry at all, confusing it with a parallelogram that is not a rectangle."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "draw_diagram",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch a long rectangle and try folding it along a diagonal. Check carefully whether the two halves actually land on top of each other."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "A square and a non-square rectangle do not have the same number of axes. Be careful before assuming the diagonals count for a rectangle."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "symmetry",
+      "lines_of_symmetry",
+      "rectangle"
+    ],
+    "estimated_time_seconds": 100,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_P_077",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.4",
+    "topic": "symmetry_of_plane_figures",
+    "topic_text": "Symmetry of Plane Figures",
+    "proficiency_level": "Proficient",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 3,
+    "skills_targeted": [
+      "distinguishing rotational symmetry from line symmetry",
+      "identifying a figure that has rotational symmetry but no line of symmetry"
+    ],
+    "question_text": "Which of the following figures has rotational symmetry but no line of symmetry?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "An isosceles triangle",
+      "B": "A rectangle",
+      "C": "An equilateral triangle",
+      "D": "A parallelogram that is not a rectangle or a rhombus"
+    },
+    "correct_answer": "D",
+    "explanation": "A parallelogram that is not a rectangle or rhombus maps onto itself under a $180^{\\circ}$ rotation about its center, so it has rotational symmetry. It has no line of symmetry, because no fold line makes its two halves match. The other figures either have line symmetry, no rotational symmetry, or both.",
+    "distractor_logic": {
+      "A": "Student confuses line symmetry with rotational symmetry. An isosceles triangle has one line of symmetry but no rotational symmetry, so it fails both parts of the condition.",
+      "B": "Student overlooks that a rectangle also has line symmetry. It does have $180^{\\circ}$ rotational symmetry, but it has two lines of symmetry as well, so it does not fit no line of symmetry.",
+      "C": "Student overlooks that an equilateral triangle has line symmetry. It has rotational symmetry of order 3 but also three lines of symmetry.",
+      "D": "Correct: a generic parallelogram has $180^{\\circ}$ rotational symmetry but no line of symmetry."
+    },
+    "difficulty_level": "Proficient",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "draw_diagram",
+      "eliminate_wrong_answers"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "For each figure, test two things separately: whether a fold line makes the halves match (line symmetry), and whether turning it part of a full circle lands it back on itself (rotational symmetry)."
+      },
+      {
+        "strategy": "eliminate_wrong_answers",
+        "hint_text": "You need both conditions at once: yes to rotational symmetry and no to line symmetry. Rule out any figure that has even one line of symmetry."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "symmetry",
+      "rotational_symmetry",
+      "line_symmetry",
+      "parallelogram"
+    ],
+    "estimated_time_seconds": 110,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_076",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.4",
+    "topic": "symmetry_of_plane_figures",
+    "topic_text": "Symmetry of Plane Figures",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 3,
+    "skills_targeted": [
+      "determining the order of rotational symmetry of a regular hexagon",
+      "distinguishing the order of rotational symmetry from the smallest angle of rotation"
+    ],
+    "question_text": "A regular hexagon is rotated about its center. What is the order of its rotational symmetry, that is, the number of times it maps onto itself during one full $360^{\\circ}$ turn?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "60",
+      "B": "3",
+      "C": "6",
+      "D": "12"
+    },
+    "correct_answer": "C",
+    "explanation": "A regular hexagon maps onto itself at rotations of $60^{\\circ}$, $120^{\\circ}$, $180^{\\circ}$, $240^{\\circ}$, $300^{\\circ}$, and $360^{\\circ}$. That is six positions in one full turn, so the order of rotational symmetry is 6.",
+    "distractor_logic": {
+      "A": "Student reports the smallest angle of rotation, $60^{\\circ}$, instead of the order, confusing the angle with the count of matching positions.",
+      "B": "Student treats the hexagon as if it turned in $120^{\\circ}$ steps like a triangle, counting only 3 positions and missing the $60^{\\circ}$ increments.",
+      "C": "Correct: the hexagon matches itself at six rotations in a full turn, so the order is 6.",
+      "D": "Student doubles the count by tallying both clockwise and counterclockwise rotations to each position, reporting 12 instead of 6."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "The order counts how many distinct positions map the figure onto itself in one full turn, not the size of the smallest rotation angle."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Picture turning the hexagon step by step until it looks identical, and tally each position until you return to the start."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "symmetry",
+      "rotational_symmetry",
+      "regular_hexagon",
+      "order_of_symmetry"
+    ],
+    "estimated_time_seconds": 130,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  },
+  {
+    "item_id": "GR_A_077",
+    "schema_version": "2.0",
+    "version": 1,
+    "status": "draft",
+    "category": "Geometric and Spatial Reasoning",
+    "primary_strand": "GR",
+    "secondary_strands": [],
+    "objective": "transformations_congruence_similarity_coordinate_geometry",
+    "objective_text": "Transformations, Congruence, Similarity, and Coordinate Geometry",
+    "topic_id": "GR.4.4",
+    "topic": "symmetry_of_plane_figures",
+    "topic_text": "Symmetry of Plane Figures",
+    "proficiency_level": "Advanced",
+    "assessment_layer": "ENRICHMENT",
+    "unit": 3,
+    "skills_targeted": [
+      "determining whether a regular polygon has point symmetry",
+      "connecting point symmetry to a 180 degree rotation mapping the figure onto itself"
+    ],
+    "question_text": "Point symmetry means a figure maps onto itself under a $180^{\\circ}$ rotation about its center. Which statement correctly compares a regular pentagon and a regular hexagon?",
+    "question_format": "multiple_choice",
+    "answer_choices": {
+      "A": "A regular hexagon has point symmetry, but a regular pentagon does not.",
+      "B": "Both a regular pentagon and a regular hexagon have point symmetry.",
+      "C": "A regular pentagon has point symmetry, but a regular hexagon does not.",
+      "D": "Neither a regular pentagon nor a regular hexagon has point symmetry."
+    },
+    "correct_answer": "A",
+    "explanation": "A regular hexagon has vertices every $60^{\\circ}$, and $180^{\\circ}$ is a multiple of $60^{\\circ}$, so a half-turn maps it onto itself: it has point symmetry. A regular pentagon has vertices every $72^{\\circ}$, and $180^{\\circ}$ is not a multiple of $72^{\\circ}$, so a half-turn does not map it onto itself: it has no point symmetry. A regular polygon has point symmetry only when it has an even number of sides.",
+    "distractor_logic": {
+      "A": "Correct: the hexagon (even number of sides) maps onto itself under a $180^{\\circ}$ rotation, while the pentagon (odd number of sides) does not.",
+      "B": "Student assumes every regular polygon has point symmetry, incorrectly attributing $180^{\\circ}$ symmetry to the pentagon whose odd vertex count prevents it.",
+      "C": "Student reverses the relationship, attributing point symmetry to the pentagon and denying it to the hexagon.",
+      "D": "Student denies the hexagon its true point symmetry, overlooking that its even vertex count makes a half-turn map it onto itself."
+    },
+    "difficulty_level": "Advanced",
+    "difficulty_b": null,
+    "discrimination_a": null,
+    "guessing_c": null,
+    "calculator_type": "none",
+    "requires_calculator": false,
+    "applicable_strategies": [
+      "identify_key_info",
+      "draw_diagram"
+    ],
+    "strategy_hints": [
+      {
+        "strategy": "identify_key_info",
+        "hint_text": "Point symmetry is a half-turn that lands the figure back on itself. Check whether $180^{\\circ}$ lines up with the spacing of each polygon's vertices."
+      },
+      {
+        "strategy": "draw_diagram",
+        "hint_text": "Sketch each polygon and rotate it a half-turn about its center. See which one lands exactly on its starting outline."
+      }
+    ],
+    "content_context": "generic",
+    "context_tags": [
+      "symmetry",
+      "point_symmetry",
+      "regular_polygon",
+      "rotational_symmetry"
+    ],
+    "estimated_time_seconds": 140,
+    "contains_image": false,
+    "image_url": null,
+    "exposure_max": 0.2,
+    "times_administered": 0,
+    "times_correct": 0,
+    "dif_flag": null,
+    "fairness_review_status": "pending",
+    "fairness_review_date": null,
+    "fairness_review_notes": null,
+    "author": "jd-oviedo",
+    "created_at": "2026-06-30",
+    "last_modified": "2026-06-30",
+    "review_notes": null,
+    "figure_type": null,
+    "figure_props": null
+  }
+]
