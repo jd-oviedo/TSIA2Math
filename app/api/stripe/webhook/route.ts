@@ -71,7 +71,12 @@ async function resolveProfileId(
   return findUserIdByEmail(admin, email);
 }
 
-async function activate(admin: Admin, profileId: string, customerId: string | null) {
+async function activate(
+  admin: Admin,
+  profileId: string,
+  customerId: string | null,
+  email: string | null
+) {
   await admin
     .from("profiles")
     .update({ subscription_status: "active" })
@@ -85,13 +90,19 @@ async function activate(admin: Admin, profileId: string, customerId: string | nu
       .eq("id", profileId)
       .is("stripe_customer_id", null);
   }
+
+  console.log(
+    `[stripe/webhook] activated profile for ${email ?? profileId}, customer ${customerId}`
+  );
 }
 
-async function deactivate(admin: Admin, profileId: string) {
+async function deactivate(admin: Admin, profileId: string, email: string | null) {
   await admin
     .from("profiles")
     .update({ subscription_status: "inactive" })
     .eq("id", profileId);
+
+  console.log(`[stripe/webhook] deactivated profile for ${email ?? profileId}`);
 }
 
 export async function POST(req: Request) {
@@ -130,7 +141,7 @@ export async function POST(req: Request) {
           console.error("[stripe/webhook] no profile match for checkout session", { email, customerId });
           break;
         }
-        await activate(admin, profileId, customerId);
+        await activate(admin, profileId, customerId, email);
         break;
       }
 
@@ -143,14 +154,14 @@ export async function POST(req: Request) {
           break;
         }
         if (sub.status === "active" || sub.status === "trialing") {
-          await activate(admin, profileId, customerId);
+          await activate(admin, profileId, customerId, null);
         } else if (
           sub.status === "past_due" ||
           sub.status === "unpaid" ||
           sub.status === "canceled" ||
           sub.status === "incomplete_expired"
         ) {
-          await deactivate(admin, profileId);
+          await deactivate(admin, profileId, null);
         }
         break;
       }
@@ -163,7 +174,7 @@ export async function POST(req: Request) {
           console.error("[stripe/webhook] no profile match for subscription.deleted", { customerId });
           break;
         }
-        await deactivate(admin, profileId);
+        await deactivate(admin, profileId, null);
         break;
       }
 
@@ -175,7 +186,7 @@ export async function POST(req: Request) {
           console.error("[stripe/webhook] no profile match for invoice.payment_failed", { customerId });
           break;
         }
-        await deactivate(admin, profileId);
+        await deactivate(admin, profileId, null);
         break;
       }
 
