@@ -63,29 +63,65 @@ function LoginCard() {
       gap: "20px",
       background: "var(--ec-glass-bg)",
       border: "1px solid var(--ec-glass-border)",
+      borderTop: isTeacherFlow ? "3px solid #C68A2F" : "1px solid var(--ec-glass-border)",
       borderRadius: "20px",
-      padding: "48px 36px",
+      padding: isTeacherFlow ? "40px 36px 48px" : "48px 36px",
       boxShadow: "var(--ec-shadow)",
       backdropFilter: "blur(16px)",
       WebkitBackdropFilter: "blur(16px)",
     }}>
-      <p style={{
-        fontFamily: "var(--font-kodchasan, 'Kodchasan', sans-serif)",
-        fontSize: "12px",
-        fontWeight: 700,
-        letterSpacing: "0.18em",
-        textTransform: "uppercase",
-        color: "var(--ec-accent)",
-        margin: 0,
-      }}>
-        UnpackMath Account
-      </p>
+      {isTeacherFlow ? (
+        <span style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "6px",
+          border: "1px solid rgba(198,138,47,0.5)",
+          background: "rgba(198,138,47,0.08)",
+          color: "#B27C29",
+          fontSize: "10px",
+          fontWeight: 700,
+          letterSpacing: "0.14em",
+          padding: "5px 11px",
+          borderRadius: "999px",
+        }}>
+          <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#C68A2F" }} />
+          TEACHER · PRO
+        </span>
+      ) : (
+        <p style={{
+          fontFamily: "var(--font-kodchasan, 'Kodchasan', sans-serif)",
+          fontSize: "12px",
+          fontWeight: 700,
+          letterSpacing: "0.18em",
+          textTransform: "uppercase",
+          color: "var(--ec-accent)",
+          margin: 0,
+        }}>
+          UnpackMath Account
+        </p>
+      )}
       <h1 style={{ fontSize: "clamp(28px, 5vw, 38px)", fontWeight: 800, color: "var(--ec-ink)", letterSpacing: "-0.03em", lineHeight: 1.1, margin: 0, fontFamily: "var(--font-kodchasan, Kodchasan, sans-serif)" }}>
         {isTeacherFlow ? "Sign in to your teacher portal." : "Sign in to save your progress."}
       </h1>
       <p style={{ fontSize: "17px", color: "var(--ec-ink-muted)", lineHeight: 1.6, maxWidth: "340px", margin: 0 }}>
         {isTeacherFlow ? "Access your class roster, strand data, and misconception dashboard." : "Track your scores over time and pick up right where you left off."}
       </p>
+      {isTeacherFlow && (
+        <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "8px", textAlign: "left" }}>
+          {[
+            "Class-wide misconception patterns",
+            "Per-student strand breakdowns",
+            "Roster join codes & email invites",
+          ].map((f) => (
+            <div key={f} style={{ display: "flex", alignItems: "center", gap: "9px", fontSize: "13.5px", color: "var(--ec-ink-muted)" }}>
+              <span style={{ color: "#C68A2F", flexShrink: 0, display: "inline-flex" }}>
+                <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 9.5 7 13.5 15 5" /></svg>
+              </span>
+              {f}
+            </div>
+          ))}
+        </div>
+      )}
       <button
         onClick={handleGoogleLogin}
         disabled={loading}
