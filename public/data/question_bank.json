@@ -59824,13 +59824,27 @@
       "missing_side"
     ],
     "estimated_time_seconds": 75,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "6",
-      "leg2": "8",
-      "unknown": "hypotenuse"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$6$"
+        },
+        {
+          "position": "leg2",
+          "text": "$8$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -59841,7 +59855,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -59908,13 +59922,27 @@
       "hypotenuse"
     ],
     "estimated_time_seconds": 80,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "5",
-      "hypotenuse": "13",
-      "unknown": "leg2"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$5$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$13$"
+        },
+        {
+          "position": "leg2",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -59925,7 +59953,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -59992,13 +60020,27 @@
       "leg_confusion"
     ],
     "estimated_time_seconds": 80,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "8",
-      "leg2": "15",
-      "unknown": "hypotenuse"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$8$"
+        },
+        {
+          "position": "leg2",
+          "text": "$15$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -60009,7 +60051,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -60076,13 +60118,27 @@
       "hypotenuse"
     ],
     "estimated_time_seconds": 80,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "7",
-      "hypotenuse": "25",
-      "unknown": "leg2"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$7$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$25$"
+        },
+        {
+          "position": "leg2",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -60093,7 +60149,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -60160,13 +60216,27 @@
       "hypotenuse"
     ],
     "estimated_time_seconds": 80,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "12",
-      "hypotenuse": "20",
-      "unknown": "leg2"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$12$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$20$"
+        },
+        {
+          "position": "leg2",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -60177,7 +60247,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -60244,13 +60314,27 @@
       "missing_leg"
     ],
     "estimated_time_seconds": 105,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "24",
-      "hypotenuse": "26",
-      "unknown": "leg2"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$24$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$26$"
+        },
+        {
+          "position": "leg2",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -60261,7 +60345,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -60408,13 +60492,27 @@
       "missing_leg"
     ],
     "estimated_time_seconds": 110,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "9",
-      "hypotenuse": "15",
-      "unknown": "leg2"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$9$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$15$"
+        },
+        {
+          "position": "leg2",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -60425,7 +60523,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -60572,13 +60670,27 @@
       "hypotenuse"
     ],
     "estimated_time_seconds": 110,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "12",
-      "leg2": "35",
-      "unknown": "hypotenuse"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$12$"
+        },
+        {
+          "position": "leg2",
+          "text": "$35$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -60589,7 +60701,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -60977,13 +61089,27 @@
       "perimeter"
     ],
     "estimated_time_seconds": 145,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "21",
-      "leg2": "28",
-      "unknown": "hypotenuse"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$3x$"
+        },
+        {
+          "position": "leg2",
+          "text": "$4x$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$35$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -60994,7 +61120,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -70043,7 +70169,7 @@
       "constructing_tables"
     ],
     "estimated_time_seconds": 65,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -70054,10 +70180,25 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "bar_chart",
+    "figure_props": {
+      "xLabel": "Month",
+      "yLabel": "Books Read",
+      "categories": [
+        "January",
+        "February",
+        "March"
+      ],
+      "values": [
+        4,
+        7,
+        5
+      ],
+      "yAxisMax": 8,
+      "yAxisStep": 2
+    }
   },
   {
     "item_id": "PR_B_006",
@@ -70683,7 +70824,7 @@
       "club_enrollment"
     ],
     "estimated_time_seconds": 60,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -70694,10 +70835,27 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "bar_chart",
+    "figure_props": {
+      "xLabel": "Club",
+      "yLabel": "Students Enrolled",
+      "categories": [
+        "Art",
+        "Drama",
+        "Science",
+        "Math"
+      ],
+      "values": [
+        12,
+        8,
+        15,
+        10
+      ],
+      "yAxisMax": 16,
+      "yAxisStep": 4
+    }
   },
   {
     "item_id": "PR_B_008",
@@ -70923,7 +71081,7 @@
       "rainfall"
     ],
     "estimated_time_seconds": 65,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -70934,10 +71092,29 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "bar_chart",
+    "figure_props": {
+      "xLabel": "Month",
+      "yLabel": "Rainfall (in)",
+      "categories": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May"
+      ],
+      "values": [
+        3,
+        5,
+        3,
+        7,
+        4
+      ],
+      "yAxisMax": 8,
+      "yAxisStep": 2
+    }
   },
   {
     "item_id": "PR_B_011",
@@ -71083,7 +71260,7 @@
       "monthly_sales"
     ],
     "estimated_time_seconds": 90,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -71094,10 +71271,29 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "bar_chart",
+    "figure_props": {
+      "xLabel": "Month",
+      "yLabel": "Units Sold",
+      "categories": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May"
+      ],
+      "values": [
+        40,
+        55,
+        50,
+        65,
+        45
+      ],
+      "yAxisMax": 70,
+      "yAxisStep": 10
+    }
   },
   {
     "item_id": "PR_P_008",
@@ -71243,7 +71439,7 @@
       "comparison"
     ],
     "estimated_time_seconds": 95,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -71254,10 +71450,29 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "bar_chart",
+    "figure_props": {
+      "xLabel": "Color",
+      "yLabel": "Number of Cars",
+      "categories": [
+        "Red",
+        "Blue",
+        "White",
+        "Black",
+        "Silver"
+      ],
+      "values": [
+        14,
+        22,
+        18,
+        30,
+        16
+      ],
+      "yAxisMax": 30,
+      "yAxisStep": 10
+    }
   },
   {
     "item_id": "PR_P_010",
@@ -71563,7 +71778,7 @@
       "claim_evaluation"
     ],
     "estimated_time_seconds": 135,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -71574,10 +71789,31 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "bar_chart",
+    "figure_props": {
+      "xLabel": "Hour",
+      "yLabel": "Customers",
+      "categories": [
+        "9AM",
+        "10AM",
+        "11AM",
+        "12PM",
+        "1PM",
+        "2PM"
+      ],
+      "values": [
+        20,
+        35,
+        50,
+        45,
+        30,
+        55
+      ],
+      "yAxisMax": 60,
+      "yAxisStep": 10
+    }
   },
   {
     "item_id": "PR_A_009",
@@ -71803,7 +72039,7 @@
       "claim_evaluation"
     ],
     "estimated_time_seconds": 140,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -71814,10 +72050,29 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "bar_chart",
+    "figure_props": {
+      "xLabel": "Student",
+      "yLabel": "Test Score",
+      "categories": [
+        "Ana",
+        "Ben",
+        "Cara",
+        "Dan",
+        "Eva"
+      ],
+      "values": [
+        72,
+        88,
+        95,
+        65,
+        80
+      ],
+      "yAxisMax": 100,
+      "yAxisStep": 20
+    }
   },
   {
     "item_id": "PR_B_012",
@@ -79059,7 +79314,7 @@
       "five_number_summary"
     ],
     "estimated_time_seconds": 65,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -79070,10 +79325,17 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-19",
-    "last_modified": "2026-06-19",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "box_plot",
+    "figure_props": {
+      "xLabel": "Value",
+      "min": 12,
+      "q1": 18,
+      "median": 24,
+      "q3": 30,
+      "max": 40
+    }
   },
   {
     "item_id": "PR_B_043",
@@ -79134,7 +79396,7 @@
       "five_number_summary"
     ],
     "estimated_time_seconds": 70,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -79145,10 +79407,17 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-19",
-    "last_modified": "2026-06-19",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "box_plot",
+    "figure_props": {
+      "xLabel": "Value",
+      "min": 5,
+      "q1": 11,
+      "median": 15,
+      "q3": 22,
+      "max": 28
+    }
   },
   {
     "item_id": "PR_P_041",
@@ -79209,7 +79478,7 @@
       "spread"
     ],
     "estimated_time_seconds": 100,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -79220,10 +79489,17 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-19",
-    "last_modified": "2026-06-19",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "box_plot",
+    "figure_props": {
+      "xLabel": "Value",
+      "min": 8,
+      "q1": 14,
+      "median": 20,
+      "q3": 32,
+      "max": 45
+    }
   },
   {
     "item_id": "PR_P_042",
@@ -79369,7 +79645,7 @@
       "shape_interpretation"
     ],
     "estimated_time_seconds": 130,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -79380,10 +79656,17 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-19",
-    "last_modified": "2026-06-19",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "box_plot",
+    "figure_props": {
+      "xLabel": "Value",
+      "min": 20,
+      "q1": 22,
+      "median": 24,
+      "q3": 26,
+      "max": 50
+    }
   },
   {
     "item_id": "PR_A_044",
@@ -79449,7 +79732,7 @@
       "range_vs_center"
     ],
     "estimated_time_seconds": 135,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -79460,10 +79743,30 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-19",
-    "last_modified": "2026-06-19",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "box_plot_comparison",
+    "figure_props": {
+      "xLabel": "Value",
+      "plots": [
+        {
+          "label": "A",
+          "min": 30,
+          "q1": 40,
+          "median": 60,
+          "q3": 65,
+          "max": 70
+        },
+        {
+          "label": "B",
+          "min": 30,
+          "q1": 35,
+          "median": 40,
+          "q3": 60,
+          "max": 70
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_B_044",

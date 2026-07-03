@@ -63,13 +63,27 @@
       "missing_side"
     ],
     "estimated_time_seconds": 75,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "6",
-      "leg2": "8",
-      "unknown": "hypotenuse"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$6$"
+        },
+        {
+          "position": "leg2",
+          "text": "$8$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -80,7 +94,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -147,13 +161,27 @@
       "hypotenuse"
     ],
     "estimated_time_seconds": 80,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "5",
-      "hypotenuse": "13",
-      "unknown": "leg2"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$5$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$13$"
+        },
+        {
+          "position": "leg2",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -164,7 +192,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -231,13 +259,27 @@
       "leg_confusion"
     ],
     "estimated_time_seconds": 80,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "8",
-      "leg2": "15",
-      "unknown": "hypotenuse"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$8$"
+        },
+        {
+          "position": "leg2",
+          "text": "$15$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -248,7 +290,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -315,13 +357,27 @@
       "hypotenuse"
     ],
     "estimated_time_seconds": 80,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "7",
-      "hypotenuse": "25",
-      "unknown": "leg2"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$7$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$25$"
+        },
+        {
+          "position": "leg2",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -332,7 +388,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -399,13 +455,27 @@
       "hypotenuse"
     ],
     "estimated_time_seconds": 80,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "12",
-      "hypotenuse": "20",
-      "unknown": "leg2"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$12$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$20$"
+        },
+        {
+          "position": "leg2",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -416,7 +486,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -483,13 +553,27 @@
       "missing_leg"
     ],
     "estimated_time_seconds": 105,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "24",
-      "hypotenuse": "26",
-      "unknown": "leg2"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$24$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$26$"
+        },
+        {
+          "position": "leg2",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -500,7 +584,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -647,13 +731,27 @@
       "missing_leg"
     ],
     "estimated_time_seconds": 110,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "9",
-      "hypotenuse": "15",
-      "unknown": "leg2"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$9$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$15$"
+        },
+        {
+          "position": "leg2",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -664,7 +762,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -811,13 +909,27 @@
       "hypotenuse"
     ],
     "estimated_time_seconds": 110,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "12",
-      "leg2": "35",
-      "unknown": "hypotenuse"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$12$"
+        },
+        {
+          "position": "leg2",
+          "text": "$35$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$?$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -828,7 +940,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   },
   {
@@ -1216,13 +1328,27 @@
       "perimeter"
     ],
     "estimated_time_seconds": 145,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "figure_type": "right_triangle",
     "figure_props": {
-      "leg1": "21",
-      "leg2": "28",
-      "unknown": "hypotenuse"
+      "labels": [
+        {
+          "position": "leg1",
+          "text": "$3x$"
+        },
+        {
+          "position": "leg2",
+          "text": "$4x$"
+        },
+        {
+          "position": "hypotenuse",
+          "text": "$35$"
+        }
+      ],
+      "markings": {
+        "rightAngle": true
+      }
     },
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -1233,7 +1359,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-30",
-    "last_modified": "2026-06-30",
+    "last_modified": "2026-07-03",
     "review_notes": null
   }
 ]

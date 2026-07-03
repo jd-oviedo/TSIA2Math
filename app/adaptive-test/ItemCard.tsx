@@ -3,7 +3,7 @@
 import MathText from "../components/MathText";
 import { useState } from "react";
 import type { PublicItem, RevealData } from "./type";
-import RightTriangleFigure from "../components/figures/RightTriangleFigure";
+import FigureRenderer from "../components/FigureRenderer";
 
 interface Props {
   item: PublicItem;
@@ -220,17 +220,10 @@ const handleFlagSubmit = async () => {
   <div style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--ec-accent)", marginBottom: "14px" }}>
     {item.category}: {item.objective_text}
   </div>
-  {item.figure_type === "right_triangle" && item.figure_props && (
-    <RightTriangleFigure
-      leg1={item.figure_props.leg1}
-      leg2={item.figure_props.leg2}
-      hypotenuse={item.figure_props.hypotenuse}
-      unknown={item.figure_props.unknown as "leg1" | "leg2" | "hypotenuse"}
-    />
-  )}
   <div style={{ fontSize: "20px", fontWeight: 500, color: "var(--ec-ink)", lineHeight: 1.65, fontFamily: "Georgia, 'Times New Roman', serif" }}>
     {renderQuestionText(item.question_text)}
   </div>
+  <FigureRenderer type={item.figure_type} props={item.figure_props} />
 </div>
 
       {/* Choices */}
