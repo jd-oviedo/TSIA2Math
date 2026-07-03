@@ -1,0 +1,27 @@
+{
+  "_comment": "GR/PR figure audit — grounded proposals. Bar/box values taken verbatim from each item's question_text. Right-triangle items migrated from old {leg1,leg2,unknown} format to new {labels,markings} contract; '?' marks the unknown side so the figure does not leak the answer.",
+
+  "PR_B_005": { "figure_type": "bar_chart", "figure_props": { "xLabel": "Month", "yLabel": "Books Read", "categories": ["January", "February", "March"], "values": [4, 7, 5], "yAxisMax": 8, "yAxisStep": 2 } },
+  "PR_B_007": { "figure_type": "bar_chart", "figure_props": { "xLabel": "Club", "yLabel": "Students Enrolled", "categories": ["Art", "Drama", "Science", "Math"], "values": [12, 8, 15, 10], "yAxisMax": 16, "yAxisStep": 4 } },
+  "PR_B_010": { "figure_type": "bar_chart", "figure_props": { "xLabel": "Month", "yLabel": "Rainfall (in)", "categories": ["Jan", "Feb", "Mar", "Apr", "May"], "values": [3, 5, 3, 7, 4], "yAxisMax": 8, "yAxisStep": 2 } },
+  "PR_P_007": { "figure_type": "bar_chart", "figure_props": { "xLabel": "Month", "yLabel": "Units Sold", "categories": ["Jan", "Feb", "Mar", "Apr", "May"], "values": [40, 55, 50, 65, 45], "yAxisMax": 70, "yAxisStep": 10 } },
+  "PR_P_009": { "figure_type": "bar_chart", "figure_props": { "xLabel": "Color", "yLabel": "Number of Cars", "categories": ["Red", "Blue", "White", "Black", "Silver"], "values": [14, 22, 18, 30, 16], "yAxisMax": 30, "yAxisStep": 10 } },
+  "PR_A_008": { "figure_type": "bar_chart", "figure_props": { "xLabel": "Hour", "yLabel": "Customers", "categories": ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM"], "values": [20, 35, 50, 45, 30, 55], "yAxisMax": 60, "yAxisStep": 10 } },
+  "PR_A_011": { "figure_type": "bar_chart", "figure_props": { "xLabel": "Student", "yLabel": "Test Score", "categories": ["Ana", "Ben", "Cara", "Dan", "Eva"], "values": [72, 88, 95, 65, 80], "yAxisMax": 100, "yAxisStep": 20 } },
+
+  "PR_B_042": { "figure_type": "box_plot", "figure_props": { "xLabel": "Value", "min": 12, "q1": 18, "median": 24, "q3": 30, "max": 40 } },
+  "PR_B_043": { "figure_type": "box_plot", "figure_props": { "xLabel": "Value", "min": 5, "q1": 11, "median": 15, "q3": 22, "max": 28 } },
+  "PR_P_041": { "figure_type": "box_plot", "figure_props": { "xLabel": "Value", "min": 8, "q1": 14, "median": 20, "q3": 32, "max": 45 } },
+  "PR_A_043": { "figure_type": "box_plot", "figure_props": { "xLabel": "Value", "min": 20, "q1": 22, "median": 24, "q3": 26, "max": 50 } },
+  "PR_A_044": { "figure_type": "box_plot_comparison", "figure_props": { "xLabel": "Value", "plots": [ { "label": "A", "min": 30, "q1": 40, "median": 60, "q3": 65, "max": 70 }, { "label": "B", "min": 30, "q1": 35, "median": 40, "q3": 60, "max": 70 } ] } },
+
+  "GR_B_044": { "figure_type": "right_triangle", "figure_props": { "labels": [ { "position": "leg1", "text": "$6$" }, { "position": "leg2", "text": "$8$" }, { "position": "hypotenuse", "text": "$?$" } ], "markings": { "rightAngle": true } } },
+  "GR_B_045": { "figure_type": "right_triangle", "figure_props": { "labels": [ { "position": "leg1", "text": "$5$" }, { "position": "hypotenuse", "text": "$13$" }, { "position": "leg2", "text": "$?$" } ], "markings": { "rightAngle": true } } },
+  "GR_B_046": { "figure_type": "right_triangle", "figure_props": { "labels": [ { "position": "leg1", "text": "$8$" }, { "position": "leg2", "text": "$15$" }, { "position": "hypotenuse", "text": "$?$" } ], "markings": { "rightAngle": true } } },
+  "GR_B_047": { "figure_type": "right_triangle", "figure_props": { "labels": [ { "position": "leg1", "text": "$7$" }, { "position": "hypotenuse", "text": "$25$" }, { "position": "leg2", "text": "$?$" } ], "markings": { "rightAngle": true } } },
+  "GR_B_048": { "figure_type": "right_triangle", "figure_props": { "labels": [ { "position": "leg1", "text": "$12$" }, { "position": "hypotenuse", "text": "$20$" }, { "position": "leg2", "text": "$?$" } ], "markings": { "rightAngle": true } } },
+  "GR_P_044": { "figure_type": "right_triangle", "figure_props": { "labels": [ { "position": "leg1", "text": "$24$" }, { "position": "hypotenuse", "text": "$26$" }, { "position": "leg2", "text": "$?$" } ], "markings": { "rightAngle": true } } },
+  "GR_P_046": { "figure_type": "right_triangle", "figure_props": { "labels": [ { "position": "leg1", "text": "$9$" }, { "position": "hypotenuse", "text": "$15$" }, { "position": "leg2", "text": "$?$" } ], "markings": { "rightAngle": true } } },
+  "GR_P_048": { "figure_type": "right_triangle", "figure_props": { "labels": [ { "position": "leg1", "text": "$12$" }, { "position": "leg2", "text": "$35$" }, { "position": "hypotenuse", "text": "$?$" } ], "markings": { "rightAngle": true } } },
+  "GR_A_048": { "figure_type": "right_triangle", "figure_props": { "labels": [ { "position": "leg1", "text": "$3x$" }, { "position": "leg2", "text": "$4x$" }, { "position": "hypotenuse", "text": "$35$" } ], "markings": { "rightAngle": true } } }
+}

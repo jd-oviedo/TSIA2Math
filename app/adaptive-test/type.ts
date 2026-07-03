@@ -47,7 +47,9 @@ export interface Item {
   contains_image: boolean;
   image_url: string | null;
   figure_type: string | null;
-  figure_props: Record<string, string> | null;
+  // Structured, per-figure-type props consumed by FigureRenderer. Shape varies
+  // by figure_type (nested arrays/objects), so this is intentionally loose.
+  figure_props: Record<string, unknown> | null;
   exposure_max: number;
   times_administered: number;
   times_correct: number;

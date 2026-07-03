@@ -58,7 +58,7 @@
       "five_number_summary"
     ],
     "estimated_time_seconds": 65,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -69,10 +69,17 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-19",
-    "last_modified": "2026-06-19",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "box_plot",
+    "figure_props": {
+      "xLabel": "Value",
+      "min": 12,
+      "q1": 18,
+      "median": 24,
+      "q3": 30,
+      "max": 40
+    }
   },
   {
     "item_id": "PR_B_043",
@@ -133,7 +140,7 @@
       "five_number_summary"
     ],
     "estimated_time_seconds": 70,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -144,10 +151,17 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-19",
-    "last_modified": "2026-06-19",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "box_plot",
+    "figure_props": {
+      "xLabel": "Value",
+      "min": 5,
+      "q1": 11,
+      "median": 15,
+      "q3": 22,
+      "max": 28
+    }
   },
   {
     "item_id": "PR_P_041",
@@ -208,7 +222,7 @@
       "spread"
     ],
     "estimated_time_seconds": 100,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -219,10 +233,17 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-19",
-    "last_modified": "2026-06-19",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "box_plot",
+    "figure_props": {
+      "xLabel": "Value",
+      "min": 8,
+      "q1": 14,
+      "median": 20,
+      "q3": 32,
+      "max": 45
+    }
   },
   {
     "item_id": "PR_P_042",
@@ -368,7 +389,7 @@
       "shape_interpretation"
     ],
     "estimated_time_seconds": 130,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -379,10 +400,17 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-19",
-    "last_modified": "2026-06-19",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "box_plot",
+    "figure_props": {
+      "xLabel": "Value",
+      "min": 20,
+      "q1": 22,
+      "median": 24,
+      "q3": 26,
+      "max": 50
+    }
   },
   {
     "item_id": "PR_A_044",
@@ -448,7 +476,7 @@
       "range_vs_center"
     ],
     "estimated_time_seconds": 135,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -459,9 +487,29 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-19",
-    "last_modified": "2026-06-19",
+    "last_modified": "2026-07-03",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "box_plot_comparison",
+    "figure_props": {
+      "xLabel": "Value",
+      "plots": [
+        {
+          "label": "A",
+          "min": 30,
+          "q1": 40,
+          "median": 60,
+          "q3": 65,
+          "max": 70
+        },
+        {
+          "label": "B",
+          "min": 30,
+          "q1": 35,
+          "median": 40,
+          "q3": 60,
+          "max": 70
+        }
+      ]
+    }
   }
 ]
