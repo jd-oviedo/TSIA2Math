@@ -517,7 +517,7 @@
       "D": "2.0"
     },
     "correct_answer": "A",
-    "explanation": "Rationalize the denominator by multiplying numerator and denominator by the conjugate (\u221a5 + \u221a2): 6 / (\u221a5 \u2212 \u221a2) \u00b7 $\\frac{\u221a5 + \u221a2}{\u221a5 + \u221a2}$ = 6(\u221a5 + \u221a2) / [(\u221a5)\u00b2 \u2212 (\u221a2)\u00b2] = 6$\\frac{\u221a5 + \u221a2}{5 \u2212 2}$ = 6(\u221a5 + \u221a2) / 3 = 2(\u221a5 + \u221a2) = 2\u221a5 + 2\u221a2. Estimating: bracket each radical before computing. \u221a5 is between 2.2 and 2.3 (since 2.2\u00b2 = 4.84 and 2.3\u00b2 = 5.29), so use \u221a5 \u2248 2.2. \u221a2 is between 1.4 and 1.5 (since 1.4\u00b2 = 1.96), so use \u221a2 \u2248 1.4. Then 2\u221a5 + 2\u221a2 \u2248 2(2.2) + 2(1.4) = 4.4 + 2.8 = 7.2. This is close enough to confirm 7.3 over the other choices, which fall at 5.3, 6.0, and 2.0.",
+    "explanation": "Rationalize the denominator by multiplying numerator and denominator by the conjugate $(\\sqrt{5} + \\sqrt{2})$: $6 / (\\sqrt{5} - \\sqrt{2}) \\cdot \\frac{\\sqrt{5} + \\sqrt{2}}{\\sqrt{5} + \\sqrt{2}} = 6(\\sqrt{5} + \\sqrt{2}) / [(\\sqrt{5})^{2} - (\\sqrt{2})^{2}] = 6\\frac{\\sqrt{5} + \\sqrt{2}}{5 - 2} = 6(\\sqrt{5} + \\sqrt{2}) / 3 = 2(\\sqrt{5} + \\sqrt{2}) = 2\\sqrt{5} + 2\\sqrt{2}$. Estimating: bracket each radical before computing. $\\sqrt{5}$ is between 2.2 and 2.3 (since $2.2^{2} = 4.84$ and $2.3^{2} = 5.29$), so use $\\sqrt{5} \\approx 2.2$. $\\sqrt{2}$ is between 1.4 and 1.5 (since $1.4^{2} = 1.96$), so use $\\sqrt{2} \\approx 1.4$. Then $2\\sqrt{5} + 2\\sqrt{2} \\approx 2(2.2) + 2(1.4) = 4.4 + 2.8 = 7.2$. This is close enough to confirm 7.3 over the other choices, which fall at 5.3, 6.0, and 2.0.",
     "distractor_logic": {
       "A": "Correct: rationalizing gives 2(\u221a5 + \u221a2) \u2248 2(2.236 + 1.414) \u2248 7.30, which rounds to 7.3.",
       "B": "Student rationalizes correctly to 2(\u221a5 + \u221a2) but then applies the false rule \u221aa + \u221ab = \u221a(a + b), getting 2\u00b7\u221a7 \u2248 2(2.646) \u2248 5.3.",
@@ -595,7 +595,7 @@
       "rationalizing a denominator containing a sum of a radical and a rational number",
       "applying the difference-of-squares identity in the rationalization step"
     ],
-    "question_text": "Simplify the expression $\\frac{2\u221a12 + 3\u221a3}{\u221a3 + 1}$, rationalizing the denominator.",
+    "question_text": "Simplify the expression $\\frac{2\\sqrt{12} + 3\\sqrt{3}}{\\sqrt{3} + 1}$, rationalizing the denominator.",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "(21 \u2212 7\u221a3) / 2",
@@ -604,7 +604,7 @@
       "D": "(21 + 7\u221a3) / 2"
     },
     "correct_answer": "A",
-    "explanation": "First simplify the numerator. \u221a12 = \u221a(4 \u00d7 3) = 2\u221a3, so 2\u221a12 = 4\u221a3. The numerator becomes 4\u221a3 + 3\u221a3 = 7\u221a3. The expression is now 7\u221a3 / (\u221a3 + 1). Rationalize by multiplying numerator and denominator by the conjugate (\u221a3 \u2212 1): 7\u221a3(\u221a3 \u2212 1) / [(\u221a3 + 1)(\u221a3 \u2212 1)]. Denominator: (\u221a3)\u00b2 \u2212 1\u00b2 = 3 \u2212 1 = 2. Numerator: 7\u221a3 \u00b7 \u221a3 \u2212 7\u221a3 \u00b7 1 = 7(3) \u2212 7\u221a3 = 21 \u2212 7\u221a3. Result: (21 \u2212 7\u221a3) / 2.",
+    "explanation": "First simplify the numerator. $\\sqrt{12} = \\sqrt{(4 \\times 3)} = 2\\sqrt{3}$, so $2\\sqrt{12} = 4\\sqrt{3}$. The numerator becomes $4\\sqrt{3} + 3\\sqrt{3} = 7\\sqrt{3}$. The expression is now $7\\sqrt{3} / (\\sqrt{3} + 1)$. Rationalize by multiplying numerator and denominator by the conjugate $(\\sqrt{3} - 1)$: $7\\sqrt{3}(\\sqrt{3} - 1) / [(\\sqrt{3} + 1)(\\sqrt{3} - 1)]$. Denominator: $(\\sqrt{3})^{2} - 1^{2} = 3 - 1 = 2$. Numerator: $7\\sqrt{3} \\cdot \\sqrt{3} - 7\\sqrt{3} \\cdot 1 = 7(3) - 7\\sqrt{3} = 21 - 7\\sqrt{3}$. Result: $(21 - 7\\sqrt{3}) / 2$.",
     "distractor_logic": {
       "A": "Correct: simplify to 7\u221a3, rationalize using (\u221a3 \u2212 1), expand to get (21 \u2212 7\u221a3) / 2.",
       "B": "Student correctly simplifies the numerator to 7\u221a3 and rationalizes the denominator to 2, but expands only the \u221a3 \u00b7 \u221a3 = 3 part of the numerator and drops the \u22127\u221a3 term, writing $\\frac{21}{2}$ ... then writes 7\u221a$\\frac{3}{2}$ by confusing the pre-rationalization form with the final result.",
@@ -690,7 +690,7 @@
       "D": "\u2212\u221a3"
     },
     "correct_answer": "B",
-    "explanation": "Simplify each radical. \u221a75 = \u221a(25 \u00d7 3) = 5\u221a3. \u221a12 = \u221a(4 \u00d7 3) = 2\u221a3, so 2\u221a12 = 4\u221a3. Subtract like radicals: 5\u221a3 \u2212 4\u221a3 = \u221a3.",
+    "explanation": "Simplify each radical. $\\sqrt{75} = \\sqrt{(25 \\times 3)} = 5\\sqrt{3}$. $\\sqrt{12} = \\sqrt{(4 \\times 3)} = 2\\sqrt{3}$, so $2\\sqrt{12} = 4\\sqrt{3}$. Subtract like radicals: $5\\sqrt{3} - 4\\sqrt{3} = \\sqrt{3}$.",
     "distractor_logic": {
       "A": "Student ignores the coefficient 2 on \u221a12 (treating 2\u221a12 as \u221a12) and also applies the false rule \u221aa \u2212 \u221ab = \u221a(a \u2212 b), computing \u221a75 \u2212 \u221a12 = \u221a(75 \u2212 12) = \u221a63.",
       "B": "Correct: \u221a75 = 5\u221a3 and 2\u221a12 = 4\u221a3, so 5\u221a3 \u2212 4\u221a3 = \u221a3.",
@@ -771,7 +771,7 @@
       "D": "10\u221a$\\frac{3}{3}$"
     },
     "correct_answer": "B",
-    "explanation": "Rationalize the denominator by multiplying numerator and denominator by the conjugate (\u221a5 \u2212 \u221a2): 10 / (\u221a5 + \u221a2) \u00b7 $\\frac{\u221a5 \u2212 \u221a2}{\u221a5 \u2212 \u221a2}$. Denominator: (\u221a5)\u00b2 \u2212 (\u221a2)\u00b2 = 5 \u2212 2 = 3. Numerator: 10(\u221a5 \u2212 \u221a2) = 10\u221a5 \u2212 10\u221a2. Result: (10\u221a5 \u2212 10\u221a2) / 3. This cannot be simplified further since 10\u221a5 and 10\u221a2 are unlike radicals.",
+    "explanation": "Rationalize the denominator by multiplying numerator and denominator by the conjugate $(\\sqrt{5} - \\sqrt{2})$: $10 / (\\sqrt{5} + \\sqrt{2}) \\cdot \\frac{\\sqrt{5} - \\sqrt{2}}{\\sqrt{5} - \\sqrt{2}}$. Denominator: $(\\sqrt{5})^{2} - (\\sqrt{2})^{2} = 5 - 2 = 3$. Numerator: $10(\\sqrt{5} - \\sqrt{2}) = 10\\sqrt{5} - 10\\sqrt{2}$. Result: $(10\\sqrt{5} - 10\\sqrt{2}) / 3$. This cannot be simplified further since $10\\sqrt{5}$ and $10\\sqrt{2}$ are unlike radicals.",
     "distractor_logic": {
       "A": "Student correctly computes the denominator as (\u221a5)\u00b2 \u2212 (\u221a2)\u00b2 = 3 but does not distribute the conjugate through the numerator \u2014 treating the numerator as remaining 10 \u2014 and writes $\\frac{10}{3}$.",
       "B": "Correct: multiplying by the conjugate gives denominator 3 and numerator 10\u221a5 \u2212 10\u221a2, yielding (10\u221a5 \u2212 10\u221a2) / 3.",

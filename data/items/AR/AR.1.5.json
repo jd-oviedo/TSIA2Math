@@ -419,7 +419,7 @@
       "factoring a quadratic denominator to find all excluded values of a rational function",
       "identifying two distinct excluded values from a factorable quadratic denominator"
     ],
-    "question_text": "What is the domain of $f(x) = \\frac{x + 1}{x\u00b2 \u2212 x \u2212 6}$?",
+    "question_text": "What is the domain of $f(x) = \\frac{x + 1}{x^{2} - x - 6}$?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "All real numbers except x = 3 and x = \u22122",
@@ -745,7 +745,7 @@
       "A": "All real numbers except x = k",
       "B": "All real numbers, because the (x + k) factors cancel",
       "C": "All real numbers except x = k and x = \u2212k",
-      "D": "All real numbers except x = k^{2}"
+      "D": "All real numbers except x = $k^{2}$"
     },
     "correct_answer": "C",
     "explanation": "Factor the denominator using the difference of squares:\nx\u00b2 \u2212 k\u00b2 = (x \u2212 k)(x + k)\n\nThe denominator equals zero when x = k or x = \u2212k. Both values must be excluded from the domain.\n\nNote: the numerator (x + k) shares a factor with the denominator, creating a removable discontinuity (hole) at x = \u2212k. However, cancellation does not change the domain of the original function \u2014 x = \u2212k still makes the original denominator zero and remains excluded.\n\nDomain: all real numbers except x = k and x = \u2212k.",

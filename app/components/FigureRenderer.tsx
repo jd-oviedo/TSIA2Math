@@ -1,5 +1,7 @@
 "use client";
 
+import MathText from "./MathText";
+
 /**
  * FigureRenderer — renders a small, closed set of TSIA2-style geometric and
  * statistical figures from structured props (no raster images, no external
@@ -12,9 +14,9 @@
  *   --ec-accent    data marks (bars, dots, boxes)
  *   --ec-surface2  figure background (off-white)
  *
- * Supported types (exactly these eight — do not extend without a spec change):
+ * Supported types (exactly these nine — do not extend without a spec change):
  *   polygon, polygon_comparison, right_triangle, solid_3d,
- *   bar_chart, dot_plot, box_plot, box_plot_comparison
+ *   bar_chart, dot_plot, box_plot, box_plot_comparison, table
  */
 
 const INK = "var(--ec-ink)";
@@ -315,8 +317,12 @@ export default function FigureRenderer({ type, props }: Props) {
             return { x: 110, y: 156, anchor: "middle" };
         }
       };
+      // viewBox starts at x=-16 (not 0) so the left-leg label, which is
+      // right-anchored at x=10 and grows leftward, has room instead of being
+      // clipped flush against the SVG's left edge. Right edge (-16+236=220)
+      // and all geometry stay exactly where they were.
       return (
-        <svg viewBox="0 0 220 168" style={{ ...svgStyle, maxWidth: "260px" }}>
+        <svg viewBox="-16 0 236 168" style={{ ...svgStyle, maxWidth: "276px" }}>
           <polygon
             points={`${A.join(",")} ${B.join(",")} ${C.join(",")}`}
             fill="none"
@@ -677,6 +683,108 @@ export default function FigureRenderer({ type, props }: Props) {
             </text>
           )}
         </svg>
+      );
+    }
+
+    // ── table ──────────────────────────────────────────────────────────────
+    // Two-way / data tables. Rendered as a real HTML <table> (not SVG) so we get
+    // native accessibility and can drop KaTeX into any cell via <MathText>.
+    case "table": {
+      interface TableRow {
+        label: string;
+        values: (string | number)[];
+      }
+      const columnHeaders = (p.columnHeaders as string[]) || [];
+      const rows = (p.rows as TableRow[]) || [];
+      const highlightRow = p.highlightRow as string | undefined;
+      const highlightCol =
+        typeof p.highlightCol === "number" ? p.highlightCol : undefined;
+      if (!rows.length) return null;
+
+      const cellBase: React.CSSProperties = {
+        border: `1px solid ${LINE}`,
+        padding: "9px 16px",
+        fontSize: "14px",
+        fontFamily: "ui-sans-serif, system-ui, sans-serif",
+        color: INK,
+      };
+
+      return (
+        <div style={{ overflowX: "auto", margin: "0 auto 16px", maxWidth: "100%" }}>
+          <table
+            style={{
+              borderCollapse: "collapse",
+              margin: "0 auto",
+              background: "var(--ec-surface)",
+              borderRadius: "8px",
+            }}
+          >
+            {columnHeaders.length > 0 && (
+              <thead>
+                <tr>
+                  {columnHeaders.map((h, i) => (
+                    <th
+                      key={i}
+                      style={{
+                        ...cellBase,
+                        background: SURFACE,
+                        fontWeight: 700,
+                        textAlign: i === 0 ? "left" : "center",
+                        ...(highlightCol === i
+                          ? { background: "var(--ec-accent-soft)" }
+                          : {}),
+                      }}
+                    >
+                      <MathText text={String(h)} />
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+            )}
+            <tbody>
+              {rows.map((row, ri) => {
+                const rowHi = highlightRow != null && row.label === highlightRow;
+                return (
+                  <tr
+                    key={ri}
+                    style={rowHi ? { background: "var(--ec-accent-soft)" } : undefined}
+                  >
+                    {/* row-label cell — behaves like a header column */}
+                    <th
+                      scope="row"
+                      style={{
+                        ...cellBase,
+                        background: rowHi ? "var(--ec-accent-soft)" : SURFACE,
+                        fontWeight: rowHi ? 700 : 600,
+                        textAlign: "left",
+                      }}
+                    >
+                      <MathText text={String(row.label)} />
+                    </th>
+                    {row.values.map((v, ci) => {
+                      const colHi = highlightCol === ci + 1;
+                      return (
+                        <td
+                          key={ci}
+                          style={{
+                            ...cellBase,
+                            textAlign: "center",
+                            fontWeight: rowHi ? 700 : 400,
+                            ...(colHi && !rowHi
+                              ? { background: "var(--ec-accent-soft)" }
+                              : {}),
+                          }}
+                        >
+                          <MathText text={String(v)} />
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       );
     }
 

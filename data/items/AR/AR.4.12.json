@@ -427,16 +427,16 @@
       "applying an exponential decay model to compute a value after several periods",
       "raising a decay factor to the correct number of periods"
     ],
-    "question_text": "A car is worth \\$20{,}000 today and depreciates 10% per year. What is its value after 3 years?",
+    "question_text": "A car is worth \\$20,000 today and depreciates 10% per year. What is its value after 3 years?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "\\$14{,}580",
-      "B": "\\$26{,}620",
-      "C": "\\$14{,}000",
-      "D": "\\$18{,}000"
+      "A": "\\$14,580",
+      "B": "\\$26,620",
+      "C": "\\$14,000",
+      "D": "\\$18,000"
     },
     "correct_answer": "A",
-    "explanation": "Depreciation is decay, so use $A = P(1 - r)^{t}$ with $P = 20000$, $r = 0.10$, $t = 3$.\nThe decay factor is $1 - 0.10 = 0.90$:\n$A = 20000(0.90)^{3} = 20000(0.729) = 14580$\n\nThe car is worth \\$14{,}580 after 3 years.",
+    "explanation": "Depreciation is decay, so use $A = P(1 - r)^{t}$ with $P = 20000$, $r = 0.10$, $t = 3$.\nThe decay factor is $1 - 0.10 = 0.90$:\n$A = 20000(0.90)^{3} = 20000(0.729) = 14580$\n\nThe car is worth \\$14,580 after 3 years.",
     "distractor_logic": {
       "A": "Correct: $20000(0.90)^{3} = 20000(0.729) = 14580$.",
       "B": "Student applies a growth model to a decay scenario, using $1 + 0.10 = 1.10$: $20000(1.10)^{3} = 20000(1.331) = 26620$.",
@@ -589,13 +589,13 @@
       "applying annually compounded interest as an exponential growth model",
       "distinguishing compound interest from simple interest over multiple years"
     ],
-    "question_text": "A savings account starts with \\$1{,}000 and earns 6% interest compounded annually. How much is in the account after 2 years?",
+    "question_text": "A savings account starts with \\$1,000 and earns 6% interest compounded annually. How much is in the account after 2 years?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "\\$1{,}120.00",
+      "A": "\\$1,120.00",
       "B": "\\$883.60",
-      "C": "\\$1{,}060.00",
-      "D": "\\$1{,}123.60"
+      "C": "\\$1,060.00",
+      "D": "\\$1,123.60"
     },
     "correct_answer": "D",
     "explanation": "Interest compounded annually follows $A = P(1 + r)^{t}$ with $P = 1000$, $r = 0.06$, $t = 2$.\nThe factor is $1 + 0.06 = 1.06$:\n$A = 1000(1.06)^{2} = 1000(1.1236) = 1123.60$",
@@ -670,13 +670,13 @@
       "applying the compound interest formula with a non-annual compounding period",
       "correctly dividing the rate by n and multiplying the exponent by n"
     ],
-    "question_text": "\\$2{,}000 is invested at an 8% annual interest rate, compounded quarterly. Using $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$, what is the account value after 1 year?",
+    "question_text": "\\$2,000 is invested at an 8% annual interest rate, compounded quarterly. Using $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$, what is the account value after 1 year?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "\\$2{,}160.00",
-      "B": "\\$2{,}720.98",
-      "C": "\\$2{,}164.86",
-      "D": "\\$2{,}040.00"
+      "A": "\\$2,160.00",
+      "B": "\\$2,720.98",
+      "C": "\\$2,164.86",
+      "D": "\\$2,040.00"
     },
     "correct_answer": "C",
     "explanation": "Use $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$ with $P = 2000$, $r = 0.08$, $n = 4$, $t = 1$.\nDivide the rate by the number of periods: $\\frac{0.08}{4} = 0.02$.\nMultiply the exponent by $n$: $nt = 4 \\cdot 1 = 4$.\n$A = 2000(1.02)^{4} = 2000(1.08243216) = 2164.86$",
@@ -751,13 +751,13 @@
       "working backward from a final amount to find the initial value in a growth model",
       "reversing exponential growth by dividing by the compound factor"
     ],
-    "question_text": "After 2 years of 10% annual growth, an investment is worth \\$6{,}050. Using $A = P(1 + r)^{t}$, what was the initial amount invested?",
+    "question_text": "After 2 years of 10% annual growth, an investment is worth \\$6,050. Using $A = P(1 + r)^{t}$, what was the initial amount invested?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "\\$5{,}000.00",
-      "B": "\\$5{,}041.67",
-      "C": "\\$7{,}469.14",
-      "D": "\\$7{,}320.50"
+      "A": "\\$5,000.00",
+      "B": "\\$5,041.67",
+      "C": "\\$7,469.14",
+      "D": "\\$7,320.50"
     },
     "correct_answer": "A",
     "explanation": "Use $A = P(1 + r)^{t}$ with $A = 6050$, $r = 0.10$, $t = 2$.\nThe compound factor is $(1.10)^{2} = 1.21$:\n$6050 = P(1.21)$\nSolve for $P$ by dividing:\n$P = \\frac{6050}{1.21} = 5000$",

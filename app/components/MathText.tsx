@@ -12,6 +12,12 @@ interface Segment {
   content: string;
 }
 
+// Escaped currency dollars (\$) must render as a literal "$" but must NOT act as
+// math delimiters. We swap them for a private-use sentinel before parsing so the
+// $...$ pairing can't grab a currency sign, then restore them at render time.
+// Without this, "\$36 ÷ 9 = \$4" mis-pairs and the currency signs get eaten.
+const DOLLAR_SENTINEL = "";
+
 const ISOLATED_SYMBOLS: Record<string, string> = {
   "\\approx": "≈",
   "\\times": "×",
@@ -60,7 +66,9 @@ function parseMathSegments(input: string): Segment[] {
 }
 
 export default function MathText({ text, className }: MathTextProps) {
-  const cleaned = replaceIsolatedSymbols(text.replace(/\\\$/g, "$"));
+  // Protect escaped currency dollars from the $...$ pairing, then parse.
+  const protectedText = text.replace(/\\\$/g, DOLLAR_SENTINEL);
+  const cleaned = replaceIsolatedSymbols(protectedText);
   const parts = parseMathSegments(cleaned);
 
   return (
@@ -68,16 +76,36 @@ export default function MathText({ text, className }: MathTextProps) {
       {parts.map((part, i) => {
         if (part.type === "math") {
           try {
-            const html = katex.renderToString(part.content, {
+            // A sentinel inside a real math span means a literal $ (rare: currency
+            // written inside $...$); KaTeX renders \$ as a dollar sign.
+            const src = part.content.split(DOLLAR_SENTINEL).join("\\$");
+            const html = katex.renderToString(src, {
               throwOnError: false,
               displayMode: false,
             });
-            return <span key={i} dangerouslySetInnerHTML={{ __html: html }} />;
+            // nowrap keeps an expression from breaking mid-formula (e.g. a lone
+            // ")" or "1)?" orphaned on its own line). inline-block + overflow-x
+            // lets a rare very-long expression scroll horizontally on narrow
+            // viewports instead of overflowing the card or forcing a shrink.
+            return (
+              <span
+                key={i}
+                style={{
+                  whiteSpace: "nowrap",
+                  display: "inline-block",
+                  maxWidth: "100%",
+                  overflowX: "auto",
+                  overflowY: "hidden",
+                  verticalAlign: "middle",
+                }}
+                dangerouslySetInnerHTML={{ __html: html }}
+              />
+            );
           } catch {
-            return <span key={i}>{part.content}</span>;
+            return <span key={i}>{part.content.split(DOLLAR_SENTINEL).join("$")}</span>;
           }
         }
-        return <span key={i}>{part.content}</span>;
+        return <span key={i}>{part.content.split(DOLLAR_SENTINEL).join("$")}</span>;
       })}
     </span>
   );
