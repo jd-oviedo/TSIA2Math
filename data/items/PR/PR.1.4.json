@@ -876,8 +876,42 @@
     "created_at": "2026-06-05",
     "last_modified": "2026-06-05",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Passed",
+        "Failed",
+        "Total"
+      ],
+      "rows": [
+        {
+          "label": "Male",
+          "values": [
+            36,
+            12,
+            48
+          ]
+        },
+        {
+          "label": "Female",
+          "values": [
+            44,
+            8,
+            52
+          ]
+        },
+        {
+          "label": "Overall Total",
+          "values": [
+            80,
+            20,
+            100
+          ]
+        }
+      ],
+      "highlightRow": "Overall Total"
+    }
   },
   {
     "item_id": "PR_A_013",
