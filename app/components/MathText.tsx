@@ -84,20 +84,15 @@ export default function MathText({ text, className }: MathTextProps) {
               displayMode: false,
             });
             // nowrap keeps an expression from breaking mid-formula (e.g. a lone
-            // ")" or "1)?" orphaned on its own line). inline-block + overflow-x
-            // lets a rare very-long expression scroll horizontally on narrow
-            // viewports instead of overflowing the card or forcing a shrink.
+            // ")" or "1)?" orphaned on its own line). Nothing more: an
+            // inline-block + overflow wrapper puts a scrolling box around
+            // KaTeX's oversized \sqrt SVG (width:400em, clipped internally by
+            // .hide-tail) and the `auto` scrollbar shows as a stray gray bar
+            // under every radical. Plain nowrap avoids that.
             return (
               <span
                 key={i}
-                style={{
-                  whiteSpace: "nowrap",
-                  display: "inline-block",
-                  maxWidth: "100%",
-                  overflowX: "auto",
-                  overflowY: "hidden",
-                  verticalAlign: "middle",
-                }}
+                style={{ whiteSpace: "nowrap" }}
                 dangerouslySetInnerHTML={{ __html: html }}
               />
             );
