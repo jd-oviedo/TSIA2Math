@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import posthog from 'posthog-js';
 import MathText from '../components/MathText';
+import { LogoutButton } from '../components/LogoutButton';
 
 // ─── Types (match the API route response shapes) ─────────────────────────────
 
@@ -226,10 +227,11 @@ function SidebarInner({ teacherName, teacherEmail, onNavigate }: { teacherName: 
       <div style={{ marginTop: 'auto', padding: 14, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{ width: 32, height: 32, borderRadius: '50%', background: '#1C3052', color: '#E7BE7B', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700, flex: '0 0 32px' }}>{initials}</div>
-          <div style={{ minWidth: 0 }}>
+          <div style={{ minWidth: 0, flex: 1 }}>
             <div style={{ fontSize: 12.5, fontWeight: 600, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{teacherName}</div>
             <div style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.5)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{teacherEmail}</div>
           </div>
+          <LogoutButton variant="dark" size={30} />
         </div>
       </div>
     </>
