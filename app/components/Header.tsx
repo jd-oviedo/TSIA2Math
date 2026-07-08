@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useTheme } from "../theme/useTheme";
 import { supabase } from "../lib/supabase";
+import { LogoutButton } from "./LogoutButton";
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -185,6 +186,7 @@ export function Header() {
               My Dashboard
             </a>
           )}
+          {navRole !== "anon" && <LogoutButton />}
           <ThemeToggle />
         </div>
       </nav>

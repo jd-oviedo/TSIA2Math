@@ -2,8 +2,24 @@ import { NextResponse } from 'next/server'
 import { createClient } from '../../lib/supabase-server'
 import { createAdminClient } from '../../lib/supabase-admin'
 
+// Resolve the public-facing origin to redirect back to. Behind a proxy
+// (GitHub Codespaces port-forwarding, Vercel) the dev server receives
+// `Host: localhost:3000` and forwards the real host in x-forwarded-host, so
+// deriving the origin from request.url would strand the user on localhost.
+// Prefer the forwarded headers whenever present; fall back to request.url's
+// origin only for true local dev, where those headers are absent.
+function resolveOrigin(request: Request): string {
+  const forwardedHost = request.headers.get('x-forwarded-host')
+  if (forwardedHost) {
+    const forwardedProto = request.headers.get('x-forwarded-proto') ?? 'https'
+    return `${forwardedProto}://${forwardedHost}`
+  }
+  return new URL(request.url).origin
+}
+
 export async function GET(request: Request) {
-  const { searchParams, origin } = new URL(request.url)
+  const { searchParams } = new URL(request.url)
+  const origin = resolveOrigin(request)
   const code = searchParams.get('code')
   const next = searchParams.get('next') ?? '/'
   const sessionId = searchParams.get('session_id')
