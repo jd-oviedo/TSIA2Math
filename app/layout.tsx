@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "./theme/ThemeProvider";
 import { PostHogProvider } from "./providers";
 import { Kodchasan } from "next/font/google";
+import { ChunkErrorHandler } from './components/ChunkErrorHandler';
 
 const kodchasan = Kodchasan({
   weight: ["400", "500", "600", "700"],
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <PostHogProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </PostHogProvider>
+        <ChunkErrorHandler />
       </body>
     </html>
   );
