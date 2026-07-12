@@ -25,7 +25,7 @@ type Card = {
 // Verbatim from the design's DCLogic script.
 const CARDS: Card[] = [
   {
-    skill: "Formas y espacio",
+    skill: "Figuras y espacio",
     q_es: "¿Cómo sabes que esta figura cambió de tamaño y no solo de lugar?",
     q_en: "How do you know this shape changed size and not just position?",
     a_es: "Si es más grande o más pequeña, cambió de tamaño. Si se ve igual pero en otro lugar, solo se movió.",
@@ -33,7 +33,7 @@ const CARDS: Card[] = [
     fig: "dil",
   },
   {
-    skill: "Formas y espacio",
+    skill: "Figuras y espacio",
     q_es: "Si muevo esta figura a otro lugar, ¿cambia su tamaño?",
     q_en: "If I move this shape somewhere else, does its size change?",
     a_es: "No. Mover una figura no la hace más grande ni más pequeña.",
@@ -41,7 +41,7 @@ const CARDS: Card[] = [
     fig: "trans",
   },
   {
-    skill: "Formas y espacio",
+    skill: "Figuras y espacio",
     q_es: "Esta figura ahora es el doble de grande. ¿Se movió o cambió de tamaño?",
     q_en: "This shape is now twice as big. Did it move, or change size?",
     a_es: "Cambió de tamaño: se hizo más grande.",
@@ -49,7 +49,7 @@ const CARDS: Card[] = [
     fig: "dil2",
   },
   {
-    skill: "Formas y espacio",
+    skill: "Figuras y espacio",
     q_es: "Muéstrame con las manos una figura que cambia de tamaño.",
     q_en: "Show me with your hands a shape changing size.",
     a_es: "Manos que se separan = más grande; que se juntan = más pequeña. Deslizarlas de lugar no cuenta.",
@@ -341,13 +341,13 @@ export function QuestionGame({ onClose }: { onClose?: () => void }) {
         {screen === "done" && (
           <div style={{ textAlign: "center", padding: "8px 6px" }}>
             <div style={{ width: 64, height: 64, borderRadius: "50%", background: BLUE_BG, color: BLUE, display: "flex", alignItems: "center", justifyContent: "center", font: "700 30px/1 Arial,sans-serif", margin: "0 auto" }}>✓</div>
-            <div style={{ font: "700 26px/1.2 'Kodchasan',sans-serif", color: NAVY, marginTop: 20 }}>¡Buen trabajo, juntas!</div>
+            <div style={{ font: "700 26px/1.2 'Kodchasan',sans-serif", color: NAVY, marginTop: 20 }}>¡Qué buen trabajo hicieron!</div>
             <div style={{ font: "400 14px/1.3 Arial,sans-serif", color: FAINT, marginTop: 6 }}>Nice work, together</div>
             <div style={{ font: "400 16px/1.5 Arial,sans-serif", color: INK, marginTop: 20 }}>
               Camila acertó <strong style={{ fontWeight: 700 }}>{correct} de {total}</strong> preguntas esta noche.
             </div>
             <div style={{ marginTop: 18, padding: "15px 16px", background: "#fff", border: `1px solid ${CARD_BORDER}`, borderRadius: 14, font: "400 14px/1.5 Arial,sans-serif", color: MUTED, maxWidth: 460, marginInline: "auto" }}>
-              Lo más importante es la conversación, no el puntaje. Volver a intentarlo mañana ya la ayuda.
+              Lo más importante es la conversación, no el puntaje. ¡Cada intento cuenta, vuelve mañana!
               <br />
               <span style={{ color: "#a3a29d", fontSize: 12 }}>What matters is the conversation, not the score.</span>
             </div>
