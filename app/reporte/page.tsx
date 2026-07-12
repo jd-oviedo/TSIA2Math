@@ -35,18 +35,18 @@ const CONTENT = {
   school: "Summertime High School",
   status: {
     kicker: "Va por buen camino",
-    es: "Camila va bien para las matemáticas de la universidad.",
+    es: "Camila va por buen camino para estar lista para las matemáticas universitarias.",
     en: "Camila is on track for college math.",
   },
   focus: {
-    es: "Formas y espacio",
+    es: "Figuras y espacio",
     en: "Shapes and space",
-    note_es: "Aquí es donde un poco de práctica le ayudaría más.",
-    note_en: "This is where a little practice would help most.",
+    note_es: "Con un poco más de práctica en esta área seguirá mejorando.",
+    note_en: "A little more practice here will keep her improving.",
   },
   misconception: {
-    es: "A veces Camila confunde cuándo una figura cambia de tamaño con cuándo solo cambia de lugar.",
-    en: "Sometimes Camila mixes up when a shape changes size versus when it just changes position.",
+    es: "Camila tiene dificultad para identificar la diferencia entre una figura que cambia de tamaño y una que solo cambia de posición.",
+    en: "Camila has trouble telling the difference between a shape that changes size and one that only changes position.",
     reassure_es: "No necesitas saber hacer las matemáticas tú misma.",
     reassure_en: "You don’t need to know how to do the math yourself.",
   },
@@ -88,7 +88,7 @@ function FocusCard({ big }: { big: boolean }) {
   return (
     <div style={{ flex: 1, background: CARD, border: `1px solid ${CARD_BORDER}`, borderRadius: 16, padding: big ? 24 : 18 }}>
       <div style={{ font: "700 11px/1 Arial,sans-serif", letterSpacing: ".08em", textTransform: "uppercase", color: MUTED, marginBottom: big ? 14 : 12 }}>
-        Un área para practicar · One area to practice
+        Un área para mejorar · One area to practice
       </div>
       <div style={{ font: `700 ${big ? 21 : 18}px/1.25 Arial,sans-serif`, color: INK }}>{CONTENT.focus.es}</div>
       <div style={{ font: `400 ${big ? 14 : 13}px/1.3 Arial,sans-serif`, color: MUTED, marginTop: big ? 3 : 2 }}>{CONTENT.focus.en}</div>
@@ -229,8 +229,9 @@ export default function ReportePage() {
           >
             <div style={{ flex: 1 }}>
               <div style={{ font: `400 ${isDesktop ? 16 : 15}px/${isDesktop ? 1.5 : 1.45} Arial,sans-serif`, color: INK }}>
-                A veces Camila confunde cuándo una figura <strong style={{ fontWeight: 700 }}>cambia de tamaño</strong> con cuándo solo{" "}
-                <strong style={{ fontWeight: 700 }}>cambia de lugar</strong>.
+                Camila tiene dificultad para identificar la diferencia entre una figura que{" "}
+                <strong style={{ fontWeight: 700 }}>cambia de tamaño</strong> y una que solo{" "}
+                <strong style={{ fontWeight: 700 }}>cambia de posición</strong>.
               </div>
               <div style={{ font: "400 13px/1.4 Arial,sans-serif", color: FAINT, marginTop: isDesktop ? 8 : 7 }}>{CONTENT.misconception.en}</div>
             </div>
