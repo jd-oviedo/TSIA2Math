@@ -45,7 +45,8 @@ const CONTENT = {
     note_en: "A little more practice here will keep her improving.",
   },
   misconception: {
-    es: "Camila tiene dificultad para identificar la diferencia entre una figura que cambia de tamaño y una que solo cambia de posición.",
+    // The Spanish line is inline in the JSX below — it bolds "cambia de tamaño"
+    // and "cambia de posición", so it can't live here as a flat string.
     en: "Camila has trouble telling the difference between a shape that changes size and one that only changes position.",
     reassure_es: "No necesitas saber hacer las matemáticas tú misma.",
     reassure_en: "You don’t need to know how to do the math yourself.",
