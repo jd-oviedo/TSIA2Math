@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { GridFigure, type FigureKind } from "./GridFigure";
 
-// Palette (matches the Parent Digest design — hardcoded tokens, not the --ec theme)
+// Palette (matches the Parent Digest design: hardcoded tokens, not the --ec theme)
 const NAVY = "#0F1E35";
 const AMBER = "#f0a33e";
 const BLUE = "#155A7E";
@@ -37,7 +37,7 @@ const CARDS: Card[] = [
     q_es: "Si muevo esta figura a otro lugar, ¿cambia su tamaño?",
     q_en: "If I move this shape somewhere else, does its size change?",
     a_es: "No. Mover una figura no la hace más grande ni más pequeña.",
-    a_en: "No — moving a shape doesn’t make it bigger or smaller.",
+    a_en: "No. Moving a shape doesn’t make it bigger or smaller.",
     fig: "trans",
   },
   {
@@ -45,7 +45,7 @@ const CARDS: Card[] = [
     q_es: "Esta figura ahora es el doble de grande. ¿Se movió o cambió de tamaño?",
     q_en: "This shape is now twice as big. Did it move, or change size?",
     a_es: "Cambió de tamaño: se hizo más grande.",
-    a_en: "It changed size — it got bigger.",
+    a_en: "It changed size. It got bigger.",
     fig: "dil2",
   },
   {
@@ -143,12 +143,12 @@ export function QuestionGame({ onClose }: { onClose?: () => void }) {
     if (D && typeof (D as { requestPermission?: unknown }).requestPermission === "function") {
       (D as unknown as { requestPermission: () => Promise<string> })
         .requestPermission()
-        .then((p) => (p === "granted" ? go() : setTiltMsg("Permiso denegado — usa los botones")))
-        .catch(() => setTiltMsg("No disponible — usa los botones"));
+        .then((p) => (p === "granted" ? go() : setTiltMsg("Permiso denegado. Usa los botones")))
+        .catch(() => setTiltMsg("No disponible. Usa los botones"));
     } else if (D) {
       go();
     } else {
-      setTiltMsg("Sensor no disponible — usa los botones");
+      setTiltMsg("Sensor no disponible. Usa los botones");
     }
   };
 
