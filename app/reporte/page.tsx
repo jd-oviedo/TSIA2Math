@@ -112,6 +112,13 @@ const BASE_H = 700;
 const DRAG_SLOP = 6;
 const SNAP = 55;
 
+// A gesture is classified once it leaves a small dead zone around its origin,
+// and only counts as horizontal when it is clearly more sideways than vertical.
+// A plain |dx| > |dy| test isn't enough: the cards scroll internally, and the
+// sideways drift of a thumb scrolling up was reading as a card swipe.
+const AXIS_SLOP = 8;
+const AXIS_RATIO = 1.5;
+
 /* The report copy is static for now (see CONTENT). This is where the real
  * fetch will go; today it just waits on the imagery card 1 needs, so the
  * first card doesn't appear half-painted as the loader exits. */
@@ -467,6 +474,8 @@ export default function ReportePage() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [containerW, setContainerW] = useState(0);
   const startX = useRef(0);
+  const startY = useRef(0);
+  const axis = useRef<"x" | "y" | null>(null);
   const movedRef = useRef(false);
   const revealTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
@@ -544,29 +553,69 @@ export default function ReportePage() {
     if (!dragging) return;
     const onMove = (e: PointerEvent) => {
       const dx = e.clientX - startX.current;
+      const dy = e.clientY - startY.current;
+
+      // Classify the gesture once it leaves the dead zone, then hold that axis
+      // until the pointer lifts. Without the lock, a scroll that starts vertical
+      // and drifts sideways past SNAP flips the card out from under the reader.
+      if (!axis.current) {
+        if (Math.abs(dx) < AXIS_SLOP && Math.abs(dy) < AXIS_SLOP) return;
+        axis.current = Math.abs(dx) > Math.abs(dy) * AXIS_RATIO ? "x" : "y";
+      }
+
+      // Vertical: the gesture belongs to the card's own scroller. Leave `drag`
+      // at 0 and never preventDefault, so the browser scrolls it natively.
+      if (axis.current === "y") return;
+
       if (Math.abs(dx) > DRAG_SLOP) movedRef.current = true;
       setDrag(dx);
     };
     const onUp = (e: PointerEvent) => {
       const dx = e.clientX - startX.current;
+      const swiped = axis.current === "x";
+      axis.current = null;
       setDragging(false);
       setDrag(0);
+      if (!swiped) return;
       if (dx < -SNAP) go(index + 1);
       else if (dx > SNAP) go(index - 1);
     };
+    // The browser took the gesture over (it began a native scroll): drop it
+    // without snapping, or a scroll would land as a card change.
+    const onCancel = () => {
+      axis.current = null;
+      setDragging(false);
+      setDrag(0);
+    };
     window.addEventListener("pointermove", onMove);
     window.addEventListener("pointerup", onUp);
-    window.addEventListener("pointercancel", onUp);
+    window.addEventListener("pointercancel", onCancel);
     return () => {
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerup", onUp);
-      window.removeEventListener("pointercancel", onUp);
+      window.removeEventListener("pointercancel", onCancel);
     };
   }, [dragging, index, go]);
+
+  // React registers touchmove passively at the root, where preventDefault is a
+  // no-op, so the listener that suppresses scrolling mid-swipe has to be
+  // non-passive and bound to the track. It only fires for a gesture already
+  // locked to x; a vertical one is left entirely to the browser.
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const onTouchMove = (e: TouchEvent) => {
+      if (axis.current === "x") e.preventDefault();
+    };
+    el.addEventListener("touchmove", onTouchMove, { passive: false });
+    return () => el.removeEventListener("touchmove", onTouchMove);
+  }, []);
 
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (e.pointerType === "mouse" && e.button !== 0) return;
     startX.current = e.clientX;
+    startY.current = e.clientY;
+    axis.current = null;
     movedRef.current = false;
     setDragging(true);
   };
