@@ -1,37 +1,80 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { GridFigure } from "./GridFigure";
 import { QuestionGame } from "./QuestionGame";
+import { EXIT_MS, ReporteLoadingScreen } from "../components/ReporteLoadingScreen";
 
 /* ------------------------------------------------------------------ *
- * Parent Digest — bilingual (ES / EN) weekly progress report.
+ * Parent Digest: bilingual (ES / EN) weekly progress report.
+ * Four swipeable cards: teacher + status, focus + misconception,
+ * pictorial example, tonight's action.
+ *
  * Palette is hardcoded from the design (not the --ec theme), matching
  * the demo/teacher surfaces. Content below is placeholder copy from the
  * design handoff; wire to real report data when available.
  * ------------------------------------------------------------------ */
 
 const NAVY = "#0F1E35";
+const NAVY_DEEP = "#0A1626"; // darker strip on top of the navy action card
 const AMBER = "#f0a33e";
 const BLUE = "#155A7E";
-const BLUE_2 = "#3f7290";
-const BLUE_BG = "#E1F0F8";
+// A shade darker than the original #3f7290, which measured 4.44:1 on the sky
+// glass and just missed WCAG AA; this is visually the same tone at 4.7:1.
+const BLUE_2 = "#3A6A86";
+const SKY = "#87CEEB";
 const INK = "#1A1A1A";
 const MUTED = "#5F5E5A";
 const FAINT = "#8b8a85";
 const CARD = "#fff";
 const CARD_BORDER = "#E7E6E1";
-const INSET = "#F5F5F3";
+const PAGE_BG = "#F5F5F3";
+const DOT_OFF = "#C9C7C0";
 
-// Design props: amber left accent (default off) + practice-area fill (default 58%).
-const LEFT_ACCENT = false;
+const FONT = 'var(--font-kodchasan, Kodchasan, sans-serif)';
+
+/* --- glass panels --------------------------------------------------------- *
+ * Translucent tinted panels used to frame each card's sections. `glass()`
+ * carries the shared treatment (blur, hairline edge, lift); the tints below
+ * differ only in hue and in which shadow reads correctly on their backdrop.
+ * ------------------------------------------------------------------------- */
+
+const LIFT_ON_LIGHT = "0 10px 26px -14px rgba(15,30,53,.35), inset 0 1px 0 rgba(255,255,255,.65)";
+const LIFT_ON_DARK = "0 14px 32px -12px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.10)";
+
+const GLASS = {
+  amber: { fill: "rgba(240,163,62,.10)", edge: "rgba(240,163,62,.55)", lift: LIFT_ON_DARK },
+  // Light-orange panel sitting on a white card, so it needs the light lift.
+  orangeLight: { fill: "rgba(240,163,62,.13)", edge: "rgba(240,163,62,.45)", lift: LIFT_ON_LIGHT },
+  sky: { fill: "rgba(135,206,235,.30)", edge: "rgba(135,206,235,.85)", lift: LIFT_ON_LIGHT },
+  // Kept dense (.96 -> ~#19273d over white) so these panels read as the same navy
+  // as the "Reporte Semanal" banner; the blur, hairline edge and lift carry the
+  // glass, not the transparency.
+  navy: { fill: "rgba(15,30,53,.96)", edge: "rgba(255,255,255,.18)", lift: LIFT_ON_DARK },
+} as const;
+
+function glass(tint: { fill: string; edge: string; lift: string }, radius: number) {
+  return {
+    background: tint.fill,
+    border: `1px solid ${tint.edge}`,
+    borderRadius: radius,
+    backdropFilter: "blur(10px)",
+    WebkitBackdropFilter: "blur(10px)",
+    boxShadow: tint.lift,
+  } as const;
+}
+
+const MIN_HOLD_MS = 550; // logo stays visible at least this long, even on a fast connection
+
+// Design prop: practice-area fill (default 58%).
 const FOCUS_FILL = 58;
-const leftBorder = LEFT_ACCENT ? `3px solid ${AMBER}` : "none";
+
+const BANNER_TEXT = "Reporte Semanal";
 
 const CONTENT = {
   student: "Camila",
-  teacherInitials: "AM",
-  teacher: "De Ms. White",
+  teacher: "Mr. O",
+  role: "Maestro de Matemáticas",
   school: "Summertime High School",
   status: {
     kicker: "Va por buen camino",
@@ -45,7 +88,7 @@ const CONTENT = {
     note_en: "A little more practice here will keep her improving.",
   },
   misconception: {
-    // The Spanish line is inline in the JSX below — it bolds "cambia de tamaño"
+    // The Spanish line is inline in the JSX below; it bolds "cambia de tamaño"
     // and "cambia de posición", so it can't live here as a flat string.
     en: "Camila has trouble telling the difference between a shape that changes size and one that only changes position.",
     reassure_es: "No necesitas saber hacer las matemáticas tú misma.",
@@ -54,297 +97,649 @@ const CONTENT = {
   action: {
     ask_es: "«¿Cómo sabes que esta figura cambió de tamaño y no solo de lugar?»",
     ask_en: "“How do you know this shape changed size, and didn’t just move?”",
-    listen_es: "Habla del tamaño — si se hizo más grande o más pequeña — no solo de que se movió.",
     listen_en: "Whether she talks about size, not just that it moved.",
   },
 };
 
+const CARD_COUNT = 4;
+const GAP = 16;
+const BASE_W = 320;
+const BASE_H = 700;
+
+// Past this much horizontal travel a pointer gesture is a swipe, not a tap;
+// below it, the click is allowed through to whatever was pressed (e.g. the
+// "Jugar juego de preguntas" button).
+const DRAG_SLOP = 6;
+const SNAP = 55;
+
+/* The report copy is static for now (see CONTENT). This is where the real
+ * fetch will go; today it just waits on the imagery card 1 needs, so the
+ * first card doesn't appear half-painted as the loader exits. */
+async function fetchReporteData() {
+  if (typeof window === "undefined") return;
+  await new Promise<void>((resolve) => {
+    const img = new Image();
+    img.onload = img.onerror = () => resolve();
+    img.src = "/images/mr-o.jpg";
+  });
+}
+
+/* --- hooks ---------------------------------------------------------------- */
+
 function useViewport() {
-  const [w, setW] = useState(1280);
+  const [vp, setVp] = useState({ w: 1280, h: 900 });
   useEffect(() => {
-    const on = () => setW(window.innerWidth);
+    const on = () => setVp({ w: window.innerWidth, h: window.innerHeight });
     on();
     window.addEventListener("resize", on);
     return () => window.removeEventListener("resize", on);
   }, []);
-  return { isDesktop: w >= 900 };
+  return vp;
+}
+
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const on = () => setReduced(mq.matches);
+    on();
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
+  return reduced;
 }
 
 /* --- shared card fragments ------------------------------------------------ */
 
-function StatusCard({ big }: { big: boolean }) {
+function MiniBanner({ f, deep }: { f: (n: number) => number; deep?: boolean }) {
   return (
-    <div style={{ flex: 1, background: BLUE_BG, borderRadius: 16, padding: big ? 24 : "18px 18px 16px" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: big ? 12 : 9 }}>
-        <span style={{ width: big ? 10 : 9, height: big ? 10 : 9, borderRadius: "50%", background: BLUE, display: "inline-block" }} />
-        <span style={{ font: "700 11px/1 Arial,sans-serif", letterSpacing: ".08em", textTransform: "uppercase", color: BLUE }}>{CONTENT.status.kicker}</span>
-      </div>
-      <div style={{ font: `700 ${big ? 23 : 20}px/1.3 Arial,sans-serif`, color: BLUE }}>{CONTENT.status.es}</div>
-      <div style={{ font: `400 ${big ? 15 : 14}px/1.4 Arial,sans-serif`, color: BLUE_2, marginTop: big ? 8 : 6 }}>{CONTENT.status.en}</div>
+    <div
+      style={{
+        flex: "none",
+        background: deep ? NAVY_DEEP : NAVY,
+        padding: `${f(10)}px ${f(22)}px`,
+        textAlign: "center",
+        font: `700 ${f(11)}px/1.2 ${FONT}`,
+        letterSpacing: ".14em",
+        textTransform: "uppercase",
+        color: AMBER,
+      }}
+    >
+      {BANNER_TEXT}
     </div>
   );
 }
 
-function FocusCard({ big }: { big: boolean }) {
+// Scroll area shared by every card. `safe center` vertically centres short
+// content (card 1 would otherwise bottom-out with dead space) but falls back
+// to top-aligned when the content is taller than the card, so nothing gets
+// clipped out of reach on a short viewport.
+function CardBody({
+  f,
+  pad,
+  justify = "safe center",
+  children,
+}: {
+  f: (n: number) => number;
+  pad: string;
+  // "space-evenly" spreads a short card's blocks to fill it; only safe where the
+  // content is known to fit, since it clips the top when it doesn't.
+  justify?: "safe center" | "space-evenly";
+  children: React.ReactNode;
+}) {
   return (
-    <div style={{ flex: 1, background: CARD, border: `1px solid ${CARD_BORDER}`, borderRadius: 16, padding: big ? 24 : 18 }}>
-      <div style={{ font: "700 11px/1 Arial,sans-serif", letterSpacing: ".08em", textTransform: "uppercase", color: MUTED, marginBottom: big ? 14 : 12 }}>
-        Un área para mejorar · One area to practice
-      </div>
-      <div style={{ font: `700 ${big ? 21 : 18}px/1.25 Arial,sans-serif`, color: INK }}>{CONTENT.focus.es}</div>
-      <div style={{ font: `400 ${big ? 14 : 13}px/1.3 Arial,sans-serif`, color: MUTED, marginTop: big ? 3 : 2 }}>{CONTENT.focus.en}</div>
-      <div style={{ marginTop: big ? 16 : 14, height: big ? 14 : 12, borderRadius: 99, background: "#F0EFEA", overflow: "hidden" }}>
-        <div style={{ width: `${FOCUS_FILL}%`, height: "100%", borderRadius: 99, background: AMBER }} />
-      </div>
-      <div style={{ font: "400 13px/1.4 Arial,sans-serif", color: MUTED, marginTop: big ? 12 : 11 }}>
-        {CONTENT.focus.note_es} <span style={{ color: FAINT }}>{CONTENT.focus.note_en}</span>
+    <div
+      className="um-scroll"
+      style={{
+        flex: 1,
+        overflowY: "auto",
+        padding: pad,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: justify,
+        textAlign: "center",
+        gap: f(2),
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+// Section kicker: a light-blue glass bubble with the English stacked beneath,
+// mirroring the "Esta noche en la mesa" pill on the action card.
+function KickerPill({ es, en, f }: { es: string; en: string; f: (n: number) => number }) {
+  return (
+    <div className="uml" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: f(6), marginBottom: f(12) }}>
+      <span
+        style={{
+          ...glass(GLASS.sky, 999),
+          color: BLUE,
+          font: `700 ${f(11)}px/1.2 ${FONT}`,
+          letterSpacing: ".08em",
+          textTransform: "uppercase",
+          padding: `${f(7)}px ${f(14)}px`,
+        }}
+      >
+        {es}
+      </span>
+      <span style={{ font: `400 ${f(12)}px/1.2 ${FONT}`, color: FAINT }}>{en}</span>
+    </div>
+  );
+}
+
+function Figure({
+  kind,
+  title,
+  subEs,
+  subEn,
+  f,
+}: {
+  kind: "dil" | "trans";
+  title: string;
+  subEs: string;
+  subEn: string;
+  f: (n: number) => number;
+}) {
+  return (
+    <div style={{ border: `1.5px solid ${CARD_BORDER}`, borderRadius: f(16), overflow: "hidden", maxWidth: f(232), margin: "0 auto" }}>
+      <GridFigure kind={kind} />
+      <div style={{ textAlign: "center", padding: `${f(9)}px ${f(8)}px ${f(11)}px`, background: CARD }}>
+        <div style={{ font: `700 ${f(15)}px/1.2 ${FONT}`, color: INK }}>{title}</div>
+        <div style={{ font: `400 ${f(12)}px/1.3 ${FONT}`, color: MUTED, marginTop: f(2) }}>{subEs}</div>
+        <div style={{ font: `400 ${f(12)}px/1.3 ${FONT}`, color: FAINT }}>{subEn}</div>
       </div>
     </div>
   );
 }
 
-function PictorialPair({ compact }: { compact: boolean }) {
-  const item = (fig: "dil" | "trans", es: string, sub_es: string, sub_en: string) =>
-    compact ? (
-      <div style={{ flex: 1 }}>
-        <GridFigure kind={fig} />
-        <div style={{ textAlign: "center", font: "700 13px/1.2 Arial,sans-serif", color: INK, marginTop: 4 }}>{es}</div>
-        <div style={{ textAlign: "center", font: "400 11px/1.35 Arial,sans-serif", color: FAINT, marginTop: 2 }}>
-          {sub_es}
-          <br />
-          {sub_en}
-        </div>
-      </div>
-    ) : (
-      <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 16 }}>
-        <div style={{ width: 130, flex: "none" }}>
-          <GridFigure kind={fig} />
-        </div>
-        <div>
-          <div style={{ font: "700 15px/1.2 Arial,sans-serif", color: INK }}>{es}</div>
-          <div style={{ font: "400 12px/1.4 Arial,sans-serif", color: FAINT, marginTop: 3 }}>
-            {sub_es}
-            <br />
-            {sub_en}
+/* --- cards ---------------------------------------------------------------- */
+
+function TeacherCard({ f }: { f: (n: number) => number }) {
+  const avatar = f(72);
+  return (
+    <>
+      <MiniBanner f={f} />
+      <CardBody f={f} pad={`${f(18)}px ${f(16)}px`} justify="space-evenly">
+        {/* Teacher identity, on its own navy banner so the sender reads first. */}
+        <div
+          className="uml"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: f(14),
+            ...glass(GLASS.navy, f(20)),
+            padding: `${f(18)}px ${f(15)}px`,
+          }}
+        >
+          <div
+            style={{
+              width: avatar,
+              height: avatar,
+              flex: "none",
+              borderRadius: "50%",
+              overflow: "hidden",
+              position: "relative",
+              background: SKY,
+              boxShadow: `0 0 0 2px ${AMBER}`,
+            }}
+          >
+            {/* 256px square headshot, nudged up so the face sits centred in the circle. */}
+            <img
+              src="/images/mr-o.jpg"
+              alt=""
+              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 12%", display: "block" }}
+            />
+          </div>
+          {/* Mr. O's contact block stays left-aligned, beside the avatar. */}
+          <div style={{ minWidth: 0, textAlign: "left", whiteSpace: "nowrap" }}>
+            <div style={{ font: `700 ${f(24)}px/1.15 ${FONT}`, color: "#fff" }}>{CONTENT.teacher}</div>
+            <div style={{ font: `600 ${f(12)}px/1.35 ${FONT}`, color: AMBER, marginTop: f(4) }}>{CONTENT.role}</div>
+            <div style={{ font: `400 ${f(12)}px/1.35 ${FONT}`, color: "rgba(255,255,255,.72)", marginTop: f(3) }}>{CONTENT.school}</div>
           </div>
         </div>
-      </div>
-    );
 
+        <div className="uml">
+          <div style={{ font: `400 ${f(15)}px/1.4 ${FONT}`, color: MUTED }}>
+            Reporte semanal de <strong style={{ fontWeight: 700, color: INK }}>{CONTENT.student}</strong>
+          </div>
+          <div style={{ font: `400 ${f(13)}px/1.4 ${FONT}`, color: FAINT }}>{CONTENT.student}&rsquo;s Weekly Report</div>
+        </div>
+
+        <div className="uml" style={{ ...glass(GLASS.sky, f(20)), padding: `${f(22)}px ${f(18)}px ${f(24)}px` }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: f(8), marginBottom: f(12) }}>
+            <span style={{ width: f(9), height: f(9), borderRadius: "50%", background: BLUE, display: "inline-block", flex: "none" }} />
+            <span style={{ font: `700 ${f(11)}px/1.2 ${FONT}`, letterSpacing: ".13em", textTransform: "uppercase", color: BLUE }}>
+              {CONTENT.status.kicker}
+            </span>
+          </div>
+          <div style={{ font: `700 ${f(21)}px/1.3 ${FONT}`, color: BLUE }}>{CONTENT.status.es}</div>
+          <div style={{ font: `400 ${f(15)}px/1.4 ${FONT}`, color: BLUE_2, marginTop: f(11) }}>{CONTENT.status.en}</div>
+        </div>
+      </CardBody>
+    </>
+  );
+}
+
+function FocusCard({ f }: { f: (n: number) => number }) {
   return (
-    <div style={{ display: "flex", gap: compact ? 12 : 24, alignItems: "center" }}>
-      {item("dil", "Cambió de tamaño", "más grande, mismo lugar", "changed size")}
-      <div style={{ width: 1, alignSelf: "stretch", background: "#ECEBE6" }} />
-      {item("trans", "Cambió de lugar", "mismo tamaño, otro lugar", "changed position")}
-    </div>
+    <>
+      <MiniBanner f={f} />
+      <CardBody f={f} pad={`${f(16)}px ${f(20)}px`}>
+        <KickerPill es="Un área para mejorar" en="One area to practice" f={f} />
+
+        {/* The focus area, framed in dark-blue glass. */}
+        <div className="uml" style={{ ...glass(GLASS.navy, f(20)), padding: `${f(14)}px ${f(15)}px ${f(15)}px` }}>
+          <div style={{ font: `700 ${f(23)}px/1.15 ${FONT}`, color: "#fff" }}>{CONTENT.focus.es}</div>
+          <div style={{ font: `400 ${f(14)}px/1.3 ${FONT}`, color: "rgba(255,255,255,.58)", marginTop: f(2) }}>{CONTENT.focus.en}</div>
+          <div style={{ margin: `${f(13)}px 0 ${f(12)}px` }}>
+            <div style={{ height: f(12), borderRadius: 999, background: "rgba(255,255,255,.14)", overflow: "hidden" }}>
+              <div style={{ width: `${FOCUS_FILL}%`, height: "100%", borderRadius: 999, background: AMBER }} />
+            </div>
+          </div>
+          <div style={{ font: `400 ${f(13)}px/1.4 ${FONT}`, color: "rgba(255,255,255,.86)" }}>{CONTENT.focus.note_es}</div>
+          <div style={{ font: `400 ${f(13)}px/1.4 ${FONT}`, color: "rgba(255,255,255,.5)" }}>{CONTENT.focus.note_en}</div>
+        </div>
+
+        {/* The misconception, framed in light-orange glass. */}
+        <div className="uml" style={{ ...glass(GLASS.orangeLight, f(18)), marginTop: f(10), padding: `${f(12)}px ${f(13)}px ${f(13)}px` }}>
+          <div style={{ font: `400 ${f(15)}px/1.42 ${FONT}`, color: INK }}>
+            Camila tiene dificultad para identificar la diferencia entre una figura que{" "}
+            <strong style={{ fontWeight: 700 }}>cambia de tamaño</strong> y una que solo{" "}
+            <strong style={{ fontWeight: 700 }}>cambia de posición</strong>.
+          </div>
+          <div style={{ font: `400 ${f(13)}px/1.4 ${FONT}`, color: MUTED, marginTop: f(7) }}>{CONTENT.misconception.en}</div>
+        </div>
+
+        <div className="uml" style={{ marginTop: f(12) }}>
+          <div style={{ font: `700 ${f(15)}px/1.3 ${FONT}`, color: INK }}>{CONTENT.misconception.reassure_es}</div>
+          <div style={{ font: `400 ${f(13)}px/1.4 ${FONT}`, color: FAINT, marginTop: f(5) }}>{CONTENT.misconception.reassure_en}</div>
+        </div>
+      </CardBody>
+    </>
+  );
+}
+
+function PictorialCard({ f }: { f: (n: number) => number }) {
+  return (
+    <>
+      <MiniBanner f={f} />
+      <CardBody f={f} pad={`${f(20)}px ${f(20)}px`}>
+        <KickerPill es="Muéstrale este dibujo" en="Show her this picture" f={f} />
+        <div className="uml" style={{ marginBottom: f(10) }}>
+          <Figure kind="dil" title="Cambió de tamaño" subEs="más grande, mismo lugar" subEn="changed size" f={f} />
+        </div>
+        <div className="uml">
+          <Figure kind="trans" title="Cambió de lugar" subEs="mismo tamaño, otro lugar" subEn="changed position" f={f} />
+        </div>
+      </CardBody>
+    </>
+  );
+}
+
+function ActionCard({ f, onPlay }: { f: (n: number) => number; onPlay: () => void }) {
+  return (
+    <>
+      <MiniBanner f={f} deep />
+      <CardBody f={f} pad={`${f(18)}px ${f(20)}px`}>
+        <div className="uml" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: f(6), marginBottom: f(14) }}>
+          <span
+            style={{ background: AMBER, color: NAVY, font: `700 ${f(11)}px/1.2 ${FONT}`, letterSpacing: ".08em", textTransform: "uppercase", padding: `${f(7)}px ${f(13)}px`, borderRadius: 999 }}
+          >
+            Esta noche en la mesa
+          </span>
+          <span style={{ font: `400 ${f(13)}px/1.2 ${FONT}`, color: "rgba(255,255,255,.55)" }}>Tonight at the table</span>
+        </div>
+
+        {/* The ask, lifted off the navy in a floating glass panel. */}
+        <div
+          className="uml"
+          style={{ ...glass(GLASS.amber, f(20)), textAlign: "center", padding: `${f(13)}px ${f(14)}px ${f(15)}px` }}
+        >
+          <div style={{ font: `700 ${f(11)}px/1.2 ${FONT}`, letterSpacing: ".1em", textTransform: "uppercase", color: AMBER, marginBottom: f(8) }}>
+            Pregúntale · Ask her
+          </div>
+          <div style={{ font: `700 ${f(19)}px/1.3 ${FONT}`, color: "#fff" }}>{CONTENT.action.ask_es}</div>
+          <div style={{ font: `400 ${f(14)}px/1.4 ${FONT}`, color: "rgba(255,255,255,.62)", marginTop: f(8) }}>{CONTENT.action.ask_en}</div>
+        </div>
+
+        <div className="uml" style={{ height: 1, background: "rgba(255,255,255,.13)", margin: `${f(14)}px 0` }} />
+
+        <div className="uml" style={{ textAlign: "center", font: `700 ${f(11)}px/1.2 ${FONT}`, letterSpacing: ".1em", textTransform: "uppercase", color: AMBER, marginBottom: f(8) }}>
+          Escucha si · Listen for
+        </div>
+        <div className="uml" style={{ font: `400 ${f(16)}px/1.42 ${FONT}`, color: "#eef2f6" }}>
+          Habla del <strong style={{ fontWeight: 700 }}>tamaño</strong>, si se hizo más grande o más pequeña, no solo de que se movió.
+        </div>
+        <div className="uml" style={{ textAlign: "center", font: `400 ${f(14)}px/1.4 ${FONT}`, color: "rgba(255,255,255,.55)", marginTop: f(8) }}>
+          {CONTENT.action.listen_en}
+        </div>
+
+        <div
+          className="uml"
+          style={{ marginTop: f(14), display: "flex", alignItems: "center", justifyContent: "center", gap: f(12), background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.14)", borderRadius: f(16), padding: `${f(11)}px ${f(14)}px` }}
+        >
+          <span style={{ width: f(44), height: f(44), borderRadius: "50%", background: AMBER, display: "flex", alignItems: "center", justifyContent: "center", flex: "none" }}>
+            <svg width={f(16)} height={f(18)} viewBox="0 0 16 18" aria-hidden="true">
+              <polygon points="2,1 15,9 2,17" fill={NAVY} />
+            </svg>
+          </span>
+          <span>
+            <span style={{ display: "block", font: `700 ${f(15)}px/1.2 ${FONT}`, color: "#fff" }}>Escuchar la pregunta</span>
+            <span style={{ display: "block", font: `400 ${f(13)}px/1.3 ${FONT}`, color: "rgba(255,255,255,.55)", marginTop: f(1) }}>Hear the question out loud</span>
+          </span>
+        </div>
+
+        <div className="uml" style={{ marginTop: f(10) }}>
+          <button
+            onClick={onPlay}
+            style={{ width: "100%", background: AMBER, color: NAVY, font: `700 ${f(17)}px/1.2 ${FONT}`, border: "none", borderRadius: f(16), padding: f(14), cursor: "pointer" }}
+          >
+            Jugar juego de preguntas
+          </button>
+        </div>
+      </CardBody>
+    </>
   );
 }
 
 /* --- page ----------------------------------------------------------------- */
 
 export default function ReportePage() {
-  const { isDesktop } = useViewport();
+  const { w, h } = useViewport();
+  const reduced = usePrefersReducedMotion();
+
   const [gameOpen, setGameOpen] = useState(false);
+
+  // Loader: hold the mark briefly, then slide it out while card 1 fades in.
+  const [dataReady, setDataReady] = useState(false);
+  const [minHoldDone, setMinHoldDone] = useState(false);
+  const [exiting, setExiting] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
+  const [contentEntered, setContentEntered] = useState(false);
+
+  const [index, setIndex] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const [drag, setDrag] = useState(0);
+  const [revealed, setRevealed] = useState<Record<number, boolean>>({});
+
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [containerW, setContainerW] = useState(0);
+  const startX = useRef(0);
+  const movedRef = useRef(false);
+  const revealTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  const isDesktop = w >= 900;
+  const S = isDesktop ? 1.08 : 1;
+  const f = useCallback((n: number) => Math.round(n * S), [S]);
+
+  const cardW = Math.round(BASE_W * S);
+  // Keep the card inside the viewport on short laptops; it scrolls internally.
+  const cardH = Math.max(520, Math.min(Math.round(BASE_H * S), h - f(100)));
+  const step = cardW + GAP;
+  const pad = Math.max(GAP, (containerW - cardW) / 2);
+
+  useLayoutEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([e]) => setContainerW(e.contentRect.width));
+    ro.observe(el);
+    setContainerW(el.getBoundingClientRect().width);
+    return () => ro.disconnect();
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchReporteData().then(() => {
+      if (!cancelled) setDataReady(true);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    const t = setTimeout(() => setMinHoldDone(true), MIN_HOLD_MS);
+    return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    if (!dataReady || !minHoldDone || exiting) return;
+    setExiting(true);
+    // Content starts fading in as the loader exits, so the two crossfade.
+    const raf = requestAnimationFrame(() => {
+      setContentEntered(true);
+      setRevealed({ 0: true });
+    });
+    const t = setTimeout(() => setShowLoader(false), EXIT_MS);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(t);
+    };
+  }, [dataReady, minHoldDone, exiting]);
+
+  useEffect(() => () => clearTimeout(revealTimer.current), []);
+
+  const go = useCallback(
+    (i: number) => {
+      const next = Math.max(0, Math.min(CARD_COUNT - 1, i));
+      setIndex(next);
+      setRevealed((r) => {
+        if (r[next]) return r;
+        clearTimeout(revealTimer.current);
+        revealTimer.current = setTimeout(() => setRevealed((s) => ({ ...s, [next]: true })), reduced ? 0 : 420);
+        return r;
+      });
+    },
+    [reduced],
+  );
+
+  // Drag is tracked on `window` rather than via setPointerCapture: capturing
+  // the pointer on the track retargets the gesture away from whatever was
+  // pressed, which swallowed the click on the "Jugar juego de preguntas"
+  // button. Instead a gesture only becomes a swipe once it passes DRAG_SLOP,
+  // and a click is suppressed (below) only when that actually happened.
+  useEffect(() => {
+    if (!dragging) return;
+    const onMove = (e: PointerEvent) => {
+      const dx = e.clientX - startX.current;
+      if (Math.abs(dx) > DRAG_SLOP) movedRef.current = true;
+      setDrag(dx);
+    };
+    const onUp = (e: PointerEvent) => {
+      const dx = e.clientX - startX.current;
+      setDragging(false);
+      setDrag(0);
+      if (dx < -SNAP) go(index + 1);
+      else if (dx > SNAP) go(index - 1);
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onUp);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
+    };
+  }, [dragging, index, go]);
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    startX.current = e.clientX;
+    movedRef.current = false;
+    setDragging(true);
+  };
+
+  // Swallow the click that ends a real swipe; let a plain tap through.
+  const onClickCapture = (e: React.MouseEvent) => {
+    if (!movedRef.current) return;
+    e.preventDefault();
+    e.stopPropagation();
+    movedRef.current = false;
+  };
+
+  const x = pad - index * step + (dragging ? drag : 0);
+
+  const cards = [
+    <TeacherCard key="teacher" f={f} />,
+    <FocusCard key="focus" f={f} />,
+    <PictorialCard key="pictorial" f={f} />,
+    <ActionCard key="action" f={f} onPlay={() => setGameOpen(true)} />,
+  ];
 
   return (
     <>
       <style>{`
         * { box-sizing: border-box; }
-        body { margin: 0; background: #E8E7E2; -webkit-font-smoothing: antialiased; }
+        body { margin: 0; background: ${PAGE_BG}; -webkit-font-smoothing: antialiased; }
+
+        @keyframes umWobble {
+          0%   { transform: rotate(0deg); }
+          22%  { transform: rotate(-3.4deg); }
+          52%  { transform: rotate(2.8deg); }
+          78%  { transform: rotate(-1.3deg); }
+          100% { transform: rotate(0deg); }
+        }
+        @keyframes umFadeUp {
+          from { opacity: 0; transform: translateY(16px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .um-card[data-um-reveal="1"] { animation: umWobble .95s cubic-bezier(.36,.07,.19,.97) .22s both; }
+        .um-scroll > .uml { opacity: 0; }
+        .um-card[data-um-reveal="1"] .um-scroll > .uml { animation: umFadeUp .5s ease-out both; }
+        .um-card[data-um-reveal="1"] .um-scroll > .uml:nth-child(1) { animation-delay: .10s; }
+        .um-card[data-um-reveal="1"] .um-scroll > .uml:nth-child(2) { animation-delay: .20s; }
+        .um-card[data-um-reveal="1"] .um-scroll > .uml:nth-child(3) { animation-delay: .30s; }
+        .um-card[data-um-reveal="1"] .um-scroll > .uml:nth-child(4) { animation-delay: .40s; }
+        .um-card[data-um-reveal="1"] .um-scroll > .uml:nth-child(5) { animation-delay: .50s; }
+        .um-card[data-um-reveal="1"] .um-scroll > .uml:nth-child(6) { animation-delay: .60s; }
+        .um-card[data-um-reveal="1"] .um-scroll > .uml:nth-child(7) { animation-delay: .70s; }
+        .um-card[data-um-reveal="1"] .um-scroll > .uml:nth-child(8) { animation-delay: .80s; }
+        .um-scroll::-webkit-scrollbar { width: 0; height: 0; }
+
+        @media (prefers-reduced-motion: reduce) {
+          .um-card[data-um-reveal="1"], .um-card[data-um-reveal="1"] .um-scroll > .uml { animation: none !important; }
+          .um-scroll > .uml { opacity: 1; }
+        }
       `}</style>
 
       <div
         style={{
+          position: "relative",
           minHeight: "100vh",
-          background: "#E8E7E2",
-          fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+          background: PAGE_BG,
+          fontFamily: FONT,
           color: INK,
-          padding: isDesktop ? "44px 32px 64px" : "20px 14px 48px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          overflow: "hidden",
         }}
       >
-        <div style={{ maxWidth: 860, margin: "0 auto", display: "flex", flexDirection: "column", gap: isDesktop ? 20 : 14 }}>
+        {showLoader && <ReporteLoadingScreen exiting={exiting} />}
 
-          {/* 1. TRUSTED SENDER */}
+        <div
+          style={{
+            opacity: contentEntered ? 1 : 0,
+            transform: contentEntered ? "translateY(0)" : "translateY(12px)",
+            transition: "opacity 500ms ease 150ms, transform 500ms ease 150ms",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: f(24),
+            padding: `${f(24)}px 0`,
+          }}
+        >
           <div
+            ref={trackRef}
+            role="group"
+            aria-roledescription="carousel"
+            aria-label="Reporte semanal"
+            onPointerDown={onPointerDown}
+            onClickCapture={onClickCapture}
             style={{
-              background: NAVY,
-              borderRadius: 20,
-              padding: isDesktop ? "26px 30px" : "18px 18px 16px",
-              color: "#fff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: isDesktop ? 24 : 12,
-              flexWrap: "wrap",
+              width: "100%",
+              height: cardH,
+              overflow: "hidden",
+              position: "relative",
+              touchAction: "pan-y",
+              cursor: dragging ? "grabbing" : "grab",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: isDesktop ? 18 : 13 }}>
-              <div
-                style={{
-                  width: isDesktop ? 60 : 48,
-                  height: isDesktop ? 60 : 48,
-                  borderRadius: "50%",
-                  background: AMBER,
-                  color: NAVY,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  font: `700 ${isDesktop ? 22 : 17}px/1 'Kodchasan',sans-serif`,
-                  flex: "none",
-                }}
-              >
-                {CONTENT.teacherInitials}
-              </div>
-              <div>
-                <div style={{ font: `700 ${isDesktop ? 20 : 16}px/1.15 Arial,sans-serif` }}>{CONTENT.teacher}</div>
-                <div style={{ font: "400 14px/1.3 Arial,sans-serif", opacity: 0.72, marginTop: 4 }}>{CONTENT.school}</div>
-                <div style={{ font: "400 14px/1.3 Arial,sans-serif", opacity: 0.9, marginTop: 9 }}>
-                  Reporte semanal de <strong style={{ fontWeight: 700 }}>{CONTENT.student}</strong>
-                </div>
-              </div>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 7, opacity: 0.7 }}>
-              <img src="/unpackmath-logo.png" alt="UnpackMath" style={{ width: 22, height: 22, borderRadius: 6, display: "block" }} />
-              <span style={{ font: "600 15px/1 'Kodchasan',sans-serif" }}>UnpackMath</span>
-            </div>
-          </div>
-
-          {/* 2 + 3 status & focus */}
-          <div style={{ display: "flex", gap: isDesktop ? 20 : 14, flexDirection: isDesktop ? "row" : "column", alignItems: "stretch" }}>
-            <StatusCard big={isDesktop} />
-            <FocusCard big={isDesktop} />
-          </div>
-
-          {/* 4. MISCONCEPTION */}
-          <div
-            style={{
-              background: CARD,
-              border: `1px solid ${CARD_BORDER}`,
-              borderRadius: 16,
-              padding: isDesktop ? "24px 26px" : 18,
-              display: "flex",
-              gap: isDesktop ? 26 : 14,
-              flexDirection: isDesktop ? "row" : "column",
-              alignItems: isDesktop ? "flex-start" : "stretch",
-            }}
-          >
-            <div style={{ flex: 1 }}>
-              <div style={{ font: `400 ${isDesktop ? 16 : 15}px/${isDesktop ? 1.5 : 1.45} Arial,sans-serif`, color: INK }}>
-                Camila tiene dificultad para identificar la diferencia entre una figura que{" "}
-                <strong style={{ fontWeight: 700 }}>cambia de tamaño</strong> y una que solo{" "}
-                <strong style={{ fontWeight: 700 }}>cambia de posición</strong>.
-              </div>
-              <div style={{ font: "400 13px/1.4 Arial,sans-serif", color: FAINT, marginTop: isDesktop ? 8 : 7 }}>{CONTENT.misconception.en}</div>
-            </div>
             <div
               style={{
-                flex: "none",
-                width: isDesktop ? 300 : "auto",
-                padding: isDesktop ? "15px 16px" : "13px 14px",
-                background: INSET,
-                borderRadius: 12,
-                borderLeft: leftBorder,
-              }}
-            >
-              <div style={{ font: `700 ${isDesktop ? 15 : 14}px/1.4 Arial,sans-serif`, color: INK }}>{CONTENT.misconception.reassure_es}</div>
-              <div style={{ font: "400 12px/1.4 Arial,sans-serif", color: MUTED, marginTop: isDesktop ? 5 : 4 }}>{CONTENT.misconception.reassure_en}</div>
-            </div>
-          </div>
-
-          {/* PICTORIAL EXAMPLE */}
-          <div
-            style={{
-              background: CARD,
-              border: `1px solid ${CARD_BORDER}`,
-              borderRadius: 16,
-              padding: isDesktop ? "24px 26px" : 16,
-              display: "flex",
-              gap: isDesktop ? 30 : 12,
-              flexDirection: isDesktop ? "row" : "column",
-              alignItems: isDesktop ? "center" : "stretch",
-            }}
-          >
-            <div style={{ flex: "none" }}>
-              <div style={{ font: "700 11px/1 Arial,sans-serif", letterSpacing: ".08em", textTransform: "uppercase", color: MUTED, marginBottom: isDesktop ? 6 : 12 }}>
-                Muéstrale este dibujo{isDesktop ? "" : " · Show her this picture"}
-              </div>
-              {isDesktop && (
-                <div style={{ font: "400 13px/1.4 Arial,sans-serif", color: FAINT, maxWidth: 220 }}>
-                  Un dibujo simple para señalar juntas.
-                  <br />
-                  A simple picture to point at together.
-                </div>
-              )}
-            </div>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <PictorialPair compact={!isDesktop} />
-            </div>
-          </div>
-
-          {/* 5. TONIGHT'S ACTION CARD */}
-          <div
-            style={{
-              background: NAVY,
-              borderRadius: 22,
-              padding: isDesktop ? "32px 34px" : "20px 18px",
-              color: "#fff",
-              boxShadow: "0 22px 44px -18px rgba(15,30,53,.5)",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-              <span style={{ font: "700 11px/1 Arial,sans-serif", letterSpacing: ".1em", textTransform: "uppercase", color: NAVY, background: AMBER, padding: "7px 13px", borderRadius: 99 }}>
-                Esta noche en la mesa
-              </span>
-              <span style={{ font: "400 13px/1 Arial,sans-serif", color: "rgba(255,255,255,.55)" }}>Tonight at the table</span>
-            </div>
-
-            <div style={{ display: "flex", gap: isDesktop ? 34 : 16, marginTop: isDesktop ? 22 : 16, flexDirection: isDesktop ? "row" : "column" }}>
-              <div style={{ flex: 1 }}>
-                <div style={{ font: "700 12px/1 Arial,sans-serif", letterSpacing: ".05em", textTransform: "uppercase", color: AMBER }}>Pregúntale · Ask her</div>
-                <div style={{ font: `700 ${isDesktop ? 22 : 18}px/${isDesktop ? 1.4 : 1.35} Arial,sans-serif`, marginTop: isDesktop ? 10 : 8 }}>{CONTENT.action.ask_es}</div>
-                <div style={{ font: "400 14px/1.4 Arial,sans-serif", color: "rgba(255,255,255,.62)", marginTop: isDesktop ? 8 : 6 }}>{CONTENT.action.ask_en}</div>
-              </div>
-              <div style={{ flex: 1, paddingLeft: isDesktop ? 34 : 0, borderLeft: isDesktop ? "1px solid rgba(255,255,255,.13)" : "none", paddingTop: isDesktop ? 0 : 15, borderTop: isDesktop ? "none" : "1px solid rgba(255,255,255,.13)" }}>
-                <div style={{ font: "700 12px/1 Arial,sans-serif", letterSpacing: ".05em", textTransform: "uppercase", color: AMBER }}>Escucha si · Listen for</div>
-                <div style={{ font: `400 ${isDesktop ? 17 : 15}px/${isDesktop ? 1.5 : 1.4} Arial,sans-serif`, marginTop: isDesktop ? 10 : 8 }}>
-                  Habla del <strong style={{ fontWeight: 700 }}>tamaño</strong> — si se hizo más grande o más pequeña — no solo de que se movió.
-                </div>
-                <div style={{ font: "400 13px/1.4 Arial,sans-serif", color: "rgba(255,255,255,.55)", marginTop: isDesktop ? 6 : 5 }}>{CONTENT.action.listen_en}</div>
-              </div>
-            </div>
-
-            <div
-              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
                 display: "flex",
                 alignItems: "center",
-                gap: 16,
-                marginTop: isDesktop ? 26 : 18,
-                paddingTop: isDesktop ? 22 : 15,
-                borderTop: "1px solid rgba(255,255,255,.13)",
-                flexWrap: "wrap",
+                gap: GAP,
+                willChange: "transform",
+                transform: `translateX(${x}px)`,
+                transition: dragging ? "none" : "transform .42s cubic-bezier(.22,.61,.36,1)",
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: 11, padding: "12px 16px", background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.14)", borderRadius: 14 }}>
-                <span style={{ width: 32, height: 32, borderRadius: "50%", background: AMBER, flex: "none", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <span style={{ width: 0, height: 0, borderTop: "6px solid transparent", borderBottom: "6px solid transparent", borderLeft: `10px solid ${NAVY}`, marginLeft: 3, display: "inline-block" }} />
-                </span>
-                <div style={{ font: "700 14px/1.1 Arial,sans-serif" }}>
-                  Escuchar la pregunta
-                  <span style={{ display: "block", fontWeight: 400, fontSize: 12, color: "rgba(255,255,255,.55)", marginTop: 2 }}>Hear the question out loud</span>
+              {cards.map((card, i) => (
+                <div
+                  key={i}
+                  className="um-card"
+                  data-um-reveal={revealed[i] || reduced ? "1" : "0"}
+                  aria-hidden={i !== index}
+                  style={{
+                    flex: "none",
+                    width: cardW,
+                    height: cardH,
+                    background: i === 3 ? NAVY : CARD,
+                    borderRadius: f(28),
+                    boxShadow:
+                      i === 3
+                        ? "0 18px 40px rgba(10,20,35,.32), 0 2px 6px rgba(0,0,0,.15)"
+                        : "0 18px 40px rgba(15,30,53,.16), 0 2px 6px rgba(0,0,0,.05)",
+                    overflow: "hidden",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  {card}
                 </div>
-              </div>
-              <div style={{ flex: 1 }} />
-              <button
-                onClick={() => setGameOpen(true)}
-                style={{ padding: isDesktop ? "16px 30px" : 16, width: isDesktop ? "auto" : "100%", border: 0, borderRadius: 14, background: AMBER, color: NAVY, font: "700 16px/1 Arial,sans-serif", cursor: "pointer" }}
-              >
-                Jugar juego de preguntas
-              </button>
+              ))}
             </div>
           </div>
 
-          <div style={{ textAlign: "center", font: "400 12px/1.5 Arial,sans-serif", color: "#a3a29d", marginTop: isDesktop ? 8 : 4 }}>
-            UnpackMath &nbsp;·&nbsp; Copia en español pendiente de revisión bilingüe humana
+          {/* dots */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 9 }}>
+            {Array.from({ length: CARD_COUNT }, (_, i) => (
+              <button
+                key={i}
+                onClick={() => go(i)}
+                aria-label={`Tarjeta ${i + 1} de ${CARD_COUNT}`}
+                aria-current={i === index}
+                style={{
+                  width: i === index ? 24 : 8,
+                  height: 8,
+                  padding: 0,
+                  border: "none",
+                  borderRadius: 999,
+                  background: i === index ? NAVY : DOT_OFF,
+                  transition: "all .3s",
+                  cursor: "pointer",
+                }}
+              />
+            ))}
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: f(10), font: `400 ${f(12)}px/1.5 ${FONT}`, color: "#a3a29d", padding: "0 16px" }}>
+            <span>© UnpackMath</span>
+            <span aria-hidden="true">·</span>
+            <a href="https://unpackmath.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "inherit" }}>
+              Privacy
+            </a>
+            <span aria-hidden="true">·</span>
+            <a href="https://unpackmath.com/terms" target="_blank" rel="noopener noreferrer" style={{ color: "inherit" }}>
+              Terms
+            </a>
           </div>
         </div>
       </div>
