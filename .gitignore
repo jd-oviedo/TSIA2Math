@@ -12,3 +12,7 @@ fix_currency.py
 upload_to_supabase.py
 public/data/question_bank.backup.json
 public/data/question_bank.backup2.json
+
+# Python
+__pycache__/
+*.pyc

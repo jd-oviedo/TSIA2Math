@@ -21,8 +21,15 @@
     "posthog-node": "^5.38.2",
     "react": "^18",
     "react-dom": "^18",
+    "rehype-katex": "^7.0.1",
+    "rehype-stringify": "^10.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
     "resend": "^6.14.0",
     "stripe": "^22.3.0",
+    "unified": "^11.0.5",
     "zod": "^4.4.3"
   },
   "devDependencies": {
