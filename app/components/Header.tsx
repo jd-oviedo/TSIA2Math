@@ -205,7 +205,7 @@ export function Footer() {
       }}
     >
       <p style={{ margin: 0, fontFamily: "var(--font-kodchasan, Kodchasan, sans-serif)" }}>
-        &copy; {new Date().getFullYear()} JDOM LLC &middot;{" "}
+        &copy; {new Date().getFullYear()} UnpackMath &middot;{" "}
         <a href="/privacy" style={{ color: "inherit", textDecoration: "underline" }}>privacy</a>
         {" "}&middot;{" "}
         <a href="/terms" style={{ color: "inherit", textDecoration: "underline" }}>terms</a>

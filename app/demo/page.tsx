@@ -19,7 +19,7 @@ function bandStyle(b: string) {
 
 // Sample roster — verbatim from the design handoff. Not real student data.
 const RAW = [
-  { name: 'Maria A.',   email: 'maria.a@demo.edu',   score: 962, band: 'College ready',      acc: { QR: 88, AR: 82, GR: 58, PR: 79 }, tests: 4, active: '1d ago' },
+  { name: 'Camila A.', email: 'camila.a@demo.edu',  score: 962, band: 'College ready',      acc: { QR: 88, AR: 82, GR: 58, PR: 79 }, tests: 4, active: '1d ago' },
   { name: 'Jose R.',    email: 'jose.r@demo.edu',    score: 938, band: 'Approaching',         acc: { QR: 71, AR: 29, GR: 64, PR: 68 }, tests: 3, active: '2d ago' },
   { name: 'Tanya P.',   email: 'tanya.p@demo.edu',   score: 921, band: 'Below college ready', acc: { QR: 52, AR: 14, GR: 48, PR: 55 }, tests: 2, active: '5d ago' },
   { name: 'David L.',   email: 'david.l@demo.edu',   score: 955, band: 'College ready',      acc: { QR: 84, AR: 80, GR: 77, PR: 43 }, tests: 5, active: '1d ago' },
