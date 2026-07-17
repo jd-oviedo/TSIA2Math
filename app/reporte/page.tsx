@@ -385,7 +385,52 @@ function PictorialCard({ f }: { f: (n: number) => number }) {
   );
 }
 
+// Voices populate asynchronously, so an empty list here just means we fall back
+// to whatever the browser picks for the utterance's lang.
+function pickSpanishVoice(synth: SpeechSynthesis) {
+  const voices = synth.getVoices();
+  return (
+    voices.find((v) => v.lang === "es-MX") ||
+    voices.find((v) => v.lang === "es-US") ||
+    voices.find((v) => v.lang.toLowerCase().startsWith("es")) ||
+    undefined
+  );
+}
+
 function ActionCard({ f, onPlay }: { f: (n: number) => number; onPlay: () => void }) {
+  const [speaking, setSpeaking] = useState(false);
+
+  useEffect(() => {
+    const synth = window.speechSynthesis;
+    if (!synth) return;
+    // Reading getVoices() once on mount prompts Chrome to populate the list
+    // before the first tap; speak() reads the populated list later.
+    synth.getVoices();
+    return () => synth.cancel();
+  }, []);
+
+  const speak = useCallback(() => {
+    const synth = window.speechSynthesis;
+    if (!synth) return;
+
+    if (synth.speaking || synth.pending) {
+      synth.cancel();
+      setSpeaking(false);
+      return;
+    }
+
+    // Guillemets read aloud as literal characters on some voices.
+    const utter = new SpeechSynthesisUtterance(CONTENT.action.ask_es.replace(/[«»]/g, ""));
+    utter.lang = "es-MX";
+    utter.rate = 0.95;
+    const voice = pickSpanishVoice(synth);
+    if (voice) utter.voice = voice;
+    utter.onend = () => setSpeaking(false);
+    utter.onerror = () => setSpeaking(false);
+    setSpeaking(true);
+    synth.speak(utter);
+  }, []);
+
   return (
     <>
       <MiniBanner f={f} deep />
@@ -423,20 +468,32 @@ function ActionCard({ f, onPlay }: { f: (n: number) => number; onPlay: () => voi
           {CONTENT.action.listen_en}
         </div>
 
-        <div
+        <button
+          type="button"
+          onClick={speak}
           className="uml"
-          style={{ marginTop: f(14), display: "flex", alignItems: "center", justifyContent: "center", gap: f(12), background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.14)", borderRadius: f(16), padding: `${f(11)}px ${f(14)}px` }}
+          style={{ marginTop: f(14), width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: f(12), background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.14)", borderRadius: f(16), padding: `${f(11)}px ${f(14)}px`, cursor: "pointer", textAlign: "left" }}
         >
           <span style={{ width: f(44), height: f(44), borderRadius: "50%", background: AMBER, display: "flex", alignItems: "center", justifyContent: "center", flex: "none" }}>
-            <svg width={f(16)} height={f(18)} viewBox="0 0 16 18" aria-hidden="true">
-              <polygon points="2,1 15,9 2,17" fill={NAVY} />
-            </svg>
+            {speaking ? (
+              <svg width={f(16)} height={f(16)} viewBox="0 0 16 16" aria-hidden="true">
+                <rect x="2" y="2" width="12" height="12" rx="2" fill={NAVY} />
+              </svg>
+            ) : (
+              <svg width={f(16)} height={f(18)} viewBox="0 0 16 18" aria-hidden="true">
+                <polygon points="2,1 15,9 2,17" fill={NAVY} />
+              </svg>
+            )}
           </span>
           <span>
-            <span style={{ display: "block", font: `700 ${f(15)}px/1.2 ${FONT}`, color: "#fff" }}>Escuchar la pregunta</span>
-            <span style={{ display: "block", font: `400 ${f(13)}px/1.3 ${FONT}`, color: "rgba(255,255,255,.55)", marginTop: f(1) }}>Hear the question out loud</span>
+            <span style={{ display: "block", font: `700 ${f(15)}px/1.2 ${FONT}`, color: "#fff" }}>
+              {speaking ? "Detener" : "Escuchar la pregunta"}
+            </span>
+            <span style={{ display: "block", font: `400 ${f(13)}px/1.3 ${FONT}`, color: "rgba(255,255,255,.55)", marginTop: f(1) }}>
+              {speaking ? "Stop reading" : "Hear the question out loud"}
+            </span>
           </span>
-        </div>
+        </button>
 
         <div className="uml" style={{ marginTop: f(10) }}>
           <button
@@ -780,7 +837,7 @@ export default function ReportePage() {
           </div>
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: f(10), font: `400 ${f(12)}px/1.5 ${FONT}`, color: "#a3a29d", padding: "0 16px" }}>
-            <span>© UnpackMath</span>
+            <span>© 2026 UnpackMath</span>
             <span aria-hidden="true">·</span>
             <a href="https://unpackmath.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "inherit" }}>
               Privacy

@@ -110,7 +110,7 @@ export default function QrLanding() {
         <a href="https://www.unpackmath.com/pricing" className="um-tap" style={{ display: "inline-block" }}>
           {/* Wordmark is 2000x485, so width alone keeps the aspect ratio intact. */}
           <img
-            src="/npackmath.png"
+            src="/unpackmath-wordmark.png"
             alt="UnpackMath"
             width={2000}
             height={485}

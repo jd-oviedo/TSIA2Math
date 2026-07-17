@@ -50,7 +50,7 @@ export function ReporteLoadingScreen({ exiting }: { exiting: boolean }) {
       }}
     >
       <img
-        src="/npackmath.png"
+        src="/unpackmath-wordmark.png"
         alt="UnpackMath"
         style={{
           width: 220,
