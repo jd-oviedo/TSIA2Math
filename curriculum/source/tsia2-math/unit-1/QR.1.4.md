@@ -278,6 +278,11 @@ The true value is about $4.472$, which confirms it.
   "B": "Student makes misconception: wrong_perfect_square_bracket (brackets 20 between 9 and 16 instead of 16 and 25, producing 3 and 4)",
   "C": "Student makes misconception: halves_the_radicand (treats the square root as division by 2, computing 20/2 = 10)",
   "D": "Student makes misconception: radicand_mistaken_for_value (reads the 20 under the radical as the answer itself, landing between 19 and 21)"
+},
+"misconception_tag": {
+  "B": "wrong_perfect_square_bracket",
+  "C": "halves_the_radicand",
+  "D": "radicand_mistaken_for_value"
 }
 ```
 
@@ -298,6 +303,11 @@ Step 2: So $\sqrt{49} = 7$ exactly. This one is a perfect square, so the answer 
   "B": "Student makes misconception: halves_the_radicand (treats the square root as division by 2, computing 49/2 = 24.5)",
   "C": "Student makes misconception: squares_instead_of_roots (runs the operation backward, computing 49 squared = 2401 instead of the root)",
   "D": "Student makes misconception: radicand_mistaken_for_value (reads the 49 under the radical as the answer itself)"
+},
+"misconception_tag": {
+  "B": "halves_the_radicand",
+  "C": "squares_instead_of_roots",
+  "D": "radicand_mistaken_for_value"
 }
 ```
 
@@ -320,6 +330,11 @@ Step 3: Estimate about $5.5$. The true value is $5.477$.
   "B": "Student makes misconception: halves_the_radicand (treats the square root as division by 2, computing 30/2 = 15)",
   "C": "Student makes misconception: closer_endpoint_error (judges 30 to be nearer 36 than 25 and pushes the estimate up to 5.9, though 30 is actually closer to 25)",
   "D": "Student makes misconception: radicand_mistaken_for_value (reads the 30 under the radical as the answer itself)"
+},
+"misconception_tag": {
+  "B": "halves_the_radicand",
+  "C": "closer_endpoint_error",
+  "D": "radicand_mistaken_for_value"
 }
 ```
 
@@ -344,6 +359,11 @@ The true value is about $7.416$.
   "B": "Student makes misconception: halves_the_radicand (computes 55/2 = 27.5 and reports 27 and 28)",
   "C": "Student makes misconception: wrong_perfect_square_bracket (brackets 55 between 25 and 36 instead of 49 and 64, producing 5 and 6)",
   "D": "Student makes misconception: radicand_mistaken_for_value (reads the 55 under the radical as the answer itself, landing between 54 and 56)"
+},
+"misconception_tag": {
+  "B": "halves_the_radicand",
+  "C": "wrong_perfect_square_bracket",
+  "D": "radicand_mistaken_for_value"
 }
 ```
 
@@ -370,6 +390,11 @@ Exact check by squaring: $6.5^{2} = 42.25$, and $42.25 > 40$, so $6.5 > \sqrt{40
   "B": "Correct: brackets 40 between 36 and 49, estimates about 6.3 since 40 is nearer 36, and confirms by squaring that 6.5 squared = 42.25 exceeds 40",
   "C": "Student makes misconception: rounding_hides_difference (rounds sqrt(40) to 6.5 and concludes the two values are identical)",
   "D": "Student makes misconception: refuses_to_compare_forms (believes a radical and a decimal cannot be compared without a calculator)"
+},
+"misconception_tag": {
+  "A": "closer_endpoint_error",
+  "C": "rounding_hides_difference",
+  "D": "refuses_to_compare_forms"
 }
 ```
 
@@ -392,6 +417,11 @@ Step 3: Estimate about $9.2$. The true value is $9.219$.
   "B": "Student makes misconception: closer_endpoint_error (defaults to the midpoint at 9.5 without measuring that 85 sits far nearer 81 than 100)",
   "C": "Student makes misconception: halves_the_radicand (treats the square root as division by 2, computing 85/2 = 42.5)",
   "D": "Student makes misconception: wrong_perfect_square_bracket (brackets 85 between 64 and 81 instead of 81 and 100, then guesses the midpoint of 8 and 9)"
+},
+"misconception_tag": {
+  "B": "closer_endpoint_error",
+  "C": "halves_the_radicand",
+  "D": "wrong_perfect_square_bracket"
 }
 ```
 
@@ -416,6 +446,11 @@ The true value is $8.485$.
   "B": "Student makes misconception: halves_the_radicand (treats the square root as division by 2, computing 72/2 = 36)",
   "C": "Student makes misconception: closer_endpoint_error (judges 72 to be nearer 81 than 64 and pushes the estimate up to 8.9, though 72 is actually closer to 64)",
   "D": "Student makes misconception: squares_instead_of_roots (runs the operation backward, computing 72 squared = 5184 instead of the root)"
+},
+"misconception_tag": {
+  "B": "halves_the_radicand",
+  "C": "closer_endpoint_error",
+  "D": "squares_instead_of_roots"
 }
 ```
 
@@ -443,6 +478,11 @@ Step 3: Order them.
   "B": "Student makes misconception: closer_endpoint_error (rounds sqrt(8) all the way up to 3 because 8 is near 9, pushing it past 2.9 instead of landing at 2.83)",
   "C": "Student makes misconception: radicand_mistaken_for_value (reads sqrt(10) as 10 itself, sending it to the end of the list behind 3.5)",
   "D": "Student makes misconception: order_direction_reversed (estimates correctly but answers greatest to least)"
+},
+"misconception_tag": {
+  "B": "closer_endpoint_error",
+  "C": "radicand_mistaken_for_value",
+  "D": "order_direction_reversed"
 }
 ```
 
@@ -465,6 +505,11 @@ Step 3: Estimate about $7.7$. The true value is $7.746$.
   "B": "Student makes misconception: closer_endpoint_error (defaults to the midpoint at 7.5 without measuring that 60 sits far nearer 64 than 49)",
   "C": "Student makes misconception: halves_the_radicand (treats the square root as division by 2, computing 60/2 = 30)",
   "D": "Student makes misconception: squares_instead_of_roots (runs the operation backward, computing 60 squared = 3600 instead of the root)"
+},
+"misconception_tag": {
+  "B": "closer_endpoint_error",
+  "C": "halves_the_radicand",
+  "D": "squares_instead_of_roots"
 }
 ```
 
@@ -489,6 +534,11 @@ Do not let the phrasing rattle you. A question asking "is this right?" is answer
   "B": "Student makes misconception: wrong_perfect_square_bracket (brackets 45 between 16 and 25 instead of 36 and 49, producing 4 and 5)",
   "C": "Student makes misconception: halves_the_radicand (computes 45/2 = 22.5 and reports 22 and 23)",
   "D": "Student makes misconception: radicand_mistaken_for_value (reads the 45 under the radical as the answer itself, landing between 44 and 46)"
+},
+"misconception_tag": {
+  "B": "wrong_perfect_square_bracket",
+  "C": "halves_the_radicand",
+  "D": "radicand_mistaken_for_value"
 }
 ```
 
@@ -514,6 +564,11 @@ The true value is about $5.916$, which sits very close to 6 because 35 is only o
   "B": "Student makes misconception: halves_the_radicand (computes 35/2 = 17.5 and reports 17 and 18)",
   "C": "Student makes misconception: wrong_perfect_square_bracket (brackets 35 between 16 and 25 instead of 25 and 36, producing 4 and 5)",
   "D": "Student makes misconception: radicand_mistaken_for_value (reads the 35 under the radical as the answer itself, landing between 34 and 36)"
+},
+"misconception_tag": {
+  "B": "halves_the_radicand",
+  "C": "wrong_perfect_square_bracket",
+  "D": "radicand_mistaken_for_value"
 }
 ```
 
@@ -536,6 +591,11 @@ Step 3: Estimate about $9.5$. The true value is $9.487$.
   "B": "Student makes misconception: halves_the_radicand (treats the square root as division by 2, computing 90/2 = 45)",
   "C": "Student makes misconception: closer_endpoint_error (judges 90 to be much nearer 81 than 100 and drops the estimate to 9.1, though the distances are nearly equal)",
   "D": "Student makes misconception: squares_instead_of_roots (runs the operation backward, computing 90 squared = 8100 instead of the root)"
+},
+"misconception_tag": {
+  "B": "halves_the_radicand",
+  "C": "closer_endpoint_error",
+  "D": "squares_instead_of_roots"
 }
 ```
 
@@ -560,6 +620,11 @@ The true value is $5.099$. This is exactly the case where squaring beats estimat
   "B": "Correct: brackets 26 just above 25, then squares 5.1 to get 26.01, which exceeds 26, so 5.1 is larger",
   "C": "Student makes misconception: rounding_hides_difference (rounds sqrt(26) = 5.099 to 5.1 and concludes the two values are identical)",
   "D": "Student makes misconception: refuses_to_compare_forms (believes a radical and a decimal cannot be compared without a calculator)"
+},
+"misconception_tag": {
+  "A": "radicand_mistaken_for_value",
+  "C": "rounding_hides_difference",
+  "D": "refuses_to_compare_forms"
 }
 ```
 
@@ -583,5 +648,10 @@ The true value is about $12.247$.
   "B": "Student makes misconception: halves_the_radicand (computes 150/2 = 75 and reports 75 and 76)",
   "C": "Student makes misconception: wrong_perfect_square_bracket (brackets 150 between 121 and 144 instead of 144 and 169, producing 11 and 12)",
   "D": "Student makes misconception: radicand_mistaken_for_value (reads the 150 under the radical as the answer itself, landing between 149 and 151)"
+},
+"misconception_tag": {
+  "B": "halves_the_radicand",
+  "C": "wrong_perfect_square_bracket",
+  "D": "radicand_mistaken_for_value"
 }
 ```

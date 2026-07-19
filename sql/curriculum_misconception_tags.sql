@@ -1,0 +1,31 @@
+-- curriculum_topics.misconception_tags
+--
+-- Per-option misconception slugs for curriculum practice items, keyed
+-- section -> item number -> option letter -> slug:
+--
+--   {"practice":  {"1": {"B": "adds_instead_of_scales",
+--                        "C": "reversed_division",
+--                        "D": "ratio_term_as_value"}, ...},
+--    "mini_quiz": {"1": {...}, ...}}
+--
+-- Distinct from the existing `misconceptions_used` text[], which is a flat
+-- topic-level list ("what does this topic cover"). This column is the
+-- addressable lookup: the Socratic AI route knows topic + item + chosen
+-- option and needs the slug for exactly that combination, which a flat list
+-- cannot answer.
+--
+-- Correct options carry no tag and are absent from the map by design.
+--
+-- Values are written by curriculum/migrations/upload_curriculum.py, which
+-- reads the "misconception_tag" block beside "distractor_logic" in each
+-- topic's answer key markdown. Slugs feed record_misconception() -- see
+-- sql/student_misconceptions.sql.
+--
+-- MUST be applied before re-running the migration pipeline: PostgREST
+-- rejects an upsert naming a column that does not exist, so the script will
+-- fail on every topic without this.
+--
+-- Run this in the Supabase SQL editor. Kept here for version control.
+
+alter table public.curriculum_topics
+  add column if not exists misconception_tags jsonb not null default '{}'::jsonb;

@@ -330,6 +330,11 @@ Step 2: Multiply by $100$ to reach a percent.
   "B": "Student makes misconception: fraction_digit_gluing (reads the digits of 3/5 straight off as a percent, producing 35%)",
   "C": "Correct: divides 3 by 5 to get 0.6, then multiplies by 100 to get 60%",
   "D": "Student makes misconception: reversed_division (computes 5 divided by 3 instead of 3 divided by 5, getting 1.667 and producing 167%)"
+},
+"misconception_tag": {
+  "A": "skips_times_100",
+  "B": "fraction_digit_gluing",
+  "D": "reversed_division"
 }
 ```
 
@@ -351,6 +356,11 @@ Step 2: Simplify. Both parts divide by $5$.
   "B": "Correct: writes 45% as 45/100, then divides both parts by 5 to reach 9/20",
   "C": "Student makes misconception: stops_before_simplifying (reaches 45/100 correctly but never reduces it)",
   "D": "Student makes misconception: percent_as_count (reads 45% as one part out of 45, producing 1/45)"
+},
+"misconception_tag": {
+  "A": "percent_denominator_error",
+  "C": "stops_before_simplifying",
+  "D": "percent_as_count"
 }
 ```
 
@@ -373,6 +383,11 @@ Step 2: Pad with zeros and compare.
   "B": "Student makes misconception: fraction_digit_gluing (reads 5/8 as 0.58, which falls below 0.6)",
   "C": "Student makes misconception: rounding_hides_difference (rounds 5/8 to 0.6 and concludes the two values are identical)",
   "D": "Student makes misconception: refuses_to_compare_forms (believes a fraction and a decimal cannot be compared without a common denominator)"
+},
+"misconception_tag": {
+  "B": "fraction_digit_gluing",
+  "C": "rounding_hides_difference",
+  "D": "refuses_to_compare_forms"
 }
 ```
 
@@ -399,6 +414,11 @@ Step 3: Translate back.
   "B": "Student makes misconception: percent_sign_confusion (treats 20% as the whole number 20, making it largest instead of smallest)",
   "C": "Student makes misconception: order_direction_reversed (converts correctly but answers greatest to least)",
   "D": "Student makes misconception: fraction_digit_gluing (reads 1/4 as 0.14, producing 0.14 < 0.2 < 0.3)"
+},
+"misconception_tag": {
+  "B": "percent_sign_confusion",
+  "C": "order_direction_reversed",
+  "D": "fraction_digit_gluing"
 }
 ```
 
@@ -427,6 +447,11 @@ Step 3: Order and translate back.
   "B": "Student makes misconception: percent_sign_confusion (treats 62% as the whole number 62, pushing it to the end of the list)",
   "C": "Student makes misconception: fraction_digit_gluing (reads 5/8 as 0.58, producing 0.58 < 0.6 < 0.62)",
   "D": "Student makes misconception: percent_decimal_overshift (writes 62% as 0.062, making it smallest instead of middle)"
+},
+"misconception_tag": {
+  "B": "percent_sign_confusion",
+  "C": "fraction_digit_gluing",
+  "D": "percent_decimal_overshift"
 }
 ```
 
@@ -450,6 +475,11 @@ A useful check: $\frac{17}{20}$ is nearly all of $20$, so the percent should be 
   "B": "Student makes misconception: numerator_as_percent (reports the numerator as the percent, ignoring the denominator, producing 17%)",
   "C": "Correct: divides 17 by 20 to get 0.85, then multiplies by 100 to get 85%",
   "D": "Student makes misconception: reversed_division (computes 20 divided by 17 instead of 17 divided by 20, getting 1.176 and producing 118%)"
+},
+"misconception_tag": {
+  "A": "skips_times_100",
+  "B": "numerator_as_percent",
+  "D": "reversed_division"
 }
 ```
 
@@ -479,6 +509,11 @@ Watch the trap in B. $0.719$ has the most digits, but digits are not value. Comp
   "B": "Student makes misconception: longer_decimal_is_larger (treats 0.719 as biggest because it carries three decimal places)",
   "C": "Student makes misconception: fraction_digit_gluing (reads 3/4 as 0.34, which drops it below the rest and leaves 73% largest)",
   "D": "Student makes misconception: reversed_division (computes 4 divided by 3 as 1.33 and 10 divided by 7 as 1.43, making 7/10 appear largest)"
+},
+"misconception_tag": {
+  "B": "longer_decimal_is_larger",
+  "C": "fraction_digit_gluing",
+  "D": "reversed_division"
 }
 ```
 
@@ -509,6 +544,11 @@ Step 3: Order and translate back.
   "B": "Student makes misconception: percent_sign_confusion (treats 62% as the whole number 62, moving it from third place to last)",
   "C": "Student makes misconception: fraction_digit_gluing (reads 3/5 as 0.35, moving it from second place to first)",
   "D": "Student makes misconception: percent_decimal_overshift (writes 62% as 0.062, moving it from third place to first)"
+},
+"misconception_tag": {
+  "B": "percent_sign_confusion",
+  "C": "fraction_digit_gluing",
+  "D": "percent_decimal_overshift"
 }
 ```
 
@@ -535,6 +575,11 @@ Step 3: Compare and subtract.
   "B": "Student makes misconception: percent_sign_confusion (treats 22% as a flat $22 off, which beats the $15 discount by $7.00)",
   "C": "Student makes misconception: fraction_digit_gluing (reads 1/4 as 0.14, giving only $8.40 off, so the $13.20 discount wins by $4.80)",
   "D": "Student makes misconception: percent_decimal_overshift (writes 22% as 0.022, giving only $1.32 off, so the $15 discount wins by $13.68)"
+},
+"misconception_tag": {
+  "B": "percent_sign_confusion",
+  "C": "fraction_digit_gluing",
+  "D": "percent_decimal_overshift"
 }
 ```
 
@@ -562,6 +607,11 @@ Step 3: Translate back.
   "B": "Student makes misconception: order_direction_reversed (sorts least to greatest, delivering the exact reverse of the requested order)",
   "C": "Student makes misconception: fraction_digit_gluing (reads 7/8 as 0.78, sinking it from first place to last)",
   "D": "Student makes misconception: percent_sign_confusion (treats 86% as the whole number 86, pushing 7/8 into second place)"
+},
+"misconception_tag": {
+  "B": "order_direction_reversed",
+  "C": "fraction_digit_gluing",
+  "D": "percent_sign_confusion"
 }
 ```
 
@@ -587,6 +637,11 @@ The exact answer is $37.5\%$. Resist rounding to $38\%$: the question asks what 
   "B": "Student makes misconception: multiplies_by_ten (multiplies 0.375 by 10 rather than 100, moving the decimal one place, producing 3.75%)",
   "C": "Correct: divides 3 by 8 to get 0.375, then multiplies by 100 to get 37.5%",
   "D": "Student makes misconception: rounds_too_early (rounds 0.375 to 0.38 before converting, losing the exact value and producing 38%)"
+},
+"misconception_tag": {
+  "A": "skips_times_100",
+  "B": "multiplies_by_ten",
+  "D": "rounds_too_early"
 }
 ```
 
@@ -613,6 +668,11 @@ Step 3: Translate back.
   "B": "Student makes misconception: percent_sign_confusion (treats 38% as the whole number 38, moving it from the middle to the end)",
   "C": "Student makes misconception: fraction_digit_gluing (reads 2/5 as 0.25, moving it from last place to first)",
   "D": "Student makes misconception: order_direction_reversed (converts correctly but answers greatest to least)"
+},
+"misconception_tag": {
+  "B": "percent_sign_confusion",
+  "C": "fraction_digit_gluing",
+  "D": "order_direction_reversed"
 }
 ```
 
@@ -636,6 +696,11 @@ Step 2: Pad and compare.
   "B": "Student makes misconception: percent_sign_confusion (compares the whole numbers 68 and 7, concluding 68% is larger)",
   "C": "Student makes misconception: rounding_hides_difference (rounds 0.68 up to 0.7 and concludes the two values are identical)",
   "D": "Student makes misconception: refuses_to_compare_forms (believes a fraction and a percent cannot be compared without extra information)"
+},
+"misconception_tag": {
+  "B": "percent_sign_confusion",
+  "C": "rounding_hides_difference",
+  "D": "refuses_to_compare_forms"
 }
 ```
 
@@ -664,5 +729,10 @@ Notice the last step. The question asks for a price, not a discount. Stopping at
   "B": "Student makes misconception: fraction_digit_gluing (reads 1/5 as 0.15, giving $6.80 at the first store, so $6.56 looks cheaper)",
   "C": "Student makes misconception: reports_discount_not_price (computes the $1.60 discount correctly but reports it instead of the final price)",
   "D": "Student makes misconception: percent_decimal_overshift (writes 18% as 0.018, giving only $0.14 off and a price of $7.86)"
+},
+"misconception_tag": {
+  "B": "fraction_digit_gluing",
+  "C": "reports_discount_not_price",
+  "D": "percent_decimal_overshift"
 }
 ```

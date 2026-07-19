@@ -146,6 +146,66 @@ def extract_misconceptions(*texts):
 
     return sorted(misconceptions)
 
+def extract_misconception_tags(answer_key):
+    """
+    Extract the per-option misconception_tag maps from the answer key.
+
+    Where extract_misconceptions() returns a flat topic-level list ("which
+    misconceptions does this topic cover"), this returns the addressable map a
+    caller needs at answer time: section -> item number -> option -> slug. The
+    Socratic AI route knows the topic, the item, and which option the student
+    picked, and needs the slug for exactly that combination.
+
+    Reads the "misconception_tag" block that sits beside "distractor_logic" in
+    each fenced json block, rather than regexing the slug back out of the prose
+    sentence. The prose stays as human-readable explanation; the field is the
+    machine-readable source of truth.
+
+    Correct options carry no tag and are absent from the map by design.
+
+    Returns e.g.:
+        {"practice": {"1": {"B": "adds_instead_of_scales", ...}, ...},
+         "mini_quiz": {"1": {...}, ...}}
+    """
+    tags = {'practice': {}, 'mini_quiz': {}}
+    if not answer_key:
+        return tags
+
+    section = 'practice'
+    item = None
+
+    # The tag block is a bare json fragment, not a whole object, so it is read
+    # with a key-value regex rather than json.loads.
+    tag_block = re.compile(r'"misconception_tag":\s*\{(.*?)\}', re.S)
+    pair = re.compile(r'"([A-Z])":\s*"([a-z0-9_]+)"')
+
+    for chunk in re.split(r'(```json\n.*?\n```)', answer_key, flags=re.S):
+        if chunk.startswith('```json'):
+            if item is None:
+                continue
+            found = tag_block.search(chunk)
+            if not found:
+                continue
+            mapping = dict(pair.findall(found.group(1)))
+            if mapping:
+                tags[section][item] = mapping
+            continue
+
+        # Prose between blocks: track which section and item we are inside.
+        for line in chunk.split('\n'):
+            if line.startswith('##### Mini Quiz'):
+                section = 'mini_quiz'
+            elif line.startswith('##### Practice Problems'):
+                section = 'practice'
+            quiz = re.match(r'\*\*Item (\d+):', line)
+            prac = re.match(r'\*\*(\d+)\.', line)
+            if quiz:
+                item = quiz.group(1)
+            elif prac:
+                item = prac.group(1)
+
+    return tags
+
 def upload_course_curriculum(course_id, dry_run=False):
     """
     Upload all markdown files for a course to Supabase.
@@ -202,7 +262,10 @@ def upload_course_curriculum(course_id, dry_run=False):
                 parsed['mini_quiz'],
                 parsed['answer_key'],
             )
-            
+            record['misconception_tags'] = extract_misconception_tags(
+                parsed['answer_key'],
+            )
+
             if dry_run:
                 print(f"[DRY RUN] Would upsert {topic_id}")
                 print(f"  Data keys: {list(record.keys())}")
@@ -210,6 +273,14 @@ def upload_course_curriculum(course_id, dry_run=False):
                 print(f"  misconceptions_used ({len(found)}):")
                 for name in found:
                     print(f"    - {name}")
+                tagged = record['misconception_tags']
+                n_tags = sum(len(o) for s in tagged.values() for o in s.values())
+                print(f"  misconception_tags ({n_tags} across "
+                      f"{sum(len(s) for s in tagged.values())} items):")
+                for section, items in tagged.items():
+                    for item, options in sorted(items.items(), key=lambda kv: int(kv[0])):
+                        pairs = ', '.join(f"{k}={v}" for k, v in sorted(options.items()))
+                        print(f"    - {section} {item}: {pairs}")
             else:
                 # on_conflict must name the (course_id, topic_id) unique
                 # constraint. Without it PostgREST resolves against the primary
