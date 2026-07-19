@@ -36,6 +36,19 @@ export const sessionsRateLimit = new Ratelimit({
   analytics: true,
 });
 
+// /api/curriculum/practice — per-answer grading inside a curriculum topic.
+// Looser than reveal because the shape of honest use is different: a topic is
+// 14 items answered back to back, and a student re-attempting the ones they
+// got wrong is the behaviour we want, not abuse. 60 per 5 minutes covers a
+// full topic plus retries, while still bounding how fast someone could walk
+// the answer key by submitting every letter for every item.
+export const curriculumPracticeRateLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(60, "5 m"),
+  prefix: "ratelimit:curriculum-practice",
+  analytics: true,
+});
+
 // Best-effort client IP extraction. Vercel sets x-forwarded-for on every
 // request; if it's ever missing (e.g. local dev without a proxy in front),
 // everyone collapses onto the same "unknown" bucket — acceptable locally,
