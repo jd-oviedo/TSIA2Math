@@ -269,6 +269,11 @@ Step 3: Check. Is $12:4$ the same as $3:1$? Divide both by 4 and you get $3:1$. 
   "B": "Student makes misconception: adds_instead_of_scales (sees flour rise from 3 to 12, a gain of 9, and adds that same 9 to the sugar, producing 10)",
   "C": "Student makes misconception: reversed_division (multiplies 12 by 3 instead of dividing, producing 36)",
   "D": "Student makes misconception: ratio_term_as_value (reads the 1 in the ratio as the answer itself, ignoring that the recipe was scaled up)"
+},
+"misconception_tag": {
+  "B": "adds_instead_of_scales",
+  "C": "reversed_division",
+  "D": "ratio_term_as_value"
 }
 ```
 
@@ -292,6 +297,11 @@ Step 3: Check. $8:12$ divided by 4 is $2:3$. Correct.
   "B": "Student makes misconception: adds_instead_of_scales (sees boys rise from 2 to 8, a gain of 6, and adds that same 6 to the girls, producing 9)",
   "C": "Student makes misconception: reversed_division (multiplies 8 by 2/3 instead of 3/2, flipping the ratio and producing 5.33)",
   "D": "Student makes misconception: ratio_term_as_value (reads the 3 in the ratio as the number of girls, ignoring the scaling)"
+},
+"misconception_tag": {
+  "B": "adds_instead_of_scales",
+  "C": "reversed_division",
+  "D": "ratio_term_as_value"
 }
 ```
 
@@ -315,6 +325,11 @@ Step 3: Check. $20:25$ divided by 5 is $4:5$. Correct.
   "B": "Student makes misconception: adds_instead_of_scales (sees red rise from 4 to 20, a gain of 16, and adds that same 16 to the blue, producing 21)",
   "C": "Student makes misconception: reversed_division (multiplies 20 by 4/5 instead of 5/4, flipping the ratio and producing 16)",
   "D": "Student makes misconception: ratio_term_as_value (reads the 5 in the ratio as the number of blue marbles, ignoring the scaling)"
+},
+"misconception_tag": {
+  "B": "adds_instead_of_scales",
+  "C": "reversed_division",
+  "D": "ratio_term_as_value"
 }
 ```
 
@@ -336,6 +351,11 @@ Step 2: Miles match the $50$.
   "B": "Student makes misconception: reversed_division (divides 50 by 4 instead of multiplying, producing 12.5)",
   "C": "Student makes misconception: adds_instead_of_scales (sees inches rise from 1 to 4, a gain of 3, and adds that same 3 to the 50 miles, producing 53)",
   "D": "Student makes misconception: ratio_term_as_value (reads the 50 in the scale as the answer itself, ignoring that 4 inches is four times 1 inch)"
+},
+"misconception_tag": {
+  "B": "reversed_division",
+  "C": "adds_instead_of_scales",
+  "D": "ratio_term_as_value"
 }
 ```
 
@@ -364,6 +384,11 @@ Step 4: Check. Yellows are $2 \times 6 = 12$, and $18 + 12 = 30$. The total matc
   "B": "Student makes misconception: part_whole_confusion (treats the part-to-part ratio as a fraction of the whole and computes 3/2 of 30, producing 45, which exceeds the entire bag)",
   "C": "Student makes misconception: reversed_division (works the yellow part instead of the green, producing 12)",
   "D": "Student makes misconception: uses_wrong_total (divides 30 by the green part of 3 rather than by the 5 total parts, producing 10)"
+},
+"misconception_tag": {
+  "B": "part_whole_confusion",
+  "C": "reversed_division",
+  "D": "uses_wrong_total"
 }
 ```
 
@@ -387,6 +412,11 @@ Step 3: Check. $40:24$ divided by 8 is $5:3$. Correct.
   "B": "Student makes misconception: adds_instead_of_scales (sees dogs rise from 3 to 24, a gain of 21, and adds that same 21 to the cats, producing 26)",
   "C": "Student makes misconception: reversed_division (multiplies 24 by 3/5 instead of 5/3, flipping the ratio and producing 14.4)",
   "D": "Student makes misconception: answers_intermediate_value (reports the scale factor of 8 as the answer instead of using it to compute the number of cats)"
+},
+"misconception_tag": {
+  "B": "adds_instead_of_scales",
+  "C": "reversed_division",
+  "D": "answers_intermediate_value"
 }
 ```
 
@@ -413,6 +443,11 @@ Step 4: Check. White is $5 \times 5 = 25$, and $10 + 25 = 35$. Correct.
   "B": "Student makes misconception: reversed_division (works the white part instead of the blue, producing 25)",
   "C": "Student makes misconception: part_whole_confusion (treats the part-to-part ratio as a fraction of the whole and computes 2/5 of 35, producing 14)",
   "D": "Student makes misconception: uses_wrong_total (divides 35 by the blue part of 2 rather than by the 7 total parts, producing 17.5)"
+},
+"misconception_tag": {
+  "B": "reversed_division",
+  "C": "part_whole_confusion",
+  "D": "uses_wrong_total"
 }
 ```
 
@@ -440,6 +475,11 @@ Step 3: The question asked for $C$, not $B$.
   "B": "Student makes misconception: answers_intermediate_value (computes B correctly as 12 and stops there, reporting the middle value instead of C)",
   "C": "Student makes misconception: adds_instead_of_scales (adds the gain of 6 from A to B to get 10, then adds 6 again to reach 11, using addition at both links instead of multiplying)",
   "D": "Student makes misconception: ratio_term_as_value (reads the 5 in the B to C ratio as the value of C, ignoring the scaling entirely)"
+},
+"misconception_tag": {
+  "B": "answers_intermediate_value",
+  "C": "adds_instead_of_scales",
+  "D": "ratio_term_as_value"
 }
 ```
 
@@ -463,6 +503,11 @@ Step 3: Check. Is $3:12$ the same rate as $7:28$? Both reduce to $1:4$. Correct.
   "B": "Student makes misconception: adds_instead_of_scales (sees notebooks rise from 3 to 7, a gain of 4, and adds that same $4 to the $12, producing $16)",
   "C": "Student makes misconception: reversed_division (multiplies $12 by 3/7 instead of 7/3, flipping the rate and producing $5.14)",
   "D": "Student makes misconception: answers_intermediate_value (reports the $4 unit rate as the answer instead of scaling it up to 7 notebooks)"
+},
+"misconception_tag": {
+  "B": "adds_instead_of_scales",
+  "C": "reversed_division",
+  "D": "answers_intermediate_value"
 }
 ```
 
@@ -488,6 +533,11 @@ This one runs backward from the others: you are given the larger quantity and as
   "B": "Student makes misconception: reversed_division (multiplies 342 by 18 instead of dividing, producing 6156, more teachers than students)",
   "C": "Student makes misconception: adds_instead_of_scales (sees students rise from 18 to 342, a gain of 324, and adds that same 324 to the single teacher, producing 325)",
   "D": "Student makes misconception: ratio_term_as_value (reads the 18 in the ratio as the number of teachers, ignoring the scaling)"
+},
+"misconception_tag": {
+  "B": "reversed_division",
+  "C": "adds_instead_of_scales",
+  "D": "ratio_term_as_value"
 }
 ```
 
@@ -511,6 +561,11 @@ Step 2: Water matches the $3$.
   "B": "Student makes misconception: adds_instead_of_scales (sees rice rise from 2 to 6, a gain of 4, and adds that same 4 to the water, producing 7)",
   "C": "Student makes misconception: reversed_division (multiplies 6 by 2/3 instead of 3/2, flipping the ratio and producing 4)",
   "D": "Student makes misconception: ratio_term_as_value (reads the 3 in the ratio as the cups of water, ignoring the scaling)"
+},
+"misconception_tag": {
+  "B": "adds_instead_of_scales",
+  "C": "reversed_division",
+  "D": "ratio_term_as_value"
 }
 ```
 
@@ -537,6 +592,11 @@ Step 4: Check. Boys are $3 \times 5 = 15$, and $15 + 25 = 40$. Correct.
   "B": "Student makes misconception: reversed_division (works the boys' part instead of the girls', producing 15)",
   "C": "Student makes misconception: uses_wrong_total (divides 40 by the girls' part of 5 rather than by the 8 total parts, producing 8)",
   "D": "Student makes misconception: part_whole_confusion (treats the part-to-part ratio as a fraction of the whole and computes 3/5 of 40, producing 24)"
+},
+"misconception_tag": {
+  "B": "reversed_division",
+  "C": "uses_wrong_total",
+  "D": "part_whole_confusion"
 }
 ```
 
@@ -560,6 +620,11 @@ Step 3: Sanity check. More gas should mean more miles, and $240 > 150$. Good.
   "B": "Student makes misconception: adds_instead_of_scales (sees gallons rise from 5 to 8, a gain of 3, and adds that same 3 to the 150 miles, producing 153)",
   "C": "Student makes misconception: answers_intermediate_value (reports the 30 miles per gallon unit rate as the answer instead of scaling it to 8 gallons)",
   "D": "Student makes misconception: reversed_division (multiplies 150 by 5/8 instead of 8/5, flipping the rate and producing 93.75, fewer miles on more gas)"
+},
+"misconception_tag": {
+  "B": "adds_instead_of_scales",
+  "C": "answers_intermediate_value",
+  "D": "reversed_division"
 }
 ```
 
@@ -583,5 +648,10 @@ Step 3: Sanity check. Width beats height in a $4:3$ ratio, and $24 > 18$. Good.
   "B": "Student makes misconception: adds_instead_of_scales (sees width rise from 4 to 24, a gain of 20, and adds that same 20 to the height, producing 23)",
   "C": "Student makes misconception: reversed_division (multiplies 24 by 4/3 instead of 3/4, flipping the ratio and producing 32, a height taller than the width)",
   "D": "Student makes misconception: ratio_term_as_value (reads the 3 in the ratio as the height in inches, ignoring the scaling)"
+},
+"misconception_tag": {
+  "B": "adds_instead_of_scales",
+  "C": "reversed_division",
+  "D": "ratio_term_as_value"
 }
 ```

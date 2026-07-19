@@ -312,6 +312,11 @@ Step 2: Sanity check. The top is smaller than the bottom, so the answer must be 
   "B": "Correct: divides 1 by 8 to get 0.125, and confirms the answer is under 1 because the numerator is smaller",
   "C": "Student makes misconception: place_value_slip (divides correctly but drops the extra places, writing 0.8 for a value that needs three decimal places)",
   "D": "Student makes misconception: reversed_division (computes 8 divided by 1 instead of 1 divided by 8, producing 8.0)"
+},
+"misconception_tag": {
+  "A": "fraction_digit_gluing",
+  "C": "place_value_slip",
+  "D": "reversed_division"
 }
 ```
 
@@ -332,6 +337,11 @@ Step 2: Sanity check. Smaller top, so the answer lands under 1.
   "B": "Student makes misconception: fraction_digit_gluing (reads the digits of 3/4 straight off as 0.34)",
   "C": "Student makes misconception: reversed_division (computes 4 divided by 3 instead of 3 divided by 4, producing 1.33)",
   "D": "Student makes misconception: place_value_slip (recalls that 3/4 starts with a 7 but writes 0.7, dropping the hundredths digit)"
+},
+"misconception_tag": {
+  "B": "fraction_digit_gluing",
+  "C": "reversed_division",
+  "D": "place_value_slip"
 }
 ```
 
@@ -355,6 +365,11 @@ Step 2: Only B lands on $0.6$. Shortcut worth keeping: fifths convert by doublin
   "B": "Correct: divides 3 by 5 to get 0.6, or doubles the numerator into the tenths place since 3/5 equals 6/10",
   "C": "Student makes misconception: numerator_denominator_swap (builds 6/5 from the digit 6 in 0.6 by putting it on top of the 5, producing 1.2)",
   "D": "Student makes misconception: numerator_denominator_swap (builds 1/6 by reading the 6 in 0.6 as a denominator, producing 0.1667)"
+},
+"misconception_tag": {
+  "A": "reversed_division",
+  "C": "numerator_denominator_swap",
+  "D": "numerator_denominator_swap"
 }
 ```
 
@@ -376,6 +391,11 @@ Step 2: Simplify by dividing both parts by $25$.
   "B": "Student makes misconception: place_value_slip (uses tenths instead of hundredths for a two-place decimal, producing 25/10)",
   "C": "Student makes misconception: stops_before_simplifying (reaches 25/100 correctly but never reduces it)",
   "D": "Student makes misconception: numerator_denominator_swap (reads 0.25 as one part out of 25, producing 1/25)"
+},
+"misconception_tag": {
+  "B": "place_value_slip",
+  "C": "stops_before_simplifying",
+  "D": "numerator_denominator_swap"
 }
 ```
 
@@ -398,6 +418,11 @@ Step 2: The 6s never stop. Write it as $0.666...$ or $0.\overline{6}$, not as a 
   "B": "Student makes misconception: truncates_repeating_decimal (chops 0.666... to 0.66, producing a slightly smaller number than 2/3)",
   "C": "Student makes misconception: fraction_digit_gluing (reads the digits of 2/3 straight off as 0.23)",
   "D": "Student makes misconception: reversed_division (computes 3 divided by 2 instead of 2 divided by 3, producing 1.5)"
+},
+"misconception_tag": {
+  "B": "truncates_repeating_decimal",
+  "C": "fraction_digit_gluing",
+  "D": "reversed_division"
 }
 ```
 
@@ -418,6 +443,11 @@ Step 2: The 3s repeat forever. Sanity check: smaller top, so the answer is under
   "B": "Student makes misconception: fraction_digit_gluing (reads the digits of 5/6 straight off as 0.56)",
   "C": "Student makes misconception: reversed_division (computes 6 divided by 5 instead of 5 divided by 6, producing 1.2)",
   "D": "Student makes misconception: truncates_repeating_decimal (chops 0.8333... to 0.83, losing the repeating tail)"
+},
+"misconception_tag": {
+  "B": "fraction_digit_gluing",
+  "C": "reversed_division",
+  "D": "truncates_repeating_decimal"
 }
 ```
 
@@ -444,6 +474,11 @@ Step 3: The tenths all tie at $8$. Move to hundredths: $7$ beats $7$, $3$, and $
   "B": "Student makes misconception: refuses_to_compare_forms (picks the value already written as a decimal, assuming fractions cannot be compared against it directly)",
   "C": "Student makes misconception: fraction_digit_gluing (reads 6/7 as 0.67 and 7/8 as 0.78, which sinks both below 5/6 read as 0.856)",
   "D": "Student makes misconception: numerator_denominator_swap (judges 6/7 largest because its numerator and denominator are closest together, ignoring the actual values)"
+},
+"misconception_tag": {
+  "B": "refuses_to_compare_forms",
+  "C": "fraction_digit_gluing",
+  "D": "numerator_denominator_swap"
 }
 ```
 
@@ -469,6 +504,11 @@ Step 3: Check against the memorized list. $\frac{3}{8} = 0.375$. It matches.
   "B": "Student makes misconception: stops_before_simplifying (reaches 375/1000 correctly but never reduces it)",
   "C": "Student makes misconception: place_value_slip (drops a zero from the denominator, writing 375/100 and reducing to 3/75 instead of 3/8)",
   "D": "Student makes misconception: numerator_denominator_swap (reads 0.375 as one part out of 375, producing 1/375)"
+},
+"misconception_tag": {
+  "B": "stops_before_simplifying",
+  "C": "place_value_slip",
+  "D": "numerator_denominator_swap"
 }
 ```
 
@@ -493,6 +533,11 @@ Step 3: Find the gap and answer the question asked.
   "B": "Student makes misconception: fraction_digit_gluing (reads 3/4 as 0.34, which makes 0.7 look like more than enough)",
   "C": "Student makes misconception: place_value_slip (subtracts 0.7 from 3/4 read as 1.34 or misaligns the decimal points, producing a 0.64 gap)",
   "D": "Student makes misconception: rounding_hides_difference (rounds 0.75 down to 0.7 and concludes the two amounts are identical)"
+},
+"misconception_tag": {
+  "B": "fraction_digit_gluing",
+  "C": "place_value_slip",
+  "D": "rounding_hides_difference"
 }
 ```
 
@@ -519,6 +564,11 @@ Step 3: Confirm by dividing.
   "B": "Student makes misconception: terminating_test_confusion (assumes 1/8 repeats because 8 is the largest denominator offered, rather than factoring it into 2s)",
   "C": "Student makes misconception: terminating_test_confusion (assumes any fraction with an even denominator repeats, though 4 factors into 2s and 3/4 = 0.75 terminates)",
   "D": "Student makes misconception: terminating_test_confusion (assumes 2/5 repeats because its numerator does not divide evenly into its denominator, though 2/5 = 0.4 terminates)"
+},
+"misconception_tag": {
+  "B": "terminating_test_confusion",
+  "C": "terminating_test_confusion",
+  "D": "terminating_test_confusion"
 }
 ```
 
@@ -541,6 +591,11 @@ Step 2: Or use the fifths shortcut. Double the top into the tenths place: $1 \ti
   "B": "Student makes misconception: fraction_digit_gluing (reads the digits of 1/5 straight off as 0.15)",
   "C": "Student makes misconception: place_value_slip (recalls that fifths involve a 5 and writes 0.5, which is actually 1/2)",
   "D": "Student makes misconception: reversed_division (computes 5 divided by 1 instead of 1 divided by 5, producing 5.0)"
+},
+"misconception_tag": {
+  "B": "fraction_digit_gluing",
+  "C": "place_value_slip",
+  "D": "reversed_division"
 }
 ```
 
@@ -562,6 +617,11 @@ Step 2: Simplify. Both parts divide by $2$.
   "B": "Student makes misconception: place_value_slip (uses hundredths for a one-place decimal, producing 8/100)",
   "C": "Student makes misconception: stops_before_simplifying (reaches 8/10 correctly but never reduces it)",
   "D": "Student makes misconception: numerator_denominator_swap (reads 0.8 as one part out of 8, producing 1/8)"
+},
+"misconception_tag": {
+  "B": "place_value_slip",
+  "C": "stops_before_simplifying",
+  "D": "numerator_denominator_swap"
 }
 ```
 
@@ -588,6 +648,11 @@ Step 3: Confirm.
   "B": "Student makes misconception: terminating_test_confusion (assumes 1/4 repeats because 4 does not divide into 1, though 1/4 = 0.25 terminates)",
   "C": "Student makes misconception: terminating_test_confusion (assumes 1/8 repeats because its decimal 0.125 is the longest offered, mistaking length for endlessness)",
   "D": "Student makes misconception: terminating_test_confusion (assumes 1/2 repeats by guessing without factoring the denominator, though 1/2 = 0.5 terminates)"
+},
+"misconception_tag": {
+  "B": "terminating_test_confusion",
+  "C": "terminating_test_confusion",
+  "D": "terminating_test_confusion"
 }
 ```
 
@@ -611,5 +676,10 @@ Step 3: Tenths tie at $8$. Hundredths: $7$ beats $5$.
   "B": "Student makes misconception: fraction_digit_gluing (reads 7/8 as 0.78, which falls below 0.85)",
   "C": "Student makes misconception: rounding_hides_difference (rounds 0.875 down to 0.85 and concludes the two values are identical)",
   "D": "Student makes misconception: refuses_to_compare_forms (believes a fraction and a decimal cannot be compared without a calculator)"
+},
+"misconception_tag": {
+  "B": "fraction_digit_gluing",
+  "C": "rounding_hides_difference",
+  "D": "refuses_to_compare_forms"
 }
 ```
