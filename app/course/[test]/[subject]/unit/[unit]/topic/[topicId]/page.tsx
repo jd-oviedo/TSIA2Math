@@ -1,6 +1,50 @@
 import { notFound } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-import { renderMarkdownWithMath } from '@/lib/curriculum-utils';
+import {
+  renderMarkdownWithMath,
+  renderInlineWithMath,
+  stripAuthoringBlocks,
+} from '@/lib/curriculum-utils';
+import PracticeQuiz, { type PublicPracticeItem } from './PracticeQuiz';
+
+// One parsed item as it is stored in curriculum_topics.practice_items. Two of
+// these fields are answer-bearing and stay on the server: correct_answer
+// obviously, and misconception_tag because it tags exactly the three wrong
+// options, so the untagged letter is the answer.
+type StoredPracticeItem = {
+  item_number: number;
+  format: 'multiple_choice' | 'free_response';
+  stem: string;
+  choices: Record<string, string>;
+  correct_answer: string | null;
+  misconception_tag: Record<string, string>;
+  level: string | null;
+};
+
+type StoredSection = {
+  interactive: boolean;
+  items: StoredPracticeItem[];
+};
+
+// Strips the answer-bearing fields and pre-renders the math. Rendering here
+// rather than in the client component keeps the whole remark/KaTeX pipeline
+// out of the browser bundle, and it is the same pipeline the static markdown
+// already goes through, so the two render identically.
+function toPublicItems(section: StoredSection | undefined): PublicPracticeItem[] {
+  return (section?.items ?? [])
+    .filter((item) => item.format === 'multiple_choice')
+    .map((item) => ({
+      item_number: item.item_number,
+      level: item.level,
+      stem_html: renderInlineWithMath(item.stem),
+      choices_html: Object.fromEntries(
+        Object.entries(item.choices).map(([letter, text]) => [
+          letter,
+          renderInlineWithMath(text),
+        ])
+      ),
+    }));
+}
 
 type Props = {
   params: Promise<{
@@ -31,7 +75,18 @@ export default async function CurriculumTopicPage({ params }: Props) {
   if (error || !topic) {
     notFound();
   }
-  
+
+  // `interactive` is false when a section holds anything the quiz cannot grade
+  // -- QR.1.1's practice section is mostly free-response -- and practice_items
+  // is an empty object on any topic uploaded before the parser existed. Both
+  // fall back to the static markdown that was here before.
+  const practiceSection: StoredSection | undefined = topic.practice_items?.practice;
+  const quizSection: StoredSection | undefined = topic.practice_items?.mini_quiz;
+  const practiceItems = toPublicItems(practiceSection);
+  const quizItems = toPublicItems(quizSection);
+  const practiceInteractive = Boolean(practiceSection?.interactive) && practiceItems.length > 0;
+  const quizInteractive = Boolean(quizSection?.interactive) && quizItems.length > 0;
+
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem' }}>
       {/* Breadcrumb */}
@@ -74,17 +129,26 @@ export default async function CurriculumTopicPage({ params }: Props) {
         <h2 style={{ fontSize: '20px', marginBottom: '1.5rem', color: '#0F1E35' }}>
           Part 2: Practice Problems
         </h2>
-        <div
-          style={{
-            lineHeight: '1.8',
-            marginBottom: '2rem',
-            color: '#1A1A1A',
-            fontSize: '16px',
-          }}
-          dangerouslySetInnerHTML={{
-            __html: renderMarkdownWithMath(topic.practice_problems?.raw || ''),
-          }}
-        />
+        {practiceInteractive ? (
+          <PracticeQuiz
+            courseId={courseId}
+            topicId={topic.topic_id}
+            section="practice"
+            items={practiceItems}
+          />
+        ) : (
+          <div
+            style={{
+              lineHeight: '1.8',
+              marginBottom: '2rem',
+              color: '#1A1A1A',
+              fontSize: '16px',
+            }}
+            dangerouslySetInnerHTML={{
+              __html: renderMarkdownWithMath(topic.practice_problems?.raw || ''),
+            }}
+          />
+        )}
       </section>
       
       {/* Mini Quiz */}
@@ -92,17 +156,26 @@ export default async function CurriculumTopicPage({ params }: Props) {
         <h2 style={{ fontSize: '20px', marginBottom: '1.5rem', color: '#0F1E35' }}>
           Part 3: Mini Quiz
         </h2>
-        <div
-          style={{
-            lineHeight: '1.8',
-            marginBottom: '2rem',
-            color: '#1A1A1A',
-            fontSize: '16px',
-          }}
-          dangerouslySetInnerHTML={{
-            __html: renderMarkdownWithMath(topic.mini_quiz?.raw || ''),
-          }}
-        />
+        {quizInteractive ? (
+          <PracticeQuiz
+            courseId={courseId}
+            topicId={topic.topic_id}
+            section="mini_quiz"
+            items={quizItems}
+          />
+        ) : (
+          <div
+            style={{
+              lineHeight: '1.8',
+              marginBottom: '2rem',
+              color: '#1A1A1A',
+              fontSize: '16px',
+            }}
+            dangerouslySetInnerHTML={{
+              __html: renderMarkdownWithMath(topic.mini_quiz?.raw || ''),
+            }}
+          />
+        )}
       </section>
       
       {/* Answer Key */}
@@ -123,7 +196,9 @@ export default async function CurriculumTopicPage({ params }: Props) {
               fontSize: '16px',
             }}
             dangerouslySetInnerHTML={{
-              __html: renderMarkdownWithMath(topic.answer_key?.raw || ''),
+              __html: renderMarkdownWithMath(
+                stripAuthoringBlocks(topic.answer_key?.raw || '')
+              ),
             }}
           />
         </details>

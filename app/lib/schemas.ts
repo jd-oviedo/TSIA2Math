@@ -79,3 +79,27 @@ export const inviteSchema = z.object({
 });
 
 export type InviteBody = z.infer<typeof inviteSchema>;
+
+// POST /api/curriculum/practice
+// Identifies one item within a topic. As with itemIdSchema above, the real
+// authority is the practice_items lookup in the route; this only rejects
+// obvious garbage before it reaches a query.
+export const curriculumPracticeBodySchema = z.object({
+  course_id: z
+    .string()
+    .min(1, "course_id is required")
+    .max(100)
+    .regex(/^[a-z0-9-]+$/, "course_id contains invalid characters"),
+  topic_id: z
+    .string()
+    .min(1, "topic_id is required")
+    .max(50)
+    .regex(/^[A-Za-z0-9.]+$/, "topic_id contains invalid characters"),
+  section: z.enum(["practice", "mini_quiz"], {
+    message: "section must be practice or mini_quiz",
+  }),
+  item_number: z.number().int().min(1).max(100),
+  selected_answer: answerLetterSchema,
+});
+
+export type CurriculumPracticeBody = z.infer<typeof curriculumPracticeBodySchema>;

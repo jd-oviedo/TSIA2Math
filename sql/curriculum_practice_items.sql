@@ -1,0 +1,43 @@
+-- curriculum_topics.practice_items
+--
+-- Structured, gradeable practice and mini-quiz items, parsed from the topic
+-- markdown at migration time by curriculum/migrations/upload_curriculum.py.
+--
+-- Replaces reading questions out of practice_problems.raw / mini_quiz.raw at
+-- render time. Parsing at upload time means a content shape the parser does
+-- not expect fails on a named file before it ships, instead of failing
+-- silently in front of a student.
+--
+-- Shape:
+--   {"practice":  {"interactive": true, "items": [ ... ]},
+--    "mini_quiz": {"interactive": true, "items": [ ... ]}}
+--
+-- Each item:
+--   {"item_number": 1,
+--    "format": "multiple_choice" | "free_response",
+--    "stem": "A recipe uses flour and sugar in a ratio of $3:1$ ...",
+--    "choices": {"A": "$4$ cups", "B": "$10$ cups", ...},
+--    "correct_answer": "A",
+--    "misconception_tag": {"B": "adds_instead_of_scales", ...},
+--    "level": "Basic"}
+--
+-- `interactive` is true only when every item in the section is multiple choice
+-- AND has a known correct answer. QR.1.1's practice section is 9/12
+-- free-response, so it comes back false and the page falls back to the
+-- existing static markdown for that section while its mini quiz (4/4 multiple
+-- choice) still renders interactive. The flag is derived, so a content fix
+-- flips it automatically -- no topic id is hardcoded anywhere.
+--
+-- ANSWER-BEARING. `correct_answer` and `misconception_tag` must never reach
+-- the browser: the correct answer is also recoverable from misconception_tag
+-- by omission, since exactly the three wrong options are tagged. Strip both
+-- server-side before passing items to a client component, the same way
+-- PublicItem omits correct_answer/distractor_logic for the CAT flow.
+--
+-- MUST be applied before re-running the migration pipeline: PostgREST rejects
+-- an upsert naming a column that does not exist.
+--
+-- Run this in the Supabase SQL editor. Kept here for version control.
+
+alter table public.curriculum_topics
+  add column if not exists practice_items jsonb not null default '{}'::jsonb;
