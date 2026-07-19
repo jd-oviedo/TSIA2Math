@@ -94,6 +94,10 @@ export async function POST(req: Request) {
     ? null
     : item.misconception_tag?.[selected_answer] ?? null;
 
+  // Set when a wrong answer opens the door to GUMU. Also gates whether the
+  // correct answer is returned at all -- see the response below.
+  let gumuAvailable = false;
+
   if (session) {
     const studentId = session.user.id;
 
@@ -129,13 +133,69 @@ export async function POST(req: Request) {
         console.error("record_misconception failed", rpcError);
       }
     }
+
+    // GUMU resolution path (a): a correct answer on an item with an open GUMU
+    // session means the student worked their way back to it. The partial
+    // unique index on gumu_sessions guarantees at most one active row here, so
+    // there is nothing to disambiguate.
+    if (isCorrect) {
+      const { data: openSession } = await admin
+        .from("gumu_sessions")
+        .select("id, misconception_tag")
+        .eq("student_id", studentId)
+        .eq("course_id", course_id)
+        .eq("topic_id", topic_id)
+        .eq("section", section)
+        .eq("item_number", item_number)
+        .eq("status", "active")
+        .maybeSingle();
+
+      if (openSession) {
+        const { error: resolveError } = await admin
+          .from("gumu_sessions")
+          .update({
+            status: "resolved_retry_success",
+            resolved_at: new Date().toISOString(),
+          })
+          .eq("id", openSession.id);
+
+        if (resolveError) {
+          console.error("gumu_sessions resolve failed", resolveError);
+        }
+
+        // Skipped when the item carries no tag -- QR.1.1's mini quiz grades
+        // and resolves normally, it simply has no misconception to record.
+        if (openSession.misconception_tag) {
+          const { error: socraticError } = await admin.rpc("record_misconception", {
+            p_student_id: studentId,
+            p_misconception: openSession.misconception_tag,
+            p_strand: topic.related_strand,
+            p_source: "socratic",
+          });
+
+          if (socraticError) {
+            console.error("record_misconception (socratic) failed", socraticError);
+          }
+        }
+      }
+    } else {
+      gumuAvailable = true;
+    }
   }
 
   // Deliberately minimal. The misconception slug is internal taxonomy and is
   // not returned: it means nothing to a student, and echoing it back would
   // put the tag map within reach of anyone probing option by option.
+  //
+  // correct_answer is withheld when GUMU is available, i.e. an authenticated
+  // student got it wrong. GUMU's whole premise is guiding them to find the
+  // error themselves, which is pointless if the answer is printed above the
+  // chat panel. They get it from the "I'll just see the answer" escape hatch
+  // or once the session resolves. Anonymous users are unaffected -- there is
+  // no GUMU for them, so nothing to undermine.
   return NextResponse.json({
     isCorrect,
-    correct_answer: item.correct_answer,
+    correct_answer: gumuAvailable ? null : item.correct_answer,
+    gumu_available: gumuAvailable,
   });
 }

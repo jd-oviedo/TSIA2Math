@@ -6,6 +6,7 @@ import {
   stripAuthoringBlocks,
 } from '@/lib/curriculum-utils';
 import PracticeQuiz, { type PublicPracticeItem } from './PracticeQuiz';
+import { GumuGateProvider, AnswerKey } from './GumuGate';
 
 // One parsed item as it is stored in curriculum_topics.practice_items. Two of
 // these fields are answer-bearing and stay on the server: correct_answer
@@ -88,6 +89,7 @@ export default async function CurriculumTopicPage({ params }: Props) {
   const quizInteractive = Boolean(quizSection?.interactive) && quizItems.length > 0;
 
   return (
+    <GumuGateProvider>
     <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem' }}>
       {/* Breadcrumb */}
       <div style={{ marginBottom: '2rem', fontSize: '14px', color: '#5F5E5A' }}>
@@ -183,27 +185,14 @@ export default async function CurriculumTopicPage({ params }: Props) {
         <h2 style={{ fontSize: '20px', marginBottom: '1.5rem', color: '#0F1E35' }}>
           Part 4: Answer Key
         </h2>
-        <details style={{ cursor: 'pointer' }}>
-          <summary style={{ fontSize: '16px', fontWeight: 'bold', color: '#0F1E35' }}>
-            Click to reveal answers
-          </summary>
-          <div
-            style={{
-              lineHeight: '1.8',
-              marginTop: '1rem',
-              marginBottom: '2rem',
-              color: '#1A1A1A',
-              fontSize: '16px',
-            }}
-            dangerouslySetInnerHTML={{
-              __html: renderMarkdownWithMath(
-                stripAuthoringBlocks(topic.answer_key?.raw || '')
-              ),
-            }}
-          />
-        </details>
+        <AnswerKey
+          html={renderMarkdownWithMath(
+            stripAuthoringBlocks(topic.answer_key?.raw || '')
+          )}
+        />
       </section>
     </div>
+    </GumuGateProvider>
   );
 }
 

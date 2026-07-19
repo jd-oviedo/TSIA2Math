@@ -1,6 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import GumuChat from './GumuChat';
+import { useGumuGate } from './GumuGate';
 
 // What the browser is allowed to see. Built server-side in page.tsx by
 // stripping correct_answer and misconception_tag off each parsed item -- those
@@ -21,7 +23,14 @@ type Props = {
   items: PublicPracticeItem[];
 };
 
-type Result = { isCorrect: boolean; correct_answer: string };
+// correct_answer is null when GUMU is available -- the server withholds it so
+// the answer can't be printed above the chat panel. It arrives later via the
+// escape hatch, at which point revealedAnswer below fills it in.
+type Result = {
+  isCorrect: boolean;
+  correct_answer: string | null;
+  gumu_available?: boolean;
+};
 
 const LETTERS = ['A', 'B', 'C', 'D'];
 
@@ -44,6 +53,16 @@ export default function PracticeQuiz({ courseId, topicId, section, items }: Prop
   const [results, setResults] = useState<Record<number, Result>>({});
   const [pending, setPending] = useState<Record<number, boolean>>({});
   const [errors, setErrors] = useState<Record<number, string>>({});
+  // Filled in only when GUMU's escape hatch hands the answer back.
+  const [revealed, setRevealed] = useState<Record<number, string>>({});
+
+  const { setItemActive } = useGumuGate();
+
+  const handleSessionChange = useCallback(
+    (itemNumber: number, active: boolean) =>
+      setItemActive(`${section}-${itemNumber}`, active),
+    [setItemActive, section]
+  );
 
   async function submit(itemNumber: number) {
     const answer = selected[itemNumber];
@@ -93,6 +112,9 @@ export default function PracticeQuiz({ courseId, topicId, section, items }: Prop
         const answered = Boolean(result);
         const choice = selected[item.item_number];
         const error = errors[item.item_number];
+        // The known correct answer, from whichever source has it: the grading
+        // response when GUMU is not involved, or the escape hatch when it is.
+        const knownAnswer = result?.correct_answer ?? revealed[item.item_number] ?? null;
 
         return (
           <fieldset
@@ -120,7 +142,7 @@ export default function PracticeQuiz({ courseId, topicId, section, items }: Prop
                 const isChoice = choice === letter;
                 // Once answered, mark the right option and the student's own
                 // wrong one. Other options stay neutral.
-                const isAnswer = answered && result.correct_answer === letter;
+                const isAnswer = answered && knownAnswer === letter;
                 const isWrongPick = answered && isChoice && !result.isCorrect;
 
                 let background = 'transparent';
@@ -197,7 +219,9 @@ export default function PracticeQuiz({ courseId, topicId, section, items }: Prop
                 >
                   {result.isCorrect
                     ? 'Correct'
-                    : `Not quite — the answer is ${result.correct_answer}.`}
+                    : knownAnswer
+                      ? `Not quite — the answer is ${knownAnswer}.`
+                      : 'Not quite — let’s figure out where it went sideways.'}
                 </p>
               )}
               {error && (
@@ -206,6 +230,23 @@ export default function PracticeQuiz({ courseId, topicId, section, items }: Prop
                 </p>
               )}
             </div>
+
+            {/* Offered only where the server said so: a wrong answer from an
+                authenticated student. Anonymous users get the answer inline
+                and never see this. */}
+            {answered && result.gumu_available && (
+              <GumuChat
+                courseId={courseId}
+                topicId={topicId}
+                section={section}
+                itemNumber={item.item_number}
+                selectedAnswer={choice}
+                onSessionChange={(active) => handleSessionChange(item.item_number, active)}
+                onRevealAnswer={(correct) =>
+                  setRevealed((r) => ({ ...r, [item.item_number]: correct }))
+                }
+              />
+            )}
           </fieldset>
         );
       })}
