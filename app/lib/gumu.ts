@@ -7,7 +7,11 @@ import Anthropic from "@anthropic-ai/sdk";
 // it either leaks the answer or (as the naive single-letter version did)
 // rejects every message GUMU ever writes.
 
-export const GUMU_MODEL = "claude-haiku-4-5";
+// Switched from claude-haiku-4-5 after live testing: Haiku's tone and Socratic
+// discipline were good, but it made arithmetic slips mid-explanation ("the
+// flour tripled (went from 3 to 12)"), which is the one error a math tutor
+// cannot make.
+export const GUMU_MODEL = "claude-sonnet-5";
 
 // Student turns, not GUMU's. On the 3rd the route stops asking questions and
 // has GUMU compose a nudge toward the answer instead.
@@ -193,9 +197,21 @@ async function callModel(
 ): Promise<GumuReply> {
   const response = await getClient().messages.create({
     model: GUMU_MODEL,
-    max_tokens: 512,
+    // Sonnet 5 runs adaptive thinking when `thinking` is omitted, and
+    // max_tokens caps thinking plus reply together. GUMU's replies are 2-4
+    // sentences, but at 512 the thinking could eat the budget and truncate
+    // one, so the ceiling is raised well clear of it. Thinking is left on
+    // deliberately: checking its own arithmetic before answering is exactly
+    // the weakness that prompted the model switch.
+    max_tokens: 2048,
+    output_config: {
+      // The work is one short tutoring reply, not deep reasoning. Low keeps
+      // latency down in a chat interface while still getting the arithmetic
+      // checked.
+      effort: "low",
+      format: { type: "json_schema", schema: REPLY_SCHEMA },
+    },
     system: [SYSTEM_PROMPT, ...systemExtras].join("\n\n"),
-    output_config: { format: { type: "json_schema", schema: REPLY_SCHEMA } },
     messages: history.map((turn) => ({
       role: turn.role === "student" ? ("user" as const) : ("assistant" as const),
       content: turn.content,
