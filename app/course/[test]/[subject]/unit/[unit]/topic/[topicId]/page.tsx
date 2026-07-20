@@ -77,6 +77,16 @@ export default async function CurriculumTopicPage({ params }: Props) {
     notFound();
   }
 
+  // GUMU is authenticated-only, and this page renders no header, so a signed
+  // out student has no way to discover sign-in from here. Reuses the existing
+  // Google OAuth flow in app/login rather than adding a second one.
+  const {
+    data: { session: authSession },
+  } = await supabase.auth.getSession();
+  const signInHref = `/login?next=${encodeURIComponent(
+    `/course/${test}/${subject}/unit/${unit}/topic/${topicId}`
+  )}`;
+
   // `interactive` is false when a section holds anything the quiz cannot grade
   // -- QR.1.1's practice section is mostly free-response -- and practice_items
   // is an empty object on any topic uploaded before the parser existed. Both
@@ -126,6 +136,26 @@ export default async function CurriculumTopicPage({ params }: Props) {
         />
       </section>
       
+      {!authSession && (
+        <div
+          style={{
+            border: '1px solid #D8D6D1',
+            borderRadius: '8px',
+            padding: '0.9rem 1.1rem',
+            marginBottom: '2rem',
+            background: '#F4F2ED',
+            color: '#1A1A1A',
+            fontSize: '15px',
+            lineHeight: 1.6,
+          }}
+        >
+          <a href={signInHref} style={{ color: '#0F1E35', fontWeight: 600 }}>
+            Sign in with Google
+          </a>{' '}
+          to check your answers and work through the ones you miss with GUMU.
+        </div>
+      )}
+
       {/* Practice Problems */}
       <section style={{ marginBottom: '3rem' }}>
         <h2 style={{ fontSize: '20px', marginBottom: '1.5rem', color: '#0F1E35' }}>
