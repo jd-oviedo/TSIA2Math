@@ -103,3 +103,39 @@ export const curriculumPracticeBodySchema = z.object({
 });
 
 export type CurriculumPracticeBody = z.infer<typeof curriculumPracticeBodySchema>;
+
+// POST /api/gumu/session
+// One endpoint, three actions, discriminated so each carries only its own
+// fields: opening a session needs the item, continuing needs the transcript
+// it belongs to, and the escape hatch needs neither.
+const gumuStartSchema = z.object({
+  action: z.literal("start"),
+  course_id: z.string().min(1).max(100).regex(/^[a-z0-9-]+$/),
+  topic_id: z.string().min(1).max(50).regex(/^[A-Za-z0-9.]+$/),
+  section: z.enum(["practice", "mini_quiz"]),
+  item_number: z.number().int().min(1).max(100),
+  selected_answer: answerLetterSchema,
+});
+
+const gumuMessageSchema = z.object({
+  action: z.literal("message"),
+  session_id: z.string().uuid("session_id must be a valid session ID"),
+  message: z
+    .string()
+    .min(1, "message cannot be empty")
+    .max(2000, "message is too long"),
+});
+
+// "I'll just see the answer" — always available, never blocked.
+const gumuRevealSchema = z.object({
+  action: z.literal("reveal"),
+  session_id: z.string().uuid("session_id must be a valid session ID"),
+});
+
+export const gumuBodySchema = z.discriminatedUnion("action", [
+  gumuStartSchema,
+  gumuMessageSchema,
+  gumuRevealSchema,
+]);
+
+export type GumuBody = z.infer<typeof gumuBodySchema>;

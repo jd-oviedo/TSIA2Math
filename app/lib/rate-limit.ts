@@ -49,6 +49,19 @@ export const curriculumPracticeRateLimit = new Ratelimit({
   analytics: true,
 });
 
+// /api/gumu/session — the Socratic tutor. Tighter than the practice route
+// because every call is a paid model request, and the shape of honest use is
+// bounded by design: a session caps at 3 student turns, so 20 per 5 minutes
+// covers several full conversations plus retries. Keyed on IP like the others,
+// which means a shared classroom NAT shares the budget -- acceptable while
+// GUMU only fires on wrong answers, worth revisiting if it goes wider.
+export const gumuRateLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(20, "5 m"),
+  prefix: "ratelimit:gumu",
+  analytics: true,
+});
+
 // Best-effort client IP extraction. Vercel sets x-forwarded-for on every
 // request; if it's ever missing (e.g. local dev without a proxy in front),
 // everyone collapses onto the same "unknown" bucket — acceptable locally,
