@@ -57,11 +57,18 @@ export const SAFE_FALLBACK_MESSAGE =
 // Em dash only. En dashes are left alone: in math content they are usually a
 // range ("between 3–4"), and rewriting that to "3, 4" corrupts the meaning.
 export function stripEmDashes(text: string): string {
-  return text
-    .replace(/\s*—\s*/g, ", ")
-    .replace(/,\s*([,.;:!?])/g, "$1")
-    .replace(/\s{2,}/g, " ")
-    .trim();
+  return (
+    text
+      // A dash at either end is not standing in for a comma, it is decoration.
+      // Substituting one there produced a message that opened with a stray
+      // comma (", I let's play with that."), so those are dropped instead.
+      .replace(/^[\s—]+/, "")
+      .replace(/[\s—]+$/, "")
+      .replace(/\s*—\s*/g, ", ")
+      .replace(/,\s*([,.;:!?])/g, "$1")
+      .replace(/\s{2,}/g, " ")
+      .trim()
+  );
 }
 
 export type GumuReply = { message: string; found_own_mistake: boolean };
@@ -269,8 +276,14 @@ export async function askGumu({
     );
   }
 
+  // A message is unusable if it leaks or if it is empty. An empty bubble was
+  // observed in live testing (model returned no message text on a final turn),
+  // and showing it to a student is as broken as showing a leak, so it goes
+  // through the same retry-then-fallback ladder rather than being special
+  // cased.
   const check = (message: string) =>
-    detectLeak({ message, ...answerContext, strict: isFinalTurn });
+    detectLeak({ message, ...answerContext, strict: isFinalTurn }) ??
+    (message.trim() ? null : "empty_message");
 
   const first = await callModel(history, systemExtras);
   const firstLeak = check(first.message);
