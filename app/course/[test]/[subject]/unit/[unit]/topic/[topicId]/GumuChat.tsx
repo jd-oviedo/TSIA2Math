@@ -51,6 +51,12 @@ export default function GumuChat({
   const [turnsRemaining, setTurnsRemaining] = useState<number | null>(null);
   const [finished, setFinished] = useState(false);
 
+  // The escape hatch steps up from a quiet text link to a real button once the
+  // student is on their last turn, or once the session has ended and it is the
+  // only way left to see the answer. Null (before the first reply lands) keeps
+  // it quiet.
+  const escapeProminent = finished || (turnsRemaining !== null && turnsRemaining <= 1);
+
   async function post(body: Record<string, unknown>) {
     const res = await fetch('/api/gumu/session', {
       method: 'POST',
@@ -247,21 +253,35 @@ export default function GumuChat({
           marginTop: '0.75rem',
         }}
       >
-        {/* Always available, never blocked -- including after the session
-            finishes, so a student can still get the answer afterwards. */}
+        {/* Never blocked and never hidden, but deliberately quiet early on:
+            plain text while the student still has turns left, a real button
+            once they are on the last one (or the session has ended). Giving up
+            should always be possible, just not the obvious first move. */}
         <button
           type="button"
           onClick={reveal}
           disabled={pending}
-          style={{
-            padding: '0.35rem 0.75rem',
-            borderRadius: '6px',
-            border: `1px solid ${COLORS.border}`,
-            background: 'transparent',
-            color: COLORS.muted,
-            fontSize: '14px',
-            cursor: 'pointer',
-          }}
+          style={
+            escapeProminent
+              ? {
+                  padding: '0.45rem 0.9rem',
+                  borderRadius: '6px',
+                  border: `1px solid ${COLORS.navy}`,
+                  background: COLORS.navy,
+                  color: '#FFFFFF',
+                  fontSize: '15px',
+                  cursor: 'pointer',
+                }
+              : {
+                  padding: 0,
+                  border: 'none',
+                  background: 'none',
+                  color: COLORS.muted,
+                  fontSize: '13px',
+                  textDecoration: 'underline',
+                  cursor: 'pointer',
+                }
+          }
         >
           I&apos;ll just see the answer
         </button>

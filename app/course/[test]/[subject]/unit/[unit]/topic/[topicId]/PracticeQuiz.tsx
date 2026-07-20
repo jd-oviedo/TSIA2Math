@@ -220,8 +220,8 @@ export default function PracticeQuiz({ courseId, topicId, section, items }: Prop
                   {result.isCorrect
                     ? 'Correct'
                     : knownAnswer
-                      ? `Not quite — the answer is ${knownAnswer}.`
-                      : 'Not quite — let’s figure out where it went sideways.'}
+                      ? `Not quite. The answer is ${knownAnswer}.`
+                      : 'Not quite. Let’s figure out where it went sideways.'}
                 </p>
               )}
               {error && (

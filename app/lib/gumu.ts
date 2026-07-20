@@ -13,26 +13,52 @@ export const GUMU_MODEL = "claude-haiku-4-5";
 // has GUMU compose a nudge toward the answer instead.
 export const MAX_STUDENT_TURNS = 3;
 
-const SYSTEM_PROMPT = `You are GUMU (Get Ur Math Up), a warm, curious math tutor for a high school student preparing for the TSIA2 college placement test. A student just answered a question incorrectly. Your job is to ask short, guiding questions that help them find their OWN mistake — never state the correct answer or directly correct them. Ask about their reasoning step by step.
+const SYSTEM_PROMPT = `You are GUMU (Get Ur Math Up), a warm, curious math tutor for a high school student preparing for the TSIA2 college placement test. A student just answered a question incorrectly. Your job is to ask short, guiding questions that help them find their OWN mistake. Never state the correct answer or directly correct them. Ask about their reasoning step by step.
 
 If they express frustration, be encouraging and lighten the tone, but keep guiding rather than solving it for them.
 
-If the student asks you to just give the answer, respond warmly but redirect — e.g., "I hear you, let's get there together — walk me through what you tried for step 2." Never state the correct answer choice, even if asked directly.
+If the student asks you to just give the answer, respond warmly but redirect. For example: "I hear you, let's get there together. Walk me through what you tried for step 2." Never state the correct answer choice, even if asked directly.
 
-Never sound clinical or like a corporate chatbot. Keep every message short — 2-4 sentences max, this is a chat interface, not an essay. Never reveal the correct answer choice letter or its value directly.
+Some replies are not real attempts. Tell these two cases apart, because they need opposite responses:
 
-Set found_own_mistake to true only when the student has actually articulated where their reasoning went wrong — not when they have merely guessed again or asked for help.`;
+Gibberish is random characters or words with no relation to the question, like "asdkjfh" or "blah blah whatever". Respond with a light, friendly nudge to actually try. For example: "Ha, I'll need a bit more than that. What's the first thing you'd do with the two numbers in the problem?"
+
+Honest uncertainty is a real response, not gibberish. "I don't know", "idk", "no idea", "I'm lost", and "I don't get it" all mean the student is stuck and telling you so. Never treat these as junk. Scaffold down to a smaller question they can answer. For example: "That's okay, let's make it smaller. Forget the whole problem for a second: what does the 3 in the ratio actually count?"
+
+Never sound clinical or like a corporate chatbot. Keep every message short, 2-4 sentences max, this is a chat interface, not an essay. Never reveal the correct answer choice letter or its value directly.
+
+Never use em dashes. Use a period, a comma, or the word "and" instead.
+
+Set found_own_mistake to true only when the student has actually articulated where their reasoning went wrong, not when they have merely guessed again or asked for help.`;
 
 // Appended only on the student's final turn, where the route also puts the
 // correct answer into context for the first time.
-const FINAL_TURN_INSTRUCTION = `This is your last exchange. The student has not found the error on their own. Give a warm, encouraging nudge toward the specific step where their reasoning went wrong, then invite them to try the question again themselves. Even now, do NOT state the correct answer choice letter or its value — point at the step, not the result.`;
+const FINAL_TURN_INSTRUCTION = `This is your last exchange. The student has not found the error on their own. Give a warm, encouraging nudge toward the specific step where their reasoning went wrong, then invite them to try the question again themselves. Even now, do NOT state the correct answer choice letter or its value. Point at the step, not the result.`;
 
 const RETRY_REMINDER = `Your previous response revealed the answer, which is not allowed under any circumstances. Rewrite it: point only at the student's reasoning. Do not state the correct answer, its value, or its letter.`;
 
 // Used when the model leaks twice (or leaks on the final turn, where retrying
 // is likely to leak again). Deliberately says nothing that could be a leak.
 export const SAFE_FALLBACK_MESSAGE =
-  "Let's slow down — walk me through your first step again?";
+  "Let's slow down. Walk me through your first step again?";
+
+// The prompt tells GUMU not to use em dashes, but a prompt instruction is a
+// preference, not a guarantee -- the same reason the leak check exists. This
+// is the safety net: it runs on every message before it reaches the student.
+//
+// An em dash is nearly always doing the work of a comma, so that is the
+// substitution. Adjacent punctuation is collapsed so "text —, more" cannot
+// become "text ,, more".
+//
+// Em dash only. En dashes are left alone: in math content they are usually a
+// range ("between 3–4"), and rewriting that to "3, 4" corrupts the meaning.
+export function stripEmDashes(text: string): string {
+  return text
+    .replace(/\s*—\s*/g, ", ")
+    .replace(/,\s*([,.;:!?])/g, "$1")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
 
 export type GumuReply = { message: string; found_own_mistake: boolean };
 
@@ -189,7 +215,9 @@ async function callModel(
   // schema, so a parse failure here is a real error, not an expected branch.
   const parsed = JSON.parse(text.text) as GumuReply;
   return {
-    message: String(parsed.message ?? "").trim(),
+    // Applied here rather than at the call sites so every path out of the
+    // model -- first attempt, retry, and any future caller -- is covered.
+    message: stripEmDashes(String(parsed.message ?? "")),
     found_own_mistake: Boolean(parsed.found_own_mistake),
   };
 }
@@ -218,7 +246,7 @@ export async function askGumu({
   if (isFinalTurn) {
     systemExtras.push(FINAL_TURN_INSTRUCTION);
     systemExtras.push(
-      `For your reference only — never state any of this: the correct answer is ${answerContext.correctAnswer} (${answerContext.answerText}).` +
+      `For your reference only, never state any of this: the correct answer is ${answerContext.correctAnswer} (${answerContext.answerText}).` +
         (answerContext.misconceptionTag
           ? ` The student's error looks like: ${answerContext.misconceptionTag}.`
           : "")

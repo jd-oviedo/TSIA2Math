@@ -60,7 +60,7 @@ export function AnswerKey({ html }: { html: string }) {
         }}
       >
         The answer key is hidden while you&apos;re working through a question with GUMU.
-        Finish that conversation — or use &ldquo;I&apos;ll just see the answer&rdquo; — and it
+        Finish that conversation, or use &ldquo;I&apos;ll just see the answer&rdquo;, and it
         will come back.
       </div>
     );
