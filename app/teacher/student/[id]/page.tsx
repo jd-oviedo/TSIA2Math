@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import MathText from "../../../components/MathText";
+import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from "../../../components/fonts";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -123,10 +124,10 @@ export default function StudentDetailPage() {
       <style>{`
         * { box-sizing: border-box; }
         body { margin: 0; background: #F5F5F3; -webkit-font-smoothing: antialiased; }
-        @import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;500;600;700&display=swap');
+        ${FONT_BASE_CSS}
         @keyframes umspin { to { transform: rotate(360deg); } }
       `}</style>
-      <div style={{ minHeight: "100vh", background: "#F5F5F3", fontFamily: "Arial, Helvetica, sans-serif", color: "#1A1A1A" }}>{children}</div>
+      <div style={{ minHeight: "100vh", background: "#F5F5F3", fontFamily: FONT_BODY, color: "#1A1A1A" }}>{children}</div>
     </>
   );
 
@@ -180,7 +181,13 @@ export default function StudentDetailPage() {
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M10 3 L5 8 L10 13" /></svg>
             <span style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: isMobile ? 160 : 320 }}>{enrollment.class_name}</span>
           </a>
-          <img src="/unpackmath-logo.png" alt="UnpackMath" style={{ width: 28, height: 28, objectFit: "contain", flexShrink: 0 }} />
+          <img
+              src="/unpackmath-wordmark.png"
+              alt="UnpackMath"
+              width={2000}
+              height={485}
+              style={{ width: 96, height: 'auto', display: 'block', flexShrink: 0 }}
+            />
         </div>
       </header>
 
@@ -193,7 +200,7 @@ export default function StudentDetailPage() {
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-              <h1 style={{ margin: 0, fontFamily: "'Kodchasan', sans-serif", fontWeight: 600, fontSize: isMobile ? 22 : 26, letterSpacing: -0.4, color: "#0F1E35" }}>{name}</h1>
+              <h1 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: isMobile ? 22 : 26, letterSpacing: -0.4, color: "#0F1E35" }}>{name}</h1>
               <span style={{ display: "inline-flex", alignItems: "center", gap: 6, background: band.bg, color: band.text, fontSize: 12, fontWeight: 700, padding: "5px 11px", borderRadius: 20, whiteSpace: "nowrap" }}>
                 <span style={{ width: 6, height: 6, borderRadius: "50%", background: band.dot }} />{band.label}
               </span>
@@ -217,7 +224,7 @@ export default function StudentDetailPage() {
         <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4, 1fr)", gap: 12 }}>
           {stats.map((c) => (
             <div key={c.label} style={c.tone === "warn"
-              ? { background: "#FBF4E6", border: "1px solid rgba(198,138,47,0.35)", borderTop: "3px solid #C68A2F", borderRadius: 12, padding: "14px 16px" }
+              ? { background: "#FBF4E6", border: "1px solid rgba(198,138,47,0.35)", borderRadius: 12, padding: "14px 16px" }
               : cardStyle}>
               <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 0.7, textTransform: "uppercase", color: c.tone === "warn" ? "#9A6A1F" : "#8A8983" }}>{c.label}</div>
               <div style={{ marginTop: 8, fontSize: 22, fontWeight: 700, color: c.tone === "good" ? "#356B1B" : "#0F1E35", lineHeight: 1.1 }}>{c.value}</div>
@@ -229,7 +236,7 @@ export default function StudentDetailPage() {
         {/* Test history */}
         <div>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 13, gap: 10, flexWrap: "wrap" }}>
-            <h2 style={{ margin: 0, fontFamily: "'Kodchasan', sans-serif", fontWeight: 600, fontSize: 18, color: "#0F1E35" }}>Test history</h2>
+            <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: "#0F1E35" }}>Test history</h2>
             <span style={{ fontSize: 12, color: "#8A8983" }}>All attempts, most recent first</span>
           </div>
 
@@ -293,7 +300,7 @@ export default function StudentDetailPage() {
         {/* Misconceptions */}
         <div>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 13, gap: 10, flexWrap: "wrap" }}>
-            <h2 style={{ margin: 0, fontFamily: "'Kodchasan', sans-serif", fontWeight: 600, fontSize: 18, color: "#0F1E35" }}>Misconceptions</h2>
+            <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: "#0F1E35" }}>Misconceptions</h2>
             <span style={{ fontSize: 12, color: "#8A8983" }}>Across all attempts</span>
           </div>
 

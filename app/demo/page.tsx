@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import MathText from '../components/MathText';
+import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from '../components/fonts';
 
 // Only Camila has a demo profile page behind the link. Every other roster row
 // renders the same label as an inert span so the stage demo has one live path.
@@ -74,17 +75,22 @@ function SidebarInner() {
   return (
     <>
       <div style={{ padding: '22px 18px 18px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src="/unpackmath-logo.png" alt="UnpackMath" style={{ width: 36, height: 36, objectFit: 'contain' }} />
-          <span style={{ fontFamily: "'Kodchasan',sans-serif", fontWeight: 600, fontSize: 17, color: '#fff' }}>UnpackMath</span>
-        </div>
+        {/* Wordmark is 2000x485; width alone keeps the aspect ratio. 152px fits
+            the 200px sidebar minus its 18px side padding. */}
+        <img
+          src="/unpackmath-wordmark.png"
+          alt="UnpackMath"
+          width={2000}
+          height={485}
+          style={{ width: 152, maxWidth: '100%', height: 'auto', display: 'block' }}
+        />
         <div style={{ marginTop: 14, display: 'inline-flex', alignItems: 'center', gap: 6, border: '1px solid rgba(198,138,47,0.45)', color: '#E7BE7B', fontSize: 9, fontWeight: 700, letterSpacing: 1.4, padding: '3px 8px', borderRadius: 5 }}>
           <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#C68A2F' }} />TEACHER · PRO
         </div>
       </div>
       <nav style={{ padding: '6px 12px', display: 'flex', flexDirection: 'column', gap: 2 }}>
         {NAV.map((label, i) => (
-          <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 11, padding: '9px 11px', borderRadius: 8, fontSize: 13, fontWeight: i === 0 ? 600 : 500, color: i === 0 ? '#E7BE7B' : 'rgba(255,255,255,0.64)', background: i === 0 ? 'rgba(198,138,47,0.14)' : 'transparent', boxShadow: i === 0 ? 'inset 3px 0 0 #C68A2F' : 'none' }}>
+          <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 11, padding: '9px 11px', borderRadius: 8, fontSize: 13, fontWeight: i === 0 ? 600 : 500, color: i === 0 ? '#E7BE7B' : 'rgba(255,255,255,0.64)', background: i === 0 ? 'rgba(198,138,47,0.14)' : 'transparent' }}>
             {label}
           </div>
         ))}
@@ -93,8 +99,8 @@ function SidebarInner() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{ width: 32, height: 32, borderRadius: '50%', background: '#1C3052', color: '#E7BE7B', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700 }}>JT</div>
           <div>
-            <div style={{ fontSize: 12.5, fontWeight: 600, color: '#fff' }}>Ms. J. Teacher</div>
-            <div style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.5)' }}>demo@unpackmath.com</div>
+            <div style={{ fontSize: 12.5, fontWeight: 600, color: '#fff' }}>Mr. O</div>
+            <div style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.5)' }}>juan@unpackmath.com</div>
           </div>
         </div>
       </div>
@@ -147,7 +153,7 @@ export default function DemoPage() {
       <style>{`
         * { box-sizing: border-box; }
         body { margin: 0; background: #F5F5F3; -webkit-font-smoothing: antialiased; }
-        @import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;500;600;700&display=swap');
+        ${FONT_BASE_CSS}
       `}</style>
 
       {/* Persistent, non-dismissible demo banner */}
@@ -166,7 +172,7 @@ export default function DemoPage() {
         </div>
       )}
 
-      <div style={{ display: 'flex', minHeight: '100vh', fontFamily: 'Arial, Helvetica, sans-serif', color: '#1A1A1A' }}>
+      <div style={{ display: 'flex', minHeight: '100vh', fontFamily: FONT_BODY, color: '#1A1A1A' }}>
 
         {/* Desktop sidebar */}
         {!isCompact && (
@@ -206,7 +212,7 @@ export default function DemoPage() {
 
             {/* Page header */}
             <div style={{ marginBottom: 22 }}>
-              <h1 style={{ margin: 0, fontFamily: "'Kodchasan',sans-serif", fontWeight: 600, fontSize: isMobile ? 22 : 27, letterSpacing: -0.4, color: '#0F1E35' }}>TSIA2 Prep — Period 2</h1>
+              <h1 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: isMobile ? 22 : 27, letterSpacing: -0.4, color: '#0F1E35' }}>TSIA2 Prep — Period 2</h1>
               <div style={{ marginTop: 6, fontSize: 13, color: '#5F5E5A' }}>8 students · Spring 2026 · Sample data</div>
             </div>
 
@@ -219,7 +225,7 @@ export default function DemoPage() {
                 { label: 'Average score', value: avgScore, sub2: '/ 990', sub: 'Passing 950 · scale 910–990' },
               ].map((c, i) => {
                 if (i === 2) return (
-                  <div key="weak" style={{ background: '#FBF4E6', border: '1px solid rgba(198,138,47,0.35)', borderTop: '3px solid #C68A2F', borderRadius: 12, padding: '16px 18px', boxShadow: '0 1px 2px rgba(198,138,47,0.08)' }}>
+                  <div key="weak" style={{ background: '#FBF4E6', border: '1px solid rgba(198,138,47,0.35)', borderRadius: 12, padding: '16px 18px', boxShadow: '0 1px 2px rgba(198,138,47,0.08)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
                       <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: 0.7, textTransform: 'uppercase', color: '#9A6A1F' }}>Weakest strand</span>
                       <span style={{ fontSize: 9, fontWeight: 700, color: '#fff', background: '#C68A2F', padding: '2px 6px', borderRadius: 4 }}>FOCUS</span>
@@ -250,13 +256,13 @@ export default function DemoPage() {
             <div style={{ background: '#fff', border: '1px solid rgba(15,30,53,0.07)', borderRadius: 12, padding: '20px 22px', boxShadow: '0 1px 2px rgba(15,30,53,0.04)', marginBottom: 26 }}>
               <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 18, gap: 12, flexWrap: 'wrap' }}>
                 <div>
-                  <h2 style={{ margin: 0, fontFamily: "'Kodchasan',sans-serif", fontWeight: 600, fontSize: 16, color: '#0F1E35' }}>Class strand mastery</h2>
+                  <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: '#0F1E35' }}>Class strand mastery</h2>
                   <div style={{ marginTop: 3, fontSize: 12, color: '#5F5E5A' }}>Average accuracy by TSIA2 reasoning strand</div>
                 </div>
                 <div style={{ fontSize: 11, color: '#8A8983', fontWeight: 600 }}>{totalAttempts} attempts this period</div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: `repeat(${strandCols},1fr)`, gap: 18, alignItems: 'end' }}>
-                {([['QR','Quantitative','#B5D4F4'], ['AR','Algebraic','#9FE1CB'], ['GR','Geometric & Spatial','#FAC775'], ['PR','Probabilistic','#CECBF6']] as const).map(([code, label, color]) => (
+                {([['QR','Quantitative Reasoning','#B5D4F4'], ['AR','Algebraic Reasoning','#9FE1CB'], ['GR','Geometric and Spatial Reasoning','#FAC775'], ['PR','Probabilistic and Statistical Reasoning','#CECBF6']] as const).map(([code, label, color]) => (
                   <div key={code} style={{ display: 'flex', alignItems: 'flex-end', gap: 10 }}>
                     <div style={{ position: 'relative', width: 46, height: 118, background: '#F2F1EC', borderRadius: 7, overflow: 'hidden', flex: '0 0 46px' }}>
                       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: color, height: `${strandPct[code]}%`, borderRadius: '7px 7px 0 0' }} />
@@ -274,7 +280,7 @@ export default function DemoPage() {
             {/* Roster */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 13, gap: 12, flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-                <h2 style={{ margin: 0, fontFamily: "'Kodchasan',sans-serif", fontWeight: 600, fontSize: 18, color: '#0F1E35' }}>Class roster</h2>
+                <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: '#0F1E35' }}>Class roster</h2>
                 <span style={{ fontSize: 12, fontWeight: 600, color: '#8A8983', background: '#EDEBE4', padding: '2px 8px', borderRadius: 20 }}>8</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -370,7 +376,7 @@ export default function DemoPage() {
             {/* Misconceptions */}
             <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 13, gap: 12, flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 11 }}>
-                <h2 style={{ margin: 0, fontFamily: "'Kodchasan',sans-serif", fontWeight: 600, fontSize: 18, color: '#0F1E35' }}>Top misconceptions</h2>
+                <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: '#0F1E35' }}>Top misconceptions</h2>
                 <span style={{ fontSize: 13, color: '#5F5E5A' }}>Ranked by frequency across {totalAttempts} attempts</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 11, color: '#8A8983' }}>
@@ -410,7 +416,7 @@ export default function DemoPage() {
             {/* Bottom CTA */}
             <div style={{ marginTop: 48, background: '#0F1E35', borderRadius: 16, padding: isMobile ? '28px 24px' : '36px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}>
               <div>
-                <div style={{ fontFamily: "'Kodchasan',sans-serif", fontWeight: 600, fontSize: 22, color: '#fff', marginBottom: 8 }}>Ready to see your real class data?</div>
+                <div style={{ fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 22, color: '#fff', marginBottom: 8 }}>Ready to see your real class data?</div>
                 <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', maxWidth: 480 }}>Get full access to the Misconception Dashboard for your students. Founding teacher rate — $10/month, locked in for life.</div>
               </div>
               <a href="/login?role=teacher" style={{ background: '#C68A2F', color: '#fff', padding: '14px 28px', borderRadius: 10, fontWeight: 700, fontSize: 15, textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>Get started →</a>
