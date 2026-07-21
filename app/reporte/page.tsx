@@ -6,9 +6,9 @@ import { QuestionGame } from "./QuestionGame";
 import { EXIT_MS, ReporteLoadingScreen } from "../components/ReporteLoadingScreen";
 
 /* ------------------------------------------------------------------ *
- * Parent Digest: bilingual (ES / EN) weekly progress report.
- * Four swipeable cards: teacher + status, focus + misconception,
- * pictorial example, tonight's action.
+ * Parent Digest: weekly progress report, rendered in one language at a time
+ * (ES by default) via the toggle above the deck. Four swipeable cards:
+ * teacher + status, focus + misconception, pictorial example, tonight's action.
  *
  * Palette is hardcoded from the design (not the --ec theme), matching
  * the demo/teacher surfaces. Content below is placeholder copy from the
@@ -19,9 +19,9 @@ const NAVY = "#0F1E35";
 const NAVY_DEEP = "#0A1626"; // darker strip on top of the navy action card
 const AMBER = "#f0a33e";
 const BLUE = "#155A7E";
-// A shade darker than the original #3f7290, which measured 4.44:1 on the sky
-// glass and just missed WCAG AA; this is visually the same tone at 4.7:1.
-const BLUE_2 = "#3A6A86";
+// Deep amber for label text sitting on the light-orange glass panel, where the
+// blue kicker colour clashes with the backdrop.
+const AMBER_INK = "#8A5712";
 const SKY = "#87CEEB";
 const INK = "#1A1A1A";
 const MUTED = "#5F5E5A";
@@ -69,37 +69,140 @@ const MIN_HOLD_MS = 550; // logo stays visible at least this long, even on a fas
 // Design prop: practice-area fill (default 58%).
 const FOCUS_FILL = 58;
 
-const BANNER_TEXT = "Reporte Semanal";
+const STUDENT = "Camila";
+const TEACHER = "Mr. O";
 
-const CONTENT = {
-  student: "Camila",
-  teacher: "Mr. O",
-  role: "Maestro de Matemáticas",
-  school: "Summertime High School",
-  status: {
-    kicker: "Va por buen camino",
-    es: "Camila va por buen camino para estar lista para las matemáticas universitarias.",
-    en: "Camila is on track for college math.",
+type Lang = "es" | "en";
+type Band = "college" | "approaching" | "below";
+
+/* --- placement bands ------------------------------------------------------ *
+ * Same three bands the teacher dashboard scores into (see the `bandFor` helper
+ * in app/teacher/TeacherDashboardClient.tsx). The text and dot hexes are that
+ * palette verbatim; the panel is a glass tint of the same dot hue rather than
+ * the dashboard's flat chip fill, so it matches the other cards' treatment.
+ * ------------------------------------------------------------------------- */
+const BANDS: Record<Band, { tint: { fill: string; edge: string; lift: string }; text: string; dot: string }> = {
+  college: {
+    tint: { fill: "rgba(79,154,46,.16)", edge: "rgba(79,154,46,.55)", lift: LIFT_ON_LIGHT },
+    text: "#356B1B",
+    dot: "#4F9A2E",
   },
-  focus: {
-    es: "Figuras y espacio",
-    en: "Shapes and space",
-    note_es: "Con un poco más de práctica en esta área seguirá mejorando.",
-    note_en: "A little more practice here will keep her improving.",
+  approaching: {
+    tint: { fill: "rgba(198,138,47,.16)", edge: "rgba(198,138,47,.55)", lift: LIFT_ON_LIGHT },
+    text: "#8A5712",
+    dot: "#C68A2F",
   },
-  misconception: {
-    // The Spanish line is inline in the JSX below; it bolds "cambia de tamaño"
-    // and "cambia de posición", so it can't live here as a flat string.
-    en: "Camila has trouble telling the difference between a shape that changes size and one that only changes position.",
-    reassure_es: "No necesitas saber hacer las matemáticas tú misma.",
-    reassure_en: "You don’t need to know how to do the math yourself.",
-  },
-  action: {
-    ask_es: "«¿Cómo sabes que esta figura cambió de tamaño y no solo de lugar?»",
-    ask_en: "“How do you know this shape changed size, and didn’t just move?”",
-    listen_en: "Whether she talks about size, not just that it moved.",
+  below: {
+    tint: { fill: "rgba(194,64,47,.13)", edge: "rgba(194,64,47,.45)", lift: LIFT_ON_LIGHT },
+    text: "#9A2A2A",
+    dot: "#C2402F",
   },
 };
+
+// Camila's current placement. Wire to the real report data alongside COPY.
+const STUDENT_BAND: Band = "college";
+
+/* --- recorded audio ------------------------------------------------------- *
+ * Files live in public/audio as {slug}-{lang}.m4a. Only the pairs listed in
+ * AUDIO_RECORDED have actually been recorded; every other band/language combo
+ * leaves the tap-to-hear button visible but inert rather than 404-ing.
+ * ------------------------------------------------------------------------- */
+const AUDIO_SLUG: Record<Band, string> = {
+  college: "college-ready",
+  approaching: "approaching",
+  below: "below-college-ready",
+};
+
+const AUDIO_RECORDED = new Set(["college-ready-es", "college-ready-en"]);
+
+function audioSrc(band: Band, lang: Lang): string | null {
+  const key = `${AUDIO_SLUG[band]}-${lang}`;
+  return AUDIO_RECORDED.has(key) ? `/audio/${key}.m4a` : null;
+}
+
+const BAND_MESSAGE: Record<Band, Record<Lang, string>> = {
+  college: {
+    es: "Camila va por buen camino para estar lista para las matemáticas universitarias.",
+    en: "Camila is on track to be ready for college math.",
+  },
+  approaching: {
+    es: "Camila está cerca de estar lista para las matemáticas universitarias.",
+    en: "Camila is approaching being ready for college math.",
+  },
+  below: {
+    es: "Camila todavía no está lista para las matemáticas universitarias, y con práctica constante puede llegar.",
+    en: "Camila isn’t ready for college math yet, and with steady practice she can get there.",
+  },
+};
+
+/* Every string on the page, in both languages. The two objects are kept
+ * key-for-key identical so `COPY[lang]` reads the same from either side. */
+const COPY = {
+  es: {
+    toggle: "Español",
+    banner: "Reporte Semanal",
+    role: "Maestro de Matemáticas",
+    school: "Summertime High School",
+    cadence: "Se envía cada viernes",
+    // "Reporte semanal de <Camila>" vs "<Camila>'s Weekly Report": the student
+    // name is bolded mid-sentence, so each language brackets it differently.
+    reportBefore: "Reporte semanal de ",
+    reportAfter: "",
+    statusEyebrow: "Un mensaje del maestro(a)",
+    focusKicker: "Un área para mejorar",
+    focusTitle: "Figuras y espacio",
+    focusNote: "Con un poco más de práctica en esta área seguirá mejorando.",
+    noticeTitle: "Lo Que Notamos",
+    reassure: "No necesitas saber matemáticas para ayudar con las matemáticas.",
+    pictorialKicker: "Muéstrale este dibujo",
+    figDilTitle: "Cambió de tamaño",
+    figDilSub: "más grande, mismo lugar",
+    figTransTitle: "Cambió de lugar",
+    figTransSub: "mismo tamaño, otro lugar",
+    actionKicker: "Esta noche en la mesa",
+    askLabel: "Pregúntale",
+    ask: "«¿Cómo sabes que esta figura cambió de tamaño y no solo de lugar?»",
+    listenLabel: "Escucha si",
+    speakPlay: "Escuchar la pregunta",
+    speakStop: "Detener",
+    playGame: "Jugar juego de preguntas",
+    carousel: "Reporte semanal",
+    card: "Tarjeta",
+    of: "de",
+  },
+  en: {
+    toggle: "English",
+    banner: "Weekly Report",
+    role: "Math Teacher",
+    school: "Summertime High School",
+    cadence: "Sent every Friday",
+    reportBefore: "",
+    reportAfter: "’s Weekly Report",
+    statusEyebrow: "A message from your teacher",
+    focusKicker: "One area to practice",
+    focusTitle: "Shapes and space",
+    focusNote: "A little more practice here will keep her improving.",
+    noticeTitle: "What We Notice",
+    reassure: "You don’t need to know the math to help with the math.",
+    pictorialKicker: "Show her this picture",
+    figDilTitle: "Changed size",
+    figDilSub: "bigger, same spot",
+    figTransTitle: "Changed position",
+    figTransSub: "same size, new spot",
+    actionKicker: "Tonight at the table",
+    askLabel: "Ask her",
+    ask: "“How do you know this shape changed size, and didn’t just move?”",
+    listenLabel: "Listen for",
+    speakPlay: "Hear the question out loud",
+    speakStop: "Stop reading",
+    playGame: "Play the question game",
+    carousel: "Weekly report",
+    card: "Card",
+    of: "of",
+  },
+} satisfies Record<Lang, Record<string, string>>;
+
+type Copy = (typeof COPY)[Lang];
 
 const CARD_COUNT = 4;
 const GAP = 16;
@@ -158,7 +261,7 @@ function usePrefersReducedMotion() {
 
 /* --- shared card fragments ------------------------------------------------ */
 
-function MiniBanner({ f, deep }: { f: (n: number) => number; deep?: boolean }) {
+function MiniBanner({ f, label, deep }: { f: (n: number) => number; label: string; deep?: boolean }) {
   return (
     <div
       style={{
@@ -170,9 +273,10 @@ function MiniBanner({ f, deep }: { f: (n: number) => number; deep?: boolean }) {
         letterSpacing: ".14em",
         textTransform: "uppercase",
         color: AMBER,
+        whiteSpace: "nowrap",
       }}
     >
-      {BANNER_TEXT}
+      {label}
     </div>
   );
 }
@@ -213,11 +317,11 @@ function CardBody({
   );
 }
 
-// Section kicker: a light-blue glass bubble with the English stacked beneath,
-// mirroring the "Esta noche en la mesa" pill on the action card.
-function KickerPill({ es, en, f }: { es: string; en: string; f: (n: number) => number }) {
+// Section kicker: a light-blue glass bubble, mirroring the "Esta noche en la
+// mesa" pill on the action card.
+function KickerPill({ label, f }: { label: string; f: (n: number) => number }) {
   return (
-    <div className="uml" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: f(6), marginBottom: f(12) }}>
+    <div className="uml" style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: f(16) }}>
       <span
         style={{
           ...glass(GLASS.sky, 999),
@@ -228,9 +332,8 @@ function KickerPill({ es, en, f }: { es: string; en: string; f: (n: number) => n
           padding: `${f(7)}px ${f(14)}px`,
         }}
       >
-        {es}
+        {label}
       </span>
-      <span style={{ font: `400 ${f(12)}px/1.2 ${FONT}`, color: FAINT }}>{en}</span>
     </div>
   );
 }
@@ -238,23 +341,20 @@ function KickerPill({ es, en, f }: { es: string; en: string; f: (n: number) => n
 function Figure({
   kind,
   title,
-  subEs,
-  subEn,
+  sub,
   f,
 }: {
   kind: "dil" | "trans";
   title: string;
-  subEs: string;
-  subEn: string;
+  sub: string;
   f: (n: number) => number;
 }) {
   return (
     <div style={{ border: `1.5px solid ${CARD_BORDER}`, borderRadius: f(16), overflow: "hidden", maxWidth: f(232), margin: "0 auto" }}>
       <GridFigure kind={kind} />
-      <div style={{ textAlign: "center", padding: `${f(9)}px ${f(8)}px ${f(11)}px`, background: CARD }}>
+      <div style={{ textAlign: "center", padding: `${f(12)}px ${f(8)}px ${f(14)}px`, background: CARD }}>
         <div style={{ font: `700 ${f(15)}px/1.2 ${FONT}`, color: INK }}>{title}</div>
-        <div style={{ font: `400 ${f(12)}px/1.3 ${FONT}`, color: MUTED, marginTop: f(2) }}>{subEs}</div>
-        <div style={{ font: `400 ${f(12)}px/1.3 ${FONT}`, color: FAINT }}>{subEn}</div>
+        <div style={{ font: `400 ${f(12)}px/1.3 ${FONT}`, color: MUTED, marginTop: f(4) }}>{sub}</div>
       </div>
     </div>
   );
@@ -262,11 +362,12 @@ function Figure({
 
 /* --- cards ---------------------------------------------------------------- */
 
-function TeacherCard({ f }: { f: (n: number) => number }) {
+function TeacherCard({ f, lang, c }: { f: (n: number) => number; lang: Lang; c: Copy }) {
   const avatar = f(72);
+  const band = BANDS[STUDENT_BAND];
   return (
     <>
-      <MiniBanner f={f} />
+      <MiniBanner f={f} label={c.banner} />
       <CardBody f={f} pad={`${f(18)}px ${f(16)}px`} justify="space-evenly">
         {/* Teacher identity, on its own navy banner so the sender reads first. */}
         <div
@@ -301,147 +402,156 @@ function TeacherCard({ f }: { f: (n: number) => number }) {
           </div>
           {/* Mr. O's contact block stays left-aligned, beside the avatar. */}
           <div style={{ minWidth: 0, textAlign: "left", whiteSpace: "nowrap" }}>
-            <div style={{ font: `700 ${f(24)}px/1.15 ${FONT}`, color: "#fff" }}>{CONTENT.teacher}</div>
-            <div style={{ font: `600 ${f(12)}px/1.35 ${FONT}`, color: AMBER, marginTop: f(4) }}>{CONTENT.role}</div>
-            <div style={{ font: `400 ${f(12)}px/1.35 ${FONT}`, color: "rgba(255,255,255,.72)", marginTop: f(3) }}>{CONTENT.school}</div>
+            <div style={{ font: `700 ${f(24)}px/1.15 ${FONT}`, color: "#fff" }}>{TEACHER}</div>
+            <div style={{ font: `600 ${f(12)}px/1.35 ${FONT}`, color: AMBER, marginTop: f(4) }}>{c.role}</div>
+            <div style={{ font: `400 ${f(12)}px/1.35 ${FONT}`, color: "rgba(255,255,255,.72)", marginTop: f(3) }}>{c.school}</div>
           </div>
         </div>
 
         <div className="uml">
           <div style={{ font: `400 ${f(15)}px/1.4 ${FONT}`, color: MUTED }}>
-            Reporte semanal de <strong style={{ fontWeight: 700, color: INK }}>{CONTENT.student}</strong>
+            {c.reportBefore}
+            <strong style={{ fontWeight: 700, color: INK }}>{STUDENT}</strong>
+            {c.reportAfter}
           </div>
-          <div style={{ font: `400 ${f(13)}px/1.4 ${FONT}`, color: FAINT }}>{CONTENT.student}&rsquo;s Weekly Report</div>
+          {/* Cadence line: fills the gap under the headline and sets the
+              expectation that this arrives weekly. Deliberately quiet. */}
+          <div style={{ font: `400 ${f(12)}px/1.4 ${FONT}`, color: FAINT, marginTop: f(6) }}>{c.cadence}</div>
         </div>
 
-        <div className="uml" style={{ ...glass(GLASS.sky, f(20)), padding: `${f(22)}px ${f(18)}px ${f(24)}px` }}>
+        {/* Status: the eyebrow is fixed across all three bands; only the colour
+            treatment and the message body move with the placement. */}
+        <div className="uml" style={{ ...glass(band.tint, f(20)), padding: `${f(22)}px ${f(18)}px ${f(24)}px` }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: f(8), marginBottom: f(12) }}>
-            <span style={{ width: f(9), height: f(9), borderRadius: "50%", background: BLUE, display: "inline-block", flex: "none" }} />
-            <span style={{ font: `700 ${f(11)}px/1.2 ${FONT}`, letterSpacing: ".13em", textTransform: "uppercase", color: BLUE }}>
-              {CONTENT.status.kicker}
+            <span style={{ width: f(9), height: f(9), borderRadius: "50%", background: band.dot, display: "inline-block", flex: "none" }} />
+            <span style={{ font: `700 ${f(11)}px/1.2 ${FONT}`, letterSpacing: ".13em", textTransform: "uppercase", color: band.text }}>
+              {c.statusEyebrow}
             </span>
           </div>
-          <div style={{ font: `700 ${f(21)}px/1.3 ${FONT}`, color: BLUE }}>{CONTENT.status.es}</div>
-          <div style={{ font: `400 ${f(15)}px/1.4 ${FONT}`, color: BLUE_2, marginTop: f(11) }}>{CONTENT.status.en}</div>
+          <div style={{ font: `700 ${f(21)}px/1.3 ${FONT}`, color: band.text }}>{BAND_MESSAGE[STUDENT_BAND][lang]}</div>
         </div>
       </CardBody>
     </>
   );
 }
 
-function FocusCard({ f }: { f: (n: number) => number }) {
+function FocusCard({ f, lang, c }: { f: (n: number) => number; lang: Lang; c: Copy }) {
   return (
     <>
-      <MiniBanner f={f} />
-      <CardBody f={f} pad={`${f(16)}px ${f(20)}px`}>
-        <KickerPill es="Un área para mejorar" en="One area to practice" f={f} />
+      <MiniBanner f={f} label={c.banner} />
+      <CardBody f={f} pad={`${f(22)}px ${f(20)}px`}>
+        <KickerPill label={c.focusKicker} f={f} />
 
         {/* The focus area, framed in dark-blue glass. */}
-        <div className="uml" style={{ ...glass(GLASS.navy, f(20)), padding: `${f(14)}px ${f(15)}px ${f(15)}px` }}>
-          <div style={{ font: `700 ${f(23)}px/1.15 ${FONT}`, color: "#fff" }}>{CONTENT.focus.es}</div>
-          <div style={{ font: `400 ${f(14)}px/1.3 ${FONT}`, color: "rgba(255,255,255,.58)", marginTop: f(2) }}>{CONTENT.focus.en}</div>
-          <div style={{ margin: `${f(13)}px 0 ${f(12)}px` }}>
+        <div className="uml" style={{ ...glass(GLASS.navy, f(20)), padding: `${f(18)}px ${f(17)}px ${f(19)}px` }}>
+          <div style={{ font: `700 ${f(23)}px/1.15 ${FONT}`, color: "#fff" }}>{c.focusTitle}</div>
+          <div style={{ margin: `${f(17)}px 0 ${f(16)}px` }}>
             <div style={{ height: f(12), borderRadius: 999, background: "rgba(255,255,255,.14)", overflow: "hidden" }}>
               <div style={{ width: `${FOCUS_FILL}%`, height: "100%", borderRadius: 999, background: AMBER }} />
             </div>
           </div>
-          <div style={{ font: `400 ${f(13)}px/1.4 ${FONT}`, color: "rgba(255,255,255,.86)" }}>{CONTENT.focus.note_es}</div>
-          <div style={{ font: `400 ${f(13)}px/1.4 ${FONT}`, color: "rgba(255,255,255,.5)" }}>{CONTENT.focus.note_en}</div>
+          <div style={{ font: `400 ${f(13)}px/1.4 ${FONT}`, color: "rgba(255,255,255,.86)" }}>{c.focusNote}</div>
         </div>
 
-        {/* The misconception, framed in light-orange glass. */}
-        <div className="uml" style={{ ...glass(GLASS.orangeLight, f(18)), marginTop: f(10), padding: `${f(12)}px ${f(13)}px ${f(13)}px` }}>
-          <div style={{ font: `400 ${f(15)}px/1.42 ${FONT}`, color: INK }}>
-            Camila tiene dificultad para identificar la diferencia entre una figura que{" "}
-            <strong style={{ fontWeight: 700 }}>cambia de tamaño</strong> y una que solo{" "}
-            <strong style={{ fontWeight: 700 }}>cambia de posición</strong>.
+        {/* The misconception, framed in light-orange glass. Each language keeps
+            its own bolding, so the sentence can't live in COPY as a flat string. */}
+        <div className="uml" style={{ ...glass(GLASS.orangeLight, f(18)), marginTop: f(18), padding: `${f(16)}px ${f(15)}px ${f(17)}px` }}>
+          <div style={{ font: `700 ${f(13)}px/1.2 ${FONT}`, letterSpacing: ".08em", textTransform: "uppercase", color: AMBER_INK, marginBottom: f(10) }}>
+            {c.noticeTitle}
           </div>
-          <div style={{ font: `400 ${f(13)}px/1.4 ${FONT}`, color: MUTED, marginTop: f(7) }}>{CONTENT.misconception.en}</div>
+          <div style={{ font: `400 ${f(15)}px/1.42 ${FONT}`, color: INK }}>
+            {lang === "es" ? (
+              <>
+                Camila tiene dificultad para identificar la diferencia entre una figura que{" "}
+                <strong style={{ fontWeight: 700 }}>cambia de tamaño</strong> y una que solo{" "}
+                <strong style={{ fontWeight: 700 }}>cambia de posición</strong>.
+              </>
+            ) : (
+              <>
+                Camila has trouble telling the difference between a shape that{" "}
+                <strong style={{ fontWeight: 700 }}>changes size</strong> and one that{" "}
+                <strong style={{ fontWeight: 700 }}>only changes position</strong>.
+              </>
+            )}
+          </div>
         </div>
 
-        <div className="uml" style={{ marginTop: f(12) }}>
-          <div style={{ font: `700 ${f(15)}px/1.3 ${FONT}`, color: INK }}>{CONTENT.misconception.reassure_es}</div>
-          <div style={{ font: `400 ${f(13)}px/1.4 ${FONT}`, color: FAINT, marginTop: f(5) }}>{CONTENT.misconception.reassure_en}</div>
+        <div className="uml" style={{ marginTop: f(20) }}>
+          <div style={{ font: `700 ${f(15)}px/1.3 ${FONT}`, color: INK }}>{c.reassure}</div>
         </div>
       </CardBody>
     </>
   );
 }
 
-function PictorialCard({ f }: { f: (n: number) => number }) {
+function PictorialCard({ f, c }: { f: (n: number) => number; c: Copy }) {
   return (
     <>
-      <MiniBanner f={f} />
-      <CardBody f={f} pad={`${f(20)}px ${f(20)}px`}>
-        <KickerPill es="Muéstrale este dibujo" en="Show her this picture" f={f} />
-        <div className="uml" style={{ marginBottom: f(10) }}>
-          <Figure kind="dil" title="Cambió de tamaño" subEs="más grande, mismo lugar" subEn="changed size" f={f} />
+      <MiniBanner f={f} label={c.banner} />
+      <CardBody f={f} pad={`${f(24)}px ${f(20)}px`}>
+        <KickerPill label={c.pictorialKicker} f={f} />
+        <div className="uml" style={{ marginBottom: f(20) }}>
+          <Figure kind="dil" title={c.figDilTitle} sub={c.figDilSub} f={f} />
         </div>
         <div className="uml">
-          <Figure kind="trans" title="Cambió de lugar" subEs="mismo tamaño, otro lugar" subEn="changed position" f={f} />
+          <Figure kind="trans" title={c.figTransTitle} sub={c.figTransSub} f={f} />
         </div>
       </CardBody>
     </>
   );
 }
 
-// Voices populate asynchronously, so an empty list here just means we fall back
-// to whatever the browser picks for the utterance's lang.
-function pickSpanishVoice(synth: SpeechSynthesis) {
-  const voices = synth.getVoices();
-  return (
-    voices.find((v) => v.lang === "es-MX") ||
-    voices.find((v) => v.lang === "es-US") ||
-    voices.find((v) => v.lang.toLowerCase().startsWith("es")) ||
-    undefined
-  );
-}
-
-function ActionCard({ f, onPlay }: { f: (n: number) => number; onPlay: () => void }) {
+function ActionCard({ f, lang, c, onPlay }: { f: (n: number) => number; lang: Lang; c: Copy; onPlay: () => void }) {
   const [speaking, setSpeaking] = useState(false);
-
-  useEffect(() => {
-    const synth = window.speechSynthesis;
-    if (!synth) return;
-    // Reading getVoices() once on mount prompts Chrome to populate the list
-    // before the first tap; speak() reads the populated list later.
-    synth.getVoices();
-    return () => synth.cancel();
-  }, []);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const src = audioSrc(STUDENT_BAND, lang);
 
   const speak = useCallback(() => {
-    const synth = window.speechSynthesis;
-    if (!synth) return;
+    const el = audioRef.current;
+    // No recording for this band/language yet: the button stays visible but
+    // does nothing, rather than erroring on a 404.
+    if (!el || !src) return;
 
-    if (synth.speaking || synth.pending) {
-      synth.cancel();
+    try {
+      // A second tap stops the recording; it never stacks a second playback on
+      // top of the first.
+      if (!el.paused) {
+        el.pause();
+        el.currentTime = 0;
+        setSpeaking(false);
+        return;
+      }
+      el.currentTime = 0;
+      setSpeaking(true);
+      // play() rejects on autoplay policy or a missing/undecodable file. Either
+      // way the button just falls back to its resting state.
+      void el.play().catch(() => setSpeaking(false));
+    } catch {
       setSpeaking(false);
-      return;
     }
+  }, [src]);
 
-    // Guillemets read aloud as literal characters on some voices.
-    const utter = new SpeechSynthesisUtterance(CONTENT.action.ask_es.replace(/[«»]/g, ""));
-    utter.lang = "es-MX";
-    utter.rate = 0.95;
-    const voice = pickSpanishVoice(synth);
-    if (voice) utter.voice = voice;
-    utter.onend = () => setSpeaking(false);
-    utter.onerror = () => setSpeaking(false);
-    setSpeaking(true);
-    synth.speak(utter);
-  }, []);
+  // Switching language mid-playback would leave the button stuck on "Stop",
+  // and the <audio> src changes out from under it.
+  useEffect(() => {
+    const el = audioRef.current;
+    if (el) {
+      el.pause();
+      el.currentTime = 0;
+    }
+    setSpeaking(false);
+  }, [lang]);
 
   return (
     <>
-      <MiniBanner f={f} deep />
+      <MiniBanner f={f} label={c.banner} deep />
       <CardBody f={f} pad={`${f(18)}px ${f(20)}px`}>
-        <div className="uml" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: f(6), marginBottom: f(14) }}>
+        <div className="uml" style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: f(14) }}>
           <span
             style={{ background: AMBER, color: NAVY, font: `700 ${f(11)}px/1.2 ${FONT}`, letterSpacing: ".08em", textTransform: "uppercase", padding: `${f(7)}px ${f(13)}px`, borderRadius: 999 }}
           >
-            Esta noche en la mesa
+            {c.actionKicker}
           </span>
-          <span style={{ font: `400 ${f(13)}px/1.2 ${FONT}`, color: "rgba(255,255,255,.55)" }}>Tonight at the table</span>
         </div>
 
         {/* The ask, lifted off the navy in a floating glass panel. */}
@@ -450,29 +560,48 @@ function ActionCard({ f, onPlay }: { f: (n: number) => number; onPlay: () => voi
           style={{ ...glass(GLASS.amber, f(20)), textAlign: "center", padding: `${f(13)}px ${f(14)}px ${f(15)}px` }}
         >
           <div style={{ font: `700 ${f(11)}px/1.2 ${FONT}`, letterSpacing: ".1em", textTransform: "uppercase", color: AMBER, marginBottom: f(8) }}>
-            Pregúntale · Ask her
+            {c.askLabel}
           </div>
-          <div style={{ font: `700 ${f(19)}px/1.3 ${FONT}`, color: "#fff" }}>{CONTENT.action.ask_es}</div>
-          <div style={{ font: `400 ${f(14)}px/1.4 ${FONT}`, color: "rgba(255,255,255,.62)", marginTop: f(8) }}>{CONTENT.action.ask_en}</div>
+          <div style={{ font: `700 ${f(19)}px/1.3 ${FONT}`, color: "#fff" }}>{c.ask}</div>
         </div>
 
         <div className="uml" style={{ height: 1, background: "rgba(255,255,255,.13)", margin: `${f(14)}px 0` }} />
 
         <div className="uml" style={{ textAlign: "center", font: `700 ${f(11)}px/1.2 ${FONT}`, letterSpacing: ".1em", textTransform: "uppercase", color: AMBER, marginBottom: f(8) }}>
-          Escucha si · Listen for
+          {c.listenLabel}
         </div>
         <div className="uml" style={{ font: `400 ${f(16)}px/1.42 ${FONT}`, color: "#eef2f6" }}>
-          Habla del <strong style={{ fontWeight: 700 }}>tamaño</strong>, si se hizo más grande o más pequeña, no solo de que se movió.
+          {lang === "es" ? (
+            <>
+              Habla del <strong style={{ fontWeight: 700 }}>tamaño</strong>, si se hizo más grande o más pequeña, no solo de que se movió.
+            </>
+          ) : (
+            <>
+              Whether she talks about <strong style={{ fontWeight: 700 }}>size</strong> — bigger or smaller — not just that it moved.
+            </>
+          )}
         </div>
-        <div className="uml" style={{ textAlign: "center", font: `400 ${f(14)}px/1.4 ${FONT}`, color: "rgba(255,255,255,.55)", marginTop: f(8) }}>
-          {CONTENT.action.listen_en}
-        </div>
+
+        {/* Rendered only when a recording exists, so the browser never requests
+            a file that isn't there. `preload="none"` keeps the card's first
+            paint free of an audio fetch. */}
+        {src && (
+          <audio
+            ref={audioRef}
+            src={src}
+            preload="none"
+            onEnded={() => setSpeaking(false)}
+            onPause={() => setSpeaking(false)}
+            onError={() => setSpeaking(false)}
+          />
+        )}
 
         <button
           type="button"
           onClick={speak}
+          aria-disabled={!src}
           className="uml"
-          style={{ marginTop: f(14), width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: f(12), background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.14)", borderRadius: f(16), padding: `${f(11)}px ${f(14)}px`, cursor: "pointer", textAlign: "left" }}
+          style={{ marginTop: f(14), width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: f(12), background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.14)", borderRadius: f(16), padding: `${f(11)}px ${f(14)}px`, cursor: src ? "pointer" : "default", textAlign: "left" }}
         >
           <span style={{ width: f(44), height: f(44), borderRadius: "50%", background: AMBER, display: "flex", alignItems: "center", justifyContent: "center", flex: "none" }}>
             {speaking ? (
@@ -487,10 +616,7 @@ function ActionCard({ f, onPlay }: { f: (n: number) => number; onPlay: () => voi
           </span>
           <span>
             <span style={{ display: "block", font: `700 ${f(15)}px/1.2 ${FONT}`, color: "#fff" }}>
-              {speaking ? "Detener" : "Escuchar la pregunta"}
-            </span>
-            <span style={{ display: "block", font: `400 ${f(13)}px/1.3 ${FONT}`, color: "rgba(255,255,255,.55)", marginTop: f(1) }}>
-              {speaking ? "Stop reading" : "Hear the question out loud"}
+              {speaking ? c.speakStop : c.speakPlay}
             </span>
           </span>
         </button>
@@ -500,7 +626,7 @@ function ActionCard({ f, onPlay }: { f: (n: number) => number; onPlay: () => voi
             onClick={onPlay}
             style={{ width: "100%", background: AMBER, color: NAVY, font: `700 ${f(17)}px/1.2 ${FONT}`, border: "none", borderRadius: f(16), padding: f(14), cursor: "pointer" }}
           >
-            Jugar juego de preguntas
+            {c.playGame}
           </button>
         </div>
       </CardBody>
@@ -515,6 +641,10 @@ export default function ReportePage() {
   const reduced = usePrefersReducedMotion();
 
   const [gameOpen, setGameOpen] = useState(false);
+
+  // Spanish is the default view; the toggle is in-memory only, by design.
+  const [lang, setLang] = useState<Lang>("es");
+  const c = COPY[lang];
 
   // Loader: hold the mark briefly, then slide it out while card 1 fades in.
   const [dataReady, setDataReady] = useState(false);
@@ -688,10 +818,10 @@ export default function ReportePage() {
   const x = pad - index * step + (dragging ? drag : 0);
 
   const cards = [
-    <TeacherCard key="teacher" f={f} />,
-    <FocusCard key="focus" f={f} />,
-    <PictorialCard key="pictorial" f={f} />,
-    <ActionCard key="action" f={f} onPlay={() => setGameOpen(true)} />,
+    <TeacherCard key="teacher" f={f} lang={lang} c={c} />,
+    <FocusCard key="focus" f={f} lang={lang} c={c} />,
+    <PictorialCard key="pictorial" f={f} c={c} />,
+    <ActionCard key="action" f={f} lang={lang} c={c} onPlay={() => setGameOpen(true)} />,
   ];
 
   return (
@@ -758,11 +888,48 @@ export default function ReportePage() {
             padding: `${f(24)}px 0`,
           }}
         >
+          {/* Language toggle. Sits above the deck so it reads as page-level
+              chrome rather than part of any one card. */}
+          <div
+            role="group"
+            aria-label="Language / Idioma"
+            style={{
+              display: "flex",
+              gap: 4,
+              padding: 4,
+              background: CARD,
+              border: `1px solid ${CARD_BORDER}`,
+              borderRadius: 999,
+              boxShadow: "0 2px 8px rgba(15,30,53,.08)",
+            }}
+          >
+            {(["es", "en"] as const).map((l) => (
+              <button
+                key={l}
+                type="button"
+                onClick={() => setLang(l)}
+                aria-pressed={lang === l}
+                style={{
+                  border: "none",
+                  borderRadius: 999,
+                  padding: `${f(7)}px ${f(16)}px`,
+                  cursor: "pointer",
+                  font: `700 ${f(13)}px/1.2 ${FONT}`,
+                  background: lang === l ? NAVY : "transparent",
+                  color: lang === l ? "#fff" : MUTED,
+                  transition: "background .2s, color .2s",
+                }}
+              >
+                {COPY[l].toggle}
+              </button>
+            ))}
+          </div>
+
           <div
             ref={trackRef}
             role="group"
             aria-roledescription="carousel"
-            aria-label="Reporte semanal"
+            aria-label={c.carousel}
             onPointerDown={onPointerDown}
             onClickCapture={onClickCapture}
             style={{
@@ -820,7 +987,7 @@ export default function ReportePage() {
               <button
                 key={i}
                 onClick={() => go(i)}
-                aria-label={`Tarjeta ${i + 1} de ${CARD_COUNT}`}
+                aria-label={`${c.card} ${i + 1} ${c.of} ${CARD_COUNT}`}
                 aria-current={i === index}
                 style={{
                   width: i === index ? 24 : 8,
