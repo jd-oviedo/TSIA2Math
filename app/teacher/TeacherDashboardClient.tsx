@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import posthog from 'posthog-js';
 import MathText from '../components/MathText';
 import { LogoutButton } from '../components/LogoutButton';
+import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from '../components/fonts';
 
 // ─── Types (match the API route response shapes) ─────────────────────────────
 
@@ -74,10 +75,10 @@ interface DisplayStudent {
 const PASSING = 950;
 
 const STR: Record<Strand, { code: string; name: string; short: string; color: string }> = {
-  QR: { code: 'QR', name: 'Quantitative Reasoning', short: 'Quantitative', color: '#B5D4F4' },
-  AR: { code: 'AR', name: 'Algebraic Reasoning', short: 'Algebraic', color: '#9FE1CB' },
-  GR: { code: 'GR', name: 'Geometric & Spatial', short: 'Geometric & Spatial', color: '#FAC775' },
-  PR: { code: 'PR', name: 'Probabilistic & Statistical', short: 'Probabilistic', color: '#CECBF6' },
+  QR: { code: 'QR', name: 'Quantitative Reasoning', short: 'Quantitative Reasoning', color: '#B5D4F4' },
+  AR: { code: 'AR', name: 'Algebraic Reasoning', short: 'Algebraic Reasoning', color: '#9FE1CB' },
+  GR: { code: 'GR', name: 'Geometric & Spatial', short: 'Geometric and Spatial Reasoning', color: '#FAC775' },
+  PR: { code: 'PR', name: 'Probabilistic & Statistical', short: 'Probabilistic and Statistical Reasoning', color: '#CECBF6' },
 };
 const ORDER: Strand[] = ['QR', 'AR', 'GR', 'PR'];
 
@@ -153,12 +154,17 @@ function useViewport() {
 
 // ─── Logo ──────────────────────────────────────────────────────────────────────
 
+// Wordmark is 2000x485, so setting width alone keeps the aspect ratio intact.
+// 152px fits the 200px sidebar minus its 18px side padding.
 function Brand() {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-      <img src="/unpackmath-logo.png" alt="UnpackMath" style={{ width: 36, height: 36, objectFit: 'contain' }} />
-      <span style={{ fontFamily: "'Kodchasan', sans-serif", fontWeight: 600, fontSize: 17, letterSpacing: -0.2, color: '#fff' }}>UnpackMath</span>
-    </div>
+    <img
+      src="/unpackmath-wordmark.png"
+      alt="UnpackMath"
+      width={2000}
+      height={485}
+      style={{ width: 152, maxWidth: '100%', height: 'auto', display: 'block' }}
+    />
   );
 }
 
@@ -212,7 +218,6 @@ function SidebarInner({ teacherName, teacherEmail, onNavigate }: { teacherName: 
                 fontWeight: isActive ? 600 : 500, textDecoration: 'none',
                 color: isActive ? '#E7BE7B' : 'rgba(255,255,255,0.64)',
                 background: isActive ? 'rgba(198,138,47,0.14)' : 'transparent',
-                boxShadow: isActive ? 'inset 3px 0 0 #C68A2F' : 'none',
                 transition: 'background 0.12s',
               }}
               onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.06)'; }}
@@ -263,7 +268,7 @@ function SummaryCards({ enrolled, notTested, crCount, crPct, weakStrand, avgScor
         <div style={{ marginTop: 9, fontSize: 12, color: '#5F5E5A' }}>Scored ≥ 950 on TSIA2</div>
       </div>
       {/* Weakest strand — amber highlight */}
-      <div style={{ background: '#FBF4E6', border: '1px solid rgba(198,138,47,0.35)', borderTop: '3px solid #C68A2F', borderRadius: 12, padding: '16px 18px', boxShadow: '0 1px 2px rgba(198,138,47,0.08)' }}>
+      <div style={{ background: '#FBF4E6', border: '1px solid rgba(198,138,47,0.35)', borderRadius: 12, padding: '16px 18px', boxShadow: '0 1px 2px rgba(198,138,47,0.08)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
           <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: 0.7, textTransform: 'uppercase', color: '#9A6A1F' }}>Weakest strand</span>
           {weakStrand && <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: 0.6, color: '#fff', background: '#C68A2F', padding: '2px 6px', borderRadius: 4 }}>FOCUS</span>}
@@ -299,7 +304,7 @@ function StrandPanel({ strandPct, totalAttempts, cols }: { strandPct: Record<Str
     <div style={{ background: '#fff', border: '1px solid rgba(15,30,53,0.07)', borderRadius: 12, padding: '20px 22px', boxShadow: '0 1px 2px rgba(15,30,53,0.04)', marginBottom: 26 }}>
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 18, gap: 12, flexWrap: 'wrap' }}>
         <div>
-          <h2 style={{ margin: 0, fontFamily: "'Kodchasan', sans-serif", fontWeight: 600, fontSize: 16, color: '#0F1E35' }}>Class strand mastery</h2>
+          <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: '#0F1E35' }}>Class strand mastery</h2>
           <div style={{ marginTop: 3, fontSize: 12, color: '#5F5E5A' }}>Average accuracy by TSIA2 reasoning strand</div>
         </div>
         <div style={{ fontSize: 11, color: '#8A8983', fontWeight: 600 }}>{totalAttempts} attempts this class</div>
@@ -512,7 +517,7 @@ function ModalShell({ title, onClose, children }: { title: string; onClose: () =
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(15,30,53,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 200, padding: 16 }} onClick={onClose}>
       <div style={{ background: '#fff', borderRadius: 16, padding: 28, width: '100%', maxWidth: 420, boxShadow: '0 20px 60px rgba(15,30,53,0.18)' }} onClick={(e) => e.stopPropagation()}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
-          <h2 style={{ margin: 0, fontFamily: "'Kodchasan', sans-serif", fontWeight: 600, fontSize: 18, color: '#0F1E35' }}>{title}</h2>
+          <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: '#0F1E35' }}>{title}</h2>
           <button onClick={onClose} aria-label="Close" style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#8A8983', padding: 4 }}>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><line x1="4" y1="4" x2="14" y2="14" /><line x1="14" y1="4" x2="4" y2="14" /></svg>
           </button>
@@ -631,7 +636,7 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile }:
     <div id="roster">
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 13, gap: 12, flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-          <h2 style={{ margin: 0, fontFamily: "'Kodchasan', sans-serif", fontWeight: 600, fontSize: 18, color: '#0F1E35' }}>Class roster</h2>
+          <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: '#0F1E35' }}>Class roster</h2>
           <span style={{ fontSize: 12, fontWeight: 600, color: '#8A8983', background: '#EDEBE4', padding: '2px 8px', borderRadius: 20 }}>{enrolled}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -810,10 +815,10 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
       <style>{`
         * { box-sizing: border-box; }
         body { margin: 0; background: #F5F5F3; -webkit-font-smoothing: antialiased; }
-        @import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;500;600;700&display=swap');
+        ${FONT_BASE_CSS}
       `}</style>
 
-      <div style={{ display: 'flex', minHeight: '100vh', fontFamily: 'Arial, Helvetica, sans-serif', color: '#1A1A1A' }}>
+      <div style={{ display: 'flex', minHeight: '100vh', fontFamily: FONT_BODY, color: '#1A1A1A' }}>
 
         {/* Desktop sidebar */}
         {!isCompact && (
@@ -848,7 +853,7 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
           <div style={{ padding: isMobile ? '18px 16px 48px' : '26px 32px 52px' }}>
             {/* Page header */}
             <div style={{ marginBottom: 22 }}>
-              <h1 style={{ margin: 0, fontFamily: "'Kodchasan', sans-serif", fontWeight: 600, fontSize: isMobile ? 22 : 27, letterSpacing: -0.4, color: '#0F1E35' }}>{selectedClass?.name ?? 'Your classes'}</h1>
+              <h1 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: isMobile ? 22 : 27, letterSpacing: -0.4, color: '#0F1E35' }}>{selectedClass?.name ?? 'Your classes'}</h1>
               <div style={{ marginTop: 6, fontSize: 13, color: '#5F5E5A' }}>
                 {classes.length === 0
                   ? 'Create your first class to get started.'
@@ -875,7 +880,7 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
                 {/* Misconceptions */}
                 <div id="misconceptions" style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 13, gap: 12, flexWrap: 'wrap' }}>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 11 }}>
-                    <h2 style={{ margin: 0, fontFamily: "'Kodchasan', sans-serif", fontWeight: 600, fontSize: 18, color: '#0F1E35' }}>Top misconceptions</h2>
+                    <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: '#0F1E35' }}>Top misconceptions</h2>
                     <span style={{ fontSize: 13, color: '#5F5E5A' }}>Class-wide, most recent test per student</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 11, color: '#8A8983' }}>

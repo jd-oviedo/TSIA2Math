@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from '../../components/fonts';
 
 export default function InactiveTeacher() {
   const [w, setW] = useState(1280);
@@ -14,8 +15,8 @@ export default function InactiveTeacher() {
 
   return (
     <>
-      <style>{`* { box-sizing: border-box; } body { margin: 0; background: #0F1E35; }`}</style>
-      <div style={{ minHeight: '100vh', background: '#0F1E35', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: isNarrow ? '32px 20px' : '40px 24px', fontFamily: 'Arial, Helvetica, sans-serif' }}>
+      <style>{`* { box-sizing: border-box; } body { margin: 0; background: #0F1E35; } ${FONT_BASE_CSS}`}</style>
+      <div style={{ minHeight: '100vh', background: '#0F1E35', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: isNarrow ? '32px 20px' : '40px 24px', fontFamily: FONT_BODY }}>
         <div style={{ maxWidth: 900, width: '100%', display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '1fr 1fr', gap: isNarrow ? 36 : 60, alignItems: 'center' }}>
 
           {/* Left — copy */}
@@ -24,7 +25,7 @@ export default function InactiveTeacher() {
               <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#C68A2F' }} />
               TEACHER · PRO
             </div>
-            <h1 style={{ margin: '0 0 16px', fontFamily: "'Kodchasan', sans-serif", fontWeight: 600, fontSize: isNarrow ? 30 : 36, letterSpacing: -0.5, color: '#fff', lineHeight: 1.1 }}>
+            <h1 style={{ margin: '0 0 16px', fontFamily: FONT_HEADING, fontWeight: 600, fontSize: isNarrow ? 30 : 36, letterSpacing: -0.5, color: '#fff', lineHeight: 1.1 }}>
               You're almost in.
             </h1>
             <p style={{ margin: '0 0 28px', fontSize: 15, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7 }}>
