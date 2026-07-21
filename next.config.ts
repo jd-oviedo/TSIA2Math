@@ -12,6 +12,11 @@ const SENTRY_INGEST = "https://*.ingest.us.sentry.io";
 // is fine for now, it only allows supabase.co subdomains.
 const SUPABASE_HOST = "https://*.supabase.co";
 
+// Google Apps Script Web App backing the /go interest-capture form. The form
+// posts with mode "no-cors", so without this entry the browser blocks the
+// request silently and the sheet never receives a row.
+const APPS_SCRIPT = "https://script.google.com";
+
 // Upstash Redis is only contacted server-side (in the route handlers), so
 // it does not need a browser-level CSP entry. Never add it here.
 
@@ -32,7 +37,7 @@ const cspDirectives = [
 
   // API calls: Supabase (DB + auth REST), PostHog analytics.
   // No Upstash here — it's server-to-server only.
-  `connect-src 'self' ${SUPABASE_HOST} ${POSTHOG_HOST} ${POSTHOG_ASSETS} ${SENTRY_INGEST}`,
+  `connect-src 'self' ${SUPABASE_HOST} ${POSTHOG_HOST} ${POSTHOG_ASSETS} ${SENTRY_INGEST} ${APPS_SCRIPT}`,
 
   // Google OAuth redirect. 'self' covers our own /auth/callback route.
   `frame-ancestors 'none'`,

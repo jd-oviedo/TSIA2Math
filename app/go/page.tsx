@@ -1,60 +1,18 @@
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Footer } from "../components/Footer";
+import { RoleTapList } from "./RoleTapList";
 
 export const metadata: Metadata = {
   title: "UnpackMath",
   description: "Are you a student, teacher, or parent?",
 };
 
-const NAVY = "#0F1E35";
-const STUDENT_ORANGE = "#F0A33E";
 const OFF_WHITE = "#F5F5F3";
 const NEAR_BLACK = "#1A1A1A";
 const WARM_GRAY = "#5F5E5A";
-const SKY = "#6FBEE6";
 
 const KODCHASAN = "var(--font-kodchasan, Kodchasan, sans-serif)";
 const SANS = "Arial, system-ui, sans-serif";
-
-type Role = {
-  href: string;
-  label: string;
-  labelEs: string;
-  background: string;
-  shadow: string;
-  subLabelColor: string;
-  external?: boolean;
-};
-
-const ROLES: Role[] = [
-  {
-    href: "/adaptive-test",
-    label: "Student",
-    labelEs: "Estudiante",
-    background: STUDENT_ORANGE,
-    shadow: "0 8px 20px rgba(240,163,62,0.34)",
-    subLabelColor: "rgba(255,255,255,0.9)",
-  },
-  {
-    href: "https://app.unpackmath.com/demo",
-    label: "Teacher",
-    labelEs: "Maestro(a)",
-    background: SKY,
-    shadow: "0 8px 20px rgba(111,190,230,0.36)",
-    subLabelColor: "rgba(255,255,255,0.92)",
-    external: true,
-  },
-  {
-    href: "/reporte",
-    label: "Parent/Guardian",
-    labelEs: "Padre/Madre/Guardián",
-    background: NAVY,
-    shadow: "0 8px 20px rgba(15,30,53,0.28)",
-    subLabelColor: "rgba(255,255,255,0.8)",
-  },
-];
 
 export default function QrLanding() {
   return (
@@ -147,80 +105,7 @@ export default function QrLanding() {
         </p>
       </div>
 
-      <nav
-        style={{
-          position: "relative",
-          padding: "34px 26px 0",
-          display: "flex",
-          flexDirection: "column",
-          gap: "15px",
-        }}
-      >
-        {ROLES.map((role) => {
-          const tapStyle: CSSProperties = {
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "0 26px",
-            height: "92px",
-            borderRadius: "22px",
-            background: role.background,
-            boxShadow: role.shadow,
-            textDecoration: "none",
-            boxSizing: "border-box",
-          };
-
-          const content = (
-            <>
-              <span style={{ display: "flex", flexDirection: "column", textAlign: "left" }}>
-                <span
-                  style={{
-                    fontFamily: KODCHASAN,
-                    fontWeight: 700,
-                    fontSize: "26px",
-                    lineHeight: 1,
-                    color: "#fff",
-                  }}
-                >
-                  {role.label}
-                </span>
-                <span
-                  style={{
-                    marginTop: "5px",
-                    fontFamily: SANS,
-                    fontSize: "15px",
-                    color: role.subLabelColor,
-                  }}
-                >
-                  {role.labelEs}
-                </span>
-              </span>
-              <span
-                aria-hidden
-                style={{
-                  fontFamily: KODCHASAN,
-                  fontWeight: 700,
-                  fontSize: "30px",
-                  color: "#fff",
-                }}
-              >
-                ›
-              </span>
-            </>
-          );
-
-          // Absolute URLs bypass the client router, so they need a plain anchor.
-          return role.external ? (
-            <a key={role.label} href={role.href} className="um-tap" style={tapStyle}>
-              {content}
-            </a>
-          ) : (
-            <Link key={role.label} href={role.href} className="um-tap" style={tapStyle}>
-              {content}
-            </Link>
-          );
-        })}
-      </nav>
+      <RoleTapList />
 
       {/* Shared site footer, so the legal links match every other page exactly. */}
       <div style={{ position: "relative", marginTop: "auto", paddingTop: "40px", paddingBottom: "16px" }}>
