@@ -1,7 +1,25 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import MathText from '../components/MathText';
+
+// Only Camila has a demo profile page behind the link. Every other roster row
+// renders the same label as an inert span so the stage demo has one live path.
+const LINKED_STUDENT_EMAIL = 'camila.a@demo.edu';
+const LINKED_STUDENT_HREF = '/demo/student/camila';
+
+const VIEW_LINK_STYLE: React.CSSProperties = {
+  fontSize: 13, fontWeight: 700, color: '#C68A2F', textDecoration: 'none', whiteSpace: 'nowrap',
+};
+
+function ViewProfile({ email, block }: { email: string; block?: boolean }) {
+  const style = block ? { ...VIEW_LINK_STYLE, display: 'inline-block', marginTop: 12 } : VIEW_LINK_STYLE;
+  if (email === LINKED_STUDENT_EMAIL) {
+    return <Link href={LINKED_STUDENT_HREF} style={style}>View Profile →</Link>;
+  }
+  return <span style={{ ...style, cursor: 'default' }}>View Profile →</span>;
+}
 
 const STR: Record<string, { code: string; name: string; color: string }> = {
   QR: { code: 'QR', name: 'Quantitative Reasoning', color: '#B5D4F4' },
@@ -295,16 +313,17 @@ export default function DemoPage() {
                     <div style={{ marginTop: 6, fontSize: 11, color: '#8A8983' }}>
                       Weakest · <span style={{ fontWeight: 600, color: '#5F5E5A' }}>{s.weakLabel}</span>
                     </div>
+                    <ViewProfile email={s.email} block />
                   </div>
                 ))}
               </div>
             ) : (
               <div style={{ background: '#fff', border: '1px solid rgba(15,30,53,0.07)', borderRadius: 12, overflowX: 'auto', marginBottom: 34 }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 680 }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 760 }}>
                   <thead>
                     <tr style={{ background: '#FBFBF9', borderBottom: '1px solid #E7E5DD' }}>
-                      {['Student','Score','Placement','Strand profile','Tests','Last active'].map(h => (
-                        <th key={h} style={{ textAlign: 'left', padding: h === 'Student' ? '11px 20px' : '11px 14px', fontSize: 11, fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase', color: '#8A8983', whiteSpace: 'nowrap' }}>{h}</th>
+                      {['Student','Score','Placement','Strand profile','Tests','Last active',''].map(h => (
+                        <th key={h} style={{ textAlign: 'left', padding: h === '' || h === 'Student' ? '11px 20px' : '11px 14px', fontSize: 11, fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase', color: '#8A8983', whiteSpace: 'nowrap' }}>{h}</th>
                       ))}
                     </tr>
                   </thead>
@@ -338,6 +357,9 @@ export default function DemoPage() {
                         </td>
                         <td style={{ padding: '13px 14px', fontSize: 13.5, fontWeight: 600, color: '#5F5E5A' }}>{s.tests}</td>
                         <td style={{ padding: '13px 14px', fontSize: 12.5, color: '#8A8983' }}>{s.active}</td>
+                        <td style={{ padding: '13px 20px', textAlign: 'right' }}>
+                          <ViewProfile email={s.email} />
+                        </td>
                       </tr>
                     ))}
                   </tbody>
