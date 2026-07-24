@@ -130,7 +130,7 @@ export function Header() {
             }}
           >
             <Image
-              src="/unpackmath-logo.png"
+              src="/images/brand/mu-mark.png"
               alt="UnpackMath logo"
               width={42}
               height={42}
