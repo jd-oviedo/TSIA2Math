@@ -3,3 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 .katex { color: var(--ec-ink) !important; }
+
+/* Mobile-safe full height: dynamic viewport units account for the collapsing
+   browser toolbar, with a 100vh fallback for browsers without dvh support.
+   Fixes off-center centering and the scroll jump when the URL bar hides. */
+.min-h-dvh { min-height: 100vh; min-height: 100dvh; }

@@ -36,7 +36,9 @@ function JoinClassPanel() {
     setLoading(false);
 
     if (!res.ok) {
-      setError(data.error ?? "Something went wrong.");
+      // Coerce defensively: the error state renders directly as a React child,
+      // so a non-string payload would throw "Objects are not valid as a React child".
+      setError(typeof data.error === "string" ? data.error : "Something went wrong.");
     } else {
       setSuccess(`You've joined ${data.class_name}.`);
       setCode("");
@@ -151,7 +153,8 @@ function FlagsTab() {
     fetch("/api/flags")
       .then((r) => r.json())
       .then((data) => {
-        if (data.error) setError(data.error);
+        // Coerce defensively so the rendered error state is always a string.
+        if (data.error) setError(typeof data.error === "string" ? data.error : "Failed to load flags.");
         else setFlags(data.flags ?? []);
       })
       .catch(() => setError("Failed to load flags."));
@@ -303,16 +306,18 @@ export default function DashboardList() {
   }
 
   if (sessions === null) {
+    // Reserve the content region's height while loading so the footer and page
+    // scroll don't jump when the (taller) history/flags content swaps in.
     return (
-      <div style={{ textAlign: "center", padding: "60px 0" }}>
-        <div style={{ width: "32px", height: "32px", border: "3px solid var(--ec-line)", borderTopColor: "var(--ec-accent)", borderRadius: "50%", margin: "0 auto", animation: "spin 0.8s linear infinite" }} />
+      <div style={{ minHeight: "55vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ width: "32px", height: "32px", border: "3px solid var(--ec-line)", borderTopColor: "var(--ec-accent)", borderRadius: "50%", animation: "spin 0.8s linear infinite" }} />
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>
     );
   }
 
   return (
-    <div>
+    <div style={{ minHeight: "55vh" }}>
       <h1 style={{
         fontSize: "clamp(26px, 4vw, 32px)", fontWeight: 800, color: "var(--ec-ink)",
         letterSpacing: "-0.03em", marginBottom: "24px",

@@ -15,7 +15,7 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--ec-bg)", position: "relative" }}>
+    <div className="min-h-dvh" style={{ display: "flex", flexDirection: "column", background: "var(--ec-bg)", position: "relative" }}>
       <div style={{ position: "relative" }}>
         <Header />
       </div>
