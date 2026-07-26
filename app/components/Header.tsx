@@ -82,6 +82,7 @@ export function Header() {
       }}
     >
       <nav
+        className="um-nav"
         style={{
           pointerEvents: "all",
           display: "flex",
@@ -102,7 +103,19 @@ export function Header() {
           transition: "box-shadow 0.25s ease",
         }}
       >
-        
+        {/* Small-screen guard: the "…Dashboard" pill truncates (ellipsis) so the
+            logout + theme-toggle icons never clip off the right edge. */}
+        <style>{`
+          .um-navpill {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          @media (max-width: 420px) {
+            .um-nav { gap: 10px; }
+          }
+        `}</style>
+
         <a  href="https://www.unpackmath.com"
           style={{
             display: "flex",
@@ -150,10 +163,12 @@ export function Header() {
           </span>
         </a>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: 0 }}>
           {navRole === "teacher" && (
-            
+
             <a  href="/teacher"
+              className="um-navpill"
+              title="Teacher Dashboard"
               style={{
                 fontSize: "13px",
                 fontWeight: 600,
@@ -170,8 +185,10 @@ export function Header() {
             </a>
           )}
           {navRole === "student" && (
-            
+
             <a  href="/dashboard"
+              className="um-navpill"
+              title="My Dashboard"
               style={{
                 fontSize: "13px",
                 fontWeight: 600,
