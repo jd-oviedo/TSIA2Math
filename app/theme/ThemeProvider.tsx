@@ -21,9 +21,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<ThemeName>("light");
 
   useEffect(() => {
-    const stored = localStorage.getItem("ec-theme") as ThemeName | null;
-    if (stored && (stored === "light" || stored === "dark")) {
-      setThemeState(stored);
+    // localStorage throws SecurityError in the Instagram in-app browser and iOS
+    // private mode. A missing preference just falls back to the "light" default.
+    try {
+      const stored = localStorage.getItem("ec-theme") as ThemeName | null;
+      if (stored && (stored === "light" || stored === "dark")) {
+        setThemeState(stored);
+      }
+    } catch {
+      // no persisted theme available -- keep the default
     }
   }, []);
 
@@ -31,7 +37,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const vars = themes[theme].vars;
     const root = document.documentElement;
     Object.entries(vars).forEach(([k, v]) => root.style.setProperty(k, v));
-    localStorage.setItem("ec-theme", theme);
+    // Same SecurityError guard: applying the theme to the DOM must not depend on
+    // being able to persist it.
+    try {
+      localStorage.setItem("ec-theme", theme);
+    } catch {
+      // persistence unavailable -- theme still applies for this session
+    }
   }, [theme]);
 
   const setTheme = (t: ThemeName) => setThemeState(t);

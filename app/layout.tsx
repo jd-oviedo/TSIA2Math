@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "./theme/ThemeProvider";
 import { PostHogProvider } from "./providers";
@@ -21,6 +21,14 @@ const fredoka = Fredoka({
   display: "swap",
 });
 
+// Explicit viewport so mobile scaling is deterministic rather than relying on
+// the framework default. `viewport-fit=cover` pairs with the dvh-based layouts.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export const metadata: Metadata = {
   title: "UnpackMath – TSIA2 Prep",
   description: "Computer-adaptive TSIA2 math practice",
@@ -34,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${kodchasan.variable} ${fredoka.variable}`}>
       <body
-        className="min-h-screen"
+        className="min-h-dvh"
         style={{ background: "var(--ec-bg)", color: "var(--ec-ink)" }}
       >
         <PostHogProvider>
