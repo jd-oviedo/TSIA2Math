@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import GumuChat from './GumuChat';
 import { useGumuGate } from './GumuGate';
 import { C, ink, EYEBROW, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
@@ -28,6 +28,9 @@ type Props = {
   // Worked solutions split out of Part 4, keyed by item_number. Absent on a
   // topic whose answer key would not parse, and the reveal link goes with it.
   solutions?: Record<number, string>;
+  // Reports how many distinct items have been answered correctly at least
+  // once this visit, so the mastery gate on Next can open without a reload.
+  onMasteredCountChange?: (count: number) => void;
 };
 
 // correct_answer is null when GUMU is available -- the server withholds it so
@@ -49,6 +52,7 @@ export default function PracticeQuiz({
   heading,
   blurb,
   solutions,
+  onMasteredCountChange,
 }: Props) {
   // Keyed by item_number rather than array index so the maps stay correct
   // regardless of how the items are ordered or filtered.
@@ -59,6 +63,11 @@ export default function PracticeQuiz({
   // Filled in only when GUMU's escape hatch hands the answer back.
   const [revealed, setRevealed] = useState<Record<number, string>>({});
   const [openSolutions, setOpenSolutions] = useState<Record<number, boolean>>({});
+  // Items answered correctly at least once. Only ever grows, so a retry after a
+  // right answer cannot walk the mastery gate backwards. Mirrors the server,
+  // which counts distinct ever-correct items off the append-only attempt log.
+  // A ref, not state: nothing here renders from it, it only reports upward.
+  const mastered = useRef<Set<number>>(new Set());
 
   const { activeCount, setItemActive } = useGumuGate();
 
@@ -105,6 +114,10 @@ export default function PracticeQuiz({
       }
 
       setResults((r) => ({ ...r, [itemNumber]: data }));
+      if (data.isCorrect && !mastered.current.has(itemNumber)) {
+        mastered.current.add(itemNumber);
+        onMasteredCountChange?.(mastered.current.size);
+      }
     } catch {
       setErrors((e) => ({
         ...e,
@@ -113,6 +126,34 @@ export default function PracticeQuiz({
     } finally {
       setPending((p) => ({ ...p, [itemNumber]: false }));
     }
+  }
+
+  // Clears one item back to unanswered so it can be attempted again. Mastery
+  // gating means a student has to be able to keep going until they clear the
+  // threshold, and the grading route already accepts repeat submissions: it
+  // appends another curriculum_attempts row rather than updating one.
+  //
+  // Dropping the GUMU gate for this item first matters. The chat panel unmounts
+  // with the result, and if it held an open session the answer key would stay
+  // paused with nothing left on screen to close it.
+  function retry(itemNumber: number) {
+    setItemActive(`${section}-${itemNumber}`, false);
+    setResults((r) => {
+      const next = { ...r };
+      delete next[itemNumber];
+      return next;
+    });
+    setSelected((s) => {
+      const next = { ...s };
+      delete next[itemNumber];
+      return next;
+    });
+    setRevealed((r) => {
+      const next = { ...r };
+      delete next[itemNumber];
+      return next;
+    });
+    setErrors((e) => ({ ...e, [itemNumber]: '' }));
   }
 
   const answeredCount = Object.keys(results).length;
@@ -450,21 +491,49 @@ export default function PracticeQuiz({
                 shows when it has something the chip does not. */}
             <div role="status" aria-live="polite">
               {answered && (
-                <p
-                  className={result.isCorrect ? 'um-visually-hidden' : undefined}
+                <div
                   style={{
-                    margin: 0,
-                    font: `500 14.5px ${FONT_BODY}`,
-                    lineHeight: 1.6,
-                    color: C.amber,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '14px',
+                    flexWrap: 'wrap',
                   }}
                 >
-                  {result.isCorrect
-                    ? 'Correct'
-                    : knownAnswer
-                      ? `Not quite. The answer is ${knownAnswer}.`
-                      : 'Not quite. Let’s figure out where it went sideways.'}
-                </p>
+                  <p
+                    className={result.isCorrect ? 'um-visually-hidden' : undefined}
+                    style={{
+                      margin: 0,
+                      font: `500 14.5px ${FONT_BODY}`,
+                      lineHeight: 1.6,
+                      color: C.amber,
+                    }}
+                  >
+                    {result.isCorrect
+                      ? 'Correct'
+                      : knownAnswer
+                        ? `Not quite. The answer is ${knownAnswer}.`
+                        : 'Not quite. Let’s figure out where it went sideways.'}
+                  </p>
+                  {!result.isCorrect && (
+                    <button
+                      type="button"
+                      className="um-link"
+                      onClick={() => retry(item.item_number)}
+                      style={{
+                        padding: 0,
+                        border: 'none',
+                        background: 'none',
+                        font: `500 13.5px ${FONT_BODY}`,
+                        color: C.gemini,
+                        textDecoration: 'underline',
+                        textUnderlineOffset: '3px',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      Try this one again
+                    </button>
+                  )}
+                </div>
               )}
               {error && (
                 <p

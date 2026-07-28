@@ -1,6 +1,8 @@
 import { createAdminClient } from '../lib/supabase-admin';
 
-// Every read for the student dashboard.
+// Dashboard-only reads. The curriculum sequence and gate maths live in
+// app/lib/curriculum-progress.ts and are re-exported here, so Modules and the
+// lesson/practice/quiz pages agree on ordering and on what counts as progress.
 //
 // All of it goes through the admin client, filtered by the caller's own id.
 // That is not a shortcut around RLS, it is the house pattern: curriculum_attempts,
@@ -11,127 +13,21 @@ import { createAdminClient } from '../lib/supabase-admin';
 // The rule that keeps that safe: every function here takes studentId and every
 // query filters on it. There is no unscoped read in this file.
 
-export type TopicRow = {
-  course_id: string;
-  topic_id: string;
-  topic_name: string;
-  unit_number: number;
-  sequence_in_unit: number;
-  estimated_time_minutes: number | null;
-};
+export {
+  getTopics,
+  getAttempts,
+  progressByTopic,
+  mostRecentTopic,
+  gradableTotal,
+  topicKey,
+} from '../lib/curriculum-progress';
 
-export type TopicProgress = {
-  total: number;
-  correct: number;
-  attempted: number;
-};
-
-type StoredItem = { format: string };
-type StoredSection = { items?: StoredItem[] };
-
-// How many gradable items a topic holds. Free-response items are excluded for
-// the same reason the topic page will not render them interactively: nothing
-// grades them, so counting them would put a ceiling on progress that no student
-// could ever reach.
-function gradableCount(practiceItems: Record<string, StoredSection> | null): number {
-  if (!practiceItems) return 0;
-  return ['practice', 'mini_quiz'].reduce((sum, section) => {
-    const items = practiceItems[section]?.items ?? [];
-    return sum + items.filter((item) => item.format === 'multiple_choice').length;
-  }, 0);
-}
-
-export type AttemptRow = {
-  course_id: string;
-  topic_id: string;
-  section: string;
-  item_number: number;
-  is_correct: boolean;
-  created_at: string;
-};
-
-export async function getTopics(): Promise<{ topics: TopicRow[]; itemCounts: Map<string, number> }> {
-  const admin = createAdminClient();
-  const { data } = await admin
-    .from('curriculum_topics')
-    .select('course_id, topic_id, topic_name, unit_number, sequence_in_unit, estimated_time_minutes, practice_items')
-    .order('unit_number')
-    .order('sequence_in_unit');
-
-  const rows = data ?? [];
-  const itemCounts = new Map<string, number>();
-  for (const row of rows) {
-    itemCounts.set(`${row.course_id}:${row.topic_id}`, gradableCount(row.practice_items));
-  }
-
-  return {
-    topics: rows.map((row) => ({
-      course_id: row.course_id,
-      topic_id: row.topic_id,
-      topic_name: row.topic_name,
-      unit_number: row.unit_number,
-      sequence_in_unit: row.sequence_in_unit,
-      estimated_time_minutes: row.estimated_time_minutes,
-    })),
-    itemCounts,
-  };
-}
-
-export async function getAttempts(studentId: string): Promise<AttemptRow[]> {
-  const admin = createAdminClient();
-  const { data } = await admin
-    .from('curriculum_attempts')
-    .select('course_id, topic_id, section, item_number, is_correct, created_at')
-    .eq('student_id', studentId)
-    .order('created_at', { ascending: false });
-
-  return data ?? [];
-}
-
-// Progress per topic, from the attempt log rather than a completion table.
-//
-// An item counts as done the first time it is answered correctly, so a student
-// who gets one wrong and comes back to it does not sit permanently short of
-// 100%. curriculum_attempts is append-only, which is what makes this derivable:
-// the row for the later correct answer is still there alongside the wrong one.
-//
-// public.curriculum_completion exists and would be the obvious source, but it
-// holds zero rows and nothing in the codebase writes to it.
-export function progressByTopic(
-  attempts: AttemptRow[],
-  itemCounts: Map<string, number>
-): Map<string, TopicProgress> {
-  const correct = new Map<string, Set<string>>();
-  const seen = new Map<string, Set<string>>();
-
-  for (const attempt of attempts) {
-    const topicKey = `${attempt.course_id}:${attempt.topic_id}`;
-    const itemKey = `${attempt.section}:${attempt.item_number}`;
-    if (!seen.has(topicKey)) seen.set(topicKey, new Set());
-    seen.get(topicKey)!.add(itemKey);
-    if (attempt.is_correct) {
-      if (!correct.has(topicKey)) correct.set(topicKey, new Set());
-      correct.get(topicKey)!.add(itemKey);
-    }
-  }
-
-  const out = new Map<string, TopicProgress>();
-  for (const [topicKey, total] of itemCounts) {
-    out.set(topicKey, {
-      total,
-      correct: correct.get(topicKey)?.size ?? 0,
-      attempted: seen.get(topicKey)?.size ?? 0,
-    });
-  }
-  return out;
-}
-
-// The most recent topic touched, for "pick up where you left off". Derived from
-// max(created_at) on the attempt log, so there is no second write path to keep
-// in sync.
-export function mostRecentTopic(attempts: AttemptRow[]): AttemptRow | null {
-  return attempts[0] ?? null;
-}
+export type {
+  TopicRow,
+  TopicProgress,
+  TopicShape,
+  AttemptRow,
+} from '../lib/curriculum-progress';
 
 export type ClassRow = { id: string; name: string };
 

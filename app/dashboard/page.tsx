@@ -4,6 +4,7 @@ import {
   getAttempts,
   progressByTopic,
   mostRecentTopic,
+  gradableTotal,
   getEnrolledClasses,
 } from './data';
 import { Card, CardTitle, Eyebrow, Muted, PageHeading, ProgressBar } from './ui';
@@ -20,14 +21,14 @@ export default async function DashboardHome() {
   const profile = await getProfile();
   if (!profile) return null; // The layout has already redirected.
 
-  const [{ topics, itemCounts }, attempts, classes] = await Promise.all([
+  const [{ topics, shapes }, attempts, classes] = await Promise.all([
     getTopics(),
     getAttempts(profile.id),
     getEnrolledClasses(profile.id),
   ]);
 
-  const progress = progressByTopic(attempts, itemCounts);
-  const totalItems = [...itemCounts.values()].reduce((a, b) => a + b, 0);
+  const progress = progressByTopic(attempts, shapes);
+  const totalItems = [...shapes.values()].reduce((sum, shape) => sum + gradableTotal(shape), 0);
   const doneItems = [...progress.values()].reduce((a, p) => a + p.correct, 0);
   const pct = totalItems > 0 ? Math.round((doneItems / totalItems) * 100) : 0;
 

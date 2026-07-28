@@ -23,6 +23,12 @@ export const C = {
   // as his without a border.
   gumuSurface: '#F7F1E4',
   midnight: '#0E0E11',
+  // Deep Navy, the pre-July-2026 brand colour. It survives on exactly one
+  // surface: the dark GUMU banner strips, at Juan's explicit direction after
+  // the conflict with the rest of this palette was raised. Everything else dark
+  // in the curriculum tree is Deep Midnight above, and the teacher dashboard
+  // uses this colour throughout because it has not been migrated yet.
+  gumuBanner: '#0F1E35',
   gemini: '#6E9DC8',
   gold: '#C8A96E',
   violet: '#A86EC8',

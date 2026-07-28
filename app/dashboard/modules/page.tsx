@@ -1,5 +1,12 @@
 import { getProfile } from '../../lib/auth';
-import { getTopics, getAttempts, progressByTopic, type TopicRow, type TopicProgress } from '../data';
+import {
+  getTopics,
+  getAttempts,
+  progressByTopic,
+  gradableTotal,
+  type TopicRow,
+  type TopicProgress,
+} from '../data';
 import { Card, EmptyState, Eyebrow, Muted, PageHeading, ProgressBar } from '../ui';
 import { C, ink } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
@@ -25,11 +32,11 @@ export default async function ModulesPage() {
   const profile = await getProfile();
   if (!profile) return null;
 
-  const [{ topics, itemCounts }, attempts] = await Promise.all([
+  const [{ topics, shapes }, attempts] = await Promise.all([
     getTopics(),
     getAttempts(profile.id),
   ]);
-  const progress = progressByTopic(attempts, itemCounts);
+  const progress = progressByTopic(attempts, shapes);
 
   const units = new Map<number, TopicRow[]>();
   for (const topic of topics) {
@@ -55,7 +62,7 @@ export default async function ModulesPage() {
             .sort((a, b) => a[0] - b[0])
             .map(([unitNumber, unitTopics]) => {
               const unitTotal = unitTopics.reduce(
-                (sum, t) => sum + (itemCounts.get(`${t.course_id}:${t.topic_id}`) ?? 0),
+                (sum, t) => sum + gradableTotal(shapes.get(`${t.course_id}:${t.topic_id}`)),
                 0
               );
               const unitDone = unitTopics.reduce(
