@@ -40,3 +40,69 @@ export function renderInlineWithMath(markdown: string): string {
   const single = html.match(/^<p>([\s\S]*)<\/p>$/);
   return single && !single[1].includes('<p>') ? single[1] : html;
 }
+
+// One worked solution, split out of the Part 4 blob so it can be revealed on
+// its own row instead of only inside the all-or-nothing answer key panel.
+export type AnswerKeyEntry = {
+  item_number: number;
+  // The question restated, as the accordion row's label. Rendered inline
+  // because these stems carry math.
+  label_html: string;
+  solution_html: string;
+};
+
+export type AnswerKeyEntries = {
+  practice: AnswerKeyEntry[];
+  mini_quiz: AnswerKeyEntry[];
+};
+
+// Part 4 holds both sections back to back under their own headings, each with
+// its own item header shape. These mirror the regexes the upload parser uses
+// to read correct answers out of the same text (see
+// curriculum/migrations/upload_curriculum.py), so the item numbers here line
+// up with the item_number on every parsed practice item.
+const MINI_QUIZ_HEADING = /^#{3,6}\s*Mini Quiz/m;
+const PRACTICE_KEY_RE = /^\*\*(\d+)\.[ \t]*(.*)$/gm;
+const QUIZ_KEY_RE = /^\*\*Item (\d+):[ \t]*(.*)$/gm;
+
+// Level banners and sub-headings sit between items, so they land at the tail of
+// the previous item's body. The practice cards already carry their own level,
+// and a heading dangling under a worked solution reads as part of it.
+const STRAY_HEADING_RE = /^(?:#{1,6}\s.*|\*\*\w+ Level\*\*)\s*$/gm;
+
+function splitSection(text: string, headerRe: RegExp): AnswerKeyEntry[] {
+  const matches = [...text.matchAll(headerRe)];
+
+  return matches.map((match, i) => {
+    const start = match.index! + match[0].length;
+    const end = i + 1 < matches.length ? matches[i + 1].index! : text.length;
+    const body = text
+      .slice(start, end)
+      .replace(STRAY_HEADING_RE, '')
+      .trim();
+
+    return {
+      item_number: Number(match[1]),
+      // The heading line runs to the closing `**` of the bold stem.
+      label_html: renderInlineWithMath(match[2].replace(/\*\*\s*$/, '').trim()),
+      solution_html: renderMarkdownWithMath(body),
+    };
+  });
+}
+
+// Splits Part 4 into one entry per item. Returns empty lists for any section it
+// cannot parse -- a topic uploaded under an older content shape, say -- and the
+// caller falls back to rendering the whole blob.
+export function splitAnswerKey(raw: string): AnswerKeyEntries {
+  const text = stripAuthoringBlocks(raw || '');
+  if (!text.trim()) return { practice: [], mini_quiz: [] };
+
+  const at = text.search(MINI_QUIZ_HEADING);
+  const practiceText = at === -1 ? text : text.slice(0, at);
+  const quizText = at === -1 ? '' : text.slice(at);
+
+  return {
+    practice: splitSection(practiceText, PRACTICE_KEY_RE),
+    mini_quiz: splitSection(quizText, QUIZ_KEY_RE),
+  };
+}

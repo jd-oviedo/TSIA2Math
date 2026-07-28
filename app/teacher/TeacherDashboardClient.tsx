@@ -5,6 +5,7 @@ import posthog from 'posthog-js';
 import MathText from '../components/MathText';
 import { LogoutButton } from '../components/LogoutButton';
 import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from '../components/fonts';
+import NewAnnouncement from './NewAnnouncement';
 
 // ─── Types (match the API route response shapes) ─────────────────────────────
 
@@ -874,6 +875,7 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
             ) : (
               <>
                 <SummaryCards enrolled={rosterRows.length} notTested={notTested} crCount={collegeReady} crPct={crPct} weakStrand={weakStrand} avgScore={avgScore} cols={summaryCols} />
+                <NewAnnouncement classes={classes} selectedClassId={selectedClassId} />
                 <StrandPanel strandPct={strandPct} totalAttempts={totalAttempts} cols={strandCols} />
                 <Roster students={sortedStudents} enrolled={rosterRows.length} sortBy={sortBy} onSortChange={setSortBy} classId={selectedClassId} isMobile={isMobile} />
 

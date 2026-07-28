@@ -10,6 +10,7 @@ import {
   curriculumPracticeBodySchema,
   formatZodError,
 } from "../../../lib/schemas";
+import { syncCompletionSnapshot } from "../../../lib/curriculum-progress";
 
 // Grades one curriculum practice answer.
 //
@@ -120,6 +121,12 @@ export async function POST(req: Request) {
       // logged, but it is not worth failing the answer they just submitted.
       console.error("curriculum_attempts insert failed", attemptError);
     }
+
+    // Roll the mastery snapshot forward for this topic. Done here rather than
+    // from the browser for the same reason grading is: the client must never be
+    // the thing that says how many it got right. Failures are swallowed inside
+    // the helper.
+    await syncCompletionSnapshot(studentId, course_id, topic_id);
 
     if (misconception) {
       const { error: rpcError } = await admin.rpc("record_misconception", {

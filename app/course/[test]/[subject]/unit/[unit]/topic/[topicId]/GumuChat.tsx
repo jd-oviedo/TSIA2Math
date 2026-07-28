@@ -1,9 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import GumuAvatar from './GumuAvatar';
+import { C, ink, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // GUMU's chat panel. Inline expansion under the item, not a modal, matching
-// the existing reveal-panel pattern.
+// the existing reveal-panel pattern -- and matching the design import's rule
+// that GUMU is a sidecar: the question stays on screen and he docks beneath it,
+// so the student can still see what they got wrong while they talk.
 //
 // The panel never receives the correct answer or the misconception tag. The
 // only way an answer reaches this component is the escape hatch, which returns
@@ -23,15 +28,11 @@ type Props = {
   onRevealAnswer: (correctAnswer: string) => void;
 };
 
-const COLORS = {
-  ink: '#1A1A1A',
-  navy: '#0F1E35',
-  muted: '#5F5E5A',
-  border: '#D8D6D1',
-  gumuBg: '#EDF2FA',
-  studentBg: '#F4F2ED',
-  wrongFg: '#A32020',
-};
+// Matches MAX_STUDENT_TURNS on the server. Held as a fallback only: the start
+// response reports the real cap, and that is what the dots below count. Reading
+// the server constant directly would pull app/lib/gumu -- and the Anthropic SDK
+// with it -- into the browser bundle.
+const DEFAULT_TURNS = 3;
 
 export default function GumuChat({
   courseId,
@@ -49,13 +50,24 @@ export default function GumuChat({
   const [pending, setPending] = useState(false);
   const [error, setError] = useState('');
   const [turnsRemaining, setTurnsRemaining] = useState<number | null>(null);
+  const [totalTurns, setTotalTurns] = useState(DEFAULT_TURNS);
   const [finished, setFinished] = useState(false);
+  // Set once the escape hatch has handed the answer back, so the panel stops
+  // offering a button that would only fetch the same answer again.
+  const [answerShown, setAnswerShown] = useState(false);
 
   // The escape hatch steps up from a quiet text link to a real button once the
   // student is on their last turn, or once the session has ended and it is the
   // only way left to see the answer. Null (before the first reply lands) keeps
   // it quiet.
   const escapeProminent = finished || (turnsRemaining !== null && turnsRemaining <= 1);
+
+  // Which exchange they are in, counting the one on screen. Fills the dots in
+  // the panel header and the "2 of 3 exchanges" line under it.
+  const exchange =
+    turnsRemaining === null
+      ? 1
+      : Math.min(totalTurns, totalTurns - turnsRemaining + (finished ? 0 : 1));
 
   async function post(body: Record<string, unknown>) {
     const res = await fetch('/api/gumu/session', {
@@ -87,6 +99,10 @@ export default function GumuChat({
       // instead of a single opening message.
       setMessages(data.messages ?? [{ role: 'gumu', content: data.message }]);
       setTurnsRemaining(data.turns_remaining ?? null);
+      // The opening response reports the full allowance, so this is the cap.
+      if (typeof data.turns_remaining === 'number' && data.turns_remaining > 0) {
+        setTotalTurns(data.turns_remaining);
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Could not reach GUMU.');
     } finally {
@@ -125,6 +141,7 @@ export default function GumuChat({
     try {
       const data = await post({ action: 'reveal', session_id: sessionId });
       setFinished(true);
+      setAnswerShown(true);
       onSessionChange(false);
       if (data.correct_answer) onRevealAnswer(data.correct_answer);
     } catch (e) {
@@ -136,26 +153,32 @@ export default function GumuChat({
 
   if (!started) {
     return (
-      <div style={{ marginTop: '0.75rem' }}>
+      <div style={{ marginTop: '18px' }}>
         <button
           type="button"
+          className="um-btn-primary"
           onClick={start}
           disabled={pending}
           style={{
-            padding: '0.5rem 1.25rem',
-            borderRadius: '6px',
-            border: `1px solid ${COLORS.navy}`,
-            background: 'transparent',
-            color: COLORS.navy,
-            fontSize: '15px',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '10px',
+            padding: '10px 20px 10px 12px',
+            borderRadius: '11px',
+            border: 'none',
+            background: C.sunset,
+            boxShadow: `0 2px 0 ${C.sunsetShadow}`,
+            font: `600 15px ${FONT_BODY}`,
+            color: C.midnight,
             cursor: pending ? 'wait' : 'pointer',
           }}
         >
+          {/* Plated: on the Sunset Orange button his collar is the same orange,
+              and bare he smears into it. */}
+          <GumuAvatar size={30} plate title="" />
           {pending ? 'Starting…' : 'Work through it with GUMU'}
         </button>
-        {error && (
-          <p style={{ marginTop: '0.5rem', marginBottom: 0, color: COLORS.wrongFg }}>{error}</p>
-        )}
+        {error && <ErrorLine text={error} />}
       </div>
     );
   }
@@ -163,40 +186,84 @@ export default function GumuChat({
   return (
     <div
       style={{
-        marginTop: '0.75rem',
-        border: `1px solid ${COLORS.border}`,
-        borderRadius: '8px',
-        padding: '1rem',
-        background: '#FFFFFF',
+        marginTop: '18px',
+        background: C.gumuSurface,
+        borderRadius: '16px',
+        padding: '18px 20px 20px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '15px',
       }}
     >
-      <div role="log" aria-live="polite" aria-label="Conversation with GUMU">
+      {/* Who is talking, and how much runway is left. The dots carry the same
+          count as the line under the input, one glanceable and one literal. */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '11px' }}>
+        <GumuAvatar size={48} />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+          <div style={{ font: `600 15px ${FONT_HEADING}`, color: C.midnight }}>GUMU</div>
+          <div style={{ font: `400 12px ${FONT_BODY}`, color: ink(0.45) }}>
+            {finished ? 'that one is wrapped up' : 'let’s figure out where it slipped'}
+          </div>
+        </div>
+        <div style={{ flex: 1 }} />
+        <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }} aria-hidden="true">
+          {Array.from({ length: totalTurns }, (_, i) => (
+            <span
+              key={i}
+              style={{
+                width: '7px',
+                height: '7px',
+                borderRadius: '50%',
+                background: i < (finished ? totalTurns : exchange) ? C.gemini : ink(0.15),
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div
+        role="log"
+        aria-live="polite"
+        aria-label="Conversation with GUMU"
+        style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}
+      >
         {messages.map((m, i) => (
           <div
             key={i}
-            style={{
-              display: 'flex',
-              justifyContent: m.role === 'gumu' ? 'flex-start' : 'flex-end',
-              marginBottom: '0.5rem',
-            }}
+            style={
+              m.role === 'gumu'
+                ? {
+                    alignSelf: 'flex-start',
+                    maxWidth: '86%',
+                    background: C.paper,
+                    borderRadius: '16px 16px 16px 5px',
+                    padding: '14px 17px',
+                    font: `400 15.5px ${FONT_BODY}`,
+                    lineHeight: MATH_LINE_HEIGHT,
+                    color: C.midnight,
+                    boxShadow: '0 1px 3px rgba(14,14,17,.06)',
+                    minHeight: '24px',
+                  }
+                : {
+                    alignSelf: 'flex-end',
+                    maxWidth: '78%',
+                    background: C.sky,
+                    borderRadius: '16px 16px 5px 16px',
+                    padding: '13px 17px',
+                    font: `400 15.5px ${FONT_BODY}`,
+                    lineHeight: 1.7,
+                    color: C.midnight,
+                    minHeight: '22px',
+                  }
+            }
           >
-            <div
-              style={{
-                maxWidth: '80%',
-                padding: '0.6rem 0.85rem',
-                borderRadius: '10px',
-                background: m.role === 'gumu' ? COLORS.gumuBg : COLORS.studentBg,
-                color: COLORS.ink,
-                fontSize: '15px',
-                lineHeight: 1.6,
-              }}
-            >
-              {m.content}
-            </div>
+            {m.content}
           </div>
         ))}
         {pending && (
-          <p style={{ color: COLORS.muted, fontSize: '14px', margin: '0.25rem 0' }}>GUMU is thinking…</p>
+          <div style={{ font: `400 13.5px ${FONT_BODY}`, color: ink(0.45) }}>
+            GUMU is thinking…
+          </div>
         )}
       </div>
 
@@ -206,95 +273,157 @@ export default function GumuChat({
             e.preventDefault();
             void send();
           }}
-          style={{ display: 'flex', gap: '0.5rem', marginTop: '0.75rem' }}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            background: C.paper,
+            borderRadius: '13px',
+            padding: '10px 11px',
+            boxShadow: 'inset 0 0 0 1.5px rgba(110,157,200,.35)',
+          }}
         >
           <label htmlFor={`gumu-input-${section}-${itemNumber}`} style={{ display: 'none' }}>
             Your reply to GUMU
           </label>
           <input
             id={`gumu-input-${section}-${itemNumber}`}
+            className="um-input"
             value={draft}
             onChange={(e) => setDraft(e.target.value)}
             disabled={pending}
-            placeholder="Explain what you tried…"
+            placeholder="Type what you’re thinking…"
             style={{
               flex: 1,
               minWidth: 0,
-              padding: '0.55rem 0.75rem',
-              borderRadius: '6px',
-              border: `1px solid ${COLORS.border}`,
-              fontSize: '15px',
+              padding: '4px 4px',
+              border: 'none',
+              background: 'transparent',
+              font: `400 15.5px ${FONT_BODY}`,
+              color: C.midnight,
             }}
           />
           <button
             type="submit"
+            className="um-send"
             disabled={pending || !draft.trim()}
+            aria-label="Send"
             style={{
-              padding: '0.55rem 1rem',
-              borderRadius: '6px',
+              width: '34px',
+              height: '34px',
+              flex: 'none',
+              borderRadius: '9px',
               border: 'none',
-              background: draft.trim() ? COLORS.navy : COLORS.border,
-              color: draft.trim() ? '#FFFFFF' : COLORS.muted,
-              fontSize: '15px',
+              background: draft.trim() ? C.sky : ink(0.08),
+              color: draft.trim() ? C.midnight : ink(0.35),
+              font: `600 15px ${FONT_BODY}`,
               cursor: draft.trim() ? 'pointer' : 'not-allowed',
             }}
           >
-            Send
+            →
           </button>
         </form>
       )}
 
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          gap: '1rem',
-          marginTop: '0.75rem',
-        }}
-      >
-        {/* Never blocked and never hidden, but deliberately quiet early on:
-            plain text while the student still has turns left, a real button
-            once they are on the last one (or the session has ended). Giving up
-            should always be possible, just not the obvious first move. */}
-        <button
-          type="button"
-          onClick={reveal}
-          disabled={pending}
-          style={
-            escapeProminent
-              ? {
-                  padding: '0.45rem 0.9rem',
-                  borderRadius: '6px',
-                  border: `1px solid ${COLORS.navy}`,
-                  background: COLORS.navy,
-                  color: '#FFFFFF',
-                  fontSize: '15px',
-                  cursor: 'pointer',
-                }
-              : {
-                  padding: 0,
-                  border: 'none',
-                  background: 'none',
-                  color: COLORS.muted,
-                  fontSize: '13px',
-                  textDecoration: 'underline',
-                  cursor: 'pointer',
-                }
-          }
-        >
-          I&apos;ll just see the answer
-        </button>
-        {turnsRemaining !== null && !finished && (
-          <span style={{ color: COLORS.muted, fontSize: '13px' }}>
-            {turnsRemaining} {turnsRemaining === 1 ? 'reply' : 'replies'} left with GUMU
-          </span>
-        )}
-      </div>
+      {/* Never blocked and never hidden, but deliberately quiet early on: plain
+          underlined text while the student still has turns left, an outlined
+          button once they are on the last one or the session has ended. Giving
+          up should always be possible, just not the obvious first move.
 
-      {error && (
-        <p style={{ marginTop: '0.5rem', marginBottom: 0, color: COLORS.wrongFg }}>{error}</p>
+          The design pairs the promoted version with a primary "try the question
+          again". There is no retry in the grading flow -- an answered item is
+          final -- so it stands alone rather than under a button that would not
+          do anything. */}
+      {answerShown ? (
+        <div
+          style={{
+            font: `400 12px ${FONT_BODY}`,
+            lineHeight: 1.5,
+            color: ink(0.4),
+            textAlign: 'center',
+          }}
+        >
+          The answer is marked on the question above. We&apos;ll keep going after.
+        </div>
+      ) : escapeProminent ? (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '9px' }}>
+          <button
+            type="button"
+            className="um-btn-outline"
+            onClick={reveal}
+            disabled={pending}
+            style={{
+              padding: '13px',
+              borderRadius: '12px',
+              border: 'none',
+              background: 'transparent',
+              boxShadow: `inset 0 0 0 1.5px ${ink(0.22)}`,
+              font: `500 14.5px ${FONT_BODY}`,
+              color: ink(0.65),
+              cursor: pending ? 'wait' : 'pointer',
+            }}
+          >
+            Show me the worked answer
+          </button>
+          <div
+            style={{
+              font: `400 11.5px ${FONT_BODY}`,
+              lineHeight: 1.5,
+              color: ink(0.4),
+              textAlign: 'center',
+            }}
+          >
+            {finished
+              ? 'Either way this one’s done. We’ll keep going after.'
+              : 'Last exchange on this one.'}
+          </div>
+        </div>
+      ) : (
+        <div
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}
+        >
+          <button
+            type="button"
+            className="um-link"
+            onClick={reveal}
+            disabled={pending}
+            style={{
+              padding: 0,
+              border: 'none',
+              background: 'none',
+              font: `400 12px ${FONT_BODY}`,
+              color: ink(0.32),
+              textDecoration: 'underline',
+              textUnderlineOffset: '3px',
+              cursor: pending ? 'wait' : 'pointer',
+            }}
+          >
+            I’ll just see the answer
+          </button>
+          {turnsRemaining !== null && (
+            <span style={{ font: `400 11.5px ${FONT_BODY}`, color: ink(0.32) }}>
+              {exchange} of {totalTurns} exchanges
+            </span>
+          )}
+        </div>
       )}
+
+      {error && <ErrorLine text={error} />}
     </div>
+  );
+}
+
+function ErrorLine({ text }: { text: string }) {
+  return (
+    <p
+      style={{
+        margin: '8px 0 0',
+        font: `400 13.5px ${FONT_BODY}`,
+        lineHeight: 1.6,
+        color: C.amber,
+      }}
+    >
+      {text}
+    </p>
   );
 }
