@@ -307,7 +307,7 @@ export default async function CurriculumTopicPage({ params }: Props) {
                     background: C.midnight,
                   }}
                 >
-                  <GumuAvatar size={40} blink={false} title="" />
+                  <GumuAvatar size={40} plate title="" />
                   <div
                     style={{
                       flex: 1,
@@ -338,7 +338,7 @@ export default async function CurriculumTopicPage({ params }: Props) {
                 background: C.midnight,
               }}
             >
-              <GumuAvatar size={64} />
+              <GumuAvatar size={64} plate />
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 <div style={{ font: `600 18px ${FONT_HEADING}`, color: C.sand }}>
                   Ready when you are.

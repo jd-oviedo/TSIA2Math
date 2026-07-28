@@ -173,7 +173,9 @@ export default function GumuChat({
             cursor: pending ? 'wait' : 'pointer',
           }}
         >
-          <GumuAvatar size={26} blink={false} title="" />
+          {/* Plated: on the Sunset Orange button his collar is the same orange,
+              and bare he smears into it. */}
+          <GumuAvatar size={30} plate title="" />
           {pending ? 'Starting…' : 'Work through it with GUMU'}
         </button>
         {error && <ErrorLine text={error} />}
