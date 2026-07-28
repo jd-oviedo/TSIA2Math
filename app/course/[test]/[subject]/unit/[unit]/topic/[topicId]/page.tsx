@@ -1,5 +1,12 @@
 import { notFound } from 'next/navigation';
+// Two clients on purpose. The topic content is public, so it is read with the
+// plain anon client. Anything that depends on who is asking has to go through
+// the cookie-aware SSR client instead: lib/supabase/server.ts builds a client
+// with no cookie storage at all, so auth.getSession() on it is null for
+// everyone, signed in or not.
 import { createClient } from '@/lib/supabase/server';
+import { createClient as createSessionClient } from '@/app/lib/supabase-server';
+import { requireTeacher } from '@/app/lib/auth';
 import {
   renderMarkdownWithMath,
   renderInlineWithMath,
@@ -85,9 +92,10 @@ export default async function CurriculumTopicPage({ params }: Props) {
   // GUMU is authenticated-only, and this page renders no app header, so a
   // signed out student has no way to discover sign-in from here. Reuses the
   // existing Google OAuth flow in app/login rather than adding a second one.
+  const sessionClient = await createSessionClient();
   const {
     data: { session: authSession },
-  } = await supabase.auth.getSession();
+  } = await sessionClient.auth.getSession();
   const signInHref = `/login?next=${encodeURIComponent(
     `/course/${test}/${subject}/unit/${unit}/topic/${topicId}`
   )}`;
@@ -103,13 +111,24 @@ export default async function CurriculumTopicPage({ params }: Props) {
   const practiceInteractive = Boolean(practiceSection?.interactive) && practiceItems.length > 0;
   const quizInteractive = Boolean(quizSection?.interactive) && quizItems.length > 0;
 
-  // Part 4, split into one worked solution per item. The same text feeds both
-  // the answer key panel and the per-card reveal, so a student never sees two
-  // different solutions to one question.
-  const answerKeyRaw = topic.answer_key?.raw || '';
-  const answerKey = splitAnswerKey(answerKeyRaw);
+  // Part 4 is teacher-only. Not hidden in the browser -- parsed only when the
+  // session belongs to an active teacher, so a student's page never carries the
+  // worked solutions in its payload at all. This is a different gate from the
+  // per-question reveal in /api/curriculum/practice, which still hands an
+  // authenticated student the explanation for an item they have attempted.
+  //
+  // Both consumers hang off this: the answer key section at the foot of the
+  // page, and the per-card "reveal worked solution" link. A student gets
+  // neither.
+  const teacher = await requireTeacher();
+  const answerKeyRaw = teacher ? topic.answer_key?.raw || '' : '';
+  const answerKey = teacher
+    ? splitAnswerKey(answerKeyRaw)
+    : { practice: [], mini_quiz: [] };
   const solutionsFor = (entries: typeof answerKey.practice) =>
-    Object.fromEntries(entries.map((entry) => [entry.item_number, entry.solution_html]));
+    entries.length > 0
+      ? Object.fromEntries(entries.map((entry) => [entry.item_number, entry.solution_html]))
+      : undefined;
 
   const subjectLabel = subject.replace(/-/g, ' ');
 
@@ -273,9 +292,10 @@ export default async function CurriculumTopicPage({ params }: Props) {
                     color: ink(0.6),
                   }}
                 >
-                  This topic&apos;s practice is written work rather than multiple choice. Work it
-                  out, compare against the answer key at the bottom, then the mini quiz below is
-                  fully interactive.
+                  This topic&apos;s practice is written work rather than multiple choice, so
+                  there&apos;s nothing to submit here. Work it out
+                  {teacher ? ', compare against the answer key at the bottom,' : ','} then the
+                  mini quiz below is fully interactive.
                 </p>
                 <div
                   className="um-prose um-prose-card"
@@ -399,13 +419,17 @@ export default async function CurriculumTopicPage({ params }: Props) {
             )}
           </section>
 
-          <section style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-            <SectionHeading title="Answer key" blurb="Worked solutions, one at a time" />
-            <AnswerKey
-              entries={answerKey}
-              fallbackHtml={renderMarkdownWithMath(stripAuthoringBlocks(answerKeyRaw))}
-            />
-          </section>
+          {/* Teachers only, and absent rather than hidden for everyone else:
+              with no teacher session there is nothing above to render from. */}
+          {teacher && (
+            <section style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              <SectionHeading title="Answer key" blurb="Teacher view, one solution at a time" />
+              <AnswerKey
+                entries={answerKey}
+                fallbackHtml={renderMarkdownWithMath(stripAuthoringBlocks(answerKeyRaw))}
+              />
+            </section>
+          )}
         </div>
       </div>
     </GumuGateProvider>
@@ -442,4 +466,7 @@ function SectionHeading({
   );
 }
 
-export const revalidate = 3600; // Revalidate every hour
+// The page used to carry `revalidate = 3600`. It now renders different content
+// for a teacher than for a student, so nothing about it is safe to hold in a
+// shared cache keyed only on the URL.
+export const dynamic = 'force-dynamic';
