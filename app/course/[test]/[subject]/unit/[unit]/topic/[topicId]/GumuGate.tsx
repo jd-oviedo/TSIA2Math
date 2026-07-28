@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import type { AnswerKeyEntries, AnswerKeyEntry } from '@/lib/curriculum-utils';
-import { C, ink, EYEBROW, MATH_LINE_HEIGHT } from './curriculum-theme';
+import { C, ink, EYEBROW, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
 import { FONT_BODY } from '@/app/components/fonts';
 
 // Tracks whether any GUMU session is live on this topic, so the answer key can

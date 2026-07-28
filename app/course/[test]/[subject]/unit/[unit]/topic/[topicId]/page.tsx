@@ -16,7 +16,7 @@ import {
 import PracticeQuiz, { type PublicPracticeItem } from './PracticeQuiz';
 import { GumuGateProvider, AnswerKey } from './GumuGate';
 import GumuAvatar from './GumuAvatar';
-import { C, ink, onDark, EYEBROW, MATH_LINE_HEIGHT } from './curriculum-theme';
+import { C, ink, onDark, EYEBROW, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import { TOPIC_PAGE_CSS } from './topic-page-css';
 

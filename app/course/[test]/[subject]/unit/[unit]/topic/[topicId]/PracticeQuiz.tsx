@@ -3,7 +3,7 @@
 import { useCallback, useState } from 'react';
 import GumuChat from './GumuChat';
 import { useGumuGate } from './GumuGate';
-import { C, ink, EYEBROW, MATH_LINE_HEIGHT } from './curriculum-theme';
+import { C, ink, EYEBROW, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // What the browser is allowed to see. Built server-side in page.tsx by

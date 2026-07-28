@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import GumuAvatar from './GumuAvatar';
-import { C, ink, MATH_LINE_HEIGHT } from './curriculum-theme';
+import { C, ink, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // GUMU's chat panel. Inline expansion under the item, not a modal, matching

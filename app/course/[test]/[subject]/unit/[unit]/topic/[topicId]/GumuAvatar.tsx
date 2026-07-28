@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { C } from './curriculum-theme';
+import { C } from '@/app/components/curriculum-theme';
 
 // GUMU, as the illustrated headshot. Replaces the flat-vector drawing that
 // shipped with the curriculum redesign.
