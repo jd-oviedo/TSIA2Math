@@ -4,9 +4,14 @@ import {
   renderMarkdownWithMath,
   renderInlineWithMath,
   stripAuthoringBlocks,
+  splitAnswerKey,
 } from '@/lib/curriculum-utils';
 import PracticeQuiz, { type PublicPracticeItem } from './PracticeQuiz';
 import { GumuGateProvider, AnswerKey } from './GumuGate';
+import GumuAvatar from './GumuAvatar';
+import { C, ink, onDark, EYEBROW, MATH_LINE_HEIGHT } from './curriculum-theme';
+import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
+import { TOPIC_PAGE_CSS } from './topic-page-css';
 
 // One parsed item as it is stored in curriculum_topics.practice_items. Two of
 // these fields are answer-bearing and stay on the server: correct_answer
@@ -58,13 +63,13 @@ type Props = {
 
 export default async function CurriculumTopicPage({ params }: Props) {
   const { test, subject, unit, topicId } = await params;
-  
+
   // Map route params to course_id
   const courseId = `${test}-${subject}`;
-  
+
   // Create Supabase client
   const supabase = await createClient();
-  
+
   // Fetch curriculum topic
   const { data: topic, error } = await supabase
     .from('curriculum_topics')
@@ -72,14 +77,14 @@ export default async function CurriculumTopicPage({ params }: Props) {
     .eq('course_id', courseId)
     .eq('topic_id', topicId)
     .single();
-  
+
   if (error || !topic) {
     notFound();
   }
 
-  // GUMU is authenticated-only, and this page renders no header, so a signed
-  // out student has no way to discover sign-in from here. Reuses the existing
-  // Google OAuth flow in app/login rather than adding a second one.
+  // GUMU is authenticated-only, and this page renders no app header, so a
+  // signed out student has no way to discover sign-in from here. Reuses the
+  // existing Google OAuth flow in app/login rather than adding a second one.
   const {
     data: { session: authSession },
   } = await supabase.auth.getSession();
@@ -98,131 +103,342 @@ export default async function CurriculumTopicPage({ params }: Props) {
   const practiceInteractive = Boolean(practiceSection?.interactive) && practiceItems.length > 0;
   const quizInteractive = Boolean(quizSection?.interactive) && quizItems.length > 0;
 
+  // Part 4, split into one worked solution per item. The same text feeds both
+  // the answer key panel and the per-card reveal, so a student never sees two
+  // different solutions to one question.
+  const answerKeyRaw = topic.answer_key?.raw || '';
+  const answerKey = splitAnswerKey(answerKeyRaw);
+  const solutionsFor = (entries: typeof answerKey.practice) =>
+    Object.fromEntries(entries.map((entry) => [entry.item_number, entry.solution_html]));
+
+  const subjectLabel = subject.replace(/-/g, ' ');
+
   return (
     <GumuGateProvider>
-    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem' }}>
-      {/* Breadcrumb */}
-      <div style={{ marginBottom: '2rem', fontSize: '14px', color: '#5F5E5A' }}>
-        <a href={`/course/${test}/${subject}`}>{subject}</a>
-        {' > '}
-        <a href={`/course/${test}/${subject}/unit/${unit}`}>Unit {unit}</a>
-        {' > '}
-        <span>{topic.topic_id}</span>
-      </div>
-      
-      {/* Header */}
-      <h1 style={{ fontSize: '28px', color: '#0F1E35', marginBottom: '0.5rem' }}>
-        {topic.topic_name}
-      </h1>
-      <p style={{ color: '#5F5E5A', marginBottom: '2rem' }}>
-        Estimated time: {topic.estimated_time_minutes} minutes
-      </p>
-      
-      {/* Guided Notes */}
-      <section style={{ marginBottom: '3rem' }}>
-        <h2 style={{ fontSize: '20px', marginBottom: '1.5rem', color: '#0F1E35' }}>
-          Part 1: Guided Notes
-        </h2>
+      <style>{TOPIC_PAGE_CSS}</style>
+      <div
+        className="um-topic"
+        style={{
+          minHeight: '100dvh',
+          background: C.cream,
+          color: C.midnight,
+          fontFamily: FONT_BODY,
+        }}
+      >
+        {/* Slim course bar. The design's version also carries unit progress and
+            the student's avatar; both need queries this page does not make, so
+            they are left out rather than faked. */}
         <div
+          className="um-bar"
           style={{
-            lineHeight: '1.8',
-            marginBottom: '2rem',
-            color: '#1A1A1A',
-            fontSize: '16px',
-          }}
-          dangerouslySetInnerHTML={{
-            __html: renderMarkdownWithMath(topic.guided_notes),
-          }}
-        />
-      </section>
-      
-      {!authSession && (
-        <div
-          style={{
-            border: '1px solid #D8D6D1',
-            borderRadius: '8px',
-            padding: '0.9rem 1.1rem',
-            marginBottom: '2rem',
-            background: '#F4F2ED',
-            color: '#1A1A1A',
-            fontSize: '15px',
-            lineHeight: 1.6,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '18px',
+            padding: '14px 26px',
+            background: C.paper,
+            borderBottom: `1px solid ${ink(0.09)}`,
           }}
         >
-          <a href={signInHref} style={{ color: '#0F1E35', fontWeight: 600 }}>
-            Sign in with Google
-          </a>{' '}
-          to check your answers and work through the ones you miss with GUMU.
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/unpackmath-wordmark.png"
+            alt="UnpackMath"
+            style={{ height: '24px', width: 'auto', display: 'block' }}
+          />
+          <div style={{ width: '1px', height: '22px', background: ink(0.12) }} />
+          <div
+            className="um-bar-trail"
+            style={{ font: `400 13px ${FONT_BODY}`, color: ink(0.6), lineHeight: 1.3 }}
+          >
+            <a href={`/course/${test}/${subject}`} style={{ color: 'inherit' }}>
+              {test.toUpperCase()} · <span style={{ textTransform: 'capitalize' }}>{subjectLabel}</span>
+            </a>
+            <span style={{ color: ink(0.3), padding: '0 6px' }}>/</span>
+            <a href={`/course/${test}/${subject}/unit/${unit}`} style={{ color: 'inherit' }}>
+              Unit {unit}
+            </a>
+          </div>
         </div>
-      )}
 
-      {/* Practice Problems */}
-      <section style={{ marginBottom: '3rem' }}>
-        <h2 style={{ fontSize: '20px', marginBottom: '1.5rem', color: '#0F1E35' }}>
-          Part 2: Practice Problems
-        </h2>
-        {practiceInteractive ? (
-          <PracticeQuiz
-            courseId={courseId}
-            topicId={topic.topic_id}
-            section="practice"
-            items={practiceItems}
-          />
-        ) : (
-          <div
-            style={{
-              lineHeight: '1.8',
-              marginBottom: '2rem',
-              color: '#1A1A1A',
-              fontSize: '16px',
-            }}
-            dangerouslySetInnerHTML={{
-              __html: renderMarkdownWithMath(topic.practice_problems?.raw || ''),
-            }}
-          />
-        )}
-      </section>
-      
-      {/* Mini Quiz */}
-      <section style={{ marginBottom: '3rem' }}>
-        <h2 style={{ fontSize: '20px', marginBottom: '1.5rem', color: '#0F1E35' }}>
-          Part 3: Mini Quiz
-        </h2>
-        {quizInteractive ? (
-          <PracticeQuiz
-            courseId={courseId}
-            topicId={topic.topic_id}
-            section="mini_quiz"
-            items={quizItems}
-          />
-        ) : (
-          <div
-            style={{
-              lineHeight: '1.8',
-              marginBottom: '2rem',
-              color: '#1A1A1A',
-              fontSize: '16px',
-            }}
-            dangerouslySetInnerHTML={{
-              __html: renderMarkdownWithMath(topic.mini_quiz?.raw || ''),
-            }}
-          />
-        )}
-      </section>
-      
-      {/* Answer Key */}
-      <section style={{ marginBottom: '3rem' }}>
-        <h2 style={{ fontSize: '20px', marginBottom: '1.5rem', color: '#0F1E35' }}>
-          Part 4: Answer Key
-        </h2>
-        <AnswerKey
-          html={renderMarkdownWithMath(
-            stripAuthoringBlocks(topic.answer_key?.raw || '')
+        <div
+          className="um-page"
+          style={{
+            maxWidth: '860px',
+            margin: '0 auto',
+            padding: '30px 34px 72px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '34px',
+          }}
+        >
+          <header style={{ display: 'flex', flexDirection: 'column', gap: '9px' }}>
+            <div style={{ ...EYEBROW, color: C.sunset }}>Topic {topic.topic_id}</div>
+            <h1
+              className="um-title"
+              style={{
+                margin: 0,
+                font: `600 33px ${FONT_HEADING}`,
+                lineHeight: 1.2,
+                letterSpacing: '-0.01em',
+                color: C.midnight,
+              }}
+            >
+              {topic.topic_name}
+            </h1>
+            <p
+              style={{
+                margin: 0,
+                maxWidth: '640px',
+                font: `400 15.5px ${FONT_BODY}`,
+                lineHeight: 1.65,
+                color: ink(0.65),
+                textWrap: 'pretty',
+              }}
+            >
+              {practiceItems.length > 0
+                ? `${practiceItems.length} practice problems, then a ${quizItems.length}-question mini quiz.`
+                : 'Guided notes, practice, then a mini quiz.'}{' '}
+              About {topic.estimated_time_minutes} minutes.
+            </p>
+          </header>
+
+          {!authSession && (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                flexWrap: 'wrap',
+                padding: '15px 18px',
+                borderRadius: '14px',
+                background: C.paper,
+                boxShadow: `inset 0 0 0 1.5px ${ink(0.1)}`,
+                font: `400 14.5px ${FONT_BODY}`,
+                lineHeight: 1.6,
+                color: ink(0.7),
+              }}
+            >
+              <a href={signInHref} style={{ color: C.gemini, fontWeight: 600 }}>
+                Sign in with Google
+              </a>
+              <span>to check your answers and work through the ones you miss with GUMU.</span>
+            </div>
           )}
-        />
-      </section>
-    </div>
+
+          {/* Guided notes. The design import has no treatment for this section,
+              so it gets the plain reading card the rest of the page implies. */}
+          <section style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            <SectionHeading title="Guided notes" blurb="Read this first" />
+            <div
+              className="um-prose um-prose-card"
+              style={{
+                background: C.paper,
+                border: `1px solid ${ink(0.09)}`,
+                borderRadius: '16px',
+                padding: '26px 28px',
+                boxShadow: '0 1px 3px rgba(14,14,17,.05)',
+                color: ink(0.82),
+                font: `400 16px ${FONT_BODY}`,
+                lineHeight: MATH_LINE_HEIGHT,
+              }}
+              dangerouslySetInnerHTML={{
+                __html: renderMarkdownWithMath(topic.guided_notes),
+              }}
+            />
+          </section>
+
+          <section>
+            {practiceInteractive ? (
+              <PracticeQuiz
+                courseId={courseId}
+                topicId={topic.topic_id}
+                section="practice"
+                items={practiceItems}
+                heading="Practice"
+                blurb={`${practiceItems.length} problems · work through at your own pace`}
+                solutions={solutionsFor(answerKey.practice)}
+              />
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                <SectionHeading
+                  title="Practice"
+                  blurb="Written work, nothing to submit"
+                  chip="Work it out on paper"
+                />
+                <p
+                  style={{
+                    margin: 0,
+                    font: `400 14px ${FONT_BODY}`,
+                    lineHeight: 1.65,
+                    color: ink(0.6),
+                  }}
+                >
+                  This topic&apos;s practice is written work rather than multiple choice. Work it
+                  out, compare against the answer key at the bottom, then the mini quiz below is
+                  fully interactive.
+                </p>
+                <div
+                  className="um-prose um-prose-card"
+                  style={{
+                    background: C.paper,
+                    border: `1px solid ${ink(0.09)}`,
+                    borderRadius: '16px',
+                    padding: '24px 26px',
+                    boxShadow: '0 1px 3px rgba(14,14,17,.05)',
+                    color: ink(0.82),
+                    font: `400 16px ${FONT_BODY}`,
+                    lineHeight: MATH_LINE_HEIGHT,
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: renderMarkdownWithMath(topic.practice_problems?.raw || ''),
+                  }}
+                />
+                {/* The design pairs this fallback with an "Ask GUMU" button.
+                    A session needs a graded wrong multiple-choice answer to
+                    open, so on a written-work section there is nothing for him
+                    to start from. He is introduced here instead. */}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '14px',
+                    padding: '14px 18px',
+                    borderRadius: '14px',
+                    background: C.midnight,
+                  }}
+                >
+                  <GumuAvatar size={40} blink={false} title="" />
+                  <div
+                    style={{
+                      flex: 1,
+                      font: `400 13.5px ${FONT_BODY}`,
+                      lineHeight: 1.55,
+                      color: onDark(0.75),
+                    }}
+                  >
+                    Nothing here is graded. GUMU comes in on the mini quiz below, as soon as
+                    there&apos;s a wrong answer worth talking about.
+                  </div>
+                </div>
+              </div>
+            )}
+          </section>
+
+          <section style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            {/* GUMU's first appearance on the page, so the student meets the
+                character before they are ever stuck. */}
+            <div
+              className="um-gumu-card"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '26px',
+                padding: '24px 28px',
+                borderRadius: '16px',
+                background: C.midnight,
+              }}
+            >
+              <GumuAvatar size={64} />
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <div style={{ font: `600 18px ${FONT_HEADING}`, color: C.sand }}>
+                  Ready when you are.
+                </div>
+                <div
+                  style={{
+                    maxWidth: '520px',
+                    font: `400 13.5px ${FONT_BODY}`,
+                    lineHeight: 1.6,
+                    color: onDark(0.6),
+                  }}
+                >
+                  {quizItems.length > 0 ? `${quizItems.length} questions, no timer. ` : 'No timer. '}
+                  {authSession ? (
+                    <>Get one wrong and I&apos;ll come talk it through with you.</>
+                  ) : (
+                    <>
+                      <a href={signInHref} style={{ color: C.sunset, fontWeight: 600 }}>
+                        Sign in
+                      </a>{' '}
+                      and I&apos;ll come talk through any you miss.
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {quizInteractive ? (
+              <PracticeQuiz
+                courseId={courseId}
+                topicId={topic.topic_id}
+                section="mini_quiz"
+                items={quizItems}
+                heading="Mini quiz"
+                blurb={`${quizItems.length} questions · closes out the topic`}
+                solutions={solutionsFor(answerKey.mini_quiz)}
+              />
+            ) : (
+              <>
+                <SectionHeading title="Mini quiz" blurb="Closes out the topic" />
+                <div
+                  className="um-prose um-prose-card"
+                  style={{
+                    background: C.paper,
+                    border: `1px solid ${ink(0.09)}`,
+                    borderRadius: '16px',
+                    padding: '24px 26px',
+                    boxShadow: '0 1px 3px rgba(14,14,17,.05)',
+                    color: ink(0.82),
+                    font: `400 16px ${FONT_BODY}`,
+                    lineHeight: MATH_LINE_HEIGHT,
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: renderMarkdownWithMath(topic.mini_quiz?.raw || ''),
+                  }}
+                />
+              </>
+            )}
+          </section>
+
+          <section style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            <SectionHeading title="Answer key" blurb="Worked solutions, one at a time" />
+            <AnswerKey
+              entries={answerKey}
+              fallbackHtml={renderMarkdownWithMath(stripAuthoringBlocks(answerKeyRaw))}
+            />
+          </section>
+        </div>
+      </div>
     </GumuGateProvider>
+  );
+}
+
+function SectionHeading({
+  title,
+  blurb,
+  chip,
+}: {
+  title: string;
+  blurb: string;
+  chip?: string;
+}) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap' }}>
+      <h2 style={{ margin: 0, font: `600 19px ${FONT_HEADING}`, color: C.midnight }}>{title}</h2>
+      {chip && (
+        <span
+          style={{
+            padding: '5px 11px',
+            borderRadius: '20px',
+            background: '#DFE9F2',
+            font: `500 11.5px ${FONT_BODY}`,
+            color: '#3F6B94',
+          }}
+        >
+          {chip}
+        </span>
+      )}
+      <span style={{ font: `400 13px ${FONT_BODY}`, color: ink(0.45) }}>{blurb}</span>
+    </div>
   );
 }
 
