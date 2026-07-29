@@ -43,7 +43,7 @@ from fails rather than quietly becoming a different question.
 |---|---|---|
 | `is_templated` | bool | `true` for pilot items |
 | `parameters` | array | `{name, min, max, exclude, integer, step}` -- the rolled values; `step` defaults to 1 and exists so a money amount can roll in multiples of 5 rather than landing on $37 |
-| `derived_parameters` | array | `{name, formula}` -- computed from parameters, not rolled |
+| `derived_parameters` | array | `{name, formula, render}` -- computed from parameters, not rolled. `render: "coefficient"` writes 1 as an empty string and -1 as `-`, so a rolled explanation reads `= x` rather than `= 1x` |
 | `canonical_parameters` | object | the values that reproduce the original item |
 | `constraints` | array | rules beyond individual ranges, e.g. `"a*b != a + b"` |
 | `question_template` | string | `question_text` with `{a}`-style placeholders |

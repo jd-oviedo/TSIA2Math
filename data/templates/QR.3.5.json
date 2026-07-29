@@ -519,5 +519,46 @@
     },
     "explanation_template": "Distribute both factors:\n${a}({b}x + y) = {p}x + {a}y$\n$-(x - {a}y) = -x + {a}y$\n\nCombine like terms:\n${p}x - x = {k}x$ and ${a}y + {a}y = {m}y$\n\nThe simplified expression is ${k}x + {m}y$.",
     "verification_status": "pending"
+  },
+  {
+    "item_id": "QR_A_075",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Advanced",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 5, "max": 20, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 4, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 4, "exclude": [], "integer": true },
+      { "name": "d", "min": 2, "max": 7, "exclude": [], "integer": true },
+      { "name": "e", "min": 2, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "p", "formula": "b*c" },
+      { "name": "q", "formula": "b*d" },
+      { "name": "m", "formula": "b*d + e" },
+      { "name": "k", "formula": "a - b*c", "render": "coefficient" }
+    ],
+    "canonical_parameters": { "a": 7, "b": 3, "c": 2, "d": 4, "e": 5 },
+    "constraints": ["a - b*c >= 1"],
+    "constraint_notes": {
+      "a - b*c >= 1": "Keeps the x-coefficient positive and non-zero. Unlike the other Advanced templates this one allows a coefficient of exactly 1, because the canonical instance has one -- its answer is 'x + 17'. The explanation renders it through a coefficient-aware placeholder so it reads '= x' rather than '= 1x'."
+    },
+    "range_notes": "The x-coefficient range is expressed as a constraint rather than as a min, because its floor depends on b*c and the schema's min/max are static. Both inner factors stay small (2..4) so the double negative, not the arithmetic, is the difficulty.",
+    "question_template": "Simplify the expression ${a}x - {b}({c}x - {d}) + {e}$.",
+    "unsimplified_expression": "a*x - b*(c*x - d) + e",
+    "correct_answer_formula": "(a - b*c)*x + (b*d + e)",
+    "distractor_formulas": {
+      "A": "(a - b*c)*x + (-b*d + e)",
+      "B": "(a + b*c)*x + (b*d + e)",
+      "C": "(a - b*c)*x + (b*d + e)",
+      "D": "(a - b*c)*x + (-d + e)"
+    },
+    "distractor_derivations": {
+      "A": "(a*x - b*c*x - b*d) + e",
+      "B": "(a*x + b*c*x + b*d) + e",
+      "D": "(a*x - b*c*x - d) + e"
+    },
+    "explanation_template": "Distribute the $-{b}$ across the parentheses, watching the double negative:\n$-{b}({c}x - {d}) = -{p}x + {q}$\n\nNow combine with the rest:\n${a}x - {p}x = {k}x$ and ${q} + {e} = {m}$\n\nThe simplified expression is ${k}x + {m}$.",
+    "verification_status": "pending"
   }
 ]
