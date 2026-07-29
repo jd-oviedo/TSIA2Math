@@ -280,9 +280,13 @@ export async function POST(req: Request) {
 
   // --- message / reveal ----------------------------------------------------
 
+  // The columns GumuSession declares, named rather than starred: the row also
+  // carries created_at and resolved_at, which nothing below reads.
   const { data: sessionRow, error: sessionError } = await admin
     .from("gumu_sessions")
-    .select("*")
+    .select(
+      "id, student_id, course_id, topic_id, section, item_number, original_selected_answer, misconception_tag, status, turn_count"
+    )
     .eq("id", action.session_id)
     .eq("student_id", studentId)
     .single();

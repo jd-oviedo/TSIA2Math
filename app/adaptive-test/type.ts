@@ -63,11 +63,37 @@ export interface Item {
   review_notes: string | null;
 }
 
-// What actually ships to the browser during a live test — same shape minus
-// every answer-bearing field. This is also what `questions_public` (the DB
-// view) returns, so the client-side shape and the DB-enforced shape match by
-// construction.
-export type PublicItem = Omit<Item, "correct_answer" | "explanation" | "distractor_logic">;
+// What `questions_public` (the DB view) returns — the full row minus every
+// answer-bearing field. Kept as its own type even though nothing selects all of
+// it, because it records where the answer fields actually become unreachable:
+// the view, enforced by the database, not the client's choice of columns.
+export type PublicViewItem = Omit<Item, "correct_answer" | "explanation" | "distractor_logic">;
+
+// The columns the live test selects out of that view, and the only ones any of
+// the test UI reads. Narrowing the select is not a security boundary — the view
+// already is one — it is the difference between shipping the whole bank's
+// metadata to every test-taker and shipping the part that gets rendered:
+// 736KB against 532KB across the 1124 draft items, measured.
+//
+// The string and the type sit together so the query and the shape cannot drift.
+// A column added to one has to be added to the other to be readable, and
+// reading a field that is not selected is a compile error at the point of use
+// rather than an undefined at render time.
+export const CAT_ITEM_COLUMNS =
+  "item_id, question_text, answer_choices, primary_strand, proficiency_level, objective_text, category, figure_type, figure_props";
+
+export type PublicItem = Pick<
+  PublicViewItem,
+  | "item_id"
+  | "question_text"
+  | "answer_choices"
+  | "primary_strand"
+  | "proficiency_level"
+  | "objective_text"
+  | "category"
+  | "figure_type"
+  | "figure_props"
+>;
 
 // Returned by POST /api/items/reveal, once per question, only after the
 // student has submitted an answer for that specific item.
