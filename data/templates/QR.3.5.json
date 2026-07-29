@@ -168,5 +168,44 @@
     },
     "explanation_template": "Combine the x-terms and the constants separately:\n${a}x + {c}x = {k}x$ and ${b} + {d} = {m}$\n\nThe simplified expression is ${k}x + {m}$.",
     "verification_status": "pending"
+  },
+  {
+    "item_id": "QR_P_077",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Proficient",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 5, "max": 12, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 8, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 9, "exclude": [], "integer": true },
+      { "name": "d", "min": 2, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "k", "formula": "a - c" },
+      { "name": "m", "formula": "b + d" }
+    ],
+    "canonical_parameters": { "a": 5, "b": 3, "c": 2, "d": 7 },
+    "constraints": ["a - c >= 2", "d > b"],
+    "constraint_notes": {
+      "a - c >= 2": "Keeps the x-coefficient positive and off 1, so the interleaved-subtraction skill stays the thing being tested rather than a vanishing or bare-x term.",
+      "d > b": "C's misconception on file is 'subtracts the constants instead of adding: 7 - 3 = 4' -- it names the direction of the subtraction. Pinning the later constant larger keeps that arithmetic literally true and C's constant positive. A roll with the constants the other way round would make the sentence describe a subtraction the student would be unlikely to perform in that order."
+    },
+    "range_notes": "Proficient tier, so the sign tracking rather than the arithmetic is the difficulty: every combination stays within single-digit addition and subtraction.",
+    "question_template": "Simplify the expression ${a}x + {b} - {c}x + {d}$.",
+    "unsimplified_expression": "a*x + b - c*x + d",
+    "correct_answer_formula": "(a - c)*x + (b + d)",
+    "distractor_formulas": {
+      "A": "(a + c)*x + (b + d)",
+      "B": "(a - c)*x + (b + d)",
+      "C": "(a - c)*x + (d - b)",
+      "D": "(a - c + b + d)*x"
+    },
+    "distractor_derivations": {
+      "A": "a*x + b + c*x + d",
+      "C": "a*x - c*x + (d - b)",
+      "D": "a*x + b*x - c*x + d*x"
+    },
+    "explanation_template": "Group the like terms, keeping each sign:\n${a}x - {c}x = {k}x$ and ${b} + {d} = {m}$\n\nThe simplified expression is ${k}x + {m}$.",
+    "verification_status": "pending"
   }
 ]
