@@ -96,5 +96,39 @@
     },
     "explanation_template": "Only terms with the same variable combine:\n${a}x + {c}x = {k}x$\n\nThe ${b}y$ term has no other y-term, so it stays as is:\n${k}x + {b}y$",
     "verification_status": "pending"
+  },
+  {
+    "item_id": "QR_B_093",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Basic",
+    "is_templated": true,
+    "sign_error_coverage": true,
+    "parameters": [
+      { "name": "a", "min": 4, "max": 12, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [{ "name": "s", "formula": "a + b" }],
+    "canonical_parameters": { "a": 6, "b": 3 },
+    "constraints": ["a > b"],
+    "constraint_notes": {
+      "a > b": "Keeps A's coefficient positive and non-zero. At a == b the sign-error distractor becomes a bare '0', which reads as a degenerate answer rather than as the sign mistake it is meant to represent."
+    },
+    "range_notes": "a > b >= 2 also makes B unreachable as a duplicate of D: multiplying the coefficients agrees with adding them only at (2,2), which this range cannot roll. Only two knobs exist in this structure, so the pool is small (51 rolls) compared to the three- and four-parameter templates. The correct path stays trivially mental across the whole range (largest sum is 21); B's product reaches 108 at the top end, which is arithmetic the student never has to do -- it is the answer they get for doing the wrong operation.",
+    "question_template": "Simplify the expression ${a}x - (-{b}x)$.",
+    "unsimplified_expression": "a*x - (-b*x)",
+    "correct_answer_formula": "(a + b)*x",
+    "distractor_formulas": {
+      "A": "(a - b)*x",
+      "B": "a*b*x",
+      "C": "a + b",
+      "D": "(a + b)*x"
+    },
+    "distractor_derivations": {
+      "A": "a*x - b*x",
+      "B": "(a*b)*x",
+      "C": "a + b"
+    },
+    "explanation_template": "Subtracting a negative is the same as adding:\n${a}x - (-{b}x) = {a}x + {b}x = {s}x$",
+    "verification_status": "pending"
   }
 ]
