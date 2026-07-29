@@ -397,5 +397,45 @@
     },
     "explanation_template": "Distribute each factor, tracking signs carefully:\n${a}({b}x - {c}) = {p}x - {q}$\n$-{d}(x + {f}) = -{d}x - {r}$\n\nCombine like terms:\n${p}x - {d}x = {k}x$ and $-{q} - {r} = -{t}$\n\nThe simplified expression is ${k}x - {t}$.",
     "verification_status": "pending"
+  },
+  {
+    "item_id": "QR_A_072",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Advanced",
+    "is_templated": true,
+    "parameters": [
+      { "name": "b", "min": 2, "max": 8, "exclude": [], "integer": true },
+      { "name": "d", "min": 2, "max": 4, "exclude": [], "integer": true },
+      { "name": "e", "min": 2, "max": 4, "exclude": [], "integer": true },
+      { "name": "f", "min": 1, "max": 6, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "a", "formula": "d*e" },
+      { "name": "p", "formula": "a*b" },
+      { "name": "r", "formula": "d*f" },
+      { "name": "m", "formula": "a*b + d*f" }
+    ],
+    "canonical_parameters": { "b": 3, "d": 2, "e": 2, "f": 1 },
+    "constraints": ["a*b > d*f"],
+    "constraint_notes": {
+      "a*b > d*f": "Keeps B's constant positive, as it is in the original. A negative there would read as a different kind of error than the one B's misconception describes."
+    },
+    "range_notes": "The outer factor is not rolled. This item exists to test that the x-terms cancel, which is true only when the outer factor equals the second factor times its inner coefficient -- an equality between parameters, not a range. Rejection-sampling three independent rolls until they happen to satisfy it would be slow and fragile, so `a` is derived as d*e instead. This is the only item in the pool that needs derived_parameters, and the reason the field exists.",
+    "question_template": "Which expression is equivalent to ${a}(x + {b}) - {d}({e}x - {f})$?",
+    "unsimplified_expression": "a*(x + b) - d*(e*x - f)",
+    "correct_answer_formula": "a*b + d*f",
+    "distractor_formulas": {
+      "A": "(a + d*e)*x + (a*b + d*f)",
+      "B": "a*b - d*f",
+      "C": "a*x + (a*b + d*f)",
+      "D": "a*b + d*f"
+    },
+    "distractor_derivations": {
+      "A": "(a*x + a*b) + (d*e*x + d*f)",
+      "B": "(a*x + a*b) + (-d*e*x - d*f)",
+      "C": "(a*x + a*b) + d*f"
+    },
+    "explanation_template": "Distribute both factors:\n${a}(x + {b}) = {a}x + {p}$\n$-{d}({e}x - {f}) = -{a}x + {r}$\n\nCombine like terms:\n${a}x - {a}x = 0$ and ${p} + {r} = {m}$\n\nThe x-terms cancel completely, leaving the constant ${m}$.",
+    "verification_status": "pending"
   }
 ]
