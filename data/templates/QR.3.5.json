@@ -31,5 +31,39 @@
     },
     "explanation_template": "Combine the coefficients of the like terms:\n${a}x + {b}x = ({a} + {b})x = {s}x$\n\nThe variable stays the same; only the coefficients add.",
     "verification_status": "pending"
+  },
+  {
+    "item_id": "QR_B_091",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Basic",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 5, "max": 12, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 9, "exclude": [], "integer": true },
+      { "name": "c", "min": 1, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [{ "name": "k", "formula": "a - b" }],
+    "canonical_parameters": { "a": 7, "b": 4, "c": 2 },
+    "constraints": ["a - b >= 2"],
+    "constraint_notes": {
+      "a - b >= 2": "Keeps the x-coefficient positive and off 1. At a == b the x-term vanishes and the item silently becomes a constant-only problem; at a - b == 1 the answer reads as a bare 'x', which is correct but a different reading task than the tier intends."
+    },
+    "range_notes": "The constant stays a single digit so 'the constant has no other constant to combine with' remains the obvious reading rather than an arithmetic step. Coefficients stay small enough that the whole item is mental for a Basic student.",
+    "question_template": "Simplify the expression ${a}x - {b}x + {c}$.",
+    "unsimplified_expression": "a*x - b*x + c",
+    "correct_answer_formula": "(a - b)*x + c",
+    "distractor_formulas": {
+      "A": "(a + b)*x + c",
+      "B": "(a - b)*x + c",
+      "C": "(a - b)*x",
+      "D": "(a - b + c)*x"
+    },
+    "distractor_derivations": {
+      "A": "a*x + b*x + c",
+      "C": "a*x - b*x",
+      "D": "a*x - b*x + c*x"
+    },
+    "explanation_template": "Group the like terms:\n${a}x - {b}x = {k}x$\n\nThe constant {c} has no other constant to combine with, so the simplified expression is ${k}x + {c}$.",
+    "verification_status": "pending"
   }
 ]
