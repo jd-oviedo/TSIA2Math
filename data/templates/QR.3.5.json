@@ -65,5 +65,36 @@
     },
     "explanation_template": "Group the like terms:\n${a}x - {b}x = {k}x$\n\nThe constant {c} has no other constant to combine with, so the simplified expression is ${k}x + {c}$.",
     "verification_status": "pending"
+  },
+  {
+    "item_id": "QR_B_092",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Basic",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 2, "max": 8, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 8, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 8, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [{ "name": "k", "formula": "a + c" }],
+    "canonical_parameters": { "a": 5, "b": 2, "c": 3 },
+    "constraints": [],
+    "range_notes": "Every coefficient starts at 2 so no term ever renders as '1x' or '1y'. That also keeps b non-zero, which is what stops A (adds every coefficient onto one variable) from collapsing onto D (drops the y-term) -- with a zero y-coefficient those two misconceptions produce the same answer and the item would have two identical wrong choices.",
+    "question_template": "Simplify the expression ${a}x + {b}y + {c}x$.",
+    "unsimplified_expression": "a*x + b*y + c*x",
+    "correct_answer_formula": "(a + c)*x + b*y",
+    "distractor_formulas": {
+      "A": "(a + b + c)*x",
+      "B": "(a + b + c)*x*y",
+      "C": "(a + c)*x + b*y",
+      "D": "(a + c)*x"
+    },
+    "distractor_derivations": {
+      "A": "a*x + b*x + c*x",
+      "B": "a*(x*y) + b*(x*y) + c*(x*y)",
+      "D": "a*x + c*x"
+    },
+    "explanation_template": "Only terms with the same variable combine:\n${a}x + {c}x = {k}x$\n\nThe ${b}y$ term has no other y-term, so it stays as is:\n${k}x + {b}y$",
+    "verification_status": "pending"
   }
 ]
