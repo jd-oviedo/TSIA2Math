@@ -354,5 +354,48 @@
     },
     "explanation_template": "Add the two expressions term by term:\n$({a}x + {b}) + ({c}x + {d})$\n${a}x + {c}x = {k}x$ and ${b} + {d} = {m}$\n\nThe total cost is ${k}x + {m}$.",
     "verification_status": "pending"
+  },
+  {
+    "item_id": "QR_A_071",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Advanced",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 2, "max": 5, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 5, "exclude": [], "integer": true },
+      { "name": "c", "min": 1, "max": 6, "exclude": [], "integer": true },
+      { "name": "d", "min": 2, "max": 5, "exclude": [], "integer": true },
+      { "name": "f", "min": 2, "max": 8, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "p", "formula": "a*b" },
+      { "name": "q", "formula": "a*c" },
+      { "name": "r", "formula": "d*f" },
+      { "name": "k", "formula": "a*b - d" },
+      { "name": "t", "formula": "a*c + d*f" }
+    ],
+    "canonical_parameters": { "a": 3, "b": 2, "c": 1, "d": 2, "f": 4 },
+    "constraints": ["a*b - d >= 2", "2*d*f != c*(a - 1)"],
+    "constraint_notes": {
+      "a*b - d >= 2": "Keeps the x-coefficient at 2 or more. At 0 the x-terms cancel and this becomes QR_A_072's item instead of its own; at 1 the explanation would have to write '1x'.",
+      "2*d*f != c*(a - 1)": "The one non-obvious collision in the pool. A (failed to distribute the minus onto the second constant) and B (failed to distribute the first factor onto its constant) come from unrelated misconceptions and always share an x-coefficient, so they meet whenever their constants happen to agree. Derived by setting A's constant equal to B's: -a*c + d*f = -c - d*f."
+    },
+    "range_notes": "The second group's inner x-coefficient stays a literal 1 so the stem keeps reading '(x + 4)'. Advanced tier, but every product stays inside a times table -- the difficulty is tracking four signs through two distributions, not the multiplication.",
+    "question_template": "Simplify the expression ${a}({b}x - {c}) - {d}(x + {f})$.",
+    "unsimplified_expression": "a*(b*x - c) - d*(x + f)",
+    "correct_answer_formula": "(a*b - d)*x + (-a*c - d*f)",
+    "distractor_formulas": {
+      "A": "(a*b - d)*x + (-a*c + d*f)",
+      "B": "(a*b - d)*x + (-c - d*f)",
+      "C": "(a*b - d)*x + (-a*c - d*f)",
+      "D": "(a*b + d)*x + (-a*c + d*f)"
+    },
+    "distractor_derivations": {
+      "A": "(a*b*x - a*c) + (-d*x + d*f)",
+      "B": "(a*b*x - c) + (-d*x - d*f)",
+      "D": "(a*b*x - a*c) + (d*x + d*f)"
+    },
+    "explanation_template": "Distribute each factor, tracking signs carefully:\n${a}({b}x - {c}) = {p}x - {q}$\n$-{d}(x + {f}) = -{d}x - {r}$\n\nCombine like terms:\n${p}x - {d}x = {k}x$ and $-{q} - {r} = -{t}$\n\nThe simplified expression is ${k}x - {t}$.",
+    "verification_status": "pending"
   }
 ]
