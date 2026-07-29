@@ -437,5 +437,53 @@
     },
     "explanation_template": "Distribute both factors:\n${a}(x + {b}) = {a}x + {p}$\n$-{d}({e}x - {f}) = -{a}x + {r}$\n\nCombine like terms:\n${a}x - {a}x = 0$ and ${p} + {r} = {m}$\n\nThe x-terms cancel completely, leaving the constant ${m}$.",
     "verification_status": "pending"
+  },
+  {
+    "item_id": "QR_A_073",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Advanced",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 3, "max": 6, "exclude": [], "integer": true },
+      { "name": "b", "min": 3, "max": 8, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 4, "exclude": [], "integer": true },
+      { "name": "d", "min": 2, "max": 6, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "p", "formula": "a*b" },
+      { "name": "r", "formula": "c*d" },
+      { "name": "k", "formula": "a + c" },
+      { "name": "n", "formula": "a*b - c*d" }
+    ],
+    "canonical_parameters": { "a": 4, "b": 3, "c": 2, "d": 5 },
+    "constraints": [
+      "a*b > c*d",
+      "b != d",
+      "b*(a - 1) != d*(c - 1)",
+      "(a + c) + (-a*b + c*d) != 0"
+    ],
+    "constraint_notes": {
+      "a*b > c*d": "Required by the item's own skills_targeted, which names 'combining like terms to a negative constant'. It also keeps the correct constant off zero.",
+      "b != d": "Keeps B's constant non-zero. At b == d, B loses its constant entirely and stops reading as a bring-the-constants-down-unmultiplied error.",
+      "b*(a - 1) != d*(c - 1)": "A and B always share an x-coefficient, so they collide whenever their constants agree. Derived by hand from -a*b + c*d = d - b.",
+      "(a + c) + (-a*b + c*d) != 0": "Stops D from rolling a bare '0' next to three linear expressions."
+    },
+    "range_notes": "Both inner x-coefficients stay a literal 1 so the stem keeps reading '(x - 3)' and '(x + 5)'. The explanation's negative constant is rendered from a positive derived parameter (n = a*b - c*d), so no roll produces a doubled sign.",
+    "question_template": "Simplify the expression ${a}(x - {b}) + {c}(x + {d})$.",
+    "unsimplified_expression": "a*(x - b) + c*(x + d)",
+    "correct_answer_formula": "(a + c)*x + (-a*b + c*d)",
+    "distractor_formulas": {
+      "A": "(a + c)*x + (-a*b + c*d)",
+      "B": "(a + c)*x + (d - b)",
+      "C": "(a + c)*x + (a*b + c*d)",
+      "D": "((a + c) + (-a*b + c*d))*x"
+    },
+    "distractor_derivations": {
+      "B": "(a*x - b) + (c*x + d)",
+      "C": "(a*x + a*b) + (c*x + c*d)",
+      "D": "((a + c) + (-a*b + c*d))*x"
+    },
+    "explanation_template": "Distribute both factors:\n${a}(x - {b}) = {a}x - {p}$\n${c}(x + {d}) = {c}x + {r}$\n\nCombine like terms:\n${a}x + {c}x = {k}x$ and $-{p} + {r} = -{n}$\n\nThe simplified expression is ${k}x - {n}$.",
+    "verification_status": "pending"
   }
 ]
