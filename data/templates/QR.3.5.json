@@ -485,5 +485,39 @@
     },
     "explanation_template": "Distribute both factors:\n${a}(x - {b}) = {a}x - {p}$\n${c}(x + {d}) = {c}x + {r}$\n\nCombine like terms:\n${a}x + {c}x = {k}x$ and $-{p} + {r} = -{n}$\n\nThe simplified expression is ${k}x - {n}$.",
     "verification_status": "pending"
+  },
+  {
+    "item_id": "QR_A_074",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Advanced",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 2, "max": 6, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 7, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "p", "formula": "a*b" },
+      { "name": "k", "formula": "a*b - 1" },
+      { "name": "m", "formula": "2*a" }
+    ],
+    "canonical_parameters": { "a": 2, "b": 3 },
+    "constraints": [],
+    "range_notes": "FLAGGED -- the thinnest pool of the 15, roughly 30 usable combinations against the hundreds the other Advanced templates get. The second group's y-coefficient is not independent: it reuses `a`. That is forced by distractor A's misconception on file, which does not stop at the sign error but states its consequence -- 'so the y-terms wrongly cancel'. Those y-terms cancel only when the outer factor equals the second group's y-coefficient, so rolling that coefficient freely would leave A's misconception text describing something that did not happen. Since a misconception the dashboard already displays may not be silently reworded, the coefficients are pinned equal and the variety is spent instead. 30x a static item is still worth shipping, but this is the template most likely to repeat itself in front of a student who practices heavily. Widening it is a content decision about that sentence, not a code change.",
+    "question_template": "Simplify the expression ${a}({b}x + y) - (x - {a}y)$.",
+    "unsimplified_expression": "a*(b*x + y) - (x - a*y)",
+    "correct_answer_formula": "(a*b - 1)*x + 2*a*y",
+    "distractor_formulas": {
+      "A": "(a*b - 1)*x",
+      "B": "(a*b - 1)*x + 2*a*y",
+      "C": "(a*b - 1)*x + (1 + a)*y",
+      "D": "((a*b - 1) + 2*a)*x*y"
+    },
+    "distractor_derivations": {
+      "A": "(a*b*x + a*y) + (-x - a*y)",
+      "C": "(a*b*x + y) + (-x + a*y)",
+      "D": "((a*b - 1) + 2*a)*(x*y)"
+    },
+    "explanation_template": "Distribute both factors:\n${a}({b}x + y) = {p}x + {a}y$\n$-(x - {a}y) = -x + {a}y$\n\nCombine like terms:\n${p}x - x = {k}x$ and ${a}y + {a}y = {m}y$\n\nThe simplified expression is ${k}x + {m}y$.",
+    "verification_status": "pending"
   }
 ]
