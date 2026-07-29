@@ -5,6 +5,7 @@ import { useSession } from "./useSession";
 import { validateItems } from "./engine";
 import ItemCard from "./ItemCard";
 import ResultsSummary from "./ResultsSummary";
+import { CAT_ITEM_COLUMNS } from "./type";
 import type { ItemValidationError, Response } from "./type";
 import { supabase } from "../lib/supabase";
 import { Header } from "../components/Header";
@@ -34,7 +35,7 @@ async function fetchAllDraftItems(): Promise<unknown[]> {
   for (let from = 0; ; from += PAGE_SIZE) {
     const { data, error } = await supabase
       .from("questions_public")
-      .select("*")
+      .select(CAT_ITEM_COLUMNS)
       .eq("status", "draft")
       .order("item_id")
       .range(from, from + PAGE_SIZE - 1);

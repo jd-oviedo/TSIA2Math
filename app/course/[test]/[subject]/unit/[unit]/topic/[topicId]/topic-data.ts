@@ -41,6 +41,22 @@ export type StoredSection = {
   items: StoredPracticeItem[];
 };
 
+// The columns loadTopic reads, spelled out because the select is built at
+// runtime and so cannot be inferred from the query string the way a literal one
+// would be.
+type TopicRecord = {
+  topic_id: string;
+  topic_name: string;
+  estimated_time_minutes: number | null;
+  guided_notes: string;
+  practice_items: { practice?: StoredSection; mini_quiz?: StoredSection } | null;
+  practice_problems: { raw?: string } | null;
+  mini_quiz: { raw?: string } | null;
+  // Optional because the student query does not select it. A student's page
+  // does not merely hide the answer key, it never reads the column.
+  answer_key?: { raw?: string } | null;
+};
+
 export type RouteParams = {
   test: string;
   subject: string;
@@ -72,6 +88,19 @@ export const loadTopic = cache(async (params: RouteParams) => {
   const { test, subject, unit, topicId } = params;
   const courseId = `${test}-${subject}`;
 
+  // Part 4 is teacher-only. Resolved before the topic is read rather than after,
+  // so the answer key is not merely withheld from a student's page -- the query
+  // that runs for a student never asks for the column. answer_key is also the
+  // heaviest thing on the row, so the read most visitors do is the cheap one.
+  const teacher = await requireTeacher();
+
+  // Explicit rather than select('*'). The row carries the full authored content
+  // of the topic and every consumer below wants a known handful of it; the star
+  // was pulling roughly 32KB per page load on a route that is force-dynamic and
+  // so has no cache in front of it.
+  const TOPIC_COLUMNS =
+    'topic_id, topic_name, estimated_time_minutes, guided_notes, practice_items, practice_problems, mini_quiz';
+
   // Two clients on purpose. The topic content is public, so it is read with the
   // plain anon client. Anything that depends on who is asking has to go through
   // the cookie-aware SSR client instead: lib/supabase/server.ts builds a client
@@ -80,10 +109,11 @@ export const loadTopic = cache(async (params: RouteParams) => {
   const supabase = await createClient();
   const { data: topic, error } = await supabase
     .from('curriculum_topics')
-    .select('*')
+    .select(teacher ? `${TOPIC_COLUMNS}, answer_key` : TOPIC_COLUMNS)
     .eq('course_id', courseId)
     .eq('topic_id', topicId)
-    .single();
+    .single()
+    .overrideTypes<TopicRecord, { merge: false }>();
 
   if (error || !topic) {
     notFound();
@@ -97,10 +127,6 @@ export const loadTopic = cache(async (params: RouteParams) => {
   const basePath = `/course/${test}/${subject}/unit/${unit}/topic/${topicId}`;
   const signInHref = `/login?next=${encodeURIComponent(basePath)}`;
 
-  // Part 4 is teacher-only. Not hidden in the browser -- parsed only when the
-  // session belongs to an active teacher, so a student's page never carries the
-  // worked solutions in its payload at all.
-  const teacher = await requireTeacher();
   const answerKeyRaw = teacher ? topic.answer_key?.raw || '' : '';
   const answerKey = teacher ? splitAnswerKey(answerKeyRaw) : { practice: [], mini_quiz: [] };
 

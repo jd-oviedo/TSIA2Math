@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { createAdminClient } from './supabase-admin';
 
 // The course sequence and the mastery gate maths, in one place.
@@ -71,10 +72,21 @@ export function topicKey(courseId: string, topicId: string): string {
   return `${courseId}:${topicId}`;
 }
 
-export async function getTopics(): Promise<{
+// The whole course: every topic in sequence, plus the gradable counts the gates
+// are measured against.
+//
+// practice_items is the authored content of every topic and dwarfs the six
+// columns beside it -- around 31x, measured -- but the counts it is reduced to
+// cannot be derived any other way without storing them, so a caller that needs
+// shapes for every topic has to pay for it. What it should not do is pay twice:
+// a topic page resolves loadNavigation and loadGates in the same render and
+// both want this, so cache() collapses them to one read per request.
+//
+// Callers that only care about one topic should use getTopicShape instead.
+export const getTopics = cache(async (): Promise<{
   topics: TopicRow[];
   shapes: Map<string, TopicShape>;
-}> {
+}> => {
   const admin = createAdminClient();
   const { data } = await admin
     .from('curriculum_topics')
@@ -103,6 +115,33 @@ export async function getTopics(): Promise<{
       estimated_time_minutes: row.estimated_time_minutes,
     })),
     shapes,
+  };
+});
+
+// The gradable counts for a single topic.
+//
+// syncCompletionSnapshot runs on every answer a student submits, and it needs
+// the shape of exactly the topic being answered. Reading that through
+// getTopics() meant pulling the full authored content of every topic in the
+// course on every write -- a cost that grows with the curriculum while the work
+// being done stays the same size. One row instead of all of them keeps it flat.
+export async function getTopicShape(
+  courseId: string,
+  topicId: string
+): Promise<TopicShape | null> {
+  const admin = createAdminClient();
+  const { data } = await admin
+    .from('curriculum_topics')
+    .select('practice_items')
+    .eq('course_id', courseId)
+    .eq('topic_id', topicId)
+    .maybeSingle();
+
+  if (!data) return null;
+
+  return {
+    practice: sectionShape(data.practice_items?.practice),
+    mini_quiz: sectionShape(data.practice_items?.mini_quiz),
   };
 }
 
@@ -263,8 +302,7 @@ export async function syncCompletionSnapshot(
 ): Promise<void> {
   try {
     const admin = createAdminClient();
-    const { shapes } = await getTopics();
-    const shape = shapes.get(topicKey(courseId, topicId));
+    const shape = await getTopicShape(courseId, topicId);
     if (!shape) return;
 
     const attempts = await getTopicAttempts(studentId, courseId, topicId);
