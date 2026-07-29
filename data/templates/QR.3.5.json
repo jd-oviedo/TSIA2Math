@@ -242,5 +242,39 @@
     },
     "explanation_template": "The minus in front of the parentheses changes the sign of every term inside:\n${a}x - ({b}x - {c}) = {a}x - {b}x + {c}$\n\nCombine like terms:\n${a}x - {b}x = {k}x$, then $+{c}$\n\nThe simplified expression is ${k}x + {c}$.",
     "verification_status": "pending"
+  },
+  {
+    "item_id": "QR_P_079",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Proficient",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 2, "max": 5, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 9, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 7, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "p", "formula": "a*b" },
+      { "name": "k", "formula": "a + c" }
+    ],
+    "canonical_parameters": { "a": 2, "b": 4, "c": 3 },
+    "constraints": [],
+    "range_notes": "The distributed factor starts at 2, and that minimum is what keeps three of the four choices apart. At a factor of 1 both A ('distributed to the x but not to the constant') and B ('ignored the factor entirely') become no-ops, and A, B and the correct answer all collapse into one. The inner coefficient stays a literal 1 so the stem keeps reading '(x + 4)'. Capped at 5 x 9 so the distribution stays mental for a Proficient student.",
+    "question_template": "Simplify the expression ${a}(x + {b}) + {c}x$.",
+    "unsimplified_expression": "a*(x + b) + c*x",
+    "correct_answer_formula": "(a + c)*x + a*b",
+    "distractor_formulas": {
+      "A": "(a + c)*x + b",
+      "B": "(1 + c)*x + b",
+      "C": "(a + c + a*b)*x",
+      "D": "(a + c)*x + a*b"
+    },
+    "distractor_derivations": {
+      "A": "a*x + b + c*x",
+      "B": "(x + b) + c*x",
+      "C": "((a + c) + a*b)*x"
+    },
+    "explanation_template": "Distribute the {a} first:\n${a}(x + {b}) = {a}x + {p}$\n\nThen combine with the ${c}x$:\n${a}x + {p} + {c}x = {k}x + {p}$",
+    "verification_status": "pending"
   }
 ]
