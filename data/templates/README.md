@@ -42,7 +42,7 @@ from fails rather than quietly becoming a different question.
 | field | type | meaning |
 |---|---|---|
 | `is_templated` | bool | `true` for pilot items |
-| `parameters` | array | `{name, min, max, exclude, integer}` -- the rolled values |
+| `parameters` | array | `{name, min, max, exclude, integer, step}` -- the rolled values; `step` defaults to 1 and exists so a money amount can roll in multiples of 5 rather than landing on $37 |
 | `derived_parameters` | array | `{name, formula}` -- computed from parameters, not rolled |
 | `canonical_parameters` | object | the values that reproduce the original item |
 | `constraints` | array | rules beyond individual ranges, e.g. `"a*b != a + b"` |

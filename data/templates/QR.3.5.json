@@ -316,5 +316,43 @@
     },
     "explanation_template": "Combine like terms, keeping each sign:\n${a}x - {c}x = {k}x$ and ${b} - {d} = -{n}$\n\nThe simplified expression is ${k}x - {n}$.",
     "verification_status": "pending"
+  },
+  {
+    "item_id": "QR_P_081",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Proficient",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 2, "max": 6, "exclude": [], "integer": true },
+      { "name": "b", "min": 10, "max": 50, "step": 5, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 6, "exclude": [], "integer": true },
+      { "name": "d", "min": 10, "max": 50, "step": 5, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "k", "formula": "a + c" },
+      { "name": "m", "formula": "b + d" }
+    ],
+    "canonical_parameters": { "a": 3, "b": 20, "c": 2, "d": 15 },
+    "constraints": ["a*c != a + c"],
+    "constraint_notes": {
+      "a*c != a + c": "A multiplies the hourly rates where the correct answer adds them. Over positive integers those agree only at (2,2), where A would silently become a second correct answer. The same collision cannot happen on the constants, since multiplying two amounts of at least 10 never equals their sum."
+    },
+    "range_notes": "The only item in the pool with a real-world context, but the context is a wrapper: the numbers are an hourly rate and a flat charge, and any sensible pair reads correctly. Flat charges roll in multiples of 5 so the money stays money-shaped -- a $37 setup fee would read as an oddly precise invoice rather than as a rate card. No currency symbol appears in the stem (the amounts sit inside math delimiters as bare numbers), so the house rule on escaped currency is not engaged here.",
+    "question_template": "A landscaper's labor cost for $x$ hours of work is given by the expression ${a}x + {b}$, and the materials charge for the same job is given by ${c}x + {d}$. Which expression represents the total cost in simplified form?",
+    "unsimplified_expression": "(a*x + b) + (c*x + d)",
+    "correct_answer_formula": "(a + c)*x + (b + d)",
+    "distractor_formulas": {
+      "A": "(a*c)*x + (b + d)",
+      "B": "(a + c)*x + (b + d)",
+      "C": "(a + c)*x + b*d",
+      "D": "(a + b + c + d)*x"
+    },
+    "distractor_derivations": {
+      "A": "(a*c)*x + (b + d)",
+      "C": "(a + c)*x + (b*d)",
+      "D": "a*x + b*x + c*x + d*x"
+    },
+    "explanation_template": "Add the two expressions term by term:\n$({a}x + {b}) + ({c}x + {d})$\n${a}x + {c}x = {k}x$ and ${b} + {d} = {m}$\n\nThe total cost is ${k}x + {m}$.",
+    "verification_status": "pending"
   }
 ]
