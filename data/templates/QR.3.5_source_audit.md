@@ -253,10 +253,48 @@ may not be silently reworded, those two are pinned equal -- the second group is
 The cost is variety: roughly 30 usable combinations rather than the hundreds the
 other Advanced templates get. That is still 30x what a static item offers, so
 the template is worth keeping, but it is the one most likely to repeat itself in
-front of a student who practices heavily. The alternative -- rolling the
-coefficient freely and rewriting A's `distractor_logic` to drop the cancellation
-clause -- would change a misconception already in the dashboard, which is out of
-scope for this pilot. Worth revisiting as a content decision, not a code one.
+front of a student who practices heavily.
+
+#### Resolution -- reviewed and settled, keep the narrowed range
+
+Settled by Juan on 2026-07-29 after the general form was worked out explicitly.
+Recorded here so a later session does not re-litigate it.
+
+Writing the second group's y-coefficient as its own parameter `g`, over the
+structure `a*(b*x + y) - (x - g*y)`:
+
+    correct           (a*b - 1)*x + (a + g)*y
+    A, general form   (a*b - 1)*x + (a - g)*y
+
+**A clean general form of the error does exist.** "Missing the sign change on
+the second distributed term" is coherent for any `a, b, g`, and A stays a
+distinct wrong answer across the whole range. What does *not* generalize is the
+sentence on file, which is two clauses:
+
+- "treats `-(x - 2y)` as `-x - 2y`, missing the sign change on `-2y`" -- general
+- "`6x + 2y - x - 2y = 5x`, so the y-terms wrongly cancel" -- true only at `a == g`
+
+A's y-coefficient is exactly `a - g`, so it vanishes only on the diagonal:
+
+    a=2 b=3 g=2   A = 5x        cancels    (the original item)
+    a=3 b=3 g=2   A = 8x + y    does not
+    a=2 b=4 g=5   A = 7x - 3y   does not
+
+Adopting the general form would therefore require deleting the cancellation
+clause -- a reword of a description already on file, which the pilot's own rule
+forbids: a templated distractor must reuse the SAME misconception, not a
+rephrased one. Narrow-but-correct beats broad-but-invented.
+
+Two further costs, had it gone the other way: the general form introduces a new
+collision (A meets C whenever `a = 2*g + 1`, needing another hand-derived
+constraint), and it produces negative y-coefficients, a shape the original item
+never generated.
+
+**Reopen only if** these bank items turn out to carry a short, stable
+`misconception_tag` slug the way `curriculum_practice_items` entries do, with
+this prose serving as per-item explanation rather than as the dashboard label.
+In that case rewording the prose would not rename a misconception, and the
+general form becomes available. Unresolved as of this pilot.
 
 ### QR_A_075 -- `7x - 3(2x - 4) + 5`, correct C `x + 17`
 
