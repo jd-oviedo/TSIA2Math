@@ -207,5 +207,40 @@
     },
     "explanation_template": "Group the like terms, keeping each sign:\n${a}x - {c}x = {k}x$ and ${b} + {d} = {m}$\n\nThe simplified expression is ${k}x + {m}$.",
     "verification_status": "pending"
+  },
+  {
+    "item_id": "QR_P_078",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Proficient",
+    "is_templated": true,
+    "sign_error_coverage": true,
+    "parameters": [
+      { "name": "a", "min": 7, "max": 15, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 9, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [{ "name": "k", "formula": "a - b" }],
+    "canonical_parameters": { "a": 10, "b": 4, "c": 7 },
+    "constraints": ["a - b >= 2"],
+    "constraint_notes": {
+      "a - b >= 2": "Keeps the x-coefficient positive and off 1. At a == b the x-term cancels and the item becomes a constant-only problem of a different kind; at 1 the answer reads as a bare 'x'."
+    },
+    "range_notes": "The cleanest sign-error template in the pool: A differs from the correct answer only in the sign of c, so the misconception is carried by structure and cannot roll away for any parameter values.",
+    "question_template": "Simplify the expression ${a}x - ({b}x - {c})$.",
+    "unsimplified_expression": "a*x - (b*x - c)",
+    "correct_answer_formula": "(a - b)*x + c",
+    "distractor_formulas": {
+      "A": "(a - b)*x - c",
+      "B": "(a + b)*x - c",
+      "C": "(a - b)*x + c",
+      "D": "(a - b + c)*x"
+    },
+    "distractor_derivations": {
+      "A": "a*x - b*x - c",
+      "B": "a*x + (b*x - c)",
+      "D": "((a - b) + c)*x"
+    },
+    "explanation_template": "The minus in front of the parentheses changes the sign of every term inside:\n${a}x - ({b}x - {c}) = {a}x - {b}x + {c}$\n\nCombine like terms:\n${a}x - {b}x = {k}x$, then $+{c}$\n\nThe simplified expression is ${k}x + {c}$.",
+    "verification_status": "pending"
   }
 ]
