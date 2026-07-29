@@ -1,0 +1,35 @@
+[
+  {
+    "item_id": "QR_B_090",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Basic",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 2, "max": 9, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [{ "name": "s", "formula": "a + b" }],
+    "canonical_parameters": { "a": 3, "b": 5 },
+    "constraints": ["a*b != a + b"],
+    "constraint_notes": {
+      "a*b != a + b": "B multiplies the coefficients where the correct answer adds them. Over positive integers those agree only at (2,2), where B would silently become a second correct answer."
+    },
+    "range_notes": "Coefficients start at 2, not 1: at 1 the stem would read '1x + 5x', and the multiply-instead-of-add misconception in B stops being a visible error. Capped at 9 so B's product stays inside a Basic student's mental range.",
+    "question_template": "Simplify the expression ${a}x + {b}x$.",
+    "unsimplified_expression": "a*x + b*x",
+    "correct_answer_formula": "(a + b)*x",
+    "distractor_formulas": {
+      "A": "(a + b)*x",
+      "B": "a*b*x",
+      "C": "(a + b)*x**2",
+      "D": "a + b"
+    },
+    "distractor_derivations": {
+      "B": "(a*b)*x",
+      "C": "(a + b)*(x*x)",
+      "D": "a + b"
+    },
+    "explanation_template": "Combine the coefficients of the like terms:\n${a}x + {b}x = ({a} + {b})x = {s}x$\n\nThe variable stays the same; only the coefficients add.",
+    "verification_status": "pending"
+  }
+]
