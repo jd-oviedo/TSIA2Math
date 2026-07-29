@@ -2,6 +2,46 @@ import { NextResponse } from "next/server";
 import { requireTeacher } from "../../../lib/auth";
 import { createAdminClient } from "../../../lib/supabase-admin";
 
+type SupabaseAdmin = ReturnType<typeof createAdminClient>;
+
+// GoTrue's listUsers() returns one page at a time and defaults to 50 per page.
+// The roster used to make a single unpaginated call, so past 50 users in the
+// project every student beyond the first page rendered with a blank email and
+// "??" initials -- a silent truncation of the same shape as the question bank's
+// 1000-row cap.
+//
+// 1000 is GoTrue's per-page ceiling, so this is one request for any project
+// that fits in it and grows a request per thousand users after that.
+//
+// Emails live only in auth.users: profiles carries id/role/subscription_status
+// and no email column, so there is nothing cheaper to read them from. That
+// makes this O(users in project) to build a map for one class, which is worth
+// revisiting if this ever gets slow -- looking up each student individually is
+// O(class size) but costs a round trip per student, which is the worse trade at
+// the sizes this runs at now.
+const USERS_PAGE_SIZE = 1000;
+
+async function emailsById(admin: SupabaseAdmin): Promise<Map<string, string>> {
+  const map = new Map<string, string>();
+
+  for (let page = 1; ; page++) {
+    const { data, error } = await admin.auth.admin.listUsers({
+      page,
+      perPage: USERS_PAGE_SIZE,
+    });
+
+    if (error) throw error;
+
+    const users = data?.users ?? [];
+    for (const u of users) map.set(u.id, u.email ?? "");
+
+    // A short page is the last page.
+    if (users.length < USERS_PAGE_SIZE) break;
+  }
+
+  return map;
+}
+
 export async function GET(req: Request) {
   const profile = await requireTeacher();
   if (!profile) {
@@ -57,15 +97,14 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: sessError.message }, { status: 500 });
   }
 
-  // Get user emails from auth.users via admin
-  const { data: users, error: usersError } = await admin.auth.admin.listUsers();
-  if (usersError) {
-    return NextResponse.json({ error: usersError.message }, { status: 500 });
+  // Get user emails from auth.users via admin, across every page.
+  let userMap: Map<string, string>;
+  try {
+    userMap = await emailsById(admin);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    return NextResponse.json({ error: message }, { status: 500 });
   }
-
-  const userMap = new Map(
-    (users.users ?? []).map((u) => [u.id, u.email ?? ""])
-  );
 
   // Build roster: most recent session per student + attempt count
   const sessionsByStudent = new Map<string, typeof sessions>();

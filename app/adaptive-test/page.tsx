@@ -12,6 +12,46 @@ import { Footer } from "../components/Footer";
 import posthog from "posthog-js";
 
 const MAX_ITEMS = 20;
+
+// PostgREST caps every response at 1000 rows, and the cap is enforced
+// server-side: asking for .limit(2000) still comes back with 1000. Paging with
+// .range() is the only way past it, which is why this is a loop rather than one
+// call with a bigger limit.
+//
+// Before this existed the bank query returned a bare 1000 of 1124 draft items,
+// with no error and nothing in the response to say it had been truncated, so
+// 124 items had never been served to a student.
+const PAGE_SIZE = 1000;
+
+// Ordered by item_id because range pagination over an unordered query has no
+// stable row order between requests: Postgres is free to build page 2 in a
+// different sequence than page 1, which silently repeats some rows and drops
+// others. The order itself does not matter to the engine -- it picks items by
+// strand and difficulty and shuffles -- only that it is the same order twice.
+async function fetchAllDraftItems(): Promise<unknown[]> {
+  const rows: unknown[] = [];
+
+  for (let from = 0; ; from += PAGE_SIZE) {
+    const { data, error } = await supabase
+      .from("questions_public")
+      .select("*")
+      .eq("status", "draft")
+      .order("item_id")
+      .range(from, from + PAGE_SIZE - 1);
+
+    if (error) throw new Error(error.message);
+    if (!data || data.length === 0) break;
+
+    rows.push(...data);
+
+    // A short page is the last page. A bank that is an exact multiple of
+    // PAGE_SIZE costs one extra empty request, which the check above ends.
+    if (data.length < PAGE_SIZE) break;
+  }
+
+  return rows;
+}
+
 async function saveSession(responses: Response[], maxItems: number): Promise<{ sessionId: string | null; failed: boolean }> {
   try {
     const res = await fetch("/api/sessions", {
@@ -124,9 +164,8 @@ useEffect(() => {
     if (state.phase !== "loading") return;
     async function fetchItems() {
       try {
-        const { data, error } = await supabase.from("questions_public").select("*").eq("status", "draft");
-        if (error) throw new Error(error.message);
-        if (!data || data.length === 0) throw new Error("No items found in the question bank.");
+        const data = await fetchAllDraftItems();
+        if (data.length === 0) throw new Error("No items found in the question bank.");
         const { items, errors } = validateItems(data);
         if (items.length === 0) throw new Error("No valid items found in the question bank.");
         if (errors.length > 0) console.warn("[CAT Engine] Skipped malformed items:", errors);
