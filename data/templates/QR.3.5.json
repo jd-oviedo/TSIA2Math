@@ -130,5 +130,43 @@
     },
     "explanation_template": "Subtracting a negative is the same as adding:\n${a}x - (-{b}x) = {a}x + {b}x = {s}x$",
     "verification_status": "pending"
+  },
+  {
+    "item_id": "QR_B_094",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Basic",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 2, "max": 7, "exclude": [], "integer": true },
+      { "name": "b", "min": 1, "max": 4, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 7, "exclude": [], "integer": true },
+      { "name": "d", "min": 2, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "k", "formula": "a + c" },
+      { "name": "m", "formula": "b + d" }
+    ],
+    "canonical_parameters": { "a": 4, "b": 1, "c": 2, "d": 5 },
+    "constraints": ["d > b"],
+    "constraint_notes": {
+      "d > b": "D's misconception on file is 'keeps only the LARGER constant, dropping the +1'. Rather than encode a Max() -- which would make the answer choice depend on which parameter happened to roll higher, and make the explanation harder to read -- the second constant is pinned larger. D is then always d, exactly as the sentence describes. It also keeps C's subtracted constant positive."
+    },
+    "range_notes": "The first constant stays small (1..4) so dropping it, as D does, is a believable slip rather than an obvious omission. Both x-coefficients stay single-digit so the whole item is mental for a Basic student.",
+    "question_template": "Simplify the expression ${a}x + {b} + {c}x + {d}$.",
+    "unsimplified_expression": "a*x + b + c*x + d",
+    "correct_answer_formula": "(a + c)*x + (b + d)",
+    "distractor_formulas": {
+      "A": "(a + c)*x + (b + d)",
+      "B": "(a + b + c + d)*x",
+      "C": "(a + c)*x + (d - b)",
+      "D": "(a + c)*x + d"
+    },
+    "distractor_derivations": {
+      "B": "a*x + b*x + c*x + d*x",
+      "C": "a*x + c*x + (d - b)",
+      "D": "a*x + c*x + d"
+    },
+    "explanation_template": "Combine the x-terms and the constants separately:\n${a}x + {c}x = {k}x$ and ${b} + {d} = {m}$\n\nThe simplified expression is ${k}x + {m}$.",
+    "verification_status": "pending"
   }
 ]
