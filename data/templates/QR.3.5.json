@@ -276,5 +276,45 @@
     },
     "explanation_template": "Distribute the {a} first:\n${a}(x + {b}) = {a}x + {p}$\n\nThen combine with the ${c}x$:\n${a}x + {p} + {c}x = {k}x + {p}$",
     "verification_status": "pending"
+  },
+  {
+    "item_id": "QR_P_080",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Proficient",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 5, "max": 12, "exclude": [], "integer": true },
+      { "name": "b", "min": 1, "max": 5, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 9, "exclude": [], "integer": true },
+      { "name": "d", "min": 2, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "k", "formula": "a - c" },
+      { "name": "n", "formula": "d - b" }
+    ],
+    "canonical_parameters": { "a": 6, "b": 2, "c": 4, "d": 5 },
+    "constraints": ["a - c >= 2", "d > b", "a + b - c - d != 0"],
+    "constraint_notes": {
+      "a - c >= 2": "Keeps the x-coefficient positive and off 1.",
+      "d > b": "Required by the item's own skills_targeted, which says 'combining interleaved like terms that PRODUCE A NEGATIVE CONSTANT'. A roll with the constants the other way round would still be arithmetically sound but would no longer test the skill the item claims to test.",
+      "a + b - c - d != 0": "Stops D from rolling a bare '0', which reads as a degenerate answer next to three linear expressions rather than as the combine-everything error it represents."
+    },
+    "range_notes": "Proficient tier: the difficulty is carrying two negative signs, not the arithmetic, so every value stays single-digit. The explanation's negative constant is rendered from a positive derived parameter (n = d - b) so no roll can produce a doubled sign like '- -3'.",
+    "question_template": "Simplify the expression ${a}x + {b} - {c}x - {d}$.",
+    "unsimplified_expression": "a*x + b - c*x - d",
+    "correct_answer_formula": "(a - c)*x + (b - d)",
+    "distractor_formulas": {
+      "A": "(a - c)*x + (b - d)",
+      "B": "(a - c)*x + (b + d)",
+      "C": "(a + c)*x + (b - d)",
+      "D": "(a + b - c - d)*x"
+    },
+    "distractor_derivations": {
+      "B": "a*x - c*x + b + d",
+      "C": "a*x + c*x + b - d",
+      "D": "a*x + b*x - c*x - d*x"
+    },
+    "explanation_template": "Combine like terms, keeping each sign:\n${a}x - {c}x = {k}x$ and ${b} - {d} = -{n}$\n\nThe simplified expression is ${k}x - {n}$.",
+    "verification_status": "pending"
   }
 ]
