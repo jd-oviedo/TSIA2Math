@@ -27,7 +27,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
   return (
     <>
       <style>{DASHBOARD_CSS}</style>
-      <StudentShell name={name} role={profile.role}>
+      <StudentShell name={name} role={profile.role} subscriptionStatus={profile.subscription_status}>
         {children}
       </StudentShell>
     </>

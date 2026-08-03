@@ -22,10 +22,12 @@ import {
 export default function StudentShell({
   name,
   role,
+  subscriptionStatus,
   children,
 }: {
   name: string;
   role: 'student' | 'teacher';
+  subscriptionStatus?: 'active' | 'inactive';
   children: React.ReactNode;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,13 +57,14 @@ export default function StudentShell({
           height: '100dvh',
         }}
       >
-        <StudentNavPanel name={name} role={role} />
+        <StudentNavPanel name={name} role={role} subscriptionStatus={subscriptionStatus} />
       </aside>
 
       <StudentNavDrawer
         open={menuOpen}
         name={name}
         role={role}
+        subscriptionStatus={subscriptionStatus}
         onClose={() => setMenuOpen(false)}
       />
 
