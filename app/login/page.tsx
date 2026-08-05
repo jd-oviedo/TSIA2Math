@@ -6,6 +6,7 @@ import posthog from 'posthog-js';
 import { supabase } from "../lib/supabase";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { RoleSelector } from "./RoleSelector";
 
 function Blobs() {
   return (
@@ -148,36 +149,6 @@ function LoginCard() {
         <GoogleIcon />
         {loading ? "redirecting…" : "Continue with Google"}
       </button>
-      {!isTeacherFlow && (
-        <>
-          <div style={{ width: "100%", display: "flex", alignItems: "center", gap: "12px" }}>
-            <div style={{ flex: 1, height: "1px", background: "var(--ec-line)" }} />
-            <span style={{ fontSize: "12px", color: "var(--ec-ink-faint)", whiteSpace: "nowrap" }}>are you a teacher?</span>
-            <div style={{ flex: 1, height: "1px", background: "var(--ec-line)" }} />
-          </div>
-          <a href="/login?role=teacher"
-            style={{
-              width: "100%",
-              padding: "12px 20px",
-              borderRadius: "12px",
-              border: "1px solid var(--ec-line)",
-              background: "transparent",
-              color: "var(--ec-ink-muted)",
-              fontSize: "14px",
-              fontWeight: 600,
-              fontFamily: "inherit",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "8px",
-              textDecoration: "none",
-              boxSizing: "border-box",
-            }}
-          >
-            Sign in as a teacher
-          </a>
-        </>
-      )}
       <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)", margin: 0 }}>
   no spam · we only use this to save your results
 </p>
@@ -191,7 +162,7 @@ function LoginCard() {
   );
 }
 
-export default function LoginPage() {
+function OAuthScreen() {
   return (
     <div className="min-h-dvh" style={{ display: "flex", flexDirection: "column", background: "var(--ec-bg)", position: "relative" }}>
       <Blobs />
@@ -199,11 +170,26 @@ export default function LoginPage() {
         <Header />
       </div>
       <main style={{ flex: 1, position: "relative", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 24px 80px" }}>
-        <Suspense fallback={null}>
-          <LoginCard />
-        </Suspense>
+        <LoginCard />
       </main>
       <Footer />
     </div>
+  );
+}
+
+function LoginPageBody() {
+  const searchParams = useSearchParams();
+  const role = searchParams.get("role");
+  if (role === "teacher" || role === "student") {
+    return <OAuthScreen />;
+  }
+  return <RoleSelector />;
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginPageBody />
+    </Suspense>
   );
 }

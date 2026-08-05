@@ -1,17 +1,26 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { C, ink } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // Carried over from the old single-page dashboard, restyled onto the curriculum
 // palette. Same /api/enroll call and same six-character code rule.
 
-export default function JoinClassPanel() {
-  const [code, setCode] = useState('');
+export default function JoinClassPanel({ initialCode }: { initialCode?: string }) {
+  const [code, setCode] = useState(() => (initialCode ?? '').toUpperCase().slice(0, 6));
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  // A code carried in from the /login role selector (student signs in with a
+  // join code already in hand) should submit itself, not wait for a click.
+  useEffect(() => {
+    if (initialCode && initialCode.trim().length === 6) {
+      handleJoin();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function handleJoin() {
     const trimmed = code.trim().toUpperCase();
