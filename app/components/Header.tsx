@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTheme } from "../theme/useTheme";
 import { supabase } from "../lib/supabase";
 import { LogoutButton } from "./LogoutButton";
+import { CalculatorToggle } from "./Calculator";
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -174,6 +175,7 @@ export function Header() {
             </a>
           )}
           {navRole !== "anon" && <LogoutButton />}
+          <CalculatorToggle />
           <ThemeToggle />
         </div>
       </nav>
