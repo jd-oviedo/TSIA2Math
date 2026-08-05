@@ -129,7 +129,7 @@ export function Header() {
             alt="UnpackMath"
             width={2000}
             height={485}
-            style={{ height: "26px", width: "auto" }}
+            style={{ height: "31px", width: "auto" }}
           />
         </a>
 
