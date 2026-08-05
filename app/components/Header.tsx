@@ -120,47 +120,17 @@ export function Header() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "10px",
             textDecoration: "none",
             flexShrink: 0,
           }}
         >
-          <div
-            style={{
-              width: "42px",
-              height: "42px",
-              borderRadius: "10px",
-              background: "rgba(255,255,255,0.25)",
-              backdropFilter: "blur(8px)",
-              WebkitBackdropFilter: "blur(8px)",
-              border: "1px solid rgba(255,255,255,0.35)",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.08)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
-              overflow: "hidden",
-            }}
-          >
-            <Image
-              src="/images/brand/mu-mark.png"
-              alt="UnpackMath logo"
-              width={42}
-              height={42}
-              style={{ objectFit: "contain" }}
-            />
-          </div>
-          <span
-            style={{
-              fontFamily: "var(--font-kodchasan, 'Kodchasan', sans-serif)",
-              fontWeight: 600,
-              fontSize: "15px",
-              color: "var(--ec-ink)",
-              letterSpacing: "0.04em",
-            }}
-          >
-            UnpackMath
-          </span>
+          <Image
+            src="/unpackmath-wordmark.png"
+            alt="UnpackMath"
+            width={2000}
+            height={485}
+            style={{ height: "31px", width: "auto" }}
+          />
         </a>
 
         <div style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: 0 }}>

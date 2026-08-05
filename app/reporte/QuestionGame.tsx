@@ -215,9 +215,8 @@ export function QuestionGame({ onClose }: { onClose?: () => void }) {
         {/* ---------- INTRO ---------- */}
         {screen === "intro" && (
           <div style={{ textAlign: "center", padding: "8px 6px" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginBottom: 22 }}>
-              <img src="/images/brand/mu-mark.png" alt="UnpackMath" style={{ width: 20, height: 20, borderRadius: 5, display: "block" }} />
-              <span style={{ font: "600 12px/1 'Kodchasan',sans-serif", color: MUTED }}>UnpackMath</span>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 22 }}>
+              <img src="/unpackmath-wordmark.png" alt="UnpackMath" style={{ height: 20, width: "auto", display: "block" }} />
             </div>
             <div style={{ font: "700 27px/1.2 'Kodchasan',sans-serif", color: NAVY }}>Juego de preguntas</div>
             <div style={{ font: "400 15px/1.3 Arial,sans-serif", color: FAINT, marginTop: 6 }}>Question game</div>
