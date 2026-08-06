@@ -16,3 +16,6 @@ public/data/question_bank.backup2.json
 # Python
 __pycache__/
 *.pyc
+
+# Local design reference screenshots, not part of the shipped app
+reference/
