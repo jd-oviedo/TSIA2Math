@@ -290,11 +290,23 @@ collision (A meets C whenever `a = 2*g + 1`, needing another hand-derived
 constraint), and it produces negative y-coefficients, a shape the original item
 never generated.
 
-**Reopen only if** these bank items turn out to carry a short, stable
-`misconception_tag` slug the way `curriculum_practice_items` entries do, with
-this prose serving as per-item explanation rather than as the dashboard label.
-In that case rewording the prose would not rename a misconception, and the
-general form becomes available. Unresolved as of this pilot.
+**This reopen condition is closed, not pending.** It asked whether these bank
+items carry a short, stable `misconception_tag` slug the way
+`curriculum_practice_items` entries do -- in which case the prose would be a
+per-item explanation rather than the misconception's identity, rewording it
+would not rename anything, and the general form would become available.
+
+They do not. All 323 items under `data/items/` carry `distractor_logic` and
+nothing else; there is no slug field at any level of the bank schema. The
+sentence on file *is* the misconception's identity, so the narrowed range is
+permanent for as long as QR_A_074 is scoped to the CAT bank. Verified
+2026-08-06.
+
+The one path that revives the general form is a change of scope, not a
+discovery: re-authoring QR.3.5 as curriculum practice items, which do carry
+`misconception_tag` slugs keyed by option letter. That is the Phase B
+architecture question, tracked separately -- it is not an open question about
+this item.
 
 ### QR_A_075 -- `7x - 3(2x - 4) + 5`, correct C `x + 17`
 
