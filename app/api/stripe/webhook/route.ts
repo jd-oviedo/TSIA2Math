@@ -45,14 +45,24 @@ async function findProfileIdByCustomerId(admin: Admin, customerId: string): Prom
   return data?.id ?? null;
 }
 
-// Resolve a profile id from whatever the event gives us: prefer the stored
+// Resolve a profile id from whatever the event gives us: prefer the
+// client_reference_id set by our /upgrade redirect, then the stored
 // stripe_customer_id, then fall back to the customer's email (retrieving the
 // Stripe customer when the event itself carries no email).
 async function resolveProfileId(
   admin: Admin,
   stripe: Stripe,
-  opts: { customerId?: string | null; email?: string | null }
+  opts: { customerId?: string | null; email?: string | null; clientReferenceId?: string | null }
 ): Promise<string | null> {
+  if (opts.clientReferenceId) {
+    const { data } = await admin
+      .from("profiles")
+      .select("id")
+      .eq("id", opts.clientReferenceId)
+      .maybeSingle();
+    if (data?.id) return data.id;
+  }
+
   if (opts.customerId) {
     const byCustomer = await findProfileIdByCustomerId(admin, opts.customerId);
     if (byCustomer) return byCustomer;
@@ -136,9 +146,11 @@ export async function POST(req: Request) {
         const session = event.data.object as Stripe.Checkout.Session;
         const customerId = toId(session.customer);
         const email = session.customer_details?.email ?? session.customer_email ?? null;
-        const profileId = await resolveProfileId(admin, stripe, { customerId, email });
+        const clientReferenceId = session.client_reference_id ?? null;
+        const paymentLink = toId(session.payment_link);
+        const profileId = await resolveProfileId(admin, stripe, { customerId, email, clientReferenceId });
         if (!profileId) {
-          console.error("[stripe/webhook] no profile match for checkout session", { email, customerId });
+          console.error("[stripe/webhook] no profile match for checkout session", { email, customerId, clientReferenceId, paymentLink });
           break;
         }
         await activate(admin, profileId, customerId, email);
