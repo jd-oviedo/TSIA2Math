@@ -7,10 +7,13 @@
 // each page re-declaring a literal font stack.
 //
 // FONT_HEADING — Kodchasan. Headings and heading-weight labels.
-// FONT_BODY    — Fredoka. Everything else: body copy, labels, tables, buttons.
+// FONT_BODY    — Nunito. Everything else: body copy, labels, tables, buttons.
+//
+// FONT_BODY is also the document default, set on body in globals.css, so a
+// component that sets no font-family at all still lands on Nunito.
 
 export const FONT_HEADING = "var(--font-kodchasan), 'Kodchasan', sans-serif";
-export const FONT_BODY = "var(--font-fredoka), 'Fredoka', sans-serif";
+export const FONT_BODY = "var(--font-nunito), 'Nunito', sans-serif";
 
 // Dropped into each page's <style> block so non-inline text, form controls, and
 // semantic headings pick up the right face without touching every element.

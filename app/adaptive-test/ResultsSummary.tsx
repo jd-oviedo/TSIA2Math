@@ -2,6 +2,7 @@
 
 import type { Response } from "./type";
 import { TSIA2_PASSING, thetaToScore, buildCategoryBreakdown } from "./engine";
+import { FONT_BODY } from "../components/fonts";
 
 const SHOW_SIGNIN_PROMPT = true;
 
@@ -53,7 +54,7 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
           color: "var(--ec-ink)",
           marginBottom: "14px",
           letterSpacing: "-0.04em",
-          fontFamily: "var(--font-hanken), system-ui, sans-serif",
+          fontFamily: FONT_BODY,
         }}>
           {finalScore}
         </p>

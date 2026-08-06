@@ -4,6 +4,14 @@
 @tailwind utilities;
 .katex { color: var(--ec-ink) !important; }
 
+/* Document-level body face. Nunito is the default for all UI text so roster
+   tables, cards, labels and nav pick it up without each component naming a
+   font. Kodchasan stays scoped to headings and display text, which the pages
+   opt into explicitly via FONT_HEADING. Form controls do not inherit font by
+   default, so they are named here too. */
+body { font-family: var(--font-nunito), 'Nunito', sans-serif; }
+button, input, select, textarea { font-family: inherit; }
+
 /* Mobile-safe full height: dynamic viewport units account for the collapsing
    browser toolbar, with a 100vh fallback for browsers without dvh support.
    Fixes off-center centering and the scroll jump when the URL bar hides. */

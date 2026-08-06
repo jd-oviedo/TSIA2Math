@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "./theme/ThemeProvider";
 import { PostHogProvider } from "./providers";
-import { Kodchasan, Fredoka } from "next/font/google";
+import { Kodchasan, Nunito } from "next/font/google";
 import { ChunkErrorHandler } from './components/ChunkErrorHandler';
 
 const kodchasan = Kodchasan({
@@ -12,12 +12,13 @@ const kodchasan = Kodchasan({
   display: "swap",
 });
 
-// Body/UI face for the teacher-facing surfaces. Fredoka is a variable font, so
-// the weight range covers the 400–700 the dashboards use.
-const fredoka = Fredoka({
+// Body/UI face for every surface. Nunito reads as precise rather than playful,
+// which is what the dashboards need from labels, tables and data. The weight
+// range covers the 400-700 they use.
+const nunito = Nunito({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-fredoka",
+  variable: "--font-nunito",
   display: "swap",
 });
 
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${kodchasan.variable} ${fredoka.variable}`}>
+    <html lang="en" className={`${kodchasan.variable} ${nunito.variable}`}>
       <body
         className="min-h-dvh"
         style={{ background: "var(--ec-bg)", color: "var(--ec-ink)" }}

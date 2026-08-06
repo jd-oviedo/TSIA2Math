@@ -12,7 +12,7 @@ const STUDENT_ORANGE = "#F0A33E";
 const SKY = "#6FBEE6";
 
 const KODCHASAN = "var(--font-kodchasan, Kodchasan, sans-serif)";
-const SANS = "Arial, system-ui, sans-serif";
+const SANS = "var(--font-nunito), 'Nunito', sans-serif";
 
 type Lang = "en" | "es";
 

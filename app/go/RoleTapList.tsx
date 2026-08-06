@@ -13,7 +13,7 @@ const SKY = "#6FBEE6";
 const SKY_BUBBLE = "#87CEEB";
 
 const KODCHASAN = "var(--font-kodchasan, Kodchasan, sans-serif)";
-const SANS = "Arial, system-ui, sans-serif";
+const SANS = "var(--font-nunito), 'Nunito', sans-serif";
 
 // Google Apps Script Web App backing the interest sheet. Writes are fire-and-forget:
 // the Apps Script endpoint does not send CORS headers, so we post with mode "no-cors"
