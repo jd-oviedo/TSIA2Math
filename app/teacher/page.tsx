@@ -37,6 +37,17 @@ export default async function TeacherPage() {
     .is("archived_at", null)
     .order("created_at", { ascending: true });
 
+  // Founder flag, read separately from the access gate above and allowed to
+  // fail. profiles.is_founder is added by sql/founder_flag.sql; until that has
+  // run the column does not exist, the select errors, and the dashboard should
+  // still render with no badge rather than 500.
+  const { data: founderRow } = await admin
+    .from("profiles")
+    .select("is_founder")
+    .eq("id", session.user.id)
+    .maybeSingle();
+  const isFounder = founderRow?.is_founder === true;
+
   const meta = session.user.user_metadata ?? {};
   const teacherName: string =
     meta.full_name || meta.name || (session.user.email?.split("@")[0] ?? "Teacher");
@@ -47,6 +58,7 @@ export default async function TeacherPage() {
       initialClasses={classes ?? []}
       teacherName={teacherName}
       teacherEmail={teacherEmail}
+      isFounder={isFounder}
     />
   );
 }

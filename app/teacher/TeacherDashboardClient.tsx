@@ -6,6 +6,7 @@ import MathText from '../components/MathText';
 import { LogoutButton } from '../components/LogoutButton';
 import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from '../components/fonts';
 import NewAnnouncement from './NewAnnouncement';
+import SupportModal from './SupportModal';
 
 // ─── Types (match the API route response shapes) ─────────────────────────────
 
@@ -157,7 +158,21 @@ function useViewport() {
 
 // Wordmark is 2000x485, so setting width alone keeps the aspect ratio intact.
 // 152px fits the 200px sidebar minus its 18px side padding.
-function Brand() {
+//
+// Collapsed, the full wordmark is replaced by the standalone mu mark, which is
+// square and centres in the narrow rail.
+function Brand({ collapsed }: { collapsed: boolean }) {
+  if (collapsed) {
+    return (
+      <img
+        src="/unpackmath-logo.png"
+        alt="UnpackMath"
+        width={1080}
+        height={1080}
+        style={{ width: 30, height: 30, display: 'block', margin: '0 auto' }}
+      />
+    );
+  }
   return (
     <img
       src="/unpackmath-wordmark.png"
@@ -194,55 +209,248 @@ function navIcon(label: string) {
   }
 }
 
-function SidebarInner({ teacherName, teacherEmail, onNavigate }: { teacherName: string; teacherEmail: string; onNavigate?: () => void }) {
+// Founder badge. Gold star plus FOUNDER in a rounded amber outline pill,
+// sitting under the name in the sidebar profile card, per the reference.
+// Driven by profiles.is_founder, so adding a founder is a column update rather
+// than a code change.
+function FounderPill() {
+  return (
+    <span
+      style={{
+        display: 'inline-flex', alignItems: 'center', gap: 5,
+        marginTop: 4, padding: '2px 9px 2px 7px',
+        border: '1px solid #C68A2F', borderRadius: 999,
+        color: '#E7BE7B', fontSize: 9, fontWeight: 700, letterSpacing: 1.1,
+      }}
+    >
+      <svg width="9" height="9" viewBox="0 0 12 12" fill="#E7BE7B" aria-hidden="true">
+        <path d="M6 0.6l1.62 3.34 3.68.52-2.66 2.58.63 3.66L6 8.97 2.73 10.7l.63-3.66L.7 4.46l3.68-.52z" />
+      </svg>
+      FOUNDER
+    </span>
+  );
+}
+
+// Floating hover label for the sidebar icons.
+//
+// Positioned fixed off the hovered element's own rect rather than absolutely
+// inside the sidebar, because the nav clips horizontally while the collapse
+// animation runs and an absolutely positioned label would be cut off at the
+// navy edge. Fixed also keeps it above the sticky top bar.
+//
+// It is purely additive: nav items keep their existing active and hover
+// background treatment underneath, and the label layers over the main column.
+type Tip = { label: string; x: number; y: number };
+
+function HoverLabel({ tip }: { tip: Tip }) {
+  return (
+    <span
+      role="tooltip"
+      style={{
+        position: 'fixed',
+        left: tip.x,
+        top: tip.y,
+        transform: 'translateY(-50%)',
+        pointerEvents: 'none',
+        zIndex: 400,
+        background: '#fff',
+        color: '#0F1E35',
+        border: '1px solid rgba(15,30,53,0.07)',
+        boxShadow: '0 4px 14px rgba(15,30,53,0.18)',
+        borderRadius: 8,
+        padding: '6px 10px',
+        fontSize: 12,
+        fontWeight: 600,
+        whiteSpace: 'nowrap',
+        // Fades in on hover. Removal is an unmount, so it disappears at once
+        // on mouse-out rather than lingering through a fade.
+        animation: 'umtipin 120ms ease-out',
+      }}
+    >
+      {tip.label}
+    </span>
+  );
+}
+
+function SidebarInner({
+  teacherName,
+  teacherEmail,
+  isFounder,
+  collapsed = false,
+  onNavigate,
+  onOpenSupport,
+}: {
+  teacherName: string;
+  teacherEmail: string;
+  isFounder: boolean;
+  collapsed?: boolean;
+  onNavigate?: () => void;
+  onOpenSupport: () => void;
+}) {
   const initials = teacherName.split(/[\s._-]+/).map((x) => x[0]).join('').slice(0, 2).toUpperCase() || 'T';
+  const [tip, setTip] = useState<Tip | null>(null);
+  const [hovered, setHovered] = useState<string | null>(null);
+  const [accountOpen, setAccountOpen] = useState(false);
+
+  // Anchors the label to the right edge of whatever icon is hovered.
+  function showTip(label: string) {
+    return (e: React.MouseEvent<HTMLElement>) => {
+      const r = e.currentTarget.getBoundingClientRect();
+      setTip({ label, x: r.right + 10, y: r.top + r.height / 2 });
+      setHovered(label);
+    };
+  }
+  function hideTip() {
+    setTip(null);
+    setHovered(null);
+  }
+
   return (
     <>
-      <div style={{ padding: '22px 18px 18px' }}>
-        <Brand />
-        <div style={{ marginTop: 14, display: 'inline-flex', alignItems: 'center', gap: 6, border: '1px solid rgba(198,138,47,0.45)', color: '#E7BE7B', fontSize: 9, fontWeight: 700, letterSpacing: 1.4, padding: '3px 8px', borderRadius: 5 }}>
-          <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#C68A2F' }} />
-          TEACHER · PRO
-        </div>
+      <div style={{ padding: collapsed ? '22px 12px 14px' : '22px 18px 14px' }}>
+        <Brand collapsed={collapsed} />
       </div>
-      <nav style={{ padding: '6px 12px', display: 'flex', flexDirection: 'column', gap: 2 }}>
+
+      {/* TEACHER · PRO — a full-bleed band across the sidebar rather than an
+          inset pill. Keeps the amber border/ink treatment, drops the dot, and
+          centres the text; side borders are omitted so it reads as a band that
+          meets both edges instead of a boxed-in chip. */}
+      <div
+        style={{
+          borderTop: '1px solid rgba(198,138,47,0.45)',
+          borderBottom: '1px solid rgba(198,138,47,0.45)',
+          color: '#E7BE7B',
+          fontSize: 9,
+          fontWeight: 700,
+          letterSpacing: 1.4,
+          padding: '6px 4px',
+          textAlign: 'center',
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+        }}
+      >
+        {collapsed ? 'PRO' : 'TEACHER · PRO'}
+      </div>
+
+      <nav style={{ padding: collapsed ? '10px 8px' : '10px 12px', display: 'flex', flexDirection: 'column', gap: 2, overflowX: 'hidden' }}>
         {NAV_ITEMS.map((item) => {
           const isActive = item.label === 'Dashboard';
+          const isHovered = hovered === item.label;
           return (
             <a
               key={item.label}
               href={item.href}
               onClick={onNavigate}
+              aria-label={item.label}
+              onMouseEnter={showTip(item.label)}
+              onMouseLeave={hideTip}
               style={{
-                display: 'flex', alignItems: 'center', gap: 11,
-                padding: '9px 11px', borderRadius: 8, fontSize: 13,
+                display: 'flex', alignItems: 'center', gap: collapsed ? 0 : 11,
+                justifyContent: collapsed ? 'center' : 'flex-start',
+                padding: collapsed ? '9px 0' : '9px 11px', borderRadius: 8, fontSize: 13,
                 fontWeight: isActive ? 600 : 500, textDecoration: 'none',
                 color: isActive ? '#E7BE7B' : 'rgba(255,255,255,0.64)',
-                background: isActive ? 'rgba(198,138,47,0.14)' : 'transparent',
+                background: isActive
+                  ? 'rgba(198,138,47,0.14)'
+                  : isHovered ? 'rgba(255,255,255,0.06)' : 'transparent',
                 transition: 'background 0.12s',
               }}
-              onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.06)'; }}
-              onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
             >
-              {navIcon(item.label)}
-              {item.label}
+              <span style={{ flex: '0 0 17px', display: 'flex', alignItems: 'center' }}>{navIcon(item.label)}</span>
+              {!collapsed && <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.label}</span>}
             </a>
           );
         })}
       </nav>
-      <div style={{ marginTop: 'auto', padding: 14, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ width: 32, height: 32, borderRadius: '50%', background: '#1C3052', color: '#E7BE7B', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700, flex: '0 0 32px' }}>{initials}</div>
-          <div style={{ minWidth: 0, flex: 1 }}>
-            <div style={{ fontSize: 12.5, fontWeight: 600, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{teacherName}</div>
-            <div style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.5)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{teacherEmail}</div>
-          </div>
-          <LogoutButton variant="dark" size={30} />
+
+      <div style={{ marginTop: 'auto', padding: collapsed ? '14px 8px' : 14, borderTop: '1px solid rgba(255,255,255,0.08)', position: 'relative' }}>
+        {/* Account menu. Anchored above the avatar because the avatar sits at
+            the bottom of the rail. */}
+        {accountOpen && (
+          <>
+            <div onClick={() => setAccountOpen(false)} style={{ position: 'fixed', inset: 0, zIndex: 310 }} />
+            <div
+              role="menu"
+              style={{
+                position: 'absolute', bottom: 'calc(100% - 4px)', left: collapsed ? 8 : 14,
+                minWidth: 178, zIndex: 320,
+                background: '#fff', borderRadius: 11, padding: 5,
+                border: '1px solid rgba(15,30,53,0.08)',
+                boxShadow: '0 12px 34px rgba(15,30,53,0.24)',
+              }}
+            >
+              <a
+                role="menuitem"
+                href="/teacher/settings"
+                onClick={() => setAccountOpen(false)}
+                style={menuItemStyle}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F3'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+              >
+                <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="9" r="2.4" /><path d="M14.6 11.1a1.3 1.3 0 0 0 .26 1.43l.05.05a1.55 1.55 0 1 1-2.2 2.2l-.04-.05a1.3 1.3 0 0 0-1.43-.26 1.3 1.3 0 0 0-.79 1.19v.13a1.55 1.55 0 1 1-3.1 0v-.07a1.3 1.3 0 0 0-.85-1.19 1.3 1.3 0 0 0-1.43.26l-.05.05a1.55 1.55 0 1 1-2.2-2.2l.05-.05a1.3 1.3 0 0 0 .26-1.43 1.3 1.3 0 0 0-1.19-.79h-.13a1.55 1.55 0 1 1 0-3.1h.07a1.3 1.3 0 0 0 1.19-.85 1.3 1.3 0 0 0-.26-1.43l-.05-.05a1.55 1.55 0 1 1 2.2-2.2l.05.05a1.3 1.3 0 0 0 1.43.26h.06a1.3 1.3 0 0 0 .79-1.19v-.13a1.55 1.55 0 1 1 3.1 0v.07a1.3 1.3 0 0 0 .79 1.19 1.3 1.3 0 0 0 1.43-.26l.05-.05a1.55 1.55 0 1 1 2.2 2.2l-.05.05a1.3 1.3 0 0 0-.26 1.43v.06a1.3 1.3 0 0 0 1.19.79h.13a1.55 1.55 0 1 1 0 3.1h-.07a1.3 1.3 0 0 0-1.19.79z" /></svg>
+                Account Settings
+              </a>
+              <button
+                role="menuitem"
+                onClick={() => { setAccountOpen(false); onOpenSupport(); }}
+                style={{ ...menuItemStyle, width: '100%', border: 'none', background: 'transparent', cursor: 'pointer', textAlign: 'left' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F3'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+              >
+                <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="9" r="7" /><path d="M6.9 6.8a2.15 2.15 0 0 1 4.18.72c0 1.43-2.15 2.15-2.15 2.15" /><circle cx="9" cy="13" r="0.55" fill="currentColor" stroke="none" /></svg>
+                Help
+              </button>
+            </div>
+          </>
+        )}
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: collapsed ? 0 : 10, justifyContent: collapsed ? 'center' : 'flex-start' }}>
+          <button
+            type="button"
+            aria-label="Profile"
+            aria-haspopup="menu"
+            aria-expanded={accountOpen}
+            onClick={() => setAccountOpen((v) => !v)}
+            onMouseEnter={showTip('Profile')}
+            onMouseLeave={hideTip}
+            style={{
+              width: 32, height: 32, borderRadius: '50%', background: '#1C3052', color: '#E7BE7B',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 12, fontWeight: 700, flex: '0 0 32px',
+              border: hovered === 'Profile' || accountOpen ? '1px solid rgba(231,190,123,0.55)' : '1px solid transparent',
+              cursor: 'pointer', padding: 0, fontFamily: 'inherit',
+            }}
+          >
+            {initials}
+          </button>
+          {!collapsed && (
+            <>
+              <div style={{ minWidth: 0, flex: 1 }}>
+                <div style={{ fontSize: 12.5, fontWeight: 600, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{teacherName}</div>
+                {isFounder ? (
+                  <FounderPill />
+                ) : (
+                  <div style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.5)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{teacherEmail}</div>
+                )}
+              </div>
+              <LogoutButton variant="dark" size={30} />
+            </>
+          )}
         </div>
       </div>
+
+      {tip && <HoverLabel tip={tip} />}
     </>
   );
 }
+
+const menuItemStyle: React.CSSProperties = {
+  display: 'flex', alignItems: 'center', gap: 9,
+  padding: '9px 11px', borderRadius: 8,
+  fontSize: 13, fontWeight: 600, color: '#0F1E35',
+  textDecoration: 'none', fontFamily: 'inherit',
+  transition: 'background 0.12s',
+};
 
 // ─── Summary cards ───────────────────────────────────────────────────────────
 
@@ -730,8 +938,13 @@ function Spinner() {
 
 // ─── Main ───────────────────────────────────────────────────────────────────
 
-export default function TeacherDashboardClient({ initialClasses, teacherName, teacherEmail }: {
-  initialClasses: ClassRow[]; teacherName: string; teacherEmail: string;
+// Sidebar rail widths. The gap between them is what the width transition
+// animates across.
+const SIDEBAR_W = 200;
+const SIDEBAR_W_COLLAPSED = 64;
+
+export default function TeacherDashboardClient({ initialClasses, teacherName, teacherEmail, isFounder }: {
+  initialClasses: ClassRow[]; teacherName: string; teacherEmail: string; isFounder: boolean;
 }) {
   const [classes, setClasses] = useState<ClassRow[]>(initialClasses);
   const [selectedClassId, setSelectedClassId] = useState<string>(initialClasses[0]?.id ?? '');
@@ -742,6 +955,8 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
   const [showInvite, setShowInvite] = useState(false);
   const [showNewClass, setShowNewClass] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
+  const [showSupport, setShowSupport] = useState(false);
 
   const { isMobile, isCompact } = useViewport();
 
@@ -817,23 +1032,75 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
         * { box-sizing: border-box; }
         body { margin: 0; background: #F5F5F3; -webkit-font-smoothing: antialiased; }
         ${FONT_BASE_CSS}
+        @keyframes umtipin { from { opacity: 0; } to { opacity: 1; } }
       `}</style>
 
       <div style={{ display: 'flex', minHeight: '100vh', fontFamily: FONT_BODY, color: '#1A1A1A' }}>
 
-        {/* Desktop sidebar */}
+        {/* Desktop sidebar. Width animates between the two rail widths; the
+            z-index keeps the collapse handle and the hover labels above the
+            sticky top bar. */}
         {!isCompact && (
-          <aside style={{ width: 200, flex: '0 0 200px', background: '#0F1E35', color: '#fff', display: 'flex', flexDirection: 'column', position: 'sticky', top: 0, height: '100vh' }}>
-            <SidebarInner teacherName={teacherName} teacherEmail={teacherEmail} />
+          <aside
+            style={{
+              width: collapsed ? SIDEBAR_W_COLLAPSED : SIDEBAR_W,
+              flex: `0 0 ${collapsed ? SIDEBAR_W_COLLAPSED : SIDEBAR_W}px`,
+              background: '#0F1E35', color: '#fff',
+              display: 'flex', flexDirection: 'column',
+              position: 'sticky', top: 0, height: '100vh', zIndex: 30,
+              transition: 'width 220ms ease, flex-basis 220ms ease',
+            }}
+          >
+            <SidebarInner
+              teacherName={teacherName}
+              teacherEmail={teacherEmail}
+              isFounder={isFounder}
+              collapsed={collapsed}
+              onOpenSupport={() => setShowSupport(true)}
+            />
+
+            {/* Collapse handle, sat on the seam where the navy rail meets the
+                white top bar. */}
+            <button
+              type="button"
+              onClick={() => setCollapsed((v) => !v)}
+              aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+              aria-expanded={!collapsed}
+              title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+              style={{
+                position: 'absolute', top: 46, right: -13, zIndex: 40,
+                width: 26, height: 26, borderRadius: '50%',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                background: '#fff', border: '1px solid rgba(15,30,53,0.12)',
+                boxShadow: '0 2px 8px rgba(15,30,53,0.18)',
+                color: '#0F1E35', cursor: 'pointer', padding: 0,
+              }}
+            >
+              {/* Chevron flips to point the way the next click will move it. */}
+              <svg
+                width="13" height="13" viewBox="0 0 18 18" fill="none"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                style={{ transform: collapsed ? 'rotate(180deg)' : 'none', transition: 'transform 220ms ease' }}
+              >
+                <polyline points="11 4 6 9 11 14" />
+              </svg>
+            </button>
           </aside>
         )}
 
-        {/* Mobile/tablet slide-over sidebar */}
+        {/* Mobile/tablet slide-over sidebar. Always full width: the collapse
+            handle is a desktop affordance, the slide-over already closes. */}
         {isCompact && menuOpen && (
           <div style={{ position: 'fixed', inset: 0, zIndex: 300, display: 'flex' }}>
             <div onClick={() => setMenuOpen(false)} style={{ position: 'absolute', inset: 0, background: 'rgba(15,30,53,0.5)' }} />
             <aside style={{ position: 'relative', width: 240, maxWidth: '82vw', background: '#0F1E35', color: '#fff', display: 'flex', flexDirection: 'column', height: '100vh', boxShadow: '4px 0 24px rgba(0,0,0,0.3)' }}>
-              <SidebarInner teacherName={teacherName} teacherEmail={teacherEmail} onNavigate={() => setMenuOpen(false)} />
+              <SidebarInner
+                teacherName={teacherName}
+                teacherEmail={teacherEmail}
+                isFounder={isFounder}
+                onNavigate={() => setMenuOpen(false)}
+                onOpenSupport={() => { setMenuOpen(false); setShowSupport(true); }}
+              />
             </aside>
           </div>
         )}
@@ -912,6 +1179,7 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
 
       {showInvite && selectedClass && <InviteModal classId={selectedClass.id} onClose={() => setShowInvite(false)} />}
       {showNewClass && <NewClassModal onClose={() => setShowNewClass(false)} onCreated={handleClassCreated} />}
+      {showSupport && <SupportModal onClose={() => setShowSupport(false)} />}
     </>
   );
 }

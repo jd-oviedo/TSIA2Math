@@ -74,7 +74,7 @@ const NAV = ['Dashboard', 'Misconceptions', 'Students', 'Take a practice test', 
 function SidebarInner() {
   return (
     <>
-      <div style={{ padding: '22px 18px 18px' }}>
+      <div style={{ padding: '22px 18px 14px' }}>
         {/* Wordmark is 2000x485; width alone keeps the aspect ratio. 152px fits
             the 200px sidebar minus its 18px side padding. */}
         <img
@@ -84,11 +84,28 @@ function SidebarInner() {
           height={485}
           style={{ width: 152, maxWidth: '100%', height: 'auto', display: 'block' }}
         />
-        <div style={{ marginTop: 14, display: 'inline-flex', alignItems: 'center', gap: 6, border: '1px solid rgba(198,138,47,0.45)', color: '#E7BE7B', fontSize: 9, fontWeight: 700, letterSpacing: 1.4, padding: '3px 8px', borderRadius: 5 }}>
-          <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#C68A2F' }} />TEACHER · PRO
-        </div>
       </div>
-      <nav style={{ padding: '6px 12px', display: 'flex', flexDirection: 'column', gap: 2 }}>
+
+      {/* Full-bleed band, matching the real dashboard sidebar. This page keeps
+          its own copy of the sidebar markup, so the treatment is mirrored here
+          by hand rather than shared. */}
+      <div
+        style={{
+          borderTop: '1px solid rgba(198,138,47,0.45)',
+          borderBottom: '1px solid rgba(198,138,47,0.45)',
+          color: '#E7BE7B',
+          fontSize: 9,
+          fontWeight: 700,
+          letterSpacing: 1.4,
+          padding: '6px 4px',
+          textAlign: 'center',
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+        }}
+      >
+        TEACHER · PRO
+      </div>
+      <nav style={{ padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: 2 }}>
         {NAV.map((label, i) => (
           <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 11, padding: '9px 11px', borderRadius: 8, fontSize: 13, fontWeight: i === 0 ? 600 : 500, color: i === 0 ? '#E7BE7B' : 'rgba(255,255,255,0.64)', background: i === 0 ? 'rgba(198,138,47,0.14)' : 'transparent' }}>
             {label}
