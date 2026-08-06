@@ -1,0 +1,564 @@
+[
+  {
+    "item_id": "QR_B_090",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Basic",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 2, "max": 9, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [{ "name": "s", "formula": "a + b" }],
+    "canonical_parameters": { "a": 3, "b": 5 },
+    "constraints": ["a*b != a + b"],
+    "constraint_notes": {
+      "a*b != a + b": "B multiplies the coefficients where the correct answer adds them. Over positive integers those agree only at (2,2), where B would silently become a second correct answer."
+    },
+    "range_notes": "Coefficients start at 2, not 1: at 1 the stem would read '1x + 5x', and the multiply-instead-of-add misconception in B stops being a visible error. Capped at 9 so B's product stays inside a Basic student's mental range.",
+    "question_template": "Simplify the expression ${a}x + {b}x$.",
+    "unsimplified_expression": "a*x + b*x",
+    "correct_answer_formula": "(a + b)*x",
+    "distractor_formulas": {
+      "A": "(a + b)*x",
+      "B": "a*b*x",
+      "C": "(a + b)*x**2",
+      "D": "a + b"
+    },
+    "distractor_derivations": {
+      "B": "(a*b)*x",
+      "C": "(a + b)*(x*x)",
+      "D": "a + b"
+    },
+    "explanation_template": "Combine the coefficients of the like terms:\n${a}x + {b}x = ({a} + {b})x = {s}x$\n\nThe variable stays the same; only the coefficients add.",
+    "verification_status": "passed"
+  },
+  {
+    "item_id": "QR_B_091",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Basic",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 5, "max": 12, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 9, "exclude": [], "integer": true },
+      { "name": "c", "min": 1, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [{ "name": "k", "formula": "a - b" }],
+    "canonical_parameters": { "a": 7, "b": 4, "c": 2 },
+    "constraints": ["a - b >= 2"],
+    "constraint_notes": {
+      "a - b >= 2": "Keeps the x-coefficient positive and off 1. At a == b the x-term vanishes and the item silently becomes a constant-only problem; at a - b == 1 the answer reads as a bare 'x', which is correct but a different reading task than the tier intends."
+    },
+    "range_notes": "The constant stays a single digit so 'the constant has no other constant to combine with' remains the obvious reading rather than an arithmetic step. Coefficients stay small enough that the whole item is mental for a Basic student.",
+    "question_template": "Simplify the expression ${a}x - {b}x + {c}$.",
+    "unsimplified_expression": "a*x - b*x + c",
+    "correct_answer_formula": "(a - b)*x + c",
+    "distractor_formulas": {
+      "A": "(a + b)*x + c",
+      "B": "(a - b)*x + c",
+      "C": "(a - b)*x",
+      "D": "(a - b + c)*x"
+    },
+    "distractor_derivations": {
+      "A": "a*x + b*x + c",
+      "C": "a*x - b*x",
+      "D": "a*x - b*x + c*x"
+    },
+    "explanation_template": "Group the like terms:\n${a}x - {b}x = {k}x$\n\nThe constant {c} has no other constant to combine with, so the simplified expression is ${k}x + {c}$.",
+    "verification_status": "passed"
+  },
+  {
+    "item_id": "QR_B_092",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Basic",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 2, "max": 8, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 8, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 8, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [{ "name": "k", "formula": "a + c" }],
+    "canonical_parameters": { "a": 5, "b": 2, "c": 3 },
+    "constraints": [],
+    "range_notes": "Every coefficient starts at 2 so no term ever renders as '1x' or '1y'. That also keeps b non-zero, which is what stops A (adds every coefficient onto one variable) from collapsing onto D (drops the y-term) -- with a zero y-coefficient those two misconceptions produce the same answer and the item would have two identical wrong choices.",
+    "question_template": "Simplify the expression ${a}x + {b}y + {c}x$.",
+    "unsimplified_expression": "a*x + b*y + c*x",
+    "correct_answer_formula": "(a + c)*x + b*y",
+    "distractor_formulas": {
+      "A": "(a + b + c)*x",
+      "B": "(a + b + c)*x*y",
+      "C": "(a + c)*x + b*y",
+      "D": "(a + c)*x"
+    },
+    "distractor_derivations": {
+      "A": "a*x + b*x + c*x",
+      "B": "a*(x*y) + b*(x*y) + c*(x*y)",
+      "D": "a*x + c*x"
+    },
+    "explanation_template": "Only terms with the same variable combine:\n${a}x + {c}x = {k}x$\n\nThe ${b}y$ term has no other y-term, so it stays as is:\n${k}x + {b}y$",
+    "verification_status": "passed"
+  },
+  {
+    "item_id": "QR_B_093",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Basic",
+    "is_templated": true,
+    "sign_error_coverage": true,
+    "parameters": [
+      { "name": "a", "min": 4, "max": 12, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [{ "name": "s", "formula": "a + b" }],
+    "canonical_parameters": { "a": 6, "b": 3 },
+    "constraints": ["a > b"],
+    "constraint_notes": {
+      "a > b": "Keeps A's coefficient positive and non-zero. At a == b the sign-error distractor becomes a bare '0', which reads as a degenerate answer rather than as the sign mistake it is meant to represent."
+    },
+    "range_notes": "a > b >= 2 also makes B unreachable as a duplicate of D: multiplying the coefficients agrees with adding them only at (2,2), which this range cannot roll. Only two knobs exist in this structure, so the pool is small (51 rolls) compared to the three- and four-parameter templates. The correct path stays trivially mental across the whole range (largest sum is 21); B's product reaches 108 at the top end, which is arithmetic the student never has to do -- it is the answer they get for doing the wrong operation.",
+    "question_template": "Simplify the expression ${a}x - (-{b}x)$.",
+    "unsimplified_expression": "a*x - (-b*x)",
+    "correct_answer_formula": "(a + b)*x",
+    "distractor_formulas": {
+      "A": "(a - b)*x",
+      "B": "a*b*x",
+      "C": "a + b",
+      "D": "(a + b)*x"
+    },
+    "distractor_derivations": {
+      "A": "a*x - b*x",
+      "B": "(a*b)*x",
+      "C": "a + b"
+    },
+    "explanation_template": "Subtracting a negative is the same as adding:\n${a}x - (-{b}x) = {a}x + {b}x = {s}x$",
+    "verification_status": "passed"
+  },
+  {
+    "item_id": "QR_B_094",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Basic",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 2, "max": 7, "exclude": [], "integer": true },
+      { "name": "b", "min": 1, "max": 4, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 7, "exclude": [], "integer": true },
+      { "name": "d", "min": 2, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "k", "formula": "a + c" },
+      { "name": "m", "formula": "b + d" }
+    ],
+    "canonical_parameters": { "a": 4, "b": 1, "c": 2, "d": 5 },
+    "constraints": ["d > b"],
+    "constraint_notes": {
+      "d > b": "D's misconception on file is 'keeps only the LARGER constant, dropping the +1'. Rather than encode a Max() -- which would make the answer choice depend on which parameter happened to roll higher, and make the explanation harder to read -- the second constant is pinned larger. D is then always d, exactly as the sentence describes. It also keeps C's subtracted constant positive."
+    },
+    "range_notes": "The first constant stays small (1..4) so dropping it, as D does, is a believable slip rather than an obvious omission. Both x-coefficients stay single-digit so the whole item is mental for a Basic student.",
+    "question_template": "Simplify the expression ${a}x + {b} + {c}x + {d}$.",
+    "unsimplified_expression": "a*x + b + c*x + d",
+    "correct_answer_formula": "(a + c)*x + (b + d)",
+    "distractor_formulas": {
+      "A": "(a + c)*x + (b + d)",
+      "B": "(a + b + c + d)*x",
+      "C": "(a + c)*x + (d - b)",
+      "D": "(a + c)*x + d"
+    },
+    "distractor_derivations": {
+      "B": "a*x + b*x + c*x + d*x",
+      "C": "a*x + c*x + (d - b)",
+      "D": "a*x + c*x + d"
+    },
+    "explanation_template": "Combine the x-terms and the constants separately:\n${a}x + {c}x = {k}x$ and ${b} + {d} = {m}$\n\nThe simplified expression is ${k}x + {m}$.",
+    "verification_status": "passed"
+  },
+  {
+    "item_id": "QR_P_077",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Proficient",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 5, "max": 12, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 8, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 9, "exclude": [], "integer": true },
+      { "name": "d", "min": 2, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "k", "formula": "a - c" },
+      { "name": "m", "formula": "b + d" }
+    ],
+    "canonical_parameters": { "a": 5, "b": 3, "c": 2, "d": 7 },
+    "constraints": ["a - c >= 2", "d > b"],
+    "constraint_notes": {
+      "a - c >= 2": "Keeps the x-coefficient positive and off 1, so the interleaved-subtraction skill stays the thing being tested rather than a vanishing or bare-x term.",
+      "d > b": "C's misconception on file is 'subtracts the constants instead of adding: 7 - 3 = 4' -- it names the direction of the subtraction. Pinning the later constant larger keeps that arithmetic literally true and C's constant positive. A roll with the constants the other way round would make the sentence describe a subtraction the student would be unlikely to perform in that order."
+    },
+    "range_notes": "Proficient tier, so the sign tracking rather than the arithmetic is the difficulty: every combination stays within single-digit addition and subtraction.",
+    "question_template": "Simplify the expression ${a}x + {b} - {c}x + {d}$.",
+    "unsimplified_expression": "a*x + b - c*x + d",
+    "correct_answer_formula": "(a - c)*x + (b + d)",
+    "distractor_formulas": {
+      "A": "(a + c)*x + (b + d)",
+      "B": "(a - c)*x + (b + d)",
+      "C": "(a - c)*x + (d - b)",
+      "D": "(a - c + b + d)*x"
+    },
+    "distractor_derivations": {
+      "A": "a*x + b + c*x + d",
+      "C": "a*x - c*x + (d - b)",
+      "D": "a*x + b*x - c*x + d*x"
+    },
+    "explanation_template": "Group the like terms, keeping each sign:\n${a}x - {c}x = {k}x$ and ${b} + {d} = {m}$\n\nThe simplified expression is ${k}x + {m}$.",
+    "verification_status": "passed"
+  },
+  {
+    "item_id": "QR_P_078",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Proficient",
+    "is_templated": true,
+    "sign_error_coverage": true,
+    "parameters": [
+      { "name": "a", "min": 7, "max": 15, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 9, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [{ "name": "k", "formula": "a - b" }],
+    "canonical_parameters": { "a": 10, "b": 4, "c": 7 },
+    "constraints": ["a - b >= 2"],
+    "constraint_notes": {
+      "a - b >= 2": "Keeps the x-coefficient positive and off 1. At a == b the x-term cancels and the item becomes a constant-only problem of a different kind; at 1 the answer reads as a bare 'x'."
+    },
+    "range_notes": "The cleanest sign-error template in the pool: A differs from the correct answer only in the sign of c, so the misconception is carried by structure and cannot roll away for any parameter values.",
+    "question_template": "Simplify the expression ${a}x - ({b}x - {c})$.",
+    "unsimplified_expression": "a*x - (b*x - c)",
+    "correct_answer_formula": "(a - b)*x + c",
+    "distractor_formulas": {
+      "A": "(a - b)*x - c",
+      "B": "(a + b)*x - c",
+      "C": "(a - b)*x + c",
+      "D": "(a - b + c)*x"
+    },
+    "distractor_derivations": {
+      "A": "a*x - b*x - c",
+      "B": "a*x + (b*x - c)",
+      "D": "((a - b) + c)*x"
+    },
+    "explanation_template": "The minus in front of the parentheses changes the sign of every term inside:\n${a}x - ({b}x - {c}) = {a}x - {b}x + {c}$\n\nCombine like terms:\n${a}x - {b}x = {k}x$, then $+{c}$\n\nThe simplified expression is ${k}x + {c}$.",
+    "verification_status": "passed"
+  },
+  {
+    "item_id": "QR_P_079",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Proficient",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 2, "max": 5, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 9, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 7, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "p", "formula": "a*b" },
+      { "name": "k", "formula": "a + c" }
+    ],
+    "canonical_parameters": { "a": 2, "b": 4, "c": 3 },
+    "constraints": [],
+    "range_notes": "The distributed factor starts at 2, and that minimum is what keeps three of the four choices apart. At a factor of 1 both A ('distributed to the x but not to the constant') and B ('ignored the factor entirely') become no-ops, and A, B and the correct answer all collapse into one. The inner coefficient stays a literal 1 so the stem keeps reading '(x + 4)'. Capped at 5 x 9 so the distribution stays mental for a Proficient student.",
+    "question_template": "Simplify the expression ${a}(x + {b}) + {c}x$.",
+    "unsimplified_expression": "a*(x + b) + c*x",
+    "correct_answer_formula": "(a + c)*x + a*b",
+    "distractor_formulas": {
+      "A": "(a + c)*x + b",
+      "B": "(1 + c)*x + b",
+      "C": "(a + c + a*b)*x",
+      "D": "(a + c)*x + a*b"
+    },
+    "distractor_derivations": {
+      "A": "a*x + b + c*x",
+      "B": "(x + b) + c*x",
+      "C": "((a + c) + a*b)*x"
+    },
+    "explanation_template": "Distribute the {a} first:\n${a}(x + {b}) = {a}x + {p}$\n\nThen combine with the ${c}x$:\n${a}x + {p} + {c}x = {k}x + {p}$",
+    "verification_status": "passed"
+  },
+  {
+    "item_id": "QR_P_080",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Proficient",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 5, "max": 12, "exclude": [], "integer": true },
+      { "name": "b", "min": 1, "max": 5, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 9, "exclude": [], "integer": true },
+      { "name": "d", "min": 2, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "k", "formula": "a - c" },
+      { "name": "n", "formula": "d - b" }
+    ],
+    "canonical_parameters": { "a": 6, "b": 2, "c": 4, "d": 5 },
+    "constraints": ["a - c >= 2", "d > b", "a + b - c - d != 0"],
+    "constraint_notes": {
+      "a - c >= 2": "Keeps the x-coefficient positive and off 1.",
+      "d > b": "Required by the item's own skills_targeted, which says 'combining interleaved like terms that PRODUCE A NEGATIVE CONSTANT'. A roll with the constants the other way round would still be arithmetically sound but would no longer test the skill the item claims to test.",
+      "a + b - c - d != 0": "Stops D from rolling a bare '0', which reads as a degenerate answer next to three linear expressions rather than as the combine-everything error it represents."
+    },
+    "range_notes": "Proficient tier: the difficulty is carrying two negative signs, not the arithmetic, so every value stays single-digit. The explanation's negative constant is rendered from a positive derived parameter (n = d - b) so no roll can produce a doubled sign like '- -3'.",
+    "question_template": "Simplify the expression ${a}x + {b} - {c}x - {d}$.",
+    "unsimplified_expression": "a*x + b - c*x - d",
+    "correct_answer_formula": "(a - c)*x + (b - d)",
+    "distractor_formulas": {
+      "A": "(a - c)*x + (b - d)",
+      "B": "(a - c)*x + (b + d)",
+      "C": "(a + c)*x + (b - d)",
+      "D": "(a + b - c - d)*x"
+    },
+    "distractor_derivations": {
+      "B": "a*x - c*x + b + d",
+      "C": "a*x + c*x + b - d",
+      "D": "a*x + b*x - c*x - d*x"
+    },
+    "explanation_template": "Combine like terms, keeping each sign:\n${a}x - {c}x = {k}x$ and ${b} - {d} = -{n}$\n\nThe simplified expression is ${k}x - {n}$.",
+    "verification_status": "passed"
+  },
+  {
+    "item_id": "QR_P_081",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Proficient",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 2, "max": 6, "exclude": [], "integer": true },
+      { "name": "b", "min": 10, "max": 50, "step": 5, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 6, "exclude": [], "integer": true },
+      { "name": "d", "min": 10, "max": 50, "step": 5, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "k", "formula": "a + c" },
+      { "name": "m", "formula": "b + d" }
+    ],
+    "canonical_parameters": { "a": 3, "b": 20, "c": 2, "d": 15 },
+    "constraints": ["a*c != a + c"],
+    "constraint_notes": {
+      "a*c != a + c": "A multiplies the hourly rates where the correct answer adds them. Over positive integers those agree only at (2,2), where A would silently become a second correct answer. The same collision cannot happen on the constants, since multiplying two amounts of at least 10 never equals their sum."
+    },
+    "range_notes": "The only item in the pool with a real-world context, but the context is a wrapper: the numbers are an hourly rate and a flat charge, and any sensible pair reads correctly. Flat charges roll in multiples of 5 so the money stays money-shaped -- a $37 setup fee would read as an oddly precise invoice rather than as a rate card. No currency symbol appears in the stem (the amounts sit inside math delimiters as bare numbers), so the house rule on escaped currency is not engaged here.",
+    "question_template": "A landscaper's labor cost for $x$ hours of work is given by the expression ${a}x + {b}$, and the materials charge for the same job is given by ${c}x + {d}$. Which expression represents the total cost in simplified form?",
+    "unsimplified_expression": "(a*x + b) + (c*x + d)",
+    "correct_answer_formula": "(a + c)*x + (b + d)",
+    "distractor_formulas": {
+      "A": "(a*c)*x + (b + d)",
+      "B": "(a + c)*x + (b + d)",
+      "C": "(a + c)*x + b*d",
+      "D": "(a + b + c + d)*x"
+    },
+    "distractor_derivations": {
+      "A": "(a*c)*x + (b + d)",
+      "C": "(a + c)*x + (b*d)",
+      "D": "a*x + b*x + c*x + d*x"
+    },
+    "explanation_template": "Add the two expressions term by term:\n$({a}x + {b}) + ({c}x + {d})$\n${a}x + {c}x = {k}x$ and ${b} + {d} = {m}$\n\nThe total cost is ${k}x + {m}$.",
+    "verification_status": "passed"
+  },
+  {
+    "item_id": "QR_A_071",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Advanced",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 2, "max": 5, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 5, "exclude": [], "integer": true },
+      { "name": "c", "min": 1, "max": 6, "exclude": [], "integer": true },
+      { "name": "d", "min": 2, "max": 5, "exclude": [], "integer": true },
+      { "name": "f", "min": 2, "max": 8, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "p", "formula": "a*b" },
+      { "name": "q", "formula": "a*c" },
+      { "name": "r", "formula": "d*f" },
+      { "name": "k", "formula": "a*b - d" },
+      { "name": "t", "formula": "a*c + d*f" }
+    ],
+    "canonical_parameters": { "a": 3, "b": 2, "c": 1, "d": 2, "f": 4 },
+    "constraints": ["a*b - d >= 2", "2*d*f != c*(a - 1)"],
+    "constraint_notes": {
+      "a*b - d >= 2": "Keeps the x-coefficient at 2 or more. At 0 the x-terms cancel and this becomes QR_A_072's item instead of its own; at 1 the explanation would have to write '1x'.",
+      "2*d*f != c*(a - 1)": "The one non-obvious collision in the pool. A (failed to distribute the minus onto the second constant) and B (failed to distribute the first factor onto its constant) come from unrelated misconceptions and always share an x-coefficient, so they meet whenever their constants happen to agree. Derived by setting A's constant equal to B's: -a*c + d*f = -c - d*f."
+    },
+    "range_notes": "The second group's inner x-coefficient stays a literal 1 so the stem keeps reading '(x + 4)'. Advanced tier, but every product stays inside a times table -- the difficulty is tracking four signs through two distributions, not the multiplication.",
+    "question_template": "Simplify the expression ${a}({b}x - {c}) - {d}(x + {f})$.",
+    "unsimplified_expression": "a*(b*x - c) - d*(x + f)",
+    "correct_answer_formula": "(a*b - d)*x + (-a*c - d*f)",
+    "distractor_formulas": {
+      "A": "(a*b - d)*x + (-a*c + d*f)",
+      "B": "(a*b - d)*x + (-c - d*f)",
+      "C": "(a*b - d)*x + (-a*c - d*f)",
+      "D": "(a*b + d)*x + (-a*c + d*f)"
+    },
+    "distractor_derivations": {
+      "A": "(a*b*x - a*c) + (-d*x + d*f)",
+      "B": "(a*b*x - c) + (-d*x - d*f)",
+      "D": "(a*b*x - a*c) + (d*x + d*f)"
+    },
+    "explanation_template": "Distribute each factor, tracking signs carefully:\n${a}({b}x - {c}) = {p}x - {q}$\n$-{d}(x + {f}) = -{d}x - {r}$\n\nCombine like terms:\n${p}x - {d}x = {k}x$ and $-{q} - {r} = -{t}$\n\nThe simplified expression is ${k}x - {t}$.",
+    "verification_status": "passed"
+  },
+  {
+    "item_id": "QR_A_072",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Advanced",
+    "is_templated": true,
+    "parameters": [
+      { "name": "b", "min": 2, "max": 8, "exclude": [], "integer": true },
+      { "name": "d", "min": 2, "max": 4, "exclude": [], "integer": true },
+      { "name": "e", "min": 2, "max": 4, "exclude": [], "integer": true },
+      { "name": "f", "min": 1, "max": 6, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "a", "formula": "d*e" },
+      { "name": "p", "formula": "a*b" },
+      { "name": "r", "formula": "d*f" },
+      { "name": "m", "formula": "a*b + d*f" }
+    ],
+    "canonical_parameters": { "b": 3, "d": 2, "e": 2, "f": 1 },
+    "constraints": ["a*b > d*f"],
+    "constraint_notes": {
+      "a*b > d*f": "Keeps B's constant positive, as it is in the original. A negative there would read as a different kind of error than the one B's misconception describes."
+    },
+    "range_notes": "The outer factor is not rolled. This item exists to test that the x-terms cancel, which is true only when the outer factor equals the second factor times its inner coefficient -- an equality between parameters, not a range. Rejection-sampling three independent rolls until they happen to satisfy it would be slow and fragile, so `a` is derived as d*e instead. This is the only item in the pool that needs derived_parameters, and the reason the field exists.",
+    "question_template": "Which expression is equivalent to ${a}(x + {b}) - {d}({e}x - {f})$?",
+    "unsimplified_expression": "a*(x + b) - d*(e*x - f)",
+    "correct_answer_formula": "a*b + d*f",
+    "distractor_formulas": {
+      "A": "(a + d*e)*x + (a*b + d*f)",
+      "B": "a*b - d*f",
+      "C": "a*x + (a*b + d*f)",
+      "D": "a*b + d*f"
+    },
+    "distractor_derivations": {
+      "A": "(a*x + a*b) + (d*e*x + d*f)",
+      "B": "(a*x + a*b) + (-d*e*x - d*f)",
+      "C": "(a*x + a*b) + d*f"
+    },
+    "explanation_template": "Distribute both factors:\n${a}(x + {b}) = {a}x + {p}$\n$-{d}({e}x - {f}) = -{a}x + {r}$\n\nCombine like terms:\n${a}x - {a}x = 0$ and ${p} + {r} = {m}$\n\nThe x-terms cancel completely, leaving the constant ${m}$.",
+    "verification_status": "passed"
+  },
+  {
+    "item_id": "QR_A_073",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Advanced",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 3, "max": 6, "exclude": [], "integer": true },
+      { "name": "b", "min": 3, "max": 8, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 4, "exclude": [], "integer": true },
+      { "name": "d", "min": 2, "max": 6, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "p", "formula": "a*b" },
+      { "name": "r", "formula": "c*d" },
+      { "name": "k", "formula": "a + c" },
+      { "name": "n", "formula": "a*b - c*d" }
+    ],
+    "canonical_parameters": { "a": 4, "b": 3, "c": 2, "d": 5 },
+    "constraints": [
+      "a*b > c*d",
+      "b != d",
+      "b*(a - 1) != d*(c - 1)",
+      "(a + c) + (-a*b + c*d) != 0"
+    ],
+    "constraint_notes": {
+      "a*b > c*d": "Required by the item's own skills_targeted, which names 'combining like terms to a negative constant'. It also keeps the correct constant off zero.",
+      "b != d": "Keeps B's constant non-zero. At b == d, B loses its constant entirely and stops reading as a bring-the-constants-down-unmultiplied error.",
+      "b*(a - 1) != d*(c - 1)": "A and B always share an x-coefficient, so they collide whenever their constants agree. Derived by hand from -a*b + c*d = d - b.",
+      "(a + c) + (-a*b + c*d) != 0": "Stops D from rolling a bare '0' next to three linear expressions."
+    },
+    "range_notes": "Both inner x-coefficients stay a literal 1 so the stem keeps reading '(x - 3)' and '(x + 5)'. The explanation's negative constant is rendered from a positive derived parameter (n = a*b - c*d), so no roll produces a doubled sign.",
+    "question_template": "Simplify the expression ${a}(x - {b}) + {c}(x + {d})$.",
+    "unsimplified_expression": "a*(x - b) + c*(x + d)",
+    "correct_answer_formula": "(a + c)*x + (-a*b + c*d)",
+    "distractor_formulas": {
+      "A": "(a + c)*x + (-a*b + c*d)",
+      "B": "(a + c)*x + (d - b)",
+      "C": "(a + c)*x + (a*b + c*d)",
+      "D": "((a + c) + (-a*b + c*d))*x"
+    },
+    "distractor_derivations": {
+      "B": "(a*x - b) + (c*x + d)",
+      "C": "(a*x + a*b) + (c*x + c*d)",
+      "D": "((a + c) + (-a*b + c*d))*x"
+    },
+    "explanation_template": "Distribute both factors:\n${a}(x - {b}) = {a}x - {p}$\n${c}(x + {d}) = {c}x + {r}$\n\nCombine like terms:\n${a}x + {c}x = {k}x$ and $-{p} + {r} = -{n}$\n\nThe simplified expression is ${k}x - {n}$.",
+    "verification_status": "passed"
+  },
+  {
+    "item_id": "QR_A_074",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Advanced",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 2, "max": 6, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 7, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "p", "formula": "a*b" },
+      { "name": "k", "formula": "a*b - 1" },
+      { "name": "m", "formula": "2*a" }
+    ],
+    "canonical_parameters": { "a": 2, "b": 3 },
+    "constraints": [],
+    "range_notes": "FLAGGED -- the thinnest pool of the 15, roughly 30 usable combinations against the hundreds the other Advanced templates get. The second group's y-coefficient is not independent: it reuses `a`. That is forced by distractor A's misconception on file, which does not stop at the sign error but states its consequence -- 'so the y-terms wrongly cancel'. Those y-terms cancel only when the outer factor equals the second group's y-coefficient, so rolling that coefficient freely would leave A's misconception text describing something that did not happen. Since a misconception the dashboard already displays may not be silently reworded, the coefficients are pinned equal and the variety is spent instead. 30x a static item is still worth shipping, but this is the template most likely to repeat itself in front of a student who practices heavily. Widening it is a content decision about that sentence, not a code change.",
+    "question_template": "Simplify the expression ${a}({b}x + y) - (x - {a}y)$.",
+    "unsimplified_expression": "a*(b*x + y) - (x - a*y)",
+    "correct_answer_formula": "(a*b - 1)*x + 2*a*y",
+    "distractor_formulas": {
+      "A": "(a*b - 1)*x",
+      "B": "(a*b - 1)*x + 2*a*y",
+      "C": "(a*b - 1)*x + (1 + a)*y",
+      "D": "((a*b - 1) + 2*a)*x*y"
+    },
+    "distractor_derivations": {
+      "A": "(a*b*x + a*y) + (-x - a*y)",
+      "C": "(a*b*x + y) + (-x + a*y)",
+      "D": "((a*b - 1) + 2*a)*(x*y)"
+    },
+    "explanation_template": "Distribute both factors:\n${a}({b}x + y) = {p}x + {a}y$\n$-(x - {a}y) = -x + {a}y$\n\nCombine like terms:\n${p}x - x = {k}x$ and ${a}y + {a}y = {m}y$\n\nThe simplified expression is ${k}x + {m}y$.",
+    "verification_status": "passed"
+  },
+  {
+    "item_id": "QR_A_075",
+    "topic_id": "QR.3.5",
+    "proficiency_level": "Advanced",
+    "is_templated": true,
+    "parameters": [
+      { "name": "a", "min": 5, "max": 20, "exclude": [], "integer": true },
+      { "name": "b", "min": 2, "max": 4, "exclude": [], "integer": true },
+      { "name": "c", "min": 2, "max": 4, "exclude": [], "integer": true },
+      { "name": "d", "min": 2, "max": 7, "exclude": [], "integer": true },
+      { "name": "e", "min": 2, "max": 9, "exclude": [], "integer": true }
+    ],
+    "derived_parameters": [
+      { "name": "p", "formula": "b*c" },
+      { "name": "q", "formula": "b*d" },
+      { "name": "m", "formula": "b*d + e" },
+      { "name": "k", "formula": "a - b*c", "render": "coefficient" }
+    ],
+    "canonical_parameters": { "a": 7, "b": 3, "c": 2, "d": 4, "e": 5 },
+    "constraints": ["a - b*c >= 1"],
+    "constraint_notes": {
+      "a - b*c >= 1": "Keeps the x-coefficient positive and non-zero. Unlike the other Advanced templates this one allows a coefficient of exactly 1, because the canonical instance has one -- its answer is 'x + 17'. The explanation renders it through a coefficient-aware placeholder so it reads '= x' rather than '= 1x'."
+    },
+    "range_notes": "The x-coefficient range is expressed as a constraint rather than as a min, because its floor depends on b*c and the schema's min/max are static. Both inner factors stay small (2..4) so the double negative, not the arithmetic, is the difficulty.",
+    "question_template": "Simplify the expression ${a}x - {b}({c}x - {d}) + {e}$.",
+    "unsimplified_expression": "a*x - b*(c*x - d) + e",
+    "correct_answer_formula": "(a - b*c)*x + (b*d + e)",
+    "distractor_formulas": {
+      "A": "(a - b*c)*x + (-b*d + e)",
+      "B": "(a + b*c)*x + (b*d + e)",
+      "C": "(a - b*c)*x + (b*d + e)",
+      "D": "(a - b*c)*x + (-d + e)"
+    },
+    "distractor_derivations": {
+      "A": "(a*x - b*c*x - b*d) + e",
+      "B": "(a*x + b*c*x + b*d) + e",
+      "D": "(a*x - b*c*x - d) + e"
+    },
+    "explanation_template": "Distribute the $-{b}$ across the parentheses, watching the double negative:\n$-{b}({c}x - {d}) = -{p}x + {q}$\n\nNow combine with the rest:\n${a}x - {p}x = {k}x$ and ${q} + {e} = {m}$\n\nThe simplified expression is ${k}x + {m}$.",
+    "verification_status": "passed"
+  }
+]
