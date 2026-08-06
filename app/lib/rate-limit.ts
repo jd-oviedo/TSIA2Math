@@ -62,6 +62,18 @@ export const gumuRateLimit = new Ratelimit({
   analytics: true,
 });
 
+// /api/support — the Help modal on the teacher dashboard. Every call sends a
+// real email to the support inbox, so this is tighter than the others: a
+// teacher filing several reports in one sitting is normal, scripting the
+// endpoint into an inbox flood is not. Keyed on the signed-in user id rather
+// than IP, since the route already requires a session.
+export const supportRateLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(5, "15 m"),
+  prefix: "ratelimit:support",
+  analytics: true,
+});
+
 // Best-effort client IP extraction. Vercel sets x-forwarded-for on every
 // request; if it's ever missing (e.g. local dev without a proxy in front),
 // everyone collapses onto the same "unknown" bucket — acceptable locally,
