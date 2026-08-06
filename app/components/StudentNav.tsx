@@ -73,13 +73,16 @@ function isActive(pathname: string, href: string) {
 export function StudentNavPanel({
   name,
   role,
+  subscriptionStatus,
   onNavigate,
 }: {
   name: string;
   role: 'student' | 'teacher';
+  subscriptionStatus?: 'active' | 'inactive';
   onNavigate?: () => void;
 }) {
   const pathname = usePathname();
+  const isProTeacher = role === 'teacher' && subscriptionStatus === 'active';
   const initials =
     name
       .split(/[\s._@-]+/)
@@ -115,7 +118,7 @@ export function StudentNavPanel({
             }}
           >
             <span style={{ width: 5, height: 5, borderRadius: '50%', background: C.gold }} />
-            TEACHER PREVIEW
+            {isProTeacher ? 'TEACHER PRO' : 'TEACHER PREVIEW'}
           </div>
         )}
       </div>
@@ -148,6 +151,32 @@ export function StudentNavPanel({
           );
         })}
       </nav>
+
+      {role === 'teacher' && (
+        <div style={{ padding: '10px 12px 4px', borderTop: `1px solid ${onDark(0.12)}` }}>
+          <a
+            href="/teacher"
+            onClick={onNavigate}
+            className="um-nav-item"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 11,
+              padding: '10px 12px',
+              borderRadius: 9,
+              textDecoration: 'none',
+              font: `600 13.5px ${FONT_BODY}`,
+              color: C.gold,
+            }}
+          >
+            <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M11 2.5 15.5 7 11 11.5" />
+              <path d="M15.2 7 H4.5 a2 2 0 0 0 -2 2 V15" />
+            </svg>
+            Teacher Dashboard
+          </a>
+        </div>
+      )}
 
       <div style={{ flex: 1 }} />
 
@@ -200,11 +229,13 @@ export function StudentNavDrawer({
   open,
   name,
   role,
+  subscriptionStatus,
   onClose,
 }: {
   open: boolean;
   name: string;
   role: 'student' | 'teacher';
+  subscriptionStatus?: 'active' | 'inactive';
   onClose: () => void;
 }) {
   if (!open) return null;
@@ -234,7 +265,12 @@ export function StudentNavDrawer({
           boxShadow: '4px 0 24px rgba(0,0,0,.3)',
         }}
       >
-        <StudentNavPanel name={name} role={role} onNavigate={onClose} />
+        <StudentNavPanel
+          name={name}
+          role={role}
+          subscriptionStatus={subscriptionStatus}
+          onNavigate={onClose}
+        />
       </aside>
     </div>
   );

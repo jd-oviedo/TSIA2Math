@@ -17,9 +17,15 @@ import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 // class join box. No badges, no streaks, nothing that turns a study tool into
 // a game.
 
-export default async function DashboardHome() {
+export default async function DashboardHome({
+  searchParams,
+}: {
+  searchParams: Promise<{ code?: string }>;
+}) {
   const profile = await getProfile();
   if (!profile) return null; // The layout has already redirected.
+
+  const { code } = await searchParams;
 
   const [{ topics, shapes }, attempts, classes] = await Promise.all([
     getTopics(),
@@ -151,7 +157,7 @@ export default async function DashboardHome() {
         </Card>
 
         <Card>
-          <JoinClassPanel />
+          <JoinClassPanel initialCode={code} />
         </Card>
 
         {profile.role === 'teacher' && (
