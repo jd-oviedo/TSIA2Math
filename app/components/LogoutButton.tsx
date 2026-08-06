@@ -7,12 +7,18 @@ import { supabase } from "../lib/supabase";
 // sends them to /login. Used in the teacher sidebar chip (dark) and the shared
 // Header (light). Redirect uses window.location to match this codebase's
 // client-side redirect convention (no useRouter is used anywhere).
+//
+// title is the native browser tooltip. Pass null where a styled hover label is
+// already supplied by the surrounding UI, so the two do not stack up on the
+// same hover. The aria-label is unconditional either way.
 export function LogoutButton({
   variant = "light",
   size = 34,
+  title = "Log out",
 }: {
   variant?: "light" | "dark";
   size?: number;
+  title?: string | null;
 }) {
   const [loading, setLoading] = useState(false);
   const dark = variant === "dark";
@@ -36,7 +42,7 @@ export function LogoutButton({
       onClick={handleLogout}
       disabled={loading}
       aria-label="Log out"
-      title="Log out"
+      {...(title === null ? {} : { title })}
       style={{
         display: "flex",
         alignItems: "center",

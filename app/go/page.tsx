@@ -12,7 +12,7 @@ const NEAR_BLACK = "#1A1A1A";
 const WARM_GRAY = "#5F5E5A";
 
 const KODCHASAN = "var(--font-kodchasan, Kodchasan, sans-serif)";
-const SANS = "Arial, system-ui, sans-serif";
+const SANS = "var(--font-nunito), 'Nunito', sans-serif";
 
 export default function QrLanding() {
   return (

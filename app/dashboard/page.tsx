@@ -6,8 +6,9 @@ import {
   mostRecentTopic,
   gradableTotal,
   getEnrolledClasses,
+  getAnnouncements,
 } from './data';
-import { Card, CardTitle, Eyebrow, Muted, PageHeading, ProgressBar } from './ui';
+import { Card, CardTitle, Eyebrow, Muted, PageHeading, ProgressBar, formatDate } from './ui';
 import JoinClassPanel from './JoinClassPanel';
 import FlagsPanel from './FlagsPanel';
 import { C, ink } from '@/app/components/curriculum-theme';
@@ -27,11 +28,25 @@ export default async function DashboardHome({
 
   const { code } = await searchParams;
 
-  const [{ topics, shapes }, attempts, classes] = await Promise.all([
+  const [{ topics, shapes }, attempts, classes, announcements] = await Promise.all([
     getTopics(),
     getAttempts(profile.id),
     getEnrolledClasses(profile.id),
+    getAnnouncements(profile.id),
   ]);
+
+  // Same source as the Announcements tab: already scoped to every class the
+  // student is enrolled in, plus school-wide notices, newest first. Home shows
+  // the two most recent and points at the tab for the rest, so a teacher on a
+  // posting spree cannot push the course progress card off the screen.
+  const HOME_ANNOUNCEMENT_CAP = 2;
+  const recentAnnouncements =
+    announcements.status === 'ok' ? announcements.announcements.slice(0, HOME_ANNOUNCEMENT_CAP) : [];
+  const moreAnnouncements =
+    announcements.status === 'ok'
+      ? announcements.announcements.length - recentAnnouncements.length
+      : 0;
+  const classNames = new Map(classes.map((c) => [c.id, c.name]));
 
   const progress = progressByTopic(attempts, shapes);
   const totalItems = [...shapes.values()].reduce((sum, shape) => sum + gradableTotal(shape), 0);
@@ -66,6 +81,83 @@ export default async function DashboardHome({
       />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        {recentAnnouncements.length > 0 && (
+          <Card>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'baseline',
+                  justifyContent: 'space-between',
+                  gap: 12,
+                  flexWrap: 'wrap',
+                }}
+              >
+                <CardTitle>
+                  {recentAnnouncements.length === 1 ? 'Latest announcement' : 'Latest announcements'}
+                </CardTitle>
+                <a
+                  href="/dashboard/announcements"
+                  style={{ font: `600 13px ${FONT_BODY}`, color: C.midnight, textDecoration: 'underline' }}
+                >
+                  {moreAnnouncements > 0 ? `See all ${announcements.status === 'ok' ? announcements.announcements.length : ''}` : 'See all'}
+                </a>
+              </div>
+
+              {recentAnnouncements.map((item) => (
+                <article
+                  key={item.id}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 6,
+                    paddingLeft: 13,
+                    borderLeft: `3px solid ${C.sunset}`,
+                  }}
+                >
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'baseline',
+                      justifyContent: 'space-between',
+                      gap: 10,
+                      flexWrap: 'wrap',
+                    }}
+                  >
+                    <div style={{ font: `600 15px ${FONT_HEADING}`, color: C.midnight }}>
+                      {item.title}
+                    </div>
+                    <span style={{ font: `400 12px ${FONT_BODY}`, color: ink(0.45) }}>
+                      {formatDate(item.created_at)}
+                      {item.class_id && classNames.has(item.class_id)
+                        ? ` · ${classNames.get(item.class_id)}`
+                        : ''}
+                    </span>
+                  </div>
+
+                  {/* Plain text, rendered as text, exactly as the Announcements
+                      tab does. Teacher copy never goes through markdown. */}
+                  <p
+                    style={{
+                      margin: 0,
+                      font: `400 13.5px ${FONT_BODY}`,
+                      lineHeight: 1.6,
+                      color: ink(0.72),
+                      whiteSpace: 'pre-wrap',
+                      display: '-webkit-box',
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    {item.body}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </Card>
+        )}
+
         <Card>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             <div
