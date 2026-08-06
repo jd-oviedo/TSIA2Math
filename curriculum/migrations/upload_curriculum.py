@@ -12,34 +12,49 @@ import re
 import argparse
 from pathlib import Path
 from datetime import datetime
-from dotenv import load_dotenv
 
-# Load environment variables from .env.local
-env_path = Path(__file__).parent.parent.parent / '.env.local'
-print(f"Looking for .env.local at: {env_path}")
-print(f"File exists: {env_path.exists()}")
 
-load_dotenv(env_path)
+def connect():
+    """
+    Build the Supabase admin client, reading .env.local for credentials.
 
-try:
-    from supabase import create_client
-except ImportError:
-    print("Error: supabase not installed. Run: pip install supabase python-frontmatter")
-    exit(1)
+    Deliberately a function rather than module-level setup. The parsing half of
+    this file -- parse_markdown_curriculum, build_practice_items and friends --
+    is the single source of truth for what a curriculum item *is*, and
+    scripts/verify_templates.py imports it to anchor templates against the
+    authored items. Constructing a client (or calling exit()) at import time
+    made that import require credentials and the supabase package to be
+    installed, so a verifier that never touches the network could not run in CI.
 
-# Supabase credentials (from env vars)
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_SERVICE_ROLE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+    Nothing here is imported or evaluated until an actual upload is about to
+    happen; --dry-run never calls this and so needs no credentials either.
+    """
+    from dotenv import load_dotenv
 
-print(f"SUPABASE_URL found: {bool(SUPABASE_URL)}")
-print(f"SUPABASE_SERVICE_ROLE_KEY found: {bool(SUPABASE_SERVICE_ROLE_KEY)}")
+    env_path = Path(__file__).parent.parent.parent / '.env.local'
+    print(f"Looking for .env.local at: {env_path}")
+    print(f"File exists: {env_path.exists()}")
+    load_dotenv(env_path)
 
-if not SUPABASE_URL or not SUPABASE_SERVICE_ROLE_KEY:
-    print("\nError: SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY environment variables required.")
-    print("Check that .env.local exists in the repo root and has both keys set.")
-    exit(1)
+    try:
+        from supabase import create_client
+    except ImportError:
+        print("Error: supabase not installed. Run: pip install supabase python-frontmatter")
+        exit(1)
 
-supabase = create_client(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
+    url = os.getenv("SUPABASE_URL")
+    key = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+
+    print(f"SUPABASE_URL found: {bool(url)}")
+    print(f"SUPABASE_SERVICE_ROLE_KEY found: {bool(key)}")
+
+    if not url or not key:
+        print("\nError: SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY environment variables required.")
+        print("Check that .env.local exists in the repo root and has both keys set.")
+        exit(1)
+
+    return create_client(url, key)
+
 
 def parse_markdown_curriculum(filepath):
     """
@@ -377,11 +392,15 @@ def upload_course_curriculum(course_id, dry_run=False):
     a per-file error must not be reported as an overall success.
     """
     source_dir = Path(__file__).parent.parent / 'source' / course_id
-    
+
     if not source_dir.exists():
         print(f"Error: Source directory not found: {source_dir}")
         exit(1)
-    
+
+    # Connected only for a real upload. A dry run parses and validates every
+    # file and needs no credentials, which is what makes it usable in CI.
+    supabase = connect() if not dry_run else None
+
     # Find all .md files
     md_files = sorted(source_dir.glob('unit-*/[QAG]*.md'))
     
