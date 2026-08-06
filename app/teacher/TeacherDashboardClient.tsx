@@ -163,13 +163,18 @@ function useViewport() {
 // square and centres in the narrow rail.
 function Brand({ collapsed }: { collapsed: boolean }) {
   if (collapsed) {
+    // The mu mark only inks about 50% x 61% of its own 1080px canvas; the rest
+    // is transparent padding. Rendered at a nominal icon size the glyph came
+    // out around 15px in a 64px rail, which read as an empty logo slot. Sizing
+    // the box to 44px puts the visible mark at roughly 22x27, matching the
+    // weight of the nav icons below it.
     return (
       <img
         src="/unpackmath-logo.png"
         alt="UnpackMath"
         width={1080}
         height={1080}
-        style={{ width: 30, height: 30, display: 'block', margin: '0 auto' }}
+        style={{ width: 44, height: 44, display: 'block', margin: '0 auto' }}
       />
     );
   }
@@ -307,7 +312,9 @@ function SidebarInner({
 
   return (
     <>
-      <div style={{ padding: collapsed ? '22px 12px 14px' : '22px 18px 14px' }}>
+      {/* Collapsed side padding is tighter so the 44px mark clears the 64px
+          rail without being squeezed. */}
+      <div style={{ padding: collapsed ? '18px 8px 12px' : '22px 18px 14px' }}>
         <Brand collapsed={collapsed} />
       </div>
 
@@ -404,7 +411,7 @@ function SidebarInner({
           </>
         )}
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: collapsed ? 0 : 10, justifyContent: collapsed ? 'center' : 'flex-start' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: collapsed ? 'center' : 'flex-start', flexDirection: collapsed ? 'column' : 'row' }}>
           <button
             type="button"
             aria-label="Profile"
@@ -424,18 +431,26 @@ function SidebarInner({
             {initials}
           </button>
           {!collapsed && (
-            <>
-              <div style={{ minWidth: 0, flex: 1 }}>
-                <div style={{ fontSize: 12.5, fontWeight: 600, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{teacherName}</div>
-                {isFounder ? (
-                  <FounderPill />
-                ) : (
-                  <div style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.5)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{teacherEmail}</div>
-                )}
-              </div>
-              <LogoutButton variant="dark" size={30} />
-            </>
+            <div style={{ minWidth: 0, flex: 1 }}>
+              <div style={{ fontSize: 12.5, fontWeight: 600, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{teacherName}</div>
+              {isFounder ? (
+                <FounderPill />
+              ) : (
+                <div style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.5)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{teacherEmail}</div>
+              )}
+            </div>
           )}
+
+          {/* Logout keeps its own hover label, and stays present when
+              collapsed -- stacked under the avatar rather than dropped, so the
+              narrow rail is still a way out of the app. */}
+          <span
+            onMouseEnter={showTip('Logout')}
+            onMouseLeave={hideTip}
+            style={{ display: 'flex', flexShrink: 0 }}
+          >
+            <LogoutButton variant="dark" size={30} title={null} />
+          </span>
         </div>
       </div>
 
