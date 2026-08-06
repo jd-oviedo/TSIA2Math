@@ -28,13 +28,13 @@ from auth.users u
 where u.id = p.id
   and lower(u.email) in (
     'juan@unpackmath.com',
+    'juandoloresoviedo@gmail.com',
     'anwhite@gpapps.galenaparkisd.com'
     -- , 'jdoviedo72@gmail.com'
-    -- , 'juandoloresoviedo@gmail.com'
     -- , 'jdompm@gmail.com'
   );
 
--- 3. Verify. Expect two rows.
+-- 3. Verify. Expect three rows.
 select u.email, p.is_founder, p.role
 from public.profiles p
 join auth.users u on u.id = p.id
