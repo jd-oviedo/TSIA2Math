@@ -30,7 +30,7 @@
       "D": "a + b"
     },
     "explanation_template": "Combine the coefficients of the like terms:\n${a}x + {b}x = ({a} + {b})x = {s}x$\n\nThe variable stays the same; only the coefficients add.",
-    "verification_status": "pending"
+    "verification_status": "passed"
   },
   {
     "item_id": "QR_B_091",
@@ -64,7 +64,7 @@
       "D": "a*x - b*x + c*x"
     },
     "explanation_template": "Group the like terms:\n${a}x - {b}x = {k}x$\n\nThe constant {c} has no other constant to combine with, so the simplified expression is ${k}x + {c}$.",
-    "verification_status": "pending"
+    "verification_status": "passed"
   },
   {
     "item_id": "QR_B_092",
@@ -95,7 +95,7 @@
       "D": "a*x + c*x"
     },
     "explanation_template": "Only terms with the same variable combine:\n${a}x + {c}x = {k}x$\n\nThe ${b}y$ term has no other y-term, so it stays as is:\n${k}x + {b}y$",
-    "verification_status": "pending"
+    "verification_status": "passed"
   },
   {
     "item_id": "QR_B_093",
@@ -129,7 +129,7 @@
       "C": "a + b"
     },
     "explanation_template": "Subtracting a negative is the same as adding:\n${a}x - (-{b}x) = {a}x + {b}x = {s}x$",
-    "verification_status": "pending"
+    "verification_status": "passed"
   },
   {
     "item_id": "QR_B_094",
@@ -167,7 +167,7 @@
       "D": "a*x + c*x + d"
     },
     "explanation_template": "Combine the x-terms and the constants separately:\n${a}x + {c}x = {k}x$ and ${b} + {d} = {m}$\n\nThe simplified expression is ${k}x + {m}$.",
-    "verification_status": "pending"
+    "verification_status": "passed"
   },
   {
     "item_id": "QR_P_077",
@@ -206,7 +206,7 @@
       "D": "a*x + b*x - c*x + d*x"
     },
     "explanation_template": "Group the like terms, keeping each sign:\n${a}x - {c}x = {k}x$ and ${b} + {d} = {m}$\n\nThe simplified expression is ${k}x + {m}$.",
-    "verification_status": "pending"
+    "verification_status": "passed"
   },
   {
     "item_id": "QR_P_078",
@@ -241,7 +241,7 @@
       "D": "((a - b) + c)*x"
     },
     "explanation_template": "The minus in front of the parentheses changes the sign of every term inside:\n${a}x - ({b}x - {c}) = {a}x - {b}x + {c}$\n\nCombine like terms:\n${a}x - {b}x = {k}x$, then $+{c}$\n\nThe simplified expression is ${k}x + {c}$.",
-    "verification_status": "pending"
+    "verification_status": "passed"
   },
   {
     "item_id": "QR_P_079",
@@ -275,7 +275,7 @@
       "C": "((a + c) + a*b)*x"
     },
     "explanation_template": "Distribute the {a} first:\n${a}(x + {b}) = {a}x + {p}$\n\nThen combine with the ${c}x$:\n${a}x + {p} + {c}x = {k}x + {p}$",
-    "verification_status": "pending"
+    "verification_status": "passed"
   },
   {
     "item_id": "QR_P_080",
@@ -315,7 +315,7 @@
       "D": "a*x + b*x - c*x - d*x"
     },
     "explanation_template": "Combine like terms, keeping each sign:\n${a}x - {c}x = {k}x$ and ${b} - {d} = -{n}$\n\nThe simplified expression is ${k}x - {n}$.",
-    "verification_status": "pending"
+    "verification_status": "passed"
   },
   {
     "item_id": "QR_P_081",
@@ -353,7 +353,7 @@
       "D": "a*x + b*x + c*x + d*x"
     },
     "explanation_template": "Add the two expressions term by term:\n$({a}x + {b}) + ({c}x + {d})$\n${a}x + {c}x = {k}x$ and ${b} + {d} = {m}$\n\nThe total cost is ${k}x + {m}$.",
-    "verification_status": "pending"
+    "verification_status": "passed"
   },
   {
     "item_id": "QR_A_071",
@@ -396,7 +396,7 @@
       "D": "(a*b*x - a*c) + (d*x + d*f)"
     },
     "explanation_template": "Distribute each factor, tracking signs carefully:\n${a}({b}x - {c}) = {p}x - {q}$\n$-{d}(x + {f}) = -{d}x - {r}$\n\nCombine like terms:\n${p}x - {d}x = {k}x$ and $-{q} - {r} = -{t}$\n\nThe simplified expression is ${k}x - {t}$.",
-    "verification_status": "pending"
+    "verification_status": "passed"
   },
   {
     "item_id": "QR_A_072",
@@ -436,7 +436,7 @@
       "C": "(a*x + a*b) + d*f"
     },
     "explanation_template": "Distribute both factors:\n${a}(x + {b}) = {a}x + {p}$\n$-{d}({e}x - {f}) = -{a}x + {r}$\n\nCombine like terms:\n${a}x - {a}x = 0$ and ${p} + {r} = {m}$\n\nThe x-terms cancel completely, leaving the constant ${m}$.",
-    "verification_status": "pending"
+    "verification_status": "passed"
   },
   {
     "item_id": "QR_A_073",
@@ -484,7 +484,7 @@
       "D": "((a + c) + (-a*b + c*d))*x"
     },
     "explanation_template": "Distribute both factors:\n${a}(x - {b}) = {a}x - {p}$\n${c}(x + {d}) = {c}x + {r}$\n\nCombine like terms:\n${a}x + {c}x = {k}x$ and $-{p} + {r} = -{n}$\n\nThe simplified expression is ${k}x - {n}$.",
-    "verification_status": "pending"
+    "verification_status": "passed"
   },
   {
     "item_id": "QR_A_074",
@@ -518,7 +518,7 @@
       "D": "((a*b - 1) + 2*a)*(x*y)"
     },
     "explanation_template": "Distribute both factors:\n${a}({b}x + y) = {p}x + {a}y$\n$-(x - {a}y) = -x + {a}y$\n\nCombine like terms:\n${p}x - x = {k}x$ and ${a}y + {a}y = {m}y$\n\nThe simplified expression is ${k}x + {m}y$.",
-    "verification_status": "pending"
+    "verification_status": "passed"
   },
   {
     "item_id": "QR_A_075",
@@ -559,6 +559,6 @@
       "D": "(a*x - b*c*x - d) + e"
     },
     "explanation_template": "Distribute the $-{b}$ across the parentheses, watching the double negative:\n$-{b}({c}x - {d}) = -{p}x + {q}$\n\nNow combine with the rest:\n${a}x - {p}x = {k}x$ and ${q} + {e} = {m}$\n\nThe simplified expression is ${k}x + {m}$.",
-    "verification_status": "pending"
+    "verification_status": "passed"
   }
 ]
