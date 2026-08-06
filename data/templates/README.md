@@ -12,10 +12,37 @@ wrong-answer choice must be independently verified as numerically reachable via
 its stated misconception"), applied one level up: to the formula rather than to
 the instance.
 
-Templates live in a separate table (`public.curriculum_item_templates`) and are
-curriculum-practice only. The CAT diagnostic bank, `questions`, and
-`questions_public` are untouched by any of this -- the exposure-control
-separation between the placement bank and curriculum content stays intact.
+Templates live in a separate table (`public.curriculum_item_templates`). The CAT
+diagnostic bank, `questions`, and `questions_public` are untouched by any of
+this -- the exposure-control separation between the placement bank and
+curriculum content stays intact.
+
+## Status -- Phase A complete, Phase B parked
+
+**Phase A is done and independently verified.** All 15 QR.3.5 templates pass
+`scripts/verify_templates.py`: 14,554 parameter sets, exhaustive (full grid
+enumeration, not sampling) for every template, run 2026-08-06.
+
+**Nothing here is wired to a student.** Phase B -- rolling a template at runtime
+so a wrong answer is followed by a similar problem -- is deliberately deferred.
+
+**These 15 templates are CAT-bank-scoped.** Their sources are the 15 QR.3.5
+items in `data/items/QR/QR.3.5.json`, and that is a description of what exists
+today, not of where templates ultimately belong. The intended destination is
+still curriculum practice, but the bridge does not exist yet in either
+direction:
+
+- QR.3.5 has no curriculum practice content at all. `curriculum/source/` covers
+  QR.1.1--QR.1.4 and QR.2.1; units 2--5 are empty.
+- Runtime wiring needs to attribute a wrong answer to a misconception, which
+  needs a stable slug. Curriculum practice items carry `misconception_tag`
+  keyed by option letter. Bank items do not -- all 323 items under
+  `data/items/` carry `distractor_logic` prose and no slug field at any level.
+
+Authoring new slugs for the bank items would close that gap fastest, and was
+rejected: it violates the rule against inventing misconception vocabulary, and
+the QR_A_074 resolution is built on that rule. The unblocking step is authoring
+QR.3.5 curriculum practice content, a separate project.
 
 ## Files
 
