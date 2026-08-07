@@ -862,6 +862,68 @@ Step 5: Check with $g = 1$. Plan costs $42$, promotion takes off $13$, final cos
   "A": "adds_instead_of_subtracts",
   "B": "combines_unlike_terms",
   "D": "drops_negative_on_group"
+},
+"template": {
+  "variables": [
+    "g"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 8,
+      "max": 15
+    },
+    {
+      "name": "b",
+      "min": 20,
+      "max": 40,
+      "step": 5
+    },
+    {
+      "name": "c",
+      "min": 2,
+      "max": 9
+    },
+    {
+      "name": "d",
+      "min": 4,
+      "max": 12
+    }
+  ],
+  "constraints": [
+    "a - c >= 3",
+    "b - d >= 10"
+  ],
+  "constraint_notes": {
+    "a - c >= 3": "Realism, not mathematics: keeps the final per-gigabyte rate meaningfully positive.",
+    "b - d >= 10": "Keeps the promotion smaller than the base fee, so the stem still describes something a phone company would do."
+  },
+  "range_notes": "b rolls in steps of 5 so the base fee never lands on $37. The pool's clearest carrier of the mandatory sign-error coverage: D differs from C by the sign on d alone, structurally, so the error is on the page at every roll rather than only where it happened to land.",
+  "canonical_parameters": {
+    "a": 12,
+    "b": 30,
+    "c": 5,
+    "d": 8
+  },
+  "correct_answer": "C",
+  "misconception_tag": {
+    "A": "adds_instead_of_subtracts",
+    "B": "combines_unlike_terms",
+    "D": "drops_negative_on_group"
+  },
+  "stem_template": "A phone plan costs ${a}g + {b}$ dollars, where $g$ is the number of gigabytes used. A promotion subtracts ${c}g + {d}$ dollars from that price. Which expression represents the final cost in simplified form?",
+  "unsimplified_expression": "(a*g + b) - (c*g + d)",
+  "choice_formulas": {
+    "A": "(a + c)*g + (b + d)",
+    "B": "(a + b - c - d)*g",
+    "C": "(a - c)*g + (b - d)",
+    "D": "(a - c)*g + (b + d)"
+  },
+  "choice_derivations": {
+    "A": "(a*g + b) + (c*g + d)",
+    "B": "(a + b - c - d)*g",
+    "D": "(a*g + b) - c*g + d"
+  }
 }
 ```
 
