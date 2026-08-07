@@ -5,8 +5,10 @@ import posthog from 'posthog-js';
 import MathText from '../components/MathText';
 import { LogoutButton } from '../components/LogoutButton';
 import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from '../components/fonts';
+import { DASH, cardStyle } from '../components/dashboard-theme';
+import { HoverLabel, HOVER_LABEL_CSS, useHoverLabel } from '../components/HoverLabel';
 import NewAnnouncement from './NewAnnouncement';
-import SupportModal from './SupportModal';
+import SupportModal from '../components/SupportModal';
 
 // ─── Types (match the API route response shapes) ─────────────────────────────
 
@@ -236,46 +238,8 @@ function FounderPill() {
   );
 }
 
-// Floating hover label for the sidebar icons.
-//
-// Positioned fixed off the hovered element's own rect rather than absolutely
-// inside the sidebar, because the nav clips horizontally while the collapse
-// animation runs and an absolutely positioned label would be cut off at the
-// navy edge. Fixed also keeps it above the sticky top bar.
-//
-// It is purely additive: nav items keep their existing active and hover
-// background treatment underneath, and the label layers over the main column.
-type Tip = { label: string; x: number; y: number };
-
-function HoverLabel({ tip }: { tip: Tip }) {
-  return (
-    <span
-      role="tooltip"
-      style={{
-        position: 'fixed',
-        left: tip.x,
-        top: tip.y,
-        transform: 'translateY(-50%)',
-        pointerEvents: 'none',
-        zIndex: 400,
-        background: '#fff',
-        color: '#0F1E35',
-        border: '1px solid rgba(15,30,53,0.07)',
-        boxShadow: '0 4px 14px rgba(15,30,53,0.18)',
-        borderRadius: 8,
-        padding: '6px 10px',
-        fontSize: 12,
-        fontWeight: 600,
-        whiteSpace: 'nowrap',
-        // Fades in on hover. Removal is an unmount, so it disappears at once
-        // on mouse-out rather than lingering through a fade.
-        animation: 'umtipin 120ms ease-out',
-      }}
-    >
-      {tip.label}
-    </span>
-  );
-}
+// The floating hover label the collapsed rail leans on now lives in
+// app/components/HoverLabel, shared with the student rail.
 
 function SidebarInner({
   teacherName,
@@ -293,22 +257,8 @@ function SidebarInner({
   onOpenSupport: () => void;
 }) {
   const initials = teacherName.split(/[\s._-]+/).map((x) => x[0]).join('').slice(0, 2).toUpperCase() || 'T';
-  const [tip, setTip] = useState<Tip | null>(null);
-  const [hovered, setHovered] = useState<string | null>(null);
+  const { tip, hovered, showTip, hideTip } = useHoverLabel();
   const [accountOpen, setAccountOpen] = useState(false);
-
-  // Anchors the label to the right edge of whatever icon is hovered.
-  function showTip(label: string) {
-    return (e: React.MouseEvent<HTMLElement>) => {
-      const r = e.currentTarget.getBoundingClientRect();
-      setTip({ label, x: r.right + 10, y: r.top + r.height / 2 });
-      setHovered(label);
-    };
-  }
-  function hideTip() {
-    setTip(null);
-    setHovered(null);
-  }
 
   return (
     <>
@@ -462,7 +412,7 @@ function SidebarInner({
 const menuItemStyle: React.CSSProperties = {
   display: 'flex', alignItems: 'center', gap: 9,
   padding: '9px 11px', borderRadius: 8,
-  fontSize: 13, fontWeight: 600, color: '#0F1E35',
+  fontSize: 13, fontWeight: 600, color: DASH.heading,
   textDecoration: 'none', fontFamily: 'inherit',
   transition: 'background 0.12s',
 };
@@ -474,22 +424,22 @@ function SummaryCards({ enrolled, notTested, crCount, crPct, weakStrand, avgScor
   weakStrand: { code: string; name: string; color: string; pct: number } | null;
   avgScore: number | null; cols: number;
 }) {
-  const card = { background: '#fff', border: '1px solid rgba(15,30,53,0.07)', borderRadius: 12, padding: '18px 18px 16px', boxShadow: '0 1px 2px rgba(15,30,53,0.04)' };
-  const labelStyle = { fontSize: 11, fontWeight: 600, letterSpacing: 0.7, textTransform: 'uppercase' as const, color: '#8A8983' };
+  const card = { ...cardStyle(), padding: '18px 18px 16px' };
+  const labelStyle = { fontSize: 11, fontWeight: 600, letterSpacing: 0.7, textTransform: 'uppercase' as const, color: DASH.dim };
   return (
     <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols},1fr)`, gap: 16, marginBottom: 16 }}>
       <div style={card}>
         <div style={labelStyle}>Students enrolled</div>
-        <div style={{ marginTop: 10, fontSize: 32, fontWeight: 700, color: '#0F1E35', fontVariantNumeric: 'tabular-nums', lineHeight: 1 }}>{enrolled}</div>
-        <div style={{ marginTop: 9, fontSize: 12, color: '#5F5E5A' }}>{notTested > 0 ? `${notTested} not yet tested` : 'All students tested'}</div>
+        <div style={{ marginTop: 10, fontSize: 32, fontWeight: 700, color: DASH.heading, fontVariantNumeric: 'tabular-nums', lineHeight: 1 }}>{enrolled}</div>
+        <div style={{ marginTop: 9, fontSize: 12, color: DASH.muted }}>{notTested > 0 ? `${notTested} not yet tested` : 'All students tested'}</div>
       </div>
       <div style={card}>
         <div style={labelStyle}>College ready</div>
         <div style={{ marginTop: 10, display: 'flex', alignItems: 'baseline', gap: 8 }}>
-          <span style={{ fontSize: 32, fontWeight: 700, color: '#0F1E35', fontVariantNumeric: 'tabular-nums', lineHeight: 1 }}>{crCount}</span>
+          <span style={{ fontSize: 32, fontWeight: 700, color: DASH.heading, fontVariantNumeric: 'tabular-nums', lineHeight: 1 }}>{crCount}</span>
           {crPct !== null && <span style={{ fontSize: 15, fontWeight: 600, color: '#4F9A2E' }}>{crPct}%</span>}
         </div>
-        <div style={{ marginTop: 9, fontSize: 12, color: '#5F5E5A' }}>Scored ≥ 950 on TSIA2</div>
+        <div style={{ marginTop: 9, fontSize: 12, color: DASH.muted }}>Scored ≥ 950 on TSIA2</div>
       </div>
       {/* Weakest strand — amber highlight */}
       <div style={{ background: '#FBF4E6', border: '1px solid rgba(198,138,47,0.35)', borderRadius: 12, padding: '16px 18px', boxShadow: '0 1px 2px rgba(198,138,47,0.08)' }}>
@@ -498,7 +448,7 @@ function SummaryCards({ enrolled, notTested, crCount, crPct, weakStrand, avgScor
           {weakStrand && <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: 0.6, color: '#fff', background: '#C68A2F', padding: '2px 6px', borderRadius: 4 }}>FOCUS</span>}
         </div>
         <div style={{ marginTop: 10 }}>
-          <span style={{ fontSize: 22, fontWeight: 700, color: '#0F1E35', lineHeight: 1.05 }}>{weakStrand ? weakStrand.name : '—'}</span>
+          <span style={{ fontSize: 22, fontWeight: 700, color: DASH.heading, lineHeight: 1.05 }}>{weakStrand ? weakStrand.name : '—'}</span>
         </div>
         <div style={{ marginTop: 9, display: 'flex', alignItems: 'center', gap: 7, fontSize: 12, color: '#7A5B2A' }}>
           {weakStrand ? (
@@ -512,10 +462,10 @@ function SummaryCards({ enrolled, notTested, crCount, crPct, weakStrand, avgScor
       <div style={card}>
         <div style={labelStyle}>Average score</div>
         <div style={{ marginTop: 10, display: 'flex', alignItems: 'baseline', gap: 4 }}>
-          <span style={{ fontSize: 32, fontWeight: 700, color: '#0F1E35', fontVariantNumeric: 'tabular-nums', lineHeight: 1 }}>{avgScore ?? '—'}</span>
-          {avgScore !== null && <span style={{ fontSize: 14, fontWeight: 600, color: '#8A8983' }}>/ 990</span>}
+          <span style={{ fontSize: 32, fontWeight: 700, color: DASH.heading, fontVariantNumeric: 'tabular-nums', lineHeight: 1 }}>{avgScore ?? '—'}</span>
+          {avgScore !== null && <span style={{ fontSize: 14, fontWeight: 600, color: DASH.dim }}>/ 990</span>}
         </div>
-        <div style={{ marginTop: 9, fontSize: 12, color: '#5F5E5A' }}>Passing 950 · scale 910–990</div>
+        <div style={{ marginTop: 9, fontSize: 12, color: DASH.muted }}>Passing 950 · scale 910–990</div>
       </div>
     </div>
   );
@@ -525,24 +475,24 @@ function SummaryCards({ enrolled, notTested, crCount, crPct, weakStrand, avgScor
 
 function StrandPanel({ strandPct, totalAttempts, cols }: { strandPct: Record<Strand, number>; totalAttempts: number; cols: number }) {
   return (
-    <div style={{ background: '#fff', border: '1px solid rgba(15,30,53,0.07)', borderRadius: 12, padding: '20px 22px', boxShadow: '0 1px 2px rgba(15,30,53,0.04)', marginBottom: 26 }}>
+    <div style={{ ...cardStyle(), padding: '20px 22px', marginBottom: 26 }}>
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 18, gap: 12, flexWrap: 'wrap' }}>
         <div>
-          <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: '#0F1E35' }}>Class strand mastery</h2>
-          <div style={{ marginTop: 3, fontSize: 12, color: '#5F5E5A' }}>Average accuracy by TSIA2 reasoning strand</div>
+          <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: DASH.heading }}>Class strand mastery</h2>
+          <div style={{ marginTop: 3, fontSize: 12, color: DASH.muted }}>Average accuracy by TSIA2 reasoning strand</div>
         </div>
-        <div style={{ fontSize: 11, color: '#8A8983', fontWeight: 600 }}>{totalAttempts} attempts this class</div>
+        <div style={{ fontSize: 11, color: DASH.dim, fontWeight: 600 }}>{totalAttempts} attempts this class</div>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols},1fr)`, gap: 18, alignItems: 'end' }}>
         {ORDER.map((code) => (
           <div key={code} style={{ display: 'flex', alignItems: 'flex-end', gap: 10 }}>
-            <div style={{ position: 'relative', width: 46, height: 118, background: '#F2F1EC', borderRadius: 7, overflow: 'hidden', flex: '0 0 46px' }}>
+            <div style={{ position: 'relative', width: 46, height: 118, background: DASH.trackBg, borderRadius: 7, overflow: 'hidden', flex: '0 0 46px' }}>
               <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: STR[code].color, height: `${strandPct[code]}%`, borderRadius: '7px 7px 0 0' }} />
             </div>
             <div style={{ paddingBottom: 4 }}>
-              <div style={{ fontSize: 24, fontWeight: 700, color: '#0F1E35', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{strandPct[code]}<span style={{ fontSize: 13, color: '#8A8983' }}>%</span></div>
-              <div style={{ marginTop: 6, fontSize: 11, fontWeight: 700, color: '#0F1E35' }}>{code}</div>
-              <div style={{ fontSize: 11, color: '#5F5E5A', lineHeight: 1.3 }}>{STR[code].short}</div>
+              <div style={{ fontSize: 24, fontWeight: 700, color: DASH.heading, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{strandPct[code]}<span style={{ fontSize: 13, color: DASH.dim }}>%</span></div>
+              <div style={{ marginTop: 6, fontSize: 11, fontWeight: 700, color: DASH.heading }}>{code}</div>
+              <div style={{ fontSize: 11, color: DASH.muted, lineHeight: 1.3 }}>{STR[code].short}</div>
             </div>
           </div>
         ))}
@@ -565,9 +515,9 @@ function StrandProfileBar({ s }: { s: DisplayStudent }) {
         <div style={{ width: `${s.wGR}%`, background: '#FAC775' }} />
         <div style={{ width: `${s.wPR}%`, background: '#CECBF6' }} />
       </div>
-      <div style={{ marginTop: 6, display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: '#8A8983' }}>
+      <div style={{ marginTop: 6, display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: DASH.dim }}>
         <span style={{ width: 7, height: 7, borderRadius: 2, background: s.weakColor, display: 'inline-block' }} />
-        <span>Weakest · <span style={{ fontWeight: 600, color: '#5F5E5A' }}>{s.weakLabel}</span></span>
+        <span>Weakest · <span style={{ fontWeight: 600, color: DASH.muted }}>{s.weakLabel}</span></span>
       </div>
     </>
   );
@@ -583,24 +533,24 @@ function MiscCard({ m, testedCount }: { m: Misconception; testedCount: number })
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{ background: '#fff', border: '1px solid rgba(15,30,53,0.07)', borderRadius: 12, padding: 18, boxShadow: hovered ? '0 4px 16px rgba(15,30,53,0.07)' : '0 1px 2px rgba(15,30,53,0.04)', display: 'flex', flexDirection: 'column', minHeight: 182, transition: 'box-shadow 0.15s' }}
+      style={{ ...cardStyle(), padding: 18, boxShadow: hovered ? DASH.cardShadowHover : DASH.cardShadow, display: 'flex', flexDirection: 'column', minHeight: 182, transition: 'box-shadow 0.15s' }}
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 13, gap: 8 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 11, minWidth: 0 }}>
           <div style={{ width: 28, height: 28, borderRadius: 8, background: '#0F1E35', color: '#E7BE7B', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 700, flex: '0 0 28px' }}>{m.rank}</div>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, color: '#0F1E35' }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, color: DASH.heading }}>
             <span style={{ width: 9, height: 9, borderRadius: 2, background: strandColor, display: 'inline-block' }} />
             {m.primary_strand}
           </span>
         </div>
-        <span style={{ fontFamily: "'Courier New', monospace", fontSize: 11, color: '#5F5E5A', background: '#F4F3EE', padding: '3px 7px', borderRadius: 5, whiteSpace: 'nowrap' }}>{m.topic_id}</span>
+        <span style={{ fontFamily: "'Courier New', monospace", fontSize: 11, color: DASH.muted, background: '#F4F3EE', padding: '3px 7px', borderRadius: 5, whiteSpace: 'nowrap' }}>{m.topic_id}</span>
       </div>
       <div style={{ fontSize: 14, lineHeight: 1.5, color: '#26262A', flex: '1 1 auto', maxHeight: 88, overflow: 'hidden' }}>
         <MathText text={m.distractor_text} />
       </div>
-      <div style={{ marginTop: 14, paddingTop: 13, borderTop: '1px solid #F0EEE7', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 12 }}>
-        <div style={{ fontSize: 12, color: '#5F5E5A' }}>
-          <span style={{ fontWeight: 700, color: '#1A1A1A' }}>Selected {m.frequency}×</span>
+      <div style={{ marginTop: 14, paddingTop: 13, borderTop: `1px solid ${DASH.hairline}`, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 12 }}>
+        <div style={{ fontSize: 12, color: DASH.muted }}>
+          <span style={{ fontWeight: 700, color: DASH.ink }}>Selected {m.frequency}×</span>
           <span style={{ color: '#C9C7BE', margin: '0 6px' }}>·</span>
           <span>{m.affected_students} {m.affected_students === 1 ? 'student' : 'students'}</span>
         </div>
@@ -656,7 +606,7 @@ function InviteModal({ classId, onClose }: { classId: string; onClose: () => voi
         </div>
       ) : (
         <>
-          <p style={{ margin: '0 0 16px', fontSize: 13, color: '#5F5E5A', lineHeight: 1.5 }}>
+          <p style={{ margin: '0 0 16px', fontSize: 13, color: DASH.muted, lineHeight: 1.5 }}>
             Enter a student email. If they already have an account they&apos;ll be enrolled immediately. Otherwise they&apos;ll receive an invite link.
           </p>
           <input
@@ -665,11 +615,11 @@ function InviteModal({ classId, onClose }: { classId: string; onClose: () => voi
             onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(); }}
             placeholder="student@school.edu"
             type="email"
-            style={{ width: '100%', border: `1px solid ${status === 'error' ? '#C2402F' : '#D3D1C7'}`, borderRadius: 9, padding: '10px 14px', fontSize: 14, fontFamily: 'inherit', color: '#1A1A1A', outline: 'none', boxSizing: 'border-box', marginBottom: 6 }}
+            style={{ width: '100%', border: `1px solid ${status === 'error' ? '#C2402F' : '#D3D1C7'}`, borderRadius: 9, padding: '10px 14px', fontSize: 14, fontFamily: 'inherit', color: DASH.ink, outline: 'none', boxSizing: 'border-box', marginBottom: 6 }}
           />
           {status === 'error' && <p style={{ margin: '0 0 10px', fontSize: 12, color: '#C2402F' }}>{message}</p>}
           <div style={{ display: 'flex', gap: 10, marginTop: 8 }}>
-            <button onClick={onClose} style={{ flex: 1, padding: '10px 0', border: '1px solid #D3D1C7', borderRadius: 9, background: '#fff', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: '#5F5E5A' }}>Cancel</button>
+            <button onClick={onClose} style={{ flex: 1, padding: '10px 0', border: '1px solid #D3D1C7', borderRadius: 9, background: '#fff', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: DASH.muted }}>Cancel</button>
             <button onClick={handleSubmit} disabled={status === 'loading' || !email}
               style={{ flex: 2, padding: '10px 0', border: 'none', borderRadius: 9, background: status === 'loading' ? '#D4A55A' : '#C68A2F', cursor: status === 'loading' ? 'default' : 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: '#fff' }}>
               {status === 'loading' ? 'Sending…' : 'Send invite'}
@@ -713,7 +663,7 @@ function NewClassModal({ onClose, onCreated }: { onClose: () => void; onCreated:
 
   return (
     <ModalShell title="Create a class" onClose={onClose}>
-      <p style={{ margin: '0 0 16px', fontSize: 13, color: '#5F5E5A', lineHeight: 1.5 }}>
+      <p style={{ margin: '0 0 16px', fontSize: 13, color: DASH.muted, lineHeight: 1.5 }}>
         Give your class a name. A join code is generated automatically so students can enroll.
       </p>
       <input
@@ -722,11 +672,11 @@ function NewClassModal({ onClose, onCreated }: { onClose: () => void; onCreated:
         onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(); }}
         placeholder="e.g. TSIA2 Prep — Period 2"
         autoFocus
-        style={{ width: '100%', border: `1px solid ${status === 'error' ? '#C2402F' : '#D3D1C7'}`, borderRadius: 9, padding: '10px 14px', fontSize: 14, fontFamily: 'inherit', color: '#1A1A1A', outline: 'none', boxSizing: 'border-box', marginBottom: 6 }}
+        style={{ width: '100%', border: `1px solid ${status === 'error' ? '#C2402F' : '#D3D1C7'}`, borderRadius: 9, padding: '10px 14px', fontSize: 14, fontFamily: 'inherit', color: DASH.ink, outline: 'none', boxSizing: 'border-box', marginBottom: 6 }}
       />
       {status === 'error' && <p style={{ margin: '0 0 10px', fontSize: 12, color: '#C2402F' }}>{message}</p>}
       <div style={{ display: 'flex', gap: 10, marginTop: 8 }}>
-        <button onClick={onClose} style={{ flex: 1, padding: '10px 0', border: '1px solid #D3D1C7', borderRadius: 9, background: '#fff', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: '#5F5E5A' }}>Cancel</button>
+        <button onClick={onClose} style={{ flex: 1, padding: '10px 0', border: '1px solid #D3D1C7', borderRadius: 9, background: '#fff', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: DASH.muted }}>Cancel</button>
         <button onClick={handleSubmit} disabled={status === 'loading' || !name.trim()}
           style={{ flex: 2, padding: '10px 0', border: 'none', borderRadius: 9, background: status === 'loading' ? '#D4A55A' : '#C68A2F', cursor: status === 'loading' ? 'default' : 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: '#fff' }}>
           {status === 'loading' ? 'Creating…' : 'Create class'}
@@ -741,8 +691,8 @@ function ModalShell({ title, onClose, children }: { title: string; onClose: () =
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(15,30,53,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 200, padding: 16 }} onClick={onClose}>
       <div style={{ background: '#fff', borderRadius: 16, padding: 28, width: '100%', maxWidth: 420, boxShadow: '0 20px 60px rgba(15,30,53,0.18)' }} onClick={(e) => e.stopPropagation()}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
-          <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: '#0F1E35' }}>{title}</h2>
-          <button onClick={onClose} aria-label="Close" style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#8A8983', padding: 4 }}>
+          <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: DASH.heading }}>{title}</h2>
+          <button onClick={onClose} aria-label="Close" style={{ background: 'none', border: 'none', cursor: 'pointer', color: DASH.dim, padding: 4 }}>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><line x1="4" y1="4" x2="14" y2="14" /><line x1="14" y1="4" x2="4" y2="14" /></svg>
           </button>
         </div>
@@ -780,21 +730,21 @@ function TopBar({ classes, selectedClassId, onSelectClass, joinCode, onInvite, o
             <select
               value={selectedClassId}
               onChange={(e) => onSelectClass(e.target.value)}
-              style={{ border: 'none', background: 'transparent', fontSize: 14, fontWeight: 700, color: '#1A1A1A', fontFamily: 'inherit', cursor: 'pointer', outline: 'none', maxWidth: isMobile ? 180 : 280, textOverflow: 'ellipsis' }}
+              style={{ border: 'none', background: 'transparent', fontSize: 14, fontWeight: 700, color: DASH.ink, fontFamily: 'inherit', cursor: 'pointer', outline: 'none', maxWidth: isMobile ? 180 : 280, textOverflow: 'ellipsis' }}
             >
               {classes.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
             </select>
           </div>
         ) : (
-          <span style={{ fontSize: 14, fontWeight: 700, color: '#1A1A1A' }}>No classes yet</span>
+          <span style={{ fontSize: 14, fontWeight: 700, color: DASH.ink }}>No classes yet</span>
         )}
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 8 : 12, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
         {joinCode && (
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 9, background: '#F5F5F3', border: '1px solid #E2E0D8', borderRadius: 9, padding: '6px 10px 6px 12px' }}>
-            <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: 0.8, textTransform: 'uppercase', color: '#8A8983' }}>Join code</span>
-            <span style={{ fontFamily: "'Courier New', monospace", fontSize: 13.5, fontWeight: 700, color: '#0F1E35', letterSpacing: 0.5 }}>{joinCode}</span>
+            <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: 0.8, textTransform: 'uppercase', color: DASH.dim }}>Join code</span>
+            <span style={{ fontFamily: "'Courier New', monospace", fontSize: 13.5, fontWeight: 700, color: DASH.heading, letterSpacing: 0.5 }}>{joinCode}</span>
             <span style={{ width: 1, height: 16, background: '#D3D1C7' }} />
             <button onClick={copyCode} title="Copy join code" style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', color: copied ? '#4F9A2E' : '#5F5E5A' }}>
               {copied ? (
@@ -806,7 +756,7 @@ function TopBar({ classes, selectedClassId, onSelectClass, joinCode, onInvite, o
           </div>
         )}
         {classes.length > 0 && (
-          <button onClick={onInvite} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: '#fff', border: '1px solid #D3D1C7', borderRadius: 9, padding: '8px 13px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: '#0F1E35' }}
+          <button onClick={onInvite} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: '#fff', border: '1px solid #D3D1C7', borderRadius: 9, padding: '8px 13px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: DASH.heading }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F3'; }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#fff'; }}>
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"><line x1="8" y1="3.5" x2="8" y2="12.5" /><line x1="3.5" y1="8" x2="12.5" y2="8" /></svg>
@@ -828,22 +778,22 @@ function TopBar({ classes, selectedClassId, onSelectClass, joinCode, onInvite, o
 
 function RosterCard({ s, classId }: { s: DisplayStudent; classId: string }) {
   return (
-    <div style={{ background: '#fff', border: '1px solid rgba(15,30,53,0.07)', borderRadius: 12, padding: 16, boxShadow: '0 1px 2px rgba(15,30,53,0.04)' }}>
+    <div style={{ ...cardStyle(), padding: 16 }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 11, minWidth: 0 }}>
           <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#0F1E35', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700, flex: '0 0 34px' }}>{s.initials}</div>
           <div style={{ minWidth: 0 }}>
-            <div style={{ fontSize: 13.5, fontWeight: 600, color: '#1A1A1A', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{s.name}</div>
-            <div style={{ fontSize: 11.5, color: '#8A8983', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{s.email}</div>
+            <div style={{ fontSize: 13.5, fontWeight: 600, color: DASH.ink, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{s.name}</div>
+            <div style={{ fontSize: 11.5, color: DASH.dim, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{s.email}</div>
           </div>
         </div>
-        <span style={{ fontSize: 18, fontWeight: 700, color: '#0F1E35', fontVariantNumeric: 'tabular-nums', flexShrink: 0 }}>{s.score ?? '—'}</span>
+        <span style={{ fontSize: 18, fontWeight: 700, color: DASH.heading, fontVariantNumeric: 'tabular-nums', flexShrink: 0 }}>{s.score ?? '—'}</span>
       </div>
       <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: s.bandBg, color: s.bandText, fontSize: 12, fontWeight: 700, padding: '5px 10px', borderRadius: 20, whiteSpace: 'nowrap' }}>
           <span style={{ width: 6, height: 6, borderRadius: '50%', background: s.bandDot }} />{s.band}
         </span>
-        <span style={{ fontSize: 12, color: '#8A8983' }}>{s.tests} {s.tests === 1 ? 'test' : 'tests'} · {s.active}</span>
+        <span style={{ fontSize: 12, color: DASH.dim }}>{s.tests} {s.tests === 1 ? 'test' : 'tests'} · {s.active}</span>
       </div>
       <div style={{ marginTop: 12 }}>
         <StrandProfileBar s={s} />
@@ -860,11 +810,11 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile }:
     <div id="roster">
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 13, gap: 12, flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-          <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: '#0F1E35' }}>Class roster</h2>
-          <span style={{ fontSize: 12, fontWeight: 600, color: '#8A8983', background: '#EDEBE4', padding: '2px 8px', borderRadius: 20 }}>{enrolled}</span>
+          <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: DASH.heading }}>Class roster</h2>
+          <span style={{ fontSize: 12, fontWeight: 600, color: DASH.dim, background: DASH.chipBg, padding: '2px 8px', borderRadius: 20 }}>{enrolled}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span style={{ fontSize: 12, color: '#8A8983' }}>Sort by</span>
+          <span style={{ fontSize: 12, color: DASH.dim }}>Sort by</span>
           {['risk', 'score', 'name'].map((opt) => (
             <button key={opt} onClick={() => onSortChange(opt)}
               style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 6, cursor: 'pointer', border: '1px solid', borderColor: sortBy === opt ? '#C68A2F' : '#D3D1C7', background: sortBy === opt ? '#FBF4E6' : '#fff', color: sortBy === opt ? '#9A6A1F' : '#5F5E5A', textTransform: 'capitalize' }}>
@@ -875,40 +825,40 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile }:
       </div>
 
       {students.length === 0 ? (
-        <div style={{ background: '#fff', border: '1px solid rgba(15,30,53,0.07)', borderRadius: 12, padding: '40px 24px', textAlign: 'center', marginBottom: 34 }}>
-          <p style={{ fontSize: 14, color: '#5F5E5A', margin: '0 0 6px' }}>No students enrolled yet.</p>
-          <p style={{ fontSize: 13, color: '#8A8983', margin: 0 }}>Share the join code above or invite students by email.</p>
+        <div style={{ ...cardStyle(), boxShadow: 'none', padding: '40px 24px', textAlign: 'center', marginBottom: 34 }}>
+          <p style={{ fontSize: 14, color: DASH.muted, margin: '0 0 6px' }}>No students enrolled yet.</p>
+          <p style={{ fontSize: 13, color: DASH.dim, margin: 0 }}>Share the join code above or invite students by email.</p>
         </div>
       ) : isMobile ? (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 34 }}>
           {students.map((s) => <RosterCard key={s.student_id} s={s} classId={classId} />)}
         </div>
       ) : (
-        <div style={{ background: '#fff', border: '1px solid rgba(15,30,53,0.07)', borderRadius: 12, boxShadow: '0 1px 2px rgba(15,30,53,0.04)', overflowX: 'auto', marginBottom: 34 }}>
+        <div style={{ ...cardStyle(), overflowX: 'auto', marginBottom: 34 }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 720 }}>
             <thead>
-              <tr style={{ background: '#FBFBF9', borderBottom: '1px solid #E7E5DD' }}>
+              <tr style={{ background: DASH.subtleBg, borderBottom: `1px solid ${DASH.line}` }}>
                 {['Student', 'Score', 'Placement', 'Strand profile', 'Tests', 'Last active', ''].map((h) => (
-                  <th key={h} style={{ textAlign: h === 'Tests' ? 'center' : 'left', padding: h === '' || h === 'Student' ? '11px 20px' : '11px 14px', fontSize: 11, fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase', color: '#8A8983', whiteSpace: 'nowrap' }}>{h}</th>
+                  <th key={h} style={{ textAlign: h === 'Tests' ? 'center' : 'left', padding: h === '' || h === 'Student' ? '11px 20px' : '11px 14px', fontSize: 11, fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase', color: DASH.dim, whiteSpace: 'nowrap' }}>{h}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {students.map((s, i) => (
-                <tr key={s.student_id} style={{ borderBottom: i < students.length - 1 ? '1px solid #F0EEE7' : 'none', transition: 'background 0.1s' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#FAFAF7'; }}
+                <tr key={s.student_id} style={{ borderBottom: i < students.length - 1 ? `1px solid ${DASH.hairline}` : 'none', transition: 'background 0.1s' }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = DASH.rowHoverBg; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}>
                   <td style={{ padding: '13px 20px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 11 }}>
                       <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#0F1E35', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700, flex: '0 0 34px' }}>{s.initials}</div>
                       <div>
-                        <div style={{ fontSize: 13.5, fontWeight: 600, color: '#1A1A1A' }}>{s.name}</div>
-                        <div style={{ fontSize: 11.5, color: '#8A8983' }}>{s.email}</div>
+                        <div style={{ fontSize: 13.5, fontWeight: 600, color: DASH.ink }}>{s.name}</div>
+                        <div style={{ fontSize: 11.5, color: DASH.dim }}>{s.email}</div>
                       </div>
                     </div>
                   </td>
                   <td style={{ padding: '13px 14px' }}>
-                    <span style={{ fontSize: 16, fontWeight: 700, color: '#0F1E35', fontVariantNumeric: 'tabular-nums' }}>{s.score ?? '—'}</span>
+                    <span style={{ fontSize: 16, fontWeight: 700, color: DASH.heading, fontVariantNumeric: 'tabular-nums' }}>{s.score ?? '—'}</span>
                   </td>
                   <td style={{ padding: '13px 14px' }}>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: s.bandBg, color: s.bandText, fontSize: 12, fontWeight: 700, padding: '5px 10px', borderRadius: 20, whiteSpace: 'nowrap' }}>
@@ -919,10 +869,10 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile }:
                     <StrandProfileBar s={s} />
                   </td>
                   <td style={{ padding: '13px 14px', textAlign: 'center' }}>
-                    <span style={{ fontSize: 13.5, fontWeight: 600, color: '#5F5E5A', fontVariantNumeric: 'tabular-nums' }}>{s.tests}</span>
+                    <span style={{ fontSize: 13.5, fontWeight: 600, color: DASH.muted, fontVariantNumeric: 'tabular-nums' }}>{s.tests}</span>
                   </td>
                   <td style={{ padding: '13px 14px' }}>
-                    <span style={{ fontSize: 12.5, color: '#8A8983' }}>{s.active}</span>
+                    <span style={{ fontSize: 12.5, color: DASH.dim }}>{s.active}</span>
                   </td>
                   <td style={{ padding: '13px 20px', textAlign: 'right' }}>
                     <a href={`/teacher/student/${s.student_id}?class_id=${classId}`}
@@ -1045,12 +995,12 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
     <>
       <style>{`
         * { box-sizing: border-box; }
-        body { margin: 0; background: #F5F5F3; -webkit-font-smoothing: antialiased; }
+        body { margin: 0; background: ${DASH.pageBg}; -webkit-font-smoothing: antialiased; }
         ${FONT_BASE_CSS}
-        @keyframes umtipin { from { opacity: 0; } to { opacity: 1; } }
+        ${HOVER_LABEL_CSS}
       `}</style>
 
-      <div style={{ display: 'flex', minHeight: '100vh', fontFamily: FONT_BODY, color: '#1A1A1A' }}>
+      <div style={{ display: 'flex', minHeight: '100vh', fontFamily: FONT_BODY, color: DASH.ink }}>
 
         {/* Desktop sidebar. Width animates between the two rail widths; the
             z-index keeps the collapse handle and the hover labels above the
@@ -1088,7 +1038,7 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 background: '#fff', border: '1px solid rgba(15,30,53,0.12)',
                 boxShadow: '0 2px 8px rgba(15,30,53,0.18)',
-                color: '#0F1E35', cursor: 'pointer', padding: 0,
+                color: DASH.heading, cursor: 'pointer', padding: 0,
               }}
             >
               {/* Chevron flips to point the way the next click will move it. */}
@@ -1120,7 +1070,7 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
           </div>
         )}
 
-        <main style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', background: '#F5F5F3' }}>
+        <main style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', background: DASH.pageBg }}>
           <TopBar
             classes={classes}
             selectedClassId={selectedClassId}
@@ -1136,8 +1086,8 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
           <div style={{ padding: isMobile ? '18px 16px 48px' : '26px 32px 52px' }}>
             {/* Page header */}
             <div style={{ marginBottom: 22 }}>
-              <h1 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: isMobile ? 22 : 27, letterSpacing: -0.4, color: '#0F1E35' }}>{selectedClass?.name ?? 'Your classes'}</h1>
-              <div style={{ marginTop: 6, fontSize: 13, color: '#5F5E5A' }}>
+              <h1 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: isMobile ? 22 : 27, letterSpacing: -0.4, color: DASH.heading }}>{selectedClass?.name ?? 'Your classes'}</h1>
+              <div style={{ marginTop: 6, fontSize: 13, color: DASH.muted }}>
                 {classes.length === 0
                   ? 'Create your first class to get started.'
                   : `${rosterRows.length} ${rosterRows.length === 1 ? 'student' : 'students'} · ${totalAttempts} ${totalAttempts === 1 ? 'attempt' : 'attempts'}`}
@@ -1145,9 +1095,9 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
             </div>
 
             {classes.length === 0 ? (
-              <div style={{ background: '#fff', border: '1px solid rgba(15,30,53,0.07)', borderRadius: 12, padding: '48px 28px', textAlign: 'center', boxShadow: '0 1px 2px rgba(15,30,53,0.04)' }}>
-                <p style={{ fontSize: 16, fontWeight: 600, color: '#0F1E35', margin: '0 0 8px' }}>Create your first class</p>
-                <p style={{ fontSize: 13.5, color: '#5F5E5A', margin: '0 0 20px', lineHeight: 1.6 }}>Set up a class to get a join code, invite students, and start seeing<br />class-wide misconception patterns.</p>
+              <div style={{ ...cardStyle(), padding: '48px 28px', textAlign: 'center' }}>
+                <p style={{ fontSize: 16, fontWeight: 600, color: DASH.heading, margin: '0 0 8px' }}>Create your first class</p>
+                <p style={{ fontSize: 13.5, color: DASH.muted, margin: '0 0 20px', lineHeight: 1.6 }}>Set up a class to get a join code, invite students, and start seeing<br />class-wide misconception patterns.</p>
                 <button onClick={() => setShowNewClass(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: '#C68A2F', border: 'none', borderRadius: 9, padding: '11px 20px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 14, fontWeight: 600, color: '#fff' }}>+ New class</button>
               </div>
             ) : loading ? (
@@ -1164,10 +1114,10 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
                 {/* Misconceptions */}
                 <div id="misconceptions" style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 13, gap: 12, flexWrap: 'wrap' }}>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 11 }}>
-                    <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: '#0F1E35' }}>Top misconceptions</h2>
-                    <span style={{ fontSize: 13, color: '#5F5E5A' }}>Class-wide, most recent test per student</span>
+                    <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: DASH.heading }}>Top misconceptions</h2>
+                    <span style={{ fontSize: 13, color: DASH.muted }}>Class-wide, most recent test per student</span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 11, color: '#8A8983' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 11, color: DASH.dim }}>
                     {ORDER.map((k) => (
                       <span key={k} style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
                         <span style={{ width: 9, height: 9, borderRadius: 2, background: STR[k].color, display: 'inline-block' }} />{k}
@@ -1178,8 +1128,8 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
                 {misconceptions === null ? (
                   <Spinner />
                 ) : misconceptions.length === 0 ? (
-                  <div style={{ background: '#fff', border: '1px solid rgba(15,30,53,0.07)', borderRadius: 12, padding: '32px 24px', textAlign: 'center' }}>
-                    <p style={{ fontSize: 14, color: '#5F5E5A', margin: 0 }}>No misconception data yet. Students need to complete at least one test.</p>
+                  <div style={{ ...cardStyle(), boxShadow: 'none', padding: '32px 24px', textAlign: 'center' }}>
+                    <p style={{ fontSize: 14, color: DASH.muted, margin: 0 }}>No misconception data yet. Students need to complete at least one test.</p>
                   </div>
                 ) : (
                   <div style={{ display: 'grid', gridTemplateColumns: `repeat(${miscCols},1fr)`, gap: 16 }}>

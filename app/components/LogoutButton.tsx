@@ -2,11 +2,19 @@
 
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
+import { ink } from "./curriculum-theme";
 
 // Small circular icon button that signs the current user out of Supabase and
-// sends them to /login. Used in the teacher sidebar chip (dark) and the shared
-// Header (light). Redirect uses window.location to match this codebase's
-// client-side redirect convention (no useRouter is used anywhere).
+// sends them to /login. Used in the teacher sidebar chip (dark), the student
+// sidebar chip (cream) and the shared Header (light). Redirect uses
+// window.location to match this codebase's client-side redirect convention (no
+// useRouter is used anywhere).
+//
+// The three variants differ only in ink: "light" runs on the --ec theme
+// variables, "dark" on white alphas over Deep Navy, and "cream" on Deep
+// Midnight alphas over Mercury Cream. The student sidebar needs its own because
+// the --ec variables carry a dark mode, and a light-grey glyph on a cream rail
+// would disappear the moment that mode is on.
 //
 // title is the native browser tooltip. Pass null where a styled hover label is
 // already supplied by the surrounding UI, so the two do not stack up on the
@@ -16,12 +24,13 @@ export function LogoutButton({
   size = 34,
   title = "Log out",
 }: {
-  variant?: "light" | "dark";
+  variant?: "light" | "dark" | "cream";
   size?: number;
   title?: string | null;
 }) {
   const [loading, setLoading] = useState(false);
   const dark = variant === "dark";
+  const cream = variant === "cream";
 
   const handleLogout = async () => {
     if (loading) return;
@@ -34,8 +43,8 @@ export function LogoutButton({
     }
   };
 
-  const idleBg = dark ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.18)";
-  const hoverBg = dark ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.32)";
+  const idleBg = cream ? ink(0.05) : dark ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.18)";
+  const hoverBg = cream ? ink(0.11) : dark ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.32)";
 
   return (
     <button
@@ -50,9 +59,13 @@ export function LogoutButton({
         width: size,
         height: size,
         borderRadius: "50%",
-        border: dark ? "1px solid rgba(255,255,255,0.14)" : "1px solid var(--ec-line)",
+        border: cream
+          ? `1px solid ${ink(0.14)}`
+          : dark
+            ? "1px solid rgba(255,255,255,0.14)"
+            : "1px solid var(--ec-line)",
         background: idleBg,
-        color: dark ? "rgba(255,255,255,0.7)" : "var(--ec-ink-muted)",
+        color: cream ? ink(0.62) : dark ? "rgba(255,255,255,0.7)" : "var(--ec-ink-muted)",
         cursor: loading ? "default" : "pointer",
         flexShrink: 0,
         opacity: loading ? 0.6 : 1,
