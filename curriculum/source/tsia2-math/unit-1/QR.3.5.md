@@ -424,6 +424,53 @@ Step 3: Keep the variable.
   "A": "ignores_unit_coefficient",
   "B": "adds_instead_of_subtracts",
   "C": "drops_variable"
+},
+"template": {
+  "variables": [
+    "n"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 6,
+      "max": 15
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 7
+    }
+  ],
+  "constraints": [
+    "a - b - 1 >= 2"
+  ],
+  "constraint_notes": {
+    "a - b - 1 >= 2": "Keeps the answer off a bare n, which would render the same as the item's own third term and collide with its teaching point, and off zero, where C and D would coincide."
+  },
+  "range_notes": "Widened from 6..12 / 2..5 after checking the larger range stays collision-free. The arithmetic is a two-step subtraction either way, so nothing leaves the Basic tier. The thinnest pool of the fourteen at 50 sets, still above the ~30 Phase A accepted for QR_A_074.",
+  "canonical_parameters": {
+    "a": 8,
+    "b": 3
+  },
+  "correct_answer": "D",
+  "misconception_tag": {
+    "A": "ignores_unit_coefficient",
+    "B": "adds_instead_of_subtracts",
+    "C": "drops_variable"
+  },
+  "stem_template": "Simplify the expression ${a}n - {b}n - n$.",
+  "unsimplified_expression": "a*n - b*n - n",
+  "choice_formulas": {
+    "A": "(a - b)*n",
+    "B": "(a - b + 1)*n",
+    "C": "a - b - 1",
+    "D": "(a - b - 1)*n"
+  },
+  "choice_derivations": {
+    "A": "(a*n - b*n) - 0*n",
+    "B": "(a*n - b*n) + n",
+    "C": "a - b - 1"
+  }
 }
 ```
 
