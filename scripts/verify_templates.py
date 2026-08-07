@@ -651,9 +651,11 @@ def main():
     if args.source == "curriculum":
         pairs, pending = load_curriculum(args.topic, args.unit)
         pending_label = "no template yet"
+        pending_summary = "gradeable items have no template"
     else:
         pairs, pending = load_bank(args.topic)
         pending_label = "no source item with this id"
+        pending_summary = "templates have no source item"
 
     if args.show:
         match = [(t, s) for t, s in pairs if t["key"] == args.show]
@@ -685,10 +687,14 @@ def main():
             print(f"      ... and {len(fails) - 10} more")
 
     for key in pending:
-        print(f"  {key:<14} --           {pending_label}")
+        print(f"  {key:<14} MISSING      {pending_label}")
 
     print()
-    ok = True
+    # A gradeable item with no template is a failure, not a note. An empty or
+    # half-filled pool is the one state that otherwise reports as success --
+    # nothing ran, so nothing failed -- and that is exactly the state a CI job
+    # must not sail through once the pool is expected to be populated.
+    ok = not pending
 
     # Pool rule: the topic's mandatory sign-error coverage must survive
     # templating. Derived from the tag map for curriculum; still a declared
@@ -724,7 +730,8 @@ def main():
     passed = sum(1 for v in results.values() if v)
     print(f"\n{passed}/{len(pairs)} templates passed, {total_sets} parameter sets checked")
     if pending:
-        print(f"{len(pending)} awaiting a template: {', '.join(pending)}")
+        print(f"FAIL: {len(pending)} of {len(pairs) + len(pending)} {pending_summary}: "
+              f"{', '.join(pending)}")
 
     if args.write:
         if args.source != "bank":
