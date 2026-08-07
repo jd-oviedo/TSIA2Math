@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { C, ink } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
+import { V } from '@/app/components/dashboard-theme';
 
 // Carried over from the old single-page dashboard, restyled onto the curriculum
 // palette. Same /api/enroll call and same six-character code rule.
@@ -60,10 +61,10 @@ export default function JoinClassPanel({ initialCode }: { initialCode?: string }
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       <div>
-        <h2 style={{ margin: '0 0 3px', font: `600 16px ${FONT_HEADING}`, color: C.midnight }}>
+        <h2 style={{ margin: '0 0 3px', font: `600 16px ${FONT_HEADING}`, color: V.heading }}>
           Join a class
         </h2>
-        <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, lineHeight: 1.6, color: ink(0.6) }}>
+        <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, lineHeight: 1.6, color: V.muted }}>
           Enter the 6-character code your teacher shared with you.
         </p>
       </div>
@@ -88,11 +89,11 @@ export default function JoinClassPanel({ initialCode }: { initialCode?: string }
             padding: '10px 14px',
             borderRadius: 11,
             border: 'none',
-            background: C.sand,
-            boxShadow: `inset 0 0 0 1.5px ${ink(0.1)}`,
+            background: V.subtleBg,
+            boxShadow: `inset 0 0 0 1.5px ${V.trackBg}`,
             font: '700 15px ui-monospace, Menlo, monospace',
             letterSpacing: '0.12em',
-            color: C.midnight,
+            color: V.heading,
             textTransform: 'uppercase',
           }}
         />
@@ -105,7 +106,7 @@ export default function JoinClassPanel({ initialCode }: { initialCode?: string }
             padding: '11px 22px',
             borderRadius: 11,
             border: 'none',
-            background: ready ? C.sunset : ink(0.09),
+            background: ready ? C.sunset : V.cardBorder,
             boxShadow: ready ? `0 2px 0 ${C.sunsetShadow}` : 'none',
             font: `600 14px ${FONT_BODY}`,
             color: ready ? C.midnight : ink(0.4),

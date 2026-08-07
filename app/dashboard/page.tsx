@@ -11,8 +11,9 @@ import {
 import { Card, CardTitle, Eyebrow, Muted, PageHeading, ProgressBar, formatDate } from './ui';
 import JoinClassPanel from './JoinClassPanel';
 import FlagsPanel from './FlagsPanel';
-import { C, ink } from '@/app/components/curriculum-theme';
+import { C } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
+import { V } from '@/app/components/dashboard-theme';
 
 // Home. Deliberately quiet: a progress bar, one place to pick up, and the
 // class join box. No badges, no streaks, nothing that turns a study tool into
@@ -98,7 +99,7 @@ export default async function DashboardHome({
                 </CardTitle>
                 <a
                   href="/dashboard/announcements"
-                  style={{ font: `600 13px ${FONT_BODY}`, color: C.midnight, textDecoration: 'underline' }}
+                  style={{ font: `600 13px ${FONT_BODY}`, color: V.heading, textDecoration: 'underline' }}
                 >
                   {moreAnnouncements > 0 ? `See all ${announcements.status === 'ok' ? announcements.announcements.length : ''}` : 'See all'}
                 </a>
@@ -124,10 +125,10 @@ export default async function DashboardHome({
                       flexWrap: 'wrap',
                     }}
                   >
-                    <div style={{ font: `600 15px ${FONT_HEADING}`, color: C.midnight }}>
+                    <div style={{ font: `600 15px ${FONT_HEADING}`, color: V.heading }}>
                       {item.title}
                     </div>
-                    <span style={{ font: `400 12px ${FONT_BODY}`, color: ink(0.45) }}>
+                    <span style={{ font: `400 12px ${FONT_BODY}`, color: V.dim }}>
                       {formatDate(item.created_at)}
                       {item.class_id && classNames.has(item.class_id)
                         ? ` · ${classNames.get(item.class_id)}`
@@ -142,7 +143,7 @@ export default async function DashboardHome({
                       margin: 0,
                       font: `400 13.5px ${FONT_BODY}`,
                       lineHeight: 1.6,
-                      color: ink(0.72),
+                      color: V.ink,
                       whiteSpace: 'pre-wrap',
                       display: '-webkit-box',
                       WebkitLineClamp: 3,
@@ -170,7 +171,7 @@ export default async function DashboardHome({
               }}
             >
               <CardTitle>Course progress</CardTitle>
-              <span style={{ font: `600 22px ${FONT_HEADING}`, color: C.midnight }}>{pct}%</span>
+              <span style={{ font: `600 22px ${FONT_HEADING}`, color: V.heading }}>{pct}%</span>
             </div>
             <ProgressBar value={doneItems} total={totalItems} />
             <Muted size={13}>
@@ -190,10 +191,10 @@ export default async function DashboardHome({
             {recentTopic ? (
               <>
                 <div>
-                  <div style={{ font: `600 19px ${FONT_HEADING}`, color: C.midnight }}>
+                  <div style={{ font: `600 19px ${FONT_HEADING}`, color: V.heading }}>
                     {recentTopic.topic_name}
                   </div>
-                  <div style={{ marginTop: 4, font: `400 13px ${FONT_BODY}`, color: ink(0.5) }}>
+                  <div style={{ marginTop: 4, font: `400 13px ${FONT_BODY}`, color: V.dim }}>
                     Unit {recentTopic.unit_number} · {recentTopic.topic_id}
                     {recentProgress && recentProgress.total > 0
                       ? ` · ${recentProgress.correct} of ${recentProgress.total} correct so far`
@@ -219,10 +220,10 @@ export default async function DashboardHome({
             ) : firstTopic ? (
               <>
                 <div>
-                  <div style={{ font: `600 19px ${FONT_HEADING}`, color: C.midnight }}>
+                  <div style={{ font: `600 19px ${FONT_HEADING}`, color: V.heading }}>
                     {firstTopic.topic_name}
                   </div>
-                  <div style={{ marginTop: 4, font: `400 13px ${FONT_BODY}`, color: ink(0.5) }}>
+                  <div style={{ marginTop: 4, font: `400 13px ${FONT_BODY}`, color: V.dim }}>
                     Unit {firstTopic.unit_number} · {firstTopic.topic_id}
                   </div>
                 </div>

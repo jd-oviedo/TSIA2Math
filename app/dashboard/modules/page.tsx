@@ -8,8 +8,9 @@ import {
   type TopicProgress,
 } from '../data';
 import { Card, EmptyState, Eyebrow, Muted, PageHeading, ProgressBar } from '../ui';
-import { C, ink } from '@/app/components/curriculum-theme';
+import { C } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
+import { V } from '@/app/components/dashboard-theme';
 
 // Modules. The curriculum browse surface: units, the topics inside them, and
 // how far this student has got in each. The tree is read from curriculum_topics
@@ -22,10 +23,10 @@ function topicHref(topic: TopicRow) {
 }
 
 function statusOf(p: TopicProgress | undefined) {
-  if (!p || p.total === 0) return { label: 'Not started', color: ink(0.4), dot: ink(0.18) };
+  if (!p || p.total === 0) return { label: 'Not started', color: V.dim, dot: V.line };
   if (p.correct >= p.total) return { label: 'Complete', color: C.green, dot: C.green };
   if (p.attempted > 0) return { label: 'In progress', color: C.sunset, dot: C.sunset };
-  return { label: 'Not started', color: ink(0.4), dot: ink(0.18) };
+  return { label: 'Not started', color: V.dim, dot: V.line };
 }
 
 export default async function ModulesPage() {
@@ -83,7 +84,7 @@ export default async function ModulesPage() {
                       flexWrap: 'wrap',
                     }}
                   >
-                    <h2 style={{ margin: 0, font: `600 18px ${FONT_HEADING}`, color: C.midnight }}>
+                    <h2 style={{ margin: 0, font: `600 18px ${FONT_HEADING}`, color: V.heading }}>
                       Unit {unitNumber}
                     </h2>
                     <Muted size={13}>
@@ -109,8 +110,8 @@ export default async function ModulesPage() {
                             gap: 14,
                             padding: '15px 18px',
                             borderRadius: 13,
-                            background: C.paper,
-                            boxShadow: `inset 0 0 0 1px ${ink(0.08)}`,
+                            background: V.cardBg,
+                            boxShadow: `inset 0 0 0 1px ${V.cardBorder}`,
                             color: 'inherit',
                           }}
                         >
@@ -129,7 +130,7 @@ export default async function ModulesPage() {
                               style={{
                                 display: 'block',
                                 font: `500 15px ${FONT_BODY}`,
-                                color: C.midnight,
+                                color: V.heading,
                               }}
                             >
                               {topic.topic_name}
@@ -139,7 +140,7 @@ export default async function ModulesPage() {
                                 display: 'block',
                                 marginTop: 2,
                                 font: `400 12.5px ${FONT_BODY}`,
-                                color: ink(0.45),
+                                color: V.dim,
                               }}
                             >
                               {topic.topic_id}

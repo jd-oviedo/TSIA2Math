@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { C, ink } from '@/app/components/curriculum-theme';
+import { C } from '@/app/components/curriculum-theme';
 import { FONT_BODY } from '@/app/components/fonts';
+import { V } from '@/app/components/dashboard-theme';
 import { formatDate } from './ui';
 
 // Item flag review, carried over from the old dashboard rather than dropped.
@@ -75,7 +76,7 @@ export default function FlagsPanel() {
         style={{
           cursor: 'pointer',
           font: `500 13.5px ${FONT_BODY}`,
-          color: ink(0.55),
+          color: V.muted,
           padding: '4px 0',
         }}
       >
@@ -85,10 +86,10 @@ export default function FlagsPanel() {
       <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 10 }}>
         {error && <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, color: C.amber }}>{error}</p>}
         {!error && flags === null && (
-          <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, color: ink(0.5) }}>Loading…</p>
+          <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, color: V.dim }}>Loading…</p>
         )}
         {flags?.length === 0 && (
-          <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, color: ink(0.5) }}>No flags yet.</p>
+          <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, color: V.dim }}>No flags yet.</p>
         )}
         {flags?.map((flag) => {
           const resolved = flag.status === 'resolved';
@@ -96,7 +97,7 @@ export default function FlagsPanel() {
             <div
               key={flag.id}
               style={{
-                background: C.sand,
+                background: V.subtleBg,
                 borderRadius: 12,
                 padding: '14px 16px',
                 display: 'flex',
@@ -137,9 +138,9 @@ export default function FlagsPanel() {
                       padding: '3px 10px',
                       borderRadius: 999,
                       background: 'none',
-                      border: `1px solid ${ink(0.15)}`,
+                      border: `1px solid ${V.line}`,
                       font: `600 11px ${FONT_BODY}`,
-                      color: ink(0.55),
+                      color: V.muted,
                       cursor: 'pointer',
                     }}
                   >
@@ -147,7 +148,7 @@ export default function FlagsPanel() {
                   </button>
                 </div>
               </div>
-              <p style={{ margin: 0, font: `600 13px ${FONT_BODY}`, color: C.midnight }}>
+              <p style={{ margin: 0, font: `600 13px ${FONT_BODY}`, color: V.heading }}>
                 {CATEGORY_LABELS[flag.category] ?? flag.category}
               </p>
               {flag.comment && (
@@ -156,13 +157,13 @@ export default function FlagsPanel() {
                     margin: 0,
                     font: `400 13px ${FONT_BODY}`,
                     fontStyle: 'italic',
-                    color: ink(0.6),
+                    color: V.muted,
                   }}
                 >
                   {flag.comment}
                 </p>
               )}
-              <p style={{ margin: 0, font: `400 11px ${FONT_BODY}`, color: ink(0.4) }}>
+              <p style={{ margin: 0, font: `400 11px ${FONT_BODY}`, color: V.dim }}>
                 {flag.user_email ?? 'anonymous'} · {formatDate(flag.created_at)}
               </p>
             </div>

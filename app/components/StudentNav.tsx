@@ -1,22 +1,40 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { C, onDark } from './curriculum-theme';
+import { useState } from 'react';
+import { C } from './curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from './fonts';
+import { LogoutButton } from './LogoutButton';
+import { HoverLabel, useHoverLabel } from './HoverLabel';
+import { RAIL_LIGHT, RAIL_DARK, V, type RailSurface } from './dashboard-theme';
+import { useTheme } from '../theme/useTheme';
+import { ThemeModeButton } from './ThemeModeButton';
 
 // The student navigation, shared by the /dashboard tree and the /course tree.
 //
 // One component, two presentations. The dashboard renders it as a permanent
-// 208px rail on desktop and a slide-over on narrow screens. Curriculum pages
-// render the slide-over at every width: a fixed rail beside a practice problem
-// competes with the maths for attention, and those pages are meant to be the
-// quiet ones.
+// rail on desktop — collapsible down to an icon strip — and a slide-over on
+// narrow screens. Curriculum pages render the slide-over at every width: a
+// fixed rail beside a practice problem competes with the maths for attention,
+// and those pages are meant to be the quiet ones.
+//
+// Structurally this mirrors the teacher sidebar: brand, role band, nav, then a
+// profile button at the foot that opens an account menu, with logout and the
+// dark-mode toggle beside it. It borrows the teacher rail's collapsed hover
+// labels wholesale, from app/components/HoverLabel.
+//
+// The colours are not shared. The teacher rail is Deep Navy from the old --ec
+// system and light-only; this one is Mercury Cream, and follows the app theme.
+// Its two palettes live in dashboard-theme as RAIL_LIGHT / RAIL_DARK, kept as
+// plain objects rather than the --umd-* variables the content area uses,
+// because this component also renders inside the /course tree where the
+// dashboard stylesheet is never loaded.
 
 export const NAV_ITEMS = [
   { label: 'Home', href: '/dashboard' },
   { label: 'Announcements', href: '/dashboard/announcements' },
-  { label: 'Grades', href: '/dashboard/grades' },
   { label: 'Modules', href: '/dashboard/modules' },
+  { label: 'Grades', href: '/dashboard/grades' },
 ];
 
 function navIcon(label: string) {
@@ -70,18 +88,63 @@ function isActive(pathname: string, href: string) {
   return href === '/dashboard' ? pathname === href : pathname.startsWith(href);
 }
 
+// Wordmark expanded, the standalone mu mark collapsed. Same reasoning as the
+// teacher rail: the mark only inks about half its own canvas, so it is sized
+// well above nominal icon size to carry the same weight as the nav glyphs.
+function Brand({ collapsed }: { collapsed: boolean }) {
+  if (collapsed) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src="/unpackmath-logo.png"
+        alt="UnpackMath"
+        width={1080}
+        height={1080}
+        style={{ width: 44, height: 44, display: 'block', margin: '0 auto' }}
+      />
+    );
+  }
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/unpackmath-wordmark.png"
+      alt="UnpackMath"
+      width={2000}
+      height={485}
+      style={{ width: 148, maxWidth: '100%', height: 'auto', display: 'block' }}
+    />
+  );
+}
+
+
 export function StudentNavPanel({
   name,
   role,
   subscriptionStatus,
+  collapsed = false,
+  mode,
   onNavigate,
+  onOpenSupport,
 }: {
   name: string;
   role: 'student' | 'teacher';
   subscriptionStatus?: 'active' | 'inactive';
+  collapsed?: boolean;
+  /** Pin the rail to one palette. /course pages pass 'light'; the dashboard
+      omits it and follows the app theme. */
+  mode?: 'light' | 'dark';
   onNavigate?: () => void;
+  onOpenSupport?: () => void;
 }) {
   const pathname = usePathname();
+  const { theme } = useTheme();
+  const R: RailSurface = (mode ?? theme) === 'dark' ? RAIL_DARK : RAIL_LIGHT;
+
+  // Collapsed, the rail is icons only, so it borrows the teacher sidebar's
+  // floating hover label rather than leaning on native title tooltips.
+  const { tip, hovered, showTip, hideTip } = useHoverLabel();
+  const [accountOpen, setAccountOpen] = useState(false);
+
   const isProTeacher = role === 'teacher' && subscriptionStatus === 'active';
   const initials =
     name
@@ -91,89 +154,123 @@ export function StudentNavPanel({
       .slice(0, 2)
       .toUpperCase() || 'S';
 
+  // A teacher reaching this tree is here through "Student view", so the band
+  // keeps saying teacher rather than mislabelling them.
+  const badge =
+    role === 'teacher'
+      ? collapsed
+        ? isProTeacher ? 'PRO' : 'PREVIEW'
+        : isProTeacher ? 'TEACHER · PRO' : 'TEACHER · PREVIEW'
+      : 'STUDENT';
+
   return (
     <>
-      <div style={{ padding: '22px 18px 16px' }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/unpackmath-wordmark.png"
-          alt="UnpackMath"
-          width={2000}
-          height={485}
-          style={{ width: 148, maxWidth: '100%', height: 'auto', display: 'block' }}
-        />
-        {role === 'teacher' && (
-          <div
-            style={{
-              marginTop: 14,
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 6,
-              padding: '3px 8px',
-              borderRadius: 5,
-              boxShadow: `inset 0 0 0 1px ${C.gold}66`,
-              font: `700 9px ${FONT_BODY}`,
-              letterSpacing: '0.14em',
-              color: C.gold,
-            }}
-          >
-            <span style={{ width: 5, height: 5, borderRadius: '50%', background: C.gold }} />
-            {isProTeacher ? 'TEACHER PRO' : 'TEACHER PREVIEW'}
-          </div>
-        )}
+      <div style={{ padding: collapsed ? '18px 8px 12px' : '22px 18px 14px' }}>
+        <Brand collapsed={collapsed} />
       </div>
 
-      <nav style={{ padding: '4px 12px', display: 'flex', flexDirection: 'column', gap: 2 }}>
+      {/* Role band. Full-bleed between two hairlines rather than an inset pill,
+          matching the teacher rail's TEACHER · PRO treatment. Ink is a rail
+          token rather than Cipher Gold: the teacher band's gold reads on navy
+          and vanishes on cream. */}
+      <div
+        style={{
+          borderTop: `1px solid ${R.badgeLine}`,
+          borderBottom: `1px solid ${R.badgeLine}`,
+          color: R.badge,
+          font: `700 9px ${FONT_BODY}`,
+          letterSpacing: 1.4,
+          padding: '6px 4px',
+          textAlign: 'center',
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+        }}
+      >
+        {badge}
+      </div>
+
+      <nav
+        style={{
+          padding: collapsed ? '10px 8px' : '10px 12px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+          overflowX: 'hidden',
+        }}
+      >
         {NAV_ITEMS.map((item) => {
           const active = isActive(pathname, item.href);
+          const isHovered = hovered === item.label;
           return (
             <a
               key={item.href}
               href={item.href}
               onClick={onNavigate}
               aria-current={active ? 'page' : undefined}
+              aria-label={item.label}
+              onMouseEnter={showTip(item.label)}
+              onMouseLeave={hideTip}
               className="um-nav-item"
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 11,
-                padding: '10px 12px',
+                gap: collapsed ? 0 : 11,
+                justifyContent: collapsed ? 'center' : 'flex-start',
+                padding: collapsed ? '10px 0' : '10px 12px',
                 borderRadius: 9,
                 textDecoration: 'none',
                 font: `${active ? 600 : 400} 13.5px ${FONT_BODY}`,
-                color: active ? C.midnight : onDark(0.62),
-                background: active ? C.sunset : 'transparent',
+                color: active ? C.midnight : isHovered ? R.textStrong : R.text,
+                background: active ? C.sunset : isHovered ? R.hoverBg : 'transparent',
+                transition: 'background 0.12s',
               }}
             >
-              {navIcon(item.label)}
-              {item.label}
+              <span style={{ flex: '0 0 17px', display: 'flex', alignItems: 'center' }}>
+                {navIcon(item.label)}
+              </span>
+              {!collapsed && (
+                <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {item.label}
+                </span>
+              )}
             </a>
           );
         })}
       </nav>
 
       {role === 'teacher' && (
-        <div style={{ padding: '10px 12px 4px', borderTop: `1px solid ${onDark(0.12)}` }}>
+        <div style={{ padding: collapsed ? '10px 8px 4px' : '10px 12px 4px', borderTop: `1px solid ${R.divider}` }}>
           <a
             href="/teacher"
             onClick={onNavigate}
+            aria-label="Teacher Dashboard"
+            onMouseEnter={showTip('Teacher Dashboard')}
+            onMouseLeave={hideTip}
             className="um-nav-item"
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 11,
-              padding: '10px 12px',
+              gap: collapsed ? 0 : 11,
+              justifyContent: collapsed ? 'center' : 'flex-start',
+              padding: collapsed ? '10px 0' : '10px 12px',
               borderRadius: 9,
               textDecoration: 'none',
               font: `600 13.5px ${FONT_BODY}`,
-              color: C.gold,
+              // Cipher Gold marked this out when the rail was black. On cream
+              // it lands at 2.8:1, so the divider above and the heavier weight
+              // carry the distinction instead of colour.
+              color: R.text,
+              background: hovered === 'Teacher Dashboard' ? R.hoverBg : 'transparent',
+              transition: 'background 0.12s',
             }}
           >
-            <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M11 2.5 15.5 7 11 11.5" />
-              <path d="M15.2 7 H4.5 a2 2 0 0 0 -2 2 V15" />
-            </svg>
-            Teacher Dashboard
+            <span style={{ flex: '0 0 17px', display: 'flex', alignItems: 'center' }}>
+              <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M11 2.5 15.5 7 11 11.5" />
+                <path d="M15.2 7 H4.5 a2 2 0 0 0 -2 2 V15" />
+              </svg>
+            </span>
+            {!collapsed && <span style={{ whiteSpace: 'nowrap' }}>Teacher Dashboard</span>}
           </a>
         </div>
       )}
@@ -182,62 +279,195 @@ export function StudentNavPanel({
 
       <div
         style={{
-          padding: '16px 18px',
-          borderTop: `1px solid ${onDark(0.12)}`,
-          display: 'flex',
-          alignItems: 'center',
-          gap: 10,
+          padding: collapsed ? '14px 8px' : 14,
+          borderTop: `1px solid ${R.divider}`,
+          position: 'relative',
         }}
       >
-        <span
+        {/* Account menu, anchored above the avatar because the avatar sits at
+            the foot of the rail. The transparent sheet behind it closes on any
+            outside click. */}
+        {accountOpen && (
+          <>
+            <div onClick={() => setAccountOpen(false)} style={{ position: 'fixed', inset: 0, zIndex: 310 }} />
+            <div
+              role="menu"
+              style={{
+                position: 'absolute',
+                bottom: 'calc(100% - 4px)',
+                left: collapsed ? 8 : 14,
+                minWidth: 178,
+                zIndex: 320,
+                background: R.menuBg,
+                borderRadius: 11,
+                padding: 5,
+                border: `1px solid ${R.menuBorder}`,
+                boxShadow: R.menuShadow,
+              }}
+            >
+              <a
+                role="menuitem"
+                href="/dashboard/settings"
+                onClick={() => {
+                  setAccountOpen(false);
+                  onNavigate?.();
+                }}
+                style={{ ...menuItemStyle, color: R.menuText }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = R.menuHoverBg; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+              >
+                <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="9" r="2.4" /><path d="M14.6 11.1a1.3 1.3 0 0 0 .26 1.43l.05.05a1.55 1.55 0 1 1-2.2 2.2l-.04-.05a1.3 1.3 0 0 0-1.43-.26 1.3 1.3 0 0 0-.79 1.19v.13a1.55 1.55 0 1 1-3.1 0v-.07a1.3 1.3 0 0 0-.85-1.19 1.3 1.3 0 0 0-1.43.26l-.05.05a1.55 1.55 0 1 1-2.2-2.2l.05-.05a1.3 1.3 0 0 0 .26-1.43 1.3 1.3 0 0 0-1.19-.79h-.13a1.55 1.55 0 1 1 0-3.1h.07a1.3 1.3 0 0 0 1.19-.85 1.3 1.3 0 0 0-.26-1.43l-.05-.05a1.55 1.55 0 1 1 2.2-2.2l.05.05a1.3 1.3 0 0 0 1.43.26h.06a1.3 1.3 0 0 0 .79-1.19v-.13a1.55 1.55 0 1 1 3.1 0v.07a1.3 1.3 0 0 0 .79 1.19 1.3 1.3 0 0 0 1.43-.26l.05-.05a1.55 1.55 0 1 1 2.2 2.2l-.05.05a1.3 1.3 0 0 0-.26 1.43v.06a1.3 1.3 0 0 0 1.19.79h.13a1.55 1.55 0 1 1 0 3.1h-.07a1.3 1.3 0 0 0-1.19.79z" /></svg>
+                Account Settings
+              </a>
+              <button
+                role="menuitem"
+                type="button"
+                onClick={() => { setAccountOpen(false); onOpenSupport?.(); }}
+                style={{ ...menuItemStyle, color: R.menuText, width: '100%', border: 'none', background: 'transparent', cursor: 'pointer', textAlign: 'left' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = R.menuHoverBg; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+              >
+                <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="9" r="7" /><path d="M6.9 6.8a2.15 2.15 0 0 1 4.18.72c0 1.43-2.15 2.15-2.15 2.15" /><circle cx="9" cy="13" r="0.55" fill="currentColor" stroke="none" /></svg>
+                Help
+              </button>
+            </div>
+          </>
+        )}
+
+        <div
           style={{
-            width: 30,
-            height: 30,
-            flex: 'none',
-            borderRadius: '50%',
-            background: C.sky,
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            font: `600 12px ${FONT_HEADING}`,
-            color: C.midnight,
+            gap: 10,
+            justifyContent: collapsed ? 'center' : 'flex-start',
+            flexDirection: collapsed ? 'column' : 'row',
           }}
         >
-          {initials}
-        </span>
-        <span
-          style={{
-            flex: 1,
-            minWidth: 0,
-            font: `400 12px ${FONT_BODY}`,
-            color: onDark(0.55),
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          {name}
-        </span>
+          <button
+            type="button"
+            aria-label="Profile"
+            aria-haspopup="menu"
+            aria-expanded={accountOpen}
+            onClick={() => setAccountOpen((v) => !v)}
+            onMouseEnter={showTip('Profile')}
+            onMouseLeave={hideTip}
+            style={{
+              width: 32,
+              height: 32,
+              flex: '0 0 32px',
+              borderRadius: '50%',
+              background: C.sky,
+              color: C.midnight,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              font: `600 12px ${FONT_HEADING}`,
+              border:
+                hovered === 'Profile' || accountOpen
+                  ? `1px solid ${R.avatarRing}`
+                  : '1px solid transparent',
+              cursor: 'pointer',
+              padding: 0,
+            }}
+          >
+            {initials}
+          </button>
+
+          {!collapsed && (
+            <span
+              style={{
+                flex: 1,
+                minWidth: 0,
+                font: `400 12px ${FONT_BODY}`,
+                color: R.meta,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {name}
+            </span>
+          )}
+
+          {/* Dark mode and logout both stay present when collapsed, stacked
+              under the avatar rather than dropped: the narrow rail should still
+              be a way to change the theme and a way out of the app. */}
+          <span onMouseEnter={showTip('Dark mode')} onMouseLeave={hideTip} style={{ display: 'flex', flexShrink: 0 }}>
+            <ThemeModeButton
+              size={30}
+              bg="transparent"
+              hoverBg={R.hoverBg}
+              border={R.divider}
+              color={R.meta}
+            />
+          </span>
+
+          <span onMouseEnter={showTip('Logout')} onMouseLeave={hideTip} style={{ display: 'flex', flexShrink: 0 }}>
+            <LogoutButton variant={R.logoutVariant} size={30} title={null} />
+          </span>
+        </div>
       </div>
+
+      {tip && <HoverLabel tip={tip} />}
     </>
   );
 }
 
+const menuItemStyle: React.CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: 9,
+  padding: '9px 11px',
+  borderRadius: 8,
+  font: `600 13px ${FONT_BODY}`,
+  textDecoration: 'none',
+  transition: 'background 0.12s',
+};
+
 // The slide-over. Both trees use this; the dashboard only on narrow screens,
-// curriculum pages at every width.
+// curriculum pages at every width. Never collapsed: the collapse handle is a
+// desktop-rail affordance, and the slide-over already closes.
 export function StudentNavDrawer({
   open,
   name,
   role,
   subscriptionStatus,
+  mode,
   onClose,
+  onOpenSupport,
 }: {
   open: boolean;
   name: string;
   role: 'student' | 'teacher';
   subscriptionStatus?: 'active' | 'inactive';
+  mode?: 'light' | 'dark';
   onClose: () => void;
+  onOpenSupport?: () => void;
 }) {
+  return <DrawerBody open={open} name={name} role={role} subscriptionStatus={subscriptionStatus} mode={mode} onClose={onClose} onOpenSupport={onOpenSupport} />;
+}
+
+// Split out so the hook below is never called conditionally.
+function DrawerBody({
+  open,
+  name,
+  role,
+  subscriptionStatus,
+  mode,
+  onClose,
+  onOpenSupport,
+}: {
+  open: boolean;
+  name: string;
+  role: 'student' | 'teacher';
+  subscriptionStatus?: 'active' | 'inactive';
+  mode?: 'light' | 'dark';
+  onClose: () => void;
+  onOpenSupport?: () => void;
+}) {
+  const { theme } = useTheme();
+  const R: RailSurface = (mode ?? theme) === 'dark' ? RAIL_DARK : RAIL_LIGHT;
+
   if (!open) return null;
 
   return (
@@ -258,18 +488,20 @@ export function StudentNavDrawer({
         style={{
           width: 244,
           maxWidth: '82vw',
-          background: C.midnight,
+          background: R.bg,
           display: 'flex',
           flexDirection: 'column',
           height: '100dvh',
-          boxShadow: '4px 0 24px rgba(0,0,0,.3)',
+          boxShadow: '4px 0 24px rgba(14,14,17,.28)',
         }}
       >
         <StudentNavPanel
           name={name}
           role={role}
           subscriptionStatus={subscriptionStatus}
+          mode={mode}
           onNavigate={onClose}
+          onOpenSupport={onOpenSupport}
         />
       </aside>
     </div>
@@ -290,8 +522,8 @@ export function StudentNavTrigger({ onClick }: { onClick: () => void }) {
         flex: 'none',
         borderRadius: 10,
         border: 'none',
-        background: C.sand,
-        color: C.midnight,
+        background: V.subtleBg,
+        color: V.heading,
         cursor: 'pointer',
         display: 'flex',
         alignItems: 'center',

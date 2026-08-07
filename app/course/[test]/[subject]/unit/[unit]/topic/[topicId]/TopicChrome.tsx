@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { C, ink } from '@/app/components/curriculum-theme';
 import { FONT_BODY } from '@/app/components/fonts';
+import SupportModal from '@/app/components/SupportModal';
 import { StudentNavDrawer, StudentNavTrigger } from '@/app/components/StudentNav';
 
 // The course bar at the top of every topic page, with the nav menu in the
@@ -29,6 +30,7 @@ export default function TopicChrome({
   unit: string;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showSupport, setShowSupport] = useState(false);
 
   return (
     <>
@@ -72,7 +74,13 @@ export default function TopicChrome({
         name={name}
         role={role}
         onClose={() => setMenuOpen(false)}
+        onOpenSupport={() => setShowSupport(true)}
+        /* These pages are light-only by design, so the drawer stays light here
+           even for a student who has dark mode on elsewhere. */
+        mode="light"
       />
+
+      {showSupport && <SupportModal onClose={() => setShowSupport(false)} />}
     </>
   );
 }

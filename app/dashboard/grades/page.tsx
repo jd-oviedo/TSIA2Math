@@ -1,8 +1,9 @@
 import { getProfile } from '../../lib/auth';
 import { getTopics, getAttempts, getTestSessions } from '../data';
 import { Card, CardTitle, EmptyState, Muted, PageHeading, formatDate } from '../ui';
-import { C, ink } from '@/app/components/curriculum-theme';
+import { C } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
+import { V } from '@/app/components/dashboard-theme';
 
 // Grades. The student's own view of their own results, so raw scores are shown
 // here. The no-raw-scores rule belongs to the parent-facing digest, not this
@@ -85,8 +86,8 @@ export default async function GradesPage() {
             >
               <CardTitle>Practice tests</CardTitle>
               {best !== null && (
-                <span style={{ font: `400 13px ${FONT_BODY}`, color: ink(0.55) }}>
-                  Best score <strong style={{ color: C.midnight }}>{best}</strong>
+                <span style={{ font: `400 13px ${FONT_BODY}`, color: V.muted }}>
+                  Best score <strong style={{ color: V.heading }}>{best}</strong>
                 </span>
               )}
             </div>
@@ -111,9 +112,9 @@ export default async function GradesPage() {
                           style={{
                             textAlign: h === 'Score' ? 'right' : 'left',
                             padding: '8px 12px 8px 0',
-                            borderBottom: `1px solid ${ink(0.1)}`,
+                            borderBottom: `1px solid ${V.trackBg}`,
                             font: `600 12px ${FONT_BODY}`,
-                            color: ink(0.5),
+                            color: V.dim,
                             whiteSpace: 'nowrap',
                           }}
                         >
@@ -128,9 +129,9 @@ export default async function GradesPage() {
                         <td
                           style={{
                             padding: '11px 12px 11px 0',
-                            borderBottom: `1px solid ${ink(0.06)}`,
+                            borderBottom: `1px solid ${V.hairline}`,
                             font: `400 13.5px ${FONT_BODY}`,
-                            color: C.midnight,
+                            color: V.heading,
                             whiteSpace: 'nowrap',
                           }}
                         >
@@ -139,9 +140,9 @@ export default async function GradesPage() {
                         <td
                           style={{
                             padding: '11px 12px 11px 0',
-                            borderBottom: `1px solid ${ink(0.06)}`,
+                            borderBottom: `1px solid ${V.hairline}`,
                             font: `400 13.5px ${FONT_BODY}`,
-                            color: s.completed_at ? C.green : ink(0.5),
+                            color: s.completed_at ? C.green : V.dim,
                           }}
                         >
                           {s.completed_at ? 'Completed' : 'Not finished'}
@@ -149,10 +150,10 @@ export default async function GradesPage() {
                         <td
                           style={{
                             padding: '11px 0',
-                            borderBottom: `1px solid ${ink(0.06)}`,
+                            borderBottom: `1px solid ${V.hairline}`,
                             textAlign: 'right',
                             font: `600 14px ${FONT_HEADING}`,
-                            color: s.final_score === null ? ink(0.35) : C.midnight,
+                            color: s.final_score === null ? V.dim : V.heading,
                             whiteSpace: 'nowrap',
                           }}
                         >
@@ -191,9 +192,9 @@ export default async function GradesPage() {
                           style={{
                             textAlign: h === 'Correct' ? 'right' : 'left',
                             padding: '8px 12px 8px 0',
-                            borderBottom: `1px solid ${ink(0.1)}`,
+                            borderBottom: `1px solid ${V.trackBg}`,
                             font: `600 12px ${FONT_BODY}`,
-                            color: ink(0.5),
+                            color: V.dim,
                             whiteSpace: 'nowrap',
                           }}
                         >
@@ -208,9 +209,9 @@ export default async function GradesPage() {
                         <td
                           style={{
                             padding: '11px 12px 11px 0',
-                            borderBottom: `1px solid ${ink(0.06)}`,
+                            borderBottom: `1px solid ${V.hairline}`,
                             font: `400 13.5px ${FONT_BODY}`,
-                            color: C.midnight,
+                            color: V.heading,
                           }}
                         >
                           {row.topic}
@@ -218,9 +219,9 @@ export default async function GradesPage() {
                         <td
                           style={{
                             padding: '11px 12px 11px 0',
-                            borderBottom: `1px solid ${ink(0.06)}`,
+                            borderBottom: `1px solid ${V.hairline}`,
                             font: `400 13.5px ${FONT_BODY}`,
-                            color: ink(0.6),
+                            color: V.muted,
                             whiteSpace: 'nowrap',
                           }}
                         >
@@ -229,9 +230,9 @@ export default async function GradesPage() {
                         <td
                           style={{
                             padding: '11px 12px 11px 0',
-                            borderBottom: `1px solid ${ink(0.06)}`,
+                            borderBottom: `1px solid ${V.hairline}`,
                             font: `400 13.5px ${FONT_BODY}`,
-                            color: ink(0.6),
+                            color: V.muted,
                             whiteSpace: 'nowrap',
                           }}
                         >
@@ -240,10 +241,10 @@ export default async function GradesPage() {
                         <td
                           style={{
                             padding: '11px 0',
-                            borderBottom: `1px solid ${ink(0.06)}`,
+                            borderBottom: `1px solid ${V.hairline}`,
                             textAlign: 'right',
                             font: `600 14px ${FONT_HEADING}`,
-                            color: C.midnight,
+                            color: V.heading,
                             whiteSpace: 'nowrap',
                           }}
                         >
