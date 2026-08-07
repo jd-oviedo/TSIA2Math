@@ -591,6 +591,55 @@ Step 3: Write both.
   "A": "adds_instead_of_subtracts",
   "B": "drops_unlike_term",
   "D": "combines_unlike_terms"
+},
+"template": {
+  "variables": [
+    "p",
+    "q"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 4,
+      "max": 9
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 9
+    },
+    {
+      "name": "c",
+      "min": 2,
+      "max": 7
+    }
+  ],
+  "constraints": [],
+  "range_notes": "The cleanest of the fourteen: no constraint is needed anywhere. The two-variable answers can never meet the single-variable ones, and within each pair the coefficients differ by 2c or by b, neither of which is ever zero.",
+  "canonical_parameters": {
+    "a": 5,
+    "b": 4,
+    "c": 2
+  },
+  "correct_answer": "C",
+  "misconception_tag": {
+    "A": "adds_instead_of_subtracts",
+    "B": "drops_unlike_term",
+    "D": "combines_unlike_terms"
+  },
+  "stem_template": "Simplify the expression ${a}p + {b}q - {c}p$.",
+  "unsimplified_expression": "a*p + b*q - c*p",
+  "choice_formulas": {
+    "A": "(a + c)*p + b*q",
+    "B": "(a - c)*p",
+    "C": "(a - c)*p + b*q",
+    "D": "(a + b - c)*p"
+  },
+  "choice_derivations": {
+    "A": "(a*p + c*p) + b*q",
+    "B": "a*p - c*p",
+    "D": "(a + b - c)*p"
+  }
 }
 ```
 
