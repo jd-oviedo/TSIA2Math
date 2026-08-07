@@ -357,6 +357,43 @@ Step 3: Check. The variable does not square and does not vanish. It is still $m$
   "A": "multiplies_coefficients",
   "C": "multiplies_variables",
   "D": "drops_variable"
+},
+"template": {
+  "variables": ["m"],
+  "parameters": [
+    {"name": "a", "min": 2, "max": 9},
+    {"name": "b", "min": 2, "max": 9}
+  ],
+  "constraints": ["a*b != a + b"],
+  "constraint_notes": {
+    "a*b != a + b": "A multiplies the coefficients where the answer adds them. Over positive integers those agree only at (2,2), where A would silently become a second correct answer."
+  },
+  "exclude_parameter_sets": [
+    {"a": 3, "b": 5},
+    {"a": 5, "b": 3}
+  ],
+  "exclusion_notes": "(3,5) renders 3m + 5m, which is QR_B_090's 3x + 5x under a variable rename. (5,3) is the commutative twin: the structural check does not flag it because the string differs, but it is the same question to a student who has taken the diagnostic, and exposure control is about recognition. This one is a judgment, not a computed result.",
+  "range_notes": "Coefficients start at 2, not 1: at 1 the stem would read 1m + 4m and the multiply-instead-of-add error in A stops being visible. Capped at 9 so A's product stays inside a Basic student's mental range.",
+  "canonical_parameters": {"a": 9, "b": 4},
+  "correct_answer": "B",
+  "misconception_tag": {
+    "A": "multiplies_coefficients",
+    "C": "multiplies_variables",
+    "D": "drops_variable"
+  },
+  "stem_template": "Simplify the expression ${a}m + {b}m$.",
+  "unsimplified_expression": "a*m + b*m",
+  "choice_formulas": {
+    "A": "a*b*m",
+    "B": "(a + b)*m",
+    "C": "(a + b)*m**2",
+    "D": "a + b"
+  },
+  "choice_derivations": {
+    "A": "(a*b)*m",
+    "C": "(a + b)*(m*m)",
+    "D": "a + b"
+  }
 }
 ```
 
@@ -387,6 +424,53 @@ Step 3: Keep the variable.
   "A": "ignores_unit_coefficient",
   "B": "adds_instead_of_subtracts",
   "C": "drops_variable"
+},
+"template": {
+  "variables": [
+    "n"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 6,
+      "max": 15
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 7
+    }
+  ],
+  "constraints": [
+    "a - b - 1 >= 2"
+  ],
+  "constraint_notes": {
+    "a - b - 1 >= 2": "Keeps the answer off a bare n, which would render the same as the item's own third term and collide with its teaching point, and off zero, where C and D would coincide."
+  },
+  "range_notes": "Widened from 6..12 / 2..5 after checking the larger range stays collision-free. The arithmetic is a two-step subtraction either way, so nothing leaves the Basic tier. The thinnest pool of the fourteen at 50 sets, still above the ~30 Phase A accepted for QR_A_074.",
+  "canonical_parameters": {
+    "a": 8,
+    "b": 3
+  },
+  "correct_answer": "D",
+  "misconception_tag": {
+    "A": "ignores_unit_coefficient",
+    "B": "adds_instead_of_subtracts",
+    "C": "drops_variable"
+  },
+  "stem_template": "Simplify the expression ${a}n - {b}n - n$.",
+  "unsimplified_expression": "a*n - b*n - n",
+  "choice_formulas": {
+    "A": "(a - b)*n",
+    "B": "(a - b + 1)*n",
+    "C": "a - b - 1",
+    "D": "(a - b - 1)*n"
+  },
+  "choice_derivations": {
+    "A": "(a*n - b*n) - 0*n",
+    "B": "(a*n - b*n) + n",
+    "C": "a - b - 1"
+  }
 }
 ```
 
@@ -417,6 +501,65 @@ Step 3: Write the result. The two groups cannot merge, so both stay.
   "B": "adds_instead_of_subtracts",
   "C": "combines_unlike_terms",
   "D": "drops_unlike_term"
+},
+"template": {
+  "variables": [
+    "a"
+  ],
+  "parameters": [
+    {
+      "name": "b",
+      "min": 2,
+      "max": 9
+    },
+    {
+      "name": "c",
+      "min": 3,
+      "max": 12
+    },
+    {
+      "name": "d",
+      "min": 2,
+      "max": 9
+    },
+    {
+      "name": "e",
+      "min": 2,
+      "max": 9
+    }
+  ],
+  "constraints": [
+    "c != e"
+  ],
+  "constraint_notes": {
+    "c != e": "At c == e the combined constant vanishes, so A becomes D and C's coefficient collapses onto D's as well. 1344 colliding sets across three pairs, every one of them this single cause."
+  },
+  "range_notes": "Parameters start at b because the item already uses a as its variable.",
+  "canonical_parameters": {
+    "b": 6,
+    "c": 7,
+    "d": 2,
+    "e": 3
+  },
+  "correct_answer": "A",
+  "misconception_tag": {
+    "B": "adds_instead_of_subtracts",
+    "C": "combines_unlike_terms",
+    "D": "drops_unlike_term"
+  },
+  "stem_template": "Simplify the expression ${b}a + {c} + {d}a - {e}$.",
+  "unsimplified_expression": "b*a + c + d*a - e",
+  "choice_formulas": {
+    "A": "(b + d)*a + (c - e)",
+    "B": "(b + d)*a + (c + e)",
+    "C": "(b + c + d - e)*a",
+    "D": "(b + d)*a"
+  },
+  "choice_derivations": {
+    "B": "(b*a + d*a) + (c + e)",
+    "C": "(b + c + d - e)*a",
+    "D": "b*a + d*a"
+  }
 }
 ```
 
@@ -448,6 +591,55 @@ Step 3: Write both.
   "A": "adds_instead_of_subtracts",
   "B": "drops_unlike_term",
   "D": "combines_unlike_terms"
+},
+"template": {
+  "variables": [
+    "p",
+    "q"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 4,
+      "max": 9
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 9
+    },
+    {
+      "name": "c",
+      "min": 2,
+      "max": 7
+    }
+  ],
+  "constraints": [],
+  "range_notes": "The cleanest of the fourteen: no constraint is needed anywhere. The two-variable answers can never meet the single-variable ones, and within each pair the coefficients differ by 2c or by b, neither of which is ever zero.",
+  "canonical_parameters": {
+    "a": 5,
+    "b": 4,
+    "c": 2
+  },
+  "correct_answer": "C",
+  "misconception_tag": {
+    "A": "adds_instead_of_subtracts",
+    "B": "drops_unlike_term",
+    "D": "combines_unlike_terms"
+  },
+  "stem_template": "Simplify the expression ${a}p + {b}q - {c}p$.",
+  "unsimplified_expression": "a*p + b*q - c*p",
+  "choice_formulas": {
+    "A": "(a + c)*p + b*q",
+    "B": "(a - c)*p",
+    "C": "(a - c)*p + b*q",
+    "D": "(a + b - c)*p"
+  },
+  "choice_derivations": {
+    "A": "(a*p + c*p) + b*q",
+    "B": "a*p - c*p",
+    "D": "(a + b - c)*p"
+  }
 }
 ```
 
@@ -483,6 +675,65 @@ Step 4: Check with $n = 1$. Original: $3(7) - 4 = 17$. Answer: $2 + 15 = 17$. Ma
   "A": "adds_instead_of_subtracts",
   "C": "combines_unlike_terms",
   "D": "partial_distribution"
+},
+"template": {
+  "variables": [
+    "n"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 2,
+      "max": 5
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 4
+    },
+    {
+      "name": "c",
+      "min": 3,
+      "max": 9
+    },
+    {
+      "name": "d",
+      "min": 2,
+      "max": 9
+    }
+  ],
+  "constraints": [
+    "a*b - d >= 2"
+  ],
+  "constraint_notes": {
+    "a*b - d >= 2": "Keeps the answer's coefficient positive and off a bare n, which is what the Proficient tier expects."
+  },
+  "range_notes": "a starts at 2 so that D, which differs from the answer only in the constant (c against a*c), stays a wrong answer.",
+  "canonical_parameters": {
+    "a": 3,
+    "b": 2,
+    "c": 5,
+    "d": 4
+  },
+  "correct_answer": "B",
+  "misconception_tag": {
+    "A": "adds_instead_of_subtracts",
+    "C": "combines_unlike_terms",
+    "D": "partial_distribution"
+  },
+  "stem_template": "Simplify the expression ${a}({b}n + {c}) - {d}n$.",
+  "unsimplified_expression": "a*(b*n + c) - d*n",
+  "choice_formulas": {
+    "A": "(a*b + d)*n + a*c",
+    "B": "(a*b - d)*n + a*c",
+    "C": "a*b*n + (a*c - d)",
+    "D": "(a*b - d)*n + c"
+  },
+  "choice_derivations": {
+    "A": "(a*b*n + a*c) + d*n",
+    "C": "(a*b*n + a*c) - d",
+    "D": "(a*b*n + c) - d*n"
+  }
 }
 ```
 
@@ -513,6 +764,69 @@ Step 3: Write the result.
   "B": "adds_instead_of_subtracts",
   "C": "drops_negative_sign",
   "D": "combines_unlike_terms"
+},
+"template": {
+  "variables": [
+    "y"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 5,
+      "max": 12
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 9
+    },
+    {
+      "name": "c",
+      "min": 2,
+      "max": 9
+    },
+    {
+      "name": "d",
+      "min": 3,
+      "max": 12
+    }
+  ],
+  "constraints": [
+    "b != d",
+    "a - c >= 2",
+    "d - b >= 1"
+  ],
+  "constraint_notes": {
+    "b != d": "At b == d the combined constant vanishes, A's constant goes to zero and D's coefficient reduces to A's. 448 sets, all that one cause.",
+    "a - c >= 2": "Tier rule: keeps the answer off a bare y.",
+    "d - b >= 1": "Tier rule: keeps the combined constant positive, matching the authored item. It happens to subsume b != d, which is kept separately anyway -- the collision fix must survive the tier rule being relaxed."
+  },
+  "range_notes": "The two tier rules cut the pool by more than half. That is the cost of keeping every roll inside its own tier.",
+  "canonical_parameters": {
+    "a": 8,
+    "b": 5,
+    "c": 3,
+    "d": 9
+  },
+  "correct_answer": "A",
+  "misconception_tag": {
+    "B": "adds_instead_of_subtracts",
+    "C": "drops_negative_sign",
+    "D": "combines_unlike_terms"
+  },
+  "stem_template": "Simplify the expression ${a}y - {b} - {c}y + {d}$.",
+  "unsimplified_expression": "a*y - b - c*y + d",
+  "choice_formulas": {
+    "A": "(a - c)*y + (d - b)",
+    "B": "(a + c)*y + (d - b)",
+    "C": "(a - c)*y + (b + d)",
+    "D": "(a - b - c + d)*y"
+  },
+  "choice_derivations": {
+    "B": "(a*y + c*y) + (d - b)",
+    "C": "(a*y - c*y) + (b + d)",
+    "D": "(a - b - c + d)*y"
+  }
 }
 ```
 
@@ -548,6 +862,68 @@ Step 5: Check with $g = 1$. Plan costs $42$, promotion takes off $13$, final cos
   "A": "adds_instead_of_subtracts",
   "B": "combines_unlike_terms",
   "D": "drops_negative_on_group"
+},
+"template": {
+  "variables": [
+    "g"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 8,
+      "max": 15
+    },
+    {
+      "name": "b",
+      "min": 20,
+      "max": 40,
+      "step": 5
+    },
+    {
+      "name": "c",
+      "min": 2,
+      "max": 9
+    },
+    {
+      "name": "d",
+      "min": 4,
+      "max": 12
+    }
+  ],
+  "constraints": [
+    "a - c >= 3",
+    "b - d >= 10"
+  ],
+  "constraint_notes": {
+    "a - c >= 3": "Realism, not mathematics: keeps the final per-gigabyte rate meaningfully positive.",
+    "b - d >= 10": "Keeps the promotion smaller than the base fee, so the stem still describes something a phone company would do."
+  },
+  "range_notes": "b rolls in steps of 5 so the base fee never lands on $37. The pool's clearest carrier of the mandatory sign-error coverage: D differs from C by the sign on d alone, structurally, so the error is on the page at every roll rather than only where it happened to land.",
+  "canonical_parameters": {
+    "a": 12,
+    "b": 30,
+    "c": 5,
+    "d": 8
+  },
+  "correct_answer": "C",
+  "misconception_tag": {
+    "A": "adds_instead_of_subtracts",
+    "B": "combines_unlike_terms",
+    "D": "drops_negative_on_group"
+  },
+  "stem_template": "A phone plan costs ${a}g + {b}$ dollars, where $g$ is the number of gigabytes used. A promotion subtracts ${c}g + {d}$ dollars from that price. Which expression represents the final cost in simplified form?",
+  "unsimplified_expression": "(a*g + b) - (c*g + d)",
+  "choice_formulas": {
+    "A": "(a + c)*g + (b + d)",
+    "B": "(a + b - c - d)*g",
+    "C": "(a - c)*g + (b - d)",
+    "D": "(a - c)*g + (b + d)"
+  },
+  "choice_derivations": {
+    "A": "(a*g + b) + (c*g + d)",
+    "B": "(a + b - c - d)*g",
+    "D": "(a*g + b) - c*g + d"
+  }
 }
 ```
 
@@ -587,6 +963,73 @@ Step 6: Check with $a = 1$. Original: $5(-1) - 4(-1) = -5 + 4 = -1$. Answer: $6 
   "A": "adds_instead_of_subtracts",
   "B": "drops_negative_on_group",
   "C": "partial_distribution"
+},
+"template": {
+  "variables": [
+    "a"
+  ],
+  "parameters": [
+    {
+      "name": "b",
+      "min": 3,
+      "max": 7
+    },
+    {
+      "name": "c",
+      "min": 2,
+      "max": 4
+    },
+    {
+      "name": "d",
+      "min": 2,
+      "max": 7
+    },
+    {
+      "name": "e",
+      "min": 2,
+      "max": 6
+    },
+    {
+      "name": "g",
+      "min": 2,
+      "max": 5
+    }
+  ],
+  "constraints": [
+    "d*(b - 1) != g*(e + 1)",
+    "b*c - e >= 2"
+  ],
+  "constraint_notes": {
+    "d*(b - 1) != g*(e + 1)": "The pool's only two-sided relation. C and D share a coefficient and differ only in the constant -- C's is -d - g, D's is e*g - b*d -- and setting those equal rearranges to this. 117 sets hit it, e.g. b=3, c=2, d=5, e=4, g=2. Not a single bad value, which is why it has to be written as a relation.",
+    "b*c - e >= 2": "Tier rule: keeps the answer's coefficient positive and off a bare a."
+  },
+  "range_notes": "Parameters start at b because the item already uses a as its variable.",
+  "canonical_parameters": {
+    "b": 5,
+    "c": 2,
+    "d": 3,
+    "e": 4,
+    "g": 2
+  },
+  "correct_answer": "D",
+  "misconception_tag": {
+    "A": "adds_instead_of_subtracts",
+    "B": "drops_negative_on_group",
+    "C": "partial_distribution"
+  },
+  "stem_template": "Simplify the expression ${b}({c}a - {d}) - {e}(a - {g})$.",
+  "unsimplified_expression": "b*(c*a - d) - e*(a - g)",
+  "choice_formulas": {
+    "A": "(b*c + e)*a + (e*g - b*d)",
+    "B": "(b*c - e)*a + (-b*d - e*g)",
+    "C": "(b*c - e)*a + (-d - g)",
+    "D": "(b*c - e)*a + (e*g - b*d)"
+  },
+  "choice_derivations": {
+    "A": "(b*c*a + e*a) - b*d + e*g",
+    "B": "(b*c*a - b*d) - e*a - e*g",
+    "C": "(b*c*a - d) - e*a - g"
+  }
 }
 ```
 
@@ -622,6 +1065,67 @@ Step 5: Check with $k = 1$. Original: $9 - (3 - 8) + 2 = 9 + 5 + 2 = 16$. Answer
   "A": "adds_instead_of_subtracts",
   "C": "drops_negative_on_group",
   "D": "stops_before_simplifying"
+},
+"template": {
+  "variables": [
+    "k"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 6,
+      "max": 13
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 7
+    },
+    {
+      "name": "c",
+      "min": 3,
+      "max": 11
+    },
+    {
+      "name": "d",
+      "min": 2,
+      "max": 9
+    }
+  ],
+  "constraints": [
+    "d != 2*c",
+    "a - b >= 3"
+  ],
+  "constraint_notes": {
+    "d != 2*c": "C's constant is d - c and D's is c, so the two meet at d == 2*c. 96 sets.",
+    "a - b >= 3": "Tier rule."
+  },
+  "range_notes": "D needs no constraint of its own: it differs from the answer by exactly d, and d is never zero in range.",
+  "canonical_parameters": {
+    "a": 9,
+    "b": 3,
+    "c": 8,
+    "d": 2
+  },
+  "correct_answer": "B",
+  "misconception_tag": {
+    "A": "adds_instead_of_subtracts",
+    "C": "drops_negative_on_group",
+    "D": "stops_before_simplifying"
+  },
+  "stem_template": "Which expression is equivalent to ${a}k - ({b}k - {c}) + {d}$?",
+  "unsimplified_expression": "a*k - (b*k - c) + d",
+  "choice_formulas": {
+    "A": "(a + b)*k + (c + d)",
+    "B": "(a - b)*k + (c + d)",
+    "C": "(a - b)*k + (d - c)",
+    "D": "(a - b)*k + c"
+  },
+  "choice_derivations": {
+    "A": "(a*k + b*k) + c + d",
+    "C": "(a*k - b*k) - c + d",
+    "D": "(a*k - b*k) + c"
+  }
 }
 ```
 
@@ -657,6 +1161,71 @@ Step 5: Check with $x = 1$. Original: $-2(-1) + 5 - 7 = 2 - 2 = 0$. Answer: $-1 
   "A": "drops_negative_sign",
   "B": "drops_negative_on_group",
   "D": "partial_distribution"
+},
+"template": {
+  "variables": [
+    "x"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 2,
+      "max": 4
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 5
+    },
+    {
+      "name": "c",
+      "min": 2,
+      "max": 7
+    },
+    {
+      "name": "d",
+      "min": 3,
+      "max": 9
+    },
+    {
+      "name": "e",
+      "min": 3,
+      "max": 11
+    }
+  ],
+  "constraints": [
+    "d != a*b"
+  ],
+  "constraint_notes": {
+    "d != a*b": "Keeps the x terms from cancelling entirely. A roll where they cancel is a legitimate problem but a different one, closer to QR_A_072's territory, and the authored item's answer has an x term."
+  },
+  "range_notes": "The leading negative factor is the item's whole difficulty and it is structural, so it survives every roll. The three distractors stay distinct because they differ in different places: A in the coefficient, B and D in the constant by a*c + c, which is never zero.",
+  "canonical_parameters": {
+    "a": 2,
+    "b": 3,
+    "c": 4,
+    "d": 5,
+    "e": 7
+  },
+  "correct_answer": "C",
+  "misconception_tag": {
+    "A": "drops_negative_sign",
+    "B": "drops_negative_on_group",
+    "D": "partial_distribution"
+  },
+  "stem_template": "Simplify the expression $-{a}({b}x - {c}) + {d}x - {e}$.",
+  "unsimplified_expression": "-a*(b*x - c) + d*x - e",
+  "choice_formulas": {
+    "A": "(a*b + d)*x + (a*c - e)",
+    "B": "(d - a*b)*x + (-a*c - e)",
+    "C": "(d - a*b)*x + (a*c - e)",
+    "D": "(d - a*b)*x + (-c - e)"
+  },
+  "choice_derivations": {
+    "A": "(a*b*x + d*x) + a*c - e",
+    "B": "(-a*b*x - a*c) + d*x - e",
+    "D": "(-a*b*x - c) + d*x - e"
+  }
 }
 ```
 
@@ -687,6 +1256,48 @@ Step 3: The $9$ has no like partner, so it stays.
   "B": "adds_instead_of_subtracts",
   "C": "combines_unlike_terms",
   "D": "drops_unlike_term"
+},
+"template": {
+  "variables": [
+    "c"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 3,
+      "max": 11
+    },
+    {
+      "name": "b",
+      "min": 3,
+      "max": 20
+    }
+  ],
+  "constraints": [],
+  "range_notes": "b widened from 3..12 after confirming the wider range stays collision-free: b is a standing constant that never enters the arithmetic, so widening it adds variety at no tier cost. The bare trailing c stays literal, as in practice 2.",
+  "canonical_parameters": {
+    "a": 6,
+    "b": 9
+  },
+  "correct_answer": "A",
+  "misconception_tag": {
+    "B": "adds_instead_of_subtracts",
+    "C": "combines_unlike_terms",
+    "D": "drops_unlike_term"
+  },
+  "stem_template": "Simplify the expression ${a}c + {b} - c$.",
+  "unsimplified_expression": "a*c + b - c",
+  "choice_formulas": {
+    "A": "(a - 1)*c + b",
+    "B": "(a + 1)*c + b",
+    "C": "a*c + (b - 1)",
+    "D": "(a - 1)*c"
+  },
+  "choice_derivations": {
+    "B": "(a*c + c) + b",
+    "C": "a*c + (b - 1)",
+    "D": "a*c - c"
+  }
 }
 ```
 
@@ -717,6 +1328,66 @@ Step 3: Write both. A negative coefficient is a legitimate answer, not a sign th
   "A": "adds_instead_of_subtracts",
   "C": "drops_negative_sign",
   "D": "combines_unlike_terms"
+},
+"template": {
+  "variables": [
+    "d",
+    "e"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 2,
+      "max": 7
+    },
+    {
+      "name": "b",
+      "min": 3,
+      "max": 11
+    },
+    {
+      "name": "c",
+      "min": 3,
+      "max": 9
+    },
+    {
+      "name": "g",
+      "min": 2,
+      "max": 7
+    }
+  ],
+  "constraints": [
+    "a < c"
+  ],
+  "constraint_notes": {
+    "a < c": "The item's teaching point rather than a collision fix. The whole point is that a negative coefficient is a legitimate answer; at a > c the correct answer turns positive and C stops being a wrong answer at all. Strictly stronger than a != c, and removes B and C's collision at 270 sets as a side effect."
+  },
+  "range_notes": "Parameters skip d and e because the item already uses both as variables.",
+  "canonical_parameters": {
+    "a": 3,
+    "b": 8,
+    "c": 5,
+    "g": 2
+  },
+  "correct_answer": "B",
+  "misconception_tag": {
+    "A": "adds_instead_of_subtracts",
+    "C": "drops_negative_sign",
+    "D": "combines_unlike_terms"
+  },
+  "stem_template": "Simplify the expression ${a}d + {b}e - {c}d + {g}e$.",
+  "unsimplified_expression": "a*d + b*e - c*d + g*e",
+  "choice_formulas": {
+    "A": "(a + c)*d + (b + g)*e",
+    "B": "(a - c)*d + (b + g)*e",
+    "C": "(c - a)*d + (b + g)*e",
+    "D": "(a + b - c + g)*d*e"
+  },
+  "choice_derivations": {
+    "A": "(a*d + c*d) + (b*e + g*e)",
+    "C": "(c - a)*d + (b*e + g*e)",
+    "D": "(a + b - c + g)*(d*e)"
+  }
 }
 ```
 
@@ -747,6 +1418,65 @@ Step 3: The $-8$ has no like partner, so it stays.
   "A": "adds_instead_of_subtracts",
   "B": "partial_distribution",
   "D": "combines_unlike_terms"
+},
+"template": {
+  "variables": [
+    "w"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 2,
+      "max": 6
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 5
+    },
+    {
+      "name": "c",
+      "min": 2,
+      "max": 8
+    },
+    {
+      "name": "d",
+      "min": 2,
+      "max": 9
+    }
+  ],
+  "constraints": [
+    "a*b - d >= 2"
+  ],
+  "constraint_notes": {
+    "a*b - d >= 2": "Tier rule."
+  },
+  "range_notes": "B differs from C by a*c - c, which is non-zero for every a >= 2 in range, so the partial-distribution distractor never collapses onto the answer.",
+  "canonical_parameters": {
+    "a": 4,
+    "b": 3,
+    "c": 2,
+    "d": 5
+  },
+  "correct_answer": "C",
+  "misconception_tag": {
+    "A": "adds_instead_of_subtracts",
+    "B": "partial_distribution",
+    "D": "combines_unlike_terms"
+  },
+  "stem_template": "Simplify the expression ${a}({b}w - {c}) - {d}w$.",
+  "unsimplified_expression": "a*(b*w - c) - d*w",
+  "choice_formulas": {
+    "A": "(a*b + d)*w - a*c",
+    "B": "(a*b - d)*w - c",
+    "C": "(a*b - d)*w - a*c",
+    "D": "a*b*w + (-a*c - d)"
+  },
+  "choice_derivations": {
+    "A": "(a*b*w - a*c) + d*w",
+    "B": "(a*b*w - c) - d*w",
+    "D": "(a*b*w - a*c) - d"
+  }
 }
 ```
 
@@ -782,5 +1512,72 @@ Step 5: Check with $t = 1$. Original: $10 - 2(-2) - 9 = 10 + 4 - 9 = 5$. Answer:
   "A": "drops_negative_on_group",
   "B": "adds_instead_of_subtracts",
   "C": "stops_before_simplifying"
+},
+"template": {
+  "variables": [
+    "t"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 6,
+      "max": 14
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 4
+    },
+    {
+      "name": "c",
+      "min": 2,
+      "max": 4
+    },
+    {
+      "name": "d",
+      "min": 3,
+      "max": 9
+    },
+    {
+      "name": "e",
+      "min": 3,
+      "max": 12
+    }
+  ],
+  "constraints": [
+    "a != b*c",
+    "b*d != e"
+  ],
+  "constraint_notes": {
+    "a != b*c": "Keeps the t terms from cancelling, same reasoning as practice 10.",
+    "b*d != e": "Keeps C distinct from D, since C is D without the trailing - e."
+  },
+  "range_notes": "The largest pool of the fourteen at 5007 sets.",
+  "canonical_parameters": {
+    "a": 10,
+    "b": 2,
+    "c": 4,
+    "d": 6,
+    "e": 9
+  },
+  "correct_answer": "D",
+  "misconception_tag": {
+    "A": "drops_negative_on_group",
+    "B": "adds_instead_of_subtracts",
+    "C": "stops_before_simplifying"
+  },
+  "stem_template": "Which expression is equivalent to ${a}t - {b}({c}t - {d}) - {e}$?",
+  "unsimplified_expression": "a*t - b*(c*t - d) - e",
+  "choice_formulas": {
+    "A": "(a - b*c)*t + (-b*d - e)",
+    "B": "(a + b*c)*t + (b*d - e)",
+    "C": "(a - b*c)*t + b*d",
+    "D": "(a - b*c)*t + (b*d - e)"
+  },
+  "choice_derivations": {
+    "A": "(a*t - b*c*t - b*d) - e",
+    "B": "(a*t + b*c*t + b*d) - e",
+    "C": "(a*t - b*c*t) + b*d"
+  }
 }
 ```
