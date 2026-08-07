@@ -963,6 +963,73 @@ Step 6: Check with $a = 1$. Original: $5(-1) - 4(-1) = -5 + 4 = -1$. Answer: $6 
   "A": "adds_instead_of_subtracts",
   "B": "drops_negative_on_group",
   "C": "partial_distribution"
+},
+"template": {
+  "variables": [
+    "a"
+  ],
+  "parameters": [
+    {
+      "name": "b",
+      "min": 3,
+      "max": 7
+    },
+    {
+      "name": "c",
+      "min": 2,
+      "max": 4
+    },
+    {
+      "name": "d",
+      "min": 2,
+      "max": 7
+    },
+    {
+      "name": "e",
+      "min": 2,
+      "max": 6
+    },
+    {
+      "name": "g",
+      "min": 2,
+      "max": 5
+    }
+  ],
+  "constraints": [
+    "d*(b - 1) != g*(e + 1)",
+    "b*c - e >= 2"
+  ],
+  "constraint_notes": {
+    "d*(b - 1) != g*(e + 1)": "The pool's only two-sided relation. C and D share a coefficient and differ only in the constant -- C's is -d - g, D's is e*g - b*d -- and setting those equal rearranges to this. 117 sets hit it, e.g. b=3, c=2, d=5, e=4, g=2. Not a single bad value, which is why it has to be written as a relation.",
+    "b*c - e >= 2": "Tier rule: keeps the answer's coefficient positive and off a bare a."
+  },
+  "range_notes": "Parameters start at b because the item already uses a as its variable.",
+  "canonical_parameters": {
+    "b": 5,
+    "c": 2,
+    "d": 3,
+    "e": 4,
+    "g": 2
+  },
+  "correct_answer": "D",
+  "misconception_tag": {
+    "A": "adds_instead_of_subtracts",
+    "B": "drops_negative_on_group",
+    "C": "partial_distribution"
+  },
+  "stem_template": "Simplify the expression ${b}({c}a - {d}) - {e}(a - {g})$.",
+  "unsimplified_expression": "b*(c*a - d) - e*(a - g)",
+  "choice_formulas": {
+    "A": "(b*c + e)*a + (e*g - b*d)",
+    "B": "(b*c - e)*a + (-b*d - e*g)",
+    "C": "(b*c - e)*a + (-d - g)",
+    "D": "(b*c - e)*a + (e*g - b*d)"
+  },
+  "choice_derivations": {
+    "A": "(b*c*a + e*a) - b*d + e*g",
+    "B": "(b*c*a - b*d) - e*a - e*g",
+    "C": "(b*c*a - d) - e*a - g"
+  }
 }
 ```
 
