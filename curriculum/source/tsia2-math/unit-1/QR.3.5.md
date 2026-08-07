@@ -501,6 +501,65 @@ Step 3: Write the result. The two groups cannot merge, so both stay.
   "B": "adds_instead_of_subtracts",
   "C": "combines_unlike_terms",
   "D": "drops_unlike_term"
+},
+"template": {
+  "variables": [
+    "a"
+  ],
+  "parameters": [
+    {
+      "name": "b",
+      "min": 2,
+      "max": 9
+    },
+    {
+      "name": "c",
+      "min": 3,
+      "max": 12
+    },
+    {
+      "name": "d",
+      "min": 2,
+      "max": 9
+    },
+    {
+      "name": "e",
+      "min": 2,
+      "max": 9
+    }
+  ],
+  "constraints": [
+    "c != e"
+  ],
+  "constraint_notes": {
+    "c != e": "At c == e the combined constant vanishes, so A becomes D and C's coefficient collapses onto D's as well. 1344 colliding sets across three pairs, every one of them this single cause."
+  },
+  "range_notes": "Parameters start at b because the item already uses a as its variable.",
+  "canonical_parameters": {
+    "b": 6,
+    "c": 7,
+    "d": 2,
+    "e": 3
+  },
+  "correct_answer": "A",
+  "misconception_tag": {
+    "B": "adds_instead_of_subtracts",
+    "C": "combines_unlike_terms",
+    "D": "drops_unlike_term"
+  },
+  "stem_template": "Simplify the expression ${b}a + {c} + {d}a - {e}$.",
+  "unsimplified_expression": "b*a + c + d*a - e",
+  "choice_formulas": {
+    "A": "(b + d)*a + (c - e)",
+    "B": "(b + d)*a + (c + e)",
+    "C": "(b + c + d - e)*a",
+    "D": "(b + d)*a"
+  },
+  "choice_derivations": {
+    "B": "(b*a + d*a) + (c + e)",
+    "C": "(b + c + d - e)*a",
+    "D": "b*a + d*a"
+  }
 }
 ```
 
