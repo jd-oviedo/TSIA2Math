@@ -675,6 +675,65 @@ Step 4: Check with $n = 1$. Original: $3(7) - 4 = 17$. Answer: $2 + 15 = 17$. Ma
   "A": "adds_instead_of_subtracts",
   "C": "combines_unlike_terms",
   "D": "partial_distribution"
+},
+"template": {
+  "variables": [
+    "n"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 2,
+      "max": 5
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 4
+    },
+    {
+      "name": "c",
+      "min": 3,
+      "max": 9
+    },
+    {
+      "name": "d",
+      "min": 2,
+      "max": 9
+    }
+  ],
+  "constraints": [
+    "a*b - d >= 2"
+  ],
+  "constraint_notes": {
+    "a*b - d >= 2": "Keeps the answer's coefficient positive and off a bare n, which is what the Proficient tier expects."
+  },
+  "range_notes": "a starts at 2 so that D, which differs from the answer only in the constant (c against a*c), stays a wrong answer.",
+  "canonical_parameters": {
+    "a": 3,
+    "b": 2,
+    "c": 5,
+    "d": 4
+  },
+  "correct_answer": "B",
+  "misconception_tag": {
+    "A": "adds_instead_of_subtracts",
+    "C": "combines_unlike_terms",
+    "D": "partial_distribution"
+  },
+  "stem_template": "Simplify the expression ${a}({b}n + {c}) - {d}n$.",
+  "unsimplified_expression": "a*(b*n + c) - d*n",
+  "choice_formulas": {
+    "A": "(a*b + d)*n + a*c",
+    "B": "(a*b - d)*n + a*c",
+    "C": "a*b*n + (a*c - d)",
+    "D": "(a*b - d)*n + c"
+  },
+  "choice_derivations": {
+    "A": "(a*b*n + a*c) + d*n",
+    "C": "(a*b*n + a*c) - d",
+    "D": "(a*b*n + c) - d*n"
+  }
 }
 ```
 
