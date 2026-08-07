@@ -1512,5 +1512,72 @@ Step 5: Check with $t = 1$. Original: $10 - 2(-2) - 9 = 10 + 4 - 9 = 5$. Answer:
   "A": "drops_negative_on_group",
   "B": "adds_instead_of_subtracts",
   "C": "stops_before_simplifying"
+},
+"template": {
+  "variables": [
+    "t"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 6,
+      "max": 14
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 4
+    },
+    {
+      "name": "c",
+      "min": 2,
+      "max": 4
+    },
+    {
+      "name": "d",
+      "min": 3,
+      "max": 9
+    },
+    {
+      "name": "e",
+      "min": 3,
+      "max": 12
+    }
+  ],
+  "constraints": [
+    "a != b*c",
+    "b*d != e"
+  ],
+  "constraint_notes": {
+    "a != b*c": "Keeps the t terms from cancelling, same reasoning as practice 10.",
+    "b*d != e": "Keeps C distinct from D, since C is D without the trailing - e."
+  },
+  "range_notes": "The largest pool of the fourteen at 5007 sets.",
+  "canonical_parameters": {
+    "a": 10,
+    "b": 2,
+    "c": 4,
+    "d": 6,
+    "e": 9
+  },
+  "correct_answer": "D",
+  "misconception_tag": {
+    "A": "drops_negative_on_group",
+    "B": "adds_instead_of_subtracts",
+    "C": "stops_before_simplifying"
+  },
+  "stem_template": "Which expression is equivalent to ${a}t - {b}({c}t - {d}) - {e}$?",
+  "unsimplified_expression": "a*t - b*(c*t - d) - e",
+  "choice_formulas": {
+    "A": "(a - b*c)*t + (-b*d - e)",
+    "B": "(a + b*c)*t + (b*d - e)",
+    "C": "(a - b*c)*t + b*d",
+    "D": "(a - b*c)*t + (b*d - e)"
+  },
+  "choice_derivations": {
+    "A": "(a*t - b*c*t - b*d) - e",
+    "B": "(a*t + b*c*t + b*d) - e",
+    "C": "(a*t - b*c*t) + b*d"
+  }
 }
 ```
