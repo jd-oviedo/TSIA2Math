@@ -357,6 +357,43 @@ Step 3: Check. The variable does not square and does not vanish. It is still $m$
   "A": "multiplies_coefficients",
   "C": "multiplies_variables",
   "D": "drops_variable"
+},
+"template": {
+  "variables": ["m"],
+  "parameters": [
+    {"name": "a", "min": 2, "max": 9},
+    {"name": "b", "min": 2, "max": 9}
+  ],
+  "constraints": ["a*b != a + b"],
+  "constraint_notes": {
+    "a*b != a + b": "A multiplies the coefficients where the answer adds them. Over positive integers those agree only at (2,2), where A would silently become a second correct answer."
+  },
+  "exclude_parameter_sets": [
+    {"a": 3, "b": 5},
+    {"a": 5, "b": 3}
+  ],
+  "exclusion_notes": "(3,5) renders 3m + 5m, which is QR_B_090's 3x + 5x under a variable rename. (5,3) is the commutative twin: the structural check does not flag it because the string differs, but it is the same question to a student who has taken the diagnostic, and exposure control is about recognition. This one is a judgment, not a computed result.",
+  "range_notes": "Coefficients start at 2, not 1: at 1 the stem would read 1m + 4m and the multiply-instead-of-add error in A stops being visible. Capped at 9 so A's product stays inside a Basic student's mental range.",
+  "canonical_parameters": {"a": 9, "b": 4},
+  "correct_answer": "B",
+  "misconception_tag": {
+    "A": "multiplies_coefficients",
+    "C": "multiplies_variables",
+    "D": "drops_variable"
+  },
+  "stem_template": "Simplify the expression ${a}m + {b}m$.",
+  "unsimplified_expression": "a*m + b*m",
+  "choice_formulas": {
+    "A": "a*b*m",
+    "B": "(a + b)*m",
+    "C": "(a + b)*m**2",
+    "D": "a + b"
+  },
+  "choice_derivations": {
+    "A": "(a*b)*m",
+    "C": "(a + b)*(m*m)",
+    "D": "a + b"
+  }
 }
 ```
 
