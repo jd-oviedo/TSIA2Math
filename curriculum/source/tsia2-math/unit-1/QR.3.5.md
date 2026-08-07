@@ -764,6 +764,69 @@ Step 3: Write the result.
   "B": "adds_instead_of_subtracts",
   "C": "drops_negative_sign",
   "D": "combines_unlike_terms"
+},
+"template": {
+  "variables": [
+    "y"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 5,
+      "max": 12
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 9
+    },
+    {
+      "name": "c",
+      "min": 2,
+      "max": 9
+    },
+    {
+      "name": "d",
+      "min": 3,
+      "max": 12
+    }
+  ],
+  "constraints": [
+    "b != d",
+    "a - c >= 2",
+    "d - b >= 1"
+  ],
+  "constraint_notes": {
+    "b != d": "At b == d the combined constant vanishes, A's constant goes to zero and D's coefficient reduces to A's. 448 sets, all that one cause.",
+    "a - c >= 2": "Tier rule: keeps the answer off a bare y.",
+    "d - b >= 1": "Tier rule: keeps the combined constant positive, matching the authored item. It happens to subsume b != d, which is kept separately anyway -- the collision fix must survive the tier rule being relaxed."
+  },
+  "range_notes": "The two tier rules cut the pool by more than half. That is the cost of keeping every roll inside its own tier.",
+  "canonical_parameters": {
+    "a": 8,
+    "b": 5,
+    "c": 3,
+    "d": 9
+  },
+  "correct_answer": "A",
+  "misconception_tag": {
+    "B": "adds_instead_of_subtracts",
+    "C": "drops_negative_sign",
+    "D": "combines_unlike_terms"
+  },
+  "stem_template": "Simplify the expression ${a}y - {b} - {c}y + {d}$.",
+  "unsimplified_expression": "a*y - b - c*y + d",
+  "choice_formulas": {
+    "A": "(a - c)*y + (d - b)",
+    "B": "(a + c)*y + (d - b)",
+    "C": "(a - c)*y + (b + d)",
+    "D": "(a - b - c + d)*y"
+  },
+  "choice_derivations": {
+    "B": "(a*y + c*y) + (d - b)",
+    "C": "(a*y - c*y) + (b + d)",
+    "D": "(a - b - c + d)*y"
+  }
 }
 ```
 
