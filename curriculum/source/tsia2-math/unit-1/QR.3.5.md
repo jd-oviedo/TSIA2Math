@@ -1256,6 +1256,48 @@ Step 3: The $9$ has no like partner, so it stays.
   "B": "adds_instead_of_subtracts",
   "C": "combines_unlike_terms",
   "D": "drops_unlike_term"
+},
+"template": {
+  "variables": [
+    "c"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 3,
+      "max": 11
+    },
+    {
+      "name": "b",
+      "min": 3,
+      "max": 20
+    }
+  ],
+  "constraints": [],
+  "range_notes": "b widened from 3..12 after confirming the wider range stays collision-free: b is a standing constant that never enters the arithmetic, so widening it adds variety at no tier cost. The bare trailing c stays literal, as in practice 2.",
+  "canonical_parameters": {
+    "a": 6,
+    "b": 9
+  },
+  "correct_answer": "A",
+  "misconception_tag": {
+    "B": "adds_instead_of_subtracts",
+    "C": "combines_unlike_terms",
+    "D": "drops_unlike_term"
+  },
+  "stem_template": "Simplify the expression ${a}c + {b} - c$.",
+  "unsimplified_expression": "a*c + b - c",
+  "choice_formulas": {
+    "A": "(a - 1)*c + b",
+    "B": "(a + 1)*c + b",
+    "C": "a*c + (b - 1)",
+    "D": "(a - 1)*c"
+  },
+  "choice_derivations": {
+    "B": "(a*c + c) + b",
+    "C": "a*c + (b - 1)",
+    "D": "a*c - c"
+  }
 }
 ```
 
