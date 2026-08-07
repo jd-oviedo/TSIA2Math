@@ -1418,6 +1418,65 @@ Step 3: The $-8$ has no like partner, so it stays.
   "A": "adds_instead_of_subtracts",
   "B": "partial_distribution",
   "D": "combines_unlike_terms"
+},
+"template": {
+  "variables": [
+    "w"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 2,
+      "max": 6
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 5
+    },
+    {
+      "name": "c",
+      "min": 2,
+      "max": 8
+    },
+    {
+      "name": "d",
+      "min": 2,
+      "max": 9
+    }
+  ],
+  "constraints": [
+    "a*b - d >= 2"
+  ],
+  "constraint_notes": {
+    "a*b - d >= 2": "Tier rule."
+  },
+  "range_notes": "B differs from C by a*c - c, which is non-zero for every a >= 2 in range, so the partial-distribution distractor never collapses onto the answer.",
+  "canonical_parameters": {
+    "a": 4,
+    "b": 3,
+    "c": 2,
+    "d": 5
+  },
+  "correct_answer": "C",
+  "misconception_tag": {
+    "A": "adds_instead_of_subtracts",
+    "B": "partial_distribution",
+    "D": "combines_unlike_terms"
+  },
+  "stem_template": "Simplify the expression ${a}({b}w - {c}) - {d}w$.",
+  "unsimplified_expression": "a*(b*w - c) - d*w",
+  "choice_formulas": {
+    "A": "(a*b + d)*w - a*c",
+    "B": "(a*b - d)*w - c",
+    "C": "(a*b - d)*w - a*c",
+    "D": "a*b*w + (-a*c - d)"
+  },
+  "choice_derivations": {
+    "A": "(a*b*w - a*c) + d*w",
+    "B": "(a*b*w - c) - d*w",
+    "D": "(a*b*w - a*c) - d"
+  }
 }
 ```
 
