@@ -1065,6 +1065,67 @@ Step 5: Check with $k = 1$. Original: $9 - (3 - 8) + 2 = 9 + 5 + 2 = 16$. Answer
   "A": "adds_instead_of_subtracts",
   "C": "drops_negative_on_group",
   "D": "stops_before_simplifying"
+},
+"template": {
+  "variables": [
+    "k"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 6,
+      "max": 13
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 7
+    },
+    {
+      "name": "c",
+      "min": 3,
+      "max": 11
+    },
+    {
+      "name": "d",
+      "min": 2,
+      "max": 9
+    }
+  ],
+  "constraints": [
+    "d != 2*c",
+    "a - b >= 3"
+  ],
+  "constraint_notes": {
+    "d != 2*c": "C's constant is d - c and D's is c, so the two meet at d == 2*c. 96 sets.",
+    "a - b >= 3": "Tier rule."
+  },
+  "range_notes": "D needs no constraint of its own: it differs from the answer by exactly d, and d is never zero in range.",
+  "canonical_parameters": {
+    "a": 9,
+    "b": 3,
+    "c": 8,
+    "d": 2
+  },
+  "correct_answer": "B",
+  "misconception_tag": {
+    "A": "adds_instead_of_subtracts",
+    "C": "drops_negative_on_group",
+    "D": "stops_before_simplifying"
+  },
+  "stem_template": "Which expression is equivalent to ${a}k - ({b}k - {c}) + {d}$?",
+  "unsimplified_expression": "a*k - (b*k - c) + d",
+  "choice_formulas": {
+    "A": "(a + b)*k + (c + d)",
+    "B": "(a - b)*k + (c + d)",
+    "C": "(a - b)*k + (d - c)",
+    "D": "(a - b)*k + c"
+  },
+  "choice_derivations": {
+    "A": "(a*k + b*k) + c + d",
+    "C": "(a*k - b*k) - c + d",
+    "D": "(a*k - b*k) + c"
+  }
 }
 ```
 
