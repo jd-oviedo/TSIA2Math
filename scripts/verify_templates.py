@@ -79,7 +79,13 @@ MATH_SPAN = re.compile(r"\$[^$]*\$")
 # The slug whose presence *is* sign-error coverage. In the bank this was a
 # hand-set boolean somebody had to remember; here it is derivable from the
 # misconception_tag map and cannot be set wrong.
-SIGN_ERROR_SLUGS = {"drops_negative_on_group", "drops_negative_sign"}
+#
+# Deliberately just this one. drops_negative_sign is also a sign error, but the
+# coverage this pool is required to carry is the minus distributed across a
+# group -- Part 1's "The Mistake That Costs the Most Points" -- and counting the
+# looser slug too would let the requirement be satisfied by an item that never
+# puts a group on the page.
+SIGN_ERROR_SLUG = "drops_negative_on_group"
 
 
 class TemplateError(Exception):
@@ -702,7 +708,7 @@ def main():
     if args.source == "curriculum":
         covered = [t["key"] for t, s in pairs
                    if results.get(t["key"])
-                   and SIGN_ERROR_SLUGS & set((s["misconception_tag"] or {}).values())]
+                   and SIGN_ERROR_SLUG in (s["misconception_tag"] or {}).values()]
     else:
         covered = [t["key"] for t, _ in pairs
                    if t.get("sign_error_coverage") and results.get(t["key"])]
