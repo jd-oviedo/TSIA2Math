@@ -1328,6 +1328,66 @@ Step 3: Write both. A negative coefficient is a legitimate answer, not a sign th
   "A": "adds_instead_of_subtracts",
   "C": "drops_negative_sign",
   "D": "combines_unlike_terms"
+},
+"template": {
+  "variables": [
+    "d",
+    "e"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 2,
+      "max": 7
+    },
+    {
+      "name": "b",
+      "min": 3,
+      "max": 11
+    },
+    {
+      "name": "c",
+      "min": 3,
+      "max": 9
+    },
+    {
+      "name": "g",
+      "min": 2,
+      "max": 7
+    }
+  ],
+  "constraints": [
+    "a < c"
+  ],
+  "constraint_notes": {
+    "a < c": "The item's teaching point rather than a collision fix. The whole point is that a negative coefficient is a legitimate answer; at a > c the correct answer turns positive and C stops being a wrong answer at all. Strictly stronger than a != c, and removes B and C's collision at 270 sets as a side effect."
+  },
+  "range_notes": "Parameters skip d and e because the item already uses both as variables.",
+  "canonical_parameters": {
+    "a": 3,
+    "b": 8,
+    "c": 5,
+    "g": 2
+  },
+  "correct_answer": "B",
+  "misconception_tag": {
+    "A": "adds_instead_of_subtracts",
+    "C": "drops_negative_sign",
+    "D": "combines_unlike_terms"
+  },
+  "stem_template": "Simplify the expression ${a}d + {b}e - {c}d + {g}e$.",
+  "unsimplified_expression": "a*d + b*e - c*d + g*e",
+  "choice_formulas": {
+    "A": "(a + c)*d + (b + g)*e",
+    "B": "(a - c)*d + (b + g)*e",
+    "C": "(c - a)*d + (b + g)*e",
+    "D": "(a + b - c + g)*d*e"
+  },
+  "choice_derivations": {
+    "A": "(a*d + c*d) + (b*e + g*e)",
+    "C": "(c - a)*d + (b*e + g*e)",
+    "D": "(a + b - c + g)*(d*e)"
+  }
 }
 ```
 
