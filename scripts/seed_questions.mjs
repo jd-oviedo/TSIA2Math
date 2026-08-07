@@ -5,11 +5,15 @@ import { dirname, join } from 'path'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+// Service role, not the anon key. anon has never had a write grant on
+// `questions`, so seeding under it failed with 42501; as of
+// sql/questions_lockdown.sql anon cannot read the table either. Seeding the
+// bank is an operator job and belongs on the operator's key.
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
 
 if (!supabaseUrl || !supabaseKey) {
-  console.error('Missing Supabase env vars')
+  console.error('Missing Supabase env vars (NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)')
   process.exit(1)
 }
 

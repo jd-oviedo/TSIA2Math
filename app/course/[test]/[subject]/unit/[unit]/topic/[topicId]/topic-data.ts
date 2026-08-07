@@ -31,8 +31,14 @@ export type StoredPracticeItem = {
   format: 'multiple_choice' | 'free_response';
   stem: string;
   choices: Record<string, string>;
-  correct_answer: string | null;
-  misconception_tag: Record<string, string>;
+  // Optional because the student read comes from curriculum_topics_public,
+  // which strips both keys out of the JSON entirely -- they are not null there,
+  // they are absent. Only the teacher read, which goes to the base table
+  // through the admin client, ever sees them. Nothing in this file touches
+  // either one; they are typed so that anything that tries has to acknowledge
+  // it might be looking at the redacted shape.
+  correct_answer?: string | null;
+  misconception_tag?: Record<string, string>;
   level: string | null;
 };
 
@@ -101,14 +107,28 @@ export const loadTopic = cache(async (params: RouteParams) => {
   const TOPIC_COLUMNS =
     'topic_id, topic_name, estimated_time_minutes, guided_notes, practice_items, practice_problems, mini_quiz';
 
-  // Two clients on purpose. The topic content is public, so it is read with the
-  // plain anon client. Anything that depends on who is asking has to go through
-  // the cookie-aware SSR client instead: lib/supabase/server.ts builds a client
-  // with no cookie storage at all, so auth.getSession() on it is null for
+  // Two reads of the topic, never both, and they do not read the same thing.
+  //
+  // A student's page goes through the plain anon client against
+  // curriculum_topics_public, the view added in sql/curriculum_topics_public.sql:
+  // correct_answer and misconception_tag are stripped out of practice_items and
+  // answer_key is not a column on it at all. anon and authenticated have no
+  // grant on the base table, so this is the only topic content that path can
+  // reach -- withholding the answers stops being something the code below has
+  // to remember to do and becomes something this query cannot undo.
+  //
+  // A teacher's page needs answer_key, which exists only on the base table, so
+  // it reads through the service-role admin client. Same split as
+  // questions/questions_public: the safe view for the public surface, the admin
+  // client wherever a real answer is genuinely required.
+  //
+  // A third client appears below. Anything that depends on who is asking has to
+  // go through the cookie-aware SSR client: lib/supabase/server.ts builds a
+  // client with no cookie storage at all, so auth.getSession() on it is null for
   // everyone, signed in or not.
-  const supabase = await createClient();
+  const supabase = teacher ? createAdminClient() : await createClient();
   const { data: topic, error } = await supabase
-    .from('curriculum_topics')
+    .from(teacher ? 'curriculum_topics' : 'curriculum_topics_public')
     .select(teacher ? `${TOPIC_COLUMNS}, answer_key` : TOPIC_COLUMNS)
     .eq('course_id', courseId)
     .eq('topic_id', topicId)
