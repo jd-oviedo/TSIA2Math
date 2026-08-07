@@ -1161,6 +1161,71 @@ Step 5: Check with $x = 1$. Original: $-2(-1) + 5 - 7 = 2 - 2 = 0$. Answer: $-1 
   "A": "drops_negative_sign",
   "B": "drops_negative_on_group",
   "D": "partial_distribution"
+},
+"template": {
+  "variables": [
+    "x"
+  ],
+  "parameters": [
+    {
+      "name": "a",
+      "min": 2,
+      "max": 4
+    },
+    {
+      "name": "b",
+      "min": 2,
+      "max": 5
+    },
+    {
+      "name": "c",
+      "min": 2,
+      "max": 7
+    },
+    {
+      "name": "d",
+      "min": 3,
+      "max": 9
+    },
+    {
+      "name": "e",
+      "min": 3,
+      "max": 11
+    }
+  ],
+  "constraints": [
+    "d != a*b"
+  ],
+  "constraint_notes": {
+    "d != a*b": "Keeps the x terms from cancelling entirely. A roll where they cancel is a legitimate problem but a different one, closer to QR_A_072's territory, and the authored item's answer has an x term."
+  },
+  "range_notes": "The leading negative factor is the item's whole difficulty and it is structural, so it survives every roll. The three distractors stay distinct because they differ in different places: A in the coefficient, B and D in the constant by a*c + c, which is never zero.",
+  "canonical_parameters": {
+    "a": 2,
+    "b": 3,
+    "c": 4,
+    "d": 5,
+    "e": 7
+  },
+  "correct_answer": "C",
+  "misconception_tag": {
+    "A": "drops_negative_sign",
+    "B": "drops_negative_on_group",
+    "D": "partial_distribution"
+  },
+  "stem_template": "Simplify the expression $-{a}({b}x - {c}) + {d}x - {e}$.",
+  "unsimplified_expression": "-a*(b*x - c) + d*x - e",
+  "choice_formulas": {
+    "A": "(a*b + d)*x + (a*c - e)",
+    "B": "(d - a*b)*x + (-a*c - e)",
+    "C": "(d - a*b)*x + (a*c - e)",
+    "D": "(d - a*b)*x + (-c - e)"
+  },
+  "choice_derivations": {
+    "A": "(a*b*x + d*x) + a*c - e",
+    "B": "(-a*b*x - a*c) + d*x - e",
+    "D": "(-a*b*x - c) + d*x - e"
+  }
 }
 ```
 
