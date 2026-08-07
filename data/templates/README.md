@@ -21,11 +21,18 @@ The CAT diagnostic bank, `questions`, and `questions_public` are untouched by an
 of this -- the exposure-control separation between the placement bank and
 curriculum content stays intact.
 
-(An earlier draft of this file said templates live in a table named
-`public.curriculum_item_templates`. No such table was ever created, and with
-Phase B scoped to curriculum practice none is needed: a curriculum template is
-authored in the topic markdown and lands in a column on `curriculum_topics`,
-the same path `practice_items` and `misconception_tags` already take.)
+A curriculum template is **authored** in the topic markdown, beside the
+`distractor_logic` and `misconception_tag` blocks for the same item, and
+**stored** in `public.curriculum_item_templates` -- one row per item, keyed on
+`(course_id, topic_id, section, item_number)`. See `sql/curriculum_item_templates.sql`.
+
+(Two earlier drafts of this paragraph said otherwise, in opposite directions.
+The first named a table that did not exist yet; the second replaced it with a
+column on `curriculum_topics`, on the grounds that `practice_items` and
+`misconception_tags` already take that path. The column was reconsidered in
+Phase 4a and the table won: a template is addressed per item, and a jsonb column
+on the topic row would have to be read whole and indexed into on every roll.
+Authoring is unchanged either way -- what moved is only where the block lands.)
 
 ## Status -- these 15 templates are PARKED, and are not the runtime source
 
@@ -214,3 +221,70 @@ defect, not an edge case. Ranges are narrowed (and constraints added) so the
 hardest reachable roll still sits inside its own tier -- Basic stays mentally
 computable, no rolled combination introduces arithmetic the original tier did
 not already ask for.
+
+## Phase log
+
+### Phase 4a -- storage. Complete, 2026-08-07
+
+The 14 verified QR.3.5 curriculum templates are in production.
+
+**Delivered**
+
+- `sql/curriculum_item_templates.sql` -- the table, keyed on
+  `(course_id, topic_id, section, item_number)` as a real unique *constraint*
+  (not a bare index, so it can back a foreign key later without a second
+  migration). The authored block is stored whole in one `jsonb` column rather
+  than exploded into fields: nothing filters on `choice_formulas` or
+  `stem_template`, and one blob keeps `correct_answer` and `misconception_tag`
+  single-sourced with no sibling column to drift against. No FK to
+  `curriculum_topics`, matching `gumu_sessions` and `curriculum_attempts`,
+  neither of which declares one.
+- `curriculum/migrations/upload_templates.py` -- gated on
+  `scripts/verify_templates.py` passing as a subprocess in the same run, so a
+  row always carries evidence of a check that happened rather than one somebody
+  remembers running.
+- 14 rows uploaded. All `verification_mode = 'exhaustive'`, 26,186 parameter
+  sets across the pool.
+
+**Verified against production, not assumed**
+
+- `information_schema.role_table_grants` lists only `postgres` and
+  `service_role`. The anon key gets 401/42501 on the table.
+- Stored `template` jsonb diffed field-for-field against a fresh parse of
+  `QR.3.5.md`: zero differences, 168 fields across 14 rows.
+- Re-running the upload left 14 rows with `created_at` unchanged and
+  `updated_at` advanced -- the conflict target updates rather than duplicating.
+
+The RLS setup is deliberately *not* a copy of the `curriculum_topics_public`
+pattern. That pattern revokes grants off an existing table; a new table in
+schema `public` **arrives** with an anon SELECT grant, because
+`sql/revoke_stray_anon_writes.sql` altered the default privileges for writes
+only. Checking that rather than assuming the pattern transferred is what put the
+explicit `revoke all` in the migration.
+
+**Open, not forgotten**
+
+1. **Stray anon SELECT grants.** `gumu_sessions`, `curriculum_attempts`,
+   `student_misconceptions`, `curriculum_completion`, `classes` and
+   `announcements` all answer the anon key with `200 []` -- the grant is
+   present and RLS-with-no-policy is the only thing making the result empty.
+   `sql/gumu_tables.sql` even carries a comment claiming "Zero grants for
+   anon/authenticated" with no `revoke` statement in the file. Not exploitable
+   today and explicitly non-blocking for Phase 4a, but it is the same shape as
+   the bug PR #50 closed: a protection documented as done and only half
+   executed. A dedicated cleanup pass should revoke per table *and* extend the
+   default-privileges revoke to cover reads, and verify by measurement rather
+   than by reading the SQL -- reading is exactly what missed it.
+2. **`source_fingerprint` backfill.** The column exists and is null on all 14
+   rows. Phase 4b defines the hash over the anchor fields, populates it, and
+   adds the check. The upload script omits the column from its record rather
+   than sending null, so re-running it after the backfill preserves whatever 4b
+   wrote.
+
+**Not started**
+
+- **4b -- runtime roll-and-render.** Nothing reads this table yet. A roll
+  happens server-side through the admin client and only the rolled instance
+  (stem and four choices) reaches the browser; no client grant is needed and
+  none exists.
+- **4c -- mastery gate wiring.**
