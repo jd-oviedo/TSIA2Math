@@ -1,8 +1,16 @@
-import { C, ink, EYEBROW } from '@/app/components/curriculum-theme';
+import { C, EYEBROW } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
+import { V, cardStyle } from '@/app/components/dashboard-theme';
 
 // The handful of shapes every dashboard page repeats. Server components, no
 // state: the pages that need interactivity import their own client pieces.
+//
+// Every colour here is a --umd-* variable rather than a literal. That is what
+// makes these shapes both identical to the teacher dashboard's cards and
+// theme-aware at the same time: a server component cannot ask which theme is
+// on, but it can defer the question to CSS. cardStyle() supplies the borderRadius
+// the two dashboards share; the colours inside it are overridden with the
+// variable forms below.
 
 export function PageHeading({ title, blurb }: { title: string; blurb?: string }) {
   return (
@@ -13,13 +21,13 @@ export function PageHeading({ title, blurb }: { title: string; blurb?: string })
           font: `600 29px ${FONT_HEADING}`,
           lineHeight: 1.2,
           letterSpacing: '-0.01em',
-          color: C.midnight,
+          color: V.heading,
         }}
       >
         {title}
       </h1>
       {blurb && (
-        <p style={{ margin: 0, font: `400 14.5px ${FONT_BODY}`, lineHeight: 1.6, color: ink(0.6) }}>
+        <p style={{ margin: 0, font: `400 14.5px ${FONT_BODY}`, lineHeight: 1.6, color: V.muted }}>
           {blurb}
         </p>
       )}
@@ -37,11 +45,11 @@ export function Card({
   return (
     <section
       style={{
-        background: C.paper,
-        border: `1px solid ${ink(0.09)}`,
-        borderRadius: 16,
+        ...cardStyle(),
+        background: V.cardBg,
+        border: `1px solid ${V.cardBorder}`,
+        boxShadow: V.cardShadow,
         padding,
-        boxShadow: '0 1px 3px rgba(14,14,17,.05)',
       }}
     >
       {children}
@@ -51,19 +59,19 @@ export function Card({
 
 export function CardTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 style={{ margin: '0 0 4px', font: `600 16px ${FONT_HEADING}`, color: C.midnight }}>
+    <h2 style={{ margin: '0 0 4px', font: `600 16px ${FONT_HEADING}`, color: V.heading }}>
       {children}
     </h2>
   );
 }
 
 export function Eyebrow({ children, color }: { children: React.ReactNode; color?: string }) {
-  return <div style={{ ...EYEBROW, color: color ?? ink(0.42) }}>{children}</div>;
+  return <div style={{ ...EYEBROW, color: color ?? V.dim }}>{children}</div>;
 }
 
 export function Muted({ children, size = 14 }: { children: React.ReactNode; size?: number }) {
   return (
-    <p style={{ margin: 0, font: `400 ${size}px ${FONT_BODY}`, lineHeight: 1.6, color: ink(0.6) }}>
+    <p style={{ margin: 0, font: `400 ${size}px ${FONT_BODY}`, lineHeight: 1.6, color: V.muted }}>
       {children}
     </p>
   );
@@ -75,7 +83,7 @@ export function EmptyState({ title, detail }: { title: string; detail: string })
   return (
     <Card padding="34px 26px">
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, textAlign: 'center' }}>
-        <div style={{ font: `600 15px ${FONT_HEADING}`, color: C.midnight }}>{title}</div>
+        <div style={{ font: `600 15px ${FONT_HEADING}`, color: V.heading }}>{title}</div>
         <Muted size={13.5}>{detail}</Muted>
       </div>
     </Card>
@@ -104,7 +112,7 @@ export function ProgressBar({
         width: '100%',
         height,
         borderRadius: height / 2,
-        background: ink(0.1),
+        background: V.trackBg,
         overflow: 'hidden',
       }}
     >

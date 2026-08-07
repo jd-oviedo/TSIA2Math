@@ -1,8 +1,8 @@
 import { getProfile } from '../../lib/auth';
 import { getAnnouncements, getEnrolledClasses } from '../data';
 import { Card, EmptyState, Muted, PageHeading, formatDate } from '../ui';
-import { C, ink } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
+import { V } from '@/app/components/dashboard-theme';
 
 // Announcements. Read-only for students, reverse-chronological, scoped to the
 // classes they are enrolled in plus anything posted without a class.
@@ -38,7 +38,7 @@ export default async function AnnouncementsPage() {
         // read as "no news" when the truth is the table has not been created.
         <Card>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
-            <div style={{ font: `600 15px ${FONT_HEADING}`, color: C.midnight }}>
+            <div style={{ font: `600 15px ${FONT_HEADING}`, color: V.heading }}>
               Announcements are not switched on yet
             </div>
             <Muted size={13.5}>
@@ -58,8 +58,8 @@ export default async function AnnouncementsPage() {
             <article
               key={item.id}
               style={{
-                background: C.paper,
-                border: `1px solid ${ink(0.09)}`,
+                background: V.cardBg,
+                border: `1px solid ${V.cardBorder}`,
                 borderRadius: 16,
                 padding: '20px 22px',
                 boxShadow: '0 1px 3px rgba(14,14,17,.05)',
@@ -77,10 +77,10 @@ export default async function AnnouncementsPage() {
                   flexWrap: 'wrap',
                 }}
               >
-                <h2 style={{ margin: 0, font: `600 17px ${FONT_HEADING}`, color: C.midnight }}>
+                <h2 style={{ margin: 0, font: `600 17px ${FONT_HEADING}`, color: V.heading }}>
                   {item.title}
                 </h2>
-                <span style={{ font: `400 12.5px ${FONT_BODY}`, color: ink(0.45) }}>
+                <span style={{ font: `400 12.5px ${FONT_BODY}`, color: V.dim }}>
                   {formatDate(item.created_at)}
                 </span>
               </div>
@@ -91,9 +91,9 @@ export default async function AnnouncementsPage() {
                     alignSelf: 'flex-start',
                     padding: '3px 10px',
                     borderRadius: 999,
-                    background: C.sand,
+                    background: V.subtleBg,
                     font: `500 11.5px ${FONT_BODY}`,
-                    color: ink(0.55),
+                    color: V.muted,
                   }}
                 >
                   {classNames.get(item.class_id)}
@@ -108,7 +108,7 @@ export default async function AnnouncementsPage() {
                   margin: 0,
                   font: `400 14.5px ${FONT_BODY}`,
                   lineHeight: 1.7,
-                  color: ink(0.78),
+                  color: V.ink,
                   whiteSpace: 'pre-wrap',
                 }}
               >

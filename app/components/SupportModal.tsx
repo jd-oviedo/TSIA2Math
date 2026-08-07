@@ -1,9 +1,12 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { FONT_HEADING } from '../components/fonts';
+import { FONT_HEADING } from './fonts';
 
-// Support request modal, opened from Help in the sidebar account menu.
+// Support request modal, opened from Help in the sidebar account menu on both
+// the teacher and the student dashboards. Shared rather than duplicated: the
+// route it posts to is role-agnostic, so the only thing a second copy would buy
+// is a second place for the upload rules to drift.
 //
 // Posts multipart form data to /api/support, which is where the Resend send
 // and the screenshot upload happen. Nothing here talks to Supabase or Resend
