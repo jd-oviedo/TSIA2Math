@@ -50,6 +50,7 @@ from __future__ import annotations
 
 import argparse
 import functools
+import hashlib
 import itertools
 import json
 import pathlib
@@ -290,6 +291,62 @@ def house_latex(expr, variables):
         else:
             out += (" - " if c < 0 else " + ") + piece
     return f"${out or '0'}$"
+
+
+def render_instance(tpl, vals):
+    """One rolled instance, rendered exactly the way the harness renders it.
+
+    Extracted from verify() rather than written beside it. The upload script
+    materialises every parameter set into curriculum_item_instances, and those
+    rows are what a student actually reads, so they have to come out of the same
+    two calls the verification pass makes -- `ev` then `house_latex` per letter,
+    `render` for the stem. A second spelling of that here, however faithful on
+    the day it was written, is a renderer that can drift away from the evidence
+    the templates table carries.
+    """
+    return {
+        "stem": render(tpl, tpl["stem_template"], vals),
+        "choices": {
+            L: house_latex(ev(tpl, tpl["choice_formulas"][L], vals), tpl["variables"])
+            for L in LETTERS
+        },
+        "correct_answer": tpl["correct_answer"],
+    }
+
+
+def source_fingerprint(src):
+    """Hash of the anchor fields on the parsed source item. Curriculum-scoped.
+
+    Exactly the fields anchor_failures() checks and nothing else: `stem`, all four
+    `choices`, `correct_answer`, and the whole `misconception_tag` map. Not the
+    worked solution -- it is a slice of the Part 4 markdown rather than a field,
+    it is teacher-only, and its substitution checks are sign-sensitive, so
+    anchoring it would need the sign-repair logic this schema keeps out on
+    purpose. See "The anchor for curriculum-scoped templates" in
+    data/templates/README.md.
+
+    Stored on the template row so a source item reworded after verification is
+    detectable at read time. Without it a template goes on rolling variants of a
+    question that no longer exists, and nothing anywhere notices.
+
+    The runtime recomputes this from curriculum_topics.practice_items and compares,
+    which makes the serialisation a cross-language contract, not an internal
+    detail: sorted keys, no whitespace, unicode left literal. JSON.stringify over
+    the same object with sorted keys produces the same bytes, and
+    scripts/verify_gumu_leakcheck.ts asserts that equality on all 14 items rather
+    than trusting it -- a hash that disagrees across languages would report every
+    template as stale and silently disable rolling everywhere.
+    """
+    payload = {
+        "stem": src["stem"],
+        "choices": src["choices"],
+        "correct_answer": src["correct_answer"],
+        "misconception_tag": src["misconception_tag"],
+    }
+    canonical = json.dumps(
+        payload, sort_keys=True, ensure_ascii=False, separators=(",", ":")
+    )
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def render(tpl, text, vals):
