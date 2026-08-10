@@ -35,6 +35,11 @@
       "C": "Correct: 0 < 2(0) + 1 = 1 is true.",
       "D": "Student misreads the strict inequality y < 2x + 1 as y \u2264 2x + 1 and accepts the boundary point (2, 5) where 5 = 5."
     },
+    "misconception_tag": {
+      "A": "substitution_comparison_misread",
+      "B": "substitution_comparison_misread",
+      "D": "boundary_style_mismatched"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Correct: \u2264 includes equality, so boundary points satisfy the inequality and the line is solid.",
       "C": "Student incorrectly states that boundary points never satisfy the inequality \u2014 this is only true for strict inequalities (< or >), not for \u2264.",
       "D": "Student correctly identifies the line as solid but adds an unwarranted domain restriction (x \u2265 0) that is not implied by the inequality."
+    },
+    "misconception_tag": {
+      "A": "boundary_style_mismatched",
+      "C": "boundary_style_mismatched",
+      "D": "unwarranted_domain_restriction_added"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student correctly identifies that the boundary is dashed (strict inequality) but shades the wrong side \u2014 below instead of above.",
       "D": "Student correctly identifies the region as above the line but misreads the strict inequality (>) as non-strict (\u2265), incorrectly including the boundary line."
     },
+    "misconception_tag": {
+      "A": "wrong_side_shaded",
+      "C": "boundary_style_mismatched",
+      "D": "boundary_style_mismatched"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student mistakes this for a non-solution: 3 + 2 = 5 \u2265 5 \u2713 \u2014 the sum equals 5, which satisfies the \u2265 condition.",
       "C": "Student mistakes this for a non-solution: 4 + 1 = 5 \u2265 5 \u2713 \u2014 like B, the sum equals 5 and satisfies \u2265.",
       "D": "Student overlooks this pair: 0 + 6 = 6 \u2265 5 \u2713 \u2014 clearly satisfies the inequality."
+    },
+    "misconception_tag": {
+      "B": "substitution_comparison_misread",
+      "C": "substitution_comparison_misread",
+      "D": "substitution_comparison_misread"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student correctly identifies the direction (below) but uses \u2264 instead of <, incorrectly including the boundary line despite the word 'strictly.'",
       "D": "Student inverts the direction (above) and uses the non-strict symbol (\u2265) \u2014 the furthest from the correct answer."
     },
+    "misconception_tag": {
+      "B": "wrong_side_shaded",
+      "C": "boundary_style_mismatched",
+      "D": "boundary_style_mismatched"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Correct: dashed line \u2192 strict symbol; above \u2192 greater than; slope 2, intercept 3 \u2192 y > 2x + 3.",
       "C": "Student correctly reads the line equation and the dashed boundary but shades the wrong side \u2014 uses < (below) instead of > (above).",
       "D": "Student correctly reads the boundary type (dashed) and shading direction (above), but computes the slope as \u22122 (uses run/rise instead of rise/run)."
+    },
+    "misconception_tag": {
+      "A": "boundary_style_mismatched",
+      "C": "boundary_style_mismatched",
+      "D": "boundary_style_mismatched"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Correct: both (0, 0) and (1, \u22121) satisfy 2x \u2212 y < 4.",
       "D": "(0, 0) satisfies the inequality (0 < 4 \u2713), but (0, \u22124) does not: 2(0) \u2212 (\u22124) = 4, and 4 < 4 is false. Student misreads the strict inequality as \u2264 and accepts the boundary point."
     },
+    "misconception_tag": {
+      "A": "only_one_constraint_tested",
+      "B": "only_one_constraint_tested",
+      "D": "boundary_style_mismatched"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Student may not substitute carefully: 3(5) + 2(1) = 17, clearly outside the region.",
       "C": "Correct: 3(4) + 2(0) = 12 \u2264 12. The point is on the boundary, which is included since the inequality uses \u2264.",
       "D": "Student may fail to apply the coefficient 2 to y = 5, computing 3(2) + 5 = 11 \u2264 12 \u2713 instead of the correct 3(2) + 2(5) = 16."
+    },
+    "misconception_tag": {
+      "A": "substitution_comparison_misread",
+      "B": "only_one_constraint_tested",
+      "D": "substitution_comparison_misread"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "Student inverts the first constraint \u2014 writes y < x \u2212 1 (below) instead of y > x \u2212 1 (above) \u2014 and keeps the second direction also wrong, placing the entire region below both lines.",
       "D": "Correct: y > x \u2212 1 (strictly above the first line) and y < \u2212x + 5 (strictly below the second line)."
     },
+    "misconception_tag": {
+      "A": "wrong_side_shaded",
+      "B": "boundary_style_mismatched",
+      "C": "wrong_side_shaded"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -754,6 +799,11 @@
       "B": "Student misreads the strict inequality y < \u2212x+6 as y \u2264 \u2212x+6 and accepts (0, 6) where y = \u2212x+6 exactly: 6 = 6 is not strictly less than 6.",
       "C": "Student tests only the first inequality: 5 \u2265 2(3)\u22123 = 3 \u2713, and accepts (3, 5) without checking the second: 5 < \u22123+6 = 3 is false.",
       "D": "Correct: (1, 2) satisfies both y \u2265 2x\u22123 (2 \u2265 \u22121 \u2713) and y < \u2212x+6 (2 < 5 \u2713)."
+    },
+    "misconception_tag": {
+      "A": "only_one_constraint_tested",
+      "B": "boundary_style_mismatched",
+      "C": "only_one_constraint_tested"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
