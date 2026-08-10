@@ -35,6 +35,11 @@
       "C": "Student stops scanning after finding the first 71 and concludes there is only 1 student with that score.",
       "D": "Student counts all repeated values in the list (71 appears twice, 90 appears twice) and totals them: 2 + 2 = 4."
     },
+    "misconception_tag": {
+      "B": "off_by_one_count",
+      "C": "off_by_one_count",
+      "D": "off_by_one_count"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student counts the number of non-Math categories (Science and English) and uses that as the Math count, confusing distinct groups with frequency.",
       "C": "Correct: systematically counting each Math response gives a total of 4.",
       "D": "Student over-counts by including one Science response alongside the four Math responses, possibly misreading the list."
+    },
+    "misconception_tag": {
+      "A": "off_by_one_count",
+      "B": "distinct_values_counted_not_occurrences",
+      "D": "off_by_one_count"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student applies a threshold of 'at most 75' instead of 'below 74,' counting all values except 80: 73, 68, 75, 68, 73, 68, 75 = 7.",
       "D": "Correct: five values \u2014 three 68s and two 73s \u2014 are strictly less than 74."
     },
+    "misconception_tag": {
+      "A": "off_by_one_count",
+      "B": "off_by_one_count",
+      "C": "threshold_boundary_error"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Correct: applying the condition \u2265 2 to each entry gives five qualifying students.",
       "C": "Student miscounts by missing one of the three 2-sibling entries, perhaps skipping the third occurrence in the list.",
       "D": "Student counts the number of distinct values that satisfy \u2265 2 (the values 2 and 3) rather than counting individual student entries."
+    },
+    "misconception_tag": {
+      "A": "off_by_one_count",
+      "C": "off_by_one_count",
+      "D": "distinct_values_counted_not_occurrences"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student adds Green and Red instead of subtracting: 5 + 4 = 9.",
       "D": "Student reads the Blue frequency (3) as the answer, confusing the Blue count with the requested difference."
     },
+    "misconception_tag": {
+      "B": "subtracts_in_wrong_order",
+      "C": "subtracts_in_wrong_order",
+      "D": "reads_wrong_category"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student counts the total number of entries that are repeated \u2014 three 55s and two 72s \u2014 giving 5 individual occurrences rather than 2 distinct values.",
       "C": "Correct: only 55 and 72 appear more than once, so there are 2 distinct repeated values.",
       "D": "Student identifies only 55 as repeating (the most visibly frequent value) and overlooks 72, which appears twice."
+    },
+    "misconception_tag": {
+      "A": "distinct_values_counted_not_occurrences",
+      "B": "off_by_one_count",
+      "D": "off_by_one_count"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student looks at the end of the list; 27 < 31 is correctly ordered.",
       "D": "Correct: the transition from 22 to 19 breaks ascending order \u2014 19 should precede 22."
     },
+    "misconception_tag": {
+      "A": "ordering_violation_located_wrongly",
+      "B": "ordering_violation_located_wrongly",
+      "C": "ordering_violation_located_wrongly"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -595,6 +630,11 @@
       "C": "Student counts only the 3 newly added values, losing track of the original 5 that were already below 40.",
       "D": "Student adds 3 to 5 and then adds 1 more from an off-by-one error: 5 + 3 + 1 = 9."
     },
+    "misconception_tag": {
+      "A": "off_by_one_count",
+      "C": "off_by_one_count",
+      "D": "off_by_one_count"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -674,6 +714,11 @@
       "B": "Student applies \u2264 14 to the updated list (10, 12, 14) and then mistakenly also includes one of the 15s, arriving at 4.",
       "C": "Correct: after inserting 14, the values strictly less than 15 are 10, 12, and 14 \u2014 a total of 3.",
       "D": "Student uses \u2264 15 as the threshold instead of < 15, counting 10, 12, 14, 15, 15 = 5 values."
+    },
+    "misconception_tag": {
+      "A": "off_by_one_count",
+      "B": "threshold_boundary_error",
+      "D": "threshold_boundary_error"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
