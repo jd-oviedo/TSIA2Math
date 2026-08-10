@@ -1,8 +1,21 @@
 #!/usr/bin/env python3
 """
-One-time script: upsert migrated question_bank.json into Supabase questions table.
+Upsert the built question_bank.json into the Supabase questions table.
 Run from repo root: python3 upload_to_supabase.py
 Requires: pip install supabase --break-system-packages
+
+Reads public/data/question_bank.json, which is a build artifact -- regenerate
+it with `python3 scripts/build_bank.py` after changing anything under
+data/items/. Uploading a stale artifact is the easiest way to silently revert
+item content, so the script refuses to run if the artifact is older than the
+newest source file.
+
+Items now carry `misconception_tag`, a per-option map of taxonomy slugs that
+is answer-bearing by omission (the correct option is absent, so the missing
+letter is the answer). The column has to exist before this runs -- upsert
+sends whole objects, so an unknown column fails the whole batch, not just that
+field. Apply sql/questions_misconception_tag.sql first; the preflight below
+checks for it and says so if it is missing.
 """
 import json, os, sys
 from pathlib import Path
@@ -34,11 +47,38 @@ if not url or not key:
 print(f"Connecting to {url}")
 client = create_client(url, key)
 
+# --- preflight: is the artifact current? ----------------------------------
+# build_bank.py writes SRC from data/items/**. An artifact older than its
+# sources means someone edited items and did not rebuild, and upserting it
+# would quietly roll those edits back in production.
+sources = sorted(Path("data/items").rglob("*.json"))
+if sources and SRC.exists():
+    newest = max(p.stat().st_mtime for p in sources)
+    if SRC.stat().st_mtime < newest:
+        stale = [p for p in sources if p.stat().st_mtime > SRC.stat().st_mtime]
+        print(f"ERROR: {SRC} is older than {len(stale)} source file(s), e.g. {stale[0]}")
+        print("       Run: python3 scripts/build_bank.py")
+        sys.exit(1)
+
 with open(SRC, encoding="utf-8") as f:
     data = json.load(f)
 
 items = data if isinstance(data, list) else data.get("items", [])
 print(f"Loaded {len(items)} items from {SRC}")
+
+# --- preflight: does the target table have every column we are sending? ----
+# upsert sends whole objects, so one unknown column fails the entire batch
+# with a PostgREST 42703 and no rows written. Checked up front so the failure
+# names the migration instead of a raw column error mid-upload.
+tagged = sum(1 for i in items if i.get("misconception_tag"))
+if tagged:
+    probe = client.table("questions").select("misconception_tag").limit(1).execute()
+    if getattr(probe, "error", None):
+        print(f"ERROR: {tagged} items carry misconception_tag, but the questions table")
+        print("       has no such column. Apply sql/questions_misconception_tag.sql in")
+        print("       the Supabase SQL editor first, then re-run this script.")
+        sys.exit(1)
+    print(f"Preflight OK: misconception_tag present on questions ({tagged} tagged items to upload)")
 
 BATCH = 50
 updated = 0

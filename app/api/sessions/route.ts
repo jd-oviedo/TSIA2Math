@@ -14,6 +14,20 @@ import {
 } from "../../adaptive-test/engine";
 import type { Item, ProficiencyLevel, Strand } from "../../adaptive-test/type";
 
+// The source string passed to record_misconception() for diagnostic evidence.
+//
+// This is load-bearing, and the database will not catch it if it is wrong.
+// record_misconception() branches on the literal 'socratic' to award high
+// confidence immediately; every other value walks the ladder (low, medium at
+// two hits, high at three). There is no CHECK constraint on p_source and no
+// enum behind it -- the contract is a comment on the function signature. A
+// typo here, or a future refactor that reuses the curriculum call site,
+// silently fast-tracks weak 4-option-multiple-choice evidence to the
+// confidence level that surfaces a misconception to a parent.
+//
+// Named rather than inlined so there is exactly one place to audit.
+const CAT_MISCONCEPTION_SOURCE = "cat" as const;
+
 export async function POST(request: Request) {
   const ip = getClientIp(request);
   const { success, reset } = await safeLimit(sessionsRateLimit, ip);
@@ -56,7 +70,7 @@ export async function POST(request: Request) {
   const itemIds = body.responses.map((r) => r.item_id);
   const { data: items, error: itemsError } = await admin
     .from("questions")
-    .select("item_id, correct_answer, primary_strand, proficiency_level")
+    .select("item_id, correct_answer, primary_strand, proficiency_level, misconception_tag")
     .in("item_id", itemIds);
 
   if (itemsError) {
@@ -65,7 +79,14 @@ export async function POST(request: Request) {
 
   const itemMap = new Map <
     string,
-    Pick<Item, "item_id" | "correct_answer" | "primary_strand" | "proficiency_level">
+    Pick<
+      Item,
+      | "item_id"
+      | "correct_answer"
+      | "primary_strand"
+      | "proficiency_level"
+      | "misconception_tag"
+    >
   >((items ?? []).map((i) => [i.item_id, i]));
 
   // Any item_id the client sent that doesn't exist in the real bank is
@@ -189,6 +210,51 @@ export async function POST(request: Request) {
     });
     if (rpcError) {
       console.error(`[api/sessions] exposure increment failed for ${r.item_id}:`, rpcError.message);
+    }
+  }
+
+  // Misconception accumulation for CAT-sourced evidence. Same RPC, same
+  // confidence ladder as the curriculum path (app/api/curriculum/practice),
+  // so a slug hit in the diagnostic and the same slug hit in curriculum
+  // practice land on one student_misconceptions row and compound.
+  //
+  // Recorded here rather than in /api/items/reveal on purpose. Reveal is
+  // per-item, can be called more than once for the same answer, and serves
+  // anonymous test-takers; recording there would double-count and would fire
+  // without an auth id. This route is the single place correctness is
+  // re-derived server-side from the bank and persisted.
+  //
+  // Source is 'cat' and must stay 'cat': the ladder gives Socratic hits an
+  // immediate jump to high confidence, and CAT evidence is weak enough
+  // (4-option multiple choice, 25% guess rate) that it has to earn high the
+  // slow way -- low, medium at 2 hits, high at 3. See the note above
+  // CAT_MISCONCEPTION_SOURCE.
+  //
+  // Anonymous sessions are skipped: student_misconceptions.student_id is a
+  // foreign key onto auth.users, so there is nothing to attribute the hit to.
+  // Best-effort, like exposure above -- the session is already saved, and
+  // losing an accumulation row must not fail the submission.
+  if (userId) {
+    for (const r of responseRows) {
+      if (r.is_correct) continue;
+      const item = itemMap.get(r.item_id);
+      const tag = item?.misconception_tag?.[r.selected_answer];
+      // No tag means the item predates tagging, or the option is untagged.
+      // Nothing to record; the response row itself is still persisted.
+      if (!tag) continue;
+
+      const { error: mcError } = await admin.rpc("record_misconception", {
+        p_student_id: userId,
+        p_misconception: tag,
+        p_strand: item!.primary_strand,
+        p_source: CAT_MISCONCEPTION_SOURCE,
+      });
+      if (mcError) {
+        console.error(
+          `[api/sessions] record_misconception failed for ${r.item_id}/${r.selected_answer}:`,
+          mcError.message
+        );
+      }
     }
   }
 // Fire test_completed server-side, tied to the same correctness data we
