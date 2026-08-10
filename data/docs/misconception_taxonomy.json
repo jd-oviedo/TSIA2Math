@@ -98,8 +98,9 @@
       "note": "Correct and expected. These describe QR Unit-1 fraction/decimal/percent conversion errors the CAT bank does not contain. They stay in the vocabulary and continue to tag curriculum items."
     },
     "redundant_slug_pairs": {
-      "status": "needs_a_decision",
-      "note": "Found during Phase 3 tagging: two cross-cutting slugs never fired because a topic-specific slug describes the same error. The Phase 2 duplicate check missed them because the names share no tokens. Neither has been retired -- retiring is a taxonomy change and was not approved.",
+      "status": "resolved_in_phase3_closeout",
+      "note": "Found during Phase 3 tagging: two cross-cutting slugs never fired because a topic-specific slug describes the same error. The Phase 2 duplicate check missed them because the names share no tokens. Both were retired in the Phase 3 closeout -- see `retired_slugs` for each one's definition, what supersedes it, and why the survivors were kept separate rather than merged. Retiring them retagged nothing: neither carried a single tag, which is how they were found.",
+      "resolution": "Both retired. See retired_slugs.",
       "pairs": [
         {
           "unused": "conditions_on_wrong_group",
@@ -110,7 +111,8 @@
           "topics": [
             "PR.3.4",
             "PR.1.4"
-          ]
+          ],
+          "retired": true
         },
         {
           "unused": "ignores_without_replacement",
@@ -121,7 +123,8 @@
           "topics": [
             "PR.3.3",
             "PR.3.4"
-          ]
+          ],
+          "retired": true
         }
       ]
     },
