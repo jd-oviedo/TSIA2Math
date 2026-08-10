@@ -16,7 +16,7 @@
     "cross_cutting_from_curriculum": 40,
     "cross_cutting_new": 46,
     "topic_specific": 386,
-    "proposed_pending_decision": 1,
+    "proposed_pending_decision": 0,
     "topics_covered": 97
   },
   "boundary_rules": [
@@ -27,16 +27,16 @@
         "omits_constant_term",
         "omits_variable_term"
       ],
-      "status": "pending_approval",
+      "status": "approved",
       "phase1_proposal": "Stopped mid-procedure -> answers_intermediate_value; procedure completed but the constant was never in it -> omits_constant_term.",
       "phase1_problem": "Does not break the tie for 'computes the rate portion and forgets the flat fee', which reads as both; and has no home for the mirror case where the variable term is the one missing.",
       "phase2_proposal": "Tag by what is missing from the answer, not by where the student stopped. Missing fixed component -> omits_constant_term. Missing variable component -> omits_variable_term. A correct intermediate quantity of a different kind (scale factor, unit rate, pre-division sum, count of parts) -> answers_intermediate_value. Tie-break: if the reported value is one of the two additive components of a linear model it is an omits_* tag, never answers_intermediate_value.",
-      "blocks": "Phase 3 tagging cannot begin until this is resolved."
+      "resolution": "Approved as the phase2_proposal, tie-break included. omits_variable_term is an approved slug."
     }
   ],
   "edge_cases": {
     "dual_error_rewrites": {
-      "status": "approved_in_principle_text_pending_review",
+      "status": "approved_for_phase3",
       "decision": "Rewrite to single-error prose rather than multi-tagging, to protect record_misconception() counting.",
       "items": [
         "PR_P_005.C",
@@ -44,7 +44,7 @@
         "PR_A_006.C",
         "AR_P_030.C"
       ],
-      "note": "Before/after text is in the Phase 2 report. PR_P_005.D additionally exposes an item defect: answer choice D states a total of 18 but its stated reason (omitting the Yellow row) yields 16. Fixing that requires editing answer_choices, which is outside the distractor_logic-only scope of Phase 3."
+      "note": "PR_P_005.D exposed an item defect: answer choice D stated a total of 18 while its stated reason (omitting the Yellow row) yields 16. Approved resolution is option (a) -- correct the arithmetic in answer_choices.D to 16, keep the omission reasoning, tag single_cell_read_where_sum_needed. This is the one approved edit outside distractor_logic."
     },
     "pr41_judgement_calls": {
       "status": "resolved_in_phase2",
@@ -208,8 +208,8 @@
       "status": "draft"
     },
     {
-      "slug": "adds_exponents_instead_of_multiplying",
-      "definition": "Adds exponents where the rule requires a different operation on them -- most often the power rule, which multiplies.",
+      "slug": "adds_exponents_wrongly",
+      "definition": "Adds exponents where the applicable rule requires multiplying or subtracting them.",
       "layer": "cross_cutting",
       "origin": "cat_bank",
       "topics": [
@@ -221,7 +221,7 @@
       "strands": [
         "AR"
       ],
-      "notes": "Split from exponent_rule_confusion per Phase 1 decision 1. NAME GAP: the bank also contains adds-where-subtraction-was-required (quotient rule read as product rule); the definition is broadened to cover it. See open question.",
+      "notes": "Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review so the name covers every displaced rule, not just the power rule.",
       "status": "draft"
     },
     {
@@ -3288,8 +3288,8 @@
       "status": "draft"
     },
     {
-      "slug": "multiplies_exponents_instead_of_adding",
-      "definition": "Multiplies exponents where the rule requires a different operation on them -- most often the product rule, which adds.",
+      "slug": "multiplies_exponents_wrongly",
+      "definition": "Multiplies exponents where the applicable rule requires adding or subtracting them.",
       "layer": "cross_cutting",
       "origin": "cat_bank",
       "topics": [
@@ -3300,7 +3300,7 @@
       "strands": [
         "AR"
       ],
-      "notes": "Split from exponent_rule_confusion. Same name gap as above (multiplies-where-subtraction-was-required also occurs).",
+      "notes": "Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review.",
       "status": "draft"
     },
     {
@@ -3643,7 +3643,7 @@
         "PR",
         "QR"
       ],
-      "notes": "BOUNDARY WITH answers_intermediate_value IS UNRESOLVED -- see boundary_rules.",
+      "notes": "Boundary with answers_intermediate_value and omits_variable_term is fixed by the approved intermediate_vs_omission rule.",
       "status": "draft"
     },
     {
@@ -3705,8 +3705,8 @@
         "PR",
         "QR"
       ],
-      "notes": "PROPOSED, NOT APPROVED. Needed only if the revised answers_intermediate_value / omits_constant_term boundary rule is accepted. See boundary_rules.",
-      "status": "proposed_pending_decision"
+      "notes": "Approved in the Phase 2 review alongside the intermediate_vs_omission boundary rule.",
+      "status": "draft"
     },
     {
       "slug": "one_of_two_divisors_omitted",
@@ -5866,8 +5866,8 @@
       "status": "draft"
     },
     {
-      "slug": "subtracts_exponents_instead_of_adding",
-      "definition": "Subtracts exponents where the rule requires adding them, confusing the quotient rule with the product rule.",
+      "slug": "subtracts_exponents_wrongly",
+      "definition": "Subtracts exponents where the applicable rule requires adding or multiplying them.",
       "layer": "cross_cutting",
       "origin": "cat_bank",
       "topics": [
@@ -5877,7 +5877,7 @@
       "strands": [
         "AR"
       ],
-      "notes": "Split from exponent_rule_confusion.",
+      "notes": "Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review.",
       "status": "draft"
     },
     {

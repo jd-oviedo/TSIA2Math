@@ -12,18 +12,18 @@ Status: `draft_phase2_awaiting_approval`
 | cross cutting from curriculum | 40 |
 | cross cutting new | 46 |
 | topic specific | 386 |
-| proposed pending decision | 1 |
+| proposed pending decision | 0 |
 | topics covered | 97 |
 
 ## Unresolved boundary rules
 
-### `intermediate_vs_omission` — **pending_approval**
+### `intermediate_vs_omission` — **approved**
 
 - Slugs: `answers_intermediate_value`, `omits_constant_term`, `omits_variable_term`
 - Phase 1 proposal: Stopped mid-procedure -> answers_intermediate_value; procedure completed but the constant was never in it -> omits_constant_term.
 - Problem with it: Does not break the tie for 'computes the rate portion and forgets the flat fee', which reads as both; and has no home for the mirror case where the variable term is the one missing.
 - Phase 2 proposal: Tag by what is missing from the answer, not by where the student stopped. Missing fixed component -> omits_constant_term. Missing variable component -> omits_variable_term. A correct intermediate quantity of a different kind (scale factor, unit rate, pre-division sum, count of parts) -> answers_intermediate_value. Tie-break: if the reported value is one of the two additive components of a linear model it is an omits_* tag, never answers_intermediate_value.
-- **Phase 3 tagging cannot begin until this is resolved.**
+- **Resolution: Approved as the phase2_proposal, tie-break included. omits_variable_term is an approved slug.**
 
 ## Cross-cutting slugs
 
@@ -77,7 +77,7 @@ Status: `draft_phase2_awaiting_approval`
 | slug | definition | strands | topics | notes |
 |---|---|---|---:|---|
 | `absolute_change_as_percent` | Reports the raw difference as if it were the percent change. | PR QR | 2 |  |
-| `adds_exponents_instead_of_multiplying` | Adds exponents where the rule requires a different operation on them -- most often the power rule, which multiplies. | AR | 4 | Split from exponent_rule_confusion per Phase 1 decision 1. NAME GAP: the bank also contains adds-where-subtraction-was-required (quotient rule read as product rule); the definition is broadened to cover it. See open question. |
+| `adds_exponents_wrongly` | Adds exponents where the applicable rule requires multiplying or subtracting them. | AR | 4 | Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review so the name covers every displaced rule, not just the power rule. |
 | `adds_probabilities_instead_of_multiplying` | Adds the stage probabilities of a compound event instead of multiplying them. | PR | 2 |  |
 | `binomial_square_middle_term_omitted` | Expands a squared binomial as the sum of the squared terms, omitting the middle term. | AR GR | 4 | MERGED in Phase 2 from three separately-drafted topic slugs (AR.3.7, AR.4.2, AR.4.9) plus GR.2.7. |
 | `causation_from_association` | Reads an observed association as an established causal claim, in either direction. | PR | 1 | Single topic today; classified cross-cutting per Phase 1 decision 3 so future inference items need no re-touch. |
@@ -96,14 +96,14 @@ Status: `draft_phase2_awaiting_approval`
 | `inverts_conversion_direction` | Multiplies where the conversion or scale factor requires division, or vice versa. | AR GR QR | 9 |  |
 | `inverts_trig_ratio` | Inverts a trigonometric ratio, placing the wrong side in the numerator. | GR | 2 | Two topics only, but 12 instances and a distinct remediation. |
 | `misreads_direction_of_change` | Computes a magnitude correctly but labels the direction backward. | PR QR | 5 |  |
-| `multiplies_exponents_instead_of_adding` | Multiplies exponents where the rule requires a different operation on them -- most often the product rule, which adds. | AR | 3 | Split from exponent_rule_confusion. Same name gap as above (multiplies-where-subtraction-was-required also occurs). |
+| `multiplies_exponents_wrongly` | Multiplies exponents where the applicable rule requires adding or subtracting them. | AR | 3 | Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review. |
 | `multiplies_instead_of_divides` | Multiplies two quantities where the relationship requires division. | AR GR QR | 9 |  |
 | `new_over_original_as_change` | Reports the new value as a percent of the original instead of the percent change. | PR QR | 3 |  |
 | `off_by_one_count` | Miscounts a tally by one -- loses count, double-counts, or stops one short. | GR PR QR | 6 |  |
-| `omits_constant_term` | Computes the variable or rate portion correctly and omits the fixed component (flat fee, intercept, starting value). | AR GR PR QR | 9 | BOUNDARY WITH answers_intermediate_value IS UNRESOLVED -- see boundary_rules. |
+| `omits_constant_term` | Computes the variable or rate portion correctly and omits the fixed component (flat fee, intercept, starting value). | AR GR PR QR | 9 | Boundary with answers_intermediate_value and omits_variable_term is fixed by the approved intermediate_vs_omission rule. |
 | `omits_fractional_factor` | Drops the one-half, one-third or four-thirds from an area or volume formula, or applies it twice. | GR | 6 |  |
 | `omits_second_component` | Ignores one part of a composite figure, two-part total or two-stage quantity. | AR GR PR QR | 8 |  |
-| `omits_variable_term` | Reports the fixed component of a linear model and omits the variable or rate component. | AR PR QR | 4 | PROPOSED, NOT APPROVED. Needed only if the revised answers_intermediate_value / omits_constant_term boundary rule is accepted. See boundary_rules. |
+| `omits_variable_term` | Reports the fixed component of a linear model and omits the variable or rate component. | AR PR QR | 4 | Approved in the Phase 2 review alongside the intermediate_vs_omission boundary rule. |
 | `order_of_operations_violated` | Evaluates left to right or applies a lower-priority operation first. | AR PR QR | 5 |  |
 | `overgeneralizes_from_sample` | Treats a sample result as an absolute or population-wide claim. | PR | 3 |  |
 | `percent_change_wrong_base` | Divides the change by the new value instead of the original, or applies a percent to the post-change base. | PR QR | 3 |  |
@@ -118,7 +118,7 @@ Status: `draft_phase2_awaiting_approval`
 | `slope_intercept_swap` | Assigns the slope's value to the intercept and the intercept's to the slope, including in verbal interpretation. | AR PR QR | 5 |  |
 | `slope_run_over_rise` | Computes the change in x over the change in y instead of the change in y over the change in x. | AR PR QR | 6 | Kept separate from reversed_division: the remediation conversation differs. |
 | `squaring_confused_with_doubling` | Computes twice a quantity where its square was required, or vice versa. | AR GR QR | 5 |  |
-| `subtracts_exponents_instead_of_adding` | Subtracts exponents where the rule requires adding them, confusing the quotient rule with the product rule. | AR | 2 | Split from exponent_rule_confusion. |
+| `subtracts_exponents_wrongly` | Subtracts exponents where the applicable rule requires adding or multiplying them. | AR | 2 | Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review. |
 | `subtracts_in_wrong_order` | Computes b minus a where a minus b was required. | AR GR PR QR | 11 |  |
 | `volume_surface_area_confusion` | Computes volume where surface area was required, or vice versa. | GR | 2 | Kept separate per decision 2. |
 | `wrong_sign_on_factor` | Uses the correct magnitudes in a factored form but assigns the wrong sign to one or both factors. | AR | 6 |  |

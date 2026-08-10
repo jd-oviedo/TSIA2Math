@@ -75,9 +75,9 @@ CROSS_NEW = [
 ("coordinates_swapped","Writes an ordered pair with its coordinates exchanged.",["AR.2.4","AR.3.5","AR.3.7","GR.4.1","GR.4.5"],""),
 ("inverts_trig_ratio","Inverts a trigonometric ratio, placing the wrong side in the numerator.",["GR.3.3","GR.3.4"],"Two topics only, but 12 instances and a distinct remediation."),
 # wrong operation
-("adds_exponents_instead_of_multiplying","Adds exponents where the rule requires a different operation on them -- most often the power rule, which multiplies.",["AR.4.2","AR.4.4","AR.4.10","AR.4.11"],"Split from exponent_rule_confusion per Phase 1 decision 1. NAME GAP: the bank also contains adds-where-subtraction-was-required (quotient rule read as product rule); the definition is broadened to cover it. See open question."),
-("multiplies_exponents_instead_of_adding","Multiplies exponents where the rule requires a different operation on them -- most often the product rule, which adds.",["AR.4.2","AR.4.4","AR.4.10"],"Split from exponent_rule_confusion. Same name gap as above (multiplies-where-subtraction-was-required also occurs)."),
-("subtracts_exponents_instead_of_adding","Subtracts exponents where the rule requires adding them, confusing the quotient rule with the product rule.",["AR.4.4","AR.4.10"],"Split from exponent_rule_confusion."),
+("adds_exponents_wrongly","Adds exponents where the applicable rule requires multiplying or subtracting them.",["AR.4.2","AR.4.4","AR.4.10","AR.4.11"],"Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review so the name covers every displaced rule, not just the power rule."),
+("multiplies_exponents_wrongly","Multiplies exponents where the applicable rule requires adding or subtracting them.",["AR.4.2","AR.4.4","AR.4.10"],"Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review."),
+("subtracts_exponents_wrongly","Subtracts exponents where the applicable rule requires adding or multiplying them.",["AR.4.4","AR.4.10"],"Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review."),
 ("multiplies_instead_of_divides","Multiplies two quantities where the relationship requires division.",["AR.2.1","AR.4.7","GR.2.1","GR.2.3","GR.2.4","GR.3.2","GR.3.3","QR.2.3","QR.2.5"],""),
 ("divides_instead_of_multiplies","Divides where the relationship requires multiplication.",["AR.2.1","GR.2.2","GR.2.3","GR.3.2","GR.3.3","GR.4.3","QR.2.6","QR.2.7"],""),
 ("adds_probabilities_instead_of_multiplying","Adds the stage probabilities of a compound event instead of multiplying them.",["PR.3.2","PR.3.3"],""),
@@ -86,7 +86,7 @@ CROSS_NEW = [
 ("circumference_area_confusion","Uses a circle's area formula where circumference was required, or vice versa.",["GR.2.2","GR.2.3","GR.2.7"],"Kept separate per decision 2."),
 ("volume_surface_area_confusion","Computes volume where surface area was required, or vice versa.",["GR.2.5","GR.2.6"],"Kept separate per decision 2."),
 # omission
-("omits_constant_term","Computes the variable or rate portion correctly and omits the fixed component (flat fee, intercept, starting value).",["AR.2.3","AR.2.6","GR.2.1","PR.4.2","QR.3.3","QR.3.6","QR.4.1","QR.4.2","QR.4.3"],"BOUNDARY WITH answers_intermediate_value IS UNRESOLVED -- see boundary_rules."),
+("omits_constant_term","Computes the variable or rate portion correctly and omits the fixed component (flat fee, intercept, starting value).",["AR.2.3","AR.2.6","GR.2.1","PR.4.2","QR.3.3","QR.3.6","QR.4.1","QR.4.2","QR.4.3"],"Boundary with answers_intermediate_value and omits_variable_term is fixed by the approved intermediate_vs_omission rule."),
 ("omits_fractional_factor","Drops the one-half, one-third or four-thirds from an area or volume formula, or applies it twice.",["GR.2.3","GR.2.4","GR.2.5","GR.2.6","GR.2.7","GR.3.4"],""),
 ("omits_second_component","Ignores one part of a composite figure, two-part total or two-stage quantity.",["AR.4.3","GR.2.3","GR.2.5","GR.2.6","PR.3.3","QR.2.1","QR.2.5","QR.2.6"],""),
 ("forgets_square_root","Computes the squared or cubed quantity correctly and reports it without taking the root.",["AR.3.4","GR.2.3","GR.2.4","GR.2.5","GR.2.6","GR.3.1","GR.3.2"],"Covers square and cube roots."),
@@ -530,27 +530,29 @@ MERGED_TAIL = [
 # tagging populates it by reading -- not by regex.
 CURRICULUM_TOPICS = {}
 
-PENDING = [
+PENDING = []
+
+APPROVED_LATE = [
  ("omits_variable_term","Reports the fixed component of a linear model and omits the variable or rate component.",
   ["AR.2.3","PR.4.2","QR.4.2","QR.4.3"],
-  "PROPOSED, NOT APPROVED. Needed only if the revised answers_intermediate_value / omits_constant_term boundary rule is accepted. See boundary_rules.")]
+  "Approved in the Phase 2 review alongside the intermediate_vs_omission boundary rule.")]
 
 BOUNDARY_RULES = [{
  "id":"intermediate_vs_omission",
  "slugs":["answers_intermediate_value","omits_constant_term","omits_variable_term"],
- "status":"pending_approval",
+ "status":"approved",
  "phase1_proposal":"Stopped mid-procedure -> answers_intermediate_value; procedure completed but the constant was never in it -> omits_constant_term.",
  "phase1_problem":"Does not break the tie for 'computes the rate portion and forgets the flat fee', which reads as both; and has no home for the mirror case where the variable term is the one missing.",
  "phase2_proposal":"Tag by what is missing from the answer, not by where the student stopped. Missing fixed component -> omits_constant_term. Missing variable component -> omits_variable_term. A correct intermediate quantity of a different kind (scale factor, unit rate, pre-division sum, count of parts) -> answers_intermediate_value. Tie-break: if the reported value is one of the two additive components of a linear model it is an omits_* tag, never answers_intermediate_value.",
- "blocks":"Phase 3 tagging cannot begin until this is resolved.",
+ "resolution":"Approved as the phase2_proposal, tie-break included. omits_variable_term is an approved slug.",
 }]
 
 EDGE_CASES = {
  "dual_error_rewrites":{
-   "status":"approved_in_principle_text_pending_review",
+   "status":"approved_for_phase3",
    "decision":"Rewrite to single-error prose rather than multi-tagging, to protect record_misconception() counting.",
    "items":["PR_P_005.C","PR_P_005.D","PR_A_006.C","AR_P_030.C"],
-   "note":"Before/after text is in the Phase 2 report. PR_P_005.D additionally exposes an item defect: answer choice D states a total of 18 but its stated reason (omitting the Yellow row) yields 16. Fixing that requires editing answer_choices, which is outside the distractor_logic-only scope of Phase 3.",
+   "note":"PR_P_005.D exposed an item defect: answer choice D stated a total of 18 while its stated reason (omitting the Yellow row) yields 16. Approved resolution is option (a) -- correct the arithmetic in answer_choices.D to 16, keep the omission reasoning, tag single_cell_read_where_sum_needed. This is the one approved edit outside distractor_logic.",
  },
  "pr41_judgement_calls":{
    "status":"resolved_in_phase2",
@@ -589,6 +591,8 @@ def build():
         add(s,d,"topic_specific","cat_bank",tp,n)
     for s,d,tp,n in PENDING:
         add(s,d,"cross_cutting","cat_bank",tp,n,status="proposed_pending_decision")
+    for s,d,tp,n in APPROVED_LATE:
+        add(s,d,"cross_cutting","cat_bank",tp,n)
 
     out = {
       "schema_version":"1.0",
@@ -662,7 +666,8 @@ def markdown(out):
         a(f"- Phase 1 proposal: {b['phase1_proposal']}")
         a(f"- Problem with it: {b['phase1_problem']}")
         a(f"- Phase 2 proposal: {b['phase2_proposal']}")
-        a(f"- **{b['blocks']}**\n")
+        if b.get("resolution"): a(f"- **Resolution: {b['resolution']}**\n")
+        if b.get("blocks"): a(f"- **{b['blocks']}**\n")
     for layer,title in [("cross_cutting","Cross-cutting slugs"),("topic_specific","Topic-specific slugs")]:
         a(f"## {title}\n")
         rows=[s for s in out["slugs"] if s["layer"]==layer]
