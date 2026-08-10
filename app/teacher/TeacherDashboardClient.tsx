@@ -9,6 +9,7 @@ import { DASH, cardStyle } from '../components/dashboard-theme';
 import { HoverLabel, HOVER_LABEL_CSS, useHoverLabel } from '../components/HoverLabel';
 import NewAnnouncement from './NewAnnouncement';
 import SupportModal from '../components/SupportModal';
+import TeacherTour, { TOUR_STORAGE_KEY } from './TeacherTour';
 
 // ─── Types (match the API route response shapes) ─────────────────────────────
 
@@ -193,11 +194,13 @@ function Brand({ collapsed }: { collapsed: boolean }) {
 
 // ─── Sidebar ─────────────────────────────────────────────────────────────────
 
-const NAV_ITEMS = [
+// `tour` is the data-tour key TeacherTour targets. Only the two items the tour
+// stops at carry one; the rest are undefined and render no attribute.
+const NAV_ITEMS: { label: string; href: string; tour?: string }[] = [
   { label: 'Dashboard', href: '/teacher' },
-  { label: 'Misconceptions', href: '/teacher#misconceptions' },
+  { label: 'Misconceptions', href: '/teacher#misconceptions', tour: 'nav-misconceptions' },
   { label: 'Students', href: '/teacher#roster' },
-  { label: 'Take a practice test', href: '/adaptive-test' },
+  { label: 'Take a practice test', href: '/adaptive-test', tour: 'nav-practice' },
   { label: 'Student view', href: '/dashboard' },
 ];
 
@@ -248,6 +251,7 @@ function SidebarInner({
   collapsed = false,
   onNavigate,
   onOpenSupport,
+  onStartTour,
 }: {
   teacherName: string;
   teacherEmail: string;
@@ -255,6 +259,10 @@ function SidebarInner({
   collapsed?: boolean;
   onNavigate?: () => void;
   onOpenSupport: () => void;
+  /** Launches the tour. Passed by both rails -- the desktop aside and the
+   *  compact slide-over -- so the entry point does not vanish at 1024px the way
+   *  the rail itself does. */
+  onStartTour: () => void;
 }) {
   const initials = teacherName.split(/[\s._-]+/).map((x) => x[0]).join('').slice(0, 2).toUpperCase() || 'T';
   const { tip, hovered, showTip, hideTip } = useHoverLabel();
@@ -299,6 +307,7 @@ function SidebarInner({
               href={item.href}
               onClick={onNavigate}
               aria-label={item.label}
+              data-tour={item.tour}
               onMouseEnter={showTip(item.label)}
               onMouseLeave={hideTip}
               style={{
@@ -349,6 +358,16 @@ function SidebarInner({
               </a>
               <button
                 role="menuitem"
+                onClick={() => { setAccountOpen(false); onStartTour(); }}
+                style={{ ...menuItemStyle, width: '100%', border: 'none', background: 'transparent', cursor: 'pointer', textAlign: 'left' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F3'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+              >
+                <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="9" r="7" /><path d="M11.9 6.1 L7.9 7.9 L6.1 11.9 L10.1 10.1 Z" /></svg>
+                Take a Tour
+              </button>
+              <button
+                role="menuitem"
                 onClick={() => { setAccountOpen(false); onOpenSupport(); }}
                 style={{ ...menuItemStyle, width: '100%', border: 'none', background: 'transparent', cursor: 'pointer', textAlign: 'left' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F3'; }}
@@ -367,6 +386,7 @@ function SidebarInner({
             aria-label="Profile"
             aria-haspopup="menu"
             aria-expanded={accountOpen}
+            data-tour="profile"
             onClick={() => setAccountOpen((v) => !v)}
             onMouseEnter={showTip('Profile')}
             onMouseLeave={hideTip}
@@ -427,7 +447,7 @@ function SummaryCards({ enrolled, notTested, crCount, crPct, weakStrand, avgScor
   const card = { ...cardStyle(), padding: '18px 18px 16px' };
   const labelStyle = { fontSize: 11, fontWeight: 600, letterSpacing: 0.7, textTransform: 'uppercase' as const, color: DASH.dim };
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols},1fr)`, gap: 16, marginBottom: 16 }}>
+    <div data-tour="summary" style={{ display: 'grid', gridTemplateColumns: `repeat(${cols},1fr)`, gap: 16, marginBottom: 16 }}>
       <div style={card}>
         <div style={labelStyle}>Students enrolled</div>
         <div style={{ marginTop: 10, fontSize: 32, fontWeight: 700, color: DASH.heading, fontVariantNumeric: 'tabular-nums', lineHeight: 1 }}>{enrolled}</div>
@@ -475,7 +495,7 @@ function SummaryCards({ enrolled, notTested, crCount, crPct, weakStrand, avgScor
 
 function StrandPanel({ strandPct, totalAttempts, cols }: { strandPct: Record<Strand, number>; totalAttempts: number; cols: number }) {
   return (
-    <div style={{ ...cardStyle(), padding: '20px 22px', marginBottom: 26 }}>
+    <div data-tour="strand" style={{ ...cardStyle(), padding: '20px 22px', marginBottom: 26 }}>
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 18, gap: 12, flexWrap: 'wrap' }}>
         <div>
           <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: DASH.heading }}>Class strand mastery</h2>
@@ -721,7 +741,7 @@ function TopBar({ classes, selectedClassId, onSelectClass, joinCode, onInvite, o
     <header style={{ background: '#fff', borderBottom: '1px solid rgba(15,30,53,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: isMobile ? '10px 16px' : '0 28px', minHeight: 60, flexWrap: isMobile ? 'wrap' : 'nowrap', position: 'sticky', top: 0, zIndex: 20 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
         {isCompact && (
-          <button onClick={onMenu} aria-label="Open menu" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 38, height: 38, borderRadius: 9, border: '1px solid #D3D1C7', background: '#fff', cursor: 'pointer', flexShrink: 0 }}>
+          <button onClick={onMenu} aria-label="Open menu" data-tour="menu-button" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 38, height: 38, borderRadius: 9, border: '1px solid #D3D1C7', background: '#fff', cursor: 'pointer', flexShrink: 0 }}>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#0F1E35" strokeWidth="1.8" strokeLinecap="round"><line x1="2.5" y1="5" x2="15.5" y2="5" /><line x1="2.5" y1="9" x2="15.5" y2="9" /><line x1="2.5" y1="13" x2="15.5" y2="13" /></svg>
           </button>
         )}
@@ -742,7 +762,7 @@ function TopBar({ classes, selectedClassId, onSelectClass, joinCode, onInvite, o
 
       <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 8 : 12, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
         {joinCode && (
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 9, background: '#F5F5F3', border: '1px solid #E2E0D8', borderRadius: 9, padding: '6px 10px 6px 12px' }}>
+          <div data-tour="join-code" style={{ display: 'inline-flex', alignItems: 'center', gap: 9, background: '#F5F5F3', border: '1px solid #E2E0D8', borderRadius: 9, padding: '6px 10px 6px 12px' }}>
             <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: 0.8, textTransform: 'uppercase', color: DASH.dim }}>Join code</span>
             <span style={{ fontFamily: "'Courier New', monospace", fontSize: 13.5, fontWeight: 700, color: DASH.heading, letterSpacing: 0.5 }}>{joinCode}</span>
             <span style={{ width: 1, height: 16, background: '#D3D1C7' }} />
@@ -756,14 +776,14 @@ function TopBar({ classes, selectedClassId, onSelectClass, joinCode, onInvite, o
           </div>
         )}
         {classes.length > 0 && (
-          <button onClick={onInvite} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: '#fff', border: '1px solid #D3D1C7', borderRadius: 9, padding: '8px 13px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: DASH.heading }}
+          <button onClick={onInvite} data-tour="invite" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: '#fff', border: '1px solid #D3D1C7', borderRadius: 9, padding: '8px 13px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: DASH.heading }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F3'; }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#fff'; }}>
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"><line x1="8" y1="3.5" x2="8" y2="12.5" /><line x1="3.5" y1="8" x2="12.5" y2="8" /></svg>
             Invite
           </button>
         )}
-        <button onClick={onNewClass} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: '#C68A2F', border: 'none', borderRadius: 9, padding: '9px 14px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: '#fff' }}
+        <button onClick={onNewClass} data-tour="new-class" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: '#C68A2F', border: 'none', borderRadius: 9, padding: '9px 14px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: '#fff' }}
           onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#B27C29'; }}
           onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#C68A2F'; }}>
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><line x1="8" y1="3.5" x2="8" y2="12.5" /><line x1="3.5" y1="8" x2="12.5" y2="8" /></svg>
@@ -807,7 +827,7 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile }:
   students: DisplayStudent[]; enrolled: number; sortBy: string; onSortChange: (s: string) => void; classId: string; isMobile: boolean;
 }) {
   return (
-    <div id="roster">
+    <div id="roster" data-tour="roster">
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 13, gap: 12, flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
           <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: DASH.heading }}>Class roster</h2>
@@ -908,8 +928,9 @@ function Spinner() {
 const SIDEBAR_W = 200;
 const SIDEBAR_W_COLLAPSED = 64;
 
-export default function TeacherDashboardClient({ initialClasses, teacherName, teacherEmail, isFounder }: {
+export default function TeacherDashboardClient({ initialClasses, teacherName, teacherEmail, isFounder, tourState }: {
   initialClasses: ClassRow[]; teacherName: string; teacherEmail: string; isFounder: boolean;
+  tourState: 'done' | 'pending' | 'unavailable';
 }) {
   const [classes, setClasses] = useState<ClassRow[]>(initialClasses);
   const [selectedClassId, setSelectedClassId] = useState<string>(initialClasses[0]?.id ?? '');
@@ -922,6 +943,15 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
   const [menuOpen, setMenuOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
+  // Starts false so the tour never renders on the server or the first paint,
+  // and is decided on mount once localStorage is readable. Set back to false
+  // when the teacher finishes or skips.
+  const [tourAllowed, setTourAllowed] = useState(false);
+  const [tourStarted, setTourStarted] = useState(false);
+  // Set by "Take a Tour" in the account menu. Kept separate from tourAllowed so
+  // an explicit request is not subject to the once-only gates: a teacher asking
+  // for the walkthrough should get it however many times they ask.
+  const [tourManual, setTourManual] = useState(false);
 
   const { isMobile, isCompact } = useViewport();
 
@@ -949,6 +979,23 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
 
   useEffect(() => { posthog.capture('dashboard_viewed', { dashboard_type: 'teacher' }); }, []);
   useEffect(() => { loadClassData(selectedClassId); }, [selectedClassId, loadClassData]);
+
+  // Tour eligibility, part one: has this teacher already seen it?
+  //
+  // The server flag wins when it exists. 'unavailable' means
+  // sql/teacher_tour_flag.sql has not been run, so there is no per-account
+  // record and the browser's own is the best available answer.
+  useEffect(() => {
+    if (tourState === 'done') return;
+    let seen = false;
+    try {
+      seen = window.localStorage.getItem(TOUR_STORAGE_KEY) === '1';
+    } catch {
+      // Blocked store. Fall through and show it; a tour that runs twice is a
+      // smaller failure than one that can never run.
+    }
+    if (!seen) setTourAllowed(true);
+  }, [tourState]);
 
   // ─── Derived stats ───
   const rosterRows = roster ?? [];
@@ -991,6 +1038,31 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
 
   const loading = roster === null;
 
+  // Tour eligibility, part two: is there anything to point at?
+  //
+  //   classes  — with no classes the page renders only the empty-state card;
+  //              the join code, Invite, summary, strand panel, roster and
+  //              misconceptions are all unrendered, and 7 of 10 steps would
+  //              highlight nothing.
+  //   loading  — same problem for one render pass while the roster fetches.
+  const tourHasTargets = !loading && !rosterError && classes.length > 0;
+
+  // Once it is running, only a dismissal or a shrink past 1024px takes it down.
+  // Without the latch a roster refetch would flip `loading` back to true and
+  // unmount the tour mid-step, losing the teacher's place.
+  const autoTour = tourAllowed && (tourStarted || tourHasTargets);
+
+  // The manual launch skips tourHasTargets on purpose. A teacher with no class
+  // yet is exactly who benefits from step 1, and a step whose target is missing
+  // degrades to a centred card carrying the same text rather than breaking.
+  //
+  // It also skips isCompact, which the auto-run still honours. Those are two
+  // different questions: whether to interrupt someone unprompted on a narrow
+  // screen (no), and whether to refuse someone who explicitly asked (no).
+  // Below 1024px the rail is not in the DOM, so steps 8-10 retarget onto the
+  // menu button holding those items -- see compactTarget in TeacherTour.
+  const showTour = tourManual || (!isCompact && autoTour);
+
   return (
     <>
       <style>{`
@@ -1007,6 +1079,10 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
             sticky top bar. */}
         {!isCompact && (
           <aside
+            // Marks the rail as a keep-out region for the tour card, which must
+            // not be laid over it. Not a data-tour key: this is geometry the
+            // tour reads, never a step target.
+            data-tour-rail=""
             style={{
               width: collapsed ? SIDEBAR_W_COLLAPSED : SIDEBAR_W,
               flex: `0 0 ${collapsed ? SIDEBAR_W_COLLAPSED : SIDEBAR_W}px`,
@@ -1022,6 +1098,7 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
               isFounder={isFounder}
               collapsed={collapsed}
               onOpenSupport={() => setShowSupport(true)}
+              onStartTour={() => setTourManual(true)}
             />
 
             {/* Collapse handle, sat on the seam where the navy rail meets the
@@ -1065,6 +1142,10 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
                 isFounder={isFounder}
                 onNavigate={() => setMenuOpen(false)}
                 onOpenSupport={() => { setMenuOpen(false); setShowSupport(true); }}
+                // Closing the slide-over first matters: it is a fixed, full
+                // height panel, and leaving it up would cover the very targets
+                // the first steps point at.
+                onStartTour={() => { setMenuOpen(false); setTourManual(true); }}
               />
             </aside>
           </div>
@@ -1145,6 +1226,13 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
       {showInvite && selectedClass && <InviteModal classId={selectedClass.id} onClose={() => setShowInvite(false)} />}
       {showNewClass && <NewClassModal onClose={() => setShowNewClass(false)} onCreated={handleClassCreated} />}
       {showSupport && <SupportModal onClose={() => setShowSupport(false)} />}
+      {showTour && (
+        <TeacherTour
+          compact={isCompact}
+          onStarted={() => setTourStarted(true)}
+          onClose={() => { setTourAllowed(false); setTourManual(false); }}
+        />
+      )}
     </>
   );
 }

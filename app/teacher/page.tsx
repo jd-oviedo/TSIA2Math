@@ -48,6 +48,26 @@ export default async function TeacherPage() {
     .maybeSingle();
   const isFounder = founderRow?.is_founder === true;
 
+  // Onboarding tour flag, read separately from is_founder for the same reason
+  // is_founder is read separately from the access gate: a select naming a
+  // column that does not exist fails as a whole, so combining the two would
+  // mean an unrun sql/teacher_tour_flag.sql took the founder badge down with
+  // it. Three tolerant reads, three independent failure modes.
+  //
+  // 'unavailable' is the pre-migration state and is not the same as 'pending':
+  // it tells the client there is no per-account record to trust, so fall back
+  // to localStorage rather than showing the tour on every machine forever.
+  const { data: tourRow, error: tourError } = await admin
+    .from("profiles")
+    .select("teacher_tour_done")
+    .eq("id", session.user.id)
+    .maybeSingle();
+  const tourState: "done" | "pending" | "unavailable" = tourError
+    ? "unavailable"
+    : tourRow?.teacher_tour_done === true
+      ? "done"
+      : "pending";
+
   const meta = session.user.user_metadata ?? {};
   const teacherName: string =
     meta.full_name || meta.name || (session.user.email?.split("@")[0] ?? "Teacher");
@@ -59,6 +79,7 @@ export default async function TeacherPage() {
       teacherName={teacherName}
       teacherEmail={teacherEmail}
       isFounder={isFounder}
+      tourState={tourState}
     />
   );
 }

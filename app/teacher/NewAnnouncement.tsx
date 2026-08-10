@@ -80,6 +80,7 @@ export default function NewAnnouncement({
 
   return (
     <div
+      data-tour="announcements"
       style={{
         background: '#fff',
         border: '1px solid rgba(15,30,53,0.07)',
