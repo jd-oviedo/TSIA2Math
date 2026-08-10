@@ -35,6 +35,11 @@
       "C": "Student correctly identifies the domain and range values but lists the repeated output 3 twice, treating the range as an ordered list rather than a set.",
       "D": "Student notices that the value 3 appears as an output and incorrectly adds it to the domain, conflating the shared numerical value with membership in the input set."
     },
+    "misconception_tag": {
+      "A": "domain_range_swap",
+      "C": "set_listed_as_multiset",
+      "D": "domain_range_swap"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student swaps domain and range, assigning the output values to the domain and the input values to the range.",
       "C": "Correct: domain = {1, 2, 3, 4}; range = {6, 8, 10} (6 listed once).",
       "D": "Student drops input 3 from the domain because f(3) = 6 repeats an output already seen for f(1), incorrectly reasoning that a repeated output means the corresponding input is not a valid domain element."
+    },
+    "misconception_tag": {
+      "A": "set_listed_as_multiset",
+      "B": "domain_range_swap",
+      "D": "domain_range_swap"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student swaps domain and range, assigning the y-interval to the domain and the x-interval to the range.",
       "D": "Correct: the segment spans x \u2208 [\u22123, 5] and y \u2208 [1, 9], both expressed as closed intervals."
     },
+    "misconception_tag": {
+      "A": "range_as_endpoints_only",
+      "B": "range_as_endpoints_only",
+      "C": "domain_range_swap"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student applies the squaring to the magnitude of the boundaries but preserves sign, producing \u221216 as a lower bound \u2014 forgetting that x\u00b2 is always non-negative and cannot produce a negative output.",
       "C": "Student reads the range endpoints directly from the domain boundaries without squaring, using 0 and 4 instead of 0 and 16.",
       "D": "Student correctly identifies the domain and range values but swaps them, assigning [0, 16] to the domain and [\u22124, 4] to the range."
+    },
+    "misconception_tag": {
+      "B": "sign_error_on_constant",
+      "C": "domain_range_swap",
+      "D": "domain_range_swap"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student recognizes that g is a transformation of f but leaves the domain unchanged at [\u22122, 6], failing to account for the horizontal shift introduced by (x \u2212 3).",
       "D": "Student correctly shifts the domain right by 3 to get [1, 9] but also shifts the range up by 3 to get [4, 12], not recognizing that the range is determined by f's output values and is unaffected by the input substitution."
     },
+    "misconception_tag": {
+      "B": "shift_applied_to_wrong_axis",
+      "C": "shift_applied_to_wrong_axis",
+      "D": "shift_applied_to_wrong_axis"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Correct: range = [\u22121, 3) \u222a {5}. The first piece produces outputs in [\u22121, 3) with 3 excluded because x = 1 is not in the first piece's domain; the second piece adds the isolated value 5.",
       "C": "Student computes the first piece's range as [\u22121, 3] \u2014 closed at both ends \u2014 forgetting that x = 1 is excluded from the first piece (open boundary), so the output h = 3 is never achieved by that piece.",
       "D": "Student confuses the open boundary at x = 1 (which makes the right end of the first piece's range open at 3) with the left end of the range, incorrectly writing (\u22121, 3) and excluding the value \u22121 even though h(\u22123) = \u22121 is achieved."
+    },
+    "misconception_tag": {
+      "A": "jump_discontinuity_ignored",
+      "C": "piecewise_boundary_openness_error",
+      "D": "piecewise_boundary_openness_error"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
