@@ -35,6 +35,11 @@
       "C": "Student double-counts each of the three axes, once toward the vertex and once toward the opposite side, reporting 6 instead of 3.",
       "D": "Student finds two of the three axes but overlooks the third."
     },
+    "misconception_tag": {
+      "A": "symmetry_axes_undercounted",
+      "C": "symmetry_axes_double_counted",
+      "D": "symmetry_axes_undercounted"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -113,6 +118,11 @@
       "B": "Student double-counts each of the four axes, once in each direction, reporting 8 instead of 4.",
       "C": "Correct: two mid-side axes plus two diagonals give four lines of symmetry.",
       "D": "Student counts only the single vertical axis."
+    },
+    "misconception_tag": {
+      "A": "symmetry_axes_undercounted",
+      "B": "symmetry_axes_double_counted",
+      "D": "symmetry_axes_undercounted"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -193,6 +203,11 @@
       "C": "Student finds only one of the two mid-side axes.",
       "D": "Student believes a rectangle has no line symmetry at all, confusing it with a parallelogram that is not a rectangle."
     },
+    "misconception_tag": {
+      "B": "symmetry_axes_undercounted",
+      "C": "symmetry_axes_undercounted",
+      "D": "symmetry_axes_undercounted"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -271,6 +286,11 @@
       "B": "Student overlooks that a rectangle also has line symmetry. It does have $180^{\\circ}$ rotational symmetry, but it has two lines of symmetry as well, so it does not fit no line of symmetry.",
       "C": "Student overlooks that an equilateral triangle has line symmetry. It has rotational symmetry of order 3 but also three lines of symmetry.",
       "D": "Correct: a generic parallelogram has $180^{\\circ}$ rotational symmetry but no line of symmetry."
+    },
+    "misconception_tag": {
+      "A": "line_vs_rotational_symmetry_confused",
+      "B": "line_vs_rotational_symmetry_confused",
+      "C": "line_vs_rotational_symmetry_confused"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -352,6 +372,11 @@
       "C": "Correct: the hexagon matches itself at six rotations in a full turn, so the order is 6.",
       "D": "Student doubles the count by tallying both clockwise and counterclockwise rotations to each position, reporting 12 instead of 6."
     },
+    "misconception_tag": {
+      "A": "rotation_angle_reported_for_order",
+      "B": "rotation_angle_reported_for_order",
+      "D": "symmetry_axes_double_counted"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -431,6 +456,11 @@
       "B": "Student assumes every regular polygon has point symmetry, incorrectly attributing $180^{\\circ}$ symmetry to the pentagon whose odd vertex count prevents it.",
       "C": "Student reverses the relationship, attributing point symmetry to the pentagon and denying it to the hexagon.",
       "D": "Student denies the hexagon its true point symmetry, overlooking that its even vertex count makes a half-turn map it onto itself."
+    },
+    "misconception_tag": {
+      "B": "point_symmetry_wrongly_attributed",
+      "C": "point_symmetry_wrongly_attributed",
+      "D": "point_symmetry_wrongly_attributed"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
