@@ -35,6 +35,11 @@
       "C": "Student multiplies price by quantity (22.50 \u00d7 5 = \\$112.50) instead of dividing to find the unit rate.",
       "D": "Student inverts the division, computing quantity \u00f7 price (5 \u00f7 22.50 \u2248 \\$0.22), finding pounds per dollar instead of dollars per pound."
     },
+    "misconception_tag": {
+      "A": "adds_instead_of_scales",
+      "C": "multiplies_instead_of_divides",
+      "D": "reversed_division"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student assigns Brand B's unit rate (\\$0.19/oz) to Brand A, then selects A as the better value based on the swapped rate.",
       "C": "Correct: Brand B at \\$0.19/oz is cheaper than Brand A at \\$0.20/oz.",
       "D": "Student correctly identifies Brand B as the better value but reports Brand A's unit rate (\\$0.20/oz) instead of Brand B's (\\$0.19/oz)."
+    },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "reads_wrong_category",
+      "D": "reads_wrong_category"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student adds the rate and quantity (32 + 11 = 43) instead of multiplying.",
       "D": "Student multiplies correctly but uses 10 gallons instead of 11 (32 \u00d7 10 = 320), dropping the last gallon."
     },
+    "misconception_tag": {
+      "B": "reversed_division",
+      "C": "adds_instead_of_scales",
+      "D": "wrong_period_count_used"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student correctly finds the unit rate (15 boxes/hour) but stops there without multiplying by 8 hours.",
       "C": "Student multiplies the given values together (90 \u00d7 6 = 540) instead of first dividing to find the unit rate.",
       "D": "Correct: 90 \u00f7 6 = 15 boxes/hr; 15 \u00d7 8 = 120 boxes."
+    },
+    "misconception_tag": {
+      "A": "adds_instead_of_scales",
+      "B": "answers_intermediate_value",
+      "C": "multiplies_instead_of_divides"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Correct: 60 \u00d7 5,280 \u00f7 3,600 = 88 ft/s.",
       "D": "Student correctly multiplies by 5,280 but divides by 600 instead of 3,600 (using 10 minutes instead of 60 minutes per hour): 60 \u00d7 5,280 \u00f7 600 = 528."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "inverts_conversion_direction",
+      "D": "inverts_conversion_direction"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Correct: 260 miles \u00f7 5 hours = 52 mph.",
       "C": "Student uses only the second segment's speed (80 \u00f7 2 = 40 mph), ignoring the first segment.",
       "D": "Student uses only the first segment's speed (180 \u00f7 3 = 60 mph), ignoring the second segment."
+    },
+    "misconception_tag": {
+      "A": "speeds_averaged_arithmetically",
+      "C": "single_segment_used_for_whole",
+      "D": "single_segment_used_for_whole"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Correct: combined rate = $\\frac{5}{12}$ tank/hr; time = $\\frac{12}{5}$ = 2.4 hours.",
       "D": "Student uses Pipe A's rate for both pipes ($\\frac{1}{4}$ + $\\frac{1}{4}$ = $\\frac{1}{2}$ tank/hr), giving a time of 2 hours, neglecting that Pipe B fills more slowly."
     },
+    "misconception_tag": {
+      "A": "speeds_averaged_arithmetically",
+      "B": "times_added_instead_of_rates_combined",
+      "D": "single_segment_used_for_whole"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -595,6 +630,11 @@
       "C": "Student divides 540 mL by 50 instead of 1,000 (confusing the conversion factor), giving 540 \u00f7 50 = 10.8 liters.",
       "D": "Student divides 540 mL by 100 instead of 1,000 (applying a 1 L = 100 mL misconception), giving 540 \u00f7 100 = 5.4 liters."
     },
+    "misconception_tag": {
+      "B": "inverts_conversion_direction",
+      "C": "inverts_conversion_direction",
+      "D": "inverts_conversion_direction"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -674,6 +714,11 @@
       "B": "Student correctly finds the meeting time (3 hours) but multiplies by Train B's speed (55 \u00d7 3 = 165 miles) instead of Train A's speed.",
       "C": "Student correctly computes the closing rate (75 + 55 = 130 mph) and the meeting time (390 \u00f7 130 = 3 hours) but then reports the closing rate value (130) as Train A\u2019s distance in miles, confusing a speed with a distance.",
       "D": "Correct: closing rate = 130 mph; time = 3 hours; Train A travels 75 \u00d7 3 = 225 miles."
+    },
+    "misconception_tag": {
+      "A": "single_segment_used_for_whole",
+      "B": "reads_wrong_category",
+      "C": "closing_rate_reported_as_distance"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -759,6 +804,11 @@
       "B": "Correct: $\\frac{x}{20}$ + (50 \u2212 x)/8 = 4 \u2192 x = 30 simple pages.",
       "C": "Student guesses or estimates without solving the equation, selecting 40 as a round number near the total, which gives a time of $\\frac{40}{20}$ + $\\frac{10}{8}$ = 3.25 min \u2260 4 min.",
       "D": "Student splits the 50-page job evenly (50 \u00f7 2 = 25 simple, 25 complex) without using the time constraint, giving a time of $\\frac{25}{20}$ + $\\frac{25}{8}$ = 4.375 min \u2260 4 min."
+    },
+    "misconception_tag": {
+      "A": "proportion_solved_for_wrong_unknown",
+      "C": "proportion_solved_for_wrong_unknown",
+      "D": "single_segment_used_for_whole"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
