@@ -24,7 +24,12 @@ Three checks per relation:
           reads as a grant on every table in the database.
 
   COLUMNS For relations that are meant to be public, are any answer-bearing
-          column names present in the payload?
+          column names present? Checked twice, against two different sources:
+          the keys of a sampled row, and the columns anon's own OpenAPI spec
+          declares for the relation. The spec check is the load-bearing one --
+          it fires even when the relation currently returns no rows, so a
+          column added to a public view is caught the moment it is added
+          rather than the first time a row happens to come back through it.
 
 A GRANT with no READ is reported but does not fail the audit: with RLS enabled
 and no policy the statement is authorised and still affects zero rows. It is
@@ -50,6 +55,12 @@ ROOT = Path(__file__).resolve().parent.parent
 PUBLIC_BY_DESIGN = {"questions_public", "curriculum_topics_public"}
 
 # Column names that must never appear in an anon-readable payload.
+#
+# `misconception_tag` is answer-bearing the same way `correct_answer` is, but
+# by omission rather than by value: the map holds one slug per wrong option and
+# leaves the correct letter out, so its absence names the answer. That holds for
+# the CAT bank column (questions.misconception_tag) exactly as it does for the
+# curriculum one -- see the header of curriculum/migrations/upload_curriculum.py.
 FORBIDDEN = {
     "correct_answer",
     "misconception_tag",
@@ -124,6 +135,24 @@ def write_grants(url: str, key: str, relation: str, column: str):
     return held
 
 
+def spec_columns(url: str, key: str):
+    """Columns each relation declares in the OpenAPI spec for this key.
+
+    Read with the anon key, this is what a stranger is told the relation has,
+    independent of whether any row currently comes back. A public view that
+    gains an answer-bearing column shows up here immediately; the sampled-row
+    check does not fire until that view returns a row containing it.
+    """
+    status, _, text = request(f"{url}/rest/v1/", key)
+    if status != 200:
+        return None
+    try:
+        definitions = json.loads(text).get("definitions", {})
+    except json.JSONDecodeError:
+        return None
+    return {name: set(body.get("properties", {})) for name, body in definitions.items()}
+
+
 def main() -> int:
     load_env()
     try:
@@ -145,6 +174,14 @@ def main() -> int:
         print("No relations found", file=sys.stderr)
         return 2
 
+    # What anon is told each relation contains. None means the spec could not
+    # be read, which is reported rather than silently skipped -- a column check
+    # that quietly stops running is worse than no column check.
+    anon_spec = spec_columns(url, anon)
+    if anon_spec is None:
+        print("WARNING: could not read the anon OpenAPI spec; "
+              "column checks fall back to sampled rows only.", file=sys.stderr)
+
     print(f"{'RELATION':<26} {'ANON ROWS':<10} {'ANON GRANTS':<16} {'VERDICT':<8} DETAIL")
     print("-" * 100)
 
@@ -159,22 +196,34 @@ def main() -> int:
         readable = rows is not None and rows > 0
         verdict, detail = "OK", ""
 
-        if readable:
-            if relation in PUBLIC_BY_DESIGN:
+        # Column check for the public views. Deliberately NOT gated on
+        # `readable`: a view that declares an answer-bearing column is a
+        # regression whether or not it happens to return rows right now.
+        if relation in PUBLIC_BY_DESIGN:
+            declared = sorted(FORBIDDEN.intersection(anon_spec.get(relation, set()))) \
+                if anon_spec else []
+            sampled = []
+            if readable:
                 _, _, sample = request(f"{url}/rest/v1/{relation}?select=*&limit=1", anon)
                 try:
                     payload = json.loads(sample)
                 except json.JSONDecodeError:
                     payload = []
-                leaked = sorted(FORBIDDEN.intersection(payload[0])) if payload else []
-                if leaked:
-                    verdict = "LEAK"
-                    detail = "answer-bearing columns exposed: " + ", ".join(leaked)
-                else:
-                    detail = f"public by design, redacted ({rows} rows)"
-            else:
+                sampled = sorted(FORBIDDEN.intersection(payload[0])) if payload else []
+
+            if declared or sampled:
                 verdict = "LEAK"
-                detail = f"{rows} rows readable with no login"
+                where = []
+                if declared:
+                    where.append("declared in anon spec: " + ", ".join(declared))
+                if sampled:
+                    where.append("present in sampled row: " + ", ".join(sampled))
+                detail = "answer-bearing columns exposed - " + "; ".join(where)
+            elif readable:
+                detail = f"public by design, redacted ({rows} rows)"
+        elif readable:
+            verdict = "LEAK"
+            detail = f"{rows} rows readable with no login"
 
         if grants:
             held = "+".join(grants)
