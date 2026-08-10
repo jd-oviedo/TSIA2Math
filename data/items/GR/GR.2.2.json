@@ -35,6 +35,11 @@
       "C": "Student doubles the diameter before multiplying by \u03c0: \u03c0(2 \u00d7 10) = 20\u03c0 cm.",
       "D": "Student squares the diameter instead of multiplying by it, applying an area-like operation to the circumference formula: \u03c0(10\u00b2) = 100\u03c0 cm."
     },
+    "misconception_tag": {
+      "A": "radius_diameter_substituted",
+      "C": "result_doubled_twice",
+      "D": "circumference_area_confusion"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student squares the radius instead of multiplying, confusing the circumference formula with the area formula: \u03c0(7\u00b2) = 49\u03c0 ft.",
       "C": "Student applies the correct formula but then doubles the result a second time: 2 \u00d7 14\u03c0 = 28\u03c0 ft.",
       "D": "Correct: C = 2\u03c0r = 2\u03c0(7) = 14\u03c0 ft."
+    },
+    "misconception_tag": {
+      "A": "factor_of_two_omitted",
+      "B": "circumference_area_confusion",
+      "C": "result_doubled_twice"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student doubles the diameter before multiplying: 3.14 \u00d7 (2 \u00d7 5) = 3.14 \u00d7 10 = 31.4 m.",
       "D": "Student squares the diameter instead of multiplying by it: 3.14 \u00d7 (5\u00b2) = 3.14 \u00d7 25 = 78.5 m."
     },
+    "misconception_tag": {
+      "B": "radius_diameter_substituted",
+      "C": "result_doubled_twice",
+      "D": "circumference_area_confusion"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student applies the area formula \u03c0r\u00b2 instead of the circumference formula: 3.14 \u00d7 6\u00b2 = 3.14 \u00d7 36 = 113.04 in.",
       "C": "Correct: C = 2\u03c0r = 2 \u00d7 3.14 \u00d7 6 = 37.68 in.",
       "D": "Student applies the correct formula but then doubles the result a second time: 2 \u00d7 37.68 = 75.36 in."
+    },
+    "misconception_tag": {
+      "A": "factor_of_two_omitted",
+      "B": "circumference_area_confusion",
+      "D": "result_doubled_twice"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "This expression squares the diameter, combining features of the area formula with the diameter variable \u2014 it does not represent circumference.",
       "D": "Student omits the required factor of 2, using C = \u03c0r instead of C = 2\u03c0r; this formula gives only half the correct circumference."
     },
+    "misconception_tag": {
+      "A": "circumference_area_confusion",
+      "C": "circumference_area_confusion",
+      "D": "factor_of_two_omitted"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student finds the radius instead of the diameter: r = C \u00f7 (2\u03c0) = 18\u03c0 \u00f7 (2\u03c0) = 9 inches.",
       "C": "Student doubles the circumference coefficient rather than dividing by \u03c0: 2 \u00d7 18 = 36 inches.",
       "D": "Student treats 18\u03c0 as requiring further computation and multiplies by \u03c0 \u2248 3.14 instead of dividing: 18 \u00d7 3.14 = 56.52 inches."
+    },
+    "misconception_tag": {
+      "B": "reversed_division",
+      "C": "result_doubled_twice",
+      "D": "reversed_division"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -516,6 +546,11 @@
       "C": "Correct: r = C \u00f7 (2\u03c0) = 43.96 \u00f7 6.28 = 7 cm.",
       "D": "Student divides by 2 only, omitting \u03c0 from the denominator: 43.96 \u00f7 2 = 21.98 cm."
     },
+    "misconception_tag": {
+      "A": "reversed_division",
+      "B": "reversed_division",
+      "D": "reversed_division"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -597,6 +632,11 @@
       "C": "Student applies the correct formula but then doubles the result a second time: 2 \u00d7 18\u03c0 = 36\u03c0 m.",
       "D": "Correct: C = 2\u03c0r = 2\u03c0(9) = 18\u03c0 m."
     },
+    "misconception_tag": {
+      "A": "factor_of_two_omitted",
+      "B": "circumference_area_confusion",
+      "C": "result_doubled_twice"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -676,6 +716,11 @@
       "B": "Correct: C = \u03c0d = 3.14 \u00d7 14 = 43.96 cm.",
       "C": "Student doubles the correct circumference, possibly from applying 2\u03c0d instead of \u03c0d: 2 \u00d7 43.96 = 87.92 cm.",
       "D": "Student squares the diameter and multiplies by \u03c0: 3.14 \u00d7 14\u00b2 = 3.14 \u00d7 196 = 615.44 cm."
+    },
+    "misconception_tag": {
+      "A": "radius_diameter_substituted",
+      "C": "result_doubled_twice",
+      "D": "circumference_area_confusion"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -757,6 +802,11 @@
       "C": "Student substitutes incorrectly, treating d as if it should be doubled again: C = 2\u03c0d doubles the diameter rather than replacing it with 2r.",
       "D": "This is the area formula A = \u03c0r\u00b2, not the circumference formula."
     },
+    "misconception_tag": {
+      "B": "factor_of_two_omitted",
+      "C": "result_doubled_twice",
+      "D": "circumference_area_confusion"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -836,6 +886,11 @@
       "B": "Student takes half the circumference (180\u00b0 fraction) instead of a quarter (90\u00b0 fraction): 75.36 \u00f7 2 = 37.68 cm.",
       "C": "Correct: arc length = ($\\frac{90}{360}$) \u00d7 2\u03c0r = ($\\frac{1}{4}$) \u00d7 75.36 = 18.84 cm.",
       "D": "Student uses C = \u03c0r instead of C = 2\u03c0r when computing the full circumference, then takes the quarter: ($\\frac{1}{4}$) \u00d7 3.14 \u00d7 12 = ($\\frac{1}{4}$) \u00d7 37.68 = 9.42 cm."
+    },
+    "misconception_tag": {
+      "A": "arc_fraction_not_applied",
+      "B": "arc_fraction_not_applied",
+      "D": "factor_of_two_omitted"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -918,6 +973,11 @@
       "C": "Student finds d\u2082 = 30 cm correctly but uses it as the radius in C = 2\u03c0r: 2 \u00d7 3.14 \u00d7 30 = 188.4 cm.",
       "D": "Correct: d\u2081 = 31.4 \u00f7 3.14 = 10 cm; d\u2082 = 3 \u00d7 10 = 30 cm; C\u2082 = 3.14 \u00d7 30 = 94.2 cm."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "answers_intermediate_value",
+      "C": "radius_diameter_substituted"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -998,6 +1058,11 @@
       "B": "Correct: C = 3.14 \u00d7 26 = 81.64 in per rotation; 3 \u00d7 81.64 = 244.92 in.",
       "C": "Student uses the radius (13 in) instead of the diameter in C = \u03c0r, then multiplies by 3: 3.14 \u00d7 13 = 40.82; 40.82 \u00d7 3 = 122.46 in.",
       "D": "Student uses the radius (13 in) in C = \u03c0r for one rotation only, without multiplying by 3: 3.14 \u00d7 13 = 40.82 in."
+    },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "C": "radius_diameter_substituted",
+      "D": "radius_diameter_substituted"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1080,6 +1145,11 @@
       "C": "Student treats the diameter (0.5 km) as the radius, doubling it to get d = 1 km = 1,000 m, then computes C = 3.14 \u00d7 1,000 = 3,140 m.",
       "D": "Student correctly computes C = 1.57 km but then divides by 2 before converting, giving 0.785 km \u00d7 1,000 = 785 m."
     },
+    "misconception_tag": {
+      "B": "metric_prefix_factor_wrong",
+      "C": "radius_diameter_substituted",
+      "D": "metric_prefix_factor_wrong"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1160,6 +1230,11 @@
       "B": "Student multiplies the correct ratio (3) by 2, possibly reasoning that both circumferences include a factor of 2\u03c0: 3 \u00d7 2 = 6 times.",
       "C": "Correct: C_B \u00f7 C_A = 30\u03c0 \u00f7 10\u03c0 = 3; the circumference of Circle B is 3 times that of Circle A.",
       "D": "Student computes (C_B \u2212 C_A) \u00f7 C_A = (30\u03c0 \u2212 10\u03c0) \u00f7 10\u03c0 = 20\u03c0 \u00f7 10\u03c0 = 2, interpreting 'how many times greater' as the difference ratio rather than the total ratio."
+    },
+    "misconception_tag": {
+      "A": "area_ratio_confused_with_linear_ratio",
+      "B": "area_ratio_confused_with_linear_ratio",
+      "D": "area_ratio_confused_with_linear_ratio"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
