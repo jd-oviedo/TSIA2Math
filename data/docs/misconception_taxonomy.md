@@ -3,7 +3,7 @@
 > **Generated file — do not edit.** Source of truth is `data/docs/misconception_taxonomy.json`,
 > built by `scripts/build_misconception_taxonomy.py`. Edit the script, then regenerate.
 
-Status: `draft_phase2_awaiting_approval`
+Status: `approved_phase3_complete`
 
 | | count |
 |---|---:|

@@ -11,7 +11,12 @@ Nothing here reads or writes data/items/** -- tagging is Phase 3.
 """
 import json, re, glob, collections, os, sys
 
-STATUS = "draft_phase2_awaiting_approval"
+# Status of the taxonomy as a whole. Follows the same <state>_<phase> shape as
+# the per-finding statuses below (resolved_in_phase3_closeout,
+# approved_for_phase3). "approved" is the review state; "phase3_complete" is
+# the application state -- every slug reviewed and signed off, and all 3,348
+# distractors across all 1,116 items tagged against it.
+STATUS = "approved_phase3_complete"
 
 # ---------------------------------------------------------------- existing 40
 # Reconstructed from the parenthetical glosses in
@@ -601,7 +606,7 @@ def observed_topics():
 
 def build():
     slugs = {}
-    def add(slug, definition, layer, origin, topics, note, status="draft"):
+    def add(slug, definition, layer, origin, topics, note, status="approved"):
         if slug in slugs:
             slugs[slug]["topics"] = sorted(set(slugs[slug]["topics"]) | set(topics))
             slugs[slug]["strands"] = sorted({strand(t) for t in slugs[slug]["topics"]})
@@ -676,7 +681,7 @@ def build():
       "cross_cutting_from_curriculum":len([s for s in cc if s["origin"]=="curriculum"]),
       "cross_cutting_new":len([s for s in cc if s["origin"]=="cat_bank"]),
       "topic_specific":len(ts),
-      "proposed_pending_decision":len([s for s in slugs.values() if s["status"]!="draft"]),
+      "proposed_pending_decision":len([s for s in slugs.values() if s["status"]!="approved"]),
       "topics_covered":len(TAIL),
     }
     return out, slugs
