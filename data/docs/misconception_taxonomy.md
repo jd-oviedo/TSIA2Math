@@ -7,11 +7,11 @@ Status: `draft_phase2_awaiting_approval`
 
 | | count |
 |---|---:|
-| total slugs | 472 |
-| cross cutting | 86 |
+| total slugs | 475 |
+| cross cutting | 85 |
 | cross cutting from curriculum | 40 |
-| cross cutting new | 46 |
-| topic specific | 386 |
+| cross cutting new | 45 |
+| topic specific | 390 |
 | proposed pending decision | 0 |
 | topics covered | 97 |
 
@@ -83,7 +83,6 @@ Status: `draft_phase2_awaiting_approval`
 | `causation_from_association` | Reads an observed association as an established causal claim, in either direction. | PR | 1 | Single topic today; classified cross-cutting per Phase 1 decision 3 so future inference items need no re-touch. |
 | `center_spread_confusion` | Uses a measure of centre to judge spread, or a measure of spread to judge centre. | PR | 3 |  |
 | `circumference_area_confusion` | Uses a circle's area formula where circumference was required, or vice versa. | GR | 3 | Kept separate per decision 2. |
-| `conditions_on_wrong_group` | Uses the wrong denominator group when computing a conditional probability. | PR | 2 |  |
 | `coordinates_swapped` | Writes an ordered pair with its coordinates exchanged. | AR GR | 5 |  |
 | `divides_instead_of_multiplies` | Divides where the relationship requires multiplication. | AR GR QR | 8 |  |
 | `double_negative_mishandled` | Treats subtracting a negative as subtraction, or a double negation as a single one. | AR QR | 3 |  |
@@ -91,7 +90,6 @@ Status: `draft_phase2_awaiting_approval`
 | `extrapolates_beyond_data` | Applies a model outside the range the data support. | PR | 1 | Single topic today; cross-cutting per decision 3. |
 | `false_radical_distribution` | Applies a false distributive rule to radicals, or combines radicands where the operation does not permit it. | AR QR | 4 |  |
 | `forgets_square_root` | Computes the squared or cubed quantity correctly and reports it without taking the root. | AR GR | 7 | Covers square and cube roots. |
-| `ignores_without_replacement` | Fails to adjust the counts between draws, or adjusts them when replacement occurred. | PR | 2 |  |
 | `inequality_direction_not_flipped` | Fails to reverse the inequality when multiplying or dividing by a negative, or flips it without cause. | AR QR | 4 |  |
 | `inverts_conversion_direction` | Multiplies where the conversion or scale factor requires division, or vice versa. | AR GR QR | 9 |  |
 | `inverts_trig_ratio` | Inverts a trigonometric ratio, placing the wrong side in the numerator. | GR | 2 | Two topics only, but 12 instances and a distinct remediation. |
@@ -105,6 +103,7 @@ Status: `draft_phase2_awaiting_approval`
 | `omits_second_component` | Ignores one part of a composite figure, two-part total or two-stage quantity. | AR GR PR QR | 8 |  |
 | `omits_variable_term` | Reports the fixed component of a linear model and omits the variable or rate component. | AR PR QR | 4 | Approved in the Phase 2 review alongside the intermediate_vs_omission boundary rule. |
 | `order_of_operations_violated` | Evaluates left to right or applies a lower-priority operation first. | AR PR QR | 5 |  |
+| `over_rejects_valid_model` | Rejects a model, survey or inference wholesale rather than naming the specific limitation at issue. | PR | 1 | Added in the Phase 3 closeout as the mirror of extrapolates_beyond_data: one error applies a model where it does not hold, the other discards a model that does. Cross-cutting for the same reason decision 3 gave. |
 | `overgeneralizes_from_sample` | Treats a sample result as an absolute or population-wide claim. | PR | 3 |  |
 | `percent_change_wrong_base` | Divides the change by the new value instead of the original, or applies a percent to the post-change base. | PR QR | 3 |  |
 | `percent_changes_added` | Treats successive percent changes as additive rather than multiplicative. | AR PR QR | 5 |  |
@@ -455,7 +454,8 @@ Status: `draft_phase2_awaiting_approval`
 - `single_cell_read_where_sum_needed` — Reads one cell where two or more must be summed.
 - `unrelated_cells_compared` — Compares two cells with no meaningful relationship to the question.
 
-### PR.1.5 — 4 topic-specific
+### PR.1.5 — 5 topic-specific
+- `averaging_removes_the_variation_studied` — Aggregates or averages across the very dimension the question asks about, removing the variation needed to answer it.  _Added in the Phase 3 closeout; PR_A_021.D was previously tagged graph_type_mismatched_to_variable, but the display suits the data -- the averaging is what discards the evidence._
 - `categorical_numerical_misclassified` — Classifies a categorical variable as numerical, or a numerical variable as categorical.
 - `discrete_continuous_confused` — Confuses discrete and continuous as descriptions of a numerical variable.
 - `graph_type_mismatched_to_variable` — Chooses a display whose requirements the variable type does not meet.
@@ -524,8 +524,9 @@ Status: `draft_phase2_awaiting_approval`
 - `prior_reported_ignoring_condition` — Reports the unconditional probability, ignoring the given condition.
 - `whole_population_as_denominator` — Uses the whole population as the denominator instead of the conditioning group.
 
-### PR.3.5 — 5 topic-specific
+### PR.3.5 — 6 topic-specific
 - `complement_misidentified` — Reports the set itself or the universal set as the complement.
+- `neither_reported_as_both` — Computes the count in neither set and reports it as the count in both.  _Added in the Phase 3 closeout; PR_A_065.C was previously tagged union_intersection_swapped, but the value is the complement of the union, a third region._
 - `overlap_not_subtracted` — Adds two set sizes without subtracting the shared elements.
 - `overlap_subtracted_twice` — Subtracts the shared elements twice from a union.
 - `triple_overlap_not_added_back` — Subtracts the pairwise overlaps without adding back the triple overlap.
@@ -564,7 +565,8 @@ Status: `draft_phase2_awaiting_approval`
 - `benchmark_judged_from_digits` — Judges a value against a benchmark such as one half by inspecting its digits rather than converting.
 - `values_assumed_preordered` — Assumes the values are already listed in order and answers with the given sequence.
 
-### QR.1.3 — 3 topic-specific
+### QR.1.3 — 4 topic-specific
+- `complement_used_instead_of_value` — Uses the complement of the required fraction or proportion in place of the value itself.  _Added in the Phase 3 closeout; QR_P_019.D was previously tagged reads_wrong_category, which implies a labelled group that this item does not have._
 - `long_division_stopped_early` — Stops the long division before the repeating pattern emerges and records the partial quotient.
 - `repeating_block_denominator_wrong` — Uses the wrong power-of-nine denominator for the length of the repeating block.
 - `repeating_block_misidentified` — Applies the pure-repeating rule to digits that are not the repeating block.
@@ -602,9 +604,10 @@ Status: `draft_phase2_awaiting_approval`
 - `absolute_value_as_squaring` — Confuses absolute value with squaring.
 - `absolute_value_leaves_sign` — Believes absolute value leaves a negative sign unchanged.
 
-### QR.2.1 — 3 topic-specific
+### QR.2.1 — 4 topic-specific
 - `ratio_parts_reported_in_answer_units` — Reports the count of ratio parts as the answer quantity.
 - `ratio_terms_multiplied` — Multiplies the two terms of a ratio together instead of partitioning by them.
+- `rounds_up_where_floor_required` — Rounds a quotient up when the constraint that produced it makes only the whole units below it attainable.  _Added in the Phase 3 closeout; QR_A_035.C was previously tagged off_by_one_count, which describes a tally slip rather than rounding against a constraint._
 - `scales_by_wrong_ratio_term` — Finds the unit value correctly but multiplies by the wrong ratio term.
 
 ### QR.2.2 — 3 topic-specific

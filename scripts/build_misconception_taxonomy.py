@@ -105,13 +105,12 @@ CROSS_NEW = [
 ("range_from_single_extreme","Reports the maximum as the range instead of the difference between the extremes.",["PR.2.1","PR.2.4","PR.2.5"],""),
 # probability
 ("reports_event_not_complement","Reports the probability of the event where its complement was asked for, or omits the final subtraction from one.",["PR.3.2","PR.3.3","PR.3.5"],""),
-("conditions_on_wrong_group","Uses the wrong denominator group when computing a conditional probability.",["PR.1.4","PR.3.4"],""),
-("ignores_without_replacement","Fails to adjust the counts between draws, or adjusts them when replacement occurred.",["PR.3.3","PR.3.4"],""),
 # inference
 ("overgeneralizes_from_sample","Treats a sample result as an absolute or population-wide claim.",["PR.1.5","PR.4.1","PR.4.4"],""),
 ("misreads_direction_of_change","Computes a magnitude correctly but labels the direction backward.",["PR.4.1","PR.4.3","QR.2.6","QR.3.4","QR.3.6"],""),
 ("causation_from_association","Reads an observed association as an established causal claim, in either direction.",["PR.4.4"],"Single topic today; classified cross-cutting per Phase 1 decision 3 so future inference items need no re-touch."),
 ("extrapolates_beyond_data","Applies a model outside the range the data support.",["PR.4.4"],"Single topic today; cross-cutting per decision 3."),
+("over_rejects_valid_model","Rejects a model, survey or inference wholesale rather than naming the specific limitation at issue.",["PR.4.4"],"Added in the Phase 3 closeout as the mirror of extrapolates_beyond_data: one error applies a model where it does not hold, the other discards a model that does. Cross-cutting for the same reason decision 3 gave."),
 # structure
 ("order_of_operations_violated","Evaluates left to right or applies a lower-priority operation first.",["AR.1.1","AR.2.8","PR.4.2","QR.1.7","QR.3.1"],""),
 ("squaring_confused_with_doubling","Computes twice a quantity where its square was required, or vice versa.",["AR.4.9","AR.4.10","AR.4.11","GR.2.2","QR.1.7"],""),
@@ -127,7 +126,9 @@ TAIL = {
  ("radical_dropped_for_coefficient","Replaces a radical expression with its coefficient alone, dropping the radical.","")],
 "QR.1.2":[("values_assumed_preordered","Assumes the values are already listed in order and answers with the given sequence.",""),
  ("benchmark_judged_from_digits","Judges a value against a benchmark such as one half by inspecting its digits rather than converting.","")],
-"QR.1.3":[("repeating_block_denominator_wrong","Uses the wrong power-of-nine denominator for the length of the repeating block.",""),
+"QR.1.3":[
+ ("complement_used_instead_of_value","Uses the complement of the required fraction or proportion in place of the value itself.","Added in the Phase 3 closeout; QR_P_019.D was previously tagged reads_wrong_category, which implies a labelled group that this item does not have."),
+("repeating_block_denominator_wrong","Uses the wrong power-of-nine denominator for the length of the repeating block.",""),
  ("repeating_block_misidentified","Applies the pure-repeating rule to digits that are not the repeating block.",""),
  ("long_division_stopped_early","Stops the long division before the repeating pattern emerges and records the partial quotient.","")],
 "QR.1.4":[("midpoint_used_as_estimate","Defaults to the midpoint between two integers instead of testing which bound the value is nearer.",""),
@@ -153,7 +154,9 @@ TAIL = {
  ("absolute_equation_one_case_only","Solves only one case of an absolute-value equation.",""),
  ("absolute_inequality_direction_reversed","Produces the solution set for the opposite absolute-value inequality.",""),
  ("absolute_inequality_boundary_only","Reports only the boundary points, not the interval they enclose.","")],
-"QR.2.1":[("ratio_terms_multiplied","Multiplies the two terms of a ratio together instead of partitioning by them.",""),
+"QR.2.1":[
+ ("rounds_up_where_floor_required","Rounds a quotient up when the constraint that produced it makes only the whole units below it attainable.","Added in the Phase 3 closeout; QR_A_035.C was previously tagged off_by_one_count, which describes a tally slip rather than rounding against a constraint."),
+("ratio_terms_multiplied","Multiplies the two terms of a ratio together instead of partitioning by them.",""),
  ("scales_by_wrong_ratio_term","Finds the unit value correctly but multiplies by the wrong ratio term.",""),
  ("ratio_parts_reported_in_answer_units","Reports the count of ratio parts as the answer quantity.","")],
 "QR.2.2":[("proportional_division_step_skipped","Multiplies the two known quantities without dividing by the third in a proportion.",""),
@@ -432,7 +435,9 @@ TAIL = {
  ("single_cell_read_where_sum_needed","Reads one cell where two or more must be summed.",""),
  ("rank_position_error","Selects the wrong ordinal position when ranking values.",""),
  ("unrelated_cells_compared","Compares two cells with no meaningful relationship to the question.","")],
-"PR.1.5":[("categorical_numerical_misclassified","Classifies a categorical variable as numerical, or a numerical variable as categorical.",""),
+"PR.1.5":[
+ ("averaging_removes_the_variation_studied","Aggregates or averages across the very dimension the question asks about, removing the variation needed to answer it.","Added in the Phase 3 closeout; PR_A_021.D was previously tagged graph_type_mismatched_to_variable, but the display suits the data -- the averaging is what discards the evidence."),
+("categorical_numerical_misclassified","Classifies a categorical variable as numerical, or a numerical variable as categorical.",""),
  ("discrete_continuous_confused","Confuses discrete and continuous as descriptions of a numerical variable.",""),
  ("nominal_applied_to_measurement","Applies an unordered-category term to a measurement variable.",""),
  ("graph_type_mismatched_to_variable","Chooses a display whose requirements the variable type does not meet.","")],
@@ -481,7 +486,9 @@ TAIL = {
  ("conditional_reversed","Computes the conditional probability with its two events exchanged.",""),
  ("joint_reported_as_conditional","Reports the joint probability without dividing by the conditioning probability.",""),
  ("prior_reported_ignoring_condition","Reports the unconditional probability, ignoring the given condition.","")],
-"PR.3.5":[("union_intersection_swapped","Reports the union where the intersection was asked for, or vice versa.",""),
+"PR.3.5":[
+ ("neither_reported_as_both","Computes the count in neither set and reports it as the count in both.","Added in the Phase 3 closeout; PR_A_065.C was previously tagged union_intersection_swapped, but the value is the complement of the union, a third region."),
+("union_intersection_swapped","Reports the union where the intersection was asked for, or vice versa.",""),
  ("complement_misidentified","Reports the set itself or the universal set as the complement.",""),
  ("overlap_not_subtracted","Adds two set sizes without subtracting the shared elements.",""),
  ("overlap_subtracted_twice","Subtracts the shared elements twice from a union.",""),
@@ -530,6 +537,24 @@ MERGED_TAIL = [
 # tagging populates it by reading -- not by regex.
 CURRICULUM_TOPICS = {}
 
+
+# --------------------------------------------------------------- retired
+# Slugs removed in the Phase 3 closeout. Each was redundant against
+# topic-specific slugs that already carried every tag, so retiring them
+# retagged nothing -- they were never applied to an item.
+RETIRED = [
+ {"slug":"conditions_on_wrong_group",
+  "definition":"Uses the wrong denominator group when computing a conditional probability.",
+  "superseded_by":["whole_population_as_denominator","conditional_reversed"],
+  "reason":"The two survivors are the clearer names: they say which wrong group was used (the whole population) or that the conditional was inverted. The umbrella name said neither. It carried 0 tags.",
+  "items_retagged":0},
+ {"slug":"ignores_without_replacement",
+  "definition":"Fails to adjust the counts between draws, or adjusts them when replacement occurred.",
+  "superseded_by":["replacement_status_wrong","total_not_reduced_between_draws"],
+  "reason":"The survivors separate treating the draws as the wrong kind from reducing the favourable count but not the total -- a distinction the umbrella name lost. It carried 0 tags.",
+  "items_retagged":0},
+]
+
 PENDING = []
 
 APPROVED_LATE = [
@@ -564,6 +589,16 @@ EDGE_CASES = {
 # --------------------------------------------------------------------- build
 def strand(t): return t.split(".")[0]
 
+
+def observed_topics():
+    """CAT topics each slug actually tags, read back from data/items."""
+    out=collections.defaultdict(set)
+    for f in glob.glob("data/items/*/*.json"):
+        for it in json.load(open(f)):
+            for slug in (it.get("misconception_tag") or {}).values():
+                out[slug].add(it["topic_id"])
+    return {k:sorted(v) for k,v in out.items()}
+
 def build():
     slugs = {}
     def add(slug, definition, layer, origin, topics, note, status="draft"):
@@ -594,6 +629,9 @@ def build():
     for s,d,tp,n in APPROVED_LATE:
         add(s,d,"cross_cutting","cat_bank",tp,n)
 
+    obs=observed_topics()
+    for sl in slugs.values():
+        sl["cat_topics_observed"]=obs.get(sl["slug"],[])
     out = {
       "schema_version":"1.0",
       "status":STATUS,
@@ -609,6 +647,7 @@ def build():
       "counts":{},
       "boundary_rules":BOUNDARY_RULES,
       "edge_cases":EDGE_CASES,
+      "retired_slugs":RETIRED,
       "phase3_findings":{
         "unused_curriculum_slugs":{
           "slugs":["longer_decimal_is_larger","multiplies_by_ten","percent_as_count","percent_denominator_error","skips_times_100"],

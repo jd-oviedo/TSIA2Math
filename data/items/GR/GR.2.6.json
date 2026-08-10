@@ -915,7 +915,7 @@
     },
     "misconception_tag": {
       "A": "omits_second_component",
-      "B": "omits_second_component",
+      "B": "omits_fractional_factor",
       "C": "omits_second_component"
     },
     "difficulty_level": "Advanced",

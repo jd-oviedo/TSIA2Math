@@ -1251,9 +1251,7 @@ PRIORITY = {
   (r"may differ from those who do not|Interviewing only students|Comparing years without controlling|observational design", "study_design_confused_with_causal_evidence"),
   (r"(turns|converts) an (observed )?association into a causal|accepts the spurious causal claim|treats an observed association as proof", "causation_from_association"),
   (r"ignores the model's data range|justifies extrapolation|assumes the observed trend continues|irrelevant objection about the amount of study", "extrapolates_beyond_data"),
-  # Over-rejection of a model is the mirror error and has no dedicated slug;
-  # routed to the nearest approved concept and flagged in the Phase 3 report.
-  (r"over-rejects", "false_precondition_for_association"),
+  (r"over-rejects", "over_rejects_valid_model"),
 ],
 "QR.1.1":[(r"dropping the radical", "radical_dropped_for_coefficient")],
 "QR.3.1":[(r"incorrectly grouping|groups the \S+ with the tripling|pulls the \S+ inside the average", "wrong_quantity_grouped")],
@@ -1271,3 +1269,23 @@ CORRECTIONS = {
 "GR.2.4":[(r"reports that result as x without subtracting", "answers_intermediate_value")],
 }
 for _t,_r in CORRECTIONS.items(): TOPIC_RULES[_t] = _r + TOPIC_RULES.get(_t,[])
+
+
+# Phase 3 closeout. GR_A_034.B carries two entangled errors; its answer-choice
+# value (301.44) is pi*r^2*h for the cone, so the arithmetic it verifies is the
+# missing one-third, not the omitted cylinder. Tagged to the error the number
+# proves; the item itself is logged in content-fixes-needed.md as an authoring
+# defect, since a distractor must trace to exactly one coherent error.
+TOPIC_RULES["GR.2.6"] = [
+ (r"cone's contribution without the ⅓ factor", "omits_fractional_factor"),
+] + TOPIC_RULES["GR.2.6"]
+
+# Phase 3 closeout, item 2: four approved one-off slugs replacing assignments
+# that were forced into an existing slug during tagging.
+CLOSEOUT = {
+"QR.1.3":[(r"uses \$?\\?frac\{1\}\{4\}\$? = \S+ instead of", "complement_used_instead_of_value")],
+"QR.2.1":[(r"rounds up to \S+ instead of taking the", "rounds_up_where_floor_required")],
+"PR.1.5":[(r"Averaging across \S+ years smooths away", "averaging_removes_the_variation_studied")],
+"PR.3.5":[(r"like neither .{0,30}mislabels it as", "neither_reported_as_both")],
+}
+for _t,_r in CLOSEOUT.items(): TOPIC_RULES[_t] = _r + TOPIC_RULES.get(_t,[])

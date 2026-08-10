@@ -1228,7 +1228,7 @@
     "misconception_tag": {
       "B": "graph_type_mismatched_to_variable",
       "C": "graph_type_mismatched_to_variable",
-      "D": "graph_type_mismatched_to_variable"
+      "D": "averaging_removes_the_variation_studied"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

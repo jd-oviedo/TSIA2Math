@@ -365,7 +365,7 @@
     },
     "misconception_tag": {
       "B": "union_intersection_swapped",
-      "C": "union_intersection_swapped",
+      "C": "neither_reported_as_both",
       "D": "union_intersection_swapped"
     },
     "difficulty_level": "Advanced",

@@ -11,11 +11,11 @@
     "cat_bank": "data/items/**/*.json (distractor_logic, correct-answer slot excluded)"
   },
   "counts": {
-    "total_slugs": 472,
-    "cross_cutting": 86,
+    "total_slugs": 475,
+    "cross_cutting": 85,
     "cross_cutting_from_curriculum": 40,
-    "cross_cutting_new": 46,
-    "topic_specific": 386,
+    "cross_cutting_new": 45,
+    "topic_specific": 390,
     "proposed_pending_decision": 0,
     "topics_covered": 97
   },
@@ -64,6 +64,28 @@
       ]
     }
   },
+  "retired_slugs": [
+    {
+      "slug": "conditions_on_wrong_group",
+      "definition": "Uses the wrong denominator group when computing a conditional probability.",
+      "superseded_by": [
+        "whole_population_as_denominator",
+        "conditional_reversed"
+      ],
+      "reason": "The two survivors are the clearer names: they say which wrong group was used (the whole population) or that the conditional was inverted. The umbrella name said neither. It carried 0 tags.",
+      "items_retagged": 0
+    },
+    {
+      "slug": "ignores_without_replacement",
+      "definition": "Fails to adjust the counts between draws, or adjusts them when replacement occurred.",
+      "superseded_by": [
+        "replacement_status_wrong",
+        "total_not_reduced_between_draws"
+      ],
+      "reason": "The survivors separate treating the draws as the wrong kind from reducing the favourable count but not the total -- a distinction the umbrella name lost. It carried 0 tags.",
+      "items_retagged": 0
+    }
+  ],
   "phase3_findings": {
     "unused_curriculum_slugs": {
       "slugs": [
@@ -127,7 +149,11 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.3",
+        "QR.2.3"
+      ]
     },
     {
       "slug": "absolute_difference_as_product",
@@ -141,7 +167,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.8"
+      ]
     },
     {
       "slug": "absolute_equation_one_case_only",
@@ -155,7 +184,11 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.1",
+        "QR.1.8"
+      ]
     },
     {
       "slug": "absolute_inequality_boundary_only",
@@ -169,7 +202,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.8"
+      ]
     },
     {
       "slug": "absolute_inequality_direction_reversed",
@@ -183,7 +219,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.8"
+      ]
     },
     {
       "slug": "absolute_value_as_additive_inverse",
@@ -197,7 +236,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.8"
+      ]
     },
     {
       "slug": "absolute_value_as_squaring",
@@ -211,7 +253,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.8"
+      ]
     },
     {
       "slug": "absolute_value_leaves_sign",
@@ -225,7 +270,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.8"
+      ]
     },
     {
       "slug": "accuracy_judged_by_format",
@@ -239,7 +287,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.4"
+      ]
     },
     {
       "slug": "added_items_not_reflected_in_total",
@@ -253,7 +304,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.1"
+      ]
     },
     {
       "slug": "adds_exponents_wrongly",
@@ -270,7 +324,12 @@
         "AR"
       ],
       "notes": "Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review so the name covers every displaced rule, not just the power rule.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.10",
+        "AR.4.2",
+        "AR.4.4"
+      ]
     },
     {
       "slug": "adds_instead_of_scales",
@@ -280,7 +339,19 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.6",
+        "AR.4.2",
+        "GR.4.3",
+        "QR.2.1",
+        "QR.2.2",
+        "QR.2.5",
+        "QR.2.6",
+        "QR.2.7",
+        "QR.2.8",
+        "QR.3.8"
+      ]
     },
     {
       "slug": "adds_instead_of_subtracts",
@@ -290,7 +361,26 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.1",
+        "AR.2.1",
+        "AR.2.2",
+        "AR.2.3",
+        "AR.4.3",
+        "AR.4.6",
+        "AR.4.8",
+        "AR.4.9",
+        "GR.1.2",
+        "GR.2.1",
+        "QR.1.8",
+        "QR.3.3",
+        "QR.3.4",
+        "QR.3.5",
+        "QR.4.1",
+        "QR.4.2",
+        "QR.4.3"
+      ]
     },
     {
       "slug": "adds_probabilities_instead_of_multiplying",
@@ -305,7 +395,12 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.2",
+        "PR.3.3",
+        "PR.3.4"
+      ]
     },
     {
       "slug": "adjacent_reported_for_opposite",
@@ -319,7 +414,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.4"
+      ]
     },
     {
       "slug": "adjacent_vs_vertical_confused",
@@ -333,7 +431,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.2"
+      ]
     },
     {
       "slug": "all_intersection_angles_summed",
@@ -347,7 +448,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.2"
+      ]
     },
     {
       "slug": "alligation_ratio_misapplied",
@@ -361,7 +465,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.2"
+      ]
     },
     {
       "slug": "angles_combined_before_applying_ratio",
@@ -375,7 +482,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.4"
+      ]
     },
     {
       "slug": "answers_intermediate_value",
@@ -385,7 +495,41 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.1",
+        "AR.1.5",
+        "AR.2.1",
+        "AR.2.2",
+        "AR.2.4",
+        "AR.4.10",
+        "AR.4.11",
+        "AR.4.9",
+        "GR.1.2",
+        "GR.2.1",
+        "GR.2.2",
+        "GR.2.4",
+        "GR.3.1",
+        "GR.3.4",
+        "GR.4.5",
+        "PR.1.3",
+        "PR.2.1",
+        "PR.4.2",
+        "QR.1.5",
+        "QR.1.7",
+        "QR.2.1",
+        "QR.2.2",
+        "QR.2.3",
+        "QR.2.4",
+        "QR.2.5",
+        "QR.2.6",
+        "QR.2.7",
+        "QR.3.6",
+        "QR.3.7",
+        "QR.3.8",
+        "QR.4.1",
+        "QR.4.2"
+      ]
     },
     {
       "slug": "arc_fraction_not_applied",
@@ -399,7 +543,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.2"
+      ]
     },
     {
       "slug": "area_conversion_factor_not_squared",
@@ -415,7 +562,11 @@
         "QR"
       ],
       "notes": "Merged from GR.1.1 and QR.2.7.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.1",
+        "QR.2.7"
+      ]
     },
     {
       "slug": "area_ratio_confused_with_linear_ratio",
@@ -430,7 +581,13 @@
         "GR"
       ],
       "notes": "Merged from GR.4.2 (area_ratio_reported_as_scale_factor) and GR.4.3 (area_ratio_used_as_side_ratio).",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.2",
+        "GR.2.5",
+        "GR.4.2",
+        "GR.4.3"
+      ]
     },
     {
       "slug": "area_scaled_by_linear_factor",
@@ -444,7 +601,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.3"
+      ]
     },
     {
       "slug": "area_squared_instead_of_rooted",
@@ -458,7 +618,28 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.4",
+        "GR.2.6"
+      ]
+    },
+    {
+      "slug": "averaging_removes_the_variation_studied",
+      "definition": "Aggregates or averages across the very dimension the question asks about, removing the variation needed to answer it.",
+      "layer": "topic_specific",
+      "origin": "cat_bank",
+      "topics": [
+        "PR.1.5"
+      ],
+      "strands": [
+        "PR"
+      ],
+      "notes": "Added in the Phase 3 closeout; PR_A_021.D was previously tagged graph_type_mismatched_to_variable, but the display suits the data -- the averaging is what discards the evidence.",
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.5"
+      ]
     },
     {
       "slug": "axis_of_symmetry_reported_as_root",
@@ -472,7 +653,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.4"
+      ]
     },
     {
       "slug": "axis_reported_as_extreme_value",
@@ -486,7 +670,11 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.5",
+        "AR.3.7"
+      ]
     },
     {
       "slug": "balance_term_not_scaled_by_leading_coefficient",
@@ -500,7 +688,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.7"
+      ]
     },
     {
       "slug": "balance_term_not_subtracted_back",
@@ -514,7 +705,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.7"
+      ]
     },
     {
       "slug": "base_height_added_not_multiplied",
@@ -528,7 +722,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.3"
+      ]
     },
     {
       "slug": "base_omitted_from_solid",
@@ -542,7 +739,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.5"
+      ]
     },
     {
       "slug": "base_times_exponent",
@@ -557,7 +757,11 @@
         "AR"
       ],
       "notes": "Merged from AR.4.10 and AR.4.11.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.10",
+        "AR.4.11"
+      ]
     },
     {
       "slug": "bases_multiplied_with_exponents",
@@ -571,7 +775,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.10"
+      ]
     },
     {
       "slug": "benchmark_judged_from_digits",
@@ -585,7 +792,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.2"
+      ]
     },
     {
       "slug": "binomial_square_middle_term_omitted",
@@ -603,7 +813,12 @@
         "GR"
       ],
       "notes": "MERGED in Phase 2 from three separately-drafted topic slugs (AR.3.7, AR.4.2, AR.4.9) plus GR.2.7.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.7",
+        "AR.4.9",
+        "GR.2.7"
+      ]
     },
     {
       "slug": "both_bases_counted_where_one",
@@ -617,7 +832,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.5"
+      ]
     },
     {
       "slug": "boundary_strictness_changed",
@@ -631,7 +849,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.2"
+      ]
     },
     {
       "slug": "boundary_style_mismatched",
@@ -645,7 +866,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.5"
+      ]
     },
     {
       "slug": "breakeven_markup_assumed_equal_to_discount",
@@ -659,7 +883,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.4"
+      ]
     },
     {
       "slug": "cancellation_assumed_to_restore_domain",
@@ -673,7 +900,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.5"
+      ]
     },
     {
       "slug": "carry_not_propagated",
@@ -687,7 +917,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.6"
+      ]
     },
     {
       "slug": "categorical_numerical_misclassified",
@@ -701,7 +934,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.5"
+      ]
     },
     {
       "slug": "category_values_swapped",
@@ -715,7 +951,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.2"
+      ]
     },
     {
       "slug": "causation_from_association",
@@ -729,7 +968,10 @@
         "PR"
       ],
       "notes": "Single topic today; classified cross-cutting per Phase 1 decision 3 so future inference items need no re-touch.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.4"
+      ]
     },
     {
       "slug": "center_spread_confusion",
@@ -745,7 +987,11 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.4",
+        "PR.2.5"
+      ]
     },
     {
       "slug": "circle_center_signs_not_flipped",
@@ -759,7 +1005,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.5"
+      ]
     },
     {
       "slug": "circumference_area_confusion",
@@ -775,7 +1024,11 @@
         "GR"
       ],
       "notes": "Kept separate per decision 2.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.2",
+        "GR.2.7"
+      ]
     },
     {
       "slug": "closer_endpoint_error",
@@ -785,7 +1038,12 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.1",
+        "QR.1.2",
+        "QR.1.4"
+      ]
     },
     {
       "slug": "closing_rate_reported_as_distance",
@@ -799,7 +1057,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.5"
+      ]
     },
     {
       "slug": "coefficient_added_not_multiplied",
@@ -813,7 +1074,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.11"
+      ]
     },
     {
       "slug": "coefficient_ignored_in_power",
@@ -827,7 +1091,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.11"
+      ]
     },
     {
       "slug": "coefficient_lost_in_multistep",
@@ -841,7 +1108,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.5"
+      ]
     },
     {
       "slug": "coefficient_not_raised_to_power",
@@ -855,7 +1125,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.4"
+      ]
     },
     {
       "slug": "coefficient_plus_constant_as_rate",
@@ -869,7 +1142,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.2"
+      ]
     },
     {
       "slug": "coefficient_subtracted_not_divided",
@@ -883,7 +1159,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.1"
+      ]
     },
     {
       "slug": "coefficients_and_radicands_both_combined",
@@ -897,7 +1176,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.8"
+      ]
     },
     {
       "slug": "combines_unlike_terms",
@@ -907,7 +1189,14 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.3",
+        "AR.3.5",
+        "AR.4.1",
+        "QR.3.5",
+        "QR.3.8"
+      ]
     },
     {
       "slug": "common_factor_not_extracted",
@@ -921,7 +1210,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.8"
+      ]
     },
     {
       "slug": "comparative_relationship_reversed",
@@ -935,7 +1227,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.3"
+      ]
     },
     {
       "slug": "comparison_declared_impossible",
@@ -949,7 +1244,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.7"
+      ]
     },
     {
       "slug": "complement_assumed_half",
@@ -963,7 +1261,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.2"
+      ]
     },
     {
       "slug": "complement_misidentified",
@@ -977,7 +1278,27 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.5"
+      ]
+    },
+    {
+      "slug": "complement_used_instead_of_value",
+      "definition": "Uses the complement of the required fraction or proportion in place of the value itself.",
+      "layer": "topic_specific",
+      "origin": "cat_bank",
+      "topics": [
+        "QR.1.3"
+      ],
+      "strands": [
+        "QR"
+      ],
+      "notes": "Added in the Phase 3 closeout; QR_P_019.D was previously tagged reads_wrong_category, which implies a labelled group that this item does not have.",
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.3"
+      ]
     },
     {
       "slug": "complementary_supplementary_swap",
@@ -991,7 +1312,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.2"
+      ]
     },
     {
       "slug": "composition_assumed_to_compound_size",
@@ -1005,7 +1329,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.2"
+      ]
     },
     {
       "slug": "composition_order_reversed",
@@ -1019,7 +1346,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.1"
+      ]
     },
     {
       "slug": "composition_step_skipped",
@@ -1033,7 +1363,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.1"
+      ]
     },
     {
       "slug": "compound_outcomes_double_counted",
@@ -1047,7 +1380,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.1"
+      ]
     },
     {
       "slug": "compounding_period_not_adjusted",
@@ -1061,7 +1397,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.12"
+      ]
     },
     {
       "slug": "conditional_reversed",
@@ -1075,22 +1414,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
-    },
-    {
-      "slug": "conditions_on_wrong_group",
-      "definition": "Uses the wrong denominator group when computing a conditional probability.",
-      "layer": "cross_cutting",
-      "origin": "cat_bank",
-      "topics": [
-        "PR.1.4",
+      "status": "draft",
+      "cat_topics_observed": [
         "PR.3.4"
-      ],
-      "strands": [
-        "PR"
-      ],
-      "notes": "",
-      "status": "draft"
+      ]
     },
     {
       "slug": "cone_cylinder_ratio_wrong",
@@ -1104,7 +1431,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.6"
+      ]
     },
     {
       "slug": "confounder_ignored",
@@ -1118,7 +1448,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.4"
+      ]
     },
     {
       "slug": "conjugate_applied_to_denominator_only",
@@ -1132,7 +1465,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.5"
+      ]
     },
     {
       "slug": "constant_difference_as_direct_variation",
@@ -1146,7 +1482,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.8"
+      ]
     },
     {
       "slug": "constant_rate_assumed",
@@ -1160,7 +1499,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.6"
+      ]
     },
     {
       "slug": "constant_read_as_excluded_value",
@@ -1174,7 +1516,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.5"
+      ]
     },
     {
       "slug": "constant_read_as_rate",
@@ -1188,7 +1533,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.2"
+      ]
     },
     {
       "slug": "constant_term_reported_as_extreme",
@@ -1202,7 +1550,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.5"
+      ]
     },
     {
       "slug": "constants_added_to_solve",
@@ -1216,7 +1567,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.4"
+      ]
     },
     {
       "slug": "constants_assigned_to_wrong_binomials",
@@ -1230,7 +1584,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.2"
+      ]
     },
     {
       "slug": "contextual_condition_as_domain_restriction",
@@ -1244,7 +1601,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.5"
+      ]
     },
     {
       "slug": "contradiction_confused_with_identity",
@@ -1258,7 +1618,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.1"
+      ]
     },
     {
       "slug": "contradiction_read_as_solution",
@@ -1272,7 +1635,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.1"
+      ]
     },
     {
       "slug": "conversion_factor_rounded",
@@ -1286,7 +1652,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.7"
+      ]
     },
     {
       "slug": "conversion_stopped_one_step_early",
@@ -1300,7 +1669,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.6"
+      ]
     },
     {
       "slug": "converts_whole_number_part_only",
@@ -1314,7 +1686,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.6"
+      ]
     },
     {
       "slug": "coordinates_swapped",
@@ -1333,7 +1708,13 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.4",
+        "AR.3.5",
+        "AR.3.7",
+        "GR.4.5"
+      ]
     },
     {
       "slug": "coordinates_swapped_without_negating",
@@ -1347,7 +1728,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.1"
+      ]
     },
     {
       "slug": "cross_product_counted_once",
@@ -1361,7 +1745,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.2"
+      ]
     },
     {
       "slug": "crossover_assumed_permanent_tie",
@@ -1375,7 +1762,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.7"
+      ]
     },
     {
       "slug": "curved_pattern_forced_linear",
@@ -1389,7 +1779,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.1"
+      ]
     },
     {
       "slug": "cutout_added_not_subtracted",
@@ -1403,7 +1796,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.3"
+      ]
     },
     {
       "slug": "delta_x_used_as_slope",
@@ -1417,7 +1813,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.6"
+      ]
     },
     {
       "slug": "delta_y_used_as_slope",
@@ -1431,7 +1830,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.6"
+      ]
     },
     {
       "slug": "denominator_misread",
@@ -1445,7 +1847,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.7"
+      ]
     },
     {
       "slug": "denominator_zero_rule_not_applied",
@@ -1459,7 +1864,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.5"
+      ]
     },
     {
       "slug": "denominators_combined_with_numerators",
@@ -1473,7 +1881,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.6"
+      ]
     },
     {
       "slug": "differences_vs_ratios_confused",
@@ -1487,7 +1898,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.4"
+      ]
     },
     {
       "slug": "dilation_treated_as_congruence_preserving",
@@ -1501,7 +1915,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.2"
+      ]
     },
     {
       "slug": "dimensions_added_not_multiplied",
@@ -1515,7 +1932,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.6"
+      ]
     },
     {
       "slug": "discrete_continuous_confused",
@@ -1529,7 +1949,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.5"
+      ]
     },
     {
       "slug": "discriminant_miscomputed",
@@ -1543,7 +1966,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.4"
+      ]
     },
     {
       "slug": "distance_formula_replaced_by_sum",
@@ -1557,7 +1983,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.5"
+      ]
     },
     {
       "slug": "distinct_values_counted_not_occurrences",
@@ -1571,7 +2000,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.1"
+      ]
     },
     {
       "slug": "divides_before_isolating",
@@ -1585,7 +2017,13 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.1",
+        "AR.2.2",
+        "AR.2.3",
+        "AR.2.4"
+      ]
     },
     {
       "slug": "divides_before_subtracting_fee",
@@ -1599,7 +2037,11 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.4.2",
+        "QR.4.3"
+      ]
     },
     {
       "slug": "divides_instead_of_multiplies",
@@ -1622,7 +2064,12 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.2",
+        "AR.4.8",
+        "QR.1.4"
+      ]
     },
     {
       "slug": "division_distributed_over_sum",
@@ -1636,7 +2083,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.8"
+      ]
     },
     {
       "slug": "domain_range_swap",
@@ -1650,7 +2100,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.3"
+      ]
     },
     {
       "slug": "double_negative_mishandled",
@@ -1667,7 +2120,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.8"
+      ]
     },
     {
       "slug": "double_root_written_as_two_intercepts",
@@ -1681,7 +2137,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.6"
+      ]
     },
     {
       "slug": "drops_grouping_symbols",
@@ -1697,7 +2156,11 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.7",
+        "QR.3.1"
+      ]
     },
     {
       "slug": "drops_negative_on_group",
@@ -1707,7 +2170,13 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.1",
+        "AR.4.3",
+        "QR.3.5",
+        "QR.3.8"
+      ]
     },
     {
       "slug": "drops_negative_sign",
@@ -1717,7 +2186,26 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.1",
+        "AR.2.2",
+        "AR.2.3",
+        "AR.2.6",
+        "AR.2.7",
+        "AR.3.1",
+        "AR.3.2",
+        "AR.4.1",
+        "AR.4.3",
+        "AR.4.4",
+        "PR.2.1",
+        "PR.4.2",
+        "QR.1.5",
+        "QR.3.2",
+        "QR.3.4",
+        "QR.3.5",
+        "QR.3.6"
+      ]
     },
     {
       "slug": "drops_unlike_term",
@@ -1727,7 +2215,11 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.1",
+        "QR.3.5"
+      ]
     },
     {
       "slug": "drops_variable",
@@ -1737,7 +2229,10 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.5"
+      ]
     },
     {
       "slug": "equal_endpoints_read_as_equal_distributions",
@@ -1751,7 +2246,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.5"
+      ]
     },
     {
       "slug": "equal_means_assumed_equal_consistency",
@@ -1765,7 +2263,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.4"
+      ]
     },
     {
       "slug": "equal_medians_assumed_equal_means",
@@ -1779,7 +2280,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.4"
+      ]
     },
     {
       "slug": "error_traced_to_wrong_source",
@@ -1793,7 +2297,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.2"
+      ]
     },
     {
       "slug": "estimate_not_verified_by_squaring",
@@ -1807,7 +2314,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.4"
+      ]
     },
     {
       "slug": "event_probability_subtracted_twice",
@@ -1821,7 +2331,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.2"
+      ]
     },
     {
       "slug": "event_set_miscounted",
@@ -1835,7 +2348,11 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.1",
+        "PR.3.2"
+      ]
     },
     {
       "slug": "exponent_applied_to_coefficient",
@@ -1849,7 +2366,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.11"
+      ]
     },
     {
       "slug": "exponent_position_confused",
@@ -1863,7 +2383,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.4"
+      ]
     },
     {
       "slug": "exponents_added_when_combining",
@@ -1877,7 +2400,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.1"
+      ]
     },
     {
       "slug": "extraneous_root_not_checked",
@@ -1891,7 +2417,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.9"
+      ]
     },
     {
       "slug": "extrapolates_beyond_data",
@@ -1905,7 +2434,10 @@
         "PR"
       ],
       "notes": "Single topic today; cross-cutting per decision 3.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.4"
+      ]
     },
     {
       "slug": "extreme_point_believed_absent",
@@ -1919,7 +2451,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.5"
+      ]
     },
     {
       "slug": "factor_constants_read_as_roots",
@@ -1933,7 +2468,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.3"
+      ]
     },
     {
       "slug": "factor_not_distributed_to_constant",
@@ -1947,7 +2485,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.7"
+      ]
     },
     {
       "slug": "factor_of_two_omitted",
@@ -1961,7 +2502,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.2"
+      ]
     },
     {
       "slug": "factor_pair_sum_unchecked",
@@ -1975,7 +2519,12 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.1",
+        "AR.3.2",
+        "AR.3.3"
+      ]
     },
     {
       "slug": "factor_reported_as_rate",
@@ -1989,7 +2538,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.12"
+      ]
     },
     {
       "slug": "factor_signs_match_intercepts",
@@ -2003,7 +2555,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.6"
+      ]
     },
     {
       "slug": "false_condition_invented_for_congruence",
@@ -2017,7 +2572,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.2"
+      ]
     },
     {
       "slug": "false_precondition_for_association",
@@ -2031,7 +2589,10 @@
         "PR"
       ],
       "notes": "Introduced in Phase 2 to house the PR.4.1 judgement-call items -- see edge_cases.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.1"
+      ]
     },
     {
       "slug": "false_radical_distribution",
@@ -2049,7 +2610,12 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.8",
+        "QR.1.1",
+        "QR.1.5"
+      ]
     },
     {
       "slug": "false_structural_rule_invented",
@@ -2064,7 +2630,11 @@
         "PR"
       ],
       "notes": "Merged from PR.1.2 and PR.1.5.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.2",
+        "PR.1.5"
+      ]
     },
     {
       "slug": "family_matched_by_surface_growth",
@@ -2078,7 +2648,11 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.2",
+        "AR.1.4"
+      ]
     },
     {
       "slug": "favourable_over_unfavourable",
@@ -2092,7 +2666,12 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.1",
+        "PR.3.2",
+        "PR.3.4"
+      ]
     },
     {
       "slug": "fencepost_error",
@@ -2106,7 +2685,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.6"
+      ]
     },
     {
       "slug": "first_value_as_constant_of_variation",
@@ -2120,7 +2702,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.8"
+      ]
     },
     {
       "slug": "fit_judged_by_intercept",
@@ -2134,7 +2719,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.2"
+      ]
     },
     {
       "slug": "fix_applied_to_wrong_element",
@@ -2148,7 +2736,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.2"
+      ]
     },
     {
       "slug": "fixed_fee_added_twice",
@@ -2162,7 +2753,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.3"
+      ]
     },
     {
       "slug": "flat_fee_merged_into_rate",
@@ -2177,7 +2771,14 @@
         "QR"
       ],
       "notes": "Merged from QR.3.1 and QR.4.2 (drafted there as fee_charged_per_unit).",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.2",
+        "QR.3.1",
+        "QR.3.4",
+        "QR.4.2",
+        "QR.4.3"
+      ]
     },
     {
       "slug": "foil_outer_inner_omitted",
@@ -2191,7 +2792,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.2"
+      ]
     },
     {
       "slug": "forgets_square_root",
@@ -2212,7 +2816,14 @@
         "GR"
       ],
       "notes": "Covers square and cube roots.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.3",
+        "GR.2.4",
+        "GR.2.5",
+        "GR.2.6",
+        "GR.3.1"
+      ]
     },
     {
       "slug": "formula_borrowed_from_other_shape",
@@ -2226,7 +2837,11 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.3",
+        "GR.2.5"
+      ]
     },
     {
       "slug": "fraction_digit_gluing",
@@ -2236,7 +2851,12 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.1",
+        "QR.1.2",
+        "QR.1.3"
+      ]
     },
     {
       "slug": "fractional_factor_applied_to_base_only",
@@ -2250,7 +2870,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.7"
+      ]
     },
     {
       "slug": "frequency_value_misread",
@@ -2264,7 +2887,11 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.2",
+        "PR.1.4"
+      ]
     },
     {
       "slug": "function_notation_as_fraction",
@@ -2278,7 +2905,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.1"
+      ]
     },
     {
       "slug": "function_notation_as_multiplication",
@@ -2292,7 +2922,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.1"
+      ]
     },
     {
       "slug": "function_rule_converse_applied",
@@ -2306,7 +2939,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.2"
+      ]
     },
     {
       "slug": "gcf_dropped_after_factoring",
@@ -2320,7 +2956,11 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.1",
+        "AR.3.2"
+      ]
     },
     {
       "slug": "gcf_not_extracted_first",
@@ -2334,7 +2974,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.1"
+      ]
     },
     {
       "slug": "gcf_not_greatest",
@@ -2348,7 +2991,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.8"
+      ]
     },
     {
       "slug": "gcf_written_terms_not_divided",
@@ -2362,7 +3008,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.8"
+      ]
     },
     {
       "slug": "given_point_not_used",
@@ -2376,7 +3025,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.6"
+      ]
     },
     {
       "slug": "goal_threshold_misread",
@@ -2390,7 +3042,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.3"
+      ]
     },
     {
       "slug": "graph_type_mismatched_to_variable",
@@ -2404,7 +3059,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.5"
+      ]
     },
     {
       "slug": "growth_applied_for_wrong_duration",
@@ -2418,7 +3076,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.12"
+      ]
     },
     {
       "slug": "growth_decay_factor_direction_wrong",
@@ -2432,7 +3093,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.12"
+      ]
     },
     {
       "slug": "half_height_used",
@@ -2446,7 +3110,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.6"
+      ]
     },
     {
       "slug": "half_of_b_miscomputed",
@@ -2460,7 +3127,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.7"
+      ]
     },
     {
       "slug": "halves_the_radicand",
@@ -2470,7 +3140,13 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.8",
+        "QR.1.1",
+        "QR.1.4",
+        "QR.1.5"
+      ]
     },
     {
       "slug": "horizontal_vertical_line_confused",
@@ -2484,7 +3160,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.6"
+      ]
     },
     {
       "slug": "hybrid_expression_substituted",
@@ -2498,7 +3177,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.4"
+      ]
     },
     {
       "slug": "hypotenuse_reported_for_leg",
@@ -2513,7 +3195,11 @@
         "GR"
       ],
       "notes": "Merged from GR.3.2 and GR.3.3.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.2",
+        "GR.3.3"
+      ]
     },
     {
       "slug": "identical_denominators_multiplied",
@@ -2527,7 +3213,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.6"
+      ]
     },
     {
       "slug": "identical_lines_read_as_parallel",
@@ -2541,7 +3230,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.4"
+      ]
     },
     {
       "slug": "ignores_unit_coefficient",
@@ -2551,22 +3243,11 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
-    },
-    {
-      "slug": "ignores_without_replacement",
-      "definition": "Fails to adjust the counts between draws, or adjusts them when replacement occurred.",
-      "layer": "cross_cutting",
-      "origin": "cat_bank",
-      "topics": [
-        "PR.3.3",
-        "PR.3.4"
-      ],
-      "strands": [
-        "PR"
-      ],
-      "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.3",
+        "QR.3.5"
+      ]
     },
     {
       "slug": "inequality_direction_not_flipped",
@@ -2584,7 +3265,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.2"
+      ]
     },
     {
       "slug": "initial_value_not_subtracted",
@@ -2598,7 +3282,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.4"
+      ]
     },
     {
       "slug": "injectivity_used_as_function_test",
@@ -2612,7 +3299,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.2"
+      ]
     },
     {
       "slug": "inner_exponent_raised_not_multiplied",
@@ -2626,7 +3316,11 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.10",
+        "AR.4.4"
+      ]
     },
     {
       "slug": "input_added_instead_of_rate",
@@ -2640,7 +3334,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.3"
+      ]
     },
     {
       "slug": "input_added_to_fee_before_multiplying",
@@ -2654,7 +3351,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.3"
+      ]
     },
     {
       "slug": "input_output_reversed",
@@ -2668,7 +3368,11 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.1",
+        "AR.4.7"
+      ]
     },
     {
       "slug": "intercept_tied_to_nonzero_input",
@@ -2682,7 +3386,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.4"
+      ]
     },
     {
       "slug": "intercepts_compared_instead_of_slopes",
@@ -2696,7 +3403,12 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.4",
+        "QR.3.7",
+        "QR.4.3"
+      ]
     },
     {
       "slug": "inverse_relationship_treated_as_direct",
@@ -2710,7 +3422,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.8"
+      ]
     },
     {
       "slug": "inverse_trig_function_mismatched",
@@ -2724,7 +3439,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.3"
+      ]
     },
     {
       "slug": "inverts_conversion_direction",
@@ -2748,7 +3466,17 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.1",
+        "GR.2.1",
+        "GR.4.1",
+        "QR.2.1",
+        "QR.2.5",
+        "QR.2.6",
+        "QR.2.7",
+        "QR.4.1"
+      ]
     },
     {
       "slug": "inverts_trig_ratio",
@@ -2763,7 +3491,11 @@
         "GR"
       ],
       "notes": "Two topics only, but 12 instances and a distinct remediation.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.3",
+        "GR.3.4"
+      ]
     },
     {
       "slug": "iqr_computed_using_median",
@@ -2777,7 +3509,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.5"
+      ]
     },
     {
       "slug": "irrational_assumed_larger",
@@ -2791,7 +3526,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.1"
+      ]
     },
     {
       "slug": "irregular_treated_as_rectangle",
@@ -2805,7 +3543,11 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.1",
+        "QR.3.3"
+      ]
     },
     {
       "slug": "joint_reported_as_conditional",
@@ -2819,7 +3561,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.4"
+      ]
     },
     {
       "slug": "jump_discontinuity_ignored",
@@ -2833,7 +3578,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.3"
+      ]
     },
     {
       "slug": "keyword_mistranslated",
@@ -2847,7 +3595,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.1"
+      ]
     },
     {
       "slug": "larger_exponent_kept",
@@ -2861,7 +3612,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.2"
+      ]
     },
     {
       "slug": "larger_range_read_as_better",
@@ -2875,7 +3629,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.4"
+      ]
     },
     {
       "slug": "larger_start_assumed_to_stay_ahead",
@@ -2889,7 +3646,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.7"
+      ]
     },
     {
       "slug": "largest_perfect_square_not_extracted",
@@ -2903,7 +3663,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.8"
+      ]
     },
     {
       "slug": "largest_weight_matched_to_largest_score",
@@ -2917,7 +3680,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.2"
+      ]
     },
     {
       "slug": "later_total_used_as_starting_value",
@@ -2931,7 +3697,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.4.3"
+      ]
     },
     {
       "slug": "lateral_surface_only",
@@ -2945,7 +3714,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.5"
+      ]
     },
     {
       "slug": "leading_coefficient_ignored_in_factoring",
@@ -2959,7 +3731,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.2"
+      ]
     },
     {
       "slug": "leading_coefficient_ignored_in_root",
@@ -2973,7 +3748,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.3"
+      ]
     },
     {
       "slug": "leading_digit_read_only",
@@ -2987,7 +3765,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.3"
+      ]
     },
     {
       "slug": "legs_combined_without_squaring",
@@ -3003,7 +3784,12 @@
         "GR"
       ],
       "notes": "Merged across three GR topics.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.1",
+        "GR.3.3",
+        "GR.3.4"
+      ]
     },
     {
       "slug": "less_than_order_reversed",
@@ -3017,7 +3803,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.1"
+      ]
     },
     {
       "slug": "line_vs_rotational_symmetry_confused",
@@ -3031,7 +3820,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.4"
+      ]
     },
     {
       "slug": "linear_coefficient_not_halved",
@@ -3045,7 +3837,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.5"
+      ]
     },
     {
       "slug": "linear_instead_of_compound",
@@ -3060,7 +3855,11 @@
         "AR"
       ],
       "notes": "Merged from AR.4.11 (linear decay) and AR.4.12.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.11",
+        "AR.4.12"
+      ]
     },
     {
       "slug": "linearity_assumed_to_imply_equal_rates",
@@ -3074,7 +3873,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.7"
+      ]
     },
     {
       "slug": "long_division_stopped_early",
@@ -3088,7 +3890,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.3"
+      ]
     },
     {
       "slug": "longer_decimal_is_larger",
@@ -3098,7 +3903,8 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": []
     },
     {
       "slug": "longest_side_assumed_hypotenuse",
@@ -3112,7 +3918,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.1"
+      ]
     },
     {
       "slug": "markup_discount_assumed_to_cancel",
@@ -3126,7 +3935,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.3"
+      ]
     },
     {
       "slug": "mean_divisor_miscounted",
@@ -3140,7 +3952,11 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.3",
+        "PR.2.1"
+      ]
     },
     {
       "slug": "mean_subtracted_from_sum",
@@ -3154,7 +3970,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.3"
+      ]
     },
     {
       "slug": "measurement_system_mismatched",
@@ -3168,7 +3987,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.1"
+      ]
     },
     {
       "slug": "median_from_unsorted_list",
@@ -3182,7 +4004,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.1"
+      ]
     },
     {
       "slug": "metric_prefix_factor_wrong",
@@ -3196,7 +4021,11 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.1",
+        "GR.2.2"
+      ]
     },
     {
       "slug": "midpoint_used_as_estimate",
@@ -3210,7 +4039,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.4"
+      ]
     },
     {
       "slug": "misreads_direction_of_change",
@@ -3229,7 +4061,15 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.3",
+        "PR.4.1",
+        "PR.4.3",
+        "QR.2.6",
+        "QR.2.7",
+        "QR.3.7"
+      ]
     },
     {
       "slug": "missing_value_assumed_equal_to_mean",
@@ -3243,7 +4083,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.3"
+      ]
     },
     {
       "slug": "missing_weight_reused",
@@ -3257,7 +4100,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.2"
+      ]
     },
     {
       "slug": "mixture_reports_total_not_added",
@@ -3271,7 +4117,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.4"
+      ]
     },
     {
       "slug": "model_fit_assumed_to_transfer",
@@ -3285,7 +4134,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.4"
+      ]
     },
     {
       "slug": "model_parameters_swapped_between_entities",
@@ -3299,7 +4151,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.4.3"
+      ]
     },
     {
       "slug": "multiplies_by_denominator_not_conjugate",
@@ -3313,7 +4168,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.5"
+      ]
     },
     {
       "slug": "multiplies_by_ten",
@@ -3323,7 +4181,8 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": []
     },
     {
       "slug": "multiplies_coefficients",
@@ -3333,7 +4192,11 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.1",
+        "QR.3.5"
+      ]
     },
     {
       "slug": "multiplies_exponents_wrongly",
@@ -3349,7 +4212,12 @@
         "AR"
       ],
       "notes": "Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.10",
+        "AR.4.2",
+        "AR.4.4"
+      ]
     },
     {
       "slug": "multiplies_instead_of_divides",
@@ -3373,7 +4241,13 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.1",
+        "QR.2.2",
+        "QR.2.3",
+        "QR.2.5"
+      ]
     },
     {
       "slug": "multiplies_variables",
@@ -3383,7 +4257,10 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.5"
+      ]
     },
     {
       "slug": "negation_without_reciprocal",
@@ -3397,7 +4274,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.7"
+      ]
     },
     {
       "slug": "negative_discriminant_read_as_one_root",
@@ -3411,7 +4291,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.4"
+      ]
     },
     {
       "slug": "negative_exponent_as_negative_value",
@@ -3427,7 +4310,12 @@
         "AR"
       ],
       "notes": "Merged across three AR topics.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.10",
+        "AR.4.11",
+        "AR.4.4"
+      ]
     },
     {
       "slug": "negative_not_distributed_across_numerator",
@@ -3441,7 +4329,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.6"
+      ]
     },
     {
       "slug": "negative_reverses_radical_order",
@@ -3455,7 +4346,28 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.1",
+        "QR.1.2"
+      ]
+    },
+    {
+      "slug": "neither_reported_as_both",
+      "definition": "Computes the count in neither set and reports it as the count in both.",
+      "layer": "topic_specific",
+      "origin": "cat_bank",
+      "topics": [
+        "PR.3.5"
+      ],
+      "strands": [
+        "PR"
+      ],
+      "notes": "Added in the Phase 3 closeout; PR_A_065.C was previously tagged union_intersection_swapped, but the value is the complement of the union, a third region.",
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.5"
+      ]
     },
     {
       "slug": "new_mean_from_averaging_means",
@@ -3469,7 +4381,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.1"
+      ]
     },
     {
       "slug": "new_over_original_as_change",
@@ -3486,7 +4401,12 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.3",
+        "QR.2.3",
+        "QR.2.8"
+      ]
     },
     {
       "slug": "new_total_divided_by_old_count",
@@ -3500,7 +4420,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.1"
+      ]
     },
     {
       "slug": "no_ratio_applied",
@@ -3514,7 +4437,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.2"
+      ]
     },
     {
       "slug": "nominal_applied_to_measurement",
@@ -3528,7 +4454,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.5"
+      ]
     },
     {
       "slug": "not_rearranged_to_standard_form",
@@ -3542,7 +4471,11 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.3",
+        "AR.3.4"
+      ]
     },
     {
       "slug": "notch_sides_not_accounted",
@@ -3556,7 +4489,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.1"
+      ]
     },
     {
       "slug": "numerator_as_percent",
@@ -3566,7 +4502,10 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.3"
+      ]
     },
     {
       "slug": "numerator_denominator_swap",
@@ -3576,7 +4515,12 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.8",
+        "AR.4.8",
+        "QR.1.3"
+      ]
     },
     {
       "slug": "numerator_only_substituted",
@@ -3590,7 +4534,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.7"
+      ]
     },
     {
       "slug": "numerator_set_equal_to_output",
@@ -3604,7 +4551,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.7"
+      ]
     },
     {
       "slug": "numerator_zeros_confused_with_undefined",
@@ -3618,7 +4568,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.5"
+      ]
     },
     {
       "slug": "numerators_added_over_product",
@@ -3632,7 +4585,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.3"
+      ]
     },
     {
       "slug": "numerators_not_rescaled",
@@ -3646,7 +4602,11 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.6",
+        "QR.1.5"
+      ]
     },
     {
       "slug": "off_by_one_count",
@@ -3667,7 +4627,11 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.2",
+        "PR.1.1"
+      ]
     },
     {
       "slug": "omits_constant_term",
@@ -3692,7 +4656,16 @@
         "QR"
       ],
       "notes": "Boundary with answers_intermediate_value and omits_variable_term is fixed by the approved intermediate_vs_omission rule.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.1",
+        "AR.2.3",
+        "PR.4.2",
+        "QR.2.4",
+        "QR.3.3",
+        "QR.4.2",
+        "QR.4.3"
+      ]
     },
     {
       "slug": "omits_fractional_factor",
@@ -3711,7 +4684,15 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.3",
+        "GR.2.5",
+        "GR.2.6",
+        "GR.2.7",
+        "GR.3.2",
+        "GR.3.4"
+      ]
     },
     {
       "slug": "omits_second_component",
@@ -3735,7 +4716,21 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.3",
+        "GR.2.5",
+        "GR.2.6",
+        "GR.3.3",
+        "PR.3.1",
+        "QR.2.1",
+        "QR.2.2",
+        "QR.2.4",
+        "QR.2.6",
+        "QR.3.3",
+        "QR.4.1",
+        "QR.4.2"
+      ]
     },
     {
       "slug": "omits_variable_term",
@@ -3754,7 +4749,11 @@
         "QR"
       ],
       "notes": "Approved in the Phase 2 review alongside the intermediate_vs_omission boundary rule.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.3",
+        "QR.4.2"
+      ]
     },
     {
       "slug": "one_of_two_divisors_omitted",
@@ -3768,7 +4767,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.4"
+      ]
     },
     {
       "slug": "one_point_reported_for_infinite_solutions",
@@ -3782,7 +4784,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.4"
+      ]
     },
     {
       "slug": "only_one_constraint_tested",
@@ -3796,7 +4801,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.5"
+      ]
     },
     {
       "slug": "only_one_equation_checked",
@@ -3810,7 +4818,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.4"
+      ]
     },
     {
       "slug": "only_one_term_divided_by_gcf",
@@ -3824,7 +4835,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.8"
+      ]
     },
     {
       "slug": "opening_direction_rule_reversed",
@@ -3838,7 +4852,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.5"
+      ]
     },
     {
       "slug": "operation_ignored_entirely",
@@ -3852,7 +4869,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.7"
+      ]
     },
     {
       "slug": "opposite_faces_not_doubled",
@@ -3866,7 +4886,11 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.5",
+        "GR.2.7"
+      ]
     },
     {
       "slug": "optimisation_bound_misused",
@@ -3880,7 +4904,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.3"
+      ]
     },
     {
       "slug": "order_direction_reversed",
@@ -3890,7 +4917,11 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.1",
+        "QR.1.2"
+      ]
     },
     {
       "slug": "order_of_operations_violated",
@@ -3910,7 +4941,11 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.1",
+        "QR.1.7"
+      ]
     },
     {
       "slug": "ordering_violation_located_wrongly",
@@ -3924,7 +4959,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.1"
+      ]
     },
     {
       "slug": "outcome_total_miscounted",
@@ -3938,7 +4976,11 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.1",
+        "PR.3.3"
+      ]
     },
     {
       "slug": "outlier_effect_on_mean_dismissed",
@@ -3952,7 +4994,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.4"
+      ]
     },
     {
       "slug": "outlier_influence_misjudged",
@@ -3966,7 +5011,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.1"
+      ]
     },
     {
       "slug": "outlier_resistance_misjudged",
@@ -3980,7 +5028,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.1"
+      ]
     },
     {
       "slug": "outputs_checked_not_inputs",
@@ -3994,7 +5045,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.2"
+      ]
     },
     {
       "slug": "over_cancellation",
@@ -4008,7 +5062,27 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.5"
+      ]
+    },
+    {
+      "slug": "over_rejects_valid_model",
+      "definition": "Rejects a model, survey or inference wholesale rather than naming the specific limitation at issue.",
+      "layer": "cross_cutting",
+      "origin": "cat_bank",
+      "topics": [
+        "PR.4.4"
+      ],
+      "strands": [
+        "PR"
+      ],
+      "notes": "Added in the Phase 3 closeout as the mirror of extrapolates_beyond_data: one error applies a model where it does not hold, the other discards a model that does. Cross-cutting for the same reason decision 3 gave.",
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.4"
+      ]
     },
     {
       "slug": "overgeneralizes_from_sample",
@@ -4024,7 +5098,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.4"
+      ]
     },
     {
       "slug": "overlap_not_subtracted",
@@ -4038,7 +5115,11 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.4",
+        "PR.3.5"
+      ]
     },
     {
       "slug": "overlap_subtracted_twice",
@@ -4052,7 +5133,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.5"
+      ]
     },
     {
       "slug": "parallel_vs_identical_not_distinguished",
@@ -4066,7 +5150,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.7"
+      ]
     },
     {
       "slug": "part_whole_confusion",
@@ -4076,7 +5163,10 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.4"
+      ]
     },
     {
       "slug": "partial_complement_taken",
@@ -4090,7 +5180,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.2"
+      ]
     },
     {
       "slug": "partial_distribution",
@@ -4100,7 +5193,27 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.6",
+        "AR.2.8",
+        "AR.3.7",
+        "AR.4.1",
+        "AR.4.2",
+        "AR.4.5",
+        "AR.4.6",
+        "AR.4.7",
+        "GR.2.1",
+        "GR.2.3",
+        "GR.2.4",
+        "GR.2.6",
+        "GR.2.7",
+        "QR.1.5",
+        "QR.3.1",
+        "QR.3.3",
+        "QR.3.5",
+        "QR.3.8"
+      ]
     },
     {
       "slug": "per_unit_price_as_flat_charge",
@@ -4114,7 +5227,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.3"
+      ]
     },
     {
       "slug": "percent_applied_forward_not_reversed",
@@ -4128,7 +5244,13 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.12",
+        "QR.2.3",
+        "QR.2.4",
+        "QR.4.1"
+      ]
     },
     {
       "slug": "percent_applied_to_wrong_stage_base",
@@ -4142,7 +5264,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.3"
+      ]
     },
     {
       "slug": "percent_as_count",
@@ -4152,7 +5277,8 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": []
     },
     {
       "slug": "percent_change_wrong_base",
@@ -4169,7 +5295,12 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.3",
+        "QR.2.3",
+        "QR.2.4"
+      ]
     },
     {
       "slug": "percent_changes_added",
@@ -4189,7 +5320,13 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.3",
+        "QR.2.3",
+        "QR.2.4",
+        "QR.2.8"
+      ]
     },
     {
       "slug": "percent_decimal_overshift",
@@ -4203,7 +5340,10 @@
         "PR"
       ],
       "notes": "Existing curriculum slug, reused unchanged. Extended to the CAT bank in Phase 2; PR.4.3 drafted it separately as percent_decimal_misplaced before the merge.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.3"
+      ]
     },
     {
       "slug": "percent_denominator_error",
@@ -4213,7 +5353,8 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": []
     },
     {
       "slug": "percent_sign_confusion",
@@ -4223,7 +5364,12 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.2",
+        "QR.2.3",
+        "QR.2.4"
+      ]
     },
     {
       "slug": "perfect_square_confused_with_unfactorable_sum",
@@ -4237,7 +5383,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.3"
+      ]
     },
     {
       "slug": "perfect_square_moved_out_unrooted",
@@ -4251,7 +5400,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.8"
+      ]
     },
     {
       "slug": "perfect_square_vs_difference_of_squares",
@@ -4265,7 +5417,11 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.2",
+        "AR.3.3"
+      ]
     },
     {
       "slug": "perimeter_area_confusion",
@@ -4283,7 +5439,15 @@
         "GR"
       ],
       "notes": "Kept separate from the other two formula swaps per Phase 1 decision 2.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.1",
+        "GR.2.3",
+        "GR.2.7",
+        "GR.3.1",
+        "GR.3.4",
+        "QR.1.4"
+      ]
     },
     {
       "slug": "phantom_term_introduced",
@@ -4297,7 +5461,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.7"
+      ]
     },
     {
       "slug": "pictograph_key_not_applied",
@@ -4311,7 +5478,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.3"
+      ]
     },
     {
       "slug": "piecewise_boundary_openness_error",
@@ -4325,7 +5495,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.3"
+      ]
     },
     {
       "slug": "place_value_slip",
@@ -4335,7 +5508,13 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.2",
+        "QR.1.3",
+        "QR.1.5",
+        "QR.2.7"
+      ]
     },
     {
       "slug": "point_symmetry_wrongly_attributed",
@@ -4349,7 +5528,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.4"
+      ]
     },
     {
       "slug": "point_y_used_as_intercept",
@@ -4363,7 +5545,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.6"
+      ]
     },
     {
       "slug": "polynomial_term_never_carried",
@@ -4377,7 +5562,11 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.3",
+        "AR.4.4"
+      ]
     },
     {
       "slug": "prices_swapped_between_quantities",
@@ -4391,7 +5580,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.3"
+      ]
     },
     {
       "slug": "prior_reported_ignoring_condition",
@@ -4405,7 +5597,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.4"
+      ]
     },
     {
       "slug": "proportion_solved_for_wrong_unknown",
@@ -4419,7 +5614,13 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.1",
+        "PR.3.2",
+        "PR.3.3",
+        "QR.2.5"
+      ]
     },
     {
       "slug": "proportional_division_step_skipped",
@@ -4433,7 +5634,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.2"
+      ]
     },
     {
       "slug": "pythagorean_triple_assumed",
@@ -4447,7 +5651,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.1"
+      ]
     },
     {
       "slug": "quadratic_formula_denominator_omitted",
@@ -4461,7 +5668,11 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.4",
+        "AR.3.5"
+      ]
     },
     {
       "slug": "quadratic_formula_partial_division",
@@ -4475,7 +5686,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.4"
+      ]
     },
     {
       "slug": "quadratic_formula_wrong_numerator_sign",
@@ -4489,7 +5703,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.4"
+      ]
     },
     {
       "slug": "quantities_counted_without_rates",
@@ -4503,7 +5720,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.3"
+      ]
     },
     {
       "slug": "quartile_read_as_median",
@@ -4517,7 +5737,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.5"
+      ]
     },
     {
       "slug": "radical_cancelled_as_factor",
@@ -4531,7 +5754,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.5"
+      ]
     },
     {
       "slug": "radical_coefficient_size_as_value",
@@ -4545,7 +5771,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.1"
+      ]
     },
     {
       "slug": "radical_dropped_for_coefficient",
@@ -4559,7 +5788,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.1"
+      ]
     },
     {
       "slug": "radical_endpoint_strictness_error",
@@ -4573,7 +5805,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.5"
+      ]
     },
     {
       "slug": "radicand_mistaken_for_value",
@@ -4583,7 +5818,11 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.1",
+        "QR.1.4"
+      ]
     },
     {
       "slug": "radius_diameter_substituted",
@@ -4597,7 +5836,11 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.2",
+        "GR.2.3"
+      ]
     },
     {
       "slug": "radius_not_squared",
@@ -4611,7 +5854,11 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.6",
+        "GR.2.7"
+      ]
     },
     {
       "slug": "radius_squared_confused_with_radius",
@@ -4625,7 +5872,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.5"
+      ]
     },
     {
       "slug": "range_added_to_wrong_extreme",
@@ -4639,7 +5889,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.3"
+      ]
     },
     {
       "slug": "range_as_endpoints_only",
@@ -4653,7 +5906,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.3"
+      ]
     },
     {
       "slug": "range_from_known_values_only",
@@ -4667,7 +5923,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.3"
+      ]
     },
     {
       "slug": "range_from_single_extreme",
@@ -4683,7 +5942,12 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.1",
+        "PR.2.4",
+        "PR.2.5"
+      ]
     },
     {
       "slug": "rank_position_error",
@@ -4697,7 +5961,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.4"
+      ]
     },
     {
       "slug": "rate_applied_to_increment_only",
@@ -4711,7 +5978,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.4.1"
+      ]
     },
     {
       "slug": "rate_assumed_quantity_dependent",
@@ -4725,7 +5995,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.2"
+      ]
     },
     {
       "slug": "rate_called_the_total",
@@ -4739,7 +6012,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.4"
+      ]
     },
     {
       "slug": "rate_confused_with_variable",
@@ -4753,7 +6029,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.4"
+      ]
     },
     {
       "slug": "rate_not_normalised_to_unit",
@@ -4767,7 +6046,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.2"
+      ]
     },
     {
       "slug": "rate_used_as_factor",
@@ -4781,7 +6063,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.12"
+      ]
     },
     {
       "slug": "rates_added_instead_of_netted",
@@ -4795,7 +6080,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.6"
+      ]
     },
     {
       "slug": "rates_merged_into_single_rate",
@@ -4809,7 +6097,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.3"
+      ]
     },
     {
       "slug": "rates_summed_instead_of_differenced",
@@ -4823,7 +6114,12 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.7",
+        "QR.4.2",
+        "QR.4.3"
+      ]
     },
     {
       "slug": "ratio_numerator_as_side_length",
@@ -4837,7 +6133,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.3"
+      ]
     },
     {
       "slug": "ratio_parts_reported_in_answer_units",
@@ -4851,7 +6150,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.1"
+      ]
     },
     {
       "slug": "ratio_term_as_value",
@@ -4861,7 +6163,10 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.1"
+      ]
     },
     {
       "slug": "ratio_terms_multiplied",
@@ -4875,7 +6180,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.1"
+      ]
     },
     {
       "slug": "rational_and_irrational_merged",
@@ -4889,7 +6197,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.5"
+      ]
     },
     {
       "slug": "rationalisation_applied_to_one_part",
@@ -4903,7 +6214,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.8"
+      ]
     },
     {
       "slug": "raw_coefficients_compared",
@@ -4917,7 +6231,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.7"
+      ]
     },
     {
       "slug": "reads_adjacent_value",
@@ -4937,7 +6254,12 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.3",
+        "PR.1.3",
+        "PR.1.4"
+      ]
     },
     {
       "slug": "reads_wrong_category",
@@ -4953,7 +6275,22 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.3",
+        "AR.2.4",
+        "AR.3.3",
+        "GR.1.2",
+        "GR.2.1",
+        "PR.1.1",
+        "PR.1.3",
+        "PR.2.2",
+        "PR.2.4",
+        "PR.3.4",
+        "QR.2.5",
+        "QR.4.1",
+        "QR.4.2"
+      ]
     },
     {
       "slug": "reciprocal_without_negation",
@@ -4967,7 +6304,11 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.6",
+        "AR.2.7"
+      ]
     },
     {
       "slug": "refuses_to_compare_forms",
@@ -4977,7 +6318,13 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.2",
+        "QR.1.3",
+        "QR.2.6",
+        "QR.2.7"
+      ]
     },
     {
       "slug": "relative_speed_ignored",
@@ -4991,7 +6338,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.2"
+      ]
     },
     {
       "slug": "repeating_block_denominator_wrong",
@@ -5005,7 +6355,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.3"
+      ]
     },
     {
       "slug": "repeating_block_misidentified",
@@ -5019,7 +6372,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.3"
+      ]
     },
     {
       "slug": "replacement_status_wrong",
@@ -5033,7 +6389,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.3"
+      ]
     },
     {
       "slug": "reports_discount_not_price",
@@ -5043,7 +6402,10 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.4.1"
+      ]
     },
     {
       "slug": "reports_event_not_complement",
@@ -5059,7 +6421,12 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.1",
+        "PR.3.2",
+        "PR.3.3"
+      ]
     },
     {
       "slug": "reports_wrong_center_measure",
@@ -5076,7 +6443,13 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.1",
+        "PR.2.3",
+        "PR.2.4",
+        "PR.2.5"
+      ]
     },
     {
       "slug": "restriction_read_from_simplified_form",
@@ -5090,7 +6463,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.5"
+      ]
     },
     {
       "slug": "result_doubled_twice",
@@ -5104,7 +6480,14 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.2",
+        "GR.2.3",
+        "GR.2.5",
+        "GR.2.6",
+        "GR.2.7"
+      ]
     },
     {
       "slug": "reverse_causation_asserted",
@@ -5118,7 +6501,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.4"
+      ]
     },
     {
       "slug": "reversed_division",
@@ -5128,7 +6514,18 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.5",
+        "AR.2.6",
+        "AR.4.7",
+        "GR.2.2",
+        "QR.1.2",
+        "QR.2.2",
+        "QR.2.3",
+        "QR.2.5",
+        "QR.2.8"
+      ]
     },
     {
       "slug": "rigid_motion_treated_as_dilation",
@@ -5142,7 +6539,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.2"
+      ]
     },
     {
       "slug": "rise_reported_as_rate",
@@ -5156,7 +6556,11 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.6",
+        "QR.3.7"
+      ]
     },
     {
       "slug": "rotation_angle_reported_for_order",
@@ -5170,7 +6574,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.4"
+      ]
     },
     {
       "slug": "rounding_as_increment_rightmost",
@@ -5184,7 +6591,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.6"
+      ]
     },
     {
       "slug": "rounding_hides_difference",
@@ -5194,7 +6604,10 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.2"
+      ]
     },
     {
       "slug": "rounds_down_despite_five_or_more",
@@ -5208,7 +6621,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.6"
+      ]
     },
     {
       "slug": "rounds_to_bounding_integer",
@@ -5222,7 +6638,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.4"
+      ]
     },
     {
       "slug": "rounds_to_wrong_place",
@@ -5236,7 +6655,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.6"
+      ]
     },
     {
       "slug": "rounds_too_early",
@@ -5246,7 +6668,30 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.3",
+        "QR.1.5",
+        "QR.2.2",
+        "QR.2.4"
+      ]
+    },
+    {
+      "slug": "rounds_up_where_floor_required",
+      "definition": "Rounds a quotient up when the constraint that produced it makes only the whole units below it attainable.",
+      "layer": "topic_specific",
+      "origin": "cat_bank",
+      "topics": [
+        "QR.2.1"
+      ],
+      "strands": [
+        "QR"
+      ],
+      "notes": "Added in the Phase 3 closeout; QR_A_035.C was previously tagged off_by_one_count, which describes a tally slip rather than rounding against a constraint.",
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.1"
+      ]
     },
     {
       "slug": "row_gaps_counted_as_change",
@@ -5260,7 +6705,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.6"
+      ]
     },
     {
       "slug": "row_total_used_for_column_total",
@@ -5274,7 +6722,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.4"
+      ]
     },
     {
       "slug": "run_reported_as_rate",
@@ -5288,7 +6739,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.6"
+      ]
     },
     {
       "slug": "scale_factor_direction_reversed",
@@ -5302,7 +6756,11 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.2",
+        "GR.4.3"
+      ]
     },
     {
       "slug": "scales_by_wrong_ratio_term",
@@ -5316,7 +6774,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.1"
+      ]
     },
     {
       "slug": "scatter_read_as_no_association",
@@ -5330,7 +6791,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.1"
+      ]
     },
     {
       "slug": "sequence_stopped_early",
@@ -5344,7 +6808,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.3"
+      ]
     },
     {
       "slug": "set_listed_as_multiset",
@@ -5358,7 +6825,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.3"
+      ]
     },
     {
       "slug": "shared_interface_not_removed",
@@ -5372,7 +6842,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.5"
+      ]
     },
     {
       "slug": "shift_applied_to_wrong_axis",
@@ -5386,7 +6859,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.3"
+      ]
     },
     {
       "slug": "short_long_leg_roles_confused",
@@ -5400,7 +6876,11 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.2",
+        "GR.3.4"
+      ]
     },
     {
       "slug": "side_count_subtracted_from_perimeter",
@@ -5414,7 +6894,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.1"
+      ]
     },
     {
       "slug": "side_omitted_from_perimeter",
@@ -5429,7 +6912,12 @@
         "GR"
       ],
       "notes": "Merged from GR.2.1 and GR.3.1 (drafted there as computed_side_omitted_from_perimeter).",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.1",
+        "GR.3.1",
+        "GR.3.2"
+      ]
     },
     {
       "slug": "sign_error_on_constant",
@@ -5456,7 +6944,24 @@
         "QR"
       ],
       "notes": "Distinct from drops_negative_sign: dropping yields the magnitude, flipping yields a wrong-signed value.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.1",
+        "AR.1.3",
+        "AR.1.5",
+        "AR.2.1",
+        "AR.2.3",
+        "AR.3.1",
+        "AR.3.5",
+        "AR.3.7",
+        "AR.4.2",
+        "AR.4.3",
+        "GR.2.7",
+        "QR.1.5",
+        "QR.1.8",
+        "QR.3.1",
+        "QR.3.5"
+      ]
     },
     {
       "slug": "sign_of_first_term_kept",
@@ -5470,7 +6975,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.1"
+      ]
     },
     {
       "slug": "sign_wrong_for_decreasing_rate",
@@ -5484,7 +6992,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.4.3"
+      ]
     },
     {
       "slug": "single_cell_read_where_sum_needed",
@@ -5498,7 +7009,11 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.2",
+        "PR.1.4"
+      ]
     },
     {
       "slug": "single_period_counted",
@@ -5512,7 +7027,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.3"
+      ]
     },
     {
       "slug": "single_segment_used_for_whole",
@@ -5526,7 +7044,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.5"
+      ]
     },
     {
       "slug": "single_stage_reported",
@@ -5540,7 +7061,12 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.2",
+        "PR.3.2",
+        "PR.3.3"
+      ]
     },
     {
       "slug": "single_violation_dismissed",
@@ -5554,7 +7080,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.2"
+      ]
     },
     {
       "slug": "skew_direction_misread",
@@ -5568,7 +7097,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.4"
+      ]
     },
     {
       "slug": "skips_times_100",
@@ -5578,7 +7110,8 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": []
     },
     {
       "slug": "slant_height_used_for_perpendicular",
@@ -5592,7 +7125,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.3"
+      ]
     },
     {
       "slug": "slope_denominator_summed",
@@ -5606,7 +7142,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.2"
+      ]
     },
     {
       "slug": "slope_intercept_swap",
@@ -5626,7 +7165,16 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.3",
+        "AR.2.6",
+        "PR.4.2",
+        "QR.3.1",
+        "QR.3.2",
+        "QR.3.4",
+        "QR.4.3"
+      ]
     },
     {
       "slug": "slope_numerator_summed",
@@ -5640,7 +7188,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.2"
+      ]
     },
     {
       "slug": "slope_run_over_rise",
@@ -5661,7 +7212,14 @@
         "QR"
       ],
       "notes": "Kept separate from reversed_division: the remediation conversation differs.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.6",
+        "PR.4.2",
+        "QR.3.2",
+        "QR.3.6",
+        "QR.3.7"
+      ]
     },
     {
       "slug": "slope_value_written_as_equation",
@@ -5675,7 +7233,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.6"
+      ]
     },
     {
       "slug": "snaps_to_labelled_tick",
@@ -5689,7 +7250,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.3"
+      ]
     },
     {
       "slug": "space_diagonal_stopped_at_base",
@@ -5703,7 +7267,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.1"
+      ]
     },
     {
       "slug": "special_angle_family_wrong",
@@ -5717,7 +7284,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.3"
+      ]
     },
     {
       "slug": "special_factor_applied_to_wrong_part",
@@ -5731,7 +7301,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.4"
+      ]
     },
     {
       "slug": "special_ratio_multiplied_not_divided",
@@ -5745,7 +7318,12 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.2",
+        "GR.3.3",
+        "GR.3.4"
+      ]
     },
     {
       "slug": "special_triangle_factor_swapped",
@@ -5759,7 +7337,11 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.2",
+        "GR.3.4"
+      ]
     },
     {
       "slug": "speeds_averaged_arithmetically",
@@ -5773,7 +7355,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.5"
+      ]
     },
     {
       "slug": "squares_before_isolating",
@@ -5787,7 +7372,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.9"
+      ]
     },
     {
       "slug": "squares_instead_of_roots",
@@ -5797,7 +7385,10 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.1"
+      ]
     },
     {
       "slug": "squaring_confused_with_doubling",
@@ -5817,7 +7408,11 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.9",
+        "QR.1.7"
+      ]
     },
     {
       "slug": "starting_values_summed_not_differenced",
@@ -5831,7 +7426,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.4.3"
+      ]
     },
     {
       "slug": "steepness_confused_with_strength",
@@ -5845,7 +7443,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.1"
+      ]
     },
     {
       "slug": "stops_before_simplifying",
@@ -5855,7 +7456,11 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.2",
+        "QR.1.3"
+      ]
     },
     {
       "slug": "strength_confused_with_direction",
@@ -5869,7 +7474,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.1"
+      ]
     },
     {
       "slug": "study_design_confused_with_causal_evidence",
@@ -5883,7 +7491,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.4"
+      ]
     },
     {
       "slug": "subdivision_count_miscomputed",
@@ -5897,7 +7508,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.3"
+      ]
     },
     {
       "slug": "substitution_comparison_misread",
@@ -5911,7 +7525,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.5"
+      ]
     },
     {
       "slug": "subtracts_exponents_wrongly",
@@ -5926,7 +7543,11 @@
         "AR"
       ],
       "notes": "Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.10",
+        "AR.4.4"
+      ]
     },
     {
       "slug": "subtracts_in_wrong_order",
@@ -5953,7 +7574,19 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.1",
+        "AR.2.2",
+        "AR.4.7",
+        "PR.1.1",
+        "PR.1.3",
+        "PR.1.4",
+        "QR.1.2",
+        "QR.1.5",
+        "QR.1.8",
+        "QR.3.6"
+      ]
     },
     {
       "slug": "sum_of_bases_reported_as_one_base",
@@ -5967,7 +7600,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.4"
+      ]
     },
     {
       "slug": "symmetric_partner_misidentified",
@@ -5981,7 +7617,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.1"
+      ]
     },
     {
       "slug": "symmetry_axes_double_counted",
@@ -5995,7 +7634,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.4"
+      ]
     },
     {
       "slug": "symmetry_axes_undercounted",
@@ -6009,7 +7651,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.4"
+      ]
     },
     {
       "slug": "target_weight_not_divided_out",
@@ -6023,7 +7668,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.2"
+      ]
     },
     {
       "slug": "temperature_offset_omitted",
@@ -6037,7 +7685,11 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.3",
+        "QR.2.7"
+      ]
     },
     {
       "slug": "tendency_stated_as_absolute",
@@ -6051,7 +7703,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.4"
+      ]
     },
     {
       "slug": "term_level_cancellation",
@@ -6065,7 +7720,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.5"
+      ]
     },
     {
       "slug": "terminating_test_confusion",
@@ -6075,7 +7733,10 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.3"
+      ]
     },
     {
       "slug": "terms_of_different_degree_combined",
@@ -6089,7 +7750,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.3"
+      ]
     },
     {
       "slug": "threshold_boundary_error",
@@ -6105,7 +7769,14 @@
         "PR"
       ],
       "notes": "Merged across three PR topics.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.1",
+        "PR.1.2",
+        "PR.1.3",
+        "PR.3.1",
+        "PR.3.2"
+      ]
     },
     {
       "slug": "tier_rates_reversed",
@@ -6119,7 +7790,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.4.1"
+      ]
     },
     {
       "slug": "times_added_instead_of_rates_combined",
@@ -6133,7 +7807,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.5"
+      ]
     },
     {
       "slug": "total_accepted_without_verifying",
@@ -6148,7 +7825,12 @@
         "PR"
       ],
       "notes": "Merged from PR.1.2 and PR.1.3.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.2",
+        "PR.1.3",
+        "PR.1.4"
+      ]
     },
     {
       "slug": "total_change_used_as_rate",
@@ -6162,7 +7844,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.4.3"
+      ]
     },
     {
       "slug": "total_from_wrong_count",
@@ -6176,7 +7861,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.3"
+      ]
     },
     {
       "slug": "total_not_reduced_between_draws",
@@ -6190,7 +7878,11 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.3",
+        "PR.3.4"
+      ]
     },
     {
       "slug": "transformation_misidentified_from_coordinates",
@@ -6204,7 +7896,11 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.1",
+        "GR.4.2"
+      ]
     },
     {
       "slug": "transformation_shift_direction_reversed",
@@ -6219,7 +7915,11 @@
         "AR"
       ],
       "notes": "Merged from AR.3.6 and AR.3.7.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.6",
+        "AR.3.7"
+      ]
     },
     {
       "slug": "translation_direction_reversed",
@@ -6233,7 +7933,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.1"
+      ]
     },
     {
       "slug": "trig_side_roles_misassigned",
@@ -6247,7 +7950,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.3"
+      ]
     },
     {
       "slug": "triple_overlap_not_added_back",
@@ -6261,7 +7967,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.5"
+      ]
     },
     {
       "slug": "truncates_repeating_decimal",
@@ -6271,7 +7980,10 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.3"
+      ]
     },
     {
       "slug": "two_middles_not_averaged",
@@ -6285,7 +7997,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.1"
+      ]
     },
     {
       "slug": "two_step_rounding_assumed_equal",
@@ -6299,7 +8014,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.6"
+      ]
     },
     {
       "slug": "union_intersection_swapped",
@@ -6313,7 +8031,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.5"
+      ]
     },
     {
       "slug": "unit_magnitude_mismatched",
@@ -6327,7 +8048,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.1"
+      ]
     },
     {
       "slug": "unrelated_cells_compared",
@@ -6341,7 +8065,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.4"
+      ]
     },
     {
       "slug": "unwarranted_domain_restriction_added",
@@ -6355,7 +8082,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.5"
+      ]
     },
     {
       "slug": "uses_wrong_total",
@@ -6365,7 +8095,12 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.1",
+        "QR.2.8",
+        "QR.3.3"
+      ]
     },
     {
       "slug": "valid_root_discarded_as_extraneous",
@@ -6379,7 +8114,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.9"
+      ]
     },
     {
       "slug": "values_assumed_preordered",
@@ -6393,7 +8131,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.2"
+      ]
     },
     {
       "slug": "variable_term_read_as_rate",
@@ -6407,7 +8148,11 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.4.2",
+        "QR.3.2"
+      ]
     },
     {
       "slug": "vertex_form_h_read_literally",
@@ -6421,7 +8166,12 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.3.5",
+        "AR.3.6",
+        "AR.3.7"
+      ]
     },
     {
       "slug": "vertical_angles_given_a_sum_rule",
@@ -6435,7 +8185,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.2"
+      ]
     },
     {
       "slug": "vertical_angles_treated_as_supplementary",
@@ -6449,7 +8202,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.2"
+      ]
     },
     {
       "slug": "vertical_line_test_misapplied",
@@ -6463,7 +8219,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.2"
+      ]
     },
     {
       "slug": "volume_surface_area_confusion",
@@ -6478,7 +8237,11 @@
         "GR"
       ],
       "notes": "Kept separate per decision 2.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.5",
+        "GR.2.6"
+      ]
     },
     {
       "slug": "weights_ignored",
@@ -6492,7 +8255,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.2"
+      ]
     },
     {
       "slug": "weights_swapped",
@@ -6506,7 +8272,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.2"
+      ]
     },
     {
       "slug": "whisker_length_as_typical_value",
@@ -6520,7 +8289,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.5"
+      ]
     },
     {
       "slug": "whole_population_as_denominator",
@@ -6534,7 +8306,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.3.4"
+      ]
     },
     {
       "slug": "wrong_interval_selected",
@@ -6548,7 +8323,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.6"
+      ]
     },
     {
       "slug": "wrong_inverse_operation_chosen",
@@ -6562,7 +8340,13 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.8",
+        "GR.2.3",
+        "GR.2.4",
+        "GR.2.5"
+      ]
     },
     {
       "slug": "wrong_measurement_category",
@@ -6576,7 +8360,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.1.1"
+      ]
     },
     {
       "slug": "wrong_perfect_square_bracket",
@@ -6586,7 +8373,11 @@
       "topics": [],
       "strands": [],
       "notes": "Existing curriculum slug, reused unchanged.",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.1",
+        "QR.1.4"
+      ]
     },
     {
       "slug": "wrong_period_count_used",
@@ -6600,7 +8391,14 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.2.5",
+        "QR.2.6",
+        "QR.4.1",
+        "QR.4.2",
+        "QR.4.3"
+      ]
     },
     {
       "slug": "wrong_quantity_grouped",
@@ -6614,7 +8412,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.3.1"
+      ]
     },
     {
       "slug": "wrong_reference_digit",
@@ -6628,7 +8429,10 @@
         "QR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "QR.1.6"
+      ]
     },
     {
       "slug": "wrong_reflection_axis",
@@ -6642,7 +8446,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.1"
+      ]
     },
     {
       "slug": "wrong_rotation_rule",
@@ -6656,7 +8463,10 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.4.1"
+      ]
     },
     {
       "slug": "wrong_side_count_for_polygon",
@@ -6670,7 +8480,12 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.2.1",
+        "GR.2.4",
+        "GR.2.7"
+      ]
     },
     {
       "slug": "wrong_side_shaded",
@@ -6684,7 +8499,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.2.5"
+      ]
     },
     {
       "slug": "wrong_sign_on_factor",
@@ -6703,7 +8521,17 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.5",
+        "AR.3.1",
+        "AR.3.2",
+        "AR.3.3",
+        "AR.3.6",
+        "AR.4.5",
+        "AR.4.7",
+        "AR.4.9"
+      ]
     },
     {
       "slug": "wrong_time_point_read",
@@ -6717,7 +8545,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.1.3"
+      ]
     },
     {
       "slug": "wrong_trig_ratio_selected",
@@ -6731,7 +8562,11 @@
         "GR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "GR.3.3",
+        "GR.3.4"
+      ]
     },
     {
       "slug": "zero_dropped_as_no_data",
@@ -6745,7 +8580,10 @@
         "PR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "PR.2.1"
+      ]
     },
     {
       "slug": "zero_exponent_as_zero",
@@ -6759,7 +8597,11 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.4.10",
+        "AR.4.11"
+      ]
     },
     {
       "slug": "zero_numerator_treated_as_undefined",
@@ -6773,7 +8615,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.5"
+      ]
     },
     {
       "slug": "zero_second_differences_read_as_quadratic",
@@ -6787,7 +8632,10 @@
         "AR"
       ],
       "notes": "",
-      "status": "draft"
+      "status": "draft",
+      "cat_topics_observed": [
+        "AR.1.4"
+      ]
     }
   ]
 }

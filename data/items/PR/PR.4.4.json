@@ -546,7 +546,7 @@
       "D": "Student raises an irrelevant objection about the amount of study time rather than the data range."
     },
     "misconception_tag": {
-      "A": "false_precondition_for_association",
+      "A": "over_rejects_valid_model",
       "B": "extrapolates_beyond_data",
       "D": "extrapolates_beyond_data"
     },
@@ -633,7 +633,7 @@
     "misconception_tag": {
       "A": "extrapolates_beyond_data",
       "B": "extrapolates_beyond_data",
-      "C": "false_precondition_for_association"
+      "C": "over_rejects_valid_model"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -718,7 +718,7 @@
     "misconception_tag": {
       "B": "overgeneralizes_from_sample",
       "C": "overgeneralizes_from_sample",
-      "D": "false_precondition_for_association"
+      "D": "over_rejects_valid_model"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -1058,7 +1058,7 @@
     "misconception_tag": {
       "B": "model_fit_assumed_to_transfer",
       "C": "model_fit_assumed_to_transfer",
-      "D": "false_precondition_for_association"
+      "D": "over_rejects_valid_model"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1228,7 +1228,7 @@
     "misconception_tag": {
       "A": "overgeneralizes_from_sample",
       "B": "tendency_stated_as_absolute",
-      "D": "false_precondition_for_association"
+      "D": "over_rejects_valid_model"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

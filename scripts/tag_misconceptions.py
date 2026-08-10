@@ -106,8 +106,11 @@ def write(items, topic):
                 s=assign(it, obj["distractor_logic"][opt])
                 if s is None: raise SystemExit(f"UNMATCHED {obj['item_id']}.{opt}")
                 m[opt]=s
+            # Skip any existing misconception_tag: on a re-run its old value
+            # would otherwise be copied in after the new one and silently win.
             new={}
             for k,v in obj.items():
+                if k=="misconception_tag": continue
                 new[k]=v
                 if k=="distractor_logic": new["misconception_tag"]=m
             obj.clear(); obj.update(new)

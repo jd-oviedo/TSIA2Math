@@ -95,3 +95,34 @@ misconception slugs, so it contributes nothing to `misconception_tags`
 (stored as `{}`). It needs conversion to the newer format before it can feed
 the misconception aggregate. Tagging it today would mean inventing
 attributions that the content does not support.
+
+---
+
+## Compound-error distractor — `GR_A_034` option B (GR.2.6)
+
+Found during Phase 3 misconception tagging. The distractor names **two
+entangled errors in one option**, which violates the bank's standard that a
+distractor traces to exactly one coherent error:
+
+> "Student computes the cone's contribution without the ⅓ factor:
+> πr²h = 3.14 × 16 × 6 = 301.44 cm³ **and reports that alone**."
+
+The item asks for the total volume of a cylinder (r=4, h=10) topped by a cone
+(r=4, h=6); the correct answer is 602.88 cm³.
+
+Neither error reaches choice B's value on its own:
+
+| student does | result | matches |
+|---|---|---|
+| omits ⅓ on the cone, still adds the cylinder | 502.4 + 301.44 = 803.84 | choice **A** |
+| reports the cone alone, ⅓ applied correctly | 100.48 | no choice |
+| **omits ⅓ *and* reports the cone alone** | 301.44 | choice **B** |
+
+**Tagged as** `omits_fractional_factor` — the arithmetic the value actually
+verifies is the missing ⅓ (301.44 is exactly πr²h for the cone). The "reports
+it alone" clause is the second, untagged error.
+
+**Fix:** rewrite so option B traces to one error, or change the value so a
+single error reaches it. Not resolvable by tagging — a compound distractor
+cannot be attributed to one misconception without discarding half of what it
+describes.

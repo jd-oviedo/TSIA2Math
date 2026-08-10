@@ -804,7 +804,7 @@
     "misconception_tag": {
       "B": "place_value_slip",
       "C": "fraction_digit_gluing",
-      "D": "reads_wrong_category"
+      "D": "complement_used_instead_of_value"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
