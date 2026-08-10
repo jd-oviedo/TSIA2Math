@@ -35,6 +35,11 @@
       "C": "Student compares red to non-red (3 to 5) as a ratio instead of dividing by the total, getting $\\frac{3}{5}$.",
       "D": "Student finds the probability of NOT landing on red (5 non-red sections out of 8) instead of the probability of red."
     },
+    "misconception_tag": {
+      "B": "uses_wrong_total",
+      "C": "favourable_over_unfavourable",
+      "D": "reports_event_not_complement"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -115,6 +120,11 @@
       "C": "Student compares black to non-black (2 to 4) instead of black to the total, getting $\\frac{2}{4}$ = $\\frac{1}{2}$.",
       "D": "Student finds P(not black), counting 4 non-black pens out of 6, instead of P(black)."
     },
+    "misconception_tag": {
+      "A": "outcome_total_miscounted",
+      "C": "favourable_over_unfavourable",
+      "D": "reports_event_not_complement"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -188,6 +198,11 @@
       "B": "Student uses the value 5 from the phrase '2 or 5' as the denominator, getting 2 out of 5.",
       "C": "Correct: two favorable faces (2 and 5) out of 6 gives $\\frac{2}{6}$ = $\\frac{1}{3}$.",
       "D": "Student divides the 2 favorable faces by the 4 non-favorable faces instead of by the total, getting $\\frac{2}{4}$ = $\\frac{1}{2}$."
+    },
+    "misconception_tag": {
+      "A": "omits_second_component",
+      "B": "uses_wrong_total",
+      "D": "favourable_over_unfavourable"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -269,6 +284,11 @@
       "C": "Student reads '4 black' as a 1-in-4 chance, confusing the count with the denominator.",
       "D": "Correct: 4 black marbles out of 10 total gives $\\frac{4}{10}$ = $\\frac{2}{5}$."
     },
+    "misconception_tag": {
+      "A": "favourable_over_unfavourable",
+      "B": "reports_event_not_complement",
+      "C": "uses_wrong_total"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -343,6 +363,11 @@
       "B": "Student includes 7 itself, reading 'greater than 7' as '7 or greater', counting 4 out of 10 = $\\frac{2}{5}$.",
       "C": "Student divides the 3 favorable cards by 7 (the threshold value) instead of by the 10 cards, getting $\\frac{3}{7}$.",
       "D": "Student counts only 8 and 9 as greater than 7, dropping 10, getting 2 out of 10 = $\\frac{1}{5}$."
+    },
+    "misconception_tag": {
+      "B": "threshold_boundary_error",
+      "C": "uses_wrong_total",
+      "D": "threshold_boundary_error"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -424,6 +449,11 @@
       "C": "Student counts only yellow (1 out of 10), forgetting to add the red outcomes.",
       "D": "Student finds the 5 favorable marbles but miscounts the total as 9, dropping one marble, getting $\\frac{5}{9}$."
     },
+    "misconception_tag": {
+      "A": "omits_second_component",
+      "C": "omits_second_component",
+      "D": "outcome_total_miscounted"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -503,6 +533,11 @@
       "B": "Student drops 11 from the prime list, counting only 2, 3, 5, 7 (4 out of 12), getting $\\frac{4}{12}$ = $\\frac{1}{3}$.",
       "C": "Correct: the primes from 1 to 12 are 2, 3, 5, 7, 11, giving 5 out of 12.",
       "D": "Student finds 5 primes but miscounts the total as 11 by starting the count at 2 instead of 1."
+    },
+    "misconception_tag": {
+      "A": "event_set_miscounted",
+      "B": "event_set_miscounted",
+      "D": "outcome_total_miscounted"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -584,6 +619,11 @@
       "C": "Student counts only the 'greater than 5' outcomes 6, 7, 8 (3 out of 8), ignoring the odd condition.",
       "D": "Correct: the combined set 1, 3, 5, 6, 7, 8 has 6 outcomes out of 8, giving $\\frac{6}{8}$ = $\\frac{3}{4}$."
     },
+    "misconception_tag": {
+      "A": "compound_outcomes_double_counted",
+      "B": "omits_second_component",
+      "C": "omits_second_component"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -663,6 +703,11 @@
       "B": "Student finds P(red) = 6 out of 10 instead of P(not red).",
       "C": "Student compares the 4 not-red marbles to the 6 red marbles as a ratio instead of dividing by the total, getting $\\frac{4}{6}$ = $\\frac{2}{3}$.",
       "D": "Student counts only blue as 'not red', forgetting the green marble, getting 3 out of 10."
+    },
+    "misconception_tag": {
+      "B": "reports_event_not_complement",
+      "C": "favourable_over_unfavourable",
+      "D": "omits_second_component"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -744,6 +789,11 @@
       "C": "Student counts multiples of 2 instead of multiples of 4, getting 10 out of 20 = $\\frac{1}{2}$.",
       "D": "Student counts the factors of 4 (1, 2, 4) instead of the multiples of 4, getting 3 out of 20."
     },
+    "misconception_tag": {
+      "A": "event_set_miscounted",
+      "C": "event_set_miscounted",
+      "D": "event_set_miscounted"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -823,6 +873,11 @@
       "B": "Student solves for the total number of marbles, since blue is $\\frac{3}{4}$ of the total the total is 16, but reports the total instead of the red count.",
       "C": "Correct: r/(r + 12) = $\\frac{1}{4}$ gives 4r = r + 12, so 3r = 12 and r = 4.",
       "D": "Student multiplies the 12 blue marbles by the denominator 4, getting 48, instead of setting up the proportion."
+    },
+    "misconception_tag": {
+      "A": "proportion_solved_for_wrong_unknown",
+      "B": "proportion_solved_for_wrong_unknown",
+      "D": "proportion_solved_for_wrong_unknown"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -904,6 +959,11 @@
       "C": "Student recognizes that $\\frac{1}{5}$ equals 6 students but adds only one fifth to 18 (18 plus 6) instead of the two fifths needed to reach the whole class.",
       "D": "Correct: $\\frac{18}{N}$ = $\\frac{3}{5}$ gives 3N = 90, so N = 30."
     },
+    "misconception_tag": {
+      "A": "proportion_solved_for_wrong_unknown",
+      "B": "proportion_solved_for_wrong_unknown",
+      "C": "proportion_solved_for_wrong_unknown"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -983,6 +1043,11 @@
       "B": "Student sets $\\frac{8}{y}$ = $\\frac{2}{3}$ (treating yellow as the total) and solves y = 12, instead of using 8/(8 + y).",
       "C": "Student multiplies the 8 green marbles by the numerator 2 to get 16, instead of setting up the proportion.",
       "D": "Student multiplies the 8 green marbles by the denominator 3 to get 24, instead of setting up the proportion."
+    },
+    "misconception_tag": {
+      "B": "proportion_solved_for_wrong_unknown",
+      "C": "proportion_solved_for_wrong_unknown",
+      "D": "proportion_solved_for_wrong_unknown"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1064,6 +1129,11 @@
       "C": "Student adds the 2 new marbles to the total (12) but forgets they were red, leaving red at 4, getting $\\frac{4}{12}$ = $\\frac{1}{3}$.",
       "D": "Student computes the original probability (4 red out of 10) and ignores the added marbles, getting $\\frac{4}{10}$ = $\\frac{2}{5}$."
     },
+    "misconception_tag": {
+      "A": "added_items_not_reflected_in_total",
+      "C": "added_items_not_reflected_in_total",
+      "D": "added_items_not_reflected_in_total"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1143,6 +1213,11 @@
       "B": "Student removes the 3 from the total (9) but forgets the green count dropped, leaving green at 7, getting $\\frac{7}{9}$.",
       "C": "Correct: after removing 3 green, there are 4 green out of 9 total, giving $\\frac{4}{9}$.",
       "D": "Student computes the original probability (7 green out of 12) and ignores the removed marbles, getting $\\frac{7}{12}$."
+    },
+    "misconception_tag": {
+      "A": "added_items_not_reflected_in_total",
+      "B": "added_items_not_reflected_in_total",
+      "D": "added_items_not_reflected_in_total"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

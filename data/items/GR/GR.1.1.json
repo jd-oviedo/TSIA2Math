@@ -35,6 +35,11 @@
       "C": "Correct: feet is an appropriate customary unit for measuring the length of a bedroom wall.",
       "D": "Student confuses temperature units (degrees Fahrenheit) with length units, selecting a unit from the wrong measurement category."
     },
+    "misconception_tag": {
+      "A": "wrong_measurement_category",
+      "B": "unit_magnitude_mismatched",
+      "D": "wrong_measurement_category"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student confuses distance units (miles) with time units, selecting a unit from the wrong measurement category.",
       "C": "Student confuses volume units (liters) with time units, selecting a unit from the wrong measurement category.",
       "D": "Student confuses area units (square feet) with time units, selecting a unit from the wrong measurement category."
+    },
+    "misconception_tag": {
+      "B": "wrong_measurement_category",
+      "C": "wrong_measurement_category",
+      "D": "wrong_measurement_category"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student confuses temperature units (degrees Fahrenheit) with volume units, selecting a unit from the wrong measurement category.",
       "D": "Correct: fluid ounces is a standard customary unit for measuring the volume of liquid in a glass."
     },
+    "misconception_tag": {
+      "A": "wrong_measurement_category",
+      "B": "wrong_measurement_category",
+      "C": "wrong_measurement_category"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Correct: square feet is the standard customary unit for residential floor area, and a typical bedroom measures roughly 120\u2013200 square feet.",
       "C": "Student overgeneralizes 'area unit' to land-measurement units without considering scale; acres are used for large outdoor plots, not indoor rooms.",
       "D": "Student selects an area unit that is orders of magnitude too large; square miles are used to measure the area of cities or geographic regions, not rooms."
+    },
+    "misconception_tag": {
+      "A": "unit_magnitude_mismatched",
+      "C": "unit_magnitude_mismatched",
+      "D": "unit_magnitude_mismatched"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Correct: dividing 2,000 mL by the conversion factor of 1,000 mL per liter gives 2 liters.",
       "D": "Student divides by 10 instead of 1,000, treating the conversion factor as 10 mL per liter rather than 1,000; 2,000 \u00f7 10 = 200."
     },
+    "misconception_tag": {
+      "A": "metric_prefix_factor_wrong",
+      "B": "metric_prefix_factor_wrong",
+      "D": "metric_prefix_factor_wrong"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student selects a customary length unit but one too small in magnitude for a multi-mile distance; 26 miles converts to 45,760 yards, making yards an impractical choice for this context.",
       "C": "Student selects a unit valid for small measurements but far too small for a road race; inches are appropriate for objects measured in the single digits, not distances of several miles.",
       "D": "Student selects a metric unit that is both the wrong system for US road distances and far too small in magnitude; 26 miles is nearly 4.2 million centimeters."
+    },
+    "misconception_tag": {
+      "B": "unit_magnitude_mismatched",
+      "C": "unit_magnitude_mismatched",
+      "D": "unit_magnitude_mismatched"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student correctly identifies minutes for time but selects Kelvin for temperature; Kelvin is scientifically valid but was not the unit recorded \u2014 the data is in \u00b0C, making the pair internally inconsistent with the scenario.",
       "D": "Correct: degrees Celsius matches the temperature scale the scientist used (20\u00b0C to 80\u00b0C), and minutes matches the recorded elapsed time (45 minutes)."
     },
+    "misconception_tag": {
+      "A": "measurement_system_mismatched",
+      "B": "unit_magnitude_mismatched",
+      "C": "measurement_system_mismatched"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -595,6 +630,11 @@
       "C": "Student applies an incorrect conversion factor, possibly confusing gallons with a smaller unit (such as quarts) or misremembering the ratio as approximately 10:1.",
       "D": "Student inverts the conversion ratio, treating 1 gallon as approximately one-quarter of a liter rather than nearly four liters; this error may arise from confusing the direction of the conversion."
     },
+    "misconception_tag": {
+      "A": "inverts_conversion_direction",
+      "C": "inverts_conversion_direction",
+      "D": "inverts_conversion_direction"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -674,6 +714,11 @@
       "B": "Student recognizes that 1 yard = 3 feet but incorrectly applies the linear conversion factor (\u00d73) to the area, rather than the area conversion factor (\u00d79); 1,500 \u00d7 3 = 4,500.",
       "C": "Correct: area in square yards is 50 \u00d7 30 = 1,500 sq yd; since 1 sq yd = 9 sq ft, the total is 1,500 \u00d7 9 = 13,500 square feet.",
       "D": "Student divides the area by 3 instead of multiplying by 9, inverting the direction of the conversion and using the wrong factor; 1,500 \u00f7 3 = 500."
+    },
+    "misconception_tag": {
+      "A": "area_conversion_factor_not_squared",
+      "B": "area_conversion_factor_not_squared",
+      "D": "area_conversion_factor_not_squared"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

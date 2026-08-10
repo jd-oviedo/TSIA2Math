@@ -36,6 +36,11 @@
       "C": "Student rounds \u221a20 down to the nearest perfect-square root, using \u221a16 = 4 instead of estimating \u221a20 \u2248 4.47, then computes 4 + 4 = 8.0.",
       "D": "Student incorrectly combines the two terms under one radical by treating 4 + \u221a20 as \u221a(4 + 20) = \u221a24 \u2248 4.9, failing to recognize that a rational number and an irrational number cannot be merged inside a single radical sign."
     },
+    "misconception_tag": {
+      "B": "halves_the_radicand",
+      "C": "rounds_too_early",
+      "D": "rational_and_irrational_merged"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -121,6 +126,11 @@
       "C": "Student converts $\\frac{1}{3}$ to a denominator of 6 by multiplying the denominator by 2 but forgetting to multiply the numerator by the same factor, producing $\\frac{1}{6}$ instead of $\\frac{2}{6}$. Then \u2212$\\frac{5}{6}$ + $\\frac{1}{6}$ = \u2212$\\frac{4}{6}$ = \u2212$\\frac{2}{3}$.",
       "D": "Correct: \u2212$\\frac{5}{6}$ + $\\frac{1}{3}$ = \u2212$\\frac{5}{6}$ + $\\frac{2}{6}$ = \u2212$\\frac{3}{6}$ = \u2212$\\frac{1}{2}$."
     },
+    "misconception_tag": {
+      "A": "drops_negative_sign",
+      "B": "drops_negative_sign",
+      "C": "numerators_not_rescaled"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -199,6 +209,11 @@
       "B": "Correct: (\u22120.4) \u00d7 (\u22122.5) = +1.0.",
       "C": "Student misaligns the decimal point, computing 4 \u00d7 25 = 100 but placing the decimal incorrectly to get 0.1 instead of 1.0.",
       "D": "Student correctly determines the result must be positive (two negatives multiply to a positive) but then adds the absolute values instead of multiplying: 0.4 + 2.5 = 2.9."
+    },
+    "misconception_tag": {
+      "A": "drops_negative_sign",
+      "C": "place_value_slip",
+      "D": "sign_error_on_constant"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -279,6 +294,11 @@
       "B": "Student subtracts radicands directly \u2014 applying the false rule \u221aa \u2212 \u221ab = \u221a(a \u2212 b) \u2014 computing \u221a50 \u2212 \u221a18 as \u221a(50 \u2212 18) = \u221a32 \u2248 5.66, then adds 5 to get approximately 10.7.",
       "C": "Student simplifies the radicals correctly to 2\u221a2 \u2248 2.83 but forgets to add the +5 term, reporting only the radical portion rounded to 2.8.",
       "D": "Student misreads the minus sign as a plus and adds the radicals: \u221a50 + \u221a18 = 5\u221a2 + 3\u221a2 = 8\u221a2 \u2248 11.31, then adds 5 to get approximately 16.3."
+    },
+    "misconception_tag": {
+      "B": "false_radical_distribution",
+      "C": "answers_intermediate_value",
+      "D": "false_radical_distribution"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -365,6 +385,11 @@
       "C": "Correct: $\\frac{28}{12}$ \u2212 $\\frac{45}{12}$ = \u2212$\\frac{17}{12}$ = \u22121 $\\frac{5}{12}$.",
       "D": "Student subtracts only the fractional parts of each mixed number ($\\frac{1}{3}$ \u2212 $\\frac{3}{4}$ = $\\frac{4}{12}$ \u2212 $\\frac{9}{12}$ = \u2212$\\frac{5}{12}$) and drops the whole-number portion of the computation entirely, reporting \u2212$\\frac{5}{12}$."
     },
+    "misconception_tag": {
+      "A": "drops_negative_sign",
+      "B": "place_value_slip",
+      "D": "answers_intermediate_value"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -443,6 +468,11 @@
       "B": "Student correctly computes $\\frac{3}{4}$ \u00f7 (\u2212$\\frac{1}{2}$) = \u2212$\\frac{3}{2}$ but stops there, forgetting to add 1.",
       "C": "Student adds \u22121 instead of +1 at the end (confused by the negative context), getting \u2212$\\frac{3}{2}$ \u2212 1 = \u2212$\\frac{5}{2}$ = \u22122 $\\frac{1}{2}$.",
       "D": "Correct: $\\frac{3}{4}$ \u00f7 (\u2212$\\frac{1}{2}$) = \u2212$\\frac{3}{2}$, and \u2212$\\frac{3}{2}$ + 1 = \u2212$\\frac{1}{2}$."
+    },
+    "misconception_tag": {
+      "A": "drops_negative_sign",
+      "B": "answers_intermediate_value",
+      "C": "sign_error_on_constant"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -523,6 +553,11 @@
       "B": "Student rationalizes correctly to 2(\u221a5 + \u221a2) but then applies the false rule \u221aa + \u221ab = \u221a(a + b), getting 2\u00b7\u221a7 \u2248 2(2.646) \u2248 5.3.",
       "C": "Student skips rationalization and estimates using whole-number approximations: \u221a5 \u2248 2 and \u221a2 \u2248 1, giving denominator 2 \u2212 1 = 1, and computes 6 \u00f7 1 = 6.0.",
       "D": "Student correctly multiplies the denominator by its conjugate, obtaining (\u221a5 \u2212 \u221a2)(\u221a5 + \u221a2) = 3, but does not apply the same conjugate to the numerator \u2014 leaving the numerator as 6 rather than 6(\u221a5 + \u221a2) \u2014 and computes 6 \u00f7 3 = 2.0."
+    },
+    "misconception_tag": {
+      "B": "false_radical_distribution",
+      "C": "rounds_too_early",
+      "D": "conjugate_applied_to_denominator_only"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -611,6 +646,11 @@
       "C": "Student correctly simplifies the numerator to 7\u221a3 but then attempts to cancel (\u221a3 + 1) from numerator and denominator as if 7\u221a3 = 7(\u221a3 + 1) \u2212 7, treating the denominator as a factor of the numerator rather than rationalizing it properly, and writes 7(\u221a3 \u2212 1).",
       "D": "Student multiplies by $\\frac{\u221a3 + 1}{\u221a3 + 1}$ instead of the conjugate $\\frac{\u221a3 \u2212 1}{\u221a3 \u2212 1}$, computing denominator (\u221a3 + 1)\u00b2 instead of (\u221a3)\u00b2 \u2212 1\u00b2, and the sign on the \u221a3 term in the numerator flips to positive: (21 + 7\u221a3) / 2."
     },
+    "misconception_tag": {
+      "B": "partial_distribution",
+      "C": "radical_cancelled_as_factor",
+      "D": "multiplies_by_denominator_not_conjugate"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -697,6 +737,11 @@
       "C": "Student correctly simplifies \u221a75 = 5\u221a3 but treats 2\u221a12 as having coefficient 0 (loses track of the term during multi-step simplification) and reports 5\u221a3.",
       "D": "Student reverses the order of subtraction, computing 2\u221a12 \u2212 \u221a75 = 4\u221a3 \u2212 5\u221a3 = \u2212\u221a3."
     },
+    "misconception_tag": {
+      "A": "false_radical_distribution",
+      "C": "coefficient_lost_in_multistep",
+      "D": "subtracts_in_wrong_order"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -777,6 +822,11 @@
       "B": "Correct: multiplying by the conjugate gives denominator 3 and numerator 10\u221a5 \u2212 10\u221a2, yielding (10\u221a5 \u2212 10\u221a2) / 3.",
       "C": "Student multiplies by $\\frac{\u221a5 + \u221a2}{\u221a5 + \u221a2}$ \u2014 the original denominator rather than its conjugate \u2014 producing a positive sign on both radical terms in the numerator: $\\frac{10\u221a5 + 10\u221a2}{\u221a5 + \u221a2}$\u00b2 ... then incorrectly computes the denominator as 3 anyway, writing (10\u221a5 + 10\u221a2) / 3.",
       "D": "Student correctly distributes to get 10(\u221a5 \u2212 \u221a2) in the numerator but then applies the false rule \u221aa \u2212 \u221ab = \u221a(a \u2212 b) to the radical expression, computing \u221a5 \u2212 \u221a2 as \u221a(5 \u2212 2) = \u221a3, and writes 10\u221a$\\frac{3}{3}$."
+    },
+    "misconception_tag": {
+      "A": "conjugate_applied_to_denominator_only",
+      "C": "multiplies_by_denominator_not_conjugate",
+      "D": "false_radical_distribution"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

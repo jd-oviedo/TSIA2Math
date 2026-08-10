@@ -35,6 +35,11 @@
       "C": "Student reports the median; sorted, the values are 4, 4, 5, 7, 10 with middle value 5.",
       "D": "Student averages only the smallest and largest values, (4 + 10) / 2 = 7, instead of using all five."
     },
+    "misconception_tag": {
+      "B": "reports_wrong_center_measure",
+      "C": "reports_wrong_center_measure",
+      "D": "two_middles_not_averaged"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student computes the mean, (12 + 7 + 15 + 9 + 7) / 5 = $\\frac{50}{5}$ = 10, instead of the median.",
       "C": "Student takes the middle value of the unordered list (12, 7, 15, 9, 7), which is 15, without sorting first.",
       "D": "Correct: ordered as 7, 7, 9, 12, 15, the middle of five values is 9."
+    },
+    "misconception_tag": {
+      "A": "reports_wrong_center_measure",
+      "B": "reports_wrong_center_measure",
+      "C": "median_from_unsorted_list"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student computes the range, 13 - 2 = 11, instead of the mode.",
       "D": "Student picks the largest value, reading 'most' as 'greatest' rather than 'most frequent.'"
     },
+    "misconception_tag": {
+      "B": "reports_wrong_center_measure",
+      "C": "reports_wrong_center_measure",
+      "D": "reports_wrong_center_measure"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -269,6 +284,11 @@
       "B": "Student reports the maximum value, 21, instead of the difference between the extremes.",
       "C": "Correct: range = maximum - minimum = 21 - 6 = 15.",
       "D": "Student adds the largest and smallest values, 21 + 6 = 27, instead of subtracting."
+    },
+    "misconception_tag": {
+      "A": "reports_wrong_center_measure",
+      "B": "range_from_single_extreme",
+      "D": "two_middles_not_averaged"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -350,6 +370,11 @@
       "C": "Student reports the median; ordered as 0, 6, 7, 8, 9, the middle value is 7.",
       "D": "Student treats the 0 as 'no data' and drops it, dividing by 4: $\\frac{30}{4}$ = 7.5."
     },
+    "misconception_tag": {
+      "A": "mean_divisor_miscounted",
+      "C": "reports_wrong_center_measure",
+      "D": "zero_dropped_as_no_data"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -424,6 +449,11 @@
       "B": "Student computes the mean, (6 + 21 + 10 + 16 + 8 + 11) / 6 = $\\frac{72}{6}$ = 12, instead of the median.",
       "C": "Student averages only the smallest and largest values, (6 + 21) / 2 = 13.5.",
       "D": "Correct: ordered as 6, 8, 10, 11, 16, 21, the two middle values average to (10 + 11) / 2 = 10.5."
+    },
+    "misconception_tag": {
+      "A": "two_middles_not_averaged",
+      "B": "reports_wrong_center_measure",
+      "C": "two_middles_not_averaged"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -505,6 +535,11 @@
       "C": "Correct: mean = $\\frac{50}{5}$ = 10, median = 6, and 10 - 6 = 4.",
       "D": "Student reports the mean value itself rather than how much it exceeds the median."
     },
+    "misconception_tag": {
+      "A": "two_middles_not_averaged",
+      "B": "reports_wrong_center_measure",
+      "D": "reports_wrong_center_measure"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -584,6 +619,11 @@
       "B": "Correct: ordered as 12, 15, 19, 26, 28, 34, 41, the fourth of seven values is 26.",
       "C": "Student computes the mean, (34 + 12 + 28 + 15 + 41 + 19 + 26) / 7 = $\\frac{175}{7}$ = 25, instead of the median.",
       "D": "Student sorts correctly but miscounts the middle position, picking the fifth value, 28, instead of the fourth."
+    },
+    "misconception_tag": {
+      "A": "median_from_unsorted_list",
+      "C": "reports_wrong_center_measure",
+      "D": "two_middles_not_averaged"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -665,6 +705,11 @@
       "C": "Student reports the maximum value, 12, instead of the difference between the extremes.",
       "D": "Student picks -4 as the minimum, treating it as smaller than -7, and computes 12 - (-4) = 16."
     },
+    "misconception_tag": {
+      "B": "drops_negative_sign",
+      "C": "range_from_single_extreme",
+      "D": "drops_negative_sign"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -744,6 +789,11 @@
       "B": "Student finds the median of the three distinct scores {6, 8, 10}, taking 8, while ignoring how many students earned each score.",
       "C": "Correct: across all 10 ordered scores, the fifth and sixth values are 6 and 8, so the median is (6 + 8) / 2 = 7.",
       "D": "Student computes the mean, (5 times 6 + 3 times 8 + 2 times 10) / 10 = $\\frac{74}{10}$ = 7.4, instead of the median."
+    },
+    "misconception_tag": {
+      "A": "reports_wrong_center_measure",
+      "B": "two_middles_not_averaged",
+      "D": "reports_wrong_center_measure"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -825,6 +875,11 @@
       "C": "Student averages the old mean with the new value, (8 + 12) / 2 = 10, instead of rebuilding from the total.",
       "D": "Student divides the new total by the old count, $\\frac{36}{3}$ = 12, forgetting that n grew to 4."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "C": "new_mean_from_averaging_means",
+      "D": "new_total_divided_by_old_count"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -904,6 +959,11 @@
       "B": "Correct: the middle value stays 13 regardless of how large the top value grows, so the median is least affected.",
       "C": "Student treats the range as a measure of center and assumes few inputs means little change, but the changed value is one of the range's endpoints, so the range changes the most.",
       "D": "Student assumes all statistics respond equally, ignoring that some measures resist outliers while others do not."
+    },
+    "misconception_tag": {
+      "A": "outlier_resistance_misjudged",
+      "C": "outlier_resistance_misjudged",
+      "D": "outlier_resistance_misjudged"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -985,6 +1045,11 @@
       "C": "Student reports the full total of 50, forgetting to remove the two known values.",
       "D": "Correct: total = 5 times 10 = 50; the two 7s sum to 14; remaining three sum to 50 - 14 = 36."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "answers_intermediate_value",
+      "C": "answers_intermediate_value"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1065,6 +1130,11 @@
       "C": "Student keeps the count at 8 for the smaller set, computing 8 times 52 - 8 times 50 = 16.",
       "D": "Student pairs each mean with the wrong count, computing 8 times 52 - 7 times 50 = 66."
     },
+    "misconception_tag": {
+      "B": "answers_intermediate_value",
+      "C": "new_total_divided_by_old_count",
+      "D": "answers_intermediate_value"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1144,6 +1214,11 @@
       "B": "Student assumes removing one value leaves the mean unchanged, keeping 20.",
       "C": "Correct: largest = 4 + 26 = 30; new total = 120 - 30 = 90; new mean = $\\frac{90}{5}$ = 18.",
       "D": "Student reduces the count to 5 but forgets to subtract the removed value, computing $\\frac{120}{5}$ = 24."
+    },
+    "misconception_tag": {
+      "A": "new_total_divided_by_old_count",
+      "B": "answers_intermediate_value",
+      "D": "answers_intermediate_value"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

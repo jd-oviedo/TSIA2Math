@@ -35,6 +35,11 @@
       "C": "Student adds the coefficient and the constant, 7 + 4 = 11, treating the sum as the rate.",
       "D": "Student selects the entire variable term 7x rather than just the coefficient that measures the rate."
     },
+    "misconception_tag": {
+      "B": "constant_read_as_rate",
+      "C": "coefficient_plus_constant_as_rate",
+      "D": "variable_term_read_as_rate"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "C": "Student selects the variable x itself rather than the coefficient that scales it.",
       "D": "Student selects the full term mx instead of isolating the coefficient m as the rate."
     },
+    "misconception_tag": {
+      "A": "constant_read_as_rate",
+      "C": "variable_term_read_as_rate",
+      "D": "variable_term_read_as_rate"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -192,6 +202,11 @@
       "B": "Student adds the coefficient and the constant, 6 + 15 = 21, and reports the sum as the rate.",
       "C": "Correct: the coefficient 6 is the rate, so cost rises by 6 for each one-unit increase in n.",
       "D": "Student inverts the relationship, describing a change of 1 for every 6 units rather than 6 for every 1 unit."
+    },
+    "misconception_tag": {
+      "A": "constant_read_as_rate",
+      "B": "coefficient_plus_constant_as_rate",
+      "D": "slope_run_over_rise"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -273,6 +288,11 @@
       "C": "Student selects the full total-cost expression 3h + 5 rather than isolating the per-hour rate.",
       "D": "Correct: \\$3 per hour is the amount added for each additional hour, which is the rate of change."
     },
+    "misconception_tag": {
+      "A": "constant_read_as_rate",
+      "B": "coefficient_plus_constant_as_rate",
+      "C": "variable_term_read_as_rate"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -352,6 +372,11 @@
       "B": "Student selects the 12 gallons already present, which is the starting amount, not the rate.",
       "C": "Student adds the fill rate and the starting amount, 8 + 12 = 20, and reports the sum as the rate.",
       "D": "Student selects the full expression for total water, 8t + 12, instead of isolating the per-minute rate."
+    },
+    "misconception_tag": {
+      "B": "constant_read_as_rate",
+      "C": "coefficient_plus_constant_as_rate",
+      "D": "variable_term_read_as_rate"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -433,6 +458,11 @@
       "C": "Student reports the first y-value, 10, as the rate rather than the change between values.",
       "D": "Student finds the starting value (the y-value when x = 0, which is 10 - 3 = 7) instead of the rate of change."
     },
+    "misconception_tag": {
+      "A": "slope_run_over_rise",
+      "C": "constant_read_as_rate",
+      "D": "constant_read_as_rate"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -511,6 +541,11 @@
       "B": "Student matches the shared constant 5 instead of the coefficient; 3x + 5 has rate 3, not 2.",
       "C": "Correct: 2x - 1 has coefficient 2, the same rate of change as 2x + 5; the different constant is irrelevant.",
       "D": "Student ignores the sign of the coefficient; -2x + 5 has rate -2, which is not the same as 2."
+    },
+    "misconception_tag": {
+      "A": "slope_intercept_swap",
+      "B": "constant_read_as_rate",
+      "D": "drops_negative_sign"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -591,6 +626,11 @@
       "C": "Student sees a fixed total of 50 and reads it as unchanging, missing that 50 liters over 10 hours is a rate of 5 per hour.",
       "D": "Correct: a steady amount with nothing added or removed does not change, so the rate of change is zero."
     },
+    "misconception_tag": {
+      "A": "constant_read_as_rate",
+      "B": "constant_read_as_rate",
+      "C": "constant_read_as_rate"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -669,6 +709,11 @@
       "B": "Student reports the starting height of 4 as the rate instead of the weekly increase.",
       "C": "Student reports the final value of 10 as the rate rather than the change between weeks.",
       "D": "Student inverts the ratio, dividing the change in week by the change in height (1 week per 2 cm) to get $\\frac{1}{2}$."
+    },
+    "misconception_tag": {
+      "B": "constant_read_as_rate",
+      "C": "constant_read_as_rate",
+      "D": "slope_run_over_rise"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -749,6 +794,11 @@
       "C": "Student picks a rate based on the order the expressions are written, which has no bearing on the rate of change.",
       "D": "Student subtracts the constants, 9 - 1 = 8, and reports that difference as a difference in rate of change."
     },
+    "misconception_tag": {
+      "A": "constant_read_as_rate",
+      "C": "rate_assumed_quantity_dependent",
+      "D": "constant_read_as_rate"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -827,6 +877,11 @@
       "B": "Student applies a false general rule that bulk pricing is always cheaper per item, without checking the actual per-text values.",
       "C": "Correct: Plan B is \\$1.80 / 12 = \\$0.15 per text, which is less than Plan A's \\$0.20, so Plan A's rate is greater.",
       "D": "Student believes the rate of change depends on the number of texts, but a constant per-text rate is the same at any quantity."
+    },
+    "misconception_tag": {
+      "A": "rate_not_normalised_to_unit",
+      "B": "rate_not_normalised_to_unit",
+      "D": "rate_not_normalised_to_unit"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -908,6 +963,11 @@
       "C": "Student accepts the company's claim, repeating the error of treating the constant \\$200 as the rate of change.",
       "D": "Student swaps the roles of the two numbers, keeping \\$200 as the rate and calling \\$5 the fixed cost, which reverses the correct meanings."
     },
+    "misconception_tag": {
+      "B": "coefficient_plus_constant_as_rate",
+      "C": "constant_read_as_rate",
+      "D": "slope_intercept_swap"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -987,6 +1047,11 @@
       "B": "Correct: per hour, Ana earns \\$18, Ben earns \\$17.50, and Carla earns \\$17.50, so Ana's rate is greatest.",
       "C": "Student compares the daily figure \\$140 against an hourly figure without converting to a common unit.",
       "D": "Student assumes all three rates are equal, overlooking that Ana's \\$18 differs from the other two workers' \\$17.50."
+    },
+    "misconception_tag": {
+      "A": "rate_not_normalised_to_unit",
+      "C": "rate_not_normalised_to_unit",
+      "D": "rate_assumed_quantity_dependent"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1068,6 +1133,11 @@
       "C": "Correct: one ream costs 500 x 0.25 = \\$125, so the per-ream rate is 125 and the total for r reams is 125r.",
       "D": "Student treats the 500 pages per ream as a fixed add-on cost rather than a factor in the per-ream rate."
     },
+    "misconception_tag": {
+      "A": "rate_not_normalised_to_unit",
+      "B": "rate_not_normalised_to_unit",
+      "D": "rate_not_normalised_to_unit"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1147,6 +1217,11 @@
       "B": "Student assumes that because both expressions are linear they must share the same rate, ignoring that the coefficients differ.",
       "C": "Student adds each expression's coefficient and constant and compares the sums, treating the sum as the rate of change.",
       "D": "Correct: Plan 2's coefficient 5 exceeds Plan 1's coefficient 3, so Plan 2 saves faster; the constants only set the starting balances."
+    },
+    "misconception_tag": {
+      "A": "constant_read_as_rate",
+      "B": "rate_assumed_quantity_dependent",
+      "C": "coefficient_plus_constant_as_rate"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

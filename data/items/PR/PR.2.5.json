@@ -35,6 +35,11 @@
       "C": "Student takes the midpoint of the minimum and maximum, (12 + 40) / 2 = 26, instead of the marked median.",
       "D": "Student reads Q3, the right edge of the box (30), as the median."
     },
+    "misconception_tag": {
+      "B": "quartile_read_as_median",
+      "C": "reports_wrong_center_measure",
+      "D": "quartile_read_as_median"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -116,6 +121,11 @@
       "B": "Student reads the median (15) as Q3.",
       "C": "Student reads the maximum, the right end of the whisker (28), as Q3.",
       "D": "Correct: Q3 is the right edge of the box, at 22."
+    },
+    "misconception_tag": {
+      "A": "quartile_read_as_median",
+      "B": "quartile_read_as_median",
+      "C": "quartile_read_as_median"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -199,6 +209,11 @@
       "C": "Student computes Q3 minus the median, 32 - 20 = 12, using the median in place of Q1.",
       "D": "Student computes the full range, maximum minus minimum, 45 - 8 = 37, instead of the IQR."
     },
+    "misconception_tag": {
+      "A": "iqr_computed_using_median",
+      "C": "iqr_computed_using_median",
+      "D": "range_from_single_extreme"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -281,6 +296,11 @@
       "C": "Correct: B's IQR of 22 exceeds A's IQR of 10.",
       "D": "Student uses the medians to judge spread, but the IQR depends on the quartiles, where B's box is much wider."
     },
+    "misconception_tag": {
+      "A": "range_from_single_extreme",
+      "B": "center_spread_confusion",
+      "D": "center_spread_confusion"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -360,6 +380,11 @@
       "B": "Student assumes uniform spread, contradicted by the narrow box (22 to 26) holding the middle half.",
       "C": "Student misreads the plot; the middle 50% lies between Q1 (22) and Q3 (26), so most data is low, not high.",
       "D": "Student identifies skew but the wrong direction; the long whisker is on the upper end, indicating high-side skew."
+    },
+    "misconception_tag": {
+      "B": "center_spread_confusion",
+      "C": "center_spread_confusion",
+      "D": "whisker_length_as_typical_value"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -447,6 +472,11 @@
       "B": "Correct: equal ranges do not force equal centers; A's median of 60 exceeds B's 40.",
       "C": "Student judges the typical value by whisker length rather than the median; B's median is actually lower.",
       "D": "Student assumes a shared range forces an equal median, which the plots contradict (60 versus 40)."
+    },
+    "misconception_tag": {
+      "A": "equal_endpoints_read_as_equal_distributions",
+      "C": "whisker_length_as_typical_value",
+      "D": "equal_endpoints_read_as_equal_distributions"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

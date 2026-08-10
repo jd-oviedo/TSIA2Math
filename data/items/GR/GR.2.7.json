@@ -37,6 +37,11 @@
       "C": "Student multiplies length by width instead of applying the perimeter formula: x \u00d7 5 = 5x.",
       "D": "Student applies the factor of 2 to the variable term only and leaves the constant unchanged: 2x + 5."
     },
+    "misconception_tag": {
+      "A": "perimeter_area_confusion",
+      "C": "perimeter_area_confusion",
+      "D": "factor_not_distributed_to_constant"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -118,6 +123,11 @@
       "B": "Student reports one side length rather than multiplying by 4: 3x.",
       "C": "Student computes the area instead of the perimeter: (3x)\u00b2 = 9x\u00b2.",
       "D": "Student multiplies by 3 instead of 4, confusing a square (4 sides) with a triangle (3 sides): 3 \u00d7 3x = 9x."
+    },
+    "misconception_tag": {
+      "B": "wrong_side_count_for_polygon",
+      "C": "perimeter_area_confusion",
+      "D": "wrong_side_count_for_polygon"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -201,6 +211,11 @@
       "C": "Correct: A = x \u00d7 8 = 8x.",
       "D": "Student squares x in the product instead of multiplying x by the constant 8: 8x\u00b2."
     },
+    "misconception_tag": {
+      "A": "perimeter_area_confusion",
+      "B": "perimeter_area_confusion",
+      "D": "perimeter_area_confusion"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -283,6 +298,11 @@
       "C": "Student undercounts the x-coefficient, treating 2x as x: x + x + x = 3x; then correctly adds constants: 3x + 2.",
       "D": "Correct: (x + x + 2x) + (3 \u2212 1) = 4x + 2."
     },
+    "misconception_tag": {
+      "A": "sign_error_on_constant",
+      "B": "sign_error_on_constant",
+      "C": "wrong_side_count_for_polygon"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -364,6 +384,11 @@
       "B": "Correct: P = 2(3x + 1) = 6x + 2.",
       "C": "Student multiplies l \u00d7 w (area) instead of applying the perimeter formula: 2x(x + 1) = 2x\u00b2 + 2x.",
       "D": "Student computes P = 2(l + w) correctly for the x-terms (6x) but uses w = (x + 2) instead of (x + 1), adding an extra 1 to the constant: 2(3x + 2) = 6x + 4."
+    },
+    "misconception_tag": {
+      "A": "perimeter_area_confusion",
+      "C": "perimeter_area_confusion",
+      "D": "phantom_term_introduced"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -448,6 +473,11 @@
       "C": "Correct: A = 3(x + 4) = 3x + 12.",
       "D": "Student treats (x + 4) as if it were (x\u00b2 + 4x) before multiplying: 3(x\u00b2 + 4x) = 3x\u00b2 + 12x."
     },
+    "misconception_tag": {
+      "A": "factor_not_distributed_to_constant",
+      "B": "perimeter_area_confusion",
+      "D": "partial_distribution"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -530,6 +560,11 @@
       "B": "Student omits the \u00bd factor: 2x(x + 6) = 2x\u00b2 + 12x.",
       "C": "Student correctly finds \u00bd \u00d7 2x = x but then adds x + (x + 6) = 2x + 6 instead of multiplying x \u00d7 (x + 6).",
       "D": "Student multiplies x \u00d7 x = x\u00b2 correctly but drops the 6x term from the expansion: x\u00b2 + 6."
+    },
+    "misconception_tag": {
+      "B": "omits_fractional_factor",
+      "C": "partial_distribution",
+      "D": "partial_distribution"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -614,6 +649,11 @@
       "C": "Student applies a \u00bd factor (as if using the triangle formula): \u00bd \u00d7 4 \u00d7 (3x + 2) = 2(3x + 2) = 6x + 4.",
       "D": "Correct: A = 4(3x + 2) = 12x + 8."
     },
+    "misconception_tag": {
+      "A": "perimeter_area_confusion",
+      "B": "factor_not_distributed_to_constant",
+      "C": "omits_fractional_factor"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -696,6 +736,11 @@
       "B": "Correct: 2x + (4 \u2212 2 + 3 + 2 + 7) = 2x + 14.",
       "C": "Student ignores the -2 in (x - 2) when summing constants, treating it as +2, then drops the -2 entirely: constants = 4 + 3 + 2 + 7 = 16, giving 2x + 16.",
       "D": "Student counts only one x-variable term and misses the x in (x \u2212 2): x + (\u22122) + 4 + 3 + 2 + 7 = x + 14."
+    },
+    "misconception_tag": {
+      "A": "phantom_term_introduced",
+      "C": "sign_error_on_constant",
+      "D": "wrong_side_count_for_polygon"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -780,6 +825,11 @@
       "C": "Correct: A = \u03c0(x + 2)\u00b2 = \u03c0(x\u00b2 + 4x + 4).",
       "D": "Student omits the squaring step, writing A = \u03c0r instead of A = \u03c0r\u00b2: \u03c0(x + 2)."
     },
+    "misconception_tag": {
+      "A": "binomial_square_middle_term_omitted",
+      "B": "circumference_area_confusion",
+      "D": "circumference_area_confusion"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -862,6 +912,11 @@
       "B": "Student omits the \u00bd factor in the triangle area: 2x \u00d7 x = 2x\u00b2; total = 2x\u00b2 + 10x.",
       "C": "Student adds a phantom constant term (+10) that has no basis in the given dimensions: x\u00b2 + 10x + 10.",
       "D": "Student computes triangle area as \u00bd \u00d7 2x = x (applies \u00bd to base only, ignoring the height x): rectangle 10x + triangle x = 11x."
+    },
+    "misconception_tag": {
+      "B": "omits_fractional_factor",
+      "C": "phantom_term_introduced",
+      "D": "fractional_factor_applied_to_base_only"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -946,6 +1001,11 @@
       "C": "Student doubles the entire expression, applying an extra factor of 2: 2 \u00d7 5\u03c0(x + 1)\u00b2 = 10\u03c0(x + 1)\u00b2.",
       "D": "Correct: V = 5\u03c0(x + 1)\u00b2 = 5\u03c0(x\u00b2 + 2x + 1)."
     },
+    "misconception_tag": {
+      "A": "circumference_area_confusion",
+      "B": "binomial_square_middle_term_omitted",
+      "C": "result_doubled_twice"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1028,6 +1088,11 @@
       "B": "Correct: (8x + 12) \u2212 (6x + 6) = 2x + 6.",
       "C": "Student adds both area expressions instead of subtracting: (8x + 12) + (6x + 6) = 14x + 18.",
       "D": "Student correctly subtracts the x-terms (2x) but reverses the constant subtraction: 6 \u2212 12 = \u22126, giving 2x \u2212 6."
+    },
+    "misconception_tag": {
+      "A": "sign_error_on_constant",
+      "C": "sign_error_on_constant",
+      "D": "sign_error_on_constant"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1112,6 +1177,11 @@
       "C": "Correct: 2(x\u00b2 + 8x + 6) = 2x\u00b2 + 16x + 12.",
       "D": "Student applies the factor of 4 to the constant instead of 2: 2x\u00b2 + 16x + 4(6) = 2x\u00b2 + 16x + 24."
     },
+    "misconception_tag": {
+      "A": "opposite_faces_not_doubled",
+      "B": "opposite_faces_not_doubled",
+      "D": "opposite_faces_not_doubled"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1194,6 +1264,11 @@
       "B": "Student omits the \u2153 factor entirely: x\u00b2(x + 3) = x\u00b3 + 3x\u00b2.",
       "C": "Student uses s instead of s\u00b2 in the formula: \u2153 \u00d7 x \u00d7 (x + 3) = ($\\frac{1}{3}$)(x\u00b2 + 3x) = ($\\frac{1}{3}$)x\u00b2 + x.",
       "D": "Student correctly applies \u2153 to the x\u00b3 term but fails to simplify \u2153 \u00d7 3x\u00b2 = x\u00b2, leaving it as 3x\u00b2: ($\\frac{1}{3}$)x\u00b3 + 3x\u00b2."
+    },
+    "misconception_tag": {
+      "B": "omits_fractional_factor",
+      "C": "radius_not_squared",
+      "D": "omits_fractional_factor"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

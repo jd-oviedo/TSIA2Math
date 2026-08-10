@@ -35,6 +35,11 @@
       "C": "Student reads the Math bar (10) instead of the Science bar.",
       "D": "Student reads the Drama bar (8) instead of the Science bar."
     },
+    "misconception_tag": {
+      "B": "reads_adjacent_value",
+      "C": "reads_adjacent_value",
+      "D": "reads_adjacent_value"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -132,6 +137,11 @@
       "C": "Student reads Wednesday's row (2 symbols) instead of Tuesday's and applies the key: 2 \u00d7 4 = 8.",
       "D": "Student reads Monday's row (3 symbols) instead of Tuesday's and applies the key: 3 \u00d7 4 = 12."
     },
+    "misconception_tag": {
+      "A": "pictograph_key_not_applied",
+      "C": "reads_adjacent_value",
+      "D": "reads_adjacent_value"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -212,6 +222,11 @@
       "C": "Correct: the Week 3 data point is plotted at 68.",
       "D": "Student reads the Week 1 data point (70) instead of Week 3."
     },
+    "misconception_tag": {
+      "A": "wrong_time_point_read",
+      "B": "wrong_time_point_read",
+      "D": "wrong_time_point_read"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -291,6 +306,11 @@
       "B": "Student selects March (3 inches), confusing it with another month or misreading the bar heights.",
       "C": "Student selects May (4 inches), perhaps stopping their comparison before reaching April.",
       "D": "Correct: April's bar reaches 7, the highest value among all five months."
+    },
+    "misconception_tag": {
+      "A": "reads_wrong_category",
+      "B": "reads_wrong_category",
+      "C": "reads_wrong_category"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -391,6 +411,11 @@
       "C": "Student reads Cara's row (6 symbols) instead of Ana's and applies the key: 6 \u00d7 2 = 12.",
       "D": "Student reads Ben's row (3 symbols) instead of Ana's and applies the key: 3 \u00d7 2 = 6."
     },
+    "misconception_tag": {
+      "B": "pictograph_key_not_applied",
+      "C": "reads_adjacent_value",
+      "D": "reads_adjacent_value"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -470,6 +495,11 @@
       "B": "Correct: 65 \u2212 40 = 25.",
       "C": "Student adds April and January instead of subtracting: 65 + 40 = 105.",
       "D": "Student subtracts March from April instead of January from April: 65 \u2212 50 = 15."
+    },
+    "misconception_tag": {
+      "A": "subtracts_in_wrong_order",
+      "C": "subtracts_in_wrong_order",
+      "D": "subtracts_in_wrong_order"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -570,6 +600,11 @@
       "C": "Correct: 78 + 80 = 158.",
       "D": "Student uses Wednesday and Thursday instead of Tuesday and Thursday: 85 + 80 = 165."
     },
+    "misconception_tag": {
+      "A": "reads_adjacent_value",
+      "B": "reads_adjacent_value",
+      "D": "reads_adjacent_value"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -649,6 +684,11 @@
       "B": "Student selects Silver (16), placing it higher in the ranking than the data supports.",
       "C": "Student selects Red (14), the lowest count, possibly misreading the bar heights.",
       "D": "Correct: after Black (30), Blue (22) is the next highest."
+    },
+    "misconception_tag": {
+      "A": "reads_wrong_category",
+      "B": "reads_wrong_category",
+      "C": "reads_wrong_category"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -749,6 +789,11 @@
       "C": "Student computes Friday's quantity correctly (2 \u00d7 3 = 6) but uses that value as the final answer instead of computing the difference.",
       "D": "Student computes Wednesday's quantity correctly (5 \u00d7 3 = 15) but uses that value as the final answer instead of computing the difference."
     },
+    "misconception_tag": {
+      "B": "pictograph_key_not_applied",
+      "C": "answers_intermediate_value",
+      "D": "answers_intermediate_value"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -828,6 +873,11 @@
       "B": "Correct: Wednesday's revenue (\\$300) was lower than Tuesday's (\\$350), confirming a decrease.",
       "C": "Student selects Friday, but Friday's revenue (\\$400) was higher than Thursday's (\\$250) \u2014 that is an increase.",
       "D": "Student selects Monday, but Monday has no previous day to compare against in this dataset."
+    },
+    "misconception_tag": {
+      "A": "reads_wrong_category",
+      "C": "reads_wrong_category",
+      "D": "reads_wrong_category"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -909,6 +959,11 @@
       "C": "Correct: two of the five month-to-month changes are 9\u00b0F, not 6\u00b0F, disproving the consistency claim.",
       "D": "Student incorrectly concludes that two consecutive months had identical temperatures \u2014 no two consecutive values in this dataset are equal."
     },
+    "misconception_tag": {
+      "A": "misreads_direction_of_change",
+      "B": "misreads_direction_of_change",
+      "D": "misreads_direction_of_change"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -988,6 +1043,11 @@
       "B": "Student correctly computes 1PM\u20132PM = 85 but again fails to compare against 11AM\u201312PM = 95.",
       "C": "Student stops at the first window (9AM\u201310AM = 55) without computing the remaining pairs.",
       "D": "Correct: after computing all five consecutive windows, 11AM\u201312PM = 95 is the highest combined total."
+    },
+    "misconception_tag": {
+      "A": "misreads_direction_of_change",
+      "B": "misreads_direction_of_change",
+      "C": "misreads_direction_of_change"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1090,6 +1150,11 @@
       "C": "Student misidentifies the direction of the April-to-May change; savings increased by \\$40 (from \\$90 to \\$130), not decreased.",
       "D": "Student misidentifies the direction of the May-to-June change; savings increased by \\$30 (from \\$130 to \\$160), not decreased."
     },
+    "misconception_tag": {
+      "A": "misreads_direction_of_change",
+      "C": "misreads_direction_of_change",
+      "D": "misreads_direction_of_change"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1170,6 +1235,11 @@
       "C": "Correct: 30 + 20 + 35 + 15 = 100; the student's claim of 95 is 5 miles short.",
       "D": "Student misreads Ben's row as 2 symbols instead of 4: 30 + 10 + 35 + 15 = 90, then incorrectly concludes the student overcounted."
     },
+    "misconception_tag": {
+      "A": "total_accepted_without_verifying",
+      "B": "reads_adjacent_value",
+      "D": "reads_adjacent_value"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1249,6 +1319,11 @@
       "B": "Student computes the correct average of 80 but includes Eva (80) in the above-average group by using \u2265 80 instead of strictly > 80, giving a count of three.",
       "C": "Student miscalculates the average \u2014 perhaps summing only three of the five scores (88 + 95 + 80 = 263... not 82) or using an incorrect divisor \u2014 arriving at 82, then correctly finding only Cara exceeds that threshold.",
       "D": "Correct: average = 80, and only Ben (88) and Cara (95) are strictly above it."
+    },
+    "misconception_tag": {
+      "A": "threshold_boundary_error",
+      "B": "threshold_boundary_error",
+      "C": "mean_divisor_miscounted"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

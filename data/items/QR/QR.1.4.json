@@ -35,6 +35,11 @@
       "C": "Correct: 9\u00b2 = 81 < 85 < 100 = 10\u00b2, so \u221a85 lies between 9 and 10.",
       "D": "Student places the estimate near the radicand itself, choosing integers on either side of 85 rather than finding its square root."
     },
+    "misconception_tag": {
+      "A": "wrong_perfect_square_bracket",
+      "B": "halves_the_radicand",
+      "D": "radicand_mistaken_for_value"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -113,6 +118,11 @@
       "B": "Student rounds up to the next perfect square root (\u221a36 = 6) without refining.",
       "C": "Student halves the radicand (30 \u00f7 2 = 15) instead of estimating its square root.",
       "D": "Student rounds down to the lower perfect square root (\u221a25 = 5) without refining."
+    },
+    "misconception_tag": {
+      "B": "rounds_to_bounding_integer",
+      "C": "halves_the_radicand",
+      "D": "rounds_to_bounding_integer"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -193,6 +203,11 @@
       "C": "Student halves the radicand (70 \u00f7 2 = 35) instead of estimating the square root.",
       "D": "Correct: 70 is 6 away from 64 = 8\u00b2 and 11 away from 81 = 9\u00b2, so \u221a70 is closest to 8."
     },
+    "misconception_tag": {
+      "A": "wrong_perfect_square_bracket",
+      "B": "rounds_to_bounding_integer",
+      "C": "halves_the_radicand"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -271,6 +286,11 @@
       "B": "Correct: 6.32 \u2248 \u221a40 < 6.5 < 7.07 \u2248 \u221a50.",
       "C": "Student overestimates \u221a50, treating it as about 7.1 or more, so 7.1 appears to fall within the range.",
       "D": "Student misestimates the bounds, perhaps believing \u221a40 \u2248 4, and picks a value below the true range."
+    },
+    "misconception_tag": {
+      "A": "rounds_to_bounding_integer",
+      "C": "closer_endpoint_error",
+      "D": "closer_endpoint_error"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -351,6 +371,11 @@
       "C": "Student rounds toward the nearest multiple of 10 under the radical, treating 60 as close to 100.",
       "D": "Student undershoots by one step, using \u221a36 = 6 instead of \u221a49 = 7 as the lower bound."
     },
+    "misconception_tag": {
+      "A": "closer_endpoint_error",
+      "C": "rounds_to_bounding_integer",
+      "D": "wrong_perfect_square_bracket"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -429,6 +454,11 @@
       "B": "Student uses the midpoint of the 7-to-8 range as the default estimate without testing whether \u221a55 falls above or below 7.5.",
       "C": "Correct: 7.4\u00b2 = 54.76 < 55 and 55 \u2212 54.76 = 0.24 << 56.25 \u2212 55 = 1.25, so \u221a55 \u2248 7.4.",
       "D": "Student rounds to the upper bounding integer (\u221a64 = 8) without refining."
+    },
+    "misconception_tag": {
+      "A": "rounds_to_bounding_integer",
+      "B": "midpoint_used_as_estimate",
+      "D": "rounds_to_bounding_integer"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -514,6 +544,11 @@
       "C": "Student gives internally inconsistent reasoning \u2014 pointing toward 7 but then using the midpoint 6.5.",
       "D": "Correct: 37 is 1 away from 36 = 6\u00b2, so \u221a37 is just above 6; 6.1\u00b2 = 37.21 confirms \u221a37 \u2248 6.1."
     },
+    "misconception_tag": {
+      "A": "closer_endpoint_error",
+      "B": "midpoint_used_as_estimate",
+      "C": "midpoint_used_as_estimate"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -592,6 +627,11 @@
       "B": "Student computes 7.8\u00b2 = 60.84 correctly but reverses the inequality, concluding 60.84 > 62.",
       "C": "Student checks only that 7.8 falls in the range 7 to 8 without squaring to test accuracy.",
       "D": "Student compares 7.8 to the next perfect square root (8) and concludes it must be too high because 8 > 7.8, without squaring 7.8."
+    },
+    "misconception_tag": {
+      "B": "estimate_not_verified_by_squaring",
+      "C": "estimate_not_verified_by_squaring",
+      "D": "estimate_not_verified_by_squaring"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -677,6 +717,11 @@
       "C": "Student confuses area with perimeter or uses \u221a144 = 12 instead of \u221a121 \u2248 11.",
       "D": "Correct: \u221a120 \u2248 10.954, which rounds to 11.0 feet."
     },
+    "misconception_tag": {
+      "A": "rounds_to_bounding_integer",
+      "B": "rounds_to_bounding_integer",
+      "C": "perimeter_area_confusion"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -757,6 +802,11 @@
       "C": "Correct: \u221a95 \u2248 9.75 and \u221a105 \u2248 10.25, so the difference is 10.25 \u2212 9.75 = 0.50 feet.",
       "D": "Student overestimates \u221a95 as about 9.7 and \u221a105 as about 10.3, giving a difference of 0.6."
     },
+    "misconception_tag": {
+      "A": "rounds_to_bounding_integer",
+      "B": "closer_endpoint_error",
+      "D": "closer_endpoint_error"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -835,6 +885,11 @@
       "B": "Student rounds up to the nearest perfect square root, using \u221a25 = 5.0.",
       "C": "Student uses the midpoint of 4 and 5 rather than the given trial squares.",
       "D": "Correct: 4.9\u00b2 = 24.01 \u2248 24, making 4.9 the closest one-decimal estimate."
+    },
+    "misconception_tag": {
+      "A": "estimate_not_verified_by_squaring",
+      "B": "rounds_to_bounding_integer",
+      "C": "midpoint_used_as_estimate"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -920,6 +975,11 @@
       "C": "Student uses the midpoint of 11 and 12, but 11.5\u00b2 = 132.25 overshoots 130 by more than 2.",
       "D": "Student rounds up to the next perfect square root without refining."
     },
+    "misconception_tag": {
+      "B": "wrong_perfect_square_bracket",
+      "C": "midpoint_used_as_estimate",
+      "D": "rounds_to_bounding_integer"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1003,6 +1063,11 @@
       "B": "Student computes 7.3\u00b2 = 53.29 but rounds down to 52 by mistake, or estimates \u221a52 \u2248 7.2 as the nearest option.",
       "C": "Student rounds 53.29 up to 54 rather than down to 53.",
       "D": "Student uses 7\u00b2 = 49 as the anchor and picks 51 without squaring 7.3."
+    },
+    "misconception_tag": {
+      "B": "rounds_to_bounding_integer",
+      "C": "closer_endpoint_error",
+      "D": "estimate_not_verified_by_squaring"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1088,6 +1153,11 @@
       "C": "Student estimates \u221a200 \u2248 15 (the upper bounding integer) and computes 4 \u00d7 15 = 60.",
       "D": "Student divides the area by 4 (200 \u00f7 4 = 50) rather than computing 4 times the side length."
     },
+    "misconception_tag": {
+      "A": "rounds_to_bounding_integer",
+      "C": "rounds_to_bounding_integer",
+      "D": "divides_instead_of_multiplies"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1167,6 +1237,11 @@
       "B": "Correct: |46.24 \u2212 47| = 0.76 < |49 \u2212 47| = 2, so 6.8 is the more accurate estimate.",
       "C": "Student focuses on the format of the estimates (both have one decimal place) rather than verifying accuracy by squaring.",
       "D": "Student selects the correct estimate but gives nonsensical reasoning \u2014 distance from perfect square roots has no bearing on accuracy."
+    },
+    "misconception_tag": {
+      "A": "estimate_not_verified_by_squaring",
+      "C": "accuracy_judged_by_format",
+      "D": "accuracy_judged_by_format"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

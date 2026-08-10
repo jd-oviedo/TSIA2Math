@@ -35,6 +35,11 @@
       "C": "Student uses the correct magnitudes but makes both factors negative: $(x - 2)(x - 5) = x^{2} - 7x + 10$, giving a negative middle term.",
       "D": "Student flips the sign on one factor only: $(x + 2)(x - 5) = x^{2} - 3x - 10$, changing the constant to $-10$."
     },
+    "misconception_tag": {
+      "A": "factor_pair_sum_unchecked",
+      "C": "wrong_sign_on_factor",
+      "D": "wrong_sign_on_factor"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student picks a negative pair multiplying to $12$ without checking the sum: $(x - 3)(x - 4) = x^{2} - 7x + 12$.",
       "C": "Student picks another negative pair multiplying to $12$ without checking the sum: $(x - 1)(x - 12) = x^{2} - 13x + 12$.",
       "D": "Correct: $-2$ and $-6$ multiply to $12$ and add to $-8$, so $(x - 2)(x - 6) = x^{2} - 8x + 12$."
+    },
+    "misconception_tag": {
+      "A": "wrong_sign_on_factor",
+      "B": "factor_pair_sum_unchecked",
+      "C": "factor_pair_sum_unchecked"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Correct: $-4$ and $2$ multiply to $-8$ and add to $-2$, so $(x - 4)(x + 2) = x^{2} - 2x - 8$.",
       "D": "Student picks a pair multiplying to $-8$ without checking the sum: $(x - 8)(x + 1) = x^{2} - 7x - 8$."
     },
+    "misconception_tag": {
+      "A": "wrong_sign_on_factor",
+      "B": "drops_negative_sign",
+      "D": "factor_pair_sum_unchecked"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student puts the negative sign on the wrong factor: $(x - 4)(x + 3) = x^{2} - x - 12$, giving a middle term of $-x$ instead of $+x$.",
       "C": "Student ignores the negative constant and treats the product as $+12$: $(x + 4)(x + 3) = x^{2} + 7x + 12$.",
       "D": "Student picks a pair multiplying to $-12$ without checking the sum: $(x + 6)(x - 2) = x^{2} + 4x - 12$."
+    },
+    "misconception_tag": {
+      "B": "wrong_sign_on_factor",
+      "C": "drops_negative_sign",
+      "D": "factor_pair_sum_unchecked"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student picks a negative pair multiplying to $6$ without checking the sum: $(x - 1)(x - 6) = x^{2} - 7x + 6$.",
       "D": "Student flips the sign on one factor only: $(x - 2)(x + 3) = x^{2} + x - 6$, changing the constant to $-6$."
     },
+    "misconception_tag": {
+      "A": "wrong_sign_on_factor",
+      "C": "factor_pair_sum_unchecked",
+      "D": "wrong_sign_on_factor"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student squares the second term with a positive sign: $(x + 4)(x + 4) = x^{2} + 8x + 16$, again introducing a middle term and changing the constant to $+16$.",
       "C": "Correct: $x^{2} - 16 = (x + 4)(x - 4)$, a difference of squares.",
       "D": "Student looks for a pair multiplying to $-16$ but does not require the middle term to be zero: $(x - 8)(x + 2) = x^{2} - 6x - 16$."
+    },
+    "misconception_tag": {
+      "A": "perfect_square_vs_difference_of_squares",
+      "B": "perfect_square_vs_difference_of_squares",
+      "D": "factor_pair_sum_unchecked"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student makes a sign error on the constant: $(2x + 1)(x - 3) = 2x^{2} - 5x - 3$, changing both the middle term and the constant sign.",
       "D": "Student ignores the leading coefficient of $2$ and factors as if the quadratic were monic: $(x + 1)(x + 3) = x^{2} + 4x + 3$."
     },
+    "misconception_tag": {
+      "B": "constants_assigned_to_wrong_binomials",
+      "C": "wrong_sign_on_factor",
+      "D": "leading_coefficient_ignored_in_factoring"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Student extracts the GCF correctly but makes a sign error on the trinomial: $3(x + 1)(x + 3) = 3x^{2} + 12x + 9$, giving a positive middle term.",
       "C": "Student extracts the GCF correctly but leaves the trinomial unfactored: $3(x^{2} - 4x + 3)$ equals the original but is not completely factored.",
       "D": "Correct: $3x^{2} - 12x + 9 = 3(x^{2} - 4x + 3) = 3(x - 1)(x - 3)$."
+    },
+    "misconception_tag": {
+      "A": "gcf_dropped_after_factoring",
+      "B": "wrong_sign_on_factor",
+      "C": "stops_before_simplifying"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "Student uses the right four numbers but assigns the constants to the wrong binomials: $(3x + 3)(2x + 1) = 6x^{2} + 9x + 3$.",
       "D": "Student makes a sign error, taking both constants as negative: $(3x - 1)(2x - 3) = 6x^{2} - 11x + 3$, giving a negative middle term."
     },
+    "misconception_tag": {
+      "B": "leading_coefficient_ignored_in_factoring",
+      "C": "constants_assigned_to_wrong_binomials",
+      "D": "wrong_sign_on_factor"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -754,6 +799,11 @@
       "B": "Student treats the expression as a difference of squares: $(2x + 3)(2x - 3) = 4x^{2} - 9$, which drops the middle term and changes the constant sign.",
       "C": "Correct: the first and last terms are perfect squares and the middle term is $2 \\times 2x \\times 3 = 12x$, so $4x^{2} + 12x + 9 = (2x + 3)^{2}$.",
       "D": "Student does not recognize the perfect square and mis-splits the factors: $(4x + 3)(x + 3) = 4x^{2} + 15x + 9$, giving the wrong middle term."
+    },
+    "misconception_tag": {
+      "A": "perfect_square_vs_difference_of_squares",
+      "B": "perfect_square_vs_difference_of_squares",
+      "D": "perfect_square_vs_difference_of_squares"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

@@ -35,6 +35,11 @@
       "C": "Student rounds to the nearest hundredth (keeping two decimal places) rather than the nearest tenth.",
       "D": "Correct: the hundredths digit is 4 < 5, so the tenths digit stays at 8, giving 3.8."
     },
+    "misconception_tag": {
+      "A": "wrong_reference_digit",
+      "B": "rounds_to_wrong_place",
+      "C": "rounds_to_wrong_place"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -113,6 +118,11 @@
       "B": "Student rounds down despite the tens digit being 5, keeping the hundreds digit at 7 and producing 4,700.",
       "C": "Student rounds to the nearest ten instead of the nearest hundred, looking at the ones digit (2 < 5) and rounding down to 4,750.",
       "D": "Student rounds to the nearest thousand instead of the nearest hundred, giving 5,000."
+    },
+    "misconception_tag": {
+      "B": "rounds_down_despite_five_or_more",
+      "C": "rounds_to_wrong_place",
+      "D": "rounds_to_wrong_place"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -193,6 +203,11 @@
       "C": "Student rounds to the nearest hundredth (keeping two decimal places) rather than the nearest tenth.",
       "D": "Student rounds to the nearest whole number rather than the nearest tenth, and rounds down because the tenths digit (3) is less than 5."
     },
+    "misconception_tag": {
+      "A": "rounds_down_despite_five_or_more",
+      "C": "rounds_to_wrong_place",
+      "D": "rounds_to_wrong_place"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -271,6 +286,11 @@
       "B": "Student rounds to the nearest tenth but uses the wrong reference digit: looks at the thousandths digit (8 \u2265 5) to decide whether to round the tenths digit up, producing 12.7 instead of examining the hundredths digit (3 < 5).",
       "C": "Student rounds down despite the thousandths digit being 8 \u2265 5, keeping the hundredths digit at 3 and giving 12.63.",
       "D": "Correct: thousandths digit = 8 \u2265 5, so round up \u2014 12.638 \u2192 12.64 seconds."
+    },
+    "misconception_tag": {
+      "A": "rounds_to_wrong_place",
+      "B": "rounds_to_wrong_place",
+      "C": "rounds_down_despite_five_or_more"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -351,6 +371,11 @@
       "C": "15.501 rounds to 16 because the tenths digit is 5 \u2265 5.",
       "D": "14.48 rounds to 14 because the tenths digit is 4 < 5; a student might incorrectly think that 0.48 is 'close enough to 0.5' to round up to 15."
     },
+    "misconception_tag": {
+      "B": "rounds_to_wrong_place",
+      "C": "rounds_to_wrong_place",
+      "D": "rounds_to_wrong_place"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -429,6 +454,11 @@
       "B": "Student misunderstands rounding as 'increment the rightmost digit': bumps the 6 in the thousandths place to 7 while keeping three decimal places, giving \\$7.957 instead of trimming to two places.",
       "C": "Correct: thousandths digit = 6 \u2265 5, so round up \u2014 \\$7.956 \u2192 \\$7.96.",
       "D": "Student rounds to the nearest dollar rather than the nearest cent (hundredth), giving \\$8.00."
+    },
+    "misconception_tag": {
+      "A": "rounds_down_despite_five_or_more",
+      "B": "rounding_as_increment_rightmost",
+      "D": "rounds_to_wrong_place"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -509,6 +539,11 @@
       "C": "Student rounds 2.451 directly to 2.4 correctly but assumes the two-step method produces the same answer.",
       "D": "Student reverses the outputs \u2014 the two-step method gives 2.5, not 2.4, and direct rounding gives 2.4, not 2.5."
     },
+    "misconception_tag": {
+      "A": "two_step_rounding_assumed_equal",
+      "C": "two_step_rounding_assumed_equal",
+      "D": "two_step_rounding_assumed_equal"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -588,6 +623,11 @@
       "C": "Correct: 17 \u00f7 7 \u2248 2.4286; thousandths digit = 8 \u2265 5, so round up to 2.43.",
       "D": "Student applies an extra round-up step to the already-rounded result, advancing from 2.43 to 2.44."
     },
+    "misconception_tag": {
+      "A": "rounds_down_despite_five_or_more",
+      "B": "rounds_to_wrong_place",
+      "D": "two_step_rounding_assumed_equal"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -666,6 +706,11 @@
       "B": "Student rounds down despite the thousandths digit being 6 \u2265 5, keeping all digits and producing 9.99.",
       "C": "Student rounds to the nearest thousandth rather than the nearest hundredth, producing 9.997.",
       "D": "Student propagates the first carry correctly (hundredths 9 \u2192 0) and begins the second carry (tenths 9 + 1), but writes '10' literally in the tenths position rather than continuing to carry, producing 10.10."
+    },
+    "misconception_tag": {
+      "B": "rounds_down_despite_five_or_more",
+      "C": "rounds_to_wrong_place",
+      "D": "carry_not_propagated"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

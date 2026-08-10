@@ -35,6 +35,11 @@
       "C": "Student reverses the digits, writing 0.43 instead of computing 3 \u00f7 4.",
       "D": "Student computes 1 \u00f7 4 = 0.25 instead of 3 \u00f7 4, using 1 as the numerator."
     },
+    "misconception_tag": {
+      "B": "fraction_digit_gluing",
+      "C": "fraction_digit_gluing",
+      "D": "numerator_denominator_swap"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -113,6 +118,11 @@
       "B": "Correct: 0.6 = $\\frac{6}{10}$ = $\\frac{3}{5}$.",
       "C": "Student confuses 0.6 with 0.667 \u2248 $\\frac{2}{3}$, rounding the decimal before converting.",
       "D": "Student inverts the fraction, writing $\\frac{5}{3}$ instead of $\\frac{3}{5}$."
+    },
+    "misconception_tag": {
+      "A": "numerator_denominator_swap",
+      "C": "rounds_too_early",
+      "D": "numerator_denominator_swap"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -193,6 +203,11 @@
       "C": "Student does not simplify $\\frac{5}{20}$ = $\\frac{1}{4}$ and treats the unsimplified fraction as unequal to 0.25.",
       "D": "Correct: $\\frac{2}{5}$ = 0.4, which is the only option not equal to 0.25."
     },
+    "misconception_tag": {
+      "A": "place_value_slip",
+      "B": "refuses_to_compare_forms",
+      "C": "stops_before_simplifying"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -271,6 +286,11 @@
       "B": "Student concatenates the digits 3 and 8 to get 0.38 instead of dividing.",
       "C": "Correct: 3 \u00f7 8 = 0.375.",
       "D": "Student computes $\\frac{5}{8}$ = 0.625 instead of $\\frac{3}{8}$, using 5 as the numerator."
+    },
+    "misconception_tag": {
+      "A": "numerator_as_percent",
+      "B": "fraction_digit_gluing",
+      "D": "numerator_denominator_swap"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -351,6 +371,11 @@
       "C": "Student stops the division after two decimal places, truncating the repeating decimal to 0.66.",
       "D": "Student rounds the repeating decimal to three decimal places, writing 0.667 instead of recognizing that no finite decimal exactly equals $\\frac{2}{3}$."
     },
+    "misconception_tag": {
+      "A": "fraction_digit_gluing",
+      "C": "truncates_repeating_decimal",
+      "D": "truncates_repeating_decimal"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -429,6 +454,11 @@
       "B": "Student reverses the digits, writing 0.87 instead of computing 7 \u00f7 8.",
       "C": "Correct: 7 \u00f7 8 = 0.875.",
       "D": "Student reads only the numerator and writes 0.7 (7 tenths), ignoring the denominator."
+    },
+    "misconception_tag": {
+      "A": "fraction_digit_gluing",
+      "B": "fraction_digit_gluing",
+      "D": "numerator_as_percent"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -514,6 +544,11 @@
       "C": "Student reads 0.375 as '37 hundredths,' dropping the last digit and using the wrong denominator.",
       "D": "Student misplaces the decimal by a factor of 10, using 80 as the denominator instead of 8."
     },
+    "misconception_tag": {
+      "B": "fraction_digit_gluing",
+      "C": "place_value_slip",
+      "D": "numerator_denominator_swap"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -598,6 +633,11 @@
       "C": "Student stops the long division of 5 \u00f7 6 after one step, recording 0.8 before the repeating pattern of 3s emerges in the quotient.",
       "D": "Correct: 5 \u00f7 6 = 0.8333..., with the digit 3 repeating indefinitely."
     },
+    "misconception_tag": {
+      "A": "fraction_digit_gluing",
+      "B": "truncates_repeating_decimal",
+      "C": "long_division_stopped_early"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -676,6 +716,11 @@
       "B": "Correct: $\\frac{5}{8}$ = 0.625; the denominator 8 = 2\u00b3 has only the factor 2, so the decimal terminates.",
       "C": "$\\frac{5}{6}$ = 0.8333...; the denominator 6 = 2 \u00d7 3 contains a factor of 3, so the decimal repeats.",
       "D": "$\\frac{7}{12}$ = 0.5833...; the denominator 12 = 4 \u00d7 3 contains a factor of 3, so the decimal repeats."
+    },
+    "misconception_tag": {
+      "A": "terminating_test_confusion",
+      "C": "terminating_test_confusion",
+      "D": "terminating_test_confusion"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -756,6 +801,11 @@
       "C": "Student reads the digits 2, 3, and 4 directly to write 2.34.",
       "D": "Student uses $\\frac{1}{4}$ = 0.25 instead of $\\frac{3}{4}$ = 0.75, computing 2 + 0.25 = 2.25."
     },
+    "misconception_tag": {
+      "B": "place_value_slip",
+      "C": "fraction_digit_gluing",
+      "D": "complement_used_instead_of_value"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -835,6 +885,11 @@
       "C": "Student truncates after two decimal places, writing 0.55 instead of 0.555...",
       "D": "Correct: 5 \u00f7 9 = 0.555..., with the digit 5 repeating indefinitely."
     },
+    "misconception_tag": {
+      "A": "fraction_digit_gluing",
+      "B": "truncates_repeating_decimal",
+      "C": "truncates_repeating_decimal"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -913,6 +968,11 @@
       "B": "Correct: 0.272727... = $\\frac{27}{99}$ = $\\frac{3}{11}$.",
       "C": "Student correctly identifies the repeating block as 27 and uses 99 as the denominator, producing $\\frac{27}{99}$, but then simplifies incorrectly \u2014 dividing numerator and denominator by 3 only once to get $\\frac{9}{33}$ rather than continuing to fully reduce to $\\frac{3}{11}$.",
       "D": "Student applies the repeating-block method but uses 999 (for a three-digit period) instead of 99 (for a two-digit period), producing an incorrect denominator."
+    },
+    "misconception_tag": {
+      "A": "truncates_repeating_decimal",
+      "C": "repeating_block_misidentified",
+      "D": "repeating_block_denominator_wrong"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -998,6 +1058,11 @@
       "C": "Correct: 7 \u00f7 12 = 0.5833..., with the digit 3 repeating after the initial 0.58.",
       "D": "Student reads only the numerator and writes 0.7 (7 tenths), ignoring the denominator."
     },
+    "misconception_tag": {
+      "A": "fraction_digit_gluing",
+      "B": "truncates_repeating_decimal",
+      "D": "numerator_as_percent"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1082,6 +1147,11 @@
       "C": "Student estimates 5 \u00f7 7 \u2248 0.714 and rounds to 0.72, then compares rounded values \u2014 0.72 vs. 0.78 for $\\frac{7}{9}$ \u2014 and selects $\\frac{5}{7}$ after a rounding error inflates its apparent value.",
       "D": "Student simplifies $\\frac{4}{6}$ to $\\frac{2}{3}$ but then converts incorrectly, computing 2 \u00f7 3 as 0.6 (stopping after one step of long division) rather than continuing to 0.666... \u2014 the truncated result 0.6 is then compared against similarly rough estimates of the other fractions, and the student selects $\\frac{4}{6}$ believing it is close to 0.7."
     },
+    "misconception_tag": {
+      "B": "refuses_to_compare_forms",
+      "C": "rounds_too_early",
+      "D": "long_division_stopped_early"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1165,6 +1235,11 @@
       "B": "Student approximates 0.41666... as roughly 0.45, recalls that fractions over 11 produce two-digit repeating decimals, and selects $\\frac{5}{11}$; but $\\frac{5}{11}$ = 0.4545..., which does not match.",
       "C": "Student applies the pure-repeating rule ($\\frac{x}{99}$ for two digits), but 0.41 is not the repeating block \u2014 producing $\\frac{41}{99}$ = 0.414141..., not 0.41666...",
       "D": "Correct: 5 \u00f7 12 = 0.41666..., confirmed by long division."
+    },
+    "misconception_tag": {
+      "A": "truncates_repeating_decimal",
+      "B": "rounds_too_early",
+      "C": "repeating_block_denominator_wrong"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

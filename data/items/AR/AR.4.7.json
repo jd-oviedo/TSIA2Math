@@ -35,6 +35,11 @@
       "C": "Student reads the denominator as $x + 1$ instead of $x - 1$: $\\frac{5 + 3}{5 + 1} = \\frac{8}{6} = \\frac{4}{3}$.",
       "D": "Student reads the numerator as $x - 3$ instead of $x + 3$: $\\frac{5 - 3}{5 - 1} = \\frac{2}{4} = \\frac{1}{2}$."
     },
+    "misconception_tag": {
+      "B": "numerator_only_substituted",
+      "C": "denominator_misread",
+      "D": "denominator_misread"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -115,6 +120,11 @@
       "C": "Correct: $\\frac{2(2)}{2 + 4} = \\frac{4}{6} = \\frac{2}{3}$.",
       "D": "Student reads the denominator $x + 4$ as $4x$: $\\frac{2(2)}{4(2)} = \\frac{4}{8} = \\frac{1}{2}$."
     },
+    "misconception_tag": {
+      "A": "numerator_only_substituted",
+      "B": "denominator_misread",
+      "D": "denominator_misread"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -189,6 +199,11 @@
       "B": "Correct: $\\frac{4 - 6}{4 + 2} = \\frac{-2}{6} = -\\frac{1}{3}$.",
       "C": "Student subtracts in the reverse order in the numerator, computing $6 - 4$ instead of $4 - 6$: $\\frac{2}{6} = \\frac{1}{3}$.",
       "D": "Student reads the denominator $x + 2$ as $x - 2$: $\\frac{4 - 6}{4 - 2} = \\frac{-2}{2} = -1$."
+    },
+    "misconception_tag": {
+      "A": "numerator_only_substituted",
+      "C": "subtracts_in_wrong_order",
+      "D": "denominator_misread"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -270,6 +285,11 @@
       "C": "Student adds the numerator and the denominator instead of dividing: $12 + (3 + 1) = 12 + 4 = 16$.",
       "D": "Correct: $\\frac{12}{3 + 1} = \\frac{12}{4} = 3$."
     },
+    "misconception_tag": {
+      "A": "denominator_misread",
+      "B": "reversed_division",
+      "C": "reversed_division"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -345,6 +365,11 @@
       "C": "Correct: $\\frac{5 + 5}{2(5)} = \\frac{10}{10} = 1$.",
       "D": "Student reads the numerator $x + 5$ as $5x$: $\\frac{5(5)}{2(5)} = \\frac{25}{10} = \\frac{5}{2}$."
     },
+    "misconception_tag": {
+      "A": "numerator_only_substituted",
+      "B": "denominator_misread",
+      "D": "denominator_misread"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -419,6 +444,11 @@
       "B": "Student treats $(-2)^{2}$ as $-4$ rather than $4$, giving a denominator of $-4 + 1 = -3$: $\\frac{-7}{-3} = \\frac{7}{3}$.",
       "C": "Student substitutes only into the numerator and ignores the denominator: $3(-2) - 1 = -7$.",
       "D": "Student drops the negative when computing $3(-2)$, using $+6$: $\\frac{6 - 1}{4 + 1} = \\frac{5}{5} = 1$."
+    },
+    "misconception_tag": {
+      "B": "denominator_misread",
+      "C": "numerator_only_substituted",
+      "D": "denominator_misread"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -500,6 +530,11 @@
       "C": "Student treats $x^{2}$ as $2x$, computing $2(5) - 5(5) = 10 - 25 = -15$: $\\frac{-15}{7} = -\\frac{15}{7}$.",
       "D": "Student treats $5x$ as $5 + x$, computing $25 - (5 + 5) = 25 - 10 = 15$: $\\frac{15}{7}$."
     },
+    "misconception_tag": {
+      "A": "denominator_misread",
+      "C": "denominator_misread",
+      "D": "denominator_misread"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -575,6 +610,11 @@
       "C": "Student drops the $-3$ in the denominator, using only $2x$: $\\frac{9}{2(-1)} = \\frac{9}{-2} = -\\frac{9}{2}$.",
       "D": "Correct: $\\frac{-1 + 10}{2(-1) - 3} = \\frac{9}{-5} = -\\frac{9}{5}$."
     },
+    "misconception_tag": {
+      "A": "numerator_only_substituted",
+      "B": "denominator_misread",
+      "C": "denominator_misread"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -649,6 +689,11 @@
       "B": "Student factors with the wrong signs as $(x + 3)(x - 2)$, which expands to $x^{2} + x - 6$ (a sum of $+1$, not $-1$), and reports roots $x = -3$ and $x = 2$.",
       "C": "Student sets the numerator equal to zero instead of the denominator: $x + 7 = 0$ gives $x = -7$.",
       "D": "Student uses the factor pair $6$ and $1$ of the constant term while ignoring the middle coefficient, treating the denominator as $(x - 6)(x + 1)$ and reporting roots $x = 6$ and $x = -1$."
+    },
+    "misconception_tag": {
+      "B": "wrong_sign_on_factor",
+      "C": "numerator_set_equal_to_output",
+      "D": "wrong_sign_on_factor"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -729,6 +774,11 @@
       "B": "Student sets only the numerator equal to the output, ignoring the denominator: $2x + 1 = 3$ gives $x = 1$.",
       "C": "Correct: setting $\\frac{2x + 1}{x - 1} = 3$ gives $2x + 1 = 3x - 3$, so $x = 4$.",
       "D": "Student multiplies only the first term inside the parentheses by 3, treating $3(x - 1)$ as $3x - 1$: $2x + 1 = 3x - 1$ gives $x = 2$."
+    },
+    "misconception_tag": {
+      "A": "input_output_reversed",
+      "B": "numerator_set_equal_to_output",
+      "D": "partial_distribution"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

@@ -35,6 +35,11 @@
       "C": "Student calls the constant the total cost, but the total depends on h and is not fixed at 40.",
       "D": "Student invents a per-dollar interpretation that does not match the constant term."
     },
+    "misconception_tag": {
+      "B": "slope_intercept_swap",
+      "C": "rate_called_the_total",
+      "D": "intercept_tied_to_nonzero_input"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student calls the rate the total distance, but the total depends on t and is not fixed at 60.",
       "C": "Correct: the coefficient 60 is the rate of change, the speed in miles per hour.",
       "D": "Student confuses the rate with the variable t, calling 60 a number of hours."
+    },
+    "misconception_tag": {
+      "A": "slope_intercept_swap",
+      "B": "rate_called_the_total",
+      "D": "rate_confused_with_variable"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student calls the constant the total saved, but the total grows with x and is not fixed at 25.",
       "D": "Student confuses the starting balance with the variable x, calling 25 a number of weeks."
     },
+    "misconception_tag": {
+      "B": "slope_intercept_swap",
+      "C": "rate_called_the_total",
+      "D": "rate_confused_with_variable"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student calls the per-item rate the total profit, but the total depends on n and is not fixed at 3.",
       "C": "Student confuses the rate with the variable n, calling 3 a number of items.",
       "D": "Correct: the coefficient 3 is the profit earned for each additional item sold."
+    },
+    "misconception_tag": {
+      "A": "slope_intercept_swap",
+      "B": "rate_called_the_total",
+      "C": "rate_confused_with_variable"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student confuses the starting amount with the variable p, calling 10 a number of people.",
       "D": "Correct: the constant 10 is the amount already present when p = 0, before any portions."
     },
+    "misconception_tag": {
+      "A": "slope_intercept_swap",
+      "B": "rate_called_the_total",
+      "C": "rate_confused_with_variable"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student subtracts the registration fee instead of adding it: c = 4s - 30.",
       "C": "Correct: \\$4 per session gives 4s, and the one-time \\$30 fee is the constant: c = 4s + 30.",
       "D": "Student swaps slope and intercept and also subtracts, making \\$30 the rate and subtracting \\$4: c = 30s - 4."
+    },
+    "misconception_tag": {
+      "A": "slope_intercept_swap",
+      "B": "adds_instead_of_subtracts",
+      "D": "slope_intercept_swap"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student ignores the negative sign, reading the slope as a gain of 3 pounds instead of a loss.",
       "D": "Student confuses the rate with the variable m, calling 3 a number of months."
     },
+    "misconception_tag": {
+      "B": "slope_intercept_swap",
+      "C": "drops_negative_sign",
+      "D": "rate_confused_with_variable"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Student ties the \\$50 to a specific mileage (50 miles), but the intercept is the value at zero miles, not at 50 miles.",
       "C": "Student again uses per-mile language for the constant, mislabeling the fixed charge as a rate.",
       "D": "Correct: the y-intercept is the cost at zero miles, the fixed \\$50 base charge."
+    },
+    "misconception_tag": {
+      "A": "slope_intercept_swap",
+      "B": "intercept_tied_to_nonzero_input",
+      "C": "intercept_tied_to_nonzero_input"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "Student swaps slope and intercept, making 500 the hourly rate and 20 the constant: v = 500t - 20.",
       "D": "Student swaps slope and intercept and applies the sign to the wrong number: v = -500t + 20."
     },
+    "misconception_tag": {
+      "A": "drops_negative_sign",
+      "C": "slope_intercept_swap",
+      "D": "slope_intercept_swap"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -754,6 +799,11 @@
       "B": "Student misreads the per-minute rate as a count of free minutes, which is not what the coefficient measures.",
       "C": "Correct: the coefficient 0.10 is the cost charged for each minute used.",
       "D": "Student calls the per-minute rate the total cost, but the total depends on m and is not fixed at 0.10."
+    },
+    "misconception_tag": {
+      "A": "slope_intercept_swap",
+      "B": "rate_confused_with_variable",
+      "D": "rate_called_the_total"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -835,6 +885,11 @@
       "C": "Student assumes the steeper slope makes Gym B always more expensive, but Gym A's higher starting fee makes it more expensive at first.",
       "D": "Student swaps slope and intercept, treating the larger starting fee 80 as evidence of a faster rate of increase."
     },
+    "misconception_tag": {
+      "B": "intercepts_compared_instead_of_slopes",
+      "C": "intercepts_compared_instead_of_slopes",
+      "D": "slope_intercept_swap"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -914,6 +969,11 @@
       "B": "Correct choice: this interpretation is incorrect because it treats the starting temperature 100 as a total decrease, confusing the intercept with a change.",
       "C": "This is a correct interpretation: the slope -4 means the temperature falls 4 degrees per minute, so it is not the incorrect statement.",
       "D": "This is a correct interpretation: a negative slope does indicate cooling, so it is not the incorrect statement."
+    },
+    "misconception_tag": {
+      "A": "intercepts_compared_instead_of_slopes",
+      "C": "intercepts_compared_instead_of_slopes",
+      "D": "intercepts_compared_instead_of_slopes"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -995,6 +1055,11 @@
       "C": "Correct: the slope -16 means the drone's height drops 16 feet each second.",
       "D": "Student confuses the rate with a time, treating 16 as the number of seconds to land."
     },
+    "misconception_tag": {
+      "A": "slope_intercept_swap",
+      "B": "drops_negative_sign",
+      "D": "rate_confused_with_variable"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1075,6 +1140,11 @@
       "C": "Student adds the slope and intercept into one yearly rate of 156 and erases the setup fee.",
       "D": "Student swaps the roles, treating the slope 96 as a one-time charge and the intercept 60 as the yearly rate."
     },
+    "misconception_tag": {
+      "B": "slope_intercept_swap",
+      "C": "flat_fee_merged_into_rate",
+      "D": "slope_intercept_swap"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1154,6 +1224,11 @@
       "B": "Student swaps slope and intercept, attaching the decreasing-from-120 language to the constant rather than reading the rate -5.",
       "C": "Student ignores the negative sign, reading the slope as a gain of 5 liters instead of a loss.",
       "D": "Student confuses the rate with the starting amount, treating 5 as the initial fuel rather than 120."
+    },
+    "misconception_tag": {
+      "B": "slope_intercept_swap",
+      "C": "drops_negative_sign",
+      "D": "rate_confused_with_variable"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

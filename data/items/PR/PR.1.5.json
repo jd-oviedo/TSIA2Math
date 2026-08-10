@@ -35,6 +35,11 @@
       "C": "Correct: the values are named categories with no inherent numeric meaning.",
       "D": "Student confuses 'discrete' \u2014 a subtype of numerical variables counted in whole numbers \u2014 with a categorical variable whose values happen to be a fixed set of options."
     },
+    "misconception_tag": {
+      "A": "categorical_numerical_misclassified",
+      "B": "discrete_continuous_confused",
+      "D": "discrete_continuous_confused"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student misclassifies the variable as categorical, perhaps thinking the 20 samples represent 20 named groups rather than 20 measurements of the same type of quantity.",
       "C": "Student classifies weight as discrete, possibly reasoning that the scientist recorded a finite number of measurements \u2014 but discreteness refers to the values the variable can take, not the sample size.",
       "D": "Student applies 'nominal,' a term for categorical variables with no natural order, to a measurement variable \u2014 a category error."
+    },
+    "misconception_tag": {
+      "B": "categorical_numerical_misclassified",
+      "C": "discrete_continuous_confused",
+      "D": "nominal_applied_to_measurement"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student applies 'nominal,' a term for unordered categorical labels, to a counted numerical variable \u2014 a category error.",
       "D": "Correct: absences are counted in whole-number increments and cannot take fractional values, making this a discrete variable."
     },
+    "misconception_tag": {
+      "A": "categorical_numerical_misclassified",
+      "B": "categorical_numerical_misclassified",
+      "C": "nominal_applied_to_measurement"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Correct: a bar graph is designed to display the frequency of each category in a categorical dataset.",
       "C": "A histogram is used to display the distribution of a continuous numerical variable grouped into intervals; hair color is not numerical.",
       "D": "A line graph is used to show trends over time or changes across an ordered numerical scale; hair color has no natural ordering or time component."
+    },
+    "misconception_tag": {
+      "A": "graph_type_mismatched_to_variable",
+      "C": "discrete_continuous_confused",
+      "D": "graph_type_mismatched_to_variable"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Correct: Yes and No are labels with no numerical meaning, making this a categorical variable.",
       "D": "Student generalizes that any variable in a study involving numbers elsewhere must itself be numerical \u2014 but the response variable here has no numeric values."
     },
+    "misconception_tag": {
+      "A": "categorical_numerical_misclassified",
+      "B": "discrete_continuous_confused",
+      "D": "categorical_numerical_misclassified"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "A pie chart shows each category's share of a whole \u2014 it would require treating each household as a separate named slice, which is impractical for 500 households and does not display distribution shape.",
       "C": "A bar graph is designed for categorical data; using it for a continuous variable like income would require artificial grouping into named categories and would not convey distributional shape as clearly as a histogram.",
       "D": "A line graph implies a trend or sequence over time; income data collected across 500 households has no inherent time order, so a line connecting the values would be misleading."
+    },
+    "misconception_tag": {
+      "B": "graph_type_mismatched_to_variable",
+      "C": "discrete_continuous_confused",
+      "D": "graph_type_mismatched_to_variable"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "A histogram shows the distribution of a single continuous variable; it cannot simultaneously display two variables or reveal how they relate to each other.",
       "D": "Correct: a scatter plot is specifically designed to show the relationship between two numerical variables by plotting each individual's pair of values as a single point."
     },
+    "misconception_tag": {
+      "A": "discrete_continuous_confused",
+      "B": "graph_type_mismatched_to_variable",
+      "C": "discrete_continuous_confused"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Student confuses the number of bars in a bar graph with the number of bins in a histogram; histogram bins represent intervals of a continuous scale, not named categories.",
       "C": "Correct: transportation type is categorical, and histograms are for continuous numerical data \u2014 a bar graph is the appropriate substitute.",
       "D": "Student invents a false ordering rule; histograms require that the horizontal axis represents a continuous numerical scale, not that categories be alphabetically sorted."
+    },
+    "misconception_tag": {
+      "A": "graph_type_mismatched_to_variable",
+      "B": "discrete_continuous_confused",
+      "D": "discrete_continuous_confused"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "A scatter plot requires two continuous numerical variables to show a relationship; budget categories and their percentages do not form a two-variable dataset suitable for a scatter plot.",
       "D": "A histogram displays the distribution of a continuous numerical variable across intervals; budget category percentages are discrete named proportions, not a continuous measurement."
     },
+    "misconception_tag": {
+      "A": "graph_type_mismatched_to_variable",
+      "C": "discrete_continuous_confused",
+      "D": "discrete_continuous_confused"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -754,6 +799,11 @@
       "B": "Student incorrectly claims a bar graph cannot show directional change; comparing adjacent bar heights directly shows whether enrollment went up or down each year.",
       "C": "Correct: both displays work, and the bar graph is more precise for discrete yearly data because it avoids implying continuity between annual measurements.",
       "D": "Student correctly notes that both work but defers to line graph preference \u2014 missing the more precise statistical point that bar graphs better represent discrete (non-continuous) time data."
+    },
+    "misconception_tag": {
+      "A": "graph_type_mismatched_to_variable",
+      "B": "graph_type_mismatched_to_variable",
+      "D": "discrete_continuous_confused"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -835,6 +885,11 @@
       "C": "A box plot is a useful summary but cannot detect bimodality \u2014 two distinct temperature peaks (e.g., mild spring and hot summer) could produce the same box plot as a single symmetric distribution.",
       "D": "Correct: a histogram directly displays distributional shape for continuous data, including symmetry, skew, and the presence of one or more peaks."
     },
+    "misconception_tag": {
+      "A": "graph_type_mismatched_to_variable",
+      "B": "discrete_continuous_confused",
+      "C": "graph_type_mismatched_to_variable"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -914,6 +969,11 @@
       "B": "Correct: the pie chart's design emphasizes proportion-of-whole, which is not the primary goal here; a bar graph makes individual score comparisons more readable and accurate.",
       "C": "Student uses the summation argument to dismiss the concern \u2014 while the proportions are technically valid, this ignores the readability and interpretive purpose issue that the classmate raised.",
       "D": "Student invents a false ordering requirement; pie charts have no required sort order, and the concern is about purpose and readability, not data ordering."
+    },
+    "misconception_tag": {
+      "A": "graph_type_mismatched_to_variable",
+      "C": "false_structural_rule_invented",
+      "D": "graph_type_mismatched_to_variable"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -995,6 +1055,11 @@
       "C": "Correct: averaging collapses individual variation into a single representative value per group, hiding the true spread and shape of the relationship that a scatter plot would preserve.",
       "D": "Student misidentifies sleep hours as a time-series variable; in this study, sleep hours is a predictor variable for each student at a single time point, not a measurement recorded over time."
     },
+    "misconception_tag": {
+      "A": "graph_type_mismatched_to_variable",
+      "B": "false_structural_rule_invented",
+      "D": "graph_type_mismatched_to_variable"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1075,6 +1140,11 @@
       "C": "Student reverses the correct application: exam scores (wide range, continuous) are exactly what histograms are built for, while pet counts (small discrete set) are better served by a bar graph.",
       "D": "Correct: the histogram fits the continuous exam score distribution; the bar graph fits the small discrete pet-count variable."
     },
+    "misconception_tag": {
+      "A": "discrete_continuous_confused",
+      "B": "discrete_continuous_confused",
+      "C": "discrete_continuous_confused"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1154,6 +1224,11 @@
       "B": "A histogram shows whether the temperature distribution has one or two peaks, which could suggest seasonal variation, but it cannot reveal the seasonal cycle's structure or whether the pattern is consistent across years.",
       "C": "Plotting by month number (1\u201312) collapses all 10 years onto a single horizontal axis \u2014 the student sees the average seasonal shape but cannot distinguish any one year from another or assess year-to-year consistency.",
       "D": "Averaging across 10 years smooths away the very year-to-year variation the student wants to examine \u2014 if consistency is the goal, averaging destroys the evidence needed to evaluate it."
+    },
+    "misconception_tag": {
+      "B": "graph_type_mismatched_to_variable",
+      "C": "graph_type_mismatched_to_variable",
+      "D": "averaging_removes_the_variation_studied"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

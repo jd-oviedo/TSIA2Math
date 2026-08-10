@@ -35,6 +35,11 @@
       "C": "Student adds only one length and one width (8 + 5 = 13), finding half the perimeter rather than the full perimeter.",
       "D": "Student multiplies the number of sides of a rectangle (4) by the width only (4 \u00d7 5 = 20), ignoring the length entirely."
     },
+    "misconception_tag": {
+      "B": "perimeter_area_confusion",
+      "C": "side_omitted_from_perimeter",
+      "D": "wrong_side_count_for_polygon"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student adds only two of the three sides and omits the middle value: 7 + 11 = 18 ft.",
       "C": "Correct: the perimeter is the sum of all three sides: 7 + 9 + 11 = 27 ft.",
       "D": "Student reports only one side length (9 ft) rather than summing all three sides."
+    },
+    "misconception_tag": {
+      "A": "perimeter_area_confusion",
+      "B": "side_omitted_from_perimeter",
+      "D": "side_omitted_from_perimeter"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student multiplies by 4 instead of 5, treating the pentagon as if it were a quadrilateral: 4 \u00d7 6 = 24 m.",
       "D": "Student multiplies by 6 instead of 5, confusing a pentagon (5 sides) with a hexagon (6 sides): 6 \u00d7 6 = 36 m."
     },
+    "misconception_tag": {
+      "A": "side_omitted_from_perimeter",
+      "C": "wrong_side_count_for_polygon",
+      "D": "wrong_side_count_for_polygon"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student treats the figure as a rectangle, pairing the two smallest sides and two largest, and applying P = 2(l + w): 2(4 + 9) = 26 in.",
       "C": "Student treats the figure as a rectangle using the two largest sides: 2(7 + 9) = 32 in.",
       "D": "Correct: the perimeter is the sum of all four sides: 4 + 7 + 4 + 9 = 24 in."
+    },
+    "misconception_tag": {
+      "A": "side_omitted_from_perimeter",
+      "B": "irregular_treated_as_rectangle",
+      "C": "irregular_treated_as_rectangle"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student multiplies by 5 instead of 6, confusing a hexagon (6 sides) with a pentagon (5 sides): 5 \u00d7 5 = 25 yd.",
       "D": "Student multiplies by 7 instead of 6, confusing a hexagon (6 sides) with a heptagon (7 sides): 7 \u00d7 5 = 35 yd."
     },
+    "misconception_tag": {
+      "B": "side_omitted_from_perimeter",
+      "C": "wrong_side_count_for_polygon",
+      "D": "wrong_side_count_for_polygon"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student divides the perimeter by 2 and reports that result as the width, rather than continuing to subtract the length: 54 \u00f7 2 = 27 cm.",
       "C": "Correct: dividing by 2 gives 27, then subtracting the length gives 27 \u2212 18 = 9 cm.",
       "D": "Student divides the perimeter by the length instead of applying the formula: 54 \u00f7 18 = 3 cm."
+    },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "answers_intermediate_value",
+      "D": "side_count_subtracted_from_perimeter"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student subtracts the number of sides from the perimeter instead of dividing: 96 \u2212 8 = 88 m.",
       "D": "Student divides by 4 instead of 8, using half the correct number of sides: 96 \u00f7 4 = 24 m."
     },
+    "misconception_tag": {
+      "A": "side_count_subtracted_from_perimeter",
+      "C": "side_count_subtracted_from_perimeter",
+      "D": "side_count_subtracted_from_perimeter"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Student multiplies the two equal sides by the base instead of adding: 13 \u00d7 10 = 130 ft.",
       "C": "Student adds only the two equal sides and omits the base: 13 + 13 = 26 ft.",
       "D": "Correct: the perimeter is the sum of all three sides: 13 + 13 + 10 = 36 ft."
+    },
+    "misconception_tag": {
+      "A": "wrong_side_count_for_polygon",
+      "B": "perimeter_area_confusion",
+      "C": "side_omitted_from_perimeter"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "Student approximates the figure as a rectangle using the two longest sides: 2(10 + 10) = 40 m, or adds a phantom side not present in the figure.",
       "D": "Student computes an area-like product using the two longest exterior dimensions instead of summing side lengths: 10 \u00d7 8 = 80 m."
     },
+    "misconception_tag": {
+      "B": "side_omitted_from_perimeter",
+      "C": "irregular_treated_as_rectangle",
+      "D": "perimeter_area_confusion"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -755,6 +800,11 @@
       "C": "Correct: a square has 4 equal sides, so s = 52 \u00f7 4 = 13 in.",
       "D": "Student divides by 2 instead of 4, as if the square had only two pairs of sides to split: 52 \u00f7 2 = 26 in."
     },
+    "misconception_tag": {
+      "A": "side_count_subtracted_from_perimeter",
+      "B": "side_count_subtracted_from_perimeter",
+      "D": "side_count_subtracted_from_perimeter"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -834,6 +884,11 @@
       "B": "Correct: removing a rectangular corner notch replaces two shortened sides with two equal new sides, leaving the perimeter unchanged at 2(20 + 14) = 68 ft.",
       "C": "Student adds the two new interior sides of the notch (5 + 5 = 10 ft) to the original perimeter without subtracting the shortened portions: 68 + 10 = 78 ft.",
       "D": "Student subtracts only one of the two 5 ft notch sides from the original perimeter: 68 \u2212 5 = 63 ft."
+    },
+    "misconception_tag": {
+      "A": "notch_sides_not_accounted",
+      "C": "notch_sides_not_accounted",
+      "D": "notch_sides_not_accounted"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -916,6 +971,11 @@
       "C": "Student converts correctly to 9 ft but forgets to multiply by 2, reporting only l + w: 9 + 5 = 14 ft.",
       "D": "Correct: converting 3 yd to 9 ft, then P = 2(9 + 5) = 28 ft."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "inverts_conversion_direction",
+      "C": "answers_intermediate_value"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -997,6 +1057,11 @@
       "C": "Student uses x = 4 instead of x = 5 throughout: 8 + 7 + 11 + 8 = 34.",
       "D": "Student omits the constant side (8) from the sum, adding only the three variable sides: 10 + 8 + 14 = 32."
     },
+    "misconception_tag": {
+      "B": "partial_distribution",
+      "C": "partial_distribution",
+      "D": "side_omitted_from_perimeter"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1077,6 +1142,11 @@
       "C": "Correct: the missing side is 55 \u2212 (8 + 12 + 9 + 11) = 55 \u2212 40 = 15 ft.",
       "D": "Student reports the largest of the four known sides (11 ft), confusing 'missing side' with 'greatest known side.'"
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "adds_instead_of_subtracts",
+      "D": "reads_wrong_category"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1156,6 +1226,11 @@
       "B": "Correct: P = 6 \u00d7 2.5 = 15 ft; converting gives 15 \u00d7 12 = 180 inches.",
       "C": "Student converts the side length to inches first (2.5 \u00d7 12 = 30 in) but then reports that single converted side length rather than multiplying by 6 to find the full perimeter.",
       "D": "Student converts the side to inches correctly (30 in) but multiplies by 5 instead of 6, confusing a hexagon (6 sides) with a pentagon (5 sides): 5 \u00d7 30 = 150 inches."
+    },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "C": "answers_intermediate_value",
+      "D": "wrong_side_count_for_polygon"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

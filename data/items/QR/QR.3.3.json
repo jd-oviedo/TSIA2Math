@@ -35,6 +35,11 @@
       "C": "Student counts the fruit but drops the prices entirely, writing a + o.",
       "D": "Student adds the two prices into a single rate and applies it to all fruit: 5(a + o)."
     },
+    "misconception_tag": {
+      "B": "prices_swapped_between_quantities",
+      "C": "quantities_counted_without_rates",
+      "D": "rates_merged_into_single_rate"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -113,6 +118,11 @@
       "B": "Correct: 12x is the adult revenue and 8y is the child revenue, so the total is 12x + 8y.",
       "C": "Student adds the two prices into one rate and applies it to all tickets: 20(x + y).",
       "D": "Student adds the prices and the quantities separately without multiplying price by quantity: 12 + 8 + x + y."
+    },
+    "misconception_tag": {
+      "A": "prices_swapped_between_quantities",
+      "C": "rates_merged_into_single_rate",
+      "D": "rates_merged_into_single_rate"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -193,6 +203,11 @@
       "C": "Correct: pencils cost \\$1 each (coefficient 1) and notebooks cost \\$4 each, giving p + 4n.",
       "D": "Student treats the \\$4 notebook price as a one-time flat charge rather than a per-notebook rate: p + 4 + n."
     },
+    "misconception_tag": {
+      "A": "prices_swapped_between_quantities",
+      "B": "rates_merged_into_single_rate",
+      "D": "per_unit_price_as_flat_charge"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -272,6 +287,11 @@
       "C": "Student counts the vehicles but ignores the number of wheels on each: c + t.",
       "D": "Correct: 4c is the car wheels and 6t is the truck wheels, so the total is 4c + 6t."
     },
+    "misconception_tag": {
+      "A": "prices_swapped_between_quantities",
+      "B": "rates_merged_into_single_rate",
+      "C": "quantities_counted_without_rates"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -350,6 +370,11 @@
       "B": "Student swaps the weights, attaching 8 grams to red and 5 grams to blue: 8r + 5b.",
       "C": "Student adds the two per-marble weights into one rate and applies it to all marbles: 13(r + b).",
       "D": "Student counts the marbles but ignores their individual weights: r + b."
+    },
+    "misconception_tag": {
+      "B": "prices_swapped_between_quantities",
+      "C": "rates_merged_into_single_rate",
+      "D": "quantities_counted_without_rates"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -431,6 +456,11 @@
       "B": "Correct: shirts are 2h, and adding the hats gives 2h + h = 3h.",
       "C": "Student reads 'twice as many' as 'two more than,' writing 2 + h instead of 2h, then omits the total.",
       "D": "Student reverses the relationship, treating hats as twice the shirts so shirts are $\\frac{h}{2}$, giving $\\frac{h}{2}$ + h = ($\\frac{3}{2}$)h."
+    },
+    "misconception_tag": {
+      "A": "omits_second_component",
+      "C": "comparative_relationship_reversed",
+      "D": "comparative_relationship_reversed"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -514,6 +544,11 @@
       "C": "Correct: chickens are c + 8, and adding the cows gives (c + 8) + c = 2c + 8.",
       "D": "Student subtracts the difference instead of adding it, reversing the direction: 2c - 8."
     },
+    "misconception_tag": {
+      "A": "omits_second_component",
+      "B": "omits_second_component",
+      "D": "adds_instead_of_subtracts"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -595,6 +630,11 @@
       "B": "Student reverses the relationship to 5 fewer rulers than calculators, writing (x - 5): 9x + 2(x - 5).",
       "C": "Student attaches the '5 more' to the calculators instead of the rulers: 9(x + 5) + 2x.",
       "D": "Correct: rulers number (x + 5) at \\$2 each and calculators cost 9x, giving 9x + 2(x + 5)."
+    },
+    "misconception_tag": {
+      "A": "partial_distribution",
+      "B": "comparative_relationship_reversed",
+      "C": "comparative_relationship_reversed"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -678,6 +718,11 @@
       "C": "Student applies the factor of 3 to the adult price instead of the student count: 30a + 6a.",
       "D": "Student multiplies the wrong group by 3, tripling the adults and leaving students as a single a: 10(3a) + 6a."
     },
+    "misconception_tag": {
+      "B": "prices_swapped_between_quantities",
+      "C": "prices_swapped_between_quantities",
+      "D": "prices_swapped_between_quantities"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -759,6 +804,11 @@
       "B": "Correct: 2(W + 4) + 2W = 2W + 8 + 2W = 4W + 8.",
       "C": "Student includes both widths and both lengths but distributes the 2 over only the W, not the 4, adding the 4 once: 4W + 4.",
       "D": "Student treats all four sides as length (W + 4), computing 4(W + 4) = 4W + 16."
+    },
+    "misconception_tag": {
+      "A": "omits_second_component",
+      "C": "partial_distribution",
+      "D": "irregular_treated_as_rectangle"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -842,6 +892,11 @@
       "C": "Correct: n + m = 40 captures the count and 12n + 5m = 360 captures the revenue using the correct prices.",
       "D": "Student adds the two prices into one rate, writing 17(n + m) = 360, and drops the separate count equation."
     },
+    "misconception_tag": {
+      "A": "prices_swapped_between_quantities",
+      "B": "uses_wrong_total",
+      "D": "rates_merged_into_single_rate"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -923,6 +978,11 @@
       "B": "Student adds the fee instead of subtracting it before dividing: (70 + 20) / 5 = 18.",
       "C": "Student subtracts the \\$20 fee twice before dividing: (70 - 20 - 20) / 5 = 6.",
       "D": "Correct: 5x + 20 = 70 gives 5x = 50, so x = 10 months."
+    },
+    "misconception_tag": {
+      "A": "omits_constant_term",
+      "B": "adds_instead_of_subtracts",
+      "C": "adds_instead_of_subtracts"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1006,6 +1066,11 @@
       "C": "Student adds the rate to the fixed cost: 200 + 8 = 208.",
       "D": "Correct: setting 8u - 200 = 0 gives 8u = 200, so u = 25."
     },
+    "misconception_tag": {
+      "A": "omits_constant_term",
+      "B": "adds_instead_of_subtracts",
+      "C": "adds_instead_of_subtracts"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1088,6 +1153,11 @@
       "C": "Student attaches the flat fee to the hours as a rate and strands the \\$30 as a constant: 50h + 30 + 0.40s.",
       "D": "Student misreads the material rate as \\$40 per square foot instead of \\$0.40: 30h + 40s + 50."
     },
+    "misconception_tag": {
+      "A": "omits_constant_term",
+      "C": "omits_constant_term",
+      "D": "omits_constant_term"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1169,6 +1239,11 @@
       "B": "Student uses the correct setup on the left but sets it equal to the 20-item difference instead of the \\$300 total.",
       "C": "Correct: hot dogs number (p + 20) at \\$4 and pretzels number p at \\$3, so 4(p + 20) + 3p = 300.",
       "D": "Student reverses the relationship to 20 fewer hot dogs than pretzels, writing (p - 20)."
+    },
+    "misconception_tag": {
+      "A": "comparative_relationship_reversed",
+      "B": "uses_wrong_total",
+      "D": "comparative_relationship_reversed"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

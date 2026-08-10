@@ -35,6 +35,11 @@
       "C": "Student overgeneralizes a tendency into an absolute claim about all breakfast-skippers.",
       "D": "Student draws a broad value judgment that the data about first-period alertness do not support."
     },
+    "misconception_tag": {
+      "B": "tendency_stated_as_absolute",
+      "C": "tendency_stated_as_absolute",
+      "D": "tendency_stated_as_absolute"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Correct: this restates the observed association between higher temperatures and higher ice cream sales.",
       "C": "Student reverses the direction into an implausible causal claim that sales drive temperature.",
       "D": "Student converts a tendency into an absolute prediction using 'always.'"
+    },
+    "misconception_tag": {
+      "A": "causation_from_association",
+      "C": "reverse_causation_asserted",
+      "D": "tendency_stated_as_absolute"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Correct: a mean of 85 indicates a typical score around 85 for the class.",
       "D": "Student confuses the mean with the maximum value."
     },
+    "misconception_tag": {
+      "A": "tendency_stated_as_absolute",
+      "B": "tendency_stated_as_absolute",
+      "D": "tendency_stated_as_absolute"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student generalizes a 10-day sample to the entire year as if it were representative.",
       "C": "Student makes an unsupported absolute claim about a season the data do not cover.",
       "D": "Correct: rain on 8 of 10 days means it rained on the majority of the past 10 days."
+    },
+    "misconception_tag": {
+      "A": "tendency_stated_as_absolute",
+      "B": "overgeneralizes_from_sample",
+      "C": "tendency_stated_as_absolute"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student turns a tendency into an absolute claim that short players cannot score at all.",
       "D": "Student treats one associated factor as the sole determinant of scoring."
     },
+    "misconception_tag": {
+      "B": "causation_from_association",
+      "C": "tendency_stated_as_absolute",
+      "D": "tendency_stated_as_absolute"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Correct: the data show an association, but they do not establish a causal direction.",
       "C": "Student asserts a causal direction (scores cause libraries) that the data do not establish.",
       "D": "Student denies the association even though the data clearly show the two move together."
+    },
+    "misconception_tag": {
+      "A": "causation_from_association",
+      "C": "reverse_causation_asserted",
+      "D": "tendency_stated_as_absolute"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Correct: 6 hours is inside the 1-to-8-hour data range, so this is interpolation and is appropriate.",
       "D": "Student raises an irrelevant objection about the amount of study time rather than the data range."
     },
+    "misconception_tag": {
+      "A": "over_rejects_valid_model",
+      "B": "extrapolates_beyond_data",
+      "D": "extrapolates_beyond_data"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Student assumes the observed trend continues without limit, which the data do not guarantee.",
       "C": "Student over-rejects linear models in general rather than identifying the specific extrapolation problem.",
       "D": "Correct: 20 hours is far outside the data range, so the prediction is unreliable extrapolation."
+    },
+    "misconception_tag": {
+      "A": "extrapolates_beyond_data",
+      "B": "extrapolates_beyond_data",
+      "C": "over_rejects_valid_model"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "Student treats a clear majority within the sample as evidence that it represents the whole population.",
       "D": "Student over-rejects all surveys instead of identifying the specific representativeness problem."
     },
+    "misconception_tag": {
+      "B": "overgeneralizes_from_sample",
+      "C": "overgeneralizes_from_sample",
+      "D": "over_rejects_valid_model"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -754,6 +799,11 @@
       "B": "Correct: it reports the association while noting the study does not prove exercise caused the mood.",
       "C": "Student asserts the reverse causal direction as fact, which the data also do not establish.",
       "D": "Student denies any relationship despite the strong association the study found."
+    },
+    "misconception_tag": {
+      "A": "tendency_stated_as_absolute",
+      "C": "reverse_causation_asserted",
+      "D": "tendency_stated_as_absolute"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -835,6 +885,11 @@
       "C": "Correct: age is a confounding variable that produces both larger feet and stronger reading skills, explaining the link without direct causation.",
       "D": "Student misapplies the spurious association to a decision, treating shoe size as a useful predictor of reading placement."
     },
+    "misconception_tag": {
+      "A": "confounder_ignored",
+      "B": "reverse_causation_asserted",
+      "D": "confounder_ignored"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -914,6 +969,11 @@
       "B": "Interviewing only students who enjoyed the program introduces selection bias and cannot establish cause.",
       "C": "Comparing years without controlling other changes leaves many confounding factors uncontrolled.",
       "D": "Correct: a randomized controlled experiment balances other factors and supports a cause-and-effect conclusion."
+    },
+    "misconception_tag": {
+      "A": "study_design_confused_with_causal_evidence",
+      "B": "study_design_confused_with_causal_evidence",
+      "C": "study_design_confused_with_causal_evidence"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -995,6 +1055,11 @@
       "C": "Student claims false precision, treating linear models as exact.",
       "D": "Student over-rejects linear models entirely instead of identifying the specific extrapolation problem."
     },
+    "misconception_tag": {
+      "B": "model_fit_assumed_to_transfer",
+      "C": "model_fit_assumed_to_transfer",
+      "D": "over_rejects_valid_model"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1075,6 +1140,11 @@
       "C": "Student fixes only the direction and still asserts a direct cause the data do not support.",
       "D": "Student denies the real association even though the two clearly rise and fall together."
     },
+    "misconception_tag": {
+      "A": "causation_from_association",
+      "C": "reverse_causation_asserted",
+      "D": "tendency_stated_as_absolute"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1154,6 +1224,11 @@
       "B": "Student accepts the overgeneralization, treating a campus majority as proof of nationwide support.",
       "C": "Correct: one campus is not representative of the whole country, so the nationwide claim is unsupported.",
       "D": "Student over-rejects all polling instead of identifying the specific representativeness problem."
+    },
+    "misconception_tag": {
+      "A": "overgeneralizes_from_sample",
+      "B": "tendency_stated_as_absolute",
+      "D": "over_rejects_valid_model"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

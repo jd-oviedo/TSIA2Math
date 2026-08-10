@@ -35,6 +35,11 @@
       "C": "Correct: 'eight more than a number x' adds 8 to x, giving x + 8.",
       "D": "Student reads 'more' as a scaling cue and multiplies instead of adding: 8x."
     },
+    "misconception_tag": {
+      "A": "keyword_mistranslated",
+      "B": "less_than_order_reversed",
+      "D": "keyword_mistranslated"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -113,6 +118,11 @@
       "B": "Student reverses the subtraction order, writing the numbers in the order they appear in the words: 5 - y.",
       "C": "Student confuses 'less than' with 'more than' and adds: y + 5.",
       "D": "Student reads 'less' as a multiplication cue and multiplies: 5y."
+    },
+    "misconception_tag": {
+      "B": "less_than_order_reversed",
+      "C": "keyword_mistranslated",
+      "D": "keyword_mistranslated"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -194,6 +204,11 @@
       "C": "Student confuses 'product' with 'quotient' and divides: $\\frac{m}{6}$.",
       "D": "Correct: 'the product of m and 6' multiplies the two quantities, giving 6m."
     },
+    "misconception_tag": {
+      "A": "keyword_mistranslated",
+      "B": "keyword_mistranslated",
+      "C": "keyword_mistranslated"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -272,6 +287,11 @@
       "B": "Correct: 'a number k divided by 4' makes k the dividend, giving $\\frac{k}{4}$.",
       "C": "Student confuses 'divided by' with multiplication: 4k.",
       "D": "Student confuses 'divided by' with subtraction: k - 4."
+    },
+    "misconception_tag": {
+      "A": "less_than_order_reversed",
+      "C": "keyword_mistranslated",
+      "D": "keyword_mistranslated"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -353,6 +373,11 @@
       "C": "Correct: 'twice a number w' is two times w, giving 2w.",
       "D": "Student interprets 'twice' as 'two less' and subtracts: w - 2."
     },
+    "misconception_tag": {
+      "A": "keyword_mistranslated",
+      "B": "keyword_mistranslated",
+      "D": "keyword_mistranslated"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -431,6 +456,11 @@
       "B": "Student drops the parentheses and doubles only the first term: 2x + 4. This fails to double the 4.",
       "C": "Student reads 'twice' as 'add 2' rather than 'multiply by 2': 2 + (x + 4) = x + 6.",
       "D": "Student reads 'sum' as 'product' and computes 2 times (4 times x): 8x."
+    },
+    "misconception_tag": {
+      "B": "drops_grouping_symbols",
+      "C": "keyword_mistranslated",
+      "D": "keyword_mistranslated"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -512,6 +542,11 @@
       "C": "Student subtracts 6 from y before multiplying by 3, incorrectly grouping: 3(y - 6) = 3y - 18.",
       "D": "Correct: '6 less than three times y' subtracts 6 from 3y, giving 3y - 6."
     },
+    "misconception_tag": {
+      "A": "less_than_order_reversed",
+      "B": "keyword_mistranslated",
+      "C": "wrong_quantity_grouped"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -591,6 +626,11 @@
       "B": "Correct: the quotient $\\frac{n}{4}$ is increased by 7, giving $\\frac{n}{4}$ + 7.",
       "C": "Student adds 7 before dividing, pulling it into the numerator: (n + 7)/4.",
       "D": "Student confuses 'increased by' with 'decreased by' and subtracts: $\\frac{n}{4}$ - 7."
+    },
+    "misconception_tag": {
+      "A": "less_than_order_reversed",
+      "C": "drops_grouping_symbols",
+      "D": "keyword_mistranslated"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -672,6 +712,11 @@
       "C": "Correct: \\$2 per mile gives 2m, and the one-time \\$3 fee is added: 2m + 3.",
       "D": "Student multiplies the flat fee by the per-mile rate, applying \\$2 to the \\$3 as well: 2(m + 3) = 2m + 6."
     },
+    "misconception_tag": {
+      "A": "slope_intercept_swap",
+      "B": "flat_fee_merged_into_rate",
+      "D": "flat_fee_merged_into_rate"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -751,6 +796,11 @@
       "B": "Student drops the parentheses and multiplies only p by 4: 4p - 8. This fails to multiply the 8.",
       "C": "Student reverses the subtraction inside the group: 4(8 - p).",
       "D": "Student multiplies only the 8 by 4 and leaves p untouched: p - 32."
+    },
+    "misconception_tag": {
+      "B": "drops_grouping_symbols",
+      "C": "less_than_order_reversed",
+      "D": "partial_distribution"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -832,6 +882,11 @@
       "C": "Student reverses the subtraction order for '7 less than': 7 - 3(x + 2).",
       "D": "Student confuses 'less than' with 'more than' and adds 7 instead of subtracting: 3(x + 2) + 7."
     },
+    "misconception_tag": {
+      "A": "drops_grouping_symbols",
+      "C": "less_than_order_reversed",
+      "D": "keyword_mistranslated"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -911,6 +966,11 @@
       "B": "Student reverses the subtraction order on the right side, writing 4 - 2n instead of 2n - 4.",
       "C": "Student confuses '4 less than' with '4 more than' and adds: 2n + 4.",
       "D": "Student groups the +5 with the tripling, writing 3(n + 5) instead of 3n + 5."
+    },
+    "misconception_tag": {
+      "B": "less_than_order_reversed",
+      "C": "keyword_mistranslated",
+      "D": "wrong_quantity_grouped"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -992,6 +1052,11 @@
       "C": "Student attaches the per-hour label to the wrong amount, making \\$15 the hourly rate and adding the other two as fixed: 15h + 65.",
       "D": "Correct: \\$25 per hour gives 25h, and the two fixed fees combine to 55, giving 25h + 55."
     },
+    "misconception_tag": {
+      "A": "flat_fee_merged_into_rate",
+      "B": "flat_fee_merged_into_rate",
+      "C": "flat_fee_merged_into_rate"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1072,6 +1137,11 @@
       "C": "Correct: the grouped sum is divided by 2 to form the average, then 3 is subtracted: (x + 12)/2 - 3.",
       "D": "Student confuses 'decreased by' with 'increased by' and adds 3: (x + 12)/2 + 3."
     },
+    "misconception_tag": {
+      "A": "drops_grouping_symbols",
+      "B": "wrong_quantity_grouped",
+      "D": "keyword_mistranslated"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1151,6 +1221,11 @@
       "B": "Correct: 5(n - 2) + 8 is 'eight more than five times the quantity of n minus 2.'",
       "C": "Describes 5n - 2 + 8, dropping the grouping so that 5 multiplies only n, not the full quantity (n - 2).",
       "D": "Describes 5(2 - n) + 8, reversing the subtraction order inside the group."
+    },
+    "misconception_tag": {
+      "A": "sign_error_on_constant",
+      "C": "partial_distribution",
+      "D": "less_than_order_reversed"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

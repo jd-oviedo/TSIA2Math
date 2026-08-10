@@ -35,6 +35,11 @@
       "C": "Student adds the slope and intercept (3 + 5) instead of reading the slope alone.",
       "D": "Student names the variable x rather than the numeric coefficient that multiplies it."
     },
+    "misconception_tag": {
+      "B": "slope_intercept_swap",
+      "C": "flat_fee_merged_into_rate",
+      "D": "variable_term_read_as_rate"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -109,6 +114,11 @@
       "B": "Correct: in y = mx + b, the y-intercept is the constant term, which is 12.",
       "C": "Student selects the slope but drops its negative sign, reading -2 as 2.",
       "D": "Student divides 12 by 2 (the slope's absolute value), combining the two numbers instead of reading the intercept directly."
+    },
+    "misconception_tag": {
+      "A": "slope_intercept_swap",
+      "C": "drops_negative_sign",
+      "D": "flat_fee_merged_into_rate"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -186,6 +196,11 @@
       "B": "Student computes 4(3) = 12 but forgets to add the intercept of 10.",
       "C": "Correct: y = 4(3) + 10 = 12 + 10 = 22.",
       "D": "Student adds all three numbers (4 + 3 + 10 = 17) instead of multiplying the slope by x first."
+    },
+    "misconception_tag": {
+      "A": "flat_fee_merged_into_rate",
+      "B": "omits_constant_term",
+      "D": "flat_fee_merged_into_rate"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -269,6 +284,11 @@
       "C": "Student adds all three numbers as -5 + 4 + 40 = 39 instead of multiplying first.",
       "D": "Correct: y = -5(4) + 40 = -20 + 40 = 20."
     },
+    "misconception_tag": {
+      "A": "omits_constant_term",
+      "B": "drops_negative_sign",
+      "C": "flat_fee_merged_into_rate"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -351,6 +371,11 @@
       "C": "Student adds the slope and intercept (1.5 + 2 = 3.5) and reports it as a single total.",
       "D": "Student subtracts the intercept from the slope (1.5 - 2 = -0.5) and misreads the rate as a decrease."
     },
+    "misconception_tag": {
+      "B": "flat_fee_merged_into_rate",
+      "C": "flat_fee_merged_into_rate",
+      "D": "flat_fee_merged_into_rate"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -427,6 +452,11 @@
       "B": "Correct: $\\frac{17 - 5}{6 - 2}$ = $\\frac{12}{4}$ = 3.",
       "C": "Student adds the x-values in the denominator: $\\frac{17 - 5}{6 + 2}$ = $\\frac{12}{8}$ = 1.5.",
       "D": "Student adds the y-values in the numerator: $\\frac{17 + 5}{6 - 2}$ = $\\frac{22}{4}$ = 5.5."
+    },
+    "misconception_tag": {
+      "A": "slope_run_over_rise",
+      "C": "slope_denominator_summed",
+      "D": "slope_numerator_summed"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -510,6 +540,11 @@
       "C": "Student adds the x-values in the denominator: -8/(5 + 1) = $\\frac{-8}{6}$ = $\\frac{-4}{3}$.",
       "D": "Student inverts the ratio to run over rise: $\\frac{5 - 1}{2 - 10}$ = 4/(-8) = $\\frac{-1}{2}$."
     },
+    "misconception_tag": {
+      "B": "drops_negative_sign",
+      "C": "slope_denominator_summed",
+      "D": "slope_run_over_rise"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -591,6 +626,11 @@
       "B": "Student computes 2(8) = 16 but omits the intercept of 3.",
       "C": "Correct: y = 2(8) + 3 = 16 + 3 = 19.",
       "D": "Student adds before multiplying, computing 2(8 + 3) = 2(11) = 22."
+    },
+    "misconception_tag": {
+      "A": "flat_fee_merged_into_rate",
+      "B": "omits_constant_term",
+      "D": "flat_fee_merged_into_rate"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -674,6 +714,11 @@
       "C": "Student computes the slope correctly but flips the sign of the intercept, using -4 instead of 4.",
       "D": "Correct: slope = $\\frac{9}{3}$ = 3 and the point (0, 4) gives intercept 4, so y = 3x + 4."
     },
+    "misconception_tag": {
+      "A": "slope_intercept_swap",
+      "B": "slope_run_over_rise",
+      "C": "drops_negative_sign"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -755,6 +800,11 @@
       "B": "Student inverts the ratio to run over rise: $\\frac{10 - 4}{50 - 20}$ = $\\frac{6}{30}$ = $\\frac{1}{5}$.",
       "C": "Student adds the x-values in the denominator: $\\frac{50 - 20}{10 + 4}$ = $\\frac{30}{14}$ = $\\frac{15}{7}$.",
       "D": "Student adds the y-values in the numerator: $\\frac{50 + 20}{10 - 4}$ = $\\frac{70}{6}$ = $\\frac{35}{3}$."
+    },
+    "misconception_tag": {
+      "B": "slope_run_over_rise",
+      "C": "slope_denominator_summed",
+      "D": "slope_numerator_summed"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -838,6 +888,11 @@
       "C": "Student divides by the slope but ignores the intercept, computing $\\frac{35}{4}$ = 8.75.",
       "D": "Student adds the intercept instead of subtracting it before dividing: (35 + 7)/4 = $\\frac{42}{4}$ = 10.5."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "C": "omits_constant_term",
+      "D": "answers_intermediate_value"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -919,6 +974,11 @@
       "B": "Student judges fit by slope alone and ignores that the intercepts produce different predictions.",
       "C": "Correct: Model 1 reproduces every data point exactly while Model 2 is consistently 2 too high.",
       "D": "Student believes fit cannot be assessed without a correlation coefficient, when comparing predictions to points is sufficient here."
+    },
+    "misconception_tag": {
+      "A": "fit_judged_by_intercept",
+      "B": "fit_judged_by_intercept",
+      "D": "fit_judged_by_intercept"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1002,6 +1062,11 @@
       "C": "Student misreads the slope as a total or maximum height rather than a rate of change.",
       "D": "Correct: the slope 0.8 is the per-day growth rate, so the plant grows about 0.8 cm each day."
     },
+    "misconception_tag": {
+      "A": "slope_intercept_swap",
+      "B": "slope_intercept_swap",
+      "C": "slope_intercept_swap"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1084,6 +1149,11 @@
       "C": "Student reads the intercept as the entire bill, ignoring that cost grows with minutes used.",
       "D": "Student misreads the intercept 20 as an x-value (20 minutes) rather than the cost at zero minutes."
     },
+    "misconception_tag": {
+      "B": "slope_intercept_swap",
+      "C": "flat_fee_merged_into_rate",
+      "D": "slope_intercept_swap"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1165,6 +1235,11 @@
       "B": "Correct: 28 - 3 = 25, then $\\frac{25}{1}$.25 = 20.",
       "C": "Student divides by the slope but ignores the intercept: $\\frac{28}{1}$.25 = 22.4.",
       "D": "Student adds the intercept instead of subtracting before dividing: (28 + 3)/1.25 = $\\frac{31}{1}$.25 = 24.8."
+    },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "C": "omits_constant_term",
+      "D": "answers_intermediate_value"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

@@ -35,6 +35,11 @@
       "C": "Student multiplies the two legs instead of applying the Pythagorean theorem: $6 \\times 8 = 48$.",
       "D": "Student computes $6^{2} + 8^{2} = 100$ but forgets to take the square root, reporting 100."
     },
+    "misconception_tag": {
+      "A": "legs_combined_without_squaring",
+      "C": "perimeter_area_confusion",
+      "D": "forgets_square_root"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -132,6 +137,11 @@
       "B": "Student adds the two given lengths instead of working with their squares: $5 + 13 = 18$.",
       "C": "Student subtracts the given lengths directly instead of subtracting their squares: $13 - 5 = 8$.",
       "D": "Student computes $13^{2} - 5^{2} = 144$ but forgets to take the square root, reporting 144."
+    },
+    "misconception_tag": {
+      "B": "legs_combined_without_squaring",
+      "C": "legs_combined_without_squaring",
+      "D": "forgets_square_root"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -231,6 +241,11 @@
       "C": "Student computes $8^{2} + 15^{2} = 289$ but forgets to take the square root, reporting 289.",
       "D": "Correct: $\\sqrt{8^{2} + 15^{2}} = \\sqrt{64 + 225} = \\sqrt{289} = 17$."
     },
+    "misconception_tag": {
+      "A": "longest_side_assumed_hypotenuse",
+      "B": "legs_combined_without_squaring",
+      "C": "forgets_square_root"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -328,6 +343,11 @@
       "B": "Student subtracts the given lengths directly instead of subtracting their squares: $25 - 7 = 18$.",
       "C": "Correct: $\\sqrt{25^{2} - 7^{2}} = \\sqrt{625 - 49} = \\sqrt{576} = 24$.",
       "D": "Student computes $25^{2} - 7^{2} = 576$ but forgets to take the square root, reporting 576."
+    },
+    "misconception_tag": {
+      "A": "legs_combined_without_squaring",
+      "B": "legs_combined_without_squaring",
+      "D": "forgets_square_root"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -427,6 +447,11 @@
       "C": "Student subtracts the given lengths directly instead of subtracting their squares: $20 - 12 = 8$.",
       "D": "Student computes $20^{2} - 12^{2} = 256$ but forgets to take the square root, reporting 256."
     },
+    "misconception_tag": {
+      "B": "legs_combined_without_squaring",
+      "C": "legs_combined_without_squaring",
+      "D": "forgets_square_root"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -524,6 +549,11 @@
       "B": "Student finds the missing leg correctly but leaves it out of the perimeter, adding only the two originally given sides: $24 + 26 = 50$.",
       "C": "Student leaves out the originally given leg of 24, adding only the computed leg and the hypotenuse: $10 + 26 = 36$.",
       "D": "Student computes the area instead of the perimeter, using the two legs: $\\frac{1}{2} \\times 24 \\times 10 = 120$."
+    },
+    "misconception_tag": {
+      "B": "side_omitted_from_perimeter",
+      "C": "side_omitted_from_perimeter",
+      "D": "perimeter_area_confusion"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -623,6 +653,11 @@
       "C": "Correct: $9^{2} + 40^{2} = 81 + 1600 = 1681 = 41^{2}$, so the converse confirms a right triangle.",
       "D": "Student assumes this resembles the 7-24-25 triple. Verifying: $7^{2} + 24^{2} = 625$, but $26^{2} = 676$, and $625 \\neq 676$, so it is not a right triangle."
     },
+    "misconception_tag": {
+      "A": "pythagorean_triple_assumed",
+      "B": "pythagorean_triple_assumed",
+      "D": "pythagorean_triple_assumed"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -702,6 +737,11 @@
       "B": "Correct: the missing leg is $\\sqrt{225 - 81} = 12$, and the area is $\\frac{1}{2} \\times 9 \\times 12 = 54$.",
       "C": "Student uses the hypotenuse as the second dimension instead of the found leg: $\\frac{1}{2} \\times 12 \\times 15 = 90$.",
       "D": "Student multiplies the two legs but forgets the factor of $\\frac{1}{2}$: $9 \\times 12 = 108$."
+    },
+    "misconception_tag": {
+      "A": "perimeter_area_confusion",
+      "C": "answers_intermediate_value",
+      "D": "perimeter_area_confusion"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -801,6 +841,11 @@
       "C": "Student computes $24^{2} + 7^{2} = 625$ but forgets to take the square root, reporting 625.",
       "D": "Correct: $\\sqrt{24^{2} + 7^{2}} = \\sqrt{576 + 49} = \\sqrt{625} = 25$."
     },
+    "misconception_tag": {
+      "A": "legs_combined_without_squaring",
+      "B": "perimeter_area_confusion",
+      "C": "forgets_square_root"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -880,6 +925,11 @@
       "B": "Correct: the hypotenuse is $\\sqrt{144 + 1225} = \\sqrt{1369} = 37$, so the perimeter is $12 + 35 + 37 = 84$.",
       "C": "Student reports only the hypotenuse, 37, treating the single computed side as the final answer.",
       "D": "Student computes the hypotenuse incorrectly as the sum of the legs, $12 + 35 = 47$, then uses that as the hypotenuse: $12 + 35 + 47 = 94$."
+    },
+    "misconception_tag": {
+      "A": "side_omitted_from_perimeter",
+      "C": "answers_intermediate_value",
+      "D": "legs_combined_without_squaring"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -979,6 +1029,11 @@
       "C": "Student correctly squares and sums all three dimensions, $9 + 16 + 144 = 169$, but forgets to take the final square root.",
       "D": "Correct: base diagonal is $\\sqrt{9 + 16} = 5$, then the space diagonal is $\\sqrt{25 + 144} = \\sqrt{169} = 13$."
     },
+    "misconception_tag": {
+      "A": "space_diagonal_stopped_at_base",
+      "B": "legs_combined_without_squaring",
+      "C": "forgets_square_root"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1058,6 +1113,11 @@
       "B": "Student sets up a linear equation, treating the legs as summing to the hypotenuse: $x + (x + 7) = 13$, giving $x = 3$ and a longer leg of 10.",
       "C": "Correct: solving $x^{2} + (x+7)^{2} = 169$ gives $x = 5$, so the legs are 5 and 12 and the longer leg is 12.",
       "D": "Student subtracts the difference from the hypotenuse: $13 - 7 = 6$."
+    },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "legs_combined_without_squaring",
+      "D": "legs_combined_without_squaring"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1139,6 +1199,11 @@
       "C": "Student uses only the north displacement, ignoring the eastward distance entirely, reporting 15.",
       "D": "Student combines the displacements correctly into $8^{2} + 15^{2} = 289$ but forgets to take the square root."
     },
+    "misconception_tag": {
+      "A": "legs_combined_without_squaring",
+      "C": "answers_intermediate_value",
+      "D": "forgets_square_root"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1218,6 +1283,11 @@
       "B": "Student uses the diagonal as the second side, multiplying length by diagonal: $24 \\times 26 = 624$.",
       "C": "Student finds the width, 10, but computes the perimeter instead of the area: $2(24 + 10) = 68$.",
       "D": "Student finds $w^{2} = 100$ and reports 100 as the area, forgetting to take the square root for the width first."
+    },
+    "misconception_tag": {
+      "B": "answers_intermediate_value",
+      "C": "perimeter_area_confusion",
+      "D": "forgets_square_root"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1299,6 +1369,11 @@
       "B": "Student finds the legs 21 and 28 correctly but leaves the hypotenuse out of the perimeter: $21 + 28 = 49$.",
       "C": "Correct: $5k = 35$ gives $k = 7$, so the sides are 21, 28, and 35, and the perimeter is $21 + 28 + 35 = 84$.",
       "D": "Student assumes the two legs together equal the hypotenuse and computes the perimeter as twice the hypotenuse: $2 \\times 35 = 70$."
+    },
+    "misconception_tag": {
+      "A": "legs_combined_without_squaring",
+      "B": "side_omitted_from_perimeter",
+      "D": "legs_combined_without_squaring"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

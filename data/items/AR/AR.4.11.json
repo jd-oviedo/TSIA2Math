@@ -35,6 +35,11 @@
       "C": "Correct: $3 \\cdot 2^{4} = 3 \\cdot 16 = 48$.",
       "D": "Student applies the exponent to the coefficient instead of the base: $3^{4} \\cdot 2 = 81 \\cdot 2 = 162$."
     },
+    "misconception_tag": {
+      "A": "base_times_exponent",
+      "B": "coefficient_ignored_in_power",
+      "D": "exponent_applied_to_coefficient"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student treats $5^{2}$ as $5 \\cdot 2 = 10$, multiplying the base by the exponent, then $2 \\cdot 10 = 20$.",
       "C": "Student raises the product of coefficient and base to the exponent: $(2 \\cdot 5)^{2} = 10^{2} = 100$.",
       "D": "Student ignores the coefficient 2 and evaluates only the power: $5^{2} = 25$."
+    },
+    "misconception_tag": {
+      "B": "base_times_exponent",
+      "C": "exponent_applied_to_coefficient",
+      "D": "coefficient_ignored_in_power"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student applies the exponent to the coefficient instead of the base: $4^{3} \\cdot 3 = 64 \\cdot 3 = 192$.",
       "D": "Correct: $4 \\cdot 3^{3} = 4 \\cdot 27 = 108$."
     },
+    "misconception_tag": {
+      "A": "base_times_exponent",
+      "B": "coefficient_ignored_in_power",
+      "C": "exponent_applied_to_coefficient"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Correct: $6 \\cdot 2^{3} = 6 \\cdot 8 = 48$.",
       "C": "Student adds the coefficient to the power instead of multiplying: $6 + 2^{3} = 6 + 8 = 14$.",
       "D": "Student ignores the coefficient 6 and evaluates only the power: $2^{3} = 8$."
+    },
+    "misconception_tag": {
+      "A": "base_times_exponent",
+      "C": "coefficient_added_not_multiplied",
+      "D": "coefficient_ignored_in_power"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student ignores the coefficient 5 and evaluates only the power: $3^{2} = 9$.",
       "D": "Student applies the exponent to the coefficient instead of the base: $5^{2} \\cdot 3 = 25 \\cdot 3 = 75$."
     },
+    "misconception_tag": {
+      "B": "base_times_exponent",
+      "C": "coefficient_ignored_in_power",
+      "D": "exponent_applied_to_coefficient"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student treats $4^{0}$ as the base 4 itself, ignoring the zero-power rule: $7 \\cdot 4 = 28$.",
       "C": "Student correctly finds $4^{0} = 1$ but drops the coefficient 7, reporting just 1.",
       "D": "Correct: $4^{0} = 1$, so $7 \\cdot 1 = 7$."
+    },
+    "misconception_tag": {
+      "A": "zero_exponent_as_zero",
+      "B": "zero_exponent_as_zero",
+      "C": "coefficient_ignored_in_power"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Correct: $2^{-2} = \\frac{1}{4}$, so $5 \\cdot \\frac{1}{4} = \\frac{5}{4}$.",
       "D": "Student takes the reciprocal correctly but carries a sign error, treating $2^{-2}$ as $-\\frac{1}{4}$: $5 \\cdot \\left(-\\frac{1}{4}\\right) = -\\frac{5}{4}$."
     },
+    "misconception_tag": {
+      "A": "negative_exponent_as_negative_value",
+      "B": "negative_exponent_as_negative_value",
+      "D": "negative_exponent_as_negative_value"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Correct: $9^{\\frac{1}{2}} = \\sqrt{9} = 3$, so $2 \\cdot 3 = 6$.",
       "C": "Student correctly finds $9^{\\frac{1}{2}} = 3$ but drops the coefficient 2, reporting just 3.",
       "D": "Student finds $9^{\\frac{1}{2}} = 3$ but adds the coefficient instead of multiplying: $2 + 3 = 5$."
+    },
+    "misconception_tag": {
+      "A": "base_times_exponent",
+      "C": "coefficient_ignored_in_power",
+      "D": "coefficient_added_not_multiplied"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "Student isolates $3^{x} = 27$ correctly but reports the value of the power (27) instead of the exponent.",
       "D": "Student recognizes $3^{x} = 27$ but counts the number of multiplication steps to build 27 from a single 3 (3 to 9 to 27 is two steps) as the exponent, reporting 2 instead of 3."
     },
+    "misconception_tag": {
+      "B": "answers_intermediate_value",
+      "C": "answers_intermediate_value",
+      "D": "answers_intermediate_value"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -754,6 +799,11 @@
       "B": "Correct: $(0.8)^{3} = 0.512$, so $500 \\cdot 0.512 = 256$.",
       "C": "Student applies the factor only once, ignoring the exponent of 3: $500 \\cdot 0.8 = 400$.",
       "D": "Student treats the decay as linear, subtracting 20% of the original value ($100$) for each of the 3 periods: $500 - 3(100) = 200$."
+    },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "C": "answers_intermediate_value",
+      "D": "linear_instead_of_compound"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

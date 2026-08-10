@@ -35,6 +35,11 @@
       "C": "Student subtracts 14 from 9 rather than subtracting 9 from 14, giving 9 \u2212 14 = \u22125.",
       "D": "Student ignores the +9 and reads the right-hand side (14) directly as the answer."
     },
+    "misconception_tag": {
+      "A": "adds_instead_of_subtracts",
+      "C": "subtracts_in_wrong_order",
+      "D": "answers_intermediate_value"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student subtracts the coefficient instead of dividing: 21 \u2212 3 = 18.",
       "C": "Student adds the coefficient instead of dividing: 21 + 3 = 24.",
       "D": "Correct: 21 \u00f7 3 = 7."
+    },
+    "misconception_tag": {
+      "A": "multiplies_instead_of_divides",
+      "B": "coefficient_subtracted_not_divided",
+      "C": "coefficient_subtracted_not_divided"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student divides 13 by 2 before subtracting 5, giving 13 \u00f7 2 = 6.5 as the answer.",
       "D": "Student correctly finds 2x = 8 but then subtracts the coefficient (8 \u2212 2 = 6) instead of dividing by it."
     },
+    "misconception_tag": {
+      "A": "adds_instead_of_subtracts",
+      "C": "divides_before_isolating",
+      "D": "coefficient_subtracted_not_divided"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student skips the constant and divides 10 by 4 directly: 10 \u00f7 4 = 2.5.",
       "C": "Correct: 4x \u2212 6 = 10 \u2192 4x = 16 \u2192 x = 4.",
       "D": "Student correctly finds 4x = 16 but divides by 2 instead of 4, misreading the coefficient."
+    },
+    "misconception_tag": {
+      "A": "adds_instead_of_subtracts",
+      "B": "divides_before_isolating",
+      "D": "divides_before_isolating"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student divides 7 by 2 without first subtracting 1: 7 \u00f7 2 = 3.5.",
       "D": "Student subtracts 7 from the constant term instead of subtracting 1 from 7: 2x = 1 \u2212 7 = \u22126 \u2192 x = \u22123."
     },
+    "misconception_tag": {
+      "B": "adds_instead_of_subtracts",
+      "C": "divides_before_isolating",
+      "D": "subtracts_in_wrong_order"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Correct: 2x = 14 \u2192 x = 7.",
       "C": "Student correctly arrives at 2x = 14 but applies a sign error when dividing, reporting x = \u22127.",
       "D": "Student correctly finds 2x = 14 but forgets to divide by 2, reporting x = 14."
+    },
+    "misconception_tag": {
+      "A": "adds_instead_of_subtracts",
+      "C": "sign_error_on_constant",
+      "D": "answers_intermediate_value"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Correct: 4(x + 3) = 28 \u2192 4x + 12 = 28 \u2192 4x = 16 \u2192 x = 4.",
       "D": "Student correctly distributes and finds 4x = 16 but then divides 16 by the wrong number \u2014 using 4 from the term 4x + 12 but computing 12 \u00f7 4 = 3 as the answer."
     },
+    "misconception_tag": {
+      "A": "divides_before_isolating",
+      "B": "coefficient_subtracted_not_divided",
+      "D": "divides_before_isolating"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Student subtracts the denominator (2) from 7 instead of subtracting the constant (3): 7 \u2212 2 = 5.",
       "C": "Correct: $\\frac{x}{2}$ + 3 = 7 \u2192 $\\frac{x}{2}$ = 4 \u2192 x = 8.",
       "D": "Student correctly finds $\\frac{x}{2}$ = 4 but adds the denominator instead of multiplying: 4 + 2 = 6."
+    },
+    "misconception_tag": {
+      "A": "divides_before_isolating",
+      "B": "coefficient_subtracted_not_divided",
+      "D": "coefficient_subtracted_not_divided"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "Student cancels the 3x terms and misinterprets the resulting contradiction (5 = \u22122) as meaning x = 0 is the answer.",
       "D": "Student sees that both sides have the same 3x coefficient and concludes the equation must be an identity true for all x, confusing a contradiction with an identity."
     },
+    "misconception_tag": {
+      "B": "subtracts_in_wrong_order",
+      "C": "contradiction_read_as_solution",
+      "D": "contradiction_confused_with_identity"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -754,6 +799,11 @@
       "B": "Student distributes correctly on the left but drops the \u22122 from the right side: 6x \u2212 10 = 4x + 4 \u2192 2x = 14 \u2192 x = 7.",
       "C": "Student distributes and collects correctly (2x = 12) but divides by 4 instead of 2, misidentifying the coefficient: 12 \u00f7 4 = 3.",
       "D": "Correct: distributing and combining gives 2x = 12 \u2192 x = 6."
+    },
+    "misconception_tag": {
+      "A": "sign_error_on_constant",
+      "B": "subtracts_in_wrong_order",
+      "C": "divides_before_isolating"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

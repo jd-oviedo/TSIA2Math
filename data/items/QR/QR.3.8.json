@@ -35,6 +35,11 @@
       "C": "Student multiplies the 3 by the x but then adds the 3 and the 4 instead of multiplying: $3 + 4 = 7$, giving $3x + 7$.",
       "D": "Student multiplies $3 \\times 4 = 12$ but forgets to apply the 3 to the x term, leaving $x + 12$."
     },
+    "misconception_tag": {
+      "B": "partial_distribution",
+      "C": "adds_instead_of_scales",
+      "D": "partial_distribution"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -108,6 +113,11 @@
       "B": "Student adds the 2 and the 3 to form the x-coefficient instead of multiplying: $2 + 3 = 5$, giving $5x - 10$.",
       "C": "Student multiplies $2 \\times 3x = 6x$ correctly but mishandles the sign on $2 \\times (-5)$, writing $+10$ instead of $-10$: $6x + 10$.",
       "D": "Correct: $2 \\times 3x = 6x$ and $2 \\times (-5) = -10$, giving $6x - 10$."
+    },
+    "misconception_tag": {
+      "A": "partial_distribution",
+      "B": "adds_instead_of_scales",
+      "C": "double_negative_mishandled"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -184,6 +194,11 @@
       "C": "Student reaches $7x + 8$ but combines the unlike terms into one: $7 + 8 = 15$, giving $15x$.",
       "D": "Student distributes the 4 correctly to get $4x + 8$ but forgets to add the $3x$ term outside the parentheses."
     },
+    "misconception_tag": {
+      "A": "partial_distribution",
+      "C": "combines_unlike_terms",
+      "D": "answers_intermediate_value"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -257,6 +272,11 @@
       "B": "Student applies the minus to the x but not to the $+5$, writing $-x + 5$: $6x - 2 - x + 5 = 5x + 3$.",
       "C": "Student ignores the minus in front of the second group entirely, adding it: $6x - 2 + x + 5 = 7x + 3$.",
       "D": "Student multiplies 2 by $3x$ but forgets to multiply 2 by the $-1$, writing $6x - 1$: $6x - 1 - x - 5 = 5x - 6$."
+    },
+    "misconception_tag": {
+      "B": "partial_distribution",
+      "C": "drops_negative_on_group",
+      "D": "partial_distribution"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -338,6 +358,11 @@
       "C": "Correct: the GCF is 4, and $8x + 12 = 4(2x + 3)$.",
       "D": "Student writes the GCF of 4 in front but copies both original terms inside without dividing, giving $4(8x + 12)$, which expands to $32x + 48$."
     },
+    "misconception_tag": {
+      "A": "gcf_not_greatest",
+      "B": "only_one_term_divided_by_gcf",
+      "D": "gcf_written_terms_not_divided"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -417,6 +442,11 @@
       "B": "Correct: $-2(x - 3) = -2x + 6$ and $4(2x - 1) = 8x - 4$, so $-2x + 8x = 6x$ and $6 - 4 = 2$, giving $6x + 2$.",
       "C": "Student multiplies 4 by $2x$ but forgets to multiply 4 by the $-1$, writing $8x - 1$: $-2x + 6 + 8x - 1 = 6x + 5$.",
       "D": "Student reaches $6x + 2$ but combines the unlike terms into one: $6 + 2 = 8$, giving $8x$."
+    },
+    "misconception_tag": {
+      "A": "double_negative_mishandled",
+      "C": "partial_distribution",
+      "D": "combines_unlike_terms"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

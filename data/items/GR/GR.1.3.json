@@ -35,6 +35,11 @@
       "C": "Correct: the object's right edge aligns exactly with the tick mark labeled 3, so the length is 3 inches.",
       "D": "Student reports the ruler's maximum label (5) rather than the label at the object's right edge, confusing the scale's endpoint with the object's measurement."
     },
+    "misconception_tag": {
+      "A": "reads_adjacent_value",
+      "B": "reads_adjacent_value",
+      "D": "reads_adjacent_value"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student reads only the leading digit '3' from the label '30,' dropping the units place and reporting 3\u00b0F instead of 30\u00b0F.",
       "C": "Student reads one tick mark below the mercury level, reporting the label immediately beneath the mercury (20\u00b0F) rather than the label the mercury aligns with.",
       "D": "Student reads one tick mark above the mercury level, reporting the label immediately above the mercury (40\u00b0F) rather than the label the mercury aligns with."
+    },
+    "misconception_tag": {
+      "B": "leading_digit_read_only",
+      "C": "reads_adjacent_value",
+      "D": "reads_adjacent_value"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student misidentifies which interval the object's edge falls in, reading the unlabeled midpoint between the 2 cm and 4 cm marks (which is 3 cm) instead of the midpoint between 4 cm and 6 cm.",
       "D": "Correct: the interval from 4 cm to 6 cm spans 2 cm; the unlabeled midpoint tick mark is at 4 + 1 = 5 cm."
     },
+    "misconception_tag": {
+      "A": "snaps_to_labelled_tick",
+      "B": "snaps_to_labelled_tick",
+      "C": "snaps_to_labelled_tick"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Correct: each interval is 25 \u00f7 5 = 5 units; the second tick mark after 50 is at 50 + 2(5) = 60.",
       "C": "Student correctly determines the interval size (5 units) but reads the first unlabeled tick mark after 50 rather than the second, giving 50 + 5 = 55.",
       "D": "Student correctly computes the two-interval increment (2 \u00d7 5 = 10) but reports that increment as the answer rather than adding it to the starting label of 50."
+    },
+    "misconception_tag": {
+      "A": "snaps_to_labelled_tick",
+      "C": "subdivision_count_miscomputed",
+      "D": "subdivision_count_miscomputed"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Correct: 9 unlabeled tick marks divide each 1 cm interval into 10 equal parts; the smallest readable division is 1 \u00f7 10 = 0.1 cm.",
       "D": "Student applies an extra factor of 10, computing 1 \u00f7 100 = 0.01 cm rather than 1 \u00f7 10 = 0.1 cm, possibly confusing the number of divisions with a two-step decimal shift."
     },
+    "misconception_tag": {
+      "A": "snaps_to_labelled_tick",
+      "B": "subdivision_count_miscomputed",
+      "D": "subdivision_count_miscomputed"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Correct: three-quarters of the way from 10\u00b0C to 15\u00b0C is 13.75\u00b0C; applying F = ($\\frac{9}{5}$)(13.75) + 32 gives 24.75 + 32 = 56.75\u00b0F \u2248 57\u00b0F.",
       "C": "Student estimates the mercury as halfway between the tick marks rather than three-quarters of the way, reading approximately 12.5\u00b0C; converting gives ($\\frac{9}{5}$)(12.5) + 32 = 22.5 + 32 = 54.5\u00b0F \u2248 55\u00b0F.",
       "D": "Student inverts the conversion coefficient, using ($\\frac{5}{9}$) instead of ($\\frac{9}{5}$): ($\\frac{5}{9}$)(13.75) + 32 \u2248 7.6 + 32 \u2248 40\u00b0F."
+    },
+    "misconception_tag": {
+      "A": "temperature_offset_omitted",
+      "C": "snaps_to_labelled_tick",
+      "D": "temperature_offset_omitted"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

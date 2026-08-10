@@ -35,6 +35,11 @@
       "C": "Student flips the sign on only one factor, reading $(x + 2)(x - 3)$ and reporting $x = 2$ and $x = -3$.",
       "D": "Correct: $(x + 2)(x + 3) = 0$ gives $x = -2$ and $x = -3$."
     },
+    "misconception_tag": {
+      "A": "factor_constants_read_as_roots",
+      "B": "factor_pair_sum_unchecked",
+      "C": "wrong_sign_on_factor"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student factors correctly to $(x + 3)(x + 4)$ but reports the numbers inside the factors without flipping signs, writing $x = 3$ and $x = 4$.",
       "C": "Student picks a wrong factor pair, using $(x + 2)(x + 6)$, which gives $x^{2} + 8x + 12$, and reports $x = -2$ and $x = -6$.",
       "D": "Student picks another wrong factor pair, using $(x + 1)(x + 12)$, which gives $x^{2} + 13x + 12$, and reports $x = -1$ and $x = -12$."
+    },
+    "misconception_tag": {
+      "B": "factor_constants_read_as_roots",
+      "C": "factor_pair_sum_unchecked",
+      "D": "factor_pair_sum_unchecked"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Correct: $(x - 2)(x - 5) = 0$ gives $x = 2$ and $x = 5$.",
       "D": "Student flips the sign on only one factor, reading $(x - 2)(x + 5)$ and reporting $x = 2$ and $x = -5$."
     },
+    "misconception_tag": {
+      "A": "factor_constants_read_as_roots",
+      "B": "factor_pair_sum_unchecked",
+      "D": "wrong_sign_on_factor"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Correct: $(x - 3)(x + 2) = 0$ gives $x = 3$ and $x = -2$.",
       "C": "Student reports the numbers inside the factors $(x - 3)(x + 2)$ without flipping signs, writing $x = -3$ and $x = 2$.",
       "D": "Student assigns both signs as negative, treating the factors as $(x + 3)(x + 2)$ for a product of $+6$, and reports $x = -3$ and $x = -2$."
+    },
+    "misconception_tag": {
+      "A": "factor_pair_sum_unchecked",
+      "C": "factor_constants_read_as_roots",
+      "D": "factor_pair_sum_unchecked"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student ignores the signs entirely and reports the magnitudes, $x = 5$ and $x = 1$.",
       "D": "Correct: $(x + 5)(x - 1) = 0$ gives $x = -5$ and $x = 1$."
     },
+    "misconception_tag": {
+      "A": "factor_constants_read_as_roots",
+      "B": "factor_constants_read_as_roots",
+      "C": "factor_constants_read_as_roots"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student reports the numbers inside the factors $(x + 5)(x - 2)$ without flipping signs, writing $x = 5$ and $x = -2$.",
       "C": "Student rearranges and factors correctly but flips the sign on the second solution only, reporting $x = -5$ and $x = -2$.",
       "D": "Student does not rearrange into standard form and instead reads the constant and the $x$-coefficient from the original equation as the solutions, reporting $x = 10$ and $x = -3$."
+    },
+    "misconception_tag": {
+      "B": "factor_constants_read_as_roots",
+      "C": "wrong_sign_on_factor",
+      "D": "not_rearranged_to_standard_form"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student factors to $(x - 3)^{2}$ but reports the number inside the factor without flipping the sign, writing $x = -3$.",
       "D": "Student reports the root from the factor and the constant term of the original equation, writing $x = 3$ and $x = 9$."
     },
+    "misconception_tag": {
+      "A": "perfect_square_vs_difference_of_squares",
+      "C": "factor_constants_read_as_roots",
+      "D": "not_rearranged_to_standard_form"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Student ignores the leading coefficient of $2$, reading the factor $(2x + 1)$ as if it were $(x + 1)$ and reporting $x = -1$ and $x = 3$.",
       "C": "Correct: $(2x + 1)(x - 3) = 0$ gives $x = -\\frac{1}{2}$ and $x = 3$.",
       "D": "Student solves $2x + 1 = 0$ but drops the negative sign, reporting $x = \\frac{1}{2}$, while keeping the correct $x = 3$."
+    },
+    "misconception_tag": {
+      "A": "wrong_sign_on_factor",
+      "B": "leading_coefficient_ignored_in_root",
+      "D": "wrong_sign_on_factor"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "Student finds the other solution of the equation, $x = -4$, and reports it as $k$ instead of solving for the coefficient.",
       "D": "Student finds the other solution $x = -4$, then reports its magnitude with a flipped sign as $k = 4$."
     },
+    "misconception_tag": {
+      "B": "wrong_sign_on_factor",
+      "C": "reads_wrong_category",
+      "D": "wrong_sign_on_factor"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -754,6 +799,11 @@
       "B": "Correct: $(x + 3)^{2} = 0$ has the single repeated solution $x = -3$.",
       "C": "Student confuses the perfect square trinomial with the unfactorable sum $x^{2} + 9$ and concludes there are no real solutions.",
       "D": "Student factors to $(x + 3)^{2}$ but reads the root and the constant term of the original equation as two separate solutions, $x = -3$ and $x = -9$."
+    },
+    "misconception_tag": {
+      "A": "perfect_square_vs_difference_of_squares",
+      "C": "perfect_square_confused_with_unfactorable_sum",
+      "D": "not_rearranged_to_standard_form"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

@@ -35,6 +35,11 @@
       "C": "Student reports the change in x ($4 - 1 = 3$) alone, dividing nothing.",
       "D": "Student inverts the ratio, dividing run by rise: $\\frac{4 - 1}{9 - 3} = \\frac{3}{6} = \\frac{1}{2}$."
     },
+    "misconception_tag": {
+      "B": "rise_reported_as_rate",
+      "C": "run_reported_as_rate",
+      "D": "slope_run_over_rise"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -108,6 +113,11 @@
       "B": "Correct: $\\frac{16 - 4}{5 - 2} = \\frac{12}{3} = 4$.",
       "C": "Student computes the change in y ($16 - 4 = 12$) but forgets to divide by the change in x, reporting the rise alone as $12$.",
       "D": "Student reports the change in x ($5 - 2 = 3$) alone, dividing nothing."
+    },
+    "misconception_tag": {
+      "A": "slope_run_over_rise",
+      "C": "rise_reported_as_rate",
+      "D": "run_reported_as_rate"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -183,6 +193,11 @@
       "C": "Correct: $\\frac{1 - 7}{3 - 0} = \\frac{-6}{3} = -2$.",
       "D": "Student computes the change in y ($1 - 7 = -6$) but forgets to divide by the change in x, reporting the rise alone as $-6$."
     },
+    "misconception_tag": {
+      "A": "drops_negative_sign",
+      "B": "slope_run_over_rise",
+      "D": "rise_reported_as_rate"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -256,6 +271,11 @@
       "B": "Student computes the change in y ($4 - 1 = 3$) but forgets to divide by the change in x, reporting the rise alone as $3$.",
       "C": "Student reports the change in x ($8 - 2 = 6$) alone, dividing nothing.",
       "D": "Correct: $\\frac{4 - 1}{8 - 2} = \\frac{3}{6} = \\frac{1}{2}$."
+    },
+    "misconception_tag": {
+      "A": "slope_run_over_rise",
+      "B": "rise_reported_as_rate",
+      "C": "run_reported_as_rate"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -331,6 +351,11 @@
       "C": "Student inverts the ratio, dividing run by rise: $\\frac{5 - 1}{0 - 12} = \\frac{4}{-12} = -\\frac{1}{3}$.",
       "D": "Student computes the change in y ($0 - 12 = -12$) but forgets to divide by the change in x, reporting the rise alone as $-12$."
     },
+    "misconception_tag": {
+      "B": "drops_negative_sign",
+      "C": "slope_run_over_rise",
+      "D": "rise_reported_as_rate"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -405,6 +430,11 @@
       "C": "Student selects the wrong rows, using $x = 0$ ($y = 2$) and $x = 3$ ($y = 11$): $\\frac{11 - 2}{3 - 0} = \\frac{9}{3} = 3$.",
       "D": "Student computes the change in y ($13 - 5 = 8$) but forgets to divide by the change in x, reporting the rise alone as $8$."
     },
+    "misconception_tag": {
+      "A": "slope_run_over_rise",
+      "C": "wrong_interval_selected",
+      "D": "rise_reported_as_rate"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -478,6 +508,11 @@
       "B": "Student inverts the ratio, dividing run by rise: $\\frac{6 - 2}{54 - 78} = \\frac{4}{-24} = -\\frac{1}{6}$, also flipping the units.",
       "C": "Correct: $\\frac{54 - 78}{6 - 2} = \\frac{-24}{4} = -6$ degrees per minute.",
       "D": "Student computes the change in temperature ($54 - 78 = -24$) but forgets to divide by the change in time, reporting the rise alone as $-24$."
+    },
+    "misconception_tag": {
+      "A": "drops_negative_sign",
+      "B": "slope_run_over_rise",
+      "D": "rise_reported_as_rate"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -559,6 +594,11 @@
       "C": "Student inverts the ratio, dividing the change in weeks by the change in height: $\\frac{5 - 1}{16 - 4} = \\frac{4}{12} = \\frac{1}{3}$, flipping the units to week per cm.",
       "D": "Correct: $\\frac{16 - 4}{5 - 1} = \\frac{12}{4} = 3$ cm per week."
     },
+    "misconception_tag": {
+      "A": "rise_reported_as_rate",
+      "B": "row_gaps_counted_as_change",
+      "C": "slope_run_over_rise"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -638,6 +678,11 @@
       "B": "Student uses the wrong interval, computing from day 3 to day 6: $\\frac{140 - 80}{6 - 3} = \\frac{60}{3} = 20$.",
       "C": "Student inverts the ratio, dividing days by subscribers: $\\frac{6 - 0}{140 - 50} = \\frac{6}{90} = \\frac{1}{15}$, flipping the units.",
       "D": "Student computes the change in subscribers ($140 - 50 = 90$) but forgets to divide by the change in days, reporting the rise alone as $90$."
+    },
+    "misconception_tag": {
+      "B": "wrong_interval_selected",
+      "C": "slope_run_over_rise",
+      "D": "rise_reported_as_rate"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -719,6 +764,11 @@
       "C": "Student computes the change in altitude ($104 - 200 = -96$) but forgets to divide by the change in time, reporting the rise alone as $-96$.",
       "D": "Student inverts the ratio, dividing time by altitude: $\\frac{8 - 0}{200 - 104} = \\frac{8}{96} = \\frac{1}{12}$, then mislabels it as meters per second."
     },
+    "misconception_tag": {
+      "A": "drops_negative_sign",
+      "C": "rise_reported_as_rate",
+      "D": "slope_run_over_rise"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -799,6 +849,11 @@
       "C": "Correct: the rate from $x = 4$ to $x = 6$ is $\\frac{12}{2} = 6$, the greatest of the three.",
       "D": "Student assumes the data is linear and the rate is constant without computing each interval separately."
     },
+    "misconception_tag": {
+      "A": "wrong_interval_selected",
+      "B": "wrong_interval_selected",
+      "D": "constant_rate_assumed"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -878,6 +933,11 @@
       "C": "Student finds the total change in y correctly ($4 \\times 4 = 16$) but reports it as the final value, forgetting to add the starting $3$.",
       "D": "Correct: change in y $= 4 \\times 4 = 16$, so $y = 3 + 16 = 19$."
     },
+    "misconception_tag": {
+      "A": "run_reported_as_rate",
+      "B": "answers_intermediate_value",
+      "C": "rise_reported_as_rate"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -956,6 +1016,11 @@
       "B": "This interval has a rate of $-4$, a decrease but not the steepest one.",
       "C": "This interval has a rate of $-3$, the slowest decrease; the student treats the smallest magnitude as the fastest change.",
       "D": "The overall rate from year 0 to year 6 is $\\frac{24 - 50}{6} = \\frac{-26}{6}$, about $-4.3$, an average that hides the steeper middle interval."
+    },
+    "misconception_tag": {
+      "B": "wrong_interval_selected",
+      "C": "wrong_interval_selected",
+      "D": "wrong_interval_selected"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1037,6 +1102,11 @@
       "C": "Student finds the run ($x - 2 = 4$) but reports the run itself as $x$, forgetting to add the $2$.",
       "D": "Student subtracts the y-values in the wrong order: $\\frac{7 - 19}{x - 2} = 3$ gives $x - 2 = -4$ and $x = -2$."
     },
+    "misconception_tag": {
+      "A": "slope_run_over_rise",
+      "C": "run_reported_as_rate",
+      "D": "subtracts_in_wrong_order"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1116,6 +1186,11 @@
       "B": "This interval has a rate of $2$, the smallest; the student picks the widest interval, assuming a larger x-span means a greater rate.",
       "C": "Correct: the rate from $x = 1$ to $x = 3$ is $\\frac{8}{2} = 4$, the greatest of the three.",
       "D": "Student compares the total change in y instead of the rate. Both intervals have a rise of $8$, so the student calls them tied while ignoring that the runs ($2$ and $4$) differ."
+    },
+    "misconception_tag": {
+      "A": "wrong_interval_selected",
+      "B": "wrong_interval_selected",
+      "D": "rise_reported_as_rate"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

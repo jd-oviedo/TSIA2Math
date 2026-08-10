@@ -35,6 +35,11 @@
       "C": "Student combines all variable terms regardless of degree, summing $3 + 2 + 1 - 4 = 2$ into a single $x^{2}$ term: $2x^{2} + 4$.",
       "D": "Student carries only the first $x^{2}$ term and forgets to add the second polynomial's $x^{2}$, leaving $3x^{2} - 2x + 4$."
     },
+    "misconception_tag": {
+      "B": "drops_negative_sign",
+      "C": "terms_of_different_degree_combined",
+      "D": "polynomial_term_never_carried"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -113,6 +118,11 @@
       "B": "Student ignores the negative on the constant $-1$, computing $5 + 1 = 6$: $6x^{2} + 5x + 6$.",
       "C": "Correct: combining like terms gives $6x^{2} + 5x + 4$.",
       "D": "Student ignores both negative signs, computing $1x + 6x = 7x$ and $5 + 1 = 6$: $6x^{2} + 7x + 6$."
+    },
+    "misconception_tag": {
+      "A": "drops_negative_sign",
+      "B": "drops_negative_sign",
+      "D": "drops_negative_sign"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -193,6 +203,11 @@
       "C": "Student ignores the negative on the constant $-3$, computing $3 + 8 = 11$: $6x^{2} + 5x + 11$.",
       "D": "Student overlooks the implied coefficient of 1 on the first $x^{2}$ term, carrying only $5x^{2}$: $5x^{2} + 5x + 5$."
     },
+    "misconception_tag": {
+      "A": "drops_negative_sign",
+      "C": "drops_negative_sign",
+      "D": "ignores_unit_coefficient"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -271,6 +286,11 @@
       "B": "Student finds the correct magnitude of the middle term ($|3 - 8| = 5$) but assigns it a positive sign instead of negative: $7x^{2} + 5x + 5$.",
       "C": "Student overlooks the implied coefficient of 1 on the second $x^{2}$ term, carrying only $6x^{2}$: $6x^{2} - 5x + 5$.",
       "D": "Correct: combining like terms gives $7x^{2} - 5x + 5$."
+    },
+    "misconception_tag": {
+      "A": "drops_negative_sign",
+      "B": "drops_negative_sign",
+      "C": "ignores_unit_coefficient"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -352,6 +372,11 @@
       "C": "Student correctly cancels the x-terms but ignores the negative on the constant $-2$, computing $2 + 7 = 9$: $8x^{2} + 9$.",
       "D": "Student combines like terms but drops the $-4x$, carrying only the $+4x$ from the second polynomial: $8x^{2} + 4x + 5$."
     },
+    "misconception_tag": {
+      "A": "drops_negative_sign",
+      "C": "drops_negative_sign",
+      "D": "polynomial_term_never_carried"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -431,6 +456,11 @@
       "C": "Student adds instead of subtracting, combining $(5x^{2} + 3x - 2) + (2x^{2} - x + 4)$: $7x^{2} + 2x + 2$.",
       "D": "Student distributes the negative to the first and last terms but leaves the middle $-x$ unchanged ($-2x^{2} - x - 4$): $x$ terms $3x - x = 2x$, constants $-2 - 4 = -6$, giving $3x^{2} + 2x - 6$."
     },
+    "misconception_tag": {
+      "B": "drops_negative_on_group",
+      "C": "adds_instead_of_subtracts",
+      "D": "drops_negative_on_group"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -509,6 +539,11 @@
       "B": "Student adds instead of subtracting, combining $(3x^{2} - 2x + 6) + (3x^{2} - 7x + 1)$: $x^{2}$ terms $6x^{2}$, $x$ terms $-9x$, constants $7$, giving $6x^{2} - 9x + 7$.",
       "C": "Student distributes the negative to the $x^{2}$ and $x$ terms but leaves the constant $+1$ unchanged ($-3x^{2} + 7x + 1$): constants $6 + 1 = 7$, giving $5x + 7$.",
       "D": "Correct: distributing the negative gives $3x^{2} - 2x + 6 - 3x^{2} + 7x - 1 = 5x + 5$."
+    },
+    "misconception_tag": {
+      "A": "drops_negative_on_group",
+      "B": "adds_instead_of_subtracts",
+      "C": "drops_negative_on_group"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -590,6 +625,11 @@
       "C": "Correct: distributing the negative gives $7x^{2} + x - 5 - 4x^{2} - 6x + 9 = 3x^{2} - 5x + 4$.",
       "D": "Student reaches $3x^{2} - 5x + 4$ correctly but then merges the $x^{2}$ and $x$ terms as if they were like terms, $3 - 5 = -2$: $-2x^{2} + 4$."
     },
+    "misconception_tag": {
+      "A": "drops_negative_on_group",
+      "B": "adds_instead_of_subtracts",
+      "D": "terms_of_different_degree_combined"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -668,6 +708,11 @@
       "B": "Student multiplies only the first term of $(x^{2} + x - 5)$ by $-2$, leaving the rest unchanged ($-2x^{2} + x - 5$): $x$ terms $-3x + x + x = -x$, constants $-5 - 1 = -6$, giving $-x - 6$.",
       "C": "Student distributes $-2$ but computes $-2 \\times (-5)$ as $-10$ instead of $+10$ ($-2x^{2} - 2x - 10$): constants $-10 - 1 = -11$, giving $-4x - 11$.",
       "D": "Student treats the subtraction as addition, distributing $+2$ instead of $-2$ ($2x^{2} + 2x - 10$): $x^{2}$ terms $4x^{2}$, $x$ terms $-3x + 2x + x = 0$, constants $-11$, giving $4x^{2} - 11$."
+    },
+    "misconception_tag": {
+      "B": "drops_negative_on_group",
+      "C": "sign_error_on_constant",
+      "D": "adds_instead_of_subtracts"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -748,6 +793,11 @@
       "B": "Correct: distributing the negative gives $-2x^{2} + x - 6$, and combining all three yields $3x^{2} + 4x - 8$.",
       "C": "Student adds all three polynomials, failing to subtract the third ($+2x^{2} - x + 6$): $x^{2}$ terms $7x^{2}$, $x$ terms $2x$, constants $4$, giving $7x^{2} + 2x + 4$.",
       "D": "Student distributes the negative to the $x^{2}$ and $x$ terms but leaves the constant $+6$ unchanged ($-2x^{2} + x + 6$): constants $1 - 3 + 6 = 4$, giving $3x^{2} + 4x + 4$."
+    },
+    "misconception_tag": {
+      "A": "drops_negative_on_group",
+      "C": "adds_instead_of_subtracts",
+      "D": "drops_negative_on_group"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

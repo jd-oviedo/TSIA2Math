@@ -35,6 +35,11 @@
       "C": "Student reads the Science Fiction row (27) instead of the Mystery row.",
       "D": "Student reads the Fiction row (34), the largest value in the table, instead of the Mystery row."
     },
+    "misconception_tag": {
+      "A": "reads_adjacent_value",
+      "C": "reads_adjacent_value",
+      "D": "reads_adjacent_value"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student reads the 10th Grade Pizza cell (9) \u2014 correct row but wrong column.",
       "C": "Correct: the 10th Grade and Sandwich intersection contains 11.",
       "D": "Student reads the 10th Grade Salad cell (7) \u2014 correct row but wrong column."
+    },
+    "misconception_tag": {
+      "A": "reads_adjacent_value",
+      "B": "reads_adjacent_value",
+      "D": "reads_adjacent_value"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student selects Wednesday (52), which is near the middle of the range, possibly confusing it with a lower value.",
       "D": "Correct: Tuesday's count of 38 is the lowest among all seven days."
     },
+    "misconception_tag": {
+      "A": "rank_position_error",
+      "B": "rank_position_error",
+      "C": "rank_position_error"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student reads the Period 1 Passed cell (22) \u2014 correct row but wrong column.",
       "C": "Student reads the Period 2 Failed cell (9) \u2014 correct column but wrong row.",
       "D": "Student reads the Period 3 Failed cell (4) \u2014 correct column but wrong row."
+    },
+    "misconception_tag": {
+      "B": "reads_adjacent_value",
+      "C": "reads_adjacent_value",
+      "D": "reads_adjacent_value"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student selects Product Z (115), the second-highest value, without comparing it against Product X (130).",
       "D": "Student incorrectly concludes that X and Z are tied; 130 \u2260 115, so no tie exists."
     },
+    "misconception_tag": {
+      "A": "rank_position_error",
+      "C": "rank_position_error",
+      "D": "total_accepted_without_verifying"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student reads only the Male Drama cell (14) without adding the Female Drama cell.",
       "C": "Correct: 14 + 18 = 32.",
       "D": "Student adds the Male Chess cell (8) and Female Drama cell (18) instead of both Drama cells: 8 + 18 = 26."
+    },
+    "misconception_tag": {
+      "A": "single_cell_read_where_sum_needed",
+      "B": "single_cell_read_where_sum_needed",
+      "D": "unrelated_cells_compared"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student sums only Q2, Q3, and Q4, omitting Q1: 67 + 55 + 38 = 160.",
       "D": "Correct: 42 + 67 + 55 + 38 = 202."
     },
+    "misconception_tag": {
+      "A": "single_cell_read_where_sum_needed",
+      "B": "frequency_value_misread",
+      "C": "single_cell_read_where_sum_needed"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Student subtracts Apartment No Pet from Apartment Owns Pet instead of comparing the No Pet column across housing types: 44 \u2212 31 = 13.",
       "C": "Student adds the entire Apartment row (Owns Pet + No Pet) instead of isolating the No Pet column: 31 + 44 = 75.",
       "D": "Student compares the Owns Pet column instead of the No Pet column: House Owns Pet \u2212 Apartment Owns Pet = 48 \u2212 31 = 17."
+    },
+    "misconception_tag": {
+      "B": "subtracts_in_wrong_order",
+      "C": "single_cell_read_where_sum_needed",
+      "D": "unrelated_cells_compared"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "Student reads only the Sophomore Morning cell (25) without adding the Freshman Morning cell.",
       "D": "Student sums the Freshman row (Morning + Afternoon) instead of the Morning column: 30 + 20 = 50."
     },
+    "misconception_tag": {
+      "A": "single_cell_read_where_sum_needed",
+      "C": "single_cell_read_where_sum_needed",
+      "D": "single_cell_read_where_sum_needed"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -755,6 +800,11 @@
       "C": "Correct: after Org E (75), Org A (85) is the next lowest.",
       "D": "Student selects Org D (110), which is the fourth-lowest value."
     },
+    "misconception_tag": {
+      "A": "rank_position_error",
+      "B": "rank_position_error",
+      "D": "rank_position_error"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -834,6 +884,11 @@
       "B": "Student uses the grand total as the denominator instead of the male row total: 12 \u00f7 100 = 12%.",
       "C": "Student computes the overall failure rate across all students instead of the male-specific rate: 20 \u00f7 100 = 20%.",
       "D": "Student divides failed males by passed males instead of total males: 12 \u00f7 36 \u2248 33%."
+    },
+    "misconception_tag": {
+      "B": "row_total_used_for_column_total",
+      "C": "row_total_used_for_column_total",
+      "D": "row_total_used_for_column_total"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -949,6 +1004,11 @@
       "C": "Student selects the wrong cell \u2014 uses Poor Food with Good Service (10) as the numerator instead of Poor Food with Poor Service (20): 10 \u00f7 35 \u2248 29%.",
       "D": "Correct: 20 \u00f7 35 \u2248 57%."
     },
+    "misconception_tag": {
+      "A": "row_total_used_for_column_total",
+      "B": "row_total_used_for_column_total",
+      "C": "unrelated_cells_compared"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1028,6 +1088,11 @@
       "B": "Correct: 80% \u00f7 60% \u2248 1.33, which is meaningfully less than 2.",
       "C": "Student compares Sales completions (40) to Marketing non-completions (20) \u2014 two quantities from different columns that have no meaningful relationship to a likelihood comparison.",
       "D": "Student correctly computes Sales at 80% but then compares 80 to 40 (Marketing's raw count rather than its rate of 60%), arriving at a false 2:1 ratio."
+    },
+    "misconception_tag": {
+      "A": "total_accepted_without_verifying",
+      "C": "unrelated_cells_compared",
+      "D": "unrelated_cells_compared"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1109,6 +1174,11 @@
       "C": "Correct: 18 \u00f7 45 = 40%.",
       "D": "Student uses the grand total as the denominator: 18 \u00f7 80 = 22.5% \u2248 23%."
     },
+    "misconception_tag": {
+      "A": "row_total_used_for_column_total",
+      "B": "unrelated_cells_compared",
+      "D": "row_total_used_for_column_total"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1188,6 +1258,11 @@
       "B": "Student uses the Condition A Positive row total (40) as the denominator instead of the Condition B Positive column total (35): 22 \u00f7 40 = 55%. The conclusion happens to be directionally correct, but the denominator is wrong for the stated condition.",
       "C": "Student selects the wrong cell \u2014 uses Condition A Negative and Condition B Positive (13) as the numerator instead of Condition A Positive and Condition B Positive (22): 13 \u00f7 35 \u2248 37%.",
       "D": "Correct: the condition is Condition B Positive, so the denominator is 35; the numerator is 22; 22 \u00f7 35 \u2248 63% > 50%."
+    },
+    "misconception_tag": {
+      "A": "row_total_used_for_column_total",
+      "B": "row_total_used_for_column_total",
+      "C": "unrelated_cells_compared"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

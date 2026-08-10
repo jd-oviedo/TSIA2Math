@@ -35,6 +35,11 @@
       "C": "Correct: m = \u22124 and m = \u22124 are equal, so the lines are parallel.",
       "D": "Student selects the perpendicular pair: (5)(\u2212$\\frac{1}{5}$) = \u22121, indicating perpendicular lines, not parallel."
     },
+    "misconception_tag": {
+      "A": "negation_without_reciprocal",
+      "B": "reciprocal_without_negation",
+      "D": "raw_coefficients_compared"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -115,6 +120,11 @@
       "C": "Student negates the slope but forgets to take the reciprocal: \u2212$\\frac{2}{3}$ instead of \u2212$\\frac{3}{2}$.",
       "D": "Student reports the same slope as Line 1 \u2014 the condition for parallel lines, not perpendicular."
     },
+    "misconception_tag": {
+      "B": "reciprocal_without_negation",
+      "C": "negation_without_reciprocal",
+      "D": "parallel_vs_identical_not_distinguished"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -192,8 +202,13 @@
     "distractor_logic": {
       "A": "Student compares the raw x-coefficients (2 and 3) without converting to slope-intercept form, incorrectly concluding the lines are parallel based on coefficient structure.",
       "B": "Correct: m\u2081 = \u2212$\\frac{2}{3}$, m\u2082 = $\\frac{3}{2}$, and (\u2212$\\frac{2}{3}$)($\\frac{3}{2}$) = \u22121, confirming perpendicularity.",
-      "C": "Student converts both equations to slope-intercept form correctly but makes an arithmetic error computing m\u2081 \u00d7 m\u2082, arriving at a value other than \u22121 and concluding neither.",
+      "C": "Student converts both equations correctly but drops the negative sign on m\u2081, computing ($\\frac{2}{3}$)($\\frac{3}{2}$) = 1 rather than \u22121, and concludes the lines are neither parallel nor perpendicular.",
       "D": "Student correctly identifies the lines as perpendicular but uses a false justification \u2014 the equal x-coefficient magnitude (both involve 2 and 3) is coincidental and not the criterion for perpendicularity."
+    },
+    "misconception_tag": {
+      "A": "raw_coefficients_compared",
+      "C": "drops_negative_sign",
+      "D": "raw_coefficients_compared"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -275,6 +290,11 @@
       "C": "Student returns the original line equation, using slope $\\frac{1}{2}$ instead of the perpendicular slope \u22122.",
       "D": "Student correctly finds slope = \u22122 but distributes \u22122(x + 2) as \u22122x + 2 (treats the +2 as positive rather than distributing the negative), giving y \u2212 3 = \u22122x + 2 \u2192 y = \u22122x + 5."
     },
+    "misconception_tag": {
+      "A": "drops_negative_sign",
+      "C": "parallel_vs_identical_not_distinguished",
+      "D": "drops_negative_sign"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -355,6 +375,11 @@
       "C": "Correct: m\u2081 \u00d7 m\u2082 = ($\\frac{2}{3}$)(\u2212$\\frac{3}{2}$) = \u22121, confirming the lines are perpendicular.",
       "D": "Student divides each equation by 2 (getting 2x \u2212 3y = 6 and 3x + 2y = 4) and compares coefficients directly, incorrectly concluding the terms are proportional without converting to slope-intercept form."
     },
+    "misconception_tag": {
+      "A": "raw_coefficients_compared",
+      "B": "raw_coefficients_compared",
+      "D": "raw_coefficients_compared"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student misapplies the perpendicularity test by using \u22122 (the coefficient of y in Line 2 before division) rather than the actual slope of the converted equation: 2 \u00d7 (\u22122) = \u22124 \u2260 \u22121.",
       "C": "Student compares x-coefficients between the original forms (coefficient 2 from y = 2x \u2212 4 and coefficient 4 from 4x \u2212 2y = 8) and incorrectly concludes differing coefficients mean a unique intersection point \u2014 without converting Line 2.",
       "D": "Correct: converting Line 2 gives y = 2x \u2212 4, identical to Line 1. The lines are coincident and share infinitely many points."
+    },
+    "misconception_tag": {
+      "A": "parallel_vs_identical_not_distinguished",
+      "B": "raw_coefficients_compared",
+      "C": "raw_coefficients_compared"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

@@ -35,6 +35,11 @@
       "C": "Correct: 1 - 0.2 = 0.8.",
       "D": "Student subtracts the event probability twice (1 - 0.2 - 0.2) instead of once."
     },
+    "misconception_tag": {
+      "A": "reports_event_not_complement",
+      "B": "complement_assumed_half",
+      "D": "event_probability_subtracted_twice"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -109,6 +114,11 @@
       "C": "Student assumes the complement is always an even chance of $\\frac{1}{2}$.",
       "D": "Student forms a ratio of blue to non-blue (3 over 8 - 3 = $\\frac{3}{5}$) instead of subtracting from 1."
     },
+    "misconception_tag": {
+      "B": "reports_event_not_complement",
+      "C": "complement_assumed_half",
+      "D": "favourable_over_unfavourable"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -182,6 +192,11 @@
       "B": "Student forms a ratio of striped to solid (4 to 5) instead of dividing the not-striped count by the total.",
       "C": "Student assumes the complement is always an even chance of $\\frac{1}{2}$.",
       "D": "Correct: not striped is the 5 solid buttons out of 9, which is $\\frac{5}{9}$, the same as 1 - $\\frac{4}{9}$."
+    },
+    "misconception_tag": {
+      "A": "reports_event_not_complement",
+      "B": "favourable_over_unfavourable",
+      "C": "complement_assumed_half"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -263,6 +278,11 @@
       "C": "Student assumes the complement is always an even chance of 50%.",
       "D": "Student subtracts the defective rate twice (100% - 15% - 15%) instead of once."
     },
+    "misconception_tag": {
+      "A": "reports_event_not_complement",
+      "C": "complement_assumed_half",
+      "D": "event_probability_subtracted_twice"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -336,6 +356,11 @@
       "B": "Student forms a ratio of multiples to non-multiples (4 to 8) instead of dividing the non-multiple count by the total.",
       "C": "Correct: 4 chips are multiples of 3, so 8 of the 12 are not, giving $\\frac{8}{12}$ = $\\frac{2}{3}$.",
       "D": "Student drops 12 from the list of multiples, counting only 3, 6, 9, so 9 chips appear to be non-multiples, giving $\\frac{9}{12}$ = $\\frac{3}{4}$."
+    },
+    "misconception_tag": {
+      "A": "reports_event_not_complement",
+      "B": "favourable_over_unfavourable",
+      "D": "event_set_miscounted"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -417,6 +442,11 @@
       "C": "Student treats 'at least one head in two flips' as the probability of a head on a single flip.",
       "D": "Student adds the two single-flip head probabilities ($\\frac{1}{2}$ + $\\frac{1}{2}$) and concludes at least one head is certain."
     },
+    "misconception_tag": {
+      "B": "reports_event_not_complement",
+      "C": "threshold_boundary_error",
+      "D": "adds_probabilities_instead_of_multiplying"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -496,6 +526,11 @@
       "B": "Student forms a ratio of multiples to non-multiples (2 to 8) instead of dividing the non-multiple count by the total.",
       "C": "Student counts 2 as a multiple of 4, treating three sections (2, 4, 8) as multiples, so 7 sections appear non-multiple, giving $\\frac{7}{10}$.",
       "D": "Correct: only 4 and 8 are multiples of 4, so 8 of the 10 sections are not, giving $\\frac{8}{10}$ = $\\frac{4}{5}$."
+    },
+    "misconception_tag": {
+      "A": "reports_event_not_complement",
+      "B": "favourable_over_unfavourable",
+      "C": "event_set_miscounted"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -577,6 +612,11 @@
       "C": "Student counts 1 as prime, making five primes, so five cards appear non-prime, giving $\\frac{5}{10}$ = $\\frac{1}{2}$.",
       "D": "Student forms a ratio of primes to non-primes (4 to 6) instead of dividing the non-prime count by the total."
     },
+    "misconception_tag": {
+      "A": "reports_event_not_complement",
+      "C": "event_set_miscounted",
+      "D": "favourable_over_unfavourable"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -656,6 +696,11 @@
       "B": "Student adds the tea and coffee preferences to 75% but reports that combined total instead of subtracting it from 100%.",
       "C": "Student takes the complement of only the tea preference (100% - 30%), ignoring the coffee group.",
       "D": "Student takes the complement of only the coffee preference (100% - 45%), ignoring the tea group."
+    },
+    "misconception_tag": {
+      "B": "partial_complement_taken",
+      "C": "partial_complement_taken",
+      "D": "partial_complement_taken"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -737,6 +782,11 @@
       "C": "Student reads 'at least 3' as 'at least 2', including 2 and counting 2, 3, 4, 5, 6 (5 out of 6).",
       "D": "Correct: 'at least 3' is 3, 4, 5, 6, which is 4 out of 6 = $\\frac{2}{3}$."
     },
+    "misconception_tag": {
+      "A": "reports_event_not_complement",
+      "B": "threshold_boundary_error",
+      "C": "threshold_boundary_error"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -816,6 +866,11 @@
       "B": "Student adds the two single-roll probabilities ($\\frac{1}{6}$ + $\\frac{1}{6}$ = $\\frac{1}{3}$) instead of using the complement.",
       "C": "Correct: P(no 6) = ($\\frac{5}{6}$)($\\frac{5}{6}$) = $\\frac{25}{36}$, so P(at least one 6) = 1 - $\\frac{25}{36}$ = $\\frac{11}{36}$.",
       "D": "Student treats 'at least one 6 in two rolls' as the probability of a 6 on a single roll."
+    },
+    "misconception_tag": {
+      "A": "reports_event_not_complement",
+      "B": "adds_probabilities_instead_of_multiplying",
+      "D": "threshold_boundary_error"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -897,6 +952,11 @@
       "C": "Student adds the two single-spin probabilities ($\\frac{1}{5}$ + $\\frac{1}{5}$ = $\\frac{2}{5}$) instead of using the complement.",
       "D": "Student treats 'red at least once in two spins' as the probability of red on a single spin."
     },
+    "misconception_tag": {
+      "A": "reports_event_not_complement",
+      "C": "adds_probabilities_instead_of_multiplying",
+      "D": "single_stage_reported"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -976,6 +1036,11 @@
       "B": "Student computes P(no rain on both days) = 0.8 times 0.5 = 0.4 correctly but forgets to subtract it from 1.",
       "C": "Student converts to rain probabilities (0.2 and 0.5) and adds them instead of subtracting the product of the no-rain probabilities from 1.",
       "D": "Student multiplies the two rain probabilities (0.2 times 0.5 = 0.1), finding the chance of rain on both days instead of at least one."
+    },
+    "misconception_tag": {
+      "B": "reports_event_not_complement",
+      "C": "adds_probabilities_instead_of_multiplying",
+      "D": "adds_probabilities_instead_of_multiplying"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1057,6 +1122,11 @@
       "C": "Student excludes only the four multiples of 5 and ignores the multiples of 4, leaving 16 out of 20.",
       "D": "Correct: 8 numbers are a multiple of 4 or 5, so 12 of the 20 chips are neither, giving $\\frac{12}{20}$ = $\\frac{3}{5}$."
     },
+    "misconception_tag": {
+      "A": "reports_event_not_complement",
+      "B": "event_set_miscounted",
+      "C": "partial_complement_taken"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1136,6 +1206,11 @@
       "B": "Student reports the given non-senior count instead of computing the number of seniors.",
       "C": "Correct: total is 18 divided by 0.6 = 30, so seniors are 30 - 18 = 12.",
       "D": "Student divides the non-senior count by the senior probability (18 divided by 0.4 = 45), applying the wrong fraction to the non-senior group."
+    },
+    "misconception_tag": {
+      "A": "proportion_solved_for_wrong_unknown",
+      "B": "proportion_solved_for_wrong_unknown",
+      "D": "proportion_solved_for_wrong_unknown"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

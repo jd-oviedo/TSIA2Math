@@ -35,6 +35,11 @@
       "C": "Student takes the largest value of Dataset A, 30, as its mean instead of averaging.",
       "D": "Student assumes the means are equal because both datasets contain the same number of values."
     },
+    "misconception_tag": {
+      "B": "reads_wrong_category",
+      "C": "reads_wrong_category",
+      "D": "equal_means_assumed_equal_consistency"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -115,6 +120,11 @@
       "C": "Correct: B's range is 30 - 9 = 21, greater than A's 20 - 5 = 15.",
       "D": "Student assumes equal ranges because both datasets rise from single digits to the 20s or 30s."
     },
+    "misconception_tag": {
+      "A": "reads_wrong_category",
+      "B": "range_from_single_extreme",
+      "D": "equal_means_assumed_equal_consistency"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -189,6 +199,11 @@
       "B": "Correct: A's median is 11, greater than B's median of 8.",
       "C": "Student selects Dataset A correctly but miscounts the middle, choosing 9 (the second value) instead of 11.",
       "D": "Student assumes equal medians without locating each middle value."
+    },
+    "misconception_tag": {
+      "A": "reads_wrong_category",
+      "C": "reads_wrong_category",
+      "D": "equal_means_assumed_equal_consistency"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -270,6 +285,11 @@
       "C": "Student computes A's mean (5) correctly but concludes A is greater, dismissing the one large value that makes B's mean higher.",
       "D": "Correct: B's mean is $\\frac{40}{5}$ = 8, greater than A's 5."
     },
+    "misconception_tag": {
+      "A": "reads_wrong_category",
+      "B": "equal_means_assumed_equal_consistency",
+      "C": "outlier_effect_on_mean_dismissed"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -349,6 +369,11 @@
       "B": "Student treats an even, steady pattern as more spread, but range depends only on the extremes, where B is wider.",
       "C": "Student compares the medians (both 14) and wrongly treats equal centers as equal spread.",
       "D": "Student identifies Dataset B but uses its maximum value (40) as the range instead of max minus min (40 - 1 = 39)."
+    },
+    "misconception_tag": {
+      "B": "center_spread_confusion",
+      "C": "equal_means_assumed_equal_consistency",
+      "D": "range_from_single_extreme"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -430,6 +455,11 @@
       "C": "Student equates equal means with equal consistency, ignoring that consistency depends on spread.",
       "D": "Student focuses on a single high game rather than how tightly the scores cluster around the average."
     },
+    "misconception_tag": {
+      "A": "larger_range_read_as_better",
+      "C": "equal_means_assumed_equal_consistency",
+      "D": "center_spread_confusion"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -509,6 +539,11 @@
       "B": "Student views a wider range as flexibility rather than as inconsistency around the target.",
       "C": "Correct: A is centered on target and tightly grouped, so it hits 30 mm most reliably.",
       "D": "Student dismisses the spread difference, treating ranges of 1 mm and 8 mm as equivalent because the means are close."
+    },
+    "misconception_tag": {
+      "A": "larger_range_read_as_better",
+      "B": "larger_range_read_as_better",
+      "D": "center_spread_confusion"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -590,6 +625,11 @@
       "C": "Student chooses the right measure but misreads which neighborhood is higher, swayed by the mansion.",
       "D": "Student uses the outlier-sensitive mean and concludes equality, missing that the mansion distorts X's mean upward."
     },
+    "misconception_tag": {
+      "B": "outlier_effect_on_mean_dismissed",
+      "C": "reads_wrong_category",
+      "D": "outlier_effect_on_mean_dismissed"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -669,6 +709,11 @@
       "B": "Correct: B has the higher mean, while A's smaller range shows greater consistency.",
       "C": "Student assumes the higher-scoring student must also be more consistent, conflating center with spread.",
       "D": "Student ignores both the 3-point mean gap and the large difference in range."
+    },
+    "misconception_tag": {
+      "A": "reads_wrong_category",
+      "C": "equal_means_assumed_equal_consistency",
+      "D": "center_spread_confusion"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -750,6 +795,11 @@
       "C": "Student fixates on B's possible fast deliveries while ignoring the equally possible very slow ones.",
       "D": "Student attends only to the small gap in means and dismisses the large difference in spread."
     },
+    "misconception_tag": {
+      "A": "center_spread_confusion",
+      "C": "center_spread_confusion",
+      "D": "center_spread_confusion"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -829,6 +879,11 @@
       "B": "Correct: the median, \\$40,000, resists the owner's outlier salary and reflects a typical employee.",
       "C": "Student chooses the right measure (median) but reports the mean's value, \\$76,000, as if it were the median.",
       "D": "Student chooses the mean but reports the median's value, mixing up the two measures."
+    },
+    "misconception_tag": {
+      "A": "outlier_effect_on_mean_dismissed",
+      "C": "reports_wrong_center_measure",
+      "D": "reports_wrong_center_measure"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -910,6 +965,11 @@
       "C": "Student overlooks that R's value 25 raises its mean to 9, while P's mean is 5.",
       "D": "Student judges Q as most spread by its even spacing, but R's range (20) exceeds Q's (8)."
     },
+    "misconception_tag": {
+      "B": "equal_medians_assumed_equal_means",
+      "C": "outlier_effect_on_mean_dismissed",
+      "D": "center_spread_confusion"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -989,6 +1049,11 @@
       "B": "Student chooses the right measure but states the wrong direction; a low outlier pulls the mean down, not up.",
       "C": "Student confuses the range, a spread measure, with a measure of typical value.",
       "D": "Correct: the low outage value lowers the mean, so the median better represents a typical day."
+    },
+    "misconception_tag": {
+      "A": "outlier_effect_on_mean_dismissed",
+      "B": "outlier_effect_on_mean_dismissed",
+      "C": "center_spread_confusion"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1070,6 +1135,11 @@
       "C": "Student identifies a skew but the wrong direction; a mean above the median indicates high values, not low ones.",
       "D": "Student draws a conclusion about spread, which the mean and median alone do not determine."
     },
+    "misconception_tag": {
+      "A": "skew_direction_misread",
+      "C": "skew_direction_misread",
+      "D": "center_spread_confusion"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1149,6 +1219,11 @@
       "B": "Student equates equal means with identical performance, ignoring that Class 2's range (30) is far larger than Class 1's (8).",
       "C": "Correct: Class 3 has the highest mean and a range equal to Class 1's, so it is both top-scoring and consistent.",
       "D": "Student wrongly links a higher mean to lower consistency; consistency depends on range, and Class 3's range is small."
+    },
+    "misconception_tag": {
+      "A": "larger_range_read_as_better",
+      "B": "equal_means_assumed_equal_consistency",
+      "D": "equal_means_assumed_equal_consistency"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

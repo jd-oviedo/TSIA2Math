@@ -35,6 +35,11 @@
       "C": "Student confuses absolute value with squaring: (\u22128)\u00b2 = 64.",
       "D": "Correct: |\u22128| = 8, the distance from \u22128 to zero."
     },
+    "misconception_tag": {
+      "A": "absolute_value_leaves_sign",
+      "B": "absolute_value_as_additive_inverse",
+      "C": "absolute_value_as_squaring"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -113,6 +118,11 @@
       "B": "Student computes 5 \u2212 12 = \u22127 correctly but forgets to apply the absolute value.",
       "C": "Student adds instead of subtracts: 5 + 12 = 17.",
       "D": "Student multiplies the two values inside: |5 \u00d7 12| = 60, confusing absolute value of a difference with a product."
+    },
+    "misconception_tag": {
+      "B": "absolute_value_leaves_sign",
+      "C": "adds_instead_of_subtracts",
+      "D": "absolute_difference_as_product"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -193,6 +203,11 @@
       "C": "Correct: 2|\u22125| \u2212 |3| = 2(5) \u2212 3 = 10 \u2212 3 = 7.",
       "D": "Student ignores the absolute value on \u22125 but applies absolute value only to 3: 2 \u00d7 (\u22125) + 3 = \u221210 + 3 = \u22127."
     },
+    "misconception_tag": {
+      "A": "adds_instead_of_subtracts",
+      "B": "absolute_value_leaves_sign",
+      "D": "absolute_value_leaves_sign"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -271,6 +286,11 @@
       "B": "Correct: 3\u00b2 = 9, so 4 \u2212 9 = \u22125, and |\u22125| = 5.",
       "C": "Student evaluates 4 \u2212 3\u00b2 = \u22125 correctly but forgets to take the absolute value.",
       "D": "Student treats 3\u00b2 as 3 \u00d7 2 = 6: |4 \u2212 6| = |\u22122| = 2."
+    },
+    "misconception_tag": {
+      "A": "absolute_value_as_squaring",
+      "C": "absolute_value_leaves_sign",
+      "D": "absolute_value_as_squaring"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -351,6 +371,11 @@
       "C": "Student finds x = 8 correctly but makes a sign error on the second case: x \u2212 3 = \u22125 \u2192 x = \u22122, but writes x = 2 instead.",
       "D": "Student subtracts in the wrong direction for both cases: x = 5 \u2212 3 = 2 and x = \u22125 \u2212 3 = \u22128."
     },
+    "misconception_tag": {
+      "B": "absolute_equation_one_case_only",
+      "C": "sign_error_on_constant",
+      "D": "subtracts_in_wrong_order"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -429,6 +454,11 @@
       "B": "Student reverses the inequality direction, producing the solution for |x| \u2265 4 (values at least 4 units from zero) instead of |x| \u2264 4.",
       "C": "Student identifies only the boundary points x = 4 and x = \u22124, not recognizing that all values strictly between them also satisfy the inequality.",
       "D": "Correct: |x| \u2264 4 is equivalent to \u22124 \u2264 x \u2264 4, the closed interval from \u22124 to 4."
+    },
+    "misconception_tag": {
+      "A": "absolute_equation_one_case_only",
+      "B": "absolute_inequality_direction_reversed",
+      "C": "absolute_inequality_boundary_only"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

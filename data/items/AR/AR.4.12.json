@@ -37,6 +37,11 @@
       "C": "Student fails to convert the percent to a decimal, using $1 + 4 = 5$ as the growth factor: $A = P(5)^{t}$.",
       "D": "Student applies the rate linearly as in simple interest, $A = P(1 + 0.04t)$, instead of compounding it exponentially."
     },
+    "misconception_tag": {
+      "B": "growth_decay_factor_direction_wrong",
+      "C": "rate_used_as_factor",
+      "D": "linear_instead_of_compound"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -117,6 +122,11 @@
       "B": "Student uses the rate itself as the factor, forgetting that the value retained each year is $1 - r$, not $r$: $A = P(0.15)^{t}$.",
       "C": "Correct: a 15% annual loss gives a decay factor of $1 - 0.15 = 0.85$, so $A = P(0.85)^{t}$.",
       "D": "Student applies the rate linearly, $A = P(1 - 0.15t)$, instead of compounding the decay exponentially."
+    },
+    "misconception_tag": {
+      "A": "growth_decay_factor_direction_wrong",
+      "B": "rate_used_as_factor",
+      "D": "linear_instead_of_compound"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -200,6 +210,11 @@
       "C": "Student reads the decimal $1.08$ directly as a percent, reporting 1.08%.",
       "D": "Student finds $r = 0.08$ correctly but mis-converts the decimal to a percent, reporting 0.08% instead of multiplying by 100 to get 8%."
     },
+    "misconception_tag": {
+      "A": "factor_reported_as_rate",
+      "C": "factor_reported_as_rate",
+      "D": "factor_reported_as_rate"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -280,6 +295,11 @@
       "B": "Student treats the scenario as growth, building $1 + 0.15 = 1.15$ and reporting it as 115%.",
       "C": "Student finds $r = 0.15$ correctly but mis-converts the decimal to a percent, reporting 0.15% instead of 15%.",
       "D": "Correct: $1 - r = 0.85$ gives $r = 0.15 = 15\\%$."
+    },
+    "misconception_tag": {
+      "A": "factor_reported_as_rate",
+      "B": "growth_decay_factor_direction_wrong",
+      "C": "factor_reported_as_rate"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -362,6 +382,11 @@
       "C": "Correct: $1 + 0.25 = 1.25$.",
       "D": "Student fails to convert the percent to a decimal, computing $1 + 25 = 26$."
     },
+    "misconception_tag": {
+      "A": "growth_decay_factor_direction_wrong",
+      "B": "rate_used_as_factor",
+      "D": "rate_used_as_factor"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -442,6 +467,11 @@
       "B": "Student applies a growth model to a decay scenario, using $1 + 0.10 = 1.10$: $20000(1.10)^{3} = 20000(1.331) = 26620$.",
       "C": "Student uses linear depreciation, subtracting 10% of the original value three times: $20000 - (0.10 \\cdot 20000 \\cdot 3) = 20000 - 6000 = 14000$.",
       "D": "Student applies the decay for only one year instead of three: $20000(0.90) = 18000$."
+    },
+    "misconception_tag": {
+      "B": "growth_decay_factor_direction_wrong",
+      "C": "linear_instead_of_compound",
+      "D": "growth_applied_for_wrong_duration"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -524,6 +554,11 @@
       "C": "Student uses linear growth, adding 5% of the original twice: $8000 + (0.05 \\cdot 8000 \\cdot 2) = 8000 + 800 = 8800$.",
       "D": "Student applies the growth for only one year instead of two: $8000(1.05) = 8400$."
     },
+    "misconception_tag": {
+      "A": "growth_decay_factor_direction_wrong",
+      "C": "linear_instead_of_compound",
+      "D": "growth_applied_for_wrong_duration"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -604,6 +639,11 @@
       "B": "Student applies a decay factor to a growth scenario, using $1 - 0.06 = 0.94$: $1000(0.94)^{2} = 1000(0.8836) = 883.60$.",
       "C": "Student applies the interest for only one year instead of two: $1000(1.06) = 1060$.",
       "D": "Correct: $1000(1.06)^{2} = 1000(1.1236) = 1123.60$."
+    },
+    "misconception_tag": {
+      "A": "linear_instead_of_compound",
+      "B": "growth_decay_factor_direction_wrong",
+      "C": "growth_applied_for_wrong_duration"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -686,6 +726,11 @@
       "C": "Correct: $2000(1.02)^{4} = 2000(1.08243216) = 2164.86$.",
       "D": "Student divides the rate by $n$ but fails to multiply the exponent by $n$, using $(1.02)^{1}$: $2000(1.02) = 2040$."
     },
+    "misconception_tag": {
+      "A": "compounding_period_not_adjusted",
+      "B": "compounding_period_not_adjusted",
+      "D": "compounding_period_not_adjusted"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -766,6 +811,11 @@
       "B": "Student uses simple growth, dividing by $(1 + rt) = 1.20$ instead of $(1 + r)^{t} = 1.21$: $\\frac{6050}{1.20} = 5041.67$.",
       "C": "Student applies a decay factor instead of growth, dividing by $(0.90)^{2} = 0.81$: $\\frac{6050}{0.81} = 7469.14$.",
       "D": "Student grows the final amount forward instead of reversing it, multiplying by the factor: $6050 \\cdot 1.21 = 7320.50$."
+    },
+    "misconception_tag": {
+      "B": "linear_instead_of_compound",
+      "C": "growth_decay_factor_direction_wrong",
+      "D": "percent_applied_forward_not_reversed"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

@@ -35,6 +35,11 @@
       "C": "Student finds the unit price ($6 \\div 4 = 1.50$) and reports it as the final answer without scaling up to 12 notebooks.",
       "D": "Student multiplies the unit price by the increase in quantity ($12 - 4 = 8$) instead of the full new quantity: $1.50 \\times 8 = 12$ dollars."
     },
+    "misconception_tag": {
+      "B": "inverts_conversion_direction",
+      "C": "answers_intermediate_value",
+      "D": "rate_applied_to_increment_only"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Correct: the scale factor is $30 \\div 12 = 2.5$, so the flour needed is $3 \\times 2.5 = 7.5$ cups.",
       "C": "Student finds the scale factor ($30 \\div 12 = 2.5$) and reports it as cups without multiplying by the flour amount.",
       "D": "Student divides the new cookie count by the flour amount instead of by the original cookie count: $30 \\div 3 = 10$ cups."
+    },
+    "misconception_tag": {
+      "A": "inverts_conversion_direction",
+      "C": "answers_intermediate_value",
+      "D": "inverts_conversion_direction"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Correct: the rate is $150 \\div 5 = 30$ miles per gallon, so on 8 gallons the car travels $30 \\times 8 = 240$ miles.",
       "D": "Student applies the rate only to the additional 3 gallons ($8 - 5 = 3$): $30 \\times 3 = 90$ miles."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "inverts_conversion_direction",
+      "D": "rate_applied_to_increment_only"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student finds the price per pound ($10 \\div 5 = 2$) and reports it as the final answer without scaling to 8 pounds.",
       "C": "Student divides the known cost by the new weight instead of the original weight: $10 \\div 8 = 1.25$ dollars.",
       "D": "Correct: the price per pound is $10 \\div 5 = 2$, so 8 pounds cost $2 \\times 8 = 16$ dollars."
+    },
+    "misconception_tag": {
+      "A": "inverts_conversion_direction",
+      "B": "answers_intermediate_value",
+      "C": "inverts_conversion_direction"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student finds the scale factor ($45 \\div 15 = 3$) but adds it to the original page count instead of multiplying: $6 + 3 = 9$ pages.",
       "D": "Student applies the rate only to the additional 30 seconds ($45 - 15 = 30$): $\\frac{30}{15} \\times 6 = 12$ pages."
     },
+    "misconception_tag": {
+      "A": "inverts_conversion_direction",
+      "C": "adds_instead_of_subtracts",
+      "D": "rate_applied_to_increment_only"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student computes the tip amount ($0.15 \\times 50 = 7.50$) and reports it as the total, forgetting to add the original bill.",
       "C": "Student adds a flat \\$15 instead of 15% of the bill: $50 + 15 = 65$ dollars.",
       "D": "Student multiplies the bill by 1.5 instead of 1.15, treating 15% as 50%: $50 \\times 1.5 = 75$ dollars."
+    },
+    "misconception_tag": {
+      "B": "answers_intermediate_value",
+      "C": "adds_instead_of_subtracts",
+      "D": "percent_applied_forward_not_reversed"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -517,6 +547,11 @@
       "C": "Student finds the hourly rate ($54 \\div 4 = 13.50$) and reports it as the answer without scaling to 10 hours.",
       "D": "Student computes earnings for only the additional 6 hours ($10 - 4 = 6$): $6 \\times 13.50 = 81$ dollars."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "C": "answers_intermediate_value",
+      "D": "rate_applied_to_increment_only"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -597,6 +632,11 @@
       "C": "Student subtracts a flat \\$25 instead of 25% of the price: $80 - 25 = 55$ dollars.",
       "D": "Correct: the discount is $0.25 \\times 80 = 20$, so the sale price is $80 - 20 = 60$ dollars."
     },
+    "misconception_tag": {
+      "A": "reports_discount_not_price",
+      "B": "adds_instead_of_subtracts",
+      "C": "adds_instead_of_subtracts"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -676,6 +716,11 @@
       "B": "Student multiplies the total hours by 3 cars, ignoring the 4-hour interval: $40 \\times 3 = 120$ cars.",
       "C": "Correct: total time is $5 \\times 8 = 40$ hours, which is $40 \\div 4 = 10$ blocks, giving $10 \\times 3 = 30$ cars.",
       "D": "Student finds the number of 4-hour blocks ($40 \\div 4 = 10$) and reports it as cars without multiplying by 3."
+    },
+    "misconception_tag": {
+      "A": "wrong_period_count_used",
+      "B": "wrong_period_count_used",
+      "D": "answers_intermediate_value"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -759,6 +804,11 @@
       "C": "Student applies a 20% increase again instead of reversing it: $18 \\times 1.20 = 21.60$ dollars.",
       "D": "Student computes only 20% of the new price and reports that amount: $0.20 \\times 18 = 3.60$ dollars."
     },
+    "misconception_tag": {
+      "B": "percent_applied_forward_not_reversed",
+      "C": "percent_applied_forward_not_reversed",
+      "D": "percent_applied_forward_not_reversed"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -841,6 +891,11 @@
       "C": "Student assumes the original height equals the original width, reporting 6 inches by confusing the two dimensions.",
       "D": "Student subtracts the width difference from the enlarged height instead of dividing: $24 - (18 - 6) = 12$ inches."
     },
+    "misconception_tag": {
+      "B": "inverts_conversion_direction",
+      "C": "reads_wrong_category",
+      "D": "reads_wrong_category"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -921,6 +976,11 @@
       "C": "Student computes only the cyclist's distance ($60 \\times \\frac{3}{9} = 20$) and reports it, forgetting to subtract the runner's distance.",
       "D": "Student adds the two distances instead of subtracting: $20 + 7.5 = 27.5$ miles."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "C": "answers_intermediate_value",
+      "D": "adds_instead_of_subtracts"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1000,6 +1060,11 @@
       "B": "Student applies the \\$2 rate to all 50 widgets, using only the discounted tier: $50 \\times 2 = 100$ dollars.",
       "C": "Correct: $20 \\times 3 = 60$ for the first tier plus $30 \\times 2 = 60$ for the rest gives $60 + 60 = 120$ dollars.",
       "D": "Student reverses the tier rates, charging \\$2 for the first 20 and \\$3 for the rest: $20 \\times 2 + 30 \\times 3 = 40 + 90 = 130$ dollars."
+    },
+    "misconception_tag": {
+      "A": "omits_second_component",
+      "B": "omits_second_component",
+      "D": "tier_rates_reversed"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1083,6 +1148,11 @@
       "C": "Student computes only 15% of the current value: $0.15 \\times 17000 = 2550$ dollars.",
       "D": "Correct: the current value is 85% of the original, so $0.85x = 17000$ gives $x = 17000 \\div 0.85 = 20000$ dollars."
     },
+    "misconception_tag": {
+      "A": "percent_applied_forward_not_reversed",
+      "B": "percent_applied_forward_not_reversed",
+      "C": "percent_applied_forward_not_reversed"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1162,6 +1232,11 @@
       "B": "Student converts only the building's height and reports it, ignoring the flagpole: $9 \\times 8 = 72$ feet.",
       "C": "Student finds the model difference ($9 - 1.5 = 7.5$ inches) but forgets to convert it to feet using the scale.",
       "D": "Student converts both heights and adds them instead of finding the difference: $9 \\times 8 = 72$ and $1.5 \\times 8 = 12$, then $72 + 12 = 84$ feet."
+    },
+    "misconception_tag": {
+      "B": "answers_intermediate_value",
+      "C": "answers_intermediate_value",
+      "D": "adds_instead_of_subtracts"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

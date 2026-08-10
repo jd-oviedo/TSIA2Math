@@ -35,6 +35,11 @@
       "C": "Correct: $(3 + 4, -2 - 5) = (7, -7)$.",
       "D": "Student subtracts in both coordinates, applying the wrong direction to x: $(3 - 4, -2 - 5) = (-1, -7)$."
     },
+    "misconception_tag": {
+      "A": "translation_direction_reversed",
+      "B": "translation_direction_reversed",
+      "D": "translation_direction_reversed"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -113,6 +118,11 @@
       "B": "Correct: reflection over the x-axis gives $(5, 4) \\to (5, -4)$.",
       "C": "Student negates both coordinates, treating the reflection as a 180 degree rotation: $(5, 4) \\to (-5, -4)$.",
       "D": "Student reflects over the line $y = x$, swapping the coordinates: $(5, 4) \\to (4, 5)$."
+    },
+    "misconception_tag": {
+      "A": "wrong_reflection_axis",
+      "C": "wrong_rotation_rule",
+      "D": "wrong_reflection_axis"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -193,6 +203,11 @@
       "C": "Student multiplies only the x-coordinate by the scale factor and leaves y unchanged: $(3 \\times 2, -4) = (6, -4)$.",
       "D": "Student divides each coordinate by the scale factor instead of multiplying: $(\\frac{2}{3}, -\\frac{4}{3})$."
     },
+    "misconception_tag": {
+      "B": "inverts_conversion_direction",
+      "C": "inverts_conversion_direction",
+      "D": "inverts_conversion_direction"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -271,6 +286,11 @@
       "B": "Student negates both coordinates, treating the reflection as a 180 degree rotation: $(-3, 6) \\to (3, -6)$.",
       "C": "Student reflects over the line $y = x$, swapping the coordinates: $(-3, 6) \\to (6, -3)$.",
       "D": "Correct: reflection over the y-axis gives $(-3, 6) \\to (3, 6)$."
+    },
+    "misconception_tag": {
+      "A": "wrong_reflection_axis",
+      "B": "wrong_rotation_rule",
+      "C": "wrong_reflection_axis"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -351,6 +371,11 @@
       "C": "Student handles x correctly but subtracts from y instead of adding: $(-1 - 2, -1 - 6) = (-3, -7)$.",
       "D": "Student adds to x instead of subtracting, then adds to y correctly: $(-1 + 2, -1 + 6) = (1, 5)$."
     },
+    "misconception_tag": {
+      "B": "translation_direction_reversed",
+      "C": "translation_direction_reversed",
+      "D": "translation_direction_reversed"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -429,6 +454,11 @@
       "B": "Correct: $(x, y) \\to (-y, x)$ gives $(4, 2) \\to (-2, 4)$.",
       "C": "Student applies a $180^{\\circ}$ rotation $(x, y) \\to (-x, -y)$ instead: $(4, 2) \\to (-4, -2)$.",
       "D": "Student swaps the coordinates but forgets to negate, applying $(x, y) \\to (y, x)$: $(4, 2) \\to (2, 4)$."
+    },
+    "misconception_tag": {
+      "A": "wrong_rotation_rule",
+      "C": "wrong_rotation_rule",
+      "D": "coordinates_swapped_without_negating"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -509,6 +539,11 @@
       "C": "Correct: $(x, y) \\to (-x, -y)$ gives $(-5, 3) \\to (5, -3)$.",
       "D": "Student applies a $90^{\\circ}$ counterclockwise rule $(x, y) \\to (-y, x)$ instead: $(-5, 3) \\to (-3, -5)$."
     },
+    "misconception_tag": {
+      "A": "coordinates_swapped_without_negating",
+      "B": "coordinates_swapped_without_negating",
+      "D": "wrong_rotation_rule"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -587,6 +622,11 @@
       "B": "Student reflects over the line $y = x$, swapping coordinates for each vertex: $(x, y) \\to (y, x)$.",
       "C": "Student negates both coordinates for each vertex, treating the reflection as a $180^{\\circ}$ rotation: $(x, y) \\to (-x, -y)$.",
       "D": "Correct: $(x, y) \\to (x, -y)$ gives $A'(1, -2)$, $B'(3, -5)$, $C'(4, -1)$."
+    },
+    "misconception_tag": {
+      "A": "wrong_reflection_axis",
+      "B": "wrong_reflection_axis",
+      "C": "wrong_rotation_rule"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -668,6 +708,11 @@
       "C": "Student applies a $180^{\\circ}$ rotation $(x, y) \\to (-x, -y)$ instead: $(6, -1) \\to (-6, 1)$.",
       "D": "Student swaps the coordinates and negates the wrong one, applying $(x, y) \\to (-y, x)$ signs onto a swap: $(6, -1) \\to (-1, 6)$."
     },
+    "misconception_tag": {
+      "B": "wrong_rotation_rule",
+      "C": "wrong_rotation_rule",
+      "D": "coordinates_swapped_without_negating"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -746,6 +791,11 @@
       "B": "Correct: $(x, y) \\to (-y, x)$ gives $P'(-1, 2)$, $Q'(-3, 4)$, $R'(-1, 5)$.",
       "C": "Student applies a $180^{\\circ}$ rotation $(x, y) \\to (-x, -y)$ to each vertex instead.",
       "D": "Student swaps the coordinates but forgets to negate, applying $(x, y) \\to (y, x)$ to each vertex."
+    },
+    "misconception_tag": {
+      "A": "wrong_rotation_rule",
+      "C": "wrong_rotation_rule",
+      "D": "coordinates_swapped_without_negating"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -827,6 +877,11 @@
       "C": "Student skips the reflection entirely and only applies the translation: $(3 - 2, 5 + 4) = (1, 9)$.",
       "D": "Correct: reflect to $(3, -5)$, then translate to $(1, -1)$."
     },
+    "misconception_tag": {
+      "A": "composition_order_reversed",
+      "B": "wrong_reflection_axis",
+      "C": "translation_direction_reversed"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -906,6 +961,11 @@
       "B": "Student applies only the rotation and stops, skipping the reflection: $(2, 3) \\to (-3, 2)$.",
       "C": "Student reverses the order, reflecting over the y-axis first $(2, 3) \\to (-2, 3)$, then rotating $90^{\\circ}$ counterclockwise $\\to (-3, -2)$.",
       "D": "Student uses a $180^{\\circ}$ rotation instead of $90^{\\circ}$ counterclockwise $(2, 3) \\to (-2, -3)$, then reflects over the y-axis $\\to (2, -3)$."
+    },
+    "misconception_tag": {
+      "B": "composition_step_skipped",
+      "C": "wrong_reflection_axis",
+      "D": "wrong_reflection_axis"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -987,6 +1047,11 @@
       "C": "Correct: $(x, y) \\to (-y, x)$ maps $A(1, 2) \\to (-2, 1)$ and $B(3, 4) \\to (-4, 3)$.",
       "D": "Student sees negative coordinates in the image and assumes a $180^{\\circ}$ rotation. That rule $(x, y) \\to (-x, -y)$ sends $A(1, 2) \\to (-1, -2)$, which does not match $A'(-2, 1)$."
     },
+    "misconception_tag": {
+      "A": "transformation_misidentified_from_coordinates",
+      "B": "transformation_misidentified_from_coordinates",
+      "D": "transformation_misidentified_from_coordinates"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1067,6 +1132,11 @@
       "C": "Student applies only the dilation and skips the translation: $(-2, 4) \\to (-4, 8)$.",
       "D": "Student adds the scale factor instead of multiplying $(-2 + 2, 4 + 2) = (0, 6)$, then translates $\\to (1, 3)$."
     },
+    "misconception_tag": {
+      "A": "composition_order_reversed",
+      "C": "composition_step_skipped",
+      "D": "inverts_conversion_direction"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1146,6 +1216,11 @@
       "B": "Student applies only the reflection and stops, skipping the rotation: $(4, 1) \\to (-4, 1)$.",
       "C": "Correct: reflect to $(-4, 1)$, then rotate $90^{\\circ}$ counterclockwise to $(-1, -4)$.",
       "D": "Student reflects correctly to $(-4, 1)$ but then applies a $180^{\\circ}$ rotation instead of $90^{\\circ}$ counterclockwise $\\to (4, -1)$."
+    },
+    "misconception_tag": {
+      "A": "composition_order_reversed",
+      "B": "composition_step_skipped",
+      "D": "wrong_rotation_rule"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

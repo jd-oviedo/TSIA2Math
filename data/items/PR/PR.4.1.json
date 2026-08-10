@@ -35,6 +35,11 @@
       "C": "Student assumes that any imperfect, real-world scatter means no association exists at all.",
       "D": "Student believes a direction cannot be named without first computing a numeric correlation coefficient, when the described trend is already sufficient."
     },
+    "misconception_tag": {
+      "B": "misreads_direction_of_change",
+      "C": "scatter_read_as_no_association",
+      "D": "false_precondition_for_association"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -110,6 +115,11 @@
       "C": "Student assumes imperfect real-world data means no association exists.",
       "D": "Student believes the verbal description is not enough and a plotted image is required to name the direction."
     },
+    "misconception_tag": {
+      "A": "misreads_direction_of_change",
+      "C": "scatter_read_as_no_association",
+      "D": "false_precondition_for_association"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -184,6 +194,11 @@
       "B": "Student over-reads a few points as a downward trend instead of judging the overall pattern.",
       "C": "Correct: the points show no consistent upward or downward trend, so there is no linear association.",
       "D": "Student confuses the sign of the data values (all positive numbers) with the direction of the association."
+    },
+    "misconception_tag": {
+      "A": "outlier_influence_misjudged",
+      "B": "outlier_influence_misjudged",
+      "D": "misreads_direction_of_change"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -265,6 +280,11 @@
       "C": "Student believes five points are too few to identify a trend.",
       "D": "Correct: y increases throughout as x increases (4, 6, 9, 11, 14), which is a positive association."
     },
+    "misconception_tag": {
+      "A": "false_precondition_for_association",
+      "B": "misreads_direction_of_change",
+      "C": "false_precondition_for_association"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -339,6 +359,11 @@
       "B": "Student reverses the direction of the clearly decreasing values.",
       "C": "Student believes equal decrements are required for a linear association, so the unequal gaps (3, 2, 3, 3) read as 'none.'",
       "D": "Student believes a numeric correlation coefficient is required to name the direction."
+    },
+    "misconception_tag": {
+      "B": "misreads_direction_of_change",
+      "C": "false_precondition_for_association",
+      "D": "false_precondition_for_association"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -415,6 +440,11 @@
       "C": "Student reverses the direction of an upward-rising pattern.",
       "D": "Student believes points must fall exactly on the line for any association to exist."
     },
+    "misconception_tag": {
+      "A": "strength_confused_with_direction",
+      "C": "misreads_direction_of_change",
+      "D": "scatter_read_as_no_association"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -489,6 +519,11 @@
       "B": "Student misreads the direction of an upward drift.",
       "C": "Correct: the points trend gently upward but with wide scatter, indicating a weak positive association.",
       "D": "Student confuses 'weak' with 'none,' ignoring the real upward direction present despite the heavy scatter."
+    },
+    "misconception_tag": {
+      "A": "strength_confused_with_direction",
+      "B": "misreads_direction_of_change",
+      "D": "strength_confused_with_direction"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -570,6 +605,11 @@
       "C": "Student tries to force a single linear label onto a curved pattern by claiming a linear relationship can change direction.",
       "D": "Correct: the points follow a clear U-shaped non-linear pattern, so there is no single linear association."
     },
+    "misconception_tag": {
+      "A": "curved_pattern_forced_linear",
+      "B": "curved_pattern_forced_linear",
+      "C": "curved_pattern_forced_linear"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -650,6 +690,11 @@
       "C": "Student reverses the direction of a downward pattern.",
       "D": "Student believes any scatter at all rules out an association."
     },
+    "misconception_tag": {
+      "B": "steepness_confused_with_strength",
+      "C": "misreads_direction_of_change",
+      "D": "scatter_read_as_no_association"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -724,6 +769,11 @@
       "B": "Correct: the points form a flat, trendless horizontal band, so there is no linear association.",
       "C": "Student over-reads random scatter as a slight downward trend.",
       "D": "Student over-reads a few higher points as evidence of a strong upward trend."
+    },
+    "misconception_tag": {
+      "A": "outlier_influence_misjudged",
+      "C": "outlier_influence_misjudged",
+      "D": "outlier_influence_misjudged"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -805,6 +855,11 @@
       "C": "Correct: the outlier opposes the downward trend, so removing it makes the remaining negative association tighter and stronger.",
       "D": "Student assumes a single point can never affect an association."
     },
+    "misconception_tag": {
+      "A": "outlier_influence_misjudged",
+      "B": "outlier_influence_misjudged",
+      "D": "outlier_influence_misjudged"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -884,6 +939,11 @@
       "B": "Student confuses the spread of x-values with the strength of the association.",
       "C": "Student confuses direction with strength, assuming the same direction means equal strength.",
       "D": "Student confuses the number of points with the strength of the association."
+    },
+    "misconception_tag": {
+      "B": "strength_confused_with_direction",
+      "C": "strength_confused_with_direction",
+      "D": "strength_confused_with_direction"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -965,6 +1025,11 @@
       "C": "Student misreads the flattening (a slowing increase) as an actual decrease.",
       "D": "Correct: y rises with x throughout (positive), but the changing rate of increase means the pattern is curved, not linear."
     },
+    "misconception_tag": {
+      "A": "curved_pattern_forced_linear",
+      "B": "scatter_read_as_no_association",
+      "C": "curved_pattern_forced_linear"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1045,6 +1110,11 @@
       "C": "Student misreads the direction of the apparent pattern entirely.",
       "D": "Student assumes the upward impression is supported evenly by all points rather than by two leverage points."
     },
+    "misconception_tag": {
+      "A": "outlier_influence_misjudged",
+      "C": "misreads_direction_of_change",
+      "D": "outlier_influence_misjudged"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1124,6 +1194,11 @@
       "B": "Student uses an irrelevant feature (central location) instead of clustering to judge strength.",
       "C": "Correct: strength is about how tightly points cluster along a line, and Plot 2 is tightest, so it is strongest despite being negative.",
       "D": "Student confuses a negative direction with a weak association."
+    },
+    "misconception_tag": {
+      "A": "strength_confused_with_direction",
+      "B": "strength_confused_with_direction",
+      "D": "strength_confused_with_direction"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

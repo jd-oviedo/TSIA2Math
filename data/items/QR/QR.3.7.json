@@ -35,6 +35,11 @@
       "C": "Student assumes that because both equations are linear, they must change at the same rate.",
       "D": "Student believes the rates cannot be compared from the equations alone and that a graph is required."
     },
+    "misconception_tag": {
+      "B": "intercepts_compared_instead_of_slopes",
+      "C": "linearity_assumed_to_imply_equal_rates",
+      "D": "comparison_declared_impossible"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -108,6 +113,11 @@
       "B": "Correct: Plan A's rate is 8 and Plan B's is 5, so $8 - 5 = 3$.",
       "C": "Student adds the two rates instead of subtracting: $8 + 5 = 13$.",
       "D": "Student reports Plan A's rate alone (8) without subtracting Plan B's rate."
+    },
+    "misconception_tag": {
+      "A": "intercepts_compared_instead_of_slopes",
+      "C": "rates_summed_instead_of_differenced",
+      "D": "rates_summed_instead_of_differenced"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -184,6 +194,11 @@
       "C": "Correct: Line B's slope of $-6$ is a steeper decrease than Line A's slope of $-3$, so Line B decreases faster.",
       "D": "Student notices both slopes are negative and concludes the rates of decrease must be equal."
     },
+    "misconception_tag": {
+      "A": "misreads_direction_of_change",
+      "B": "misreads_direction_of_change",
+      "D": "misreads_direction_of_change"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -257,6 +272,11 @@
       "B": "Student compares the starting amounts (both 100) and concludes the drain rates are equal, giving a difference of 0.",
       "C": "Student reports Tank B's drain rate alone (9) without subtracting Tank A's rate.",
       "D": "Correct: Tank B drains at 9 per minute and Tank A at 4 per minute, so Tank B is faster by $9 - 4 = 5$."
+    },
+    "misconception_tag": {
+      "A": "rates_summed_instead_of_differenced",
+      "B": "intercepts_compared_instead_of_slopes",
+      "C": "rates_summed_instead_of_differenced"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -333,6 +353,11 @@
       "C": "Student sees two similar-looking fractions and assumes they represent the same rate without comparing them.",
       "D": "Student believes fractional slopes cannot be directly compared and concludes no comparison is possible."
     },
+    "misconception_tag": {
+      "B": "slope_run_over_rise",
+      "C": "linearity_assumed_to_imply_equal_rates",
+      "D": "comparison_declared_impossible"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -406,6 +431,11 @@
       "B": "Correct: Line 2's rate is $\\frac{9 - 1}{2 - 0} = 4$, so $4 - 3 = 1$.",
       "C": "Student adds the two rates instead of subtracting: $4 + 3 = 7$.",
       "D": "Student reports Line 2's rate alone (4) without subtracting Line 1's rate."
+    },
+    "misconception_tag": {
+      "A": "rise_reported_as_rate",
+      "C": "rates_summed_instead_of_differenced",
+      "D": "rates_summed_instead_of_differenced"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -481,6 +511,11 @@
       "B": "Student assumes that because both costs rise over time, they must rise at the same rate.",
       "C": "Correct: the rival increases \\$15 per month, more than the first gym's \\$12 per month.",
       "D": "Student believes the comparison requires knowing the number of months and cannot be made from the rates alone."
+    },
+    "misconception_tag": {
+      "A": "intercepts_compared_instead_of_slopes",
+      "B": "linearity_assumed_to_imply_equal_rates",
+      "D": "comparison_declared_impossible"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -562,6 +597,11 @@
       "C": "Student adds the two constants ($3 + 12 = 15$) without moving the variable terms to one side.",
       "D": "Correct: $5x + 3 = 2x + 12$ gives $3x = 9$, so $x = 3$."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "answers_intermediate_value",
+      "C": "rates_summed_instead_of_differenced"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -640,6 +680,11 @@
       "B": "Student inverts the table's rate, computing $\\frac{5 - 0}{5 - 30} = \\frac{5}{-25} = -\\frac{1}{5}$, which makes the equation's $-2$ look steeper, so the student picks the equation line.",
       "C": "Student sees both rates are negative and concludes they decrease at the same rate.",
       "D": "Student subtracts the table values in the wrong order, gets a positive rate, and claims the table line increases."
+    },
+    "misconception_tag": {
+      "B": "slope_run_over_rise",
+      "C": "misreads_direction_of_change",
+      "D": "misreads_direction_of_change"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -721,6 +766,11 @@
       "C": "Student adds the two starting balances ($100 + 60 = 160$) instead of setting the expressions equal.",
       "D": "Student solves for $x = 10$ correctly but reports the balance at that point, $8(10) + 100 = 180$, instead of the number of weeks."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "C": "intercepts_compared_instead_of_slopes",
+      "D": "answers_intermediate_value"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -800,6 +850,11 @@
       "B": "Student reads h's 6 units as its rate without dividing by the 2-unit step, treating h's rate as 6 (the largest) and picking h.",
       "C": "Correct: g's rate is $\\frac{17 - 2}{3 - 0} = 5$, greater than f's 4 and h's $\\frac{6}{2} = 3$.",
       "D": "Student assumes all three linear functions must grow at the same rate without computing each."
+    },
+    "misconception_tag": {
+      "A": "slope_run_over_rise",
+      "B": "rise_reported_as_rate",
+      "D": "linearity_assumed_to_imply_equal_rates"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -881,6 +936,11 @@
       "C": "Student believes the comparison requires a graph and cannot be reasoned from the rates and starting values.",
       "D": "Correct: Plan B gains 4 more per step, totaling 120 extra over 30 steps, which beats the 80 head start, so $390 > 350$."
     },
+    "misconception_tag": {
+      "A": "larger_start_assumed_to_stay_ahead",
+      "B": "crossover_assumed_permanent_tie",
+      "C": "intercepts_compared_instead_of_slopes"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -960,6 +1020,11 @@
       "B": "Student inverts the table's rate over the interval, $\\frac{5 - 2}{40 - 10} = \\frac{3}{30} = \\frac{1}{10}$, making the table look slower, and picks the equation.",
       "C": "Student believes a table and an equation cannot be compared over the same interval and chooses 'not enough information.'",
       "D": "Student subtracts the table values in reverse order ($10 - 40 = -30$), gets a negative rate, and concludes the table relationship decreases."
+    },
+    "misconception_tag": {
+      "B": "slope_run_over_rise",
+      "C": "comparison_declared_impossible",
+      "D": "misreads_direction_of_change"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1041,6 +1106,11 @@
       "C": "Student solves for $x = 6$ correctly but reports the tree height at that time, $40 + 2(6) = 52$, instead of the number of years.",
       "D": "Student adds the two starting heights ($40 + 10 = 50$) instead of setting the expressions equal and solving."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "C": "answers_intermediate_value",
+      "D": "intercepts_compared_instead_of_slopes"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1120,6 +1190,11 @@
       "B": "Student reports N's total increase alone ($5 \\times 10 = 50$), ignoring M.",
       "C": "Correct: N gains 2 more than M each step, so over 10 steps the gap is $2 \\times 10 = 20$.",
       "D": "Student finds the per-step difference (2) but forgets to multiply by the 10 steps."
+    },
+    "misconception_tag": {
+      "A": "rates_summed_instead_of_differenced",
+      "B": "rates_summed_instead_of_differenced",
+      "D": "answers_intermediate_value"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
