@@ -37,6 +37,11 @@
       "C": "Correct: setting 2x + 1 = x + 4 gives x = 3; substituting gives y = 7.",
       "D": "Student uses x = 5 (same addition error as A) but evaluates y in the first equation: y = 2(5) + 1 = 11."
     },
+    "misconception_tag": {
+      "A": "constants_added_to_solve",
+      "B": "hybrid_expression_substituted",
+      "D": "constants_added_to_solve"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -118,6 +123,11 @@
       "B": "Correct: (4, 2) satisfies both 2x + y = 10 and x \u2212 y = 2.",
       "C": "Student checks only the first equation \u2014 2(5) + 0 = 10 \u2713 \u2014 and stops without testing 5 \u2212 0 = 5 \u2260 2 in the second.",
       "D": "Student checks only the first equation \u2014 2(6) + (\u22122) = 10 \u2713 \u2014 and stops without testing 6 \u2212 (\u22122) = 8 \u2260 2 in the second."
+    },
+    "misconception_tag": {
+      "A": "only_one_equation_checked",
+      "C": "only_one_equation_checked",
+      "D": "only_one_equation_checked"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -201,6 +211,11 @@
       "C": "Student substitutes x = 3 into the coefficient only, subtracting x (not 2x) from 11: y = 11 \u2212 3 = 8.",
       "D": "Student finds the correct values (x = 3, y = 5) but writes the ordered pair in reverse order as (5, 3)."
     },
+    "misconception_tag": {
+      "B": "constants_added_to_solve",
+      "C": "hybrid_expression_substituted",
+      "D": "coordinates_swapped"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -282,6 +297,11 @@
       "B": "Correct: setting \u22122x + 4 = 2x gives x = 1, y = 2.",
       "C": "Student identifies the y-intercept of y = \u22122x + 4 (where x = 0, y = 4) instead of finding the intersection.",
       "D": "Student identifies the y-intercept of y = 2x (where x = 0, y = 0) instead of finding the intersection."
+    },
+    "misconception_tag": {
+      "A": "reads_wrong_category",
+      "C": "reads_wrong_category",
+      "D": "reads_wrong_category"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -365,6 +385,11 @@
       "C": "Correct: adding the equations gives 2x = 10 \u2192 x = 5; substituting gives y = 3.",
       "D": "Student correctly finds x = 5 and y = 3 but writes the ordered pair in reverse as (3, 5)."
     },
+    "misconception_tag": {
+      "A": "constants_added_to_solve",
+      "B": "constants_added_to_solve",
+      "D": "coordinates_swapped"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -446,6 +471,11 @@
       "B": "Student finds x = 2 and y = 1 correctly but writes the pair as (2, 3), reversing x and y.",
       "C": "Student correctly isolates 4x = 8 but divides by 8 instead of 4, getting x = 1; then y = 1 \u2212 1 = 0.",
       "D": "Correct: substituting y = x \u2212 1 gives x = 2, y = 1."
+    },
+    "misconception_tag": {
+      "A": "coordinates_swapped",
+      "B": "coordinates_swapped",
+      "C": "divides_before_isolating"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -529,6 +559,11 @@
       "C": "Student correctly finds x = 3 but makes an arithmetic error during back-substitution: 2(3) + 3y = 12 \u2192 3y = 12 (omits subtracting 6) \u2192 y = 4.",
       "D": "Student correctly solves for x = 3 and y = 2 but reverses the ordered pair, writing (2, 3)."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "C": "answers_intermediate_value",
+      "D": "coordinates_swapped"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -610,6 +645,11 @@
       "B": "Satisfies the total count (5 + 3 = 8) but not the cost: 3(5) + 3 = 18 \u2260 16. Student adjusts the notebook count upward without solving the system.",
       "C": "Correct: 4 + 4 = 8 \u2713 and 3(4) + 4 = 16 \u2713.",
       "D": "Satisfies the total count (6 + 2 = 8) but not the cost: 3(6) + 2 = 20 \u2260 16. Student over-counts notebooks without verifying the cost equation."
+    },
+    "misconception_tag": {
+      "A": "only_one_equation_checked",
+      "B": "only_one_equation_checked",
+      "D": "only_one_equation_checked"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -693,6 +733,11 @@
       "C": "Student correctly finds y = 3 and x = 2 but reverses the ordered pair, writing (3, 2). Check: 5(3)\u22122(2)=11\u22604.",
       "D": "Student sees x + y = 5 and assumes x = 5, y = 0 without solving. Check: 5(5)\u22122(0)=25\u22604."
     },
+    "misconception_tag": {
+      "B": "hybrid_expression_substituted",
+      "C": "coordinates_swapped",
+      "D": "constants_added_to_solve"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -774,6 +819,11 @@
       "B": "Student substitutes (2, 1) \u2014 checks 6(2)\u22124(1)=8 \u2713 and 3(2)\u22122(1)=4 \u2713 \u2014 and concludes it is the unique solution, not recognizing that every point on the shared line also satisfies both equations.",
       "C": "Student substitutes (0, \u22122) \u2014 checks 6(0)\u22124(\u22122)=8 \u2713 and 3(0)\u22122(\u22122)=4 \u2713 \u2014 and concludes it is the solution, making the same error as B: treating one valid point as the unique answer.",
       "D": "Correct: multiplying the second equation by 2 produces the first exactly, confirming both represent the same line. The system has infinitely many solutions."
+    },
+    "misconception_tag": {
+      "A": "identical_lines_read_as_parallel",
+      "B": "one_point_reported_for_infinite_solutions",
+      "C": "only_one_equation_checked"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
