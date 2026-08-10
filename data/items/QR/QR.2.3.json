@@ -35,6 +35,11 @@
       "C": "Student adds the percent to the whole number (80 + 35 = 115) instead of computing a percent of the whole.",
       "D": "Correct: 35% = 0.35; 0.35 \u00d7 80 = 28."
     },
+    "misconception_tag": {
+      "A": "percent_sign_confusion",
+      "B": "percent_sign_confusion",
+      "C": "percent_sign_confusion"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Correct: 18 \u00f7 72 = 0.25 = 25%.",
       "C": "Student subtracts the part from the whole (72 \u2212 18 = 54) and labels the difference as a percent.",
       "D": "Student inverts the division (72 \u00f7 18 = 4) and then correctly multiplies by 100, giving 400% instead of 25%."
+    },
+    "misconception_tag": {
+      "A": "reversed_division",
+      "C": "percent_sign_confusion",
+      "D": "reversed_division"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student confuses 60% with $\\frac{1}{5}$ (20%) and multiplies: 15 \u00d7 5 = 75, using the wrong percent-to-fraction conversion.",
       "D": "Student confuses 60% with $\\frac{1}{6}$ and multiplies: 15 \u00d7 6 = 90, using the reciprocal of the wrong fraction."
     },
+    "misconception_tag": {
+      "B": "multiplies_instead_of_divides",
+      "C": "percent_sign_confusion",
+      "D": "percent_sign_confusion"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student divides the change by the new price instead of the original: 12 \u00f7 52 \u2248 0.23 = 23%.",
       "C": "Correct: (52 \u2212 40) \u00f7 40 \u00d7 100 = 12 \u00f7 40 \u00d7 100 = 30%.",
       "D": "Student divides the new price by the original (52 \u00f7 40 = 1.30) and converts to a percent, giving 130% \u2014 the ratio of prices, not the percent change."
+    },
+    "misconception_tag": {
+      "A": "absolute_change_as_percent",
+      "B": "percent_change_wrong_base",
+      "D": "new_over_original_as_change"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student computes the ratio of the new value to the original (2,000 \u00f7 2,500 = 0.80 = 80%), finding the percent remaining rather than the percent decrease.",
       "D": "Student inverts the ratio, dividing the original by the new value (2,500 \u00f7 2,000 = 1.25 = 125%), and reports that as the percent change."
     },
+    "misconception_tag": {
+      "A": "percent_change_wrong_base",
+      "C": "new_over_original_as_change",
+      "D": "percent_change_wrong_base"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student correctly applies the 20% markup (\\$200 \u00d7 1.20 = \\$240) but stops before applying the discount.",
       "C": "Student applies only the 20% discount to the original price (\\$200 \u00d7 0.80 = \\$160), ignoring the prior markup entirely.",
       "D": "Correct: \\$200 \u00d7 1.20 \u00d7 0.80 = \\$240 \u00d7 0.80 = \\$192."
+    },
+    "misconception_tag": {
+      "A": "markup_discount_assumed_to_cancel",
+      "B": "answers_intermediate_value",
+      "C": "percent_applied_to_wrong_stage_base"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student adds 15% of the new salary to the new salary (moving in the wrong direction): \\$46,000 + \\$6,900 = \\$52,900.",
       "D": "Student estimates the original by subtracting a rough dollar amount rather than applying the correct percent formula, arriving at an approximate but incorrect value of \\$44,000."
     },
+    "misconception_tag": {
+      "A": "percent_applied_forward_not_reversed",
+      "C": "percent_applied_forward_not_reversed",
+      "D": "percent_applied_forward_not_reversed"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -595,6 +630,11 @@
       "C": "Student applies only the 15% tip to the original bill (\\$35 \u00d7 1.15 = \\$40.25), omitting the tax.",
       "D": "Student adds the two percent rates (8% + 15% = 23%) and rounds 23% down to the nearest round number (20%), then applies a single 20% increase to the original bill: \\$35 \u00d7 1.20 = \\$42.00."
     },
+    "misconception_tag": {
+      "B": "percent_applied_to_wrong_stage_base",
+      "C": "percent_applied_to_wrong_stage_base",
+      "D": "percent_changes_added"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -674,6 +714,11 @@
       "B": "Correct: 1.10 \u00d7 0.95 = 1.045, a net gain of 4.5%.",
       "C": "Student correctly computes the combined multiplier (1.10 \u00d7 0.95 = 1.045) but truncates 4.5% to 4%, dropping the 0.5 percentage point from the product.",
       "D": "Student ignores the direction of the second change, treating the 5% decrease as a 5% increase and adding both rates (10% + 5% = 15%)."
+    },
+    "misconception_tag": {
+      "A": "percent_changes_added",
+      "C": "percent_changes_added",
+      "D": "percent_changes_added"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -759,6 +804,11 @@
       "B": "Student uses the raw point change (17 points) as the percent increase rather than dividing by the original score, getting 17% instead of 25%.",
       "C": "Student divides the change by the new score instead of the original (17 \u00f7 85 \u2248 0.20 = 20%) and correctly identifies the goal was not met.",
       "D": "Correct: percent increase = 25%; required score for 30% improvement = 68 \u00d7 1.30 = 88.4 > 85, so goal was not met."
+    },
+    "misconception_tag": {
+      "A": "goal_threshold_misread",
+      "B": "absolute_change_as_percent",
+      "C": "percent_change_wrong_base"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
