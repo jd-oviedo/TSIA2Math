@@ -15,8 +15,15 @@
 -- The insert has stopped writing it. This removes it -- but only after dealing
 -- with those two policies deliberately, which is most of what this file is.
 --
--- NOT RUN. Held for review like every other file here.
--- Run it in the Supabase SQL editor when you want it; kept for version control.
+-- Status: already applied, 2026-08-10, via the Supabase SQL editor, after
+-- sql/sessions_revoke_client_select.sql as the sequencing note below requires.
+-- Kept in the repo as the record of the change, and re-runnable if the project
+-- is ever rebuilt -- every drop below is guarded with `if exists`.
+--
+-- The checks in the two sections that follow are written as instructions to
+-- someone about to run this. They are kept in that voice on purpose: they are
+-- the argument for why the drop was safe, not just a checklist that has been
+-- ticked, and re-reading them is how you would re-derive that argument.
 
 
 -- ─── Do not run this with CASCADE ────────────────────────────────────────────
