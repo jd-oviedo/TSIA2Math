@@ -35,6 +35,11 @@
       "C": "Student inverts the fraction, placing r in the numerator and d in the denominator instead of the reverse.",
       "D": "Student subtracts r from d instead of dividing \u2014 treats the multiplication in d = rt as addition."
     },
+    "misconception_tag": {
+      "B": "wrong_inverse_operation_chosen",
+      "C": "numerator_denominator_swap",
+      "D": "wrong_inverse_operation_chosen"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Correct: subtracting a and c from both sides gives b = P \u2212 a \u2212 c.",
       "C": "Student misreads the additive formula as a product, dividing P by a \u00d7 c instead of subtracting a and c.",
       "D": "Student correctly subtracts a from both sides but then divides by c rather than subtracting it, misidentifying the inverse operation for the second step."
+    },
+    "misconception_tag": {
+      "A": "wrong_inverse_operation_chosen",
+      "C": "wrong_inverse_operation_chosen",
+      "D": "wrong_inverse_operation_chosen"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Correct: multiplying by (x\u2082 \u2212 x\u2081) and adding y\u2081 gives y\u2082 = m(x\u2082 \u2212 x\u2081) + y\u2081.",
       "D": "Student adds y\u2081 to m before multiplying by (x\u2082 \u2212 x\u2081), applying addition and multiplication in the wrong order."
     },
+    "misconception_tag": {
+      "A": "wrong_inverse_operation_chosen",
+      "B": "wrong_inverse_operation_chosen",
+      "D": "wrong_inverse_operation_chosen"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student correctly divides by h and subtracts b\u2082, but skips multiplying by 2 to clear the $\\frac{1}{2}$ \u2014 giving A/h \u2212 b\u2082 instead of 2A/h \u2212 b\u2082.",
       "C": "Student misreads the formula as A = b\u2081 + b\u2082 + h (treating all factors as additive terms) and isolates b\u2081 by subtracting b\u2082 and h.",
       "D": "Correct: multiplying by 2, dividing by h, and subtracting b\u2082 gives b\u2081 = 2A/h \u2212 b\u2082."
+    },
+    "misconception_tag": {
+      "A": "wrong_inverse_operation_chosen",
+      "B": "partial_distribution",
+      "C": "wrong_inverse_operation_chosen"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student does not recognize x as a common factor; instead subtracts b (without x) from both sides, leaving ax = c \u2212 b \u2192 x = (c \u2212 b)/a.",
       "D": "Student combines a and b by multiplying rather than adding when collecting the factored coefficient: writes x = c/ab instead of c/(a + b)."
     },
+    "misconception_tag": {
+      "A": "division_distributed_over_sum",
+      "C": "common_factor_not_extracted",
+      "D": "common_factor_not_extracted"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student correctly isolates x(1 \u2212 b) = bc \u2212 a but then divides by b (the coefficient from the original right-hand term) rather than by (1 \u2212 b) (the factored coefficient of x).",
       "C": "Correct: x + a = bc + bx \u2192 x \u2212 bx = bc \u2212 a \u2192 x(1 \u2212 b) = bc \u2212 a \u2192 x = $\\frac{bc \u2212 a}{1 \u2212 b}$.",
       "D": "Student correctly factors to x(1 \u2212 b) = bc \u2212 a but then adds (1 \u2212 b) to both sides instead of dividing, reporting x = bc \u2212 a + b."
+    },
+    "misconception_tag": {
+      "A": "common_factor_not_extracted",
+      "B": "wrong_inverse_operation_chosen",
+      "D": "wrong_inverse_operation_chosen"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
