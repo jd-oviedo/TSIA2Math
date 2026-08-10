@@ -35,6 +35,11 @@
       "C": "Student sees y-values growing and associates growth with exponential functions, without checking whether the growth is additive (linear) or multiplicative (exponential).",
       "D": "Student correctly identifies that consecutive differences are constant but misnames the function type, conflating 'constant absolute differences' with the absolute value function."
     },
+    "misconception_tag": {
+      "A": "family_matched_by_surface_growth",
+      "C": "family_matched_by_surface_growth",
+      "D": "differences_vs_ratios_confused"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student focuses on the upward curvature and associates any curve that bends upward with exponential growth, not distinguishing between the symmetric U-shape of a parabola and the one-sided steep rise of an exponential.",
       "C": "Correct: a U-shaped curve opening upward is a parabola \u2014 the graph of a quadratic function.",
       "D": "Student recalls that y = x is a linear function that passes through the origin and concludes that any graph through the origin must be linear, not recognizing that y = x\u00b2 also passes through the origin but is quadratic."
+    },
+    "misconception_tag": {
+      "A": "family_matched_by_surface_growth",
+      "B": "family_matched_by_surface_growth",
+      "D": "family_matched_by_surface_growth"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Correct: y = 3 \u00b7 2\u02e3 has a constant base (2) and a variable exponent (x), which is the defining structure of an exponential function.",
       "D": "Student sees the exponent 2 in x\u00b2 and reasons similarly to choice B \u2014 'there is an exponent, so it must be exponential' \u2014 without distinguishing between a variable base with fixed exponent (power function) and a fixed base with variable exponent (exponential function)."
     },
+    "misconception_tag": {
+      "A": "exponent_position_confused",
+      "B": "exponent_position_confused",
+      "D": "exponent_position_confused"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student observes that y-values increase as x increases and concludes the function must be linear, without checking whether the rate of increase is itself constant.",
       "C": "Student notices the first differences are growing (3, 5, 7, 9) and interprets 'accelerating growth' as exponential, not distinguishing between additive acceleration (quadratic) and multiplicative growth (exponential).",
       "D": "Student computes the first differences (3, 5, 7, 9) and notes they are all positive, incorrectly concluding that 'all positive differences' is equivalent to 'constant differences' \u2014 the hallmark of a linear function."
+    },
+    "misconception_tag": {
+      "B": "family_matched_by_surface_growth",
+      "C": "differences_vs_ratios_confused",
+      "D": "differences_vs_ratios_confused"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student computes second differences: (16\u221211)\u2212(11\u22126) = 5\u22125 = 0 and (21\u221216)\u2212(16\u221211) = 0. Second differences are constant at 0, but a student who applies 'constant second differences = quadratic' without noting that zero second differences specifically indicate linear \u2014 not quadratic \u2014 misclassifies the result.",
       "D": "Correct: first differences of 5, 5, 5 are constant, proving the function is linear. A linear function is never exponential, which directly refutes the student's claim."
     },
+    "misconception_tag": {
+      "A": "family_matched_by_surface_growth",
+      "B": "differences_vs_ratios_confused",
+      "C": "zero_second_differences_read_as_quadratic"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Correct: y = 4 \u00b7 (\u00bd)\u02e3 is exponential because the base (\u00bd) is a positive constant and the variable x is in the exponent.",
       "C": "Student sees '2\u00b2' in the expression and focuses on the exponent notation, misreading x \u00b7 2\u00b2 as 'x raised to the 2\u00b2' rather than recognizing that 2\u00b2 is a constant (equal to 4) being multiplied by x.",
       "D": "Student sees the product of two expressions and associates multiplication with exponential growth, not recognizing that the product of two linear factors is a quadratic function."
+    },
+    "misconception_tag": {
+      "A": "family_matched_by_surface_growth",
+      "C": "exponent_position_confused",
+      "D": "family_matched_by_surface_growth"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
