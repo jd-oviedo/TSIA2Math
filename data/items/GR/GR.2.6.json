@@ -37,6 +37,11 @@
       "C": "Correct: V = 8 \u00d7 5 \u00d7 4 = 160 cm\u00b3.",
       "D": "Student doubles the correct volume: 2 \u00d7 160 = 320 cm\u00b3."
     },
+    "misconception_tag": {
+      "A": "dimensions_added_not_multiplied",
+      "B": "dimensions_added_not_multiplied",
+      "D": "result_doubled_twice"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -119,6 +124,11 @@
       "C": "Student divides the correct volume by 2: 351.68 \u00f7 2 = 175.84 m\u00b3.",
       "D": "Student doubles the correct volume: 2 \u00d7 351.68 = 703.36 m\u00b3."
     },
+    "misconception_tag": {
+      "B": "radius_not_squared",
+      "C": "result_doubled_twice",
+      "D": "result_doubled_twice"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -200,6 +210,11 @@
       "B": "Student applies the \u00bd factor twice to the triangle: (\u00bd \u00d7 \u00bd \u00d7 6 \u00d7 5) \u00d7 10 = 7.5 \u00d7 10 = 75 in\u00b3.",
       "C": "Student computes only the triangular base area and forgets to multiply by the prism length: \u00bd \u00d7 6 \u00d7 5 = 15 in\u00b3.",
       "D": "Correct: V = \u00bd \u00d7 6 \u00d7 5 \u00d7 10 = 150 in\u00b3."
+    },
+    "misconception_tag": {
+      "A": "omits_fractional_factor",
+      "B": "omits_fractional_factor",
+      "C": "omits_second_component"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -284,6 +299,11 @@
       "C": "This expression has no standard geometric meaning \u2014 it neither represents volume nor surface area of a cube.",
       "D": "This expression gives the area of one face of the cube (s\u00b2), not the volume."
     },
+    "misconception_tag": {
+      "A": "volume_surface_area_confusion",
+      "C": "volume_surface_area_confusion",
+      "D": "volume_surface_area_confusion"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -366,6 +386,11 @@
       "C": "Correct: V = 12 \u00d7 9 \u00d7 5 = 540 ft\u00b3.",
       "D": "Student doubles the correct volume: 2 \u00d7 540 = 1,080 ft\u00b3."
     },
+    "misconception_tag": {
+      "A": "dimensions_added_not_multiplied",
+      "B": "dimensions_added_not_multiplied",
+      "D": "result_doubled_twice"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -447,6 +472,11 @@
       "B": "Student omits the \u2153 factor: s\u00b2 \u00d7 h = 81 \u00d7 12 = 972 m\u00b3.",
       "C": "Student divides by 4 instead of 3: s\u00b2h \u00f7 4 = 972 \u00f7 4 = 243 m\u00b3.",
       "D": "Student uses s instead of s\u00b2 in the formula: \u2153 \u00d7 s \u00d7 h = \u2153 \u00d7 9 \u00d7 12 = 36 m\u00b3."
+    },
+    "misconception_tag": {
+      "B": "omits_fractional_factor",
+      "C": "omits_fractional_factor",
+      "D": "radius_not_squared"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -531,6 +561,11 @@
       "C": "Student uses \u00bd instead of \u2153 as the fractional factor: \u00bd \u00d7 1,582.56 = 791.28 cm\u00b3.",
       "D": "Correct: V = \u2153 \u00d7 3.14 \u00d7 36 \u00d7 14 = \u2153 \u00d7 1,582.56 = 527.52 cm\u00b3."
     },
+    "misconception_tag": {
+      "A": "omits_fractional_factor",
+      "B": "half_height_used",
+      "C": "cone_cylinder_ratio_wrong"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -613,6 +648,11 @@
       "B": "Correct: V = ($\\frac{4}{3}$) \u00d7 3.14 \u00d7 27 = 113.04 ft\u00b3.",
       "C": "Student uses 4\u03c0r\u00b3 instead of ($\\frac{4}{3}$)\u03c0r\u00b3, omitting the division by 3: 4 \u00d7 3.14 \u00d7 27 = 339.12 ft\u00b3.",
       "D": "Student applies the cone formula (\u2153\u03c0r\u00b2h) using h = r = 3: \u2153 \u00d7 3.14 \u00d7 9 \u00d7 3 = 28.26 ft\u00b3."
+    },
+    "misconception_tag": {
+      "A": "omits_fractional_factor",
+      "C": "omits_fractional_factor",
+      "D": "cone_cylinder_ratio_wrong"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -697,6 +737,11 @@
       "C": "Correct: h = 1,099 \u00f7 (3.14 \u00d7 25) = 1,099 \u00f7 78.5 = 14 cm.",
       "D": "Student divides by 2\u03c0r\u00b2 (doubles the denominator): 1,099 \u00f7 157 = 7 cm."
     },
+    "misconception_tag": {
+      "A": "radius_not_squared",
+      "B": "radius_not_squared",
+      "D": "radius_not_squared"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -779,6 +824,11 @@
       "B": "Student incorrectly sets up 288 = 18w (linear instead of quadratic): w = 288 \u00f7 18 = 16, then halves: 16 \u00f7 2 = 8 cm.",
       "C": "Student sets up 288 = 18w (treating the equation as linear): w = 288 \u00f7 18 = 16 cm.",
       "D": "Student correctly solves w\u00b2 = 16 \u2192 w = 4 but then halves: 4 \u00f7 2 = 2 cm."
+    },
+    "misconception_tag": {
+      "B": "area_squared_instead_of_rooted",
+      "C": "area_squared_instead_of_rooted",
+      "D": "area_squared_instead_of_rooted"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -863,6 +913,11 @@
       "C": "Student computes only the cylinder volume and omits the cone entirely: 502.4 cm\u00b3.",
       "D": "Correct: V_cyl + V_cone = 502.4 + 100.48 = 602.88 cm\u00b3."
     },
+    "misconception_tag": {
+      "A": "omits_second_component",
+      "B": "omits_second_component",
+      "C": "omits_second_component"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -945,6 +1000,11 @@
       "B": "Correct: (3+2) \u00d7 (2\u00d73) \u00d7 5 = 5 \u00d7 6 \u00d7 5 = 150.",
       "C": "Student computes (x+2) \u00d7 (2x) = 5 \u00d7 6 = 30 but forgets to multiply by the height of 5.",
       "D": "Student doubles the correct volume: 2 \u00d7 150 = 300."
+    },
+    "misconception_tag": {
+      "A": "partial_distribution",
+      "C": "partial_distribution",
+      "D": "result_doubled_twice"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1029,6 +1089,11 @@
       "C": "Correct: 1,130.4 \u2212 376.8 = 753.6 cm\u00b3.",
       "D": "Student adds the two volumes instead of subtracting: 1,130.4 + 376.8 = 1,507.2 cm\u00b3."
     },
+    "misconception_tag": {
+      "A": "omits_second_component",
+      "B": "omits_second_component",
+      "D": "omits_second_component"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1112,6 +1177,11 @@
       "C": "Student applies the \u2153 factor twice \u2014 treating both the cone and the cylinder as \u2153-scale: 3 \u00d7 3 = 9 cups.",
       "D": "Student uses \u00bd instead of \u2153 as the cone's fractional relationship to the cylinder: 1 \u00f7 (\u00bd) = 2 cups."
     },
+    "misconception_tag": {
+      "B": "cone_cylinder_ratio_wrong",
+      "C": "cone_cylinder_ratio_wrong",
+      "D": "cone_cylinder_ratio_wrong"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1194,6 +1264,11 @@
       "B": "Correct: r\u00b3 = 216; r = \u221b216 = 6 cm.",
       "C": "Student correctly finds r\u00b3 = 216 but divides by 6 instead of taking the cube root: 216 \u00f7 6 = 36 cm.",
       "D": "Student finds r = 6 correctly but doubles it, confusing radius with diameter: 2 \u00d7 6 = 12 cm."
+    },
+    "misconception_tag": {
+      "A": "forgets_square_root",
+      "C": "omits_fractional_factor",
+      "D": "forgets_square_root"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
