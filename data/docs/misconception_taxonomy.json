@@ -64,6 +64,54 @@
       ]
     }
   },
+  "phase3_findings": {
+    "unused_curriculum_slugs": {
+      "slugs": [
+        "longer_decimal_is_larger",
+        "multiplies_by_ten",
+        "percent_as_count",
+        "percent_denominator_error",
+        "skips_times_100"
+      ],
+      "note": "Correct and expected. These describe QR Unit-1 fraction/decimal/percent conversion errors the CAT bank does not contain. They stay in the vocabulary and continue to tag curriculum items."
+    },
+    "redundant_slug_pairs": {
+      "status": "needs_a_decision",
+      "note": "Found during Phase 3 tagging: two cross-cutting slugs never fired because a topic-specific slug describes the same error. The Phase 2 duplicate check missed them because the names share no tokens. Neither has been retired -- retiring is a taxonomy change and was not approved.",
+      "pairs": [
+        {
+          "unused": "conditions_on_wrong_group",
+          "superseded_by": [
+            "whole_population_as_denominator",
+            "conditional_reversed"
+          ],
+          "topics": [
+            "PR.3.4",
+            "PR.1.4"
+          ]
+        },
+        {
+          "unused": "ignores_without_replacement",
+          "superseded_by": [
+            "replacement_status_wrong",
+            "total_not_reduced_between_draws"
+          ],
+          "topics": [
+            "PR.3.3",
+            "PR.3.4"
+          ]
+        }
+      ]
+    },
+    "migration_followups": {
+      "status": "required_but_out_of_scope_for_phase3",
+      "items": [
+        "misconception_tag must NOT be added to the questions_public view -- the map omits the correct-answer letter and is therefore answer-bearing.",
+        "app/adaptive-test/type.ts: add \"misconception_tag\" to the PublicViewItem Omit list, or the type will claim a field the view does not return.",
+        "scripts/audit_anon_exposure.py: cover the new column so the regression check includes it."
+      ]
+    }
+  },
   "slugs": [
     {
       "slug": "absolute_change_as_percent",
