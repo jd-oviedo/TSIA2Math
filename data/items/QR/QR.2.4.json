@@ -35,6 +35,11 @@
       "C": "Correct: 1.20x = 84 \u2192 x = 70.",
       "D": "Student applies another 20% increase to 84 (84 \u00d7 1.20 = 100.8), moving further from the original instead of reversing the operation."
     },
+    "misconception_tag": {
+      "A": "percent_applied_forward_not_reversed",
+      "B": "percent_sign_confusion",
+      "D": "percent_applied_forward_not_reversed"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student adds 25% of the sale price to the sale price (54 + 0.25 \u00d7 54 = \\$67.50), applying the percent to the wrong base.",
       "C": "Student applies another 25% discount to the sale price (54 \u00d7 0.75 = \\$40.50), moving further from the original.",
       "D": "Student adds the percent number directly to the sale price (54 + 25 = \\$79) without converting to a decimal or using the correct formula."
+    },
+    "misconception_tag": {
+      "B": "percent_change_wrong_base",
+      "C": "percent_applied_forward_not_reversed",
+      "D": "percent_changes_added"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student estimates $\\frac{1}{0}$.08 \u2248 12 and multiplies (320 \u00d7 12 = \\$3,840) instead of using the exact divisor of 0.08.",
       "D": "Correct: 0.08x = 320 \u2192 x = 320 \u00f7 0.08 = \\$4,000."
     },
+    "misconception_tag": {
+      "A": "percent_applied_forward_not_reversed",
+      "B": "percent_applied_forward_not_reversed",
+      "C": "rounds_too_early"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Correct: 1.06x = 53 \u2192 x = \\$50.",
       "C": "Student adds 6% of the total to the total (53 + 0.06 \u00d7 53 = \\$56.18), adding tax again to an amount that already includes it.",
       "D": "Student subtracts the tax rate as a whole number from the total (53 \u2212 6 = \\$47) without converting to a decimal or using the correct formula."
+    },
+    "misconception_tag": {
+      "A": "percent_change_wrong_base",
+      "C": "percent_applied_forward_not_reversed",
+      "D": "percent_changes_added"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Correct: 0.40 \u00d7 120 = 48; other number = 120 \u2212 48 = 72.",
       "D": "Student adds 40% of 120 to the total (120 + 48 = 168) instead of subtracting to find the complement."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "percent_changes_added",
+      "D": "percent_applied_forward_not_reversed"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student ignores the base salary and divides the entire \\$2,000 goal by the commission rate: 2,000 \u00f7 0.05 = \\$40,000.",
       "C": "Student finds the earnings gap (2,000 \u2212 1,200 = \\$800) but stops there without dividing by the commission rate to find required sales.",
       "D": "Student divides the full \\$2,000 goal by the rate (2,000 \u00f7 0.05 = \\$40,000) and then subtracts the base salary (40,000 \u2212 1,200 = \\$38,800), applying operations in the wrong order."
+    },
+    "misconception_tag": {
+      "B": "omits_constant_term",
+      "C": "answers_intermediate_value",
+      "D": "omits_constant_term"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student adds 40% of the failing count to the failing count (18 + 0.40 \u00d7 18 = 18 + 7.2 \u2248 25) rather than identifying the complementary percent and dividing.",
       "D": "Correct: 60% failed \u2192 0.60n = 18 \u2192 n = 30."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "part_whole_confusion",
+      "C": "percent_applied_forward_not_reversed"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -595,6 +630,11 @@
       "C": "Student adds the two markup percents (30% + 10% = 40%) and subtracts that as dollars: 143 \u2212 40 = \\$103.",
       "D": "Student subtracts only the first markup percent as a dollar amount: 143 \u2212 30 = \\$113."
     },
+    "misconception_tag": {
+      "A": "omits_second_component",
+      "C": "percent_changes_added",
+      "D": "percent_changes_added"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -674,6 +714,11 @@
       "B": "Student subtracts the target concentration from the original concentration and multiplies by volume (0.30 \u2212 0.20) \u00d7 10 = 1 liter, treating the percent difference as a volume without using an equation.",
       "C": "Correct: 3 \u00f7 (10 + w) = 0.20 \u2192 w = 5 liters.",
       "D": "Student correctly uses C\u2081V\u2081 = C\u2082V\u2082 to find the new total volume (0.30 \u00d7 10 = 0.20 \u00d7 V\u2082 \u2192 V\u2082 = 15 L) but reports 15 liters instead of the added water (15 \u2212 10 = 5 liters)."
+    },
+    "misconception_tag": {
+      "A": "mixture_reports_total_not_added",
+      "B": "mixture_reports_total_not_added",
+      "D": "mixture_reports_total_not_added"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -759,6 +804,11 @@
       "B": "Student assumes the markup must equal the coupon rate for break-even (20% markup offsets 20% coupon), not recognizing that a 20% discount on the marked-up price requires more than a 20% markup to recover cost.",
       "C": "Student reports the coupon multiplier (0.80) as a percent (80%), confusing the discount factor with the required markup rate.",
       "D": "Student reasons that to offset a 20% loss, a 20% markup is needed plus an additional 20% of that markup (20% + 20% \u00d7 20% = 20% + 4% = 24%), then doubles it (24% + 20% = 44%), misapplying compound reasoning."
+    },
+    "misconception_tag": {
+      "B": "breakeven_markup_assumed_equal_to_discount",
+      "C": "breakeven_markup_assumed_equal_to_discount",
+      "D": "breakeven_markup_assumed_equal_to_discount"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
