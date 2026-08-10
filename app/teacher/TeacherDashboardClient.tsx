@@ -46,11 +46,18 @@ interface RosterRow {
 
 interface Misconception {
   rank: number;
-  item_id: string;
-  selected_answer: string;
+  // Taxonomy slug. Grouping key — one card per slug, across every item.
+  misconception_tag: string;
+  // Prose from one representative item, not a definition of the slug. Paired
+  // with item_count so the card reads as an example rather than the whole
+  // misconception.
   distractor_text: string;
+  example_item_id: string;
+  example_selected_answer: string;
+  item_count: number;
   primary_strand: string;
   topic_id: string;
+  topic_count: number;
   frequency: number;
   affected_students: number;
 }
@@ -563,10 +570,20 @@ function MiscCard({ m, testedCount }: { m: Misconception; testedCount: number })
             {m.primary_strand}
           </span>
         </div>
-        <span style={{ fontFamily: "'Courier New', monospace", fontSize: 11, color: DASH.muted, background: '#F4F3EE', padding: '3px 7px', borderRadius: 5, whiteSpace: 'nowrap' }}>{m.topic_id}</span>
+        <span style={{ fontFamily: "'Courier New', monospace", fontSize: 11, color: DASH.muted, background: '#F4F3EE', padding: '3px 7px', borderRadius: 5, whiteSpace: 'nowrap' }}>
+          {m.topic_id}{m.topic_count > 1 ? ` +${m.topic_count - 1}` : ''}
+        </span>
       </div>
       <div style={{ fontSize: 14, lineHeight: 1.5, color: '#26262A', flex: '1 1 auto', maxHeight: 88, overflow: 'hidden' }}>
         <MathText text={m.distractor_text} />
+      </div>
+      {/* One representative example, labelled as such once the same
+          misconception shows up on more than one item. Without this the card
+          reads as if the prose were the definition of the misconception. */}
+      <div style={{ fontSize: 11, color: DASH.muted, marginTop: 8 }}>
+        {m.item_count > 1
+          ? `Example of ${m.item_count} items where this appeared`
+          : 'Seen on 1 item'}
       </div>
       <div style={{ marginTop: 14, paddingTop: 13, borderTop: `1px solid ${DASH.hairline}`, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 12 }}>
         <div style={{ fontSize: 12, color: DASH.muted }}>
@@ -1214,7 +1231,7 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
                   </div>
                 ) : (
                   <div style={{ display: 'grid', gridTemplateColumns: `repeat(${miscCols},1fr)`, gap: 16 }}>
-                    {misconceptions.map((m) => <MiscCard key={`${m.item_id}-${m.selected_answer}`} m={m} testedCount={tested.length} />)}
+                    {misconceptions.map((m) => <MiscCard key={m.misconception_tag} m={m} testedCount={tested.length} />)}
                   </div>
                 )}
               </>

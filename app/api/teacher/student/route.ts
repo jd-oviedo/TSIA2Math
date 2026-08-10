@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import { requireTeacher } from "../../../lib/auth";
 import { createAdminClient } from "../../../lib/supabase-admin";
+import {
+  aggregateMisconceptions,
+  type AggregatedMisconception,
+} from "../../../lib/misconception-aggregate";
 
 export async function GET(req: Request) {
   const profile = await requireTeacher();
@@ -67,66 +71,25 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: sessError.message }, { status: 500 });
   }
 
-  // Get wrong responses from all sessions for misconception aggregation
+  // Same aggregation as the class view, scoped to this student's sessions, so
+  // the two views cannot drift in how a misconception is defined or counted.
+  // affected_students is computed rather than hardcoded to 1: it is a distinct
+  // count over the sessions in scope, which for one student is 1 by
+  // construction, and stays correct if this ever widens.
   const sessionIds = (sessions ?? []).map((s) => s.id);
-  let misconceptions: object[] = [];
+  const sessionToStudent = new Map(sessionIds.map((id) => [id, studentId]));
 
-  if (sessionIds.length > 0) {
-    const { data: responses } = await admin
-      .from("responses")
-      .select("item_id, selected_answer, session_id")
-      .in("session_id", sessionIds)
-      .eq("is_correct", false);
-
-    if (responses && responses.length > 0) {
-      const itemIds = [...new Set(responses.map((r) => r.item_id))];
-
-      const { data: questions } = await admin
-        .from("questions")
-        .select("item_id, primary_strand, topic_id, distractor_logic")
-        .in("item_id", itemIds);
-
-      const questionMap = new Map(
-        (questions ?? []).map((q) => [q.item_id, q])
-      );
-
-      type AggEntry = {
-        key: string;
-        item_id: string;
-        selected_answer: string;
-        distractor_text: string;
-        primary_strand: string;
-        topic_id: string;
-        frequency: number;
-      };
-
-      const aggMap = new Map<string, AggEntry>();
-
-      for (const r of responses) {
-        const q = questionMap.get(r.item_id);
-        if (!q) continue;
-        const distractorText = q.distractor_logic?.[r.selected_answer] ?? "Unknown misconception";
-        if (distractorText.startsWith("Correct:")) continue;
-        const key = `${r.item_id}__${r.selected_answer}`;
-        if (!aggMap.has(key)) {
-          aggMap.set(key, {
-            key,
-            item_id: r.item_id,
-            selected_answer: r.selected_answer,
-            distractor_text: distractorText,
-            primary_strand: q.primary_strand,
-            topic_id: q.topic_id,
-            frequency: 0,
-          });
-        }
-        aggMap.get(key)!.frequency += 1;
-      }
-
-      misconceptions = [...aggMap.values()]
-        .sort((a, b) => b.frequency - a.frequency)
-        .slice(0, 6)
-        .map((m, i) => ({ ...m, rank: i + 1, affected_students: 1 }));
-    }
+  let misconceptions: AggregatedMisconception[] = [];
+  let pendingMigration = false;
+  try {
+    const result = await aggregateMisconceptions(admin, sessionIds, sessionToStudent, 6);
+    misconceptions = result.misconceptions;
+    pendingMigration = result.pendingMigration;
+  } catch (err) {
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : "Aggregation failed" },
+      { status: 500 }
+    );
   }
 
   return NextResponse.json({
@@ -139,5 +102,6 @@ export async function GET(req: Request) {
     },
     sessions: sessions ?? [],
     misconceptions,
+    pending_migration: pendingMigration,
   });
 }

@@ -25,12 +25,18 @@ type Session = {
 
 type Misconception = {
   rank: number;
-  item_id: string;
-  selected_answer: string;
+  // Taxonomy slug. Grouping key — one card per slug, across every item.
+  misconception_tag: string;
+  // Prose from one representative item, not a definition of the slug.
   distractor_text: string;
+  example_item_id: string;
+  example_selected_answer: string;
+  item_count: number;
   primary_strand: string;
   topic_id: string;
+  topic_count: number;
   frequency: number;
+  affected_students: number;
 };
 
 type StudentData = {
@@ -313,7 +319,7 @@ export default function StudentDetailPage() {
               {misconceptions.map((mc) => {
                 const color = STR[(mc.primary_strand as Strand)]?.color ?? "#D3D1C7";
                 return (
-                  <div key={`${mc.item_id}-${mc.selected_answer}`} style={{ ...cardStyle, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
+                  <div key={mc.misconception_tag} style={{ ...cardStyle, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 11 }}>
                         <div style={{ width: 26, height: 26, borderRadius: 8, background: "#0F1E35", color: "#E7BE7B", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700 }}>{mc.rank}</div>
@@ -321,10 +327,18 @@ export default function StudentDetailPage() {
                           <span style={{ width: 9, height: 9, borderRadius: 2, background: color }} />{mc.primary_strand}
                         </span>
                       </div>
-                      <span style={{ fontFamily: "'Courier New', monospace", fontSize: 11, color: "#5F5E5A", background: "#F4F3EE", padding: "3px 7px", borderRadius: 5 }}>{mc.topic_id}</span>
+                      <span style={{ fontFamily: "'Courier New', monospace", fontSize: 11, color: "#5F5E5A", background: "#F4F3EE", padding: "3px 7px", borderRadius: 5 }}>
+                        {mc.topic_id}{mc.topic_count > 1 ? ` +${mc.topic_count - 1}` : ""}
+                      </span>
                     </div>
                     <div style={{ fontSize: 14, lineHeight: 1.5, color: "#26262A" }}>
                       <MathText text={mc.distractor_text} />
+                    </div>
+                    {/* Same representative-example framing as the class view. */}
+                    <div style={{ fontSize: 11, color: "#8A8983", marginTop: -4 }}>
+                      {mc.item_count > 1
+                        ? `Example of ${mc.item_count} items where this appeared`
+                        : "Seen on 1 item"}
                     </div>
                     <div style={{ fontSize: 12, color: "#5F5E5A", paddingTop: 10, borderTop: "1px solid #F0EEE7" }}>
                       Selected <strong style={{ color: "#1A1A1A" }}>{mc.frequency}</strong> {mc.frequency === 1 ? "time" : "times"} across all attempts
