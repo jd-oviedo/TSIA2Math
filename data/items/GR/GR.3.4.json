@@ -37,6 +37,11 @@
       "C": "Correct: $\\sqrt{8^{2} + 6^{2}} = \\sqrt{100} = 10$ meters.",
       "D": "Student multiplies the sides, computing the area of the garden ($8 \\times 6 = 48$) instead of the diagonal."
     },
+    "misconception_tag": {
+      "A": "legs_combined_without_squaring",
+      "B": "legs_combined_without_squaring",
+      "D": "perimeter_area_confusion"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -118,6 +123,11 @@
       "B": "Student doubles the side length, assuming the diagonal is twice a side ($2 \\times 10 = 20$).",
       "C": "Student applies the 30-60-90 factor $\\sqrt{3}$ instead of the 45-45-90 factor $\\sqrt{2}$, giving $10\\sqrt{3}$.",
       "D": "Student halves the side before applying the ratio, computing $5\\sqrt{2}$ instead of $10\\sqrt{2}$."
+    },
+    "misconception_tag": {
+      "B": "legs_combined_without_squaring",
+      "C": "special_factor_applied_to_wrong_part",
+      "D": "special_factor_applied_to_wrong_part"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -201,6 +211,11 @@
       "C": "Student halves the run, treating the rise as half the horizontal distance ($12 \\div 2 = 6$).",
       "D": "Student halves the run and then multiplies by $\\sqrt{2}$, combining two unrelated errors to get $6\\sqrt{2}$."
     },
+    "misconception_tag": {
+      "A": "adjacent_reported_for_opposite",
+      "C": "special_factor_applied_to_wrong_part",
+      "D": "special_factor_applied_to_wrong_part"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -282,6 +297,11 @@
       "B": "Student uses the full hypotenuse of 20 as the height, ignoring the angle entirely.",
       "C": "Student multiplies the hypotenuse by $\\sqrt{3}$ instead of taking half of it, giving $20\\sqrt{3}$.",
       "D": "Correct: the side opposite $30^{\\circ}$ is half the hypotenuse, so the height is $\\frac{20}{2} = 10$ feet."
+    },
+    "misconception_tag": {
+      "A": "adjacent_reported_for_opposite",
+      "B": "adjacent_reported_for_opposite",
+      "C": "special_factor_applied_to_wrong_part"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -365,6 +385,11 @@
       "C": "Student subtracts the two distances: $12 - 9 = 3$.",
       "D": "Student multiplies the two distances: $9 \\times 12 = 108$."
     },
+    "misconception_tag": {
+      "A": "legs_combined_without_squaring",
+      "C": "legs_combined_without_squaring",
+      "D": "perimeter_area_confusion"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -446,6 +471,11 @@
       "B": "Student computes the diagonal (50) correctly but reports it as the answer instead of finding the difference.",
       "C": "Student reports the first runner's total path length (70) without subtracting the diagonal.",
       "D": "Student adds all three lengths ($40 + 30 + 50$) instead of subtracting, treating it like a perimeter."
+    },
+    "misconception_tag": {
+      "B": "answers_intermediate_value",
+      "C": "answers_intermediate_value",
+      "D": "legs_combined_without_squaring"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -529,6 +559,11 @@
       "C": "Correct: side opposite $60^{\\circ}$ is $30 \\times \\frac{\\sqrt{3}}{2} = 15\\sqrt{3}$ feet.",
       "D": "Student applies the 45-45-90 factor $\\sqrt{2}$ to half the hypotenuse instead of the 30-60-90 factor $\\sqrt{3}$, giving $15\\sqrt{2}$."
     },
+    "misconception_tag": {
+      "A": "adjacent_reported_for_opposite",
+      "B": "special_factor_applied_to_wrong_part",
+      "D": "special_factor_applied_to_wrong_part"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -610,6 +645,11 @@
       "B": "Student inverts the ratio, computing adjacent over opposite: $48 \\times \\frac{4}{3} = 64$.",
       "C": "Student reads the 3-4-5 pattern (adjacent 48 scales the 4) and reports the hypotenuse of 60 instead of the opposite side.",
       "D": "Student ignores the ratio and reports the given ground distance of 48 as the height."
+    },
+    "misconception_tag": {
+      "B": "inverts_trig_ratio",
+      "C": "adjacent_reported_for_opposite",
+      "D": "adjacent_reported_for_opposite"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -693,6 +733,11 @@
       "C": "Student finds the ground distance by adding linearly ($20 + 12 = 32$) instead of using the Pythagorean theorem, then sums $12 + 32 + 20 = 64$.",
       "D": "Correct: ground distance is $\\sqrt{20^{2} - 12^{2}} = 16$, so the total is $12 + 16 + 20 = 48$ feet."
     },
+    "misconception_tag": {
+      "A": "legs_combined_without_squaring",
+      "B": "legs_combined_without_squaring",
+      "C": "legs_combined_without_squaring"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -774,6 +819,11 @@
       "B": "Correct: $d = \\frac{50}{\\tan(40^{\\circ})} \\approx 60$ feet.",
       "C": "Student uses sine instead of tangent: $\\frac{50}{\\sin(40^{\\circ})} \\approx 78$.",
       "D": "Student uses cosine instead of tangent: $\\frac{50}{\\cos(40^{\\circ})} \\approx 65$."
+    },
+    "misconception_tag": {
+      "A": "special_ratio_multiplied_not_divided",
+      "C": "wrong_trig_ratio_selected",
+      "D": "wrong_trig_ratio_selected"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -857,6 +907,11 @@
       "C": "Correct: solving $x^{2} + (x + 5)^{2} = 625$ gives $x = 15$ for the shorter leg.",
       "D": "Student assumes the legs are equal (an isosceles right triangle) and halves the hypotenuse: $\\frac{25}{2} = 12.5$."
     },
+    "misconception_tag": {
+      "A": "short_long_leg_roles_confused",
+      "B": "legs_combined_without_squaring",
+      "D": "special_factor_applied_to_wrong_part"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -938,6 +993,11 @@
       "B": "Student finds only the base diagonal (15) and stops, forgetting to account for the height.",
       "C": "Student adds all three edge lengths linearly: $12 + 9 + 8 = 29$.",
       "D": "Student finds the base diagonal (15) correctly but then adds the height linearly ($15 + 8$) instead of applying the Pythagorean theorem a second time."
+    },
+    "misconception_tag": {
+      "B": "answers_intermediate_value",
+      "C": "legs_combined_without_squaring",
+      "D": "legs_combined_without_squaring"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1021,6 +1081,11 @@
       "C": "Student uses sine instead of tangent for both heights: $200 \\sin(48^{\\circ}) - 200 \\sin(32^{\\circ}) \\approx 43$.",
       "D": "Correct: $200 \\tan(48^{\\circ}) - 200 \\tan(32^{\\circ}) \\approx 222 - 125 = 97$ feet."
     },
+    "misconception_tag": {
+      "A": "initial_value_not_subtracted",
+      "B": "angles_combined_before_applying_ratio",
+      "C": "wrong_trig_ratio_selected"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1103,6 +1168,11 @@
       "C": "Correct: altitude $= 6\\sqrt{3}$, so area $= \\frac{1}{2} \\times 12 \\times 6\\sqrt{3} = 36\\sqrt{3}$.",
       "D": "Student uses the half-base (6) as the altitude, dropping the $\\sqrt{3}$ factor: $\\frac{1}{2} \\times 12 \\times 6 = 36$."
     },
+    "misconception_tag": {
+      "A": "omits_fractional_factor",
+      "B": "special_triangle_factor_swapped",
+      "D": "special_factor_applied_to_wrong_part"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1184,6 +1254,11 @@
       "B": "Correct: $\\frac{1}{2} x (x + 2) = 24$ gives $x^{2} + 2x - 48 = 0$, so $x = 6$.",
       "C": "Student omits the $\\frac{1}{2}$ factor, solving $x(x + 2) = 24$ as $x^{2} + 2x - 24 = 0$, which gives $x = 4$.",
       "D": "Student halves the area and stops, treating $24 \\div 2 = 12$ as the value of $x$ without using the base."
+    },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "C": "omits_fractional_factor",
+      "D": "answers_intermediate_value"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
