@@ -35,6 +35,11 @@
       "C": "Correct: 4 and 8 are the only elements appearing in both sets, so A intersect B = {4, 8}.",
       "D": "Student lists the element that is only in B and not in A, rather than the shared elements."
     },
+    "misconception_tag": {
+      "A": "union_intersection_swapped",
+      "B": "union_intersection_swapped",
+      "D": "union_intersection_swapped"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -108,6 +113,11 @@
       "B": "Student reports set A itself instead of the elements outside of A.",
       "C": "Student thinks the complement is empty, as if A already contained everything in U.",
       "D": "Student reports the entire universal set rather than only the elements not in A."
+    },
+    "misconception_tag": {
+      "B": "complement_misidentified",
+      "C": "complement_misidentified",
+      "D": "complement_misidentified"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -188,6 +198,11 @@
       "C": "Student subtracts the overlap twice (12 + 9 - 4 - 4 = 13) instead of once.",
       "D": "Student adds the two set sizes (12 + 9 = 21) without subtracting the shared elements."
     },
+    "misconception_tag": {
+      "A": "union_intersection_swapped",
+      "C": "overlap_subtracted_twice",
+      "D": "overlap_not_subtracted"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -262,6 +277,11 @@
       "B": "Student uses only the 5 students in both (the intersection), getting $\\frac{5}{30}$ = $\\frac{1}{6}$.",
       "C": "Student adds the overlap instead of subtracting it (12 + 8 + 5 = 25), getting $\\frac{25}{30}$ = $\\frac{5}{6}$.",
       "D": "Correct: 12 + 8 - 5 = 15 students are in band or choir, so $\\frac{15}{30}$ = $\\frac{1}{2}$."
+    },
+    "misconception_tag": {
+      "A": "overlap_not_subtracted",
+      "B": "union_intersection_swapped",
+      "C": "overlap_subtracted_twice"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -343,6 +363,11 @@
       "C": "Student finds the people who like neither (50 - 38 = 12) and mislabels it as 'both'.",
       "D": "Student takes the difference of the two set sizes (28 - 20 = 8) instead of applying the union rule."
     },
+    "misconception_tag": {
+      "B": "union_intersection_swapped",
+      "C": "union_intersection_swapped",
+      "D": "union_intersection_swapped"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -422,6 +447,11 @@
       "B": "Student subtracts the pairwise overlaps but forgets to add back the 5 who take all three (120 - 45 = 75).",
       "C": "Correct: 50 + 40 + 30 - 20 - 15 - 10 + 5 = 80.",
       "D": "Student subtracts the triple overlap instead of adding it back (120 - 45 - 5 = 70)."
+    },
+    "misconception_tag": {
+      "A": "overlap_not_subtracted",
+      "B": "triple_overlap_not_added_back",
+      "D": "overlap_subtracted_twice"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
