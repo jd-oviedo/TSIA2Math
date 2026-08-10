@@ -37,6 +37,11 @@
       "C": "Correct: center $(3, 5)$ from the subtracted constants, and radius $\\sqrt{49} = 7$.",
       "D": "Student swaps the coordinates of the center, reporting $(5, 3)$ instead of $(3, 5)$."
     },
+    "misconception_tag": {
+      "A": "circle_center_signs_not_flipped",
+      "B": "radius_squared_confused_with_radius",
+      "D": "coordinates_swapped"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -117,6 +122,11 @@
       "B": "Correct: $(x + 2)$ gives $h = -2$, $(y - 6)$ gives $k = 6$, and $r = \\sqrt{25} = 5$.",
       "C": "Student reads both constants with their displayed signs instead of flipping them, reporting center $(2, -6)$.",
       "D": "Student flips the sign on the $y$ term correctly but reads the $x$ term as $+2$ giving $2$, reporting center $(2, 6)$."
+    },
+    "misconception_tag": {
+      "A": "radius_squared_confused_with_radius",
+      "C": "circle_center_signs_not_flipped",
+      "D": "circle_center_signs_not_flipped"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -199,6 +209,11 @@
       "C": "Student writes $(y - 1)$ instead of $(y + 1)$, failing to flip the sign of the negative $y$-coordinate of the center.",
       "D": "Correct: $(x - 4)^{2} + (y + 1)^{2} = 36$."
     },
+    "misconception_tag": {
+      "A": "circle_center_signs_not_flipped",
+      "B": "radius_squared_confused_with_radius",
+      "C": "circle_center_signs_not_flipped"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -279,6 +294,11 @@
       "B": "Student takes the right side as the radius directly, reporting $r = 16$ instead of $\\sqrt{16} = 4$.",
       "C": "Student divides the right side by 2 instead of taking its square root, reporting $16 \\div 2 = 8$ instead of $\\sqrt{16} = 4$.",
       "D": "Student reads the center with the wrong signs, reporting $(-1, -2)$ instead of $(1, 2)$."
+    },
+    "misconception_tag": {
+      "B": "radius_squared_confused_with_radius",
+      "C": "radius_squared_confused_with_radius",
+      "D": "circle_center_signs_not_flipped"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -361,6 +381,11 @@
       "C": "Correct: $x^{2} + (y - 3)^{2} = 25$.",
       "D": "Student places the center value 3 on the $x$ term instead of the $y$ term, writing $(x - 3)^{2} + y^{2}$."
     },
+    "misconception_tag": {
+      "A": "circle_center_signs_not_flipped",
+      "B": "radius_squared_confused_with_radius",
+      "D": "coordinates_swapped"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -441,6 +466,11 @@
       "B": "Student does not flip the signs of the center coordinates, writing $(x + 2)$ and $(y + 3)$ instead of $(x - 2)$ and $(y - 3)$.",
       "C": "Student adds the coordinate differences instead of using the distance formula: $4 + 3 = 7$, then uses 7 on the right side.",
       "D": "Correct: $r = \\sqrt{4^{2} + 3^{2}} = 5$, so $r^{2} = 25$ and the equation is $(x - 2)^{2} + (y - 3)^{2} = 25$."
+    },
+    "misconception_tag": {
+      "A": "radius_squared_confused_with_radius",
+      "B": "circle_center_signs_not_flipped",
+      "C": "distance_formula_replaced_by_sum"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -523,6 +553,11 @@
       "C": "Student finds the center correctly but takes the right side as the radius, reporting $r = 25$ instead of $\\sqrt{25} = 5$.",
       "D": "Student flips the sign of the $x$ term but reads the $y$ term as $+1$, reporting center $(4, 1)$ instead of $(-4, 1)$."
     },
+    "misconception_tag": {
+      "B": "circle_center_signs_not_flipped",
+      "C": "radius_squared_confused_with_radius",
+      "D": "circle_center_signs_not_flipped"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -603,6 +638,11 @@
       "B": "Correct: $(x + 3)^{2} + (y + 2)^{2} = 49$.",
       "C": "Student uses the radius directly on the right side instead of its square, writing 7 instead of $7^{2} = 49$.",
       "D": "Student doubles the radius instead of squaring it, writing $2 \\times 7 = 14$ instead of $7^{2} = 49$."
+    },
+    "misconception_tag": {
+      "A": "circle_center_signs_not_flipped",
+      "C": "radius_squared_confused_with_radius",
+      "D": "radius_squared_confused_with_radius"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -685,6 +725,11 @@
       "C": "Correct: $r = \\sqrt{5^{2} + 12^{2}} = 13$, so $r^{2} = 169$ and the equation is $x^{2} + y^{2} = 169$.",
       "D": "Student squares only the first coordinate, using $5^{2} = 25$ and ignoring the 12 entirely."
     },
+    "misconception_tag": {
+      "A": "radius_squared_confused_with_radius",
+      "B": "distance_formula_replaced_by_sum",
+      "D": "distance_formula_replaced_by_sum"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -765,6 +810,11 @@
       "B": "Student reads both center constants with their displayed signs, writing $(x + 1)$ and $(y - 4)$ instead of $(x - 1)$ and $(y + 4)$.",
       "C": "Student adds the coordinate differences instead of using the distance formula: $3 + 4 = 7$, then uses 7 on the right side.",
       "D": "Correct: $r = \\sqrt{3^{2} + 4^{2}} = 5$, so $r^{2} = 25$ and the equation is $(x - 1)^{2} + (y + 4)^{2} = 25$."
+    },
+    "misconception_tag": {
+      "A": "circle_center_signs_not_flipped",
+      "B": "circle_center_signs_not_flipped",
+      "C": "distance_formula_replaced_by_sum"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -847,6 +897,11 @@
       "C": "Student finds the correct center but takes the right side as the radius, reporting $r = 25$ instead of $\\sqrt{25} = 5$.",
       "D": "Student uses the full linear coefficients as the center values instead of halving them, reporting $(-4, 6)$ from the 4 and $-6$ rather than $(-2, 3)$."
     },
+    "misconception_tag": {
+      "A": "circle_center_signs_not_flipped",
+      "C": "radius_squared_confused_with_radius",
+      "D": "linear_coefficient_not_halved"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -927,6 +982,11 @@
       "B": "Student reads the center with the wrong signs, reporting $(-4, 1)$ instead of $(4, -1)$.",
       "C": "Student finds the correct center but takes the right side as the radius, reporting $r = 9$ instead of $\\sqrt{9} = 3$.",
       "D": "Student uses the full linear coefficients as the center values instead of halving them, reporting $(8, -2)$ from the $-8$ and 2 rather than $(4, -1)$."
+    },
+    "misconception_tag": {
+      "B": "circle_center_signs_not_flipped",
+      "C": "radius_squared_confused_with_radius",
+      "D": "linear_coefficient_not_halved"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1009,6 +1069,11 @@
       "C": "Student uses the full linear coefficient as the center value instead of halving it, reporting an $x$-coordinate of 10 rather than 5.",
       "D": "Correct: completing the square gives $(x - 5)^{2} + y^{2} = 49$, so center $(5, 0)$ and radius 7."
     },
+    "misconception_tag": {
+      "A": "circle_center_signs_not_flipped",
+      "B": "radius_squared_confused_with_radius",
+      "C": "linear_coefficient_not_halved"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1090,6 +1155,11 @@
       "C": "Student sets $(x - 3)^{2} = 9$ but reads only $x = 3$ from the center term, ignoring the $\\pm 3$ that produces two solutions.",
       "D": "Student solves for the y-axis instead of the x-axis, setting $x = 0$ to get $(y - 4)^{2} = 16$ and $y = 0$ or $y = 8$."
     },
+    "misconception_tag": {
+      "B": "answers_intermediate_value",
+      "C": "answers_intermediate_value",
+      "D": "answers_intermediate_value"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1170,6 +1240,11 @@
       "B": "Student uses the full linear coefficients as the center values instead of halving them, reporting $(-6, 4)$ from the 6 and $-4$ rather than $(-3, 2)$.",
       "C": "Correct: completing the square gives $(x + 3)^{2} + (y - 2)^{2} = 25$, so center $(-3, 2)$ and radius 5.",
       "D": "Student finds the correct center but takes the right side as the radius, reporting $r = 25$ instead of $\\sqrt{25} = 5$."
+    },
+    "misconception_tag": {
+      "A": "circle_center_signs_not_flipped",
+      "B": "linear_coefficient_not_halved",
+      "D": "radius_squared_confused_with_radius"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
