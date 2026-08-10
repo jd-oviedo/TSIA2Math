@@ -16,8 +16,9 @@
 -- table are left exactly as they are -- see the note below on why that is safe,
 -- and why they are a separate conversation.
 --
--- NOT RUN. Held for review like every other file here.
--- Run it in the Supabase SQL editor when you want it; kept for version control.
+-- Status: already applied, 2026-08-10, via the Supabase SQL editor. Kept in the
+-- repo as the record of the change, and re-runnable if the project is ever
+-- rebuilt -- revoking a privilege that is already gone is a no-op.
 
 
 -- ─── What this makes inert ───────────────────────────────────────────────────
