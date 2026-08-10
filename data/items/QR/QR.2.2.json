@@ -35,6 +35,11 @@
       "C": "Student multiplies both numbers in the denominator position (4 \u00d7 20 = 80) without applying the rate of 3 miles.",
       "D": "Student multiplies the rate numerator by the full time (3 \u00d7 20 = 60) without accounting for the 4-minute denominator in the rate."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "C": "multiplies_instead_of_divides",
+      "D": "multiplies_instead_of_divides"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student multiplies the target (60 pages) by the given time (3 min) instead of dividing by the rate, giving 60 \u00d7 3 = 180.",
       "C": "Correct: rate = 4 pages/min; time = 60 \u00f7 4 = 15 minutes.",
       "D": "Student divides the target pages by the given time directly (60 \u00f7 3 = 20) without first computing the pages-per-minute rate."
+    },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "multiplies_instead_of_divides",
+      "D": "answers_intermediate_value"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student divides the target cookies by the original cookies (60 \u00f7 24 \u2248 2.5), rounds to 3, and reports the scale factor instead of multiplying it by 2.",
       "D": "Student multiplies the original cups by the original cookie count (2 \u00d7 24 = 48) rather than using the ratio to scale toward 60 cookies."
     },
+    "misconception_tag": {
+      "B": "reversed_division",
+      "C": "rounds_too_early",
+      "D": "multiplies_instead_of_divides"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student multiplies the original time by the target job count (8 \u00d7 5 = 40) without first computing the per-job rate.",
       "C": "Student adds the original job count to the original time (8 + 2 = 10) instead of using the proportional relationship.",
       "D": "Correct: 1 job takes 4 hours; 5 jobs take 5 \u00d7 4 = 20 hours."
+    },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "answers_intermediate_value",
+      "C": "adds_instead_of_scales"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Correct: $\\frac{8}{4}$ = $\\frac{x}{10}$ \u2192 x = 20 feet.",
       "D": "Student multiplies the pole height by the tree shadow without dividing by the pole shadow (8 \u00d7 10 = 80), skipping the proportional division step."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "reversed_division",
+      "D": "proportional_division_step_skipped"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student subtracts the original cost (\\$36) from the budget (\\$65 \u2212 \\$36 = \\$29) without computing the cost of 15 gallons.",
       "C": "Student divides \\$36 by 12 instead of 9, finding a rate of \\$3/gal, giving 15 \u00d7 \\$3 = \\$45, then \\$65 \u2212 \\$45 = \\$20.",
       "D": "Student correctly computes the cost of 15 gallons (\\$60) but reports the cost as the answer instead of calculating the remaining change."
+    },
+    "misconception_tag": {
+      "B": "omits_second_component",
+      "C": "reversed_division",
+      "D": "answers_intermediate_value"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student divides the head start by Machine B's rate (50 \u00f7 20 = 2.5) and rounds to 3, using B's rate instead of the rate difference between the two machines.",
       "D": "Correct: 30t = 20t + 50 \u2192 10t = 50 \u2192 t = 5 hours."
     },
+    "misconception_tag": {
+      "A": "relative_speed_ignored",
+      "B": "relative_speed_ignored",
+      "C": "relative_speed_ignored"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -595,6 +630,11 @@
       "C": "Student computes the total cost at Store B (\\$1.30 \u00d7 8 = \\$10.40) and reports it as the savings rather than finding the difference between the two stores\u2019 totals.",
       "D": "Student rounds the unit prices to the nearest dollar (\\$1.80/1.5 \u2248 \\$2/lb; \\$2.60/2 \u2248 \\$1/lb) and computes a \\$1.00/lb savings over 8 pounds, giving \\$8.00."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "C": "answers_intermediate_value",
+      "D": "rounds_too_early"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -674,6 +714,11 @@
       "B": "Student applies the alligation method but misreads the result: alligation gives parts of A to parts of B = (25\u221210):(40\u221225) = 15:15 = 1:1, meaning equal volumes are needed. The student then treats 1/(1+1) = $\\frac{1}{2}$ as A\u2019s fraction of B\u2019s volume (rather than A\u2019s fraction of the total), computing $\\frac{1}{2}$ \u00d7 6 = 3 liters of A \u2014 an incorrect application of the alligation ratio.",
       "C": "Correct: 0.40x + 0.60 = 0.25x + 1.50 \u2192 0.15x = 0.90 \u2192 x = 6 liters.",
       "D": "Student omits the salt contributed by Solution B, solving 0.40x = 0.25(x + 6) \u2192 0.15x = 1.50 \u2192 x = 10 liters."
+    },
+    "misconception_tag": {
+      "A": "omits_second_component",
+      "B": "alligation_ratio_misapplied",
+      "D": "omits_second_component"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -759,6 +804,11 @@
       "B": "Student solves correctly (t = 1 hour) but adds that time to Train A's departure (9:00 AM + 1 hr = 10:00 AM) instead of Train B's departure.",
       "C": "Student divides Train A's speed by the speed difference (60 \u00f7 30 = 2 hours) and adds to 9:00 AM, arriving at 11:00 AM.",
       "D": "Student correctly computes Train A\u2019s 30-minute head-start distance (60 mph \u00d7 0.5 hr = 30 miles) but then divides that gap by Train B\u2019s full speed (30 \u00f7 90 = $\\frac{1}{3}$ hr = 20 min) rather than by the relative closing speed (90 \u2212 60 = 30 mph). Adding 20 minutes to 9:30 AM gives 9:50 AM."
+    },
+    "misconception_tag": {
+      "B": "relative_speed_ignored",
+      "C": "relative_speed_ignored",
+      "D": "relative_speed_ignored"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
