@@ -127,8 +127,14 @@ export async function POST(request: Request) {
   const { data: session, error: sessionError } = await admin
     .from("sessions")
     .insert({
+      // sessions.teacher_id is deliberately not written. It used to be set to
+      // userId -- the test-taker's own id in a column named for their teacher.
+      // Nothing reads it (the roster route filters on user_id and says so
+      // explicitly), so it was wrong data rather than a live bug, but the first
+      // query to trust the column name would have turned it into one. The
+      // column is nullable and now stays null; sql/sessions_drop_teacher_id.sql
+      // removes it once the existing rows are no longer wanted.
       user_id: userId,
-      teacher_id: userId,
       completed_at: new Date().toISOString(),
       final_theta: finalTheta,
       final_score: finalScore,

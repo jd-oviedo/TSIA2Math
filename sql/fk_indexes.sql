@@ -30,9 +30,10 @@
 create index if not exists sessions_user_created_idx
   on public.sessions (user_id, created_at desc);
 
--- teacher_id is written on every insert (app/api/sessions/route.ts) but nothing
--- currently reads by it. Left out on purpose -- an index on a column no query
--- touches is write cost with no read benefit. Add it when a query needs it.
+-- teacher_id used to be written on every insert (app/api/sessions/route.ts),
+-- always with the test-taker's own id, and nothing ever read by it. No index
+-- was proposed then and none is now: the insert has stopped writing it and
+-- sql/sessions_drop_teacher_id.sql retires the column.
 
 
 -- ---------------------------------------------------------------------------

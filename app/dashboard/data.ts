@@ -111,3 +111,33 @@ export async function getTestSessions(studentId: string): Promise<TestSession[]>
 
   return data ?? [];
 }
+
+// Has this student ever finished a diagnostic?
+//
+// A `sessions` row is only inserted once a run reaches the end, with
+// completed_at stamped at insert time (app/api/sessions/route.ts), so a row
+// existing is already the same claim as a run being finished. completed_at is
+// still checked rather than assumed: it is nullable in the schema, and Home
+// should not promise a student a result that isn't there if that ever changes.
+//
+// head + exact count so Postgres answers with a number and sends no rows --
+// Home only needs the yes/no, and the row bodies are the expensive part.
+//
+// On error this returns true, which is the quiet direction: a false negative
+// shows a student who has already tested a "Begin Diagnostic" card they don't
+// need, while a false positive just leaves Home as it is today.
+export async function hasCompletedDiagnostic(studentId: string): Promise<boolean> {
+  const admin = createAdminClient();
+  const { count, error } = await admin
+    .from('sessions')
+    .select('id', { count: 'exact', head: true })
+    .eq('user_id', studentId)
+    .not('completed_at', 'is', null);
+
+  if (error) {
+    console.error('[dashboard/data] hasCompletedDiagnostic failed:', error.message);
+    return true;
+  }
+
+  return (count ?? 0) > 0;
+}
