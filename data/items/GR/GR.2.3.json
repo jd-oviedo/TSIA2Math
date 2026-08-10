@@ -37,6 +37,11 @@
       "C": "Correct: A = l \u00d7 w = 11 \u00d7 7 = 77 m\u00b2.",
       "D": "Student doubles the area after computing it correctly: 2 \u00d7 77 = 154 m\u00b2."
     },
+    "misconception_tag": {
+      "A": "perimeter_area_confusion",
+      "B": "base_height_added_not_multiplied",
+      "D": "result_doubled_twice"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -118,6 +123,11 @@
       "B": "Student omits the \u00bd factor, computing A = b \u00d7 h = 10 \u00d7 6 = 60 ft\u00b2.",
       "C": "Student adds base and height instead of multiplying: 10 + 6 = 16 ft\u00b2.",
       "D": "Student adds base and height then doubles, applying a perimeter-like operation: 2(10 + 6) = 32 ft\u00b2."
+    },
+    "misconception_tag": {
+      "B": "omits_fractional_factor",
+      "C": "base_height_added_not_multiplied",
+      "D": "base_height_added_not_multiplied"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -201,6 +211,11 @@
       "C": "Student applies the triangle formula instead of the parallelogram formula: \u00bd \u00d7 9 \u00d7 5 = 22.5 cm\u00b2.",
       "D": "Correct: A = b \u00d7 h = 9 \u00d7 5 = 45 cm\u00b2."
     },
+    "misconception_tag": {
+      "A": "base_height_added_not_multiplied",
+      "B": "result_doubled_twice",
+      "C": "formula_borrowed_from_other_shape"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -282,6 +297,11 @@
       "B": "Correct: A = \u00bd(8 + 12)(5) = \u00bd(20)(5) = 50 in\u00b2.",
       "C": "Student applies the \u00bd factor twice: \u00bd \u00d7 \u00bd \u00d7 20 \u00d7 5 = 25 in\u00b2.",
       "D": "Student omits the \u00bd factor and then doubles the result: 2 \u00d7 (20 \u00d7 5) = 200 in\u00b2."
+    },
+    "misconception_tag": {
+      "A": "omits_fractional_factor",
+      "C": "omits_fractional_factor",
+      "D": "omits_fractional_factor"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -365,6 +385,11 @@
       "C": "Correct: A = \u03c0r\u00b2 = 3.14 \u00d7 16 = 50.24 yd\u00b2.",
       "D": "Student uses the diameter (8 yd) in place of the radius in A = \u03c0r\u00b2: 3.14 \u00d7 8\u00b2 = 3.14 \u00d7 64 = 200.96 yd\u00b2."
     },
+    "misconception_tag": {
+      "A": "formula_borrowed_from_other_shape",
+      "B": "formula_borrowed_from_other_shape",
+      "D": "formula_borrowed_from_other_shape"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -446,6 +471,11 @@
       "B": "Student subtracts the length from the area instead of dividing: 96 \u2212 16 = 80 cm.",
       "C": "Student multiplies area by length instead of dividing: 96 \u00d7 16 = 1,536 cm.",
       "D": "Student divides by 2 instead of 16: 96 \u00f7 2 = 48 cm."
+    },
+    "misconception_tag": {
+      "B": "wrong_inverse_operation_chosen",
+      "C": "wrong_inverse_operation_chosen",
+      "D": "wrong_inverse_operation_chosen"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -529,6 +559,11 @@
       "C": "Student adds base and height without applying the formula: 13 + 8 = 21 m\u00b2.",
       "D": "Correct: A = \u00bd \u00d7 13 \u00d7 8 = \u00bd \u00d7 104 = 52 m\u00b2."
     },
+    "misconception_tag": {
+      "A": "omits_fractional_factor",
+      "B": "base_height_added_not_multiplied",
+      "C": "base_height_added_not_multiplied"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -610,6 +645,11 @@
       "B": "Correct: A = b \u00d7 h = 14 \u00d7 6 = 84 cm\u00b2.",
       "C": "Student applies the triangle formula (\u00bdbh) to the parallelogram: \u00bd \u00d7 14 \u00d7 6 = 42 cm\u00b2.",
       "D": "Student applies the formula correctly but doubles the result: 2 \u00d7 84 = 168 cm\u00b2."
+    },
+    "misconception_tag": {
+      "A": "slant_height_used_for_perpendicular",
+      "C": "formula_borrowed_from_other_shape",
+      "D": "result_doubled_twice"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -694,6 +734,11 @@
       "C": "Correct: 54 = \u00bd(18)h \u2192 54 = 9h \u2192 h = 6 ft.",
       "D": "Student multiplies the area by 2 instead of solving the equation: 54 \u00d7 2 = 108 ft."
     },
+    "misconception_tag": {
+      "A": "wrong_inverse_operation_chosen",
+      "B": "forgets_square_root",
+      "D": "wrong_inverse_operation_chosen"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -775,6 +820,11 @@
       "B": "Student finds r\u00b2 = 25 correctly but reports that value as the radius without taking the square root.",
       "C": "Student divides by 2\u03c0 instead of \u03c0: 78.5 \u00f7 (2 \u00d7 3.14) = 78.5 \u00f7 6.28 = 12.5 cm.",
       "D": "Student finds r = 5 correctly but then doubles it, confusing radius with diameter: 2 \u00d7 5 = 10 cm."
+    },
+    "misconception_tag": {
+      "B": "forgets_square_root",
+      "C": "wrong_inverse_operation_chosen",
+      "D": "forgets_square_root"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -859,6 +909,11 @@
       "C": "Student computes the triangle area correctly (20 m\u00b2) but omits the rectangle entirely.",
       "D": "Correct: rectangle area (60 m\u00b2) + triangle area (20 m\u00b2) = 80 m\u00b2."
     },
+    "misconception_tag": {
+      "A": "omits_second_component",
+      "B": "omits_second_component",
+      "C": "omits_second_component"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -941,6 +996,11 @@
       "B": "Correct: length = 2(4) + 3 = 11; width = 4; A = 11 \u00d7 4 = 44.",
       "C": "Student computes the perimeter instead of the area: 2(11 + 4) = 2(15) = 30.",
       "D": "Student doubles the width (uses 2x = 8 instead of x = 4) for the width: A = 11 \u00d7 8 = 88."
+    },
+    "misconception_tag": {
+      "A": "partial_distribution",
+      "C": "perimeter_area_confusion",
+      "D": "result_doubled_twice"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1025,6 +1085,11 @@
       "C": "Correct: 150 \u2212 12.56 = 137.44 ft\u00b2.",
       "D": "Student uses the diameter (4 ft) instead of the radius (2 ft) in the area formula: \u03c0 \u00d7 4\u00b2 = 3.14 \u00d7 16 = 50.24; 150 \u2212 50.24 = 99.76 ft\u00b2."
     },
+    "misconception_tag": {
+      "A": "cutout_added_not_subtracted",
+      "B": "cutout_added_not_subtracted",
+      "D": "radius_diameter_substituted"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1108,6 +1173,11 @@
       "C": "Student applies the \u00bd factor twice: \u00bd \u00d7 \u00bd \u00d7 22 \u00d7 8 = 44.",
       "D": "Student evaluates b\u2082 as x rather than x + 2 (drops the constant): b\u2082 = 5; A = \u00bd(15 + 5)(8) = \u00bd(20)(8) = 80."
     },
+    "misconception_tag": {
+      "B": "omits_fractional_factor",
+      "C": "omits_fractional_factor",
+      "D": "partial_distribution"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1190,6 +1260,11 @@
       "B": "Correct: applying all four formulas correctly gives W = 100, Y = 90, X = 88, Z = 78.5; Figure W has the greatest area.",
       "C": "Student omits the \u00bd factor in the triangle formula but then divides by 10 arbitrarily, deflating the triangle area: 20 \u00d7 10 \u00f7 10 = 20, making the rectangle (88) appear greatest.",
       "D": "Student applies the triangle formula as \u00bdbh but uses height = $\\frac{10}{2}$ = 5 (halves the height by mistake): \u00bd \u00d7 20 \u00d7 5 = 50, making the parallelogram (90) appear greatest."
+    },
+    "misconception_tag": {
+      "A": "formula_borrowed_from_other_shape",
+      "C": "omits_fractional_factor",
+      "D": "formula_borrowed_from_other_shape"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
