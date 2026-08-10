@@ -37,6 +37,11 @@
       "C": "Student divides the perimeter by 2 (38 \u00f7 2 = 19) but stops there without subtracting the width, reporting the half-perimeter as the length.",
       "D": "Correct: 38 \u00f7 2 = 19; 19 \u2212 7 = 12 ft."
     },
+    "misconception_tag": {
+      "A": "wrong_inverse_operation_chosen",
+      "B": "one_of_two_divisors_omitted",
+      "C": "answers_intermediate_value"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -118,6 +123,11 @@
       "B": "Correct: w = A \u00f7 l = 72 \u00f7 9 = 8 m.",
       "C": "Student multiplies the area by the length instead of dividing: 72 \u00d7 9 = 648 m.",
       "D": "Student divides by 2 instead of by 9, applying a halving operation unrelated to the formula: 72 \u00f7 2 = 36 m."
+    },
+    "misconception_tag": {
+      "A": "wrong_inverse_operation_chosen",
+      "C": "wrong_inverse_operation_chosen",
+      "D": "wrong_inverse_operation_chosen"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -201,6 +211,11 @@
       "C": "Student divides the area by 2 only and forgets to also divide by the base: 40 \u00f7 2 = 20 cm.",
       "D": "Student multiplies area by base instead of dividing: 40 \u00d7 10 = 400 cm."
     },
+    "misconception_tag": {
+      "B": "one_of_two_divisors_omitted",
+      "C": "one_of_two_divisors_omitted",
+      "D": "wrong_inverse_operation_chosen"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -282,6 +297,11 @@
       "B": "Student divides the area by 4 (the number of sides of a square) instead of taking the square root: 49 \u00f7 4 = 12.25 yd.",
       "C": "Correct: s = \u221a49 = 7 yd.",
       "D": "Student squares the area instead of taking the square root: 49\u00b2 = 2,401 yd."
+    },
+    "misconception_tag": {
+      "A": "wrong_inverse_operation_chosen",
+      "B": "wrong_side_count_for_polygon",
+      "D": "area_squared_instead_of_rooted"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -366,6 +386,11 @@
       "C": "Student multiplies the perimeter by the number of sides instead of dividing: 66 \u00d7 6 = 396 in.",
       "D": "Student divides by 2 instead of 6, using half the perimeter rather than a sixth: 66 \u00f7 2 = 33 in."
     },
+    "misconception_tag": {
+      "A": "wrong_inverse_operation_chosen",
+      "C": "wrong_inverse_operation_chosen",
+      "D": "wrong_side_count_for_polygon"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -447,6 +472,11 @@
       "B": "Student subtracts the base from the area instead of dividing: 96 \u2212 12 = 84 cm.",
       "C": "Student divides by 2 (applying the triangle formula's \u00bd to the parallelogram): 96 \u00f7 2 = 48 cm.",
       "D": "Student multiplies the area by the base instead of dividing: 96 \u00d7 12 = 1,152 cm."
+    },
+    "misconception_tag": {
+      "B": "wrong_inverse_operation_chosen",
+      "C": "one_of_two_divisors_omitted",
+      "D": "wrong_inverse_operation_chosen"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -530,6 +560,11 @@
       "C": "Correct: 90 = 5(8 + b\u2082) \u2192 18 = 8 + b\u2082 \u2192 b\u2082 = 10 m.",
       "D": "Student divides the area by the height only (without accounting for the \u00bd): 90 \u00f7 10 = 9 m, and reports this directly as the missing base."
     },
+    "misconception_tag": {
+      "A": "wrong_inverse_operation_chosen",
+      "B": "sum_of_bases_reported_as_one_base",
+      "D": "one_of_two_divisors_omitted"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -611,6 +646,11 @@
       "B": "Student finds r\u00b2 = 49 and then halves it rather than taking the square root: 49 \u00f7 2 = 24.5 cm.",
       "C": "Student reports \u03c0 \u2248 3.14 as the answer, confusing the value of the constant with the radius.",
       "D": "Correct: r\u00b2 = 153.86 \u00f7 3.14 = 49; r = \u221a49 = 7 cm."
+    },
+    "misconception_tag": {
+      "A": "forgets_square_root",
+      "B": "forgets_square_root",
+      "C": "forgets_square_root"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -695,6 +735,11 @@
       "C": "Student divides the area by twice the height (2h = 10) instead of multiplying A by 2 then dividing by h: 37.5 \u00f7 10 = 3.75 in.",
       "D": "Student multiplies the area by the height instead of dividing: 37.5 \u00d7 5 = 187.5 in."
     },
+    "misconception_tag": {
+      "B": "one_of_two_divisors_omitted",
+      "C": "one_of_two_divisors_omitted",
+      "D": "wrong_inverse_operation_chosen"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -777,6 +822,11 @@
       "B": "Correct: w = 56 \u00f7 8 = 7 cm.",
       "C": "Student finds the width correctly (7 cm) but reports the length instead: l = 3 \u00d7 7 = 21 cm.",
       "D": "Student divides the perimeter by 2 and reports that as the answer: 56 \u00f7 2 = 28 cm."
+    },
+    "misconception_tag": {
+      "A": "sum_of_bases_reported_as_one_base",
+      "C": "answers_intermediate_value",
+      "D": "wrong_inverse_operation_chosen"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -861,6 +911,11 @@
       "C": "Correct: 4(x + 5) = 48 \u2192 x + 5 = 12 \u2192 x = 7.",
       "D": "Student divides the area by 4 to get 12, then divides again by 4: 12 \u00f7 4 = 3."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "wrong_inverse_operation_chosen",
+      "D": "wrong_inverse_operation_chosen"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -943,6 +998,11 @@
       "B": "Student miscounts the x-coefficient when combining like terms, treating the expression as 5x + 3 = 45: 5x = 42, x \u2248 8.",
       "C": "Student correctly forms 6x + 3 = 45 but then sets 6x = 45 (ignores subtracting the constant 3): 45 \u00f7 6 = 7.5.",
       "D": "Correct: 6x + 3 = 45 \u2192 6x = 42 \u2192 x = 7."
+    },
+    "misconception_tag": {
+      "A": "wrong_inverse_operation_chosen",
+      "B": "partial_distribution",
+      "C": "partial_distribution"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1027,6 +1087,11 @@
       "C": "Student divides the total area by the base without isolating the triangle area first: 104 \u00f7 8 = 13 m.",
       "D": "Student correctly finds the triangle area (24) but reports it directly as the height rather than solving \u00bdbh = 24 for h."
     },
+    "misconception_tag": {
+      "A": "one_of_two_divisors_omitted",
+      "C": "one_of_two_divisors_omitted",
+      "D": "answers_intermediate_value"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1110,6 +1175,11 @@
       "C": "Student correctly finds \u00bd(b\u2081 + b\u2082) = 9.5 (half the sum of bases) and reports that as x rather than solving for x algebraically.",
       "D": "Student forms the equation correctly but rounds 54 \u00f7 9 = 6 to 3 due to a division error, or divides 9x = 54 by 18 instead of 9."
     },
+    "misconception_tag": {
+      "B": "sum_of_bases_reported_as_one_base",
+      "C": "answers_intermediate_value",
+      "D": "wrong_inverse_operation_chosen"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1192,6 +1262,11 @@
       "B": "Student finds the width (w = 13) and reports it as the area without computing l \u00d7 w.",
       "C": "Correct: w = 13 cm, l = 18 cm; A = 18 \u00d7 13 = 234 cm\u00b2.",
       "D": "Student finds w = 13 cm correctly but forgets to add 5 for the length, using l = w = 13: A = 13 \u00d7 13 = 169 cm\u00b2."
+    },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "answers_intermediate_value",
+      "D": "answers_intermediate_value"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
