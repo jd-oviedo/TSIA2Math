@@ -37,6 +37,11 @@
       "C": "Correct: 26.2 \u00d7 1.6 = 41.92 \u2248 41.9 km.",
       "D": "Student subtracts the conversion factor from the distance (26.2 \u2212 1.6 = 24.6) instead of multiplying."
     },
+    "misconception_tag": {
+      "A": "inverts_conversion_direction",
+      "B": "adds_instead_of_scales",
+      "D": "adds_instead_of_scales"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -118,6 +123,11 @@
       "B": "Student skips the multiplication step and only adds 32 to the Celsius value (25 + 32 = 57\u00b0F).",
       "C": "Student correctly multiplies ($\\frac{9}{5}$)(25) = 45 but forgets to add the 32-degree offset.",
       "D": "Student uses 2 instead of $\\frac{9}{5}$ (= 1.8) as the conversion factor: 25 \u00d7 2 + 32 = 82\u00b0F."
+    },
+    "misconception_tag": {
+      "B": "temperature_offset_omitted",
+      "C": "temperature_offset_omitted",
+      "D": "inverts_conversion_direction"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -201,6 +211,11 @@
       "C": "Student adds the conversion factor to the weight (154 + 2.2 = 156.2) instead of dividing.",
       "D": "Correct: 154 \u00f7 2.2 = 70 kg."
     },
+    "misconception_tag": {
+      "A": "inverts_conversion_direction",
+      "B": "adds_instead_of_scales",
+      "C": "adds_instead_of_scales"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -282,6 +297,11 @@
       "B": "Correct: 12 \u00f7 3.8 \u2248 3.2 gallons.",
       "C": "Student subtracts the conversion factor from the volume (12 \u2212 3.8 = 8.2) instead of dividing.",
       "D": "Student divides 1.2 by 3.8 instead of 12 by 3.8, dropping a factor of 10 from the numerator."
+    },
+    "misconception_tag": {
+      "A": "inverts_conversion_direction",
+      "C": "adds_instead_of_scales",
+      "D": "place_value_slip"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -365,6 +385,11 @@
       "C": "Correct: 18 \u00d7 2.54 = 45.72 cm.",
       "D": "Student rounds the conversion factor from 2.54 to 2 and computes 18 \u00d7 2 = 36 cm, losing precision from the approximation."
     },
+    "misconception_tag": {
+      "A": "inverts_conversion_direction",
+      "B": "adds_instead_of_scales",
+      "D": "conversion_factor_rounded"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -446,6 +471,11 @@
       "B": "Student applies the Celsius-to-Fahrenheit formula instead of its inverse: ($\\frac{9}{5}$)(98.6) + 32 \u2248 209.5\u00b0C.",
       "C": "Student multiplies F by $\\frac{5}{9}$ without first subtracting 32: ($\\frac{5}{9}$)(98.6) \u2248 54.8\u00b0C, skipping the required offset.",
       "D": "Student subtracts 32 correctly (98.6 \u2212 32 = 66.6) but forgets to multiply by $\\frac{5}{9}$, reporting the intermediate result as the final answer."
+    },
+    "misconception_tag": {
+      "B": "inverts_conversion_direction",
+      "C": "temperature_offset_omitted",
+      "D": "temperature_offset_omitted"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -529,6 +559,11 @@
       "C": "Student reports the converted weight in pounds (13.2 lbs \u2248 13) as the number of bags, confusing units.",
       "D": "Correct: 6 kg = 13.2 lbs; 13.2 \u00f7 5 = 2.64 \u2192 3 bags needed."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "conversion_factor_rounded",
+      "C": "answers_intermediate_value"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -611,6 +646,11 @@
       "C": "Student correctly converts Car B (96 km/h) and finds the 6 km/h difference but assigns the win to Car A.",
       "D": "Student correctly converts Car B (96 km/h) but subtracts Car B's original mph value instead of Car A's km/h speed: 96 \u2212 60 = 36 km/h."
     },
+    "misconception_tag": {
+      "A": "refuses_to_compare_forms",
+      "C": "misreads_direction_of_change",
+      "D": "misreads_direction_of_change"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -692,6 +732,11 @@
       "B": "Student inverts the conversion, dividing by the squared factor instead of multiplying: 180 \u00f7 0.09 = 2,000 m\u00b2.",
       "C": "Correct: 180 ft\u00b2 \u00d7 (0.3)\u00b2 m\u00b2/ft\u00b2 = 180 \u00d7 0.09 = 16.2 m\u00b2.",
       "D": "Student correctly computes the area in m\u00b2 as 180 \u00d7 (0.3)\u00b2 = 180 \u00d7 0.09 = 16.2 m\u00b2, but then divides by 10 once more \u2014 perhaps thinking an additional adjustment is needed to convert between sub-units \u2014 arriving at 16.2 \u00f7 10 = 1.62 m\u00b2."
+    },
+    "misconception_tag": {
+      "A": "area_conversion_factor_not_squared",
+      "B": "area_conversion_factor_not_squared",
+      "D": "area_conversion_factor_not_squared"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -779,6 +824,11 @@
       "B": "Student assumes the European car wins because it is stated in L/100km (the standard of comparison used) without converting the US car, or misinterprets a higher L/100km as more efficient.",
       "C": "Student correctly converts the US car to km/L (\u2248 14.7) but stops before converting to L/100km, leaving the two cars in incomparable units and unable to draw the correct conclusion.",
       "D": "Student rounds both values aggressively (35 mpg \u2248 'about 7 L/100km') and declares a tie, losing the small but meaningful 0.2 L/100km difference in efficiency."
+    },
+    "misconception_tag": {
+      "B": "refuses_to_compare_forms",
+      "C": "refuses_to_compare_forms",
+      "D": "conversion_factor_rounded"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
