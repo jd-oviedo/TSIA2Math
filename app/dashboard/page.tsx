@@ -7,8 +7,10 @@ import {
   gradableTotal,
   getEnrolledClasses,
   getAnnouncements,
+  hasCompletedDiagnostic,
 } from './data';
 import { Card, CardTitle, Eyebrow, Muted, PageHeading, ProgressBar, formatDate } from './ui';
+import DiagnosticCta from './DiagnosticCta';
 import JoinClassPanel from './JoinClassPanel';
 import FlagsPanel from './FlagsPanel';
 import { C } from '@/app/components/curriculum-theme';
@@ -29,11 +31,12 @@ export default async function DashboardHome({
 
   const { code } = await searchParams;
 
-  const [{ topics, shapes }, attempts, classes, announcements] = await Promise.all([
+  const [{ topics, shapes }, attempts, classes, announcements, testedBefore] = await Promise.all([
     getTopics(),
     getAttempts(profile.id),
     getEnrolledClasses(profile.id),
     getAnnouncements(profile.id),
+    hasCompletedDiagnostic(profile.id),
   ]);
 
   // Same source as the Announcements tab: already scoped to every class the
@@ -82,6 +85,11 @@ export default async function DashboardHome({
       />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        {/* Above the announcements and the progress cards, and only until the
+            student has finished one diagnostic. It adds a card rather than
+            replacing any -- see DiagnosticCta for why nothing below it moves. */}
+        {!testedBefore && <DiagnosticCta />}
+
         {recentAnnouncements.length > 0 && (
           <Card>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>

@@ -123,7 +123,11 @@ export default function AdaptiveTestPage() {
   const prevResponseCountRef = useRef(0);
   const [savedSessionId, setSavedSessionId] = useState<string | null>(null);
   const [saveFailed, setSaveFailed] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // Tri-state on purpose: null means "not yet known", not "signed out". The
+  // check is async, so a plain `false` initial value would tell a signed-in
+  // student "no account needed" for a beat before correcting itself. The
+  // pre-test copy below waits for the answer rather than guessing at it.
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
 useEffect(() => {
   supabase.auth.getSession().then(({ data: { session } }) => {
     setIsAuthenticated(!!session);
@@ -267,7 +271,18 @@ useEffect(() => {
           >
             Begin Test
           </button>
-          <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)", margin: 0 }}>no account needed · results shown at the end</p>
+          {/* Signed in, this is the line that tells a student their work is
+              being kept; signed out, it is the reassurance that they can take
+              the test without an account. Neither is true while the auth check
+              is still in flight, so that state renders a blank line of the same
+              height rather than flashing the wrong promise. */}
+          <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)", margin: 0 }}>
+            {isAuthenticated === null
+              ? " "
+              : isAuthenticated
+                ? "signed in · your results will save to your dashboard"
+                : "no account needed · results shown at the end"}
+          </p>
         </div>
       </Shell>
     );

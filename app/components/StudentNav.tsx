@@ -35,6 +35,10 @@ export const NAV_ITEMS = [
   { label: 'Announcements', href: '/dashboard/announcements' },
   { label: 'Modules', href: '/dashboard/modules' },
   { label: 'Grades', href: '/dashboard/grades' },
+  // The only destination here that leaves the /dashboard tree. It is in this
+  // list rather than beside it because from a student's side of the screen it
+  // is simply another place to go, and splitting it out would say otherwise.
+  { label: 'Take a Practice Test', href: '/adaptive-test' },
 ];
 
 function navIcon(label: string) {
@@ -70,6 +74,17 @@ function navIcon(label: string) {
           <rect x="4.2" y="8.4" width="2.8" height="5" rx="0.8" />
           <rect x="8.6" y="5.2" width="2.8" height="8.2" rx="0.8" />
           <rect x="13" y="10.4" width="2.8" height="3" rx="0.8" />
+        </svg>
+      );
+    // A checked sheet. Distinct from Grades, which is a bar chart of results
+    // already earned, and from the Modules stack -- without its own case this
+    // would silently inherit the stack from `default` and read as a second
+    // Modules link.
+    case 'Take a Practice Test':
+      return (
+        <svg {...common}>
+          <path d="M4.6 2.4 h8.8 a1 1 0 0 1 1 1 v11.2 a1 1 0 0 1 -1 1 H4.6 a1 1 0 0 1 -1 -1 V3.4 a1 1 0 0 1 1 -1 Z" />
+          <polyline points="6.4 9 8.1 10.7 11.6 6.6" />
         </svg>
       );
     default:

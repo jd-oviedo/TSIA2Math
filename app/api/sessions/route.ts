@@ -127,8 +127,17 @@ export async function POST(request: Request) {
   const { data: session, error: sessionError } = await admin
     .from("sessions")
     .insert({
+      // sessions.teacher_id is deliberately not written. It used to be set to
+      // userId -- the test-taker's own id in a column named for their teacher.
+      // No query reads it: the roster route filters on user_id and says so
+      // explicitly. Two RLS policies do read it, and both are broken by this
+      // very data -- `teacher_id = auth.uid()` only ever matched the student
+      // themselves, so neither has shown a teacher anything. Teacher access
+      // comes from the service-role routes under app/api/teacher/ instead.
+      // Leaving the column null changes nothing for either policy. The column
+      // is nullable; sql/sessions_drop_teacher_id.sql retires it and those two
+      // policies together, by name and not by CASCADE.
       user_id: userId,
-      teacher_id: userId,
       completed_at: new Date().toISOString(),
       final_theta: finalTheta,
       final_score: finalScore,
