@@ -35,6 +35,11 @@
       "C": "Student scans y-values only \u2014 seeing the three distinct outputs 1, 2, and 3 \u2014 and mistakenly accepts choice C, missing that x = 0 is the only input and maps to three different outputs.",
       "D": "Student focuses on the repeated output value (4 appears twice) and incorrectly concludes that repeated outputs disqualify a relation, then selects D as the 'cleanest' option \u2014 but D actually has x = 1 paired with both 4 and 6."
     },
+    "misconception_tag": {
+      "A": "outputs_checked_not_inputs",
+      "C": "outputs_checked_not_inputs",
+      "D": "outputs_checked_not_inputs"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Correct: the vertical line at x = 3 hits two points, meaning one input maps to two outputs \u2014 a direct violation of the function definition.",
       "C": "Student inverts the logic: having two different y-values at the same x is precisely what makes this NOT a function, not evidence that it is one.",
       "D": "Student confuses the function requirement (each x has one y) with its converse (each y has one x), focusing on the y-values instead of the repeated x-value."
+    },
+    "misconception_tag": {
+      "A": "vertical_line_test_misapplied",
+      "C": "function_rule_converse_applied",
+      "D": "outputs_checked_not_inputs"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Correct: x = 2 appears twice with two different outputs (7 and 1), meaning one input maps to two outputs \u2014 a direct violation of the function definition.",
       "D": "Student applies a 'majority rule' \u2014 because most x-values appear only once, the student concludes the relation is a function, ignoring that a single repeated-input violation is enough to disqualify it."
     },
+    "misconception_tag": {
+      "A": "outputs_checked_not_inputs",
+      "B": "outputs_checked_not_inputs",
+      "D": "single_violation_dismissed"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student recognizes the equation as a familiar algebraic form and assumes any equation with a clean structure defines a function, without testing whether one x can produce two y-values.",
       "C": "Student thinks absolute value always simplifies to a single output, not recognizing that |y| = x allows both y = x and y = \u2212x as solutions.",
       "D": "Correct: y = x\u00b2 assigns exactly one y-value to each x-value, satisfying the definition of a function."
+    },
+    "misconception_tag": {
+      "A": "family_matched_by_surface_growth",
+      "B": "family_matched_by_surface_growth",
+      "C": "family_matched_by_surface_growth"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Same misconception as B, applied to the output 1 repeating for n = 1 and n = 4. Repeated outputs are permitted; only repeated inputs with different outputs would disqualify the relation.",
       "D": "Student states a false necessary condition \u2014 that all outputs must be distinct. This is the definition of an injective function, not a function in general. The relation here is a valid (non-injective) function."
     },
+    "misconception_tag": {
+      "B": "injectivity_used_as_function_test",
+      "C": "outputs_checked_not_inputs",
+      "D": "injectivity_used_as_function_test"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student correctly identifies that y\u00b2 = kx produces two solutions for nonzero k but overgeneralizes, failing to consider the degenerate case k = 0 where y\u00b2 = 0 forces a unique output.",
       "C": "Student thinks a positive k restricts y to positive values, but the equation y\u00b2 = kx still permits y to be negative \u2014 the sign of k affects the domain of x where solutions exist, not whether y has two values.",
       "D": "Correct: when k = 0, y\u00b2 = 0 forces y = 0 for all x, making this a constant function with exactly one output per input."
+    },
+    "misconception_tag": {
+      "A": "family_matched_by_surface_growth",
+      "B": "family_matched_by_surface_growth",
+      "C": "family_matched_by_surface_growth"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
