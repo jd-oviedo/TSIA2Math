@@ -34,7 +34,7 @@ type Misconception = {
 };
 
 type StudentData = {
-  student: { student_id: string; email: string; initials: string };
+  student: { student_id: string; email: string; name: string; initials: string };
   enrollment: { class_id: string; class_name: string; enrolled_via: string; enrolled_at: string };
   sessions: Session[];
   misconceptions: Misconception[];
@@ -151,7 +151,7 @@ export default function StudentDetailPage() {
   }
 
   const { student, enrollment, sessions, misconceptions } = data;
-  const name = student.email.split("@")[0];
+  const name = student.name;
   const latest = sessions[0] ?? null;
   const band = placementBand(latest?.final_score ?? null);
   const first = sessions.length > 0 ? sessions[sessions.length - 1] : null;

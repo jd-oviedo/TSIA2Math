@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { requireTeacher } from "../../../lib/auth";
+import { displayName, initialsFrom, requireTeacher } from "../../../lib/auth";
 import { createAdminClient } from "../../../lib/supabase-admin";
 
 type SupabaseAdmin = ReturnType<typeof createAdminClient>;
@@ -13,16 +13,18 @@ type SupabaseAdmin = ReturnType<typeof createAdminClient>;
 // 1000 is GoTrue's per-page ceiling, so this is one request for any project
 // that fits in it and grows a request per thousand users after that.
 //
-// Emails live only in auth.users: profiles carries id/role/subscription_status
-// and no email column, so there is nothing cheaper to read them from. That
-// makes this O(users in project) to build a map for one class, which is worth
-// revisiting if this ever gets slow -- looking up each student individually is
-// O(class size) but costs a round trip per student, which is the worse trade at
-// the sizes this runs at now.
+// Emails and names live only in auth.users: profiles carries
+// id/role/subscription_status and neither an email nor a name column, so there
+// is nothing cheaper to read them from. That makes this O(users in project) to
+// build a map for one class, which is worth revisiting if this ever gets slow
+// -- looking up each student individually is O(class size) but costs a round
+// trip per student, which is the worse trade at the sizes this runs at now.
 const USERS_PAGE_SIZE = 1000;
 
-async function emailsById(admin: SupabaseAdmin): Promise<Map<string, string>> {
-  const map = new Map<string, string>();
+type RosterUser = { email: string; name: string };
+
+async function usersById(admin: SupabaseAdmin): Promise<Map<string, RosterUser>> {
+  const map = new Map<string, RosterUser>();
 
   for (let page = 1; ; page++) {
     const { data, error } = await admin.auth.admin.listUsers({
@@ -33,7 +35,12 @@ async function emailsById(admin: SupabaseAdmin): Promise<Map<string, string>> {
     if (error) throw error;
 
     const users = data?.users ?? [];
-    for (const u of users) map.set(u.id, u.email ?? "");
+    for (const u of users) {
+      const email = u.email ?? "";
+      // listUsers already carries user_metadata, so the real name costs no
+      // extra request -- it rides along on the page we were fetching anyway.
+      map.set(u.id, { email, name: displayName(u.user_metadata, email) });
+    }
 
     // A short page is the last page.
     if (users.length < USERS_PAGE_SIZE) break;
@@ -97,10 +104,10 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: sessError.message }, { status: 500 });
   }
 
-  // Get user emails from auth.users via admin, across every page.
-  let userMap: Map<string, string>;
+  // Get user emails and names from auth.users via admin, across every page.
+  let userMap: Map<string, RosterUser>;
   try {
-    userMap = await emailsById(admin);
+    userMap = await usersById(admin);
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     return NextResponse.json({ error: message }, { status: 500 });
@@ -118,18 +125,15 @@ export async function GET(req: Request) {
   const roster = enrollments.map((e) => {
     const studentSessions = sessionsByStudent.get(e.student_id) ?? [];
     const latest = studentSessions[0] ?? null;
-    const email = userMap.get(e.student_id) ?? "";
-    const initials = email
-      .split("@")[0]
-      .split(/[._-]/)
-      .map((p: string) => p[0]?.toUpperCase() ?? "")
-      .slice(0, 2)
-      .join("");
+    const user = userMap.get(e.student_id);
+    const email = user?.email ?? "";
+    const name = user?.name ?? "";
 
     return {
       student_id: e.student_id,
       email,
-      initials: initials || "??",
+      name,
+      initials: initialsFrom(name),
       enrolled_via: e.enrolled_via,
       enrolled_at: e.enrolled_at,
       attempt_count: studentSessions.length,
