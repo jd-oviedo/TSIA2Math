@@ -11,7 +11,12 @@ Nothing here reads or writes data/items/** -- tagging is Phase 3.
 """
 import json, re, glob, collections, os, sys
 
-STATUS = "draft_phase2_awaiting_approval"
+# Status of the taxonomy as a whole. Follows the same <state>_<phase> shape as
+# the per-finding statuses below (resolved_in_phase3_closeout,
+# approved_for_phase3). "approved" is the review state; "phase3_complete" is
+# the application state -- every slug reviewed and signed off, and all 3,348
+# distractors across all 1,116 items tagged against it.
+STATUS = "approved_phase3_complete"
 
 # ---------------------------------------------------------------- existing 40
 # Reconstructed from the parenthetical glosses in
@@ -601,7 +606,7 @@ def observed_topics():
 
 def build():
     slugs = {}
-    def add(slug, definition, layer, origin, topics, note, status="draft"):
+    def add(slug, definition, layer, origin, topics, note, status="approved"):
         if slug in slugs:
             slugs[slug]["topics"] = sorted(set(slugs[slug]["topics"]) | set(topics))
             slugs[slug]["strands"] = sorted({strand(t) for t in slugs[slug]["topics"]})
@@ -653,11 +658,12 @@ def build():
           "slugs":["longer_decimal_is_larger","multiplies_by_ten","percent_as_count","percent_denominator_error","skips_times_100"],
           "note":"Correct and expected. These describe QR Unit-1 fraction/decimal/percent conversion errors the CAT bank does not contain. They stay in the vocabulary and continue to tag curriculum items."},
         "redundant_slug_pairs":{
-          "status":"needs_a_decision",
-          "note":"Found during Phase 3 tagging: two cross-cutting slugs never fired because a topic-specific slug describes the same error. The Phase 2 duplicate check missed them because the names share no tokens. Neither has been retired -- retiring is a taxonomy change and was not approved.",
+          "status":"resolved_in_phase3_closeout",
+          "note":"Found during Phase 3 tagging: two cross-cutting slugs never fired because a topic-specific slug describes the same error. The Phase 2 duplicate check missed them because the names share no tokens. Both were retired in the Phase 3 closeout -- see `retired_slugs` for each one's definition, what supersedes it, and why the survivors were kept separate rather than merged. Retiring them retagged nothing: neither carried a single tag, which is how they were found.",
+          "resolution":"Both retired. See retired_slugs.",
           "pairs":[
-            {"unused":"conditions_on_wrong_group","superseded_by":["whole_population_as_denominator","conditional_reversed"],"topics":["PR.3.4","PR.1.4"]},
-            {"unused":"ignores_without_replacement","superseded_by":["replacement_status_wrong","total_not_reduced_between_draws"],"topics":["PR.3.3","PR.3.4"]}]},
+            {"unused":"conditions_on_wrong_group","superseded_by":["whole_population_as_denominator","conditional_reversed"],"topics":["PR.3.4","PR.1.4"],"retired":True},
+            {"unused":"ignores_without_replacement","superseded_by":["replacement_status_wrong","total_not_reduced_between_draws"],"topics":["PR.3.3","PR.3.4"],"retired":True}]},
         "migration_followups":{
           "status":"required_but_out_of_scope_for_phase3",
           "items":[
@@ -675,7 +681,7 @@ def build():
       "cross_cutting_from_curriculum":len([s for s in cc if s["origin"]=="curriculum"]),
       "cross_cutting_new":len([s for s in cc if s["origin"]=="cat_bank"]),
       "topic_specific":len(ts),
-      "proposed_pending_decision":len([s for s in slugs.values() if s["status"]!="draft"]),
+      "proposed_pending_decision":len([s for s in slugs.values() if s["status"]!="approved"]),
       "topics_covered":len(TAIL),
     }
     return out, slugs
@@ -715,7 +721,7 @@ def markdown(out):
     a("|---|---:|")
     for k,v in c.items(): a(f"| {k.replace('_',' ')} | {v} |")
     a("")
-    a("## Unresolved boundary rules\n")
+    a("## Boundary rules\n")
     for b in out["boundary_rules"]:
         a(f"### `{b['id']}` — **{b['status']}**\n")
         a(f"- Slugs: {', '.join('`'+s+'`' for s in b['slugs'])}")
@@ -724,6 +730,28 @@ def markdown(out):
         a(f"- Phase 2 proposal: {b['phase2_proposal']}")
         if b.get("resolution"): a(f"- **Resolution: {b['resolution']}**\n")
         if b.get("blocks"): a(f"- **{b['blocks']}**\n")
+
+    # Rendered here because a companion that lists only live slugs lets a
+    # reader conclude a retired one is still in the vocabulary. The JSON
+    # carried retired_slugs from the Phase 3 closeout; this file did not.
+    if out.get("retired_slugs"):
+        a("## Retired slugs\n")
+        a("Removed from the vocabulary. Listed so a reader of this file does not")
+        a("conclude they are still taggable.\n")
+        a("| slug | superseded by | items retagged | why |")
+        a("|---|---|---:|---|")
+        for r in out["retired_slugs"]:
+            sup = ", ".join(f"`{s}`" for s in r["superseded_by"])
+            a(f"| `{r['slug']}` | {sup} | {r['items_retagged']} | {r['reason']} |")
+        a("")
+
+    if out.get("phase3_findings"):
+        a("## Phase 3 findings\n")
+        a("| finding | status |")
+        a("|---|---|")
+        for name, body in out["phase3_findings"].items():
+            a(f"| {name.replace('_',' ')} | `{body.get('status','—')}` |")
+        a("")
     for layer,title in [("cross_cutting","Cross-cutting slugs"),("topic_specific","Topic-specific slugs")]:
         a(f"## {title}\n")
         rows=[s for s in out["slugs"] if s["layer"]==layer]

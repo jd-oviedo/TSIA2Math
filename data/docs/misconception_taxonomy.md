@@ -3,7 +3,7 @@
 > **Generated file — do not edit.** Source of truth is `data/docs/misconception_taxonomy.json`,
 > built by `scripts/build_misconception_taxonomy.py`. Edit the script, then regenerate.
 
-Status: `draft_phase2_awaiting_approval`
+Status: `approved_phase3_complete`
 
 | | count |
 |---|---:|
@@ -15,7 +15,7 @@ Status: `draft_phase2_awaiting_approval`
 | proposed pending decision | 0 |
 | topics covered | 97 |
 
-## Unresolved boundary rules
+## Boundary rules
 
 ### `intermediate_vs_omission` — **approved**
 
@@ -24,6 +24,24 @@ Status: `draft_phase2_awaiting_approval`
 - Problem with it: Does not break the tie for 'computes the rate portion and forgets the flat fee', which reads as both; and has no home for the mirror case where the variable term is the one missing.
 - Phase 2 proposal: Tag by what is missing from the answer, not by where the student stopped. Missing fixed component -> omits_constant_term. Missing variable component -> omits_variable_term. A correct intermediate quantity of a different kind (scale factor, unit rate, pre-division sum, count of parts) -> answers_intermediate_value. Tie-break: if the reported value is one of the two additive components of a linear model it is an omits_* tag, never answers_intermediate_value.
 - **Resolution: Approved as the phase2_proposal, tie-break included. omits_variable_term is an approved slug.**
+
+## Retired slugs
+
+Removed from the vocabulary. Listed so a reader of this file does not
+conclude they are still taggable.
+
+| slug | superseded by | items retagged | why |
+|---|---|---:|---|
+| `conditions_on_wrong_group` | `whole_population_as_denominator`, `conditional_reversed` | 0 | The two survivors are the clearer names: they say which wrong group was used (the whole population) or that the conditional was inverted. The umbrella name said neither. It carried 0 tags. |
+| `ignores_without_replacement` | `replacement_status_wrong`, `total_not_reduced_between_draws` | 0 | The survivors separate treating the draws as the wrong kind from reducing the favourable count but not the total -- a distinction the umbrella name lost. It carried 0 tags. |
+
+## Phase 3 findings
+
+| finding | status |
+|---|---|
+| unused curriculum slugs | `—` |
+| redundant slug pairs | `resolved_in_phase3_closeout` |
+| migration followups | `required_but_out_of_scope_for_phase3` |
 
 ## Cross-cutting slugs
 
