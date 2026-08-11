@@ -149,10 +149,15 @@ so these rows were never in scope. They also carry full per-option
 `distractor_logic` — they are not the older format described in the QR.1.1 note
 above, and the two issues are unrelated.
 
-**Nothing consumes this file.** `scripts/build_bank.py` writes it; no reader
-was found. Supabase is seeded by `scripts/seed_questions.mjs`, which reads
-`public/data/question_bank.json`. So the stale rows are inert on the current
-paths.
+**Nothing consumes this file *today*.** `scripts/build_bank.py` writes it; no
+reader was found. Supabase is seeded by `scripts/seed_questions.mjs`, which
+reads `public/data/question_bank.json`.
+
+**But the rows are not inert — they reached prod.** An earlier version of this
+note said they were, on the strength of the current code paths. A direct read of
+the prod `questions` table disproved it: prod holds **1,124 rows against the
+bank's 1,116**, and the extra eight are exactly the eight IDs above. Some
+earlier upload carried them in. See the orphan-rows entry below.
 
 **The real risk: item IDs are reused across corpora.** Four IDs that the stale
 artifact files under QR.1.1 now identify *different questions under different
@@ -181,3 +186,81 @@ just a row describing a QR.1.5 problem filed under QR.1.1.
 
 Determining which of these applies requires knowing whether anything outside
 this repo pulls from `data/build/`.
+
+---
+
+## Eight orphan rows live in prod — needs a decision
+
+`QR_A_006`, `QR_A_008`, `QR_A_009`, `QR_B_008`, `QR_B_009`, `QR_P_006`,
+`QR_P_008`, `QR_P_009`
+
+Confirmed by reading the prod `questions` table directly: it holds **1,124 rows
+where the served bank holds 1,116**, and the eight extra are exactly these. They
+are the same IDs as the stale-artifact entry above — the artifact is where they
+survive in the repo, but prod is where they are actually being served.
+
+What is true of them in prod:
+
+- **No counterpart in current source.** Absent from `data/items/` and from
+  `public/data/question_bank.json`. Nothing regenerates or validates them.
+- **Untagged.** They carry no `misconception_tag` — 1,116 of prod's 1,124 rows
+  have one, and these eight are the entire remainder. Any coverage query that
+  reports "8 untagged items" is counting these, not a gap in the tagging pass.
+- **Four of their sibling IDs collide.** `QR_A_007`, `QR_B_007` and `QR_P_007`
+  are QR.1.5 in current source; `QR_B_006` is QR.1.2. So the ID space these rows
+  live in is one where the same key means different questions in different
+  corpora.
+
+**Why it needs a decision rather than a fix.** Deleting them is destructive and
+they may have student answer history attached; leaving them means prod keeps
+serving items no one can regenerate, review or retag. Neither is obviously
+right, and the choice depends on facts not visible from the repo:
+
+- Do `student_responses` / `student_misconceptions` reference these `item_id`s?
+- Were they ever actually served, or are they inert rows the CAT never selects?
+
+**Options:**
+
+- **Delete from prod** once confirmed unreferenced — smallest surface, removes
+  the collision hazard.
+- **Reconcile** — re-author them into `data/items/` under IDs that do not
+  collide, then let them flow through the normal path.
+
+Do not resolve this by regenerating or re-uploading the bank. A straight upload
+from the bank writes the 1,116 rows it knows about and **leaves these eight
+untouched**, because the seed matches on `item_id` and never sees them.
+
+---
+
+## One source of truth for the question bank (tech debt)
+
+`public/data/question_bank.json` and `data/items/` are two files that disagree,
+with **no generator and no guard between them**. This is the root cause behind
+the closed PR #58 and the entry above; #59 worked around it rather than fixing
+it.
+
+The divergence: the bank carries LaTeX-wrapping migrations (`$x^{2}$`,
+`$\frac{1}{2}$`, `$\sqrt{120}$`) applied to it directly and never back-ported.
+`data/items/` has held bare Unicode since its first commit. `MathText.tsx` only
+typesets `$...$` spans containing real LaTeX syntax, so the two files render
+differently: regenerating the bank from source silently downgrades 439
+superscripts, 169 radicals and 48 fractions to literal text.
+
+Three things are missing, and each is a separate piece of work:
+
+1. **Port the LaTeX migrations back into `data/items/`** so one file is
+   genuinely authoritative. Touches notation across 1,116 items and needs its
+   own review — this is the bulk of the effort.
+2. **Give the bank a real generator.** Nothing writes
+   `public/data/question_bank.json` today; `build_bank.py` writes `data/build/`,
+   which nothing reads. Until an export step exists, "regenerate the bank" is
+   not an operation anyone can safely perform.
+3. **Close the scanner's blind spot.** `scan_unwrapped_latex.py` finds LaTeX
+   commands sitting *outside* `$...$`, so it reports CLEAN on both the wrapped
+   and the stripped bank — it cannot see *missing* wrapping. It needs a check
+   for math-like content (superscripts, radicals, fractions) appearing outside a
+   math span, or a direct source-vs-bank notation diff.
+
+**Not urgent, but real.** Nothing forces these files back into agreement, so the
+next person to touch either one re-opens the same divergence, and the existing
+guard will not report it.
