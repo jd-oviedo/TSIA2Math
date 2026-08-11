@@ -36,9 +36,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 BANK = Path("public/data/question_bank.json")
-SNAPSHOT_DIR = Path(
-    os.environ.get("RESTORE_SNAPSHOT_DIR", "/tmp/claude-1000/-workspaces-TSIA2Math/snapshots")
-)
+# Repo-local and gitignored, deliberately not /tmp: this project has no PITR and
+# no scheduled backups, so the snapshot is the ONLY rollback path and must not
+# live somewhere a Codespace restart clears.
+SNAPSHOT_DIR = Path(os.environ.get("RESTORE_SNAPSHOT_DIR", "scratchpad"))
 
 # The only columns this script is allowed to write.
 WRITE_FIELDS = [
@@ -93,11 +94,43 @@ def fetch_prod(url, key):
     return {r["item_id"]: r for r in rows}
 
 
+def write_snapshot(prod, plan):
+    """Capture every row about to change, exactly as prod holds it right now.
+
+    Stores the five content fields (what a rollback rewrites) plus the protected
+    counters (not rewritten -- kept so drift can be proven afterwards), keyed by
+    item_id. --execute always takes a fresh one immediately before writing, so a
+    snapshot reviewed earlier stays valid as a second copy.
+    """
+    SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    path = SNAPSHOT_DIR / f"questions_before_{stamp}.json"
+    rows = [prod[i] for i in sorted(plan)]
+    path.write_text(json.dumps(rows, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    # Verify what landed on disk by reading it back, not by trusting the write.
+    back = json.loads(path.read_text(encoding="utf-8"))
+    required = ["item_id"] + WRITE_FIELDS + PROTECTED_FIELDS
+    incomplete = [r.get("item_id") for r in back if any(k not in r for k in required)]
+    print(f"\nsnapshot written : {path}")
+    print(f"   rows          : {len(back)} (rows in plan: {len(plan)})")
+    print(f"   fields/row    : {required}")
+    print(f"   incomplete    : {len(incomplete)}{' — ' + str(incomplete[:5]) if incomplete else ' (every row complete)'}")
+    if len(back) != len(plan) or incomplete:
+        sys.exit("ABORT — snapshot is not a complete capture; refusing to continue")
+    return path
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--execute", action="store_true",
                     help="actually write. Without this the script only reports.")
+    ap.add_argument("--snapshot-only", action="store_true",
+                    help="write the rollback snapshot and stop, without touching prod. "
+                         "Lets the snapshot be inspected before any write is authorised.")
     args = ap.parse_args()
+    if args.execute and args.snapshot_only:
+        sys.exit("--execute and --snapshot-only are mutually exclusive")
 
     url, key = env()
     bank = {it["item_id"]: it for it in json.loads(BANK.read_text(encoding="utf-8"))}
@@ -147,24 +180,20 @@ def main():
         print(f"   after run: {bank[PROBE_ITEM]['question_text']!r}")
         print(f"   in plan  : {'yes' if PROBE_ITEM in plan else 'no (already matches)'}")
 
-    if not args.execute:
-        print("\nDRY RUN — nothing was written. Re-run with --execute to apply.")
-        return 0
-
     if not plan:
         print("\nNothing to write.")
         return 0
 
-    # Rollback snapshot: current prod values for every row about to change,
-    # including the protected counters so drift can be proven afterwards.
-    SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
-    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    snap_path = SNAPSHOT_DIR / f"questions_before_{stamp}.json"
-    snap_path.write_text(
-        json.dumps([prod[i] for i in sorted(plan)], indent=2, ensure_ascii=False),
-        encoding="utf-8",
-    )
-    print(f"\nsnapshot written: {snap_path} ({len(plan)} rows)")
+    if not (args.execute or args.snapshot_only):
+        print("\nDRY RUN — nothing was written. Re-run with --execute to apply.")
+        return 0
+
+    snap_path = write_snapshot(prod, plan)
+
+    if args.snapshot_only:
+        print("\nSNAPSHOT ONLY — prod was not modified. Inspect the file above, then "
+              "re-run with --execute when authorised.")
+        return 0
 
     written = 0
     for iid in sorted(plan):
