@@ -126,3 +126,58 @@ it alone" clause is the second, untagged error.
 single error reaches it. Not resolvable by tagging — a compound distractor
 cannot be attributed to one misconception without discarding half of what it
 describes.
+
+---
+
+## Stale build artifact — `data/build/question_bank.json`
+
+Not a content defect. Recorded here because it *looks* like one, and cost a
+round of investigation before it resolved as a false alarm.
+
+Eight QR.1.1 item IDs appear to be untagged items missing from the misconception
+work:
+
+`QR_A_006`, `QR_A_008`, `QR_A_009`, `QR_B_008`, `QR_B_009`, `QR_P_006`,
+`QR_P_008`, `QR_P_009`
+
+**They are not a gap.** They exist in exactly one file in the repo —
+`data/build/question_bank.json`, a stale build artifact holding 465 items with
+zero misconception tags bank-wide, last regenerated at `9d78916` ("Add PR.1.4 &
+PR.1.5 items"). They are absent from `data/items` (canonical, 1,116 items) and
+from `public/data/question_bank.json`. The tagging pass ran over `data/items`,
+so these rows were never in scope. They also carry full per-option
+`distractor_logic` — they are not the older format described in the QR.1.1 note
+above, and the two issues are unrelated.
+
+**Nothing consumes this file.** `scripts/build_bank.py` writes it; no reader
+was found. Supabase is seeded by `scripts/seed_questions.mjs`, which reads
+`public/data/question_bank.json`. So the stale rows are inert on the current
+paths.
+
+**The real risk: item IDs are reused across corpora.** Four IDs that the stale
+artifact files under QR.1.1 now identify *different questions under different
+topics* in current source:
+
+| item ID | stale artifact | current `data/items` |
+|---|---|---|
+| `QR_A_007` | QR.1.1 | QR.1.5 |
+| `QR_B_007` | QR.1.1 | QR.1.5 |
+| `QR_P_007` | QR.1.1 | QR.1.5 |
+| `QR_B_006` | QR.1.1 | QR.1.2 |
+
+Any future reconciliation keyed on `item_id` — backfilling tags, auditing
+coverage, diffing against a deployed bank, reconciling `student_misconceptions`
+rows — that reaches for this artifact will **match successfully and silently
+attribute the wrong question**. The failure is quiet: no missing key, no error,
+just a row describing a QR.1.5 problem filed under QR.1.1.
+
+**Fix — two options, not yet decided:**
+
+- **If the artifact is dead:** delete `data/build/` and add it to `.gitignore`,
+  so a build output stops being mistaken for source.
+- **If it is not dead:** document what writes it, what reads it, and when it is
+  expected to be regenerated — and note that its `item_id`s are not stable
+  across time, so it must never be used as a reconciliation key.
+
+Determining which of these applies requires knowing whether anything outside
+this repo pulls from `data/build/`.
