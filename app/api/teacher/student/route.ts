@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { requireTeacher } from "../../../lib/auth";
+import { displayName, initialsFrom, requireTeacher } from "../../../lib/auth";
 import { createAdminClient } from "../../../lib/supabase-admin";
 
 export async function GET(req: Request) {
@@ -42,19 +42,16 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "Student not found in this class" }, { status: 404 });
   }
 
-  // Get student email from auth
+  // Get student email and name from auth -- getUserById carries user_metadata,
+  // which is where the OAuth full_name lives.
   const { data: userData, error: userError } = await admin.auth.admin.getUserById(studentId);
   if (userError || !userData) {
     return NextResponse.json({ error: "Student not found" }, { status: 404 });
   }
 
   const email = userData.user.email ?? "";
-  const initials = email
-    .split("@")[0]
-    .split(/[._-]/)
-    .map((p: string) => p[0]?.toUpperCase() ?? "")
-    .slice(0, 2)
-    .join("") || "??";
+  const name = displayName(userData.user.user_metadata, email);
+  const initials = initialsFrom(name);
 
   // Get all sessions for this student
   const { data: sessions, error: sessError } = await admin
@@ -130,7 +127,7 @@ export async function GET(req: Request) {
   }
 
   return NextResponse.json({
-    student: { student_id: studentId, email, initials },
+    student: { student_id: studentId, email, name, initials },
     enrollment: {
       class_id: classId,
       class_name: cls.name,

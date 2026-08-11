@@ -7,6 +7,42 @@ export type Profile = {
   subscription_status: 'active' | 'inactive'
 }
 
+// profiles has no name column, so the only real name we hold for anyone is the
+// one the identity provider gave us at sign-up: Google OAuth writes full_name
+// (and name) into auth.users.user_metadata. That is what these two read.
+//
+// The email local part is a last-resort fallback, not the default -- it is only
+// correct for a user whose metadata genuinely carries no name, e.g. someone
+// created by an email invite who has never completed an OAuth sign-in.
+type UserMetadata = Record<string, unknown> | null | undefined
+
+function metaString(metadata: UserMetadata, key: string): string {
+  const value = metadata?.[key]
+  return typeof value === 'string' ? value.trim() : ''
+}
+
+export function displayName(metadata: UserMetadata, email: string | null | undefined): string {
+  return (
+    metaString(metadata, 'full_name') ||
+    metaString(metadata, 'name') ||
+    (email ?? '').split('@')[0]
+  )
+}
+
+// Initials from whatever displayName resolved to. Splitting on whitespace as
+// well as [._-] means this reads "Juan Oviedo" and the "jd.oviedo" email
+// fallback the same way, so the avatar chip stays consistent either way.
+export function initialsFrom(name: string): string {
+  return (
+    name
+      .split(/[\s._-]+/)
+      .filter(Boolean)
+      .map((p) => p[0]!.toUpperCase())
+      .slice(0, 2)
+      .join('') || '??'
+  )
+}
+
 // Returns the profile if the current user is an active teacher, null otherwise.
 // Use this at the top of every teacher-facing page and API route.
 export async function requireTeacher(): Promise<Profile | null> {
