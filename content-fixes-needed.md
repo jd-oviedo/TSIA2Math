@@ -264,3 +264,73 @@ Three things are missing, and each is a separate piece of work:
 **Not urgent, but real.** Nothing forces these files back into agreement, so the
 next person to touch either one re-opens the same divergence, and the existing
 guard will not report it.
+
+---
+
+## Eight items carry malformed math delimiters
+
+Found on 2026-08-12 by an independent verification pass over the prod
+`questions` table, run to confirm the text restore of 2026-08-11 landed cleanly.
+It did — all 1,116 matched rows match the served bank byte for byte on all five
+content fields. These eight are a separate, **pre-existing** defect that the
+restore neither caused nor repaired.
+
+They were checked against the pre-restore snapshot
+(`questions_before_20260811T031840Z.json`) and were already malformed in prod
+before that write. For `AR_A_010` the restore's only change to the affected
+string was a Unicode `−` to an ASCII `-`; the broken delimiter passed straight
+through. They are identical in `public/data/question_bank.json` and in prod, so
+this is bank content, not a deployment artifact.
+
+Three classes, all of which break rendering rather than merely reading oddly —
+`MathText.tsx` typesets `$...$` spans, so a mispaired delimiter takes the
+following prose into a math span with it.
+
+**1. Unclosed `$` — an opening delimiter with no closing one**
+
+| item | field | text |
+|---|---|---|
+| `AR_A_010` | `distractor_logic.B` | `...to obtain $\frac{1}{x - k}, then reads the domain...` |
+| `AR_B_041` | `distractor_logic.B` | `...computing $\frac{x_2 - x_1}{y_2 - y_1} = \frac{3}{-6} = \frac{-1}{2}.` |
+| `AR_B_043` | `strategy_hints[0]` | `$Slope = \frac{y_2 - y_1}{x_2 - x_1}. Be careful subtracting...` |
+
+**2. Nested `$` inside a `\frac` argument**
+
+| item | field | text |
+|---|---|---|
+| `GR_A_033` | `distractor_logic.D` | `$\sqrt{($\sqrt{}$16)}$` |
+| `QR_A_025` | `distractor_logic.D` | `$\frac{$\sqrt{3}$ + 1}{$\sqrt{3}$ + 1}$` |
+| `QR_A_027` | `distractor_logic.C` | `$\frac{$\sqrt{5}$ + $\sqrt{2}$}{$\sqrt{5}$ + $\sqrt{2}$}$` |
+
+This class is the one most likely to be missed by a checker: the dollar count is
+*even*, so any balance-counting guard passes it. The renderer still closes the
+span at the first inner `$`, leaving `\frac{` unterminated and the rest of the
+sentence inside math mode. `GR_A_033` additionally has an empty `\sqrt{}`.
+
+**3. Unescaped literal `$` in prose**
+
+| item | field | text |
+|---|---|---|
+| `PR_P_067` | `question_text` | y-axis labeled `'Monthly Energy Bill ($)'` |
+| `PR_A_070` | `question_text` | y-axis labeled `'Monthly Grocery Spending ($)'` |
+
+Both items escape their other currency amounts correctly (`\$200`, `\$400`), so
+the axis-label `$` is a single unescaped delimiter that opens a span with no
+partner. Note the neighbouring `PR_P_070` is **clean** — it is not part of this
+set.
+
+**Fix:** an authoring pass over the affected fields. Not scriptable with
+confidence: class 2 in particular needs a human to decide what the intended
+expression was, since the inner `$` pairs have to be removed rather than
+balanced, and `GR_A_033`'s empty `\sqrt{}` has lost its operand. Deliberately
+not fixed as part of the restore or the misconception work.
+
+**Adjacent, noticed while reading:** `AR_B_043`'s second hint writes
+`$(x_1, y_2)$ = (0, -2)` where the first coordinate should be `(x_1, y_1)`.
+Same field, different (non-delimiter) defect — worth catching in the same pass.
+
+**This extends the scanner gap** noted in the entry above.
+`scan_unwrapped_latex.py` looks for LaTeX commands sitting outside `$...$`, so
+it is blind to *missing* wrapping (documented above) and equally blind to
+*malformed* wrapping (all three classes here). A guard that only counts
+delimiters would still miss class 2. Worth folding into the same piece of work.
