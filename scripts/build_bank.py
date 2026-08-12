@@ -13,6 +13,7 @@ Exit code 0 on success, 1 if any errors are found, so you can later wire this
 into a GitHub Action / pre-commit hook. Pure standard library, no pip installs.
 """
 import json
+import re
 import sys
 from pathlib import Path
 from collections import Counter
@@ -45,6 +46,13 @@ LAYERS = {"CRC", "DIAGNOSTIC", "ENRICHMENT"}
 LEVELS = {"Basic", "Proficient", "Advanced"}
 CALC_TYPES = {"none", "basic", "square_root", "graphing"}
 LEGACY_FIELDS = {"subtopic", "category_code"}
+# Known but not required. misconception_tag is being rolled across the bank on
+# its own branch, so an untagged item is valid; a malformed one is not. Kept
+# out of SCHEMA_FIELDS so its absence is not an error, and named here so its
+# presence is not an "unexpected field" warning either.
+OPTIONAL_FIELDS = {"misconception_tag"}
+# Taxonomy slugs are snake_case; see data/docs/misconception_taxonomy.json.
+SLUG_RE = re.compile(r"[a-z0-9]+(_[a-z0-9]+)*")
 STRAND_ORDER = {"QR": 0, "AR": 1, "GR": 2, "PR": 3}
 LEVEL_RANK = {"B": 0, "P": 1, "A": 2}
 
@@ -61,7 +69,7 @@ def check_item(it, fname, seen_ids):
     missing = SCHEMA_FIELDS - set(it)
     if missing:
         errors.append(f"{tag}: missing field(s) {sorted(missing)}")
-    extra = set(it) - SCHEMA_FIELDS - LEGACY_FIELDS
+    extra = set(it) - SCHEMA_FIELDS - LEGACY_FIELDS - OPTIONAL_FIELDS
     if extra:
         warnings.append(f"{tag}: unexpected field(s) {sorted(extra)}")
     legacy = LEGACY_FIELDS & set(it)
@@ -97,6 +105,31 @@ def check_item(it, fname, seen_ids):
         errors.append(f"{tag}: correct_answer {it.get('correct_answer')!r} is not one of the answer_choices")
     if set(it.get("distractor_logic", {})) != set(choices):
         errors.append(f"{tag}: distractor_logic keys do not match answer_choices keys")
+
+    # --- misconception tags ---
+    # Optional while the bank is still being tagged, but once present the shape
+    # is strict: exactly the wrong options, never the correct one. The map is
+    # answer-bearing by omission -- the missing letter IS the answer -- so a
+    # stray key on the correct option would leak it to anything that reads the
+    # tags, and a missing key would silently drop a misconception.
+    if "misconception_tag" in it:
+        tags = it.get("misconception_tag")
+        if not isinstance(tags, dict):
+            errors.append(f"{tag}: misconception_tag must be an object keyed by option letter")
+        else:
+            wrong = set(choices) - {it.get("correct_answer")}
+            if it.get("correct_answer") in tags:
+                errors.append(
+                    f"{tag}: misconception_tag carries the correct answer "
+                    f"{it.get('correct_answer')!r} -- the map must omit it")
+            if set(tags) != wrong:
+                errors.append(
+                    f"{tag}: misconception_tag keys {sorted(tags)} do not match the "
+                    f"wrong options {sorted(wrong)}")
+            bad_slugs = [v for v in tags.values()
+                         if not isinstance(v, str) or not SLUG_RE.fullmatch(v)]
+            if bad_slugs:
+                errors.append(f"{tag}: misconception_tag value(s) {bad_slugs} are not snake_case slugs")
 
     # --- strategies ---
     strat = it.get("applicable_strategies", [])

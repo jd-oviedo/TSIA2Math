@@ -31,6 +31,14 @@ alter table public.student_misconceptions enable row level security;
 
 -- record_misconception
 --
+-- SUPERSEDED. sql/gumu_tables.sql section 4 replaces this definition and is
+-- what is live in production (confirmed 2026-08-12). It adds a raise on an
+-- unknown p_source and the matching CHECK constraints; the ladder is otherwise
+-- identical. Re-running THIS file would `create or replace` the guard back out
+-- while leaving the table constraints in place, so the function would start
+-- failing on constraint violations from inside plpgsql instead of raising a
+-- named error. Read it for history; apply gumu_tables.sql.
+--
 -- Postgres function rather than app-side logic so the confidence calculation
 -- can't drift between callers (CAT reveal, curriculum practice, Socratic AI).
 --

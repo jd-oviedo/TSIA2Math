@@ -33,6 +33,15 @@ export interface Item {
   correct_answer: string;
   explanation: string;
   distractor_logic: Record<string, string>;
+  // Per-option misconception slug, keyed by answer letter. Answer-bearing by
+  // omission: the correct option carries no tag, so the missing letter is the
+  // answer. Same shape and same rule as the curriculum side's
+  // `misconception_tag` (curriculum_topics.misconception_tags).
+  //
+  // Optional only because the column does not exist in Supabase yet — it lands
+  // with sql/questions_misconception_tag.sql. Tighten to required once that
+  // migration has run, so a server read cannot silently get undefined.
+  misconception_tag?: Record<string, string>;
   difficulty_level: ProficiencyLevel;
   difficulty_b: number | null;
   discrimination_a: number | null;
@@ -67,7 +76,10 @@ export interface Item {
 // answer-bearing field. Kept as its own type even though nothing selects all of
 // it, because it records where the answer fields actually become unreachable:
 // the view, enforced by the database, not the client's choice of columns.
-export type PublicViewItem = Omit<Item, "correct_answer" | "explanation" | "distractor_logic">;
+export type PublicViewItem = Omit<
+  Item,
+  "correct_answer" | "explanation" | "distractor_logic" | "misconception_tag"
+>;
 
 // The columns the live test selects out of that view, and the only ones any of
 // the test UI reads. Narrowing the select is not a security boundary — the view

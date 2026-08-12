@@ -14,6 +14,30 @@ import {
 } from "../../adaptive-test/engine";
 import type { Item, ProficiencyLevel, Strand } from "../../adaptive-test/type";
 
+// The source string passed to record_misconception() for diagnostic evidence.
+//
+// This is load-bearing. record_misconception() branches on the literal
+// 'socratic' to award high confidence immediately, and on 'cat' to apply the
+// stricter ladder: a CAT-only row reaches 'high' only on three hits spanning
+// two distinct sessions and two distinct items, and caps at 'medium' short of
+// that. 'curriculum' walks the original ladder (low, medium at two hits, high
+// at three). Passing 'socratic' from here -- by typo, or by a refactor that
+// copies the curriculum call site -- would fast-track weak
+// 4-option-multiple-choice evidence to the confidence level that surfaces a
+// misconception to a parent, and would bypass the session gate as well.
+//
+// The database does catch an *unknown* source. sql/gumu_tables.sql section 4 is
+// applied in production, confirmed by direct query 2026-08-12: the function
+// raises on any p_source outside ('cat', 'curriculum', 'socratic'), and
+// student_misconceptions carries CHECK constraints on both the sources array
+// and the confidence vocabulary.
+//
+// What it does not catch is a *valid* value used in the wrong place: 'socratic'
+// from this route passes every constraint and silently changes the ladder. That
+// is the failure this constant exists to make auditable -- one named place,
+// rather than a literal at the call site.
+const CAT_MISCONCEPTION_SOURCE = "cat" as const;
+
 export async function POST(request: Request) {
   const ip = getClientIp(request);
   const { success, reset } = await safeLimit(sessionsRateLimit, ip);
@@ -56,7 +80,7 @@ export async function POST(request: Request) {
   const itemIds = body.responses.map((r) => r.item_id);
   const { data: items, error: itemsError } = await admin
     .from("questions")
-    .select("item_id, correct_answer, primary_strand, proficiency_level")
+    .select("item_id, correct_answer, primary_strand, proficiency_level, misconception_tag")
     .in("item_id", itemIds);
 
   if (itemsError) {
@@ -65,7 +89,14 @@ export async function POST(request: Request) {
 
   const itemMap = new Map <
     string,
-    Pick<Item, "item_id" | "correct_answer" | "primary_strand" | "proficiency_level">
+    Pick<
+      Item,
+      | "item_id"
+      | "correct_answer"
+      | "primary_strand"
+      | "proficiency_level"
+      | "misconception_tag"
+    >
   >((items ?? []).map((i) => [i.item_id, i]));
 
   // Any item_id the client sent that doesn't exist in the real bank is
@@ -189,6 +220,66 @@ export async function POST(request: Request) {
     });
     if (rpcError) {
       console.error(`[api/sessions] exposure increment failed for ${r.item_id}:`, rpcError.message);
+    }
+  }
+
+  // Misconception accumulation for CAT-sourced evidence. Same RPC, same
+  // confidence ladder as the curriculum path (app/api/curriculum/practice),
+  // so a slug hit in the diagnostic and the same slug hit in curriculum
+  // practice land on one student_misconceptions row and compound.
+  //
+  // Recorded here rather than in /api/items/reveal on purpose. Reveal is
+  // per-item, can be called more than once for the same answer, and serves
+  // anonymous test-takers; recording there would double-count and would fire
+  // without an auth id. This route is the single place correctness is
+  // re-derived server-side from the bank and persisted.
+  //
+  // Source is 'cat' and must stay 'cat': the ladder gives Socratic hits an
+  // immediate jump to high confidence, and CAT evidence is weak enough
+  // (4-option multiple choice, 25% guess rate) that it has to earn high the
+  // slow way. See the note above CAT_MISCONCEPTION_SOURCE.
+  //
+  // p_session_id and p_item_id are what make that "slow way" mean across time
+  // rather than merely three times. A whole session arrives in one request, so
+  // without them three wrong answers on three items carrying the same slug --
+  // one sitting, twenty minutes -- would reach 'high', the level that surfaces
+  // to a teacher and a parent. For CAT-only rows the ladder now requires two
+  // distinct sessions AND two distinct items; short of that it caps at
+  // 'medium'. The item dimension is not redundant: exposure_max is declared
+  // but never enforced, so a retake can serve the same question again, and
+  // three attempts at one question across three sittings is not three pieces
+  // of evidence. See sql/student_misconceptions_session_gate.sql.
+  //
+  // Both arguments default to null in the RPC, so the curriculum and Socratic
+  // call sites pass neither and are unaffected.
+  //
+  // Anonymous sessions are skipped: student_misconceptions.student_id is a
+  // foreign key onto auth.users, so there is nothing to attribute the hit to.
+  // Best-effort, like exposure above -- the session is already saved, and
+  // losing an accumulation row must not fail the submission.
+  if (userId) {
+    for (const r of responseRows) {
+      if (r.is_correct) continue;
+      const item = itemMap.get(r.item_id);
+      const tag = item?.misconception_tag?.[r.selected_answer];
+      // No tag means the item predates tagging, or the option is untagged.
+      // Nothing to record; the response row itself is still persisted.
+      if (!tag) continue;
+
+      const { error: mcError } = await admin.rpc("record_misconception", {
+        p_student_id: userId,
+        p_misconception: tag,
+        p_strand: item!.primary_strand,
+        p_source: CAT_MISCONCEPTION_SOURCE,
+        p_session_id: session.id,
+        p_item_id: r.item_id,
+      });
+      if (mcError) {
+        console.error(
+          `[api/sessions] record_misconception failed for ${r.item_id}/${r.selected_answer}:`,
+          mcError.message
+        );
+      }
     }
   }
 // Fire test_completed server-side, tied to the same correctness data we
