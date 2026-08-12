@@ -10,8 +10,17 @@ choice can be made on purpose rather than settled by whoever edits the code next
 
 ## CAT evidence can reach `high` confidence in a single sitting
 
-**Status:** Option C chosen 2026-08-12. Migration plan under review; nothing
-implemented yet. Raised while reviewing `feat/misconception-cat-integration`.
+**Status:** Option C chosen and implemented 2026-08-12, with `item_ids` included.
+Code is on `feat/misconception-cat-integration`;
+`sql/student_misconceptions_session_gate.sql` is **not yet run against
+production**. Raised while reviewing that branch.
+
+The rule as shipped: a CAT-only row reaches `high` on three hits spanning two
+distinct sessions **and** two distinct items, capping at `medium` short of that.
+Three hits in one sitting are `medium`, not `low` — real evidence, just not
+evidence of persistence. Mixed curriculum+CAT rows keep the old rule, since
+curriculum hits genuinely are separate occasions. The item dimension closes the
+`exposure_max` sibling hole described below.
 
 ### The behaviour
 
