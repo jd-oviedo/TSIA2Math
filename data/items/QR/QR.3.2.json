@@ -490,7 +490,7 @@
       "slope_from_table"
     ],
     "estimated_time_seconds": 100,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -501,10 +501,31 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "rows": [
+        {
+          "label": "$x$",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "label": "$y$",
+          "values": [
+            10,
+            13,
+            16,
+            19
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "QR_P_063",

@@ -935,11 +935,15 @@ export default function FigureRenderer({ type, props }: Props) {
     case "box_plot":
     case "box_plot_comparison": {
       const xLabel = String(p.xLabel || "");
+      // `median` is optional: an item may state only the quartiles and the
+      // extremes (PR_P_042 asks purely about IQR and never gives a median).
+      // Drawing a median line there would be inventing a value the stem does
+      // not contain, so the line is omitted rather than guessed.
       type FiveNum = {
         label?: string;
         min: number;
         q1: number;
-        median: number;
+        median?: number;
         q3: number;
         max: number;
       };
@@ -982,7 +986,8 @@ export default function FigureRenderer({ type, props }: Props) {
         const cy = topPad + idx * (boxH + rowGap) + boxH / 2;
         const xMin = xToPx(pl.min);
         const xQ1 = xToPx(pl.q1);
-        const xMed = xToPx(pl.median);
+        const hasMedian = Number.isFinite(Number(pl.median));
+        const xMed = xToPx(Number(pl.median));
         const xQ3 = xToPx(pl.q3);
         const xMax = xToPx(pl.max);
         return (
@@ -1003,7 +1008,9 @@ export default function FigureRenderer({ type, props }: Props) {
               stroke={ACCENT}
               strokeWidth={1.6}
             />
-            <line x1={xMed} y1={cy - boxH / 2} x2={xMed} y2={cy + boxH / 2} stroke={ACCENT} strokeWidth={2.2} />
+            {hasMedian && (
+              <line x1={xMed} y1={cy - boxH / 2} x2={xMed} y2={cy + boxH / 2} stroke={ACCENT} strokeWidth={2.2} />
+            )}
             {pl.label && (
               <text x={padL} y={cy - boxH / 2 - 5} fontSize={11} fill={INK} textAnchor="start" fontWeight={600}>
                 {label(pl.label)}

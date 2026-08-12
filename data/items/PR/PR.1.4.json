@@ -68,7 +68,7 @@
       "genre_frequency"
     ],
     "estimated_time_seconds": 55,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -79,10 +79,41 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Genre",
+        "Books Checked Out"
+      ],
+      "rows": [
+        {
+          "label": "Fiction",
+          "values": [
+            34
+          ]
+        },
+        {
+          "label": "Nonfiction",
+          "values": [
+            21
+          ]
+        },
+        {
+          "label": "Mystery",
+          "values": [
+            18
+          ]
+        },
+        {
+          "label": "Science Fiction",
+          "values": [
+            27
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_B_013",
@@ -153,7 +184,7 @@
       "lunch_preference"
     ],
     "estimated_time_seconds": 65,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -164,10 +195,35 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Pizza",
+        "Sandwich",
+        "Salad"
+      ],
+      "rows": [
+        {
+          "label": "9th Grade",
+          "values": [
+            12,
+            8,
+            5
+          ]
+        },
+        {
+          "label": "10th Grade",
+          "values": [
+            9,
+            11,
+            7
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_B_014",
@@ -238,7 +294,7 @@
       "museum_visitors"
     ],
     "estimated_time_seconds": 65,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -249,10 +305,59 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Day",
+        "Visitors"
+      ],
+      "rows": [
+        {
+          "label": "Monday",
+          "values": [
+            45
+          ]
+        },
+        {
+          "label": "Tuesday",
+          "values": [
+            38
+          ]
+        },
+        {
+          "label": "Wednesday",
+          "values": [
+            52
+          ]
+        },
+        {
+          "label": "Thursday",
+          "values": [
+            41
+          ]
+        },
+        {
+          "label": "Friday",
+          "values": [
+            67
+          ]
+        },
+        {
+          "label": "Saturday",
+          "values": [
+            89
+          ]
+        },
+        {
+          "label": "Sunday",
+          "values": [
+            74
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_B_015",
@@ -323,7 +428,7 @@
       "class_period"
     ],
     "estimated_time_seconds": 65,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -334,10 +439,39 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Passed",
+        "Failed"
+      ],
+      "rows": [
+        {
+          "label": "Period 1",
+          "values": [
+            22,
+            6
+          ]
+        },
+        {
+          "label": "Period 2",
+          "values": [
+            18,
+            9
+          ]
+        },
+        {
+          "label": "Period 3",
+          "values": [
+            25,
+            4
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_B_016",
@@ -408,7 +542,7 @@
       "product_sales"
     ],
     "estimated_time_seconds": 60,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -419,10 +553,35 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Product",
+        "Units Sold"
+      ],
+      "rows": [
+        {
+          "label": "Product X",
+          "values": [
+            130
+          ]
+        },
+        {
+          "label": "Product Y",
+          "values": [
+            95
+          ]
+        },
+        {
+          "label": "Product Z",
+          "values": [
+            115
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_012",
@@ -493,7 +652,7 @@
       "club_enrollment"
     ],
     "estimated_time_seconds": 90,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -504,10 +663,35 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Chess",
+        "Drama",
+        "Robotics"
+      ],
+      "rows": [
+        {
+          "label": "Male",
+          "values": [
+            8,
+            14,
+            20
+          ]
+        },
+        {
+          "label": "Female",
+          "values": [
+            11,
+            18,
+            15
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_013",
@@ -578,7 +762,7 @@
       "quarterly_data"
     ],
     "estimated_time_seconds": 90,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -589,10 +773,41 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Quarter",
+        "Complaints"
+      ],
+      "rows": [
+        {
+          "label": "Q1",
+          "values": [
+            42
+          ]
+        },
+        {
+          "label": "Q2",
+          "values": [
+            67
+          ]
+        },
+        {
+          "label": "Q3",
+          "values": [
+            55
+          ]
+        },
+        {
+          "label": "Q4",
+          "values": [
+            38
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_014",
@@ -663,7 +878,7 @@
       "pet_ownership"
     ],
     "estimated_time_seconds": 95,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -674,10 +889,32 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Owns Pet",
+        "No Pet"
+      ],
+      "rows": [
+        {
+          "label": "House",
+          "values": [
+            48,
+            22
+          ]
+        },
+        {
+          "label": "Apartment",
+          "values": [
+            31,
+            44
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_015",
@@ -748,7 +985,7 @@
       "class_preference"
     ],
     "estimated_time_seconds": 90,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -759,10 +996,32 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Morning",
+        "Afternoon"
+      ],
+      "rows": [
+        {
+          "label": "Freshman",
+          "values": [
+            30,
+            20
+          ]
+        },
+        {
+          "label": "Sophomore",
+          "values": [
+            25,
+            35
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_016",
@@ -833,7 +1092,7 @@
       "membership_count"
     ],
     "estimated_time_seconds": 95,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -844,10 +1103,47 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Organization",
+        "Members"
+      ],
+      "rows": [
+        {
+          "label": "Org A",
+          "values": [
+            85
+          ]
+        },
+        {
+          "label": "Org B",
+          "values": [
+            120
+          ]
+        },
+        {
+          "label": "Org C",
+          "values": [
+            95
+          ]
+        },
+        {
+          "label": "Org D",
+          "values": [
+            110
+          ]
+        },
+        {
+          "label": "Org E",
+          "values": [
+            75
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_012",
@@ -1037,7 +1333,7 @@
       "customer_ratings"
     ],
     "estimated_time_seconds": 130,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -1048,10 +1344,43 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Good Service",
+        "Poor Service",
+        "Total"
+      ],
+      "rows": [
+        {
+          "label": "Good Food",
+          "values": [
+            55,
+            15,
+            70
+          ]
+        },
+        {
+          "label": "Poor Food",
+          "values": [
+            10,
+            20,
+            30
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            65,
+            35,
+            100
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_014",
@@ -1122,7 +1451,7 @@
       "conditional_proportion"
     ],
     "estimated_time_seconds": 140,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -1133,10 +1462,43 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Completed",
+        "Not Completed",
+        "Total"
+      ],
+      "rows": [
+        {
+          "label": "Sales",
+          "values": [
+            40,
+            10,
+            50
+          ]
+        },
+        {
+          "label": "Marketing",
+          "values": [
+            30,
+            20,
+            50
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            70,
+            30,
+            100
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_015",
@@ -1207,7 +1569,7 @@
       "extracurricular"
     ],
     "estimated_time_seconds": 130,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -1218,10 +1580,43 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Plays Instrument",
+        "No Instrument",
+        "Total"
+      ],
+      "rows": [
+        {
+          "label": "Plays Sport",
+          "values": [
+            18,
+            27,
+            45
+          ]
+        },
+        {
+          "label": "No Sport",
+          "values": [
+            12,
+            23,
+            35
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            30,
+            50,
+            80
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_016",
@@ -1292,7 +1687,7 @@
       "claim_evaluation"
     ],
     "estimated_time_seconds": 145,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -1303,9 +1698,42 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Condition B Positive",
+        "Condition B Negative",
+        "Total"
+      ],
+      "rows": [
+        {
+          "label": "Condition A Positive",
+          "values": [
+            22,
+            18,
+            40
+          ]
+        },
+        {
+          "label": "Condition A Negative",
+          "values": [
+            13,
+            47,
+            60
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            35,
+            65,
+            100
+          ]
+        }
+      ]
+    }
   }
 ]

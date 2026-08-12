@@ -408,7 +408,7 @@
       "categorical_data"
     ],
     "estimated_time_seconds": 85,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -419,10 +419,35 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Color",
+        "Students"
+      ],
+      "rows": [
+        {
+          "label": "Red",
+          "values": [
+            4
+          ]
+        },
+        {
+          "label": "Blue",
+          "values": [
+            3
+          ]
+        },
+        {
+          "label": "Green",
+          "values": [
+            5
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_003",

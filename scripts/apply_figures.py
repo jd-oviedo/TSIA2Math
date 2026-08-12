@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Apply figure_type / figure_props to GR & PR items from a proposals map.
+Apply figure_type / figure_props to items from a proposals map.
 
 Usage: python3 scripts/apply_figures.py <proposals.json>
 
@@ -9,7 +9,7 @@ For every item_id present in the proposals map, sets:
   figure_type    = <proposed>
   figure_props   = <proposed>
   image_url      = None            (always — figures are data-rendered)
-  last_modified  = 2026-07-03
+  last_modified  = LAST_MODIFIED (see below)
 Leaves created_at, author, and every other field untouched. Items NOT in the
 map are not touched at all.
 """
@@ -18,10 +18,11 @@ import sys
 import glob
 from pathlib import Path
 
-LAST_MODIFIED = "2026-07-03"
+LAST_MODIFIED = "2026-08-12"
 ALLOWED_TYPES = {
     "polygon", "polygon_comparison", "right_triangle", "solid_3d",
-    "bar_chart", "dot_plot", "box_plot", "box_plot_comparison",
+    "bar_chart", "line_graph", "pictograph", "dot_plot",
+    "box_plot", "box_plot_comparison", "scatterplot", "table",
 }
 
 
@@ -39,7 +40,9 @@ def main():
             sys.exit(f"ERROR: {iid} figure_props is not an object")
 
     applied = set()
-    files = sorted(glob.glob("data/items/GR/*.json")) + sorted(glob.glob("data/items/PR/*.json"))
+    # All four strands: the second figure pass reaches QR items too, not just
+    # the GR/PR pair the first pass covered.
+    files = sorted(glob.glob("data/items/*/*.json"))
     for f in files:
         items = json.loads(Path(f).read_text())
         changed = False
