@@ -401,8 +401,14 @@ def upload_course_curriculum(course_id, dry_run=False):
     # file and needs no credentials, which is what makes it usable in CI.
     supabase = connect() if not dry_run else None
 
-    # Find all .md files
-    md_files = sorted(source_dir.glob('unit-*/[QAG]*.md'))
+    # Find all .md files.
+    #
+    # The character class is the four strand prefixes, and P is in it: the
+    # earlier [QAG] silently matched nothing for the PR strand, so a PR topic
+    # file produced no row, no warning and no error -- the run reported success
+    # having skipped it. Anything not strand-prefixed (a README, notes) is still
+    # left out, which is why this is a class rather than a bare *.md.
+    md_files = sorted(source_dir.glob('unit-*/[AGPQ][R]*.md'))
     
     print(f"Found {len(md_files)} curriculum files for {course_id}")
     
