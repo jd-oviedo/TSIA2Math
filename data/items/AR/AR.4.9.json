@@ -35,6 +35,11 @@
       "C": "Correct: squaring both sides gives $x + 3 = 16$, so $x = 13$.",
       "D": "Student squares correctly to 16 but adds 3 instead of subtracting when isolating $x$: $x = 16 + 3 = 19$."
     },
+    "misconception_tag": {
+      "A": "squares_before_isolating",
+      "B": "squaring_confused_with_doubling",
+      "D": "adds_instead_of_subtracts"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -113,6 +118,11 @@
       "B": "Student does not square the right side, solving $x - 2 = 5$ as if no radical were present: $x = 7$.",
       "C": "Student doubles the 5 instead of squaring it, using $5^{2} = 10$: $x - 2 = 10$ gives $x = 12$.",
       "D": "Student squares correctly to 25 but subtracts 2 instead of adding when isolating $x$: $x = 25 - 2 = 23$."
+    },
+    "misconception_tag": {
+      "B": "squares_before_isolating",
+      "C": "squaring_confused_with_doubling",
+      "D": "adds_instead_of_subtracts"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -193,6 +203,11 @@
       "C": "Student doubles the 6 instead of squaring it, using $6^{2} = 12$: $2x = 12$ gives $x = 6$.",
       "D": "Student squares to $2x = 36$ but forgets to divide by 2, reporting $x = 36$."
     },
+    "misconception_tag": {
+      "A": "squares_before_isolating",
+      "C": "squaring_confused_with_doubling",
+      "D": "answers_intermediate_value"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -271,6 +286,11 @@
       "B": "Student isolates correctly to $\\sqrt{x} = 3$ but does not square, reporting $x = 3$.",
       "C": "Student adds 1 to the right side instead of subtracting it, getting $\\sqrt{x} = 5$, then squares to $x = 25$.",
       "D": "Correct: isolating gives $\\sqrt{x} = 3$, and squaring gives $x = 9$."
+    },
+    "misconception_tag": {
+      "A": "squares_before_isolating",
+      "B": "answers_intermediate_value",
+      "C": "adds_instead_of_subtracts"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -351,6 +371,11 @@
       "C": "Student adds 4 instead of subtracting when isolating, getting $2x = 36 + 4 = 40$, so $x = 20$.",
       "D": "Student squares and subtracts correctly to $2x = 32$ but forgets to divide by 2, reporting $x = 32$."
     },
+    "misconception_tag": {
+      "B": "squaring_confused_with_doubling",
+      "C": "adds_instead_of_subtracts",
+      "D": "answers_intermediate_value"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -429,6 +454,11 @@
       "B": "Correct: $(x - 2)(x - 5) = 0$ gives $x = 2$ and $x = 5$, and both check in the original equation.",
       "C": "Student factors with the wrong signs as $(x + 2)(x + 5)$ and reads the roots as $x = -2$ and $x = -5$.",
       "D": "Student reads the coefficient 7 and the constant 10 directly as the solutions instead of factoring."
+    },
+    "misconception_tag": {
+      "A": "valid_root_discarded_as_extraneous",
+      "C": "wrong_sign_on_factor",
+      "D": "wrong_sign_on_factor"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -509,6 +539,11 @@
       "C": "Correct: the candidates are $x = 4$ and $x = -1$, but $x = -1$ fails the check, so only $x = 4$ is valid.",
       "D": "Student makes a sign error moving the constant, forming $x^{2} - 3x + 4 = 0$ (discriminant $9 - 16 < 0$) and concludes there is no real solution."
     },
+    "misconception_tag": {
+      "A": "extraneous_root_not_checked",
+      "B": "wrong_sign_on_factor",
+      "D": "adds_instead_of_subtracts"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -587,6 +622,11 @@
       "B": "Student reaches $3x = 27$ correctly but forgets to divide by 3, reporting $x = 27$.",
       "C": "Student adds 4 to the right side instead of subtracting it from both sides, getting $\\sqrt{3x - 2} = 13$, then $3x - 2 = 169$ and $x = 57$.",
       "D": "Correct: isolating gives $\\sqrt{3x - 2} = 5$, squaring gives $3x - 2 = 25$, so $x = 9$."
+    },
+    "misconception_tag": {
+      "A": "squaring_confused_with_doubling",
+      "B": "answers_intermediate_value",
+      "C": "adds_instead_of_subtracts"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -667,6 +707,11 @@
       "C": "Student picks the extraneous candidate and rejects the valid one, reporting only $x = 3$.",
       "D": "Student squares the binomial term by term as $x^{2} + 36$, omitting the middle term, forming $x^{2} - 2x + 33 = 0$ (discriminant $4 - 132 < 0$) and concludes no real solution."
     },
+    "misconception_tag": {
+      "B": "extraneous_root_not_checked",
+      "C": "extraneous_root_not_checked",
+      "D": "binomial_square_middle_term_omitted"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -746,6 +791,11 @@
       "B": "Student factors with the wrong signs as $(x + 2)(x + 5)$ and reads the roots as $x = -2$ and $x = -5$.",
       "C": "Correct: $(x - 2)(x - 5) = 0$ gives $x = 2$ and $x = 5$, and both check in the original equation.",
       "D": "Student squares the binomial term by term as $x^{2} + 1$, omitting the middle term, forming $x^{2} - 5x + 10 = 0$ (discriminant $25 - 40 < 0$) and concludes no real solution."
+    },
+    "misconception_tag": {
+      "A": "valid_root_discarded_as_extraneous",
+      "B": "wrong_sign_on_factor",
+      "D": "binomial_square_middle_term_omitted"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

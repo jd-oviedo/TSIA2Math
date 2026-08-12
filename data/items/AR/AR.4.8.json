@@ -35,6 +35,11 @@
       "C": "Student factors $48 = 16 \\cdot 3$ and recognizes 16 as a perfect square but moves 16 outside the radical instead of its square root, $\\sqrt{16} = 4$.",
       "D": "Student factors $48 = 16 \\cdot 3$ but evaluates $\\sqrt{16}$ as 8, treating the square root as half the number, instead of 4."
     },
+    "misconception_tag": {
+      "A": "largest_perfect_square_not_extracted",
+      "C": "perfect_square_moved_out_unrooted",
+      "D": "halves_the_radicand"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -113,6 +118,11 @@
       "B": "Student finds the correct simplified parts, a 5 and a 3, but places them in the wrong positions, writing the coefficient as 3 and the radicand as 5.",
       "C": "Correct: $\\sqrt{75} = \\sqrt{25 \\cdot 3} = \\sqrt{25}\\sqrt{3} = 5\\sqrt{3}$.",
       "D": "Student extracts the root 5 correctly but divides the radicand by 5 instead of by 25, leaving $5\\sqrt{15}$."
+    },
+    "misconception_tag": {
+      "A": "perfect_square_moved_out_unrooted",
+      "B": "numerator_denominator_swap",
+      "D": "divides_instead_of_multiplies"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -193,6 +203,11 @@
       "C": "Student factors $32 = 16 \\cdot 2$ but evaluates $\\sqrt{16}$ as 8, treating the square root as half the number, instead of 4.",
       "D": "Correct: $\\sqrt{32} = \\sqrt{16 \\cdot 2} = \\sqrt{16}\\sqrt{2} = 4\\sqrt{2}$."
     },
+    "misconception_tag": {
+      "A": "largest_perfect_square_not_extracted",
+      "B": "perfect_square_moved_out_unrooted",
+      "C": "halves_the_radicand"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -271,6 +286,11 @@
       "B": "Student splits the radical over addition, $\\sqrt{36 + 64} = \\sqrt{36} + \\sqrt{64} = 6 + 8 = 14$. A radical does not distribute over addition.",
       "C": "Student adds the values inside the radical to get 100 but forgets to take the square root, reporting 100.",
       "D": "Student adds inside the radical to get 100 but evaluates $\\sqrt{100}$ as 50, treating the square root as half the number, instead of 10."
+    },
+    "misconception_tag": {
+      "B": "false_radical_distribution",
+      "C": "false_radical_distribution",
+      "D": "halves_the_radicand"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -351,6 +371,11 @@
       "C": "Student factors $98 = 2 \\cdot 49$ and pulls the 2 outside the radical, leaving the perfect square 49 inside instead of extracting it.",
       "D": "Student extracts the root 7 correctly but divides the radicand by 7 instead of by 49, leaving $7\\sqrt{14}$."
     },
+    "misconception_tag": {
+      "A": "perfect_square_moved_out_unrooted",
+      "C": "perfect_square_moved_out_unrooted",
+      "D": "divides_instead_of_multiplies"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -429,6 +454,11 @@
       "B": "Student simplifies $3\\sqrt{8} = 6\\sqrt{2}$ correctly but when simplifying $2\\sqrt{50}$ removes the perfect-square factor 25 without carrying its root out front, getting $2\\sqrt{2}$ instead of $10\\sqrt{2}$; then $6\\sqrt{2} + 2\\sqrt{2} = 8\\sqrt{2}$.",
       "C": "Correct: $3\\sqrt{8} = 6\\sqrt{2}$ and $2\\sqrt{50} = 10\\sqrt{2}$, so $6\\sqrt{2} + 10\\sqrt{2} = 16\\sqrt{2}$.",
       "D": "Student simplifies correctly to $6\\sqrt{2} + 10\\sqrt{2}$ but adds the radicands as well as the coefficients: $16\\sqrt{2 + 2} = 16\\sqrt{4} = 32$."
+    },
+    "misconception_tag": {
+      "A": "coefficients_and_radicands_both_combined",
+      "B": "perfect_square_moved_out_unrooted",
+      "D": "coefficients_and_radicands_both_combined"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -509,6 +539,11 @@
       "C": "Student adds the radicands instead of multiplying them: $\\sqrt{6 + 10} = \\sqrt{16}$.",
       "D": "Student multiplies to get $\\sqrt{60} = \\sqrt{4 \\cdot 15}$ but moves the 4 outside the radical instead of its square root, $\\sqrt{4} = 2$."
     },
+    "misconception_tag": {
+      "B": "largest_perfect_square_not_extracted",
+      "C": "false_radical_distribution",
+      "D": "perfect_square_moved_out_unrooted"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -587,6 +622,11 @@
       "B": "Student simplifies $\\sqrt{45} = 3\\sqrt{5}$ and $\\sqrt{20} = 2\\sqrt{5}$ correctly but adds the coefficients instead of subtracting: $3\\sqrt{5} + 2\\sqrt{5} = 5\\sqrt{5}$.",
       "C": "Student simplifies to $3\\sqrt{5} - 2\\sqrt{5}$ but subtracts the radicands as well as the coefficients: $(3 - 2)\\sqrt{5 - 5} = 1\\sqrt{0} = 0$.",
       "D": "Correct: $\\sqrt{45} = 3\\sqrt{5}$ and $\\sqrt{20} = 2\\sqrt{5}$, so $3\\sqrt{5} - 2\\sqrt{5} = 1\\sqrt{5} = \\sqrt{5}$."
+    },
+    "misconception_tag": {
+      "A": "false_radical_distribution",
+      "B": "adds_instead_of_subtracts",
+      "C": "coefficients_and_radicands_both_combined"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -667,6 +707,11 @@
       "C": "Student extracts $\\sqrt{x^{2}} = x$ but treats $x^{3}$ as a perfect square, dropping the leftover factor of $x$ that should remain under the radical: $2x\\sqrt{3}$.",
       "D": "Student factors $12x^{3} = 4x^{2} \\cdot 3x$ correctly but moves the 4 outside the radical instead of its square root, $\\sqrt{4} = 2$: $4x\\sqrt{3x}$."
     },
+    "misconception_tag": {
+      "B": "largest_perfect_square_not_extracted",
+      "C": "perfect_square_moved_out_unrooted",
+      "D": "perfect_square_moved_out_unrooted"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -746,6 +791,11 @@
       "B": "Correct: $\\frac{6}{\\sqrt{3}} \\cdot \\frac{\\sqrt{3}}{\\sqrt{3}} = \\frac{6\\sqrt{3}}{3} = 2\\sqrt{3}$.",
       "C": "Student multiplies only the numerator by $\\sqrt{3}$, then cancels the $\\sqrt{3}$ in the numerator and denominator: $\\frac{6\\sqrt{3}}{\\sqrt{3}} = 6$.",
       "D": "Student rationalizes correctly to $\\frac{6\\sqrt{3}}{3}$ but does not reduce $\\frac{6}{3}$ to 2, leaving the answer unsimplified."
+    },
+    "misconception_tag": {
+      "A": "rationalisation_applied_to_one_part",
+      "C": "rationalisation_applied_to_one_part",
+      "D": "largest_perfect_square_not_extracted"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

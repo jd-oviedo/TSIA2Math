@@ -35,6 +35,11 @@
       "C": "Student treats $\\frac{x^{2}}{x}$ as canceling away entirely and keeps only the leftover $3x$ term.",
       "D": "Student divides the first term correctly ($\\frac{x^{2}}{x} = x$) but copies the $3x$ term undivided, then combines: $x + 3x = 4x$."
     },
+    "misconception_tag": {
+      "B": "term_level_cancellation",
+      "C": "term_level_cancellation",
+      "D": "partial_distribution"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student divides only the second term ($\\frac{2x}{2x} = 1$) and leaves $4x^{2}$ undivided, giving $4x^{2} + 1$.",
       "C": "Correct: $\\frac{2x(2x + 1)}{2x} = 2x + 1$ after canceling the common factor $2x$.",
       "D": "Student reduces the coefficient ($\\frac{4}{2} = 2$) but fails to reduce $\\frac{x^{2}}{x}$ to $x$, keeping $x^{2}$: $\\frac{4x^{2}}{2x}$ becomes $2x^{2}$, and $\\frac{2x}{2x} = 1$, giving $2x^{2} + 1$."
+    },
+    "misconception_tag": {
+      "A": "partial_distribution",
+      "B": "partial_distribution",
+      "D": "partial_distribution"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student divides the constant terms ($\\frac{-9}{-3} = 3$) and copies the $x^{2}$ term unchanged instead of factoring, giving $x^{2} + 3$.",
       "D": "Student cancels the $x^{2}$ in the numerator against the $x$ in the denominator (an invalid term-level cancellation) and divides the constants $\\frac{-9}{-3} = 3$, leaving $3$."
     },
+    "misconception_tag": {
+      "A": "wrong_sign_on_factor",
+      "C": "partial_distribution",
+      "D": "term_level_cancellation"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student divides the constant terms ($\\frac{-16}{4} = -4$) and copies the $x^{2}$ term unchanged instead of factoring, giving $x^{2} - 4$.",
       "C": "Student cancels the $x^{2}$ in the numerator against the $x$ in the denominator (an invalid term-level cancellation) and divides the constants $\\frac{-16}{4} = -4$, leaving $-4$.",
       "D": "Correct: $\\frac{(x - 4)(x + 4)}{x + 4} = x - 4$ after canceling the common factor $(x + 4)$."
+    },
+    "misconception_tag": {
+      "A": "wrong_sign_on_factor",
+      "B": "partial_distribution",
+      "C": "term_level_cancellation"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student divides only the second term ($\\frac{-6x}{3x} = -2$) and leaves $3x^{2}$ undivided, giving $3x^{2} - 2$.",
       "D": "Student reduces the coefficient ($\\frac{3}{3} = 1$) but fails to reduce $\\frac{x^{2}}{x}$ to $x$, keeping $x^{2}$: $\\frac{3x^{2}}{3x}$ becomes $x^{2}$, and $\\frac{-6x}{3x} = -2$, giving $x^{2} - 2$."
     },
+    "misconception_tag": {
+      "B": "partial_distribution",
+      "C": "partial_distribution",
+      "D": "partial_distribution"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student cancels the $x^{2}$ terms directly in the numerator and denominator instead of factoring, leaving $\\frac{5x + 6}{-9}$.",
       "C": "Correct: $\\frac{(x + 2)(x + 3)}{(x - 3)(x + 3)} = \\frac{x + 2}{x - 3}$ after canceling $(x + 3)$.",
       "D": "Student factors the numerator with a sign error as $(x - 2)(x - 3)$ (which is actually $x^{2} - 5x + 6$), then cancels $(x - 3)$ against the denominator, leaving $\\frac{x - 2}{x + 3}$."
+    },
+    "misconception_tag": {
+      "A": "wrong_sign_on_factor",
+      "B": "term_level_cancellation",
+      "D": "wrong_sign_on_factor"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student cancels the $x^{2}$ terms directly in the numerator and denominator instead of factoring, leaving $\\frac{-4}{4x + 4}$.",
       "D": "Student over-cancels by removing the single $(x + 2)$ in the numerator against both $(x + 2)$ factors in the denominator, treating the denominator as fully canceled and leaving $\\frac{x - 2}{1} = x - 2$."
     },
+    "misconception_tag": {
+      "A": "wrong_sign_on_factor",
+      "C": "term_level_cancellation",
+      "D": "over_cancellation"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Student cancels the $x^{2}$ terms directly in the numerator and denominator instead of factoring, leaving $\\frac{-x - 6}{-4}$.",
       "C": "Student factors the numerator with a sign error as $(x + 3)(x - 2)$ (which is actually $x^{2} + x - 6$), then cancels $(x - 2)$ against the denominator, leaving $\\frac{x + 3}{x + 2}$.",
       "D": "Correct: $\\frac{(x - 3)(x + 2)}{(x - 2)(x + 2)} = \\frac{x - 3}{x - 2}$ after canceling $(x + 2)$."
+    },
+    "misconception_tag": {
+      "A": "wrong_sign_on_factor",
+      "B": "term_level_cancellation",
+      "C": "wrong_sign_on_factor"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "Student factors the denominator with a sign error as $(x + 3)(x - 2)$ (which is actually $x^{2} + x - 6$), then cancels $(x - 2)$ against the numerator's $(x - 2)$, leaving $\\frac{2(x + 2)}{x + 3} = \\frac{2x + 4}{x + 3}$.",
       "D": "Student cancels $(x + 2)$ correctly but distributes the 2 incompletely, computing $2(x - 2)$ as $2x - 2$ instead of $2x - 4$, leaving $\\frac{2x - 2}{x - 3}$."
     },
+    "misconception_tag": {
+      "B": "wrong_sign_on_factor",
+      "C": "wrong_sign_on_factor",
+      "D": "partial_distribution"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -754,6 +799,11 @@
       "B": "Student sets the numerator $x^{2} - 25 = 0$, solving $x = 5$ and $x = -5$, confusing where the expression equals zero with where it is undefined.",
       "C": "Correct: the original denominator $(x + 5)(x + 2)$ is zero at $x = -5$ and $x = -2$, so both are excluded, including the canceled value $x = -5$.",
       "D": "Student combines the zeros of the numerator ($x = 5, -5$) with the zeros of the denominator ($x = -5, -2$), over-including the numerator zero $x = 5$, which does not make the expression undefined."
+    },
+    "misconception_tag": {
+      "A": "restriction_read_from_simplified_form",
+      "B": "numerator_zeros_confused_with_undefined",
+      "D": "numerator_zeros_confused_with_undefined"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

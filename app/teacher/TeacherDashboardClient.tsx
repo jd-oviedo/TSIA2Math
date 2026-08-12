@@ -32,6 +32,7 @@ interface StrandBreakdown {
 interface RosterRow {
   student_id: string;
   email: string;
+  name: string;
   initials: string;
   enrolled_via: string;
   enrolled_at: string;
@@ -133,7 +134,7 @@ function toDisplayStudent(r: RosterRow): DisplayStudent {
   const tested = r.latest_session !== null && r.attempt_count > 0;
   return {
     student_id: r.student_id,
-    name: r.email.split('@')[0],
+    name: r.name,
     email: r.email,
     initials: r.initials,
     score,

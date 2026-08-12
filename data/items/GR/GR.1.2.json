@@ -35,6 +35,11 @@
       "C": "Student selects vertical angles, which are equal in measure when formed by intersecting lines, but are not defined by summing to 90\u00b0.",
       "D": "Student selects adjacent, which describes a positional relationship between angles that share a side and vertex \u2014 not a relationship defined by a specific sum."
     },
+    "misconception_tag": {
+      "A": "complementary_supplementary_swap",
+      "C": "vertical_angles_given_a_sum_rule",
+      "D": "adjacent_vs_vertical_confused"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student selects vertical angles, which are equal in measure at an intersection, but vertical angles are not defined by summing to 180\u00b0.",
       "C": "Student selects adjacent, which describes a positional relationship (sharing a side and vertex) rather than a sum-based relationship.",
       "D": "Correct: two angles that sum to 180\u00b0 are supplementary angles."
+    },
+    "misconception_tag": {
+      "A": "complementary_supplementary_swap",
+      "B": "vertical_angles_given_a_sum_rule",
+      "C": "adjacent_vs_vertical_confused"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student confuses vertical angles with supplementary angles; adjacent angles at an intersection do sum to 180\u00b0, but the vertical (opposite) pair are equal to each other, not supplementary to each other.",
       "D": "Student confuses vertical angles with adjacent angles; adjacent angles share a common side and vertex, whereas vertical angles are the non-adjacent opposite pairs at an intersection."
     },
+    "misconception_tag": {
+      "B": "vertical_angles_treated_as_supplementary",
+      "C": "vertical_angles_treated_as_supplementary",
+      "D": "adjacent_vs_vertical_confused"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student confuses the complementary relationship with vertical angle equality and reports the original angle measure as the answer.",
       "C": "Correct: complementary angles sum to 90\u00b0, so the missing angle is 90\u00b0 \u2212 34\u00b0 = 56\u00b0.",
       "D": "Student makes a subtraction error when computing 90\u00b0 \u2212 34\u00b0, failing to borrow correctly and computing each digit independently (9 \u2212 3 = 6, 0 \u2212 4 \u2192 writes 4), yielding 64\u00b0 instead of 56\u00b0."
+    },
+    "misconception_tag": {
+      "A": "complementary_supplementary_swap",
+      "B": "vertical_angles_given_a_sum_rule",
+      "D": "off_by_one_count"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student confuses the supplementary relationship with vertical angle equality and reports the original angle measure as the answer.",
       "D": "Student adds the given angle to 180\u00b0 rather than subtracting it, computing 180\u00b0 + 67\u00b0 = 247\u00b0 instead of 180\u00b0 \u2212 67\u00b0 = 113\u00b0."
     },
+    "misconception_tag": {
+      "A": "complementary_supplementary_swap",
+      "C": "vertical_angles_given_a_sum_rule",
+      "D": "adds_instead_of_subtracts"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student doubles the given angle (48\u00b0 \u00d7 2 = 96\u00b0), possibly reasoning that 'vertical' implies a multiplicative relationship rather than equality.",
       "C": "Student subtracts from 90\u00b0 (90\u00b0 \u2212 48\u00b0 = 42\u00b0), applying the complementary rule to a vertical angle context.",
       "D": "Correct: the angle directly across the intersection is a vertical angle, and vertical angles are always equal in measure; the answer is 48\u00b0."
+    },
+    "misconception_tag": {
+      "A": "vertical_angles_treated_as_supplementary",
+      "B": "vertical_angles_given_a_sum_rule",
+      "C": "complementary_supplementary_swap"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student completes only the first step, finding Angle B = 62\u00b0, and reports that value as the answer instead of continuing to find Angle C.",
       "D": "Student applies a vertical angle relationship and reports the original measure of Angle A (28\u00b0) as the measure of Angle C."
     },
+    "misconception_tag": {
+      "B": "answers_intermediate_value",
+      "C": "answers_intermediate_value",
+      "D": "vertical_angles_given_a_sum_rule"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -595,6 +630,11 @@
       "C": "Correct: the two angles not equal to 73\u00b0 each measure 180\u00b0 \u2212 73\u00b0 = 107\u00b0; their sum is 107\u00b0 + 107\u00b0 = 214\u00b0.",
       "D": "Student sums all four angles at the intersection (73\u00b0 + 73\u00b0 + 107\u00b0 + 107\u00b0 = 360\u00b0) rather than isolating the two angles that are not equal to 73\u00b0."
     },
+    "misconception_tag": {
+      "A": "vertical_angles_treated_as_supplementary",
+      "B": "all_intersection_angles_summed",
+      "D": "all_intersection_angles_summed"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -674,6 +714,11 @@
       "B": "Correct: setting 2k + 3k = 180\u00b0 gives k = 36\u00b0; the two angles are 2(36\u00b0) = 72\u00b0 and 3(36\u00b0) = 108\u00b0.",
       "C": "Student correctly solves for k = 36\u00b0 but uses k itself as one angle measure and its supplement (180\u00b0 \u2212 36\u00b0 = 144\u00b0) as the other, rather than computing 2k and 3k.",
       "D": "Student misreads the ratio 2:3 as meaning one angle is twice the other, setting up x + 2x = 180\u00b0, which gives x = 60\u00b0 and 2x = 120\u00b0."
+    },
+    "misconception_tag": {
+      "A": "complementary_supplementary_swap",
+      "C": "answers_intermediate_value",
+      "D": "reads_wrong_category"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

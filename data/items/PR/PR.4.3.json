@@ -35,6 +35,11 @@
       "C": "Student reports the new value as a percent of the original: $\\frac{75}{60}$ = 125%.",
       "D": "Student reports the absolute change of 15 as if it were the percent change."
     },
+    "misconception_tag": {
+      "B": "percent_change_wrong_base",
+      "C": "new_over_original_as_change",
+      "D": "absolute_change_as_percent"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Correct: (72 - 90)/90 = $\\frac{-18}{90}$ = -0.20 = 20% decrease.",
       "C": "Student computes the magnitude correctly but labels the direction backward as an increase.",
       "D": "Student reports the absolute change of 18 as if it were the percent change."
+    },
+    "misconception_tag": {
+      "A": "percent_change_wrong_base",
+      "C": "misreads_direction_of_change",
+      "D": "absolute_change_as_percent"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Correct: (60 - 30)/30 = $\\frac{30}{30}$ = 1.00 = 100% increase.",
       "D": "Student reports the absolute change of 30 as if it were the percent change."
     },
+    "misconception_tag": {
+      "A": "percent_change_wrong_base",
+      "B": "new_over_original_as_change",
+      "D": "absolute_change_as_percent"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -275,6 +290,11 @@
       "C": "Student reports the absolute change of 50 as if it were the percent change.",
       "D": "Correct: (200 - 250)/250 = $\\frac{-50}{250}$ = -0.20 = 20% decrease."
     },
+    "misconception_tag": {
+      "A": "percent_change_wrong_base",
+      "B": "new_over_original_as_change",
+      "C": "absolute_change_as_percent"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -354,6 +374,11 @@
       "B": "Student divides the change by the new value instead of the original: $\\frac{30}{150}$ = 20%.",
       "C": "Student reports the new value as a percent of the original: $\\frac{150}{120}$ = 125%.",
       "D": "Student reports the absolute change of 30 as if it were the percent change."
+    },
+    "misconception_tag": {
+      "B": "percent_change_wrong_base",
+      "C": "new_over_original_as_change",
+      "D": "absolute_change_as_percent"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -437,6 +462,11 @@
       "C": "Student divides the change by the new value instead of the original: $\\frac{500}{2500}$ = 20%.",
       "D": "Student computes $\\frac{500}{2000}$ = 0.25 but misplaces the decimal, reading it as 2.5% rather than 25%."
     },
+    "misconception_tag": {
+      "A": "absolute_change_as_percent",
+      "C": "percent_change_wrong_base",
+      "D": "percent_decimal_overshift"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -518,6 +548,11 @@
       "B": "Student computes the remaining price as a percent of the original ($\\frac{510}{600}$ = 85%) instead of the percent decrease.",
       "C": "Correct: $\\frac{90}{600}$ = 0.15 = 15% decrease.",
       "D": "Student computes $\\frac{90}{600}$ = 0.15 but misplaces the decimal, reading it as 1.5% rather than 15%."
+    },
+    "misconception_tag": {
+      "A": "absolute_change_as_percent",
+      "B": "new_over_original_as_change",
+      "D": "percent_decimal_overshift"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -601,6 +636,11 @@
       "C": "Student divides the change by the new value instead of the original: $\\frac{1}{4}$ = 25%.",
       "D": "Correct: (4 - 5)/5 = $\\frac{-1}{5}$ = -0.20 = 20% decrease."
     },
+    "misconception_tag": {
+      "A": "misreads_direction_of_change",
+      "B": "new_over_original_as_change",
+      "C": "percent_change_wrong_base"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -682,6 +722,11 @@
       "B": "Student reports the absolute change of 30 as if it were the percent change.",
       "C": "Student reports the new value as a percent of the original: $\\frac{180}{150}$ = 120%.",
       "D": "Student computes $\\frac{30}{150}$ = 0.20 but misplaces the decimal, reading it as 2% rather than 20%."
+    },
+    "misconception_tag": {
+      "B": "absolute_change_as_percent",
+      "C": "new_over_original_as_change",
+      "D": "percent_decimal_overshift"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -765,6 +810,11 @@
       "C": "Student computes the magnitude correctly but labels the direction backward as an increase.",
       "D": "Student reports the absolute change of 10 as if it were the percent change."
     },
+    "misconception_tag": {
+      "A": "percent_change_wrong_base",
+      "C": "misreads_direction_of_change",
+      "D": "absolute_change_as_percent"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -846,6 +896,11 @@
       "B": "Student adds the magnitudes of the two changes (20% + 20%) to get a 40% decrease.",
       "C": "Correct: 100 -> 120 -> 96, so the net change is (96 - 100)/100 = -4%, a 4% decrease.",
       "D": "Student computes the correct 4% magnitude but reverses the direction to an increase."
+    },
+    "misconception_tag": {
+      "A": "percent_changes_added",
+      "B": "percent_changes_added",
+      "D": "misreads_direction_of_change"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -929,6 +984,11 @@
       "C": "Student assumes the increases must be equal without computing each percent relative to its own base.",
       "D": "Student uses the higher final price as the basis for comparison rather than the percent change."
     },
+    "misconception_tag": {
+      "B": "percent_change_wrong_base",
+      "C": "percent_change_wrong_base",
+      "D": "percent_change_wrong_base"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1010,6 +1070,11 @@
       "B": "Student increases the new price by another 25%: 75 x 1.25 = \\$93.75, applying the change forward instead of reversing it.",
       "C": "Student treats the \\$75 as 75% of the original, computing 75 / 0.75 = \\$100, confusing an increase with a decrease.",
       "D": "Correct: $\\frac{75}{1}$.25 = \\$60, and \\$60 increased by 25% returns \\$75."
+    },
+    "misconception_tag": {
+      "A": "percent_change_wrong_base",
+      "B": "percent_change_wrong_base",
+      "C": "misreads_direction_of_change"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1093,6 +1158,11 @@
       "C": "Student reports the final value as a percent of the original ($\\frac{1210}{1000}$ = 121%) rather than the percent change.",
       "D": "Student counts only the second year's growth (1100 to 1210 is 110), computing $\\frac{110}{1000}$ = 11% and ignoring the first year."
     },
+    "misconception_tag": {
+      "A": "percent_changes_added",
+      "C": "new_over_original_as_change",
+      "D": "single_period_counted"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1174,6 +1244,11 @@
       "B": "Correct: X is $\\frac{50}{200}$ = 25% and Y is $\\frac{20}{80}$ = 25%, so the percent decreases are equal.",
       "C": "Student assumes smaller starting values automatically produce a larger percent change without computing.",
       "D": "Student uses the higher starting price as the basis for comparison instead of the percent change."
+    },
+    "misconception_tag": {
+      "A": "percent_change_wrong_base",
+      "C": "percent_change_wrong_base",
+      "D": "percent_change_wrong_base"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

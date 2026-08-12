@@ -35,6 +35,11 @@
       "C": "Correct: subtracting 4 from both sides gives x > 5.",
       "D": "Student subtracts in the wrong order \u2014 4 minus 9 instead of 9 minus 4 \u2014 giving x > \u22125."
     },
+    "misconception_tag": {
+      "A": "adds_instead_of_subtracts",
+      "B": "inequality_direction_not_flipped",
+      "D": "subtracts_in_wrong_order"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student subtracts 3 from 12 instead of multiplying: 12 \u2212 3 = 9, giving x < 9.",
       "C": "Student correctly multiplies to get 36 but flips the inequality direction without justification, writing x > 36.",
       "D": "Correct: multiplying both sides by 3 gives x < 36."
+    },
+    "misconception_tag": {
+      "A": "divides_instead_of_multiplies",
+      "B": "divides_instead_of_multiplies",
+      "C": "inequality_direction_not_flipped"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student divides 8 by 2 without applying the negative sign on the coefficient, giving x < 4.",
       "D": "Student divides 8 by 2 (ignoring the negative coefficient) and also fails to flip the direction, giving x > 4."
     },
+    "misconception_tag": {
+      "B": "inequality_direction_not_flipped",
+      "C": "drops_negative_sign",
+      "D": "inequality_direction_not_flipped"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Correct: 2x \u2212 3 \u2264 7 \u2192 2x \u2264 10 \u2192 x \u2264 5.",
       "C": "Student gets the correct boundary (5) but flips the inequality direction without cause, writing x \u2265 5.",
       "D": "Student divides 7 by 2 without first adding 3: 7 \u00f7 2 = 3.5, giving x \u2264 3.5."
+    },
+    "misconception_tag": {
+      "A": "adds_instead_of_subtracts",
+      "C": "inequality_direction_not_flipped",
+      "D": "divides_before_isolating"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Correct: \u22123x + 6 > 0 \u2192 \u22123x > \u22126 \u2192 x < 2.",
       "D": "Student drops the negative sign on the coefficient, solving 3x + 6 > 0 \u2192 3x > \u22126 \u2192 x > \u22122."
     },
+    "misconception_tag": {
+      "A": "inequality_direction_not_flipped",
+      "B": "adds_instead_of_subtracts",
+      "D": "drops_negative_sign"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student gets the correct boundary (4) but flips the inequality direction without cause, writing x < 4.",
       "C": "Student correctly finds 2x > 8 but forgets to divide by 2, reporting x > 8.",
       "D": "Correct: 4x + 1 > 2x + 9 \u2192 2x > 8 \u2192 x > 4."
+    },
+    "misconception_tag": {
+      "A": "adds_instead_of_subtracts",
+      "B": "inequality_direction_not_flipped",
+      "C": "answers_intermediate_value"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student drops the negative when dividing \u22124 by 2, computing 4 \u00f7 2 = 2 instead of \u22124 \u00f7 2 = \u22122.",
       "D": "Student correctly arrives at \u22124 \u2264 2x but forgets to divide by 2, reporting x \u2265 \u22124."
     },
+    "misconception_tag": {
+      "A": "boundary_strictness_changed",
+      "C": "drops_negative_sign",
+      "D": "answers_intermediate_value"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Student correctly subtracts 3 (getting \u22124 < 2x \u2264 6) but stops before dividing by 2, reporting \u22124 < x \u2264 6.",
       "C": "Student solves correctly but changes the left boundary from strict (<) to non-strict (\u2264), incorrectly including x = \u22122 in the solution set.",
       "D": "Student solves correctly but changes the right boundary from non-strict (\u2264) to strict (<), incorrectly excluding x = 3 from the solution set."
+    },
+    "misconception_tag": {
+      "B": "answers_intermediate_value",
+      "C": "boundary_strictness_changed",
+      "D": "boundary_strictness_changed"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "Student divides 6 by 10 without applying the negative sign on the coefficient, computing 6 \u00f7 10 = $\\frac{3}{5}$ and writing x < $\\frac{3}{5}$.",
       "D": "Student divides 6 by 10 (ignoring the negative coefficient) and also fails to flip the direction, writing x > $\\frac{3}{5}$."
     },
+    "misconception_tag": {
+      "B": "inequality_direction_not_flipped",
+      "C": "drops_negative_sign",
+      "D": "inequality_direction_not_flipped"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -754,6 +799,11 @@
       "B": "Student sets up the correct inequality but ignores the \\$24 already earned, solving 12h > 168 \u2192 h > 14.",
       "C": "Correct: 12h + 24 > 168 \u2192 12h > 144 \u2192 h > 12.",
       "D": "Student adds \\$24 to \\$168 instead of subtracting: 12h > 168 + 24 = 192 \u2192 h > 16."
+    },
+    "misconception_tag": {
+      "A": "boundary_strictness_changed",
+      "B": "answers_intermediate_value",
+      "D": "adds_instead_of_subtracts"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

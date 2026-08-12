@@ -35,6 +35,11 @@
       "C": "Correct: a translation is a rigid motion, so the image is congruent to the original.",
       "D": "Student invents a false conditional, believing congruence depends on how far the figure is moved relative to its own size."
     },
+    "misconception_tag": {
+      "A": "rigid_motion_treated_as_dilation",
+      "B": "composition_assumed_to_compound_size",
+      "D": "false_condition_invented_for_congruence"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -113,6 +118,11 @@
       "B": "Correct: a dilation with scale factor 2 preserves shape but not size, so the image is similar but not congruent.",
       "C": "Student believes changing the size destroys the shape relationship, incorrectly concluding the image is neither similar nor congruent.",
       "D": "Student reverses what a dilation preserves, thinking size stays fixed while shape changes."
+    },
+    "misconception_tag": {
+      "A": "dilation_treated_as_congruence_preserving",
+      "C": "composition_assumed_to_compound_size",
+      "D": "dilation_treated_as_congruence_preserving"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -194,6 +204,11 @@
       "C": "Student adds a false condition on the angle, believing congruence only results from a half-turn rather than from any rotation.",
       "D": "Correct: a rotation is a rigid motion, so the image is congruent to the original for any rotation angle."
     },
+    "misconception_tag": {
+      "A": "rigid_motion_treated_as_dilation",
+      "B": "composition_assumed_to_compound_size",
+      "C": "false_condition_invented_for_congruence"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -272,6 +287,11 @@
       "B": "Student assumes that reversing orientation is a kind of size change and downgrades the relationship to similar-only.",
       "C": "Student believes flipping the figure destroys the size and shape relationship entirely.",
       "D": "Student mislabels the reflection as a dilation, confusing a flip across a line with a resizing about a point."
+    },
+    "misconception_tag": {
+      "B": "rigid_motion_treated_as_dilation",
+      "C": "rigid_motion_treated_as_dilation",
+      "D": "rigid_motion_treated_as_dilation"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -353,6 +373,11 @@
       "C": "Correct: a dilation with scale factor 3 changes the size, so its image is similar but not congruent, unlike the three rigid motions.",
       "D": "Student believes turning a figure changes its size, incorrectly flagging the rotation."
     },
+    "misconception_tag": {
+      "A": "rigid_motion_treated_as_dilation",
+      "B": "rigid_motion_treated_as_dilation",
+      "D": "rigid_motion_treated_as_dilation"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -432,6 +457,11 @@
       "B": "Student assumes that applying two transformations must change the size, downgrading the result to similar-only.",
       "C": "Student believes stacking transformations distorts the figure, concluding it is neither similar nor congruent.",
       "D": "Student adds a false condition, believing congruence after a reflection depends on the figure having symmetry."
+    },
+    "misconception_tag": {
+      "B": "composition_assumed_to_compound_size",
+      "C": "composition_assumed_to_compound_size",
+      "D": "false_condition_invented_for_congruence"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -513,6 +543,11 @@
       "C": "Student believes combining a dilation with a rotation destroys the shape relationship entirely.",
       "D": "Student believes a rotation can undo the size change caused by a dilation, incorrectly restoring congruence."
     },
+    "misconception_tag": {
+      "A": "dilation_treated_as_congruence_preserving",
+      "C": "composition_assumed_to_compound_size",
+      "D": "dilation_treated_as_congruence_preserving"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -592,6 +627,11 @@
       "B": "Student believes applying more than one transformation changes the size, downgrading the result to similar-only.",
       "C": "Student believes stacking two rotations distorts the figure, concluding it is neither similar nor congruent.",
       "D": "Correct: a composition of two rotations is still a rigid motion, so the final image is congruent to the original."
+    },
+    "misconception_tag": {
+      "A": "rigid_motion_treated_as_dilation",
+      "B": "composition_assumed_to_compound_size",
+      "C": "composition_assumed_to_compound_size"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -673,6 +713,11 @@
       "C": "Correct: a dilation with scale factor $\\frac{1}{2}$ followed by a reflection preserves shape but not size, so the image is similar but not congruent.",
       "D": "Student believes shrinking and then flipping the figure destroys the shape relationship entirely."
     },
+    "misconception_tag": {
+      "A": "dilation_treated_as_congruence_preserving",
+      "B": "false_condition_invented_for_congruence",
+      "D": "rigid_motion_treated_as_dilation"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -752,6 +797,11 @@
       "B": "Correct: the dilation preserves angle measures and multiplies each side length by the scale factor of 4, so the image is similar.",
       "C": "Student reverses what a similarity transformation preserves, thinking side lengths stay fixed while angles change.",
       "D": "Student believes combining a translation with a dilation breaks the shape relationship, concluding neither similar nor congruent."
+    },
+    "misconception_tag": {
+      "A": "dilation_treated_as_congruence_preserving",
+      "C": "dilation_treated_as_congruence_preserving",
+      "D": "composition_assumed_to_compound_size"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -833,6 +883,11 @@
       "C": "Student confuses the area ratio with the linear scale factor. The area grows by a factor of $2^{2} = 4$, and the student reports 4 as the scale factor instead of 2.",
       "D": "Student correctly identifies the dilation and the scale factor of 2 but treats the dilation as if it preserves congruence."
     },
+    "misconception_tag": {
+      "B": "transformation_misidentified_from_coordinates",
+      "C": "area_ratio_confused_with_linear_ratio",
+      "D": "dilation_treated_as_congruence_preserving"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -912,6 +967,11 @@
       "B": "Student sees the coordinates change and assumes a size change, picking a dilation even though the side lengths are unchanged.",
       "C": "Student sees the negative x-coordinates in the image and assumes a reflection over the y-axis. That rule $(x, y) \\to (-x, y)$ sends $A(1, 2) \\to (-1, 2)$, which does not match $A'(-2, 1)$.",
       "D": "Student cannot match a rule and concludes the shape changed, overlooking that a rotation preserves the shape exactly."
+    },
+    "misconception_tag": {
+      "B": "transformation_misidentified_from_coordinates",
+      "C": "transformation_misidentified_from_coordinates",
+      "D": "transformation_misidentified_from_coordinates"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -993,6 +1053,11 @@
       "C": "Student picks a single half-turn. The $180^{\\circ}$ rule $(x, y) \\to (-x, -y)$ sends $A(2, 1) \\to (-2, -1)$, which does not match $A'(2, 4)$.",
       "D": "Student chooses the wrong reflection axis. Reflecting over the y-axis sends $A(2, 1) \\to (-2, 1)$, and no single translation then maps all three vertices to the image."
     },
+    "misconception_tag": {
+      "A": "transformation_misidentified_from_coordinates",
+      "C": "transformation_misidentified_from_coordinates",
+      "D": "transformation_misidentified_from_coordinates"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1073,6 +1138,11 @@
       "C": "Correct: a dilation with scale factor 3 followed by a reflection over the y-axis maps all three vertices, and the dilation makes the triangles similar but not congruent.",
       "D": "Student identifies the correct sequence but treats the dilation as if it preserves congruence, overlooking the size change."
     },
+    "misconception_tag": {
+      "A": "transformation_misidentified_from_coordinates",
+      "B": "transformation_misidentified_from_coordinates",
+      "D": "dilation_treated_as_congruence_preserving"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1152,6 +1222,11 @@
       "B": "Student inverts the ratio, comparing original to image instead of image to original. A scale factor of 2 would enlarge $A(2, 4)$ to $(4, 8)$, not shrink it to $(1, 2)$.",
       "C": "Student confuses the area ratio with the linear scale factor. The area shrinks by a factor of $\\left(\\frac{1}{2}\\right)^{2} = \\frac{1}{4}$, and the student reports $\\frac{1}{4}$ as the scale factor instead of $\\frac{1}{2}$.",
       "D": "Correct: each coordinate is multiplied by $\\frac{1}{2}$, so it is a dilation with scale factor $\\frac{1}{2}$, making the triangles similar but not congruent."
+    },
+    "misconception_tag": {
+      "A": "transformation_misidentified_from_coordinates",
+      "B": "scale_factor_direction_reversed",
+      "C": "area_ratio_confused_with_linear_ratio"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

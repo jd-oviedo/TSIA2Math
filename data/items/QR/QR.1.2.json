@@ -35,6 +35,11 @@
       "D": "Treats $\\frac{2}{5}$ as 0.50 (confusing $\\frac{2}{5}$ with $\\frac{1}{2}$ because '5' appears in both) and $\\frac{9}{20}$ as roughly 0.42, producing an incorrect ordering with Devon near the slow end.",
       "A": "Correct: Devon = $\\frac{2}{5}$ = 0.40 is fastest, then Maria at 0.44, then Tom\u00e1s = $\\frac{9}{20}$ = 0.45, and Priya = 47% = 0.47 is slowest."
     },
+    "misconception_tag": {
+      "B": "order_direction_reversed",
+      "C": "fraction_digit_gluing",
+      "D": "fraction_digit_gluing"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -118,6 +123,11 @@
       "B": "Student treats 72% as the largest because 72 is the biggest number shown, without converting it to 0.72.",
       "C": "Student misconverts $\\frac{5}{8}$ (for example as 0.85 by flipping the division), making Lena's score look highest.",
       "D": "Correct: $\\frac{3}{4}$ = 0.75 is the largest once every score is written as a decimal."
+    },
+    "misconception_tag": {
+      "A": "refuses_to_compare_forms",
+      "B": "percent_sign_confusion",
+      "C": "reversed_division"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -203,6 +213,11 @@
       "C": "Correct: $\\frac{5}{9}$ \u2248 0.556 is the only value above 0.5.",
       "D": "Student rounds 48% up to 'about half or more,' treating it as greater than 50%."
     },
+    "misconception_tag": {
+      "A": "benchmark_judged_from_digits",
+      "B": "place_value_slip",
+      "D": "rounding_hides_difference"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -287,6 +302,11 @@
       "C": "Student flips the fraction to $\\frac{5}{3}$ instead of finding an equivalent form.",
       "D": "Student reads '$\\frac{3}{5}$' as the number 3.5 rather than dividing 3 by 5."
     },
+    "misconception_tag": {
+      "B": "fraction_digit_gluing",
+      "C": "reversed_division",
+      "D": "fraction_digit_gluing"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -364,6 +384,11 @@
       "B": "Correct: 35% = 0.35 < $\\frac{3}{8}$ = 0.375 < 0.4.",
       "C": "Student orders the levels from greatest to least, reversing the requested direction.",
       "D": "Student overestimates $\\frac{3}{8}$ (treating it as more than 0.4) and places it last."
+    },
+    "misconception_tag": {
+      "A": "fraction_digit_gluing",
+      "C": "order_direction_reversed",
+      "D": "closer_endpoint_error"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -443,6 +468,11 @@
       "B": "Student orders the rates from least to greatest, reversing the requested direction.",
       "C": "Student places 83% ahead of $\\frac{17}{20}$, miscomputing $\\frac{17}{20}$ as 0.83 or less.",
       "D": "Student swaps the bottom two, converting $\\frac{4}{5}$ as more than 0.82."
+    },
+    "misconception_tag": {
+      "B": "order_direction_reversed",
+      "C": "closer_endpoint_error",
+      "D": "fraction_digit_gluing"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -529,6 +559,11 @@
       "C": "Student misconverts $\\frac{9}{7}$ as greater than 1 $\\frac{1}{3}$.",
       "D": "Correct: 1 $\\frac{1}{3}$ = 1.333 is the largest once every length is written as a decimal."
     },
+    "misconception_tag": {
+      "A": "rounding_hides_difference",
+      "B": "percent_sign_confusion",
+      "C": "fraction_digit_gluing"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -612,6 +647,11 @@
       "B": "Correct: $\\frac{5}{8}$ = 0.625, which is between 0.6 and 0.7.",
       "C": "Student includes 72% = 0.72, ignoring that it is above the upper bound of 0.7.",
       "D": "Student converts $\\frac{3}{4}$ as about 0.7 (an underestimate) and includes it in the range."
+    },
+    "misconception_tag": {
+      "A": "rounding_hides_difference",
+      "C": "closer_endpoint_error",
+      "D": "closer_endpoint_error"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -697,6 +737,11 @@
       "C": "Correct: \u2212$\\frac{2}{5}$ = \u22120.40 < \u22120.35 < \u221230% = \u22120.30 < \u2212$\\frac{1}{4}$ = \u22120.25.",
       "D": "Student treats \u22120.35 as more negative than \u2212$\\frac{2}{5}$ = \u22120.40, misjudging which loss is larger."
     },
+    "misconception_tag": {
+      "A": "order_direction_reversed",
+      "B": "negative_reverses_radical_order",
+      "D": "negative_reverses_radical_order"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -781,6 +826,11 @@
       "C": "Student converts $\\frac{5}{8}$ as 0.62 or less and concludes it is below the benchmark.",
       "D": "Student writes the digits of $\\frac{5}{8}$ as 58% instead of dividing 5 by 8."
     },
+    "misconception_tag": {
+      "A": "rounding_hides_difference",
+      "C": "rounding_hides_difference",
+      "D": "fraction_digit_gluing"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -859,6 +909,11 @@
       "B": "Student assumes the values are already in order and lists them as written, placing $\\frac{7}{16}$ first because it is the only plain fraction.",
       "C": "Student swaps the top two, treating 44% as greater than $\\frac{4}{9}$.",
       "D": "Correct: 0.43 < $\\frac{7}{16}$ = 0.4375 < 44% = 0.44 < $\\frac{4}{9}$ \u2248 0.4444."
+    },
+    "misconception_tag": {
+      "A": "closer_endpoint_error",
+      "B": "values_assumed_preordered",
+      "C": "fraction_digit_gluing"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -945,6 +1000,11 @@
       "C": "Correct: $\\frac{7}{6}$ \u2248 1.167 is the smallest once every factor is written as a decimal.",
       "D": "Student reads 1 $\\frac{1}{5}$ as 1.15 by writing the numerator and denominator digits as '.15' instead of converting $\\frac{1}{5}$ = 0.2, producing a value that appears smaller than $\\frac{7}{6}$ \u2248 1.167."
     },
+    "misconception_tag": {
+      "A": "rounding_hides_difference",
+      "B": "rounding_hides_difference",
+      "D": "fraction_digit_gluing"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1029,6 +1089,11 @@
       "B": "Student orders the values from least to greatest, reversing the requested direction.",
       "C": "Student places 137% = 1.37 ahead of $\\frac{11}{8}$ = 1.375, miscomputing the near tie.",
       "D": "Student swaps the top two, converting 1 $\\frac{2}{5}$ as less than 1.38."
+    },
+    "misconception_tag": {
+      "B": "order_direction_reversed",
+      "C": "closer_endpoint_error",
+      "D": "fraction_digit_gluing"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1115,6 +1180,11 @@
       "C": "Student overestimates the upper bound or rounds $\\frac{7}{8}$ up, including 88% = 0.88.",
       "D": "Student does not check the upper bound of 0.875 and includes $\\frac{9}{10}$ = 0.90."
     },
+    "misconception_tag": {
+      "A": "fraction_digit_gluing",
+      "C": "rounding_hides_difference",
+      "D": "closer_endpoint_error"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1198,6 +1268,11 @@
       "B": "Student correctly identifies online as larger but miscomputes the gap as 5 points.",
       "C": "Correct: $\\frac{5}{8}$ = 62.5% is larger than 60% by 2.5 percentage points.",
       "D": "Student rounds $\\frac{5}{8}$ down to 0.6 and concludes the two shares are equal."
+    },
+    "misconception_tag": {
+      "A": "subtracts_in_wrong_order",
+      "B": "closer_endpoint_error",
+      "D": "rounding_hides_difference"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

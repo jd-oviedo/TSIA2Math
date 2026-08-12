@@ -35,6 +35,11 @@
       "C": "Correct: f(5) = 3(5) \u2212 4 = 15 \u2212 4 = 11.",
       "D": "Student uses f(x) = 3x + 4 (sign flip on the constant), giving 3(5) + 4 = 19."
     },
+    "misconception_tag": {
+      "A": "omits_constant_term",
+      "B": "order_of_operations_violated",
+      "D": "drops_negative_sign"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Correct: f(7) = 2 means the input is 7 and the output is 2.",
       "C": "Student misreads function notation as multiplication, interpreting f(7) = 2 as f \u00d7 7 = 2.",
       "D": "Student reads 'f(7)' as a fraction (f divided by 7), then equates it to 2."
+    },
+    "misconception_tag": {
+      "A": "input_output_reversed",
+      "C": "function_notation_as_multiplication",
+      "D": "function_notation_as_fraction"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student computes \u22122\u00b2 = \u22124 (fails to square the negative), then gets \u22124 \u2212 3(\u22122) + 1 = \u22124 + 6 + 1 = 3.",
       "D": "Student evaluates at t = 2 (drops the negative sign) to get 4 \u2212 6 + 1 = \u22121, then negates the result: \u2212(\u22121) = 1."
     },
+    "misconception_tag": {
+      "A": "sign_error_on_constant",
+      "C": "drops_negative_sign",
+      "D": "drops_negative_sign"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student adds 5 to both sides instead of subtracting: 2n + 5 = 13 \u2192 2n = 18 \u2192 n = 9.",
       "C": "Correct: 2n + 5 = 13 \u2192 2n = 8 \u2192 n = 4.",
       "D": "Student subtracts 5 correctly (2n = 8) but forgets to divide by 2, reporting n = 8."
+    },
+    "misconception_tag": {
+      "A": "omits_constant_term",
+      "B": "adds_instead_of_subtracts",
+      "D": "answers_intermediate_value"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student sets f(k) = 0 instead of f(k) = f(2), solving x\u00b2 \u2212 6x + 5 = 0 \u2192 (x\u22121)(x\u22125) = 0, then picks k = 5 (discarding k = 1 because it resembles a starting value).",
       "D": "Correct: f(2) = \u22123, and solving k\u00b2 \u2212 6k + 8 = 0 gives k = 2 or k = 4; the required answer is k = 4."
     },
+    "misconception_tag": {
+      "A": "symmetric_partner_misidentified",
+      "B": "symmetric_partner_misidentified",
+      "C": "symmetric_partner_misidentified"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student reverses the inequality direction for quadratics, selecting the region between the roots where f(x) < 0 rather than f(x) > 0.",
       "C": "Student considers only positive x-values when solving x\u00b2 > 4, ignoring that negative values with |x| > 2 also satisfy the inequality.",
       "D": "Student considers only negative x-values when solving x\u00b2 > 4, ignoring that positive values with x > 2 also satisfy the inequality."
+    },
+    "misconception_tag": {
+      "B": "absolute_equation_one_case_only",
+      "C": "absolute_equation_one_case_only",
+      "D": "absolute_equation_one_case_only"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

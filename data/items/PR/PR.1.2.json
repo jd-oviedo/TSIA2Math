@@ -35,6 +35,11 @@
       "C": "Student counts Banana twice (possibly double-tallying the single Banana response) and records Orange as 0, omitting it entirely.",
       "D": "Student reverses the counts for Apple and Orange, recording Apple = 1 and Orange = 3."
     },
+    "misconception_tag": {
+      "B": "category_values_swapped",
+      "C": "category_values_swapped",
+      "D": "category_values_swapped"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Correct: each month's value is read directly from its corresponding bar height.",
       "C": "Student swaps the values for January and February, recording January = 7 and February = 4.",
       "D": "Student swaps the values for January and March, recording January = 5 and March = 4."
+    },
+    "misconception_tag": {
+      "A": "category_values_swapped",
+      "C": "category_values_swapped",
+      "D": "category_values_swapped"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -210,6 +220,11 @@
       "C": "Correct: each pet is paired with its accurate count from the survey.",
       "D": "Student swaps the counts for Cats and Fish, recording Cats = 3 and Fish = 6."
     },
+    "misconception_tag": {
+      "A": "category_values_swapped",
+      "B": "category_values_swapped",
+      "D": "category_values_swapped"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -290,6 +305,11 @@
       "C": "Student incorrectly accepts the graph as accurate and invents a false equivalence between Wednesday and Tuesday that does not exist in the data.",
       "D": "Correct: the Wednesday bar shows 8,000, which is Tuesday's value \u2014 the student shifted Tuesday's count one day to the right."
     },
+    "misconception_tag": {
+      "A": "error_traced_to_wrong_source",
+      "B": "error_traced_to_wrong_source",
+      "C": "error_traced_to_wrong_source"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -360,15 +380,20 @@
       "A": "Yes \u2014 5 + 8 + 3 + 4 = 20, so the total is correct.",
       "B": "No \u2014 the frequencies sum to 22, not 20; the student added 2 extra.",
       "C": "No \u2014 the frequencies sum to 21; the student made an arithmetic error.",
-      "D": "No \u2014 the frequencies sum to 18; the student omitted the Yellow row when adding."
+      "D": "No \u2014 the frequencies sum to 16; the student omitted the Yellow row when adding."
     },
     "correct_answer": "A",
     "explanation": "Add the four frequencies:\n5 + 8 = 13\n13 + 3 = 16\n16 + 4 = 20\n\nThe frequencies sum to exactly 20. The student's total is correct.",
     "distractor_logic": {
       "A": "Correct: 5 + 8 + 3 + 4 = 20, which matches the stated total.",
       "B": "Student misreads Blue as 10 instead of 8 and arrives at 5 + 10 + 3 + 4 = 22, incorrectly concluding the total is wrong.",
-      "C": "Student makes a mid-addition arithmetic slip, perhaps computing 5 + 8 + 4 + 4 = 21 by misreading Green as 4.",
-      "D": "Student drops the Yellow frequency entirely and sums only three rows: 5 + 8 + 3 = 16, then arrives at 18 through a separate arithmetic error \u2014 or reads Yellow = 2 and adds 5 + 8 + 3 + 2 = 18."
+      "C": "Student misreads the Green frequency as 4 instead of 3 and sums 5 + 8 + 4 + 4 = 21, concluding the stated total is wrong.",
+      "D": "Student omits the Yellow frequency and sums only three rows: 5 + 8 + 3 = 16."
+    },
+    "misconception_tag": {
+      "B": "frequency_value_misread",
+      "C": "frequency_value_misread",
+      "D": "single_cell_read_where_sum_needed"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -450,6 +475,11 @@
       "C": "Student finds the first occurrence of 3 in the list and stops counting, resulting in a frequency of 1.",
       "D": "Student applies a threshold condition (greater than 1) instead of counting exact matches for the value 3, finding four entries that satisfy the inequality."
     },
+    "misconception_tag": {
+      "A": "total_accepted_without_verifying",
+      "C": "threshold_boundary_error",
+      "D": "threshold_boundary_error"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -529,6 +559,11 @@
       "B": "Student incorrectly generalizes that line graphs are always valid for any dataset with multiple responses, ignoring the requirement for ordered or time-based data.",
       "C": "Student overstates the constraint \u2014 line graphs can use categorical labels on the horizontal axis (e.g., months or named groups); the actual problem is the implied trend, not an axis-type restriction.",
       "D": "Correct: the core issue is that a line graph communicates sequential change, which is misleading for unordered categorical preference data."
+    },
+    "misconception_tag": {
+      "A": "false_structural_rule_invented",
+      "B": "false_structural_rule_invented",
+      "C": "false_structural_rule_invented"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -610,6 +645,11 @@
       "C": "Correct: since the data is accurate and only the headers are swapped, swapping the headers is the precise and minimal fix.",
       "D": "Student adds an unrelated column that does not address the header error and would further complicate the table's structure."
     },
+    "misconception_tag": {
+      "A": "fix_applied_to_wrong_element",
+      "B": "fix_applied_to_wrong_element",
+      "D": "fix_applied_to_wrong_element"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -687,8 +727,13 @@
     "distractor_logic": {
       "A": "Correct: 7 + 5 + 4 + 6 = 22, which exceeds the dataset size of 20 \u2014 the table contains an error.",
       "B": "Student accepts the table without computing the total, treating the presence of four labeled categories as sufficient evidence of accuracy.",
-      "C": "Student makes an arithmetic slip when summing: perhaps computing 7 + 5 + 4 + 6 as 7 + 5 = 12, 12 + 4 = 16, 16 + 4 = 20... or misreads Category D as 5, giving 7 + 5 + 4 + 5 = 21.",
+      "C": "Student misreads the Category D frequency as 5 instead of 6 and sums 7 + 5 + 4 + 5 = 21, concluding the table overcounts by one rather than by two.",
       "D": "Student applies a false structural rule \u2014 frequency tables have no required number of categories. The error is in the frequency values, not the number of rows."
+    },
+    "misconception_tag": {
+      "B": "total_accepted_without_verifying",
+      "C": "frequency_value_misread",
+      "D": "false_structural_rule_invented"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

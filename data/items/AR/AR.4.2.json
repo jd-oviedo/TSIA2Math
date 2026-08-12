@@ -35,6 +35,11 @@
       "C": "Student adds the coefficients instead of multiplying them: $4 + 3 = 7$, while adding the exponents correctly, giving $7x^{5}$.",
       "D": "Student keeps the larger of the two exponents instead of adding them, taking $x^{3}$ rather than $x^{2+3}$, giving $12x^{3}$."
     },
+    "misconception_tag": {
+      "A": "multiplies_exponents_wrongly",
+      "C": "adds_instead_of_scales",
+      "D": "larger_exponent_kept"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student distributes the full $3x$ to the first term but multiplies only the variable $x$ into the second term, dropping the coefficient 3: $x \\cdot 5 = 5x$, giving $3x^{2} + 5x$.",
       "C": "Correct: $3x \\cdot x = 3x^{2}$ and $3x \\cdot 5 = 15x$, giving $3x^{2} + 15x$.",
       "D": "Student treats $x \\cdot x$ as $x$ (failing to add exponents): $3x \\cdot x = 3x$ and $3x \\cdot 5 = 15x$, then combines to $18x$."
+    },
+    "misconception_tag": {
+      "A": "partial_distribution",
+      "B": "partial_distribution",
+      "D": "adds_exponents_wrongly"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student distributes correctly but treats the subtraction as addition, dropping the negative sign: $2x \\cdot 4 = 8x$ kept positive, giving $6x^{2} + 8x$.",
       "D": "Student treats $x \\cdot x$ as $x$ (failing to add exponents): $2x \\cdot 3x = 6x$ and $2x \\cdot 4 = 8x$, giving $6x - 8x = -2x$."
     },
+    "misconception_tag": {
+      "B": "partial_distribution",
+      "C": "sign_error_on_constant",
+      "D": "adds_exponents_wrongly"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student multiplies the coefficients and exponents correctly but drops the negative sign, treating a negative times a positive as positive, giving $10x^{5}$.",
       "C": "Student adds the coefficients instead of multiplying them: $-5 + 2 = -3$, giving $-3x^{5}$.",
       "D": "Correct: $-5 \\cdot 2 = -10$ and $x^{3} \\cdot x^{2} = x^{5}$, giving $-10x^{5}$."
+    },
+    "misconception_tag": {
+      "A": "multiplies_exponents_wrongly",
+      "B": "sign_error_on_constant",
+      "C": "adds_instead_of_scales"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student treats $x^{2} \\cdot x$ as $x^{2}$ (failing to add exponents): $4x^{2} \\cdot x = 4x^{2}$ and $4x^{2} \\cdot 3 = 12x^{2}$, then combines the two like terms to $16x^{2}$.",
       "D": "Student adds the coefficient and the constant ($4 + 3 = 7$) instead of multiplying when finding the second term: $4x^{2} \\cdot 3$ treated as $7x^{2}$, giving $4x^{3} + 7x^{2}$."
     },
+    "misconception_tag": {
+      "B": "partial_distribution",
+      "C": "adds_exponents_wrongly",
+      "D": "adds_instead_of_scales"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student includes the Outer product $6x$ but omits the Inner product $4x$, giving $x^{2} + 6x + 24$.",
       "C": "Correct: FOIL gives First $x^{2}$, Outer $6x$, Inner $4x$, Last $24$, which combine to $x^{2} + 10x + 24$.",
       "D": "Student adds the last terms instead of multiplying them: $4 + 6 = 10$ for the constant, giving $x^{2} + 10x + 10$."
+    },
+    "misconception_tag": {
+      "A": "foil_outer_inner_omitted",
+      "B": "foil_outer_inner_omitted",
+      "D": "adds_instead_of_scales"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student multiplies the First and Last terms only, omitting the Outer and Inner products: $x \\cdot x = x^{2}$ and $(-5)(2) = -10$, giving $x^{2} - 10$.",
       "D": "Student computes the Last product with the wrong sign, treating $(-5)(2)$ as $+10$, giving $x^{2} - 3x + 10$."
     },
+    "misconception_tag": {
+      "A": "sign_error_on_constant",
+      "C": "foil_outer_inner_omitted",
+      "D": "sign_error_on_constant"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Student makes both middle products negative, treating the Inner product as $-2x$ instead of $+2x$: $-12x - 2x = -14x$, giving $3x^{2} - 14x - 8$.",
       "C": "Student computes the Last product with the wrong sign, treating $(2)(-4)$ as $+8$, giving $3x^{2} - 10x + 8$.",
       "D": "Correct: FOIL gives First $3x^{2}$, Outer $-12x$, Inner $2x$, Last $-8$, which combine to $3x^{2} - 10x - 8$."
+    },
+    "misconception_tag": {
+      "A": "foil_outer_inner_omitted",
+      "B": "sign_error_on_constant",
+      "C": "sign_error_on_constant"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "Student makes a sign error on $2 \\cdot (-3x)$, computing $+6x$ instead of $-6x$. The $x$ terms then combine as $x + 6x = 7x$, giving $x^{3} - x^{2} + 7x + 2$.",
       "D": "Student combines the $x^{2}$ terms incorrectly, adding the magnitudes of $-3x^{2}$ and $2x^{2}$ to get $-5x^{2}$ instead of $-x^{2}$, giving $x^{3} - 5x^{2} - 5x + 2$."
     },
+    "misconception_tag": {
+      "B": "partial_distribution",
+      "C": "sign_error_on_constant",
+      "D": "sign_error_on_constant"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -754,6 +799,11 @@
       "B": "Correct: $(2x)^{2} - 2(2x)(5) + (5)^{2} = 4x^{2} - 20x + 25$.",
       "C": "Student includes the cross product only once instead of twice (one of the Outer or Inner products but not both): $(2x)(-5) = -10x$, giving $4x^{2} - 10x + 25$.",
       "D": "Student computes the last term as $-25$, treating $(-5)^{2}$ as negative, giving $4x^{2} - 20x - 25$."
+    },
+    "misconception_tag": {
+      "A": "cross_product_counted_once",
+      "C": "cross_product_counted_once",
+      "D": "sign_error_on_constant"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

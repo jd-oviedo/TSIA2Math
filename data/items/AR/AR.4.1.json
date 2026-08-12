@@ -35,6 +35,11 @@
       "C": "Student treats $-x^{2}$ as $+x^{2}$, getting $3x^{2} + x^{2} = 4x^{2}$ for the $x^{2}$ terms while combining the $x$ terms correctly.",
       "D": "Student combines the $x^{2}$ terms correctly but treats $+2x$ as $-2x$, getting $5x - 2x = 3x$."
     },
+    "misconception_tag": {
+      "A": "combines_unlike_terms",
+      "C": "drops_negative_on_group",
+      "D": "drops_negative_on_group"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "C": "Student drops the final $+2y$ term and combines only $8y - 3y = 5y$.",
       "D": "Correct: $8 - 3 + 2 = 7$, so the expression simplifies to $7y$."
     },
+    "misconception_tag": {
+      "A": "drops_negative_on_group",
+      "B": "drops_negative_on_group",
+      "C": "drops_unlike_term"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -187,6 +197,11 @@
       "B": "Student treats the constants as like terms with the variable terms and adds all four coefficients ($5 + 7 + 3 + 4 = 19$), giving $19a$.",
       "C": "Student combines the variable terms correctly but treats $+4$ as $-4$, computing $7 - 4 = 3$, giving $8a + 3$.",
       "D": "Student multiplies the like-term coefficients instead of adding them ($5 \\times 3 = 15$), giving $15a$ for the variable terms while combining the constants correctly."
+    },
+    "misconception_tag": {
+      "B": "combines_unlike_terms",
+      "C": "drops_negative_on_group",
+      "D": "multiplies_coefficients"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -267,6 +282,11 @@
       "C": "Correct: $6m - 4m = 2m$, and the constant $9$ remains, giving $2m + 9$.",
       "D": "Student subtracts the coefficient $4$ from the constant $9$ instead of from the like term $6m$, computing $9 - 4 = 5$, giving $6m + 5$."
     },
+    "misconception_tag": {
+      "A": "combines_unlike_terms",
+      "B": "drops_negative_on_group",
+      "D": "drops_negative_on_group"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -340,6 +360,11 @@
       "B": "Correct: $2x^{2} + 3x^{2} = 5x^{2}$, and the $x$ term remains separate, giving $5x^{2} + x$.",
       "C": "Student combines the $x^{2}$ terms correctly but drops the lone $+x$ term.",
       "D": "Student adds the exponents of the like terms instead of keeping the common exponent, computing $2x^{2} + 3x^{2} = 5x^{4}$, giving $5x^{4} + x$."
+    },
+    "misconception_tag": {
+      "A": "combines_unlike_terms",
+      "C": "drops_unlike_term",
+      "D": "exponents_added_when_combining"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -419,6 +444,11 @@
       "B": "Student treats all terms as like terms and adds every coefficient ($4 - 2 + 1 + 5 - 3 = 5$), collapsing the expression into a single $x^{3}$ term.",
       "C": "Student combines the $x^{2}$ terms but keeps the sign of the first term, computing $-2x^{2} + 5x^{2} = -3x^{2}$ instead of $+3x^{2}$.",
       "D": "Student combines the $x^{3}$ and $x^{2}$ groups correctly but treats the lone $-3x$ as $+3x$."
+    },
+    "misconception_tag": {
+      "B": "combines_unlike_terms",
+      "C": "sign_of_first_term_kept",
+      "D": "drops_negative_sign"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -500,6 +530,11 @@
       "C": "Student distributes the negative to $3x^{2}$ correctly but drops the second term entirely, leaving only $2x$: $8x^{2} - 3x^{2} = 5x^{2}$ and $2x$ remains.",
       "D": "Correct: distributing gives $8x^{2} + 2x - 3x^{2} + 4x = 5x^{2} + 6x$."
     },
+    "misconception_tag": {
+      "A": "drops_negative_on_group",
+      "B": "drops_negative_on_group",
+      "C": "drops_unlike_term"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -578,6 +613,11 @@
       "B": "Student treats $-2ab$ as $+2ab$, computing $5 + 2 - 1 = 6$ for the $ab$ terms while combining the $a$ terms correctly.",
       "C": "Correct: $5ab - 2ab - ab = 2ab$ and $3a + 4a = 7a$, giving $2ab + 7a$.",
       "D": "Student drops the third $ab$ term ($-ab$), computing $5ab - 2ab = 3ab$ while combining the $a$ terms correctly."
+    },
+    "misconception_tag": {
+      "A": "combines_unlike_terms",
+      "B": "drops_negative_on_group",
+      "D": "drops_unlike_term"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -658,6 +698,11 @@
       "C": "Student distributes the $2$ to $-x$ as $+2x$ (sign error), getting $6x^{2} + 2x$ from the first group: $10x^{2} + 2x + 20$.",
       "D": "Student distributes the first group fully and multiplies $4 \\cdot x^{2}$ but forgets to multiply $4 \\cdot 5$, leaving the constant as $5$: $10x^{2} - 2x + 5$."
     },
+    "misconception_tag": {
+      "A": "partial_distribution",
+      "C": "drops_negative_on_group",
+      "D": "partial_distribution"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -737,6 +782,11 @@
       "B": "Student fails to apply the negative to $-5$, computing $-2(x - 5)$ as $-2x - 10$: $6x - 12 - 2x - 10 = 4x - 22$.",
       "C": "Student distributes $+2$ instead of $-2$ to the second group (adds instead of subtracts): $6x - 12 + 2x - 10 = 8x - 22$.",
       "D": "Student treats $3 \\cdot (-4)$ as $+12$ (sign error on the first group): $6x + 12 - 2x + 10 = 4x + 22$."
+    },
+    "misconception_tag": {
+      "B": "drops_negative_on_group",
+      "C": "drops_negative_on_group",
+      "D": "drops_negative_on_group"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

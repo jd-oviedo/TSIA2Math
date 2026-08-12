@@ -35,6 +35,11 @@
       "C": "Student reports the probability of playing a sport ($\\frac{18}{30}$ = $\\frac{3}{5}$) and ignores the band information.",
       "D": "Student uses the 6 sport players who are not in band (18 - 12) as the numerator, getting $\\frac{6}{18}$ = $\\frac{1}{3}$."
     },
+    "misconception_tag": {
+      "B": "whole_population_as_denominator",
+      "C": "prior_reported_ignoring_condition",
+      "D": "favourable_over_unfavourable"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -108,6 +113,11 @@
       "B": "Student reports the probability of drawing red ($\\frac{6}{10}$ = $\\frac{3}{5}$) and ignores the star condition.",
       "C": "Correct: among the 6 red marbles, 2 have a star, so $\\frac{2}{6}$ = $\\frac{1}{3}$.",
       "D": "Student forms a ratio of star reds to non-star reds (2 to 4) instead of dividing by all 6 reds, getting $\\frac{2}{4}$ = $\\frac{1}{2}$."
+    },
+    "misconception_tag": {
+      "A": "whole_population_as_denominator",
+      "B": "prior_reported_ignoring_condition",
+      "D": "favourable_over_unfavourable"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -184,6 +194,11 @@
       "C": "Student reports the probability of owning a dog ($\\frac{25}{40}$ = $\\frac{5}{8}$) and ignores the cat condition.",
       "D": "Student uses the 10 dog owners without a cat (25 - 15) as the numerator, getting $\\frac{10}{25}$ = $\\frac{2}{5}$."
     },
+    "misconception_tag": {
+      "B": "whole_population_as_denominator",
+      "C": "prior_reported_ignoring_condition",
+      "D": "favourable_over_unfavourable"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -257,6 +272,11 @@
       "B": "Student reports the probability of drawing red ($\\frac{8}{20}$ = $\\frac{2}{5}$) and ignores the marked condition.",
       "C": "Student forms a ratio of marked reds to unmarked reds (3 to 5) instead of dividing by all 8 reds, getting $\\frac{3}{5}$.",
       "D": "Correct: among the 8 red cards, 3 are marked, so $\\frac{3}{8}$."
+    },
+    "misconception_tag": {
+      "A": "whole_population_as_denominator",
+      "B": "prior_reported_ignoring_condition",
+      "C": "favourable_over_unfavourable"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -333,6 +353,11 @@
       "C": "Student reports the probability of being a senior ($\\frac{15}{24}$ = $\\frac{5}{8}$) and ignores the officer condition.",
       "D": "Student uses the 5 seniors who are not officers (15 - 10) as the numerator, getting $\\frac{5}{15}$ = $\\frac{1}{3}$."
     },
+    "misconception_tag": {
+      "A": "whole_population_as_denominator",
+      "C": "prior_reported_ignoring_condition",
+      "D": "favourable_over_unfavourable"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -408,6 +433,11 @@
       "B": "Correct: the soccer group is 12 + 8 = 20, of whom 12 like basketball, so $\\frac{12}{20}$ = $\\frac{3}{5}$.",
       "C": "Student divides by all 30 students (12 + 8 + 6 + 4) instead of the 20 soccer fans, getting $\\frac{12}{30}$ = $\\frac{2}{5}$.",
       "D": "Student conditions on basketball instead of soccer, using the basketball group of 12 + 6 = 18 to get $\\frac{12}{18}$ = $\\frac{2}{3}$."
+    },
+    "misconception_tag": {
+      "A": "favourable_over_unfavourable",
+      "C": "whole_population_as_denominator",
+      "D": "conditional_reversed"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -491,6 +521,11 @@
       "C": "Student lowers the total to 7 but forgets to lower the red count, using $\\frac{5}{7}$.",
       "D": "Student lowers the red count to 4 but forgets to lower the total, using $\\frac{4}{8}$ = $\\frac{1}{2}$."
     },
+    "misconception_tag": {
+      "B": "prior_reported_ignoring_condition",
+      "C": "total_not_reduced_between_draws",
+      "D": "total_not_reduced_between_draws"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -572,6 +607,11 @@
       "B": "Student reports the probability of being an adult ($\\frac{22}{40}$ = $\\frac{11}{20}$) and ignores the quiz result.",
       "C": "Correct: among the 22 adults, 16 passed, so $\\frac{16}{22}$ = $\\frac{8}{11}$.",
       "D": "Student conditions on having passed instead of being an adult, using the 30 passers to get $\\frac{16}{30}$ = $\\frac{8}{15}$."
+    },
+    "misconception_tag": {
+      "A": "whole_population_as_denominator",
+      "B": "prior_reported_ignoring_condition",
+      "D": "conditional_reversed"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -655,6 +695,11 @@
       "C": "Student adds the two percentages (60% + 24% = 84%) instead of dividing.",
       "D": "Correct: 24% divided by 60% = 0.40 = 40%."
     },
+    "misconception_tag": {
+      "A": "joint_reported_as_conditional",
+      "B": "adds_probabilities_instead_of_multiplying",
+      "C": "adds_probabilities_instead_of_multiplying"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -731,6 +776,11 @@
       "B": "Correct: the red count stays at 4 while the total drops to 9, so $\\frac{4}{9}$.",
       "C": "Student wrongly lowers the red count to 3, as if the first marble had been red, using $\\frac{3}{9}$ = $\\frac{1}{3}$.",
       "D": "Student computes the probability that the second marble is blue (5 blue left out of 9), getting $\\frac{5}{9}$, instead of red."
+    },
+    "misconception_tag": {
+      "A": "prior_reported_ignoring_condition",
+      "C": "total_not_reduced_between_draws",
+      "D": "reads_wrong_category"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -814,6 +864,11 @@
       "C": "Correct: there are 54 car owners, of whom 30 are men, so $\\frac{30}{54}$ = $\\frac{5}{9}$.",
       "D": "Student reverses the condition and computes the probability that a man owns a car ($\\frac{30}{40}$ = $\\frac{3}{4}$) rather than the probability a car owner is a man."
     },
+    "misconception_tag": {
+      "A": "prior_reported_ignoring_condition",
+      "B": "whole_population_as_denominator",
+      "D": "conditional_reversed"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -895,6 +950,11 @@
       "B": "Correct: at least one is 35 + 30 - 15 = 50, of whom 15 take both, so $\\frac{15}{50}$ = $\\frac{3}{10}$.",
       "C": "Student conditions on taking math only, using the 35 math students to get $\\frac{15}{35}$ = $\\frac{3}{7}$.",
       "D": "Student divides by all 60 students instead of the 'at least one' group, getting $\\frac{15}{60}$ = $\\frac{1}{4}$."
+    },
+    "misconception_tag": {
+      "A": "overlap_not_subtracted",
+      "C": "conditional_reversed",
+      "D": "whole_population_as_denominator"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -978,6 +1038,11 @@
       "C": "Student uses the restricted group of 7 but treats the draws as with replacement, using $\\frac{3}{7}$ times $\\frac{3}{7}$ = $\\frac{9}{49}$.",
       "D": "Student uses the restricted group of 7 but forgets the total drops for the second draw, using $\\frac{3}{7}$ times $\\frac{2}{7}$ = $\\frac{6}{49}$."
     },
+    "misconception_tag": {
+      "B": "prior_reported_ignoring_condition",
+      "C": "total_not_reduced_between_draws",
+      "D": "total_not_reduced_between_draws"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1060,6 +1125,11 @@
       "C": "Student reports the prior probability of studying (0.50), ignoring that the student passed.",
       "D": "Correct: P(studied given passed) = 0.$\\frac{30}{0}$.40 = 0.75."
     },
+    "misconception_tag": {
+      "A": "joint_reported_as_conditional",
+      "B": "conditional_reversed",
+      "C": "prior_reported_ignoring_condition"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1141,6 +1211,11 @@
       "B": "Student reverses the condition and computes P(sugar given coffee) = $\\frac{12}{30}$ = $\\frac{2}{5}$.",
       "C": "Correct: there are 42 sugar takers, of whom 12 prefer coffee, so $\\frac{12}{42}$ = $\\frac{2}{7}$.",
       "D": "Student reports the probability of preferring coffee overall ($\\frac{30}{80}$ = $\\frac{3}{8}$), ignoring the sugar condition."
+    },
+    "misconception_tag": {
+      "A": "whole_population_as_denominator",
+      "B": "conditional_reversed",
+      "D": "prior_reported_ignoring_condition"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

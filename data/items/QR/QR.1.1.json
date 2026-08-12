@@ -36,6 +36,11 @@
       "C": "Student misreads $\\frac{13}{5}$ as 1.35 or 1.6 (inverting or misapplying the fraction-to-decimal conversion), making 2.5 appear to be the largest value.",
       "D": "Correct answer."
     },
+    "misconception_tag": {
+      "A": "irrational_assumed_larger",
+      "B": "irrational_assumed_larger",
+      "C": "fraction_digit_gluing"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -120,6 +125,11 @@
       "B": "Correct: 7\u00b2 = 49 and 8\u00b2 = 64, so 49 < 54 < 64 places \u221a54 between 7 and 8.",
       "C": "Student halves the radicand (54 \u00f7 2 = 27) and reports the integers around 27, treating a square root as division by two.",
       "D": "Student places the value near the radicand itself, choosing whole numbers on either side of 54 rather than estimating its square root."
+    },
+    "misconception_tag": {
+      "A": "wrong_perfect_square_bracket",
+      "C": "halves_the_radicand",
+      "D": "radicand_mistaken_for_value"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -206,6 +216,11 @@
       "C": "Student misconverts $\\frac{15}{4}$ (reading it as about 4.25 instead of 3.75), making Shelf Y appear longest.",
       "D": "Student rounds \u221a17 down to 4 or below and selects the largest remaining decimal, 3.9, not recognizing that \u221a17 exceeds 4."
     },
+    "misconception_tag": {
+      "B": "irrational_assumed_larger",
+      "C": "fraction_digit_gluing",
+      "D": "closer_endpoint_error"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -291,6 +306,11 @@
       "C": "Student halves the radicand (13 \u00f7 2 = 6.5), treating the square root as division by two.",
       "D": "Student squares the radicand (13\u00b2 = 169) instead of taking its square root, reversing the operation."
     },
+    "misconception_tag": {
+      "B": "wrong_perfect_square_bracket",
+      "C": "halves_the_radicand",
+      "D": "squares_instead_of_roots"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -369,6 +389,11 @@
       "B": "Student underestimates \u221a8 (treating it as roughly 2.4 or less) and places it below $\\frac{5}{2}$ = 2.5.",
       "C": "Student overestimates \u221a8, assuming the irrational value must exceed the whole number 3.",
       "D": "Student reverses the order or treats the whole number 3 as smallest because the other two are written as a fraction and a radical."
+    },
+    "misconception_tag": {
+      "B": "closer_endpoint_error",
+      "C": "irrational_assumed_larger",
+      "D": "order_direction_reversed"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -454,6 +479,11 @@
       "B": "Correct ordering: III (2\u03c0 \u2248 6.283) < IV ($\\frac{13}{2}$ = 6.5) < I (\u221a45 \u2248 6.708) < II (6.8).",
       "C": "Student over-estimates 2\u03c0 by using \u03c0 \u2248 3.25 or reasoning that 'pi is greater than 3, so 2pi must be greater than 6.5,' incorrectly placing Segment III after Segment IV.",
       "D": "Student computes the values correctly but reverses the requested direction, listing from longest to shortest instead of shortest to longest."
+    },
+    "misconception_tag": {
+      "A": "closer_endpoint_error",
+      "C": "closer_endpoint_error",
+      "D": "order_direction_reversed"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -541,6 +571,11 @@
       "C": "Student places \u221a80 ahead of 3\u03c0, estimating 3\u03c0 with \u03c0 \u2248 3 (giving 9) and \u221a80 near \u221a81 = 9, then breaking the near-tie the wrong way.",
       "D": "Student identifies the top two correctly but swaps 8.8 and $\\frac{26}{3}$, misconverting $\\frac{26}{3}$ as about 8.9."
     },
+    "misconception_tag": {
+      "B": "order_direction_reversed",
+      "C": "closer_endpoint_error",
+      "D": "fraction_digit_gluing"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -625,6 +660,11 @@
       "B": "Student estimates \u221a24 as roughly 5 (since 24 is near 25) and assumes it falls in range, missing that 24 < 25 makes \u221a24 < 5.",
       "C": "Student treats 6.5 as close enough to the interval or rounds it down into range, ignoring that the upper bound is 6.",
       "D": "Student knows 37 > 36 so \u221a37 > 6 but still selects it, confusing the interval (5 to 6) with the next interval (6 to 7)."
+    },
+    "misconception_tag": {
+      "B": "closer_endpoint_error",
+      "C": "closer_endpoint_error",
+      "D": "wrong_perfect_square_bracket"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -711,6 +751,11 @@
       "C": "Student estimates \u221a52 \u2248 7.2 and declares the two equal without checking that 7.2\u00b2 = 51.84 \u2260 52.",
       "D": "Student halves the radicand (52 \u00f7 2 = 26), treating the square root as division by two."
     },
+    "misconception_tag": {
+      "B": "closer_endpoint_error",
+      "C": "closer_endpoint_error",
+      "D": "halves_the_radicand"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -794,6 +839,11 @@
       "B": "Student orders the readings from greatest to least, reversing the requested direction.",
       "C": "Student knows \u221a10 \u2248 3.16 < 3.2 but forgets that the negative sign flips the comparison, placing \u2212\u221a10 below \u22123.2.",
       "D": "Student overestimates \u221a10 as about 3.3 or more, making \u2212\u221a10 the most negative value."
+    },
+    "misconception_tag": {
+      "B": "order_direction_reversed",
+      "C": "negative_reverses_radical_order",
+      "D": "negative_reverses_radical_order"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -879,6 +929,11 @@
       "B": "Student uses the rough approximation \u03c0 \u2248 3, which makes 3 + \u03c0 \u2248 6 and 2\u03c0 \u2248 6 nearly indistinguishable, and reverses their order based on the visual complexity of the expressions.",
       "C": "Correct ordering: III (3 + \u03c0 \u2248 6.142) < IV (2\u03c0 \u2248 6.283) < I (\u221a8 \u00b7 \u221a5 = \u221a40 \u2248 6.325) < II ($\\frac{32}{5}$ = 6.400).",
       "D": "Student computes values correctly but reverses the requested direction, listing from greatest to least instead of least to greatest."
+    },
+    "misconception_tag": {
+      "A": "false_radical_distribution",
+      "B": "closer_endpoint_error",
+      "D": "order_direction_reversed"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -966,6 +1021,11 @@
       "C": "Student orders the measurements from greatest to least, reversing the requested direction.",
       "D": "Student simplifies \u221a18 + \u221a2 to 4\u221a2 \u2248 5.66 correctly but misplaces it below $\\frac{11}{2}$, swapping the two largest values."
     },
+    "misconception_tag": {
+      "B": "closer_endpoint_error",
+      "C": "order_direction_reversed",
+      "D": "closer_endpoint_error"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1051,6 +1111,11 @@
       "C": "Student compares only the number shown under the radical and picks \u221a19 because 19 looks large, without converting the others to single radicals.",
       "D": "Student avoids the radicals and selects the rational value $\\frac{13}{3}$, or misjudges it as larger than the irrational expressions."
     },
+    "misconception_tag": {
+      "A": "radical_coefficient_size_as_value",
+      "C": "radical_coefficient_size_as_value",
+      "D": "irrational_assumed_larger"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1134,6 +1199,11 @@
       "B": "Student places $\\frac{24}{5}$ below \u221a23, overestimating \u221a23 as more than 4.800 rather than checking that 4.8\u00b2 = 23.04 > 23.",
       "C": "Student orders the values from greatest to least, reversing the requested direction.",
       "D": "Student simplifies 2\u221a6 to \u221a24 \u2248 4.899 correctly but places it before $\\frac{24}{5}$, swapping the two largest values."
+    },
+    "misconception_tag": {
+      "B": "closer_endpoint_error",
+      "C": "order_direction_reversed",
+      "D": "closer_endpoint_error"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1219,6 +1289,11 @@
       "B": "Student computes the difference correctly but reverses which path is longer, treating 7 as the greater value.",
       "C": "Student replaces 5\u221a2 with 5 \u00d7 2 = 10, dropping the radical, and finds a difference of 10 \u2212 7 = 3 km.",
       "D": "Student uses the rough approximation \u221a2 \u2248 1.4, computing 5 \u00d7 1.4 = 7.0 exactly, and concludes the paths are equal."
+    },
+    "misconception_tag": {
+      "B": "order_direction_reversed",
+      "C": "radical_dropped_for_coefficient",
+      "D": "closer_endpoint_error"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

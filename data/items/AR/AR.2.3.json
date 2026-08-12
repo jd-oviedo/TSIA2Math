@@ -35,6 +35,11 @@
       "C": "Student ignores the coefficient and adds x directly to the constant: 3 + 5 = 8, treating the function as f(x) = x + 5.",
       "D": "Student adds all three numbers in the expression without multiplying: 2 + 3 + 5 = 10."
     },
+    "misconception_tag": {
+      "A": "fixed_fee_added_twice",
+      "C": "combines_unlike_terms",
+      "D": "combines_unlike_terms"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student computes g(4) = \u22125 correctly but drops the negative sign, reporting 5.",
       "C": "Student computes \u22123(4) = \u221212 correctly but subtracts 7 instead of adding: \u221212 \u2212 7 = \u221219.",
       "D": "Correct: g(4) = \u22123(4) + 7 = \u221212 + 7 = \u22125."
+    },
+    "misconception_tag": {
+      "A": "drops_negative_sign",
+      "B": "drops_negative_sign",
+      "C": "adds_instead_of_subtracts"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student adds the flat fee twice: 2.50(6) + 3 + 3 = 15 + 6 = \\$21.00.",
       "D": "Student adds the number of miles to the flat fee before multiplying: (6 + 3) \u00d7 2.50 = 9 \u00d7 2.50 = \\$22.50."
     },
+    "misconception_tag": {
+      "B": "omits_constant_term",
+      "C": "fixed_fee_added_twice",
+      "D": "input_added_to_fee_before_multiplying"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student evaluates correctly to get \u22129 but drops the negative sign, reporting 9.",
       "C": "Correct: h(0) = 4(0) \u2212 9 = 0 \u2212 9 = \u22129.",
       "D": "Student substitutes x = 1 instead of x = 0: h(1) = 4(1) \u2212 9 = 4 \u2212 9 = \u22125."
+    },
+    "misconception_tag": {
+      "A": "omits_variable_term",
+      "B": "drops_negative_sign",
+      "D": "reads_wrong_category"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student adds the x-value (4) to the previous output instead of adding the rate of change: 11 + 4 = 15.",
       "D": "Student adds 1 to the previous output \u2014 treating x as the increment rather than the rate of change: 11 + 1 = 12."
     },
+    "misconception_tag": {
+      "B": "reads_wrong_category",
+      "C": "input_added_instead_of_rate",
+      "D": "input_added_instead_of_rate"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Correct: 4x + 2 = 18 \u2192 4x = 16 \u2192 x = 4.",
       "C": "Student divides 18 by 4 without subtracting 2 first: 18 \u00f7 4 = 4.5.",
       "D": "Student correctly isolates 4x = 16 but divides by 8 (doubling the coefficient) instead of 4: 16 \u00f7 8 = 2."
+    },
+    "misconception_tag": {
+      "A": "adds_instead_of_subtracts",
+      "C": "divides_before_isolating",
+      "D": "divides_before_isolating"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Correct: C(180) = 0.10(180) + 25 = 18 + 25 = \\$43.00.",
       "D": "Student adds the number of texts to the monthly fee instead of computing the per-text charge: 180 + 25 = \\$205.00."
     },
+    "misconception_tag": {
+      "A": "reads_wrong_category",
+      "B": "omits_constant_term",
+      "D": "input_added_instead_of_rate"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Correct: T(0) = 70 is the initial temperature, and T(8) = 15(8) + 70 = 190\u00b0F.",
       "C": "Student correctly interprets T(0) but stops after computing the slope portion of T(8): 15(8) = 120, forgetting to add the initial temperature of 70.",
       "D": "Student correctly interprets T(0) but uses 10 instead of 15 as the slope when computing T(8): 10(8) + 70 = 150\u00b0F."
+    },
+    "misconception_tag": {
+      "A": "slope_intercept_swap",
+      "C": "omits_constant_term",
+      "D": "slope_intercept_swap"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "Correct: h = 3 hours; cost = \\$11.",
       "D": "Student correctly finds h = 3 but reads the cost from the y-intercept of C_B (which is 8) rather than evaluating either function at h = 3."
     },
+    "misconception_tag": {
+      "A": "divides_before_isolating",
+      "B": "sign_error_on_constant",
+      "D": "slope_intercept_swap"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -754,6 +799,11 @@
       "B": "Student makes a sign error when solving for the y-intercept \u2014 adding 8 instead of subtracting: b = 9 + 8 = 17 \u2192 f(7) = 4(7) + 17 = 45.",
       "C": "Student computes the slope times the new input but forgets to add the y-intercept: 4 \u00d7 7 = 28.",
       "D": "Correct: y = 4x + 1, so f(7) = 4(7) + 1 = 29."
+    },
+    "misconception_tag": {
+      "A": "slope_intercept_swap",
+      "B": "sign_error_on_constant",
+      "C": "omits_constant_term"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

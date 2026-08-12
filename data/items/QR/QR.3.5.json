@@ -35,6 +35,11 @@
       "C": "Student adds the coefficients to get 8 but also multiplies the variables together as $x \\times x = x^{2}$, giving $8x^{2}$.",
       "D": "Student adds the coefficients but drops the variable entirely, giving $8$."
     },
+    "misconception_tag": {
+      "B": "multiplies_coefficients",
+      "C": "multiplies_variables",
+      "D": "drops_variable"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -108,6 +113,11 @@
       "B": "Correct: $7x - 4x = 3x$, and the constant stays, giving $3x + 2$.",
       "C": "Student combines the x-terms correctly but drops the constant term, giving $3x$.",
       "D": "Student combines all three terms as if they were like: $7 - 4 + 2 = 5$, giving $5x$."
+    },
+    "misconception_tag": {
+      "A": "adds_instead_of_subtracts",
+      "C": "drops_unlike_term",
+      "D": "combines_unlike_terms"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -183,6 +193,11 @@
       "C": "Correct: $5x + 3x = 8x$, and $2y$ stays separate, giving $8x + 2y$.",
       "D": "Student combines the two x-terms correctly but discards the $2y$ as if an unlike term disappears, giving $8x$."
     },
+    "misconception_tag": {
+      "A": "combines_unlike_terms",
+      "B": "combines_unlike_terms",
+      "D": "drops_unlike_term"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -256,6 +271,11 @@
       "B": "Student multiplies the coefficients: $6 \\times 3 = 18$, giving $18x$.",
       "C": "Student adds the coefficients but drops the variable, giving $9$.",
       "D": "Correct: subtracting a negative is adding, so $6x - (-3x) = 6x + 3x = 9x$."
+    },
+    "misconception_tag": {
+      "A": "drops_negative_on_group",
+      "B": "multiplies_coefficients",
+      "C": "drops_variable"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -331,6 +351,11 @@
       "C": "Student combines the x-terms correctly but subtracts the constants instead of adding: $5 - 1 = 4$, giving $6x + 4$.",
       "D": "Student combines the x-terms and keeps only the larger constant, dropping the $+1$, giving $6x + 5$."
     },
+    "misconception_tag": {
+      "B": "combines_unlike_terms",
+      "C": "adds_instead_of_subtracts",
+      "D": "drops_unlike_term"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -404,6 +429,11 @@
       "B": "Correct: $5x - 2x = 3x$ and $3 + 7 = 10$, giving $3x + 10$.",
       "C": "Student combines the x-terms correctly but subtracts the constants: $7 - 3 = 4$, giving $3x + 4$.",
       "D": "Student combines every term as if like: $5 - 2 + 3 + 7 = 13$, giving $13x$."
+    },
+    "misconception_tag": {
+      "A": "drops_negative_sign",
+      "C": "adds_instead_of_subtracts",
+      "D": "combines_unlike_terms"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -479,6 +509,11 @@
       "C": "Correct: distribute the minus to both terms, $10x - 4x + 7 = 6x + 7$.",
       "D": "Student reaches $6x + 7$ but then combines the unlike terms: $6 + 7 = 13$, giving $13x$."
     },
+    "misconception_tag": {
+      "A": "drops_negative_on_group",
+      "B": "drops_negative_on_group",
+      "D": "combines_unlike_terms"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -552,6 +587,11 @@
       "B": "Student ignores the factor of 2, treating $2(x + 4)$ as $x + 4$: $x + 4 + 3x = 4x + 4$.",
       "C": "Student reaches $5x + 8$ but then combines the unlike terms: $5 + 8 = 13$, giving $13x$.",
       "D": "Correct: $2(x + 4) = 2x + 8$, then $2x + 8 + 3x = 5x + 8$."
+    },
+    "misconception_tag": {
+      "A": "partial_distribution",
+      "B": "ignores_unit_coefficient",
+      "C": "combines_unlike_terms"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -627,6 +667,11 @@
       "C": "Student adds the x-coefficients instead of subtracting: $6 + 4 = 10$, giving $10x - 3$.",
       "D": "Student combines every term as if like: $6 + 2 - 4 - 5 = -1$, giving $-x$."
     },
+    "misconception_tag": {
+      "B": "ignores_unit_coefficient",
+      "C": "adds_instead_of_subtracts",
+      "D": "combines_unlike_terms"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -700,6 +745,11 @@
       "B": "Correct: $3x + 2x = 5x$ and $20 + 15 = 35$, giving $5x + 35$.",
       "C": "Student multiplies the constants instead of adding: $20 \\times 15 = 300$, giving $5x + 300$.",
       "D": "Student adds all four numbers as if all terms were like: $3 + 2 + 20 + 15 = 40$, giving $40x$."
+    },
+    "misconception_tag": {
+      "A": "multiplies_coefficients",
+      "C": "multiplies_coefficients",
+      "D": "combines_unlike_terms"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -781,6 +831,11 @@
       "C": "Correct: $3(2x - 1) = 6x - 3$ and $-2(x + 4) = -2x - 8$, so $6x - 2x = 4x$ and $-3 - 8 = -11$, giving $4x - 11$.",
       "D": "Student treats the second group as $+2(x + 4)$, ignoring the subtraction sign: $6x - 3 + 2x + 8 = 8x + 5$."
     },
+    "misconception_tag": {
+      "A": "partial_distribution",
+      "B": "partial_distribution",
+      "D": "drops_negative_on_group"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -860,6 +915,11 @@
       "B": "Student computes $-2 \\times (-1)$ as $-2$ instead of $+2$: $4x + 12 - 4x - 2 = 10$.",
       "C": "Student distributes the $-2$ only to the $-1$ and forgets the $2x$ term: $4x + 12 + 2 = 4x + 14$.",
       "D": "Correct: $4(x + 3) = 4x + 12$ and $-2(2x - 1) = -4x + 2$, so $4x - 4x = 0$ and $12 + 2 = 14$, giving $14$."
+    },
+    "misconception_tag": {
+      "A": "sign_error_on_constant",
+      "B": "sign_error_on_constant",
+      "C": "partial_distribution"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -941,6 +1001,11 @@
       "C": "Student computes $4 \\times (-3)$ as $+12$ instead of $-12$: $4x + 12 + 2x + 10 = 6x + 22$.",
       "D": "Student reaches $6x - 2$ but then combines the unlike terms: $6 - 2 = 4$, giving $4x$."
     },
+    "misconception_tag": {
+      "B": "partial_distribution",
+      "C": "sign_error_on_constant",
+      "D": "combines_unlike_terms"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1021,6 +1086,11 @@
       "C": "Student distributes the 2 to $3x$ but not to the y, writing $6x + y$: $6x + y - x + 2y = 5x + 3y$.",
       "D": "Student combines the unlike final terms $5x$ and $4y$ into one: $5 + 4 = 9$, giving $9xy$."
     },
+    "misconception_tag": {
+      "A": "drops_negative_on_group",
+      "C": "partial_distribution",
+      "D": "combines_unlike_terms"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1100,6 +1170,11 @@
       "B": "Student multiplies $-3$ by $2x$ as $+6x$ instead of $-6x$: $7x + 6x + 12 + 5 = 13x + 17$.",
       "C": "Correct: $-3(2x - 4) = -6x + 12$, so $7x - 6x = x$ and $12 + 5 = 17$, giving $x + 17$.",
       "D": "Student distributes $-3$ to $2x$ but brings the $-4$ down unmultiplied: $7x - 6x - 4 + 5 = x + 1$."
+    },
+    "misconception_tag": {
+      "A": "sign_error_on_constant",
+      "B": "sign_error_on_constant",
+      "D": "partial_distribution"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

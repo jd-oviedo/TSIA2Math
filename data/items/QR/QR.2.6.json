@@ -35,6 +35,11 @@
       "C": "Student drops the decimal and converts only the whole number (7 \u00d7 12 = 84), ignoring the 0.5 foot.",
       "D": "Correct: 7.5 \u00d7 12 = 90 inches."
     },
+    "misconception_tag": {
+      "A": "inverts_conversion_direction",
+      "B": "adds_instead_of_scales",
+      "C": "converts_whole_number_part_only"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student divides instead of multiplies (3.25 \u00f7 16 \u2248 0.203), converting in the wrong direction.",
       "C": "Student converts only the whole number of pounds (3 \u00d7 16 = 48 oz), ignoring the 0.25 lb fractional part.",
       "D": "Student adds the conversion factor to the measurement (3.25 + 16 = 19.25) instead of multiplying."
+    },
+    "misconception_tag": {
+      "B": "inverts_conversion_direction",
+      "C": "converts_whole_number_part_only",
+      "D": "adds_instead_of_scales"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Correct: 4,500 \u00f7 1,000 = 4.5 km.",
       "D": "Student divides by 10,000 instead of 1,000 (4,500 \u00f7 10,000 = 0.45), off by a factor of 10 in the other direction."
     },
+    "misconception_tag": {
+      "A": "inverts_conversion_direction",
+      "B": "inverts_conversion_direction",
+      "D": "inverts_conversion_direction"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student converts to pints (2.5 \u00d7 4 \u00d7 2 = 20) but does not complete the final pints-to-cups conversion.",
       "C": "Student correctly determines 1 gal = 16 cups but uses only the whole number portion (2 \u00d7 16 = 32), dropping the 0.5 gallon.",
       "D": "Correct: 1 gal = 16 cups; 2.5 \u00d7 16 = 40 cups."
+    },
+    "misconception_tag": {
+      "A": "conversion_stopped_one_step_early",
+      "B": "conversion_stopped_one_step_early",
+      "C": "converts_whole_number_part_only"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student multiplies by 100 instead of 1,000 (3.2 \u00d7 100 = 320), off by a factor of 10.",
       "D": "Student multiplies by 10,000 instead of 1,000 (3.2 \u00d7 10,000 = 32,000), off by a factor of 10 in the other direction."
     },
+    "misconception_tag": {
+      "B": "refuses_to_compare_forms",
+      "C": "inverts_conversion_direction",
+      "D": "inverts_conversion_direction"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Correct: 5 km = 5,000 m; Runner B ran 5,200 m; difference = 200 m.",
       "C": "Student subtracts the kilometer value from the meter value without converting (5,200 \u2212 5 = 5,195), treating different units as directly comparable.",
       "D": "Student sees '5' and '5,200' and rounds to a conclusion without converting, assuming both runners ran 5 of their respective units and calling it a tie."
+    },
+    "misconception_tag": {
+      "A": "misreads_direction_of_change",
+      "C": "refuses_to_compare_forms",
+      "D": "refuses_to_compare_forms"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student correctly finds the total gallons (3 \u00d7 5 = 15) but reports that number as fluid ounces without performing the gallon-to-fluid-ounce conversion.",
       "D": "Correct: 3 \u00d7 5 = 15 gal; 15 \u00d7 128 = 1,920 fl oz."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "answers_intermediate_value",
+      "C": "answers_intermediate_value"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -595,6 +630,11 @@
       "C": "Student divides by 80 instead of 8 (2,640 \u00f7 80 = 33), off by a factor of 10 in the spacing.",
       "D": "Student uses 4 feet as the spacing (perhaps halving 8) and computes 2,640 \u00f7 4 = 660 posts."
     },
+    "misconception_tag": {
+      "B": "fencepost_error",
+      "C": "inverts_conversion_direction",
+      "D": "wrong_period_count_used"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -674,6 +714,11 @@
       "B": "Student correctly finds 67.5 mph but uses 60 mph (not 67.5) when converting to m/s: 60 \u00d7 1,600 \u00f7 3,600 = 26.7 m/s.",
       "C": "Correct: 67.5 mph; 67.5 \u00d7 1,600 \u00f7 3,600 = 30 m/s.",
       "D": "Student correctly finds 67.5 mph and multiplies by 1,600 to get meters per hour (108,000 m/hr) but forgets to divide by 3,600 to convert to m/s, reporting 108 m/s."
+    },
+    "misconception_tag": {
+      "A": "wrong_period_count_used",
+      "B": "answers_intermediate_value",
+      "D": "answers_intermediate_value"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -759,6 +804,11 @@
       "B": "Student adds the fill rate to the drain rate instead of subtracting (treating both as draining): net = 1.5 + 0.25 = 1.75 gal/min; 200 \u00f7 1.75 \u2248 114 minutes.",
       "C": "Student correctly converts the fill rate to 0.25 gal/min but uses it alone (ignoring the drain pipe) as the net rate: 200 \u00f7 0.25 = 800 minutes.",
       "D": "Correct: fill = 0.25 gal/min; net drain = 1.25 gal/min; time = 200 \u00f7 1.25 = 160 minutes."
+    },
+    "misconception_tag": {
+      "A": "omits_second_component",
+      "B": "rates_added_instead_of_netted",
+      "C": "rates_added_instead_of_netted"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

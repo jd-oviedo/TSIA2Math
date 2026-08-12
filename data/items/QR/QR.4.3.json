@@ -37,6 +37,11 @@
       "C": "Student swaps the rate and the starting amount, treating \\$250 as the weekly rate: $A = 250w + 20$.",
       "D": "Student writes only the rate term and omits the starting balance: $A = 20w$."
     },
+    "misconception_tag": {
+      "A": "flat_fee_merged_into_rate",
+      "C": "slope_intercept_swap",
+      "D": "omits_constant_term"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -113,6 +118,11 @@
       "C": "Student combines the flat charge and the rate into one rate before multiplying: $30 + 5 = 35$, giving $C = 35g$.",
       "D": "Student omits the flat monthly charge: $C = 5g$."
     },
+    "misconception_tag": {
+      "B": "slope_intercept_swap",
+      "C": "flat_fee_merged_into_rate",
+      "D": "omits_constant_term"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -188,6 +198,11 @@
       "B": "Student reverses the structure, subtracting the starting volume from the rate term: $V = 25m - 500$.",
       "C": "Correct: The tank starts at 500 gallons and loses 25 each minute: $V = 500 - 25m$.",
       "D": "Student writes only the rate term and omits the starting volume: $V = 25m$."
+    },
+    "misconception_tag": {
+      "A": "sign_wrong_for_decreasing_rate",
+      "B": "adds_instead_of_subtracts",
+      "D": "omits_constant_term"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -270,6 +285,11 @@
       "C": "Student omits the base fare: $F = 2.50d$.",
       "D": "Correct: The \\$2.50 per-mile rate multiplies the miles and the \\$4 base fare is added: $F = 2.50d + 4$."
     },
+    "misconception_tag": {
+      "A": "slope_intercept_swap",
+      "B": "flat_fee_merged_into_rate",
+      "C": "omits_constant_term"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -346,6 +366,11 @@
       "C": "Student combines the starting height and the rate into one rate: $12 + 3 = 15$, giving $h = 15w$.",
       "D": "Student omits the starting height: $h = 3w$."
     },
+    "misconception_tag": {
+      "B": "slope_intercept_swap",
+      "C": "flat_fee_merged_into_rate",
+      "D": "omits_constant_term"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -421,6 +446,11 @@
       "B": "Student finds the correct rate but uses the given height 18 directly as the starting value instead of back-solving: $h = -3t + 18$.",
       "C": "Correct: Rate $= \\frac{9 - 18}{5 - 2} = -3$; using (2, 18), $18 = -3(2) + b$ gives $b = 24$: $h = -3t + 24$.",
       "D": "Student finds the correct rate but omits the starting value entirely: $h = -3t$."
+    },
+    "misconception_tag": {
+      "A": "sign_wrong_for_decreasing_rate",
+      "B": "later_total_used_as_starting_value",
+      "D": "omits_constant_term"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -499,6 +529,11 @@
       "C": "Student swaps the monthly rate and the one-time fee, treating 40 as the rate: $P = 40m + 35$.",
       "D": "Student omits the one-time signup fee entirely: $P = 35m$."
     },
+    "misconception_tag": {
+      "A": "later_total_used_as_starting_value",
+      "C": "slope_intercept_swap",
+      "D": "omits_constant_term"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -575,6 +610,11 @@
       "C": "Student uses the total change 20 as the rate without dividing by the 2-year interval, then finds the intercept: $50 = 20(2) + b$ gives $b = 10$, so $R = 20y + 10$.",
       "D": "Student swaps the rate and the starting value: $R = 30y + 10$."
     },
+    "misconception_tag": {
+      "B": "later_total_used_as_starting_value",
+      "C": "total_change_used_as_rate",
+      "D": "slope_intercept_swap"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -650,6 +690,11 @@
       "B": "Student uses the 10-minute volume 600 as the starting volume instead of 800: $V = 600 - 20t$.",
       "C": "Student uses the total volume drop 200 as the per-minute rate without dividing by the 10 minutes: $V = 800 - 200t$.",
       "D": "Correct: Rate $= \\frac{600 - 800}{10 - 0} = -20$; the tank starts at 800: $V = 800 - 20t$."
+    },
+    "misconception_tag": {
+      "A": "sign_wrong_for_decreasing_rate",
+      "B": "later_total_used_as_starting_value",
+      "C": "total_change_used_as_rate"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -732,6 +777,11 @@
       "C": "Student omits the starting members and computes only the growth: $8(10) = 80$.",
       "D": "Student uses the number of additional months $10 - 4 = 6$ as the input instead of the total months: $8(6) + 18 = 66$."
     },
+    "misconception_tag": {
+      "A": "later_total_used_as_starting_value",
+      "C": "omits_constant_term",
+      "D": "wrong_period_count_used"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -807,6 +857,11 @@
       "B": "Student divides the \\$150 difference in starting amounts by Ana's rate alone: $150 \\div 25 = 6$.",
       "C": "Student divides the \\$150 difference in starting amounts by Beth's rate alone: $150 \\div 15 = 10$.",
       "D": "Student adds the starting amounts instead of subtracting, then divides by the difference in rates: $(300 + 450) \\div 10 = 75$."
+    },
+    "misconception_tag": {
+      "B": "rates_summed_instead_of_differenced",
+      "C": "rates_summed_instead_of_differenced",
+      "D": "starting_values_summed_not_differenced"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -890,6 +945,11 @@
       "C": "Correct: Only the rate changes to 18; the fixed 500 is unchanged: $R = 18n + 500$.",
       "D": "Student changes both the rate and the fixed revenue to 18: $R = 18n + 18$."
     },
+    "misconception_tag": {
+      "A": "model_parameters_swapped_between_entities",
+      "B": "model_parameters_swapped_between_entities",
+      "D": "model_parameters_swapped_between_entities"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -965,6 +1025,11 @@
       "B": "Correct: $20g + 40 = 440$ gives $20g = 400$, so $g = 20$ guests.",
       "C": "Student adds the base fee to the total instead of subtracting before dividing: $(440 + 40) \\div 20 = 24$.",
       "D": "Student subtracts the per-guest rate once instead of the base fee: $(440 - 20) \\div 20 = 21$."
+    },
+    "misconception_tag": {
+      "A": "divides_before_subtracting_fee",
+      "C": "divides_before_subtracting_fee",
+      "D": "divides_before_subtracting_fee"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1048,6 +1113,11 @@
       "C": "Student swaps the two rates between the tanks: $6m + 50 = 200 - 4m$.",
       "D": "Correct: The filling tank is $4m + 50$ and the draining tank is $200 - 6m$; setting them equal gives $4m + 50 = 200 - 6m$."
     },
+    "misconception_tag": {
+      "A": "sign_wrong_for_decreasing_rate",
+      "B": "model_parameters_swapped_between_entities",
+      "C": "model_parameters_swapped_between_entities"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1129,6 +1199,11 @@
       "B": "Student selects the plan with the largest starting-amount-plus-rate combination rather than the largest rate: Plan X, $S = 40m + 100$.",
       "C": "Correct: Plan Z has the greatest rate of change (50 per month) and starts at \\$0: $S = 50m$.",
       "D": "Student correctly identifies Plan Z as fastest-growing but attaches a \\$100 starting value that belongs to Plan X: $S = 50m + 100$."
+    },
+    "misconception_tag": {
+      "A": "intercepts_compared_instead_of_slopes",
+      "B": "intercepts_compared_instead_of_slopes",
+      "D": "slope_intercept_swap"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

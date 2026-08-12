@@ -35,6 +35,11 @@
       "C": "Student divides the leg by $\\sqrt{2}$ instead of multiplying: $\\frac{5}{\\sqrt{2}} = \\frac{5\\sqrt{2}}{2}$.",
       "D": "Student uses the $\\sqrt{3}$ factor from the 30-60-90 triangle instead of the $\\sqrt{2}$ factor: $5\\sqrt{3}$."
     },
+    "misconception_tag": {
+      "B": "special_triangle_factor_swapped",
+      "C": "special_ratio_multiplied_not_divided",
+      "D": "special_triangle_factor_swapped"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student divides the hypotenuse by 2 (the 30-60-90 hypotenuse rule) instead of by $\\sqrt{2}$: $\\frac{8\\sqrt{2}}{2} = 4\\sqrt{2}$.",
       "C": "Correct: $\\frac{8\\sqrt{2}}{\\sqrt{2}} = 8$.",
       "D": "Student assumes the leg equals the hypotenuse, applying no ratio at all: $8\\sqrt{2}$."
+    },
+    "misconception_tag": {
+      "A": "special_ratio_multiplied_not_divided",
+      "B": "special_triangle_factor_swapped",
+      "D": "no_ratio_applied"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student applies the 45-45-90 factor $\\sqrt{2}$ instead of the 30-60-90 hypotenuse rule: $7\\sqrt{2}$.",
       "D": "Student multiplies the short leg by 3 instead of by 2: $7 \\times 3 = 21$."
     },
+    "misconception_tag": {
+      "A": "short_long_leg_roles_confused",
+      "C": "special_triangle_factor_swapped",
+      "D": "short_long_leg_roles_confused"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Student applies the 45-45-90 factor $\\sqrt{2}$ instead of the 30-60-90 long-leg factor $\\sqrt{3}$: $6\\sqrt{2}$.",
       "C": "Student multiplies by 3 instead of by $\\sqrt{3}$: $6 \\times 3 = 18$.",
       "D": "Correct: long leg $= 6\\sqrt{3}$."
+    },
+    "misconception_tag": {
+      "A": "short_long_leg_roles_confused",
+      "B": "special_triangle_factor_swapped",
+      "C": "special_ratio_multiplied_not_divided"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student divides the hypotenuse by $\\sqrt{2}$, applying the 45-45-90 relationship: $\\frac{18}{\\sqrt{2}} = 9\\sqrt{2}$.",
       "D": "Student multiplies the hypotenuse by 2 instead of dividing: $18 \\times 2 = 36$."
     },
+    "misconception_tag": {
+      "B": "special_triangle_factor_swapped",
+      "C": "special_triangle_factor_swapped",
+      "D": "special_ratio_multiplied_not_divided"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student uses the 30-60-90 hypotenuse rule (hypotenuse $= 2 \\times$ leg $= 8$): $4 + 4 + 8 = 16$.",
       "C": "Correct: $4 + 4 + 4\\sqrt{2} = 8 + 4\\sqrt{2}$.",
       "D": "Student includes only one leg with the hypotenuse, dropping the second leg: $4 + 4\\sqrt{2}$."
+    },
+    "misconception_tag": {
+      "A": "special_triangle_factor_swapped",
+      "B": "special_triangle_factor_swapped",
+      "D": "side_omitted_from_perimeter"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student applies the 45-45-90 factor $\\sqrt{2}$ instead of the 30-60-90 long-leg factor: $9\\sqrt{2}$.",
       "D": "Student multiplies by 3 instead of $\\sqrt{3}$: $9 \\times 3 = 27$."
     },
+    "misconception_tag": {
+      "A": "short_long_leg_roles_confused",
+      "C": "special_triangle_factor_swapped",
+      "D": "special_ratio_multiplied_not_divided"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Student divides the hypotenuse by 2 (the 30-60-90 hypotenuse rule) instead of by $\\sqrt{2}$: $\\frac{10}{2} = 5$.",
       "C": "Student divides by $\\sqrt{3}$ rather than $\\sqrt{2}$, applying a 30-60-90 relationship: $\\frac{10}{\\sqrt{3}} = \\frac{10\\sqrt{3}}{3}$.",
       "D": "Correct: $\\frac{10}{\\sqrt{2}} = 5\\sqrt{2}$."
+    },
+    "misconception_tag": {
+      "A": "special_ratio_multiplied_not_divided",
+      "B": "special_triangle_factor_swapped",
+      "C": "special_triangle_factor_swapped"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "Student correctly finds the short leg of 5 but stops there, reporting the short leg instead of the hypotenuse.",
       "D": "Student halves the long leg directly instead of first dividing by $\\sqrt{3}$: $\\frac{5\\sqrt{3}}{2}$."
     },
+    "misconception_tag": {
+      "B": "short_long_leg_roles_confused",
+      "C": "short_long_leg_roles_confused",
+      "D": "short_long_leg_roles_confused"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -754,6 +799,11 @@
       "B": "Correct: $\\frac{14\\sqrt{2}}{\\sqrt{2}} = 14$.",
       "C": "Student divides the diagonal by 2 instead of by $\\sqrt{2}$: $\\frac{14\\sqrt{2}}{2} = 7\\sqrt{2}$.",
       "D": "Student assumes the side equals the diagonal, applying no relationship: $14\\sqrt{2}$."
+    },
+    "misconception_tag": {
+      "A": "special_ratio_multiplied_not_divided",
+      "C": "special_triangle_factor_swapped",
+      "D": "no_ratio_applied"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -835,6 +885,11 @@
       "C": "Correct: short leg $= 6$, height (long leg) $= 6\\sqrt{3}$.",
       "D": "Student stops after halving the base and reports the short leg of 6 as the height."
     },
+    "misconception_tag": {
+      "A": "short_long_leg_roles_confused",
+      "B": "special_triangle_factor_swapped",
+      "D": "short_long_leg_roles_confused"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -914,6 +969,11 @@
       "B": "Student finds the correct leg of 8 but reports the hypotenuse instead: $8\\sqrt{2}$.",
       "C": "Student solves $\\ell^{2} = 64$ correctly but forgets to take the square root, reporting 64.",
       "D": "Correct: $\\frac{1}{2}\\ell^{2} = 32$, so $\\ell^{2} = 64$ and $\\ell = 8$."
+    },
+    "misconception_tag": {
+      "A": "omits_fractional_factor",
+      "B": "hypotenuse_reported_for_leg",
+      "C": "omits_fractional_factor"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -995,6 +1055,11 @@
       "C": "Student uses the hypotenuse of 20 as one of the legs: $\\frac{1}{2}(20)(10\\sqrt{3}) = 100\\sqrt{3}$.",
       "D": "Student treats the hypotenuse 20 as the short leg, making the long leg $20\\sqrt{3}$: $\\frac{1}{2}(20)(20\\sqrt{3}) = 200\\sqrt{3}$."
     },
+    "misconception_tag": {
+      "B": "short_long_leg_roles_confused",
+      "C": "hypotenuse_reported_for_leg",
+      "D": "short_long_leg_roles_confused"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1075,6 +1140,11 @@
       "C": "Student drops the $\\sqrt{3}$ on the longer side, treating both sides as 4: $4 \\times 4 = 16$.",
       "D": "Student uses the diagonal of 8 as the longer side: $8 \\times 4 = 32$."
     },
+    "misconception_tag": {
+      "A": "side_omitted_from_perimeter",
+      "C": "side_omitted_from_perimeter",
+      "D": "side_omitted_from_perimeter"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1154,6 +1224,11 @@
       "B": "Student uses $\\frac{1}{2}$ instead of $\\frac{1}{4}$, solving $\\frac{s^{2}\\sqrt{3}}{2} = 25\\sqrt{3}$, so $s^{2} = 50$ and $s = 5\\sqrt{2}$.",
       "C": "Correct: $\\frac{s^{2}\\sqrt{3}}{4} = 25\\sqrt{3}$ gives $s^{2} = 100$, so $s = 10$.",
       "D": "Student solves $s^{2} = 100$ correctly but forgets to take the square root, reporting 100."
+    },
+    "misconception_tag": {
+      "A": "omits_fractional_factor",
+      "B": "side_omitted_from_perimeter",
+      "D": "omits_fractional_factor"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

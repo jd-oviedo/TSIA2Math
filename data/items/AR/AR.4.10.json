@@ -35,6 +35,11 @@
       "C": "Student divides the exponents instead of subtracting them: $2^{6 \\div 3} = 2^{2}$.",
       "D": "Student cancels the identical bases to 1 and keeps the difference of the exponents: $1^{6-3} = 1^{3}$."
     },
+    "misconception_tag": {
+      "B": "adds_exponents_wrongly",
+      "C": "subtracts_exponents_wrongly",
+      "D": "bases_multiplied_with_exponents"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student multiplies the base by the exponent and keeps the sign: $2 \\times (-3) = -6$.",
       "C": "Correct: a negative exponent gives the reciprocal of the positive power: $2^{-3} = \\frac{1}{2^{3}} = \\frac{1}{8}$.",
       "D": "Student correctly takes the reciprocal but evaluates $2^{3}$ as $2 \\times 3 = 6$, giving $\\frac{1}{6}$."
+    },
+    "misconception_tag": {
+      "A": "negative_exponent_as_negative_value",
+      "B": "base_times_exponent",
+      "D": "base_times_exponent"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student confuses the zero exponent with a negative exponent, computing $5^{-1} = \\frac{1}{5}$.",
       "D": "Correct: any nonzero base raised to the zero power equals 1, so $5^{0} = 1$."
     },
+    "misconception_tag": {
+      "A": "zero_exponent_as_zero",
+      "B": "negative_exponent_as_negative_value",
+      "C": "zero_exponent_as_zero"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Correct: the product rule adds exponents for like bases: $2^{4} \\cdot 2^{3} = 2^{4+3} = 2^{7}$.",
       "C": "Student adds the exponents correctly but also multiplies the bases, changing $2$ to $4$: $4^{7}$.",
       "D": "Student subtracts the exponents instead of adding, confusing the product rule with the quotient rule: $2^{4-3} = 2^{1}$."
+    },
+    "misconception_tag": {
+      "A": "multiplies_exponents_wrongly",
+      "C": "adds_exponents_wrongly",
+      "D": "subtracts_exponents_wrongly"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Student raises the inner exponent to the outer exponent, computing $2^{4} = 16$ as the new exponent: $3^{16}$.",
       "D": "Student evaluates the inner power as base times exponent, $3 \\times 2 = 6$, and keeps the outer exponent: $6^{4}$."
     },
+    "misconception_tag": {
+      "B": "adds_exponents_wrongly",
+      "C": "inner_exponent_raised_not_multiplied",
+      "D": "base_times_exponent"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student interprets $2^{-1}$ as $-2$ rather than $\\frac{1}{2}$: $\\frac{16 \\cdot (-2)}{4} = -8$.",
       "C": "Correct: the numerator is $2^{4+(-1)} = 2^{3}$, then $\\frac{2^{3}}{2^{2}} = 2^{3-2} = 2^{1} = 2$.",
       "D": "Student combines the numerator correctly to $2^{3}$ but adds the denominator's exponent instead of subtracting it: $2^{3+2} = 2^{5} = 32$."
+    },
+    "misconception_tag": {
+      "A": "negative_exponent_as_negative_value",
+      "B": "negative_exponent_as_negative_value",
+      "D": "adds_exponents_wrongly"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student drops the negative sign on the exponent, treating $2^{-2}$ as $2^{2}$: $2^{6} \\cdot 2^{2} = 2^{8} = 256$.",
       "D": "Student interprets $2^{-2}$ as $-4$ rather than $\\frac{1}{4}$: $64 \\cdot (-4) = -256$."
     },
+    "misconception_tag": {
+      "A": "adds_exponents_wrongly",
+      "C": "negative_exponent_as_negative_value",
+      "D": "negative_exponent_as_negative_value"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -594,6 +629,11 @@
       "B": "Student subtracts the exponents in the numerator instead of adding them: $5^{3-2} = 5^{1}$, then $\\frac{5^{1}}{5^{4}} = 5^{-3} = \\frac{1}{125}$.",
       "C": "Student combines the numerator correctly to $5^{5}$ but reverses the order of subtraction in the quotient rule: $5^{4-5} = 5^{-1} = \\frac{1}{5}$.",
       "D": "Correct: the numerator is $5^{3+2} = 5^{5}$, then $\\frac{5^{5}}{5^{4}} = 5^{5-4} = 5^{1} = 5$."
+    },
+    "misconception_tag": {
+      "A": "multiplies_exponents_wrongly",
+      "B": "subtracts_exponents_wrongly",
+      "C": "subtracts_exponents_wrongly"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -675,6 +715,11 @@
       "C": "Student treats $2^{n+1}$ as the product $2(n+1)$, solving $2(n+1) = 32$ to get $n + 1 = 16$ and $n = 15$.",
       "D": "Student divides the value by the base once, computing $32 \\div 2 = 16$, and reports that as $n$."
     },
+    "misconception_tag": {
+      "B": "answers_intermediate_value",
+      "C": "base_times_exponent",
+      "D": "base_times_exponent"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -754,6 +799,11 @@
       "B": "Student over-cancels, treating $\\frac{3^{2}}{3}$ as fully canceling to 1 instead of $3^{1}$: $2^{2} \\cdot 1 = 4$.",
       "C": "Correct: $\\frac{2^{5}}{2^{3}} = 2^{2} = 4$ and $\\frac{3^{2}}{3^{1}} = 3^{1} = 3$, so the value is $4 \\cdot 3 = 12$.",
       "D": "Student reverses the order of subtraction in the quotient rule for both bases: $2^{3-5} \\cdot 3^{1-2} = 2^{-2} \\cdot 3^{-1} = \\frac{1}{4} \\cdot \\frac{1}{3} = \\frac{1}{12}$."
+    },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "bases_multiplied_with_exponents",
+      "D": "subtracts_exponents_wrongly"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

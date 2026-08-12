@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type Stripe from "stripe";
 import { getStripe } from "../../../lib/stripe";
 import { createAdminClient } from "../../../lib/supabase-admin";
+import { activate, deactivate, findUserIdByEmail } from "../../../lib/stripe-activation";
 
 // Stripe signs webhooks with a shared secret and delivers a raw JSON body.
 // We must (a) read the raw body untouched to verify the signature and
@@ -15,25 +16,6 @@ type Admin = ReturnType<typeof createAdminClient>;
 function toId(ref: string | { id: string } | null | undefined): string | null {
   if (!ref) return null;
   return typeof ref === "string" ? ref : ref.id;
-}
-
-// profiles has no email column — email lives in auth.users. Page through
-// the auth admin API to resolve an email to its profile/user id. Founding-
-// teacher scale, so a bounded scan is fine.
-async function findUserIdByEmail(admin: Admin, email: string): Promise<string | null> {
-  const target = email.trim().toLowerCase();
-  if (!target) return null;
-  const perPage = 200;
-  for (let page = 1; page <= 50; page++) {
-    const { data, error } = await admin.auth.admin.listUsers({ page, perPage });
-    if (error || !data?.users?.length) return null;
-    const match = data.users.find(
-      (u: { id: string; email?: string | null }) => (u.email ?? "").toLowerCase() === target
-    );
-    if (match) return match.id;
-    if (data.users.length < perPage) return null; // reached the last page
-  }
-  return null;
 }
 
 async function findProfileIdByCustomerId(admin: Admin, customerId: string): Promise<string | null> {
@@ -79,40 +61,6 @@ async function resolveProfileId(
   }
   if (!email) return null;
   return findUserIdByEmail(admin, email);
-}
-
-async function activate(
-  admin: Admin,
-  profileId: string,
-  customerId: string | null,
-  email: string | null
-) {
-  await admin
-    .from("profiles")
-    .update({ subscription_status: "active" })
-    .eq("id", profileId);
-
-  // Store the customer id only if it isn't already set.
-  if (customerId) {
-    await admin
-      .from("profiles")
-      .update({ stripe_customer_id: customerId })
-      .eq("id", profileId)
-      .is("stripe_customer_id", null);
-  }
-
-  console.log(
-    `[stripe/webhook] activated profile for ${email ?? profileId}, customer ${customerId}`
-  );
-}
-
-async function deactivate(admin: Admin, profileId: string, email: string | null) {
-  await admin
-    .from("profiles")
-    .update({ subscription_status: "inactive" })
-    .eq("id", profileId);
-
-  console.log(`[stripe/webhook] deactivated profile for ${email ?? profileId}`);
 }
 
 export async function POST(req: Request) {

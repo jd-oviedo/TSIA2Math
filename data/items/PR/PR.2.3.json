@@ -37,6 +37,11 @@
       "C": "Student assumes the missing value simply equals the mean, 20.",
       "D": "Student subtracts the mean from the sum of the known values, 55 - 20 = 35."
     },
+    "misconception_tag": {
+      "A": "total_from_wrong_count",
+      "C": "missing_value_assumed_equal_to_mean",
+      "D": "mean_subtracted_from_sum"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -119,6 +124,11 @@
       "C": "Student assumes the missing score equals the mean, 8.",
       "D": "Correct: total = 5 times 8 = 40; 40 - 30 = 10."
     },
+    "misconception_tag": {
+      "A": "total_from_wrong_count",
+      "B": "reports_wrong_center_measure",
+      "C": "missing_value_assumed_equal_to_mean"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -195,6 +205,11 @@
       "B": "Student assumes the missing number equals the mean, 12.",
       "C": "Student averages the two known numbers, $\\frac{27}{2}$ = 13.5, instead of solving for the third.",
       "D": "Student subtracts the mean from the sum of the known numbers, 27 - 12 = 15."
+    },
+    "misconception_tag": {
+      "B": "missing_value_assumed_equal_to_mean",
+      "C": "reports_wrong_center_measure",
+      "D": "mean_subtracted_from_sum"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -278,6 +293,11 @@
       "C": "Correct: total = 4 times 18 = 72; 72 - 48 = 24.",
       "D": "Student subtracts the mean from the sum of the known readings, 48 - 18 = 30."
     },
+    "misconception_tag": {
+      "A": "total_from_wrong_count",
+      "B": "reports_wrong_center_measure",
+      "D": "mean_subtracted_from_sum"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -354,6 +374,11 @@
       "B": "Correct: total = 4 times 16 = 64; 64 - 45 = 19.",
       "C": "Student assumes the missing game equals the mean, 16.",
       "D": "Student multiplies the mean by one more than the count (5 times 16 = 80) then 80 - 45 = 35."
+    },
+    "misconception_tag": {
+      "A": "reports_wrong_center_measure",
+      "C": "missing_value_assumed_equal_to_mean",
+      "D": "total_from_wrong_count"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -437,6 +462,11 @@
       "C": "Correct: x = minimum + range = 7 + 18 = 25.",
       "D": "Student adds the range to the largest existing value (19) instead of the minimum, getting 19 + 18 = 37."
     },
+    "misconception_tag": {
+      "A": "reports_wrong_center_measure",
+      "B": "range_added_to_wrong_extreme",
+      "D": "range_added_to_wrong_extreme"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -519,6 +549,11 @@
       "C": "Student assumes the missing number equals the mean, 25.",
       "D": "Correct: total = 6 times 25 = 150; 150 - 117 = 33."
     },
+    "misconception_tag": {
+      "A": "total_from_wrong_count",
+      "B": "reports_wrong_center_measure",
+      "C": "missing_value_assumed_equal_to_mean"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -595,6 +630,11 @@
       "B": "Correct: x = maximum - range = 41 - 28 = 13.",
       "C": "Student computes the range of only the known values, 41 - 25 = 16, ignoring that x is the new minimum.",
       "D": "Student reports the range, 28, as the missing value."
+    },
+    "misconception_tag": {
+      "A": "range_from_known_values_only",
+      "C": "range_from_known_values_only",
+      "D": "reports_wrong_center_measure"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -678,6 +718,11 @@
       "C": "Student assumes the fifth day equals the mean, \\$340.",
       "D": "Correct: total = 5 times 340 = \\$1,700; 1700 - 1345 = \\$355."
     },
+    "misconception_tag": {
+      "A": "total_from_wrong_count",
+      "B": "reports_wrong_center_measure",
+      "C": "missing_value_assumed_equal_to_mean"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -754,6 +799,11 @@
       "B": "Student reports the range, 40, as the missing value.",
       "C": "Correct: x = minimum + range = 45 + 40 = 85.",
       "D": "Student adds the range to the largest existing value (72) instead of the minimum, getting 72 + 40 = 112."
+    },
+    "misconception_tag": {
+      "A": "range_from_known_values_only",
+      "B": "reports_wrong_center_measure",
+      "D": "range_added_to_wrong_extreme"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -837,6 +887,11 @@
       "C": "Student adds the range to the largest known value (13) to get x = 25, then y = 37 - 25 = 12.",
       "D": "Student splits the remaining sum of 37 equally between x and y, ignoring the range entirely."
     },
+    "misconception_tag": {
+      "B": "missing_value_assumed_equal_to_mean",
+      "C": "range_added_to_wrong_extreme",
+      "D": "optimisation_bound_misused"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -918,6 +973,11 @@
       "B": "Student reports the range, 25, as the value of x.",
       "C": "Correct: as a new maximum, x = 20 + 25 = 45, the larger of the two valid values.",
       "D": "Student adds the range to the current maximum 35 instead of the minimum, getting 60."
+    },
+    "misconception_tag": {
+      "A": "optimisation_bound_misused",
+      "B": "reports_wrong_center_measure",
+      "D": "range_added_to_wrong_extreme"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1001,6 +1061,11 @@
       "C": "Student assumes the existing maximum 30 is the overall maximum and applies the range to it, getting x = 12.",
       "D": "Student solves correctly in size but swaps the labels, assigning the larger value to x and the smaller to y."
     },
+    "misconception_tag": {
+      "B": "missing_value_assumed_equal_to_mean",
+      "C": "range_added_to_wrong_extreme",
+      "D": "optimisation_bound_misused"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1083,6 +1148,11 @@
       "C": "Student leaves the other two at the mean of 40 instead of pushing them to the cap, getting 120 - 40 - 40 = 40.",
       "D": "Student reports the cap value 50 itself rather than reasoning toward the minimum."
     },
+    "misconception_tag": {
+      "B": "missing_value_assumed_equal_to_mean",
+      "C": "missing_value_assumed_equal_to_mean",
+      "D": "optimisation_bound_misused"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1164,6 +1234,11 @@
       "B": "Correct: x = 18 + 20 = 38; (18 + 38 + 30 + 24) / 4 = $\\frac{110}{4}$ = 27.5.",
       "C": "Student finds x by adding the range to the largest known value (30) instead of the minimum, getting x = 50 and a mean of $\\frac{122}{4}$ = 30.5.",
       "D": "Student finds x = 38 correctly but divides the total by 3 instead of 4, getting $\\frac{110}{3}$, about 36.67."
+    },
+    "misconception_tag": {
+      "A": "total_from_wrong_count",
+      "C": "range_added_to_wrong_extreme",
+      "D": "total_from_wrong_count"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

@@ -35,6 +35,11 @@
       "C": "Student used $\\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{3}{4}$, which is $\\tan(\\theta)$, not $\\sin(\\theta)$.",
       "D": "Student inverted the ratio, computing $\\frac{\\text{adjacent}}{\\text{opposite}} = \\frac{4}{3}$."
     },
+    "misconception_tag": {
+      "B": "wrong_trig_ratio_selected",
+      "C": "wrong_trig_ratio_selected",
+      "D": "inverts_trig_ratio"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Correct: $\\cos(\\theta) = \\frac{\\text{adjacent}}{\\text{hypotenuse}} = \\frac{12}{13}$.",
       "C": "Student used $\\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{5}{12}$, which is $\\tan(\\theta)$, not $\\cos(\\theta)$.",
       "D": "Student inverted the ratio, computing $\\frac{\\text{adjacent}}{\\text{opposite}} = \\frac{12}{5}$ rather than adjacent over hypotenuse."
+    },
+    "misconception_tag": {
+      "A": "wrong_trig_ratio_selected",
+      "C": "wrong_trig_ratio_selected",
+      "D": "inverts_trig_ratio"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Correct: $\\tan(\\theta) = \\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{8}{15}$.",
       "D": "Student inverted the tangent ratio, computing $\\frac{\\text{adjacent}}{\\text{opposite}} = \\frac{15}{8}$."
     },
+    "misconception_tag": {
+      "A": "wrong_trig_ratio_selected",
+      "B": "wrong_trig_ratio_selected",
+      "D": "inverts_trig_ratio"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -269,6 +284,11 @@
       "B": "Student used $\\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{7}{24}$, which is $\\tan(\\theta)$, not $\\sin(\\theta)$.",
       "C": "Student inverted the ratio, computing $\\frac{\\text{hypotenuse}}{\\text{opposite}} = \\frac{25}{7}$.",
       "D": "Correct: $\\sin(\\theta) = \\frac{\\text{opposite}}{\\text{hypotenuse}} = \\frac{7}{25}$."
+    },
+    "misconception_tag": {
+      "A": "wrong_trig_ratio_selected",
+      "B": "wrong_trig_ratio_selected",
+      "C": "inverts_trig_ratio"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -350,6 +370,11 @@
       "C": "Student used $\\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{40}{9}$, which is $\\tan(\\theta)$, not $\\cos(\\theta)$.",
       "D": "Student inverted the ratio, computing $\\frac{\\text{hypotenuse}}{\\text{adjacent}} = \\frac{41}{9}$."
     },
+    "misconception_tag": {
+      "A": "wrong_trig_ratio_selected",
+      "C": "wrong_trig_ratio_selected",
+      "D": "inverts_trig_ratio"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -429,6 +454,11 @@
       "B": "Correct: $\\text{opposite} = 12 \\cdot \\sin(60^{\\circ}) = 12 \\cdot \\frac{\\sqrt{3}}{2} = 6\\sqrt{3}$.",
       "C": "Student divided by the sine instead of multiplying: $\\frac{12}{\\sin(60^{\\circ})} = \\frac{12}{\\frac{\\sqrt{3}}{2}} = 8\\sqrt{3}$.",
       "D": "Student used $\\tan(60^{\\circ}) = \\sqrt{3}$ instead of sine: $12 \\cdot \\sqrt{3} = 12\\sqrt{3}$."
+    },
+    "misconception_tag": {
+      "A": "trig_side_roles_misassigned",
+      "C": "special_ratio_multiplied_not_divided",
+      "D": "wrong_trig_ratio_selected"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -510,6 +540,11 @@
       "C": "Correct: the adjacent side is $\\sqrt{25 - 9} = 4$, so $\\cos(\\theta) = \\frac{4}{5}$.",
       "D": "Student inverted the cosine ratio, computing $\\frac{\\text{hypotenuse}}{\\text{adjacent}} = \\frac{5}{4}$."
     },
+    "misconception_tag": {
+      "A": "inverts_trig_ratio",
+      "B": "wrong_trig_ratio_selected",
+      "D": "inverts_trig_ratio"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -589,6 +624,11 @@
       "B": "Student multiplied the hypotenuse by $\\sqrt{2}$ instead of $\\frac{\\sqrt{2}}{2}$: $8 \\cdot \\sqrt{2} = 8\\sqrt{2}$.",
       "C": "Student treated $\\cos(45^{\\circ})$ as $\\frac{1}{2}$ and halved the hypotenuse: $8 \\cdot \\frac{1}{2} = 4$.",
       "D": "Student applied the $30$-$60$-$90$ ratio $\\frac{\\sqrt{3}}{2}$ instead of the $45$-$45$-$90$ ratio: $8 \\cdot \\frac{\\sqrt{3}}{2} = 4\\sqrt{3}$."
+    },
+    "misconception_tag": {
+      "B": "special_ratio_multiplied_not_divided",
+      "C": "special_angle_family_wrong",
+      "D": "wrong_trig_ratio_selected"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -670,6 +710,11 @@
       "C": "Student divided by the sine instead of multiplying: $\\frac{20}{\\sin(28^{\\circ})} \\approx 42.6$.",
       "D": "Correct: $\\text{opposite} = 20 \\cdot \\sin(28^{\\circ}) \\approx 9.4$."
     },
+    "misconception_tag": {
+      "A": "wrong_trig_ratio_selected",
+      "B": "wrong_trig_ratio_selected",
+      "C": "special_ratio_multiplied_not_divided"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -749,6 +794,11 @@
       "B": "Student used the sine value $\\frac{3}{5}$ from the $3$-$4$-$5$ family and found the opposite leg instead: $20 \\cdot \\frac{3}{5} = 12$.",
       "C": "Student inverted the ratio, multiplying by $\\frac{\\text{hypotenuse}}{\\text{adjacent}}$ form: $20 \\cdot \\frac{5}{4} = 25$.",
       "D": "Student read the numerator of the ratio as the literal side length, ignoring the hypotenuse scaling, reporting 4."
+    },
+    "misconception_tag": {
+      "B": "wrong_trig_ratio_selected",
+      "C": "inverts_trig_ratio",
+      "D": "ratio_numerator_as_side_length"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -830,6 +880,11 @@
       "C": "Correct: $\\tan(\\theta) = \\frac{9}{12}$, so $\\theta = \\tan^{-1}(0.75) \\approx 37^{\\circ}$.",
       "D": "Student inverted the tangent ratio, computing $\\tan^{-1}\\left(\\frac{12}{9}\\right) \\approx 53^{\\circ}$, which is the measure of the other acute angle."
     },
+    "misconception_tag": {
+      "A": "trig_side_roles_misassigned",
+      "B": "trig_side_roles_misassigned",
+      "D": "inverts_trig_ratio"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -909,6 +964,11 @@
       "B": "Student multiplied by $\\cos(30^{\\circ})$ instead of dividing: $6\\sqrt{3} \\cdot \\frac{\\sqrt{3}}{2} = 9$.",
       "C": "Student found the side opposite the $30^{\\circ}$ angle using $\\tan(30^{\\circ})$ and reported it as the hypotenuse: $6\\sqrt{3} \\cdot \\frac{1}{\\sqrt{3}} = 6$.",
       "D": "Correct: $\\text{hypotenuse} = \\frac{6\\sqrt{3}}{\\cos(30^{\\circ})} = \\frac{6\\sqrt{3}}{\\frac{\\sqrt{3}}{2}} = 12$."
+    },
+    "misconception_tag": {
+      "A": "trig_side_roles_misassigned",
+      "B": "special_ratio_multiplied_not_divided",
+      "C": "hypotenuse_reported_for_leg"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -990,6 +1050,11 @@
       "C": "Student subtracted the two ratios instead of adding: $\\frac{12}{13} - \\frac{5}{13} = \\frac{7}{13}$.",
       "D": "Student reported only $\\cos(\\theta)$ and stopped, omitting the sine term: $\\frac{12}{13}$."
     },
+    "misconception_tag": {
+      "B": "legs_combined_without_squaring",
+      "C": "omits_second_component",
+      "D": "omits_second_component"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1070,6 +1135,11 @@
       "C": "Student fed the ratio into the inverse tangent instead of inverse sine, computing $\\tan^{-1}\\left(\\frac{15}{17}\\right) \\approx 41^{\\circ}$.",
       "D": "Student inverted the ratio before applying the inverse function, computing $\\tan^{-1}\\left(\\frac{17}{15}\\right) \\approx 49^{\\circ}$."
     },
+    "misconception_tag": {
+      "A": "wrong_trig_ratio_selected",
+      "C": "inverse_trig_function_mismatched",
+      "D": "inverts_trig_ratio"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1149,6 +1219,11 @@
       "B": "Student reported the sine value as the tangent, using $\\frac{\\text{opposite}}{\\text{hypotenuse}} = \\frac{2}{3}$.",
       "C": "Correct: the adjacent side is $\\sqrt{9 - 4} = \\sqrt{5}$, so $\\tan(\\theta) = \\frac{2}{\\sqrt{5}} = \\frac{2\\sqrt{5}}{5}$.",
       "D": "Student added inside the radical instead of subtracting when finding the adjacent side, $\\sqrt{3^{2} + 2^{2}} = \\sqrt{13}$, giving $\\frac{2}{\\sqrt{13}} = \\frac{2\\sqrt{13}}{13}$."
+    },
+    "misconception_tag": {
+      "A": "inverts_trig_ratio",
+      "B": "wrong_trig_ratio_selected",
+      "D": "legs_combined_without_squaring"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

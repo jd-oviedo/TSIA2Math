@@ -35,6 +35,11 @@
       "C": "Correct: 3 out of 3 + 5 = 8 total parts, so red = $\\frac{3}{8}$ \u00d7 240 = 90.",
       "D": "Student treats the ratio 3:5 as the fraction $\\frac{3}{5}$ and computes $\\frac{3}{5}$ \u00d7 240 = 144, omitting the correct denominator of 8."
     },
+    "misconception_tag": {
+      "A": "scales_by_wrong_ratio_term",
+      "B": "ratio_terms_multiplied",
+      "D": "ratio_term_as_value"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student multiplies the given quantity (12) by the second ratio number (3) directly, giving 12 \u00d7 3 = 36, without first finding the unit value.",
       "C": "Student adds the second ratio number to the known quantity (12 + 3 = 15) instead of scaling by ratio units.",
       "D": "Student divides the known quantity by the wrong ratio number (12 \u00f7 3 = 4) instead of dividing by the chairs ratio (2)."
+    },
+    "misconception_tag": {
+      "B": "answers_intermediate_value",
+      "C": "adds_instead_of_scales",
+      "D": "scales_by_wrong_ratio_term"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student finds the unit value (45 \u00f7 9 = 5) but stops there instead of multiplying by the girls ratio number (5).",
       "D": "Correct: 45 \u00f7 9 = 5 per part; girls = 5 \u00d7 5 = 25."
     },
+    "misconception_tag": {
+      "A": "scales_by_wrong_ratio_term",
+      "B": "answers_intermediate_value",
+      "C": "answers_intermediate_value"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -274,6 +289,11 @@
       "B": "Correct: scale factor = 8 \u00f7 2 = 4; sugar = 3 \u00d7 4 = 12 cups.",
       "C": "Student multiplies both ratio numbers by the known quantity (3 \u00d7 8 = 24) without first finding the unit scale factor.",
       "D": "Student finds the scale factor (8 \u00f7 2 = 4) but reports it as the answer instead of applying it to the sugar ratio number."
+    },
+    "misconception_tag": {
+      "A": "adds_instead_of_scales",
+      "C": "ratio_terms_multiplied",
+      "D": "answers_intermediate_value"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -355,6 +375,11 @@
       "C": "Correct: 20 \u00f7 5 = 4 liters per part; red = 1 \u00d7 4 = 4 liters.",
       "D": "Student correctly finds the unit value (20 \u00f7 5 = 4 liters per part) but then multiplies by 2 instead of 1, using the white paint ratio number rather than the red paint ratio number (4 \u00d7 2 = 8 liters)."
     },
+    "misconception_tag": {
+      "A": "scales_by_wrong_ratio_term",
+      "B": "ratio_parts_reported_in_answer_units",
+      "D": "scales_by_wrong_ratio_term"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -434,6 +459,11 @@
       "B": "Student correctly finds the number of cats (64) but does not subtract to find the difference, reporting cats as the final answer.",
       "C": "Student finds the unit value (40 \u00f7 5 = 8) and stops, not applying it to find cats or the difference.",
       "D": "Student adds dogs and cats (40 + 64 = 104) rather than subtracting to find the difference."
+    },
+    "misconception_tag": {
+      "B": "answers_intermediate_value",
+      "C": "answers_intermediate_value",
+      "D": "adds_instead_of_scales"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -515,6 +545,11 @@
       "C": "Student sums the ratio parts (3 + 1 + 2 = 6) and reports that as the answer instead of using it to find the unit value.",
       "D": "Correct: total parts = 6; each part = 10; yellow = 1 \u00d7 10 = 10 beads."
     },
+    "misconception_tag": {
+      "A": "scales_by_wrong_ratio_term",
+      "B": "scales_by_wrong_ratio_term",
+      "C": "ratio_parts_reported_in_answer_units"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -595,6 +630,11 @@
       "C": "Student multiplies the real-world distance by the scale factor instead of dividing (315 \u00d7 1.5 = 472.5), treating the answer as a distance in km rather than converting to cm.",
       "D": "Student correctly finds 7 cm but divides by 1.5 instead of multiplying (7 \u00f7 1.5 \u2248 4.67 cm), inverting the scale-up factor."
     },
+    "misconception_tag": {
+      "B": "answers_intermediate_value",
+      "C": "inverts_conversion_direction",
+      "D": "inverts_conversion_direction"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -674,6 +714,11 @@
       "B": "Student divides the budget by Juice A\u2019s unit price (\\$70 \u00f7 \\$4 = 17.5 \u2192 17 liters), applying the most expensive component\u2019s price to the entire blend.",
       "C": "Student correctly computes the blended cost per liter (\\$2.60) and divides the budget (\\$70 \u00f7 \\$2.60 \u2248 26.9) but rounds up to 27 instead of taking the floor, purchasing more than \\$70 allows.",
       "D": "Correct: blended cost = \\$2.60/L; \\$70 \u00f7 \\$2.60 = 26.9\u2026 \u2192 floor = 26 liters."
+    },
+    "misconception_tag": {
+      "A": "omits_second_component",
+      "B": "omits_second_component",
+      "C": "rounds_up_where_floor_required"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -759,6 +804,11 @@
       "B": "Student uses 100 g for both alloys (ignoring the actual 150 g of Alloy Y), giving $\\frac{60 + 20}{100 + 100}$ = $\\frac{80}{200}$ = $\\frac{2}{5}$.",
       "C": "Student uses only Alloy X's copper fraction ($\\frac{3}{5}$) as the answer, ignoring Alloy Y entirely.",
       "D": "Student uses only Alloy Y's copper fraction ($\\frac{1}{5}$) as the answer, ignoring Alloy X entirely."
+    },
+    "misconception_tag": {
+      "B": "omits_second_component",
+      "C": "omits_second_component",
+      "D": "omits_second_component"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

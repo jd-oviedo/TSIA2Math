@@ -35,6 +35,11 @@
       "C": "Student reports only the flat travel fee, ignoring the hourly labor charge.",
       "D": "Student adds the fee to the hourly rate before multiplying, treating the fee as part of the per-hour cost: $(45 + 30) \\times 3 = 225$ dollars."
     },
+    "misconception_tag": {
+      "A": "omits_constant_term",
+      "C": "omits_variable_term",
+      "D": "flat_fee_merged_into_rate"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -114,6 +119,11 @@
       "B": "Student reports only the signup fee, ignoring the monthly charges.",
       "C": "Correct: monthly charges are $25 \\times 6 = 150$, plus the \\$40 signup fee gives $150 + 40 = 190$ dollars.",
       "D": "Student counts only 5 months instead of 6: $25 \\times 5 + 40 = 165$ dollars."
+    },
+    "misconception_tag": {
+      "A": "omits_constant_term",
+      "B": "omits_variable_term",
+      "D": "wrong_period_count_used"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -195,6 +205,11 @@
       "C": "Student adds the booking fee to the ticket price before multiplying, charging the fee on every ticket: $(9 + 3) \\times 4 = 48$ dollars.",
       "D": "Correct: tickets cost $9 \\times 4 = 36$, plus the \\$3 booking fee gives $36 + 3 = 39$ dollars."
     },
+    "misconception_tag": {
+      "A": "omits_constant_term",
+      "B": "omits_variable_term",
+      "C": "flat_fee_merged_into_rate"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -275,6 +290,11 @@
       "C": "Student reports only the flat pickup fee, ignoring the per-mile charge.",
       "D": "Student adds the pickup fee to the per-mile rate before multiplying, charging the fee on every mile: $(3 + 4) \\times 5 = 35$ dollars."
     },
+    "misconception_tag": {
+      "B": "omits_constant_term",
+      "C": "omits_variable_term",
+      "D": "flat_fee_merged_into_rate"
+    },
     "difficulty_level": "Basic",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -354,6 +374,11 @@
       "B": "Correct: the per-guest charge is $12 \\times 10 = 120$, plus the \\$50 setup fee gives $120 + 50 = 170$ dollars.",
       "C": "Student reports only the fixed setup fee, ignoring the per-guest charge.",
       "D": "Student counts only 9 guests instead of 10: $12 \\times 9 + 50 = 158$ dollars."
+    },
+    "misconception_tag": {
+      "A": "omits_constant_term",
+      "C": "omits_variable_term",
+      "D": "wrong_period_count_used"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -437,6 +462,11 @@
       "C": "Correct: $4n + 12 = 40$ gives $4n = 28$, so $n = 7$ items.",
       "D": "Student adds the handling fee instead of subtracting it before dividing: $(40 + 12) \\div 4 = 13$ items."
     },
+    "misconception_tag": {
+      "A": "divides_before_subtracting_fee",
+      "B": "answers_intermediate_value",
+      "D": "flat_fee_merged_into_rate"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -516,6 +546,11 @@
       "B": "Correct: Option A totals $30 + 40 = 70$ and Option B totals $80$, so Option A is cheaper by \\$10.",
       "C": "Student omits the \\$30 registration fee from Option A, computing it as $5 \\times 8 = 40$, giving a difference of $80 - 40 = 40$ dollars.",
       "D": "Student omits the per-class charge from Option A, using only the \\$30 registration fee, giving a difference of $80 - 30 = 50$ dollars."
+    },
+    "misconception_tag": {
+      "A": "reads_wrong_category",
+      "C": "omits_constant_term",
+      "D": "omits_constant_term"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -599,6 +634,11 @@
       "C": "Student divides the total by the registration fee instead of the hourly rate: $200 \\div 50 = 4$ hours.",
       "D": "Correct: $25h + 50 = 200$ gives $25h = 150$, so $h = 6$ hours."
     },
+    "misconception_tag": {
+      "A": "divides_before_subtracting_fee",
+      "B": "flat_fee_merged_into_rate",
+      "C": "rates_summed_instead_of_differenced"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -681,6 +721,11 @@
       "C": "Student adds the setup cost instead of subtracting it before dividing: $(200 + 80) \\div 4 = 70$ cases.",
       "D": "Student subtracts the setup cost correctly ($200 - 80 = 120$) but reports that dollar amount as the number of cases, forgetting to divide by the per-case cost."
     },
+    "misconception_tag": {
+      "B": "divides_before_subtracting_fee",
+      "C": "flat_fee_merged_into_rate",
+      "D": "answers_intermediate_value"
+    },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -760,6 +805,11 @@
       "B": "Student omits the \\$20 delivery fee from Company X, computing it as $8 \\times 6 = 48$, giving a difference of $72 - 48 = 24$ dollars.",
       "C": "Correct: Company X totals $48 + 20 = 68$ and Company Y totals $72$, so Company X is cheaper by \\$4.",
       "D": "Student omits the per-box charge from Company X, using only the \\$20 delivery fee, giving a difference of $72 - 20 = 52$ dollars."
+    },
+    "misconception_tag": {
+      "A": "reads_wrong_category",
+      "B": "omits_constant_term",
+      "D": "omits_constant_term"
     },
     "difficulty_level": "Proficient",
     "difficulty_b": null,
@@ -843,6 +893,11 @@
       "C": "Student adds the two monthly rates instead of subtracting them: $150 \\div (15 + 10) = 6$ months.",
       "D": "Correct: $15m = 150 + 10m$ gives $5m = 150$, so $m = 30$ months."
     },
+    "misconception_tag": {
+      "A": "rates_summed_instead_of_differenced",
+      "B": "rates_summed_instead_of_differenced",
+      "C": "rates_summed_instead_of_differenced"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -925,6 +980,11 @@
       "C": "Student solves the equation correctly to find 10 plates but reports the number of drinks ($3 \\times 10 = 30$) instead of plates.",
       "D": "Student divides the total revenue by the drink price: $220 \\div 4 = 55$."
     },
+    "misconception_tag": {
+      "B": "answers_intermediate_value",
+      "C": "answers_intermediate_value",
+      "D": "reads_wrong_category"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1004,6 +1064,11 @@
       "B": "Student correctly identifies Shop X as cheapest but omits its \\$5 flat fee, reporting only the per-page cost: $0.10 \\times 200 = 20$ dollars.",
       "C": "Correct: Shop X totals $20 + 5 = 25$, which is less than Shop Y ($30$) and Shop Z ($30$).",
       "D": "Student picks Shop Z because it has no flat fee, ignoring that its higher per-page rate makes its total ($30$) higher than Shop X."
+    },
+    "misconception_tag": {
+      "A": "reads_wrong_category",
+      "B": "omits_constant_term",
+      "D": "reads_wrong_category"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
@@ -1087,6 +1152,11 @@
       "C": "Student reports Company A's full total (\\$100) as the hourly rate, forgetting to divide by the 4 hours.",
       "D": "Student adds the setup fee to Company A's total before dividing, counting the setup fee twice: $(100 + 40) \\div 4 = 35$ dollars per hour."
     },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "C": "answers_intermediate_value",
+      "D": "answers_intermediate_value"
+    },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
     "discrimination_a": null,
@@ -1168,6 +1238,11 @@
       "B": "Student adds the deposit and spending instead of subtracting them, using \\$40 per week: $120 \\div 40 = 3$ weeks.",
       "C": "Student uses the correct \\$20 net weekly change but ignores the \\$140 already saved, dividing the full goal by the rate: $260 \\div 20 = 13$ weeks.",
       "D": "Correct: the net weekly change is $30 - 10 = 20$, so $140 + 20w = 260$ gives $20w = 120$ and $w = 6$ weeks."
+    },
+    "misconception_tag": {
+      "A": "answers_intermediate_value",
+      "B": "adds_instead_of_subtracts",
+      "C": "omits_second_component"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,
