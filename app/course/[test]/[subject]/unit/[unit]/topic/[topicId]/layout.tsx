@@ -46,24 +46,29 @@ export default async function TopicLayout({
           unit={resolved.unit}
         />
 
-        {/* The content column is the student dashboard's, deliberately: same
-            max width, same padding, off StudentShell's <main> (940 / 34px). The
-            two were 860 / 30px and 940 / 34px, which read as two different
-            page widths when a student moved between Modules and a topic.
+        {/* No max width, on purpose. This was 860px centred, and briefly 940px
+            to match the student dashboard's <main>, but matching that number
+            was the wrong target: the dashboard only reads as full width because
+            a 208px sidebar occupies its left edge. The topic tree has no
+            sidebar, so any fixed cap here leaves a visible band of cream down
+            both sides with nothing in it.
 
-            Kept as literals rather than a shared token because the two trees
-            run on different themes -- curriculum-theme here, dashboard-theme
-            there -- and a shared layout constant would be the only thing
-            crossing that line. If a third surface needs it, promote it then.
+            So the container fills the viewport and the 34px side padding is the
+            only thing keeping text off the browser edge. Nothing above this
+            constrains width either: app/course/layout.tsx is a bare div, and
+            globals.css sets no width on html or body.
 
-            The mobile padding already agreed at 22px 16px 56px; only the
-            breakpoint differs (760 here, 900 there), and this one also governs
-            the bar, the title, the stems and the cards, so it stays put. */}
+            Note this makes prose lines as long as the window is wide, which on
+            a very large monitor is worse for reading than a measure-capped
+            column. That is a deliberate trade for having no empty margin band,
+            and if it needs revisiting the fix is a cap on the prose card rather
+            than on this container, so the page keeps filling the viewport.
+
+            The 760px media query in topic-page-css.ts drops this padding to
+            16px, which still applies. */}
         <div
           className="um-page"
           style={{
-            maxWidth: '940px',
-            margin: '0 auto',
             padding: '34px 34px 72px',
             display: 'flex',
             flexDirection: 'column',
