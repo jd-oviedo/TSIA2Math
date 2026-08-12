@@ -46,12 +46,25 @@ export default async function TopicLayout({
           unit={resolved.unit}
         />
 
+        {/* The content column is the student dashboard's, deliberately: same
+            max width, same padding, off StudentShell's <main> (940 / 34px). The
+            two were 860 / 30px and 940 / 34px, which read as two different
+            page widths when a student moved between Modules and a topic.
+
+            Kept as literals rather than a shared token because the two trees
+            run on different themes -- curriculum-theme here, dashboard-theme
+            there -- and a shared layout constant would be the only thing
+            crossing that line. If a third surface needs it, promote it then.
+
+            The mobile padding already agreed at 22px 16px 56px; only the
+            breakpoint differs (760 here, 900 there), and this one also governs
+            the bar, the title, the stems and the cards, so it stays put. */}
         <div
           className="um-page"
           style={{
-            maxWidth: '860px',
+            maxWidth: '940px',
             margin: '0 auto',
-            padding: '30px 34px 72px',
+            padding: '34px 34px 72px',
             display: 'flex',
             flexDirection: 'column',
             gap: '28px',
