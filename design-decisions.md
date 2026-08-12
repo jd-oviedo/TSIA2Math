@@ -149,8 +149,10 @@ Not implementing anything until the approach is chosen.
 
 ### Related
 
-- `sql/gumu_tables.sql` §4 — the source-vocabulary CHECK constraint, whose
-  applied-or-not status in prod is a separate open question.
+- `sql/gumu_tables.sql` §4 — the source-vocabulary CHECK constraints and the
+  function's `p_source` guard. Confirmed applied in production on 2026-08-12.
+  They reject an unknown source but cannot reject a valid source used from the
+  wrong call site, so they do not bear on this decision either way.
 - `content-fixes-needed.md` — the item-bank side of the same system.
 - The CAT path's `exposure_max` is declared but never enforced, so there is no
   cross-session exposure control keeping a student away from the same items on a

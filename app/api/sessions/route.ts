@@ -16,16 +16,23 @@ import type { Item, ProficiencyLevel, Strand } from "../../adaptive-test/type";
 
 // The source string passed to record_misconception() for diagnostic evidence.
 //
-// This is load-bearing, and the database will not catch it if it is wrong.
-// record_misconception() branches on the literal 'socratic' to award high
-// confidence immediately; every other value walks the ladder (low, medium at
-// two hits, high at three). There is no CHECK constraint on p_source and no
-// enum behind it -- the contract is a comment on the function signature. A
-// typo here, or a future refactor that reuses the curriculum call site,
-// silently fast-tracks weak 4-option-multiple-choice evidence to the
-// confidence level that surfaces a misconception to a parent.
+// This is load-bearing. record_misconception() branches on the literal
+// 'socratic' to award high confidence immediately; every other value walks the
+// ladder (low, medium at two hits, high at three). Passing 'socratic' from here
+// -- by typo, or by a refactor that copies the curriculum call site -- would
+// fast-track weak 4-option-multiple-choice evidence to the confidence level
+// that surfaces a misconception to a parent.
 //
-// Named rather than inlined so there is exactly one place to audit.
+// The database does catch an *unknown* source. sql/gumu_tables.sql section 4 is
+// applied in production, confirmed by direct query 2026-08-12: the function
+// raises on any p_source outside ('cat', 'curriculum', 'socratic'), and
+// student_misconceptions carries CHECK constraints on both the sources array
+// and the confidence vocabulary.
+//
+// What it does not catch is a *valid* value used in the wrong place: 'socratic'
+// from this route passes every constraint and silently changes the ladder. That
+// is the failure this constant exists to make auditable -- one named place,
+// rather than a literal at the call site.
 const CAT_MISCONCEPTION_SOURCE = "cat" as const;
 
 export async function POST(request: Request) {

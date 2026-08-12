@@ -74,37 +74,37 @@ alter table public.questions
 --     on public.questions using gin (misconception_tag jsonb_path_ops);
 
 
--- 4. Optional hardening: constrain the misconception source ----------------
+-- 4. Misconception source vocabulary: ALREADY ENFORCED, nothing to do here --
 --
--- Found while wiring the CAT call site. record_misconception() branches on the
--- literal 'socratic' to award high confidence immediately, and every other
--- source walks the ladder (low, medium at 2 hits, high at 3). Nothing enforces
--- the vocabulary: p_source is plain text with no CHECK, no enum, and the
--- allowed values live only in a comment on the function signature. A caller
--- passing 'socratic' from the CAT path -- by typo, or by a refactor that
--- copies the curriculum call site -- silently fast-tracks 4-option
--- multiple-choice evidence to the confidence level that surfaces to a parent.
+-- An earlier draft of this file proposed adding a CHECK on the source
+-- vocabulary, on the belief that p_source was unconstrained text. That was
+-- wrong. sql/gumu_tables.sql section 4 already applies the enforcement, and it
+-- is live in production -- confirmed by direct query on 2026-08-12:
 --
--- The application side is defended (CAT_MISCONCEPTION_SOURCE in
--- app/api/sessions/route.ts is the single named constant), but that is a
--- convention, not a guarantee.
+--   * public.student_misconceptions has a CHECK on the sources array,
+--     restricting it to ('cat', 'curriculum', 'socratic')
+--   * it has a second CHECK pinning confidence to ('low', 'medium', 'high')
+--   * record_misconception() itself raises on an unknown p_source before it
+--     reaches the insert, so the caller gets a named error rather than a
+--     constraint violation from inside plpgsql
 --
--- Run the check FIRST. If it returns anything outside the three known values,
--- fix the data before adding the constraint:
-
---   select distinct unnest(sources) as source
---   from public.student_misconceptions
---   order by source;
-
--- Then, only if that returned nothing unexpected:
-
---   alter table public.student_misconceptions
---     add constraint student_misconceptions_sources_known
---     check (sources <@ array['cat', 'curriculum', 'socratic']::text[]);
+-- Do not re-add those constraints. Applying them twice fails on the duplicate
+-- constraint name, and the second attempt is the kind of thing that gets run
+-- against prod at speed because it "should be a no-op".
 --
---   alter table public.student_misconceptions
---     add constraint student_misconceptions_confidence_known
---     check (confidence in ('low', 'medium', 'high'));
-
--- Left commented because it alters an existing table with live rows, which is
--- your call to make, not a side effect of adding a column to another one.
+-- To re-verify at any point:
+--
+--   select conname, pg_get_constraintdef(oid)
+--   from pg_constraint
+--   where conrelid = 'public.student_misconceptions'::regclass
+--     and contype = 'c';
+--
+-- Note what this does and does not buy. The constraints reject an *unknown*
+-- source. They cannot reject a *valid* source used in the wrong place: a CAT
+-- call site passing 'socratic' satisfies every constraint and silently
+-- fast-tracks the confidence ladder. That remains an application-side concern,
+-- which is why app/api/sessions/route.ts routes the value through the single
+-- named constant CAT_MISCONCEPTION_SOURCE.
+--
+-- Live data as of 2026-08-12 records only 'curriculum'; the CAT path has not
+-- written yet.
