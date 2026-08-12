@@ -14,9 +14,10 @@ import MathText from "./MathText";
  *   --ec-accent    data marks (bars, dots, boxes)
  *   --ec-surface2  figure background (off-white)
  *
- * Supported types (exactly these nine — do not extend without a spec change):
+ * Supported types (exactly these twelve — do not extend without a spec change):
  *   polygon, polygon_comparison, right_triangle, solid_3d,
- *   bar_chart, dot_plot, box_plot, box_plot_comparison, table
+ *   bar_chart, line_graph, pictograph, dot_plot,
+ *   box_plot, box_plot_comparison, scatterplot, table
  */
 
 const INK = "var(--ec-ink)";
@@ -83,6 +84,56 @@ function niceTicks(min: number, max: number, target = 5): number[] {
     ticks.push(Math.round(v * 1e6) / 1e6);
   }
   return ticks;
+}
+
+// ── deterministic scatter ─────────────────────────────────────────────────
+// Scatterplots need a cloud of points, but the cloud has to be identical on
+// every render: Math.random() would give the server and the client different
+// pictures and blow up hydration, and would redraw the figure each time the
+// question re-renders. mulberry32 seeded from the panel index is pure
+// arithmetic, so the same props always produce the same plot.
+function mulberry32(seed: number): () => number {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+// Point on a polyline at fraction t of its total length. Two path points give a
+// straight trend, three or more give a curve (an arc, a U, a plateau), which is
+// how the non-linear scatterplots are expressed without a second figure type.
+function alongPath(path: [number, number][], t: number): [number, number] {
+  if (path.length === 1) return path[0];
+  const segs = path.length - 1;
+  const scaled = Math.min(t, 0.999999) * segs;
+  const i = Math.floor(scaled);
+  const f = scaled - i;
+  const [x1, y1] = path[i];
+  const [x2, y2] = path[i + 1];
+  return [x1 + (x2 - x1) * f, y1 + (y2 - y1) * f];
+}
+
+// Vertical spread as a fraction of the y-range. "none" puts every point exactly
+// on the trend (a perfect line, which real data never is), so the tightest
+// association still gets a little scatter.
+const SCATTER_SPREAD: Record<string, number> = {
+  none: 0,
+  tight: 0.045,
+  moderate: 0.11,
+  wide: 0.24,
+};
+
+function clamp(v: number, lo: number, hi: number): number {
+  return Math.min(hi, Math.max(lo, v));
+}
+
+// Evenly spaced "nice" ticks clipped to the stated range, so an axis that runs
+// 1000 to 1100 does not get labelled from 950.
+function rangeTicks(min: number, max: number, target = 4): number[] {
+  return niceTicks(min, max, target).filter((t) => t >= min && t <= max);
 }
 
 // ───────────────────────── polygon geometry ──────────────────────────────
@@ -525,6 +576,307 @@ export default function FigureRenderer({ type, props }: Props) {
               {label(yLabel)}
             </text>
           )}
+        </svg>
+      );
+    }
+
+    // ── line_graph ─────────────────────────────────────────────────────────
+    // Same prop vocabulary as bar_chart (categories/values/xLabel/yLabel/
+    // yAxisMax/yAxisStep) plus yAxisMin, because a line graph may legitimately
+    // start its axis above zero — the shape of the trend is what gets read off
+    // it, not the height of a bar against a baseline.
+    case "line_graph": {
+      const categories = (p.categories as string[]) || [];
+      const values = (p.values as number[]) || [];
+      const yMin = Number(p.yAxisMin) || 0;
+      const yMax = Number(p.yAxisMax) || Math.max(1, ...values);
+      const yStep = Number(p.yAxisStep) || (yMax - yMin) / 5;
+      const xLabel = String(p.xLabel || "");
+      const yLabel = String(p.yLabel || "");
+
+      const W = 380;
+      const H = 250;
+      const padL = 52;
+      const padR = 18;
+      const padT = 18;
+      const padB = 50;
+      const plotW = W - padL - padR;
+      const plotH = H - padT - padB;
+      const n = Math.max(1, categories.length);
+      const band = plotW / n;
+      const xToPx = (i: number) => padL + band * i + band / 2;
+      const yToPx = (v: number) =>
+        padT + plotH - ((v - yMin) / (yMax - yMin || 1)) * plotH;
+
+      const ticks: number[] = [];
+      for (let v = yMin; v <= yMax + yStep / 2; v += yStep) {
+        ticks.push(Math.round(v * 1e6) / 1e6);
+      }
+
+      const linePts = values
+        .map((v, i) => `${xToPx(i)},${yToPx(v)}`)
+        .join(" ");
+
+      return (
+        <svg viewBox={`0 0 ${W} ${H}`} style={{ ...svgStyle, maxWidth: "460px" }}>
+          {/* gridlines + y ticks */}
+          {ticks.map((t, i) => (
+            <g key={`t${i}`}>
+              <line x1={padL} y1={yToPx(t)} x2={W - padR} y2={yToPx(t)} stroke={LINE} strokeWidth={1} />
+              <text x={padL - 8} y={yToPx(t) + 4} fontSize={11} fill={INK} textAnchor="end">
+                {Math.round(t * 100) / 100}
+              </text>
+            </g>
+          ))}
+          {/* axes */}
+          <line x1={padL} y1={padT} x2={padL} y2={padT + plotH} stroke={INK} strokeWidth={1.4} />
+          <line x1={padL} y1={padT + plotH} x2={W - padR} y2={padT + plotH} stroke={INK} strokeWidth={1.4} />
+          {/* the trend line, then its markers on top */}
+          <polyline points={linePts} fill="none" stroke={ACCENT} strokeWidth={2.2} strokeLinejoin="round" strokeLinecap="round" />
+          {values.map((v, i) => (
+            <circle key={`m${i}`} cx={xToPx(i)} cy={yToPx(v)} r={4} fill={ACCENT} stroke={SURFACE} strokeWidth={1.4} />
+          ))}
+          {/* category labels */}
+          {categories.map((c, i) => (
+            <text key={`c${i}`} x={xToPx(i)} y={padT + plotH + 17} fontSize={11} fill={INK} textAnchor="middle">
+              {label(c)}
+            </text>
+          ))}
+          {/* axis labels */}
+          {xLabel && (
+            <text x={padL + plotW / 2} y={H - 8} fontSize={12} fill={INK} textAnchor="middle" fontWeight={600}>
+              {label(xLabel)}
+            </text>
+          )}
+          {yLabel && (
+            <text
+              x={14}
+              y={padT + plotH / 2}
+              fontSize={12}
+              fill={INK}
+              textAnchor="middle"
+              fontWeight={600}
+              transform={`rotate(-90 14 ${padT + plotH / 2})`}
+            >
+              {label(yLabel)}
+            </text>
+          )}
+        </svg>
+      );
+    }
+
+    // ── pictograph ─────────────────────────────────────────────────────────
+    // One row per category, each drawn as `symbols` repeated glyphs, with the
+    // key that gives a glyph its value. The count is what gets read off the
+    // figure, so glyphs stay discrete and countable rather than being merged
+    // into a bar.
+    case "pictograph": {
+      interface PictoRow {
+        label: string;
+        symbols: number;
+      }
+      const rows = (p.rows as PictoRow[]) || [];
+      const symbolValue = Number(p.symbolValue) || 1;
+      const unit = String(p.unit || "");
+      if (!rows.length) return null;
+
+      const maxSymbols = Math.max(1, ...rows.map((r) => r.symbols));
+      const glyphW = 22;
+      const glyphR = 7.5;
+      const rowH = 30;
+      const padL = 96;
+      const padT = 12;
+      const keyH = 30;
+      const W = padL + maxSymbols * glyphW + 16;
+      const H = padT + rows.length * rowH + keyH;
+
+      return (
+        <svg
+          viewBox={`0 0 ${W} ${H}`}
+          style={{ ...svgStyle, maxWidth: `${Math.min(W + 40, 460)}px` }}
+        >
+          {rows.map((r, ri) => {
+            const cy = padT + ri * rowH + rowH / 2;
+            const glyphs = [];
+            for (let k = 0; k < Math.max(0, Math.floor(r.symbols)); k++) {
+              glyphs.push(
+                <circle
+                  key={k}
+                  cx={padL + k * glyphW + glyphR}
+                  cy={cy}
+                  r={glyphR}
+                  fill={ACCENT}
+                  stroke={INK}
+                  strokeWidth={0.8}
+                />
+              );
+            }
+            return (
+              <g key={ri}>
+                <text x={padL - 12} y={cy + 4} fontSize={12} fill={INK} textAnchor="end" fontWeight={600}>
+                  {label(r.label)}
+                </text>
+                {glyphs}
+              </g>
+            );
+          })}
+          {/* key */}
+          <line
+            x1={0}
+            y1={padT + rows.length * rowH + 6}
+            x2={W}
+            y2={padT + rows.length * rowH + 6}
+            stroke={LINE}
+            strokeWidth={1}
+          />
+          <circle cx={glyphR + 4} cy={padT + rows.length * rowH + 20} r={glyphR} fill={ACCENT} stroke={INK} strokeWidth={0.8} />
+          <text x={glyphR * 2 + 12} y={padT + rows.length * rowH + 24} fontSize={12} fill={INK} textAnchor="start">
+            {`= ${symbolValue}${unit ? ` ${label(unit)}` : ""}`}
+          </text>
+        </svg>
+      );
+    }
+
+    // ── scatterplot ────────────────────────────────────────────────────────
+    // One or more panels of raw points. The cloud is described by a `path` (the
+    // trend the points follow, in data coordinates) plus a `scatter` band, so a
+    // straight line, an arc and a U-shape are all the same mechanism with a
+    // different number of path vertices — no separate figure type per pattern.
+    // `points` adds stated outliers at exact coordinates on top of the cloud.
+    case "scatterplot": {
+      interface ScatterPanel {
+        label?: string;
+        xLabel?: string;
+        yLabel?: string;
+        xRange?: [number, number];
+        yRange?: [number, number];
+        path: [number, number][];
+        scatter?: string;
+        n?: number;
+        points?: [number, number][];
+        showTicks?: boolean;
+      }
+      const panels = (p.plots as ScatterPanel[]) || [];
+      if (!panels.length) return null;
+      const defXLabel = p.xLabel as string | undefined;
+      const defYLabel = p.yLabel as string | undefined;
+      const defXRange = p.xRange as [number, number] | undefined;
+      const defYRange = p.yRange as [number, number] | undefined;
+      const defShowTicks = p.showTicks as boolean | undefined;
+
+      // A lone panel gets the whole width, which is what long axis labels like
+      // "Average Daily Temperature (°F)" need — at the multi-panel width they
+      // run past the viewBox and get clipped.
+      const single = panels.length === 1;
+      const PW = single ? 300 : 210;
+      const PH = single ? 240 : 210;
+      const gap = 18;
+      const totalW = panels.length * PW + (panels.length - 1) * gap;
+
+      const renderPanel = (panel: ScatterPanel, pi: number) => {
+        const xLabel = panel.xLabel ?? defXLabel ?? "";
+        const yLabel = panel.yLabel ?? defYLabel ?? "";
+        const [xMin, xMax] = panel.xRange ?? defXRange ?? [0, 10];
+        const [yMin, yMax] = panel.yRange ?? defYRange ?? [0, 10];
+        const showTicks = panel.showTicks ?? defShowTicks ?? true;
+        const path = panel.path || [];
+        const spread = SCATTER_SPREAD[panel.scatter ?? "moderate"] ?? 0.11;
+        const count = Math.max(1, panel.n ?? 14);
+
+        const padL = showTicks ? 38 : 16;
+        const padR = 10;
+        const padT = panel.label ? 22 : 10;
+        const padB = (showTicks ? 24 : 12) + (xLabel ? 16 : 0);
+        const plotW = PW - padL - padR;
+        const plotH = PH - padT - padB;
+        const xToPx = (v: number) =>
+          padL + ((v - xMin) / (xMax - xMin || 1)) * plotW;
+        const yToPx = (v: number) =>
+          padT + plotH - ((v - yMin) / (yMax - yMin || 1)) * plotH;
+
+        // Seeded per panel so the three panels of a comparison item differ from
+        // each other but never differ between two renders of the same panel.
+        const rand = mulberry32(pi * 7919 + count * 31 + path.length);
+        const ySpan = (yMax - yMin) || 1;
+        const xSpan = (xMax - xMin) || 1;
+        const cloud: [number, number][] = [];
+        for (let k = 0; k < count; k++) {
+          const t = count === 1 ? 0.5 : k / (count - 1);
+          const [px, py] = alongPath(path, t);
+          const jitterX = (rand() - 0.5) * (xSpan / count) * 0.6;
+          const jitterY = (rand() - 0.5) * 2 * spread * ySpan;
+          // Keep the generated cloud just inside the axes; a point sitting on
+          // the axis line reads as part of the frame rather than as data.
+          const inset = 0.025;
+          cloud.push([
+            clamp(px + jitterX, xMin + xSpan * inset, xMax - xSpan * inset),
+            clamp(py + jitterY, yMin + ySpan * inset, yMax - ySpan * inset),
+          ]);
+        }
+        // Stated outliers keep their exact coordinates — the stem names them.
+        for (const pt of panel.points ?? []) cloud.push(pt);
+
+        const xTicks = showTicks ? rangeTicks(xMin, xMax, 3) : [];
+        const yTicks = showTicks ? rangeTicks(yMin, yMax, 4) : [];
+
+        return (
+          <g key={pi} transform={`translate(${pi * (PW + gap)}, 0)`}>
+            {panel.label && (
+              <text x={padL + plotW / 2} y={13} fontSize={12} fill={INK} textAnchor="middle" fontWeight={700}>
+                {label(panel.label)}
+              </text>
+            )}
+            {/* gridlines */}
+            {yTicks.map((t, i) => (
+              <line key={`gy${i}`} x1={padL} y1={yToPx(t)} x2={padL + plotW} y2={yToPx(t)} stroke={LINE} strokeWidth={1} />
+            ))}
+            {/* axes */}
+            <line x1={padL} y1={padT} x2={padL} y2={padT + plotH} stroke={INK} strokeWidth={1.4} />
+            <line x1={padL} y1={padT + plotH} x2={padL + plotW} y2={padT + plotH} stroke={INK} strokeWidth={1.4} />
+            {/* tick labels */}
+            {yTicks.map((t, i) => (
+              <text key={`ty${i}`} x={padL - 6} y={yToPx(t) + 4} fontSize={10} fill={INK} textAnchor="end">
+                {Math.round(t * 100) / 100}
+              </text>
+            ))}
+            {xTicks.map((t, i) => (
+              <text key={`tx${i}`} x={xToPx(t)} y={padT + plotH + 15} fontSize={10} fill={INK} textAnchor="middle">
+                {Math.round(t * 100) / 100}
+              </text>
+            ))}
+            {/* points */}
+            {cloud.map(([cx, cy], i) => (
+              <circle key={`p${i}`} cx={xToPx(cx)} cy={yToPx(cy)} r={3.4} fill={ACCENT} stroke={INK} strokeWidth={0.7} />
+            ))}
+            {/* axis labels */}
+            {xLabel && (
+              <text x={padL + plotW / 2} y={PH - 3} fontSize={10.5} fill={INK} textAnchor="middle" fontWeight={600}>
+                {label(xLabel)}
+              </text>
+            )}
+            {yLabel && (
+              <text
+                x={10}
+                y={padT + plotH / 2}
+                fontSize={10.5}
+                fill={INK}
+                textAnchor="middle"
+                fontWeight={600}
+                transform={`rotate(-90 10 ${padT + plotH / 2})`}
+              >
+                {label(yLabel)}
+              </text>
+            )}
+          </g>
+        );
+      };
+
+      return (
+        <svg
+          viewBox={`0 0 ${totalW} ${PH}`}
+          style={{ ...svgStyle, maxWidth: `${Math.min(250 * panels.length, 640)}px` }}
+        >
+          {panels.map((panel, pi) => renderPanel(panel, pi))}
         </svg>
       );
     }
