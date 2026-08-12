@@ -7,6 +7,9 @@ pass over the curriculum source markdown in `curriculum/source/tsia2-math/`.
 Both items below are the same underlying cause: the distractors were authored
 formulaically rather than per-problem. They should be fixed in one pass.
 
+Open decisions about *system behaviour* — where the code is defensible but the
+alternatives need weighing — live in `design-decisions.md` instead.
+
 ---
 
 ## 1. Correct-answer position bias
