@@ -96,7 +96,7 @@ export function topicKey(courseId: string, topicId: string): string {
 // That last one is why this filter is not optional. The placeholders sit at
 // (unit 1, sequence 1), the same coordinates as QR.1.1, so without the filter
 // the head of the course order is a tie resolved by whatever the planner
-// returns first -- and "Algebraic Reasoning — coming soon" would start winning
+// returns first -- and "Algebraic Reasoning, coming soon" would start winning
 // the front page at random.
 //
 // The recommendation engine deliberately does not come through here; it reads

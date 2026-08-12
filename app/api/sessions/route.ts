@@ -4,7 +4,11 @@ import { createAdminClient } from "../../lib/supabase-admin";
 import { createClient as createServerClient } from "../../lib/supabase-server";
 import { sessionsRateLimit, getClientIp, rateLimitHeaders, safeLimit } from "../../lib/rate-limit";
 import { sessionsBodySchema, formatZodError } from "../../lib/schemas";
-import { recommendFromBreakdown, type Recommendation } from "../../lib/recommendation";
+import {
+  recommendFromBreakdown,
+  DEFAULT_COURSE_ID,
+  type Recommendation,
+} from "../../lib/recommendation";
 import {
   STARTING_THETA,
   STARTING_DIFFICULTY,
@@ -74,7 +78,7 @@ export async function POST(request: Request) {
     } = await userClient.auth.getUser();
     userId = user?.id ?? null;
   } catch {
-    // No valid session cookie — anonymous test-taker, proceed without a user_id.
+    // No valid session cookie -- anonymous test-taker, proceed without a user_id.
     userId = null;
   }
 
@@ -252,7 +256,7 @@ export async function POST(request: Request) {
   });
   // Exposure tracking: increment times_administered (and times_correct
   // where applicable) for every item actually shown, so future sessions
-  // can implement Conditional Randomesque exposure control. Best-effort —
+  // can implement Conditional Randomesque exposure control. Best-effort --
   // an exposure-count miss shouldn't fail the whole save, the result is
   // already safely persisted above.
   for (const r of responseRows) {
@@ -357,9 +361,19 @@ export async function POST(request: Request) {
   // falls over must not turn a completed test into a 500. The client treats a
   // missing recommendation the same way it treated every recommendation before
   // this existed, which is to say it shows the sign-in card and nothing else.
+  //
+  // 'strongest', and this is the one call site that asks for it. The results
+  // screen is a first impression, so it opens on the strand the student did
+  // best in rather than their worst. The dashboard's "start here" card stays on
+  // 'weakest' -- remediation belongs on the surface they come back to, not on
+  // the one that greets them thirty seconds after finishing a test.
   let recommendation: Recommendation | null = null;
   try {
-    recommendation = await recommendFromBreakdown(strandBreakdown);
+    recommendation = await recommendFromBreakdown(
+      strandBreakdown,
+      DEFAULT_COURSE_ID,
+      "strongest"
+    );
   } catch (err) {
     console.error("[api/sessions] recommendation failed:", err);
   }

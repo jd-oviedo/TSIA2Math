@@ -103,12 +103,22 @@ function Blobs() {
   );
 }
 
-function Shell({ children }: { children: React.ReactNode }) {
+// showCalculator is threaded rather than inferred inside Header, because the
+// only thing that knows whether a test is in progress is the reducer phase, and
+// that lives here. Every Shell call site below passes it explicitly, so the
+// answer for each phase is visible at the phase rather than hidden in a default.
+function Shell({
+  children,
+  showCalculator = false,
+}: {
+  children: React.ReactNode;
+  showCalculator?: boolean;
+}) {
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--ec-bg)", position: "relative" }}>
       <Blobs />
       <div style={{ position: "relative" }}>
-        <Header />
+        <Header showCalculator={showCalculator} />
       </div>
       <main style={{ flex: 1, maxWidth: "800px", margin: "0 auto", width: "100%", padding: "110px 24px 80px" }}>
         {children}
@@ -125,7 +135,7 @@ function ValidationErrorList({ errors }: { errors: ItemValidationError[] }) {
       <ul style={{ listStyle: "disc", paddingLeft: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
         {errors.map((e) => (
           <li key={e.item_id} style={{ color: "var(--ec-ink-muted)" }}>
-            <span style={{ fontFamily: "monospace" }}>{e.item_id}</span> — missing: {e.missing.join(", ")}
+            <span style={{ fontFamily: "monospace" }}>{e.item_id}</span>, missing: {e.missing.join(", ")}
           </li>
         ))}
       </ul>
@@ -311,7 +321,7 @@ useEffect(() => {
 
   if (state.phase === "active" && state.currentItem) {
     return (
-      <Shell>
+      <Shell showCalculator>
         <ItemCard item={state.currentItem} itemNumber={state.responses.length + 1} totalItems={state.maxItems} onAnswer={answer} isAuthenticated={isAuthenticated} />
       </Shell>
     );

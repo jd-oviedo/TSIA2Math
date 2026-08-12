@@ -91,7 +91,7 @@ export default async function DashboardHome({
         unit_number: recommended.topic.unit_number,
         href: recommended.topic.href,
         isPlaceholder: recommended.topic.is_placeholder,
-        reason: `${STRAND_NAMES[recommended.strand]} was your weakest strand on the diagnostic — ${recommended.pct}% across ${recommended.attempted} ${recommended.attempted === 1 ? 'question' : 'questions'}.`,
+        reason: `${STRAND_NAMES[recommended.strand]} was your weakest strand on the diagnostic, ${recommended.pct}% across ${recommended.attempted} ${recommended.attempted === 1 ? 'question' : 'questions'}.`,
       }
     : fallbackTopic
       ? {

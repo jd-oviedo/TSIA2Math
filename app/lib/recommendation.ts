@@ -44,7 +44,7 @@ export type StrandStats = {
 
 export type StrandBreakdown = Partial<Record<Strand, StrandStats>>;
 
-export type WeakestStrand = {
+export type StrandStanding = {
   strand: Strand;
   pct: number;
   // How many items of this strand the student actually saw. Carried through so
@@ -52,6 +52,22 @@ export type WeakestStrand = {
   // tie-break below is inspectable.
   attempted: number;
 };
+
+// The original name, from when weakest was the only question this module could
+// answer. Kept exported so nothing that imports it breaks.
+export type WeakestStrand = StrandStanding;
+
+// Which end of the ranking a caller wants.
+//
+// 'weakest' is remediation: the strand the student struggled with, which is
+// what the dashboard "start here" card and any future teacher-facing caller
+// want. 'strongest' is confidence-first onboarding: the strand to open with on
+// the results screen, so a student's first move into the curriculum is
+// somewhere they already have footing.
+//
+// Both resolve through the same firstTopicInStrand. The mode chooses the
+// strand; it does not change how a strand's first topic is found.
+export type RecommendationMode = 'weakest' | 'strongest';
 
 export type RecommendedTopic = {
   course_id: string;
@@ -66,7 +82,17 @@ export type RecommendedTopic = {
 };
 
 export type Recommendation =
-  | { status: 'ok'; strand: Strand; pct: number; attempted: number; topic: RecommendedTopic }
+  // mode says which question was answered. A caller that renders the strand to
+  // a student has to know: labelling a strongest-strand pick as "your weakest
+  // strand" would state the opposite of the finding.
+  | {
+      status: 'ok';
+      mode: RecommendationMode;
+      strand: Strand;
+      pct: number;
+      attempted: number;
+      topic: RecommendedTopic;
+    }
   // No strand had a single attempted item -- no diagnostic, or a breakdown that
   // is empty or malformed. There is nothing to recommend from, and callers
   // should fall back to whatever they showed before this existed.
@@ -83,13 +109,19 @@ export type Recommendation =
   // and neither may claim to a student that content does not exist -- a
   // transient query failure is not evidence about the curriculum. The
   // coming-soon message belongs to a placeholder topic, which arrives as 'ok'.
-  | { status: 'no_topic'; strand: Strand; pct: number; attempted: number };
+  | {
+      status: 'no_topic';
+      mode: RecommendationMode;
+      strand: Strand;
+      pct: number;
+      attempted: number;
+    };
 
-// ─── Weakest strand ──────────────────────────────────────────────────────────
+// ─── Strand selection ────────────────────────────────────────────────────────
 
-// The lowest-accuracy strand among the ones the student actually attempted.
+// Every strand the student actually attempted, as accuracy plus item count.
 //
-// "Actually attempted" is the whole of the difficulty. The three existing
+// The guard is the whole reason this is a separate step. The three existing
 // weakest-strand implementations in the teacher dashboard
 // (TeacherDashboardClient.tsx:116 and :1028, teacher/student/[id]/page.tsx:165)
 // all seed a { QR: 0, AR: 0, GR: 0, PR: 0 } map, fill in what the breakdown
@@ -97,16 +129,17 @@ export type Recommendation =
 // wins. One of them carries a comment claiming it does the opposite. That is
 // survivable on a dashboard tile; it is not survivable here, where the answer
 // decides which topic a student is sent to. A strand with no items is not a
-// weak strand, it is an unmeasured one.
+// weak strand, it is an unmeasured one -- and by the same token it is not a
+// strong one either, which is why both ends read from this one function.
 //
 // Accuracy is recomputed from correct/total rather than read from the stored
 // pct. The two agree today -- the same route writes both -- but correct and
 // total are the primitive facts and pct is a rounding of them, and there is no
 // reason for this to be the code that trusts the derived copy.
-export function weakestStrand(breakdown: StrandBreakdown | null | undefined): WeakestStrand | null {
-  if (!breakdown) return null;
+function attemptedStrands(breakdown: StrandBreakdown | null | undefined): StrandStanding[] {
+  if (!breakdown) return [];
 
-  const attempted: WeakestStrand[] = [];
+  const attempted: StrandStanding[] = [];
   for (const strand of STRAND_ORDER) {
     const stats = breakdown[strand];
     const total = typeof stats?.total === 'number' ? stats.total : 0;
@@ -118,23 +151,36 @@ export function weakestStrand(breakdown: StrandBreakdown | null | undefined): We
       attempted: total,
     });
   }
+  return attempted;
+}
 
+// Picks one end of the ranking.
+//
+// Three rules, in order, and the second one is the one worth explaining.
+//
+// Ties are common: the blueprint gives GR only 3 items, so GR accuracy can only
+// ever be 0, 33, 67 or 100, and it collides with the other strands constantly.
+// When two strands tie, the one measured over more items is the better-evidenced
+// claim in both directions -- 50% across AR's 7 items says more than 50% across
+// GR's 3, whether the question is where a student is weakest or where they are
+// strongest. So this rule does not flip with the mode: more evidence always wins
+// a tie.
+//
+// The third rule never affects which strand is truly first; it exists so that a
+// genuine dead heat returns the same answer every time rather than depending on
+// object key order.
+function pickStrand(
+  breakdown: StrandBreakdown | null | undefined,
+  mode: RecommendationMode
+): StrandStanding | null {
+  const attempted = attemptedStrands(breakdown);
   if (attempted.length === 0) return null;
 
-  // Three rules, in order, and the second one is the one worth explaining.
-  //
-  // Ties are common: the blueprint gives GR only 3 items, so GR accuracy can
-  // only ever be 0, 33, 67 or 100, and it collides with the other strands
-  // constantly. When two strands tie, the one measured over more items is the
-  // better-evidenced weakness -- 50% across AR's 7 items is a firmer claim than
-  // 50% across GR's 3. Sending the student to the strand we know more about
-  // beats sending them to the one that tied by having fewer questions.
-  //
-  // The third rule never affects which strand is truly weakest; it exists so
-  // that a genuine dead heat returns the same answer every time rather than
-  // depending on object key order.
   return attempted.reduce((best, candidate) => {
-    if (candidate.pct !== best.pct) return candidate.pct < best.pct ? candidate : best;
+    if (candidate.pct !== best.pct) {
+      const candidateWins = mode === 'weakest' ? candidate.pct < best.pct : candidate.pct > best.pct;
+      return candidateWins ? candidate : best;
+    }
     if (candidate.attempted !== best.attempted) {
       return candidate.attempted > best.attempted ? candidate : best;
     }
@@ -142,6 +188,28 @@ export function weakestStrand(breakdown: StrandBreakdown | null | undefined): We
       ? candidate
       : best;
   });
+}
+
+// The lowest-accuracy strand among the ones the student actually attempted.
+//
+// The remediation answer, and still the default everywhere. Unchanged in
+// behaviour by the addition of the strongest path: same guard, same tie-breaks,
+// same results on all 105 production sessions.
+export function weakestStrand(breakdown: StrandBreakdown | null | undefined): StrandStanding | null {
+  return pickStrand(breakdown, 'weakest');
+}
+
+// The highest-accuracy strand among the ones the student actually attempted.
+//
+// Added for confidence-first onboarding on the results screen: open a student's
+// first move into the curriculum somewhere they already have footing, rather
+// than at their worst subject. Deliberately a sibling of weakestStrand rather
+// than a replacement -- the remediation path is still the one the dashboard and
+// any teacher-facing caller use, and it must not become unreachable.
+export function strongestStrand(
+  breakdown: StrandBreakdown | null | undefined
+): StrandStanding | null {
+  return pickStrand(breakdown, 'strongest');
 }
 
 // ─── First topic in a strand ─────────────────────────────────────────────────
@@ -207,28 +275,34 @@ export async function firstTopicInStrand(
 // are the majority of the marketing-site funnel. The results screen has the
 // breakdown of the run the visitor just finished and needs no account to turn
 // it into a recommendation.
+// mode is the third parameter and defaults to 'weakest', so every call site
+// that existed before the strongest path was added keeps its behaviour with no
+// edit. Only the results screen asks for 'strongest'.
 export async function recommendFromBreakdown(
   breakdown: StrandBreakdown | null | undefined,
-  courseId: string = DEFAULT_COURSE_ID
+  courseId: string = DEFAULT_COURSE_ID,
+  mode: RecommendationMode = 'weakest'
 ): Promise<Recommendation> {
-  const weakest = weakestStrand(breakdown);
-  if (!weakest) return { status: 'no_evidence' };
+  const picked = pickStrand(breakdown, mode);
+  if (!picked) return { status: 'no_evidence' };
 
-  const topic = await firstTopicInStrand(weakest.strand, courseId);
+  const topic = await firstTopicInStrand(picked.strand, courseId);
   if (!topic) {
     return {
       status: 'no_topic',
-      strand: weakest.strand,
-      pct: weakest.pct,
-      attempted: weakest.attempted,
+      mode,
+      strand: picked.strand,
+      pct: picked.pct,
+      attempted: picked.attempted,
     };
   }
 
   return {
     status: 'ok',
-    strand: weakest.strand,
-    pct: weakest.pct,
-    attempted: weakest.attempted,
+    mode,
+    strand: picked.strand,
+    pct: picked.pct,
+    attempted: picked.attempted,
     topic,
   };
 }
@@ -263,11 +337,17 @@ export async function firstDiagnosticSession(
 }
 
 // The signed-in path: the dashboard asking where to send this student.
+//
+// Defaults to 'weakest' and the dashboard does not override it. That is a
+// decision, not an oversight: the results screen is a first impression and
+// opens on a strength, while the dashboard is the surface a student returns to
+// and is where remediation belongs.
 export async function recommendForStudent(
   studentId: string,
-  courseId: string = DEFAULT_COURSE_ID
+  courseId: string = DEFAULT_COURSE_ID,
+  mode: RecommendationMode = 'weakest'
 ): Promise<Recommendation> {
   const session = await firstDiagnosticSession(studentId);
   if (!session) return { status: 'no_evidence' };
-  return recommendFromBreakdown(session.strand_breakdown, courseId);
+  return recommendFromBreakdown(session.strand_breakdown, courseId, mode);
 }

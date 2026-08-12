@@ -152,13 +152,13 @@ insert into public.curriculum_topics (
   estimated_time_minutes
 )
 values
-  ('tsia2-math', 'AR.COMING-SOON', 'Algebraic Reasoning — coming soon',
+  ('tsia2-math', 'AR.COMING-SOON', 'Algebraic Reasoning, coming soon',
    1, 1, 'AR', true, '', '{}'::jsonb, '{}'::jsonb, '{}'::jsonb, '{}'::jsonb,
    '{}'::jsonb, '{}'::text[], null),
-  ('tsia2-math', 'GR.COMING-SOON', 'Geometric & Spatial Reasoning — coming soon',
+  ('tsia2-math', 'GR.COMING-SOON', 'Geometric & Spatial Reasoning, coming soon',
    1, 1, 'GR', true, '', '{}'::jsonb, '{}'::jsonb, '{}'::jsonb, '{}'::jsonb,
    '{}'::jsonb, '{}'::text[], null),
-  ('tsia2-math', 'PR.COMING-SOON', 'Probabilistic & Statistical Reasoning — coming soon',
+  ('tsia2-math', 'PR.COMING-SOON', 'Probabilistic & Statistical Reasoning, coming soon',
    1, 1, 'PR', true, '', '{}'::jsonb, '{}'::jsonb, '{}'::jsonb, '{}'::jsonb,
    '{}'::jsonb, '{}'::text[], null)
 on conflict (course_id, topic_id) do update set

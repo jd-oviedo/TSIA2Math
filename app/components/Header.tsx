@@ -38,7 +38,17 @@ function ThemeToggle() {
 
 type NavRole = "teacher" | "student" | "anon";
 
-export function Header() {
+// showCalculator is opt-in, and defaults to off.
+//
+// The calculator used to render on every page that mounts this header, which
+// is the home page, the login page and all five phases of /adaptive-test --
+// including the pre-test screen and the results screen. It is a testing aid,
+// so it belongs to exactly one of those: a test that is actually in progress.
+//
+// Default false rather than true so that a new page mounting this header has
+// to ask for the calculator rather than inherit it. Adding a surface should
+// not silently hand a student a calculator on a page that has no test on it.
+export function Header({ showCalculator = false }: { showCalculator?: boolean } = {}) {
   const [scrolled, setScrolled] = useState(false);
   const [navRole, setNavRole] = useState<NavRole>("anon");
 
@@ -175,7 +185,7 @@ export function Header() {
             </a>
           )}
           {navRole !== "anon" && <LogoutButton />}
-          <CalculatorToggle />
+          {showCalculator && <CalculatorToggle />}
           <ThemeToggle />
         </div>
       </nav>
