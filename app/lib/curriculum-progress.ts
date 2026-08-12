@@ -8,6 +8,8 @@ import { createAdminClient } from './supabase-admin';
 // exactly one definition. Ordering is (unit_number, sequence_in_unit) straight
 // off curriculum_topics, never a hardcoded nav tree.
 //
+// Placeholder topics are not part of the course. See getTopics().
+//
 // Every read goes through the admin client filtered by the caller's own id:
 // curriculum_attempts enables RLS with no policy for authenticated, so the
 // server is the only place those rows are legible.
@@ -83,6 +85,23 @@ export function topicKey(courseId: string, topicId: string): string {
 // both want this, so cache() collapses them to one read per request.
 //
 // Callers that only care about one topic should use getTopicShape instead.
+//
+// Placeholder topics are excluded. AR, GR and PR each carry a content-free row
+// whose only job is to give the diagnostic recommendation a topic_id to route
+// to (sql/curriculum_placeholder_topics.sql), and every caller of this function
+// wants the course a student actually works through: the Modules tree, the
+// unit progress bars, the topic-to-topic Next/Previous sequence, and the
+// dashboard's "start here" card, which takes topics[0].
+//
+// That last one is why this filter is not optional. The placeholders sit at
+// (unit 1, sequence 1), the same coordinates as QR.1.1, so without the filter
+// the head of the course order is a tie resolved by whatever the planner
+// returns first -- and "Algebraic Reasoning, coming soon" would start winning
+// the front page at random.
+//
+// The recommendation engine deliberately does not come through here; it reads
+// curriculum_topics directly, because a placeholder is exactly what it is
+// looking for when a strand has no real content yet. See app/lib/recommendation.ts.
 export const getTopics = cache(async (): Promise<{
   topics: TopicRow[];
   shapes: Map<string, TopicShape>;
@@ -93,6 +112,7 @@ export const getTopics = cache(async (): Promise<{
     .select(
       'course_id, topic_id, topic_name, unit_number, sequence_in_unit, estimated_time_minutes, practice_items'
     )
+    .eq('is_placeholder', false)
     .order('unit_number')
     .order('sequence_in_unit');
 
@@ -253,9 +273,22 @@ export function buildSequence(topics: TopicRow[]): Step[] {
   return topics.flatMap((topic) => STEP_ORDER.map((kind) => ({ topic, kind })));
 }
 
+// The URL of a topic, with no step on the end. The bare topic route redirects
+// to the guided notes, so this is a link to the start of the topic.
+//
+// course_id is `${test}-${subject}` -- the same split the route params are
+// rebuilt from in topic-data.ts, run backwards.
+export function topicHref(topic: {
+  course_id: string;
+  topic_id: string;
+  unit_number: number;
+}): string {
+  const [test, subject] = topic.course_id.split('-');
+  return `/course/${test}/${subject}/unit/${topic.unit_number}/topic/${topic.topic_id}`;
+}
+
 export function stepHref(step: Step): string {
-  const [test, subject] = step.topic.course_id.split('-');
-  return `/course/${test}/${subject}/unit/${step.topic.unit_number}/topic/${step.topic.topic_id}/${step.kind}`;
+  return `${topicHref(step.topic)}/${step.kind}`;
 }
 
 export function findStepIndex(

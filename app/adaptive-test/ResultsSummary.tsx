@@ -1,6 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import type { Response } from "./type";
+// Type-only: app/lib/recommendation.ts imports the service-role Supabase
+// client, and `import type` is erased before it can follow anything into this
+// client bundle.
+import type { Recommendation } from "../lib/recommendation";
 import { TSIA2_PASSING, thetaToScore, buildCategoryBreakdown } from "./engine";
 import { FONT_BODY } from "../components/fonts";
 
@@ -12,6 +17,10 @@ interface Props {
   onRestart: () => void;
   sessionId: string | null;
   saveFailed: boolean;
+  // Null while the save is still in flight, and after a save that failed.
+  // Absent is a real state here, not an error: this card is the only thing on
+  // the page that needs the server, so it is the only thing that waits.
+  recommendation: Recommendation | null;
 }
 
 const STRAND_LABEL: Record<string, string> = {
@@ -23,7 +32,76 @@ const STRAND_LABEL: Record<string, string> = {
   PS: "Probabilistic & Statistical Reasoning",
 };
 
-export default function ResultsSummary({ responses, theta, onRestart, sessionId, saveFailed }: Props) {
+// The "start here" card.
+//
+// Rendered only for status 'ok'. 'no_evidence' and 'no_topic' both mean no
+// topic can be named, and the honest response to that is to show nothing and
+// leave the page as it was before this feature existed -- not to apologise for
+// a recommendation the student was never promised.
+//
+// A placeholder topic still counts as 'ok' and still gets a card: the strand is
+// a real finding worth telling them about, and the page it links to says
+// plainly that the lessons are not written yet. Saying "start with Algebra" and
+// then showing a coming-soon page is honest; saying nothing at all would
+// withhold the diagnosis as well as the content.
+function StartHereCard({ recommendation }: { recommendation: Recommendation }) {
+  if (recommendation.status !== "ok") return null;
+  const { mode, strand, pct, attempted, topic } = recommendation;
+  const strandLabel = STRAND_LABEL[strand] ?? strand;
+  // Driven off mode rather than hardcoded. This route asks for 'strongest', but
+  // the field is what makes the sentence true: if the mode is ever changed at
+  // the call site, the copy follows it instead of confidently naming a
+  // strongest strand as the student's weakest.
+  const standing = mode === "strongest" ? "strongest" : "weakest";
+
+  return (
+    <div style={{
+      background: "var(--ec-surface)",
+      border: "1px solid var(--ec-line)",
+      borderRadius: "16px",
+      padding: "24px",
+      boxShadow: "var(--ec-shadow)",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+    }}>
+      <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--ec-ink-faint)", margin: 0 }}>
+        Start here
+      </p>
+
+      <p style={{ fontSize: "14px", lineHeight: 1.6, color: "var(--ec-ink-muted)", margin: 0 }}>
+        {strandLabel} was your {standing} strand, {pct}% across {attempted}{" "}
+        {attempted === 1 ? "question" : "questions"}.
+      </p>
+
+      <p style={{ fontSize: "17px", fontWeight: 600, color: "var(--ec-ink)", margin: 0 }}>
+        {topic.is_placeholder
+          ? `We are still writing the ${strandLabel} lessons`
+          : topic.topic_name}
+      </p>
+
+      <a
+        href={topic.href}
+        style={{
+          alignSelf: "flex-start",
+          marginTop: "4px",
+          padding: "11px 22px",
+          background: "var(--ec-btn-bg)",
+          color: "var(--ec-btn-text)",
+          borderRadius: "10px",
+          fontSize: "13px",
+          fontWeight: 700,
+          textDecoration: "none",
+        }}
+      >
+        {topic.is_placeholder ? "See what happens next" : "Start this topic"}
+      </a>
+    </div>
+  );
+}
+
+export default function ResultsSummary({ responses, theta, onRestart, sessionId, saveFailed, recommendation }: Props) {
+  const [historyOpen, setHistoryOpen] = useState(false);
   const finalScore = thetaToScore(theta);
   const passed = finalScore >= TSIA2_PASSING;
   const correct = responses.filter((r) => r.isCorrect).length;
@@ -40,31 +118,46 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
         background: "var(--ec-surface)",
         border: "1px solid var(--ec-line)",
         borderRadius: "20px",
-        padding: "44px 28px 36px",
+        // Option A. Was 44px 28px 36px around an 88px score with a 16px gap
+        // under the label, which left the number floating in the middle of a
+        // tall card rather than owning it. Tighter frame, bigger number: the
+        // card gets shorter while the score reads larger.
+        padding: "32px 28px 28px",
         textAlign: "center",
         boxShadow: "var(--ec-shadow)",
       }}>
-        <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--ec-ink-faint)", marginBottom: "16px" }}>
+        {/* 4px, not 16px. The label and the number are one unit -- the label
+            names the number directly beneath it -- and a 16px gap read as two
+            separate things stacked up. */}
+        <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--ec-ink-faint)", marginBottom: "4px" }}>
           Estimated TSIA2 Score
         </p>
         <p style={{
-          fontSize: "88px",
+          fontSize: "112px",
           fontWeight: 800,
-          lineHeight: 1,
+          // Below 1 so the extra size does not buy back the height just saved.
+          // Digits have no descenders, so this crops empty space, not glyphs.
+          lineHeight: 0.95,
           color: "var(--ec-ink)",
-          marginBottom: "14px",
+          marginBottom: "10px",
           letterSpacing: "-0.04em",
           fontFamily: FONT_BODY,
         }}>
           {finalScore}
         </p>
-        <p style={{ fontSize: "15px", fontWeight: 600, color: passed ? "var(--ec-green)" : "var(--ec-orange)", marginBottom: "8px" }}>
+        <p style={{ fontSize: "15px", fontWeight: 600, color: passed ? "var(--ec-green)" : "var(--ec-orange)", marginBottom: "10px" }}>
           {passed ? "College Ready" : "Keep Practicing"}
         </p>
-        <p style={{ fontSize: "12px", color: "var(--ec-ink-faint)" }}>
+        <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)" }}>
           Passing threshold: {TSIA2_PASSING} · Scale: 910–990
         </p>
       </div>
+
+      {/* Above the sign-in ask on purpose: the recommendation is the thing the
+          test was taken for, and it is offered before anything is requested in
+          return. It needs no account -- /api/sessions computes it from the run
+          that was just submitted, signed in or not. */}
+      {recommendation && <StartHereCard recommendation={recommendation} />}
 
       {/* Sign-in prompt */}
       {SHOW_SIGNIN_PROMPT && (
@@ -201,7 +294,13 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
         </div>
       )}
 
-      {/* Response history */}
+      {/* Response history.
+          Collapsed by default. Twenty rows of per-item detail is reference
+          material, not the headline: it pushed the score, the recommendation
+          and the sign-in ask up off the first screen for every student who
+          finished a test. The toggle is a real <button> with aria-expanded and
+          aria-controls rather than a styled div, so the collapsed table is
+          announced as collapsed rather than simply being absent. */}
       <div style={{
         background: "var(--ec-surface)",
         border: "1px solid var(--ec-line)",
@@ -209,10 +308,43 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
         padding: "26px 24px",
         boxShadow: "var(--ec-shadow)",
       }}>
-        <h2 style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-ink-faint)", marginBottom: "16px" }}>
-          Response History
-        </h2>
-        <div style={{ overflowX: "auto" }}>
+        <button
+          type="button"
+          onClick={() => setHistoryOpen((o) => !o)}
+          aria-expanded={historyOpen}
+          aria-controls="response-history"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "12px",
+            width: "100%",
+            padding: 0,
+            border: "none",
+            background: "none",
+            cursor: "pointer",
+            textAlign: "left",
+          }}
+        >
+          <h2 style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-ink-faint)", margin: 0 }}>
+            Response History
+          </h2>
+          <span style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "12px", fontWeight: 600, color: "var(--ec-ink-muted)" }}>
+            {historyOpen ? "Hide" : `Show all ${total}`}
+            <span
+              aria-hidden="true"
+              style={{
+                display: "inline-block",
+                fontSize: "10px",
+                transform: historyOpen ? "rotate(180deg)" : "none",
+                transition: "transform 0.15s ease",
+              }}
+            >
+              ▾
+            </span>
+          </span>
+        </button>
+        <div id="response-history" hidden={!historyOpen} style={{ overflowX: "auto", marginTop: "16px" }}>
           <table style={{ width: "100%", fontSize: "13px", borderCollapse: "collapse" }}>
             <thead>
               <tr style={{ borderBottom: "1px solid var(--ec-line)" }}>

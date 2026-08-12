@@ -7,6 +7,9 @@ import ItemCard from "./ItemCard";
 import ResultsSummary from "./ResultsSummary";
 import { CAT_ITEM_COLUMNS } from "./type";
 import type { ItemValidationError, Response } from "./type";
+// Type-only, so the admin Supabase client that module pulls in never reaches
+// the browser bundle -- `import type` is erased before webpack sees it.
+import type { Recommendation } from "../lib/recommendation";
 import { supabase } from "../lib/supabase";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
@@ -53,7 +56,16 @@ async function fetchAllDraftItems(): Promise<unknown[]> {
   return rows;
 }
 
-async function saveSession(responses: Response[], maxItems: number): Promise<{ sessionId: string | null; failed: boolean }> {
+// The recommendation rides back on the save response rather than being fetched
+// separately. /api/sessions has already re-derived the per-strand breakdown
+// from the real item bank to write the row, so it is the one place that can
+// answer "where should this person start" without a second round trip and
+// without an account -- which matters, because most people who finish this test
+// have not signed in.
+async function saveSession(
+  responses: Response[],
+  maxItems: number
+): Promise<{ sessionId: string | null; failed: boolean; recommendation: Recommendation | null }> {
   try {
     const res = await fetch("/api/sessions", {
       method: "POST",
@@ -70,13 +82,17 @@ async function saveSession(responses: Response[], maxItems: number): Promise<{ s
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));
       console.error("[saveSession] failed:", res.status, body.error ?? res.statusText);
-      return { sessionId: null, failed: true };
+      return { sessionId: null, failed: true, recommendation: null };
     }
     const body = await res.json();
-    return { sessionId: body.session_id ?? null, failed: !body.session_id };
+    return {
+      sessionId: body.session_id ?? null,
+      failed: !body.session_id,
+      recommendation: body.recommendation ?? null,
+    };
   } catch (err) {
     console.error("[saveSession] network error:", err);
-    return { sessionId: null, failed: true };
+    return { sessionId: null, failed: true, recommendation: null };
   }
 }
 
@@ -87,12 +103,22 @@ function Blobs() {
   );
 }
 
-function Shell({ children }: { children: React.ReactNode }) {
+// showCalculator is threaded rather than inferred inside Header, because the
+// only thing that knows whether a test is in progress is the reducer phase, and
+// that lives here. Every Shell call site below passes it explicitly, so the
+// answer for each phase is visible at the phase rather than hidden in a default.
+function Shell({
+  children,
+  showCalculator = false,
+}: {
+  children: React.ReactNode;
+  showCalculator?: boolean;
+}) {
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--ec-bg)", position: "relative" }}>
       <Blobs />
       <div style={{ position: "relative" }}>
-        <Header />
+        <Header showCalculator={showCalculator} />
       </div>
       <main style={{ flex: 1, maxWidth: "800px", margin: "0 auto", width: "100%", padding: "110px 24px 80px" }}>
         {children}
@@ -109,7 +135,7 @@ function ValidationErrorList({ errors }: { errors: ItemValidationError[] }) {
       <ul style={{ listStyle: "disc", paddingLeft: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
         {errors.map((e) => (
           <li key={e.item_id} style={{ color: "var(--ec-ink-muted)" }}>
-            <span style={{ fontFamily: "monospace" }}>{e.item_id}</span> — missing: {e.missing.join(", ")}
+            <span style={{ fontFamily: "monospace" }}>{e.item_id}</span>, missing: {e.missing.join(", ")}
           </li>
         ))}
       </ul>
@@ -123,6 +149,7 @@ export default function AdaptiveTestPage() {
   const prevResponseCountRef = useRef(0);
   const [savedSessionId, setSavedSessionId] = useState<string | null>(null);
   const [saveFailed, setSaveFailed] = useState(false);
+  const [recommendation, setRecommendation] = useState<Recommendation | null>(null);
   // Tri-state on purpose: null means "not yet known", not "signed out". The
   // check is async, so a plain `false` initial value would tell a signed-in
   // student "no account needed" for a beat before correcting itself. The
@@ -153,15 +180,19 @@ useEffect(() => {
 
     if (state.phase === "complete" && !savedRef.current) {
       savedRef.current = true;
-      saveSession(state.responses, state.maxItems).then(({ sessionId, failed }) => {
-        setSavedSessionId(sessionId);
-        setSaveFailed(failed);
-      });
+      saveSession(state.responses, state.maxItems).then(
+        ({ sessionId, failed, recommendation: rec }) => {
+          setSavedSessionId(sessionId);
+          setSaveFailed(failed);
+          setRecommendation(rec);
+        }
+      );
     }
     if (state.phase !== "complete") {
       savedRef.current = false;
       setSavedSessionId(null);
       setSaveFailed(false);
+      setRecommendation(null);
     }
   }, [state.phase, state.responses, state.maxItems]);
 
@@ -290,7 +321,7 @@ useEffect(() => {
 
   if (state.phase === "active" && state.currentItem) {
     return (
-      <Shell>
+      <Shell showCalculator>
         <ItemCard item={state.currentItem} itemNumber={state.responses.length + 1} totalItems={state.maxItems} onAnswer={answer} isAuthenticated={isAuthenticated} />
       </Shell>
     );
@@ -299,7 +330,7 @@ useEffect(() => {
   if (state.phase === "complete") {
     return (
       <Shell>
-        <ResultsSummary responses={state.responses} theta={state.theta} onRestart={restart} sessionId={savedSessionId} saveFailed={saveFailed} />
+        <ResultsSummary responses={state.responses} theta={state.theta} onRestart={restart} sessionId={savedSessionId} saveFailed={saveFailed} recommendation={recommendation} />
       </Shell>
     );
   }
