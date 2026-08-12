@@ -10,8 +10,8 @@ choice can be made on purpose rather than settled by whoever edits the code next
 
 ## CAT evidence can reach `high` confidence in a single sitting
 
-**Status:** open, not implemented. Raised while reviewing
-`feat/misconception-cat-integration` on 2026-08-12.
+**Status:** Option C chosen 2026-08-12. Migration plan under review; nothing
+implemented yet. Raised while reviewing `feat/misconception-cat-integration`.
 
 ### The behaviour
 
