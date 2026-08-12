@@ -384,6 +384,102 @@ def validate_practice_items(sections):
     return warnings
 
 
+# Where the before/after row dumps land. Outside the repo's tracked tree on
+# purpose: these are production content dumps, they carry answer keys, and they
+# would otherwise show up as untracked noise on every push. See .gitignore.
+SNAPSHOT_DIR = Path(__file__).parent / 'snapshots'
+
+# Columns whose value is expected to move on any write, or which say nothing
+# about content. Reported separately so they cannot drown the real diff.
+BOOKKEEPING_COLUMNS = ('id', 'created_at', 'updated_at')
+
+
+def snapshot_rows(supabase, course_id, topic_ids):
+    """
+    Read every column of the rows this run is about to overwrite.
+
+    Returns {topic_id: row}. A topic with no row yet is simply absent, which is
+    how a first upload of new content is distinguished from an edit to existing
+    content.
+
+    Exists because there was no way to answer "did that upload change anything
+    it was not supposed to?" after the fact. The upsert names every content
+    column, so a re-run silently rewrites all of them, and the only evidence
+    available afterwards was an inference chain: the markdown has not changed,
+    the parser has not changed, therefore the values cannot have changed. That
+    is an argument, not a diff. This makes it a diff.
+    """
+    rows = {}
+    # Chunked because topic_ids goes in the URL on an `in` filter, and a course
+    # with a hundred topics would push the query string past what PostgREST and
+    # intermediate proxies will accept.
+    for i in range(0, len(topic_ids), 40):
+        chunk = topic_ids[i:i + 40]
+        result = (
+            supabase.table('curriculum_topics')
+            .select('*')
+            .eq('course_id', course_id)
+            .in_('topic_id', chunk)
+            .execute()
+        )
+        for row in result.data:
+            rows[row['topic_id']] = row
+    return rows
+
+
+def write_snapshot(rows, course_id, stamp, phase):
+    """Dump a snapshot to disk and return its path."""
+    SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
+    path = SNAPSHOT_DIR / f'{course_id}_{stamp}.{phase}.json'
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(rows, f, indent=2, sort_keys=True, default=str)
+    return path
+
+
+def report_snapshot_diff(before, after, topic_ids):
+    """
+    Print what the upload actually changed, per topic and per column.
+
+    Content changes are listed column by column. Bookkeeping columns are
+    counted but not itemised, since id and created_at moving would mean a row
+    was replaced rather than updated and is worth seeing, while updated_at is
+    not currently maintained at all (see deferred-updated-at-audit-trail.md).
+    """
+    added, changed, unchanged, replaced = [], [], [], []
+
+    for tid in topic_ids:
+        old, new = before.get(tid), after.get(tid)
+        if old is None:
+            added.append(tid)
+            continue
+        if new is None:
+            # Should be unreachable: nothing here deletes.
+            changed.append((tid, ['row disappeared']))
+            continue
+        content_diff = sorted(
+            k for k in set(old) | set(new)
+            if k not in BOOKKEEPING_COLUMNS and old.get(k) != new.get(k)
+        )
+        if any(old.get(k) != new.get(k) for k in ('id', 'created_at')):
+            replaced.append(tid)
+        if content_diff:
+            changed.append((tid, content_diff))
+        else:
+            unchanged.append(tid)
+
+    print("\n─── What this upload changed ───")
+    print(f"  new topics:            {len(added)}"
+          + (f"  ({', '.join(added)})" if added else ""))
+    print(f"  content changed:       {len(changed)}")
+    for tid, cols in changed:
+        print(f"      {tid}: {', '.join(cols)}")
+    print(f"  content unchanged:     {len(unchanged)}"
+          + (f"  ({', '.join(unchanged)})" if unchanged else ""))
+    if replaced:
+        print(f"  ! rows REPLACED rather than updated: {', '.join(replaced)}")
+        print("    id or created_at moved, which an upsert should never do.")
+
+
 def upload_course_curriculum(course_id, dry_run=False):
     """
     Upload all markdown files for a course to Supabase.
@@ -405,10 +501,32 @@ def upload_course_curriculum(course_id, dry_run=False):
     md_files = sorted(source_dir.glob('unit-*/[QAG]*.md'))
     
     print(f"Found {len(md_files)} curriculum files for {course_id}")
-    
+
     if len(md_files) == 0:
         print("No markdown files found. Check the directory structure.")
         return 1
+
+    topic_ids = [f.stem for f in md_files]
+
+    # Snapshot before the first write, never on a dry run.
+    #
+    # Fails closed. If the rows this run is about to overwrite cannot be read,
+    # the upload does not proceed: the whole point is that a content push leaves
+    # behind evidence of what it did, and a push with no before-state is exactly
+    # the situation this was added to prevent. A read failure here also means
+    # something is wrong with the credentials or the table, which is worth
+    # stopping for on its own.
+    before, stamp = {}, None
+    if not dry_run:
+        stamp = datetime.now().strftime('%Y%m%dT%H%M%S')
+        try:
+            before = snapshot_rows(supabase, course_id, topic_ids)
+        except Exception as e:
+            print(f"\n✗ Could not snapshot the existing rows: {e}")
+            print("  Refusing to upload without a before-state to diff against.")
+            return 1
+        path = write_snapshot(before, course_id, stamp, 'before')
+        print(f"Snapshot of {len(before)} existing row(s) -> {path}")
 
     failures = 0
 
@@ -497,6 +615,25 @@ def upload_course_curriculum(course_id, dry_run=False):
         except Exception as e:
             failures += 1
             print(f"✗ Error: {str(e)}")
+
+    # Snapshot again and diff. Done even when some topics failed, because a
+    # partial upload is exactly the case where knowing which rows moved matters
+    # most.
+    if not dry_run:
+        try:
+            after = snapshot_rows(supabase, course_id, topic_ids)
+            after_path = write_snapshot(after, course_id, stamp, 'after')
+            report_snapshot_diff(before, after, topic_ids)
+            print(f"\n  before: {SNAPSHOT_DIR / f'{course_id}_{stamp}.before.json'}")
+            print(f"  after:  {after_path}")
+            print("  diff:   diff <(python3 -m json.tool "
+                  f"{SNAPSHOT_DIR / f'{course_id}_{stamp}.before.json'}) "
+                  f"<(python3 -m json.tool {after_path})")
+        except Exception as e:
+            # The upload already happened, so this cannot fail the run. It does
+            # need to be loud: the before-snapshot on disk is still usable.
+            print(f"\n! Post-upload snapshot failed: {e}")
+            print("  The before-snapshot is on disk and can be diffed manually.")
 
     return failures
 

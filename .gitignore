@@ -22,3 +22,8 @@ reference/
 
 # Local-only prod snapshots (rollback path for restore_bank_text.py)
 scratchpad/
+
+# Before/after row dumps written by curriculum/migrations/upload_curriculum.py.
+# Production content including answer keys, and one pair per upload, so they are
+# kept local rather than committed. See deferred-updated-at-audit-trail.md.
+curriculum/migrations/snapshots/
