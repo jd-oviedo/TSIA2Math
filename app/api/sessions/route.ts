@@ -17,11 +17,14 @@ import type { Item, ProficiencyLevel, Strand } from "../../adaptive-test/type";
 // The source string passed to record_misconception() for diagnostic evidence.
 //
 // This is load-bearing. record_misconception() branches on the literal
-// 'socratic' to award high confidence immediately; every other value walks the
-// ladder (low, medium at two hits, high at three). Passing 'socratic' from here
-// -- by typo, or by a refactor that copies the curriculum call site -- would
-// fast-track weak 4-option-multiple-choice evidence to the confidence level
-// that surfaces a misconception to a parent.
+// 'socratic' to award high confidence immediately, and on 'cat' to apply the
+// stricter ladder: a CAT-only row reaches 'high' only on three hits spanning
+// two distinct sessions and two distinct items, and caps at 'medium' short of
+// that. 'curriculum' walks the original ladder (low, medium at two hits, high
+// at three). Passing 'socratic' from here -- by typo, or by a refactor that
+// copies the curriculum call site -- would fast-track weak
+// 4-option-multiple-choice evidence to the confidence level that surfaces a
+// misconception to a parent, and would bypass the session gate as well.
 //
 // The database does catch an *unknown* source. sql/gumu_tables.sql section 4 is
 // applied in production, confirmed by direct query 2026-08-12: the function
@@ -234,8 +237,21 @@ export async function POST(request: Request) {
   // Source is 'cat' and must stay 'cat': the ladder gives Socratic hits an
   // immediate jump to high confidence, and CAT evidence is weak enough
   // (4-option multiple choice, 25% guess rate) that it has to earn high the
-  // slow way -- low, medium at 2 hits, high at 3. See the note above
-  // CAT_MISCONCEPTION_SOURCE.
+  // slow way. See the note above CAT_MISCONCEPTION_SOURCE.
+  //
+  // p_session_id and p_item_id are what make that "slow way" mean across time
+  // rather than merely three times. A whole session arrives in one request, so
+  // without them three wrong answers on three items carrying the same slug --
+  // one sitting, twenty minutes -- would reach 'high', the level that surfaces
+  // to a teacher and a parent. For CAT-only rows the ladder now requires two
+  // distinct sessions AND two distinct items; short of that it caps at
+  // 'medium'. The item dimension is not redundant: exposure_max is declared
+  // but never enforced, so a retake can serve the same question again, and
+  // three attempts at one question across three sittings is not three pieces
+  // of evidence. See sql/student_misconceptions_session_gate.sql.
+  //
+  // Both arguments default to null in the RPC, so the curriculum and Socratic
+  // call sites pass neither and are unaffected.
   //
   // Anonymous sessions are skipped: student_misconceptions.student_id is a
   // foreign key onto auth.users, so there is nothing to attribute the hit to.
@@ -255,6 +271,8 @@ export async function POST(request: Request) {
         p_misconception: tag,
         p_strand: item!.primary_strand,
         p_source: CAT_MISCONCEPTION_SOURCE,
+        p_session_id: session.id,
+        p_item_id: r.item_id,
       });
       if (mcError) {
         console.error(
