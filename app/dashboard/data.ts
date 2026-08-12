@@ -20,6 +20,7 @@ export {
   mostRecentTopic,
   gradableTotal,
   topicKey,
+  topicHref,
 } from '../lib/curriculum-progress';
 
 export type {

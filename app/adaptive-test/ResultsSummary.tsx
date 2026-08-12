@@ -1,6 +1,10 @@
 "use client";
 
 import type { Response } from "./type";
+// Type-only: app/lib/recommendation.ts imports the service-role Supabase
+// client, and `import type` is erased before it can follow anything into this
+// client bundle.
+import type { Recommendation } from "../lib/recommendation";
 import { TSIA2_PASSING, thetaToScore, buildCategoryBreakdown } from "./engine";
 import { FONT_BODY } from "../components/fonts";
 
@@ -12,6 +16,10 @@ interface Props {
   onRestart: () => void;
   sessionId: string | null;
   saveFailed: boolean;
+  // Null while the save is still in flight, and after a save that failed.
+  // Absent is a real state here, not an error: this card is the only thing on
+  // the page that needs the server, so it is the only thing that waits.
+  recommendation: Recommendation | null;
 }
 
 const STRAND_LABEL: Record<string, string> = {
@@ -23,7 +31,70 @@ const STRAND_LABEL: Record<string, string> = {
   PS: "Probabilistic & Statistical Reasoning",
 };
 
-export default function ResultsSummary({ responses, theta, onRestart, sessionId, saveFailed }: Props) {
+// The "start here" card.
+//
+// Rendered only for status 'ok'. 'no_evidence' and 'no_topic' both mean no
+// topic can be named, and the honest response to that is to show nothing and
+// leave the page as it was before this feature existed -- not to apologise for
+// a recommendation the student was never promised.
+//
+// A placeholder topic still counts as 'ok' and still gets a card: the strand is
+// a real finding worth telling them about, and the page it links to says
+// plainly that the lessons are not written yet. Saying "start with Algebra" and
+// then showing a coming-soon page is honest; saying nothing at all would
+// withhold the diagnosis as well as the content.
+function StartHereCard({ recommendation }: { recommendation: Recommendation }) {
+  if (recommendation.status !== "ok") return null;
+  const { strand, pct, attempted, topic } = recommendation;
+  const strandLabel = STRAND_LABEL[strand] ?? strand;
+
+  return (
+    <div style={{
+      background: "var(--ec-surface)",
+      border: "1px solid var(--ec-line)",
+      borderRadius: "16px",
+      padding: "24px",
+      boxShadow: "var(--ec-shadow)",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+    }}>
+      <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--ec-ink-faint)", margin: 0 }}>
+        Start here
+      </p>
+
+      <p style={{ fontSize: "14px", lineHeight: 1.6, color: "var(--ec-ink-muted)", margin: 0 }}>
+        {strandLabel} was your weakest strand &mdash; {pct}% across {attempted}{" "}
+        {attempted === 1 ? "question" : "questions"}.
+      </p>
+
+      <p style={{ fontSize: "17px", fontWeight: 600, color: "var(--ec-ink)", margin: 0 }}>
+        {topic.is_placeholder
+          ? `We are still writing the ${strandLabel} lessons`
+          : topic.topic_name}
+      </p>
+
+      <a
+        href={topic.href}
+        style={{
+          alignSelf: "flex-start",
+          marginTop: "4px",
+          padding: "11px 22px",
+          background: "var(--ec-btn-bg)",
+          color: "var(--ec-btn-text)",
+          borderRadius: "10px",
+          fontSize: "13px",
+          fontWeight: 700,
+          textDecoration: "none",
+        }}
+      >
+        {topic.is_placeholder ? "See what happens next" : "Start this topic"}
+      </a>
+    </div>
+  );
+}
+
+export default function ResultsSummary({ responses, theta, onRestart, sessionId, saveFailed, recommendation }: Props) {
   const finalScore = thetaToScore(theta);
   const passed = finalScore >= TSIA2_PASSING;
   const correct = responses.filter((r) => r.isCorrect).length;
@@ -65,6 +136,12 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
           Passing threshold: {TSIA2_PASSING} · Scale: 910–990
         </p>
       </div>
+
+      {/* Above the sign-in ask on purpose: the recommendation is the thing the
+          test was taken for, and it is offered before anything is requested in
+          return. It needs no account -- /api/sessions computes it from the run
+          that was just submitted, signed in or not. */}
+      {recommendation && <StartHereCard recommendation={recommendation} />}
 
       {/* Sign-in prompt */}
       {SHOW_SIGNIN_PROMPT && (

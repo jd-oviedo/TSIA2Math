@@ -1,7 +1,9 @@
 import { loadTopic, type RouteParams } from './topic-data';
 import { GumuGateProvider } from './GumuGate';
 import TopicChrome from './TopicChrome';
+import ComingSoonTopic from './ComingSoonTopic';
 import { TOPIC_PAGE_CSS } from './topic-page-css';
+import { strandName } from '@/app/lib/strands';
 import { C, ink, EYEBROW } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
@@ -96,7 +98,25 @@ export default async function TopicLayout({
             </div>
           )}
 
-          {children}
+          {/* A placeholder topic has no lesson, no practice and no quiz, so the
+              sub-page is not rendered at all -- this replaces it.
+
+              Done here rather than with a branch in each of lesson, practice
+              and quiz because the layout is the one place all four routes
+              (including the bare topic index) must pass through, so a fifth
+              sub-route added later cannot forget it. Not rendering {children}
+              means the page component is never invoked: a server component is
+              only a description until React renders it, so loadNavigation and
+              loadGates below it never run either. */}
+          {topic.is_placeholder ? (
+            <ComingSoonTopic
+              strandName={strandName(topic.related_strand)}
+              modulesHref="/dashboard/modules"
+              requiresSignIn={!authSession}
+            />
+          ) : (
+            children
+          )}
         </div>
       </div>
     </GumuGateProvider>

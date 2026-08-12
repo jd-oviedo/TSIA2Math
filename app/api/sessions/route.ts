@@ -4,6 +4,7 @@ import { createAdminClient } from "../../lib/supabase-admin";
 import { createClient as createServerClient } from "../../lib/supabase-server";
 import { sessionsRateLimit, getClientIp, rateLimitHeaders, safeLimit } from "../../lib/rate-limit";
 import { sessionsBodySchema, formatZodError } from "../../lib/schemas";
+import { recommendFromBreakdown, type Recommendation } from "../../lib/recommendation";
 import {
   STARTING_THETA,
   STARTING_DIFFICULTY,
@@ -155,6 +156,46 @@ export async function POST(request: Request) {
     ])
   );
 
+  // Diagnostic or practice?
+  //
+  // An anonymous run is always 'diagnostic'. There is no account to tie it to a
+  // previous one, so as far as anything can tell it is this visitor's first and
+  // only test -- and it is the run the results screen builds a recommendation
+  // from, which a 'practice' label would suppress.
+  //
+  // For a signed-in student it is their first completed session, and "first" is
+  // resolved by asking whether they have any. head + exact count so Postgres
+  // answers with a number and sends no rows, served by sessions_user_created_idx
+  // (user_id, created_at desc) from sql/fk_indexes.sql.
+  //
+  // This races with itself: two submissions landing together both see zero and
+  // both write 'diagnostic'. That is tolerated rather than fixed with a unique
+  // index, because the index would fix it by rejecting one of the two inserts,
+  // and that insert is a student's finished test. The read side takes the
+  // earliest diagnostic instead, so a duplicate resolves to the same row --
+  // see firstDiagnosticSession() and the note in sql/sessions_session_type.sql.
+  //
+  // On a count error the row is written 'practice', matching the column
+  // default. The cost is a student whose real diagnostic is unlabelled and who
+  // therefore sees the generic "start here" card on their dashboard: a feature
+  // that quietly did not happen. Guessing 'diagnostic' instead would risk
+  // labelling a retake as the diagnostic, which quietly moves a student to a
+  // different part of the curriculum. Absent beats wrong.
+  let sessionType: "diagnostic" | "practice" = "diagnostic";
+  if (userId) {
+    const { count, error: priorError } = await admin
+      .from("sessions")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", userId);
+
+    if (priorError) {
+      console.error("[api/sessions] prior-session count failed:", priorError.message);
+      sessionType = "practice";
+    } else {
+      sessionType = (count ?? 0) === 0 ? "diagnostic" : "practice";
+    }
+  }
+
   const { data: session, error: sessionError } = await admin
     .from("sessions")
     .insert({
@@ -169,6 +210,7 @@ export async function POST(request: Request) {
       // is nullable; sql/sessions_drop_teacher_id.sql retires it and those two
       // policies together, by name and not by CASCADE.
       user_id: userId,
+      session_type: sessionType,
       completed_at: new Date().toISOString(),
       final_theta: finalTheta,
       final_score: finalScore,
@@ -303,5 +345,27 @@ export async function POST(request: Request) {
   });
 
   await posthogClient.shutdown();
-  return NextResponse.json({ session_id: session.id, final_score: finalScore }, { status: 201 });
+
+  // Where this student should start in the curriculum, returned with the score
+  // so the results screen can offer it without a second round trip and without
+  // an account. It is computed from strandBreakdown -- the object built above
+  // from the real item bank -- rather than re-read from the row, so it works
+  // identically for the 41-in-105 sessions that have no user_id.
+  //
+  // Best-effort, like the exposure and misconception writes above. The session
+  // is already saved and the score is already earned; a curriculum lookup that
+  // falls over must not turn a completed test into a 500. The client treats a
+  // missing recommendation the same way it treated every recommendation before
+  // this existed, which is to say it shows the sign-in card and nothing else.
+  let recommendation: Recommendation | null = null;
+  try {
+    recommendation = await recommendFromBreakdown(strandBreakdown);
+  } catch (err) {
+    console.error("[api/sessions] recommendation failed:", err);
+  }
+
+  return NextResponse.json(
+    { session_id: session.id, final_score: finalScore, recommendation },
+    { status: 201 }
+  );
 }

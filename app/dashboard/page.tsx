@@ -8,7 +8,10 @@ import {
   getEnrolledClasses,
   getAnnouncements,
   hasCompletedDiagnostic,
+  topicHref,
 } from './data';
+import { recommendForStudent } from '@/app/lib/recommendation';
+import { STRAND_NAMES } from '@/app/lib/strands';
 import { Card, CardTitle, Eyebrow, Muted, PageHeading, ProgressBar, formatDate } from './ui';
 import DiagnosticCta from './DiagnosticCta';
 import JoinClassPanel from './JoinClassPanel';
@@ -31,13 +34,15 @@ export default async function DashboardHome({
 
   const { code } = await searchParams;
 
-  const [{ topics, shapes }, attempts, classes, announcements, testedBefore] = await Promise.all([
-    getTopics(),
-    getAttempts(profile.id),
-    getEnrolledClasses(profile.id),
-    getAnnouncements(profile.id),
-    hasCompletedDiagnostic(profile.id),
-  ]);
+  const [{ topics, shapes }, attempts, classes, announcements, testedBefore, recommendation] =
+    await Promise.all([
+      getTopics(),
+      getAttempts(profile.id),
+      getEnrolledClasses(profile.id),
+      getAnnouncements(profile.id),
+      hasCompletedDiagnostic(profile.id),
+      recommendForStudent(profile.id),
+    ]);
 
   // Same source as the Announcements tab: already scoped to every class the
   // student is enrolled in, plus school-wide notices, newest first. Home shows
@@ -65,13 +70,39 @@ export default async function DashboardHome({
     ? progress.get(`${recentTopic.course_id}:${recentTopic.topic_id}`)
     : undefined;
 
-  // Next unstarted topic, for the student who has not attempted anything yet.
-  const firstTopic = topics[0];
-
-  function topicHref(topic: { course_id: string; topic_id: string; unit_number: number }) {
-    const [test, subject] = topic.course_id.split('-');
-    return `/course/${test}/${subject}/unit/${topic.unit_number}/topic/${topic.topic_id}`;
-  }
+  // Where to send a student who has not attempted anything yet.
+  //
+  // This used to be topics[0] -- the first topic in the course, the same one for
+  // everybody, whatever their diagnostic said. It now prefers the weakest strand
+  // from their diagnostic and falls back to topics[0] when there is nothing to
+  // go on: no diagnostic taken, or a session whose breakdown has no attempted
+  // strand in it.
+  //
+  // The two sources are normalised to one shape here so the card below renders
+  // one way. reason is the line that explains the choice, and is null for the
+  // fallback -- a generic first topic is not a finding and should not be dressed
+  // up as one.
+  const recommended = recommendation.status === 'ok' ? recommendation : null;
+  const fallbackTopic = topics[0];
+  const startTopic = recommended
+    ? {
+        topic_id: recommended.topic.topic_id,
+        topic_name: recommended.topic.topic_name,
+        unit_number: recommended.topic.unit_number,
+        href: recommended.topic.href,
+        isPlaceholder: recommended.topic.is_placeholder,
+        reason: `${STRAND_NAMES[recommended.strand]} was your weakest strand on the diagnostic — ${recommended.pct}% across ${recommended.attempted} ${recommended.attempted === 1 ? 'question' : 'questions'}.`,
+      }
+    : fallbackTopic
+      ? {
+          topic_id: fallbackTopic.topic_id,
+          topic_name: fallbackTopic.topic_name,
+          unit_number: fallbackTopic.unit_number,
+          href: topicHref(fallbackTopic),
+          isPlaceholder: false,
+          reason: null,
+        }
+      : null;
 
   return (
     <>
@@ -225,19 +256,24 @@ export default async function DashboardHome({
                   Keep going
                 </a>
               </>
-            ) : firstTopic ? (
+            ) : startTopic ? (
               <>
+                {startTopic.reason && (
+                  <div style={{ font: `400 13px ${FONT_BODY}`, lineHeight: 1.6, color: V.dim }}>
+                    {startTopic.reason}
+                  </div>
+                )}
                 <div>
                   <div style={{ font: `600 19px ${FONT_HEADING}`, color: V.heading }}>
-                    {firstTopic.topic_name}
+                    {startTopic.topic_name}
                   </div>
                   <div style={{ marginTop: 4, font: `400 13px ${FONT_BODY}`, color: V.dim }}>
-                    Unit {firstTopic.unit_number} · {firstTopic.topic_id}
+                    Unit {startTopic.unit_number} · {startTopic.topic_id}
                   </div>
                 </div>
                 <a
                   className="um-btn-primary"
-                  href={topicHref(firstTopic)}
+                  href={startTopic.href}
                   style={{
                     alignSelf: 'flex-start',
                     padding: '12px 26px',
@@ -248,7 +284,11 @@ export default async function DashboardHome({
                     color: C.midnight,
                   }}
                 >
-                  Start the first topic
+                  {startTopic.isPlaceholder
+                    ? 'See what happens next'
+                    : startTopic.reason
+                      ? 'Start here'
+                      : 'Start the first topic'}
                 </a>
               </>
             ) : (
