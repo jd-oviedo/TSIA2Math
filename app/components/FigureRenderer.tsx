@@ -684,7 +684,11 @@ export default function FigureRenderer({ type, props }: Props) {
       const glyphW = 22;
       const glyphR = 7.5;
       const rowH = 30;
-      const padL = 96;
+      // Gutter sized to the longest row label so a long one ("Wednesday") keeps
+      // clear of the first glyph instead of crowding it, and can never run off
+      // the left edge of the viewBox.
+      const longest = Math.max(...rows.map((r) => label(r.label).length));
+      const padL = Math.max(96, longest * 7.8 + 26);
       const padT = 12;
       const keyH = 30;
       const W = padL + maxSymbols * glyphW + 16;
@@ -713,7 +717,7 @@ export default function FigureRenderer({ type, props }: Props) {
             }
             return (
               <g key={ri}>
-                <text x={padL - 12} y={cy + 4} fontSize={12} fill={INK} textAnchor="end" fontWeight={600}>
+                <text x={padL - 16} y={cy + 4} fontSize={12} fill={INK} textAnchor="end" fontWeight={600}>
                   {label(r.label)}
                 </text>
                 {glyphs}
