@@ -251,7 +251,7 @@ Solve each problem. Show your thinking.
    - C) $8$
    - D) $4$
 
-7. A phone plan charges $C(g) = 8g + 25$ dollars when $g$ gigabytes are used. A customer's bill is $\$65$. How many gigabytes were used?
+7. A phone plan charges $C(g) = 8g + 25$ dollars when $g$ gigabytes are used. A customer's bill is \$65. How many gigabytes were used?
    - A) $11.25$
    - B) $5$
    - C) $8.125$
@@ -506,12 +506,12 @@ Step 4: Check forward. $h(4) = 2(4) + 5 = 8 + 5 = 13$. Match.
 
 ---
 
-**7. A phone plan charges $C(g) = 8g + 25$ dollars when $g$ gigabytes are used. A customer's bill is $\$65$. How many gigabytes were used?**
+**7. A phone plan charges $C(g) = 8g + 25$ dollars when $g$ gigabytes are used. A customer's bill is \$65. How many gigabytes were used?**
 
 Step 1: The bill is the output, so set the rule equal to $65$.
 - $8g + 25 = 65$
 
-Step 2: Subtract the flat $\$25$ from both sides.
+Step 2: Subtract the flat \$25 from both sides.
 - $8g = 40$
 
 Step 3: Divide by $8$.

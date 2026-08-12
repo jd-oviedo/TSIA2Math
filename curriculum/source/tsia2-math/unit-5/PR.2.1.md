@@ -162,7 +162,7 @@ The two wrong paths. Treating $-7$ as $7$ and computing $12 - 7 = 5$ throws away
 
 Some items ask for the gap between two measures, which means computing both.
 
-**Example 7:** Donations were $\$3$, $\$5$, $\$6$, $\$8$, and $\$28$. By how much does the mean exceed the median?
+**Example 7:** Donations were \$3, \$5, \$6, \$8, and \$28. By how much does the mean exceed the median?
 
 Step 1: Mean. Add and divide.
 - $3 + 5 + 6 + 8 + 28 = 50$, and $50 \div 5 = 10$
@@ -173,7 +173,7 @@ Step 2: Median. The list is already sorted, and the middle of five is the third.
 Step 3: Subtract in the order asked. The mean exceeds the median by:
 - $10 - 6 = 4$
 
-The mean is much higher than the median here, and that is not an accident. **One large value drags the mean upward and leaves the median almost untouched.** That $\$28$ is far from the others, and the mean has to absorb it while the median only cares about position.
+The mean is much higher than the median here, and that is not an accident. **One large value drags the mean upward and leaves the median almost untouched.** That \$28 is far from the others, and the mean has to absorb it while the median only cares about position.
 
 ---
 
@@ -513,7 +513,7 @@ Step 2: Find the median. The list is already sorted, and the middle of five is t
 Step 3: Subtract in the order asked.
 - $10 - 6 = 4$
 
-Step 4: Note why the gap exists. The $\$28$ pulls the mean upward and leaves the median where it was.
+Step 4: Note why the gap exists. The \$28 pulls the mean upward and leaves the median where it was.
 
 **Answer: A** ($4$)
 

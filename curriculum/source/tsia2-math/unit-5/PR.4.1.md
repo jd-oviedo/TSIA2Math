@@ -164,7 +164,7 @@ Direction: downhill, negative. Strength: tight, so strong. Answer: **strong nega
 
 A pattern can be strong, obvious, and completely real while still having **no linear** association.
 
-**Example 11:** A plot of average daily temperature against monthly energy bill forms a clear U-shape. Bills are high near $\$200$ at low temperatures, drop to about $\$80$ near $65$ to $70$ degrees, then climb back to about $\$200$ at high temperatures.
+**Example 11:** A plot of average daily temperature against monthly energy bill forms a clear U-shape. Bills are high near \$200 at low temperatures, drop to about \$80 near $65$ to $70$ degrees, then climb back to about \$200 at high temperatures.
 
 There is a strong relationship here, and the mechanism is obvious: you heat the house when it is cold and cool it when it is hot. But the association is **not linear**. It goes down and then up, so no single straight line describes it, and no single direction label fits.
 
@@ -190,7 +190,7 @@ The remaining points follow the downward trend more tightly, so removing it **st
 
 The reasoning that generalizes: a point that contradicts the trend is holding the association back. Remove it and what is left is cleaner. A point that **follows** the trend is doing the opposite, and removing it would weaken the association.
 
-**Example 14:** A plot of pets owned against monthly grocery spending has most points in a flat, trendless cloud near $\$400$, but two extreme points stand apart: one near $(0, 220)$ and one near $(8, 760)$. Together those two create the visual impression of an upward line.
+**Example 14:** A plot of pets owned against monthly grocery spending has most points in a flat, trendless cloud near \$400, but two extreme points stand apart: one near $(0, 220)$ and one near $(8, 760)$. Together those two create the visual impression of an upward line.
 
 The honest answer: **little to no linear association, and the apparent upward trend is driven by two extreme points.**
 
@@ -272,7 +272,7 @@ Solve each problem. Show your thinking.
 
 **Advanced Level** (these need multiple steps or reverse thinking)
 
-8. A scatterplot has average daily temperature across the bottom and monthly energy bill up the side. The points form a clear U-shape: bills are high, around $\$200$, at low temperatures, drop to a low of about $\$80$ near $65$ to $70$ degrees, then rise again to about $\$200$ at high temperatures. Which best describes the linear association?
+8. A scatterplot has average daily temperature across the bottom and monthly energy bill up the side. The points form a clear U-shape: bills are high, around \$200, at low temperatures, drop to a low of about \$80 near $65$ to $70$ degrees, then rise again to about \$200 at high temperatures. Which best describes the linear association?
    - A) Strong negative association.
    - B) There is no linear association, though a clear curved pattern exists.
    - C) The association is linear but switches from negative to positive at the midpoint.
@@ -284,7 +284,7 @@ Solve each problem. Show your thinking.
    - C) Removing it changes the association from negative to positive.
    - D) Removing it has no effect on the association.
 
-10. A scatterplot has number of pets owned across the bottom and monthly grocery spending up the side. Most points form a flat, trendless cloud near $\$400$, but two extreme points stand apart: one near $(0, 220)$ and one near $(8, 760)$, which together create the visual impression of an upward line. Which best describes the linear association?
+10. A scatterplot has number of pets owned across the bottom and monthly grocery spending up the side. Most points form a flat, trendless cloud near \$400, but two extreme points stand apart: one near $(0, 220)$ and one near $(8, 760)$, which together create the visual impression of an upward line. Which best describes the linear association?
     - A) Strong positive association supported by all the data.
     - B) Moderate positive association evenly supported across the data.
     - C) Little to no linear association; the apparent upward trend is driven by two extreme points.
@@ -570,7 +570,7 @@ Step 3: Remove it and the remaining points follow the downward trend more tightl
 
 ---
 
-**10. A scatterplot has number of pets owned across the bottom and monthly grocery spending up the side. Most points form a flat, trendless cloud near $\$400$, but two extreme points stand apart, one near $(0, 220)$ and one near $(8, 760)$, which together create the visual impression of an upward line. Which best describes the linear association?**
+**10. A scatterplot has number of pets owned across the bottom and monthly grocery spending up the side. Most points form a flat, trendless cloud near \$400, but two extreme points stand apart, one near $(0, 220)$ and one near $(8, 760)$, which together create the visual impression of an upward line. Which best describes the linear association?**
 
 Step 1: Look at what the bulk of the data does. It forms a flat, trendless cloud, which on its own means no association.
 
