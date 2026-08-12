@@ -423,7 +423,7 @@
       "addition"
     ],
     "estimated_time_seconds": 90,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -434,10 +434,41 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Color",
+        "Frequency"
+      ],
+      "rows": [
+        {
+          "label": "Red",
+          "values": [
+            5
+          ]
+        },
+        {
+          "label": "Blue",
+          "values": [
+            8
+          ]
+        },
+        {
+          "label": "Green",
+          "values": [
+            3
+          ]
+        },
+        {
+          "label": "Yellow",
+          "values": [
+            4
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_006",
@@ -763,7 +794,7 @@
       "totals"
     ],
     "estimated_time_seconds": 120,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -774,9 +805,40 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Category",
+        "Frequency"
+      ],
+      "rows": [
+        {
+          "label": "Category A",
+          "values": [
+            7
+          ]
+        },
+        {
+          "label": "Category B",
+          "values": [
+            5
+          ]
+        },
+        {
+          "label": "Category C",
+          "values": [
+            4
+          ]
+        },
+        {
+          "label": "Category D",
+          "values": [
+            6
+          ]
+        }
+      ]
+    }
   }
 ]

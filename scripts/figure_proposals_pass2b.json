@@ -1,0 +1,257 @@
+{
+  "_comment": "Second figure pass, bucket B — items whose stem narrates a picture that no existing figure type could draw. Ten PR.4.1 scatterplots, five PR.1.3 line graphs, four PR.1.3 pictographs. Line-graph and pictograph values are transcribed verbatim from each stem. Scatterplot paths encode the trend each stem describes in that stem's own data coordinates: stated endpoints are used where the stem gives them (PR_P_065), stated outliers go in `points` at their exact coordinates (PR_A_067, PR_A_070), and `scatter` maps the stem's own words -- 'very close to a line' to tight, 'widely scattered' to wide. Axis labels here are written plain: a lone $ in a standalone label has nothing to pair with, so the two items with unescaped ($) in their question_text (PR_P_067, PR_A_070) still get a correct axis label while their stems stay as logged in content-fixes-needed.md.",
+
+  "PR_A_067": {
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Hours of Screen Time",
+      "yLabel": "Hours of Sleep",
+      "xRange": [0, 10],
+      "yRange": [3, 10],
+      "plots": [
+        {
+          "path": [[0.5, 9.3], [9.5, 4.2]],
+          "scatter": "moderate",
+          "n": 15,
+          "points": [[9, 9]]
+        }
+      ]
+    }
+  },
+  "PR_A_068": {
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Study Hours",
+      "yLabel": "Test Score",
+      "xRange": [0, 10],
+      "yRange": [50, 100],
+      "plots": [
+        { "label": "Plot 1", "path": [[0.5, 57], [9.5, 95]], "scatter": "tight", "n": 15 },
+        { "label": "Plot 2", "path": [[0.5, 57], [9.5, 95]], "scatter": "wide", "n": 15 }
+      ]
+    }
+  },
+  "PR_A_069": {
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Years of Experience",
+      "yLabel": "Annual Salary (in $1000s)",
+      "xRange": [0, 30],
+      "yRange": [30, 120],
+      "plots": [
+        {
+          "path": [[1, 38], [5, 68], [10, 88], [16, 101], [23, 109], [29, 114]],
+          "scatter": "tight",
+          "n": 18
+        }
+      ]
+    }
+  },
+  "PR_A_070": {
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Number of Pets Owned",
+      "yLabel": "Monthly Grocery Spending ($)",
+      "xRange": [0, 8],
+      "yRange": [200, 800],
+      "plots": [
+        {
+          "path": [[0.5, 400], [7.5, 400]],
+          "scatter": "wide",
+          "n": 14,
+          "points": [[0, 220], [8, 760]]
+        }
+      ]
+    }
+  },
+  "PR_A_071": {
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xRange": [0, 10],
+      "yRange": [0, 10],
+      "showTicks": false,
+      "plots": [
+        { "label": "Plot 1", "path": [[0.5, 2.5], [9.5, 7.5]], "scatter": "wide", "n": 16 },
+        { "label": "Plot 2", "path": [[0.5, 9.0], [9.5, 1.5]], "scatter": "tight", "n": 16 },
+        { "label": "Plot 3", "path": [[0.5, 3.0], [9.5, 7.0]], "scatter": "moderate", "n": 16 }
+      ]
+    }
+  },
+  "PR_P_065": {
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Hours Practiced",
+      "yLabel": "Free Throws Made out of 50",
+      "xRange": [0, 12],
+      "yRange": [0, 50],
+      "plots": [
+        { "path": [[1, 8], [11, 46]], "scatter": "tight", "n": 16 }
+      ]
+    }
+  },
+  "PR_P_066": {
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Daily Steps (thousands)",
+      "yLabel": "Hours of Sleep",
+      "xRange": [0, 15],
+      "yRange": [4, 10],
+      "plots": [
+        { "path": [[1, 5.8], [14, 7.8]], "scatter": "wide", "n": 16 }
+      ]
+    }
+  },
+  "PR_P_067": {
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Average Daily Temperature (°F)",
+      "yLabel": "Monthly Energy Bill ($)",
+      "xRange": [30, 100],
+      "yRange": [0, 250],
+      "plots": [
+        {
+          "path": [[31, 203], [45, 150], [57, 102], [67, 82], [78, 105], [90, 160], [99, 203]],
+          "scatter": "tight",
+          "n": 20
+        }
+      ]
+    }
+  },
+  "PR_P_068": {
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Outdoor Temperature (°F)",
+      "yLabel": "Cups of Hot Chocolate Sold",
+      "xRange": [30, 90],
+      "yRange": [0, 60],
+      "plots": [
+        { "path": [[32, 55], [88, 6]], "scatter": "tight", "n": 16 }
+      ]
+    }
+  },
+  "PR_P_069": {
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Student ID Number",
+      "yLabel": "Quiz Score",
+      "xRange": [1000, 1100],
+      "yRange": [0, 100],
+      "plots": [
+        { "path": [[1002, 75], [1098, 75]], "scatter": "moderate", "n": 16 }
+      ]
+    }
+  },
+
+  "PR_A_007": {
+    "figure_type": "line_graph",
+    "figure_props": {
+      "xLabel": "Month",
+      "yLabel": "Average Temperature (°F)",
+      "categories": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+      "values": [42, 48, 57, 66, 72, 78],
+      "yAxisMin": 40,
+      "yAxisMax": 80,
+      "yAxisStep": 10
+    }
+  },
+  "PR_A_009": {
+    "figure_type": "line_graph",
+    "figure_props": {
+      "xLabel": "Month",
+      "yLabel": "Savings ($)",
+      "categories": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+      "values": [50, 80, 110, 90, 130, 160],
+      "yAxisMin": 0,
+      "yAxisMax": 200,
+      "yAxisStep": 50
+    }
+  },
+  "PR_B_009": {
+    "figure_type": "line_graph",
+    "figure_props": {
+      "xLabel": "Week",
+      "yLabel": "Quiz Score",
+      "categories": ["Week 1", "Week 2", "Week 3", "Week 4"],
+      "values": [70, 75, 68, 80],
+      "yAxisMin": 60,
+      "yAxisMax": 85,
+      "yAxisStep": 5
+    }
+  },
+  "PR_P_008": {
+    "figure_type": "line_graph",
+    "figure_props": {
+      "xLabel": "Day",
+      "yLabel": "High Temperature (°F)",
+      "categories": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+      "values": [72, 78, 85, 80, 74],
+      "yAxisMin": 65,
+      "yAxisMax": 90,
+      "yAxisStep": 5
+    }
+  },
+  "PR_P_011": {
+    "figure_type": "line_graph",
+    "figure_props": {
+      "xLabel": "Day",
+      "yLabel": "Revenue ($)",
+      "categories": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+      "values": [200, 350, 300, 250, 400],
+      "yAxisMin": 0,
+      "yAxisMax": 500,
+      "yAxisStep": 100
+    }
+  },
+
+  "PR_A_010": {
+    "figure_type": "pictograph",
+    "figure_props": {
+      "rows": [
+        { "label": "Aisha", "symbols": 6 },
+        { "label": "Ben", "symbols": 4 },
+        { "label": "Carlos", "symbols": 7 },
+        { "label": "Dana", "symbols": 3 }
+      ],
+      "symbolValue": 5,
+      "unit": "miles"
+    }
+  },
+  "PR_B_008": {
+    "figure_type": "pictograph",
+    "figure_props": {
+      "rows": [
+        { "label": "Monday", "symbols": 3 },
+        { "label": "Tuesday", "symbols": 5 },
+        { "label": "Wednesday", "symbols": 2 }
+      ],
+      "symbolValue": 4,
+      "unit": "pizzas"
+    }
+  },
+  "PR_B_011": {
+    "figure_type": "pictograph",
+    "figure_props": {
+      "rows": [
+        { "label": "Ana", "symbols": 4 },
+        { "label": "Ben", "symbols": 3 },
+        { "label": "Cara", "symbols": 6 }
+      ],
+      "symbolValue": 2,
+      "unit": "books"
+    }
+  },
+  "PR_P_010": {
+    "figure_type": "pictograph",
+    "figure_props": {
+      "rows": [
+        { "label": "Monday", "symbols": 4 },
+        { "label": "Tuesday", "symbols": 3 },
+        { "label": "Wednesday", "symbols": 5 },
+        { "label": "Thursday", "symbols": 4 },
+        { "label": "Friday", "symbols": 2 }
+      ],
+      "symbolValue": 3,
+      "unit": "glasses"
+    }
+  }
+}

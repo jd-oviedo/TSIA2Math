@@ -329,7 +329,7 @@
       "spread"
     ],
     "estimated_time_seconds": 110,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -340,10 +340,28 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-19",
-    "last_modified": "2026-06-19",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "box_plot_comparison",
+    "figure_props": {
+      "xLabel": "Value",
+      "plots": [
+        {
+          "label": "A",
+          "min": 10,
+          "q1": 20,
+          "q3": 30,
+          "max": 50
+        },
+        {
+          "label": "B",
+          "min": 15,
+          "q1": 18,
+          "q3": 40,
+          "max": 45
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_043",

@@ -14003,7 +14003,7 @@
       "ratio"
     ],
     "estimated_time_seconds": 80,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -14014,10 +14014,31 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-05-27",
-    "last_modified": "2026-05-27",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "rows": [
+        {
+          "label": "$x$",
+          "values": [
+            2,
+            4,
+            6,
+            8
+          ]
+        },
+        {
+          "label": "$y$",
+          "values": [
+            6,
+            12,
+            18,
+            24
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "QR_B_069",
@@ -16219,7 +16240,7 @@
       "slope_from_table"
     ],
     "estimated_time_seconds": 100,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -16230,10 +16251,31 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "rows": [
+        {
+          "label": "$x$",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "label": "$y$",
+          "values": [
+            10,
+            13,
+            16,
+            19
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "QR_P_063",
@@ -19156,7 +19198,7 @@
       "comparing two contextual equations by interpreting the difference in their slopes",
       "translating a slope difference into a statement about real-world rates"
     ],
-    "question_text": "Two gyms model membership cost in dollars after x months. Gym A is C = 2x + 80 and Gym B is C = 5x + 20. Which statement correctly interprets the difference in their slopes?",
+    "question_text": "Two gyms model membership cost in dollars after x months.\n  Gym A: C = 2x + 80\n  Gym B: C = 5x + 20\nWhich statement correctly interprets the difference in their slopes?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Gym B's monthly cost rises \\$3 faster per month than Gym A's.",
@@ -19216,7 +19258,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
     "figure_type": null,
     "figure_props": null
@@ -19411,7 +19453,7 @@
       "interpreting both slope and intercept correctly when comparing two contextual models",
       "identifying the statement that assigns the rate and the starting value to the right roles"
     ],
-    "question_text": "Two streaming services model yearly cost in dollars over x years. Service A is C = 120x + 0 and Service B is C = 96x + 60. Which statement correctly interprets both the slope and the intercept of Service B?",
+    "question_text": "Two streaming services model yearly cost in dollars over x years.\n  Service A: C = 120x + 0\n  Service B: C = 96x + 60\nWhich statement correctly interprets both the slope and the intercept of Service B?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Service B charges \\$96 per year with a one-time \\$60 setup fee.",
@@ -19471,7 +19513,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
     "figure_type": null,
     "figure_props": null
@@ -22039,7 +22081,7 @@
       "identifying the coefficient of x as the rate of change in slope-intercept form",
       "comparing the rates of change of two linear equations"
     ],
-    "question_text": "Two lines are given by the equations Line A: $y = 9x + 2$ and Line B: $y = 4x + 12$. Which line has the greater rate of change?",
+    "question_text": "Two lines are given by the equations below.\n  Line A: $y = 9x + 2$\n  Line B: $y = 4x + 12$\nWhich line has the greater rate of change?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Line A",
@@ -22093,7 +22135,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-25",
-    "last_modified": "2026-06-25",
+    "last_modified": "2026-08-12",
     "review_notes": null,
     "figure_type": null,
     "figure_props": null
@@ -22118,7 +22160,7 @@
       "extracting the rate of change from two linear cost equations",
       "finding the difference between two rates of change"
     ],
-    "question_text": "The cost of Plan A is given by $y = 8x + 50$ and the cost of Plan B is given by $y = 5x + 80$, where x is the number of units. By how much does Plan A's rate of change exceed Plan B's rate of change?",
+    "question_text": "The cost of Plan A and the cost of Plan B are given below, where x is the number of units.\n  Plan A: $y = 8x + 50$\n  Plan B: $y = 5x + 80$\nBy how much does Plan A's rate of change exceed Plan B's rate of change?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "$30$",
@@ -22173,7 +22215,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-25",
-    "last_modified": "2026-06-25",
+    "last_modified": "2026-08-12",
     "review_notes": null,
     "figure_type": null,
     "figure_props": null
@@ -22198,7 +22240,7 @@
       "comparing two negative rates of change to determine which decreases faster",
       "recognizing that a more negative slope represents a steeper decrease"
     ],
-    "question_text": "Two lines are given by Line A: $y = -3x + 10$ and Line B: $y = -6x + 4$. Which line's value decreases faster as x increases?",
+    "question_text": "Two lines are given by the equations below.\n  Line A: $y = -3x + 10$\n  Line B: $y = -6x + 4$\nWhich line's value decreases faster as x increases?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Line A",
@@ -22252,7 +22294,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-25",
-    "last_modified": "2026-06-25",
+    "last_modified": "2026-08-12",
     "review_notes": null,
     "figure_type": null,
     "figure_props": null
@@ -22277,7 +22319,7 @@
       "comparing two rates of decrease given by linear equations",
       "finding the difference between two rates of change by magnitude"
     ],
-    "question_text": "Two tanks are draining. Tank A's volume is given by $y = -4x + 100$ and Tank B's by $y = -9x + 100$, where x is the time in minutes. How much faster does Tank B drain than Tank A?",
+    "question_text": "Two tanks are draining, where x is the time in minutes.\n  Tank A: $y = -4x + 100$\n  Tank B: $y = -9x + 100$\nHow much faster does Tank B drain than Tank A?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "$13$ units per minute",
@@ -22332,7 +22374,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-25",
-    "last_modified": "2026-06-25",
+    "last_modified": "2026-08-12",
     "review_notes": null,
     "figure_type": null,
     "figure_props": null
@@ -22357,7 +22399,7 @@
       "comparing two fractional rates of change in slope-intercept form",
       "ordering fractions to determine the greater rate"
     ],
-    "question_text": "Two lines are given by Line A: $y = \\frac{1}{2}x + 4$ and Line B: $y = \\frac{2}{3}x + 1$. Which line has the greater rate of change?",
+    "question_text": "Two lines are given by the equations below.\n  Line A: $y = \\frac{1}{2}x + 4$\n  Line B: $y = \\frac{2}{3}x + 1$\nWhich line has the greater rate of change?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Line B",
@@ -22411,7 +22453,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-25",
-    "last_modified": "2026-06-25",
+    "last_modified": "2026-08-12",
     "review_notes": null,
     "figure_type": null,
     "figure_props": null
@@ -33298,7 +33340,7 @@
       "identifying the solution of a system as the intersection point of two lines",
       "solving a system algebraically when both equations are in slope-intercept form"
     ],
-    "question_text": "Two lines are given by the equations y = -2x + 4 and y = 2x. At what point do they intersect?",
+    "question_text": "Two lines are given by the equations below.\n  y = -2x + 4\n  y = 2x\nAt what point do they intersect?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "(2, 4)",
@@ -33358,7 +33400,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
-    "last_modified": "2026-06-02",
+    "last_modified": "2026-08-12",
     "review_notes": null,
     "figure_type": null,
     "figure_props": null
@@ -35775,7 +35817,7 @@
       "converting equations from standard form to slope-intercept form to compare slopes",
       "using the product-of-slopes test to determine whether two lines are perpendicular"
     ],
-    "question_text": "What is the relationship between the lines 2x + 3y = 6 and 3x - 2y = 4?",
+    "question_text": "What is the relationship between these two lines?\n  2x + 3y = 6\n  3x - 2y = 4",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Parallel, because the coefficients of x are proportional",
@@ -35788,7 +35830,7 @@
     "distractor_logic": {
       "A": "Student compares the raw x-coefficients (2 and 3) without converting to slope-intercept form, incorrectly concluding the lines are parallel based on coefficient structure.",
       "B": "Correct: $m_{1}$ = -$\\frac{2}{3}$, $m_{2}$ = $\\frac{3}{2}$, and (-$\\frac{2}{3}$)($\\frac{3}{2}$) = -1, confirming perpendicularity.",
-      "C": "Student converts both equations to slope-intercept form correctly but makes an arithmetic error computing $m_{1}$ $\\times$ $m_{2}$, arriving at a value other than -1 and concluding neither.",
+      "C": "Student converts both equations correctly but drops the negative sign on $m_{1}$, computing ($\\frac{2}{3}$)($\\frac{3}{2}$) = 1 rather than -1, and concludes the lines are neither parallel nor perpendicular.",
       "D": "Student correctly identifies the lines as perpendicular but uses a false justification — the equal x-coefficient magnitude (both involve 2 and 3) is coincidental and not the criterion for perpendicularity."
     },
     "misconception_tag": {
@@ -35835,7 +35877,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
-    "last_modified": "2026-06-02",
+    "last_modified": "2026-08-12",
     "review_notes": null,
     "figure_type": null,
     "figure_props": null
@@ -35945,7 +35987,7 @@
       "converting non-standard linear equations to slope-intercept form to identify fractional slopes",
       "applying the negative-reciprocal test to determine perpendicularity between two lines"
     ],
-    "question_text": "What is the relationship between the lines 4x - 6y = 12 and 6x + 4y = 8?",
+    "question_text": "What is the relationship between these two lines?\n  4x - 6y = 12\n  6x + 4y = 8",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Parallel, because both equations contain the coefficients 4 and 6",
@@ -36005,7 +36047,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
-    "last_modified": "2026-06-02",
+    "last_modified": "2026-08-12",
     "review_notes": null,
     "figure_type": null,
     "figure_props": null
@@ -36030,7 +36072,7 @@
       "distinguishing coincident lines from parallel lines when two equations represent the same line",
       "recognizing that identical slope and y-intercept means the lines overlap entirely rather than running parallel"
     ],
-    "question_text": "What is the relationship between Line 1: y = 2x - 4 and Line 2: 4x - 2y = 8?",
+    "question_text": "What is the relationship between these two lines?\n  Line 1: y = 2x - 4\n  Line 2: 4x - 2y = 8",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "They are parallel, because both lines have slope 2",
@@ -36090,7 +36132,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-02",
-    "last_modified": "2026-06-02",
+    "last_modified": "2026-08-12",
     "review_notes": null,
     "figure_type": null,
     "figure_props": null
@@ -74019,7 +74061,7 @@
       "categorical_data"
     ],
     "estimated_time_seconds": 85,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -74030,10 +74072,35 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Color",
+        "Students"
+      ],
+      "rows": [
+        {
+          "label": "Red",
+          "values": [
+            4
+          ]
+        },
+        {
+          "label": "Blue",
+          "values": [
+            3
+          ]
+        },
+        {
+          "label": "Green",
+          "values": [
+            5
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_003",
@@ -74756,15 +74823,15 @@
       "A": "Yes — 5 + 8 + 3 + 4 = 20, so the total is correct.",
       "B": "No — the frequencies sum to 22, not 20; the student added 2 extra.",
       "C": "No — the frequencies sum to 21; the student made an arithmetic error.",
-      "D": "No — the frequencies sum to 18; the student omitted the Yellow row when adding."
+      "D": "No — the frequencies sum to 16; the student omitted the Yellow row when adding."
     },
     "correct_answer": "A",
     "explanation": "Add the four frequencies:\n5 + 8 = 13\n13 + 3 = 16\n16 + 4 = 20\n\nThe frequencies sum to exactly 20. The student's total is correct.",
     "distractor_logic": {
       "A": "Correct: 5 + 8 + 3 + 4 = 20, which matches the stated total.",
       "B": "Student misreads Blue as 10 instead of 8 and arrives at 5 + 10 + 3 + 4 = 22, incorrectly concluding the total is wrong.",
-      "C": "Student makes a mid-addition arithmetic slip, perhaps computing 5 + 8 + 4 + 4 = 21 by misreading Green as 4.",
-      "D": "Student drops the Yellow frequency entirely and sums only three rows: 5 + 8 + 3 = 16, then arrives at 18 through a separate arithmetic error — or reads Yellow = 2 and adds 5 + 8 + 3 + 2 = 18."
+      "C": "Student misreads the Green frequency as 4 instead of 3 and sums 5 + 8 + 4 + 4 = 21, concluding the stated total is wrong.",
+      "D": "Student omits the Yellow frequency and sums only three rows: 5 + 8 + 3 = 16."
     },
     "misconception_tag": {
       "B": "frequency_value_misread",
@@ -74799,7 +74866,7 @@
       "addition"
     ],
     "estimated_time_seconds": 90,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -74810,10 +74877,41 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Color",
+        "Frequency"
+      ],
+      "rows": [
+        {
+          "label": "Red",
+          "values": [
+            5
+          ]
+        },
+        {
+          "label": "Blue",
+          "values": [
+            8
+          ]
+        },
+        {
+          "label": "Green",
+          "values": [
+            3
+          ]
+        },
+        {
+          "label": "Yellow",
+          "values": [
+            4
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_006",
@@ -75103,7 +75201,7 @@
     "distractor_logic": {
       "A": "Correct: 7 + 5 + 4 + 6 = 22, which exceeds the dataset size of 20 — the table contains an error.",
       "B": "Student accepts the table without computing the total, treating the presence of four labeled categories as sufficient evidence of accuracy.",
-      "C": "Student makes an arithmetic slip when summing: perhaps computing 7 + 5 + 4 + 6 as 7 + 5 = 12, 12 + 4 = 16, 16 + 4 = 20... or misreads Category D as 5, giving 7 + 5 + 4 + 5 = 21.",
+      "C": "Student misreads the Category D frequency as 5 instead of 6 and sums 7 + 5 + 4 + 5 = 21, concluding the table overcounts by one rather than by two.",
       "D": "Student applies a false structural rule — frequency tables have no required number of categories. The error is in the frequency values, not the number of rows."
     },
     "misconception_tag": {
@@ -75139,7 +75237,7 @@
       "totals"
     ],
     "estimated_time_seconds": 120,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -75150,10 +75248,41 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Category",
+        "Frequency"
+      ],
+      "rows": [
+        {
+          "label": "Category A",
+          "values": [
+            7
+          ]
+        },
+        {
+          "label": "Category B",
+          "values": [
+            5
+          ]
+        },
+        {
+          "label": "Category C",
+          "values": [
+            4
+          ]
+        },
+        {
+          "label": "Category D",
+          "values": [
+            6
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_B_007",
@@ -75326,7 +75455,7 @@
       "direct_reading"
     ],
     "estimated_time_seconds": 65,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -75337,10 +75466,27 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "pictograph",
+    "figure_props": {
+      "rows": [
+        {
+          "label": "Monday",
+          "symbols": 3
+        },
+        {
+          "label": "Tuesday",
+          "symbols": 5
+        },
+        {
+          "label": "Wednesday",
+          "symbols": 2
+        }
+      ],
+      "symbolValue": 4,
+      "unit": "pizzas"
+    }
   },
   {
     "item_id": "PR_B_009",
@@ -75411,7 +75557,7 @@
       "single_value"
     ],
     "estimated_time_seconds": 60,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -75422,10 +75568,28 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "line_graph",
+    "figure_props": {
+      "xLabel": "Week",
+      "yLabel": "Quiz Score",
+      "categories": [
+        "Week 1",
+        "Week 2",
+        "Week 3",
+        "Week 4"
+      ],
+      "values": [
+        70,
+        75,
+        68,
+        80
+      ],
+      "yAxisMin": 60,
+      "yAxisMax": 85,
+      "yAxisStep": 5
+    }
   },
   {
     "item_id": "PR_B_010",
@@ -75600,7 +75764,7 @@
       "reading_comprehension"
     ],
     "estimated_time_seconds": 65,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -75611,10 +75775,27 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "pictograph",
+    "figure_props": {
+      "rows": [
+        {
+          "label": "Ana",
+          "symbols": 4
+        },
+        {
+          "label": "Ben",
+          "symbols": 3
+        },
+        {
+          "label": "Cara",
+          "symbols": 6
+        }
+      ],
+      "symbolValue": 2,
+      "unit": "books"
+    }
   },
   {
     "item_id": "PR_P_007",
@@ -75789,7 +75970,7 @@
       "temperature"
     ],
     "estimated_time_seconds": 95,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -75800,10 +75981,30 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "line_graph",
+    "figure_props": {
+      "xLabel": "Day",
+      "yLabel": "High Temperature (°F)",
+      "categories": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "values": [
+        72,
+        78,
+        85,
+        80,
+        74
+      ],
+      "yAxisMin": 65,
+      "yAxisMax": 90,
+      "yAxisStep": 5
+    }
   },
   {
     "item_id": "PR_P_009",
@@ -75978,7 +76179,7 @@
       "two_rows"
     ],
     "estimated_time_seconds": 100,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -75989,10 +76190,35 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "pictograph",
+    "figure_props": {
+      "rows": [
+        {
+          "label": "Monday",
+          "symbols": 4
+        },
+        {
+          "label": "Tuesday",
+          "symbols": 3
+        },
+        {
+          "label": "Wednesday",
+          "symbols": 5
+        },
+        {
+          "label": "Thursday",
+          "symbols": 4
+        },
+        {
+          "label": "Friday",
+          "symbols": 2
+        }
+      ],
+      "symbolValue": 3,
+      "unit": "glasses"
+    }
   },
   {
     "item_id": "PR_P_011",
@@ -76063,7 +76289,7 @@
       "revenue"
     ],
     "estimated_time_seconds": 100,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -76074,10 +76300,30 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "line_graph",
+    "figure_props": {
+      "xLabel": "Day",
+      "yLabel": "Revenue ($)",
+      "categories": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "values": [
+        200,
+        350,
+        300,
+        250,
+        400
+      ],
+      "yAxisMin": 0,
+      "yAxisMax": 500,
+      "yAxisStep": 100
+    }
   },
   {
     "item_id": "PR_A_007",
@@ -76148,7 +76394,7 @@
       "temperature_trend"
     ],
     "estimated_time_seconds": 130,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -76159,10 +76405,32 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "line_graph",
+    "figure_props": {
+      "xLabel": "Month",
+      "yLabel": "Average Temperature (°F)",
+      "categories": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun"
+      ],
+      "values": [
+        42,
+        48,
+        57,
+        66,
+        72,
+        78
+      ],
+      "yAxisMin": 40,
+      "yAxisMax": 80,
+      "yAxisStep": 10
+    }
   },
   {
     "item_id": "PR_A_008",
@@ -76339,7 +76607,7 @@
       "savings"
     ],
     "estimated_time_seconds": 130,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -76350,10 +76618,32 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "line_graph",
+    "figure_props": {
+      "xLabel": "Month",
+      "yLabel": "Savings ($)",
+      "categories": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun"
+      ],
+      "values": [
+        50,
+        80,
+        110,
+        90,
+        130,
+        160
+      ],
+      "yAxisMin": 0,
+      "yAxisMax": 200,
+      "yAxisStep": 50
+    }
   },
   {
     "item_id": "PR_A_010",
@@ -76424,7 +76714,7 @@
       "key_value"
     ],
     "estimated_time_seconds": 135,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -76435,10 +76725,31 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "pictograph",
+    "figure_props": {
+      "rows": [
+        {
+          "label": "Aisha",
+          "symbols": 6
+        },
+        {
+          "label": "Ben",
+          "symbols": 4
+        },
+        {
+          "label": "Carlos",
+          "symbols": 7
+        },
+        {
+          "label": "Dana",
+          "symbols": 3
+        }
+      ],
+      "symbolValue": 5,
+      "unit": "miles"
+    }
   },
   {
     "item_id": "PR_A_011",
@@ -76613,7 +76924,7 @@
       "genre_frequency"
     ],
     "estimated_time_seconds": 55,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -76624,10 +76935,41 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Genre",
+        "Books Checked Out"
+      ],
+      "rows": [
+        {
+          "label": "Fiction",
+          "values": [
+            34
+          ]
+        },
+        {
+          "label": "Nonfiction",
+          "values": [
+            21
+          ]
+        },
+        {
+          "label": "Mystery",
+          "values": [
+            18
+          ]
+        },
+        {
+          "label": "Science Fiction",
+          "values": [
+            27
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_B_013",
@@ -76698,7 +77040,7 @@
       "lunch_preference"
     ],
     "estimated_time_seconds": 65,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -76709,10 +77051,35 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Pizza",
+        "Sandwich",
+        "Salad"
+      ],
+      "rows": [
+        {
+          "label": "9th Grade",
+          "values": [
+            12,
+            8,
+            5
+          ]
+        },
+        {
+          "label": "10th Grade",
+          "values": [
+            9,
+            11,
+            7
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_B_014",
@@ -76783,7 +77150,7 @@
       "museum_visitors"
     ],
     "estimated_time_seconds": 65,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -76794,10 +77161,59 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Day",
+        "Visitors"
+      ],
+      "rows": [
+        {
+          "label": "Monday",
+          "values": [
+            45
+          ]
+        },
+        {
+          "label": "Tuesday",
+          "values": [
+            38
+          ]
+        },
+        {
+          "label": "Wednesday",
+          "values": [
+            52
+          ]
+        },
+        {
+          "label": "Thursday",
+          "values": [
+            41
+          ]
+        },
+        {
+          "label": "Friday",
+          "values": [
+            67
+          ]
+        },
+        {
+          "label": "Saturday",
+          "values": [
+            89
+          ]
+        },
+        {
+          "label": "Sunday",
+          "values": [
+            74
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_B_015",
@@ -76868,7 +77284,7 @@
       "class_period"
     ],
     "estimated_time_seconds": 65,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -76879,10 +77295,39 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Passed",
+        "Failed"
+      ],
+      "rows": [
+        {
+          "label": "Period 1",
+          "values": [
+            22,
+            6
+          ]
+        },
+        {
+          "label": "Period 2",
+          "values": [
+            18,
+            9
+          ]
+        },
+        {
+          "label": "Period 3",
+          "values": [
+            25,
+            4
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_B_016",
@@ -76953,7 +77398,7 @@
       "product_sales"
     ],
     "estimated_time_seconds": 60,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -76964,10 +77409,35 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Product",
+        "Units Sold"
+      ],
+      "rows": [
+        {
+          "label": "Product X",
+          "values": [
+            130
+          ]
+        },
+        {
+          "label": "Product Y",
+          "values": [
+            95
+          ]
+        },
+        {
+          "label": "Product Z",
+          "values": [
+            115
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_012",
@@ -77038,7 +77508,7 @@
       "club_enrollment"
     ],
     "estimated_time_seconds": 90,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -77049,10 +77519,35 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Chess",
+        "Drama",
+        "Robotics"
+      ],
+      "rows": [
+        {
+          "label": "Male",
+          "values": [
+            8,
+            14,
+            20
+          ]
+        },
+        {
+          "label": "Female",
+          "values": [
+            11,
+            18,
+            15
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_013",
@@ -77123,7 +77618,7 @@
       "quarterly_data"
     ],
     "estimated_time_seconds": 90,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -77134,10 +77629,41 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Quarter",
+        "Complaints"
+      ],
+      "rows": [
+        {
+          "label": "Q1",
+          "values": [
+            42
+          ]
+        },
+        {
+          "label": "Q2",
+          "values": [
+            67
+          ]
+        },
+        {
+          "label": "Q3",
+          "values": [
+            55
+          ]
+        },
+        {
+          "label": "Q4",
+          "values": [
+            38
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_014",
@@ -77208,7 +77734,7 @@
       "pet_ownership"
     ],
     "estimated_time_seconds": 95,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -77219,10 +77745,32 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Owns Pet",
+        "No Pet"
+      ],
+      "rows": [
+        {
+          "label": "House",
+          "values": [
+            48,
+            22
+          ]
+        },
+        {
+          "label": "Apartment",
+          "values": [
+            31,
+            44
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_015",
@@ -77293,7 +77841,7 @@
       "class_preference"
     ],
     "estimated_time_seconds": 90,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -77304,10 +77852,32 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Morning",
+        "Afternoon"
+      ],
+      "rows": [
+        {
+          "label": "Freshman",
+          "values": [
+            30,
+            20
+          ]
+        },
+        {
+          "label": "Sophomore",
+          "values": [
+            25,
+            35
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_016",
@@ -77378,7 +77948,7 @@
       "membership_count"
     ],
     "estimated_time_seconds": 95,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -77389,10 +77959,47 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Organization",
+        "Members"
+      ],
+      "rows": [
+        {
+          "label": "Org A",
+          "values": [
+            85
+          ]
+        },
+        {
+          "label": "Org B",
+          "values": [
+            120
+          ]
+        },
+        {
+          "label": "Org C",
+          "values": [
+            95
+          ]
+        },
+        {
+          "label": "Org D",
+          "values": [
+            110
+          ]
+        },
+        {
+          "label": "Org E",
+          "values": [
+            75
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_012",
@@ -77582,7 +78189,7 @@
       "customer_ratings"
     ],
     "estimated_time_seconds": 130,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -77593,10 +78200,43 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Good Service",
+        "Poor Service",
+        "Total"
+      ],
+      "rows": [
+        {
+          "label": "Good Food",
+          "values": [
+            55,
+            15,
+            70
+          ]
+        },
+        {
+          "label": "Poor Food",
+          "values": [
+            10,
+            20,
+            30
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            65,
+            35,
+            100
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_014",
@@ -77667,7 +78307,7 @@
       "conditional_proportion"
     ],
     "estimated_time_seconds": 140,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -77678,10 +78318,43 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Completed",
+        "Not Completed",
+        "Total"
+      ],
+      "rows": [
+        {
+          "label": "Sales",
+          "values": [
+            40,
+            10,
+            50
+          ]
+        },
+        {
+          "label": "Marketing",
+          "values": [
+            30,
+            20,
+            50
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            70,
+            30,
+            100
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_015",
@@ -77752,7 +78425,7 @@
       "extracurricular"
     ],
     "estimated_time_seconds": 130,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -77763,10 +78436,43 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Plays Instrument",
+        "No Instrument",
+        "Total"
+      ],
+      "rows": [
+        {
+          "label": "Plays Sport",
+          "values": [
+            18,
+            27,
+            45
+          ]
+        },
+        {
+          "label": "No Sport",
+          "values": [
+            12,
+            23,
+            35
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            30,
+            50,
+            80
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_016",
@@ -77837,7 +78543,7 @@
       "claim_evaluation"
     ],
     "estimated_time_seconds": 145,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -77848,10 +78554,43 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Condition B Positive",
+        "Condition B Negative",
+        "Total"
+      ],
+      "rows": [
+        {
+          "label": "Condition A Positive",
+          "values": [
+            22,
+            18,
+            40
+          ]
+        },
+        {
+          "label": "Condition A Negative",
+          "values": [
+            13,
+            47,
+            60
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            35,
+            65,
+            100
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_B_017",
@@ -84539,7 +85278,7 @@
       "spread"
     ],
     "estimated_time_seconds": 110,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -84550,10 +85289,28 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-19",
-    "last_modified": "2026-06-19",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "box_plot_comparison",
+    "figure_props": {
+      "xLabel": "Value",
+      "plots": [
+        {
+          "label": "A",
+          "min": 10,
+          "q1": 20,
+          "q3": 30,
+          "max": 50
+        },
+        {
+          "label": "B",
+          "min": 15,
+          "q1": 18,
+          "q3": 40,
+          "max": 45
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_043",
@@ -90783,10 +91540,37 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Hours Practiced",
+      "yLabel": "Free Throws Made out of 50",
+      "xRange": [
+        0,
+        12
+      ],
+      "yRange": [
+        0,
+        50
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              1,
+              8
+            ],
+            [
+              11,
+              46
+            ]
+          ],
+          "scatter": "tight",
+          "n": 16
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_066",
@@ -90868,10 +91652,37 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Daily Steps (thousands)",
+      "yLabel": "Hours of Sleep",
+      "xRange": [
+        0,
+        15
+      ],
+      "yRange": [
+        4,
+        10
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              1,
+              5.8
+            ],
+            [
+              14,
+              7.8
+            ]
+          ],
+          "scatter": "wide",
+          "n": 16
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_067",
@@ -90953,10 +91764,57 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Average Daily Temperature (°F)",
+      "yLabel": "Monthly Energy Bill ($)",
+      "xRange": [
+        30,
+        100
+      ],
+      "yRange": [
+        0,
+        250
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              31,
+              203
+            ],
+            [
+              45,
+              150
+            ],
+            [
+              57,
+              102
+            ],
+            [
+              67,
+              82
+            ],
+            [
+              78,
+              105
+            ],
+            [
+              90,
+              160
+            ],
+            [
+              99,
+              203
+            ]
+          ],
+          "scatter": "tight",
+          "n": 20
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_068",
@@ -91033,10 +91891,37 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Outdoor Temperature (°F)",
+      "yLabel": "Cups of Hot Chocolate Sold",
+      "xRange": [
+        30,
+        90
+      ],
+      "yRange": [
+        0,
+        60
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              32,
+              55
+            ],
+            [
+              88,
+              6
+            ]
+          ],
+          "scatter": "tight",
+          "n": 16
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_069",
@@ -91118,10 +92003,37 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Student ID Number",
+      "yLabel": "Quiz Score",
+      "xRange": [
+        1000,
+        1100
+      ],
+      "yRange": [
+        0,
+        100
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              1002,
+              75
+            ],
+            [
+              1098,
+              75
+            ]
+          ],
+          "scatter": "moderate",
+          "n": 16
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_067",
@@ -91203,10 +92115,43 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Hours of Screen Time",
+      "yLabel": "Hours of Sleep",
+      "xRange": [
+        0,
+        10
+      ],
+      "yRange": [
+        3,
+        10
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              0.5,
+              9.3
+            ],
+            [
+              9.5,
+              4.2
+            ]
+          ],
+          "scatter": "moderate",
+          "n": 15,
+          "points": [
+            [
+              9,
+              9
+            ]
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_068",
@@ -91288,10 +92233,53 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Study Hours",
+      "yLabel": "Test Score",
+      "xRange": [
+        0,
+        10
+      ],
+      "yRange": [
+        50,
+        100
+      ],
+      "plots": [
+        {
+          "label": "Plot 1",
+          "path": [
+            [
+              0.5,
+              57
+            ],
+            [
+              9.5,
+              95
+            ]
+          ],
+          "scatter": "tight",
+          "n": 15
+        },
+        {
+          "label": "Plot 2",
+          "path": [
+            [
+              0.5,
+              57
+            ],
+            [
+              9.5,
+              95
+            ]
+          ],
+          "scatter": "wide",
+          "n": 15
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_069",
@@ -91373,10 +92361,53 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Years of Experience",
+      "yLabel": "Annual Salary (in $1000s)",
+      "xRange": [
+        0,
+        30
+      ],
+      "yRange": [
+        30,
+        120
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              1,
+              38
+            ],
+            [
+              5,
+              68
+            ],
+            [
+              10,
+              88
+            ],
+            [
+              16,
+              101
+            ],
+            [
+              23,
+              109
+            ],
+            [
+              29,
+              114
+            ]
+          ],
+          "scatter": "tight",
+          "n": 18
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_070",
@@ -91458,10 +92489,47 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Number of Pets Owned",
+      "yLabel": "Monthly Grocery Spending ($)",
+      "xRange": [
+        0,
+        8
+      ],
+      "yRange": [
+        200,
+        800
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              0.5,
+              400
+            ],
+            [
+              7.5,
+              400
+            ]
+          ],
+          "scatter": "wide",
+          "n": 14,
+          "points": [
+            [
+              0,
+              220
+            ],
+            [
+              8,
+              760
+            ]
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_071",
@@ -91543,10 +92611,67 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xRange": [
+        0,
+        10
+      ],
+      "yRange": [
+        0,
+        10
+      ],
+      "showTicks": false,
+      "plots": [
+        {
+          "label": "Plot 1",
+          "path": [
+            [
+              0.5,
+              2.5
+            ],
+            [
+              9.5,
+              7.5
+            ]
+          ],
+          "scatter": "wide",
+          "n": 16
+        },
+        {
+          "label": "Plot 2",
+          "path": [
+            [
+              0.5,
+              9.0
+            ],
+            [
+              9.5,
+              1.5
+            ]
+          ],
+          "scatter": "tight",
+          "n": 16
+        },
+        {
+          "label": "Plot 3",
+          "path": [
+            [
+              0.5,
+              3.0
+            ],
+            [
+              9.5,
+              7.0
+            ]
+          ],
+          "scatter": "moderate",
+          "n": 16
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_B_071",
@@ -92508,7 +93633,7 @@
       "comparing two candidate linear models by how well their predictions match the data",
       "judging fit by residual error rather than by a single feature of the equation"
     ],
-    "question_text": "A data set contains the points (1, 3), (2, 5), (3, 7), and (4, 9). Two candidate models are proposed: Model 1 is y = 2x + 1 and Model 2 is y = 2x + 3. Which model fits the data better, and why?",
+    "question_text": "A data set contains the points (1, 3), (2, 5), (3, 7), and (4, 9). Two candidate models are proposed.\n  Model 1: y = 2x + 1\n  Model 2: y = 2x + 3\nWhich model fits the data better, and why?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Model 2, because a larger y-intercept always fits data better.",
@@ -92568,7 +93693,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
     "figure_type": null,
     "figure_props": null

@@ -170,7 +170,7 @@
       "direct_reading"
     ],
     "estimated_time_seconds": 65,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -181,10 +181,27 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "pictograph",
+    "figure_props": {
+      "rows": [
+        {
+          "label": "Monday",
+          "symbols": 3
+        },
+        {
+          "label": "Tuesday",
+          "symbols": 5
+        },
+        {
+          "label": "Wednesday",
+          "symbols": 2
+        }
+      ],
+      "symbolValue": 4,
+      "unit": "pizzas"
+    }
   },
   {
     "item_id": "PR_B_009",
@@ -255,7 +272,7 @@
       "single_value"
     ],
     "estimated_time_seconds": 60,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -266,10 +283,28 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "line_graph",
+    "figure_props": {
+      "xLabel": "Week",
+      "yLabel": "Quiz Score",
+      "categories": [
+        "Week 1",
+        "Week 2",
+        "Week 3",
+        "Week 4"
+      ],
+      "values": [
+        70,
+        75,
+        68,
+        80
+      ],
+      "yAxisMin": 60,
+      "yAxisMax": 85,
+      "yAxisStep": 5
+    }
   },
   {
     "item_id": "PR_B_010",
@@ -444,7 +479,7 @@
       "reading_comprehension"
     ],
     "estimated_time_seconds": 65,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -455,10 +490,27 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "pictograph",
+    "figure_props": {
+      "rows": [
+        {
+          "label": "Ana",
+          "symbols": 4
+        },
+        {
+          "label": "Ben",
+          "symbols": 3
+        },
+        {
+          "label": "Cara",
+          "symbols": 6
+        }
+      ],
+      "symbolValue": 2,
+      "unit": "books"
+    }
   },
   {
     "item_id": "PR_P_007",
@@ -633,7 +685,7 @@
       "temperature"
     ],
     "estimated_time_seconds": 95,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -644,10 +696,30 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "line_graph",
+    "figure_props": {
+      "xLabel": "Day",
+      "yLabel": "High Temperature (\u00b0F)",
+      "categories": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "values": [
+        72,
+        78,
+        85,
+        80,
+        74
+      ],
+      "yAxisMin": 65,
+      "yAxisMax": 90,
+      "yAxisStep": 5
+    }
   },
   {
     "item_id": "PR_P_009",
@@ -822,7 +894,7 @@
       "two_rows"
     ],
     "estimated_time_seconds": 100,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -833,10 +905,35 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "pictograph",
+    "figure_props": {
+      "rows": [
+        {
+          "label": "Monday",
+          "symbols": 4
+        },
+        {
+          "label": "Tuesday",
+          "symbols": 3
+        },
+        {
+          "label": "Wednesday",
+          "symbols": 5
+        },
+        {
+          "label": "Thursday",
+          "symbols": 4
+        },
+        {
+          "label": "Friday",
+          "symbols": 2
+        }
+      ],
+      "symbolValue": 3,
+      "unit": "glasses"
+    }
   },
   {
     "item_id": "PR_P_011",
@@ -907,7 +1004,7 @@
       "revenue"
     ],
     "estimated_time_seconds": 100,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -918,10 +1015,30 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "line_graph",
+    "figure_props": {
+      "xLabel": "Day",
+      "yLabel": "Revenue ($)",
+      "categories": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "values": [
+        200,
+        350,
+        300,
+        250,
+        400
+      ],
+      "yAxisMin": 0,
+      "yAxisMax": 500,
+      "yAxisStep": 100
+    }
   },
   {
     "item_id": "PR_A_007",
@@ -992,7 +1109,7 @@
       "temperature_trend"
     ],
     "estimated_time_seconds": 130,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -1003,10 +1120,32 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "line_graph",
+    "figure_props": {
+      "xLabel": "Month",
+      "yLabel": "Average Temperature (\u00b0F)",
+      "categories": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun"
+      ],
+      "values": [
+        42,
+        48,
+        57,
+        66,
+        72,
+        78
+      ],
+      "yAxisMin": 40,
+      "yAxisMax": 80,
+      "yAxisStep": 10
+    }
   },
   {
     "item_id": "PR_A_008",
@@ -1183,7 +1322,7 @@
       "savings"
     ],
     "estimated_time_seconds": 130,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -1194,10 +1333,32 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "line_graph",
+    "figure_props": {
+      "xLabel": "Month",
+      "yLabel": "Savings ($)",
+      "categories": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun"
+      ],
+      "values": [
+        50,
+        80,
+        110,
+        90,
+        130,
+        160
+      ],
+      "yAxisMin": 0,
+      "yAxisMax": 200,
+      "yAxisStep": 50
+    }
   },
   {
     "item_id": "PR_A_010",
@@ -1268,7 +1429,7 @@
       "key_value"
     ],
     "estimated_time_seconds": 135,
-    "contains_image": false,
+    "contains_image": true,
     "image_url": null,
     "exposure_max": 0.2,
     "times_administered": 0,
@@ -1279,10 +1440,31 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-05",
-    "last_modified": "2026-06-05",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "pictograph",
+    "figure_props": {
+      "rows": [
+        {
+          "label": "Aisha",
+          "symbols": 6
+        },
+        {
+          "label": "Ben",
+          "symbols": 4
+        },
+        {
+          "label": "Carlos",
+          "symbols": 7
+        },
+        {
+          "label": "Dana",
+          "symbols": 3
+        }
+      ],
+      "symbolValue": 5,
+      "unit": "miles"
+    }
   },
   {
     "item_id": "PR_A_011",

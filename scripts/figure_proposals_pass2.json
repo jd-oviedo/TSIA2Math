@@ -1,0 +1,658 @@
+{
+  "_comment": "Second figure pass, bucket A — items whose stem asserts a table or a pair of box plots exists, where an existing figure type already covers it and simply was not applied. Every cell value is taken verbatim from the item's own question_text; nothing is inferred. No highlightRow/highlightCol on any item: highlighting the row or column a question asks about would point at the answer. PR_P_042 carries no median on either plot: its stem states only min/Q1/Q3/max and the question is purely about IQR, so the renderer omits the median line rather than have this file invent one.",
+  "PR_A_013": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Good Service",
+        "Poor Service",
+        "Total"
+      ],
+      "rows": [
+        {
+          "label": "Good Food",
+          "values": [
+            55,
+            15,
+            70
+          ]
+        },
+        {
+          "label": "Poor Food",
+          "values": [
+            10,
+            20,
+            30
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            65,
+            35,
+            100
+          ]
+        }
+      ]
+    }
+  },
+  "PR_A_014": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Completed",
+        "Not Completed",
+        "Total"
+      ],
+      "rows": [
+        {
+          "label": "Sales",
+          "values": [
+            40,
+            10,
+            50
+          ]
+        },
+        {
+          "label": "Marketing",
+          "values": [
+            30,
+            20,
+            50
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            70,
+            30,
+            100
+          ]
+        }
+      ]
+    }
+  },
+  "PR_A_015": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Plays Instrument",
+        "No Instrument",
+        "Total"
+      ],
+      "rows": [
+        {
+          "label": "Plays Sport",
+          "values": [
+            18,
+            27,
+            45
+          ]
+        },
+        {
+          "label": "No Sport",
+          "values": [
+            12,
+            23,
+            35
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            30,
+            50,
+            80
+          ]
+        }
+      ]
+    }
+  },
+  "PR_A_016": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Condition B Positive",
+        "Condition B Negative",
+        "Total"
+      ],
+      "rows": [
+        {
+          "label": "Condition A Positive",
+          "values": [
+            22,
+            18,
+            40
+          ]
+        },
+        {
+          "label": "Condition A Negative",
+          "values": [
+            13,
+            47,
+            60
+          ]
+        },
+        {
+          "label": "Total",
+          "values": [
+            35,
+            65,
+            100
+          ]
+        }
+      ]
+    }
+  },
+  "PR_B_013": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Pizza",
+        "Sandwich",
+        "Salad"
+      ],
+      "rows": [
+        {
+          "label": "9th Grade",
+          "values": [
+            12,
+            8,
+            5
+          ]
+        },
+        {
+          "label": "10th Grade",
+          "values": [
+            9,
+            11,
+            7
+          ]
+        }
+      ]
+    }
+  },
+  "PR_B_015": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Passed",
+        "Failed"
+      ],
+      "rows": [
+        {
+          "label": "Period 1",
+          "values": [
+            22,
+            6
+          ]
+        },
+        {
+          "label": "Period 2",
+          "values": [
+            18,
+            9
+          ]
+        },
+        {
+          "label": "Period 3",
+          "values": [
+            25,
+            4
+          ]
+        }
+      ]
+    }
+  },
+  "PR_P_012": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Chess",
+        "Drama",
+        "Robotics"
+      ],
+      "rows": [
+        {
+          "label": "Male",
+          "values": [
+            8,
+            14,
+            20
+          ]
+        },
+        {
+          "label": "Female",
+          "values": [
+            11,
+            18,
+            15
+          ]
+        }
+      ]
+    }
+  },
+  "PR_P_014": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Owns Pet",
+        "No Pet"
+      ],
+      "rows": [
+        {
+          "label": "House",
+          "values": [
+            48,
+            22
+          ]
+        },
+        {
+          "label": "Apartment",
+          "values": [
+            31,
+            44
+          ]
+        }
+      ]
+    }
+  },
+  "PR_P_015": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "",
+        "Morning",
+        "Afternoon"
+      ],
+      "rows": [
+        {
+          "label": "Freshman",
+          "values": [
+            30,
+            20
+          ]
+        },
+        {
+          "label": "Sophomore",
+          "values": [
+            25,
+            35
+          ]
+        }
+      ]
+    }
+  },
+  "PR_B_012": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Genre",
+        "Books Checked Out"
+      ],
+      "rows": [
+        {
+          "label": "Fiction",
+          "values": [
+            34
+          ]
+        },
+        {
+          "label": "Nonfiction",
+          "values": [
+            21
+          ]
+        },
+        {
+          "label": "Mystery",
+          "values": [
+            18
+          ]
+        },
+        {
+          "label": "Science Fiction",
+          "values": [
+            27
+          ]
+        }
+      ]
+    }
+  },
+  "PR_B_014": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Day",
+        "Visitors"
+      ],
+      "rows": [
+        {
+          "label": "Monday",
+          "values": [
+            45
+          ]
+        },
+        {
+          "label": "Tuesday",
+          "values": [
+            38
+          ]
+        },
+        {
+          "label": "Wednesday",
+          "values": [
+            52
+          ]
+        },
+        {
+          "label": "Thursday",
+          "values": [
+            41
+          ]
+        },
+        {
+          "label": "Friday",
+          "values": [
+            67
+          ]
+        },
+        {
+          "label": "Saturday",
+          "values": [
+            89
+          ]
+        },
+        {
+          "label": "Sunday",
+          "values": [
+            74
+          ]
+        }
+      ]
+    }
+  },
+  "PR_B_016": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Product",
+        "Units Sold"
+      ],
+      "rows": [
+        {
+          "label": "Product X",
+          "values": [
+            130
+          ]
+        },
+        {
+          "label": "Product Y",
+          "values": [
+            95
+          ]
+        },
+        {
+          "label": "Product Z",
+          "values": [
+            115
+          ]
+        }
+      ]
+    }
+  },
+  "PR_P_013": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Quarter",
+        "Complaints"
+      ],
+      "rows": [
+        {
+          "label": "Q1",
+          "values": [
+            42
+          ]
+        },
+        {
+          "label": "Q2",
+          "values": [
+            67
+          ]
+        },
+        {
+          "label": "Q3",
+          "values": [
+            55
+          ]
+        },
+        {
+          "label": "Q4",
+          "values": [
+            38
+          ]
+        }
+      ]
+    }
+  },
+  "PR_P_016": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Organization",
+        "Members"
+      ],
+      "rows": [
+        {
+          "label": "Org A",
+          "values": [
+            85
+          ]
+        },
+        {
+          "label": "Org B",
+          "values": [
+            120
+          ]
+        },
+        {
+          "label": "Org C",
+          "values": [
+            95
+          ]
+        },
+        {
+          "label": "Org D",
+          "values": [
+            110
+          ]
+        },
+        {
+          "label": "Org E",
+          "values": [
+            75
+          ]
+        }
+      ]
+    }
+  },
+  "PR_A_006": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Category",
+        "Frequency"
+      ],
+      "rows": [
+        {
+          "label": "Category A",
+          "values": [
+            7
+          ]
+        },
+        {
+          "label": "Category B",
+          "values": [
+            5
+          ]
+        },
+        {
+          "label": "Category C",
+          "values": [
+            4
+          ]
+        },
+        {
+          "label": "Category D",
+          "values": [
+            6
+          ]
+        }
+      ]
+    }
+  },
+  "PR_P_002": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Color",
+        "Students"
+      ],
+      "rows": [
+        {
+          "label": "Red",
+          "values": [
+            4
+          ]
+        },
+        {
+          "label": "Blue",
+          "values": [
+            3
+          ]
+        },
+        {
+          "label": "Green",
+          "values": [
+            5
+          ]
+        }
+      ]
+    }
+  },
+  "PR_P_005": {
+    "figure_type": "table",
+    "figure_props": {
+      "columnHeaders": [
+        "Color",
+        "Frequency"
+      ],
+      "rows": [
+        {
+          "label": "Red",
+          "values": [
+            5
+          ]
+        },
+        {
+          "label": "Blue",
+          "values": [
+            8
+          ]
+        },
+        {
+          "label": "Green",
+          "values": [
+            3
+          ]
+        },
+        {
+          "label": "Yellow",
+          "values": [
+            4
+          ]
+        }
+      ]
+    }
+  },
+  "QR_B_068": {
+    "figure_type": "table",
+    "figure_props": {
+      "rows": [
+        {
+          "label": "$x$",
+          "values": [
+            2,
+            4,
+            6,
+            8
+          ]
+        },
+        {
+          "label": "$y$",
+          "values": [
+            6,
+            12,
+            18,
+            24
+          ]
+        }
+      ]
+    }
+  },
+  "QR_P_062": {
+    "figure_type": "table",
+    "figure_props": {
+      "rows": [
+        {
+          "label": "$x$",
+          "values": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "label": "$y$",
+          "values": [
+            10,
+            13,
+            16,
+            19
+          ]
+        }
+      ]
+    }
+  },
+  "PR_P_042": {
+    "figure_type": "box_plot_comparison",
+    "figure_props": {
+      "xLabel": "Value",
+      "plots": [
+        {
+          "label": "A",
+          "min": 10,
+          "q1": 20,
+          "q3": 30,
+          "max": 50
+        },
+        {
+          "label": "B",
+          "min": 15,
+          "q1": 18,
+          "q3": 40,
+          "max": 45
+        }
+      ]
+    }
+  }
+}

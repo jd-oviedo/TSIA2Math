@@ -479,10 +479,37 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Hours Practiced",
+      "yLabel": "Free Throws Made out of 50",
+      "xRange": [
+        0,
+        12
+      ],
+      "yRange": [
+        0,
+        50
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              1,
+              8
+            ],
+            [
+              11,
+              46
+            ]
+          ],
+          "scatter": "tight",
+          "n": 16
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_066",
@@ -564,10 +591,37 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Daily Steps (thousands)",
+      "yLabel": "Hours of Sleep",
+      "xRange": [
+        0,
+        15
+      ],
+      "yRange": [
+        4,
+        10
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              1,
+              5.8
+            ],
+            [
+              14,
+              7.8
+            ]
+          ],
+          "scatter": "wide",
+          "n": 16
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_067",
@@ -649,10 +703,57 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Average Daily Temperature (\u00b0F)",
+      "yLabel": "Monthly Energy Bill ($)",
+      "xRange": [
+        30,
+        100
+      ],
+      "yRange": [
+        0,
+        250
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              31,
+              203
+            ],
+            [
+              45,
+              150
+            ],
+            [
+              57,
+              102
+            ],
+            [
+              67,
+              82
+            ],
+            [
+              78,
+              105
+            ],
+            [
+              90,
+              160
+            ],
+            [
+              99,
+              203
+            ]
+          ],
+          "scatter": "tight",
+          "n": 20
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_068",
@@ -729,10 +830,37 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Outdoor Temperature (\u00b0F)",
+      "yLabel": "Cups of Hot Chocolate Sold",
+      "xRange": [
+        30,
+        90
+      ],
+      "yRange": [
+        0,
+        60
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              32,
+              55
+            ],
+            [
+              88,
+              6
+            ]
+          ],
+          "scatter": "tight",
+          "n": 16
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_P_069",
@@ -814,10 +942,37 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Student ID Number",
+      "yLabel": "Quiz Score",
+      "xRange": [
+        1000,
+        1100
+      ],
+      "yRange": [
+        0,
+        100
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              1002,
+              75
+            ],
+            [
+              1098,
+              75
+            ]
+          ],
+          "scatter": "moderate",
+          "n": 16
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_067",
@@ -899,10 +1054,43 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Hours of Screen Time",
+      "yLabel": "Hours of Sleep",
+      "xRange": [
+        0,
+        10
+      ],
+      "yRange": [
+        3,
+        10
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              0.5,
+              9.3
+            ],
+            [
+              9.5,
+              4.2
+            ]
+          ],
+          "scatter": "moderate",
+          "n": 15,
+          "points": [
+            [
+              9,
+              9
+            ]
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_068",
@@ -984,10 +1172,53 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Study Hours",
+      "yLabel": "Test Score",
+      "xRange": [
+        0,
+        10
+      ],
+      "yRange": [
+        50,
+        100
+      ],
+      "plots": [
+        {
+          "label": "Plot 1",
+          "path": [
+            [
+              0.5,
+              57
+            ],
+            [
+              9.5,
+              95
+            ]
+          ],
+          "scatter": "tight",
+          "n": 15
+        },
+        {
+          "label": "Plot 2",
+          "path": [
+            [
+              0.5,
+              57
+            ],
+            [
+              9.5,
+              95
+            ]
+          ],
+          "scatter": "wide",
+          "n": 15
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_069",
@@ -1069,10 +1300,53 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Years of Experience",
+      "yLabel": "Annual Salary (in $1000s)",
+      "xRange": [
+        0,
+        30
+      ],
+      "yRange": [
+        30,
+        120
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              1,
+              38
+            ],
+            [
+              5,
+              68
+            ],
+            [
+              10,
+              88
+            ],
+            [
+              16,
+              101
+            ],
+            [
+              23,
+              109
+            ],
+            [
+              29,
+              114
+            ]
+          ],
+          "scatter": "tight",
+          "n": 18
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_070",
@@ -1154,10 +1428,47 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xLabel": "Number of Pets Owned",
+      "yLabel": "Monthly Grocery Spending ($)",
+      "xRange": [
+        0,
+        8
+      ],
+      "yRange": [
+        200,
+        800
+      ],
+      "plots": [
+        {
+          "path": [
+            [
+              0.5,
+              400
+            ],
+            [
+              7.5,
+              400
+            ]
+          ],
+          "scatter": "wide",
+          "n": 14,
+          "points": [
+            [
+              0,
+              220
+            ],
+            [
+              8,
+              760
+            ]
+          ]
+        }
+      ]
+    }
   },
   {
     "item_id": "PR_A_071",
@@ -1239,9 +1550,66 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
-    "figure_type": null,
-    "figure_props": null
+    "figure_type": "scatterplot",
+    "figure_props": {
+      "xRange": [
+        0,
+        10
+      ],
+      "yRange": [
+        0,
+        10
+      ],
+      "showTicks": false,
+      "plots": [
+        {
+          "label": "Plot 1",
+          "path": [
+            [
+              0.5,
+              2.5
+            ],
+            [
+              9.5,
+              7.5
+            ]
+          ],
+          "scatter": "wide",
+          "n": 16
+        },
+        {
+          "label": "Plot 2",
+          "path": [
+            [
+              0.5,
+              9.0
+            ],
+            [
+              9.5,
+              1.5
+            ]
+          ],
+          "scatter": "tight",
+          "n": 16
+        },
+        {
+          "label": "Plot 3",
+          "path": [
+            [
+              0.5,
+              3.0
+            ],
+            [
+              9.5,
+              7.0
+            ]
+          ],
+          "scatter": "moderate",
+          "n": 16
+        }
+      ]
+    }
   }
 ]

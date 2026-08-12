@@ -869,7 +869,7 @@
       "comparing two contextual equations by interpreting the difference in their slopes",
       "translating a slope difference into a statement about real-world rates"
     ],
-    "question_text": "Two gyms model membership cost in dollars after x months. Gym A is C = 2x + 80 and Gym B is C = 5x + 20. Which statement correctly interprets the difference in their slopes?",
+    "question_text": "Two gyms model membership cost in dollars after x months.\n  Gym A: C = 2x + 80\n  Gym B: C = 5x + 20\nWhich statement correctly interprets the difference in their slopes?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Gym B's monthly cost rises \\$3 faster per month than Gym A's.",
@@ -929,7 +929,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
     "figure_type": null,
     "figure_props": null
@@ -1124,7 +1124,7 @@
       "interpreting both slope and intercept correctly when comparing two contextual models",
       "identifying the statement that assigns the rate and the starting value to the right roles"
     ],
-    "question_text": "Two streaming services model yearly cost in dollars over x years. Service A is C = 120x + 0 and Service B is C = 96x + 60. Which statement correctly interprets both the slope and the intercept of Service B?",
+    "question_text": "Two streaming services model yearly cost in dollars over x years.\n  Service A: C = 120x + 0\n  Service B: C = 96x + 60\nWhich statement correctly interprets both the slope and the intercept of Service B?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Service B charges \\$96 per year with a one-time \\$60 setup fee.",
@@ -1184,7 +1184,7 @@
     "fairness_review_notes": null,
     "author": "jd-oviedo",
     "created_at": "2026-06-22",
-    "last_modified": "2026-06-22",
+    "last_modified": "2026-08-12",
     "review_notes": null,
     "figure_type": null,
     "figure_props": null
