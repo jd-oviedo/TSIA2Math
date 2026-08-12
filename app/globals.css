@@ -10,6 +10,22 @@
    opt into explicitly via FONT_HEADING. Form controls do not inherit font by
    default, so they are named here too. */
 body { font-family: var(--font-nunito), 'Nunito', sans-serif; }
+
+/* The browser's own `body { margin: 8px }` would otherwise stand, because the
+   @tailwind directives above are never expanded: there is no postcss.config or
+   tailwind.config in this repo, so Preflight (which normally zeroes this) never
+   ships. The directives reach the browser verbatim as invalid CSS and are
+   discarded.
+
+   The visible symptom was an 8px band of --ec-bg around every page, which on a
+   curriculum topic read as a border framing the cream surface, since .um-topic's
+   box is exactly body's box. Measured at a 1920 viewport: body x=8, width=1904.
+   Applies to every route, not only the curriculum ones.
+
+   Deliberately just this one declaration rather than wiring Tailwind up. Full
+   Preflight would also switch box-sizing globally and reset heading and list
+   margins, and the app has been built for months against its absence. */
+body { margin: 0; }
 button, input, select, textarea { font-family: inherit; }
 
 /* Mobile-safe full height: dynamic viewport units account for the collapsing
