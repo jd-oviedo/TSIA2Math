@@ -213,7 +213,7 @@
     },
     "misconception_tag": {
       "A": "omits_fractional_factor",
-      "B": "omits_fractional_factor",
+      "B": "applies_fractional_factor_twice",
       "C": "omits_second_component"
     },
     "difficulty_level": "Basic",
@@ -475,7 +475,7 @@
     },
     "misconception_tag": {
       "B": "omits_fractional_factor",
-      "C": "omits_fractional_factor",
+      "C": "wrong_fractional_divisor_used",
       "D": "radius_not_squared"
     },
     "difficulty_level": "Proficient",

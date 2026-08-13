@@ -300,7 +300,7 @@
     },
     "misconception_tag": {
       "A": "omits_fractional_factor",
-      "C": "omits_fractional_factor",
+      "C": "applies_fractional_factor_twice",
       "D": "omits_fractional_factor"
     },
     "difficulty_level": "Basic",
@@ -1175,7 +1175,7 @@
     },
     "misconception_tag": {
       "B": "omits_fractional_factor",
-      "C": "omits_fractional_factor",
+      "C": "applies_fractional_factor_twice",
       "D": "partial_distribution"
     },
     "difficulty_level": "Advanced",
