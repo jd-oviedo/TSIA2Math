@@ -25,20 +25,56 @@ def needs_math(s):
     triggers = "√²³⁴⁵¹₁₂₃₄₅½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞×÷≤≥≠≈Δπ∞" + MATH_MINUS + EN_DASH
     return any(c in s for c in triggers)
 
+MATH_SPAN = re.compile(r'(\$[^$]+\$)')
+
+# Escaped currency (\$) holds a real "$" character, so it derails $...$ pairing:
+# in "\$70 $\div$ \$2" a naive split reads "$70 $" as a math span and then skips
+# the genuine symbols after it. Swap \$ for a private-use sentinel before
+# splitting and restore it after -- the same trick, and the same sentinel,
+# MathText.tsx uses when it parses these strings for rendering.
+DOLLAR_SENTINEL = ""
+
+def outside_math(s, fn):
+    """Apply fn only to the parts of s that are NOT already inside $...$.
+
+    Every rule below must go through this. Splitting once at entry is not
+    enough: a rule can *create* a math span that a later rule then writes
+    into. That is what produced $\\sqrt{($x^{2}$)}$ in AR_P_011 -- the
+    radical rule built the span, then the superscript rule fired inside it.
+    Re-splitting before each rule keeps freshly-created spans protected too.
+
+    Nested $ is the nastiest form of this bug because the dollar count stays
+    even, so a balance-counting guard sees nothing wrong, while MathText
+    closes the span at the first inner $ and drops the rest of the sentence
+    into math mode.
+    """
+    protected = s.replace('\\$', DOLLAR_SENTINEL)
+    joined = ''.join(
+        part if (len(part) > 1 and part.startswith('$') and part.endswith('$')) else fn(part)
+        for part in MATH_SPAN.split(protected)
+    )
+    return joined.replace(DOLLAR_SENTINEL, '\\$')
+
+def replace_all(mapping):
+    def go(seg):
+        for char, latex in mapping.items():
+            if char in seg:
+                seg = seg.replace(char, f"${latex}$")
+        return seg
+    return go
+
 def convert_string(s):
     if not needs_math(s):
         return s
     result = s
-    result = re.sub(r'√(\([^)]+\)|\d+(?:/\d+)?)', lambda m: f"$\\sqrt{{{m.group(1)}}}$", result)
-    result = result.replace("√", r"$\sqrt{}$")
-    for char, latex in UNICODE_FRACTIONS.items():
-        if char in result:
-            result = result.replace(char, f"${latex}$")
-    result = re.sub(r'([A-Za-z0-9\)]+)([²³⁴⁵¹])', lambda m: f"${m.group(1)}^{{{SUPERSCRIPTS[m.group(2)]}}}$", result)
-    result = re.sub(r'([A-Za-z])([₁₂₃₄₅])', lambda m: f"${m.group(1)}_{{{SUBSCRIPTS[m.group(2)]}}}$", result)
-    for char, latex in SYMBOL_MAP.items():
-        if char in result:
-            result = result.replace(char, f"${latex}$")
+    result = outside_math(result, lambda seg: re.sub(r'√(\([^)]+\)|\d+(?:/\d+)?)', lambda m: f"$\\sqrt{{{m.group(1)}}}$", seg))
+    result = outside_math(result, lambda seg: seg.replace("√", r"$\sqrt{}$"))
+    result = outside_math(result, replace_all(UNICODE_FRACTIONS))
+    result = outside_math(result, lambda seg: re.sub(r'([A-Za-z0-9\)]+)([²³⁴⁵¹])', lambda m: f"${m.group(1)}^{{{SUPERSCRIPTS[m.group(2)]}}}$", seg))
+    result = outside_math(result, lambda seg: re.sub(r'([A-Za-z])([₁₂₃₄₅])', lambda m: f"${m.group(1)}_{{{SUBSCRIPTS[m.group(2)]}}}$", seg))
+    result = outside_math(result, replace_all(SYMBOL_MAP))
+    # Minus/dash normalisation is safe inside math too: it substitutes one
+    # character for another and never introduces a delimiter.
     result = result.replace(MATH_MINUS, "-")
     result = result.replace(EN_DASH, "-")
     result = re.sub(r'\$\$', r'$ $', result)

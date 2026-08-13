@@ -1064,12 +1064,12 @@
       "D": "\\$60"
     },
     "correct_answer": "D",
-    "explanation": "A 25% increase means the new price is 1.25 times the original: 75 = 1.25 x original. So original = $\\frac{75}{1}$.25 = \\$60. Check: \\$60 increased by 25% is 60 + 15 = \\$75.",
+    "explanation": "A 25% increase means the new price is 1.25 times the original: 75 = 1.25 x original. So original = $\\frac{75}{1.25}$ = \\$60. Check: \\$60 increased by 25% is 60 + 15 = \\$75.",
     "distractor_logic": {
       "A": "Student subtracts 25% of the new price from the new price: 75 - (0.25 x 75) = 75 - 18.75 = \\$56.25, instead of dividing by 1.25.",
       "B": "Student increases the new price by another 25%: 75 x 1.25 = \\$93.75, applying the change forward instead of reversing it.",
       "C": "Student treats the \\$75 as 75% of the original, computing 75 / 0.75 = \\$100, confusing an increase with a decrease.",
-      "D": "Correct: $\\frac{75}{1}$.25 = \\$60, and \\$60 increased by 25% returns \\$75."
+      "D": "Correct: $\\frac{75}{1.25}$ = \\$60, and \\$60 increased by 25% returns \\$75."
     },
     "misconception_tag": {
       "A": "percent_change_wrong_base",

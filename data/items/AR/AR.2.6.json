@@ -32,7 +32,7 @@
     "distractor_logic": {
       "A": "Student computes \u0394y = 6 and \u0394x = 3 correctly but subtracts instead of divides: 6 \u2212 3 = 3.",
       "B": "Correct: $\\frac{9 - 3}{4 - 1}$ = $\\frac{6}{3}$ = 2.",
-      "C": "Student inverts the formula, computing $\\frac{\u0394x}{\u0394y}$ = $\\frac{3}{6}$ = $\\frac{1}{2}$.",
+      "C": "Student inverts the formula, computing $\\frac{\\Delta x}{\\Delta y} = \\frac{3}{6} = \\frac{1}{2}$.",
       "D": "Student computes \u0394y = 6 but uses it directly as the slope without dividing by \u0394x."
     },
     "misconception_tag": {
@@ -201,7 +201,7 @@
     "explanation": "Apply the slope formula:\n$m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{1 - 7}{5 - 2} = \\frac{-6}{3} = -2$",
     "distractor_logic": {
       "A": "Student computes the correct magnitude ($\\frac{6}{3}$ = 2) but drops the negative sign from the numerator, reporting slope = 2.",
-      "B": "Student inverts the formula, computing $\\frac{x_2 - x_1}{y_2 - y_1} = \\frac{3}{-6} = \\frac{-1}{2}.",
+      "B": "Student inverts the formula, computing $\\frac{x_2 - x_1}{y_2 - y_1} = \\frac{3}{-6} = \\frac{-1}{2}$.",
       "C": "Correct: $\\frac{(1 - 7)}{(5 - 2)} = \\frac{-6}{3}$ = \u22122.",
       "D": "Student computes \u0394x = 5 \u2212 2 = 3 and reports it as the slope, ignoring \u0394y entirely."
     },
@@ -373,7 +373,7 @@
       "A": "Correct: $\\frac{(4 - (-2))}{(3 - 0)} = \\frac{6}{3} = 2$.",
       "B": "Student sees the y-intercept (0, \u22122) and reports \u22122 as the slope rather than applying the slope formula.",
       "C": "Student computes \u0394x = 3 and uses it directly as the slope, ignoring the change in y.",
-      "D": "Student inverts the formula, computing $\\frac{\u0394x}{\u0394y} = \\frac{3}{6} = \\frac{1}{2}$."
+      "D": "Student inverts the formula, computing $\\frac{\\Delta x}{\\Delta y} = \\frac{3}{6} = \\frac{1}{2}$."
     },
     "misconception_tag": {
       "B": "slope_intercept_swap",

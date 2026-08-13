@@ -688,7 +688,7 @@
       "D": "40%"
     },
     "correct_answer": "D",
-    "explanation": "P(art given Spanish) = P(both) divided by P(Spanish) = 24% divided by 60% = 0.$\\frac{24}{0}$.60 = 0.40, which is 40%.",
+    "explanation": "P(art given Spanish) = P(both) divided by P(Spanish) = 24% divided by 60% = $\\frac{0.24}{0.60}$ = 0.40, which is 40%.",
     "distractor_logic": {
       "A": "Student reports the joint probability of taking both (24%) without dividing by the Spanish probability.",
       "B": "Student subtracts the two percentages (60% - 24% = 36%) instead of dividing.",
@@ -1118,12 +1118,12 @@
       "D": "0.75"
     },
     "correct_answer": "D",
-    "explanation": "P(study and pass) = 0.5 times 0.6 = 0.30. P(no study and pass) = 0.5 times 0.2 = 0.10. So P(pass) = 0.30 + 0.10 = 0.40. Then P(studied given passed) = 0.$\\frac{30}{0}$.40 = 0.75.",
+    "explanation": "P(study and pass) = 0.5 times 0.6 = 0.30. P(no study and pass) = 0.5 times 0.2 = 0.10. So P(pass) = 0.30 + 0.10 = 0.40. Then P(studied given passed) = $\\frac{0.30}{0.40}$ = 0.75.",
     "distractor_logic": {
       "A": "Student reports the joint probability P(study and pass) = 0.30 without dividing by the total pass probability.",
       "B": "Student reports the reversed conditional P(pass given study) = 0.60 instead of P(study given pass).",
       "C": "Student reports the prior probability of studying (0.50), ignoring that the student passed.",
-      "D": "Correct: P(studied given passed) = 0.$\\frac{30}{0}$.40 = 0.75."
+      "D": "Correct: P(studied given passed) = $\\frac{0.30}{0.40}$ = 0.75."
     },
     "misconception_tag": {
       "A": "joint_reported_as_conditional",
