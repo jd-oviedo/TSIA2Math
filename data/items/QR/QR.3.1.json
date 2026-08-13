@@ -616,7 +616,7 @@
     "answer_choices": {
       "A": "$\\frac{4}{n}$ + 7",
       "B": "$\\frac{n}{4}$ + 7",
-      "C": "(n + 7)/4",
+      "C": "$\\frac{n + 7}{4}$",
       "D": "$\\frac{n}{4}$ - 7"
     },
     "correct_answer": "B",
@@ -624,7 +624,7 @@
     "distractor_logic": {
       "A": "Student reverses the division order, making 4 the dividend: $\\frac{4}{n}$ + 7.",
       "B": "Correct: the quotient $\\frac{n}{4}$ is increased by 7, giving $\\frac{n}{4}$ + 7.",
-      "C": "Student adds 7 before dividing, pulling it into the numerator: (n + 7)/4.",
+      "C": "Student adds 7 before dividing, pulling it into the numerator: $\\frac{n + 7}{4}$.",
       "D": "Student confuses 'increased by' with 'decreased by' and subtracts: $\\frac{n}{4}$ - 7."
     },
     "misconception_tag": {
@@ -1124,18 +1124,18 @@
     "question_text": "Which expression represents 'the average of a number x and 12, decreased by 3'?",
     "question_format": "multiple_choice",
     "answer_choices": {
-      "A": "x + $\\frac{12}{2}$ - 3",
-      "B": "(x + 12 - 3)/2",
-      "C": "(x + 12)/2 - 3",
-      "D": "(x + 12)/2 + 3"
+      "A": "$x + \\frac{12}{2} - 3$",
+      "B": "$\\frac{x + 12 - 3}{2}$",
+      "C": "$\\frac{x + 12}{2} - 3$",
+      "D": "$\\frac{x + 12}{2} + 3$"
     },
     "correct_answer": "C",
     "explanation": "The average of x and 12 adds them first, then divides the whole sum by 2: (x + 12)/2. 'Decreased by 3' subtracts 3 from that average, and the 3 stays outside the division: (x + 12)/2 - 3.",
     "distractor_logic": {
       "A": "Student divides only the 12 by 2 instead of the full sum, dropping the grouping: x + $\\frac{12}{2}$ - 3.",
-      "B": "Student pulls the -3 inside the average, subtracting before dividing: (x + 12 - 3)/2.",
-      "C": "Correct: the grouped sum is divided by 2 to form the average, then 3 is subtracted: (x + 12)/2 - 3.",
-      "D": "Student confuses 'decreased by' with 'increased by' and adds 3: (x + 12)/2 + 3."
+      "B": "Student pulls the -3 inside the average, subtracting before dividing: $\\frac{x + 12 - 3}{2}$.",
+      "C": "Correct: the grouped sum is divided by 2 to form the average, then 3 is subtracted: $\\frac{x + 12}{2} - 3$.",
+      "D": "Student confuses 'decreased by' with 'increased by' and adds 3: $\\frac{x + 12}{2} + 3$."
     },
     "misconception_tag": {
       "A": "drops_grouping_symbols",

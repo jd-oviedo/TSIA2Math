@@ -35,9 +35,24 @@ carry no tag. The `student_misconceptions` table stays empty for exactly the
 students who most need remediation. This corrupts the aggregate the teacher
 dashboard, Socratic AI, and parent digest all read.
 
+**Nothing shuffles at render time — confirmed 2026-08-13.** This is what turns
+the skew above from a statistical wart into an exploitable one, and it was not
+written down anywhere until now. `PracticeQuiz.tsx` contains no shuffle, sort,
+or randomisation of any kind; it renders `answer_choices` in authored A–D
+order, so the position bias reaches students exactly as stored. `GatedQuiz.tsx`
+and the CAT `ItemCard.tsx` likewise render in authored order.
+
+`build_bank.py` used to soften its own skew warning with "Ignore if your app
+shuffles choices at render time." That escape hatch was false — no such
+shuffling exists — and the warning has been reworded to say so (2026-08-13).
+
 **Fix:** shuffle correct-answer positions to roughly uniform across A–D.
 Note this requires editing both the item body and the answer key together,
 since `distractor_logic` and `misconception_tag` are keyed by option letter.
+Doing it at render time instead would need the shuffle to carry
+`distractor_logic` and `misconception_tag` along with each option, since both
+are keyed by letter — a render-time shuffle that moves only the visible text
+would silently mis-tag every misconception it records.
 
 ---
 
@@ -285,32 +300,55 @@ string was a Unicode `−` to an ASCII `-`; the broken delimiter passed straight
 through. They are identical in `public/data/question_bank.json` and in prod, so
 this is bank content, not a deployment artifact.
 
-Three classes, all of which break rendering rather than merely reading oddly —
-`MathText.tsx` typesets `$...$` spans, so a mispaired delimiter takes the
-following prose into a math span with it.
+> **Naming.** The three groups below are **Shape A / Shape B / Shape C**. They
+> were called "class 1/2/3" until 2026-08-13; renamed because "Class 1 / Class 2"
+> now means something different and unrelated in the slash-notation audit at the
+> end of this file (unconverted slash vs. corrupted `\frac`). Two numbering
+> schemes for two different taxonomies was a trap waiting for a future session.
 
-**1. Unclosed `$` — an opening delimiter with no closing one**
+Three shapes. **Correction 2026-08-13:** the original entry said all three
+"break rendering" because "a mispaired delimiter takes the following prose into
+a math span with it." That mechanism is wrong, and the difference matters for
+triage. `parseMathSegments` only ever forms a span from a *matched pair* of `$`.
+Every surviving item has exactly **one** unescaped `$`, so no pair forms, no
+span opens, and no prose is swallowed. What actually happens is milder and
+varies by shape — see the per-shape verdicts below.
 
-| item | field | text |
-|---|---|---|
-| `AR_A_010` | `distractor_logic.B` | `...to obtain $\frac{1}{x - k}, then reads the domain...` |
-| `AR_B_041` | `distractor_logic.B` | `...computing $\frac{x_2 - x_1}{y_2 - y_1} = \frac{3}{-6} = \frac{-1}{2}.` |
-| `AR_B_043` | `strategy_hints[0]` | `$Slope = \frac{y_2 - y_1}{x_2 - x_1}. Be careful subtracting...` |
+**Shape A. Unclosed `$` — an opening delimiter with no closing one**
 
-**2. Nested `$` inside a `\frac` argument**
+| item | field | text | status |
+|---|---|---|---|
+| `AR_A_010` | `distractor_logic.B` | `...to obtain $\frac{1}{x - k}, then reads the domain...` | open |
+| `AR_B_041` | `distractor_logic.B` | `...computing $\frac{x_2 - x_1}{y_2 - y_1} = \frac{3}{-6} = \frac{-1}{2}.` | open |
+| `AR_B_043` | `strategy_hints[0]` | `$Slope = \frac{y_2 - y_1}{x_2 - x_1}. Be careful subtracting...` | open |
 
-| item | field | text |
-|---|---|---|
-| `GR_A_033` | `distractor_logic.D` | `$\sqrt{($\sqrt{}$16)}$` |
-| `QR_A_025` | `distractor_logic.D` | `$\frac{$\sqrt{3}$ + 1}{$\sqrt{3}$ + 1}$` |
-| `QR_A_027` | `distractor_logic.C` | `$\frac{$\sqrt{5}$ + $\sqrt{2}$}{$\sqrt{5}$ + $\sqrt{2}$}$` |
+*Actual effect:* no math renders at all in that string — the whole field
+degrades to plain text, so the reader sees **raw LaTeX source**, e.g. literally
+`Student inverts the formula, computing $\frac{x_2 - x_1}{y_2 - y_1} = ...`.
+Ugly and visibly wrong, but the prose is intact and nothing is hidden.
+
+**Shape B. Nested `$` inside a `\frac` argument**
+
+| item | field | text | status |
+|---|---|---|---|
+| `GR_A_033` | `distractor_logic.D` | `$\sqrt{($\sqrt{}$16)}$` | **FIXED 2026-08-13** |
+| `QR_A_025` | `distractor_logic.D` | `$\frac{$\sqrt{3}$ + 1}{$\sqrt{3}$ + 1}$` | **FIXED 2026-08-13** |
+| `QR_A_027` | `distractor_logic.C` | `$\frac{$\sqrt{5}$ + $\sqrt{2}$}{$\sqrt{5}$ + $\sqrt{2}$}$` | **FIXED 2026-08-13** |
+
+All three of Shape B are now closed. `QR_A_025` and `QR_A_027` were repaired as
+a side effect of the QR.1.5 slash-notation pass; `GR_A_033` was repaired
+directly. Crucially, the *source* of this class was never nested `$` at all —
+it was raw Unicode (`√`, `Δ`, `²`) sitting inside an existing `$...$` span,
+which `migrate_math.py` then wrapped a second time at build time. That build
+defect is fixed too (see below), so this class cannot reappear on the next
+build.
 
 This class is the one most likely to be missed by a checker: the dollar count is
 *even*, so any balance-counting guard passes it. The renderer still closes the
 span at the first inner `$`, leaving `\frac{` unterminated and the rest of the
 sentence inside math mode. `GR_A_033` additionally has an empty `\sqrt{}`.
 
-**3. Unescaped literal `$` in prose**
+**Shape C. Unescaped literal `$` in prose**
 
 | item | field | text |
 |---|---|---|
@@ -318,15 +356,75 @@ sentence inside math mode. `GR_A_033` additionally has an empty `\sqrt{}`.
 | `PR_A_070` | `question_text` | y-axis labeled `'Monthly Grocery Spending ($)'` |
 
 Both items escape their other currency amounts correctly (`\$200`, `\$400`), so
-the axis-label `$` is a single unescaped delimiter that opens a span with no
-partner. Note the neighbouring `PR_P_070` is **clean** — it is not part of this
-set.
+the axis-label `$` is a single unescaped delimiter with no partner. Note the
+neighbouring `PR_P_070` is **clean** — it is not part of this set.
+
+*Actual effect:* **none — these two render correctly today.** With one unescaped
+`$` and no partner, no span forms, so the axis label displays as
+`Monthly Energy Bill ($)`, which is exactly what the author intended, and the
+escaped `\$200` / `\$80` amounts still render as `$200` / `$80`. Shape C is a
+**latent fragility, not a live defect**: the stray delimiter would pair with the
+first `$` anyone adds to that field later, and *then* swallow the prose between.
 
 **Fix:** an authoring pass over the affected fields. Not scriptable with
-confidence: class 2 in particular needs a human to decide what the intended
-expression was, since the inner `$` pairs have to be removed rather than
-balanced, and `GR_A_033`'s empty `\sqrt{}` has lost its operand. Deliberately
-not fixed as part of the restore or the misconception work.
+confidence: Shape B in particular needed a human to decide what the intended
+expression was, since the inner `$` pairs had to be removed rather than
+balanced. Deliberately not fixed as part of the restore or the misconception
+work.
+
+---
+
+### Current state of this list — verified 2026-08-13
+
+**Closed (3 of 8)** — all of Shape B:
+
+| item | field | fixed by |
+|---|---|---|
+| `QR_A_025` | `distractor_logic.D` | QR.1.5 slash-notation pass (side effect) |
+| `QR_A_027` | `distractor_logic.C` | QR.1.5 slash-notation pass (side effect) |
+| `GR_A_033` | `distractor_logic.D` | build-defect pass, fixed directly |
+
+**Open (5 of 8)**, with where each one is actually rendered:
+
+| item | field | render surface | visible defect today? |
+|---|---|---|---|
+| `AR_A_010` | `distractor_logic.B` | CAT reveal panel (**signed-in students only**) + teacher dashboard | **Yes** — raw LaTeX shown as text |
+| `AR_B_041` | `distractor_logic.B` | same | **Yes** — raw LaTeX shown as text |
+| `AR_B_043` | `strategy_hints[0]` | **nowhere** | No — field is never rendered |
+| `PR_P_067` | `question_text` | every student, always | No — renders correctly |
+| `PR_A_070` | `question_text` | every student, always | No — renders correctly |
+
+Render surfaces were checked in code, not assumed. `distractor_logic` reaches
+students as `distractor_note` from `app/api/items/reveal/route.ts:39`, which
+returns it **only when the request is authenticated**, and reaches teachers as
+`distractor_text` in `TeacherDashboardClient.tsx:579` and
+`teacher/student/[id]/page.tsx:335`. `strategy_hints` appears in the codebase
+**only as a type declaration** (`app/adaptive-test/type.ts:52`) — no component
+renders it, so `AR_B_043`'s hint is invisible to every audience.
+
+**Priority read:** nothing here is urgent. The two worth doing next are
+`AR_A_010` and `AR_B_041` — they are the only ones a human can currently see
+rendered wrong, and they show raw LaTeX to a signed-in student who picks option
+B, and to teachers on the dashboard. `AR_B_043`'s hint is cosmetic-in-source
+only. The two `question_text` items are correct on screen and should be fixed
+opportunistically, to remove the latent delimiter rather than to repair
+anything.
+
+Note `AR_B_043` is now *partially* repaired — its `distractor_logic.D` was
+fixed in the build-defect pass; the unclosed `$` in its first hint is Shape A
+and still open.
+
+**Root cause of Shape B, found 2026-08-13.** `migrate_math.py`'s
+`convert_string()` applied every Unicode→LaTeX rule to the whole string with no
+math-span guard, unlike its two sibling scripts which both skip `$...$`
+segments. Two ways it broke: (a) a rule fired inside a span that came from the
+source (`$\frac{Δx}{Δy}$` → `$\frac{$\Delta$x}{$\Delta$y}$`), and (b) a rule
+fired inside a span the same function had *just created* — the radical rule
+built `$\sqrt{(x²)}$`, then the superscript rule wrote into it, giving
+`$\sqrt{($x^{2}$)}$`. Mode (b) is why guarding once at entry is insufficient;
+the fix re-splits before every rule. This also explains the "lost operand"
+above: `GR_A_033`'s `\sqrt{}` never had one — the bare-`√` fallback emits an
+empty radical and leaves the operand as trailing text.
 
 **Adjacent, noticed while reading:** `AR_B_043`'s second hint writes
 `$(x_1, y_2)$ = (0, -2)` where the first coordinate should be `(x_1, y_1)`.
@@ -335,5 +433,77 @@ Same field, different (non-delimiter) defect — worth catching in the same pass
 **This extends the scanner gap** noted in the entry above.
 `scan_unwrapped_latex.py` looks for LaTeX commands sitting outside `$...$`, so
 it is blind to *missing* wrapping (documented above) and equally blind to
-*malformed* wrapping (all three classes here). A guard that only counts
-delimiters would still miss class 2. Worth folding into the same piece of work.
+*malformed* wrapping (all three shapes here). A guard that only counts
+delimiters would still miss Shape B. Worth folding into the same piece of work.
+
+---
+
+## Slash-notation audit — Class 1 (open) and Class 2 (fixed)
+
+Found 2026-08-13, while chasing a report that `QR_A_027` choice D rendered as
+"10√ 3/3" on the live adaptive test. A sweep of all four strands for slash
+notation that should be `\frac` turned up **two unrelated categories**, named
+here so later sessions can refer to them precisely:
+
+- **Class 1 — unconverted plain slash.** The original `migrate_fractions.py`
+  gap: it only ever handled simple digit/digit fractions, never multi-term
+  expressions. **Still open by decision** — see the end of this section.
+- **Class 2 — corrupted `\frac`.** A *regression*, not a gap: a later script
+  wrapped fragments of expressions and changed the mathematics. **Fixed**, and
+  the script that caused it is quarantined. Detailed below.
+
+These two are **not** the same taxonomy as Shape A/B/C in the malformed-delimiter
+entry earlier in this file — different defect, different items, different fix.
+
+### Class 2 — ten items corrupted by `migrate_letter_fracs.py`
+
+`migrate_letter_fracs.py` (run once, in commit `7ff9803`, 2026-06-24) carried
+this rule:
+
+```python
+re.sub(r'(?<![\\$\w])(\d+)\s*/\s*(\d+)(?!\d)', ...)
+```
+
+`\s*` lets it span the spaces in `a / b`, and its left guard is `\w` — which
+U+221A (`√`) is not. So it matched *fragments* of larger expressions and wrapped
+them as standalone fractions, changing the mathematics rather than just the
+notation:
+
+| item | field | authored | after the script |
+|---|---|---|---|
+| `QR_A_027` | `answer_choices.D` | `10√3 / 3` | `10√$\frac{3}{3}$` |
+| `QR_A_025` | `answer_choices.B` | `7√3 / 2` | `7√$\frac{3}{2}$` |
+| `PR_A_031` | `explanation` | `21.5 / 0.25` | `21.$\frac{5}{0}$.25` |
+| `PR_A_063` | `explanation`, `dl.D` | `0.30 / 0.40` | `0.$\frac{30}{0}$.40` |
+| `PR_A_076` | `explanation`, `dl.B/C/D` | `25 / 1.25` | `$\frac{25}{1}$.25` |
+| `PR_A_079` | `explanation`, `dl.D` | `75 / 1.25` | `$\frac{75}{1}$.25` |
+| `PR_P_061` | `explanation` | `0.24 / 0.60` | `0.$\frac{24}{0}$.60` |
+| `QR_A_042` | `strategy_hints[2]` | `1 / 0.80` | `$\frac{1}{0}$.80` |
+| `QR_A_046` | `strategy_hints[2]` | `200 / 1.5` | `$\frac{200}{1}$.5` |
+| `QR_B_050` | `dl.C` | `1 / 0.08` | `$\frac{1}{0}$.08` |
+| `QR_A_027` | `strategy_hints[1]` | `10 / 3.6` | `$\frac{10}{3}$.6` |
+| `QR_A_025` | `strategy_hints[1]` | `9.1 / 2` | `9.$\frac{1}{2}$` |
+
+Two variants: a decimal split across the slash (most of them), and a radical
+left stranded outside the span it belonged to (the two answer choices). The answer
+choices are the damaging ones — `QR_A_027.D` was authored as
+$\frac{10\sqrt{3}}{3}$ = 5.774, the distractor for "student applies
+√a − √b = √(a − b)". Rendered as `10√` followed by a stacked ³∕₃, it is a
+different quantity and the misconception it probes is destroyed.
+
+All twelve strings were repaired by hand and each result re-checked
+numerically against the surrounding prose. **The script is quarantined** in
+`deprecated/migrate_letter_fracs.py` behind a refuse-to-run guard: it is a
+completed one-shot migration, so a corrected regex would have no safe use, and
+re-running the original re-corrupts `data/items/`.
+
+### Class 1 — still open, deliberately
+
+The gap this script was written to close is real
+and remains: roughly 51 items use plain-slash notation for multi-term
+expressions in `explanation` and `distractor_logic`. Those are prose, not
+student-facing answer choices, and read acceptably inline
+(`(4 + 4 + 7 + 10 + 5) / 5 = $\frac{30}{5}$ = 6`). Converting all ~114
+occurrences is a large content rewrite with no visible defect driving it, so it
+was scoped out. The student-facing subset — `question_text` and
+`answer_choices` across all four strands, 6 items — *was* converted.

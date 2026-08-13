@@ -210,7 +210,8 @@ def main():
                 pos = keys.most_common(1)[0][0]
                 warnings.append(
                     f"{tid}: answer key skewed — {keys.most_common(1)[0][1]}/{len(items)} land on "
-                    f"'{pos}' ({top_share:.0%}). Ignore if your app shuffles choices at render time.")
+                    f"'{pos}' ({top_share:.0%}). Choices are served in authored order: "
+                    f"PracticeQuiz.tsx has no shuffle, so this skew reaches students as-is.")
 
     # ---- report ----
     print(f"Scanned {len(files)} topic file(s), {len(all_items)} item(s).")

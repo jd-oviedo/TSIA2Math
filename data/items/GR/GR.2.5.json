@@ -1228,7 +1228,7 @@
       "A": "Student correctly finds r\u00b2 = 16 but stops there without taking the square root, reporting r\u00b2 as the radius.",
       "B": "Correct: r\u00b2 = 200.96 \u00f7 12.56 = 16; r = \u221a16 = 4 cm.",
       "C": "Student finds r = 4 cm correctly but then doubles it, confusing radius with diameter: 2 \u00d7 4 = 8 cm.",
-      "D": "Student takes the square root twice: \u221a(\u221a16) = \u221a4 = 2 cm."
+      "D": "Student takes the square root twice: $\\sqrt{\\sqrt{16}} = \\sqrt{4} = 2$ cm."
     },
     "misconception_tag": {
       "A": "forgets_square_root",

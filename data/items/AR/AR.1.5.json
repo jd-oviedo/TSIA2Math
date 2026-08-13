@@ -652,7 +652,7 @@
       },
       {
         "strategy": "eliminate_wrong_answers",
-        "hint_text": "k(x) = \u221a(x\u00b2): since x\u00b2 is always non-negative, there is no restriction \u2014 eliminate it. Then compare the remaining three."
+        "hint_text": "k(x) = $\\sqrt{x^{2}}$: since $x^{2}$ is always non-negative, there is no restriction \u2014 eliminate it. Then compare the remaining three."
       }
     ],
     "content_context": "generic",

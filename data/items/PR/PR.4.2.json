@@ -1229,12 +1229,12 @@
       "D": "24.8"
     },
     "correct_answer": "B",
-    "explanation": "Set y = 28: 28 = 1.25x + 3. Subtract 3: 25 = 1.25x. Divide by 1.25: x = $\\frac{25}{1}$.25 = 20 (since 1.25 times 20 equals 25).",
+    "explanation": "Set y = 28: 28 = 1.25x + 3. Subtract 3: 25 = 1.25x. Divide by 1.25: x = $\\frac{25}{1.25}$ = 20 (since 1.25 times 20 equals 25).",
     "distractor_logic": {
       "A": "Student subtracts the intercept but forgets to divide by the slope, stopping at 28 - 3 = 25.",
-      "B": "Correct: 28 - 3 = 25, then $\\frac{25}{1}$.25 = 20.",
-      "C": "Student divides by the slope but ignores the intercept: $\\frac{28}{1}$.25 = 22.4.",
-      "D": "Student adds the intercept instead of subtracting before dividing: (28 + 3)/1.25 = $\\frac{31}{1}$.25 = 24.8."
+      "B": "Correct: 28 - 3 = 25, then $\\frac{25}{1.25}$ = 20.",
+      "C": "Student divides by the slope but ignores the intercept: $\\frac{28}{1.25}$ = 22.4.",
+      "D": "Student adds the intercept instead of subtracting before dividing: $\\frac{28 + 3}{1.25} = \\frac{31}{1.25}$ = 24.8."
     },
     "misconception_tag": {
       "A": "answers_intermediate_value",

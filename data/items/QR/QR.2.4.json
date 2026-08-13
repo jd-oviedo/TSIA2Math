@@ -202,7 +202,7 @@
     "distractor_logic": {
       "A": "Student applies the 8% rate to the commission itself (320 \u00d7 0.08 = \\$25.60) rather than solving for the unknown sales total.",
       "B": "Student adds the commission rate as a whole number to the earned commission (320 + 8 = \\$328) instead of writing an equation.",
-      "C": "Student estimates $\\frac{1}{0}$.08 \u2248 12 and multiplies (320 \u00d7 12 = \\$3,840) instead of using the exact divisor of 0.08.",
+      "C": "Student estimates $\\frac{1}{0.08}$ \u2248 12 and multiplies (320 \u00d7 12 = \\$3,840) instead of using the exact divisor of 0.08.",
       "D": "Correct: 0.08x = 320 \u2192 x = 320 \u00f7 0.08 = \\$4,000."
     },
     "misconception_tag": {
@@ -832,7 +832,7 @@
       },
       {
         "strategy": "estimate_first",
-        "hint_text": "A 20% discount means you keep 80% of the marked-up price. To recover 100% of cost from 80%, the markup must be $\\frac{1}{0}$.80 = 1.25, or 25%."
+        "hint_text": "A 20% discount means you keep 80% of the marked-up price. To recover 100% of cost from 80%, the markup must be $\\frac{1}{0.80}$ = 1.25, or 25%."
       }
     ],
     "content_context": "retail_shopping",
