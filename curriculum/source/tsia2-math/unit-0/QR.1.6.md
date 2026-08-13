@@ -176,67 +176,67 @@ Solve each problem. Show your thinking.
 **Basic Level** (try these first)
 
 1. What is $4{,}738$ rounded to the nearest hundred?
-   - A) $4{,}700$
-   - B) $4{,}800$
+   - A) $4{,}800$
+   - B) $4{,}739$
    - C) $4{,}740$
-   - D) $4{,}739$
+   - D) $4{,}700$
 
 2. What is $0.0472$ rounded to the nearest hundredth?
-   - A) $0.04$
-   - B) $0.05$
+   - A) $0.05$
+   - B) $0.0473$
    - C) $0.047$
-   - D) $0.0473$
+   - D) $0.04$
 
 3. What is $12{,}486$ rounded to the nearest thousand?
-   - A) $12{,}000$
-   - B) $13{,}000$
+   - A) $13{,}000$
+   - B) $12{,}000$
    - C) $12{,}500$
    - D) $12{,}487$
 
 4. What is $59.7$ rounded to the nearest whole number?
    - A) $59$
-   - B) $60$
-   - C) $59.8$
-   - D) $100$
+   - B) $59.8$
+   - C) $100$
+   - D) $60$
 
 **Proficient Level** (these require an extra step)
 
 5. What is $4{,}963$ rounded to the nearest hundred?
    - A) $4{,}900$
-   - B) $5{,}000$
-   - C) $4{,}000$
+   - B) $4{,}000$
+   - C) $5{,}000$
    - D) $4{,}960$
 
 6. What is $4.45$ rounded to the nearest whole number?
-   - A) $4$
+   - A) $4.5$
    - B) $5$
-   - C) $4.5$
+   - C) $4$
    - D) $4.46$
 
 7. What is $0.4982$ rounded to the nearest hundredth?
-   - A) $0.49$
-   - B) $0.50$
+   - A) $0.50$
+   - B) $0.498$
    - C) $0.40$
-   - D) $0.498$
+   - D) $0.49$
 
 **Advanced Level** (these need multiple steps or reverse thinking)
 
 8. A rectangular room measures $12.6$ feet by $9.5$ feet. A contractor calculates the floor area and then rounds it to the nearest square foot. What figure should the contractor report?
-   - A) $120$ square feet
-   - B) $117$ square feet
+   - A) $117$ square feet
+   - B) $44.2$ square feet
    - C) $119$ square feet
-   - D) $44.2$ square feet
+   - D) $120$ square feet
 
 9. A scientist measures a mass of $7.0649$ grams and must report it to the nearest hundredth of a gram. What value is reported?
-   - A) $7.06$ grams
-   - B) $7.07$ grams
+   - A) $7.065$ grams
+   - B) $7.06$ grams
    - C) $7.1$ grams
-   - D) $7.065$ grams
+   - D) $7.07$ grams
 
 10. A city's population is $148{,}732$. One report rounds this figure to the nearest ten thousand, and a second report rounds the same figure to the nearest thousand. What is the difference between the two reported figures?
-    - A) $1{,}000$
-    - B) $2{,}000$
-    - C) $150{,}000$
+    - A) $150{,}000$
+    - B) $1{,}000$
+    - C) $2{,}000$
     - D) $1{,}268$
 
 ---
@@ -247,37 +247,37 @@ Solve each problem. Show your thinking.
 
 What is $6{,}249$ rounded to the nearest hundred?
 
-- A) $6{,}200$
-- B) $6{,}300$
-- C) $6{,}250$
+- A) $6{,}250$
+- B) $6{,}200$
+- C) $6{,}300$
 - D) $6{,}000$
 
 **Item 2**
 
 What is $0.0857$ rounded to the nearest hundredth?
 
-- A) $0.08$
-- B) $0.09$
-- C) $0.086$
+- A) $0.086$
+- B) $0.08$
+- C) $0.09$
 - D) $0.0858$
 
 **Item 3**
 
 What is $7{,}981$ rounded to the nearest hundred?
 
-- A) $7{,}900$
-- B) $8{,}000$
+- A) $8{,}000$
+- B) $7{,}980$
 - C) $7{,}000$
-- D) $7{,}980$
+- D) $7{,}900$
 
 **Item 4**
 
 A truck's odometer reads $87{,}462$ miles. A logbook records this figure rounded to the nearest thousand miles, and an insurance form records the same figure rounded to the nearest ten thousand miles. What is the difference between the two recorded figures?
 
-- A) $3{,}000$ miles
-- B) $7{,}000$ miles
+- A) $7{,}000$ miles
+- B) $2{,}538$ miles
 - C) $90{,}000$ miles
-- D) $2{,}538$ miles
+- D) $3{,}000$ miles
 
 ---
 
@@ -297,19 +297,19 @@ Step 3: $3$ is four or less, so round down. The $7$ stays.
 
 Step 4: Everything right of the hundreds place becomes zeros.
 
-**Answer: A** ($4{,}700$)
+**Answer: D** ($4{,}700$)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: reads the tens digit 3 as the reference, rounds down, and zeroes the places to the right",
-  "B": "Student makes misconception: wrong_reference_digit (decides on the ones digit 8 rather than the tens digit 3, rounding up when the reference digit calls for down)",
+  "A": "Student makes misconception: wrong_reference_digit (decides on the ones digit 8 rather than the tens digit 3, rounding up when the reference digit calls for down)",
+  "B": "Student makes misconception: rounding_as_increment_rightmost (adds one to the last digit and keeps every place, treating rounding as an increment rather than a replacement)",
   "C": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest ten instead of the nearest hundred, correctly giving 4,740 for a place the question did not ask about)",
-  "D": "Student makes misconception: rounding_as_increment_rightmost (adds one to the last digit and keeps every place, treating rounding as an increment rather than a replacement)"
+  "D": "Correct: reads the tens digit 3 as the reference, rounds down, and zeroes the places to the right"
 },
 "misconception_tag": {
-  "B": "wrong_reference_digit",
-  "C": "rounds_to_wrong_place",
-  "D": "rounding_as_increment_rightmost"
+  "A": "wrong_reference_digit",
+  "B": "rounding_as_increment_rightmost",
+  "C": "rounds_to_wrong_place"
 }
 ```
 
@@ -325,19 +325,19 @@ Step 3: $7$ is five or more, so round up. The $4$ becomes $5$.
 
 Step 4: Stop at the hundredths place.
 
-**Answer: B** ($0.05$)
+**Answer: A** ($0.05$)
 
 ```json
 "distractor_logic": {
-  "A": "Student makes misconception: rounds_down_despite_five_or_more (reads the reference digit 7 correctly but rounds down anyway, leaving the hundredths digit unchanged)",
-  "B": "Correct: rounds the hundredths digit 4 up to 5 because the reference digit 7 is five or more",
+  "A": "Correct: rounds the hundredths digit 4 up to 5 because the reference digit 7 is five or more",
+  "B": "Student makes misconception: rounding_as_increment_rightmost (adds one to the final digit and keeps all four decimal places)",
   "C": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest thousandth instead of the nearest hundredth, stopping one column too far right)",
-  "D": "Student makes misconception: rounding_as_increment_rightmost (adds one to the final digit and keeps all four decimal places)"
+  "D": "Student makes misconception: rounds_down_despite_five_or_more (reads the reference digit 7 correctly but rounds down anyway, leaving the hundredths digit unchanged)"
 },
 "misconception_tag": {
-  "A": "rounds_down_despite_five_or_more",
+  "B": "rounding_as_increment_rightmost",
   "C": "rounds_to_wrong_place",
-  "D": "rounding_as_increment_rightmost"
+  "D": "rounds_down_despite_five_or_more"
 }
 ```
 
@@ -353,17 +353,17 @@ Step 3: $4$ is four or less, so round down. The $2$ stays.
 
 Step 4: Everything right of the thousands place becomes zeros.
 
-**Answer: A** ($12{,}000$)
+**Answer: B** ($12{,}000$)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: reads the hundreds digit 4 as the reference and rounds down, giving 12,000",
-  "B": "Student makes misconception: wrong_reference_digit (decides on the tens digit 8 rather than the hundreds digit 4, rounding up when the reference digit calls for down)",
+  "A": "Student makes misconception: wrong_reference_digit (decides on the tens digit 8 rather than the hundreds digit 4, rounding up when the reference digit calls for down)",
+  "B": "Correct: reads the hundreds digit 4 as the reference and rounds down, giving 12,000",
   "C": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest hundred instead of the nearest thousand, correctly giving 12,500 for a place the question did not ask about)",
   "D": "Student makes misconception: rounding_as_increment_rightmost (adds one to the ones digit and keeps every place)"
 },
 "misconception_tag": {
-  "B": "wrong_reference_digit",
+  "A": "wrong_reference_digit",
   "C": "rounds_to_wrong_place",
   "D": "rounding_as_increment_rightmost"
 }
@@ -380,19 +380,19 @@ Step 2: The reference digit is the tenths digit, $7$.
 Step 3: $7$ is five or more, so round up. The $9$ rolls to $0$ and carries into the tens.
 - $59$ becomes $60$
 
-**Answer: B** ($60$)
+**Answer: D** ($60$)
 
 ```json
 "distractor_logic": {
   "A": "Student makes misconception: rounds_down_despite_five_or_more (reads the reference digit 7 correctly but rounds down, dropping the decimal part instead of rounding it)",
-  "B": "Correct: rounds up because the tenths digit 7 is five or more, carrying the 9 over into 60",
-  "C": "Student makes misconception: rounding_as_increment_rightmost (adds one to the tenths digit and keeps the decimal place, never reaching a whole number)",
-  "D": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest hundred instead of the nearest whole number, correctly giving 100 for a place the question did not ask about)"
+  "B": "Student makes misconception: rounding_as_increment_rightmost (adds one to the tenths digit and keeps the decimal place, never reaching a whole number)",
+  "C": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest hundred instead of the nearest whole number, correctly giving 100 for a place the question did not ask about)",
+  "D": "Correct: rounds up because the tenths digit 7 is five or more, carrying the 9 over into 60"
 },
 "misconception_tag": {
   "A": "rounds_down_despite_five_or_more",
-  "C": "rounding_as_increment_rightmost",
-  "D": "rounds_to_wrong_place"
+  "B": "rounding_as_increment_rightmost",
+  "C": "rounds_to_wrong_place"
 }
 ```
 
@@ -413,18 +413,18 @@ Step 4: The thousands digit $4$ becomes $5$.
 
 Step 5: Check. Rounding to the nearest hundred should move the number by less than $50$. From $4{,}963$ to $5{,}000$ is $37$. Correct.
 
-**Answer: B** ($5{,}000$)
+**Answer: C** ($5{,}000$)
 
 ```json
 "distractor_logic": {
   "A": "Student makes misconception: rounds_down_despite_five_or_more (reads the reference digit 6 correctly but rounds down, avoiding the carry entirely)",
-  "B": "Correct: rounds the 9 hundreds up, rolling it to 0 and carrying into the thousands place for 5,000",
-  "C": "Student makes misconception: carry_not_propagated (rolls the 9 in the hundreds place to 0 but never bumps the thousands digit, moving the number 963 away from where it started)",
+  "B": "Student makes misconception: carry_not_propagated (rolls the 9 in the hundreds place to 0 but never bumps the thousands digit, moving the number 963 away from where it started)",
+  "C": "Correct: rounds the 9 hundreds up, rolling it to 0 and carrying into the thousands place for 5,000",
   "D": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest ten instead of the nearest hundred, correctly giving 4,960 for a place the question did not ask about)"
 },
 "misconception_tag": {
   "A": "rounds_down_despite_five_or_more",
-  "C": "carry_not_propagated",
+  "B": "carry_not_propagated",
   "D": "rounds_to_wrong_place"
 }
 ```
@@ -439,20 +439,20 @@ Step 2: The reference digit is the tenths digit, $4$.
 
 Step 3: $4$ is four or less, so round down.
 
-**Answer: A** ($4$)
+**Answer: C** ($4$)
 
 The staged approach is the trap here. Rounding $4.45$ to the nearest tenth gives $4.5$, and rounding that to the nearest whole number gives $5$. Going back to the original number gives $4$, and the original number is the one that counts.
 
 ```json
 "distractor_logic": {
-  "A": "Correct: reads the tenths digit 4 as the reference and rounds down in a single step from the original number",
+  "A": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest tenth instead of the nearest whole number)",
   "B": "Student makes misconception: two_step_rounding_assumed_equal (rounds to the nearest tenth first for 4.5, then rounds that result up to 5, applying two roundings where the question calls for one)",
-  "C": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest tenth instead of the nearest whole number)",
+  "C": "Correct: reads the tenths digit 4 as the reference and rounds down in a single step from the original number",
   "D": "Student makes misconception: rounding_as_increment_rightmost (adds one to the hundredths digit and keeps both decimal places)"
 },
 "misconception_tag": {
+  "A": "rounds_to_wrong_place",
   "B": "two_step_rounding_assumed_equal",
-  "C": "rounds_to_wrong_place",
   "D": "rounding_as_increment_rightmost"
 }
 ```
@@ -472,19 +472,19 @@ Step 4: The tenths digit $4$ becomes $5$.
 
 Step 5: Check. Rounding to the nearest hundredth should move the number by less than $0.005$. From $0.4982$ to $0.50$ is $0.0018$. Correct.
 
-**Answer: B** ($0.50$)
+**Answer: A** ($0.50$)
 
 ```json
 "distractor_logic": {
-  "A": "Student makes misconception: rounds_down_despite_five_or_more (reads the reference digit 8 correctly but rounds down, avoiding the carry)",
-  "B": "Correct: rounds the 9 hundredths up, rolling it to 0 and carrying into the tenths place for 0.50",
+  "A": "Correct: rounds the 9 hundredths up, rolling it to 0 and carrying into the tenths place for 0.50",
+  "B": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest thousandth instead of the nearest hundredth, stopping one column too far right)",
   "C": "Student makes misconception: carry_not_propagated (rolls the 9 in the hundredths place to 0 but never bumps the tenths digit, moving the value from about 0.5 down to 0.4)",
-  "D": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest thousandth instead of the nearest hundredth, stopping one column too far right)"
+  "D": "Student makes misconception: rounds_down_despite_five_or_more (reads the reference digit 8 correctly but rounds down, avoiding the carry)"
 },
 "misconception_tag": {
-  "A": "rounds_down_despite_five_or_more",
+  "B": "rounds_to_wrong_place",
   "C": "carry_not_propagated",
-  "D": "rounds_to_wrong_place"
+  "D": "rounds_down_despite_five_or_more"
 }
 ```
 
@@ -501,19 +501,19 @@ Step 2: Round once, at the end. The ones digit is $9$ and the reference digit is
 
 Step 3: $7$ is five or more, so round up. The $119$ becomes $120$.
 
-**Answer: A** ($120$ square feet)
+**Answer: D** ($120$ square feet)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: multiplies the full measurements for 119.7 square feet, then rounds once at the end to 120",
-  "B": "Student makes misconception: rounds_too_early (rounds each side length to a whole number first, multiplying 13 by 9 for 117 and losing the precision the question preserved)",
+  "A": "Student makes misconception: rounds_too_early (rounds each side length to a whole number first, multiplying 13 by 9 for 117 and losing the precision the question preserved)",
+  "B": "Student makes misconception: perimeter_area_confusion (adds the two side lengths and doubles them, reporting the distance around the room rather than the surface it covers)",
   "C": "Student makes misconception: rounds_down_despite_five_or_more (computes 119.7 correctly but rounds the tenths digit 7 down instead of up)",
-  "D": "Student makes misconception: perimeter_area_confusion (adds the two side lengths and doubles them, reporting the distance around the room rather than the surface it covers)"
+  "D": "Correct: multiplies the full measurements for 119.7 square feet, then rounds once at the end to 120"
 },
 "misconception_tag": {
-  "B": "rounds_too_early",
-  "C": "rounds_down_despite_five_or_more",
-  "D": "perimeter_area_confusion"
+  "A": "rounds_too_early",
+  "B": "perimeter_area_confusion",
+  "C": "rounds_down_despite_five_or_more"
 }
 ```
 
@@ -527,19 +527,19 @@ Step 2: The reference digit is the thousandths digit, $4$.
 
 Step 3: $4$ is four or less, so round down. The $6$ stays.
 
-**Answer: A** ($7.06$ grams)
+**Answer: B** ($7.06$ grams)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: reads the thousandths digit 4 as the reference and rounds down in a single step from the measured value",
-  "B": "Student makes misconception: two_step_rounding_assumed_equal (rounds to the nearest thousandth first for 7.065, then rounds that up to 7.07, applying two roundings where the question calls for one)",
+  "A": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest thousandth instead of the nearest hundredth, stopping one column too far right)",
+  "B": "Correct: reads the thousandths digit 4 as the reference and rounds down in a single step from the measured value",
   "C": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest tenth instead of the nearest hundredth, stopping one column too far left)",
-  "D": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest thousandth instead of the nearest hundredth, stopping one column too far right)"
+  "D": "Student makes misconception: two_step_rounding_assumed_equal (rounds to the nearest thousandth first for 7.065, then rounds that up to 7.07, applying two roundings where the question calls for one)"
 },
 "misconception_tag": {
-  "B": "two_step_rounding_assumed_equal",
+  "A": "rounds_to_wrong_place",
   "C": "rounds_to_wrong_place",
-  "D": "rounds_to_wrong_place"
+  "D": "two_step_rounding_assumed_equal"
 }
 ```
 
@@ -556,18 +556,18 @@ Step 2: Round the original figure to the nearest thousand. The thousands digit i
 Step 3: Subtract.
 - $150{,}000 - 149{,}000 = 1{,}000$
 
-**Answer: A** ($1{,}000$)
+**Answer: B** ($1{,}000$)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: rounds the original figure separately to 150,000 and 149,000, then subtracts for a difference of 1,000",
-  "B": "Student makes misconception: rounds_down_despite_five_or_more (rounds to the nearest ten thousand correctly but takes the nearest thousand down to 148,000 despite a reference digit of 7, giving a gap of 2,000)",
-  "C": "Student makes misconception: answers_intermediate_value (reports the first rounded figure rather than the difference between the two the question asks for)",
+  "A": "Student makes misconception: answers_intermediate_value (reports the first rounded figure rather than the difference between the two the question asks for)",
+  "B": "Correct: rounds the original figure separately to 150,000 and 149,000, then subtracts for a difference of 1,000",
+  "C": "Student makes misconception: rounds_down_despite_five_or_more (rounds to the nearest ten thousand correctly but takes the nearest thousand down to 148,000 despite a reference digit of 7, giving a gap of 2,000)",
   "D": "Student makes misconception: omits_second_component (rounds only the first figure and subtracts the unrounded population from it, computing 150,000 minus 148,732 and skipping the second rounding entirely)"
 },
 "misconception_tag": {
-  "B": "rounds_down_despite_five_or_more",
-  "C": "answers_intermediate_value",
+  "A": "answers_intermediate_value",
+  "C": "rounds_down_despite_five_or_more",
   "D": "omits_second_component"
 }
 ```
@@ -584,18 +584,18 @@ Step 2: The reference digit is the tens digit, $4$.
 
 Step 3: $4$ is four or less, so round down.
 
-**Answer: A** ($6{,}200$)
+**Answer: B** ($6{,}200$)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: reads the tens digit 4 as the reference and rounds down, giving 6,200",
-  "B": "Student makes misconception: wrong_reference_digit (decides on the ones digit 9 rather than the tens digit 4, rounding up when the reference digit calls for down)",
-  "C": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest ten instead of the nearest hundred, correctly giving 6,250 for a place the question did not ask about)",
+  "A": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest ten instead of the nearest hundred, correctly giving 6,250 for a place the question did not ask about)",
+  "B": "Correct: reads the tens digit 4 as the reference and rounds down, giving 6,200",
+  "C": "Student makes misconception: wrong_reference_digit (decides on the ones digit 9 rather than the tens digit 4, rounding up when the reference digit calls for down)",
   "D": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest thousand instead of the nearest hundred, correctly giving 6,000 for a place the question did not ask about)"
 },
 "misconception_tag": {
-  "B": "wrong_reference_digit",
-  "C": "rounds_to_wrong_place",
+  "A": "rounds_to_wrong_place",
+  "C": "wrong_reference_digit",
   "D": "rounds_to_wrong_place"
 }
 ```
@@ -610,18 +610,18 @@ Step 2: The reference digit is the thousandths digit, $5$.
 
 Step 3: $5$ is five or more, so round up. The $8$ becomes $9$.
 
-**Answer: B** ($0.09$)
+**Answer: C** ($0.09$)
 
 ```json
 "distractor_logic": {
-  "A": "Student makes misconception: rounds_down_despite_five_or_more (treats the reference digit 5 as too small to round up, when five is exactly the value that does)",
-  "B": "Correct: rounds the hundredths digit 8 up to 9 because the reference digit 5 is five or more",
-  "C": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest thousandth instead of the nearest hundredth, stopping one column too far right)",
+  "A": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest thousandth instead of the nearest hundredth, stopping one column too far right)",
+  "B": "Student makes misconception: rounds_down_despite_five_or_more (treats the reference digit 5 as too small to round up, when five is exactly the value that does)",
+  "C": "Correct: rounds the hundredths digit 8 up to 9 because the reference digit 5 is five or more",
   "D": "Student makes misconception: rounding_as_increment_rightmost (adds one to the final digit and keeps all four decimal places)"
 },
 "misconception_tag": {
-  "A": "rounds_down_despite_five_or_more",
-  "C": "rounds_to_wrong_place",
+  "A": "rounds_to_wrong_place",
+  "B": "rounds_down_despite_five_or_more",
   "D": "rounding_as_increment_rightmost"
 }
 ```
@@ -639,19 +639,19 @@ Step 3: $8$ is five or more, so round up. The $9$ rolls to $0$ and carries into 
 Step 4: The thousands digit $7$ becomes $8$.
 - $8{,}000$
 
-**Answer: B** ($8{,}000$)
+**Answer: A** ($8{,}000$)
 
 ```json
 "distractor_logic": {
-  "A": "Student makes misconception: rounds_down_despite_five_or_more (reads the reference digit 8 correctly but rounds down, avoiding the carry)",
-  "B": "Correct: rounds the 9 hundreds up, rolling it to 0 and carrying into the thousands place for 8,000",
+  "A": "Correct: rounds the 9 hundreds up, rolling it to 0 and carrying into the thousands place for 8,000",
+  "B": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest ten instead of the nearest hundred, correctly giving 7,980 for a place the question did not ask about)",
   "C": "Student makes misconception: carry_not_propagated (rolls the 9 in the hundreds place to 0 but never bumps the thousands digit, moving the number 981 away from where it started)",
-  "D": "Student makes misconception: rounds_to_wrong_place (rounds to the nearest ten instead of the nearest hundred, correctly giving 7,980 for a place the question did not ask about)"
+  "D": "Student makes misconception: rounds_down_despite_five_or_more (reads the reference digit 8 correctly but rounds down, avoiding the carry)"
 },
 "misconception_tag": {
-  "A": "rounds_down_despite_five_or_more",
+  "B": "rounds_to_wrong_place",
   "C": "carry_not_propagated",
-  "D": "rounds_to_wrong_place"
+  "D": "rounds_down_despite_five_or_more"
 }
 ```
 
@@ -668,18 +668,18 @@ Step 2: Round the original figure to the nearest ten thousand. The ten-thousands
 Step 3: Subtract.
 - $90{,}000 - 87{,}000 = 3{,}000$
 
-**Answer: A** ($3{,}000$ miles)
+**Answer: D** ($3{,}000$ miles)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: rounds the odometer reading separately to 87,000 and 90,000, then subtracts for a difference of 3,000",
-  "B": "Student makes misconception: rounds_down_despite_five_or_more (rounds to the nearest thousand correctly but takes the nearest ten thousand down to 80,000 despite a reference digit of 7, giving a gap of 7,000)",
+  "A": "Student makes misconception: rounds_down_despite_five_or_more (rounds to the nearest thousand correctly but takes the nearest ten thousand down to 80,000 despite a reference digit of 7, giving a gap of 7,000)",
+  "B": "Student makes misconception: omits_second_component (rounds only to the nearest ten thousand and subtracts the unrounded odometer reading from it, computing 90,000 minus 87,462 and skipping the second rounding entirely)",
   "C": "Student makes misconception: answers_intermediate_value (reports the ten-thousand rounding rather than the difference between the two figures the question asks for)",
-  "D": "Student makes misconception: omits_second_component (rounds only to the nearest ten thousand and subtracts the unrounded odometer reading from it, computing 90,000 minus 87,462 and skipping the second rounding entirely)"
+  "D": "Correct: rounds the odometer reading separately to 87,000 and 90,000, then subtracts for a difference of 3,000"
 },
 "misconception_tag": {
-  "B": "rounds_down_despite_five_or_more",
-  "C": "answers_intermediate_value",
-  "D": "omits_second_component"
+  "A": "rounds_down_despite_five_or_more",
+  "B": "omits_second_component",
+  "C": "answers_intermediate_value"
 }
 ```

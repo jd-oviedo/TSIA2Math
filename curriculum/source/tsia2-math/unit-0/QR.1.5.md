@@ -191,19 +191,19 @@ Solve each problem. Show your thinking.
 
 1. What is the value of $-8 + 5$?
    - A) $-13$
-   - B) $-3$
+   - B) $13$
    - C) $3$
-   - D) $13$
+   - D) $-3$
 
 2. What is the value of $-6 \times (-4)$?
    - A) $-24$
    - B) $-10$
-   - C) $24$
-   - D) $1.5$
+   - C) $1.5$
+   - D) $24$
 
 3. What is the value of $\frac{3}{5} \times \frac{2}{7}$?
-   - A) $\frac{5}{12}$
-   - B) $\frac{6}{35}$
+   - A) $\frac{6}{35}$
+   - B) $\frac{5}{12}$
    - C) $\frac{21}{10}$
    - D) $\frac{35}{6}$
 
@@ -216,41 +216,41 @@ Solve each problem. Show your thinking.
 **Proficient Level** (these require an extra step)
 
 5. What is the value of $-3 + 5 \times (-2)$?
-   - A) $-13$
+   - A) $7$
    - B) $-4$
-   - C) $7$
+   - C) $-13$
    - D) $13$
 
 6. What is the value of $\frac{5}{6} - \frac{1}{4}$?
-   - A) $\frac{4}{2}$
-   - B) $\frac{7}{12}$
+   - A) $-\frac{7}{12}$
+   - B) $\frac{4}{2}$
    - C) $\frac{13}{12}$
-   - D) $-\frac{7}{12}$
+   - D) $\frac{7}{12}$
 
 7. What is the value of $\frac{3}{4} \div \frac{2}{3}$?
-   - A) $\frac{1}{2}$
+   - A) $\frac{9}{8}$
    - B) $\frac{8}{9}$
-   - C) $\frac{9}{8}$
-   - D) $\frac{17}{12}$
+   - C) $\frac{17}{12}$
+   - D) $\frac{1}{2}$
 
 **Advanced Level** (these need multiple steps or reverse thinking)
 
 8. At $6$ a.m. the temperature was $-4$ degrees Fahrenheit. By noon it had risen $11$ degrees. By midnight it had fallen $9$ degrees. What was the temperature at midnight?
-   - A) $-2$ degrees Fahrenheit
-   - B) $-24$ degrees Fahrenheit
-   - C) $6$ degrees Fahrenheit
+   - A) $-24$ degrees Fahrenheit
+   - B) $6$ degrees Fahrenheit
+   - C) $-2$ degrees Fahrenheit
    - D) $7$ degrees Fahrenheit
 
 9. A recipe calls for $2\frac{1}{2}$ cups of flour. A cook is making $\frac{3}{4}$ of the recipe. How many cups of flour are needed?
-   - A) $1\frac{7}{8}$ cups
-   - B) $3\frac{1}{3}$ cups
+   - A) $3\frac{1}{4}$ cups
+   - B) $1\frac{7}{8}$ cups
    - C) $1\frac{1}{2}$ cups
-   - D) $3\frac{1}{4}$ cups
+   - D) $3\frac{1}{3}$ cups
 
 10. A checking account starts with a balance of \$85.40. Two withdrawals of \$32.75 each are made, and then a deposit of \$18.60 is added. What is the final balance?
-    - A) \$38.50
-    - B) \$71.25
-    - C) \$1.30
+    - A) \$1.30
+    - B) \$38.50
+    - C) \$71.25
     - D) \$19.90
 
 ---
@@ -280,18 +280,18 @@ What is the value of $\frac{7}{10} - \frac{1}{5}$, written in simplest form?
 What is the value of $0.6 \times 0.05$?
 
 - A) $0.3$
-- B) $0.03$
-- C) $0.65$
-- D) $12$
+- B) $12$
+- C) $0.03$
+- D) $0.65$
 
 **Item 4**
 
 A diver descends $12.5$ feet from the surface, then rises $4.75$ feet, then descends another $6.25$ feet. Taking sea level as $0$ and descent as negative, what is the diver's final position?
 
-- A) $-14$ feet
-- B) $-23.5$ feet
+- A) $-23.5$ feet
+- B) $-7.75$ feet
 - C) $14$ feet
-- D) $-7.75$ feet
+- D) $-14$ feet
 
 ---
 
@@ -308,19 +308,19 @@ Step 1: The signs are different, so the two moves partly cancel. Subtract the ma
 
 Step 2: Keep the sign of the number farther from zero. That is $-8$, which is negative.
 
-**Answer: B** ($-3$)
+**Answer: D** ($-3$)
 
 ```json
 "distractor_logic": {
   "A": "Student makes misconception: adds_instead_of_subtracts (adds the magnitudes 8 and 5 as though both moves went the same direction, keeping the negative sign, for -13)",
-  "B": "Correct: subtracts the magnitudes because the signs differ, then keeps the sign of -8 as the number farther from zero",
+  "B": "Student makes misconception: drops_negative_sign (ignores the minus on -8 entirely and computes 8 plus 5)",
   "C": "Student makes misconception: drops_negative_sign (subtracts the magnitudes correctly for 3 but reports the bare magnitude, ignoring that the larger term was negative)",
-  "D": "Student makes misconception: drops_negative_sign (ignores the minus on -8 entirely and computes 8 plus 5)"
+  "D": "Correct: subtracts the magnitudes because the signs differ, then keeps the sign of -8 as the number farther from zero"
 },
 "misconception_tag": {
   "A": "adds_instead_of_subtracts",
-  "C": "drops_negative_sign",
-  "D": "drops_negative_sign"
+  "B": "drops_negative_sign",
+  "C": "drops_negative_sign"
 }
 ```
 
@@ -334,19 +334,19 @@ Step 2: Two is even, so the answer is positive.
 
 Step 3: Multiply the magnitudes. $6 \times 4 = 24$.
 
-**Answer: C** ($24$)
+**Answer: D** ($24$)
 
 ```json
 "distractor_logic": {
   "A": "Student makes misconception: wrong_sign_on_factor (multiplies the magnitudes correctly for 24 but assigns a negative sign, applying an odd-negative result to an even count of negatives)",
   "B": "Student makes misconception: adds_instead_of_scales (applies the addition sign rule to a multiplication, combining -6 and -4 into -10)",
-  "C": "Correct: an even number of negative factors gives a positive product, and 6 times 4 is 24",
-  "D": "Student makes misconception: divides_instead_of_multiplies (divides -6 by -4 for 1.5 instead of multiplying)"
+  "C": "Student makes misconception: divides_instead_of_multiplies (divides -6 by -4 for 1.5 instead of multiplying)",
+  "D": "Correct: an even number of negative factors gives a positive product, and 6 times 4 is 24"
 },
 "misconception_tag": {
   "A": "wrong_sign_on_factor",
   "B": "adds_instead_of_scales",
-  "D": "divides_instead_of_multiplies"
+  "C": "divides_instead_of_multiplies"
 }
 ```
 
@@ -361,17 +361,17 @@ Step 2: Multiply the numerators and the denominators.
 
 Step 3: Check whether it reduces. $6$ and $35$ share no factor, so it is already simplest.
 
-**Answer: B** ($\frac{6}{35}$)
+**Answer: A** ($\frac{6}{35}$)
 
 ```json
 "distractor_logic": {
-  "A": "Student makes misconception: adds_instead_of_scales (adds across instead of multiplying, giving 3 plus 2 over 5 plus 7)",
-  "B": "Correct: multiplies numerator by numerator and denominator by denominator for 6 over 35",
+  "A": "Correct: multiplies numerator by numerator and denominator by denominator for 6 over 35",
+  "B": "Student makes misconception: adds_instead_of_scales (adds across instead of multiplying, giving 3 plus 2 over 5 plus 7)",
   "C": "Student makes misconception: divides_instead_of_multiplies (flips the second fraction and multiplies, performing the division 3/5 divided by 2/7 for 21 over 10)",
   "D": "Student makes misconception: numerator_denominator_swap (reaches the right pair of values but writes the fraction upside down as 35 over 6)"
 },
 "misconception_tag": {
-  "A": "adds_instead_of_scales",
+  "B": "adds_instead_of_scales",
   "C": "divides_instead_of_multiplies",
   "D": "numerator_denominator_swap"
 }
@@ -419,18 +419,18 @@ Step 2: Now add.
 
 Both terms are negative, so the magnitudes add and the sign stays negative.
 
-**Answer: A** ($-13$)
+**Answer: C** ($-13$)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: multiplies before adding for -10, then combines two negative terms into -13",
+  "A": "Student makes misconception: wrong_sign_on_factor (multiplies in the right order but takes 5 times -2 as positive 10, then computes -3 plus 10 for 7)",
   "B": "Student makes misconception: order_of_operations_violated (works left to right, adding -3 and 5 first for 2, then multiplying by -2 for -4)",
-  "C": "Student makes misconception: wrong_sign_on_factor (multiplies in the right order but takes 5 times -2 as positive 10, then computes -3 plus 10 for 7)",
+  "C": "Correct: multiplies before adding for -10, then combines two negative terms into -13",
   "D": "Student makes misconception: drops_negative_sign (ignores both minus signs and computes 3 plus 10, reporting the magnitude 13)"
 },
 "misconception_tag": {
+  "A": "wrong_sign_on_factor",
   "B": "order_of_operations_violated",
-  "C": "wrong_sign_on_factor",
   "D": "drops_negative_sign"
 }
 ```
@@ -450,19 +450,19 @@ Step 3: Subtract the numerators only.
 
 Step 4: Sanity check. $\frac{5}{6}$ is a bit over $0.8$ and $\frac{1}{4}$ is $0.25$, so the answer should be near $0.58$. $\frac{7}{12}$ is about $0.583$.
 
-**Answer: B** ($\frac{7}{12}$)
+**Answer: D** ($\frac{7}{12}$)
 
 ```json
 "distractor_logic": {
-  "A": "Student makes misconception: denominators_combined_with_numerators (subtracts the denominators along with the numerators, giving 5 minus 1 over 6 minus 4, which turns a value under 1 into 2)",
-  "B": "Correct: rewrites both fractions over 12, then subtracts only the numerators for 7 over 12",
+  "A": "Student makes misconception: subtracts_in_wrong_order (computes 3 twelfths minus 10 twelfths, reversing the order the expression gives)",
+  "B": "Student makes misconception: denominators_combined_with_numerators (subtracts the denominators along with the numerators, giving 5 minus 1 over 6 minus 4, which turns a value under 1 into 2)",
   "C": "Student makes misconception: adds_instead_of_subtracts (converts to twelfths correctly but adds 10 and 3 where the expression subtracts)",
-  "D": "Student makes misconception: subtracts_in_wrong_order (computes 3 twelfths minus 10 twelfths, reversing the order the expression gives)"
+  "D": "Correct: rewrites both fractions over 12, then subtracts only the numerators for 7 over 12"
 },
 "misconception_tag": {
-  "A": "denominators_combined_with_numerators",
-  "C": "adds_instead_of_subtracts",
-  "D": "subtracts_in_wrong_order"
+  "A": "subtracts_in_wrong_order",
+  "B": "denominators_combined_with_numerators",
+  "C": "adds_instead_of_subtracts"
 }
 ```
 
@@ -478,19 +478,19 @@ Step 2: Multiply straight across.
 
 Step 3: Sanity check. Dividing by a number smaller than $1$ makes the result larger than what you started with. $\frac{9}{8}$ is bigger than $\frac{3}{4}$.
 
-**Answer: C** ($\frac{9}{8}$)
+**Answer: A** ($\frac{9}{8}$)
 
 ```json
 "distractor_logic": {
-  "A": "Student makes misconception: multiplies_instead_of_divides (multiplies straight across without flipping, giving 6 over 12, which reduces to one half)",
+  "A": "Correct: flips the second fraction to 3 over 2 and multiplies, giving 9 over 8",
   "B": "Student makes misconception: reversed_division (computes 2/3 divided by 3/4, dividing in the opposite order from the one written)",
-  "C": "Correct: flips the second fraction to 3 over 2 and multiplies, giving 9 over 8",
-  "D": "Student makes misconception: adds_instead_of_scales (adds the two fractions over a common denominator of 12 instead of dividing, giving 17 over 12)"
+  "C": "Student makes misconception: adds_instead_of_scales (adds the two fractions over a common denominator of 12 instead of dividing, giving 17 over 12)",
+  "D": "Student makes misconception: multiplies_instead_of_divides (multiplies straight across without flipping, giving 6 over 12, which reduces to one half)"
 },
 "misconception_tag": {
-  "A": "multiplies_instead_of_divides",
   "B": "reversed_division",
-  "D": "adds_instead_of_scales"
+  "C": "adds_instead_of_scales",
+  "D": "multiplies_instead_of_divides"
 }
 ```
 
@@ -509,18 +509,18 @@ Step 2: Work left to right.
 
 Step 3: Sanity check. The day warmed by $11$ and then cooled by $9$, a net gain of $2$ from a start of $-4$. That is $-2$.
 
-**Answer: A** ($-2$ degrees Fahrenheit)
+**Answer: C** ($-2$ degrees Fahrenheit)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: reads risen as an increase and fallen as a decrease, giving -4 plus 11 minus 9",
-  "B": "Student makes misconception: misreads_direction_of_change (reads the size of the morning rise correctly but applies it downward, computing -4 minus 11 minus 9)",
-  "C": "Student makes misconception: drops_negative_sign (treats the starting temperature as positive 4, giving 4 plus 11 minus 9)",
+  "A": "Student makes misconception: misreads_direction_of_change (reads the size of the morning rise correctly but applies it downward, computing -4 minus 11 minus 9)",
+  "B": "Student makes misconception: drops_negative_sign (treats the starting temperature as positive 4, giving 4 plus 11 minus 9)",
+  "C": "Correct: reads risen as an increase and fallen as a decrease, giving -4 plus 11 minus 9",
   "D": "Student makes misconception: answers_intermediate_value (computes the noon temperature of 7 correctly and reports it, stopping before the evening drop the question asks about)"
 },
 "misconception_tag": {
-  "B": "misreads_direction_of_change",
-  "C": "drops_negative_sign",
+  "A": "misreads_direction_of_change",
+  "B": "drops_negative_sign",
   "D": "answers_intermediate_value"
 }
 ```
@@ -540,19 +540,19 @@ Step 3: Convert back. $15 \div 8 = 1$ with remainder $7$.
 
 Step 4: Sanity check. Three quarters of two and a half should land under $2$ and well above $1$.
 
-**Answer: A** ($1\frac{7}{8}$ cups)
+**Answer: B** ($1\frac{7}{8}$ cups)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: converts the mixed number to 5 over 2, multiplies by 3 over 4 for 15 over 8, and rewrites it as 1 and 7 eighths",
-  "B": "Student makes misconception: divides_instead_of_multiplies (divides 5 over 2 by 3 over 4 instead of multiplying, giving 10 over 3, or 3 and 1 third)",
+  "A": "Student makes misconception: adds_instead_of_scales (adds the two quantities instead of taking a fractional part of one, giving 2 and 1 half plus 3 fourths)",
+  "B": "Correct: converts the mixed number to 5 over 2, multiplies by 3 over 4 for 15 over 8, and rewrites it as 1 and 7 eighths",
   "C": "Student makes misconception: omits_second_component (multiplies only the whole-number part of the mixed number, computing 2 times 3 over 4 and leaving the half cup out)",
-  "D": "Student makes misconception: adds_instead_of_scales (adds the two quantities instead of taking a fractional part of one, giving 2 and 1 half plus 3 fourths)"
+  "D": "Student makes misconception: divides_instead_of_multiplies (divides 5 over 2 by 3 over 4 instead of multiplying, giving 10 over 3, or 3 and 1 third)"
 },
 "misconception_tag": {
-  "B": "divides_instead_of_multiplies",
+  "A": "adds_instead_of_scales",
   "C": "omits_second_component",
-  "D": "adds_instead_of_scales"
+  "D": "divides_instead_of_multiplies"
 }
 ```
 
@@ -571,18 +571,18 @@ Step 3: Add the deposit.
 
 So the final balance is \$38.50.
 
-**Answer: A** (\$38.50)
+**Answer: B** (\$38.50)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: doubles the 32.75 withdrawal, subtracts 65.50 from 85.40, then adds the 18.60 deposit for 38.50",
-  "B": "Student makes misconception: omits_second_component (applies only one of the two identical withdrawals, computing 85.40 minus 32.75 plus 18.60)",
-  "C": "Student makes misconception: misreads_direction_of_change (subtracts both withdrawals correctly for 19.90 but treats the deposit as another withdrawal, subtracting 18.60 instead of adding it)",
+  "A": "Student makes misconception: misreads_direction_of_change (subtracts both withdrawals correctly for 19.90 but treats the deposit as another withdrawal, subtracting 18.60 instead of adding it)",
+  "B": "Correct: doubles the 32.75 withdrawal, subtracts 65.50 from 85.40, then adds the 18.60 deposit for 38.50",
+  "C": "Student makes misconception: omits_second_component (applies only one of the two identical withdrawals, computing 85.40 minus 32.75 plus 18.60)",
   "D": "Student makes misconception: answers_intermediate_value (computes the balance after the withdrawals correctly as 19.90 and reports it, never applying the deposit)"
 },
 "misconception_tag": {
-  "B": "omits_second_component",
-  "C": "misreads_direction_of_change",
+  "A": "misreads_direction_of_change",
+  "C": "omits_second_component",
   "D": "answers_intermediate_value"
 }
 ```
@@ -657,19 +657,19 @@ Step 3: Place three decimal places. $0.030$, which is $0.03$.
 
 Step 4: Sanity check. Both factors are under $1$, so the product must be smaller than either.
 
-**Answer: B** ($0.03$)
+**Answer: C** ($0.03$)
 
 ```json
 "distractor_logic": {
   "A": "Student makes misconception: place_value_slip (multiplies 6 by 5 for 30 but writes only one decimal place instead of the three the factors carry, giving 0.3)",
-  "B": "Correct: multiplies 6 by 5 for 30, then places three decimal places because the factors carry one and two",
-  "C": "Student makes misconception: adds_instead_of_scales (adds 0.6 and 0.05 instead of multiplying them)",
-  "D": "Student makes misconception: divides_instead_of_multiplies (divides 0.6 by 0.05 for 12, dividing where the problem multiplies)"
+  "B": "Student makes misconception: divides_instead_of_multiplies (divides 0.6 by 0.05 for 12, dividing where the problem multiplies)",
+  "C": "Correct: multiplies 6 by 5 for 30, then places three decimal places because the factors carry one and two",
+  "D": "Student makes misconception: adds_instead_of_scales (adds 0.6 and 0.05 instead of multiplying them)"
 },
 "misconception_tag": {
   "A": "place_value_slip",
-  "C": "adds_instead_of_scales",
-  "D": "divides_instead_of_multiplies"
+  "B": "divides_instead_of_multiplies",
+  "D": "adds_instead_of_scales"
 }
 ```
 
@@ -686,18 +686,18 @@ Step 2: Work left to right.
 
 Step 3: Sanity check. The diver went down $12.5$ and $6.25$, which is $18.75$ total, and came back up $4.75$. That leaves $14$ feet below the surface.
 
-**Answer: A** ($-14$ feet)
+**Answer: D** ($-14$ feet)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: signs the two descents negative and the rise positive, giving -12.5 plus 4.75 minus 6.25",
-  "B": "Student makes misconception: misreads_direction_of_change (reads the size of the 4.75 rise correctly but applies it downward, treating all three moves as descents)",
+  "A": "Student makes misconception: misreads_direction_of_change (reads the size of the 4.75 rise correctly but applies it downward, treating all three moves as descents)",
+  "B": "Student makes misconception: answers_intermediate_value (computes the position after the first two moves correctly as -7.75 and reports it, never applying the final descent)",
   "C": "Student makes misconception: drops_negative_sign (reaches the magnitude 14 but reports it as a position above sea level rather than below)",
-  "D": "Student makes misconception: answers_intermediate_value (computes the position after the first two moves correctly as -7.75 and reports it, never applying the final descent)"
+  "D": "Correct: signs the two descents negative and the rise positive, giving -12.5 plus 4.75 minus 6.25"
 },
 "misconception_tag": {
-  "B": "misreads_direction_of_change",
-  "C": "drops_negative_sign",
-  "D": "answers_intermediate_value"
+  "A": "misreads_direction_of_change",
+  "B": "answers_intermediate_value",
+  "C": "drops_negative_sign"
 }
 ```

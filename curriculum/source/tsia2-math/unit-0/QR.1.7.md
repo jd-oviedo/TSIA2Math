@@ -203,10 +203,10 @@ Solve each problem. Show your thinking.
 **Basic Level** (try these first)
 
 1. What is the value of $8 + 3 \times 4$?
-   - A) $20$
-   - B) $44$
+   - A) $44$
+   - B) $12$
    - C) $15$
-   - D) $12$
+   - D) $20$
 
 2. What is the value of $(5 + 3) \times 2$?
    - A) $16$
@@ -215,50 +215,50 @@ Solve each problem. Show your thinking.
    - D) $8$
 
 3. What is the value of $20 - 12 \div 4$?
-   - A) $17$
+   - A) $3$
    - B) $2$
-   - C) $3$
+   - C) $17$
    - D) $8$
 
 4. What is the value of $5 + 3^2$?
-   - A) $14$
+   - A) $64$
    - B) $11$
-   - C) $64$
-   - D) $9$
+   - C) $9$
+   - D) $14$
 
 **Proficient Level** (these require an extra step)
 
 5. What is the value of $4 + 6 \div 2 \times 3$?
-   - A) $13$
-   - B) $5$
-   - C) $7$
+   - A) $7$
+   - B) $13$
+   - C) $5$
    - D) $9$
 
 6. What is the value of $-2(5 - 8) + 4$?
-   - A) $10$
+   - A) $6$
    - B) $-14$
    - C) $-2$
-   - D) $6$
+   - D) $10$
 
 7. What is the value of $\frac{12 + 3 \times 4}{6 - 2}$?
-   - A) $6$
-   - B) $12$
+   - A) $24$
+   - B) $6$
    - C) $15$
-   - D) $24$
+   - D) $12$
 
 **Advanced Level** (these need multiple steps or reverse thinking)
 
 8. What is the value of $3 + 2[8 - (5 - 2)^2]$?
-   - A) $1$
-   - B) $7$
+   - A) $7$
+   - B) $1$
    - C) $-1$
    - D) $-5$
 
 9. A caterer charges a \$75 setup fee plus \$12 per guest, and then applies a \$40 discount to the total. What is the cost for $18$ guests?
-   - A) \$251
+   - A) \$291
    - B) \$1,526
-   - C) \$216
-   - D) \$291
+   - C) \$251
+   - D) \$216
 
 10. What is the value of $\dfrac{3(8 - 4)^2 - 12}{6}$?
     - A) $6$
@@ -274,9 +274,9 @@ Solve each problem. Show your thinking.
 
 What is the value of $7 + 2 \times 5$?
 
-- A) $17$
-- B) $45$
-- C) $14$
+- A) $14$
+- B) $17$
+- C) $45$
 - D) $10$
 
 **Item 2**
@@ -292,18 +292,18 @@ What is the value of $(9 - 4)^2$?
 
 What is the value of $18 \div 3 + 2 \times 4$?
 
-- A) $14$
+- A) $26$
 - B) $32$
 - C) $6$
-- D) $26$
+- D) $14$
 
 **Item 4**
 
 A phone plan costs \$35 per month plus \$0.10 per text message, and a \$15 account credit is subtracted from the total. What is the bill for a month with $120$ text messages?
 
-- A) \$32
-- B) \$4,197
-- C) \$12
+- A) \$4,197
+- B) \$12
+- C) \$32
 - D) \$47
 
 ---
@@ -322,19 +322,19 @@ Step 1: Multiplication is tier 3 and addition is tier 4, so multiply first.
 Step 2: Add.
 - $8 + 12 = 20$
 
-**Answer: A** ($20$)
+**Answer: D** ($20$)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: multiplies 3 by 4 before adding, giving 8 plus 12",
-  "B": "Student makes misconception: order_of_operations_violated (works left to right, adding 8 and 3 first and then multiplying the sum by 4)",
+  "A": "Student makes misconception: order_of_operations_violated (works left to right, adding 8 and 3 first and then multiplying the sum by 4)",
+  "B": "Student makes misconception: answers_intermediate_value (computes 3 times 4 correctly and reports that product without adding the 8)",
   "C": "Student makes misconception: operation_ignored_entirely (treats the multiplication as another addition and totals 8, 3 and 4)",
-  "D": "Student makes misconception: answers_intermediate_value (computes 3 times 4 correctly and reports that product without adding the 8)"
+  "D": "Correct: multiplies 3 by 4 before adding, giving 8 plus 12"
 },
 "misconception_tag": {
-  "B": "order_of_operations_violated",
-  "C": "operation_ignored_entirely",
-  "D": "answers_intermediate_value"
+  "A": "order_of_operations_violated",
+  "B": "answers_intermediate_value",
+  "C": "operation_ignored_entirely"
 }
 ```
 
@@ -374,18 +374,18 @@ Step 1: Division is tier 3 and subtraction is tier 4, so divide first.
 Step 2: Subtract.
 - $20 - 3 = 17$
 
-**Answer: A** ($17$)
+**Answer: C** ($17$)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: divides 12 by 4 before subtracting, giving 20 minus 3",
+  "A": "Student makes misconception: answers_intermediate_value (computes 12 divided by 4 correctly and reports that quotient without subtracting it from 20)",
   "B": "Student makes misconception: order_of_operations_violated (works left to right, subtracting 12 from 20 first and then dividing the difference by 4)",
-  "C": "Student makes misconception: answers_intermediate_value (computes 12 divided by 4 correctly and reports that quotient without subtracting it from 20)",
+  "C": "Correct: divides 12 by 4 before subtracting, giving 20 minus 3",
   "D": "Student makes misconception: operation_ignored_entirely (subtracts 12 from 20 and never applies the division at all)"
 },
 "misconception_tag": {
+  "A": "answers_intermediate_value",
   "B": "order_of_operations_violated",
-  "C": "answers_intermediate_value",
   "D": "operation_ignored_entirely"
 }
 ```
@@ -400,19 +400,19 @@ Step 1: Exponents are tier 2 and addition is tier 4, so square first.
 Step 2: Add. The exponent belongs to the $3$ alone, not to $5 + 3$.
 - $5 + 9 = 14$
 
-**Answer: A** ($14$)
+**Answer: D** ($14$)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: squares the 3 to 9 before adding, giving 5 plus 9",
+  "A": "Student makes misconception: order_of_operations_violated (adds 5 and 3 first and squares the sum, attaching the exponent to a group the expression never wrote)",
   "B": "Student makes misconception: squaring_confused_with_doubling (reads 3 squared as 3 times 2 for 6, then adds 5)",
-  "C": "Student makes misconception: order_of_operations_violated (adds 5 and 3 first and squares the sum, attaching the exponent to a group the expression never wrote)",
-  "D": "Student makes misconception: answers_intermediate_value (squares the 3 correctly and reports 9 without adding the 5)"
+  "C": "Student makes misconception: answers_intermediate_value (squares the 3 correctly and reports 9 without adding the 5)",
+  "D": "Correct: squares the 3 to 9 before adding, giving 5 plus 9"
 },
 "misconception_tag": {
+  "A": "order_of_operations_violated",
   "B": "squaring_confused_with_doubling",
-  "C": "order_of_operations_violated",
-  "D": "answers_intermediate_value"
+  "C": "answers_intermediate_value"
 }
 ```
 
@@ -429,18 +429,18 @@ Step 1: The division and the multiplication share tier 3, so take them left to r
 Step 2: Add.
 - $4 + 9 = 13$
 
-**Answer: A** ($13$)
+**Answer: B** ($13$)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: works tier 3 left to right for 6 divided by 2 then times 3, giving 9, and adds 4",
-  "B": "Student makes misconception: order_of_operations_violated (reads PEMDAS as multiplication before division, computing 2 times 3 first and then 6 divided by 6)",
-  "C": "Student makes misconception: operation_ignored_entirely (computes 4 plus 6 divided by 2 and never applies the multiplication by 3)",
+  "A": "Student makes misconception: operation_ignored_entirely (computes 4 plus 6 divided by 2 and never applies the multiplication by 3)",
+  "B": "Correct: works tier 3 left to right for 6 divided by 2 then times 3, giving 9, and adds 4",
+  "C": "Student makes misconception: order_of_operations_violated (reads PEMDAS as multiplication before division, computing 2 times 3 first and then 6 divided by 6)",
   "D": "Student makes misconception: answers_intermediate_value (finishes tier 3 correctly for 9 and reports it without adding the 4)"
 },
 "misconception_tag": {
-  "B": "order_of_operations_violated",
-  "C": "operation_ignored_entirely",
+  "A": "operation_ignored_entirely",
+  "C": "order_of_operations_violated",
   "D": "answers_intermediate_value"
 }
 ```
@@ -458,19 +458,19 @@ Step 2: Multiply. Two negative factors give a positive product.
 Step 3: Add.
 - $6 + 4 = 10$
 
-**Answer: A** ($10$)
+**Answer: D** ($10$)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: evaluates the parentheses to -3, multiplies by -2 for a positive 6, then adds 4",
+  "A": "Student makes misconception: answers_intermediate_value (computes -2 times -3 correctly as 6 and reports it without adding the 4)",
   "B": "Student makes misconception: drops_negative_on_group (distributes the -2 onto the 5 only and leaves the 8 unmultiplied, computing -10 minus 8 plus 4)",
   "C": "Student makes misconception: wrong_sign_on_factor (multiplies the magnitudes correctly for 6 but assigns a negative sign to a product of two negatives, then adds 4)",
-  "D": "Student makes misconception: answers_intermediate_value (computes -2 times -3 correctly as 6 and reports it without adding the 4)"
+  "D": "Correct: evaluates the parentheses to -3, multiplies by -2 for a positive 6, then adds 4"
 },
 "misconception_tag": {
+  "A": "answers_intermediate_value",
   "B": "drops_negative_on_group",
-  "C": "wrong_sign_on_factor",
-  "D": "answers_intermediate_value"
+  "C": "wrong_sign_on_factor"
 }
 ```
 
@@ -489,19 +489,19 @@ Step 3: Evaluate the bottom.
 Step 4: Divide.
 - $24 \div 4 = 6$
 
-**Answer: A** ($6$)
+**Answer: B** ($6$)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: treats the fraction bar as grouping both the top and the bottom, giving 24 divided by 4",
-  "B": "Student makes misconception: drops_grouping_symbols (reads the expression as a flat line, computing 12 plus 3 times 4 divided by 6 minus 2, so the bar groups nothing)",
+  "A": "Student makes misconception: answers_intermediate_value (evaluates the numerator correctly to 24 and reports it without dividing by the denominator)",
+  "B": "Correct: treats the fraction bar as grouping both the top and the bottom, giving 24 divided by 4",
   "C": "Student makes misconception: order_of_operations_violated (adds 12 and 3 in the numerator before multiplying by 4, giving 60 over 4)",
-  "D": "Student makes misconception: answers_intermediate_value (evaluates the numerator correctly to 24 and reports it without dividing by the denominator)"
+  "D": "Student makes misconception: drops_grouping_symbols (reads the expression as a flat line, computing 12 plus 3 times 4 divided by 6 minus 2, so the bar groups nothing)"
 },
 "misconception_tag": {
-  "B": "drops_grouping_symbols",
+  "A": "answers_intermediate_value",
   "C": "order_of_operations_violated",
-  "D": "answers_intermediate_value"
+  "D": "drops_grouping_symbols"
 }
 ```
 
@@ -526,17 +526,17 @@ Step 4: Multiply.
 Step 5: Add.
 - $3 + (-2) = 1$
 
-**Answer: A** ($1$)
+**Answer: B** ($1$)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: works from the innermost grouping outward, giving 3 plus 2 times -1",
-  "B": "Student makes misconception: squaring_confused_with_doubling (reads 3 squared as 3 times 2 for 6, so the bracket becomes 2 and the expression gives 3 plus 4)",
+  "A": "Student makes misconception: squaring_confused_with_doubling (reads 3 squared as 3 times 2 for 6, so the bracket becomes 2 and the expression gives 3 plus 4)",
+  "B": "Correct: works from the innermost grouping outward, giving 3 plus 2 times -1",
   "C": "Student makes misconception: answers_intermediate_value (evaluates the bracket correctly to -1 and reports it without multiplying by 2 or adding 3)",
   "D": "Student makes misconception: order_of_operations_violated (adds 3 and 2 before applying the bracket, multiplying 5 by -1 instead of multiplying only the 2)"
 },
 "misconception_tag": {
-  "B": "squaring_confused_with_doubling",
+  "A": "squaring_confused_with_doubling",
   "C": "answers_intermediate_value",
   "D": "order_of_operations_violated"
 }
@@ -556,19 +556,19 @@ Step 3: Tier 4, left to right.
 - $75 + 216 = 291$
 - $291 - 40 = 251$
 
-**Answer: A** (\$251)
+**Answer: C** (\$251)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: multiplies the 12 per guest by 18 guests before adding the setup fee and subtracting the discount",
+  "A": "Student makes misconception: operation_ignored_entirely (adds the setup fee to the per-guest total for 291 but never subtracts the discount)",
   "B": "Student makes misconception: order_of_operations_violated (adds the setup fee to the per-guest rate first and multiplies the sum by 18, charging every guest for a setup fee that is paid once)",
-  "C": "Student makes misconception: answers_intermediate_value (computes the per-guest total of 216 correctly and reports it without the setup fee or the discount)",
-  "D": "Student makes misconception: operation_ignored_entirely (adds the setup fee to the per-guest total for 291 but never subtracts the discount)"
+  "C": "Correct: multiplies the 12 per guest by 18 guests before adding the setup fee and subtracting the discount",
+  "D": "Student makes misconception: answers_intermediate_value (computes the per-guest total of 216 correctly and reports it without the setup fee or the discount)"
 },
 "misconception_tag": {
+  "A": "operation_ignored_entirely",
   "B": "order_of_operations_violated",
-  "C": "answers_intermediate_value",
-  "D": "operation_ignored_entirely"
+  "D": "answers_intermediate_value"
 }
 ```
 
@@ -617,18 +617,18 @@ Step 1: Multiply first.
 Step 2: Add.
 - $7 + 10 = 17$
 
-**Answer: A** ($17$)
+**Answer: B** ($17$)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: multiplies 2 by 5 before adding, giving 7 plus 10",
-  "B": "Student makes misconception: order_of_operations_violated (works left to right, adding 7 and 2 first and then multiplying the sum by 5)",
-  "C": "Student makes misconception: operation_ignored_entirely (treats the multiplication as another addition and totals 7, 2 and 5)",
+  "A": "Student makes misconception: operation_ignored_entirely (treats the multiplication as another addition and totals 7, 2 and 5)",
+  "B": "Correct: multiplies 2 by 5 before adding, giving 7 plus 10",
+  "C": "Student makes misconception: order_of_operations_violated (works left to right, adding 7 and 2 first and then multiplying the sum by 5)",
   "D": "Student makes misconception: answers_intermediate_value (computes 2 times 5 correctly and reports that product without adding the 7)"
 },
 "misconception_tag": {
-  "B": "order_of_operations_violated",
-  "C": "operation_ignored_entirely",
+  "A": "operation_ignored_entirely",
+  "C": "order_of_operations_violated",
   "D": "answers_intermediate_value"
 }
 ```
@@ -670,19 +670,19 @@ Step 1: Tier 3 holds both the division and the multiplication. Take them left to
 Step 2: Add.
 - $6 + 8 = 14$
 
-**Answer: A** ($14$)
+**Answer: D** ($14$)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: completes both tier 3 operations for 6 and 8, then adds them",
+  "A": "Student makes misconception: operation_ignored_entirely (never applies the division, computing 18 plus 2 times 4)",
   "B": "Student makes misconception: order_of_operations_violated (works straight across left to right, computing 18 divided by 3 for 6, then 6 plus 2 for 8, then 8 times 4)",
   "C": "Student makes misconception: answers_intermediate_value (computes 18 divided by 3 correctly and reports 6 without the second term)",
-  "D": "Student makes misconception: operation_ignored_entirely (never applies the division, computing 18 plus 2 times 4)"
+  "D": "Correct: completes both tier 3 operations for 6 and 8, then adds them"
 },
 "misconception_tag": {
+  "A": "operation_ignored_entirely",
   "B": "order_of_operations_violated",
-  "C": "answers_intermediate_value",
-  "D": "operation_ignored_entirely"
+  "C": "answers_intermediate_value"
 }
 ```
 
@@ -700,18 +700,18 @@ Step 3: Tier 4, left to right.
 - $35 + 12 = 47$
 - $47 - 15 = 32$
 
-**Answer: A** (\$32)
+**Answer: C** (\$32)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: multiplies the per-text rate by 120 before adding the monthly fee and subtracting the credit",
-  "B": "Student makes misconception: order_of_operations_violated (adds the monthly fee to the per-text rate first and multiplies the sum by 120, charging the monthly fee once per message)",
-  "C": "Student makes misconception: answers_intermediate_value (computes the text charge of 12 correctly and reports it without the monthly fee or the credit)",
+  "A": "Student makes misconception: order_of_operations_violated (adds the monthly fee to the per-text rate first and multiplies the sum by 120, charging the monthly fee once per message)",
+  "B": "Student makes misconception: answers_intermediate_value (computes the text charge of 12 correctly and reports it without the monthly fee or the credit)",
+  "C": "Correct: multiplies the per-text rate by 120 before adding the monthly fee and subtracting the credit",
   "D": "Student makes misconception: operation_ignored_entirely (adds the monthly fee to the text charge for 47 but never subtracts the account credit)"
 },
 "misconception_tag": {
-  "B": "order_of_operations_violated",
-  "C": "answers_intermediate_value",
+  "A": "order_of_operations_violated",
+  "B": "answers_intermediate_value",
   "D": "operation_ignored_entirely"
 }
 ```
