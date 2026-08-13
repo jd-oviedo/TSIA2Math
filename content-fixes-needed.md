@@ -145,6 +145,46 @@ single error reaches it. Not resolvable by tagging — a compound distractor
 cannot be attributed to one misconception without discarding half of what it
 describes.
 
+### Second, separate issue on the same item — `GR_A_034` option A tag
+
+Found 2026-08-13, while checking whether `AR_A_010`'s prose mismatch shared a
+root cause with the compound distractor above. It does not — and this is a
+third, unrelated defect again: `AR_A_010` was prose pointing at the wrong
+*choice*, option B above is a *compound* distractor, and this one is prose
+disagreeing with its *tag*. **Two separate problems therefore live on
+`GR_A_034`** (option B and option A), logged apart so neither gets closed by
+fixing the other.
+
+Option A is tagged **`omits_second_component`**, but its prose describes no
+omission at all:
+
+> "Student uses the cylinder formula for the entire composite height
+> (10 + 6 = 16): πr²(16) = 3.14 × 16 × 16 = 803.84 cm³."
+
+That student did not drop the cone — they *merged* it into the cylinder,
+treating the whole solid as one prism-like body of height 16. Both components
+are still present in their calculation; what is wrong is the shape assumed for
+the top one. `omits_second_component` is the right tag for option **C**, whose
+prose genuinely does omit the cone ("computes only the cylinder volume and omits
+the cone entirely: 502.4 cm³") — and C carries that same slug today. So the two
+options share a tag that only describes one of them.
+
+The value itself is fine: 3.14 × 16 × 16 = 803.84 is exactly choice A, and a
+single error reaches it, so this is **not** a compound distractor.
+
+**Fix:** retag option A with a slug naming the actual error — the cone treated
+as a continuation of the cylinder rather than a cone (something in the shape of
+`component_shape_ignored` / `cone_treated_as_cylinder`; needs a slug that exists
+in the taxonomy, or a new one added to it). Not a prose change — the prose is
+accurate, the tag is not. Deliberately left alone in the 2026-08-13 pass, which
+was scoped to rendering and to prose that pointed at the wrong answer choice.
+
+**Why it matters.** Every wrong pick on A *or* C currently records
+`omits_second_component`, so the aggregate cannot distinguish a student who
+forgot the cone from one who used the wrong formula for it. Those need different
+remediation, and `record_misconception()` will escalate confidence on the merged
+signal. Same failure mode as the slug-per-position problem in issue 2 above.
+
 ---
 
 ## Stale build artifact — `data/build/question_bank.json`
@@ -430,16 +470,9 @@ is auth-gated and no credentials were used — so what is verified is the shared
 rendering component and the exact prod string, not the dashboard chrome around
 them.
 
-**Noticed during verification, not fixed — `AR_A_010` option B prose.** The
-distractor text says the student cancels to 1/(x−k) and "reads the domain of the
-simplified form as the domain of the original". The domain of 1/(x−k) is
-ℝ \ {k}, which is **choice A**, not choice B ("All real numbers, because the
-(x + k) factors cancel"). To land on B the student has to believe cancelling
-removed *every* restriction. The `misconception_tag` is right
-(`cancellation_assumed_to_restore_domain`); it is the final clause of the prose
-that points at the wrong choice. Same family as the `GR_A_034` compound
-distractor above. Left alone deliberately — re-authoring a distractor is a
-content decision, not a delimiter fix.
+**Found during verification, since FIXED — `AR_A_010` option B prose.** Noticed
+while re-checking the misconception after the delimiter repair, and corrected in
+a separate content pass (see the entry below).
 
 **Root cause of Shape B, found 2026-08-13.** `migrate_math.py`'s
 `convert_string()` applied every Unicode→LaTeX rule to the whole string with no
@@ -534,3 +567,57 @@ student-facing answer choices, and read acceptably inline
 occurrences is a large content rewrite with no visible defect driving it, so it
 was scoped out. The student-facing subset — `question_text` and
 `answer_choices` across all four strands, 6 items — *was* converted.
+
+---
+
+## Distractor prose that resolved to the wrong choice — `AR_A_010` option B (AR.1.5)
+
+Found and fixed 2026-08-13, while re-verifying the misconception tag after that
+item's unpaired-`$` repair. **This is a content-logic defect, not a rendering
+one** — the LaTeX was fine, the reasoning pointed at the wrong answer.
+
+The item asks for the domain of $f(x) = \frac{x + k}{x^{2} - k^{2}}$, k a
+positive constant. Since $x^{2} - k^{2} = (x - k)(x + k)$, the correct answer is
+choice C: all reals except x = k and x = −k.
+
+Option B is **"All real numbers, because the (x + k) factors cancel."** Its
+prose read:
+
+> "…cancels the common factor (x + k) … to obtain $\frac{1}{x - k}$, then
+> **reads the domain of the simplified form as the domain of the original
+> function** …"
+
+But the domain of $\frac{1}{x - k}$ is ℝ \ {k} — which is **choice A**, not
+choice B. A student following that prose exactly would pick A. The distractor
+described a real misconception, just not the one its own option encodes.
+
+**Fixed by** replacing the closing reasoning so it reaches "all real numbers":
+the student treats the *act of cancelling* as having removed the restriction and
+never inspects the surviving denominator. Verified afterwards that all four
+options resolve to themselves:
+
+| option | prose leads to | choice text | |
+|---|---|---|---|
+| A | excludes only x = k | "except x = k" | match |
+| B | no restriction at all | "All real numbers" | **match** (previously → A) |
+| C | denominator zero at both roots | "except x = k and x = −k" | match (correct answer) |
+| D | solves x = k² rather than x² = k² | "except x = k²" | match |
+
+The `misconception_tag` was already correct and is unchanged — the new prose is
+a literal statement of `cancellation_assumed_to_restore_domain`. The opening
+clause is preserved verbatim, so the student's actual work ($\frac{1}{x - k}$)
+still appears.
+
+**Checked and ruled out as the same root cause:** `GR_A_034` option B. Its prose
+*does* resolve to its own choice (301.44 is exactly πr²h for the cone) — its
+problem is that two errors are needed to get there. Different defect, still
+open, see that entry above. Likewise `GR_A_034` option A's tag mismatch, logged
+there as a separate item.
+
+**Worth a sweep.** This class — distractor prose whose reasoning terminates on a
+*different* option than the one it is attached to — is invisible to every check
+currently in the repo. `build_bank.py` validates structure, the KaTeX pass
+validates rendering, and neither reads the prose. `AR_A_010` was found only
+because a delimiter repair forced a manual re-read. A pass that re-derives each
+distractor's stated arithmetic and confirms it lands on its own option would be
+worth writing; there is no reason to think this is the only instance.
