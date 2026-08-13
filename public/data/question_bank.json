@@ -28676,7 +28676,7 @@
     "misconception_tag": {
       "A": "domain_range_swap",
       "C": "set_listed_as_multiset",
-      "D": "domain_range_swap"
+      "D": "output_value_assumed_in_domain"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -28761,7 +28761,7 @@
     "misconception_tag": {
       "A": "set_listed_as_multiset",
       "B": "domain_range_swap",
-      "D": "domain_range_swap"
+      "D": "repeated_output_excludes_input"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -28930,7 +28930,7 @@
     },
     "misconception_tag": {
       "B": "sign_error_on_constant",
-      "C": "domain_range_swap",
+      "C": "range_read_from_domain_endpoints",
       "D": "domain_range_swap"
     },
     "difficulty_level": "Proficient",
@@ -57282,7 +57282,7 @@
     },
     "misconception_tag": {
       "A": "omits_fractional_factor",
-      "C": "omits_fractional_factor",
+      "C": "applies_fractional_factor_twice",
       "D": "omits_fractional_factor"
     },
     "difficulty_level": "Basic",
@@ -58157,7 +58157,7 @@
     },
     "misconception_tag": {
       "B": "omits_fractional_factor",
-      "C": "omits_fractional_factor",
+      "C": "applies_fractional_factor_twice",
       "D": "partial_distribution"
     },
     "difficulty_level": "Advanced",
@@ -61104,7 +61104,7 @@
     },
     "misconception_tag": {
       "A": "omits_fractional_factor",
-      "B": "omits_fractional_factor",
+      "B": "applies_fractional_factor_twice",
       "C": "omits_second_component"
     },
     "difficulty_level": "Basic",
@@ -61366,7 +61366,7 @@
     },
     "misconception_tag": {
       "B": "omits_fractional_factor",
-      "C": "omits_fractional_factor",
+      "C": "wrong_fractional_divisor_used",
       "D": "radius_not_squared"
     },
     "difficulty_level": "Proficient",
@@ -63475,7 +63475,7 @@
     "misconception_tag": {
       "B": "omits_fractional_factor",
       "C": "radius_not_squared",
-      "D": "omits_fractional_factor"
+      "D": "fractional_factor_applied_to_one_term_only"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

@@ -1268,7 +1268,7 @@
     "misconception_tag": {
       "B": "omits_fractional_factor",
       "C": "radius_not_squared",
-      "D": "omits_fractional_factor"
+      "D": "fractional_factor_applied_to_one_term_only"
     },
     "difficulty_level": "Advanced",
     "difficulty_b": null,

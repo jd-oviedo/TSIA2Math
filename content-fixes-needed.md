@@ -621,3 +621,104 @@ validates rendering, and neither reads the prose. `AR_A_010` was found only
 because a delimiter repair forced a manual re-read. A pass that re-derives each
 distractor's stated arithmetic and confirms it lands on its own option would be
 worth writing; there is no reason to think this is the only instance.
+
+---
+
+## Over-broad tagging rules bundle distinct errors under one slug — 33 options open
+
+Found 2026-08-13 by `scripts/audit_distractor_logic.py`, written after `AR_A_010`
+showed that distractor metadata can disagree with the option it sits on. **This
+is not a set of independent per-item mistakes and must not be fixed item by
+item.** Eight of an original 41 were fixed in the same pass, by splitting rules;
+the remaining 33 need taxonomy-level work.
+
+### Why it is not an item-level problem
+
+`misconception_tag` is not hand-authored. It is assigned by `scripts/tag_rules.py`
+— a ~1,300-line ordered regex engine, applied over 97 per-topic tagging commits,
+resolving topic rules first, then strand, then global, first match wins.
+
+**Every one of the flagged options was matched by a TOPIC-tier rule** — none fell
+through to a strand or global catch-all. The defect is that individual topic
+rules are alternation lists bundling several distinct student errors, sometimes
+exact opposites, under a single slug:
+
+```
+omits_fractional_factor  /omits the ½ factor | applies the ½ factor twice | .../
+domain_range_swap        /incorrectly adds it to the domain | drops input \S+ from the domain/
+omits_second_component   /includes the floor | paints only the floor | .../
+```
+
+Omitting a factor and applying it twice are opposites. Adding a value to the
+domain and dropping one from it are opposites. The engine then applies them
+faithfully.
+
+In one case the **taxonomy definition itself** carried the conflation:
+`omits_fractional_factor` was defined as "Drops the one-half… **or applies it
+twice**." The rule was not deviating from the taxonomy — it was implementing it.
+Any fix has to check the slug definition, not just the regex.
+
+A per-item retag would be undone by the next `tag_misconceptions.py --write`,
+exactly as re-running `migrate_letter_fracs.py` would re-corrupt the bank. Fix
+the rule and the definition, then re-run and diff.
+
+### Fixed 2026-08-13 (8 of 41) — the worked example
+
+Two rules split, six slugs added, `omits_fractional_factor`'s definition
+narrowed. Full-bank re-run moved **exactly 8 of 3,348 assignments** and nothing
+else.
+
+| items | was | now |
+|---|---|---|
+| `GR_A_022` C, `GR_B_022` C, `GR_B_036` B | `omits_fractional_factor` | `applies_fractional_factor_twice` |
+| `GR_A_043` D | `omits_fractional_factor` | `fractional_factor_applied_to_one_term_only` |
+| `GR_P_034` C | `omits_fractional_factor` | `wrong_fractional_divisor_used` |
+| `AR_B_005` D | `domain_range_swap` | `output_value_assumed_in_domain` |
+| `AR_B_006` D | `domain_range_swap` | `repeated_output_excludes_input` |
+| `AR_P_006` C | `domain_range_swap` | `range_read_from_domain_endpoints` |
+
+### Still open (33 options)
+
+| slug | count | strands | items |
+|---|---|---|---|
+| `drops_negative_sign` | 9 | AR PR QR | `AR_B_025` A, `AR_B_040` D, `AR_B_042` D, `AR_B_094` B, `AR_B_095` A, `AR_B_099` C, `AR_P_001` C, `PR_P_024` D, `QR_B_024` A |
+| `omits_second_component` | 5 | GR QR | `GR_A_019` A, `GR_A_032` B/D, `GR_A_034` A, `GR_A_056` C, `QR_A_035` B |
+| `inverts_conversion_direction` | 4 | GR QR | `GR_A_002` A/C, `QR_B_108` D, `QR_B_110` C, `QR_P_036` C |
+| `comparative_relationship_reversed` | 3 | QR | `QR_A_065` A, `QR_P_067` C, `QR_P_069` C |
+| `percent_applied_forward_not_reversed` | 3 | QR | `QR_A_091` C, `QR_B_048` A, `QR_P_098` B/D |
+| `translation_direction_reversed` | 2 | GR | `GR_B_064` B/D, `GR_B_068` C/D |
+| `omits_constant_term` | 2 | QR | `QR_A_064` C/D, `QR_P_043` D |
+| `transformation_shift_direction_reversed` | 1 | AR | `AR_A_041` B |
+| `opening_direction_rule_reversed` | 1 | AR | `AR_B_070` D |
+| `inverts_trig_ratio` | 1 | GR | `GR_P_055` A |
+| `slope_intercept_swap` | 1 | PR | `PR_A_074` A/C |
+| `numerator_denominator_swap` | 1 | QR | `QR_B_015` A |
+
+`drops_negative_sign` is the largest cluster but the **least concentrated**: its
+9 come from six different topic rules, so it is nine small decisions rather than
+one rule split. `omits_second_component` (5) and `inverts_conversion_direction`
+(4) are the better next candidates — fewer rules, more items each.
+
+`GR_A_034` option A appears here and is **deliberately still parked**, along with
+that item's separate compound-distractor problem. Neither was touched.
+
+### Why it matters
+
+Two options tagged alike are indistinguishable in the aggregate: a student who
+forgot a component and one who used the wrong formula for it record the same
+slug, and `record_misconception()` escalates confidence on the merged signal.
+Same failure mode as issue 2 above, from a different cause.
+
+### How to do the next batch
+
+1. Run `python3 scripts/audit_distractor_logic.py` — read-only, changes nothing.
+2. For a chosen slug, read every flagged option's prose and decide what distinct
+   errors are actually present.
+3. Add slugs to `data/docs/misconception_taxonomy.json`; check the existing
+   definition does not already bundle the errors, and narrow it if it does.
+4. Split the rule in `scripts/tag_rules.py`. The new, more specific rule must
+   come **before** the general one — first match wins.
+5. Snapshot the resolved tag for all 3,348 (item, option) pairs before and after,
+   and diff. Anything moving outside the intended set means the split had a wider
+   blast radius than intended: stop and reconsider.
+6. Only then write the tags, rebuild, and upload.

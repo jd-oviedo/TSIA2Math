@@ -400,7 +400,12 @@ TOPIC_RULES.update({
  (r"shifts the range up|leaves the domain unchanged|subtracts \S+ from the domain|shifting the domain left|horizontal shift", "shift_applied_to_wrong_axis"),
  (r"open boundary|closed at both ends|excluded from the first piece|open at", "piecewise_boundary_openness_error"),
  (r"jump discontinuity|single continuous interval", "jump_discontinuity_ignored"),
- (r"incorrectly adds it to the domain|drops input \S+ from the domain", "domain_range_swap"),
+ # Split 2026-08-13. These two describe distinct errors, and neither is a swap:
+ # domain_range_swap means output values assigned to the domain AND input values
+ # to the range. Bundling them made a wrong pick on either option record the
+ # same misconception as the genuine swap option alongside it.
+ (r"incorrectly adds it to the domain", "output_value_assumed_in_domain"),
+ (r"drops input \S+ from the domain", "repeated_output_excludes_input"),
  (r"preserves sign|non-negative|without squaring", "sign_error_on_constant"),
 ],
 "AR.1.4":[
@@ -769,7 +774,10 @@ TOPIC_RULES.update({
  (r"slant side", "slant_height_used_for_perpendicular"),
  (r"applies the (triangle|circumference|parallelogram|circle) formula|uses πr without squaring|uses the diameter .{0,20}in place of the radius|misapplies the (circle|triangle) formula|formula for the area of a circle", "formula_borrowed_from_other_shape"),
  (r"adds the circle area to the rectangle|does not subtract the circular cutout|ignoring the window", "cutout_added_not_subtracted"),
- (r"omits the ½ factor|applies the ½ factor twice|omits the ½|halves the height", "omits_fractional_factor"),
+ # Split 2026-08-13: applying the factor twice is the opposite of omitting it.
+ # Must precede the omits_ rule -- first match wins.
+ (r"applies the ½ factor twice", "applies_fractional_factor_twice"),
+ (r"omits the ½ factor|omits the ½|halves the height", "omits_fractional_factor"),
  (r"computes the perimeter instead of the area|computes the area instead of the perimeter", "perimeter_area_confusion"),
  (r"doubles the (correct )?area|doubles the result|doubles the width", "result_doubled_twice"),
  (r"subtracts the length from the area|multiplies area by length|divides by \S+ instead of \S+|divides the area by the sum of the bases|multiplies the area by \S+ instead of solving|divides by \S+π instead of π", "wrong_inverse_operation_chosen"),
@@ -806,6 +814,8 @@ TOPIC_RULES.update({
  (r"adds (all three dimensions|the three dimensions)|multiplies only length and width|sum of the three distinct face areas", "dimensions_added_not_multiplied"),
  (r"assumes the cone and cylinder have equal volumes|applies the ⅓ factor twice|uses ½ instead of ⅓|applies the cone formula", "cone_cylinder_ratio_wrong"),
  (r"half the height", "half_height_used"),
+ # Split 2026-08-13: dividing by the wrong number is not omitting the factor.
+ (r"divides by \d+ instead of \d+", "wrong_fractional_divisor_used"),
  (r"omits the (⅓|½|\(\S+\)) factor|omits the ⅓|divides by \S+ instead of \S+|uses \S+πr³ instead", "omits_fractional_factor"),
  (r"surface area formula|no standard geometric meaning|area of one face", "volume_surface_area_confusion"),
  (r"doubles the (correct )?volume|divides the correct volume by", "result_doubled_twice"),
@@ -819,6 +829,9 @@ TOPIC_RULES.update({
  (r"does not distribute to the|leaves the constant unchanged|distributes \S+ to the x-term only|applies the factor of \S+ to the variable term only|multiplies \S+ by x but does not distribute|distributes \S+ to the x-terms but", "factor_not_distributed_to_constant"),
  (r"phantom constant|no basis in the given dimensions|different value for one side|adds a phantom", "phantom_term_introduced"),
  (r"applies ½ to base only|½ × \S+x = x \(applies ½ to base|ignoring the height", "fractional_factor_applied_to_base_only"),
+ # Split 2026-08-13: "correctly applies ⅓ ... but fails to simplify" is the
+ # factor reaching only one term of the sum, not the factor being omitted.
+ (r"correctly applies ⅓ to the \S+ term but fails to simplify", "fractional_factor_applied_to_one_term_only"),
  (r"omits the (½|⅓) factor|applies a ½ factor|correctly applies ⅓|omits the ⅓", "omits_fractional_factor"),
  (r"expands \(x \+ \S+\)² incorrectly|omitting the middle term|squares \(x \+ \S+\) incorrectly", "binomial_square_middle_term_omitted"),
  (r"computes the (area|perimeter) instead of the (perimeter|area)|multiplies (length by width|l × w)|adds (length and width|l \+ w|width and length|height and base)|squares x in the product", "perimeter_area_confusion"),
@@ -1158,7 +1171,7 @@ EXTRA = {
           (r"divides by \S+ . \S+ = \S+ instead of|divides by \S+πr² = \S+ instead of", "wrong_inverse_operation_chosen"),
           (r"ignores the cylinder entirely", "omits_second_component"),
           (r"reporting r² as the radius", "forgets_square_root")],
-"GR.2.6":[(r"applies the ½ factor twice", "omits_fractional_factor"),
+"GR.2.6":[(r"applies the ½ factor twice", "applies_fractional_factor_twice"),
           (r"forgets to multiply by the prism length", "omits_second_component")],
 "GR.2.7":[(r"adding an extra \S+ to the constant", "phantom_term_introduced"),
           (r"uses s instead of s²", "radius_not_squared")],
@@ -1264,7 +1277,7 @@ for _t,_r in PRIORITY.items(): TOPIC_RULES[_t] = _r + TOPIC_RULES.get(_t,[])
 CORRECTIONS = {
 "QR.4.2":[(r"divides the total revenue by the drink price", "reads_wrong_category")],
 "GR.3.1":[(r"reports \S+ as the area, forgetting to take the square root", "forgets_square_root")],
-"AR.1.3":[(r"reads the range endpoints directly from the domain boundaries", "domain_range_swap")],
+"AR.1.3":[(r"reads the range endpoints directly from the domain boundaries", "range_read_from_domain_endpoints")],
 "QR.3.7":[(r"similar-looking fractions", "linearity_assumed_to_imply_equal_rates")],
 "GR.2.4":[(r"reports that result as x without subtracting", "answers_intermediate_value")],
 }

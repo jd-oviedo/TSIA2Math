@@ -38,7 +38,7 @@
     "misconception_tag": {
       "A": "domain_range_swap",
       "C": "set_listed_as_multiset",
-      "D": "domain_range_swap"
+      "D": "output_value_assumed_in_domain"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -123,7 +123,7 @@
     "misconception_tag": {
       "A": "set_listed_as_multiset",
       "B": "domain_range_swap",
-      "D": "domain_range_swap"
+      "D": "repeated_output_excludes_input"
     },
     "difficulty_level": "Basic",
     "difficulty_b": null,
@@ -292,7 +292,7 @@
     },
     "misconception_tag": {
       "B": "sign_error_on_constant",
-      "C": "domain_range_swap",
+      "C": "range_read_from_domain_endpoints",
       "D": "domain_range_swap"
     },
     "difficulty_level": "Proficient",
