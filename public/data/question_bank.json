@@ -30454,7 +30454,7 @@
     "explanation": "Factor the denominator using the difference of squares:\n$x^{2}$ - $k^{2}$ = (x - k)(x + k)\n\nThe denominator equals zero when x = k or x = -k. Both values must be excluded from the domain.\n\nNote: the numerator (x + k) shares a factor with the denominator, creating a removable discontinuity (hole) at x = -k. However, cancellation does not change the domain of the original function — x = -k still makes the original denominator zero and remains excluded.\n\nDomain: all real numbers except x = k and x = -k.",
     "distractor_logic": {
       "A": "Student factors the denominator correctly and finds x = k and x = -k, but then reasons that since the numerator (x + k) is also zero at x = -k, the expression is '$\\frac{0}{0}$ which simplifies to 0' — incorrectly treating the indeterminate form as a defined output of zero and excluding only x = k.",
-      "B": "Student cancels the common factor (x + k) from numerator and denominator to obtain $\\frac{1}{x - k}, then reads the domain of the simplified form as the domain of the original function — failing to recognize that cancellation does not restore the value x = -k that was excluded before simplification.",
+      "B": "Student cancels the common factor (x + k) from numerator and denominator to obtain $\\frac{1}{x - k}$, then reads the domain of the simplified form as the domain of the original function — failing to recognize that cancellation does not restore the value x = -k that was excluded before simplification.",
       "C": "Correct: the denominator (x - k)(x + k) equals zero at both x = k and x = -k, so both must be excluded from the domain of the original function.",
       "D": "Student sees k^{2} in the expression x^{2} - k^{2} and takes the excluded value to be x = k^{2} — solving x = k^{2} rather than factoring and solving x^{2} = k^{2}."
     },
@@ -34979,7 +34979,7 @@
     "explanation": "Apply the slope formula:\n$m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{1 - 7}{5 - 2} = \\frac{-6}{3} = -2$",
     "distractor_logic": {
       "A": "Student computes the correct magnitude ($\\frac{6}{3}$ = 2) but drops the negative sign from the numerator, reporting slope = 2.",
-      "B": "Student inverts the formula, computing $\\frac{x_2 - x_1}{y_2 - y_1} = \\frac{3}{-6} = \\frac{-1}{2}.",
+      "B": "Student inverts the formula, computing $\\frac{x_2 - x_1}{y_2 - y_1} = \\frac{3}{-6} = \\frac{-1}{2}$.",
       "C": "Correct: $\\frac{(1 - 7)}{(5 - 2)} = \\frac{-6}{3}$ = -2.",
       "D": "Student computes $\\Delta$x = 5 - 2 = 3 and reports it as the slope, ignoring $\\Delta$y entirely."
     },

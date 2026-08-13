@@ -285,7 +285,11 @@ guard will not report it.
 
 ---
 
-## Eight items carry malformed math delimiters
+## Eight items carry malformed math delimiters — RESOLVED 2026-08-13
+
+> **Status:** closed. 5 items fixed, 3 turned out not to be defects. Nothing here
+> is outstanding — see "Current state of this list" below before acting on the
+> historical detail that follows it.
 
 Found on 2026-08-12 by an independent verification pass over the prod
 `questions` table, run to confirm the text restore of 2026-08-11 landed cleanly.
@@ -318,9 +322,9 @@ varies by shape — see the per-shape verdicts below.
 
 | item | field | text | status |
 |---|---|---|---|
-| `AR_A_010` | `distractor_logic.B` | `...to obtain $\frac{1}{x - k}, then reads the domain...` | open |
-| `AR_B_041` | `distractor_logic.B` | `...computing $\frac{x_2 - x_1}{y_2 - y_1} = \frac{3}{-6} = \frac{-1}{2}.` | open |
-| `AR_B_043` | `strategy_hints[0]` | `$Slope = \frac{y_2 - y_1}{x_2 - x_1}. Be careful subtracting...` | open |
+| `AR_A_010` | `distractor_logic.B` | `...to obtain $\frac{1}{x - k}, then reads the domain...` | **FIXED 2026-08-13** |
+| `AR_B_041` | `distractor_logic.B` | `...computing $\frac{x_2 - x_1}{y_2 - y_1} = \frac{3}{-6} = \frac{-1}{2}.` | **FIXED 2026-08-13** |
+| `AR_B_043` | `strategy_hints[0]` | `$Slope = \frac{y_2 - y_1}{x_2 - x_1}. Be careful subtracting...` | dead code — field never rendered |
 
 *Actual effect:* no math renders at all in that string — the whole field
 degrades to plain text, so the reader sees **raw LaTeX source**, e.g. literally
@@ -350,10 +354,10 @@ sentence inside math mode. `GR_A_033` additionally has an empty `\sqrt{}`.
 
 **Shape C. Unescaped literal `$` in prose**
 
-| item | field | text |
-|---|---|---|
-| `PR_P_067` | `question_text` | y-axis labeled `'Monthly Energy Bill ($)'` |
-| `PR_A_070` | `question_text` | y-axis labeled `'Monthly Grocery Spending ($)'` |
+| item | field | text | status |
+|---|---|---|---|
+| `PR_P_067` | `question_text` | y-axis labeled `'Monthly Energy Bill ($)'` | not broken — latent only |
+| `PR_A_070` | `question_text` | y-axis labeled `'Monthly Grocery Spending ($)'` | not broken — latent only |
 
 Both items escape their other currency amounts correctly (`\$200`, `\$400`), so
 the axis-label `$` is a single unescaped delimiter with no partner. Note the
@@ -376,43 +380,66 @@ work.
 
 ### Current state of this list — verified 2026-08-13
 
-**Closed (3 of 8)** — all of Shape B:
+**Every item on this list that was rendering wrong has been fixed.** Five of the
+eight were repaired; the other three turned out not to be live defects at all.
+Read the two tables below as "5 fixed, 3 reclassified" — **not** as five
+outstanding bugs.
 
-| item | field | fixed by |
-|---|---|---|
-| `QR_A_025` | `distractor_logic.D` | QR.1.5 slash-notation pass (side effect) |
-| `QR_A_027` | `distractor_logic.C` | QR.1.5 slash-notation pass (side effect) |
-| `GR_A_033` | `distractor_logic.D` | build-defect pass, fixed directly |
+**Fixed (5 of 8)**
 
-**Open (5 of 8)**, with where each one is actually rendered:
-
-| item | field | render surface | visible defect today? |
+| item | field | shape | fixed by |
 |---|---|---|---|
-| `AR_A_010` | `distractor_logic.B` | CAT reveal panel (**signed-in students only**) + teacher dashboard | **Yes** — raw LaTeX shown as text |
-| `AR_B_041` | `distractor_logic.B` | same | **Yes** — raw LaTeX shown as text |
-| `AR_B_043` | `strategy_hints[0]` | **nowhere** | No — field is never rendered |
-| `PR_P_067` | `question_text` | every student, always | No — renders correctly |
-| `PR_A_070` | `question_text` | every student, always | No — renders correctly |
+| `QR_A_025` | `distractor_logic.D` | B | QR.1.5 slash-notation pass (side effect) |
+| `QR_A_027` | `distractor_logic.C` | B | QR.1.5 slash-notation pass (side effect) |
+| `GR_A_033` | `distractor_logic.D` | B | build-defect pass, fixed directly |
+| `AR_A_010` | `distractor_logic.B` | A | closed the unpaired `$`, 2026-08-13 |
+| `AR_B_041` | `distractor_logic.B` | A | closed the unpaired `$`, 2026-08-13 |
+
+`AR_A_010` and `AR_B_041` were the only two items on this list a human could
+actually see rendered wrong: both showed **raw LaTeX as literal text** to a
+signed-in student who picked option B, and to teachers on the dashboard. Both
+were delimiter-only edits — no prose rewritten — and both still match their
+answer choice and misconception tag (`AR_B_041`: Δx/Δy = 3/−6 = −½ → choice B,
+`slope_run_over_rise`; `AR_A_010`: cancelling (x+k) does give 1/(x−k)).
+
+**Not defects — reclassified, no action needed (3 of 8)**
+
+| item | field | true status |
+|---|---|---|
+| `AR_B_043` | `strategy_hints[0]` | **Dead code.** No component renders `strategy_hints`; it exists only as a type declaration at `app/adaptive-test/type.ts:52`. Invisible to students and teachers alike. Source tidiness only. |
+| `PR_P_067` | `question_text` | **Not broken.** Renders correctly — see Shape C above. Logged as latent fragility only. |
+| `PR_A_070` | `question_text` | **Not broken.** Same. Logged as latent fragility only. |
+
+`AR_B_043`'s other field, `distractor_logic.D`, *was* a real defect and was
+fixed in the build-defect pass. Only its hint remains untouched, and that is the
+dead-code field above.
 
 Render surfaces were checked in code, not assumed. `distractor_logic` reaches
 students as `distractor_note` from `app/api/items/reveal/route.ts:39`, which
 returns it **only when the request is authenticated**, and reaches teachers as
 `distractor_text` in `TeacherDashboardClient.tsx:579` and
-`teacher/student/[id]/page.tsx:335`. `strategy_hints` appears in the codebase
-**only as a type declaration** (`app/adaptive-test/type.ts:52`) — no component
-renders it, so `AR_B_043`'s hint is invisible to every audience.
+`teacher/student/[id]/page.tsx:335`.
 
-**Priority read:** nothing here is urgent. The two worth doing next are
-`AR_A_010` and `AR_B_041` — they are the only ones a human can currently see
-rendered wrong, and they show raw LaTeX to a signed-in student who picks option
-B, and to teachers on the dashboard. `AR_B_043`'s hint is cosmetic-in-source
-only. The two `question_text` items are correct on screen and should be fixed
-opportunistically, to remove the latent delimiter rather than to repair
-anything.
+**Verification of the two 2026-08-13 fixes.** Whole-bank KaTeX parse: 1 hard
+failure bank-wide, and it is `AR_A_009`'s `\fract` (issue #33, unrelated).
+Unpaired-`$` scan across every content field now returns only the three
+reclassified fields above. Both repaired strings were rendered through the real
+`MathText` component in a browser with the text fetched live from prod, and both
+typeset. **The teacher dashboard page itself was not visually confirmed** — it
+is auth-gated and no credentials were used — so what is verified is the shared
+rendering component and the exact prod string, not the dashboard chrome around
+them.
 
-Note `AR_B_043` is now *partially* repaired — its `distractor_logic.D` was
-fixed in the build-defect pass; the unclosed `$` in its first hint is Shape A
-and still open.
+**Noticed during verification, not fixed — `AR_A_010` option B prose.** The
+distractor text says the student cancels to 1/(x−k) and "reads the domain of the
+simplified form as the domain of the original". The domain of 1/(x−k) is
+ℝ \ {k}, which is **choice A**, not choice B ("All real numbers, because the
+(x + k) factors cancel"). To land on B the student has to believe cancelling
+removed *every* restriction. The `misconception_tag` is right
+(`cancellation_assumed_to_restore_domain`); it is the final clause of the prose
+that points at the wrong choice. Same family as the `GR_A_034` compound
+distractor above. Left alone deliberately — re-authoring a distractor is a
+content decision, not a delimiter fix.
 
 **Root cause of Shape B, found 2026-08-13.** `migrate_math.py`'s
 `convert_string()` applied every Unicode→LaTeX rule to the whole string with no
