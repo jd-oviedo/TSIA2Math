@@ -1,0 +1,10 @@
+{
+  "type": "right_triangle",
+  "special": "30-60-90",
+  "shortLeg": 6,
+  "labels": {
+    "base": "long leg 6√3", "height": "short leg 6", "hypotenuse": "hypotenuse 12",
+    "angleAtBase": "30°", "angleAtTop": "60°"
+  },
+  "alt": "A right triangle with a short leg of 6 opposite the 30 degree angle, a long leg of 6 root 3 opposite the 60 degree angle, and a hypotenuse of 12. The long leg is drawn about 1.7 times the short leg, and the hypotenuse exactly twice it."
+}
