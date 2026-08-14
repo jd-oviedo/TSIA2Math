@@ -23,11 +23,12 @@
 //   node scripts/make_figure.mjs curriculum/figures/ar-2-6-slope.json
 //   node scripts/make_figure.mjs curriculum/figures/ar-2-6-slope.json --svg
 //   node scripts/make_figure.mjs --all          # regenerate every spec, check drift
+//   node scripts/make_figure.mjs --inject path/to/topic.md   # rewrite figures in place
 //
 // The JSON spec is the reviewable artifact. The base64 blob in the markdown is
 // generated output; regenerate rather than hand-edit it.
 
-import { readFileSync, readdirSync } from 'fs';
+import { readFileSync, readdirSync, writeFileSync } from 'fs';
 import { basename } from 'path';
 
 const INK = '#0E0E11';       // axes, text
@@ -199,7 +200,28 @@ export function figureFromSpec(spec) {
 // ─── CLI ─────────────────────────────────────────────────────────────────────
 
 const args = process.argv.slice(2);
-if (args.length) {
+
+// --inject rewrites the generated image line in a markdown file from its spec,
+// so the base64 in the content is never hand-edited and can be regenerated
+// after a spec change. The anchor is an HTML comment naming the spec:
+//
+//   <!-- figure: ar-2-5-region -->
+//   ![alt text](data:image/svg+xml;base64,...)
+//
+// The comment is dropped by the render pipeline (there is no rehype-raw), so
+// it is invisible to students and exists only for this script and for review.
+if (args[0] === '--inject') {
+  const target = args[1];
+  let md = readFileSync(target, 'utf8');
+  let count = 0;
+  md = md.replace(/(<!--\s*figure:\s*([a-z0-9-]+)\s*-->\n)!\[[^\]]*\]\([^)]*\)/g, (_m, marker, name) => {
+    const { uri, alt } = figureFromSpec(JSON.parse(readFileSync(`curriculum/figures/${name}.json`, 'utf8')));
+    count++;
+    return `${marker}![${alt}](${uri})`;
+  });
+  writeFileSync(target, md);
+  console.log(`injected ${count} figure(s) into ${target}`);
+} else if (args.length) {
   const dir = 'curriculum/figures';
   const files = args[0] === '--all'
     ? readdirSync(dir).filter(f => f.endsWith('.json')).map(f => `${dir}/${f}`)
