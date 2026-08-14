@@ -1,0 +1,47 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [
+    -1,
+    6
+  ],
+  "yRange": [
+    -2,
+    8
+  ],
+  "lines": [
+    {
+      "m": 2,
+      "b": -1,
+      "label": "y = 2x - 1",
+      "color": "line",
+      "labelAt": [
+        4,
+        7
+      ],
+      "labelDx": -14,
+      "labelDy": -2
+    },
+    {
+      "m": -1,
+      "b": 5,
+      "label": "y = -x + 5",
+      "color": "accent",
+      "labelAt": [
+        4.6,
+        0.4
+      ],
+      "labelDx": 2,
+      "labelDy": -9
+    }
+  ],
+  "points": [
+    {
+      "x": 2,
+      "y": 3,
+      "label": "(2, 3)",
+      "dx": 9,
+      "dy": -7
+    }
+  ],
+  "alt": "Two lines on a coordinate plane. The line y equals 2x minus 1 rises steeply; the line y equals negative x plus 5 falls. They cross at the single point (2, 3), which is the solution of the system."
+}
