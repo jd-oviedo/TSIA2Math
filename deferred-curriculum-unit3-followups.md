@@ -45,27 +45,41 @@ name.
 
 ---
 
-## 2. `verifyShape` covers eight of the ten figure types
+## 2. RESOLVED: `coordinate_plane` is now verified too
 
-`scripts/make_figure.mjs --verify` re-parses each emitted SVG and checks
-scale-invariant ratios and angles against the spec. It deliberately re-reads the
-drawing rather than recomputing from the builder's own numbers, so a builder bug
-cannot pass itself.
+*Closed 2026-08-14, before the Unit 3 upload.*
 
-Two types return no assertions:
+Originally logged as a gap: `verifyFigure` dispatched on the geometric
+`BUILDERS` map only, so `coordinate_plane` fell through to `return []` and the
+one such figure (`qr-3-7-two-plans.json`, Unit 2) reported zero assertions. The
+skip was printed rather than silent, but nothing automated had ever checked that
+figure - it was verified in the Unit 2 round by rendering and looking.
 
-- `coordinate_plane` (Unit 2, `qr-3-7-two-plans.json`) - reported honestly as
-  `no geometric assertions for type coordinate_plane`
-- `bar`-style and other statistical types, which this unit never used
+`verifyPlane` now covers it. It recovers the data-to-pixel map from the axis
+tick labels in the emitted SVG, inverts it, and reads each drawn line back as a
+slope and an intercept to compare against the spec, plus the position of every
+marked point and a count that every declared line was actually drawn.
 
-The `--verify` run for the whole figure directory currently reports 81
-assertions across the geometric types and one skipped file. The skip is visible
-rather than silent, which is the right behaviour, but a line-plot verifier for
-`coordinate_plane` would close the gap: check that each plotted line's slope and
-intercept match the spec's stated equation.
+Measuring against the printed ticks rather than `makeScales()` is the point: a
+builder that mis-scaled an axis would move the ticks and the line together under
+its own scale function, and a check written that way would pass.
 
-Low value while only one such figure exists. Worth doing before the next unit
-that leans on coordinate-plane diagrams.
+Confirmed by tampering with the emitted SVG and re-measuring against an
+untouched spec. Caught: an endpoint shifted 20px, a line translated 15px, a
+marked point moved 18px, a y axis whose ticks were stretched 12%, and a declared
+line not drawn at all. The unmodified control passes.
+
+Note for whoever writes the next verifier: mutating the *spec* proves nothing,
+because `verifyFigure` rebuilds the SVG from that same spec and both sides of
+the comparison move together. Tamper with the drawing.
+
+The whole-directory run is now **111 assertions across 27 files, 0 failed, 0
+skipped**.
+
+Still uncovered, but unused by any current figure: the statistical types
+(`bar_chart`, `dot_plot`, `box_plot`, `scatterplot`) that exist in
+`FigureRenderer.tsx` but have no spec-driven equivalent. Nothing to verify until
+something draws one.
 
 ---
 
