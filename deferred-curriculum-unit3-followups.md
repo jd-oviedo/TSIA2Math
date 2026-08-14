@@ -93,7 +93,7 @@ something draws one.
 
 ---
 
-## 3. Two topics reach outside their attached slug lists
+## 3. RESOLVED: two topics reach outside their attached slug lists
 
 `data/docs/misconception_taxonomy.json` attaches slugs to topics. Two of this
 round's topics used approved slugs that are attached to a neighbouring topic
@@ -121,6 +121,39 @@ uses. Two options, and the first is probably right:
 
 Blocked on nothing. It is a data edit to one file, but it touches the
 authoritative taxonomy, which is not something to change unilaterally.
+
+### Resolution
+
+Option 1, applied. It is three slugs and four attachments, not "four slugs":
+`multiplies_instead_of_divides` needed both topics, the other two needed only
+GR.3.4.
+
+```
+hypotenuse_reported_for_leg     + GR.3.4
+divides_instead_of_multiplies   + GR.3.4          (GR.4.3 was already there)
+multiplies_instead_of_divides   + GR.3.4, GR.4.3
+```
+
+One supporting fact that was not in the original note and that settles the
+choice between the two options: every slug already carries a separate
+`cat_topics_observed` field, and it routinely disagrees with `topics`. The
+CAT-bank-only reading in option 2 is therefore already served by its own field,
+which leaves `topics` free to describe curriculum attachment.
+
+**The scope in the heading was wrong, and it matters.** Measured across the
+whole course rather than just this round, slug uses fall into three classes:
+
+```
+attached to the using topic                        362
+slug's topics list is empty (39 slugs)             145
+topics list exists but omits the using topic       107   <- the class above
+```
+
+So this was never two topics. After the four attachments above, 107 cases of
+the same class remain, spread over roughly 30 topics in every unit. The four
+fixed here are the ones this round introduced and were reviewed on their
+content; the rest have not been looked at and are logged as item 7 rather than
+swept in silently.
 
 ---
 
@@ -325,3 +358,57 @@ Units 4 and 5 (AR.3.1, AR.4.1, PR.2.1, PR.3.1, PR.4.1) were measured too, after
 the fix: 0 of 15 routes scroll, and nothing on them is wide enough to need a
 scroll container at all, so there was no latent problem there to begin with.
 Nothing about this defect is left open.
+
+
+---
+
+## 7. The misconception taxonomy's `topics` lists are broadly out of step
+
+Surfaced while closing item 3, which turned out to be four instances of a
+course-wide pattern rather than a Unit 3 problem. No action taken: item 3's four
+attachments were reviewed on their content and applied, and nothing else was
+touched.
+
+`data/docs/misconception_taxonomy.json` is the authoritative 481-slug
+vocabulary. Every slug carries two topic fields that do not agree with each
+other or with the curriculum:
+
+- `topics`, a curated attachment list.
+- `cat_topics_observed`, where the slug has actually been seen in the CAT bank.
+
+Measured over every `Student makes misconception:` use in the curriculum source:
+
+```
+attached to the using topic                        362
+slug's topics list is empty (39 slugs)             145
+topics list exists but omits the using topic       107
+```
+
+Three separate things are tangled here, and they probably want different
+answers rather than one sweep:
+
+1. **39 slugs have an empty `topics` list.** All are `origin: curriculum`, so
+   they were minted from curriculum authoring and never got an attachment list;
+   their real usage sits in `cat_topics_observed` instead. Example:
+   `fraction_digit_gluing` has `topics: []` and
+   `cat_topics_observed: [QR.1.1, QR.1.2, QR.1.3]`.
+
+2. **107 uses hit a slug whose list exists but omits the using topic.** About
+   two thirds are not recorded in `cat_topics_observed` either, so the use is
+   genuinely unrecorded. `AR.2.7` alone accounts for four
+   (`delta_y_used_as_slope`, `horizontal_vertical_line_confused`,
+   `point_y_used_as_intercept`, `slope_intercept_swap`).
+
+3. **`cat_topics_observed` can list topics absent from `topics`.** On
+   `multiplies_instead_of_divides`, `cat_topics_observed` carries AR.2.2,
+   AR.4.8 and QR.1.4, none of which appear in `topics`. This is the specific
+   mismatch noticed during the item 3 work.
+
+The prior question is what `topics` is *for*. If it is a curriculum attachment
+list, it is badly incomplete. If it describes the CAT bank, then
+`cat_topics_observed` already does that and `topics` is redundant. Worth
+settling before any bulk edit, because a sweep that guesses wrong writes 250-odd
+wrong rows into the authoritative file.
+
+A reporting script would be the cheap first step: the classification above came
+from about twenty lines of throwaway python and would be worth keeping.
