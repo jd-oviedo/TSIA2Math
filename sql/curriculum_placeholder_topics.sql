@@ -213,15 +213,30 @@ on conflict (course_id, topic_id) do update set
 
 -- ─── After running ───────────────────────────────────────────────────────────
 --
--- Every strand has exactly one routable first topic, and QR's is real:
+-- Every strand has exactly one routable first topic:
 --
 --   select related_strand, topic_id, is_placeholder
 --   from public.curriculum_topics
 --   where course_id = 'tsia2-math'
 --   order by related_strand, is_placeholder, unit_number, sequence_in_unit, topic_id;
 --
--- Expect QR.1.1 (real) heading QR, and the three COMING-SOON rows heading
--- AR, GR and PR.
+-- The invariant is the first row of each strand group: exactly one, and never
+-- an error. Which row that is changes as content lands, and a placeholder
+-- heading its strand is the temporary state, not the expected one.
+--
+-- On the day this was applied (2026-08-12) the three COMING-SOON rows headed
+-- AR, GR and PR, and QR.1.1 headed QR. As of 2026-08-14, after Unit 0 and Unit
+-- 1, every strand is headed by real content:
+--
+--   QR -> QR.1.5 (unit 0)   AR -> AR.1.1 (unit 0)
+--   GR -> GR.1.1 (unit 0)   PR -> PR.1.1 (unit 0)
+--
+-- No COMING-SOON row heads a strand any more. That is the mechanism working,
+-- not a failure: is_placeholder is the first sort key, so a real topic outranks
+-- its strand's placeholder the moment one exists. The three rows are dead
+-- weight now rather than load-bearing, and are deliberately left in place --
+-- see the "Replacing a placeholder" section above for why removing them is
+-- tidiness rather than a correctness step.
 --
 -- The view still returns rows -- the check sql/curriculum_topics_public.sql
 -- asks for after any change to this view, because a security-definer view over
@@ -230,4 +245,9 @@ on conflict (course_id, topic_id) do update set
 --   select count(*), count(*) filter (where is_placeholder) as placeholders
 --   from public.curriculum_topics_public;
 --
--- Expect 9 and 3.
+-- The placeholder count is the stable half: expect 3 until one of these rows is
+-- replaced or deleted. The total is just however many topics are authored, plus
+-- those 3, so it climbs with every round and is not something to match against
+-- a number written here. It was 9 on 2026-08-12 and is 41 as of 2026-08-14
+-- (38 real topics + 3 placeholders). Any non-zero total passes this check --
+-- the failure it exists to catch is empty.
