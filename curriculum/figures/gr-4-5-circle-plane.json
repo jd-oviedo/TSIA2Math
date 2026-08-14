@@ -1,0 +1,7 @@
+{
+  "type": "circle_plane",
+  "h": 3, "k": -2, "r": 5,
+  "xRange": [-4, 9], "yRange": [-8, 4],
+  "labels": { "center": "(3, -2)", "radius": "r = 5" },
+  "alt": "A coordinate plane showing the circle with centre (3, -2) and radius 5. The centre is marked and a radius of 5 units is drawn from it to the right edge of the circle, so the circle crosses the x-axis and reaches x equals 8."
+}
