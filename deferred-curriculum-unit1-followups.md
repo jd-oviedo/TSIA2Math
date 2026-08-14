@@ -83,6 +83,31 @@ dollars"), which removes the outlier, keeps the JSON valid and needs no escape.
 Course-wide there are now zero `distractor_logic` strings using the `$` symbol,
 and all 481 json blocks still parse.
 
+### Live rows
+
+Uploaded 2026-08-14. `upload_curriculum.py` has no `--topics` filter, so running
+it would have upserted all 68 rows of the course to change 2. The write was
+instead a targeted `PATCH` of the `answer_key` column on `QR.1.2` and `QR.2.1`
+only, guarded so it would refuse if the live text no longer matched what the
+pre-upload diff had been reviewed against.
+
+Verified after the write, against the rows pulled back from production:
+
+```
+QR.1.2   round trip vs source: EXACT (14355 chars)   17/17 fields match
+         teacher accordion 10+4 entries, 138 math spans, 0 prose swallowed
+         teacher fallback  138 math spans, 0 prose swallowed
+QR.2.1   round trip vs source: EXACT (15268 chars)   17/17 fields match
+         teacher accordion 10+4 entries, 131 math spans, 0 prose swallowed
+         teacher fallback  131 math spans, 0 prose swallowed
+```
+
+Both live rows carry zero `distractor_logic` strings using the `$` symbol. The
+render check is the live stored `answer_key` put through `splitAnswerKey` and
+`renderMarkdownWithMath`, the same functions the teacher page calls. The
+authenticated page itself was not driven in a browser, which would need teacher
+credentials.
+
 ---
 
 ## 2. `QR.1.1` fails the new source linter on its legacy shape

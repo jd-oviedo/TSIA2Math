@@ -410,5 +410,31 @@ list, it is badly incomplete. If it describes the CAT bank, then
 settling before any bulk edit, because a sweep that guesses wrong writes 250-odd
 wrong rows into the authoritative file.
 
-A reporting script would be the cheap first step: the classification above came
-from about twenty lines of throwaway python and would be worth keeping.
+### Reproducing the numbers
+
+Whoever picks this up should re-measure first rather than trust the counts
+above, which were taken on 2026-08-14. This regenerates the whole
+classification, and printing `item3` gives the full list of the 107 with a note
+on whether `cat_topics_observed` records the use:
+
+```python
+import re, pathlib, json, collections
+tax = json.loads(pathlib.Path('data/docs/misconception_taxonomy.json').read_text())
+by = {e['slug']: e for e in tax['slugs']}
+cls, item3 = collections.Counter(), []
+for f in sorted(pathlib.Path('curriculum/source/tsia2-math').rglob('*.md')):
+    t = f.stem
+    for s in sorted(set(re.findall(r'Student makes misconception:\s*([a-z0-9_]+)', f.read_text()))):
+        e = by.get(s)
+        if e is None:                     cls['not_in_taxonomy'] += 1
+        elif t in e.get('topics', []):    cls['attached'] += 1
+        elif not e.get('topics'):         cls['empty_topics_list'] += 1
+        else:
+            cls['list_omits_topic'] += 1
+            item3.append((t, s, t in e.get('cat_topics_observed', [])))
+print(cls)
+```
+
+Turning it into a committed script is worth doing at the same time, since the
+answer to the "what is `topics` for" question will need re-checking after any
+bulk edit.
