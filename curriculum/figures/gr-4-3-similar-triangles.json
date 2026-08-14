@@ -1,0 +1,9 @@
+{
+  "type": "similar_pair",
+  "shape": "triangle",
+  "dims": { "b": 4, "h": 3, "apexX": 0 },
+  "k": 3,
+  "labelsSmall": { "0": "4", "1": "5", "2": "3" },
+  "labelsBig": { "0": "12", "1": "15", "2": "9" },
+  "alt": "Two similar right triangles drawn to the same scale. The smaller has sides 3, 4 and 5; the larger has sides 9, 12 and 15. Every side of the larger is exactly three times the corresponding side of the smaller, and the two are the same shape."
+}

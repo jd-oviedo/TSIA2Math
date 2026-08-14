@@ -1,0 +1,9 @@
+{
+  "type": "similar_pair",
+  "shape": "rectangle",
+  "dims": { "w": 5, "h": 2 },
+  "k": 2.5,
+  "labelsSmall": { "0": "5", "1": "2" },
+  "labelsBig": { "0": "12.5", "1": "5" },
+  "alt": "Two similar rectangles drawn to the same scale. The smaller measures 5 by 2 and the larger measures 12.5 by 5, so the scale factor is 2.5. The larger rectangle's area is 6.25 times the smaller one's, not 2.5 times."
+}
