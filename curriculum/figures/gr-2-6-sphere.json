@@ -1,0 +1,5 @@
+{
+  "type": "solid3d", "shape": "sphere", "dims": { "r": 6 },
+  "labels": { "radius": "r = 6" },
+  "alt": "A sphere with its centre marked and a radius of 6 drawn from the centre to the surface. A dashed ellipse across the middle shows the equator seen at an angle."
+}

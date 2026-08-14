@@ -1,0 +1,5 @@
+{
+  "type": "solid3d", "shape": "cone", "dims": { "r": 3, "h": 8 },
+  "labels": { "radius": "r = 3", "height": "h = 8" },
+  "alt": "A cone with a radius of 3 marked by a dashed line across its circular base, and a perpendicular height of 8 dimensioned on a separate vertical line beside the solid."
+}
