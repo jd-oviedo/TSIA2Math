@@ -1,0 +1,9 @@
+{
+  "type": "right_triangle",
+  "angleDeg": 35,
+  "adjacent": 10,
+  "labels": {
+    "base": "10", "height": "x", "angleAtBase": "35°"
+  },
+  "alt": "A right triangle with a 35 degree angle at the lower right, the side adjacent to it labelled 10, and the side opposite it labelled x. The opposite side is drawn at 10 times the tangent of 35 degrees, so about seven tenths the length of the adjacent side."
+}
