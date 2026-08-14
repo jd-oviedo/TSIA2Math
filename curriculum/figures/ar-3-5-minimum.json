@@ -1,0 +1,11 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [-1, 5], "yRange": [-3, 9],
+  "curves": [
+    { "kind": "quadratic", "a": 1, "b": -4, "c": 3, "color": "line" }
+  ],
+  "points": [
+    { "x": 2, "y": -1, "label": "minimum (2, -1)", "dx": 10, "dy": 14 }
+  ],
+  "alt": "The parabola y equals x squared minus 4x plus 3 on a coordinate plane. It opens upward, crosses the x-axis at 1 and at 3, and crosses the y-axis at 3. Its lowest point is marked at (2, -1), halfway between the two x-intercepts."
+}
