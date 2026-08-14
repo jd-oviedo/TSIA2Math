@@ -1,0 +1,8 @@
+{
+  "type": "symmetry",
+  "sides": 6,
+  "showAxes": true,
+  "showCenter": true,
+  "caption": "6 axes, order 6",
+  "alt": "A regular hexagon with all six of its axes of symmetry drawn as dashed lines through the centre. Three pass through opposite vertices and three through opposite edge midpoints, and each dashed line is one axis, not two."
+}
