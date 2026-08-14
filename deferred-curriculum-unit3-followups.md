@@ -11,7 +11,17 @@ than broken.
 
 ---
 
-## 1. The three pre-existing Unit 3 topics have no figures
+## 1. RESOLVED: the three pre-existing Unit 3 topics now have figures
+
+*Closed 2026-08-14 by the retrofit pass. Original note kept below for context.*
+
+Seventeen figures added: GR.2.1 four in the notes plus two on practice items,
+GR.3.1 two in the notes plus four on practice items, GR.4.1 five in the notes.
+The mapping in the note below held for GR.3.1 and GR.4.1 with no new builder
+code. GR.2.1 needed one, a `path` polygon taking an explicit vertex list,
+because no named shape expresses an L or a notched rectangle.
+
+### Original note
 
 Scoped out explicitly at the start of the round.
 
@@ -150,3 +160,31 @@ glyph is what a reader sees.
 Recorded here so the next author does not have to rediscover the split. It is a
 convention, not a defect, and it is worth writing into the house style notes the
 next time those are touched.
+
+
+---
+
+## 6. Long display math overflows on a phone
+
+Found while render-testing the retrofit at a 390px viewport, and **not caused by
+it**: the line is in GR.3.1's notes at HEAD~1, before any figure was added.
+
+    $$3, 4, 5 \qquad 5, 12, 13 \qquad 8, 15, 17 \qquad 7, 24, 25 \qquad 9, 40, 41$$
+
+KaTeX renders that as a single 458px-wide span inside a 390px viewport, so the
+page scrolls sideways. Every figure on the same page behaves correctly, because
+images carry a max-width rule and math does not.
+
+`\qquad` display math appears in 9 of the 16 Unit 3 topics, so this is very
+unlikely to be the only instance.
+
+The fix is one CSS rule rather than a content edit, something like
+
+    .um-topic .um-prose .katex-display { overflow-x: auto; overflow-y: hidden; }
+
+It was left out of the retrofit deliberately. That rule applies to every topic
+in every unit, so it is a styling change with a much wider blast radius than a
+three-topic diagram pass, and mobile is this project's primary target, which
+makes it worth its own look rather than a change smuggled into an unrelated PR.
+
+Worth checking the other eight topics at 390px at the same time.
