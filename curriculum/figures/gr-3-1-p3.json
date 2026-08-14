@@ -1,0 +1,14 @@
+{
+  "type": "right_triangle",
+  "legs": [
+    15,
+    8
+  ],
+  "labels": {
+    "base": "15",
+    "height": "8",
+    "hypotenuse": "?"
+  },
+  "alt": "A right triangle with legs of 15 and 8 and the hypotenuse marked with a question mark. The legs are drawn in a true 15 to 8 proportion and the right angle is marked between them.",
+  "labelPlacement": "normal"
+}

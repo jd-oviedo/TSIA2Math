@@ -1,0 +1,14 @@
+{
+  "type": "right_triangle",
+  "legs": [
+    12,
+    5
+  ],
+  "labels": {
+    "base": "b = ?",
+    "height": "a = 5",
+    "hypotenuse": "c = 13"
+  },
+  "alt": "A right triangle with a known leg of 5, a hypotenuse of 13, and the other leg marked with a question mark. The unknown leg is drawn at its true length of 12, so the triangle's proportions are correct even though the value is not given.",
+  "labelPlacement": "normal"
+}

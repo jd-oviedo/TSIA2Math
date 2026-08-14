@@ -1,0 +1,8 @@
+{
+  "type": "transform_pair",
+  "preimage": [[1, 1], [3, 1], [1, 2]],
+  "transform": { "kind": "translation", "dx": 4, "dy": -5 },
+  "xRange": [-1, 9], "yRange": [-6, 4],
+  "labels": { "preimage": "original", "preimageAt": [1.6, 1.3], "image": "image", "imageAt": [5.6, -3.7] },
+  "alt": "A coordinate plane showing a triangle and its image after the translation that adds 4 to x and subtracts 5 from y. The image is the same size and shape as the original, sitting 4 units right and 5 units down."
+}

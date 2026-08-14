@@ -1,0 +1,8 @@
+{
+  "type": "transform_pair",
+  "preimage": [[1, 1], [3, 1], [1, 2]],
+  "transform": { "kind": "dilation", "k": 3, "center": [0, 0] },
+  "xRange": [-1, 11], "yRange": [-1, 8],
+  "labels": { "preimage": "original", "preimageAt": [1.7, 1.3], "image": "image", "imageAt": [5, 4.2] },
+  "alt": "A coordinate plane showing a triangle and its image after a dilation about the origin with a scale factor of 3. Every side of the image is three times the corresponding side of the original, so this is the one transformation here that changes size."
+}
