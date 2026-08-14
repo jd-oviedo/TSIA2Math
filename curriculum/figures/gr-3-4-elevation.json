@@ -1,0 +1,10 @@
+{
+  "type": "right_triangle",
+  "angleDeg": 32,
+  "adjacent": 50,
+  "labels": {
+    "base": "50 ft", "height": "h", "hypotenuse": "line of sight",
+    "angleAtBase": "32°"
+  },
+  "alt": "A right triangle standing for an angle-of-elevation problem. The observer is at the lower right, 50 feet of level ground runs to the base of the object, the angle of elevation is 32 degrees, and the unknown height h rises from the far end. The height is drawn at 50 times the tangent of 32 degrees, so a little under two thirds the ground distance."
+}
