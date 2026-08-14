@@ -1,0 +1,8 @@
+{
+  "type": "transform_pair",
+  "preimage": [[1, 2], [3, 5], [4, 1]],
+  "transform": { "kind": "reflection", "axis": "x" },
+  "xRange": [-1, 6], "yRange": [-6, 6],
+  "labels": { "preimage": "ABC", "preimageAt": [2.6, 2.6], "image": "A'B'C'", "imageAt": [2.6, -2.6] },
+  "alt": "A coordinate plane showing triangle ABC with vertices at (1,2), (3,5) and (4,1), and its image after reflection over the x-axis, with vertices at (1,-2), (3,-5) and (4,-1). Every x coordinate survives untouched and every y coordinate flips sign."
+}

@@ -92,6 +92,49 @@ function angleArc(v, a, b, r, labelText) {
 }
 
 // Label placed just outside the midpoint of edge p-q, pushed away from centre c.
+// Ray casting. Used only to decide which side of an edge is outside the figure,
+// so it has to be right for concave outlines as well as convex ones.
+function pointInPoly(pt, poly) {
+  let inside = false;
+  for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+    const [xi, yi] = poly[i], [xj, yj] = poly[j];
+    if ((yi > pt[1]) !== (yj > pt[1]) &&
+        pt[0] < ((xj - xi) * (pt[1] - yi)) / (yj - yi) + xi) inside = !inside;
+  }
+  return inside;
+}
+
+// Places a label along an edge's true outward normal, choosing the outward side
+// by testing a probe point for containment rather than by direction from the
+// centroid.
+//
+// The centroid rule in edgeLabel below breaks in two ways that this unit hits.
+// On a very flat right triangle (12 by 5, 24 by 7) the base's direction from
+// the centroid is mostly horizontal, so the label gets pushed sideways onto the
+// line instead of below it. On a concave outline like an L-shape the step edge
+// can sit level with the centroid, leaving the sign undefined.
+//
+// This is opt-in via labelPlacement: "normal" precisely so that figures already
+// published in Unit 3 keep their exact bytes. Unifying the two is logged as a
+// follow-up rather than done here, because changing the default would silently
+// re-render live content outside this pass's scope.
+function edgeLabelNormal(p, q, poly, text, gap = 9, t = 0.5) {
+  // t slides the label along the edge. Two short edges meeting at an inside
+  // corner put their midpoints within a few units of each other, and no amount
+  // of normal push separates them, so the label has to move sideways instead.
+  const m = [p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t];
+  const dx = q[0] - p[0], dy = q[1] - p[1];
+  const L = Math.hypot(dx, dy) || 1;
+  let nx = -dy / L, ny = dx / L;
+  if (pointInPoly([m[0] + nx * 3, m[1] + ny * 3], poly)) { nx = -nx; ny = -ny; }
+  const sideways = Math.abs(nx) > Math.abs(ny);
+  const anchor = sideways ? (nx > 0 ? 'start' : 'end') : 'middle';
+  // SVG text hangs from its baseline, so a label below an edge needs the extra
+  // drop and one above it needs none.
+  const baseline = sideways ? 4.5 : (ny > 0 ? 12 : -2);
+  return txt([n(m[0] + nx * gap), n(m[1] + ny * gap + baseline)], text, anchor);
+}
+
 function edgeLabel(p, q, c, text, gap = 15) {
   const m = [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
   let vx = m[0] - c[0], vy = m[1] - c[1];
@@ -125,6 +168,24 @@ function polygonModel(spec) {
       // Bottom base b1, top base b2 centred over it.
       const l = (d.b1 - d.b2) / 2;
       return [[0, 0], [d.b1, 0], [l + d.b2, d.h], [l, d.h]];
+    }
+    // An explicit vertex list, for boundaries the named shapes cannot express:
+    // L-shapes, notched rectangles, any rectilinear outline. The points ARE the
+    // dimensions, so the drawing is faithful by construction, and the polygon
+    // verifier below measures them like any other shape without special-casing.
+    // Closure is asserted rather than assumed: a boundary whose sides do not
+    // return to the start is a spec bug, and silently closing it would draw a
+    // figure whose side lengths are not the ones the item states.
+    case 'path': {
+      const pts = spec.points;
+      if (!Array.isArray(pts) || pts.length < 3)
+        throw new Error('polygon path: needs a points array of at least 3 vertices');
+      if (pts.some(p => !Array.isArray(p) || p.length !== 2 || p.some(v => !Number.isFinite(v))))
+        throw new Error('polygon path: every point must be a finite [x, y] pair');
+      const [fx, fy] = pts[0], [lx, ly] = pts[pts.length - 1];
+      if (Math.hypot(lx - fx, ly - fy) < 1e-9)
+        throw new Error('polygon path: do not repeat the first vertex, the outline closes itself');
+      return pts.map(([x, y]) => [x, y]);
     }
     case 'regular': {
       const { sides, r } = { r: 1, ...d };
@@ -185,9 +246,15 @@ function buildPolygon(spec) {
     if (spec.labels?.height) out += txt([n(A[0] + 10), n((A[1] + B[1]) / 2)], spec.labels.height, 'start');
   }
 
+  const useNormal = spec.labelPlacement === 'normal';
+  // Per-edge gap overrides, for the cases geometry makes tight: two short edges
+  // meeting at an inside corner push their labels toward the same point.
+  const gaps = spec.labelGaps ?? {}, pos = spec.labelPos ?? {};
   for (const [k, text] of Object.entries(spec.labels ?? {})) {
     const i = Number(k);
-    if (Number.isInteger(i)) out += edgeLabel(P[i], P[(i + 1) % P.length], c, text);
+    if (!Number.isInteger(i)) continue;
+    const [a, b] = [P[i], P[(i + 1) % P.length]];
+    out += useNormal ? edgeLabelNormal(a, b, P, text, gaps[k] ?? 9, pos[k] ?? 0.5) : edgeLabel(a, b, c, text);
   }
   return frame(W, H, spec.alt, out);
 }
@@ -225,9 +292,14 @@ function buildRightTriangle(spec) {
   out += rightAngleMark(A, B, C);
   const c = [(A[0] + B[0] + C[0]) / 3, (A[1] + B[1] + C[1]) / 3];
   const L = spec.labels ?? {};
-  if (L.base) out += edgeLabel(A, B, c, L.base);
-  if (L.height) out += edgeLabel(A, C, c, L.height);
-  if (L.hypotenuse) out += edgeLabel(B, C, c, L.hypotenuse);
+  const tri = [A, B, C];
+  const gaps = spec.labelGaps ?? {}, pos = spec.labelPos ?? {};
+  const lab = spec.labelPlacement === 'normal'
+    ? (p, q, txt, key) => edgeLabelNormal(p, q, tri, txt, gaps[key] ?? 9, pos[key] ?? 0.5)
+    : (p, q, t) => edgeLabel(p, q, c, t);
+  if (L.base) out += lab(A, B, L.base, 'base');
+  if (L.height) out += lab(A, C, L.height, 'height');
+  if (L.hypotenuse) out += lab(B, C, L.hypotenuse, 'hypotenuse');
   // Angle arcs at the two acute vertices.
   if (L.angleAtBase) out += angleArc(B, A, C, 26, L.angleAtBase);
   if (L.angleAtTop) out += angleArc(C, B, A, 26, L.angleAtTop);

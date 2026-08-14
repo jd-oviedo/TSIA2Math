@@ -1,0 +1,46 @@
+{
+  "type": "polygon",
+  "shape": "path",
+  "points": [
+    [
+      0,
+      0
+    ],
+    [
+      20,
+      0
+    ],
+    [
+      20,
+      14
+    ],
+    [
+      5,
+      14
+    ],
+    [
+      5,
+      9
+    ],
+    [
+      0,
+      9
+    ]
+  ],
+  "labels": {
+    "0": "20 ft",
+    "1": "14 ft",
+    "3": "5 ft",
+    "4": "5 ft"
+  },
+  "alt": "A rectangle 20 ft long and 14 ft wide with a 5 ft square notch cut out of its top left corner. The two labelled 5 ft edges are the new boundary the cut opened up, running along the inside of the notch. The two unlabelled edges are what remains of the original top and left sides.",
+  "labelPlacement": "normal",
+  "labelGaps": {
+    "3": 16,
+    "4": 12
+  },
+  "labelPos": {
+    "3": 0.1,
+    "4": 0.95
+  }
+}

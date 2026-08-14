@@ -11,7 +11,17 @@ than broken.
 
 ---
 
-## 1. The three pre-existing Unit 3 topics have no figures
+## 1. RESOLVED: the three pre-existing Unit 3 topics now have figures
+
+*Closed 2026-08-14 by the retrofit pass. Original note kept below for context.*
+
+Seventeen figures added: GR.2.1 four in the notes plus two on practice items,
+GR.3.1 two in the notes plus four on practice items, GR.4.1 five in the notes.
+The mapping in the note below held for GR.3.1 and GR.4.1 with no new builder
+code. GR.2.1 needed one, a `path` polygon taking an explicit vertex list,
+because no named shape expresses an L or a notched rectangle.
+
+### Original note
 
 Scoped out explicitly at the start of the round.
 
@@ -150,3 +160,92 @@ glyph is what a reader sees.
 Recorded here so the next author does not have to rediscover the split. It is a
 convention, not a defect, and it is worth writing into the house style notes the
 next time those are touched.
+
+
+---
+
+## 6. Two Unit 3 lesson pages scroll sideways on a phone
+
+**Live UX defect, affecting real students now.** Worth its own session; it is a
+styling fix, unrelated to curriculum authoring, and nothing about it needs a
+content edit or a re-upload.
+
+### What was measured
+
+Every Unit 3 topic, all three routes, against live production rows at a 390px
+viewport (iPhone-class width), after the figure retrofit:
+
+```
+viewport 390px -- routes that scroll sideways: 2 of 48
+
+topic    route     scrollW  over   widest offender
+GR.3.1   lesson    502      +112   katex 467px  "3, 4, 5 \qquad 5, 12, 13 \qquad ..."
+GR.4.4   lesson    398      +8     table 363px  "Figure | Lines | Order | Point symmetry"
+
+affected topics (2/16): GR.3.1, GR.4.4
+```
+
+GR.3.1 is the real one: a **112px** overflow, so roughly a third of the line is
+off-screen and the whole page rocks sideways. GR.4.4 is 8px, cosmetic but the
+same root cause class.
+
+Every figure added by the retrofit fits at 390px. Images carry a max-width rule;
+math and tables do not.
+
+### Two corrections to the original note
+
+The first version of this item, written before anything was measured, said the
+bug affected **9 of 16 topics**. That number came from grepping for `\qquad`,
+which is a proxy, not a measurement. Measured, it is **2 of 16**. Most `\qquad`
+lines are short enough to fit.
+
+It also proposed the fix
+
+```css
+.um-topic .um-prose .katex-display { overflow-x: auto; }
+```
+
+**That would do nothing.** There is no `.katex-display` element on the page:
+
+```
+katexDisplayCount: 0     katexCount: 168
+```
+
+This pipeline emits every formula as a bare `span.katex`, display math included,
+with no display wrapper. The overflowing span sits directly inside a `<p>`:
+
+```
+span.katex  <  p  <  div.um-prose.um-prose-card  <  section
+     467px       320px parent, overflow-x: visible
+```
+
+### What the fix actually has to do
+
+Two different offenders, so probably two rules.
+
+Wide formulas, where the span is inline and 147px wider than its parent:
+
+```css
+.um-topic .um-prose .katex { max-width: 100%; display: inline-block;
+                             overflow-x: auto; vertical-align: middle; }
+```
+
+Wide tables, which are already block-level:
+
+```css
+.um-topic .um-prose table { display: block; width: max-content;
+                            max-width: 100%; overflow-x: auto; }
+```
+
+Both need checking against the rest of the app, since `.um-prose` is shared by
+every topic in every unit, and `display: block` on a table changes how its
+borders collapse. Neither is a one-liner to be dropped into an unrelated PR,
+which is why the retrofit left them alone.
+
+### Reproducing
+
+`npx next build && npx next start`, then the survey script used above, which
+walks all 16 topics by 3 routes at 390px and reports `scrollWidth` against the
+widest `.katex`, `table`, `pre` or `img` on each page. Worth re-running across
+Units 0 to 2 as well; nothing here is specific to Unit 3, and only Unit 3 has
+been looked at.

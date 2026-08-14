@@ -123,6 +123,10 @@ export const TOPIC_PAGE_CSS = `
 }
 .um-topic .um-prose th { background: #F2EDDF; font-weight: 600; color: #0E0E11; }
 .um-topic .um-prose img { max-width: 100%; height: auto; }
+/* Practice and quiz stems can carry a diagram too, and they are not inside
+   .um-prose. Without this the SVG renders at its intrinsic width and overflows
+   the card on a phone, which is the primary target. */
+.um-topic .um-stem img { max-width: 100%; height: auto; display: block; margin: 10px 0 2px; }
 
 /* Mobile is the primary target: a stuck student on a phone is the hardest
    case. Cards lose their side padding first, then type steps down. */

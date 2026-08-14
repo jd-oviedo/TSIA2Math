@@ -1,0 +1,13 @@
+{
+  "type": "polygon",
+  "shape": "regular",
+  "dims": {
+    "sides": 5,
+    "r": 1
+  },
+  "labels": {
+    "0": "6 m"
+  },
+  "alt": "A regular pentagon with one side labelled 6 m. All five sides are drawn the same length, which is what regular means, so the single label applies to every side.",
+  "labelPlacement": "normal"
+}

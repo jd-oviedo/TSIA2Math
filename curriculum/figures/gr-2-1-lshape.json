@@ -1,0 +1,48 @@
+{
+  "type": "polygon",
+  "shape": "path",
+  "points": [
+    [
+      0,
+      0
+    ],
+    [
+      10,
+      0
+    ],
+    [
+      10,
+      4
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      0,
+      8
+    ]
+  ],
+  "labels": {
+    "0": "10 m",
+    "1": "4 m",
+    "2": "6 m",
+    "3": "4 m",
+    "4": "4 m",
+    "5": "8 m"
+  },
+  "alt": "An L-shaped figure with its six sides labelled in order around the boundary: 10 m along the bottom, 4 m up the right side, 6 m left across the step, 4 m up the inner side, 4 m left across the top, and 8 m down the left side. Every side is drawn at its stated length, so the step is genuinely where the numbers put it.",
+  "labelPlacement": "normal",
+  "labelGaps": {
+    "2": 11,
+    "3": 11
+  },
+  "labelPos": {
+    "2": 0.3,
+    "3": 0.72
+  }
+}

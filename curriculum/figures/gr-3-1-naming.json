@@ -1,0 +1,17 @@
+{
+  "type": "right_triangle",
+  "legs": [
+    4,
+    3
+  ],
+  "labels": {
+    "base": "leg a",
+    "height": "leg b",
+    "hypotenuse": "hypotenuse c"
+  },
+  "alt": "A right triangle with the right angle marked at the corner where the two legs meet. The two sides forming that angle are labelled leg a and leg b, and the side opposite the right angle is labelled hypotenuse c. The hypotenuse is drawn longer than either leg, which it always is.",
+  "labelPlacement": "normal",
+  "labelGaps": {
+    "hypotenuse": 32
+  }
+}
