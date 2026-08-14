@@ -1,0 +1,46 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [
+    -1,
+    7
+  ],
+  "yRange": [
+    -1,
+    7
+  ],
+  "lines": [
+    {
+      "m": -0.75,
+      "b": 3,
+      "label": "3x + 4y = 12",
+      "color": "line",
+      "labelAt": [
+        2.6,
+        5.4
+      ],
+      "labelDx": 0,
+      "labelDy": 0
+    }
+  ],
+  "shade": {
+    "line": 0,
+    "side": "above"
+  },
+  "points": [
+    {
+      "x": 0,
+      "y": 3,
+      "label": "(0, 3)",
+      "dx": 8,
+      "dy": -8
+    },
+    {
+      "x": 4,
+      "y": 0,
+      "label": "(4, 0)",
+      "dx": 8,
+      "dy": -8
+    }
+  ],
+  "alt": "A coordinate plane with a solid boundary line through (0, 3) and (4, 0). The region above and to the right of the line is shaded, showing the solutions of 3x plus 4y is greater than or equal to 12."
+}

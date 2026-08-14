@@ -1,0 +1,49 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [
+    0,
+    12
+  ],
+  "yRange": [
+    0,
+    150
+  ],
+  "xLabel": "months",
+  "yLabel": "total cost (dollars)",
+  "lines": [
+    {
+      "m": 10,
+      "b": 30,
+      "label": "Plan A",
+      "color": "line",
+      "labelAt": [
+        11,
+        140
+      ],
+      "labelDx": -34,
+      "labelDy": -4
+    },
+    {
+      "m": 5,
+      "b": 60,
+      "label": "Plan B",
+      "color": "accent",
+      "labelAt": [
+        10,
+        110
+      ],
+      "labelDx": -30,
+      "labelDy": 20
+    }
+  ],
+  "points": [
+    {
+      "x": 6,
+      "y": 90,
+      "label": "(6, 90)",
+      "dx": -52,
+      "dy": -10
+    }
+  ],
+  "alt": "Two cost lines on a graph of months against total cost. Plan A starts at 30 dollars and rises 10 dollars per month. Plan B starts at 60 dollars and rises 5 dollars per month. The lines cross at 6 months, where both cost 90 dollars."
+}
