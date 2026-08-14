@@ -1,0 +1,9 @@
+{
+  "type": "right_triangle",
+  "legs": [4, 3],
+  "labels": {
+    "base": "adjacent 4", "height": "opposite 3", "hypotenuse": "hypotenuse 5",
+    "angleAtBase": "θ"
+  },
+  "alt": "A right triangle with the angle theta marked at the lower right. The side adjacent to theta is 4, the side opposite it is 3, and the hypotenuse is 5. The legs are drawn in a 4 to 3 proportion."
+}

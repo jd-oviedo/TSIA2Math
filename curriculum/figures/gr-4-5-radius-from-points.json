@@ -1,0 +1,7 @@
+{
+  "type": "circle_plane",
+  "h": 1, "k": 2, "r": 5,
+  "xRange": [-5, 8], "yRange": [-4, 8],
+  "labels": { "center": "(1, 2)", "radius": "r = 5" },
+  "alt": "A coordinate plane showing the circle with centre (1, 2) and radius 5, which passes through the point (4, 6). The horizontal and vertical gaps from the centre to that point are 3 and 4, and the radius drawn from the centre is 5 units long."
+}

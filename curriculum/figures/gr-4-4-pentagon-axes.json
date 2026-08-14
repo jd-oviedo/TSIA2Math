@@ -1,0 +1,8 @@
+{
+  "type": "symmetry",
+  "sides": 5,
+  "showAxes": true,
+  "showCenter": true,
+  "caption": "5 axes, order 5",
+  "alt": "A regular pentagon with all five of its axes of symmetry drawn as dashed lines. Each runs from a vertex through the centre to the midpoint of the opposite side, because five is odd and no vertex has a vertex opposite it."
+}

@@ -24,11 +24,13 @@
 //   node scripts/make_figure.mjs curriculum/figures/ar-2-6-slope.json --svg
 //   node scripts/make_figure.mjs --all          # regenerate every spec, check drift
 //   node scripts/make_figure.mjs --inject path/to/topic.md   # rewrite figures in place
+//   node scripts/make_figure.mjs --verify        # re-measure every figure's geometry
 //
 // The JSON spec is the reviewable artifact. The base64 blob in the markdown is
 // generated output; regenerate rather than hand-edit it.
 
 import { readFileSync, readdirSync, writeFileSync } from 'fs';
+import { buildShape, verifyShape, SHAPE_TYPES } from './figure_shapes.mjs';
 import { basename } from 'path';
 
 const INK = '#0E0E11';       // axes, text
@@ -188,13 +190,81 @@ function buildSvg(spec) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${esc(spec.alt)}">${parts.join('')}</svg>`;
 }
 
+// Unit 2 shipped only the Cartesian plot, built above. Unit 3's geometry types
+// live in figure_shapes.mjs and are dispatched here by spec.type; anything
+// without a recognised geometric type falls through to the plot, which is what
+// the Unit 2 specs are.
 export function figureFromSpec(spec) {
-  const svg = buildSvg(spec);
+  const svg = SHAPE_TYPES.includes(spec.type) ? buildShape(spec) : buildSvg(spec);
   return {
     svg,
     alt: spec.alt,
     uri: 'data:image/svg+xml;base64,' + Buffer.from(svg, 'utf8').toString('base64'),
   };
+}
+
+// Re-measures the emitted SVG and compares scale-invariant quantities against
+// the spec. Scale invariance is deliberate: a check that recomputed from the
+// builder's own numbers would pass even when those numbers are wrong.
+export function verifyFigure(spec) {
+  if (SHAPE_TYPES.includes(spec.type)) return verifyShape(spec, buildShape(spec));
+  if (spec.type === 'coordinate_plane') return verifyPlane(spec, buildSvg(spec));
+  return [];
+}
+
+// Cartesian plots are measured by recovering the data-to-pixel map from the
+// AXIS TICK LABELS in the emitted SVG -- the numbers a reader actually sees --
+// and never from makeScales(). Inverting that map turns each drawn line back
+// into a slope and an intercept, which are then compared with the spec. A
+// builder that mis-scaled an axis would move the ticks and the line together
+// under its own scale function, so measuring against the printed ticks is what
+// makes this a real check rather than a tautology.
+export function verifyPlane(spec, svg) {
+  const checks = [];
+  const add = (name, actual, expected, tol) =>
+    checks.push({ name, actual: +actual.toFixed(4), expected: +expected.toFixed(4), ok: Math.abs(actual - expected) <= tol });
+
+  const xt = [...svg.matchAll(/<text x="([-\d.]+)" y="[-\d.]+" text-anchor="middle">(-?\d+(?:\.\d+)?)<\/text>/g)]
+    .map(m => [Number(m[2]), Number(m[1])]);
+  const yt = [...svg.matchAll(/<text x="[-\d.]+" y="([-\d.]+)" text-anchor="end">(-?\d+(?:\.\d+)?)<\/text>/g)]
+    .map(m => [Number(m[2]), Number(m[1]) - 3.5]);
+  if (xt.length < 2 || yt.length < 2)
+    return [{ name: 'axis ticks readable', actual: Math.min(xt.length, yt.length), expected: 2, ok: false }];
+
+  // Invert from the first and last tick on each axis.
+  const invert = t => {
+    const [a, b] = [t[0], t[t.length - 1]];
+    const s = (b[1] - a[1]) / (b[0] - a[0]);
+    return px => a[0] + (px - a[1]) / s;
+  };
+  const ix = invert(xt), iy = invert(yt);
+
+  const drawn = [...svg.matchAll(/<line x1="([-\d.]+)" y1="([-\d.]+)" x2="([-\d.]+)" y2="([-\d.]+)" stroke="[^"]*" stroke-width="2.6"/g)];
+  const declared = spec.lines ?? [];
+  add('every declared line drawn', drawn.length, declared.length, 0);
+
+  drawn.slice(0, declared.length).forEach((L, i) => {
+    const [x1, y1, x2, y2] = [ix(+L[1]), iy(+L[2]), ix(+L[3]), iy(+L[4])];
+    const m = (y2 - y1) / (x2 - x1), b = y1 - m * x1;
+    const S = declared[i];
+    // A line may be given as a slope/intercept pair or as two points it passes
+    // through; reduce the second form to the first before comparing.
+    const em = S.through ? (S.through[1][1] - S.through[0][1]) / (S.through[1][0] - S.through[0][0]) : S.m;
+    const eb = S.through ? S.through[0][1] - em * S.through[0][0] : S.b;
+    const yScale = Math.abs(spec.yRange[1] - spec.yRange[0]);
+    add(`line ${i} slope`, m, em, 0.01 * Math.max(Math.abs(em), 1));
+    add(`line ${i} intercept`, b, eb, 0.01 * yScale);
+  });
+
+  // Marked points must sit where the spec puts them, not merely near the line.
+  (spec.points ?? []).forEach((P, i) => {
+    const C = [...svg.matchAll(/<circle cx="([-\d.]+)" cy="([-\d.]+)" r="4.5"/g)][i];
+    if (!C) return add(`point ${i} drawn`, 0, 1, 0);
+    add(`point ${i} x`, ix(+C[1]), P.x, 0.01 * Math.abs(spec.xRange[1] - spec.xRange[0]));
+    add(`point ${i} y`, iy(+C[2]), P.y, 0.01 * Math.abs(spec.yRange[1] - spec.yRange[0]));
+  });
+
+  return checks;
 }
 
 // ─── CLI ─────────────────────────────────────────────────────────────────────
@@ -210,7 +280,22 @@ const args = process.argv.slice(2);
 //
 // The comment is dropped by the render pipeline (there is no rehype-raw), so
 // it is invisible to students and exists only for this script and for review.
-if (args[0] === '--inject') {
+if (args[0] === '--verify') {
+  const dir = 'curriculum/figures';
+  const files = (args[1] ? [args[1]] : readdirSync(dir).filter(f => f.endsWith('.json')).map(f => `${dir}/${f}`));
+  let bad = 0, total = 0;
+  for (const f of files) {
+    const spec = JSON.parse(readFileSync(f, 'utf8'));
+    const checks = verifyFigure(spec);
+    if (!checks.length) { console.log(`-  ${basename(f)}: no geometric assertions for type ${spec.type}`); continue; }
+    const fails = checks.filter(c => !c.ok);
+    total += checks.length; bad += fails.length;
+    console.log(`${fails.length ? 'FAIL' : ' ok '} ${basename(f)}  (${checks.length - fails.length}/${checks.length})`);
+    for (const c of fails) console.log(`       ${c.name}: measured ${c.actual}, expected ${c.expected}`);
+  }
+  console.log(`\n${total} geometric assertion(s), ${bad} failed`);
+  process.exit(bad ? 1 : 0);
+} else if (args[0] === '--inject') {
   const target = args[1];
   let md = readFileSync(target, 'utf8');
   let count = 0;

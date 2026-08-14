@@ -1,0 +1,8 @@
+{
+  "type": "polygon",
+  "shape": "rectangle",
+  "dims": { "w": 7, "h": 4 },
+  "labels": { "0": "x + 3", "1": "4" },
+  "rightAngles": [0, 1, 2, 3],
+  "alt": "A rectangle with a base labelled x plus 3 and a right side labelled 4, with right-angle marks at all four corners. The drawing is proportioned for x equal to 4, so the base is drawn seven units long against a side of four."
+}

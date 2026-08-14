@@ -1,0 +1,6 @@
+{
+  "type": "polygon", "shape": "rectangle", "dims": { "w": 8, "h": 6 },
+  "labels": { "0": "? ", "1": "width 6" },
+  "rightAngles": [0, 1, 2, 3],
+  "alt": "A rectangle with a known width of 6 along its right side and an unknown length along its base, marked with a question mark. Right-angle marks are shown at all four corners. The area of the rectangle is given as 48 square units."
+}

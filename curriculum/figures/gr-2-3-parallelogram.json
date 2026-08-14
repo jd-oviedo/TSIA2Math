@@ -1,0 +1,6 @@
+{
+  "type": "polygon", "shape": "parallelogram", "dims": { "b": 9, "h": 4, "offset": 3 },
+  "labels": { "0": "base 9", "1": "slant 5", "height": "height 4" },
+  "showHeight": true,
+  "alt": "A parallelogram with a base of 9 and a slanted side of 5. A dashed perpendicular line from the top edge down to the base is marked as the height of 4, meeting the base at a right angle."
+}

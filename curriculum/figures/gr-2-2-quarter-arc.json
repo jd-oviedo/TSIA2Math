@@ -1,0 +1,5 @@
+{
+  "type": "circle", "r": 10, "show": "radius", "label": "r = 10",
+  "sector": { "startDeg": 0, "endDeg": 90, "label": "90°" },
+  "alt": "A circle of radius 10 with a quarter sector shaded from the 3 o'clock position up to the 12 o'clock position, marking a 90 degree arc."
+}

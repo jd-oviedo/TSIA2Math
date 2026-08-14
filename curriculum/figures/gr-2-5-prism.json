@@ -1,0 +1,5 @@
+{
+  "type": "solid3d", "shape": "rectangular_prism", "dims": { "l": 5, "h": 4, "d": 3 },
+  "labels": { "length": "5", "height": "4", "depth": "3" },
+  "alt": "A rectangular prism drawn in oblique projection, with its front face in true shape. The length along the base is 5, the height up the side is 4, and the depth going back is 3. Hidden back edges are dashed."
+}

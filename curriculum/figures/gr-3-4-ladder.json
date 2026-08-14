@@ -1,0 +1,8 @@
+{
+  "type": "right_triangle",
+  "legs": [6, 8],
+  "labels": {
+    "base": "ground 6 ft", "height": "wall 8 ft", "hypotenuse": "ladder 10 ft"
+  },
+  "alt": "A right triangle standing for a ladder against a wall. The ground runs 6 feet from the wall to the foot of the ladder, the ladder reaches 8 feet up the wall, and the ladder itself is 10 feet long. The legs are drawn in a true 6 to 8 proportion."
+}

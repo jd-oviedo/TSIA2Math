@@ -1,0 +1,9 @@
+{
+  "type": "similar_pair",
+  "shape": "rectangle",
+  "dims": { "w": 3, "h": 2 },
+  "k": 2,
+  "labelsSmall": { "0": "3", "1": "2" },
+  "labelsBig": { "0": "6", "1": "4" },
+  "alt": "Two rectangles drawn to the same scale. The smaller measures 3 by 2 and the larger, its image under a dilation with scale factor 2, measures 6 by 4. Every side of the larger is exactly twice the corresponding side of the smaller."
+}

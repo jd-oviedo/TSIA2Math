@@ -1,0 +1,5 @@
+{
+  "type": "solid3d", "shape": "cylinder", "dims": { "r": 3, "h": 10 },
+  "labels": { "radius": "r = 3", "height": "h = 10" },
+  "alt": "A cylinder with a radius of 3 marked by a dashed line across the top face, and a height of 10 dimensioned on a separate vertical line beside the body so the height is unambiguous."
+}

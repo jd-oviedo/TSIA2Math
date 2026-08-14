@@ -1,0 +1,8 @@
+{
+  "type": "transform_pair",
+  "preimage": [[1, 1], [4, 1], [1, 3]],
+  "transform": { "kind": "reflection", "axis": "y" },
+  "xRange": [-6, 6], "yRange": [-2, 5],
+  "labels": { "preimage": "ABC", "preimageAt": [2.2, 1.6], "image": "A'B'C'", "imageAt": [-2.4, 1.6] },
+  "alt": "A coordinate plane showing triangle ABC with vertices at (1,1), (4,1) and (1,3), and its image after reflection across the y-axis, with vertices at (-1,1), (-4,1) and (-1,3). The dashed y-axis is the mirror line and both triangles are the same size."
+}
