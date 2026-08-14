@@ -1,0 +1,8 @@
+{
+  "type": "polygon",
+  "shape": "square",
+  "dims": { "s": 6 },
+  "labels": { "0": "x + 2", "1": "x + 2" },
+  "rightAngles": [0, 1, 2, 3],
+  "alt": "A square with its base and its right side both labelled x plus 2, with right-angle marks at all four corners. The drawing is proportioned for x equal to 4, so each side is drawn six units long."
+}
