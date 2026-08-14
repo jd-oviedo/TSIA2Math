@@ -164,27 +164,88 @@ next time those are touched.
 
 ---
 
-## 6. Long display math overflows on a phone
+## 6. Two Unit 3 lesson pages scroll sideways on a phone
 
-Found while render-testing the retrofit at a 390px viewport, and **not caused by
-it**: the line is in GR.3.1's notes at HEAD~1, before any figure was added.
+**Live UX defect, affecting real students now.** Worth its own session; it is a
+styling fix, unrelated to curriculum authoring, and nothing about it needs a
+content edit or a re-upload.
 
-    $$3, 4, 5 \qquad 5, 12, 13 \qquad 8, 15, 17 \qquad 7, 24, 25 \qquad 9, 40, 41$$
+### What was measured
 
-KaTeX renders that as a single 458px-wide span inside a 390px viewport, so the
-page scrolls sideways. Every figure on the same page behaves correctly, because
-images carry a max-width rule and math does not.
+Every Unit 3 topic, all three routes, against live production rows at a 390px
+viewport (iPhone-class width), after the figure retrofit:
 
-`\qquad` display math appears in 9 of the 16 Unit 3 topics, so this is very
-unlikely to be the only instance.
+```
+viewport 390px -- routes that scroll sideways: 2 of 48
 
-The fix is one CSS rule rather than a content edit, something like
+topic    route     scrollW  over   widest offender
+GR.3.1   lesson    502      +112   katex 467px  "3, 4, 5 \qquad 5, 12, 13 \qquad ..."
+GR.4.4   lesson    398      +8     table 363px  "Figure | Lines | Order | Point symmetry"
 
-    .um-topic .um-prose .katex-display { overflow-x: auto; overflow-y: hidden; }
+affected topics (2/16): GR.3.1, GR.4.4
+```
 
-It was left out of the retrofit deliberately. That rule applies to every topic
-in every unit, so it is a styling change with a much wider blast radius than a
-three-topic diagram pass, and mobile is this project's primary target, which
-makes it worth its own look rather than a change smuggled into an unrelated PR.
+GR.3.1 is the real one: a **112px** overflow, so roughly a third of the line is
+off-screen and the whole page rocks sideways. GR.4.4 is 8px, cosmetic but the
+same root cause class.
 
-Worth checking the other eight topics at 390px at the same time.
+Every figure added by the retrofit fits at 390px. Images carry a max-width rule;
+math and tables do not.
+
+### Two corrections to the original note
+
+The first version of this item, written before anything was measured, said the
+bug affected **9 of 16 topics**. That number came from grepping for `\qquad`,
+which is a proxy, not a measurement. Measured, it is **2 of 16**. Most `\qquad`
+lines are short enough to fit.
+
+It also proposed the fix
+
+```css
+.um-topic .um-prose .katex-display { overflow-x: auto; }
+```
+
+**That would do nothing.** There is no `.katex-display` element on the page:
+
+```
+katexDisplayCount: 0     katexCount: 168
+```
+
+This pipeline emits every formula as a bare `span.katex`, display math included,
+with no display wrapper. The overflowing span sits directly inside a `<p>`:
+
+```
+span.katex  <  p  <  div.um-prose.um-prose-card  <  section
+     467px       320px parent, overflow-x: visible
+```
+
+### What the fix actually has to do
+
+Two different offenders, so probably two rules.
+
+Wide formulas, where the span is inline and 147px wider than its parent:
+
+```css
+.um-topic .um-prose .katex { max-width: 100%; display: inline-block;
+                             overflow-x: auto; vertical-align: middle; }
+```
+
+Wide tables, which are already block-level:
+
+```css
+.um-topic .um-prose table { display: block; width: max-content;
+                            max-width: 100%; overflow-x: auto; }
+```
+
+Both need checking against the rest of the app, since `.um-prose` is shared by
+every topic in every unit, and `display: block` on a table changes how its
+borders collapse. Neither is a one-liner to be dropped into an unrelated PR,
+which is why the retrofit left them alone.
+
+### Reproducing
+
+`npx next build && npx next start`, then the survey script used above, which
+walks all 16 topics by 3 routes at 390px and reports `scrollWidth` against the
+widest `.katex`, `table`, `pre` or `img` on each page. Worth re-running across
+Units 0 to 2 as well; nothing here is specific to Unit 3, and only Unit 3 has
+been looked at.
