@@ -24,11 +24,13 @@
 //   node scripts/make_figure.mjs curriculum/figures/ar-2-6-slope.json --svg
 //   node scripts/make_figure.mjs --all          # regenerate every spec, check drift
 //   node scripts/make_figure.mjs --inject path/to/topic.md   # rewrite figures in place
+//   node scripts/make_figure.mjs --verify        # re-measure every figure's geometry
 //
 // The JSON spec is the reviewable artifact. The base64 blob in the markdown is
 // generated output; regenerate rather than hand-edit it.
 
 import { readFileSync, readdirSync, writeFileSync } from 'fs';
+import { buildShape, verifyShape, SHAPE_TYPES } from './figure_shapes.mjs';
 import { basename } from 'path';
 
 const INK = '#0E0E11';       // axes, text
@@ -188,13 +190,25 @@ function buildSvg(spec) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${esc(spec.alt)}">${parts.join('')}</svg>`;
 }
 
+// Unit 2 shipped only the Cartesian plot, built above. Unit 3's geometry types
+// live in figure_shapes.mjs and are dispatched here by spec.type; anything
+// without a recognised geometric type falls through to the plot, which is what
+// the Unit 2 specs are.
 export function figureFromSpec(spec) {
-  const svg = buildSvg(spec);
+  const svg = SHAPE_TYPES.includes(spec.type) ? buildShape(spec) : buildSvg(spec);
   return {
     svg,
     alt: spec.alt,
     uri: 'data:image/svg+xml;base64,' + Buffer.from(svg, 'utf8').toString('base64'),
   };
+}
+
+// Re-measures the emitted SVG and compares scale-invariant quantities against
+// the spec. Scale invariance is deliberate: a check that recomputed from the
+// builder's own numbers would pass even when those numbers are wrong.
+export function verifyFigure(spec) {
+  if (!SHAPE_TYPES.includes(spec.type)) return [];
+  return verifyShape(spec, buildShape(spec));
 }
 
 // ─── CLI ─────────────────────────────────────────────────────────────────────
@@ -210,7 +224,22 @@ const args = process.argv.slice(2);
 //
 // The comment is dropped by the render pipeline (there is no rehype-raw), so
 // it is invisible to students and exists only for this script and for review.
-if (args[0] === '--inject') {
+if (args[0] === '--verify') {
+  const dir = 'curriculum/figures';
+  const files = (args[1] ? [args[1]] : readdirSync(dir).filter(f => f.endsWith('.json')).map(f => `${dir}/${f}`));
+  let bad = 0, total = 0;
+  for (const f of files) {
+    const spec = JSON.parse(readFileSync(f, 'utf8'));
+    const checks = verifyFigure(spec);
+    if (!checks.length) { console.log(`-  ${basename(f)}: no geometric assertions for type ${spec.type}`); continue; }
+    const fails = checks.filter(c => !c.ok);
+    total += checks.length; bad += fails.length;
+    console.log(`${fails.length ? 'FAIL' : ' ok '} ${basename(f)}  (${checks.length - fails.length}/${checks.length})`);
+    for (const c of fails) console.log(`       ${c.name}: measured ${c.actual}, expected ${c.expected}`);
+  }
+  console.log(`\n${total} geometric assertion(s), ${bad} failed`);
+  process.exit(bad ? 1 : 0);
+} else if (args[0] === '--inject') {
   const target = args[1];
   let md = readFileSync(target, 'utf8');
   let count = 0;
