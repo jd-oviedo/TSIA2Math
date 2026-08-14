@@ -166,9 +166,10 @@ next time those are touched.
 
 ## 6. Two Unit 3 lesson pages scroll sideways on a phone
 
-**Live UX defect, affecting real students now.** Worth its own session; it is a
-styling fix, unrelated to curriculum authoring, and nothing about it needs a
-content edit or a re-upload.
+**RESOLVED** on branch `fix/mobile-math-table-overflow`. The measurement below
+is the pre-fix state and is kept because it is what the fix was verified
+against; the outcome is recorded at the end of this item. It was, as predicted,
+a pure styling fix: no content edit and no re-upload.
 
 ### What was measured
 
@@ -244,8 +245,83 @@ which is why the retrofit left them alone.
 
 ### Reproducing
 
-`npx next build && npx next start`, then the survey script used above, which
-walks all 16 topics by 3 routes at 390px and reports `scrollWidth` against the
-widest `.katex`, `table`, `pre` or `img` on each page. Worth re-running across
-Units 0 to 2 as well; nothing here is specific to Unit 3, and only Unit 3 has
-been looked at.
+The survey is now a committed script, `scripts/measure_topic_widths.mjs`:
+
+```
+npx next build && npx next start &
+node scripts/measure_topic_widths.mjs --units=0,1,2,3
+```
+
+It reads the topic list from `curriculum_topics_public` with the anon key, so it
+walks exactly the rows a student gets, and it counts selector matches on every
+page so a rule that silently stops matching shows up as a number going to zero.
+
+### What was done
+
+Two rules, each verified against the rendered DOM before being written.
+
+`.um-topic .um-prose p > .katex:only-child` gets `display: block` and
+`overflow-x: auto`. The structural selector is the point: this pipeline emits no
+`.katex-display` at all, and every one of the five wide formulas measured across
+four units turned out to be the only child of its paragraph, so position is what
+identifies display math here. `:only-child` keeps the rule off inline math,
+which would lose its baseline if it became a scroll container.
+
+Tables are wrapped in a `div.um-table-scroll` by a small rehype plugin in
+`lib/curriculum-utils.ts`, and the wrapper scrolls. The obvious CSS-only
+alternative, `display: block` on the table, was measured and does work, but a
+table that is not `display: table` stops being announced as a table by screen
+readers. These are data tables in study material, so the wrapper was worth the
+extra moving part. `overflow-x: auto` on the table alone does nothing.
+
+### Outcome, measured the same way
+
+```
+viewport 390px, Units 0-3, 189 routes
+
+before:  8 routes scroll sideways
+after:   0 routes scroll sideways
+```
+
+Regression check, comparing every element's geometry on all 189 routes before
+and after:
+
+```
+figures   0 changed of 683
+tables    0 changed of 51
+cells     0 changed of 657
+math    492 changed of 9147   <- exactly the p > .katex:only-child match count
+```
+
+The figures from the retrofit are untouched, and so is every table's own box:
+the wrapper scrolls, the table does not move. The 492 changed formulas are the
+standalone ones the rule targets. They get 6px of vertical padding, which is
+room for a stacked fraction that would otherwise be shaved by `overflow-y`, and
+they now occupy their true height instead of overflowing their line box, so
+lesson pages with a lot of display math get modestly longer. That is a
+correction: tall fractions were previously overlapping the lines around them.
+
+### Units 0 to 2 were not clean
+
+The previous note assumed this was a Unit 3 problem. It was not. Surveying
+Units 0 to 2 as part of the regression check found **six more affected routes**,
+one of them worse than anything in Unit 3:
+
+```
+AR.1.2  lesson  714  +324   katex   "If any vertical line crosses the g..."
+AR.1.4  lesson  647  +257   katex   "Linear adds a constant.Exponential..."
+GR.1.1  lesson  443   +53   table   "Category | What it measures | Cust..."
+QR.3.6  lesson  426   +36   table   "Year | 1990 | 1995 | 2000..."
+QR.1.8  lesson  414   +24   katex   "|a-b| = the distance between a and b"
+AR.1.1  lesson  409   +19   katex   "f(5) means: run the rule f with 5..."
+```
+
+All six are fixed by the same two rules -- they are the same two shapes, not new
+ones -- so the planned survey pass for Units 0 to 2 is closed rather than
+pending. A latent seventh, a table on AR.2.6 sitting 12px over its container
+without quite pushing the page, is fixed too.
+
+Units 4 and 5 (AR.3.1, AR.4.1, PR.2.1, PR.3.1, PR.4.1) were measured too, after
+the fix: 0 of 15 routes scroll, and nothing on them is wide enough to need a
+scroll container at all, so there was no latent problem there to begin with.
+Nothing about this defect is left open.
