@@ -571,10 +571,10 @@ Step 3: Compare and subtract.
 
 ```json
 "distractor_logic": {
-  "A": "Correct: converts 1/4 to 0.25 and 22% to 0.22, computes $15 versus $13.20, and subtracts to get $1.80",
-  "B": "Student makes misconception: percent_sign_confusion (treats 22% as a flat $22 off, which beats the $15 discount by $7.00)",
-  "C": "Student makes misconception: fraction_digit_gluing (reads 1/4 as 0.14, giving only $8.40 off, so the $13.20 discount wins by $4.80)",
-  "D": "Student makes misconception: percent_decimal_overshift (writes 22% as 0.022, giving only $1.32 off, so the $15 discount wins by $13.68)"
+  "A": "Correct: converts 1/4 to 0.25 and 22% to 0.22, computes 15 dollars versus 13.20 dollars, and subtracts to get 1.80 dollars",
+  "B": "Student makes misconception: percent_sign_confusion (treats 22% as a flat 22 dollars off, which beats the 15 dollar discount by 7.00 dollars)",
+  "C": "Student makes misconception: fraction_digit_gluing (reads 1/4 as 0.14, giving only 8.40 dollars off, so the 13.20 dollar discount wins by 4.80 dollars)",
+  "D": "Student makes misconception: percent_decimal_overshift (writes 22% as 0.022, giving only 1.32 dollars off, so the 15 dollar discount wins by 13.68 dollars)"
 },
 "misconception_tag": {
   "B": "percent_sign_confusion",
@@ -725,10 +725,10 @@ Notice the last step. The question asks for a price, not a discount. Stopping at
 
 ```json
 "distractor_logic": {
-  "A": "Correct: converts 1/5 to 0.2 and 18% to 0.18, computes final prices of $6.40 and $6.56, and picks the lower",
-  "B": "Student makes misconception: fraction_digit_gluing (reads 1/5 as 0.15, giving $6.80 at the first store, so $6.56 looks cheaper)",
-  "C": "Student makes misconception: reports_discount_not_price (computes the $1.60 discount correctly but reports it instead of the final price)",
-  "D": "Student makes misconception: percent_decimal_overshift (writes 18% as 0.018, giving only $0.14 off and a price of $7.86)"
+  "A": "Correct: converts 1/5 to 0.2 and 18% to 0.18, computes final prices of 6.40 dollars and 6.56 dollars, and picks the lower",
+  "B": "Student makes misconception: fraction_digit_gluing (reads 1/5 as 0.15, giving 6.80 dollars at the first store, so 6.56 dollars looks cheaper)",
+  "C": "Student makes misconception: reports_discount_not_price (computes the 1.60 dollar discount correctly but reports it instead of the final price)",
+  "D": "Student makes misconception: percent_decimal_overshift (writes 18% as 0.018, giving only 0.14 dollars off and a price of 7.86 dollars)"
 },
 "misconception_tag": {
   "B": "fraction_digit_gluing",
