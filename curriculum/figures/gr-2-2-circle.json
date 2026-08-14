@@ -1,0 +1,4 @@
+{
+  "type": "circle", "r": 5, "show": "radius", "label": "r",
+  "alt": "A circle with its centre marked and a radius drawn from the centre to the edge, labelled r."
+}
