@@ -9,7 +9,7 @@ broken.
 
 ---
 
-## 1. The unescaped-currency defect does not reach the student page
+## 1. RESOLVED: the unescaped-currency defect never rendered anywhere
 
 `deferred-curriculum-round5-followups.md` item 2 records that QR.1.2, QR.2.1 and
 QR.3.5 carry currency written as a bare `$` inside `distractor_logic` prose. That
@@ -36,6 +36,77 @@ fence first would surface the breakage. The Socratic AI route reads per-option
 slugs and is the obvious candidate to check before closing this.
 
 Left untouched here: the brief scoped those three files out explicitly.
+
+### Resolution
+
+Closed by a convention rewrite, not by escaping. Three corrections to the notes
+above, all measured rather than reasoned:
+
+**There was no rendering defect, on any path, not just the student one.** The
+round5 item called it "a rendering defect on the teacher answer-key view". It
+was not. Rendering the *live production rows* through the exact teacher path,
+both the per-item accordion (`splitAnswerKey`) and the whole-blob fallback:
+
+```
+QR.1.2   json fences 14 -> 0 after strip   prose-swallowing math spans: 0 / 0
+QR.2.1   json fences 14 -> 0 after strip   prose-swallowing math spans: 0 / 0
+QR.3.5   json fences 14 -> 0 after strip   prose-swallowing math spans: 0 / 0
+```
+
+`stripAuthoringBlocks` runs on the teacher path too, so Part 4 was never
+exposed. The open question above about a consumer that renders the prose
+unstripped is also closed: only `misconception_tag` slugs reach the practice API
+and GUMU, and the uploader extracts slugs by regex without ever storing the
+prose in a rendered column. The `distractor_logic` references in app code belong
+to the separate `questions` item bank.
+
+**QR.3.5 was never affected.** Its dollars are all paired KaTeX delimiters in
+`template.stem_template` (`${a}m + {b}m$`), which are correct, plus one currency
+`$37` in `template.range_notes`. It has no bare `$` in `distractor_logic` at
+all. Only QR.1.2 (8 strings) and QR.2.1 (4 strings) ever had the problem.
+
+**The proposed fix would have broken the template validator.** `\$` inside a
+JSON string is an invalid escape, and `scripts/verify_templates.py` does
+`json.loads("{" + block + "}")` and raises on failure. Nor was `\$` ever the
+house convention: no topic in the course uses a backslash escape inside a json
+block.
+
+The actual convention, measured, is to spell the unit as a word:
+
+```
+distractor_logic using the $ symbol:   QR.1.2 (8), QR.2.1 (4)   = 2 topics
+distractor_logic using "dollars":      15 topics, 122 strings
+```
+
+So the 12 strings were rewritten to match ("computes 15 dollars versus 13.20
+dollars"), which removes the outlier, keeps the JSON valid and needs no escape.
+Course-wide there are now zero `distractor_logic` strings using the `$` symbol,
+and all 481 json blocks still parse.
+
+### Live rows
+
+Uploaded 2026-08-14. `upload_curriculum.py` has no `--topics` filter, so running
+it would have upserted all 68 rows of the course to change 2. The write was
+instead a targeted `PATCH` of the `answer_key` column on `QR.1.2` and `QR.2.1`
+only, guarded so it would refuse if the live text no longer matched what the
+pre-upload diff had been reviewed against.
+
+Verified after the write, against the rows pulled back from production:
+
+```
+QR.1.2   round trip vs source: EXACT (14355 chars)   17/17 fields match
+         teacher accordion 10+4 entries, 138 math spans, 0 prose swallowed
+         teacher fallback  138 math spans, 0 prose swallowed
+QR.2.1   round trip vs source: EXACT (15268 chars)   17/17 fields match
+         teacher accordion 10+4 entries, 131 math spans, 0 prose swallowed
+         teacher fallback  131 math spans, 0 prose swallowed
+```
+
+Both live rows carry zero `distractor_logic` strings using the `$` symbol. The
+render check is the live stored `answer_key` put through `splitAnswerKey` and
+`renderMarkdownWithMath`, the same functions the teacher page calls. The
+authenticated page itself was not driven in a browser, which would need teacher
+credentials.
 
 ---
 

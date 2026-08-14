@@ -499,10 +499,10 @@ Step 3: Check. Is $3:12$ the same rate as $7:28$? Both reduce to $1:4$. Correct.
 
 ```json
 "distractor_logic": {
-  "A": "Correct: divides $12 by 3 to find a unit rate of $4 per notebook, then multiplies by 7 to get $28",
-  "B": "Student makes misconception: adds_instead_of_scales (sees notebooks rise from 3 to 7, a gain of 4, and adds that same $4 to the $12, producing $16)",
-  "C": "Student makes misconception: reversed_division (multiplies $12 by 3/7 instead of 7/3, flipping the rate and producing $5.14)",
-  "D": "Student makes misconception: answers_intermediate_value (reports the $4 unit rate as the answer instead of scaling it up to 7 notebooks)"
+  "A": "Correct: divides 12 dollars by 3 to find a unit rate of 4 dollars per notebook, then multiplies by 7 to get 28 dollars",
+  "B": "Student makes misconception: adds_instead_of_scales (sees notebooks rise from 3 to 7, a gain of 4, and adds that same 4 dollars to the 12 dollars, producing 16 dollars)",
+  "C": "Student makes misconception: reversed_division (multiplies 12 dollars by 3/7 instead of 7/3, flipping the rate and producing 5.14 dollars)",
+  "D": "Student makes misconception: answers_intermediate_value (reports the 4 dollar unit rate as the answer instead of scaling it up to 7 notebooks)"
 },
 "misconception_tag": {
   "B": "adds_instead_of_scales",

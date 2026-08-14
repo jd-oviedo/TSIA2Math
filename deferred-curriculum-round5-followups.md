@@ -38,7 +38,15 @@ reviewed diff.
 
 ---
 
-## 2. Unescaped `$` inside answer-key `distractor_logic` prose (3 topics)
+## 2. RESOLVED: Unescaped `$` inside answer-key `distractor_logic` prose (3 topics)
+
+> **Closed. Two claims below are wrong and the fix it proposes must not be
+> applied.** There was no rendering defect on the teacher view or anywhere else,
+> and QR.3.5 was never affected. Escaping as `\$` would have broken
+> `scripts/verify_templates.py`, since `\$` is an invalid JSON escape. Resolved
+> instead by spelling the currency as a word in QR.1.2 and QR.2.1, matching the
+> 15 other money topics. Full measurements in
+> `deferred-curriculum-unit1-followups.md` item 1.
 
 `QR.1.2`, `QR.2.1` and `QR.3.5` carry currency written as a bare `$` inside
 `distractor_logic` strings in Part 4. For example, in QR.2.1:
