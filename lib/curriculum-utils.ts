@@ -5,6 +5,39 @@ import remarkMath from 'remark-math';
 import remarkRehype from 'remark-rehype';
 import rehypeKatex from 'rehype-katex';
 import rehypeStringify from 'rehype-stringify';
+import type { Element, Parent, Root, RootContent } from 'hast';
+
+// A wide table has to scroll inside the card rather than push the whole page
+// sideways on a phone. The table cannot be its own scroll container: that needs
+// `display: block`, and a table that is not `display: table` stops being
+// announced as a table by screen readers -- rows and columns simply go away.
+// These are data tables in study material, so that trade is not available.
+//
+// The scroll box is therefore a wrapper element, added here so it applies to
+// every table in the curriculum rather than being authored by hand into the
+// forty-odd markdown files that carry one. The matching rules live in
+// topic-page-css.ts under .um-table-scroll.
+function rehypeScrollableTables() {
+  return (tree: Root) => {
+    const walk = (node: Parent) => {
+      if (!node.children) return;
+      node.children = node.children.map((child): RootContent => {
+        if (child.type === 'element') walk(child);
+        if (child.type === 'element' && child.tagName === 'table') {
+          const wrapper: Element = {
+            type: 'element',
+            tagName: 'div',
+            properties: { className: ['um-table-scroll'] },
+            children: [child],
+          };
+          return wrapper;
+        }
+        return child;
+      });
+    };
+    walk(tree);
+  };
+}
 
 // KaTeX's stylesheet is loaded globally from app/globals.css, so it is not
 // imported here: Next only accepts global CSS imports from inside app/.
@@ -15,6 +48,7 @@ export function renderMarkdownWithMath(markdown: string): string {
     .use(remarkMath)
     .use(remarkRehype)
     .use(rehypeKatex)
+    .use(rehypeScrollableTables)
     .use(rehypeStringify)
     .processSync(markdown);
 

@@ -13,9 +13,30 @@ export const TOPIC_PAGE_CSS = `
    blue that would vanish on these cream cards. This page commits to one warm
    light surface, so math is pinned to Deep Midnight. */
 .um-topic .katex { color: #0E0E11 !important; }
-/* A display equation wider than its card scrolls rather than pushing the page
-   sideways. */
+/* Kept for a display equation that arrives already wrapped, but note that
+   nothing on these pages does: remark-math only emits a display node for a $$
+   fence on its own lines, and this curriculum writes $$...$$ on a single line,
+   which parses as inline math. Measured, .katex-display matches 0 elements
+   across all 189 topic routes while .katex matches 4189, so this rule alone
+   never fired and the real fix is the structural one below. */
 .um-topic .katex-display { overflow-x: auto; overflow-y: hidden; padding: 2px 0; }
+
+/* A formula alone in a paragraph is display math in everything but the markup,
+   so it is matched by its position rather than by a class it never gets. Wide
+   ones then scroll inside their own box instead of rocking the whole page
+   sideways on a phone.
+   :only-child is load-bearing. Inline math sharing a line with text must keep
+   its baseline, and overflow on an inline box drops it to the bottom margin
+   edge, which would nudge every formula in a sentence out of alignment.
+   The 6px of vertical padding is room for stacked fractions, which overflow
+   the box by 2-4px that overflow-y: hidden would otherwise shave off. */
+.um-topic .um-prose p > .katex:only-child {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 6px 0;
+}
 
 .um-topic .um-visually-hidden {
   position: absolute;
@@ -109,6 +130,14 @@ export const TOPIC_PAGE_CSS = `
   padding: 14px 16px;
 }
 .um-topic .um-prose pre code { background: none; padding: 0; }
+/* The scroll box for a table too wide for the card, added around every table by
+   rehypeScrollableTables in lib/curriculum-utils.ts. It is a wrapper rather
+   than overflow on the table itself because a table needs display: block to
+   scroll, and that costs its screen-reader semantics.
+   The bottom margin moves here from the table so that spacing is unchanged and
+   .um-prose > *:last-child still finds the last block. */
+.um-topic .um-prose .um-table-scroll { max-width: 100%; overflow-x: auto; margin: 0 0 1em; }
+.um-topic .um-prose .um-table-scroll > table { margin: 0; }
 .um-topic .um-prose table {
   width: 100%;
   border-collapse: collapse;
