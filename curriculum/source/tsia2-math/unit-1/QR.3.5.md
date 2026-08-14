@@ -1,7 +1,7 @@
 ---
 topic_name: "Manipulating linear expressions (combining like terms)"
 unit_number: 1
-sequence_in_unit: 6
+sequence_in_unit: 14
 assessment_layer: "CRC"
 estimated_time_minutes: 50
 difficulty_band: "Basic"
