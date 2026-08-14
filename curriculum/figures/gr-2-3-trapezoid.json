@@ -1,0 +1,16 @@
+{
+  "type": "polygon",
+  "shape": "trapezoid",
+  "dims": {
+    "b1": 10,
+    "b2": 6,
+    "h": 4
+  },
+  "labels": {
+    "0": "b1 = 10",
+    "2": "b2 = 6",
+    "height": "h = 4"
+  },
+  "showHeight": true,
+  "alt": "A trapezoid with a bottom base of 10 and a top base of 6. A dashed perpendicular line joins the two parallel sides and is marked as the height of 4."
+}
