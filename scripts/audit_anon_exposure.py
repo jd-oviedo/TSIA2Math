@@ -38,13 +38,20 @@ Three checks per relation:
 
           What actually runs is the observed-key path: the columns present on
           the rows anon really receives. That is a true reading of what anon can
-          see, and it is what the EXPECTED_COLUMNS comparison uses. Its one
-          limit is the one the spec check existed to cover: it cannot see the
-          columns of a relation that currently returns no rows. For a pinned
-          relation that is not silent -- an unreadable column list fails the
-          audit rather than passing -- but restoring the zero-row case would
-          mean probing each expected column with select=<col>&limit=1, where 200
-          means present and 400 means absent. Not built; see PR #92.
+          see, and it is what the EXPECTED_COLUMNS comparison uses.
+
+          KNOWN GAP, accepted deliberately. The observed-key path cannot
+          distinguish "this relation has no columns" from "this relation
+          returned no rows" -- both look like an empty column list, because the
+          columns are read off a row and there is no row to read. So a pinned
+          relation that went empty would report an unreadable column list rather
+          than naming which columns went missing. It fails the audit either way,
+          which is why this is a gap in precision and not in safety. Closing it
+          would mean probing each expected column with select=<col>&limit=1,
+          where 200 means present and 400 means absent. Not done: both public
+          views are far from zero rows (86 and 1124 as of 2026-08-16), so the
+          gap is theoretical today. Revisit if a pinned relation can legitimately
+          be empty.
 
   CONTENT For those same relations, does any answer-SHAPE appear in the payload
           anon receives? Column names are not enough: mini_quiz and

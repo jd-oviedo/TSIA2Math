@@ -349,6 +349,29 @@ in rather than quietly correcting: a matching aggregate is not a matching state,
 and a handoff written to be trusted is exactly the kind of artefact that accrues
 this defect unchecked.
 
+### An artefact asserting a mechanism that does not occur
+
+The same defect, three times in one session, each in a different artefact:
+
+- **Issue #84's stated failure mode.** It claimed `create or replace view` would
+  drop a column "without complaint". It cannot; it errors with `cannot drop
+  columns from view` and aborts the batch.
+- **This document's lint attribution.** "All in unit-1", when fifteen of sixteen
+  findings are in unit-0.
+- **`audit_anon_exposure.py`'s spec-check docstring.** It called the anon
+  OpenAPI spec check the load-bearing half. The endpoint answers anon with 401,
+  so that check had never run once.
+
+All three were written by someone who understood the system, all three read as
+authoritative, and all three passed review, because in every case the claim was
+*plausible* and nobody executed the thing it described. Plausibility is what
+makes this class survive review; it is not evidence.
+
+**The check: run the thing the artefact describes before trusting the
+description.** Re-run the file, call the endpoint, execute the statement in a
+throwaway container, attribute the findings instead of counting them. Each of the
+three above took under five minutes to disprove once someone tried.
+
 ---
 
 ## Where things live
