@@ -41,18 +41,17 @@ that against `deferred-curriculum-unit-map.md` before authoring**, because the
 Unit Map is authoritative over the item bank's `unit` field, which disagreed on 47
 of 97 topics. Do not take the bank's word for placement.
 
-### One thing that is not finished
+### Repo and production agree
 
-**Unit 4 Batch D is live in production but unmerged in the repo.**
+Verified after the Batch D merge: `main` carries all twenty Unit 4 source files,
+and a full-course pre-upload diff reports `0 inserts, 0 modifications, 83
+unchanged, 3 orphans`. A fresh clone of `main` is a faithful picture of what
+students see.
 
-The five topics `AR.4.8` through `AR.4.12` were uploaded and verified, and Unit 4
-reads 20 rows, sequence 1 to 20. But `feat/curriculum-unit4-batch-d` carries six
-commits that never reached `main`, and no PR was opened for it. `main` is at the
-Batch C merge.
-
-So the repo is behind production by one batch. Anyone branching from `main` to
-start Unit 5 will not have those five source files, and the pre-upload diff will
-report five spurious inserts. **Open that PR and merge it before anything else.**
+That was briefly untrue during Round 5, and the way it happened is worth knowing.
+Batch D's content was uploaded and verified, but its PR was never opened, so five
+source files were live to students while sitting only on an unmerged branch. The
+content was fine; the repo simply did not describe production. See section 4.
 
 ---
 
@@ -157,10 +156,6 @@ carries the same distinction. Ten tests cover both directions, including two tha
 prove the throw fires at import.
 
 ### `scripts/check_topic.py`, run before each topic commit
-
-**This file is on `feat/curriculum-unit4-batch-d` and not yet on `main`.** It
-arrives with the merge described in section 1. Everything else listed in this
-section is already on `main`.
 
 ```
 python3 scripts/check_topic.py curriculum/source/tsia2-math/unit-5/PR.2.2.md
@@ -294,6 +289,22 @@ dropping it. `check_topic.py` reports unused slugs as a note.
 Also confirm the pre-assigned set **before** authoring. `AR.4.5` was assigned a
 deferred slug that was not in its set at all, and the check caught it before the
 topic was written rather than after.
+
+### A batch treated as done before its PR is merged
+
+Uploading is not merging, and this round proved the two can drift apart. Batch D's
+five topics were uploaded, verified against the real route, and treated as
+finished, while their source sat on a branch that never reached `main`. For a
+while production served content the repo did not contain.
+
+Nothing was wrong with the content, which is what makes it easy to miss: every
+check that ran, passed. The gap was in a step that never ran at all.
+
+**The check: confirm the batch's PR is merged before calling the batch done.**
+`git log --oneline main | grep batch-<n>` answers it, and a full-course pre-upload
+diff from a fresh checkout of `main` should report zero inserts. Anything else
+means the repo is behind production, and the next round will branch from a `main`
+that is missing files.
 
 ### Checks that pass while measuring the wrong object
 
