@@ -24,12 +24,34 @@ Three checks per relation:
           reads as a grant on every table in the database.
 
   COLUMNS For relations that are meant to be public, are any answer-bearing
-          column names present? Checked twice, against two different sources:
-          the keys of a sampled row, and the columns anon's own OpenAPI spec
-          declares for the relation. The spec check is the load-bearing one --
-          it fires even when the relation currently returns no rows, so a
-          column added to a public view is caught the moment it is added
-          rather than the first time a row happens to come back through it.
+          column names present, and does the column list still match what was
+          pinned in EXPECTED_COLUMNS?
+
+          NOTE, corrected 2026-08-16. This check was written to read anon's own
+          OpenAPI spec, and its docstring called that the load-bearing half
+          because it fires even when a relation returns no rows. It no longer
+          runs: the project answers GET /rest/v1/ with 401 "Only the
+          `service_role` API key can be used for this endpoint", so
+          spec_columns() returns None for anon on every call and has been doing
+          so silently apart from a stderr warning. Found while pinning
+          questions_public.
+
+          What actually runs is the observed-key path: the columns present on
+          the rows anon really receives. That is a true reading of what anon can
+          see, and it is what the EXPECTED_COLUMNS comparison uses. Its one
+          limit is the one the spec check existed to cover: it cannot see the
+          columns of a relation that currently returns no rows. For a pinned
+          relation that is not silent -- an unreadable column list fails the
+          audit rather than passing -- but restoring the zero-row case would
+          mean probing each expected column with select=<col>&limit=1, where 200
+          means present and 400 means absent. Not built; see PR #92.
+
+  CONTENT For those same relations, does any answer-SHAPE appear in the payload
+          anon receives? Column names are not enough: mini_quiz and
+          practice_problems are served raw, so an answer pasted into the
+          authored markdown is invisible to a column check. Every row is
+          fetched and scanned, and forbidden keys are sought at any depth.
+          See scripts/answer_shapes.py.
 
 A GRANT with no READ is reported but does not fail the audit: with RLS enabled
 and no policy the statement is authorised and still affects zero rows. It is
@@ -94,6 +116,20 @@ EXPECTED_COLUMNS = {
         "assessment_layer", "related_strand", "keywords", "prerequisites",
         "guided_notes", "practice_items", "practice_problems", "mini_quiz",
         "created_at", "updated_at", "is_placeholder",
+    ],
+    # Captured from production 2026-08-16, not transcribed from
+    # sql/questions_lockdown.sql. The premise of issue #84 is that checked-in
+    # DDL is not trustworthy until proven otherwise, and that applies to the CAT
+    # side too: this list is the key set observed on all 1124 live rows read
+    # through the anon key, which agreed on a single distinct key tuple.
+    #
+    # Independently probed as absent from this view: correct_answer,
+    # misconception_tag, explanation, rationale, distractor_logic (all HTTP 400).
+    "questions_public": [
+        "item_id", "status", "question_text", "answer_choices", "primary_strand",
+        "topic_id", "proficiency_level", "assessment_layer", "difficulty_level",
+        "calculator_type", "requires_calculator", "contains_image", "image_url",
+        "category", "objective_text", "figure_type", "figure_props",
     ],
 }
 
@@ -261,8 +297,11 @@ def main() -> int:
     # that quietly stops running is worse than no column check.
     anon_spec = spec_columns(url, anon)
     if anon_spec is None:
-        print("WARNING: could not read the anon OpenAPI spec; "
-              "column checks fall back to sampled rows only.", file=sys.stderr)
+        print("NOTE: the anon OpenAPI spec is not readable (the project restricts "
+              "GET /rest/v1/ to service_role), so column checks read the columns "
+              "actually present on anon's rows. Pinned relations still fail if "
+              "their column list cannot be read; see the COLUMNS note above.",
+              file=sys.stderr)
 
     print(f"{'RELATION':<26} {'ANON ROWS':<10} {'ANON GRANTS':<16} {'VERDICT':<8} DETAIL")
     print("-" * 100)
