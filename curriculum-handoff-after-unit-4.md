@@ -630,6 +630,26 @@ anything looks.
   that cannot confirm its own injection proves nothing, and it fails in the
   direction of false confidence. `assert old in s` is the whole fix.
 
+  **And assert it landed where the check actually reads.** Proving the coverage
+  assertion above, a fault was injected into `84 - 60 = 24` in a worked
+  solution. The string existed, the assertion passed, and the check still
+  reported clean, because pass 3 only reads `distractor_logic` inside json
+  fences and never looks at worked-solution prose. Presence in the file is not
+  presence in the scanned region. The corrected proof asserts both.
+
+- **A check that processes a subset of its input and exits zero.** This is the
+  general form the three above are instances of, and it is worth stating on its
+  own. Pass 3 of the distractor ledger was a list of narrow regexes, one per
+  phrasing the topic being written happened to use. On `PR.2.3` it parsed 47 of
+  56 claims, skipping the topic's two dominant forms, and reported "all claims
+  recompute correctly". Extending it by hand only moved the blind spot to the
+  next unseen phrasing; it was extended twice that way. Re-run against `PR.2.2`
+  afterwards, it turned out to have checked 82 of 85 claims there too.
+  **Coverage must be asserted, not inferred from a clean exit.**
+  `scripts/check_rationale_arithmetic.py` now counts claim-shaped strings
+  encountered, counts those it parsed, prints the ratio, and fails when the two
+  differ. Both topics measure 100%.
+
 **The tell is a default that is also a legal value.** `0` is a legal sequence;
 red text is a legal render. Where a default is indistinguishable from a real
 value, absence of the input cannot be detected downstream, so it has to be caught
