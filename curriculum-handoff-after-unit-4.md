@@ -158,6 +158,10 @@ prove the throw fires at import.
 
 ### `scripts/check_topic.py`, run before each topic commit
 
+**This file is on `feat/curriculum-unit4-batch-d` and not yet on `main`.** It
+arrives with the merge described in section 1. Everything else listed in this
+section is already on `main`.
+
 ```
 python3 scripts/check_topic.py curriculum/source/tsia2-math/unit-5/PR.2.2.md
 ```
@@ -194,7 +198,7 @@ defects came in kinds that only one pass each can see:
 
 `node scripts/make_figure.mjs --verify`. Unit 4 moved it from 196/46 through
 358/56 and back to 330/54 when two AR.3.7 stem figures were pulled. **Measure it,
-do not carry a remembered number forward** — a stale count caused one false
+do not carry a remembered number forward.** A stale count caused one false
 reconciliation during this unit, and a spec count was recorded one low for several
 rounds before being caught.
 
@@ -224,7 +228,7 @@ Confirmed across three whole-course uploads. `AR.3.1` and `AR.4.1` have read
 hold their insert stamps through every later run. The uploader globs the whole
 course with no `--topics` filter, so every run reissues dozens of idempotent
 upserts; those cost redundant writes but move no timestamps. `updated_at` behaves
-as an insert-time stamp. **Re-confirm it once per batch anyway** — it is one query
+as an insert-time stamp. **Re-confirm it once per batch anyway.** It is one query
 and it is the only evidence.
 
 ### The upload requires a human to run it
