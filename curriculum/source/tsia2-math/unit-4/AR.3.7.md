@@ -218,10 +218,7 @@ Solve each problem. Show your thinking.
    - C) $y = (x - 4)^{2} - 6$
    - D) $y = (x + 4)^{2} - 6$
 
-7. Which equation represents the parabola shown?
-
-<!-- figure: ar-3-7-p-graph -->
-![A narrow upward-opening parabola on a coordinate plane. Its lowest point is marked at (-1, -8). It crosses the x-axis at -3 and at 1 and crosses the y-axis at -6.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIG5hcnJvdyB1cHdhcmQtb3BlbmluZyBwYXJhYm9sYSBvbiBhIGNvb3JkaW5hdGUgcGxhbmUuIEl0cyBsb3dlc3QgcG9pbnQgaXMgbWFya2VkIGF0ICgtMSwgLTgpLiBJdCBjcm9zc2VzIHRoZSB4LWF4aXMgYXQgLTMgYW5kIGF0IDEgYW5kIGNyb3NzZXMgdGhlIHktYXhpcyBhdCAtNi4iPjxyZWN0IHdpZHRoPSIzNDAiIGhlaWdodD0iMjUwIiBmaWxsPSIjRjdGM0U3IiByeD0iMTAiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgeDE9IjM0IiB5MT0iMTYiIHgyPSIzNCIgeTI9IjIyOCIvPjxsaW5lIHgxPSI3MCIgeTE9IjE2IiB4Mj0iNzAiIHkyPSIyMjgiLz48bGluZSB4MT0iMTA2IiB5MT0iMTYiIHgyPSIxMDYiIHkyPSIyMjgiLz48bGluZSB4MT0iMTQyIiB5MT0iMTYiIHgyPSIxNDIiIHkyPSIyMjgiLz48bGluZSB4MT0iMTc4IiB5MT0iMTYiIHgyPSIxNzgiIHkyPSIyMjgiLz48bGluZSB4MT0iMjE0IiB5MT0iMTYiIHgyPSIyMTQiIHkyPSIyMjgiLz48bGluZSB4MT0iMjUwIiB5MT0iMTYiIHgyPSIyNTAiIHkyPSIyMjgiLz48bGluZSB4MT0iMjg2IiB5MT0iMTYiIHgyPSIyODYiIHkyPSIyMjgiLz48bGluZSB4MT0iMzIyIiB5MT0iMTYiIHgyPSIzMjIiIHkyPSIyMjgiLz48bGluZSB4MT0iMzQiIHkxPSIyMjgiIHgyPSIzMjIiIHkyPSIyMjgiLz48bGluZSB4MT0iMzQiIHkxPSIyMDEuNSIgeDI9IjMyMiIgeTI9IjIwMS41Ii8+PGxpbmUgeDE9IjM0IiB5MT0iMTc1IiB4Mj0iMzIyIiB5Mj0iMTc1Ii8+PGxpbmUgeDE9IjM0IiB5MT0iMTQ4LjUiIHgyPSIzMjIiIHkyPSIxNDguNSIvPjxsaW5lIHgxPSIzNCIgeTE9IjEyMiIgeDI9IjMyMiIgeTI9IjEyMiIvPjxsaW5lIHgxPSIzNCIgeTE9Ijk1LjUiIHgyPSIzMjIiIHkyPSI5NS41Ii8+PGxpbmUgeDE9IjM0IiB5MT0iNjkiIHgyPSIzMjIiIHkyPSI2OSIvPjxsaW5lIHgxPSIzNCIgeTE9IjQyLjUiIHgyPSIzMjIiIHkyPSI0Mi41Ii8+PGxpbmUgeDE9IjM0IiB5MT0iMTYiIHgyPSIzMjIiIHkyPSIxNiIvPjwvZz48bGluZSB4MT0iMzQiIHkxPSI5NS41IiB4Mj0iMzIyIiB5Mj0iOTUuNSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSIyMTQiIHkxPSIyMjgiIHgyPSIyMTQiIHkyPSIxNiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxnIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjMEUwRTExIj48dGV4dCB4PSIzNCIgeT0iMTA4LjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPi01PC90ZXh0Pjx0ZXh0IHg9IjcwIiB5PSIxMDguNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+LTQ8L3RleHQ+PHRleHQgeD0iMTA2IiB5PSIxMDguNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+LTM8L3RleHQ+PHRleHQgeD0iMTQyIiB5PSIxMDguNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+LTI8L3RleHQ+PHRleHQgeD0iMTc4IiB5PSIxMDguNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+LTE8L3RleHQ+PHRleHQgeD0iMjUwIiB5PSIxMDguNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTwvdGV4dD48dGV4dCB4PSIyODYiIHk9IjEwOC41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yPC90ZXh0Pjx0ZXh0IHg9IjMyMiIgeT0iMTA4LjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjM8L3RleHQ+PHRleHQgeD0iMjA4IiB5PSIyMzEuNSIgdGV4dC1hbmNob3I9ImVuZCI+LTEwPC90ZXh0Pjx0ZXh0IHg9IjIwOCIgeT0iMjA1IiB0ZXh0LWFuY2hvcj0iZW5kIj4tODwvdGV4dD48dGV4dCB4PSIyMDgiIHk9IjE3OC41IiB0ZXh0LWFuY2hvcj0iZW5kIj4tNjwvdGV4dD48dGV4dCB4PSIyMDgiIHk9IjE1MiIgdGV4dC1hbmNob3I9ImVuZCI+LTQ8L3RleHQ+PHRleHQgeD0iMjA4IiB5PSIxMjUuNSIgdGV4dC1hbmNob3I9ImVuZCI+LTI8L3RleHQ+PHRleHQgeD0iMjA4IiB5PSI3Mi41IiB0ZXh0LWFuY2hvcj0iZW5kIj4yPC90ZXh0Pjx0ZXh0IHg9IjIwOCIgeT0iNDYiIHRleHQtYW5jaG9yPSJlbmQiPjQ8L3RleHQ+PHRleHQgeD0iMjA4IiB5PSIxOS41IiB0ZXh0LWFuY2hvcj0iZW5kIj42PC90ZXh0PjwvZz48cG9seWxpbmUgZGF0YS1jdXJ2ZT0iMCIgcG9pbnRzPSI4Mi43NSwxNiA4NC40LDIyLjM2IDg2LjIsMjkuMTggODgsMzUuODggODkuOCw0Mi40MyA5MS42LDQ4Ljg2IDkzLjQsNTUuMTUgOTUuMiw2MS4zMiA5Nyw2Ny4zNCA5OC44LDczLjI0IDEwMC42LDc5IDEwMi40LDg0LjY0IDEwNC4yLDkwLjEzIDEwNiw5NS41IDEwNy44LDEwMC43MyAxMDkuNiwxMDUuODQgMTExLjQsMTEwLjggMTEzLjIsMTE1LjY0IDExNSwxMjAuMzQgMTE2LjgsMTI0LjkyIDExOC42LDEyOS4zNSAxMjAuNCwxMzMuNjYgMTIyLjIsMTM3LjgzIDEyNCwxNDEuODggMTI1LjgsMTQ1Ljc4IDEyNy42LDE0OS41NiAxMjkuNCwxNTMuMiAxMzEuMiwxNTYuNzIgMTMzLDE2MC4wOSAxMzQuOCwxNjMuMzQgMTM2LjYsMTY2LjQ1IDEzOC40LDE2OS40NCAxNDAuMiwxNzIuMjggMTQyLDE3NSAxNDMuOCwxNzcuNTggMTQ1LjYsMTgwLjA0IDE0Ny40LDE4Mi4zNSAxNDkuMiwxODQuNTQgMTUxLDE4Ni41OSAxNTIuOCwxODguNTIgMTU0LjYsMTkwLjMgMTU2LjQsMTkxLjk2IDE1OC4yLDE5My40OCAxNjAsMTk0Ljg4IDE2MS44LDE5Ni4xMyAxNjMuNiwxOTcuMjYgMTY1LjQsMTk4LjI1IDE2Ny4yLDE5OS4xMiAxNjksMTk5Ljg0IDE3MC44LDIwMC40NCAxNzIuNiwyMDAuOSAxNzQuNCwyMDEuMjQgMTc2LjIsMjAxLjQzIDE3OCwyMDEuNSAxNzkuOCwyMDEuNDMgMTgxLjYsMjAxLjI0IDE4My40LDIwMC45IDE4NS4yLDIwMC40NCAxODcsMTk5Ljg0IDE4OC44LDE5OS4xMiAxOTAuNiwxOTguMjUgMTkyLjQsMTk3LjI2IDE5NC4yLDE5Ni4xMyAxOTYsMTk0Ljg4IDE5Ny44LDE5My40OCAxOTkuNiwxOTEuOTYgMjAxLjQsMTkwLjMgMjAzLjIsMTg4LjUyIDIwNSwxODYuNTkgMjA2LjgsMTg0LjU0IDIwOC42LDE4Mi4zNSAyMTAuNCwxODAuMDQgMjEyLjIsMTc3LjU4IDIxNCwxNzUgMjE1LjgsMTcyLjI4IDIxNy42LDE2OS40MyAyMTkuNCwxNjYuNDUgMjIxLjIsMTYzLjM0IDIyMywxNjAuMDkgMjI0LjgsMTU2LjcxIDIyNi42LDE1My4yIDIyOC40LDE0OS41NiAyMzAuMiwxNDUuNzggMjMyLDE0MS44OCAyMzMuOCwxMzcuODMgMjM1LjYsMTMzLjY2IDIzNy40LDEyOS4zNSAyMzkuMiwxMjQuOTIgMjQxLDEyMC4zNCAyNDIuOCwxMTUuNjQgMjQ0LjYsMTEwLjggMjQ2LjQsMTA1LjgzIDI0OC4yLDEwMC43MyAyNTAsOTUuNSAyNTEuOCw5MC4xMyAyNTMuNiw4NC42MyAyNTUuNCw3OSAyNTcuMiw3My4yNCAyNTksNjcuMzQgMjYwLjgsNjEuMzEgMjYyLjYsNTUuMTUgMjY0LjQsNDguODYgMjY2LjIsNDIuNDMgMjY4LDM1Ljg4IDI2OS44LDI5LjE4IDI3MS42LDIyLjM2IDI3My4yNSwxNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNkU5REM4IiBzdHJva2Utd2lkdGg9IjIuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGNpcmNsZSBjeD0iMTc4IiBjeT0iMjAxLjUiIHI9IjQuNSIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjRjdGM0U3IiBzdHJva2Utd2lkdGg9IjEuNSIvPjx0ZXh0IHg9IjE4NiIgeT0iMjE3LjUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMEUwRTExIj52ZXJ0ZXggKC0xLCAtOCk8L3RleHQ+PC9zdmc+)
+7. A parabola has its turning point at $(-1, -8)$ and passes through the point $(1, 0)$. Which equation represents this parabola?
 
    - A) $y = 2(x + 1)^{2} - 8$
    - B) $y = 2(x - 1)^{2} - 8$
@@ -263,10 +260,7 @@ For the parabola $y = -4(x + 1)^{2} + 9$, what is the vertex and the axis of sym
 
 **Item 2**
 
-Which equation represents the parabola shown?
-
-<!-- figure: ar-3-7-q-graph -->
-![A downward-opening parabola on a coordinate plane. Its highest point is marked at (2, 5), and it crosses the y-axis at 1. Both arms fall away downward from the peak.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGRvd253YXJkLW9wZW5pbmcgcGFyYWJvbGEgb24gYSBjb29yZGluYXRlIHBsYW5lLiBJdHMgaGlnaGVzdCBwb2ludCBpcyBtYXJrZWQgYXQgKDIsIDUpLCBhbmQgaXQgY3Jvc3NlcyB0aGUgeS1heGlzIGF0IDEuIEJvdGggYXJtcyBmYWxsIGF3YXkgZG93bndhcmQgZnJvbSB0aGUgcGVhay4iPjxyZWN0IHdpZHRoPSIzNDAiIGhlaWdodD0iMjUwIiBmaWxsPSIjRjdGM0U3IiByeD0iMTAiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgeDE9IjI4IiB5MT0iMTYiIHgyPSIyOCIgeTI9IjIyOCIvPjxsaW5lIHgxPSI2NC43NSIgeTE9IjE2IiB4Mj0iNjQuNzUiIHkyPSIyMjgiLz48bGluZSB4MT0iMTAxLjUiIHkxPSIxNiIgeDI9IjEwMS41IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjEzOC4yNSIgeTE9IjE2IiB4Mj0iMTM4LjI1IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjE3NSIgeTE9IjE2IiB4Mj0iMTc1IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjIxMS43NSIgeTE9IjE2IiB4Mj0iMjExLjc1IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjI0OC41IiB5MT0iMTYiIHgyPSIyNDguNSIgeTI9IjIyOCIvPjxsaW5lIHgxPSIyODUuMjUiIHkxPSIxNiIgeDI9IjI4NS4yNSIgeTI9IjIyOCIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIyOCIvPjxsaW5lIHgxPSIyOCIgeTE9IjIyOCIgeDI9IjMyMiIgeTI9IjIyOCIvPjxsaW5lIHgxPSIyOCIgeTE9IjE4OS40NSIgeDI9IjMyMiIgeTI9IjE4OS40NSIvPjxsaW5lIHgxPSIyOCIgeTE9IjE1MC45MSIgeDI9IjMyMiIgeTI9IjE1MC45MSIvPjxsaW5lIHgxPSIyOCIgeTE9IjExMi4zNiIgeDI9IjMyMiIgeTI9IjExMi4zNiIvPjxsaW5lIHgxPSIyOCIgeTE9IjczLjgyIiB4Mj0iMzIyIiB5Mj0iNzMuODIiLz48bGluZSB4MT0iMjgiIHkxPSIzNS4yNyIgeDI9IjMyMiIgeTI9IjM1LjI3Ii8+PC9nPjxsaW5lIHgxPSIyOCIgeTE9IjE1MC45MSIgeDI9IjMyMiIgeTI9IjE1MC45MSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSIxMDEuNSIgeTE9IjIyOCIgeDI9IjEwMS41IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iMjgiIHk9IjE2My45MSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+LTI8L3RleHQ+PHRleHQgeD0iNjQuNzUiIHk9IjE2My45MSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+LTE8L3RleHQ+PHRleHQgeD0iMTM4LjI1IiB5PSIxNjMuOTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjE8L3RleHQ+PHRleHQgeD0iMTc1IiB5PSIxNjMuOTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI8L3RleHQ+PHRleHQgeD0iMjExLjc1IiB5PSIxNjMuOTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjM8L3RleHQ+PHRleHQgeD0iMjQ4LjUiIHk9IjE2My45MSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NDwvdGV4dD48dGV4dCB4PSIyODUuMjUiIHk9IjE2My45MSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NTwvdGV4dD48dGV4dCB4PSIzMjIiIHk9IjE2My45MSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NjwvdGV4dD48dGV4dCB4PSI5NS41IiB5PSIyMzEuNSIgdGV4dC1hbmNob3I9ImVuZCI+LTQ8L3RleHQ+PHRleHQgeD0iOTUuNSIgeT0iMTkyLjk1IiB0ZXh0LWFuY2hvcj0iZW5kIj4tMjwvdGV4dD48dGV4dCB4PSI5NS41IiB5PSIxMTUuODYiIHRleHQtYW5jaG9yPSJlbmQiPjI8L3RleHQ+PHRleHQgeD0iOTUuNSIgeT0iNzcuMzIiIHRleHQtYW5jaG9yPSJlbmQiPjQ8L3RleHQ+PHRleHQgeD0iOTUuNSIgeT0iMzguNzciIHRleHQtYW5jaG9yPSJlbmQiPjY8L3RleHQ+PC9nPjxwb2x5bGluZSBkYXRhLWN1cnZlPSIwIiBwb2ludHM9IjY0Ljc1LDIyOCA2NC43NSwyMjggNjYuNTksMjIyLjI3IDY4LjQzLDIxNi42MyA3MC4yNiwyMTEuMDkgNzIuMSwyMDUuNjQgNzMuOTQsMjAwLjMgNzUuNzgsMTk1LjA0IDc3LjYxLDE4OS44OSA3OS40NSwxODQuODMgODEuMjksMTc5Ljg3IDgzLjEzLDE3NSA4NC45NiwxNzAuMjMgODYuOCwxNjUuNTYgODguNjQsMTYwLjk4IDkwLjQ4LDE1Ni41IDkyLjMxLDE1Mi4xMSA5NC4xNSwxNDcuODMgOTUuOTksMTQzLjYzIDk3LjgzLDEzOS41NCA5OS42NiwxMzUuNTQgMTAxLjUsMTMxLjY0IDEwMy4zNCwxMjcuODMgMTA1LjE4LDEyNC4xMiAxMDcuMDEsMTIwLjUxIDEwOC44NSwxMTYuOTkgMTEwLjY5LDExMy41NyAxMTIuNTMsMTEwLjI0IDExNC4zNiwxMDcuMDIgMTE2LjIsMTAzLjg4IDExOC4wNCwxMDAuODUgMTE5Ljg4LDk3LjkxIDEyMS43MSw5NS4wNyAxMjMuNTUsOTIuMzIgMTI1LjM5LDg5LjY3IDEyNy4yMyw4Ny4xMiAxMjkuMDYsODQuNjYgMTMwLjksODIuMyAxMzIuNzQsODAuMDMgMTM0LjU4LDc3Ljg3IDEzNi40MSw3NS43OSAxMzguMjUsNzMuODIgMTQwLjA5LDcxLjk0IDE0MS45Myw3MC4xNiAxNDMuNzYsNjguNDcgMTQ1LjYsNjYuODggMTQ3LjQ0LDY1LjM5IDE0OS4yOCw2My45OSAxNTEuMTEsNjIuNjkgMTUyLjk1LDYxLjQ4IDE1NC43OSw2MC4zOCAxNTYuNjMsNTkuMzYgMTU4LjQ2LDU4LjQ1IDE2MC4zLDU3LjYzIDE2Mi4xNCw1Ni45MSAxNjMuOTgsNTYuMjggMTY1LjgxLDU1Ljc1IDE2Ny42NSw1NS4zMiAxNjkuNDksNTQuOTggMTcxLjMzLDU0Ljc0IDE3My4xNiw1NC41OSAxNzUsNTQuNTUgMTc2Ljg0LDU0LjU5IDE3OC42OCw1NC43NCAxODAuNTEsNTQuOTggMTgyLjM1LDU1LjMyIDE4NC4xOSw1NS43NSAxODYuMDMsNTYuMjggMTg3Ljg2LDU2LjkxIDE4OS43LDU3LjYzIDE5MS41NCw1OC40NSAxOTMuMzgsNTkuMzYgMTk1LjIxLDYwLjM4IDE5Ny4wNSw2MS40OCAxOTguODksNjIuNjkgMjAwLjczLDYzLjk5IDIwMi41Niw2NS4zOSAyMDQuNCw2Ni44OCAyMDYuMjQsNjguNDcgMjA4LjA4LDcwLjE2IDIwOS45MSw3MS45NCAyMTEuNzUsNzMuODIgMjEzLjU5LDc1Ljc5IDIxNS40Myw3Ny44NyAyMTcuMjYsODAuMDMgMjE5LjEsODIuMyAyMjAuOTQsODQuNjYgMjIyLjc4LDg3LjEyIDIyNC42MSw4OS42NyAyMjYuNDUsOTIuMzIgMjI4LjI5LDk1LjA3IDIzMC4xMyw5Ny45MSAyMzEuOTYsMTAwLjg1IDIzMy44LDEwMy44OCAyMzUuNjQsMTA3LjAyIDIzNy40OCwxMTAuMjQgMjM5LjMxLDExMy41NyAyNDEuMTUsMTE2Ljk5IDI0Mi45OSwxMjAuNTEgMjQ0LjgzLDEyNC4xMiAyNDYuNjYsMTI3LjgzIDI0OC41LDEzMS42NCAyNTAuMzQsMTM1LjU0IDI1Mi4xOCwxMzkuNTQgMjU0LjAxLDE0My42MyAyNTUuODUsMTQ3LjgzIDI1Ny42OSwxNTIuMTEgMjU5LjUzLDE1Ni41IDI2MS4zNiwxNjAuOTggMjYzLjIsMTY1LjU2IDI2NS4wNCwxNzAuMjMgMjY2Ljg4LDE3NSAyNjguNzEsMTc5Ljg3IDI3MC41NSwxODQuODMgMjcyLjM5LDE4OS44OSAyNzQuMjMsMTk1LjA0IDI3Ni4wNiwyMDAuMyAyNzcuOSwyMDUuNjQgMjc5Ljc0LDIxMS4wOSAyODEuNTgsMjE2LjYzIDI4My40MSwyMjIuMjcgMjg1LjI1LDIyOCAyODUuMjUsMjI4IiBmaWxsPSJub25lIiBzdHJva2U9IiM2RTlEQzgiIHN0cm9rZS13aWR0aD0iMi42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48Y2lyY2xlIGN4PSIxNzUiIGN5PSI1NC41NSIgcj0iNC41IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiNGN0YzRTciIHN0cm9rZS13aWR0aD0iMS41Ii8+PHRleHQgeD0iMTgzIiB5PSI0Ni41NSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMwRTBFMTEiPnZlcnRleCAoMiwgNSk8L3RleHQ+PC9zdmc+)
+A parabola opens downward, has its highest point at $(2, 5)$, and crosses the y-axis at $1$. Which equation represents this parabola?
 
 - A) $y = -(x + 2)^{2} + 5$
 - B) $y = -(x - 2)^{2} + 5$
@@ -475,21 +469,21 @@ Step 5: Check. $x^{2} - 8x + 16 - 6 = x^{2} - 8x + 10$. Matches.
 
 ---
 
-**7. Which equation represents the parabola shown?**
+**7. A parabola has its turning point at $(-1, -8)$ and passes through the point $(1, 0)$. Which equation represents this parabola?**
 
-Step 1: Read the turning point off the graph. It is marked at $(-1, -8)$, so $h = -1$ and $k = -8$.
+Step 1: The turning point is $(-1, -8)$, so $h = -1$ and $k = -8$.
 
 Step 2: $h = -1$ means the bracket reads $(x + 1)$, and $k = -8$ means the tail reads $-8$.
 
-Step 3: Check the width against the graph. The parabola crosses the x-axis at $-3$ and $1$. Substituting $x = 1$ into $y = 2(x + 1)^{2} - 8$ gives $2(4) - 8 = 0$. Correct.
+Step 3: Use the given point to find $a$. Substituting $(1, 0)$ gives $a(1 + 1)^{2} - 8 = 0$, so $4a = 8$ and $a = 2$.
 
 **Answer: A** ($y = 2(x + 1)^{2} - 8$)
 
 ```json
 "distractor_logic": {
-  "A": "Correct: the turning point (-1, -8) gives the bracket (x + 1) and the tail -8, and substituting the crossing at x = 1 gives 2(4) - 8 = 0 as the graph shows",
-  "B": "Student makes misconception: transformation_shift_direction_reversed (writes (x - 1), putting the turning point at x = 1 when the graph shows it at x = -1)",
-  "C": "Student makes misconception: transformation_shift_direction_reversed (reverses the vertical shift, putting the turning point at (-1, 8) above the x-axis when the graph shows it below)",
+  "A": "Correct: the turning point (-1, -8) gives the bracket (x + 1) and the tail -8, and substituting the given point (1, 0) gives 4a - 8 = 0, so a = 2",
+  "B": "Student makes misconception: transformation_shift_direction_reversed (writes (x - 1), putting the turning point at x = 1 when it belongs at x = -1)",
+  "C": "Student makes misconception: transformation_shift_direction_reversed (reverses the vertical shift, putting the turning point at (-1, 8) rather than (-1, -8))",
   "D": "Student makes misconception: coordinates_swapped (reads the turning point as (-8, -1) rather than (-1, -8), then builds the equation from the swapped pair)"
 },
 "misconception_tag": {
@@ -633,22 +627,22 @@ Step 3: The vertex is $(-1, 9)$ and the axis of symmetry is $x = -1$.
 
 ---
 
-**Item 2: Which equation represents the parabola shown?**
+**Item 2: A parabola opens downward, has its highest point at $(2, 5)$, and crosses the y-axis at $1$. Which equation represents this parabola?**
 
-Step 1: Read the turning point off the graph. It is marked at $(2, 5)$, so $h = 2$ and $k = 5$.
+Step 1: The highest point is $(2, 5)$, so $h = 2$ and $k = 5$.
 
 Step 2: The parabola opens downward, so the leading coefficient is negative.
 
-Step 3: Check against the y-intercept. At $x = 0$: $-(0 - 2)^{2} + 5 = -4 + 5 = 1$, matching the crossing shown at $1$.
+Step 3: Check against the y-intercept. At $x = 0$: $-(0 - 2)^{2} + 5 = -4 + 5 = 1$, matching the stated y-intercept of $1$.
 
 **Answer: B** ($y = -(x - 2)^{2} + 5$)
 
 ```json
 "distractor_logic": {
-  "A": "Student makes misconception: transformation_shift_direction_reversed (writes (x + 2), putting the turning point at x = -2 when the graph shows it at x = 2)",
-  "B": "Correct: the turning point (2, 5) gives the bracket (x - 2) and the tail +5, and the leading minus opens the parabola downward as shown",
+  "A": "Student makes misconception: transformation_shift_direction_reversed (writes (x + 2), putting the turning point at x = -2 when it belongs at x = 2)",
+  "B": "Correct: the turning point (2, 5) gives the bracket (x - 2) and the tail +5, and the leading minus opens the parabola downward",
   "C": "Student makes misconception: coordinates_swapped (reads the turning point as (5, 2) rather than (2, 5) and builds the equation from the swapped pair)",
-  "D": "Student makes misconception: transformation_shift_direction_reversed (reverses the vertical shift, putting the turning point at (2, -5) below the x-axis when the graph shows it above)"
+  "D": "Student makes misconception: transformation_shift_direction_reversed (reverses the vertical shift, putting the turning point at (2, -5) rather than (2, 5))"
 },
 "misconception_tag": {
   "A": "transformation_shift_direction_reversed",
