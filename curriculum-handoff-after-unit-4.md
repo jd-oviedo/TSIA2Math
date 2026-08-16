@@ -8,7 +8,10 @@ production or the repo at the time of writing rather than recalled.
 
 ## 1. Where the course stands
 
-**83 of 97 topics are live.** Units 0 through 4 are complete and gapless.
+**86 of 97 topics are live.** Units 0 through 4 are complete and gapless, and
+Unit 5 Batch A added three more. **Section 5 carries the current state; this
+section records the position at the close of Unit 4** and is left as written so
+the two can be compared.
 
 | Unit | Topics live | Sequence | Gaps |
 |---|---|---|---|
@@ -57,15 +60,46 @@ content was fine; the repo simply did not describe production. See section 4.
 
 ## 2. Open tooling issues
 
-Four, all found during content work rather than by any check, and all the same
-shape: a checked-in artefact that stopped matching the thing it describes. They
-were deliberately kept out of the content batches and queued for one sitting.
+Eight, all found during content work rather than by any check. The first four
+share one shape, a checked-in artefact that stopped matching the thing it
+describes; #102 through #105 are product questions rather than defects. All were
+deliberately kept out of the content batches.
 
 **Status, measured 2026-08-16.** #84 and #88 are **done**. **#86 is open.**
+
 **#101 is open** and is new: ten live topics use `topic_specific` slugs assigned
 to other topics, fourteen uses in total, none of them in Unit 5. Found while
 establishing a `check_topic.py` baseline during Unit 5 Phase 1, filed rather than
 fixed, and the full table is in the issue.
+
+**#102 is open**, and is a product question rather than a tooling defect. Every
+topic carries 14 worked solutions in Part 4, and no student can reach any of
+them: `answer_key` is not a column on `curriculum_topics_public`, `loadTopic`
+selects it only when `requireTeacher()` passes, and both page components sit
+behind a `teacher` gate. Across 83 live topics that is roughly 1,162 worked
+solutions written for a teacher-only surface. The code is doing exactly what its
+comments say it does; the question is whether that is still the intent. **Relevant
+to every authoring round**, because each new topic adds fourteen more.
+
+**#103 is open**, product backlog, and pairs with #102. A self-serve student with
+no class enrollment who exhausts GUMU's turn cap of 3 reaches no one:
+`resolveFlagged` notifies the enrolling teacher only, and returns early when
+there is no enrollment. The correct answer stays reachable through the escape
+hatch; the worked solution does not, which is the half #102 covers.
+
+**#104 is open**, product backlog: slugs carried at only one or two uses may not
+produce usable teacher-dashboard signal, and 64 of 83 live topics carry at least
+one. Records the full slug-use distribution so nobody re-derives it, and the
+finding that concentration tracks slug-set family structure rather than authoring
+care.
+
+**#105 is open**, product backlog: 195 rationale-arithmetic failures across 39
+legacy topics with all unit-5 topics clean. Roughly 40 were examined by hand and
+every one was a parser limitation rather than a real error, but the remaining 155
+have not been read, so **whether any of them is bad arithmetic a teacher is
+reading today is unresolved**. A 40-of-195 uniform sample supports that reading
+without establishing it. Scoped as its own pass, deliberately not run inside a
+content batch.
 
 An earlier revision of this section listed #88 as open while section 3 described
 its retirement as already executed, quoting the tool's output. Both halves were
@@ -276,6 +310,26 @@ defects came in kinds that only one pass each can see:
 do not carry a remembered number forward.** A stale count caused one false
 reconciliation during this unit, and a spec count was recorded one low for several
 rounds before being caught.
+
+### Arithmetic claims are written in digits, not words
+
+In rationale prose and in worked solutions, write a computation as a computation:
+`48 - 45 = 3`, not "forty-eight minus forty-five gives three", and not "puts the
+3 red sections over all 8 sections for three eighths".
+
+This is a convention rather than a checker because the checker cannot be one.
+`scripts/check_rationale_arithmetic.py` asserts coverage over claim-**shaped**
+strings: it can tell you when something that looks like arithmetic failed to
+parse, and it does. It cannot see a claim that never looks like arithmetic,
+because there is nothing to count. The obvious guard, "any rationale with two or
+more numbers must yield a verified claim", false-fires on legitimate
+arithmetic-free rationales such as *"finds the working interval 85 to 100 and
+then reports its upper end, 100"*.
+
+The cost of the convention is nil and it fails visibly in review. `PR.2.1` and
+`PR.3.1` predate it and write their rationales in words, which is why both report
+`distractor_logic 0/0` claims while containing real reasoning about numbers.
+Nothing is wrong with them; they are simply unverifiable by machine.
 
 ### Currency inside JSON string fields
 
@@ -605,6 +659,51 @@ anything looks.
   sequence 0, which sorts it to the front of its unit and breaks the ordering with
   no error at any layer. Now gated at commit time in `check_topic.py`.
 
+- **A fault injection that silently misses still prints a clean pass.** Proving
+  the fixed `CURRENCY` rule fires, a `str.replace` targeted choice `"B"` on an
+  item whose key was `"D"`. The target string did not exist, the replace was a
+  no-op, the check ran against unmodified content and reported `PASS`, and that
+  would have been filed as evidence the rule works. **Every fail-proof must
+  assert the fault actually landed before asserting the check fires.** A proof
+  that cannot confirm its own injection proves nothing, and it fails in the
+  direction of false confidence. `assert old in s` is the whole fix.
+
+  **And assert it landed where the check actually reads.** Proving the coverage
+  assertion above, a fault was injected into `84 - 60 = 24` in a worked
+  solution. The string existed, the assertion passed, and the check still
+  reported clean, because pass 3 only reads `distractor_logic` inside json
+  fences and never looks at worked-solution prose. Presence in the file is not
+  presence in the scanned region. The corrected proof asserts both.
+
+  **And re-run the proof after every edit to the checker, not only after the
+  first build.** This is the sharpest instance of the class, and it inverts the
+  others: here the *fix* silently shrank the *checker's own coverage*. Extending
+  pass 3 to read worked solutions required excluding function application, and
+  the stripper used an unbounded `[^()]*`. That also matched the rationale's own
+  parenthetical, since `weights_swapped (attaches the 3 to the 60 ...)` reads as
+  `d(...)`, so it deleted entire rationale bodies. `PR.2.2` fell from 85 checked
+  claims to 53 and still exited zero, reporting "100% coverage" over the subset
+  that survived. Reading the code did not catch it. Re-running the fault proof
+  did, in seconds, because the injected fault stopped firing.
+
+  A checker edit is a change to what the checker can see. The two numbers that
+  detect it are the **coverage count** and **a fault proof that still fires**;
+  re-run both on every edit. A clean percentage over a shrinking denominator
+  looks exactly like success.
+
+- **A check that processes a subset of its input and exits zero.** This is the
+  general form the three above are instances of, and it is worth stating on its
+  own. Pass 3 of the distractor ledger was a list of narrow regexes, one per
+  phrasing the topic being written happened to use. On `PR.2.3` it parsed 47 of
+  56 claims, skipping the topic's two dominant forms, and reported "all claims
+  recompute correctly". Extending it by hand only moved the blind spot to the
+  next unseen phrasing; it was extended twice that way. Re-run against `PR.2.2`
+  afterwards, it turned out to have checked 82 of 85 claims there too.
+  **Coverage must be asserted, not inferred from a clean exit.**
+  `scripts/check_rationale_arithmetic.py` now counts claim-shaped strings
+  encountered, counts those it parsed, prints the ratio, and fails when the two
+  differ. Both topics measure 100%.
+
 **The tell is a default that is also a legal value.** `0` is a legal sequence;
 red text is a legal render. Where a default is indistinguishable from a real
 value, absence of the input cannot be detected downstream, so it has to be caught
@@ -645,6 +744,93 @@ the control disagreeing, not by reading the code.
 
 ---
 
+## 5. After Unit 5 Batch A
+
+**86 of 97 topics live.** Batch A added `PR.2.2` (seq 5), `PR.2.3` (seq 6) and
+`PR.3.2` (seq 10), so Unit 5 now holds 4, 5, 6, 9, 10, 14 and eleven topics
+remain. Batching from here: **Batch B** `PR.3.3`, `PR.3.4`, `PR.3.5`; then **PR 0**
+(bar and box-plot figure types, content-free); then **Batch C** `PR.1.3`, `PR.2.4`,
+`PR.2.5`; then **Batch D** `PR.1.4`, `PR.1.5`, `PR.4.2`, `PR.4.3`, `PR.4.4`.
+
+`PR.4.2` is **figure-free by decision**, not by omission: `PR.4.1` at seq 14 tells
+the student in prose that "this lesson has no pictures in it... that is exactly how
+these items are worded on the test", and seq 15 will not contradict it.
+
+### The four contract numbers, measured 2026-08-16
+
+| | |
+|---|---|
+| Lint | `6 errors, 10 warnings`, attribution generated, see below |
+| Figure harness | `330 assertions / 54 specs / 0 failed` |
+| `check_topic.py` course-wide | **56 failures across 40 of 86 topics** |
+| Rationale arithmetic | **coverage asserted, not assumed**; every new topic must reach 100% |
+
+The last two changed this batch and both need reading carefully.
+
+**`check_topic.py` is not a course-wide clean gate and never was.** It fell from 73
+failures to 56 without a single content edit: 14 were `CURRENCY` false positives
+firing on math spans in `QR.3.5` templates, and 3 were `AR.3.1`'s equal-valued GCF
+pairs, reviewed against the four-condition test and allowlisted. The remaining 56
+are pre-existing, mostly `TALLY` and `DUPLICATE VALUES` in unit-0 and unit-1 topics
+that predate the rules. **The contract is per-topic: a unit-5 file must report
+0 failures, not "no new failures".** All three Batch A topics do.
+
+**Pass 3 now asserts its own coverage.** See the next section; the number that
+matters is not "no failures" but "encountered equals parsed".
+
+### `scripts/check_rationale_arithmetic.py`
+
+Replaces the old regex-list pass 3, which reported "all claims recompute correctly"
+while parsing 47 of 56 claims on `PR.2.3`.
+
+**What it scans:** two regions, reported separately. `distractor_logic` prose inside
+json fences, **and** everything outside those fences, which is the guided-notes
+worked examples and the Part 4 worked solutions. The second region was added
+because the original read only the fences: on `PR.2.3` that left 44 of 100
+claim-shaped strings unchecked, and **it was the half a student reads.** Rationale
+prose is authoring metadata; a worked solution is the lesson.
+
+**What it excludes, and why:** spans containing `...`, `\approx` or `\overline`,
+which are rounded or repeating decimals it does not model. They are **counted and
+printed** as an explicit exclusion, never silently dropped, because a checker that
+quietly narrows its own input is the defect this file exists to prevent.
+
+**What it cannot see:** a claim written entirely in words. There is nothing
+claim-shaped to count, so nothing to fail on. That is what the digits convention
+below is for.
+
+**Re-run its fault proofs and its coverage number after every edit to it.** Not
+only after the first build. See the entry in section 4: a fix to the function
+application stripper deleted whole rationale bodies, dropped `PR.2.2` from 85
+checked claims to 53, and still exited zero reporting 100% coverage over the
+subset that survived.
+
+Measured after Batch A: `PR.2.2` 181 claims, `PR.2.3` 138, `PR.3.2` 108, all at
+100% coverage with zero failures. Course-wide the picture is different and is
+logged as issue #105 rather than fixed.
+
+### Predict the family structure, not the set size
+
+Before authoring, state how many distinct **error families** the topic's
+pre-assigned slug set implies, and whether any single error applies to every item.
+Set size alone does not predict anything: `PR.2.3` and `PR.3.2` both have six-slug
+sets and landed 10 points apart on concentration.
+
+- `PR.2.3` splits into a **mean family** and a **range family**, each covering about
+  half the items, with no error available on all fourteen. 71%.
+- `PR.3.2` is a **near-single family**: `reports_event_not_complement` applies to
+  every item that asks for a complement. 81%, with that slug at 14 of 42.
+
+A ubiquitous slug is a fact about the topic, not a flaw in the authoring, and
+suppressing it would mean inventing items that avoid the topic's most natural
+error. **Concentration is not a quality metric**; see #104 for the measurement
+across all 83 live topics that settles this.
+
+Say the prediction out loud beforehand. Small set and concentrated is expected;
+large set and concentrated is worth a look.
+
+---
+
 ## Where things live
 
 | | |
@@ -653,6 +839,8 @@ the control disagreeing, not by reading the code.
 | Upload | `python3 curriculum/migrations/upload_curriculum.py --course tsia2-math` |
 | Figures | `curriculum/figures/*.json`, built by `scripts/make_figure.mjs` |
 | Per-topic checks | `scripts/check_topic.py` |
+| Rationale + worked-solution arithmetic | `scripts/check_rationale_arithmetic.py` |
+| KaTeX render (red literal source) | `scripts/check_katex_render.mjs` |
 | Render checks | `scripts/verify_topic_render.mjs` |
 | Fixture parity | `scripts/verify_fixture_parity.mjs` |
 | Lint | `scripts/lint_curriculum_source.py` |
