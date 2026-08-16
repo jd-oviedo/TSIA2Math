@@ -299,6 +299,45 @@ trap above along with it. Not urgent, and not done.
 Also do not "fix" that 42501 by granting anon on `sessions`. It is the check
 working.
 
+### Never regenerate `question_bank.json` from `data/items/`
+
+**`scripts/build_bank.py` writes `public/data/question_bank.json`, and running it
+to pick up a change destroys the served bank's math rendering.** It is the
+obvious tool, it has the obvious name, it exits zero, and the damage is invisible
+in review.
+
+`public/data/question_bank.json` is **not** a faithful export of `data/items/`.
+The bank carries LaTeX-wrapping migrations (`$x^{2}$`, `$\frac{1}{2}$`,
+`$\sqrt{120}$`) that were applied to it directly and never backported to
+`data/items/`, which has held bare Unicode since its first commit. `MathText.tsx`
+only typesets content inside `$...$` that contains real LaTeX syntax, so
+regenerating from source silently downgrades every migrated expression from
+typeset math to literal text. Nothing fails. The bank just gets worse.
+
+So the two sides are authoritative for different things:
+
+| | authoritative for |
+|---|---|
+| `public/data/question_bank.json` | the question **text** |
+| `data/items/**/*.json` | `misconception_tag` |
+
+**The correct tool for a tag change is `scripts/merge_misconception_tags.py`**,
+which merges that one field and nothing else. It verifies that both sides agree
+on what the option letters mean before writing, because a tag maps letters to
+slugs and a merge is only sound if the letters match, and it fails without
+writing if any check does not pass. Used in the #88 retirement: it reported
+`items given a tag: 1, items untouched: 1115` and
+`post-merge verification: OK, only misconception_tag differs`.
+
+This was nearly got wrong during #88. The written plan said "rebuild
+`public/data/question_bank.json` to match", which is the destructive path,
+and it survived review because it sounds like ordinary hygiene.
+
+Two related artefacts, neither load-bearing and both worth knowing:
+`data/build/question_bank.json` is tracked, dates to an old commit, contains
+neither of #88's slugs and is referenced by nothing. And production `questions`
+holds 1124 rows against the bank's 1116. Both logged in issue #94.
+
 ### The upload requires a human to run it
 
 `.claude/settings.json` carries a deny rule plus a `PreToolUse` hook blocking any

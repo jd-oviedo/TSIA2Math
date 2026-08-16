@@ -9,11 +9,11 @@ Status: `approved_phase3_complete`
 
 | | count |
 |---|---:|
-| total slugs | 481 |
+| total slugs | 480 |
 | cross cutting | 88 |
 | cross cutting from curriculum | 40 |
 | cross cutting new | 48 |
-| topic specific | 393 |
+| topic specific | 392 |
 | proposed pending decision | 0 |
 | topics covered | 97 |
 
@@ -34,6 +34,7 @@ conclude they are still taggable.
 
 | slug | superseded by | items retagged | why |
 |---|---|---:|---|
+| `cancellation_assumed_to_restore_domain` | `restriction_read_from_simplified_form` | 1 | Named the same student error as restriction_read_from_simplified_form from the other side. A student who cancels (x - 3) and then declares x = 3 legal has committed both, and no item can separate them, so the pair split one class-wide signal into two weaker ones on the teacher dashboard misconception grid. The survivor is the more precise of the two definitions and sits on AR.4.5, where the cancelling actually happens and where the curriculum already carries three tagged items. See issue #88. |
 | `conditions_on_wrong_group` | `whole_population_as_denominator`, `conditional_reversed` | 0 | The two survivors are the clearer names: they say which wrong group was used (the whole population) or that the conditional was inverted. The umbrella name said neither. It carried 0 tags. |
 | `ignores_without_replacement` | `replacement_status_wrong`, `total_not_reduced_between_draws` | 0 | The survivors separate treating the draws as the wrong kind from reducing the favourable count but not the total -- a distinction the umbrella name lost. It carried 0 tags. |
 
@@ -177,8 +178,7 @@ conclude they are still taggable.
 - `family_matched_by_surface_growth` — Matches a function to a family from its growth appearance without computing differences or ratios.
 - `zero_second_differences_read_as_quadratic` — Reads constant zero second differences as quadratic rather than linear.
 
-### AR.1.5 — 6 topic-specific
-- `cancellation_assumed_to_restore_domain` — Reads the domain from the simplified form, restoring a value the cancelled factor excluded.
+### AR.1.5 — 5 topic-specific
 - `constant_read_as_excluded_value` — Reads a constant term directly as the excluded value without solving.
 - `contextual_condition_as_domain_restriction` — Excludes an input for a contextual reason rather than because the function is undefined.
 - `denominator_zero_rule_not_applied` — Concludes a rational function is defined everywhere, ignoring the zero-denominator restriction.
@@ -293,7 +293,7 @@ conclude they are still taggable.
 ### AR.4.5 — 4 topic-specific
 - `numerator_zeros_confused_with_undefined` — Sets the numerator to zero to find where the expression is undefined.
 - `over_cancellation` — Cancels a single factor against more occurrences than the expression contains.
-- `restriction_read_from_simplified_form` — Reads the domain restriction from the simplified expression, missing the cancelled factor's exclusion.
+- `restriction_read_from_simplified_form` — Reads the domain restriction from the simplified expression, missing the cancelled factor's exclusion.  _Survivor of the #88 retirement: cancellation_assumed_to_restore_domain named the same student error from the other side and was retired into this slug. Topics stays AR.4.5 only. The AR.1.5 CAT item now tagged against it (AR_A_010.B) is recorded in cat_topics_observed, which is computed from the bank; adding AR.1.5 here would assert a curriculum pre-assignment that no AR.1.5 item uses._
 - `term_level_cancellation` — Cancels a term from numerator and denominator without factoring first.
 
 ### AR.4.6 — 4 topic-specific

@@ -270,7 +270,6 @@ TAIL = {
 "AR.1.5":[("denominator_zero_rule_not_applied","Concludes a rational function is defined everywhere, ignoring the zero-denominator restriction.",""),
  ("constant_read_as_excluded_value","Reads a constant term directly as the excluded value without solving.",""),
  ("zero_numerator_treated_as_undefined","Treats a zero numerator as producing an undefined output.",""),
- ("cancellation_assumed_to_restore_domain","Reads the domain from the simplified form, restoring a value the cancelled factor excluded.",""),
  ("radical_endpoint_strictness_error","Excludes the endpoint of a radical domain where the expression is in fact defined.",""),
  ("contextual_condition_as_domain_restriction","Excludes an input for a contextual reason rather than because the function is undefined.","")],
 "AR.2.1":[("coefficient_subtracted_not_divided","Subtracts the coefficient instead of dividing by it.",""),
@@ -341,7 +340,7 @@ TAIL = {
  ("inner_exponent_raised_not_multiplied","Raises the inner exponent to the outer power instead of multiplying them.","")],
 "AR.4.5":[("term_level_cancellation","Cancels a term from numerator and denominator without factoring first.",""),
  ("over_cancellation","Cancels a single factor against more occurrences than the expression contains.",""),
- ("restriction_read_from_simplified_form","Reads the domain restriction from the simplified expression, missing the cancelled factor's exclusion.",""),
+ ("restriction_read_from_simplified_form","Reads the domain restriction from the simplified expression, missing the cancelled factor's exclusion.","Survivor of the #88 retirement: cancellation_assumed_to_restore_domain named the same student error from the other side and was retired into this slug. Topics stays AR.4.5 only. The AR.1.5 CAT item now tagged against it (AR_A_010.B) is recorded in cat_topics_observed, which is computed from the bank; adding AR.1.5 here would assert a curriculum pre-assignment that no AR.1.5 item uses."),
  ("numerator_zeros_confused_with_undefined","Sets the numerator to zero to find where the expression is undefined.","")],
 "AR.4.6":[("denominators_combined_with_numerators","Adds or subtracts the denominators along with the numerators.",""),
  ("numerators_not_rescaled","Uses the correct common denominator but does not rescale the numerators.",""),
@@ -568,6 +567,11 @@ CURRICULUM_TOPICS = {}
 # topic-specific slugs that already carried every tag, so retiring them
 # retagged nothing -- they were never applied to an item.
 RETIRED = [
+ {"slug":"cancellation_assumed_to_restore_domain",
+  "definition":"Reads the domain from the simplified form, restoring a value the cancelled factor excluded.",
+  "superseded_by":["restriction_read_from_simplified_form"],
+  "reason":"Named the same student error as restriction_read_from_simplified_form from the other side. A student who cancels (x - 3) and then declares x = 3 legal has committed both, and no item can separate them, so the pair split one class-wide signal into two weaker ones on the teacher dashboard misconception grid. The survivor is the more precise of the two definitions and sits on AR.4.5, where the cancelling actually happens and where the curriculum already carries three tagged items. See issue #88.",
+  "items_retagged":1},
  {"slug":"conditions_on_wrong_group",
   "definition":"Uses the wrong denominator group when computing a conditional probability.",
   "superseded_by":["whole_population_as_denominator","conditional_reversed"],

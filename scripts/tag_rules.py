@@ -418,7 +418,7 @@ TOPIC_RULES.update({
  (r"denominator-cannot-be-zero|defined for all real numbers|'x cannot be zero'|default rule|denominator restriction|division by x", "denominator_zero_rule_not_applied"),
  (r"reads the constant term|treats the constant term|coefficient of the middle term|takes the excluded value to be", "constant_read_as_excluded_value"),
  (r"numerator .{0,30}(zero|equal to zero)|zero numerator|confusing an undefined output|zero output", "zero_numerator_treated_as_undefined"),
- (r"cancels the common factor|cancellation does not restore|simplified form", "cancellation_assumed_to_restore_domain"),
+ (r"cancels the common factor|cancellation does not restore|simplified form", "restriction_read_from_simplified_form"),
  (r"strict inequality|endpoint x = \S+ is excluded|incorrectly excluding", "radical_endpoint_strictness_error"),
  (r"profitability|contextual", "contextual_condition_as_domain_restriction"),
  (r"sign error|drops the negative sign|misreads the sign of the constant", "sign_error_on_constant"),
