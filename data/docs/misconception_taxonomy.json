@@ -11,11 +11,11 @@
     "cat_bank": "data/items/**/*.json (distractor_logic, correct-answer slot excluded)"
   },
   "counts": {
-    "total_slugs": 475,
-    "cross_cutting": 85,
+    "total_slugs": 481,
+    "cross_cutting": 88,
     "cross_cutting_from_curriculum": 40,
-    "cross_cutting_new": 45,
-    "topic_specific": 390,
+    "cross_cutting_new": 48,
+    "topic_specific": 393,
     "proposed_pending_decision": 0,
     "topics_covered": 97
   },

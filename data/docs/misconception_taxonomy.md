@@ -7,11 +7,11 @@ Status: `approved_phase3_complete`
 
 | | count |
 |---|---:|
-| total slugs | 475 |
-| cross cutting | 85 |
+| total slugs | 481 |
+| cross cutting | 88 |
 | cross cutting from curriculum | 40 |
-| cross cutting new | 45 |
-| topic specific | 390 |
+| cross cutting new | 48 |
+| topic specific | 393 |
 | proposed pending decision | 0 |
 | topics covered | 97 |
 
@@ -97,27 +97,29 @@ conclude they are still taggable.
 | `absolute_change_as_percent` | Reports the raw difference as if it were the percent change. | PR QR | 2 |  |
 | `adds_exponents_wrongly` | Adds exponents where the applicable rule requires multiplying or subtracting them. | AR | 4 | Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review so the name covers every displaced rule, not just the power rule. |
 | `adds_probabilities_instead_of_multiplying` | Adds the stage probabilities of a compound event instead of multiplying them. | PR | 2 |  |
+| `applies_fractional_factor_twice` | Applies the one-half or one-third factor a second time, scaling down a result that already included it. | GR | 2 | Split out 2026-08-13 from an over-broad tagging rule; see content-fixes-needed.md. |
 | `binomial_square_middle_term_omitted` | Expands a squared binomial as the sum of the squared terms, omitting the middle term. | AR GR | 4 | MERGED in Phase 2 from three separately-drafted topic slugs (AR.3.7, AR.4.2, AR.4.9) plus GR.2.7. |
 | `causation_from_association` | Reads an observed association as an established causal claim, in either direction. | PR | 1 | Single topic today; classified cross-cutting per Phase 1 decision 3 so future inference items need no re-touch. |
 | `center_spread_confusion` | Uses a measure of centre to judge spread, or a measure of spread to judge centre. | PR | 3 |  |
 | `circumference_area_confusion` | Uses a circle's area formula where circumference was required, or vice versa. | GR | 3 | Kept separate per decision 2. |
 | `coordinates_swapped` | Writes an ordered pair with its coordinates exchanged. | AR GR | 5 |  |
-| `divides_instead_of_multiplies` | Divides where the relationship requires multiplication. | AR GR QR | 8 |  |
+| `divides_instead_of_multiplies` | Divides where the relationship requires multiplication. | AR GR QR | 9 |  |
 | `double_negative_mishandled` | Treats subtracting a negative as subtraction, or a double negation as a single one. | AR QR | 3 |  |
 | `drops_grouping_symbols` | Ignores parentheses as a grouping symbol entirely. | QR | 3 |  |
 | `extrapolates_beyond_data` | Applies a model outside the range the data support. | PR | 1 | Single topic today; cross-cutting per decision 3. |
 | `false_radical_distribution` | Applies a false distributive rule to radicals, or combines radicands where the operation does not permit it. | AR QR | 4 |  |
 | `forgets_square_root` | Computes the squared or cubed quantity correctly and reports it without taking the root. | AR GR | 7 | Covers square and cube roots. |
+| `fractional_factor_applied_to_one_term_only` | Applies the fractional factor to one term of a sum and leaves the remaining term unscaled. | GR | 1 | Split out 2026-08-13 from an over-broad tagging rule; see content-fixes-needed.md. |
 | `inequality_direction_not_flipped` | Fails to reverse the inequality when multiplying or dividing by a negative, or flips it without cause. | AR QR | 4 |  |
 | `inverts_conversion_direction` | Multiplies where the conversion or scale factor requires division, or vice versa. | AR GR QR | 9 |  |
 | `inverts_trig_ratio` | Inverts a trigonometric ratio, placing the wrong side in the numerator. | GR | 2 | Two topics only, but 12 instances and a distinct remediation. |
 | `misreads_direction_of_change` | Computes a magnitude correctly but labels the direction backward. | PR QR | 5 |  |
 | `multiplies_exponents_wrongly` | Multiplies exponents where the applicable rule requires adding or subtracting them. | AR | 3 | Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review. |
-| `multiplies_instead_of_divides` | Multiplies two quantities where the relationship requires division. | AR GR QR | 9 |  |
+| `multiplies_instead_of_divides` | Multiplies two quantities where the relationship requires division. | AR GR QR | 11 |  |
 | `new_over_original_as_change` | Reports the new value as a percent of the original instead of the percent change. | PR QR | 3 |  |
 | `off_by_one_count` | Miscounts a tally by one -- loses count, double-counts, or stops one short. | GR PR QR | 6 |  |
 | `omits_constant_term` | Computes the variable or rate portion correctly and omits the fixed component (flat fee, intercept, starting value). | AR GR PR QR | 9 | Boundary with answers_intermediate_value and omits_variable_term is fixed by the approved intermediate_vs_omission rule. |
-| `omits_fractional_factor` | Drops the one-half, one-third or four-thirds from an area or volume formula, or applies it twice. | GR | 6 |  |
+| `omits_fractional_factor` | Drops the one-half, one-third or four-thirds from an area or volume formula. | GR | 6 | Narrowed 2026-08-13: previously read '... or applies it twice', which bundled the opposite error. Applying it twice is now applies_fractional_factor_twice. |
 | `omits_second_component` | Ignores one part of a composite figure, two-part total or two-stage quantity. | AR GR PR QR | 8 |  |
 | `omits_variable_term` | Reports the fixed component of a linear model and omits the variable or rate component. | AR PR QR | 4 | Approved in the Phase 2 review alongside the intermediate_vs_omission boundary rule. |
 | `order_of_operations_violated` | Evaluates left to right or applies a lower-priority operation first. | AR PR QR | 5 |  |
@@ -138,6 +140,7 @@ conclude they are still taggable.
 | `subtracts_exponents_wrongly` | Subtracts exponents where the applicable rule requires adding or multiplying them. | AR | 2 | Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review. |
 | `subtracts_in_wrong_order` | Computes b minus a where a minus b was required. | AR GR PR QR | 11 |  |
 | `volume_surface_area_confusion` | Computes volume where surface area was required, or vice versa. | GR | 2 | Kept separate per decision 2. |
+| `wrong_fractional_divisor_used` | Divides by a number other than the one the formula requires, rather than omitting the factor. | GR | 1 | Split out 2026-08-13 from an over-broad tagging rule; see content-fixes-needed.md. |
 | `wrong_sign_on_factor` | Uses the correct magnitudes in a factored form but assigns the wrong sign to one or both factors. | AR | 6 |  |
 
 ## Topic-specific slugs
@@ -155,11 +158,14 @@ conclude they are still taggable.
 - `single_violation_dismissed` — Concludes a relation is a function because most inputs appear only once.
 - `vertical_line_test_misapplied` — Invents a false rule about how vertical lines meet a graph.
 
-### AR.1.3 — 6 topic-specific
+### AR.1.3 — 9 topic-specific
 - `domain_range_swap` — Assigns output values to the domain and input values to the range.
 - `jump_discontinuity_ignored` — Reads a piecewise range as one continuous interval across a jump.
+- `output_value_assumed_in_domain` — Treats a value that appears as an output as therefore belonging to the domain, conflating a shared numeric value with membership in the input set.  _Split out 2026-08-13 from an over-broad tagging rule; see content-fixes-needed.md._
 - `piecewise_boundary_openness_error` — Mishandles an open or closed boundary at a piecewise seam.
 - `range_as_endpoints_only` — Lists only the two endpoint outputs instead of the interval between them.
+- `range_read_from_domain_endpoints` — Reads the range endpoints straight off the domain boundaries without applying the function rule.  _Split out 2026-08-13 from an over-broad tagging rule; see content-fixes-needed.md._
+- `repeated_output_excludes_input` — Excludes an input because its output duplicates one already produced, treating a repeated output as disqualifying.  _Split out 2026-08-13 from an over-broad tagging rule; see content-fixes-needed.md._
 - `set_listed_as_multiset` — Repeats a value in a set rather than listing each element once.
 - `shift_applied_to_wrong_axis` — Applies a horizontal shift to the range or a vertical shift to the domain.
 
