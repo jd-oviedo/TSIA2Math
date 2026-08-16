@@ -293,6 +293,26 @@ do not carry a remembered number forward.** A stale count caused one false
 reconciliation during this unit, and a spec count was recorded one low for several
 rounds before being caught.
 
+### Arithmetic claims are written in digits, not words
+
+In rationale prose and in worked solutions, write a computation as a computation:
+`48 - 45 = 3`, not "forty-eight minus forty-five gives three", and not "puts the
+3 red sections over all 8 sections for three eighths".
+
+This is a convention rather than a checker because the checker cannot be one.
+`scripts/check_rationale_arithmetic.py` asserts coverage over claim-**shaped**
+strings: it can tell you when something that looks like arithmetic failed to
+parse, and it does. It cannot see a claim that never looks like arithmetic,
+because there is nothing to count. The obvious guard, "any rationale with two or
+more numbers must yield a verified claim", false-fires on legitimate
+arithmetic-free rationales such as *"finds the working interval 85 to 100 and
+then reports its upper end, 100"*.
+
+The cost of the convention is nil and it fails visibly in review. `PR.2.1` and
+`PR.3.1` predate it and write their rationales in words, which is why both report
+`distractor_logic 0/0` claims while containing real reasoning about numbers.
+Nothing is wrong with them; they are simply unverifiable by machine.
+
 ### Currency inside JSON string fields
 
 Spell it as a word: `"15 dollars"`. Never `$15`, never `\$15`. A single backslash

@@ -76,6 +76,11 @@ def balance(run):
     while depth > 0 and '(' in s:                # unclosed opener, drop the tail
         s = s[:s.rfind('(')]
         depth -= 1
+    # The sentence's own full stop lands inside the run, because `.` is legal in
+    # a decimal: "$\frac{8300}{100} = 83$." reduces to "... = 83 .". Trailing
+    # dots and spaces are punctuation; a real decimal ends in a digit.
+    s = re.sub(r'[\s.]+$', '', s)
+    s = re.sub(r'^[\s.]+', '', s)
     return s.strip()
 
 # An arithmetic run: digits, operators, brackets, spaces. Nothing else. It may
@@ -83,20 +88,71 @@ def balance(run):
 # digit alone truncates "(8300 - 25(80)) / 75" to "8300 - 25(80)) / 75", which
 # then fails to evaluate on an unmatched bracket. That is a coverage gap that
 # looks like a parse error, and it is exactly what this check exists to surface.
-RUN = r'\(*\s*[\d][\d\s\+\-\*/\(\)\.]*'
+RUN = r'-?\(*\s*[\d][\d\s\+\-\*/\(\)\.]*'
 # A chain: run = run = run ... Written as a chain rather than a single equality
 # because the house style simplifies in steps, and "(8300 - 25(80)) / 75 =
 # 6300 / 75 = 84" compared pairwise against its first right-hand side reads as a
 # mismatch when every step of it is true.
-CHAIN = re.compile(rf'({RUN}(?:=\s*{RUN})+)')
+# The lookbehind keeps function application out. `f(5) = 3(5) - 4 = 11` would
+# otherwise open a run at the `(` of `f(5)`, read it as the arithmetic value 5,
+# and report a mismatch against 11 on a line that is perfectly correct. That
+# false-positive class accounted for all 257 mismatches in the first course-wide
+# scan, across function notation, P(A) and similar.
+CHAIN = re.compile(rf'(?<![A-Za-z])({RUN}(?:=\s*{RUN})+)')
+
+
+# Guided-notes examples and worked solutions write their arithmetic as LaTeX
+# inside `$...$`, so it has to be reduced to plain arithmetic before any of the
+# prose rules apply. These are the only constructs the house style uses for
+# computation; anything else in a math span carries no digits and produces no
+# claim.
+def delatex(s):
+    s = s.replace('\\left', '').replace('\\right', '')
+    s = s.replace('\\times', '*').replace('\\cdot', '*').replace('\\div', '/')
+    # A digit against a fraction is a MIXED NUMBER: 1\\frac{7}{8} is 1 + 7/8.
+    # Reduced as implicit multiplication it becomes 7/8, and every mixed number
+    # in the course reads as a mismatch.
+    s = re.sub(r'(\d)\s*\\d?frac\{([^{}]*)\}\{([^{}]*)\}', r'(\1 + (\2)/(\3))', s)
+    # \frac{a}{b} -> ((a)/(b)), innermost first so nesting resolves
+    for _ in range(4):
+        new = re.sub(r'\\d?frac\{([^{}]*)\}\{([^{}]*)\}', r'((\1)/(\2))', s)
+        if new == s:
+            break
+        s = new
+    s = re.sub(r'\\text\{[^{}]*\}', ' ', s)
+    s = re.sub(r'\\[a-zA-Z]+', ' ', s)       # any other command carries no value
+    return s.replace('$', ' ').replace('\\%', ' ')
 
 
 def normalise(prose):
-    s = prose
+    s = delatex(prose)
+    # LaTeX thousands separator: 13{,}500 is one number.
+    s = s.replace('{,}', '')
+    # Exponents. b^{2} - 4ac and 2^{6} both carry real values.
+    s = re.sub(r'\^\{(-?\d+)\}', r'**(\1)', s)
+    s = re.sub(r'\^(-?\d+)', r'**(\1)', s)
+    # Thousands separators: 13,500 is one number, not "13" followed by "500".
+    # Left alone it truncates the run and reports "150 * 90 = 13".
+    s = re.sub(r'(?<=\d),(?=\d\d\d\b)', '', s)
+    # Function application is not arithmetic. f(5), g(x), P(A) all carry a
+    # parenthesised argument that reads as a value: "f(5) = 3(5) - 4 = 11"
+    # otherwise claims 5 == 11. The argument is removed before any run is matched.
+    # A digit before the bracket is real implicit multiplication and is preserved.
+    for _ in range(3):
+        # Only a SHORT, purely symbolic argument counts as function application.
+        # An unbounded [^()]* also matched the rationale's own parenthetical --
+        # 'weights_swapped (attaches the 3 to the 60 ...)' reads as d(...) -- and
+        # deleted the entire body, silently dropping PR.2.2 from 85 checked claims
+        # to 53. Caught by the fault proof, not by reading the code.
+        new_s = re.sub(r'(?<![\d)])([A-Za-z])\s*\(\s*[A-Za-z0-9\-]{1,4}(?:\s*,\s*[A-Za-z0-9\-]{1,4})?\s*\)', r'\1', s)
+        if new_s == s:
+            break
+        s = new_s
     for pat, rep in WORD_FORMS:
         s = re.sub(pat, rep, s)
-    # implicit multiplication: 50(70) -> 50*(70)
+    # implicit multiplication: 50(70) -> 50*(70), and (3.14)(9) -> (3.14)*(9)
     s = re.sub(r'(\d)\s*\(', r'\1*(', s)
+    s = re.sub(r'\)\s*\(', r')*(', s)
     return s
 
 
@@ -107,9 +163,16 @@ def is_claim(run):
 
 def main(path):
     text = Path(path).read_text()
-    encountered = parsed = 0
+    encountered = parsed = unmodelled = 0
     failures = []
+    per_region = {}
 
+    # Two regions, and BOTH are checked. An earlier version read only the json
+    # fences, which left the guided-notes worked examples and the Part 4 worked
+    # solutions entirely unverified -- 44 of PR.2.3's 100 claim-shaped strings,
+    # and precisely the arithmetic a student actually reads. Rationale prose is
+    # authoring metadata; a worked solution is the lesson.
+    regions = []
     for m in re.finditer(r'```json\s*(.*?)```', text, re.S):
         try:
             obj = json.loads('{' + m.group(1).strip().rstrip(',') + '}')
@@ -117,39 +180,81 @@ def main(path):
             failures.append(f'unparseable json block: {e}')
             continue
         for letter, prose in (obj.get('distractor_logic') or {}).items():
-            s = normalise(prose)
-            for chain in CHAIN.findall(s):
-                parts = [balance(p) for p in chain.split('=')]
-                if any(not p for p in parts):
-                    continue
-                # A chain is a claim only if some segment actually computes
-                # something. "x = 92" and bare restatements verify nothing.
-                if not any(is_claim(p) for p in parts):
-                    continue
-                encountered += 1
-                values, broke = [], None
-                for p in parts:
-                    try:
-                        values.append(F(eval(p, {'__builtins__': {}}, {})))  # noqa: S307
-                    except Exception as e:                        # noqa: BLE001
-                        broke = f'{p!r} ({e})'
-                        break
-                if broke:
-                    failures.append(
-                        f'{letter}: UNPARSED claim-shaped string {broke} in {chain.strip()!r}. '
-                        f'Coverage gap, not a content error.')
-                    continue
-                parsed += 1
-                if len(set(values)) != 1:
-                    failures.append(
-                        f'{letter}: {chain.strip()} does not hold, segments evaluate to '
-                        f'{[str(v) for v in values]}')
+            regions.append(('distractor_logic', letter, prose))
+
+    # Everything that is not an authoring fence: guided notes, worked examples,
+    # worked solutions. Line by line, so a failure can be located.
+    body = re.sub(r'```json\s*.*?```', '', text, flags=re.S)
+    # Each math span is its own region. Scanning a whole LINE merges independent
+    # spans: "$40 - 30 = 10$ and $10 / 4$" chains into one false claim. A claim
+    # never spans two `$...$` groups.
+    for i, line in enumerate(body.split('\n'), 1):
+        if not line.strip():
+            continue
+        spans = re.findall(r'\$\$[^$]*\$\$|\$[^$]+\$', line)
+        for sp in spans:
+            regions.append(('prose', f'line {i}', sp))
+        if not spans:
+            regions.append(('prose', f'line {i}', line))
+
+    for region, letter, prose in regions:
+        per_region.setdefault(region, [0, 0])
+        s = normalise(prose)
+        if '...' in prose or '\\approx' in prose or '\\overline' in prose:
+            # Rounded or repeating decimals are not modelled. Counted and
+            # reported rather than skipped, so the gap stays visible.
+            unmodelled += 1
+            continue
+        for chain in CHAIN.findall(s):
+            parts = [balance(p) for p in chain.split('=')]
+            if any(not p for p in parts):
+                continue
+            # A chain is a claim only if some segment actually computes
+            # something. "x = 92" and bare restatements verify nothing.
+            if not any(is_claim(p) for p in parts):
+                continue
+            encountered += 1
+            per_region[region][0] += 1
+            values, broke = [], None
+            for p in parts:
+                try:
+                    values.append(F(eval(p, {'__builtins__': {}}, {})))  # noqa: S307
+                except Exception as e:                        # noqa: BLE001
+                    broke = f'{p!r} ({e})'
+                    break
+            if broke:
+                failures.append(
+                    f'[{region} {letter}] UNPARSED claim-shaped string {broke} in '
+                    f'{chain.strip()!r}. Coverage gap, not a content error.')
+                continue
+            parsed += 1
+            per_region[region][1] += 1
+            # Decimals are written to the precision the lesson shows, so exact
+            # Fraction equality reports 2 * 3.14 * 20 == 125.6 as a mismatch:
+            # the left side is an exact binary float and the right is a decimal
+            # literal. Compare within the precision actually printed.
+            def agree(vals):
+                lo, hi = min(vals), max(vals)
+                if lo == hi:
+                    return True
+                scale = max(abs(lo), abs(hi), F(1))
+                return abs(hi - lo) <= scale * F(1, 10 ** 6)
+
+            if not agree(values):
+                failures.append(
+                    f'[{region} {letter}] {chain.strip()} does not hold, segments '
+                    f'evaluate to {[str(v) for v in values]}')
 
     print(f'{path}')
     print(f'  claim-shaped strings encountered: {encountered}')
     print(f'  successfully parsed and checked:  {parsed}')
     if encountered:
         print(f'  coverage: {parsed / encountered:.0%}')
+    if unmodelled:
+        print(f'  spans excluded, notation not modelled: {unmodelled}')
+    for region in sorted(per_region):
+        enc, par = per_region[region]
+        print(f'    {region:<18} {par}/{enc}')
     if failures:
         print(f'  FAILURES: {len(failures)}')
         for f in failures:
