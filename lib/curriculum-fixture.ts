@@ -37,20 +37,50 @@ const FIXTURE_ENV = 'CURRICULUM_FIXTURE_SOURCE';
  * pages and simply start including answers. Throwing at module load takes the
  * build down instead, which is loud, immediate, and impossible to miss.
  *
+ * ── Why the condition is VERCEL_ENV and not NODE_ENV ────────────────────────
+ *
+ * This looks looser than a plain `NODE_ENV === 'production'` check. It is not,
+ * and it was not weakened to make a test pass. NODE_ENV answers "is this a
+ * production *build*", which is a different question from "is this a production
+ * *deployment*", and the two diverge exactly where it matters:
+ *
+ *   `next start` on a laptop sets NODE_ENV=production. It is a production build
+ *   and it is not a deployment.
+ *
+ * Gating on NODE_ENV therefore bans the fixture from the only server mode this
+ * project is allowed to run Playwright against -- `next build && next start`,
+ * because `next dev` crashes the box under Playwright load and surfaces as
+ * false 404s. The feature would have been unusable by the verification it exists
+ * to serve, which is how the mistake was found.
+ *
+ * VERCEL_ENV is set on every Vercel deploy, production and preview alike, and
+ * on no local machine. It is already the established sentinel for this exact
+ * distinction here -- see sentry.server.config.ts:14, "VERCEL_ENV distinguishes
+ * production vs preview deploys (both build with NODE_ENV=production)".
+ *
+ * Any deploy is refused, preview included. A preview deploy is reachable by
+ * anyone with the URL, so it is no safer a place to serve unstripped rows than
+ * production is.
+ *
+ * Residual gap, named so it is not rediscovered the hard way: if this app is
+ * ever hosted somewhere that does not set VERCEL_ENV, this guard goes quiet and
+ * needs a sentinel for that host added here.
+ *
  * Exported as a pure function of an env bag so the guard itself can be tested
  * rather than assumed. See tests/curriculum-fixture-guard.test.ts.
  */
 export function assertFixtureSafe(env: Record<string, string | undefined>): void {
   const enabled = Boolean(env[FIXTURE_ENV]);
-  if (enabled && env.NODE_ENV === 'production') {
+  if (enabled && Boolean(env.VERCEL_ENV)) {
     throw new Error(
-      `${FIXTURE_ENV} is set in a production build. Refusing to start.\n\n` +
+      `${FIXTURE_ENV} is set on a deployed environment ` +
+        `(VERCEL_ENV=${env.VERCEL_ENV}). Refusing to start.\n\n` +
         'This flag makes the topic route read curriculum from local markdown ' +
         'instead of from curriculum_topics_public. That view is what strips ' +
         'correct_answer and misconception_tag before anything reaches an ' +
-        'anonymous student, so running with this flag in production would ' +
+        'anonymous student, so running with this flag on a deploy would ' +
         'serve answer keys to signed-out visitors.\n\n' +
-        `Unset ${FIXTURE_ENV}, or run a development build.`,
+        `Unset ${FIXTURE_ENV}. It is for local use only.`,
     );
   }
 }
@@ -59,8 +89,11 @@ export function assertFixtureSafe(env: Record<string, string | undefined>): void
 // render a topic page runs the guard first.
 assertFixtureSafe(process.env);
 
+// Same sentinel as the guard above, for the same reason: gating on NODE_ENV
+// here would switch the fixture off under `next start`, which is the only
+// server mode Playwright is allowed to run against on this box.
 export function isFixtureEnabled(): boolean {
-  return Boolean(process.env[FIXTURE_ENV]) && process.env.NODE_ENV !== 'production';
+  return Boolean(process.env[FIXTURE_ENV]) && !process.env.VERCEL_ENV;
 }
 
 // ─── Source parsing ──────────────────────────────────────────────────────────
