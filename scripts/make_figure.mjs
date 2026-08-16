@@ -31,7 +31,8 @@
 
 import { readFileSync, readdirSync, writeFileSync } from 'fs';
 import { buildShape, verifyShape, SHAPE_TYPES } from './figure_shapes.mjs';
-import { basename } from 'path';
+import { basename, resolve } from 'path';
+import { fileURLToPath } from 'url';
 
 const INK = '#0E0E11';       // axes, text
 const LINE = '#6E9DC8';      // primary plotted line
@@ -205,22 +206,82 @@ function curveRuns(c, xRange, yRange) {
   return runs.filter(r => r.length > 1);
 }
 
+// A bar chart is `coordinate_plane` with a `bars` array, not a new top-level
+// type, for the same reason curves were: the grid, the y ticks, the padding, the
+// axis titles and the alt-text contract are all reusable as they stand, and
+// figure_shapes.mjs already shows what forking them costs -- circle_plane
+// re-implements the grid and now has to be kept in step by hand.
+//
+// What IS new is that the x-axis stops being numeric. A categorical axis has no
+// tick ladder to invert, which is the whole reason verifyPlane could not check a
+// bar until this change: it recovers the data-to-pixel map from numeric tick
+// labels and bails when an axis carries fewer than two.
+//
+// The categorical replacement for the tick ladder is the PRINTED CATEGORY
+// LABELS. That keeps the measuring principle intact rather than abandoning it:
+// on a numeric axis the check reads the numbers a reader sees, and on a
+// categorical axis it reads the names a reader sees. Band placement is then
+// verified against where those names were printed, not against the builder's
+// own padding arithmetic.
+function barLayout(bars, pad) {
+  const plotL = pad.l, plotR = W - pad.r;
+  const band = (plotR - plotL) / bars.length;
+  return { band, barW: n(band * 0.62), centre: i => plotL + (i + 0.5) * band };
+}
+
 function buildSvg(spec) {
+  const bars = spec.bars ?? [];
+  const categorical = bars.length > 0;
+
+  // Boundary checks, not defaults. A spec that mixes a categorical x-axis with
+  // numeric-x marks, or that omits the axis top, would otherwise produce a
+  // well-formed and meaningless picture -- the silent-default shape.
+  if (categorical) {
+    for (const k of ['lines', 'curves', 'points'])
+      if (spec[k]?.length)
+        throw new Error(`bars put a categorical x-axis on the plane, so "${k}" cannot share it: those marks are placed by numeric x`);
+    if (!spec.yRange)
+      throw new Error('a bar chart must declare yRange: where a value axis stops is an editorial choice about how the data reads, never a default');
+    for (const [i, B] of bars.entries()) {
+      if (typeof B.value !== 'number' || !Number.isFinite(B.value))
+        throw new Error(`bar ${i} ("${B.label}") has no finite value`);
+      if (!B.label) throw new Error(`bar ${i} has no label: a categorical axis is read by its names`);
+      if (B.value > spec.yRange[1]) throw new Error(`bar ${i} ("${B.label}") value ${B.value} runs past the top of yRange`);
+      if (B.value < spec.yRange[0]) throw new Error(`bar ${i} ("${B.label}") value ${B.value} sits below the baseline yRange[0]`);
+    }
+  }
+
   const xRange = spec.xRange ?? [-1, 9];
   const yRange = spec.yRange ?? [-1, 9];
   const gy0 = ticks(yRange);
   const pad = padding(spec, gy0);
   const { X, Y } = makeScales(xRange, yRange, pad);
   const parts = [];
+  // On a categorical axis there is no x = 0 to hang the y labels off, and the
+  // default xRange would put X(0) somewhere inside the plot.
+  const axisX = categorical ? pad.l : X(0);
 
   parts.push(`<rect width="${W}" height="${H}" fill="${SURFACE}" rx="10"/>`);
 
-  // Gridlines
+  // Gridlines. Vertical ones mark numeric x values and mean nothing between
+  // categories, so a bar chart gets horizontal rules only.
   const gx = ticks(xRange), gy = gy0;
   parts.push(`<g stroke="${GRID}" stroke-width="1">`);
-  for (const v of gx) parts.push(`<line x1="${X(v)}" y1="${Y(yRange[1])}" x2="${X(v)}" y2="${Y(yRange[0])}"/>`);
-  for (const v of gy) parts.push(`<line x1="${X(xRange[0])}" y1="${Y(v)}" x2="${X(xRange[1])}" y2="${Y(v)}"/>`);
+  if (!categorical)
+    for (const v of gx) parts.push(`<line x1="${X(v)}" y1="${Y(yRange[1])}" x2="${X(v)}" y2="${Y(yRange[0])}"/>`);
+  for (const v of gy)
+    parts.push(`<line x1="${categorical ? pad.l : X(xRange[0])}" y1="${Y(v)}" x2="${categorical ? W - pad.r : X(xRange[1])}" y2="${Y(v)}"/>`);
   parts.push(`</g>`);
+
+  // Bars, drawn under the axes so the baseline reads as a crisp edge.
+  if (categorical) {
+    const { barW, centre } = barLayout(bars, pad);
+    const yBase = Y(yRange[0]);
+    bars.forEach((B, i) => {
+      const cx = centre(i), yTop = Y(B.value);
+      parts.push(`<rect data-bar="${i}" x="${n(cx - barW / 2)}" y="${n(yTop)}" width="${barW}" height="${n(yBase - yTop)}" fill="${B.color === 'accent' ? ACCENT : LINE}"/>`);
+    });
+  }
 
   // Shaded half-plane, produced by clipping the whole plot window against the
   // inequality (Sutherland-Hodgman) rather than by joining the boundary's two
@@ -252,16 +313,41 @@ function buildSvg(spec) {
       parts.push(`<polygon points="${out.map(([x, y]) => `${X(x)},${Y(y)}`).join(' ')}" fill="${LINE}" fill-opacity="0.18"/>`);
   }
 
-  // Axes
-  if (yRange[0] <= 0 && yRange[1] >= 0)
-    parts.push(`<line x1="${X(xRange[0])}" y1="${Y(0)}" x2="${X(xRange[1])}" y2="${Y(0)}" stroke="${INK}" stroke-width="1.6"/>`);
-  if (xRange[0] <= 0 && xRange[1] >= 0)
-    parts.push(`<line x1="${X(0)}" y1="${Y(yRange[0])}" x2="${X(0)}" y2="${Y(yRange[1])}" stroke="${INK}" stroke-width="1.6"/>`);
+  // Axes. A categorical plane has a baseline at the foot of the value axis and a
+  // value axis at the left edge of the plot, wherever yRange starts; the numeric
+  // plane keeps drawing its axes through the origin.
+  if (categorical) {
+    parts.push(`<line x1="${pad.l}" y1="${Y(yRange[0])}" x2="${W - pad.r}" y2="${Y(yRange[0])}" stroke="${INK}" stroke-width="1.6"/>`);
+    parts.push(`<line x1="${pad.l}" y1="${Y(yRange[0])}" x2="${pad.l}" y2="${Y(yRange[1])}" stroke="${INK}" stroke-width="1.6"/>`);
+  } else {
+    if (yRange[0] <= 0 && yRange[1] >= 0)
+      parts.push(`<line x1="${X(xRange[0])}" y1="${Y(0)}" x2="${X(xRange[1])}" y2="${Y(0)}" stroke="${INK}" stroke-width="1.6"/>`);
+    if (xRange[0] <= 0 && xRange[1] >= 0)
+      parts.push(`<line x1="${X(0)}" y1="${Y(yRange[0])}" x2="${X(0)}" y2="${Y(yRange[1])}" stroke="${INK}" stroke-width="1.6"/>`);
+  }
 
   // Axis numbers, origin skipped to avoid the two labels colliding.
+  //
+  // The category names carry data-cat so they can never be mistaken for numeric
+  // x ticks by the verifier's regex, which matches on `<text x="` and would
+  // otherwise swallow a category legitimately named "2020" and try to invert an
+  // axis through it. Like data-curve, the attribute is a claim about which
+  // category this is; the position it is attached to is still measured, so the
+  // check does not rest on it.
   parts.push(`<g font-family="ui-sans-serif,system-ui,sans-serif" font-size="10" fill="${INK}">`);
-  for (const v of gx) if (v !== 0) parts.push(`<text x="${X(v)}" y="${Y(0) + 13}" text-anchor="middle">${v}</text>`);
-  for (const v of gy) if (v !== 0) parts.push(`<text x="${X(0) - 6}" y="${Y(v) + 3.5}" text-anchor="end">${v}</text>`);
+  if (!categorical)
+    for (const v of gx) if (v !== 0) parts.push(`<text x="${X(v)}" y="${Y(0) + 13}" text-anchor="middle">${v}</text>`);
+  // NB: the numeric branch keeps the exact expression it always had, floating
+  // point artefacts and all. Wrapping it in n() would re-round every existing
+  // figure's y labels and change bytes that are already base64'd into content.
+  for (const v of gy) if (categorical || v !== 0)
+    parts.push(`<text x="${categorical ? n(axisX - 6) : X(0) - 6}" y="${Y(v) + 3.5}" text-anchor="end">${v}</text>`);
+  if (categorical) {
+    const { centre } = barLayout(bars, pad);
+    const yBase = Y(yRange[0]);
+    bars.forEach((B, i) =>
+      parts.push(`<text data-cat="${i}" x="${n(centre(i))}" y="${n(yBase + 14)}" text-anchor="middle">${esc(B.label)}</text>`));
+  }
   parts.push(`</g>`);
 
   // Lines
@@ -338,6 +424,41 @@ export function figureFromSpec(spec) {
 // Re-measures the emitted SVG and compares scale-invariant quantities against
 // the spec. Scale invariance is deliberate: a check that recomputed from the
 // builder's own numbers would pass even when those numbers are wrong.
+//
+// ─── WHAT --verify PROVES, AND WHAT IT DOES NOT ──────────────────────────────
+//
+// This distinction decides what a figure check can be trusted for, so it is
+// stated here rather than left to be rediscovered:
+//
+//   BUILDER FIDELITY   does the emitted SVG match the spec?        YES, checked
+//   SPEC CONSISTENCY   is the spec's own claim true?               NO, never
+//
+// verifyFigure(spec) calls the builder internally and verifies the result
+// against the same spec, so the two move together. It can prove the drawing is
+// faithful to the declaration. It cannot prove the declaration is right.
+//
+// Measured on a scatter with a declared fitted line: a builder drawing the wrong
+// slope is caught, and a point drawn in the wrong place is caught, but a line
+// declared m = -4 against a rising cloud, drawn honestly, PASSES every
+// assertion. Nothing cross-checks two declarations against each other.
+//
+// THIS BITES HARDER ON DATA DISPLAYS THAN ON GEOMETRY, and that is why it is
+// worth stating twice. A triangle's spec claims a shape, and a reader who
+// mistrusts it can look at it. A bar chart's spec encodes a DATASET, and a
+// reader will believe the numbers because the picture is the only copy of them
+// they are shown. `bars: [{label: "Mon", value: 12}]` verified to the hilt still
+// says nothing about whether 12 cups were sold on Monday. Same for a box plot's
+// five-number summary: --verify proves the quartile marks sit where the spec put
+// them, never that the summary describes the dataset it claims to.
+//
+// So: whether a declared value matches the underlying data is a CONTENT claim,
+// and it belongs to the three-pass distractor ledger and to review, exactly like
+// an arithmetic claim in a rationale. It is not the harness's job and the
+// harness must not be read as having done it.
+//
+// The two-argument forms below, verifyPlane(spec, svg) and verifyBars(...),
+// separate the two sides, which is what makes fault injection possible at all: a
+// fault injected into the input of BOTH sides of a comparison is not a fault.
 export function verifyFigure(spec) {
   if (SHAPE_TYPES.includes(spec.type)) return verifyShape(spec, buildShape(spec));
   if (spec.type === 'coordinate_plane') return verifyPlane(spec, buildSvg(spec));
@@ -360,8 +481,17 @@ export function verifyPlane(spec, svg) {
     .map(m => [Number(m[2]), Number(m[1])]);
   const yt = [...svg.matchAll(/<text x="[-\d.]+" y="([-\d.]+)" text-anchor="end">(-?\d+(?:\.\d+)?)<\/text>/g)]
     .map(m => [Number(m[2]), Number(m[1]) - 3.5]);
-  if (xt.length < 2 || yt.length < 2)
+
+  // A categorical x-axis has no numeric ladder to invert, so the x half of the
+  // guard below cannot apply to it. The y half still does, and is still the only
+  // thing standing between a bar chart and an unmeasurable value axis.
+  const categorical = (spec.bars ?? []).length > 0;
+  if (categorical) {
+    if (yt.length < 2)
+      return [{ name: 'y axis ticks readable', actual: yt.length, expected: 2, ok: false }];
+  } else if (xt.length < 2 || yt.length < 2) {
     return [{ name: 'axis ticks readable', actual: Math.min(xt.length, yt.length), expected: 2, ok: false }];
+  }
 
   // Invert from the first and last tick on each axis.
   const invert = t => {
@@ -369,7 +499,15 @@ export function verifyPlane(spec, svg) {
     const s = (b[1] - a[1]) / (b[0] - a[0]);
     return px => a[0] + (px - a[1]) / s;
   };
-  const ix = invert(xt), iy = invert(yt);
+  const ix = categorical ? null : invert(xt), iy = invert(yt);
+
+  if (categorical) {
+    if (yt.length > 2) add('y tick labels linear',
+      Math.max(0, ...yt.slice(1, -1).map(([v, px]) => Math.abs(iy(px) - v))), 0,
+      0.01 * Math.abs(spec.yRange[1] - spec.yRange[0]));
+    verifyBars(spec, svg, iy, add);
+    return checks;
+  }
 
   // Axis labels. The map above is fitted to the first and last tick on each
   // axis, so pushing every OTHER printed tick back through it and requiring the
@@ -409,6 +547,69 @@ export function verifyPlane(spec, svg) {
   });
 
   return checks;
+}
+
+// Bars, measured back out of the emitted SVG.
+//
+// TWO INDEPENDENT REFERENCES, one per axis, and neither is the builder's own
+// arithmetic:
+//
+//   value axis   the printed y tick labels, inverted exactly as everywhere else,
+//                so a bar's height is read in DATA units and compared with the
+//                declared value
+//   category axis the printed category names. There is no ladder to invert, so
+//                band placement is checked against where the reader sees each
+//                name printed, plus the two structural facts a categorical axis
+//                owes: bands evenly spaced, and bars of equal width
+//
+// What that combination catches: a bar drawn to the wrong height (its top
+// inverts to the wrong value), a bar drawn in the wrong band (its centre no
+// longer sits under its own name), bars emitted out of order (rect i lands under
+// name j), an uneven axis, and a missing or extra bar.
+//
+// What it cannot catch, and must not be read as catching: whether `value` is the
+// number the dataset actually holds. See the builder-fidelity note above
+// verifyFigure. A bar chart's spec IS the dataset as far as this file is
+// concerned.
+export function verifyBars(spec, svg, iy, add) {
+  const bars = spec.bars ?? [];
+  const rects = [...svg.matchAll(/<rect data-bar="(\d+)" x="([-\d.]+)" y="([-\d.]+)" width="([-\d.]+)" height="([-\d.]+)"/g)];
+  const cats = [...svg.matchAll(/<text data-cat="(\d+)" x="([-\d.]+)" y="[-\d.]+" text-anchor="middle">([^<]*)<\/text>/g)];
+
+  add('every declared bar drawn', rects.length, bars.length, 0);
+  add('every category labelled', cats.length, bars.length, 0);
+
+  const yScale = Math.abs(spec.yRange[1] - spec.yRange[0]);
+  const base = spec.yRange[0];
+
+  bars.forEach((B, i) => {
+    const R = rects[i], C = cats[i];
+    if (!R) return add(`bar ${i} drawn`, 0, 1, 0);
+    // rect y is the top edge and y + height the foot, both in pixels; the y-map
+    // turns them back into values on the axis the reader is looking at.
+    add(`bar ${i} value`, iy(+R[3]), B.value, 0.01 * yScale);
+    add(`bar ${i} sits on the baseline`, iy(+R[3] + +R[5]), base, 0.01 * yScale);
+    if (!C) return add(`bar ${i} labelled`, 0, 1, 0);
+    // Band position: the bar's centre against its own printed name.
+    add(`bar ${i} centred on its band`, +R[2] + +R[4] / 2, +C[2], 0.5);
+    // Identity: rect i must be the bar whose name is printed under it. Compared
+    // as an equality rather than a distance, so a reordering cannot average out.
+    add(`bar ${i} label is "${B.label}"`, C[3] === esc(B.label) ? 1 : 0, 1, 0);
+  });
+
+  // Structural facts a categorical axis owes the reader, checked from the
+  // printed names alone. Uneven bands or ragged widths make two bars visually
+  // comparable when the data does not support the comparison.
+  const bandX = cats.map(c => +c[2]);
+  if (bandX.length > 2) {
+    const gaps = bandX.slice(1).map((v, i) => v - bandX[i]);
+    add('category bands evenly spaced', Math.max(...gaps) - Math.min(...gaps), 0, 0.5);
+    add('category bands left to right', Math.min(...gaps) > 0 ? 1 : 0, 1, 0);
+  }
+  if (rects.length > 1) {
+    const ws = rects.map(r => +r[4]);
+    add('bars equal width', Math.max(...ws) - Math.min(...ws), 0, 0.5);
+  }
 }
 
 // Recovers each plotted curve from the emitted <polyline> vertices, pushed back
@@ -559,7 +760,13 @@ export function verifyCurves(spec, svg, ix, iy, add) {
 
 // ─── CLI ─────────────────────────────────────────────────────────────────────
 
-const args = process.argv.slice(2);
+// Guarded so the CLI runs only when this file IS the program. Until the fault
+// proofs there was no importer, so the module-scope block below was harmless;
+// the moment another script imports verifyPlane, an unguarded block would read
+// that script's argv and try to open `curriculum/figures/<its first flag>.json`.
+// An import is not an invocation.
+const isEntry = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+const args = isEntry ? process.argv.slice(2) : [];
 
 // --inject rewrites the generated image line in a markdown file from its spec,
 // so the base64 in the content is never hand-edited and can be regenerated
