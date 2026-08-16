@@ -98,6 +98,30 @@ ALLOWED_DUPLICATES = {
                              'partially-extracted form, tagged largest_perfect_square_not_extracted',
     ('AR.4.8', 'P9', 'B|C'): 'simplest-radical-form item; C is root 60, the '
                              'unextracted product, tagged largest_perfect_square_not_extracted',
+    # AR.3.1, "Identifying factors of a simple quadratic expression". Reviewed
+    # against all four conditions on 2026-08-16 by expanding every choice rather
+    # than reading the rationales, because this topic is the structural template
+    # for the whole course and was left unsettled either way.
+    #
+    #   (a) form is the named assessed skill: "complete factored form" is the
+    #       topic's own subject, with a GCF section in the notes and two
+    #       dedicated slugs, gcf_not_extracted_first and gcf_dropped_after_factoring
+    #   (b) the slug names precisely the error: gcf_not_extracted_first is exactly
+    #       "a bracket still carries the common factor", the only thing separating
+    #       the pair
+    #   (c) the stem states the required form: all three say "the COMPLETE
+    #       factored form"
+    #   (d) two genuinely wrong distractors survive: in each item C is the
+    #       original divided by the GCF and D expands to a different polynomial
+    #
+    # Verified by expansion: (2x + 4)(x + 3) = 2x^2 + 10x + 12, identical to the
+    # key; (3x - 3)(x - 3) = 3x^2 - 12x + 9; (2x + 4)(x + 5) = 2x^2 + 14x + 20.
+    ('AR.3.1', 'P8', 'A|B'): 'complete-factored-form item; B is (2x + 4)(x + 3), the '
+                             'partially-factored form, tagged gcf_not_extracted_first',
+    ('AR.3.1', 'P10', 'A|B'): 'complete-factored-form item; A is (3x - 3)(x - 3), the '
+                              'partially-factored form, tagged gcf_not_extracted_first',
+    ('AR.3.1', 'Q4', 'A|B'): 'complete-factored-form item; A is (2x + 4)(x + 5), the '
+                             'partially-factored form, tagged gcf_not_extracted_first',
 }
 
 
@@ -233,6 +257,40 @@ def main(path):
     sec = sections(text)
     failures, notes = [], []
 
+    # ── 0. sequence_in_unit is present, an integer, and at least 1 ──
+    #
+    # upload_curriculum.py reads this as
+    # `parsed['metadata'].get('sequence_in_unit', 0)`, which is the ONLY
+    # assignment of the field anywhere: the source declares the sequence and the
+    # uploader never derives it. So a mistyped or missing frontmatter key does
+    # not fail the upload -- it uploads the topic at sequence 0, which sorts it
+    # to the front of its unit and breaks the ordering with no error at any
+    # layer. `0` is a legal-looking value, so nothing downstream can tell it
+    # apart from a real one, which is what makes this a commit-time check rather
+    # than an audit.
+    fm = re.match(r'^---\n(.*?)\n---\n', text, re.S)
+    if not fm:
+        failures.append(f"FRONTMATTER  {topic_id}: no frontmatter block")
+    else:
+        seq = re.search(r'^sequence_in_unit:\s*(.*)$', fm.group(1), re.M)
+        if not seq:
+            failures.append(
+                f"SEQUENCE  {topic_id}: frontmatter has no `sequence_in_unit`; the "
+                f"uploader would default it to 0 and sort this topic to the front "
+                f"of its unit without erroring")
+        else:
+            raw_seq = seq.group(1).strip().strip('"\'')
+            if not re.fullmatch(r'\d+', raw_seq):
+                failures.append(
+                    f"SEQUENCE  {topic_id}: `sequence_in_unit` is {raw_seq!r}, not an "
+                    f"integer")
+            elif int(raw_seq) < 1:
+                failures.append(
+                    f"SEQUENCE  {topic_id}: `sequence_in_unit` is {int(raw_seq)}; "
+                    f"sequences start at 1 and 0 is the uploader's silent default")
+            else:
+                notes.append(f"sequence_in_unit {int(raw_seq)}")
+
     # ── 1. duplicate-valued choices ──
     all_items = (
         [(f'P{n}', c) for n, c in items_with_choices(sec['Part 2'], r'^(\d+)\.\s')]
@@ -329,11 +387,44 @@ def main(path):
                  f"{len(allowed & topic_scoped)} topic-specific slug(s) assigned here")
 
     # ── 4. currency inside JSON string fields ──
+    #
+    # The rule this replaces fired on ANY `$` inside a JSON string, which made it
+    # 15-for-15 wrong: every live failure was a math span in a QR.3.5
+    # stem_template ("Simplify the expression ${a}m + {b}m$."), not currency. A
+    # check that only ever fires on correct content trains its reader to skip it,
+    # which is worse than not having it, so the discrimination happens here.
+    #
+    # What is actually being caught, in order of how badly it breaks:
+    #   1. `\$` -- an invalid JSON escape. The file will not parse at all.
+    #   2. an unpaired `$` -- currency written as `$15`, which is the convention
+    #      violation. Spell it as a word: "15 dollars".
+    #   3. a `$...$` pair that is really TWO currency signs with prose caught
+    #      between them ("from $20 to $25"). This one closes, so pairing alone
+    #      cannot see it, and it is the reason the two heuristics below exist.
     for block in re.findall(r'```json\s*(.*?)```', text, re.S):
-        for line in block.split('\n'):
-            if re.search(r'"[^"]*\\?\$[^"]*"', line):
-                failures.append(f"CURRENCY  {topic_id}: dollar sign inside a JSON string, "
-                                f"spell it as a word: {line.strip()[:90]}")
+        for literal in re.findall(r'"(?:[^"\\]|\\.)*"', block):
+            shown = literal.strip()[:90]
+            if re.search(r'\\\$', literal):
+                failures.append(f"CURRENCY  {topic_id}: `\\$` is an invalid JSON escape and will "
+                                f"not parse, spell currency as a word: {shown}")
+                continue
+            # Remove balanced math spans, then anything left is an odd dollar.
+            spans = re.findall(r'\$([^$]*)\$', literal)
+            if '$' in re.sub(r'\$[^$]*\$', '', literal):
+                failures.append(f"CURRENCY  {topic_id}: unpaired dollar sign inside a JSON string, "
+                                f"spell currency as a word: {shown}")
+                continue
+            for body in spans:
+                # Three lowercase words inside a math span is swallowed prose,
+                # the same heuristic lint_curriculum_source.py uses.
+                # A body that opens with a number and runs straight into a word
+                # ("20 to ") is the two-amount case, which is short enough to
+                # slip under that three-word bar.
+                if (re.search(r'[a-z]{2,}\s+[a-z]{2,}\s+[a-z]{2,}', body)
+                        or re.match(r'^\s*\d[\d,.]*\s+[a-z]', body)):
+                    failures.append(f"CURRENCY  {topic_id}: `$...$` here reads as two currency signs "
+                                    f"with prose between them, not a math span: {shown}")
+                    break
 
     # ── 5. em dashes ──
     if '\u2014' in text:
