@@ -16,10 +16,12 @@ const args = process.argv.slice(2);
 const baseIdx = args.indexOf('--base');
 const BASE = baseIdx === -1 ? 'http://localhost:3000' : args[baseIdx + 1];
 const wantFigure = args.includes('--figure');
-const topics = args.filter((a, i) => !a.startsWith('--') && i !== baseIdx + 1);
+const topics = args.filter((a, i) => !a.startsWith('--') && i !== baseIdx + 1 && i !== args.indexOf('--unit') + 1);
 if (topics.length === 0) topics.push('AR.3.5');
 
-const UNIT_PATH = `${BASE}/course/tsia2/math/unit/4/topic`;
+const unitIdx = args.indexOf('--unit');
+const UNIT = unitIdx === -1 ? '4' : args[unitIdx + 1];
+const UNIT_PATH = `${BASE}/course/tsia2/math/unit/${UNIT}/topic`;
 const PLACEHOLDER = 'This topic is still being written';
 
 // The standing rule, in code rather than in a review comment.
