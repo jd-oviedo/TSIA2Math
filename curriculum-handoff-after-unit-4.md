@@ -657,6 +657,22 @@ anything looks.
   fences and never looks at worked-solution prose. Presence in the file is not
   presence in the scanned region. The corrected proof asserts both.
 
+  **And re-run the proof after every edit to the checker, not only after the
+  first build.** This is the sharpest instance of the class, and it inverts the
+  others: here the *fix* silently shrank the *checker's own coverage*. Extending
+  pass 3 to read worked solutions required excluding function application, and
+  the stripper used an unbounded `[^()]*`. That also matched the rationale's own
+  parenthetical, since `weights_swapped (attaches the 3 to the 60 ...)` reads as
+  `d(...)`, so it deleted entire rationale bodies. `PR.2.2` fell from 85 checked
+  claims to 53 and still exited zero, reporting "100% coverage" over the subset
+  that survived. Reading the code did not catch it. Re-running the fault proof
+  did, in seconds, because the injected fault stopped firing.
+
+  A checker edit is a change to what the checker can see. The two numbers that
+  detect it are the **coverage count** and **a fault proof that still fires**;
+  re-run both on every edit. A clean percentage over a shrinking denominator
+  looks exactly like success.
+
 - **A check that processes a subset of its input and exits zero.** This is the
   general form the three above are instances of, and it is worth stating on its
   own. Pass 3 of the distractor ledger was a list of narrow regexes, one per
