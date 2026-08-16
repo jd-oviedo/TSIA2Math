@@ -61,9 +61,9 @@ Three, all found during content work rather than by any check, and all the same
 shape: a checked-in artefact that stopped matching the thing it describes. They
 were deliberately kept out of the content batches and queued for one sitting.
 
-**Work them in this order.**
+**Work them in this order.** #84 is done; #86 and #88 are open.
 
-### First: #84, `sql/curriculum_topics_public.sql` has drifted from the deployed view
+### First: #84, `sql/curriculum_topics_public.sql` has drifted from the deployed view (RESOLVED)
 
 The checked-in view definition does not list `is_placeholder`. `topic-data.ts`
 selects that column on the anonymous path, against `curriculum_topics_public`. If
@@ -72,15 +72,30 @@ the deployed view matched the file, PostgREST would reject the select and
 every signed-out student. They do not 404, so the deployed view has the column and
 the file does not.
 
-**Why it goes first:** re-running that file against production is a normal
-maintenance action, and doing it would drop `is_placeholder` from the view and
-404 every topic page for signed-out students. `create or replace view` will do it
-without complaint. Nothing is broken today, which is exactly what makes it
-dangerous: the file looks authoritative and is not.
+**Resolved 2026-08-16.** Both halves of the description above were wrong, and how
+they were wrong is the useful part.
 
-It also blocked the staging-environment option that was considered for
-pre-upload verification, because a staging project built from `sql/` would be
-wrong in precisely this way and the divergence would be invisible.
+*The repo did have the definition.* `sql/curriculum_placeholder_topics.sql`, a
+later migration, appended `is_placeholder` to the view and did not backport it.
+So this was never missing knowledge; it was two files describing one object with
+no statement of which superseded which. `topic-data.ts:60-61` had named the
+second file the whole time.
+
+*`create or replace view` cannot drop a column.* It fails with `ERROR: cannot
+drop columns from view`, and in the Supabase SQL editor the file is one implicit
+transaction, so the error aborts the batch and the view keeps its columns **and**
+its grants. Verified in a throwaway Postgres 15 container. The two things that do
+produce the 404 are clearing that error with a `drop view` and re-running, which
+loses the grants as well, and building a fresh environment that runs one file and
+not the other. The staging-environment concern was therefore real; the
+maintenance-rerun concern was not.
+
+The fix was to backport the column so either file alone reproduces the view, and
+to state the invariant and the append-only constraint in both.
+
+**The lesson worth carrying:** the issue was written from the repo, and every
+claim in it that came from reading rather than probing was wrong. The deployed
+object is the source of truth, and it is one `curl` away with the anon key.
 
 ### Second: #86, `verifyCurves` cannot verify a parabola tangent to the x-axis
 
@@ -318,10 +333,44 @@ The most expensive class, because it produces confident green output.
 - `check_topic.py`'s first version reported 48 of 56 `AR.4.8` choices as
   unparseable, which would have made it blind on the one topic made of radicals.
 
+- This document said the lint baseline was "all in unit-1 files". Five of the six
+  errors and all ten warnings are in `unit-0/QR.3.8`. The *total* was right, so
+  every round that reconciled `6 errors, 10 warnings` against the previous round
+  passed while carrying a wrong attribution forward. Found 2026-08-16 by
+  attributing the findings to files instead of counting them.
+
 **A check that cannot fail against the wrong object is not a check, and one that
 quietly skips what it cannot read is not one either.** When a suite passes first
 time, confirm it is reading the object you meant before believing the number. Count
 what was skipped and report it.
+
+The lint entry above is this document failing its own rule, which is worth leaving
+in rather than quietly correcting: a matching aggregate is not a matching state,
+and a handoff written to be trusted is exactly the kind of artefact that accrues
+this defect unchecked.
+
+### An artefact asserting a mechanism that does not occur
+
+The same defect, three times in one session, each in a different artefact:
+
+- **Issue #84's stated failure mode.** It claimed `create or replace view` would
+  drop a column "without complaint". It cannot; it errors with `cannot drop
+  columns from view` and aborts the batch.
+- **This document's lint attribution.** "All in unit-1", when fifteen of sixteen
+  findings are in unit-0.
+- **`audit_anon_exposure.py`'s spec-check docstring.** It called the anon
+  OpenAPI spec check the load-bearing half. The endpoint answers anon with 401,
+  so that check had never run once.
+
+All three were written by someone who understood the system, all three read as
+authoritative, and all three passed review, because in every case the claim was
+*plausible* and nobody executed the thing it described. Plausibility is what
+makes this class survive review; it is not evidence.
+
+**The check: run the thing the artefact describes before trusting the
+description.** Re-run the file, call the endpoint, execute the statement in a
+throwaway container, attribute the findings instead of counting them. Each of the
+three above took under five minutes to disprove once someone tried.
 
 ---
 
@@ -339,9 +388,20 @@ what was skipped and report it.
 | Unit Map | `deferred-curriculum-unit-map.md` (authoritative over the item bank) |
 | Taxonomy | `data/docs/misconception_taxonomy.json` (do not edit while authoring) |
 
-Lint baseline is `6 errors, 10 warnings`, all in unit-1 files, unchanged since
-before Unit 4. Any new error in a file you are authoring is a blocker; those ten
-warnings and six errors are pre-existing and are not.
+Lint baseline is `6 errors, 10 warnings`, unchanged since before Unit 4. Any new
+error in a file you are authoring is a blocker; those ten warnings and six errors
+are pre-existing and are not.
+
+They are not where an earlier version of this document said they were. Measured
+2026-08-16:
+
+| File | Errors | Warnings |
+|---|---|---|
+| `unit-0/QR.3.8` | 5 | 10 |
+| `unit-1/QR.3.1` | 1 | 0 |
+
+Fifteen of the sixteen findings are in **unit-0**, not unit-1. Reconcile the
+attribution, not just the total.
 
 The CAT diagnostic item bank is a separate system mid its own taxonomy cleanup.
 Curriculum work does not touch it.

@@ -48,6 +48,21 @@ Checks, in order of how expensive the failure is to find later:
      fields, where a single backslash before $ is an invalid escape and will
      not parse. Spell it as a word there; \\$ belongs in markdown prose only.
   5. Em dashes, which the house style does not use.
+  6. ANSWER LEAK INTO THE QUESTION SECTIONS. Parts 2 and 3 ship to signed-out
+     students raw, through curriculum_topics_public, which redacts
+     practice_items but selects practice_problems and mini_quiz unchanged.
+     Nothing but authoring convention keeps an answer out of them.
+
+     The split is by line prefix -- `#### **Part 4:` -- so a heading with
+     three hashes or a missing asterisk does not fail, it silently stops
+     splitting, and Part 3 swallows the answer key. Every other check still
+     passes: the markdown is valid, the JSON parses, the tally counts, the page
+     renders. The worked solutions just become public.
+
+     Checked structurally: all four headings present exactly once, in the
+     uploader's own terms, then Parts 2 and 3 scanned for answer shapes. See
+     scripts/answer_shapes.py, which both this and the production audit import
+     so the commit gate and the audit cannot drift apart.
 
 Exit code is non-zero if anything fails, so it can gate a commit.
 """
@@ -58,6 +73,9 @@ from collections import Counter
 from fractions import Fraction as F
 from math import sqrt as _msqrt
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import answer_shapes  # noqa: E402  (after the path insert, by necessity)
 
 
 def _sqrt(v):
@@ -155,6 +173,48 @@ def sections(text):
     return out
 
 
+# The uploader's own split, reproduced exactly.
+#
+# upload_curriculum.py:100-138 walks the file line by line and switches section
+# on `line.startswith(prefix)`. This check reproduces that rather than reusing
+# sections() above, which is regex-based and forgiving in different places. A
+# gate that parses the file more leniently than the uploader does cannot see the
+# case where the uploader's split is the thing that broke, which is precisely
+# the case here.
+UPLOADER_PARTS = (
+    ('Part 1', '#### **Part 1:', 'guided_notes'),
+    ('Part 2', '#### **Part 2:', 'practice_problems'),
+    ('Part 3', '#### **Part 3:', 'mini_quiz'),
+    ('Part 4', '#### **Part 4:', 'answer_key'),
+)
+
+# Columns curriculum_topics_public serves to anon without redaction.
+ANON_RAW_PARTS = ('Part 2', 'Part 3')
+
+
+def uploader_sections(text):
+    """(sections, heading_counts) exactly as upload_curriculum.py would split.
+
+    heading_counts is returned alongside so a heading that is missing, or
+    present twice, is reported as the structural fault it is rather than
+    showing up only as a downstream content hit.
+    """
+    counts = {name: 0 for name, _, _ in UPLOADER_PARTS}
+    out = {name: [] for name, _, _ in UPLOADER_PARTS}
+    current = None
+    for line in text.split('\n'):
+        switched = False
+        for name, prefix, _ in UPLOADER_PARTS:
+            if line.startswith(prefix):
+                counts[name] += 1
+                current = name
+                switched = True
+                break
+        if not switched and current:
+            out[current].append(line)
+    return {k: '\n'.join(v).strip() for k, v in out.items()}, counts
+
+
 def items_with_choices(block, header_re):
     """[(label, [choice strings])] for one question section."""
     parts = re.split(header_re, block, flags=re.M)
@@ -234,6 +294,44 @@ def main(path):
     # ── 5. em dashes ──
     if '\u2014' in text:
         failures.append(f"EM DASH  {topic_id}: {text.count(chr(8212))} found")
+
+    # \u2500\u2500 6. answer leak into the anon-visible question sections \u2500\u2500
+    up_sec, counts = uploader_sections(text)
+
+    # Structural first. A broken heading is the cause; the content hit below is
+    # only the symptom, and reporting the symptom alone sends the next reader
+    # hunting for an answer they did not write.
+    for name, prefix, column in UPLOADER_PARTS:
+        if counts[name] == 0:
+            failures.append(
+                f"PART HEADING  {topic_id}: no line starts with '{prefix}', so "
+                f"upload_curriculum.py never opens {column}. Content that belongs "
+                f"there folds into the previous section.")
+        elif counts[name] > 1:
+            failures.append(
+                f"PART HEADING  {topic_id}: '{prefix}' appears {counts[name]} times; "
+                f"the uploader switches section on each, so {column} keeps only "
+                f"the last block.")
+
+    scanned = 0
+    for part in ANON_RAW_PARTS:
+        body = up_sec.get(part, '')
+        if not body:
+            continue
+        scanned += 1
+        for kind, excerpt in answer_shapes.scan_text(body):
+            failures.append(
+                f"ANSWER IN {part.upper()}  {topic_id}: {kind} found in a section "
+                f"served raw to signed-out students: {excerpt[:100]}")
+
+    # A content check that quietly scanned nothing must not read as a pass.
+    if scanned < len(ANON_RAW_PARTS):
+        failures.append(
+            f"ANSWER SCAN  {topic_id}: scanned {scanned} of {len(ANON_RAW_PARTS)} "
+            f"anon-visible sections; the missing one is empty or never opened, so "
+            f"this check did not run on it.")
+    else:
+        notes.append(f"{scanned} anon-visible section(s) scanned for answer shapes")
 
     print(f"── {topic_id} ──")
     for n in notes:

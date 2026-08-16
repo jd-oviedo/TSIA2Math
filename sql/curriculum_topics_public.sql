@@ -33,6 +33,47 @@
 -- earlier fix that was never applied.
 --
 -- Run this in the Supabase SQL editor. Kept here for version control.
+--
+--
+-- ─── AUTHORITATIVE DEFINITION, AND HOW IT GOT EXTENDED ───────────────────────
+--
+-- This file is the authoritative full definition of curriculum_topics_public.
+-- The select list below is the complete deployed column list, 19 columns, and
+-- running this file alone reproduces the deployed view.
+--
+-- That was not true between 2026-08-12 and 2026-08-16. The view was extended by
+-- a LATER migration, sql/curriculum_placeholder_topics.sql, which appended
+-- is_placeholder and did not backport it here. For four days this file looked
+-- authoritative and described a view with one column fewer than production had.
+-- The column is now carried here as well, so the two files agree.
+--
+-- INVARIANT: sql/curriculum_placeholder_topics.sql issues its own CREATE OR
+-- REPLACE of this same view. Both must select the same columns in the same
+-- order. If you change one, change the other in the same commit. Comments may
+-- differ; the column sequence may not.
+--
+-- APPEND ONLY. CREATE OR REPLACE VIEW can add columns to the end of the list
+-- and can do nothing else: it cannot drop, reorder, rename or retype an
+-- existing one. So a new column goes on the END of the select list, and the
+-- existing order is not to be tidied, alphabetised, or regrouped, however
+-- untidy it looks. Verified against Postgres 15: replacing this view with a
+-- shorter list fails with `ERROR: cannot drop columns from view`.
+--
+-- What that error means in practice, because the failure mode is not the
+-- obvious one. Run a stale copy of this file in the Supabase SQL editor and it
+-- does NOT silently drop the column: the whole file is sent as one implicit
+-- transaction, the error aborts it, and the view keeps both its columns and its
+-- grants. Nothing changes. The two ways to actually break it are:
+--
+--   1. Clearing that error with `drop view public.curriculum_topics_public`
+--      and re-running. A drop takes the grants with it as well as the column,
+--      so anon gets 42501 on top of a missing column. topic-data.ts selects
+--      is_placeholder on the anonymous path, so loadTopic falls to notFound()
+--      and every topic page 404s for every signed-out student.
+--   2. Building a fresh environment from sql/ that runs this file but not
+--      sql/curriculum_placeholder_topics.sql. Same 404, no error anywhere.
+--
+-- Keeping the two files in sync is what closes both. See issue #84.
 
 
 -- ─── Redaction helper ────────────────────────────────────────────────────────
@@ -109,6 +150,24 @@ comment on function public.jsonb_strip_keys(jsonb, text[]) is
 -- markdown of the question text only, with the solutions living in the
 -- separate answer_key column. Verified against the shipped topics -- no
 -- "Answer:", "Correct", or distractor_logic block appears in either.
+--
+-- Re-verified 2026-08-16 against all 86 live rows read through the anon key,
+-- and against the parsed sections of all 83 source files. Still clean. The item
+-- objects anon receives carry exactly stem, level, format, choices and
+-- item_number.
+--
+-- BUT NOTE THE ASYMMETRY, because it is the weak point of this view. Those two
+-- columns are selected RAW. practice_items is protected by jsonb_strip_keys,
+-- which is key-based and cannot miss a branch; practice_problems and mini_quiz
+-- are safe only because the authored markdown happens never to put an answer in
+-- Part 2 or Part 3. That is a content convention, not a mechanism, and nothing
+-- in this view enforces it. upload_curriculum.py splits the source on the four
+-- `#### **Part N:` headings, so a topic that discussed an answer under Part 3,
+-- or a malformed `#### **Part 4:` heading that failed to close Part 3 and
+-- folded the answer key into it, would publish worked solutions to anon with no
+-- check firing. Asserted from the outside by scripts/audit_anon_exposure.py
+-- rather than fixed here: making it structural would mean parsing authored
+-- markdown in SQL.
 create or replace view public.curriculum_topics_public
 with (security_invoker = false) as
 select
@@ -132,7 +191,13 @@ select
   practice_problems,
   mini_quiz,
   created_at,
-  updated_at
+  updated_at,
+  -- Appended 2026-08-12 by sql/curriculum_placeholder_topics.sql, which added
+  -- the column to curriculum_topics and put it on this view in the same run.
+  -- Backported here 2026-08-16 (issue #84) so this file stops describing a view
+  -- that production had already moved past. LAST, because CREATE OR REPLACE can
+  -- only append; see the append-only note in the header.
+  is_placeholder
 from public.curriculum_topics;
 
 comment on view public.curriculum_topics_public is

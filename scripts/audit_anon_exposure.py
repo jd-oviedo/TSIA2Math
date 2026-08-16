@@ -24,12 +24,41 @@ Three checks per relation:
           reads as a grant on every table in the database.
 
   COLUMNS For relations that are meant to be public, are any answer-bearing
-          column names present? Checked twice, against two different sources:
-          the keys of a sampled row, and the columns anon's own OpenAPI spec
-          declares for the relation. The spec check is the load-bearing one --
-          it fires even when the relation currently returns no rows, so a
-          column added to a public view is caught the moment it is added
-          rather than the first time a row happens to come back through it.
+          column names present, and does the column list still match what was
+          pinned in EXPECTED_COLUMNS?
+
+          NOTE, corrected 2026-08-16. This check was written to read anon's own
+          OpenAPI spec, and its docstring called that the load-bearing half
+          because it fires even when a relation returns no rows. It no longer
+          runs: the project answers GET /rest/v1/ with 401 "Only the
+          `service_role` API key can be used for this endpoint", so
+          spec_columns() returns None for anon on every call and has been doing
+          so silently apart from a stderr warning. Found while pinning
+          questions_public.
+
+          What actually runs is the observed-key path: the columns present on
+          the rows anon really receives. That is a true reading of what anon can
+          see, and it is what the EXPECTED_COLUMNS comparison uses.
+
+          KNOWN GAP, accepted deliberately. The observed-key path cannot
+          distinguish "this relation has no columns" from "this relation
+          returned no rows" -- both look like an empty column list, because the
+          columns are read off a row and there is no row to read. So a pinned
+          relation that went empty would report an unreadable column list rather
+          than naming which columns went missing. It fails the audit either way,
+          which is why this is a gap in precision and not in safety. Closing it
+          would mean probing each expected column with select=<col>&limit=1,
+          where 200 means present and 400 means absent. Not done: both public
+          views are far from zero rows (86 and 1124 as of 2026-08-16), so the
+          gap is theoretical today. Revisit if a pinned relation can legitimately
+          be empty.
+
+  CONTENT For those same relations, does any answer-SHAPE appear in the payload
+          anon receives? Column names are not enough: mini_quiz and
+          practice_problems are served raw, so an answer pasted into the
+          authored markdown is invisible to a column check. Every row is
+          fetched and scanned, and forbidden keys are sought at any depth.
+          See scripts/answer_shapes.py.
 
 A GRANT with no READ is reported but does not fail the audit: with RLS enabled
 and no policy the statement is authorised and still affects zero rows. It is
@@ -47,6 +76,9 @@ import sys
 import urllib.error
 import urllib.request
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import answer_shapes  # noqa: E402  (after the path insert, by necessity)
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -70,6 +102,50 @@ FORBIDDEN = {
     "distractor_logic",
     "explanation",
     "rationale",
+}
+
+# The exact column list each public view is expected to expose, in order.
+#
+# Asserted in BOTH directions, which is the point. An added answer-bearing
+# column is the obvious risk and the FORBIDDEN check above already covers it.
+# The direction that check misses is a column silently going AWAY:
+# topic-data.ts selects is_placeholder on the anonymous path, so a rebuild that
+# drops it makes PostgREST reject the select, loadTopic falls to notFound(), and
+# every topic page 404s for every signed-out student while this audit reports
+# nothing wrong.
+#
+# That is issue #84. It was found by someone reading a file. This is what turns
+# the next occurrence into a failing check.
+EXPECTED_COLUMNS = {
+    "curriculum_topics_public": [
+        "id", "course_id", "topic_id", "topic_name", "unit_number",
+        "sequence_in_unit", "estimated_time_minutes", "difficulty_band",
+        "assessment_layer", "related_strand", "keywords", "prerequisites",
+        "guided_notes", "practice_items", "practice_problems", "mini_quiz",
+        "created_at", "updated_at", "is_placeholder",
+    ],
+    # Captured from production 2026-08-16, not transcribed from
+    # sql/questions_lockdown.sql. The premise of issue #84 is that checked-in
+    # DDL is not trustworthy until proven otherwise, and that applies to the CAT
+    # side too: this list is the key set observed on all 1124 live rows read
+    # through the anon key, which agreed on a single distinct key tuple.
+    #
+    # Independently probed as absent from this view: correct_answer,
+    # misconception_tag, explanation, rationale, distractor_logic (all HTTP 400).
+    "questions_public": [
+        "item_id", "status", "question_text", "answer_choices", "primary_strand",
+        "topic_id", "proficiency_level", "assessment_layer", "difficulty_level",
+        "calculator_type", "requires_calculator", "contains_image", "image_url",
+        "category", "objective_text", "figure_type", "figure_props",
+    ],
+}
+
+# Fields served to anon WITHOUT redaction, and therefore safe only by authoring
+# convention. practice_items is protected by jsonb_strip_keys and is scanned
+# too, because a redaction that failed on a nested branch is exactly the thing
+# a top-level column check cannot see.
+CONTENT_SCAN_FIELDS = {
+    "curriculum_topics_public": ("mini_quiz", "practice_problems", "practice_items"),
 }
 
 
@@ -135,6 +211,55 @@ def write_grants(url: str, key: str, relation: str, column: str):
     return held
 
 
+def fetch_all(url: str, key: str, relation: str, page: int = 1000):
+    """Every row anon can read, paged. Returns (rows, error) with one of them None.
+
+    EVERY row, not a sample. The previous column check sampled `limit=1`, which
+    cannot see a leak on row 57 of 86 -- and a leak arrives one authored topic at
+    a time, so the sampled row is the least likely place to find it.
+    """
+    rows, offset = [], 0
+    while True:
+        status, _, text = request(
+            f"{url}/rest/v1/{relation}?select=*",
+            key,
+            headers={"Range-Unit": "items", "Range": f"{offset}-{offset + page - 1}"},
+        )
+        if status >= 400 or status == 0:
+            return None, f"HTTP {status}"
+        try:
+            batch = json.loads(text)
+        except json.JSONDecodeError:
+            return None, "response was not JSON"
+        if not isinstance(batch, list):
+            return None, f"expected a list, got {type(batch).__name__}"
+        rows.extend(batch)
+        if len(batch) < page:
+            return rows, None
+        offset += page
+
+
+def content_findings(rows, fields):
+    """(findings, rows_scanned, fields_scanned) for answer shapes in the payload.
+
+    Scans the named fields when a relation declares them, and every field
+    otherwise, so a relation added to CONTENT_SCAN_FIELDS-less config is still
+    covered rather than silently skipped.
+    """
+    findings, rows_scanned, fields_scanned = [], 0, 0
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        rows_scanned += 1
+        targets = [f for f in fields if f in row] if fields else list(row)
+        for field in targets:
+            fields_scanned += 1
+            for kind, detail in answer_shapes.scan_payload(row[field]):
+                ident = row.get("topic_id") or row.get("id") or "?"
+                findings.append(f"{ident}.{field}: {kind} - {detail[:70]}")
+    return findings, rows_scanned, fields_scanned
+
+
 def spec_columns(url: str, key: str):
     """Columns each relation declares in the OpenAPI spec for this key.
 
@@ -179,8 +304,11 @@ def main() -> int:
     # that quietly stops running is worse than no column check.
     anon_spec = spec_columns(url, anon)
     if anon_spec is None:
-        print("WARNING: could not read the anon OpenAPI spec; "
-              "column checks fall back to sampled rows only.", file=sys.stderr)
+        print("NOTE: the anon OpenAPI spec is not readable (the project restricts "
+              "GET /rest/v1/ to service_role), so column checks read the columns "
+              "actually present on anon's rows. Pinned relations still fail if "
+              "their column list cannot be read; see the COLUMNS note above.",
+              file=sys.stderr)
 
     print(f"{'RELATION':<26} {'ANON ROWS':<10} {'ANON GRANTS':<16} {'VERDICT':<8} DETAIL")
     print("-" * 100)
@@ -202,25 +330,72 @@ def main() -> int:
         if relation in PUBLIC_BY_DESIGN:
             declared = sorted(FORBIDDEN.intersection(anon_spec.get(relation, set()))) \
                 if anon_spec else []
-            sampled = []
-            if readable:
-                _, _, sample = request(f"{url}/rest/v1/{relation}?select=*&limit=1", anon)
-                try:
-                    payload = json.loads(sample)
-                except json.JSONDecodeError:
-                    payload = []
-                sampled = sorted(FORBIDDEN.intersection(payload[0])) if payload else []
 
-            if declared or sampled:
+            # Every row, and every answer-bearing shape inside it.
+            content, scanned_rows, scanned_fields, fetch_err = [], 0, 0, None
+            all_rows = []
+            if readable:
+                all_rows, fetch_err = fetch_all(url, anon, relation)
+                if all_rows is not None:
+                    content, scanned_rows, scanned_fields = content_findings(
+                        all_rows, CONTENT_SCAN_FIELDS.get(relation)
+                    )
+
+            sampled = sorted(FORBIDDEN.intersection(all_rows[0])) \
+                if all_rows else []
+
+            # The column list, both directions. Prefer the anon spec; fall back
+            # to observed keys so a spec that could not be read does not silently
+            # disable the check.
+            col_problems = []
+            expected = EXPECTED_COLUMNS.get(relation)
+            if expected:
+                actual = set(anon_spec.get(relation, set())) if anon_spec else \
+                    (set(all_rows[0]) if all_rows else set())
+                if actual:
+                    missing = [c for c in expected if c not in actual]
+                    added = sorted(actual - set(expected))
+                    if missing:
+                        col_problems.append("columns MISSING: " + ", ".join(missing))
+                    if added:
+                        col_problems.append("columns ADDED: " + ", ".join(added))
+                else:
+                    col_problems.append("column list could not be read")
+
+            # A content check that scanned nothing must never read as a pass.
+            scan_broken = None
+            if readable and rows:
+                if fetch_err or all_rows is None:
+                    scan_broken = f"could not fetch rows to scan ({fetch_err})"
+                elif scanned_rows == 0:
+                    scan_broken = f"scanned 0 of {rows} rows"
+                elif scanned_rows < rows:
+                    scan_broken = f"scanned only {scanned_rows} of {rows} rows"
+                elif scanned_fields == 0:
+                    scan_broken = f"scanned {scanned_rows} rows but 0 fields"
+
+            if declared or sampled or content or col_problems or scan_broken:
                 verdict = "LEAK"
                 where = []
                 if declared:
                     where.append("declared in anon spec: " + ", ".join(declared))
                 if sampled:
-                    where.append("present in sampled row: " + ", ".join(sampled))
-                detail = "answer-bearing columns exposed - " + "; ".join(where)
+                    where.append("present in row: " + ", ".join(sampled))
+                if content:
+                    where.append(f"answer shapes in {len(content)} field(s): "
+                                 + "; ".join(content[:3])
+                                 + (" ..." if len(content) > 3 else ""))
+                if col_problems:
+                    where.append("; ".join(col_problems))
+                if scan_broken:
+                    where.append("CONTENT CHECK DID NOT RUN: " + scan_broken)
+                detail = "; ".join(where)
             elif readable:
-                detail = f"public by design, redacted ({rows} rows)"
+                cols_note = (f"{len(expected)} columns as expected" if expected
+                             else "no column list pinned")
+                detail = (f"public by design, redacted ({rows} rows); "
+                          f"content clean across {scanned_rows} rows / "
+                          f"{scanned_fields} fields; {cols_note}")
         elif readable:
             verdict = "LEAK"
             detail = f"{rows} rows readable with no login"
