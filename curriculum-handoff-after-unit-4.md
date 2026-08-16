@@ -57,11 +57,21 @@ content was fine; the repo simply did not describe production. See section 4.
 
 ## 2. Open tooling issues
 
-Three, all found during content work rather than by any check, and all the same
+Four, all found during content work rather than by any check, and all the same
 shape: a checked-in artefact that stopped matching the thing it describes. They
 were deliberately kept out of the content batches and queued for one sitting.
 
-**Work them in this order.** #84 is done; #86 and #88 are open.
+**Status, measured 2026-08-16.** #84 and #88 are **done**. **#86 is open.**
+**#101 is open** and is new: ten live topics use `topic_specific` slugs assigned
+to other topics, fourteen uses in total, none of them in Unit 5. Found while
+establishing a `check_topic.py` baseline during Unit 5 Phase 1, filed rather than
+fixed, and the full table is in the issue.
+
+An earlier revision of this section listed #88 as open while section 3 described
+its retirement as already executed, quoting the tool's output. Both halves were
+written at different times and neither was wrong when written. **A status line is
+the fastest thing in this document to go stale, so it now carries the date it was
+measured.**
 
 ### First: #84, `sql/curriculum_topics_public.sql` has drifted from the deployed view (RESOLVED)
 
@@ -112,6 +122,61 @@ because the figure could not pass `--verify`. Unit 4 has no other double-root
 graphs; Unit 5 may.
 
 Add both probes as regression fixtures whatever fix is chosen.
+
+#### The wider limit #86 sits inside: `--verify` proves builder fidelity, not spec truth
+
+Measured 2026-08-16 while scoping Unit 5's figures. This is not a bug and there is
+no issue for it, but it decides what a new figure type's verification can be
+expected to do, so it belongs next to #86 rather than in someone's head.
+
+`verifyFigure(spec)` calls `buildSvg(spec)` internally. It therefore builds the
+SVG **from the same spec it verifies against**, and the two move together. What it
+can prove is that the emitted geometry matches what the spec declared. What it
+cannot prove is that the spec's own claim is true.
+
+The two-argument form `verifyPlane(spec, svg)` separates them, which is how the
+distinction was measured. A scatter of three points with a declared fitted line:
+
+```
+CONTROL  spec vs its own svg      : 0 failed   <- passes
+FAULT    svg drawn at wrong slope : 1 failed   line 0 slope(2.5 vs 1.5)
+FAULT    svg drawn w/ moved point : 1 failed   point 1 y(17 vs 10)
+
+GAP      line that does NOT fit the cloud, drawn honestly: 0 failed  <- PASSES
+```
+
+The first fault run is the harness working: a builder that draws the wrong slope
+is caught, and caught by inverting the printed tick labels rather than by trusting
+`makeScales`. The GAP line is the limit: a declared line of `m = -4, b = 19`
+against a rising point cloud passes every one of the 21 assertions, because the
+builder drew faithfully what the spec asked for and nothing cross-checks the two
+declarations against each other.
+
+**So "`--verify` recomputes every labeled quantity" means two different jobs**, and
+only the first exists today:
+
+| | what it checks | exists |
+|---|---|---|
+| builder fidelity | emitted geometry matches the spec | yes, and it is good |
+| spec consistency | the spec's declarations agree with each other | no |
+
+`verifyCurves` is the closest thing to the second, and worth studying before
+building any of it: it recomputes roots, vertex and y-intercept **from the algebra**
+rather than from the spec's own numbers, which is why a curve spec cannot simply
+assert its own landmarks. A curve is declared by family and parameters and never
+as a point list, precisely so the check has something independent to recompute.
+
+Any new mark type should be designed the same way. A bar chart declaring
+`values: [3, 7, 5]` gets real builder verification for free by reading heights back
+through the tick map. A box plot declaring a five-number summary likewise. But a
+**fitted** line is a spec-consistency claim, and verifying it needs the fit
+recomputed from the point cloud, which is new machinery rather than a new caller.
+
+A first probe of this missed the distinction entirely and reported "21 assertions,
+0 failed" with both of its fault injections coming back blind, because it mutated
+the spec and re-derived the SVG from the mutation. **A fault injected into the
+input of both sides of a comparison is not a fault.** The control is what caught
+it, again.
 
 ### Third: #88, two approved slugs describe one misconception
 
@@ -220,6 +285,31 @@ escaped `\$28`. There are 122 existing examples across 15+ topics. `check_topic.
 enforces the JSON side. Verify the prose side on the rendered page, not in source:
 both failure modes, an unparseable escape and a leaked backslash, are invisible in
 review.
+
+**One known violation, deliberately left alone.** `QR.3.5` line 901 carries a bare
+`$37` inside a `range_notes` string:
+
+```
+"range_notes": "b rolls in steps of 5 so the base fee never lands on $37. ..."
+```
+
+It is real currency and it is genuinely unpaired, one dollar sign in the field. It
+is also the only surviving `CURRENCY` failure in the course and the same defect
+`lint_curriculum_source.py` reports as its one `QR.3.5` error, so the two tools
+agree on it.
+
+It was left because **it never reaches a student.** `range_notes` sits inside a
+fenced json block in Part 4, and Part 4 is teacher-only twice over: `answer_key`
+is not a column on `curriculum_topics_public`, and `loadTopic` only selects it
+when `requireTeacher()` passes. Both of its consumers,
+`renderMarkdownWithMath(stripAuthoringBlocks(raw))` and `splitAnswerKey`, call
+`stripAuthoringBlocks` first, which removes every `` ```json `` fence. Measured
+through the real render path on 2026-08-16: the string survives neither strip, and
+appears in no rendered HTML, no `solution_html`, and produces no red render.
+
+So the lint contract stays at **6 errors / 10 warnings**. Fixing it would be
+cosmetic, and changing content to satisfy a check that is measuring correctly is
+the wrong direction. Worth knowing if that field ever becomes student-visible.
 
 ### The figure selector rule
 
@@ -488,6 +578,42 @@ makes this class survive review; it is not evidence.
 description.** Re-run the file, call the endpoint, execute the statement in a
 throwaway container, attribute the findings instead of counting them. Each of the
 three above took under five minutes to disprove once someone tried.
+
+### Silent defaults: malformed input that yields a plausible value instead of an error
+
+Two instances found in one session, in unrelated systems, neither caught by any
+gate. Named as a class here because the next one will not look like either of
+these, and looking for the class is cheaper than finding the instance.
+
+The shape: **an input the author got wrong produces a well-formed, plausible
+result rather than a failure.** Nothing throws, nothing logs, and every check
+downstream passes, because there is nothing malformed left to detect by the time
+anything looks.
+
+- **`rehype-katex` runs KaTeX with `throwOnError: false`.** A mistyped macro does
+  not throw and does not carry an error class. It renders the literal source in
+  red (`#cc0000`) inside an ordinary `class="katex"` span, so `$A \cupp B$` ships
+  to a student as red `\cupp` with `next build`, eslint,
+  `lint_curriculum_source.py` and `check_topic.py` all green. Now gated by
+  `scripts/check_katex_render.mjs`. Production measured clean when the gate was
+  added: 83 topics, 6116 rendered fields, 29348 math spans, 0 red renders.
+
+- **`sequence_in_unit` defaults to `0`.** `upload_curriculum.py` reads it as
+  `parsed['metadata'].get('sequence_in_unit', 0)`, which is the *only* assignment
+  of that field anywhere: the source declares the sequence, the uploader never
+  derives it. A mistyped or missing frontmatter key therefore uploads a topic at
+  sequence 0, which sorts it to the front of its unit and breaks the ordering with
+  no error at any layer. Now gated at commit time in `check_topic.py`.
+
+**The tell is a default that is also a legal value.** `0` is a legal sequence;
+red text is a legal render. Where a default is indistinguishable from a real
+value, absence of the input cannot be detected downstream, so it has to be caught
+at the boundary where the input is read. Both fixes above are boundary checks for
+exactly that reason, and neither could have been a post-hoc audit.
+
+When adding any `.get(key, default)` or `throwOnError: false` to this codebase,
+ask whether a caller could ever tell the default apart from a real value. If not,
+the default is a silent failure with a plausible face on it.
 
 ### The fixture harness is the thing most likely to be wrong
 
