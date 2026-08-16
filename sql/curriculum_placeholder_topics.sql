@@ -75,6 +75,29 @@ comment on column public.curriculum_topics.is_placeholder is
 -- tidy it. Everything the original excluded -- answer_key, misconception_tags,
 -- misconceptions_used, related_cate_items -- is still excluded, and the
 -- practice_items redaction is unchanged; see that file for why each one is out.
+--
+--
+-- ─── THIS BLOCK NO LONGER EXTENDS THE DEFINITION ─────────────────────────────
+--
+-- Read this before treating the list below as the newer of the two.
+--
+-- sql/curriculum_topics_public.sql is the AUTHORITATIVE full definition of this
+-- view. When this file was written it was not: this block appended
+-- is_placeholder and that file was left describing an 18-column view while
+-- production ran 19. Anyone reading only that file got a stale column list, and
+-- anyone rebuilding an environment from it got a view that 404s every topic
+-- page for signed-out students. That was issue #84.
+--
+-- Fixed 2026-08-16 by backporting the column, so the two select lists are now
+-- identical and either file alone reproduces the deployed view. This block is
+-- kept, rather than deleted, because this file documents an applied migration
+-- and stays re-runnable in either order.
+--
+-- INVARIANT: the select list below and the one in
+-- sql/curriculum_topics_public.sql must select the same columns in the same
+-- order. If you change one, change the other in the same commit. Comments may
+-- differ; the column sequence may not. Appending a column here without
+-- backporting it there is exactly how #84 happened.
 create or replace view public.curriculum_topics_public
 with (security_invoker = false) as
 select
