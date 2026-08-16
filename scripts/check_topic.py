@@ -184,8 +184,11 @@ def main(path):
         for letter, raw in choices.items():
             s = signature(raw)
             if s is None:
+                # Not machine-evaluable (an equation, a set, prose). Fall back to
+                # normalised text, which still catches a choice repeated verbatim
+                # -- the cheapest form of this defect and the easiest to make.
                 unparsed += 1
-                continue
+                s = ('text', re.sub(r'\s+', '', raw))
             sigs.setdefault(s, []).append(letter)
         for letters in sigs.values():
             if len(letters) > 1:
