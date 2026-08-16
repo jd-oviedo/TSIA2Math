@@ -215,6 +215,14 @@ def main(path):
             # something. "x = 92" and bare restatements verify nothing.
             if not any(is_claim(p) for p in parts):
                 continue
+            # A segment left dangling on an operator is symbolic algebra, not an
+            # arithmetic claim: "33 = 25 + 18 - n(both)" loses the n(both) when
+            # LaTeX commands are stripped. Stripping the operator too would turn
+            # it into "33 = 43" and report a false mismatch, so it is excluded --
+            # counted and printed, never silently dropped.
+            if any(re.search(r'[\+\-\*/]\s*$', p) for p in parts):
+                unmodelled += 1
+                continue
             encountered += 1
             per_region[region][0] += 1
             values, broke = [], None
