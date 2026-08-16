@@ -23,6 +23,23 @@ Exits non-zero if any ERROR fires. WARN is advisory and does not fail the run.
     python3 scripts/lint_curriculum_source.py                       # whole course
     python3 scripts/lint_curriculum_source.py --unit 1
     python3 scripts/lint_curriculum_source.py --topics QR.2.2,QR.2.3
+    python3 scripts/lint_curriculum_source.py --json
+    python3 scripts/lint_curriculum_source.py --check-baseline
+
+`--check-baseline` compares the measured per-file attribution against
+`scripts/curriculum_lint_baseline.json` and fails on any difference.
+
+It compares **per file**, not on the totals, and that is the whole point. The
+pre-existing findings have summed to `6 errors, 10 warnings` through three
+successive rounds, and the attribution recorded alongside that total was wrong in
+all three: it read "all in unit-1", then `unit-0/QR.3.8` plus `unit-1/QR.3.1`,
+while the findings were in six other unit-1 files the entire time. Every
+reconciliation against the total passed. A total-only guard would have passed
+too. Only the file-level comparison can fail here.
+
+Regenerate the baseline with `--json` and only when a change is intended:
+
+    python3 scripts/lint_curriculum_source.py --json > scripts/curriculum_lint_baseline.json
 """
 import argparse
 import json
@@ -42,6 +59,7 @@ from upload_curriculum import (  # noqa: E402
 )
 
 TAXONOMY = ROOT / 'data' / 'docs' / 'misconception_taxonomy.json'
+BASELINE = ROOT / 'scripts' / 'curriculum_lint_baseline.json'
 
 # A fenced json block. Stripped before prose checks: distractor_logic is prose
 # and IS checked, but the check for unwrapped LaTeX would misfire on json.
@@ -203,12 +221,47 @@ def lint_file(path, approved, unapproved):
     return findings
 
 
+def compare_baseline(measured, baseline):
+    """Per-file drift between a measured attribution and the recorded one.
+
+    Returns a list of human-readable difference lines, empty when they agree.
+    Only files carrying findings are recorded, so adding a clean topic is not
+    drift, while the first finding in a new topic is.
+    """
+    diffs = []
+    for name in sorted(set(measured) | set(baseline)):
+        got = measured.get(name)
+        want = baseline.get(name)
+        if got == want:
+            continue
+        if want is None:
+            diffs.append(f'  NEW      {name}: {got["errors"]} error(s), '
+                         f'{got["warnings"]} warning(s)')
+        elif got is None:
+            diffs.append(f'  CLEARED  {name}: was {want["errors"]} error(s), '
+                         f'{want["warnings"]} warning(s)')
+        else:
+            diffs.append(f'  CHANGED  {name}: {want["errors"]}E/{want["warnings"]}W '
+                         f'-> {got["errors"]}E/{got["warnings"]}W')
+    return diffs
+
+
 def main():
     ap = argparse.ArgumentParser(description='Lint curriculum markdown source')
     ap.add_argument('--course', default='tsia2-math')
     ap.add_argument('--unit', help='restrict to one unit number')
     ap.add_argument('--topics', help='comma-separated topic_ids')
+    ap.add_argument('--json', action='store_true',
+                    help='emit the per-file attribution as JSON')
+    ap.add_argument('--check-baseline', action='store_true',
+                    help=f'fail if attribution differs from {BASELINE.name}')
     args = ap.parse_args()
+
+    # A filtered run cannot see the files it skipped, so it would report every
+    # one of them as CLEARED. Refuse rather than emit a confident wrong answer.
+    if args.check_baseline and (args.unit or args.topics):
+        print('--check-baseline needs the whole course; drop --unit/--topics.')
+        return 2
 
     source = ROOT / 'curriculum' / 'source' / args.course
     pattern = f'unit-{args.unit}/[AGPQ][R]*.md' if args.unit else 'unit-*/[AGPQ][R]*.md'
@@ -223,6 +276,8 @@ def main():
 
     approved, unapproved = load_slugs()
     errors = warns = 0
+    quiet = args.json or args.check_baseline
+    measured = {}
 
     for path in files:
         findings = lint_file(path, approved, unapproved)
@@ -230,12 +285,44 @@ def main():
         warnings = [f for f in findings if f[0] == 'WARN']
         errors += len(errs)
         warns += len(warnings)
+        name = f'{path.parent.name}/{path.stem}'
         if findings:
-            print(f'\n{path.parent.name}/{path.stem}')
+            measured[name] = {'errors': len(errs), 'warnings': len(warnings)}
+        if quiet:
+            continue
+        if findings:
+            print(f'\n{name}')
             for level, msg in findings:
                 print(f'  {level}: {msg}')
         else:
-            print(f'✓ {path.parent.name}/{path.stem}')
+            print(f'✓ {name}')
+
+    if args.json:
+        print(json.dumps({
+            'files_linted': len(files),
+            'totals': {'errors': errors, 'warnings': warns},
+            'files': measured,
+        }, indent=2))
+        return 0
+
+    if args.check_baseline:
+        if not BASELINE.exists():
+            print(f'No baseline at {BASELINE}. Generate it with --json.')
+            return 2
+        recorded = json.loads(BASELINE.read_text())
+        diffs = compare_baseline(measured, recorded.get('files', {}))
+        want = recorded.get('totals', {})
+        print(f'measured  {errors} error(s), {warns} warning(s) '
+              f'across {len(measured)} file(s) with findings')
+        print(f'baseline  {want.get("errors")} error(s), '
+              f'{want.get("warnings")} warning(s) '
+              f'across {len(recorded.get("files", {}))} file(s) with findings')
+        if diffs:
+            print('\nattribution drift:')
+            print('\n'.join(diffs))
+            return 1
+        print('\nattribution matches the baseline, file by file.')
+        return 0
 
     print(f'\n{len(files)} file(s): {errors} error(s), {warns} warning(s)')
     return 1 if errors else 0

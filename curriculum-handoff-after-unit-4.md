@@ -430,21 +430,41 @@ The most expensive class, because it produces confident green output.
 - `check_topic.py`'s first version reported 48 of 56 `AR.4.8` choices as
   unparseable, which would have made it blind on the one topic made of radicals.
 
-- This document said the lint baseline was "all in unit-1 files". Five of the six
-  errors and all ten warnings are in `unit-0/QR.3.8`. The *total* was right, so
-  every round that reconciled `6 errors, 10 warnings` against the previous round
-  passed while carrying a wrong attribution forward. Found 2026-08-16 by
-  attributing the findings to files instead of counting them.
+- The lint attribution in this document, wrong in three successive versions. It
+  first said "all in unit-1 files"; the 2026-08-16 correction moved it to
+  `unit-0/QR.3.8` (5 errors, 10 warnings) plus `unit-1/QR.3.1` (1 error); measured
+  again 2026-08-16 at `6267a05`, all sixteen findings sit in six *other* unit-1
+  files and both named files lint clean. The *total* was right every time, so every
+  round that reconciled `6 errors, 10 warnings` against the previous round passed
+  while carrying a wrong attribution forward, **including the round that believed
+  it was fixing exactly this.**
+
+  Note what the second version got wrong. It was not a lazier claim than the
+  first. It was more specific, it was arrived at by measuring, and it was wrong in
+  a new direction. Correcting an attribution by hand yields another hand-maintained
+  attribution, which is the same artefact with a fresher date on it.
+
+  Closed 2026-08-16 by generating it instead: `scripts/curriculum_lint_baseline.json`
+  plus `python3 scripts/lint_curriculum_source.py --check-baseline`, which compares
+  **file by file**. A guard on the total would have passed all three times, because
+  6/10 was never the part that was wrong. Shown able to fail before being trusted:
+  fed the second version's attribution, whose totals still sum to 6/10, it reports
+  the six real files as NEW and the two named files as CLEARED; fed a unicode math
+  symbol injected into `unit-5/PR.2.1`, it reports that file as NEW at 2 errors. A
+  clean control run passed on both sides of both faults.
 
 **A check that cannot fail against the wrong object is not a check, and one that
 quietly skips what it cannot read is not one either.** When a suite passes first
 time, confirm it is reading the object you meant before believing the number. Count
 what was skipped and report it.
 
-The lint entry above is this document failing its own rule, which is worth leaving
-in rather than quietly correcting: a matching aggregate is not a matching state,
-and a handoff written to be trusted is exactly the kind of artefact that accrues
-this defect unchecked.
+The lint entry above is this document failing its own rule twice, which is worth
+leaving in rather than quietly correcting: a matching aggregate is not a matching
+state, and a handoff written to be trusted is exactly the kind of artefact that
+accrues this defect unchecked. The second failure is the more instructive one. The
+first correction was careful and still wrong, which is the evidence that care is
+not the fix here. **When a fact in this document has drifted twice, stop correcting
+it and generate it.**
 
 ### An artefact asserting a mechanism that does not occur
 
@@ -517,16 +537,39 @@ Lint baseline is `6 errors, 10 warnings`, unchanged since before Unit 4. Any new
 error in a file you are authoring is a blocker; those ten warnings and six errors
 are pre-existing and are not.
 
-They are not where an earlier version of this document said they were. Measured
-2026-08-16:
+**Do not hand-maintain the attribution below. It is generated.** Three successive
+versions of this document recorded it by hand and all three were wrong; see the
+entry in section 4. The recorded copy now lives in
+`scripts/curriculum_lint_baseline.json` and is checked by
+
+```
+python3 scripts/lint_curriculum_source.py --check-baseline
+```
+
+which compares **per file** and fails on any difference. Regenerate it only when a
+change is intended, with
+`python3 scripts/lint_curriculum_source.py --json > scripts/curriculum_lint_baseline.json`.
+
+Measured 2026-08-16 on `main` at `6267a05`, by
+`python3 scripts/lint_curriculum_source.py` over all 83 source files:
 
 | File | Errors | Warnings |
 |---|---|---|
-| `unit-0/QR.3.8` | 5 | 10 |
-| `unit-1/QR.3.1` | 1 | 0 |
+| `unit-1/QR.1.1` | 5 | 2 |
+| `unit-1/QR.1.2` | 0 | 2 |
+| `unit-1/QR.1.3` | 0 | 2 |
+| `unit-1/QR.1.4` | 0 | 2 |
+| `unit-1/QR.2.1` | 0 | 2 |
+| `unit-1/QR.3.5` | 1 | 0 |
+| **Total** | **6** | **10** |
 
-Fifteen of the sixteen findings are in **unit-0**, not unit-1. Reconcile the
-attribution, not just the total.
+All sixteen findings are in **unit-1**, spread across six files. `unit-0/QR.3.8`
+and `unit-1/QR.3.1`, which earlier versions of this table named, both lint clean
+at `0 errors, 0 warnings`; confirmed by running each alone through `--topics`.
+Reconcile the attribution, not just the total.
+
+**Every attribution claim in this document carries the command and the date that
+produced it, from here on.** A table without those is a recollection.
 
 The CAT diagnostic item bank is a separate system mid its own taxonomy cleanup.
 Curriculum work does not touch it.
