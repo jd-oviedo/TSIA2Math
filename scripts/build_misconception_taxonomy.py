@@ -83,8 +83,14 @@ CROSS_NEW = [
 ("adds_exponents_wrongly","Adds exponents where the applicable rule requires multiplying or subtracting them.",["AR.4.2","AR.4.4","AR.4.10","AR.4.11"],"Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review so the name covers every displaced rule, not just the power rule."),
 ("multiplies_exponents_wrongly","Multiplies exponents where the applicable rule requires adding or subtracting them.",["AR.4.2","AR.4.4","AR.4.10"],"Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review."),
 ("subtracts_exponents_wrongly","Subtracts exponents where the applicable rule requires adding or multiplying them.",["AR.4.4","AR.4.10"],"Split from exponent_rule_confusion per decision 1; renamed per Phase 2 review."),
-("multiplies_instead_of_divides","Multiplies two quantities where the relationship requires division.",["AR.2.1","AR.4.7","GR.2.1","GR.2.3","GR.2.4","GR.3.2","GR.3.3","QR.2.3","QR.2.5"],""),
-("divides_instead_of_multiplies","Divides where the relationship requires multiplication.",["AR.2.1","GR.2.2","GR.2.3","GR.3.2","GR.3.3","GR.4.3","QR.2.6","QR.2.7"],""),
+# GR.3.4 and GR.4.3 below were pre-assigned by hand on 2026-08-13 and
+# backported 2026-08-16 (issue #94). The GR.3.4 curriculum topic uses this
+# slug, so dropping the pre-assignment fails its commit gate. Kept out of the
+# notes field deliberately: notes is emitted data, and provenance belongs in
+# the source, not in the artefact.
+("multiplies_instead_of_divides","Multiplies two quantities where the relationship requires division.",["AR.2.1","AR.4.7","GR.2.1","GR.2.3","GR.2.4","GR.3.2","GR.3.3","GR.3.4","GR.4.3","QR.2.3","QR.2.5"],""),
+# GR.3.4 pre-assigned by hand 2026-08-13, backported 2026-08-16 (issue #94).
+("divides_instead_of_multiplies","Divides where the relationship requires multiplication.",["AR.2.1","GR.2.2","GR.2.3","GR.3.2","GR.3.3","GR.3.4","GR.4.3","QR.2.6","QR.2.7"],""),
 ("adds_probabilities_instead_of_multiplying","Adds the stage probabilities of a compound event instead of multiplying them.",["PR.3.2","PR.3.3"],""),
 ("false_radical_distribution","Applies a false distributive rule to radicals, or combines radicands where the operation does not permit it.",["AR.4.8","AR.4.9","QR.1.1","QR.1.5"],""),
 ("perimeter_area_confusion","Computes perimeter where area was required, or vice versa.",["GR.2.1","GR.2.3","GR.2.7","GR.3.1","GR.2.4"],"Kept separate from the other two formula swaps per Phase 1 decision 2."),
@@ -92,7 +98,7 @@ CROSS_NEW = [
 ("volume_surface_area_confusion","Computes volume where surface area was required, or vice versa.",["GR.2.5","GR.2.6"],"Kept separate per decision 2."),
 # omission
 ("omits_constant_term","Computes the variable or rate portion correctly and omits the fixed component (flat fee, intercept, starting value).",["AR.2.3","AR.2.6","GR.2.1","PR.4.2","QR.3.3","QR.3.6","QR.4.1","QR.4.2","QR.4.3"],"Boundary with answers_intermediate_value and omits_variable_term is fixed by the approved intermediate_vs_omission rule."),
-("omits_fractional_factor","Drops the one-half, one-third or four-thirds from an area or volume formula, or applies it twice.",["GR.2.3","GR.2.4","GR.2.5","GR.2.6","GR.2.7","GR.3.4"],""),
+("omits_fractional_factor","Drops the one-half, one-third or four-thirds from an area or volume formula.",["GR.2.3","GR.2.4","GR.2.5","GR.2.6","GR.2.7","GR.3.4"],"Narrowed 2026-08-13: previously read '... or applies it twice', which bundled the opposite error. Applying it twice is now applies_fractional_factor_twice."),
 ("omits_second_component","Ignores one part of a composite figure, two-part total or two-stage quantity.",["AR.4.3","GR.2.3","GR.2.5","GR.2.6","PR.3.3","QR.2.1","QR.2.5","QR.2.6"],""),
 ("forgets_square_root","Computes the squared or cubed quantity correctly and reports it without taking the root.",["AR.3.4","GR.2.3","GR.2.4","GR.2.5","GR.2.6","GR.3.1","GR.3.2"],"Covers square and cube roots."),
 # percent
@@ -120,7 +126,17 @@ CROSS_NEW = [
 ("order_of_operations_violated","Evaluates left to right or applies a lower-priority operation first.",["AR.1.1","AR.2.8","PR.4.2","QR.1.7","QR.3.1"],""),
 ("squaring_confused_with_doubling","Computes twice a quantity where its square was required, or vice versa.",["AR.4.9","AR.4.10","AR.4.11","GR.2.2","QR.1.7"],""),
 ("drops_grouping_symbols","Ignores parentheses as a grouping symbol entirely.",["QR.1.7","QR.3.1","QR.3.3"],""),
-("binomial_square_middle_term_omitted","Expands a squared binomial as the sum of the squared terms, omitting the middle term.",["AR.3.7","AR.4.2","AR.4.9","GR.2.7"],"MERGED in Phase 2 from three separately-drafted topic slugs (AR.3.7, AR.4.2, AR.4.9) plus GR.2.7.")]
+("binomial_square_middle_term_omitted","Expands a squared binomial as the sum of the squared terms, omitting the middle term.",["AR.3.7","AR.4.2","AR.4.9","GR.2.7"],"MERGED in Phase 2 from three separately-drafted topic slugs (AR.3.7, AR.4.2, AR.4.9) plus GR.2.7."),
+# fractional-factor splits, backported 2026-08-16 (issue #94)
+#
+# These three were added directly to data/docs/misconception_taxonomy.json on
+# 2026-08-13 and never landed here, so the generator emitted 475 slugs while the
+# checked-in file carried 481. Regenerating would have deleted them and orphaned
+# the tags they carry. Definitions and notes are copied verbatim from the
+# checked-in file so the emitted output matches it exactly.
+("applies_fractional_factor_twice","Applies the one-half or one-third factor a second time, scaling down a result that already included it.",["GR.2.3","GR.2.6"],"Split out 2026-08-13 from an over-broad tagging rule; see content-fixes-needed.md."),
+("fractional_factor_applied_to_one_term_only","Applies the fractional factor to one term of a sum and leaves the remaining term unscaled.",["GR.2.7"],"Split out 2026-08-13 from an over-broad tagging rule; see content-fixes-needed.md."),
+("wrong_fractional_divisor_used","Divides by a number other than the one the formula requires, rather than omitting the factor.",["GR.2.6"],"Split out 2026-08-13 from an over-broad tagging rule; see content-fixes-needed.md.")]
 
 # ------------------------------------------------------------- long tail
 # topic -> [(slug, definition, note)]
@@ -242,7 +258,11 @@ TAIL = {
  ("set_listed_as_multiset","Repeats a value in a set rather than listing each element once.",""),
  ("shift_applied_to_wrong_axis","Applies a horizontal shift to the range or a vertical shift to the domain.",""),
  ("piecewise_boundary_openness_error","Mishandles an open or closed boundary at a piecewise seam.",""),
- ("jump_discontinuity_ignored","Reads a piecewise range as one continuous interval across a jump.","")],
+ ("jump_discontinuity_ignored","Reads a piecewise range as one continuous interval across a jump.",""),
+ # Backported 2026-08-16 (issue #94); see the note in CROSS_NEW.
+ ("output_value_assumed_in_domain","Treats a value that appears as an output as therefore belonging to the domain, conflating a shared numeric value with membership in the input set.","Split out 2026-08-13 from an over-broad tagging rule; see content-fixes-needed.md."),
+ ("range_read_from_domain_endpoints","Reads the range endpoints straight off the domain boundaries without applying the function rule.","Split out 2026-08-13 from an over-broad tagging rule; see content-fixes-needed.md."),
+ ("repeated_output_excludes_input","Excludes an input because its output duplicates one already produced, treating a repeated output as disqualifying.","Split out 2026-08-13 from an over-broad tagging rule; see content-fixes-needed.md.")],
 "AR.1.4":[("family_matched_by_surface_growth","Matches a function to a family from its growth appearance without computing differences or ratios.",""),
  ("exponent_position_confused","Confuses a variable base with a variable exponent when naming a function family.",""),
  ("differences_vs_ratios_confused","Uses first differences where constant ratios distinguish the family, or vice versa.",""),
@@ -529,7 +549,7 @@ MERGED_TAIL = [
  ("base_times_exponent","Evaluates a power by multiplying the base by the exponent.",["AR.4.10","AR.4.11"],"Merged from AR.4.10 and AR.4.11."),
  ("linear_instead_of_compound","Applies a rate linearly where compounding is required.",["AR.4.11","AR.4.12"],"Merged from AR.4.11 (linear decay) and AR.4.12."),
  ("legs_combined_without_squaring","Adds or subtracts two side lengths directly instead of working with their squares.",["GR.3.1","GR.3.3","GR.3.4"],"Merged across three GR topics."),
- ("hypotenuse_reported_for_leg","Reports the hypotenuse where a leg was asked for.",["GR.3.2","GR.3.3"],"Merged from GR.3.2 and GR.3.3."),
+ ("hypotenuse_reported_for_leg","Reports the hypotenuse where a leg was asked for.",["GR.3.2","GR.3.3","GR.3.4"],"Merged from GR.3.2 and GR.3.3."),
  ("area_ratio_confused_with_linear_ratio","Confuses the ratio of areas with the ratio of corresponding lengths, in either direction.",["GR.4.2","GR.4.3"],"Merged from GR.4.2 (area_ratio_reported_as_scale_factor) and GR.4.3 (area_ratio_used_as_side_ratio)."),
  ("side_omitted_from_perimeter","Omits one side from the sum when computing a perimeter.",["GR.2.1","GR.3.1"],"Merged from GR.2.1 and GR.3.1 (drafted there as computed_side_omitted_from_perimeter)."),
  ("threshold_boundary_error","Counts with an inclusive threshold where an exclusive one was required, or vice versa.",["PR.1.1","PR.1.3","PR.3.1"],"Merged across three PR topics."),
@@ -641,6 +661,10 @@ def build():
       "schema_version":"1.0",
       "status":STATUS,
       "generated_by":"scripts/build_misconception_taxonomy.py",
+      # Carried in the artefact because this is the file that got hand-edited,
+      # and it was the only one of the two emitted files with no such warning.
+      # The markdown companion had one; this did not. See issue #94.
+      "do_not_edit":"Generated file. Edit scripts/build_misconception_taxonomy.py, regenerate, then run scripts/check_taxonomy_generated.py. Editing this file directly is issue #94.",
       "authoritative":True,
       "description":"Canonical misconception taxonomy for TSIA2Math. Extends the 40-slug curriculum vocabulary across the CAT item bank. Slugs are the values written to curriculum_topics.misconception_tags and passed to record_misconception().",
       "sources":{
@@ -713,8 +737,13 @@ def markdown(out):
     L=[]
     a=L.append
     a("# Misconception Taxonomy — human-readable companion\n")
-    a(f"> **Generated file — do not edit.** Source of truth is `data/docs/misconception_taxonomy.json`,")
-    a("> built by `scripts/build_misconception_taxonomy.py`. Edit the script, then regenerate.\n")
+    # Both emitted files are generated. The source of truth is this script's
+    # data tables, NOT the JSON: the JSON is an output too, and calling it the
+    # source is what licensed editing it directly. See issue #94.
+    a(f"> **Generated file — do not edit.** Neither this file nor")
+    a("> `data/docs/misconception_taxonomy.json` is the source of truth; both are")
+    a("> outputs of `scripts/build_misconception_taxonomy.py`, whose data tables are.")
+    a("> Edit the script, regenerate, and run `scripts/check_taxonomy_generated.py`.\n")
     a(f"Status: `{out['status']}`\n")
     c=out["counts"]
     a("| | count |")
