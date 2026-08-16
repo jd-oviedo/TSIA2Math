@@ -5,6 +5,7 @@ import { createClient as createSessionClient } from '@/app/lib/supabase-server';
 import { createAdminClient } from '@/app/lib/supabase-admin';
 import { requireTeacher } from '@/app/lib/auth';
 import { renderInlineWithMath, splitAnswerKey } from '@/lib/curriculum-utils';
+import { loadTopicFixture } from '@/lib/curriculum-fixture';
 import {
   getTopics,
   getTopicAttempts,
@@ -133,16 +134,38 @@ export const loadTopic = cache(async (params: RouteParams) => {
   // go through the cookie-aware SSR client: lib/supabase/server.ts builds a
   // client with no cookie storage at all, so auth.getSession() on it is null for
   // everyone, signed in or not.
-  const supabase = teacher ? createAdminClient() : await createClient();
-  const { data: topic, error } = await supabase
-    .from(teacher ? 'curriculum_topics' : 'curriculum_topics_public')
-    .select(teacher ? `${TOPIC_COLUMNS}, answer_key` : TOPIC_COLUMNS)
-    .eq('course_id', courseId)
-    .eq('topic_id', topicId)
-    .single()
-    .overrideTypes<TopicRecord, { merge: false }>();
+  // Development-only: render the topic from its source markdown so a figure can
+  // be checked on the real route before the content is uploaded. Guarded twice
+  // -- the flag AND a non-production NODE_ENV -- and lib/curriculum-fixture.ts
+  // throws at module load if both are ever true at once, so a misconfigured
+  // production build fails to start rather than serving unstripped rows.
+  //
+  // Injected here, at the row, so that everything downstream of this line is the
+  // code a student runs: the item transforms below, renderMarkdownWithMath, and
+  // every component. Everything above it -- client selection, the view, the
+  // column list, RLS, the JSON round-trip -- is skipped, which is why this does
+  // not replace the post-upload check.
+  const fixture = loadTopicFixture(courseId, topicId);
 
-  if (error || !topic) {
+  let topic: TopicRecord | null = null;
+  if (fixture) {
+    topic = fixture as unknown as TopicRecord;
+  } else {
+    const supabase = teacher ? createAdminClient() : await createClient();
+    const { data, error } = await supabase
+      .from(teacher ? 'curriculum_topics' : 'curriculum_topics_public')
+      .select(teacher ? `${TOPIC_COLUMNS}, answer_key` : TOPIC_COLUMNS)
+      .eq('course_id', courseId)
+      .eq('topic_id', topicId)
+      .single()
+      .overrideTypes<TopicRecord, { merge: false }>();
+    if (error || !data) {
+      notFound();
+    }
+    topic = data;
+  }
+
+  if (!topic) {
     notFound();
   }
 
