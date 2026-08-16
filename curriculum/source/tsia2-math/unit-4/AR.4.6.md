@@ -238,7 +238,7 @@ Simplify $\dfrac{3x}{8} + \dfrac{x}{8}$ and reduce completely.
 - A) $\dfrac{4x}{16}$
 - B) $\dfrac{3x^{2}}{8}$
 - C) $\dfrac{x}{2}$
-- D) $\dfrac{4x}{8}$
+- D) $\dfrac{2x}{8}$
 
 **Item 4**
 
@@ -632,12 +632,12 @@ $$\frac{x}{2}$$
   "A": "Student makes misconception: denominators_combined_with_numerators (adds the denominators as well, giving 16 underneath, and then does not reduce)",
   "B": "Student makes misconception: identical_denominators_multiplied (multiplies the numerators as though the fractions were being multiplied, producing an x squared)",
   "C": "Correct: the numerators give 4x, and the common factor of 4 reduces 4x over 8 to x over 2",
-  "D": "Student makes misconception: numerators_not_rescaled (combines the numerators correctly to 4x over 8 but stops before reducing, when the question asks for a completely reduced answer)"
+  "D": "Student makes misconception: subtracts_in_wrong_order (subtracts the numerators rather than adding them, computing 3x minus x = 2x where the two fractions are being added)"
 },
 "misconception_tag": {
   "A": "denominators_combined_with_numerators",
   "B": "identical_denominators_multiplied",
-  "D": "numerators_not_rescaled"
+  "D": "subtracts_in_wrong_order"
 }
 ```
 
