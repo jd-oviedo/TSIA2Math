@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(python3 curriculum/migrations/upload_curriculum.py)",
+      "Bash(python3 curriculum/migrations/upload_curriculum.py *)",
+      "Bash(python curriculum/migrations/upload_curriculum.py)",
+      "Bash(python curriculum/migrations/upload_curriculum.py *)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.command' | grep -Eq '(python[0-9.]*|uv run|poetry run)[[:space:]]+([^[:space:]]*/)?upload_curriculum\\.py' && echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"BLOCKED by project policy (.claude/settings.json): upload_curriculum.py writes to the production Supabase project and globs the entire course on every run, with no --topics filter. It is the only irreversible action in the curriculum pipeline. It runs only after Juan has seen a pre-upload field-by-field diff and approved it in a separate turn. Never auto-approve, and never work around this hook.\"}}' || exit 0",
+            "statusMessage": "Checking for production upload"
+          }
+        ]
+      }
+    ]
+  }
+}
