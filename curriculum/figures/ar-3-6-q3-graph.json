@@ -1,0 +1,12 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [-1, 7], "yRange": [-7, 6],
+  "curves": [
+    { "kind": "quadratic", "a": -1, "b": 6, "c": -5, "color": "line" }
+  ],
+  "points": [
+    { "x": 1, "y": 0, "label": "(1, 0)", "dx": -30, "dy": -8 },
+    { "x": 5, "y": 0, "label": "(5, 0)", "dx": 8, "dy": -8 }
+  ],
+  "alt": "A downward-opening parabola on a coordinate plane. It crosses the x-axis at 1 and at 5, both marked, its highest point is at (3, 4), and it crosses the y-axis at -5."
+}

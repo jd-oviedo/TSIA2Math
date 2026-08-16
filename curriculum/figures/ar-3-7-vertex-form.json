@@ -1,0 +1,11 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [-1, 7], "yRange": [-6, 7],
+  "curves": [
+    { "kind": "vertex", "a": 1, "h": 3, "k": -4, "color": "line" }
+  ],
+  "points": [
+    { "x": 3, "y": -4, "label": "vertex (3, -4)", "dx": 8, "dy": 16 }
+  ],
+  "alt": "An upward-opening parabola on a coordinate plane. Its lowest point is marked at (3, -4). It crosses the x-axis at 1 and at 5 and crosses the y-axis at 5. The vertical line through the vertex at x equals 3 is the axis of symmetry."
+}

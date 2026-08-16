@@ -1,0 +1,12 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [-1, 6], "yRange": [-4, 8],
+  "curves": [
+    { "kind": "quadratic", "a": 1, "b": -5, "c": 4, "color": "line" }
+  ],
+  "points": [
+    { "x": 1, "y": 0, "label": "(1, 0)", "dx": -30, "dy": -8 },
+    { "x": 4, "y": 0, "label": "(4, 0)", "dx": 8, "dy": -8 }
+  ],
+  "alt": "An upward-opening parabola on a coordinate plane. It crosses the x-axis at 1 and at 4, both marked, and crosses the y-axis at 4."
+}
