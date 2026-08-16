@@ -241,6 +241,64 @@ upserts; those cost redundant writes but move no timestamps. `updated_at` behave
 as an insert-time stamp. **Re-confirm it once per batch anyway.** It is one query
 and it is the only evidence.
 
+### `security_invoker` on the three anon-facing views, and the trap in them
+
+Read directly from `pg_class.reloptions` on 2026-08-16. Measured values, not
+inferred from any file:
+
+| View | `reloptions` | Owner | Correct? |
+|---|---|---|---|
+| `curriculum_topics_public` | `{security_invoker=false}` | `postgres` | yes, load-bearing |
+| `questions_public` | `{security_invoker=false}` | `postgres` | yes, load-bearing |
+| `qualified_sessions` | `{security_invoker=true}` | `postgres` | yes, and **false would be a breach** |
+
+On the first two, `false` is the entire mechanism. anon holds zero grants on
+`curriculum_topics` and `questions`, so the view running with its owner's rights
+is the only reason a student page returns anything at all. Set either to `true`
+and every topic page and every practice item stops resolving.
+
+**On `qualified_sessions` the same value would do the opposite.** It is a view
+over `sessions`, and `true` is what keeps it shut: the view executes with the
+caller's rights, anon has nothing on `sessions`, and an anon request fails with
+`42501 permission denied for table sessions`, naming the base table rather than
+the view. Set it to `false` and the view would read `sessions` as its owner and
+hand every qualified session to anon.
+
+**So anyone standardising the three views onto one setting opens this one.**
+That is the non-obvious part. Two of the three want `false`, the third wants
+`true`, and the reason is not visible from the view definitions: it is that the
+first two are redacted projections built to be read by strangers, while the
+third is a plain projection of private rows that was never meant to be.
+
+`qualified_sessions` holds 0 rows today, and **the row count is not the
+trigger.** An empty view invites the reading that it can be checked later, when
+content arrives. Nothing about populating it changes its exposure; the
+configuration does. Read it before anyone tidies the three views, not before
+anyone fills this one.
+
+```sql
+select c.relname                   as view_name,
+       pg_get_userbyid(c.relowner) as owner,
+       c.reloptions
+from pg_class c
+join pg_namespace n on n.oid = c.relnamespace
+where n.nspname = 'public'
+  and c.relname in ('questions_public', 'curriculum_topics_public',
+                    'qualified_sessions')
+order by c.relname;
+```
+
+One loose end while here. anon holds a SELECT grant on `qualified_sessions`; the
+42501 comes from the base table, which is why the grant on the view is invisible
+until you read it. **A grant that only fails closed because of `security_invoker`
+is defence by coincidence rather than by design**, and it is a candidate for the
+known stray-anon-SELECT-grant cleanup. Revoking it would make the view closed for
+a stated reason instead of an incidental one, and would remove the standardising
+trap above along with it. Not urgent, and not done.
+
+Also do not "fix" that 42501 by granting anon on `sessions`. It is the check
+working.
+
 ### The upload requires a human to run it
 
 `.claude/settings.json` carries a deny rule plus a `PreToolUse` hook blocking any
