@@ -16,10 +16,18 @@ const args = process.argv.slice(2);
 const baseIdx = args.indexOf('--base');
 const BASE = baseIdx === -1 ? 'http://localhost:3000' : args[baseIdx + 1];
 const wantFigure = args.includes('--figure');
-const topics = args.filter((a, i) => !a.startsWith('--') && i !== baseIdx + 1 && i !== args.indexOf('--unit') + 1);
+const unitIdx = args.indexOf('--unit');
+// A flag's VALUE is not a topic, so it is filtered out by index. Arithmetic on a
+// missing flag is what made that dangerous: `args.indexOf('--unit') + 1` is 0
+// when --unit is absent, which excluded index 0, the FIRST topic. With a single
+// topic the list emptied and the default below backfilled it, so
+// `verify_topic_render.mjs PR.3.5 --base URL` reported three PASSES for AR.3.5.
+// A default that is also a legal value cannot be told apart from a real one
+// downstream, so the absent flag is guarded here rather than computed around.
+const valueIdx = new Set([baseIdx, unitIdx].filter((i) => i !== -1).map((i) => i + 1));
+const topics = args.filter((a, i) => !a.startsWith('--') && !valueIdx.has(i));
 if (topics.length === 0) topics.push('AR.3.5');
 
-const unitIdx = args.indexOf('--unit');
 const UNIT = unitIdx === -1 ? '4' : args[unitIdx + 1];
 const UNIT_PATH = `${BASE}/course/tsia2/math/unit/${UNIT}/topic`;
 const PLACEHOLDER = 'This topic is still being written';

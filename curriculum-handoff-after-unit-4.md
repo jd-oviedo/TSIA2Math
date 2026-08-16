@@ -704,11 +704,59 @@ anything looks.
   encountered, counts those it parsed, prints the ratio, and fails when the two
   differ. Both topics measure 100%.
 
+- **An ARGUMENT PARSER that resolves a missing flag to a valid-looking index.**
+  The fifth instance, found in Unit 5 Batch B, and **the first that is not a check
+  reading less than it appeared to.** The four above are all a checker narrowing
+  its own input. This one is a tool being *invoked* wrongly while its logic is
+  perfectly correct.
+
+  `verify_topic_render.mjs` filtered a flag's value out of the topic list by
+  index, computing that index as `args.indexOf('--unit') + 1`. `indexOf` returns
+  `-1` when the flag is absent, so the expression is `0`, and index 0 -- the
+  **first topic** -- was excluded on every run without the flag. With one topic
+  named the list emptied and the `AR.3.5` default backfilled it:
+
+  ```
+  OLD  verify_topic_render.mjs PR.3.5 --base URL
+       -> "3 checks, 3 passed" ... for AR.3.5, a topic nobody named
+  OLD  verify_topic_render.mjs PR.3.3 PR.3.4 --base URL
+       -> PR.3.3 silently dropped; "3 checks, 3 passed" looks complete
+  ```
+
+  Introduced by `2ee5fee` when the `--unit` flag was added late in Batch A; the
+  filter before it was correct. Fixed in `4c6556c` by guarding the absent flag
+  instead of doing arithmetic on `-1`.
+
+  **Blast radius, measured rather than assumed, and it is nil.** Unit 4's render
+  runs all predate `2ee5fee` (Unit 4 content landed 04:13-04:18, the bug at
+  21:22:48), so the bug did not exist for them. Batch A's post-upload real-rows
+  check falls inside the window, but PR #106 records it as `9 checks, 9 passed`,
+  which is 3 topics x 3 routes; a bitten run would read 6 checks, or 3 on AR.3.5.
+  All 23 topics were re-verified against real database rows with the fixed tool
+  anyway: **78 checks, 0 failed.** An assumption converted into a measurement.
+
 **The tell is a default that is also a legal value.** `0` is a legal sequence;
-red text is a legal render. Where a default is indistinguishable from a real
-value, absence of the input cannot be detected downstream, so it has to be caught
-at the boundary where the input is read. Both fixes above are boundary checks for
-exactly that reason, and neither could have been a post-hoc audit.
+red text is a legal render; `AR.3.5` is a legal topic that renders perfectly.
+Where a default is indistinguishable from a real value, absence of the input
+cannot be detected downstream, so it has to be caught at the boundary where the
+input is read. Both fixes above are boundary checks for exactly that reason, and
+neither could have been a post-hoc audit.
+
+**The general form is wider than "a check that reads less than it claims".** It is
+**any absent-input path that resolves to a plausible value instead of an error**,
+wherever it sits: a config default, a render fallback, a fault injection that
+misses, or an argument parser doing arithmetic on a sentinel. The first four
+instances all lived in checking logic, which made "audit the checker" look like
+the lesson. The fifth did not: its logic was right and its *invocation* was
+wrong.
+
+**Corollary: a tool's own invocation is part of what needs proving, not just its
+logic.** Reading `verify_topic_render.mjs` would not have found this, and did not
+-- the file had been read that same session. What found it was running the tool a
+way nobody intended and looking at *which object* the green output named. So when
+a tool grows a flag, prove the no-flag path too, and check the identity of what
+was measured rather than the count of what passed. A count is the thing this class
+gets right.
 
 When adding any `.get(key, default)` or `throwOnError: false` to this codebase,
 ask whether a caller could ever tell the default apart from a real value. If not,
@@ -741,6 +789,40 @@ means the fault cannot be seen.
 control has to pass. A fault that fails proves nothing on its own, because it
 does not distinguish the fault from the harness. All three above were found by
 the control disagreeing, not by reading the code.
+
+### A classifier that has only ever been corrected toward agreement
+
+Added in Batch B, and it is the same class arriving from a new direction. The
+PR.3.3 / PR.3.4 joint-versus-conditional boundary was verified by writing a
+predicate over the item stems. It flagged four items on its first two runs, and
+**all four were fixed by amending the rule rather than the content**:
+
+- `PR.3.4 P10` read AMBIGUOUS because the first rule counted the bare word
+  **both**, and P10 says "18 own **both**". That is set membership in one static
+  population, not a second draw.
+- `PR.3.3 P4`, `P7` and `Q3` read UNCLASSIFIED because the second rule demanded a
+  physical trial verb (drawn, rolled, flipped) and those items are abstract: "Two
+  independent events have probabilities ...".
+
+Each amendment was correct. That is exactly what makes the shape dangerous: the
+first rule keyed on a **word**, the second on **apparatus**, when the real
+predicate is **structure**, more than one stage. A rule tuned until it agrees with
+the content is evidence about the rule, not about the content, and it is
+indistinguishable from a rule that was right all along.
+
+So the classifier is checked in at `scripts/check_joint_conditional_boundary.py`
+with its fault proofs attached, and it is required to fail three ways: a stem
+satisfying **both** predicates, a stem satisfying **neither**, and a real
+conditional stem minimally edited into sequential framing, which must change
+sides. Each injection asserts it landed **in the extracted stem list** before its
+classification is trusted, because presence in the file is not presence in the
+scanned region. `--prove` runs all three beside a clean control.
+
+**The check: before believing a rule that agrees with your content, show it
+disagreeing with content you broke on purpose.** It was checked in rather than
+left in a scratch file for a plain reason: the original design script that
+asserted this same boundary during authoring was never committed, and it did not
+survive the container. Its claim could not be re-run, only re-derived.
 
 ---
 
@@ -828,6 +910,89 @@ across all 83 live topics that settles this.
 
 Say the prediction out loud beforehand. Small set and concentrated is expected;
 large set and concentrated is worth a look.
+
+---
+
+## 6. After Unit 5 Batch B
+
+**89 of 97 topics live**, measured 2026-08-16 after the Batch B upload. Batch B
+added `PR.3.3` (seq 11), `PR.3.4` (seq 12) and `PR.3.5` (seq 13), so **Unit 5 now
+holds seq {4, 5, 6, 9, 10, 11, 12, 13, 14}**, gapless from 9 through 14.
+
+**Eight topics remain**: `PR.1.3` (1), `PR.1.4` (2), `PR.1.5` (3), `PR.2.4` (7),
+`PR.2.5` (8), `PR.4.2` (15), `PR.4.3` (16), `PR.4.4` (17). Batching from here:
+**PR 0** (bar and box-plot figure types, content-free), then **Batch C**
+`PR.1.3`, `PR.2.4`, `PR.2.5`, then **Batch D** `PR.1.4`, `PR.1.5`, `PR.4.2`,
+`PR.4.3`, `PR.4.4`. The figure decisions in section 5 stand and are not reopened.
+
+### The joint-versus-conditional boundary is settled, and an artifact holds it
+
+**`PR.3.3` asks for a JOINT probability across a multi-stage experiment;
+`PR.3.4` asks for a CONDITIONAL probability on a single already-observed
+population.** Independent and dependent both live in `PR.3.3`, dependence being
+the pool changing between draws.
+
+Do not re-derive this by reading the items. Run
+
+```
+python3 scripts/check_joint_conditional_boundary.py --prove
+```
+
+which classifies all 28 stems, requires each to sit on exactly one side, and
+**proves it can fail** three ways beside a clean control. Written up in section 4
+under the classifier entry; the short version is that the rule flagged four items
+while being written and all four were fixed by amending the rule, so agreement
+alone was never evidence.
+
+`both` is deliberately **not** a joint marker: "18 own both" is set membership,
+"both are red" is two draws. Only a stage establishes the joint side.
+
+### The four excluded spans in `PR.3.5`
+
+`check_rationale_arithmetic.py` reports `PR.3.3` 79, `PR.3.4` 76 and `PR.3.5` 86
+claims, all at 100% coverage, with **4 spans excluded in `PR.3.5`**:
+
+```
+PR.3.5:166  $33 = 25 + 18 - n(\text{both})$    -> $n(\text{both}) = 43 - 33 = 10$
+PR.3.5:448  $32 = 24 + 16 - n(A \cap B)$       -> $n(A \cap B) = 40 - 32 = 8$
+PR.3.5:509  $33 = 25 + 18 - n(\text{both})$    -> $n(\text{both}) = 43 - 33 = 10$
+PR.3.5:676  $31 = 22 + 18 - n(\text{both})$    -> $n(\text{both}) = 40 - 31 = 9$
+```
+
+**The exclusion is honest, and this is why.** Each is an inclusion-exclusion
+equation with an unknown. Stripping LaTeX leaves `33 = 25 + 18 -`, a segment
+dangling on an operator. Stripping the operator as punctuation would be *worse*
+than reporting it: that turns the segment into 43 and reports `33 = 43` as a false
+mismatch on a line that is correct. So the spans are **excluded and counted**,
+printed as "spans excluded, notation not modelled", never silently dropped.
+
+**All four were hand-verified and all four are correct**, and the right-hand
+column above is machine-checked: the follow-through line of each is pure
+arithmetic. What the exclusion loses is the statement, not its result. Falsifying
+an excluded span now exits 0, where pre-edit it was loud as an UNPARSED coverage
+gap, so these four sit with `PR.2.1`'s words-not-digits rationales as content that
+review has to hold rather than tooling.
+
+### `--unit` is required on every render run
+
+```
+node scripts/verify_topic_render.mjs PR.3.3 PR.3.4 --base URL --unit 5
+```
+
+**Omit it and the first topic named is silently dropped**, because the flag's
+value is filtered out of the topic list by index and the absent-flag index used to
+resolve to 0. Fixed in `4c6556c`, so a no-flag run no longer drops anything, but
+pass it anyway: without it the unit segment defaults to 4 and the printed URLs are
+wrong even when the topics are right.
+
+**`--unit` selects the path, not the object.** The unit segment does not gate
+topic resolution: `PR.3.5` renders under `/unit/4/topic/` as readily as under
+`/unit/5/`. So a passing render run is **not** evidence that a topic sits in the
+unit it was requested under. `sequence_in_unit` and `unit_number` come from the
+readbacks against the database, and only from there.
+
+The defect, its measured blast radius of nil, and what it adds to the
+silent-default class are in section 4.
 
 ---
 
