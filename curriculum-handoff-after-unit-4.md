@@ -430,6 +430,34 @@ description.** Re-run the file, call the endpoint, execute the statement in a
 throwaway container, attribute the findings instead of counting them. Each of the
 three above took under five minutes to disprove once someone tried.
 
+### The fixture harness is the thing most likely to be wrong
+
+Three times in two sessions, a harness built to test something reported a result
+about itself instead. Every one was caught by a control, and none would have been
+caught without one.
+
+- **A `cd` persisted across a compound command**, so a regeneration diff compared
+  the isolated copy against itself and reported a clean match. Caught because the
+  "checked-in" side showed a count the repo file did not have.
+- **A control topic that was already failing.** `AR.2.6` was picked to show that
+  removing a slug breaks `check_topic.py`, but it was already failing on that
+  slug for an unrelated reason, so it printed identical output before and after
+  and proved nothing.
+- **`topic_id` comes from the filename stem.** Faulted fixtures written under new
+  names lost their topic identity, so the topic's own slugs fell out of its
+  allowed set and even the unmodified control "failed". Nearly reported as a rule
+  defect.
+
+The pattern: **the fault you injected is not the only thing that changed.**
+Copying a file changes its path, and paths carry meaning. Changing directory
+changes what a relative path resolves to. Picking a fixture that already fails
+means the fault cannot be seen.
+
+**The check: every fault run needs a clean control run beside it**, and the
+control has to pass. A fault that fails proves nothing on its own, because it
+does not distinguish the fault from the harness. All three above were found by
+the control disagreeing, not by reading the code.
+
 ---
 
 ## Where things live
