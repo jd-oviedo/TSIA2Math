@@ -329,11 +329,44 @@ def main(path):
                  f"{len(allowed & topic_scoped)} topic-specific slug(s) assigned here")
 
     # ── 4. currency inside JSON string fields ──
+    #
+    # The rule this replaces fired on ANY `$` inside a JSON string, which made it
+    # 15-for-15 wrong: every live failure was a math span in a QR.3.5
+    # stem_template ("Simplify the expression ${a}m + {b}m$."), not currency. A
+    # check that only ever fires on correct content trains its reader to skip it,
+    # which is worse than not having it, so the discrimination happens here.
+    #
+    # What is actually being caught, in order of how badly it breaks:
+    #   1. `\$` -- an invalid JSON escape. The file will not parse at all.
+    #   2. an unpaired `$` -- currency written as `$15`, which is the convention
+    #      violation. Spell it as a word: "15 dollars".
+    #   3. a `$...$` pair that is really TWO currency signs with prose caught
+    #      between them ("from $20 to $25"). This one closes, so pairing alone
+    #      cannot see it, and it is the reason the two heuristics below exist.
     for block in re.findall(r'```json\s*(.*?)```', text, re.S):
-        for line in block.split('\n'):
-            if re.search(r'"[^"]*\\?\$[^"]*"', line):
-                failures.append(f"CURRENCY  {topic_id}: dollar sign inside a JSON string, "
-                                f"spell it as a word: {line.strip()[:90]}")
+        for literal in re.findall(r'"(?:[^"\\]|\\.)*"', block):
+            shown = literal.strip()[:90]
+            if re.search(r'\\\$', literal):
+                failures.append(f"CURRENCY  {topic_id}: `\\$` is an invalid JSON escape and will "
+                                f"not parse, spell currency as a word: {shown}")
+                continue
+            # Remove balanced math spans, then anything left is an odd dollar.
+            spans = re.findall(r'\$([^$]*)\$', literal)
+            if '$' in re.sub(r'\$[^$]*\$', '', literal):
+                failures.append(f"CURRENCY  {topic_id}: unpaired dollar sign inside a JSON string, "
+                                f"spell currency as a word: {shown}")
+                continue
+            for body in spans:
+                # Three lowercase words inside a math span is swallowed prose,
+                # the same heuristic lint_curriculum_source.py uses.
+                # A body that opens with a number and runs straight into a word
+                # ("20 to ") is the two-amount case, which is short enough to
+                # slip under that three-word bar.
+                if (re.search(r'[a-z]{2,}\s+[a-z]{2,}\s+[a-z]{2,}', body)
+                        or re.match(r'^\s*\d[\d,.]*\s+[a-z]', body)):
+                    failures.append(f"CURRENCY  {topic_id}: `$...$` here reads as two currency signs "
+                                    f"with prose between them, not a math span: {shown}")
+                    break
 
     # ── 5. em dashes ──
     if '\u2014' in text:
