@@ -1,0 +1,11 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [-5, 3], "yRange": [-10, 6],
+  "curves": [
+    { "kind": "vertex", "a": 2, "h": -1, "k": -8, "color": "line" }
+  ],
+  "points": [
+    { "x": -1, "y": -8, "label": "vertex (-1, -8)", "dx": 8, "dy": 16 }
+  ],
+  "alt": "A narrow upward-opening parabola on a coordinate plane. Its lowest point is marked at (-1, -8). It crosses the x-axis at -3 and at 1 and crosses the y-axis at -6."
+}

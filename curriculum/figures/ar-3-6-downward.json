@@ -1,0 +1,12 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [-4, 4], "yRange": [-6, 6],
+  "curves": [
+    { "kind": "quadratic", "a": -1, "b": 0, "c": 4, "color": "line" }
+  ],
+  "points": [
+    { "x": -2, "y": 0, "label": "(-2, 0)", "dx": -36, "dy": -8 },
+    { "x": 2, "y": 0, "label": "(2, 0)", "dx": 8, "dy": -8 }
+  ],
+  "alt": "A downward-opening parabola on a coordinate plane. It crosses the x-axis at -2 and at 2, both marked, and its highest point is at (0, 4) on the y-axis. Both arms fall away downward from that peak."
+}

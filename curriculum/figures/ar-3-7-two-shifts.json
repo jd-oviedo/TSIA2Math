@@ -1,0 +1,13 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [-3, 5], "yRange": [-1, 9],
+  "curves": [
+    { "kind": "vertex", "a": 1, "h": 0, "k": 1, "color": "muted" },
+    { "kind": "vertex", "a": 1, "h": 2, "k": 2, "color": "line" }
+  ],
+  "points": [
+    { "x": 0, "y": 1, "label": "(0, 1)", "dx": -32, "dy": 16 },
+    { "x": 2, "y": 2, "label": "(2, 2)", "dx": 10, "dy": 16 }
+  ],
+  "alt": "Two upward-opening parabolas of the same width on a coordinate plane. The faint one has its lowest point at (0, 1). The bold one has exactly the same shape but its lowest point is at (2, 2), two units to the right and one unit up from the faint one."
+}

@@ -1,0 +1,726 @@
+---
+topic_name: "Identifying a quadratic equation that corresponds to a given graph"
+unit_number: 4
+sequence_in_unit: 7
+assessment_layer: "CRC"
+estimated_time_minutes: 50
+difficulty_band: "Proficient"
+related_strand: "AR"
+keywords: ["parabola", "x-intercepts", "factored form", "vertex form", "leading coefficient", "graph to equation", "transformations"]
+---
+
+# AR.3.6 - Identifying a Quadratic Equation That Corresponds to a Given Graph
+
+**Topic ID:** AR.3.6  
+**Unit:** 4  
+**Strand:** AR (Algebraic Reasoning)  
+**Assessment Layer:** CRC  
+**Author:** Juan Dolores Oviedo  
+
+---
+
+#### **Part 1: Guided Notes**
+
+##### The Graph Is Already Telling You the Answer
+
+Every question in this topic hands you a picture and four equations, and asks which equation drew that picture.
+
+That sounds like it needs a lot of work. It does not. A parabola shows you three things at a glance, and each one rules out equations without any algebra at all:
+
+- **Where it crosses the x-axis.** These give you the factors.
+- **Which way it opens.** This gives you the sign in front.
+- **Any other point it passes through.** This gives you the number in front.
+
+Read those three things, and usually only one answer survives.
+
+##### An Intercept at $r$ Means a Factor of $(x - r)$
+
+Here is the single rule the whole topic rests on.
+
+If a parabola crosses the x-axis at $x = r$, then the equation has a factor of $(x - r)$.
+
+Why: at an x-intercept the height is zero, so plugging that $x$ into the equation has to give $0$. The factor $(x - r)$ is exactly the thing that becomes zero when $x = r$.
+
+<!-- figure: ar-3-6-intercepts -->
+![An upward-opening parabola on a coordinate plane. It crosses the x-axis at -1 and at 3, both marked, and crosses the y-axis at -3. Its lowest point is at (1, -4), halfway between the two x-intercepts.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBbiB1cHdhcmQtb3BlbmluZyBwYXJhYm9sYSBvbiBhIGNvb3JkaW5hdGUgcGxhbmUuIEl0IGNyb3NzZXMgdGhlIHgtYXhpcyBhdCAtMSBhbmQgYXQgMywgYm90aCBtYXJrZWQsIGFuZCBjcm9zc2VzIHRoZSB5LWF4aXMgYXQgLTMuIEl0cyBsb3dlc3QgcG9pbnQgaXMgYXQgKDEsIC00KSwgaGFsZndheSBiZXR3ZWVuIHRoZSB0d28geC1pbnRlcmNlcHRzLiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGN0YzRTciIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iMjgiIHkxPSIxNiIgeDI9IjI4IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjY0Ljc1IiB5MT0iMTYiIHgyPSI2NC43NSIgeTI9IjIyOCIvPjxsaW5lIHgxPSIxMDEuNSIgeTE9IjE2IiB4Mj0iMTAxLjUiIHkyPSIyMjgiLz48bGluZSB4MT0iMTM4LjI1IiB5MT0iMTYiIHgyPSIxMzguMjUiIHkyPSIyMjgiLz48bGluZSB4MT0iMTc1IiB5MT0iMTYiIHgyPSIxNzUiIHkyPSIyMjgiLz48bGluZSB4MT0iMjExLjc1IiB5MT0iMTYiIHgyPSIyMTEuNzUiIHkyPSIyMjgiLz48bGluZSB4MT0iMjQ4LjUiIHkxPSIxNiIgeDI9IjI0OC41IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjI4NS4yNSIgeTE9IjE2IiB4Mj0iMjg1LjI1IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjMyMiIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjI4IiB5MT0iMjI4IiB4Mj0iMzIyIiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjI4IiB5MT0iMjA2LjgiIHgyPSIzMjIiIHkyPSIyMDYuOCIvPjxsaW5lIHgxPSIyOCIgeTE9IjE4NS42IiB4Mj0iMzIyIiB5Mj0iMTg1LjYiLz48bGluZSB4MT0iMjgiIHkxPSIxNjQuNCIgeDI9IjMyMiIgeTI9IjE2NC40Ii8+PGxpbmUgeDE9IjI4IiB5MT0iMTQzLjIiIHgyPSIzMjIiIHkyPSIxNDMuMiIvPjxsaW5lIHgxPSIyOCIgeTE9IjEyMiIgeDI9IjMyMiIgeTI9IjEyMiIvPjxsaW5lIHgxPSIyOCIgeTE9IjEwMC44IiB4Mj0iMzIyIiB5Mj0iMTAwLjgiLz48bGluZSB4MT0iMjgiIHkxPSI3OS42IiB4Mj0iMzIyIiB5Mj0iNzkuNiIvPjxsaW5lIHgxPSIyOCIgeTE9IjU4LjQiIHgyPSIzMjIiIHkyPSI1OC40Ii8+PGxpbmUgeDE9IjI4IiB5MT0iMzcuMiIgeDI9IjMyMiIgeTI9IjM3LjIiLz48bGluZSB4MT0iMjgiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjE2Ii8+PC9nPjxsaW5lIHgxPSIyOCIgeTE9IjEyMiIgeDI9IjMyMiIgeTI9IjEyMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSIxMzguMjUiIHkxPSIyMjgiIHgyPSIxMzguMjUiIHkyPSIxNiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxnIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjMEUwRTExIj48dGV4dCB4PSIyOCIgeT0iMTM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4tMzwvdGV4dD48dGV4dCB4PSI2NC43NSIgeT0iMTM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4tMjwvdGV4dD48dGV4dCB4PSIxMDEuNSIgeT0iMTM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4tMTwvdGV4dD48dGV4dCB4PSIxNzUiIHk9IjEzNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTwvdGV4dD48dGV4dCB4PSIyMTEuNzUiIHk9IjEzNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjwvdGV4dD48dGV4dCB4PSIyNDguNSIgeT0iMTM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4zPC90ZXh0Pjx0ZXh0IHg9IjI4NS4yNSIgeT0iMTM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj40PC90ZXh0Pjx0ZXh0IHg9IjMyMiIgeT0iMTM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41PC90ZXh0Pjx0ZXh0IHg9IjEzMi4yNSIgeT0iMjMxLjUiIHRleHQtYW5jaG9yPSJlbmQiPi01PC90ZXh0Pjx0ZXh0IHg9IjEzMi4yNSIgeT0iMjEwLjMiIHRleHQtYW5jaG9yPSJlbmQiPi00PC90ZXh0Pjx0ZXh0IHg9IjEzMi4yNSIgeT0iMTg5LjEiIHRleHQtYW5jaG9yPSJlbmQiPi0zPC90ZXh0Pjx0ZXh0IHg9IjEzMi4yNSIgeT0iMTY3LjkiIHRleHQtYW5jaG9yPSJlbmQiPi0yPC90ZXh0Pjx0ZXh0IHg9IjEzMi4yNSIgeT0iMTQ2LjciIHRleHQtYW5jaG9yPSJlbmQiPi0xPC90ZXh0Pjx0ZXh0IHg9IjEzMi4yNSIgeT0iMTA0LjMiIHRleHQtYW5jaG9yPSJlbmQiPjE8L3RleHQ+PHRleHQgeD0iMTMyLjI1IiB5PSI4My4xIiB0ZXh0LWFuY2hvcj0iZW5kIj4yPC90ZXh0Pjx0ZXh0IHg9IjEzMi4yNSIgeT0iNjEuOSIgdGV4dC1hbmNob3I9ImVuZCI+MzwvdGV4dD48dGV4dCB4PSIxMzIuMjUiIHk9IjQwLjciIHRleHQtYW5jaG9yPSJlbmQiPjQ8L3RleHQ+PHRleHQgeD0iMTMyLjI1IiB5PSIxOS41IiB0ZXh0LWFuY2hvcj0iZW5kIj41PC90ZXh0PjwvZz48cG9seWxpbmUgZGF0YS1jdXJ2ZT0iMCIgcG9pbnRzPSI2NC43NSwxNiA2NC43NSwxNiA2Ni41OSwyMi4zMSA2OC40MywyOC41MSA3MC4yNiwzNC42IDcyLjEsNDAuNTkgNzMuOTQsNDYuNDggNzUuNzgsNTIuMjUgNzcuNjEsNTcuOTIgNzkuNDUsNjMuNDkgODEuMjksNjguOTUgODMuMTMsNzQuMyA4NC45Niw3OS41NSA4Ni44LDg0LjY5IDg4LjY0LDg5LjcyIDkwLjQ4LDk0LjY1IDkyLjMxLDk5LjQ4IDk0LjE1LDEwNC4xOSA5NS45OSwxMDguOCA5Ny44MywxMTMuMzEgOTkuNjYsMTE3LjcxIDEwMS41LDEyMiAxMDMuMzQsMTI2LjE5IDEwNS4xOCwxMzAuMjcgMTA3LjAxLDEzNC4yNCAxMDguODUsMTM4LjExIDExMC42OSwxNDEuODggMTEyLjUzLDE0NS41MyAxMTQuMzYsMTQ5LjA4IDExNi4yLDE1Mi41MyAxMTguMDQsMTU1Ljg3IDExOS44OCwxNTkuMSAxMjEuNzEsMTYyLjIzIDEyMy41NSwxNjUuMjUgMTI1LjM5LDE2OC4xNiAxMjcuMjMsMTcwLjk3IDEyOS4wNiwxNzMuNjggMTMwLjksMTc2LjI3IDEzMi43NCwxNzguNzYgMTM0LjU4LDE4MS4xNSAxMzYuNDEsMTgzLjQzIDEzOC4yNSwxODUuNiAxNDAuMDksMTg3LjY3IDE0MS45MywxODkuNjMgMTQzLjc2LDE5MS40OCAxNDUuNiwxOTMuMjMgMTQ3LjQ0LDE5NC44OCAxNDkuMjgsMTk2LjQxIDE1MS4xMSwxOTcuODQgMTUyLjk1LDE5OS4xNyAxNTQuNzksMjAwLjM5IDE1Ni42MywyMDEuNSAxNTguNDYsMjAyLjUxIDE2MC4zLDIwMy40MSAxNjIuMTQsMjA0LjIgMTYzLjk4LDIwNC44OSAxNjUuODEsMjA1LjQ4IDE2Ny42NSwyMDUuOTUgMTY5LjQ5LDIwNi4zMiAxNzEuMzMsMjA2LjU5IDE3My4xNiwyMDYuNzUgMTc1LDIwNi44IDE3Ni44NCwyMDYuNzUgMTc4LjY4LDIwNi41OSAxODAuNTEsMjA2LjMyIDE4Mi4zNSwyMDUuOTUgMTg0LjE5LDIwNS40OCAxODYuMDMsMjA0Ljg5IDE4Ny44NiwyMDQuMiAxODkuNywyMDMuNDEgMTkxLjU0LDIwMi41MSAxOTMuMzgsMjAxLjUgMTk1LjIxLDIwMC4zOSAxOTcuMDUsMTk5LjE3IDE5OC44OSwxOTcuODQgMjAwLjczLDE5Ni40MSAyMDIuNTYsMTk0Ljg4IDIwNC40LDE5My4yMyAyMDYuMjQsMTkxLjQ4IDIwOC4wOCwxODkuNjMgMjA5LjkxLDE4Ny42NyAyMTEuNzUsMTg1LjYgMjEzLjU5LDE4My40MyAyMTUuNDMsMTgxLjE1IDIxNy4yNiwxNzguNzYgMjE5LjEsMTc2LjI3IDIyMC45NCwxNzMuNjggMjIyLjc4LDE3MC45NyAyMjQuNjEsMTY4LjE2IDIyNi40NSwxNjUuMjUgMjI4LjI5LDE2Mi4yMyAyMzAuMTMsMTU5LjEgMjMxLjk2LDE1NS44NyAyMzMuOCwxNTIuNTMgMjM1LjY0LDE0OS4wOCAyMzcuNDgsMTQ1LjUzIDIzOS4zMSwxNDEuODggMjQxLjE1LDEzOC4xMSAyNDIuOTksMTM0LjI0IDI0NC44MywxMzAuMjcgMjQ2LjY2LDEyNi4xOSAyNDguNSwxMjIgMjUwLjM0LDExNy43MSAyNTIuMTgsMTEzLjMxIDI1NC4wMSwxMDguOCAyNTUuODUsMTA0LjE5IDI1Ny42OSw5OS40OCAyNTkuNTMsOTQuNjUgMjYxLjM2LDg5LjcyIDI2My4yLDg0LjY5IDI2NS4wNCw3OS41NSAyNjYuODgsNzQuMyAyNjguNzEsNjguOTUgMjcwLjU1LDYzLjQ5IDI3Mi4zOSw1Ny45MiAyNzQuMjMsNTIuMjUgMjc2LjA2LDQ2LjQ4IDI3Ny45LDQwLjU5IDI3OS43NCwzNC42IDI4MS41OCwyOC41MSAyODMuNDEsMjIuMzEgMjg1LjI1LDE2IDI4NS4yNSwxNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNkU5REM4IiBzdHJva2Utd2lkdGg9IjIuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGNpcmNsZSBjeD0iMTAxLjUiIGN5PSIxMjIiIHI9IjQuNSIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjRjdGM0U3IiBzdHJva2Utd2lkdGg9IjEuNSIvPjx0ZXh0IHg9IjY3LjUiIHk9IjExNCIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMwRTBFMTEiPigtMSwgMCk8L3RleHQ+PGNpcmNsZSBjeD0iMjQ4LjUiIGN5PSIxMjIiIHI9IjQuNSIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjRjdGM0U3IiBzdHJva2Utd2lkdGg9IjEuNSIvPjx0ZXh0IHg9IjI1Ni41IiB5PSIxMTQiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMEUwRTExIj4oMywgMCk8L3RleHQ+PC9zdmc+)
+
+**Read the picture.** This parabola opens upward. It crosses the x-axis at $x = -1$ and at $x = 3$, both marked. It crosses the y-axis at $-3$, and its lowest point is at $(1, -4)$, halfway between the two crossings.
+
+Now build the equation from the two crossings:
+
+- The intercept at $x = -1$ gives the factor $(x - (-1))$, which is $(x + 1)$.
+- The intercept at $x = 3$ gives the factor $(x - 3)$.
+
+$$y = (x + 1)(x - 3)$$
+
+**Notice what happened to the signs.** The intercept was $-1$ and the factor came out $+1$. The intercept was $3$ and the factor came out $-3$. The sign inside the factor is always the opposite of the intercept. That reversal is the thing most students get backward, and it has its own section below.
+
+Check it by expanding: $(x + 1)(x - 3) = x^{2} - 3x + x - 3 = x^{2} - 2x - 3$. At $x = 0$ that gives $-3$, matching the y-intercept in the picture.
+
+##### Which Way It Opens Tells You the Sign in Front
+
+The arms of a parabola either both point up or both point down.
+
+- Arms up means the leading coefficient is **positive**.
+- Arms down means the leading coefficient is **negative**.
+
+<!-- figure: ar-3-6-downward -->
+![A downward-opening parabola on a coordinate plane. It crosses the x-axis at -2 and at 2, both marked, and its highest point is at (0, 4) on the y-axis. Both arms fall away downward from that peak.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGRvd253YXJkLW9wZW5pbmcgcGFyYWJvbGEgb24gYSBjb29yZGluYXRlIHBsYW5lLiBJdCBjcm9zc2VzIHRoZSB4LWF4aXMgYXQgLTIgYW5kIGF0IDIsIGJvdGggbWFya2VkLCBhbmQgaXRzIGhpZ2hlc3QgcG9pbnQgaXMgYXQgKDAsIDQpIG9uIHRoZSB5LWF4aXMuIEJvdGggYXJtcyBmYWxsIGF3YXkgZG93bndhcmQgZnJvbSB0aGF0IHBlYWsuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI0Y3RjNFNyIgcng9IjEwIi8+PGcgc3Ryb2tlPSIjRTJEQ0NBIiBzdHJva2Utd2lkdGg9IjEiPjxsaW5lIHgxPSIyOCIgeTE9IjE2IiB4Mj0iMjgiIHkyPSIyMjgiLz48bGluZSB4MT0iNjQuNzUiIHkxPSIxNiIgeDI9IjY0Ljc1IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjEwMS41IiB5MT0iMTYiIHgyPSIxMDEuNSIgeTI9IjIyOCIvPjxsaW5lIHgxPSIxMzguMjUiIHkxPSIxNiIgeDI9IjEzOC4yNSIgeTI9IjIyOCIvPjxsaW5lIHgxPSIxNzUiIHkxPSIxNiIgeDI9IjE3NSIgeTI9IjIyOCIvPjxsaW5lIHgxPSIyMTEuNzUiIHkxPSIxNiIgeDI9IjIxMS43NSIgeTI9IjIyOCIvPjxsaW5lIHgxPSIyNDguNSIgeTE9IjE2IiB4Mj0iMjQ4LjUiIHkyPSIyMjgiLz48bGluZSB4MT0iMjg1LjI1IiB5MT0iMTYiIHgyPSIyODUuMjUiIHkyPSIyMjgiLz48bGluZSB4MT0iMzIyIiB5MT0iMTYiIHgyPSIzMjIiIHkyPSIyMjgiLz48bGluZSB4MT0iMjgiIHkxPSIyMjgiIHgyPSIzMjIiIHkyPSIyMjgiLz48bGluZSB4MT0iMjgiIHkxPSIxOTIuNjciIHgyPSIzMjIiIHkyPSIxOTIuNjciLz48bGluZSB4MT0iMjgiIHkxPSIxNTcuMzMiIHgyPSIzMjIiIHkyPSIxNTcuMzMiLz48bGluZSB4MT0iMjgiIHkxPSIxMjIiIHgyPSIzMjIiIHkyPSIxMjIiLz48bGluZSB4MT0iMjgiIHkxPSI4Ni42NyIgeDI9IjMyMiIgeTI9Ijg2LjY3Ii8+PGxpbmUgeDE9IjI4IiB5MT0iNTEuMzMiIHgyPSIzMjIiIHkyPSI1MS4zMyIvPjxsaW5lIHgxPSIyOCIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMTYiLz48L2c+PGxpbmUgeDE9IjI4IiB5MT0iMTIyIiB4Mj0iMzIyIiB5Mj0iMTIyIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGxpbmUgeDE9IjE3NSIgeTE9IjIyOCIgeDI9IjE3NSIgeTI9IjE2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGcgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiMwRTBFMTEiPjx0ZXh0IHg9IjI4IiB5PSIxMzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPi00PC90ZXh0Pjx0ZXh0IHg9IjY0Ljc1IiB5PSIxMzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPi0zPC90ZXh0Pjx0ZXh0IHg9IjEwMS41IiB5PSIxMzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPi0yPC90ZXh0Pjx0ZXh0IHg9IjEzOC4yNSIgeT0iMTM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4tMTwvdGV4dD48dGV4dCB4PSIyMTEuNzUiIHk9IjEzNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTwvdGV4dD48dGV4dCB4PSIyNDguNSIgeT0iMTM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yPC90ZXh0Pjx0ZXh0IHg9IjI4NS4yNSIgeT0iMTM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4zPC90ZXh0Pjx0ZXh0IHg9IjMyMiIgeT0iMTM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj40PC90ZXh0Pjx0ZXh0IHg9IjE2OSIgeT0iMjMxLjUiIHRleHQtYW5jaG9yPSJlbmQiPi02PC90ZXh0Pjx0ZXh0IHg9IjE2OSIgeT0iMTk2LjE3IiB0ZXh0LWFuY2hvcj0iZW5kIj4tNDwvdGV4dD48dGV4dCB4PSIxNjkiIHk9IjE2MC44MyIgdGV4dC1hbmNob3I9ImVuZCI+LTI8L3RleHQ+PHRleHQgeD0iMTY5IiB5PSI5MC4xNyIgdGV4dC1hbmNob3I9ImVuZCI+MjwvdGV4dD48dGV4dCB4PSIxNjkiIHk9IjU0LjgzIiB0ZXh0LWFuY2hvcj0iZW5kIj40PC90ZXh0Pjx0ZXh0IHg9IjE2OSIgeT0iMTkuNSIgdGV4dC1hbmNob3I9ImVuZCI+NjwvdGV4dD48L2c+PHBvbHlsaW5lIGRhdGEtY3VydmU9IjAiIHBvaW50cz0iNTguNzksMjI4IDU5LjI0LDIyNi42MyA2MS4wOCwyMjEuMTEgNjIuOTEsMjE1LjY4IDY0Ljc1LDIxMC4zMyA2Ni41OSwyMDUuMDggNjguNDMsMTk5LjkxIDcwLjI2LDE5NC44MyA3Mi4xLDE4OS44NCA3My45NCwxODQuOTQgNzUuNzcsMTgwLjEyIDc3LjYxLDE3NS40IDc5LjQ1LDE3MC43NiA4MS4yOSwxNjYuMjEgODMuMTMsMTYxLjc1IDg0Ljk2LDE1Ny4zOCA4Ni44LDE1My4wOSA4OC42NCwxNDguOSA5MC40OCwxNDQuNzkgOTIuMzEsMTQwLjc3IDk0LjE1LDEzNi44NCA5NS45OSwxMzMgOTcuODMsMTI5LjI0IDk5LjY2LDEyNS41OCAxMDEuNSwxMjIgMTAzLjM0LDExOC41MSAxMDUuMTgsMTE1LjExIDEwNy4wMSwxMTEuOCAxMDguODUsMTA4LjU3IDExMC42OSwxMDUuNDQgMTEyLjUzLDEwMi4zOSAxMTQuMzYsOTkuNDMgMTE2LjIsOTYuNTYgMTE4LjA0LDkzLjc4IDExOS44OCw5MS4wOCAxMjEuNzEsODguNDggMTIzLjU1LDg1Ljk2IDEyNS4zOSw4My41MyAxMjcuMjMsODEuMTkgMTI5LjA2LDc4Ljk0IDEzMC45LDc2Ljc3IDEzMi43NCw3NC43IDEzNC41OCw3Mi43MSAxMzYuNDEsNzAuODEgMTM4LjI1LDY5IDE0MC4wOSw2Ny4yOCAxNDEuOTMsNjUuNjQgMTQzLjc2LDY0LjEgMTQ1LjYsNjIuNjQgMTQ3LjQ0LDYxLjI3IDE0OS4yOCw1OS45OSAxNTEuMTEsNTguOCAxNTIuOTUsNTcuNjkgMTU0Ljc5LDU2LjY4IDE1Ni42Myw1NS43NSAxNTguNDYsNTQuOTEgMTYwLjMsNTQuMTYgMTYyLjE0LDUzLjUgMTYzLjk4LDUyLjkyIDE2NS44MSw1Mi40NCAxNjcuNjUsNTIuMDQgMTY5LjQ5LDUxLjczIDE3MS4zMyw1MS41MSAxNzMuMTYsNTEuMzggMTc1LDUxLjMzIDE3Ni44NCw1MS4zOCAxNzguNjgsNTEuNTEgMTgwLjUxLDUxLjczIDE4Mi4zNSw1Mi4wNCAxODQuMTksNTIuNDQgMTg2LjAzLDUyLjkyIDE4Ny44Niw1My41IDE4OS43LDU0LjE2IDE5MS41NCw1NC45MSAxOTMuMzgsNTUuNzUgMTk1LjIxLDU2LjY4IDE5Ny4wNSw1Ny42OSAxOTguODksNTguOCAyMDAuNzMsNTkuOTkgMjAyLjU2LDYxLjI3IDIwNC40LDYyLjY0IDIwNi4yNCw2NC4xIDIwOC4wOCw2NS42NCAyMDkuOTEsNjcuMjggMjExLjc1LDY5IDIxMy41OSw3MC44MSAyMTUuNDMsNzIuNzEgMjE3LjI2LDc0LjcgMjE5LjEsNzYuNzcgMjIwLjk0LDc4Ljk0IDIyMi43OCw4MS4xOSAyMjQuNjEsODMuNTMgMjI2LjQ1LDg1Ljk2IDIyOC4yOSw4OC40OCAyMzAuMTMsOTEuMDggMjMxLjk2LDkzLjc4IDIzMy44LDk2LjU2IDIzNS42NCw5OS40MyAyMzcuNDgsMTAyLjM5IDIzOS4zMSwxMDUuNDQgMjQxLjE1LDEwOC41NyAyNDIuOTksMTExLjggMjQ0LjgzLDExNS4xMSAyNDYuNjYsMTE4LjUxIDI0OC41LDEyMiAyNTAuMzQsMTI1LjU4IDI1Mi4xOCwxMjkuMjQgMjU0LjAxLDEzMyAyNTUuODUsMTM2Ljg0IDI1Ny42OSwxNDAuNzcgMjU5LjUzLDE0NC43OSAyNjEuMzYsMTQ4LjkgMjYzLjIsMTUzLjA5IDI2NS4wNCwxNTcuMzggMjY2Ljg4LDE2MS43NSAyNjguNzEsMTY2LjIxIDI3MC41NSwxNzAuNzYgMjcyLjM5LDE3NS40IDI3NC4yMywxODAuMTIgMjc2LjA2LDE4NC45NCAyNzcuOSwxODkuODQgMjc5Ljc0LDE5NC44MyAyODEuNTgsMTk5LjkxIDI4My40MSwyMDUuMDggMjg1LjI1LDIxMC4zMyAyODcuMDksMjE1LjY4IDI4OC45MywyMjEuMTEgMjkwLjc2LDIyNi42MyAyOTEuMjEsMjI4IiBmaWxsPSJub25lIiBzdHJva2U9IiM2RTlEQzgiIHN0cm9rZS13aWR0aD0iMi42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48Y2lyY2xlIGN4PSIxMDEuNSIgY3k9IjEyMiIgcj0iNC41IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiNGN0YzRTciIHN0cm9rZS13aWR0aD0iMS41Ii8+PHRleHQgeD0iNjUuNSIgeT0iMTE0IiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzBFMEUxMSI+KC0yLCAwKTwvdGV4dD48Y2lyY2xlIGN4PSIyNDguNSIgY3k9IjEyMiIgcj0iNC41IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiNGN0YzRTciIHN0cm9rZS13aWR0aD0iMS41Ii8+PHRleHQgeD0iMjU2LjUiIHk9IjExNCIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMwRTBFMTEiPigyLCAwKTwvdGV4dD48L3N2Zz4=)
+
+**Read the picture.** This parabola opens downward. It crosses the x-axis at $x = -2$ and at $x = 2$, both marked, and its highest point is at $(0, 4)$ on the y-axis.
+
+The intercepts give the factors $(x + 2)$ and $(x - 2)$. But $(x + 2)(x - 2) = x^{2} - 4$, which opens **upward**. The picture opens downward, so a negative sign has to go in front:
+
+$$y = -(x + 2)(x - 2)$$
+
+Expanding: $-(x^{2} - 4) = -x^{2} + 4$. At $x = 0$ that gives $4$, matching the peak in the picture.
+
+Two equations can have exactly the same intercepts and still be different parabolas. The intercepts alone never settle the question. Check the opening direction every time.
+
+##### The Mistake That Costs the Most Points
+
+**Writing the factors with the same signs as the intercepts.**
+
+You see intercepts at $-1$ and $3$, and you write:
+
+$$y = (x - 1)(x + 3)$$
+
+It feels right. The $-1$ went in with a minus, the $3$ went in with a plus. Everything matches what you read off the picture.
+
+It is backward, and here is the proof. Set that equation to zero: $(x - 1)(x + 3) = 0$ gives $x = 1$ and $x = -3$. Those are the negatives of the intercepts you were given. You have drawn a completely different parabola, one that crosses at $1$ and $-3$ instead of at $-1$ and $3$.
+
+**The fix is a habit, not a rule to memorise.** After you write your factors, set each one to zero and solve. If the answers are not the intercepts you started with, the signs are flipped.
+
+- $(x + 1) = 0$ gives $x = -1$. Matches.
+- $(x - 3) = 0$ gives $x = 3$. Matches.
+
+Ten seconds, and it catches the error every time.
+
+##### When the Graph Only Touches the Axis
+
+Sometimes a parabola does not cross the x-axis twice. It comes down, touches at exactly one point, and goes back up.
+
+One touch point means **one repeated factor**, not two different ones.
+
+A parabola that touches the x-axis only at $x = 3$ has the equation:
+
+$$y = a(x - 3)^{2}$$
+
+The trap is writing $(x - 3)(x + 3)$ because you want two factors. Test it: $(x - 3)(x + 3) = 0$ gives $x = 3$ **and** $x = -3$. That parabola crosses the axis in two places, which is not the picture you were given.
+
+One touch point, one factor, squared.
+
+##### Using a Third Point to Pin Down the Front Number
+
+The intercepts fix the factors. The opening direction fixes the sign. Neither one fixes how **narrow or wide** the parabola is.
+
+All of these cross at $-2$ and $5$:
+
+$$y = (x + 2)(x - 5) \quad\text{and}\quad y = 2(x + 2)(x - 5) \quad\text{and}\quad y = 7(x + 2)(x - 5)$$
+
+Same crossings, different shapes. If a question gives you one more point, that point is there to settle which one.
+
+**Worked example.** A parabola crosses the x-axis at $-2$ and $5$ and passes through $(0, -20)$.
+
+Step 1: Write the factors from the intercepts, with an unknown $a$ in front.
+
+$$y = a(x + 2)(x - 5)$$
+
+Step 2: Substitute the extra point. Put in $x = 0$ and $y = -20$.
+
+$$-20 = a(0 + 2)(0 - 5)$$
+
+Step 3: Simplify the right side. $(2)(-5) = -10$, so $-20 = -10a$.
+
+Step 4: Solve. $a = 2$.
+
+$$y = 2(x + 2)(x - 5)$$
+
+Step 5: Check. At $x = 0$: $2(2)(-5) = -20$. Correct.
+
+**If a question hands you a point, you are meant to use it.** Leaving $a$ as $1$ when a point was given is not a shortcut; it is a different parabola.
+
+##### Vertex Form and Shifts
+
+When a question describes a graph as a shifted version of $y = x^{2}$, use vertex form:
+
+$$y = a(x - h)^{2} + k$$
+
+The turning point sits at $(h, k)$.
+
+The horizontal part is the one that fights you. **The sign inside the bracket is the opposite of the direction moved.**
+
+- Shifted 4 units **right**: $(x - 4)^{2}$.
+- Shifted 4 units **left**: $(x + 4)^{2}$.
+
+The vertical part behaves the way you expect. Up 2 is $+2$ on the end, down 2 is $-2$ on the end.
+
+**Worked example.** The graph of $y = x^{2}$ is shifted 4 units right and 2 units down.
+
+Step 1: Right 4 puts $-4$ inside the bracket, giving $(x - 4)^{2}$.
+
+Step 2: Down 2 puts $-2$ on the end.
+
+$$y = (x - 4)^{2} - 2$$
+
+Step 3: Check by locating the turning point. It should sit at $(4, -2)$, which is 4 right and 2 down from the origin. It does.
+
+##### Working Backward From Four Choices
+
+On a multiple choice question you do not have to build the equation from nothing. You can test the choices, and testing is often faster.
+
+Three tests, in the order that eliminates fastest:
+
+1. **Opening direction.** Look at the sign in front. Wrong direction, cross it out. This usually kills one or two choices instantly.
+2. **Set the factors to zero.** Do the roots match the crossings in the picture? Wrong roots, cross it out.
+3. **Substitute one known point.** Usually $x = 0$, because the y-intercept is easy to read. Whatever survives is the answer.
+
+##### The Five Traps
+
+1. **Writing factors with the same signs as the intercepts.** An intercept at $-1$ gives $(x + 1)$, not $(x - 1)$. Set each factor to zero and check that you get your intercepts back.
+2. **Ignoring the opening direction.** Two answers can share every intercept and differ only in the sign out front. Check the arms before anything else.
+3. **Splitting a single touch point into two intercepts.** Touching at $x = 3$ means $(x - 3)^{2}$, not $(x - 3)(x + 3)$.
+4. **Leaving the leading coefficient as 1 when a point was given.** If the question hands you an extra point, it is there to be substituted. Use it.
+5. **Reversing a horizontal shift.** Right 4 is $(x - 4)$, not $(x + 4)$. The sign inside is always opposite the direction of travel.
+
+---
+
+#### **Part 2: Practice Problems**
+
+Solve each problem. Show your thinking.
+
+**Basic Level** (try these first)
+
+1. A parabola opens upward and crosses the x-axis at $x = -1$ and $x = 3$. Which equation represents this parabola?
+   - A) $y = (x - 1)(x + 3)$
+   - B) $y = (x + 1)(x - 3)$
+   - C) $y = -(x + 1)(x - 3)$
+   - D) $y = (x + 1)(x + 3)$
+
+2. A parabola opens downward and crosses the x-axis at $x = -3$ and $x = 2$. Which equation represents this parabola?
+   - A) $y = (x + 3)(x - 2)$
+   - B) $y = -(x - 3)(x + 2)$
+   - C) $y = -(x + 3)(x - 2)$
+   - D) $y = -(x + 3)(x + 2)$
+
+3. Which equation represents the parabola shown?
+
+<!-- figure: ar-3-6-p3-graph -->
+![An upward-opening parabola on a coordinate plane. It crosses the x-axis at 1 and at 4, both marked, and crosses the y-axis at 4.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBbiB1cHdhcmQtb3BlbmluZyBwYXJhYm9sYSBvbiBhIGNvb3JkaW5hdGUgcGxhbmUuIEl0IGNyb3NzZXMgdGhlIHgtYXhpcyBhdCAxIGFuZCBhdCA0LCBib3RoIG1hcmtlZCwgYW5kIGNyb3NzZXMgdGhlIHktYXhpcyBhdCA0LiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGN0YzRTciIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iMjgiIHkxPSIxNiIgeDI9IjI4IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjcwIiB5MT0iMTYiIHgyPSI3MCIgeTI9IjIyOCIvPjxsaW5lIHgxPSIxMTIiIHkxPSIxNiIgeDI9IjExMiIgeTI9IjIyOCIvPjxsaW5lIHgxPSIxNTQiIHkxPSIxNiIgeDI9IjE1NCIgeTI9IjIyOCIvPjxsaW5lIHgxPSIxOTYiIHkxPSIxNiIgeDI9IjE5NiIgeTI9IjIyOCIvPjxsaW5lIHgxPSIyMzgiIHkxPSIxNiIgeDI9IjIzOCIgeTI9IjIyOCIvPjxsaW5lIHgxPSIyODAiIHkxPSIxNiIgeDI9IjI4MCIgeTI9IjIyOCIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIyOCIvPjxsaW5lIHgxPSIyOCIgeTE9IjIyOCIgeDI9IjMyMiIgeTI9IjIyOCIvPjxsaW5lIHgxPSIyOCIgeTE9IjE5Mi42NyIgeDI9IjMyMiIgeTI9IjE5Mi42NyIvPjxsaW5lIHgxPSIyOCIgeTE9IjE1Ny4zMyIgeDI9IjMyMiIgeTI9IjE1Ny4zMyIvPjxsaW5lIHgxPSIyOCIgeTE9IjEyMiIgeDI9IjMyMiIgeTI9IjEyMiIvPjxsaW5lIHgxPSIyOCIgeTE9Ijg2LjY3IiB4Mj0iMzIyIiB5Mj0iODYuNjciLz48bGluZSB4MT0iMjgiIHkxPSI1MS4zMyIgeDI9IjMyMiIgeTI9IjUxLjMzIi8+PGxpbmUgeDE9IjI4IiB5MT0iMTYiIHgyPSIzMjIiIHkyPSIxNiIvPjwvZz48bGluZSB4MT0iMjgiIHkxPSIxNTcuMzMiIHgyPSIzMjIiIHkyPSIxNTcuMzMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48bGluZSB4MT0iNzAiIHkxPSIyMjgiIHgyPSI3MCIgeTI9IjE2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGcgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiMwRTBFMTEiPjx0ZXh0IHg9IjI4IiB5PSIxNzAuMzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPi0xPC90ZXh0Pjx0ZXh0IHg9IjExMiIgeT0iMTcwLjMzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xPC90ZXh0Pjx0ZXh0IHg9IjE1NCIgeT0iMTcwLjMzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yPC90ZXh0Pjx0ZXh0IHg9IjE5NiIgeT0iMTcwLjMzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4zPC90ZXh0Pjx0ZXh0IHg9IjIzOCIgeT0iMTcwLjMzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj40PC90ZXh0Pjx0ZXh0IHg9IjI4MCIgeT0iMTcwLjMzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41PC90ZXh0Pjx0ZXh0IHg9IjMyMiIgeT0iMTcwLjMzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj42PC90ZXh0Pjx0ZXh0IHg9IjY0IiB5PSIyMzEuNSIgdGV4dC1hbmNob3I9ImVuZCI+LTQ8L3RleHQ+PHRleHQgeD0iNjQiIHk9IjE5Ni4xNyIgdGV4dC1hbmNob3I9ImVuZCI+LTI8L3RleHQ+PHRleHQgeD0iNjQiIHk9IjEyNS41IiB0ZXh0LWFuY2hvcj0iZW5kIj4yPC90ZXh0Pjx0ZXh0IHg9IjY0IiB5PSI5MC4xNyIgdGV4dC1hbmNob3I9ImVuZCI+NDwvdGV4dD48dGV4dCB4PSI2NCIgeT0iNTQuODMiIHRleHQtYW5jaG9yPSJlbmQiPjY8L3RleHQ+PHRleHQgeD0iNjQiIHk9IjE5LjUiIHRleHQtYW5jaG9yPSJlbmQiPjg8L3RleHQ+PC9nPjxwb2x5bGluZSBkYXRhLWN1cnZlPSIwIiBwb2ludHM9IjQwLjUzLDE2IDQwLjg2LDE2Ljg4IDQyLjcsMjEuNzkgNDQuNTQsMjYuNjIgNDYuMzgsMzEuMzkgNDguMjEsMzYuMDkgNTAuMDUsNDAuNzIgNTEuODksNDUuMjkgNTMuNzIsNDkuNzggNTUuNTYsNTQuMjEgNTcuNCw1OC41OCA1OS4yNCw2Mi44NyA2MS4wOCw2Ny4xIDYyLjkxLDcxLjI2IDY0Ljc1LDc1LjM1IDY2LjU5LDc5LjM3IDY4LjQzLDgzLjMzIDcwLjI2LDg3LjIyIDcyLjEsOTEuMDQgNzMuOTQsOTQuNzkgNzUuNzgsOTguNDggNzcuNjEsMTAyLjEgNzkuNDUsMTA1LjY1IDgxLjI5LDEwOS4xMyA4My4xMywxMTIuNTUgODQuOTYsMTE1Ljg5IDg2LjgsMTE5LjE3IDg4LjY0LDEyMi4zOSA5MC40OCwxMjUuNTMgOTIuMzEsMTI4LjYxIDk0LjE1LDEzMS42MiA5NS45OSwxMzQuNTYgOTcuODMsMTM3LjQzIDk5LjY2LDE0MC4yNCAxMDEuNSwxNDIuOTggMTAzLjM0LDE0NS42NSAxMDUuMTgsMTQ4LjI1IDEwNy4wMSwxNTAuNzkgMTA4Ljg1LDE1My4yNiAxMTAuNjksMTU1LjY2IDExMi41MywxNTcuOTkgMTE0LjM2LDE2MC4yNiAxMTYuMiwxNjIuNDYgMTE4LjA0LDE2NC41OSAxMTkuODgsMTY2LjY1IDEyMS43MSwxNjguNjQgMTIzLjU1LDE3MC41NyAxMjUuMzksMTcyLjQzIDEyNy4yMywxNzQuMjIgMTI5LjA2LDE3NS45NSAxMzAuOSwxNzcuNjEgMTMyLjc0LDE3OS4yIDEzNC41NywxODAuNzIgMTM2LjQxLDE4Mi4xNyAxMzguMjUsMTgzLjU2IDE0MC4wOSwxODQuODggMTQxLjkzLDE4Ni4xMyAxNDMuNzYsMTg3LjMxIDE0NS42LDE4OC40MyAxNDcuNDQsMTg5LjQ3IDE0OS4yNywxOTAuNDYgMTUxLjExLDE5MS4zNyAxNTIuOTUsMTkyLjIxIDE1NC43OSwxOTIuOTkgMTU2LjYzLDE5My43IDE1OC40NiwxOTQuMzQgMTYwLjMsMTk0LjkyIDE2Mi4xNCwxOTUuNDMgMTYzLjk4LDE5NS44NyAxNjUuODEsMTk2LjI0IDE2Ny42NSwxOTYuNTQgMTY5LjQ5LDE5Ni43OCAxNzEuMzMsMTk2Ljk1IDE3My4xNiwxOTcuMDUgMTc1LDE5Ny4wOCAxNzYuODQsMTk3LjA1IDE3OC42OCwxOTYuOTUgMTgwLjUxLDE5Ni43OCAxODIuMzUsMTk2LjU0IDE4NC4xOSwxOTYuMjQgMTg2LjAzLDE5NS44NyAxODcuODYsMTk1LjQzIDE4OS43LDE5NC45MiAxOTEuNTQsMTk0LjM0IDE5My4zNywxOTMuNyAxOTUuMjEsMTkyLjk5IDE5Ny4wNSwxOTIuMjEgMTk4Ljg5LDE5MS4zNyAyMDAuNzMsMTkwLjQ2IDIwMi41NiwxODkuNDcgMjA0LjQsMTg4LjQzIDIwNi4yNCwxODcuMzEgMjA4LjA4LDE4Ni4xMyAyMDkuOTEsMTg0Ljg4IDIxMS43NSwxODMuNTYgMjEzLjU5LDE4Mi4xNyAyMTUuNDMsMTgwLjcyIDIxNy4yNiwxNzkuMiAyMTkuMSwxNzcuNjEgMjIwLjk0LDE3NS45NSAyMjIuNzcsMTc0LjIyIDIyNC42MSwxNzIuNDMgMjI2LjQ1LDE3MC41NyAyMjguMjksMTY4LjY0IDIzMC4xMywxNjYuNjUgMjMxLjk2LDE2NC41OSAyMzMuOCwxNjIuNDYgMjM1LjY0LDE2MC4yNiAyMzcuNDgsMTU3Ljk5IDIzOS4zMSwxNTUuNjYgMjQxLjE1LDE1My4yNiAyNDIuOTksMTUwLjc5IDI0NC44MywxNDguMjUgMjQ2LjY2LDE0NS42NSAyNDguNSwxNDIuOTggMjUwLjM0LDE0MC4yNCAyNTIuMTgsMTM3LjQzIDI1NC4wMSwxMzQuNTYgMjU1Ljg1LDEzMS42MiAyNTcuNjksMTI4LjYxIDI1OS41MiwxMjUuNTMgMjYxLjM2LDEyMi4zOSAyNjMuMiwxMTkuMTcgMjY1LjA0LDExNS44OSAyNjYuODgsMTEyLjU1IDI2OC43MSwxMDkuMTMgMjcwLjU1LDEwNS42NSAyNzIuMzksMTAyLjEgMjc0LjIzLDk4LjQ4IDI3Ni4wNiw5NC43OSAyNzcuOSw5MS4wNCAyNzkuNzQsODcuMjIgMjgxLjU4LDgzLjMzIDI4My40MSw3OS4zNyAyODUuMjUsNzUuMzUgMjg3LjA5LDcxLjI2IDI4OC45Myw2Ny4xIDI5MC43Niw2Mi44NyAyOTIuNiw1OC41OCAyOTQuNDQsNTQuMjEgMjk2LjI3LDQ5Ljc4IDI5OC4xMSw0NS4yOSAyOTkuOTUsNDAuNzIgMzAxLjc5LDM2LjA5IDMwMy42MywzMS4zOSAzMDUuNDYsMjYuNjIgMzA3LjMsMjEuNzkgMzA5LjE0LDE2Ljg4IDMwOS40NywxNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNkU5REM4IiBzdHJva2Utd2lkdGg9IjIuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGNpcmNsZSBjeD0iMTEyIiBjeT0iMTU3LjMzIiByPSI0LjUiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iI0Y3RjNFNyIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48dGV4dCB4PSI4MiIgeT0iMTQ5LjMzIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzBFMEUxMSI+KDEsIDApPC90ZXh0PjxjaXJjbGUgY3g9IjIzOCIgY3k9IjE1Ny4zMyIgcj0iNC41IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiNGN0YzRTciIHN0cm9rZS13aWR0aD0iMS41Ii8+PHRleHQgeD0iMjQ2IiB5PSIxNDkuMzMiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMEUwRTExIj4oNCwgMCk8L3RleHQ+PC9zdmc+)
+
+   - A) $y = (x - 1)(x - 4)$
+   - B) $y = (x + 1)(x + 4)$
+   - C) $y = -(x - 1)(x - 4)$
+   - D) $y = (x - 1)(x + 4)$
+
+4. A parabola opens upward and touches the x-axis at exactly one point, $x = 3$. Which equation represents this parabola?
+   - A) $y = (x - 3)(x + 3)$
+   - B) $y = (x + 3)^{2}$
+   - C) $y = -(x - 3)^{2}$
+   - D) $y = (x - 3)^{2}$
+
+**Proficient Level**
+
+5. The graph of $y = x^{2}$ is shifted 4 units right and 2 units down. Which equation represents the new graph?
+   - A) $y = (x + 4)^{2} - 2$
+   - B) $y = (x - 4)^{2} - 2$
+   - C) $y = (x - 4)^{2} + 2$
+   - D) $y = (x + 4)^{2} + 2$
+
+6. Which equation represents the parabola shown?
+
+<!-- figure: ar-3-6-p7-vertex-point -->
+![A narrow upward-opening parabola on a coordinate plane. Its lowest point is marked at (2, -3), and the curve passes through the marked point (0, 5) on the y-axis.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIG5hcnJvdyB1cHdhcmQtb3BlbmluZyBwYXJhYm9sYSBvbiBhIGNvb3JkaW5hdGUgcGxhbmUuIEl0cyBsb3dlc3QgcG9pbnQgaXMgbWFya2VkIGF0ICgyLCAtMyksIGFuZCB0aGUgY3VydmUgcGFzc2VzIHRocm91Z2ggdGhlIG1hcmtlZCBwb2ludCAoMCwgNSkgb24gdGhlIHktYXhpcy4iPjxyZWN0IHdpZHRoPSIzNDAiIGhlaWdodD0iMjUwIiBmaWxsPSIjRjdGM0U3IiByeD0iMTAiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgeDE9IjI4IiB5MT0iMTYiIHgyPSIyOCIgeTI9IjIyOCIvPjxsaW5lIHgxPSI2NC43NSIgeTE9IjE2IiB4Mj0iNjQuNzUiIHkyPSIyMjgiLz48bGluZSB4MT0iMTAxLjUiIHkxPSIxNiIgeDI9IjEwMS41IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjEzOC4yNSIgeTE9IjE2IiB4Mj0iMTM4LjI1IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjE3NSIgeTE9IjE2IiB4Mj0iMTc1IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjIxMS43NSIgeTE9IjE2IiB4Mj0iMjExLjc1IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjI0OC41IiB5MT0iMTYiIHgyPSIyNDguNSIgeTI9IjIyOCIvPjxsaW5lIHgxPSIyODUuMjUiIHkxPSIxNiIgeDI9IjI4NS4yNSIgeTI9IjIyOCIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIyOCIvPjxsaW5lIHgxPSIyOCIgeTE9IjIxMS42OSIgeDI9IjMyMiIgeTI9IjIxMS42OSIvPjxsaW5lIHgxPSIyOCIgeTE9IjE3OS4wOCIgeDI9IjMyMiIgeTI9IjE3OS4wOCIvPjxsaW5lIHgxPSIyOCIgeTE9IjE0Ni40NiIgeDI9IjMyMiIgeTI9IjE0Ni40NiIvPjxsaW5lIHgxPSIyOCIgeTE9IjExMy44NSIgeDI9IjMyMiIgeTI9IjExMy44NSIvPjxsaW5lIHgxPSIyOCIgeTE9IjgxLjIzIiB4Mj0iMzIyIiB5Mj0iODEuMjMiLz48bGluZSB4MT0iMjgiIHkxPSI0OC42MiIgeDI9IjMyMiIgeTI9IjQ4LjYyIi8+PGxpbmUgeDE9IjI4IiB5MT0iMTYiIHgyPSIzMjIiIHkyPSIxNiIvPjwvZz48bGluZSB4MT0iMjgiIHkxPSIxNDYuNDYiIHgyPSIzMjIiIHkyPSIxNDYuNDYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48bGluZSB4MT0iMTAxLjUiIHkxPSIyMjgiIHgyPSIxMDEuNSIgeTI9IjE2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGcgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiMwRTBFMTEiPjx0ZXh0IHg9IjI4IiB5PSIxNTkuNDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPi0yPC90ZXh0Pjx0ZXh0IHg9IjY0Ljc1IiB5PSIxNTkuNDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPi0xPC90ZXh0Pjx0ZXh0IHg9IjEzOC4yNSIgeT0iMTU5LjQ2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xPC90ZXh0Pjx0ZXh0IHg9IjE3NSIgeT0iMTU5LjQ2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yPC90ZXh0Pjx0ZXh0IHg9IjIxMS43NSIgeT0iMTU5LjQ2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4zPC90ZXh0Pjx0ZXh0IHg9IjI0OC41IiB5PSIxNTkuNDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjQ8L3RleHQ+PHRleHQgeD0iMjg1LjI1IiB5PSIxNTkuNDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjU8L3RleHQ+PHRleHQgeD0iMzIyIiB5PSIxNTkuNDYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjY8L3RleHQ+PHRleHQgeD0iOTUuNSIgeT0iMjE1LjE5IiB0ZXh0LWFuY2hvcj0iZW5kIj4tNDwvdGV4dD48dGV4dCB4PSI5NS41IiB5PSIxODIuNTgiIHRleHQtYW5jaG9yPSJlbmQiPi0yPC90ZXh0Pjx0ZXh0IHg9Ijk1LjUiIHk9IjExNy4zNSIgdGV4dC1hbmNob3I9ImVuZCI+MjwvdGV4dD48dGV4dCB4PSI5NS41IiB5PSI4NC43MyIgdGV4dC1hbmNob3I9ImVuZCI+NDwvdGV4dD48dGV4dCB4PSI5NS41IiB5PSI1Mi4xMiIgdGV4dC1hbmNob3I9ImVuZCI+NjwvdGV4dD48dGV4dCB4PSI5NS41IiB5PSIxOS41IiB0ZXh0LWFuY2hvcj0iZW5kIj44PC90ZXh0PjwvZz48cG9seWxpbmUgZGF0YS1jdXJ2ZT0iMCIgcG9pbnRzPSI4OC44MSwxNiA5MC40OCwyMi44NSA5Mi4zMSwzMC4yNyA5NC4xNSwzNy41MyA5NS45OSw0NC42MiA5Ny44Myw1MS41NSA5OS42Niw1OC4zMiAxMDEuNSw2NC45MiAxMDMuMzQsNzEuMzYgMTA1LjE4LDc3LjY0IDEwNy4wMSw4My43NiAxMDguODUsODkuNzEgMTEwLjY5LDk1LjUgMTEyLjUzLDEwMS4xMyAxMTQuMzYsMTA2LjU5IDExNi4yLDExMS44OSAxMTguMDQsMTE3LjAzIDExOS44OCwxMjIgMTIxLjcxLDEyNi44MSAxMjMuNTUsMTMxLjQ2IDEyNS4zOSwxMzUuOTQgMTI3LjIzLDE0MC4yNiAxMjkuMDYsMTQ0LjQyIDEzMC45LDE0OC40MiAxMzIuNzQsMTUyLjI1IDEzNC41OCwxNTUuOTIgMTM2LjQxLDE1OS40MyAxMzguMjUsMTYyLjc3IDE0MC4wOSwxNjUuOTUgMTQxLjkzLDE2OC45NyAxNDMuNzYsMTcxLjgyIDE0NS42LDE3NC41MSAxNDcuNDQsMTc3LjA0IDE0OS4yOCwxNzkuNCAxNTEuMTEsMTgxLjYgMTUyLjk1LDE4My42NCAxNTQuNzksMTg1LjUyIDE1Ni42MywxODcuMjMgMTU4LjQ2LDE4OC43OCAxNjAuMywxOTAuMTcgMTYyLjE0LDE5MS4zOSAxNjMuOTgsMTkyLjQ1IDE2NS44MSwxOTMuMzUgMTY3LjY1LDE5NC4wOCAxNjkuNDksMTk0LjY1IDE3MS4zMywxOTUuMDYgMTczLjE2LDE5NS4zIDE3NSwxOTUuMzggMTc2Ljg0LDE5NS4zIDE3OC42OCwxOTUuMDYgMTgwLjUxLDE5NC42NSAxODIuMzUsMTk0LjA4IDE4NC4xOSwxOTMuMzUgMTg2LjAzLDE5Mi40NSAxODcuODYsMTkxLjM5IDE4OS43LDE5MC4xNyAxOTEuNTQsMTg4Ljc4IDE5My4zOCwxODcuMjMgMTk1LjIxLDE4NS41MiAxOTcuMDUsMTgzLjY0IDE5OC44OSwxODEuNiAyMDAuNzMsMTc5LjQgMjAyLjU2LDE3Ny4wNCAyMDQuNCwxNzQuNTEgMjA2LjI0LDE3MS44MiAyMDguMDgsMTY4Ljk3IDIwOS45MSwxNjUuOTUgMjExLjc1LDE2Mi43NyAyMTMuNTksMTU5LjQzIDIxNS40MywxNTUuOTIgMjE3LjI2LDE1Mi4yNSAyMTkuMSwxNDguNDIgMjIwLjk0LDE0NC40MiAyMjIuNzgsMTQwLjI2IDIyNC42MSwxMzUuOTQgMjI2LjQ1LDEzMS40NiAyMjguMjksMTI2LjgxIDIzMC4xMywxMjIgMjMxLjk2LDExNy4wMyAyMzMuOCwxMTEuODkgMjM1LjY0LDEwNi41OSAyMzcuNDgsMTAxLjEzIDIzOS4zMSw5NS41IDI0MS4xNSw4OS43MSAyNDIuOTksODMuNzYgMjQ0LjgzLDc3LjY0IDI0Ni42Niw3MS4zNiAyNDguNSw2NC45MiAyNTAuMzQsNTguMzIgMjUyLjE4LDUxLjU1IDI1NC4wMSw0NC42MiAyNTUuODUsMzcuNTMgMjU3LjY5LDMwLjI3IDI1OS41MywyMi44NSAyNjEuMTksMTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzZFOURDOCIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjE3NSIgY3k9IjE5NS4zOCIgcj0iNC41IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiNGN0YzRTciIHN0cm9rZS13aWR0aD0iMS41Ii8+PHRleHQgeD0iMTgzIiB5PSIyMTEuMzgiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMEUwRTExIj52ZXJ0ZXggKDIsIC0zKTwvdGV4dD48Y2lyY2xlIGN4PSIxMDEuNSIgY3k9IjY0LjkyIiByPSI0LjUiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iI0Y3RjNFNyIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48dGV4dCB4PSI2OS41IiB5PSI1Ni45MiIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMwRTBFMTEiPigwLCA1KTwvdGV4dD48L3N2Zz4=)
+
+   - A) $y = (x - 2)^{2} - 3$
+   - B) $y = 2(x + 2)^{2} - 3$
+   - C) $y = 2(x - 2)^{2} - 3$
+   - D) $y = 2(x - 2)^{2} + 3$
+
+7. A parabola opens upward, crosses the x-axis at $x = -2$ and $x = 5$, and passes through the point $(0, -20)$. Which equation represents this parabola?
+   - A) $y = 2(x + 2)(x - 5)$
+   - B) $y = (x + 2)(x - 5)$
+   - C) $y = 2(x - 2)(x + 5)$
+   - D) $y = -2(x + 2)(x - 5)$
+
+**Advanced Level**
+
+8. A parabola has its turning point at $(-1, 4)$, opens downward, and passes through the point $(1, 0)$. Which equation represents this parabola?
+   - A) $y = (x + 1)^{2} + 4$
+   - B) $y = -(x - 1)^{2} + 4$
+   - C) $y = -(x + 1)^{2} - 4$
+   - D) $y = -(x + 1)^{2} + 4$
+
+9. A parabola touches the x-axis at exactly one point, $x = 3$, and passes through the point $(1, 8)$. Which equation represents this parabola?
+   - A) $y = 2(x - 3)(x + 3)$
+   - B) $y = 2(x - 3)^{2}$
+   - C) $y = (x - 3)^{2}$
+   - D) $y = 2(x + 3)^{2}$
+
+10. A parabola opens downward, crosses the x-axis at $x = -4$ and $x = 0$, and passes through the point $(-2, 8)$. Which equation represents this parabola?
+    - A) $y = -x(x + 4)$
+    - B) $y = -2x(x - 4)$
+    - C) $y = -2x(x + 4)$
+    - D) $y = 2x(x + 4)$
+
+---
+
+#### **Part 3: Mini Quiz** (Complete in under 10 minutes)
+
+**Item 1**
+
+Which equation represents the parabola shown?
+
+<!-- figure: ar-3-6-q1-graph -->
+![An upward-opening parabola on a coordinate plane. It crosses the x-axis at -2 and at 1, both marked, and crosses the y-axis at -2.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBbiB1cHdhcmQtb3BlbmluZyBwYXJhYm9sYSBvbiBhIGNvb3JkaW5hdGUgcGxhbmUuIEl0IGNyb3NzZXMgdGhlIHgtYXhpcyBhdCAtMiBhbmQgYXQgMSwgYm90aCBtYXJrZWQsIGFuZCBjcm9zc2VzIHRoZSB5LWF4aXMgYXQgLTIuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI0Y3RjNFNyIgcng9IjEwIi8+PGcgc3Ryb2tlPSIjRTJEQ0NBIiBzdHJva2Utd2lkdGg9IjEiPjxsaW5lIHgxPSIyOCIgeTE9IjE2IiB4Mj0iMjgiIHkyPSIyMjgiLz48bGluZSB4MT0iNzAiIHkxPSIxNiIgeDI9IjcwIiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjExMiIgeTE9IjE2IiB4Mj0iMTEyIiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjE1NCIgeTE9IjE2IiB4Mj0iMTU0IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjE5NiIgeTE9IjE2IiB4Mj0iMTk2IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjIzOCIgeTE9IjE2IiB4Mj0iMjM4IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjI4MCIgeTE9IjE2IiB4Mj0iMjgwIiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjMyMiIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjI4IiB5MT0iMjI4IiB4Mj0iMzIyIiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjI4IiB5MT0iMjA2LjgiIHgyPSIzMjIiIHkyPSIyMDYuOCIvPjxsaW5lIHgxPSIyOCIgeTE9IjE4NS42IiB4Mj0iMzIyIiB5Mj0iMTg1LjYiLz48bGluZSB4MT0iMjgiIHkxPSIxNjQuNCIgeDI9IjMyMiIgeTI9IjE2NC40Ii8+PGxpbmUgeDE9IjI4IiB5MT0iMTQzLjIiIHgyPSIzMjIiIHkyPSIxNDMuMiIvPjxsaW5lIHgxPSIyOCIgeTE9IjEyMiIgeDI9IjMyMiIgeTI9IjEyMiIvPjxsaW5lIHgxPSIyOCIgeTE9IjEwMC44IiB4Mj0iMzIyIiB5Mj0iMTAwLjgiLz48bGluZSB4MT0iMjgiIHkxPSI3OS42IiB4Mj0iMzIyIiB5Mj0iNzkuNiIvPjxsaW5lIHgxPSIyOCIgeTE9IjU4LjQiIHgyPSIzMjIiIHkyPSI1OC40Ii8+PGxpbmUgeDE9IjI4IiB5MT0iMzcuMiIgeDI9IjMyMiIgeTI9IjM3LjIiLz48bGluZSB4MT0iMjgiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjE2Ii8+PC9nPjxsaW5lIHgxPSIyOCIgeTE9IjE0My4yIiB4Mj0iMzIyIiB5Mj0iMTQzLjIiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48bGluZSB4MT0iMTk2IiB5MT0iMjI4IiB4Mj0iMTk2IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iMjgiIHk9IjE1Ni4yIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4tNDwvdGV4dD48dGV4dCB4PSI3MCIgeT0iMTU2LjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPi0zPC90ZXh0Pjx0ZXh0IHg9IjExMiIgeT0iMTU2LjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPi0yPC90ZXh0Pjx0ZXh0IHg9IjE1NCIgeT0iMTU2LjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPi0xPC90ZXh0Pjx0ZXh0IHg9IjIzOCIgeT0iMTU2LjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjE8L3RleHQ+PHRleHQgeD0iMjgwIiB5PSIxNTYuMiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjwvdGV4dD48dGV4dCB4PSIzMjIiIHk9IjE1Ni4yIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4zPC90ZXh0Pjx0ZXh0IHg9IjE5MCIgeT0iMjMxLjUiIHRleHQtYW5jaG9yPSJlbmQiPi00PC90ZXh0Pjx0ZXh0IHg9IjE5MCIgeT0iMjEwLjMiIHRleHQtYW5jaG9yPSJlbmQiPi0zPC90ZXh0Pjx0ZXh0IHg9IjE5MCIgeT0iMTg5LjEiIHRleHQtYW5jaG9yPSJlbmQiPi0yPC90ZXh0Pjx0ZXh0IHg9IjE5MCIgeT0iMTY3LjkiIHRleHQtYW5jaG9yPSJlbmQiPi0xPC90ZXh0Pjx0ZXh0IHg9IjE5MCIgeT0iMTI1LjUiIHRleHQtYW5jaG9yPSJlbmQiPjE8L3RleHQ+PHRleHQgeD0iMTkwIiB5PSIxMDQuMyIgdGV4dC1hbmNob3I9ImVuZCI+MjwvdGV4dD48dGV4dCB4PSIxOTAiIHk9IjgzLjEiIHRleHQtYW5jaG9yPSJlbmQiPjM8L3RleHQ+PHRleHQgeD0iMTkwIiB5PSI2MS45IiB0ZXh0LWFuY2hvcj0iZW5kIj40PC90ZXh0Pjx0ZXh0IHg9IjE5MCIgeT0iNDAuNyIgdGV4dC1hbmNob3I9ImVuZCI+NTwvdGV4dD48dGV4dCB4PSIxOTAiIHk9IjE5LjUiIHRleHQtYW5jaG9yPSJlbmQiPjY8L3RleHQ+PC9nPjxwb2x5bGluZSBkYXRhLWN1cnZlPSIwIiBwb2ludHM9IjU0LjM2LDE2IDU1LjU2LDE5LjQ2IDU3LjQsMjQuNjkgNTkuMjQsMjkuODUgNjEuMDgsMzQuOTIgNjIuOTEsMzkuOTEgNjQuNzUsNDQuODIgNjYuNTksNDkuNjUgNjguNDMsNTQuNCA3MC4yNiw1OS4wNiA3Mi4xLDYzLjY1IDczLjk0LDY4LjE1IDc1Ljc4LDcyLjU3IDc3LjYxLDc2LjkyIDc5LjQ1LDgxLjE4IDgxLjI5LDg1LjM2IDgzLjEzLDg5LjQ1IDg0Ljk2LDkzLjQ3IDg2LjgsOTcuNDEgODguNjQsMTAxLjI2IDkwLjQ4LDEwNS4wNCA5Mi4zMSwxMDguNzMgOTQuMTUsMTEyLjM0IDk1Ljk5LDExNS44NyA5Ny44MiwxMTkuMzIgOTkuNjYsMTIyLjY5IDEwMS41LDEyNS45OCAxMDMuMzQsMTI5LjE4IDEwNS4xOCwxMzIuMzEgMTA3LjAxLDEzNS4zNSAxMDguODUsMTM4LjMxIDExMC42OSwxNDEuMTkgMTEyLjUzLDE0My45OSAxMTQuMzYsMTQ2LjcxIDExNi4yLDE0OS4zNSAxMTguMDQsMTUxLjkgMTE5Ljg4LDE1NC4zOCAxMjEuNzEsMTU2Ljc3IDEyMy41NSwxNTkuMDkgMTI1LjM5LDE2MS4zMiAxMjcuMjMsMTYzLjQ3IDEyOS4wNiwxNjUuNTQgMTMwLjksMTY3LjUzIDEzMi43NCwxNjkuNDMgMTM0LjU3LDE3MS4yNiAxMzYuNDEsMTczLjAxIDEzOC4yNSwxNzQuNjcgMTQwLjA5LDE3Ni4yNSAxNDEuOTMsMTc3Ljc1IDE0My43NiwxNzkuMTcgMTQ1LjYsMTgwLjUxIDE0Ny40NCwxODEuNzcgMTQ5LjI3LDE4Mi45NSAxNTEuMTEsMTg0LjA0IDE1Mi45NSwxODUuMDYgMTU0Ljc5LDE4NS45OSAxNTYuNjMsMTg2Ljg0IDE1OC40NiwxODcuNjEgMTYwLjMsMTg4LjMgMTYyLjE0LDE4OC45MSAxNjMuOTgsMTg5LjQ0IDE2NS44MSwxODkuODkgMTY3LjY1LDE5MC4yNSAxNjkuNDksMTkwLjUzIDE3MS4zMywxOTAuNzQgMTczLjE2LDE5MC44NiAxNzUsMTkwLjkgMTc2Ljg0LDE5MC44NiAxNzguNjgsMTkwLjc0IDE4MC41MSwxOTAuNTMgMTgyLjM1LDE5MC4yNSAxODQuMTksMTg5Ljg5IDE4Ni4wMywxODkuNDQgMTg3Ljg2LDE4OC45MSAxODkuNywxODguMyAxOTEuNTQsMTg3LjYxIDE5My4zNywxODYuODQgMTk1LjIxLDE4NS45OSAxOTcuMDUsMTg1LjA2IDE5OC44OSwxODQuMDQgMjAwLjczLDE4Mi45NSAyMDIuNTYsMTgxLjc3IDIwNC40LDE4MC41MSAyMDYuMjQsMTc5LjE3IDIwOC4wOCwxNzcuNzUgMjA5LjkxLDE3Ni4yNSAyMTEuNzUsMTc0LjY3IDIxMy41OSwxNzMuMDEgMjE1LjQzLDE3MS4yNiAyMTcuMjYsMTY5LjQzIDIxOS4xLDE2Ny41MyAyMjAuOTQsMTY1LjU0IDIyMi43NywxNjMuNDcgMjI0LjYxLDE2MS4zMiAyMjYuNDUsMTU5LjA5IDIyOC4yOSwxNTYuNzcgMjMwLjEzLDE1NC4zOCAyMzEuOTYsMTUxLjkgMjMzLjgsMTQ5LjM1IDIzNS42NCwxNDYuNzEgMjM3LjQ4LDE0My45OSAyMzkuMzEsMTQxLjE5IDI0MS4xNSwxMzguMzEgMjQyLjk5LDEzNS4zNSAyNDQuODMsMTMyLjMxIDI0Ni42NiwxMjkuMTggMjQ4LjUsMTI1Ljk4IDI1MC4zNCwxMjIuNjkgMjUyLjE4LDExOS4zMiAyNTQuMDEsMTE1Ljg3IDI1NS44NSwxMTIuMzQgMjU3LjY5LDEwOC43MyAyNTkuNTIsMTA1LjA0IDI2MS4zNiwxMDEuMjYgMjYzLjIsOTcuNDEgMjY1LjA0LDkzLjQ3IDI2Ni44OCw4OS40NSAyNjguNzEsODUuMzYgMjcwLjU1LDgxLjE4IDI3Mi4zOSw3Ni45MiAyNzQuMjMsNzIuNTcgMjc2LjA2LDY4LjE1IDI3Ny45LDYzLjY1IDI3OS43NCw1OS4wNiAyODEuNTgsNTQuNCAyODMuNDEsNDkuNjUgMjg1LjI1LDQ0LjgyIDI4Ny4wOSwzOS45MSAyODguOTMsMzQuOTIgMjkwLjc2LDI5Ljg1IDI5Mi42LDI0LjY5IDI5NC40NCwxOS40NiAyOTUuNjQsMTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzZFOURDOCIgc3Ryb2tlLXdpZHRoPSIyLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjExMiIgY3k9IjE0My4yIiByPSI0LjUiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iI0Y3RjNFNyIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48dGV4dCB4PSI3NiIgeT0iMTM1LjIiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjMEUwRTExIj4oLTIsIDApPC90ZXh0PjxjaXJjbGUgY3g9IjIzOCIgY3k9IjE0My4yIiByPSI0LjUiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iI0Y3RjNFNyIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48dGV4dCB4PSIyNDYiIHk9IjEzNS4yIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzBFMEUxMSI+KDEsIDApPC90ZXh0Pjwvc3ZnPg==)
+
+- A) $y = (x - 2)(x + 1)$
+- B) $y = (x + 2)(x - 1)$
+- C) $y = -(x + 2)(x - 1)$
+- D) $y = (x + 2)(x + 1)$
+
+**Item 2**
+
+The graph of $y = x^{2}$ is shifted 5 units right and 3 units up. Which equation represents the new graph?
+
+- A) $y = (x - 5)^{2} + 3$
+- B) $y = (x + 5)^{2} + 3$
+- C) $y = (x - 5)^{2} - 3$
+- D) $y = (x + 5)^{2} - 3$
+
+**Item 3**
+
+Which equation represents the parabola shown?
+
+<!-- figure: ar-3-6-q3-graph -->
+![A downward-opening parabola on a coordinate plane. It crosses the x-axis at 1 and at 5, both marked, its highest point is at (3, 4), and it crosses the y-axis at -5.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGRvd253YXJkLW9wZW5pbmcgcGFyYWJvbGEgb24gYSBjb29yZGluYXRlIHBsYW5lLiBJdCBjcm9zc2VzIHRoZSB4LWF4aXMgYXQgMSBhbmQgYXQgNSwgYm90aCBtYXJrZWQsIGl0cyBoaWdoZXN0IHBvaW50IGlzIGF0ICgzLCA0KSwgYW5kIGl0IGNyb3NzZXMgdGhlIHktYXhpcyBhdCAtNS4iPjxyZWN0IHdpZHRoPSIzNDAiIGhlaWdodD0iMjUwIiBmaWxsPSIjRjdGM0U3IiByeD0iMTAiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgeDE9IjI4IiB5MT0iMTYiIHgyPSIyOCIgeTI9IjIyOCIvPjxsaW5lIHgxPSI2NC43NSIgeTE9IjE2IiB4Mj0iNjQuNzUiIHkyPSIyMjgiLz48bGluZSB4MT0iMTAxLjUiIHkxPSIxNiIgeDI9IjEwMS41IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjEzOC4yNSIgeTE9IjE2IiB4Mj0iMTM4LjI1IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjE3NSIgeTE9IjE2IiB4Mj0iMTc1IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjIxMS43NSIgeTE9IjE2IiB4Mj0iMjExLjc1IiB5Mj0iMjI4Ii8+PGxpbmUgeDE9IjI0OC41IiB5MT0iMTYiIHgyPSIyNDguNSIgeTI9IjIyOCIvPjxsaW5lIHgxPSIyODUuMjUiIHkxPSIxNiIgeDI9IjI4NS4yNSIgeTI9IjIyOCIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIyOCIvPjxsaW5lIHgxPSIyOCIgeTE9IjIxMS42OSIgeDI9IjMyMiIgeTI9IjIxMS42OSIvPjxsaW5lIHgxPSIyOCIgeTE9IjE3OS4wOCIgeDI9IjMyMiIgeTI9IjE3OS4wOCIvPjxsaW5lIHgxPSIyOCIgeTE9IjE0Ni40NiIgeDI9IjMyMiIgeTI9IjE0Ni40NiIvPjxsaW5lIHgxPSIyOCIgeTE9IjExMy44NSIgeDI9IjMyMiIgeTI9IjExMy44NSIvPjxsaW5lIHgxPSIyOCIgeTE9IjgxLjIzIiB4Mj0iMzIyIiB5Mj0iODEuMjMiLz48bGluZSB4MT0iMjgiIHkxPSI0OC42MiIgeDI9IjMyMiIgeTI9IjQ4LjYyIi8+PGxpbmUgeDE9IjI4IiB5MT0iMTYiIHgyPSIzMjIiIHkyPSIxNiIvPjwvZz48bGluZSB4MT0iMjgiIHkxPSIxMTMuODUiIHgyPSIzMjIiIHkyPSIxMTMuODUiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48bGluZSB4MT0iNjQuNzUiIHkxPSIyMjgiIHgyPSI2NC43NSIgeTI9IjE2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGcgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiMwRTBFMTEiPjx0ZXh0IHg9IjI4IiB5PSIxMjYuODUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPi0xPC90ZXh0Pjx0ZXh0IHg9IjEwMS41IiB5PSIxMjYuODUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjE8L3RleHQ+PHRleHQgeD0iMTM4LjI1IiB5PSIxMjYuODUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI8L3RleHQ+PHRleHQgeD0iMTc1IiB5PSIxMjYuODUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjM8L3RleHQ+PHRleHQgeD0iMjExLjc1IiB5PSIxMjYuODUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjQ8L3RleHQ+PHRleHQgeD0iMjQ4LjUiIHk9IjEyNi44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NTwvdGV4dD48dGV4dCB4PSIyODUuMjUiIHk9IjEyNi44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NjwvdGV4dD48dGV4dCB4PSIzMjIiIHk9IjEyNi44NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzwvdGV4dD48dGV4dCB4PSI1OC43NSIgeT0iMjE1LjE5IiB0ZXh0LWFuY2hvcj0iZW5kIj4tNjwvdGV4dD48dGV4dCB4PSI1OC43NSIgeT0iMTgyLjU4IiB0ZXh0LWFuY2hvcj0iZW5kIj4tNDwvdGV4dD48dGV4dCB4PSI1OC43NSIgeT0iMTQ5Ljk2IiB0ZXh0LWFuY2hvcj0iZW5kIj4tMjwvdGV4dD48dGV4dCB4PSI1OC43NSIgeT0iODQuNzMiIHRleHQtYW5jaG9yPSJlbmQiPjI8L3RleHQ+PHRleHQgeD0iNTguNzUiIHk9IjUyLjEyIiB0ZXh0LWFuY2hvcj0iZW5kIj40PC90ZXh0Pjx0ZXh0IHg9IjU4Ljc1IiB5PSIxOS41IiB0ZXh0LWFuY2hvcj0iZW5kIj42PC90ZXh0PjwvZz48cG9seWxpbmUgZGF0YS1jdXJ2ZT0iMCIgcG9pbnRzPSI1My4xMSwyMjggNTMuNzMsMjI2LjIxIDU1LjU2LDIyMC44NyA1Ny40LDIxNS42MSA1OS4yNCwyMTAuNDMgNjEuMDgsMjA1LjMzIDYyLjkxLDIwMC4zMiA2NC43NSwxOTUuMzggNjYuNTksMTkwLjUzIDY4LjQzLDE4NS43NiA3MC4yNiwxODEuMDcgNzIuMSwxNzYuNDcgNzMuOTQsMTcxLjk0IDc1Ljc4LDE2Ny41IDc3LjYxLDE2My4xNCA3OS40NSwxNTguODYgODEuMjksMTU0LjY2IDgzLjEzLDE1MC41NCA4NC45NiwxNDYuNSA4Ni44LDE0Mi41NSA4OC42NCwxMzguNjcgOTAuNDgsMTM0Ljg4IDkyLjMxLDEzMS4xNyA5NC4xNSwxMjcuNTQgOTUuOTksMTI0IDk3LjgzLDEyMC41MyA5OS42NiwxMTcuMTUgMTAxLjUsMTEzLjg1IDEwMy4zNCwxMTAuNjMgMTA1LjE4LDEwNy40OSAxMDcuMDEsMTA0LjQzIDEwOC44NSwxMDEuNDUgMTEwLjY5LDk4LjU2IDExMi41Myw5NS43NCAxMTQuMzYsOTMuMDEgMTE2LjIsOTAuMzYgMTE4LjA0LDg3Ljc5IDExOS44OCw4NS4zMSAxMjEuNzEsODIuOSAxMjMuNTUsODAuNTggMTI1LjM5LDc4LjM0IDEyNy4yMyw3Ni4xOCAxMjkuMDYsNzQuMSAxMzAuOSw3Mi4xIDEzMi43NCw3MC4xOCAxMzQuNTgsNjguMzUgMTM2LjQxLDY2LjU5IDEzOC4yNSw2NC45MiAxNDAuMDksNjMuMzMgMTQxLjkzLDYxLjgyIDE0My43Niw2MC40IDE0NS42LDU5LjA1IDE0Ny40NCw1Ny43OSAxNDkuMjgsNTYuNjEgMTUxLjExLDU1LjUxIDE1Mi45NSw1NC40OSAxNTQuNzksNTMuNTUgMTU2LjYzLDUyLjY5IDE1OC40Niw1MS45MiAxNjAuMyw1MS4yMiAxNjIuMTQsNTAuNjEgMTYzLjk4LDUwLjA4IDE2NS44MSw0OS42MyAxNjcuNjUsNDkuMjcgMTY5LjQ5LDQ4Ljk4IDE3MS4zMyw0OC43OCAxNzMuMTYsNDguNjYgMTc1LDQ4LjYyIDE3Ni44NCw0OC42NiAxNzguNjgsNDguNzggMTgwLjUxLDQ4Ljk4IDE4Mi4zNSw0OS4yNyAxODQuMTksNDkuNjMgMTg2LjAzLDUwLjA4IDE4Ny44Niw1MC42MSAxODkuNyw1MS4yMiAxOTEuNTQsNTEuOTIgMTkzLjM4LDUyLjY5IDE5NS4yMSw1My41NSAxOTcuMDUsNTQuNDkgMTk4Ljg5LDU1LjUxIDIwMC43Myw1Ni42MSAyMDIuNTYsNTcuNzkgMjA0LjQsNTkuMDUgMjA2LjI0LDYwLjQgMjA4LjA4LDYxLjgyIDIwOS45MSw2My4zMyAyMTEuNzUsNjQuOTIgMjEzLjU5LDY2LjU5IDIxNS40Myw2OC4zNSAyMTcuMjYsNzAuMTggMjE5LjEsNzIuMSAyMjAuOTQsNzQuMSAyMjIuNzgsNzYuMTggMjI0LjYxLDc4LjM0IDIyNi40NSw4MC41OCAyMjguMjksODIuOSAyMzAuMTMsODUuMzEgMjMxLjk2LDg3Ljc5IDIzMy44LDkwLjM2IDIzNS42NCw5My4wMSAyMzcuNDgsOTUuNzQgMjM5LjMxLDk4LjU2IDI0MS4xNSwxMDEuNDUgMjQyLjk5LDEwNC40MyAyNDQuODMsMTA3LjQ5IDI0Ni42NiwxMTAuNjMgMjQ4LjUsMTEzLjg1IDI1MC4zNCwxMTcuMTUgMjUyLjE4LDEyMC41MyAyNTQuMDEsMTI0IDI1NS44NSwxMjcuNTQgMjU3LjY5LDEzMS4xNyAyNTkuNTMsMTM0Ljg4IDI2MS4zNiwxMzguNjcgMjYzLjIsMTQyLjU1IDI2NS4wNCwxNDYuNSAyNjYuODgsMTUwLjU0IDI2OC43MSwxNTQuNjYgMjcwLjU1LDE1OC44NiAyNzIuMzksMTYzLjE0IDI3NC4yMywxNjcuNSAyNzYuMDYsMTcxLjk0IDI3Ny45LDE3Ni40NyAyNzkuNzQsMTgxLjA3IDI4MS41OCwxODUuNzYgMjgzLjQxLDE5MC41MyAyODUuMjUsMTk1LjM4IDI4Ny4wOSwyMDAuMzIgMjg4LjkzLDIwNS4zMyAyOTAuNzYsMjEwLjQzIDI5Mi42LDIxNS42MSAyOTQuNDQsMjIwLjg3IDI5Ni4yOCwyMjYuMjEgMjk2Ljg5LDIyOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNkU5REM4IiBzdHJva2Utd2lkdGg9IjIuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGNpcmNsZSBjeD0iMTAxLjUiIGN5PSIxMTMuODUiIHI9IjQuNSIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjRjdGM0U3IiBzdHJva2Utd2lkdGg9IjEuNSIvPjx0ZXh0IHg9IjcxLjUiIHk9IjEwNS44NSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMwRTBFMTEiPigxLCAwKTwvdGV4dD48Y2lyY2xlIGN4PSIyNDguNSIgY3k9IjExMy44NSIgcj0iNC41IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiNGN0YzRTciIHN0cm9rZS13aWR0aD0iMS41Ii8+PHRleHQgeD0iMjU2LjUiIHk9IjEwNS44NSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMwRTBFMTEiPig1LCAwKTwvdGV4dD48L3N2Zz4=)
+
+- A) $y = (x - 1)(x - 5)$
+- B) $y = -(x + 1)(x + 5)$
+- C) $y = -(x - 1)(x - 5)$
+- D) $y = -(x - 1)(x + 5)$
+
+**Item 4**
+
+A parabola crosses the x-axis at $x = -3$ and $x = 1$ and passes through the point $(0, -6)$. Which equation represents this parabola?
+
+- A) $y = (x + 3)(x - 1)$
+- B) $y = 2(x - 3)(x + 1)$
+- C) $y = -2(x + 3)(x - 1)$
+- D) $y = 2(x + 3)(x - 1)$
+
+---
+
+#### **Part 4: Answer Key**
+
+##### Practice Problems - Worked Solutions
+
+**Basic Level**
+
+**1. A parabola opens upward and crosses the x-axis at $x = -1$ and $x = 3$. Which equation represents this parabola?**
+
+Step 1: Turn each intercept into a factor, using the opposite sign.
+- Intercept $-1$ gives $(x + 1)$.
+- Intercept $3$ gives $(x - 3)$.
+
+Step 2: The parabola opens upward, so the leading coefficient stays positive.
+
+Step 3: Check by setting the factors to zero. $(x + 1) = 0$ gives $-1$, and $(x - 3) = 0$ gives $3$. Both match.
+
+**Answer: B** ($y = (x + 1)(x - 3)$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: factor_signs_match_intercepts (copies the intercept signs straight into the factors, writing (x - 1)(x + 3); setting those to zero gives roots of 1 and -3, which are the negatives of the intercepts given)",
+  "B": "Correct: the intercepts -1 and 3 give the factors (x + 1) and (x - 3), and a positive leading coefficient opens the parabola upward",
+  "C": "Student makes misconception: wrong_sign_on_factor (uses the correct factors but puts a minus in front, which opens the parabola downward when the graph opens upward)",
+  "D": "Student makes misconception: wrong_sign_on_factor (writes the second factor as (x + 3) instead of (x - 3); setting it to zero gives -3, which is not an intercept of this graph)"
+},
+"misconception_tag": {
+  "A": "factor_signs_match_intercepts",
+  "C": "wrong_sign_on_factor",
+  "D": "wrong_sign_on_factor"
+}
+```
+
+---
+
+**2. A parabola opens downward and crosses the x-axis at $x = -3$ and $x = 2$. Which equation represents this parabola?**
+
+Step 1: The intercepts $-3$ and $2$ give the factors $(x + 3)$ and $(x - 2)$.
+
+Step 2: The parabola opens downward, so a negative sign goes in front.
+
+Step 3: Check. $(x + 3) = 0$ gives $-3$, and $(x - 2) = 0$ gives $2$. Both match, and the leading sign is negative.
+
+**Answer: C** ($y = -(x + 3)(x - 2)$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: wrong_sign_on_factor (gets both factors right but leaves the leading coefficient positive; expanding gives x squared plus x minus 6, which opens upward while the graph opens downward)",
+  "B": "Student makes misconception: factor_signs_match_intercepts (copies the intercept signs into the factors, writing (x - 3)(x + 2); setting those to zero gives 3 and -2 rather than -3 and 2)",
+  "C": "Correct: the intercepts give the factors (x + 3) and (x - 2), and the leading minus opens the parabola downward",
+  "D": "Student makes misconception: wrong_sign_on_factor (writes the second factor as (x + 2) instead of (x - 2); setting it to zero gives -2, which is not an intercept of this graph)"
+},
+"misconception_tag": {
+  "A": "wrong_sign_on_factor",
+  "B": "factor_signs_match_intercepts",
+  "D": "wrong_sign_on_factor"
+}
+```
+
+---
+
+**3. Which equation represents the parabola shown?**
+
+Step 1: Read the graph. It opens upward and crosses the x-axis at $1$ and at $4$.
+
+Step 2: The intercepts $1$ and $4$ give the factors $(x - 1)$ and $(x - 4)$.
+
+Step 3: Check. Expanding gives $x^{2} - 5x + 4$, so at $x = 0$ the height is $4$, matching the y-intercept in the picture.
+
+**Answer: A** ($y = (x - 1)(x - 4)$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: intercepts at 1 and 4 give the factors (x - 1) and (x - 4), and the positive leading coefficient opens the parabola upward",
+  "B": "Student makes misconception: factor_signs_match_intercepts (flips both factor signs, writing (x + 1)(x + 4); setting those to zero gives -1 and -4, so this parabola sits entirely to the left of where the graph crosses)",
+  "C": "Student makes misconception: wrong_sign_on_factor (correct factors with a minus in front, which opens the parabola downward when the graph opens upward)",
+  "D": "Student makes misconception: wrong_sign_on_factor (writes the second factor as (x + 4); setting it to zero gives -4, which is not one of the two crossings shown)"
+},
+"misconception_tag": {
+  "B": "factor_signs_match_intercepts",
+  "C": "wrong_sign_on_factor",
+  "D": "wrong_sign_on_factor"
+}
+```
+
+---
+
+**4. A parabola opens upward and touches the x-axis at exactly one point, $x = 3$. Which equation represents this parabola?**
+
+Step 1: One touch point means one repeated factor, not two different ones.
+
+Step 2: The touch point at $3$ gives the factor $(x - 3)$, used twice.
+
+Step 3: Check. $(x - 3)^{2} = 0$ has the single solution $x = 3$, and the leading coefficient is positive so the parabola opens upward.
+
+**Answer: D** ($y = (x - 3)^{2}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: double_root_written_as_two_intercepts (splits the single touch point into two different factors; (x - 3)(x + 3) = 0 gives x = 3 and x = -3, so this parabola crosses the axis twice instead of touching it once)",
+  "B": "Student makes misconception: factor_signs_match_intercepts (copies the intercept sign into the factor, writing (x + 3) squared; that touches the axis at -3 rather than at 3)",
+  "C": "Student makes misconception: wrong_sign_on_factor (right factor and right repetition, but the leading minus opens the parabola downward when the graph opens upward)",
+  "D": "Correct: a single touch point at 3 gives the repeated factor (x - 3) squared, and the positive leading coefficient opens it upward"
+},
+"misconception_tag": {
+  "A": "double_root_written_as_two_intercepts",
+  "B": "factor_signs_match_intercepts",
+  "C": "wrong_sign_on_factor"
+}
+```
+
+---
+
+**Proficient Level**
+
+**5. The graph of $y = x^{2}$ is shifted 4 units right and 2 units down. Which equation represents the new graph?**
+
+Step 1: Right 4 puts the opposite sign inside the bracket, giving $(x - 4)^{2}$.
+
+Step 2: Down 2 puts $-2$ on the end.
+
+Step 3: Check by locating the turning point, which should sit at $(4, -2)$. In $y = (x - 4)^{2} - 2$ it does.
+
+**Answer: B** ($y = (x - 4)^{2} - 2$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: transformation_shift_direction_reversed (reverses the horizontal shift, writing (x + 4) squared; that turning point sits at x = -4, which is 4 units left rather than right)",
+  "B": "Correct: right 4 gives (x - 4) squared and down 2 gives -2 on the end, putting the turning point at (4, -2)",
+  "C": "Student makes misconception: transformation_shift_direction_reversed (handles the horizontal shift correctly but reverses the vertical one, putting the turning point at (4, 2) rather than (4, -2))",
+  "D": "Student makes misconception: transformation_shift_direction_reversed (reverses both shifts, putting the turning point at (-4, 2) when it belongs at (4, -2))"
+},
+"misconception_tag": {
+  "A": "transformation_shift_direction_reversed",
+  "C": "transformation_shift_direction_reversed",
+  "D": "transformation_shift_direction_reversed"
+}
+```
+
+---
+
+**6. Which equation represents the parabola shown?**
+
+Step 1: Read the turning point off the graph. It is at $(2, -3)$, so the equation has the form $y = a(x - 2)^{2} - 3$.
+
+Step 2: The graph also passes through $(0, 5)$. Substitute it.
+
+$$5 = a(0 - 2)^{2} - 3$$
+
+Step 3: Simplify. $(0 - 2)^{2} = 4$, so $5 = 4a - 3$.
+
+Step 4: Solve. $4a = 8$, so $a = 2$.
+
+Step 5: Check. At $x = 0$: $2(4) - 3 = 5$. Correct.
+
+**Answer: C** ($y = 2(x - 2)^{2} - 3$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: given_point_not_used (reads the turning point correctly but leaves the leading coefficient as 1 without substituting the marked point; at x = 0 that gives 4 - 3 = 1, not the 5 shown on the graph)",
+  "B": "Student makes misconception: transformation_shift_direction_reversed (reverses the horizontal position, writing (x + 2) squared; that puts the turning point at x = -2 rather than at 2)",
+  "C": "Correct: the turning point (2, -3) gives a(x - 2) squared minus 3, and substituting (0, 5) gives 4a - 3 = 5, so a = 2",
+  "D": "Student makes misconception: sign_error_on_constant (flips the sign of the tail, putting the turning point at (2, 3) when the graph shows it below the x-axis at (2, -3))"
+},
+"misconception_tag": {
+  "A": "given_point_not_used",
+  "B": "transformation_shift_direction_reversed",
+  "D": "sign_error_on_constant"
+}
+```
+
+---
+
+**7. A parabola opens upward, crosses the x-axis at $x = -2$ and $x = 5$, and passes through the point $(0, -20)$. Which equation represents this parabola?**
+
+Step 1: The intercepts give the factors $(x + 2)$ and $(x - 5)$, with an unknown $a$ in front.
+
+$$y = a(x + 2)(x - 5)$$
+
+Step 2: Substitute $(0, -20)$.
+
+$$-20 = a(0 + 2)(0 - 5)$$
+
+Step 3: Simplify. $(2)(-5) = -10$, so $-20 = -10a$.
+
+Step 4: Solve. $a = 2$.
+
+Step 5: Check. At $x = 0$: $2(2)(-5) = -20$. Correct, and $a$ is positive so the parabola opens upward.
+
+**Answer: A** ($y = 2(x + 2)(x - 5)$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: the intercepts give (x + 2)(x - 5), and substituting (0, -20) gives -10a = -20, so a = 2",
+  "B": "Student makes misconception: given_point_not_used (writes the factors correctly and stops, leaving a as 1; at x = 0 that gives (2)(-5) = -10, not the -20 the question specifies)",
+  "C": "Student makes misconception: factor_signs_match_intercepts (copies the intercept signs into the factors, writing (x - 2)(x + 5); setting those to zero gives 2 and -5 rather than -2 and 5)",
+  "D": "Student makes misconception: wrong_sign_on_factor (gets the magnitude of a right but makes it negative, which opens the parabola downward when the question says upward; at x = 0 it also gives 20 rather than -20)"
+},
+"misconception_tag": {
+  "B": "given_point_not_used",
+  "C": "factor_signs_match_intercepts",
+  "D": "wrong_sign_on_factor"
+}
+```
+
+---
+
+**Advanced Level**
+
+**8. A parabola has its turning point at $(-1, 4)$, opens downward, and passes through the point $(1, 0)$. Which equation represents this parabola?**
+
+Step 1: The turning point $(-1, 4)$ gives the form $y = a(x + 1)^{2} + 4$.
+
+Step 2: Substitute $(1, 0)$.
+
+$$0 = a(1 + 1)^{2} + 4$$
+
+Step 3: Simplify. $(1 + 1)^{2} = 4$, so $0 = 4a + 4$.
+
+Step 4: Solve. $4a = -4$, so $a = -1$.
+
+Step 5: Check. $a$ is negative, which matches the downward opening the question states.
+
+**Answer: D** ($y = -(x + 1)^{2} + 4$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: given_point_not_used (leaves the leading coefficient as 1 without substituting the given point; that opens the parabola upward rather than downward, and at x = 1 it gives 4 + 4 = 8 rather than 0)",
+  "B": "Student makes misconception: transformation_shift_direction_reversed (reverses the horizontal position, writing (x - 1) squared, which puts the turning point at (1, 4) rather than (-1, 4))",
+  "C": "Student makes misconception: sign_error_on_constant (flips the sign of the tail, putting the turning point at (-1, -4) rather than (-1, 4))",
+  "D": "Correct: the turning point gives a(x + 1) squared plus 4, and substituting (1, 0) gives 4a + 4 = 0, so a = -1, which also matches the downward opening"
+},
+"misconception_tag": {
+  "A": "given_point_not_used",
+  "B": "transformation_shift_direction_reversed",
+  "C": "sign_error_on_constant"
+}
+```
+
+---
+
+**9. A parabola touches the x-axis at exactly one point, $x = 3$, and passes through the point $(1, 8)$. Which equation represents this parabola?**
+
+Step 1: One touch point means one repeated factor: $y = a(x - 3)^{2}$.
+
+Step 2: Substitute $(1, 8)$.
+
+$$8 = a(1 - 3)^{2}$$
+
+Step 3: Simplify. $(1 - 3)^{2} = 4$, so $8 = 4a$.
+
+Step 4: Solve. $a = 2$.
+
+Step 5: Check. At $x = 1$: $2(4) = 8$. Correct.
+
+**Answer: B** ($y = 2(x - 3)^{2}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: double_root_written_as_two_intercepts (splits the single touch point into two factors; (x - 3)(x + 3) crosses the axis at 3 and at -3, so it does not touch at one point, and at x = 1 it gives 2(-2)(4) = -16 rather than 8)",
+  "B": "Correct: the single touch point gives a(x - 3) squared, and substituting (1, 8) gives 4a = 8, so a = 2",
+  "C": "Student makes misconception: given_point_not_used (gets the repeated factor right but leaves a as 1; at x = 1 that gives 4 rather than the 8 specified)",
+  "D": "Student makes misconception: factor_signs_match_intercepts (copies the intercept sign into the factor, writing (x + 3) squared, which touches the axis at -3 rather than at 3)"
+},
+"misconception_tag": {
+  "A": "double_root_written_as_two_intercepts",
+  "C": "given_point_not_used",
+  "D": "factor_signs_match_intercepts"
+}
+```
+
+---
+
+**10. A parabola opens downward, crosses the x-axis at $x = -4$ and $x = 0$, and passes through the point $(-2, 8)$. Which equation represents this parabola?**
+
+Step 1: The intercepts $-4$ and $0$ give the factors $(x + 4)$ and $x$.
+
+$$y = ax(x + 4)$$
+
+Step 2: Substitute $(-2, 8)$.
+
+$$8 = a(-2)(-2 + 4)$$
+
+Step 3: Simplify. $(-2)(2) = -4$, so $8 = -4a$.
+
+Step 4: Solve. $a = -2$.
+
+Step 5: Check. $a$ is negative, matching the downward opening.
+
+**Answer: C** ($y = -2x(x + 4)$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: given_point_not_used (gets the factors and the downward opening right but leaves the coefficient at -1; at x = -2 that gives -(-2)(2) = 4 rather than the 8 specified)",
+  "B": "Student makes misconception: factor_signs_match_intercepts (copies the intercept sign into the factor, writing (x - 4); setting that to zero gives 4, which is not an intercept of this parabola)",
+  "C": "Correct: the intercepts give x(x + 4), and substituting (-2, 8) gives -4a = 8, so a = -2, which also opens the parabola downward",
+  "D": "Student makes misconception: wrong_sign_on_factor (right magnitude on the coefficient but positive, which opens the parabola upward when the question says downward; at x = -2 it also gives -8 rather than 8)"
+},
+"misconception_tag": {
+  "A": "given_point_not_used",
+  "B": "factor_signs_match_intercepts",
+  "D": "wrong_sign_on_factor"
+}
+```
+
+---
+
+##### Mini Quiz - Answer Key
+
+**Item 1: Which equation represents the parabola shown?**
+
+Step 1: Read the graph. It opens upward and crosses the x-axis at $-2$ and at $1$.
+
+Step 2: The intercepts give the factors $(x + 2)$ and $(x - 1)$.
+
+Step 3: Check. Expanding gives $x^{2} + x - 2$, so at $x = 0$ the height is $-2$, matching the y-intercept shown.
+
+**Answer: B** ($y = (x + 2)(x - 1)$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: factor_signs_match_intercepts (copies the intercept signs into the factors, writing (x - 2)(x + 1); setting those to zero gives 2 and -1 rather than -2 and 1)",
+  "B": "Correct: the intercepts -2 and 1 give the factors (x + 2) and (x - 1), and the positive leading coefficient opens the parabola upward",
+  "C": "Student makes misconception: wrong_sign_on_factor (correct factors with a minus in front, which opens the parabola downward when the graph opens upward)",
+  "D": "Student makes misconception: wrong_sign_on_factor (writes the second factor as (x + 1); setting it to zero gives -1, which is not a crossing shown on the graph)"
+},
+"misconception_tag": {
+  "A": "factor_signs_match_intercepts",
+  "C": "wrong_sign_on_factor",
+  "D": "wrong_sign_on_factor"
+}
+```
+
+---
+
+**Item 2: The graph of $y = x^{2}$ is shifted 5 units right and 3 units up. Which equation represents the new graph?**
+
+Step 1: Right 5 puts the opposite sign inside the bracket, giving $(x - 5)^{2}$.
+
+Step 2: Up 3 puts $+3$ on the end.
+
+Step 3: Check the turning point, which should sit at $(5, 3)$. It does.
+
+**Answer: A** ($y = (x - 5)^{2} + 3$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: right 5 gives (x - 5) squared and up 3 gives +3, putting the turning point at (5, 3)",
+  "B": "Student makes misconception: transformation_shift_direction_reversed (reverses the horizontal shift, putting the turning point at (-5, 3), which is 5 units left rather than right)",
+  "C": "Student makes misconception: transformation_shift_direction_reversed (reverses the vertical shift, putting the turning point at (5, -3), which is 3 units down rather than up)",
+  "D": "Student makes misconception: transformation_shift_direction_reversed (reverses both shifts, putting the turning point at (-5, -3) when it belongs at (5, 3))"
+},
+"misconception_tag": {
+  "B": "transformation_shift_direction_reversed",
+  "C": "transformation_shift_direction_reversed",
+  "D": "transformation_shift_direction_reversed"
+}
+```
+
+---
+
+**Item 3: Which equation represents the parabola shown?**
+
+Step 1: Read the graph. It opens downward and crosses the x-axis at $1$ and at $5$.
+
+Step 2: The intercepts give the factors $(x - 1)$ and $(x - 5)$, and the downward opening puts a minus in front.
+
+Step 3: Check. At $x = 0$: $-(-1)(-5) = -5$, matching the y-intercept shown.
+
+**Answer: C** ($y = -(x - 1)(x - 5)$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: wrong_sign_on_factor (correct factors but no minus in front, so the parabola opens upward when the graph opens downward)",
+  "B": "Student makes misconception: factor_signs_match_intercepts (flips both factor signs, writing (x + 1)(x + 5); setting those to zero gives -1 and -5 rather than 1 and 5)",
+  "C": "Correct: the intercepts 1 and 5 give (x - 1)(x - 5), and the leading minus opens the parabola downward",
+  "D": "Student makes misconception: wrong_sign_on_factor (writes the second factor as (x + 5); setting it to zero gives -5, which is not a crossing shown on the graph)"
+},
+"misconception_tag": {
+  "A": "wrong_sign_on_factor",
+  "B": "factor_signs_match_intercepts",
+  "D": "wrong_sign_on_factor"
+}
+```
+
+---
+
+**Item 4: A parabola crosses the x-axis at $x = -3$ and $x = 1$ and passes through the point $(0, -6)$. Which equation represents this parabola?**
+
+Step 1: The intercepts give the factors $(x + 3)$ and $(x - 1)$, with an unknown $a$ in front.
+
+Step 2: Substitute $(0, -6)$.
+
+$$-6 = a(0 + 3)(0 - 1)$$
+
+Step 3: Simplify. $(3)(-1) = -3$, so $-6 = -3a$.
+
+Step 4: Solve. $a = 2$.
+
+**Answer: D** ($y = 2(x + 3)(x - 1)$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: given_point_not_used (writes the factors correctly and leaves a as 1; at x = 0 that gives (3)(-1) = -3, not the -6 the question specifies)",
+  "B": "Student makes misconception: factor_signs_match_intercepts (copies the intercept signs into the factors, writing (x - 3)(x + 1); setting those to zero gives 3 and -1 rather than -3 and 1)",
+  "C": "Student makes misconception: wrong_sign_on_factor (right magnitude on the coefficient but negative; at x = 0 that gives 6 rather than -6)",
+  "D": "Correct: the intercepts give (x + 3)(x - 1), and substituting (0, -6) gives -3a = -6, so a = 2"
+},
+"misconception_tag": {
+  "A": "given_point_not_used",
+  "B": "factor_signs_match_intercepts",
+  "C": "wrong_sign_on_factor"
+}
+```
