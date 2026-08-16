@@ -62,10 +62,20 @@ shape: a checked-in artefact that stopped matching the thing it describes. They
 were deliberately kept out of the content batches and queued for one sitting.
 
 **Status, measured 2026-08-16.** #84 and #88 are **done**. **#86 is open.**
+
 **#101 is open** and is new: ten live topics use `topic_specific` slugs assigned
 to other topics, fourteen uses in total, none of them in Unit 5. Found while
 establishing a `check_topic.py` baseline during Unit 5 Phase 1, filed rather than
 fixed, and the full table is in the issue.
+
+**#102 is open**, and is a product question rather than a tooling defect. Every
+topic carries 14 worked solutions in Part 4, and no student can reach any of
+them: `answer_key` is not a column on `curriculum_topics_public`, `loadTopic`
+selects it only when `requireTeacher()` passes, and both page components sit
+behind a `teacher` gate. Across 83 live topics that is roughly 1,162 worked
+solutions written for a teacher-only surface. The code is doing exactly what its
+comments say it does; the question is whether that is still the intent. **Relevant
+to every authoring round**, because each new topic adds fourteen more.
 
 An earlier revision of this section listed #88 as open while section 3 described
 its retirement as already executed, quoting the tool's output. Both halves were
