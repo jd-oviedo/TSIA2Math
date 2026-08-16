@@ -48,6 +48,9 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import answer_shapes  # noqa: E402  (after the path insert, by necessity)
+
 ROOT = Path(__file__).resolve().parent.parent
 
 # Relations a stranger is allowed to read. Anything else returning rows fails.
@@ -70,6 +73,36 @@ FORBIDDEN = {
     "distractor_logic",
     "explanation",
     "rationale",
+}
+
+# The exact column list each public view is expected to expose, in order.
+#
+# Asserted in BOTH directions, which is the point. An added answer-bearing
+# column is the obvious risk and the FORBIDDEN check above already covers it.
+# The direction that check misses is a column silently going AWAY:
+# topic-data.ts selects is_placeholder on the anonymous path, so a rebuild that
+# drops it makes PostgREST reject the select, loadTopic falls to notFound(), and
+# every topic page 404s for every signed-out student while this audit reports
+# nothing wrong.
+#
+# That is issue #84. It was found by someone reading a file. This is what turns
+# the next occurrence into a failing check.
+EXPECTED_COLUMNS = {
+    "curriculum_topics_public": [
+        "id", "course_id", "topic_id", "topic_name", "unit_number",
+        "sequence_in_unit", "estimated_time_minutes", "difficulty_band",
+        "assessment_layer", "related_strand", "keywords", "prerequisites",
+        "guided_notes", "practice_items", "practice_problems", "mini_quiz",
+        "created_at", "updated_at", "is_placeholder",
+    ],
+}
+
+# Fields served to anon WITHOUT redaction, and therefore safe only by authoring
+# convention. practice_items is protected by jsonb_strip_keys and is scanned
+# too, because a redaction that failed on a nested branch is exactly the thing
+# a top-level column check cannot see.
+CONTENT_SCAN_FIELDS = {
+    "curriculum_topics_public": ("mini_quiz", "practice_problems", "practice_items"),
 }
 
 
@@ -133,6 +166,55 @@ def write_grants(url: str, key: str, relation: str, column: str):
         if status in (200, 204):
             held.append(method.replace("PATCH", "UPDATE"))
     return held
+
+
+def fetch_all(url: str, key: str, relation: str, page: int = 1000):
+    """Every row anon can read, paged. Returns (rows, error) with one of them None.
+
+    EVERY row, not a sample. The previous column check sampled `limit=1`, which
+    cannot see a leak on row 57 of 86 -- and a leak arrives one authored topic at
+    a time, so the sampled row is the least likely place to find it.
+    """
+    rows, offset = [], 0
+    while True:
+        status, _, text = request(
+            f"{url}/rest/v1/{relation}?select=*",
+            key,
+            headers={"Range-Unit": "items", "Range": f"{offset}-{offset + page - 1}"},
+        )
+        if status >= 400 or status == 0:
+            return None, f"HTTP {status}"
+        try:
+            batch = json.loads(text)
+        except json.JSONDecodeError:
+            return None, "response was not JSON"
+        if not isinstance(batch, list):
+            return None, f"expected a list, got {type(batch).__name__}"
+        rows.extend(batch)
+        if len(batch) < page:
+            return rows, None
+        offset += page
+
+
+def content_findings(rows, fields):
+    """(findings, rows_scanned, fields_scanned) for answer shapes in the payload.
+
+    Scans the named fields when a relation declares them, and every field
+    otherwise, so a relation added to CONTENT_SCAN_FIELDS-less config is still
+    covered rather than silently skipped.
+    """
+    findings, rows_scanned, fields_scanned = [], 0, 0
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        rows_scanned += 1
+        targets = [f for f in fields if f in row] if fields else list(row)
+        for field in targets:
+            fields_scanned += 1
+            for kind, detail in answer_shapes.scan_payload(row[field]):
+                ident = row.get("topic_id") or row.get("id") or "?"
+                findings.append(f"{ident}.{field}: {kind} - {detail[:70]}")
+    return findings, rows_scanned, fields_scanned
 
 
 def spec_columns(url: str, key: str):
@@ -202,25 +284,72 @@ def main() -> int:
         if relation in PUBLIC_BY_DESIGN:
             declared = sorted(FORBIDDEN.intersection(anon_spec.get(relation, set()))) \
                 if anon_spec else []
-            sampled = []
-            if readable:
-                _, _, sample = request(f"{url}/rest/v1/{relation}?select=*&limit=1", anon)
-                try:
-                    payload = json.loads(sample)
-                except json.JSONDecodeError:
-                    payload = []
-                sampled = sorted(FORBIDDEN.intersection(payload[0])) if payload else []
 
-            if declared or sampled:
+            # Every row, and every answer-bearing shape inside it.
+            content, scanned_rows, scanned_fields, fetch_err = [], 0, 0, None
+            all_rows = []
+            if readable:
+                all_rows, fetch_err = fetch_all(url, anon, relation)
+                if all_rows is not None:
+                    content, scanned_rows, scanned_fields = content_findings(
+                        all_rows, CONTENT_SCAN_FIELDS.get(relation)
+                    )
+
+            sampled = sorted(FORBIDDEN.intersection(all_rows[0])) \
+                if all_rows else []
+
+            # The column list, both directions. Prefer the anon spec; fall back
+            # to observed keys so a spec that could not be read does not silently
+            # disable the check.
+            col_problems = []
+            expected = EXPECTED_COLUMNS.get(relation)
+            if expected:
+                actual = set(anon_spec.get(relation, set())) if anon_spec else \
+                    (set(all_rows[0]) if all_rows else set())
+                if actual:
+                    missing = [c for c in expected if c not in actual]
+                    added = sorted(actual - set(expected))
+                    if missing:
+                        col_problems.append("columns MISSING: " + ", ".join(missing))
+                    if added:
+                        col_problems.append("columns ADDED: " + ", ".join(added))
+                else:
+                    col_problems.append("column list could not be read")
+
+            # A content check that scanned nothing must never read as a pass.
+            scan_broken = None
+            if readable and rows:
+                if fetch_err or all_rows is None:
+                    scan_broken = f"could not fetch rows to scan ({fetch_err})"
+                elif scanned_rows == 0:
+                    scan_broken = f"scanned 0 of {rows} rows"
+                elif scanned_rows < rows:
+                    scan_broken = f"scanned only {scanned_rows} of {rows} rows"
+                elif scanned_fields == 0:
+                    scan_broken = f"scanned {scanned_rows} rows but 0 fields"
+
+            if declared or sampled or content or col_problems or scan_broken:
                 verdict = "LEAK"
                 where = []
                 if declared:
                     where.append("declared in anon spec: " + ", ".join(declared))
                 if sampled:
-                    where.append("present in sampled row: " + ", ".join(sampled))
-                detail = "answer-bearing columns exposed - " + "; ".join(where)
+                    where.append("present in row: " + ", ".join(sampled))
+                if content:
+                    where.append(f"answer shapes in {len(content)} field(s): "
+                                 + "; ".join(content[:3])
+                                 + (" ..." if len(content) > 3 else ""))
+                if col_problems:
+                    where.append("; ".join(col_problems))
+                if scan_broken:
+                    where.append("CONTENT CHECK DID NOT RUN: " + scan_broken)
+                detail = "; ".join(where)
             elif readable:
-                detail = f"public by design, redacted ({rows} rows)"
+                cols_note = (f"{len(expected)} columns as expected" if expected
+                             else "no column list pinned")
+                detail = (f"public by design, redacted ({rows} rows); "
+                          f"content clean across {scanned_rows} rows / "
+                          f"{scanned_fields} fields; {cols_note}")
         elif readable:
             verdict = "LEAK"
             detail = f"{rows} rows readable with no login"
