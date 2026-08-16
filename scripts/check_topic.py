@@ -18,6 +18,30 @@ Checks, in order of how expensive the failure is to find later:
      caused this were things like x/2 against 4x/8, and 4x/16 against 2x/8.
      A literal comparison sees four different strings.
 
+     THE ONE EXCEPTION, and the test for it. An equal-valued distractor is
+     permitted only when BOTH of these hold:
+
+       (a) the FORM itself is the topic's named assessed skill, not an
+           incidental tidying step, and
+       (b) the slug names precisely the error the student made.
+
+     AR.4.8 is "Simplifying and operating with radical expressions". Form is
+     the skill, and `largest_perfect_square_not_extracted` names exactly what
+     a student choosing 2 root 12 over 4 root 3 did. Both hold, so its three
+     instances are allowlisted below.
+
+     AR.4.6 Q3 failed the test on both counts and was fixed rather than
+     allowlisted: that topic is about combining rational expressions, where
+     reducing is incidental rather than the assessed skill, and the choice was
+     tagged `numerators_not_rescaled`, describing an error the student had not
+     made. "The stem said reduce completely" is NOT the test. Plenty of stems
+     say that.
+
+     A stem carrying an allowlisted distractor must also state the required
+     form explicitly, so a student marked wrong for the unsimplified form was
+     told plainly what was being asked, and the item must still hold two
+     genuinely wrong distractors so real mathematical discrimination survives.
+
   2. Answer-letter tally against the house A:3 B:4 C:4 D:3.
   3. Misconception slugs against the topic's pre-assigned set in the taxonomy.
   4. Currency convention: no bare or escaped dollar signs inside JSON string
@@ -44,6 +68,19 @@ def _sqrt(v):
 REPO = Path(__file__).resolve().parent.parent
 TAXONOMY = REPO / 'data' / 'docs' / 'misconception_taxonomy.json'
 XS = [F(n) for n in (-7, -5, -3, -2, 2, 3, 5, 7, 11, 13)]
+
+# Reviewed equal-valued pairs that meet the exception in the module docstring.
+# Listed individually rather than waived by topic, so a NEW duplicate in one of
+# these same topics still fails. A check that always reports the same known hits
+# trains people to skim it.
+ALLOWED_DUPLICATES = {
+    ('AR.4.8', 'P1', 'B|C'): 'simplest-radical-form item; C is 2 root 12, the '
+                             'partially-extracted form, tagged largest_perfect_square_not_extracted',
+    ('AR.4.8', 'P2', 'B|C'): 'simplest-radical-form item; B is 2 root 18, the '
+                             'partially-extracted form, tagged largest_perfect_square_not_extracted',
+    ('AR.4.8', 'P9', 'B|C'): 'simplest-radical-form item; C is root 60, the '
+                             'unextracted product, tagged largest_perfect_square_not_extracted',
+}
 
 
 # ─── LaTeX to a value signature ──────────────────────────────────────────────
@@ -152,6 +189,11 @@ def main(path):
             sigs.setdefault(s, []).append(letter)
         for letters in sigs.values():
             if len(letters) > 1:
+                key = (topic_id, label, '|'.join(sorted(letters)))
+                if key in ALLOWED_DUPLICATES:
+                    notes.append(f"allowed duplicate {label} "
+                                 f"{'/'.join(sorted(letters))}: {ALLOWED_DUPLICATES[key]}")
+                    continue
                 failures.append(
                     f"DUPLICATE VALUES  {topic_id} {label}: choices "
                     f"{' and '.join(sorted(letters))} are the same number "
