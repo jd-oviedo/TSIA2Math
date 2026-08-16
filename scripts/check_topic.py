@@ -273,16 +273,60 @@ def main(path):
         notes.append(f"tally {dict(sorted(tally.items()))}")
 
     # ── 3. slugs against the pre-assigned set ──
+    #
+    # LAYER-AWARE, and it has to be. This rule previously read
+    #
+    #   allowed = {s['slug'] for s in tax['slugs'] if topic_id in s['topics']}
+    #
+    # which treats `topics` as an allowlist for every slug regardless of layer.
+    # The taxonomy has two layers, topic_specific and cross_cutting, and
+    # cross_cutting means the slug is deliberately NOT scoped to a topic. All 40
+    # curriculum-origin slugs are emitted cross-cutting with no topics
+    # (build_misconception_taxonomy.py:641), so the old rule read "no topic
+    # scope" as "no topic permitted" and banned the 39 most reusable slugs in
+    # the vocabulary from every topic. answers_intermediate_value alone failed
+    # 31 times. See issue #96.
+    #
+    # Fixing it by filling in a topics list on each of those 39 was the other
+    # option and is a workaround: it would mean enumerating every topic a
+    # general-purpose slug might appear on, and editing that list on every new
+    # topic that used it.
+    #
+    # The gate still bites where it is supposed to. A topic_specific slug is
+    # checked against its topics exactly as before, and 393 of the 481 slugs are
+    # topic_specific.
     tax = json.loads(TAXONOMY.read_text())
-    allowed = {s['slug'] for s in tax['slugs'] if topic_id in (s.get('topics') or [])}
+
+    # Read from the data rather than hardcoded, so a new layer value fails loudly
+    # here instead of silently falling into one branch or the other.
+    layers = {s.get('layer') for s in tax['slugs']}
+    unknown_layers = layers - {'topic_specific', 'cross_cutting'}
+    if unknown_layers:
+        failures.append(
+            f"TAXONOMY LAYER  {topic_id}: unrecognised layer(s) {sorted(unknown_layers)}; "
+            f"check_topic.py only knows how to scope 'topic_specific' and "
+            f"'cross_cutting'. Teach it the new layer before relying on this check.")
+
+    topic_scoped = {s['slug'] for s in tax['slugs']
+                    if s.get('layer') == 'topic_specific'}
+    allowed = {s['slug'] for s in tax['slugs']
+               if s.get('layer') == 'cross_cutting'
+               or topic_id in (s.get('topics') or [])}
     used = Counter(re.findall(r'misconception:\s*([a-z0-9_]+)', text))
     outside = sorted(set(used) - allowed)
     if outside:
-        failures.append(f"SLUGS OUTSIDE SET  {topic_id}: {outside} (allowed: {sorted(allowed)})")
-    unused = sorted(allowed - set(used))
+        failures.append(f"SLUGS OUTSIDE SET  {topic_id}: {outside} "
+                        f"(topic-specific slugs assigned here: "
+                        f"{sorted(allowed & topic_scoped)})")
+
+    # Only topic_specific slugs are pre-assigned, so only they can go unused.
+    # Reporting every cross-cutting slug in the taxonomy as "not used" would bury
+    # the signal this note exists to give.
+    unused = sorted((allowed & topic_scoped) - set(used))
     if unused:
         notes.append(f"pre-assigned slugs not used: {unused}")
-    notes.append(f"{len(used)}/{len(allowed)} slugs used, {sum(used.values())} uses")
+    notes.append(f"{len(used)} slug(s) used, {sum(used.values())} uses; "
+                 f"{len(allowed & topic_scoped)} topic-specific slug(s) assigned here")
 
     # ── 4. currency inside JSON string fields ──
     for block in re.findall(r'```json\s*(.*?)```', text, re.S):
