@@ -12,11 +12,11 @@
     "cat_bank": "data/items/**/*.json (distractor_logic, correct-answer slot excluded)"
   },
   "counts": {
-    "total_slugs": 481,
+    "total_slugs": 480,
     "cross_cutting": 88,
     "cross_cutting_from_curriculum": 40,
     "cross_cutting_new": 48,
-    "topic_specific": 393,
+    "topic_specific": 392,
     "proposed_pending_decision": 0,
     "topics_covered": 97
   },
@@ -66,6 +66,15 @@
     }
   },
   "retired_slugs": [
+    {
+      "slug": "cancellation_assumed_to_restore_domain",
+      "definition": "Reads the domain from the simplified form, restoring a value the cancelled factor excluded.",
+      "superseded_by": [
+        "restriction_read_from_simplified_form"
+      ],
+      "reason": "Named the same student error as restriction_read_from_simplified_form from the other side. A student who cancels (x - 3) and then declares x = 3 legal has committed both, and no item can separate them, so the pair split one class-wide signal into two weaker ones on the teacher dashboard misconception grid. The survivor is the more precise of the two definitions and sits on AR.4.5, where the cancelling actually happens and where the curriculum already carries three tagged items. See issue #88.",
+      "items_retagged": 1
+    },
     {
       "slug": "conditions_on_wrong_group",
       "definition": "Uses the wrong denominator group when computing a conditional probability.",
@@ -909,23 +918,6 @@
       "status": "approved",
       "cat_topics_observed": [
         "QR.2.4"
-      ]
-    },
-    {
-      "slug": "cancellation_assumed_to_restore_domain",
-      "definition": "Reads the domain from the simplified form, restoring a value the cancelled factor excluded.",
-      "layer": "topic_specific",
-      "origin": "cat_bank",
-      "topics": [
-        "AR.1.5"
-      ],
-      "strands": [
-        "AR"
-      ],
-      "notes": "",
-      "status": "approved",
-      "cat_topics_observed": [
-        "AR.1.5"
       ]
     },
     {
@@ -6557,9 +6549,10 @@
       "strands": [
         "AR"
       ],
-      "notes": "",
+      "notes": "Survivor of the #88 retirement: cancellation_assumed_to_restore_domain named the same student error from the other side and was retired into this slug. Topics stays AR.4.5 only. The AR.1.5 CAT item now tagged against it (AR_A_010.B) is recorded in cat_topics_observed, which is computed from the bank; adding AR.1.5 here would assert a curriculum pre-assignment that no AR.1.5 item uses.",
       "status": "approved",
       "cat_topics_observed": [
+        "AR.1.5",
         "AR.4.5"
       ]
     },

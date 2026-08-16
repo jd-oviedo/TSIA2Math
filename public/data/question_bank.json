@@ -30460,7 +30460,7 @@
     },
     "misconception_tag": {
       "A": "zero_numerator_treated_as_undefined",
-      "B": "cancellation_assumed_to_restore_domain",
+      "B": "restriction_read_from_simplified_form",
       "D": "constant_read_as_excluded_value"
     },
     "difficulty_level": "Advanced",
