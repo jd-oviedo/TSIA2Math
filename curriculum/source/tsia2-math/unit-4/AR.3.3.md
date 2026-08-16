@@ -329,7 +329,7 @@ Step 3: Check. At $x = 3$: $(0)(8) = 0$. At $x = -5$: $(-8)(0) = 0$. Both work.
   "A": "Correct: x - 3 = 0 gives 3 and x + 5 = 0 gives -5, and each makes one bracket zero",
   "B": "Student makes misconception: factor_constants_read_as_roots (reads -3 and 5 straight out of the brackets without solving; substituting -3 gives the product of -6 and 2, which is -12 rather than 0)",
   "C": "Student makes misconception: wrong_sign_on_factor (solves the first bracket correctly but keeps the 5 positive; substituting 5 gives the product of 2 and 10, which is 20 rather than 0)",
-  "D": "Student makes misconception: wrong_sign_on_factor (flips the sign on both brackets, so the first solution comes out negative; substituting -3 gives -12 rather than 0)"
+  "D": "Student makes misconception: wrong_sign_on_factor (ignores the signs shown inside the factors and makes both constants negative, turning the magnitudes 3 and 5 into -3 and -5; the second value lands on a real solution by accident, but substituting -3 gives the product of -6 and 2, which is -12 rather than 0)"
 },
 "misconception_tag": {
   "B": "factor_constants_read_as_roots",

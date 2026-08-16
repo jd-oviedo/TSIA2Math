@@ -582,7 +582,7 @@ Step 3: Check the numerator's zero as well. At $x = -4$, the expression is $\fra
 ```json
 "distractor_logic": {
   "A": "Student makes misconception: zero_numerator_treated_as_undefined (solves the numerator x + 4 = 0 to get -4, but substituting -4 gives 0 over 27, which equals 0 and is defined)",
-  "B": "Student makes misconception: sign_error_on_constant (reads 5 and 1 off the factors with their signs flipped the wrong way; substituting -5 gives 1 over the product of -10 and -4, an ordinary number)",
+  "B": "Student makes misconception: sign_error_on_constant (reads 5 and 1 off the factors with their signs flipped the wrong way; substituting -5 gives -1 over the product of -10 and -4, an ordinary number)",
   "C": "Correct: x - 5 = 0 gives 5 and x + 1 = 0 gives -1, and each drives the denominator to zero",
   "D": "Student makes misconception: zero_numerator_treated_as_undefined (finds both denominator values correctly but adds the numerator's zero at -4, where the expression evaluates to 0 rather than becoming undefined)"
 },

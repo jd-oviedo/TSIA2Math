@@ -446,7 +446,7 @@ The vertex is $(-4, -6)$.
 
 ```json
 "distractor_logic": {
-  "A": "Student makes misconception: sign_error_on_constant (drops the minus in negative b over 2a, computing 8 over 2 as positive 4; substituting 4 gives 16 plus 32 plus 10, which is 58 rather than the vertex value)",
+  "A": "Student makes misconception: sign_error_on_constant (drops the minus in negative b over 2a and computes 8 over 2 as positive 4, then takes the vertex value from k = c minus b squared over 4a, which is 10 minus 16, or -6, a route that never uses h and so stays correct; the second coordinate is right and the first is wrong, since negative b over 2a is -4)",
   "B": "Student makes misconception: coordinates_swapped (finds both numbers correctly but writes them in the order (k, h) rather than (h, k))",
   "C": "Student makes misconception: constant_term_reported_as_extreme (finds the x-coordinate correctly but reports the constant 10 as the y-coordinate instead of substituting; f(0) = 10, whereas f(-4) = -6)",
   "D": "Correct: negative b over 2a gives -4, and substituting gives 16 minus 32 plus 10, which is -6"
