@@ -2,6 +2,7 @@
   "schema_version": "1.0",
   "status": "approved_phase3_complete",
   "generated_by": "scripts/build_misconception_taxonomy.py",
+  "do_not_edit": "Generated file. Edit scripts/build_misconception_taxonomy.py, regenerate, then run scripts/check_taxonomy_generated.py. Editing this file directly is issue #94.",
   "authoritative": true,
   "description": "Canonical misconception taxonomy for TSIA2Math. Extends the 40-slug curriculum vocabulary across the CAT item bank. Slugs are the values written to curriculum_topics.misconception_tags and passed to record_misconception().",
   "sources": {

@@ -1,7 +1,9 @@
 # Misconception Taxonomy — human-readable companion
 
-> **Generated file — do not edit.** Source of truth is `data/docs/misconception_taxonomy.json`,
-> built by `scripts/build_misconception_taxonomy.py`. Edit the script, then regenerate.
+> **Generated file — do not edit.** Neither this file nor
+> `data/docs/misconception_taxonomy.json` is the source of truth; both are
+> outputs of `scripts/build_misconception_taxonomy.py`, whose data tables are.
+> Edit the script, regenerate, and run `scripts/check_taxonomy_generated.py`.
 
 Status: `approved_phase3_complete`
 

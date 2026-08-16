@@ -661,6 +661,10 @@ def build():
       "schema_version":"1.0",
       "status":STATUS,
       "generated_by":"scripts/build_misconception_taxonomy.py",
+      # Carried in the artefact because this is the file that got hand-edited,
+      # and it was the only one of the two emitted files with no such warning.
+      # The markdown companion had one; this did not. See issue #94.
+      "do_not_edit":"Generated file. Edit scripts/build_misconception_taxonomy.py, regenerate, then run scripts/check_taxonomy_generated.py. Editing this file directly is issue #94.",
       "authoritative":True,
       "description":"Canonical misconception taxonomy for TSIA2Math. Extends the 40-slug curriculum vocabulary across the CAT item bank. Slugs are the values written to curriculum_topics.misconception_tags and passed to record_misconception().",
       "sources":{
@@ -733,8 +737,13 @@ def markdown(out):
     L=[]
     a=L.append
     a("# Misconception Taxonomy — human-readable companion\n")
-    a(f"> **Generated file — do not edit.** Source of truth is `data/docs/misconception_taxonomy.json`,")
-    a("> built by `scripts/build_misconception_taxonomy.py`. Edit the script, then regenerate.\n")
+    # Both emitted files are generated. The source of truth is this script's
+    # data tables, NOT the JSON: the JSON is an output too, and calling it the
+    # source is what licensed editing it directly. See issue #94.
+    a(f"> **Generated file — do not edit.** Neither this file nor")
+    a("> `data/docs/misconception_taxonomy.json` is the source of truth; both are")
+    a("> outputs of `scripts/build_misconception_taxonomy.py`, whose data tables are.")
+    a("> Edit the script, regenerate, and run `scripts/check_taxonomy_generated.py`.\n")
     a(f"Status: `{out['status']}`\n")
     c=out["counts"]
     a("| | count |")
