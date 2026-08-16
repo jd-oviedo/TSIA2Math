@@ -77,6 +77,12 @@ solutions written for a teacher-only surface. The code is doing exactly what its
 comments say it does; the question is whether that is still the intent. **Relevant
 to every authoring round**, because each new topic adds fourteen more.
 
+**#103 is open**, product backlog, and pairs with #102. A self-serve student with
+no class enrollment who exhausts GUMU's turn cap of 3 reaches no one:
+`resolveFlagged` notifies the enrolling teacher only, and returns early when
+there is no enrollment. The correct answer stays reachable through the escape
+hatch; the worked solution does not, which is the half #102 covers.
+
 An earlier revision of this section listed #88 as open while section 3 described
 its retirement as already executed, quoting the tool's output. Both halves were
 written at different times and neither was wrong when written. **A status line is
@@ -614,6 +620,15 @@ anything looks.
   derives it. A mistyped or missing frontmatter key therefore uploads a topic at
   sequence 0, which sorts it to the front of its unit and breaks the ordering with
   no error at any layer. Now gated at commit time in `check_topic.py`.
+
+- **A fault injection that silently misses still prints a clean pass.** Proving
+  the fixed `CURRENCY` rule fires, a `str.replace` targeted choice `"B"` on an
+  item whose key was `"D"`. The target string did not exist, the replace was a
+  no-op, the check ran against unmodified content and reported `PASS`, and that
+  would have been filed as evidence the rule works. **Every fail-proof must
+  assert the fault actually landed before asserting the check fires.** A proof
+  that cannot confirm its own injection proves nothing, and it fails in the
+  direction of false confidence. `assert old in s` is the whole fix.
 
 **The tell is a default that is also a legal value.** `0` is a legal sequence;
 red text is a legal render. Where a default is indistinguishable from a real
