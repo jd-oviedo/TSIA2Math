@@ -60,7 +60,7 @@ content was fine; the repo simply did not describe production. See section 4.
 
 ## 2. Open tooling issues
 
-Eight, all found during content work rather than by any check. The first four
+Nine, all found during content work rather than by any check. The first four
 share one shape, a checked-in artefact that stopped matching the thing it
 describes; #102 through #105 are product questions rather than defects. All were
 deliberately kept out of the content batches.
@@ -100,6 +100,22 @@ have not been read, so **whether any of them is bad arithmetic a teacher is
 reading today is unresolved**. A 40-of-195 uniform sample supports that reading
 without establishing it. Scoped as its own pass, deliberately not run inside a
 content batch.
+
+**#108 is open**, tooling, filed during PR 0 and deliberately not fixed there:
+`gridPlane` in `figure_shapes.mjs` duplicates `buildSvg`'s Cartesian axis and has
+**already drifted from it**, measured 2026-08-16. Tick font size 9 against 10,
+label offsets `+11/-5` against `+13/-6`, a fixed `padL = 30` against the
+per-figure computed pad, and integer-step ticks against the `NICE_STEPS` ladder.
+The fixed pad is the one with teeth: the computed version exists because a fixed
+pad collided the rotated y-axis title with three-digit tick labels, and
+`gridPlane` never got that fix.
+
+This is the measured cost of forking `buildSvg`, and it is why `curves`, `bars`
+and `boxes` are all arrays on `coordinate_plane` rather than new top-level types.
+**A second implementation of an axis is not a second figure type; it is a second
+definition of what an axis is**, and nothing can compare the two because they are
+separate paths each verifying against its own spec. Worth reading before anyone
+proposes a new top-level figure type.
 
 An earlier revision of this section listed #88 as open while section 3 described
 its retirement as already executed, quoting the tool's output. Both halves were
