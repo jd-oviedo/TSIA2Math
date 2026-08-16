@@ -41,7 +41,9 @@ from pathlib import Path
 # rewritten into two standalone claims, repeating the numerator, and terminated
 # with `;` so neither chains into its neighbour.
 WORD_FORMS = [
-    (r'(\d+)\s+over\s+(\d+)\s*,?\s*(?:giving|which is)\s+(-?\d+)', r'\1 ; \1 / \2 = \3 ;'),
+    # The result may itself be a fraction: "16 over 40, which is 2/5". Capturing
+    # only an integer truncated it to 2 and reported 11 false mismatches.
+    (r'(\d+)\s+over\s+(\d+)\s*,?\s*(?:giving|which is)\s+(-?\d+(?:\s*/\s*\d+)?)', r'\1 ; \1 / \2 = \3 ;'),
     (r',?\s+which is\s+', ' = '),
     # NB: no generic "giving" -> "=" rule. "multiplies the mean by 3, giving
     # 48 - 45 = 3" would chain the unrelated 3 from "by 3" into the claim and
