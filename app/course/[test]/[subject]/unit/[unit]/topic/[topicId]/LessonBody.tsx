@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import TopicNav from './TopicNav';
+import LessonHandoff from './LessonHandoff';
 import { C, ink, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
 import { FONT_BODY } from '@/app/components/fonts';
 import type { NavStep } from './topic-data';
@@ -22,6 +23,9 @@ export default function LessonBody({
   canRecord,
   previous,
   next,
+  practiceHref,
+  practiceCount,
+  practiceInteractive,
 }: {
   html: string;
   initialDone: boolean;
@@ -32,6 +36,11 @@ export default function LessonBody({
   canRecord: boolean;
   previous: NavStep;
   next: NavStep;
+  // Where the handoff card sends the student, and what to call the section it
+  // is sending them to. All already loaded by the lesson page; no new read.
+  practiceHref: string;
+  practiceCount: number;
+  practiceInteractive: boolean;
 }) {
   const [done, setDone] = useState(initialDone);
   const sentinel = useRef<HTMLDivElement | null>(null);
@@ -103,12 +112,42 @@ export default function LessonBody({
         <div ref={sentinel} aria-hidden="true" style={{ height: 1 }} />
       </section>
 
-      <TopicNav
-        previous={previous}
-        next={next}
-        unlocked={done}
-        requirement="Read to the end of the notes to carry on."
-      />
+      {/* The handoff replaces Next once the sentinel has fired.
+          
+          While `done` is false this renders nothing and `next` is passed through
+          untouched, so the grey disabled button, the requirement line and its
+          aria-describedby all behave exactly as they did before this card
+          existed. That is the regression risk in this change and it is asserted
+          directly in scripts/verify_lesson_handoff.mjs.
+          
+          Once done, `next` becomes null. TopicNav already treats a null next as
+          nothing to go to, so it needed no change: it drops the button and keeps
+          Previous, and the card below carries the single primary. */}
+      {done && (
+        <LessonHandoff
+          href={practiceHref}
+          practiceCount={practiceCount}
+          practiceInteractive={practiceInteractive}
+        />
+      )}
+
+      {/* Rendered only when it has something to show.
+          
+          QR.1.5 is the first topic in the course, so it has no Previous. Once
+          the card takes Next away, TopicNav there would be an empty landmark on
+          the very first lesson a new student opens. Measured: it is the only one
+          of the 97 in that position, every other topic keeps
+          "Previous / Mini quiz". Suppressing the empty case is done here rather
+          than in TopicNav, which practice and quiz also use and which is
+          unchanged by this PR. */}
+      {(previous || (!done && next)) && (
+        <TopicNav
+          previous={previous}
+          next={done ? null : next}
+          unlocked={done}
+          requirement="Read to the end of the notes to carry on."
+        />
+      )}
     </>
   );
 }
