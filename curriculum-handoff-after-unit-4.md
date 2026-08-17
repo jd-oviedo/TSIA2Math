@@ -746,14 +746,51 @@ was open anyway. `GR.3.3`'s stranded **rounding instruction** was found in the s
 pass and deliberately left alone, because it is guidance rather than data and those
 items are answerable without it. It went to issue #112 instead.
 
+### A rule observed, stated, then broken in the same session
+
+`lib/` never imports from `app/`. That was measured in #133, written into the
+reasoning for that PR, and then broken by that same PR: `lib/curriculum-utils.ts`
+imports `@/app/lib/lesson-sections`. The observation never reached the PR body,
+so nothing reviewed it.
+
+**It took three merges and a silently disabled fault proof to surface.** Node's
+resolver cannot follow the `@/` alias, so the module became unloadable outside
+Next, `npm run test:solutions` -- the check on the worked-solution gate -- stopped
+running entirely, and #135, #139 and #140 all merged green without it. #144 taught
+the harness to resolve the alias rather than undoing the import, so **the
+inversion is still there**.
+
+The worth-repeating part is not the import. It is that the author noticed the
+rule, decided the exception was fine, and kept the decision in their head. A
+constraint you can see and then knowingly cross is more dangerous than one you do
+not know about, because you stop looking for what it was protecting.
+
+### Four decisions taken by the implementer that were the owner's to take
+
+Ratified by Juan on 2026-08-17, recorded so they read as ratified rather than as
+never having been asked:
+
+| | |
+|---|---|
+| Practice strip state colours | `C.green` / `C.amber` / `C.sunset`, not design 1f's `#3F7150` / `#B0452F` / `#E89B3C`. Extended the #132 palette ruling to a surface that ruling had not covered |
+| Lesson section headings are `h3` | Chosen because `SectionHeading` is an `h2`. Never raised |
+| Reading column capped at 788px | Taken from design 1d, with the band of cream to its right, and shipped in #133 |
+| `data-state` on strip segments | A test-facing attribute living in production markup, added in #140. Never discussed |
+
+None was wrong. All four were decided in the implementer's head and surfaced only
+when asked directly what was not written down.
+
 ### A check that cannot load is indistinguishable from a check that passes
 
 **And a PR body listing the probes that DID run is true and incomplete unless it
-also names the ones that did not.** That is the #133 gap: an unrelated `@/` alias
-import made a module unloadable outside Next, `npm run test:solutions` -- the
-check on the worked-solution gate -- stopped executing entirely, and three PRs
-merged green without it. Nothing lied; the report simply did not cover it. Run
+also names the ones that did not.** That is the #133 gap, whose cause is the
+entry two above. Nothing lied; the report simply did not cover it. Run
 `npm run test:offline`, which fails if any of them has stopped loading.
+
+A second instance of the same shape, found 2026-08-17: several PR bodies reported
+`test:modules-density` inside a table headed "probes against one build
+(BUILD_ID)". That probe ignores `--base` and builds its own. The results were
+real; the framing said something about them that was not true.
 
 ### Checks that pass while measuring the wrong object
 
@@ -1670,6 +1707,19 @@ requested -- the target is hardcoded in the layout. A student who follows a deep
 link to `/dashboard/grades` signs in and lands on `/dashboard`. One line to fix
 whenever the redesign touches the layout.
 
+> **FIXED 2026-08-17 (#135), and it was not one line.** Each route now asks for
+> its own path: `/dashboard/grades` redirects to
+> `/login?next=%2Fdashboard%2Fgrades`. Two things made it bigger than it looks. A
+> layout is given no part of the URL -- measured, it receives `accept`, `host`,
+> `user-agent` and four `x-forwarded-*` headers and nothing else -- so
+> `middleware.ts` now stamps `x-pathname`, which is the only thing it does beyond
+> refreshing tokens. And the gate was not the only place discarding the path: the
+> redirect carries no `role`, so a signed-out deep link lands on the ROLE
+> SELECTOR, whose student link also hardcoded `next=%2Fdashboard`. Fixing the
+> layout alone would have changed nothing a student could see.
+> `app/lib/next-param.ts` now builds and validates the param in one place, with a
+> same-origin guard; `npm run test:login-next`.
+
 ### The auth test path: deferred, not declined
 
 Scoped 2026-08-17 and held until the student dashboard redesign is in scope.
@@ -1721,6 +1771,67 @@ Changing five untested pages at once is a different proposition.
 | Lint | `scripts/lint_curriculum_source.py` |
 | Unit Map | `deferred-curriculum-unit-map.md` (authoritative over the item bank) |
 | Taxonomy | `data/docs/misconception_taxonomy.json` (do not edit while authoring) |
+
+### The student-surface probes, which the table above does not list
+
+Everything above is curriculum authoring. The redesign added a second family of
+checks that a cold session reading this file would never find, so they are named
+here. All take `--base` unless noted.
+
+| | |
+|---|---|
+| `npm run test:offline` | **everything below that needs no build and no server**, in one command |
+| `npm test` | `tests/*.test.ts`, pure functions |
+| `npm run test:solutions` | the per-item worked-solution gate, with faults |
+| `npm run test:gumu-resolution` | that `gumu_sessions.resolution` is written, and right way round |
+| `npm run test:lesson-outline` | lesson sections, the static outline, the completion sentinel |
+| `npm run test:lesson-handoff` | end-of-lesson card, single primary, the gate |
+| `npm run test:practice-paging` | one problem at a time, the ten-segment strip |
+| `npm run test:overview` | topic overview |
+| `npm run test:quiz-finish` | mini-quiz summary. **Fresh server only, see #134** |
+| `npm run test:login-next` | sign-in returns to the requested path, open-redirect guard |
+| `npm run test:auth-gate` | the /dashboard gate. **Self-builds, ignores `--base`** |
+| `npm run test:modules-density` | Modules at 360px. **Self-builds, ignores `--base`** |
+
+Most take `--prove` to run with every expectation inverted, which is how a check
+that cannot fail is caught.
+
+**`test:offline` is a convention nobody enforces.** Nothing runs it. Its whole
+value depends on a person typing it, and it exists because a check that cannot
+load is indistinguishable from a check that passes.
+
+**`.next` is shared state.** `test:auth-gate` and `test:modules-density` each run
+their own `npx next build` and their own server on their own port. Running either
+while a server is up on 3110 against the same `.next` corrupts both -- the probe
+fails for reasons unrelated to the code, and the 3110 server starts serving a
+build that is being overwritten underneath it. Run them alone.
+
+**The probes are coupled to specific authored content.** Editing it weakens or
+breaks them for reasons that have nothing to do with the code they check:
+
+| probe | depends on |
+|---|---|
+| `test:lesson-outline` | **AR.1.4**: 10 sections, and a 59-character heading, the longest in the course. Fewer sections or shorter headings and the clamp and sentinel checks stop discriminating |
+| `test:practice-paging` | **AR.1.4**: 10 practice items. The strip assertions are written against ten segments |
+| `test:solutions` | **PR.3.5**: read for a REAL answer key, 10 practice and 4 mini-quiz solutions |
+
+### What CI actually gates, and what it does not
+
+**There is CI, contrary to what several PR bodies of mine claimed.** Measured
+2026-08-17 against commit `a1a0400`:
+
+```
+Vercel: success               build: success
+deploy: success               report-build-status: success
+Supabase Preview: success
+```
+
+**Gated on every PR:** `eslint` and `npx next build`, because `npm run build` is
+`npm run lint && next build` and Vercel runs it. Plus a Supabase preview.
+
+**NOT gated, and this is the accurate statement:** `test:offline` and every
+browser probe in the table above. None of them runs anywhere but a person's
+terminal.
 
 **Read a gate's exit code before `git commit`, never after** -- every gate above,
 plus `npx next build`, `npx tsc` and `npm test`. This is the #131 slip.

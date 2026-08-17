@@ -10,6 +10,15 @@ The long record is in `curriculum-handoff-after-unit-4.md`. Nothing here needs i
 
 ## 1. Worked solutions reach students now, per item
 
+> **SUPERSEDED IN PART, 2026-08-17 (#145).** The sentence below said "and only
+> that item" about items answered CORRECTLY. That is no longer the whole rule: a
+> solution is also released for an item where the student used GUMU's escape
+> hatch and was shown the answer. Everything else in this finding still holds
+> exactly as written -- the three layers, the separate read, filtering before
+> serialization -- and the original text is kept because the reasoning it records
+> is what produced #145. See "What changed, and what did not" at the end of this
+> section.
+
 All 1,358 authored worked solutions were teacher-only. A student now gets the
 solution to an item **they have already answered correctly**, and only that item.
 
@@ -41,9 +50,35 @@ writes no attempt row.
 `app/lib/attempt-sets.ts`, `loadEarnedSolutions` in `topic-data.ts`,
 `npm run test:solutions`.
 
+### What changed, and what did not (2026-08-17, #145)
+
+The release rule is now `solved ∪ revealed`, where `revealed` is items whose GUMU
+session ended with `status = 'resolved_flagged'` **and**
+`resolution = 'student_gave_up'` -- the escape hatch, which hands over
+`correct_answer` outright. The answer is already disclosed at that point, so the
+worked solution adds explanation without adding disclosure.
+
+`turn_cap` -- the other flagged ending -- never releases. That student spent
+their turns and was never shown an answer.
+
+Requires `gumu_sessions.resolution`, added by #143
+(`sql/gumu_sessions_resolution.sql`); both endings previously wrote the same
+`status` and were indistinguishable. #141 records the two alternatives that were
+rejected and why.
+
+**Unchanged by #145:** all three layers, the separate admin-client read of
+`answer_key`, filtering before serialization, and the brute-force trade above.
+
 ---
 
 ## 2. The open design question: the gate is inverted relative to need
+
+> **PARTLY ANSWERED, 2026-08-17 (#145).** One of the two failure paths described
+> below now has a worked solution at the end of it. The closing sentence, "Both
+> failure paths are exactly as they were", is no longer true. The finding is kept
+> whole because the tension it names is real, is not resolved, and is the
+> reasoning that produced #141 and #145. See "What #145 answered, and what it did
+> not" at the end of this section.
 
 This is the one to decide before building on top of it.
 
@@ -59,6 +94,25 @@ goals disagree about the same student.
 
 Layer 2 does not fix this and was not meant to. It rewards the students already
 succeeding. Both failure paths are exactly as they were.
+
+### What #145 answered, and what it did not (2026-08-17)
+
+**Answered:** the student who spends their turns, gives up and asks to be shown
+the answer now gets the worked solution too. That was chosen precisely because
+the escape hatch has already disclosed the answer, so the explanation is additive
+and it contradicts nothing -- `app/api/curriculum/practice/route.ts:205` still
+withholds `correct_answer` from every student who has not asked.
+
+**Not answered, and still open:** the student who spends their turns, hits the
+turn cap, and never asks. They are shown nothing and still get "a letter and
+silence" -- and #103 records that if they are also in no class, nobody is told
+either. Releasing on the turn cap was considered as option (b) and rejected in
+#141, because at that point the answer has NOT been disclosed and a worked
+solution would disclose it.
+
+So the tension named above is narrowed, not resolved. It still is not resolvable
+by picking a better predicate: preventing answer-farming and teaching a stuck
+student still disagree about the same student.
 
 ---
 
