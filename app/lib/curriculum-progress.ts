@@ -66,8 +66,13 @@ function sectionShape(section: StoredSection | undefined): SectionShape {
 // nothing, so `node --test` and the fault proofs can load them without pulling
 // in the admin Supabase client. Re-exported so every existing caller is
 // unaffected.
-export type { AttemptRow } from './attempt-sets';
-export { correctItemsInSection, correctInSection } from './attempt-sets';
+export type { AttemptRow, SessionRow } from './attempt-sets';
+export {
+  correctItemsInSection,
+  correctInSection,
+  revealedItemsInSection,
+  releasableItems,
+} from './attempt-sets';
 
 export function topicKey(courseId: string, topicId: string): string {
   return `${courseId}:${topicId}`;
