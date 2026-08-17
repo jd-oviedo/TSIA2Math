@@ -9,9 +9,9 @@ production or the repo at the time of writing rather than recalled.
 ## 1. Where the course stands
 
 **86 of 97 topics are live.** Units 0 through 4 are complete and gapless, and
-Unit 5 Batch A added three more. **Section 7 carries the current state (92 of 97,
-after Batch C); this section records the position at the close of Unit 4** and is
-left as written so the two can be compared.
+Unit 5 Batch A added three more. **The course is now COMPLETE at 97 of 97; section
+8 carries the final state. This section records the position at the close of
+Unit 4** and is left as written so the two can be compared.
 
 | Unit | Topics live | Sequence | Gaps |
 |---|---|---|---|
@@ -393,6 +393,25 @@ one-line change and it is still a checker edit, which means re-running the
 coverage number and every fault proof before it can be trusted. That is a
 standalone piece of work, not something to do while authoring, and the convention
 costs nothing. Logged with the #105 parser-limitation family.
+
+#### And after a decimal, write "so N percent", not "which is N percent"
+
+Established in Batch D, and it cost five reported failures on `PR.4.3` before it
+was found. `WORD_FORMS` turns `, which is` into `=`, so
+
+```
+"computing 5 / 25 = 0.2, which is 20 percent"   ->   5 / 25 = 0.2 = 20
+```
+
+which chains a correct division into a false claim. The failure names a real line
+and reads exactly like bad arithmetic.
+
+`so` carries no rule, so `0.2, so 20 percent` leaves the division standing as its
+own verified claim. Nine instances were reworded and coverage went to 100%.
+
+This is the same shape as the decimal-quotient rule above: **the `which is` rule is
+useful and it chains, so keep it away from any value that is followed by a
+restatement in different units.** A percent after a decimal is exactly that.
 
 **Decimals inside `$...$` math spans are fine.** `$125 / 5 = 25$` and
 `$2 \times 3.14 \times 20 = 125.6$` both parse and both verify; the tolerance
@@ -1103,6 +1122,37 @@ Two-way availability is a property of the **slug set against the topic's questio
 kinds**, so it can be read off before authoring, which is the whole point of
 predicting.
 
+#### The model as it stands after five batches
+
+Refined again by `PR.1.4`, which was predicted at 60 to 66 and measured 52. The
+miss sharpened the rule rather than contradicting it:
+
+> **The two-way slug count predicts the CEILING. The one-way count predicts the
+> FLOOR.**
+
+`PR.1.4` has two two-way slugs, which is what the earlier version of the rule
+looked at, but **five of its seven are one-way with a distinct natural home**, and
+five one-way slugs spread further than two two-way slugs concentrate. Predicting
+from the two-way count alone reads the ceiling and ignores the floor.
+
+The five-batch record, with the reason each landed where it did:
+
+| Topic | Two-way | One-way | Predicted | Measured | |
+|---|---|---|---|---|---|
+| `PR.3.4` | all 4 | 0 | -- | 86% | one answer kind, every slug everywhere |
+| `PR.4.3` | 3 | 4 | 70-78 | 74% | one answer kind, three ways to misuse two numbers |
+| `PR.1.3` | 3 | 5 | 60-66 | 67% | three two-way slugs SPLIT the share, none reached 13 |
+| `PR.2.5` | 1 | 7 | 65-72 | 62% | one two-way slug absorbed the whole share at 13 of 42 |
+| `PR.2.4` | 1 | 8 | 50-58 | 57% | four families, wide spread |
+| `PR.1.5` | ~1 | 6 | 55-62 | 55% | two families |
+| `PR.4.4` | 2 | 7 | 55-62 | 55% | three families |
+| `PR.1.4` | 2 | 5 | 60-66 | **52%** | **five one-way homes flattened it below the two-way ceiling** |
+| `PR.4.2` | 1 | 8 | 50-58 | 48% | four families, the flattest |
+
+**Read both numbers before predicting.** A set with several two-way slugs
+concentrates only if they do not compete; a set with many one-way slugs spreads
+regardless of how many two-way slugs sit above them.
+
 ## 6. After Unit 5 Batch B
 
 > **CORRECTION, written 2026-08-17.** This section recorded three topics
@@ -1327,6 +1377,85 @@ finding it needs a different check rather than a stricter Rule C.
 
 **Course-wide, measured 2026-08-17 against real database rows: 92 topics, 1278
 rendered items, 0 failing, 6 warnings.**
+
+---
+
+## 8. Round complete: Unit 5 done, the course at 97 of 97
+
+**Measured 2026-08-17 after the Batch D upload.** Batch D added `PR.1.4` (seq 2),
+`PR.1.5` (3), `PR.4.2` (15), `PR.4.3` (16) and `PR.4.4` (17).
+
+**Unit 5 runs 1 through 17 with no gaps**, verified explicitly rather than
+inferred: 17 rows, 17 distinct sequence numbers, no missing values. Production
+holds **100 rows: 97 content topics and 3 placeholders.**
+
+```
+ 1 PR.1.3   2 PR.1.4   3 PR.1.5   4 PR.2.1   5 PR.2.2   6 PR.2.3
+ 7 PR.2.4   8 PR.2.5   9 PR.3.1  10 PR.3.2  11 PR.3.3  12 PR.3.4
+13 PR.3.5  14 PR.4.1  15 PR.4.2  16 PR.4.3  17 PR.4.4
+```
+
+### Final contract numbers, 2026-08-17
+
+| | |
+|---|---|
+| Lint | `6 errors, 10 warnings`, attribution generated and checked file by file |
+| Figure harness | **972 assertions / 75 specs / 0 failed** |
+| Figure fault proofs | 43 passes / 0 failures |
+| `check_item_renders.mjs` (RULE C) | **97 topics / 1348 rendered items / 0 failing / 6 warnings** |
+| `check_topic.py` | per-topic **zero** on every file committed this round |
+| Rationale arithmetic | coverage asserted; 100% on every topic that contains arithmetic |
+
+The six RULE C warnings are all demoted rule B, all false positives, all phrases
+naming a mathematical object in words. See section 7.
+
+### `--figure` asserts a figure on the LESSON page
+
+Worth knowing before the next figure run reads as broken. `verify_topic_render.mjs
+--figure` looks for an inlined figure on the **lesson** route only. A topic whose
+figures live in **items** reports `no element matching img[src^="data:image/svg+xml"]`
+and fails, while being completely correct.
+
+Batch D hit this at 10 failures out of 30. Measured per route, the picture was:
+
+```
+PR.1.4  lesson 0   practice 10   quiz 4
+PR.1.5 / PR.4.2 / PR.4.3 / PR.4.4   0 everywhere, figure-free by decision
+```
+
+Without the flag: 15 of 15. **Pass `--figure` only for topics with a LESSON
+figure, and measure per route rather than reading a total.** `check_item_renders.mjs`
+is the check that covers item figures, and it covers them wherever they sit.
+
+### The three COMING-SOON rows, now that the course is complete
+
+`AR.COMING-SOON`, `GR.COMING-SOON` and `PR.COMING-SOON` sit at **unit 1 /
+sequence 1**, carry `is_placeholder = true`, and have held the same
+`2026-08-12T14:07:55.682164` stamp since they were created. They have **no source
+file**, so the uploader's glob never reaches them and they never appear in a diff
+as anything but orphans.
+
+**What they are for.** The diagnostic points a student at one of these when their
+weakest strand has no curriculum yet. That was the state for most of this round.
+
+**What changed.** All three strands now have complete curriculum, so the condition
+these rows exist to handle can no longer arise through missing content.
+
+**Reported, not acted on**, because two things need checking first and neither is
+a content question:
+
+1. **What actually reads them.** The routing logic that selects a placeholder has
+   not been traced this round. Deleting a row that a code path still selects would
+   turn a graceful "coming soon" into a 404, which is worse than the placeholder.
+2. **Whether `is_placeholder` gates anything else.** It is a real column on
+   `curriculum_topics_public` and `topic-data.ts` selects it on the anonymous path.
+   Its other consumers are unaudited.
+
+The safe order is to find the reader first, confirm it can no longer select them
+now that every strand is covered, and only then decide between deleting the rows,
+leaving them as an inert fallback, or keeping them deliberately for a future course
+where a strand is again incomplete. **They cost nothing where they are**, which is
+why this is a cleanup question rather than a defect.
 
 ---
 
