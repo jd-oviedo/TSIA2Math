@@ -1,3 +1,4 @@
+import { headers } from 'next/headers';
 import { getProfile } from '../../lib/auth';
 import {
   getTopics,
@@ -7,10 +8,12 @@ import {
   type TopicRow,
   type TopicProgress,
 } from '../data';
-import { Card, EmptyState, Eyebrow, Muted, PageHeading, ProgressBar } from '../ui';
+import { Card, EmptyState, Eyebrow, Muted, PageHeading } from '../ui';
 import { C } from '@/app/components/curriculum-theme';
-import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
+import { FONT_BODY } from '@/app/components/fonts';
 import { V } from '@/app/components/dashboard-theme';
+import UnitSection from './UnitSection';
+import { unitFromReferer } from './referer';
 
 // Modules. The curriculum browse surface: units, the topics inside them, and
 // how far this student has got in each. The tree is read from curriculum_topics
@@ -33,10 +36,12 @@ export default async function ModulesPage() {
   const profile = await getProfile();
   if (!profile) return null;
 
-  const [{ topics, shapes }, attempts] = await Promise.all([
+  const [{ topics, shapes }, attempts, headerList] = await Promise.all([
     getTopics(),
     getAttempts(profile.id),
+    headers(),
   ]);
+  const openUnit = unitFromReferer(headerList.get('referer'));
   const progress = progressByTopic(attempts, shapes);
 
   const units = new Map<number, TopicRow[]>();
@@ -72,31 +77,15 @@ export default async function ModulesPage() {
               );
 
               return (
-                <section
+                <UnitSection
                   key={unitNumber}
-                  style={{ display: 'flex', flexDirection: 'column', gap: 11 }}
+                  unitNumber={unitNumber}
+                  topicCount={unitTopics.length}
+                  done={unitDone}
+                  total={unitTotal}
+                  defaultOpen={unitNumber === openUnit}
                 >
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'baseline',
-                      gap: 12,
-                      flexWrap: 'wrap',
-                    }}
-                  >
-                    <h2 style={{ margin: 0, font: `600 18px ${FONT_HEADING}`, color: V.heading }}>
-                      Unit {unitNumber}
-                    </h2>
-                    <Muted size={13}>
-                      {unitTopics.length} {unitTopics.length === 1 ? 'topic' : 'topics'}
-                    </Muted>
-                    <div style={{ flex: 1, minWidth: 90, maxWidth: 180 }}>
-                      <ProgressBar value={unitDone} total={unitTotal} height={6} />
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    {unitTopics.map((topic) => {
+                  {unitTopics.map((topic) => {
                       const p = progress.get(`${topic.course_id}:${topic.topic_id}`);
                       const status = statusOf(p);
                       return (
@@ -160,10 +149,9 @@ export default async function ModulesPage() {
                             {status.label}
                           </span>
                         </a>
-                      );
-                    })}
-                  </div>
-                </section>
+                    );
+                  })}
+                </UnitSection>
               );
             })}
         </div>

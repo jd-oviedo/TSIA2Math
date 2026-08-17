@@ -235,6 +235,32 @@ export function strongestStrand(
 // no unique constraint. sequence_in_unit is also nullable, and Postgres sorts
 // nulls last on ASC, so a topic uploaded without one falls behind the topics
 // that have one -- the right end of the order for a row missing its position.
+//
+// ─── The three COMING-SOON rows are kept deliberately ───────────────────────
+//
+// Traced 2026-08-17, when the course reached 97 of 97 and every strand became
+// complete. AR.COMING-SOON, GR.COMING-SOON and PR.COMING-SOON sit at unit 1 /
+// sequence 1 with is_placeholder true, and QR never needed one.
+//
+// THIS QUERY IS THE ONLY THING THAT CAN RETURN THEM. getTopics() filters
+// is_placeholder out, so they appear on no dashboard surface. Measured against
+// production by reproducing the order below per strand:
+//
+//   AR -> AR.1.1   GR -> GR.1.1   PR -> PR.1.1   QR -> QR.1.5
+//
+// all four real, because false sorts before true and every strand now has real
+// content. So no student can currently be routed to a placeholder.
+//
+// THEY ARE KEPT ANYWAY, and that is a decision rather than an oversight. They
+// are the fallback for a course whose strand has no curriculum yet, which is
+// the state this whole course was in a week ago and the state any second course
+// starts in. Deleting them would not just drop three inert rows: it would
+// remove the mechanism described above, so seeding a new course with an empty
+// strand would return null here and need a code change. That converts a content
+// task back into a code task, which is exactly what the sort key exists to
+// prevent.
+//
+// They cost three rows, render nowhere, and route nobody. Leave them.
 export async function firstTopicInStrand(
   strand: Strand,
   courseId: string = DEFAULT_COURSE_ID

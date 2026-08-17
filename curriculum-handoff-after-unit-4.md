@@ -1459,6 +1459,43 @@ why this is a cleanup question rather than a defect.
 
 ---
 
+## 9. The Modules page disclosure, and what its tests do not cover
+
+Added 2026-08-17, outside the curriculum rounds, but recorded here because the
+gap is the kind this document exists to keep visible.
+
+`/dashboard/modules` renders each unit collapsed, with a client `UnitSection`
+wrapper per unit and the topic rows still server-rendered as children. Collapsed
+topics are **not in the DOM**, which is a testing decision: on a closed
+`<details>`, `querySelectorAll` and `locator().count()` both return the hidden
+children while `isVisible()` is false and `click()` times out, so a presence check
+passes on something a student can never reach. Not rendering them makes absence a
+truthful signal.
+
+**What is tested.** `tests/unit-from-referer.test.ts` pins the server half, the
+auto-expand rule, as a pure function. `scripts/verify_collapsible_units.mjs`
+drives the real component in a real browser through a probe route that is written
+before the run and deleted after, asserting visibility, a real click, keyboard
+operation, `aria-expanded`, `aria-controls` resolution and the 44px touch target,
+with a control proving the assertions fail against a flat non-collapsing list.
+
+**What is NOT tested, by design.** The server-to-client seam: that the page wires
+`defaultOpen` to the right unit, and that grouping by unit still works. Nothing
+covers it, because `/dashboard/modules` redirects to `/login` without a session
+and the harness has no auth path.
+
+Two ways to close it were weighed and rejected for this change:
+
+- **A profile fixture**, mirroring `CURRICULUM_FIXTURE_SOURCE`. Rejected on blast
+  radius. The content fixture leaks answer keys if it escapes; an auth fixture
+  would make every visitor a signed-in student, and it would sit in the auth path
+  permanently to test one disclosure widget.
+- **A real sign-in**, a dedicated test account whose session cookies are injected
+  into the Playwright context. **This is the answer if the seam is ever worth
+  covering.** It exercises the path rather than bypassing it, and it would unlock
+  every other signed-in surface at the same time, which is why it is its own piece
+  of work rather than a rider on a feature.
+
 ## Where things live
 
 | | |
