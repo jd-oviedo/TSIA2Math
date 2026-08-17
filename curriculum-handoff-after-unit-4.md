@@ -4,6 +4,11 @@ Written at the close of Round 5 (Unit 4, twenty AR topics, four batches). Aimed 
 a cold session with no memory of that work. Everything below was verified against
 production or the repo at the time of writing rather than recalled.
 
+**Picking up the student dashboard redesign?** Read `redesign-handoff.md` instead.
+It is five findings about what the student surface does today, including the one
+open design question worth settling before building on top of it. This file is the
+long record behind it and is not required reading for that work.
+
 ---
 
 ## 1. Where the course stands
