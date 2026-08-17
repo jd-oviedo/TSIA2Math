@@ -1,0 +1,10 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [50, 100],
+  "xLabel": "Test score",
+  "boxes": [
+    { "label": "Class 1", "min": 60, "q1": 70, "median": 74, "q3": 82, "max": 96 },
+    { "label": "Class 2", "min": 58, "q1": 72, "median": 80, "q3": 86, "max": 94, "color": "accent" }
+  ],
+  "alt": "Two box plots stacked on one shared number line of test scores running from 50 to 100, marked every 5. Class 1 is the upper plot: minimum 60, lower quartile 70, median 74, upper quartile 82, maximum 96. Class 2 is the lower plot: minimum 58, lower quartile 72, median 80, upper quartile 86, maximum 94. Both classes have a range of 36, but Class 2's box is wider and sits further right."
+}
