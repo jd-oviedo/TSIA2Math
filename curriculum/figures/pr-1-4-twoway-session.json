@@ -1,0 +1,10 @@
+{
+  "type": "data_table",
+  "columns": ["", "Pass", "Fail", "Total"],
+  "rows": [
+    { "label": "Morning", "cells": ["30", "10", "40"] },
+    { "label": "Evening", "cells": ["15", "45", "60"] },
+    { "label": "Total", "cells": ["45", "55", "100"] }
+  ],
+  "alt": "A two-way table of test results by session. Morning: 30 passed, 10 failed, 40 in total. Evening: 15 passed, 45 failed, 60 in total. The column totals are 45 passed, 55 failed, and 100 candidates altogether."
+}

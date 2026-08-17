@@ -1,0 +1,12 @@
+{
+  "type": "data_table",
+  "columns": ["Day", "Visits"],
+  "rows": [
+    { "label": "Monday", "cells": ["45"] },
+    { "label": "Tuesday", "cells": ["38"] },
+    { "label": "Wednesday", "cells": ["52"] },
+    { "label": "Thursday", "cells": ["41"] },
+    { "label": "Friday", "cells": ["67"] }
+  ],
+  "alt": "A table of museum visitors by day. Monday 45, Tuesday 38, Wednesday 52, Thursday 41, Friday 67."
+}

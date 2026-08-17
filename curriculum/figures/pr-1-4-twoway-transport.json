@@ -1,0 +1,10 @@
+{
+  "type": "data_table",
+  "columns": ["", "Bus", "Walk", "Total"],
+  "rows": [
+    { "label": "Grade 9", "cells": ["18", "12", "30"] },
+    { "label": "Grade 10", "cells": ["9", "21", "30"] },
+    { "label": "Total", "cells": ["27", "33", "60"] }
+  ],
+  "alt": "A two-way table of how students travel to school, by grade. Grade 9: 18 take the bus, 12 walk, 30 in total. Grade 10: 9 take the bus, 21 walk, 30 in total. The column totals are 27 bus, 33 walk, and 60 students altogether."
+}
