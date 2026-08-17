@@ -30357,7 +30357,7 @@
       "identifying the correct mathematical reason for a domain exclusion in a contextual rational function",
       "distinguishing between a zero output and an undefined output in a rational function"
     ],
-    "question_text": "The profit from a school fundraiser is modeled by $P(n) = \\fract{500n - 1000}{n - 2}$, where n is the number of items sold. Which statement best explains why n = 2 must be excluded from the domain?",
+    "question_text": "The profit from a school fundraiser is modeled by $P(n) = \\frac{500n - 1000}{n - 2}$, where n is the number of items sold. Which statement best explains why n = 2 must be excluded from the domain?",
     "question_format": "multiple_choice",
     "answer_choices": {
       "A": "Because P(2) = 0, meaning no profit is earned at n = 2, so it is not a useful input.",
