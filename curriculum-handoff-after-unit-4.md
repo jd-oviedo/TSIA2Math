@@ -578,9 +578,79 @@ diff from a fresh checkout of `main` should report zero inserts. Anything else
 means the repo is behind production, and the next round will branch from a `main`
 that is missing files.
 
+### The unit of analysis is coarser than the thing being analysed
+
+**Named 2026-08-17, after it turned up a fourth time in one week.** This is the
+common cause under several entries that were logged separately as if unrelated,
+and it is more useful than any of them individually.
+
+The shape: **a check, filter or injection whose unit of analysis is coarser than
+the thing it is supposed to act on.** It then acts on a container that happens to
+include the target, and reports on the container.
+
+| instance | unit used | unit needed |
+|---|---|---|
+| `img.first()` | any image on the page | the figure |
+| the `^1. ` fault injection | the first `1. ` in the **file** | practice item 1 |
+| RULE C's `BENIGN` filter | the whole **line** | the phrase |
+| token containment | the string appearing **anywhere in the block** | the string *rendered as a table* |
+
+The first three are literally too-coarse scopes and behave identically: each one
+selected a superset, hit the wrong member of it, and reported success. `img.first()`
+measured the wordmark. The `^1. ` injection landed in a numbered list in the guided
+notes and printed three clean passes for three faults that never entered the
+scanned region. `BENIGN` discarded a line because half of it was boilerplate,
+throwing away `QR.3.7`'s two plan equations with it and hiding six unanswerable
+items.
+
+**The fourth sits on a slightly different axis and is worth keeping distinct.**
+Token containment was not a scope error; it was an *evidence* error. The unit of
+evidence, "this string is present", was coarser than the claim being made, "this
+renders as a table". It belongs here because the fix is the same shape, refining
+the unit, but it is a sibling rather than a repeat.
+
+**The fix in every case was to make the unit finer**, and in every case that was a
+one-line change: `img[src^="data:image/svg+xml"]` instead of `img.first()`; inject
+inside the practice section instead of the file; strip benign **phrases** instead
+of filtering benign **lines**; assert rendered form instead of substring presence.
+
+**The check: name the unit your check operates on, and compare it against the unit
+your claim is about.** If the first is bigger, the check will pass on the wrong
+member and tell you nothing. That question takes seconds and would have caught all
+four.
+
+#### An instruction scoped to one thing does not carry onto a different thing
+
+Recorded because the `BENIGN` fix was made **against a standing instruction**, and
+that was correct.
+
+Juan had said, of the same checker in the same session: *"Do NOT tighten RULE C's
+probe selection now. Two of its probe strings quoting the wrong line of the block
+is cosmetic, the hits are right, and the checker is mid-use."* That is a sound
+instruction about **probe cosmetics**.
+
+The `BENIGN` line filter was a different object: a **false negative in a hard gate
+that was about to be used as the verification for the fix**. Honouring the
+instruction onto it would have meant verifying a content fix with a gate already
+known to hide instances of the defect being fixed.
+
+**An instruction is scoped to the thing it was given about.** Applying it to a
+neighbouring thing because they live in the same file is not obedience, it is a
+category error, and it fails in the direction of shipping. The right move is to
+make the change and say plainly which instruction it runs against and why the
+scope does not reach. Confirmed after the fact.
+
+The reverse error is just as real: widening a fix beyond its scope because the file
+was open anyway. `GR.3.3`'s stranded **rounding instruction** was found in the same
+pass and deliberately left alone, because it is guidance rather than data and those
+items are answerable without it. It went to issue #112 instead.
+
 ### Checks that pass while measuring the wrong object
 
-The most expensive class, because it produces confident green output.
+The most expensive class, because it produces confident green output. Several of
+the entries below are instances of the coarse-unit cause named above; they are
+left as written because the way each one *presented* is the part worth
+recognising.
 
 - `img.first()` measured the site wordmark and reported 18 of 18.
 - A parity comparator reported a difference between two identical structures; it
