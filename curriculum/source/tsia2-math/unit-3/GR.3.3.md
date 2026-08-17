@@ -146,21 +146,19 @@ Round decimals to one place where the answer is not exact.
 
 **Basic Level** (try these first)
 
-Problems 1 to 3 use the same right triangle: the side opposite $\theta$ is $3$, the side adjacent to $\theta$ is $4$, and the hypotenuse is $5$.
-
-1. What is $\sin\theta$?
+1. A right triangle has the side opposite $\theta$ equal to $3$, the side adjacent to $\theta$ equal to $4$, and a hypotenuse of $5$. What is $\sin\theta$?
    - A) $\frac{3}{5}$
    - B) $\frac{4}{5}$
    - C) $\frac{5}{3}$
    - D) $3$
 
-2. What is $\cos\theta$?
+2. A right triangle has the side opposite $\theta$ equal to $3$, the side adjacent to $\theta$ equal to $4$, and a hypotenuse of $5$. What is $\cos\theta$?
    - A) $\frac{3}{5}$
    - B) $\frac{4}{5}$
    - C) $\frac{5}{4}$
    - D) $4$
 
-3. What is $\tan\theta$?
+3. A right triangle has the side opposite $\theta$ equal to $3$, the side adjacent to $\theta$ equal to $4$, and a hypotenuse of $5$. What is $\tan\theta$?
    - A) $\frac{4}{3}$
    - B) $\frac{3}{5}$
    - C) $3$
@@ -216,11 +214,9 @@ Problems 1 to 3 use the same right triangle: the side opposite $\theta$ is $3$, 
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
-Items 1 and 2 use the same right triangle: the side opposite $\theta$ is $6$, the side adjacent to $\theta$ is $8$, and the hypotenuse is $10$.
-
 **Item 1**
 
-What is $\sin\theta$?
+A right triangle has the side opposite $\theta$ equal to $6$, the side adjacent to $\theta$ equal to $8$, and a hypotenuse of $10$. What is $\sin\theta$?
 
 - A) $\frac{4}{5}$
 - B) $\frac{5}{3}$
@@ -229,7 +225,7 @@ What is $\sin\theta$?
 
 **Item 2**
 
-What is $\tan\theta$?
+A right triangle has the side opposite $\theta$ equal to $6$, the side adjacent to $\theta$ equal to $8$, and a hypotenuse of $10$. What is $\tan\theta$?
 
 - A) $\frac{3}{5}$
 - B) $\frac{3}{4}$

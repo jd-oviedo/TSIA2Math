@@ -25,8 +25,14 @@
 // RULE A, FORM. No literal `|` may survive into a rendered stem or choice. A pipe
 // that reaches the reader means a markdown table was flattened into text.
 //
-// RULE B, CONTEXT. A stem that points at something ("this table", "the graph
-// shown", "Set A") must carry that something inside its own block.
+// RULE B, CONTEXT, DEMOTED TO A WARNING. A stem that points at something must
+// carry it in its own block. Course-wide it scored SIX false positives and ZERO
+// true positives, and every hit was a phrase describing a mathematical object in
+// words rather than referencing a picture: "the graph of a relation is a circle
+// centred at the origin", "the graph of $y = x^2$ is shifted 4 units right",
+// prose-described scatterplots, and the word "figure" meaning a numeric value.
+// It cannot gate on that record. It still prints, because a genuine dangling
+// reference would show up here first, but it no longer fails the run.
 //
 // RULE C, DROPPED CONTENT, and this is the one that matters. Rules A and B were
 // built first and MEASURED AGAINST THE ORIGINAL DEFECT: rule A caught the pipe
@@ -72,24 +78,42 @@ const NAMES_A_SET = /\bSet\s+[A-Z]\b/;
 
 function judge(stem) {
   const { text, imgs, tables, digits } = stem;
-  const problems = [];
+  const problems = [];      // hard failures
+  const warnings = [];      // reported, never gating
   const pipes = (text.match(/\|/g) || []).length;
   if (pipes) problems.push(`RULE A: ${pipes} literal pipe(s) in the rendered stem`);
   if (POINTS_AT_FIGURE.test(text) && imgs === 0)
-    problems.push('RULE B: points at a figure, block carries no inlined figure');
+    warnings.push('RULE B: points at a figure, block carries no inlined figure');
   if (POINTS_AT_TABLE.test(text) && tables === 0 && digits < 3)
-    problems.push('RULE B: points at a table, block carries neither a table nor its numbers');
+    warnings.push('RULE B: points at a table, block carries neither a table nor its numbers');
   if (POINTS_BACK.test(text) && imgs === 0 && tables === 0 && digits < 3)
-    problems.push('RULE B: refers backwards, block carries nothing to refer to');
+    warnings.push('RULE B: refers backwards, block carries nothing to refer to');
   if (NAMES_A_SET.test(text) && digits < 3)
-    problems.push('RULE B: names a Set, block carries none of its values');
-  return problems;
+    warnings.push('RULE B: names a Set, block carries none of its values');
+  return { problems, warnings };
 }
 
 // Substantive content a practice or quiz section puts outside any item block.
 // Level banners, the standing instruction line and section rules are expected to
 // be dropped and are not content, so they are excluded by name.
-const BENIGN = /^(\s*|---+|\*\*(Basic|Proficient|Advanced) Level\*\*.*|Solve each problem\..*|All four items use.*|#+ .*)$/;
+// Boilerplate that is EXPECTED never to render: level banners, the standing
+// instruction, the timing note, section rules, headings.
+//
+// Stripped as PHRASES rather than filtered as whole LINES, and that distinction
+// is load-bearing. The line-filter version missed a real defect: QR.3.7 puts
+// "Solve each problem. Show your thinking." and its two plan equations on ONE
+// line, the benign half matched, and the whole line was discarded along with the
+// data. Six unanswerable practice items went unreported. Benign text sharing a
+// line with real content must not launder it.
+const BENIGN_PHRASES = [
+  /Solve each problem\.\s*Show your thinking\./g,
+  /\*\*(Basic|Proficient|Advanced) Level\*\*[^\n]*/g,
+  /\(Complete in under \d+ minutes\)/g,
+  /^#+ .*$/gm,
+  /^-{3,}$/gm,
+];
+const stripBenign = (t) => BENIGN_PHRASES.reduce((acc, re) => acc.replace(re, ' '), t);
+
 function droppedCandidates(path) {
   const raw = readFileSync(path, 'utf8');
   const out = [];
@@ -108,7 +132,7 @@ function droppedCandidates(path) {
       const text = buf.join('\n').trim();
       buf = [];
       if (!text) return;
-      const meaningful = text.split('\n').filter((l) => !BENIGN.test(l));
+      const meaningful = stripBenign(text).split('\n').map((l) => l.trim()).filter(Boolean);
       if (!meaningful.length) return;
       const isTable = meaningful.some((l) => l.trim().startsWith('|'));
       const isFigure = meaningful.some((l) => l.includes('<!-- figure:') || l.includes('data:image/svg+xml'));
@@ -144,17 +168,17 @@ async function scan(page, topic) {
     // Choices live outside .um-stem; a pipe there is the same defect.
     const cp = await page.evaluate(() =>
       [...document.querySelectorAll('.um-choice')].reduce((n, c) => n + (c.innerText.match(/\|/g) || []).length, 0));
-    for (const s of stems) out.push({ route, ...s, problems: judge(s) });
+    for (const s of stems) out.push({ route, ...s, ...judge(s) });
     // RULE C: content the source parks outside an item must show up in some stem.
     for (const c of droppedCandidates(topic.path).filter((c) => c.section === route)) {
       const probe = c.probe.replace(/[*_`$\\]/g, '').replace(/\s+/g, ' ').trim().slice(0, 40);
       if (!probe) continue;
       const seen = stems.some((s) => s.text.replace(/\s+/g, ' ').includes(probe));
       if (!seen)
-        out.push({ route, i: 0, text: '', problems:
+        out.push({ route, i: 0, text: '', warnings: [], problems:
           [`RULE C: a ${c.kind} sits outside every item and reaches no rendered stem ("${probe}")`] });
     }
-    if (cp) out.push({ route, i: 0, problems: [`RULE A: ${cp} literal pipe(s) across the rendered choices`] });
+    if (cp) out.push({ route, i: 0, warnings: [], problems: [`RULE A: ${cp} literal pipe(s) across the rendered choices`] });
   }
   return out;
 }
@@ -196,7 +220,8 @@ if (PROVE) {
       console.log(`  [PROOF FAILED] ${label}: injection never reached a rendered stem`);
       ok = false; return;
     }
-    const found = rows.flatMap((r) => r.problems);
+    // Rule B is a warning tier now, so the proof must look at both lists.
+    const found = rows.flatMap((r) => [...(r.problems || []), ...(r.warnings || [])]);
     const hit = found.some((x) => x.includes(expect));
     ok &&= hit;
     console.log(`  [${hit ? 'PASS' : 'PROOF FAILED'}] ${label}`);
@@ -204,7 +229,7 @@ if (PROVE) {
   };
 
   console.log(`FAULT PROOFS (injected into ${target.id}'s practice section, page re-requested)\n`);
-  const clean = (await scan(page, target)).flatMap((r) => r.problems);
+  const clean = (await scan(page, target)).flatMap((r) => [...(r.problems || []), ...(r.warnings || [])]);
   ok &&= clean.length === 0;
   console.log(`  [${clean.length === 0 ? 'PASS' : 'CONTROL FAILED'}] control before: ${clean.length} problem(s)`);
 
@@ -218,7 +243,7 @@ if (PROVE) {
     (sec) => sec.replace(/\n1\. [^\n]*/, '\n1. ZZSET What is the range of Set A?'),
     'RULE B', /ZZSET/);
 
-  const after = (await scan(page, target)).flatMap((r) => r.problems);
+  const after = (await scan(page, target)).flatMap((r) => [...(r.problems || []), ...(r.warnings || [])]);
   ok &&= after.length === 0;
   console.log(`  [${after.length === 0 ? 'PASS' : 'CONTROL FAILED'}] control after: ${after.length} problem(s)`);
   await browser.close();
@@ -227,18 +252,18 @@ if (PROVE) {
 }
 
 const topics = named.length ? allTopics().filter((t) => named.includes(t.id)) : allTopics();
-let items = 0, bad = 0;
-const hits = [];
+let items = 0, bad = 0, warned = 0;
+const hits = [], warns = [];
 for (const t of topics) {
   const rows = await scan(page, t);
   items += rows.length;
   for (const r of rows) {
-    if (!r.problems.length) continue;
-    bad++;
-    hits.push(`${t.id} ${r.route} item ${r.i}: ${r.problems.join('; ')}`);
+    if (r.problems?.length) { bad++; hits.push(`${t.id} ${r.route} item ${r.i}: ${r.problems.join('; ')}`); }
+    if (r.warnings?.length) { warned++; warns.push(`${t.id} ${r.route} item ${r.i}: ${r.warnings.join('; ')}`); }
   }
 }
 await browser.close();
 for (const h of hits) console.log(`  FAIL  ${h}`);
-console.log(`\n${topics.length} topic(s), ${items} rendered item(s), ${bad} failing`);
+for (const w of warns) console.log(`  warn  ${w}`);
+console.log(`\n${topics.length} topic(s), ${items} rendered item(s), ${bad} failing, ${warned} warning(s)`);
 process.exit(bad ? 1 : 0);

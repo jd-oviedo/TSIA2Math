@@ -143,29 +143,29 @@ Both are linear and their rates differ. "Linear" means the rate is constant *wit
 
 #### **Part 2: Practice Problems**
 
-Solve each problem. Show your thinking. Plans A and B refer to $C = 30 + 10m$ and $C = 60 + 5m$, where $m$ is months.
+Solve each problem. Show your thinking.
 
 **Basic Level** (try these first)
 
-1. Which plan has the greater rate of change?
+1. Plan A costs $C = 30 + 10m$ and Plan B costs $C = 60 + 5m$, where $m$ is months. Which plan has the greater rate of change?
    - A) Plan A, at \$10 per month
    - B) Plan B, at \$5 per month
    - C) Plan B, at \$60 per month
    - D) They are equal, because both are linear.
 
-2. Which plan costs less at $3$ months, and what does it cost?
+2. Plan A costs $C = 30 + 10m$ and Plan B costs $C = 60 + 5m$, where $m$ is months. Which plan costs less at $3$ months, and what does it cost?
    - A) Plan B, at \$75
    - B) Plan A, at \$30
    - C) Plan A, at \$60
    - D) They cost the same at $3$ months.
 
-3. Which plan costs less at $10$ months, and what does it cost?
+3. Plan A costs $C = 30 + 10m$ and Plan B costs $C = 60 + 5m$, where $m$ is months. Which plan costs less at $10$ months, and what does it cost?
    - A) Plan A, because it started cheaper
    - B) Plan B, at \$110
    - C) Plan B, at \$50
    - D) They cost the same at $10$ months.
 
-4. How much faster does Plan A's cost rise than Plan B's?
+4. Plan A costs $C = 30 + 10m$ and Plan B costs $C = 60 + 5m$, where $m$ is months. How much faster does Plan A's cost rise than Plan B's?
    - A) \$15 per month
    - B) \$30 per month
    - C) \$2 per month
@@ -173,13 +173,13 @@ Solve each problem. Show your thinking. Plans A and B refer to $C = 30 + 10m$ an
 
 **Proficient Level** (these require an extra step)
 
-5. At what month do the two plans cost the same, and what is that cost?
+5. Plan A costs $C = 30 + 10m$ and Plan B costs $C = 60 + 5m$, where $m$ is months. At what month do the two plans cost the same, and what is that cost?
    - A) Month $6$, at \$90
    - B) Month $6$, at \$60
    - C) Month $2$, at \$70
    - D) They never cost the same.
 
-6. The two plans cost the same at month $6$. What happens after that?
+6. Plan A costs $C = 30 + 10m$ and Plan B costs $C = 60 + 5m$, where $m$ is months. The two plans cost the same at month $6$. What happens after that?
    - A) They stay equal from month $6$ onward.
    - B) Plan A becomes more expensive than Plan B.
    - C) Plan B becomes more expensive than Plan A.
@@ -215,11 +215,9 @@ Solve each problem. Show your thinking. Plans A and B refer to $C = 30 + 10m$ an
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
-Plans A and B refer to $C = 30 + 10m$ and $C = 60 + 5m$, where $m$ is months.
-
 **Item 1**
 
-Which plan has the greater rate of change?
+Plan A costs $C = 30 + 10m$ and Plan B costs $C = 60 + 5m$, where $m$ is months. Which plan has the greater rate of change?
 
 - A) Plan B, at \$60 per month
 - B) Plan A, at \$10 per month
@@ -228,7 +226,7 @@ Which plan has the greater rate of change?
 
 **Item 2**
 
-At what month do the two plans cost the same, and what is that cost?
+Plan A costs $C = 30 + 10m$ and Plan B costs $C = 60 + 5m$, where $m$ is months. At what month do the two plans cost the same, and what is that cost?
 
 - A) Month $6$, at \$60
 - B) Month $2$, at \$70
@@ -237,7 +235,7 @@ At what month do the two plans cost the same, and what is that cost?
 
 **Item 3**
 
-How much faster does Plan A's cost rise than Plan B's?
+Plan A costs $C = 30 + 10m$ and Plan B costs $C = 60 + 5m$, where $m$ is months. How much faster does Plan A's cost rise than Plan B's?
 
 - A) \$15 per month
 - B) \$30 per month
