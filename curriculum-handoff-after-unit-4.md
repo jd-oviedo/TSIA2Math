@@ -363,6 +363,42 @@ The cost of the convention is nil and it fails visibly in review. `PR.2.1` and
 `distractor_logic 0/0` claims while containing real reasoning about numbers.
 Nothing is wrong with them; they are simply unverifiable by machine.
 
+#### And in practice that means INTEGER arithmetic
+
+Refined during Batch C, and it will catch the next author who does not know it.
+**A decimal quotient written in the prose word forms reports a false mismatch.**
+
+```
+"6 + 7 + 8 + 9 = 30 over 4, which is 7.5"
+  -> [distractor_logic C] 30 / 4 = 7 does not hold, segments evaluate to
+     ['15/2', '7']
+```
+
+Nothing is wrong with that sentence. The `over ... which is` rule in `WORD_FORMS`
+captures its result with `-?\d+(?:\s*/\s*\d+)?`, which matches an integer or a
+fraction and **not** a decimal, so it takes `7` out of `7.5` and then compares it
+against the correctly computed `15/2`. The failure is loud, it names a real line,
+and it looks exactly like bad arithmetic.
+
+Two ways out, and the first is usually better:
+
+1. **Choose numbers whose prose arithmetic is integer.** In the case above the
+   sentence was rewritten to `50 / 5 = 10`, which tied the rationale more directly
+   to the item it was explaining and was better content for an unrelated reason.
+2. Write the quotient as a fraction, `30 / 4 = 15/2`, which the capture group does
+   match.
+
+Note what is *not* on that list: widening the capture group mid-batch. It is a
+one-line change and it is still a checker edit, which means re-running the
+coverage number and every fault proof before it can be trusted. That is a
+standalone piece of work, not something to do while authoring, and the convention
+costs nothing. Logged with the #105 parser-limitation family.
+
+**Decimals inside `$...$` math spans are fine.** `$125 / 5 = 25$` and
+`$2 \times 3.14 \times 20 = 125.6$` both parse and both verify; the tolerance
+logic exists precisely for the second. The limitation is only in the English word
+forms, `over`, `which is` and `giving`.
+
 ### Currency inside JSON string fields
 
 Spell it as a word: `"15 dollars"`. Never `$15`, never `\$15`. A single backslash
@@ -1034,7 +1070,38 @@ across all 83 live topics that settles this.
 Say the prediction out loud beforehand. Small set and concentrated is expected;
 large set and concentrated is worth a look.
 
----
+#### Predict on TWO-WAY AVAILABILITY, not just on family count
+
+Added after `PR.2.5`, and it is the first thing that has **explained** a missed
+prediction rather than merely recorded one. Family count told the right story for
+`PR.2.3`, `PR.3.2`, `PR.3.3` and `PR.2.4`. On `PR.2.5` it named the wrong slug:
+
+```
+predicted   quartile_read_as_median near-ubiquitous  ->  65 to 72%
+measured    center_spread_confusion at 13 of 42      ->  62%
+```
+
+The winning slug had a structural property none of the others did. `PR.2.5` asks
+two kinds of question, for a **position** (median, quartile, minimum) and for a
+**width** (range, interquartile range). `center_spread_confusion` is available on
+**both**: every position question admits a width as a wrong answer, and every
+width question admits a position. `quartile_read_as_median` is available only on
+the position questions, so it was capped at roughly half the items no matter how
+naturally it fitted them.
+
+**The test: does the slug describe substituting one of the topic's two answer
+kinds for the other?** If it does, it runs near-ubiquitous regardless of how many
+slugs the set contains, and it will beat any slug tied to a single question kind.
+A five-slug set with one two-way slug concentrates harder than a five-slug set
+without one.
+
+This also explains `PR.3.4` at 86% from the other direction: all four of its slugs
+are the right numerator over a wrong denominator, so the topic has effectively one
+answer kind and every slug is available on every item.
+
+Two-way availability is a property of the **slug set against the topic's question
+kinds**, so it can be read off before authoring, which is the whole point of
+predicting.
 
 ## 6. After Unit 5 Batch B
 
