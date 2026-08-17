@@ -159,7 +159,21 @@ export const TOPIC_PAGE_CSS = `
 
 /* Mobile is the primary target: a stuck student on a phone is the hardest
    case. Cards lose their side padding first, then type steps down. */
+/* The lesson outline rail and the reading column beside it.
+
+   The rail is REMOVED below 760px, not narrowed and not collapsed into a drawer.
+   At 760 the page has 692px of usable width, and taking 264 of it for the rail
+   leaves 428 for the notes, which is narrower than the phone layout the notes are
+   already tuned for. The design removes it at phone width too. What replaces it
+   is .um-lesson-strip, which is the one part of the design's mobile strip that
+   does not need scroll observation: the section count. The progress fill and the
+   current-section counter are absent because they do, and the Outline button is
+   absent because the panel behind it was never drawn. */
 @media (max-width: 760px) {
+  .um-topic .um-lesson-layout { flex-direction: column; gap: 0 !important; }
+  .um-topic .um-lesson-rail { display: none !important; }
+  .um-topic .um-lesson-column { max-width: 100% !important; }
+  .um-topic .um-lesson-strip { display: block !important; }
   .um-topic .um-page { padding: 22px 16px 56px !important; gap: 26px !important; }
   .um-topic .um-bar { padding: 12px 16px !important; gap: 12px !important; }
   .um-topic .um-title { font-size: 25px !important; }

@@ -1,4 +1,4 @@
-import { renderMarkdownWithMath } from '@/lib/curriculum-utils';
+import { renderMarkdownWithMath, splitGuidedNotes } from '@/lib/curriculum-utils';
 import { loadTopic, loadNavigation, loadGates, type RouteParams } from '../topic-data';
 import LessonBody from '../LessonBody';
 import SectionHeading from '../SectionHeading';
@@ -27,6 +27,11 @@ export default async function LessonPage({ params }: { params: Promise<RoutePara
         }
       />
       <LessonBody
+        // Both are passed: `sections` is what renders, and `html` is the whole
+        // blob the page falls back to if the notes could not be split. Rendering
+        // happens here on the server, so LessonBody -- a client component --
+        // never pulls remark and KaTeX into the browser bundle.
+        sections={splitGuidedNotes(topic.guided_notes)}
         html={renderMarkdownWithMath(topic.guided_notes)}
         initialDone={gates.lessonDone}
         courseId={courseId}

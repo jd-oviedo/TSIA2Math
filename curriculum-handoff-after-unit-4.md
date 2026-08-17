@@ -1713,6 +1713,9 @@ Changing five untested pages at once is a different proposition.
 | Unit Map | `deferred-curriculum-unit-map.md` (authoritative over the item bank) |
 | Taxonomy | `data/docs/misconception_taxonomy.json` (do not edit while authoring) |
 
+**Read a gate's exit code before `git commit`, never after** -- every gate above,
+plus `npx next build`, `npx tsc` and `npm test`. This is the #131 slip.
+
 Lint baseline is `6 errors, 10 warnings`, unchanged since before Unit 4. Any new
 error in a file you are authoring is a blocker; those ten warnings and six errors
 are pre-existing and are not.
