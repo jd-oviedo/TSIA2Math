@@ -1,0 +1,10 @@
+{
+  "_note": "HARNESS REGRESSION FIXTURE, not content. Both ranges exclude 0, so neither axis can be placed from the origin. The hardest case of the off-canvas label defect.",
+  "type": "coordinate_plane",
+  "xRange": [100, 140],
+  "yRange": [50, 90],
+  "series": [
+    { "points": [[105, 55], [115, 72], [125, 68], [135, 85]] }
+  ],
+  "alt": "A line graph whose horizontal axis runs from 100 to 140 and whose vertical axis runs from 50 to 90, so neither axis contains zero. Four points are joined in order: 105 comma 55, 115 comma 72, 125 comma 68, and 135 comma 85."
+}

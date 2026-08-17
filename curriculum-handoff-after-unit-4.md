@@ -628,7 +628,8 @@ it and generate it.**
 
 ### An artefact asserting a mechanism that does not occur
 
-The same defect, three times in one session, each in a different artefact:
+Four instances, each in a different artefact, the first three found in one
+session:
 
 - **Issue #84's stated failure mode.** It claimed `create or replace view` would
   drop a column "without complaint". It cannot; it errors with `cannot drop
@@ -639,15 +640,35 @@ The same defect, three times in one session, each in a different artefact:
   OpenAPI spec check the load-bearing half. The endpoint answers anon with 401,
   so that check had never run once.
 
-All three were written by someone who understood the system, all three read as
-authoritative, and all three passed review, because in every case the claim was
+- **"Line graphs use existing points + lines."** A figure-scoping decision taken
+  in Unit 5 Phase 1, restated in the Batch C brief, and **false**. Juan's, and
+  recorded as his rather than smoothed over, because the point of this section is
+  that the class does not care who wrote the artefact. A `line` is an infinite
+  straight line and `lineEndpoints` clips it to the whole window, so asked to
+  join $(1, 70)$ to $(2, 75)$ it emits a stroke spanning the entire plot. Two
+  rounds of figure planning rested on it. Tested at the top of Batch C, it took
+  one spec and about a minute to disprove, and it needed a new `series` mark
+  (PR 0b) rather than a fix to anything.
+
+All four were written by someone who understood the system, all four read as
+authoritative, and all four passed review, because in every case the claim was
 *plausible* and nobody executed the thing it described. Plausibility is what
 makes this class survive review; it is not evidence.
 
 **The check: run the thing the artefact describes before trusting the
 description.** Re-run the file, call the endpoint, execute the statement in a
-throwaway container, attribute the findings instead of counting them. Each of the
-three above took under five minutes to disprove once someone tried.
+throwaway container, build the one-line spec, attribute the findings instead of
+counting them. Each of the four above took under five minutes to disprove once
+someone tried.
+
+**The line-graph one carries an extra lesson the other three do not.** It was a
+statement about what the tooling *could already do*, and those are the most
+expensive kind to get wrong: an artefact describing past behaviour is disproved
+by reading a log, but an artefact describing a **capability** is only disproved by
+trying to use it, which by definition happens when someone is mid-task and
+committed. It sat unchallenged through the Unit 5 figure scoping, PR 0's design,
+and the Batch C brief. **Before a plan depends on a capability, build the smallest
+thing that uses it.**
 
 ### Silent defaults: malformed input that yields a plausible value instead of an error
 

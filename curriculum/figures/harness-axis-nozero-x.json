@@ -1,0 +1,8 @@
+{
+  "_note": "HARNESS REGRESSION FIXTURE, not content. xRange excludes 0, so the y tick labels cannot be placed from X(0). Guards the off-canvas label defect found in Batch C Phase 0, where labels were emitted at y=749.8 on a 250-tall canvas and --verify still reported 9/9.",
+  "type": "coordinate_plane",
+  "xRange": [10, 20],
+  "yRange": [-1, 9],
+  "points": [{ "x": 12, "y": 4 }, { "x": 18, "y": 7 }],
+  "alt": "A plot whose horizontal axis runs from 10 to 20, so it does not contain zero. Two points are marked, at 12 comma 4 and at 18 comma 7."
+}
