@@ -163,98 +163,95 @@ When you miss one below, name the trap. Naming it is how you stop repeating it.
 
 Solve each problem. Show your thinking.
 
-Problems 1 and 2 use this table.
-
-| | Passed | Failed | Total |
-|---|---|---|---|
-| **Studied** | $18$ | $2$ | $20$ |
-| **Did not study** | $6$ | $14$ | $20$ |
-| **Total** | $24$ | $16$ | $40$ |
-
 **Basic Level** (try these first)
 
 1. What is the probability that a student passed, given that they studied?
+
+   Of the $20$ students who studied, $18$ passed and $2$ failed. Of the $20$ who did not study, $6$ passed and $14$ failed. In all, $24$ passed, $16$ failed, and there are $40$ students.
+
    - A) $\frac{3}{4}$
    - B) $\frac{9}{10}$
    - C) $\frac{9}{20}$
    - D) $\frac{3}{5}$
 
 2. What is the probability that a student failed, given that they did not study?
+
+   Of the $20$ students who studied, $18$ passed and $2$ failed. Of the $20$ who did not study, $6$ passed and $14$ failed. In all, $24$ passed, $16$ failed, and there are $40$ students.
+
    - A) $\frac{7}{10}$
    - B) $\frac{7}{8}$
    - C) $\frac{7}{20}$
    - D) $\frac{2}{5}$
 
-Problems 3 and 4 use this table.
-
-| | Bus | Walk | Total |
-|---|---|---|---|
-| **Junior** | $15$ | $10$ | $25$ |
-| **Senior** | $9$ | $16$ | $25$ |
-| **Total** | $24$ | $26$ | $50$ |
-
 3. What is the probability that a student takes the bus, given that they are a junior?
+
+   Of the $25$ juniors, $15$ take the bus and $10$ walk. Of the $25$ seniors, $9$ take the bus and $16$ walk. In all, $24$ take the bus, $26$ walk, and there are $50$ students.
+
    - A) $\frac{3}{10}$
    - B) $\frac{5}{8}$
    - C) $\frac{3}{5}$
    - D) $\frac{12}{25}$
 
 4. What is the probability that a student walks, given that they are a senior?
+
+   Of the $25$ juniors, $15$ take the bus and $10$ walk. Of the $25$ seniors, $9$ take the bus and $16$ walk. In all, $24$ take the bus, $26$ walk, and there are $50$ students.
+
    - A) $\frac{13}{25}$
    - B) $\frac{8}{13}$
    - C) $\frac{8}{25}$
    - D) $\frac{16}{25}$
 
-Problems 5 through 7 use this table.
-
-| | Yes | No | Total |
-|---|---|---|---|
-| **Group A** | $18$ | $12$ | $30$ |
-| **Group B** | $6$ | $34$ | $40$ |
-| **Total** | $24$ | $46$ | $70$ |
-
 **Proficient Level** (these require an extra step)
 
 5. What is the probability that a person answered Yes, given that they are in Group A?
+
+   Of the $30$ people in Group A, $18$ answered Yes and $12$ answered No. Of the $40$ people in Group B, $6$ answered Yes and $34$ answered No. In all, $24$ answered Yes, $46$ answered No, and there are $70$ people.
+
    - A) $\frac{9}{35}$
    - B) $\frac{3}{4}$
    - C) $\frac{3}{5}$
    - D) $\frac{12}{35}$
 
 6. What is the probability that a person is in Group A, given that they answered Yes?
+
+   Of the $30$ people in Group A, $18$ answered Yes and $12$ answered No. Of the $40$ people in Group B, $6$ answered Yes and $34$ answered No. In all, $24$ answered Yes, $46$ answered No, and there are $70$ people.
+
    - A) $\frac{3}{5}$
    - B) $\frac{9}{35}$
    - C) $\frac{3}{4}$
    - D) $\frac{3}{7}$
 
 7. What is the probability that a person answered No, given that they are in Group B?
+
+   Of the $30$ people in Group A, $18$ answered Yes and $12$ answered No. Of the $40$ people in Group B, $6$ answered Yes and $34$ answered No. In all, $24$ answered Yes, $46$ answered No, and there are $70$ people.
+
    - A) $\frac{17}{23}$
    - B) $\frac{17}{20}$
    - C) $\frac{17}{35}$
    - D) $\frac{23}{35}$
 
-Problems 8 and 9 use this table, which does not show totals.
-
-| | Yes | No |
-|---|---|---|
-| **Group A** | $21$ | $9$ |
-| **Group B** | $12$ | $18$ |
-
 **Advanced Level** (these need multiple steps or reverse thinking)
 
 8. What is the probability that a person answered Yes, given that they are in Group A?
+
+   In Group A, $21$ answered Yes and $9$ answered No. In Group B, $12$ answered Yes and $18$ answered No. No totals are given.
+
    - A) $\frac{7}{11}$
    - B) $\frac{7}{20}$
    - C) $\frac{11}{20}$
    - D) $\frac{7}{10}$
 
 9. What is the probability that a person is in Group B, given that they answered No?
+
+   In Group A, $21$ answered Yes and $9$ answered No. In Group B, $12$ answered Yes and $18$ answered No. No totals are given.
+
    - A) $\frac{2}{3}$
    - B) $\frac{3}{5}$
    - C) $\frac{3}{10}$
    - D) $\frac{9}{20}$
 
 10. In a group of $60$ people, $24$ own a car, $30$ own a bike, and $18$ own both. What is the probability that a person owns a bike, given that they own a car?
+
     - A) $\frac{3}{5}$
     - B) $\frac{3}{4}$
     - C) $\frac{3}{10}$
@@ -264,17 +261,11 @@ Problems 8 and 9 use this table, which does not show totals.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
-Items 1 and 2 use this table.
-
-| | Rain | Dry | Total |
-|---|---|---|---|
-| **Weekend** | $9$ | $11$ | $20$ |
-| **Weekday** | $27$ | $53$ | $80$ |
-| **Total** | $36$ | $64$ | $100$ |
-
 **Item 1**
 
 What is the probability that a day had rain, given that it was a weekend day?
+
+Of the $20$ weekend days, $9$ had rain and $11$ were dry. Of the $80$ weekdays, $27$ had rain and $53$ were dry. In all, $36$ days had rain, $64$ were dry, and there are $100$ days.
 
 - A) $\frac{1}{4}$
 - B) $\frac{9}{100}$
@@ -285,22 +276,18 @@ What is the probability that a day had rain, given that it was a weekend day?
 
 What is the probability that a day was a weekday, given that it had rain?
 
+Of the $20$ weekend days, $9$ had rain and $11$ were dry. Of the $80$ weekdays, $27$ had rain and $53$ were dry. In all, $36$ days had rain, $64$ were dry, and there are $100$ days.
+
 - A) $\frac{27}{80}$
 - B) $\frac{27}{100}$
 - C) $\frac{3}{4}$
 - D) $\frac{4}{5}$
 
-Items 3 and 4 use this table.
-
-| | Pass | Fail | Total |
-|---|---|---|---|
-| **Morning** | $30$ | $10$ | $40$ |
-| **Evening** | $15$ | $45$ | $60$ |
-| **Total** | $45$ | $55$ | $100$ |
-
 **Item 3**
 
 What is the probability that a candidate passed, given that they sat the morning session?
+
+Of the $40$ candidates who sat the morning session, $30$ passed and $10$ failed. Of the $60$ who sat the evening session, $15$ passed and $45$ failed. In all, $45$ passed, $55$ failed, and there are $100$ candidates.
 
 - A) $\frac{3}{4}$
 - B) $\frac{2}{3}$
@@ -310,6 +297,8 @@ What is the probability that a candidate passed, given that they sat the morning
 **Item 4**
 
 What is the probability that a candidate failed, given that they sat the evening session?
+
+Of the $40$ candidates who sat the morning session, $30$ passed and $10$ failed. Of the $60$ who sat the evening session, $15$ passed and $45$ failed. In all, $45$ passed, $55$ failed, and there are $100$ candidates.
 
 - A) $\frac{9}{11}$
 - B) $\frac{3}{4}$
