@@ -384,6 +384,37 @@ def validate_practice_items(sections):
     return warnings
 
 
+def require_estimated_time(topic_id, metadata):
+    """
+    estimated_time_minutes, or raise.
+
+    This used to be `metadata.get('estimated_time_minutes', 45)`. 45 is a legal
+    authored value that 24 of the 97 topics genuinely use, so a topic that lost
+    the frontmatter key uploaded as 45 and was indistinguishable from the ones
+    that mean it. Nothing downstream could tell them apart, and the database
+    reported 100% coverage either way.
+
+    Same shape as the `sequence_in_unit` defaults-to-0 defect: a default that is
+    also a legal value, so absence of the input cannot be detected after the
+    fact. It has to be caught where the input is read.
+
+    Raising rather than defaulting is safe because coverage is 97/97 today, so
+    no current upload changes. check_topic.py carries the same rule at commit
+    time, which is where an author actually finds out.
+    """
+    raw = metadata.get('estimated_time_minutes')
+    if raw is None:
+        raise ValueError(
+            f"{topic_id}: frontmatter has no `estimated_time_minutes`. It used to "
+            f"default to 45, which is a real value 24 topics use, so the mistake "
+            f"was invisible. Add the key.")
+    if not isinstance(raw, int) or isinstance(raw, bool) or raw < 1:
+        raise ValueError(
+            f"{topic_id}: `estimated_time_minutes` is {raw!r}; expected a positive "
+            f"integer number of minutes")
+    return raw
+
+
 def upload_course_curriculum(course_id, dry_run=False):
     """
     Upload all markdown files for a course to Supabase.
@@ -439,7 +470,7 @@ def upload_course_curriculum(course_id, dry_run=False):
                 'practice_problems': {'raw': parsed['practice_problems']},
                 'mini_quiz': {'raw': parsed['mini_quiz']},
                 'answer_key': {'raw': parsed['answer_key']},
-                'estimated_time_minutes': parsed['metadata'].get('estimated_time_minutes', 45),
+                'estimated_time_minutes': require_estimated_time(topic_id, parsed['metadata']),
                 'difficulty_band': parsed['metadata'].get('difficulty_band', 'Basic'),
                 'related_strand': parsed['metadata'].get('related_strand', ''),
                 'keywords': parsed['metadata'].get('keywords', []),
