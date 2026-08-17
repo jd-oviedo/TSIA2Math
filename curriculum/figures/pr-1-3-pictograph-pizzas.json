@@ -1,0 +1,12 @@
+{
+  "type": "data_table",
+  "columns": ["Day", "Pizzas sold"],
+  "key": { "symbol": "star", "value": 4, "label": "each star stands for 4 pizzas" },
+  "rows": [
+    { "label": "Monday", "symbols": 3, "total": 12 },
+    { "label": "Tuesday", "symbols": 5, "total": 20 },
+    { "label": "Wednesday", "symbols": 2, "total": 8 },
+    { "label": "Thursday", "symbols": 4, "total": 16 }
+  ],
+  "alt": "A pictograph of pizzas sold by day. Each star stands for 4 pizzas. Monday shows 3 stars, which is 12 pizzas. Tuesday shows 5 stars, which is 20 pizzas. Wednesday shows 2 stars, which is 8 pizzas. Thursday shows 4 stars, which is 16 pizzas."
+}

@@ -1,0 +1,11 @@
+{
+  "_note": "HARNESS FIXTURE, not content. Exercises the two-way cells path that PR.1.4 will use in Batch D, so the type is proven for both shapes before that topic is authored rather than retrofitted to it. Five columns including a Total, which is the width case nearest the ceiling.",
+  "type": "data_table",
+  "columns": ["", "Pizza", "Sandwich", "Salad", "Total"],
+  "rows": [
+    { "label": "9th Grade", "cells": ["12", "9", "4", "25"] },
+    { "label": "10th Grade", "cells": ["8", "14", "6", "28"] },
+    { "label": "Total", "cells": ["20", "23", "10", "53"] }
+  ],
+  "alt": "A two-way table of lunch preferences by grade. The columns are Pizza, Sandwich, Salad and Total. Ninth grade: 12 pizza, 9 sandwich, 4 salad, 25 in total. Tenth grade: 8 pizza, 14 sandwich, 6 salad, 28 in total. The column totals are 20 pizza, 23 sandwich, 10 salad, and 53 students altogether."
+}
