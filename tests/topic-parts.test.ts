@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { topicPlan, type PartInput } from '../app/lib/topic-parts.ts';
+import { topicPlan, resumeStep, type PartInput } from '../app/lib/topic-parts.ts';
 import { lessonSectionCount } from '../app/lib/lesson-sections.ts';
 
 // The topic overview states the gating rule that is really enforced. These pin
@@ -103,4 +103,34 @@ test('counts and plurals read correctly at one', () => {
   const plan = topicPlan(base({ sectionCount: 1, practiceCount: 1, practiceRequired: 1, practiceCorrect: 0 }));
   assert.equal(plan.parts[0].detail, '1 section to read');
   assert.match(plan.parts[1].requirement ?? '', /Get 1 of 1 problem right/);
+});
+
+test('Modules and the topic overview cannot disagree about where to carry on', () => {
+  // The Modules resume card calls resumeStep directly; the topic overview gets
+  // the same answer through topicPlan. If those two ever diverge a student is
+  // sent to different places by two surfaces describing the same topic, which
+  // is invisible until it happens. Pinned across every state that matters.
+  const cases: PartInput[] = [
+    base({ lessonDone: false, practiceCorrect: 0, quizCorrect: 0 }),
+    base({ lessonDone: false, practiceCorrect: 7 }),
+    base(),
+    base({ practiceCorrect: 7 }),
+    base({ practiceCorrect: 7, quizCorrect: 1 }),
+    base({ practiceCorrect: 7, quizCorrect: 3 }),
+    base({ practiceGated: false }),
+    base({ practiceGated: false, quizGated: false }),
+    base({ practiceGated: false, quizGated: false, lessonDone: false }),
+  ];
+
+  for (const input of cases) {
+    const viaPlan = topicPlan(input).resume;
+    // sectionCount is the one field resumeStep does not take, because it only
+    // ever affected a row's wording. Dropping it must not change the answer.
+    // Built by copy-and-delete rather than destructuring, so no unused binding
+    // is left behind for lint to object to.
+    const withoutSectionCount = { ...input } as Partial<PartInput>;
+    delete withoutSectionCount.sectionCount;
+    const direct = resumeStep(withoutSectionCount as Omit<PartInput, 'sectionCount'>);
+    assert.deepEqual(direct, viaPlan, `resume diverged for ${JSON.stringify(input)}`);
+  }
 });

@@ -42,6 +42,39 @@ export const C = {
   greenLine: '#A9C6AE',
 } as const;
 
+// ─── Shape ───────────────────────────────────────────────────────────────────
+//
+// One radius and two shadows, so surfaces stop drifting apart a component at a
+// time. Chosen by counting what is already in the tree rather than by picking a
+// number: across app/course and app/dashboard the radii in use were 16 (11
+// uses), 11 (11), 12 (9), 14 (4), 13 (3), plus pill values.
+//
+// RADIUS is 12 because it is already one of the three clusters and sits between
+// the other two, so adopting it moves nothing by more than 4px. 16 would inflate
+// small controls and 11 is not meaningfully different from 12 while being the
+// less common of the pair at the sizes that matter.
+export const RADIUS = 12;
+
+// Pills are a different shape, not a rounded rectangle, and they stay: the
+// sidebar's active-state pill and the small status chips read as pills on
+// purpose. RADIUS does not apply to them.
+export const RADIUS_PILL = 999;
+
+// Every container edge. An inset ring rather than a border so it costs no
+// layout, which matters where these sit inside flex rows.
+export function hairline(color: string): string {
+  return `inset 0 0 0 1px ${color}`;
+}
+
+// The ONLY drop shadow. It is an affordance, not decoration: the 2px lip is
+// what makes the single primary action on a screen read as pressable.
+//
+// The decorative `0 1px 3px rgba(14,14,17,.05)` that six surfaces carry is
+// retired by this rule. It sits under panels that are already separated from
+// the page by a hairline and a fill, so it adds no information, and it is the
+// "shadow used as decoration" the redesign specifically rules out.
+export const SHADOW_PRESSABLE = `0 2px 0 ${C.sunsetShadow}`;
+
 // Deep Midnight at an opacity, for the tiers of secondary text and hairlines the
 // design leans on instead of extra greys.
 export function ink(alpha: number): string {

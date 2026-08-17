@@ -126,31 +126,43 @@ export function topicPlan(input: PartInput): TopicPlan {
     },
   ];
 
-  // Part-level resume: the first part that is not finished. An ungated section
-  // counts as finished for this purpose, since there is nothing in it a student
-  // could complete and stopping there would strand them.
+  return { parts, resume: resumeStep(input) };
+}
+
+// Which part a student carries on from, and what to call the button.
+//
+// Exported on its own because the Modules page needs the same answer for the
+// topic a student was last working on, and it holds gate state without needing
+// the three rows the overview renders. Sharing this rather than restating the
+// rule is the point: two surfaces disagreeing about where "carry on" goes is
+// exactly the kind of drift that is invisible until a student hits it.
+//
+// Takes the same input as topicPlan but ignores sectionCount, which only ever
+// affected a row's wording.
+export function resumeStep(input: Omit<PartInput, 'sectionCount'>): TopicPlan['resume'] {
+  const practiceStatus = sectionStatus(
+    input.practiceGated,
+    input.practiceCorrect,
+    input.practiceRequired
+  );
+  const quizStatus = sectionStatus(input.quizGated, input.quizCorrect, input.quizRequired);
+
+  // An ungated section counts as finished here: there is nothing in it a
+  // student could complete, and stopping there would strand them.
   const done = (s: PartStatus) => s === 'complete' || s === 'ungated';
 
-  if (!input.lessonDone) {
-    return { parts, resume: { kind: 'lesson', label: 'Start the guided notes' } };
-  }
+  if (!input.lessonDone) return { kind: 'lesson', label: 'Start the guided notes' };
   if (!done(practiceStatus)) {
     return {
-      parts,
-      resume: {
-        kind: 'practice',
-        label: practiceStatus === 'in_progress' ? 'Carry on with practice' : 'Start practice',
-      },
+      kind: 'practice',
+      label: practiceStatus === 'in_progress' ? 'Carry on with practice' : 'Start practice',
     };
   }
   if (!done(quizStatus)) {
     return {
-      parts,
-      resume: {
-        kind: 'quiz',
-        label: quizStatus === 'in_progress' ? 'Carry on with the quiz' : 'Start the mini quiz',
-      },
+      kind: 'quiz',
+      label: quizStatus === 'in_progress' ? 'Carry on with the quiz' : 'Start the mini quiz',
     };
   }
-  return { parts, resume: { kind: 'lesson', label: 'Read the notes again' } };
+  return { kind: 'lesson', label: 'Read the notes again' };
 }
