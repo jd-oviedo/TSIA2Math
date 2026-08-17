@@ -582,6 +582,26 @@ So the two sides are authoritative for different things:
 | `public/data/question_bank.json` | the question **text** |
 | `data/items/**/*.json` | `misconception_tag` |
 
+**And the correct tool for a TEXT change is `scripts/restore_bank_text.py`**,
+after editing `public/data/question_bank.json` directly. That is not a licence to
+hand-edit generated files: the bank is not generated. It is the authoritative
+copy of the text, per the table above, and `data/items/` is brought into
+agreement afterwards rather than acting as the source.
+
+This half was missing and someone hit it: #33 fixed a KaTeX typo in
+`data/items/AR/AR.1.5.json` and nothing reached a student, because
+`data/items/` is read by no application code at all -- the served path is
+`question_bank.json` -> `seed_questions.mjs` -> Supabase `questions`. The PR
+looked correct in review and was a no-op. Corrected in #147.
+
+**Not `seed_questions.mjs` for a text change.** It upserts whole item objects
+including `times_administered` and `times_correct` exactly as they sit in the
+bank, which is zero, so it overwrites the live exposure counters
+`increment_item_exposure()` has been accumulating. That is unrecoverable data
+in a project with no PITR. `restore_bank_text.py` writes a narrow content
+column set, treats the counters as read-only, never INSERTs or DELETEs, and is a
+dry run unless given `--execute`.
+
 **The correct tool for a tag change is `scripts/merge_misconception_tags.py`**,
 which merges that one field and nothing else. It verifies that both sides agree
 on what the option letters mean before writing, because a tag maps letters to
