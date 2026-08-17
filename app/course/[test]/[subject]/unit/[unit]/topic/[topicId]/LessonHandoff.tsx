@@ -1,6 +1,6 @@
 'use client';
 
-import { C, ink, EYEBROW, RADIUS, hairline } from '@/app/components/curriculum-theme';
+import { C, ink, EYEBROW, RADIUS, hairline, INK_MUTED } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // The end of the guided notes.
@@ -60,7 +60,7 @@ export default function LessonHandoff({
       }}
     >
       <div style={{ flex: 1, minWidth: 200, display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <div style={{ ...EYEBROW, color: ink(0.45) }}>Next in this topic</div>
+        <div style={{ ...EYEBROW, color: INK_MUTED }}>Next in this topic</div>
         <h2
           id="lesson-handoff-heading"
           style={{ margin: 0, font: `600 19px ${FONT_HEADING}`, color: C.midnight }}

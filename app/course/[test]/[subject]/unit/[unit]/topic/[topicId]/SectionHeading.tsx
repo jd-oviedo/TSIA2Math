@@ -1,4 +1,4 @@
-import { C, ink } from '@/app/components/curriculum-theme';
+import { C, INK_MUTED } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // The heading each topic sub-page opens with. Extracted from the old
@@ -29,7 +29,7 @@ export default function SectionHeading({
           {chip}
         </span>
       )}
-      <span style={{ font: `400 13px ${FONT_BODY}`, color: ink(0.45) }}>{blurb}</span>
+      <span style={{ font: `400 13px ${FONT_BODY}`, color: INK_MUTED }}>{blurb}</span>
     </div>
   );
 }

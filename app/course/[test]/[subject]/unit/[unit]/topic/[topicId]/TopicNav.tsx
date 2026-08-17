@@ -1,6 +1,6 @@
 'use client';
 
-import { C, ink } from '@/app/components/curriculum-theme';
+import { C, ink, INK_DISABLED, INK_MUTED } from '@/app/components/curriculum-theme';
 import { FONT_BODY } from '@/app/components/fonts';
 import type { NavStep } from './topic-data';
 
@@ -94,7 +94,7 @@ export default function TopicNav({
             <span aria-hidden="true">&larr;</span>
             <span>
               Previous
-              <span style={{ color: ink(0.45) }}> · {previous.label}</span>
+              <span style={{ color: INK_MUTED }}> · {previous.label}</span>
             </span>
           </a>
         ) : (
@@ -117,7 +117,7 @@ export default function TopicNav({
                 border: 'none',
                 background: ink(0.09),
                 font: `600 14.5px ${FONT_BODY}`,
-                color: ink(0.4),
+                color: INK_DISABLED,
                 cursor: 'not-allowed',
               }}
             >

@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import type { AnswerKeyEntries, AnswerKeyEntry } from '@/lib/curriculum-utils';
-import { C, ink, EYEBROW, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { C, ink, EYEBROW, MATH_LINE_HEIGHT, INK_MUTED } from '@/app/components/curriculum-theme';
 import { FONT_BODY } from '@/app/components/fonts';
 
 // Tracks whether any GUMU session is live on this topic, so the answer key can
@@ -178,7 +178,7 @@ function SolutionRow({ entry }: { entry: AnswerKeyEntry }) {
           style={{
             flex: 'none',
             font: `500 12.5px ${FONT_BODY}`,
-            color: open ? ink(0.4) : C.violet,
+            color: open ? INK_MUTED : C.violet,
           }}
         >
           {open ? 'Hide' : 'Reveal solution'}

@@ -117,6 +117,48 @@ export function onDark(alpha: number): string {
   return `rgba(242, 237, 223, ${alpha})`;
 }
 
+// ─── The two quiet greys, and why they are two ───────────────────────────────
+//
+// These were one undifferentiated cluster -- ink(0.4), ink(0.45), ink(0.5) --
+// spelling two jobs the same way, so the value was chosen by eye each time and
+// text kept landing on a grey that could not be read. Naming them is most of the
+// fix: the next person who wants "a quiet grey" now has to say which kind.
+//
+// The audience reads on Chromebooks at school and low-end Android phones, often
+// at low brightness, so this is not a theoretical standard to clear.
+
+// Quiet TEXT. Eyebrows, blurbs, captions, status labels -- anything a student is
+// expected to read but that should not compete with the thing beside it.
+//
+// 0.6 is the smallest round value clearing WCAG AA 4.5:1 on EVERY surface this
+// text lands on. Measured, not chosen: the binding constraint is cream, which
+// needs 0.593, and the seven surfaces run 4.62 (cream) to 5.02 (paper). It
+// replaces ink(0.45), which scored 2.91 to 3.09 and failed on all seven.
+// tests/curriculum-contrast.test.ts holds the pair against every one of them.
+//
+// WHAT THIS COST, recorded because it is not recoverable by picking better: the
+// tier above is ink(0.65), and 0.6 against 0.65 is a 1.18:1 step, which nobody
+// can see. There is no value that clears 4.5:1 AND stays visibly quieter than
+// 0.65, because the floor (0.593) sits directly under it. Muted and secondary
+// have collapsed into one another. That is survivable only because colour was
+// never carrying the distinction where the two actually meet: in all four
+// components holding both, the muted one is an EYEBROW or an inline sub-label,
+// separated by size, weight, case and family. The seven non-eyebrow uses sit
+// below C.midnight, not below 0.65, and that step is still 3.17:1.
+export const INK_MUTED = ink(0.6);
+
+// NOT text. Disabled controls and decoration only.
+//
+// Deliberately still fails 4.5:1, and must keep failing. WCAG 1.4.3 exempts
+// "inactive user interface components", and a disabled button rendered at
+// INK_MUTED reads as enabled -- which loses a student more than a dim grey does.
+// The three uses are the locked Next, the un-armed Check answer, and the
+// un-armed Join.
+//
+// If you are reaching for this for something a student has to READ, you want
+// INK_MUTED. That sentence is the whole reason the two tokens exist.
+export const INK_DISABLED = ink(0.4);
+
 // The uppercase monospace eyebrow that labels every section and card in the
 // design. Kept as one object because it is repeated a dozen times.
 export const EYEBROW = {

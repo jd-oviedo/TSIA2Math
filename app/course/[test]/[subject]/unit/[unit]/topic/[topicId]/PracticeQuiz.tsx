@@ -5,7 +5,7 @@ import GumuChat from './GumuChat';
 import { useGumuGate } from './GumuGate';
 import QuizFinish from './QuizFinish';
 import { quizOutcome, solutionsAvailable } from '@/app/lib/quiz-finish';
-import { C, ink, EYEBROW, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { C, ink, EYEBROW, MATH_LINE_HEIGHT, INK_DISABLED, INK_MUTED } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // What the browser is allowed to see. Built server-side in page.tsx by
@@ -185,7 +185,7 @@ export default function PracticeQuiz({
           so they count answered items rather than visited ones. */}
       <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap' }}>
         <h2 style={{ margin: 0, font: `600 19px ${FONT_HEADING}`, color: C.midnight }}>{heading}</h2>
-        <div style={{ font: `400 13px ${FONT_BODY}`, color: ink(0.45) }}>{blurb}</div>
+        <div style={{ font: `400 13px ${FONT_BODY}`, color: INK_MUTED }}>{blurb}</div>
         <div style={{ flex: 1 }} />
         <div
           style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}
@@ -252,7 +252,7 @@ export default function PracticeQuiz({
                 gap: '12px',
               }}
             >
-              <span style={{ ...EYEBROW, color: ink(0.4) }}>
+              <span style={{ ...EYEBROW, color: INK_MUTED }}>
                 Problem {index + 1} of {items.length}
                 {item.level ? ` · ${item.level}` : ''}
               </span>
@@ -279,7 +279,7 @@ export default function PracticeQuiz({
                   {result.isCorrect ? 'Nailed it' : 'Not quite yet'}
                 </span>
               ) : (
-                <span style={{ font: `400 12.5px ${FONT_BODY}`, color: ink(0.4), flex: 'none' }}>
+                <span style={{ font: `400 12.5px ${FONT_BODY}`, color: INK_MUTED, flex: 'none' }}>
                   Multiple choice
                 </span>
               )}
@@ -401,7 +401,7 @@ export default function PracticeQuiz({
                         style={{
                           flex: 'none',
                           font: `400 12.5px ${FONT_BODY}`,
-                          color: ink(0.45),
+                          color: INK_MUTED,
                         }}
                       >
                         {caption}
@@ -434,7 +434,7 @@ export default function PracticeQuiz({
                     background: choice ? C.sunset : ink(0.09),
                     boxShadow: choice ? `0 2px 0 ${C.sunsetShadow}` : 'none',
                     font: `600 15px ${FONT_BODY}`,
-                    color: choice ? C.midnight : ink(0.4),
+                    color: choice ? C.midnight : INK_DISABLED,
                     cursor: choice ? 'pointer' : 'not-allowed',
                   }}
                 >
