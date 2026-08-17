@@ -519,6 +519,26 @@ where n.nspname = 'public'
 order by c.relname;
 ```
 
+**Probed 2026-08-17 and confirmed closed.** The reloptions value could not be read
+from a script, since PostgREST does not expose `pg_class` and there is no
+`exec_sql` RPC, but the behavioural probe is the stronger evidence anyway:
+
+```
+anon    -> qualified_sessions   HTTP 401  42501 "permission denied for table sessions"
+service -> qualified_sessions   HTTP 200  Content-Range */0   (0 rows)
+anon    -> sessions             HTTP 401  42501
+```
+
+**The 401 naming the BASE TABLE rather than the view is the `security_invoker =
+true` fingerprint.** The view executes with the caller's rights, anon holds nothing
+on `sessions`, and the failure surfaces from underneath. Row count 0, columns
+exposed to anon: none. To confirm the stored value by hand:
+
+```sql
+select relname, reloptions from pg_class where relname = 'qualified_sessions';
+-- expect {security_invoker=true}
+```
+
 One loose end while here. anon holds a SELECT grant on `qualified_sessions`; the
 42501 comes from the base table, which is why the grant on the view is invisible
 until you read it. **A grant that only fails closed because of `security_invoker`
@@ -526,6 +546,11 @@ is defence by coincidence rather than by design**, and it is a candidate for the
 known stray-anon-SELECT-grant cleanup. Revoking it would make the view closed for
 a stated reason instead of an incidental one, and would remove the standardising
 trap above along with it. Not urgent, and not done.
+
+The revoke is one line and is deliberately left undrafted, because nothing is
+exposed today and drafting SQL for a non-problem invites someone to run it without
+re-checking the premise. It is available whenever the three views are next
+touched.
 
 Also do not "fix" that 42501 by granting anon on `sessions`. It is the check
 working.
@@ -1495,6 +1520,78 @@ Two ways to close it were weighed and rejected for this change:
   covering.** It exercises the path rather than bypassing it, and it would unlock
   every other signed-in surface at the same time, which is why it is its own piece
   of work rather than a rider on a feature.
+
+### The auth gate is now covered, the pages behind it are not
+
+`scripts/verify_auth_gate.mjs`, `npm run test:auth-gate`. Asserts every route
+under `app/dashboard` returns **307 to /login** to a signed-out visitor, with two
+open routes checked as a control so a suite reporting everything closed cannot
+pass against a server that is simply down.
+
+**Routes are discovered from the filesystem, not listed.** A hardcoded five would
+stay green forever after someone adds a sixth, which is the regression it exists
+to catch. That makes discovery load-bearing, so the discovered set is asserted
+non-empty and asserted to contain the five known routes; a discovery faulted to
+find only one fails loudly rather than passing on the one it found.
+
+**Proved by removing the gate** (`--prove`): faulted to render anonymously rather
+than to 500, since a crash is also "not 200" and would pass a negative check.
+
+**The proof caught a real flaw in the first draft**, which is the reason to run
+it. `page.goto` FOLLOWS redirects and reports the status of wherever it landed:
+
+```
+gate removed   goto -> status 200, url /dashboard
+gate present   goto -> status 200, url /login
+```
+
+Identical status in both states, so `status === 307` was measuring the login page
+and was never true. The redirect is now read with `maxRedirects: 0` and the
+browser navigation kept only for where a visitor actually ends up. **Same defect
+class as the coarse-unit one: the instrument could not see the thing it was
+pointed at.**
+
+**Noticed while measuring, not fixed, not in scope.** Every one of the five
+routes redirects to `/login?next=%2Fdashboard` regardless of which was
+requested -- the target is hardcoded in the layout. A student who follows a deep
+link to `/dashboard/grades` signs in and lands on `/dashboard`. One line to fix
+whenever the redesign touches the layout.
+
+### The auth test path: deferred, not declined
+
+Scoped 2026-08-17 and held until the student dashboard redesign is in scope.
+
+**What is untestable today, measured rather than inferred.** Five routes, all
+gated by one place, `app/dashboard/layout.tsx:18`:
+
+```
+/dashboard  /dashboard/modules  /dashboard/grades
+/dashboard/announcements  /dashboard/settings      all 307 -> /login?next=%2Fdashboard
+```
+
+Everything else returns 200 signed out: `/adaptive-test` and all four
+`/course/.../topic/...` routes. **That understates the gap.** The `/course` routes
+are only half covered, because signed out `gumu_available` is always false,
+`correct_answer` comes back inline, no gates apply and `GumuChat` never mounts. The
+entire AUTHENTICATED branch of practice and quiz is untested too, and that branch is
+where every open student-experience question lives.
+
+**Why the Codespace friction does not apply.** The redirect-URL problem is an OAuth
+problem: Google sign-in needs the Codespace callback allow-listed and it has to be
+re-added on every fresh Codespace. `signInWithPassword` is a direct token grant with
+no redirect, so it sidesteps that entirely, and injecting the two Supabase cookies is
+a single `context.addCookies()`. This is the part most likely to be assumed fragile
+and is not.
+
+**The real cost, which is not the wiring.** This project has one Supabase instance,
+so a test account is a REAL user in production auth with a real password, and every
+run writes REAL `curriculum_attempts` rows against a real student id that then
+appear in anything aggregating students. Credentials in `.env.local` add no new
+class of secret, since the service-role key already lives there.
+
+**When it becomes obvious:** the moment the redesign starts. Its value is
+proportional to how much UI is in flight, and today that is one disclosure widget.
+Changing five untested pages at once is a different proposition.
 
 ## Where things live
 
