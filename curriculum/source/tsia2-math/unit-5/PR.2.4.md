@@ -158,37 +158,27 @@ Before you answer, name the measure you used out loud. If the question said "con
 
 Solve each problem. Show your thinking.
 
-Problems 1 and 2 use these two sets.
-
-- **Set A:** $4, 6, 7, 9, 14$
-- **Set B:** $6, 7, 8, 9, 10$
-
 **Basic Level** (try these first)
 
-1. What is the range of Set A?
+1. Set A is $4, 6, 7, 9, 14$ and Set B is $6, 7, 8, 9, 10$. What is the range of Set A?
    - A) $10$
    - B) $14$
    - C) $4$
    - D) $8$
 
-2. Which set is more consistent?
+2. Set A is $4, 6, 7, 9, 14$ and Set B is $6, 7, 8, 9, 10$. Which set is more consistent?
    - A) Set A, because its largest value, $14$, is the greatest value in either set
    - B) Set B, because its values sit within $4$ of each other while Set A's spread over $10$
    - C) They are equally consistent, because both sets have a mean of $8$
    - D) Set A, because its range of $10$ is the larger number
 
-Problems 3 and 4 use these two sets.
-
-- **Set C:** $2, 5, 8, 9, 11$
-- **Set D:** $6, 7, 8, 9, 20$
-
-3. What is the mean of Set C?
+3. Set C is $2, 5, 8, 9, 11$ and Set D is $6, 7, 8, 9, 20$. What is the mean of Set C?
    - A) $8$
    - B) $9$
    - C) $7$
    - D) $10$
 
-4. Both sets have a median of $8$. What does that tell you about their means?
+4. Set C is $2, 5, 8, 9, 11$ and Set D is $6, 7, 8, 9, 20$. Both have a median of $8$. What does that tell you about their means?
    - A) Both means are $8$, because equal medians force equal means
    - B) The two sets are equally spread out, because their middles match
    - C) Set D's mean is also $8$, because the $20$ is an outlier and outliers do not move a mean
@@ -196,18 +186,19 @@ Problems 3 and 4 use these two sets.
 
 **Proficient Level** (these require an extra step)
 
-Problems 5 and 6 use this graph.
+5. What is the median score for Class 1?
 
 <!-- figure: pr-2-4-box-classes -->
 ![Two box plots stacked on one shared number line of test scores running from 50 to 100, marked every 5. Class 1 is the upper plot: minimum 60, lower quartile 70, median 74, upper quartile 82, maximum 96. Class 2 is the lower plot: minimum 58, lower quartile 72, median 80, upper quartile 86, maximum 94. Both classes have a range of 36, but Class 2's box is wider and sits further right.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJUd28gYm94IHBsb3RzIHN0YWNrZWQgb24gb25lIHNoYXJlZCBudW1iZXIgbGluZSBvZiB0ZXN0IHNjb3JlcyBydW5uaW5nIGZyb20gNTAgdG8gMTAwLCBtYXJrZWQgZXZlcnkgNS4gQ2xhc3MgMSBpcyB0aGUgdXBwZXIgcGxvdDogbWluaW11bSA2MCwgbG93ZXIgcXVhcnRpbGUgNzAsIG1lZGlhbiA3NCwgdXBwZXIgcXVhcnRpbGUgODIsIG1heGltdW0gOTYuIENsYXNzIDIgaXMgdGhlIGxvd2VyIHBsb3Q6IG1pbmltdW0gNTgsIGxvd2VyIHF1YXJ0aWxlIDcyLCBtZWRpYW4gODAsIHVwcGVyIHF1YXJ0aWxlIDg2LCBtYXhpbXVtIDk0LiBCb3RoIGNsYXNzZXMgaGF2ZSBhIHJhbmdlIG9mIDM2LCBidXQgQ2xhc3MgMidzIGJveCBpcyB3aWRlciBhbmQgc2l0cyBmdXJ0aGVyIHJpZ2h0LiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGN0YzRTciIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNTgiIHkxPSIxNiIgeDI9IjU4IiB5Mj0iMjEyIi8+PGxpbmUgeDE9Ijg0LjQiIHkxPSIxNiIgeDI9Ijg0LjQiIHkyPSIyMTIiLz48bGluZSB4MT0iMTEwLjgiIHkxPSIxNiIgeDI9IjExMC44IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjEzNy4yIiB5MT0iMTYiIHgyPSIxMzcuMiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNjMuNiIgeTE9IjE2IiB4Mj0iMTYzLjYiIHkyPSIyMTIiLz48bGluZSB4MT0iMTkwIiB5MT0iMTYiIHgyPSIxOTAiIHkyPSIyMTIiLz48bGluZSB4MT0iMjE2LjQiIHkxPSIxNiIgeDI9IjIxNi40IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI0Mi44IiB5MT0iMTYiIHgyPSIyNDIuOCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNjkuMiIgeTE9IjE2IiB4Mj0iMjY5LjIiIHkyPSIyMTIiLz48bGluZSB4MT0iMjk1LjYiIHkxPSIxNiIgeDI9IjI5NS42IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjMyMiIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PC9nPjxsaW5lIGRhdGEtd2hpc2tlcj0iMGxvIiB4MT0iMTEwLjgiIHkxPSI2NSIgeDI9IjE2My42IiB5Mj0iNjUiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLXdoaXNrZXI9IjBoaSIgeDE9IjIyNi45NiIgeTE9IjY1IiB4Mj0iMzAwLjg4IiB5Mj0iNjUiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMGxvIiB4MT0iMTEwLjgiIHkxPSI1Mi44NyIgeDI9IjExMC44IiB5Mj0iNzcuMTMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMGhpIiB4MT0iMzAwLjg4IiB5MT0iNTIuODciIHgyPSIzMDAuODgiIHkyPSI3Ny4xMyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxyZWN0IGRhdGEtYm94PSIwIiB4PSIxNjMuNiIgeT0iNDIuOTUiIHdpZHRoPSI2My4zNiIgaGVpZ2h0PSI0NC4xIiBmaWxsPSIjNkU5REM4IiBmaWxsLW9wYWNpdHk9IjAuMzUiIHN0cm9rZT0iIzZFOURDOCIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48bGluZSBkYXRhLW1lZGlhbj0iMCIgeDE9IjE4NC43MiIgeTE9IjQyLjk1IiB4Mj0iMTg0LjcyIiB5Mj0iODcuMDUiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIyIi8+PGxpbmUgZGF0YS13aGlza2VyPSIxbG8iIHgxPSIxMDAuMjQiIHkxPSIxNjMiIHgyPSIxNzQuMTYiIHkyPSIxNjMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLXdoaXNrZXI9IjFoaSIgeDE9IjI0OC4wOCIgeTE9IjE2MyIgeDI9IjI5MC4zMiIgeTI9IjE2MyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIGRhdGEtY2FwPSIxbG8iIHgxPSIxMDAuMjQiIHkxPSIxNTAuODciIHgyPSIxMDAuMjQiIHkyPSIxNzUuMTMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMWhpIiB4MT0iMjkwLjMyIiB5MT0iMTUwLjg3IiB4Mj0iMjkwLjMyIiB5Mj0iMTc1LjEzIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PHJlY3QgZGF0YS1ib3g9IjEiIHg9IjE3NC4xNiIgeT0iMTQwLjk1IiB3aWR0aD0iNzMuOTIiIGhlaWdodD0iNDQuMSIgZmlsbD0iI0YwQTMzRSIgZmlsbC1vcGFjaXR5PSIwLjM1IiBzdHJva2U9IiNGMEEzM0UiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGxpbmUgZGF0YS1tZWRpYW49IjEiIHgxPSIyMTYuNCIgeTE9IjE0MC45NSIgeDI9IjIxNi40IiB5Mj0iMTg1LjA1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjU4IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNTgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NTA8L3RleHQ+PHRleHQgeD0iODQuNCIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41NTwvdGV4dD48dGV4dCB4PSIxMTAuOCIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj42MDwvdGV4dD48dGV4dCB4PSIxMzcuMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj42NTwvdGV4dD48dGV4dCB4PSIxNjMuNiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj43MDwvdGV4dD48dGV4dCB4PSIxOTAiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzU8L3RleHQ+PHRleHQgeD0iMjE2LjQiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ODA8L3RleHQ+PHRleHQgeD0iMjQyLjgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ODU8L3RleHQ+PHRleHQgeD0iMjY5LjIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+OTA8L3RleHQ+PHRleHQgeD0iMjk1LjYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+OTU8L3RleHQ+PHRleHQgeD0iMzIyIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEwMDwvdGV4dD48dGV4dCBkYXRhLWxhbmU9IjAiIHg9IjUyIiB5PSI2OC41IiB0ZXh0LWFuY2hvcj0iZW5kIj5DbGFzcyAxPC90ZXh0Pjx0ZXh0IGRhdGEtbGFuZT0iMSIgeD0iNTIiIHk9IjE2Ni41IiB0ZXh0LWFuY2hvcj0iZW5kIj5DbGFzcyAyPC90ZXh0PjwvZz48dGV4dCB4PSIxOTAiIHk9IjI0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwRTBFMTEiPlRlc3Qgc2NvcmU8L3RleHQ+PC9zdmc+)
-
-5. What is the median score for Class 1?
    - A) $96$
    - B) $74$
    - C) $36$
    - D) $80$
 
 6. Both classes have a range of $36$. Which class's middle half is more spread out?
+
+<!-- figure: pr-2-4-box-classes -->
+![Two box plots stacked on one shared number line of test scores running from 50 to 100, marked every 5. Class 1 is the upper plot: minimum 60, lower quartile 70, median 74, upper quartile 82, maximum 96. Class 2 is the lower plot: minimum 58, lower quartile 72, median 80, upper quartile 86, maximum 94. Both classes have a range of 36, but Class 2's box is wider and sits further right.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJUd28gYm94IHBsb3RzIHN0YWNrZWQgb24gb25lIHNoYXJlZCBudW1iZXIgbGluZSBvZiB0ZXN0IHNjb3JlcyBydW5uaW5nIGZyb20gNTAgdG8gMTAwLCBtYXJrZWQgZXZlcnkgNS4gQ2xhc3MgMSBpcyB0aGUgdXBwZXIgcGxvdDogbWluaW11bSA2MCwgbG93ZXIgcXVhcnRpbGUgNzAsIG1lZGlhbiA3NCwgdXBwZXIgcXVhcnRpbGUgODIsIG1heGltdW0gOTYuIENsYXNzIDIgaXMgdGhlIGxvd2VyIHBsb3Q6IG1pbmltdW0gNTgsIGxvd2VyIHF1YXJ0aWxlIDcyLCBtZWRpYW4gODAsIHVwcGVyIHF1YXJ0aWxlIDg2LCBtYXhpbXVtIDk0LiBCb3RoIGNsYXNzZXMgaGF2ZSBhIHJhbmdlIG9mIDM2LCBidXQgQ2xhc3MgMidzIGJveCBpcyB3aWRlciBhbmQgc2l0cyBmdXJ0aGVyIHJpZ2h0LiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGN0YzRTciIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNTgiIHkxPSIxNiIgeDI9IjU4IiB5Mj0iMjEyIi8+PGxpbmUgeDE9Ijg0LjQiIHkxPSIxNiIgeDI9Ijg0LjQiIHkyPSIyMTIiLz48bGluZSB4MT0iMTEwLjgiIHkxPSIxNiIgeDI9IjExMC44IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjEzNy4yIiB5MT0iMTYiIHgyPSIxMzcuMiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNjMuNiIgeTE9IjE2IiB4Mj0iMTYzLjYiIHkyPSIyMTIiLz48bGluZSB4MT0iMTkwIiB5MT0iMTYiIHgyPSIxOTAiIHkyPSIyMTIiLz48bGluZSB4MT0iMjE2LjQiIHkxPSIxNiIgeDI9IjIxNi40IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI0Mi44IiB5MT0iMTYiIHgyPSIyNDIuOCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNjkuMiIgeTE9IjE2IiB4Mj0iMjY5LjIiIHkyPSIyMTIiLz48bGluZSB4MT0iMjk1LjYiIHkxPSIxNiIgeDI9IjI5NS42IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjMyMiIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PC9nPjxsaW5lIGRhdGEtd2hpc2tlcj0iMGxvIiB4MT0iMTEwLjgiIHkxPSI2NSIgeDI9IjE2My42IiB5Mj0iNjUiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLXdoaXNrZXI9IjBoaSIgeDE9IjIyNi45NiIgeTE9IjY1IiB4Mj0iMzAwLjg4IiB5Mj0iNjUiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMGxvIiB4MT0iMTEwLjgiIHkxPSI1Mi44NyIgeDI9IjExMC44IiB5Mj0iNzcuMTMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMGhpIiB4MT0iMzAwLjg4IiB5MT0iNTIuODciIHgyPSIzMDAuODgiIHkyPSI3Ny4xMyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxyZWN0IGRhdGEtYm94PSIwIiB4PSIxNjMuNiIgeT0iNDIuOTUiIHdpZHRoPSI2My4zNiIgaGVpZ2h0PSI0NC4xIiBmaWxsPSIjNkU5REM4IiBmaWxsLW9wYWNpdHk9IjAuMzUiIHN0cm9rZT0iIzZFOURDOCIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48bGluZSBkYXRhLW1lZGlhbj0iMCIgeDE9IjE4NC43MiIgeTE9IjQyLjk1IiB4Mj0iMTg0LjcyIiB5Mj0iODcuMDUiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIyIi8+PGxpbmUgZGF0YS13aGlza2VyPSIxbG8iIHgxPSIxMDAuMjQiIHkxPSIxNjMiIHgyPSIxNzQuMTYiIHkyPSIxNjMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLXdoaXNrZXI9IjFoaSIgeDE9IjI0OC4wOCIgeTE9IjE2MyIgeDI9IjI5MC4zMiIgeTI9IjE2MyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIGRhdGEtY2FwPSIxbG8iIHgxPSIxMDAuMjQiIHkxPSIxNTAuODciIHgyPSIxMDAuMjQiIHkyPSIxNzUuMTMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMWhpIiB4MT0iMjkwLjMyIiB5MT0iMTUwLjg3IiB4Mj0iMjkwLjMyIiB5Mj0iMTc1LjEzIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PHJlY3QgZGF0YS1ib3g9IjEiIHg9IjE3NC4xNiIgeT0iMTQwLjk1IiB3aWR0aD0iNzMuOTIiIGhlaWdodD0iNDQuMSIgZmlsbD0iI0YwQTMzRSIgZmlsbC1vcGFjaXR5PSIwLjM1IiBzdHJva2U9IiNGMEEzM0UiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGxpbmUgZGF0YS1tZWRpYW49IjEiIHgxPSIyMTYuNCIgeTE9IjE0MC45NSIgeDI9IjIxNi40IiB5Mj0iMTg1LjA1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjU4IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNTgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NTA8L3RleHQ+PHRleHQgeD0iODQuNCIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41NTwvdGV4dD48dGV4dCB4PSIxMTAuOCIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj42MDwvdGV4dD48dGV4dCB4PSIxMzcuMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj42NTwvdGV4dD48dGV4dCB4PSIxNjMuNiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj43MDwvdGV4dD48dGV4dCB4PSIxOTAiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzU8L3RleHQ+PHRleHQgeD0iMjE2LjQiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ODA8L3RleHQ+PHRleHQgeD0iMjQyLjgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ODU8L3RleHQ+PHRleHQgeD0iMjY5LjIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+OTA8L3RleHQ+PHRleHQgeD0iMjk1LjYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+OTU8L3RleHQ+PHRleHQgeD0iMzIyIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEwMDwvdGV4dD48dGV4dCBkYXRhLWxhbmU9IjAiIHg9IjUyIiB5PSI2OC41IiB0ZXh0LWFuY2hvcj0iZW5kIj5DbGFzcyAxPC90ZXh0Pjx0ZXh0IGRhdGEtbGFuZT0iMSIgeD0iNTIiIHk9IjE2Ni41IiB0ZXh0LWFuY2hvcj0iZW5kIj5DbGFzcyAyPC90ZXh0PjwvZz48dGV4dCB4PSIxOTAiIHk9IjI0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwRTBFMTEiPlRlc3Qgc2NvcmU8L3RleHQ+PC9zdmc+)
    - A) Class 1, because its whisker reaches down to $60$ and up to $96$
    - B) Class 1, because a larger maximum of $96$ shows stronger performance
    - C) Class 2, because its box runs from $72$ to $86$, an interquartile range of $14$, against Class 1's $12$
@@ -221,7 +212,7 @@ Problems 5 and 6 use this graph.
 
 **Advanced Level** (these need multiple steps or reverse thinking)
 
-8. For Set E above, a teacher says the mean of $25$ describes a typical value well. What is wrong with that?
+8. Set E is $12, 14, 15, 16, 68$. A teacher says the mean of $25$ describes a typical value well. What is wrong with that?
    - A) Nothing is wrong, because the mean uses every value in the set
    - B) The mean should be $15$, the middle value, because a mean and a median are the same thing
    - C) The range is $56$, so the spread is what describes the centre here
