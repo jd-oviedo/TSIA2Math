@@ -163,7 +163,9 @@ When you miss one below, name the trap. Naming it is how you stop repeating it.
 
 Solve each problem. Show your thinking.
 
-Problems 1 and 2 use this table.
+**Basic Level** (try these first)
+
+1. What is the probability that a student passed, given that they studied?
 
 | | Passed | Failed | Total |
 |---|---|---|---|
@@ -171,21 +173,25 @@ Problems 1 and 2 use this table.
 | **Did not study** | $6$ | $14$ | $20$ |
 | **Total** | $24$ | $16$ | $40$ |
 
-**Basic Level** (try these first)
-
-1. What is the probability that a student passed, given that they studied?
    - A) $\frac{3}{4}$
    - B) $\frac{9}{10}$
    - C) $\frac{9}{20}$
    - D) $\frac{3}{5}$
 
 2. What is the probability that a student failed, given that they did not study?
+
+| | Passed | Failed | Total |
+|---|---|---|---|
+| **Studied** | $18$ | $2$ | $20$ |
+| **Did not study** | $6$ | $14$ | $20$ |
+| **Total** | $24$ | $16$ | $40$ |
+
    - A) $\frac{7}{10}$
    - B) $\frac{7}{8}$
    - C) $\frac{7}{20}$
    - D) $\frac{2}{5}$
 
-Problems 3 and 4 use this table.
+3. What is the probability that a student takes the bus, given that they are a junior?
 
 | | Bus | Walk | Total |
 |---|---|---|---|
@@ -193,19 +199,27 @@ Problems 3 and 4 use this table.
 | **Senior** | $9$ | $16$ | $25$ |
 | **Total** | $24$ | $26$ | $50$ |
 
-3. What is the probability that a student takes the bus, given that they are a junior?
    - A) $\frac{3}{10}$
    - B) $\frac{5}{8}$
    - C) $\frac{3}{5}$
    - D) $\frac{12}{25}$
 
 4. What is the probability that a student walks, given that they are a senior?
+
+| | Bus | Walk | Total |
+|---|---|---|---|
+| **Junior** | $15$ | $10$ | $25$ |
+| **Senior** | $9$ | $16$ | $25$ |
+| **Total** | $24$ | $26$ | $50$ |
+
    - A) $\frac{13}{25}$
    - B) $\frac{8}{13}$
    - C) $\frac{8}{25}$
    - D) $\frac{16}{25}$
 
-Problems 5 through 7 use this table.
+**Proficient Level** (these require an extra step)
+
+5. What is the probability that a person answered Yes, given that they are in Group A?
 
 | | Yes | No | Total |
 |---|---|---|---|
@@ -213,48 +227,67 @@ Problems 5 through 7 use this table.
 | **Group B** | $6$ | $34$ | $40$ |
 | **Total** | $24$ | $46$ | $70$ |
 
-**Proficient Level** (these require an extra step)
-
-5. What is the probability that a person answered Yes, given that they are in Group A?
    - A) $\frac{9}{35}$
    - B) $\frac{3}{4}$
    - C) $\frac{3}{5}$
    - D) $\frac{12}{35}$
 
 6. What is the probability that a person is in Group A, given that they answered Yes?
+
+| | Yes | No | Total |
+|---|---|---|---|
+| **Group A** | $18$ | $12$ | $30$ |
+| **Group B** | $6$ | $34$ | $40$ |
+| **Total** | $24$ | $46$ | $70$ |
+
    - A) $\frac{3}{5}$
    - B) $\frac{9}{35}$
    - C) $\frac{3}{4}$
    - D) $\frac{3}{7}$
 
 7. What is the probability that a person answered No, given that they are in Group B?
+
+| | Yes | No | Total |
+|---|---|---|---|
+| **Group A** | $18$ | $12$ | $30$ |
+| **Group B** | $6$ | $34$ | $40$ |
+| **Total** | $24$ | $46$ | $70$ |
+
    - A) $\frac{17}{23}$
    - B) $\frac{17}{20}$
    - C) $\frac{17}{35}$
    - D) $\frac{23}{35}$
 
-Problems 8 and 9 use this table, which does not show totals.
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. What is the probability that a person answered Yes, given that they are in Group A?
+
+This table does not show totals.
 
 | | Yes | No |
 |---|---|---|
 | **Group A** | $21$ | $9$ |
 | **Group B** | $12$ | $18$ |
 
-**Advanced Level** (these need multiple steps or reverse thinking)
-
-8. What is the probability that a person answered Yes, given that they are in Group A?
    - A) $\frac{7}{11}$
    - B) $\frac{7}{20}$
    - C) $\frac{11}{20}$
    - D) $\frac{7}{10}$
 
 9. What is the probability that a person is in Group B, given that they answered No?
+
+| | Yes | No |
+|---|---|---|
+| **Group A** | $21$ | $9$ |
+| **Group B** | $12$ | $18$ |
+
    - A) $\frac{2}{3}$
    - B) $\frac{3}{5}$
    - C) $\frac{3}{10}$
    - D) $\frac{9}{20}$
 
 10. In a group of $60$ people, $24$ own a car, $30$ own a bike, and $18$ own both. What is the probability that a person owns a bike, given that they own a car?
+
     - A) $\frac{3}{5}$
     - B) $\frac{3}{4}$
     - C) $\frac{3}{10}$
@@ -264,17 +297,15 @@ Problems 8 and 9 use this table, which does not show totals.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
-Items 1 and 2 use this table.
+**Item 1**
+
+What is the probability that a day had rain, given that it was a weekend day?
 
 | | Rain | Dry | Total |
 |---|---|---|---|
 | **Weekend** | $9$ | $11$ | $20$ |
 | **Weekday** | $27$ | $53$ | $80$ |
 | **Total** | $36$ | $64$ | $100$ |
-
-**Item 1**
-
-What is the probability that a day had rain, given that it was a weekend day?
 
 - A) $\frac{1}{4}$
 - B) $\frac{9}{100}$
@@ -285,22 +316,26 @@ What is the probability that a day had rain, given that it was a weekend day?
 
 What is the probability that a day was a weekday, given that it had rain?
 
+| | Rain | Dry | Total |
+|---|---|---|---|
+| **Weekend** | $9$ | $11$ | $20$ |
+| **Weekday** | $27$ | $53$ | $80$ |
+| **Total** | $36$ | $64$ | $100$ |
+
 - A) $\frac{27}{80}$
 - B) $\frac{27}{100}$
 - C) $\frac{3}{4}$
 - D) $\frac{4}{5}$
 
-Items 3 and 4 use this table.
+**Item 3**
+
+What is the probability that a candidate passed, given that they sat the morning session?
 
 | | Pass | Fail | Total |
 |---|---|---|---|
 | **Morning** | $30$ | $10$ | $40$ |
 | **Evening** | $15$ | $45$ | $60$ |
 | **Total** | $45$ | $55$ | $100$ |
-
-**Item 3**
-
-What is the probability that a candidate passed, given that they sat the morning session?
 
 - A) $\frac{3}{4}$
 - B) $\frac{2}{3}$
@@ -310,6 +345,12 @@ What is the probability that a candidate passed, given that they sat the morning
 **Item 4**
 
 What is the probability that a candidate failed, given that they sat the evening session?
+
+| | Pass | Fail | Total |
+|---|---|---|---|
+| **Morning** | $30$ | $10$ | $40$ |
+| **Evening** | $15$ | $45$ | $60$ |
+| **Total** | $45$ | $55$ | $100$ |
 
 - A) $\frac{9}{11}$
 - B) $\frac{3}{4}$
