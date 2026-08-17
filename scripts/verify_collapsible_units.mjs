@@ -36,6 +36,7 @@
 import { chromium } from 'playwright';
 import { mkdirSync, writeFileSync, rmSync, existsSync } from 'fs';
 import { execSync, spawn } from 'child_process';
+import { onTeardown, killServer, clearNextTypes } from './harness-teardown.mjs';
 
 const PROBE_DIR = 'app/um-probe-collapsible';
 const PORT = 5100;
@@ -97,13 +98,19 @@ const check = (name, pass, detail = '') => {
   console.log(`  [${pass ? 'PASS' : 'FAIL'}] ${name}${detail ? `  ${detail}` : ''}`);
 };
 
-process.on('exit', removeProbe);
-process.on('SIGINT', () => { removeProbe(); process.exit(1); });
+// Probe removal and route-type cleanup are registered before the probe is even
+// written, so an early failure cannot leave either behind.
+onTeardown(removeProbe);
+onTeardown(clearNextTypes);
 
 writeProbe();
 console.log('probe route written, building...\n');
 execSync('npx next build', { stdio: 'ignore' });
 const server = spawn('npx', ['next', 'start', '-p', String(PORT)], { stdio: 'ignore', detached: true });
+// Registered IMMEDIATELY after spawn. Everything between here and the try/finally
+// below -- the sleep, chromium.launch() -- could throw, and before this the
+// server leaked and held the port against the next run.
+onTeardown(() => killServer(server));
 await new Promise((r) => setTimeout(r, 9000));
 
 const browser = await chromium.launch();
@@ -192,8 +199,9 @@ try {
   check('so the collapsed assertion is discriminating, not vacuous', !collapseAssertionHolds);
 } finally {
   await browser.close();
-  try { process.kill(-server.pid); } catch { /* already gone */ }
+  killServer(server);
   removeProbe();
+  clearNextTypes();
 }
 
 console.log(`\nRESULT: ${ok ? 'the disclosure collapses, and the checks can tell' : 'A CHECK FAILED'}`);

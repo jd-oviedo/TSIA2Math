@@ -45,6 +45,7 @@
 import { chromium } from 'playwright';
 import { readFileSync, writeFileSync, readdirSync, statSync } from 'fs';
 import { execSync, spawn } from 'child_process';
+import { onTeardown, killServer } from './harness-teardown.mjs';
 
 const LAYOUT = 'app/dashboard/layout.tsx';
 const PORT = 5101;
@@ -138,6 +139,11 @@ async function runSuite(label) {
 
   execSync('npx next build', { stdio: 'ignore' });
   const server = spawn('npx', ['next', 'start', '-p', String(PORT)], { stdio: 'ignore', detached: true });
+  // Registered IMMEDIATELY after spawn. runSuite is called twice under --prove,
+  // and before this a throw in either pass left a server holding the port.
+  // killServer is a no-op on a child that has already exited, so registering one
+  // task per suite is safe.
+  onTeardown(() => killServer(server));
   await new Promise((r) => setTimeout(r, 9000));
 
   let ok = true;
@@ -197,7 +203,7 @@ async function runSuite(label) {
     }
   } finally {
     await browser.close();
-    try { process.kill(-server.pid); } catch { /* already gone */ }
+    killServer(server);
     await new Promise((r) => setTimeout(r, 1000));
   }
   return ok;
