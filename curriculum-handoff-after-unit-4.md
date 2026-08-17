@@ -1521,6 +1521,62 @@ Two ways to close it were weighed and rejected for this change:
   every other signed-in surface at the same time, which is why it is its own piece
   of work rather than a rider on a feature.
 
+### Worked solutions are released per item, and QR.1.1 cannot satisfy the gate
+
+All 1,358 authored worked solutions were teacher-only behind three layers.
+Layer 2 alone was relaxed: a student now gets the solution to an item they have
+already answered correctly, filtered server-side before serialization. The view
+is untouched, the read stays on the admin client, and anonymous visitors are
+unchanged.
+
+**QR.1.1's practice is the exception, and it is a permanent one.** That section
+is `interactive: false` -- 12 written-work items, static markdown, no
+`PracticeQuiz` -- so no `curriculum_attempts` row can ever exist for those
+items. The per-item gate's precondition is therefore **unsatisfiable**: those 12
+solutions are unreachable for every student forever, not because the gate
+rejects them but because nothing can ever satisfy it.
+
+**Not a regression.** They were equally unreachable before, along with the other
+1,346. But every other topic now has a path and this one does not, so it will
+read as a bug the first time someone notices. Hence this paragraph.
+
+`sectionShape()` in `curriculum-progress.ts` already handles the same underlying
+situation correctly -- `gradable: 0` for a non-interactive section, so QR.1.1
+gets no completion gate rather than one no student can clear. The solution gate
+has the same problem in a place that was not updated.
+
+Two candidate answers, neither chosen: gate non-interactive sections on
+`lesson_completed_at`, which already exists and is already read by `loadGates`;
+or state that written-work sections have no solution path by design, which is
+defensible since there is nothing to submit and "earned" has no meaning. Picking
+depends on whether more non-interactive sections are coming. Filed as #120.
+
+**Brute force is accepted, not overlooked.** Four options means a student can
+answer until correct and unlock the solution. Those four wrong answers write
+four `is_correct = false` rows that feed the teacher dashboard, so the behaviour
+reports itself rather than hiding. Revealing unlocks nothing -- the escape hatch
+writes no attempt row.
+
+### The tier asymmetry, and the number that decides it
+
+Not touched, deliberately. `route.ts:100/204` gives an **anonymous** student the
+correct answer inline and no GUMU, while an **authenticated** student has it
+withheld and gets the tutor. The tier with the least support gets the answer
+fastest, which is the worst teaching outcome available.
+
+Changing what a signed-out student sees is a GTM decision about the shape of the
+free tier, not a code cleanup, so it waits for the numbers.
+
+`sql/analysis_anonymous_vs_authenticated.sql` drafts those numbers, read-only,
+to be run by hand. **Half the literal question is not measurable and the file
+says so up front**: `curriculum_attempts.student_id` is `not null references
+auth.users(id)`, so an anonymous attempt cannot be stored -- not rare, impossible
+-- and any ratio computed from that table reads as 100% authenticated no matter
+what is happening. `sessions` is the only place both tiers are instrumented,
+since `user_id` is null for an anonymous run, so the CAT split is the proxy. It
+is an upper bound on how anonymous the audience is, not a measurement of the
+practice surface, because anonymous sessions count runs rather than people.
+
 ### The auth gate is now covered, the pages behind it are not
 
 `scripts/verify_auth_gate.mjs`, `npm run test:auth-gate`. Asserts every route
