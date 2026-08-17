@@ -3,6 +3,7 @@ import {
   loadTopic,
   loadNavigation,
   loadGates,
+  loadEarnedSolutions,
   solutionsFor,
   type RouteParams,
 } from '../topic-data';
@@ -36,6 +37,19 @@ export default async function PracticePage({ params }: { params: Promise<RoutePa
     loadNavigation(courseId, topic.topic_id, 'practice'),
     loadGates(authSession?.user?.id ?? null, courseId, topic.topic_id),
   ]);
+
+  // Teachers get every worked solution, unconditionally, exactly as before.
+  // Students get only the ones they have already answered correctly; the filter
+  // runs server-side, so an unearned solution is never serialized to the page.
+  // Anonymous visitors get undefined from loadEarnedSolutions and are unchanged.
+  const solutions = teacher
+    ? solutionsFor(answerKey.practice)
+    : await loadEarnedSolutions(
+        authSession?.user?.id ?? null,
+        courseId,
+        topic.topic_id,
+        'practice'
+      );
 
   // Teachers are previewing, not studying, so nothing is held back from them.
   const ungated = Boolean(teacher) || !gates.practiceGated;
@@ -119,7 +133,7 @@ export default async function PracticePage({ params }: { params: Promise<RoutePa
       items={practiceItems}
       heading="Practice"
       blurb={`${practiceItems.length} problems · work through at your own pace`}
-      solutions={solutionsFor(answerKey.practice)}
+      solutions={solutions}
       initialCorrect={ungated ? gates.practiceRequired : gates.practiceCorrect}
       required={gates.practiceRequired}
       previous={nav.previous}
