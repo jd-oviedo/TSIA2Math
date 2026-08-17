@@ -43,7 +43,19 @@ const BASE = `http://localhost:${PORT}`;
 
 // Two probes on one page: the real component, and a flat control that never
 // collapses. The control is the same topic rows rendered without the wrapper.
+// DASHBOARD_CSS has to be injected here.
+//
+// It is normally supplied by app/dashboard/layout.tsx, and this probe route sits
+// outside /dashboard, so without it `.um-dash .um-visually-hidden` is undefined
+// and the screen-reader sentence inside every unit header RENDERS VISIBLY. That
+// inflated the header this script measures from its real 52px to 96px, and the
+// touch-target assertion below has been passing against that inflated number
+// since this file was written, because 96 >= 44.
+//
+// Found while building scripts/verify_modules_density.mjs, which hit the same
+// gap and reported a 360px budget failure that did not exist.
 const probePage = `import UnitSection from '../dashboard/modules/UnitSection';
+import { DASHBOARD_CSS } from '../dashboard/dashboard-css';
 
 const rows = (unit: number) => [1, 2, 3].map((i) => (
   <a key={i} data-probe-topic={\`\${unit}-\${i}\`} href={\`/course/tsia2/math/unit/\${unit}/topic/T\${i}\`}>
@@ -54,6 +66,7 @@ const rows = (unit: number) => [1, 2, 3].map((i) => (
 export default function ProbePage() {
   return (
     <main className="um-dash">
+      <style>{DASHBOARD_CSS}</style>
       <div data-probe="real">
         <UnitSection unitNumber={1} topicCount={3} done={2} total={10} defaultOpen={false}>
           {rows(1)}
