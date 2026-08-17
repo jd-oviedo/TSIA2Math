@@ -291,6 +291,37 @@ def main(path):
             else:
                 notes.append(f"sequence_in_unit {int(raw_seq)}")
 
+        # ── 0b. estimated_time_minutes is present and a positive integer ──
+        #
+        # Same class as sequence_in_unit above, and the reason it is a separate
+        # check rather than a line in that one: the uploader defaulted this to
+        # 45, and 45 is a value 24 of the 97 topics genuinely author. A topic
+        # that lost the key uploaded as 45 and read as deliberate, so no audit
+        # after the fact could find it -- the database reports full coverage
+        # whether or not the key was ever there.
+        #
+        # The redesign puts this number on screen for the first time, on unit
+        # bands and topic rows, so a wrong-but-plausible 45 is now visible to a
+        # student rather than merely stored.
+        est = re.search(r'^estimated_time_minutes:\s*(.*)$', fm.group(1), re.M)
+        if not est:
+            failures.append(
+                f"TIME  {topic_id}: frontmatter has no `estimated_time_minutes`; "
+                f"45 was the uploader's silent default and is also a real value "
+                f"24 topics use, so this would not be visible anywhere downstream")
+        else:
+            raw_est = est.group(1).strip().strip('"\'')
+            if not re.fullmatch(r'\d+', raw_est):
+                failures.append(
+                    f"TIME  {topic_id}: `estimated_time_minutes` is {raw_est!r}, not "
+                    f"an integer")
+            elif int(raw_est) < 1:
+                failures.append(
+                    f"TIME  {topic_id}: `estimated_time_minutes` is {int(raw_est)}; "
+                    f"expected a positive number of minutes")
+            else:
+                notes.append(f"estimated_time_minutes {int(raw_est)}")
+
     # ── 1. duplicate-valued choices ──
     all_items = (
         [(f'P{n}', c) for n, c in items_with_choices(sec['Part 2'], r'^(\d+)\.\s')]
