@@ -11,6 +11,8 @@ import {
   getTopicShape,
   getTopicAttempts,
   correctItemsInSection,
+  revealedItemsInSection,
+  releasableItems,
   requiredCorrect,
   buildSequence,
   findStepIndex,
@@ -416,9 +418,42 @@ export const loadEarnedSolutions = cache(
     // student sees is a product decision, not one to make here.
     if (!studentId) return undefined;
 
-    const gates = await loadGates(studentId, courseId, topicId);
+    const admin = createAdminClient();
+
+    // The two reads are independent, so they go together. loadGates is cache()d
+    // and usually already resolved by the time this runs; the sessions read is
+    // one round trip and this is the only place it is paid.
+    //
+    // Filtered on student_id + course_id + topic_id, which is the leading three
+    // columns of gumu_sessions_student_topic_idx. Section, item number,
+    // status and resolution are filtered in memory rather than in the predicate:
+    // a topic holds at most fourteen items so the row count is trivial, and it
+    // keeps the whole release rule in one pure function that a harness can run.
+    const [gates, sessions] = await Promise.all([
+      loadGates(studentId, courseId, topicId),
+      admin
+        .from('gumu_sessions')
+        .select('section, item_number, status, resolution')
+        .eq('student_id', studentId)
+        .eq('course_id', courseId)
+        .eq('topic_id', topicId),
+    ]);
+
     const solved = section === 'practice' ? gates.practiceSolved : gates.quizSolved;
-    if (solved.size === 0) return undefined;
+
+    // FAILS TOWARDS WITHHOLDING, and the scope of that is the point.
+    //
+    // `data ?? []` covers an unreachable or erroring gumu_sessions with an empty
+    // revealed set, so the union collapses to `solved` and behaviour degrades to
+    // exactly what it was before solutions were released on a reveal -- the
+    // student loses an explanation, and can never gain one they did not earn.
+    //
+    // Deliberately NOT a try around the whole function: that would also drop the
+    // solutions they earned by answering correctly, which is safe but needlessly
+    // punitive for a failure that has nothing to do with them.
+    const revealed = revealedItemsInSection(sessions.data ?? [], section);
+    const releasable = releasableItems(solved, revealed);
+    if (releasable.size === 0) return undefined;
 
     // Same dev-only fixture the topic read honours, so a topic being previewed
     // from source markdown behaves the same way here as it does above.
@@ -428,7 +463,6 @@ export const loadEarnedSolutions = cache(
 
     let raw = fixture?.answer_key?.raw ?? '';
     if (!fixture) {
-      const admin = createAdminClient();
       const { data } = await admin
         .from('curriculum_topics')
         .select('answer_key')
@@ -440,6 +474,6 @@ export const loadEarnedSolutions = cache(
     if (!raw) return undefined;
 
     const entries = splitAnswerKey(raw)[section];
-    return solutionsFor(entries.filter((entry) => solved.has(entry.item_number)));
+    return solutionsFor(entries.filter((entry) => releasable.has(entry.item_number)));
   }
 );
