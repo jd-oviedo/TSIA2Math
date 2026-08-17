@@ -12,6 +12,7 @@
     "test:overview": "node scripts/verify_topic_overview.mjs",
     "test:quiz-finish": "node scripts/verify_quiz_finish.mjs",
     "test:modules-density": "node scripts/verify_modules_density.mjs",
+    "test:lesson-handoff": "node scripts/verify_lesson_handoff.mjs",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
   },

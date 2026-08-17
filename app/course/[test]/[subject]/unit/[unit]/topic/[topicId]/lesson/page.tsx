@@ -8,7 +8,8 @@ import SectionHeading from '../SectionHeading';
 
 export default async function LessonPage({ params }: { params: Promise<RouteParams> }) {
   const resolved = await params;
-  const { topic, courseId, authSession } = await loadTopic(resolved);
+  const { topic, courseId, authSession, practiceItems, practiceInteractive } =
+    await loadTopic(resolved);
 
   const [nav, gates] = await Promise.all([
     loadNavigation(courseId, topic.topic_id, 'lesson'),
@@ -33,6 +34,9 @@ export default async function LessonPage({ params }: { params: Promise<RoutePara
         canRecord={Boolean(authSession)}
         previous={nav.previous}
         next={nav.next}
+        practiceHref={`/course/${resolved.test}/${resolved.subject}/unit/${resolved.unit}/topic/${topic.topic_id}/practice`}
+        practiceCount={practiceItems.length}
+        practiceInteractive={practiceInteractive}
       />
     </>
   );
