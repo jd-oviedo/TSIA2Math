@@ -1,3 +1,4 @@
+import { headers } from 'next/headers';
 import { getProfile } from '../../lib/auth';
 import {
   getTopics,
@@ -7,10 +8,11 @@ import {
   type TopicRow,
   type TopicProgress,
 } from '../data';
-import { Card, EmptyState, Eyebrow, Muted, PageHeading, ProgressBar } from '../ui';
+import { Card, EmptyState, Eyebrow, Muted, PageHeading } from '../ui';
 import { C } from '@/app/components/curriculum-theme';
-import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
+import { FONT_BODY } from '@/app/components/fonts';
 import { V } from '@/app/components/dashboard-theme';
+import UnitSection from './UnitSection';
 
 // Modules. The curriculum browse surface: units, the topics inside them, and
 // how far this student has got in each. The tree is read from curriculum_topics
@@ -20,6 +22,25 @@ import { V } from '@/app/components/dashboard-theme';
 function topicHref(topic: TopicRow) {
   const [test, subject] = topic.course_id.split('-');
   return `/course/${test}/${subject}/unit/${topic.unit_number}/topic/${topic.topic_id}`;
+}
+
+// Which unit to open on arrival.
+//
+// Read from the Referer header rather than from the client, so the page arrives
+// already expanded and nothing flashes shut then open on hydration. The dominant
+// journey is modules -> topic -> back to modules, and re-hunting the unit you
+// just left is the exact problem collapsing creates. Any other entry, including
+// a direct visit or a bookmark, has no referer to match and every unit stays
+// collapsed, which is the intended default rather than a fallback.
+//
+// Matching is on this app's own topic route only. A referer from anywhere else
+// cannot open a unit.
+function unitFromReferer(referer: string | null): number | null {
+  if (!referer) return null;
+  const m = /\/course\/[^/]+\/[^/]+\/unit\/(\d+)\/topic\//.exec(referer);
+  if (!m) return null;
+  const n = Number(m[1]);
+  return Number.isInteger(n) ? n : null;
 }
 
 function statusOf(p: TopicProgress | undefined) {
@@ -33,10 +54,12 @@ export default async function ModulesPage() {
   const profile = await getProfile();
   if (!profile) return null;
 
-  const [{ topics, shapes }, attempts] = await Promise.all([
+  const [{ topics, shapes }, attempts, headerList] = await Promise.all([
     getTopics(),
     getAttempts(profile.id),
+    headers(),
   ]);
+  const openUnit = unitFromReferer(headerList.get('referer'));
   const progress = progressByTopic(attempts, shapes);
 
   const units = new Map<number, TopicRow[]>();
@@ -72,31 +95,15 @@ export default async function ModulesPage() {
               );
 
               return (
-                <section
+                <UnitSection
                   key={unitNumber}
-                  style={{ display: 'flex', flexDirection: 'column', gap: 11 }}
+                  unitNumber={unitNumber}
+                  topicCount={unitTopics.length}
+                  done={unitDone}
+                  total={unitTotal}
+                  defaultOpen={unitNumber === openUnit}
                 >
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'baseline',
-                      gap: 12,
-                      flexWrap: 'wrap',
-                    }}
-                  >
-                    <h2 style={{ margin: 0, font: `600 18px ${FONT_HEADING}`, color: V.heading }}>
-                      Unit {unitNumber}
-                    </h2>
-                    <Muted size={13}>
-                      {unitTopics.length} {unitTopics.length === 1 ? 'topic' : 'topics'}
-                    </Muted>
-                    <div style={{ flex: 1, minWidth: 90, maxWidth: 180 }}>
-                      <ProgressBar value={unitDone} total={unitTotal} height={6} />
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    {unitTopics.map((topic) => {
+                  {unitTopics.map((topic) => {
                       const p = progress.get(`${topic.course_id}:${topic.topic_id}`);
                       const status = statusOf(p);
                       return (
@@ -160,10 +167,9 @@ export default async function ModulesPage() {
                             {status.label}
                           </span>
                         </a>
-                      );
-                    })}
-                  </div>
-                </section>
+                    );
+                  })}
+                </UnitSection>
               );
             })}
         </div>
