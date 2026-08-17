@@ -17,6 +17,7 @@
     "test:lesson-handoff": "node scripts/verify_lesson_handoff.mjs",
     "test:lesson-outline": "node scripts/verify_lesson_outline.mjs",
     "test:practice-paging": "node scripts/verify_practice_paging.mjs",
+    "test:login-next": "node scripts/verify_login_next.mjs",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
   },

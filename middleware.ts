@@ -21,10 +21,36 @@ import { NextResponse, type NextRequest } from 'next/server'
 // untouched -- getUser() finds a live session, setAll is never called, and the
 // pass-through response is returned exactly as it was created. Only the
 // refresh-on-expiry path differs, and there the only change is fresher cookies.
+//
+// IT DOES ONE OTHER THING NOW, AND ONLY ONE: it stamps the requested path onto
+// the request as x-pathname. That is still not gating -- nothing here decides
+// anything -- but /dashboard's layout needs the path to build a sign-in redirect
+// that returns the student to the page they asked for, and a layout cannot see
+// it. Measured rather than assumed: a layout receives exactly accept, host,
+// user-agent and the four x-forwarded-* headers. There is no pathname in any
+// form, so it has to be put there.
+//
+// The gate stays in the layout. Moving it into the five pages, which do know
+// their own paths, would scatter the one place a sixth route cannot be added
+// without a gate -- which is the regression verify_auth_gate.mjs exists to catch.
 export async function middleware(request: NextRequest) {
+  // Built fresh at each use, never snapshotted.
+  //
+  // This is the trap in this file. `request.cookies.set` in setAll below mutates
+  // the cookie header, so a Headers object captured before that call carries a
+  // STALE cookie header, and handing it to NextResponse.next would hand the
+  // downstream handler the pre-refresh session -- reintroducing exactly the bug
+  // this middleware exists to fix, in a form that only shows on the
+  // refresh-on-expiry path. Cheap to rebuild, so it is rebuilt.
+  const headersWithPath = () => {
+    const headers = new Headers(request.headers)
+    headers.set('x-pathname', request.nextUrl.pathname + request.nextUrl.search)
+    return headers
+  }
+
   // The pass-through response. Reassigned wholesale by setAll below when
   // tokens are refreshed, which is why it is `let` and not `const`.
-  let supabaseResponse = NextResponse.next({ request })
+  let supabaseResponse = NextResponse.next({ request: { headers: headersWithPath() } })
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -40,7 +66,10 @@ export async function middleware(request: NextRequest) {
           // actually reaches the browser. Writing only one of them produces a
           // session that works for exactly one request and then vanishes.
           cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
-          supabaseResponse = NextResponse.next({ request })
+          // headersWithPath() is called HERE, after the cookie writes above, so
+          // the rebuilt request carries the refreshed cookies and not the ones
+          // this request arrived with.
+          supabaseResponse = NextResponse.next({ request: { headers: headersWithPath() } })
           cookiesToSet.forEach(({ name, value, options }) =>
             supabaseResponse.cookies.set(name, value, options)
           )

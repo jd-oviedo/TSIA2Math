@@ -1,5 +1,7 @@
 import { redirect } from 'next/navigation';
+import { headers } from 'next/headers';
 import { getProfile } from '../lib/auth';
+import { loginHref, DEFAULT_NEXT, safeNext } from '../lib/next-param';
 import StudentShell from './StudentShell';
 import { DASHBOARD_CSS } from './dashboard-css';
 
@@ -15,7 +17,21 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const profile = await getProfile();
 
   if (!profile) {
-    redirect('/login?next=' + encodeURIComponent('/dashboard'));
+    // Send them back to the page they actually asked for. This used to be a
+    // hardcoded '/dashboard', so a deep link to /dashboard/grades signed you in
+    // and then dropped you on the dashboard index.
+    //
+    // The path comes from middleware.ts as x-pathname, because a layout is given
+    // no part of the URL. Falls back to the dashboard index when the header is
+    // missing or unusable -- which is the pre-existing behaviour, so a middleware
+    // that stopped setting it would be a silent regression to today rather than
+    // a broken sign-in.
+    //
+    // ONLY THIS BRANCH IS TOUCHED. A teacher arriving through the sidebar's
+    // "Student view" link is signed in, so `profile` is truthy and none of this
+    // runs; the read-only pass-through below is unchanged.
+    const requested = (await headers()).get('x-pathname');
+    redirect(loginHref(safeNext(requested, DEFAULT_NEXT)));
   }
 
   if (profile.role !== 'student' && profile.role !== 'teacher') {

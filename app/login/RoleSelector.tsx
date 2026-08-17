@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, type CSSProperties } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Footer } from "../components/Footer";
+import { loginHref, safeNext, DEFAULT_NEXT } from "../lib/next-param";
 
 const OFF_WHITE = "#F5F5F3";
 const NEAR_BLACK = "#1A1A1A";
@@ -121,9 +123,10 @@ function JoinClassField({ lang }: { lang: Lang }) {
   const c = COPY[lang];
   const [code, setCode] = useState("");
   const ready = code.trim().length === 6;
-  const href = ready
-    ? `/login?role=student&next=${encodeURIComponent(`/dashboard?code=${code.trim()}`)}`
-    : "#";
+  // The join-class flow has its own destination on purpose: the code has to be
+  // consumed on arrival, so it goes to the dashboard index carrying the code
+  // rather than to whatever page the visitor was originally trying to reach.
+  const href = ready ? loginHref(`/dashboard?code=${code.trim()}`, "student") : "#";
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -176,7 +179,7 @@ function JoinClassField({ lang }: { lang: Lang }) {
   );
 }
 
-function StudentPanel({ lang }: { lang: Lang }) {
+function StudentPanel({ lang, next }: { lang: Lang; next: string }) {
   const c = COPY[lang];
   return (
     <div
@@ -201,7 +204,7 @@ function StudentPanel({ lang }: { lang: Lang }) {
       </div>
 
       <Link
-        href="/login?role=student&next=%2Fdashboard"
+        href={loginHref(next, "student")}
         style={{
           display: "flex",
           alignItems: "center",
@@ -226,6 +229,15 @@ export function RoleSelector() {
   const [lang, setLang] = useState<Lang>("en");
   const [studentOpen, setStudentOpen] = useState(false);
   const c = COPY[lang];
+
+  // The second half of the deep-link fix, and the half that is easy to miss.
+  //
+  // /dashboard's gate redirects here WITHOUT a role param, so this selector is
+  // the screen a signed-out deep link actually lands on -- not the OAuth screen.
+  // The student link used to hardcode next=%2Fdashboard, which threw the
+  // requested path away again after the layout had just started preserving it.
+  // Fixing only the layout would have changed nothing a student could see.
+  const next = safeNext(useSearchParams().get("next"), DEFAULT_NEXT);
 
   return (
     <div
@@ -296,11 +308,11 @@ export function RoleSelector() {
                 ›
               </span>
             </button>
-            {studentOpen && <StudentPanel lang={lang} />}
+            {studentOpen && <StudentPanel lang={lang} next={next} />}
           </div>
 
           {/* Teacher: plain link, no expansion */}
-          <Link href="/login?role=teacher&next=%2Fteacher" style={{ ...barShell, background: SKY }}>
+          <Link href={loginHref("/teacher", "teacher")} style={{ ...barShell, background: SKY }}>
             <span style={{ fontFamily: KODCHASAN, fontWeight: 700, fontSize: "20px", color: "#fff" }}>
               {c.teacher}
             </span>
