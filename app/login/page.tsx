@@ -7,6 +7,7 @@ import { supabase } from "../lib/supabase";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { RoleSelector } from "./RoleSelector";
+import { safeNext } from "../lib/next-param";
 
 function Blobs() {
   return (
@@ -39,7 +40,10 @@ function LoginCard() {
     posthog.capture('sign_in_clicked', { session_id: searchParams.get('session_id') });
     setLoading(true);
     const callbackUrl = new URL(`${window.location.origin}/auth/callback`);
-    const next = searchParams.get("next") ?? (isTeacherFlow ? "/teacher" : "/");
+    // Guarded here too, so a refused value never reaches Supabase's redirectTo
+    // and the callback is not the only thing standing between the param and a
+    // redirect. Same helper, so the two cannot disagree about what is safe.
+    const next = safeNext(searchParams.get("next"), isTeacherFlow ? "/teacher" : "/");
     const sessionId = searchParams.get("session_id");
     if (next) callbackUrl.searchParams.set("next", next);
     if (sessionId) callbackUrl.searchParams.set("session_id", sessionId);

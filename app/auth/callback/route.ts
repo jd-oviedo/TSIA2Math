@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '../../lib/supabase-server'
 import { createAdminClient } from '../../lib/supabase-admin'
+import { safeNext } from '../../lib/next-param'
 
 // Resolve the public-facing origin to redirect back to. Behind a proxy
 // (GitHub Codespaces port-forwarding, Vercel) the dev server receives
@@ -21,7 +22,19 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const origin = resolveOrigin(request)
   const code = searchParams.get('code')
-  const next = searchParams.get('next') ?? '/'
+  // Validated rather than trusted. This is the one place the param becomes a
+  // redirect, so it is the one place worth guarding.
+  //
+  // Measured before the guard was added: `${origin}${next}` is accidentally
+  // safe -- //evil.com and \\evil.com both resolve to a PATH on the origin,
+  // https://evil.com resolves to a garbage path on the origin, and
+  // javascript:alert(1) throws Invalid URL and 500s. Nothing escaped. So this
+  // closes no live hole; it makes a user-controlled value reaching a redirect
+  // checked instead of accidentally safe, turns the javascript: case into a
+  // clean fallback rather than a 500, and holds if anyone later rewrites this
+  // as `new URL(next, origin)`, which is the obvious-looking refactor and the
+  // one that would make the accident stop holding.
+  const next = safeNext(searchParams.get('next'), '/')
   const sessionId = searchParams.get('session_id')
 
   if (code) {
