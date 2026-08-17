@@ -1,0 +1,11 @@
+{
+  "type": "data_table",
+  "columns": ["Genre", "Books"],
+  "rows": [
+    { "label": "Fiction", "cells": ["34"] },
+    { "label": "Mystery", "cells": ["18"] },
+    { "label": "Poetry", "cells": ["21"] },
+    { "label": "Drama", "cells": ["27"] }
+  ],
+  "alt": "A table of books checked out by genre. Fiction 34, Mystery 18, Poetry 21, Drama 27."
+}
