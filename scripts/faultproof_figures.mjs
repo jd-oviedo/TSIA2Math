@@ -25,6 +25,7 @@
 // on its own, because it does not distinguish the fault from the harness.
 import { readFileSync } from 'fs';
 import { figureFromSpec, verifyPlane, verifyBounds } from './make_figure.mjs';
+import { buildTable, verifyTable } from './figure_table.mjs';
 
 const REGIONS = {
   bars: /<rect data-bar="(\d+)"/g,
@@ -245,5 +246,105 @@ for (const [name, why, old, neu] of BOUNDS_CASES) {
   console.log('');
 }
 
-console.log(`\nRESULT: ${ok ? 'the bar, box, series and bounds checks can fail, and do' : 'A PROOF OR CONTROL FAILED'}`);
+// ─── DATA TABLES AND PICTOGRAPHS ─────────────────────────────────────────────
+console.log('\n\nDATA TABLE FAULT PROOFS\n');
+{
+  const spec = JSON.parse(readFileSync('curriculum/figures/pr-1-3-pictograph-pizzas.json', 'utf8'));
+  const twoway = JSON.parse(readFileSync('curriculum/figures/harness-table-twoway.json', 'utf8'));
+  const clean = (sp) => verifyTable(sp, buildTable(sp)).filter((c) => !c.ok);
+  const ctrl = (tag, sp, name) => {
+    const bad = clean(sp); const good = bad.length === 0;
+    ok &&= good;
+    console.log(`  [${good ? 'PASS' : 'CONTROL FAILED'}] control ${tag} (${name}): ${verifyTable(sp, buildTable(sp)).length} assertions, ${bad.length} failed`);
+  };
+  ctrl('before', twoway, 'two-way');
+  ctrl('before', spec, 'pictograph');
+
+  const fault = (label, sp, old, neu, expect, region) => {
+    const svg = buildTable(sp);
+    if (!svg.includes(old)) { console.log(`  [PROOF FAILED] ${label}: target absent, injection would be a no-op`); ok = false; return; }
+    const faulted = svg.replace(old, neu);
+    if (faulted === svg) { console.log(`  [PROOF FAILED] ${label}: replace was a no-op`); ok = false; return; }
+    // The mutated element must still be visible to the verifier's own regexes.
+    const seen = (t) => [...t.matchAll(region)].length;
+    if (seen(faulted) !== seen(svg)) {
+      console.log(`  [PROOF FAILED] ${label}: injection left the scanned region (${seen(faulted)} vs ${seen(svg)})`);
+      ok = false; return;
+    }
+    const bad = verifyTable(sp, faulted).filter((c) => !c.ok);
+    const hit = bad.some((c) => c.name.includes(expect));
+    ok &&= hit;
+    console.log(`  [${hit ? 'PASS' : 'PROOF FAILED'}] ${label}`);
+    console.log(`        ${bad.length} failure(s): ${bad.slice(0, 3).map((c) => c.name).join('; ') || 'NONE'}`);
+  };
+
+  const CELLS = /<text data-cell="\d+-\d+"/g;
+  const SYMS = /<path data-symbol="\d+-\d+"/g;
+
+  // A cell in the wrong ROW: 9th Grade's "12" dropped into the row below.
+  fault('a cell drawn in the wrong row', twoway,
+    '<text data-cell="0-1" x="89" y="52"', '<text data-cell="0-1" x="89" y="76"',
+    'in row 0', CELLS);
+  // A cell in the wrong COLUMN: same cell shifted into the Sandwich band.
+  fault('a cell drawn in the wrong column', twoway,
+    '<text data-cell="0-1" x="89" y="52"', '<text data-cell="0-1" x="130" y="52"',
+    'in column 1', CELLS);
+
+  // A pictograph key that disagrees with its symbols: one symbol removed while the
+  // row still declares its total, so count x key no longer reaches it.
+  {
+    const svg = buildTable(spec);
+    const one = svg.match(/<path data-symbol="1-4" d="[^"]+" fill="[^"]*" stroke="[^"]*" stroke-width="[^"]*"\/>/);
+    if (!one) { console.log('  [PROOF FAILED] key/symbol disagreement: target absent'); ok = false; }
+    else {
+      const faulted = svg.replace(one[0], '');
+      const bad = verifyTable(spec, faulted).filter((c) => !c.ok);
+      const hit = bad.some((c) => c.name.includes('symbol count'))
+        && bad.some((c) => c.name.includes('times key equals its total'));
+      ok &&= hit;
+      console.log(`  [${hit ? 'PASS' : 'PROOF FAILED'}] a pictograph key that disagrees with its symbols`);
+      console.log(`        ${bad.length} failure(s): ${bad.map((c) => c.name).join('; ')}`);
+    }
+  }
+
+  // THE DRAWN-GLYPH CASE. A symbol rescaled so it is still exactly ONE path -- the
+  // count still reads correct -- but wrong as geometry. A text glyph could not be
+  // checked this way at all, which is why the symbols are drawn.
+  {
+    const svg = buildTable(spec);
+    const m = svg.match(/<path data-symbol="0-1" d="([^"]+)"/);
+    const shrunk = m[1].replace(/-?\d+(?:\.\d+)?/g, (v, i) => String(Number(v) * 0.5));
+    fault('a symbol drawn at the wrong SCALE, count still correct', spec,
+      `d="${m[1]}"`, `d="${shrunk}"`, 'width', SYMS);
+    const moved = m[1].replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g,
+      (_, a, b) => `${Number(a)} ${Number(b) + 30}`);
+    fault('a symbol drawn in the wrong ROW, count still correct', spec,
+      `d="${m[1]}"`, `d="${moved}"`, 'in row 0', SYMS);
+  }
+
+  // THE WIDTH GUARD, observed refusing. One character over the boundary must throw
+  // and one character under must build: a guard never seen refusing is an assumption.
+  {
+    const fits = { type: 'data_table', columns: ['', 'A'], rows: [], alt: 'x' };
+    const widest = (label) => ({ ...fits, rows: [{ label, cells: ['1'] }] });
+    // Binary-search the longest label that still builds.
+    let lo = 1, hi = 200;
+    while (lo < hi) {
+      const mid = Math.ceil((lo + hi) / 2);
+      try { buildTable(widest('x'.repeat(mid))); lo = mid; } catch { hi = mid - 1; }
+    }
+    let threwOver = false, builtUnder = false, msg = '';
+    try { buildTable(widest('x'.repeat(lo))); builtUnder = true; } catch (e) { msg = e.message; }
+    try { buildTable(widest('x'.repeat(lo + 1))); } catch (e) { threwOver = true; msg = e.message; }
+    const good = builtUnder && threwOver;
+    ok &&= good;
+    console.log(`  [${good ? 'PASS' : 'PROOF FAILED'}] the width guard refuses above 316px`);
+    console.log(`        ${lo} chars builds, ${lo + 1} chars throws: ${msg.slice(0, 96)}`);
+  }
+
+  ctrl('after', twoway, 'two-way');
+  ctrl('after', spec, 'pictograph');
+}
+
+console.log(`\nRESULT: ${ok ? 'the bar, box, series, bounds and table checks can fail, and do' : 'A PROOF OR CONTROL FAILED'}`);
 process.exit(ok ? 0 : 1);

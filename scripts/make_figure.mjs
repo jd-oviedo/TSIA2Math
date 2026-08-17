@@ -31,6 +31,7 @@
 
 import { readFileSync, readdirSync, writeFileSync } from 'fs';
 import { buildShape, verifyShape, SHAPE_TYPES } from './figure_shapes.mjs';
+import { buildTable, verifyTable, TABLE_TYPES } from './figure_table.mjs';
 import { basename, resolve } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -565,7 +566,8 @@ function buildSvg(spec) {
 // without a recognised geometric type falls through to the plot, which is what
 // the Unit 2 specs are.
 export function figureFromSpec(spec) {
-  const svg = SHAPE_TYPES.includes(spec.type) ? buildShape(spec) : buildSvg(spec);
+  const svg = TABLE_TYPES.includes(spec.type) ? buildTable(spec)
+    : SHAPE_TYPES.includes(spec.type) ? buildShape(spec) : buildSvg(spec);
   return {
     svg,
     alt: spec.alt,
@@ -621,10 +623,12 @@ export function figureFromSpec(spec) {
 // separate the two sides, which is what makes fault injection possible at all: a
 // fault injected into the input of BOTH sides of a comparison is not a fault.
 export function verifyFigure(spec) {
-  const svg = SHAPE_TYPES.includes(spec.type) ? buildShape(spec) : buildSvg(spec);
-  const checks = SHAPE_TYPES.includes(spec.type) ? verifyShape(spec, svg)
-    : spec.type === 'coordinate_plane' ? verifyPlane(spec, svg)
-      : [];
+  const svg = TABLE_TYPES.includes(spec.type) ? buildTable(spec)
+    : SHAPE_TYPES.includes(spec.type) ? buildShape(spec) : buildSvg(spec);
+  const checks = TABLE_TYPES.includes(spec.type) ? verifyTable(spec, svg)
+    : SHAPE_TYPES.includes(spec.type) ? verifyShape(spec, svg)
+      : spec.type === 'coordinate_plane' ? verifyPlane(spec, svg)
+        : [];
   // Applies to EVERY figure type, including the shapes, because being on the
   // page is not a property of any one mark. See the legibility note further down.
   verifyBounds(svg, (name, actual, expected, tol) =>
@@ -841,6 +845,21 @@ export function verifySeries(spec, svg, ix, iy, add) {
 // Deliberately ONE assertion per figure carrying a count of offenders, rather
 // than one per element, so a 60-spec run stays readable. The first offender is
 // named in the failure message.
+//
+// MEASURED LEGIBILITY, so the next person choosing a font size has the number
+// rather than re-deriving it. An <img> is capped by max-width:100% and is never
+// upscaled, so a 340-wide figure scales DOWN on a narrow phone and its text
+// shrinks with it. Measured on the live page:
+//
+//   viewport   figure renders   scale    11px cell text   10px tick label
+//   320px      250px            0.735    8.1px            7.3px
+//   360px      290px            0.853    9.4px            8.5px
+//   390px      320px            0.941    10.4px           9.4px
+//
+// The 320px row is the one that decides things. A wider canvas makes this WORSE,
+// not better, which is why figure_table.mjs fixes its width at 340 and throws
+// rather than growing. Table cells are set at 11 against the axis labels' 10 for
+// the same reason: a table is scanned, an axis is glanced at.
 //
 // Text is checked at its ANCHOR POINT only. A string has width and the anchor
 // says where it is placed, not how far it runs; several legitimate figures

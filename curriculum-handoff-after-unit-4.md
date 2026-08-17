@@ -101,6 +101,22 @@ reading today is unresolved**. A 40-of-195 uniform sample supports that reading
 without establishing it. Scoped as its own pass, deliberately not run inside a
 content batch.
 
+**Batch D note, `PR.1.4` and the table width ceiling.** `data_table` fixes its
+canvas at 340px because an `<img>` gets no `rehypeScrollableTables` wrapper and a
+wider canvas scales down further on a phone, reading smaller rather than larger.
+The usable width is **316px**, and the builder throws above it.
+
+The five-column two-way fixture measures **254.6px**, which sounds like room to
+spare and is not. That number is against *short* category labels (`Pizza`,
+`Sandwich`, `Salad`). `PR.1.4`'s real categories are unwritten, and one string
+already seen in its item bank, `Science Fiction`, is **127px on its own** at
+font-size 11. Two labels of that length in one table would not fit.
+
+So the builder throwing is the backstop, not the plan. **`PR.1.4` should choose
+short category labels deliberately, at design time, rather than discovering the
+ceiling item by item.** The guard was observed refusing before being trusted: at
+the boundary a 46-character label builds and a 47-character label throws.
+
 **#108 is open**, tooling, filed during PR 0 and deliberately not fixed there:
 `gridPlane` in `figure_shapes.mjs` duplicates `buildSvg`'s Cartesian axis and has
 **already drifted from it**, measured 2026-08-16. Tick font size 9 against 10,
