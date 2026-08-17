@@ -9,9 +9,9 @@ production or the repo at the time of writing rather than recalled.
 ## 1. Where the course stands
 
 **86 of 97 topics are live.** Units 0 through 4 are complete and gapless, and
-Unit 5 Batch A added three more. **Section 5 carries the current state; this
-section records the position at the close of Unit 4** and is left as written so
-the two can be compared.
+Unit 5 Batch A added three more. **Section 7 carries the current state (92 of 97,
+after Batch C); this section records the position at the close of Unit 4** and is
+left as written so the two can be compared.
 
 | Unit | Topics live | Sequence | Gaps |
 |---|---|---|---|
@@ -362,6 +362,42 @@ The cost of the convention is nil and it fails visibly in review. `PR.2.1` and
 `PR.3.1` predate it and write their rationales in words, which is why both report
 `distractor_logic 0/0` claims while containing real reasoning about numbers.
 Nothing is wrong with them; they are simply unverifiable by machine.
+
+#### And in practice that means INTEGER arithmetic
+
+Refined during Batch C, and it will catch the next author who does not know it.
+**A decimal quotient written in the prose word forms reports a false mismatch.**
+
+```
+"6 + 7 + 8 + 9 = 30 over 4, which is 7.5"
+  -> [distractor_logic C] 30 / 4 = 7 does not hold, segments evaluate to
+     ['15/2', '7']
+```
+
+Nothing is wrong with that sentence. The `over ... which is` rule in `WORD_FORMS`
+captures its result with `-?\d+(?:\s*/\s*\d+)?`, which matches an integer or a
+fraction and **not** a decimal, so it takes `7` out of `7.5` and then compares it
+against the correctly computed `15/2`. The failure is loud, it names a real line,
+and it looks exactly like bad arithmetic.
+
+Two ways out, and the first is usually better:
+
+1. **Choose numbers whose prose arithmetic is integer.** In the case above the
+   sentence was rewritten to `50 / 5 = 10`, which tied the rationale more directly
+   to the item it was explaining and was better content for an unrelated reason.
+2. Write the quotient as a fraction, `30 / 4 = 15/2`, which the capture group does
+   match.
+
+Note what is *not* on that list: widening the capture group mid-batch. It is a
+one-line change and it is still a checker edit, which means re-running the
+coverage number and every fault proof before it can be trusted. That is a
+standalone piece of work, not something to do while authoring, and the convention
+costs nothing. Logged with the #105 parser-limitation family.
+
+**Decimals inside `$...$` math spans are fine.** `$125 / 5 = 25$` and
+`$2 \times 3.14 \times 20 = 125.6$` both parse and both verify; the tolerance
+logic exists precisely for the second. The limitation is only in the English word
+forms, `over`, `which is` and `giving`.
 
 ### Currency inside JSON string fields
 
@@ -1034,9 +1070,71 @@ across all 83 live topics that settles this.
 Say the prediction out loud beforehand. Small set and concentrated is expected;
 large set and concentrated is worth a look.
 
----
+#### Predict on TWO-WAY AVAILABILITY, not just on family count
+
+Added after `PR.2.5`, and it is the first thing that has **explained** a missed
+prediction rather than merely recorded one. Family count told the right story for
+`PR.2.3`, `PR.3.2`, `PR.3.3` and `PR.2.4`. On `PR.2.5` it named the wrong slug:
+
+```
+predicted   quartile_read_as_median near-ubiquitous  ->  65 to 72%
+measured    center_spread_confusion at 13 of 42      ->  62%
+```
+
+The winning slug had a structural property none of the others did. `PR.2.5` asks
+two kinds of question, for a **position** (median, quartile, minimum) and for a
+**width** (range, interquartile range). `center_spread_confusion` is available on
+**both**: every position question admits a width as a wrong answer, and every
+width question admits a position. `quartile_read_as_median` is available only on
+the position questions, so it was capped at roughly half the items no matter how
+naturally it fitted them.
+
+**The test: does the slug describe substituting one of the topic's two answer
+kinds for the other?** If it does, it runs near-ubiquitous regardless of how many
+slugs the set contains, and it will beat any slug tied to a single question kind.
+A five-slug set with one two-way slug concentrates harder than a five-slug set
+without one.
+
+This also explains `PR.3.4` at 86% from the other direction: all four of its slugs
+are the right numerator over a wrong denominator, so the topic has effectively one
+answer kind and every slug is available on every item.
+
+Two-way availability is a property of the **slug set against the topic's question
+kinds**, so it can be read off before authoring, which is the whole point of
+predicting.
 
 ## 6. After Unit 5 Batch B
+
+> **CORRECTION, written 2026-08-17.** This section recorded three topics
+> "verified and live". One of them, `PR.3.4`, **was unusable by a student for the
+> whole time it was live**, and the verification that passed on it could not have
+> told anyone.
+>
+> Its two-way tables sat in a section preamble. `PracticeQuiz` renders one parsed
+> item block at a time and drops the preamble, so **13 of its 14 items rendered
+> with no table**: *"What is the probability that a student passed, given that
+> they studied?"* over four choices and nothing to read. Only `P10` survived,
+> because it states its data inline.
+>
+> **What the Batch B verification actually proved:** that the source markdown was
+> correct, that the uploader wrote it faithfully, that the stored row matched the
+> file field by field, and that the three pages returned 200 with the expected
+> character and KaTeX-node counts.
+>
+> **What it did not prove, and was read as proving:** that any item was
+> answerable. Every check in that batch read **source**, where the table sits a
+> few lines above the item and looks right. The one check that read rendered
+> output counted characters and KaTeX nodes on the page as a whole, which the
+> surviving items supplied.
+>
+> Exposure was zero, measured rather than assumed: `curriculum_attempts` records
+> no attempt on `PR.3.4`, and no attempt anywhere after 2026-08-15, the day
+> before it shipped.
+>
+> The same defect was then found in `GR.3.3` and `QR.3.7`, both live and neither
+> touched by Batch B, so this is a property of the authoring convention rather
+> than of that batch. Fixed in PR #111 and #113; the gate that finds it is
+> described in section 7.
 
 **89 of 97 topics live**, measured 2026-08-16 after the Batch B upload. Batch B
 added `PR.3.3` (seq 11), `PR.3.4` (seq 12) and `PR.3.5` (seq 13), so **Unit 5 now
@@ -1116,6 +1214,119 @@ readbacks against the database, and only from there.
 
 The defect, its measured blast radius of nil, and what it adds to the
 silent-default class are in section 4.
+
+---
+
+## 7. After Unit 5 Batch C
+
+**92 of 97 topics live**, measured 2026-08-17 after the Batch C upload. Batch C
+added `PR.1.3` (seq 1), `PR.2.4` (seq 7) and `PR.2.5` (seq 8), so **Unit 5 now
+holds seq {1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}**.
+
+**Five topics remain, all Batch D**: `PR.1.4` (2), `PR.1.5` (3), `PR.4.2` (15),
+`PR.4.3` (16), `PR.4.4` (17). `PR.4.2` is figure-free by decision; see section 5.
+
+### The four contract numbers, measured 2026-08-17
+
+| | |
+|---|---|
+| Lint | `6 errors, 10 warnings`, attribution generated and checked file by file |
+| **Figure harness** | **810 assertions / 71 specs / 0 failed** |
+| `check_topic.py` | per-topic **zero** on the file being committed; course-wide it is not a clean gate and never was |
+| Rationale arithmetic | coverage asserted, 100% on every Unit 5 topic |
+
+Plus two that did not exist before this round: `faultproof_figures.mjs` at **43
+passes / 0 failures**, and `check_item_renders.mjs`, described below.
+
+### `data_table`, and why it is a new top-level type
+
+**The one figure type that is not an extension of `coordinate_plane`.** Bars and
+box plots were marks on a numeric axis, so forking `buildSvg` would have
+duplicated the axis and re-created the `gridPlane` drift (#108). A table has **no
+axis at all**: no scales, no tick ladder, no data-to-pixel map, and nothing for
+`verifyPlane` to invert. It reuses only module-level utilities, so there is no
+shared machinery to fork. It lives in `scripts/figure_table.mjs`, deliberately not
+in `figure_shapes.mjs`, which is about geometry and already carries that drift.
+
+**The 316px ceiling.** An `<img>` gets no `rehypeScrollableTables` wrapper, so a
+table cannot scroll and must fit. Width is fixed at 340 and never wider, because a
+wider canvas scales down further on a phone and reads **smaller**, not larger.
+Usable width is 316px and **the builder throws above it**, observed refusing at
+the boundary: a 46-character label builds and 47 throws. The five-column two-way
+fixture measures 254.6px, which is less headroom than it sounds; see the Batch D
+note in section 2.
+
+**Drawn glyphs, not text glyphs.** A pictograph is *counted*, and a text glyph is
+countable only as characters: its width depends on the viewer's font stack, a
+fallback resizes it silently, and a symbol drawn at the wrong scale still reads as
+exactly one character. Each star is an explicit polygon, so every symbol carries
+its own geometry.
+
+**What the two symbol fail-proofs prove that a text glyph cannot.** Both keep the
+count correct and break the geometry, which is precisely the case a character
+cannot express:
+
+```
+a symbol drawn at the wrong SCALE  -> width; height; in the symbols column
+a symbol drawn in the wrong ROW    -> in row 0
+```
+
+Against text glyphs neither injection is even constructible: the count is the only
+observable, and the count is right in both. That is the whole argument for the
+decision, and it is why it was made before the type was built rather than after a
+pictograph looked wrong.
+
+### The root cause under all of it: stems are flattened
+
+```python
+# upload_curriculum.py:209
+stem = re.sub(r'\s*\n\s*', ' ', stem).strip()   # "collapse the stem onto one line"
+```
+
+**This is upstream of the renderer, not in it.** `renderInlineWithMath` runs the
+full markdown pipeline and would build a table happily; by the time a stem reaches
+it the newlines are gone. Confirmed against a stored row: 0 newlines in the stem.
+
+**The rule it implies: block markdown does not survive into an item stem; images
+and figures do.** A markdown image is a single-line construct, which is the entire
+reason `AR.3.6`'s figures render inside items and its tables would not have. Any
+future block construct -- a table, a fenced block, a multi-line list -- has to
+become an image or be restated as prose.
+
+**Do not "fix" this by removing the flattening.** It rewrites stored
+`practice_items` for every topic in the course and needs a full re-upload plus
+fault proofs, which is a far wider blast radius than the problem warrants.
+
+**The lesson body is different and renders block tables correctly**: measured,
+real `<table>` elements wrapped in `um-table-scroll`, zero literal pipes. `PR.1.3`
+keeps its markdown pictograph in the lesson and uses `data_table` in its items,
+and the restructure asserts **both** halves, since an assertion checking only "no
+table in an item" would have been satisfied by deleting the lesson's copy.
+
+### `check_item_renders.mjs`: the gate that reads rendered output
+
+Every other quality check in this repo reads **source**. That was invisible until
+an item's meaning depended on layout the renderer discards, and then it cost three
+live topics. This one reads `.um-stem` out of the live DOM, which is the
+renderer's own unit of meaning, rather than re-parsing -- a re-parse that "agrees
+with PracticeQuiz" is a second implementation free to drift from it, exactly as
+`gridPlane` drifted from `buildSvg`.
+
+| Rule | Tier | Why it sits there |
+|---|---|---|
+| **A** no literal `\|` in a rendered stem | **hard gate** | 1 true positive and a real one: the pipe-soup `PR.3.4`, caught at 13 of 14 items. 0 false positives course-wide. The only rule that sees block markdown flattened into text |
+| **B** a stem points at absent context | **warning** | 6 false positives, 0 true positives. Every hit is a phrase naming a mathematical object in words: "the graph of a relation is a circle", "the graph of $y = x^2$", prose-described scatterplots, and "figure" meaning a numeric value. It cannot gate on that record |
+| **C** dropped content reaches no stem | **hard gate** | The only rule that catches an **omission**, which is what all three live defects were. Rules A and B were both run against the original broken `PR.3.4` and **both reported 0 failing** |
+
+**Rule C's known imprecision**, recorded rather than fixed: it flags a block by
+looking for a table, a figure, or three or more numbers, so **a prose instruction
+with no digits trips nothing**. `GR.3.3` strands a rounding instruction that 11
+decimal-valued options rely on, and it was found by reading, not by the gate. The
+course-wide count of stranded *guidance* is therefore **unknown**. Issue #112, and
+finding it needs a different check rather than a stricter Rule C.
+
+**Course-wide, measured 2026-08-17 against real database rows: 92 topics, 1278
+rendered items, 0 failing, 6 warnings.**
 
 ---
 

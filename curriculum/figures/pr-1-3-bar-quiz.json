@@ -1,0 +1,14 @@
+{
+  "type": "coordinate_plane",
+  "yRange": [0, 60],
+  "yLabel": "Visits",
+  "xLabel": "Day",
+  "bars": [
+    { "label": "Mon", "value": 30 },
+    { "label": "Tue", "value": 50 },
+    { "label": "Wed", "value": 20 },
+    { "label": "Thu", "value": 40 },
+    { "label": "Fri", "value": 10 }
+  ],
+  "alt": "A bar graph of library visits by day. Day runs along the bottom and Visits up the side, from 0 to 60 marked every 10. There are five bars: Monday 30, Tuesday 50, Wednesday 20, Thursday 40, and Friday 10. Tuesday is the tallest bar and Friday is the shortest."
+}

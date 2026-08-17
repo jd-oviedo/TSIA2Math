@@ -1,0 +1,11 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [0, 6],
+  "yRange": [55, 85],
+  "xLabel": "Day (1 = Monday)",
+  "yLabel": "Degrees",
+  "series": [
+    { "points": [[1, 60], [2, 70], [3, 80], [4, 65], [5, 75]] }
+  ],
+  "alt": "A line graph of daily high temperatures. The horizontal axis is Day, numbered 1 for Monday through 5 for Friday, and the vertical axis is Degrees, running from 55 to 85 and marked every 5. Five points are plotted and joined in order: Monday 60, Tuesday 70, Wednesday 80, Thursday 65, and Friday 75. The line rises for three days to its highest point on Wednesday, drops sharply to its lowest point on Thursday, then rises again on Friday."
+}
