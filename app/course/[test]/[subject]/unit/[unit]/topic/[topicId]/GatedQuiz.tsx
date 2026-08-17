@@ -25,6 +25,7 @@ export default function GatedQuiz({
   required,
   previous,
   next,
+  lessonHref,
 }: {
   courseId: string;
   topicId: string;
@@ -37,6 +38,8 @@ export default function GatedQuiz({
   required: number;
   previous: NavStep;
   next: NavStep;
+  // Passed through to the quiz's closing summary. Absent on practice.
+  lessonHref?: string;
 }) {
   const [liveCorrect, setLiveCorrect] = useState(0);
   const correct = Math.max(initialCorrect, liveCorrect);
@@ -54,6 +57,7 @@ export default function GatedQuiz({
           heading={heading}
           blurb={blurb}
           solutions={solutions}
+          lessonHref={lessonHref}
           onMasteredCountChange={setLiveCorrect}
         />
       </section>

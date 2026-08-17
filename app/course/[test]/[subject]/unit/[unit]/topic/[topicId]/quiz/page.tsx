@@ -105,6 +105,7 @@ export default async function QuizPage({ params }: { params: Promise<RouteParams
           solutions={solutions}
           initialCorrect={ungated ? gates.quizRequired : gates.quizCorrect}
           required={gates.quizRequired}
+          lessonHref={`/course/${resolved.test}/${resolved.subject}/unit/${resolved.unit}/topic/${topic.topic_id}/lesson`}
           previous={nav.previous}
           next={nav.next}
         />

@@ -3,6 +3,8 @@
 import { useCallback, useRef, useState } from 'react';
 import GumuChat from './GumuChat';
 import { useGumuGate } from './GumuGate';
+import QuizFinish from './QuizFinish';
+import { quizOutcome, solutionsAvailable } from '@/app/lib/quiz-finish';
 import { C, ink, EYEBROW, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
@@ -31,6 +33,10 @@ type Props = {
   // Reports how many distinct items have been answered correctly at least
   // once this visit, so the mastery gate on Next can open without a reload.
   onMasteredCountChange?: (count: number) => void;
+  // Where "back to the guided notes" goes on the quiz's closing summary. Only
+  // passed for the mini quiz; practice has no finish state, because practice is
+  // a workshop a student dips in and out of rather than an attempt that ends.
+  lessonHref?: string;
 };
 
 // correct_answer is null when GUMU is available -- the server withholds it so
@@ -53,6 +59,7 @@ export default function PracticeQuiz({
   blurb,
   solutions,
   onMasteredCountChange,
+  lessonHref,
 }: Props) {
   // Keyed by item_number rather than array index so the maps stay correct
   // regardless of how the items are ordered or filtered.
@@ -158,6 +165,20 @@ export default function PracticeQuiz({
 
   const answeredCount = Object.keys(results).length;
 
+  // The quiz's closing summary, and the rule that holds worked solutions back
+  // until the attempt is over.
+  //
+  // Computed from `results`, which holds the latest outcome per item, so a
+  // question retried and got right stops counting as missed. Nothing here
+  // touches the mastery gate: GatedQuiz still decides when Next opens, off its
+  // own count, and this cannot move it either way.
+  const outcome = quizOutcome(
+    items.map((item) => item.item_number),
+    results
+  );
+  const canRevealSolutions = solutionsAvailable(section, outcome);
+  const showFinish = section === 'mini_quiz' && outcome.finished && Boolean(lessonHref);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
       {/* Section header. The pips are the only progress readout on the page,
@@ -193,7 +214,11 @@ export default function PracticeQuiz({
         // The known correct answer, from whichever source has it: the grading
         // response when GUMU is not involved, or the escape hatch when it is.
         const knownAnswer = result?.correct_answer ?? revealed[item.item_number] ?? null;
-        const solution = solutions?.[item.item_number];
+        // Withheld entirely during a quiz attempt, so the reveal control is not
+        // rendered at all rather than shown and refused. Which solutions exist
+        // is still decided server-side by loadEarnedSolutions; this only
+        // decides when an already-earned one may be offered.
+        const solution = canRevealSolutions ? solutions?.[item.item_number] : undefined;
         const solutionOpen = Boolean(openSolutions[item.item_number]) && !solutionsPaused;
 
         return (
@@ -568,6 +593,18 @@ export default function PracticeQuiz({
           </fieldset>
         );
       })}
+
+      {/* Closes out the quiz. Sits after the questions rather than replacing
+          them, so a student can read the summary and scroll back to the
+          question it names without losing either. */}
+      {showFinish && lessonHref && (
+        <QuizFinish
+          outcome={outcome}
+          items={items}
+          lessonHref={lessonHref}
+          hasSolutions={Boolean(solutions && Object.keys(solutions).length > 0)}
+        />
+      )}
     </div>
   );
 }
