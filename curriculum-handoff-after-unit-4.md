@@ -998,6 +998,49 @@ control has to pass. A fault that fails proves nothing on its own, because it
 does not distinguish the fault from the harness. All three above were found by
 the control disagreeing, not by reading the code.
 
+#### Three more, outside curriculum, and what caught each one
+
+Added 2026-08-17 during the student course redesign. Recorded as one entry
+because they are one class, and because three consecutive units of work each
+turned up an instance: **the harness was the defect, not the code under test.**
+The entry above says the harness is the thing most likely to be wrong; these say
+what actually surfaces it, which is the transferable part.
+
+| | the harness defect | what caught it |
+|---|---|---|
+| PR #126 | a check read `innerText` case-sensitively against an eyebrow that is `text-transform: uppercase`, so it missed `WHAT YOU MISSED` on a panel that was entirely correct | dumping the real text instead of trusting the regex |
+| PR #127 | a probe route outside `/dashboard` never got `DASHBOARD_CSS`, so `.um-visually-hidden` was undefined, the screen-reader sentence rendered visibly, and every unit header measured 96px instead of 52px | **an implausible number.** 128px is not a plausible height for a 52px header |
+| PR #129 | a fault injected immediately after the spawn line landed *before* the fix's own teardown registration, so it tested a window the fix deliberately shrinks and reported a working fix as broken | **what got cleaned.** See below |
+
+**The #129 tell is the one worth carrying.** The faulted run reported the fixed
+script as still leaking a server. The exit code said nothing useful; both
+versions exited 1. What distinguished them was the *other* teardown effects: the
+probe route and `.next/types` were both cleaned in that same run, which proves
+the teardown had executed. So the handlers were fine and only the server had
+survived, which pointed at **registration order**, not at the handlers. Moving
+the injection to `chromium.launch()` fixed the proof and the fix then measured
+correctly.
+
+**Diagnose from what was cleaned, not from the exit code.** When teardown is
+partial, the parts that succeeded tell you where in the sequence the failure sat.
+An exit code is one bit and cannot.
+
+**Also recorded plainly: PR #128 reported a defect that was never reproduced.**
+It claimed back-to-back runs collide on port 5100 and the second dies before
+measuring. Asked to prove it, the two-runs-in-a-row test disproved the premise:
+both runs measured and both exited 0 on unmodified `main`. The happy path had
+always torn down. The real gap was narrower, the window between spawn and the
+`finally`, and it only became visible once the wrong claim was tested.
+
+That is this section's own rule failing in a new direction. The earlier entries
+are about a harness reporting on itself; this one is about **a defect asserted
+into a handoff without being run once.** It is the same shape as issue #84's
+stated failure mode and this document's lint attribution, and it cost a round.
+
+**The check: reproduce a defect before reporting it, and say which command
+reproduced it.** A defect described from a remembered symptom is a hypothesis
+with a bug report's formatting.
+
 ### A classifier that has only ever been corrected toward agreement
 
 Added in Batch B, and it is the same class arriving from a new direction. The
