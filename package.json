@@ -9,6 +9,7 @@
     "test": "node --test \"tests/*.test.ts\"",
     "test:auth-gate": "node scripts/verify_auth_gate.mjs",
     "test:solutions": "node scripts/faultproof_earned_solutions.mjs",
+    "test:overview": "node scripts/verify_topic_overview.mjs",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
   },

@@ -8,6 +8,7 @@ import { renderInlineWithMath, splitAnswerKey } from '@/lib/curriculum-utils';
 import { loadTopicFixture } from '@/lib/curriculum-fixture';
 import {
   getTopics,
+  getTopicShape,
   getTopicAttempts,
   correctItemsInSection,
   requiredCorrect,
@@ -280,14 +281,17 @@ export type GateState = {
   quizSolved: Set<number>;
 };
 
-export const loadGates = cache(
-  async (
-    studentId: string | null,
-    courseId: string,
-    topicId: string
-  ): Promise<GateState> => {
-    const { shapes } = await getTopics();
-    const shape: TopicShape | undefined = shapes.get(topicKey(courseId, topicId));
+// The gate maths, given a shape that has already been resolved.
+//
+// Split out because the two callers below resolve that shape from different
+// reads, and which read is cheaper depends entirely on what else the page is
+// doing. Everything after this point is identical either way.
+async function gatesFromShape(
+  studentId: string | null,
+  courseId: string,
+  topicId: string,
+  shape: TopicShape | undefined
+): Promise<GateState> {
     const practiceGradable = shape?.practice.gradable ?? 0;
     const quizGradable = shape?.mini_quiz.gradable ?? 0;
 
@@ -338,6 +342,32 @@ export const loadGates = cache(
       practiceSolved,
       quizSolved,
     };
+}
+
+// For lesson, practice and quiz.
+//
+// Resolves the shape out of getTopics(), which reads practice_items for every
+// topic in the course. That is the heaviest column on the row by roughly 31x,
+// and it is free here only because loadNavigation on the same page already
+// pays for it and cache() collapses the two to one read.
+export const loadGates = cache(
+  async (studentId: string | null, courseId: string, topicId: string): Promise<GateState> => {
+    const { shapes } = await getTopics();
+    return gatesFromShape(studentId, courseId, topicId, shapes.get(topicKey(courseId, topicId)));
+  }
+);
+
+// For the topic overview, which has no navigation and so nothing to share the
+// course-wide read with.
+//
+// Going through loadGates there would pull practice_items for all 97 topics to
+// use exactly one of them, on a page that previously cost nothing because it
+// was a redirect. getTopicShape reads the single row instead. Same gate maths,
+// same result, one row rather than the whole course.
+export const loadTopicGates = cache(
+  async (studentId: string | null, courseId: string, topicId: string): Promise<GateState> => {
+    const shape = await getTopicShape(courseId, topicId);
+    return gatesFromShape(studentId, courseId, topicId, shape ?? undefined);
   }
 );
 
