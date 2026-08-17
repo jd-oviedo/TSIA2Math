@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import GumuAvatar from './GumuAvatar';
-import { C, ink, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { C, ink, MATH_LINE_HEIGHT, INK_MUTED } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // GUMU's chat panel. Inline expansion under the item, not a modal, matching
@@ -201,7 +201,7 @@ export default function GumuChat({
         <GumuAvatar size={48} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
           <div style={{ font: `600 15px ${FONT_HEADING}`, color: C.midnight }}>GUMU</div>
-          <div style={{ font: `400 12px ${FONT_BODY}`, color: ink(0.45) }}>
+          <div style={{ font: `400 12px ${FONT_BODY}`, color: INK_MUTED }}>
             {finished ? 'that one is wrapped up' : 'let’s figure out where it slipped'}
           </div>
         </div>
@@ -261,7 +261,7 @@ export default function GumuChat({
           </div>
         ))}
         {pending && (
-          <div style={{ font: `400 13.5px ${FONT_BODY}`, color: ink(0.45) }}>
+          <div style={{ font: `400 13.5px ${FONT_BODY}`, color: INK_MUTED }}>
             GUMU is thinking…
           </div>
         )}
@@ -339,7 +339,7 @@ export default function GumuChat({
           style={{
             font: `400 12px ${FONT_BODY}`,
             lineHeight: 1.5,
-            color: ink(0.4),
+            color: INK_MUTED,
             textAlign: 'center',
           }}
         >
@@ -369,7 +369,7 @@ export default function GumuChat({
             style={{
               font: `400 11.5px ${FONT_BODY}`,
               lineHeight: 1.5,
-              color: ink(0.4),
+              color: INK_MUTED,
               textAlign: 'center',
             }}
           >

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import TopicNav from './TopicNav';
 import LessonHandoff from './LessonHandoff';
-import { C, ink, EYEBROW, RADIUS, hairline, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { C, ink, EYEBROW, RADIUS, hairline, MATH_LINE_HEIGHT, INK_MUTED } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import type { LessonSection } from '@/lib/curriculum-utils';
 import type { NavStep } from './topic-data';
@@ -181,7 +181,7 @@ export default function LessonBody({
             boxShadow: hairline(ink(0.1)),
           }}
         >
-          <div style={{ ...EYEBROW, color: ink(0.45) }}>On this page</div>
+          <div style={{ ...EYEBROW, color: INK_MUTED }}>On this page</div>
           <div style={{ font: `600 13px ${FONT_BODY}`, color: C.midnight }}>{sectionLabel}</div>
           <ol
             style={{
@@ -242,7 +242,7 @@ export default function LessonBody({
             observer is taken out of it. Hidden above 760px, where the rail says
             the same thing. */}
         {count > 0 && (
-          <div className="um-lesson-strip" style={{ ...EYEBROW, color: ink(0.45), display: 'none' }}>
+          <div className="um-lesson-strip" style={{ ...EYEBROW, color: INK_MUTED, display: 'none' }}>
             {sectionLabel}
           </div>
         )}

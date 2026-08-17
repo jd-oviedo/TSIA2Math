@@ -1,6 +1,6 @@
 'use client';
 
-import { C, ink, EYEBROW, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { C, ink, EYEBROW, MATH_LINE_HEIGHT, INK_MUTED } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import { outcomeHeadline, type QuizOutcome } from '@/app/lib/quiz-finish';
 import type { PublicPracticeItem } from './PracticeQuiz';
@@ -58,7 +58,7 @@ export default function QuizFinish({
       }}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <div style={{ ...EYEBROW, color: ink(0.45) }}>Mini quiz</div>
+        <div style={{ ...EYEBROW, color: INK_MUTED }}>Mini quiz</div>
         <h3
           id="quiz-finish-heading"
           style={{
@@ -83,7 +83,7 @@ export default function QuizFinish({
 
       {!clean && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          <div style={{ ...EYEBROW, color: ink(0.45) }}>What you missed</div>
+          <div style={{ ...EYEBROW, color: INK_MUTED }}>What you missed</div>
           <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
             {missedItems.map((item) => (
               <li

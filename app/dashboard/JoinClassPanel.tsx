@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { C, ink } from '@/app/components/curriculum-theme';
+import { C, INK_DISABLED } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import { V } from '@/app/components/dashboard-theme';
 
@@ -109,7 +109,7 @@ export default function JoinClassPanel({ initialCode }: { initialCode?: string }
             background: ready ? C.sunset : V.cardBorder,
             boxShadow: ready ? `0 2px 0 ${C.sunsetShadow}` : 'none',
             font: `600 14px ${FONT_BODY}`,
-            color: ready ? C.midnight : ink(0.4),
+            color: ready ? C.midnight : INK_DISABLED,
             cursor: ready ? 'pointer' : 'not-allowed',
           }}
         >

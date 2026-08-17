@@ -1,4 +1,4 @@
-import { C, ink, EYEBROW } from '@/app/components/curriculum-theme';
+import { C, ink, EYEBROW, INK_MUTED } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // The topic doorway: what the three parts are, where this student stands in
@@ -44,7 +44,7 @@ const STATUS_LABEL: Record<PartState['status'], string> = {
 function statusColor(status: PartState['status']): string {
   if (status === 'complete') return C.green;
   if (status === 'in_progress') return C.sunset;
-  return ink(0.45);
+  return INK_MUTED;
 }
 
 // The step number badge. Filled once the part is done, ringed while it is the
@@ -91,7 +91,7 @@ export default function TopicOverview({
   return (
     <section style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
-        <div style={{ ...EYEBROW, color: ink(0.45) }}>In this topic</div>
+        <div style={{ ...EYEBROW, color: INK_MUTED }}>In this topic</div>
         <p
           style={{
             margin: 0,
