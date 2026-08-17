@@ -30,6 +30,7 @@
 import { chromium } from 'playwright';
 import { mkdirSync, writeFileSync, rmSync, existsSync } from 'fs';
 import { execSync, spawn } from 'child_process';
+import { onTeardown, killServer, clearNextTypes } from './harness-teardown.mjs';
 
 const PROBE_DIR = 'app/um-probe-density';
 const PORT = 5110;
@@ -107,8 +108,10 @@ const check = (name, pass, detail = '') => {
   console.log(`  ${pass ? 'pass' : 'FAIL'}  ${name}${detail ? `  (${detail})` : ''}`);
 };
 
-process.on('exit', removeProbe);
-process.on('SIGINT', () => { removeProbe(); process.exit(1); });
+// Registered before the probe is written, so an early failure cannot leave the
+// probe route or its generated types behind.
+onTeardown(removeProbe);
+onTeardown(clearNextTypes);
 
 writeProbe();
 console.log('probe route written, building...\n');
@@ -117,6 +120,9 @@ const server = spawn('npx', ['next', 'start', '-p', String(PORT)], {
   stdio: 'ignore',
   detached: true,
 });
+// Registered IMMEDIATELY after spawn, so a throw before the try/finally below
+// cannot leak the server and hold the port against the next run.
+onTeardown(() => killServer(server));
 await new Promise((r) => setTimeout(r, 9000));
 
 const browser = await chromium.launch();
@@ -207,8 +213,9 @@ try {
   );
 } finally {
   await browser.close();
-  try { process.kill(-server.pid); } catch { /* already gone */ }
+  killServer(server);
   removeProbe();
+  clearNextTypes();
 }
 
 console.log(failed === 0 ? '\nall checks passed' : `\n${failed} check(s) failed`);
