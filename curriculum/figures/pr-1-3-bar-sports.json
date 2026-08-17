@@ -1,0 +1,13 @@
+{
+  "type": "coordinate_plane",
+  "yRange": [0, 50],
+  "yLabel": "Students",
+  "xLabel": "Sport",
+  "bars": [
+    { "label": "Soccer", "value": 35 },
+    { "label": "Tennis", "value": 20 },
+    { "label": "Swimming", "value": 45, "color": "accent" },
+    { "label": "Track", "value": 15 }
+  ],
+  "alt": "A bar graph with Sport along the bottom and Students up the side. The value axis runs from 0 to 50 and is marked every 5. There are four bars: Soccer 35, Tennis 20, Swimming 45, and Track 15. The Swimming bar is drawn in the highlight colour because it is the tallest."
+}

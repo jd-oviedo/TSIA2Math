@@ -1,0 +1,14 @@
+{
+  "type": "coordinate_plane",
+  "yRange": [0, 20],
+  "yLabel": "Books read",
+  "xLabel": "Month",
+  "bars": [
+    { "label": "Jan", "value": 8 },
+    { "label": "Feb", "value": 14 },
+    { "label": "Mar", "value": 6 },
+    { "label": "Apr", "value": 18 },
+    { "label": "May", "value": 12 }
+  ],
+  "alt": "A bar graph titled by its axes, with Month along the bottom and Books read up the side. The value axis runs from 0 to 20 and is marked every 2. There are five bars: January 8, February 14, March 6, April 18, and May 12. April is the tallest bar and March is the shortest."
+}

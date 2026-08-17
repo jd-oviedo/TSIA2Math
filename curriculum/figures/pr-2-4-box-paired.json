@@ -1,0 +1,10 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [0, 60],
+  "xLabel": "Points scored",
+  "boxes": [
+    { "label": "Team A", "min": 12, "q1": 22, "median": 30, "q3": 38, "max": 52 },
+    { "label": "Team B", "min": 18, "q1": 26, "median": 30, "q3": 44, "max": 56, "color": "accent" }
+  ],
+  "alt": "Two box plots stacked on one shared number line running from 0 to 60 points, marked every 10. Team A is the upper plot: minimum 12, lower quartile 22, median 30, upper quartile 38, maximum 52. Team B is the lower plot: minimum 18, lower quartile 26, median 30, upper quartile 44, maximum 56. Both teams have the same median of 30, but Team B's box is wider, so its middle half is more spread out."
+}
