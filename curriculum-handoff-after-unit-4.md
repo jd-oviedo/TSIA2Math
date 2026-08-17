@@ -746,6 +746,15 @@ was open anyway. `GR.3.3`'s stranded **rounding instruction** was found in the s
 pass and deliberately left alone, because it is guidance rather than data and those
 items are answerable without it. It went to issue #112 instead.
 
+### A check that cannot load is indistinguishable from a check that passes
+
+**And a PR body listing the probes that DID run is true and incomplete unless it
+also names the ones that did not.** That is the #133 gap: an unrelated `@/` alias
+import made a module unloadable outside Next, `npm run test:solutions` -- the
+check on the worked-solution gate -- stopped executing entirely, and three PRs
+merged green without it. Nothing lied; the report simply did not cover it. Run
+`npm run test:offline`, which fails if any of them has stopped loading.
+
 ### Checks that pass while measuring the wrong object
 
 The most expensive class, because it produces confident green output. Several of
