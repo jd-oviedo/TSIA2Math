@@ -105,9 +105,21 @@ await check('aria-describedby still resolves to the requirement line', async () 
 });
 
 // ── REACH THE END ───────────────────────────────────────────────────────────
-// Scroll to the bottom so the sentinel intersects. Waiting on the card rather
-// than on a timer is what makes this deterministic.
-await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+// Scroll to the bottom so the sentinel intersects, and keep scrolling until the
+// page stops growing underneath.
+//
+// A SINGLE scrollTo IS A RACE, and this file lost it intermittently once the
+// guided notes became one card per section. document.body.scrollHeight is read
+// at the moment of the call, but KaTeX and the section cards are still laying
+// out after domcontentloaded, so that height can be short of where the bottom
+// finally settles. Scrolling there once leaves the sentinel below the fold and
+// the gate shut -- and the failure looks exactly like a broken gate, which is
+// the worst way for a harness to be wrong.
+for (let i = 0; i < 40; i++) {
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  if (await card.count()) break;
+  await page.waitForTimeout(200);
+}
 await card.first().waitFor({ state: 'visible', timeout: 15000 }).catch(() => {});
 
 // ── DONE ────────────────────────────────────────────────────────────────────

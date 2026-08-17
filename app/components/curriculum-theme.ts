@@ -22,6 +22,34 @@ export const C = {
   // GUMU's own surface: sand warmed further, so his half of a card is legible
   // as his without a border.
   gumuSurface: '#F7F1E4',
+  // ─── The three surfaces from the recoloured course-experience design ───────
+  //
+  // Adopted 2026-08-17, and the only three values taken from that recolour. They
+  // are the one part of it that was a real addition rather than a near-miss of a
+  // brand colour: they name roles the brand system has no value for, so nothing
+  // live had to lose to make room for them. Everything else in that sheet
+  // diverged from the brand system by a few points and live won, and #C07F22 was
+  // dropped outright -- there is no orange-as-text role in this product, and the
+  // brand orange is worse as text than the value proposed (1.60:1 on cream
+  // against 2.54:1), so the role itself was the problem rather than the hex.
+  //
+  // Read as a ladder, darkest page to lightest box:
+  //   cream #E8E0CF  ->  rail #EDE8DA  ->  band #F3EFE3  ->  paper #FFFDF8
+  //
+  // Contrast, measured rather than assumed: the live ink() ramp clears 4.5:1 on
+  // all three at ink(0.65) and above (5.57 to 10.35). ink(0.45) does NOT clear it
+  // on any of them, at 2.97 to 3.00 -- but it does not clear it on cream (2.91)
+  // or paper (3.09) either, so that is standing contrast debt this palette
+  // neither caused nor fixes. It is recorded as its own issue, not chased here.
+
+  // The reading band a lesson column sits on, between the page and its boxes.
+  band: '#F3EFE3',
+  // The lesson outline rail.
+  rail: '#EDE8DA',
+  // A quiet box sitting ON the band, where paper would not read as inset. Named
+  // now because it is the third rung of the ladder and the ladder is meaningless
+  // without it; nothing consumes it yet.
+  quietBox: '#EDE7D6',
   midnight: '#0E0E11',
   // Deep Navy, the pre-July-2026 brand colour. It survives on exactly one
   // surface: the dark GUMU banner strips, at Juan's explicit direction after

@@ -6,6 +6,12 @@ import remarkRehype from 'remark-rehype';
 import rehypeKatex from 'rehype-katex';
 import rehypeStringify from 'rehype-stringify';
 import type { Element, Parent, Root, RootContent } from 'hast';
+// The one definition of where a lesson section starts, shared with the topic
+// overview so the two surfaces can never report different counts for the same
+// topic. It lives there rather than here because it must stay dependency-free:
+// `node --test` loads it directly, and this module pulls in the whole remark
+// pipeline.
+import { splitLessonSections } from '@/app/lib/lesson-sections';
 
 // A wide table has to scroll inside the card rather than push the whole page
 // sideways on a phone. The table cannot be its own scroll container: that needs
@@ -139,4 +145,36 @@ export function splitAnswerKey(raw: string): AnswerKeyEntries {
     practice: splitSection(practiceText, PRACTICE_KEY_RE),
     mini_quiz: splitSection(quizText, QUIZ_KEY_RE),
   };
+}
+
+// One section of the guided notes, ready to render.
+export type LessonSection = {
+  // The heading as plain text, for the outline's title attribute. Attributes
+  // cannot hold markup, so the eight headings carrying inline math have their $
+  // delimiters stripped rather than being KaTeX in a tooltip.
+  title: string;
+  // The same heading rendered, so those eight set their math properly.
+  heading_html: string;
+  // The section's body, with the h5 removed: the heading is a real element in
+  // the page now, not a line of prose inside the card.
+  html: string;
+};
+
+// Splits guided notes into one rendered entry per authored h5, the same shape
+// splitAnswerKey has: one stored blob in, a list of rendered pieces out, an empty
+// list when it cannot parse and the caller falls back to the whole blob.
+//
+// THE MARKDOWN IS SPLIT, NOT THE RENDERED HTML. Splitting the output string would
+// need an HTML parser and could cut a <div class="um-table-scroll"> in half.
+// Splitting the source and rendering each piece keeps remark and KaTeX state
+// per-section, and rehypeScrollableTables only ever walks its own tree.
+//
+// Where the section boundary comes from is settled: the authored h5, not the
+// horizontal rules. See the note in app/lib/lesson-sections.ts.
+export function splitGuidedNotes(raw: string | null | undefined): LessonSection[] {
+  return splitLessonSections(raw).map((section) => ({
+    title: section.heading.replace(/\$([^$]*)\$/g, '$1'),
+    heading_html: renderInlineWithMath(section.heading),
+    html: renderMarkdownWithMath(section.body),
+  }));
 }
