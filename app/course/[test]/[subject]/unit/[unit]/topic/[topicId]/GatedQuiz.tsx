@@ -26,6 +26,7 @@ export default function GatedQuiz({
   previous,
   next,
   lessonHref,
+  solvedBefore,
 }: {
   courseId: string;
   topicId: string;
@@ -40,6 +41,10 @@ export default function GatedQuiz({
   next: NavStep;
   // Passed through to the quiz's closing summary. Absent on practice.
   lessonHref?: string;
+  // Items already answered correctly on an earlier visit, for the progress
+  // strip. Passed straight through; this component makes no use of it and must
+  // not, since its own gate counts up from initialCorrect.
+  solvedBefore?: number[];
 }) {
   const [liveCorrect, setLiveCorrect] = useState(0);
   const correct = Math.max(initialCorrect, liveCorrect);
@@ -58,6 +63,7 @@ export default function GatedQuiz({
           blurb={blurb}
           solutions={solutions}
           lessonHref={lessonHref}
+          solvedBefore={solvedBefore}
           onMasteredCountChange={setLiveCorrect}
         />
       </section>

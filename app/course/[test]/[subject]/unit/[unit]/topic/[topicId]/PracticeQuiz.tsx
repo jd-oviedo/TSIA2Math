@@ -1,11 +1,12 @@
 'use client';
 
 import { useCallback, useRef, useState } from 'react';
+import { pageTurn, segmentState, type SegmentState } from '@/app/lib/practice-paging';
 import GumuChat from './GumuChat';
 import { useGumuGate } from './GumuGate';
 import QuizFinish from './QuizFinish';
 import { quizOutcome, solutionsAvailable } from '@/app/lib/quiz-finish';
-import { C, ink, EYEBROW, MATH_LINE_HEIGHT, INK_DISABLED, INK_MUTED } from '@/app/components/curriculum-theme';
+import { C, ink, EYEBROW, MATH_LINE_HEIGHT, INK_DISABLED, INK_MUTED, hairline } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // What the browser is allowed to see. Built server-side in page.tsx by
@@ -37,6 +38,14 @@ type Props = {
   // passed for the mini quiz; practice has no finish state, because practice is
   // a workshop a student dips in and out of rather than an attempt that ends.
   lessonHref?: string;
+  // Item numbers this student already had right before this visit, so the strip
+  // can show earlier work instead of ten blank segments on every return.
+  //
+  // An array rather than a Set because it crosses the server/client boundary.
+  // Correct only: gates.practiceSolved records solved items and there is no
+  // stored equivalent for items previously missed, so previously-missed reads as
+  // untouched. See the note on segmentState.
+  solvedBefore?: number[];
 };
 
 // correct_answer is null when GUMU is available -- the server withholds it so
@@ -50,6 +59,17 @@ type Result = {
 
 const LETTERS = ['A', 'B', 'C', 'D'];
 
+// The strip's four states. Design 1f's own hexes are not used: they are the
+// near-misses of the brand palette that live won on, so these are the live
+// equivalents -- green for correct, amber for missed, Sunset for the one in
+// view, and the standard hairline for untouched.
+const SEGMENT_COLOUR: Record<SegmentState, string> = {
+  current: C.sunset,
+  correct: C.green,
+  missed: C.amber,
+  untouched: ink(0.13),
+};
+
 export default function PracticeQuiz({
   courseId,
   topicId,
@@ -60,6 +80,7 @@ export default function PracticeQuiz({
   solutions,
   onMasteredCountChange,
   lessonHref,
+  solvedBefore,
 }: Props) {
   // Keyed by item_number rather than array index so the maps stay correct
   // regardless of how the items are ordered or filtered.
@@ -76,6 +97,24 @@ export default function PracticeQuiz({
   // A ref, not state: nothing here renders from it, it only reports upward.
   const mastered = useRef<Set<number>>(new Set());
 
+  // One problem at a time. A client-side index rather than a URL param, chosen
+  // for data integrity rather than convenience: a URL turn re-renders the server
+  // component, discards `results`, and shows an already-answered problem as
+  // unanswered -- so a student re-submitting writes a SECOND curriculum_attempts
+  // row for one intended answer. Nothing reads the log that way today, but it is
+  // the append-only record of what a student did.
+  //
+  // The cost, accepted: no deep link to a problem, no browser Back between them,
+  // and position resets on reload.
+  const [current, setCurrent] = useState(0);
+
+  // PRACTICE ONLY. This component is shared with the mini quiz, and the quiz is
+  // its own design surface with its own strip spec (four segments at 40px, not
+  // ten at 26px) and its own register. Paging it here would have redesigned a
+  // surface this unit does not cover -- which is exactly what happened on the
+  // first build, and verify_quiz_finish caught it.
+  const paged = section === 'practice';
+
   const { activeCount, setItemActive } = useGumuGate();
 
   // Worked solutions answer the question outright, so they follow the same rule
@@ -89,6 +128,27 @@ export default function PracticeQuiz({
       setItemActive(`${section}-${itemNumber}`, active),
     [setItemActive, section]
   );
+
+  // Turning the page RELEASES THE GUMU GATE for the problem being left.
+  //
+  // Without this, paging away from an open GUMU session unmounts the chat while
+  // the provider still counts it, and `solutionsPaused` below stays true for the
+  // rest of the page load with nothing on screen left to close. Same failure
+  // retry() guards against at its own trigger; see app/lib/practice-paging.ts
+  // for why the decision lives in a tested function rather than inline.
+  //
+  // GumuChat itself is untouched: its unmount behaviour is a wider fix and the
+  // GUMU work is deferred.
+  function goTo(to: number) {
+    const turn = pageTurn(
+      items.map((item) => item.item_number),
+      current,
+      to,
+      section
+    );
+    if (turn.releaseKey) setItemActive(turn.releaseKey, false);
+    setCurrent(turn.index);
+  }
 
   async function submit(itemNumber: number) {
     const answer = selected[itemNumber];
@@ -164,6 +224,11 @@ export default function PracticeQuiz({
   }
 
   const answeredCount = Object.keys(results).length;
+  const correctCount = Object.values(results).filter((r) => r.isCorrect).length;
+  const missedCount = answeredCount - correctCount;
+  // Built once per render rather than per segment. Seeds the strip with work
+  // from earlier visits; see the note on segmentState for why correct only.
+  const solved = new Set(solvedBefore ?? []);
 
   // The quiz's closing summary, and the rule that holds worked solutions back
   // until the attempt is over.
@@ -181,32 +246,78 @@ export default function PracticeQuiz({
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-      {/* Section header. The pips are the only progress readout on the page,
-          so they count answered items rather than visited ones. */}
+      {/* Section header, and the strip.
+
+          The strip replaced a fill bar that lit its first N segments regardless
+          of WHICH problems had been answered. Each segment now reports its own
+          problem, which is what makes it worth having beside a one-at-a-time
+          view: it is the only thing on screen saying anything about the other
+          nine. */}
       <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap' }}>
         <h2 style={{ margin: 0, font: `600 19px ${FONT_HEADING}`, color: C.midnight }}>{heading}</h2>
         <div style={{ font: `400 13px ${FONT_BODY}`, color: INK_MUTED }}>{blurb}</div>
         <div style={{ flex: 1 }} />
+        {!paged ? (
+          // The mini quiz keeps the fill bar it has always had, untouched.
+          <div
+            style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}
+            role="img"
+            aria-label={`${answeredCount} of ${items.length} answered`}
+          >
+            {items.map((item, i) => (
+              <span
+                key={item.item_number}
+                style={{
+                  width: '22px',
+                  height: '5px',
+                  borderRadius: '3px',
+                  background: i < answeredCount ? C.sunset : ink(0.13),
+                }}
+              />
+            ))}
+          </div>
+        ) : (
         <div
-          style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}
+          className="um-practice-strip"
+          // flex-end because the current segment is TALLER, not just a different
+          // colour, so the row has to hang from a common baseline.
+          style={{ display: 'flex', alignItems: 'flex-end', gap: '4px', flexWrap: 'wrap' }}
           role="img"
-          aria-label={`${answeredCount} of ${items.length} answered`}
+          aria-label={`Problem ${current + 1} of ${items.length}. ${correctCount} correct, ${missedCount} missed, ${answeredCount} answered.`}
         >
-          {items.map((item, i) => (
-            <span
-              key={item.item_number}
-              style={{
-                width: '22px',
-                height: '5px',
-                borderRadius: '3px',
-                background: i < answeredCount ? C.sunset : ink(0.13),
-              }}
-            />
-          ))}
+          {items.map((item, i) => {
+            const state = segmentState(
+              item.item_number,
+              current,
+              i,
+              results[item.item_number]
+                ? { correct: results[item.item_number].isCorrect }
+                : undefined,
+              solved
+            );
+            return (
+              <span
+                key={item.item_number}
+                data-state={state}
+                style={{
+                  width: '26px',
+                  height: state === 'current' ? '10px' : '6px',
+                  background: SEGMENT_COLOUR[state],
+                }}
+              />
+            );
+          })}
         </div>
+        )}
       </div>
 
-      {items.map((item, index) => {
+      {/* One problem. `index` is the real position in the set, not a position
+          within this array, so "Problem N of M" and the legend stay honest.
+
+          items is still passed WHOLE to quizOutcome above and to GatedQuiz, so
+          the finish state and the mastery gate keep counting all of them. */}
+      {(paged ? [items[current]] : items).filter(Boolean).map((item, i) => {
+        const index = paged ? current : i;
         const result = results[item.item_number];
         const answered = Boolean(result);
         const choice = selected[item.item_number];
@@ -593,6 +704,69 @@ export default function PracticeQuiz({
           </fieldset>
         );
       })}
+
+      {/* Movement between problems.
+          
+          Deliberately NOT gated on having answered: practice is a workshop, and
+          a student who wants to look ahead or go back to one they got wrong
+          should be able to. The mastery gate on Next-to-the-quiz is the only
+          thing that holds anyone anywhere, and it is unchanged. */}
+      {paged && items.length > 1 && (
+        <nav
+          aria-label="Practice problems"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '14px',
+            flexWrap: 'wrap',
+            paddingTop: '2px',
+          }}
+        >
+          <button
+            type="button"
+            className="um-btn-outline um-practice-prev"
+            onClick={() => goTo(current - 1)}
+            disabled={current === 0}
+            style={{
+              padding: '10px 18px',
+              borderRadius: '11px',
+              border: 'none',
+              background: 'none',
+              boxShadow: hairline(current === 0 ? ink(0.08) : ink(0.2)),
+              font: `500 13.5px ${FONT_BODY}`,
+              color: current === 0 ? INK_DISABLED : ink(0.7),
+              cursor: current === 0 ? 'not-allowed' : 'pointer',
+            }}
+          >
+            &larr; Previous
+          </button>
+
+          <span style={{ ...EYEBROW, color: INK_MUTED }}>
+            {current + 1} / {items.length}
+          </span>
+
+          <div style={{ flex: 1 }} />
+
+          <button
+            type="button"
+            className="um-btn-outline um-practice-next"
+            onClick={() => goTo(current + 1)}
+            disabled={current === items.length - 1}
+            style={{
+              padding: '10px 18px',
+              borderRadius: '11px',
+              border: 'none',
+              background: 'none',
+              boxShadow: hairline(current === items.length - 1 ? ink(0.08) : ink(0.2)),
+              font: `500 13.5px ${FONT_BODY}`,
+              color: current === items.length - 1 ? INK_DISABLED : ink(0.7),
+              cursor: current === items.length - 1 ? 'not-allowed' : 'pointer',
+            }}
+          >
+            Next problem &rarr;
+          </button>
+        </nav>
+      )}
 
       {/* Closes out the quiz. Sits after the questions rather than replacing
           them, so a student can read the summary and scroll back to the

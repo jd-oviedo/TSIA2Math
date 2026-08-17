@@ -14,6 +14,7 @@
     "test:modules-density": "node scripts/verify_modules_density.mjs",
     "test:lesson-handoff": "node scripts/verify_lesson_handoff.mjs",
     "test:lesson-outline": "node scripts/verify_lesson_outline.mjs",
+    "test:practice-paging": "node scripts/verify_practice_paging.mjs",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
   },

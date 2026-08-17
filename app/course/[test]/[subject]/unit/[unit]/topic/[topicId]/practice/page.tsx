@@ -135,6 +135,10 @@ export default async function PracticePage({ params }: { params: Promise<RoutePa
       blurb={`${practiceItems.length} problems · work through at your own pace`}
       solutions={solutions}
       initialCorrect={ungated ? gates.practiceRequired : gates.practiceCorrect}
+      // The strip's cross-visit seeding. practiceSolved is per-item and already
+      // computed here for loadEarnedSolutions; an array because a Set would have
+      // to cross the server/client boundary.
+      solvedBefore={[...gates.practiceSolved]}
       required={gates.practiceRequired}
       previous={nav.previous}
       next={nav.next}
