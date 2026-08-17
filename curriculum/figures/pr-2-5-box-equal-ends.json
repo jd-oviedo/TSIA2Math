@@ -1,0 +1,10 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [0, 100],
+  "xLabel": "Score",
+  "boxes": [
+    { "label": "Group P", "min": 20, "q1": 30, "median": 40, "q3": 50, "max": 80 },
+    { "label": "Group Q", "min": 20, "q1": 48, "median": 55, "q3": 60, "max": 80, "color": "accent" }
+  ],
+  "alt": "Two box plots stacked on one shared number line of scores running from 0 to 100, marked every 10. Group P is the upper plot: minimum 20, lower quartile 30, median 40, upper quartile 50, maximum 80. Group Q is the lower plot: minimum 20, lower quartile 48, median 55, upper quartile 60, maximum 80. Both groups start at 20 and end at 80, so they share the same endpoints, but Group P's box is wider and sits further left."
+}
