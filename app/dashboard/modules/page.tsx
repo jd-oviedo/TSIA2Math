@@ -13,6 +13,7 @@ import { C } from '@/app/components/curriculum-theme';
 import { FONT_BODY } from '@/app/components/fonts';
 import { V } from '@/app/components/dashboard-theme';
 import UnitSection from './UnitSection';
+import { unitFromReferer } from './referer';
 
 // Modules. The curriculum browse surface: units, the topics inside them, and
 // how far this student has got in each. The tree is read from curriculum_topics
@@ -22,25 +23,6 @@ import UnitSection from './UnitSection';
 function topicHref(topic: TopicRow) {
   const [test, subject] = topic.course_id.split('-');
   return `/course/${test}/${subject}/unit/${topic.unit_number}/topic/${topic.topic_id}`;
-}
-
-// Which unit to open on arrival.
-//
-// Read from the Referer header rather than from the client, so the page arrives
-// already expanded and nothing flashes shut then open on hydration. The dominant
-// journey is modules -> topic -> back to modules, and re-hunting the unit you
-// just left is the exact problem collapsing creates. Any other entry, including
-// a direct visit or a bookmark, has no referer to match and every unit stays
-// collapsed, which is the intended default rather than a fallback.
-//
-// Matching is on this app's own topic route only. A referer from anywhere else
-// cannot open a unit.
-function unitFromReferer(referer: string | null): number | null {
-  if (!referer) return null;
-  const m = /\/course\/[^/]+\/[^/]+\/unit\/(\d+)\/topic\//.exec(referer);
-  if (!m) return null;
-  const n = Number(m[1]);
-  return Number.isInteger(n) ? n : null;
 }
 
 function statusOf(p: TopicProgress | undefined) {
