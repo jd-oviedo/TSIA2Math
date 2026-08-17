@@ -9,7 +9,7 @@ import { loadTopicFixture } from '@/lib/curriculum-fixture';
 import {
   getTopics,
   getTopicAttempts,
-  correctInSection,
+  correctItemsInSection,
   requiredCorrect,
   buildSequence,
   findStepIndex,
@@ -271,6 +271,13 @@ export type GateState = {
   // requirement they have no way to satisfy.
   practiceGated: boolean;
   quizGated: boolean;
+  // Which item_numbers this student has ever answered correctly, per section.
+  // Empty for an anonymous visitor, who records nothing. These drive the
+  // per-item release of worked solutions in loadEarnedSolutions below; they are
+  // deliberately NOT derived from practiceCorrect, because the snapshot that
+  // number can come from stores a count and cannot say which items.
+  practiceSolved: Set<number>;
+  quizSolved: Set<number>;
 };
 
 export const loadGates = cache(
@@ -292,6 +299,8 @@ export const loadGates = cache(
       quizRequired: requiredCorrect('quiz', quizGradable),
       practiceGated: practiceGradable > 0,
       quizGated: quizGradable > 0,
+      practiceSolved: new Set<number>(),
+      quizSolved: new Set<number>(),
     };
 
     // An anonymous visitor records nothing, so there is no stored state to
@@ -318,17 +327,89 @@ export const loadGates = cache(
     // happened. Taking the higher of the two means a snapshot that is missing
     // (migration not yet applied) or stale (a write that failed) can never lock
     // a student out of a gate they have already cleared.
+    const practiceSolved = correctItemsInSection(attempts, courseId, topicId, 'practice');
+    const quizSolved = correctItemsInSection(attempts, courseId, topicId, 'mini_quiz');
+
     return {
       ...base,
       lessonDone: Boolean(snapshot?.lesson_completed_at),
-      practiceCorrect: Math.max(
-        snapshot?.practice_correct ?? 0,
-        correctInSection(attempts, courseId, topicId, 'practice')
-      ),
-      quizCorrect: Math.max(
-        snapshot?.quiz_correct ?? 0,
-        correctInSection(attempts, courseId, topicId, 'mini_quiz')
-      ),
+      practiceCorrect: Math.max(snapshot?.practice_correct ?? 0, practiceSolved.size),
+      quizCorrect: Math.max(snapshot?.quiz_correct ?? 0, quizSolved.size),
+      practiceSolved,
+      quizSolved,
     };
+  }
+);
+
+// ─── Worked solutions, released per item ─────────────────────────────────────
+
+// The worked solutions a STUDENT has earned on one section of one topic.
+//
+// Before this, all 1,358 authored solutions were teacher-only, held back by
+// three independent layers: answer_key is not a column on
+// curriculum_topics_public at all, loadTopic only selects it when
+// requireTeacher() passes, and the split above returns empty entries for
+// everyone else. Layers 1 and 3 are unchanged. This relaxes layer 2 alone, and
+// only for items the student has already answered correctly.
+//
+// WHY A SECOND READ RATHER THAN WIDENING loadTopic'S
+// ---------------------------------------------------
+// A student's loadTopic read goes to the view on purpose: it is the thing that
+// strips correct_answer and misconception_tag out of practice_items, so the
+// answers are not withheld by code that has to remember to withhold them, they
+// are absent from the query's result. Pointing that read at the base table to
+// pick up answer_key would hand the student every correct_answer on the topic
+// as a side effect -- the exact protection the view exists to provide. So the
+// answer key is fetched separately, narrowly, and filtered before it is
+// returned. The view is untouched and this stays server-side on the admin
+// client, same as every other read of answer-bearing data.
+//
+// COST. This is an extra query on the practice and quiz pages, and answer_key
+// is the heaviest column on the row. It is skipped entirely for anonymous
+// visitors and for any student with nothing solved in the section yet, so it
+// costs nothing until a student has earned something, and the lesson page never
+// calls it at all.
+//
+// WHAT COMES BACK IS WHAT IS SERIALIZED. PracticeQuiz is a client component, so
+// whatever this returns crosses to the browser. Filtering here rather than in
+// the component is the difference between releasing one solution and shipping
+// all fourteen with thirteen of them merely not rendered.
+export const loadEarnedSolutions = cache(
+  async (
+    studentId: string | null,
+    courseId: string,
+    topicId: string,
+    section: 'practice' | 'mini_quiz'
+  ): Promise<Record<number, string> | undefined> => {
+    // Anonymous visitors write no attempts, so there is nothing they can have
+    // earned. Unchanged by this feature, deliberately: what a signed-out
+    // student sees is a product decision, not one to make here.
+    if (!studentId) return undefined;
+
+    const gates = await loadGates(studentId, courseId, topicId);
+    const solved = section === 'practice' ? gates.practiceSolved : gates.quizSolved;
+    if (solved.size === 0) return undefined;
+
+    // Same dev-only fixture the topic read honours, so a topic being previewed
+    // from source markdown behaves the same way here as it does above.
+    const fixture = loadTopicFixture(courseId, topicId) as
+      | { answer_key?: { raw?: string } | null }
+      | null;
+
+    let raw = fixture?.answer_key?.raw ?? '';
+    if (!fixture) {
+      const admin = createAdminClient();
+      const { data } = await admin
+        .from('curriculum_topics')
+        .select('answer_key')
+        .eq('course_id', courseId)
+        .eq('topic_id', topicId)
+        .maybeSingle();
+      raw = (data as { answer_key?: { raw?: string } | null } | null)?.answer_key?.raw ?? '';
+    }
+    if (!raw) return undefined;
+
+    const entries = splitAnswerKey(raw)[section];
+    return solutionsFor(entries.filter((entry) => solved.has(entry.item_number)));
   }
 );

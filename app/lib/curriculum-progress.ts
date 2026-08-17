@@ -1,5 +1,6 @@
 import { cache } from 'react';
 import { createAdminClient } from './supabase-admin';
+import { correctInSection, type AttemptRow } from './attempt-sets';
 
 // The course sequence and the mastery gate maths, in one place.
 //
@@ -61,14 +62,12 @@ function sectionShape(section: StoredSection | undefined): SectionShape {
   };
 }
 
-export type AttemptRow = {
-  course_id: string;
-  topic_id: string;
-  section: string;
-  item_number: number;
-  is_correct: boolean;
-  created_at: string;
-};
+// Pure reductions over the attempt log live in attempt-sets.ts, which imports
+// nothing, so `node --test` and the fault proofs can load them without pulling
+// in the admin Supabase client. Re-exported so every existing caller is
+// unaffected.
+export type { AttemptRow } from './attempt-sets';
+export { correctItemsInSection, correctInSection } from './attempt-sets';
 
 export function topicKey(courseId: string, topicId: string): string {
   return `${courseId}:${topicId}`;
@@ -196,27 +195,6 @@ export async function getTopicAttempts(
     .order('created_at', { ascending: false });
 
   return data ?? [];
-}
-
-// How many distinct items in a section this student has ever got right.
-//
-// Distinct on item_number, and "ever" rather than "most recently": the attempt
-// log is append-only and a retry adds a row rather than replacing one, so a
-// student who gets an item right and later fumbles a re-attempt has still
-// demonstrated it. Mastery counts up, never down.
-export function correctInSection(
-  attempts: AttemptRow[],
-  courseId: string,
-  topicId: string,
-  section: 'practice' | 'mini_quiz'
-): number {
-  const items = new Set<number>();
-  for (const a of attempts) {
-    if (a.course_id === courseId && a.topic_id === topicId && a.section === section && a.is_correct) {
-      items.add(a.item_number);
-    }
-  }
-  return items.size;
 }
 
 export function progressByTopic(

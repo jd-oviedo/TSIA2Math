@@ -3,6 +3,7 @@ import {
   loadTopic,
   loadNavigation,
   loadGates,
+  loadEarnedSolutions,
   solutionsFor,
   type RouteParams,
 } from '../topic-data';
@@ -35,6 +36,19 @@ export default async function QuizPage({ params }: { params: Promise<RouteParams
     loadNavigation(courseId, topic.topic_id, 'quiz'),
     loadGates(authSession?.user?.id ?? null, courseId, topic.topic_id),
   ]);
+
+  // Teachers get every worked solution, unconditionally, exactly as before.
+  // Students get only the ones they have already answered correctly; the filter
+  // runs server-side, so an unearned solution is never serialized to the page.
+  // Anonymous visitors get undefined from loadEarnedSolutions and are unchanged.
+  const solutions = teacher
+    ? solutionsFor(answerKey.mini_quiz)
+    : await loadEarnedSolutions(
+        authSession?.user?.id ?? null,
+        courseId,
+        topic.topic_id,
+        'mini_quiz'
+      );
 
   const ungated = Boolean(teacher) || !gates.quizGated;
 
@@ -88,7 +102,7 @@ export default async function QuizPage({ params }: { params: Promise<RouteParams
           items={quizItems}
           heading="Mini quiz"
           blurb={`${quizItems.length} questions · closes out the topic`}
-          solutions={solutionsFor(answerKey.mini_quiz)}
+          solutions={solutions}
           initialCorrect={ungated ? gates.quizRequired : gates.quizCorrect}
           required={gates.quizRequired}
           previous={nav.previous}
