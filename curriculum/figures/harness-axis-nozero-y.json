@@ -1,0 +1,8 @@
+{
+  "_note": "HARNESS REGRESSION FIXTURE, not content. yRange excludes 0, so the x tick labels cannot be placed from Y(0). This is the exact shape that emitted labels at y=749.8 while passing every geometric assertion.",
+  "type": "coordinate_plane",
+  "xRange": [0, 5],
+  "yRange": [60, 85],
+  "points": [{ "x": 2, "y": 70 }, { "x": 4, "y": 80 }],
+  "alt": "A plot whose vertical axis runs from 60 to 85, so it does not contain zero. Two points are marked, at 2 comma 70 and at 4 comma 80."
+}

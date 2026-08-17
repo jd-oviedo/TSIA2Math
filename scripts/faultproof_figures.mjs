@@ -24,7 +24,7 @@
 // EVERY FAULT RUNS BETWEEN TWO CLEAN CONTROLS. A fault that fails proves nothing
 // on its own, because it does not distinguish the fault from the harness.
 import { readFileSync } from 'fs';
-import { figureFromSpec, verifyPlane } from './make_figure.mjs';
+import { figureFromSpec, verifyPlane, verifyBounds } from './make_figure.mjs';
 
 const REGIONS = {
   bars: /<rect data-bar="(\d+)"/g,
@@ -33,6 +33,8 @@ const REGIONS = {
   medians: /<line data-median="(\d+)"/g,
   whiskers: /<line data-whisker="(\d+)(lo|hi)"/g,
   lanes: /<text data-lane="(\d+)"/g,
+  series: /<polyline data-series="(\d+)"/g,
+  texts: /<text /g,
 };
 const census = svg => Object.fromEntries(
   Object.entries(REGIONS).map(([k, re]) => [k, [...svg.matchAll(re)].length]));
@@ -47,6 +49,8 @@ class Harness {
   }
   control(tag) {
     const all = verifyPlane(this.spec, this.clean);
+    verifyBounds(this.clean, (name, actual, expected, tol) =>
+      all.push({ name, actual, expected, ok: Math.abs(actual - expected) <= tol }));
     const bad = all.filter(c => !c.ok);
     const good = bad.length === 0 && all.length > 0;
     ok &&= good;
@@ -76,9 +80,14 @@ class Harness {
       ok = false; return;
     }
 
+    // Bounds assertions name their first offender, so the expected-failure list
+    // is matched as a substring rather than an equality.
     const bad = verifyPlane(this.spec, svg).filter(c => !c.ok);
+    verifyBounds(svg, (name, actual, expected, tol) => {
+      if (Math.abs(actual - expected) > tol) bad.push({ name, actual, expected, ok: false });
+    });
     const names = bad.map(b => b.name);
-    const missing = expect.filter(e => !names.includes(e));
+    const missing = expect.filter(e => !names.some(nm => nm.includes(e)));
     const caught = bad.length > 0 && missing.length === 0;
     ok &&= caught;
     console.log(`  [${caught ? 'PASS' : 'PROOF FAILED'}] ${label}`);
@@ -177,5 +186,64 @@ box.fault('boxes not of equal height (Team B flattened)',
 console.log('');
 box.control('after');
 
-console.log(`\nRESULT: ${ok ? 'the bar and box checks can fail, and do' : 'A PROOF OR CONTROL FAILED'}`);
+// ─── SERIES (LINE GRAPHS) ────────────────────────────────────────────────────
+console.log('\n\nSERIES FAULT PROOFS  (pr-1-3-quiz-scores-line, 4 vertices)\n');
+const ser = new Harness('curriculum/figures/pr-1-3-quiz-scores-line.json');
+ser.control('before');
+console.log('\nfaults injected into the emitted SVG:');
+
+// A vertex at the wrong position: week 2 drawn at the wrong score.
+ser.fault('series vertex at the wrong position (week 2 drawn low)',
+  'points="99.6,133.6 155.2,94.4 210.8,149.28 266.4,55.2"',
+  'points="99.6,133.6 155.2,110 210.8,149.28 266.4,55.2"',
+  ['series 0 vertex 1 y']);
+
+// The same four points joined in a different order is a different picture and a
+// different claim about the trend, so it must not pass.
+ser.fault('series drawn through the wrong point order (weeks 2 and 3 swapped)',
+  'points="99.6,133.6 155.2,94.4 210.8,149.28 266.4,55.2"',
+  'points="99.6,133.6 210.8,149.28 155.2,94.4 266.4,55.2"',
+  ['series 0 vertex 1 x', 'series 0 vertex 1 y',
+    'series 0 vertex 2 x', 'series 0 vertex 2 y']);
+
+console.log('');
+ser.control('after');
+
+// ─── BOUNDS: THE LEGIBILITY GAP ──────────────────────────────────────────────
+//
+// The actual regression guard. Each of these three specs has an axis range that
+// excludes zero, which is the shape that produced labels 500px off a 250-tall
+// canvas while --verify reported 9 of 9. The assertion is a bounds check on
+// emitted coordinates, never a visual judgement.
+//
+// y="749.8" below is not an invented number: it is the coordinate measured on the
+// original defect, reproduced here so the guard is proven against the real thing.
+console.log('\n\nBOUNDS FAULT PROOFS  (axis ranges excluding zero)\n');
+const BOUNDS_CASES = [
+  ['harness-axis-nozero-x', 'x excludes 0', '<text x="22" y="231.5" text-anchor="end">-1</text>',
+    '<text x="-40" y="231.5" text-anchor="end">-1</text>'],
+  ['harness-axis-nozero-y', 'y excludes 0', '<text x="28" y="241" text-anchor="middle">0</text>',
+    '<text x="28" y="749.8" text-anchor="middle">0</text>'],
+  ['harness-axis-nozero-both', 'both exclude 0', '<text x="28" y="241" text-anchor="middle">100</text>',
+    '<text x="28" y="749.8" text-anchor="middle">100</text>'],
+];
+for (const [name, why, old, neu] of BOUNDS_CASES) {
+  const h = new Harness(`curriculum/figures/${name}.json`);
+  console.log(`${name}  (${why})`);
+  h.control('before');
+  // The clean control must ALSO show the labels are actually inside the canvas,
+  // otherwise "0 failures" could mean the check is not looking.
+  const vb = h.clean.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/);
+  const labels = [...h.clean.matchAll(/<text x="([-\d.]+)" y="([-\d.]+)"/g)].map(m => [+m[1], +m[2]]);
+  const inside = labels.every(([x, y]) => x >= 0 && x <= +vb[1] && y >= 0 && y <= +vb[2]);
+  ok &&= inside && labels.length > 0;
+  console.log(`  [${inside && labels.length ? 'PASS' : 'PROOF FAILED'}] ${labels.length} labels, all inside 0..${vb[1]} x 0..${vb[2]}`
+    + ` (lowest y = ${Math.max(...labels.map(l => l[1]))})`);
+  h.fault('a label pushed outside the viewBox', old, neu,
+    ['all marks and labels inside the viewBox']);
+  h.control('after');
+  console.log('');
+}
+
+console.log(`\nRESULT: ${ok ? 'the bar, box, series and bounds checks can fail, and do' : 'A PROOF OR CONTROL FAILED'}`);
 process.exit(ok ? 0 : 1);

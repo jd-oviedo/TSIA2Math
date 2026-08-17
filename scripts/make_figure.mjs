@@ -313,9 +313,25 @@ function buildSvg(spec) {
   // default xRange would put X(0) somewhere inside the plot. Symmetrically, a
   // categorical y has no Y(0) to hang the x tick labels off, so they sit on the
   // plot floor.
-  const axisX = categorical ? pad.l : X(0);
+  //
+  // AND the numeric plane needs the same substitution when its own origin is off
+  // the canvas. `Y(0) + 13` and `X(0) - 6` assume the origin is somewhere on the
+  // picture. A quiz-score axis of [60, 85] has no y = 0, so Y(0) lands far below
+  // the frame and the x tick labels were emitted at y = 749.8 on a 250-tall
+  // canvas: geometrically consistent, completely off the page, and --verify
+  // reported 9/9 because the labels were still linear and invertible.
+  //
+  // The fallback is a FALLBACK and not a replacement. Substituting the plot floor
+  // outright would move every existing figure's labels, because Y(0) is NOT the
+  // floor whenever yRange starts below zero: on a [-1, 9] axis the origin sits
+  // one unit up, and the labels hang under the drawn axis rather than under the
+  // frame. So the origin is used wherever it is on the canvas, which is every
+  // pre-existing spec, and the frame edge only steps in when it is not.
+  const originOnCanvasY = yRange[0] <= 0 && yRange[1] >= 0;
+  const originOnCanvasX = xRange[0] <= 0 && xRange[1] >= 0;
+  const axisX = categorical ? pad.l : (originOnCanvasX ? X(0) : pad.l);
   const floorY = H - pad.b;
-  const axisY = categoricalY ? floorY : Y(0);
+  const axisY = categoricalY ? floorY : (originOnCanvasY ? Y(0) : floorY);
 
   parts.push(`<rect width="${W}" height="${H}" fill="${SURFACE}" rx="10"/>`);
 
@@ -400,10 +416,18 @@ function buildSvg(spec) {
     parts.push(`<line x1="${pad.l}" y1="${floorY}" x2="${W - pad.r}" y2="${floorY}" stroke="${INK}" stroke-width="1.6"/>`);
     parts.push(`<line x1="${pad.l}" y1="${floorY}" x2="${pad.l}" y2="${pad.t}" stroke="${INK}" stroke-width="1.6"/>`);
   } else {
-    if (yRange[0] <= 0 && yRange[1] >= 0)
+    // An axis is drawn through the origin when the origin is on the canvas, and
+    // along the frame edge when it is not, so a plot whose range excludes zero
+    // still has an axis for its labels to hang off. Existing figures all contain
+    // the origin and take the first branch exactly as before.
+    if (originOnCanvasY)
       parts.push(`<line x1="${X(xRange[0])}" y1="${Y(0)}" x2="${X(xRange[1])}" y2="${Y(0)}" stroke="${INK}" stroke-width="1.6"/>`);
-    if (xRange[0] <= 0 && xRange[1] >= 0)
+    else
+      parts.push(`<line x1="${pad.l}" y1="${floorY}" x2="${W - pad.r}" y2="${floorY}" stroke="${INK}" stroke-width="1.6"/>`);
+    if (originOnCanvasX)
       parts.push(`<line x1="${X(0)}" y1="${Y(yRange[0])}" x2="${X(0)}" y2="${Y(yRange[1])}" stroke="${INK}" stroke-width="1.6"/>`);
+    else
+      parts.push(`<line x1="${pad.l}" y1="${floorY}" x2="${pad.l}" y2="${pad.t}" stroke="${INK}" stroke-width="1.6"/>`);
   }
 
   // Axis numbers, origin skipped to avoid the two labels colliding.
@@ -419,14 +443,14 @@ function buildSvg(spec) {
   // real reading on it and is printed; on a numeric plane the origin is skipped
   // to stop the two axis labels colliding.
   if (!categorical)
-    for (const v of gx) if (categoricalY || v !== 0)
-      parts.push(`<text x="${X(v)}" y="${categoricalY ? n(axisY + 13) : Y(0) + 13}" text-anchor="middle">${v}</text>`);
+    for (const v of gx) if (categoricalY || !originOnCanvasY || v !== 0)
+      parts.push(`<text x="${X(v)}" y="${originOnCanvasY && !categoricalY ? Y(0) + 13 : n(axisY + 13)}" text-anchor="middle">${v}</text>`);
   // NB: the numeric branch keeps the exact expression it always had, floating
   // point artefacts and all. Wrapping it in n() would re-round every existing
   // figure's y labels and change bytes that are already base64'd into content.
   if (!categoricalY)
-    for (const v of gy) if (categorical || v !== 0)
-      parts.push(`<text x="${categorical ? n(axisX - 6) : X(0) - 6}" y="${Y(v) + 3.5}" text-anchor="end">${v}</text>`);
+    for (const v of gy) if (categorical || !originOnCanvasX || v !== 0)
+      parts.push(`<text x="${originOnCanvasX && !categorical ? X(0) - 6 : n(axisX - 6)}" y="${Y(v) + 3.5}" text-anchor="end">${v}</text>`);
   if (categorical) {
     const { centre } = barLayout(bars, pad);
     const yBase = Y(yRange[0]);
@@ -487,6 +511,39 @@ function buildSvg(spec) {
     }
   });
 
+  // Series: a polyline through declared points, which is what a LINE GRAPH is.
+  //
+  // This is a NEW MARK, not a change to `lines`, and the distinction is the whole
+  // reason it exists. A `line` is an infinite straight line given as {m, b} or
+  // {through}, and lineEndpoints CLIPS IT TO THE WHOLE WINDOW. Asked to join
+  // (1, 70) to (2, 75) it emits a stroke spanning the entire plot, because that
+  // is what an infinite line does. Line graphs were assumed reachable through
+  // points + lines for two rounds; tested, they were not, and no existing spec
+  // changes behaviour because nothing that uses `lines` is touched here.
+  //
+  // Vertices carry data-vertex so they can never be picked up by the marked-point
+  // check, whose regex matches `<circle cx="` and indexes positionally into
+  // spec.points. A series marker landing in that list would silently shift every
+  // subsequent point's index.
+  (spec.series ?? []).forEach((S, i) => {
+    const pts = S.points ?? [];
+    if (pts.length < 2) throw new Error(`series ${i} needs at least two points to be a line graph`);
+    for (const [px, py] of pts) {
+      if (px < xRange[0] || px > xRange[1] || py < yRange[0] || py > yRange[1])
+        throw new Error(`series ${i} has a point (${px}, ${py}) outside the plot window`);
+    }
+    const stroke = S.color === 'accent' ? ACCENT : LINE;
+    const dash = S.style === 'dashed' ? ' stroke-dasharray="7 5"' : '';
+    parts.push(`<polyline data-series="${i}" points="${pts.map(([px, py]) => `${X(px)},${Y(py)}`).join(' ')}" fill="none" stroke="${stroke}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"${dash}/>`);
+    if (S.markers !== false)
+      pts.forEach(([px, py], k) =>
+        parts.push(`<circle data-vertex="${i}-${k}" cx="${X(px)}" cy="${Y(py)}" r="3.5" fill="${stroke}" stroke="${SURFACE}" stroke-width="1.5"/>`));
+    if (S.label) {
+      const [lx, ly] = S.labelAt ?? pts[pts.length - 1];
+      parts.push(`<text x="${X(lx) + (S.labelDx ?? 6)}" y="${Y(ly) + (S.labelDy ?? -8)}" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" font-weight="600" fill="${stroke}">${esc(S.label)}</text>`);
+    }
+  });
+
   // Marked points
   (spec.points ?? []).forEach(P => {
     parts.push(`<circle cx="${X(P.x)}" cy="${Y(P.y)}" r="4.5" fill="${P.color === 'line' ? LINE : ACCENT}" stroke="${SURFACE}" stroke-width="1.5"/>`);
@@ -526,7 +583,16 @@ export function figureFromSpec(spec) {
 // stated here rather than left to be rediscovered:
 //
 //   BUILDER FIDELITY   does the emitted SVG match the spec?        YES, checked
+//   LEGIBILITY         is the emitted SVG on the page?             YES, checked
+//                                                                  (verifyBounds)
 //   SPEC CONSISTENCY   is the spec's own claim true?               NO, never
+//
+// The middle row was added after a figure passed 9 of 9 assertions while emitting
+// its x tick labels at y = 749.8 on a 250-tall canvas. The tick-map recomputation
+// cannot see that class at all: the labels were linear and the inversion through
+// them recovered every declared value, so every check it can run, passed. Bounds
+// is a different kind of assertion rather than a stronger one, and it is the
+// cheapest thing in this file.
 //
 // verifyFigure(spec) calls the builder internally and verifies the result
 // against the same spec, so the two move together. It can prove the drawing is
@@ -555,9 +621,15 @@ export function figureFromSpec(spec) {
 // separate the two sides, which is what makes fault injection possible at all: a
 // fault injected into the input of BOTH sides of a comparison is not a fault.
 export function verifyFigure(spec) {
-  if (SHAPE_TYPES.includes(spec.type)) return verifyShape(spec, buildShape(spec));
-  if (spec.type === 'coordinate_plane') return verifyPlane(spec, buildSvg(spec));
-  return [];
+  const svg = SHAPE_TYPES.includes(spec.type) ? buildShape(spec) : buildSvg(spec);
+  const checks = SHAPE_TYPES.includes(spec.type) ? verifyShape(spec, svg)
+    : spec.type === 'coordinate_plane' ? verifyPlane(spec, svg)
+      : [];
+  // Applies to EVERY figure type, including the shapes, because being on the
+  // page is not a property of any one mark. See the legibility note further down.
+  verifyBounds(svg, (name, actual, expected, tol) =>
+    checks.push({ name, actual: +actual.toFixed(4), expected: +expected.toFixed(4), ok: Math.abs(actual - expected) <= tol }));
+  return checks;
 }
 
 // Cartesian plots are measured by recovering the data-to-pixel map from the
@@ -643,6 +715,7 @@ export function verifyPlane(spec, svg) {
     add(`line ${i} intercept`, b, eb, 0.01 * yScale);
   });
 
+  verifySeries(spec, svg, ix, iy, add);
   verifyCurves(spec, svg, ix, iy, add);
 
   // Marked points must sit where the spec puts them, not merely near the line.
@@ -717,6 +790,94 @@ export function verifyBars(spec, svg, iy, add) {
     const ws = rects.map(r => +r[4]);
     add('bars equal width', Math.max(...ws) - Math.min(...ws), 0, 0.5);
   }
+}
+
+// Series, measured back out of the emitted polyline. Every vertex is pushed back
+// through the tick-label map and compared with the declared point, in order, the
+// way verifyCurves recovers a curve from its emitted vertices.
+//
+// ORDER IS PART OF THE CLAIM. A line graph joining the same points in a different
+// order is a different picture and tells a different story about the trend, so
+// the comparison is positional and never set-based: vertex k must be point k.
+export function verifySeries(spec, svg, ix, iy, add) {
+  const series = spec.series ?? [];
+  const polys = [...svg.matchAll(/<polyline data-series="(\d+)" points="([^"]+)"/g)];
+  if (!series.length && !polys.length) return;
+
+  add('every declared series drawn', polys.length, series.length, 0);
+  const xTol = 0.01 * Math.abs(spec.xRange[1] - spec.xRange[0]);
+  const yTol = 0.01 * Math.abs(spec.yRange[1] - spec.yRange[0]);
+
+  series.forEach((S, i) => {
+    const P = polys[i];
+    if (!P) return add(`series ${i} drawn`, 0, 1, 0);
+    const verts = P[2].trim().split(/\s+/).map(p => p.split(',').map(Number));
+    const declared = S.points ?? [];
+    add(`series ${i} vertex count`, verts.length, declared.length, 0);
+    declared.forEach(([dx, dy], k) => {
+      const v = verts[k];
+      if (!v) return add(`series ${i} vertex ${k} drawn`, 0, 1, 0);
+      add(`series ${i} vertex ${k} x`, ix(v[0]), dx, xTol);
+      add(`series ${i} vertex ${k} y`, iy(v[1]), dy, yTol);
+    });
+  });
+}
+
+// ─── THE LEGIBILITY GAP ──────────────────────────────────────────────────────
+//
+// Every geometric check in this file recomputes data positions from the tick
+// labels, and that machinery is structurally incapable of noticing that the
+// picture is off the page. Measured: a figure whose x tick labels were emitted at
+// y = 749.8 on a 250-tall canvas passed 9 of 9 assertions, because the labels
+// were still perfectly linear and the inversion through them still recovered
+// every declared value. The geometry was right and the artifact was unusable.
+//
+// So this is a different KIND of assertion, not a stronger version of the others:
+//
+//   --verify (tick-map)  the SVG matches the spec
+//   bounds check         the SVG is on the page
+//   neither              the spec's own claim is true    <- see verifyFigure
+//
+// Deliberately ONE assertion per figure carrying a count of offenders, rather
+// than one per element, so a 60-spec run stays readable. The first offender is
+// named in the failure message.
+//
+// Text is checked at its ANCHOR POINT only. A string has width and the anchor
+// says where it is placed, not how far it runs; several legitimate figures
+// right-anchor a label on the frame edge at x = 322 of 340, so measuring extent
+// would false-fire on correct output. The anchor is what the builder controls and
+// what being "on the page" means here.
+const BOUNDS_MARKS = [
+  [/<text x="([-\d.]+)" y="([-\d.]+)"/g, m => [[+m[1], +m[2]]], 'text'],
+  [/<circle[^>]*? cx="([-\d.]+)" cy="([-\d.]+)"/g, m => [[+m[1], +m[2]]], 'circle'],
+  [/<line[^>]*? x1="([-\d.]+)" y1="([-\d.]+)" x2="([-\d.]+)" y2="([-\d.]+)"/g,
+    m => [[+m[1], +m[2]], [+m[3], +m[4]]], 'line'],
+  [/<rect[^>]*? x="([-\d.]+)" y="([-\d.]+)" width="([-\d.]+)" height="([-\d.]+)"/g,
+    m => [[+m[1], +m[2]], [+m[1] + +m[3], +m[2] + +m[4]]], 'rect'],
+  [/<polyline[^>]*? points="([^"]+)"/g,
+    m => m[1].trim().split(/\s+/).map(p => p.split(',').map(Number)), 'polyline'],
+  [/<polygon[^>]*? points="([^"]+)"/g,
+    m => m[1].trim().split(/\s+/).map(p => p.split(',').map(Number)), 'polygon'],
+];
+
+export function verifyBounds(svg, add) {
+  const vb = svg.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/);
+  if (!vb) return add('viewBox declared', 0, 1, 0);
+  const [w, h] = [Number(vb[1]), Number(vb[2])];
+  let out = 0, first = null;
+  for (const [re, get, kind] of BOUNDS_MARKS) {
+    for (const m of svg.matchAll(re)) {
+      for (const [x, y] of get(m)) {
+        if (!Number.isFinite(x) || !Number.isFinite(y)) continue;
+        if (x < 0 || x > w || y < 0 || y > h) {
+          out++;
+          if (!first) first = `${kind} at (${x}, ${y}) outside 0..${w} x 0..${h}`;
+        }
+      }
+    }
+  }
+  add(first ? `all marks and labels inside the viewBox (${first})`
+    : 'all marks and labels inside the viewBox', out, 0, 0);
 }
 
 // Box plots, measured back out of the emitted SVG. The mirror of verifyBars:

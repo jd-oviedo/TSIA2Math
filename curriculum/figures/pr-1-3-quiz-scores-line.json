@@ -1,0 +1,11 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [0, 5],
+  "yRange": [60, 85],
+  "xLabel": "Week",
+  "yLabel": "Score",
+  "series": [
+    { "points": [[1, 70], [2, 75], [3, 68], [4, 80]] }
+  ],
+  "alt": "A line graph of weekly quiz scores. The horizontal axis is Week, running from 0 to 5, and the vertical axis is Score, running from 60 to 85 and marked every 5. Four points are plotted and joined in order: Week 1 at 70, Week 2 at 75, Week 3 at 68, and Week 4 at 80. The line rises from Week 1 to Week 2, falls to its lowest point at Week 3, then rises to its highest point at Week 4."
+}
