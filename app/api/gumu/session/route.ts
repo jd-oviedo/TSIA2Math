@@ -76,10 +76,37 @@ async function resolveFlagged(
   session: GumuSession,
   reason: "turn_cap" | "student_gave_up"
 ) {
-  await admin
+  // `reason` used to exist only to pick a sentence for the teacher's
+  // notification below, and was then discarded. It is recorded now, because it
+  // is the difference between a student who was SHOWN the answer and one who
+  // simply ran out of turns -- and because for a self-serve student with no
+  // teacher, that notification is never written, so nothing recorded it at all.
+  // See sql/gumu_sessions_resolution.sql.
+  //
+  // THE ERROR IS CHECKED. It was not, and a failed update here is the worst
+  // shape of silent failure in this route: `status` stays 'active', so
+  // gumu_sessions_one_active_per_item -- a partial unique index on exactly that
+  // status -- then refuses every future session on this item for this student.
+  // The reveal response still returns the answer and the teacher is still
+  // notified, so the student is locked out of GUMU on that item forever and
+  // nothing anywhere says so. Logged rather than thrown, for the same reason
+  // the notification failure below is: the conversation has already concluded
+  // correctly and should not error out over a bookkeeping write.
+  const { error: resolveError } = await admin
     .from("gumu_sessions")
-    .update({ status: "resolved_flagged", resolved_at: new Date().toISOString() })
+    .update({
+      status: "resolved_flagged",
+      resolution: reason,
+      resolved_at: new Date().toISOString(),
+    })
     .eq("id", session.id);
+
+  if (resolveError) {
+    console.error(
+      `gumu_sessions resolve failed (session ${session.id}, reason ${reason})`,
+      resolveError
+    );
+  }
 
   // The teacher is whoever owns the class the student is actively enrolled in.
   // A student in no class produces no notification, which is expected, not an

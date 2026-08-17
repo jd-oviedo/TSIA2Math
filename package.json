@@ -9,6 +9,7 @@
     "test": "node --test \"tests/*.test.ts\"",
     "test:auth-gate": "node scripts/verify_auth_gate.mjs",
     "test:solutions": "node scripts/faultproof_earned_solutions.mjs",
+    "test:gumu-resolution": "node scripts/faultproof_gumu_resolution.mjs",
     "test:overview": "node scripts/verify_topic_overview.mjs",
     "test:quiz-finish": "node scripts/verify_quiz_finish.mjs",
     "test:modules-density": "node scripts/verify_modules_density.mjs",
