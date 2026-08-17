@@ -42,13 +42,16 @@ export const C = {
   // or paper (3.09) either, so that is standing contrast debt this palette
   // neither caused nor fixes. It is recorded as its own issue, not chased here.
 
-  // The reading band a lesson column sits on, between the page and its boxes.
+  // The lesson reading column's background. NOT APPLIED YET: the column is
+  // currently capped at 788px, so painting it would draw a stripe rather than a
+  // band, and reaching the design needs a full-width band with the measure capped
+  // inside it. That restructure is its own unit of work.
   band: '#F3EFE3',
-  // The lesson outline rail.
+  // The lesson outline rail. Applied.
   rail: '#EDE8DA',
-  // A quiet box sitting ON the band, where paper would not read as inset. Named
-  // now because it is the third rung of the ladder and the ladder is meaningless
-  // without it; nothing consumes it yet.
+  // A quiet box sitting ON the band, where paper would not read as inset -- the
+  // "Check yourself" callout is the case. NOT APPLIED YET: it has no meaning
+  // until the band exists, so it lands with the same restructure.
   quietBox: '#EDE7D6',
   midnight: '#0E0E11',
   // Deep Navy, the pre-July-2026 brand colour. It survives on exactly one
