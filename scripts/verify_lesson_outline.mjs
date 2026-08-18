@@ -62,7 +62,7 @@ await page.goto(PAGE_URL, { waitUntil: 'domcontentloaded' });
 
 const rail = page.locator('nav[aria-label="Lesson outline"]');
 const entries = rail.locator('li');
-const cards = page.locator('.um-lesson-column > section.um-prose-card');
+const cards = page.locator('.um-lesson-measure > section.um-prose-card');
 const handoff = page.locator('section[aria-labelledby="lesson-handoff-heading"]');
 const requirement = page.locator('#topic-nav-requirement');
 
@@ -85,7 +85,7 @@ await check('the outline lists every section, in the order they appear', async (
 
 await check('each card is numbered against the real total', async () => {
   const all = await page.evaluate(() =>
-    [...document.querySelectorAll('.um-lesson-column > section.um-prose-card')].map(
+    [...document.querySelectorAll('.um-lesson-measure > section.um-prose-card')].map(
       (s) => s.firstElementChild?.textContent?.trim() ?? ''
     )
   );
@@ -151,7 +151,7 @@ await check('the gate opens at the end of the LAST section, as before', async ()
 
 await check('the sentinel sits after the last section card', async () => {
   const after = await page.evaluate(() => {
-    const column = document.querySelector('.um-lesson-column');
+    const column = document.querySelector('.um-lesson-measure');
     if (!column) return false;
     const kids = [...column.children];
     const last = kids.findLastIndex((el) => el.matches('section.um-prose-card'));
@@ -165,7 +165,7 @@ await check('the sentinel sits after the last section card', async () => {
 await check('the outline has no links, and the sections have no ids to link to', async () => {
   const found = await page.evaluate(() => ({
     links: document.querySelectorAll('nav[aria-label="Lesson outline"] a').length,
-    ids: [...document.querySelectorAll('.um-lesson-column > section.um-prose-card')].filter(
+    ids: [...document.querySelectorAll('.um-lesson-measure > section.um-prose-card')].filter(
       (s) => s.id
     ).length,
   }));

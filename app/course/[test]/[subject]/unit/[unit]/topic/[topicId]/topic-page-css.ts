@@ -172,7 +172,24 @@ export const TOPIC_PAGE_CSS = `
 @media (max-width: 760px) {
   .um-topic .um-lesson-layout { flex-direction: column; gap: 0 !important; }
   .um-topic .um-lesson-rail { display: none !important; }
-  .um-topic .um-lesson-column { max-width: 100% !important; }
+  /* The cap moved to .um-lesson-measure when the column was split into a band
+     that fills and a measure that caps. Releasing it on the column would do
+     nothing now: the column is flex:1 and has no max-width to release. */
+  .um-topic .um-lesson-measure { max-width: 100% !important; }
+  /* The band keeps its own padding and is inset by .um-page's 16px rather than
+     running to the screen edge. Zeroing that padding would reach all four topic
+     routes for the sake of one, which is a wider blast radius than the band is
+     worth. */
+  /* align-self, and it is load-bearing. .um-lesson-layout sets
+     align-items: flex-start so the rail does not stretch to the column's
+     height; once the layout turns into a column, that same rule makes the band
+     shrink-wrap to its widest child instead of filling the width. Measured at
+     360px before this line existed: the band came out 680px and the page
+     scrolled sideways by 336. */
+  .um-topic .um-lesson-column {
+    align-self: stretch;
+    padding: 18px 16px !important;
+  }
   .um-topic .um-lesson-strip { display: block !important; }
   .um-topic .um-page { padding: 22px 16px 56px !important; gap: 26px !important; }
   .um-topic .um-bar { padding: 12px 16px !important; gap: 12px !important; }
