@@ -800,6 +800,27 @@ never having been asked:
 None was wrong. All four were decided in the implementer's head and surfaced only
 when asked directly what was not written down.
 
+### A restructure must re-point every probe that selects on what it moved
+
+`verify_lesson_outline` selected on `.um-lesson-column > section.um-prose-card`.
+#150 split that element into a band that paints and a measure that holds, the
+cards became children of the measure, and five checks failed on clean code
+reporting `found 0`.
+
+**That is the good direction, and it is worth being clear about why.** A stale
+selector in a POSITIVE assertion -- "there are ten cards" -- collapses to zero
+and fails loudly. The same staleness in an assertion that counts ABSENCE --
+"there are no ids on the section cards", "no links in the outline" -- would have
+passed, because a selector matching nothing satisfies it perfectly. The check
+would report a property it had stopped measuring.
+
+So: after any structural change, re-point every probe that selects on the
+structure that moved, and **look at the absence-based assertions first** -- they
+are the ones that will not tell you. Pair each with a positive on the same page
+where you can: `scripts/verify_gumu_tier.mjs` asserts a card rendered and was
+graded before asserting no GUMU is on it, precisely so the negative cannot pass
+against a page that failed to render.
+
 ### A check that cannot load is indistinguishable from a check that passes
 
 **And a PR body listing the probes that DID run is true and incomplete unless it

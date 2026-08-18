@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import GumuAvatar from './GumuAvatar';
-import { C, ink, MATH_LINE_HEIGHT, INK_MUTED } from '@/app/components/curriculum-theme';
+import { C, ink, onDark, RADIUS, hairline, MATH_LINE_HEIGHT, INK_MUTED } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // GUMU's chat panel. Inline expansion under the item, not a modal, matching
@@ -44,6 +44,9 @@ export default function GumuChat({
   onRevealAnswer,
 }: Props) {
   const [started, setStarted] = useState(false);
+  // Local, non-persistent, and only ever read in the pre-session branch. Nothing
+  // stores it: a fresh mount offers the panel again.
+  const [dismissed, setDismissed] = useState(false);
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [draft, setDraft] = useState('');
@@ -151,34 +154,98 @@ export default function GumuChat({
     }
   }
 
+  // THE REMEDIATION PANEL, and it is presentational.
+  //
+  // It replaces a bare Sunset Orange button. GUMU is introduced on the dark
+  // surface he owns, says what he is offering, and gives a way to decline --
+  // which the button did not: the only way to refuse was to ignore it.
+  //
+  // THE OPENING LINE IS STATIC COPY, NOT A MESSAGE FROM GUMU. The design writes
+  // a real diagnosis here ("That is trap 1."), and the only way to produce one
+  // is start(), which INSERTS a gumu_sessions row with status 'active'. Doing
+  // that before the student has agreed would open a session nobody consented to,
+  // write a row for every miss whether or not anyone engaged, and need a fourth
+  // `resolution` value for "opened, never entered" -- which the CHECK constraint
+  // in sql/gumu_sessions_resolution.sql forbids on purpose. Nothing here calls
+  // start() until the student presses the button.
+  //
+  // "Not now" IS PRE-SESSION ONLY, and that is load-bearing rather than tidy.
+  // It is local state and dismisses nothing but this panel. A dismiss reachable
+  // once a session is OPEN would unmount GumuChat while the provider still
+  // counts it -- solutionsPaused stuck true for the rest of the page load with
+  // nothing on screen to close, which is exactly the bug #140 fixed for page
+  // turns. The path back is unchanged: "Try this one again" clears the result,
+  // this component unmounts, and answering wrong again brings it back fresh.
   if (!started) {
+    if (dismissed) return null;
+
     return (
-      <div style={{ marginTop: '18px' }}>
-        <button
-          type="button"
-          className="um-btn-primary"
-          onClick={start}
-          disabled={pending}
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '10px',
-            padding: '10px 20px 10px 12px',
-            borderRadius: '11px',
-            border: 'none',
-            background: C.sunset,
-            boxShadow: `0 2px 0 ${C.sunsetShadow}`,
-            font: `600 15px ${FONT_BODY}`,
-            color: C.midnight,
-            cursor: pending ? 'wait' : 'pointer',
-          }}
-        >
-          {/* Plated: on the Sunset Orange button his collar is the same orange,
-              and bare he smears into it. */}
-          <GumuAvatar size={30} plate title="" />
-          {pending ? 'Starting…' : 'Work through it with GUMU'}
-        </button>
-        {error && <ErrorLine text={error} />}
+      <div
+        className="um-gumu-panel"
+        style={{
+          marginTop: '18px',
+          display: 'flex',
+          gap: '16px',
+          padding: '18px 20px',
+          borderRadius: RADIUS,
+          background: C.gumuBanner,
+        }}
+      >
+        <GumuAvatar size={44} plate title="" />
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <div style={{ font: `600 15px ${FONT_HEADING}`, color: C.sand }}>
+            Let&apos;s figure out where it slipped.
+          </div>
+          <div
+            style={{
+              maxWidth: '460px',
+              font: `400 13.5px ${FONT_BODY}`,
+              lineHeight: 1.6,
+              color: onDark(0.6),
+            }}
+          >
+            I&apos;ll take you through it a step at a time rather than just handing over the
+            answer. Stop whenever you like.
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '6px' }}>
+            <button
+              type="button"
+              className="um-gumu-start"
+              onClick={start}
+              disabled={pending}
+              style={{
+                minHeight: 44,
+                padding: '0 18px',
+                borderRadius: RADIUS,
+                border: 'none',
+                background: 'transparent',
+                boxShadow: hairline(onDark(0.28)),
+                font: `500 13px ${FONT_BODY}`,
+                color: C.sand,
+                cursor: pending ? 'wait' : 'pointer',
+              }}
+            >
+              {pending ? 'Starting…' : 'Talk it through'}
+            </button>
+            <button
+              type="button"
+              className="um-gumu-dismiss"
+              onClick={() => setDismissed(true)}
+              style={{
+                minHeight: 44,
+                padding: '0 8px',
+                border: 'none',
+                background: 'none',
+                font: `400 13px ${FONT_BODY}`,
+                color: onDark(0.5),
+                cursor: 'pointer',
+              }}
+            >
+              Not now
+            </button>
+          </div>
+          {error && <ErrorLine text={error} />}
+        </div>
       </div>
     );
   }
