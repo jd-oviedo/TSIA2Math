@@ -1,4 +1,6 @@
+import { headers } from 'next/headers';
 import { loadTopic, type RouteParams } from './topic-data';
+import { activeTopicPart } from '@/app/lib/topic-part-route';
 import { GumuGateProvider } from './GumuGate';
 import TopicChrome from './TopicChrome';
 import ComingSoonTopic from './ComingSoonTopic';
@@ -25,6 +27,14 @@ export default async function TopicLayout({
   const { topic, authSession, signInHref, teacher } = await loadTopic(resolved);
   const subjectLabel = resolved.subject.replace(/-/g, ' ');
 
+  // Which of the three parts the chrome should mark as current.
+  //
+  // A layout is given no part of the URL, so the path arrives as the x-pathname
+  // header middleware.ts stamps -- the same header #135 added for the sign-in
+  // redirect, for the same reason. Null on the doorway and null if the header is
+  // missing, and both render no indicator rather than a wrong one.
+  const part = activeTopicPart((await headers()).get('x-pathname'));
+
   return (
     <GumuGateProvider>
       <style>{TOPIC_PAGE_CSS}</style>
@@ -44,6 +54,8 @@ export default async function TopicLayout({
           subject={resolved.subject}
           subjectLabel={subjectLabel}
           unit={resolved.unit}
+          topicId={topic.topic_id}
+          part={part}
         />
 
         {/* No max width, on purpose. This was 860px centred, and briefly 940px
