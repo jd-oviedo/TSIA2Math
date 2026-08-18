@@ -42,8 +42,9 @@ import type { NavStep } from './topic-data';
 // next to lesson_completed_at that does not exist. Both were deferred on purpose.
 
 const RAIL_WIDTH = 264;
-// The design caps the reading column at 788px with the rail beside it, and
-// accepts the band of cream to its right rather than centring the pair.
+// The design caps the MEASURE at 788px with the rail beside it, and accepts the
+// band running on past it rather than centring the pair. The band itself fills
+// the width; only the line length is capped.
 const COLUMN_WIDTH = 788;
 
 export default function LessonBody({
@@ -225,6 +226,30 @@ export default function LessonBody({
         </nav>
       )}
 
+      {/* TWO ELEMENTS, TWO JOBS. The band paints and fills the width left over
+          beside the rail; the measure inside it caps the line length.
+          
+          They were one element, which is why the band could not be applied
+          before: painting a background on the thing that also carries
+          maxWidth: 788 produces a 788px STRIPE with page cream to its right,
+          not a band. Splitting them is the whole of this change; every child
+          below moved down one level and none changed order.
+          
+          THE BAND MUST NOT BECOME A SCROLL CONTAINER. The completion sentinel is
+          observed against the viewport with no root, so if the notes scroll
+          INSIDE this element the sentinel can be scrolled past without the
+          viewport ever seeing it, and the gate never opens.
+          
+          Measured, because the precise condition matters: `overflow: hidden`
+          ALONE does not do it. With no height constraint the element grows to
+          fit, nothing scrolls inside, and the gate is unharmed. What breaks it is
+          overflow TOGETHER WITH a height -- and that is exactly the pair the
+          design's mockup carries, where this element is flex:1 inside a fixed
+          1060px column with overflow:hidden. Copying it faithfully brings both.
+          
+          So: no overflow, no height, no contain, no transform. Fault-proved in
+          scripts/verify_reading_band.mjs, which asserts the declaration as a
+          cheap early guard AND that the page still scrolls at the document. */}
       <div
         className="um-lesson-column"
         style={{
@@ -232,12 +257,24 @@ export default function LessonBody({
           // Without this a wide table or a long equation inside a flex child
           // sets the column's floor width and pushes the rail off the page.
           minWidth: 0,
-          maxWidth: COLUMN_WIDTH,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 14,
+          background: C.band,
+          borderRadius: RADIUS,
+          padding: '22px 24px',
         }}
       >
+        <div
+          className="um-lesson-measure"
+          style={{
+            maxWidth: COLUMN_WIDTH,
+            // Moved down with the flex container it belongs to: a wide table or
+            // a long equation would otherwise set this element's floor width and
+            // push it out past the band.
+            minWidth: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 14,
+          }}
+        >
         {/* What is left of the design's mobile strip once everything needing an
             observer is taken out of it. Hidden above 760px, where the rail says
             the same thing. */}
@@ -313,6 +350,7 @@ export default function LessonBody({
             requirement="Read to the end of the notes to carry on."
           />
         )}
+        </div>
       </div>
     </div>
   );

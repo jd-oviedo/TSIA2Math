@@ -49,9 +49,20 @@ export const C = {
   band: '#F3EFE3',
   // The lesson outline rail. Applied.
   rail: '#EDE8DA',
-  // A quiet box sitting ON the band, where paper would not read as inset -- the
-  // "Check yourself" callout is the case. NOT APPLIED YET: it has no meaning
-  // until the band exists, so it lands with the same restructure.
+  // A quiet box sitting ON the band, where paper would not read as inset.
+  //
+  // STILL UNCONSUMED, and now deliberately so rather than pending. It was named
+  // for the design's "Check yourself" callout, and that construct DOES NOT EXIST
+  // in this curriculum -- grep across all 97 source files returns nothing. It is
+  // the design's own sample content.
+  //
+  // The nearest real construct is a prose blockquote (topic-page-css.ts:113,
+  // Cipher Gold left border). Considered and rejected: two topics of 97 use one
+  // in their guided notes, and a token applied to two instances is not a system.
+  //
+  // Kept because it is the third rung of a real four-surface ladder and the
+  // ladder is incomplete without it. If a callout construct is ever authored,
+  // this is the colour it takes.
   quietBox: '#EDE7D6',
   midnight: '#0E0E11',
   // Deep Navy, the pre-July-2026 brand colour. It survives on exactly one
