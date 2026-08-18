@@ -13,6 +13,7 @@
     "test:gumu-resolution": "node scripts/faultproof_gumu_resolution.mjs",
     "test:overview": "node scripts/verify_topic_overview.mjs",
     "test:quiz-finish": "node scripts/verify_quiz_finish.mjs",
+    "test:quiz-register": "node scripts/verify_quiz_register.mjs",
     "test:modules-density": "node scripts/verify_modules_density.mjs",
     "test:lesson-handoff": "node scripts/verify_lesson_handoff.mjs",
     "test:lesson-outline": "node scripts/verify_lesson_outline.mjs",

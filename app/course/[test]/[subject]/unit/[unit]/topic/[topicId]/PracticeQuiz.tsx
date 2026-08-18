@@ -5,6 +5,7 @@ import { pageTurn, segmentState, type SegmentState } from '@/app/lib/practice-pa
 import GumuChat from './GumuChat';
 import { useGumuGate } from './GumuGate';
 import QuizFinish from './QuizFinish';
+import QuizStrip from './QuizStrip';
 import { quizOutcome, solutionsAvailable } from '@/app/lib/quiz-finish';
 import { C, ink, EYEBROW, MATH_LINE_HEIGHT, INK_DISABLED, INK_MUTED, hairline } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
@@ -114,6 +115,9 @@ export default function PracticeQuiz({
   // surface this unit does not cover -- which is exactly what happened on the
   // first build, and verify_quiz_finish caught it.
   const paged = section === 'practice';
+
+  // The quiz's quieter register. Assessment should not look like the workshop.
+  const quiet = section === 'mini_quiz';
 
   const { activeCount, setItemActive } = useGumuGate();
 
@@ -258,24 +262,13 @@ export default function PracticeQuiz({
         <div style={{ font: `400 13px ${FONT_BODY}`, color: INK_MUTED }}>{blurb}</div>
         <div style={{ flex: 1 }} />
         {!paged ? (
-          // The mini quiz keeps the fill bar it has always had, untouched.
-          <div
-            style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}
-            role="img"
-            aria-label={`${answeredCount} of ${items.length} answered`}
-          >
-            {items.map((item, i) => (
-              <span
-                key={item.item_number}
-                style={{
-                  width: '22px',
-                  height: '5px',
-                  borderRadius: '3px',
-                  background: i < answeredCount ? C.sunset : ink(0.13),
-                }}
-              />
-            ))}
-          </div>
+          // The mini quiz. Replaces a fill bar that lit its first N segments by
+          // count and said nothing about how any of them went, while the card
+          // under it said "Nailed it" or "Not quite yet" per question.
+          <QuizStrip
+            itemNumbers={items.map((item) => item.item_number)}
+            results={results}
+          />
         ) : (
         <div
           className="um-practice-strip"
@@ -542,10 +535,16 @@ export default function PracticeQuiz({
                     padding: '13px 30px',
                     borderRadius: '11px',
                     border: 'none',
-                    background: choice ? C.sunset : ink(0.09),
-                    boxShadow: choice ? `0 2px 0 ${C.sunsetShadow}` : 'none',
+                    // Ink on the quiz, Sunset on practice. The redesign rations
+                    // Sunset to one action per screen and the quiz is meant to
+                    // be the quiet surface; four orange buttons down a scored
+                    // page is the opposite of a register shift. The lip goes
+                    // with it: it is the affordance that makes Sunset read as
+                    // pressable, and it belongs to that colour.
+                    background: choice ? (quiet ? C.midnight : C.sunset) : ink(0.09),
+                    boxShadow: choice && !quiet ? `0 2px 0 ${C.sunsetShadow}` : 'none',
                     font: `600 15px ${FONT_BODY}`,
-                    color: choice ? C.midnight : INK_DISABLED,
+                    color: choice ? (quiet ? C.paper : C.midnight) : INK_DISABLED,
                     cursor: choice ? 'pointer' : 'not-allowed',
                   }}
                 >
@@ -775,6 +774,7 @@ export default function PracticeQuiz({
         <QuizFinish
           outcome={outcome}
           items={items}
+          results={results}
           lessonHref={lessonHref}
           hasSolutions={Boolean(solutions && Object.keys(solutions).length > 0)}
         />

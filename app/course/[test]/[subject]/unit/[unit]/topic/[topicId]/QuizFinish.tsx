@@ -2,7 +2,8 @@
 
 import { C, ink, EYEBROW, MATH_LINE_HEIGHT, INK_MUTED } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
-import { outcomeHeadline, type QuizOutcome } from '@/app/lib/quiz-finish';
+import QuizStrip from './QuizStrip';
+import { type QuizOutcome } from '@/app/lib/quiz-finish';
 import type { PublicPracticeItem } from './PracticeQuiz';
 
 // The mini quiz's closing summary: the score, what was missed, and a way back
@@ -26,11 +27,15 @@ import type { PublicPracticeItem } from './PracticeQuiz';
 export default function QuizFinish({
   outcome,
   items,
+  results,
   lessonHref,
   hasSolutions,
 }: {
   outcome: QuizOutcome;
   items: PublicPracticeItem[];
+  // The same map the questions above render from, so the strip here and the
+  // per-question chips cannot disagree.
+  results: Record<number, { isCorrect: boolean } | undefined>;
   lessonHref: string;
   // Whether this student has actually earned any worked solution on this quiz.
   // An anonymous visitor records no attempts and so earns none, and telling
@@ -68,8 +73,22 @@ export default function QuizFinish({
             color: C.midnight,
           }}
         >
-          {outcomeHeadline(outcome)}
+          {/* The score, with the number given the size the design gives it. One
+              heading, not two: the figure and its unit are the same sentence, so
+              splitting them into separate elements would make a screen reader
+              read "three" and "of 4 correct" as unrelated. */}
+          <span style={{ font: `600 40px ${FONT_HEADING}`, lineHeight: 1 }}>
+            {outcome.correct}
+          </span>
+          <span style={{ font: `400 18px ${FONT_BODY}`, color: ink(0.65) }}>
+            {' '}
+            of {outcome.total} correct
+          </span>
         </h3>
+
+        {/* The same strip the attempt showed, so the summary and the questions
+            above it are reporting the same thing in the same shape. */}
+        <QuizStrip itemNumbers={items.map((item) => item.item_number)} results={results} />
         <p style={{ margin: 0, font: `400 14px ${FONT_BODY}`, lineHeight: 1.6, color: ink(0.65) }}>
           {clean
             ? hasSolutions
