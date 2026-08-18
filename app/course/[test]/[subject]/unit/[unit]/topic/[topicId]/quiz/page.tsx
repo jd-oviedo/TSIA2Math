@@ -12,7 +12,7 @@ import TopicNav from '../TopicNav';
 import SectionHeading from '../SectionHeading';
 import GumuAvatar from '../GumuAvatar';
 import { AnswerKey } from '../GumuGate';
-import { C, ink, onDark, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { C, ink, onDark, EYEBROW, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // Part 3: the mini quiz, gated at 3 of 4. The teacher-only answer key sits at
@@ -92,6 +92,23 @@ export default async function QuizPage({ params }: { params: Promise<RouteParams
             )}
           </div>
         </div>
+        {quizItems.length > 0 && (
+          <div
+            style={{
+              flex: 'none',
+              paddingLeft: '26px',
+              borderLeft: `1px solid ${onDark(0.16)}`,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '6px',
+            }}
+          >
+            <div style={{ ...EYEBROW, color: onDark(0.5) }}>Questions</div>
+            <div style={{ font: `600 20px ${FONT_HEADING}`, color: C.sand }}>
+              {quizItems.length}
+            </div>
+          </div>
+        )}
       </div>
 
       {quizInteractive ? (
