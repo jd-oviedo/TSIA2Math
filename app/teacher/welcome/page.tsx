@@ -2,7 +2,12 @@ import { redirect } from "next/navigation";
 import { getStripe } from "../../lib/stripe";
 import { createClient } from "../../lib/supabase-server";
 import { createAdminClient } from "../../lib/supabase-admin";
-import { activate } from "../../lib/stripe-activation";
+import {
+  entitlementFromCheckout,
+  legacyActivateOnly,
+  linkCustomerId,
+  writeEntitlement,
+} from "../../lib/stripe-activation";
 import WelcomeClient from "./WelcomeClient";
 
 // The Stripe SDK needs Node crypto, and the whole page turns on a query
@@ -94,17 +99,45 @@ export default async function WelcomePage({
   }
 
   // --- 4. Matched: grant access -----------------------------------------
-  // The webhook normally does this, but it is the same decision made from the
-  // same evidence, and it must not depend on webhook delivery -- the buyer is
-  // standing here now. activate() only ever moves a profile forward, so
-  // running both is harmless.
+  // The webhook normally does this, and in practice always does: all eight
+  // Payment Links redirect to the marketing site's /success, so this page never
+  // runs on a real purchase. It is kept correct rather than deleted so a manual
+  // visit still does the right thing, and so it cannot drift from the webhook.
+  // Both go through the same writeEntitlement, which is ordered by event time,
+  // so running both is harmless in either order.
   const admin = createAdminClient();
+  await linkCustomerId(admin, user.id, customerId);
 
-  // They bought a teacher product, so make sure the role matches before the
-  // /teacher gate reads it -- otherwise a buyer whose profile is still
-  // 'student' gets bounced to /dashboard right after paying.
-  await admin.from("profiles").update({ role: "teacher" }).eq("id", user.id);
-  await activate(admin, user.id, customerId, user.email ?? null, "teacher/welcome");
+  // A checkout session has no event wrapper, so the session's own creation time
+  // orders this write and measures any one-time term. Stable across reloads, so
+  // refreshing this page cannot extend a pass.
+  const write = await entitlementFromCheckout(
+    getStripe(),
+    session,
+    session.created * 1000,
+    "teacher/welcome"
+  );
+
+  if (!write) {
+    await legacyActivateOnly(
+      admin,
+      user.id,
+      "teacher/welcome",
+      `unrecognised payment link on session ${checkoutSessionId}`
+    );
+    redirect("/teacher");
+  }
+
+  // Only a TEACHER product may set the teacher role. This used to be
+  // unconditional, which meant a Practice Pass buyer landing here became a
+  // teacher with join-code and roster access over other people's students. It
+  // never fired, because the success URLs point elsewhere, but it would the
+  // moment one of them was repointed at this page.
+  if (write.plan === "teacher-core" || write.plan === "teacher-pro") {
+    await admin.from("profiles").update({ role: "teacher" }).eq("id", user.id);
+  }
+
+  await writeEntitlement(admin, user.id, write, session.created * 1000, "teacher/welcome");
 
   redirect("/teacher");
 }
