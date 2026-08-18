@@ -184,7 +184,17 @@ export const TOPIC_PAGE_CSS = `
 }
 
 @media (max-width: 460px) {
-  .um-topic .um-bar-trail { display: none; }
+  /* The breadcrumb keeps the two segments that say where you are and drops the
+     course, which is the same on every page a student can reach from here.
+     Previously the whole trail was hidden, so a phone had no breadcrumb at all. */
+  .um-topic .um-bar-trail { font-size: 12px; }
+  .um-topic .um-bar-trail > a:first-of-type { display: none; }
+  .um-topic .um-bar-trail > a:first-of-type + span { display: none; }
+  /* Three joined segments do not fit beside the trigger, the wordmark and the
+     breadcrumb at this width, so the indicator collapses to the name of the part
+     you are on. Same information, one word. The design does this at 390. */
+  .um-topic .um-bar-parts { display: none !important; }
+  .um-topic .um-bar-part-now { display: inline !important; }
   .um-topic .um-btn-primary { width: 100%; justify-content: center; }
 }
 `;
