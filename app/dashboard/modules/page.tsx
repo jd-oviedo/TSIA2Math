@@ -85,6 +85,8 @@ export default async function ModulesPage() {
     const shape = shapes.get(`${recentTopic.course_id}:${recentTopic.topic_id}`);
     const step = resumeStep({
       lessonDone: gates.lessonDone,
+      practiceAttempted: gates.practiceAttempted,
+      quizAttempted: gates.quizAttempted,
       practiceGated: gates.practiceGated,
       practiceCount: shape?.practice.gradable ?? 0,
       practiceCorrect: gates.practiceCorrect,

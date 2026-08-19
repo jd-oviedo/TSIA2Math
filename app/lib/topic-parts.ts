@@ -21,6 +21,11 @@ export type PartStatus = 'complete' | 'in_progress' | 'not_started' | 'ungated';
 
 export type PartInput = {
   lessonDone: boolean;
+  /** Whether ANY attempt exists in the section, right or wrong. Distinct from
+   *  practiceCorrect, which counts only correct ones and is 0 for a student who
+   *  tried and missed. */
+  practiceAttempted: boolean;
+  quizAttempted: boolean;
   practiceGated: boolean;
   practiceCount: number;
   practiceCorrect: number;
@@ -55,31 +60,72 @@ function plural(n: number, one: string, many: string): string {
 // PracticeQuiz, so no attempt row can ever exist for them. sectionShape already
 // resolves that case to gradable 0 and the page skips the gate; this mirrors
 // that rather than showing a student a bar they cannot move.
-function sectionStatus(gated: boolean, correct: number, required: number): PartStatus {
+function sectionStatus(
+  gated: boolean,
+  correct: number,
+  required: number,
+  attempted: boolean
+): PartStatus {
   if (!gated) return 'ungated';
   if (correct >= required) return 'complete';
-  if (correct > 0) return 'in_progress';
+  // ATTEMPTED COUNTS, not just correct.
+  //
+  // This read `correct > 0`, so a student who answered a question and got it
+  // wrong was told "Not started". That is factually wrong, and wrong in the
+  // discouraging direction: it erases the attempt instead of acknowledging it,
+  // while the requirement line one line below simultaneously says "You have 0".
+  // The card contradicted itself in the same breath.
+  //
+  // No fourth status for it. "You tried this" and "you are partway" are the same
+  // category for motivation, and the count underneath does the precision, so a
+  // separate label would draw a distinction the copy already draws in plainer
+  // words. The consequence, accepted deliberately: one wrong attempt now renders
+  // in the same C.sunset as six right ones.
+  if (correct > 0 || attempted) return 'in_progress';
   return 'not_started';
 }
 
+// READINESS, NOT PERMISSION, and the distinction is load-bearing.
+//
+// This used to read "Get 7 of 10 right to open the next part", which claims the
+// next part is shut. It is not, and it never was: no part route checks a prior
+// part's gate, the topic overview lists all three as live links, and the only
+// thing actually gated is the Next control at the foot of each page. A student
+// can and does reach the mini quiz with practice at 0 of 7; the attempts are
+// accepted and graded.
+//
+// That is the right product behaviour and is now a deliberate ruling rather than
+// an accident: a hard lock would punish the motivated student who wants to skip
+// the notes and drill practice three weeks before their test. See the design
+// statement at the top of this file, which was correct when written.
+//
+// So the copy describes what the number MEANS rather than what it permits. Same
+// number, same threshold, no claim that anything is closed.
 function requirementLine(
   status: PartStatus,
   correct: number,
   required: number,
   count: number,
-  noun: string
+  noun: string,
+  readyFor: string
 ): string | undefined {
   if (status === 'complete' || status === 'ungated') return undefined;
-  return `Get ${required} of ${plural(count, noun, `${noun}s`)} right to open the next part. You have ${correct}.`;
+  return `${required} of ${plural(count, noun, `${noun}s`)} right means you are ready for ${readyFor}. You have ${correct}.`;
 }
 
 export function topicPlan(input: PartInput): TopicPlan {
   const practiceStatus = sectionStatus(
     input.practiceGated,
     input.practiceCorrect,
-    input.practiceRequired
+    input.practiceRequired,
+    input.practiceAttempted
   );
-  const quizStatus = sectionStatus(input.quizGated, input.quizCorrect, input.quizRequired);
+  const quizStatus = sectionStatus(
+    input.quizGated,
+    input.quizCorrect,
+    input.quizRequired,
+    input.quizAttempted
+  );
 
   const parts: Part[] = [
     {
@@ -90,7 +136,9 @@ export function topicPlan(input: PartInput): TopicPlan {
         : 'The notes for this topic',
       // Binary by construction, see the note at the top of this file.
       status: input.lessonDone ? 'complete' : 'not_started',
-      requirement: input.lessonDone ? undefined : 'Read to the end to open the next part.',
+      requirement: input.lessonDone
+        ? undefined
+        : 'Reading to the end means you are ready for the practice.',
     },
     {
       kind: 'practice',
@@ -105,7 +153,8 @@ export function topicPlan(input: PartInput): TopicPlan {
         input.practiceCorrect,
         input.practiceRequired,
         input.practiceCount,
-        'problem'
+        'problem',
+        'the mini quiz'
       ),
     },
     {
@@ -121,7 +170,11 @@ export function topicPlan(input: PartInput): TopicPlan {
         input.quizCorrect,
         input.quizRequired,
         input.quizCount,
-        'question'
+        'question',
+        // The quiz closes the topic, so there is no next PART to be ready for.
+        // The old string said "open the next part" here too, which was the same
+        // false claim plus a nonexistent destination.
+        'the next topic'
       ),
     },
   ];
@@ -143,9 +196,15 @@ export function resumeStep(input: Omit<PartInput, 'sectionCount'>): TopicPlan['r
   const practiceStatus = sectionStatus(
     input.practiceGated,
     input.practiceCorrect,
-    input.practiceRequired
+    input.practiceRequired,
+    input.practiceAttempted
   );
-  const quizStatus = sectionStatus(input.quizGated, input.quizCorrect, input.quizRequired);
+  const quizStatus = sectionStatus(
+    input.quizGated,
+    input.quizCorrect,
+    input.quizRequired,
+    input.quizAttempted
+  );
 
   // An ungated section counts as finished here: there is nothing in it a
   // student could complete, and stopping there would strand them.

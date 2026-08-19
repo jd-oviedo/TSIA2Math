@@ -12,6 +12,8 @@ import { lessonSectionCount } from '../app/lib/lesson-sections.ts';
 function base(over: Partial<PartInput> = {}): PartInput {
   return {
     lessonDone: true,
+    practiceAttempted: false,
+    quizAttempted: false,
     practiceGated: true,
     practiceCount: 10,
     practiceCorrect: 3,
@@ -46,12 +48,38 @@ test('no part is ever locked, in any state', () => {
 });
 
 test('a threshold is described as what Next needs, not as a closed door', () => {
+  // THIS TEST'S NAME WAS RIGHT AND ITS ASSERTION WAS WRONG. It required the
+  // literal string "Get 7 of 10 problems right to open the next part", which is
+  // precisely the closed-door claim the name forbids, and then checked for
+  // "lock" and "opens when" as if those were the only ways to make it. Nothing
+  // in the topic tree is ever shut: no part route checks a prior part's gate, a
+  // student reaches the mini quiz with practice at 0 of 7, and the attempts are
+  // graded. Only the Next control is disabled.
   const practice = topicPlan(base()).parts[1];
   assert.equal(practice.status, 'in_progress');
-  assert.match(practice.requirement ?? '', /Get 7 of 10 problems right to open the next part/);
+  assert.match(practice.requirement ?? '', /7 of 10 problems right means you are ready/);
   assert.match(practice.requirement ?? '', /You have 3/);
-  // The words a locked door would use must not appear.
-  assert.doesNotMatch(practice.requirement ?? '', /lock|Locked|opens when|finish .* to open/i);
+  // Every way of claiming the next part is shut, including the one this test
+  // used to demand.
+  assert.doesNotMatch(
+    practice.requirement ?? '',
+    /lock|Locked|opens when|to open|unlock|before you can|not available/i
+  );
+});
+
+test('no requirement line anywhere claims a part is closed', () => {
+  // The whole plan, not just practice: the lesson line and the quiz line made
+  // the same claim, and the quiz one also pointed at a part that does not exist,
+  // since the mini quiz closes the topic.
+  for (const input of [base(), base({ lessonDone: false }), base({ practiceCorrect: 7 })]) {
+    for (const part of topicPlan(input).parts) {
+      assert.doesNotMatch(
+        part.requirement ?? '',
+        /to open|unlock|lock|before you can|not available/i,
+        `${part.kind}: ${part.requirement}`
+      );
+    }
+  }
 });
 
 test('resume is the first unfinished part', () => {
@@ -102,7 +130,7 @@ test('section count comes from authored h5 headings', () => {
 test('counts and plurals read correctly at one', () => {
   const plan = topicPlan(base({ sectionCount: 1, practiceCount: 1, practiceRequired: 1, practiceCorrect: 0 }));
   assert.equal(plan.parts[0].detail, '1 section to read');
-  assert.match(plan.parts[1].requirement ?? '', /Get 1 of 1 problem right/);
+  assert.match(plan.parts[1].requirement ?? '', /1 of 1 problem right means you are ready/);
 });
 
 test('Modules and the topic overview cannot disagree about where to carry on', () => {
@@ -133,4 +161,42 @@ test('Modules and the topic overview cannot disagree about where to carry on', (
     const direct = resumeStep(withoutSectionCount as Omit<PartInput, 'sectionCount'>);
     assert.deepEqual(direct, viaPlan, `resume diverged for ${JSON.stringify(input)}`);
   }
+});
+
+test('a student who tried and missed is not told they have not started', () => {
+  // The defect this replaced: sectionStatus read `correct > 0`, so one wrong
+  // answer left the row saying "Not started" while the requirement line
+  // immediately below said "You have 0". The card contradicted itself, and it
+  // erred discouraging by erasing the attempt.
+  const tried = topicPlan(base({ practiceCorrect: 0, practiceAttempted: true })).parts[1];
+  assert.equal(tried.status, 'in_progress');
+
+  const untouched = topicPlan(base({ practiceCorrect: 0, practiceAttempted: false })).parts[1];
+  assert.equal(untouched.status, 'not_started');
+});
+
+test('attempts never override a finished or ungradable section', () => {
+  // Ordering inside sectionStatus: complete and ungated are decided before the
+  // attempted branch is reached, so a widened in_progress cannot swallow either.
+  assert.equal(
+    topicPlan(base({ practiceCorrect: 7, practiceAttempted: true })).parts[1].status,
+    'complete'
+  );
+  assert.equal(
+    topicPlan(base({ practiceGated: false, practiceAttempted: true })).parts[1].status,
+    'ungated'
+  );
+});
+
+test('resume says carry on, not start, once something has been attempted', () => {
+  // resumeStep only reads in_progress for the button LABEL; where it resumes is
+  // decided by complete/ungated, so widening changes the wording and not the
+  // destination.
+  const missed = resumeStep(base({ practiceCorrect: 0, practiceAttempted: true }));
+  assert.equal(missed.kind, 'practice');
+  assert.match(missed.label, /Carry on/);
+
+  const fresh = resumeStep(base({ practiceCorrect: 0, practiceAttempted: false }));
+  assert.equal(fresh.kind, 'practice');
+  assert.match(fresh.label, /Start/);
 });

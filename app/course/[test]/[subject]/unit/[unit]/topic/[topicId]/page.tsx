@@ -39,6 +39,8 @@ export default async function TopicIndexPage({ params }: { params: Promise<Route
 
   const plan = topicPlan({
     lessonDone: gates.lessonDone,
+    practiceAttempted: gates.practiceAttempted,
+    quizAttempted: gates.quizAttempted,
     practiceGated: gates.practiceGated,
     practiceCount,
     practiceCorrect: gates.practiceCorrect,
