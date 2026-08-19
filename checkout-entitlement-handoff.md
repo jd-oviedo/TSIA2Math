@@ -398,6 +398,40 @@ Mitigations: use a throwaway Google account, refund immediately in Stripe, and
 reset the resulting `profiles` row by hand. Do at least one student product and
 one teacher product, because they exercise different code paths.
 
+### 6.1 One extra check while already clicking through live
+
+**The crisis screen has never run in production.** It was proved locally in both
+directions and merged in #153, and the deploy is confirmed live by behaviour: the
+course gate enforces on `app.unpackmath.com`, `/dashboard/upgrade` exists, and 24
+anonymous POSTs to `/api/gumu/session` returned 401 with zero 429s, which is the
+post-merge auth-before-rate-limit ordering. But none of that executes the
+screening branch itself, because it needs an authenticated session.
+
+So, signed in on production, after the purchases: open GUMU on any reachable
+topic, get an item wrong, and type a disclosure phrase.
+
+**Expected, and it is less than was assumed when this was scheduled:**
+
+- the session ends, the panel is replaced by the resource card with 988 and the
+  Crisis Text Line, both tappable
+- a real alert email arrives at `juan@unpackmath.com`
+- `gumu_sessions` gains a row with `status = 'ended_support'` and
+  `resolution` null
+- **NO Sentry issue.** Checked rather than assumed: there is no `Sentry` call
+  anywhere in `crisis.ts`, `crisis-screen.ts`, or the crisis branch of the GUMU
+  route. The Sentry captures added in that merge belong to the Stripe no-match
+  branch and the course gate's unreadable-header path, not to this. Email and the
+  session row are the whole of the signal.
+
+Worth a decision separately: whether a crisis stop should raise a Sentry issue at
+all. The argument for is that email is a single point of failure and Sentry
+groups and persists. The argument against is that it puts a minor's distress
+event into an error tracker with `sendDefaultPii: true`. Not decided here.
+
+Also worth pairing with it, since it costs one more message: type an obvious
+hyperbole ("this problem is killing me") and confirm it does NOT fire. Proving
+the guard, not just the branch, is the standard the rest of this work has used.
+
 ---
 
 ## 7. Carried over, not in scope
