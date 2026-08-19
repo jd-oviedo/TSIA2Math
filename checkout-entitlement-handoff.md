@@ -417,6 +417,20 @@ The revenue arbitrage is small. The real risk is a student who creates a teacher
 account, shares the join code, and holds a dashboard of other minors' names,
 scores, and misconception data.
 
+**PARTIALLY CLOSED, 2026-08-19, commit `b58d9d4`.** The half of this that was
+already live is fixed. `requireTeacher` checked role plus an active payment of
+ANY kind, so a student row promoted to `role='teacher'` by one of the three
+promotion paths in section 3.2, while holding an active STUDENT purchase, passed
+the teacher gate and received the full dashboard: join code generation and roster
+access over other people's students. Moving that reader onto the plan closed it,
+because the plan now has to be a teacher plan. It closed as a consequence of
+moving a reader rather than as a feature, which is worth noting: the exposure was
+a side effect of `subscription_status` conflating "paid" with "paid for this".
+
+What is NOT closed is the original item: nothing still prevents someone paying
+for Teacher Core and creating a teacher account they should not have. Verify at
+the capability boundary, as below.
+
 Recommended shape: verify at the capability boundary, not the account boundary.
 Anyone can sign up and pay. Generating a join code or enrolling a student
 requires verification. Manual review is appropriate at this scale. Google
@@ -434,6 +448,46 @@ student purchases through code that promotes to teacher. Either Phase 3 and 5
 add product conditional role handling, or teacher verification comes into scope.
 Both cannot be left. Recommended: the former, which is small and already inside
 those phases. Verification stays deferred.
+
+**The twelve dark Playwright probes, pending an authenticated-harness decision.**
+Phase 4 gated `/course`, and fourteen scripts navigate to a `/course` URL while
+none of them can authenticate. `verify_auth_gate` was repaired (its course route
+moved from control to subject) and `verify_gumu_tier` is confirmed dead rather
+than repaired: its premise is a signed-out visitor being graded inline, which is
+now correctly a 403, so it tests something the product no longer does. The other
+twelve lose their subject and cannot be repaired without an authenticated
+harness, which does not exist.
+
+**Do not repair any of them until that decision is made**, and do not trust a
+repaired probe without showing it fail first. The authenticated branch has had no
+automated probe since Phase 1 recorded it as a structural gap; Phase 4 is where
+it starts to bite.
+
+**A fault-proof guard had been correctly refusing to run since #135, and nobody
+read its exit code.** This is the most valuable finding of the session and it is
+recorded here rather than only in a commit message, because the failure was in
+the VERIFICATION rather than in the product.
+
+`scripts/verify_auth_gate.mjs --prove` injects a fault, asserts the suite goes
+red, restores, and asserts it goes green. Its fault target was a multi-line
+literal containing
+`redirect('/login?next=' + encodeURIComponent('/dashboard'))`. #135 changed that
+to `loginHref(safeNext(requested, DEFAULT_NEXT))`, the literal stopped matching,
+and the guard began exiting 2 with "FAULT TARGET ABSENT". Confirmed stale at HEAD
+before any Phase 4 change.
+
+The guard did exactly the right thing: it refused to inject a no-op and report
+success. But the plain suite kept reporting green, so for as long as that drift
+lasted **nothing had demonstrated that the dashboard gate check could fail.** A
+check nobody has seen fail is a check nobody has verified.
+
+Two fixes, both general rather than specific to this script. The fault now
+targets ONE short stable line, `const profile = await getProfile();`, replaced
+with a stand-in profile so the page genuinely serves to an anonymous visitor: a
+multi-line block containing a call expression was always going to drift, a single
+declaration is much less likely to. And both gates, dashboard and course, are
+faulted in a single run, so a partial proof cannot pass while the other half
+rots.
 
 **GUMU crisis escalation.** From the marketing session's legal review, and the
 highest priority item on that list. A Socratic tutor for teenagers will
