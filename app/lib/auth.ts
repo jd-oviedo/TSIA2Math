@@ -1,10 +1,51 @@
 import { createClient } from './supabase-server'
 import { createAdminClient } from './supabase-admin'
+import { isEntitledWithLegacyFallback } from './entitlement'
+import { planGrants } from './capabilities'
 
+// The entitlement columns travel with the profile now.
+//
+// WIDENED BEFORE ANY READER MOVED, deliberately, and it is the reason this file
+// changed first. Both helpers below used to select only id, role and
+// subscription_status. isEntitled(undefined, undefined) is false, so a reader
+// switched to the new predicate before its select was widened would deny
+// everyone, every teacher included. Shape first, behaviour after.
 export type Profile = {
   id: string
   role: 'student' | 'teacher'
+  /** Legacy. Still written in lockstep by stripe-activation, still read here
+   *  through isEntitledWithLegacyFallback, and blocked from being dropped by
+   *  legacyActivateOnly. */
   subscription_status: 'active' | 'inactive'
+  plan: string | null
+  plan_status: string | null
+  access_until: string | null
+}
+
+// The columns every profile read needs, spelled out once so the two helpers
+// below cannot drift apart.
+const PROFILE_COLUMNS = 'id, role, subscription_status, plan, plan_status, access_until'
+
+/**
+ * Does this profile hold a live entitlement for the given capability?
+ *
+ * Both halves matter. planGrants alone admits a lapsed buyer;
+ * isEntitledWithLegacyFallback alone admits an entitled buyer of the wrong
+ * product, which is exactly the hole that let a student row promoted to
+ * role='teacher' pass the teacher gate.
+ */
+export function profileGrants(
+  profile: Pick<Profile, 'plan' | 'plan_status' | 'access_until' | 'subscription_status'>,
+  capability: 'teacher-dashboard' | 'curriculum' | 'gumu' | 'worksheets',
+  source: string
+): boolean {
+  if (!planGrants(profile.plan, capability)) return false
+  return isEntitledWithLegacyFallback(
+    profile.plan_status,
+    profile.access_until,
+    profile.subscription_status,
+    source
+  )
 }
 
 // profiles has no name column, so the only real name we hold for anyone is the
@@ -53,14 +94,23 @@ export async function requireTeacher(): Promise<Profile | null> {
   const admin = createAdminClient()
   const { data: profile, error } = await admin
     .from('profiles')
-    .select('id, role, subscription_status')
+    .select(PROFILE_COLUMNS)
     .eq('id', session.user.id)
     .single()
 
   if (error || !profile) return null
-  if (profile.role !== 'teacher' || profile.subscription_status !== 'active') return null
 
-  return profile as Profile
+  // MOVED OFF subscription_status. This is a genuine tightening, not a
+  // translation: the old check was role plus a payment flag, so a student row
+  // promoted to role='teacher' by any of the three promotion paths, while
+  // holding an active STUDENT purchase, passed it and got a full teacher
+  // dashboard including join codes and roster access over other people's
+  // students. Now the plan has to be a teacher plan.
+  const p = profile as Profile
+  if (p.role !== 'teacher') return null
+  if (!profileGrants(p, 'teacher-dashboard', 'requireTeacher')) return null
+
+  return p
 }
 
 // The current user's profile whatever their role, plus the auth id. Use this
@@ -78,7 +128,7 @@ export async function getProfile(): Promise<(Profile & { email: string | null })
   const admin = createAdminClient()
   const { data: profile, error } = await admin
     .from('profiles')
-    .select('id, role, subscription_status')
+    .select(PROFILE_COLUMNS)
     .eq('id', user.id)
     .single()
 

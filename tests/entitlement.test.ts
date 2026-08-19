@@ -1,6 +1,12 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { isEntitled, grantsAccess, legacySubscriptionStatus, ACCESS_GRACE_MS } from '../app/lib/entitlement.ts';
+import {
+  isEntitled,
+  grantsAccess,
+  legacySubscriptionStatus,
+  isEntitledWithLegacyFallback,
+  ACCESS_GRACE_MS,
+} from '../app/lib/entitlement.ts';
 import {
   addMonths,
   productForPaymentLink,
@@ -206,5 +212,82 @@ test('the raw Stripe status is stored verbatim, never judged at write time', () 
   for (const status of ['incomplete', 'incomplete_expired', 'unpaid', 'paused', 'trialing', 'past_due']) {
     const w = entitlementFromSubscription(fakeSub({ status }), { plan: 'teacher-core', term: 'monthly' });
     assert.equal(w!.planStatus, status, `${status} must survive to the column unchanged`);
+  }
+});
+
+// ─── The transition predicate ────────────────────────────────────────────────
+//
+// Every one of the six subscription_status readers now goes through this, so
+// what it gets wrong, they all get wrong together. The two cases that matter are
+// the two that could lock out a real paying customer.
+
+const quiet = (fn: () => boolean): boolean => {
+  // The legacy branch warns on purpose. Silenced here so a passing run is
+  // readable, and asserted separately below.
+  const original = console.warn;
+  console.warn = () => {};
+  try {
+    return fn();
+  } finally {
+    console.warn = original;
+  }
+};
+
+test('a real entitlement is granted without consulting the legacy column', () => {
+  const future = new Date(Date.now() + 86_400_000).toISOString();
+  assert.equal(
+    isEntitledWithLegacyFallback('active', future, 'inactive', 'test'),
+    true,
+    'the new columns are authoritative; a stale legacy flag must not veto them'
+  );
+});
+
+test('THE MIGRATION BACKFILL ROW STILL GRANTS, so no existing teacher is locked out', () => {
+  // sql/entitlement_columns.sql wrote plan_status='active' with access_until
+  // NULL for every active teacher, fail-open on purpose. isEntitled treats null
+  // as no expiry. If this ever fails, moving the readers has just cut off every
+  // teacher who predates the entitlement columns.
+  assert.equal(isEntitledWithLegacyFallback('active', null, 'active', 'test'), true);
+  assert.equal(isEntitledWithLegacyFallback('active', null, 'inactive', 'test'), true);
+});
+
+test('THE legacyActivateOnly ROW STILL GRANTS, which is the whole reason this exists', () => {
+  // That fallback writes subscription_status='active' and NO plan, because it
+  // cannot name the product and a half-written plan violates the pairing
+  // constraint. On isEntitled alone this row denies, so the fallback that exists
+  // to stop a buyer paying for nothing would become the thing that locks them
+  // out.
+  assert.equal(quiet(() => isEntitledWithLegacyFallback(null, null, 'active', 'test')), true);
+});
+
+test('the legacy branch warns, so the fallback is visible rather than silent', () => {
+  const seen: string[] = [];
+  const original = console.warn;
+  console.warn = (msg: unknown) => seen.push(String(msg));
+  try {
+    isEntitledWithLegacyFallback(null, null, 'active', 'requireTeacher');
+  } finally {
+    console.warn = original;
+  }
+  assert.equal(seen.length, 1);
+  assert.match(seen[0], /requireTeacher/);
+  assert.match(seen[0], /legacyActivateOnly/);
+});
+
+test('a lapsed row with no legacy flag is refused', () => {
+  const past = new Date(Date.now() - 30 * 86_400_000).toISOString();
+  assert.equal(isEntitledWithLegacyFallback('active', past, 'inactive', 'test'), false);
+  assert.equal(isEntitledWithLegacyFallback('canceled', null, 'inactive', 'test'), false);
+  assert.equal(isEntitledWithLegacyFallback(null, null, null, 'test'), false);
+  assert.equal(isEntitledWithLegacyFallback(null, null, 'inactive', 'test'), false);
+});
+
+test('the legacy flag only ever adds, it never subtracts', () => {
+  // Both halves are OR-ed, so no value of subscription_status can take away an
+  // entitlement the new columns grant. That direction matters: a stale
+  // 'inactive' must not revoke a live plan.
+  const future = new Date(Date.now() + 86_400_000).toISOString();
+  for (const legacy of ['active', 'inactive', null, undefined, '']) {
+    assert.equal(isEntitledWithLegacyFallback('trialing', future, legacy, 'test'), true, String(legacy));
   }
 });

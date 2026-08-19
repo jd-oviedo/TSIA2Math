@@ -844,3 +844,103 @@ review. Step 7 depends on 1 through 5 being done.
 REMOVED from the previous revision, with the capability split: `TopicOverview`
 locked parts, `loadNavigation` skipping, and `topicPlan` resume special-casing.
 None of those are needed.
+
+---
+
+## 9. The probe audit, done
+
+**Audited 2026-08-19, per script, rather than estimated.** The earlier figure in
+section 5.4 said "sixteen scripts reference `/course`, fifteen drive it". Both
+numbers were wrong, and the correction goes the right way.
+
+Eighteen scripts reference `/course`. Only **fourteen** navigate to one:
+
+| Category | Count | Scripts |
+|---|---|---|
+| **Affected**, navigate to a real `/course` URL | 14 | check_item_renders, measure_topic_widths, verify_auth_gate, verify_gumu_tier, verify_items_self_contained, verify_lesson_handoff, verify_lesson_outline, verify_practice_paging, verify_quiz_finish, verify_quiz_register, verify_reading_band, verify_topic_chrome, verify_topic_overview, verify_topic_render |
+| Unaffected, source assertions only | 2 | faultproof_earned_solutions, faultproof_gumu_panel |
+| Unaffected, scaffold their own probe route | 2 | verify_collapsible_units, verify_modules_density |
+
+The last pair was the surprise. Both write a temporary page and navigate to
+`/um-probe-collapsible` and `/um-probe-density`; their `/course` strings are
+`href` attributes inside generated markup that nothing ever clicks. A grep-level
+audit counts them as affected and they are not.
+
+**No probe authenticates.** Checked rather than assumed: the three that matched a
+sign-in heuristic matched on assertion strings and comments. Two of them say so
+outright, that `/dashboard/modules` redirects to `/login` without a session "so
+Playwright cannot" reach it.
+
+### 9.1 Disposition
+
+**`verify_auth_gate.mjs`: repaired, and strengthened.** Its `/course` entry moved
+from the OPEN control, where it asserted 200, to a new closed set, where it
+asserts 307. Three routes rather than one, each a different property: a paid
+topic, the free sample (which must still be closed to ANONYMOUS visitors), and a
+nonexistent topic (which must be indistinguishable from a real one, or topic ids
+can be enumerated). The control is now `/adaptive-test` alone, which is thinner
+than it was and is the minimum that still proves the suite is not passing against
+a dead server.
+
+**`verify_gumu_tier.mjs`: dead, and correctly so.** Its entire premise is a
+signed-out visitor reaching a practice page and being graded inline. That is now
+a 403. It is testing something the product no longer does, so it goes on this
+list rather than being quietly repaired.
+
+**The other twelve: dark.** They lose their subject and cannot be repaired
+without an authenticated harness, which does not exist. That is a decision rather
+than a task and it is not taken here.
+
+### 9.2 A probe that had already stopped being able to fail
+
+Found while applying the rule that a repaired probe must be shown failing.
+
+`verify_auth_gate.mjs --prove` **has been unable to run since #135.** Its fault
+target was a multi-line literal including
+`redirect('/login?next=' + encodeURIComponent('/dashboard'))`, and #135 changed
+that to `loginHref(safeNext(requested, DEFAULT_NEXT))`. The literal stopped
+matching, and the guard has been exiting 2 with "FAULT TARGET ABSENT" ever since.
+
+The guard behaved correctly: it refused to run a meaningless proof rather than
+silently injecting a no-op and reporting success. But the plain suite kept
+reporting green, so nothing had demonstrated the dashboard gate check could fail
+for as long as that drift existed.
+
+Fixed by making the fault target one short stable line, `const profile = await
+getProfile();`, replaced with a stand-in profile so every downstream check passes
+and the page really does serve to an anonymous visitor. A multi-line block
+containing a call expression was always going to drift; one declaration is much
+less likely to.
+
+**This is the rule paying for itself immediately.** A probe that has never been
+seen to fail is a probe that has not been verified, and this one had quietly
+stopped being verifiable while still reporting green.
+
+### 9.3 The proof, and what the faulted run showed
+
+`node scripts/verify_auth_gate.mjs --prove` now faults both gates in one run and
+reports PROVEN: fails without them, passes with them.
+
+The faulted run is worth reading rather than just passing, because one line in it
+demonstrates the enumeration property directly instead of by argument:
+
+```
+WITH THE GATE REMOVED
+  [FAIL] /course/.../topic/QR.1.1/lesson is closed signed out   200
+  [FAIL] /course/.../topic/AR.1.4/lesson is closed signed out   200
+  [FAIL] /course/.../topic/ZZ.9.9/lesson is closed signed out   404   <- nonexistent
+  [FAIL] a nonexistent topic is indistinguishable from a real one
+
+WITH THE GATE RESTORED
+  [PASS] all three                                              307 -> /login
+```
+
+With the gate gone, a real topic answers 200 and a nonexistent one answers 404,
+so anyone can walk the topic id space by telling the two apart. With the gate in
+place all three are byte-identical redirects. That is exactly what "the gate runs
+before loadTopic's notFound()" buys, shown rather than asserted, and it is the
+kind of property that would have been easy to state in a comment and never
+verify.
+
+The control held green in both runs, so the failures are the gates being absent
+and not the server being down.

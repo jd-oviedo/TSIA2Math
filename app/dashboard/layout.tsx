@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { headers } from 'next/headers';
-import { getProfile } from '../lib/auth';
+import { getProfile, profileGrants } from '../lib/auth';
 import { loginHref, DEFAULT_NEXT, safeNext } from '../lib/next-param';
 import StudentShell from './StudentShell';
 import { DASHBOARD_CSS } from './dashboard-css';
@@ -43,7 +43,14 @@ export default async function DashboardLayout({ children }: { children: React.Re
   return (
     <>
       <style>{DASHBOARD_CSS}</style>
-      <StudentShell name={name} role={profile.role} subscriptionStatus={profile.subscription_status}>
+      {/* A derived boolean rather than the raw column. The shell and the rail
+          only ever asked "is this an entitled teacher", and passing the flag
+          down meant two components had to remember how to answer it. */}
+      <StudentShell
+        name={name}
+        role={profile.role}
+        entitledTeacher={profileGrants(profile, 'teacher-dashboard', 'DashboardLayout')}
+      >
         {children}
       </StudentShell>
     </>

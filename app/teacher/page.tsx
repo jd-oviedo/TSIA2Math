@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "../lib/supabase-server";
 import { createAdminClient } from "../lib/supabase-admin";
+import { profileGrants } from "../lib/auth";
 import TeacherDashboardClient from "./TeacherDashboardClient";
 
 // Server-side gate. This is the only trustworthy place to enforce access:
@@ -19,14 +20,16 @@ export default async function TeacherPage() {
   const admin = createAdminClient();
   const { data: profile } = await admin
     .from("profiles")
-    .select("role, subscription_status")
+    .select("role, subscription_status, plan, plan_status, access_until")
     .eq("id", session.user.id)
     .single();
 
   if (!profile || profile.role !== "teacher") {
     redirect("/dashboard");
   }
-  if (profile.subscription_status !== "active") {
+  // Moved off subscription_status: the plan has to be a teacher plan, not merely
+  // an active payment of any kind. See profileGrants in app/lib/auth.ts.
+  if (!profileGrants(profile, "teacher-dashboard", "TeacherPage")) {
     redirect("/teacher/inactive");
   }
 

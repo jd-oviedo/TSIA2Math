@@ -84,3 +84,42 @@ export function legacySubscriptionStatus(
 ): "active" | "inactive" {
   return isEntitled(planStatus, accessUntil, now) ? "active" : "inactive";
 }
+
+/**
+ * THE TRANSITION PREDICATE, and the reason it is not just isEntitled.
+ *
+ * legacyActivateOnly (stripe-activation.ts:171) writes subscription_status
+ * 'active' with NO plan, because writing a plan without a status violates
+ * profiles_plan_pairing_check and it cannot name the product. It fires when a
+ * checkout arrives on a Payment Link this build does not know, which is exactly
+ * a link created after the current deploy.
+ *
+ * A reader on isEntitled alone reads plan_status null on such a row and DENIES,
+ * so the fallback that exists to stop a buyer paying for nothing would become the
+ * thing that locks them out. Accepting both while the column still exists is the
+ * agreed shape, and the warning makes the fallback's use visible instead of
+ * silent.
+ *
+ * THIS IS WHY subscription_status CANNOT BE DROPPED YET, and legacyActivateOnly
+ * is the blocker by name. Dropping the column waits on that path being able to
+ * name a product, most likely by resolving it with a paymentLinks.retrieve
+ * before falling back. Every reader in the codebase goes through here, so the
+ * drop becomes a single-file change once that is done.
+ */
+export function isEntitledWithLegacyFallback(
+  planStatus: string | null | undefined,
+  accessUntil: string | Date | null | undefined,
+  subscriptionStatus: string | null | undefined,
+  source: string,
+  now: Date = new Date()
+): boolean {
+  if (isEntitled(planStatus, accessUntil, now)) return true;
+  if (subscriptionStatus === "active") {
+    console.warn(
+      `[entitlement] ${source} granted on legacy subscription_status with no plan. ` +
+        `Written by legacyActivateOnly, which blocks dropping the column.`
+    );
+    return true;
+  }
+  return false;
+}

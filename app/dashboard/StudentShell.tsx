@@ -40,12 +40,12 @@ const COLLAPSE_KEY = 'um-student-rail-collapsed';
 export default function StudentShell({
   name,
   role,
-  subscriptionStatus,
+  entitledTeacher,
   children,
 }: {
   name: string;
   role: 'student' | 'teacher';
-  subscriptionStatus?: 'active' | 'inactive';
+  entitledTeacher?: boolean;
   children: React.ReactNode;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -106,7 +106,7 @@ export default function StudentShell({
         <StudentNavPanel
           name={name}
           role={role}
-          subscriptionStatus={subscriptionStatus}
+          entitledTeacher={entitledTeacher}
           collapsed={collapsed}
           onOpenSupport={() => setShowSupport(true)}
         />
@@ -158,7 +158,7 @@ export default function StudentShell({
         open={menuOpen}
         name={name}
         role={role}
-        subscriptionStatus={subscriptionStatus}
+        entitledTeacher={entitledTeacher}
         onClose={() => setMenuOpen(false)}
         onOpenSupport={() => setShowSupport(true)}
       />

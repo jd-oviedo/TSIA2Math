@@ -1,7 +1,7 @@
 import { cache } from "react";
 import { createClient } from "./supabase-server";
 import { createAdminClient } from "./supabase-admin";
-import { isEntitled } from "./entitlement";
+import { isEntitledWithLegacyFallback } from "./entitlement";
 import {
   planGrants,
   NO_COURSE_ACCESS,
@@ -40,36 +40,6 @@ type Profile = {
   subscription_status: string | null;
   role: string | null;
 };
-
-/**
- * TRANSITION PREDICATE, and the reason it is not just isEntitled.
- *
- * legacyActivateOnly (stripe-activation.ts:171) writes subscription_status
- * 'active' with NO plan, because writing a plan without a status violates
- * profiles_plan_pairing_check and it cannot name the product. It fires when a
- * checkout arrives on a Payment Link this build does not know, which is exactly
- * a link created after the current deploy.
- *
- * A gate on isEntitled alone reads plan_status null on such a row and DENIES, so
- * the fallback that exists to stop a buyer paying for nothing would become the
- * thing that locks them out. Accepting both during the transition is the agreed
- * shape, and the warning makes the fallback's use visible instead of silent.
- *
- * THIS IS WHY subscription_status CANNOT BE DROPPED YET. The blocker is
- * legacyActivateOnly by name, and dropping the column waits on that path being
- * able to name a product.
- */
-function entitledDuringTransition(profile: Profile, source: string): boolean {
-  if (isEntitled(profile.plan_status, profile.access_until)) return true;
-  if (profile.subscription_status === "active") {
-    console.warn(
-      `[course-access] ${source} granted on legacy subscription_status with no plan. ` +
-        `Written by legacyActivateOnly, which blocks dropping the column.`
-    );
-    return true;
-  }
-  return false;
-}
 
 /**
  * Every teacher whose live class this student is actively enrolled in, entitled
@@ -129,7 +99,12 @@ async function entitledTeacherGrants(studentId: string): Promise<boolean> {
   return (teachers ?? []).some(
     (t) =>
       planGrants((t as Profile).plan, "teacher-dashboard") &&
-      entitledDuringTransition(t as Profile, "derived teacher")
+      isEntitledWithLegacyFallback(
+        (t as Profile).plan_status,
+        (t as Profile).access_until,
+        (t as Profile).subscription_status,
+        "derived teacher"
+      )
   );
 }
 
@@ -165,7 +140,12 @@ export const resolveCourseAccess = cache(async (): Promise<CourseAccess> => {
   }
   const profile = data as Profile;
 
-  const entitled = entitledDuringTransition(profile, "own plan");
+  const entitled = isEntitledWithLegacyFallback(
+    profile.plan_status,
+    profile.access_until,
+    profile.subscription_status,
+    "own plan"
+  );
 
   if (planGrants(profile.plan, "curriculum") && entitled) {
     return {
