@@ -402,7 +402,9 @@ export async function POST(req: Request) {
     if (createError) {
       const { data: existing } = await admin
         .from("gumu_sessions")
-        .select("id")
+        // turn_count, because the resume below has to report how many turns are
+        // actually left rather than assuming a fresh session.
+        .select("id, turn_count")
         .eq("student_id", studentId)
         .eq("course_id", action.course_id)
         .eq("topic_id", action.topic_id)
@@ -417,11 +419,25 @@ export async function POST(req: Request) {
           .select("role, content")
           .eq("session_id", existing.id)
           .order("created_at");
+        // THE REAL REMAINING COUNT, not the cap.
+        //
+        // This returned MAX_STUDENT_TURNS unconditionally, which is only true
+        // for a session that has never been spoken to. Resuming one that had
+        // already used two of its three turns told the student they had three,
+        // and their very next message hit the cap and closed the conversation.
+        // Wrong for the case this path was written for as well: a double click
+        // mid-conversation resumes at the same wrong number.
+        //
+        // Clamped at zero. A session cannot normally still be active with its
+        // turns spent, since the cap resolves it, but it can if that resolve
+        // write failed -- the silent failure sql/gumu_sessions_resolution.sql
+        // describes. Reporting a negative number to the client would be a
+        // second bug on top of that one.
         return NextResponse.json({
           session_id: existing.id,
           messages: transcript ?? [],
           status: "active",
-          turns_remaining: MAX_STUDENT_TURNS,
+          turns_remaining: Math.max(0, MAX_STUDENT_TURNS - existing.turn_count),
           resumed: true,
         });
       }
