@@ -29,6 +29,107 @@ Phase 1. It is the behaviour to reinforce, not smooth over.
 
 ---
 
+## 0.1 End state, 2026-08-19
+
+Everything below this line was written earlier in the session. This section is
+the state at the end of it.
+
+### Live on production
+
+`main` at `792b6f2`. Deploy confirmed by behaviour, not by a pipeline status:
+the course gate enforces on `app.unpackmath.com`, `/dashboard/upgrade` exists,
+and 24 anonymous POSTs to `/api/gumu/session` returned 401 with zero 429s, which
+is the post-merge auth-before-rate-limit ordering.
+
+- **Entitlement columns and the product-aware webhook** (Phases 2 and 3)
+- **The course gate** (Phase 4). `/course` had never had an auth check of any
+  kind. `curriculum` is Full Course only, AR.1.4 is the one free sample and is
+  for SIGNED-IN free-tier users only, teachers enter by a second door
+  (`curriculum OR teacher-dashboard`) rather than by widening the map.
+  **25 of 32 existing accounts lost curriculum access at that merge**, which was
+  the intended effect and is why the $89 product now unlocks something.
+- **GUMU crisis screening.** Shipped after three weeks waiting. Three items in
+  it are still `[PLACEHOLDER, COUNSELOR]`.
+- **The unmatched-payment alert** (Part 1 of finding A).
+- **The webhook writes role** on a teacher purchase (ruling 1).
+- All six `subscription_status` readers moved onto the plan. The column cannot
+  be dropped until `legacyActivateOnly` can name a product.
+
+### Phase 6, run against production with real money
+
+**Teacher purchase: SUCCESS, and it proves ruling 1 on production.** Teacher Core
+$20 bought on a direct `buy.stripe.com` link with `juansmokylapis@gmail.com`, an
+existing STUDENT row. The webhook wrote the entitlement and promoted `role` to
+`teacher` in the same guarded UPDATE. `/teacher` loads. That is exactly the case
+the old `auth/callback` promotion could not reach, because a direct link touches
+neither `/upgrade` nor `/login`.
+
+**Student purchase: FINDING A, FIRING ON LIVE TRAFFIC WITH REAL MONEY.** Practice
+Pass bought on a direct link with `contact@jdoviedo.com`, which has no account.
+All three resolution steps missed, nothing was written, and the handler returned
+200. Being refunded and rebought with a Google address so Phase 6 can finish.
+
+**And it is worse than unmatched, which changes Part 2's design.**
+`contact@jdoviedo.com` is not a Google account. The app offers Google only: two
+`signInWithOAuth` calls, both `provider: 'google'`, and no password, OTP or magic
+link anywhere in the UI. So that buyer can never create the profile an
+email-keyed pending row would wait for.
+
+**The email key fails a second way that is not about Google at all.** The buyer
+paid as `contact@jdoviedo.com` and signed in as `juansmokylapis@gmail.com`. A
+plain Google user who types any other address at Stripe checkout is equally
+unreachable. That is the default behaviour of a checkout form that pre-fills
+nothing, not an edge case.
+
+**So Part 2 keys on `checkout_session_id`, not email.** See the ordered queue
+below. Email becomes a recorded attribute for the alert and for manual matching,
+never the join.
+
+**Noted while checking: Supabase has the email provider ENABLED with
+`disable_signup: false`**, alongside Google. No UI offers it and
+`mailer_autoconfirm` is false, so it is a door nobody is watching rather than a
+usable path. Worth closing or watching, separately.
+
+### Tomorrow, in order
+
+1. **Part 2: the pending entitlements table plus the success-page claim.** Keyed
+   on checkout session id. Three places: `{CHECKOUT_SESSION_ID}` appended to the
+   six success URLs in the Stripe dashboard (manual, no deploy); `/success` in
+   `unpackmath-home` passing the id through; and a `/claim` route in this repo.
+   `app/teacher/welcome/page.tsx` is the working precedent for verifying a
+   session with Stripe, and the one thing `/claim` must do differently is **drop
+   the email comparison** and bind the session to whatever Google account
+   completes the sign-in.
+2. **The `/upgrade` slug fix.** A lookup table, not a rebuild: accept the six
+   marketing slugs, drop `monthly` and `annual` so the founding backdoor closes
+   with the same change. Investigated, not built. The live pricing page passes
+   nothing but the slug, and only four of the six appear in its HTML: check
+   whether the two annual buttons are wired at all.
+3. **Ruling 1b**: remove the role write from `auth/callback:66`. Unblocked now
+   that the webhook writes role first.
+4. **The tier label defect.** The sidebar reads `TEACHER · PRO` on a Teacher Core
+   purchase. `StudentNav.tsx:166` computes `isProTeacher` as
+   `role === 'teacher' && entitledTeacher`, which means ENTITLED and not PRO, and
+   line 181 renders `TEACHER · PRO` from it. It needs to read the plan.
+5. **Parked, all real, none of them stop someone paying:** the Modules locked
+   state, the upgrade page copy and branding, the reveal ruling, the free-tier
+   progress bar, and the item 2 curriculum sentence.
+
+### Blocked on Juan
+
+- **Deactivate the two founding LINKS Thursday night. Never archive the PRICES**,
+  which two live subscriptions renew against.
+- The counselor conversation. Now five questions: the student-facing wording,
+  whether teacher notification suppresses disclosure, whether a gentler middle
+  tier should exist, whether the alert email should carry the student's text, and
+  whether a crisis stop should raise a Sentry issue.
+- The crisis screen live check, on the Phase 6 trip. Section 6.1. Expected: the
+  resource card, an email to `juan@unpackmath.com`, and a `gumu_sessions` row
+  with `status = 'ended_support'`. **No Sentry issue**, which is a correction to
+  what was assumed when it was scheduled.
+
+---
+
 ## 1. Resolved facts
 
 Everything in this section was unknown or wrong in the first draft. It is now
