@@ -69,6 +69,7 @@ function sectionShape(section: StoredSection | undefined): SectionShape {
 export type { AttemptRow, SessionRow } from './attempt-sets';
 export {
   correctItemsInSection,
+  hasAttemptedSection,
   correctInSection,
   revealedItemsInSection,
   releasableItems,

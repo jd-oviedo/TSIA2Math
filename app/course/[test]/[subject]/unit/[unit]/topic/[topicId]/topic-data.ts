@@ -11,6 +11,7 @@ import {
   getTopicShape,
   getTopicAttempts,
   correctItemsInSection,
+  hasAttemptedSection,
   revealedItemsInSection,
   releasableItems,
   requiredCorrect,
@@ -281,6 +282,11 @@ export type GateState = {
   // number can come from stores a count and cannot say which items.
   practiceSolved: Set<number>;
   quizSolved: Set<number>;
+  // Whether anything has been answered in the section at all, right or wrong.
+  // Not derivable from the two sets above, which hold only correct items and are
+  // therefore empty for a student who tried and missed.
+  practiceAttempted: boolean;
+  quizAttempted: boolean;
 };
 
 // The gate maths, given a shape that has already been resolved.
@@ -307,6 +313,10 @@ async function gatesFromShape(
       quizGated: quizGradable > 0,
       practiceSolved: new Set<number>(),
       quizSolved: new Set<number>(),
+      // False for an anonymous visitor, correctly: nothing is recorded for them,
+      // so there is no attempt to acknowledge.
+      practiceAttempted: false,
+      quizAttempted: false,
     };
 
     // An anonymous visitor records nothing, so there is no stored state to
@@ -343,6 +353,8 @@ async function gatesFromShape(
       quizCorrect: Math.max(snapshot?.quiz_correct ?? 0, quizSolved.size),
       practiceSolved,
       quizSolved,
+      practiceAttempted: hasAttemptedSection(attempts, courseId, topicId, 'practice'),
+      quizAttempted: hasAttemptedSection(attempts, courseId, topicId, 'mini_quiz'),
     };
 }
 

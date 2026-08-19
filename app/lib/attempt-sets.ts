@@ -29,6 +29,24 @@ export type AttemptRow = {
 // The set was already being built and thrown away; only its size was ever
 // returned. It is kept now because worked solutions are released per item, and
 // "which items" is the question that gate asks.
+/**
+ * Whether the student has answered ANYTHING in this section, right or wrong.
+ *
+ * Deliberately not derived from correctItemsInSection: that returns an empty set
+ * for a student who tried and missed, which is exactly the case this exists to
+ * name. The topic overview used to call that student "Not started".
+ */
+export function hasAttemptedSection(
+  attempts: AttemptRow[],
+  courseId: string,
+  topicId: string,
+  section: 'practice' | 'mini_quiz'
+): boolean {
+  return attempts.some(
+    (a) => a.course_id === courseId && a.topic_id === topicId && a.section === section
+  );
+}
+
 export function correctItemsInSection(
   attempts: AttemptRow[],
   courseId: string,
