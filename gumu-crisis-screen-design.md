@@ -746,6 +746,19 @@ graded so adding a tier later does not mean redoing anything.
 Also open, and mine to raise rather than decide:
 
 - **Retention and access policy** for the persisted disclosures in 5.2.
+- **`gumu_sessions` has no observability at all.** Recorded 2026-08-19, and
+  nothing today fixes it. The complete set of readers is the session route
+  itself, the practice route's correct-answer lookup, and `topic-data.ts:435`
+  for released solutions. There is no dashboard, no alert, no admin query and no
+  analytics over that table.
+
+  The cost was demonstrated rather than theorised: a session sat `active` from
+  2026-08-10 to 2026-08-19 with nothing to close it, degrading that student's
+  next visit to the item, and nothing surfaced it. It was found only because the
+  crisis-screen DDL happened to include a stranded-row query for an unrelated
+  reason. Commit `bd3ce12` stops new ones accumulating, but it does not make the
+  table observable: the next thing to go wrong in `gumu_sessions` will be just as
+  invisible. Worth naming as a gap even though it is out of scope here.
 - `[COUNSELOR?]` **Whether "This session is closed" is right at all**, or whether
   the student should be able to come back and keep working. Juan holds this one
   loosely and closing feels right to him, so it is on the open list rather than
