@@ -58,16 +58,53 @@ export type SelectResult = {
 // ─── Counting ───────────────────────────────────────────────────────────────
 
 /**
- * Is this stored practice_items entry usable as a worksheet question?
+ * Can this stored entry be PRINTED as a worksheet question?
  *
- * MEASURED, and this is schema fact 1. Counting with jsonb_array_length or
- * `items.length` overstates the pool: QR.1.1 has 16 array entries but only 7
- * gradeable ones, because most of its practice section is free-response. A
- * teacher asking that topic for 10 questions would get 7 and no explanation.
+ * Format and choices, and deliberately nothing else -- because this is the
+ * question the redacted view can answer. curriculum_topics_public applies
+ * jsonb_strip_keys(practice_items, array['correct_answer','misconception_tag']),
+ * so an item arriving from the public path has no correct_answer at all.
  *
- * Both halves are required. `format` alone admits an item whose correct answer
- * never parsed out of the answer key, which would print on the worksheet and
- * then be blank on the key -- worse than not printing at all.
+ * THIS IS THE PREDICATE THE PICKER AND THE DRAW BOTH USE, and that is the whole
+ * point of it existing. They previously answered the same question differently
+ * -- the picker required correct_answer, the draw did not -- so every badge in
+ * the builder read 0 while drawFromStatic would have found 14, and every
+ * checkbox was disabled. A count that does not match what the draw produces is
+ * wrong in whichever direction it differs.
+ *
+ * SCHEMA FACT 1 still holds here: this is counted per item by format, never by
+ * array length. QR.1.1 has 16 entries and 7 printable ones.
+ */
+export function isPrintable(item: {
+  format?: string | null;
+  choices?: Record<string, string> | null;
+}): boolean {
+  return (
+    item.format === 'multiple_choice' &&
+    !!item.choices &&
+    Object.keys(item.choices).length > 0
+  );
+}
+
+/**
+ * Is this entry printable AND backed by a parsed correct answer?
+ *
+ * The stricter test, and it is only answerable on the BASE table -- the view
+ * cannot see correct_answer. Use it where an answer is genuinely required:
+ * building the key, or validating an upload. Using it against the public view
+ * returns false for every item in the course, which is exactly the bug this
+ * pair of functions was split apart to prevent.
+ *
+ * MEASURED, so the split costs nothing today: across all 97 non-placeholder
+ * topics there are 1,351 printable items and 1,351 gradeable ones -- zero
+ * printable-but-unkeyed. So counting from the view is currently exact.
+ *
+ * That is a property of the CONTENT, not a mechanism, and it is not relied on.
+ * upload_curriculum.py's validate_practice_items() cross-checks the correct
+ * answer at authoring time, and the `interactive` flag on each stored section
+ * is false when any item in it lacks one. If an unkeyed item ever ships, it
+ * would appear on a worksheet and be blank on the key -- so the guard belongs at
+ * upload, where it already is, rather than in a count that cannot see the field.
  */
 export function isGradeable(item: {
   format?: string | null;
@@ -75,12 +112,44 @@ export function isGradeable(item: {
   choices?: Record<string, string> | null;
 }): boolean {
   return (
-    item.format === 'multiple_choice' &&
+    isPrintable(item) &&
     typeof item.correct_answer === 'string' &&
-    item.correct_answer.length > 0 &&
-    !!item.choices &&
-    Object.keys(item.choices).length > 0
+    item.correct_answer.length > 0
   );
+}
+
+/**
+ * The pool a topic offers, counted from a stored practice_items object.
+ *
+ * Pure, and takes the jsonb rather than a Supabase row, so it can be tested
+ * against a verbatim capture of what curriculum_topics_public actually returns.
+ * It could not be, before: the counting lived inline inside listPickerTopics
+ * next to the query, so the only way to exercise it was to have a database, and
+ * every existing test used hand-built objects carrying a correct_answer the
+ * real view never sends. That is why a course-wide count of zero shipped.
+ *
+ * `levelled` is counted only among printable items, never across all array
+ * entries -- QR.1.1 has 12 entries carrying a level but only 3 of them are
+ * questions a worksheet can use.
+ */
+export function countTopicPool(practiceItems: unknown): {
+  available: number;
+  levelled: number;
+} {
+  const sections = (practiceItems ?? {}) as Record<
+    string,
+    { items?: { format?: string | null; correct_answer?: string | null; choices?: Record<string, string> | null; level?: string | null }[] } | null
+  >;
+  let available = 0;
+  let levelled = 0;
+  for (const section of ['practice', 'mini_quiz']) {
+    for (const item of sections[section]?.items ?? []) {
+      if (!isPrintable(item)) continue;
+      available++;
+      if (item.level) levelled++;
+    }
+  }
+  return { available, levelled };
 }
 
 // ─── The difficulty rule ────────────────────────────────────────────────────
