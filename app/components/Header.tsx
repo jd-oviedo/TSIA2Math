@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useTheme } from "../theme/useTheme";
 import { supabase } from "../lib/supabase";
+import { planGrants } from "../lib/capabilities";
+import { isEntitledWithLegacyFallback } from "../lib/entitlement";
 import { LogoutButton } from "./LogoutButton";
 import { CalculatorToggle } from "./Calculator";
 
@@ -63,13 +65,36 @@ export function Header({ showCalculator = false }: { showCalculator?: boolean } 
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) { setNavRole("anon"); return; }
 
+      // The user's OWN row, under the "users can read own profile" policy, so
+      // widening the select leaks nothing new: these columns were already
+      // readable by the person they describe.
       const { data: profile } = await supabase
         .from("profiles")
-        .select("role, subscription_status")
+        .select("role, subscription_status, plan, plan_status, access_until")
         .eq("id", session.user.id)
         .single();
 
-      if (profile?.role === "teacher" && profile?.subscription_status === "active") {
+      // Cosmetic, and the last of the six subscription_status readers to move.
+      // The predicate is the shared one rather than a second copy of the rule:
+      // both entitlement.ts and capabilities.ts import nothing at runtime, so
+      // using them here costs the browser bundle nothing.
+      //
+      // STILL A CLIENT-SIDE READ, which is worth naming rather than leaving
+      // implicit. Nothing is gated on this. It picks which nav shape to draw,
+      // and every real decision is made on the server. Feeding it from the
+      // server instead would be better and is a wider change than moving a
+      // reader.
+      const isTeacher =
+        profile?.role === "teacher" &&
+        planGrants(profile?.plan, "teacher-dashboard") &&
+        isEntitledWithLegacyFallback(
+          profile?.plan_status,
+          profile?.access_until,
+          profile?.subscription_status,
+          "Header"
+        );
+
+      if (isTeacher) {
         setNavRole("teacher");
       } else if (session) {
         setNavRole("student");

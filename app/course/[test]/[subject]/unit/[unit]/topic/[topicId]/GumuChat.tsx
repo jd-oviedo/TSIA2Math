@@ -4,6 +4,11 @@ import { useState } from 'react';
 import GumuAvatar from './GumuAvatar';
 import { C, ink, onDark, RADIUS, hairline, MATH_LINE_HEIGHT, INK_MUTED } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
+// Type only, and free: app/lib/crisis.ts has no imports at all, so nothing is
+// pulled into the browser bundle. The copy itself arrives from the server in the
+// response rather than being duplicated here, so the counselor's version needs
+// no client change.
+import type { CrisisResource } from '@/app/lib/crisis';
 
 // GUMU's chat panel. Inline expansion under the item, not a modal, matching
 // the existing reveal-panel pattern -- and matching the design import's rule
@@ -15,6 +20,14 @@ import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 // it deliberately.
 
 type Message = { role: 'student' | 'gumu'; content: string };
+
+type CrisisCopy = {
+  opening: string;
+  explanation: string;
+  resources: CrisisResource[];
+  trusted: string;
+  closing: string;
+};
 
 type Props = {
   courseId: string;
@@ -58,6 +71,9 @@ export default function GumuChat({
   // Set once the escape hatch has handed the answer back, so the panel stops
   // offering a button that would only fetch the same answer again.
   const [answerShown, setAnswerShown] = useState(false);
+  // Set when the crisis screen stopped this session. Terminal: the panel below
+  // returns early and the tutor UI is not rendered at all.
+  const [support, setSupport] = useState<CrisisCopy | null>(null);
 
   // The escape hatch steps up from a quiet text link to a real button once the
   // student is on their last turn, or once the session has ended and it is the
@@ -124,6 +140,17 @@ export default function GumuChat({
 
     try {
       const data = await post({ action: 'message', session_id: sessionId, message: text });
+
+      // Branched BEFORE the append below, which is unconditional. Without this
+      // the crisis copy would render as a GUMU chat bubble, in GUMU's voice, as
+      // another turn in a conversation that has ended.
+      if (data.stopped === 'support') {
+        setSupport(data.copy as CrisisCopy);
+        setFinished(true);
+        onSessionChange(false);
+        return;
+      }
+
       setMessages((m) => [...m, { role: 'gumu', content: data.message }]);
       setTurnsRemaining(data.turns_remaining ?? null);
       if (data.status !== 'active') {
@@ -248,6 +275,15 @@ export default function GumuChat({
         </div>
       </div>
     );
+  }
+
+  // The whole panel is replaced, not added to. No avatar, no turn dots, no
+  // transcript, and no "I'll just see the answer" link: GUMU has stopped, and
+  // leaving any of his furniture on screen would say otherwise. The composer is
+  // gone with it, so there is nothing to type into, which is deliberate. The
+  // copy asks no question for the same reason.
+  if (support) {
+    return <SupportCard copy={support} />;
   }
 
   return (
@@ -476,6 +512,108 @@ export default function GumuChat({
       )}
 
       {error && <ErrorLine text={error} />}
+    </div>
+  );
+}
+
+// Shown when the crisis screen has stopped a session.
+//
+// Calm on purpose: paper rather than the amber used for errors, normal weights,
+// no icon, no alarm. A student who typed "this problem is killing me" should be
+// able to read this and shrug, and a student who meant it should be able to read
+// it and feel seen. The same sentences have to do both, because the classifier
+// will sometimes be wrong.
+//
+// The numbers are real anchors, not click handlers, so they work before
+// hydration and can be long-pressed and copied. tel: and sms: open the dialer
+// and the messaging app in one tap, which is where most students are. The HOME
+// keyword is in the visible line as well as the sms body, because the body
+// prefill is honoured by iOS and inconsistently by Android handsets, and the
+// visible text is what actually guarantees a student can act.
+function SupportCard({ copy }: { copy: CrisisCopy }) {
+  return (
+    <div
+      role="region"
+      aria-label="Support resources"
+      // The transcript above was role="log" aria-live="polite", and this replaces
+      // it wholesale. Without a live region here the swap is silent to a screen
+      // reader: the conversation would simply stop, with no announcement that
+      // anything took its place. Polite rather than assertive, matching the tone
+      // of the copy. Moving focus here as well would be better still and is a
+      // larger change than this one.
+      aria-live="polite"
+      style={{
+        marginTop: '18px',
+        background: C.paper,
+        borderRadius: '16px',
+        padding: '22px 24px 24px',
+        boxShadow: `inset 0 0 0 1.5px ${ink(0.1)}`,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '14px',
+      }}
+    >
+      <p style={{ margin: 0, font: `600 17px ${FONT_HEADING}`, lineHeight: 1.45, color: C.midnight }}>
+        {copy.opening}
+      </p>
+
+      <p style={{ margin: 0, font: `400 15px ${FONT_BODY}`, lineHeight: 1.65, color: ink(0.78) }}>
+        {copy.explanation}
+      </p>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        {copy.resources.map((resource) => (
+          <div
+            key={resource.line}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '9px',
+              padding: '15px 17px',
+              borderRadius: '13px',
+              background: C.cream,
+            }}
+          >
+            <div>
+              <div style={{ font: `600 15px ${FONT_BODY}`, lineHeight: 1.4, color: C.midnight }}>
+                {resource.line}
+              </div>
+              <div style={{ font: `400 13px ${FONT_BODY}`, lineHeight: 1.5, color: INK_MUTED }}>
+                {resource.org}
+              </div>
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '9px' }}>
+              {resource.actions.map((action) => (
+                <a
+                  key={action.href}
+                  href={action.href}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    minHeight: 44,
+                    padding: '0 18px',
+                    borderRadius: '10px',
+                    background: C.midnight,
+                    color: C.paper,
+                    font: `600 14.5px ${FONT_BODY}`,
+                    textDecoration: 'none',
+                  }}
+                >
+                  {action.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p style={{ margin: 0, font: `400 15px ${FONT_BODY}`, lineHeight: 1.65, color: ink(0.78) }}>
+        {copy.trusted}
+      </p>
+
+      <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, lineHeight: 1.6, color: INK_MUTED }}>
+        {copy.closing}
+      </p>
     </div>
   );
 }

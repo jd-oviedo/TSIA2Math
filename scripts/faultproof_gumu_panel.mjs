@@ -81,12 +81,16 @@ const ASSERTIONS = {
   'start() is reached only from the panel button': (s) =>
     (s.match(/onClick=\{start\}/g) ?? []).length === 1,
 
-  // The lifecycle, unchanged. Three call sites, exactly where they were.
+  // The lifecycle. Four call sites now: the crisis screen added a third
+  // onSessionChange(false), because a session stopped for support must release
+  // the answer-key gate exactly like the other two terminal paths do. Still an
+  // exact count rather than a floor, so an accidental extra or a dropped call
+  // is still caught.
   'onSessionChange(true) fires once, on a started session': (s) =>
     (s.match(/onSessionChange\(true\)/g) ?? []).length === 1,
 
-  'onSessionChange(false) fires twice, on the turn cap and on reveal': (s) =>
-    (s.match(/onSessionChange\(false\)/g) ?? []).length === 2,
+  'onSessionChange(false) fires three times, on the turn cap, on reveal, and on a crisis stop': (s) =>
+    (s.match(/onSessionChange\(false\)/g) ?? []).length === 3,
 
   'the panel adds no new session write': (s) =>
     (s.match(/action:\s*['"]start['"]/g) ?? []).length === 1,
@@ -110,7 +114,7 @@ const CHAT_KEYS = new Set([
   'nothing starts a session on mount',
   'start() is reached only from the panel button',
   'onSessionChange(true) fires once, on a started session',
-  'onSessionChange(false) fires twice, on the turn cap and on reveal',
+  'onSessionChange(false) fires three times, on the turn cap, on reveal, and on a crisis stop',
   'the panel adds no new session write',
 ]);
 
@@ -155,7 +159,7 @@ const FAULTS = [
     name: 'a second onSessionChange(false) is added',
     file: 'chat',
     apply: (s) => s.replace('    if (dismissed) return null;', '    if (dismissed) { onSessionChange(false); return null; }'),
-    breaks: 'onSessionChange(false) fires twice, on the turn cap and on reveal',
+    breaks: 'onSessionChange(false) fires three times, on the turn cap, on reveal, and on a crisis stop',
   },
   {
     name: 'solutionsPaused is rewired',

@@ -135,7 +135,7 @@ function Brand({ collapsed }: { collapsed: boolean }) {
 export function StudentNavPanel({
   name,
   role,
-  subscriptionStatus,
+  entitledTeacher,
   collapsed = false,
   mode,
   onNavigate,
@@ -143,7 +143,7 @@ export function StudentNavPanel({
 }: {
   name: string;
   role: 'student' | 'teacher';
-  subscriptionStatus?: 'active' | 'inactive';
+  entitledTeacher?: boolean;
   collapsed?: boolean;
   /** Pin the rail to one palette. /course pages pass 'light'; the dashboard
       omits it and follows the app theme. */
@@ -160,7 +160,10 @@ export function StudentNavPanel({
   const { tip, hovered, showTip, hideTip } = useHoverLabel();
   const [accountOpen, setAccountOpen] = useState(false);
 
-  const isProTeacher = role === 'teacher' && subscriptionStatus === 'active';
+  // Cosmetic only. Reads a boolean the layout derived rather than deciding from
+  // a payment column, so the badge cannot disagree with the gate that let them
+  // in.
+  const isProTeacher = role === 'teacher' && Boolean(entitledTeacher);
   const initials =
     name
       .split(/[\s._@-]+/)
@@ -446,7 +449,7 @@ export function StudentNavDrawer({
   open,
   name,
   role,
-  subscriptionStatus,
+  entitledTeacher,
   mode,
   onClose,
   onOpenSupport,
@@ -454,12 +457,12 @@ export function StudentNavDrawer({
   open: boolean;
   name: string;
   role: 'student' | 'teacher';
-  subscriptionStatus?: 'active' | 'inactive';
+  entitledTeacher?: boolean;
   mode?: 'light' | 'dark';
   onClose: () => void;
   onOpenSupport?: () => void;
 }) {
-  return <DrawerBody open={open} name={name} role={role} subscriptionStatus={subscriptionStatus} mode={mode} onClose={onClose} onOpenSupport={onOpenSupport} />;
+  return <DrawerBody open={open} name={name} role={role} entitledTeacher={entitledTeacher} mode={mode} onClose={onClose} onOpenSupport={onOpenSupport} />;
 }
 
 // Split out so the hook below is never called conditionally.
@@ -467,7 +470,7 @@ function DrawerBody({
   open,
   name,
   role,
-  subscriptionStatus,
+  entitledTeacher,
   mode,
   onClose,
   onOpenSupport,
@@ -475,7 +478,7 @@ function DrawerBody({
   open: boolean;
   name: string;
   role: 'student' | 'teacher';
-  subscriptionStatus?: 'active' | 'inactive';
+  entitledTeacher?: boolean;
   mode?: 'light' | 'dark';
   onClose: () => void;
   onOpenSupport?: () => void;
@@ -513,7 +516,7 @@ function DrawerBody({
         <StudentNavPanel
           name={name}
           role={role}
-          subscriptionStatus={subscriptionStatus}
+          entitledTeacher={entitledTeacher}
           mode={mode}
           onNavigate={onClose}
           onOpenSupport={onOpenSupport}

@@ -49,12 +49,22 @@ export const curriculumPracticeRateLimit = new Ratelimit({
   analytics: true,
 });
 
-// /api/gumu/session — the Socratic tutor. Tighter than the practice route
+// /api/gumu/session, the Socratic tutor. Tighter than the practice route
 // because every call is a paid model request, and the shape of honest use is
-// bounded by design: a session caps at 3 student turns, so 20 per 5 minutes
-// covers several full conversations plus retries. Keyed on IP like the others,
-// which means a shared classroom NAT shares the budget -- acceptable while
-// GUMU only fires on wrong answers, worth revisiting if it goes wider.
+// bounded by design: a session caps at 3 student turns, so one full
+// conversation is at most a start, three messages and a reveal.
+//
+// KEYED ON THE SIGNED-IN USER ID, NOT THE IP, and the route enforces that by
+// checking auth before it calls this. It used to be keyed on IP, which was a
+// leftover from the endpoints that genuinely have no session, and it broke the
+// case it was most likely to meet: a school NAT is one address, so a classroom
+// shared a single budget and one anonymous flood could spend it before the 401
+// that would have rejected it. Same reasoning as supportRateLimit below.
+//
+// The threshold is unchanged from the IP-keyed version and is now generous:
+// 20 per 5 minutes is roughly four full conversations for ONE student rather
+// than for a whole room. Deliberately not retuned in the same change as the
+// rekey, so that if this needs tightening it is a decision made on its own.
 export const gumuRateLimit = new Ratelimit({
   redis,
   limiter: Ratelimit.slidingWindow(20, "5 m"),
