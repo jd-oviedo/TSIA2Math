@@ -1,0 +1,279 @@
+// Which items go on a worksheet, and in what order.
+//
+// RUNTIME-PURE ON PURPOSE, the same discipline as capabilities.ts and
+// products.ts: the only import is `import type`, which the type-stripping loader
+// erases, so `node --test` can load this directly and fault it. The half that
+// touches Supabase lives in worksheet-source.ts and is unreachable from a
+// harness.
+//
+// The split matters here more than usual, because the rules below are the ones
+// a teacher notices when they are wrong -- asking for 20 questions and getting
+// 13, or getting the same question twice.
+
+/** Authored difficulty band. Practice items carry one; quiz items do not. */
+export type Level = 'Basic' | 'Proficient' | 'Advanced';
+
+export type Section = 'practice' | 'mini_quiz';
+
+/**
+ * One item on a worksheet, as stored.
+ *
+ * A tagged union because there are two backends and a worksheet may mix them.
+ * See sql/worksheets.sql for why topic_id is carried on both arms.
+ */
+export type ItemRef =
+  | { source: 'static'; topic_id: string; section: Section; item_number: number }
+  | { source: 'instance'; topic_id: string; instance_id: string };
+
+/** A selectable item, before it is chosen. */
+export type Candidate = {
+  ref: ItemRef;
+  /** Null on every mini_quiz item, and on every rolled instance. See LEVELS. */
+  level: Level | null;
+  section: Section;
+};
+
+export type SelectOptions = {
+  /** How many questions the teacher asked for. */
+  count: number;
+  /** Empty or absent means no difficulty filter. */
+  levels?: readonly Level[];
+  /** Whether mini-quiz items may be used at all. Ignored when levels is set. */
+  includeQuiz?: boolean;
+  /** Stored on the worksheet so a regenerate under the same intent repeats. */
+  seed: number;
+};
+
+export type SelectResult = {
+  refs: ItemRef[];
+  /** requested - delivered. Zero on a normal draw. */
+  shortfall: number;
+  /**
+   * Why the teacher got what she got, in her words. Surfaced in the builder;
+   * never silently swallowed. An empty array means "exactly what you asked for".
+   */
+  notes: string[];
+};
+
+// ─── Counting ───────────────────────────────────────────────────────────────
+
+/**
+ * Is this stored practice_items entry usable as a worksheet question?
+ *
+ * MEASURED, and this is schema fact 1. Counting with jsonb_array_length or
+ * `items.length` overstates the pool: QR.1.1 has 16 array entries but only 7
+ * gradeable ones, because most of its practice section is free-response. A
+ * teacher asking that topic for 10 questions would get 7 and no explanation.
+ *
+ * Both halves are required. `format` alone admits an item whose correct answer
+ * never parsed out of the answer key, which would print on the worksheet and
+ * then be blank on the key -- worse than not printing at all.
+ */
+export function isGradeable(item: {
+  format?: string | null;
+  correct_answer?: string | null;
+  choices?: Record<string, string> | null;
+}): boolean {
+  return (
+    item.format === 'multiple_choice' &&
+    typeof item.correct_answer === 'string' &&
+    item.correct_answer.length > 0 &&
+    !!item.choices &&
+    Object.keys(item.choices).length > 0
+  );
+}
+
+// ─── The difficulty rule ────────────────────────────────────────────────────
+
+/**
+ * Does this candidate survive the active difficulty filter?
+ *
+ * SCHEMA FACT 3, and it is the one with a visible product consequence.
+ * `level` is null on ALL 388 mini_quiz items across all 97 topics -- the band
+ * headings (`**Basic Level**`) only exist in Part 2, so the parser has nothing
+ * to attach to a Part 3 item. It is also null on every rolled instance, because
+ * curriculum_item_instances has no level column at all.
+ *
+ * So a difficulty filter can only ever draw from the 10 practice items in a
+ * topic, not its 14 gradeable ones. That is not a bug to route around silently:
+ * selectItems() records it in `notes` and the builder says so, because a
+ * teacher who ticks "Basic" and receives 30% fewer questions deserves to know
+ * it was the filter and not a shortage of content.
+ */
+export function passesLevel(
+  candidate: Candidate,
+  levels: readonly Level[] | undefined,
+): boolean {
+  if (!levels || levels.length === 0) return true;
+  return candidate.level != null && levels.includes(candidate.level);
+}
+
+// ─── Deterministic shuffling ────────────────────────────────────────────────
+
+// mulberry32, the same generator FigureRenderer uses for its scatter clouds.
+//
+// Seeded rather than Math.random() for one reason: the seed is stored on the
+// worksheet, so "regenerate with the same settings" can reproduce a draw, and a
+// worksheet built on the server renders identically if the selection is ever
+// recomputed. Pure arithmetic, no crypto, no global state.
+function mulberry32(seed: number): () => number {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/** Fisher-Yates against a seeded source. Returns a new array. */
+export function seededShuffle<T>(input: readonly T[], seed: number): T[] {
+  const out = input.slice();
+  const rand = mulberry32(seed);
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
+// ─── Allocation across topics ───────────────────────────────────────────────
+
+/**
+ * Split a requested total across the chosen topics as evenly as the pools allow.
+ *
+ * Largest-remainder rather than `Math.floor(count / topics.length)` per topic:
+ * a plain floor loses up to (topics - 1) questions to rounding, so a teacher
+ * picking 3 topics and 20 questions would get 18 with no explanation.
+ *
+ * Topics whose pool is smaller than their share do not simply come up short --
+ * the remainder is redistributed to topics that still have room, which is what
+ * makes a mixed selection including QR.1.1 (7 gradeable) still deliver the full
+ * count as long as the other topics can cover it.
+ */
+export function allocate(
+  pools: readonly { topic_id: string; available: number }[],
+  count: number,
+): Map<string, number> {
+  const result = new Map<string, number>();
+  for (const p of pools) result.set(p.topic_id, 0);
+  if (pools.length === 0 || count <= 0) return result;
+
+  const capacity = new Map(pools.map((p) => [p.topic_id, p.available]));
+  let remaining = Math.min(
+    count,
+    pools.reduce((n, p) => n + p.available, 0),
+  );
+
+  // Round-robin rather than a one-shot division. It self-balances against
+  // uneven pools without a second redistribution pass, and the order is stable
+  // so the same inputs always allocate the same way.
+  let progress = true;
+  while (remaining > 0 && progress) {
+    progress = false;
+    for (const p of pools) {
+      if (remaining === 0) break;
+      const taken = result.get(p.topic_id)!;
+      if (taken < capacity.get(p.topic_id)!) {
+        result.set(p.topic_id, taken + 1);
+        remaining--;
+        progress = true;
+      }
+    }
+  }
+  return result;
+}
+
+// ─── The draw ───────────────────────────────────────────────────────────────
+
+/**
+ * Choose the worksheet's items.
+ *
+ * `pools` is one entry per chosen topic, already resolved by
+ * worksheet-source.ts from whichever backend that topic has. This function does
+ * not know or care which backend produced a candidate -- that is the whole
+ * point of the abstraction, and it is why adding templated topics later changes
+ * nothing here.
+ *
+ * NEVER RETURNS A DUPLICATE. Each candidate is drawn at most once, so a topic
+ * with a 14-item pool cannot fill a 20-item request on its own and will report
+ * a shortfall instead of repeating a question. On a templated topic the same
+ * code delivers 20 distinct questions without noticing the difference.
+ */
+export function selectItems(
+  pools: readonly { topic_id: string; candidates: readonly Candidate[] }[],
+  options: SelectOptions,
+): SelectResult {
+  const { count, levels, includeQuiz = true, seed } = options;
+  const notes: string[] = [];
+
+  const filtering = !!levels && levels.length > 0;
+
+  // Apply the filters first, so allocation sees the pool a teacher will
+  // actually get rather than the pool that exists.
+  let droppedQuizToLevel = 0;
+  let droppedQuizToOption = 0;
+
+  const filtered = pools.map((pool) => {
+    const candidates = pool.candidates.filter((c) => {
+      if (c.section === 'mini_quiz') {
+        if (filtering) {
+          // Not a preference -- a quiz item has no level, so it cannot satisfy
+          // any level filter. Counted so the note below can be specific.
+          droppedQuizToLevel++;
+          return false;
+        }
+        if (!includeQuiz) {
+          droppedQuizToOption++;
+          return false;
+        }
+      }
+      return passesLevel(c, levels);
+    });
+    return { topic_id: pool.topic_id, candidates };
+  });
+
+  if (filtering && droppedQuizToLevel > 0) {
+    notes.push(
+      `Mini-quiz questions are excluded while a difficulty filter is on: ` +
+        `they are not tagged with a difficulty level. ` +
+        `${droppedQuizToLevel} question${droppedQuizToLevel === 1 ? '' : 's'} set aside.`,
+    );
+  }
+
+  if (!filtering && droppedQuizToOption > 0) {
+    notes.push(
+      `Mini-quiz questions are turned off: ` +
+        `${droppedQuizToOption} question${droppedQuizToOption === 1 ? '' : 's'} set aside.`,
+    );
+  }
+
+  const allocation = allocate(
+    filtered.map((p) => ({ topic_id: p.topic_id, available: p.candidates.length })),
+    count,
+  );
+
+  // Draw per topic, then order the sheet by topic so a worksheet reads as
+  // grouped work rather than a shuffled pile. Within a topic the order is
+  // shuffled, so two worksheets over the same small pool do not look identical.
+  const refs: ItemRef[] = [];
+  filtered.forEach((pool, i) => {
+    const want = allocation.get(pool.topic_id) ?? 0;
+    if (want === 0) return;
+    // Vary the seed per topic, or every topic shuffles into the same order.
+    const shuffled = seededShuffle(pool.candidates, seed + i * 7919);
+    for (const c of shuffled.slice(0, want)) refs.push(c.ref);
+  });
+
+  const shortfall = Math.max(0, count - refs.length);
+  if (shortfall > 0) {
+    notes.push(
+      `Asked for ${count}, found ${refs.length}. ` +
+        `The selected topics do not have enough distinct questions` +
+        (filtering ? ` at the chosen difficulty.` : `.`) +
+        ` Add a topic, or lower the count.`,
+    );
+  }
+
+  return { refs, shortfall, notes };
+}
