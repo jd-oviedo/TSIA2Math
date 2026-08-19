@@ -125,6 +125,42 @@ export async function writeEntitlement(
       // Written in lockstep, derived rather than set by hand, so the legacy flag
       // and the new columns cannot disagree while both exist.
       subscription_status: legacySubscriptionStatus(write.planStatus, write.accessUntil),
+      // ROLE, ON A TEACHER PURCHASE ONLY, AND IN THIS STATEMENT ON PURPOSE.
+      //
+      // Until now the only live writer of role='teacher' was auth/callback, which
+      // fires on a URL parameter at sign-in and therefore only for a buyer who
+      // arrives SIGNED OUT through /upgrade. That missed two cases and both are
+      // live: a signed-in buyer never passes through /login at all, and the
+      // direct buy.stripe.com links being sent to warm contacts touch neither
+      // /upgrade nor /login. In both, the buyer paid, writeEntitlement recorded
+      // plan = teacher-core, role stayed 'student', and requireTeacher denied
+      // them on role before it ever looked at the plan. A paying teacher, locked
+      // out, with nothing in the data to explain it.
+      //
+      // The webhook is the only path every purchase goes through, so it is where
+      // role belongs.
+      //
+      // SAME STATEMENT, NOT A SECOND ONE. The natural instinct is to write role
+      // after checking that this call returned "written", but that outcome does
+      // not exist until this UPDATE has run, so gating on it would require a
+      // second statement and a window where the entitlement lands and the role
+      // does not. It is unnecessary: "written" IS the ordering predicate below
+      // matching a row, so putting role in this object inherits exactly that
+      // guarantee, atomically. A stale redelivery writes neither.
+      //
+      // PROMOTE ONLY. The spread is absent for student plans, so nothing is
+      // written and nothing can be demoted. A cancelled teacher keeps
+      // role='teacher' and is denied by the plan check instead, which is
+      // correct: role is identity and the entitlement is what lapsed. Demoting
+      // would also strip the course tree's second door from someone mid-renewal.
+      //
+      // The two plan literals rather than planGrants(plan, 'teacher-dashboard'),
+      // which is equivalent today. Spelled out because this is a role write and
+      // the rule should be readable here without following it into the
+      // capability map. Same shape teacher/welcome already uses.
+      ...(write.plan === "teacher-core" || write.plan === "teacher-pro"
+        ? { role: "teacher" }
+        : {}),
     })
     .eq("id", profileId)
     .or(`plan_updated_at.is.null,plan_updated_at.lt.${eventAt}`)
