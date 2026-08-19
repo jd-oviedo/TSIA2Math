@@ -11,6 +11,8 @@ import {
   formatZodError,
 } from "../../../lib/schemas";
 import { syncCompletionSnapshot } from "../../../lib/curriculum-progress";
+import { allowsTopic } from "../../../lib/capabilities";
+import { resolveCourseAccess } from "../../../lib/course-access";
 
 // Grades one curriculum practice answer.
 //
@@ -51,11 +53,31 @@ export async function POST(req: Request) {
 
   const { course_id, topic_id, section, item_number, selected_answer } = parsed.data;
 
-  // Session check -- anonymous users are graded, but nothing is persisted.
+  // Session check -- anonymous users used to be graded here, but nothing is
+  // persisted for them.
   const supabase = await createServerClient();
   const {
     data: { session },
   } = await supabase.auth.getSession();
+
+  // THIS ENDPOINT DOES NOT INHERIT THE PAGE GATE, and gating the pages alone
+  // would leave it wide open. It reads the answer-bearing row through the admin
+  // client and returns correct_answer on every graded submission, so an
+  // ungated version hands out the whole answer key at one request per item,
+  // bounded only by the rate limiter. Roughly 1,358 authored items is about two
+  // hours from one address.
+  //
+  // The same capability and the SAME free-sample constant as the layout, from
+  // one shared module. Two copies would disagree eventually, and the
+  // disagreement would be silent in the worst direction: the page gating a
+  // topic the endpoint still grades.
+  //
+  // Anonymous is refused outright rather than falling through, because anonymous
+  // gets no curriculum at all now, not even the free sample.
+  const access = await resolveCourseAccess();
+  if (!allowsTopic(access, "curriculum", course_id, topic_id)) {
+    return NextResponse.json({ error: "Not available on your plan" }, { status: 403 });
+  }
 
   // Admin client to read answer-bearing fields.
   const admin = createAdminClient();
@@ -186,7 +208,12 @@ export async function POST(req: Request) {
         }
       }
     } else {
-      gumuAvailable = true;
+      // GUMU is Full Course, or derived from an entitled teacher. A free-tier
+      // student on the sample reaches this branch WITHOUT it, and falls into the
+      // behaviour the anonymous tier already had: correct_answer inline and no
+      // panel, since the response below withholds the answer exactly when
+      // gumu_available is true. verify_gumu_tier.mjs pins that pairing.
+      gumuAvailable = allowsTopic(access, "gumu", course_id, topic_id);
     }
   }
 
