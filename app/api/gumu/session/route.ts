@@ -25,6 +25,33 @@ import { sendCrisisAlert, CRISIS_INBOX } from "../../../lib/email";
 
 type SupabaseAdmin = ReturnType<typeof createAdminClient>;
 
+// How long an untouched session stays resumable before it is treated as walked
+// away from.
+//
+// The collision path below exists for a double click or a stale tab, which are
+// seconds to minutes apart. Thirty minutes preserves that completely, while
+// making sure nothing genuinely old is ever resurrected mid-flow.
+//
+// WHY A THRESHOLD HERE RATHER THAN A SWEEP, and why that differs from the
+// entitlement columns, which explicitly refuse one:
+//
+//   sql/entitlement_columns.sql says "NO EXPIRY SWEEP EXISTS, AND THE GATE DOES
+//   NOT NEED ONE" because access is decided by comparing access_until to now()
+//   at READ time. A sweep that never runs therefore cannot grant access it
+//   should not: stale rows are harmless because nothing reads the stale field.
+//
+//   gumu_sessions is the opposite shape. gumu_sessions_one_active_per_item is a
+//   partial unique index on status = 'active', evaluated at WRITE time against
+//   stored status, so a row nobody ever closed keeps having an effect forever.
+//   Stale state genuinely persists here.
+//
+// Same shape of problem, opposite conclusion. This is still not a cron: the
+// close happens when someone next touches that item, which is the same read-time
+// instinct applied to a write-time constraint. A session nobody returns to stays
+// 'active' and harms nobody, because the only thing that index blocks is a
+// second session on that same item for that same student.
+const ABANDON_AFTER_MS = 30 * 60 * 1000;
+
 type PracticeItem = {
   item_number: number;
   format: string;
@@ -382,19 +409,26 @@ export async function POST(req: Request) {
     // there is simply no misconception to record if the retry succeeds.
     const misconceptionTag = item.misconception_tag?.[action.selected_answer] ?? null;
 
-    const { data: created, error: createError } = await admin
-      .from("gumu_sessions")
-      .insert({
-        student_id: studentId,
-        course_id: action.course_id,
-        topic_id: action.topic_id,
-        section: action.section,
-        item_number: action.item_number,
-        original_selected_answer: action.selected_answer,
-        misconception_tag: misconceptionTag,
-      })
-      .select()
-      .single();
+    // Built once and called twice: the optimistic insert, and the retry after a
+    // stale session has been closed out of the way. The lookup that sits between
+    // them is paid only on a collision, so the ordinary start is still one write
+    // and no read.
+    const insertSession = () =>
+      admin
+        .from("gumu_sessions")
+        .insert({
+          student_id: studentId,
+          course_id: action.course_id,
+          topic_id: action.topic_id,
+          section: action.section,
+          item_number: action.item_number,
+          original_selected_answer: action.selected_answer,
+          misconception_tag: misconceptionTag,
+        })
+        .select()
+        .single();
+
+    let { data: created, error: createError } = await insertSession();
 
     // The partial unique index allows one active session per item, so a double
     // click or a stale tab collides here rather than opening a second
@@ -403,8 +437,9 @@ export async function POST(req: Request) {
       const { data: existing } = await admin
         .from("gumu_sessions")
         // turn_count, because the resume below has to report how many turns are
-        // actually left rather than assuming a fresh session.
-        .select("id, turn_count")
+        // actually left rather than assuming a fresh session. created_at,
+        // because a session old enough is abandoned rather than resumed.
+        .select("id, turn_count, created_at")
         .eq("student_id", studentId)
         .eq("course_id", action.course_id)
         .eq("topic_id", action.topic_id)
@@ -413,37 +448,78 @@ export async function POST(req: Request) {
         .eq("status", "active")
         .maybeSingle();
 
-      if (existing) {
-        const { data: transcript } = await admin
-          .from("gumu_messages")
-          .select("role, content")
-          .eq("session_id", existing.id)
-          .order("created_at");
-        // THE REAL REMAINING COUNT, not the cap.
-        //
-        // This returned MAX_STUDENT_TURNS unconditionally, which is only true
-        // for a session that has never been spoken to. Resuming one that had
-        // already used two of its three turns told the student they had three,
-        // and their very next message hit the cap and closed the conversation.
-        // Wrong for the case this path was written for as well: a double click
-        // mid-conversation resumes at the same wrong number.
-        //
-        // Clamped at zero. A session cannot normally still be active with its
-        // turns spent, since the cap resolves it, but it can if that resolve
-        // write failed -- the silent failure sql/gumu_sessions_resolution.sql
-        // describes. Reporting a negative number to the client would be a
-        // second bug on top of that one.
-        return NextResponse.json({
-          session_id: existing.id,
-          messages: transcript ?? [],
-          status: "active",
-          turns_remaining: Math.max(0, MAX_STUDENT_TURNS - existing.turn_count),
-          resumed: true,
-        });
+      // A session nobody has touched in ABANDON_AFTER_MS is closed rather than
+      // resumed, and a fresh one opened in its place.
+      //
+      // Nothing else could ever close it. Every other path out of 'active'
+      // requires the student to do one more thing: send a third message, click
+      // the escape hatch, or answer the item correctly. Walking away is the
+      // absence of an action, and nothing observed absences, so 'abandoned' sat
+      // in the status constraint with no writer at all. This is that writer.
+      //
+      // Guarded on status = 'active' so two concurrent starts cannot both close
+      // it, and so this can never overwrite a real ending that landed in
+      // between.
+      // Tracks whether the old row was actually closed, which decides what the
+      // fallback below is allowed to do. If the abandon itself failed, the old
+      // session is still live and resuming it is the correct degraded
+      // behaviour; if it succeeded but the retry did not, resuming it would
+      // hand back a session that is no longer active.
+      let abandoned = false;
+
+      if (existing && Date.now() - new Date(existing.created_at).getTime() > ABANDON_AFTER_MS) {
+        const { error: abandonError } = await admin
+          .from("gumu_sessions")
+          .update({ status: "abandoned", resolved_at: new Date().toISOString() })
+          .eq("id", existing.id)
+          .eq("status", "active");
+
+        if (abandonError) {
+          console.error(`gumu_sessions abandon failed (session ${existing.id})`, abandonError);
+        } else {
+          abandoned = true;
+          console.log(`gumu_sessions ${existing.id} abandoned, opening a fresh session`);
+          // Reassigned, so everything below runs against the new row.
+          ({ data: created, error: createError } = await insertSession());
+        }
       }
 
-      console.error("gumu_sessions insert failed", createError);
-      return NextResponse.json({ error: "Could not start GUMU" }, { status: 500 });
+      // Only still an error if the retry above did not happen or did not work.
+      // A successful retry leaves createError null and falls out of this block
+      // into the ordinary flow with a fresh session.
+      if (createError) {
+        if (existing && !abandoned) {
+          const { data: transcript } = await admin
+            .from("gumu_messages")
+            .select("role, content")
+            .eq("session_id", existing.id)
+            .order("created_at");
+          // THE REAL REMAINING COUNT, not the cap.
+          //
+          // This returned MAX_STUDENT_TURNS unconditionally, which is only true
+          // for a session that has never been spoken to. Resuming one that had
+          // already used two of its three turns told the student they had three,
+          // and their very next message hit the cap and closed the conversation.
+          // Wrong for the case this path was written for as well: a double click
+          // mid-conversation resumes at the same wrong number.
+          //
+          // Clamped at zero. A session cannot normally still be active with its
+          // turns spent, since the cap resolves it, but it can if that resolve
+          // write failed -- the silent failure sql/gumu_sessions_resolution.sql
+          // describes. Reporting a negative number to the client would be a
+          // second bug on top of that one.
+          return NextResponse.json({
+            session_id: existing.id,
+            messages: transcript ?? [],
+            status: "active",
+            turns_remaining: Math.max(0, MAX_STUDENT_TURNS - existing.turn_count),
+            resumed: true,
+          });
+        }
+
+        console.error("gumu_sessions insert failed", createError);
+        return NextResponse.json({ error: "Could not start GUMU" }, { status: 500 });
+      }
     }
 
     const answerContext: AnswerContext = {
