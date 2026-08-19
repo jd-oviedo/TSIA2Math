@@ -11,9 +11,12 @@ import {
 } from "../../../lib/stripe-activation";
 import {
   entitlementFromSubscription,
+  productForPaymentLink,
   type Plan,
   type PlanTerm,
 } from "../../../lib/products";
+import { sendUnmatchedCheckoutAlert } from "../../../lib/email";
+import * as Sentry from "@sentry/nextjs";
 
 // Stripe signs webhooks with a shared secret and delivers a raw JSON body.
 // We must (a) read the raw body untouched to verify the signature and
@@ -154,12 +157,66 @@ export async function POST(req: Request) {
           clientReferenceId,
         });
         if (!profileId) {
+          // THE MONEY WAS TAKEN AND NOTHING IS WRITTEN.
+          //
+          // All three resolution steps failed: no profile with that
+          // client_reference_id, no profile carrying that Stripe customer, and
+          // no auth user with that email. Nothing here creates an account, so
+          // this buyer has paid and has nothing.
+          //
+          // WE STILL RETURN 200. A 500 would make Stripe retry for about three
+          // days, which is a lottery on whether the buyer happens to sign up
+          // inside the window, and it would trade the endpoint's 0% error signal
+          // for that. The deterministic fix is to capture the purchase and let
+          // them claim it at sign-in, which is Part 2.
+          //
+          // THREE CHANNELS, BECAUSE THE FIRST ONE ALONE FAILED US ALREADY. This
+          // used to be a lone console.error, which lives only in Vercel's
+          // runtime logs, has limited retention, and alerts nobody. Sentry never
+          // saw it either, because sentry.server.config.ts configures no
+          // console-capture integration. The consequence was concrete: we could
+          // not establish whether this had ever fired in production. So it now
+          // also raises a Sentry issue and emails a person.
           console.error(`[${SOURCE}] no profile match for checkout session`, {
             email,
             customerId,
             clientReferenceId,
             paymentLink,
           });
+
+          const product = productForPaymentLink(paymentLink);
+
+          Sentry.captureMessage("stripe: paid checkout matched no account", {
+            level: "error",
+            tags: { source: SOURCE, payment_link: paymentLink ?? "none" },
+            extra: {
+              checkoutSessionId: session.id,
+              email,
+              customerId,
+              hadClientReferenceId: Boolean(clientReferenceId),
+              product: product?.label ?? null,
+              amountTotal: session.amount_total,
+              currency: session.currency,
+            },
+          });
+
+          // Never allowed to change the response. A failed alert must not turn a
+          // silent drop into a 500 that Stripe then retries forever, and it must
+          // not mask the drop either, so the failure is logged loudly.
+          try {
+            await sendUnmatchedCheckoutAlert({
+              checkoutSessionId: session.id,
+              email,
+              paymentLinkId: paymentLink,
+              productLabel: product?.label ?? null,
+              amountTotal: session.amount_total,
+              currency: session.currency,
+              hadClientReferenceId: Boolean(clientReferenceId),
+            });
+          } catch (err) {
+            console.error(`[${SOURCE}] UNMATCHED-CHECKOUT ALERT FAILED TO SEND`, err);
+          }
+
           break;
         }
 
@@ -188,7 +245,28 @@ export async function POST(req: Request) {
         const customerId = toId(sub.customer);
         const profileId = await resolveProfileId(admin, stripe, { customerId });
         if (!profileId) {
+          // THE SAME SILENT DROP AS THE CHECKOUT BRANCH, with a different and
+          // slower consequence.
+          //
+          // This is a RENEWAL or a cancellation. If the customer cannot be
+          // resolved, access_until simply stops advancing, and the teacher lapses
+          // at the end of the period they last paid for, with nothing anywhere to
+          // explain why. Unlike the checkout case there is no moment of obvious
+          // failure: it looks exactly like an expiry.
+          //
+          // No email here, deliberately. This event carries no checkout session,
+          // no payment link and no amount, so the alert would say little more
+          // than "a customer id did not resolve", and a renewal storm would send
+          // one per event. A Sentry issue groups them and carries the customer
+          // id, which is the thing worth chasing.
           console.error(`[${SOURCE}] no profile match for ${event.type}`, { customerId });
+
+          Sentry.captureMessage("stripe: subscription event matched no account", {
+            level: "error",
+            tags: { source: SOURCE, stripe_event: event.type },
+            extra: { customerId, subscriptionId: sub.id, status: sub.status },
+          });
+
           break;
         }
 
