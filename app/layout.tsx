@@ -1,4 +1,8 @@
 import type { Metadata, Viewport } from "next";
+// Before globals.css, deliberately: globals.css carries `.katex { color: ... }`
+// and the @media print overrides below it, and both must win over anything
+// KaTeX's own stylesheet sets.
+import "katex/dist/katex.min.css";
 import "./globals.css";
 import { ThemeProvider } from "./theme/ThemeProvider";
 import { PostHogProvider } from "./providers";
