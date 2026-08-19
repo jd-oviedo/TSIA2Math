@@ -178,3 +178,101 @@ export function splitGuidedNotes(raw: string | null | undefined): LessonSection[
     html: renderMarkdownWithMath(section.body),
   }));
 }
+
+// ── Distractor prose ────────────────────────────────────────────────────────
+
+// One answer choice's teacher-facing explanation, unwrapped.
+export type DistractorProse = {
+  // The misconception slug, or null on the correct option and on anything that
+  // did not parse. The same taxonomy misconception_tags carries.
+  slug: string | null;
+  // True for the "Correct: ..." entry. The answer key uses this to place the
+  // line beside the right answer rather than under a wrong one.
+  correct: boolean;
+  // The sentence to show. Wrapper removed on a recognised entry, and the whole
+  // trimmed string on anything else.
+  text: string;
+};
+
+// The authored shape, which holds for all 4,032 wrong-answer entries across the
+// 96 source files that carry a distractor_logic block:
+//
+//   Student makes misconception: adds_instead_of_subtracts (adds the 9 to 14
+//   instead of subtracting it, producing 23)
+//
+// ANCHORED TO THE END, and that anchor is the load-bearing part. 184 of those
+// 4,032 strings contain parentheses OF THEIR OWN -- "reads f(9) as f divided by
+// 9", "though f(-2) is 21, not -3" -- and the trailing `\)\s*$` is what carries
+// the match past them to the final ")".
+//
+// Measured, because the obvious version of this note is wrong: greediness is
+// NOT what does the work. With the anchor present, a lazy `(.*?)` backtracks
+// forward and returns exactly the same string as `(.*)`. The two ways to
+// actually break it are:
+//
+//   `\(([^)]*)\)\s*$`   fails to match at all -- the class cannot cross the
+//                       inner ")". Content survives, via the raw-string branch
+//                       below, but the teacher reads the wrapper.
+//   `\((.*?)\)`         drop the anchor and it MATCHES, returning "...so f(9".
+//                       A truncated sentence that still reads like a finished
+//                       thought, so the bug ships looking like content.
+//
+// tests/distractor-prose.test.ts pins all three behaviours.
+//
+// The `s` flag is deliberate too: a future multi-line entry would otherwise
+// fail to match and fall through to the raw-string branch below.
+// [\s\S] rather than `.` with the `s` flag: tsconfig targets ES2017 and the
+// dotAll flag is ES2018. Same meaning, and it keeps a two-function addition
+// from dragging the whole project's compile target along with it.
+const WRONG_PROSE_RE = /^Student makes misconception:\s*([a-z0-9_]+)\s*\(([\s\S]*)\)\s*$/;
+const CORRECT_PROSE_RE = /^Correct:\s*([\s\S]+)$/;
+
+/**
+ * Unwrap one stored distractor_prose entry for display.
+ *
+ * The database stores exactly what the author wrote, wrapper and all -- see
+ * sql/curriculum_prose_columns.sql for why the strip is not done at upload.
+ * This is where it comes off.
+ *
+ * NEVER DROPS CONTENT. An entry that matches neither shape comes back whole, as
+ * `text`, with a null slug. The alternative -- returning null and letting the
+ * caller render nothing -- turns an unrecognised sentence into a blank space on
+ * a printed answer key, where the teacher has no way to tell a missing
+ * explanation from one that never existed. A slightly ugly line is strictly
+ * better than a silent hole.
+ */
+export function extractDistractorProse(
+  raw: string | null | undefined,
+): DistractorProse | null {
+  const text = (raw ?? '').trim();
+  if (!text) return null;
+
+  const wrong = WRONG_PROSE_RE.exec(text);
+  if (wrong) {
+    return { slug: wrong[1], correct: false, text: wrong[2].trim() };
+  }
+
+  const right = CORRECT_PROSE_RE.exec(text);
+  if (right) {
+    return { slug: null, correct: true, text: right[1].trim() };
+  }
+
+  return { slug: null, correct: false, text };
+}
+
+/**
+ * The answer key's per-option line: "Chose A: <explanation>".
+ *
+ * Third person singular is left exactly as authored ("adds the 9 to 14"), not
+ * rewritten to agree with a plural subject. Fixing that is a cosmetic pass over
+ * 4,032 strings and is not worth touching the content for; "Chose A:" reads
+ * correctly with the singular anyway.
+ */
+export function distractorLine(
+  letter: string,
+  raw: string | null | undefined,
+): string | null {
+  const parsed = extractDistractorProse(raw);
+  if (!parsed) return null;
+  return `${parsed.correct ? 'Correct' : `Chose ${letter}`}: ${parsed.text}`;
+}
