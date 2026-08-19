@@ -443,6 +443,24 @@ resources, flag to the teacher) before GUMU talks to a student who is not Juan.
 GUMU was expected to ship the evening of August 18, so this is no longer
 hypothetical.
 
+**Update, August 19.** This now sits AHEAD of Phase 4 by decision. GUMU is
+merged to main and live. Investigation confirmed there is no crisis handling of
+any kind: the only prompt instruction covering a student in difficulty tells the
+model to keep tutoring (`gumu.ts:22`), nothing scans student input, the message
+is persisted before the model sees it, and none of the four session statuses can
+represent a conversation that stopped being about math. Designed in
+`gumu-crisis-screen-design.md`, not built. Blocked on school counselor input.
+
+**The GUMU rate-limit threshold, once the crisis screen is settled.** Commit
+`3fba12d` moved the auth check above the limiter and rekeyed it from IP to the
+signed-in user id, which fixes the shared-NAT case where one classroom shared a
+single budget. It deliberately did NOT retune the number. 20 per 5 minutes was
+sized for an IP that could be a whole classroom; as a per-user number it is
+loose, roughly four complete conversations in five minutes, where one
+conversation is at most a start, three messages and a reveal. Revisit it in its
+own change. Sequenced after the crisis screen because that screen adds a second
+paid model call per student message, which changes what the right number is.
+
 ---
 
 ## 8. Constraints
