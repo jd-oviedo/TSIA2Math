@@ -9,6 +9,9 @@ import {
   type AnswerContext,
   type GumuTurn,
 } from "../../../lib/gumu";
+import { screenStudentMessage } from "../../../lib/crisis-screen";
+import { CRISIS_STOP_COPY } from "../../../lib/crisis";
+import { sendCrisisAlert, CRISIS_INBOX } from "../../../lib/email";
 
 // GUMU — the Socratic tutor conversation endpoint.
 //
@@ -146,6 +149,154 @@ async function resolveFlagged(
   });
 
   if (error) console.error("teacher_notifications insert failed", error);
+}
+
+// Ends a session because the crisis screen fired, and tells a person.
+//
+// DELIBERATELY NOT resolveFlagged. That function's whole body is the two maths
+// endings and the notification templated to "is stuck on", and whether teacher
+// notification is appropriate at all is still open with a school counselor.
+// Routing a crisis stop through it would prejudge that, and would file the
+// session as a maths failure.
+//
+// NOTHING HERE MAY THROW INTO THE CALLER. The student is being shown a crisis
+// line; a failed bookkeeping write or a failed email must not turn that into an
+// error page. Every step is caught and logged on its own.
+async function stopForSupport(
+  admin: SupabaseAdmin,
+  session: GumuSession,
+  detectedBy: "classifier" | "lexical"
+) {
+  // A new STATUS, not a new resolution. resolution stays null, so
+  // gumu_sessions_resolution_check is untouched: it already permits null, and
+  // revealedItemsInSection releases a worked solution only on
+  // resolved_flagged + student_gave_up, which a new status cannot match.
+  //
+  // If sql/gumu_ended_support.sql has not been run this update violates
+  // gumu_sessions_status_check and fails. That is why it is checked and why
+  // nothing below depends on it: the student still gets the resources.
+  const { error: statusError } = await admin
+    .from("gumu_sessions")
+    .update({ status: "ended_support", resolved_at: new Date().toISOString() })
+    .eq("id", session.id);
+
+  if (statusError) {
+    console.error(
+      `[crisis] could not close session ${session.id} as ended_support. ` +
+        `Has sql/gumu_ended_support.sql been run?`,
+      statusError
+    );
+  }
+
+  console.log(`[crisis] session ${session.id} stopped, detected by ${detectedBy}`);
+
+  await notifyForSupport(admin, session);
+}
+
+// Immediate notification. Never a digest: a disclosure at 9pm would reach a
+// teacher the next morning at best, which cannot serve a crisis.
+//
+// Two recipients, one behaviour. A student in a class has their teachers told;
+// a self-serve student has juan@unpackmath.com told, because
+// teacher_notifications.teacher_id is not-null and cannot represent them.
+//
+// The row is written AND the email is sent. The row alone reaches nobody:
+// teacher_notifications is written in exactly one other place and read in none,
+// with no dashboard listing despite an index built for one. The row is the
+// durable record for when that UI exists; the email is what reaches a person
+// today.
+async function notifyForSupport(admin: SupabaseAdmin, session: GumuSession) {
+  let studentEmail: string | null = null;
+  try {
+    const { data } = await admin
+      .from("profiles")
+      .select("email")
+      .eq("id", session.student_id)
+      .maybeSingle();
+    studentEmail = (data as { email: string | null } | null)?.email ?? null;
+  } catch (err) {
+    console.error("[crisis] could not read student email", err);
+  }
+
+  // Every teacher whose live class this student is actively in. Not `.limit(1)`
+  // as the maths notification does: that is fine for "who do I tell about a
+  // stuck student" and wrong here, where picking one arbitrary class could tell
+  // nobody. Archived classes are excluded, which the maths path forgets to do.
+  const enrollments: { class_id: string; teacher_id: string }[] = [];
+  try {
+    const { data } = await admin
+      .from("class_enrollments")
+      .select("class_id, classes(id, teacher_id, archived_at)")
+      .eq("student_id", session.student_id)
+      .eq("status", "active");
+
+    for (const row of data ?? []) {
+      const embedded = (row as { classes: unknown }).classes;
+      const cls = (Array.isArray(embedded) ? embedded[0] : embedded) as
+        | { id: string; teacher_id: string; archived_at: string | null }
+        | null
+        | undefined;
+      if (!cls?.teacher_id || cls.archived_at) continue;
+      if (enrollments.some((e) => e.teacher_id === cls.teacher_id)) continue;
+      enrollments.push({ class_id: cls.id, teacher_id: cls.teacher_id });
+    }
+  } catch (err) {
+    console.error("[crisis] could not resolve the student's teachers", err);
+  }
+
+  if (enrollments.length === 0) {
+    try {
+      await sendCrisisAlert({
+        toEmail: CRISIS_INBOX,
+        studentEmail,
+        studentId: session.student_id,
+        topicId: session.topic_id,
+        hasTeacher: false,
+      });
+    } catch (err) {
+      console.error("[crisis] SELF-SERVE ALERT FAILED TO SEND", err);
+    }
+    return;
+  }
+
+  for (const { class_id, teacher_id } of enrollments) {
+    const { error } = await admin.from("teacher_notifications").insert({
+      teacher_id,
+      student_id: session.student_id,
+      class_id,
+      gumu_session_id: session.id,
+      topic_id: session.topic_id,
+      misconception_tag: null,
+      message: "A student may need support. A tutoring session was stopped and they were shown crisis resources.",
+    });
+    if (error) console.error("[crisis] teacher_notifications insert failed", error);
+
+    let teacherEmail: string | null = null;
+    try {
+      const { data } = await admin
+        .from("profiles")
+        .select("email")
+        .eq("id", teacher_id)
+        .maybeSingle();
+      teacherEmail = (data as { email: string | null } | null)?.email ?? null;
+    } catch (err) {
+      console.error("[crisis] could not read teacher email", err);
+    }
+
+    // Falling back to the crisis inbox rather than dropping it. A teacher with
+    // no recorded email must not mean nobody hears about this.
+    try {
+      await sendCrisisAlert({
+        toEmail: teacherEmail ?? CRISIS_INBOX,
+        studentEmail,
+        studentId: session.student_id,
+        topicId: session.topic_id,
+        hasTeacher: Boolean(teacherEmail),
+      });
+    } catch (err) {
+      console.error("[crisis] TEACHER ALERT FAILED TO SEND", err);
+    }
+  }
 }
 
 export async function POST(req: Request) {
@@ -386,6 +537,52 @@ export async function POST(req: Request) {
       { error: "This GUMU session has already finished" },
       { status: 409 }
     );
+  }
+
+  // ---- the crisis screen -------------------------------------------------
+  //
+  // BEFORE THE TUTOR AND BEFORE THE TRANSCRIPT. Both halves of that are the
+  // point. askGumu is never called on a screened message, so there is no
+  // Socratic follow-up to a disclosure, and the insert below is never reached,
+  // so the message is not written to gumu_messages. Ordering, not a delete: a
+  // write followed by a delete leaves the row in WAL and in backups, which is a
+  // worse posture than never having written it.
+  //
+  // Placed after the ownership and status checks so only a live session the
+  // caller owns is ever screened, and before the history read so a turn that is
+  // about to stop does not pay for the transcript.
+  //
+  // THIS IS THE FLOOR, NOT THE FINISHED THING. The wording, whether a gentler
+  // middle tier should exist, and whether notifying a teacher suppresses
+  // disclosure are all still open with a school counselor. See
+  // gumu-crisis-screen-design.md.
+  const screen = await screenStudentMessage(action.message);
+
+  if (screen.action === "unavailable") {
+    // Neither detector could speak. The turn is refused rather than tutored
+    // unscreened, and rather than showing crisis resources on what is an
+    // infrastructure error. Same 503 the model outage path returns, which says
+    // nothing about why. The student's turn is not consumed and their message
+    // is not stored.
+    return NextResponse.json({ error: "GUMU is unavailable right now" }, { status: 503 });
+  }
+
+  if (screen.action === "stop") {
+    await stopForSupport(admin, gumuSession, screen.detectedBy);
+
+    // No `message` field, on purpose. GumuChat appends `data.message` to the
+    // transcript as a GUMU bubble unconditionally, so reusing that field would
+    // render crisis resources in the tutor's voice as another turn in the
+    // conversation. `stopped` is the discriminator the client branches on, and
+    // omitting `message` means a client that forgets to branch renders nothing
+    // rather than something wrong.
+    return NextResponse.json({
+      session_id: gumuSession.id,
+      status: "ended_support",
+      stopped: "support",
+      copy: CRISIS_STOP_COPY,
+      turns_remaining: 0,
+    });
   }
 
   const { data: history } = await admin

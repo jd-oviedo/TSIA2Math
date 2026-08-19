@@ -267,6 +267,14 @@ So the map's "practice only ... No GUMU, no curriculum" reads, concretely:
 - practice-pass **does** unlock `/adaptive-test` and the future worksheet generator
 - practice-pass **does not** unlock `/course/.../practice`, despite the URL
 
+**Incidental, confirmed against production 2026-08-19.**
+`gumu_sessions_section_check` constrains `section` to exactly
+`('practice', 'mini_quiz')`. So GUMU exists only on those two surfaces, at the
+database level and not merely by convention. That bounds the `gumu` capability
+precisely: it is reachable from a topic's practice and mini quiz and nowhere
+else, which is worth knowing when the gate is written, because gating the lesson
+route has no effect on GUMU access either way.
+
 I am reading the map literally rather than resolving it. If the intent was that
 Practice Pass buys the topic practice sections too, that is a different product
 and the section 5 answer changes with it, so it is worth a sentence of

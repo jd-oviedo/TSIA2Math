@@ -2,26 +2,32 @@
 
 *August 19, 2026. Branch `feat/entitlement-columns`.*
 
-> ## STATUS: DESIGN. NOT BUILT, NOT APPLIED.
+> ## STATUS: BUILT, NOT MERGED. DDL NOT RUN.
 >
-> This document being committed does not mean any of it exists. As of the commit
-> that added it:
+> Updated 2026-08-19. The minimum viable crisis path is now written on
+> `feat/entitlement-columns`:
 >
-> - **No code has been written.** There is no `app/lib/crisis.ts`, no screen in
->   `app/api/gumu/session/route.ts`, no resource card in `GumuChat.tsx`.
-> - **The DDL in section 3.2 has NOT been run.** `gumu_sessions.status` still
->   admits only the original four values and there is no `support_detected_by`
->   column. Do not assume the constraint is widened.
-> - **GUMU is live in production with no crisis handling of any kind.** That is
->   the condition this document describes and proposes to change, not a condition
->   it has changed.
-> - **Three items are unresolved placeholders** awaiting a school counselor,
->   marked `[COUNSELOR]` and `[COUNSELOR?]` inline throughout and listed in
->   section 8. The student-facing strings in section 2.2 are literally
->   `[PLACEHOLDER, COUNSELOR]` and must not be shipped as written.
+> - `app/lib/crisis.ts` (runtime-pure: the floor, the threshold, the failure
+>   direction, the copy), `app/lib/crisis-screen.ts` (the classifier),
+>   `sendCrisisAlert` in `app/lib/email.ts`, the screen branch and
+>   `stopForSupport` in `app/api/gumu/session/route.ts`, and `SupportCard` in
+>   `GumuChat.tsx`.
+> - `tests/crisis.test.ts` and `scripts/faultproof_crisis_screen.mjs`, wired into
+>   `npm run test:offline`.
 >
-> The one thing here that HAS shipped is the rate limiter reorder in section 6,
-> committed separately as `3fba12d`. Everything else in this file is a proposal.
+> **The DDL has NOT been run.** `sql/gumu_ended_support.sql` is written and
+> awaits a manual run. Until it does, a crisis stop shows the student the
+> resources and notifies a person correctly, but the session's status write
+> fails the existing constraint and is logged rather than applied. DDL first,
+> then deploy.
+>
+> **The counselor items are still open and still placeheld.** The student-facing
+> strings are a draft marked `[PLACEHOLDER, COUNSELOR]` in one exported
+> constant. Whether a gentler middle tier should exist, whether notifying a
+> teacher suppresses disclosure, and whether the session should close at all are
+> unanswered. **This is the floor, not the finished thing.**
+>
+> The rate limiter reorder in section 6 shipped separately as `3fba12d`.
 
 Ahead of Phase 4 by decision, 2026-08-19. Two items are explicitly NOT designed
 here and are marked `[COUNSELOR]` throughout: the exact wording shown to a
@@ -365,6 +371,16 @@ deliberately not narrowed it.
   **structurally cannot** hold this event. This is not a policy choice to revisit,
   it is a NOT NULL. Any option that records something for a self-serve student
   needs a different destination.
+
+- **`teacher_notifications` IS WRITE-ONLY. NOTHING READS IT.** Found 2026-08-19,
+  and it is the fact that decided this section. The complete set of references in
+  the codebase is the insert at `app/api/gumu/session/route.ts` and its error
+  log. There is no dashboard query, no listing, no unread badge. The table even
+  carries an index built for "the teacher dashboard's unread-first listing"
+  (`gumu_tables.sql:107`), and that listing was never built. **So every
+  notification row inserted today reaches nobody.** Immediate notification and
+  the mechanism were therefore in direct conflict, and a row alone could not have
+  satisfied it.
 - The notification only fires from `resolveFlagged`, on the two math endings, for a
   student in an active class, with text templated to "is stuck on ..."
   (`route.ts:130-136`).
@@ -406,6 +422,32 @@ Directly addresses the suppression concern, which is the exact thing you are tak
 to the counselor: a student who knows the channel is confidential may disclose more
 readily. The cost is asking a kid in distress to make a decision at the worst
 possible moment, and one more screen between them and the phone number.
+
+### 4.2b DECIDED, 2026-08-19
+
+Insert the row **and** send an email. One send function, two recipient
+resolutions, one behaviour: the student's teachers when they have any,
+`juan@unpackmath.com` when they do not. The row stays because it is the durable
+record and the right home once a UI exists; the email is the only channel that
+reaches a person today.
+
+A daily digest was considered and **rejected**, for two reasons worth recording:
+a digest cannot serve a crisis, since a disclosure at 9pm reaches a teacher the
+next morning at best; and bulk daily transcripts of every student's tutoring
+session is surveillance of minors' private struggle rather than a safety measure,
+with a consent question nobody is currently able to answer. Do not design one.
+
+Two details of the built version that go beyond the existing maths path:
+notification goes to **every** teacher of a live class the student is actively
+in, not `.limit(1)`, because picking one arbitrary class could tell nobody; and
+archived classes are excluded, which the maths path forgets to do.
+
+**The student's message is not included in either email.** A teacher does not
+need the words to act, they need to know which student and when so they can go
+and find them. Including a minor's disclosure verbatim in an inbox that can be
+forwarded is a much larger step and is itself a `[COUNSELOR]` question. The known
+cost is recorded in 5.2: without the text there is no way to measure the
+false-positive rate empirically.
 
 ### 4.3 The structural consequence, whichever you pick
 
@@ -704,11 +746,19 @@ graded so adding a tier later does not mean redoing anything.
 Also open, and mine to raise rather than decide:
 
 - **Retention and access policy** for the persisted disclosures in 5.2.
-- **Whether a crisis-stopped student can immediately reopen GUMU on the same item.**
-  Mechanically they can: `gumu_sessions_one_active_per_item` is partial on
-  `status = 'active'`, so a terminated session frees the slot. Every message is screened
-  regardless, so reopening is not unsafe. It is a care question, not a safety one:
-  does the product try to keep them with the resources, or let them go back to work if
+- `[COUNSELOR?]` **Whether "This session is closed" is right at all**, or whether
+  the student should be able to come back and keep working. Juan holds this one
+  loosely and closing feels right to him, so it is on the open list rather than
+  settled.
+
+  The mechanics are relevant to that decision and are already permissive.
+  `gumu_sessions_one_active_per_item` is a partial unique index on
+  `status = 'active'`, so ending a session frees the slot and the student can
+  already open a fresh GUMU session on the same item straight away. Every message
+  is screened again regardless, so reopening is not unsafe. What the word
+  "closed" changes is therefore only what the copy tells them, not what the
+  system permits, which makes this a care question rather than a safety one: does
+  the product try to keep them with the resources, or let them go back to work if
   that is what they want.
 - **Total session and message counts**, needed to size 5.3. Not queried for this report.
 
