@@ -2,16 +2,34 @@
 
 *August 19, 2026. Branch `feat/entitlement-columns`.*
 
-> ## STATUS: DESIGN. NOT BUILT.
+> ## STATUS: DESIGN, REVISED AGAINST FOUR RULINGS. NOT BUILT.
 >
-> No code has been written against this document. `/course` still has no auth
-> gate of any kind, `app/course/layout.tsx` is still a twelve-line passthrough,
-> and every topic is still readable by an anonymous visitor. Section 5 records an
-> OPEN decision that is deliberately not resolved here, and no work should start
-> until it is answered.
+> Revised 2026-08-19. No code has been written. `/course` still has no auth gate
+> of any kind, `app/course/layout.tsx` is still a twelve-line passthrough, and
+> every topic is still readable by an anonymous visitor.
 >
-> **Parked behind the GUMU crisis screening work** as of 2026-08-19, by decision.
-> See `gumu-crisis-screen-design.md`, which is itself blocked on counselor input.
+> **Nothing in section 5 is open any more.** The four questions this document
+> previously carried have been ruled on:
+>
+> | # | Question | Ruling |
+> |---|---|---|
+> | 1 | What anonymous and free-tier visitors see | One free topic, signed-in only. Anonymous gets no curriculum at all. Section 5 |
+> | 2 | Whether `practice-pass` unlocks a topic's practice | Yes. The capability model splits three ways. Section 2 |
+> | 3 | The `subscription_status` transition predicate | Accepted, and `legacyActivateOnly` is the named blocker. Section 4.2 |
+> | 4 | Whether teacher plans imply curriculum read | Gate predicate is curriculum OR teacher-dashboard, and the map is NOT widened. Section 2.4 |
+>
+> **Ruling 2 was itself withdrawn later the same day.** The capability model does
+> NOT split: it is `curriculum` (Full Course only) and `gumu` (Full Course only,
+> plus the derived teacher path), with `worksheets` sitting outside `/course`
+> entirely. A Practice Pass holder never lands on a `/course` URL. Section 2
+> records both wrong versions rather than only the conclusion, because both were
+> reached from confident readings of written sources: the first from the SQL
+> shorthand, the second from the live pricing copy. The pricing copy is wrong and
+> is carried to section 6.
+>
+> The consequence is that the gate is ONE plan check at the course root, and the
+> three surfaces the split would have disturbed are untouched. Section 2.5 is what
+> is left of that cost, which is one new tier state and no locked routes.
 
 Read alongside `checkout-entitlement-handoff.md` section 3.4 and
 `sql/entitlement_columns.sql` section 2.
@@ -197,25 +215,46 @@ footnote.
 
 ## 2. The capability map, as code
 
-Proposed new module `app/lib/capabilities.ts`, held to the same discipline as
-`app/lib/products.ts`: every import `import type` only, so `node --test` can load
-it without a bundler and the map can be asserted directly.
+**REVISED TWICE ON 2026-08-19, AND IT WAS WRONG IN BOTH DIRECTIONS.** The
+history matters more than the conclusion here, because both errors were made
+from confident readings of written sources.
+
+The first version took the shorthand in `sql/entitlement_columns.sql` literally:
+"practice-pass: practice only ... NO GUMU, NO curriculum". The second version
+overturned that on the strength of the live `/pricing` bullets, which name "Full
+practice bank across all 97 topics" and "Progress tracking by topic" under
+Practice Pass, and split curriculum into `curriculum-practice` and
+`curriculum-lesson`.
+
+**Both are withdrawn. The long-standing product boundary is the authority, and
+neither the SQL shorthand nor the pricing copy stated it correctly.**
+
+> **A Practice Pass holder never lands on a `/course` URL.** Practice Pass is the
+> worksheet generator. Curriculum, lessons and GUMU are Full Course.
+
+The pricing bullets are not evidence against that boundary; they are evidence
+that the pricing copy is wrong, which is carried to section 6.
+
+### 2.1 The capabilities
+
+Two that matter to Phase 4, and two that do not.
 
 ```ts
 import type { Plan } from "./products";
 
 export type Capability =
-  | "practice"           // /adaptive-test, the CAT practice test
-  | "worksheets"         // the worksheet generator, when it ships
-  | "curriculum"         // the /course tree: lesson, practice, quiz
-  | "gumu"               // the Socratic tutor
-  | "teacher-dashboard"; // /teacher and every teacher API route
+  | "curriculum"         // the whole topic tree: lesson, practice, quiz, worked
+                         // examples, completion gates. FULL COURSE ONLY.
+  | "gumu"               // the Socratic tutor. Full Course only, plus the
+                         // derived teacher path in section 3.
+  | "worksheets"         // the generator. Practice Pass and above. NOT in
+                         // /course, and not built yet.
+  | "teacher-dashboard"; // /teacher and every teacher API route.
 
-// Practice Pass, named separately so Full Course can be BUILT from it rather
-// than restating it. The superset is a live public commitment (the pricing page
-// reads "EVERYTHING IN PRACTICE PASS, PLUS"), and a commitment expressed as two
-// hand-maintained lists is one edit away from being broken silently.
-const PRACTICE_PASS: readonly Capability[] = ["practice", "worksheets"];
+// Practice Pass named separately so Full Course is BUILT from it rather than
+// restating it. The superset is a live public commitment, and a commitment
+// expressed as two hand-maintained lists is one edit from breaking silently.
+const PRACTICE_PASS: readonly Capability[] = ["worksheets"];
 
 export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
   "practice-pass": new Set(PRACTICE_PASS),
@@ -224,63 +263,108 @@ export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
   "teacher-pro":   new Set(["teacher-dashboard", "worksheets"]),
 };
 
-// Core and Pro differ by QUOTA, not by feature presence, so the difference is a
-// number and not a capability. null means unlimited.
+// Core and Pro differ by QUOTA, not by feature presence. null means unlimited.
+// REGULAR_WORKSHEET_QUOTA is still unfilled and blocks nothing until worksheets
+// ship.
 export const WORKSHEET_QUOTA: Readonly<Record<Plan, number | null>> = {
   "practice-pass": REGULAR_WORKSHEET_QUOTA,
   "full-course":   REGULAR_WORKSHEET_QUOTA,
   "teacher-core":  REGULAR_WORKSHEET_QUOTA,
   "teacher-pro":   null,
 };
-
-export function planGrants(plan: Plan | null | undefined, cap: Capability): boolean {
-  return plan != null && (CAPABILITIES[plan]?.has(cap) ?? false);
-}
 ```
 
-Four rows, matching `sql/entitlement_columns.sql:177-185` exactly. No fifth row.
+`curriculum-practice` and `curriculum-lesson` do not exist. Four plan rows, no
+fifth, and `profiles_plan_check` untouched: the plan VALUES were never wrong in
+any version of this, only the prose about what they unlock.
 
-**Two things about the shape, both deliberate:**
+### 2.2 The gate is one check at the course root
 
-*The superset is structural, not documented.* `full-course` is spread from
-`PRACTICE_PASS`, so it cannot narrow by editing one list. A test asserts that
-every Practice Pass capability is in Full Course, which is the published promise
-stated as an assertion rather than a comment.
+Every route in the tree requires the same thing, so there is no per-route map:
 
-*Core and Pro hold the same capability set.* Their difference is
-`WORKSHEET_QUOTA`, which is what "differ by quota, not by feature presence"
-means when written down. `REGULAR_WORKSHEET_QUOTA` is an unfilled number: the map
-says "regular access" and does not say how many. Worksheets have not shipped, so
-this blocks nothing now, but it is an input that will be needed and is not
-currently recorded anywhere.
+```
+planGrants(plan, "curriculum") OR teacher-dashboard
+```
 
-**One naming collision that will cause a real bug if it is not called out.**
+evaluated once in `app/course/layout.tsx`, with the free topic as the single
+exemption.
 
-`/course/[test]/[subject]/unit/[unit]/topic/[topicId]/**practice**` is a
-curriculum route. It is Part 2 of a topic, it lives inside the curriculum, and it
-belongs to the `curriculum` capability, **not** to the `practice` capability. The
-`practice` capability is `/adaptive-test`, which is what the student nav calls
-"Take a Practice Test" (`StudentNav.tsx:41`).
+### 2.3 `/adaptive-test` is not plan-gated at all
 
-So the map's "practice only ... No GUMU, no curriculum" reads, concretely:
+Free to everyone including anonymous visitors, so it needs no capability. The
+anonymous-versus-signed-in difference there already exists and is an AUTH check,
+not an entitlement one: `app/api/items/reveal/route.ts:38-41` returns `isCorrect`
+and `correct_answer` to anyone and withholds `explanation` and `distractor_note`
+without a session. Phase 4 does not touch it.
 
-- practice-pass **does** unlock `/adaptive-test` and the future worksheet generator
-- practice-pass **does not** unlock `/course/.../practice`, despite the URL
+### 2.4 Teachers reach the course tree by a second door, and the map is not widened
 
-**Incidental, confirmed against production 2026-08-19.**
-`gumu_sessions_section_check` constrains `section` to exactly
-`('practice', 'mini_quiz')`. So GUMU exists only on those two surfaces, at the
-database level and not merely by convention. That bounds the `gumu` capability
-precisely: it is reachable from a topic's practice and mini quiz and nowhere
-else, which is worth knowing when the gate is written, because gating the lesson
-route has no effect on GUMU access either way.
+`teacher-core` and `teacher-pro` hold no `curriculum` capability, and that is
+correct: the map is also the record of what each plan SELLS, and Teacher Core
+does not sell student curriculum access.
 
-I am reading the map literally rather than resolving it. If the intent was that
-Practice Pass buys the topic practice sections too, that is a different product
-and the section 5 answer changes with it, so it is worth a sentence of
-confirmation even though I believe the literal reading is right.
+But teachers must reach `/course`, because the teacher answer-key surface IS the
+course tree: `topic-data.ts:112` calls `requireTeacher()` to decide whether to
+read the base table, and `quiz/page.tsx:137` renders the answer key only for
+them. A teacher who cannot open the topic their student is stuck on has no
+product.
 
----
+So the gate predicate carries both reasons, kept separately legible rather than
+merged into the map. Worth recording, because it is how this nearly got missed:
+**nothing under `app/teacher` links into `/course`.** Teachers arrive through
+`/dashboard/modules`, which the dashboard layout admits them to read-only. The
+path is real and undocumented, so a gate written from the teacher tree alone
+would not have seen it.
+
+### 2.5 What survives of the split's cost, which is much less than before
+
+The previous revision claimed the split forced three surfaces beyond the gate.
+**All three of those claims are withdrawn with the split.** There is no mid-topic
+lock, so:
+
+- `topic-parts.ts:9` ("No locked state. Nothing in the topic tree gates a route")
+  and `TopicOverview.tsx:14-18` ("drawing a padlock would be inventing a lock
+  that does not exist") **stay true.** No locked parts, no padlock, no upsell
+  affordance inside a topic. That deliberate decision is not reversed.
+- `loadNavigation`'s lesson to practice to quiz sequence is **untouched**.
+- `topicPlan`'s resume needs **no special case**.
+
+One thing does survive, and it is smaller and different in kind: **the free topic
+grants `curriculum` but not `gumu`**, so a signed-in free-tier student on the
+free topic is a state that does not exist today.
+
+That is not a route lock, because GUMU is not a route. It is a panel that mounts
+only when the grader says so. `gumu_available` initialises false and is set only
+inside `if (session)` (`app/api/curriculum/practice/route.ts:100`, `:189`), so
+the flag becomes `session && hasGumu`. And because `correct_answer` is withheld
+exactly when `gumu_available` is true (`:205`), that student falls into the
+behaviour the anonymous tier already has: the correct answer inline, no panel.
+`verify_gumu_tier.mjs` already pins that pairing, which is convenient, since the
+new state reuses a path rather than adding one.
+
+### 2.6 What the free sample actually shows, which is less than "misconception feedback"
+
+Flagging rather than resolving, because it affects how the sample is described
+on the pricing page rather than how it is built.
+
+The sample is required to show "the misconception feedback". **The curriculum
+grader does not return a misconception to a student at any tier.**
+`app/api/curriculum/practice/route.ts:193` is explicit: "The misconception slug
+is internal taxonomy and is not returned: it means nothing to a student, and
+echoing it back would put the tag map within reach of anyone probing option by
+option." The tag is recorded for the teacher surface through
+`record_misconception` and goes no further.
+
+So a free-tier student on AR.1.4 who gets an item wrong sees: the item marked
+wrong, and the correct answer inline. They do not see a named misconception, and
+they do not see a worked solution either, because `loadEarnedSolutions` releases
+one only for items already answered correctly or disclosed through GUMU's escape
+hatch, and they have neither.
+
+That is still a reasonable sample: the full lesson, ten real practice items, a
+four item quiz, server-side grading, and the worked solution unlocking as they
+get things right. It is just not what "misconception feedback" implies, and the
+gap is in the description rather than in the product.
 
 ## 3. GUMU's two entitlement paths
 
@@ -329,7 +413,9 @@ then `.some(...)` over the rows in memory. Row counts are trivial (5 classes, 3
 enrolments today) and keeping the rule in one pure function means a harness can
 run it without a database.
 
-**Three traps in the existing code that this derivation must not inherit:**
+**Three traps in the existing code that this derivation must not inherit.**
+RULED 2026-08-19: all three are to be fixed in the new derivation rather than
+carried, and the existing call sites are left alone unless named otherwise.
 
 1. **`.limit(1).maybeSingle()`.** `app/api/gumu/session/route.ts:119-120` takes the
    first enrolment only. That is correct for "who do I notify", and wrong for
@@ -344,6 +430,10 @@ run it without a database.
 3. **`archived_at` is honoured in one place and not the other.**
    `dashboard/data.ts:50` filters archived classes out; the GUMU teacher lookup
    does not. An archived class must not grant, so the entitlement query filters it.
+
+Trap 2's resolution is `= 'active'`, chosen because it fails closed on any third
+value the column might ever carry. Trap 1's is: no `.limit(1)`, evaluate every
+active enrolment, and grant if any one teacher is entitled.
 
 ### 3.3 The derived path grants the full-course set, not just `gumu`
 
@@ -459,8 +549,16 @@ Options:
   reader has moved" already commits to, and the log makes the fallback's use
   visible instead of silent.
 
-**Recommend (b).** With the consequence recorded plainly: the column cannot be
-dropped while `legacyActivateOnly` can still write a plan-less active row.
+**RULED 2026-08-19: (b), accepted.** Readers take
+`isEntitled(...) || subscription_status === 'active'` during the transition, with
+a logged warning on the second branch so the fallback's use is visible instead of
+silent.
+
+**`legacyActivateOnly` (`app/lib/stripe-activation.ts:171`) is the named blocker
+on dropping `subscription_status`.** The column cannot be dropped while that
+function can still write a plan-less active row. Resolving it is its own change,
+most likely resolving the product with a `paymentLinks.retrieve` before falling
+back, and it is a precondition for the drop rather than part of Phase 4.
 Resolving that is its own change (most likely: resolve the product with a
 `paymentLinks.retrieve` before falling back), and it is a precondition for the
 drop rather than part of Phase 4.
@@ -476,94 +574,125 @@ Two things that are *not* blockers, checked:
 
 ---
 
-## 5. The open decision, for you
+## 5. The decision, ruled
 
-**Not resolved here. Stating the options, the tradeoffs and a recommendation, and
-stopping.**
+**RULED 2026-08-19. Nothing here is open.** Recorded with the reasoning, and with
+two arguments that were made for this option and are now wrong, because a
+justification that has stopped being true should not be left standing.
 
-The question: after gating, what do an anonymous visitor and a signed-in
-free-tier student see in `/course`?
+### 5.1 The tiers
 
-They may deserve different answers, and it is worth deciding both. A signed-in
-free-tier student is 22 of the 32 existing profiles.
+| Tier | Curriculum | Everything else |
+|---|---|---|
+| **anonymous** | **None. No topic, not even the free one.** | The CAT engine at `/adaptive-test`. No score breakdown, no rationale on any question |
+| **signed in, free** | **One free topic. See 5.1a for exactly what that is** | Everything anonymous gets, plus saved results, progress, class join, dashboard |
+| **practice-pass** | **None. A Practice Pass holder never lands on a `/course` URL** | The worksheet generator, when it ships |
+| **full-course** | The whole topic tree, all topics, plus GUMU | plus worksheets |
+| **teacher tiers** | Curriculum read, for the answer-key surface. See 2.4 | Dashboard, worksheets |
 
-The tension is real in both directions. Leaving `/course` open means the $89
-product unlocks nothing (section 0). Closing it takes away the anonymous funnel
-into the curriculum *and* the course tree's only automated test coverage
-(section 1.6).
+### 5.1a What the free sample actually is
 
-### Option A. Hard gate the whole tree
+**CORRECTED 2026-08-19.** An earlier version of this section said the sample
+shows "the misconception feedback". That was wrong, and the error was in the
+description rather than in the product. The sample is:
 
-Signed out redirects to `/login?next=`. Signed in without `curriculum` gets an
-upgrade holding page.
+- the full guided-notes lesson
+- ten interactive practice items
+- a four item mini quiz
+- server-side grading on every item
+- the correct answer inline on a miss
+- worked solutions unlocking as the student gets things right
 
-- Closes the leak completely, including the answer extraction in section 1.2.
-- Simplest to implement and to reason about: one check in `app/course/layout.tsx`,
-  nowhere for a fifth sub-route to slip past, matching the pattern
-  `verify_auth_gate.mjs` already exists to protect on `/dashboard`.
-- Removes the anonymous curriculum funnel entirely. `/adaptive-test` becomes the
-  only open product surface.
-- Turns `verify_auth_gate.mjs:84`'s OPEN control red and breaks all fourteen
-  anonymous course probes plus `verify_gumu_tier.mjs`. Restoring coverage needs an
-  authenticated Playwright harness, which does not exist today and is not a small
-  piece of work.
+**No named misconception, and no GUMU.**
 
-### Option B. One free topic, everything else gated
+`app/api/curriculum/practice/route.ts:193` withholds the misconception slug from
+students at every tier, and that is correct and stays: relaxing it for a free
+tier would reopen the answer-key extraction surface through a side door, since
+the tag map is probeable option by option. It is not being touched.
 
-A named topic (or a named unit) stays open; the rest requires `curriculum`.
+That is still enough to judge the product, and it does not change the free-topic
+decision. What it does change is how the free tier is described on `/pricing`,
+which is carried to section 6.
 
-- Preserves a real anonymous funnel with real content to show.
-- Preserves the probe suite by pointing it at the free topic, which is roughly a
-  one-constant change across the fourteen scripts rather than an authenticated
-  harness. `verify_auth_gate.mjs` keeps a legitimately open control.
-- Bounds the answer extraction to one topic's items instead of 1,358.
-- Costs one real topic of content, given away permanently.
-- Adds an allowlist that has to stay honest, and a second thing to remember when
-  topics are added. Mitigated by keeping it a single exported constant that both
-  the gate and the probes import.
-- `QR.1.1` (the auth-gate control) and `AR.1.4` (the GUMU tier probe) are the two
-  the probes already use, so the choice is not free-form.
+Two things this shape does deliberately.
 
-### Option C. Lesson open, practice and quiz gated
+**Anonymous keeps exactly the surface it already has.** The CAT engine, with
+`explanation` and `distractor_note` withheld, which is what the June security
+session built and what `/api/items/reveal` already enforces. Phase 4 removes
+anonymous curriculum access rather than designing a new anonymous tier.
 
-- Matches a familiar shape: read the notes, pay to practice.
-- Closes the interactive surface, which is where the grading endpoint leaks
-  answers.
-- **Gives away the most content of any option.** `guided_notes` is the bulk of the
-  authored value on a topic, and this hands over all 97 topics' worth.
-- Splits the probe suite: lesson probes keep passing anonymously, practice and
-  quiz probes still need auth. Partial coverage loss rather than total.
-- The `/api/curriculum/practice` leak is **not** bounded by this option, since
-  gating the page does not gate the endpoint.
+**The free topic excludes GUMU.** GUMU is the Full Course differentiator, and a
+sample that included it would give away the thing the $89 buys. The sample still
+shows the lesson, the practice, the quiz, and the named misconception on a wrong
+answer, which is enough to judge the product.
 
-### Option D. Metered preview
+### 5.2 The free topic: AR.1.4, and the data decides it
 
-First N topics, or first visit, then gate.
+The two candidates were the topics the probes already use. Read from production:
 
-- Best funnel of the four.
-- Most code, and it needs durable anonymous state, which is precisely the thing
-  this app deliberately does not keep (section 1.2: nothing is written for an
-  anonymous visitor). Cookie-based metering is trivially reset.
+| | practice interactive | practice items | with misconception tags | mini quiz | tagged |
+|---|---|---|---|---|---|
+| **AR.1.4** | **yes** | 10, all multiple choice | **10 of 10** | 4, interactive | **4 of 4** |
+| QR.1.1 | **no** | 12, only 3 multiple choice | **0** | 4, interactive | **0** |
 
-### Recommendation
+`AR.1.4`, "Distinguishing function types (linear, quadratic, exponential)", 50
+minutes.
 
-**Option B, one free topic.** It closes the $89 leak, keeps an anonymous funnel
-with something real in it, bounds the answer extraction, and is the only option
-that keeps the course tree's automated coverage alive through the change that
-gates it. A is cleaner to build and pays for that by deleting fourteen probes on
-the same day the tree gets its first gate. C gives away more than it protects.
+QR.1.1 is disqualified by the ruling itself rather than by preference. The
+sample is required to show "the misconception feedback", and **QR.1.1 carries no
+misconception tags anywhere**, in either section. Its practice is also written
+work with nothing to submit, which is why `practice/page.tsx:57` has a whole
+non-interactive branch naming it. So a QR.1.1 sample would show a static page of
+text where the practice should be, grade four quiz questions, and diagnose
+nothing. It would demonstrate the absence of the two features Practice Pass is
+sold on.
 
-**Independent of which option you pick:** `POST /api/curriculum/practice` must be
-gated in the same change. Gating pages alone leaves the answer key extractable at
-one request per item for whatever remains open, and under C that is not bounded at
-all. The endpoint should require the same `curriculum` capability the page does,
-with the free-topic exemption under B applied in one shared place so the page and
-the endpoint cannot disagree.
+AR.1.4 is also the standard shape, 10 plus 4, every item multiple choice, every
+item diagnosing. A sample should show the product working normally, not one of
+its two exceptions.
 
-And the three copy strings in section 1.4 need to change with whatever is decided,
-because all three currently promise that signing in is enough.
+### 5.3 The arguments for this option that have stopped being true
 
----
+**The no-login hallway demo does not survive the correction.** The original case
+for one free topic was that a teacher showing a colleague needs something to
+show, and that no-login access is worth real money in a teacher-first word of
+mouth motion. Under this ruling the colleague has to sign in first, so that
+argument is gone. What remains is narrower and still holds: asking someone to pay
+$89 with no preview of the actual product is a hard ask, and a signed-in free
+sample is a normal funnel.
+
+**The probe-coverage argument is also gone, and it was mine.** I recommended
+option B partly because it would keep the anonymous Playwright suite alive by
+repointing it at the free topic. Under this shape the free topic requires a
+session, the harness cannot complete a Google OAuth sign-in, and so the probes go
+dark exactly as they would under a hard gate. **Option B no longer preserves the
+harness.** That was the load-bearing half of my recommendation and it does not
+survive.
+
+### 5.4 The coverage loss, stated plainly
+
+Sixteen scripts reference `/course`. Fifteen drive it as their subject in a real
+browser with no session, and `verify_auth_gate.mjs:84` names a course lesson
+route as a control that must return 200 signed out.
+
+All of that goes dark. Specifically:
+
+- `verify_auth_gate.mjs`'s OPEN control loses its course entry and is left with
+  `/adaptive-test` alone. Still a valid control, since it still proves the server
+  is up and not redirecting everything, but it is down to one route.
+- `verify_gumu_tier.mjs` cannot run at all: its entire premise is a signed-out
+  visitor reaching a practice page and being graded inline.
+- The topic render, chrome, reading band, paging, quiz register, quiz finish,
+  lesson outline, lesson handoff, collapsible units, item render and width probes
+  all lose their subject.
+
+**The authenticated branch still has no automated probe**, which the handoff has
+recorded as a known structural gap since Phase 1. Phase 4 does not close it and
+makes it bite for the first time. An exact per-script audit belongs in the build,
+not in an estimate here, and I will report the real number rather than this one.
+
+That is the cost of the ruling. It is a real cost and it is not an argument
+against the ruling, which was taken on product grounds.
 
 ## 6. Not in scope for Phase 4, logged
 
@@ -584,14 +713,134 @@ because all three currently promise that signing in is enough.
 
 ---
 
-## 7. What I need before writing code
 
-1. The section 5 decision: what anonymous and free-tier visitors see, and whether
-   those two answers differ.
-2. Confirmation of the section 2 reading, that `practice-pass` does not unlock
-   `/course/.../practice` despite the route name.
-3. Acceptance of option (b) in section 4.2, that readers accept
-   `isEntitled(...) || subscription_status === 'active'` during the transition and
-   the column cannot be dropped until `legacyActivateOnly` is resolved.
+### Carried out of Phase 4 by ruling, 2026-08-19
 
-Stopping here.
+**The `/pricing` copy for Practice Pass is wrong and needs rewording.** "A worked
+solution on every problem" does not describe what a Practice Pass holder gets: a
+Practice Pass holder never reaches a `/course` URL, so they meet worked reasoning
+through the CAT engine rationale and through worksheet solutions, neither of
+which is a "worked problem" in the sense that bullet implies. The other bullets,
+"Full practice bank across all 97 topics" and "Progress tracking by topic", are
+what misled this document into splitting the capability model, so the copy has
+cost something already.
+
+**The free tier's description on `/pricing` will need to match section 5.1a.**
+Once the free sample ships, the pricing page has to say what it actually
+contains, and in particular must not promise named misconception feedback, which
+no student sees at any tier.
+
+Both are marketing-repo changes, in `unpackmath-home`, and belong in
+`legal-audit-2026-08.md` with the other defects. Neither is in this repo and
+neither can be fixed from here.
+
+**The probe gap, with one addition to the audit commitment.** Section 5.4 commits
+to a per-script audit of what goes dark. Ruled addition: **before trusting any
+repaired probe, make it fail on purpose.** A probe that has never failed is a
+probe that has not been verified. That is the same standard as everywhere else in
+this repo, and it matters more here than usual, because the suite currently
+reports green while covering almost nothing Phase 4 touches. A repaired probe
+that silently stopped asserting would leave the suite green and the tree
+unguarded, which is worse than a probe that is honestly dark.
+
+## 7. Reachability requirements for the build
+
+Phase 4 is a gate, and a gate is entirely about reachability. The lesson carried
+forward from the crisis-screen work is that assertions prove what code DOES, not
+whether a branch is REACHABLE: the fault-proof there passed against a version
+whose success path fell through to a 500, because every assertion was about
+behaviour and none about reachability. Review caught it, the harness could not
+have. So these are stated as build requirements rather than left to a check.
+
+All four were accepted 2026-08-19 and are not optional.
+
+### 7.1 The gate runs before `loadTopic`'s `notFound()`
+
+`loadTopic` calls `notFound()` for an unknown topic. If the gate runs after it, an
+unentitled visitor distinguishes a 404 from a gate response and can enumerate
+every valid topic id. If it runs before, they cannot. Cheap to get right and
+silent if got wrong.
+
+### 7.2 An unreadable path must DENY, and the existing helper cannot express that
+
+A `/course`-level layout receives no route params, so the gate reads the path from
+the `x-pathname` header middleware already stamps. That is the same mechanism the
+chrome uses through `app/lib/topic-part-route.ts`.
+
+**That helper must not be reused for the gate as-is.** `activeTopicPart` returns
+`null` for four different situations: a missing header, a path with no `topic`
+segment, a valid topic path with no part (the doorway), and an unrecognised part.
+Collapsing them is right for chrome, where every null renders no indicator, and
+wrong for a gate, where "the doorway, allow if either capability" and "I could not
+read this, deny" must be different answers.
+
+So the gate needs its own parser returning a discriminated result, something like
+`{ kind: "topic", topicId } | { kind: "unreadable" }`, pure and unit-testable,
+same discipline as `topic-part-route.ts` itself. The part is no longer needed,
+since every route in the tree requires the same capability, so the only two
+questions are which topic and whether the path could be read at all.
+
+**`unreadable` fails CLOSED and reports to Sentry.** Denying alone is not enough:
+a header-read failure is a real defect, and if it only ever manifests as a locked
+out customer it will reach us as a support ticket with no diagnostic attached.
+Reporting it means the failure surfaces as the bug it is rather than as free
+access or as a mystery. Sentry is already wired (`sentry.server.config.ts`,
+`instrumentation.ts`); there are no explicit `captureException` call sites in
+application code today, so this would be the first.
+
+### 7.3 The gated layout sets `force-dynamic` explicitly
+
+`app/course/layout.tsx` sets nothing today because it reads nothing. Reading
+cookies would make it dynamic in practice, but the failure being avoided is a
+cached gated page served to someone who should not have it, so it is declared
+rather than inferred. The topic layout already sets it.
+
+### 7.4 `/api/curriculum/practice` does not inherit the page gate
+
+It accepts anonymous callers and returns `correct_answer` on every graded
+submission, so gating pages alone leaves the answer key extractable at one request
+per item. It must gate separately, on `curriculum`.
+
+**The free-topic exemption comes from ONE shared constant** that both the layout
+and the route import. Two copies will disagree, and the disagreement will be
+silent: the page would gate a topic the endpoint still grades, or the reverse.
+
+### 7.5 Where the gate lives, and the tension in it
+
+`app/course/layout.tsx` is the one place all four routes must pass through, which
+is what makes a fifth sub-route impossible to add ungated. That is the reasoning
+`middleware.ts:33-35` already gives for keeping the dashboard gate in a layout.
+
+The load-bearing reachability fact is already verified in this repo rather than
+assumed from framework docs: the topic layout's placeholder branch notes that not
+rendering `{children}` means the page component is never invoked, because a server
+component is only a description until React renders it, so `loadNavigation` and
+`loadGates` never run. A `redirect()` thrown from the layout has the same
+property.
+
+---
+
+## 8. Build order
+
+Shorter than the previous revision, because the capability collapse removed three
+steps.
+
+1. `app/lib/capabilities.ts`, runtime-pure, plus the free-topic constant. Tests
+   first: the superset property, and the free topic granting `curriculum` but
+   never `gumu`.
+2. The path parser from 7.2, pure and faulted, with `unreadable` proved to deny
+   AND proved to report.
+3. The entitlement resolver: direct plan, the derived teacher path with all three
+   traps in 3.2 fixed, and the teacher-dashboard second door.
+4. The gate in `app/course/layout.tsx`, before `loadTopic`, `force-dynamic`.
+5. `/api/curriculum/practice`: the `curriculum` check, the `gumu_available`
+   change from 2.5, and the free-topic constant shared with step 4.
+6. The six readers, in the order in section 4.1.
+7. Probe audit, and every repaired probe shown failing before it is trusted.
+
+Steps 1 through 5 are the gate. Step 6 is independent of it and could be its own
+review. Step 7 depends on 1 through 5 being done.
+
+REMOVED from the previous revision, with the capability split: `TopicOverview`
+locked parts, `loadNavigation` skipping, and `topicPlan` resume special-casing.
+None of those are needed.

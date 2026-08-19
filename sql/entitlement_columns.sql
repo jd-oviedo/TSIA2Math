@@ -172,21 +172,69 @@ comment on column public.profiles.stripe_payment_link_id is
 -- Stripe, so it is enumerated exhaustively and never rejects a real value.
 --
 -- CAPABILITY MAP, recorded here because the plan constraint is meaningless
--- without it. Phase 4 implements this and must not invent a fifth row:
+-- without it. Phase 4 implements this and must not invent a fifth row.
 --
---   practice-pass  practice only, including the worksheet generator when it
---                  ships. NO GUMU, NO curriculum.
---   full-course    EVERYTHING IN PRACTICE PASS, PLUS curriculum and GUMU.
---                  A strict superset. This is a live public commitment: the
---                  Full Course column on unpackmath.com/pricing reads
---                  "EVERYTHING IN PRACTICE PASS, PLUS". Not an assumption, and
---                  not something Phase 4 may quietly narrow.
+-- CORRECTED TWICE ON 2026-08-19, AND IT WAS WRONG IN BOTH DIRECTIONS WITHIN ONE
+-- SESSION. Both errors are recorded rather than quietly replaced, because both
+-- were reached from confident readings of written sources, and the second was a
+-- correction OF the first that overshot.
+--
+-- Version 1, wrong: "practice-pass: practice only ... NO GUMU, NO curriculum".
+-- Shorthand that read, literally, as Practice Pass unlocking no part of a
+-- curriculum topic. Taken at face value it made /course/.../practice a Full
+-- Course route despite its name.
+--
+-- Version 2, also wrong: read the live /pricing bullets as evidence against
+-- that, since Practice Pass advertises "Full practice bank across all 97 topics"
+-- and "Progress tracking by topic", and split the model into
+-- curriculum-practice and curriculum-lesson. That split does not exist.
+--
+-- Version 3, correct, and it is the long-standing product boundary that neither
+-- the shorthand nor the pricing copy stated properly:
+--
+--   A PRACTICE PASS HOLDER NEVER LANDS ON A /course URL.
+--   Practice Pass is the worksheet generator.
+--   Curriculum, lessons and GUMU are Full Course.
+--
+-- The pricing bullets are not evidence against the boundary. They are evidence
+-- that the pricing copy is wrong, and it is being fixed in the marketing repo
+-- (unpackmath-home, legal-audit-2026-08.md). "A worked solution on every
+-- problem" is the sharpest of them: a Practice Pass holder meets worked
+-- reasoning through the CAT engine rationale and through worksheet solutions,
+-- neither of which is a worked problem in the sense that bullet implies.
+--
+-- The map, at capability granularity:
+--
+--   practice-pass  the worksheet generator when it ships. NOTHING in /course:
+--                  no lesson, no practice section, no mini quiz, no GUMU.
+--   full-course    EVERYTHING IN PRACTICE PASS, PLUS the whole topic tree
+--                  (lesson, practice, quiz, worked examples, completion gates)
+--                  and GUMU. A strict superset. This is a live public
+--                  commitment: the Full Course column on unpackmath.com/pricing
+--                  reads "EVERYTHING IN PRACTICE PASS, PLUS". Not an assumption,
+--                  and not something Phase 4 may quietly narrow.
 --   teacher-core   teacher dashboard, regular worksheet access
 --   teacher-pro    teacher dashboard, UNLIMITED worksheets
+--
+-- So Phase 4's gate is ONE plan check at the course root, not a per route map.
+-- There is no mid topic lock, and app/lib/topic-parts.ts's "No locked state" and
+-- TopicOverview's "drawing a padlock would be inventing a lock that does not
+-- exist" both remain true.
 --
 -- Teacher Core and Teacher Pro differ by worksheet quota, not by feature
 -- presence. The worksheet generator itself belongs to Practice Pass on the
 -- student side.
+--
+-- TEACHER PLANS DELIBERATELY HOLD NO CURRICULUM CAPABILITY. Teachers do reach
+-- /course, because the teacher answer-key surface IS the course tree, but that
+-- is not something Teacher Core SELLS. This map is the record of what each plan
+-- sells, so the second reason to reach the route is expressed in the gate
+-- predicate instead, as "curriculum OR teacher-dashboard", and the two reasons
+-- stay separately legible. See phase-4-entitlement-gate-design.md section 2.4.
+--
+-- NOTHING BELOW THIS COMMENT CHANGED IN ANY OF THE THREE VERSIONS. The plan
+-- VALUES were never wrong, only the prose describing what they unlock, so
+-- profiles_plan_check is untouched throughout.
 -- ---------------------------------------------------------------------------
 
 alter table public.profiles
@@ -413,7 +461,10 @@ select role, subscription_status, plan, plan_status, plan_source, access_until,
 --    expected.
 --
 -- 2. Full Course is a strict SUPERSET of Practice Pass, including the worksheet
---    generator when it ships, plus curriculum and GUMU. This is published on
+--    generator when it ships, plus the ENTIRE topic tree and GUMU. Practice Pass
+--    holds no part of /course at all; see the capability map in section 2, which
+--    records the two wrong versions this went through on 2026-08-19 before
+--    landing on the long-standing product boundary. This is published on
 --    unpackmath.com/pricing as "EVERYTHING IN PRACTICE PASS, PLUS" and is a live
 --    commitment, so Phase 4 may not implement it as a disjoint set.
 --
