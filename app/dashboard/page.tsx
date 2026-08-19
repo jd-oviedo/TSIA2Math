@@ -1,4 +1,6 @@
 import { getProfile } from '../lib/auth';
+import { resolveCourseAccess } from '../lib/course-access';
+import { FREE_SAMPLE } from '../lib/capabilities';
 import {
   getTopics,
   getAttempts,
@@ -34,15 +36,33 @@ export default async function DashboardHome({
 
   const { code } = await searchParams;
 
-  const [{ topics, shapes }, attempts, classes, announcements, testedBefore, recommendation] =
-    await Promise.all([
-      getTopics(),
-      getAttempts(profile.id),
-      getEnrolledClasses(profile.id),
-      getAnnouncements(profile.id),
-      hasCompletedDiagnostic(profile.id),
-      recommendForStudent(profile.id),
-    ]);
+  const [
+    { topics, shapes },
+    attempts,
+    classes,
+    announcements,
+    testedBefore,
+    recommendation,
+    access,
+  ] = await Promise.all([
+    getTopics(),
+    getAttempts(profile.id),
+    getEnrolledClasses(profile.id),
+    getAnnouncements(profile.id),
+    hasCompletedDiagnostic(profile.id),
+    recommendForStudent(profile.id),
+    // In the Promise.all rather than awaited on its own, so it costs latency
+    // nothing. It is NOT already resolved on this request: resolveCourseAccess
+    // is cache()d per request, but nothing else on /dashboard calls it, so this
+    // is the first call and pays for its own profile read.
+    //
+    // AND IT HAS TO BE THIS, not profileGrants(profile, 'curriculum') on the
+    // profile two lines up. That shortcut would be wrong for the two groups who
+    // reach the tree without a curriculum plan: teachers, through the second
+    // door, and students with derived access from an entitled teacher's class.
+    // Both would be told the free sample is all they have.
+    resolveCourseAccess(),
+  ]);
 
   // Same source as the Announcements tab: already scoped to every class the
   // student is enrolled in, plus school-wide notices, newest first. Home shows
@@ -62,10 +82,35 @@ export default async function DashboardHome({
   const doneItems = [...progress.values()].reduce((a, p) => a + p.correct, 0);
   const pct = totalItems > 0 ? Math.round((doneItems / totalItems) * 100) : 0;
 
+  // THE FREE SAMPLE PREEMPTS EVERY OTHER SUGGESTION ON THIS CARD.
+  //
+  // Every branch below picks a topic from the whole course and none of them
+  // knows what this viewer can open, so for a student without curriculum they
+  // all point at the gate. Measured rather than assumed: of the eight accounts
+  // with any history, seven had a most-recent topic they can no longer open, so
+  // "Pick up where you left off" was the common case and the first-topic
+  // fallback was the rare one.
+  //
+  // Preempting is not discarding their history. Their past work still shows in
+  // the progress bar directly below this card, in /dashboard/modules, and in
+  // /dashboard/grades, none of which is entitlement-gated. What is removed is a
+  // primary button pointing at a locked door.
+  //
+  // Falls through to the normal branches if the sample topic is not in the
+  // course at all, which would be a content error rather than a plan one:
+  // degrading to today's behaviour beats rendering a link that 404s.
+  const sampleTopic = access.curriculum
+    ? undefined
+    : topics.find(
+        (t) => t.course_id === FREE_SAMPLE.courseId && t.topic_id === FREE_SAMPLE.topicId
+      );
+
   const recent = mostRecentTopic(attempts);
-  const recentTopic = recent
-    ? topics.find((t) => t.course_id === recent.course_id && t.topic_id === recent.topic_id)
-    : undefined;
+  const recentTopic = sampleTopic
+    ? undefined
+    : recent
+      ? topics.find((t) => t.course_id === recent.course_id && t.topic_id === recent.topic_id)
+      : undefined;
   const recentProgress = recentTopic
     ? progress.get(`${recentTopic.course_id}:${recentTopic.topic_id}`)
     : undefined;
@@ -84,7 +129,19 @@ export default async function DashboardHome({
   // up as one.
   const recommended = recommendation.status === 'ok' ? recommendation : null;
   const fallbackTopic = topics[0];
-  const startTopic = recommended
+  const startTopic = sampleTopic
+    ? {
+        topic_id: sampleTopic.topic_id,
+        topic_name: sampleTopic.topic_name,
+        unit_number: sampleTopic.unit_number,
+        href: topicHref(sampleTopic),
+        isPlaceholder: false,
+        // Setting a reason also flips the button label from "Start the first
+        // topic" to "Start here" through the existing ternary below, which is
+        // the right claim here: this is genuinely where they can start.
+        reason: 'This topic is free on your plan. The Full Course opens the other 96.',
+      }
+    : recommended
     ? {
         topic_id: recommended.topic.topic_id,
         topic_name: recommended.topic.topic_name,
