@@ -1,0 +1,359 @@
+{
+  "AR.2.1": {
+    "topic_id": "AR.2.1",
+    "topic_name": "Solving one-variable linear equations",
+    "unit_number": 2,
+    "sequence_in_unit": 8,
+    "related_strand": "AR",
+    "estimated_time_minutes": 50,
+    "practice_items": {
+      "practice": {
+        "items": [
+          {
+            "stem": "Solve for $x$: $x + 9 = 14$",
+            "level": "Basic",
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$x = 23$",
+              "B": "$x = 5$",
+              "C": "$x = -5$",
+              "D": "$x = 14$"
+            },
+            "item_number": 1
+          },
+          {
+            "stem": "Solve for $x$: $3x = 21$",
+            "level": "Basic",
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$x = 63$",
+              "B": "$x = 18$",
+              "C": "$x = 24$",
+              "D": "$x = 7$"
+            },
+            "item_number": 2
+          },
+          {
+            "stem": "Solve for $x$: $2x + 5 = 13$",
+            "level": "Basic",
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$x = 9$",
+              "B": "$x = 4$",
+              "C": "$x = 6.5$",
+              "D": "$x = 6$"
+            },
+            "item_number": 3
+          },
+          {
+            "stem": "Solve for $x$: $4x - 6 = 10$",
+            "level": "Basic",
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$x = 1$",
+              "B": "$x = 2.5$",
+              "C": "$x = 4$",
+              "D": "$x = 12$"
+            },
+            "item_number": 4
+          },
+          {
+            "stem": "Solve for $x$: $7 = 2x + 1$",
+            "level": "Proficient",
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$x = 3$",
+              "B": "$x = 4$",
+              "C": "$x = 3.5$",
+              "D": "$x = -3$"
+            },
+            "item_number": 5
+          },
+          {
+            "stem": "Solve for $x$: $4(x + 3) = 28$",
+            "level": "Proficient",
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$x = 7$",
+              "B": "$x = 6.25$",
+              "C": "$x = 4$",
+              "D": "$x = 25$"
+            },
+            "item_number": 6
+          },
+          {
+            "stem": "Solve for $x$: $\\frac{x}{2} + 3 = 7$",
+            "level": "Proficient",
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$x = 2$",
+              "B": "$x = 4$",
+              "C": "$x = 20$",
+              "D": "$x = 8$"
+            },
+            "item_number": 7
+          },
+          {
+            "stem": "Solve for $x$: $5x - 4 = 3x + 10$",
+            "level": "Advanced",
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$x = 3$",
+              "B": "$x = 7$",
+              "C": "$x = -7$",
+              "D": "$x = 14$"
+            },
+            "item_number": 8
+          },
+          {
+            "stem": "Solve for $x$: $3x + 5 = 3x - 2$",
+            "level": "Advanced",
+            "format": "multiple_choice",
+            "choices": {
+              "A": "No solution",
+              "B": "$x = \\frac{7}{3}$",
+              "C": "$x = 0$",
+              "D": "All real numbers"
+            },
+            "item_number": 9
+          },
+          {
+            "stem": "Solve for $x$: $2(3x - 5) = 4(x + 1) - 2$",
+            "level": "Advanced",
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$x = 3.5$",
+              "B": "$x = -6$",
+              "C": "$x = 6$",
+              "D": "$x = 7$"
+            },
+            "item_number": 10
+          }
+        ],
+        "interactive": true
+      },
+      "mini_quiz": {
+        "items": [
+          {
+            "stem": "Solve for $x$: $x - 7 = 12$",
+            "level": null,
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$x = 5$",
+              "B": "$x = 19$",
+              "C": "$x = -5$",
+              "D": "$x = 84$"
+            },
+            "item_number": 1
+          },
+          {
+            "stem": "Solve for $x$: $5x = 35$",
+            "level": null,
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$x = 7$",
+              "B": "$x = 175$",
+              "C": "$x = 30$",
+              "D": "$x = 40$"
+            },
+            "item_number": 2
+          },
+          {
+            "stem": "Solve for $x$: $2x - 4 = 14$",
+            "level": null,
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$x = 7$",
+              "B": "$x = 16$",
+              "C": "$x = 9$",
+              "D": "$x = 5$"
+            },
+            "item_number": 3
+          },
+          {
+            "stem": "Solve for $x$: $3(x - 2) = 18$",
+            "level": null,
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$x = 6$",
+              "B": "$x = 15$",
+              "C": "$x = 4$",
+              "D": "$x = 8$"
+            },
+            "item_number": 4
+          }
+        ],
+        "interactive": true
+      }
+    },
+    "is_placeholder": false
+  },
+  "QR.1.1": {
+    "topic_id": "QR.1.1",
+    "topic_name": "Comparing magnitudes of rational and irrational numbers",
+    "unit_number": 1,
+    "sequence_in_unit": 1,
+    "related_strand": "QR",
+    "estimated_time_minutes": 45,
+    "practice_items": {
+      "practice": {
+        "items": [
+          {
+            "stem": "Which of the following is a rational number?",
+            "level": "Basic",
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$\\sqrt{2}$",
+              "B": "$\\pi$",
+              "C": "$\\frac{7}{2}$",
+              "D": "$\\sqrt{10}$"
+            },
+            "item_number": 1
+          },
+          {
+            "stem": "Convert to a decimal: $\\frac{4}{5}$",
+            "level": "Basic",
+            "format": "free_response",
+            "choices": {},
+            "item_number": 2
+          },
+          {
+            "stem": "Which is larger: $\\frac{2}{3}$ or $\\frac{3}{5}$? Show your work.",
+            "level": "Basic",
+            "format": "free_response",
+            "choices": {},
+            "item_number": 3
+          },
+          {
+            "stem": "Between which two integers does $\\sqrt{10}$ fall? - (Hint: List perfect squares: 1, 4, 9, 16, 25...)",
+            "level": "Basic",
+            "format": "free_response",
+            "choices": {},
+            "item_number": 4
+          },
+          {
+            "stem": "Order from smallest to largest: $0.8, \\frac{3}{4}, \\frac{4}{5}$ **Proficient Level** (these require an extra step)",
+            "level": "Basic",
+            "format": "free_response",
+            "choices": {},
+            "item_number": 5
+          },
+          {
+            "stem": "Which is larger, $\\sqrt{11}$ or $3.3$? Explain your reasoning.",
+            "level": "Proficient",
+            "format": "free_response",
+            "choices": {},
+            "item_number": 6
+          },
+          {
+            "stem": "A student claims that $\\sqrt{25}$ is irrational. Is the student correct? Why or why not?",
+            "level": "Proficient",
+            "format": "free_response",
+            "choices": {},
+            "item_number": 7
+          },
+          {
+            "stem": "Order from smallest to largest: $\\frac{5}{6}, \\sqrt{1}, 0.99, \\frac{11}{12}$",
+            "level": "Proficient",
+            "format": "free_response",
+            "choices": {},
+            "item_number": 8
+          },
+          {
+            "stem": "Which of the following is closest to $2.8$?",
+            "level": "Proficient",
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$\\frac{8}{3}$",
+              "B": "$\\frac{14}{5}$",
+              "C": "$\\sqrt{8}$",
+              "D": "$\\sqrt{10}$"
+            },
+            "item_number": 9
+          },
+          {
+            "stem": "Maria's water bottle holds $1.5$ liters. Juan's holds $\\frac{8}{5}$ liters. Whose bottle holds more water? **Advanced Level** (these need multiple steps or reverse thinking)",
+            "level": "Proficient",
+            "format": "free_response",
+            "choices": {},
+            "item_number": 10
+          },
+          {
+            "stem": "Compare $\\sqrt{15}$ and $\\frac{7}{2}$. Which is larger? Justify your answer with specific decimal estimates.",
+            "level": "Advanced",
+            "format": "free_response",
+            "choices": {},
+            "item_number": 11
+          },
+          {
+            "stem": "A number is described as: \"It's irrational, and it's between 3 and 4.\" Which of the following could it be?",
+            "level": "Advanced",
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$\\frac{10}{3}$",
+              "B": "$\\sqrt{12}$",
+              "C": "$3.5$",
+              "D": "$\\sqrt{3.5}$"
+            },
+            "item_number": 12
+          }
+        ],
+        "interactive": false
+      },
+      "mini_quiz": {
+        "items": [
+          {
+            "stem": "Which of the following is irrational?",
+            "level": null,
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$0.333...$",
+              "B": "$\\sqrt{16}$",
+              "C": "$\\sqrt{20}$",
+              "D": "$\\frac{9}{4}$"
+            },
+            "item_number": 1
+          },
+          {
+            "stem": "Order from least to greatest: $\\frac{3}{5}, 0.65, \\frac{5}{8}$",
+            "level": null,
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$\\frac{3}{5}, 0.65, \\frac{5}{8}$",
+              "B": "$\\frac{3}{5}, \\frac{5}{8}, 0.65$",
+              "C": "$0.65, \\frac{5}{8}, \\frac{3}{5}$",
+              "D": "$\\frac{5}{8}, 0.65, \\frac{3}{5}$"
+            },
+            "item_number": 2
+          },
+          {
+            "stem": "Which is larger: $\\sqrt{8}$ or $2.9$?",
+            "level": null,
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$\\sqrt{8}$",
+              "B": "$2.9$",
+              "C": "They are equal",
+              "D": "Cannot be determined"
+            },
+            "item_number": 3
+          },
+          {
+            "stem": "A student says: \"$\\sqrt{4}$ is irrational because it has a square root sign.\" What is wrong with this thinking?",
+            "level": null,
+            "format": "multiple_choice",
+            "choices": {
+              "A": "$\\sqrt{4}$ is actually rational because $\\sqrt{4} = 2$, a whole number that can be written as a fraction.",
+              "B": "$\\sqrt{4}$ is irrational, but the reason is different - it doesn't terminate.",
+              "C": "There's nothing wrong; $\\sqrt{4}$ is irrational.",
+              "D": "$\\sqrt{4}$ is irrational, and the student's reasoning is correct."
+            },
+            "item_number": 4
+          }
+        ],
+        "interactive": true
+      }
+    },
+    "is_placeholder": false
+  }
+}

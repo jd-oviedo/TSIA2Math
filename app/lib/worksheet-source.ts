@@ -5,7 +5,13 @@ import {
   renderMarkdownWithMath,
   extractDistractorProse,
 } from '@/lib/curriculum-utils';
-import { isGradeable, type Candidate, type ItemRef, type Section } from './worksheet-select';
+import {
+  countTopicPool,
+  isPrintable,
+  type Candidate,
+  type ItemRef,
+  type Section,
+} from './worksheet-select';
 
 // Where worksheet questions come from.
 //
@@ -125,16 +131,10 @@ export async function listPickerTopics(courseId: string): Promise<PickerTopic[]>
   const templated = await templatedTopicIds(courseId);
 
   const rows: PickerTopic[] = data.map((row) => {
-    const items = (row.practice_items ?? {}) as PracticeItems;
-    let available = 0;
-    let levelled = 0;
-    for (const section of SECTIONS) {
-      for (const item of items[section]?.items ?? []) {
-        if (!isGradeable(item)) continue;
-        available++;
-        if (item.level) levelled++;
-      }
-    }
+    // countTopicPool applies isPrintable, the same predicate drawFromStatic
+    // uses. Counting here with isGradeable is what made every badge read 0:
+    // this row came from curriculum_topics_public, which strips correct_answer.
+    const { available, levelled } = countTopicPool(row.practice_items);
     return {
       topic_id: row.topic_id,
       topic_name: row.topic_name ?? row.topic_id,
@@ -229,8 +229,10 @@ export async function getItemsForTopic(
 /**
  * STATIC BACKEND. Reads the redacted public view.
  *
- * Gradeability is decided by isGradeable(), i.e. by format and a parsed correct
- * answer -- not by array length. See schema fact 1 and QR.1.1.
+ * Eligibility is decided by isPrintable() -- format and a populated choice map,
+ * per item, never by array length. NOT isGradeable(): this row came from
+ * curriculum_topics_public, which strips correct_answer, so the stricter
+ * predicate matches nothing here. See schema fact 1 and QR.1.1.
  */
 // No count parameter: the static pool is at most 14 items, so it is returned
 // whole and worksheet-select.ts does the drawing. The instance path takes a
@@ -249,15 +251,14 @@ async function drawFromStatic(
 
   if (error || !data) return [];
 
-  // The view has already stripped correct_answer, so isGradeable cannot see it
-  // here. Format plus a populated choice map is what remains, and it is enough:
-  // the upload only emits an item with choices when it parsed one.
+  // isPrintable, the same predicate the picker counts with. This used to be
+  // open-coded here -- the same rule written twice, which is how it came to
+  // disagree with the badge in the first place.
   const items = (data.practice_items ?? {}) as PracticeItems;
   const out: Candidate[] = [];
   for (const section of SECTIONS) {
     for (const item of items[section]?.items ?? []) {
-      if (item.format !== 'multiple_choice') continue;
-      if (!item.choices || Object.keys(item.choices).length === 0) continue;
+      if (!isPrintable(item)) continue;
       out.push({
         ref: { source: 'static', topic_id: topicId, section, item_number: item.item_number },
         level: (item.level as Candidate['level']) ?? null,
