@@ -212,13 +212,22 @@ def _parse_stem_and_choices(body):
 
 def parse_answer_key(answer_key):
     """
-    Parse Part 4 into per-item correct answers and misconception tags.
+    Parse Part 4 into per-item correct answers, misconception tags and prose.
 
-    Both come from the same walk on purpose. They are two halves of one fact --
-    which option is right, and what each wrong option means -- and parsing them
-    separately would let them drift apart on a content edit.
+    All three come from the same walk on purpose. They are three parts of one
+    fact -- which option is right, what each wrong option means, and how to say
+    that to a teacher -- and parsing them separately would let them drift apart
+    on a content edit.
 
-    Returns {section: {item_number: {'correct': 'A'|None, 'tags': {...}}}}.
+    That is not hypothetical for the prose: `distractor_logic` and
+    `misconception_tag` are two sibling blocks in the same fence, carrying the
+    same option letters, and an edit that retags an option without rewording its
+    explanation (or the reverse) is exactly the kind of change a second
+    independent parser would silently disagree about.
+
+    Returns {section: {item_number: {'correct': 'A'|None,
+                                     'tags':  {letter: slug},
+                                     'prose': {letter: raw string}}}}.
     """
     result = {'practice': {}, 'mini_quiz': {}}
     if not answer_key:
@@ -228,6 +237,17 @@ def parse_answer_key(answer_key):
     # with a key-value regex rather than json.loads.
     tag_block = re.compile(r'"misconception_tag":\s*\{(.*?)\}', re.S)
     pair = re.compile(r'"([A-Z])":\s*"([a-z0-9_]+)"')
+
+    # The prose block is read the same way and for the same reason, but the
+    # value pattern is deliberately NOT the slug pattern above.
+    #
+    # A prose value is a free-text sentence: it contains spaces, commas, digits,
+    # parentheses and capital letters, and `[a-z0-9_]+` would match none of them.
+    # It can also contain an escaped quote in principle, so the value is matched
+    # as "anything that is not an unescaped quote" rather than [^"]*, which would
+    # stop dead at the first \" and truncate the sentence.
+    prose_block = re.compile(r'"distractor_logic":\s*\{(.*?)\n\s*\}', re.S)
+    prose_pair = re.compile(r'"([A-D])":\s*"((?:[^"\\]|\\.)*)"', re.S)
 
     # Part 4 holds both sections back to back under their own headings.
     split = re.split(r'^#####\s*Mini Quiz', answer_key, maxsplit=1, flags=re.M)
@@ -242,14 +262,53 @@ def parse_answer_key(answer_key):
             found = tag_block.search(body)
             if found:
                 tags = dict(pair.findall(found.group(1)))
+
+            prose = {}
+            found_prose = prose_block.search(body)
+            if found_prose:
+                prose = {
+                    letter: _unescape_json_string(raw)
+                    for letter, raw in prose_pair.findall(found_prose.group(1))
+                }
+
             result[name][number] = {
                 # Free-response items answer in prose ("**Answer: 0.8**"), so a
                 # missing letter here is expected, not an error.
                 'correct': answer.group(1) if answer else None,
                 'tags': tags,
+                'prose': prose,
             }
 
     return result
+
+
+def _unescape_json_string(raw):
+    """
+    Turn the raw bytes between two json quotes back into the authored string.
+
+    The prose is lifted out with a regex rather than json.loads, because the
+    authored block is a bare fragment (`"distractor_logic": { ... }`) and not a
+    parseable object -- the same reason the tag block above is read this way. A
+    regex hands back the source text with its escapes still in it, so `\\"`
+    would be stored as a backslash followed by a quote and rendered to the
+    teacher that way.
+
+    Measured across all 97 files: zero entries currently contain an escaped
+    quote and zero span multiple lines, so today this function is the identity
+    on every input it sees. It exists so that the first authored quotation mark
+    does not ship a visible backslash into a teacher's answer key.
+
+    ONE PASS, not a chain of .replace() calls. Replacing `\\"` and then `\\\\`
+    in sequence decodes an escaped backslash followed by a quote twice over --
+    the pair is consumed by the first pass and the quote it was protecting is
+    then read as a delimiter. Scanning each escape exactly once cannot do that.
+    """
+    return re.sub(
+        r'\\(.)',
+        lambda m: {'"': '"', '\\': '\\', 'n': '\n', 't': '\t',
+                   'r': '\r', '/': '/'}.get(m.group(1), m.group(0)),
+        raw,
+    )
 
 
 def extract_misconception_tags(answer_key):
@@ -271,6 +330,121 @@ def extract_misconception_tags(answer_key):
         section: {num: entry['tags'] for num, entry in items.items() if entry['tags']}
         for section, items in parsed.items()
     }
+
+
+def extract_distractor_prose(answer_key):
+    """
+    Per-option teacher-facing prose, keyed section -> item -> option -> string.
+
+    The sibling of extract_misconception_tags, from the same walk, with one
+    deliberate difference: this keeps ALL FOUR letters, including the correct
+    one.
+
+    misconception_tags omits correct options because it is a tag index and a
+    correct option has no misconception to name. That reasoning does not carry
+    over here. The correct option's entry reads "Correct: subtracts 9 from both
+    sides to isolate x, giving 5, which checks against the original equation" --
+    a one-line statement of why the right answer is right, which is exactly what
+    an answer key wants beside the longer worked solution. Dropping it would be
+    a content decision taken in a parser.
+
+    It does mean this column names the correct answer in plain prose rather than
+    leaking it by omission the way the tag map does. Both are answer-bearing;
+    this one is just honest about it.
+
+    STORED RAW. The "Student makes misconception: <slug> (" wrapper stays on.
+    Stripping it is a render-time concern -- extractDistractorProse() in
+    lib/curriculum-utils.ts -- so the database keeps what the author wrote and
+    the presentation layer keeps the presentation.
+    """
+    parsed = parse_answer_key(answer_key)
+    return {
+        section: {num: entry['prose'] for num, entry in items.items() if entry['prose']}
+        for section, items in parsed.items()
+    }
+
+
+# ─── Worked solutions ────────────────────────────────────────────────────────
+#
+# The four constants below are PORTS, not new parsing rules. Each mirrors a
+# constant in lib/curriculum-utils.ts so that extract_worked_solutions() lands
+# on the same per-item text splitAnswerKey() derives at render time.
+#
+# They are separate from PRACTICE_KEY_RE / QUIZ_KEY_RE above rather than reusing
+# them, and the difference is not cosmetic. The existing constants match only
+# the header's PREFIX (`**1.`), so _split_items() starts each body immediately
+# after it and the item's own stem text lands at the head of the body. The
+# TypeScript versions match the WHOLE header line, so the stem becomes
+# `label_html` and never appears in the solution. Reusing the existing pair here
+# would prepend every item's question to its own worked solution -- which would
+# look almost right, which is the problem.
+#
+# scripts/verify_answer_key_parity.mjs runs both implementations over real
+# topics and fails if they ever stop agreeing.
+
+# Mirrors stripAuthoringBlocks(). The trailing \n? is significant: without it
+# every removed fence leaves a blank line behind and the two sides disagree on
+# interior whitespace.
+AUTHORING_BLOCK_RE = re.compile(r'```json\n.*?\n```\n?', re.S)
+
+# Mirrors MINI_QUIZ_HEADING. 3-6 hashes, not the exactly-5 that
+# parse_answer_key() splits on above -- matching the TypeScript is the point.
+TS_MINI_QUIZ_HEADING = re.compile(r'^#{3,6}\s*Mini Quiz', re.M)
+
+# Mirror PRACTICE_KEY_RE / QUIZ_KEY_RE. Whole line, so the body starts after it.
+TS_PRACTICE_KEY_RE = re.compile(r'^\*\*(\d+)\.[ \t]*(.*)$', re.M)
+TS_QUIZ_KEY_RE = re.compile(r'^\*\*Item (\d+):[ \t]*(.*)$', re.M)
+
+# Mirrors STRAY_HEADING_RE. Level banners and sub-headings sit between items, so
+# they fall at the tail of the previous item's body and read as part of its
+# solution.
+TS_STRAY_HEADING_RE = re.compile(r'^(?:#{1,6}\s.*|\*\*\w+ Level\*\*)\s*$', re.M)
+
+
+def extract_worked_solutions(answer_key):
+    """
+    Per-item worked solution markdown, keyed section -> item_number -> string.
+
+    Splits Part 4 once, at upload, into the pieces splitAnswerKey() currently
+    derives on every request. The stored column becomes authoritative and the
+    TypeScript split stays as the fallback for rows written before this existed
+    -- see sql/curriculum_prose_columns.sql for why neither can be deleted.
+
+    The "**Answer: X**" line is KEPT. It is part of the authored solution and
+    the teacher reading a worked solution wants to see where it lands; the
+    correct letter is separately available on practice_items for anything that
+    needs it as data rather than as prose.
+
+    Returns markdown, not HTML. Rendering stays in the TypeScript pipeline where
+    KaTeX and the table-scroll rehype plugin already live -- a second renderer
+    in Python would have to agree with that one, which is exactly the trap
+    sql/curriculum_item_instances.sql describes.
+    """
+    result = {'practice': {}, 'mini_quiz': {}}
+    if not answer_key:
+        return result
+
+    text = AUTHORING_BLOCK_RE.sub('', answer_key or '')
+    if not text.strip():
+        return result
+
+    found = TS_MINI_QUIZ_HEADING.search(text)
+    practice_text = text[:found.start()] if found else text
+    quiz_text = text[found.start():] if found else ''
+
+    for name, section_text, header_re in (
+        ('practice', practice_text, TS_PRACTICE_KEY_RE),
+        ('mini_quiz', quiz_text, TS_QUIZ_KEY_RE),
+    ):
+        matches = list(header_re.finditer(section_text))
+        for i, m in enumerate(matches):
+            start = m.end()
+            end = matches[i + 1].start() if i + 1 < len(matches) else len(section_text)
+            body = TS_STRAY_HEADING_RE.sub('', section_text[start:end]).strip()
+            if body:
+                result[name][m.group(1)] = body
+
+    return result
 
 
 def build_practice_items(practice_problems, mini_quiz, answer_key):
@@ -482,6 +656,16 @@ def upload_course_curriculum(course_id, dry_run=False):
                 parsed['answer_key'],
             )
             record['misconception_tags'] = extract_misconception_tags(
+                parsed['answer_key'],
+            )
+            # Both read the same Part 4 the two lines above do. Kept as separate
+            # columns rather than folded into practice_items because they are
+            # teacher-only: practice_items is projected to students through
+            # curriculum_topics_public, and these two are deliberately not.
+            record['distractor_prose'] = extract_distractor_prose(
+                parsed['answer_key'],
+            )
+            record['worked_solutions'] = extract_worked_solutions(
                 parsed['answer_key'],
             )
             record['practice_items'] = build_practice_items(
