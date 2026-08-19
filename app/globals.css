@@ -1,4 +1,18 @@
-@import url('https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css');
+/* KaTeX's stylesheet is imported from the installed package in app/layout.tsx,
+   NOT from a CDN here.
+
+   This used to be `@import url('...jsdelivr.net/npm/katex@0.16.11/...')` while
+   package.json carried katex ^0.17.0 -- so MathText.tsx generated markup with
+   one version and this stylesheet styled it with another. It happened to work,
+   but nothing held the two in step and nothing would have reported it when they
+   drifted further apart.
+
+   Serving it from node_modules ties the CSS to the same version that renders
+   the markup, automatically and permanently: a katex bump in package.json moves
+   both halves at once. It also drops a render-blocking cross-origin request,
+   which matters most on the print routes -- a CDN stylesheet that fails to load
+   there means unstyled math on paper, and the teacher only finds out after
+   printing. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,3 +46,88 @@ button, input, select, textarea { font-family: inherit; }
    browser toolbar, with a 100vh fallback for browsers without dvh support.
    Fixes off-center centering and the scroll jump when the URL bar hides. */
 .min-h-dvh { min-height: 100vh; min-height: 100dvh; }
+
+
+/* ─── PRINT ──────────────────────────────────────────────────────────────────
+
+   Paper is white. The app's dark theme is not, and both the math and the
+   figures take their colour from the theme -- so a teacher printing the
+   worksheet routes while in dark mode gets near-white ink on white paper and a
+   page that looks blank. Measured under Playwright with
+   emulateMedia({media:'print'}): KaTeX spans and figure strokes both computed
+   to rgb(232,238,248) against white.
+
+   EVERY DECLARATION IN THIS BLOCK NEEDS !important, AND THE REASON IS NOT THE
+   SAME ONE TWICE. Do not "tidy" them away -- each was measured failing without
+   it.
+
+     1. ThemeProvider.tsx applies the palette with
+        `root.style.setProperty('--ec-ink', ...)`, i.e. as an INLINE property on
+        <html>. A normal author declaration loses to an inline one, so
+        `@media print { :root { --ec-ink: #000 } }` does nothing at all.
+        Measured: --ec-ink stayed #E8EEF8.
+
+        An !important author declaration DOES beat a non-important inline one --
+        that is the one case where the stylesheet wins, and it is the whole
+        reason the :root block below works. (The reverse claim, that inline
+        always beats a stylesheet, is what makes this look unfixable.)
+
+     2. `.katex { color: var(--ec-ink) !important }` above is itself !important,
+        so a plain `.katex { color: #000 }` here loses to it regardless of the
+        variable. Measured: still rgb(232,238,248).
+
+   The .katex rule is therefore stated directly rather than left to inherit from
+   --ec-ink. Both routes to it are closed independently, so re-theming or a
+   future change to how the palette is applied cannot quietly put invisible math
+   back on paper. */
+@media print {
+
+  /* The figures are the reason this is a variable-level override and not a
+     handful of element rules. FigureRenderer.tsx emits SVG presentation
+     attributes -- stroke="var(--ec-ink)", fill="var(--ec-accent)" -- across
+     twelve figure types, so there is no element selector that reaches them all.
+     The variable is the only lever.
+
+     This also repairs a second failure mode that has nothing to do with dark
+     mode. A chrome-free print route that does not mount ThemeProvider leaves
+     these variables UNDEFINED, and an SVG `stroke: var(--undefined)` does not
+     fall back to a browser default -- it computes to `none`, so outlined shapes
+     (polygon, right_triangle) lose their outline entirely and print as nothing
+     but their labels. Measured: stroke computed `none`, text fill computed
+     rgb(0,0,0). Defining the variables here makes the print routes correct
+     whether or not the provider is in the tree. */
+  :root {
+    --ec-ink:        #000000 !important;  /* outlines, axes, all figure text */
+    --ec-ink-muted:  #333333 !important;
+    --ec-ink-faint:  #666666 !important;
+    --ec-line:       #B0B0B0 !important;  /* gridlines: rgba(255,255,255,.07) in
+                                             dark is invisible on paper */
+    --ec-accent:     #555555 !important;  /* bars, plotted points, dot marks.
+                                             Grey rather than the brand blue:
+                                             worksheets print on mono classroom
+                                             printers, where a mid-tone reads as
+                                             a fill and a saturated blue reads as
+                                             a muddy near-black. */
+    --ec-surface:    #FFFFFF !important;  /* halo stroke around line-graph markers */
+    --ec-surface2:   #FFFFFF !important;  /* figure panel; suppressed anyway, see below */
+    --ec-bg:         #FFFFFF !important;
+  }
+
+  /* Stated directly, not inherited from --ec-ink, for reason 2 above. */
+  .katex { color: #000000 !important; }
+
+  /* Figure panels are painted with `background: var(--ec-surface2)` in
+     FigureRenderer's svgStyle, and browsers drop CSS backgrounds from print
+     unless the user ticks "Background graphics". Confirmed against real PDF
+     output: with printBackground off the surface2 fill appears 0 times in the
+     content stream, with it on, 4 times (one per figure).
+
+     Left as-is deliberately. The panel is decorative -- the geometry is drawn
+     with SVG stroke/fill attributes, which are not backgrounds and do print --
+     so a suppressed panel costs the figure nothing but its tint. Forcing it
+     back with print-color-adjust would spend a full-bleed ink area on every
+     figure to restore a tint that is now white on white anyway. */
+
+  /* Keep an item and its figure on one page. */
+  svg, figure, table { break-inside: avoid; }
+}
