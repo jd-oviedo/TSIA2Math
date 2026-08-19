@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "../../../lib/supabase-admin";
 import { createClient as createServerClient } from "../../../lib/supabase-server";
-import { safeLimit, gumuRateLimit, getClientIp } from "../../../lib/rate-limit";
+import { safeLimit, gumuRateLimit } from "../../../lib/rate-limit";
 import { gumuBodySchema, formatZodError } from "../../../lib/schemas";
 import {
   askGumu,
@@ -149,12 +149,47 @@ async function resolveFlagged(
 }
 
 export async function POST(req: Request) {
-  const ip = getClientIp(req);
-  const limited = await safeLimit(gumuRateLimit, ip);
+  // AUTH FIRST, THEN THE RATE LIMIT. The order is load-bearing and it used to be
+  // the other way round.
+  //
+  // The limiter ran before this check, so an unauthenticated request consumed
+  // budget and was then rejected 401 anyway. Keyed on IP, as it was, that meant
+  // one anonymous flood could exhaust the GUMU allowance for every legitimate
+  // student behind the same address -- a school NAT is one address, so the people
+  // denied were a classroom of paying users who had done nothing.
+  //
+  // Nothing is spent before we know who is asking. getSession() decodes the
+  // cookie locally rather than calling out, so rejecting an anonymous caller here
+  // is cheap. Note middleware.ts already runs getUser() on this path for every
+  // request, authenticated or not, so unauthenticated traffic was never metered
+  // by this limiter in the first place and is no less metered now.
+  const supabase = await createServerClient();
+  const {
+    data: { session: authSession },
+  } = await supabase.auth.getSession();
+
+  // No anonymous path, unlike the practice route which grades for everyone.
+  if (!authSession) {
+    return NextResponse.json({ error: "Sign in to use GUMU" }, { status: 401 });
+  }
+
+  const studentId = authSession.user.id;
+
+  // Keyed on the student, not the IP. This route has always required a session,
+  // so the IP keying was a leftover from the endpoints that do not, and it was
+  // the thing actually breaking the shared-NAT case: thirty students in one room
+  // shared one budget. Same reasoning as supportRateLimit, which already keys on
+  // the signed-in user for the same reason.
+  //
+  // Runs before every model call in this route, including the classifier a future
+  // screening layer will add, so a paid call cannot be driven faster than this.
+  const limited = await safeLimit(gumuRateLimit, studentId);
   if (!limited.success) {
     return NextResponse.json({ error: "Too many requests" }, { status: 429 });
   }
 
+  // Parsed after the two checks above, so an unauthenticated caller cannot make
+  // us read and parse an arbitrary body.
   let body: unknown;
   try {
     body = await req.json();
@@ -167,17 +202,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: formatZodError(parsed.error) }, { status: 400 });
   }
 
-  // No anonymous path, unlike the practice route which grades for everyone.
-  const supabase = await createServerClient();
-  const {
-    data: { session: authSession },
-  } = await supabase.auth.getSession();
-
-  if (!authSession) {
-    return NextResponse.json({ error: "Sign in to use GUMU" }, { status: 401 });
-  }
-
-  const studentId = authSession.user.id;
   const admin = createAdminClient();
   const action = parsed.data;
 
