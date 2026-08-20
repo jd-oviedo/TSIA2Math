@@ -1,6 +1,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { placementBand, strandPcts, type StrandBreakdown } from "./placement";
 import { usersById } from "./teacher-directory";
+import { aggregateMisconceptions, type AggregatedMisconception } from "./misconception-aggregate";
+import { misconceptionLabel } from "./misconception-labels";
 import { slugifyForFilename, type CsvCell } from "./csv";
 
 // Query layer for the teacher CSV exports.
@@ -473,4 +475,134 @@ export async function logExport(
       err instanceof Error ? err.message : err
     );
   }
+}
+
+// ─── misconceptions.csv ──────────────────────────────────────────────────────
+//
+// SCOPE, AND WHY IT IS STAMPED ON EVERY ROW
+//
+// This file is NOT an all-time record of what a student has ever got wrong. It
+// is the same thing the dashboard's "Top misconceptions" grid shows: the
+// student's MOST RECENT session, CAT items only, wrong answers joined to
+// questions.misconception_tag and grouped by slug.
+//
+// The Phase 1 audit is the reason that has to be said out loud. There is an
+// aggregate table, public.student_misconceptions, which does hold an all-time
+// cumulative record across CAT, curriculum and Socratic evidence, with times_hit
+// and confidence and last_seen. Nothing in the product reads it. Measured on
+// the one production class with real data, the grid and that table had ZERO
+// slugs in common: 13 versus 2. Reading the table here would have produced a
+// file that contradicted the screen it was downloaded from.
+//
+// So the export reuses aggregateMisconceptions(), the same function both
+// dashboard views call, and accepts that times_hit, sources and last_seen are
+// not available on this path. An administrator who assumes "cumulative" would
+// misread the file badly, which is what export_scope on every row is for.
+//
+// ONE CALL PER STUDENT. The class route aggregates across the whole roster at
+// once, which yields class totals and an affected_students count but no
+// per-student breakdown. This file is one row per student per slug, so the
+// aggregation runs per student, exactly as app/api/teacher/student/route.ts
+// does it. That costs two queries per student rather than two per class. It is
+// the honest reuse: computing the per-student split any other way would mean a
+// second implementation of the grouping, which is the thing this whole build
+// has been avoiding.
+
+/** Constant stamped on every row. See the note above. */
+export const MISCONCEPTION_EXPORT_SCOPE = "latest_session_cat_only";
+
+/**
+ * Per student, not per class, so this is not the grid's top-10 cut. A teacher
+ * exporting a file wants the whole picture; the grid says "Top misconceptions"
+ * and this does not.
+ */
+const MISCONCEPTIONS_PER_STUDENT = 100;
+
+export const MISCONCEPTIONS_COLUMNS_BASE = [
+  "class_name",
+  "student_name",
+  "session_date",
+  "misconception_tag",
+  "misconception_label",
+  "misconception_label_raw",
+  "example_item_id",
+  "strand",
+  "topic_id",
+  "times_selected",
+  "items_affected",
+  "export_scope",
+];
+
+export function misconceptionsColumns(includeEmail: boolean): string[] {
+  if (!includeEmail) return MISCONCEPTIONS_COLUMNS_BASE;
+  const cols = [...MISCONCEPTIONS_COLUMNS_BASE];
+  cols.splice(2, 0, "student_email");
+  return cols;
+}
+
+export async function buildMisconceptionRows(
+  admin: Admin,
+  data: ClassData,
+  includeEmail: boolean
+): Promise<CsvCell[][]> {
+  const classNames = new Map(data.classes.map((c) => [c.id, c.name]));
+
+  // Newest first, so the first session seen per student is the latest. Same
+  // selection the class grid makes in app/api/teacher/misconceptions/route.ts.
+  const latestByStudent = new Map<string, SessionRow>();
+  for (const s of data.sessions) {
+    if (!latestByStudent.has(s.user_id)) latestByStudent.set(s.user_id, s);
+  }
+
+  // Aggregated once per student and reused across their enrolments. A student
+  // in two of this teacher's classes appears under both class names, and there
+  // is no reason to run the same aggregation twice for them.
+  const perStudent = new Map<string, AggregatedMisconception[]>();
+  for (const [studentId, session] of latestByStudent) {
+    const sessionToStudent = new Map([[session.id, studentId]]);
+    const { misconceptions } = await aggregateMisconceptions(
+      admin,
+      [session.id],
+      sessionToStudent,
+      MISCONCEPTIONS_PER_STUDENT
+    );
+    perStudent.set(studentId, misconceptions);
+  }
+
+  const rows: CsvCell[][] = [];
+
+  for (const e of data.enrollments) {
+    const user = data.users.get(e.student_id);
+    const session = latestByStudent.get(e.student_id);
+    // A student who has never tested has no latest session and therefore no
+    // misconceptions. They are absent from this file rather than present with
+    // empty cells: a row here asserts "this student showed this error", and
+    // there is nothing to assert.
+    if (!session) continue;
+
+    for (const m of perStudent.get(e.student_id) ?? []) {
+      const row: CsvCell[] = [
+        classNames.get(e.class_id) ?? "",
+        user?.name ?? "",
+        isoDate(session.completed_at ?? session.created_at),
+        m.misconception_tag,
+        misconceptionLabel(m.misconception_tag),
+        // The representative distractor prose, chosen by the same rule the
+        // dashboard card uses: the most-selected option in the group. Carried
+        // verbatim, LaTeX and all, so it matches what is on screen.
+        m.distractor_text,
+        m.example_item_id,
+        m.primary_strand,
+        m.topic_id,
+        m.frequency,
+        m.item_count,
+        MISCONCEPTION_EXPORT_SCOPE,
+      ];
+
+      if (includeEmail) row.splice(2, 0, user?.email ?? "");
+      rows.push(row);
+    }
+  }
+
+  return rows;
 }

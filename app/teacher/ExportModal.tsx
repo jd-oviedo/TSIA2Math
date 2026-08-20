@@ -14,8 +14,10 @@ import type { ClassRow } from './TeacherDashboardClient';
 // It also means the download works with JavaScript doing nothing more than
 // setting location, which is the simplest thing that can be correct.
 //
-// Two files here. Misconceptions lands in the second PR, scoped by what the
-// Phase 1 audit found about where that data actually comes from.
+// Three files. The misconception export is scoped to each student's most recent
+// test, matching the grid below the roster rather than the unread aggregate
+// table, so the file and the screen agree. That scope is stated in the blurb,
+// in the filename, and in a column on every row.
 
 type ExportKind = { key: string; label: string; blurb: string };
 
@@ -29,6 +31,25 @@ const EXPORTS: ExportKind[] = [
     key: 'scores',
     label: 'Score history',
     blurb: 'One row per test session, ready to pivot. Every attempt, not just the latest.',
+  },
+  {
+    key: 'misconceptions',
+    label: 'Misconceptions',
+    // Says "most recent test" because the file is one, and a teacher who reads
+    // it as cumulative will draw the wrong conclusion about a student who has
+    // improved. The same scope is in the filename and on every row.
+    // Says "test" rather than "diagnostic" deliberately. The scope is the most
+    // recent SESSION of either type, and in real data most students' latest
+    // session is a practice retake, not their original diagnostic. Naming the
+    // diagnostic here would misdescribe the majority of rows.
+    //
+    // The second sentence is the one that matters. Without it a teacher
+    // reasonably assumes this file covers everything the student got wrong,
+    // and it does not: course practice and tutor sessions accumulate elsewhere
+    // and are not read by this export or by the grid it mirrors.
+    blurb:
+      'One row per student per misconception, from each student\u2019s most recent test. ' +
+      'Mistakes made in course lessons or with the tutor are not included.',
   },
 ];
 
