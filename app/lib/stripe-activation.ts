@@ -47,20 +47,62 @@ export async function findUserIdByEmail(admin: Admin, email: string): Promise<st
   return null;
 }
 
-// Store the customer id only if it isn't already set. Unchanged from before:
-// the first customer id to arrive wins, so a later event cannot repoint an
-// account at someone else's Stripe customer.
+export type LinkOutcome =
+  /** The id was stored. The profile had none before. */
+  | "linked"
+  /** A DIFFERENT id was already there and won. Nothing was written. */
+  | "already-linked"
+  /** There was no id to store. */
+  | "none";
+
+/**
+ * Store the customer id only if it isn't already set.
+ *
+ * FIRST WRITER WINS, and the guard is in the WHERE clause rather than in an
+ * `if`. A read-then-write would have a window in it where two concurrent events
+ * both find the column free; a predicate on the UPDATE cannot. So the "skip" is
+ * a statement that matches zero rows, not a branch that declines to run.
+ *
+ * Why first-writer-wins at all: clobbering would repoint the account at a
+ * different Stripe customer, and every subsequent event for the ORIGINAL
+ * customer would then resolve to nobody. For a live subscription that means
+ * renewals stop landing and the teacher lapses at the end of the period they
+ * already paid for, with nothing in the data to explain it.
+ *
+ * THE RETURN VALUE EXISTS BECAUSE THE DECLINE IS OTHERWISE INVISIBLE, and it is
+ * not always harmless. When the incoming id belongs to a NEW SUBSCRIPTION, the
+ * losing side is the one that will drop: the profile keeps the old customer, and
+ * renewals for the new one resolve to nobody. profiles has a single
+ * stripe_customer_id and one profile genuinely cannot hold two Stripe customers,
+ * so this is not fixable here -- callers that can tell a subscription from a
+ * one-time purchase are expected to say something rather than let it pass.
+ */
 export async function linkCustomerId(
   admin: Admin,
   profileId: string,
   customerId: string | null
-): Promise<void> {
-  if (!customerId) return;
-  await admin
+): Promise<LinkOutcome> {
+  if (!customerId) return "none";
+  const { data, error } = await admin
     .from("profiles")
     .update({ stripe_customer_id: customerId })
     .eq("id", profileId)
-    .is("stripe_customer_id", null);
+    .is("stripe_customer_id", null)
+    .select("id");
+
+  // Logged, never thrown. This has always swallowed its errors, and the webhook
+  // depends on that: failing to link is not worth a 500 and an infinite Stripe
+  // retry when the entitlement write that follows is the part that matters.
+  if (error) {
+    console.error(`[stripe-activation] linking ${customerId} to ${profileId} failed:`, error.message);
+    return "already-linked";
+  }
+
+  // Zero rows means the predicate did not match. Almost always that is a
+  // different id already sitting there; it is also what a nonexistent profile
+  // returns, which is why callers that care resolve profile existence
+  // separately rather than reading it out of this.
+  return data && data.length > 0 ? "linked" : "already-linked";
 }
 
 export type WriteOutcome = "written" | "stale" | "refused";

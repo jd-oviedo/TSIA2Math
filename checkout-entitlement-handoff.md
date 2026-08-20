@@ -90,27 +90,85 @@ never the join.
 `mailer_autoconfirm` is false, so it is a door nobody is watching rather than a
 usable path. Worth closing or watching, separately.
 
-### Tomorrow, in order
+### Queue
 
-1. **Part 2: the pending entitlements table plus the success-page claim.** Keyed
-   on checkout session id. Three places: `{CHECKOUT_SESSION_ID}` appended to the
-   six success URLs in the Stripe dashboard (manual, no deploy); `/success` in
-   `unpackmath-home` passing the id through; and a `/claim` route in this repo.
-   `app/teacher/welcome/page.tsx` is the working precedent for verifying a
-   session with Stripe, and the one thing `/claim` must do differently is **drop
-   the email comparison** and bind the session to whatever Google account
-   completes the sign-in.
-2. **The `/upgrade` slug fix.** A lookup table, not a rebuild: accept the six
-   marketing slugs, drop `monthly` and `annual` so the founding backdoor closes
-   with the same change. Investigated, not built. The live pricing page passes
-   nothing but the slug, and only four of the six appear in its HTML: check
-   whether the two annual buttons are wired at all.
-3. **Ruling 1b**: remove the role write from `auth/callback:66`. Unblocked now
-   that the webhook writes role first.
-4. **The tier label defect.** The sidebar reads `TEACHER · PRO` on a Teacher Core
-   purchase. `StudentNav.tsx:166` computes `isProTeacher` as
-   `role === 'teacher' && entitledTeacher`, which means ENTITLED and not PRO, and
-   line 181 renders `TEACHER · PRO` from it. It needs to read the plan.
+Rewritten 2026-08-20, on the Part 2 branch. Items 1, 2 and 4 of the previous
+list have shipped; what remains is renumbered rather than left as stale
+"tomorrow" entries.
+
+**Shipped since the last revision of this list**
+
+- **Part 2: pending entitlements and the claim.** `pending_entitlements` (DDL
+  applied by hand), `app/lib/pending-entitlements.ts`, the webhook reorder,
+  `/claim`, the `auth/callback` email claim, and
+  `scripts/faultproof_claim.mjs` wired into `test:offline`.
+- **The `/upgrade` slug fix**, with `monthly` and `annual` dropped so the
+  founding backdoor closed in the same change. PR #161-adjacent; covered by
+  `scripts/faultproof_upgrade_slugs.mjs`.
+- **The tier label defect.** PR #162 — the sidebar names the tier from the plan
+  rather than from entitlement.
+
+**Next**
+
+1. **`unpackmath-home`'s `/success` must read `checkout_session_id` and forward
+   the buyer to `app.unpackmath.com/claim?checkout_session_id=...`.** This is
+   the only remaining out-of-repo step in Part 2, it is in the marketing repo,
+   and it is Juan's.
+
+   All **eight** success URLs now carry `?checkout_session_id={CHECKOUT_SESSION_ID}`
+   — the six public links and both founding links, all of which land on
+   `/success`. Confirmed in the Stripe dashboard 2026-08-20. (The previous
+   revision of this document said six; that was wrong, and it mattered, because
+   the two founding links are the ones warm contacts are buying on.)
+
+   **Until that ships, the ops alert email is the ONLY delivery path for the
+   claim link.** `sendUnmatchedCheckoutAlert` prints it for every captured
+   purchase, so a buyer can be unblocked by forwarding it by hand. Nothing is
+   lost in the meantime — the row is held either way — but the recovery is
+   manual, and it stays manual until this lands.
+
+2. **Ruling 1b**: remove the role write from `auth/callback:62-68`. Unblocked
+   since the webhook writes role first, and now doubly redundant: the claim
+   replays through `writeEntitlement`, whose guarded UPDATE promotes on a
+   teacher plan. `/claim` already declines to set `role=teacher` on its callback
+   for this reason. Deliberately not bundled into the Part 2 branch, so that
+   removing a live role writer is a change reviewed on its own.
+
+3. **"TEACHER · PRO" is printed as decoration on four PRE-PURCHASE screens.**
+   Parked, not fixed, and listed here with line numbers because it is one
+   string repeated in four places and should be resolved in one pass:
+
+   | File | Line | Context |
+   |---|---|---|
+   | `app/login/page.tsx` | 93 | the teacher sign-in panel |
+   | `app/demo/page.tsx` | 106 | the fake sidebar in the demo |
+   | `app/teacher/inactive/page.tsx` | 26 | the "you're almost in" upsell |
+   | `app/teacher/welcome/WelcomeClient.tsx` | 115 | above "Welcome, Founding Teacher!" |
+
+   None of these know what the visitor bought — three of them run **before** any
+   purchase exists, and the fourth runs on a page whose whole job is that the
+   purchase has not been matched yet. So the badge is naming the top tier at
+   someone who may be buying Teacher Core at $20, or nothing at all. It is the
+   same defect PR #162 fixed on the sidebar, in the four places that read no
+   plan at all rather than reading the wrong one.
+
+   Not urgent: none of it blocks a purchase, and unlike the sidebar case it
+   misleads before money changes hands rather than after. `/claim` deliberately
+   does **not** repeat it — `ClaimClient` uses a neutral "PURCHASE FOUND" badge,
+   because that page serves all four products including the $49 Practice Pass.
+
+4. **One profile cannot hold two Stripe customers, and now says so.** Found on
+   2026-08-20 while checking the live claim: `linkCustomerId` is
+   first-writer-wins, so claiming a purchase onto a profile that already carries
+   a different `stripe_customer_id` leaves the new one unstored — and if that
+   new customer has a SUBSCRIPTION, its renewals resolve to nobody and the
+   teacher lapses looking like an ordinary expiry. The guard is correct
+   (clobbering would break renewals for the id that is already there), and
+   `profiles` has one column, so this is not fixable in the schema. It now
+   raises a Sentry alert at claim time — `error` when a subscription is at
+   risk, `warning` for a one-time pass where nothing renews. **Reconciling the
+   two Stripe customers is a manual job when it fires.**
+
 5. **Parked, all real, none of them stop someone paying:** the Modules locked
    state, the upgrade page copy and branding, the reveal ruling, the free-tier
    progress bar, and the item 2 curriculum sentence.
@@ -137,8 +195,16 @@ confirmed. Do not re-derive it.
 
 ### 1.1 Where the Payment Links land the buyer
 
-**All six success URLs point to `https://unpackmath.com/success`, on the
-marketing site.**
+**All EIGHT success URLs point to `https://unpackmath.com/success`, on the
+marketing site.** Corrected 2026-08-20: this said six, and section 1.2 on the
+very next page says there are eight links, not six. The two founding links land
+on `/success` like the rest, and they are the ones warm contacts are actually
+buying on, so undercounting them here was the more dangerous half of the error.
+
+**All eight now carry `?checkout_session_id={CHECKOUT_SESSION_ID}`**, set in the
+Stripe dashboard and confirmed there on 2026-08-20. That parameter is what makes
+`/claim` reachable — see queue item 1 for the marketing-side half that still has
+to read it and forward it on.
 
 Consequences, all load-bearing:
 

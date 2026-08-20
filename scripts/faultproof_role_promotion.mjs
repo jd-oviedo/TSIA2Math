@@ -42,8 +42,20 @@ const check = (name, pass, detail = '') => {
 // The whole guarded UPDATE, from the call through to the ordering predicate.
 // Every positional assertion below is made against THIS slice rather than the
 // file, so "inside the statement" is actually being tested.
+//
+// SCOPED TO writeEntitlement FIRST, and that is load bearing rather than tidy.
+// This used to match from the file's first `const { data, error } = await admin`.
+// The moment linkCustomerId gained one of its own -- above writeEntitlement --
+// the non-greedy match started at THAT statement and ran all the way down to
+// writeEntitlement's ordering predicate, swallowing everything in between. The
+// slice stopped meaning "inside the guarded UPDATE" and started meaning "anywhere
+// in the second half of the file", and two assertions silently stopped noticing
+// the fault they exist for. Caught by the fault matrix below, which is the whole
+// argument for having one.
 const updateBlock = (s) => {
-  const m = s.match(
+  const fnStart = s.indexOf('export async function writeEntitlement');
+  if (fnStart === -1) return '';
+  const m = s.slice(fnStart).match(
     /const \{ data, error \} = await admin[\s\S]*?\.or\(`plan_updated_at\.is\.null,plan_updated_at\.lt\.\$\{eventAt\}`\)/
   );
   return m ? m[0] : '';
@@ -120,9 +132,14 @@ const FAULTS = [
           /\s*\.\.\.\(write\.plan === "teacher-core" \|\| write\.plan === "teacher-pro"\s*\?\s*\{ role: "teacher" \}\s*:\s*\{\}\),/s,
           ''
         )
+        // Anchored on writeEntitlement's OWN error check. A bare 'if (error) {'
+        // now matches linkCustomerId's first, which would inject the second
+        // statement into the wrong function entirely -- the assertion would still
+        // go red, but for a reason the fault does not claim.
         .replace(
-          'if (error) {',
-          'await admin.from("profiles").update({ role: "teacher" }).eq("id", profileId);\n\n  if (error) {'
+          'if (error) {\n    // Surfaced to the caller as a throw',
+          'await admin.from("profiles").update({ role: "teacher" }).eq("id", profileId);\n\n' +
+            '  if (error) {\n    // Surfaced to the caller as a throw'
         ),
     expect: [
       'role is written INSIDE the guarded update, not as a second statement',

@@ -15,7 +15,11 @@ import {
   type Plan,
   type PlanTerm,
 } from "../../../lib/products";
-import { sendUnmatchedCheckoutAlert } from "../../../lib/email";
+import {
+  recordPendingEntitlement,
+  type RecordOutcome,
+} from "../../../lib/pending-entitlements";
+import { sendUnmatchedCheckoutAlert, type UnmatchedCheckoutCapture } from "../../../lib/email";
 import * as Sentry from "@sentry/nextjs";
 
 // Stripe signs webhooks with a shared secret and delivers a raw JSON body.
@@ -156,27 +160,32 @@ export async function POST(req: Request) {
           email,
           clientReferenceId,
         });
+
+        // HOISTED ABOVE THE NO-PROFILE BRANCH, and that is the whole shape of
+        // the fix. Both branches need the same thing -- the entitlement this
+        // purchase earns -- and they must not compute it two different ways. The
+        // matched branch writes it to a profile; the unmatched branch stores it
+        // until there is a profile to write it to. One derivation, consumed
+        // twice.
+        //
+        // It costs a Stripe subscriptions.retrieve on the subscription path,
+        // which already ran on every matched checkout. It now also runs on an
+        // unmatched one, which is exactly the call that makes the purchase
+        // recoverable rather than lost.
+        const write = await entitlementFromCheckout(stripe, session, eventCreatedMs, SOURCE);
+
         if (!profileId) {
-          // THE MONEY WAS TAKEN AND NOTHING IS WRITTEN.
+          // THE MONEY WAS TAKEN AND NO ACCOUNT COULD BE FOUND.
           //
           // All three resolution steps failed: no profile with that
           // client_reference_id, no profile carrying that Stripe customer, and
-          // no auth user with that email. Nothing here creates an account, so
-          // this buyer has paid and has nothing.
+          // no auth user with that email. Nothing here creates an account.
           //
-          // WE STILL RETURN 200. A 500 would make Stripe retry for about three
-          // days, which is a lottery on whether the buyer happens to sign up
-          // inside the window, and it would trade the endpoint's 0% error signal
-          // for that. The deterministic fix is to capture the purchase and let
-          // them claim it at sign-in, which is Part 2.
-          //
-          // THREE CHANNELS, BECAUSE THE FIRST ONE ALONE FAILED US ALREADY. This
-          // used to be a lone console.error, which lives only in Vercel's
-          // runtime logs, has limited retention, and alerts nobody. Sentry never
-          // saw it either, because sentry.server.config.ts configures no
-          // console-capture integration. The consequence was concrete: we could
-          // not establish whether this had ever fired in production. So it now
-          // also raises a Sentry issue and emails a person.
+          // This used to be where the purchase died -- alert, return 200, write
+          // nothing, no retry -- and it did, live, with a real $49 Practice Pass
+          // on 2026-08-19. Part 1 made that visible in three channels.
+          // Visibility is not recovery. Now the purchase is CAPTURED, and the
+          // buyer claims it at /claim or at their next sign-in.
           console.error(`[${SOURCE}] no profile match for checkout session`, {
             email,
             customerId,
@@ -186,9 +195,47 @@ export async function POST(req: Request) {
 
           const product = productForPaymentLink(paymentLink);
 
+          // CAPTURE FIRST, THEN ALERT, so the alert can say which of these
+          // actually happened. The old copy asserted flatly that the buyer had
+          // nothing, which is now false in the ordinary case and false in the
+          // direction that sends a person chasing a refund by hand.
+          //
+          // A failure here is held rather than thrown, so that the alert still
+          // goes out, and rethrown below once it has. An unreported capture
+          // failure is the original bug again.
+          let capture: UnmatchedCheckoutCapture;
+          let recordError: unknown = null;
+
+          if (!write) {
+            // Unrecognised Payment Link AND no profile. There is no plan to
+            // name, and plan is NOT NULL on pending_entitlements for the same
+            // reason profiles_plan_pairing_check exists: half an entitlement is
+            // worse than none. This double failure keeps the old behaviour --
+            // alert, and require a human.
+            capture = "unrecognised-link";
+          } else {
+            try {
+              const recorded: RecordOutcome = await recordPendingEntitlement(admin, {
+                write,
+                checkoutSessionId: session.id,
+                email,
+                customerId,
+                eventCreatedMs,
+                source: SOURCE,
+              });
+              capture = recorded;
+            } catch (err) {
+              capture = "failed";
+              recordError = err;
+              console.error(`[${SOURCE}] FAILED TO CAPTURE AN UNMATCHED PAID CHECKOUT`, err);
+            }
+          }
+
           Sentry.captureMessage("stripe: paid checkout matched no account", {
-            level: "error",
-            tags: { source: SOURCE, payment_link: paymentLink ?? "none" },
+            // A captured purchase is recoverable and a lost one is not, so they
+            // do not deserve the same severity. Both still raise an issue.
+            level: capture === "recorded" || capture === "duplicate" ? "warning" : "error",
+            tags: { source: SOURCE, payment_link: paymentLink ?? "none", capture },
             extra: {
               checkoutSessionId: session.id,
               email,
@@ -201,8 +248,8 @@ export async function POST(req: Request) {
           });
 
           // Never allowed to change the response. A failed alert must not turn a
-          // silent drop into a 500 that Stripe then retries forever, and it must
-          // not mask the drop either, so the failure is logged loudly.
+          // capture into a 500, and it must not mask the failure either, so it
+          // is logged loudly.
           try {
             await sendUnmatchedCheckoutAlert({
               checkoutSessionId: session.id,
@@ -212,17 +259,28 @@ export async function POST(req: Request) {
               amountTotal: session.amount_total,
               currency: session.currency,
               hadClientReferenceId: Boolean(clientReferenceId),
+              capture,
             });
           } catch (err) {
             console.error(`[${SOURCE}] UNMATCHED-CHECKOUT ALERT FAILED TO SEND`, err);
           }
+
+          // 200 WAS RIGHT WHEN THERE WAS NOWHERE TO PUT THE PURCHASE. Retrying
+          // an event that cannot resolve on its own was a lottery on whether the
+          // buyer happened to sign up inside the window. That premise expired
+          // the moment pending_entitlements existed: a failed insert is the
+          // purchase lost a second time, and a transient database error is
+          // exactly what Stripe's ~3 day retry window is for.
+          //
+          // Only a CAPTURE FAILURE retries. An unresolvable identity still
+          // returns 200, because no number of retries will conjure an account.
+          if (recordError) throw recordError;
 
           break;
         }
 
         await linkCustomerId(admin, profileId, customerId);
 
-        const write = await entitlementFromCheckout(stripe, session, eventCreatedMs, SOURCE);
         if (!write) {
           // An unknown Payment Link. Never leave a payer with nothing: fall back
           // to exactly the pre-Phase-3 behaviour, loudly.

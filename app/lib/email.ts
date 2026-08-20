@@ -16,6 +16,12 @@ export const CRISIS_INBOX = "juan@unpackmath.com";
 // impossible to route one elsewhere later without touching the other.
 export const OPS_INBOX = "juan@unpackmath.com";
 
+// Where a link in an email points. Hardcoded rather than read from the
+// environment, matching the join link below: these are sent from server code
+// that has no request to derive an origin from, and a preview deployment must
+// never mail out a link to itself.
+export const APP_ORIGIN = "https://app.unpackmath.com";
+
 // Teacher-authored copy goes into an HTML email, so it is escaped rather than
 // interpolated raw. Without this a subject line containing markup would render
 // as markup in the support inbox.
@@ -109,7 +115,7 @@ export async function sendTeacherInvite({
   className: string;
   joinCode: string;
 }) {
-  const joinUrl = `https://app.unpackmath.com/login`;
+  const joinUrl = `${APP_ORIGIN}/login`;
 
   const html = `
     <!DOCTYPE html>
@@ -314,17 +320,42 @@ export async function sendCrisisAlert({
 
 // A completed checkout that could not be matched to any account.
 //
-// THE MONEY WAS TAKEN AND NOTHING WAS WRITTEN. resolveProfileId tried the
-// client_reference_id, then the Stripe customer id, then the checkout email
-// against auth.users, and none of them found a row. The handler still returns
-// 200, deliberately, so Stripe stops retrying an event that will not resolve on
-// its own; that makes this email the only thing that tells a human it happened.
+// resolveProfileId tried the client_reference_id, then the Stripe customer id,
+// then the checkout email against auth.users, and none of them found a row.
 //
-// Until now the only trace was one console.error line in Vercel's runtime logs,
-// which have limited retention and which nothing alerts on. Sentry does not see
-// it either: sentry.server.config.ts configures no console-capture integration.
-// So we could not answer whether this had ever fired, which is why the fix is an
-// email and a Sentry capture rather than a better log line.
+// WHAT THIS EMAIL SAYS CHANGED WITH PART 2, AND THE OLD WORDING WOULD NOW BE A
+// LIE. It used to state flatly that no entitlement was written and the buyer had
+// nothing, because that was true: the branch alerted, returned 200, and dropped
+// the purchase. The webhook now captures the purchase into pending_entitlements
+// first, so in the ordinary case the buyer is owed something recoverable and a
+// self-service link exists. Saying otherwise would send a person chasing a
+// refund by hand for a purchase that is already safe.
+//
+// So `capture` is required rather than optional, and every branch of it prints
+// different copy. The two that still need a human are called out in red; the two
+// that do not are not.
+//
+// THE CLAIM LINK IN THIS EMAIL IS LOAD BEARING TWICE OVER. It is the only
+// delivery path for a buyer whose checkout email is not a Google address, and
+// until unpackmath-home's /success passes the session id through it is the only
+// delivery path for anyone at all.
+//
+// Sentry does not see the console line either: sentry.server.config.ts
+// configures no console-capture integration. That is why this is an email and a
+// Sentry capture rather than a better log line.
+export type UnmatchedCheckoutCapture =
+  /** Held in pending_entitlements. The buyer can claim it. */
+  | "recorded"
+  /** A redelivery of an event already captured. Nothing new to do. */
+  | "duplicate"
+  /** The Payment Link is unknown, so no plan could be named and nothing could
+   *  be stored. plan is NOT NULL on that table for the same reason
+   *  profiles_plan_pairing_check exists. A human has to resolve this one. */
+  | "unrecognised-link"
+  /** The insert itself failed. Stripe is being asked to retry, but if the
+   *  retries run out this purchase is gone. */
+  | "failed";
+
 export async function sendUnmatchedCheckoutAlert({
   checkoutSessionId,
   email,
@@ -333,6 +364,7 @@ export async function sendUnmatchedCheckoutAlert({
   amountTotal,
   currency,
   hadClientReferenceId,
+  capture,
 }: {
   checkoutSessionId: string | null;
   email: string | null;
@@ -341,6 +373,7 @@ export async function sendUnmatchedCheckoutAlert({
   amountTotal: number | null;
   currency: string | null;
   hadClientReferenceId: boolean;
+  capture: UnmatchedCheckoutCapture;
 }) {
   const money =
     amountTotal != null
@@ -354,9 +387,62 @@ export async function sendUnmatchedCheckoutAlert({
     ? "through /upgrade (client_reference_id was set, but no profile has that id)"
     : "a direct buy.stripe.com link (no client_reference_id)";
 
+  // Only meaningful when something was actually stored under this session id.
+  const claimUrl =
+    checkoutSessionId && (capture === "recorded" || capture === "duplicate")
+      ? `${APP_ORIGIN}/claim?checkout_session_id=${encodeURIComponent(checkoutSessionId)}`
+      : null;
+
+  const needsAHuman = capture === "unrecognised-link" || capture === "failed";
+
+  const HEADINGS: Record<UnmatchedCheckoutCapture, string> = {
+    recorded: "A payment matched no account, and is being held for them",
+    duplicate: "A payment matched no account (already held)",
+    "unrecognised-link": "A payment was taken and could not be held",
+    failed: "A payment was taken and could not be held",
+  };
+
+  const LEADS: Record<UnmatchedCheckoutCapture, string> = {
+    recorded:
+      "Stripe completed this checkout and the webhook could not match it to any account, " +
+      "so <strong>no entitlement was written to anyone</strong>. The purchase is not lost: " +
+      "it is held in <code>pending_entitlements</code> and the link below hands it to " +
+      "whoever signs in with it. Send that link to the buyer. If their checkout email is a " +
+      "Google address they can also just sign in, and it will be applied automatically.",
+    duplicate:
+      "Stripe redelivered a checkout that was already captured. No second copy was stored " +
+      "and nothing has changed. The claim link below is the same one as before; the row is " +
+      "either still waiting or already claimed.",
+    "unrecognised-link":
+      "Stripe completed this checkout, the webhook could not match it to any account, " +
+      "<strong>and it could not name the product either</strong> — the Payment Link below " +
+      "is not in <code>app/lib/products.ts</code>. With no plan there is nothing valid to " +
+      "store, so <strong>nothing was written and nothing is being held</strong>. " +
+      "This one needs you: add the link to the product map, then apply the entitlement by " +
+      "hand or insert the pending row yourself.",
+    failed:
+      "Stripe completed this checkout, the webhook could not match it to any account, " +
+      "<strong>and storing it failed</strong>. The handler returned 500 so Stripe will " +
+      "retry, and a retry that succeeds will send a different version of this email. " +
+      "If the retry window runs out first, this purchase is gone and only this message " +
+      "records it.",
+  };
+
+  const banner = needsAHuman ? "#7a1f1f" : "#3d5a3d";
+  const bannerText = needsAHuman ? "#f0c9c9" : "#cfe3cf";
+
   const row = (label: string, value: string) => `
     <p style="margin:0 0 6px; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#8a8983;">${escapeHtml(label)}</p>
     <p style="margin:0 0 18px; font-size:14px; color:#0f1e35; font-weight:600; font-family:ui-monospace,Menlo,monospace;">${escapeHtml(value)}</p>`;
+
+  // Deliberately a bare printed URL rather than an anchor. It is pasted into a
+  // message to a buyer far more often than it is clicked here, and a mail client
+  // that shortens the visible text of a link would make it unpastable.
+  const claimBlock = claimUrl
+    ? `
+    <p style="margin:0 0 6px; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#8a8983;">Claim link — send this to the buyer</p>
+    <p style="margin:0 0 22px; font-size:13px; color:#0f1e35; font-weight:600; font-family:ui-monospace,Menlo,monospace; word-break:break-all;">${escapeHtml(claimUrl)}</p>`
+    : "";
 
   const html = `
     <!DOCTYPE html>
@@ -368,16 +454,17 @@ export async function sendUnmatchedCheckoutAlert({
             <td align="center">
               <table width="100%" cellpadding="0" cellspacing="0" style="max-width:600px; background:#ffffff; border-radius:14px; overflow:hidden; border:1px solid #e0dfd8;">
                 <tr>
-                  <td style="background:#7a1f1f; padding:20px 28px;">
-                    <p style="margin:0; font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#f0c9c9;">UnpackMath</p>
-                    <h1 style="margin:6px 0 0; font-size:18px; font-weight:700; color:#ffffff;">A payment was taken and no account was found</h1>
+                  <td style="background:${banner}; padding:20px 28px;">
+                    <p style="margin:0; font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:${bannerText};">UnpackMath</p>
+                    <h1 style="margin:6px 0 0; font-size:18px; font-weight:700; color:#ffffff;">${escapeHtml(HEADINGS[capture])}</h1>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding:24px 28px;">
                     <p style="margin:0 0 22px; font-size:14px; color:#3a3a3a; line-height:1.65;">
-                      Stripe completed this checkout and the webhook could not match it to any account, so <strong>no entitlement was written</strong>. The buyer has paid and has nothing. Stripe was acknowledged, so it will not retry.
+                      ${LEADS[capture]}
                     </p>
+                    ${claimBlock}
                     ${row("Checkout email", email ?? "(none on the session)")}
                     ${row("Product", productLabel ?? `unrecognised link ${paymentLinkId ?? "(none)"}`)}
                     ${row("Amount", money)}
@@ -386,7 +473,7 @@ export async function sendUnmatchedCheckoutAlert({
                     <p style="margin:0 0 6px; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#8a8983;">How they bought</p>
                     <p style="margin:0 0 22px; font-size:14px; color:#3a3a3a; line-height:1.6;">${escapeHtml(route)}</p>
                     <p style="margin:0; font-size:13px; color:#8a8983; line-height:1.6;">
-                      Most likely they paid with an email they have never signed into the app with. Resolving it by hand means finding or creating their account and applying the entitlement for the product above.
+                      Most likely they paid with an email they have never signed into the app with, or one that is not a Google address at all. Sign-in is Google-only, so a non-Google checkout email can never become an account on its own — the claim link is the only self-service path for that buyer.
                     </p>
                   </td>
                 </tr>
@@ -398,10 +485,17 @@ export async function sendUnmatchedCheckoutAlert({
     </html>
   `;
 
+  const SUBJECTS: Record<UnmatchedCheckoutCapture, string> = {
+    recorded: "Payment held for claim, no account matched",
+    duplicate: "Payment already held for claim, no account matched",
+    "unrecognised-link": "Payment taken, NOT held: unrecognised payment link",
+    failed: "Payment taken, NOT held: capture failed",
+  };
+
   const { error } = await resend.emails.send({
     from: "UnpackMath <no-reply@unpackmath.com>",
     to: OPS_INBOX,
-    subject: `Payment taken, no account matched${email ? `: ${email}` : ""}`,
+    subject: `${SUBJECTS[capture]}${email ? `: ${email}` : ""}`,
     html,
   });
 

@@ -84,6 +84,29 @@ export const supportRateLimit = new Ratelimit({
   analytics: true,
 });
 
+// /claim — handing a captured Stripe purchase to whoever presents its checkout
+// session id. Keyed on the SIGNED-IN USER ID, and the page enforces that by
+// requiring a session before it calls this.
+//
+// WHAT THIS ACTUALLY GUARDS. The claim key is a bearer token with no expiry:
+// anyone holding a cs_ id can move that purchase onto their own account, and by
+// design there is no email check standing in the way (that is the entire point —
+// the buyer whose checkout email can never become an account is the one this
+// route exists for). The compensating controls are single use, this limit, and
+// an alert. A cs_ id is ~60 random characters, so guessing one is not a real
+// threat; what this bounds is how fast a signed-in attacker could WALK a list of
+// ids obtained some other way, and it makes that walk visible in Upstash's
+// analytics rather than silent.
+//
+// 20 per hour is far more than a real buyer needs — one claim, plus refreshes —
+// and tight enough that enumeration is not worth attempting from one account.
+export const claimRateLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(20, "1 h"),
+  prefix: "ratelimit:claim",
+  analytics: true,
+});
+
 // Best-effort client IP extraction. Vercel sets x-forwarded-for on every
 // request; if it's ever missing (e.g. local dev without a proxy in front),
 // everyone collapses onto the same "unknown" bucket — acceptable locally,
