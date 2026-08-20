@@ -29,34 +29,11 @@
 //
 // NOTHING HERE TOUCHES REAL DATA. Every row created carries the fixture marker
 // below, and the teardown deletes on that marker alone.
-import { createClient } from '@supabase/supabase-js';
-import { readFileSync } from 'fs';
-
-// ─── Fixture markers. The teardown keys on these and nothing else. ───────────
-export const EMAIL_DOMAIN = 'csv-export-fixture.example.com';
-export const CLASS_PREFIX = 'ZZ CSV Export Fixture';
-
-function loadEnv() {
-  try {
-    for (const line of readFileSync('.env.local', 'utf8').split('\n')) {
-      const m = line.match(/^([A-Z0-9_]+)=(.*)$/);
-      if (m && !process.env[m[1]]) process.env[m[1]] = m[2];
-    }
-  } catch {
-    // Environment already populated, or running somewhere without the file.
-  }
-}
-loadEnv();
-
-export function admin() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !key) {
-    console.error('Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY.');
-    process.exit(1);
-  }
-  return createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
-}
+// Markers and the client factory live in a module with no top level to run.
+// This file used to export them itself, which meant the teardown imported THIS
+// file to get them and thereby executed the seeder. See the note at the head of
+// export_fixture_common.mjs for what that did.
+import { admin, isEntrypoint, EMAIL_DOMAIN, CLASS_PREFIX } from './export_fixture_common.mjs';
 
 // ─── The cast ────────────────────────────────────────────────────────────────
 //
@@ -303,7 +280,16 @@ async function main() {
   console.log('\nWhen finished: node scripts/teardown_export_fixture.mjs');
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+// Gated so that importing this file can never seed a database. The teardown no
+// longer imports it at all, and this makes it harmless if anything ever does.
+if (isEntrypoint(import.meta.url)) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+} else {
+  console.error(
+    'seed_export_fixture.mjs was imported rather than run. Nothing was seeded. ' +
+      'Import scripts/export_fixture_common.mjs for the shared helpers.'
+  );
+}

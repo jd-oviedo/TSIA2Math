@@ -14,10 +14,21 @@
 // the assumption that leaves fixture rows in a production table for a year.
 //
 // Safe to run twice. Safe to run when nothing exists.
-import { admin, EMAIL_DOMAIN, CLASS_PREFIX } from './seed_export_fixture.mjs';
+// Imports the shared module, NOT the seeder. Importing the seeder is what made
+// a teardown run try to create a user; see export_fixture_common.mjs.
+import {
+  admin,
+  forbidUserCreation,
+  isEntrypoint,
+  EMAIL_DOMAIN,
+  CLASS_PREFIX,
+} from './export_fixture_common.mjs';
 
 async function main() {
-  const db = admin();
+  // Runtime tripwire, not a convention. This script reached a createUser call
+  // once already, via an import side effect, and a comment would not have
+  // stopped it. Any seeding path from here now throws.
+  const db = forbidUserCreation(admin());
   console.log('Removing CSV export fixture.\n');
 
   // ─── 1. Find the fixture users ────────────────────────────────────────────
@@ -162,7 +173,9 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+if (isEntrypoint(import.meta.url)) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
