@@ -139,3 +139,53 @@ export const gumuBodySchema = z.discriminatedUnion("action", [
 ]);
 
 export type GumuBody = z.infer<typeof gumuBodySchema>;
+// GET /api/teacher/export/{roster,scores,misconceptions}
+//
+// Validated off searchParams rather than a body. These are downloads: the
+// browser navigates to them and the response carries a Content-Disposition
+// attachment header, which a POST cannot do without JavaScript reassembling the
+// file client side. Zod still does the validating, it just reads the query
+// string.
+//
+// `classes` is either the literal "all" or a comma-separated list of class ids.
+// Validating the ids here is a convenience, not the security boundary: the
+// boundary is resolveOwnedClasses() in app/lib/teacher-export.ts, which proves
+// the requesting teacher owns every one of them. A well-formed uuid belonging
+// to someone else still gets a 403 there.
+const MAX_CLASSES_PER_EXPORT = 50;
+
+export const teacherExportQuerySchema = z
+  .object({
+    classes: z.string().min(1, "classes is required"),
+    // Off unless explicitly asked for. Student email is a teacher-controlled
+    // choice and the default has to be the private one.
+    email: z.enum(["0", "1"], { message: "email must be 0 or 1" }).optional(),
+  })
+  .transform((q, ctx) => {
+    const includeEmail = q.email === "1";
+
+    if (q.classes === "all") {
+      return { classIds: null as string[] | null, includeEmail };
+    }
+
+    const ids = [...new Set(q.classes.split(",").map((s) => s.trim()).filter(Boolean))];
+
+    if (ids.length === 0) {
+      ctx.addIssue({ code: "custom", message: "classes must be \"all\" or at least one class ID" });
+      return z.NEVER;
+    }
+    if (ids.length > MAX_CLASSES_PER_EXPORT) {
+      ctx.addIssue({ code: "custom", message: "too many classes requested" });
+      return z.NEVER;
+    }
+    for (const id of ids) {
+      if (!/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(id)) {
+        ctx.addIssue({ code: "custom", message: "classes contains an invalid class ID" });
+        return z.NEVER;
+      }
+    }
+
+    return { classIds: ids as string[] | null, includeEmail };
+  });
+
+export type TeacherExportQuery = z.infer<typeof teacherExportQuerySchema>;

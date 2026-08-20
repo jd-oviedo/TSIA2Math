@@ -1,53 +1,10 @@
 import { NextResponse } from "next/server";
-import { displayName, initialsFrom, requireTeacher } from "../../../lib/auth";
+import { initialsFrom, requireTeacher } from "../../../lib/auth";
+import { usersById, type DirectoryUser } from "../../../lib/teacher-directory";
 import { createAdminClient } from "../../../lib/supabase-admin";
 
-type SupabaseAdmin = ReturnType<typeof createAdminClient>;
-
-// GoTrue's listUsers() returns one page at a time and defaults to 50 per page.
-// The roster used to make a single unpaginated call, so past 50 users in the
-// project every student beyond the first page rendered with a blank email and
-// "??" initials -- a silent truncation of the same shape as the question bank's
-// 1000-row cap.
-//
-// 1000 is GoTrue's per-page ceiling, so this is one request for any project
-// that fits in it and grows a request per thousand users after that.
-//
-// Emails and names live only in auth.users: profiles carries
-// id/role/subscription_status and neither an email nor a name column, so there
-// is nothing cheaper to read them from. That makes this O(users in project) to
-// build a map for one class, which is worth revisiting if this ever gets slow
-// -- looking up each student individually is O(class size) but costs a round
-// trip per student, which is the worse trade at the sizes this runs at now.
-const USERS_PAGE_SIZE = 1000;
-
-type RosterUser = { email: string; name: string };
-
-async function usersById(admin: SupabaseAdmin): Promise<Map<string, RosterUser>> {
-  const map = new Map<string, RosterUser>();
-
-  for (let page = 1; ; page++) {
-    const { data, error } = await admin.auth.admin.listUsers({
-      page,
-      perPage: USERS_PAGE_SIZE,
-    });
-
-    if (error) throw error;
-
-    const users = data?.users ?? [];
-    for (const u of users) {
-      const email = u.email ?? "";
-      // listUsers already carries user_metadata, so the real name costs no
-      // extra request -- it rides along on the page we were fetching anyway.
-      map.set(u.id, { email, name: displayName(u.user_metadata, email) });
-    }
-
-    // A short page is the last page.
-    if (users.length < USERS_PAGE_SIZE) break;
-  }
-
-  return map;
-}
+// usersById now lives in app/lib/teacher-directory.ts, shared with the CSV
+// exports so the pagination fix exists in exactly one place.
 
 export async function GET(req: Request) {
   const profile = await requireTeacher();
@@ -105,7 +62,7 @@ export async function GET(req: Request) {
   }
 
   // Get user emails and names from auth.users via admin, across every page.
-  let userMap: Map<string, RosterUser>;
+  let userMap: Map<string, DirectoryUser>;
   try {
     userMap = await usersById(admin);
   } catch (err) {
