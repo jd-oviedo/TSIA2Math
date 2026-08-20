@@ -34,15 +34,48 @@ import { registerHooks } from 'node:module';
 import { pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { existsSync } from 'node:fs';
 
 // scripts/ -> repo root. Derived rather than hardcoded so this keeps working
 // from any working directory.
 const ROOT = pathToFileURL(resolve(dirname(fileURLToPath(import.meta.url)), '..') + '/').href;
 
+// THE SECOND HALF OF THE SAME PROBLEM. Node also refuses an EXTENSIONLESS
+// RELATIVE import of a TypeScript file -- `from './supabase-admin'` -- which is
+// how every module in app/lib imports its neighbours, and which tsc resolves
+// without complaint. So the moment a harness loads any module that has a
+// sibling import, it dies the same way the `@/` case did:
+//
+//   Error [ERR_MODULE_NOT_FOUND]: Cannot find module '.../app/lib/supabase-admin'
+//
+// Rewriting those imports in application code was rejected for the reason given
+// above: it needs allowImportingTsExtensions project-wide, bought to serve the
+// harnesses. This resolves them here instead, on the same principle.
+//
+// GUARDED BY EXISTENCE, DELIBERATELY. The `.ts` candidate is only substituted
+// when that file is actually on disk, so this can never turn a genuinely missing
+// module into a confusing failure somewhere else -- it only ever rescues a
+// specifier that was about to throw. A path that resolves today keeps resolving
+// exactly as it did.
+function tsCandidate(specifier, parentURL) {
+  if (!specifier.startsWith('./') && !specifier.startsWith('../')) return null;
+  if (/\.[cm]?[jt]sx?$/.test(specifier)) return null;
+  if (!parentURL) return null;
+  for (const ext of ['.ts', '.tsx']) {
+    const candidate = new URL(specifier + ext, parentURL);
+    if (existsSync(fileURLToPath(candidate))) return candidate.href;
+  }
+  return null;
+}
+
 registerHooks({
   resolve(specifier, context, nextResolve) {
-    if (!specifier.startsWith('@/')) return nextResolve(specifier, context);
-    const url = new URL(specifier.slice(2), ROOT).href;
-    return nextResolve(/\.[cm]?[jt]sx?$/.test(url) ? url : `${url}.ts`, context);
+    if (specifier.startsWith('@/')) {
+      const url = new URL(specifier.slice(2), ROOT).href;
+      return nextResolve(/\.[cm]?[jt]sx?$/.test(url) ? url : `${url}.ts`, context);
+    }
+    const relative = tsCandidate(specifier, context.parentURL);
+    if (relative) return nextResolve(relative, context);
+    return nextResolve(specifier, context);
   },
 });
