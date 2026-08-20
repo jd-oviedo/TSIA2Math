@@ -624,6 +624,46 @@ worth writing; there is no reason to think this is the only instance.
 
 ---
 
+## Three more resolve-to-wrong-choice candidates — UNVERIFIED, heuristic only
+
+The sweep called for in the paragraph above now exists — it is category A of
+`scripts/audit_distractor_logic.py`, the same script that produced the 33 below.
+Run against the bank on 2026-08-20 it reports **3 hits**, none of which had been
+logged anywhere in this repo until now:
+
+| item | option | what the audit claims |
+|---|---|---|
+| `PR_B_072` | D | prose's terminal value is 2 = choice **C**, but it sits on D (6) |
+| `PR_P_001` | C | prose's terminal value is 2 = choice **D**, but it sits on C (4) |
+| `QR_A_020` | C | prose's terminal value is 5 = choice **B**, but it sits on C (9/2) |
+
+**READ THIS BEFORE ACTING ON THE TABLE.** These are machine-extracted claims,
+not findings. **Nobody has read these three items.** They are logged in this
+state deliberately, because an unverified entry someone can check is worth more
+than a defect nobody knows about, but the distinction has to survive:
+
+- The audit compares the **last number appearing in the prose** against the
+  option values. That is a heuristic, and it is wrong whenever the prose's final
+  number is an intermediate step, a unit, a count, or part of a fraction it did
+  not finish rendering. `QR_A_020`'s "9/2" in particular is the shape most likely
+  to confuse a terminal-value scan.
+- Only 1091 of 3348 entries were mechanically comparable at all, so this is not
+  a clean bill of health for the other 2257 either.
+- `AR_A_010`, the one confirmed instance of this class, was found by a human
+  re-read and only afterwards described mechanically. The order matters: the
+  heuristic was fitted to a known defect, not validated against a held-out set.
+
+**To close any row:** read the item, re-derive the arithmetic the prose actually
+states, and confirm which option that value is. Then either fix the prose (the
+`AR_A_010` remedy — rewrite so the reasoning terminates on its own option) or
+strike the row here as a false positive **and say why**, so the next run of the
+audit does not resurface it as new.
+
+Not fixed, not verified, not counted among the 33 below — those are a different
+category (B) of the same script and a different defect.
+
+---
+
 ## Over-broad tagging rules bundle distinct errors under one slug — 33 options open
 
 Found 2026-08-13 by `scripts/audit_distractor_logic.py`, written after `AR_A_010`
