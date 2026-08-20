@@ -84,6 +84,23 @@ export const supportRateLimit = new Ratelimit({
   analytics: true,
 });
 
+// /api/teacher/export/* -- the CSV downloads on the teacher dashboard. Keyed on
+// the signed-in teacher id, and the routes enforce that by calling
+// requireTeacher() before this runs.
+//
+// Each call reads every enrolled student's whole session history plus a
+// listUsers() walk of the project, so this is by some distance the heaviest
+// authenticated read in the app. The honest shape of use is a teacher pulling
+// three files for a class at the end of a term, occasionally re-pulling one
+// with emails toggled on to compare. 20 per 10 minutes covers that several
+// times over and still bounds how fast the endpoint can be walked.
+export const exportRateLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(20, "10 m"),
+  prefix: "ratelimit:teacher-export",
+  analytics: true,
+});
+
 // /claim — handing a captured Stripe purchase to whoever presents its checkout
 // session id. Keyed on the SIGNED-IN USER ID, and the page enforces that by
 // requiring a session before it calls this.
