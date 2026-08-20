@@ -41,11 +41,14 @@ export default function StudentShell({
   name,
   role,
   entitledTeacher,
+  plan,
   children,
 }: {
   name: string;
   role: 'student' | 'teacher';
   entitledTeacher?: boolean;
+  /** Passed straight through to the rail, which names the tier from it. */
+  plan?: string | null;
   children: React.ReactNode;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -107,6 +110,7 @@ export default function StudentShell({
           name={name}
           role={role}
           entitledTeacher={entitledTeacher}
+          plan={plan}
           collapsed={collapsed}
           onOpenSupport={() => setShowSupport(true)}
         />
@@ -159,6 +163,7 @@ export default function StudentShell({
         name={name}
         role={role}
         entitledTeacher={entitledTeacher}
+        plan={plan}
         onClose={() => setMenuOpen(false)}
         onOpenSupport={() => setShowSupport(true)}
       />

@@ -1,8 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import {
   CAPABILITIES,
   planGrants,
+  teacherTierLabel,
   isFreeSample,
   freeSampleGrants,
   FREE_SAMPLE,
@@ -107,4 +109,72 @@ test('the free sample grants nothing outside the course tree', () => {
 
 test('the sample constant and the predicate cannot drift', () => {
   assert.equal(isFreeSample(FREE_SAMPLE.courseId, FREE_SAMPLE.topicId), true);
+});
+
+
+// ---------------------------------------------------------------------------
+// The tier label
+//
+// Both teacher rails named the wrong product. The teacher dashboard rendered the
+// literal 'TEACHER · PRO' for everyone, and the student rail derived its badge
+// from `role === 'teacher' && entitledTeacher`, which is ENTITLED, not PRO. No
+// Teacher Pro has ever sold, so every one of those labels was wrong, and the
+// first paying Teacher Core customer was shown one.
+//
+// The unit tests below cover the derivation. The last test covers the WIRING,
+// which is the half that was actually broken: a correct helper nothing calls
+// would have left both rails exactly as wrong as they were.
+// ---------------------------------------------------------------------------
+
+test('the tier label names the plan that was bought', () => {
+  assert.equal(teacherTierLabel('teacher-core'), 'CORE');
+  assert.equal(teacherTierLabel('teacher-pro'), 'PRO');
+});
+
+test('a Teacher Core plan is never labelled PRO', () => {
+  // The defect, stated as an assertion. This is the one that matters.
+  assert.notEqual(teacherTierLabel('teacher-core'), 'PRO');
+});
+
+test('a plan that names no teacher tier returns null rather than a product name', () => {
+  // Null forces the caller to say what it renders instead. Defaulting to a tier
+  // here would put the guess back where it was.
+  assert.equal(teacherTierLabel('practice-pass'), null);
+  assert.equal(teacherTierLabel('full-course'), null);
+  assert.equal(teacherTierLabel(null), null);
+  assert.equal(teacherTierLabel(undefined), null);
+  assert.equal(teacherTierLabel(''), null);
+});
+
+test('neither teacher rail hardcodes a tier name', () => {
+  // The wiring check. Both files must derive the band from teacherTierLabel and
+  // neither may contain the literal string that was there before.
+  const rails = [
+    'app/teacher/TeacherDashboardClient.tsx',
+    'app/components/StudentNav.tsx',
+  ];
+  for (const file of rails) {
+    const src = readFileSync(file, 'utf8');
+    // Comments are allowed to quote the old string, since both files explain at
+    // length what was wrong with it. Only rendered code is refused, so both
+    // comment forms are stripped first -- including block comments, which is
+    // what a JSX {/* ... */} note is and which a line-prefix filter misses.
+    const rendered = src
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .split('\n')
+      .filter((line) => !/^\s*\/\//.test(line))
+      .join('\n');
+    // A CALL, not a mention. Asserted against the comment-stripped source
+    // because the first version of this test read the raw file, and a fault that
+    // ripped the call out entirely still passed: both files talk ABOUT
+    // teacherTierLabel in their comments, and that was enough to satisfy it.
+    assert.ok(
+      /teacherTierLabel\s*\(/.test(rendered),
+      `${file} does not derive its tier label from the plan`
+    );
+    assert.ok(
+      !/['"`]TEACHER · PRO['"`]/.test(rendered),
+      `${file} still renders a hardcoded TEACHER · PRO`
+    );
+  }
 });
