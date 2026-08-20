@@ -132,11 +132,13 @@ alter table public.profiles
   add column if not exists plan_updated_at        timestamptz;
 
 comment on column public.profiles.plan is
-  'What was bought, at capability granularity. Null means no entitlement. '
+  'The TIER held, at capability granularity. Null means no entitlement. '
   'Monthly and annual collapse to the same plan because they unlock the same '
-  'thing; the billing cadence lives in plan_term. The founding teacher rate is '
-  'a PRICE, not a tier: founding teachers hold plan = teacher-core, and '
-  'is_founder plus stripe_payment_link_id record the rate.';
+  'thing; the billing cadence lives in plan_term. The founding rate is a PRICE '
+  'and not a tier, recorded by is_founder plus stripe_payment_link_id, so a '
+  'founding teacher''s plan is whatever tier they were promised and is NOT '
+  'implied by what they pay: two hold teacher-pro at the founding rate, '
+  'permanently and by agreement. See sql/founder_pro_grant.sql.';
 
 comment on column public.profiles.plan_term is
   'Billing cadence. Informational only, never gated on. Null for comped access.';
@@ -333,10 +335,20 @@ alter table public.profiles
 -- subscription_status='active' with plan null, and re-running this picks them up
 -- with no double write and no need to know how many there were.
 --
--- 'teacher-core' IS CORRECT FOR ALL OF THEM. No Teacher Pro has ever sold, and
--- founding teachers at $10/$100 hold the teacher-core capability set; the
--- founding rate is a price, not a tier. No hand correction is expected after
--- this runs.
+-- 'teacher-core' WAS ASSUMED CORRECT FOR ALL OF THEM, AND IT WAS NOT. Corrected
+-- 2026-08-20; see decision 1 in section 6 for the full record. Two of the rows
+-- this statement wrote, anwhite@gpapps.galenaparkisd.com and
+-- jsekely@gpapps.galenaparkisd.com, were promised Pro and are moved to
+-- plan = 'teacher-pro' by sql/founder_pro_grant.sql.
+--
+-- The statement itself is left exactly as it ran. It is not edited to carve out
+-- an exception, because it already ran and because the flaw is worth leaving
+-- visible: its predicate is role plus a payment flag, so it reads nothing about
+-- what anyone bought and cannot distinguish tiers. That was survivable only
+-- while the premise "no Teacher Pro has ever sold" held. It did not.
+--
+-- The founding rate is still a price and not a tier. is_founder records the
+-- rate, plan records the tier, and for those two teachers they now differ.
 --
 -- FAIL OPEN HERE, deliberately, and only here. Every migrated row gets
 -- access_until = null, so nobody signed in loses access the moment this runs.
@@ -455,10 +467,45 @@ select role, subscription_status, plan, plan_status, plan_source, access_until,
 -- file is open.
 -- ---------------------------------------------------------------------------
 --
--- 1. Teacher tiers. No Teacher Pro has ever sold. Founding teachers at $10/$100
---    hold the teacher-core capability set. The blanket 'teacher-core' backfill is
+-- 1. Teacher tiers. SUPERSEDED ON 2026-08-20. Both clauses of the original are
+--    now false, and it is recorded here rather than replaced because the second
+--    one is the reason the backfill was written the way it was.
+--
+--    IT SAID: "No Teacher Pro has ever sold. Founding teachers at $10/$100 hold
+--    the teacher-core capability set. The blanket 'teacher-core' backfill is
 --    correct for every existing active teacher, and no hand correction is
---    expected.
+--    expected."
+--
+--    WHAT IS TRUE: two founding teachers, anwhite@gpapps.galenaparkisd.com and
+--    jsekely@gpapps.galenaparkisd.com, hold PLAN = 'teacher-pro' PERMANENTLY, at
+--    the founding rate, BY PROMISE. They were told they would have Pro
+--    capabilities and a Founding Teacher badge. That promise governs, and it
+--    predates and outranks anything this schema recorded.
+--
+--    The promise was never written down anywhere the repo could see, so the
+--    backfill could not have known about it. It could not have known that
+--    anwhite later switched from monthly to annual in the Stripe dashboard
+--    either. The correction is sql/founder_pro_grant.sql.
+--
+--    THIS IS INTENTIONAL AND PERMANENT, NOT A MISPRICED ROW. Two teachers paying
+--    the founding $10/$100 while holding the tier above the $30/$300 one is
+--    exactly what was agreed. Do not "reconcile" these rows against their Stripe
+--    prices, and do not let a future tidy-up demote them to match what they pay.
+--
+--    THE FOUNDING RATE IS STILL A PRICE AND NOT A TIER. That part was always
+--    right and is unchanged. is_founder records the rate; plan records the tier;
+--    for these two those now differ, which is precisely why they are separate
+--    columns.
+--
+--    Everyone else the backfill touched remains correctly teacher-core, and
+--    bsutton@gpapps.galenaparkisd.com, the first customer on the public pricing,
+--    bought Teacher Core $20/mo through plink_1U5tuZF8f8aZDGVARYelic7d and is
+--    correctly teacher-core with no hand correction of any kind.
+--
+--    NOTHING IN CODE WILL EVER FIX A WRONG PLAN VALUE. entitlementFromSubscription
+--    prefers knownPlanFor, which reads the plan already on the profile, so every
+--    renewal carries whatever is written here forward unchanged. The plan column
+--    is corrected by hand or not at all.
 --
 -- 2. Full Course is a strict SUPERSET of Practice Pass, including the worksheet
 --    generator when it ships, plus the ENTIRE topic tree and GUMU. Practice Pass
