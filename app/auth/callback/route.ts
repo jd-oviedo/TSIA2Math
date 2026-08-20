@@ -56,6 +56,29 @@ export async function GET(request: Request) {
         console.error('[auth/callback] failed to claim session:', claimError.message)
       }
     }
+    // THE `role` PARAMETER ARRIVES HERE AND IS DELIBERATELY IGNORED.
+    //
+    // This is where `role=teacher` used to become a profile write, and it fired
+    // on the parameter alone: anyone who reached /login?role=teacher got
+    // role='teacher' with no payment anywhere in the path. Three production rows
+    // carry it. They were inert only because every authorization surface also
+    // requires a teacher plan -- app/lib/auth.ts:110-111, and the same two-step
+    // in /teacher and /teacher/settings -- so the write bought nothing and left a
+    // free teacher role one refactor away from mattering.
+    //
+    // THE WEBHOOK OWNS role NOW. app/lib/stripe-activation.ts:277-280 writes it
+    // inside the guarded UPDATE at :228-282, in the same statement as the
+    // entitlement columns and on a teacher plan only, so the role and the plan
+    // land atomically or not at all. That is the one path every purchase goes
+    // through. This one was a URL parameter.
+    //
+    // THE PARAMETER IS NOT DEAD, so do not chase it out of the URL builders on
+    // the way to tidying this up. /login renders the teacher OAuth screen for
+    // role=teacher and the role selector without it (app/login/page.tsx:37,187),
+    // and /upgrade derives it from the product being bought
+    // (app/upgrade/route.ts:109-110). Dropping it would put a "student or
+    // teacher?" chooser in the middle of a purchase.
+
     // A PURCHASE MAY BE WAITING FOR THIS EMAIL.
     //
     // The webhook captures a paid checkout that matched no account into
