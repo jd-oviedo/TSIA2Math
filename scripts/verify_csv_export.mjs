@@ -235,23 +235,32 @@ async function main() {
   // that has nothing to do with what they test. Failing loudly here is the
   // difference between "the limiter fired" and half an hour spent debugging
   // the wrong thing.
-  let rateLimited = false;
   async function get(ctx, path) {
     const res = await ctx.request.get(`${BASE}${path}`);
-    if (res.status() === 429) rateLimited = true;
+
+    // Aborts HERE, on the request that saw it, not at the next section
+    // boundary. The first version of this set a flag and checked it between
+    // sections, which is not good enough and was caught being not good enough
+    // twice: a 429 landing mid-section still let every remaining check in that
+    // section run against JSON error bodies and report failures that had
+    // nothing to do with what they test.
+    if (res.status() === 429) {
+      console.error(`\n  HTTP 429 on ${path}`);
+      console.error('  The export rate limit fired: 20 per 10 minutes per teacher.');
+      console.error('  This run makes 14 requests, so a single run fits, but two runs');
+      console.error('  inside one window do not. Wait for the window to clear and');
+      console.error('  re-run. Nothing below this point would have meant anything.');
+      process.exit(1);
+    }
+
     return {
       status: res.status(),
       body: await res.text(),
       headers: res.headers(),
     };
   }
-  function abortIfRateLimited() {
-    if (!rateLimited) return;
-    console.error('\n  The export rate limit fired (20 per 10 minutes per teacher).');
-    console.error('  Every result after this point is meaningless. Wait for the');
-    console.error('  window to clear and re-run; do not re-run immediately.');
-    process.exit(1);
-  }
+  /** Retained as a no-op call site marker; get() now aborts on the spot. */
+  function abortIfRateLimited() {}
 
   try {
     // ─── 1. Signed out ────────────────────────────────────────────────────
@@ -429,6 +438,7 @@ async function main() {
     console.log('\n8. Nothing answer-bearing leaks into the files');
     const forbidden = ['correct_answer', 'explanation', 'distractor_logic', 'answer_choices', 'question_text'];
     const bodies = [rosterCsv.body, scoresCsv.body, withEmail.body];
+    // (the misconceptions file is scanned separately at 9b, after it is fetched)
     for (const key of forbidden) {
       check(`no "${key}" anywhere in the exports`, bodies.every((b) => !b.includes(key)));
     }
@@ -462,6 +472,157 @@ async function main() {
       !all.body.includes('Fixture B1'),
       'scanned whole body'
     );
+
+    // ─── 9b. Misconceptions ───────────────────────────────────────────────
+    abortIfRateLimited();
+    console.log('\n9b. Misconceptions, against the grid it must agree with');
+
+    const miscCsv = await get(a.ctx, `/api/teacher/export/misconceptions?classes=${A1.id}`);
+    writeFileSync(`${OUT}/misconceptions-A1.csv`, miscCsv.body);
+    check('misconceptions export succeeds', miscCsv.status === 200, `HTTP ${miscCsv.status}`);
+    check(
+      'the filename states the scope',
+      (miscCsv.headers['content-disposition'] ?? '').includes('misconceptions-latest-session'),
+      miscCsv.headers['content-disposition'] ?? ''
+    );
+
+    const miscRows = parseCsv(miscCsv.body);
+    const miscHeader = miscRows[0];
+    const miscData = miscRows.slice(1);
+    check('the file is not empty', miscData.length > 0, `${miscData.length} rows`);
+    check(
+      'every misconception row has exactly as many fields as the header',
+      miscData.every((r) => r.length === miscHeader.length),
+      `header ${miscHeader.length}`
+    );
+
+    const mTag = miscHeader.indexOf('misconception_tag');
+    const mLabel = miscHeader.indexOf('misconception_label');
+    const mRaw = miscHeader.indexOf('misconception_label_raw');
+    const mScope = miscHeader.indexOf('export_scope');
+    const mName = miscHeader.indexOf('student_name');
+    const mFreq = miscHeader.indexOf('times_selected');
+
+    check(
+      'every row carries the scope stamp',
+      miscData.every((r) => r[mScope] === 'latest_session_cat_only'),
+      'latest_session_cat_only'
+    );
+
+    // The label promise: every slug resolved, so no cell fell back to the slug.
+    const unresolved = miscData.filter((r) => r[mLabel] === r[mTag]);
+    check(
+      'every slug resolved to a real definition, none fell back to the slug',
+      unresolved.length === 0,
+      unresolved.length ? unresolved.map((r) => r[mTag]).join(', ') : 'all resolved'
+    );
+    check(
+      'labels carry no LaTeX',
+      miscData.every((r) => !r[mLabel].includes('$') && !r[mLabel].includes('\\')),
+      'scanned every label cell'
+    );
+    check(
+      'the raw column is present and differs from the label',
+      mRaw !== -1 && miscData.some((r) => r[mRaw] && r[mRaw] !== r[mLabel]),
+      'raw is the representative distractor prose'
+    );
+
+    // THE CHECK THIS FILE EXISTS FOR: it must agree with the grid on screen.
+    // The grid is class-level and top-10; this file is per student. Summing
+    // times_selected per slug must reproduce the grid's frequency, and the
+    // distinct student count must reproduce affected_students.
+    const gridRes = await get(a.ctx, `/api/teacher/misconceptions?class_id=${A1.id}`);
+    const grid = JSON.parse(gridRes.body).misconceptions ?? [];
+    check('the dashboard grid returned data to compare against', grid.length > 0, `${grid.length} cards`);
+
+    let freqMatches = true;
+    let studentMatches = true;
+    for (const card of grid) {
+      const rowsForTag = miscData.filter((r) => r[mTag] === card.misconception_tag);
+      const freq = rowsForTag.reduce((n, r) => n + Number(r[mFreq]), 0);
+      const students = new Set(rowsForTag.map((r) => r[mName])).size;
+      if (freq !== card.frequency) freqMatches = false;
+      if (students !== card.affected_students) studentMatches = false;
+    }
+    check('times_selected sums to the grid frequency for every card', freqMatches);
+    check('distinct students matches the grid affected_students for every card', studentMatches);
+
+    check(
+      'the file is a superset of the grid, which is only a top 10',
+      new Set(miscData.map((r) => r[mTag])).size >= grid.length,
+      `${new Set(miscData.map((r) => r[mTag])).size} slugs vs ${grid.length} cards`
+    );
+
+    // Untested students must be absent, not present with empty cells.
+    check(
+      'a student who has never tested has no rows',
+      !miscData.some((r) => r[mName] === 'Noel Sin-Examen'),
+      'Noel Sin-Examen has no sessions'
+    );
+
+    // ANSWER LEAK, the vector specific to this file. misconception_label_raw is
+    // real distractor prose, which is approved, but the prose attached to the
+    // CORRECT option in questions.distractor_logic states the answer.
+    //
+    // This was a string check matching a leading "Correct:". That was the wrong
+    // shape of assertion: it depended on an authoring convention rather than on
+    // the data, so a legitimate label beginning with that word would have
+    // broken it, and a leak whose prose happened not to start that way would
+    // have slipped through.
+    //
+    // The product exclusion is structural and does not involve prose at all.
+    // aggregateMisconceptions reads only rows with is_correct = false, and
+    // looks the label up as distractor_logic[selected_answer], which on such a
+    // row can never be the correct option's letter. So the check is structural
+    // too: trace each exported string back to the option it came from, and
+    // assert that option is not the item's correct_answer.
+    const mItem = miscHeader.indexOf('example_item_id');
+    const exampleItems = [...new Set(miscData.map((r) => r[mItem]))];
+    const { data: exampleRows, error: exampleErr } = await db
+      .from('questions')
+      .select('item_id, correct_answer, distractor_logic')
+      .in('item_id', exampleItems);
+    if (exampleErr) throw new Error(`could not read example items: ${exampleErr.message}`);
+    const byItem = new Map((exampleRows ?? []).map((q) => [q.item_id, q]));
+
+    let fromCorrectOption = 0;
+    let untraceable = 0;
+    for (const r of miscData) {
+      const item = byItem.get(r[mItem]);
+      if (!item) { untraceable++; continue; }
+      const options = Object.entries(item.distractor_logic ?? {})
+        .filter(([, text]) => text === r[mRaw])
+        .map(([option]) => option);
+      if (options.length === 0) untraceable++;
+      else if (options.includes(item.correct_answer)) fromCorrectOption++;
+    }
+
+    check(
+      'every exported label traces back to a WRONG option, structurally',
+      fromCorrectOption === 0 && untraceable === 0,
+      `${miscData.length - fromCorrectOption - untraceable}/${miscData.length} traced to a wrong option, ` +
+        `${fromCorrectOption} to the correct option, ${untraceable} untraceable`
+    );
+    check(
+      'the check had correct-option prose available to catch',
+      new Set(
+        (exampleRows ?? []).map((q) => (q.distractor_logic ?? {})[q.correct_answer]).filter(Boolean)
+      ).size > 0,
+      'otherwise the assertion above is vacuous'
+    );
+    for (const key of ['correct_answer', 'answer_choices', 'question_text']) {
+      check(`no "${key}" in the misconceptions file`, !miscCsv.body.includes(key));
+    }
+
+    // Authorisation applies here too.
+    const miscForbidden = await get(a.ctx, `/api/teacher/export/misconceptions?classes=${B1.id}`);
+    check("misconceptions refuses another teacher's class", miscForbidden.status === 403, `HTTP ${miscForbidden.status}`);
+
+    // Email flag applies here too.
+    const miscEmail = await get(a.ctx, `/api/teacher/export/misconceptions?classes=${A1.id}&email=1`);
+    check('misconceptions honours the email flag',
+      parseCsv(miscEmail.body)[0].includes('student_email') && !miscHeader.includes('student_email'));
+    check('the no-email misconceptions file leaks no address', !miscCsv.body.includes(EMAIL_DOMAIN));
 
     // ─── 10. Audit log ────────────────────────────────────────────────────
     console.log('\n10. The audit row records the column set, not merely the event');
