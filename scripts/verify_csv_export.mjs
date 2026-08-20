@@ -9,16 +9,29 @@
 //
 // HOW IT SIGNS IN
 //
-// This project is Google OAuth only, so there is no password to post and no
-// way for a harness to sign in the way verify_auth_gate.mjs describes. The way
-// through is an admin-generated magic link pointed at the app's own
-// /auth/callback, opened in a real browser. That exercises the real session
-// flow and sets the real cookies, rather than hand-assembling an @supabase/ssr
-// cookie and hoping the format matches.
+// This project is Google OAuth only, so there is no password to post and no way
+// for a harness to sign in the way verify_auth_gate.mjs describes.
 //
-// If the Supabase project does not allow-list http://localhost:3100/auth/callback
-// as a redirect URL, the sign-in lands on an error page and this script says so
-// explicitly rather than reporting a mysterious 403.
+// The first attempt at this walked an admin-generated magic link through the
+// app's own /auth/callback in a browser. That does not work, and the reason is
+// worth recording: admin.generateLink returns an IMPLICIT-flow link, which
+// lands on the redirect URL with the tokens in the fragment
+// (#access_token=...&type=magiclink), while /auth/callback is written for the
+// PKCE flow and looks for ?code=. The callback finds no code and redirects to
+// /login?error=auth_failed. Nothing is misconfigured; the two halves are simply
+// different flows.
+//
+// So the session is minted directly instead:
+//
+//   1. admin.generateLink  -> properties.hashed_token
+//   2. anon verifyOtp      -> a real access_token / refresh_token pair
+//   3. @supabase/ssr setSession, with a cookie jar in place of a response, to
+//      get the EXACT cookie the app will read
+//
+// Step 3 matters. The cookie is base64-encoded JSON under a project-scoped name
+// and @supabase/ssr chunks it past a size threshold, so hand-assembling it
+// would be testing our guess at the format. Letting the library serialise it
+// means the harness proves the gate rather than the encoding.
 //
 // WHAT COUNTS AS PROOF
 //
@@ -35,6 +48,7 @@
 import { chromium } from 'playwright';
 import { spawn, execSync } from 'child_process';
 import { createClient } from '@supabase/supabase-js';
+import { createServerClient } from '@supabase/ssr';
 import { writeFileSync, mkdirSync, readFileSync } from 'fs';
 
 const PORT = 3100;
@@ -118,49 +132,125 @@ async function main() {
   // ─── Build and start ──────────────────────────────────────────────────────
   console.log('Building.');
   execSync('npx next build', { stdio: 'inherit' });
+  // Refuse to run against a server this script did not start. A leftover
+  // `next start` on this port would be serving an OLDER build, and every check
+  // below would pass or fail against code that is not the code under test.
+  try {
+    await fetch(BASE, { signal: AbortSignal.timeout(2000) });
+    console.error(`\nSomething is already listening on ${BASE}.`);
+    console.error('That would test a stale build. Stop it and re-run:');
+    console.error(`  ss -ltnp | grep ${PORT}`);
+    process.exit(1);
+  } catch {
+    // Nothing listening, which is what we want.
+  }
+
   console.log('Starting on', BASE);
+  // detached so the whole process group can be killed. `npx next start` spawns
+  // a grandchild that actually binds the port, and killing only the direct
+  // child leaves that grandchild holding it -- which is exactly how the first
+  // run of this script orphaned a server and made the second run time out.
   const server = spawn('npx', ['next', 'start', '-p', String(PORT)], {
     stdio: ['ignore', 'pipe', 'pipe'],
+    detached: true,
   });
-  const stop = () => { try { process.kill(-server.pid); } catch { try { server.kill('SIGKILL'); } catch {} } };
+  const stop = () => {
+    try { process.kill(-server.pid, 'SIGKILL'); } catch { /* group already gone */ }
+    try { server.kill('SIGKILL'); } catch { /* child already gone */ }
+  };
   process.on('exit', stop);
 
-  await new Promise((resolve, reject) => {
-    const t = setTimeout(() => reject(new Error('server did not start in 60s')), 60000);
-    server.stdout.on('data', (d) => {
-      if (d.toString().includes('Ready') || d.toString().includes('started server')) {
-        clearTimeout(t); resolve();
-      }
-    });
-  });
-  await new Promise((r) => setTimeout(r, 1500));
+  // Poll the port rather than matching a phrase on stdout. The readiness banner
+  // is Next's to change; a socket that answers is not.
+  const deadline = Date.now() + 90000;
+  for (;;) {
+    if (Date.now() > deadline) {
+      stop();
+      throw new Error('server did not answer on ' + BASE + ' within 90s');
+    }
+    try {
+      await fetch(BASE, { signal: AbortSignal.timeout(2000) });
+      break;
+    } catch {
+      await new Promise((r) => setTimeout(r, 500));
+    }
+  }
 
   const browser = await chromium.launch();
 
-  /** Open a magic link in a fresh browser context. Returns that context. */
+  const anonClient = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    { auth: { persistSession: false, autoRefreshToken: false } }
+  );
+
+  /** A browser context already holding a real session for this account. */
   async function signIn(emailAddr) {
-    const { data, error } = await db.auth.admin.generateLink({
+    const { data: link, error: linkErr } = await db.auth.admin.generateLink({
       type: 'magiclink',
       email: emailAddr,
-      options: { redirectTo: `${BASE}/auth/callback` },
     });
-    if (error) throw new Error(`generateLink failed for ${emailAddr}: ${error.message}`);
+    if (linkErr) throw new Error(`generateLink failed for ${emailAddr}: ${linkErr.message}`);
+
+    const { data: verified, error: otpErr } = await anonClient.auth.verifyOtp({
+      type: 'magiclink',
+      token_hash: link.properties.hashed_token,
+    });
+    if (otpErr) throw new Error(`verifyOtp failed for ${emailAddr}: ${otpErr.message}`);
+
+    // Serialise through the library the app reads with, not by hand.
+    const jar = [];
+    const ssr = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+      { cookies: { getAll: () => [], setAll: (list) => jar.push(...list) } }
+    );
+    await ssr.auth.setSession({
+      access_token: verified.session.access_token,
+      refresh_token: verified.session.refresh_token,
+    });
+    if (jar.length === 0) throw new Error(`no session cookie produced for ${emailAddr}`);
 
     const ctx = await browser.newContext();
-    const page = await ctx.newPage();
-    await page.goto(data.properties.action_link, { waitUntil: 'domcontentloaded' });
-    await page.waitForTimeout(1200);
-    return { ctx, landedOn: page.url() };
+    await ctx.addCookies(
+      jar.map((c) => ({
+        name: c.name,
+        value: c.value,
+        domain: 'localhost',
+        path: '/',
+        httpOnly: false,
+        secure: false,
+        sameSite: 'Lax',
+      }))
+    );
+    return { ctx, userId: verified.user.id, cookieCount: jar.length };
   }
 
   /** GET a URL inside a context, returning status + body + headers. */
+  //
+  // A 429 aborts the whole run rather than being folded into a check. The
+  // export routes are rate limited at 20 per 10 minutes per teacher, and when
+  // that fires every subsequent response is a JSON error body: the parser then
+  // reports a one-column CSV and a dozen unrelated checks fail for a reason
+  // that has nothing to do with what they test. Failing loudly here is the
+  // difference between "the limiter fired" and half an hour spent debugging
+  // the wrong thing.
+  let rateLimited = false;
   async function get(ctx, path) {
     const res = await ctx.request.get(`${BASE}${path}`);
+    if (res.status() === 429) rateLimited = true;
     return {
       status: res.status(),
       body: await res.text(),
       headers: res.headers(),
     };
+  }
+  function abortIfRateLimited() {
+    if (!rateLimited) return;
+    console.error('\n  The export rate limit fired (20 per 10 minutes per teacher).');
+    console.error('  Every result after this point is meaningless. Wait for the');
+    console.error('  window to clear and re-run; do not re-run immediately.');
+    process.exit(1);
   }
 
   try {
@@ -177,12 +267,13 @@ async function main() {
     console.log('\n2. Sessions');
     const a = await signIn(`teacher-a@${EMAIL_DOMAIN}`);
     const student = await signIn(`ana@${EMAIL_DOMAIN}`);
-    if (a.landedOn.includes('error') || a.landedOn.includes('/login')) {
-      console.error(`\n  Sign-in landed on ${a.landedOn}`);
-      console.error(`  Add ${BASE}/auth/callback to Supabase Auth > URL Configuration > Redirect URLs.`);
-      process.exit(1);
-    }
-    check('teacher A has a session', !a.landedOn.includes('/login'), a.landedOn);
+    check('teacher A session minted', a.userId === teacherA, `${a.cookieCount} cookie(s)`);
+    check('student session minted', Boolean(student.userId), `${student.cookieCount} cookie(s)`);
+
+    // The session is only proven by a page that requires one. /teacher redirects
+    // a signed-out visitor to /login, so a 200 here is the session working.
+    const dashPage = await a.ctx.request.get(`${BASE}/teacher`);
+    check('teacher A can load /teacher', dashPage.status() === 200, `HTTP ${dashPage.status()}`);
 
     // ─── 3. The control: the owner CAN read their own class ───────────────
     console.log('\n3. Control (must succeed, or every refusal below is meaningless)');
@@ -218,12 +309,16 @@ async function main() {
     const bogus = await get(a.ctx, `/api/teacher/export/roster?classes=not-a-uuid`);
     check('malformed class id is a 400', bogus.status === 400, `HTTP ${bogus.status}`);
 
+    abortIfRateLimited();
     // ─── 5. Row counts against the dashboard ──────────────────────────────
     console.log('\n5. Row counts against what the dashboard shows');
     const dash = await get(a.ctx, `/api/teacher/roster?class_id=${A1.id}`);
     const dashRoster = JSON.parse(dash.body).roster;
 
-    const rosterCsv = await get(a.ctx, `/api/teacher/export/roster?classes=${A1.id}`);
+    // Reuses the control response rather than fetching the same file again.
+    // Every redundant request eats the teacher's rate-limit budget, and this
+    // harness previously spent it twice over on identical downloads.
+    const rosterCsv = ok;
     writeFileSync(`${OUT}/roster-A1.csv`, rosterCsv.body);
     const rosterRows = parseCsv(rosterCsv.body);
     const rosterHeader = rosterRows[0];
@@ -282,10 +377,31 @@ async function main() {
 
     // The one that matters most: a display name beginning with "+" and
     // containing a comma. It must be neutralised AND still be one field.
-    const mateo = names.find((n) => n.includes('Mateo'));
-    check('formula-leading name is neutralised', mateo === "'+Mateo, Jr.", JSON.stringify(mateo));
-    check('formula-leading name did not add a column', rosterData.every((r) => r.length === rosterHeader.length));
+    //
+    // Read from the A2 export, not A1. Mateo is enrolled in A2 and B1 only, so
+    // asserting this against the A1 file searched a roster he was never on:
+    // the "is neutralised" check failed with undefined, and the "did not add a
+    // column" check beside it passed vacuously, which is the more dangerous of
+    // the two. Assert against the file the name is actually in.
+    const a2Csv = await get(a.ctx, `/api/teacher/export/roster?classes=${A2.id}`);
+    writeFileSync(`${OUT}/roster-A2.csv`, a2Csv.body);
+    const a2Rows = parseCsv(a2Csv.body);
+    const a2Header = a2Rows[0];
+    const a2Data = a2Rows.slice(1);
+    const a2NameIdx = a2Header.indexOf('student_name');
+    const a2Names = a2Data.map((r) => r[a2NameIdx]);
 
+    check('the A2 roster really does contain the formula-leading name',
+      a2Names.some((n) => n.includes('Mateo')), a2Names.join(' | '));
+
+    const mateo = a2Names.find((n) => n.includes('Mateo'));
+    check('formula-leading name is neutralised', mateo === "'+Mateo, Jr.", JSON.stringify(mateo));
+    check('formula-leading name did not add a column',
+      a2Data.every((r) => r.length === a2Header.length), `header ${a2Header.length}`);
+    check('the neutralised field is quoted, because it contains a comma',
+      a2Csv.body.includes('"\'+Mateo, Jr."'), 'raw bytes');
+
+    abortIfRateLimited();
     // ─── 7. The email checkbox ────────────────────────────────────────────
     console.log('\n7. The email column is controlled by the flag');
     const noEmail = await get(a.ctx, `/api/teacher/export/roster?classes=${A1.id}&email=0`);
@@ -304,9 +420,10 @@ async function main() {
     );
     check('the with-email file does contain them', withEmail.body.includes(EMAIL_DOMAIN));
 
-    // Default must be off.
-    const defaulted = await get(a.ctx, `/api/teacher/export/roster?classes=${A1.id}`);
-    check('omitting the flag defaults to no email', !defaulted.body.includes(EMAIL_DOMAIN));
+    // Default must be off. The control response at step 3 was fetched with no
+    // email parameter at all, so it is the evidence for this, and re-fetching
+    // it would only spend budget to learn the same thing.
+    check('omitting the flag defaults to no email', !ok.body.includes(EMAIL_DOMAIN));
 
     // ─── 8. No answer-bearing data ────────────────────────────────────────
     console.log('\n8. Nothing answer-bearing leaks into the files');
@@ -316,6 +433,7 @@ async function main() {
       check(`no "${key}" anywhere in the exports`, bodies.every((b) => !b.includes(key)));
     }
 
+    abortIfRateLimited();
     // ─── 9. Multi-class and all-classes ───────────────────────────────────
     console.log('\n9. Multi-class scope');
     const both = await get(a.ctx, `/api/teacher/export/roster?classes=${A1.id},${A2.id}`);
@@ -323,8 +441,8 @@ async function main() {
     const bothRows = parseCsv(both.body).slice(1);
     check(
       'two-class roster is the sum of both enrolments',
-      bothRows.length === rosterData.length + parseCsv((await get(a.ctx, `/api/teacher/export/roster?classes=${A2.id}`)).body).slice(1).length,
-      `${bothRows.length} rows`
+      bothRows.length === rosterData.length + a2Data.length,
+      `${bothRows.length} = ${rosterData.length} + ${a2Data.length}`
     );
     const classIdx = parseCsv(both.body)[0].indexOf('class_name');
     check('both class names appear', new Set(bothRows.map((r) => r[classIdx])).size === 2);
@@ -334,7 +452,10 @@ async function main() {
       'A2 is named "ZZ CSV Export Fixture A2, Period 3"'
     );
 
+    writeFileSync(`${OUT}/roster-A1-and-A2.csv`, both.body);
+
     const all = await get(a.ctx, `/api/teacher/export/roster?classes=all`);
+    writeFileSync(`${OUT}/roster-all-classes.csv`, all.body);
     check('all-classes succeeds', all.status === 200, `HTTP ${all.status}`);
     check(
       'all-classes contains no class belonging to teacher B',
