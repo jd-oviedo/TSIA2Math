@@ -92,28 +92,54 @@ usable path. Worth closing or watching, separately.
 
 ### Queue
 
-Rewritten 2026-08-20, on the Part 2 branch. Items 1, 2 and 4 of the previous
-list have shipped; what remains is renumbered rather than left as stale
-"tomorrow" entries.
+Rewritten 2026-08-20. Everything in the previous "tomorrow, in order" list has
+shipped; what remains is renumbered rather than left as a stale entry.
 
-**Shipped since the last revision of this list**
+**Where the payment-loss story stands: ONE PIECE LEFT, and it is not in this
+repo.** A paid checkout that matches no account is now captured, alertable, and
+claimable by two routes. What is still missing is the step that puts the claim
+link in front of the buyer automatically. Until it lands, every recovery goes
+through a human forwarding the ops email — see item 1.
 
-- **Part 2: pending entitlements and the claim.** `pending_entitlements` (DDL
-  applied by hand), `app/lib/pending-entitlements.ts`, the webhook reorder,
-  `/claim`, the `auth/callback` email claim, and
-  `scripts/faultproof_claim.mjs` wired into `test:offline`.
+**Shipped**
+
+- **Part 2: pending entitlements and the claim. PR #164.**
+  `pending_entitlements` (DDL applied by hand, zero grants for `anon` and
+  `authenticated` confirmed), `app/lib/pending-entitlements.ts`, the webhook
+  reorder so both branches consume one entitlement, `/claim`, the
+  `auth/callback` email claim, the rewritten ops alert that no longer says the
+  buyer has nothing, and `scripts/faultproof_claim.mjs` in `test:offline`.
+  Verified live against the real table: `claimed`, `stale` and `not-found` all
+  render, and a claim wrote `access_until` six months from the EVENT timestamp
+  with `plan_updated_at` equal to `event_created_at`.
+
+- **The unlinked-customer alert. PR #165.** Found while checking that live
+  claim. `linkCustomerId` is first-writer-wins, so a purchase landing on a
+  profile that already carries a different `stripe_customer_id` leaves the new
+  one unstored — and if that new customer has a subscription, its renewals
+  resolve to nobody and the teacher lapses looking like an ordinary expiry. It
+  hits the **matched** webhook path too (`/upgrade` with a different checkout
+  email), where no pending row exists and nothing in #164 could see it. Not
+  fixable in the schema: `profiles` has one `stripe_customer_id` column and one
+  profile genuinely cannot hold two Stripe customers. Both call sites now share
+  one classifier and alert with severity following the term — `error` for
+  monthly/annual where renewals really drop, `warning` for one-time where
+  nothing renews. **Reconciling the two Stripe customers is manual when it
+  fires.**
+
 - **The `/upgrade` slug fix**, with `monthly` and `annual` dropped so the
-  founding backdoor closed in the same change. PR #161-adjacent; covered by
+  founding backdoor closed in the same change. Covered by
   `scripts/faultproof_upgrade_slugs.mjs`.
-- **The tier label defect.** PR #162 — the sidebar names the tier from the plan
+
+- **The tier label defect. PR #162** — the sidebar names the tier from the plan
   rather than from entitlement.
 
 **Next**
 
 1. **`unpackmath-home`'s `/success` must read `checkout_session_id` and forward
-   the buyer to `app.unpackmath.com/claim?checkout_session_id=...`.** This is
-   the only remaining out-of-repo step in Part 2, it is in the marketing repo,
-   and it is Juan's.
+   the buyer to `app.unpackmath.com/claim?checkout_session_id=...`.** THE LAST
+   PIECE OF THE PAYMENT-LOSS STORY. Everything on the app side is shipped; this
+   is in the marketing repo, and it is Juan's.
 
    All **eight** success URLs now carry `?checkout_session_id={CHECKOUT_SESSION_ID}`
    — the six public links and both founding links, all of which land on
@@ -157,17 +183,12 @@ list have shipped; what remains is renumbered rather than left as stale
    does **not** repeat it — `ClaimClient` uses a neutral "PURCHASE FOUND" badge,
    because that page serves all four products including the $49 Practice Pass.
 
-4. **One profile cannot hold two Stripe customers, and now says so.** Found on
-   2026-08-20 while checking the live claim: `linkCustomerId` is
-   first-writer-wins, so claiming a purchase onto a profile that already carries
-   a different `stripe_customer_id` leaves the new one unstored — and if that
-   new customer has a SUBSCRIPTION, its renewals resolve to nobody and the
-   teacher lapses looking like an ordinary expiry. The guard is correct
-   (clobbering would break renewals for the id that is already there), and
-   `profiles` has one column, so this is not fixable in the schema. It now
-   raises a Sentry alert at claim time — `error` when a subscription is at
-   risk, `warning` for a one-time pass where nothing renews. **Reconciling the
-   two Stripe customers is a manual job when it fires.**
+4. **When the unlinked-customer alert fires, reconcile the two Stripe customers
+   by hand.** Not a task with a fix attached — a standing operational note. See
+   the #165 entry above for why it cannot be fixed in the schema. If it starts
+   firing often rather than occasionally, the question to reopen is whether
+   `profiles` needs a customer-id side table, which is a real schema change and
+   not a tidy-up.
 
 5. **Parked, all real, none of them stop someone paying:** the Modules locked
    state, the upgrade page copy and branding, the reveal ruling, the free-tier

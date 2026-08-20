@@ -3,6 +3,7 @@ import type Stripe from "stripe";
 import { getStripe } from "../../../lib/stripe";
 import { createAdminClient } from "../../../lib/supabase-admin";
 import {
+  alertUnlinkedCustomer,
   entitlementFromCheckout,
   findUserIdByEmail,
   legacyActivateOnly,
@@ -279,11 +280,16 @@ export async function POST(req: Request) {
           break;
         }
 
-        await linkCustomerId(admin, profileId, customerId);
+        const linked = await linkCustomerId(admin, profileId, customerId);
 
         if (!write) {
           // An unknown Payment Link. Never leave a payer with nothing: fall back
           // to exactly the pre-Phase-3 behaviour, loudly.
+          //
+          // No unlinked-customer alert on this path even if the link was
+          // declined: with no plan there is no term, so the collision cannot be
+          // classified, and legacyActivateOnly is already shouting about a
+          // bigger problem.
           await legacyActivateOnly(
             admin,
             profileId,
@@ -293,7 +299,41 @@ export async function POST(req: Request) {
           break;
         }
 
-        await writeEntitlement(admin, profileId, write, eventCreatedMs, SOURCE);
+        const written = await writeEntitlement(admin, profileId, write, eventCreatedMs, SOURCE);
+
+        // A MATCHED PURCHASE CAN STILL LOSE ITS CUSTOMER ID, and nothing else
+        // notices.
+        //
+        // A teacher already carrying cus_A buys again through /upgrade with a
+        // different checkout email. Stripe makes cus_B. client_reference_id
+        // matches them, so the entitlement lands and the purchase looks entirely
+        // fine -- but linkCustomerId is first-writer-wins, cus_A stays, and cus_B
+        // is stored nowhere. Every renewal for cus_B then resolves to nobody and
+        // the teacher lapses looking like an ordinary expiry.
+        //
+        // There is no pending row here, so none of the claim-path machinery sees
+        // it. profiles holds one stripe_customer_id and one profile genuinely
+        // cannot hold two Stripe customers, so this reports rather than repairs.
+        //
+        // GATED ON A WRITE THAT ACTUALLY LANDED, which buys two things: a stale
+        // redelivery does not re-alert for a collision its first delivery already
+        // reported, and a profileId that resolved through auth.users without a
+        // profiles row cannot produce a false positive, because that returns
+        // "stale" too.
+        //
+        // Cannot throw and cannot change the response. Failing to link is not
+        // worth a 500 and a retry storm.
+        if (written === "written" && linked === "already-linked") {
+          await alertUnlinkedCustomer({
+            profileId,
+            customerId,
+            plan: write.plan,
+            planTerm: write.planTerm,
+            checkoutSessionId: session.id,
+            email,
+            source: SOURCE,
+          });
+        }
         break;
       }
 
