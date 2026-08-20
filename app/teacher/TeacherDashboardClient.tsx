@@ -9,8 +9,18 @@ import { DASH, cardStyle } from '../components/dashboard-theme';
 import { HoverLabel, HOVER_LABEL_CSS, useHoverLabel } from '../components/HoverLabel';
 import NewAnnouncement from './NewAnnouncement';
 import SupportModal from '../components/SupportModal';
+import ModalShell from '../components/ModalShell';
+import ExportModal from './ExportModal';
 import TeacherTour, { TOUR_STORAGE_KEY } from './TeacherTour';
 import { teacherTierLabel } from "../lib/capabilities";
+import {
+  PASSING,
+  STRAND_ORDER as ORDER,
+  placementBand,
+  strandPcts,
+  type Strand,
+  type StrandBreakdown,
+} from "../lib/placement";
 
 // ─── Types (match the API route response shapes) ─────────────────────────────
 
@@ -21,14 +31,8 @@ export interface ClassRow {
   created_at: string;
 }
 
-type Strand = 'QR' | 'AR' | 'GR' | 'PR';
-
-interface StrandBreakdown {
-  QR?: { pct: number; total: number; correct: number };
-  AR?: { pct: number; total: number; correct: number };
-  GR?: { pct: number; total: number; correct: number };
-  PR?: { pct: number; total: number; correct: number };
-}
+// Strand and StrandBreakdown now live in app/lib/placement.ts, shared with the
+// CSV exports so the file and the screen cannot disagree.
 
 interface RosterRow {
   student_id: string;
@@ -86,24 +90,14 @@ interface DisplayStudent {
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const PASSING = 950;
-
 const STR: Record<Strand, { code: string; name: string; short: string; color: string }> = {
   QR: { code: 'QR', name: 'Quantitative Reasoning', short: 'Quantitative Reasoning', color: '#B5D4F4' },
   AR: { code: 'AR', name: 'Algebraic Reasoning', short: 'Algebraic Reasoning', color: '#9FE1CB' },
   GR: { code: 'GR', name: 'Geometric & Spatial', short: 'Geometric and Spatial Reasoning', color: '#FAC775' },
   PR: { code: 'PR', name: 'Probabilistic & Statistical', short: 'Probabilistic and Statistical Reasoning', color: '#CECBF6' },
 };
-const ORDER: Strand[] = ['QR', 'AR', 'GR', 'PR'];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-
-function placementBand(score: number | null) {
-  if (score === null) return { label: 'No test yet', bg: '#F0EEE7', text: '#5F5E5A', dot: '#B4B2A8' };
-  if (score >= PASSING) return { label: 'College ready', bg: '#EAF3DE', text: '#356B1B', dot: '#4F9A2E' };
-  if (score >= 935) return { label: 'Approaching', bg: '#FAEEDA', text: '#8A5712', dot: '#C68A2F' };
-  return { label: 'Below college ready', bg: '#FCEBEB', text: '#9A2A2A', dot: '#C2402F' };
-}
 
 function timeAgo(iso: string): string {
   const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
@@ -112,15 +106,6 @@ function timeAgo(iso: string): string {
   if (days < 7) return `${days}d ago`;
   if (days < 14) return '1w ago';
   return `${Math.floor(days / 7)}w ago`;
-}
-
-function strandPcts(bd: StrandBreakdown | null): Record<Strand, number> {
-  return {
-    QR: bd?.QR?.pct ?? 0,
-    AR: bd?.AR?.pct ?? 0,
-    GR: bd?.GR?.pct ?? 0,
-    PR: bd?.PR?.pct ?? 0,
-  };
 }
 
 function toDisplayStudent(r: RosterRow): DisplayStudent {
@@ -738,22 +723,6 @@ function NewClassModal({ onClose, onCreated }: { onClose: () => void; onCreated:
   );
 }
 
-function ModalShell({ title, onClose, children }: { title: string; onClose: () => void; children: React.ReactNode }) {
-  return (
-    <div style={{ position: 'fixed', inset: 0, background: 'rgba(15,30,53,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 200, padding: 16 }} onClick={onClose}>
-      <div style={{ background: '#fff', borderRadius: 16, padding: 28, width: '100%', maxWidth: 420, boxShadow: '0 20px 60px rgba(15,30,53,0.18)' }} onClick={(e) => e.stopPropagation()}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
-          <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: DASH.heading }}>{title}</h2>
-          <button onClick={onClose} aria-label="Close" style={{ background: 'none', border: 'none', cursor: 'pointer', color: DASH.dim, padding: 4 }}>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><line x1="4" y1="4" x2="14" y2="14" /><line x1="14" y1="4" x2="4" y2="14" /></svg>
-          </button>
-        </div>
-        {children}
-      </div>
-    </div>
-  );
-}
-
 // ─── Top bar ────────────────────────────────────────────────────────────────
 
 function TopBar({ classes, selectedClassId, onSelectClass, joinCode, onInvite, onNewClass, onMenu, isMobile, isCompact }: {
@@ -855,8 +824,9 @@ function RosterCard({ s, classId }: { s: DisplayStudent; classId: string }) {
   );
 }
 
-function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile }: {
+function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, onExport }: {
   students: DisplayStudent[]; enrolled: number; sortBy: string; onSortChange: (s: string) => void; classId: string; isMobile: boolean;
+  onExport: () => void;
 }) {
   return (
     <div id="roster" data-tour="roster">
@@ -873,6 +843,16 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile }:
               {opt === 'risk' ? 'Need help' : opt}
             </button>
           ))}
+          <button
+            onClick={onExport}
+            data-tour="export"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 6, cursor: 'pointer', border: '1px solid #D3D1C7', background: '#fff', color: '#5F5E5A', fontFamily: 'inherit' }}
+          >
+            <svg width="13" height="13" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M9 2v9" /><path d="M5 8l4 4 4-4" /><path d="M3 14v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-1" />
+            </svg>
+            Export
+          </button>
         </div>
       </div>
 
@@ -972,6 +952,7 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
   const [rosterError, setRosterError] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState('risk');
   const [showInvite, setShowInvite] = useState(false);
+  const [showExport, setShowExport] = useState(false);
   const [showNewClass, setShowNewClass] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
@@ -1225,7 +1206,7 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
                 <SummaryCards enrolled={rosterRows.length} notTested={notTested} crCount={collegeReady} crPct={crPct} weakStrand={weakStrand} avgScore={avgScore} cols={summaryCols} />
                 <NewAnnouncement classes={classes} selectedClassId={selectedClassId} />
                 <StrandPanel strandPct={strandPct} totalAttempts={totalAttempts} cols={strandCols} />
-                <Roster students={sortedStudents} enrolled={rosterRows.length} sortBy={sortBy} onSortChange={setSortBy} classId={selectedClassId} isMobile={isMobile} />
+                <Roster students={sortedStudents} enrolled={rosterRows.length} sortBy={sortBy} onSortChange={setSortBy} classId={selectedClassId} isMobile={isMobile} onExport={() => setShowExport(true)} />
 
                 {/* Misconceptions */}
                 <div id="misconceptions" style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 13, gap: 12, flexWrap: 'wrap' }}>
@@ -1259,6 +1240,7 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
       </div>
 
       {showInvite && selectedClass && <InviteModal classId={selectedClass.id} onClose={() => setShowInvite(false)} />}
+      {showExport && <ExportModal classes={classes} selectedClassId={selectedClassId} onClose={() => setShowExport(false)} />}
       {showNewClass && <NewClassModal onClose={() => setShowNewClass(false)} onCreated={handleClassCreated} />}
       {showSupport && <SupportModal onClose={() => setShowSupport(false)} />}
       {showTour && (
