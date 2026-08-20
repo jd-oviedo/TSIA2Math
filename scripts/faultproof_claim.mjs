@@ -48,9 +48,11 @@ const MODULE = 'app/lib/pending-entitlements.ts';
 const CALLBACK = 'app/auth/callback/route.ts';
 
 const ACTIVATION = 'app/lib/stripe-activation.ts';
+const WEBHOOK = 'app/api/stripe/webhook/route.ts';
 
 const moduleSrc = readFileSync(MODULE, 'utf8');
 const activationSrc = readFileSync(ACTIVATION, 'utf8');
+const webhookSrc = readFileSync(WEBHOOK, 'utf8');
 const callbackSrc = readFileSync(CALLBACK, 'utf8');
 
 let ok = true;
@@ -665,9 +667,33 @@ const ASSERTIONS = {
     o.H.logs.some((l) => l.includes('CUSTOMER NOT LINKED') && l.includes('no renewals to lose')) &&
     !o.H.logs.some((l) => l.includes('RENEWALS WILL RESOLVE TO NOBODY')),
 
+  // --- W: the webhook's own collision. STRUCTURAL, and marked. ---
+  // The checkout branch cannot be run here: it needs a signed Stripe payload,
+  // next/server and a live Stripe client. What IS run is the classifier it
+  // calls -- G3 and H1 above exercise the identical function through the claim
+  // path, so the severity rule is proved behaviourally and only the wiring is
+  // read off the source.
+  'W1 [structural] the webhook captures the link outcome instead of discarding it': (o, src) =>
+    /const linked = await linkCustomerId\(/.test(stripComments(src.webhook)),
+
+  'W2 [structural] it alerts on already-linked, and only after a write that landed': (o, src) => {
+    const w = stripComments(src.webhook);
+    const m = w.match(
+      /if \(written === "written" && linked === "already-linked"\) \{([\s\S]*?)\n        \}/
+    );
+    return m !== null && /alertUnlinkedCustomer\(/.test(m[1]);
+  },
+
+  'W3 [structural] ONE shared classifier: exported from stripe-activation, not redefined': (o, src) =>
+    /export async function alertUnlinkedCustomer\(/.test(stripComments(src.activation)) &&
+    /import \{[^}]*alertUnlinkedCustomer[^}]*\} from "\.\/stripe-activation"/.test(
+      stripComments(src.module)
+    ) &&
+    !/function alertUnlinkedCustomer\(/.test(stripComments(src.module)),
+
   // --- F (see the header: F1 evaluates, F2 is structural) ---
-  'F1 the skip predicate is true for /claim and false for everything else': (o, cbSrc) => {
-    const p = guardPredicate(stripComments(cbSrc));
+  'F1 the skip predicate is true for /claim and false for everything else': (o, src) => {
+    const p = guardPredicate(stripComments(src.callback));
     if (!p) return false;
     return (
       p('/claim') === true &&
@@ -679,13 +705,13 @@ const ASSERTIONS = {
     );
   },
 
-  'F2 [structural] the email claim sits INSIDE the guarded block': (o, cbSrc) => {
-    const block = guardBlock(stripComments(cbSrc));
+  'F2 [structural] the email claim sits INSIDE the guarded block': (o, src) => {
+    const block = guardBlock(stripComments(src.callback));
     return block !== null && /claimPending\(/.test(block);
   },
 
-  'F3 [structural] and there is no second, unguarded claimPending call': (o, cbSrc) =>
-    (stripComments(cbSrc).match(/claimPending\(/g) ?? []).length === 1,
+  'F3 [structural] and there is no second, unguarded claimPending call': (o, src) =>
+    (stripComments(src.callback).match(/claimPending\(/g) ?? []).length === 1,
 };
 
 // ---------------------------------------------------------------------------
@@ -817,11 +843,7 @@ const FAULTS = [
   {
     name: 'the claim goes back to discarding the link outcome, so the decline is silent again',
     target: 'module',
-    edit: (s) =>
-      s.replace(
-        '  if (linked === "already-linked") {\n    await alertUnlinkedCustomer(profileId, row, source);\n  }',
-        ''
-      ),
+    edit: (s) => s.replace('if (linked === "already-linked") {', 'if (false) {'),
     expect: [
       'G3 the unlinked customer is reported, naming the id and the renewal risk',
       'H1 the same collision on a ONE-TIME pass reports, but claims no renewal risk',
@@ -831,13 +853,56 @@ const FAULTS = [
     // The alert must not overstate the damage. A one-time pass generates no
     // subscription events, so there is nothing to renew and nothing to drop.
     name: 'the unlinked-customer alert claims renewals are at risk for a one-time pass',
-    target: 'module',
+    target: 'activation',
     edit: (s) =>
       s.replace(
-        'const subscription = row.plan_term === "monthly" || row.plan_term === "annual";',
+        'const subscription = planTerm === "monthly" || planTerm === "annual";',
         'const subscription = true;'
       ),
     expect: ['H1 the same collision on a ONE-TIME pass reports, but claims no renewal risk'],
+  },
+  {
+    name: 'the webhook stops alerting, so a matched purchase silently loses its customer id',
+    target: 'webhook',
+    edit: (s) =>
+      s.replace('if (written === "written" && linked === "already-linked") {', 'if (false) {'),
+    expect: ['W2 [structural] it alerts on already-linked, and only after a write that landed'],
+  },
+  {
+    // Dropping the write gate re-alerts on every stale redelivery, and lets a
+    // profileId that resolved through auth.users with no profiles row raise a
+    // collision that never happened.
+    name: 'the webhook alert loses its "the write actually landed" gate',
+    target: 'webhook',
+    edit: (s) =>
+      s.replace(
+        'if (written === "written" && linked === "already-linked") {',
+        'if (linked === "already-linked") {'
+      ),
+    expect: ['W2 [structural] it alerts on already-linked, and only after a write that landed'],
+  },
+  {
+    // The drift this extraction exists to prevent: the claim path grows its own
+    // copy of the classifier, and the two call sites start disagreeing about how
+    // serious the same collision is.
+    name: 'the claim path redefines its own alertUnlinkedCustomer instead of sharing one',
+    target: 'module',
+    edit: (s) =>
+      s
+        .replace(
+          'import { alertUnlinkedCustomer, linkCustomerId, writeEntitlement } from "./stripe-activation";',
+          'import { linkCustomerId, writeEntitlement } from "./stripe-activation";\n' +
+            'async function alertUnlinkedCustomer(a: { source: string }): Promise<void> {\n' +
+            '  console.error(`[${a.source}] customer not linked`);\n' +
+            '}'
+        ),
+    expect: [
+      'W3 [structural] ONE shared classifier: exported from stripe-activation, not redefined',
+      // Collateral, and the point: a second copy immediately stops saying what
+      // the shared one says.
+      'G3 the unlinked customer is reported, naming the id and the renewal risk',
+      'H1 the same collision on a ONE-TIME pass reports, but claims no renewal risk',
+    ],
   },
   {
     // THE FAULT THAT JUSTIFIES stripComments. Before it existed, this edit left
@@ -871,12 +936,18 @@ const FAULTS = [
 // Runner
 // ---------------------------------------------------------------------------
 
-async function runAll(src, cbSrc, actSrc) {
+async function runAll(src, cbSrc, actSrc, whSrc) {
   const o = await observe(src, actSrc);
+  const sources = {
+    module: src,
+    callback: cbSrc,
+    activation: actSrc ?? activationSrc,
+    webhook: whSrc ?? webhookSrc,
+  };
   const results = {};
   for (const [name, predicate] of Object.entries(ASSERTIONS)) {
     try {
-      results[name] = Boolean(predicate(o, cbSrc));
+      results[name] = Boolean(predicate(o, sources));
     } catch (err) {
       results[name] = false;
       results[`${name} :: threw`] = String(err && err.message);
@@ -889,7 +960,7 @@ async function main() {
   purgeTempModules();
 
   console.log('\nCLEAN RUN, every property must hold:\n');
-  const clean = await runAll(moduleSrc, callbackSrc, null);
+  const clean = await runAll(moduleSrc, callbackSrc, null, null);
   for (const [name, pass] of Object.entries(clean)) {
     if (name.endsWith(':: threw')) continue;
     check(name, pass, clean[`${name} :: threw`] ?? '');
@@ -900,12 +971,15 @@ async function main() {
     const src = fault.target === 'module' ? fault.edit(moduleSrc) : moduleSrc;
     const cbSrc = fault.target === 'callback' ? fault.edit(callbackSrc) : callbackSrc;
     const actSrc = fault.target === 'activation' ? fault.edit(activationSrc) : null;
+    const whSrc = fault.target === 'webhook' ? fault.edit(webhookSrc) : null;
     const changed =
       fault.target === 'module'
         ? src !== moduleSrc
         : fault.target === 'callback'
           ? cbSrc !== callbackSrc
-          : actSrc !== activationSrc;
+          : fault.target === 'activation'
+            ? actSrc !== activationSrc
+            : whSrc !== webhookSrc;
 
     if (!changed) {
       check(`fault applies: ${fault.name}`, false, 'the edit matched nothing, so it proves nothing');
@@ -914,7 +988,7 @@ async function main() {
 
     let faulted;
     try {
-      faulted = await runAll(src, cbSrc, actSrc);
+      faulted = await runAll(src, cbSrc, actSrc, whSrc);
     } catch (err) {
       check(`fault runs: ${fault.name}`, false, `the faulted module threw: ${err.message}`);
       continue;
@@ -943,7 +1017,7 @@ async function main() {
     // THE CLEAN CONTROL, AFTER EVERY FAULT. Not ceremony: this harness writes
     // temporary modules to disk and mutates a module-level source binding, so a
     // fault that leaked would show up as a clean run that stopped being clean.
-    const control = await runAll(moduleSrc, callbackSrc, null);
+    const control = await runAll(moduleSrc, callbackSrc, null, null);
     const controlOk = Object.keys(ASSERTIONS).every((name) => control[name]);
     check(`  clean control still green after: ${fault.name}`, controlOk);
   }

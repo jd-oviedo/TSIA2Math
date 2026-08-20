@@ -6,6 +6,8 @@ import {
   productForPaymentLink,
   subscriptionPeriodEnd,
   type EntitlementWrite,
+  type Plan,
+  type PlanTerm,
 } from "./products";
 
 // Turning a Stripe payment into account access.
@@ -103,6 +105,79 @@ export async function linkCustomerId(
   // returns, which is why callers that care resolve profile existence
   // separately rather than reading it out of this.
   return data && data.length > 0 ? "linked" : "already-linked";
+}
+
+/**
+ * A purchase's Stripe customer was NOT linked, because the profile already
+ * carried a different one.
+ *
+ * LIVES HERE, NEXT TO linkCustomerId, AND IS SHARED BY BOTH CALLERS ON PURPOSE.
+ * The webhook and the pending-entitlement claim hit the identical collision, and
+ * two copies of this would be two opinions about how serious it is. That drift
+ * is the kind someone tidies up later by assuming one of them is a mistake.
+ *
+ * SEVERITY TRACKS WHETHER ANYTHING WILL ACTUALLY DROP, and the message must not
+ * claim otherwise.
+ *
+ *   monthly / annual -> error.   There is a live subscription under the customer
+ *                                that lost, its renewals resolve to nobody, and
+ *                                the teacher will lapse at the end of the period
+ *                                they already paid for. That is the slow,
+ *                                invisible failure -- it looks like an expiry.
+ *   one-time         -> warning. A one-time pass generates no subscription
+ *                                events, so there are no renewals to lose. The
+ *                                mismatch is still recorded, because it is how
+ *                                two Stripe customers for one person get noticed,
+ *                                but nobody needs to be paged for it.
+ *
+ * NEVER THROWS. Sentry is imported lazily and every failure is swallowed: an
+ * alert must not be able to change the outcome of a purchase, turn a 200 into a
+ * 500, or start a Stripe retry storm. It is also loaded outside Next by
+ * scripts/faultproof_claim.mjs, where the SDK's server entry is not what
+ * resolves and captureMessage is undefined.
+ */
+export async function alertUnlinkedCustomer(args: {
+  profileId: string;
+  /** The id that did NOT get stored. */
+  customerId: string | null;
+  plan: Plan;
+  planTerm: PlanTerm;
+  checkoutSessionId: string | null;
+  email: string | null;
+  source: string;
+}): Promise<void> {
+  const { profileId, customerId, plan, planTerm, checkoutSessionId, email, source } = args;
+  const subscription = planTerm === "monthly" || planTerm === "annual";
+
+  console.error(
+    `[${source}] CUSTOMER NOT LINKED: profile ${profileId} already carries a different ` +
+      `stripe_customer_id, so ${customerId} from session ` +
+      `${checkoutSessionId ?? "(unknown)"} was not stored. ` +
+      (subscription
+        ? `This is a ${planTerm} ${plan} -- ITS RENEWALS WILL RESOLVE TO NOBODY and the ` +
+          `teacher will lapse at the end of the period they paid for. Reconcile the two Stripe ` +
+          `customers by hand.`
+        : `This is a one-time ${plan}, so there are no renewals to lose. Recorded only.`)
+  );
+
+  try {
+    const Sentry = await import("@sentry/nextjs");
+    Sentry.captureMessage?.("stripe: purchase's customer id could not be linked", {
+      level: subscription ? "error" : "warning",
+      tags: { source, plan, plan_term: planTerm },
+      extra: {
+        profileId,
+        checkoutSessionId,
+        unlinkedCustomerId: customerId,
+        plan,
+        planTerm,
+        renewalsAtRisk: subscription,
+        email,
+      },
+    });
+  } catch (err) {
+    console.error(`[${source}] could not raise a Sentry issue for the unlinked customer:`, err);
+  }
 }
 
 export type WriteOutcome = "written" | "stale" | "refused";

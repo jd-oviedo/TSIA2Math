@@ -1,5 +1,5 @@
 import { createAdminClient } from "./supabase-admin";
-import { linkCustomerId, writeEntitlement } from "./stripe-activation";
+import { alertUnlinkedCustomer, linkCustomerId, writeEntitlement } from "./stripe-activation";
 import type { PlanStatus } from "./entitlement";
 import type { EntitlementWrite, Plan, PlanTerm } from "./products";
 
@@ -388,7 +388,15 @@ async function claimOne(
   // is on a profile that demonstrably exists, so "already-linked" can only mean
   // what it says.
   if (linked === "already-linked") {
-    await alertUnlinkedCustomer(profileId, row, source);
+    await alertUnlinkedCustomer({
+      profileId,
+      customerId: row.stripe_customer_id,
+      plan: row.plan,
+      planTerm: row.plan_term,
+      checkoutSessionId: row.checkout_session_id,
+      email: row.email,
+      source,
+    });
   }
 
   const { data: marked, error: markError } = await admin
@@ -419,64 +427,6 @@ async function claimOne(
       `${row.plan}/${row.plan_status}, access_until ${row.access_until ?? "none"}`
   );
   return { outcome: written === "stale" ? "stale" : "claimed", ...named };
-}
-
-/**
- * The claimed purchase's Stripe customer was NOT linked, because the profile
- * already carried a different one.
- *
- * SEVERITY TRACKS WHETHER ANYTHING WILL ACTUALLY DROP, and the message must not
- * claim otherwise.
- *
- *   monthly / annual -> error.   There is a live subscription under the customer
- *                                that lost, its renewals resolve to nobody, and
- *                                the teacher will lapse at the end of the period
- *                                they already paid for. That is the slow,
- *                                invisible failure -- it looks like an expiry.
- *   one-time         -> warning. A one-time pass generates no subscription
- *                                events, so there are no renewals to lose. The
- *                                mismatch is still recorded, because it is how
- *                                two Stripe customers for one person get noticed,
- *                                but nobody needs to be paged for it.
- *
- * Same channel as the stale alert.
- */
-async function alertUnlinkedCustomer(
-  profileId: string,
-  row: PendingRow,
-  source: string
-): Promise<void> {
-  const subscription = row.plan_term === "monthly" || row.plan_term === "annual";
-
-  console.error(
-    `[${source}] CUSTOMER NOT LINKED: profile ${profileId} already carries a different ` +
-      `stripe_customer_id, so ${row.stripe_customer_id} from session ` +
-      `${row.checkout_session_id} was not stored. ` +
-      (subscription
-        ? `This is a ${row.plan_term} ${row.plan} -- ITS RENEWALS WILL RESOLVE TO NOBODY and the ` +
-          `teacher will lapse at the end of the period they paid for. Reconcile the two Stripe ` +
-          `customers by hand.`
-        : `This is a one-time ${row.plan}, so there are no renewals to lose. Recorded only.`)
-  );
-
-  try {
-    const Sentry = await import("@sentry/nextjs");
-    Sentry.captureMessage?.("stripe: claimed purchase's customer id could not be linked", {
-      level: subscription ? "error" : "warning",
-      tags: { source, plan: row.plan, plan_term: row.plan_term },
-      extra: {
-        profileId,
-        checkoutSessionId: row.checkout_session_id,
-        unlinkedCustomerId: row.stripe_customer_id,
-        plan: row.plan,
-        planTerm: row.plan_term,
-        renewalsAtRisk: subscription,
-        email: row.email,
-      },
-    });
-  } catch (err) {
-    console.error(`[${source}] could not raise a Sentry issue for the unlinked customer:`, err);
-  }
 }
 
 /**
