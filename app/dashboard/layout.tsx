@@ -50,6 +50,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
         name={name}
         role={profile.role}
         entitledTeacher={profileGrants(profile, 'teacher-dashboard', 'DashboardLayout')}
+        plan={profile.plan}
       >
         {children}
       </StudentShell>

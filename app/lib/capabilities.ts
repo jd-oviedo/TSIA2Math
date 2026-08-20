@@ -53,6 +53,33 @@ export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
 // decided and worksheets do not exist yet. Inventing a placeholder now would put
 // a made-up number somewhere it could be read as settled.
 
+// ---------------------------------------------------------------------------
+// The tier label
+// ---------------------------------------------------------------------------
+
+/**
+ * What a teacher's sidebar band should call their plan.
+ *
+ * THIS EXISTS BECAUSE BOTH RAILS WERE LYING. The teacher dashboard rendered the
+ * string 'TEACHER · PRO' unconditionally, and the student rail computed its
+ * badge as `role === 'teacher' && entitledTeacher`, which is ENTITLED, not PRO.
+ * Every Teacher Core customer was shown the name of a product they had not
+ * bought, including the first one to pay for it.
+ *
+ * Derived from the plan and nothing else. Entitlement decides whether a tier is
+ * shown at all (an unentitled teacher keeps reading PREVIEW); it can never
+ * decide WHICH tier, because that is what got this wrong in the first place.
+ *
+ * Returns null for a plan that names no teacher tier, so a caller has to say
+ * out loud what it renders in that case rather than defaulting into a product
+ * name.
+ */
+export function teacherTierLabel(plan: string | null | undefined): "PRO" | "CORE" | null {
+  if (plan === "teacher-pro") return "PRO";
+  if (plan === "teacher-core") return "CORE";
+  return null;
+}
+
 export function planGrants(
   plan: string | null | undefined,
   capability: Capability

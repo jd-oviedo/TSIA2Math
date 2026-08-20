@@ -9,6 +9,7 @@ import { HoverLabel, useHoverLabel } from './HoverLabel';
 import { RAIL_LIGHT, RAIL_DARK, V, type RailSurface } from './dashboard-theme';
 import { useTheme } from '../theme/useTheme';
 import { ThemeModeButton } from './ThemeModeButton';
+import { teacherTierLabel } from '../lib/capabilities';
 
 // The student navigation, shared by the /dashboard tree and the /course tree.
 //
@@ -136,6 +137,7 @@ export function StudentNavPanel({
   name,
   role,
   entitledTeacher,
+  plan,
   collapsed = false,
   mode,
   onNavigate,
@@ -144,6 +146,8 @@ export function StudentNavPanel({
   name: string;
   role: 'student' | 'teacher';
   entitledTeacher?: boolean;
+  /** The profiles.plan value. The tier NAME comes from here and only here. */
+  plan?: string | null;
   collapsed?: boolean;
   /** Pin the rail to one palette. /course pages pass 'light'; the dashboard
       omits it and follows the app theme. */
@@ -160,10 +164,17 @@ export function StudentNavPanel({
   const { tip, hovered, showTip, hideTip } = useHoverLabel();
   const [accountOpen, setAccountOpen] = useState(false);
 
-  // Cosmetic only. Reads a boolean the layout derived rather than deciding from
-  // a payment column, so the badge cannot disagree with the gate that let them
-  // in.
-  const isProTeacher = role === 'teacher' && Boolean(entitledTeacher);
+  // Cosmetic only, and split in two on purpose.
+  //
+  // entitledTeacher answers "should a tier be named at all", which is the
+  // question the layout already decided and which the badge must not re-derive
+  // from a payment column. teacherTierLabel answers "which tier", which is a
+  // property of the PLAN.
+  //
+  // Those were one boolean until 2026-08-20, and it read
+  // `role === 'teacher' && entitledTeacher`, which means entitled, not Pro. Every
+  // Teacher Core teacher was shown TEACHER · PRO.
+  const tier = role === 'teacher' && entitledTeacher ? teacherTierLabel(plan) : null;
   const initials =
     name
       .split(/[\s._@-]+/)
@@ -174,11 +185,14 @@ export function StudentNavPanel({
 
   // A teacher reaching this tree is here through "Student view", so the band
   // keeps saying teacher rather than mislabelling them.
+  // PREVIEW when no tier is named, which is a teacher without a live teacher
+  // entitlement: the "Student view" case the band exists for. Never a product
+  // name by default.
   const badge =
     role === 'teacher'
       ? collapsed
-        ? isProTeacher ? 'PRO' : 'PREVIEW'
-        : isProTeacher ? 'TEACHER · PRO' : 'TEACHER · PREVIEW'
+        ? tier ?? 'PREVIEW'
+        : `TEACHER · ${tier ?? 'PREVIEW'}`
       : 'STUDENT';
 
   return (
@@ -188,7 +202,7 @@ export function StudentNavPanel({
       </div>
 
       {/* Role band. Full-bleed between two hairlines rather than an inset pill,
-          matching the teacher rail's TEACHER · PRO treatment. Ink is a rail
+          matching the teacher rail's tier band treatment. Ink is a rail
           token rather than Cipher Gold: the teacher band's gold reads on navy
           and vanishes on cream. */}
       <div
@@ -450,6 +464,7 @@ export function StudentNavDrawer({
   name,
   role,
   entitledTeacher,
+  plan,
   mode,
   onClose,
   onOpenSupport,
@@ -458,11 +473,12 @@ export function StudentNavDrawer({
   name: string;
   role: 'student' | 'teacher';
   entitledTeacher?: boolean;
+  plan?: string | null;
   mode?: 'light' | 'dark';
   onClose: () => void;
   onOpenSupport?: () => void;
 }) {
-  return <DrawerBody open={open} name={name} role={role} entitledTeacher={entitledTeacher} mode={mode} onClose={onClose} onOpenSupport={onOpenSupport} />;
+  return <DrawerBody open={open} name={name} role={role} entitledTeacher={entitledTeacher} plan={plan} mode={mode} onClose={onClose} onOpenSupport={onOpenSupport} />;
 }
 
 // Split out so the hook below is never called conditionally.
@@ -471,6 +487,7 @@ function DrawerBody({
   name,
   role,
   entitledTeacher,
+  plan,
   mode,
   onClose,
   onOpenSupport,
@@ -479,6 +496,7 @@ function DrawerBody({
   name: string;
   role: 'student' | 'teacher';
   entitledTeacher?: boolean;
+  plan?: string | null;
   mode?: 'light' | 'dark';
   onClose: () => void;
   onOpenSupport?: () => void;
@@ -517,6 +535,7 @@ function DrawerBody({
           name={name}
           role={role}
           entitledTeacher={entitledTeacher}
+          plan={plan}
           mode={mode}
           onNavigate={onClose}
           onOpenSupport={onOpenSupport}

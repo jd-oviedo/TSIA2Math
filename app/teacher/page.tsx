@@ -82,6 +82,7 @@ export default async function TeacherPage() {
       teacherName={teacherName}
       teacherEmail={teacherEmail}
       isFounder={isFounder}
+      plan={profile.plan ?? null}
       tourState={tourState}
     />
   );

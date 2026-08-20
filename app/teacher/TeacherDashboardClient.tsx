@@ -10,6 +10,7 @@ import { HoverLabel, HOVER_LABEL_CSS, useHoverLabel } from '../components/HoverL
 import NewAnnouncement from './NewAnnouncement';
 import SupportModal from '../components/SupportModal';
 import TeacherTour, { TOUR_STORAGE_KEY } from './TeacherTour';
+import { teacherTierLabel } from "../lib/capabilities";
 
 // ─── Types (match the API route response shapes) ─────────────────────────────
 
@@ -256,6 +257,7 @@ function SidebarInner({
   teacherName,
   teacherEmail,
   isFounder,
+  plan,
   collapsed = false,
   onNavigate,
   onOpenSupport,
@@ -264,6 +266,8 @@ function SidebarInner({
   teacherName: string;
   teacherEmail: string;
   isFounder: boolean;
+  /** The profiles.plan value. The band below names the tier from it. */
+  plan: string | null;
   collapsed?: boolean;
   onNavigate?: () => void;
   onOpenSupport: () => void;
@@ -284,10 +288,18 @@ function SidebarInner({
         <Brand collapsed={collapsed} />
       </div>
 
-      {/* TEACHER · PRO — a full-bleed band across the sidebar rather than an
+      {/* The tier band. A full-bleed band across the sidebar rather than an
           inset pill. Keeps the amber border/ink treatment, drops the dot, and
           centres the text; side borders are omitted so it reads as a band that
-          meets both edges instead of a boxed-in chip. */}
+          meets both edges instead of a boxed-in chip.
+
+          THE TEXT USED TO BE THE LITERAL 'TEACHER · PRO', for everyone. No
+          Teacher Pro has ever sold, so every teacher who has ever seen this
+          sidebar has been shown the name of a product nobody owns, and the
+          first paying Teacher Core customer saw it too. It is derived from the
+          plan now. Falls back to plain TEACHER rather than to a tier name: the
+          page gate above guarantees a teacher plan, and if that ever stops
+          being true this should go quiet, not guess. */}
       <div
         style={{
           borderTop: '1px solid rgba(198,138,47,0.45)',
@@ -302,7 +314,9 @@ function SidebarInner({
           overflow: 'hidden',
         }}
       >
-        {collapsed ? 'PRO' : 'TEACHER · PRO'}
+        {collapsed
+          ? teacherTierLabel(plan) ?? 'TEACHER'
+          : `TEACHER${teacherTierLabel(plan) ? ` · ${teacherTierLabel(plan)}` : ''}`}
       </div>
 
       <nav style={{ padding: collapsed ? '10px 8px' : '10px 12px', display: 'flex', flexDirection: 'column', gap: 2, overflowX: 'hidden' }}>
@@ -946,8 +960,9 @@ function Spinner() {
 const SIDEBAR_W = 200;
 const SIDEBAR_W_COLLAPSED = 64;
 
-export default function TeacherDashboardClient({ initialClasses, teacherName, teacherEmail, isFounder, tourState }: {
+export default function TeacherDashboardClient({ initialClasses, teacherName, teacherEmail, isFounder, plan, tourState }: {
   initialClasses: ClassRow[]; teacherName: string; teacherEmail: string; isFounder: boolean;
+  plan: string | null;
   tourState: 'done' | 'pending' | 'unavailable';
 }) {
   const [classes, setClasses] = useState<ClassRow[]>(initialClasses);
@@ -1114,6 +1129,7 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
               teacherName={teacherName}
               teacherEmail={teacherEmail}
               isFounder={isFounder}
+              plan={plan}
               collapsed={collapsed}
               onOpenSupport={() => setShowSupport(true)}
               onStartTour={() => setTourManual(true)}
@@ -1158,6 +1174,7 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
                 teacherName={teacherName}
                 teacherEmail={teacherEmail}
                 isFounder={isFounder}
+                plan={plan}
                 onNavigate={() => setMenuOpen(false)}
                 onOpenSupport={() => { setMenuOpen(false); setShowSupport(true); }}
                 // Closing the slide-over first matters: it is a fixed, full
