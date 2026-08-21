@@ -401,12 +401,33 @@ export async function syncCompletionSnapshot(
     );
 
     if (error) {
-      console.error('curriculum_completion snapshot failed', {
+      // INSTRUMENTED 2026-08-21, and the tag is the point.
+      //
+      // This write is the ONLY record that a lesson was read: curriculum_attempts
+      // holds answers, so there is no second source. topic-data.ts now fails the
+      // lesson gate open from practice and quiz activity rather than giving it
+      // one, and that decision was taken on the basis that this failure has never
+      // been observed. It was taken on a table holding 36 rows, which is not much
+      // evidence either way.
+      //
+      // So the failure is tagged rather than merely logged. If SNAPSHOT_WRITE_LOST
+      // shows up in real use, the fail-open decision gets revisited with numbers
+      // instead of an argument. lessonCompleted is included because a lost write
+      // carrying it is the only variant that loses information nothing else holds.
+      console.error('SNAPSHOT_WRITE_LOST curriculum_completion snapshot failed', {
         code: error.code,
         message: error.message,
+        courseId,
+        topicId,
+        lessonCompleted: options.lessonCompleted === true,
       });
     }
   } catch (err) {
-    console.error('curriculum_completion snapshot threw', err);
+    console.error('SNAPSHOT_WRITE_LOST curriculum_completion snapshot threw', {
+      err,
+      courseId,
+      topicId,
+      lessonCompleted: options.lessonCompleted === true,
+    });
   }
 }
