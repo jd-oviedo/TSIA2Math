@@ -119,14 +119,14 @@ function Chevron() {
   );
 }
 
-function JoinClassField({ lang }: { lang: Lang }) {
+function JoinClassField({ lang, sessionId }: { lang: Lang; sessionId: string | null }) {
   const c = COPY[lang];
   const [code, setCode] = useState("");
   const ready = code.trim().length === 6;
   // The join-class flow has its own destination on purpose: the code has to be
   // consumed on arrival, so it goes to the dashboard index carrying the code
   // rather than to whatever page the visitor was originally trying to reach.
-  const href = ready ? loginHref(`/dashboard?code=${code.trim()}`, "student") : "#";
+  const href = ready ? loginHref(`/dashboard?code=${code.trim()}`, "student", sessionId) : "#";
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -179,7 +179,7 @@ function JoinClassField({ lang }: { lang: Lang }) {
   );
 }
 
-function StudentPanel({ lang, next }: { lang: Lang; next: string }) {
+function StudentPanel({ lang, next, sessionId }: { lang: Lang; next: string; sessionId: string | null }) {
   const c = COPY[lang];
   return (
     <div
@@ -195,7 +195,7 @@ function StudentPanel({ lang, next }: { lang: Lang; next: string }) {
         gap: 16,
       }}
     >
-      <JoinClassField lang={lang} />
+      <JoinClassField lang={lang} sessionId={sessionId} />
 
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
         <div style={{ flex: 1, height: 1, background: "#E7E6E1" }} />
@@ -204,7 +204,7 @@ function StudentPanel({ lang, next }: { lang: Lang; next: string }) {
       </div>
 
       <Link
-        href={loginHref(next, "student")}
+        href={loginHref(next, "student", sessionId)}
         style={{
           display: "flex",
           alignItems: "center",
@@ -237,7 +237,16 @@ export function RoleSelector() {
   // The student link used to hardcode next=%2Fdashboard, which threw the
   // requested path away again after the layout had just started preserving it.
   // Fixing only the layout would have changed nothing a student could see.
-  const next = safeNext(useSearchParams().get("next"), DEFAULT_NEXT);
+  const searchParams = useSearchParams();
+  const next = safeNext(searchParams.get("next"), DEFAULT_NEXT);
+
+  // THE OTHER PARAMETER THIS SCREEN SITS IN THE MIDDLE OF, and the one that was
+  // being thrown away. A student who has just finished the anonymous practice
+  // test arrives here from ResultsSummary carrying ?session_id=, because that
+  // link sets no role and so lands on the selector rather than the OAuth screen.
+  // app/auth/callback claims the anonymous run for their new account -- but only
+  // if the id reaches it. Every onward link below has to carry it.
+  const sessionId = searchParams.get("session_id");
 
   return (
     <div
@@ -308,11 +317,11 @@ export function RoleSelector() {
                 ›
               </span>
             </button>
-            {studentOpen && <StudentPanel lang={lang} next={next} />}
+            {studentOpen && <StudentPanel lang={lang} next={next} sessionId={sessionId} />}
           </div>
 
           {/* Teacher: plain link, no expansion */}
-          <Link href={loginHref("/teacher", "teacher")} style={{ ...barShell, background: SKY }}>
+          <Link href={loginHref("/teacher", "teacher", sessionId)} style={{ ...barShell, background: SKY }}>
             <span style={{ fontFamily: KODCHASAN, fontWeight: 700, fontSize: "20px", color: "#fff" }}>
               {c.teacher}
             </span>
