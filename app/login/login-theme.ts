@@ -80,6 +80,9 @@ export interface LoginSurface {
   cta: string;
   ctaInk: string;
   ctaShadow: string;
+  cream: string;
+  creamInk: string;
+  creamLine: string;
   blue: string;
   tintAmber: string;
   tintBlue: string;
@@ -109,6 +112,12 @@ const LIGHT: LoginSurface = {
   cta: '#E8A33D',
   ctaInk: '#111111',
   ctaShadow: '#111111',
+  // Cream, from the current brand palette (curriculum-theme.ts C.cream). The
+  // darkest of the seven creams there, chosen because it is the one with any
+  // separation at all from the page ground -- and even it is only 1.24:1.
+  cream: '#E8E0CF',
+  creamInk: '#111111',
+  creamLine: '#111111',
   blue: '#6BADDA',
   tintAmber: '#FDF3E3',
   tintBlue: '#EEF6FC',
@@ -146,6 +155,18 @@ const DARK: LoginSurface = {
   cta: '#E8A33D',
   ctaInk: '#111111',
   ctaShadow: 'rgba(232,238,248,0.42)',
+  // Cream does not invert either, for the same reason the orange did not: the
+  // label's contrast is against the fill, so 14.38:1 holds in both themes.
+  cream: '#E8E0CF',
+  creamInk: '#111111',
+  // THE BORDER DOES NOT FOLLOW THE THEME HERE, and this is the one thing that
+  // needed deciding rather than copying. --uml-border is
+  // rgba(232,238,248,0.42) in dark, which measures 1.05:1 against a cream fill
+  // -- the design's signature hard rule would simply vanish on this one
+  // element. #111 gives 14.38:1 on cream in both themes, so the button keeps
+  // its outline. It is a dark rule on a light fill either way, which is what
+  // the light theme already does.
+  creamLine: '#111111',
   blue: '#6BADDA',
   tintAmber: 'rgba(232,163,61,0.12)',
   tintBlue: 'rgba(107,173,218,0.12)',
@@ -177,6 +198,9 @@ const VAR_NAMES: Record<keyof LoginSurface, string> = {
   cta: '--uml-cta',
   ctaInk: '--uml-cta-ink',
   ctaShadow: '--uml-cta-shadow',
+  cream: '--uml-cream',
+  creamInk: '--uml-cream-ink',
+  creamLine: '--uml-cream-line',
   blue: '--uml-blue',
   tintAmber: '--uml-tint-amber',
   tintBlue: '--uml-tint-blue',

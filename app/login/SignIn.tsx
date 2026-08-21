@@ -140,9 +140,11 @@ export function SignIn({ role }: { role: 'student' | 'teacher' }) {
           style={{
             width: '100%',
             padding: '16px 20px',
-            border: `1px solid ${L.border}`,
-            background: L.cta,
-            color: L.ctaInk,
+            // Cream rather than the import's orange, and its own border token:
+            // --uml-border is near-invisible on a cream fill in dark mode.
+            border: `1px solid ${L.creamLine}`,
+            background: L.cream,
+            color: L.creamInk,
             font: `700 16px/1 ${FONT_DISPLAY}`,
             display: 'flex',
             alignItems: 'center',
