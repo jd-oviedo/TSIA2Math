@@ -84,6 +84,15 @@ Both new check groups were shown failing on faulted input: an injected `Tag = 'a
 gating checks, and the real 1.18:1 defect for the contrast checks.
 
 `verify_topic_chrome.mjs` could not be run -- it drives the real `/course` route, which
-redirects signed-out, and the harness has no way to sign in. The six entitlement states are
-covered at the predicate level in `tests/units.test.ts` against `allowsTopic`, and walked
-manually in the browser.
+redirects signed-out, and the harness has no way to sign in.
+
+**The six entitlement states are covered at the predicate level only**, in
+`tests/units.test.ts` against `allowsTopic` -- the same function the page and the `/course`
+gate both call -- plus the rendered gated/ungated walk in both themes at 1280 and 390 in
+`verify_modules_states.mjs`. What that does not cover is the real page composing them end to
+end for a signed-in account on each plan.
+
+That gap is not closeable by the harness: free tier, Practice Pass, Full Course, teacher and
+derived-teacher each need an account already on that plan, and putting an account into a
+state is a production entitlement write. It is a manual browser walk against a local build,
+and its result is not recorded here.
