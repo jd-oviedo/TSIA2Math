@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { requireTeacher } from "../../../../lib/auth";
+import { profileGrants, requireTeacher } from "../../../../lib/auth";
 import { createAdminClient } from "../../../../lib/supabase-admin";
 import { exportRateLimit, rateLimitHeaders, safeLimit } from "../../../../lib/rate-limit";
 import { formatZodError, teacherExportQuerySchema } from "../../../../lib/schemas";
@@ -26,6 +26,17 @@ import {
 export async function GET(req: Request) {
   const profile = await requireTeacher();
   if (!profile) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
+  // TEACHER PRO ONLY. requireTeacher above proves an entitled teacher; it asks
+  // for 'teacher-dashboard', which Core holds too. This is the tier boundary,
+  // and it runs before any query so a Core account costs nothing to refuse.
+  //
+  // 403 rather than 404: the caller is a legitimate teacher and the route
+  // exists. Hiding its existence would be misleading, and the dashboard already
+  // hides the control for them, which is the cosmetic half of this.
+  if (!profileGrants(profile, "class-data-export", "export.scores")) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 

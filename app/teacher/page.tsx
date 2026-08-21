@@ -76,8 +76,19 @@ export default async function TeacherPage() {
     meta.full_name || meta.name || (session.user.email?.split("@")[0] ?? "Teacher");
   const teacherEmail = session.user.email ?? "";
 
+  // The COSMETIC half of the export gate. The real gate is in the three route
+  // handlers under app/api/teacher/export, which refuse a Core account with a
+  // 403 whether or not this button is on screen. Computed here, server-side,
+  // from the same profileGrants the routes use, so the two cannot disagree
+  // about who sees what.
+  //
+  // Passed as a boolean rather than letting the client decide from `plan`: a
+  // client that derives entitlement is a client that can be told it has some.
+  const canExport = profileGrants(profile, "class-data-export", "TeacherPage.export");
+
   return (
     <TeacherDashboardClient
+      canExport={canExport}
       initialClasses={classes ?? []}
       teacherName={teacherName}
       teacherEmail={teacherEmail}
