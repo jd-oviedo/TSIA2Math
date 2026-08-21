@@ -31,6 +31,7 @@ const probePage = `import 'katex/dist/katex.min.css';
 import { renderMarkdownWithMath } from '../../lib/curriculum-utils';
 import { TOPIC_PAGE_CSS } from '../course/[test]/[subject]/unit/[unit]/topic/[topicId]/topic-page-css';
 import TopicOverview from '../course/[test]/[subject]/unit/[unit]/topic/[topicId]/TopicOverview';
+import TopicChrome from '../course/[test]/[subject]/unit/[unit]/topic/[topicId]/TopicChrome';
 import { T } from '../components/curriculum-surface';
 import { EYEBROW } from '../components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '../components/fonts';
@@ -69,21 +70,21 @@ export default async function SurfaceProbe({ searchParams }) {
       <style>{TOPIC_PAGE_CSS}</style>
       <div className="um-topic" data-theme={theme} style={{ minHeight: '100dvh', background: T.page, color: T.ink, fontFamily: 'var(--font-nunito), Nunito, sans-serif' }}>
 
-        {/* Chrome, source 1: white bar, hard rule, mono breadcrumb. */}
-        <div data-probe="chrome" style={{ background: T.barBg, borderBottom: \`1px solid \${T.barLine}\`, height: 56, display: 'flex', alignItems: 'center', gap: 20, padding: '0 32px' }}>
-          <span style={{ font: \`500 16px ui-monospace, monospace\`, color: T.barInk2 }}>&#9776;</span>
-          <span style={{ font: \`700 15px \${FONT_HEADING}\`, color: T.barInk }}>unpackmath</span>
-          <span style={{ width: 1, height: 22, background: T.barLine }} />
-          <div style={{ font: \`400 13px \${FONT_BODY}\`, color: T.barInk2, flex: 1 }}>
-            TSIA2 Math <span style={{ opacity: .5 }}>/</span> Unit 0 <span style={{ opacity: .5 }}>/</span>{' '}
-            <span style={{ fontFamily: 'ui-monospace, monospace', fontSize: 12, color: T.barInk }}>QR.1.5</span>
-          </div>
-          <div style={{ display: 'flex' }}>
-            {['Lesson', 'Practice', 'Quiz'].map((t, i) => (
-              <div key={t} style={{ padding: '7px 16px', border: \`1px solid \${T.barLine}\`, borderLeft: i === 0 ? \`1px solid \${T.barLine}\` : 'none', background: i === 0 ? T.tabActiveBg : 'transparent', font: \`\${i === 0 ? 600 : 400} 12px \${FONT_BODY}\`, color: i === 0 ? T.ink : T.barInk2 }}>{t}</div>
-            ))}
-          </div>
-        </div>
+        {/* The REAL chrome component, not a stand-in. An earlier version of this
+            probe reimplemented the design's desktop bar inline and measured 88px
+            of overflow at 390px, which was a property of the stand-in: the real
+            component already carries responsive rules that drop the course
+            crumb and the three-segment nav and show the current part instead. */}
+        <TopicChrome
+          name="Ada Lovelace"
+          role="student"
+          test="tsia2"
+          subject="math"
+          subjectLabel="math"
+          unit="0"
+          topicId="QR.1.5"
+          part="lesson"
+        />
 
         {/* Topic overview, the real component, on the reading ground. */}
         <div data-probe="overview" style={{ background: T.band, padding: '40px 48px', borderBottom: \`1px solid \${T.hairline}\` }}>

@@ -323,6 +323,47 @@ export default function PracticeQuiz({
         // rendered at all rather than shown and refused. Which solutions exist
         // is still decided server-side by loadEarnedSolutions; this only
         // decides when an already-earned one may be offered.
+        //
+        // ─── "REVEAL WORKED SOLUTION", DECIDED 2026-08-21 ──────────────────
+        //
+        // The design shows this link unconditionally on an UNANSWERED problem.
+        // Three options were put to Juan and he chose C, live only where a tutor
+        // route exists, on the ground that its label describes a mechanism the
+        // product actually has.
+        //
+        // C IS ALREADY WHAT SHIPS, and for a reason that was missed when the
+        // options were written. C and A ("omit until earned") differ only in what
+        // a Full Course student sees on an unanswered problem, and the answer is
+        // nothing, for both: a tutor session needs a GRADED WRONG multiple-choice
+        // answer to open. api/curriculum/practice/route.ts sets gumu_available
+        // only inside the grading response, in the branch where an answer came
+        // back wrong. There is no tutor to offer before an answer exists, so the
+        // option table's "Talk it through" cell for an unanswered problem
+        // described something the product cannot deliver.
+        //
+        // What C actually names is the behaviour in the grading path, which is
+        // already correct: after a wrong answer, a student WITH the capability is
+        // routed to the tutor and the correct answer is withheld, and a student
+        // WITHOUT it gets the correct answer inline and no panel. Same predicate
+        // as the banners.
+        //
+        // So the line below is the decision, not a step towards it: the control
+        // renders only when loadEarnedSolutions has released a solution for this
+        // item, which happens on a correct answer or on a tutor disclosure, and
+        // never on an unanswered one. No plan is offered something it does not
+        // include.
+        //
+        // B WAS REJECTED, and this is the record of why so it is not reopened.
+        // B rendered the link disabled with the condition stated, "Answer to
+        // unlock the worked solution". It puts a soft lock on a surface whose
+        // recorded principle (app/lib/topic-parts.ts:9-11) is that nothing inside
+        // a topic is ever shut: every part is reachable at any time and only the
+        // Next control carries a requirement. A greyed control that names its own
+        // precondition is the visual language of a locked topic, applied to the
+        // one product decision that says topics are not locked.
+        //
+        // A was not rejected so much as absorbed: on the surface where it and C
+        // differ, they turn out to be the same thing.
         const solution = canRevealSolutions ? solutions?.[item.item_number] : undefined;
         const solutionOpen = Boolean(openSolutions[item.item_number]) && !solutionsPaused;
 
