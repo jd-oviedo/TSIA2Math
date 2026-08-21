@@ -18,6 +18,37 @@
 @tailwind utilities;
 .katex { color: var(--ec-ink) !important; }
 
+/* THE CURRICULUM TREE DOES NOT FOLLOW --ec, AND ITS MATH MUST NOT EITHER.
+   =====================================================================
+   The rule above is the ONLY place the global theme reaches inside /course.
+   Measured across app/course, app/dashboard/modules, curriculum-theme.ts and
+   MathText.tsx: not one component references an --ec-* variable. Those pages
+   hardcode C.cream and C.midnight and commit to one warm light surface on
+   purpose (curriculum-theme.ts:1-5), so a cream card never has to hold
+   light-on-light math.
+
+   Which made this rule the whole bug. --ec-ink is #1A1F2E in light and #E8EEF8
+   in dark, while the page underneath stays cream in both:
+
+     light  #1A1F2E on #E8E0CF   12.50:1
+     dark   #E8EEF8 on #E8E0CF    1.13:1     every equation, invisible
+     dark   #E8EEF8 on #FFFDF8    1.15:1     and on the paper cards too
+
+   So switching to dark did not fail to theme the lesson. It left the page light
+   and turned the maths off, on the one surface whose entire content is maths.
+   The prose stayed readable, which is exactly why it read as "dark mode does not
+   work" rather than as "the equations vanished".
+
+   STATED DIRECTLY RATHER THAN INHERITED, for the same reason the print block
+   below does it at :117 and explains at :75-82: the rule above is !important, so
+   a plain `.katex { color: ... }` here would lose to it regardless of what it
+   named. Specificity has to do the work instead, which is what .um-topic buys.
+
+   Scoped to .um-topic, the wrapper the topic layout puts on every lesson,
+   practice and quiz page, so nothing outside the curriculum tree moves: the CAT
+   engine, /teacher and /reporte all keep following --ec-ink as before. */
+.um-topic .katex { color: #0E0E11 !important; }
+
 /* Document-level body face. Nunito is the default for all UI text so roster
    tables, cards, labels and nav pick it up without each component naming a
    font. Kodchasan stays scoped to headings and display text, which the pages

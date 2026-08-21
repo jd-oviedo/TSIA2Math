@@ -52,6 +52,7 @@ const PROVE = process.argv.includes('--prove');
 const probePage = `import CourseBand from '../dashboard/modules/CourseBand';
 import ResumeCard from '../dashboard/modules/ResumeCard';
 import UnitSection from '../dashboard/modules/UnitSection';
+import { unitTitle } from '../lib/units';
 import { DASHBOARD_CSS } from '../dashboard/dashboard-css';
 
 const UNITS = [
@@ -68,7 +69,11 @@ export default function ProbePage() {
     <main className="um-dash" style={{ padding: 16 }}>
       <style>{DASHBOARD_CSS}</style>
       <div data-probe="real" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <CourseBand topicCount={97} unitCount={6} done={214} total={1348} />
+        {/* done/total are gone: the course band carries no progress any more.
+            A whole-course denominator produces a number that never visibly
+            moves, so it was removed rather than restyled. The per-unit bars
+            below are the ones this probe measures for density. */}
+        <CourseBand topicCount={97} unitCount={6} />
         <ResumeCard
           topicId="QR.1.5"
           topicName="Operations with rational numbers (signed numbers, decimals)"
@@ -80,6 +85,7 @@ export default function ProbePage() {
           <UnitSection
             key={u.n}
             unitNumber={u.n}
+            unitTitle={unitTitle(u.n)}
             topicCount={u.topics}
             done={12}
             total={100}

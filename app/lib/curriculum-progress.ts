@@ -143,6 +143,42 @@ export const getTopics = cache(async (): Promise<{
   };
 });
 
+/**
+ * How many topics in each unit are authored but not yet published.
+ *
+ * getTopics() filters `is_placeholder` at the query, which is right -- a
+ * placeholder has no lesson, no practice and no quiz, so it is not part of the
+ * course and must not be counted into any progress denominator. The cost is that
+ * the page cannot tell a unit of 15 from a unit of 18 with 3 unwritten, and a
+ * student holding a syllabus that names 18 topics has no way to learn why they
+ * can see 15.
+ *
+ * So this asks the one question getTopics deliberately does not: how many were
+ * dropped, per unit. Measured 2026-08-21: three rows in the whole course, all in
+ * unit 1, so this selects one column across three rows rather than widening
+ * getTopics and paying for it on every caller.
+ *
+ * Returns an empty map on error rather than throwing. A count that fails to load
+ * should cost the page one sentence, not the whole syllabus.
+ */
+export const getPlaceholderCounts = cache(async (): Promise<Map<number, number>> => {
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from('curriculum_topics')
+    .select('unit_number')
+    .eq('is_placeholder', true);
+
+  const counts = new Map<number, number>();
+  if (error) {
+    console.error('[curriculum] could not count placeholder topics:', error.message);
+    return counts;
+  }
+  for (const row of data ?? []) {
+    counts.set(row.unit_number, (counts.get(row.unit_number) ?? 0) + 1);
+  }
+  return counts;
+});
+
 // The gradable counts for a single topic.
 //
 // syncCompletionSnapshot runs on every answer a student submits, and it needs

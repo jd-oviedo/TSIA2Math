@@ -12,6 +12,28 @@
 //    control at the foot of each part. `requirement` says what that control
 //    needs; it never claims a part is shut.
 //
+//    NARROWED 2026-08-21, and the narrowing is deliberately not a reversal.
+//    /dashboard/modules now renders topics the viewer's PLAN does not reach as
+//    locked rows that are not links at all. That is a different kind of lock and
+//    it overrides this paragraph only for that page.
+//
+//    The distinction that keeps both true: this decision is about SEQUENCE, and
+//    the new one is about ENTITLEMENT. The reason recorded below -- that a hard
+//    lock punishes the motivated student who wants to skip ahead -- is an
+//    argument about a student who has already paid for the tree and is choosing
+//    their own order through it. It says nothing about a student whose plan does
+//    not include the tree, and it cannot: when it was written there was no plan
+//    tier that bought less than all of it. Plan-based curriculum access arrived
+//    on 2026-08-19, and /dashboard/modules shipped without a check for it, which
+//    is the defect being fixed (issue #176).
+//
+//    WHAT IS STILL TRUE, and must stay true: no part of a topic is ever shut to
+//    someone who can open the topic at all. Within a reachable topic, lesson,
+//    practice and quiz remain independently reachable in any order, exactly as
+//    below. Nothing in this file gained a lock, and the entitlement check lives
+//    on the modules page rather than here, so nothing that reads these three
+//    statuses has to know about plans.
+//
 // 2. Resume is part-level only. `lessonDone` is a single timestamp and the
 //    lesson page watches one sentinel at the very end of the notes, so "you
 //    stopped in section 3" is not derivable from anything stored today and is

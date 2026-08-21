@@ -35,6 +35,7 @@ import { FONT_HEADING, FONT_BODY } from '../../components/fonts';
 // progress is also stated in words for anyone who cannot see the bar.
 export default function UnitSection({
   unitNumber,
+  unitTitle,
   topicCount,
   done,
   total,
@@ -42,6 +43,14 @@ export default function UnitSection({
   children,
 }: {
   unitNumber: number;
+  /**
+   * The unit's name. Null when none is known, in which case the header renders
+   * the number alone exactly as it did before titles existed.
+   *
+   * Comes from app/lib/units.ts, a constant rather than a column: production
+   * carries no unit-name column and no units table (measured 2026-08-21).
+   */
+  unitTitle: string | null;
   topicCount: number;
   done: number;
   total: number;
@@ -97,6 +106,11 @@ export default function UnitSection({
 
           <span style={{ font: `600 18px ${FONT_HEADING}`, color: V.heading }}>
             Unit {unitNumber}
+            {unitTitle ? (
+              <span style={{ font: `400 15px ${FONT_BODY}`, color: V.muted, marginLeft: 10 }}>
+                {unitTitle}
+              </span>
+            ) : null}
           </span>
 
           <span style={{ font: `400 13px ${FONT_BODY}`, color: V.muted }}>

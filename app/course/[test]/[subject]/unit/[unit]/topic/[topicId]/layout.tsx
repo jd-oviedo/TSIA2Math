@@ -6,6 +6,7 @@ import TopicChrome from './TopicChrome';
 import ComingSoonTopic from './ComingSoonTopic';
 import { TOPIC_PAGE_CSS } from './topic-page-css';
 import { strandName } from '@/app/lib/strands';
+import { displayName } from '@/app/lib/auth';
 import { C, ink, EYEBROW } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
@@ -48,7 +49,9 @@ export default async function TopicLayout({
         }}
       >
         <TopicChrome
-          name={authSession?.user?.email ?? 'Student'}
+          // displayName rather than the raw email, matching the student rail and
+          // the three settings pages. See app/dashboard/layout.tsx for the note.
+          name={displayName(authSession?.user?.user_metadata, authSession?.user?.email)}
           role={teacher ? 'teacher' : 'student'}
           test={resolved.test}
           subject={resolved.subject}

@@ -12,6 +12,36 @@
 // creates. Any other entry, a direct visit or a bookmark, has no referer to match
 // and every unit stays collapsed, which is the intended default rather than a
 // fallback.
+/**
+ * The unit to expand, from the explicit `?unit=` parameter.
+ *
+ * ADDED because the referer rule below, while it works, is not addressable: there
+ * was no URL that meant "modules, unit 3 open", so nothing could link to one. The
+ * topic breadcrumb's "Unit N" link pointed at /course/{test}/{subject}/unit/{n},
+ * which has no route at all -- it parsed as unreadable, tripped the course gate's
+ * Sentry branch, and redirected to /dashboard. See #177.
+ *
+ * Explicit wins over referer: a parameter is something the product chose to put
+ * in a link, a referer is a header the browser may or may not send. The referer
+ * rule stays as the fallback so the modules -> topic -> back journey keeps working
+ * from a plain back button.
+ */
+export function unitFromParam(unit: string | string[] | undefined): number | null {
+  if (typeof unit !== 'string') return null;
+  // PLAIN DIGITS, tested before Number() rather than after.
+  //
+  // The first version of this was `Number.isInteger(Number(unit)) && n >= 0`,
+  // whose comment claimed it rejected '1e2' and ' 3'. It did not: Number('1e2')
+  // is 100 and Number(' 3') is 3, both integers, both >= 0, so a URL reading
+  // ?unit=1e2 opened unit 100 and ?unit=%203 opened unit 3. Caught by the test
+  // written to pin exactly that claim.
+  if (!/^\d+$/.test(unit)) return null;
+  const n = Number(unit);
+  // Unit 0 is real and also falsy, which is why this tests the type rather than
+  // the truthiness -- the same trap unitFromReferer documents below.
+  return Number.isInteger(n) ? n : null;
+}
+
 export function unitFromReferer(referer: string | null): number | null {
   if (!referer) return null;
   const m = /\/course\/[^/]+\/[^/]+\/unit\/(\d+)\/topic\//.exec(referer);

@@ -1,4 +1,4 @@
-import { C } from '../../components/curriculum-theme';
+import { INK_MUTED } from '../../components/curriculum-theme';
 import { V } from '../../components/dashboard-theme';
 import { FONT_BODY } from '../../components/fonts';
 
@@ -12,23 +12,39 @@ import { FONT_BODY } from '../../components/fonts';
 // information at a fraction of the ink, and the state that matters -- where the
 // student is -- is the only thing allowed to be loud.
 //
-// The row keeps a real link with a 44px minimum height, so the change is
-// entirely presentational: nothing about what is clickable moves.
+// The row keeps a 44px minimum height. It is a real link in three of its four
+// states; a gated row is deliberately not one, for the reason given at Tag below.
 //
 // Presentational and prop-driven so the probe route can render it.
 
-export type RowStatus = 'complete' | 'in_progress' | 'not_started';
+// 'gated' is the fourth state and the newest. It means the topic exists and the
+// viewer's plan does not reach it, which until now had no representation at all:
+// the page rendered a working link to every topic regardless of plan. See the
+// gate in page.tsx and issue #176.
+export type RowStatus = 'complete' | 'in_progress' | 'not_started' | 'gated';
 
 const LABEL: Record<RowStatus, string> = {
   complete: 'Complete',
   in_progress: 'In progress',
   not_started: 'Not started',
+  gated: 'Not available',
 };
 
+// Theme-aware, which is the whole point of this function changing.
+//
+// These used to be C.green and C.sunset, from the LIGHT-ONLY curriculum palette,
+// on a surface that flips to a near-black card in dark mode. All three failed
+// 4.5:1 in light and two of them failed in dark; "In progress" was orange-as-text
+// at 2.10:1, the role curriculum-theme.ts:30-33 retired. The measurements and the
+// reason a single hex cannot fix it are recorded in dashboard-theme.ts.
 function statusColor(status: RowStatus): string {
-  if (status === 'complete') return C.green;
-  if (status === 'in_progress') return C.sunset;
-  return V.dim;
+  if (status === 'complete') return V.statusComplete;
+  if (status === 'in_progress') return V.statusProgress;
+  // Gated rows take the muted ink rather than the disabled ink. INK_DISABLED is
+  // 2.55 on cream and its own docstring says it is not for text; a student has to
+  // be able to READ that a topic is unavailable.
+  if (status === 'gated') return INK_MUTED;
+  return V.statusIdle;
 }
 
 export default function TopicListRow({
@@ -57,12 +73,30 @@ export default function TopicListRow({
   probeAttr?: string;
 }) {
   const color = statusColor(status);
+  const gated = status === 'gated';
+
+  // A GATED ROW IS NOT A LINK, and this is the load-bearing half of the fix.
+  //
+  // Rendering an <a> and styling it to look unavailable would still ship a
+  // working href: the row stays keyboard-focusable, it still appears in the tab
+  // order, middle-click and "open in new tab" still reach the topic, and the
+  // /course gate would then bounce the student to /dashboard/upgrade. The
+  // element type is what carries the state, not the colour.
+  //
+  // The decision to render it is server-side, in page.tsx, from
+  // resolveCourseAccess(). Nothing here decides anything; it is handed a status.
+  const Tag = gated ? 'div' : 'a';
 
   return (
-    <a
+    <Tag
       className="um-topic-row"
-      href={href}
+      // Undefined rather than empty on a gated row, so no href attribute is
+      // emitted at all.
+      href={gated ? undefined : href}
       data-probe-topic={probeAttr}
+      data-gated={gated ? 'true' : undefined}
+      // Announced as unavailable rather than merely looking it.
+      aria-disabled={gated ? true : undefined}
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -72,10 +106,15 @@ export default function TopicListRow({
         borderTop: first ? 'none' : `1px solid ${V.hairline}`,
         color: 'inherit',
         textDecoration: 'none',
+        // #F6F2E8 in light, the theme's inset fill in dark. The pair and the
+        // reason it is a pair are recorded in dashboard-theme.ts.
+        background: gated ? V.gatedRowBg : undefined,
+        cursor: gated ? 'default' : undefined,
       }}
     >
       {/* Status mark. Filled when complete, ringed while in progress, hairline
-          when untouched, so the state is legible before the label is read. */}
+          when untouched, dashed when the plan does not reach it, so the state is
+          legible before the label is read. */}
       <span
         aria-hidden="true"
         style={{
@@ -85,16 +124,27 @@ export default function TopicListRow({
           borderRadius: '50%',
           background: status === 'complete' ? color : 'transparent',
           boxShadow: status === 'complete' ? 'none' : `inset 0 0 0 2px ${color}`,
+          opacity: gated ? 0.7 : 1,
         }}
       />
 
       <span style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 2 }}>
-        <span style={{ font: `500 14.5px ${FONT_BODY}`, color: V.heading }}>{topicName}</span>
+        <span
+          style={{
+            font: `500 14.5px ${FONT_BODY}`,
+            color: gated ? INK_MUTED : V.heading,
+          }}
+        >
+          {topicName}
+        </span>
         <span
           style={{
             font: `400 12px ui-monospace, Menlo, monospace`,
             fontVariantNumeric: 'tabular-nums',
-            color: V.dim,
+            // V.statusIdle, not V.dim. This line renders on EVERY row, and V.dim
+            // measures 3.51:1 on the light card. The token is fixed here only;
+            // V.dim's other 20 call sites are a separate pass, priced in the PR.
+            color: V.statusIdle,
           }}
         >
           {topicId}
@@ -112,6 +162,6 @@ export default function TopicListRow({
       >
         {LABEL[status]}
       </span>
-    </a>
+    </Tag>
   );
 }
