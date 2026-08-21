@@ -48,9 +48,13 @@ function statusOf(p: TopicProgress | undefined): RowStatus {
 
 // The string that tells a student a unit is not finished being written.
 //
-// PENDING JUAN'S APPROVAL of the exact wording. The shape is fixed -- one line,
-// at the foot of the unit, only when the count is non-zero -- and only the words
-// are open. Singular is handled because a unit could be one topic short.
+// Wording approved by Juan 2026-08-21, as written. One line, at the foot of the
+// unit, only when the count is non-zero. Singular is handled because a unit
+// could be one topic short; today the only non-zero count is unit 1's three.
+//
+// verify_modules_states.mjs asserts the plural string renders, so changing these
+// words is a two-file change on purpose -- this is student-facing copy that was
+// signed off, not an incidental label.
 function unwrittenLine(count: number): string {
   return count === 1
     ? '1 more topic in this unit is being written.'
