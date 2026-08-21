@@ -36,7 +36,7 @@ const PROFILE_COLUMNS = 'id, role, subscription_status, plan, plan_status, acces
  */
 export function profileGrants(
   profile: Pick<Profile, 'plan' | 'plan_status' | 'access_until' | 'subscription_status'>,
-  capability: 'teacher-dashboard' | 'curriculum' | 'gumu' | 'worksheets',
+  capability: 'teacher-dashboard' | 'curriculum' | 'gumu' | 'worksheets' | 'class-data-export',
   source: string
 ): boolean {
   if (!planGrants(profile.plan, capability)) return false

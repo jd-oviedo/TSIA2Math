@@ -33,7 +33,14 @@ export type Capability =
   // The worksheet generator. Not built, and not in /course.
   | "worksheets"
   // /teacher and every teacher API route.
-  | "teacher-dashboard";
+  | "teacher-dashboard"
+  // The CSV exports of class data: roster, score history, misconceptions.
+  //
+  // THE FIRST CAPABILITY THAT SEPARATES THE TWO TEACHER TIERS. Everything above
+  // is held identically by Core and Pro, and the note under CAPABILITIES used to
+  // say the tiers differ by quota rather than by feature presence. That is no
+  // longer true, and the note has been corrected rather than left to rot.
+  | "class-data-export";
 
 // Named separately so full-course is BUILT from it rather than restating it.
 // "EVERYTHING IN PRACTICE PASS, PLUS" is published on the pricing page, and a
@@ -45,13 +52,21 @@ export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
   "practice-pass": new Set(PRACTICE_PASS),
   "full-course": new Set([...PRACTICE_PASS, "curriculum", "gumu"]),
   "teacher-core": new Set(["teacher-dashboard", "worksheets"]),
-  "teacher-pro": new Set(["teacher-dashboard", "worksheets"]),
+  "teacher-pro": new Set(["teacher-dashboard", "worksheets", "class-data-export"]),
 };
 
-// No WORKSHEET_QUOTA here, deliberately. Core and Pro differ by quota rather
-// than by feature presence, but the number for "regular access" has never been
-// decided and worksheets do not exist yet. Inventing a placeholder now would put
-// a made-up number somewhere it could be read as settled.
+// No WORKSHEET_QUOTA here, deliberately. The number for "regular access" has
+// never been decided and worksheets do not exist yet. Inventing a placeholder
+// now would put a made-up number somewhere it could be read as settled.
+//
+// CORRECTED 2026-08-21. This note used to open "Core and Pro differ by quota
+// rather than by feature presence". That was true when it was written and is
+// not true now: class-data-export is a feature Pro holds and Core does not, and
+// it is the first of its kind. Left as a correction rather than a deletion,
+// because the old sentence is quoted in design notes elsewhere and somebody
+// will come looking for why it changed.
+//
+// The quota point still stands on its own. Nothing about worksheets moved.
 
 // ---------------------------------------------------------------------------
 // The tier label

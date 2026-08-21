@@ -60,7 +60,7 @@ test('worksheets belong to Practice Pass and up, including both teacher tiers', 
 });
 
 test('no plan means no capability, and an unknown plan grants nothing', () => {
-  const caps: Capability[] = ['curriculum', 'gumu', 'worksheets', 'teacher-dashboard'];
+  const caps: Capability[] = ['curriculum', 'gumu', 'worksheets', 'teacher-dashboard', 'class-data-export'];
   for (const capability of caps) {
     assert.equal(planGrants(null, capability), false);
     assert.equal(planGrants(undefined, capability), false);
@@ -69,6 +69,47 @@ test('no plan means no capability, and an unknown plan grants nothing', () => {
     assert.equal(planGrants('founding-teacher', capability), false);
     assert.equal(planGrants('', capability), false);
   }
+});
+
+test('class-data-export separates Pro from Core, and nothing else moved', () => {
+  // THE TIER BOUNDARY. Before this capability existed, Core and Pro held
+  // byte-identical sets, and five Core accounts could reach the CSV export
+  // routes in production, one of them a paying customer.
+  assert.equal(planGrants('teacher-pro', 'class-data-export'), true);
+  assert.equal(planGrants('teacher-core', 'class-data-export'), false);
+
+  // No student plan acquires it by being "higher".
+  assert.equal(planGrants('full-course', 'class-data-export'), false);
+  assert.equal(planGrants('practice-pass', 'class-data-export'), false);
+
+  // The rest of Core is untouched: this was meant to REMOVE something from
+  // Core, not to hand Pro a second change by accident.
+  assert.deepEqual(
+    [...CAPABILITIES['teacher-core']].sort(),
+    ['teacher-dashboard', 'worksheets']
+  );
+  assert.deepEqual(
+    [...CAPABILITIES['teacher-pro']].sort(),
+    ['class-data-export', 'teacher-dashboard', 'worksheets']
+  );
+
+  // Pro is a strict superset of Core, which is the shape a tier ladder has to
+  // keep. If this ever fails, Core holds something Pro does not.
+  for (const capability of CAPABILITIES['teacher-core']) {
+    assert.ok(
+      CAPABILITIES['teacher-pro'].has(capability),
+      `Pro is missing ${capability}, which Core holds`
+    );
+  }
+});
+
+test('the tier badge is unchanged by the new capability', () => {
+  // teacherTierLabel reads the plan and nothing else, so adding a capability
+  // must not move it. Asserted because the badge was wrong once before.
+  assert.equal(teacherTierLabel('teacher-pro'), 'PRO');
+  assert.equal(teacherTierLabel('teacher-core'), 'CORE');
+  assert.equal(teacherTierLabel('full-course'), null);
+  assert.equal(teacherTierLabel(null), null);
 });
 
 test('there are exactly four plans, so a fifth row cannot appear unnoticed', () => {
