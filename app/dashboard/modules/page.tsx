@@ -1,5 +1,8 @@
 import { headers } from 'next/headers';
 import { getProfile } from '../../lib/auth';
+import { resolveCourseAccess } from '../../lib/course-access';
+import { allowsTopic } from '../../lib/capabilities';
+import { getPlaceholderCounts } from '../../lib/curriculum-progress';
 import {
   getTopics,
   getAttempts,
@@ -9,17 +12,19 @@ import {
   type TopicProgress,
 } from '../data';
 import { Card, EmptyState, Eyebrow, Muted, PageHeading } from '../ui';
-// The three aliased imports that used to sit here -- curriculum-theme, fonts and
-// dashboard-theme -- are gone because nothing in this file references them any
-// more: the colours and faces they carried moved into CourseBand, ResumeCard and
-// TopicListRow along with the markup that used them. They are removed as dead
-// code, NOT normalised: no `@/` alias in this repo was rewritten to a relative
-// path, and the new imports below are relative because they are new.
+// Two of the three aliased imports that once sat here -- curriculum-theme, fonts
+// and dashboard-theme -- came back when this file grew markup of its own again:
+// the unwritten-topics line needs a face and a colour. They are relative, not
+// aliased, matching the note the original removal left: no `@/` alias in this
+// repo was rewritten, and anything new is written relative.
+import { V } from '../../components/dashboard-theme';
+import { FONT_BODY } from '../../components/fonts';
+import { unitTitle } from '../../lib/units';
 import UnitSection from './UnitSection';
 import CourseBand from './CourseBand';
 import ResumeCard from './ResumeCard';
 import TopicListRow, { type RowStatus } from './TopicListRow';
-import { unitFromReferer } from './referer';
+import { unitFromParam, unitFromReferer } from './referer';
 import { mostRecentTopic } from '../../lib/curriculum-progress';
 import { loadTopicGates } from '../../course/[test]/[subject]/unit/[unit]/topic/[topicId]/topic-data';
 import { resumeStep } from '../../lib/topic-parts';
@@ -41,16 +46,56 @@ function statusOf(p: TopicProgress | undefined): RowStatus {
   return 'not_started';
 }
 
-export default async function ModulesPage() {
+// The string that tells a student a unit is not finished being written.
+//
+// Wording approved by Juan 2026-08-21, as written. One line, at the foot of the
+// unit, only when the count is non-zero. Singular is handled because a unit
+// could be one topic short; today the only non-zero count is unit 1's three.
+//
+// verify_modules_states.mjs asserts the plural string renders, so changing these
+// words is a two-file change on purpose -- this is student-facing copy that was
+// signed off, not an incidental label.
+function unwrittenLine(count: number): string {
+  return count === 1
+    ? '1 more topic in this unit is being written.'
+    : `${count} more topics in this unit are being written.`;
+}
+
+export default async function ModulesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ unit?: string }>;
+}) {
   const profile = await getProfile();
   if (!profile) return null;
 
-  const [{ topics, shapes }, attempts, headerList] = await Promise.all([
+  const { unit: unitParam } = await searchParams;
+
+  const [{ topics, shapes }, attempts, headerList, access, placeholders] = await Promise.all([
     getTopics(),
     getAttempts(profile.id),
     headers(),
+    // THE GATE THIS PAGE SHIPPED WITHOUT.
+    //
+    // This surface rendered the whole course tree as working links to every
+    // signed-in visitor, whatever their plan, between 2026-08-19 (when plan-based
+    // curriculum access was introduced) and this fix. A free-tier or Practice Pass
+    // student browsed all 97 topics and found out only by clicking, and Practice
+    // Pass is a paid plan whose documented boundary is that it never reaches a
+    // /course URL (capabilities.ts:13-15). Logged for attorney review as a
+    // misrepresentation item in unpackmath-home's legal-audit-2026-08.md; see
+    // also #176.
+    //
+    // resolveCourseAccess is the resolver the other three surfaces already use
+    // (dashboard/page.tsx:67, api/curriculum/practice:77, course/layout.tsx:60).
+    // It is called rather than reimplemented so this page and the /course gate
+    // cannot disagree about who gets in. It is cache()d per request, and nothing
+    // else on this page calls it, so this pays for one profile read.
+    resolveCourseAccess(),
+    getPlaceholderCounts(),
   ]);
-  const openUnit = unitFromReferer(headerList.get('referer'));
+  // Explicit parameter first, referer as the fallback. See referer.ts.
+  const openUnit = unitFromParam(unitParam) ?? unitFromReferer(headerList.get('referer'));
   const progress = progressByTopic(attempts, shapes);
 
   const units = new Map<number, TopicRow[]>();
@@ -58,14 +103,6 @@ export default async function ModulesPage() {
     if (!units.has(topic.unit_number)) units.set(topic.unit_number, []);
     units.get(topic.unit_number)!.push(topic);
   }
-
-  // Course totals, read rather than written down: 97 topics and 1,348 gradable
-  // questions today, both derived, so authoring moves them without a code change.
-  const courseTotal = topics.reduce(
-    (sum, t) => sum + gradableTotal(shapes.get(`${t.course_id}:${t.topic_id}`)),
-    0
-  );
-  const courseDone = [...progress.values()].reduce((sum, p) => sum + p.correct, 0);
 
   // Where to carry on. The topic comes from the attempt log, and the PART comes
   // from resumeStep(), the same function the topic overview uses, so the two
@@ -75,9 +112,23 @@ export default async function ModulesPage() {
   // something: loadTopicGates resolves its shape from getTopicShape rather than
   // pulling practice_items for all 97 topics.
   const recent = mostRecentTopic(attempts);
-  const recentTopic = recent
+  const recentCandidate = recent
     ? topics.find((t) => t.course_id === recent.course_id && t.topic_id === recent.topic_id)
     : undefined;
+
+  // THE SAME GATE THE ROWS GET, and it is not redundant.
+  //
+  // The attempt log outlives entitlement: a student who worked through topics on
+  // a Full Course plan that has since lapsed, or whose teacher's class went
+  // inactive, still has rows in curriculum_attempts. Without this check the
+  // resume card would offer them a "Continue" button pointing at a topic the
+  // /course gate now refuses, which is the same defect the rows carried, in the
+  // one control on this page most likely to be clicked first.
+  const recentTopic =
+    recentCandidate &&
+    allowsTopic(access, 'curriculum', recentCandidate.course_id, recentCandidate.topic_id)
+      ? recentCandidate
+      : undefined;
 
   let resume: { topic: TopicRow; href: string; label: string } | null = null;
   if (recentTopic) {
@@ -117,12 +168,12 @@ export default async function ModulesPage() {
         />
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <CourseBand
-            topicCount={topics.length}
-            unitCount={units.size}
-            done={courseDone}
-            total={courseTotal}
-          />
+          {/* No course-level progress. A denominator of the whole course produces
+              a number that never visibly moves -- 3 of 1,348 rounds to 0% -- which
+              reads to a student as having accomplished nothing. The per-unit bars
+              stay, because those move. Nothing replaces it and the space is not
+              repurposed. */}
+          <CourseBand topicCount={topics.length} unitCount={units.size} />
 
           {resume && (
             <ResumeCard
@@ -150,6 +201,7 @@ export default async function ModulesPage() {
                 <UnitSection
                   key={unitNumber}
                   unitNumber={unitNumber}
+                  unitTitle={unitTitle(unitNumber)}
                   topicCount={unitTopics.length}
                   done={unitDone}
                   total={unitTotal}
@@ -157,13 +209,24 @@ export default async function ModulesPage() {
                 >
                   {unitTopics.map((topic, i) => {
                     const p = progress.get(`${topic.course_id}:${topic.topic_id}`);
+                    // Per topic, not per page, because the free sample is a
+                    // single-topic exemption: AR.1.4 stays open while the rest of
+                    // the tree is gated. allowsTopic is the same predicate the
+                    // /course gate applies, so a row that renders as a link and a
+                    // route that admits the visitor cannot come apart.
+                    const reachable = allowsTopic(
+                      access,
+                      'curriculum',
+                      topic.course_id,
+                      topic.topic_id
+                    );
                     return (
                       <TopicListRow
                         key={topic.topic_id}
                         topicId={topic.topic_id}
                         topicName={topic.topic_name}
                         href={topicHref(topic)}
-                        status={statusOf(p)}
+                        status={reachable ? statusOf(p) : 'gated'}
                         estimatedMinutes={topic.estimated_time_minutes}
                         correct={p?.correct ?? 0}
                         total={p?.total ?? 0}
@@ -171,6 +234,18 @@ export default async function ModulesPage() {
                       />
                     );
                   })}
+                  {(placeholders.get(unitNumber) ?? 0) > 0 && (
+                    <p
+                      style={{
+                        margin: 0,
+                        padding: '10px 6px 2px',
+                        font: `400 12.5px ${FONT_BODY}`,
+                        color: V.statusIdle,
+                      }}
+                    >
+                      {unwrittenLine(placeholders.get(unitNumber) ?? 0)}
+                    </p>
+                  )}
                 </UnitSection>
               );
             })}
@@ -183,7 +258,8 @@ export default async function ModulesPage() {
           <div style={{ marginTop: 6 }}>
             <Muted size={13}>
               A question counts once you have answered it correctly, so coming back to one you
-              missed still moves the bar. Written practice is not counted, since nothing grades it.
+              missed still moves your unit progress. Written practice is not counted, since
+              nothing grades it.
             </Muted>
           </div>
         </Card>

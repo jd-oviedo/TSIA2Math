@@ -69,10 +69,21 @@ export default function ProbePage() {
     <main className="um-dash">
       <style>{DASHBOARD_CSS}</style>
       <div data-probe="real">
-        <UnitSection unitNumber={1} topicCount={3} done={2} total={10} defaultOpen={false}>
+        {/* unitTitle became a REQUIRED prop on 2026-08-21, which broke this
+            probe's build and therefore this whole script. It is not in
+            test:offline, so nothing caught it until the modules verification
+            pass ran the browser checks by hand.
+
+            The two units are given different title shapes deliberately: null
+            renders the header exactly as it was before titles existed, which is
+            the layout every assertion below was written against, and a real
+            string builds the wrapped two-part header. Collapse semantics are
+            what this file measures; both header shapes just have to compile and
+            render. */}
+        <UnitSection unitNumber={1} unitTitle={null} topicCount={3} done={2} total={10} defaultOpen={false}>
           {rows(1)}
         </UnitSection>
-        <UnitSection unitNumber={2} topicCount={3} done={5} total={10} defaultOpen={true}>
+        <UnitSection unitNumber={2} unitTitle="Linear Relationships" topicCount={3} done={5} total={10} defaultOpen={true}>
           {rows(2)}
         </UnitSection>
       </div>

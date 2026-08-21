@@ -35,6 +35,7 @@ import { FONT_HEADING, FONT_BODY } from '../../components/fonts';
 // progress is also stated in words for anyone who cannot see the bar.
 export default function UnitSection({
   unitNumber,
+  unitTitle,
   topicCount,
   done,
   total,
@@ -42,6 +43,14 @@ export default function UnitSection({
   children,
 }: {
   unitNumber: number;
+  /**
+   * The unit's name. Null when none is known, in which case the header renders
+   * the number alone exactly as it did before titles existed.
+   *
+   * Comes from app/lib/units.ts, a constant rather than a column: production
+   * carries no unit-name column and no units table (measured 2026-08-21).
+   */
+  unitTitle: string | null;
   topicCount: number;
   done: number;
   total: number;
@@ -95,8 +104,58 @@ export default function UnitSection({
             &#9656;
           </span>
 
-          <span style={{ font: `600 18px ${FONT_HEADING}`, color: V.heading }}>
-            Unit {unitNumber}
+          {/* THE TITLE WRAPS, AND THAT BREAKS A PROBE. READ BEFORE CHANGING.
+              ================================================================
+              The requirement is that unit titles are visible to EVERY user on
+              this page. Two layouts were measured against that, with
+              verify_modules_density at 360x780:
+
+                one line, ellipsis   last header bottom 621px   FITS
+                                     but "Number Sense and Quantitative
+                                     Foundations" clips to "Num..." at 390px,
+                                     which is not a visible title
+
+                wrapped, two lines   last header bottom 836px   OVERFLOWS by 56px
+                                     every title readable in full at every width
+
+              This is the wrapped one. The title is the requirement; the fold is
+              a design goal PR #117 set when unit headers were a number and a
+              count and nothing else. Six wrapped headers now need 56px more than
+              a 780px phone has, so the page scrolls a little to reach unit 5.
+
+              NOT resolved by quietly tightening the spacing PR #117 tuned, and
+              NOT resolved by shipping a title nobody can read.
+
+              SETTLED 2026-08-21: Juan chose the wrap and moved the fold, because
+              clipping cuts exactly the words that distinguish one unit from
+              another. verify_modules_density now measures against a stated
+              880px budget instead of the viewport height, and its header block
+              carries both measurements and the reason it moved. The budget has
+              less headroom than one more unit header, so this stays honest. */}
+          <span
+            style={{
+              font: `600 18px ${FONT_HEADING}`,
+              color: V.heading,
+              flex: 1,
+              minWidth: 0,
+              display: 'flex',
+              alignItems: 'baseline',
+              gap: 10,
+            }}
+          >
+            <span style={{ flex: 'none' }}>Unit {unitNumber}</span>
+            {unitTitle ? (
+              <span
+                title={unitTitle}
+                style={{
+                  font: `400 15px ${FONT_BODY}`,
+                  color: V.muted,
+                  minWidth: 0,
+                }}
+              >
+                {unitTitle}
+              </span>
+            ) : null}
           </span>
 
           <span style={{ font: `400 13px ${FONT_BODY}`, color: V.muted }}>

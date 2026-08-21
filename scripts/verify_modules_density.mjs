@@ -12,11 +12,37 @@
 // the same answer: a probe route, written before the run and deleted after,
 // never committed, rendering the REAL components with fixture data.
 //
-// The claim being defended, from PR #117, is that all six units are visible at
+// The claim being defended, from PR #117, WAS that all six units are visible at
 // 360px without scrolling. That claim has never had a check: the existing
 // collapsible probe renders two synthetic units and asserts semantics, not
 // layout. This adds the missing one, because a course band and a resume card
 // were just put above the unit list and that is precisely what could break it.
+//
+// THE FOLD MOVED, 2026-08-21. READ THIS BEFORE TIGHTENING IT BACK.
+// -----------------------------------------------------------------
+// Unit titles now render beside the unit number, and at 360px the long ones wrap
+// to a second line. Measured here, both layouts, same probe:
+//
+//   one line, ellipsis   last header bottom 621px   fits the old budget
+//                        and clips "Number Sense and Quantitative Foundations"
+//                        to "Num..." at 390px
+//   wrapped, two lines   last header bottom 836px   overflows 780px by 56px
+//                        every title readable in full at every width
+//
+// Juan chose the wrap on 2026-08-21, on the ground that clipping removes exactly
+// the words that tell one unit from another, which makes a visible title the
+// requirement and the single-viewport fold the thing that gives. So the budget
+// below is a stated constant rather than the viewport height, and this file no
+// longer defends "no scrolling".
+//
+// WHAT IT DEFENDS INSTEAD: that the collapsed list still costs at most one short
+// scroll to reach unit 5, and that it cannot grow further without failing. The
+// headroom is deliberately smaller than one more unit header, so a seventh unit
+// trips both checks while a title gaining a word does not. Not asserted,
+// measured: a seventh unit was added to the fixture on 2026-08-21 and the run
+// gave last header bottom 900px against the 880px budget and 136px of overflow
+// against the 96px one, failing both. Widening these constants to admit that
+// seventh unit is a design decision and belongs with Juan, not in a green run.
 //
 // The unit counts below are the real ones, 14/15/15/16/20/17 = 97. Nothing from
 // the design mockup, which invented its own.
@@ -37,6 +63,11 @@ const PORT = 5110;
 const BASE = `http://localhost:${PORT}`;
 const PROVE = process.argv.includes('--prove');
 
+// The moved fold. Both numbers are measurements plus stated headroom, and the
+// reasoning for each is in the header block above.
+const FOLD_BUDGET = 880; // measured 836, plus 44px -- one touch target of slack
+const SCROLL_BUDGET = 96; // measured 72px of overflow, plus ~24px, one title line
+
 // Real unit sizes. The topic rows themselves are irrelevant to this measurement
 // because every unit renders collapsed, which is the state being defended.
 // DASHBOARD_CSS must be injected here. It is normally supplied by
@@ -52,6 +83,7 @@ const PROVE = process.argv.includes('--prove');
 const probePage = `import CourseBand from '../dashboard/modules/CourseBand';
 import ResumeCard from '../dashboard/modules/ResumeCard';
 import UnitSection from '../dashboard/modules/UnitSection';
+import { unitTitle } from '../lib/units';
 import { DASHBOARD_CSS } from '../dashboard/dashboard-css';
 
 const UNITS = [
@@ -68,7 +100,11 @@ export default function ProbePage() {
     <main className="um-dash" style={{ padding: 16 }}>
       <style>{DASHBOARD_CSS}</style>
       <div data-probe="real" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <CourseBand topicCount={97} unitCount={6} done={214} total={1348} />
+        {/* done/total are gone: the course band carries no progress any more.
+            A whole-course denominator produces a number that never visibly
+            moves, so it was removed rather than restyled. The per-unit bars
+            below are the ones this probe measures for density. */}
+        <CourseBand topicCount={97} unitCount={6} />
         <ResumeCard
           topicId="QR.1.5"
           topicName="Operations with rational numbers (signed numbers, decimals)"
@@ -80,6 +116,7 @@ export default function ProbePage() {
           <UnitSection
             key={u.n}
             unitNumber={u.n}
+            unitTitle={unitTitle(u.n)}
             topicCount={u.topics}
             done={12}
             total={100}
@@ -158,17 +195,17 @@ try {
     };
   });
 
-  const budget = PROVE ? 0 : geo.viewport;
+  const budget = PROVE ? 0 : FOLD_BUDGET;
   check(
-    'all six unit headers fit above the fold at 360x780',
+    `all six unit headers land within ${FOLD_BUDGET}px at 360x780`,
     geo.lastBottom <= budget,
-    `last header bottom ${geo.lastBottom}px, viewport ${geo.viewport}px`
+    `last header bottom ${geo.lastBottom}px, budget ${budget}px, viewport ${geo.viewport}px`
   );
 
   check(
-    'the page does not scroll vertically with every unit collapsed',
-    geo.docScroll <= geo.docClient + (PROVE ? -1 : 1),
-    `scrollHeight ${geo.docScroll}, clientHeight ${geo.docClient}`
+    `the collapsed list costs at most ${SCROLL_BUDGET}px of scroll`,
+    geo.docScroll - geo.docClient <= (PROVE ? -1 : SCROLL_BUDGET),
+    `scrollHeight ${geo.docScroll}, clientHeight ${geo.docClient}, overflow ${geo.docScroll - geo.docClient}px`
   );
 
   check(
@@ -205,11 +242,14 @@ try {
       viewport: window.innerHeight,
     };
   });
-  const controlFits = loosened.lastBottom <= loosened.viewport;
+  // Measured against FOLD_BUDGET, not the viewport. The control has to face the
+  // same threshold the real check does, or it proves the old budget still
+  // discriminates while saying nothing about the new one.
+  const controlFits = loosened.lastBottom <= FOLD_BUDGET;
   check(
     'CONTROL: a loosened layout does NOT fit, so the fit check discriminates',
     !controlFits,
-    `last header bottom ${loosened.lastBottom}px, viewport ${loosened.viewport}px`
+    `last header bottom ${loosened.lastBottom}px, budget ${FOLD_BUDGET}px`
   );
 } finally {
   await browser.close();

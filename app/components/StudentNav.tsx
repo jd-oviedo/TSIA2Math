@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { C } from './curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from './fonts';
 import { LogoutButton } from './LogoutButton';
@@ -10,6 +10,22 @@ import { RAIL_LIGHT, RAIL_DARK, V, type RailSurface } from './dashboard-theme';
 import { useTheme } from '../theme/useTheme';
 import { ThemeModeButton } from './ThemeModeButton';
 import { teacherTierLabel } from '../lib/capabilities';
+
+// Drawer motion. Enter decelerates so the panel settles; exit accelerates and is
+// shorter, which is the conventional asymmetry and reads as more responsive.
+// Both are suppressed under prefers-reduced-motion by the rule in DRAWER_CSS.
+const ENTER_MS = 200;
+const EXIT_MS = 160;
+
+// Inline styles cannot express a media query, so the reduced-motion guard lives
+// here. It zeroes the durations rather than removing the transform, so the panel
+// still arrives in the right place, instantly. The unmount timer is a setTimeout
+// rather than a transitionend listener precisely because this rule means
+// transitionend may never fire.
+const DRAWER_CSS = `
+@media (prefers-reduced-motion: reduce) {
+  .um-nav-drawer, .um-nav-scrim { transition-duration: 0ms !important; }
+}`;
 
 // The student navigation, shared by the /dashboard tree and the /course tree.
 //
@@ -504,11 +520,66 @@ function DrawerBody({
   const { theme } = useTheme();
   const R: RailSurface = (mode ?? theme) === 'dark' ? RAIL_DARK : RAIL_LIGHT;
 
-  if (!open) return null;
+  // ─── Why this is mounted-but-hidden rather than unmounted ────────────────────
+  //
+  // This was `if (!open) return null`, which is why the drawer had no motion in
+  // either direction: it appeared and vanished instantly. An enter animation
+  // could have been added to that structure; an EXIT animation cannot, because a
+  // node that has already unmounted has nothing left to animate.
+  //
+  // So the node stays mounted and slides. `rendered` keeps it in the tree for one
+  // exit transition after `open` goes false, then drops it, so a drawer that has
+  // never been opened costs nothing and a closed one is not left holding a
+  // fixed-position overlay over the page.
+  const frame = useRef(0);
+  const [rendered, setRendered] = useState(open);
+  // Separate from `rendered` on purpose. The panel has to be in the DOM at
+  // translateX(-100%) for one frame BEFORE it moves, or the browser has no
+  // starting value to interpolate from and the transition is skipped entirely.
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    if (open) {
+      setRendered(true);
+      // Two frames, not one. A single rAF still lands in the same style
+      // recalculation as the mount on some engines, and the transition is
+      // dropped; the second frame guarantees the initial transform has been
+      // committed.
+      const a = requestAnimationFrame(() => {
+        const b = requestAnimationFrame(() => setShown(true));
+        frame.current = b;
+      });
+      frame.current = a;
+      return () => cancelAnimationFrame(frame.current);
+    }
+    setShown(false);
+    // Unmount after the exit finishes. A timer rather than transitionend
+    // because transitionend does not fire when the motion is suppressed under
+    // prefers-reduced-motion, which would leave the overlay mounted forever.
+    const t = setTimeout(() => setRendered(false), EXIT_MS);
+    return () => clearTimeout(t);
+  }, [open]);
+
+  // The Escape key. The overlay is click-to-close and always was; a drawer that
+  // traps a keyboard user with no way out is the version of that which nobody
+  // notices until someone cannot use it.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open, onClose]);
+
+  if (!rendered) return null;
 
   return (
+    <>
+      <style>{DRAWER_CSS}</style>
     <div
       role="presentation"
+      className="um-nav-scrim"
       onClick={onClose}
       style={{
         position: 'fixed',
@@ -516,11 +587,15 @@ function DrawerBody({
         zIndex: 60,
         background: 'rgba(14,14,17,.45)',
         display: 'flex',
+        // The scrim fades with the panel rather than snapping in ahead of it.
+        opacity: shown ? 1 : 0,
+        transition: `opacity ${shown ? ENTER_MS : EXIT_MS}ms linear`,
       }}
     >
       <aside
         onClick={(e) => e.stopPropagation()}
         aria-label="Student navigation"
+        className="um-nav-drawer"
         style={{
           width: 244,
           maxWidth: '82vw',
@@ -528,7 +603,16 @@ function DrawerBody({
           display: 'flex',
           flexDirection: 'column',
           height: '100dvh',
-          boxShadow: '4px 0 24px rgba(14,14,17,.28)',
+          // Left to right on the way in, right to left on the way out. Exits are
+          // faster than entrances and accelerate out; entrances decelerate so the
+          // panel arrives and settles rather than stopping dead.
+          transform: shown ? 'translateX(0)' : 'translateX(-100%)',
+          transition: shown
+            ? `transform ${ENTER_MS}ms cubic-bezier(0.32, 0.72, 0, 1)`
+            : `transform ${EXIT_MS}ms cubic-bezier(0.4, 0, 1, 1)`,
+          // The 24px blurred shadow this carried was decoration on a panel already
+          // separated from the page by a full-screen scrim, which is the "shadow
+          // used as decoration" the redesign rules out. Gone.
         }}
       >
         <StudentNavPanel
@@ -542,6 +626,7 @@ function DrawerBody({
         />
       </aside>
     </div>
+    </>
   );
 }
 

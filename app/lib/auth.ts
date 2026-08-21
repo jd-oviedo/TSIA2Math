@@ -130,7 +130,15 @@ export async function requireTeacher(): Promise<Profile | null> {
 // where a page serves more than one role and needs to branch, rather than
 // calling requireTeacher and treating null as "student" -- null also covers
 // signed out, and an inactive teacher.
-export async function getProfile(): Promise<(Profile & { email: string | null }) | null> {
+// user_metadata comes back alongside the profile because getUser() has already
+// been called to get here, and the name every account chip wants lives in it.
+// profiles has no name column (see displayName above), so a caller that only has
+// a Profile has no way to render a person's name without a SECOND getUser()
+// round trip -- which is exactly what app/dashboard/settings/page.tsx:22-25 does
+// today. Additive: existing callers that ignore it are unaffected.
+export async function getProfile(): Promise<
+  (Profile & { email: string | null; user_metadata: Record<string, unknown> | null }) | null
+> {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return null
@@ -147,5 +155,9 @@ export async function getProfile(): Promise<(Profile & { email: string | null })
 
   if (error || !profile) return null
 
-  return { ...(profile as Profile), email: user.email ?? null }
+  return {
+    ...(profile as Profile),
+    email: user.email ?? null,
+    user_metadata: user.user_metadata ?? null,
+  }
 }

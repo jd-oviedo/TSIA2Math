@@ -85,12 +85,23 @@ export default function TopicChrome({
           className="um-bar-trail"
           style={{ font: `400 13px ${FONT_BODY}`, color: ink(0.6), lineHeight: 1.3 }}
         >
-          <a href={`/course/${test}/${subject}`} style={{ color: 'inherit' }}>
+          {/* BOTH OF THESE USED TO BE DEAD LINKS, and neither failed loudly.
+              /course/{test}/{subject} and /course/{test}/{subject}/unit/{n} have
+              no route: measured, both parse as `unreadable`, which trips the
+              course gate's Sentry branch at course/layout.tsx:42-58 and redirects
+              to /dashboard. So clicking "Unit 0" to go up a level landed a student
+              on the dashboard home and filed a warning claiming the path header
+              was unreadable, when it had been read perfectly well. See #177.
+
+              They point into the modules tree now, which is where the syllabus
+              actually lives. The unit link carries ?unit=N so the target is a real
+              address rather than something reconstructed from a referer header. */}
+          <a href="/dashboard/modules" style={{ color: 'inherit' }}>
             {test.toUpperCase()} ·{' '}
             <span style={{ textTransform: 'capitalize' }}>{subjectLabel}</span>
           </a>
           <span style={{ color: ink(0.3), padding: '0 6px' }}>/</span>
-          <a href={`/course/${test}/${subject}/unit/${unit}`} style={{ color: 'inherit' }}>
+          <a href={`/dashboard/modules?unit=${encodeURIComponent(unit)}`} style={{ color: 'inherit' }}>
             Unit {unit}
           </a>
           {/* Not a link. This is where the student already is, and the doorway

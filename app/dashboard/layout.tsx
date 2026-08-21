@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { headers } from 'next/headers';
-import { getProfile, profileGrants } from '../lib/auth';
+import { displayName, getProfile, profileGrants } from '../lib/auth';
 import { loginHref, DEFAULT_NEXT, safeNext } from '../lib/next-param';
 import StudentShell from './StudentShell';
 import { DASHBOARD_CSS } from './dashboard-css';
@@ -38,7 +38,15 @@ export default async function DashboardLayout({ children }: { children: React.Re
     redirect('/');
   }
 
-  const name = profile.email ?? 'Student';
+  // The name the identity provider gave us, not the raw email address.
+  //
+  // This passed profile.email, so the rail's account chip read "vics8388..."
+  // truncated, and StudentNav derived the avatar initials by splitting that same
+  // string. displayName() reads full_name then name from auth.users metadata,
+  // where Google OAuth writes it, and falls back to the email local part only
+  // when there is genuinely no name. /dashboard/settings, /teacher/settings and
+  // /teacher have all been using it; these two chips were the stragglers.
+  const name = displayName(profile.user_metadata, profile.email);
 
   return (
     <>
