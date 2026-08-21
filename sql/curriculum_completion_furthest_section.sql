@@ -1,5 +1,16 @@
 -- curriculum_completion: furthest lesson section, and three missing NOT NULLs
 --
+-- ─── PARTIALLY APPLIED 2026-08-21 ────────────────────────────────────────────
+--
+--   Section 1, the three NOT NULL constraints   APPLIED. Ran clean. user_id,
+--                                               course_id and topic_id are NOT
+--                                               NULL as of 2026-08-21.
+--   Section 2, furthest_section                 NOT RUN, deliberately. It waits
+--                                               for the per-section checkmark
+--                                               work that needs it.
+--
+-- Do not re-run Section 1.
+--
 -- RUN AFTER sql/curriculum_completion_timestamptz.sql. Nothing here depends on
 -- that file, and it goes first because it is the one blocking the switch to
 -- definition A.

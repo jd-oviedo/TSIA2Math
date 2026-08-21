@@ -116,6 +116,14 @@ export interface CurriculumSurface {
   focus: string;
   link: string;
   linkHover: string;
+  /** Disabled controls only. Deliberately below 4.5:1, see curriculum-theme.ts. */
+  disabled: string;
+  /** The 2px lip under the primary button, so it reads as pressable. */
+  ctaShadow: string;
+  /** The answer key, teacher-only. Cancer Violet's role, nothing else. */
+  answerKey: string;
+  /** "You are in a conversation": the tutor's own accent, on tutor surfaces. */
+  tutorAccent: string;
 
   // ─── The tutor card ───────────────────────────────────────────────────────
   /** Does not invert. See the note on the DARK block. */
@@ -215,6 +223,19 @@ const LIGHT: CurriculumSurface = {
   // where the brand value cannot hold a text role.
   link: '#2F6091',
   linkHover: '#A8631F',
+  // INK_DISABLED, unchanged, and it must keep failing 4.5:1. WCAG 1.4.3 exempts
+  // inactive controls, and a disabled button rendered at muted ink reads as
+  // enabled, which loses a student more than a dim grey does.
+  disabled: 'rgba(14,14,17,0.4)',
+  ctaShadow: '#D98C2C', // C.sunsetShadow, the 2px pressable lip
+  // A DARKENED CANCER VIOLET, and a second defect fix of the same kind as the
+  // link above. C.violet #A86EC8 is used as TEXT on the answer key and measures
+  // 2.79 on cream, 3.19 on the band, 3.61 on paper and 2.97 on the quiet box:
+  // failing on all four. #7F4A9E is the same hue darkened until it clears
+  // (4.74 to 6.12). Teacher-facing rather than student-facing, which is why it
+  // outlived the student-side sweep, not a reason to leave it.
+  answerKey: '#7F4A9E',
+  tutorAccent: '#87CEEB', // C.sky. A fill and a ring, never text.
 
   // Deep Midnight, not the import's #12253F. That value is a third navy, neither
   // Deep Navy #0F1E35 nor Deep Midnight, and it does not enter the codebase.
@@ -282,6 +303,13 @@ const DARK: CurriculumSurface = {
   // and is replaced only where it cannot hold.
   link: '#6E9DC8',
   linkHover: '#F0A33E',
+  disabled: 'rgba(242,237,223,0.38)',
+  ctaShadow: '#B87422',
+  // Violet and sky are lightened rather than inverted: the roles are "answer
+  // key" and "in conversation", and both should read as the same colour family
+  // in either theme. 7.22 and 10.66 on the band.
+  answerKey: '#C79BE0',
+  tutorAccent: '#9BD9F0',
 
   // Does not invert. The tutor card is a dark panel in both themes, which is
   // what it already was, and its ink contrast is against its own fill.
@@ -324,6 +352,10 @@ const VAR_NAMES: Record<keyof CurriculumSurface, string> = {
   focus: '--umt-focus',
   link: '--umt-link',
   linkHover: '--umt-link-hover',
+  disabled: '--umt-disabled',
+  ctaShadow: '--umt-cta-shadow',
+  answerKey: '--umt-answer-key',
+  tutorAccent: '--umt-tutor-accent',
   tutorSurface: '--umt-tutor-surface',
   tutorBorder: '--umt-tutor-border',
   tutorInk: '--umt-tutor-ink',

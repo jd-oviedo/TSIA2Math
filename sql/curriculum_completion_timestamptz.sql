@@ -1,5 +1,15 @@
 -- curriculum_completion: give completed_at a time zone
 --
+-- ─── APPLIED 2026-08-21. Both sections ───────────────────────────────────────
+--
+-- Run by Juan in the Supabase SQL editor. completed_at and created_at are both
+-- timestamptz now, and created_at's now() default survived the type change and
+-- re-coerced, which answers the one thing this file said it could not see from
+-- outside PostgREST. The nine converted rows were checked against
+-- lesson_completed_at afterwards and the reinterpretation moved nothing.
+--
+-- Kept as a record. Do not run again.
+--
 -- RUN THIS FIRST, before the NOT NULL and furthest_section work in
 -- sql/curriculum_completion_furthest_section.sql, and before the switch to
 -- definition A lands in the app. It is the only one of the three that is
@@ -46,14 +56,26 @@
 -- it is written in the SAME upsert as created_at. Comparing the two across all
 -- 36 rows on 2026-08-21:
 --
---   rows compared                                    35 (one has a null)
---   min |created_at - lesson_completed_at|            0.007 s
---   max |created_at - lesson_completed_at|           86.629 s
+--   created_at vs lesson_completed_at    n=35   min 0.007 s   max 86.629 s
+--   completed_at vs lesson_completed_at  n=9    min 188.8 s   max 4426.1 s
+--                                               (3.1 min)     (73.8 min)
 --
--- Every delta is operational lag. If the naive columns had been stored in any
--- non-UTC zone the deltas would cluster on a whole offset, and the smallest real
--- offset in use anywhere is 900 s. They do not, so created_at is a UTC wall
--- clock, and completed_at is written by the same code path on the same clock.
+-- CORRECTED 2026-08-21, after Juan read the first version of this note. It gave
+-- the 86.629 s figure alone and reasoned from created_at to completed_at, which
+-- read as though 86.6 s bounded every naive column. It does not, and the second
+-- row above is the one that belongs to the column this file converts.
+--
+-- The wider spread on completed_at is expected and is not evidence of anything
+-- wrong: created_at is written in the same upsert as lesson_completed_at, so its
+-- delta is machine lag, while completed_at is stamped whenever the topic is
+-- finally finished, which is minutes of real work later. Three to seventy-four
+-- minutes is what working through a practice set and a quiz looks like.
+--
+-- The conclusion is unchanged, and neither row supports a timezone offset. A
+-- stored-local column would cluster on a whole offset and the smallest real one
+-- in use anywhere is 900 s. created_at's deltas are far below that; completed_at
+-- 's are irregular values that track session length rather than any constant.
+-- Both columns were written by the same code path on the same clock.
 --
 -- `at time zone 'UTC'` therefore reinterprets, and does not move, every existing
 -- value. Nine of the 36 rows have a non-null completed_at, spanning

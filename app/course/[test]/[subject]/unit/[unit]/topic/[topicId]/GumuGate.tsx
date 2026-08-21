@@ -2,7 +2,8 @@
 
 import { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import type { AnswerKeyEntries, AnswerKeyEntry } from '@/lib/curriculum-utils';
-import { C, ink, EYEBROW, MATH_LINE_HEIGHT, INK_MUTED } from '@/app/components/curriculum-theme';
+import { EYEBROW, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { T } from '../../../../../../../components/curriculum-surface';
 import { FONT_BODY } from '@/app/components/fonts';
 
 // Tracks whether any GUMU session is live on this topic, so the answer key can
@@ -61,11 +62,11 @@ export function AnswerKey({
     return (
       <div
         style={{
-          border: `1px dashed ${ink(0.18)}`,
+          border: `1px dashed ${T.hairline}`,
           borderRadius: '14px',
           padding: '18px 20px',
-          background: C.sand,
-          color: ink(0.6),
+          background: T.quietBox,
+          color: T.muted,
           font: `400 14.5px ${FONT_BODY}`,
           lineHeight: 1.65,
         }}
@@ -87,14 +88,14 @@ export function AnswerKey({
   if (groups.length === 0) {
     return (
       <details style={{ cursor: 'pointer' }}>
-        <summary style={{ font: `500 15px ${FONT_BODY}`, color: C.violet }}>
+        <summary style={{ font: `500 15px ${FONT_BODY}`, color: T.answerKey }}>
           Reveal worked solutions
         </summary>
         <div
           className="um-prose"
           style={{
             marginTop: '16px',
-            color: ink(0.8),
+            color: T.ink2,
             font: `400 15px ${FONT_BODY}`,
             lineHeight: MATH_LINE_HEIGHT,
           }}
@@ -109,7 +110,7 @@ export function AnswerKey({
       {groups.map((group) => (
         <div key={group.label} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           {groups.length > 1 && (
-            <div style={{ ...EYEBROW, color: ink(0.38), fontSize: '10.5px' }}>{group.label}</div>
+            <div style={{ ...EYEBROW, color: T.disabled, fontSize: '10.5px' }}>{group.label}</div>
           )}
           {group.items.map((entry) => (
             <SolutionRow key={`${group.label}-${entry.item_number}`} entry={entry} />
@@ -126,12 +127,12 @@ function SolutionRow({ entry }: { entry: AnswerKeyEntry }) {
   return (
     <div
       style={{
-        background: C.paper,
+        background: T.panel,
         borderRadius: '12px',
         padding: open ? '17px 20px 20px' : '0',
         boxShadow: open
-          ? `inset 0 0 0 1.5px ${C.violet}`
-          : `inset 0 0 0 1px ${ink(0.08)}`,
+          ? `inset 0 0 0 1.5px ${T.answerKey}`
+          : `inset 0 0 0 1px ${T.hairline}`,
         display: 'flex',
         flexDirection: 'column',
         gap: '12px',
@@ -158,7 +159,7 @@ function SolutionRow({ entry }: { entry: AnswerKeyEntry }) {
           style={{
             flex: 'none',
             font: '600 12px ui-monospace, Menlo, monospace',
-            color: C.violet,
+            color: T.answerKey,
           }}
         >
           {String(entry.item_number).padStart(2, '0')}
@@ -170,7 +171,7 @@ function SolutionRow({ entry }: { entry: AnswerKeyEntry }) {
             minWidth: 0,
             font: `400 14.5px ${FONT_BODY}`,
             lineHeight: 1.6,
-            color: ink(0.7),
+            color: T.ink2,
           }}
           dangerouslySetInnerHTML={{ __html: entry.label_html }}
         />
@@ -178,7 +179,7 @@ function SolutionRow({ entry }: { entry: AnswerKeyEntry }) {
           style={{
             flex: 'none',
             font: `500 12.5px ${FONT_BODY}`,
-            color: open ? INK_MUTED : C.violet,
+            color: open ? T.muted : T.answerKey,
           }}
         >
           {open ? 'Hide' : 'Reveal solution'}
@@ -191,7 +192,7 @@ function SolutionRow({ entry }: { entry: AnswerKeyEntry }) {
           <div
             className="um-prose"
             style={{
-              color: ink(0.8),
+              color: T.ink2,
               font: `400 15px ${FONT_BODY}`,
               lineHeight: 2.1,
               minHeight: '30px',

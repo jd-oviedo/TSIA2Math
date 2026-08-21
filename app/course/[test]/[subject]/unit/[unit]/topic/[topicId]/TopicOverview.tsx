@@ -1,4 +1,5 @@
-import { C, ink, EYEBROW, INK_MUTED } from '@/app/components/curriculum-theme';
+import { EYEBROW } from '@/app/components/curriculum-theme';
+import { T } from '../../../../../../../components/curriculum-surface';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // The topic doorway: what the three parts are, where this student stands in
@@ -41,10 +42,24 @@ const STATUS_LABEL: Record<PartState['status'], string> = {
   ungated: 'Nothing to grade',
 };
 
+// The colour of the RIGHT-HAND STATE LABEL, which is text.
+//
+// "In progress" is NOT orange, and that is the settled rule rather than a
+// preference. Orange survives on this surface as a fill and a rule: the step
+// badge beside the in-progress part is ringed in T.cta, and the primary button
+// is filled with it. As text it cannot be read. Measured on the reading ground:
+// #F0A33E is 1.99 on the band and 1.74 on the page, against a 4.5 target, and
+// there is no approved orange that clears text contrast anywhere on the cream
+// ladder (the darkened #A8631F reaches 4.62 on paper and fails the other six).
+//
+// Caught by looking at the light screenshot after a mechanical C.sunset -> T.cta
+// conversion carried the old value straight through. The conversion was right
+// about the token and wrong about the role.
 function statusColor(status: PartState['status']): string {
-  if (status === 'complete') return C.green;
-  if (status === 'in_progress') return C.sunset;
-  return INK_MUTED;
+  if (status === 'complete') return T.correct;
+  // in_progress deliberately falls through to muted with the other states. The
+  // badge to the left is what marks it, in orange, where orange works.
+  return T.muted;
 }
 
 // The step number badge. Filled once the part is done, ringed while it is the
@@ -65,11 +80,11 @@ function StepMark({ n, status }: { n: number; status: PartState['status'] }) {
         alignItems: 'center',
         justifyContent: 'center',
         font: `600 12px ${FONT_BODY}`,
-        background: done ? C.green : 'transparent',
-        color: done ? C.paper : ink(0.55),
+        background: done ? T.correct : 'transparent',
+        color: done ? T.panel : T.muted,
         boxShadow: done
           ? 'none'
-          : `inset 0 0 0 ${active ? 2 : 1}px ${active ? C.sunset : ink(0.2)}`,
+          : `inset 0 0 0 ${active ? 2 : 1}px ${active ? T.cta : T.hairline}`,
       }}
     >
       {n}
@@ -91,14 +106,14 @@ export default function TopicOverview({
   return (
     <section style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
-        <div style={{ ...EYEBROW, color: INK_MUTED }}>In this topic</div>
+        <div style={{ ...EYEBROW, color: T.muted }}>In this topic</div>
         <p
           style={{
             margin: 0,
             maxWidth: 620,
             font: `400 14.5px ${FONT_BODY}`,
             lineHeight: 1.6,
-            color: ink(0.7),
+            color: T.ink2,
           }}
         >
           Three parts, in order.
@@ -129,8 +144,8 @@ export default function TopicOverview({
                 gap: 14,
                 padding: '16px 18px',
                 borderRadius: 14,
-                background: C.paper,
-                boxShadow: `inset 0 0 0 1px ${ink(0.1)}`,
+                background: T.panel,
+                boxShadow: `inset 0 0 0 1px ${T.hairline}`,
                 color: 'inherit',
                 textDecoration: 'none',
               }}
@@ -138,14 +153,14 @@ export default function TopicOverview({
               <StepMark n={i + 1} status={part.status} />
 
               <span style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 4 }}>
-                <span style={{ font: `600 16px ${FONT_HEADING}`, color: C.midnight }}>
+                <span style={{ font: `600 16px ${FONT_HEADING}`, color: T.ink }}>
                   {part.title}
                 </span>
-                <span style={{ font: `400 13px ${FONT_BODY}`, lineHeight: 1.5, color: ink(0.6) }}>
+                <span style={{ font: `400 13px ${FONT_BODY}`, lineHeight: 1.5, color: T.muted }}>
                   {part.detail}
                 </span>
                 {part.requirement && (
-                  <span style={{ font: `400 12.5px ${FONT_BODY}`, lineHeight: 1.5, color: ink(0.5) }}>
+                  <span style={{ font: `400 12.5px ${FONT_BODY}`, lineHeight: 1.5, color: T.muted }}>
                     {part.requirement}
                   </span>
                 )}
@@ -176,10 +191,10 @@ export default function TopicOverview({
             minHeight: 44,
             padding: '12px 24px',
             borderRadius: 12,
-            background: C.sunset,
-            boxShadow: `0 2px 0 ${C.sunsetShadow}`,
+            background: T.cta,
+            boxShadow: `0 2px 0 ${T.ctaShadow}`,
             font: `600 15px ${FONT_HEADING}`,
-            color: C.midnight,
+            color: T.ink,
             textDecoration: 'none',
           }}
         >
@@ -189,7 +204,7 @@ export default function TopicOverview({
           href="/dashboard/modules"
           style={{
             font: `500 13.5px ${FONT_BODY}`,
-            color: ink(0.6),
+            color: T.muted,
           }}
         >
           Back to modules
