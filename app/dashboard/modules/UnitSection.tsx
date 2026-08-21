@@ -124,9 +124,14 @@ export default function UnitSection({
               a 780px phone has, so the page scrolls a little to reach unit 5.
 
               NOT resolved by quietly tightening the spacing PR #117 tuned, and
-              NOT resolved by shipping a title nobody can read. Flagged for Juan
-              with both numbers; verify_modules_density fails on this and is
-              MEANT to until he picks. Do not silence it. */}
+              NOT resolved by shipping a title nobody can read.
+
+              SETTLED 2026-08-21: Juan chose the wrap and moved the fold, because
+              clipping cuts exactly the words that distinguish one unit from
+              another. verify_modules_density now measures against a stated
+              880px budget instead of the viewport height, and its header block
+              carries both measurements and the reason it moved. The budget has
+              less headroom than one more unit header, so this stays honest. */}
           <span
             style={{
               font: `600 18px ${FONT_HEADING}`,

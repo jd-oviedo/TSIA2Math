@@ -1,4 +1,3 @@
-import { INK_MUTED } from '../../components/curriculum-theme';
 import { V } from '../../components/dashboard-theme';
 import { FONT_BODY } from '../../components/fonts';
 
@@ -40,10 +39,24 @@ const LABEL: Record<RowStatus, string> = {
 function statusColor(status: RowStatus): string {
   if (status === 'complete') return V.statusComplete;
   if (status === 'in_progress') return V.statusProgress;
-  // Gated rows take the muted ink rather than the disabled ink. INK_DISABLED is
-  // 2.55 on cream and its own docstring says it is not for text; a student has to
-  // be able to READ that a topic is unavailable.
-  if (status === 'gated') return INK_MUTED;
+  // Gated rows take the muted ink rather than the disabled ink: INK_DISABLED is
+  // 2.55 on cream and its own docstring says it is not for text, and a student
+  // has to be able to READ that a topic is unavailable.
+  //
+  // V.muted, NOT the curriculum palette's INK_MUTED, and this line was wrong
+  // until 2026-08-21. That constant is rgba(14,14,17,.6) from the LIGHT-ONLY
+  // palette, and this row paints it on V.gatedRowBg, which is #26262B after
+  // dark. Measured on the rendered pixels: 4.88:1 light, 1.18:1 dark -- near
+  // black text on a near-black row, for the topic name and this label both, on
+  // 96 of 97 rows, seen by exactly the free-tier and Practice Pass students the
+  // gate was built for.
+  //
+  // It was the same defect this function was rewritten to fix, surviving in the
+  // one branch still pointing at a light-only constant. V.muted is the
+  // theme-aware token for this role and measures 5.81 light / 6.64 dark. No new
+  // colour: the readability argument above is unchanged, only the palette it is
+  // served from. verify_modules_states.mjs asserts both numbers now.
+  if (status === 'gated') return V.muted;
   return V.statusIdle;
 }
 
@@ -132,7 +145,8 @@ export default function TopicListRow({
         <span
           style={{
             font: `500 14.5px ${FONT_BODY}`,
-            color: gated ? INK_MUTED : V.heading,
+            // V.muted for the same reason as statusColor's gated branch above.
+            color: gated ? V.muted : V.heading,
           }}
         >
           {topicName}

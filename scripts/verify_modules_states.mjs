@@ -196,6 +196,72 @@ await check('the unit header names the unit', async () =>
 await check('the unwritten-topics line renders', async () =>
   (await page.textContent('body')).includes('3 more topics in this unit are being written.'));
 
+// ── The gated row has to be READABLE, not merely unclickable ────────────────
+//
+// ADDED 2026-08-21, after the screenshot walk caught what every check above
+// missed. The checks so far ask whether a gated row is a link; none of them asks
+// whether a student can read it. In dark mode they could not: statusColor()
+// returned INK_MUTED for the gated branch, and INK_MUTED is rgba(14,14,17,.6),
+// the LIGHT-ONLY curriculum ink, painted on the #26262B gated row. Measured
+// 1.18:1 -- near-black on near-black, for both the topic name and the "Not
+// available" label, on 96 of 97 rows for exactly the free-tier and Practice Pass
+// students this feature was built for.
+//
+// That is the same defect the status colours were fixed for, surviving in the
+// one branch of the same function that was left pointing at the light-only
+// palette. A contrast assertion is the only thing that would have caught it, so
+// it lives here now rather than in a reviewer's eye.
+//
+// Computed from the rendered pixels, not from the constants, so it reads what a
+// student sees: the effective background is found by walking up the tree past
+// transparent parents, which is what makes the row fill count.
+const contrastProbe = `(sel) => {
+  const el = document.querySelector(sel);
+  const parse = (c) => c.match(/[\\d.]+/g).map(Number);
+  const lin = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+  const lum = ([r, g, b]) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+  // The effective background: first ancestor with a non-transparent fill.
+  let bg = [255, 255, 255];
+  for (let n = el; n; n = n.parentElement) {
+    const c = parse(getComputedStyle(n).backgroundColor);
+    if (c.length < 4 || c[3] > 0) { bg = c.slice(0, 3); break; }
+  }
+  const fg = parse(getComputedStyle(el).color);
+  // Text alpha composited over the background it sits on.
+  const a = fg.length > 3 ? fg[3] : 1;
+  const over = [0, 1, 2].map((i) => fg[i] * a + bg[i] * (1 - a));
+  const [hi, lo] = [lum(over), lum(bg)].sort((x, y) => y - x);
+  return Math.round(((hi + 0.05) / (lo + 0.05)) * 100) / 100;
+}`;
+
+for (const theme of ['light', 'dark']) {
+  const cctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const cp = await cctx.newPage();
+  await cp.goto(`${BASE}/um-probe-states?theme=${theme}&state=gated`);
+  await cp.waitForTimeout(400);
+  // The label and the topic name are painted separately and were both wrong, so
+  // both are measured rather than one standing in for the other.
+  const label = await cp.evaluate(
+    `(${contrastProbe})('[data-probe-topic="progress"] > span:last-child')`
+  );
+  const name = await cp.evaluate(
+    `(${contrastProbe})('[data-probe-topic="progress"] > span:nth-child(2) > span:first-child')`
+  );
+  await check(`gated "Not available" label clears 4.5:1 in ${theme} (got ${label})`, () => label >= 4.5);
+  await check(`gated topic name clears 4.5:1 in ${theme} (got ${name})`, () => name >= 4.5);
+
+  // THE CONTROL. The same measurement on an ungated row in the same theme. If a
+  // failing gated row and a healthy ungated one cannot be told apart, the probe
+  // is measuring the wrong element rather than the colour.
+  await cp.goto(`${BASE}/um-probe-states?theme=${theme}&state=full`);
+  await cp.waitForTimeout(400);
+  const openName = await cp.evaluate(
+    `(${contrastProbe})('[data-probe-topic="progress"] > span:nth-child(2) > span:first-child')`
+  );
+  await check(`CONTROL: an ungated topic name also clears 4.5:1 in ${theme} (got ${openName})`, () => openName >= 4.5);
+  await cctx.close();
+}
+
 // KaTeX, in the theme that used to break it.
 for (const theme of ['light', 'dark']) {
   const kctx = await browser.newContext({ viewport: { width: 900, height: 600 } });
