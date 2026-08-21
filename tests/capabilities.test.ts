@@ -8,7 +8,7 @@ import {
   isFreeSample,
   freeSampleGrants,
   FREE_SAMPLE,
-  type Capability,
+  ALL_CAPABILITIES,
 } from '../app/lib/capabilities.ts';
 
 // The capability map, and the free sample.
@@ -60,7 +60,11 @@ test('worksheets belong to Practice Pass and up, including both teacher tiers', 
 });
 
 test('no plan means no capability, and an unknown plan grants nothing', () => {
-  const caps: Capability[] = ['curriculum', 'gumu', 'worksheets', 'teacher-dashboard', 'class-data-export'];
+  // Derived from the type, not hand-written. This line used to be a literal
+  // array, and because it was typed Capability[] a SHORT array stayed valid:
+  // adding a capability left the list silently non-exhaustive while the test
+  // went on passing over the subset it happened to name.
+  const caps = ALL_CAPABILITIES;
   for (const capability of caps) {
     assert.equal(planGrants(null, capability), false);
     assert.equal(planGrants(undefined, capability), false);
@@ -216,6 +220,32 @@ test('neither teacher rail hardcodes a tier name', () => {
     assert.ok(
       !/['"`]TEACHER · PRO['"`]/.test(rendered),
       `${file} still renders a hardcoded TEACHER · PRO`
+    );
+  }
+});
+
+test('the capability list is exhaustive, and stays exhaustive by construction', () => {
+  // The compiler is what enforces this, via Record<Capability, true> in
+  // capabilities.ts. These assertions are the runtime half: they catch the list
+  // being emptied or truncated by something the type system cannot see, such as
+  // a bad merge that deletes keys from the presence map.
+  assert.ok(ALL_CAPABILITIES.length >= 5, `only ${ALL_CAPABILITIES.length} capabilities`);
+  assert.deepEqual([...ALL_CAPABILITIES].sort(), [
+    'class-data-export',
+    'curriculum',
+    'gumu',
+    'teacher-dashboard',
+    'worksheets',
+  ]);
+
+  // Every capability any plan actually grants must appear in the list. If a
+  // plan could grant something the list does not name, every "no plan means no
+  // capability" assertion would skip it.
+  const granted = new Set(Object.values(CAPABILITIES).flatMap((set) => [...set]));
+  for (const capability of granted) {
+    assert.ok(
+      ALL_CAPABILITIES.includes(capability),
+      `${capability} is granted by a plan but missing from ALL_CAPABILITIES`
     );
   }
 });
