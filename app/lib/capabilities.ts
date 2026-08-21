@@ -42,6 +42,55 @@ export type Capability =
   // longer true, and the note has been corrected rather than left to rot.
   | "class-data-export";
 
+// ---------------------------------------------------------------------------
+// Exhaustiveness
+// ---------------------------------------------------------------------------
+
+/**
+ * Every capability, as a VALUE, checked by the compiler against the type.
+ *
+ * WHY THIS IS NOT IN THE TEST FILE, WHICH IS WHERE IT LOOKS LIKE IT BELONGS.
+ * tests/capabilities.test.ts carried a hand-written array of every capability,
+ * used to assert that no plan grants anything when the plan is null. It was
+ * typed `Capability[]`, which sounds like enough and is not: adding a member to
+ * the type leaves a SHORT array perfectly valid, so the list silently stopped
+ * being exhaustive and the test kept passing over the subset it happened to
+ * name. That is precisely the failure the test existed to catch.
+ *
+ * Moving the assertion into the test file would not have fixed it either.
+ * tsconfig.json excludes `tests`, verified by putting a deliberate type error
+ * in a test file and watching `tsc --noEmit` ignore it, so any compile-time
+ * check placed there can never fail a build.
+ *
+ * So the list lives here, where tsc does run, and the test imports it.
+ *
+ * Record<Capability, true> is what does the work, in both directions:
+ *
+ *   a member added to Capability but not here  -> TS2741, property missing
+ *   a key here that is not in Capability       -> TS2353, unknown property
+ *
+ * The values carry no meaning. `true` is just the cheapest inhabited type; the
+ * keys are the point.
+ */
+const CAPABILITY_PRESENCE: Record<Capability, true> = {
+  curriculum: true,
+  gumu: true,
+  worksheets: true,
+  "teacher-dashboard": true,
+  "class-data-export": true,
+};
+
+/**
+ * Every capability, in declaration order. Derived, never hand-maintained.
+ *
+ * Exported for tests. Nothing in the running app iterates capabilities: the
+ * gates all ask about one named capability at a time, which is the right shape
+ * for a gate and the reason this had no reason to exist until a test needed it.
+ */
+export const ALL_CAPABILITIES: readonly Capability[] = Object.keys(
+  CAPABILITY_PRESENCE
+) as Capability[];
+
 // Named separately so full-course is BUILT from it rather than restating it.
 // "EVERYTHING IN PRACTICE PASS, PLUS" is published on the pricing page, and a
 // commitment expressed as two hand-maintained lists is one edit from breaking
