@@ -4,15 +4,39 @@
 //
 // Everything is scoped under .um-topic so none of it reaches the teacher
 // dashboard or the adaptive test, which still run on the older --ec theme.
+//
+// The custom properties this file reads are declared at the top of the string,
+// from curriculum-surface.ts, so one <style> tag carries both the tokens and the
+// rules that use them.
+
+import { CURRICULUM_VARS_CSS } from '../../../../../../../components/curriculum-surface';
 
 export const TOPIC_PAGE_CSS = `
-.um-topic a { color: #6E9DC8; text-decoration: none; }
-.um-topic a:hover { color: #F0A33E; }
+${CURRICULUM_VARS_CSS}
 
-/* globals.css paints KaTeX with the theme's ink, which in dark mode is a pale
-   blue that would vanish on these cream cards. This page commits to one warm
-   light surface, so math is pinned to Deep Midnight. */
-.um-topic .katex { color: #0E0E11 !important; }
+/* Links were #6E9DC8, Gemini Blue, straight from the palette. Measured on the
+   surfaces they actually render on: 2.19 on the cream page, 2.50 on the band,
+   2.82 on paper. Every prose link in every lesson has failed AA since this tree
+   shipped. --umt-link is Gemini darkened to #2F6091 in light (4.99 to 6.45) and
+   is Gemini itself in dark, where it already cleared. See curriculum-surface.ts. */
+.um-topic a { color: var(--umt-link); text-decoration: none; }
+.um-topic a:hover { color: var(--umt-link-hover); }
+
+/* THE SINGLE HIGHEST-RISK LINE IN THE DARK-MODE CHANGE.
+   ======================================================
+   globals.css paints KaTeX with the global theme's --ec-ink, which inverts to a
+   pale blue in dark. This rule used to pin math to Deep Midnight #0E0E11,
+   because the page underneath was pinned to cream and could not move.
+
+   The page moves now, so a fixed dark ink would be exactly the failure this rule
+   was written to prevent, with the themes swapped: black math on a near-black
+   band. It follows --umt-ink instead, which is #0E0E11 in light and #F2EDDF in
+   dark, so the two halves can no longer come apart.
+
+   Still !important and still stated directly rather than inherited, for the
+   reason the print block below gives at :117: the globals.css rule is itself
+   !important, so specificity has to do the work. */
+.um-topic .katex { color: var(--umt-ink) !important; }
 /* Kept for a display equation that arrives already wrapped, but note that
    nothing on these pages does: remark-math only emits a display node for a $$
    fence on its own lines, and this curriculum writes $$...$$ on a single line,
@@ -61,26 +85,26 @@ export const TOPIC_PAGE_CSS = `
 
 /* Buttons carry their colours inline, so the interaction states have to win
    with !important rather than by cascade order. */
-.um-topic .um-btn-primary:not(:disabled):hover { background: #F5B15A !important; }
+.um-topic .um-btn-primary:not(:disabled):hover { background: var(--umt-cta-hover) !important; }
 .um-topic .um-btn-primary:not(:disabled):active {
   transform: translateY(2px);
   box-shadow: none !important;
 }
 .um-topic .um-btn-outline:not(:disabled):hover {
-  box-shadow: inset 0 0 0 1.5px rgba(14,14,17,.4) !important;
-  color: rgba(14,14,17,.85) !important;
+  box-shadow: inset 0 0 0 1.5px var(--umt-control-border) !important;
+  color: var(--umt-ink) !important;
 }
-.um-topic .um-link:not(:disabled):hover { color: #F0A33E !important; }
+.um-topic .um-link:not(:disabled):hover { color: var(--umt-link-hover) !important; }
 .um-topic .um-send:not(:disabled):hover { filter: brightness(1.06); }
 .um-topic .um-solution-row:hover { opacity: .82; }
 
 .um-topic .um-choice-live:hover {
-  background: #F7F3E7 !important;
-  box-shadow: inset 0 0 0 1.5px #87CEEB !important;
+  background: var(--umt-quiet-box) !important;
+  box-shadow: inset 0 0 0 1.5px var(--umt-focus) !important;
 }
-.um-topic .um-choice:focus-within { outline: 2px solid #6E9DC8; outline-offset: 2px; }
+.um-topic .um-choice:focus-within { outline: 2px solid var(--umt-focus); outline-offset: 2px; }
 .um-topic .um-input:focus { outline: none; }
-.um-topic .um-input::placeholder { color: rgba(14,14,17,.35); }
+.um-topic .um-input::placeholder { color: var(--umt-muted); }
 
 /* Server-rendered markdown: guided notes, worked solutions, and the static
    fallbacks. */
@@ -94,7 +118,7 @@ export const TOPIC_PAGE_CSS = `
 .um-topic .um-prose h6 {
   font-family: var(--font-kodchasan), 'Kodchasan', sans-serif;
   font-weight: 600;
-  color: #0E0E11;
+  color: var(--umt-ink);
   line-height: 1.35;
   margin: 1.6em 0 .6em;
 }
@@ -108,24 +132,24 @@ export const TOPIC_PAGE_CSS = `
 .um-topic .um-prose ul,
 .um-topic .um-prose ol { margin: 0 0 1em; padding-left: 1.4em; }
 .um-topic .um-prose li { margin-bottom: .35em; }
-.um-topic .um-prose strong { color: #0E0E11; font-weight: 600; }
-.um-topic .um-prose hr { border: 0; border-top: 1px solid rgba(14,14,17,.1); margin: 1.4em 0; }
+.um-topic .um-prose strong { color: var(--umt-ink); font-weight: 600; }
+.um-topic .um-prose hr { border: 0; border-top: 1px solid var(--umt-hairline); margin: 1.4em 0; }
 .um-topic .um-prose blockquote {
   margin: 0 0 1em;
   padding: 2px 0 2px 16px;
-  border-left: 3px solid rgba(200,169,110,.5);
-  color: rgba(14,14,17,.7);
+  border-left: 3px solid var(--umt-control-border);
+  color: var(--umt-ink-2);
 }
 .um-topic .um-prose code {
   font-family: ui-monospace, Menlo, monospace;
   font-size: .9em;
-  background: rgba(14,14,17,.05);
+  background: var(--umt-quiet-box);
   border-radius: 4px;
   padding: 1px 5px;
 }
 .um-topic .um-prose pre {
   overflow-x: auto;
-  background: rgba(14,14,17,.05);
+  background: var(--umt-quiet-box);
   border-radius: 10px;
   padding: 14px 16px;
 }
@@ -146,11 +170,11 @@ export const TOPIC_PAGE_CSS = `
 }
 .um-topic .um-prose th,
 .um-topic .um-prose td {
-  border: 1px solid rgba(14,14,17,.12);
+  border: 1px solid var(--umt-hairline);
   padding: 8px 11px;
   text-align: left;
 }
-.um-topic .um-prose th { background: #F2EDDF; font-weight: 600; color: #0E0E11; }
+.um-topic .um-prose th { background: var(--umt-quiet-box); font-weight: 600; color: var(--umt-ink); }
 .um-topic .um-prose img { max-width: 100%; height: auto; }
 /* Practice and quiz stems can carry a diagram too, and they are not inside
    .um-prose. Without this the SVG renders at its intrinsic width and overflows

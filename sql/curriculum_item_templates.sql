@@ -153,7 +153,26 @@ comment on column public.curriculum_item_templates.source_fingerprint is
 -- gumu_sessions, curriculum_attempts, student_misconceptions,
 -- curriculum_completion, classes and announcements all answer the anon key with
 -- 200 and an empty array -- grant present, RLS returning nothing. Tracked as a
--- separate cleanup; the point for this file is that "new table + enable RLS"
+-- separate cleanup;
+--
+-- REFINED 2026-08-21 for curriculum_completion, and the refinement changes which
+-- ROLE the entry is about. Measured directly against
+-- information_schema.role_table_grants rather than inferred from a PostgREST
+-- response:
+--
+--   authenticated   SELECT
+--   postgres        SELECT INSERT UPDATE DELETE TRUNCATE REFERENCES TRIGGER
+--   service_role    SELECT INSERT UPDATE DELETE TRUNCATE REFERENCES TRIGGER
+--   anon            nothing
+--
+-- So on this table the standing grant belongs to authenticated, not anon, and
+-- anon's has gone at some point since the sweep above. RLS-with-no-policy is
+-- still doing all of the work: the SELECT is authorised and returns zero rows.
+--
+-- Worth knowing for the eventual cleanup: a 200 with an empty array proves a
+-- grant exists for the key that asked, and says nothing about the other role.
+-- The inventory above was built from anon probes, so its role attribution should
+-- be re-measured per table from role_table_grants before anything is revoked. the point for this file is that "new table + enable RLS"
 -- does not produce zero grants here, and nothing about the pattern this follows
 -- would have caught that.
 --

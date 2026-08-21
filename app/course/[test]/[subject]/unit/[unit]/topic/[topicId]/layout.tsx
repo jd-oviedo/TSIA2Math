@@ -7,8 +7,10 @@ import ComingSoonTopic from './ComingSoonTopic';
 import { TOPIC_PAGE_CSS } from './topic-page-css';
 import { strandName } from '@/app/lib/strands';
 import { displayName } from '@/app/lib/auth';
-import { C, ink, EYEBROW } from '@/app/components/curriculum-theme';
+import { EYEBROW } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
+import TopicSurface from '../../../../../../../components/TopicSurface';
+import { T } from '../../../../../../../components/curriculum-surface';
 
 // The shell every topic sub-page renders inside: the course bar with the nav
 // menu, the topic header, and the GUMU gate provider that lets a live
@@ -39,15 +41,21 @@ export default async function TopicLayout({
   return (
     <GumuGateProvider>
       <style>{TOPIC_PAGE_CSS}</style>
-      <div
-        className="um-topic"
-        style={{
-          minHeight: '100dvh',
-          background: C.cream,
-          color: C.midnight,
-          fontFamily: FONT_BODY,
-        }}
-      >
+      {/* THE HARDCODED CREAM AND MIDNIGHT ARE GONE. READ BEFORE PUTTING THEM BACK.
+          ====================================================================
+          This element used to set `background: C.cream` and `color: C.midnight`
+          directly, which is what made the curriculum tree light only. That was a
+          recorded decision (curriculum-theme.ts:1-5) and it is SUPERSEDED as of
+          2026-08-21, at Juan's direction: dark mode on lessons, practice and
+          quizzes was a standing instruction, and the light-only recommendation
+          that displaced it should not have.
+
+          The old decision's own reasoning is answered rather than ignored. It
+          held that a cream page must not go dark because the math would invert
+          while the page did not. Both move together now, from --umt-* on this
+          wrapper. See app/components/curriculum-surface.ts for the full record
+          and the measured ratios. */}
+      <TopicSurface fontFamily={FONT_BODY}>
         <TopicChrome
           // displayName rather than the raw email, matching the student rail and
           // the three settings pages. See app/dashboard/layout.tsx for the note.
@@ -91,7 +99,12 @@ export default async function TopicLayout({
           }}
         >
           <header style={{ display: 'flex', flexDirection: 'column', gap: '9px' }}>
-            <div style={{ ...EYEBROW, color: C.sunset }}>Topic {topic.topic_id}</div>
+            {/* T.muted, not C.sunset. This eyebrow was orange-as-text on cream,
+                which measures 1.60:1 and is the role the palette retired on
+                2026-08-17. It is also one of the four orange text roles settled
+                on 2026-08-21: orange survives as a fill, a rule and the CTA, and
+                labels take ink. */}
+            <div style={{ ...EYEBROW, color: T.muted }}>Topic {topic.topic_id}</div>
             <h1
               className="um-title"
               style={{
@@ -99,7 +112,7 @@ export default async function TopicLayout({
                 font: `600 33px ${FONT_HEADING}`,
                 lineHeight: 1.2,
                 letterSpacing: '-0.01em',
-                color: C.midnight,
+                color: T.ink,
               }}
             >
               {topic.topic_name}
@@ -115,14 +128,14 @@ export default async function TopicLayout({
                 flexWrap: 'wrap',
                 padding: '15px 18px',
                 borderRadius: '14px',
-                background: C.paper,
-                boxShadow: `inset 0 0 0 1.5px ${ink(0.1)}`,
+                background: T.panel,
+                boxShadow: `inset 0 0 0 1.5px ${T.hairline}`,
                 font: `400 14.5px ${FONT_BODY}`,
                 lineHeight: 1.6,
-                color: ink(0.7),
+                color: T.ink2,
               }}
             >
-              <a href={signInHref} style={{ color: C.gemini, fontWeight: 600 }}>
+              <a href={signInHref} style={{ color: T.link, fontWeight: 600 }}>
                 Sign in with Google
               </a>
               <span>
@@ -151,7 +164,7 @@ export default async function TopicLayout({
             children
           )}
         </div>
-      </div>
+      </TopicSurface>
     </GumuGateProvider>
   );
 }

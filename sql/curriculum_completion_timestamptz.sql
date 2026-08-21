@@ -1,0 +1,136 @@
+-- curriculum_completion: give completed_at a time zone
+--
+-- ─── APPLIED 2026-08-21. Both sections ───────────────────────────────────────
+--
+-- Run by Juan in the Supabase SQL editor. completed_at and created_at are both
+-- timestamptz now, and created_at's now() default survived the type change and
+-- re-coerced, which answers the one thing this file said it could not see from
+-- outside PostgREST. The nine converted rows were checked against
+-- lesson_completed_at afterwards and the reinterpretation moved nothing.
+--
+-- Kept as a record. Do not run again.
+--
+-- RUN THIS FIRST, before the NOT NULL and furthest_section work in
+-- sql/curriculum_completion_furthest_section.sql, and before the switch to
+-- definition A lands in the app. It is the only one of the three that is
+-- blocking.
+--
+-- ─── The defect ──────────────────────────────────────────────────────────────
+--
+-- Measured against production 2026-08-21:
+--
+--   lesson_completed_at   timestamp WITH time zone
+--   completed_at          timestamp WITHOUT time zone
+--   created_at            timestamp WITHOUT time zone
+--
+-- app/lib/curriculum-progress.ts writes `new Date().toISOString()` into all
+-- three. That string carries a UTC offset ("...Z"). Into the timestamptz column
+-- Postgres reads the offset and stores an absolute instant, which is correct.
+-- Into the two without a zone it DISCARDS the offset and keeps the literal
+-- wall clock, so the value stored is a UTC wall clock sitting in a column whose
+-- type says it is local. The two are not the same thing and nothing in the
+-- schema records which one is meant.
+--
+-- ─── What breaks if this is skipped ──────────────────────────────────────────
+--
+-- Nothing today. completed_at is written on every answer and read by nothing,
+-- verified by grepping every reference in the repo.
+--
+-- That changes with definition A. completed_at becomes the value behind the
+-- syllabus progress counter, so it starts being compared against other times and
+-- rendered to students. Every one of those comparisons is against a timestamptz
+-- or a JS Date, and Postgres will coerce the naive column using the SESSION time
+-- zone rather than UTC. On a server running anything other than UTC that shifts
+-- every completion by the offset: a topic finished at 23:30 UTC reports as
+-- finished the following day, or the previous one, depending on direction.
+--
+-- Shipping definition A on top of this puts a timezone defect inside the one
+-- number a student reads as their progress. That is why it runs first.
+--
+-- ─── Do the existing values need converting? No. They are already UTC ────────
+--
+-- This was checked rather than assumed, because "the app writes ISO strings" is
+-- an argument about code and the question is about data.
+--
+-- lesson_completed_at is timestamptz, so it is an unambiguous UTC reference, and
+-- it is written in the SAME upsert as created_at. Comparing the two across all
+-- 36 rows on 2026-08-21:
+--
+--   created_at vs lesson_completed_at    n=35   min 0.007 s   max 86.629 s
+--   completed_at vs lesson_completed_at  n=9    min 188.8 s   max 4426.1 s
+--                                               (3.1 min)     (73.8 min)
+--
+-- CORRECTED 2026-08-21, after Juan read the first version of this note. It gave
+-- the 86.629 s figure alone and reasoned from created_at to completed_at, which
+-- read as though 86.6 s bounded every naive column. It does not, and the second
+-- row above is the one that belongs to the column this file converts.
+--
+-- The wider spread on completed_at is expected and is not evidence of anything
+-- wrong: created_at is written in the same upsert as lesson_completed_at, so its
+-- delta is machine lag, while completed_at is stamped whenever the topic is
+-- finally finished, which is minutes of real work later. Three to seventy-four
+-- minutes is what working through a practice set and a quiz looks like.
+--
+-- The conclusion is unchanged, and neither row supports a timezone offset. A
+-- stored-local column would cluster on a whole offset and the smallest real one
+-- in use anywhere is 900 s. created_at's deltas are far below that; completed_at
+-- 's are irregular values that track session length rather than any constant.
+-- Both columns were written by the same code path on the same clock.
+--
+-- `at time zone 'UTC'` therefore reinterprets, and does not move, every existing
+-- value. Nine of the 36 rows have a non-null completed_at, spanning
+-- 2026-08-02T05:27:47 to 2026-08-10T18:15:08.
+--
+-- ─── Do the writers need to change? No ───────────────────────────────────────
+--
+-- `new Date().toISOString()` into a timestamptz column is correct and
+-- unambiguous, and it is already what lesson_completed_at receives. After this
+-- runs, all three columns take the same input the same way and the code relies
+-- on no implicit coercion. There is no app change to pair with this migration,
+-- which is why it can run ahead of any deploy.
+
+-- ─── Section 1: completed_at. This is the blocking one ───────────────────────
+
+alter table public.curriculum_completion
+  alter column completed_at type timestamptz
+  using completed_at at time zone 'UTC';
+
+-- ─── Section 2: created_at. Same defect, not blocking ────────────────────────
+--
+-- WHAT THIS ENFORCES. The same correctness, on the column that records when the
+-- row first appeared.
+--
+-- WHAT BREAKS IF SKIPPED. Nothing in the app: created_at is not read anywhere in
+-- the repo. It is read by hand, in the SQL editor, when somebody is working out
+-- what happened and when, and that is exactly the situation in which a silently
+-- naive timestamp misleads. Left as its own section so it can be declined.
+
+alter table public.curriculum_completion
+  alter column created_at type timestamptz
+  using created_at at time zone 'UTC';
+
+-- ─── One thing that could not be measured from here ──────────────────────────
+--
+-- Column DEFAULTS are not visible through PostgREST, and information_schema is
+-- not an exposed schema, so this file cannot tell whether created_at carries a
+-- default and what it is. It does not affect the conversion above: `alter column
+-- type` keeps an existing default and re-coerces it, and if the default is
+-- now() it becomes correct rather than merely consistent.
+--
+-- If you want it confirmed, this is the read-only query:
+--
+--   select column_name, data_type, column_default, is_nullable
+--   from information_schema.columns
+--   where table_schema = 'public'
+--     and table_name = 'curriculum_completion'
+--   order by ordinal_position;
+--
+-- And to see the conversion's effect before committing to it, this shows the
+-- before and after side by side without changing anything:
+--
+--   select completed_at as stored_naive,
+--          completed_at at time zone 'UTC' as as_utc_instant,
+--          lesson_completed_at
+--   from public.curriculum_completion
+--   where completed_at is not null
+--   order by completed_at;

@@ -12,7 +12,10 @@ import TopicNav from '../TopicNav';
 import SectionHeading from '../SectionHeading';
 import GumuAvatar from '../GumuAvatar';
 import { AnswerKey } from '../GumuGate';
-import { C, ink, onDark, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { resolveCourseAccess } from '../../../../../../../../lib/course-access';
+import { allowsTopic } from '../../../../../../../../lib/capabilities';
+import { MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { T } from '../../../../../../../../components/curriculum-surface';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // Part 3: the mini quiz, gated at 3 of 4. The teacher-only answer key sits at
@@ -29,13 +32,32 @@ export default async function QuizPage({ params }: { params: Promise<RouteParams
     answerKeyRaw,
     teacher,
     authSession,
-    signInHref,
+    // signInHref is no longer destructured here. The old entry banner carried an
+    // anonymous branch offering "Sign in and I'll come talk through any you
+    // miss", which was dead code twice over: /course redirects a signed-out
+    // visitor to /login before this renders (verify_auth_gate.mjs pins it), and
+    // the offer it made was the tutor promise that is now gated anyway.
   } = await loadTopic(resolved);
 
-  const [nav, gates] = await Promise.all([
+  const [nav, gates, access] = await Promise.all([
     loadNavigation(courseId, topic.topic_id, 'quiz'),
     loadGates(authSession?.user?.id ?? null, courseId, topic.topic_id),
+    // THE GATE THIS BANNER SHIPPED WITHOUT.
+    //
+    // The entry banner below promised every visitor "get one wrong and I'll come
+    // talk it through with you", with no capability check anywhere on this route.
+    // The tutor is Full Course; a free-tier student on the AR.1.4 sample holds
+    // `curriculum` and NOT `gumu` (capabilities.ts freeSampleGrants), reaches
+    // this page, and was told about a conversation their plan does not include.
+    //
+    // resolveCourseAccess + allowsTopic is the SAME pair the grader already uses
+    // at api/curriculum/practice/route.ts:216 to decide whether a tutor session
+    // may open at all. Deliberately not a second gating path: if these two ever
+    // disagreed, the page would advertise a tutor the API then refuses.
+    resolveCourseAccess(),
   ]);
+
+  const tutorAvailable = allowsTopic(access, 'gumu', courseId, topic.topic_id);
 
   // Teachers get every worked solution, unconditionally, exactly as before.
   // Students get only the ones they have already answered correctly; the filter
@@ -54,45 +76,78 @@ export default async function QuizPage({ params }: { params: Promise<RouteParams
 
   return (
     <>
-      {/* GUMU introduces himself before the student is ever stuck. */}
-      <div
-        className="um-gumu-card"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '26px',
-          padding: '24px 28px',
-          borderRadius: '16px',
-          background: C.gumuBanner,
-        }}
-      >
-        <GumuAvatar size={64} plate />
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
-          <div style={{ font: `600 18px ${FONT_HEADING}`, color: C.sand }}>
-            Ready when you are.
+      {/* THE ENTRY STATE, TUTOR-ABSENT BY DEFAULT.
+          ==========================================
+          Absent is the DEFAULT rendering and the tutor card is additive, not the
+          other way round. Written that way deliberately: the version that ships
+          to the most restricted plan is the one that has to be complete and
+          correct on its own, and building it as a fallback is how it ends up
+          being the one nobody looks at.
+
+          The design supplies no tutor-absent layout for this surface. Rather
+          than invent chrome for it, the absent version is the same panel, the
+          same rhythm, with the promise removed and the facts that are true for
+          every plan kept. */}
+      {tutorAvailable ? (
+        <div
+          className="um-gumu-card"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '26px',
+            padding: '24px 28px',
+            borderRadius: '16px',
+            background: T.tutorSurface,
+          }}
+        >
+          <GumuAvatar size={64} plate />
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <div style={{ font: `600 18px ${FONT_HEADING}`, color: T.tutorInk }}>
+              Ready when you are.
+            </div>
+            <div
+              style={{
+                maxWidth: '520px',
+                font: `400 13.5px ${FONT_BODY}`,
+                lineHeight: 1.6,
+                color: T.tutorInk2,
+              }}
+            >
+              {quizItems.length > 0 ? `${quizItems.length} questions, no timer. ` : 'No timer. '}
+              Get one wrong and I&apos;ll come talk it through with you.
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '6px',
+            padding: '20px 24px',
+            borderRadius: '16px',
+            background: T.panel,
+            boxShadow: `inset 0 0 0 1px ${T.hairline}`,
+          }}
+        >
+          <div style={{ font: `600 18px ${FONT_HEADING}`, color: T.ink }}>
+            Four questions, and this topic is closed out.
           </div>
           <div
             style={{
               maxWidth: '520px',
               font: `400 13.5px ${FONT_BODY}`,
               lineHeight: 1.6,
-              color: onDark(0.6),
+              color: T.ink2,
             }}
           >
-            {quizItems.length > 0 ? `${quizItems.length} questions, no timer. ` : 'No timer. '}
-            {authSession ? (
-              <>Get one wrong and I&apos;ll come talk it through with you.</>
-            ) : (
-              <>
-                <a href={signInHref} style={{ color: C.sunset, fontWeight: 600 }}>
-                  Sign in
-                </a>{' '}
-                and I&apos;ll come talk through any you miss.
-              </>
-            )}
+            {quizItems.length > 0
+              ? `${quizItems.length} questions, no timer, and you can take it again.`
+              : 'No timer, and you can take it again.'}{' '}
+            You will see what you missed at the end.
           </div>
         </div>
-      </div>
+      )}
 
       {quizInteractive ? (
         <GatedQuiz
@@ -115,12 +170,12 @@ export default async function QuizPage({ params }: { params: Promise<RouteParams
           <div
             className="um-prose um-prose-card"
             style={{
-              background: C.paper,
-              border: `1px solid ${ink(0.09)}`,
+              background: T.panel,
+              border: `1px solid ${T.hairline}`,
               borderRadius: '16px',
               padding: '24px 26px',
               boxShadow: '0 1px 3px rgba(14,14,17,.05)',
-              color: ink(0.82),
+              color: T.ink2,
               font: `400 16px ${FONT_BODY}`,
               lineHeight: MATH_LINE_HEIGHT,
             }}

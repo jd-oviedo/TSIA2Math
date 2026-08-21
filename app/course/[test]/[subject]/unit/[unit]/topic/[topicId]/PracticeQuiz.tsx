@@ -1,13 +1,14 @@
 'use client';
 
 import { useCallback, useRef, useState } from 'react';
+import { T } from '../../../../../../../components/curriculum-surface';
 import { pageTurn, segmentState, type SegmentState } from '@/app/lib/practice-paging';
 import GumuChat from './GumuChat';
 import { useGumuGate } from './GumuGate';
 import QuizFinish from './QuizFinish';
 import QuizStrip from './QuizStrip';
 import { quizOutcome, solutionsAvailable } from '@/app/lib/quiz-finish';
-import { C, ink, EYEBROW, MATH_LINE_HEIGHT, INK_DISABLED, INK_MUTED, hairline } from '@/app/components/curriculum-theme';
+import { EYEBROW, MATH_LINE_HEIGHT, hairline } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // What the browser is allowed to see. Built server-side in page.tsx by
@@ -65,10 +66,10 @@ const LETTERS = ['A', 'B', 'C', 'D'];
 // equivalents -- green for correct, amber for missed, Sunset for the one in
 // view, and the standard hairline for untouched.
 const SEGMENT_COLOUR: Record<SegmentState, string> = {
-  current: C.sunset,
-  correct: C.green,
-  missed: C.amber,
-  untouched: ink(0.13),
+  current: T.cta,
+  correct: T.correct,
+  missed: T.missed,
+  untouched: T.hairline,
 };
 
 export default function PracticeQuiz({
@@ -258,8 +259,8 @@ export default function PracticeQuiz({
           view: it is the only thing on screen saying anything about the other
           nine. */}
       <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap' }}>
-        <h2 style={{ margin: 0, font: `600 19px ${FONT_HEADING}`, color: C.midnight }}>{heading}</h2>
-        <div style={{ font: `400 13px ${FONT_BODY}`, color: INK_MUTED }}>{blurb}</div>
+        <h2 style={{ margin: 0, font: `600 19px ${FONT_HEADING}`, color: T.ink }}>{heading}</h2>
+        <div style={{ font: `400 13px ${FONT_BODY}`, color: T.muted }}>{blurb}</div>
         <div style={{ flex: 1 }} />
         {!paged ? (
           // The mini quiz. Replaces a fill bar that lit its first N segments by
@@ -322,6 +323,47 @@ export default function PracticeQuiz({
         // rendered at all rather than shown and refused. Which solutions exist
         // is still decided server-side by loadEarnedSolutions; this only
         // decides when an already-earned one may be offered.
+        //
+        // ─── "REVEAL WORKED SOLUTION", DECIDED 2026-08-21 ──────────────────
+        //
+        // The design shows this link unconditionally on an UNANSWERED problem.
+        // Three options were put to Juan and he chose C, live only where a tutor
+        // route exists, on the ground that its label describes a mechanism the
+        // product actually has.
+        //
+        // C IS ALREADY WHAT SHIPS, and for a reason that was missed when the
+        // options were written. C and A ("omit until earned") differ only in what
+        // a Full Course student sees on an unanswered problem, and the answer is
+        // nothing, for both: a tutor session needs a GRADED WRONG multiple-choice
+        // answer to open. api/curriculum/practice/route.ts sets gumu_available
+        // only inside the grading response, in the branch where an answer came
+        // back wrong. There is no tutor to offer before an answer exists, so the
+        // option table's "Talk it through" cell for an unanswered problem
+        // described something the product cannot deliver.
+        //
+        // What C actually names is the behaviour in the grading path, which is
+        // already correct: after a wrong answer, a student WITH the capability is
+        // routed to the tutor and the correct answer is withheld, and a student
+        // WITHOUT it gets the correct answer inline and no panel. Same predicate
+        // as the banners.
+        //
+        // So the line below is the decision, not a step towards it: the control
+        // renders only when loadEarnedSolutions has released a solution for this
+        // item, which happens on a correct answer or on a tutor disclosure, and
+        // never on an unanswered one. No plan is offered something it does not
+        // include.
+        //
+        // B WAS REJECTED, and this is the record of why so it is not reopened.
+        // B rendered the link disabled with the condition stated, "Answer to
+        // unlock the worked solution". It puts a soft lock on a surface whose
+        // recorded principle (app/lib/topic-parts.ts:9-11) is that nothing inside
+        // a topic is ever shut: every part is reachable at any time and only the
+        // Next control carries a requirement. A greyed control that names its own
+        // precondition is the visual language of a locked topic, applied to the
+        // one product decision that says topics are not locked.
+        //
+        // A was not rejected so much as absorbed: on the surface where it and C
+        // differ, they turn out to be the same thing.
         const solution = canRevealSolutions ? solutions?.[item.item_number] : undefined;
         const solutionOpen = Boolean(openSolutions[item.item_number]) && !solutionsPaused;
 
@@ -332,9 +374,9 @@ export default function PracticeQuiz({
               margin: 0,
               padding: '24px 26px 22px',
               minWidth: 0,
-              border: `1px solid ${ink(0.09)}`,
+              border: `1px solid ${T.hairline}`,
               borderRadius: '16px',
-              background: C.paper,
+              background: T.panel,
               boxShadow: '0 1px 3px rgba(14,14,17,.05)',
               display: 'flex',
               flexDirection: 'column',
@@ -356,7 +398,7 @@ export default function PracticeQuiz({
                 gap: '12px',
               }}
             >
-              <span style={{ ...EYEBROW, color: INK_MUTED }}>
+              <span style={{ ...EYEBROW, color: T.muted }}>
                 Problem {index + 1} of {items.length}
                 {item.level ? ` · ${item.level}` : ''}
               </span>
@@ -369,7 +411,7 @@ export default function PracticeQuiz({
                     gap: '7px',
                     flex: 'none',
                     font: `500 12.5px ${FONT_BODY}`,
-                    color: result.isCorrect ? C.green : C.amber,
+                    color: result.isCorrect ? T.correct : T.missed,
                   }}
                 >
                   <span
@@ -377,13 +419,13 @@ export default function PracticeQuiz({
                       width: '7px',
                       height: '7px',
                       borderRadius: '50%',
-                      background: result.isCorrect ? C.green : C.amber,
+                      background: result.isCorrect ? T.correct : T.missed,
                     }}
                   />
                   {result.isCorrect ? 'Nailed it' : 'Not quite yet'}
                 </span>
               ) : (
-                <span style={{ font: `400 12.5px ${FONT_BODY}`, color: INK_MUTED, flex: 'none' }}>
+                <span style={{ font: `400 12.5px ${FONT_BODY}`, color: T.muted, flex: 'none' }}>
                   Multiple choice
                 </span>
               )}
@@ -392,7 +434,7 @@ export default function PracticeQuiz({
             <div
               className="um-stem"
               style={{
-                color: C.midnight,
+                color: T.ink,
                 font: `400 19px ${FONT_BODY}`,
                 lineHeight: MATH_LINE_HEIGHT,
                 minHeight: '34px',
@@ -412,33 +454,33 @@ export default function PracticeQuiz({
                 const isWrongPick = answered && isChoice && !result.isCorrect;
                 const isSelectedPending = isChoice && !answered;
 
-                let background: string = C.sand;
-                let ring: string = ink(0.08);
-                let circleBg: string = C.paper;
-                let circleRing: string = ink(0.14);
-                let circleColor: string = ink(0.55);
+                let background: string = T.quietBox;
+                let ring: string = T.hairline;
+                let circleBg: string = T.panel;
+                let circleRing: string = T.hairline;
+                let circleColor: string = T.muted;
                 let caption: string | null = null;
 
                 if (isAnswer) {
-                  background = C.greenBg;
-                  ring = C.greenLine;
-                  circleBg = C.green;
+                  background = T.correctTint;
+                  ring = T.correct;
+                  circleBg = T.correct;
                   circleRing = 'transparent';
-                  circleColor = C.paper;
+                  circleColor = T.panel;
                   caption = 'the answer';
                 } else if (isWrongPick) {
-                  background = C.amberBg;
-                  ring = C.amberLine;
-                  circleBg = C.sunset;
+                  background = T.missedTint;
+                  ring = T.missed;
+                  circleBg = T.cta;
                   circleRing = 'transparent';
-                  circleColor = C.midnight;
+                  circleColor = T.ink;
                   caption = 'your answer';
                 } else if (isSelectedPending) {
-                  background = C.paper;
-                  ring = C.sky;
-                  circleBg = C.sky;
+                  background = T.panel;
+                  ring = T.tutorAccent;
+                  circleBg = T.tutorAccent;
                   circleRing = 'transparent';
-                  circleColor = C.midnight;
+                  circleColor = T.ink;
                 }
 
                 return (
@@ -494,7 +536,7 @@ export default function PracticeQuiz({
                       style={{
                         flex: 1,
                         minWidth: 0,
-                        color: C.midnight,
+                        color: T.ink,
                         font: `400 16.5px ${FONT_BODY}`,
                         lineHeight: 1.6,
                       }}
@@ -505,7 +547,7 @@ export default function PracticeQuiz({
                         style={{
                           flex: 'none',
                           font: `400 12.5px ${FONT_BODY}`,
-                          color: INK_MUTED,
+                          color: T.muted,
                         }}
                       >
                         {caption}
@@ -541,10 +583,10 @@ export default function PracticeQuiz({
                     // page is the opposite of a register shift. The lip goes
                     // with it: it is the affordance that makes Sunset read as
                     // pressable, and it belongs to that colour.
-                    background: choice ? (quiet ? C.midnight : C.sunset) : ink(0.09),
-                    boxShadow: choice && !quiet ? `0 2px 0 ${C.sunsetShadow}` : 'none',
+                    background: choice ? (quiet ? T.ink : T.cta) : T.hairline,
+                    boxShadow: choice && !quiet ? `0 2px 0 ${T.ctaShadow}` : 'none',
                     font: `600 15px ${FONT_BODY}`,
-                    color: choice ? (quiet ? C.paper : C.midnight) : INK_DISABLED,
+                    color: choice ? (quiet ? T.panel : T.ink) : T.disabled,
                     cursor: choice ? 'pointer' : 'not-allowed',
                   }}
                 >
@@ -562,7 +604,7 @@ export default function PracticeQuiz({
                       alignItems: 'center',
                       gap: '9px',
                       font: `400 12.5px ${FONT_BODY}`,
-                      color: ink(0.3),
+                      color: T.disabled,
                     }}
                   >
                     <span
@@ -571,11 +613,11 @@ export default function PracticeQuiz({
                         width: '13px',
                         height: '13px',
                         borderRadius: '4px',
-                        background: ink(0.1),
+                        background: T.hairline,
                       }}
                     />
                     <span style={{ textDecoration: 'line-through' }}>Reveal worked solution</span>
-                    <span style={{ color: ink(0.38) }}>paused while we talk</span>
+                    <span style={{ color: T.disabled }}>paused while we talk</span>
                   </span>
                 ) : (
                   <button
@@ -593,7 +635,7 @@ export default function PracticeQuiz({
                       border: 'none',
                       background: 'none',
                       font: `400 13.5px ${FONT_BODY}`,
-                      color: C.gemini,
+                      color: T.link,
                       textDecoration: 'underline',
                       textUnderlineOffset: '3px',
                       cursor: 'pointer',
@@ -608,11 +650,11 @@ export default function PracticeQuiz({
               <div
                 className="um-prose"
                 style={{
-                  background: C.sand,
+                  background: T.quietBox,
                   borderRadius: '12px',
                   padding: '16px 18px',
-                  boxShadow: `inset 3px 0 0 ${C.violet}`,
-                  color: ink(0.8),
+                  boxShadow: `inset 3px 0 0 ${T.answerKey}`,
+                  color: T.ink2,
                   font: `400 15px ${FONT_BODY}`,
                   lineHeight: MATH_LINE_HEIGHT,
                 }}
@@ -640,7 +682,7 @@ export default function PracticeQuiz({
                       margin: 0,
                       font: `500 14.5px ${FONT_BODY}`,
                       lineHeight: 1.6,
-                      color: C.amber,
+                      color: T.missed,
                     }}
                   >
                     {result.isCorrect
@@ -659,7 +701,7 @@ export default function PracticeQuiz({
                         border: 'none',
                         background: 'none',
                         font: `500 13.5px ${FONT_BODY}`,
-                        color: C.gemini,
+                        color: T.link,
                         textDecoration: 'underline',
                         textUnderlineOffset: '3px',
                         cursor: 'pointer',
@@ -676,7 +718,7 @@ export default function PracticeQuiz({
                     margin: 0,
                     font: `400 14px ${FONT_BODY}`,
                     lineHeight: 1.6,
-                    color: C.amber,
+                    color: T.missed,
                   }}
                 >
                   {error}
@@ -731,16 +773,16 @@ export default function PracticeQuiz({
               borderRadius: '11px',
               border: 'none',
               background: 'none',
-              boxShadow: hairline(current === 0 ? ink(0.08) : ink(0.2)),
+              boxShadow: hairline(current === 0 ? T.hairline : T.hairline),
               font: `500 13.5px ${FONT_BODY}`,
-              color: current === 0 ? INK_DISABLED : ink(0.7),
+              color: current === 0 ? T.disabled : T.ink2,
               cursor: current === 0 ? 'not-allowed' : 'pointer',
             }}
           >
             &larr; Previous
           </button>
 
-          <span style={{ ...EYEBROW, color: INK_MUTED }}>
+          <span style={{ ...EYEBROW, color: T.muted }}>
             {current + 1} / {items.length}
           </span>
 
@@ -756,9 +798,9 @@ export default function PracticeQuiz({
               borderRadius: '11px',
               border: 'none',
               background: 'none',
-              boxShadow: hairline(current === items.length - 1 ? ink(0.08) : ink(0.2)),
+              boxShadow: hairline(current === items.length - 1 ? T.hairline : T.hairline),
               font: `500 13.5px ${FONT_BODY}`,
-              color: current === items.length - 1 ? INK_DISABLED : ink(0.7),
+              color: current === items.length - 1 ? T.disabled : T.ink2,
               cursor: current === items.length - 1 ? 'not-allowed' : 'pointer',
             }}
           >

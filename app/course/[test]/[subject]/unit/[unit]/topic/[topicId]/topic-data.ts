@@ -346,9 +346,69 @@ async function gatesFromShape(
     const practiceSolved = correctItemsInSection(attempts, courseId, topicId, 'practice');
     const quizSolved = correctItemsInSection(attempts, courseId, topicId, 'mini_quiz');
 
+    // ─── lessonDone FAILS OPEN, and it no longer means "read the lesson" ────
+    //
+    // DECIDED 2026-08-21 by Juan. Read this before tightening it back.
+    //
+    // THE PROBLEM. The two lines below this one take the higher of the stored
+    // snapshot and the observed attempt log, so a snapshot that is missing or
+    // stale cannot lock a student out of a gate they have cleared. That safety
+    // argument did NOT hold for the lesson, and it failed exactly where there is
+    // no second source: curriculum_attempts records answers, so a lesson read
+    // exists in one place only.
+    //
+    // What that cost, concretely. lessonAt is `existing?.lesson_completed_at ??
+    // (options.lessonCompleted ? now : null)`, and every later write comes from
+    // the practice grader, which passes no lessonCompleted. So a lost lesson
+    // write is inherited as null forever: the guided-notes row reverts to "Not
+    // started", resumeStep sends a student who is mid-practice back to "Start
+    // the guided notes", and allCleared can never become true, so completed_at
+    // is never stamped and the topic can never count as complete. Nothing
+    // re-locks, because no part of a topic gates a route and the quiz gate keys
+    // off practice correct rather than this.
+    //
+    // THE FIX. Treat evidence of practice or quiz activity as proof the student
+    // is past the lesson. Both flags are already computed below from the attempt
+    // log, so this costs no read, no write and no column.
+    //
+    // WHAT THE TOKEN NOW MEANS. "Not before the lesson", not "read the lesson".
+    // That is a deliberate redefinition, made on the ground that a student who
+    // answered the practice and the quiz has demonstrably engaged with the topic,
+    // and calling that incomplete because a write dropped is worse than counting
+    // it. If you need "actually read the notes" for something later, this is not
+    // the flag for it and you will need the second source rejected below.
+    //
+    // REJECTED, so this is not reopened blind:
+    //
+    //   A second source in curriculum_attempts (a lesson sentinel row). That
+    //   table is read by progressByTopic, gradableTotal, correctInSection and
+    //   hasAttemptedSection across three files, and every one would need to
+    //   exclude the sentinel or its counts corrupt. It also stops the attempt log
+    //   meaning "answers". Largest blast radius of the options for the smallest
+    //   gain.
+    //
+    //   A new append-only lesson_reads table. Semantically the cleanest and the
+    //   only option that preserves "read the lesson" literally. Rejected on the
+    //   trade: a table, an index, a migration and an extra read on the gate path,
+    //   against a failure with zero observed instances on a table holding 36 rows
+    //   whose write already fails soft. The same network call can drop both
+    //   writes anyway, so it reduces probability rather than closing the hole.
+    //
+    //   Returning the write failure to the client and retrying. Narrows the
+    //   window, does not close it: a closed tab or a persistent failure lands in
+    //   the same place, and it changes an API contract that currently always
+    //   answers {recorded:true}.
+    //
+    // Paired with instrumentation at the write site in
+    // app/lib/curriculum-progress.ts, so if this failure is ever real we find out
+    // from a log rather than from a student. Revisit with evidence, not before.
+    const observedPastLesson =
+      hasAttemptedSection(attempts, courseId, topicId, 'practice') ||
+      hasAttemptedSection(attempts, courseId, topicId, 'mini_quiz');
+
     return {
       ...base,
-      lessonDone: Boolean(snapshot?.lesson_completed_at),
+      lessonDone: Boolean(snapshot?.lesson_completed_at) || observedPastLesson,
       practiceCorrect: Math.max(snapshot?.practice_correct ?? 0, practiceSolved.size),
       quizCorrect: Math.max(snapshot?.quiz_correct ?? 0, quizSolved.size),
       practiceSolved,

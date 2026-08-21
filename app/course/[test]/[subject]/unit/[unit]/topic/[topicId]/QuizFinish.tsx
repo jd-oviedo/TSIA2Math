@@ -1,6 +1,7 @@
 'use client';
 
-import { C, ink, EYEBROW, MATH_LINE_HEIGHT, INK_MUTED } from '@/app/components/curriculum-theme';
+import { EYEBROW, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { T } from '../../../../../../../components/curriculum-surface';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import QuizStrip from './QuizStrip';
 import { type QuizOutcome } from '@/app/lib/quiz-finish';
@@ -58,19 +59,19 @@ export default function QuizFinish({
         gap: 18,
         padding: '22px 24px',
         borderRadius: 16,
-        background: C.paper,
-        boxShadow: `inset 0 0 0 1px ${ink(0.1)}`,
+        background: T.panel,
+        boxShadow: `inset 0 0 0 1px ${T.hairline}`,
       }}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <div style={{ ...EYEBROW, color: INK_MUTED }}>Mini quiz</div>
+        <div style={{ ...EYEBROW, color: T.muted }}>Mini quiz</div>
         <h3
           id="quiz-finish-heading"
           style={{
             margin: 0,
             font: `600 26px ${FONT_HEADING}`,
             lineHeight: 1.2,
-            color: C.midnight,
+            color: T.ink,
           }}
         >
           {/* The score, with the number given the size the design gives it. One
@@ -80,7 +81,7 @@ export default function QuizFinish({
           <span style={{ font: `600 40px ${FONT_HEADING}`, lineHeight: 1 }}>
             {outcome.correct}
           </span>
-          <span style={{ font: `400 18px ${FONT_BODY}`, color: ink(0.65) }}>
+          <span style={{ font: `400 18px ${FONT_BODY}`, color: T.ink2 }}>
             {' '}
             of {outcome.total} correct
           </span>
@@ -89,7 +90,7 @@ export default function QuizFinish({
         {/* The same strip the attempt showed, so the summary and the questions
             above it are reporting the same thing in the same shape. */}
         <QuizStrip itemNumbers={items.map((item) => item.item_number)} results={results} />
-        <p style={{ margin: 0, font: `400 14px ${FONT_BODY}`, lineHeight: 1.6, color: ink(0.65) }}>
+        <p style={{ margin: 0, font: `400 14px ${FONT_BODY}`, lineHeight: 1.6, color: T.ink2 }}>
           {clean
             ? hasSolutions
               ? 'Every question right. The worked solutions are open below if you want to compare your reasoning.'
@@ -102,7 +103,7 @@ export default function QuizFinish({
 
       {!clean && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          <div style={{ ...EYEBROW, color: INK_MUTED }}>What you missed</div>
+          <div style={{ ...EYEBROW, color: T.muted }}>What you missed</div>
           <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
             {missedItems.map((item) => (
               <li
@@ -110,14 +111,14 @@ export default function QuizFinish({
                 style={{
                   padding: '14px 16px',
                   borderRadius: 12,
-                  background: C.amberBg,
-                  boxShadow: `inset 3px 0 0 ${C.amber}`,
+                  background: T.missedTint,
+                  boxShadow: `inset 3px 0 0 ${T.missed}`,
                 }}
               >
                 <div
                   style={{
                     font: `600 12px ${FONT_BODY}`,
-                    color: C.amber,
+                    color: T.missed,
                     marginBottom: 6,
                   }}
                 >
@@ -131,7 +132,7 @@ export default function QuizFinish({
                   style={{
                     font: `400 14.5px ${FONT_BODY}`,
                     lineHeight: MATH_LINE_HEIGHT,
-                    color: ink(0.8),
+                    color: T.ink2,
                   }}
                   dangerouslySetInnerHTML={{ __html: item.stem_html }}
                 />
@@ -152,16 +153,16 @@ export default function QuizFinish({
             minHeight: 44,
             padding: '12px 22px',
             borderRadius: 12,
-            background: C.sand,
-            boxShadow: `inset 0 0 0 1px ${ink(0.14)}`,
+            background: T.quietBox,
+            boxShadow: `inset 0 0 0 1px ${T.hairline}`,
             font: `600 14.5px ${FONT_BODY}`,
-            color: C.midnight,
+            color: T.ink,
             textDecoration: 'none',
           }}
         >
           Back to the guided notes
         </a>
-        <span style={{ font: `400 13px ${FONT_BODY}`, lineHeight: 1.55, color: ink(0.5) }}>
+        <span style={{ font: `400 13px ${FONT_BODY}`, lineHeight: 1.55, color: T.muted }}>
           {clean
             ? 'Or carry on from the bottom of the page.'
             : 'Reread the notes, then try the ones above again.'}
