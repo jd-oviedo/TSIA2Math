@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { UNIT_TITLES, unitTitle, unitLabel } from '../app/lib/units.ts';
 import { unitFromParam, unitFromReferer } from '../app/dashboard/modules/referer.ts';
+import { allowsTopic, planGrants } from '../app/lib/capabilities.ts';
 
 // The unit titles, and the two ways the modules page learns which unit to open.
 
@@ -69,4 +70,71 @@ test('the referer rule still matches this app own topic route and nothing else',
   assert.equal(unitFromReferer('https://example.com/course/tsia2/math/unit/3/topic/X/'), 3);
   assert.equal(unitFromReferer('/dashboard/modules'), null);
   assert.equal(unitFromReferer('/course/tsia2/math/unit/3'), null);
+});
+
+// ─── The entitlement matrix ──────────────────────────────────────────────────
+//
+// What each plan may open, asserted against the SAME predicate the modules page
+// and the /course gate both call. This is the server-side half of issue #176: the
+// page rendered a working link to every topic regardless of plan, so the row a
+// student saw and the route they reached disagreed.
+//
+// The six shapes below are what resolveCourseAccess returns for each plan, read
+// off course-access.ts rather than invented:
+//   anonymous       :128  NO_COURSE_ACCESS, signedIn false
+//   free / pass      :174  NO_COURSE_ACCESS + signedIn true
+//   full-course      :150  curriculum + gumu
+//   teacher          :162  the second door, viaTeacher
+//   derived          :169  a student in an entitled teacher's class
+
+const ANY_TOPIC = 'QR.1.5';
+const SAMPLE = 'AR.1.4';
+const COURSE = 'tsia2-math';
+
+const ACCESS = {
+  anonymous: { curriculum: false, gumu: false, viaTeacher: false, signedIn: false },
+  freeTier: { curriculum: false, gumu: false, viaTeacher: false, signedIn: true },
+  practicePass: { curriculum: false, gumu: false, viaTeacher: false, signedIn: true },
+  fullCourse: { curriculum: true, gumu: true, viaTeacher: false, signedIn: true },
+  teacher: { curriculum: true, gumu: true, viaTeacher: true, signedIn: true },
+  derivedTeacher: { curriculum: true, gumu: true, viaTeacher: false, signedIn: true },
+} as const;
+
+test('anonymous reaches nothing, not even the free sample', () => {
+  // The session check is the whole point of allowsTopic's signedIn branch: the
+  // sample exemption must not become an anonymous door into the tree.
+  assert.equal(allowsTopic(ACCESS.anonymous, 'curriculum', COURSE, SAMPLE), false);
+  assert.equal(allowsTopic(ACCESS.anonymous, 'curriculum', COURSE, ANY_TOPIC), false);
+});
+
+test('free tier and Practice Pass reach the sample and nothing else', () => {
+  for (const key of ['freeTier', 'practicePass'] as const) {
+    assert.equal(allowsTopic(ACCESS[key], 'curriculum', COURSE, SAMPLE), true, key);
+    assert.equal(allowsTopic(ACCESS[key], 'curriculum', COURSE, ANY_TOPIC), false, key);
+    // Never GUMU, at either tier. That is the Full Course differentiator.
+    assert.equal(allowsTopic(ACCESS[key], 'gumu', COURSE, SAMPLE), false, key);
+  }
+});
+
+test('Practice Pass buys no curriculum, which is what makes it identical to free here', () => {
+  assert.equal(planGrants('practice-pass', 'curriculum'), false);
+  assert.equal(planGrants('practice-pass', 'worksheets'), true);
+  // The distinction between the two plans is real in the map and currently
+  // unobservable in the product, because worksheets are not built and are not
+  // in /course. Recorded so nobody reads the identical rows above as a bug.
+  assert.equal(planGrants(null, 'worksheets'), false);
+});
+
+test('the three paths that grant the whole tree all reach every topic', () => {
+  for (const key of ['fullCourse', 'teacher', 'derivedTeacher'] as const) {
+    assert.equal(allowsTopic(ACCESS[key], 'curriculum', COURSE, ANY_TOPIC), true, key);
+    assert.equal(allowsTopic(ACCESS[key], 'curriculum', COURSE, SAMPLE), true, key);
+  }
+});
+
+test('the sample is one topic, not a course-wide exemption', () => {
+  // A near-miss must not open: the exemption is an exact pair, and a course id
+  // that merely contains the right topic id is not it.
+  assert.equal(allowsTopic(ACCESS.freeTier, 'curriculum', COURSE, 'AR.1.5'), false);
+  assert.equal(allowsTopic(ACCESS.freeTier, 'curriculum', 'other-course', SAMPLE), false);
 });

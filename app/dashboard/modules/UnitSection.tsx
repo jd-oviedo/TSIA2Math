@@ -104,10 +104,50 @@ export default function UnitSection({
             &#9656;
           </span>
 
-          <span style={{ font: `600 18px ${FONT_HEADING}`, color: V.heading }}>
-            Unit {unitNumber}
+          {/* THE TITLE WRAPS, AND THAT BREAKS A PROBE. READ BEFORE CHANGING.
+              ================================================================
+              The requirement is that unit titles are visible to EVERY user on
+              this page. Two layouts were measured against that, with
+              verify_modules_density at 360x780:
+
+                one line, ellipsis   last header bottom 621px   FITS
+                                     but "Number Sense and Quantitative
+                                     Foundations" clips to "Num..." at 390px,
+                                     which is not a visible title
+
+                wrapped, two lines   last header bottom 836px   OVERFLOWS by 56px
+                                     every title readable in full at every width
+
+              This is the wrapped one. The title is the requirement; the fold is
+              a design goal PR #117 set when unit headers were a number and a
+              count and nothing else. Six wrapped headers now need 56px more than
+              a 780px phone has, so the page scrolls a little to reach unit 5.
+
+              NOT resolved by quietly tightening the spacing PR #117 tuned, and
+              NOT resolved by shipping a title nobody can read. Flagged for Juan
+              with both numbers; verify_modules_density fails on this and is
+              MEANT to until he picks. Do not silence it. */}
+          <span
+            style={{
+              font: `600 18px ${FONT_HEADING}`,
+              color: V.heading,
+              flex: 1,
+              minWidth: 0,
+              display: 'flex',
+              alignItems: 'baseline',
+              gap: 10,
+            }}
+          >
+            <span style={{ flex: 'none' }}>Unit {unitNumber}</span>
             {unitTitle ? (
-              <span style={{ font: `400 15px ${FONT_BODY}`, color: V.muted, marginLeft: 10 }}>
+              <span
+                title={unitTitle}
+                style={{
+                  font: `400 15px ${FONT_BODY}`,
+                  color: V.muted,
+                  minWidth: 0,
+                }}
+              >
                 {unitTitle}
               </span>
             ) : null}
