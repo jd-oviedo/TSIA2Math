@@ -11,7 +11,10 @@ import GatedQuiz from '../GatedQuiz';
 import TopicNav from '../TopicNav';
 import SectionHeading from '../SectionHeading';
 import GumuAvatar from '../GumuAvatar';
-import { C, ink, onDark, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { resolveCourseAccess } from '../../../../../../../../lib/course-access';
+import { allowsTopic } from '../../../../../../../../lib/capabilities';
+import { MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { T } from '../../../../../../../../components/curriculum-surface';
 import { FONT_BODY } from '@/app/components/fonts';
 
 // Part 2: practice.
@@ -33,10 +36,16 @@ export default async function PracticePage({ params }: { params: Promise<RoutePa
     authSession,
   } = await loadTopic(resolved);
 
-  const [nav, gates] = await Promise.all([
+  const [nav, gates, access] = await Promise.all([
     loadNavigation(courseId, topic.topic_id, 'practice'),
     loadGates(authSession?.user?.id ?? null, courseId, topic.topic_id),
+    // The same resolver and the same predicate the grader uses at
+    // api/curriculum/practice/route.ts:216, so this page and the API that backs
+    // it cannot disagree about whether a tutor exists for this viewer.
+    resolveCourseAccess(),
   ]);
+
+  const tutorAvailable = allowsTopic(access, 'gumu', courseId, topic.topic_id);
 
   // Teachers get every worked solution, unconditionally, exactly as before.
   // Students get only the ones they have already answered correctly; the filter
@@ -67,7 +76,7 @@ export default async function PracticePage({ params }: { params: Promise<RoutePa
             margin: 0,
             font: `400 14px ${FONT_BODY}`,
             lineHeight: 1.65,
-            color: ink(0.6),
+            color: T.muted,
           }}
         >
           This topic&apos;s practice is written work rather than multiple choice, so there&apos;s
@@ -78,12 +87,12 @@ export default async function PracticePage({ params }: { params: Promise<RoutePa
         <div
           className="um-prose um-prose-card"
           style={{
-            background: C.paper,
-            border: `1px solid ${ink(0.09)}`,
+            background: T.panel,
+            border: `1px solid ${T.hairline}`,
             borderRadius: '16px',
             padding: '24px 26px',
             boxShadow: '0 1px 3px rgba(14,14,17,.05)',
-            color: ink(0.82),
+            color: T.ink2,
             font: `400 16px ${FONT_BODY}`,
             lineHeight: MATH_LINE_HEIGHT,
           }}
@@ -91,33 +100,58 @@ export default async function PracticePage({ params }: { params: Promise<RoutePa
             __html: renderMarkdownWithMath(topic.practice_problems?.raw || ''),
           }}
         />
-        {/* The design pairs this fallback with an "Ask GUMU" button. A session
-            needs a graded wrong multiple-choice answer to open, so on a
-            written-work section there is nothing for him to start from. He is
-            introduced here instead. */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '14px',
-            padding: '14px 18px',
-            borderRadius: '14px',
-            background: C.gumuBanner,
-          }}
-        >
-          <GumuAvatar size={40} plate title="" />
+        {/* THE TUTOR LINE, GATED. Absent is the default.
+            ============================================
+            This banner told every visitor that the tutor "comes in on the mini
+            quiz", with no capability check on the route. Narrower exposure than
+            the quiz entry banner, because this branch only renders for
+            NON-INTERACTIVE practice, which today is QR.1.1 alone, and the free
+            sample is AR.1.4, so no free-tier student reaches it right now. That
+            is a fact about which topic happens to be the sample, not a gate, and
+            it stops being true the moment the sample changes. Gated on the same
+            pair as the quiz entry and the grader.
+
+            The absent version keeps the one thing that is true on every plan --
+            nothing in this section is graded -- and drops the promise. */}
+        {tutorAvailable ? (
           <div
             style={{
-              flex: 1,
-              font: `400 13.5px ${FONT_BODY}`,
-              lineHeight: 1.55,
-              color: onDark(0.75),
+              display: 'flex',
+              alignItems: 'center',
+              gap: '14px',
+              padding: '14px 18px',
+              borderRadius: '14px',
+              background: T.tutorSurface,
             }}
           >
-            Nothing here is graded. GUMU comes in on the mini quiz, as soon as there&apos;s a
-            wrong answer worth talking about.
+            <GumuAvatar size={40} plate title="" />
+            <div
+              style={{
+                flex: 1,
+                font: `400 13.5px ${FONT_BODY}`,
+                lineHeight: 1.55,
+                color: T.tutorInk2,
+              }}
+            >
+              Nothing here is graded. GUMU comes in on the mini quiz, as soon as
+              there&apos;s a wrong answer worth talking about.
+            </div>
           </div>
-        </div>
+        ) : (
+          <div
+            style={{
+              padding: '14px 18px',
+              borderRadius: '14px',
+              background: T.quietBox,
+              font: `400 13.5px ${FONT_BODY}`,
+              lineHeight: 1.55,
+              color: T.ink2,
+            }}
+          >
+            Nothing here is graded. Work through it at your own pace, then the mini
+            quiz closes out the topic.
+          </div>
+        )}
 
         {/* No gate: there is no gradable practice here to clear. */}
         <TopicNav previous={nav.previous} next={nav.next} unlocked />

@@ -58,6 +58,33 @@
 // not share a ground colour. That is a smaller inconsistency than two colour
 // temperatures on one page.
 
+// ─── CONVERTING A SURFACE ONTO THESE TOKENS: READ THIS FIRST ─────────────────
+//
+// A token swap preserves a ROLE error silently, and that has already happened
+// once in this migration. It will happen again, because the remaining surfaces
+// are converted the same way.
+//
+// The failure: C.sunset was mapped mechanically to T.cta across four files. That
+// is the correct token for every FILL and RULE it was used on, and wrong for the
+// one place it was used as TEXT, where TopicOverview painted the "In progress"
+// state label. Orange as text measures 1.99 on the reading band. The swap was
+// right about the token and wrong about the role, tsc passed, eslint passed, and
+// nothing caught it until the light screenshot was looked at.
+//
+// So, when converting:
+//
+//   1. Split every colour by ROLE before mapping it, not by name. Fill, rule,
+//      border, and text are four different questions, and only text has to clear
+//      4.5:1. Orange and the two state colours are the ones that differ by role.
+//   2. Grep the result for `color: T.cta` and `return T.cta`. There should be
+//      none. Orange is a fill, a rule and the CTA on this surface, never a label.
+//   3. Screenshot both themes before believing it. The type checker cannot see a
+//      contrast failure, and neither can a token name.
+//
+// The same trap applies to T.correct, T.missed and T.answerKey, which are all
+// legitimate as text AND as fills, so their light and dark values were chosen to
+// clear text contrast on the reading ladder rather than merely to look right.
+
 import type { ThemeName } from '../theme/themes';
 
 export interface CurriculumSurface {
