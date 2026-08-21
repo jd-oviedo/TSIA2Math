@@ -1,7 +1,7 @@
 import { createClient } from './supabase-server'
 import { createAdminClient } from './supabase-admin'
 import { isEntitledWithLegacyFallback } from './entitlement'
-import { planGrants } from './capabilities'
+import { planGrants, type Capability } from './capabilities'
 
 // The entitlement columns travel with the profile now.
 //
@@ -33,10 +33,23 @@ const PROFILE_COLUMNS = 'id, role, subscription_status, plan, plan_status, acces
  * isEntitledWithLegacyFallback alone admits an entitled buyer of the wrong
  * product, which is exactly the hole that let a student row promoted to
  * role='teacher' pass the teacher gate.
+ *
+ * `capability` is the Capability type from capabilities.ts rather than a union
+ * spelled out here. It used to be spelled out, and adding class-data-export
+ * meant editing the same list in two files: the map, which decides what a plan
+ * actually grants, and this signature, which decides what a caller is allowed
+ * to ask about. The two agreed at the moment of the split and were one edit
+ * from disagreeing, in the direction that fails quietly. A capability missing
+ * from the local copy is not a runtime bug, it is a compile error at every call
+ * site that names it, which reads as "this capability does not exist" rather
+ * than "somebody forgot a line".
+ *
+ * Type-only import, so this adds no runtime edge. auth.ts already imports
+ * planGrants from the same module, and capabilities.ts stays runtime-pure.
  */
 export function profileGrants(
   profile: Pick<Profile, 'plan' | 'plan_status' | 'access_until' | 'subscription_status'>,
-  capability: 'teacher-dashboard' | 'curriculum' | 'gumu' | 'worksheets' | 'class-data-export',
+  capability: Capability,
   source: string
 ): boolean {
   if (!planGrants(profile.plan, capability)) return false
