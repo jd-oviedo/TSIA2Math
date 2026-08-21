@@ -4,7 +4,7 @@ import { useState, type CSSProperties } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Footer } from "../components/Footer";
-import { loginHref, safeNext, DEFAULT_NEXT } from "../lib/next-param";
+import { loginHref, safeNext, isSafeNext, DEFAULT_NEXT } from "../lib/next-param";
 
 const OFF_WHITE = "#F5F5F3";
 const NEAR_BLACK = "#1A1A1A";
@@ -238,7 +238,21 @@ export function RoleSelector() {
   // requested path away again after the layout had just started preserving it.
   // Fixing only the layout would have changed nothing a student could see.
   const searchParams = useSearchParams();
-  const next = safeNext(searchParams.get("next"), DEFAULT_NEXT);
+  const rawNext = searchParams.get("next");
+  const next = safeNext(rawNext, DEFAULT_NEXT);
+
+  // THE TEACHER BAR NEEDS ITS OWN FALLBACK, and this is the trap in fixing it.
+  //
+  // The bar used to hardcode loginHref("/teacher"), throwing `next` away -- the
+  // same defect the student link carried, described above. But handing it the
+  // `next` on the line above would be a worse bug than the one it fixes: that
+  // value has ALREADY fallen back to /dashboard when no next was supplied, and
+  // bare /login is how most people arrive here. Every teacher clicking this bar
+  // would be sent to the student dashboard.
+  //
+  // So the raw param is tested rather than the resolved one: honour an explicit
+  // destination for either role, and fall back per role when there is none.
+  const teacherNext = isSafeNext(rawNext) ? rawNext : "/teacher";
 
   // THE OTHER PARAMETER THIS SCREEN SITS IN THE MIDDLE OF, and the one that was
   // being thrown away. A student who has just finished the anonymous practice
@@ -321,7 +335,7 @@ export function RoleSelector() {
           </div>
 
           {/* Teacher: plain link, no expansion */}
-          <Link href={loginHref("/teacher", "teacher", sessionId)} style={{ ...barShell, background: SKY }}>
+          <Link href={loginHref(teacherNext, "teacher", sessionId)} style={{ ...barShell, background: SKY }}>
             <span style={{ fontFamily: KODCHASAN, fontWeight: 700, fontSize: "20px", color: "#fff" }}>
               {c.teacher}
             </span>

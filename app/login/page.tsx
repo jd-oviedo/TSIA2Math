@@ -7,7 +7,7 @@ import { supabase } from "../lib/supabase";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { RoleSelector } from "./RoleSelector";
-import { safeNext } from "../lib/next-param";
+import { safeNext, DEFAULT_NEXT } from "../lib/next-param";
 
 function Blobs() {
   return (
@@ -43,7 +43,13 @@ function LoginCard() {
     // Guarded here too, so a refused value never reaches Supabase's redirectTo
     // and the callback is not the only thing standing between the param and a
     // redirect. Same helper, so the two cannot disagree about what is safe.
-    const next = safeNext(searchParams.get("next"), isTeacherFlow ? "/teacher" : "/");
+    // The student fallback was "/" while DEFAULT_NEXT is /dashboard and every
+    // other surface assumes the dashboard, so a student who reached this screen
+    // without a next was signed in and dropped on the marketing home page.
+    // Unreachable in practice -- nothing in the app produces role=student with
+    // no next -- which is why it survived; corrected so the one hand-typed URL
+    // that does reach it behaves like everything else.
+    const next = safeNext(searchParams.get("next"), isTeacherFlow ? "/teacher" : DEFAULT_NEXT);
     const sessionId = searchParams.get("session_id");
     if (next) callbackUrl.searchParams.set("next", next);
     if (sessionId) callbackUrl.searchParams.set("session_id", sessionId);
