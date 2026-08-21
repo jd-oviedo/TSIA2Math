@@ -1,8 +1,11 @@
 import { NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
 import { createClient } from '../../lib/supabase-server'
 import { createAdminClient } from '../../lib/supabase-admin'
 import { safeNext } from '../../lib/next-param'
 import { claimPending } from '../../lib/pending-entitlements'
+import { JOIN_COOKIE, JOIN_COOKIE_OPTIONS } from '../../lib/join-code'
+import { enrolFromJoinCode, type JoinOutcome } from '../../lib/join-enroll'
 
 // Resolve the public-facing origin to redirect back to. Behind a proxy
 // (GitHub Codespaces port-forwarding, Vercel) the dev server receives
@@ -17,6 +20,26 @@ function resolveOrigin(request: Request): string {
     return `${forwardedProto}://${forwardedHost}`
   }
   return new URL(request.url).origin
+}
+
+// Appends the join outcome to wherever the student was already going.
+//
+// Built by string append rather than `new URL(next, origin)` on purpose. The
+// note in app/lib/next-param.ts spells out why: `${origin}${next}` is
+// accidentally safe against every payload measured, and the URL constructor is
+// the obvious-looking refactor that would make it stop being safe. `next` has
+// already been through safeNext, so it starts with a single "/" and carries no
+// control characters -- but the parsing rule stays unchanged all the same.
+//
+// A fragment, if one ever appears, has to keep its position: query parameters
+// belong before the "#", not after it.
+function withJoinResult(base: string, outcome: JoinOutcome, className: string | null): string {
+  const hash = base.indexOf('#')
+  const path = hash === -1 ? base : base.slice(0, hash)
+  const fragment = hash === -1 ? '' : base.slice(hash)
+  const sep = path.includes('?') ? '&' : '?'
+  const name = className ? `&jc=${encodeURIComponent(className)}` : ''
+  return `${path}${sep}join=${outcome}${name}${fragment}`
 }
 
 export async function GET(request: Request) {
@@ -127,10 +150,67 @@ export async function GET(request: Request) {
       }
     }
 
+    // ─── The join-code handoff ───────────────────────────────────────────────
+    //
+    // A student who entered a class code before signing in has it waiting in an
+    // httpOnly cookie set by /api/enroll/lookup. This is the first moment an
+    // enrolment is possible at all: class_enrollments.student_id is a foreign
+    // key to auth.users(id), so there is no writing it before the account
+    // exists.
+    //
+    // NOTHING THE CLIENT SENT IS TRUSTED HERE. The cookie carries the code, not
+    // the class id, and enrolFromJoinCode re-validates it and re-resolves the
+    // class against the freshly authenticated user id.
+    //
+    // NEVER ALLOWED TO BREAK SIGN-IN, the same rule the pending-entitlement
+    // sweep above follows and for the same reason: a student whose enrolment
+    // failed is still a student who authenticated successfully, and must land on
+    // their dashboard with an explanation rather than at /login?error=auth_failed
+    // wondering what happened to their account.
+    if (!error && data.user) {
+      const joinCode = (await cookies()).get(JOIN_COOKIE)?.value
+      if (joinCode) {
+        let outcome: JoinOutcome = 'failed'
+        let className: string | null = null
+        try {
+          const admin = createAdminClient()
+          const result = await enrolFromJoinCode(admin, data.user.id, joinCode)
+          outcome = result.outcome
+          className = result.className
+        } catch (err) {
+          console.error('[auth/callback] JOIN-CODE ENROLMENT THREW. Sign-in continues.', err)
+        }
+        if (outcome !== 'enrolled' && outcome !== 'reactivated') {
+          console.warn(`[auth/callback] join code did not enrol: ${outcome}`)
+        }
+        const res = NextResponse.redirect(`${origin}${withJoinResult(next, outcome, className)}`)
+        // Cleared on every outcome, success or not. A code that has had its one
+        // attempt must not fire again on the student's next sign-in, and a
+        // failure they have been told about is not a reason to keep it.
+        res.cookies.set(JOIN_COOKIE, '', { ...JOIN_COOKIE_OPTIONS, maxAge: 0 })
+        return res
+      }
+    }
+
     if (!error) {
       return NextResponse.redirect(`${origin}${next}`)
     }
   }
 
-  return NextResponse.redirect(`${origin}/login?error=auth_failed`)
+  // AUTHENTICATION DID NOT HAPPEN: no code in the callback, or the exchange
+  // failed. Cancelling at Google's account chooser is the ordinary way to get
+  // here, and until now it landed silently on the role selector with an
+  // error param nothing read.
+  //
+  // The join cookie is DELIBERATELY LEFT IN PLACE on this path. The student's
+  // code is still good and still has minutes left on it, so the retry costs them
+  // nothing -- but /login cannot see an httpOnly cookie, so the fact that one is
+  // waiting is passed as join=pending for the screen to say so.
+  const pendingJoin = (await cookies()).get(JOIN_COOKIE)?.value
+  const failedParams = new URLSearchParams({ error: 'auth_failed' })
+  if (pendingJoin) {
+    failedParams.set('role', 'student')
+    failedParams.set('join', 'pending')
+  }
+  return NextResponse.redirect(`${origin}/login?${failedParams.toString()}`)
 }
