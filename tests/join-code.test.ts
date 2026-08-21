@@ -8,6 +8,7 @@ import {
   isPlausibleJoinCode,
 } from '../app/lib/join-code.ts';
 import { enrolFromJoinCode, isJoinSuccess } from '../app/lib/join-enroll.ts';
+import { messageFor } from '../app/dashboard/join-result-copy.ts';
 
 // The join code as a shape, and the post-auth enrolment that acts on it.
 //
@@ -34,18 +35,25 @@ test('a well-formed code is accepted and normalised', () => {
   }
 });
 
-// The whole reason the alphabet drops these. A student reading a code off a
-// whiteboard types O for 0 and l for 1, and being told "that code doesn't exist"
-// sends them to ask their teacher for a code that was right all along.
-test('the excluded glyphs are named as such, not reported as not-found', () => {
-  for (const raw of ['XK7R2O', 'XKOR2P', 'XK7R21', 'XKIR2P', 'XKLR2P', 'xk7r2o']) {
+// THE CHARSET IS NOT VALIDATED, and this test is here to keep it that way.
+//
+// A charset check against CODE_ALPHABET was written first and looked obviously
+// right. Production disagreed: of 7 active classes, three carry a join_code
+// containing '0' or '1'. Those codes predate the alphabet and nothing migrated
+// them, so validating against it would have told three real classrooms their
+// teacher's code was impossible and refused to look it up.
+//
+// The strings below are shaped like the live ones. If someone reinstates the
+// charset check, this fails.
+test('codes outside the generator alphabet are still accepted, because live ones exist', () => {
+  for (const raw of ['18ABCD', '55AB0C', 'B10XYZ', 'XK7R2O', 'XKIR2P', 'XKLR2P']) {
     const r = checkJoinCode(raw);
-    assert.equal(r.ok, false, raw);
-    assert.equal(r.reason, 'excluded', raw);
+    assert.equal(r.ok, true, raw);
+    assert.equal(r.code, raw.toUpperCase(), raw);
   }
 });
 
-test('length and emptiness are distinguished from charset problems', () => {
+test('length and emptiness are the only refusals', () => {
   assert.equal(checkJoinCode('').reason, 'empty');
   assert.equal(checkJoinCode('   ').reason, 'empty');
   assert.equal(checkJoinCode(null).reason, 'empty');
@@ -56,11 +64,13 @@ test('length and emptiness are distinguished from charset problems', () => {
   assert.equal(checkJoinCode('XK7R2PQ').reason, 'length');
 });
 
-test('characters outside the alphabet are refused', () => {
-  for (const raw of ['XK7R2!', 'XK7R2#', 'XK7R2é', "XK7R2'"]) {
-    const r = checkJoinCode(raw);
-    assert.equal(r.ok, false, raw);
-    assert.equal(r.reason, 'charset', raw);
+// Punctuation is not refused either, for the same reason: the validator's job is
+// to reject a field that cannot be a code, not to guess which characters a
+// teacher's code is allowed to contain. Nothing here can match a row, so it
+// costs one lookup and a miss.
+test('a six-character string is accepted whatever it contains', () => {
+  for (const raw of ['XK7R2!', 'XK7R2#', "XK7R2'"]) {
+    assert.equal(checkJoinCode(raw).ok, true, raw);
   }
 });
 
@@ -77,7 +87,7 @@ test('every code the generator can emit passes the validator', () => {
 
 test('the courtesy check agrees with the real one', () => {
   assert.equal(isPlausibleJoinCode('XK7R2P'), true);
-  assert.equal(isPlausibleJoinCode('XK7R2O'), false);
+  assert.equal(isPlausibleJoinCode('B10XYZ'), true);
   assert.equal(isPlausibleJoinCode('XK7R2'), false);
 });
 
@@ -211,7 +221,7 @@ test('a teacher cannot enrol in their own class', async () => {
 
 test('a tampered cookie is refused before it can become a write', async () => {
   const { client, writes } = stubAdmin({ cls: CLASS });
-  for (const bad of ['', 'XK7R2', 'XK7R2O', '../../etc', 'XK7R2P XK7R2P']) {
+  for (const bad of ['', 'XK7R2', '../../etc', 'XK7R2P XK7R2P']) {
     const r = await enrolFromJoinCode(client as never, STUDENT, bad);
     assert.equal(r.outcome, 'invalid', bad);
   }
@@ -288,4 +298,63 @@ test('no existence check happens before the insert', async () => {
   };
   await enrolFromJoinCode(client as never, STUDENT, 'XK7R2P');
   assert.deepEqual(calls, ['select:classes', 'insert:class_enrollments']);
+});
+
+// ─── What the student is told on arrival ─────────────────────────────────────
+//
+// The enrolment now happens in the OAuth callback, so the student learns whether
+// it worked on a page they did not submit anything from. The one property that
+// has to hold is that NO outcome is silent -- landing on the dashboard neither
+// enrolled nor told is the failure the whole flow exists to prevent.
+
+test('every join outcome produces a sentence, including unrecognised ones', () => {
+  const outcomes = [
+    'enrolled',
+    'reactivated',
+    'already-enrolled',
+    'class-gone',
+    'own-class',
+    'expired',
+    'invalid',
+    'failed',
+    // Not a real outcome. If the callback ever grows one and nobody adds copy,
+    // this is the branch that catches them, and it must still say something.
+    'something-nobody-has-written-yet',
+  ];
+  for (const outcome of outcomes) {
+    for (const name of ['Period 3 Algebra', null]) {
+      const m = messageFor(outcome, name);
+      assert.ok(m.text.trim().length > 20, `${outcome}/${name}: too short to be a real sentence`);
+      assert.ok(['good', 'warn', 'bad'].includes(m.tone), `${outcome}: bad tone`);
+    }
+  }
+});
+
+test('only the outcomes that actually enrolled read as good news', () => {
+  for (const good of ['enrolled', 'reactivated', 'already-enrolled']) {
+    assert.equal(messageFor(good, 'Algebra').tone, 'good', good);
+  }
+  for (const notGood of ['class-gone', 'own-class', 'expired', 'invalid', 'failed']) {
+    assert.notEqual(messageFor(notGood, 'Algebra').tone, 'good', notGood);
+  }
+});
+
+test('a missing class name never leaves a hole in the sentence', () => {
+  for (const outcome of ['enrolled', 'already-enrolled', 'failed']) {
+    const text = messageFor(outcome, null).text;
+    assert.ok(!text.includes('null') && !text.includes('undefined'), outcome);
+    assert.ok(!text.includes('““') && !text.includes('""'), outcome);
+  }
+});
+
+// User-facing copy, so it follows the house rule the rest of the product does.
+test('no em dashes or stray double hyphens reach the student', () => {
+  const all = [
+    ...['enrolled', 'reactivated', 'already-enrolled', 'class-gone', 'own-class', 'expired', 'failed']
+      .flatMap((o) => [messageFor(o, 'Algebra').text, messageFor(o, null).text]),
+  ];
+  for (const text of all) {
+    assert.ok(!text.includes('—'), `em dash in: ${text}`);
+    assert.ok(!text.includes('--'), `double hyphen in: ${text}`);
+  }
 });

@@ -85,8 +85,14 @@ export function ThemeSwitch({
     >
       {/* The glyph names the theme you would GET, matching the title text: a
           sun to go light, a moon to go dark. aria-hidden because the button
-          already has an accessible name and a title. */}
-      <span aria-hidden>{isDark ? '☀' : '☾'}</span>
+          already has an accessible name and a title.
+
+          These two characters specifically, U+263C and U+263E, because they are
+          the pair app/components/Header.tsx already ships and so are known to
+          render. U+2600 was tried first and falls back to a bare asterisk in
+          Chromium's headless font set, which is exactly the kind of thing that
+          renders fine on the machine it was written on and badly elsewhere. */}
+      <span aria-hidden>{isDark ? '☼' : '☾'}</span>
     </button>
   );
 }

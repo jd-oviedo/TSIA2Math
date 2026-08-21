@@ -43,6 +43,12 @@ export type JoinOutcome =
   | "class-gone"
   | "own-class"
   | "invalid"
+  // Synthesised by app/auth/callback, never returned from here: the sign-in
+  // carried the join flag but the cookie was gone by the time it ran. It is a
+  // real state a student can reach by leaving the Google prompt open past the
+  // cookie's fifteen minutes, and without it they would land on the dashboard
+  // silently unenrolled with nothing on screen to explain why.
+  | "expired"
   | "failed";
 
 export interface JoinResult {

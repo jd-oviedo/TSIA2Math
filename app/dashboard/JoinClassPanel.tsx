@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { C, INK_DISABLED } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import { V } from '@/app/components/dashboard-theme';
@@ -8,20 +8,19 @@ import { V } from '@/app/components/dashboard-theme';
 // Carried over from the old single-page dashboard, restyled onto the curriculum
 // palette. Same /api/enroll call and same six-character code rule.
 
-export default function JoinClassPanel({ initialCode }: { initialCode?: string }) {
-  const [code, setCode] = useState(() => (initialCode ?? '').toUpperCase().slice(0, 6));
+// THE AUTO-SUBMIT IS GONE, along with the ?code= parameter that fed it. A
+// student arriving with a code in hand is now handled before authentication:
+// /login looks the code up, shows them whose class it is, and the OAuth callback
+// performs the enrolment from an httpOnly cookie. The code never travels in a
+// URL any more, so there is nothing here to pick up on mount.
+//
+// This panel keeps its own job unchanged: the post-auth join box on the
+// dashboard, backed by /api/enroll, for a student who gets a code later.
+export default function JoinClassPanel() {
+  const [code, setCode] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-
-  // A code carried in from the /login role selector (student signs in with a
-  // join code already in hand) should submit itself, not wait for a click.
-  useEffect(() => {
-    if (initialCode && initialCode.trim().length === 6) {
-      handleJoin();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   async function handleJoin() {
     const trimmed = code.trim().toUpperCase();

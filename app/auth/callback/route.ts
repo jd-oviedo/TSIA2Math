@@ -169,6 +169,16 @@ export async function GET(request: Request) {
     // wondering what happened to their account.
     if (!error && data.user) {
       const joinCode = (await cookies()).get(JOIN_COOKIE)?.value
+      // A FLAG, NOT THE CODE. /login sets join=1 when the student confirmed a
+      // class, so an EXPIRED cookie can be told apart from never having had one.
+      // Without it the two are indistinguishable here and a student whose cookie
+      // lapsed mid-sign-in would land on the dashboard silently unenrolled.
+      const joinIntended = searchParams.get('join') === '1'
+
+      if (!joinCode && joinIntended) {
+        return NextResponse.redirect(`${origin}${withJoinResult(next, 'expired', null)}`)
+      }
+
       if (joinCode) {
         let outcome: JoinOutcome = 'failed'
         let className: string | null = null
@@ -208,7 +218,7 @@ export async function GET(request: Request) {
   // waiting is passed as join=pending for the screen to say so.
   const pendingJoin = (await cookies()).get(JOIN_COOKIE)?.value
   const failedParams = new URLSearchParams({ error: 'auth_failed' })
-  if (pendingJoin) {
+  if (pendingJoin && searchParams.get('join') === '1') {
     failedParams.set('role', 'student')
     failedParams.set('join', 'pending')
   }

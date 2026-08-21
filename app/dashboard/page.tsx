@@ -17,6 +17,7 @@ import { STRAND_NAMES } from '@/app/lib/strands';
 import { Card, CardTitle, Eyebrow, Muted, PageHeading, ProgressBar, formatDate } from './ui';
 import DiagnosticCta from './DiagnosticCta';
 import JoinClassPanel from './JoinClassPanel';
+import JoinResultBanner from './JoinResultBanner';
 import FlagsPanel from './FlagsPanel';
 import { C } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
@@ -29,12 +30,14 @@ import { V } from '@/app/components/dashboard-theme';
 export default async function DashboardHome({
   searchParams,
 }: {
-  searchParams: Promise<{ code?: string }>;
+  searchParams: Promise<{ join?: string; jc?: string }>;
 }) {
   const profile = await getProfile();
   if (!profile) return null; // The layout has already redirected.
 
-  const { code } = await searchParams;
+  // The join-code outcome, written onto this URL by app/auth/callback. `jc` is
+  // the class name, so the banner can say which class rather than "a class".
+  const { join, jc } = await searchParams;
 
   const [
     { topics, shapes },
@@ -173,6 +176,12 @@ export default async function DashboardHome({
       />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        {/* First thing on the page when a class code came through the sign-in,
+            because it answers the question the student is holding: did it work?
+            Rendered for EVERY outcome including the failures -- landing here
+            silently unenrolled is the state this whole flow exists to prevent. */}
+        {join && <JoinResultBanner outcome={join} className={jc} />}
+
         {/* Above the announcements and the progress cards, and only until the
             student has finished one diagnostic. It adds a card rather than
             replacing any -- see DiagnosticCta for why nothing below it moves. */}
@@ -355,7 +364,7 @@ export default async function DashboardHome({
         </Card>
 
         <Card>
-          <JoinClassPanel initialCode={code} />
+          <JoinClassPanel />
         </Card>
 
         {profile.role === 'teacher' && (

@@ -34,7 +34,6 @@ export const runtime = "nodejs";
 
 type LookupFailure =
   | "invalid"
-  | "excluded"
   | "not-found"
   | "rate-limited"
   | "unavailable";
@@ -64,15 +63,11 @@ export async function POST(req: Request) {
     typeof body === "object" && body !== null ? (body as { code?: unknown }).code : undefined
   );
 
-  // A MALFORMED CODE IS NOT A MISS, and the distinction is deliberate. A code
-  // containing O or 1 cannot match any class -- those glyphs are not in the
-  // alphabet -- so it is a typo, not a guess. Charging it against the miss
-  // budget would let a student who misreads a 0 on a whiteboard eat into a
-  // limit that exists to stop enumeration. It also skips the database round
-  // trip entirely.
-  if (!parsed.ok) {
-    return fail(parsed.reason === "excluded" ? "excluded" : "invalid", 400);
-  }
+  // A WRONG-LENGTH CODE IS NOT A MISS. It cannot match any row, so it is a
+  // half-typed field rather than a guess, and it neither reaches the database
+  // nor spends from the enumeration budget. The check is length only, because
+  // three live classes carry codes outside CODE_ALPHABET -- see join-code.ts.
+  if (!parsed.ok) return fail("invalid", 400);
 
   const admin = createAdminClient();
 

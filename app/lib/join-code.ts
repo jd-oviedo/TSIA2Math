@@ -13,16 +13,22 @@
 // 1/I/L are dropped because they get misread. 31 characters at length 6 is
 // 887,503,681 combinations, which is the number the pre-auth rate limits in
 // app/lib/rate-limit.ts are sized against.
+//
+// THIS IS A GENERATION POLICY, NOT A VALIDATION RULE, and the difference is not
+// academic. Measured against production on 2026-08-21: of 7 active classes,
+// THREE carry a join_code containing '0' or '1'. They predate this alphabet, and
+// nothing ever migrated them.
+//
+// So validating a typed code against this set would tell the students of those
+// three classes that their teacher's code is impossible, and refuse to even look
+// it up -- a screen they could never get past. /api/enroll has always checked
+// length alone, which is why the divergence has never bitten. checkJoinCode
+// below does the same. The alphabet still governs what NEW codes are minted; it
+// does not get to overrule what is already in the table.
 export const CODE_ALPHABET = '23456789ABCDEFGHJKMNPQRSTUVWXYZ';
 export const CODE_LENGTH = 6;
 
-// The characters deliberately absent from the alphabet. Worth naming separately
-// because typing one is not a random error -- it is a student reading an 0 as an
-// O off a whiteboard -- and telling them that is far more useful than "not
-// found".
-const EXCLUDED = new Set(['0', 'O', '1', 'I', 'L']);
-
-export type CodeReason = 'empty' | 'length' | 'excluded' | 'charset';
+export type CodeReason = 'empty' | 'length';
 
 // A flat record rather than a discriminated union on `ok`. tsconfig has
 // strict:false, so strictNullChecks is off and TypeScript will not narrow a
@@ -41,12 +47,15 @@ export interface CodeCheck {
  * Normalises and validates a typed code. Uppercases, and strips the spaces and
  * dashes people insert when copying a six-character string off a board.
  *
- * STRICTER THAN /api/enroll ON PURPOSE. That route checks length only, which is
- * right for an authenticated caller. Here the charset check is worth having for
- * two reasons: a code containing O or 1 can never match a real class, so
- * rejecting it costs a database round trip we would otherwise pay, and it never
- * reaches the miss rate limiter -- a student mistyping an O does not spend from
- * a budget meant for enumeration.
+ * LENGTH ONLY, matching /api/enroll. A charset check against CODE_ALPHABET was
+ * written first and removed: three live classes carry codes containing '0' or
+ * '1', so it would have made them unjoinable. See the note on CODE_ALPHABET.
+ *
+ * The consequence, stated so it is a choice rather than an oversight: a mistyped
+ * code now reaches the database and is charged against the miss rate limiter,
+ * where a charset check would have caught it for free. At 30 misses per ten
+ * minutes that is affordable, and a limit that occasionally costs a typo is far
+ * better than a validator that locks real students out of real classes.
  */
 export function checkJoinCode(raw: unknown): CodeCheck {
   const bad = (reason: CodeReason): CodeCheck => ({ ok: false, code: '', reason });
@@ -54,10 +63,6 @@ export function checkJoinCode(raw: unknown): CodeCheck {
   const code = raw.replace(/[\s-]/g, '').toUpperCase();
   if (code.length === 0) return bad('empty');
   if (code.length !== CODE_LENGTH) return bad('length');
-  // Checked before the general charset test so the more useful message wins:
-  // "codes never contain O or 0" beats "invalid character".
-  for (const ch of code) if (EXCLUDED.has(ch)) return bad('excluded');
-  for (const ch of code) if (!CODE_ALPHABET.includes(ch)) return bad('charset');
   return { ok: true, code, reason: null };
 }
 

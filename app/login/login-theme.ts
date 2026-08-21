@@ -296,6 +296,25 @@ body:has(.um-login[data-theme="dark"]) { background: ${DARK.ground}; }
   }
 }
 
+/* ─── The header at narrow widths ──────────────────────────────────────────
+   Measured rather than guessed, in Chromium with the real wordmark: the bar
+   needs 378px for wordmark + CHANGE ROLE + ES/EN + theme. That fits 390px with
+   12px to spare and OVERFLOWS at 375 (iPhone SE and 6-8) and 360 (the commonest
+   Android width) -- both more common than the 390 it was checked at.
+
+   So CHANGE ROLE, the only element here that is navigation rather than a
+   persistent control, drops out of the bar and into the top of the content
+   column below 400px. Nothing is removed at any width. Done in CSS rather than
+   a viewport hook so there is no hydration mismatch and no JS in the path.
+
+   Both copies are always rendered; exactly one is displayed. */
+.um-login .uml-role-inbar { display: inline-flex; }
+.um-login .uml-role-incol { display: none; }
+@media (max-width: 399px) {
+  .um-login .uml-role-inbar { display: none; }
+  .um-login .uml-role-incol { display: inline-flex; }
+}
+
 .um-login .uml-hidden {
   position: absolute;
   width: 1px;
