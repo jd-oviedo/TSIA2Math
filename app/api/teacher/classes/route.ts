@@ -2,18 +2,19 @@ import { NextResponse } from "next/server";
 import { randomInt } from "crypto";
 import { requireTeacher } from "../../../lib/auth";
 import { createAdminClient } from "../../../lib/supabase-admin";
+import { CODE_ALPHABET, CODE_LENGTH } from "../../../lib/join-code";
 
-// Join codes are read off a projector and typed by hand, so the alphabet drops
-// the glyphs that get misread: 0/O and 1/I/L. Six characters from 31 is about
-// 887 million combinations.
-//
 // Codes are generated here rather than left to a column default so a collision
 // is observable and retryable. The authority on uniqueness is still the
 // database: sql/join_code_unique.sql puts a unique index on classes.join_code,
 // and the retry below exists to turn that constraint into a new code instead
 // of an error the teacher sees.
-const CODE_ALPHABET = "23456789ABCDEFGHJKMNPQRSTUVWXYZ";
-const CODE_LENGTH = 6;
+//
+// THE ALPHABET MOVED to app/lib/join-code.ts and is imported rather than
+// redeclared. It is now read by three other places -- the pre-auth lookup, the
+// login field's courtesy check, and the OAuth callback's enrolment -- and a
+// generator that disagreed with its validators about which glyphs are legal
+// would mint codes that could not be typed in.
 const MAX_CODE_ATTEMPTS = 5;
 
 function generateJoinCode(): string {

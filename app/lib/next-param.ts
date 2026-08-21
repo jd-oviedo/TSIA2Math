@@ -54,9 +54,34 @@ export function safeNext(next: string | null | undefined, fallback = DEFAULT_NEX
 // sign-in screen it wants. Without a role, /login renders the role selector
 // rather than the OAuth screen, which is why the selector has to carry the param
 // onward rather than substituting its own.
-export function loginHref(next: string, role?: 'student' | 'teacher'): string {
+//
+// `sessionId` IS THE THIRD PARAMETER FOR A REASON, and it is not optional
+// decoration. An anonymous CAT taker who finishes a test is invited to sign in
+// and keep it (app/adaptive-test/ResultsSummary.tsx:186), and that invitation
+// carries ?session_id=. app/auth/callback claims the row for the new account,
+// but ONLY if the id survives the trip.
+//
+// It did not. That link sets no `role`, so it lands on the role selector, and
+// the selector rebuilt its onward links through this helper -- which knew about
+// `role` and `next` and nothing else. The id was dropped at the one hop between
+// the test and the callback, so the practice test a student had just finished
+// was never attached to the account they made to save it. Measured on the real
+// path: there is no route through the app where it currently survives.
+//
+// Passed through opaquely rather than validated. Every reader in the app treats
+// it as an opaque string (ResultsSummary's `sessionId: string | null`, the
+// callback's `.eq('id', sessionId)`), so imposing a format here would be this
+// file inventing a constraint the schema has not stated -- and getting it wrong
+// would drop the id silently, which is the exact failure being fixed.
+// URLSearchParams encodes it, and the callback's query is parameterised.
+export function loginHref(
+  next: string,
+  role?: 'student' | 'teacher',
+  sessionId?: string | null
+): string {
   const params = new URLSearchParams();
   if (role) params.set('role', role);
   params.set('next', safeNext(next));
+  if (sessionId) params.set('session_id', sessionId);
   return `/login?${params.toString()}`;
 }

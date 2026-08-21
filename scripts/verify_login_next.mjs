@@ -96,10 +96,13 @@ await check('a query string on the requested route survives', async () => {
 });
 
 // ── THE ROLE SELECTOR CARRIES IT ONWARD ─────────────────────────────────────
-// The student sign-in link lives behind the collapsed student bar.
+// The student sign-in link used to live behind a collapsed bar that had to be
+// clicked open, which is why this helper once began with a click. The redesign
+// makes the student option a plain link, so the expansion is gone and the click
+// with it. Nothing else about these checks changes: the assertion is still the
+// href the selector hands onward, which is the hop the whole file exists for.
 const studentLinkHref = async (loginUrl) => {
   await page.goto(`${BASE}${loginUrl}`, { waitUntil: 'domcontentloaded' });
-  await page.getByRole('button', { expanded: false }).first().click();
   const link = page.locator('a[href*="role=student"]').last();
   await link.waitFor({ state: 'visible', timeout: 10000 });
   return link.getAttribute('href');

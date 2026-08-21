@@ -124,6 +124,65 @@ export const claimRateLimit = new Ratelimit({
   analytics: true,
 });
 
+// /api/enroll/lookup -- the pre-auth join-code lookup. Two limiters, both keyed
+// on IP, because pre-auth there is no user id to key on and the IP is the only
+// thing standing in for "who is doing this".
+//
+// WHY TWO. Enumeration and volume are different shapes and one threshold cannot
+// serve both. The honest shape is a burst: a teacher writes the code on the
+// board and thirty students type it at once, all behind one school NAT. The
+// hostile shape is a walk of the keyspace, which is low-volume and almost
+// entirely misses.
+//
+// A PER-CODE COUNTER WAS CONSIDERED AND IS NOT HERE, because it cannot work.
+// Enumeration uses a different code on every request, so keyed on the code every
+// guess lands in a fresh bucket with a count of one and nothing ever
+// accumulates. It would bound repeated probing of a code someone already has --
+// harvesting -- which is not the threat being defended.
+//
+// (a) VOLUME. 120 per 10 minutes. Thirty students at four attempts each inside
+// one class period, which is 12/min -- the same rate as
+// curriculumPracticeRateLimit's 60/5m, so it is the house number rather than a
+// new shape. This is the threshold most likely to need retuning and the one
+// that produces false rejections if it is wrong.
+export const joinLookupRateLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(120, "10 m"),
+  prefix: "ratelimit:join-lookup",
+  analytics: true,
+});
+
+// (b) MISSES. 30 per 10 minutes, and the route charges this ONLY when the code
+// fails to resolve. That asymmetry is the whole design: thirty students typing a
+// code that exists spend nothing against it, a student who fat-fingers it twice
+// spends two, and an enumerator -- who misses on essentially every request -- is
+// finished after thirty.
+//
+// SIZED FOR A CLASSROOM, NOT A STUDENT, and this is the correction that matters.
+// The first draft was 10, which reintroduced exactly the NAT problem
+// gumuRateLimit was rekeyed to escape (see the comment at :56-67): at a realistic
+// typo rate one class period spends five to eight, so two classes starting
+// together would exceed 10 outright and a room of students would be told their
+// teacher's code was wrong. 30 covers three to six simultaneous classes on one
+// address.
+//
+// The security cost of that is small and was measured rather than asserted.
+// CODE_ALPHABET is 31 glyphs at length 6 (app/api/teacher/classes/route.ts:15),
+// so the keyspace is 31^6 = 887,503,681. At 30 per 10 minutes one address gets
+// 4,320 guesses a day, which is 205,441 IP-days to walk the keyspace and roughly
+// 411 IP-days per hit at 500 live classes -- still four times better than the
+// volume limiter alone (103), which is the fallback if this were dropped.
+//
+// KNOWN CEILING: a school-wide rollout in a single bell period, six or eight
+// teachers at once on one address, would still trip this. If that becomes a
+// launch scenario the number is 60, at 102,720 IP-days to walk.
+export const joinLookupMissRateLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(30, "10 m"),
+  prefix: "ratelimit:join-lookup-miss",
+  analytics: true,
+});
+
 // Best-effort client IP extraction. Vercel sets x-forwarded-for on every
 // request; if it's ever missing (e.g. local dev without a proxy in front),
 // everyone collapses onto the same "unknown" bucket — acceptable locally,
