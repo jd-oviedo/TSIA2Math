@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { requireTeacher } from "../../../../lib/auth";
+import { profileGrants, requireTeacher } from "../../../../lib/auth";
 import { createAdminClient } from "../../../../lib/supabase-admin";
 import { exportRateLimit, rateLimitHeaders, safeLimit } from "../../../../lib/rate-limit";
 import { formatZodError, teacherExportQuerySchema } from "../../../../lib/schemas";
@@ -23,8 +23,12 @@ import {
 // Order of operations is deliberate and must not be rearranged:
 //
 //   1. requireTeacher()      no query runs for a caller who is not an entitled
-//                            teacher. This already includes the plan check via
-//                            profileGrants, so there is no second gate to add.
+//                            teacher. This includes an entitlement check, but
+//                            only for 'teacher-dashboard', which BOTH teacher
+//                            tiers hold.
+//   1b. class-data-export    the tier boundary. Teacher Pro only. Added after
+//                            five Core accounts were found able to reach these
+//                            routes, one of them a paying customer.
 //   2. rate limit            keyed on the teacher id, which needs step 1 first.
 //   3. Zod                   reject malformed input before it reaches a query.
 //   4. resolveOwnedClasses() the authorisation boundary for WHICH classes.
@@ -32,6 +36,17 @@ import {
 export async function GET(req: Request) {
   const profile = await requireTeacher();
   if (!profile) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
+  // TEACHER PRO ONLY. requireTeacher above proves an entitled teacher; it asks
+  // for 'teacher-dashboard', which Core holds too. This is the tier boundary,
+  // and it runs before any query so a Core account costs nothing to refuse.
+  //
+  // 403 rather than 404: the caller is a legitimate teacher and the route
+  // exists. Hiding its existence would be misleading, and the dashboard already
+  // hides the control for them, which is the cosmetic half of this.
+  if (!profileGrants(profile, "class-data-export", "export.roster")) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 

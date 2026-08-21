@@ -824,9 +824,11 @@ function RosterCard({ s, classId }: { s: DisplayStudent; classId: string }) {
   );
 }
 
-function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, onExport }: {
+function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, onExport, canExport }: {
   students: DisplayStudent[]; enrolled: number; sortBy: string; onSortChange: (s: string) => void; classId: string; isMobile: boolean;
   onExport: () => void;
+  /** Teacher Pro only. Hiding this is presentation; the routes do the refusing. */
+  canExport: boolean;
 }) {
   return (
     <div id="roster" data-tour="roster">
@@ -843,7 +845,7 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
               {opt === 'risk' ? 'Need help' : opt}
             </button>
           ))}
-          <button
+          {canExport && <button
             onClick={onExport}
             data-tour="export"
             style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 6, cursor: 'pointer', border: '1px solid #D3D1C7', background: '#fff', color: '#5F5E5A', fontFamily: 'inherit' }}
@@ -852,7 +854,7 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
               <path d="M9 2v9" /><path d="M5 8l4 4 4-4" /><path d="M3 14v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-1" />
             </svg>
             Export
-          </button>
+          </button>}
         </div>
       </div>
 
@@ -940,7 +942,9 @@ function Spinner() {
 const SIDEBAR_W = 200;
 const SIDEBAR_W_COLLAPSED = 64;
 
-export default function TeacherDashboardClient({ initialClasses, teacherName, teacherEmail, isFounder, plan, tourState }: {
+export default function TeacherDashboardClient({ canExport, initialClasses, teacherName, teacherEmail, isFounder, plan, tourState }: {
+  /** Teacher Pro only. Cosmetic: the export routes enforce this themselves. */
+  canExport: boolean;
   initialClasses: ClassRow[]; teacherName: string; teacherEmail: string; isFounder: boolean;
   plan: string | null;
   tourState: 'done' | 'pending' | 'unavailable';
@@ -1206,7 +1210,7 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
                 <SummaryCards enrolled={rosterRows.length} notTested={notTested} crCount={collegeReady} crPct={crPct} weakStrand={weakStrand} avgScore={avgScore} cols={summaryCols} />
                 <NewAnnouncement classes={classes} selectedClassId={selectedClassId} />
                 <StrandPanel strandPct={strandPct} totalAttempts={totalAttempts} cols={strandCols} />
-                <Roster students={sortedStudents} enrolled={rosterRows.length} sortBy={sortBy} onSortChange={setSortBy} classId={selectedClassId} isMobile={isMobile} onExport={() => setShowExport(true)} />
+                <Roster students={sortedStudents} enrolled={rosterRows.length} sortBy={sortBy} onSortChange={setSortBy} classId={selectedClassId} isMobile={isMobile} onExport={() => setShowExport(true)} canExport={canExport} />
 
                 {/* Misconceptions */}
                 <div id="misconceptions" style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 13, gap: 12, flexWrap: 'wrap' }}>
@@ -1240,7 +1244,7 @@ export default function TeacherDashboardClient({ initialClasses, teacherName, te
       </div>
 
       {showInvite && selectedClass && <InviteModal classId={selectedClass.id} onClose={() => setShowInvite(false)} />}
-      {showExport && <ExportModal classes={classes} selectedClassId={selectedClassId} onClose={() => setShowExport(false)} />}
+      {showExport && canExport && <ExportModal classes={classes} selectedClassId={selectedClassId} onClose={() => setShowExport(false)} />}
       {showNewClass && <NewClassModal onClose={() => setShowNewClass(false)} onCreated={handleClassCreated} />}
       {showSupport && <SupportModal onClose={() => setShowSupport(false)} />}
       {showTour && (
