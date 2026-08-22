@@ -231,8 +231,16 @@ export default function LessonBody({
             // no ladder left to sit on, and a lone filled block beside
             // unfilled prose reads as the only object on the page. Hairline
             // dividers between entries carry the structure instead.
+            // SUPERSEDED 2026-08-22, and the note above is kept rather than
+            // rewritten so the reasoning reads. It was right that a PANEL beside
+            // unfilled prose reads as the only object on the page. T.railFill is
+            // not a panel: #EDE8DA is a 1.07:1 step off the ground, a change of
+            // rung rather than an object, and it gives the outline the ladder
+            // position it lost when the cards came out. The rail's eyebrows go
+            // from 4.62 to 4.74 on it.
+            background: T.railFill,
             padding: '2px 16px 2px 0',
-            borderRight: `1px solid ${T.hairline}`,
+            borderRight: `1px solid ${T.rule}`,
           }}
         >
           <div style={{ ...EYEBROW, color: T.muted }}>On this page</div>
@@ -381,7 +389,9 @@ export default function LessonBody({
               style={{
                 ...card,
                 padding: i === 0 ? '0 0 30px' : '30px 0',
-                borderTop: i === 0 ? 'none' : `1px solid ${T.hairline}`,
+                // T.rule, not T.hairline: this is the edge BETWEEN sections and
+                // it is the one carrying the structure of the whole column.
+                borderTop: i === 0 ? 'none' : `1px solid ${T.rule}`,
               }}
             >
               <div style={{ ...EYEBROW, color: T.muted }}>

@@ -374,7 +374,11 @@ export default function PracticeQuiz({
               margin: 0,
               padding: '24px 26px 22px',
               minWidth: 0,
-              border: `1px solid ${T.hairline}`,
+              // T.rule, 2.21 on the panel fill against hairline's 1.46. The
+              // FILL stays T.panel and must: the problem eyebrow is #6E6E6D,
+              // which clears AA at 5.02 there and fails on every other rung of
+              // the ladder (3.89 ground, 4.17 rail, 4.44 band, 4.13 quiet box).
+              border: `1px solid ${T.rule}`,
               borderRadius: 0,
               background: T.panel,
               boxShadow: '0 1px 3px rgba(14,14,17,.05)',
