@@ -51,7 +51,7 @@ export default function ComingSoonTopic({
           flexDirection: 'column',
           gap: 16,
           padding: '24px 26px',
-          borderRadius: '16px',
+          borderRadius: 0,
           background: T.panel,
           boxShadow: '0 1px 3px rgba(14,14,17,.05)',
         }}
@@ -78,7 +78,7 @@ export default function ComingSoonTopic({
             alignItems: 'center',
             gap: 8,
             padding: '12px 20px',
-            borderRadius: 11,
+            borderRadius: 0,
             boxShadow: `inset 0 0 0 1.5px ${T.controlBorder}`,
             font: `500 14.5px ${FONT_BODY}`,
             color: T.ink2,

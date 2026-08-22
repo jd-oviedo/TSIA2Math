@@ -1,4 +1,4 @@
-import { C, RADIUS, hairline } from '../../components/curriculum-theme';
+import { C } from '../../components/curriculum-theme';
 import { V } from '../../components/dashboard-theme';
 import { FONT_HEADING, FONT_BODY } from '../../components/fonts';
 
@@ -56,10 +56,11 @@ export default function CourseBand({
         display: 'flex',
         flexDirection: 'column',
         gap: 0,
-        padding: '14px 16px',
-        borderRadius: RADIUS,
-        background: V.cardBg,
-        boxShadow: hairline(V.cardBorder),
+        // NO CARD. The panel fill and its hairline ring are gone: this sits
+        // directly on the page ground with a rule under it. See
+        // curriculum-theme.ts RADIUS for why the card system came out.
+        padding: '4px 0 18px',
+        borderBottom: `1px solid ${V.line}`,
       }}
     >
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap' }}>
@@ -73,7 +74,7 @@ export default function CourseBand({
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 12 }}>
         <div
-          style={{ flex: 1, height: 6, borderRadius: 3, background: V.trackBg, overflow: 'hidden' }}
+          style={{ flex: 1, height: 6, background: V.trackBg, overflow: 'hidden' }}
           role="progressbar"
           aria-valuenow={completedTopics}
           aria-valuemin={0}

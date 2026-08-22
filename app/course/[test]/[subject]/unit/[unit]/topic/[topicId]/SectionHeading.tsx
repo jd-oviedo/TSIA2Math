@@ -20,7 +20,7 @@ export default function SectionHeading({
         <span
           style={{
             padding: '5px 11px',
-            borderRadius: '20px',
+            borderRadius: 0,
             background: T.insetRow,
             font: `500 11.5px ${FONT_BODY}`,
             color: T.ink2,

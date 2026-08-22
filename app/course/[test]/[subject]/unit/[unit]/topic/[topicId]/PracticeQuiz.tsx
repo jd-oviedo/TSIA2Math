@@ -375,7 +375,7 @@ export default function PracticeQuiz({
               padding: '24px 26px 22px',
               minWidth: 0,
               border: `1px solid ${T.hairline}`,
-              borderRadius: '16px',
+              borderRadius: 0,
               background: T.panel,
               boxShadow: '0 1px 3px rgba(14,14,17,.05)',
               display: 'flex',
@@ -492,7 +492,7 @@ export default function PracticeQuiz({
                       alignItems: 'center',
                       gap: '14px',
                       padding: '15px 18px',
-                      borderRadius: '12px',
+                      borderRadius: 0,
                       background,
                       boxShadow: `inset 0 0 0 ${isSelectedPending || isAnswer || isWrongPick ? 2 : 1.5}px ${ring}`,
                       minHeight: '26px',
@@ -575,7 +575,7 @@ export default function PracticeQuiz({
                   disabled={!choice || pending[item.item_number]}
                   style={{
                     padding: '13px 30px',
-                    borderRadius: '11px',
+                    borderRadius: 0,
                     border: 'none',
                     // Ink on the quiz, Sunset on practice. The redesign rations
                     // Sunset to one action per screen and the quiz is meant to
@@ -612,7 +612,7 @@ export default function PracticeQuiz({
                       style={{
                         width: '13px',
                         height: '13px',
-                        borderRadius: '4px',
+                        borderRadius: 0,
                         background: T.hairline,
                       }}
                     />
@@ -651,7 +651,7 @@ export default function PracticeQuiz({
                 className="um-prose"
                 style={{
                   background: T.quietBox,
-                  borderRadius: '12px',
+                  borderRadius: 0,
                   padding: '16px 18px',
                   boxShadow: `inset 3px 0 0 ${T.answerKey}`,
                   color: T.ink2,
@@ -770,7 +770,7 @@ export default function PracticeQuiz({
             disabled={current === 0}
             style={{
               padding: '10px 18px',
-              borderRadius: '11px',
+              borderRadius: 0,
               border: 'none',
               background: 'none',
               boxShadow: hairline(current === 0 ? T.hairline : T.hairline),
@@ -795,7 +795,7 @@ export default function PracticeQuiz({
             disabled={current === items.length - 1}
             style={{
               padding: '10px 18px',
-              borderRadius: '11px',
+              borderRadius: 0,
               border: 'none',
               background: 'none',
               boxShadow: hairline(current === items.length - 1 ? T.hairline : T.hairline),

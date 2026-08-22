@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import TopicNav from './TopicNav';
 import LessonHandoff from './LessonHandoff';
-import { EYEBROW, RADIUS, hairline, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { EYEBROW, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
 import { T } from '@/app/components/curriculum-surface';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import type { LessonSection } from '@/lib/curriculum-utils';
@@ -131,10 +131,18 @@ export default function LessonBody({
   const count = sections.length;
   const sectionLabel = `${count} ${count === 1 ? 'section' : 'sections'}`;
 
+  // NO CARD. A section of the notes is not an object on the page.
+  //
+  // This was a T.panel fill with a hairline ring and a 12px radius, one per
+  // authored section, so a lesson read as a stack of floating slabs and the eye
+  // met a container edge before it met a sentence. Sections are separated by a
+  // rule now and the prose sits on the ground.
+  //
+  // This is also the pair that broke dark mode: the fill was hardcoded light
+  // while the ink inside it followed the theme. Keeping it token-driven is what
+  // scripts/verify_lesson_dark.mjs asserts, by requiring the fill to DIFFER
+  // between themes.
   const card = {
-    background: T.panel,
-    borderRadius: RADIUS,
-    boxShadow: hairline(T.hairline),
     color: T.ink2,
     font: `400 16px ${FONT_BODY}`,
     lineHeight: MATH_LINE_HEIGHT,
@@ -174,13 +182,13 @@ export default function LessonBody({
             display: 'flex',
             flexDirection: 'column',
             gap: 10,
-            padding: '20px 22px',
-            borderRadius: RADIUS,
-            // The rail is its own rung on the surface ladder, a shade below the
-            // paper cards it sits beside, so the reading column stays the
-            // brightest thing on the page.
-            background: T.rail,
-            boxShadow: hairline(T.hairline),
+            // A PLAIN COLUMN, not a panel. The rail was a filled rounded card a
+            // rung below the paper it sat beside; with the paper gone there is
+            // no ladder left to sit on, and a lone filled block beside
+            // unfilled prose reads as the only object on the page. Hairline
+            // dividers between entries carry the structure instead.
+            padding: '2px 16px 2px 0',
+            borderRight: `1px solid ${T.hairline}`,
           }}
         >
           <div style={{ ...EYEBROW, color: T.muted }}>On this page</div>
@@ -258,9 +266,9 @@ export default function LessonBody({
           // Without this a wide table or a long equation inside a flex child
           // sets the column's floor width and pushes the rail off the page.
           minWidth: 0,
-          background: T.band,
-          borderRadius: RADIUS,
-          padding: '22px 24px',
+          // The band fill comes off with the cards. The reading column is the
+          // page ground now; see curriculum-theme.ts RADIUS.
+          padding: '2px 0 0',
         }}
       >
         <div
@@ -287,7 +295,15 @@ export default function LessonBody({
 
         {count > 0 ? (
           sections.map((section, i) => (
-            <section key={i} className="um-prose-card" style={{ ...card, padding: '26px 28px' }}>
+            <section
+              key={i}
+              className="um-prose-card"
+              style={{
+                ...card,
+                padding: i === 0 ? '0 0 30px' : '30px 0',
+                borderTop: i === 0 ? 'none' : `1px solid ${T.hairline}`,
+              }}
+            >
               <div style={{ ...EYEBROW, color: T.muted }}>
                 Section {i + 1} of {count}
               </div>

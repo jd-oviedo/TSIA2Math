@@ -292,7 +292,7 @@ export default function GumuChat({
       style={{
         marginTop: '18px',
         background: T.insetRow,
-        borderRadius: '16px',
+        borderRadius: 0,
         padding: '18px 20px 20px',
         display: 'flex',
         flexDirection: 'column',
@@ -382,7 +382,7 @@ export default function GumuChat({
             alignItems: 'center',
             gap: '10px',
             background: T.panel,
-            borderRadius: '13px',
+            borderRadius: 0,
             padding: '10px 11px',
             boxShadow: 'inset 0 0 0 1.5px rgba(110,157,200,.35)',
           }}
@@ -416,7 +416,7 @@ export default function GumuChat({
               width: '34px',
               height: '34px',
               flex: 'none',
-              borderRadius: '9px',
+              borderRadius: 0,
               border: 'none',
               background: draft.trim() ? T.tutorAccent : T.track,
               color: draft.trim() ? T.ctaInk : T.disabled,
@@ -458,7 +458,7 @@ export default function GumuChat({
             disabled={pending}
             style={{
               padding: '13px',
-              borderRadius: '12px',
+              borderRadius: 0,
               border: 'none',
               background: 'transparent',
               boxShadow: `inset 0 0 0 1.5px ${T.controlBorder}`,
@@ -546,7 +546,7 @@ function SupportCard({ copy }: { copy: CrisisCopy }) {
       style={{
         marginTop: '18px',
         background: T.panel,
-        borderRadius: '16px',
+        borderRadius: 0,
         padding: '22px 24px 24px',
         boxShadow: `inset 0 0 0 1.5px ${T.hairline}`,
         display: 'flex',
@@ -571,7 +571,7 @@ function SupportCard({ copy }: { copy: CrisisCopy }) {
               flexDirection: 'column',
               gap: '9px',
               padding: '15px 17px',
-              borderRadius: '13px',
+              borderRadius: 0,
               background: T.insetRow,
             }}
           >
@@ -593,7 +593,7 @@ function SupportCard({ copy }: { copy: CrisisCopy }) {
                     alignItems: 'center',
                     minHeight: 44,
                     padding: '0 18px',
-                    borderRadius: '10px',
+                    borderRadius: 0,
                     background: T.ink,
                     color: T.panel,
                     font: `600 14.5px ${FONT_BODY}`,

@@ -121,6 +121,20 @@ export default function TopicListRow({
         textDecoration: 'none',
         // #F6F2E8 in light, the theme's inset fill in dark. The pair and the
         // reason it is a pair are recorded in dashboard-theme.ts.
+        // THE GATED FILL IS AN ENTITLEMENT LOCK, NOT A PREREQUISITE ONE.
+        //
+        // V.gatedRowBg is #F6F2E8 in light, and the design import uses that same
+        // value for a row reading "Locked, finish QR.1.6 to open". PREREQUISITE
+        // GATING DOES NOT EXIST AND IS NOT BEING BUILT (ruled out 2026-08-22,
+        // and previously recorded as deliberately absent in topic-parts.ts:9-11
+        // and capabilities.ts). This fill means the student's PLAN does not
+        // reach this topic.
+        //
+        // The mockup hedges it too: its locked row sits inside
+        // `<sc-if value="{{ showGating }}">`, a toggle the designer added so the
+        // state could be switched off. It was offered as an option, never as a
+        // requirement, so nobody should later read the import as having asked
+        // for it.
         background: gated ? V.gatedRowBg : undefined,
         cursor: gated ? 'default' : undefined,
       }}
@@ -134,7 +148,9 @@ export default function TopicListRow({
           flex: 'none',
           width: 9,
           height: 9,
-          borderRadius: '50%',
+          // SQUARE, not a dot. The status glyph is an 11px square in the
+          // redesign, matching the squared geometry of everything around it.
+          borderRadius: 0,
           background: status === 'complete' ? color : 'transparent',
           boxShadow: status === 'complete' ? 'none' : `inset 0 0 0 2px ${color}`,
           opacity: gated ? 0.7 : 1,

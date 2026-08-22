@@ -1,4 +1,4 @@
-import { RADIUS, SHADOW_PRESSABLE, hairline, C } from '../../components/curriculum-theme';
+import { RADIUS, C } from '../../components/curriculum-theme';
 import { V } from '../../components/dashboard-theme';
 import { FONT_HEADING, FONT_BODY } from '../../components/fonts';
 
@@ -31,10 +31,11 @@ export default function ResumeCard({
         alignItems: 'center',
         gap: 14,
         flexWrap: 'wrap',
-        padding: '14px 16px',
-        borderRadius: RADIUS,
-        background: V.cardBg,
-        boxShadow: hairline(V.cardBorder),
+        // NO CARD. The panel fill and its hairline ring are gone: this sits
+        // directly on the page ground with a rule under it. See
+        // curriculum-theme.ts RADIUS for why the card system came out.
+        padding: '16px 0',
+        borderBottom: `1px solid ${V.line}`,
       }}
     >
       <div style={{ flex: 1, minWidth: 180, display: 'flex', flexDirection: 'column', gap: 3 }}>
@@ -71,7 +72,7 @@ export default function ResumeCard({
           padding: '11px 20px',
           borderRadius: RADIUS,
           background: C.sunset,
-          boxShadow: SHADOW_PRESSABLE,
+          // NO PRESSABLE LIP. See curriculum-theme.ts RADIUS.
           font: `600 14px ${FONT_HEADING}`,
           color: C.midnight,
           textDecoration: 'none',

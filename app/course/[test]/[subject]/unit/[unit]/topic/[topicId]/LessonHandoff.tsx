@@ -1,6 +1,6 @@
 'use client';
 
-import { EYEBROW, RADIUS, hairline } from '@/app/components/curriculum-theme';
+import { EYEBROW, RADIUS } from '@/app/components/curriculum-theme';
 import { T } from '@/app/components/curriculum-surface';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
@@ -54,10 +54,12 @@ export default function LessonHandoff({
         alignItems: 'center',
         gap: 20,
         flexWrap: 'wrap',
-        padding: '20px 22px',
-        borderRadius: RADIUS,
-        background: T.panel,
-        boxShadow: hairline(T.hairline),
+        // A SECTION BELOW A RULE, not a detached card. "Next in this topic" is
+        // the continuation of the page it sits at the foot of, and a floating
+        // panel said the opposite: that it was a separate object the student
+        // had arrived at.
+        padding: '26px 0 0',
+        borderTop: `1px solid ${T.hairline}`,
       }}
     >
       <div style={{ flex: 1, minWidth: 200, display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -85,8 +87,11 @@ export default function LessonHandoff({
           minHeight: 44,
           padding: '12px 24px',
           borderRadius: RADIUS,
+          // NO PRESSABLE LIP. The 2px offset shadow that made the primary
+          // action read as a physical button is gone: square, modest orange
+          // fill, no lift. It stays a drop shadow used as decoration once the
+          // card system around it is removed, and the redesign rules that out.
           background: T.cta,
-          boxShadow: `0 2px 0 ${T.ctaShadow}`,
           font: `600 15px ${FONT_HEADING}`,
           color: T.ctaInk,
           textDecoration: 'none',
