@@ -29,7 +29,10 @@
     "test:topic-chrome": "node scripts/verify_topic_chrome.mjs",
     "test:login-next": "node scripts/verify_login_next.mjs",
     "lint": "eslint",
-    "lint:fix": "eslint --fix"
+    "lint:fix": "eslint --fix",
+    "test:lesson-dark": "node scripts/verify_lesson_dark.mjs",
+    "auth:capture": "node scripts/capture_auth_state.mjs",
+    "test:walk": "node scripts/walk_curriculum.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.112.3",
