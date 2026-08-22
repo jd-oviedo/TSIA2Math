@@ -646,20 +646,41 @@ export default function PracticeQuiz({
                 ))}
             </div>
 
+                          {/* THE WORKED EXAMPLE, as an inset on PAPER rather than on the
+                  quiet cream. The design separates the two blocks by surface:
+                  a worked example is the brightest thing in the column because
+                  it is the thing being studied, and CHECK YOURSELF is a step
+                  darker because it is an aside. They were both on quietBox,
+                  which lost that distinction.
+
+                  NO FORCED ITALIC ON THE MATHS. The design's frame sets the
+                  worked example in italic, and KaTeX already italicises what
+                  should be italic: variables lean, numerals and operators do
+                  not, because that is what the notation means. Forcing
+                  font-style on the block would tilt the digits too and turn
+                  correct typesetting into decoration. */}
             {solutionOpen && solution && (
               <div
-                className="um-prose"
                 style={{
-                  background: T.quietBox,
+                  background: T.panel,
                   borderRadius: 0,
-                  padding: '16px 18px',
+                  padding: '14px 18px 16px',
                   boxShadow: `inset 3px 0 0 ${T.answerKey}`,
-                  color: T.ink2,
-                  font: `400 15px ${FONT_BODY}`,
-                  lineHeight: MATH_LINE_HEIGHT,
                 }}
-                dangerouslySetInnerHTML={{ __html: solution }}
-              />
+              >
+                <div style={{ ...EYEBROW, color: T.muted, marginBottom: 8 }}>
+                  Worked solution
+                </div>
+                <div
+                  className="um-prose"
+                  style={{
+                    color: T.ink2,
+                    font: `400 15px ${FONT_BODY}`,
+                    lineHeight: MATH_LINE_HEIGHT,
+                  }}
+                  dangerouslySetInnerHTML={{ __html: solution }}
+                />
+              </div>
             )}
 
             {/* Announced to screen readers, since the result appears well
