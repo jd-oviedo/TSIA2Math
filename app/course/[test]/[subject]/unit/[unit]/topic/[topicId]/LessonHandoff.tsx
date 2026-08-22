@@ -1,6 +1,7 @@
 'use client';
 
-import { C, ink, EYEBROW, RADIUS, hairline, INK_MUTED } from '@/app/components/curriculum-theme';
+import { EYEBROW, RADIUS, hairline } from '@/app/components/curriculum-theme';
+import { T } from '@/app/components/curriculum-surface';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 
 // The end of the guided notes.
@@ -55,19 +56,19 @@ export default function LessonHandoff({
         flexWrap: 'wrap',
         padding: '20px 22px',
         borderRadius: RADIUS,
-        background: C.paper,
-        boxShadow: hairline(ink(0.1)),
+        background: T.panel,
+        boxShadow: hairline(T.hairline),
       }}
     >
       <div style={{ flex: 1, minWidth: 200, display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <div style={{ ...EYEBROW, color: INK_MUTED }}>Next in this topic</div>
+        <div style={{ ...EYEBROW, color: T.muted }}>Next in this topic</div>
         <h2
           id="lesson-handoff-heading"
-          style={{ margin: 0, font: `600 19px ${FONT_HEADING}`, color: C.midnight }}
+          style={{ margin: 0, font: `600 19px ${FONT_HEADING}`, color: T.ink }}
         >
           {heading}
         </h2>
-        <p style={{ margin: 0, font: `400 14px ${FONT_BODY}`, lineHeight: 1.6, color: ink(0.65) }}>
+        <p style={{ margin: 0, font: `400 14px ${FONT_BODY}`, lineHeight: 1.6, color: T.ink2 }}>
           {blurb}
         </p>
       </div>
@@ -84,10 +85,10 @@ export default function LessonHandoff({
           minHeight: 44,
           padding: '12px 24px',
           borderRadius: RADIUS,
-          background: C.sunset,
-          boxShadow: `0 2px 0 ${C.sunsetShadow}`,
+          background: T.cta,
+          boxShadow: `0 2px 0 ${T.ctaShadow}`,
           font: `600 15px ${FONT_HEADING}`,
-          color: C.midnight,
+          color: T.ctaInk,
           textDecoration: 'none',
         }}
       >

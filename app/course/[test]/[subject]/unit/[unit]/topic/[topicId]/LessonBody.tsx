@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import TopicNav from './TopicNav';
 import LessonHandoff from './LessonHandoff';
-import { C, ink, EYEBROW, RADIUS, hairline, MATH_LINE_HEIGHT, INK_MUTED } from '@/app/components/curriculum-theme';
+import { EYEBROW, RADIUS, hairline, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { T } from '@/app/components/curriculum-surface';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import type { LessonSection } from '@/lib/curriculum-utils';
 import type { NavStep } from './topic-data';
@@ -131,10 +132,10 @@ export default function LessonBody({
   const sectionLabel = `${count} ${count === 1 ? 'section' : 'sections'}`;
 
   const card = {
-    background: C.paper,
+    background: T.panel,
     borderRadius: RADIUS,
-    boxShadow: hairline(ink(0.1)),
-    color: ink(0.82),
+    boxShadow: hairline(T.hairline),
+    color: T.ink2,
     font: `400 16px ${FONT_BODY}`,
     lineHeight: MATH_LINE_HEIGHT,
   } as const;
@@ -178,12 +179,12 @@ export default function LessonBody({
             // The rail is its own rung on the surface ladder, a shade below the
             // paper cards it sits beside, so the reading column stays the
             // brightest thing on the page.
-            background: C.rail,
-            boxShadow: hairline(ink(0.1)),
+            background: T.rail,
+            boxShadow: hairline(T.hairline),
           }}
         >
-          <div style={{ ...EYEBROW, color: INK_MUTED }}>On this page</div>
-          <div style={{ font: `600 13px ${FONT_BODY}`, color: C.midnight }}>{sectionLabel}</div>
+          <div style={{ ...EYEBROW, color: T.muted }}>On this page</div>
+          <div style={{ font: `600 13px ${FONT_BODY}`, color: T.ink }}>{sectionLabel}</div>
           <ol
             style={{
               margin: '6px 0 0',
@@ -199,10 +200,10 @@ export default function LessonBody({
                 title={section.title}
                 style={{
                   padding: '9px 0',
-                  boxShadow: `inset 0 -1px 0 ${ink(0.07)}`,
+                  boxShadow: `inset 0 -1px 0 ${T.hairline}`,
                   font: `400 13px ${FONT_BODY}`,
                   lineHeight: 1.45,
-                  color: ink(0.7),
+                  color: T.ink2,
                 }}
               >
                 {/* The design's own fallback for a long heading: wrap to two
@@ -257,7 +258,7 @@ export default function LessonBody({
           // Without this a wide table or a long equation inside a flex child
           // sets the column's floor width and pushes the rail off the page.
           minWidth: 0,
-          background: C.band,
+          background: T.band,
           borderRadius: RADIUS,
           padding: '22px 24px',
         }}
@@ -279,7 +280,7 @@ export default function LessonBody({
             observer is taken out of it. Hidden above 760px, where the rail says
             the same thing. */}
         {count > 0 && (
-          <div className="um-lesson-strip" style={{ ...EYEBROW, color: INK_MUTED, display: 'none' }}>
+          <div className="um-lesson-strip" style={{ ...EYEBROW, color: T.muted, display: 'none' }}>
             {sectionLabel}
           </div>
         )}
@@ -287,7 +288,7 @@ export default function LessonBody({
         {count > 0 ? (
           sections.map((section, i) => (
             <section key={i} className="um-prose-card" style={{ ...card, padding: '26px 28px' }}>
-              <div style={{ ...EYEBROW, color: C.sunset }}>
+              <div style={{ ...EYEBROW, color: T.muted }}>
                 Section {i + 1} of {count}
               </div>
               <h3
@@ -295,7 +296,7 @@ export default function LessonBody({
                   margin: '10px 0 16px',
                   font: `600 20px ${FONT_HEADING}`,
                   lineHeight: 1.3,
-                  color: C.midnight,
+                  color: T.ink,
                 }}
                 dangerouslySetInnerHTML={{ __html: section.heading_html }}
               />

@@ -1,5 +1,5 @@
 import SectionHeading from './SectionHeading';
-import { C, ink } from '@/app/components/curriculum-theme';
+import { T } from '@/app/components/curriculum-surface';
 import { FONT_BODY } from '@/app/components/fonts';
 
 // What a placeholder topic renders instead of a lesson.
@@ -19,7 +19,7 @@ import { FONT_BODY } from '@/app/components/fonts';
 // deploy, not a hand-edit against production content.
 //
 // Layout follows the practice and quiz sub-pages exactly: a bare SectionHeading
-// at the container's full width, then one C.paper card at 24px 26px with the
+// at the container's full width, then one T.panel card at 24px 26px with the
 // house drop shadow. The first version of this file used a 30px 28px card with
 // a 1.5px inset ring and no SectionHeading, which pushed the text in further
 // than any sibling page and read as a narrow column inside the 860px container.
@@ -52,7 +52,7 @@ export default function ComingSoonTopic({
           gap: 16,
           padding: '24px 26px',
           borderRadius: '16px',
-          background: C.paper,
+          background: T.panel,
           boxShadow: '0 1px 3px rgba(14,14,17,.05)',
         }}
       >
@@ -61,7 +61,7 @@ export default function ComingSoonTopic({
             margin: 0,
             font: `400 15.5px ${FONT_BODY}`,
             lineHeight: 1.65,
-            color: ink(0.72),
+            color: T.ink2,
           }}
         >
           {strandName} is where your diagnostic pointed you, but the lessons for it
@@ -79,9 +79,9 @@ export default function ComingSoonTopic({
             gap: 8,
             padding: '12px 20px',
             borderRadius: 11,
-            boxShadow: `inset 0 0 0 1.5px ${ink(0.22)}`,
+            boxShadow: `inset 0 0 0 1.5px ${T.controlBorder}`,
             font: `500 14.5px ${FONT_BODY}`,
-            color: ink(0.7),
+            color: T.ink2,
           }}
         >
           <span>

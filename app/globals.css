@@ -46,8 +46,24 @@
 
    Scoped to .um-topic, the wrapper the topic layout puts on every lesson,
    practice and quiz page, so nothing outside the curriculum tree moves: the CAT
-   engine, /teacher and /reporte all keep following --ec-ink as before. */
-.um-topic .katex { color: #0E0E11 !important; }
+   engine, /teacher and /reporte all keep following --ec-ink as before.
+
+   THE .um-topic RULE THAT USED TO SIT HERE IS GONE, AND IT WAS ALREADY DEAD.
+   ========================================================================
+   It read `.um-topic .katex { color: #0E0E11 !important; }`, a hardcoded LIGHT
+   ink, and it survived the move to a themed curriculum tree. It never fired
+   after that move: topic-page-css.ts:39 declares the same selector at the same
+   specificity, also !important, and the topic layout renders it as an inline
+   <style> in the body (layout.tsx:43) while this file arrives as a <link> in the
+   head. Equal specificity and equal importance means source order decides, and
+   the body comes last, so the themed rule won every time. React is 18 here,
+   which does not hoist <style>, so that ordering is stable.
+
+   Removed rather than left, because it read as the live rule to anyone grepping
+   for the maths colour and it sent the first diagnosis of the dark-mode defect
+   at the wrong file. The maths was never the thing that failed to flip: it was
+   the only thing in the lesson's prose card that DID. See
+   scripts/verify_lesson_dark.mjs. */
 
 /* Document-level body face. Nunito is the default for all UI text so roster
    tables, cards, labels and nav pick it up without each component naming a

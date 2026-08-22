@@ -22,3 +22,10 @@ reference/
 
 # Local-only prod snapshots (rollback path for restore_bank_text.py)
 scratchpad/
+
+# Playwright probe artefacts. The verify_*/shoot_* scripts write a temporary
+# route under app/um-probe-* before their build and delete it on exit; if a run
+# is killed mid-flight the directory survives and must never be committed. Their
+# screenshots land in scratch-shots-*/ for the same reason.
+app/um-probe-*/
+scratch-shots-*/
