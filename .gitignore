@@ -29,6 +29,7 @@ scratchpad/
 # screenshots land in scratch-shots-*/ for the same reason.
 app/um-probe-*/
 scratch-shots-*/
+scratch-shots/
 
 # Playwright authentication state. The curriculum harness signs in once through
 # the real Google flow and saves the resulting COOKIES here (app/lib/supabase-

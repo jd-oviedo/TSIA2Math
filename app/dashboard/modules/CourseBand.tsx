@@ -46,10 +46,17 @@ export default function CourseBand({
   /** Topics complete under definition A. Derived, never a constant. */
   completedTopics: number;
 }) {
-  // Guarded rather than assumed: topicCount is 0 for the moment between an
-  // empty read and a populated one, and a bar of width NaN renders as a full
-  // bar, which would tell a student they had finished the course.
-  const pct = topicCount > 0 ? Math.round((completedTopics / topicCount) * 100) : 0;
+  // Guarded on BOTH operands, not just the denominator.
+  //
+  // A width of `NaN%` is an invalid declaration, so the browser keeps whatever
+  // width it had, and the failure mode is a bar that reads as further along than
+  // it is. topicCount is 0 in the moment between an empty read and a populated
+  // one; completedTopics arrives undefined from any caller that forgets it, which
+  // TypeScript catches in app code but not in a .jsx probe route -- and that is
+  // not hypothetical: scripts/verify_modules_states.mjs did exactly that, and
+  // rendered "undefined / 97" while its assertion still passed.
+  const safeDone = Number.isFinite(completedTopics) ? completedTopics : 0;
+  const pct = topicCount > 0 ? Math.round((safeDone / topicCount) * 100) : 0;
   return (
     <section
       style={{
@@ -76,10 +83,10 @@ export default function CourseBand({
         <div
           style={{ flex: 1, height: 6, background: V.trackBg, overflow: 'hidden' }}
           role="progressbar"
-          aria-valuenow={completedTopics}
+          aria-valuenow={safeDone}
           aria-valuemin={0}
           aria-valuemax={topicCount}
-          aria-label={`Course progress: ${completedTopics} of ${topicCount} topics complete`}
+          aria-label={`Course progress: ${safeDone} of ${topicCount} topics complete`}
         >
           <div style={{ width: `${pct}%`, height: '100%', background: C.sunset }} />
         </div>
@@ -90,7 +97,7 @@ export default function CourseBand({
             color: V.muted,
           }}
         >
-          {completedTopics} / {topicCount}
+          {safeDone} / {topicCount}
         </span>
       </div>
     </section>
