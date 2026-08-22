@@ -75,7 +75,7 @@ function StepMark({ n, status }: { n: number; status: PartState['status'] }) {
         width: 26,
         height: 26,
         flex: 'none',
-        borderRadius: 8,
+        borderRadius: 0,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -130,7 +130,8 @@ export default function TopicOverview({
           padding: 0,
           display: 'flex',
           flexDirection: 'column',
-          gap: 10,
+          gap: 0,
+          borderTop: `1px solid ${T.hairline}`,
         }}
       >
         {parts.map((part, i) => (
@@ -138,14 +139,22 @@ export default function TopicOverview({
             <a
               className="um-part-row"
               href={part.href}
+              aria-current={part.status === 'in_progress' ? 'step' : undefined}
               style={{
                 display: 'flex',
                 alignItems: 'flex-start',
                 gap: 14,
-                padding: '16px 18px',
-                borderRadius: 14,
-                background: T.panel,
-                boxShadow: `inset 0 0 0 1px ${T.hairline}`,
+                // NO CARD. Three parts of one topic are a list, not three
+                // objects, and a rule between them says that where a panel each
+                // said the opposite.
+                padding: '16px 18px 16px 14px',
+                borderBottom: `1px solid ${T.hairline}`,
+                // The orange left marker on the part the student is on.
+                // Transparent rather than absent elsewhere, so nothing shifts
+                // sideways as the active part moves down the list.
+                borderLeft: `2px solid ${
+                  part.status === 'in_progress' ? T.trackFill : 'transparent'
+                }`,
                 color: 'inherit',
                 textDecoration: 'none',
               }}
@@ -190,11 +199,16 @@ export default function TopicOverview({
             justifyContent: 'center',
             minHeight: 44,
             padding: '12px 24px',
-            borderRadius: 12,
+            // Square, no pressable lip. See curriculum-theme.ts RADIUS.
+            borderRadius: 0,
             background: T.cta,
-            boxShadow: `0 2px 0 ${T.ctaShadow}`,
             font: `600 15px ${FONT_HEADING}`,
-            color: T.ink,
+            // T.ctaInk, NOT T.ink. This read `color: T.ink`, which is
+            // #0E0E11 in light but #F2EDDF in dark, so the label went
+            // near-white on a #F0A33E fill and measured about 1.5:1. The CTA
+            // does not invert -- its contrast is against the fill, not the page
+            // -- which is exactly what ctaInk exists to say.
+            color: T.ctaInk,
             textDecoration: 'none',
           }}
         >
@@ -207,7 +221,7 @@ export default function TopicOverview({
             color: T.muted,
           }}
         >
-          Back to modules
+          Back to syllabus
         </a>
       </div>
     </section>

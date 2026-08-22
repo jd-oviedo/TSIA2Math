@@ -91,11 +91,28 @@ export const C = {
 // number: across app/course and app/dashboard the radii in use were 16 (11
 // uses), 11 (11), 12 (9), 14 (4), 13 (3), plus pill values.
 //
-// RADIUS is 12 because it is already one of the three clusters and sits between
-// the other two, so adopting it moves nothing by more than 4px. 16 would inflate
-// small controls and 11 is not meaningfully different from 12 while being the
-// less common of the pair at the sizes that matter.
-export const RADIUS = 12;
+// RADIUS IS 0. THE CURRICULUM TREE IS SQUARE. Changed 2026-08-22.
+//
+// It was 12, chosen from the clusters above because it moved nothing by more
+// than 4px. That reasoning was about picking one rounded value out of five, and
+// it is superseded by a decision about whether to be rounded at all.
+//
+// WHY. The redesign removes the card system from the content column: content
+// sits on the ground with hairline rules between sections, rather than in cream
+// panels floating on it. A radius is a property of a floating panel. With the
+// panels gone there is nothing whose corner needs softening, and a rounded edge
+// on a full-bleed section reads as a leftover rather than as a choice.
+//
+// It also carried a contrast cost that was invisible in light. Rounded cream
+// panels on a near-black ground are maximum-contrast chrome, so in dark the eye
+// reads the container edge before it reads the content. Squaring the corners
+// and dropping the fills removes the edge rather than restyling it.
+//
+// SCOPE. Only the curriculum tree and Modules import this. app/teacher declares
+// its own RING_RADIUS and is untouched, as is the student nav sidebar. Circles
+// (borderRadius: '50%') are a different shape and stay: a status dot is not a
+// panel corner.
+export const RADIUS = 0;
 
 // Pills are a different shape, not a rounded rectangle, and they stay: the
 // sidebar's active-state pill and the small status chips read as pills on

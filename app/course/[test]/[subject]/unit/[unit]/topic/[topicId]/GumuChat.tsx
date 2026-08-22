@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import GumuAvatar from './GumuAvatar';
-import { C, ink, onDark, RADIUS, hairline, MATH_LINE_HEIGHT, INK_MUTED } from '@/app/components/curriculum-theme';
+import { C, onDark, RADIUS, hairline, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { T } from '@/app/components/curriculum-surface';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 // Type only, and free: app/lib/crisis.ts has no imports at all, so nothing is
 // pulled into the browser bundle. The copy itself arrives from the server in the
@@ -290,8 +291,8 @@ export default function GumuChat({
     <div
       style={{
         marginTop: '18px',
-        background: C.gumuSurface,
-        borderRadius: '16px',
+        background: T.insetRow,
+        borderRadius: 0,
         padding: '18px 20px 20px',
         display: 'flex',
         flexDirection: 'column',
@@ -303,8 +304,8 @@ export default function GumuChat({
       <div style={{ display: 'flex', alignItems: 'center', gap: '11px' }}>
         <GumuAvatar size={48} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-          <div style={{ font: `600 15px ${FONT_HEADING}`, color: C.midnight }}>GUMU</div>
-          <div style={{ font: `400 12px ${FONT_BODY}`, color: INK_MUTED }}>
+          <div style={{ font: `600 15px ${FONT_HEADING}`, color: T.ink }}>GUMU</div>
+          <div style={{ font: `400 12px ${FONT_BODY}`, color: T.muted }}>
             {finished ? 'that one is wrapped up' : 'let’s figure out where it slipped'}
           </div>
         </div>
@@ -317,7 +318,7 @@ export default function GumuChat({
                 width: '7px',
                 height: '7px',
                 borderRadius: '50%',
-                background: i < (finished ? totalTurns : exchange) ? C.gemini : ink(0.15),
+                background: i < (finished ? totalTurns : exchange) ? C.gemini : T.track,
               }}
             />
           ))}
@@ -338,24 +339,24 @@ export default function GumuChat({
                 ? {
                     alignSelf: 'flex-start',
                     maxWidth: '86%',
-                    background: C.paper,
+                    background: T.panel,
                     borderRadius: '16px 16px 16px 5px',
                     padding: '14px 17px',
                     font: `400 15.5px ${FONT_BODY}`,
                     lineHeight: MATH_LINE_HEIGHT,
-                    color: C.midnight,
+                    color: T.ink,
                     boxShadow: '0 1px 3px rgba(14,14,17,.06)',
                     minHeight: '24px',
                   }
                 : {
                     alignSelf: 'flex-end',
                     maxWidth: '78%',
-                    background: C.sky,
+                    background: T.tutorAccent,
                     borderRadius: '16px 16px 5px 16px',
                     padding: '13px 17px',
                     font: `400 15.5px ${FONT_BODY}`,
                     lineHeight: 1.7,
-                    color: C.midnight,
+                    color: T.ctaInk,
                     minHeight: '22px',
                   }
             }
@@ -364,7 +365,7 @@ export default function GumuChat({
           </div>
         ))}
         {pending && (
-          <div style={{ font: `400 13.5px ${FONT_BODY}`, color: INK_MUTED }}>
+          <div style={{ font: `400 13.5px ${FONT_BODY}`, color: T.muted }}>
             GUMU is thinking…
           </div>
         )}
@@ -380,8 +381,8 @@ export default function GumuChat({
             display: 'flex',
             alignItems: 'center',
             gap: '10px',
-            background: C.paper,
-            borderRadius: '13px',
+            background: T.panel,
+            borderRadius: 0,
             padding: '10px 11px',
             boxShadow: 'inset 0 0 0 1.5px rgba(110,157,200,.35)',
           }}
@@ -403,7 +404,7 @@ export default function GumuChat({
               border: 'none',
               background: 'transparent',
               font: `400 15.5px ${FONT_BODY}`,
-              color: C.midnight,
+              color: T.ink,
             }}
           />
           <button
@@ -415,10 +416,10 @@ export default function GumuChat({
               width: '34px',
               height: '34px',
               flex: 'none',
-              borderRadius: '9px',
+              borderRadius: 0,
               border: 'none',
-              background: draft.trim() ? C.sky : ink(0.08),
-              color: draft.trim() ? C.midnight : ink(0.35),
+              background: draft.trim() ? T.tutorAccent : T.track,
+              color: draft.trim() ? T.ctaInk : T.disabled,
               font: `600 15px ${FONT_BODY}`,
               cursor: draft.trim() ? 'pointer' : 'not-allowed',
             }}
@@ -442,7 +443,7 @@ export default function GumuChat({
           style={{
             font: `400 12px ${FONT_BODY}`,
             lineHeight: 1.5,
-            color: INK_MUTED,
+            color: T.muted,
             textAlign: 'center',
           }}
         >
@@ -457,12 +458,12 @@ export default function GumuChat({
             disabled={pending}
             style={{
               padding: '13px',
-              borderRadius: '12px',
+              borderRadius: 0,
               border: 'none',
               background: 'transparent',
-              boxShadow: `inset 0 0 0 1.5px ${ink(0.22)}`,
+              boxShadow: `inset 0 0 0 1.5px ${T.controlBorder}`,
               font: `500 14.5px ${FONT_BODY}`,
-              color: ink(0.65),
+              color: T.ink2,
               cursor: pending ? 'wait' : 'pointer',
             }}
           >
@@ -472,7 +473,7 @@ export default function GumuChat({
             style={{
               font: `400 11.5px ${FONT_BODY}`,
               lineHeight: 1.5,
-              color: INK_MUTED,
+              color: T.muted,
               textAlign: 'center',
             }}
           >
@@ -495,7 +496,7 @@ export default function GumuChat({
               border: 'none',
               background: 'none',
               font: `400 12px ${FONT_BODY}`,
-              color: ink(0.32),
+              color: T.disabled,
               textDecoration: 'underline',
               textUnderlineOffset: '3px',
               cursor: pending ? 'wait' : 'pointer',
@@ -504,7 +505,7 @@ export default function GumuChat({
             I’ll just see the answer
           </button>
           {turnsRemaining !== null && (
-            <span style={{ font: `400 11.5px ${FONT_BODY}`, color: ink(0.32) }}>
+            <span style={{ font: `400 11.5px ${FONT_BODY}`, color: T.disabled }}>
               {exchange} of {totalTurns} exchanges
             </span>
           )}
@@ -544,20 +545,20 @@ function SupportCard({ copy }: { copy: CrisisCopy }) {
       aria-live="polite"
       style={{
         marginTop: '18px',
-        background: C.paper,
-        borderRadius: '16px',
+        background: T.panel,
+        borderRadius: 0,
         padding: '22px 24px 24px',
-        boxShadow: `inset 0 0 0 1.5px ${ink(0.1)}`,
+        boxShadow: `inset 0 0 0 1.5px ${T.hairline}`,
         display: 'flex',
         flexDirection: 'column',
         gap: '14px',
       }}
     >
-      <p style={{ margin: 0, font: `600 17px ${FONT_HEADING}`, lineHeight: 1.45, color: C.midnight }}>
+      <p style={{ margin: 0, font: `600 17px ${FONT_HEADING}`, lineHeight: 1.45, color: T.ink }}>
         {copy.opening}
       </p>
 
-      <p style={{ margin: 0, font: `400 15px ${FONT_BODY}`, lineHeight: 1.65, color: ink(0.78) }}>
+      <p style={{ margin: 0, font: `400 15px ${FONT_BODY}`, lineHeight: 1.65, color: T.ink2 }}>
         {copy.explanation}
       </p>
 
@@ -570,15 +571,15 @@ function SupportCard({ copy }: { copy: CrisisCopy }) {
               flexDirection: 'column',
               gap: '9px',
               padding: '15px 17px',
-              borderRadius: '13px',
-              background: C.cream,
+              borderRadius: 0,
+              background: T.insetRow,
             }}
           >
             <div>
-              <div style={{ font: `600 15px ${FONT_BODY}`, lineHeight: 1.4, color: C.midnight }}>
+              <div style={{ font: `600 15px ${FONT_BODY}`, lineHeight: 1.4, color: T.ink }}>
                 {resource.line}
               </div>
-              <div style={{ font: `400 13px ${FONT_BODY}`, lineHeight: 1.5, color: INK_MUTED }}>
+              <div style={{ font: `400 13px ${FONT_BODY}`, lineHeight: 1.5, color: T.muted }}>
                 {resource.org}
               </div>
             </div>
@@ -592,9 +593,9 @@ function SupportCard({ copy }: { copy: CrisisCopy }) {
                     alignItems: 'center',
                     minHeight: 44,
                     padding: '0 18px',
-                    borderRadius: '10px',
-                    background: C.midnight,
-                    color: C.paper,
+                    borderRadius: 0,
+                    background: T.ink,
+                    color: T.panel,
                     font: `600 14.5px ${FONT_BODY}`,
                     textDecoration: 'none',
                   }}
@@ -607,11 +608,11 @@ function SupportCard({ copy }: { copy: CrisisCopy }) {
         ))}
       </div>
 
-      <p style={{ margin: 0, font: `400 15px ${FONT_BODY}`, lineHeight: 1.65, color: ink(0.78) }}>
+      <p style={{ margin: 0, font: `400 15px ${FONT_BODY}`, lineHeight: 1.65, color: T.ink2 }}>
         {copy.trusted}
       </p>
 
-      <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, lineHeight: 1.6, color: INK_MUTED }}>
+      <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, lineHeight: 1.6, color: T.muted }}>
         {copy.closing}
       </p>
     </div>
@@ -625,7 +626,7 @@ function ErrorLine({ text }: { text: string }) {
         margin: '8px 0 0',
         font: `400 13.5px ${FONT_BODY}`,
         lineHeight: 1.6,
-        color: C.amber,
+        color: T.error,
       }}
     >
       {text}

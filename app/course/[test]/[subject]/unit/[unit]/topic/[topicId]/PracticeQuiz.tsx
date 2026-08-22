@@ -375,7 +375,7 @@ export default function PracticeQuiz({
               padding: '24px 26px 22px',
               minWidth: 0,
               border: `1px solid ${T.hairline}`,
-              borderRadius: '16px',
+              borderRadius: 0,
               background: T.panel,
               boxShadow: '0 1px 3px rgba(14,14,17,.05)',
               display: 'flex',
@@ -492,7 +492,7 @@ export default function PracticeQuiz({
                       alignItems: 'center',
                       gap: '14px',
                       padding: '15px 18px',
-                      borderRadius: '12px',
+                      borderRadius: 0,
                       background,
                       boxShadow: `inset 0 0 0 ${isSelectedPending || isAnswer || isWrongPick ? 2 : 1.5}px ${ring}`,
                       minHeight: '26px',
@@ -575,7 +575,7 @@ export default function PracticeQuiz({
                   disabled={!choice || pending[item.item_number]}
                   style={{
                     padding: '13px 30px',
-                    borderRadius: '11px',
+                    borderRadius: 0,
                     border: 'none',
                     // Ink on the quiz, Sunset on practice. The redesign rations
                     // Sunset to one action per screen and the quiz is meant to
@@ -612,7 +612,7 @@ export default function PracticeQuiz({
                       style={{
                         width: '13px',
                         height: '13px',
-                        borderRadius: '4px',
+                        borderRadius: 0,
                         background: T.hairline,
                       }}
                     />
@@ -646,20 +646,41 @@ export default function PracticeQuiz({
                 ))}
             </div>
 
+                          {/* THE WORKED EXAMPLE, as an inset on PAPER rather than on the
+                  quiet cream. The design separates the two blocks by surface:
+                  a worked example is the brightest thing in the column because
+                  it is the thing being studied, and CHECK YOURSELF is a step
+                  darker because it is an aside. They were both on quietBox,
+                  which lost that distinction.
+
+                  NO FORCED ITALIC ON THE MATHS. The design's frame sets the
+                  worked example in italic, and KaTeX already italicises what
+                  should be italic: variables lean, numerals and operators do
+                  not, because that is what the notation means. Forcing
+                  font-style on the block would tilt the digits too and turn
+                  correct typesetting into decoration. */}
             {solutionOpen && solution && (
               <div
-                className="um-prose"
                 style={{
-                  background: T.quietBox,
-                  borderRadius: '12px',
-                  padding: '16px 18px',
+                  background: T.panel,
+                  borderRadius: 0,
+                  padding: '14px 18px 16px',
                   boxShadow: `inset 3px 0 0 ${T.answerKey}`,
-                  color: T.ink2,
-                  font: `400 15px ${FONT_BODY}`,
-                  lineHeight: MATH_LINE_HEIGHT,
                 }}
-                dangerouslySetInnerHTML={{ __html: solution }}
-              />
+              >
+                <div style={{ ...EYEBROW, color: T.muted, marginBottom: 8 }}>
+                  Worked solution
+                </div>
+                <div
+                  className="um-prose"
+                  style={{
+                    color: T.ink2,
+                    font: `400 15px ${FONT_BODY}`,
+                    lineHeight: MATH_LINE_HEIGHT,
+                  }}
+                  dangerouslySetInnerHTML={{ __html: solution }}
+                />
+              </div>
             )}
 
             {/* Announced to screen readers, since the result appears well
@@ -770,7 +791,7 @@ export default function PracticeQuiz({
             disabled={current === 0}
             style={{
               padding: '10px 18px',
-              borderRadius: '11px',
+              borderRadius: 0,
               border: 'none',
               background: 'none',
               boxShadow: hairline(current === 0 ? T.hairline : T.hairline),
@@ -795,7 +816,7 @@ export default function PracticeQuiz({
             disabled={current === items.length - 1}
             style={{
               padding: '10px 18px',
-              borderRadius: '11px',
+              borderRadius: 0,
               border: 'none',
               background: 'none',
               boxShadow: hairline(current === items.length - 1 ? T.hairline : T.hairline),

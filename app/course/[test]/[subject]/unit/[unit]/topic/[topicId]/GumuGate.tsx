@@ -63,7 +63,7 @@ export function AnswerKey({
       <div
         style={{
           border: `1px dashed ${T.hairline}`,
-          borderRadius: '14px',
+          borderRadius: 0,
           padding: '18px 20px',
           background: T.quietBox,
           color: T.muted,
@@ -128,7 +128,7 @@ function SolutionRow({ entry }: { entry: AnswerKeyEntry }) {
     <div
       style={{
         background: T.panel,
-        borderRadius: '12px',
+        borderRadius: 0,
         padding: open ? '17px 20px 20px' : '0',
         boxShadow: open
           ? `inset 0 0 0 1.5px ${T.answerKey}`

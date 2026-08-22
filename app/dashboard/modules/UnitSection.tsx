@@ -52,6 +52,15 @@ export default function UnitSection({
    */
   unitTitle: string | null;
   topicCount: number;
+  /**
+   * Topics COMPLETE and topics IN THE UNIT, under definition A.
+   *
+   * These were correct answers against gradable items until 2026-08-22, which
+   * made the bar read "84 of 190 questions correct". That is a number no student
+   * has a use for, and it moves whenever a topic is re-authored rather than when
+   * the student does anything. Counting topics gives the "5/14" the syllabus is
+   * built around, on a scale where one finished topic is visible movement.
+   */
   done: number;
   total: number;
   defaultOpen: boolean;
@@ -79,11 +88,13 @@ export default function UnitSection({
             alignItems: 'center',
             gap: 12,
             flexWrap: 'wrap',
-            padding: '10px 14px',
-            borderRadius: 13,
+            padding: '14px 2px',
+            // NO CARD. A unit is a section of the syllabus, not an object on
+            // it, so the boundary is the rule under the row.
+            borderRadius: 0,
             border: 'none',
-            background: V.cardBg,
-            boxShadow: `inset 0 0 0 1px ${V.cardBorder}`,
+            borderBottom: `1px solid ${V.line}`,
+            background: 'transparent',
             color: 'inherit',
             font: 'inherit',
             textAlign: 'left',
@@ -171,7 +182,7 @@ export default function UnitSection({
               minWidth: 90,
               maxWidth: 180,
               height: 6,
-              borderRadius: 3,
+              borderRadius: 0,
               background: V.trackBg,
               overflow: 'hidden',
               display: 'inline-block',
@@ -187,8 +198,23 @@ export default function UnitSection({
             />
           </span>
 
+          {/* Visible, and mono, matching the syllabus's "5/14". The count was
+              screen-reader-only when it was a question tally nobody wanted to
+              read; a topic count is the thing a student is actually tracking. */}
+          <span
+            style={{
+              flex: 'none',
+              font: `500 11.5px ui-monospace, Menlo, monospace`,
+              color: V.muted,
+            }}
+          >
+            {done}/{total}
+          </span>
+
           <span className="um-visually-hidden">
-            {total > 0 ? `${done} of ${total} questions correct` : 'no graded questions yet'}
+            {total > 0
+              ? `${done} of ${total} topics complete`
+              : 'no topics in this unit yet'}
           </span>
         </button>
       </h2>

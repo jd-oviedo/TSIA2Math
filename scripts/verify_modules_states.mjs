@@ -51,7 +51,7 @@ export default async function Probe({ searchParams }) {
       <style>{DASHBOARD_CSS}</style>
       <div className="um-dash" data-theme={theme} style={{ minHeight: '100dvh', padding: 20, background: 'var(--umd-page-bg)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 940 }}>
-          <CourseBand topicCount={97} unitCount={6} />
+          <CourseBand topicCount={97} unitCount={6} completedTopics={18} />
           <UnitSection unitNumber={1} unitTitle={unitTitle(1)} topicCount={15} done={12} total={100} defaultOpen>
             <TopicListRow probeAttr="complete" topicId="QR.1.1" topicName="Operations with whole numbers"
               href="/course/tsia2/math/unit/1/topic/QR.1.1" status={gated ? 'gated' : 'complete'}
@@ -77,27 +77,38 @@ export default async function Probe({ searchParams }) {
 }
 `;
 
-// The KaTeX probe: a .um-topic wrapper with real KaTeX markup, to prove the
-// scoped rule keeps maths dark on the cream page whatever the global theme says.
-const katexPage = `import 'katex/dist/katex.min.css';
-export default function KatexProbe() {
-  return (
-    <div className="um-topic" style={{ minHeight: '100dvh', background: '#E8E0CF', padding: 40 }}>
-      <p style={{ color: '#0E0E11', font: '400 17px system-ui' }}>
-        Prose stays readable in both themes because it is hardcoded.
-      </p>
-      <p data-probe="math">
-        <span className="katex"><span className="katex-mathml">x</span><span className="katex-html" aria-hidden="true">3/4 + 7/8 = 13/8</span></span>
-      </p>
-    </div>
-  );
-}
-`;
+// ─── THE KATEX PROBE IS GONE. REMOVED 2026-08-22, WITH ITS TWO CHECKS ────────
+//
+// It asserted `KaTeX stays dark ink in light` AND `in dark`, both expecting
+// rgb(14,14,17), on the stated ground that "the scoped rule keeps maths dark on
+// the cream page whatever the global theme says".
+//
+// THAT DECISION IS SUPERSEDED. The curriculum tree stopped being light-only on
+// 2026-08-21. Maths follows --umt-ink now, which is #0E0E11 in light and
+// #F2EDDF in dark, so "stays dark ink in dark" asserts the exact failure the
+// theme change exists to prevent: black maths on a near-black page.
+//
+// ITS SUBJECT NO LONGER EXISTS. It was measuring `.um-topic .katex { color:
+// #0E0E11 !important }` in globals.css, which was deleted as dead: topic-page-
+// css.ts:39 declares the same selector at the same specificity and wins on
+// source order on every real page. This probe was the ONLY place that rule still
+// had an effect, because the probe never loaded TOPIC_PAGE_CSS and so had no
+// competing declaration.
+//
+// AND IT FABRICATED ITS SUBJECT. Like the probe in verify_curriculum_dark.mjs
+// that this all started with, it hand-wrote spans wearing KaTeX's class name
+// rather than rendering any, and pinned its own `background: '#E8E0CF'` instead
+// of reading a token. A check whose page, whose markup and whose colour are all
+// written by the check can only confirm itself.
+//
+// THE COVERAGE DID NOT GO AWAY, IT MOVED AND GOT BETTER.
+// scripts/verify_lesson_dark.mjs measures REAL KaTeX, rendered from real topic
+// markdown through the real pipeline, on real components, in both themes, and
+// asserts provenance before it measures anything.
 
 let server;
 const cleanup = () => {
   try { rmSync(PROBE_DIR, { recursive: true, force: true }); } catch {}
-  try { rmSync('app/um-probe-katex', { recursive: true, force: true }); } catch {}
   try { if (server) process.kill(-server.pid); } catch {}
 };
 process.on('exit', cleanup);
@@ -105,8 +116,6 @@ process.on('SIGINT', () => { cleanup(); process.exit(1); });
 
 mkdirSync(PROBE_DIR, { recursive: true });
 writeFileSync(`${PROBE_DIR}/page.jsx`, probePage);
-mkdirSync('app/um-probe-katex', { recursive: true });
-writeFileSync('app/um-probe-katex/page.jsx', katexPage);
 mkdirSync(SHOTS, { recursive: true });
 
 console.log('building with the probe routes...');
@@ -185,9 +194,22 @@ await check('a gated row is not keyboard focusable', async () =>
 await check('the free sample stays a working link while the rest is gated', async () =>
   (await page.getAttribute('[data-probe-topic="sample"]', 'href')) !== null &&
   (await page.evaluate(() => document.querySelector('[data-probe-topic="sample"]').tagName)) === 'A');
-await check('the course band states no progress', async () => {
+// INVERTED 2026-08-22. This read "the course band states no progress" and
+// asserted the ABSENCE of any `n / m`, pinning the 2026-08-21 removal of the
+// old "3 / 1,348" question counter. Course progress came back under definition
+// A, as topics rather than questions, so the absence is no longer the thing to
+// hold.
+//
+// IT WAS ALSO PASSING VACUOUSLY AT THE MOMENT IT WAS INVERTED, which is the
+// better reason to have looked at it. The probe rendered <CourseBand> without
+// the new completedTopics prop, so the band printed "undefined / 97" -- and
+// "undefined" is not \d+, so the old regex matched nothing and reported clean
+// against a broken render. The prop is passed now, and the assertion names the
+// exact string rather than a shape, so a NaN or a missing prop fails instead of
+// slipping through a pattern.
+await check('the course band states topic progress, as n / m', async () => {
   const t = await page.textContent('section');
-  return !/%/.test(t) && !/\d+\s*\/\s*\d+/.test(t);
+  return t.includes('18 / 97');
 });
 // The unit's own h2, not the first on the page: CourseBand renders "TSIA2 Math"
 // in an h2 above it, which is what the first version was reading.
@@ -260,20 +282,6 @@ for (const theme of ['light', 'dark']) {
   );
   await check(`CONTROL: an ungated topic name also clears 4.5:1 in ${theme} (got ${openName})`, () => openName >= 4.5);
   await cctx.close();
-}
-
-// KaTeX, in the theme that used to break it.
-for (const theme of ['light', 'dark']) {
-  const kctx = await browser.newContext({ viewport: { width: 900, height: 600 } });
-  const kp = await kctx.newPage();
-  await kp.goto(`${BASE}/um-probe-katex`);
-  await kp.evaluate((t) => localStorage.setItem('ec-theme', t), theme);
-  await kp.goto(`${BASE}/um-probe-katex`);
-  await kp.waitForTimeout(600);
-  const colour = await kp.evaluate(() => getComputedStyle(document.querySelector('.katex')).color);
-  await check(`KaTeX stays dark ink in ${theme} (got ${colour})`, () => colour === 'rgb(14, 14, 17)');
-  await kp.screenshot({ path: `${SHOTS}/katex-${theme}.png` });
-  await kctx.close();
 }
 
 await browser.close();

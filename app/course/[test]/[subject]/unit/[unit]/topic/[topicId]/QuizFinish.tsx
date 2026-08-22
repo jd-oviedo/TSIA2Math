@@ -58,7 +58,7 @@ export default function QuizFinish({
         flexDirection: 'column',
         gap: 18,
         padding: '22px 24px',
-        borderRadius: 16,
+        borderRadius: 0,
         background: T.panel,
         boxShadow: `inset 0 0 0 1px ${T.hairline}`,
       }}
@@ -110,7 +110,7 @@ export default function QuizFinish({
                 key={item.item_number}
                 style={{
                   padding: '14px 16px',
-                  borderRadius: 12,
+                  borderRadius: 0,
                   background: T.missedTint,
                   boxShadow: `inset 3px 0 0 ${T.missed}`,
                 }}
@@ -152,7 +152,7 @@ export default function QuizFinish({
             justifyContent: 'center',
             minHeight: 44,
             padding: '12px 22px',
-            borderRadius: 12,
+            borderRadius: 0,
             background: T.quietBox,
             boxShadow: `inset 0 0 0 1px ${T.hairline}`,
             font: `600 14.5px ${FONT_BODY}`,

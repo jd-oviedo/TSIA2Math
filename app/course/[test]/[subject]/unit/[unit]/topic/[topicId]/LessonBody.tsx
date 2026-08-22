@@ -3,9 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 import TopicNav from './TopicNav';
 import LessonHandoff from './LessonHandoff';
-import { C, ink, EYEBROW, RADIUS, hairline, MATH_LINE_HEIGHT, INK_MUTED } from '@/app/components/curriculum-theme';
+import { EYEBROW, MATH_LINE_HEIGHT } from '@/app/components/curriculum-theme';
+import { T } from '@/app/components/curriculum-surface';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import type { LessonSection } from '@/lib/curriculum-utils';
+import { readingMinutesLeft } from '@/app/lib/lesson-sections';
 import type { NavStep } from './topic-data';
 
 // Guided notes, plus the scroll-to-bottom gate.
@@ -130,11 +132,62 @@ export default function LessonBody({
   const count = sections.length;
   const sectionLabel = `${count} ${count === 1 ? 'section' : 'sections'}`;
 
+  // ─── WHERE THE READER IS ────────────────────────────────────────────────────
+  //
+  // Client only, and deliberately not persisted. The outline's comment above
+  // recorded that a current-section marker needs scroll observation and that the
+  // PERSISTED half needs a column next to lesson_completed_at. That column,
+  // curriculum_completion.furthest_section, is written in
+  // sql/curriculum_completion_furthest_section.sql section 2 and HAS NOT BEEN
+  // RUN. So this half ships and the other does not:
+  //
+  //   current-section marker, progress rule, minutes left   here, now
+  //   per-section CHECKMARKS                                needs the column
+  //
+  // Checkmarks are the only item that needs it. When the column lands, the
+  // client already computes the position this reads, and persisting it is one
+  // POST to the existing progress route -- no rework of what is below.
+  const [current, setCurrent] = useState(0);
+  const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+
+  useEffect(() => {
+    if (count === 0) return;
+    const nodes = sectionRefs.current.filter((n): n is HTMLElement => Boolean(n));
+    if (nodes.length === 0) return;
+
+    // Topmost section still intersecting the viewport wins. rootMargin pulls the
+    // trigger line down to roughly a third from the top, so a heading becomes
+    // "current" when the reader reaches it rather than when its last pixel
+    // leaves, which is what a bottom-edge test would do.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .map((e) => nodes.indexOf(e.target as HTMLElement))
+          .filter((i) => i >= 0);
+        if (visible.length > 0) setCurrent(Math.min(...visible));
+      },
+      { rootMargin: '-33% 0px -60% 0px', threshold: 0 }
+    );
+    for (const node of nodes) observer.observe(node);
+    return () => observer.disconnect();
+  }, [count]);
+
+  const minutesLeft = readingMinutesLeft(sections, current);
+
+  // NO CARD. A section of the notes is not an object on the page.
+  //
+  // This was a T.panel fill with a hairline ring and a 12px radius, one per
+  // authored section, so a lesson read as a stack of floating slabs and the eye
+  // met a container edge before it met a sentence. Sections are separated by a
+  // rule now and the prose sits on the ground.
+  //
+  // This is also the pair that broke dark mode: the fill was hardcoded light
+  // while the ink inside it followed the theme. Keeping it token-driven is what
+  // scripts/verify_lesson_dark.mjs asserts, by requiring the fill to DIFFER
+  // between themes.
   const card = {
-    background: C.paper,
-    borderRadius: RADIUS,
-    boxShadow: hairline(ink(0.1)),
-    color: ink(0.82),
+    color: T.ink2,
     font: `400 16px ${FONT_BODY}`,
     lineHeight: MATH_LINE_HEIGHT,
   } as const;
@@ -173,17 +226,39 @@ export default function LessonBody({
             display: 'flex',
             flexDirection: 'column',
             gap: 10,
-            padding: '20px 22px',
-            borderRadius: RADIUS,
-            // The rail is its own rung on the surface ladder, a shade below the
-            // paper cards it sits beside, so the reading column stays the
-            // brightest thing on the page.
-            background: C.rail,
-            boxShadow: hairline(ink(0.1)),
+            // A PLAIN COLUMN, not a panel. The rail was a filled rounded card a
+            // rung below the paper it sat beside; with the paper gone there is
+            // no ladder left to sit on, and a lone filled block beside
+            // unfilled prose reads as the only object on the page. Hairline
+            // dividers between entries carry the structure instead.
+            padding: '2px 16px 2px 0',
+            borderRight: `1px solid ${T.hairline}`,
           }}
         >
-          <div style={{ ...EYEBROW, color: INK_MUTED }}>On this page</div>
-          <div style={{ font: `600 13px ${FONT_BODY}`, color: C.midnight }}>{sectionLabel}</div>
+          <div style={{ ...EYEBROW, color: T.muted }}>On this page</div>
+          <div style={{ font: `600 13px ${FONT_BODY}`, color: T.ink }}>
+            Section {current + 1} of {count}
+          </div>
+
+          {/* The progress rule. Decorative: the sentence under it says the same
+              thing, so a screen reader hears it once. */}
+          <div aria-hidden="true" style={{ height: 2, background: T.track }}>
+            <div
+              style={{
+                width: `${Math.round(((current + 1) / count) * 100)}%`,
+                height: 2,
+                background: T.trackFill,
+              }}
+            />
+          </div>
+
+          {minutesLeft !== null && (
+            <div style={{ font: `400 12px ${FONT_BODY}`, color: T.muted }}>
+              About {minutesLeft} {minutesLeft === 1 ? 'minute' : 'minutes'} of reading left
+            </div>
+          )}
+
+          <div className="um-visually-hidden">{sectionLabel} in these notes</div>
           <ol
             style={{
               margin: '6px 0 0',
@@ -197,12 +272,23 @@ export default function LessonBody({
               <li
                 key={i}
                 title={section.title}
+                aria-current={i === current ? 'true' : undefined}
                 style={{
-                  padding: '9px 0',
-                  boxShadow: `inset 0 -1px 0 ${ink(0.07)}`,
+                  // The orange left-edge marker, carried by a border rather
+                  // than a fill so the entry stays on the ground with the rest
+                  // of the column. Transparent rather than absent on the other
+                  // entries, so nothing shifts sideways as the reader moves.
+                  borderLeft: `2px solid ${i === current ? T.trackFill : 'transparent'}`,
+                  padding: '9px 0 9px 10px',
+                  boxShadow: `inset 0 -1px 0 ${T.hairline}`,
                   font: `400 13px ${FONT_BODY}`,
                   lineHeight: 1.45,
-                  color: ink(0.7),
+                  // The current entry takes full ink; the rest stay secondary.
+                  // This is the whole of the design's dimming device that
+                  // survives measurement, and it moves the CURRENT entry up
+                  // rather than pushing its neighbours toward the background.
+                  color: i === current ? T.ink : T.ink2,
+                  fontWeight: i === current ? 600 : 400,
                 }}
               >
                 {/* The design's own fallback for a long heading: wrap to two
@@ -257,9 +343,9 @@ export default function LessonBody({
           // Without this a wide table or a long equation inside a flex child
           // sets the column's floor width and pushes the rail off the page.
           minWidth: 0,
-          background: C.band,
-          borderRadius: RADIUS,
-          padding: '22px 24px',
+          // The band fill comes off with the cards. The reading column is the
+          // page ground now; see curriculum-theme.ts RADIUS.
+          padding: '2px 0 0',
         }}
       >
         <div
@@ -279,15 +365,26 @@ export default function LessonBody({
             observer is taken out of it. Hidden above 760px, where the rail says
             the same thing. */}
         {count > 0 && (
-          <div className="um-lesson-strip" style={{ ...EYEBROW, color: INK_MUTED, display: 'none' }}>
+          <div className="um-lesson-strip" style={{ ...EYEBROW, color: T.muted, display: 'none' }}>
             {sectionLabel}
           </div>
         )}
 
         {count > 0 ? (
           sections.map((section, i) => (
-            <section key={i} className="um-prose-card" style={{ ...card, padding: '26px 28px' }}>
-              <div style={{ ...EYEBROW, color: C.sunset }}>
+            <section
+              key={i}
+              className="um-prose-card"
+              ref={(node) => {
+                sectionRefs.current[i] = node;
+              }}
+              style={{
+                ...card,
+                padding: i === 0 ? '0 0 30px' : '30px 0',
+                borderTop: i === 0 ? 'none' : `1px solid ${T.hairline}`,
+              }}
+            >
+              <div style={{ ...EYEBROW, color: T.muted }}>
                 Section {i + 1} of {count}
               </div>
               <h3
@@ -295,7 +392,7 @@ export default function LessonBody({
                   margin: '10px 0 16px',
                   font: `600 20px ${FONT_HEADING}`,
                   lineHeight: 1.3,
-                  color: C.midnight,
+                  color: T.ink,
                 }}
                 dangerouslySetInnerHTML={{ __html: section.heading_html }}
               />

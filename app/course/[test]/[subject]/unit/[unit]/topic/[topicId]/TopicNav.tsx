@@ -1,6 +1,6 @@
 'use client';
 
-import { C, ink, INK_DISABLED, INK_MUTED } from '@/app/components/curriculum-theme';
+import { T } from '@/app/components/curriculum-surface';
 import { FONT_BODY } from '@/app/components/fonts';
 import type { NavStep } from './topic-data';
 
@@ -31,7 +31,7 @@ export default function TopicNav({
       style={{
         marginTop: 8,
         paddingTop: 22,
-        borderTop: `1px solid ${ink(0.1)}`,
+        borderTop: `1px solid ${T.hairline}`,
         display: 'flex',
         flexDirection: 'column',
         gap: 12,
@@ -46,11 +46,11 @@ export default function TopicNav({
             alignItems: 'center',
             gap: 10,
             padding: '12px 16px',
-            borderRadius: 12,
-            background: C.sand,
+            borderRadius: 0,
+            background: T.quietBox,
             font: `400 13.5px ${FONT_BODY}`,
             lineHeight: 1.55,
-            color: ink(0.65),
+            color: T.ink2,
           }}
         >
           <span
@@ -60,7 +60,7 @@ export default function TopicNav({
               height: 7,
               flex: 'none',
               borderRadius: '50%',
-              background: C.sunset,
+              background: T.cta,
             }}
           />
           {requirement}
@@ -85,16 +85,16 @@ export default function TopicNav({
               alignItems: 'center',
               gap: 8,
               padding: '12px 20px',
-              borderRadius: 11,
-              boxShadow: `inset 0 0 0 1.5px ${ink(0.22)}`,
+              borderRadius: 0,
+              boxShadow: `inset 0 0 0 1.5px ${T.controlBorder}`,
               font: `500 14.5px ${FONT_BODY}`,
-              color: ink(0.7),
+              color: T.ink2,
             }}
           >
             <span aria-hidden="true">&larr;</span>
             <span>
               Previous
-              <span style={{ color: INK_MUTED }}> · {previous.label}</span>
+              <span style={{ color: T.muted }}> · {previous.label}</span>
             </span>
           </a>
         ) : (
@@ -113,17 +113,17 @@ export default function TopicNav({
                 alignItems: 'center',
                 gap: 8,
                 padding: '12px 24px',
-                borderRadius: 11,
+                borderRadius: 0,
                 border: 'none',
-                background: ink(0.09),
+                background: T.insetRow,
                 font: `600 14.5px ${FONT_BODY}`,
-                color: INK_DISABLED,
+                color: T.disabled,
                 cursor: 'not-allowed',
               }}
             >
               <span>
                 Next
-                <span style={{ color: ink(0.32) }}> · {next.label}</span>
+                <span style={{ color: T.disabled }}> · {next.label}</span>
               </span>
               <span aria-hidden="true">&rarr;</span>
             </button>
@@ -136,11 +136,11 @@ export default function TopicNav({
                 alignItems: 'center',
                 gap: 8,
                 padding: '12px 24px',
-                borderRadius: 11,
-                background: C.sunset,
-                boxShadow: `0 2px 0 ${C.sunsetShadow}`,
+                borderRadius: 0,
+                // NO PRESSABLE LIP. See LessonHandoff.
+                background: T.cta,
                 font: `600 14.5px ${FONT_BODY}`,
-                color: C.midnight,
+                color: T.ctaInk,
               }}
             >
               <span>

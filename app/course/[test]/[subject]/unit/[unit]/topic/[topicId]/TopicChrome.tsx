@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { C, ink, INK_MUTED, RADIUS, hairline } from '@/app/components/curriculum-theme';
+import { RADIUS, hairline } from '@/app/components/curriculum-theme';
+import { T } from '@/app/components/curriculum-surface';
 import { FONT_BODY } from '@/app/components/fonts';
 import type { TopicPart } from '@/app/lib/topic-part-route';
 import SupportModal from '@/app/components/SupportModal';
@@ -68,8 +69,8 @@ export default function TopicChrome({
           alignItems: 'center',
           gap: '14px',
           padding: '12px 22px',
-          background: C.paper,
-          borderBottom: `1px solid ${ink(0.09)}`,
+          background: T.panel,
+          borderBottom: `1px solid ${T.hairline}`,
         }}
       >
         <StudentNavTrigger onClick={() => setMenuOpen(true)} />
@@ -80,10 +81,10 @@ export default function TopicChrome({
           alt="UnpackMath"
           style={{ height: '22px', width: 'auto', display: 'block' }}
         />
-        <div style={{ width: '1px', height: '20px', background: ink(0.12) }} />
+        <div style={{ width: '1px', height: '20px', background: T.hairline }} />
         <div
           className="um-bar-trail"
-          style={{ font: `400 13px ${FONT_BODY}`, color: ink(0.6), lineHeight: 1.3 }}
+          style={{ font: `400 13px ${FONT_BODY}`, color: T.muted, lineHeight: 1.3 }}
         >
           {/* BOTH OF THESE USED TO BE DEAD LINKS, and neither failed loudly.
               /course/{test}/{subject} and /course/{test}/{subject}/unit/{n} have
@@ -100,15 +101,15 @@ export default function TopicChrome({
             {test.toUpperCase()} ·{' '}
             <span style={{ textTransform: 'capitalize' }}>{subjectLabel}</span>
           </a>
-          <span style={{ color: ink(0.3), padding: '0 6px' }}>/</span>
+          <span style={{ color: T.disabled, padding: '0 6px' }}>/</span>
           <a href={`/dashboard/modules?unit=${encodeURIComponent(unit)}`} style={{ color: 'inherit' }}>
             Unit {unit}
           </a>
           {/* Not a link. This is where the student already is, and the doorway
               it would point at is one click away in the segments below. */}
           <span className="um-bar-topic">
-            <span style={{ color: ink(0.3), padding: '0 6px' }}>/</span>
-            <span style={{ font: `500 12px ui-monospace, Menlo, monospace`, color: C.midnight }}>
+            <span style={{ color: T.disabled, padding: '0 6px' }}>/</span>
+            <span style={{ font: `500 12px ui-monospace, Menlo, monospace`, color: T.ink }}>
               {topicId}
             </span>
           </span>
@@ -145,10 +146,10 @@ export default function TopicChrome({
                       borderBottomLeftRadius: i === 0 ? RADIUS : 0,
                       borderTopRightRadius: i === PARTS.length - 1 ? RADIUS : 0,
                       borderBottomRightRadius: i === PARTS.length - 1 ? RADIUS : 0,
-                      background: current ? C.cream : 'transparent',
-                      boxShadow: hairline(ink(0.12)),
+                      background: current ? T.tabActiveBg : 'transparent',
+                      boxShadow: hairline(T.hairline),
                       font: `${current ? 600 : 400} 12.5px ${FONT_BODY}`,
-                      color: current ? C.midnight : INK_MUTED,
+                      color: current ? T.ink : T.muted,
                       textDecoration: 'none',
                       whiteSpace: 'nowrap',
                     }}
@@ -167,7 +168,7 @@ export default function TopicChrome({
               style={{
                 display: 'none',
                 font: `500 12px ${FONT_BODY}`,
-                color: ink(0.7),
+                color: T.ink2,
                 whiteSpace: 'nowrap',
               }}
             >
