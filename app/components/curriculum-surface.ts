@@ -132,6 +132,19 @@ export interface CurriculumSurface {
   correctTint: string;
   missed: string;
   missedTint: string;
+  /**
+   * A SYSTEM failure, not a wrong answer. Named 2026-08-22, discrepancy D7.
+   *
+   * These are two different messages and they were sharing one colour. "Your
+   * request failed, try again" and "you got this wrong" mean opposite things to
+   * a student: one is the product's fault and one is theirs. GumuChat's
+   * ErrorLine was borrowing C.amber, the retired missed-answer value, so a
+   * network error and a missed question arrived in the same ink.
+   *
+   * Deliberately NOT --umt-missed. If they shared a token, ratifying red for
+   * missed answers would have silently repainted every error message too.
+   */
+  error: string;
 
   // ─── Indicators and actions ───────────────────────────────────────────────
   track: string;
@@ -224,6 +237,20 @@ const LIGHT: CurriculumSurface = {
   // next person to reach for the amber-brown should find out why it is not here.
   missed: '#B0452F',
   missedTint: '#F7EFEC',
+  // C.amber #B5763A darkened until it passes. Juan's call: the ErrorLine stays
+  // AMBER, it just stops borrowing a token that means something else.
+  //
+  // The borrowed value failed AA on all seven cream surfaces, 2.85 to 3.68, so
+  // "amber" was never really shipping as readable text. Measured here: 4.70 on
+  // page, 5.04 rail, 5.37 band, 6.07 panel, 5.00 quietBox, 5.52 insetRow, 5.28
+  // choice. Still reads as brown rather than as the brand orange, which is the
+  // property that made amber the right tone for this message in the first place.
+  //
+  // #B84A40 was tried first, reusing --uml-error from login-theme.ts:131, and
+  // REJECTED on measurement: 3.91 on page, 4.19 rail, 4.16 quietBox, 4.39
+  // choice. It was measured against a white card there and does not survive the
+  // move onto cream.
+  error: '#8A5520',
 
   track: '#DCD3BE', // 1.30 on band. Paired with a label, exempt.
   // #F0A33E Sunset, not the import's #E89B3C, which is retired.
@@ -312,6 +339,17 @@ const DARK: CurriculumSurface = {
   // #B0452F measures 2.73 on this ladder and cannot be used here.
   missed: '#E07B72', // 5.14 on missedTint
   missedTint: '#2A1E1C',
+  // A warm tan, not an amber, and NOT the obvious --ec-orange dark #F2A541.
+  //
+  // #F2A541 was the first candidate and it fails a different test than contrast:
+  // it sits 4 units of RGB distance from the CTA #F0A33E, so an error message in
+  // dark would have arrived in what a student reads as the brand orange. That
+  // also reintroduces orange-as-text, which is the exact role the palette
+  // retired on 2026-08-17 and re-confirmed on 2026-08-21.
+  //
+  // #DDB892 measures 7.77 at its worst on the dark ladder and sits 89 from the
+  // CTA and 69 from missed #E07B72, so it is confusable with neither.
+  error: '#DDB892',
 
   track: 'rgba(242,237,223,0.14)',
   // Sunset survives in dark: 5.27 on the track, 7.31 on panel as text.
@@ -371,6 +409,7 @@ const VAR_NAMES: Record<keyof CurriculumSurface, string> = {
   correctTint: '--umt-correct-tint',
   missed: '--umt-missed',
   missedTint: '--umt-missed-tint',
+  error: '--umt-error',
   track: '--umt-track',
   trackFill: '--umt-track-fill',
   cta: '--umt-cta',

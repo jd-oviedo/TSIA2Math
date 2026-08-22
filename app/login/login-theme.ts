@@ -109,7 +109,7 @@ const LIGHT: LoginSurface = {
   inkMono: 'rgba(0,0,0,0.58)',
   amber: '#9E6512',
   amberRule: '#C8821F',
-  cta: '#E8A33D',
+  cta: '#F0A33E',
   ctaInk: '#111111',
   ctaShadow: '#111111',
   // Cream, from the current brand palette (curriculum-theme.ts C.cream). The
@@ -150,9 +150,16 @@ const DARK: LoginSurface = {
   amber: '#F2A541', // [reuse] --ec-orange dark
   amberRule: '#F2A541',
   // The CTA does not invert. Its label contrast is against the fill, not the
-  // page, so 8.76:1 holds in both themes -- and an orange button is the one
-  // thing on these screens a returning student recognises before reading.
-  cta: '#E8A33D',
+  // page, so it holds in both themes -- and an orange button is the one thing
+  // on these screens a returning student recognises before reading.
+  //
+  // #F0A33E Sunset, was #E8A33D. UNIFIED 2026-08-22, discrepancy D1.
+  // curriculum-surface.ts unified on Sunset on 2026-08-21 and this file did not,
+  // which left two oranges live on adjacent surfaces for a day. Both cleared
+  // their #111111 label (9.00 and 8.76) so nothing was failing; the reason to
+  // pick one is that nobody sees them side by side and everybody who reads the
+  // palette later has to explain why there are two.
+  cta: '#F0A33E',
   ctaInk: '#111111',
   ctaShadow: 'rgba(232,238,248,0.42)',
   // Cream does not invert either, for the same reason the orange did not: the

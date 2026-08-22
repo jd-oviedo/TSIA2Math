@@ -1,6 +1,6 @@
 'use client';
 
-import { C, ink } from '@/app/components/curriculum-theme';
+import { T } from '@/app/components/curriculum-surface';
 import {
   quizSegmentState,
   quizStripSummary,
@@ -20,10 +20,29 @@ import {
 // the mini quiz's threshold lives in GatedQuiz and TopicNav and nothing here
 // reads it.
 
+// MISSED IS RED, NOT AMBER-BROWN. RATIFIED 2026-08-22, discrepancy D7.
+//
+// WHAT WAS RECORDED. curriculum-theme.ts held that a wrong answer is amber-brown
+// #B5763A rather than red, on the ground that "the student is mid-conversation
+// with GUMU, not being alarmed".
+//
+// WHAT ACTUALLY SHIPPED. The 2026-08-21 token table put the design's red
+// #B0452F into --umt-missed, and PracticeQuiz.tsx and QuizFinish.tsx consumed it
+// across ten call sites. So the recorded decision had already been reversed in
+// practice, on the two surfaces that matter most, without anyone ruling on it.
+// This strip was the straggler, and it sat beside a practice page that had
+// already gone red.
+//
+// WHAT DECIDED IT: the measurement, not the tone. Amber-brown is 3.30:1 on the
+// missed row and 3.68 on panel, both below AA. Red is 4.95 and 5.53. A tone
+// preference was overriding a contrast failure, which is not a trade that was
+// ever consciously made.
+//
+// Dark is #E07B72, already measured at 5.14 on the dark missed tint.
 const COLOUR: Record<QuizSegment, string> = {
-  correct: C.green,
-  missed: C.amber,
-  untouched: ink(0.13),
+  correct: T.correct,
+  missed: T.missed,
+  untouched: T.track,
 };
 
 export default function QuizStrip({

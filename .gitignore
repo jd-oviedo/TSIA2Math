@@ -29,3 +29,10 @@ scratchpad/
 # screenshots land in scratch-shots-*/ for the same reason.
 app/um-probe-*/
 scratch-shots-*/
+
+# Playwright authentication state. The curriculum harness signs in once through
+# the real Google flow and saves the resulting COOKIES here (app/lib/supabase-
+# server.ts uses @supabase/ssr, so the session is cookie-borne). This file is a
+# live session for a real account and must never be committed. Ignored BEFORE
+# anything writes into the directory, deliberately.
+.auth/

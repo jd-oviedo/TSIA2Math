@@ -626,7 +626,7 @@ function ErrorLine({ text }: { text: string }) {
         margin: '8px 0 0',
         font: `400 13.5px ${FONT_BODY}`,
         lineHeight: 1.6,
-        color: C.amber,
+        color: T.error,
       }}
     >
       {text}
