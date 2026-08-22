@@ -10,7 +10,9 @@ import {
   gradableTotal,
   type TopicRow,
   type TopicProgress,
+  type TopicShape,
 } from '../data';
+import { getCompletions, isTopicComplete, type CompletionRow } from '../../lib/curriculum-progress';
 import { Card, EmptyState, Eyebrow, Muted, PageHeading } from '../ui';
 // Two of the three aliased imports that once sat here -- curriculum-theme, fonts
 // and dashboard-theme -- came back when this file grew markup of its own again:
@@ -39,10 +41,27 @@ function topicHref(topic: TopicRow) {
   return `/course/${test}/${subject}/unit/${topic.unit_number}/topic/${topic.topic_id}`;
 }
 
-function statusOf(p: TopicProgress | undefined): RowStatus {
-  if (!p || p.total === 0) return 'not_started';
-  if (p.correct >= p.total) return 'complete';
-  if (p.attempted > 0) return 'in_progress';
+// DEFINITION A. Settled 2026-08-22; the full argument is in
+// curriculum-progress.ts above getCompletions.
+//
+// This used to be definition B: complete when correct >= total across every
+// gradable item, with the lesson never consulted. B was the only completion
+// state a student ever saw, and it disagreed with the record the database keeps
+// and with the gates the product enforces. A student who read the notes, cleared
+// the 70% practice gate and scored 3 of 4 on the quiz was told they had
+// completed nothing.
+//
+// `attempted` still drives in_progress, because "started" is a fact about the
+// attempt log rather than about the snapshot, and a student who has answered one
+// question has started whatever the snapshot says.
+function statusOf(
+  p: TopicProgress | undefined,
+  snapshot: CompletionRow | undefined,
+  shape: TopicShape | undefined
+): RowStatus {
+  if (isTopicComplete(snapshot, p, shape)) return 'complete';
+  if (snapshot?.lesson_completed_at) return 'in_progress';
+  if (p && p.attempted > 0) return 'in_progress';
   return 'not_started';
 }
 
@@ -71,10 +90,16 @@ export default async function ModulesPage({
 
   const { unit: unitParam } = await searchParams;
 
-  const [{ topics, shapes }, attempts, headerList, access, placeholders] = await Promise.all([
+  const [{ topics, shapes }, attempts, headerList, completions, access, placeholders] =
+    await Promise.all([
     getTopics(),
     getAttempts(profile.id),
     headers(),
+    // Definition A's one extra read. It joins this existing Promise.all, so it
+    // costs one round trip and no added latency, and it is served by the unique
+    // index on (user_id, course_id, topic_id) that curriculum_completion
+    // already carries.
+    getCompletions(profile.id),
     // THE GATE THIS PAGE SHIPPED WITHOUT.
     //
     // This surface rendered the whole course tree as working links to every
@@ -97,6 +122,12 @@ export default async function ModulesPage({
   // Explicit parameter first, referer as the fallback. See referer.ts.
   const openUnit = unitFromParam(unitParam) ?? unitFromReferer(headerList.get('referer'));
   const progress = progressByTopic(attempts, shapes);
+
+  // Course progress, definition A. One pass over topics already in memory.
+  const courseDone = topics.reduce((sum, t) => {
+    const key = `${t.course_id}:${t.topic_id}`;
+    return sum + (isTopicComplete(completions.get(key), progress.get(key), shapes.get(key)) ? 1 : 0);
+  }, 0);
 
   const units = new Map<number, TopicRow[]>();
   for (const topic of topics) {
@@ -173,7 +204,15 @@ export default async function ModulesPage({
               reads to a student as having accomplished nothing. The per-unit bars
               stay, because those move. Nothing replaces it and the space is not
               repurposed. */}
-          <CourseBand topicCount={topics.length} unitCount={units.size} />
+          {/* topics.length is the derived 97: getTopics filters
+              is_placeholder=false, so unwritten topics are counted by the line
+              at the foot of their unit instead and never enter this
+              denominator. Nothing here hardcodes 97. */}
+          <CourseBand
+            topicCount={topics.length}
+            unitCount={units.size}
+            completedTopics={courseDone}
+          />
 
           {resume && (
             <ResumeCard
@@ -188,14 +227,22 @@ export default async function ModulesPage({
           {[...units.entries()]
             .sort((a, b) => a[0] - b[0])
             .map(([unitNumber, unitTopics]) => {
-              const unitTotal = unitTopics.reduce(
-                (sum, t) => sum + gradableTotal(shapes.get(`${t.course_id}:${t.topic_id}`)),
-                0
-              );
-              const unitDone = unitTopics.reduce(
-                (sum, t) => sum + (progress.get(`${t.course_id}:${t.topic_id}`)?.correct ?? 0),
-                0
-              );
+              // TOPICS, NOT QUESTIONS. This bar counted correct answers against
+              // gradable items, so a unit read "84 / 190" -- a number no student
+              // has a use for, and one that moves when a topic is re-authored.
+              // It counts completed topics against topics now, which is what
+              // "5/14" means on the syllabus and what a student is actually
+              // walking through. Both numbers are derived; nothing is hardcoded.
+              const unitTotal = unitTopics.length;
+              const unitDone = unitTopics.reduce((sum, t) => {
+                const key = `${t.course_id}:${t.topic_id}`;
+                return (
+                  sum +
+                  (isTopicComplete(completions.get(key), progress.get(key), shapes.get(key))
+                    ? 1
+                    : 0)
+                );
+              }, 0);
 
               return (
                 <UnitSection
@@ -226,7 +273,15 @@ export default async function ModulesPage({
                         topicId={topic.topic_id}
                         topicName={topic.topic_name}
                         href={topicHref(topic)}
-                        status={reachable ? statusOf(p) : 'gated'}
+                        status={
+                          reachable
+                            ? statusOf(
+                                p,
+                                completions.get(`${topic.course_id}:${topic.topic_id}`),
+                                shapes.get(`${topic.course_id}:${topic.topic_id}`)
+                              )
+                            : 'gated'
+                        }
                         estimatedMinutes={topic.estimated_time_minutes}
                         correct={p?.correct ?? 0}
                         total={p?.total ?? 0}

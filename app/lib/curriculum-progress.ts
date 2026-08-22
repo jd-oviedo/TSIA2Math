@@ -1,6 +1,11 @@
 import { cache } from 'react';
 import { createAdminClient } from './supabase-admin';
 import { correctInSection, type AttemptRow } from './attempt-sets';
+// The definition-A arithmetic lives in a module that imports nothing, so it can
+// be unit tested. Re-exported here so callers keep one import site.
+import { isTopicComplete, requiredCorrect, type CompletionRow } from './topic-completion';
+export { isTopicComplete, requiredCorrect };
+export type { CompletionRow };
 
 // The course sequence and the mastery gate maths, in one place.
 //
@@ -40,6 +45,12 @@ export type TopicProgress = {
   total: number;
   correct: number;
   attempted: number;
+  // Per section, added 2026-08-22 for definition A. The whole-topic `correct`
+  // cannot reconcile a snapshot, because the two gates have different
+  // thresholds (70% of practice, 75% of the quiz) and a single total cannot say
+  // which section the correct answers landed in. See isTopicComplete.
+  practiceCorrect: number;
+  quizCorrect: number;
 };
 
 type StoredItem = { format: string };
@@ -265,12 +276,51 @@ export function progressByTopic(
 
   const out = new Map<string, TopicProgress>();
   for (const [key, shape] of shapes) {
+    const hits = correct.get(key);
+    let practiceCorrect = 0;
+    let quizCorrect = 0;
+    // The item keys are `${section}:${item_number}` and the sections are
+    // already normalised to 'practice' or 'mini_quiz' above, so counting by
+    // prefix cannot pick up a third section.
+    for (const itemKey of hits ?? []) {
+      if (itemKey.startsWith('mini_quiz:')) quizCorrect += 1;
+      else practiceCorrect += 1;
+    }
     out.set(key, {
       total: gradableTotal(shape),
-      correct: correct.get(key)?.size ?? 0,
+      correct: hits?.size ?? 0,
       attempted: seen.get(key)?.size ?? 0,
+      practiceCorrect,
+      quizCorrect,
     });
   }
+  return out;
+}
+
+// One read, every topic, for one student. Filtered on user_id and served by the
+// unique index on (user_id, course_id, topic_id) that already exists, so this
+// needs no new index. At most one row per topic in the course.
+//
+// Called from the page's existing Promise.all, so it costs one round trip and
+// no added latency.
+export async function getCompletions(
+  studentId: string
+): Promise<Map<string, CompletionRow>> {
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from('curriculum_completion')
+    .select(
+      'course_id, topic_id, completed_at, lesson_completed_at, practice_correct, practice_total, quiz_correct, quiz_total'
+    )
+    .eq('user_id', studentId);
+
+  // FAILS OPEN, TOWARD "NOT COMPLETE". An empty map renders every row as its
+  // observed state from the attempt log, which is the pre-definition-A
+  // behaviour, rather than throwing a syllabus at a student.
+  if (error || !data) return new Map();
+
+  const out = new Map<string, CompletionRow>();
+  for (const row of data) out.set(topicKey(row.course_id, row.topic_id), row);
   return out;
 }
 
@@ -322,20 +372,6 @@ export function findStepIndex(
   );
 }
 
-// ─── Mastery thresholds ──────────────────────────────────────────────────────
-
-// Practice unlocks at 7 of 10, the quiz at 3 of 4. Held as a ratio of the
-// section's real item count rather than a bare 7, so a topic authored with a
-// different number of items still gates at the same standard instead of
-// becoming impossible or trivial.
-const PRACTICE_RATIO = 7 / 10;
-const QUIZ_RATIO = 3 / 4;
-
-export function requiredCorrect(kind: 'practice' | 'quiz', gradable: number): number {
-  if (gradable === 0) return 0;
-  const ratio = kind === 'practice' ? PRACTICE_RATIO : QUIZ_RATIO;
-  return Math.ceil(gradable * ratio);
-}
 
 // ─── Snapshot ────────────────────────────────────────────────────────────────
 
