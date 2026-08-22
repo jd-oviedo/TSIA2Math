@@ -84,7 +84,9 @@ export default function FlagsPanel() {
       </summary>
 
       <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 10 }}>
-        {error && <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, color: C.amber }}>{error}</p>}
+        {/* V.noticeWarn, not C.amber. C.amber is the LIGHT-ONLY curriculum
+            palette and measured 3.74 on this card in light, 4.34 in dark. */}
+        {error && <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, color: V.noticeWarn }}>{error}</p>}
         {!error && flags === null && (
           <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, color: V.dim }}>Loading…</p>
         )}
@@ -124,8 +126,15 @@ export default function FlagsPanel() {
                       padding: '3px 10px',
                       borderRadius: 999,
                       font: `700 11px ${FONT_BODY}`,
-                      background: resolved ? C.greenBg : C.amberBg,
-                      color: resolved ? C.green : C.amber,
+                      // The fill stays coloured and the label takes ink: the
+                      // settled orange rule, applied rather than argued with.
+                      // The tint is darker than the card so it binds, and no
+                      // amber clears it -- #A8631F reaches only 4.18, and
+                      // lightening the tint far enough drives it to 1.02 against
+                      // its own container. Ink on the tint is 15.47, and the
+                      // chip still says which state it is in, in words.
+                      background: resolved ? V.noticeOkBg : V.noticeWarnBg,
+                      color: V.ink,
                     }}
                   >
                     {resolved ? 'Resolved' : 'Open'}

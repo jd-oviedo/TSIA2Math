@@ -1,7 +1,6 @@
 import { getProfile } from '../../lib/auth';
 import { getTopics, getAttempts, getTestSessions } from '../data';
 import { Card, CardTitle, EmptyState, Muted, PageHeading, formatDate } from '../ui';
-import { C } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import { V } from '@/app/components/dashboard-theme';
 
@@ -142,7 +141,10 @@ export default async function GradesPage() {
                             padding: '11px 12px 11px 0',
                             borderBottom: `1px solid ${V.hairline}`,
                             font: `400 13.5px ${FONT_BODY}`,
-                            color: s.completed_at ? C.green : V.dim,
+                            // V.noticeOk, not C.green: the same token on the
+                            // same ground as JoinClassPanel's success line, so
+                            // fixing that one necessarily fixes this one too.
+                            color: s.completed_at ? V.noticeOk : V.dim,
                           }}
                         >
                           {s.completed_at ? 'Completed' : 'Not finished'}

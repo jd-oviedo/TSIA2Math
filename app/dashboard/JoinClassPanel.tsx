@@ -117,11 +117,15 @@ export default function JoinClassPanel() {
       </div>
 
       <div role="status" aria-live="polite">
+        {/* Theme-aware notice tokens, not the light-only curriculum palette.
+            C.amber measured 3.74 light / 4.34 dark here and C.green 4.11 / 3.95.
+            Both sit inside the role="status" region above, which is what carries
+            the distinction now that the two colours are close in luminance. */}
         {error && (
-          <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, color: C.amber }}>{error}</p>
+          <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, color: V.noticeWarn }}>{error}</p>
         )}
         {success && (
-          <p style={{ margin: 0, font: `500 13.5px ${FONT_BODY}`, color: C.green }}>{success}</p>
+          <p style={{ margin: 0, font: `500 13.5px ${FONT_BODY}`, color: V.noticeOk }}>{success}</p>
         )}
       </div>
     </div>

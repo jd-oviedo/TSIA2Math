@@ -86,8 +86,16 @@ export interface DashSurface {
   // #A8631F IS A DARKENED TEXT-ONLY VARIANT OF SUNSET, NOT A COMPETING ORANGE,
   // and that is the whole basis on which it was approved. It is paired with
   // C.sunset's exact hex in dark, where that already passes at 7.74. One orange
-  // doing two jobs across two themes. It must not be used as a fill, and nothing
-  // outside a status label should reach for it.
+  // doing two jobs across two themes. It must not be used as a fill.
+  //
+  // WIDENED 2026-08-22, deliberately and once. The original sentence here read
+  // "nothing outside a status label should reach for it". noticeWarn below now
+  // holds the same pair, because error copy on a dashboard card is the same job
+  // on the same ground as a status label -- quiet coloured text on this surface,
+  // measured at the same 4.70 light and 7.74 dark. What the rule was protecting
+  // is intact: still text, still never a fill, still no third orange in the
+  // system. If a THIRD role wants this hex, that is the point to stop and ask
+  // whether the value has quietly become a general-purpose orange after all.
   //
   // statusComplete's light value #3F7150 is the imported design's green. It is
   // the one value from that sheet adopted after the 2026-08-17 wholesale
@@ -100,6 +108,54 @@ export interface DashSurface {
   statusProgress: string;
   /** Status label: topic untouched. Also the metadata line on every topic row. */
   statusIdle: string;
+  // ─── Notices ───────────────────────────────────────────────────────────────
+  //
+  // ADDED 2026-08-22. Error, warning and confirmation copy on the dashboard was
+  // painted straight from the curriculum palette, which is LIGHT-ONLY and was
+  // never measured against this surface. Every one of them failed, in BOTH
+  // themes, which is why these are pairs rather than constants:
+  //
+  //                                     light #FFFFFF   dark #202024
+  //   error copy      C.amber #B5763A       3.74 FAIL      4.34 FAIL
+  //   success copy    C.green #4E8A5B       4.11 FAIL      3.95 FAIL
+  //
+  // The hexes below introduce NO new colour. They are statusProgress's and
+  // statusComplete's pairs exactly, which were measured and approved on this
+  // same surface on 2026-08-21. A notice and a status label are the same job on
+  // the same ground: quiet coloured text on a card.
+  //
+  // THE COST, STATED RATHER THAN HIDDEN. Raising a notice against the CARD moves
+  // it toward the ink end, which necessarily moves it toward body ink too. The
+  // step from V.ink narrows:
+  //
+  //                        light            dark
+  //   warning   4.66 -> 3.70:1     3.16 -> 1.77:1
+  //   success   4.24 -> 3.06:1     3.47 -> 1.93:1
+  //
+  // Light still reads as clearly marked. Dark is thin, and there is no value
+  // that is far from the card AND far from body ink at once -- the two grounds
+  // pull opposite ways. Hue carries what luminance no longer does, which is why
+  // both notice sites sit in a role="status" region and say what they are in
+  // words. Warning against success is unchanged and never was a luminance
+  // distinction: 1.10:1 before, 1.21:1 light and 1.09:1 dark after.
+  /** Error and warning copy. Text only, never a fill. */
+  noticeWarn: string;
+  /** Confirmation copy. Text only, never a fill. */
+  noticeOk: string;
+  /**
+   * Tinted chip fills, and the one place the settled orange rule is applied
+   * literally rather than argued about: the fill stays coloured, and the label
+   * inside it takes V.ink.
+   *
+   * That is what fixes these without a darkened amber. The chip tint is DARKER
+   * than the white card, so it binds, and no amber clears it: #A8631F reaches
+   * 4.18 and lightening the tint to let it through drives the tint to 1.02
+   * against its own container, i.e. invisible. Ink on the tint measures 15.47.
+   * Nothing is lost, because the chip says "Open" or "Resolved" in words.
+   */
+  noticeWarnBg: string;
+  noticeOkBg: string;
+
   /**
    * Fill for a topic row the viewer's plan does not reach. Nothing else.
    *
@@ -151,6 +207,10 @@ export const LIGHT: DashSurface = {
   // it names a status, and a status colour that later needs to diverge from
   // tertiary copy should not have to be extracted from it first.
   statusIdle: '#6B6A65',
+  noticeWarn: '#A8631F', // 4.70 on cardBg. statusProgress's hex, same job.
+  noticeOk: '#3F7150', // 5.69 on cardBg. statusComplete's hex, same job.
+  noticeWarnBg: '#FBF0E2', // V.ink on it: 15.47
+  noticeOkBg: '#EDF3EA', // V.ink on it: 15.42
   gatedRowBg: '#F6F2E8',
 };
 
@@ -185,6 +245,14 @@ export const DARK: DashSurface = {
   statusIdle: 'rgba(242,241,236,0.52)',
   // The dark side of the pair: the theme's own inset fill, so a gated row reads
   // as recessed here exactly as #F6F2E8 does in light.
+  noticeWarn: '#F0A33E', // 7.74 on cardBg
+  noticeOk: '#7FB894', // 7.10 on cardBg
+  // The light chips were hardcoded cream, so in dark they rendered as bright
+  // cream pills carrying 3.32:1 text. These are the theme's own warm tints:
+  // V.ink measures 11.17 and 11.40 on them, and each stays visible against the
+  // #26262B box it sits in (1.14 and 1.12).
+  noticeWarnBg: '#3A2E1E',
+  noticeOkBg: '#22322A',
   gatedRowBg: '#26262B',
 };
 
@@ -301,6 +369,10 @@ const VAR_NAMES: Record<keyof DashSurface, string> = {
   statusComplete: '--umd-status-complete',
   statusProgress: '--umd-status-progress',
   statusIdle: '--umd-status-idle',
+  noticeWarn: '--umd-notice-warn',
+  noticeOk: '--umd-notice-ok',
+  noticeWarnBg: '--umd-notice-warn-bg',
+  noticeOkBg: '--umd-notice-ok-bg',
   gatedRowBg: '--umd-gated-row-bg',
 };
 
