@@ -100,11 +100,14 @@ export default function ProbePage() {
     <main className="um-dash" style={{ padding: 16 }}>
       <style>{DASHBOARD_CSS}</style>
       <div data-probe="real" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-        {/* done/total are gone: the course band carries no progress any more.
-            A whole-course denominator produces a number that never visibly
-            moves, so it was removed rather than restyled. The per-unit bars
-            below are the ones this probe measures for density. */}
-        <CourseBand topicCount={97} unitCount={6} />
+        {/* Course progress is back, as TOPICS. The 2026-08-21 removal was of a
+            whole-course QUESTION denominator, which never visibly moved; 0f1f969
+            re-added the band's bar over 97 topics, where one finished topic is a
+            full point, and made completedTopics required. Passing it is not
+            decoration here: without it this probe stopped compiling, which is
+            why the build below had been failing TS2741. The per-unit bars are
+            still the ones this probe measures for density. */}
+        <CourseBand topicCount={97} unitCount={6} completedTopics={18} />
         <ResumeCard
           topicId="QR.1.5"
           topicName="Operations with rational numbers (signed numbers, decimals)"

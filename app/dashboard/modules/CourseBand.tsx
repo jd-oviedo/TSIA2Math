@@ -51,10 +51,14 @@ export default function CourseBand({
   // A width of `NaN%` is an invalid declaration, so the browser keeps whatever
   // width it had, and the failure mode is a bar that reads as further along than
   // it is. topicCount is 0 in the moment between an empty read and a populated
-  // one; completedTopics arrives undefined from any caller that forgets it, which
-  // TypeScript catches in app code but not in a .jsx probe route -- and that is
-  // not hypothetical: scripts/verify_modules_states.mjs did exactly that, and
-  // rendered "undefined / 97" while its assertion still passed.
+  // one; completedTopics arrives undefined from any caller TypeScript is not
+  // looking at -- which is not hypothetical: scripts/verify_modules_states.mjs
+  // wrote its probe route as page.jsx, so this component was never type-checked
+  // there, and it rendered "undefined / 97" while the assertion still passed.
+  // That probe is .tsx as of 2026-08-22 and a missing prop is a TS2741 now, so
+  // this guard is no longer the last line against that particular mistake. It
+  // stays for the ones types cannot see: an empty read, or a NaN computed
+  // upstream.
   const safeDone = Number.isFinite(completedTopics) ? completedTopics : 0;
   const pct = topicCount > 0 ? Math.round((safeDone / topicCount) * 100) : 0;
   return (

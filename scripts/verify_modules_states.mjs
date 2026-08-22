@@ -22,6 +22,18 @@
 // THE CONTROL. An assertion that a gated row has no href is worthless if it
 // passes on an ungated one too, so every href check runs against BOTH and
 // requires them to differ.
+//
+// WHY THE PROBE IS .tsx AND NOT .jsx
+// ----------------------------------
+// A probe route that renders the real components but is exempt from their types
+// is only half a probe. This file wrote page.jsx until 2026-08-22, and TypeScript
+// never looked at it, so <CourseBand> went on compiling after completedTopics
+// became required in 0f1f969. The band rendered "undefined / 97" and the
+// assertion below reported clean, because the regex it used could not match
+// "undefined". The extension was the hole: .tsx makes a missing or misnamed prop
+// a TS2741 at build time, before any assertion gets the chance to pass
+// vacuously. Page props are typed here for the same reason -- the probe should
+// be held to the standard the real pages are.
 
 import { chromium } from 'playwright';
 import { mkdirSync, writeFileSync, rmSync } from 'fs';
@@ -43,7 +55,11 @@ import { unitTitle } from '../lib/units';
 // outside /dashboard, and without it .um-dash .um-visually-hidden is undefined
 // and the screen-reader sentence inside each unit header renders VISIBLY, which
 // is the trap verify_modules_density.mjs documents.
-export default async function Probe({ searchParams }) {
+export default async function Probe({
+  searchParams,
+}: {
+  searchParams: Promise<{ theme?: string; state?: string }>;
+}) {
   const { theme = 'light', state = 'full' } = await searchParams;
   const gated = state !== 'full';
   return (
@@ -115,7 +131,7 @@ process.on('exit', cleanup);
 process.on('SIGINT', () => { cleanup(); process.exit(1); });
 
 mkdirSync(PROBE_DIR, { recursive: true });
-writeFileSync(`${PROBE_DIR}/page.jsx`, probePage);
+writeFileSync(`${PROBE_DIR}/page.tsx`, probePage);
 mkdirSync(SHOTS, { recursive: true });
 
 console.log('building with the probe routes...');
