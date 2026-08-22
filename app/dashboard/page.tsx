@@ -289,7 +289,11 @@ export default async function DashboardHome({
 
         <Card>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
-            <Eyebrow color={C.sunset}>
+            {/* No color override. C.sunset here was orange-as-text at 2.10:1 on
+                the white card, the worst of the two on this page, and the same
+                label already renders in V.dim on the Modules ResumeCard. The
+                default is now the only eyebrow colour the dashboard uses. */}
+            <Eyebrow>
               {recentTopic ? 'Pick up where you left off' : 'Start here'}
             </Eyebrow>
 
