@@ -159,3 +159,55 @@ export function lessonSectionCount(guidedNotes: string | null | undefined): numb
   if (!guidedNotes) return 0;
   return headingLines(guidedNotes.split('\n')).length;
 }
+
+// ─── Reading time remaining ──────────────────────────────────────────────────
+//
+// "About 12 minutes of reading left", the one thing in the design's outline that
+// the app had no counterpart for at all.
+//
+// DERIVED FROM WORD COUNT, NOT FROM estimated_time_minutes. That column is the
+// WHOLE TOPIC -- notes, practice and quiz together -- so using it here would
+// report the time to finish everything as the time left to read. There is no
+// per-part column and inventing a split was ruled out (discrepancy D13: do not
+// divide 50 minutes into 20/20/10 and present the result as measured).
+//
+// Word count is real data about the actual remaining text, so the only estimate
+// left is the rate, which is named below rather than buried.
+//
+// WORDS_PER_MINUTE is 130. Silent reading of general prose runs 200 to 250 for
+// adults; this is study material carrying inline maths, read by students working
+// through it rather than skimming, and every formula is one "word" that takes far
+// longer than one word to read. 130 is deliberately conservative: a student who
+// finishes early is not misled, and one who runs long was not promised otherwise.
+// It is a single constant here so it can be corrected in one place if real
+// reading telemetry ever contradicts it.
+const WORDS_PER_MINUTE = 130;
+
+/** Words in a rendered HTML fragment, tags stripped and entities collapsed. */
+export function wordCount(html: string): number {
+  const text = html
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&[a-z]+;|&#\d+;/gi, ' ')
+    .trim();
+  return text ? text.split(/\s+/).length : 0;
+}
+
+/**
+ * Whole minutes of reading left, counting from `currentIndex` to the end.
+ *
+ * Returns null when there is nothing left worth announcing, so the caller
+ * renders nothing rather than "about 0 minutes of reading left". The floor is 1
+ * minute for any remaining text at all, because "about 0 minutes" on a section
+ * a student has not opened reads as broken.
+ */
+export function readingMinutesLeft(
+  sections: { html: string }[],
+  currentIndex: number
+): number | null {
+  if (currentIndex >= sections.length) return null;
+  const words = sections
+    .slice(Math.max(0, currentIndex))
+    .reduce((sum, s) => sum + wordCount(s.html), 0);
+  if (words === 0) return null;
+  return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
+}
