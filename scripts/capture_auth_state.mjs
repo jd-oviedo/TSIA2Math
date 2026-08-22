@@ -1,67 +1,91 @@
-// capture_auth_state.mjs -- sign in once, by hand, and keep the session so the
-// browser checks can visit REAL /course URLs.
+// capture_auth_state.mjs -- get a real session, and keep it, so the browser
+// checks can visit REAL /course URLs.
 //
 //   node scripts/capture_auth_state.mjs --base http://localhost:5140
 //   node scripts/capture_auth_state.mjs --base <url> --from-cookies cookies.json
+//   node scripts/capture_auth_state.mjs --base <url> --interactive
 //
 // ─── WHY THIS EXISTS ────────────────────────────────────────────────────────
 //
 // Every /course route 307s to /login without a session: app/course/layout.tsx:60
 // calls resolveCourseAccess(), and allowsTopic() returns false for anonymous at
-// app/lib/capabilities.ts:258, whose own comment reads "THE SESSION CHECK IS THE
+// app/lib/capabilities.ts, whose own comment reads "THE SESSION CHECK IS THE
 // POINT OF THIS LINE".
 //
 // No script in scripts/ could authenticate, so all six probe scripts wrote a
 // fake route instead. That auth wall is the structural reason three separate
-// checks ended up measuring something other than the product. This file removes
-// the reason.
+// checks ended up measuring something other than the product.
 //
-// ─── WHY NOT EMAIL/PASSWORD ─────────────────────────────────────────────────
+// ─── THE DEFAULT PATH IS NOW MINT, NOT COOKIE TRANSPLANT ────────────────────
 //
-// The project is Google OAuth only (app/login/SignIn.tsx:83). Enabling a second
-// auth method on a production project to satisfy a test harness was considered
-// and REFUSED by Juan, correctly. Forging a session with the project JWT secret
-// and adding an env-gated auth bypass to app code were both considered and
-// rejected: the first puts the highest-value secret in .env.local to save a
-// manual sign-in, the second is an auth bypass shipped in product code.
+// SUPERSEDED 2026-08-22. This file shipped with transplant as the only usable
+// path in a Codespace, and recorded that as the standard Playwright answer for
+// an OAuth-only app. It is, but it is not the best answer available HERE, and
+// the reason it was not taken first was that the option had not been costed.
 //
-// So: sign in for real, once, and keep the cookies. This is the standard
-// Playwright answer for an OAuth-only app.
+// SUPABASE_SERVICE_ROLE_KEY is ALREADY in .env.local and is already used by nine
+// scripts and by app/lib/supabase-admin.ts. Using it for a local harness
+// introduces no new secret and no new exposure. So:
+//
+//   1. admin.auth.admin.generateLink({ type: 'magiclink' })  -> hashed_token
+//   2. anon client .auth.verifyOtp({ token_hash })           -> a real session
+//   3. serialize it with @supabase/ssr's OWN createChunks    -> the cookies
+//
+// Step 3 matters. The cookie format is not hand-rolled: it goes through the same
+// stringToBase64URL + createChunks the app itself writes with, so a format change
+// in the library moves this with it.
+//
+// THIS IS NOT THE REJECTED OPTION. Forging a session with the project JWT secret
+// was rejected, and rightly: that puts the highest-value secret in .env.local and
+// mints a token no auth server ever saw. This asks the auth server for a real
+// token through a supported admin API, using a key that is already here. Enabling
+// email/password on production was refused and is NOT required -- generateLink
+// mints a token without sending mail, verified against this project 2026-08-22:
+// it returned a 56-char hashed_token, and verifyOtp exchanged it for a session
+// with a live refresh token. An env-gated auth bypass in product code was
+// rejected outright and nothing here touches app code.
+//
+// WHAT THE MINT PATH DOES NOT COVER, said out loud rather than left implied: it
+// is not the Google OAuth flow. It proves the /course gate accepts a valid
+// Supabase session; it does NOT exercise app/login/SignIn.tsx or
+// app/auth/callback/route.ts. Those stay covered by verify_login_next.mjs and
+// verify_auth_gate.mjs. Do not let this file be read as covering sign-in.
 //
 // ─── THE ORIGIN CONSTRAINT, WHICH IS THE EASY THING TO GET WRONG ────────────
 //
-// app/lib/supabase-server.ts uses @supabase/ssr, so the session is CARRIED IN
-// COOKIES, and cookies are scoped to an origin. SignIn.tsx:66 builds its
-// redirectTo from `window.location.origin`.
-//
-// Therefore THE SIGN-IN MUST HAPPEN ON THE SAME ORIGIN THE WALK WILL USE. A
-// session captured at app.unpackmath.com is not sent to http://localhost:5140.
-// Pass the same --base to this script and to the walk.
-//
-// That origin must also be allow-listed in Supabase Auth URL Configuration, and
-// a fresh Codespace gets a fresh hostname, so it has to be re-added there.
+// @supabase/ssr carries the session in COOKIES, and cookies are scoped to an
+// origin. Pass the same --base to this script and to the walk. The mint path
+// re-scopes onto whatever --base it is given, so it does not need the origin
+// allow-listed in Supabase Auth URL Configuration -- step 2 is a direct API call
+// and never redirects. The --interactive path DOES need that entry.
 //
 // ─── OUTPUT ─────────────────────────────────────────────────────────────────
 //
-// .auth/e2e-storage-state.json, which is a LIVE SESSION for a real account.
-// .auth/ is in .gitignore (verified before this file was written, not after).
-// Never commit it, never paste its contents anywhere.
-//
-// It expires. Access tokens last about an hour; the refresh token carries it
-// further, but if refresh-token rotation is on, a run that refreshes invalidates
-// the saved copy. Re-run this when the walk starts redirecting to /login.
+// .auth/e2e-storage-state.json, a LIVE SESSION for a real account. .auth/ is
+// gitignored, and that is CHECKED at run time rather than trusted. Never commit
+// it, never paste its contents anywhere. Access tokens last about an hour;
+// re-running is one command, which is the main practical reason mint beats
+// transplant.
 
 import { chromium } from 'playwright';
-import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'fs';
+import { mkdirSync, writeFileSync, readFileSync } from 'fs';
 import { execSync } from 'child_process';
+import { createClient } from '@supabase/supabase-js';
+import { stringToBase64URL } from '@supabase/ssr/dist/main/utils/base64url.js';
+import { createChunks } from '@supabase/ssr/dist/main/utils/chunker.js';
+import { assertSessionOpensCurriculum, GUARD_PATH } from './session-guard.mjs';
 
 const args = process.argv.slice(2);
 const arg = (name, fallback = null) => {
   const i = args.indexOf(name);
   return i === -1 ? fallback : args[i + 1];
 };
+const has = (name) => args.includes(name);
+
 const BASE = arg('--base', 'http://localhost:5140');
 const FROM_COOKIES = arg('--from-cookies', null);
+const INTERACTIVE = has('--interactive');
+const EMAIL = arg('--email', 'vics8388@gmail.com');
 const OUT_DIR = '.auth';
 const OUT = `${OUT_DIR}/e2e-storage-state.json`;
 
@@ -79,102 +103,184 @@ try {
 }
 mkdirSync(OUT_DIR, { recursive: true });
 
-const origin = new URL(BASE).hostname;
+const host = new URL(BASE).hostname;
+const cookieShell = (name, value) => ({
+  name,
+  value,
+  domain: host,
+  path: '/',
+  httpOnly: false,
+  secure: BASE.startsWith('https'),
+  sameSite: 'Lax',
+  expires: -1,
+});
+
+function loadEnvLocal() {
+  let raw;
+  try {
+    raw = readFileSync('.env.local', 'utf-8');
+  } catch {
+    return;
+  }
+  for (const line of raw.split('\n')) {
+    const m = line.match(/^([A-Z_0-9]+)=(.*)$/);
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].trim().replace(/^["']|["']$/g, '');
+  }
+}
+
+// ─── THE GATE EVERY PATH GOES THROUGH ───────────────────────────────────────
+//
+// No path writes a state file without clearing this. That is the whole point of
+// the rewrite: validation used to live on ONE branch, so the other branch wrote
+// unentitled and invalid sessions to disk and exited 0.
+async function writeStateIfItOpensCurriculum(cookies, how) {
+  const browser = await chromium.launch();
+  const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  await context.addCookies(cookies);
+  try {
+    const seen = await assertSessionOpensCurriculum(context, BASE);
+    writeFileSync(OUT, JSON.stringify({ cookies, origins: [] }, null, 2));
+    console.log(`\nSaved ${OUT}  (${how})`);
+    console.log(`  scoped to  : ${host}`);
+    console.log(`  verified on: ${BASE}${GUARD_PATH}`);
+    console.log(`  rendered   : ${seen.katex} KaTeX nodes, ${seen.mathml} with MathML`);
+  } catch (e) {
+    console.error(`\n${e.message}\n\nNOT SAVED.`);
+    process.exitCode = 1;
+  } finally {
+    await browser.close();
+  }
+}
+
+// ─── Path A (default): mint ─────────────────────────────────────────────────
+async function mint() {
+  loadEnvLocal();
+  const URL_ = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const ANON = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const SRK = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!URL_ || !ANON || !SRK) {
+    console.error(
+      'Missing Supabase env. This path needs NEXT_PUBLIC_SUPABASE_URL,\n' +
+        'NEXT_PUBLIC_SUPABASE_ANON_KEY and SUPABASE_SERVICE_ROLE_KEY in .env.local.'
+    );
+    process.exit(2);
+  }
+
+  const admin = createClient(URL_, SRK, { auth: { persistSession: false } });
+  const { data: link, error: linkErr } = await admin.auth.admin.generateLink({
+    type: 'magiclink',
+    email: EMAIL,
+  });
+  if (linkErr) {
+    // The one failure mode worth naming, because the fix for it is NOT allowed.
+    const blocked = linkErr.code === 'email_provider_disabled' || linkErr.status === 422;
+    console.error(
+      `generateLink failed: ${linkErr.status} ${linkErr.code ?? ''} ${linkErr.message}` +
+        (blocked
+          ? `\n\nThe Email provider is disabled on this project. DO NOT ENABLE IT.\n` +
+            `This project is Google-only on purpose and opening a second auth path on\n` +
+            `production to satisfy a test harness is not an acceptable trade.\n` +
+            `Use the transplant fallback instead:\n` +
+            `  node scripts/capture_auth_state.mjs --base ${BASE} --from-cookies cookies.json`
+          : '')
+    );
+    process.exit(1);
+  }
+
+  const pub = createClient(URL_, ANON, {
+    auth: { persistSession: false, detectSessionInUrl: false },
+  });
+  const { data: v, error: otpErr } = await pub.auth.verifyOtp({
+    token_hash: link.properties.hashed_token,
+    type: 'magiclink',
+  });
+  if (otpErr) {
+    console.error(`verifyOtp failed: ${otpErr.status} ${otpErr.code ?? ''} ${otpErr.message}`);
+    process.exit(1);
+  }
+
+  const key = `sb-${new URL(URL_).hostname.split('.')[0]}-auth-token`;
+  const chunks = createChunks(key, 'base64-' + stringToBase64URL(JSON.stringify(v.session)));
+  console.log(`minted a session for ${EMAIL}`);
+  console.log(`  cookie: ${chunks.map((c) => `${c.name} (${c.value.length})`).join(', ')}`);
+  await writeStateIfItOpensCurriculum(chunks.map((c) => cookieShell(c.name, c.value)), 'minted');
+}
 
 // ─── Path B: re-scope an exported cookie jar ────────────────────────────────
 //
-// For an environment with no interactive browser, which includes this Codespace:
-// there is no DISPLAY, so nobody can click Google's consent screen here.
+// THE FALLBACK, for when the mint path is unavailable. Export the Supabase auth
+// cookies from a browser already signed in (devtools, Application, Cookies) as a
+// JSON ARRAY of {name, value}. Everything else in the export is discarded and
+// re-synthesised from --base.
 //
-// Export the Supabase auth cookies from a browser already signed in (devtools,
-// Application, Cookies), save them as a JSON array of {name, value}, and this
-// re-scopes them onto the target origin. The server validates the JWT, not the
-// cookie's domain, so a session issued for one host is accepted on another.
-// That is a property of bearer tokens, not a loophole being exploited.
-if (FROM_COOKIES) {
-  const raw = JSON.parse(readFileSync(FROM_COOKIES, 'utf-8'));
+// The file must be a top-level array. A {"cookies":[...]} wrapper -- the
+// Playwright storageState shape, and what several export extensions emit -- is
+// rejected by name below rather than left to throw "raw.filter is not a
+// function" with a stack trace.
+//
+// Supabase chunks a large session across sb-<ref>-auth-token.0 and .1. BOTH are
+// required: combineChunks stops at the first missing index, and a lone .0
+// decodes to truncated base64 which @supabase/ssr treats as absent, silently.
+async function fromCookies(path) {
+  const raw = JSON.parse(readFileSync(path, 'utf-8'));
+  if (!Array.isArray(raw)) {
+    console.error(
+      `${path} must be a top-level JSON ARRAY of {name, value}.\n` +
+        `Got ${Object.prototype.toString.call(raw)}` +
+        (raw && typeof raw === 'object' && Array.isArray(raw.cookies)
+          ? `. It looks like a Playwright storageState -- unwrap it and pass the\n` +
+            `  "cookies" array on its own.`
+          : '.')
+    );
+    process.exit(1);
+  }
   const cookies = raw
-    .filter((c) => /^sb-/.test(c.name))
-    .map((c) => ({
-      name: c.name,
-      value: c.value,
-      domain: origin,
-      path: '/',
-      httpOnly: false,
-      secure: BASE.startsWith('https'),
-      sameSite: 'Lax',
-      expires: -1,
-    }));
+    .filter((c) => /^sb-/.test(c?.name ?? ''))
+    .map((c) => cookieShell(c.name, c.value));
   if (cookies.length === 0) {
     console.error('No sb-* cookies in that export. Supabase names them sb-<ref>-auth-token.');
     process.exit(1);
   }
-  writeFileSync(OUT, JSON.stringify({ cookies, origins: [] }, null, 2));
-  console.log(`wrote ${OUT} with ${cookies.length} cookie(s) scoped to ${origin}`);
-  process.exit(0);
+  console.log(`re-scoped ${cookies.length} cookie(s) onto ${host}`);
+  await writeStateIfItOpensCurriculum(cookies, `transplanted from ${path}`);
 }
 
-// ─── Path A: sign in interactively ──────────────────────────────────────────
-if (!process.env.DISPLAY) {
-  console.error(
-    'No DISPLAY, so there is no browser window to sign in through.\n\n' +
-      'This is expected inside a Codespace. Two ways forward:\n\n' +
-      '  1. Run this script on a machine with a desktop, against the same --base\n' +
-      '     the walk will use, then copy .auth/e2e-storage-state.json across.\n\n' +
-      '  2. Sign in normally in any browser, export the sb-* cookies from\n' +
-      '     devtools as JSON, and re-run with:\n' +
-      `       node scripts/capture_auth_state.mjs --base ${BASE} --from-cookies cookies.json\n`
-  );
-  process.exit(2);
-}
-
-const browser = await chromium.launch({ headless: false });
-const context = await browser.newContext();
-const page = await context.newPage();
-
-console.log(`\nOpening ${BASE}/login`);
-console.log('Sign in with Google in the window. This script waits for the session.\n');
-await page.goto(`${BASE}/login`);
-
-// Waits for the cookie rather than for a URL, because the post-auth landing
-// page varies (dashboard, or a `next` destination) and a URL check would be
-// guessing at which.
-const deadline = Date.now() + 5 * 60_000;
-let ok = false;
-while (Date.now() < deadline) {
-  const cookies = await context.cookies();
-  if (cookies.some((c) => /^sb-/.test(c.name) && c.value.length > 0)) {
-    ok = true;
-    break;
+// ─── Path C: sign in interactively, through the real Google flow ────────────
+async function interactive() {
+  if (!process.env.DISPLAY) {
+    console.error(
+      'No DISPLAY, so there is no browser window to sign in through.\n' +
+        'This is expected inside a Codespace. Drop --interactive to use the mint path.'
+    );
+    process.exit(2);
   }
-  await page.waitForTimeout(1000);
-}
+  const browser = await chromium.launch({ headless: false });
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  console.log(`\nOpening ${BASE}/login -- sign in with Google. This waits for the session.\n`);
+  await page.goto(`${BASE}/login`);
 
-if (!ok) {
-  console.error('Timed out after 5 minutes with no sb-* session cookie.');
+  const deadline = Date.now() + 5 * 60_000;
+  let cookies = null;
+  while (Date.now() < deadline) {
+    const all = await context.cookies();
+    if (all.some((c) => /^sb-/.test(c.name) && c.value.length > 0)) {
+      cookies = all.filter((c) => /^sb-/.test(c.name));
+      break;
+    }
+    await page.waitForTimeout(1000);
+  }
   await browser.close();
-  process.exit(1);
-}
-
-// PROVE THE SESSION ACTUALLY OPENS CURRICULUM before saving it. A cookie that
-// exists is not a cookie that is entitled: a signed-in account with no plan
-// still bounces off /course to /dashboard/upgrade, and saving that would produce
-// a walk that silently screenshots the upgrade page 20 times.
-const probeUrl = `${BASE}/course/tsia2/math/unit/0/topic/QR.1.5/lesson`;
-await page.goto(probeUrl, { waitUntil: 'domcontentloaded' });
-const landed = page.url();
-if (!landed.includes('/topic/QR.1.5/lesson')) {
-  console.error(
-    `Signed in, but this account cannot open curriculum.\n` +
-      `  asked for: ${probeUrl}\n` +
-      `  landed on: ${landed}\n` +
-      `It needs the Full Course entitlement. Not saving.`
+  if (!cookies) {
+    console.error('Timed out after 5 minutes with no sb-* session cookie.');
+    process.exit(1);
+  }
+  await writeStateIfItOpensCurriculum(
+    cookies.map((c) => cookieShell(c.name, c.value)),
+    'interactive Google sign-in'
   );
-  await browser.close();
-  process.exit(1);
 }
 
-await context.storageState({ path: OUT });
-await browser.close();
-console.log(`\nSaved ${OUT}`);
-console.log(`Verified: it opens ${probeUrl}`);
+if (FROM_COOKIES) await fromCookies(FROM_COOKIES);
+else if (INTERACTIVE) await interactive();
+else await mint();
