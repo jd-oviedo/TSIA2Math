@@ -110,6 +110,33 @@ const EXPECT = {
   overview: { katex: 0 },
   // The PR headline. Card removal raised inline-maths contrast in BOTH themes.
   inlineMathContrast: { light: 14.68, dark: 15.29 },
+
+  // ─── THE STRUCTURAL RULES ─────────────────────────────────────────────────
+  //
+  // Added for the light-warmth change, which moved four rules and one fill onto
+  // T.rule / T.railFill. Pinned per THEME, and the dark column is the point of
+  // the exercise as much as the light one: dark was declared out of scope, so
+  // "unchanged" has to be an assertion rather than an intention. Every dark
+  // value below is the composited old hairline, and the dark rail fill is 1:1
+  // against its own ground, which is what "invisible" means numerically.
+  rules: {
+    light: {
+      sectionDivider: { hex: '#C8A96E', ratio: 1.71 }, // was #DCD3BE at 1.13
+      railRule: { hex: '#C8A96E', ratio: 1.83 }, // on the new rail fill
+      railFill: { hex: '#EDE8DA' }, // was unpainted
+      barRule: { hex: '#C8A96E', ratio: 2.21 }, // on the bar's own panel
+      problemFrame: { hex: '#C8A96E', ratio: 2.21 }, // was #DCD3BE at 1.46
+      railEyebrow: { ratio: 4.74 }, // the ONE text ratio the change moved
+    },
+    dark: {
+      sectionDivider: { hex: '#363536', ratio: 1.46 },
+      railRule: { hex: '#363536', ratio: 1.46 },
+      railFill: { hex: '#17171A' }, // == DARK.page, so nothing is painted
+      barRule: { hex: '#43413C', ratio: 1.5 },
+      problemFrame: { hex: '#43413C', ratio: 1.5 },
+      railEyebrow: { ratio: 5.38 },
+    },
+  },
 };
 
 const SURFACES = [
@@ -159,6 +186,35 @@ const contrastProbe = `(sel) => {
   const over = [0, 1, 2].map((i) => fg[i] * a + bg[i] * (1 - a));
   const [hi, lo] = [lum(over), lum(bg)].sort((x, y) => y - x);
   return { ratio: Math.round(((hi + 0.05) / (lo + 0.05)) * 100) / 100, bgFrom, text: el.textContent.slice(0, 24) };
+}`;
+
+// The same compositing walk as contrastProbe, but for any colour property, so a
+// RULE can be asserted by the value it actually paints rather than by the token
+// name it was given. A token swap that resolves to the wrong var still paints a
+// colour; only the resolved value catches that.
+const stylProbe = `(sel, prop) => {
+  const el = document.querySelector(sel);
+  if (!el) return null;
+  const parse = (c) => (c.match(/[\\d.]+/g) || []).map(Number);
+  const lin = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+  const lum = ([r, g, b]) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+  const s = getComputedStyle(el);
+  const raw = prop === 'bg' ? s.backgroundColor : s[prop];
+  const c = parse(raw);
+  if (!c.length) return null;
+  let bg = [255, 255, 255];
+  const start = prop === 'bg' ? (el.parentElement || el) : el;
+  for (let n = start; n; n = n.parentElement) {
+    const b2 = parse(getComputedStyle(n).backgroundColor);
+    if (b2.length < 4 || b2[3] > 0) { bg = b2.slice(0, 3); break; }
+  }
+  const a = c.length > 3 ? c[3] : 1;
+  const over = [0, 1, 2].map((i) => c[i] * a + bg[i] * (1 - a));
+  const [hi, lo] = [lum(over), lum(bg)].sort((x, y) => y - x);
+  return {
+    hex: '#' + over.map((v) => Math.round(v).toString(16).padStart(2, '0')).join('').toUpperCase(),
+    ratio: Math.round(((hi + 0.05) / (lo + 0.05)) * 100) / 100,
+  };
 }`;
 
 const browser = await chromium.launch();
@@ -334,6 +390,39 @@ for (const [wname, width, height] of WIDTHS) {
           '>= 4.5',
           (inline?.ratio ?? 0) >= 4.5
         );
+      }
+
+      // ─── THE STRUCTURAL RULES, per theme ──────────────────────────────────
+      //
+      // Gated behind themeOk for the same reason the contrast checks are: a
+      // light value asserted under a dark label is the failure this file exists
+      // to stop.
+      if (themeOk) {
+        const R = EXPECT.rules[theme];
+        const rule = async (label, sel, prop, want) => {
+          const got = await p.evaluate(`(${stylProbe})(${JSON.stringify(sel)}, ${JSON.stringify(prop)})`);
+          check(`${name}: ${label} colour (${theme})`, got?.hex ?? null, want.hex);
+          if (want.ratio !== undefined) {
+            check(`${name}: ${label} ratio (${theme})`, got?.ratio ?? null, want.ratio);
+          }
+        };
+        if (name !== 'modules') {
+          await rule('top bar rule', '.um-bar', 'borderBottomColor', R.barRule);
+        }
+        if (name === 'lesson') {
+          await rule('section divider', '.um-prose-card:nth-of-type(2)', 'borderTopColor', R.sectionDivider);
+          await rule('outline rail rule', '.um-lesson-rail', 'borderRightColor', R.railRule);
+          await rule('outline rail fill', '.um-lesson-rail', 'bg', R.railFill);
+          // THE ONLY TEXT RATIO THIS CHANGE MOVED. Painting the rail put its
+          // eyebrows on a new ground, so they are pinned by value and floored at
+          // AA rather than assumed to have survived.
+          const eb = await p.evaluate(`(${stylProbe})('.um-lesson-rail div', 'color')`);
+          check(`lesson: rail eyebrow ratio (${theme})`, eb?.ratio ?? null, R.railEyebrow.ratio);
+          check(`lesson: rail eyebrow clears AA`, eb?.ratio ?? null, '>= 4.5', (eb?.ratio ?? 0) >= 4.5);
+        }
+        if (name === 'practice' || name === 'quiz') {
+          await rule('problem frame border', 'fieldset', 'borderTopColor', R.problemFrame);
+        }
       }
 
       // Nothing may scroll sideways. The redesign removed the fixed-width cards,

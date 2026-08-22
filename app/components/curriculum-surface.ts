@@ -103,6 +103,8 @@ export interface CurriculumSurface {
   page: string;
   /** The lesson outline column. */
   rail: string;
+  /** The fill actually painted on that column. Light only; see LIGHT.railFill. */
+  railFill: string;
   /** The band the reading column sits on. */
   band: string;
   /** A row the viewer's plan or the authoring queue does not reach. */
@@ -120,8 +122,10 @@ export interface CurriculumSurface {
   muted: string;
 
   // ─── Lines ────────────────────────────────────────────────────────────────
-  /** Between content blocks. Decorative, exempt from 1.4.11. */
+  /** Between entries INSIDE a block. Decorative, exempt from 1.4.11. */
   hairline: string;
+  /** The structural rule BETWEEN blocks. Decorative, exempt. See LIGHT.rule. */
+  rule: string;
   /** Around a control, where 1.4.11 applies at 3:1. Answer choices. */
   controlBorder: string;
 
@@ -186,6 +190,19 @@ const LIGHT: CurriculumSurface = {
 
   page: '#E8E0CF',
   rail: '#EDE8DA',
+  // The rail is PAINTED now, at the same rung it already names.
+  //
+  // SUPERSEDES the "a plain column, not a panel" note in LessonBody, which is
+  // left in place there with this override recorded beside it. That note was
+  // right about a PANEL and this is not one: #EDE8DA is a 1.07:1 step off the
+  // #E8E0CF ground, which is a change of rung and not an object on the page.
+  // With the cards gone the rail had no fill and no ladder position at all, so
+  // the outline and the prose were the same surface with a 1.13 line between
+  // them.
+  //
+  // Text on it IMPROVES rather than survives: the rail's eyebrows measure 4.62
+  // on the ground and 4.74 here.
+  railFill: '#EDE8DA',
   band: '#F3EFE3',
   insetRow: '#F6F2E8',
   panel: '#FFFDF8',
@@ -209,6 +226,27 @@ const LIGHT: CurriculumSurface = {
   muted: 'rgba(14,14,17,0.6)',
 
   hairline: '#DCD3BE', // 1.46 on panel. Decorative, exempt.
+  // THE STRUCTURAL RULE. Cipher Gold, and a SEPARATE token from hairline rather
+  // than a change to it.
+  //
+  // WHY IT EXISTS. Taking the cards out of the content column in #185 was the
+  // right move and its contrast gain is measured, but it left every structural
+  // edge in the tree painted with one token at 1.13:1 on the ground: the section
+  // dividers, the rail's outer edge and the top bar's rule, plus the practice
+  // and quiz problem frame at 1.46 on panel. Measured before anything was
+  // changed. The reading surface had no structure left to read.
+  //
+  // #C8A96E is C.gold, already in the palette. Measured after the swap: 1.71 on
+  // the ground against hairline's 1.13, 1.83 on the rail fill against 1.22, and
+  // 2.21 on panel against 1.46. All are decorative rules that carry no text and
+  // mark no control, so neither 1.4.3 nor 1.4.11 applies to them.
+  //
+  // SPLIT FROM hairline RATHER THAN REPLACING IT, because the two roles are not
+  // the same one. hairline still divides entries INSIDE a block -- the rail's
+  // own entry dividers, the inset shadow under each outline row -- where a gold
+  // rule at every level would read as decoration instead of as structure. Four
+  // call sites moved; the within-block ones deliberately did not.
+  rule: '#C8A96E',
   // #8A8474 survives here, in the one role it is good at.
   //
   // The import borders answer choices with #E2DAC6, which is 1.19 against the
@@ -319,6 +357,11 @@ const DARK: CurriculumSurface = {
 
   page: '#17171A', // ink 15.29
   rail: '#1E1D1A', // ink 14.41
+  // DARK IS OUT OF SCOPE for this change and must not move, so this is the
+  // ground rather than the rail rung: painted on the page it is invisible, which
+  // is exactly what the rail did before. walk_curriculum.mjs pins it at 1:1
+  // against its own ground, which is what "invisible" means numerically.
+  railFill: '#17171A',
   band: '#201F1C', // ink 14.09
   insetRow: '#232220', // ink 13.59
   panel: '#262521', // ink 13.12
@@ -329,6 +372,11 @@ const DARK: CurriculumSurface = {
   muted: 'rgba(242,237,223,0.55)', // 4.82 to 5.38, clears on every rung
 
   hairline: 'rgba(242,237,223,0.14)', // 1.50, the mirror of the light hairline
+  // IDENTICAL TO hairline ON PURPOSE. Dark was explicitly out of scope, so the
+  // four call sites that moved to T.rule must render in dark exactly as they did
+  // before. Kept as its own entry rather than aliased so that giving dark a real
+  // structural rule later is a one-line change here.
+  rule: 'rgba(242,237,223,0.14)',
   controlBorder: 'rgba(242,237,223,0.42)', // 3.44 on the choice fill
 
   statusComplete: '#7FB894', // 6.71 on panel. Reused from dashboard-theme DARK.
@@ -398,10 +446,12 @@ const VAR_NAMES: Record<keyof CurriculumSurface, string> = {
   insetRow: '--umt-inset-row',
   panel: '--umt-panel',
   quietBox: '--umt-quiet-box',
+  railFill: '--umt-rail-fill',
   ink: '--umt-ink',
   ink2: '--umt-ink-2',
   muted: '--umt-muted',
   hairline: '--umt-hairline',
+  rule: '--umt-rule',
   controlBorder: '--umt-control-border',
   statusComplete: '--umt-status-complete',
   statusIdle: '--umt-status-idle',

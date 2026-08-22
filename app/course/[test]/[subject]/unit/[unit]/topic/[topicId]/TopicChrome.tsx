@@ -70,7 +70,8 @@ export default function TopicChrome({
           gap: '14px',
           padding: '12px 22px',
           background: T.panel,
-          borderBottom: `1px solid ${T.hairline}`,
+          // T.rule: the bar is a block and this is its edge against the page.
+          borderBottom: `1px solid ${T.rule}`,
         }}
       >
         <StudentNavTrigger onClick={() => setMenuOpen(true)} />
