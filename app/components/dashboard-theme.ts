@@ -62,6 +62,10 @@ export interface DashSurface {
   //   "In progress"   C.sunset #F0A33E      2.10 FAIL      7.74 ok
   //   "Not started"   V.dim   #8A8983       3.51 FAIL      4.88 ok
   //
+  // That V.dim row is the value as it stood on 2026-08-21. The token was fixed
+  // on 2026-08-22 and now reads #6B6A65 at 5.42 light; the failure it records is
+  // history, not the current state.
+  //
   // "In progress" at 2.10 was orange-as-TEXT, which is the exact role
   // curriculum-theme.ts:30-33 retired on 2026-08-17. The decision was recorded
   // in the palette file and this component was never brought into line with it.
@@ -118,7 +122,21 @@ export const LIGHT: DashSurface = {
   heading: '#0F1E35',
   ink: '#1A1A1A',
   muted: '#5F5E5A',
-  dim: '#8A8983',
+  // 4.96 on pageBg, 5.23 on subtleBg, 5.42 on cardBg -- the three grounds V.dim
+  // actually renders on, all clearing 4.5:1. Was #8A8983 at 3.21 / 3.39 / 3.51,
+  // failing all three.
+  //
+  // WHY THIS HEX. pageBg #F5F5F3 is the darkest of the three, so it binds: clear
+  // 4.5 there and the other two follow. Every candidate that clears it collapses
+  // the step from muted #5F5E5A to something nobody can see -- 1.35:1 at
+  // #73726C, 1.29:1 at #706F69, 1.2:1 here -- which is the same collapse
+  // curriculum-theme.ts:168-175 already measured and accepted, on the same
+  // ground: where muted and dim meet on this surface the quieter one is an
+  // eyebrow or a meta line, separated by size, weight, case and family rather
+  // than by colour. Since no passing value keeps the tier visible, there is no
+  // reason to mint a new grey, and this is the one this file already approved
+  // for exactly this job below.
+  dim: '#6B6A65',
   hairline: '#F0EEE7',
   line: '#E7E5DD',
   subtleBg: '#FBFBF9',
@@ -127,7 +145,12 @@ export const LIGHT: DashSurface = {
   trackBg: '#F2F1EC',
   statusComplete: '#3F7150', // 5.69 on cardBg
   statusProgress: '#A8631F', // 4.70 on cardBg
-  statusIdle: '#6B6A65', // 5.42 on cardBg, against V.dim's 3.51
+  // 5.42 on cardBg. Identical to dim above, in this theme and in dark, because
+  // the 2026-08-21 pass darkened this one role and the 2026-08-22 pass brought
+  // the token itself to the same value. Kept as its own key rather than aliased:
+  // it names a status, and a status colour that later needs to diverge from
+  // tertiary copy should not have to be extracted from it first.
+  statusIdle: '#6B6A65',
   gatedRowBg: '#F6F2E8',
 };
 

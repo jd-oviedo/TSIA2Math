@@ -68,7 +68,13 @@ export default function DiagnosticCta() {
           gap: 16,
         }}
       >
-        <div style={{ ...EYEBROW, color: C.amber }}>Start with this</div>
+        {/* V.dim, not C.amber. This eyebrow was orange-as-text at 3.74:1 on the
+            white card and 4.34:1 on the dark one, and it is a label above a
+            heading -- the role the palette settled on 2026-08-21, where orange
+            survives as a fill, a rule and the CTA and labels take ink. Both of
+            those survive on this card: the 3px sunset rule at its top and the
+            sunset Begin Diagnostic button below. Only the text role goes. */}
+        <div style={{ ...EYEBROW, color: V.dim }}>Start with this</div>
 
         <button
           type="button"

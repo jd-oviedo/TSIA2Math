@@ -171,9 +171,11 @@ export default function TopicListRow({
           style={{
             font: `400 12px ui-monospace, Menlo, monospace`,
             fontVariantNumeric: 'tabular-nums',
-            // V.statusIdle, not V.dim. This line renders on EVERY row, and V.dim
-            // measures 3.51:1 on the light card. The token is fixed here only;
-            // V.dim's other 20 call sites are a separate pass, priced in the PR.
+            // V.statusIdle, kept for the role rather than for the colour. When
+            // this was written V.dim measured 3.51:1 on the light card and this
+            // one role was darkened ahead of the token; that separate pass
+            // landed 2026-08-22 and the two now hold the same value in both
+            // themes. Naming the status here still says what the line is.
             color: V.statusIdle,
           }}
         >
