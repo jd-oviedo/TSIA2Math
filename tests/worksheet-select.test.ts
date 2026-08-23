@@ -195,9 +195,9 @@ test('static and rolled candidates are drawn identically', () => {
   assert.equal(result.refs.filter((r) => r.source === 'static').length, 7);
 });
 
-test('a rolled item cannot satisfy a difficulty filter', () => {
-  // curriculum_item_instances has no level column, so every rolled candidate
-  // carries null and is filtered out. Reported, not silently dropped.
+test('an UNLEVELLED rolled item cannot satisfy a difficulty filter', () => {
+  // The pre-D2 shape, and still the shape of a mini_quiz instance: nothing to
+  // filter on, so the draw comes back empty. Reported, not silently dropped.
   const rolled: Candidate[] = Array.from({ length: 14 }, (_, i) => ({
     ref: { source: 'instance' as const, topic_id: 'QR.3.5', instance_id: `uuid-${i}` },
     level: null,
@@ -211,6 +211,84 @@ test('a rolled item cannot satisfy a difficulty filter', () => {
   assert.equal(result.refs.length, 0);
   assert.equal(result.shortfall, 10);
   assert.ok(result.notes.length > 0, 'an empty draw must explain itself');
+});
+
+// ─── D2: a rolled instance carries its source item's band ───────────────────
+
+test('a levelled rolled item is filtered exactly like an authored one', () => {
+  // D2. curriculum_item_instances gained a level column inheriting the source
+  // item's band, so the filter stops being able to tell the backends apart.
+  // Before it, this same request returned nothing from a templated topic.
+  const bands: Level[] = ['Basic', 'Proficient', 'Advanced'];
+  const rolled: Candidate[] = Array.from({ length: 9 }, (_, i) => ({
+    ref: { source: 'instance' as const, topic_id: 'QR.3.5', instance_id: `uuid-${i}` },
+    level: bands[i % 3],
+    section: 'practice' as const,
+  }));
+
+  const result = selectItems([{ topic_id: 'QR.3.5', candidates: rolled }], {
+    count: 3,
+    levels: ['Basic'],
+    seed: 5,
+  });
+  assert.equal(result.refs.length, 3);
+  assert.equal(result.shortfall, 0);
+  assert.ok(result.refs.every((r) => r.source === 'instance'));
+});
+
+test('the two backends are indistinguishable to the difficulty filter', () => {
+  // The same nine bands, half rolled and half authored, drawn under the same
+  // filter. Whether a question came from a template must not change whether a
+  // teacher can ask for it by difficulty.
+  const bands: Level[] = ['Basic', 'Proficient', 'Advanced'];
+  const rolledPool: Candidate[] = bands.map((level, i) => ({
+    ref: { source: 'instance' as const, topic_id: 'QR.3.5', instance_id: `uuid-${i}` },
+    level,
+    section: 'practice' as const,
+  }));
+  const authoredPool: Candidate[] = bands.map((level, i) => practice(i + 1, level));
+
+  const draw = (candidates: Candidate[]) =>
+    selectItems([{ topic_id: 'QR.3.5', candidates }], {
+      count: 3,
+      levels: ['Proficient'],
+      seed: 11,
+    });
+
+  const fromRolled = draw(rolledPool);
+  const fromAuthored = draw(authoredPool);
+
+  assert.equal(fromRolled.refs.length, 1);
+  assert.equal(fromAuthored.refs.length, 1);
+  assert.equal(fromRolled.shortfall, fromAuthored.shortfall);
+  assert.deepEqual(fromRolled.notes, fromAuthored.notes);
+});
+
+test('a mini_quiz instance still has no band, and the note still says so', () => {
+  // D2 does not invent a level where the content has none. The band headings
+  // live in Part 2, so all 388 quiz items in the course are null and so is
+  // every instance rolled from one.
+  const quizInstances: Candidate[] = Array.from({ length: 4 }, (_, i) => ({
+    ref: { source: 'instance' as const, topic_id: 'QR.3.5', instance_id: `quiz-${i}` },
+    level: null,
+    section: 'mini_quiz' as const,
+  }));
+  const practiceInstances: Candidate[] = Array.from({ length: 10 }, (_, i) => ({
+    ref: { source: 'instance' as const, topic_id: 'QR.3.5', instance_id: `prac-${i}` },
+    level: 'Basic' as const,
+    section: 'practice' as const,
+  }));
+
+  const result = selectItems(
+    [{ topic_id: 'QR.3.5', candidates: [...practiceInstances, ...quizInstances] }],
+    { count: 14, levels: ['Basic'], seed: 7 },
+  );
+  assert.equal(result.refs.length, 10, 'the 10 practice instances, not the 14');
+  assert.equal(result.shortfall, 4);
+  assert.ok(
+    result.notes.some((n) => n.includes('Mini-quiz')),
+    'the four set aside must be explained',
+  );
 });
 
 // ─── D1: the mixed pool ─────────────────────────────────────────────────────

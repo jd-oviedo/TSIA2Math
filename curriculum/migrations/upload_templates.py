@@ -278,6 +278,16 @@ def build_instances(topic, unit, samples, seed):
                 "choices": choices,
                 "correct_answer": inst["correct_answer"],
                 "is_canonical": is_canonical,
+
+                # D2. Inherited from the source item, not derived from anything
+                # about the roll: difficulty is a property of the question, and
+                # a template's range is authored to keep every instance at the
+                # same band -- see "Difficulty lives in the range, not in the
+                # instance" in data/templates/README.md. Null on every mini_quiz
+                # instance because no quiz item in the course carries a band.
+                # Written on every row, including the update path, so re-running
+                # after sql/instance_level.sql backfills the pool.
+                "level": src["level"],
                 # Explicitly cleared, not omitted. A parameter set that comes
                 # back into range after a narrowing has to be rollable again, and
                 # leaving the key out would preserve the retirement instead.
@@ -344,7 +354,8 @@ def show(records, instances, held_static):
         rows = instances[(r["section"], r["item_number"])]
         sample = next((row for row in rows if not row["is_canonical"]), rows[0])
         params = ", ".join(f"{k}={v}" for k, v in sorted(sample["parameters"].items()))
-        print(f"    {r['section']} {r['item_number']}  ({params})")
+        band = sample["level"] or "no band"
+        print(f"    {r['section']} {r['item_number']}  ({params})  [{band}]")
         print(f"      stem   {sample['stem']}")
         for letter in vt.LETTERS:
             mark = " *" if letter == sample["correct_answer"] else "  "

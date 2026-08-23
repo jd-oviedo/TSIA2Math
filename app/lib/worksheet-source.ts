@@ -321,7 +321,7 @@ async function rollFromInstances(
       const offset = Math.abs((seed + i * 7919) % pool);
       const { data } = await admin
         .from('curriculum_item_instances')
-        .select('id')
+        .select('id, level')
         .eq('template_id', tpl.id)
         .is('retired_at', null)
         .order('param_hash', { ascending: true })
@@ -334,7 +334,7 @@ async function rollFromInstances(
       if (!row) {
         const { data: first } = await admin
           .from('curriculum_item_instances')
-          .select('id')
+          .select('id, level')
           .eq('template_id', tpl.id)
           .is('retired_at', null)
           .order('param_hash', { ascending: true })
@@ -346,10 +346,12 @@ async function rollFromInstances(
       served.add(itemKey((tpl.section as Section) ?? 'practice', tpl.item_number));
       out.push({
         ref: { source: 'instance', topic_id: topicId, instance_id: row.id as string },
-        // curriculum_item_instances has no level column, so a rolled item can
-        // never satisfy a difficulty filter. Reported in the builder rather than
-        // silently narrowing the pool -- see the note in the picker.
-        level: null,
+        // D2. Inherited from the source item at upload time, so a rolled
+        // question and an authored one are filtered identically -- see
+        // sql/instance_level.sql. Still null for a mini_quiz instance, and null
+        // on every row until that migration has run and the pool has been
+        // re-uploaded, which is the same behaviour as before the column existed.
+        level: (row.level as Candidate['level']) ?? null,
         section: (tpl.section as Section) ?? 'practice',
       });
     }),

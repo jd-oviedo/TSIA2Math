@@ -222,6 +222,13 @@ hardest reachable roll still sits inside its own tier -- Basic stays mentally
 computable, no rolled combination introduces arithmetic the original tier did
 not already ask for.
 
+Which is why the band can safely be COPIED onto the instance rather than
+recomputed per roll. `curriculum_item_instances.level` inherits the source
+item's band at upload time (D2, `sql/instance_level.sql`), and that copy is only
+correct because of the rule above: every instance of one template is the same
+difficulty by construction. A template whose range crossed a tier boundary would
+make the column a lie as well as the tier.
+
 ## Phase log
 
 ### Phase 4a -- storage. Complete, 2026-08-07

@@ -803,6 +803,13 @@ def load_curriculum(topic, unit):
                 "choices": item["choices"],
                 "correct_answer": item["correct_answer"],
                 "misconception_tag": item["misconception_tag"],
+                # D2. Carried so upload_templates.py can stamp it onto every
+                # instance -- see sql/instance_level.sql. Deliberately NOT part
+                # of source_fingerprint, which anchors what a student reads and
+                # is compared against a hash the TypeScript runtime recomputes;
+                # adding a field there would report all 14 live templates as
+                # stale and disable rolling until every row was re-uploaded.
+                "level": item["level"],
             }
             pairs.append((tpl, src))
     return pairs, untemplated, held_static

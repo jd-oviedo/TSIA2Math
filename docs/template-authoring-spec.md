@@ -74,11 +74,22 @@ edge case. Narrow ranges and add constraints so the hardest reachable roll still
 sits inside its own tier. No rolled combination may introduce arithmetic the
 original tier did not already ask for.
 
-`level` is authored in Part 2 band headings and exists only on practice items.
-All 388 mini_quiz items across all 97 topics have `level = null`, and
-`curriculum_item_instances` has no level column at all, so **a rolled item can
-never satisfy a worksheet difficulty filter.** Templating a topic therefore
-removes it from difficulty-filtered worksheets. Say so in the PR.
+That rule is what makes the stored band honest, and D2 is what makes it
+load-bearing. `level` is authored in Part 2 band headings and exists only on
+practice items -- all 388 mini_quiz items across all 97 topics have
+`level = null` -- and `curriculum_item_instances` now carries a `level` column
+inheriting the source item's band (`sql/instance_level.sql`), written by the
+uploader on every instance row.
+
+So **a rolled item is filtered exactly like an authored one**, and templating a
+topic no longer removes it from difficulty-filtered worksheets. It used to: a
+templated topic contributed 0 questions to a filtered draw while the builder's
+badge still promised its 10 levelled practice items, because that badge is
+counted from the authored `practice_items` either way.
+
+The band is a copy on the instance row, not a join, so it only becomes true
+after an upload. A pool uploaded before the migration reads null everywhere,
+which is the pre-D2 behaviour rather than a new failure.
 
 ## The anchor
 
@@ -270,6 +281,7 @@ item -- a real template, or `"static"` for the ones you are holding out -- and n
 other content change. A verifier run pasted in full showing every item passing,
 zero MISSING, the held-static items named, the parameter-set count and whether
 the mode was exhaustive or sampled.
-The dry-run output showing one rolled instance per item. An explicit statement of
-which difficulty filters the topic loses by being templated. No upload, and no
-SQL.
+The dry-run output showing one rolled instance per item, each with the band it
+inherited. A topic no longer loses its difficulty filters by being templated, so
+what the PR states instead is any item whose band looks wrong for the range it
+rolls. No upload, and no SQL.
