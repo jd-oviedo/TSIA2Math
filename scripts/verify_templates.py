@@ -89,6 +89,24 @@ FULL_ENUMERATION_CAP = 200_000
 # two-digit parameter for a one-digit one moves the count.
 STEM_MAX_CHARS = 240
 
+# Ceiling on any one answer letter's share of the rolled pool.
+#
+# check_topic.py already pins the STATIC 14 to the house tally A:3 B:4 C:4 D:3.
+# That says nothing about what a student meets, because a template's
+# correct_answer is a single scalar copied onto every one of its instances: the
+# letter cannot move across rolls, so the pool's real distribution is the tally
+# weighted by each template's parameter-set count, not by its item count.
+#
+# QR.3.5 happens to pass on both readings (A 27.0, B 17.8, C 29.6, D 25.6 by
+# instance), but it passes by accident. practice 3 alone carries 4,672 sets and
+# mini_quiz 4 carries 5,007, so two templates sharing a letter can dominate the
+# pool while the item tally still reads 3/4/4/3.
+#
+# 40 rather than 25 plus a tolerance: this is a guessing-strategy guard, not a
+# balance target. A student who learns that C is usually right is the failure
+# being prevented, and that needs a lopsided pool, not a slightly uneven one.
+ANSWER_SHARE_MAX = 0.40
+
 IDENT = re.compile(r"[A-Za-z_]\w*")
 MATH_SPAN = re.compile(r"\$[^$]*\$")
 
@@ -900,6 +918,10 @@ def main():
 
     print(f"Verifying {len(pairs)} {args.source} templates for {args.topic}\n")
     results, total_sets = {}, 0
+    # (correct letter, parameter sets) per template, for the pool-level
+    # distribution below. Keyed on the template rather than summed as it goes so
+    # a lopsided pool can name the templates responsible.
+    weights = {}
 
     for tpl, src in pairs:
         key = tpl["key"]
@@ -911,6 +933,7 @@ def main():
             continue
 
         total_sets += stats["sets"]
+        weights[key] = (src["correct_answer"], stats["sets"])
         results[key] = not fails
         status = "pass" if not fails else f"FAIL ({len(fails)})"
         print(f"  {key:<14} {status:<12} {stats['sets']:>6} sets, {stats['mode']}")
@@ -945,6 +968,26 @@ def main():
     elif pairs:
         print("  sign-error coverage: MISSING -- no passing template carries it")
         ok = False
+
+    # Pool rule: no answer letter may dominate what a student actually meets.
+    # Weighted by parameter sets, which is the count that reaches a student, not
+    # by item count, which is all check_topic.py can see.
+    if weights:
+        by_letter = {L: 0 for L in LETTERS}
+        for letter, n in weights.values():
+            if letter in by_letter:
+                by_letter[letter] += n
+        pool = sum(by_letter.values())
+        shares = ", ".join(f"{L} {100 * by_letter[L] / pool:.1f}%" for L in LETTERS)
+        print(f"  answer distribution ({pool} instances): {shares}")
+        for L in LETTERS:
+            share = by_letter[L] / pool
+            if share > ANSWER_SHARE_MAX:
+                carriers = sorted(k for k, (letter, _) in weights.items() if letter == L)
+                print(f"  answer distribution: FAIL {L} is {100 * share:.1f}% of the "
+                      f"pool, ceiling is {100 * ANSWER_SHARE_MAX:.0f}%. "
+                      f"Carried by: {', '.join(carriers)}")
+                ok = False
 
     if args.source == "curriculum" and pairs:
         xfails, xwarns, skipped = cross_pool(pairs, args.topic, args.samples, args.seed)
