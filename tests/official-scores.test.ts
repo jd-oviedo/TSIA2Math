@@ -116,7 +116,15 @@ test('a run on the test date itself is excluded', () => {
 });
 
 test('an unfinished run is skipped, however recent', () => {
-  const withOpen = [session('2026-08-21T10:00:00Z', null, null), ...newestFirst];
+  // THE OPEN RUN CARRIES A SCORE. That is the whole point of the fixture and it
+  // was not always so: with final_score null as well, the row was excluded by
+  // the score guard and this test passed with the completed_at guard DELETED --
+  // asserting a rule it was not actually exercising. Found by
+  // scripts/faultproof_official_scores.mjs, which is what that sweep is for.
+  //
+  // A session in progress genuinely can hold a provisional score, which is why
+  // "finished" and "scored" are two separate conditions in the first place.
+  const withOpen = [session('2026-08-21T10:00:00Z', 951, null), ...newestFirst];
   const picked = latestPracticeBefore(withOpen, '2026-08-22');
   assert.equal(picked?.final_score, 948);
 });

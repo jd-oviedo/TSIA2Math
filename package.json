@@ -34,7 +34,9 @@
     "lint:fix": "eslint --fix",
     "test:lesson-dark": "node scripts/verify_lesson_dark.mjs",
     "auth:capture": "node scripts/capture_auth_state.mjs",
-    "test:walk": "node scripts/walk_curriculum.mjs"
+    "test:walk": "node scripts/walk_curriculum.mjs",
+    "test:official-scores-walk": "node scripts/walk_official_scores.mjs",
+    "test:official-scores-faults": "node scripts/faultproof_official_scores.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.112.3",
