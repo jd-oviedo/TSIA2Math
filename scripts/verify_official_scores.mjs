@@ -148,9 +148,32 @@ async function main() {
     return ctx;
   }
 
+  // Aggregate cleanup state. Declared out here so the finally can reach it even
+  // if section 9 throws halfway through.
+  let aggregateExists = false;
+  let aggregateIdsBefore = new Set();
+
   try {
     const ctx = await signIn(teacher.email);
     const api = ctx.request;
+
+    // ─── The aggregate snapshot, taken BEFORE anything is created ────────────
+    //
+    // Every section of this suite that creates an official score also writes an
+    // aggregate row, so the snapshot has to be taken here and not down in
+    // section 9. Taken late, it captures this run's own rows as pre-existing and
+    // the cleanup then leaves them behind in a shared programme table -- which
+    // is exactly what happened the first time this was written.
+    //
+    // The probe doubles as the "has section 5 been run" check, reported in
+    // section 9 where a reader is looking for it.
+    const aggProbe = await db.from('official_score_aggregate').select('id');
+    if (aggProbe.error && (aggProbe.error.code === '42P01' || aggProbe.error.code === 'PGRST205')) {
+      aggregateExists = false;
+    } else {
+      aggregateExists = true;
+      aggregateIdsBefore = new Set((aggProbe.data ?? []).map((r) => r.id));
+    }
 
     // ─── 1. A failing result, with strand levels ─────────────────────────────
     console.log('\n1. Create: a student who did not meet the standard');
@@ -319,10 +342,148 @@ async function main() {
     const { data: gone } = await db
       .from('official_scores').select('id').eq('id', freshRow.id).maybeSingle();
     check('and the row is actually gone', gone === null, gone ? 'still present' : 'removed');
+
+    // ─── 9. The de-identified aggregate ──────────────────────────────────────
+    //
+    // Section 5 of sql/official_scores.sql makes a security ARGUMENT about this
+    // table. This section checks the code actually behaves the way the argument
+    // assumes, on a real database, rather than taking the comment's word for it.
+    //
+    // A SELF-CONTAINED CREATE/CORRECT/DELETE CYCLE, not assertions bolted onto
+    // the sections above. The aggregate carries no identifier by construction,
+    // so a row can only be found by its CONTENT, and content that collides with
+    // another section's row would make every count here ambiguous. 913 and 917
+    // are used because nothing else in this suite or the fixture writes them.
+    console.log('\n9. The de-identified aggregate');
+
+    if (!aggregateExists) {
+      check(
+        'official_score_aggregate exists (section 5 of sql/official_scores.sql)',
+        false,
+        'table missing -- section 5 has not been run on this database'
+      );
+    } else {
+      const aggCreate = await api.post(ROUTE, {
+        data: {
+          student_id: ana.id,
+          class_id: a1.id,
+          official_crc_score: 913,
+          test_date: today,
+          level_qr: 'Basic',
+          level_ar: 'Basic',
+          level_gr: 'Basic',
+          level_pr: 'Basic',
+          affirmed_official_report: true,
+        },
+      });
+      check('the cycle row was created', aggCreate.status() === 201, `HTTP ${aggCreate.status()}`);
+      const cycleRow = aggCreate.ok() ? (await aggCreate.json()).score : null;
+
+      const month = `${today.slice(0, 7)}-01`;
+      const findAgg = async (score) => {
+        const { data } = await db
+          .from('official_score_aggregate')
+          .select('*')
+          .eq('official_crc_score', score);
+        return data ?? [];
+      };
+
+      const made = await findAgg(913);
+      check('creating an official score writes ONE aggregate row', made.length === 1, `${made.length} rows`);
+
+      if (made.length === 1) {
+        const agg = made[0];
+
+        // THE UNJOINABILITY PROPERTY, checked against the real column set rather
+        // than against the CREATE TABLE this file also wrote. A migration run by
+        // hand can drift from the SQL in the repo.
+        const keys = Object.keys(agg).sort();
+        check(
+          'the stored row carries no student, class or teacher identifier',
+          !keys.some((k) => ['student_id', 'class_id', 'teacher_id', 'entered_by', 'official_score_id'].includes(k)),
+          keys.join(', ')
+        );
+
+        check('dates are coarsened to the month', agg.test_month === month && agg.recorded_month === month,
+          `${agg.test_month} / ${agg.recorded_month}`);
+
+        // The band, never the number. ana's practice history decides which band;
+        // what matters is that a BAND is what is stored and that it is one of
+        // the four the CHECK accepts.
+        check(
+          'the practice estimate is stored as a band, not a score',
+          ['college_ready', 'approaching', 'below_college_ready', 'no_estimate'].includes(agg.practice_estimate_band),
+          String(agg.practice_estimate_band)
+        );
+        check('the levels came through', agg.level_qr === 'Basic' && agg.level_pr === 'Basic',
+          `${agg.level_qr} / ${agg.level_pr}`);
+      }
+
+      // ── The correction swap ──────────────────────────────────────────────
+      //
+      // The hard case. There is no way to look up "that row's aggregate row",
+      // so a correction removes one row matching the OLD content and inserts
+      // one matching the new. What must hold afterwards is a multiset property:
+      // the old value is gone, the new value is there, and the TOTAL has not
+      // moved. A build that inserted without removing would pass the first two
+      // and fail the third, which is why the total is asserted.
+      if (cycleRow?.id) {
+        const totalBefore = (await db.from('official_score_aggregate').select('id')).data?.length ?? 0;
+
+        const fix = await api.patch(ROUTE, {
+          data: {
+            id: cycleRow.id,
+            official_crc_score: 917,
+            test_date: today,
+            level_qr: 'Basic',
+            level_ar: 'Basic',
+            level_gr: 'Basic',
+            level_pr: 'Basic',
+            affirmed_official_report: true,
+          },
+        });
+        check('the correction succeeded', fix.status() === 200, `HTTP ${fix.status()}`);
+
+        check('the corrected value is in the aggregate', (await findAgg(917)).length === 1, '');
+        check('and the uncorrected value is NOT', (await findAgg(913)).length === 0,
+          `${(await findAgg(913)).length} stale rows`);
+
+        const totalAfter = (await db.from('official_score_aggregate').select('id')).data?.length ?? 0;
+        check('a correction does not inflate the sitting count', totalAfter === totalBefore,
+          `${totalBefore} -> ${totalAfter}`);
+
+        // ── The delete ────────────────────────────────────────────────────
+        //
+        // A mistaken entry, removed a minute later, must stop counting as a
+        // sitting. Without this it counts forever.
+        const wipe = await api.delete(ROUTE, { data: { id: cycleRow.id } });
+        check('the cycle row was deleted', wipe.status() === 200, `HTTP ${wipe.status()}`);
+        check('deleting an official score removes its aggregate row too',
+          (await findAgg(917)).length === 0, `${(await findAgg(917)).length} orphans`);
+
+        const totalEnd = (await db.from('official_score_aggregate').select('id')).data?.length ?? 0;
+        // Against the count before the CYCLE, not against the pre-run snapshot:
+        // sections 1 to 3 legitimately left rows behind, and the cleanup is what
+        // removes those.
+        check('and the count returns to where the cycle started',
+          totalEnd === totalBefore - 1, `${totalEnd} vs ${totalBefore - 1}`);
+      }
+    }
   } finally {
     // Fixture rows only. The teardown deletes the users these hang off anyway;
     // this keeps a re-run of this suite from seeing the previous run's rows.
     await db.from('official_scores').delete().in('student_id', [ana.id, jose.id]);
+
+    // ONLY rows this run added. The aggregate is programme-level and shared, and
+    // it holds no identifier that could tell this run's rows from anyone else's
+    // -- so the snapshot taken before section 9 is the only safe basis for a
+    // delete. Deleting by content signature could take a real row.
+    if (aggregateExists) {
+      const { data: now } = await db.from('official_score_aggregate').select('id');
+      const mine = (now ?? []).map((r) => r.id).filter((id) => !aggregateIdsBefore.has(id));
+      if (mine.length > 0) await db.from('official_score_aggregate').delete().in('id', mine);
+    }
+
     await browser.close();
     stop();
   }

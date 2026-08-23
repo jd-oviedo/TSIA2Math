@@ -80,8 +80,16 @@ export async function GET(req: Request) {
     }
 
     const data = await loadClassData(admin, scope.classes);
-    const columns = rosterColumns(includeEmail);
-    const rows = buildRosterRows(data, includeEmail);
+
+    // The official columns follow the CAPABILITY, not the data. Both teacher
+    // tiers hold 'official-scores' today, so this is true for every caller that
+    // gets past the 'class-data-export' gate above; it is asked anyway because
+    // the two capabilities are separate in capabilities.ts and a future plan
+    // could carry the export without the feature. Asking keeps the file's
+    // columns honest if that ever happens, and costs one function call now.
+    const includeOfficial = profileGrants(profile, "official-scores", "export.roster.official");
+    const columns = rosterColumns(includeEmail, includeOfficial);
+    const rows = buildRosterRows(data, includeEmail, includeOfficial);
     const csv = buildCsv(columns, rows);
 
     await logExport(admin, {

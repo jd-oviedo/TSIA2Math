@@ -194,3 +194,167 @@ export function isCorrectable(
 
   return now - created < windowMs;
 }
+
+// ─── The de-identified aggregate row ─────────────────────────────────────────
+
+/**
+ * Coarsen a date to the first of its month, as YYYY-MM-01.
+ *
+ * STRING SLICING, NOT Date. Both inputs this is given are already UTC by
+ * construction -- test_date is a bare calendar date with no timezone at all, and
+ * created_at is an ISO timestamp Postgres wrote in UTC -- so parsing them into a
+ * Date only introduces the chance of the server's local zone shifting a
+ * first-of-the-month or a last-of-the-month row into the wrong bucket. Slicing
+ * cannot do that.
+ *
+ * The CHECK in sql/official_scores.sql enforces day 01 on both aggregate date
+ * columns, so a bug here surfaces as a refused insert rather than as a row that
+ * silently un-coarsens itself. Returns null on anything that is not plainly
+ * YYYY-MM-..., which the caller treats as "do not write the aggregate row"
+ * rather than guessing a month.
+ */
+export function monthFloor(value: string | null | undefined): string | null {
+  if (!value) return null;
+  const m = /^(\d{4})-(\d{2})/.exec(value);
+  if (!m) return null;
+  const month = Number(m[2]);
+  if (month < 1 || month > 12) return null;
+  return `${m[1]}-${m[2]}-01`;
+}
+
+/** Exactly the columns public.official_score_aggregate holds, and no others. */
+export type AggregateRow = {
+  official_crc_score: number;
+  practice_estimate_band: ReturnType<typeof practiceEstimateBand>;
+  test_month: string;
+  recorded_month: string;
+  level_qr: OfficialLevel | null;
+  level_ar: OfficialLevel | null;
+  level_gr: OfficialLevel | null;
+  level_pr: OfficialLevel | null;
+};
+
+/**
+ * Build the de-identified companion row for one official score.
+ *
+ * PURE, AND SEPARATE FROM THE WRITE, for the reason the rest of this file is
+ * pure: the de-identification is the security property, and a property that can
+ * only be exercised by standing up a server and a database is one nobody will
+ * fault-test. Here it is a function whose output can be asserted field by field,
+ * including the fields it must NOT emit.
+ *
+ * The returned object is the whole row. There is no student_id, class_id,
+ * teacher_id or source row id, and adding one later would break the
+ * unjoinability argument at section 5 point 1 of sql/official_scores.sql. The
+ * test asserts the key set, not merely the values, so an added identifier fails
+ * the suite rather than shipping quietly.
+ *
+ * Returns null when either date cannot be coarsened. Refusing to write is the
+ * right failure: an aggregate row is a dashboard number, and a wrong month is
+ * worse than an absent row.
+ */
+export function buildAggregateRow(args: {
+  officialScore: number;
+  testDate: string;
+  recordedAt: string;
+  practiceScore: number | null;
+  levels: {
+    level_qr: OfficialLevel | null;
+    level_ar: OfficialLevel | null;
+    level_gr: OfficialLevel | null;
+    level_pr: OfficialLevel | null;
+  };
+}): AggregateRow | null {
+  const test_month = monthFloor(args.testDate);
+  const recorded_month = monthFloor(args.recordedAt);
+  if (!test_month || !recorded_month) return null;
+
+  return {
+    official_crc_score: args.officialScore,
+    // The band, never the number. Point 3 of the unjoinability argument: an
+    // attacker holding a student's exact practice score cannot match on it.
+    practice_estimate_band: practiceEstimateBand(args.practiceScore),
+    test_month,
+    recorded_month,
+    level_qr: args.levels.level_qr,
+    level_ar: args.levels.level_ar,
+    level_gr: args.levels.level_gr,
+    level_pr: args.levels.level_pr,
+  };
+}
+
+// ─── The roster CSV columns ──────────────────────────────────────────────────
+
+/**
+ * The official columns roster.csv appends, in order.
+ *
+ * DEFINED HERE RATHER THAN IN teacher-export.ts, which is where the rest of the
+ * roster file is assembled, for one reason: teacher-export.ts reaches
+ * next/headers through teacher-directory.ts and therefore cannot be loaded by
+ * `node --test` at all. Column names and cell values that live there can only be
+ * exercised by standing up a server. Here they are ordinary functions the suite
+ * can fault, which is the same argument that keeps the correction window in this
+ * file.
+ *
+ * PREFIXED official_, because roster.csv already carries qr/ar/gr/pr accuracy
+ * percentages from the product's own practice runs. An unprefixed level_qr
+ * beside qr_accuracy_pct invites exactly the conflation this feature exists to
+ * prevent: one is what the product measured, the other is what the state
+ * reported. The delta column is the deliberate exception -- DELTA_COLUMN names
+ * its own interval, which is the whole point of that constant.
+ */
+export const OFFICIAL_ROSTER_COLUMNS = [
+  "official_score",
+  "official_test_date",
+  "official_level_qr",
+  "official_level_ar",
+  "official_level_gr",
+  "official_level_pr",
+  DELTA_COLUMN,
+] as const;
+
+/** The subset of an official row roster.csv renders. Any wider row satisfies it. */
+export type OfficialRosterRow = {
+  official_crc_score: number;
+  test_date: string;
+  level_qr: OfficialLevel | null;
+  level_ar: OfficialLevel | null;
+  level_gr: OfficialLevel | null;
+  level_pr: OfficialLevel | null;
+};
+
+/**
+ * The seven cells, in OFFICIAL_ROSTER_COLUMNS order.
+ *
+ * NULL IS THE ANSWER IN TWO DIFFERENT SITUATIONS and both of them are correct
+ * rather than missing:
+ *
+ *   A student with no official result at all gets seven nulls, which the CSV
+ *   writer renders as empty fields. Not zeroes: zero is a real point on a
+ *   910-990 scale and would read as a catastrophic score rather than as an
+ *   absent one. That is most students for most of the year.
+ *
+ *   A student who MET the standard gets a score and a date and four null
+ *   levels. Their report carries no strand detail, so empty is the complete and
+ *   final answer, not data that failed to load.
+ *
+ * The delta is null when the student had never completed a practice run before
+ * the test date. A zero there would read as "no change", which is the one thing
+ * it does not mean.
+ */
+export function officialRosterCells(
+  official: OfficialRosterRow | null,
+  practiceScore: number | null
+): (string | number | null)[] {
+  if (!official) return OFFICIAL_ROSTER_COLUMNS.map(() => null);
+
+  return [
+    official.official_crc_score,
+    official.test_date,
+    official.level_qr,
+    official.level_ar,
+    official.level_gr,
+    official.level_pr,
+    practiceScore === null ? null : official.official_crc_score - practiceScore,
+  ];
+}

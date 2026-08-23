@@ -9,6 +9,10 @@ import {
   latestPracticeBefore,
   practiceEstimateBand,
   OFFICIAL_LEVELS,
+  buildAggregateRow,
+  monthFloor,
+  officialRosterCells,
+  OFFICIAL_ROSTER_COLUMNS,
 } from '../app/lib/official-scores.ts';
 import { PASSING, placementBand } from '../app/lib/placement.ts';
 
@@ -236,4 +240,209 @@ test('every band value is one the database CHECK accepts', () => {
 
 test('the level vocabulary is the product-wide set of three', () => {
   assert.deepEqual([...OFFICIAL_LEVELS], ['Basic', 'Proficient', 'Advanced']);
+});
+
+
+// ---------------------------------------------------------------------------
+// The de-identified aggregate row
+//
+// This is the security property of the feature expressed as a function, so it
+// can be asserted rather than reviewed. The tests below check what the row does
+// NOT carry at least as carefully as what it does.
+// ---------------------------------------------------------------------------
+
+const AGG_ARGS = {
+  officialScore: 944,
+  testDate: '2026-05-14',
+  recordedAt: '2026-06-02T18:22:09.412Z',
+  practiceScore: 958,
+  levels: {
+    level_qr: 'Basic' as const,
+    level_ar: 'Proficient' as const,
+    level_gr: null,
+    level_pr: 'Advanced' as const,
+  },
+};
+
+test('the aggregate row carries no identifier of any kind', () => {
+  // THE KEY SET, not the values. A student_id added to the insert later would
+  // pass every value assertion in this file while destroying the unjoinability
+  // argument at section 5 point 1 of sql/official_scores.sql. This is the test
+  // that catches that, and it is the reason the row is built by a function
+  // rather than inline at the insert site.
+  const row = buildAggregateRow(AGG_ARGS)!;
+  assert.deepEqual(Object.keys(row).sort(), [
+    'level_ar',
+    'level_gr',
+    'level_pr',
+    'level_qr',
+    'official_crc_score',
+    'practice_estimate_band',
+    'recorded_month',
+    'test_month',
+  ]);
+
+  // Said again as a prohibition, because the list above reads as a description
+  // and this reads as a rule.
+  for (const forbidden of ['student_id', 'class_id', 'teacher_id', 'entered_by', 'id']) {
+    assert.ok(!(forbidden in row), `${forbidden} must never reach the aggregate`);
+  }
+});
+
+test('the practice score is destroyed, not merely hidden', () => {
+  const row = buildAggregateRow(AGG_ARGS)!;
+  // Point 3: an attacker holding a student's exact practice score must not be
+  // able to match on it. The band survives; 958 must appear nowhere.
+  assert.equal(row.practice_estimate_band, 'college_ready');
+  assert.ok(
+    !JSON.stringify(row).includes('958'),
+    'the exact practice score leaked into the aggregate row'
+  );
+});
+
+test('both dates are coarsened to the first of the month', () => {
+  const row = buildAggregateRow(AGG_ARGS)!;
+  // Point 4: a row must not be alignable to a school day or to a specific
+  // insert by timestamp. The CHECK in section 5 refuses any other day, so a
+  // regression here surfaces as a refused insert, but it should fail HERE.
+  assert.equal(row.test_month, '2026-05-01');
+  assert.equal(row.recorded_month, '2026-06-01');
+  assert.ok(!JSON.stringify(row).includes('2026-05-14'), 'the exact test date survived');
+  assert.ok(!JSON.stringify(row).includes('18:22'), 'the insert time survived');
+});
+
+test('a student who never practised bands as no_estimate, not as the bottom band', () => {
+  // A real state, not an error: a student can sit the official test having
+  // never completed a run. Folding them into below_college_ready would invent
+  // a measurement the product never made.
+  const row = buildAggregateRow({ ...AGG_ARGS, practiceScore: null })!;
+  assert.equal(row.practice_estimate_band, 'no_estimate');
+});
+
+test('a passing student\'s four null levels reach the aggregate as nulls', () => {
+  const row = buildAggregateRow({
+    ...AGG_ARGS,
+    officialScore: 960,
+    practiceScore: 951,
+    levels: { level_qr: null, level_ar: null, level_gr: null, level_pr: null },
+  })!;
+  // Not dropped, not defaulted to a level. The complete state for a report that
+  // carries no strand detail, and the shape removeOneAggregate has to match on
+  // with .is() rather than .eq().
+  assert.equal(row.level_qr, null);
+  assert.equal(row.level_ar, null);
+  assert.equal(row.level_gr, null);
+  assert.equal(row.level_pr, null);
+});
+
+test('an uncoarsenable date yields no row rather than a guessed month', () => {
+  // Refusing to write is the right failure. An aggregate row is a dashboard
+  // number and a wrong month is worse than an absent row.
+  assert.equal(buildAggregateRow({ ...AGG_ARGS, testDate: 'not a date' }), null);
+  assert.equal(buildAggregateRow({ ...AGG_ARGS, recordedAt: '' }), null);
+  assert.equal(buildAggregateRow({ ...AGG_ARGS, testDate: '2026-13-01' }), null);
+});
+
+test('monthFloor coarsens by slicing and never by timezone', () => {
+  // The bug this forecloses: parsing into a Date and formatting locally moves a
+  // first-of-the-month or a last-of-the-month row into the neighbouring bucket
+  // whenever the server is not on UTC. Both edges are asserted.
+  assert.equal(monthFloor('2026-05-01'), '2026-05-01');
+  assert.equal(monthFloor('2026-05-31'), '2026-05-01');
+  assert.equal(monthFloor('2026-01-01T00:00:00.000Z'), '2026-01-01');
+  assert.equal(monthFloor('2026-12-31T23:59:59.999Z'), '2026-12-01');
+  assert.equal(monthFloor(null), null);
+  assert.equal(monthFloor('2026-00-10'), null);
+});
+
+
+// ---------------------------------------------------------------------------
+// The roster CSV columns
+// ---------------------------------------------------------------------------
+
+test('the official roster columns are prefixed so they cannot be read as practice data', () => {
+  // roster.csv already carries qr_accuracy_pct and friends from the product's
+  // own practice runs. An unprefixed level_qr beside them invites exactly the
+  // conflation this feature exists to prevent.
+  const [, ...rest] = [...OFFICIAL_ROSTER_COLUMNS];
+  for (const col of OFFICIAL_ROSTER_COLUMNS) {
+    assert.ok(
+      col.startsWith('official_') || col === DELTA_COLUMN,
+      `${col} is neither prefixed nor the named-interval delta column`
+    );
+  }
+  assert.ok(rest.length > 0);
+});
+
+test('the delta column names its interval, and names the same one as the label', () => {
+  // If the column is ever renamed to something that does not say "practice",
+  // the number gets read as growth since diagnostic. Same failure the label
+  // constant exists to prevent, asserted on the CSV side too.
+  assert.ok(DELTA_COLUMN.includes('practice'));
+  assert.ok(DELTA_LABEL.includes('practice'));
+});
+
+test('a cell is produced for every official column, always', () => {
+  // A row shorter than its header silently shifts every value after it into the
+  // wrong column. Asserted for both branches, because the empty branch is the
+  // one that gets written with a hardcoded list of nulls and drifts.
+  assert.equal(officialRosterCells(null, null).length, OFFICIAL_ROSTER_COLUMNS.length);
+  assert.equal(
+    officialRosterCells(
+      {
+        official_crc_score: 944,
+        test_date: '2026-05-14',
+        level_qr: 'Basic',
+        level_ar: 'Basic',
+        level_gr: 'Basic',
+        level_pr: 'Basic',
+      },
+      958
+    ).length,
+    OFFICIAL_ROSTER_COLUMNS.length
+  );
+});
+
+test('a student with no official result gets empty cells, never zeroes', () => {
+  // Zero is a real point on a 910-990 scale. A zero here would read as a
+  // catastrophic score rather than as an absent one, and this is the state most
+  // students are in for most of the year.
+  const cells = officialRosterCells(null, null);
+  assert.deepEqual(cells, [null, null, null, null, null, null, null]);
+  assert.ok(!cells.includes(0));
+});
+
+test('the delta is null, not zero, when there is no practice run to measure against', () => {
+  const cells = officialRosterCells(
+    {
+      official_crc_score: 944,
+      test_date: '2026-05-14',
+      level_qr: 'Basic',
+      level_ar: null,
+      level_gr: null,
+      level_pr: null,
+    },
+    null
+  );
+  // A zero here would read as "no change", which is the one thing it does not
+  // mean. The score and date are still present: only the delta is unknown.
+  assert.equal(cells[0], 944);
+  assert.equal(cells[6], null);
+});
+
+test('the delta is official minus practice, in that order', () => {
+  // Sign matters and is easy to invert. 944 after a 958 practice run is a DROP
+  // of 14, and must not read as a gain.
+  const cells = officialRosterCells(
+    {
+      official_crc_score: 944,
+      test_date: '2026-05-14',
+      level_qr: null,
+      level_ar: null,
+      level_gr: null,
+      level_pr: null,
+    },
+    958
+  );
+  assert.equal(cells[6], -14);
 });

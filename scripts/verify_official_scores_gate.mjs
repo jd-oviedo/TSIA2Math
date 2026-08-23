@@ -34,6 +34,25 @@
 //
 // The 200 controls matter as much as the refusals. A build where every request
 // 403s would satisfy a refusal-only suite.
+//
+// THE MATRIX COVERS EVERY VERB, NOT JUST GET. Sections 1 to 4 below prove the
+// capability gate and the tenancy boundary on the read path. That is not the
+// same proof for the write path, and the difference is not cosmetic:
+//
+//   * GET takes its student and class from the QUERY STRING. POST takes them
+//     from the BODY. PATCH and DELETE take neither -- they take a row id, and
+//     the handler has to READ the row to find out which student and class the
+//     request is really about before it can judge it. Three different ways of
+//     deciding what is being asked for, so three different ways to get it
+//     wrong, and a GET-only suite exercises one of them.
+//
+//   * The write path has a second boundary the read path does not have at all:
+//     entered_by. Owning the class is not sufficient to CHANGE a row, because
+//     the affirmation names one person.
+//
+// Sections 5 to 9 close that. Section 8 is the one worth reading: it proves the
+// entered_by check by TRANSFERRING the class, because that is the only way the
+// branch is reachable at all. See its own note.
 import { spawn, execSync } from 'child_process';
 import { readFileSync } from 'fs';
 import { createClient } from '@supabase/supabase-js';
@@ -214,6 +233,26 @@ async function main() {
 
   const q = (cls) => `${BASE}${ROUTE}?student_id=${student.id}&class_id=${cls}`;
 
+  // Cleanup state, declared outside the try so the finally can always reach it.
+  const createdIds = [];
+  let transferred = false;
+
+  // Aggregate rows this run creates, snapshotted BEFORE anything is written.
+  //
+  // Needed because the finally deletes official_scores rows through the service
+  // client rather than through the API, which is right -- a failed run must be
+  // cleaned up whatever state the handlers are in -- but means the aggregate
+  // rows those writes produced are NOT removed with them. Under a clean run the
+  // suite deletes its own row through DELETE and the aggregate follows; under a
+  // FAULT run it does not, and the leftovers accumulate in a shared programme
+  // table. Snapshot-and-diff is the only safe basis for the delete: the table
+  // holds no identifier that could distinguish this run's rows from real ones.
+  let aggregateIdsBefore = null;
+  {
+    const probe = await db.from('official_score_aggregate').select('id');
+    if (!probe.error) aggregateIdsBefore = new Set((probe.data ?? []).map((r) => r.id));
+  }
+
   try {
     // ─── 1. A student is refused ──────────────────────────────────────────────
     console.log('\n1. Student account (verified role=student above)');
@@ -252,9 +291,260 @@ async function main() {
       crossRes.status() === 404,
       `HTTP ${crossRes.status()}`
     );
+
+    // ─── The write matrix ─────────────────────────────────────────────────────
+    //
+    // Everything from here needs official_scores to EXIST, because it asserts
+    // things about rows. If section 1 of sql/official_scores.sql has not been
+    // run, the writes come back 503 and every refusal below would pass for the
+    // wrong reason -- which is precisely the vacuous green this file's header
+    // warns about. So it is a hard stop, not a skip.
+    const coreBody = cRes.status() === 200 ? await cRes.json() : {};
+    if (coreBody.stored !== true) {
+      console.error(
+        '\nSTOPPING. official_scores does not exist on this database, so the ' +
+        'write matrix (sections 5-9) cannot be proved and must not be reported ' +
+        'as passing. Run section 1 of sql/official_scores.sql first.'
+      );
+      failures++;
+      throw new Error('official_scores not migrated');
+    }
+
+    const TODAY = new Date().toISOString().slice(0, 10);
+    const body = (over = {}) => ({
+      student_id: student.id,
+      class_id: b1.id,
+      official_crc_score: 944,
+      test_date: TODAY,
+      level_qr: 'Basic',
+      level_ar: 'Proficient',
+      level_gr: null,
+      level_pr: null,
+      affirmed_official_report: true,
+      ...over,
+    });
+
+    // ─── 5. The write verbs refuse a student ──────────────────────────────────
+    //
+    // Same caveat as section 1, restated because it applies verb by verb: a
+    // student is refused by requireTeacher() on two independent conditions, so
+    // these three 403s are real but are NOT evidence about the new capability
+    // gate. Section 9's fault pair is what proves that line.
+    console.log('\n5. A student is refused on every write verb, not only on GET');
+    const sPost = await studentCtx.request.post(`${BASE}${ROUTE}`, { data: body() });
+    check('a student may not POST', sPost.status() === 403, `HTTP ${sPost.status()}`);
+    const sPatch = await studentCtx.request.patch(`${BASE}${ROUTE}`, {
+      data: { ...body(), id: crypto.randomUUID() },
+    });
+    check('a student may not PATCH', sPatch.status() === 403, `HTTP ${sPatch.status()}`);
+    const sDel = await studentCtx.request.delete(`${BASE}${ROUTE}`, {
+      data: { id: crypto.randomUUID() },
+    });
+    check('a student may not DELETE', sDel.status() === 403, `HTTP ${sDel.status()}`);
+
+    // ─── 6. Core may actually write ───────────────────────────────────────────
+    //
+    // The control the refusals need. Without it every check in sections 5 to 9
+    // is satisfied by a build where writing is broken for everyone.
+    console.log('\n6. Core can write: the control the refusals depend on');
+    const created = await coreCtx.request.post(`${BASE}${ROUTE}`, { data: body() });
+    check('Core may POST to their own class', created.status() === 201, `HTTP ${created.status()}`);
+    const row = created.status() === 201 ? (await created.json()).score : null;
+    if (row?.id) createdIds.push(row.id);
+    check('the created row came back with an id', Boolean(row?.id), String(row?.id));
+
+    // ─── 7. Tenancy on the write path ─────────────────────────────────────────
+    //
+    // TWO SEPARATE FAILURES, and they are separate on purpose. Owning the class
+    // and the student being enrolled in it are different conditions, and a gate
+    // that checks only the first admits any student id paired with a class the
+    // teacher happens to own.
+    console.log('\n7. Tenancy on the write path: ownership AND enrolment');
+    const proIntoB = await proCtx.request.post(`${BASE}${ROUTE}`, { data: body() });
+    check(
+      'Pro may not POST into a class they do not own',
+      proIntoB.status() === 404,
+      `HTTP ${proIntoB.status()}`
+    );
+
+    // Teacher B's own id stands in for "a person who is not enrolled in A1".
+    // Any uuid that is not an enrolled student would do; using a real one that
+    // exists in profiles makes the 404 come from the ENROLMENT check rather
+    // than from the id simply not resolving.
+    const notEnrolled = await proCtx.request.post(`${BASE}${ROUTE}`, {
+      data: body({ class_id: a1.id, student_id: teacherB.id }),
+    });
+    check(
+      'Pro may not POST for someone not enrolled in a class they do own',
+      notEnrolled.status() === 404,
+      `HTTP ${notEnrolled.status()}`
+    );
+    // Tracked for cleanup even though it must not exist. When this check FAILS
+    // -- which is exactly what happens under a fault run -- a row was created,
+    // and leaving it behind would seed the next run with dirty data.
+    if (notEnrolled.status() === 201) {
+      createdIds.push((await notEnrolled.json()).score?.id);
+    }
+
+    // A row that does not exist is a 404 and never a 500, on both write verbs
+    // that address a row by id.
+    const ghost = crypto.randomUUID();
+    const ghostPatch = await coreCtx.request.patch(`${BASE}${ROUTE}`, {
+      data: { ...body(), id: ghost },
+    });
+    check('PATCH on an unknown id is 404', ghostPatch.status() === 404, `HTTP ${ghostPatch.status()}`);
+    const ghostDel = await coreCtx.request.delete(`${BASE}${ROUTE}`, { data: { id: ghost } });
+    check('DELETE on an unknown id is 404', ghostDel.status() === 404, `HTTP ${ghostDel.status()}`);
+
+    // A row in a class the caller does not own is 404 on both, and the row must
+    // still be there afterwards. Status alone is not proof: a handler that
+    // deleted first and refused second would return 404 and still destroy it.
+    if (row?.id) {
+      const foreignPatch = await proCtx.request.patch(`${BASE}${ROUTE}`, {
+        data: { ...body(), id: row.id, official_crc_score: 911 },
+      });
+      check(
+        'Pro may not PATCH a row in a class they do not own',
+        foreignPatch.status() === 404,
+        `HTTP ${foreignPatch.status()}`
+      );
+      const foreignDel = await proCtx.request.delete(`${BASE}${ROUTE}`, { data: { id: row.id } });
+      check(
+        'Pro may not DELETE a row in a class they do not own',
+        foreignDel.status() === 404,
+        `HTTP ${foreignDel.status()}`
+      );
+      const { data: after } = await db
+        .from('official_scores')
+        .select('id, official_crc_score')
+        .eq('id', row.id)
+        .maybeSingle();
+      check(
+        'and the row is untouched, not merely un-reported',
+        after?.official_crc_score === 944,
+        `score=${after?.official_crc_score ?? 'GONE'}`
+      );
+    }
+
+    // ─── 8. entered_by: owning the class is not enough to change a row ────────
+    //
+    // WHY THIS NEEDS A CLASS TRANSFER, said out loud because a reader will
+    // otherwise assume the test is contrived. classes.teacher_id is a single
+    // column: exactly one teacher owns a class, and gate() admits only that
+    // teacher. So under ordinary operation entered_by ALWAYS equals the class
+    // owner, and refuseIfNotCorrectable()'s entered_by branch is UNREACHABLE.
+    //
+    // It becomes reachable the moment a class changes hands -- a teacher leaves
+    // mid-year and their classes are reassigned -- and at that moment it is the
+    // only thing standing between the new owner and silently rewriting an
+    // academic record somebody else signed. So the transfer is not a trick to
+    // reach the branch; it IS the scenario the branch exists for, and this is
+    // the only way to exercise it.
+    //
+    // The transfer is reverted in the finally block whatever happens.
+    if (row?.id) {
+      console.log('\n8. entered_by survives a class transfer');
+      const { error: xferErr } = await db
+        .from('classes')
+        .update({ teacher_id: teacherA.id })
+        .eq('id', b1.id);
+      check('the fixture class transferred to Pro', !xferErr, xferErr?.message ?? '');
+      transferred = !xferErr;
+
+      // Pro now owns the class and passes every tenancy check. The row is still
+      // Core's signature, so both write verbs must refuse -- with 403, because
+      // this IS an authorisation failure, unlike the 409 an expired window gets.
+      const xPatch = await proCtx.request.patch(`${BASE}${ROUTE}`, {
+        data: { ...body(), id: row.id, official_crc_score: 911 },
+      });
+      check(
+        'the new class owner may not PATCH a row they did not enter',
+        xPatch.status() === 403,
+        `HTTP ${xPatch.status()}`
+      );
+      const xDel = await proCtx.request.delete(`${BASE}${ROUTE}`, { data: { id: row.id } });
+      check(
+        'the new class owner may not DELETE a row they did not enter',
+        xDel.status() === 403,
+        `HTTP ${xDel.status()}`
+      );
+      const { data: after } = await db
+        .from('official_scores')
+        .select('id, official_crc_score')
+        .eq('id', row.id)
+        .maybeSingle();
+      check(
+        'and that row is untouched too',
+        after?.official_crc_score === 944,
+        `score=${after?.official_crc_score ?? 'GONE'}`
+      );
+
+      // GET is deliberately NOT expected to refuse here. The new owner may READ
+      // the class's official scores -- that is what inheriting a class means.
+      // Asserting a 403 on the read would be asserting a bug.
+      const xGet = await proCtx.request.get(q(b1.id));
+      check(
+        'but the new class owner CAN still read the history',
+        xGet.status() === 200,
+        `HTTP ${xGet.status()}`
+      );
+
+      await db.from('classes').update({ teacher_id: teacherB.id }).eq('id', b1.id);
+      transferred = false;
+    }
+
+    // ─── 9. The enterer may correct, which closes the matrix ──────────────────
+    //
+    // The last control. Every 403 above is only meaningful if the person who
+    // SHOULD be able to change the row can.
+    if (row?.id) {
+      console.log('\n9. The entering teacher may correct their own row');
+      const ownPatch = await coreCtx.request.patch(`${BASE}${ROUTE}`, {
+        data: { ...body(), id: row.id, official_crc_score: 946 },
+      });
+      check('the enterer may PATCH inside the window', ownPatch.status() === 200, `HTTP ${ownPatch.status()}`);
+      const { data: fixed } = await db
+        .from('official_scores')
+        .select('official_crc_score, corrected_at')
+        .eq('id', row.id)
+        .maybeSingle();
+      check('the correction is stored', fixed?.official_crc_score === 946, String(fixed?.official_crc_score));
+      check('and corrected_at is stamped', fixed?.corrected_at != null, String(fixed?.corrected_at));
+
+      const ownDel = await coreCtx.request.delete(`${BASE}${ROUTE}`, { data: { id: row.id } });
+      check('the enterer may DELETE inside the window', ownDel.status() === 200, `HTTP ${ownDel.status()}`);
+      const { data: gone } = await db
+        .from('official_scores')
+        .select('id')
+        .eq('id', row.id)
+        .maybeSingle();
+      check('and the row is actually gone', gone === null, gone ? 'still present' : 'removed');
+      if (gone === null) createdIds.length = 0;
+    }
+  } catch (err) {
+    // A thrown error must not be reported as a pass. The hard stop above throws
+    // deliberately; anything else thrown here is a genuine failure too.
+    console.error(`\n${err.message}`);
+    failures = failures || 1;
   } finally {
     await browser.close();
     stop();
+
+    // Leave the database as it was found, whatever happened above. The teardown
+    // script deletes the fixture outright, but a half-transferred class between
+    // this run and that one would make the NEXT run's section 7 pass for the
+    // wrong reason.
+    if (transferred) {
+      await db.from('classes').update({ teacher_id: teacherB.id }).eq('id', b1.id);
+    }
+    if (createdIds.length > 0) {
+      await db.from('official_scores').delete().in('id', createdIds);
+    }
+    if (aggregateIdsBefore) {
+      const { data: now } = await db.from('official_score_aggregate').select('id');
+      const mine = (now ?? []).map((r) => r.id).filter((id) => !aggregateIdsBefore.has(id));
+      if (mine.length > 0) await db.from('official_score_aggregate').delete().in('id', mine);
+    }
   }
 
   console.log(
