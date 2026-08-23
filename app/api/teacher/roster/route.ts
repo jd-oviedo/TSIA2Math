@@ -89,10 +89,20 @@ export async function GET(req: Request) {
   //
   // Ordered by test_date so a student who sat the test twice shows the later
   // sitting, not whichever row was typed in last.
-  const officialByStudent = new Map<string, { official_crc_score: number; test_date: string }>();
+  const officialByStudent = new Map<
+    string,
+    {
+      official_crc_score: number;
+      test_date: string;
+      level_qr: string | null;
+      level_ar: string | null;
+      level_gr: string | null;
+      level_pr: string | null;
+    }
+  >();
   const { data: official, error: officialError } = await admin
     .from("official_scores")
-    .select("student_id, official_crc_score, test_date")
+    .select("student_id, official_crc_score, test_date, level_qr, level_ar, level_gr, level_pr")
     .eq("class_id", classId)
     .in("student_id", studentIds)
     .order("test_date", { ascending: false });
@@ -132,8 +142,19 @@ export async function GET(req: Request) {
             completed_at: latest.created_at,
           }
         : null,
+      // Levels ride along for the class strand grid, which counts students per
+      // level from the most recent official row per student. The roster CELL
+      // renders only the score and the date; the grid is a different reader of
+      // the same row and a second endpoint for four columns would be worse.
       official_score: officialRow
-        ? { official_crc_score: officialRow.official_crc_score, test_date: officialRow.test_date }
+        ? {
+            official_crc_score: officialRow.official_crc_score,
+            test_date: officialRow.test_date,
+            level_qr: officialRow.level_qr,
+            level_ar: officialRow.level_ar,
+            level_gr: officialRow.level_gr,
+            level_pr: officialRow.level_pr,
+          }
         : null,
     };
   });
