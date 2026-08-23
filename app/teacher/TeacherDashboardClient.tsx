@@ -251,7 +251,13 @@ function Brand({ collapsed }: { collapsed: boolean }) {
 
 // `tour` is the data-tour key TeacherTour targets. Only the two items the tour
 // stops at carry one; the rest are undefined and render no attribute.
-const NAV_ITEMS: { label: string; href: string; tour?: string }[] = [
+// `badge` is a quiet suffix rendered beside the label, currently "(Beta)" on
+// Worksheets. It is a SEPARATE field rather than part of the label string, and
+// that is not tidiness: `label` is also the key navIcon switches on, the key the
+// hover state compares, and the React key. Folding "(Beta)" into it would drop
+// the icon through to the generic eye, which is the exact fallthrough the case
+// below was added to prevent.
+const NAV_ITEMS: { label: string; href: string; tour?: string; badge?: string }[] = [
   { label: 'Dashboard', href: '/teacher' },
   { label: 'Misconceptions', href: '/teacher#misconceptions', tour: 'nav-misconceptions' },
   // The worksheet generator has been live and teacher-facing for weeks with no
@@ -260,7 +266,7 @@ const NAV_ITEMS: { label: string; href: string; tour?: string }[] = [
   // requireWorksheetTeacher(), which is requireTeacher() plus the worksheets
   // capability, and every teacher who can see this rail has already cleared the
   // first half.
-  { label: 'Worksheets', href: '/teacher/worksheets' },
+  { label: 'Worksheets', href: '/teacher/worksheets', badge: '(Beta)' },
   { label: 'Students', href: '/teacher#roster' },
   { label: 'Take a practice test', href: '/adaptive-test', tour: 'nav-practice' },
   { label: 'Student view', href: '/dashboard' },
@@ -381,15 +387,22 @@ function SidebarInner({
       <nav style={{ padding: collapsed ? '10px 8px' : '10px 12px', display: 'flex', flexDirection: 'column', gap: 2, overflowX: 'hidden' }}>
         {NAV_ITEMS.map((item) => {
           const isActive = item.label === 'Dashboard';
-          const isHovered = hovered === item.label;
+          // The badge belongs to the NAME, not just to the sighted layout. It is
+          // what a screen reader announces and what the collapsed rail's hover
+          // label shows, because on that rail the tooltip is the only text there
+          // is -- a teacher on the narrow rail would otherwise never learn the
+          // feature is in beta. The hover comparison uses the same string so the
+          // two cannot drift.
+          const fullLabel = item.badge ? `${item.label} ${item.badge}` : item.label;
+          const isHovered = hovered === fullLabel;
           return (
             <a
               key={item.label}
               href={item.href}
               onClick={onNavigate}
-              aria-label={item.label}
+              aria-label={fullLabel}
               data-tour={item.tour}
-              onMouseEnter={showTip(item.label)}
+              onMouseEnter={showTip(fullLabel)}
               onMouseLeave={hideTip}
               style={{
                 display: 'flex', alignItems: 'center', gap: collapsed ? 0 : 11,
@@ -403,8 +416,36 @@ function SidebarInner({
                 transition: 'background 0.12s',
               }}
             >
+              {/* navIcon still takes item.label, never fullLabel. */}
               <span style={{ flex: '0 0 17px', display: 'flex', alignItems: 'center' }}>{navIcon(item.label)}</span>
-              {!collapsed && <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.label}</span>}
+              {!collapsed && (
+                <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {item.label}
+                  {/* A real space, not just the margin below. The margin spaces
+                      it on screen but leaves textContent reading
+                      "Worksheets(Beta)", which is what a copy-paste and any
+                      text-level assertion see. */}
+                  {item.badge && ' '}
+                  {item.badge && (
+                    /* Quieter than the label it follows, so it reads as a note
+                       about the item rather than as part of its name. aria-hidden
+                       because aria-label above already carries it; without that
+                       a screen reader says "Beta" twice. */
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        marginLeft: 1,
+                        fontSize: 10.5,
+                        fontWeight: 500,
+                        letterSpacing: 0.2,
+                        color: isActive ? 'rgba(231,190,123,0.72)' : 'rgba(255,255,255,0.42)',
+                      }}
+                    >
+                      {item.badge}
+                    </span>
+                  )}
+                </span>
+              )}
             </a>
           );
         })}
