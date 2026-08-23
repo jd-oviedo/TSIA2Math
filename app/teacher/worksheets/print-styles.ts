@@ -132,8 +132,7 @@ export const PRINT_CSS = `
   color: var(--ws-ink);
 }
 .ws-part-key .ws-title,
-.ws-part-rationales .ws-title,
-.ws-part-notes .ws-title { font-size: 17pt; }
+.ws-part-rationales .ws-title { font-size: 17pt; }
 
 .ws-meta {
   font-family: ${FONT_MONO};
@@ -153,8 +152,7 @@ export const PRINT_CSS = `
   flex-shrink: 0;
 }
 .ws-part-key .ws-mark,
-.ws-part-rationales .ws-mark,
-.ws-part-notes .ws-mark { height: 32px; }
+.ws-part-rationales .ws-mark { height: 32px; }
 
 /* ── the student's fill-in fields ─────────────────────────────────────────── */
 .ws-fields {
@@ -239,6 +237,25 @@ export const PRINT_CSS = `
    covers a stem that genuinely parsed to blocks. */
 .ws-stem-text { display: inline; }
 .ws-stem-text p { display: inline; margin: 0; }
+
+/* ── figures ──────────────────────────────────────────────────────────────── */
+/*
+   A curriculum figure is a markdown image carrying a base64 SVG, so it arrives
+   inside stem_html at its natural size: 330 to 340px against a 3.4in column,
+   which is 326px. Every figured item was one bad rounding away from pushing its
+   own column sideways, and there was no rule anywhere on these routes to stop
+   it. The lesson pages have shipped the same two declarations under
+   .um-prose img since Unit 2; this is that rule, scoped to the sheet.
+
+   display:block with a small margin because the stem is inline text (see
+   .ws-stem-text): an inline image sits on the text baseline and drags the line
+   box down around it. A figure wants its own line. */
+.ws-stem-text img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 6px 0;
+}
 
 .ws-choices {
   display: grid;
@@ -374,118 +391,6 @@ export const PRINT_CSS = `
   letter-spacing: 0.005em;
   color: var(--ws-muted);
   text-align: center;
-}
-
-/* ── the teacher's per-question notes ─────────────────────────────────────── */
-.ws-key-q {
-  break-inside: avoid;
-  page-break-inside: avoid;
-  margin: 0 0 13px;
-  padding: 11px 13px;
-  border: 1px solid var(--ws-hair);
-  border-radius: 4px;
-}
-.ws-key-head { display: flex; gap: 10px; align-items: baseline; margin-bottom: 6px; }
-.ws-key-body { flex: 1; min-width: 0; }
-.ws-key-topic {
-  font-family: ${FONT_MONO};
-  font-size: 7pt;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--ws-faint);
-  margin: 0 0 3px;
-}
-.ws-key-stem { font-size: 10pt; }
-
-/* The correct letter, as a filled chip. Reads at a glance while marking. */
-.ws-correct {
-  flex-shrink: 0;
-  background: var(--ws-ink);
-  color: #FFFFFF;
-  font-weight: 700;
-  font-size: 10pt;
-  line-height: 1;
-  padding: 5px 9px;
-  border-radius: 4px;
-  letter-spacing: 0.02em;
-  /* Backgrounds are dropped from print unless the teacher ticks "Background
-     graphics", which would turn a black chip into black-on-white text -- still
-     legible, so this is a progressive enhancement rather than a dependency.
-     print-color-adjust asks for it anyway; it is one small mark per question,
-     not a full-bleed area. */
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
-}
-
-/* The worked solution is split out of Part 4 on item boundaries, and the
-   authored horizontal rule between items lands at the end of the body. It is a
-   section separator in the source, not part of the solution, so it prints as a
-   stray line above the misconception panel. Hidden here rather than stripped in
-   the parser: the parser's output is pinned byte-for-byte against
-   splitAnswerKey() by verify_answer_key_parity.mjs, and this is presentation.
-   (No backticks in this file -- the whole stylesheet is one template literal.) */
-.ws-solution hr { display: none; }
-.ws-solution {
-  font-size: 9.5pt;
-  color: var(--ws-ink);
-  margin: 8px 0 0;
-  padding-left: 11px;
-  border-left: 2px solid var(--ws-cream);
-}
-.ws-solution p { margin: 0 0 5px; }
-.ws-solution p:last-child { margin-bottom: 0; }
-
-/* ── the misconception notes ──────────────────────────────────────────────
-   The differentiator, and the reason this block gets real treatment rather
-   than a bulleted list. A teacher marking a stack of these is scanning for
-   "what did the ones who chose C get wrong", so the letter is the anchor and
-   the sentence hangs off it.
-
-   The one place Sunset Orange appears on the sheet, as the 3px marker rule.
-   It is a rule, not a text colour, which is the only role it is allowed. */
-.ws-notes {
-  margin: 9px 0 0;
-  padding: 9px 11px;
-  background: var(--ws-sand);
-  border-left: 3px solid var(--ws-orange);
-  border-radius: 0 4px 4px 0;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
-}
-.ws-notes-label {
-  font-family: ${FONT_MONO};
-  font-size: 7pt;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  color: var(--ws-ink);
-  font-weight: 700;
-  margin: 0 0 6px;
-}
-.ws-note {
-  font-size: 9pt;
-  line-height: 1.42;
-  margin: 0 0 5px;
-  display: flex;
-  gap: 8px;
-  align-items: baseline;
-  color: var(--ws-ink);
-}
-.ws-note:last-child { margin-bottom: 0; }
-.ws-note-letter {
-  flex-shrink: 0;
-  font-family: ${FONT_MONO};
-  font-weight: 700;
-  font-size: 7.5pt;
-  min-width: 5em;
-  color: var(--ws-muted);
-  letter-spacing: 0.03em;
-}
-
-.ws-caveat {
-  margin: 9px 0 0;
-  font-size: 9pt;
-  color: var(--ws-muted);
-  font-style: italic;
 }
 
 /* ── screen-only affordances ──────────────────────────────────────────────── */

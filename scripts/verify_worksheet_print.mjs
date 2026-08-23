@@ -4,6 +4,7 @@
 //   node scripts/seed_export_fixture.mjs
 //   node --import ./scripts/ts-alias-hook.mjs scripts/verify_worksheet_print.mjs
 //   node --import ./scripts/ts-alias-hook.mjs scripts/verify_worksheet_print.mjs --prove
+//   node --import ./scripts/ts-alias-hook.mjs scripts/verify_worksheet_print.mjs --built
 //   node scripts/teardown_export_fixture.mjs
 //
 // NEXT START, NEVER NEXT DEV. The dev server serves a different CSS pipeline and
@@ -42,6 +43,7 @@ const PORT = 5147;
 const BASE = `http://localhost:${PORT}`;
 const OUT = 'scratchpad/worksheet-print';
 const PROVE = process.argv.includes('--prove');
+const BUILT = process.argv.includes('--built');
 
 const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
 const anonClient = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
@@ -184,9 +186,30 @@ const FAULT = `() => {
   }
   document.querySelectorAll('.ws-rat-text strong').forEach((s) => { s.textContent = 'Answer:'; });
 
-  // The differentiator, deleted -- which is precisely the change this PR was
-  // told not to make.
-  document.querySelectorAll('.ws-notes').forEach((el) => el.remove());
+  // A Teacher Notes part, PUT BACK. This fault used to delete .ws-notes,
+  // because the assertion it had to be able to break was "the notes are still
+  // printed". The key now prints two parts and the assertion is that the notes
+  // are gone, so the fault that breaks it is the opposite one: build a notes
+  // part and append it. Inverting the checks without inverting the fault would
+  // have left four assertions that pass on every page in existence.
+  const sheet2 = document.querySelector('.ws-sheet');
+  if (sheet2) {
+    const part = document.createElement('section');
+    part.className = 'ws-part ws-part-notes';
+    const panel = document.createElement('div');
+    panel.className = 'ws-notes';
+    panel.style.setProperty('border-left', '3px solid rgb(240, 163, 62)', 'important');
+    const label = document.createElement('p');
+    label.className = 'ws-notes-label';
+    label.textContent = 'What the wrong answers mean';
+    const line = document.createElement('p');
+    line.className = 'ws-note';
+    line.textContent = 'Chose A: faulted line';
+    panel.appendChild(label);
+    panel.appendChild(line);
+    part.appendChild(panel);
+    sheet2.appendChild(part);
+  }
 
   // An inline !important on the root outranks an author !important stylesheet,
   // so this genuinely defeats the Session A print override.
@@ -377,8 +400,24 @@ async function main() {
   console.log(`\nTopics under test: ${topics.join(', ')}`);
 
   // ─── Build and start ──────────────────────────────────────────────────────
-  console.log('\nBuilding.');
-  execSync('npx next build', { stdio: 'inherit' });
+  //
+  // --built skips the build and serves whatever is already in .next. It exists
+  // for machines that cannot finish a full `next build`: this Codespace has
+  // roughly 2.2GB free with the editor running, the build peaks near 1.6GB, and
+  // it is terminated on memory pressure every time. The escape hatch is
+  //
+  //   npx next build --debug-build-paths "app/teacher/worksheets/**,app/layout.tsx"
+  //   node --import ./scripts/ts-alias-hook.mjs scripts/verify_worksheet_print.mjs --built
+  //
+  // which compiles the five routes under test, typechecks the whole project,
+  // and fits. It is still a PRODUCTION build served by `next start`; it is not
+  // `next dev`, which this file exists to avoid. Default behaviour is unchanged.
+  if (BUILT) {
+    console.log('\n--built: serving the existing .next, no rebuild.');
+  } else {
+    console.log('\nBuilding.');
+    execSync('npx next build', { stdio: 'inherit' });
+  }
   try {
     await fetch(BASE, { signal: AbortSignal.timeout(2000) });
     console.error(`\nSomething is already listening on ${BASE}. That would verify a stale build.`);
@@ -465,15 +504,17 @@ async function main() {
 
     await page.screenshot({ path: `${OUT}/01-questions.png`, fullPage: true });
 
-    // ═══ 2. Key, rationales, notes ═════════════════════════════════════════
-    console.log('\n2. Answer key, rationales, teacher notes');
+    // ═══ 2. Key and rationales ═════════════════════════════════════════════
+    console.log('\n2. Answer key and rationales');
     await page.goto(`${BASE}/teacher/worksheets/${titledId}/key`, { waitUntil: 'networkidle' });
     await page.waitForSelector('.ws-key-grid');
     await page.emulateMedia({ media: 'print' });
     await applyFault(page);
 
     const kParts = await run(page, READ_PARTS);
-    fact('key route renders three parts', kParts.length === 3, `${kParts.length}`);
+    // A check, not a fact: the part count IS the requirement now. Two parts is
+    // two printed pages, which is what dropped the fixture's key from sixteen.
+    check('key route renders exactly two parts', kParts.length === 2, `${kParts.length}`);
     check('page 2 heading is Answer Key', kParts[0].heading === 'Answer Key', kParts[0].heading);
     check('page 3 heading is Rationales', kParts[1].heading === 'Rationales', kParts[1].heading);
     check('page 2 footer carries the KEY marker', /KEY/.test(kParts[0].footRow), kParts[0].footRow);
@@ -506,21 +547,21 @@ async function main() {
       rats.leads.length > 0 && rats.leads.every((t) => /^Choice [A-D?] is correct:$/.test(t)),
       rats.leads[0]);
 
-    // THE DIFFERENTIATOR, and the check that it was not quietly dropped to
-    // match a mockup that has no page for it.
+    // THE TEACHER NOTES ARE GONE, and these four are kept rather than deleted
+    // so that their return is a test failure and not a silent regression. They
+    // asserted the notes were present; they now assert the opposite, against
+    // the same four probes and the same selectors.
     const notes = await run(page, `() => ({
       panels: document.querySelectorAll('.ws-notes').length,
       label: (document.querySelector('.ws-notes-label') || {}).textContent || '',
       lines: document.querySelectorAll('.ws-note').length,
-      rule: document.querySelector('.ws-notes')
-        ? getComputedStyle(document.querySelector('.ws-notes')).borderLeftColor : '',
+      parts: document.querySelectorAll('.ws-part-notes').length,
     })`);
-    check('the misconception notes are still printed', notes.panels > 0, `${notes.panels} panels`);
-    check('the notes keep their heading',
-      notes.label === 'What the wrong answers mean', notes.label);
-    check('the notes carry per-letter lines', notes.lines > 0, `${notes.lines} lines`);
-    check('Sunset Orange is the notes marker rule, as a rule',
-      notes.rule === ORANGE_RGB, notes.rule);
+    check('the misconception notes are not printed', notes.panels === 0, `${notes.panels} panels`);
+    check('the notes heading is gone',
+      notes.label === '', JSON.stringify(notes.label));
+    check('no per-letter note lines remain', notes.lines === 0, `${notes.lines} lines`);
+    check('no Teacher Notes part is emitted', notes.parts === 0, `${notes.parts} parts`);
 
     const katexK = await run(page, READ_KATEX);
     check('all math is black on the key route',
@@ -529,10 +570,9 @@ async function main() {
     fact(`rationale KaTeX spans against live content: ${katexK.inRats}`, true,
       katexK.inRats === 0 ? 'expected zero, see the synthetic check below' : 'content now carries math');
 
-    await page.screenshot({ path: `${OUT}/02-key-rationales-notes.png`, fullPage: true });
-    // Per-part shots as well as the full page. A 8,500px tall screenshot of
-    // four stacked parts is not something a reviewer can read the answer grid
-    // off, and the grid alignment is one of the things being signed off.
+    await page.screenshot({ path: `${OUT}/02-key-rationales.png`, fullPage: true });
+    // Per-part shots as well as the full page: the grid alignment is one of
+    // the things being signed off and it cannot be read off a tall stack.
     for (const [sel, name] of [
       ['.ws-part-key', '02a-key'],
       ['.ws-part-rationales', '02b-rationales'],
