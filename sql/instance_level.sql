@@ -44,6 +44,11 @@
 --
 --
 -- Run this in the Supabase SQL editor. Kept here for version control.
+--
+-- SAFE TO RE-RUN. Every statement below is idempotent: the column add is
+-- guarded by `if not exists`, the constraint by the pg_constraint check around
+-- it, and `comment on` overwrites. Re-running after the uploader has populated
+-- the column changes nothing and drops no data.
 
 
 -- ─── The column ──────────────────────────────────────────────────────────────
@@ -54,9 +59,27 @@ alter table public.curriculum_item_instances
 -- Named, so a violation says which rule was broken rather than naming a
 -- generated constraint. Matches the three labels the course actually uses; a
 -- fourth band would need a content decision and a change here, in that order.
-alter table public.curriculum_item_instances
-  add constraint curriculum_item_instances_level_check
-  check (level is null or level in ('Basic', 'Proficient', 'Advanced'));
+--
+-- GUARDED, because Postgres has no `add constraint if not exists` and the
+-- column add above does have one. Without this block the two halves of this
+-- file disagree about being re-runnable: a second run would no-op on the column
+-- and then abort on 42710, which reads as "this migration is broken" rather
+-- than "this migration has already run". A migration you are afraid to re-run
+-- is one you end up applying by hand instead.
+do $$
+begin
+  if not exists (
+    select 1
+    from pg_constraint
+    where conrelid = 'public.curriculum_item_instances'::regclass
+      and conname = 'curriculum_item_instances_level_check'
+  ) then
+    alter table public.curriculum_item_instances
+      add constraint curriculum_item_instances_level_check
+      check (level is null or level in ('Basic', 'Proficient', 'Advanced'));
+  end if;
+end
+$$;
 
 comment on column public.curriculum_item_instances.level is
   'Difficulty band inherited from the source item, so a rolled question and an '
