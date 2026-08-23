@@ -1,5 +1,6 @@
 import { requireWorksheetTeacher } from '../worksheet-data';
 import { listPickerTopics } from '@/app/lib/worksheet-source';
+import { readWorksheetQuota } from '../../../lib/worksheet-quota';
 import WorksheetBuilder from './WorksheetBuilder';
 
 export const dynamic = 'force-dynamic';
@@ -12,7 +13,19 @@ export const dynamic = 'force-dynamic';
 // curriculum_topics_public and never the base table: there is no answer in this
 // payload to leak, by construction rather than by care.
 export default async function NewWorksheetPage() {
-  await requireWorksheetTeacher('/teacher/worksheets/new');
+  const profile = await requireWorksheetTeacher('/teacher/worksheets/new');
   const topics = await listPickerTopics('tsia2-math');
-  return <WorksheetBuilder topics={topics} />;
+
+  // Read here rather than trusted from the index. This page is directly
+  // reachable by URL, so a teacher who is at their cap must meet the same state
+  // whether they clicked through or typed the address.
+  const quota = await readWorksheetQuota(profile.id, profile.plan);
+
+  return (
+    <WorksheetBuilder
+      topics={topics}
+      quotaUsed={quota.unmetered ? null : quota.used}
+      quotaCap={quota.cap}
+    />
+  );
 }
