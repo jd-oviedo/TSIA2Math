@@ -33,12 +33,6 @@ export default async function WorksheetPrintPage({
   // resolver's select list is the thing that keeps an answer off this route.
   const topicMeta = await loadTopicMeta(worksheet.course_id, worksheet.items);
 
-  const created = new Date(worksheet.created_at).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  });
-
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: PRINT_CSS }} />
@@ -50,7 +44,6 @@ export default async function WorksheetPrintPage({
       <WorksheetSheet
         title={worksheet.title}
         items={items}
-        created={created}
         topicMeta={topicMeta}
       />
     </>
