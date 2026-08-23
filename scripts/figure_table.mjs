@@ -38,7 +38,8 @@ import { textWidthEm } from './figure_shapes.mjs';
 const INK = '#0E0E11';
 const LINE = '#6E9DC8';
 const ACCENT = '#F0A33E';
-const SURFACE = '#F7F3E7';
+// White, matching make_figure.mjs. See the note there.
+const SURFACE = '#FFFFFF';
 const GRID = '#E2DCCA';
 
 const CANVAS_W = 340;

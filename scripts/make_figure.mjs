@@ -38,8 +38,22 @@ import { fileURLToPath } from 'url';
 const INK = '#0E0E11';       // axes, text
 const LINE = '#6E9DC8';      // primary plotted line
 const ACCENT = '#F0A33E';    // points of interest, second line
-const SURFACE = '#F7F3E7';   // figure background
-const GRID = '#E2DCCA';      // gridlines: a tint of SURFACE, the one derived value
+// WHITE, NOT THE CREAM READING SURFACE.
+//
+// A figure is an <img> carrying a base64 SVG, so its background is a <rect>
+// inside the image and no stylesheet on any page can reach it. The worksheet
+// printed cream panels on white paper; there was no worksheet-scoped fix,
+// because there is no worksheet-scoped copy of the figure. The value changes
+// here, which changes it everywhere the same figure renders, including the
+// student lesson pages. Approved on that basis.
+//
+// Every ink measured BETTER on white, not worse: axes and text 17.37 to 19.27,
+// gridlines 1.24 to 1.37, the plotted line 2.59 to 2.87, the accent 1.89 to
+// 2.10. GRID is no longer a tint of SURFACE and is kept at its own value: it
+// has to stay a gridline rather than become a rule, and lightening it toward
+// the new background would have taken it under.
+const SURFACE = '#FFFFFF';   // figure background
+const GRID = '#E2DCCA';      // gridlines
 
 const W = 340, H = 250;
 

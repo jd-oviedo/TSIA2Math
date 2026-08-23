@@ -27,7 +27,9 @@ export const PALETTE = {
   INK: '#0E0E11',      // outlines, text
   LINE: '#6E9DC8',     // primary figure fill/stroke accent
   ACCENT: '#F0A33E',   // points of interest, second figure of a pair
-  SURFACE: '#F7F3E7',  // background
+  // White, matching make_figure.mjs. See the note there for why the figure
+  // background cannot be themed per surface and had to change at the source.
+  SURFACE: '#FFFFFF',  // background
   GRID: '#E2DCCA',     // gridlines
 };
 const { INK, LINE, ACCENT, SURFACE, GRID } = PALETTE;
