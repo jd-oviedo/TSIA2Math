@@ -254,6 +254,13 @@ function Brand({ collapsed }: { collapsed: boolean }) {
 const NAV_ITEMS: { label: string; href: string; tour?: string }[] = [
   { label: 'Dashboard', href: '/teacher' },
   { label: 'Misconceptions', href: '/teacher#misconceptions', tour: 'nav-misconceptions' },
+  // The worksheet generator has been live and teacher-facing for weeks with no
+  // way to reach it from the dashboard: /teacher/worksheets was findable only by
+  // typing the URL. Nothing new is exposed by linking it -- the page runs
+  // requireWorksheetTeacher(), which is requireTeacher() plus the worksheets
+  // capability, and every teacher who can see this rail has already cleared the
+  // first half.
+  { label: 'Worksheets', href: '/teacher/worksheets' },
   { label: 'Students', href: '/teacher#roster' },
   { label: 'Take a practice test', href: '/adaptive-test', tour: 'nav-practice' },
   { label: 'Student view', href: '/dashboard' },
@@ -265,6 +272,12 @@ function navIcon(label: string) {
       return <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="2" y="2" width="5.5" height="5.5" rx="1.2" /><rect x="10.5" y="2" width="5.5" height="5.5" rx="1.2" /><rect x="2" y="10.5" width="5.5" height="5.5" rx="1.2" /><rect x="10.5" y="10.5" width="5.5" height="5.5" rx="1.2" /></svg>;
     case 'Misconceptions':
       return <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M9 2.4 L16.2 15 H1.8 Z" /><line x1="9" y1="7" x2="9" y2="10.5" /><circle cx="9" cy="12.8" r="0.5" fill="currentColor" stroke="none" /></svg>;
+    // A sheet with a folded corner and three ruled lines. Its own case rather
+    // than the default: navIcon switches on the LABEL, so an item with no case
+    // silently takes the generic eye below and looks like a mistake nobody
+    // notices, because the eye is a perfectly plausible icon.
+    case 'Worksheets':
+      return <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 1.8 h6.2 L14.4 6 v10.2 H4 Z" /><path d="M10.2 1.8 V6 h4.2" /><line x1="6.4" y1="9.4" x2="12" y2="9.4" /><line x1="6.4" y1="12.2" x2="12" y2="12.2" /></svg>;
     case 'Students':
       return <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="6.3" cy="6" r="2.4" /><circle cx="12.4" cy="6.6" r="2" /><path d="M2 15 a4.3 4.3 0 0 1 8.6 0" /><path d="M10.4 14.6 a3.6 3.6 0 0 1 5.6 0" /></svg>;
     case 'Take a practice test':
