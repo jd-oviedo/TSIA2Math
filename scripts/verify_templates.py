@@ -396,6 +396,52 @@ def check_stem_braces(tpl):
         )
 
 
+def check_choice_prefix(tpl):
+    """`choice_prefix` is literal LaTeX that goes inside the choice's dollars.
+
+    THE PROBLEM IT SOLVES. house_latex emitted `$<expression>$` and nothing
+    else, so a topic whose choices read `$x = 5$` could not be templated at all:
+    the anchor compares byte for byte against the source choice, and every one
+    of the four would drift. AR.2.1 is ten practice items of "Solve for $x$",
+    which is the shape most of the algebra strand takes.
+
+    The two rules here are the two ways the field breaks its own span.
+
+    NO DOLLAR SIGN. The prefix is emitted between the opening `$` and the
+    expression, so a `$` inside it closes the span early and the rest of the
+    choice becomes prose. latex_problems would then report an unbalanced
+    delimiter somewhere downstream, which names the symptom and not the cause.
+
+    NO PLACEHOLDER. `{a}` in a prefix is not substituted -- render() is only
+    ever called on the stem -- so it would ship literal braces to a student. It
+    is also the wrong tool: a prefix that changed with the parameters would be
+    part of the answer, and the answer is what choice_formulas is for.
+
+    A suffix is deliberately NOT the same field turned around. `$26$ cm` puts
+    its unit OUTSIDE the span, so it is a change to how a choice is assembled
+    rather than to what goes inside it, and no template needs it yet.
+    """
+    prefix = tpl.get("choice_prefix")
+    if prefix is None:
+        return
+    if not isinstance(prefix, str):
+        raise TemplateError(f"choice_prefix must be a string, got {type(prefix).__name__}")
+    if "$" in prefix:
+        raise TemplateError(
+            f"choice_prefix {prefix!r} carries a $, which closes the choice's "
+            f"own math span. The prefix goes inside the dollars: write "
+            f"'x = ', not '$x = $'."
+        )
+    left = re.findall(r"\{(\w+)\}", prefix)
+    if left:
+        raise TemplateError(
+            f"choice_prefix {prefix!r} carries placeholders {left}, which are "
+            f"never substituted -- render() runs on the stem only, so these "
+            f"would reach a student as literal braces. A prefix that varies "
+            f"with the parameters belongs in choice_formulas."
+        )
+
+
 def ev(tpl, formula, vals):
     # xreplace, not subs: every key here is a plain Symbol and every value an
     # integer, which is exactly the structural case xreplace handles, and it
@@ -417,8 +463,15 @@ def same(a, b):
     return expand(a - b) == 0
 
 
-def house_latex(expr, variables):
+def house_latex(expr, variables, prefix=""):
     """Render a polynomial in house style, with the term order pinned here.
+
+    `prefix` is the template's `choice_prefix`, and it goes INSIDE the dollars:
+    a topic whose items ask "Solve for x" writes its choices as `$x = 5$`, not
+    as `x = $5$`, and the anchor is byte for byte. It is emitted literally --
+    no placeholder substitution, deliberately. A prefix that varied per
+    parameter set would be part of the answer, and the answer is what
+    choice_formulas is for. See check_choice_prefix.
 
     SymPy's printer orders by its own internal sort, which writes `-x + 1` as
     `1 - x`. That is the same expression and the wrong string, and since the
@@ -430,7 +483,7 @@ def house_latex(expr, variables):
     e = expand(expr)
     syms = [Symbol(v) for v in variables]
     if not syms:
-        return f"${latex(e)}$"
+        return f"${prefix}{latex(e)}$"
     try:
         terms = Poly(e, *syms).terms()
     except Exception as exc:
@@ -476,7 +529,21 @@ def house_latex(expr, variables):
             out += ("-" if c < 0 else "") + piece
         else:
             out += (" - " if c < 0 else " + ") + piece
-    return f"${out or '0'}$"
+    return f"${prefix}{out or '0'}$"
+
+
+def choice_latex(tpl, expr):
+    """house_latex for a CHOICE of this template, prefix included.
+
+    Every place a choice is printed goes through here rather than calling
+    house_latex directly. A `choice_prefix` applied at four call sites and
+    missed at a fifth is an anchor that passes while a failure message shows a
+    different string than the one it is talking about.
+
+    The stem is not a choice and never gets the prefix: it comes out of
+    render() from stem_template.
+    """
+    return house_latex(expr, tpl["variables"], tpl.get("choice_prefix", ""))
 
 
 def render_instance(tpl, vals):
@@ -493,7 +560,7 @@ def render_instance(tpl, vals):
     return {
         "stem": render(tpl, tpl["stem_template"], vals),
         "choices": {
-            L: house_latex(ev(tpl, tpl["choice_formulas"][L], vals), tpl["variables"])
+            L: choice_latex(tpl, ev(tpl, tpl["choice_formulas"][L], vals))
             for L in LETTERS
         },
         "correct_answer": tpl["correct_answer"],
@@ -782,7 +849,7 @@ def anchor_failures(tpl, src):
         if L not in tpl["choice_formulas"]:
             fails.append(("schema", {}, f"no formula for choice {L}"))
             continue
-        shown = house_latex(ev(tpl, tpl["choice_formulas"][L], can), tpl["variables"])
+        shown = choice_latex(tpl, ev(tpl, tpl["choice_formulas"][L], can))
         if shown != src["choices"].get(L):
             fails.append(("anchor", can,
                           f"choice {L} drifted: got {shown} want {src['choices'].get(L)}"))
@@ -812,6 +879,7 @@ def verify(tpl, src, n_random, seed):
     """Return (failures, stats). A failure names the parameter set that broke it."""
     check_formula_vocabulary(tpl)
     check_stem_braces(tpl)
+    check_choice_prefix(tpl)
     check_misconception_slugs(tpl)
     fails = list(anchor_failures(tpl, src))
     correct_letter = src["correct_answer"]
@@ -847,14 +915,14 @@ def verify(tpl, src, n_random, seed):
         for p, r in itertools.combinations(LETTERS, 2):
             if same(choices[p], choices[r]):
                 fails.append(("distinct", vals,
-                              f"{p} and {r} are both {house_latex(choices[p], tpl['variables'])}"))
+                              f"{p} and {r} are both {choice_latex(tpl, choices[p])}"))
 
         rederived = ev(tpl, tpl["unsimplified_expression"], vals)
         if not same(rederived, choices[correct_letter]):
             fails.append((
                 "correct", vals,
-                f"question simplifies to {house_latex(rederived, tpl['variables'])}, "
-                f"stored answer is {house_latex(choices[correct_letter], tpl['variables'])}",
+                f"question simplifies to {choice_latex(tpl, rederived)}, "
+                f"stored answer is {choice_latex(tpl, choices[correct_letter])}",
             ))
 
         for L, procedure in tpl["choice_derivations"].items():
@@ -862,8 +930,8 @@ def verify(tpl, src, n_random, seed):
             if not same(got, choices[L]):
                 fails.append((
                     "derivation", vals,
-                    f"{L}: misconception produces {house_latex(got, tpl['variables'])}, "
-                    f"stored distractor is {house_latex(choices[L], tpl['variables'])}",
+                    f"{L}: misconception produces {choice_latex(tpl, got)}, "
+                    f"stored distractor is {choice_latex(tpl, choices[L])}",
                 ))
 
         stem = render(tpl, tpl["stem_template"], vals)
@@ -874,7 +942,7 @@ def verify(tpl, src, n_random, seed):
                 f"{stem[:60]}...",
             ))
 
-        shown = [house_latex(choices[L], tpl["variables"]) for L in LETTERS]
+        shown = [choice_latex(tpl, choices[L]) for L in LETTERS]
         for problem in latex_problems(stem + " " + " ".join(shown)):
             fails.append(("latex", vals, problem))
 
@@ -963,7 +1031,7 @@ def show(tpl, src, count, seed):
         for L in LETTERS:
             mark = "*" if L == src["correct_answer"] else " "
             slug = (src["misconception_tag"] or {}).get(L, "")
-            shown = house_latex(ev(tpl, tpl["choice_formulas"][L], vals), tpl["variables"])
+            shown = choice_latex(tpl, ev(tpl, tpl["choice_formulas"][L], vals))
             print(f"    {mark}{L}: {shown:<24} {slug}")
 
 

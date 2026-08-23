@@ -44,6 +44,7 @@ Every field below is read by `scripts/verify_templates.py`. Nothing is decorativ
 | `correct_answer` | str | The correct letter. Restated from the source item and anchored against it. |
 | `misconception_tag` | object | The whole letter to slug map, restated from the source item and anchored byte for byte. |
 | `stem_template` | str | The stem with `{a}`-style placeholders. Rendered by `render` (:352). |
+| `choice_prefix` | str | Optional. Literal LaTeX emitted inside every choice's `$...$`, before the expression, so a "solve for x" item can anchor against `$x = 5$`. Not substituted and never applied to the stem. Checked by `check_choice_prefix`. |
 | `unsimplified_expression` | str | The question's raw structure before simplifying. SymPy re-derives the answer from this instead of trusting what was typed. |
 | `choice_formulas` | object | All four letters. The correct letter repeats the answer. |
 | `choice_derivations` | object | The three wrong letters, as **unsimplified procedures** mirroring the `distractor_logic` sentence step by step. |
@@ -127,31 +128,55 @@ House style, checked on rendered output by `latex_problems` (:367): no `$$`, no
 unbalanced `$`, no em or en dashes, no slash fractions, no coefficient written as
 `1x`.
 
-Three traps the checker does **not** catch. All three are confirmed by
-measurement, not inferred.
+Three traps used to be listed here as things the checker could not catch. All
+three were confirmed by measurement rather than inferred, and the hardening
+branch has since closed all three. They are kept, because each one still
+constrains what you can author -- what changed is that the harness now tells you
+instead of shipping it.
 
 **`render()` cannot handle LaTeX braces in a stem.** Placeholders are `{name}`
 and any leftover `{\w+}` raises. So `\frac{x}{2}`, `x^{2}`, `\sqrt{9}` and
 subscripts are all unusable inside `stem_template`. `\frac{a}{2}` is worse than
-unusable: `{a}` is substituted as a parameter first, silently. QR.3.5 has no
-`\frac` in any stem, which is why this has never surfaced. **If the item's stem
-needs a brace, the item cannot be templated as the schema stands.** Note the
+unusable: `{a}` is substituted as a parameter first, silently. **If the item's
+stem needs a brace, the item cannot be templated as the schema stands** -- which
+rules out AR.2.1 practice 7 and three of QR.1.1's four mini-quiz stems. Note the
 tension: `latex_problems` tells you house style is `\frac{}{}` while `render`
-makes it impossible in a stem.
+makes it impossible in a stem. `check_stem_braces` now rejects the stem up front
+and names the collision, instead of leaving you to read "unresolved placeholders
+['x', '2']" as a harness bug.
 
-**`house_latex` truncates non-integer coefficients, silently, whenever
-`variables` is non-empty.** The `Poly` branch calls `int(coeff)`. Measured:
-`13/2` renders `$6$`, `-1/2` renders `$0$`, `3*x/2` renders `$x$`, and
-`x/2 + 5/2` renders `$2$` with the x term gone entirely. When `variables` is
-empty the function returns early through plain `latex()` and rationals render
-correctly. **So: never declare a variable on a template whose formulas can
-produce a fractional coefficient.** Nothing in the harness catches this today.
+**`house_latex` truncates non-integer coefficients whenever `variables` is
+non-empty.** The `Poly` branch called `int(coeff)`. Measured: `13/2` rendered
+`$6$`, `-1/2` rendered `$0$`, `3*x/2` rendered `$x$`, and `x/2 + 5/2` rendered
+`$2$` with the x term gone entirely. When `variables` is empty the function
+returns early through plain `latex()` and rationals render correctly. **So:
+never declare a variable on a template whose formulas can produce a fractional
+coefficient** -- but it now raises rather than truncating, so this is a failed
+run and not a wrong answer choice in front of a student.
 
-**Choices render as `$<expression>$` and nothing else.** `house_latex` cannot
-emit a prefix or a suffix. A choice of `$x = 5$` or `$26$ cm` is out of reach,
-because the anchor compares byte for byte against the source choice. A topic
-whose choices carry units or an `x =` prefix needs a schema addition before it
-can be templated at all.
+**Choices used to render as `$<expression>$` and nothing else,** which put a
+choice of `$x = 5$` out of reach and with it most of the algebra strand: the
+anchor compares byte for byte against the source choice, so all four letters
+drifted. `choice_prefix` is that schema addition. It emits literal LaTeX inside
+the span, before the expression, and is not substituted -- a prefix that varied
+with the parameters would be part of the answer, and the answer is what
+`choice_formulas` is for.
+
+A **suffix** is still out of reach, and is a different problem rather than the
+same field turned around: `$26$ cm` puts its unit outside the span, so it is a
+change to how a choice is assembled, not to what goes inside it. No live
+template needs one.
+
+Three more the checker **does** catch, all new enough to be worth knowing
+before you author rather than after. A rendered stem is capped at 240
+characters. No answer letter may carry more than 40% of the pool weighted by
+parameter sets -- which is not the 3/4/4/3 item tally `check_topic.py` pins,
+because a template's correct letter cannot move across its instances. And every
+rendered stem and choice is KaTeX-parsed, on the materialised instances rather
+than on the source, because `check_katex_render.mjs` renders
+`stripAuthoringBlocks(source)` and therefore cannot see a template at all: an
+unknown macro in a `stem_template` is invisible on disk and red on every
+instance.
 
 ## Calculator policy
 
