@@ -25,6 +25,8 @@ Per template, for every parameter set:
   derivations  each distractor's misconception, transcribed as an unsimplified
                procedure, simplifies to the stored distractor formula
   latex        rendered choices obey house LaTeX conventions
+  katex        every rendered stem and choice actually parses as LaTeX, checked
+               by rendering it through the app's own KaTeX pipeline
 
 Plus, once per template, the anchor: the canonical parameters reproduce the
 source item byte for byte. What "the source item" means differs by pool, and
@@ -56,6 +58,7 @@ import json
 import pathlib
 import random
 import re
+import subprocess
 import sys
 
 from sympy import Poly, Symbol, expand, latex, sympify
@@ -64,18 +67,77 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 TEMPLATES = REPO / "data" / "templates"
 ITEMS = REPO / "data" / "items"
 CURRICULUM = REPO / "curriculum" / "source" / "tsia2-math"
+TAXONOMY = REPO / "data" / "docs" / "misconception_taxonomy.json"
 
 sys.path.insert(0, str(REPO / "curriculum" / "migrations"))
 
 LETTERS = ("A", "B", "C", "D")
+
+# The KaTeX worker, and the loader that lets plain Node resolve this repo's
+# TypeScript. Both are paths rather than a shell string so this works from any
+# working directory.
+KATEX_WORKER = REPO / "scripts" / "check_instance_katex.mjs"
+TS_ALIAS_HOOK = REPO / "scripts" / "ts-alias-hook.mjs"
 
 # Enumerate the whole grid rather than sampling when it is this small or less.
 # Exhaustive beats random whenever it is affordable: a collision that exists for
 # exactly one parameter set is precisely the kind a sample of 200 can miss.
 FULL_ENUMERATION_CAP = 200_000
 
+# Longest stem a rolled instance may render, in characters.
+#
+# A worksheet prints a stem as one line block above its four choices. Past a
+# certain width that block wraps into the next question's space and the sheet
+# stops reading as a numbered list, which is a layout failure a teacher notices
+# and an author never does, because nothing in the authoring loop prints.
+#
+# 240 rather than a rounder number: the live pool's longest rendered stem is
+# practice 7 at 200 characters, and the shortest is 34. 240 clears the real
+# maximum with room for a longer rolled value without permitting a runaway. It
+# is a ceiling on the *rendered* stem, not the template, because substituting a
+# two-digit parameter for a one-digit one moves the count.
+STEM_MAX_CHARS = 240
+
+# Ceiling on any one answer letter's share of the rolled pool.
+#
+# check_topic.py already pins the STATIC 14 to the house tally A:3 B:4 C:4 D:3.
+# That says nothing about what a student meets, because a template's
+# correct_answer is a single scalar copied onto every one of its instances: the
+# letter cannot move across rolls, so the pool's real distribution is the tally
+# weighted by each template's parameter-set count, not by its item count.
+#
+# QR.3.5 happens to pass on both readings (A 27.0, B 17.8, C 29.6, D 25.6 by
+# instance), but it passes by accident. practice 3 alone carries 4,672 sets and
+# mini_quiz 4 carries 5,007, so two templates sharing a letter can dominate the
+# pool while the item tally still reads 3/4/4/3.
+#
+# 40 rather than 25 plus a tolerance: this is a guessing-strategy guard, not a
+# balance target. A student who learns that C is usually right is the failure
+# being prevented, and that needs a lopsided pool, not a slightly uneven one.
+ANSWER_SHARE_MAX = 0.40
+
 IDENT = re.compile(r"[A-Za-z_]\w*")
 MATH_SPAN = re.compile(r"\$[^$]*\$")
+
+# Raw Unicode math symbols, and the LaTeX each one should have been written as.
+#
+# These render. That is the problem: a stem carrying a literal U+2264 looks
+# correct in a terminal and in a diff, sits inside a math span KaTeX is happy to
+# typeset around, and reaches a worksheet in whatever glyph the print font
+# happens to have for it -- which is not the glyph the rest of the mathematics is
+# set in, and on some printers is not a glyph at all.
+#
+# Kept as a mapping rather than a character class so the failure can name the
+# replacement. An author who is told "raw Unicode" goes looking; an author who is
+# told "use \le" fixes it.
+UNICODE_MATH = {
+    "\u2264": r"\le", "\u2265": r"\ge", "\u2260": r"\ne", "\u2248": r"\approx",
+    "\u00d7": r"\times", "\u00f7": r"\div", "\u2212": "-", "\u00b1": r"\pm",
+    "\u221a": r"\sqrt{}", "\u221e": r"\infty", "\u03c0": r"\pi",
+    "\u22c5": r"\cdot", "\u00b7": r"\cdot", "\u2192": r"\to",
+    "\u00b0": r"^\circ", "\u00b2": "^2", "\u00b3": "^3",
+    "\u00bd": r"\frac{1}{2}", "\u00bc": r"\frac{1}{4}", "\u00be": r"\frac{3}{4}",
+}
 
 # The slug whose presence *is* sign-error coverage. In the bank this was a
 # hand-set boolean somebody had to remember; here it is derivable from the
@@ -234,6 +296,152 @@ def check_formula_vocabulary(tpl):
                 raise TemplateError(f"unknown name {name!r} in formula {f!r}")
 
 
+# LaTeX constructs whose braces collide with the placeholder syntax.
+#
+# house_latex emits `x^{2}` itself, so this is a rule about stem_template only
+# and never about a choice.
+STEM_BRACE_LATEX = re.compile(r"\\frac|\\sqrt|\^\{|_\{")
+
+
+@functools.lru_cache(maxsize=1)
+def _taxonomy():
+    """The approved slugs and the retired ones, read once.
+
+    Read-only. This file is generated by scripts/build_misconception_taxonomy.py
+    and carries `do_not_edit`; a slug that is missing here is authored there, not
+    added on the way past.
+    """
+    tax = json.loads(TAXONOMY.read_text())
+    approved = {s["slug"] for s in tax["slugs"]}
+    retired = {r["slug"]: r.get("superseded_by") or []
+               for r in tax.get("retired_slugs", [])}
+    return approved, retired
+
+
+def check_misconception_slugs(tpl):
+    """Every slug a template names must already exist in the taxonomy.
+
+    The rule this enforces is "never invent a tag". The slug is the
+    misconception's identity: it is what GUMU keys its retry loop on and what the
+    teacher dashboard aggregates, so a slug that exists only inside one template
+    is a misconception nothing can ever report on.
+
+    THE ANCHOR CANNOT DO THIS. anchor_failures requires the template's
+    misconception_tag to equal the source item's, which catches a slug being
+    moved between letters but passes cleanly when both sides name the same
+    invented string. Measured before this check existed: setting template and
+    source together to `totally_made_up_slug` produced zero failures.
+
+    Nor does check_topic.py cover it, for a subtler reason worth writing down.
+    That gate scans the `Student makes misconception: <slug>` PROSE in
+    distractor_logic, while a template anchors the `misconception_tag` BLOCK.
+    Nothing cross-checks those two against each other, so a slug present in the
+    block and absent from the prose is invisible to both. This check reads the
+    block, which is the side the template and the runtime actually use.
+
+    Deliberately existence only, not the layer-aware topic scoping in
+    check_topic.py. That rule is subtle -- cross_cutting slugs are allowed on any
+    topic, topic_specific ones only where they are assigned -- and its own
+    comments record it having been got wrong once already. A second copy here
+    would be a second thing to keep in step. check_topic.py stays the one place
+    that decides scope; this decides existence.
+    """
+    approved, retired = _taxonomy()
+    tags = tpl.get("misconception_tag") or {}
+    for letter, slug in sorted(tags.items()):
+        if slug in retired:
+            supersedes = ", ".join(retired[slug]) or "nothing"
+            raise TemplateError(
+                f"choice {letter} names retired slug {slug!r}, superseded by "
+                f"{supersedes}. Use the superseding slug."
+            )
+        if slug not in approved:
+            raise TemplateError(
+                f"choice {letter} names {slug!r}, which is not in the "
+                f"misconception taxonomy ({len(approved)} approved slugs). "
+                f"Never invent a slug: a misconception that exists only in one "
+                f"template is one the dashboard and GUMU can never report on. "
+                f"Add it in scripts/build_misconception_taxonomy.py and "
+                f"regenerate, or use an existing slug."
+            )
+
+
+def check_stem_braces(tpl):
+    """A stem may not carry LaTeX braces, because render() owns that syntax.
+
+    render() substitutes `{name}` placeholders and then rejects anything of the
+    form `{...}` still standing, so every one of these is already broken. What it
+    is not is *legible*: the failure surfaces as
+
+        unresolved placeholders ['x', '2'] in 'Solve $\\frac{x}{2} + 3 = 7$'
+
+    which reads as a bug in the harness rather than as a rule about stems. Worse
+    is the case that does not raise at all: in `\\frac{a}{2}`, if `a` is a
+    parameter then `{a}` is substituted first and the stem silently becomes
+    `\\frac{3}{2}` with the denominator left as a stray placeholder.
+
+    So the guard fires here, before render() is ever called, and names the
+    collision. Measured consequence for the target topics: AR.2.1 practice 7
+    (`\\frac{x}{2} + 3 = 7`) and three of QR.1.1's four mini-quiz stems cannot be
+    templated as the schema stands.
+    """
+    found = STEM_BRACE_LATEX.findall(tpl["stem_template"])
+    if found:
+        raise TemplateError(
+            f"stem_template carries LaTeX braces ({', '.join(sorted(set(found)))}), "
+            f"which collide with the {{name}} placeholder syntax render() owns: "
+            f"{{x}} and {{2}} in \\frac{{x}}{{2}} are read as placeholders, not as "
+            f"LaTeX. A stem cannot carry \\frac, \\sqrt, ^{{ or _{{ as the schema "
+            f"stands. Rewrite the stem without them, or leave the item static."
+        )
+
+
+def check_choice_prefix(tpl):
+    """`choice_prefix` is literal LaTeX that goes inside the choice's dollars.
+
+    THE PROBLEM IT SOLVES. house_latex emitted `$<expression>$` and nothing
+    else, so a topic whose choices read `$x = 5$` could not be templated at all:
+    the anchor compares byte for byte against the source choice, and every one
+    of the four would drift. AR.2.1 is ten practice items of "Solve for $x$",
+    which is the shape most of the algebra strand takes.
+
+    The two rules here are the two ways the field breaks its own span.
+
+    NO DOLLAR SIGN. The prefix is emitted between the opening `$` and the
+    expression, so a `$` inside it closes the span early and the rest of the
+    choice becomes prose. latex_problems would then report an unbalanced
+    delimiter somewhere downstream, which names the symptom and not the cause.
+
+    NO PLACEHOLDER. `{a}` in a prefix is not substituted -- render() is only
+    ever called on the stem -- so it would ship literal braces to a student. It
+    is also the wrong tool: a prefix that changed with the parameters would be
+    part of the answer, and the answer is what choice_formulas is for.
+
+    A suffix is deliberately NOT the same field turned around. `$26$ cm` puts
+    its unit OUTSIDE the span, so it is a change to how a choice is assembled
+    rather than to what goes inside it, and no template needs it yet.
+    """
+    prefix = tpl.get("choice_prefix")
+    if prefix is None:
+        return
+    if not isinstance(prefix, str):
+        raise TemplateError(f"choice_prefix must be a string, got {type(prefix).__name__}")
+    if "$" in prefix:
+        raise TemplateError(
+            f"choice_prefix {prefix!r} carries a $, which closes the choice's "
+            f"own math span. The prefix goes inside the dollars: write "
+            f"'x = ', not '$x = $'."
+        )
+    left = re.findall(r"\{(\w+)\}", prefix)
+    if left:
+        raise TemplateError(
+            f"choice_prefix {prefix!r} carries placeholders {left}, which are "
+            f"never substituted -- render() runs on the stem only, so these "
+            f"would reach a student as literal braces. A prefix that varies "
+            f"with the parameters belongs in choice_formulas."
+        )
+
+
 def ev(tpl, formula, vals):
     # xreplace, not subs: every key here is a plain Symbol and every value an
     # integer, which is exactly the structural case xreplace handles, and it
@@ -255,8 +463,15 @@ def same(a, b):
     return expand(a - b) == 0
 
 
-def house_latex(expr, variables):
+def house_latex(expr, variables, prefix=""):
     """Render a polynomial in house style, with the term order pinned here.
+
+    `prefix` is the template's `choice_prefix`, and it goes INSIDE the dollars:
+    a topic whose items ask "Solve for x" writes its choices as `$x = 5$`, not
+    as `x = $5$`, and the anchor is byte for byte. It is emitted literally --
+    no placeholder substitution, deliberately. A prefix that varied per
+    parameter set would be part of the answer, and the answer is what
+    choice_formulas is for. See check_choice_prefix.
 
     SymPy's printer orders by its own internal sort, which writes `-x + 1` as
     `1 - x`. That is the same expression and the wrong string, and since the
@@ -268,7 +483,7 @@ def house_latex(expr, variables):
     e = expand(expr)
     syms = [Symbol(v) for v in variables]
     if not syms:
-        return f"${latex(e)}$"
+        return f"${prefix}{latex(e)}$"
     try:
         terms = Poly(e, *syms).terms()
     except Exception as exc:
@@ -277,6 +492,30 @@ def house_latex(expr, variables):
     terms = sorted(terms, key=lambda t: (-sum(t[0]), tuple(-d for d in t[0])))
     out = ""
     for mono, coeff in terms:
+        # RAISE, DO NOT TRUNCATE. `int(coeff)` on its own puts a silently wrong
+        # answer choice in front of a student, and it is the one defect found on
+        # this branch that no other check can see: same() compares expressions,
+        # so the mathematics all passes while the printed string is wrong.
+        #
+        # Measured before this guard existed, with a variable declared:
+        #
+        #   13/2       ->  $6$        -1/2       ->  $0$
+        #   3*x/2      ->  $x$        x/2 + 5/2  ->  $2$
+        #
+        # The last is the worst: int(1/2) is 0, the `c == 0` skip below then
+        # drops the term, and the x vanishes from the choice entirely.
+        #
+        # Only this branch truncates. With `variables` empty the function has
+        # already returned through plain latex(), which renders a rational
+        # correctly -- that is why a topic whose answers are numbers rather than
+        # expressions (PR.2.1's $7.5$) is unaffected, and must stay that way.
+        if coeff != int(coeff):
+            raise TemplateError(
+                f"non-integer coefficient {coeff} in {e}, which house_latex "
+                f"would truncate to {int(coeff)}. Declare no variables on a "
+                f"template whose formulas can produce a fractional coefficient, "
+                f"or constrain the range so they cannot."
+            )
         c = int(coeff)
         if c == 0:
             continue
@@ -290,7 +529,21 @@ def house_latex(expr, variables):
             out += ("-" if c < 0 else "") + piece
         else:
             out += (" - " if c < 0 else " + ") + piece
-    return f"${out or '0'}$"
+    return f"${prefix}{out or '0'}$"
+
+
+def choice_latex(tpl, expr):
+    """house_latex for a CHOICE of this template, prefix included.
+
+    Every place a choice is printed goes through here rather than calling
+    house_latex directly. A `choice_prefix` applied at four call sites and
+    missed at a fifth is an anchor that passes while a failure message shows a
+    different string than the one it is talking about.
+
+    The stem is not a choice and never gets the prefix: it comes out of
+    render() from stem_template.
+    """
+    return house_latex(expr, tpl["variables"], tpl.get("choice_prefix", ""))
 
 
 def render_instance(tpl, vals):
@@ -307,7 +560,7 @@ def render_instance(tpl, vals):
     return {
         "stem": render(tpl, tpl["stem_template"], vals),
         "choices": {
-            L: house_latex(ev(tpl, tpl["choice_formulas"][L], vals), tpl["variables"])
+            L: choice_latex(tpl, ev(tpl, tpl["choice_formulas"][L], vals))
             for L in LETTERS
         },
         "correct_answer": tpl["correct_answer"],
@@ -377,7 +630,66 @@ def latex_problems(text):
         bad.append("slash fraction (house style is \\frac{}{})")
     if re.search(r"\b1[a-z]\b", text):
         bad.append("coefficient written as 1x")
+    for glyph, latex_form in UNICODE_MATH.items():
+        if glyph in text:
+            bad.append(f"raw Unicode math symbol {glyph!r}, write it as {latex_form}")
     return bad
+
+
+def katex_red_renders(texts):
+    """Which of these rendered strings KaTeX cannot parse. Node, not Python.
+
+    latex_problems() next door is a set of house conventions checked with
+    regexes. This is the other half: whether the LaTeX is LaTeX at all. Only a
+    real KaTeX run can answer that, so this shells out to the app's own renderer
+    rather than growing a Python approximation of a TeX parser.
+
+    WHAT IT CATCHES THAT NOTHING ELSE DOES. rehype-katex runs with
+    throwOnError false, so an unknown macro does not throw, does not add an
+    error class and does not fail any build. It typesets the literal source text
+    in red inside an ordinary katex span -- `$3x \\cupp 5$` reaches a student as
+    red "\\cupp" on the page. scripts/check_katex_render.mjs already walks the
+    curriculum source for exactly that, and CANNOT see this pool: it renders
+    `stripAuthoringBlocks(source)`, and a template is authored inside one of the
+    fenced json blocks that call strips. A bad macro in a stem_template is
+    therefore invisible on disk and present on every one of its instances.
+
+    Run on the MATERIALISED strings -- the rendered stem and the four rendered
+    choices of each parameter set -- and not on the template, because the
+    template is not what anybody reads. house_latex composes the choice strings
+    itself, so a construct that parses in a formula and not in its printed form
+    only exists once it has been printed.
+
+    Deduplicated by the caller, which is worth roughly 3.6x on this pool
+    (130,930 rendered strings, 36,351 of them distinct) and costs nothing:
+    rendering the same string twice cannot give two answers.
+
+    FAIL CLOSED. Any failure to run -- no node, a broken worker, controls that
+    stopped detecting -- raises rather than returning "no problems found". A
+    check that silently reports clean when it did not run is the failure this
+    whole harness is written against.
+    """
+    if not texts:
+        return []
+    cmd = ["node", "--import", str(TS_ALIAS_HOOK), str(KATEX_WORKER)]
+    try:
+        proc = subprocess.run(
+            cmd, input=json.dumps({"strings": texts}),
+            capture_output=True, text=True, cwd=REPO,
+        )
+    except FileNotFoundError as exc:
+        raise SystemExit(
+            f"cannot run the KaTeX check: {exc}. It renders through the app's "
+            f"own pipeline, so node and an installed node_modules are required "
+            f"to verify a template pool."
+        ) from exc
+    if proc.returncode != 0:
+        raise SystemExit(
+            f"the KaTeX check exited {proc.returncode} and reported nothing, "
+            f"so no template pool can be called verified on this run:\n"
+            f"{proc.stderr.strip()}"
+        )
+    return json.loads(proc.stdout)["red"]
 
 
 def normalized_stem(tpl, text):
@@ -455,7 +767,7 @@ def load_curriculum(topic, unit):
         "mini_quiz": _template_blocks(key_split[1], uc.QUIZ_KEY_RE) if len(key_split) > 1 else {},
     }
 
-    pairs, untemplated = [], []
+    pairs, untemplated, held_static = [], [], []
     for name in ("practice", "mini_quiz"):
         for item in sections[name]["items"]:
             n = item["item_number"]
@@ -464,7 +776,20 @@ def load_curriculum(topic, unit):
                 continue
             raw = blocks[name].get(n)
             if raw is None:
+                # NO template key at all. Still a hard failure, and the
+                # distinction from "static" below is the whole point: an item
+                # nobody has considered must not ship by omission. Declaring an
+                # item static is a decision with a name on it; leaving the key
+                # out is an oversight, and the two are indistinguishable unless
+                # one of them is written down.
                 untemplated.append(key)
+                continue
+            if raw == "static":
+                # Deliberately held out of the template pool. The item keeps its
+                # authored numbers and is served from curriculum_topics, beside
+                # the rolled instances of its templated siblings. See D1 and
+                # getItemsForTopic in app/lib/worksheet-source.ts.
+                held_static.append(key)
                 continue
             tpl = dict(raw)
             tpl["key"] = key
@@ -478,9 +803,16 @@ def load_curriculum(topic, unit):
                 "choices": item["choices"],
                 "correct_answer": item["correct_answer"],
                 "misconception_tag": item["misconception_tag"],
+                # D2. Carried so upload_templates.py can stamp it onto every
+                # instance -- see sql/instance_level.sql. Deliberately NOT part
+                # of source_fingerprint, which anchors what a student reads and
+                # is compared against a hash the TypeScript runtime recomputes;
+                # adding a field there would report all 14 live templates as
+                # stale and disable rolling until every row was re-uploaded.
+                "level": item["level"],
             }
             pairs.append((tpl, src))
-    return pairs, untemplated
+    return pairs, untemplated, held_static
 
 
 def load_bank(topic):
@@ -537,7 +869,7 @@ def anchor_failures(tpl, src):
         if L not in tpl["choice_formulas"]:
             fails.append(("schema", {}, f"no formula for choice {L}"))
             continue
-        shown = house_latex(ev(tpl, tpl["choice_formulas"][L], can), tpl["variables"])
+        shown = choice_latex(tpl, ev(tpl, tpl["choice_formulas"][L], can))
         if shown != src["choices"].get(L):
             fails.append(("anchor", can,
                           f"choice {L} drifted: got {shown} want {src['choices'].get(L)}"))
@@ -566,6 +898,9 @@ def anchor_failures(tpl, src):
 def verify(tpl, src, n_random, seed):
     """Return (failures, stats). A failure names the parameter set that broke it."""
     check_formula_vocabulary(tpl)
+    check_stem_braces(tpl)
+    check_choice_prefix(tpl)
+    check_misconception_slugs(tpl)
     fails = list(anchor_failures(tpl, src))
     correct_letter = src["correct_answer"]
 
@@ -588,20 +923,26 @@ def verify(tpl, src, n_random, seed):
     if not sets:
         fails.append(("schema", {}, "no parameter set satisfies the constraints"))
 
+    # Every distinct rendered string this template produces, against the first
+    # parameter set that produced it. Batched to one KaTeX run per template
+    # below rather than one per string: the worker costs about a third of a
+    # second to start and roughly half a millisecond a string after that.
+    rendered = {}
+
     for vals in sets:
         choices = {L: ev(tpl, tpl["choice_formulas"][L], vals) for L in LETTERS}
 
         for p, r in itertools.combinations(LETTERS, 2):
             if same(choices[p], choices[r]):
                 fails.append(("distinct", vals,
-                              f"{p} and {r} are both {house_latex(choices[p], tpl['variables'])}"))
+                              f"{p} and {r} are both {choice_latex(tpl, choices[p])}"))
 
         rederived = ev(tpl, tpl["unsimplified_expression"], vals)
         if not same(rederived, choices[correct_letter]):
             fails.append((
                 "correct", vals,
-                f"question simplifies to {house_latex(rederived, tpl['variables'])}, "
-                f"stored answer is {house_latex(choices[correct_letter], tpl['variables'])}",
+                f"question simplifies to {choice_latex(tpl, rederived)}, "
+                f"stored answer is {choice_latex(tpl, choices[correct_letter])}",
             ))
 
         for L, procedure in tpl["choice_derivations"].items():
@@ -609,14 +950,34 @@ def verify(tpl, src, n_random, seed):
             if not same(got, choices[L]):
                 fails.append((
                     "derivation", vals,
-                    f"{L}: misconception produces {house_latex(got, tpl['variables'])}, "
-                    f"stored distractor is {house_latex(choices[L], tpl['variables'])}",
+                    f"{L}: misconception produces {choice_latex(tpl, got)}, "
+                    f"stored distractor is {choice_latex(tpl, choices[L])}",
                 ))
 
-        text = render(tpl, tpl["stem_template"], vals)
-        text += " " + " ".join(house_latex(choices[L], tpl["variables"]) for L in LETTERS)
-        for problem in latex_problems(text):
+        stem = render(tpl, tpl["stem_template"], vals)
+        if len(stem) > STEM_MAX_CHARS:
+            fails.append((
+                "length", vals,
+                f"stem renders {len(stem)} characters, ceiling is {STEM_MAX_CHARS}: "
+                f"{stem[:60]}...",
+            ))
+
+        shown = [choice_latex(tpl, choices[L]) for L in LETTERS]
+        for problem in latex_problems(stem + " " + " ".join(shown)):
             fails.append(("latex", vals, problem))
+
+        for one in (stem, *shown):
+            rendered.setdefault(one, vals)
+
+    texts = list(rendered)
+    for hit in katex_red_renders(texts):
+        one = texts[hit["index"]]
+        bad = ", ".join(hit["spans"]) or one
+        fails.append((
+            "katex", rendered[one],
+            f"KaTeX cannot parse {bad}, so this renders to a student as literal "
+            f"red source text rather than mathematics: {one}",
+        ))
 
     return fails, {"mode": mode, "sets": len(sets)}
 
@@ -690,7 +1051,7 @@ def show(tpl, src, count, seed):
         for L in LETTERS:
             mark = "*" if L == src["correct_answer"] else " "
             slug = (src["misconception_tag"] or {}).get(L, "")
-            shown = house_latex(ev(tpl, tpl["choice_formulas"][L], vals), tpl["variables"])
+            shown = choice_latex(tpl, ev(tpl, tpl["choice_formulas"][L], vals))
             print(f"    {mark}{L}: {shown:<24} {slug}")
 
 
@@ -712,11 +1073,12 @@ def main():
     args = ap.parse_args()
 
     if args.source == "curriculum":
-        pairs, pending = load_curriculum(args.topic, args.unit)
+        pairs, pending, held_static = load_curriculum(args.topic, args.unit)
         pending_label = "no template yet"
         pending_summary = "gradeable items have no template"
     else:
         pairs, pending = load_bank(args.topic)
+        held_static = []
         pending_label = "no source item with this id"
         pending_summary = "templates have no source item"
 
@@ -729,6 +1091,10 @@ def main():
 
     print(f"Verifying {len(pairs)} {args.source} templates for {args.topic}\n")
     results, total_sets = {}, 0
+    # (correct letter, parameter sets) per template, for the pool-level
+    # distribution below. Keyed on the template rather than summed as it goes so
+    # a lopsided pool can name the templates responsible.
+    weights = {}
 
     for tpl, src in pairs:
         key = tpl["key"]
@@ -740,6 +1106,7 @@ def main():
             continue
 
         total_sets += stats["sets"]
+        weights[key] = (src["correct_answer"], stats["sets"])
         results[key] = not fails
         status = "pass" if not fails else f"FAIL ({len(fails)})"
         print(f"  {key:<14} {status:<12} {stats['sets']:>6} sets, {stats['mode']}")
@@ -749,6 +1116,8 @@ def main():
         if len(fails) > 10:
             print(f"      ... and {len(fails) - 10} more")
 
+    for key in held_static:
+        print(f"  {key:<14} static       held out of the template pool by request")
     for key in pending:
         print(f"  {key:<14} MISSING      {pending_label}")
 
@@ -774,6 +1143,26 @@ def main():
     elif pairs:
         print("  sign-error coverage: MISSING -- no passing template carries it")
         ok = False
+
+    # Pool rule: no answer letter may dominate what a student actually meets.
+    # Weighted by parameter sets, which is the count that reaches a student, not
+    # by item count, which is all check_topic.py can see.
+    if weights:
+        by_letter = {L: 0 for L in LETTERS}
+        for letter, n in weights.values():
+            if letter in by_letter:
+                by_letter[letter] += n
+        pool = sum(by_letter.values())
+        shares = ", ".join(f"{L} {100 * by_letter[L] / pool:.1f}%" for L in LETTERS)
+        print(f"  answer distribution ({pool} instances): {shares}")
+        for L in LETTERS:
+            share = by_letter[L] / pool
+            if share > ANSWER_SHARE_MAX:
+                carriers = sorted(k for k, (letter, _) in weights.items() if letter == L)
+                print(f"  answer distribution: FAIL {L} is {100 * share:.1f}% of the "
+                      f"pool, ceiling is {100 * ANSWER_SHARE_MAX:.0f}%. "
+                      f"Carried by: {', '.join(carriers)}")
+                ok = False
 
     if args.source == "curriculum" and pairs:
         xfails, xwarns, skipped = cross_pool(pairs, args.topic, args.samples, args.seed)

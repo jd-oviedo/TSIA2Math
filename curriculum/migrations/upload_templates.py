@@ -95,8 +95,15 @@ def gate(topic, unit, samples, seed):
 
 
 def build_records(course_id, topic, unit, samples, seed):
-    """One record per templated item, plus the pool's parameter-set stats."""
-    pairs, pending = vt.load_curriculum(topic, unit)
+    """One record per templated item, and the items deliberately held static.
+
+    Returns both because a partial pool is now legal and the operator has to be
+    able to see it. `held_static` is not something this script writes -- those
+    items keep their authored numbers in curriculum_topics, put there by
+    upload_curriculum.py -- but "11 of 14 templated" and "14 of 14 templated"
+    are different uploads, and only one of them should look like a whole pool.
+    """
+    pairs, pending, held_static = vt.load_curriculum(topic, unit)
 
     # gate() has already failed on this, since a gradeable item with no template
     # is a harness failure and not a note. Repeated because build_records is the
@@ -165,7 +172,7 @@ def build_records(course_id, topic, unit, samples, seed):
 
         records.append(record)
 
-    return records
+    return records, held_static
 
 
 def param_hash(vals):
@@ -208,7 +215,9 @@ def build_instances(topic, unit, samples, seed):
       anchor, re-asserted on the exact row that will serve first exposure rather
       than on a value computed during verification and thrown away.
     """
-    pairs, pending = vt.load_curriculum(topic, unit)
+    # held-static items are build_records' business, not this function's: they
+    # produce no instance rows by definition.
+    pairs, pending, _held_static = vt.load_curriculum(topic, unit)
     if pending:
         raise SystemExit(f"{len(pending)} gradeable item(s) have no template: "
                          f"{', '.join(pending)}")
@@ -269,6 +278,16 @@ def build_instances(topic, unit, samples, seed):
                 "choices": choices,
                 "correct_answer": inst["correct_answer"],
                 "is_canonical": is_canonical,
+
+                # D2. Inherited from the source item, not derived from anything
+                # about the roll: difficulty is a property of the question, and
+                # a template's range is authored to keep every instance at the
+                # same band -- see "Difficulty lives in the range, not in the
+                # instance" in data/templates/README.md. Null on every mini_quiz
+                # instance because no quiz item in the course carries a band.
+                # Written on every row, including the update path, so re-running
+                # after sql/instance_level.sql backfills the pool.
+                "level": src["level"],
                 # Explicitly cleared, not omitted. A parameter set that comes
                 # back into range after a narrowing has to be rollable again, and
                 # leaving the key out would preserve the retirement instead.
@@ -287,7 +306,7 @@ def build_instances(topic, unit, samples, seed):
     return out
 
 
-def show(records, instances):
+def show(records, instances, held_static):
     print(f"\n{len(records)} template(s) to upload:\n")
     print(f"  {'item':<16} {'sets':>7} {'rows':>7}  {'mode':<11} {'fingerprint':<12} fields")
     mismatched = []
@@ -311,6 +330,18 @@ def show(records, instances):
     print(f"\n  {total_sets} parameter sets across the pool")
     print(f"  {total_rows} instance row(s) to upload into {INSTANCE_TABLE}")
 
+    # A MIXED POOL, SAID OUT LOUD. These items are not being uploaded here and
+    # are not missing either -- they keep their authored numbers in
+    # curriculum_topics and are served beside the rolled instances of their
+    # siblings. Printed because "11 templates" reads like a whole pool otherwise,
+    # and the difference between a held-out item and a forgotten one is the
+    # difference this whole rule turns on.
+    if held_static:
+        print(f"\n  {len(held_static)} item(s) held static by request, served "
+              f"from curriculum_topics rather than rolled:")
+        for key in held_static:
+            print(f"    {key}")
+
     if mismatched:
         raise SystemExit(f"\n✗ instance count != verified_param_sets for {mismatched}")
 
@@ -323,7 +354,8 @@ def show(records, instances):
         rows = instances[(r["section"], r["item_number"])]
         sample = next((row for row in rows if not row["is_canonical"]), rows[0])
         params = ", ".join(f"{k}={v}" for k, v in sorted(sample["parameters"].items()))
-        print(f"    {r['section']} {r['item_number']}  ({params})")
+        band = sample["level"] or "no band"
+        print(f"    {r['section']} {r['item_number']}  ({params})  [{band}]")
         print(f"      stem   {sample['stem']}")
         for letter in vt.LETTERS:
             mark = " *" if letter == sample["correct_answer"] else "  "
@@ -350,9 +382,10 @@ def main():
         print(f"\n✗ verify_templates.py exited {code} -- nothing uploaded")
         return 1
 
-    records = build_records(args.course, args.topic, args.unit, args.samples, args.seed)
+    records, held_static = build_records(
+        args.course, args.topic, args.unit, args.samples, args.seed)
     instances = build_instances(args.topic, args.unit, args.samples, args.seed)
-    show(records, instances)
+    show(records, instances, held_static)
 
     if args.dry_run:
         total_rows = sum(len(v) for v in instances.values())

@@ -898,7 +898,7 @@ Step 5: Check with $g = 1$. Plan costs $42$, promotion takes off $13$, final cos
     "a - c >= 3": "Realism, not mathematics: keeps the final per-gigabyte rate meaningfully positive.",
     "b - d >= 10": "Keeps the promotion smaller than the base fee, so the stem still describes something a phone company would do."
   },
-  "range_notes": "b rolls in steps of 5 so the base fee never lands on $37. The pool's clearest carrier of the mandatory sign-error coverage: D differs from C by the sign on d alone, structurally, so the error is on the page at every roll rather than only where it happened to land.",
+  "range_notes": "b rolls in steps of 5 so the base fee never lands on 37 dollars. The pool's clearest carrier of the mandatory sign-error coverage: D differs from C by the sign on d alone, structurally, so the error is on the page at every roll rather than only where it happened to land.",
   "canonical_parameters": {
     "a": 12,
     "b": 30,

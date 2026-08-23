@@ -6,6 +6,8 @@ import {
   allocate,
   seededShuffle,
   selectItems,
+  itemKey,
+  mergePools,
   type Candidate,
   type Level,
 } from '../app/lib/worksheet-select.ts';
@@ -193,9 +195,9 @@ test('static and rolled candidates are drawn identically', () => {
   assert.equal(result.refs.filter((r) => r.source === 'static').length, 7);
 });
 
-test('a rolled item cannot satisfy a difficulty filter', () => {
-  // curriculum_item_instances has no level column, so every rolled candidate
-  // carries null and is filtered out. Reported, not silently dropped.
+test('an UNLEVELLED rolled item cannot satisfy a difficulty filter', () => {
+  // The pre-D2 shape, and still the shape of a mini_quiz instance: nothing to
+  // filter on, so the draw comes back empty. Reported, not silently dropped.
   const rolled: Candidate[] = Array.from({ length: 14 }, (_, i) => ({
     ref: { source: 'instance' as const, topic_id: 'QR.3.5', instance_id: `uuid-${i}` },
     level: null,
@@ -209,4 +211,162 @@ test('a rolled item cannot satisfy a difficulty filter', () => {
   assert.equal(result.refs.length, 0);
   assert.equal(result.shortfall, 10);
   assert.ok(result.notes.length > 0, 'an empty draw must explain itself');
+});
+
+// ─── D2: a rolled instance carries its source item's band ───────────────────
+
+test('a levelled rolled item is filtered exactly like an authored one', () => {
+  // D2. curriculum_item_instances gained a level column inheriting the source
+  // item's band, so the filter stops being able to tell the backends apart.
+  // Before it, this same request returned nothing from a templated topic.
+  const bands: Level[] = ['Basic', 'Proficient', 'Advanced'];
+  const rolled: Candidate[] = Array.from({ length: 9 }, (_, i) => ({
+    ref: { source: 'instance' as const, topic_id: 'QR.3.5', instance_id: `uuid-${i}` },
+    level: bands[i % 3],
+    section: 'practice' as const,
+  }));
+
+  const result = selectItems([{ topic_id: 'QR.3.5', candidates: rolled }], {
+    count: 3,
+    levels: ['Basic'],
+    seed: 5,
+  });
+  assert.equal(result.refs.length, 3);
+  assert.equal(result.shortfall, 0);
+  assert.ok(result.refs.every((r) => r.source === 'instance'));
+});
+
+test('the two backends are indistinguishable to the difficulty filter', () => {
+  // The same nine bands, half rolled and half authored, drawn under the same
+  // filter. Whether a question came from a template must not change whether a
+  // teacher can ask for it by difficulty.
+  const bands: Level[] = ['Basic', 'Proficient', 'Advanced'];
+  const rolledPool: Candidate[] = bands.map((level, i) => ({
+    ref: { source: 'instance' as const, topic_id: 'QR.3.5', instance_id: `uuid-${i}` },
+    level,
+    section: 'practice' as const,
+  }));
+  const authoredPool: Candidate[] = bands.map((level, i) => practice(i + 1, level));
+
+  const draw = (candidates: Candidate[]) =>
+    selectItems([{ topic_id: 'QR.3.5', candidates }], {
+      count: 3,
+      levels: ['Proficient'],
+      seed: 11,
+    });
+
+  const fromRolled = draw(rolledPool);
+  const fromAuthored = draw(authoredPool);
+
+  assert.equal(fromRolled.refs.length, 1);
+  assert.equal(fromAuthored.refs.length, 1);
+  assert.equal(fromRolled.shortfall, fromAuthored.shortfall);
+  assert.deepEqual(fromRolled.notes, fromAuthored.notes);
+});
+
+test('a mini_quiz instance still has no band, and the note still says so', () => {
+  // D2 does not invent a level where the content has none. The band headings
+  // live in Part 2, so all 388 quiz items in the course are null and so is
+  // every instance rolled from one.
+  const quizInstances: Candidate[] = Array.from({ length: 4 }, (_, i) => ({
+    ref: { source: 'instance' as const, topic_id: 'QR.3.5', instance_id: `quiz-${i}` },
+    level: null,
+    section: 'mini_quiz' as const,
+  }));
+  const practiceInstances: Candidate[] = Array.from({ length: 10 }, (_, i) => ({
+    ref: { source: 'instance' as const, topic_id: 'QR.3.5', instance_id: `prac-${i}` },
+    level: 'Basic' as const,
+    section: 'practice' as const,
+  }));
+
+  const result = selectItems(
+    [{ topic_id: 'QR.3.5', candidates: [...practiceInstances, ...quizInstances] }],
+    { count: 14, levels: ['Basic'], seed: 7 },
+  );
+  assert.equal(result.refs.length, 10, 'the 10 practice instances, not the 14');
+  assert.equal(result.shortfall, 4);
+  assert.ok(
+    result.notes.some((n) => n.includes('Mini-quiz')),
+    'the four set aside must be explained',
+  );
+});
+
+// ─── D1: the mixed pool ─────────────────────────────────────────────────────
+//
+// The rule is per ITEM. A templated topic offers rolled instances for the items
+// that rolled and authored numbers for the rest, rather than the all-or-nothing
+// swap it used to be. These are the three shapes that behaviour has to get
+// right, and the third is the one the old branch got wrong.
+
+const instance = (id: string, section: 'practice' | 'mini_quiz' = 'practice'): Candidate => ({
+  ref: { source: 'instance', topic_id: 'AR.2.1', instance_id: id },
+  level: null,
+  section,
+});
+
+test('a partly templated topic offers BOTH backends', () => {
+  // Eleven items rolled, three authored -- the shape the all-or-nothing rule
+  // made impossible, and the reason D1 exists. An author who cannot template
+  // three stems should lose those three to the static bank, not from the sheet.
+  const rolled = Array.from({ length: 11 }, (_, i) => instance(`uuid-${i + 1}`));
+  const authored = Array.from({ length: 14 }, (_, i) => practice(i + 1, 'Basic'));
+  const served = new Set(Array.from({ length: 11 }, (_, i) => itemKey('practice', i + 1)));
+
+  const pool = mergePools(rolled, authored, served);
+
+  assert.equal(pool.length, 14, 'every gradeable item is still offered');
+  assert.equal(pool.filter((c) => c.ref.source === 'instance').length, 11);
+  assert.equal(pool.filter((c) => c.ref.source === 'static').length, 3);
+
+  // And the three that came from the static bank are exactly the untemplated
+  // ones. An item must never be offered twice: same question, different
+  // numbers, printed on one sheet reads as a mistake.
+  const staticNumbers = pool
+    .filter((c) => c.ref.source === 'static')
+    .map((c) => (c.ref.source === 'static' ? c.ref.item_number : 0))
+    .sort((a, b) => a - b);
+  assert.deepEqual(staticNumbers, [12, 13, 14]);
+});
+
+test('a fully templated topic offers no authored duplicates', () => {
+  const rolled = Array.from({ length: 14 }, (_, i) => instance(`uuid-${i + 1}`));
+  const authored = Array.from({ length: 14 }, (_, i) => practice(i + 1, 'Basic'));
+  const served = new Set(Array.from({ length: 14 }, (_, i) => itemKey('practice', i + 1)));
+
+  const pool = mergePools(rolled, authored, served);
+  assert.equal(pool.length, 14);
+  assert.equal(pool.filter((c) => c.ref.source === 'static').length, 0);
+});
+
+test('a template whose instances are all retired falls back to its authored item', () => {
+  // THE CASE KEYING ON "HAS A TEMPLATE" WOULD LOSE. The item has a template
+  // row, so it is not authored-only; the roll produced nothing, so it is not
+  // rolled either. Excluding it from both sides is how a question leaves a
+  // worksheet with nothing reporting a shortfall.
+  const rolled = [instance('uuid-1'), instance('uuid-2')];
+  const authored = Array.from({ length: 3 }, (_, i) => practice(i + 1, 'Basic'));
+  // Item 3 has a template. Every instance of it has been retired, so the roll
+  // answered for 1 and 2 only.
+  const served = new Set([itemKey('practice', 1), itemKey('practice', 2)]);
+
+  const pool = mergePools(rolled, authored, served);
+  assert.equal(pool.length, 3, 'the retired item is served from the static bank');
+  const fallback = pool.filter((c) => c.ref.source === 'static');
+  assert.equal(fallback.length, 1);
+  assert.equal(fallback[0].ref.source === 'static' && fallback[0].ref.item_number, 3);
+});
+
+test('sections do not collide: practice 1 and mini_quiz 1 are different items', () => {
+  // itemKey exists for this. Keyed on the number alone, rolling practice 1
+  // would suppress the authored mini_quiz 1.
+  const rolled = [instance('uuid-p1', 'practice')];
+  const authored = [practice(1, 'Basic'), quiz(1)];
+  const served = new Set([itemKey('practice', 1)]);
+
+  const pool = mergePools(rolled, authored, served);
+  assert.equal(pool.length, 2);
+  assert.ok(
+    pool.some((c) => c.ref.source === 'static' && c.ref.section === 'mini_quiz'),
+    'the quiz item is untouched by a practice roll',
+  );
 });
