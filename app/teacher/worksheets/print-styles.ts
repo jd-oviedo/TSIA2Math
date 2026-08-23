@@ -291,7 +291,11 @@ export const PRINT_CSS = `
   font-family: ${FONT_MONO};
   font-size: 8.5pt;
   color: var(--ws-muted);
-  min-width: 1.7em;
+  /* Wide enough for the longest number the table allows, so every letter in a
+     column starts at the same x. At 1.7em the numerals 1-9 fit and 10-20 do
+     not, which pushed the letter right on three rows out of four and put ten
+     distinct x positions in a five-column grid. Measured, not guessed. */
+  min-width: 2.6em;
   text-align: right;
   flex-shrink: 0;
   font-variant-numeric: tabular-nums;
