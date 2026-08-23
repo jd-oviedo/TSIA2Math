@@ -767,7 +767,7 @@ def load_curriculum(topic, unit):
         "mini_quiz": _template_blocks(key_split[1], uc.QUIZ_KEY_RE) if len(key_split) > 1 else {},
     }
 
-    pairs, untemplated = [], []
+    pairs, untemplated, held_static = [], [], []
     for name in ("practice", "mini_quiz"):
         for item in sections[name]["items"]:
             n = item["item_number"]
@@ -776,7 +776,20 @@ def load_curriculum(topic, unit):
                 continue
             raw = blocks[name].get(n)
             if raw is None:
+                # NO template key at all. Still a hard failure, and the
+                # distinction from "static" below is the whole point: an item
+                # nobody has considered must not ship by omission. Declaring an
+                # item static is a decision with a name on it; leaving the key
+                # out is an oversight, and the two are indistinguishable unless
+                # one of them is written down.
                 untemplated.append(key)
+                continue
+            if raw == "static":
+                # Deliberately held out of the template pool. The item keeps its
+                # authored numbers and is served from curriculum_topics, beside
+                # the rolled instances of its templated siblings. See D1 and
+                # getItemsForTopic in app/lib/worksheet-source.ts.
+                held_static.append(key)
                 continue
             tpl = dict(raw)
             tpl["key"] = key
@@ -792,7 +805,7 @@ def load_curriculum(topic, unit):
                 "misconception_tag": item["misconception_tag"],
             }
             pairs.append((tpl, src))
-    return pairs, untemplated
+    return pairs, untemplated, held_static
 
 
 def load_bank(topic):
@@ -1053,11 +1066,12 @@ def main():
     args = ap.parse_args()
 
     if args.source == "curriculum":
-        pairs, pending = load_curriculum(args.topic, args.unit)
+        pairs, pending, held_static = load_curriculum(args.topic, args.unit)
         pending_label = "no template yet"
         pending_summary = "gradeable items have no template"
     else:
         pairs, pending = load_bank(args.topic)
+        held_static = []
         pending_label = "no source item with this id"
         pending_summary = "templates have no source item"
 
@@ -1095,6 +1109,8 @@ def main():
         if len(fails) > 10:
             print(f"      ... and {len(fails) - 10} more")
 
+    for key in held_static:
+        print(f"  {key:<14} static       held out of the template pool by request")
     for key in pending:
         print(f"  {key:<14} MISSING      {pending_label}")
 

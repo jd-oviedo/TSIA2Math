@@ -95,8 +95,15 @@ def gate(topic, unit, samples, seed):
 
 
 def build_records(course_id, topic, unit, samples, seed):
-    """One record per templated item, plus the pool's parameter-set stats."""
-    pairs, pending = vt.load_curriculum(topic, unit)
+    """One record per templated item, and the items deliberately held static.
+
+    Returns both because a partial pool is now legal and the operator has to be
+    able to see it. `held_static` is not something this script writes -- those
+    items keep their authored numbers in curriculum_topics, put there by
+    upload_curriculum.py -- but "11 of 14 templated" and "14 of 14 templated"
+    are different uploads, and only one of them should look like a whole pool.
+    """
+    pairs, pending, held_static = vt.load_curriculum(topic, unit)
 
     # gate() has already failed on this, since a gradeable item with no template
     # is a harness failure and not a note. Repeated because build_records is the
@@ -165,7 +172,7 @@ def build_records(course_id, topic, unit, samples, seed):
 
         records.append(record)
 
-    return records
+    return records, held_static
 
 
 def param_hash(vals):
@@ -208,7 +215,9 @@ def build_instances(topic, unit, samples, seed):
       anchor, re-asserted on the exact row that will serve first exposure rather
       than on a value computed during verification and thrown away.
     """
-    pairs, pending = vt.load_curriculum(topic, unit)
+    # held-static items are build_records' business, not this function's: they
+    # produce no instance rows by definition.
+    pairs, pending, _held_static = vt.load_curriculum(topic, unit)
     if pending:
         raise SystemExit(f"{len(pending)} gradeable item(s) have no template: "
                          f"{', '.join(pending)}")
@@ -287,7 +296,7 @@ def build_instances(topic, unit, samples, seed):
     return out
 
 
-def show(records, instances):
+def show(records, instances, held_static):
     print(f"\n{len(records)} template(s) to upload:\n")
     print(f"  {'item':<16} {'sets':>7} {'rows':>7}  {'mode':<11} {'fingerprint':<12} fields")
     mismatched = []
@@ -310,6 +319,18 @@ def show(records, instances):
     total_rows = sum(len(v) for v in instances.values())
     print(f"\n  {total_sets} parameter sets across the pool")
     print(f"  {total_rows} instance row(s) to upload into {INSTANCE_TABLE}")
+
+    # A MIXED POOL, SAID OUT LOUD. These items are not being uploaded here and
+    # are not missing either -- they keep their authored numbers in
+    # curriculum_topics and are served beside the rolled instances of their
+    # siblings. Printed because "11 templates" reads like a whole pool otherwise,
+    # and the difference between a held-out item and a forgotten one is the
+    # difference this whole rule turns on.
+    if held_static:
+        print(f"\n  {len(held_static)} item(s) held static by request, served "
+              f"from curriculum_topics rather than rolled:")
+        for key in held_static:
+            print(f"    {key}")
 
     if mismatched:
         raise SystemExit(f"\n✗ instance count != verified_param_sets for {mismatched}")
@@ -350,9 +371,10 @@ def main():
         print(f"\n✗ verify_templates.py exited {code} -- nothing uploaded")
         return 1
 
-    records = build_records(args.course, args.topic, args.unit, args.samples, args.seed)
+    records, held_static = build_records(
+        args.course, args.topic, args.unit, args.samples, args.seed)
     instances = build_instances(args.topic, args.unit, args.samples, args.seed)
-    show(records, instances)
+    show(records, instances, held_static)
 
     if args.dry_run:
         total_rows = sum(len(v) for v in instances.values())

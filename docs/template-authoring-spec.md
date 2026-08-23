@@ -209,45 +209,67 @@ run of the first two in the same session.
 2. `python3 scripts/verify_templates.py --topic <TOPIC> --unit <unit>`
    Anchor, formula vocabulary, pairwise distinctness, correct answer re-derived
    from the question's structure, every derivation against its stored formula,
-   house LaTeX, sign-error coverage, and the cross-pool exposure rule. Must
-   report every item passing and **zero MISSING**.
+   house LaTeX, a KaTeX parse of every rolled string, sign-error coverage, and
+   the cross-pool exposure rule. Must report every item passing and **zero
+   MISSING**. Items listed as `static` are fine; those are the ones you
+   deliberately held out.
 3. `node scripts/check_katex_render.mjs curriculum/source/tsia2-math/<unit>/<TOPIC>.md`
    Detects LaTeX that KaTeX renders as red literal source text without throwing.
-   Note it strips authoring blocks, so it checks the static item and not the
-   rolled instance. Rolled stems are currently unchecked by anything.
+   Note it strips authoring blocks, so it checks the static item and **cannot
+   see a template at all**. The rolled instances are covered instead by step 2,
+   which KaTeX-parses every rendered stem and choice in the pool. Both are
+   needed: this one covers the prose and the worked solutions, that one covers
+   what the template produces.
 4. `python3 curriculum/migrations/upload_templates.py --course tsia2-math --topic <TOPIC> --unit <unit> --dry-run`
    Prints one rendered non-canonical roll per item. **Read all fourteen by eye.**
    This is the only place a human sees what a student will actually be shown.
 5. `npx tsc --noEmit`, then commit and open the PR. Do not upload. Juan uploads.
 
-### The all-or-nothing rule, and it decides scope before you start
+### Mixed pools are legal. Held-out items must SAY they are held out
 
-`verify_templates.py` treats a multiple-choice item with no template as a
-**failure**, not a note (`ok = not pending`, :760), and `upload_templates.py`
-refuses to build records while any item is pending. There is no partial pool.
+This used to be an all-or-nothing rule: any live instance replaced a topic's
+authored pool outright, so a topic where three items resisted templating could
+not ship three static plus eleven rolled -- it shipped eleven, and the other
+three silently left every worksheet. **Either all fourteen template, or the
+topic is not a candidate.** That is no longer true, and the scope decision it
+forced is no longer yours to make up front.
 
-`getItemsForTopic` compounds it (`app/lib/worksheet-source.ts:212`):
+What replaced it is one rule with two halves, and the whole design is in the
+difference between them:
 
-```ts
-  const templates = (await templatesByTopic(courseId)).get(topicId);
-  if (templates && templates.length > 0) {
-    const rolled = await rollFromInstances(topicId, templates, options.seed);
-    if (rolled.length > 0) return rolled;
-  }
-  return drawFromStatic(courseId, topicId);
-```
+| in the fenced block | verifier | what the item is |
+|---|---|---|
+| `"template": { ... }` | verified, rolled | templated |
+| `"template": "static"` | **pass**, listed as `static` | deliberately held out |
+| no `template` key | **hard fail**, listed as `MISSING` | forgotten |
 
-Once a topic has any live instance, its static items stop being offered
-entirely. The static bank is a fallback for an empty roll, not a supplement. So a
-topic where three items resist templating cannot ship three static plus eleven
-rolled. **Either all fourteen template, or the topic is not a candidate.**
-Decide that before authoring, not after.
+An item nobody has considered must not ship by omission. Declaring an item
+static is a decision with a name on it; leaving the key out is an oversight, and
+the two are indistinguishable unless one of them is written down. So the
+harness makes you write it down.
+
+`getItemsForTopic` composes the two backends per item, and the rule itself is
+`mergePools` in `app/lib/worksheet-select.ts`, which is runtime-pure and unit
+tested. A rolled instance is offered for every item that actually rolled; every
+other printable item comes from the static bank. Note "actually rolled" and not
+"has a template row": when every instance of one template has been retired, that
+item's authored version comes back into the pool rather than disappearing from
+both sides.
+
+`upload_templates.py` still refuses to build records while any item is
+`MISSING`, and its dry run now names the held-static items, because "11
+templates" reads like a whole pool otherwise.
+
+So: template what templates cleanly, mark what does not, and say which in the
+PR. A topic is a candidate as soon as *some* of it templates.
 
 ## What a template session PR contains
 
-One topic. The topic markdown with one `template` key added per item and no other
-content change. A verifier run pasted in full showing every item passing, zero
-MISSING, the parameter-set count and whether the mode was exhaustive or sampled.
+One topic. The topic markdown with a `template` key added to **every** gradeable
+item -- a real template, or `"static"` for the ones you are holding out -- and no
+other content change. A verifier run pasted in full showing every item passing,
+zero MISSING, the held-static items named, the parameter-set count and whether
+the mode was exhaustive or sampled.
 The dry-run output showing one rolled instance per item. An explicit statement of
 which difficulty filters the topic loses by being templated. No upload, and no
 SQL.

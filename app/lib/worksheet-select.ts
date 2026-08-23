@@ -152,6 +152,48 @@ export function countTopicPool(practiceItems: unknown): {
   return { available, levelled };
 }
 
+// ─── The mixed pool ─────────────────────────────────────────────────────────
+
+/** How an item is addressed inside one topic. Both halves of the merge use it. */
+export function itemKey(section: Section, itemNumber: number): string {
+  return `${section}/${itemNumber}`;
+}
+
+/**
+ * Rolled instances plus the authored items nothing rolled for. D1.
+ *
+ * PER ITEM, NOT PER TOPIC, and that is the whole change. It used to be
+ * all-or-nothing: any live instance replaced the topic's authored pool
+ * outright, and the static bank was reachable only as a fallback for a roll
+ * that came back completely empty. A topic with three items that resist
+ * templating -- a stem needing `\frac`, a choice carrying a unit -- could not
+ * ship eleven rolled plus three authored. It could only ship eleven, and the
+ * other three silently left every worksheet the topic appeared on.
+ *
+ * `served` is the set of items that actually PRODUCED a rolled candidate, not
+ * the set that has a template row, and the difference is the retirement case.
+ * When every instance of one template has been retired, that item's roll comes
+ * back empty and its authored version is offered instead -- the same fallback
+ * the all-or-nothing branch had, kept, but now per item rather than for the
+ * whole topic. Keying on "has a template" would lose it: the item would be
+ * excluded from the authored side and absent from the rolled side, which is how
+ * a question disappears from a worksheet with nothing reporting a shortfall.
+ *
+ * Pure, and here rather than in worksheet-source.ts, so it can be faulted
+ * directly. The Supabase half decides which items rolled; this decides what
+ * that means, and only the second half has a rule in it.
+ */
+export function mergePools(
+  rolled: readonly Candidate[],
+  authored: readonly Candidate[],
+  served: ReadonlySet<string>,
+): Candidate[] {
+  const kept = authored.filter(
+    (c) => c.ref.source !== 'static' || !served.has(itemKey(c.ref.section, c.ref.item_number)),
+  );
+  return [...rolled, ...kept];
+}
+
 // ─── The difficulty rule ────────────────────────────────────────────────────
 
 /**

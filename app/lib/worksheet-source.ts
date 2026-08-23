@@ -8,6 +8,8 @@ import {
 import {
   countTopicPool,
   isPrintable,
+  itemKey,
+  mergePools,
   type Candidate,
   type ItemRef,
   type Section,
@@ -18,8 +20,12 @@ import {
 // ONE ABSTRACTION, TWO BACKENDS. getItemsForTopic() answers "what can this topic
 // contribute to a worksheet" without the caller learning which store answered:
 //
-//   curriculum_item_instances   if the topic has live rolled instances
-//   curriculum_topics.practice_items   otherwise
+//   curriculum_item_instances   for the items of that topic that are templated
+//   curriculum_topics.practice_items   for every other item
+//
+// Per ITEM, not per topic. A templated topic mixes the two: rolled instances for
+// the items that carry a template, authored numbers for the items deliberately
+// marked "template": "static". See getItemsForTopic.
 //
 // Today exactly one topic of 97 takes the first branch (QR.3.5, 14 templates and
 // 26,186 instances) and 96 take the second. That ratio is the whole reason the
@@ -216,14 +222,29 @@ export async function getItemsForTopic(
   options: { seed: number },
 ): Promise<Candidate[]> {
   const templates = (await templatesByTopic(courseId)).get(topicId);
-  if (templates && templates.length > 0) {
-    const rolled = await rollFromInstances(topicId, templates, options.seed);
-    // Fall through to the static bank if the roll came back empty -- a topic
-    // whose every instance has been retired still has its authored items, and
-    // an empty worksheet is a worse answer than a shallower one.
-    if (rolled.length > 0) return rolled;
-  }
-  return drawFromStatic(courseId, topicId);
+
+  // 96 of 97 topics. Nothing templated, nothing to merge.
+  if (!templates || templates.length === 0) return drawFromStatic(courseId, topicId);
+
+  // MIXED POOL. A templated topic is no longer all-or-nothing.
+  //
+  // The two backends compose per item: a rolled instance where one exists, the
+  // authored numbers everywhere else. The rule itself is mergePools() in
+  // worksheet-select.ts, which is runtime-pure and faulted directly; this
+  // function's job is only to fetch both sides.
+  //
+  // Inferring "authored" as "not rolled" is safe because of what the verifier
+  // refuses to let through: a multiple-choice item with NO template key is a
+  // hard failure there, so the only items that can reach production without a
+  // template row are the ones an author deliberately marked
+  // `"template": "static"`. An item nobody has considered cannot ship by
+  // omission -- see load_curriculum in scripts/verify_templates.py.
+  const [{ candidates: rolled, served }, authored] = await Promise.all([
+    rollFromInstances(topicId, templates, options.seed),
+    drawFromStatic(courseId, topicId),
+  ]);
+
+  return mergePools(rolled, authored, served);
 }
 
 /**
@@ -285,9 +306,14 @@ async function rollFromInstances(
   topicId: string,
   templates: TemplateRow[],
   seed: number,
-): Promise<Candidate[]> {
+): Promise<{ candidates: Candidate[]; served: Set<string> }> {
   const admin = createAdminClient();
   const out: Candidate[] = [];
+  // Which items this roll actually answered for. Not the same as "which items
+  // have a template": a template whose every instance has been retired answers
+  // for nothing, and its authored item has to come back into the pool. See
+  // mergePools.
+  const served = new Set<string>();
 
   await Promise.all(
     templates.map(async (tpl, i) => {
@@ -317,6 +343,7 @@ async function rollFromInstances(
       }
       if (!row) return;
 
+      served.add(itemKey((tpl.section as Section) ?? 'practice', tpl.item_number));
       out.push({
         ref: { source: 'instance', topic_id: topicId, instance_id: row.id as string },
         // curriculum_item_instances has no level column, so a rolled item can
@@ -328,7 +355,7 @@ async function rollFromInstances(
     }),
   );
 
-  return out;
+  return { candidates: out, served };
 }
 
 // ─── Resolving stored references ────────────────────────────────────────────
