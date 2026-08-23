@@ -25,6 +25,8 @@ Per template, for every parameter set:
   derivations  each distractor's misconception, transcribed as an unsimplified
                procedure, simplifies to the stored distractor formula
   latex        rendered choices obey house LaTeX conventions
+  katex        every rendered stem and choice actually parses as LaTeX, checked
+               by rendering it through the app's own KaTeX pipeline
 
 Plus, once per template, the anchor: the canonical parameters reproduce the
 source item byte for byte. What "the source item" means differs by pool, and
@@ -56,6 +58,7 @@ import json
 import pathlib
 import random
 import re
+import subprocess
 import sys
 
 from sympy import Poly, Symbol, expand, latex, sympify
@@ -69,6 +72,12 @@ TAXONOMY = REPO / "data" / "docs" / "misconception_taxonomy.json"
 sys.path.insert(0, str(REPO / "curriculum" / "migrations"))
 
 LETTERS = ("A", "B", "C", "D")
+
+# The KaTeX worker, and the loader that lets plain Node resolve this repo's
+# TypeScript. Both are paths rather than a shell string so this works from any
+# working directory.
+KATEX_WORKER = REPO / "scripts" / "check_instance_katex.mjs"
+TS_ALIAS_HOOK = REPO / "scripts" / "ts-alias-hook.mjs"
 
 # Enumerate the whole grid rather than sampling when it is this small or less.
 # Exhaustive beats random whenever it is affordable: a collision that exists for
@@ -560,6 +569,62 @@ def latex_problems(text):
     return bad
 
 
+def katex_red_renders(texts):
+    """Which of these rendered strings KaTeX cannot parse. Node, not Python.
+
+    latex_problems() next door is a set of house conventions checked with
+    regexes. This is the other half: whether the LaTeX is LaTeX at all. Only a
+    real KaTeX run can answer that, so this shells out to the app's own renderer
+    rather than growing a Python approximation of a TeX parser.
+
+    WHAT IT CATCHES THAT NOTHING ELSE DOES. rehype-katex runs with
+    throwOnError false, so an unknown macro does not throw, does not add an
+    error class and does not fail any build. It typesets the literal source text
+    in red inside an ordinary katex span -- `$3x \\cupp 5$` reaches a student as
+    red "\\cupp" on the page. scripts/check_katex_render.mjs already walks the
+    curriculum source for exactly that, and CANNOT see this pool: it renders
+    `stripAuthoringBlocks(source)`, and a template is authored inside one of the
+    fenced json blocks that call strips. A bad macro in a stem_template is
+    therefore invisible on disk and present on every one of its instances.
+
+    Run on the MATERIALISED strings -- the rendered stem and the four rendered
+    choices of each parameter set -- and not on the template, because the
+    template is not what anybody reads. house_latex composes the choice strings
+    itself, so a construct that parses in a formula and not in its printed form
+    only exists once it has been printed.
+
+    Deduplicated by the caller, which is worth roughly 3.6x on this pool
+    (130,930 rendered strings, 36,351 of them distinct) and costs nothing:
+    rendering the same string twice cannot give two answers.
+
+    FAIL CLOSED. Any failure to run -- no node, a broken worker, controls that
+    stopped detecting -- raises rather than returning "no problems found". A
+    check that silently reports clean when it did not run is the failure this
+    whole harness is written against.
+    """
+    if not texts:
+        return []
+    cmd = ["node", "--import", str(TS_ALIAS_HOOK), str(KATEX_WORKER)]
+    try:
+        proc = subprocess.run(
+            cmd, input=json.dumps({"strings": texts}),
+            capture_output=True, text=True, cwd=REPO,
+        )
+    except FileNotFoundError as exc:
+        raise SystemExit(
+            f"cannot run the KaTeX check: {exc}. It renders through the app's "
+            f"own pipeline, so node and an installed node_modules are required "
+            f"to verify a template pool."
+        ) from exc
+    if proc.returncode != 0:
+        raise SystemExit(
+            f"the KaTeX check exited {proc.returncode} and reported nothing, "
+            f"so no template pool can be called verified on this run:\n"
+            f"{proc.stderr.strip()}"
+        )
+    return json.loads(proc.stdout)["red"]
+
+
 def normalized_stem(tpl, text):
     """A stem with its variable letters neutralised, for cross-pool comparison.
 
@@ -770,6 +835,12 @@ def verify(tpl, src, n_random, seed):
     if not sets:
         fails.append(("schema", {}, "no parameter set satisfies the constraints"))
 
+    # Every distinct rendered string this template produces, against the first
+    # parameter set that produced it. Batched to one KaTeX run per template
+    # below rather than one per string: the worker costs about a third of a
+    # second to start and roughly half a millisecond a string after that.
+    rendered = {}
+
     for vals in sets:
         choices = {L: ev(tpl, tpl["choice_formulas"][L], vals) for L in LETTERS}
 
@@ -803,9 +874,22 @@ def verify(tpl, src, n_random, seed):
                 f"{stem[:60]}...",
             ))
 
-        text = stem + " " + " ".join(house_latex(choices[L], tpl["variables"]) for L in LETTERS)
-        for problem in latex_problems(text):
+        shown = [house_latex(choices[L], tpl["variables"]) for L in LETTERS]
+        for problem in latex_problems(stem + " " + " ".join(shown)):
             fails.append(("latex", vals, problem))
+
+        for one in (stem, *shown):
+            rendered.setdefault(one, vals)
+
+    texts = list(rendered)
+    for hit in katex_red_renders(texts):
+        one = texts[hit["index"]]
+        bad = ", ".join(hit["spans"]) or one
+        fails.append((
+            "katex", rendered[one],
+            f"KaTeX cannot parse {bad}, so this renders to a student as literal "
+            f"red source text rather than mathematics: {one}",
+        ))
 
     return fails, {"mode": mode, "sets": len(sets)}
 

@@ -23,17 +23,26 @@
 // of them misbehaves. A check that can go blind without saying so is worth less
 // than no check, and this one has already been blind once: the first version of
 // this probe reported 21 of 21 spans fine while detecting nothing at all.
+//
+// EXPORTED, AND WHY. scripts/verify_templates.py runs the same detection over
+// the rolled instances of a template pool, which this file cannot see: the
+// templates live in the fenced json blocks that `renderable` below strips
+// before rendering, so a stem_template carrying `\notacommand` renders red on
+// every one of its thousands of instances while this check reports the file
+// clean. That harness imports `isRed` and `controls` rather than restating the
+// colour and the pipeline, because two spellings of "what counts as red" is
+// how one of them goes quietly blind.
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { renderMarkdownWithMath, stripAuthoringBlocks } from '../lib/curriculum-utils.ts';
 
-const RED = '#cc0000';
+export const RED = '#cc0000';
 const SOURCE = 'curriculum/source/tsia2-math';
 
-const isRed = md => renderMarkdownWithMath(md).includes(RED);
+export const isRed = md => renderMarkdownWithMath(md).includes(RED);
 
 // Individual spans, used only to localise a hit once a file is known to be bad.
-const spansOf = md =>
+export const spansOf = md =>
   [...md.matchAll(/\$\$[^\n]*?\$\$|(?<!\\)\$(?:[^$\n\\]|\\.)+?(?<!\\)\$/g)].map(m => m[0]);
 
 // Match what the pages actually render: frontmatter never reaches a renderer,
@@ -41,7 +50,10 @@ const spansOf = md =>
 // before the answer key is rendered.
 const renderable = raw => stripAuthoringBlocks(raw.replace(/^---\n[\s\S]*?\n---\n/, ''));
 
-function controls() {
+// `log` is injectable because the batch worker's stdout carries a JSON payload
+// and nothing else, so its control lines have to go to stderr. Defaulting to
+// console.log keeps this file's own CLI output exactly as it was.
+export function controls(log = console.log) {
   const results = [
     ['bogus macro is detected', isRed(String.raw`$A \cupp B$`) === true],
     ['good macro stays clean', isRed(String.raw`$A \cup B$`) === false],
@@ -50,21 +62,24 @@ function controls() {
     ['localiser finds the bad span', spansOf(String.raw`ok $x + 1$ and $\badmacro{x}$ here`).filter(isRed).length === 1],
   ];
   const failed = results.filter(([, ok]) => !ok);
-  for (const [name, ok] of results) console.log(`  ${ok ? 'ok  ' : 'FAIL'} control: ${name}`);
+  for (const [name, ok] of results) log(`  ${ok ? 'ok  ' : 'FAIL'} control: ${name}`);
   return failed.length === 0;
 }
 
-const files = process.argv.slice(2).length
-  ? process.argv.slice(2)
-  : readdirSync(SOURCE)
-      .filter(u => u.startsWith('unit-'))
-      .flatMap(u => readdirSync(join(SOURCE, u)).filter(f => f.endsWith('.md')).map(f => join(SOURCE, u, f)))
-      .sort();
+if (import.meta.main) runCli();
 
-console.log('controls:');
-if (!controls()) {
-  console.log('\nCONTROLS FAILED. This check is not measuring what it claims; fix it before trusting a pass.');
-  process.exit(2);
+function runCli() {
+  const files = process.argv.slice(2).length
+    ? process.argv.slice(2)
+    : readdirSync(SOURCE)
+        .filter(u => u.startsWith('unit-'))
+        .flatMap(u => readdirSync(join(SOURCE, u)).filter(f => f.endsWith('.md')).map(f => join(SOURCE, u, f)))
+        .sort();
+
+  console.log('controls:');
+  if (!controls()) {
+    console.log('\nCONTROLS FAILED. This check is not measuring what it claims; fix it before trusting a pass.');
+    process.exit(2);
 }
 
 let spanCount = 0;
@@ -86,3 +101,4 @@ if (hits.length) {
   process.exit(1);
 }
 console.log('no span renders as literal red source.');
+}
