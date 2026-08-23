@@ -48,6 +48,10 @@ interface RosterRow {
     strand_breakdown: StrandBreakdown | null;
     completed_at: string;
   } | null;
+  // Most recent official sitting only. Decision 5. The full history and the
+  // delta live on the student detail page; no delta is returned here at all,
+  // because a field present in the response is a field a later edit renders.
+  official_score: { official_crc_score: number; test_date: string } | null;
 }
 
 interface Misconception {
@@ -86,6 +90,12 @@ interface DisplayStudent {
   weakPct: number;
   tests: number;
   active: string;
+  // NO DELTA HERE, deliberately. Decision 6 keeps the official-minus-practice
+  // number on the student detail page and in the export, never in a roster cell:
+  // a delta needs its interval named beside it to mean anything, and a roster
+  // cell has no room to name one.
+  officialScore: number | null;
+  officialDate: string | null;
 }
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -135,7 +145,50 @@ function toDisplayStudent(r: RosterRow): DisplayStudent {
     weakLabel: tested ? `${wk} ${acc[wk]}%` : '—',
     tests: r.attempt_count,
     active: r.latest_session ? timeAgo(r.latest_session.completed_at) : '—',
+    officialScore: r.official_score?.official_crc_score ?? null,
+    officialDate: r.official_score?.test_date ?? null,
   };
+}
+
+/**
+ * The official score cell.
+ *
+ * A SCORE AND A DATE, AND NOTHING ELSE. No delta (decision 6), no band chip, no
+ * strand detail. The roster answers "did this student sit it and what did they
+ * get"; everything that needs an interval named beside it is on the detail page.
+ *
+ * An em-dash-free "Not recorded" rather than a bare dash, because a blank cell
+ * on a roster reads as a loading failure and this state is neither an error nor
+ * unusual: most students will have no official result for most of the year.
+ */
+function OfficialScoreCell({ s }: { s: DisplayStudent }) {
+  if (s.officialScore === null) {
+    return <span style={{ fontSize: 12.5, color: DASH.dim }}>Not recorded</span>;
+  }
+  return (
+    <div>
+      <div
+        style={{
+          fontSize: 15,
+          fontWeight: 700,
+          color: DASH.heading,
+          fontVariantNumeric: 'tabular-nums',
+          lineHeight: 1.1,
+        }}
+      >
+        {s.officialScore}
+      </div>
+      {s.officialDate && (
+        <div style={{ fontSize: 11.5, color: DASH.dim, marginTop: 2 }}>
+          {new Date(`${s.officialDate.slice(0, 10)}T00:00:00Z`).toLocaleDateString('en-US', {
+            month: 'short',
+            year: 'numeric',
+            timeZone: 'UTC',
+          })}
+        </div>
+      )}
+    </div>
+  );
 }
 
 // Viewport hook. Defaults to desktop for SSR / first paint (no hydration
@@ -816,6 +869,10 @@ function RosterCard({ s, classId }: { s: DisplayStudent; classId: string }) {
         </span>
         <span style={{ fontSize: 12, color: DASH.dim }}>{s.tests} {s.tests === 1 ? 'test' : 'tests'} · {s.active}</span>
       </div>
+      <div style={{ marginTop: 12, display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 10 }}>
+        <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 0.6, textTransform: 'uppercase', color: DASH.dim }}>Official TSIA2</span>
+        <OfficialScoreCell s={s} />
+      </div>
       <div style={{ marginTop: 12 }}>
         <StrandProfileBar s={s} />
       </div>
@@ -872,7 +929,7 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
           <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 720 }}>
             <thead>
               <tr style={{ background: DASH.subtleBg, borderBottom: `1px solid ${DASH.line}` }}>
-                {['Student', 'Score', 'Placement', 'Strand profile', 'Tests', 'Last active', ''].map((h) => (
+                {['Student', 'Score', 'Placement', 'Official', 'Strand profile', 'Tests', 'Last active', ''].map((h) => (
                   <th key={h} style={{ textAlign: h === 'Tests' ? 'center' : 'left', padding: h === '' || h === 'Student' ? '11px 20px' : '11px 14px', fontSize: 11, fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase', color: DASH.dim, whiteSpace: 'nowrap' }}>{h}</th>
                 ))}
               </tr>
@@ -898,6 +955,9 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: s.bandBg, color: s.bandText, fontSize: 12, fontWeight: 700, padding: '5px 10px', borderRadius: 20, whiteSpace: 'nowrap' }}>
                       <span style={{ width: 6, height: 6, borderRadius: '50%', background: s.bandDot }} />{s.band}
                     </span>
+                  </td>
+                  <td style={{ padding: '13px 14px' }}>
+                    <OfficialScoreCell s={s} />
                   </td>
                   <td style={{ padding: '13px 14px' }}>
                     <StrandProfileBar s={s} />
