@@ -77,6 +77,26 @@ FULL_ENUMERATION_CAP = 200_000
 IDENT = re.compile(r"[A-Za-z_]\w*")
 MATH_SPAN = re.compile(r"\$[^$]*\$")
 
+# Raw Unicode math symbols, and the LaTeX each one should have been written as.
+#
+# These render. That is the problem: a stem carrying a literal U+2264 looks
+# correct in a terminal and in a diff, sits inside a math span KaTeX is happy to
+# typeset around, and reaches a worksheet in whatever glyph the print font
+# happens to have for it -- which is not the glyph the rest of the mathematics is
+# set in, and on some printers is not a glyph at all.
+#
+# Kept as a mapping rather than a character class so the failure can name the
+# replacement. An author who is told "raw Unicode" goes looking; an author who is
+# told "use \le" fixes it.
+UNICODE_MATH = {
+    "\u2264": r"\le", "\u2265": r"\ge", "\u2260": r"\ne", "\u2248": r"\approx",
+    "\u00d7": r"\times", "\u00f7": r"\div", "\u2212": "-", "\u00b1": r"\pm",
+    "\u221a": r"\sqrt{}", "\u221e": r"\infty", "\u03c0": r"\pi",
+    "\u22c5": r"\cdot", "\u00b7": r"\cdot", "\u2192": r"\to",
+    "\u00b0": r"^\circ", "\u00b2": "^2", "\u00b3": "^3",
+    "\u00bd": r"\frac{1}{2}", "\u00bc": r"\frac{1}{4}", "\u00be": r"\frac{3}{4}",
+}
+
 # The slug whose presence *is* sign-error coverage. In the bank this was a
 # hand-set boolean somebody had to remember; here it is derivable from the
 # misconception_tag map and cannot be set wrong.
@@ -401,6 +421,9 @@ def latex_problems(text):
         bad.append("slash fraction (house style is \\frac{}{})")
     if re.search(r"\b1[a-z]\b", text):
         bad.append("coefficient written as 1x")
+    for glyph, latex_form in UNICODE_MATH.items():
+        if glyph in text:
+            bad.append(f"raw Unicode math symbol {glyph!r}, write it as {latex_form}")
     return bad
 
 
