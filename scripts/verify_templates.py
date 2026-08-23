@@ -268,6 +268,43 @@ def check_formula_vocabulary(tpl):
                 raise TemplateError(f"unknown name {name!r} in formula {f!r}")
 
 
+# LaTeX constructs whose braces collide with the placeholder syntax.
+#
+# house_latex emits `x^{2}` itself, so this is a rule about stem_template only
+# and never about a choice.
+STEM_BRACE_LATEX = re.compile(r"\\frac|\\sqrt|\^\{|_\{")
+
+
+def check_stem_braces(tpl):
+    """A stem may not carry LaTeX braces, because render() owns that syntax.
+
+    render() substitutes `{name}` placeholders and then rejects anything of the
+    form `{...}` still standing, so every one of these is already broken. What it
+    is not is *legible*: the failure surfaces as
+
+        unresolved placeholders ['x', '2'] in 'Solve $\\frac{x}{2} + 3 = 7$'
+
+    which reads as a bug in the harness rather than as a rule about stems. Worse
+    is the case that does not raise at all: in `\\frac{a}{2}`, if `a` is a
+    parameter then `{a}` is substituted first and the stem silently becomes
+    `\\frac{3}{2}` with the denominator left as a stray placeholder.
+
+    So the guard fires here, before render() is ever called, and names the
+    collision. Measured consequence for the target topics: AR.2.1 practice 7
+    (`\\frac{x}{2} + 3 = 7`) and three of QR.1.1's four mini-quiz stems cannot be
+    templated as the schema stands.
+    """
+    found = STEM_BRACE_LATEX.findall(tpl["stem_template"])
+    if found:
+        raise TemplateError(
+            f"stem_template carries LaTeX braces ({', '.join(sorted(set(found)))}), "
+            f"which collide with the {{name}} placeholder syntax render() owns: "
+            f"{{x}} and {{2}} in \\frac{{x}}{{2}} are read as placeholders, not as "
+            f"LaTeX. A stem cannot carry \\frac, \\sqrt, ^{{ or _{{ as the schema "
+            f"stands. Rewrite the stem without them, or leave the item static."
+        )
+
+
 def ev(tpl, formula, vals):
     # xreplace, not subs: every key here is a plain Symbol and every value an
     # integer, which is exactly the structural case xreplace handles, and it
@@ -627,6 +664,7 @@ def anchor_failures(tpl, src):
 def verify(tpl, src, n_random, seed):
     """Return (failures, stats). A failure names the parameter set that broke it."""
     check_formula_vocabulary(tpl)
+    check_stem_braces(tpl)
     fails = list(anchor_failures(tpl, src))
     correct_letter = src["correct_answer"]
 
