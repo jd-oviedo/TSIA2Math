@@ -225,6 +225,26 @@ alter table public.official_scores enable row level security;
 -- An insert or update grant here would also let a teacher write an official
 -- score with affirmed_official_report set by their own client, which would make
 -- the affirmation worthless.
+--
+-- REVOKE FIRST, THEN GRANT. The revoke is not defensive tidiness, it is the
+-- correction: a new table in this project does NOT arrive with an empty grant
+-- list. Supabase ships ALTER DEFAULT PRIVILEGES for anon and authenticated in
+-- the public schema, so a bare `create table` hands both roles privileges before
+-- a single line of this file's own grants runs. Writing only the grant leaves
+-- whatever was inherited sitting underneath it, invisibly, because a grant can
+-- only add.
+--
+-- That is not hypothetical here. Query 2 of section 6 caught exactly this on
+-- official_score_aggregate in production on 2026-08-23: SELECT to authenticated,
+-- on a table this file's own comments describe as having "no grant and no
+-- policy at all". It was revoked by hand, and the revoke now lives in section 5
+-- so a re-run cannot reinherit it. The same correction belongs here, for the
+-- same reason, whether or not this table happened to be caught by it.
+--
+-- Idempotent by construction: revoke-then-grant reaches the same end state
+-- however many times the file is run, and whatever the defaults were when the
+-- table was created.
+revoke all on public.official_scores from authenticated, anon;
 grant select on public.official_scores to authenticated;
 
 -- Ownership resolved through the class, which is the only place teacher
@@ -259,6 +279,14 @@ create policy official_scores_select_own_class
 --      official_scores.id, and therefore no foreign key that could be followed.
 --   2. No grant and no policy. `authenticated` and `anon` can select nothing,
 --      so the join cannot be attempted from a client at all.
+--
+--      THIS TOOK AN EXPLICIT REVOKE, and the first version of this file did not
+--      have one. "No grant" was written as a description of a table nobody had
+--      granted anything on, which is not what a new table in this schema is:
+--      Supabase's ALTER DEFAULT PRIVILEGES hands anon and authenticated
+--      privileges at create time. Query 2 of section 6 found SELECT sitting on
+--      authenticated in production on 2026-08-23, underneath a comment claiming
+--      it could not be there. Point 2 is now enforced rather than asserted.
 --   3. The practice estimate is destroyed, not hidden. Only the band survives,
 --      so an attacker holding a student's exact practice score cannot match on
 --      it.
@@ -338,6 +366,24 @@ comment on table public.official_score_aggregate is
 -- still yield nothing. Service role only, which bypasses both.
 alter table public.official_score_aggregate enable row level security;
 
+-- THE REVOKE IS THE HALF THAT WAS MISSING. Applied to production by hand on
+-- 2026-08-23 after query 2 of section 6 found SELECT granted to authenticated,
+-- inherited from Supabase's default privileges on the public schema rather than
+-- written by anyone. Recorded here so the file matches production and, more to
+-- the point, so RE-RUNNING THIS FILE CANNOT REINHERIT IT: `create table if not
+-- exists` is a no-op on the second run, but on a fresh database it would take
+-- the defaults all over again, and only this line takes them back off.
+--
+-- Named roles rather than `public`, because that is the grantee the default
+-- privileges actually name. Revoking from `public` would leave the anon and
+-- authenticated grants untouched and look like it had worked.
+--
+-- With this line the two defences stop being redundant in the same direction:
+-- RLS-with-no-policy denies, AND there is no privilege to filter in the first
+-- place. Before it, only the first was true, and one mistakenly added policy
+-- would have been the whole distance to exposure.
+revoke all on public.official_score_aggregate from authenticated, anon;
+
 
 -- ─── Section 6. After running this ───────────────────────────────────────────
 --
@@ -357,6 +403,13 @@ alter table public.official_score_aggregate enable row level security;
 --    Expect authenticated with SELECT only, plus postgres and service_role.
 --    Any anon row at all is a bug: this table is not public in any form.
 --
+--    VERIFIED EMPIRICALLY 2026-08-23 and now covered by a script:
+--    scripts/verify_official_scores_grants.mjs asks PostgREST with a real
+--    teacher JWT instead of reading this table, and got SELECT 200 with
+--    INSERT, UPDATE and DELETE all 42501. Worth running as well as this query,
+--    because a privilege reachable through a role the grant table does not
+--    obviously implicate is exactly what was missed on the aggregate below.
+--
 -- 2. Confirm official_score_aggregate grants NOTHING to authenticated or anon:
 --
 --      select grantee, privilege_type
@@ -366,6 +419,20 @@ alter table public.official_score_aggregate enable row level security;
 --
 --    Expect postgres and service_role only. An authenticated row here breaks
 --    the unjoinability argument in section 5 at point 2.
+--
+--    THIS QUERY ACTUALLY FIRED, on 2026-08-23: it found SELECT granted to
+--    authenticated, inherited from Supabase's default privileges rather than
+--    written by anyone, under a comment claiming the table had no grant at all.
+--    Revoked by hand and now revoked by section 5, so a re-run cannot bring it
+--    back.
+--
+--    Two things the incident is worth remembering for. First, ANON LOOKED
+--    CLEAN THE WHOLE TIME -- 42501 on both tables -- so an anon-only probe,
+--    which is what scripts/audit_anon_exposure.py is, could never have seen
+--    this and reported nothing wrong. A signed-in teacher is not a stranger,
+--    and "no stranger can read it" is a weaker claim than section 5 makes.
+--    Second, the failure mode is quiet: with RLS on and no policy, the grant
+--    yields an EMPTY ARRAY rather than an error, which reads as safe.
 --
 -- 3. Confirm RLS is on AND the policy exists on official_scores. Either alone
 --    is not the fix: RLS enabled with no policy denies everyone, and a policy
@@ -419,3 +486,9 @@ alter table public.official_score_aggregate enable row level security;
 --    Expect a permission error, not an empty array. An empty array would mean
 --    the grant exists and only the policy is filtering, which is one deleted
 --    policy away from exposure.
+--
+--    That sentence stopped being hypothetical on 2026-08-23. Re-checked after
+--    the revoke: a real teacher JWT now gets 42501, not [].
+--    scripts/verify_official_scores_grants.mjs is the standing regression
+--    check, and it distinguishes the two states by name rather than by status
+--    code, because both hand the caller zero rows and only one of them is safe.
