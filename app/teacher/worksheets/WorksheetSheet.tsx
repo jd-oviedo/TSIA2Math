@@ -20,6 +20,20 @@ import type { TopicMeta, Rationale } from './worksheet-data';
 
 const WORDMARK = '/unpackmath-wordmark.png';
 
+// AUDIT ENTRY 7. Verbatim, and the wording IS the requirement: it has to read
+// "or endorsed by", and it has to name both College Board and ACCUPLACER. A
+// paraphrase does not satisfy it, which is why this is one constant rendered by
+// <SheetFoot> rather than a line written into each part -- four copies is four
+// chances for one of them to be reworded by someone being helpful.
+//
+// It prints on every part, below the unpackmath.com and page-number row, on its
+// own full-width line. At 7.5pt in the body face it measures well inside the
+// 7.2in content box; the mockup's monospace footer face does not fit it at any
+// legible size, which is why it does not share row one's font.
+const DISCLAIMER =
+  'Not affiliated with or endorsed by College Board or ACCUPLACER. ' +
+  'TSIA2 is a trademark of its respective owner. Practice materials only.';
+
 // The four strand tints, as used on the teacher dashboard and the demo. Fill
 // only, with Deep Midnight text on top -- these are pale enough to carry black
 // at print contrast, which is why they can be a fill rather than an ink.
@@ -78,6 +92,7 @@ function SheetFoot({ marker, page }: { marker?: string; page: string }) {
           <span>{page}</span>
         </span>
       </div>
+      <p className="ws-disclaimer">{DISCLAIMER}</p>
     </footer>
   );
 }

@@ -356,6 +356,22 @@ export const PRINT_CSS = `
 }
 .ws-foot-mark { display: flex; gap: 12px; }
 
+/* AUDIT ENTRY 7, and the reason row one keeps its own font. The string is 134
+   characters. Measured against the 7.2in content box (691px at 96dpi):
+   monospace overflows at every legible size, still 101% of the width at 6.5pt,
+   so the disclaimer cannot share the footer's mono face. In the body face it
+   fits on one line with room to spare. Sized here rather than shrunk to fit --
+   if it ever stops fitting, it wraps to two lines and the size stays. */
+.ws-disclaimer {
+  margin: 7px 0 0;
+  font-family: ${FONT_BODY};
+  font-size: 7.5pt;
+  line-height: 1.35;
+  letter-spacing: 0.005em;
+  color: var(--ws-muted);
+  text-align: center;
+}
+
 /* ── the teacher's per-question notes ─────────────────────────────────────── */
 .ws-key-q {
   break-inside: avoid;
