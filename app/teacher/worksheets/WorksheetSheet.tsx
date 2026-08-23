@@ -1,4 +1,5 @@
 import type { PrintItem, KeyItem } from '@/app/lib/worksheet-source';
+import type { TopicMeta } from './worksheet-data';
 
 // The paper itself, as pure presentation.
 //
@@ -27,10 +28,12 @@ export function WorksheetSheet({
   title,
   items,
   created,
+  topicMeta,
 }: {
   title: string;
   items: PrintItem[];
   created: string;
+  topicMeta: Record<string, TopicMeta>;
 }) {
   // Numbered first, grouped second. The obvious shape -- a `let n` incremented
   // inside the render tree -- reassigns a variable across a render pass, which
@@ -67,7 +70,10 @@ export function WorksheetSheet({
 
       {groups.map((group) => (
         <section key={group.topic_id}>
-          <h2 className="ws-topic-head">{group.topic_id}</h2>
+          <h2 className="ws-topic-head">
+            <span className="ws-topic-id">{group.topic_id}</span>
+            <span className="ws-topic-name">{topicMeta[group.topic_id]?.topic_name ?? ''}</span>
+          </h2>
           {group.entries.map(({ item, n }) => (
               <article className="ws-q" key={`${item.topic_id}-${n}`}>
                 <div className="ws-n">{n}.</div>
@@ -99,10 +105,12 @@ export function AnswerKeySheet({
   title,
   items,
   created,
+  topicMeta,
 }: {
   title: string;
   items: KeyItem[];
   created: string;
+  topicMeta: Record<string, TopicMeta>;
 }) {
   return (
     <div className="ws-sheet">
@@ -125,7 +133,15 @@ export function AnswerKeySheet({
           <article className="ws-key-q" key={`${item.topic_id}-${n}`}>
             <div className="ws-key-head">
               <div className="ws-n">{n}.</div>
-              <div className="ws-key-stem" dangerouslySetInnerHTML={{ __html: item.stem_html }} />
+              <div className="ws-key-body">
+                <p className="ws-key-topic">
+                  {item.topic_id}
+                  {topicMeta[item.topic_id]?.topic_name
+                    ? ` \u00b7 ${topicMeta[item.topic_id].topic_name}`
+                    : ''}
+                </p>
+                <div className="ws-key-stem" dangerouslySetInnerHTML={{ __html: item.stem_html }} />
+              </div>
               <div className="ws-correct">{item.correct_answer || '—'}</div>
             </div>
 

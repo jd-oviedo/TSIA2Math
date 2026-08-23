@@ -1,4 +1,4 @@
-import { requireWorksheetTeacher, loadWorksheet } from '../../worksheet-data';
+import { requireWorksheetTeacher, loadWorksheet, loadTopicMeta } from '../../worksheet-data';
 import { resolveForPrint } from '@/app/lib/worksheet-source';
 import { PRINT_CSS } from '../../print-styles';
 import { WorksheetSheet } from '../../WorksheetSheet';
@@ -28,6 +28,10 @@ export default async function WorksheetPrintPage({
   const profile = await requireWorksheetTeacher(`/teacher/worksheets/${id}/print`);
   const worksheet = await loadWorksheet(id, profile.id);
   const items = await resolveForPrint(worksheet.course_id, worksheet.items);
+  // Names and strands for the topic headings. A second read rather than a
+  // wider resolveForPrint: neither column is answer-bearing, and the print
+  // resolver's select list is the thing that keeps an answer off this route.
+  const topicMeta = await loadTopicMeta(worksheet.course_id, worksheet.items);
 
   const created = new Date(worksheet.created_at).toLocaleDateString('en-US', {
     year: 'numeric',
@@ -43,7 +47,12 @@ export default async function WorksheetPrintPage({
         <a className="ws-btn" href={`/teacher/worksheets/${id}/key`}>Answer key</a>
         <a className="ws-btn" href={`/teacher/worksheets/${id}`}>Back</a>
       </div>
-      <WorksheetSheet title={worksheet.title} items={items} created={created} />
+      <WorksheetSheet
+        title={worksheet.title}
+        items={items}
+        created={created}
+        topicMeta={topicMeta}
+      />
     </>
   );
 }

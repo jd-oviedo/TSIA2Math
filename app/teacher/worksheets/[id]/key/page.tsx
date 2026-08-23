@@ -1,4 +1,4 @@
-import { requireWorksheetTeacher, loadWorksheet } from '../../worksheet-data';
+import { requireWorksheetTeacher, loadWorksheet, loadTopicMeta } from '../../worksheet-data';
 import { resolveForKey } from '@/app/lib/worksheet-source';
 import { PRINT_CSS } from '../../print-styles';
 import { AnswerKeySheet } from '../../WorksheetSheet';
@@ -32,6 +32,7 @@ export default async function AnswerKeyPage({
   const profile = await requireWorksheetTeacher(`/teacher/worksheets/${id}/key`);
   const worksheet = await loadWorksheet(id, profile.id);
   const items = await resolveForKey(worksheet.course_id, worksheet.items);
+  const topicMeta = await loadTopicMeta(worksheet.course_id, worksheet.items);
 
   const created = new Date(worksheet.created_at).toLocaleDateString('en-US', {
     year: 'numeric',
@@ -47,7 +48,12 @@ export default async function AnswerKeyPage({
         <a className="ws-btn" href={`/teacher/worksheets/${id}/print`}>Worksheet</a>
         <a className="ws-btn" href={`/teacher/worksheets/${id}`}>Back</a>
       </div>
-      <AnswerKeySheet title={worksheet.title} items={items} created={created} />
+      <AnswerKeySheet
+        title={worksheet.title}
+        items={items}
+        created={created}
+        topicMeta={topicMeta}
+      />
     </>
   );
 }

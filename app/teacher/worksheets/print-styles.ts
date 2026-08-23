@@ -121,6 +121,8 @@ export const PRINT_CSS = `
   margin: 20px 0 12px;
 }
 .ws-q + .ws-topic-head { margin-top: 24px; }
+.ws-topic-id { font-weight: 700; }
+.ws-topic-name { margin-left: 7px; }
 
 .ws-foot {
   margin-top: 30px;
@@ -143,7 +145,15 @@ export const PRINT_CSS = `
   background: #FDFDFD;
 }
 .ws-key-head { display: flex; gap: 10px; align-items: baseline; margin-bottom: 6px; }
-.ws-key-stem { flex: 1; min-width: 0; font-size: 10.5pt; }
+.ws-key-body { flex: 1; min-width: 0; }
+.ws-key-topic {
+  font-size: 7.5pt;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #666;
+  margin: 0 0 3px;
+}
+.ws-key-stem { font-size: 10.5pt; }
 
 /* The correct letter, as a filled chip. Reads at a glance while marking. */
 .ws-correct {

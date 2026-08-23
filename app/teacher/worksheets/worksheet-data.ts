@@ -1,6 +1,7 @@
 import { redirect, notFound } from 'next/navigation';
 import { requireTeacher, profileGrants, type Profile } from '@/app/lib/auth';
 import { createAdminClient } from '@/app/lib/supabase-admin';
+import { createClient } from '../../lib/supabase-server';
 import type { ItemRef } from '@/app/lib/worksheet-select';
 
 // The gate and the load, shared by every /teacher/worksheets route.
@@ -72,4 +73,53 @@ export async function loadWorksheet(id: string, teacherId: string): Promise<Work
     options: (data.options ?? {}) as WorksheetRow['options'],
     created_at: data.created_at as string,
   };
+}
+
+/**
+ * Topic name and strand for every topic on a worksheet, keyed on topic_id.
+ *
+ * PUBLIC PATH. Reads curriculum_topics_public through the anon-capable server
+ * client, exactly as the picker does. Neither column is answer-bearing, and
+ * fetching them here rather than widening resolveForPrint keeps the two data
+ * paths in worksheet-source.ts exactly as they are -- the print resolver still
+ * selects nothing but stems and choices.
+ *
+ * KEYED ON topic_id, WHICH IS WHY IT WORKS FOR BOTH BACKENDS. sql/worksheets.sql
+ * carries topic_id on both reference shapes, the static one and the rolled one,
+ * so a rolled instance resolves its heading through the same lookup as an
+ * authored item. Nothing here needs to know which backend answered.
+ *
+ * A missing row falls back to the id rather than an empty heading: a worksheet
+ * whose topic was renamed should print a slightly stale label, not a blank one.
+ */
+export type TopicMeta = { topic_name: string; strand: string };
+
+export async function loadTopicMeta(
+  courseId: string,
+  items: ItemRef[],
+): Promise<Record<string, TopicMeta>> {
+  const topicIds = [...new Set(items.map((item) => item.topic_id))];
+  const meta: Record<string, TopicMeta> = {};
+  if (topicIds.length === 0) return meta;
+
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from('curriculum_topics_public')
+    .select('topic_id, topic_name, related_strand')
+    .eq('course_id', courseId)
+    .in('topic_id', topicIds);
+
+  // Allowed to fail quietly, like loadProse: a heading is worth less than the
+  // questions under it, so a view that has moved should cost the sheet its
+  // topic names rather than its render.
+  if (error || !data) return meta;
+
+  for (const row of data) {
+    const id = row.topic_id as string;
+    meta[id] = {
+      topic_name: (row.topic_name as string | null) ?? id,
+      strand: (row.related_strand as string | null) ?? '',
+    };
+  }
+  return meta;
 }
