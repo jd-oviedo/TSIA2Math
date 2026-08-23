@@ -1,4 +1,6 @@
+import { Fragment } from 'react';
 import type { PrintItem, KeyItem } from '@/app/lib/worksheet-source';
+import type { TopicMeta, Rationale } from './worksheet-data';
 
 // The paper itself, as pure presentation.
 //
@@ -10,27 +12,99 @@ import type { PrintItem, KeyItem } from '@/app/lib/worksheet-source';
 //
 // It also makes the sheets renderable outside Next, which is how the print
 // layout gets checked against real content without a browser session.
+//
+// EVERY PART IS A <SheetPart>. The masthead, the wordmark and the footer are
+// written once here and used by all three, which is the other half of the
+// promise print-styles.ts makes: the three parts cannot drift because they are
+// not three implementations.
+
+const WORDMARK = '/unpackmath-wordmark.png';
+
+// AUDIT ENTRY 7. Verbatim, and the wording IS the requirement: it has to read
+// "or endorsed by", and it has to name both College Board and ACCUPLACER. A
+// paraphrase does not satisfy it, which is why this is one constant rendered by
+// <SheetFoot> rather than a line written into each part -- four copies is four
+// chances for one of them to be reworded by someone being helpful.
+//
+// It prints on every part, below the unpackmath.com and page-number row, on its
+// own full-width line. At 7.5pt in the body face it measures well inside the
+// 7.2in content box; the mockup's monospace footer face does not fit it at any
+// legible size, which is why it does not share row one's font.
+const DISCLAIMER =
+  'Not affiliated with or endorsed by College Board or ACCUPLACER. ' +
+  'TSIA2 is a trademark of its respective owner. Practice materials only.';
+
+// The four strand tints, as used on the teacher dashboard and the demo. Fill
+// only, with Deep Midnight text on top -- these are pale enough to carry black
+// at print contrast, which is why they can be a fill rather than an ink.
+//
+// Sky Blue is the fallback rather than a grey: a topic whose strand did not
+// resolve should still look like a labelled topic.
+const STRAND_TINT: Record<string, string> = {
+  QR: '#B5D4F4',
+  AR: '#9FE1CB',
+  GR: '#FAC775',
+  PR: '#CECBF6',
+};
+const STRAND_FALLBACK = '#87CEEB';
+
+/**
+ * The tint for a topic's chip.
+ *
+ * related_strand is the authority, but the topic id opens with the same two
+ * letters and is on every stored reference, so it is the fallback when the
+ * meta lookup missed. A worksheet printed while curriculum_topics_public was
+ * unreachable still gets its strand colours right.
+ */
+function strandTint(topicId: string, meta: TopicMeta | undefined): string {
+  const fromMeta = (meta?.strand ?? '').trim().toUpperCase();
+  if (STRAND_TINT[fromMeta]) return STRAND_TINT[fromMeta];
+  const fromId = topicId.split('.')[0].toUpperCase();
+  return STRAND_TINT[fromId] ?? STRAND_FALLBACK;
+}
 
 function choiceEntries(choices: Record<string, string>) {
   return Object.entries(choices).sort(([a], [b]) => a.localeCompare(b));
 }
 
-// Long options wrap badly in two columns. Measured on the rendered string with
-// tags stripped, so a KaTeX-heavy choice -- visually short, textually enormous
-// -- is not misjudged as long.
-function tooWideForTwoColumns(choices: Record<string, string>): boolean {
-  const lengths = Object.values(choices).map((html) => html.replace(/<[^>]+>/g, '').length);
-  return lengths.length > 0 && Math.max(...lengths) > 34;
+function SheetHead({ heading, meta }: { heading: string; meta: string }) {
+  return (
+    <header className="ws-head">
+      <div>
+        <h1 className="ws-title">{heading}</h1>
+        <p className="ws-meta">{meta}</p>
+      </div>
+      {/* A plain img, not next/image. This page is printed, so it wants the
+          asset at its natural resolution with no srcset negotiation and no
+          layout box to settle after paint. */}
+      <img className="ws-mark" src={WORDMARK} alt="UnpackMath" />
+    </header>
+  );
+}
+
+function SheetFoot({ marker, page }: { marker?: string; page: string }) {
+  return (
+    <footer className="ws-foot">
+      <div className="ws-foot-row">
+        <span>unpackmath.com</span>
+        <span className="ws-foot-mark">
+          {marker ? <span>{marker}</span> : null}
+          <span>{page}</span>
+        </span>
+      </div>
+      <p className="ws-disclaimer">{DISCLAIMER}</p>
+    </footer>
+  );
 }
 
 export function WorksheetSheet({
   title,
   items,
-  created,
+  topicMeta,
 }: {
   title: string;
   items: PrintItem[];
-  created: string;
+  topicMeta: Record<string, TopicMeta>;
 }) {
   // Numbered first, grouped second. The obvious shape -- a `let n` incremented
   // inside the render tree -- reassigns a variable across a render pass, which
@@ -48,49 +122,78 @@ export function WorksheetSheet({
 
   return (
     <div className="ws-sheet">
-      <header className="ws-head">
-        <div>
-          <h1 className="ws-title">{title}</h1>
-          <p className="ws-sub">
-            TSIA2 Math Practice · {items.length} question{items.length === 1 ? '' : 's'}
-          </p>
-        </div>
+      <section className="ws-part ws-part-questions">
+        {/* The teacher's own title, not a hardcoded "Practice Worksheet". The
+            builder defaults it to exactly that, so an untouched worksheet
+            reproduces the approved mockup and a named one prints its name. */}
+        <SheetHead
+          heading={title}
+          meta={`TSIA2 · MATH · ${items.length} QUESTION${items.length === 1 ? '' : 'S'}`}
+        />
+
         <div className="ws-fields">
-          <span>
-            Name<i className="ws-rule" />
-          </span>
-          <span>
-            Date<i className="ws-rule" />
-          </span>
+          <div className="ws-field">
+            NAME<span className="ws-field-rule" />
+          </div>
+          <div className="ws-field ws-field-date">
+            DATE<span className="ws-field-rule" />
+          </div>
         </div>
-      </header>
 
-      {groups.map((group) => (
-        <section key={group.topic_id}>
-          <h2 className="ws-topic-head">{group.topic_id}</h2>
-          {group.entries.map(({ item, n }) => (
-              <article className="ws-q" key={`${item.topic_id}-${n}`}>
-                <div className="ws-n">{n}.</div>
-                <div className="ws-body">
-                  <div className="ws-stem" dangerouslySetInnerHTML={{ __html: item.stem_html }} />
-                  <ul className={`ws-choices${tooWideForTwoColumns(item.choices_html) ? ' wide' : ''}`}>
-                    {choiceEntries(item.choices_html).map(([letter, html]) => (
-                      <li className="ws-choice" key={letter}>
-                        <span className="ws-letter">{letter})</span>
-                        <span dangerouslySetInnerHTML={{ __html: html }} />
-                      </li>
-                    ))}
-                  </ul>
+        {/* The eyebrows and the questions are siblings in the column flow rather
+            than each group being its own block. A wrapper per topic would be an
+            unbreakable-ish box the columns have to balance around; flat children
+            let the flow break wherever it likes, which is what keeps the two
+            columns even. */}
+        <div className="ws-flow">
+          {groups.map((group) => {
+            const meta = topicMeta[group.topic_id];
+            return (
+              <Fragment key={group.topic_id}>
+                <div className="ws-eyebrow">
+                  <span
+                    className="ws-eyebrow-chip"
+                    style={{
+                      background: strandTint(group.topic_id, meta),
+                      borderColor: strandTint(group.topic_id, meta),
+                    }}
+                  >
+                    {group.topic_id}
+                  </span>
+                  {meta?.topic_name ? (
+                    <span className="ws-eyebrow-name">{meta.topic_name}</span>
+                  ) : null}
                 </div>
-              </article>
-          ))}
-        </section>
-      ))}
 
-      <footer className="ws-foot">
-        <span>UnpackMath · app.unpackmath.com</span>
-        <span>{created}</span>
-      </footer>
+                {group.entries.map(({ item, n }) => (
+                  <article className="ws-q" key={`${item.topic_id}-${n}`}>
+                    <div className="ws-stem">
+                      <span className="ws-n">{n}.</span>
+                      <div
+                        className="ws-stem-text"
+                        dangerouslySetInnerHTML={{ __html: item.stem_html }}
+                      />
+                    </div>
+                    <ul className="ws-choices">
+                      {choiceEntries(item.choices_html).map(([letter, html]) => (
+                        <li className="ws-choice" key={letter}>
+                          <span className="ws-letter">{letter}</span>
+                          <span
+                            className="ws-choice-text"
+                            dangerouslySetInnerHTML={{ __html: html }}
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </Fragment>
+            );
+          })}
+        </div>
+
+        <SheetFoot page="01" />
+      </section>
     </div>
   );
 }
@@ -99,91 +202,158 @@ export function AnswerKeySheet({
   title,
   items,
   created,
+  topicMeta,
+  rationales,
 }: {
   title: string;
   items: KeyItem[];
   created: string;
+  topicMeta: Record<string, TopicMeta>;
+  rationales: Rationale[];
 }) {
   return (
     <div className="ws-sheet">
-      <header className="ws-head">
-        <div>
-          <h1 className="ws-title">{title}</h1>
-          <p className="ws-sub">Answer key · teacher copy</p>
-        </div>
-        <div className="ws-fields">
-          <span>{items.length} questions</span>
-          <span>{created}</span>
-        </div>
-      </header>
+      {/* ── page 2, the key itself ────────────────────────────────────────────
+          A compact grid, not the per-question cards. This is the page a teacher
+          holds while marking a stack of twenty, so it answers exactly one
+          question per cell and fits the whole sheet in a glance. The reasoning
+          lives on the two parts after it. */}
+      <section className="ws-part ws-part-key">
+        <SheetHead
+          heading="Answer Key"
+          meta={`${title} · ${items.length} QUESTIONS · ${created}`}
+        />
+        <ul className="ws-key-grid">
+          {items.map((item, i) => (
+            <li className="ws-key-cell" key={`key-${item.topic_id}-${i}`}>
+              <span className="ws-key-n">{i + 1}.</span>
+              <span className="ws-key-letter">{item.correct_answer || '?'}</span>
+            </li>
+          ))}
+        </ul>
+        <SheetFoot marker="KEY" page="02" />
+      </section>
 
-      {items.map((item, i) => {
-        const n = i + 1;
-        const wrong = item.notes.filter((note) => !note.correct);
-        const right = item.notes.find((note) => note.correct);
-        return (
-          <article className="ws-key-q" key={`${item.topic_id}-${n}`}>
-            <div className="ws-key-head">
-              <div className="ws-n">{n}.</div>
-              <div className="ws-key-stem" dangerouslySetInnerHTML={{ __html: item.stem_html }} />
-              <div className="ws-correct">{item.correct_answer || '—'}</div>
-            </div>
+      {/* ── page 3, the rationales ───────────────────────────────────────────
+          Why the correct choice is correct, one line each. See buildRationales
+          for why this reads distractor_prose and not the worked solutions. */}
+      <section className="ws-part ws-part-rationales">
+        <SheetHead heading="Rationales" meta={`${title} · ${items.length} QUESTIONS`} />
+        <ul className="ws-rats">
+          {rationales.map((rat) => (
+            <li className="ws-rat" key={`rat-${rat.n}`}>
+              <span className="ws-rat-n">{rat.n}.</span>
+              <span className="ws-rat-text">
+                {rat.html ? (
+                  <>
+                    <strong>Choice {rat.letter || '?'} is correct:</strong>{' '}
+                    <span dangerouslySetInnerHTML={{ __html: rat.html }} />
+                  </>
+                ) : (
+                  /* Said out loud rather than left as a blank row. A rolled
+                     instance has different numbers from the authored prose, so
+                     the stored sentence would be arithmetically wrong for it
+                     while reading as perfectly authoritative. */
+                  <span className="ws-rat-missing">
+                    {rat.generated
+                      ? `Choice ${rat.letter || '?'} is correct. Generated variant, so the authored rationale is not shown.`
+                      : `Choice ${rat.letter || '?'} is correct. No rationale stored for this item yet.`}
+                  </span>
+                )}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <SheetFoot marker="RATIONALES" page="03" />
+      </section>
 
-            {right && (
-              <div className="ws-solution">
-                <p>
-                  {/* A colon, not a full stop. The authored prose is a verb
-                      phrase with an implied subject -- "subtracts 9 from both
-                      sides" -- so a full stop reads as a sentence starting
-                      lowercase. A colon makes the label a label and the phrase
-                      its complement, without rewriting 1,344 strings. */}
-                  <strong>Why {item.correct_answer} is right:</strong> {right.text}
-                </p>
-              </div>
-            )}
+      {/* ── the teacher's notes ──────────────────────────────────────────────
+          NOT part of the approved three-page format, and kept anyway. The line
+          saying what the students who chose C actually did is the thing worth
+          paying for; the mockup simply has no page for it. It keeps the shape
+          it already had, on the stylesheet the other parts share. */}
+      <section className="ws-part ws-part-notes">
+        <SheetHead heading="Teacher Notes" meta={`${title} · ${items.length} QUESTIONS`} />
 
-            {item.solution_html && (
-              <div className="ws-solution" dangerouslySetInnerHTML={{ __html: item.solution_html }} />
-            )}
-
-            {wrong.length > 0 && (
-              <div className="ws-notes">
-                <p className="ws-notes-label">What the wrong answers mean</p>
-                {wrong.map((note) => (
-                  <p className="ws-note" key={note.letter}>
-                    {/* The letter is its own element so it can hold a column
-                        while the sentence wraps beside it. Same text
-                        distractorLine() produces -- one extractor, in
-                        resolveForKey(). */}
-                    <span className="ws-note-letter">Chose {note.letter}</span>
-                    <span>{note.text}</span>
+        {items.map((item, i) => {
+          const n = i + 1;
+          const wrong = item.notes.filter((note) => !note.correct);
+          const right = item.notes.find((note) => note.correct);
+          return (
+            <article className="ws-key-q" key={`${item.topic_id}-${n}`}>
+              <div className="ws-key-head">
+                <div className="ws-n">{n}.</div>
+                <div className="ws-key-body">
+                  <p className="ws-key-topic">
+                    {item.topic_id}
+                    {topicMeta[item.topic_id]?.topic_name
+                      ? ` · ${topicMeta[item.topic_id].topic_name}`
+                      : ''}
                   </p>
-                ))}
+                  <div
+                    className="ws-key-stem"
+                    dangerouslySetInnerHTML={{ __html: item.stem_html }}
+                  />
+                </div>
+                <div className="ws-correct">{item.correct_answer || '?'}</div>
               </div>
-            )}
 
-            {/* A rolled instance carries no prose: the authored explanation names
-                the canonical numbers and would be arithmetically wrong for this
-                variant. Said out loud rather than left as a gap. */}
-            {item.ref.source === 'instance' && item.notes.length === 0 && (
-              <p className="ws-caveat">
-                Generated variant — the correct answer is exact, but the worked
-                solution and misconception notes are written for the original
-                numbers and are not shown.
-              </p>
-            )}
+              {right && (
+                <div className="ws-solution">
+                  <p>
+                    {/* A colon, not a full stop. The authored prose is a verb
+                        phrase with an implied subject -- "subtracts 9 from both
+                        sides" -- so a full stop reads as a sentence starting
+                        lowercase. A colon makes the label a label and the phrase
+                        its complement, without rewriting 1,344 strings. */}
+                    <strong>Why {item.correct_answer} is right:</strong> {right.text}
+                  </p>
+                </div>
+              )}
 
-            {item.ref.source === 'static' && item.notes.length === 0 && !item.solution_html && (
-              <p className="ws-caveat">No worked solution stored for this item yet.</p>
-            )}
-          </article>
-        );
-      })}
+              {item.solution_html && (
+                <div
+                  className="ws-solution"
+                  dangerouslySetInnerHTML={{ __html: item.solution_html }}
+                />
+              )}
 
-      <footer className="ws-foot">
-        <span>UnpackMath · answer key · not for student distribution</span>
-        <span>{created}</span>
-      </footer>
+              {wrong.length > 0 && (
+                <div className="ws-notes">
+                  <p className="ws-notes-label">What the wrong answers mean</p>
+                  {wrong.map((note) => (
+                    <p className="ws-note" key={note.letter}>
+                      {/* The letter is its own element so it can hold a column
+                          while the sentence wraps beside it. Same text
+                          distractorLine() produces -- one extractor, in
+                          resolveForKey(). */}
+                      <span className="ws-note-letter">Chose {note.letter}</span>
+                      <span>{note.text}</span>
+                    </p>
+                  ))}
+                </div>
+              )}
+
+              {/* A rolled instance carries no prose: the authored explanation names
+                  the canonical numbers and would be arithmetically wrong for this
+                  variant. Said out loud rather than left as a gap. */}
+              {item.ref.source === 'instance' && item.notes.length === 0 && (
+                <p className="ws-caveat">
+                  Generated variant. The correct answer is exact, but the worked
+                  solution and misconception notes are written for the original
+                  numbers and are not shown.
+                </p>
+              )}
+
+              {item.ref.source === 'static' && item.notes.length === 0 && !item.solution_html && (
+                <p className="ws-caveat">No worked solution stored for this item yet.</p>
+              )}
+            </article>
+          );
+        })}
+
+        <SheetFoot marker="NOTES" page="04" />
+      </section>
     </div>
   );
 }
