@@ -126,10 +126,6 @@ export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
   ]),
 };
 
-// No WORKSHEET_QUOTA here, deliberately. The number for "regular access" has
-// never been decided and worksheets do not exist yet. Inventing a placeholder
-// now would put a made-up number somewhere it could be read as settled.
-//
 // CORRECTED 2026-08-21. This note used to open "Core and Pro differ by quota
 // rather than by feature presence". That was true when it was written and is
 // not true now: class-data-export is a feature Pro holds and Core does not, and
@@ -137,14 +133,67 @@ export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
 // because the old sentence is quoted in design notes elsewhere and somebody
 // will come looking for why it changed.
 //
-// The quota point still stands on its own. Nothing about worksheets moved.
-//
 // EXTENDED 2026-08-23. official-scores is the first capability added since, and
 // it goes to BOTH teacher tiers. So the map is no longer "Pro is Core plus one
 // export": the two tiers now differ by exactly one capability out of three that
 // either of them holds, and a new teacher feature is Core by default unless
 // there is a reason it is not. Do not read the ordering of this list as a tier
 // ladder; read CAPABILITIES, which is the only thing that decides.
+
+// ---------------------------------------------------------------------------
+// The worksheet quota
+// ---------------------------------------------------------------------------
+
+/**
+ * How many worksheets a plan may CREATE per calendar month.
+ *
+ * This block used to say, deliberately, that no WORKSHEET_QUOTA belonged here:
+ * the number had never been decided, and inventing a placeholder would have put
+ * a made-up figure somewhere it could be read as settled. Juan has now set it at
+ * 15 for Teacher Core, so the number is real and this is where it lives.
+ *
+ * ONE PLAN IS CAPPED. Everything else is unlimited, which makes this map's job
+ * narrower than it looks: it exists so exactly one tier's limit has a single
+ * home, not so every tier can be metered.
+ *
+ * null MEANS "NO CAP DECLARED", AND IT IS NOT Infinity. Infinity would be the
+ * obvious spelling and it is the wrong one, for a reason that only shows up at
+ * the boundary: JSON.stringify(Infinity) is `null`. This value crosses to the
+ * client for the usage indicator, so Infinity would silently arrive as null
+ * anyway and the codebase would carry two spellings of one idea. null also
+ * forces a call site to branch on it rather than doing arithmetic that happens
+ * to work, and it is what a nullable column would hold.
+ *
+ * Record<Plan, ...> for the same reason CAPABILITIES is: a new plan does not
+ * compile until it has said what its quota is. That is the whole value of the
+ * map, and it is why practice-pass and full-course appear here at all -- see
+ * the note on them below.
+ */
+export const WORKSHEET_QUOTA: Readonly<Record<Plan, number | null>> = {
+  // Both student plans hold the `worksheets` capability and neither can reach a
+  // worksheet today: there is no student route, and both pricing cards say
+  // COMING. They are null rather than omitted so the exhaustiveness check above
+  // keeps working, and null is also the right answer for when that route lands
+  // -- the pricing page promises students unlimited worksheets.
+  "practice-pass": null,
+  "full-course": null,
+  // The only capped plan in the product.
+  "teacher-core": 15,
+  "teacher-pro": null,
+};
+
+/**
+ * The cap for a plan, or null when the plan is unlimited.
+ *
+ * Returns null for an unknown or absent plan too, which is safe here only
+ * because this is a METER and not a gate: nothing reaches a call site of this
+ * function without having already cleared requireTeacher() and profileGrants().
+ * A null from here means "do not count", never "let them in".
+ */
+export function worksheetQuota(plan: string | null | undefined): number | null {
+  if (plan == null) return null;
+  return WORKSHEET_QUOTA[plan as Plan] ?? null;
+}
 
 // ---------------------------------------------------------------------------
 // The tier label

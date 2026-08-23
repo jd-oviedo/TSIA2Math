@@ -3,6 +3,7 @@ import { requireTeacher, profileGrants } from "../../../lib/auth";
 import { createAdminClient } from "../../../lib/supabase-admin";
 import { getItemsForTopic } from "../../../lib/worksheet-source";
 import { selectItems, type Level } from "../../../lib/worksheet-select";
+import { consumeWorksheetQuota } from "../../../lib/worksheet-quota";
 
 // Create and list worksheets.
 //
@@ -13,10 +14,21 @@ import { selectItems, type Level } from "../../../lib/worksheet-select";
 // one without the other. Checking only the first is how a feature quietly ships
 // to a tier that did not buy it.
 //
-// NO USAGE METERING. teacher-core and teacher-pro are capability-identical
-// today and capabilities.ts deliberately declines to invent a quota, so there is
-// no number to enforce and none is invented here. sql/ carries the migration if
-// and when one is chosen.
+// METERED, FOR EXACTLY ONE PLAN. teacher-core may create 15 worksheets per
+// calendar month; every other plan is unlimited and never touches the counter.
+// The number lives in capabilities.ts as WORKSHEET_QUOTA, not here and not in
+// the migration, so it has one home.
+//
+// THIS IS THE ONLY PLACE A WORKSHEET ROW IS CREATED, which is what makes the
+// meter enforceable at all. Every other access to the table in the codebase is a
+// select or a delete, so there is one chokepoint and the consume sits on it.
+// Previewing and regenerating cost nothing because nothing reaches the server
+// until this route is called; reprinting costs nothing because /print and /key
+// only read.
+//
+// THE METER IS NOT THE PAYWALL. requireTeacher() already refuses a lapsed
+// teacher before the body is parsed, so the counter never stands between an
+// unentitled user and a create. It only counts entitled ones.
 
 const MAX_ITEMS = 200;
 const MAX_TOPICS = 20;
@@ -142,6 +154,43 @@ export async function POST(request: Request) {
     );
   }
 
+  // SPENT IMMEDIATELY BEFORE THE INSERT, and the ordering is a real choice.
+  // Consuming after a successful insert would let two creates fired together
+  // both pass the check and land at 16; consuming first spends a credit if the
+  // insert then fails. The insert is a validated write whose only realistic
+  // failures are a missing table (answered as a 503 below) or an outage that
+  // would have taken this RPC down too, so the window is small and it errs
+  // toward the cap holding rather than leaking. See app/lib/worksheet-quota.ts.
+  //
+  // Nothing after this point may return early without either inserting or
+  // logging the burned credit.
+  let quota;
+  try {
+    quota = await consumeWorksheetQuota(profile.id, profile.plan);
+  } catch (e) {
+    console.error("[teacher/worksheets] quota check failed:", (e as Error).message);
+    return NextResponse.json(
+      { error: "Could not check your worksheet allowance. Please try again." },
+      { status: 503 },
+    );
+  }
+
+  if (!quota.allowed) {
+    // 429 rather than 403. A 403 here would be indistinguishable from the two
+    // gates above, which mean "you may not do this at all"; this means "not this
+    // month". The body carries the numbers so the builder can render the upgrade
+    // state rather than a generic error string.
+    return NextResponse.json(
+      {
+        error: `You have created all ${quota.cap} worksheets included in Teacher Core this month.`,
+        capped: true,
+        used: quota.used,
+        cap: quota.cap,
+      },
+      { status: 429 },
+    );
+  }
+
   const admin = createAdminClient();
   const { data, error } = await admin
     .from("worksheets")
@@ -162,6 +211,16 @@ export async function POST(request: Request) {
         { status: 503 },
       );
     }
+    // The credit is already spent and there is deliberately no refund path: one
+    // write direction is what keeps the counter auditable, and a decrement is
+    // the same door a create-delete-create loop would use. Logged with the
+    // profile id so it can be corrected by hand, which is the rare case.
+    if (!quota.unmetered) {
+      console.error(
+        `[teacher/worksheets] insert failed AFTER quota was spent for ${profile.id}; ` +
+          `used is now ${quota.used} of ${quota.cap} and was not refunded.`,
+      );
+    }
     console.error("[teacher/worksheets] insert failed:", error.message);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
@@ -169,5 +228,17 @@ export async function POST(request: Request) {
   // shortfall and notes travel with the 201 rather than failing the request. The
   // worksheet is real and printable; the teacher simply got fewer questions than
   // she asked for, and she is told why instead of counting them herself.
-  return NextResponse.json({ id: data.id, delivered: refs.length, shortfall, notes }, { status: 201 });
+  // used/cap travel with the 201 so the builder can update its indicator from
+  // the same number the server just enforced, rather than re-reading it.
+  return NextResponse.json(
+    {
+      id: data.id,
+      delivered: refs.length,
+      shortfall,
+      notes,
+      used: quota.unmetered ? null : quota.used,
+      cap: quota.cap,
+    },
+    { status: 201 },
+  );
 }

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { DASH, cardStyle } from '@/app/components/dashboard-theme';
 import type { PickerTopic } from '@/app/lib/worksheet-source';
+import { QuotaMeter, QuotaCapNotice } from '../QuotaNotice';
 
 const LEVELS = ['Basic', 'Proficient', 'Advanced'] as const;
 type Level = (typeof LEVELS)[number];
@@ -25,8 +26,24 @@ const UNIT_NAMES: Record<number, string> = {
 // the selected topics can actually deliver. Nothing is padded to look deeper
 // than it is, because the moment a badge overstates a pool the teacher finds out
 // by printing a short worksheet.
-export default function WorksheetBuilder({ topics }: { topics: PickerTopic[] }) {
+export default function WorksheetBuilder({
+  topics,
+  quotaUsed,
+  quotaCap,
+}: {
+  topics: PickerTopic[];
+  /** Worksheets created this month, or null when the plan is not metered. */
+  quotaUsed: number | null;
+  /** The plan's monthly cap, or null when unlimited. */
+  quotaCap: number | null;
+}) {
   const router = useRouter();
+  // Seeded from the server and moved only by what the server sends back. The
+  // create response carries the count it just enforced, so the number here
+  // cannot drift from the counter by re-deriving itself.
+  const [used, setUsed] = useState(quotaUsed);
+  const metered = used !== null && quotaCap !== null;
+  const atCap = metered && used >= quotaCap;
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [title, setTitle] = useState('');
   const [count, setCount] = useState(15);
@@ -110,9 +127,15 @@ export default function WorksheetBuilder({ topics }: { topics: PickerTopic[] }) 
       const body = (await res.json().catch(() => ({}))) as {
         id?: string;
         error?: string;
+        capped?: boolean;
+        used?: number | null;
       };
+      // A 429 carries the enforced count, so hitting the cap by racing the
+      // button or by posting directly lands in the same state as arriving here
+      // already spent, rather than in a generic error string.
+      if (typeof body.used === 'number') setUsed(body.used);
       if (!res.ok || !body.id) {
-        setError(body.error ?? 'Could not build that worksheet.');
+        setError(body.capped ? null : body.error ?? 'Could not build that worksheet.');
         return;
       }
       router.push(`/teacher/worksheets/${body.id}`);
@@ -286,26 +309,38 @@ export default function WorksheetBuilder({ topics }: { topics: PickerTopic[] }) 
               </p>
             )}
 
+            {atCap && (
+              <div style={{ marginTop: 14 }}>
+                <QuotaCapNotice cap={quotaCap as number} />
+              </div>
+            )}
+
             <button
               type="button"
               onClick={create}
-              disabled={busy || selected.size === 0 || pool === 0}
+              disabled={busy || atCap || selected.size === 0 || pool === 0}
               style={{
                 width: '100%',
-                marginTop: 16,
+                marginTop: atCap ? 0 : 16,
                 padding: '11px 16px',
                 borderRadius: 9,
                 border: 'none',
-                background: selected.size === 0 || pool === 0 ? DASH.line : DASH.heading,
-                color: selected.size === 0 || pool === 0 ? DASH.dim : '#FFF',
+                background: atCap || selected.size === 0 || pool === 0 ? DASH.line : DASH.heading,
+                color: atCap || selected.size === 0 || pool === 0 ? DASH.dim : '#FFF',
                 fontSize: 14,
                 fontWeight: 600,
                 fontFamily: 'inherit',
-                cursor: busy || selected.size === 0 || pool === 0 ? 'not-allowed' : 'pointer',
+                cursor: busy || atCap || selected.size === 0 || pool === 0 ? 'not-allowed' : 'pointer',
               }}
             >
               {busy ? 'Building…' : 'Build worksheet'}
             </button>
+
+            {metered && !atCap && (
+              <div style={{ marginTop: 10, textAlign: 'center' }}>
+                <QuotaMeter used={used as number} cap={quotaCap as number} />
+              </div>
+            )}
           </div>
         </div>
       </div>

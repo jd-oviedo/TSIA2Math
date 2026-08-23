@@ -3,6 +3,8 @@ import { requireWorksheetTeacher } from './worksheet-data';
 import { createAdminClient } from '@/app/lib/supabase-admin';
 import { DASH, cardStyle } from '@/app/components/dashboard-theme';
 import WorksheetList from './WorksheetList';
+import { readWorksheetQuota } from '../../lib/worksheet-quota';
+import { QuotaMeter, QuotaCapNotice } from './QuotaNotice';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,6 +18,13 @@ export type WorksheetSummary = {
 
 export default async function WorksheetsIndexPage() {
   const profile = await requireWorksheetTeacher('/teacher/worksheets');
+
+  // Read, never computed. worksheet_quota_used applies the same period rule the
+  // enforcing function does, so the number below is the number the create route
+  // will act on. An unlimited plan comes back unmetered without a round trip.
+  const quota = await readWorksheetQuota(profile.id, profile.plan);
+  const metered = !quota.unmetered && quota.cap !== null;
+  const capped = metered && quota.used >= (quota.cap ?? 0);
 
   const admin = createAdminClient();
   const { data, error } = await admin
@@ -72,22 +81,48 @@ export default async function WorksheetsIndexPage() {
               Printable practice with an answer key that explains every wrong option.
             </p>
           </div>
-          <Link
-            href="/teacher/worksheets/new"
-            style={{
-              background: DASH.heading,
-              color: '#FFF',
-              padding: '10px 18px',
-              borderRadius: 9,
-              fontSize: 14,
-              fontWeight: 600,
-              textDecoration: 'none',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            New worksheet
-          </Link>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 7 }}>
+            {/* Disabled as a courtesy, never as the enforcement. A teacher can
+                POST to the route directly, so the RPC's return is the authority
+                and this only saves them a wasted click. */}
+            {capped ? (
+              <span
+                aria-disabled="true"
+                style={{
+                  background: DASH.line,
+                  color: DASH.dim,
+                  padding: '10px 18px',
+                  borderRadius: 9,
+                  fontSize: 14,
+                  fontWeight: 600,
+                  whiteSpace: 'nowrap',
+                  cursor: 'not-allowed',
+                }}
+              >
+                New worksheet
+              </span>
+            ) : (
+              <Link
+                href="/teacher/worksheets/new"
+                style={{
+                  background: DASH.heading,
+                  color: '#FFF',
+                  padding: '10px 18px',
+                  borderRadius: 9,
+                  fontSize: 14,
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                New worksheet
+              </Link>
+            )}
+            {metered && <QuotaMeter used={quota.used} cap={quota.cap as number} />}
+          </div>
         </div>
+
+        {capped && <QuotaCapNotice cap={quota.cap as number} />}
 
         {!migrated && (
           <div
