@@ -90,7 +90,15 @@ async function signIn(browser, email) {
     access_token: verified.session.access_token,
     refresh_token: verified.session.refresh_token,
   });
-  const ctx = await browser.newContext({ viewport: { width: 1100, height: 1600 } });
+  // PAPER WIDTH, and this is load-bearing. emulateMedia({ media: 'print' })
+  // applies the print stylesheet but does NOT resize the viewport, so a
+  // screen-width context reports a 533px question column while page.pdf()
+  // paginates at 7.2in of content, where the column is 328.5px. The first
+  // version of this file measured at 1100px and its "figure fits its column"
+  // check passed on figures that overflow by 11.5px on paper.
+  //
+  // 691px is Letter minus the @page margins: 8.5 - 0.65 - 0.65 = 7.2in at 96dpi.
+  const ctx = await browser.newContext({ viewport: { width: 691, height: 1600 } });
   await ctx.addCookies(jar.map((c) => ({
     name: c.name, value: c.value, domain: 'localhost', path: '/',
     httpOnly: false, secure: false, sameSite: 'Lax',
@@ -118,7 +126,10 @@ const READ_FIGURES = `() => {
       dims: (svg.match(/data-dim=/g) || []).length,
       renderedWidth: box.width,
       naturalWidth: img.naturalWidth,
-      columnWidth: img.parentElement ? img.parentElement.getBoundingClientRect().width : 0,
+      // The question block, not the stem span. .ws-stem-text is display:inline,
+      // and an inline box's rect spans its text runs rather than its column.
+      columnWidth: (img.closest('.ws-q') || img.closest('.ws-key-q') || img.parentElement)
+        .getBoundingClientRect().width,
     });
   }
   return out;
@@ -141,17 +152,32 @@ async function main() {
     .from('profiles').select('email').eq('id', ws.teacher_id).maybeSingle();
   console.log(`Worksheet: ${ws.title} (${ws.items.length} items), owner ${owner.email}\n`);
 
+  // Refuse to run against a server this script did not start. A stale
+  // next-server left listening on this port serves a DIFFERENT build, which is
+  // the one thing a print verification must never do quietly.
+  try {
+    await fetch(BASE, { signal: AbortSignal.timeout(1500) });
+    console.error(`Something is already listening on ${BASE}. That would verify a stale build.`);
+    process.exit(1);
+  } catch { /* nothing there, which is what we want */ }
+
   const server = spawn('npx', ['next', 'start', '-p', String(PORT)], { stdio: 'ignore', detached: true });
   onTeardown(() => killServer(server));
-  for (let i = 0; i < 60; i++) {
-    try { await fetch(BASE, { signal: AbortSignal.timeout(1000) }); break; } catch { /* not up yet */ }
+  // Probe the ROUTE, not the origin. A selective build serves 404 at `/`, and a
+  // 404 is a live server, so probing the origin returns as soon as the socket is
+  // open and before the route can answer.
+  const probe = `${BASE}/teacher/worksheets/${WORKSHEET}/print`;
+  for (let i = 0; i < 90; i++) {
+    try {
+      const r = await fetch(probe, { redirect: 'manual', signal: AbortSignal.timeout(2000) });
+      if (r.status < 500) break;
+    } catch { /* not up yet */ }
     await new Promise((r) => setTimeout(r, 1000));
   }
 
   const browser = await chromium.launch();
   onTeardown(() => browser.close());
   const ctx = await signIn(browser, owner.email);
-  const page = await ctx.newPage();
 
   // expectedPages is null where the count is reported rather than required.
   // The KEY has a required count: two parts, two pages, which is the point of
@@ -163,13 +189,33 @@ async function main() {
     ['key', 'key', 2],
   ]) {
     console.log(`\n${name} (/teacher/worksheets/${WORKSHEET}/${route})`);
+    // A FRESH TAB PER ROUTE, closed at the end of the loop. A four-page sheet
+    // plus its PDF is the largest thing this script holds, and keeping the
+    // worksheet's render alive while the key renders crashed the tab on a
+    // memory-constrained machine. Nothing here needs state to survive a route.
+    const page = await ctx.newPage();
     // 'load' plus an explicit selector, not 'networkidle'. The key route holds
     // its connection open long enough that networkidle never fires here, and a
     // wait that never returns looks exactly like a page that never rendered.
-    await page.goto(`${BASE}/teacher/worksheets/${WORKSHEET}/${route}`, {
-      waitUntil: 'load', timeout: 60000,
-    });
-    await page.waitForSelector('.ws-part', { timeout: 60000 });
+    // Retried, because `next start` under memory pressure closes a connection
+    // mid-response often enough to abort a first navigation, and a flaky
+    // transport must not read as a broken page. Three attempts, then give up
+    // loudly.
+    const url = `${BASE}/teacher/worksheets/${WORKSHEET}/${route}`;
+    let lastErr = null;
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        await page.goto(url, { waitUntil: 'load', timeout: 60000 });
+        await page.waitForSelector('.ws-part', { timeout: 60000 });
+        lastErr = null;
+        break;
+      } catch (err) {
+        lastErr = err;
+        console.log(`  ....  ${name}: navigation attempt ${attempt} failed (${err.message.split('\n')[0]})`);
+        await new Promise((r) => setTimeout(r, 3000));
+      }
+    }
+    if (lastErr) throw lastErr;
     await page.emulateMedia({ media: 'print' });
 
     // Invoked in the page, not passed as a bare arrow. Playwright evaluates a
@@ -216,7 +262,17 @@ async function main() {
         `${f.renderedWidth.toFixed(1)}px in ${f.columnWidth.toFixed(1)}px (natural ${f.naturalWidth})`);
     });
 
-    await page.screenshot({ path: `${OUT}/${name}.png`, fullPage: true });
+    // Best effort, and deliberately not fatal. The PDF is the artifact under
+    // test; the PNG is a convenience for review, and a full-page capture of a
+    // four-page sheet is the single largest allocation this script makes. On a
+    // machine already short of memory it can crash the tab, and losing a
+    // convenience must not lose the run that produced the PDF.
+    try {
+      await page.screenshot({ path: `${OUT}/${name}.png`, fullPage: true });
+    } catch (err) {
+      console.log(`  ....  ${name}: screenshot skipped (${err.message.split('\n')[0]})`);
+    }
+    await page.close();
   }
 
   console.log(`\nPDFs and screenshots in ${OUT}/`);
