@@ -277,6 +277,30 @@ def house_latex(expr, variables):
     terms = sorted(terms, key=lambda t: (-sum(t[0]), tuple(-d for d in t[0])))
     out = ""
     for mono, coeff in terms:
+        # RAISE, DO NOT TRUNCATE. `int(coeff)` on its own puts a silently wrong
+        # answer choice in front of a student, and it is the one defect found on
+        # this branch that no other check can see: same() compares expressions,
+        # so the mathematics all passes while the printed string is wrong.
+        #
+        # Measured before this guard existed, with a variable declared:
+        #
+        #   13/2       ->  $6$        -1/2       ->  $0$
+        #   3*x/2      ->  $x$        x/2 + 5/2  ->  $2$
+        #
+        # The last is the worst: int(1/2) is 0, the `c == 0` skip below then
+        # drops the term, and the x vanishes from the choice entirely.
+        #
+        # Only this branch truncates. With `variables` empty the function has
+        # already returned through plain latex(), which renders a rational
+        # correctly -- that is why a topic whose answers are numbers rather than
+        # expressions (PR.2.1's $7.5$) is unaffected, and must stay that way.
+        if coeff != int(coeff):
+            raise TemplateError(
+                f"non-integer coefficient {coeff} in {e}, which house_latex "
+                f"would truncate to {int(coeff)}. Declare no variables on a "
+                f"template whose formulas can produce a fractional coefficient, "
+                f"or constrain the range so they cannot."
+            )
         c = int(coeff)
         if c == 0:
             continue
