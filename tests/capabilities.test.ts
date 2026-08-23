@@ -88,14 +88,30 @@ test('class-data-export separates Pro from Core, and nothing else moved', () => 
 
   // The rest of Core is untouched: this was meant to REMOVE something from
   // Core, not to hand Pro a second change by accident.
+  //
+  // UPDATED 2026-08-23 for official-scores, which both tiers hold. This test
+  // caught that change when it landed, which is the whole reason the two sets
+  // are pinned in full rather than spot-checked. The property being asserted has
+  // not moved: class-data-export is still the ONLY difference between the tiers,
+  // and it is still the one Core does not have.
   assert.deepEqual(
     [...CAPABILITIES['teacher-core']].sort(),
-    ['teacher-dashboard', 'worksheets']
+    ['official-scores', 'teacher-dashboard', 'worksheets']
   );
   assert.deepEqual(
     [...CAPABILITIES['teacher-pro']].sort(),
-    ['class-data-export', 'teacher-dashboard', 'worksheets']
+    ['class-data-export', 'official-scores', 'teacher-dashboard', 'worksheets']
   );
+
+  // Said directly rather than left to be inferred from the two lists above: the
+  // symmetric difference of the tiers is exactly one capability.
+  const core = CAPABILITIES['teacher-core'];
+  const pro = CAPABILITIES['teacher-pro'];
+  assert.deepEqual(
+    [...pro].filter((c) => !core.has(c)),
+    ['class-data-export']
+  );
+  assert.deepEqual([...core].filter((c) => !pro.has(c)), []);
 
   // Pro is a strict superset of Core, which is the shape a tier ladder has to
   // keep. If this ever fails, Core holds something Pro does not.
@@ -156,6 +172,40 @@ test('the sample constant and the predicate cannot drift', () => {
   assert.equal(isFreeSample(FREE_SAMPLE.courseId, FREE_SAMPLE.topicId), true);
 });
 
+
+// ---------------------------------------------------------------------------
+// Official score tracking
+//
+// Core-tier, decided 2026-08-23. The three assertions below are separated on
+// purpose: "Core has it", "Pro has it" and "no student plan has it" fail for
+// different reasons and a single combined test would report the wrong one.
+// ---------------------------------------------------------------------------
+
+test('a Teacher Core plan may record official scores', () => {
+  // The decision that makes this feature Core rather than Pro, as an assertion.
+  assert.equal(planGrants('teacher-core', 'official-scores'), true);
+});
+
+test('a Teacher Pro plan may record official scores too', () => {
+  // Pro must not lose a Core feature. The tiers diverge on exports only.
+  assert.equal(planGrants('teacher-pro', 'official-scores'), true);
+});
+
+test('no student plan may record an official score', () => {
+  // A student never transcribes their own official result. This is the half
+  // that a grant added to the wrong Set would break silently, because every
+  // teacher-facing assertion above would still pass.
+  assert.equal(planGrants('practice-pass', 'official-scores'), false);
+  assert.equal(planGrants('full-course', 'official-scores'), false);
+  assert.equal(planGrants(null, 'official-scores'), false);
+});
+
+test('recording an official score and exporting one are different capabilities', () => {
+  // Entry is Core, export stays Pro. If these ever collapse into one capability
+  // the tier boundary moves without anyone deciding to move it.
+  assert.equal(planGrants('teacher-core', 'official-scores'), true);
+  assert.equal(planGrants('teacher-core', 'class-data-export'), false);
+});
 
 // ---------------------------------------------------------------------------
 // The tier label
@@ -229,11 +279,12 @@ test('the capability list is exhaustive, and stays exhaustive by construction', 
   // capabilities.ts. These assertions are the runtime half: they catch the list
   // being emptied or truncated by something the type system cannot see, such as
   // a bad merge that deletes keys from the presence map.
-  assert.ok(ALL_CAPABILITIES.length >= 5, `only ${ALL_CAPABILITIES.length} capabilities`);
+  assert.ok(ALL_CAPABILITIES.length >= 6, `only ${ALL_CAPABILITIES.length} capabilities`);
   assert.deepEqual([...ALL_CAPABILITIES].sort(), [
     'class-data-export',
     'curriculum',
     'gumu',
+    'official-scores',
     'teacher-dashboard',
     'worksheets',
   ]);

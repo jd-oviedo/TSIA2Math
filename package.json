@@ -18,6 +18,7 @@
     "test:claim": "node --import ./scripts/ts-alias-hook.mjs scripts/faultproof_claim.mjs",
     "test:upgrade-slugs": "node scripts/faultproof_upgrade_slugs.mjs",
     "test:gumu-tier": "node scripts/verify_gumu_tier.mjs",
+    "test:official-scores-gate": "node scripts/verify_official_scores_gate.mjs",
     "test:overview": "node scripts/verify_topic_overview.mjs",
     "test:quiz-finish": "node scripts/verify_quiz_finish.mjs",
     "test:quiz-register": "node scripts/verify_quiz_register.mjs",

@@ -36,11 +36,27 @@ export type Capability =
   | "teacher-dashboard"
   // The CSV exports of class data: roster, score history, misconceptions.
   //
-  // THE FIRST CAPABILITY THAT SEPARATES THE TWO TEACHER TIERS. Everything above
-  // is held identically by Core and Pro, and the note under CAPABILITIES used to
-  // say the tiers differ by quota rather than by feature presence. That is no
-  // longer true, and the note has been corrected rather than left to rot.
-  | "class-data-export";
+  // THE FIRST CAPABILITY THAT SEPARATED THE TWO TEACHER TIERS, and still the
+  // only one. Everything else is held identically by Core and Pro, and the note
+  // under CAPABILITIES used to say the tiers differ by quota rather than by
+  // feature presence. That is no longer true, and the note has been corrected
+  // rather than left to rot.
+  | "class-data-export"
+  // Recording a student's official TSIA2A result from their College Board
+  // Individual Score Report, and reading it back.
+  //
+  // CORE, NOT PRO, and this is the point at which "Pro is Core plus exports"
+  // stopped being derivable from the shape of this list. Held by both teacher
+  // tiers; held by no student plan, because a student never transcribes their
+  // own official score.
+  //
+  // SEPARATE FROM class-data-export ON PURPOSE. Entering an official score is
+  // Core. Exporting a CSV that contains it stays Pro. The same values are
+  // therefore reachable under two different capabilities depending on what is
+  // being done with them, which is deliberate: the tier boundary is about
+  // getting data OUT in bulk, not about which teacher may record a result for
+  // the student in front of them.
+  | "official-scores";
 
 // ---------------------------------------------------------------------------
 // Exhaustiveness
@@ -78,6 +94,7 @@ const CAPABILITY_PRESENCE: Record<Capability, true> = {
   worksheets: true,
   "teacher-dashboard": true,
   "class-data-export": true,
+  "official-scores": true,
 };
 
 /**
@@ -100,8 +117,13 @@ const PRACTICE_PASS: readonly Capability[] = ["worksheets"];
 export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
   "practice-pass": new Set(PRACTICE_PASS),
   "full-course": new Set([...PRACTICE_PASS, "curriculum", "gumu"]),
-  "teacher-core": new Set(["teacher-dashboard", "worksheets"]),
-  "teacher-pro": new Set(["teacher-dashboard", "worksheets", "class-data-export"]),
+  "teacher-core": new Set(["teacher-dashboard", "worksheets", "official-scores"]),
+  "teacher-pro": new Set([
+    "teacher-dashboard",
+    "worksheets",
+    "class-data-export",
+    "official-scores",
+  ]),
 };
 
 // No WORKSHEET_QUOTA here, deliberately. The number for "regular access" has
@@ -116,6 +138,13 @@ export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
 // will come looking for why it changed.
 //
 // The quota point still stands on its own. Nothing about worksheets moved.
+//
+// EXTENDED 2026-08-23. official-scores is the first capability added since, and
+// it goes to BOTH teacher tiers. So the map is no longer "Pro is Core plus one
+// export": the two tiers now differ by exactly one capability out of three that
+// either of them holds, and a new teacher feature is Core by default unless
+// there is a reason it is not. Do not read the ordering of this list as a tier
+// ladder; read CAPABILITIES, which is the only thing that decides.
 
 // ---------------------------------------------------------------------------
 // The tier label
