@@ -4,6 +4,12 @@ import { usersById } from "./teacher-directory";
 import { aggregateMisconceptions, type AggregatedMisconception } from "./misconception-aggregate";
 import { misconceptionLabel } from "./misconception-labels";
 import { slugifyForFilename, type CsvCell } from "./csv";
+import {
+  latestPracticeBefore,
+  officialRosterCells,
+  OFFICIAL_ROSTER_COLUMNS,
+  type OfficialLevel,
+} from "./official-scores";
 
 // Query layer for the teacher CSV exports.
 //
@@ -126,12 +132,29 @@ type SessionRow = {
   completed_at: string | null;
 };
 
+/** The most recent official sitting per student, keyed by student id. */
+type OfficialRow = {
+  student_id: string;
+  official_crc_score: number;
+  test_date: string;
+  level_qr: OfficialLevel | null;
+  level_ar: OfficialLevel | null;
+  level_gr: OfficialLevel | null;
+  level_pr: OfficialLevel | null;
+};
+
 export type ClassData = {
   classes: OwnedClass[];
   enrollments: Enrollment[];
   /** Every session for every enrolled student, newest first. */
   sessions: SessionRow[];
   users: Map<string, { email: string; name: string }>;
+  /**
+   * Most recent official result per student, or an empty map when the table has
+   * not been migrated. Empty is a legitimate answer, not a failure: see
+   * loadOfficialScores().
+   */
+  officialByStudent: Map<string, OfficialRow>;
 };
 
 /**
@@ -176,8 +199,55 @@ export async function loadClassData(
         );
 
   const users = await usersById(admin);
+  const officialByStudent = await loadOfficialScores(admin, classIds, studentIds);
 
-  return { classes, enrollments, sessions, users };
+  return { classes, enrollments, sessions, users, officialByStudent };
+}
+
+/**
+ * Most recent official TSIA2A result per student, scoped to the classes being
+ * exported.
+ *
+ * MOST RECENT BY test_date, decision 5, exactly as app/api/teacher/roster/route.ts
+ * selects it. A student who sat the test twice shows the later sitting and not
+ * whichever row was typed in last, and the file and the screen have to agree
+ * about which one that is.
+ *
+ * SCOPED BY class_id AS WELL AS student_id. official_scores rows are per class,
+ * and a student enrolled with two teachers has one row per class; without the
+ * class filter this export would carry another teacher's entry.
+ *
+ * A MISSING TABLE YIELDS AN EMPTY MAP, not a throw. sql/official_scores.sql is
+ * run by hand, and an export that 500s on a pre-migration deploy would take the
+ * whole roster download away over columns that are allowed to be empty. Same two
+ * codes, and the same reasoning, as the roster route and the worksheets index.
+ */
+async function loadOfficialScores(
+  admin: Admin,
+  classIds: string[],
+  studentIds: string[]
+): Promise<Map<string, OfficialRow>> {
+  const out = new Map<string, OfficialRow>();
+  if (classIds.length === 0 || studentIds.length === 0) return out;
+
+  const { data, error } = await admin
+    .from("official_scores")
+    .select("student_id, official_crc_score, test_date, level_qr, level_ar, level_gr, level_pr")
+    .in("class_id", classIds)
+    .in("student_id", studentIds)
+    .order("test_date", { ascending: false });
+
+  if (error) {
+    if (error.code !== "42P01" && error.code !== "PGRST205") {
+      console.error("[teacher-export] official scores failed:", error.message);
+    }
+    return out;
+  }
+
+  for (const row of (data ?? []) as OfficialRow[]) {
+    if (!out.has(row.student_id)) out.set(row.student_id, row);
+  }
+  return out;
 }
 
 // ─── Formatting helpers ──────────────────────────────────────────────────────
@@ -213,15 +283,52 @@ export const ROSTER_COLUMNS_BASE = [
   "pr_accuracy_pct",
 ];
 
-export function rosterColumns(includeEmail: boolean): string[] {
-  if (!includeEmail) return ROSTER_COLUMNS_BASE;
-  // Slotted directly after student_name, where a reader expects it.
+/**
+ * The official TSIA2A columns, APPENDED and never interleaved.
+ *
+ * Position is a compatibility decision, not a layout one. A teacher who built a
+ * pivot or a district import against roster.csv addressed these columns by
+ * index, and slotting a new one into the middle silently shifts every column
+ * after it. Appending cannot break an existing consumer; the only cost is that
+ * official_score does not sit next to latest_score, and a header row is how a
+ * reader finds it either way.
+ *
+ * PREFIXED official_ THROUGHOUT, because the file already carries qr/ar/gr/pr
+ * accuracy percentages from the product's own practice runs. An unprefixed
+ * level_qr beside qr_accuracy_pct invites exactly the conflation this whole
+ * feature exists to prevent: one is what the product measured, the other is
+ * what the state reported.
+ *
+ * THE DELTA IS IN THE FILE THOUGH IT IS NOT ON THE ROSTER SCREEN. Decision 6
+ * keeps it off the roster cell because a delta needs its interval named beside
+ * it and a table cell has no room to name one. A CSV column CAN name it, and
+ * this one does: DELTA_COLUMN is 'delta_vs_latest_practice', derived from the
+ * same constant as the on-screen label so the two cannot drift into disagreeing
+ * about what interval the number covers.
+ */
+export const ROSTER_OFFICIAL_COLUMNS: string[] = [...OFFICIAL_ROSTER_COLUMNS];
+
+/**
+ * @param includeOfficial follows the 'official-scores' capability, NOT the
+ *   presence of data. Both teacher tiers hold it today, so in practice this is
+ *   always true; it is threaded through anyway because the export route gates on
+ *   'class-data-export' and a future plan could carry one capability without the
+ *   other. Columns following the capability is the only construction that stays
+ *   correct if that happens.
+ */
+export function rosterColumns(includeEmail: boolean, includeOfficial = true): string[] {
   const cols = [...ROSTER_COLUMNS_BASE];
-  cols.splice(2, 0, "student_email");
+  // Slotted directly after student_name, where a reader expects it.
+  if (includeEmail) cols.splice(2, 0, "student_email");
+  if (includeOfficial) cols.push(...ROSTER_OFFICIAL_COLUMNS);
   return cols;
 }
 
-export function buildRosterRows(data: ClassData, includeEmail: boolean): CsvCell[][] {
+export function buildRosterRows(
+  data: ClassData,
+  includeEmail: boolean,
+  includeOfficial = true
+): CsvCell[][] {
   const classNames = new Map(data.classes.map((c) => [c.id, c.name]));
 
   // Sessions arrive newest first, so the first one seen per student is latest.
@@ -263,11 +370,41 @@ export function buildRosterRows(data: ClassData, includeEmail: boolean): CsvCell
     ];
 
     if (includeEmail) row.splice(2, 0, user?.email ?? "");
+
+    if (includeOfficial) {
+      const official = data.officialByStudent.get(e.student_id) ?? null;
+
+      // The interval the delta covers, resolved through the SAME function the
+      // history panel and the API use, so the file cannot disagree with the
+      // screen about which run the number is measured against. Sessions arrive
+      // newest first by created_at, which is what latestPracticeBefore requires.
+      const practice = official
+        ? latestPracticeBefore(sessions, official.test_date)
+        : null;
+
+      // The cells themselves are built by a pure function in official-scores.ts,
+      // which the unit suite can load and fault. What is decided HERE is only
+      // which official row and which practice run they are built from.
+      row.push(...officialRosterCells(official, practice?.final_score ?? null));
+    }
+
     return row;
   });
 }
 
 // ─── scores.csv ──────────────────────────────────────────────────────────────
+//
+// NO OFFICIAL COLUMNS HERE, deliberately. scores.csv is one row per SESSION,
+// and an official sitting is not a session: it has no session id, no attempt
+// number in the product's sequence, no per-item breakdown and no time on task.
+// Adding it would need a synthetic session_type, and would corrupt
+// attempt_number and the tests_taken it lines up with on roster.csv.
+//
+// The most recent official result is on roster.csv, one row per enrolment,
+// which is the same shape the on-screen roster column has. FULL official
+// HISTORY -- a student who sat the test more than once -- is exportable from
+// neither file today and would want its own official-scores.csv. Recorded as an
+// open item in the PR rather than bolted onto a file whose grain is wrong for it.
 
 export const SCORES_COLUMNS_BASE = [
   "class_name",

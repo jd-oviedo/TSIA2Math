@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import MathText from "../../../components/MathText";
 import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from "../../../components/fonts";
+import OfficialScorePanel from "./OfficialScorePanel";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -302,6 +303,14 @@ export default function StudentDetailPage() {
             </div>
           )}
         </div>
+
+        {/* Official TSIA2 result.
+            Below Test history and above Misconceptions on purpose: the official
+            result is the outcome the practice history was building toward, so it
+            reads after the practice and before the diagnosis of what went wrong.
+            Its own component, on DASH tokens, rather than more hardcoded hexes
+            in this file. */}
+        <OfficialScorePanel studentId={studentId} classId={classId} isMobile={isMobile} />
 
         {/* Misconceptions */}
         <div>

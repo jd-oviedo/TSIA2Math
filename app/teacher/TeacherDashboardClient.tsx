@@ -13,6 +13,7 @@ import ModalShell from '../components/ModalShell';
 import ExportModal from './ExportModal';
 import TeacherTour, { TOUR_STORAGE_KEY } from './TeacherTour';
 import { teacherTierLabel } from "../lib/capabilities";
+import { OFFICIAL_LEVELS, type OfficialLevel } from "../lib/official-scores";
 import {
   PASSING,
   STRAND_ORDER as ORDER,
@@ -47,6 +48,17 @@ interface RosterRow {
     final_score: number | null;
     strand_breakdown: StrandBreakdown | null;
     completed_at: string;
+  } | null;
+  // Most recent official sitting only. Decision 5. The full history and the
+  // delta live on the student detail page; no delta is returned here at all,
+  // because a field present in the response is a field a later edit renders.
+  official_score: {
+    official_crc_score: number;
+    test_date: string;
+    level_qr: OfficialLevel | null;
+    level_ar: OfficialLevel | null;
+    level_gr: OfficialLevel | null;
+    level_pr: OfficialLevel | null;
   } | null;
 }
 
@@ -86,6 +98,12 @@ interface DisplayStudent {
   weakPct: number;
   tests: number;
   active: string;
+  // NO DELTA HERE, deliberately. Decision 6 keeps the official-minus-practice
+  // number on the student detail page and in the export, never in a roster cell:
+  // a delta needs its interval named beside it to mean anything, and a roster
+  // cell has no room to name one.
+  officialScore: number | null;
+  officialDate: string | null;
 }
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -135,7 +153,50 @@ function toDisplayStudent(r: RosterRow): DisplayStudent {
     weakLabel: tested ? `${wk} ${acc[wk]}%` : '—',
     tests: r.attempt_count,
     active: r.latest_session ? timeAgo(r.latest_session.completed_at) : '—',
+    officialScore: r.official_score?.official_crc_score ?? null,
+    officialDate: r.official_score?.test_date ?? null,
   };
+}
+
+/**
+ * The official score cell.
+ *
+ * A SCORE AND A DATE, AND NOTHING ELSE. No delta (decision 6), no band chip, no
+ * strand detail. The roster answers "did this student sit it and what did they
+ * get"; everything that needs an interval named beside it is on the detail page.
+ *
+ * An em-dash-free "Not recorded" rather than a bare dash, because a blank cell
+ * on a roster reads as a loading failure and this state is neither an error nor
+ * unusual: most students will have no official result for most of the year.
+ */
+function OfficialScoreCell({ s }: { s: DisplayStudent }) {
+  if (s.officialScore === null) {
+    return <span style={{ fontSize: 12.5, color: DASH.dim }}>Not recorded</span>;
+  }
+  return (
+    <div>
+      <div
+        style={{
+          fontSize: 15,
+          fontWeight: 700,
+          color: DASH.heading,
+          fontVariantNumeric: 'tabular-nums',
+          lineHeight: 1.1,
+        }}
+      >
+        {s.officialScore}
+      </div>
+      {s.officialDate && (
+        <div style={{ fontSize: 11.5, color: DASH.dim, marginTop: 2 }}>
+          {new Date(`${s.officialDate.slice(0, 10)}T00:00:00Z`).toLocaleDateString('en-US', {
+            month: 'short',
+            year: 'numeric',
+            timeZone: 'UTC',
+          })}
+        </div>
+      )}
+    </div>
+  );
 }
 
 // Viewport hook. Defaults to desktop for SSR / first paint (no hydration
@@ -795,6 +856,107 @@ function TopBar({ classes, selectedClassId, onSelectClass, joinCode, onInvite, o
   );
 }
 
+// ─── Official strand grid ─────────────────────────────────────────────────────
+
+/**
+ * Where the class stands on the official strand diagnostics.
+ *
+ * READ ONLY IN v1 (decision 3). Nothing here is clickable, sortable or
+ * filterable, and it writes nothing. Counts come from the most recent official
+ * row per student, which is the same row the roster cell renders.
+ *
+ * FOUR STRANDS, THREE LEVELS, AND A COUNT. Deliberately minimal: no percentages,
+ * no bars scaled against a total, no "weakest strand" verdict. The practice-side
+ * StrandPanel above already does the interpretive work on data the product
+ * generated. This is transcribed from an external document and a small cohort,
+ * so a percentage would put two significant figures on four students.
+ *
+ * STUDENTS WHO MET THE STANDARD ARE COUNTED SEPARATELY, not as zeroes and not as
+ * a fourth level. Their report carries no strand detail at all, so folding them
+ * into the grid would read as "no strand data" when the truth is "no strand data
+ * because they passed".
+ */
+function OfficialStrandGrid({ rows, cols }: { rows: RosterRow[]; cols: number }) {
+  const withOfficial = rows.filter((r) => r.official_score !== null);
+  const strands = [
+    { code: 'QR', key: 'level_qr' },
+    { code: 'AR', key: 'level_ar' },
+    { code: 'GR', key: 'level_gr' },
+    { code: 'PR', key: 'level_pr' },
+  ] as const;
+
+  // A student whose row carries no level on ANY strand met the standard. Counted
+  // once, not once per strand.
+  const metStandard = withOfficial.filter(
+    (r) => strands.every((st) => r.official_score![st.key] === null)
+  ).length;
+
+  if (withOfficial.length === 0) {
+    return (
+      <div data-tour="official-strand" style={{ ...cardStyle(), padding: '20px 22px', marginBottom: 26 }}>
+        <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: DASH.heading }}>
+          Official strand diagnostics
+        </h2>
+        <div style={{ marginTop: 3, fontSize: 12, color: DASH.muted }}>
+          From College Board score reports, recorded on each student profile
+        </div>
+        <p style={{ margin: '14px 0 0', fontSize: 13.5, color: DASH.muted }}>
+          No official results recorded for this class yet.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div data-tour="official-strand" style={{ ...cardStyle(), padding: '20px 22px', marginBottom: 26 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12, flexWrap: 'wrap' }}>
+        <div>
+          <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: DASH.heading }}>
+            Official strand diagnostics
+          </h2>
+          <div style={{ marginTop: 3, fontSize: 12, color: DASH.muted }}>
+            Students at each level, from their most recent official result
+          </div>
+        </div>
+        <span style={{ fontSize: 12, color: DASH.dim }}>
+          {withOfficial.length} of {rows.length} recorded
+        </span>
+      </div>
+
+      <div style={{ marginTop: 16, display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 12 }}>
+        {strands.map((st) => (
+          <div key={st.code} style={{ background: DASH.subtleBg, border: `1px solid ${DASH.hairline}`, borderRadius: 2, padding: '12px 13px' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 0.6, color: DASH.dim, textTransform: 'uppercase' }}>
+              {st.code}
+            </div>
+            <div style={{ marginTop: 9, display: 'flex', flexDirection: 'column', gap: 6 }}>
+              {OFFICIAL_LEVELS.map((level) => {
+                const n = withOfficial.filter(
+                  (r) => r.official_score![st.key] === (level as OfficialLevel)
+                ).length;
+                return (
+                  <div key={level} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 8 }}>
+                    <span style={{ fontSize: 12.5, color: DASH.muted }}>{level}</span>
+                    <span style={{ fontSize: 14, fontWeight: 700, color: n === 0 ? DASH.dim : DASH.heading, fontVariantNumeric: 'tabular-nums' }}>
+                      {n}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p style={{ margin: '14px 0 0', fontSize: 12.5, color: DASH.muted, lineHeight: 1.5 }}>
+        {metStandard === 0
+          ? 'No student in this class met the standard on their most recent sitting.'
+          : `${metStandard} ${metStandard === 1 ? 'student' : 'students'} met the standard, so their ${metStandard === 1 ? 'report carries' : 'reports carry'} no strand detail. They are not counted above.`}
+      </p>
+    </div>
+  );
+}
+
 // ─── Roster ───────────────────────────────────────────────────────────────────
 
 function RosterCard({ s, classId }: { s: DisplayStudent; classId: string }) {
@@ -815,6 +977,10 @@ function RosterCard({ s, classId }: { s: DisplayStudent; classId: string }) {
           <span style={{ width: 6, height: 6, borderRadius: '50%', background: s.bandDot }} />{s.band}
         </span>
         <span style={{ fontSize: 12, color: DASH.dim }}>{s.tests} {s.tests === 1 ? 'test' : 'tests'} · {s.active}</span>
+      </div>
+      <div style={{ marginTop: 12, display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 10 }}>
+        <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 0.6, textTransform: 'uppercase', color: DASH.dim }}>Official TSIA2</span>
+        <OfficialScoreCell s={s} />
       </div>
       <div style={{ marginTop: 12 }}>
         <StrandProfileBar s={s} />
@@ -872,7 +1038,7 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
           <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 720 }}>
             <thead>
               <tr style={{ background: DASH.subtleBg, borderBottom: `1px solid ${DASH.line}` }}>
-                {['Student', 'Score', 'Placement', 'Strand profile', 'Tests', 'Last active', ''].map((h) => (
+                {['Student', 'Score', 'Placement', 'Official', 'Strand profile', 'Tests', 'Last active', ''].map((h) => (
                   <th key={h} style={{ textAlign: h === 'Tests' ? 'center' : 'left', padding: h === '' || h === 'Student' ? '11px 20px' : '11px 14px', fontSize: 11, fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase', color: DASH.dim, whiteSpace: 'nowrap' }}>{h}</th>
                 ))}
               </tr>
@@ -898,6 +1064,9 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: s.bandBg, color: s.bandText, fontSize: 12, fontWeight: 700, padding: '5px 10px', borderRadius: 20, whiteSpace: 'nowrap' }}>
                       <span style={{ width: 6, height: 6, borderRadius: '50%', background: s.bandDot }} />{s.band}
                     </span>
+                  </td>
+                  <td style={{ padding: '13px 14px' }}>
+                    <OfficialScoreCell s={s} />
                   </td>
                   <td style={{ padding: '13px 14px' }}>
                     <StrandProfileBar s={s} />
@@ -1210,6 +1379,10 @@ export default function TeacherDashboardClient({ canExport, initialClasses, teac
                 <SummaryCards enrolled={rosterRows.length} notTested={notTested} crCount={collegeReady} crPct={crPct} weakStrand={weakStrand} avgScore={avgScore} cols={summaryCols} />
                 <NewAnnouncement classes={classes} selectedClassId={selectedClassId} />
                 <StrandPanel strandPct={strandPct} totalAttempts={totalAttempts} cols={strandCols} />
+                {/* Beside the practice strand panel, not instead of it. One is
+                    what the product measured, the other is what the state
+                    reported; a teacher needs to be able to see them disagree. */}
+                <OfficialStrandGrid rows={rosterRows} cols={strandCols} />
                 <Roster students={sortedStudents} enrolled={rosterRows.length} sortBy={sortBy} onSortChange={setSortBy} classId={selectedClassId} isMobile={isMobile} onExport={() => setShowExport(true)} canExport={canExport} />
 
                 {/* Misconceptions */}

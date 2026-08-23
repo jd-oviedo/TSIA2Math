@@ -129,6 +129,73 @@ async function main() {
   console.log(`Fixture: A1=${A1.id} A2=${A2.id} B1=${B1.id}`);
   console.log(`         teacherA=${teacherA} teacherB=${teacherB}\n`);
 
+  // ─── One official score, seeded before any export is fetched ──────────────
+  //
+  // Written straight through the service client rather than through POST
+  // /api/teacher/official-scores, and seeded HERE rather than mid-run, for one
+  // reason each:
+  //
+  //   Direct, because this suite is about what roster.csv CONTAINS. The API's
+  //   own behaviour is proved by verify_official_scores.mjs, and going through
+  //   it here would make a CSV failure ambiguous between the two.
+  //
+  //   Early, because every export request in this file spends the teacher's
+  //   rate-limit budget, and this suite has already had to be rewritten once to
+  //   stop fetching the same file twice. Seeding before the first download means
+  //   the existing roster response carries the row and no extra request is made.
+  //
+  // ana@ is the subject; the other students on A1 deliberately get nothing, so
+  // the file can be checked for BOTH states.
+  // profiles carries NO display name -- id, role, email, plan and billing, and
+  // that is all. The name on roster.csv comes from auth user metadata, through
+  // usersById(). So the id is resolved here and the NAME is looked up later,
+  // from the dashboard roster, where it is already available.
+  const anaLookup = await db
+    .from('profiles')
+    .select('id')
+    .eq('email', `ana@${EMAIL_DOMAIN}`)
+    .maybeSingle();
+  const anaId = anaLookup.data?.id ?? null;
+
+  let officialId = null;
+  let officialSeeded = false;
+
+  // EVERY failure path logs. An earlier version nested the error log inside the
+  // success guard, so a bad column name made the seed skip in total silence and
+  // section 5b reported "table missing" -- the wrong diagnosis, confidently.
+  if (anaLookup.error) {
+    console.log(`  official score NOT seeded, profiles lookup failed: ${anaLookup.error.message}`);
+  } else if (!anaId) {
+    console.log(`  official score NOT seeded: no profile for ana@${EMAIL_DOMAIN}`);
+  } else {
+    const { data: seeded, error: seedErr } = await db
+      .from('official_scores')
+      .insert({
+        student_id: anaId,
+        class_id: A1.id,
+        entered_by: teacherA,
+        official_crc_score: 946,
+        test_date: new Date().toISOString().slice(0, 10),
+        level_qr: 'Proficient',
+        level_ar: 'Basic',
+        level_gr: null,
+        level_pr: 'Advanced',
+        affirmed_official_report: true,
+        entered_despite_warning: false,
+      })
+      .select('id')
+      .maybeSingle();
+    if (seedErr) {
+      // A missing table is the pre-migration state and not a failure of this
+      // suite. Section 5b reports it as a skip rather than pretending.
+      console.log(`  official score NOT seeded: ${seedErr.code} ${seedErr.message}`);
+    } else {
+      officialId = seeded?.id ?? null;
+      officialSeeded = true;
+      console.log(`  official score seeded for ana: ${officialId}`);
+    }
+  }
+
   // ─── Build and start ──────────────────────────────────────────────────────
   console.log('Building.');
   execSync('npx next build', { stdio: 'inherit' });
@@ -359,6 +426,69 @@ async function main() {
     }
     check('tests_taken matches the dashboard attempt_count for every student', attemptsMatch);
     check('diagnostic + practice equals tests_taken', splitAddsUp);
+
+    // ─── The official TSIA2A columns ──────────────────────────────────────
+    //
+    // The pure cell-builder is unit-tested in tests/official-scores.test.ts.
+    // What can only be checked here is that those cells land under the right
+    // HEADINGS in a file produced by the real route, which is where a column
+    // count and a cell count drift apart.
+    console.log('\n5b. The official TSIA2A columns on roster.csv');
+    const OFFICIAL_COLS = [
+      'official_score',
+      'official_test_date',
+      'official_level_qr',
+      'official_level_ar',
+      'official_level_gr',
+      'official_level_pr',
+      'delta_vs_latest_practice',
+    ];
+
+    if (!officialSeeded) {
+      check(
+        'official columns checked (needs sql/official_scores.sql section 1)',
+        false,
+        'official_scores does not exist on this database'
+      );
+    } else {
+      // APPENDED, not interleaved. A consumer addressing roster.csv by column
+      // INDEX breaks the moment a new column lands in the middle, so position
+      // is asserted, not merely presence.
+      check(
+        'the official columns are the last seven, in order',
+        JSON.stringify(rosterHeader.slice(-7)) === JSON.stringify(OFFICIAL_COLS),
+        rosterHeader.slice(-7).join(',')
+      );
+      check(
+        'and nothing was inserted ahead of them',
+        rosterHeader.indexOf('qr_accuracy_pct') < rosterHeader.indexOf('official_score'),
+        `qr_accuracy_pct at ${rosterHeader.indexOf('qr_accuracy_pct')}, official_score at ${rosterHeader.indexOf('official_score')}`
+      );
+
+      const oScore = rosterHeader.indexOf('official_score');
+      const oDate = rosterHeader.indexOf('official_test_date');
+      const oGr = rosterHeader.indexOf('official_level_gr');
+      const oQr = rosterHeader.indexOf('official_level_qr');
+
+      const anaName = dashRoster.find((d) => d.student_id === anaId)?.name;
+      check('the seeded student is on the dashboard roster', Boolean(anaName), String(anaName));
+      const anaRow = rosterData.find((r) => r[nameIdx] === anaName);
+      check('the seeded official score is in the file', anaRow?.[oScore] === '946', anaRow?.[oScore]);
+      check('with its test date', /^\d{4}-\d{2}-\d{2}$/.test(anaRow?.[oDate] ?? ''), anaRow?.[oDate]);
+      check('and its strand levels', anaRow?.[oQr] === 'Proficient', anaRow?.[oQr]);
+      // A null level is EMPTY, not the text "null" and not a level.
+      check('a null level is an empty cell', anaRow?.[oGr] === '', JSON.stringify(anaRow?.[oGr]));
+
+      // THE OTHER HALF, and the one that would ship a bug quietly: a student
+      // with no official result must get empty cells, never zeroes. Zero is a
+      // real point on a 910-990 scale and would read as a catastrophic score.
+      const others = rosterData.filter((r) => r[nameIdx] !== anaName);
+      check(
+        'students with no official result have EMPTY official cells, not zeroes',
+        others.length > 0 && others.every((r) => OFFICIAL_COLS.every((_, i) => r[rosterHeader.indexOf(OFFICIAL_COLS[i])] === '')),
+        `${others.length} students checked`
+      );
+    }
 
     const scoresCsv = await get(a.ctx, `/api/teacher/export/scores?classes=${A1.id}`);
     writeFileSync(`${OUT}/scores-A1.csv`, scoresCsv.body);
@@ -652,6 +782,12 @@ async function main() {
   } finally {
     await browser.close();
     stop();
+
+    // Written directly, so removed directly. No aggregate row to clean up: the
+    // insert bypassed the API, which is where the aggregate write lives.
+    if (officialId) {
+      await db.from('official_scores').delete().eq('id', officialId);
+    }
   }
 
   console.log(`\n${'='.repeat(60)}`);

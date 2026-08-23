@@ -189,3 +189,113 @@ export const teacherExportQuerySchema = z
   });
 
 export type TeacherExportQuery = z.infer<typeof teacherExportQuerySchema>;
+
+// ---------------------------------------------------------------------------
+// Official TSIA2A score entry
+// ---------------------------------------------------------------------------
+
+const uuidSchema = z.string().regex(
+  /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/,
+  "must be a UUID"
+);
+
+const officialLevelSchema = z
+  .enum(["Basic", "Proficient", "Advanced"], {
+    message: "level must be Basic, Proficient or Advanced",
+  })
+  .nullable()
+  .default(null);
+
+// 910 to 990, integer. The same bound as the CHECK in sql/official_scores.sql,
+// stated twice on purpose: the CHECK is what makes a bad row impossible, and
+// this is what turns a typo into a sentence a teacher can act on instead of a
+// 500 from Postgres.
+const crcScoreSchema = z
+  .number({ message: "Enter the CRC score from the score report." })
+  .int("The CRC score is a whole number.")
+  .min(910, "The CRC score scale starts at 910.")
+  .max(990, "The CRC score scale ends at 990.");
+
+/**
+ * The test date, as printed on the report.
+ *
+ * NOT IN THE FUTURE IS ENFORCED HERE, and it has to be, because the database
+ * cannot do it. `check (test_date <= current_date)` is refused by Postgres:
+ * check constraints may only call IMMUTABLE functions and current_date is
+ * STABLE. sql/official_scores.sql carries an immutable sanity RANGE instead and
+ * says so at the column. This is the other half of that split.
+ *
+ * ONE DAY OF SLACK against UTC, deliberately. The server compares to a UTC date
+ * and the teacher is in US Central, which is behind it, so their "today" is
+ * never ahead of the server's. A teacher further east would be, and rejecting a
+ * legitimate same-day entry because of a timezone is a worse failure than
+ * accepting a date one day out. The database range still catches a mistyped
+ * year, which is the error this is really guarding against.
+ */
+const testDateSchema = z
+  .string()
+  .regex(/^\d{4}-\d{2}-\d{2}$/, "Use the date format YYYY-MM-DD.")
+  .refine((s) => !Number.isNaN(Date.parse(`${s}T00:00:00Z`)), {
+    message: "That is not a real date.",
+  })
+  .refine(
+    (s) => {
+      const entered = Date.parse(`${s}T00:00:00Z`);
+      const tomorrow = Date.now() + 24 * 60 * 60 * 1000;
+      return entered <= tomorrow;
+    },
+    { message: "The test date cannot be in the future." }
+  );
+
+const officialScoreFieldsSchema = z.object({
+  official_crc_score: crcScoreSchema,
+  test_date: testDateSchema,
+  // Absent and null both mean "no level", which is the COMPLETE state for a
+  // student who met the standard. Neither is an error and neither may be
+  // coerced to 'Advanced'.
+  level_qr: officialLevelSchema,
+  level_ar: officialLevelSchema,
+  level_gr: officialLevelSchema,
+  level_pr: officialLevelSchema,
+});
+
+/**
+ * Creating a row.
+ *
+ * `affirmed_official_report` is z.literal(true), not z.boolean(). The column is
+ * a bare CHECK with no false branch, so a false here would be refused by
+ * Postgres anyway; catching it in Zod is what turns that into a message rather
+ * than a 500. A missing field is refused for the same reason: an unaffirmed row
+ * must not be creatable by a caller that simply omits the key.
+ *
+ * `entered_despite_warning` is DELIBERATELY ABSENT from this schema. It is
+ * computed on the server from the score and the levels, so a request that never
+ * rendered the form cannot claim it was not warned.
+ */
+export const officialScoreCreateSchema = officialScoreFieldsSchema.extend({
+  student_id: uuidSchema,
+  class_id: uuidSchema,
+  affirmed_official_report: z.literal(true, {
+    message: "Confirm you are entering this from the student's official score report.",
+  }),
+});
+
+/**
+ * Correcting a row inside its window.
+ *
+ * The same fields, plus the row id. student_id and class_id are NOT accepted:
+ * a correction fixes a transcription slip, it does not move a result onto a
+ * different student, and allowing that here would make entered_by a signature
+ * on something other than what was signed.
+ */
+export const officialScoreCorrectSchema = officialScoreFieldsSchema.extend({
+  id: uuidSchema,
+  affirmed_official_report: z.literal(true, {
+    message: "Confirm the corrected values come from the official score report.",
+  }),
+});
+
+export const officialScoreDeleteSchema = z.object({ id: uuidSchema });
+
+export type OfficialScoreCreate = z.infer<typeof officialScoreCreateSchema>;
+export type OfficialScoreCorrect = z.infer<typeof officialScoreCorrectSchema>;

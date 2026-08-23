@@ -79,12 +79,52 @@ export async function GET(req: Request) {
     sessionsByStudent.get(s.user_id)!.push(s);
   }
 
+  // Most recent OFFICIAL result per student, for the roster column.
+  //
+  // MOST RECENT ONLY. Decision 5: the roster shows the latest official score and
+  // nothing else. Full history, and the delta, live on the student detail page.
+  // The delta is deliberately NOT computed here and deliberately not returned:
+  // decision 6 keeps it off the roster, and a field that exists in the response
+  // is a field a future edit renders.
+  //
+  // Ordered by test_date so a student who sat the test twice shows the later
+  // sitting, not whichever row was typed in last.
+  const officialByStudent = new Map<
+    string,
+    {
+      official_crc_score: number;
+      test_date: string;
+      level_qr: string | null;
+      level_ar: string | null;
+      level_gr: string | null;
+      level_pr: string | null;
+    }
+  >();
+  const { data: official, error: officialError } = await admin
+    .from("official_scores")
+    .select("student_id, official_crc_score, test_date, level_qr, level_ar, level_gr, level_pr")
+    .eq("class_id", classId)
+    .in("student_id", studentIds)
+    .order("test_date", { ascending: false });
+
+  // A missing table is not an error here. sql/official_scores.sql is run by
+  // hand, and a roster that 500s on a pre-migration deploy would take the whole
+  // dashboard down over a column that is allowed to be empty. Same two codes as
+  // the worksheets index.
+  if (officialError && officialError.code !== "42P01" && officialError.code !== "PGRST205") {
+    console.error("[teacher/roster] official scores failed:", officialError.message);
+  }
+  for (const row of official ?? []) {
+    if (!officialByStudent.has(row.student_id)) officialByStudent.set(row.student_id, row);
+  }
+
   const roster = enrollments.map((e) => {
     const studentSessions = sessionsByStudent.get(e.student_id) ?? [];
     const latest = studentSessions[0] ?? null;
     const user = userMap.get(e.student_id);
     const email = user?.email ?? "";
     const name = user?.name ?? "";
+    const officialRow = officialByStudent.get(e.student_id) ?? null;
 
     return {
       student_id: e.student_id,
@@ -100,6 +140,20 @@ export async function GET(req: Request) {
             final_score: latest.final_score,
             strand_breakdown: latest.strand_breakdown,
             completed_at: latest.created_at,
+          }
+        : null,
+      // Levels ride along for the class strand grid, which counts students per
+      // level from the most recent official row per student. The roster CELL
+      // renders only the score and the date; the grid is a different reader of
+      // the same row and a second endpoint for four columns would be worse.
+      official_score: officialRow
+        ? {
+            official_crc_score: officialRow.official_crc_score,
+            test_date: officialRow.test_date,
+            level_qr: officialRow.level_qr,
+            level_ar: officialRow.level_ar,
+            level_gr: officialRow.level_gr,
+            level_pr: officialRow.level_pr,
           }
         : null,
     };
