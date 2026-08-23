@@ -336,6 +336,7 @@ export const PRINT_CSS = `
 }
 .ws-rat-text { min-width: 0; }
 .ws-rat-text p { display: inline; margin: 0; }
+.ws-rat-missing { color: var(--ws-muted); font-style: italic; }
 
 /* ── the footer, on every part ────────────────────────────────────────────── */
 .ws-foot {

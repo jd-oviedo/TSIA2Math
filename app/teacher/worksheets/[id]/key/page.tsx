@@ -1,4 +1,9 @@
-import { requireWorksheetTeacher, loadWorksheet, loadTopicMeta } from '../../worksheet-data';
+import {
+  requireWorksheetTeacher,
+  loadWorksheet,
+  loadTopicMeta,
+  buildRationales,
+} from '../../worksheet-data';
 import { resolveForKey } from '@/app/lib/worksheet-source';
 import { PRINT_CSS } from '../../print-styles';
 import { AnswerKeySheet } from '../../WorksheetSheet';
@@ -33,6 +38,7 @@ export default async function AnswerKeyPage({
   const worksheet = await loadWorksheet(id, profile.id);
   const items = await resolveForKey(worksheet.course_id, worksheet.items);
   const topicMeta = await loadTopicMeta(worksheet.course_id, worksheet.items);
+  const rationales = buildRationales(items);
 
   const created = new Date(worksheet.created_at).toLocaleDateString('en-US', {
     year: 'numeric',
@@ -53,6 +59,7 @@ export default async function AnswerKeyPage({
         items={items}
         created={created}
         topicMeta={topicMeta}
+        rationales={rationales}
       />
     </>
   );

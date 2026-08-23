@@ -2,7 +2,9 @@ import { redirect, notFound } from 'next/navigation';
 import { requireTeacher, profileGrants, type Profile } from '@/app/lib/auth';
 import { createAdminClient } from '@/app/lib/supabase-admin';
 import { createClient } from '../../lib/supabase-server';
+import { renderInlineWithMath } from '../../../lib/curriculum-utils';
 import type { ItemRef } from '@/app/lib/worksheet-select';
+import type { KeyItem } from '@/app/lib/worksheet-source';
 
 // The gate and the load, shared by every /teacher/worksheets route.
 //
@@ -122,4 +124,46 @@ export async function loadTopicMeta(
     };
   }
   return meta;
+}
+
+/**
+ * The rationales page, one entry per question.
+ *
+ * THE SOURCE IS distractor_prose, NOT worked_solutions, and the choice is a
+ * measurement rather than a preference. Across the 97 topic files the correct-
+ * option prose runs a median of 93 characters and p90 of 121; the worked
+ * solutions run a median of 346 across a median of 6 block paragraphs. Twenty
+ * of the first fit the approved two-column page. Twenty of the second are three
+ * to four pages and are not a "page" at all.
+ *
+ * NO MATH IN THIS FIELD TODAY. Zero of the 1,344 stored correct-option lines
+ * contain a dollar sign, so page 3 renders no KaTeX against live content. It is
+ * still rendered through renderInlineWithMath rather than printed as text,
+ * because this is the field a rationale-authoring pass will enrich, and the day
+ * it carries math the page should already know what to do with it. Verified by
+ * rendering a synthetic entry, not by assuming.
+ *
+ * Only the prose goes through the renderer. The "Choice D is correct:" label is
+ * markup in the component, so nothing this function writes can be re-read as
+ * markdown by the pipeline.
+ */
+export type Rationale = {
+  n: number;
+  letter: string;
+  /** Rendered prose, or null when the item has no stored rationale. */
+  html: string | null;
+  /** A rolled instance, whose authored prose names the canonical numbers. */
+  generated: boolean;
+};
+
+export function buildRationales(items: KeyItem[]): Rationale[] {
+  return items.map((item, i) => {
+    const right = item.notes.find((note) => note.correct);
+    return {
+      n: i + 1,
+      letter: item.correct_answer,
+      html: right ? renderInlineWithMath(right.text) : null,
+      generated: item.ref.source === 'instance',
+    };
+  });
 }

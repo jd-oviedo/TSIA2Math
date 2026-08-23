@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import type { PrintItem, KeyItem } from '@/app/lib/worksheet-source';
-import type { TopicMeta } from './worksheet-data';
+import type { TopicMeta, Rationale } from './worksheet-data';
 
 // The paper itself, as pure presentation.
 //
@@ -188,19 +188,77 @@ export function AnswerKeySheet({
   items,
   created,
   topicMeta,
+  rationales,
 }: {
   title: string;
   items: KeyItem[];
   created: string;
   topicMeta: Record<string, TopicMeta>;
+  rationales: Rationale[];
 }) {
   return (
     <div className="ws-sheet">
+      {/* ── page 2, the key itself ────────────────────────────────────────────
+          A compact grid, not the per-question cards. This is the page a teacher
+          holds while marking a stack of twenty, so it answers exactly one
+          question per cell and fits the whole sheet in a glance. The reasoning
+          lives on the two parts after it. */}
       <section className="ws-part ws-part-key">
         <SheetHead
           heading="Answer Key"
           meta={`${title} · ${items.length} QUESTIONS · ${created}`}
         />
+        <ul className="ws-key-grid">
+          {items.map((item, i) => (
+            <li className="ws-key-cell" key={`key-${item.topic_id}-${i}`}>
+              <span className="ws-key-n">{i + 1}.</span>
+              <span className="ws-key-letter">{item.correct_answer || '?'}</span>
+            </li>
+          ))}
+        </ul>
+        <SheetFoot marker="KEY" page="02" />
+      </section>
+
+      {/* ── page 3, the rationales ───────────────────────────────────────────
+          Why the correct choice is correct, one line each. See buildRationales
+          for why this reads distractor_prose and not the worked solutions. */}
+      <section className="ws-part ws-part-rationales">
+        <SheetHead heading="Rationales" meta={`${title} · ${items.length} QUESTIONS`} />
+        <ul className="ws-rats">
+          {rationales.map((rat) => (
+            <li className="ws-rat" key={`rat-${rat.n}`}>
+              <span className="ws-rat-n">{rat.n}.</span>
+              <span className="ws-rat-text">
+                {rat.html ? (
+                  <>
+                    <strong>Choice {rat.letter || '?'} is correct:</strong>{' '}
+                    <span dangerouslySetInnerHTML={{ __html: rat.html }} />
+                  </>
+                ) : (
+                  /* Said out loud rather than left as a blank row. A rolled
+                     instance has different numbers from the authored prose, so
+                     the stored sentence would be arithmetically wrong for it
+                     while reading as perfectly authoritative. */
+                  <span className="ws-rat-missing">
+                    {rat.generated
+                      ? `Choice ${rat.letter || '?'} is correct. Generated variant, so the authored rationale is not shown.`
+                      : `Choice ${rat.letter || '?'} is correct. No rationale stored for this item yet.`}
+                  </span>
+                )}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <SheetFoot marker="RATIONALES" page="03" />
+      </section>
+
+      {/* ── the teacher's notes ──────────────────────────────────────────────
+          NOT part of the approved three-page format, and kept anyway. The line
+          saying what the students who chose C actually did is the thing worth
+          paying for; the mockup simply has no page for it. It keeps the shape
+          it already had, on the stylesheet the other parts share. */}
+      <section className="ws-part ws-part-notes">
+        <SheetHead heading="Teacher Notes" meta={`${title} · ${items.length} QUESTIONS`} />
 
         {items.map((item, i) => {
           const n = i + 1;
@@ -279,7 +337,7 @@ export function AnswerKeySheet({
           );
         })}
 
-        <SheetFoot marker="KEY" page="02" />
+        <SheetFoot marker="NOTES" page="04" />
       </section>
     </div>
   );
