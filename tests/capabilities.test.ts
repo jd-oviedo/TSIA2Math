@@ -9,6 +9,8 @@ import {
   freeSampleGrants,
   FREE_SAMPLE,
   ALL_CAPABILITIES,
+  WORKSHEET_QUOTA,
+  worksheetQuota,
 } from '../app/lib/capabilities.ts';
 
 // The capability map, and the free sample.
@@ -299,4 +301,58 @@ test('the capability list is exhaustive, and stays exhaustive by construction', 
       `${capability} is granted by a plan but missing from ALL_CAPABILITIES`
     );
   }
+});
+
+
+// ─── The worksheet quota ────────────────────────────────────────────────────
+//
+// Asserted the same way CAPABILITIES is, for the same reason: this map decides
+// who gets metered, and a wrong entry here either meters a plan that paid not
+// to be or lets the one capped plan run free.
+
+test('exactly one plan is capped, and it is Teacher Core at 15', () => {
+  assert.equal(WORKSHEET_QUOTA['teacher-core'], 15);
+
+  const capped = Object.entries(WORKSHEET_QUOTA)
+    .filter(([, cap]) => cap !== null)
+    .map(([plan]) => plan);
+  assert.deepEqual(capped, ['teacher-core'],
+    'adding a second capped plan is a pricing change, not a refactor');
+});
+
+test('every unlimited plan is null, never Infinity', () => {
+  // Infinity is the obvious spelling and the wrong one: JSON.stringify(Infinity)
+  // is `null`, so a cap that crossed to the client as Infinity would arrive as
+  // null anyway and the codebase would carry two spellings of one idea. This
+  // pins the decision rather than leaving it to whoever edits the map next.
+  for (const plan of ['practice-pass', 'full-course', 'teacher-pro'] as const) {
+    assert.equal(WORKSHEET_QUOTA[plan], null, `${plan} should be uncapped`);
+    assert.notEqual(WORKSHEET_QUOTA[plan], Infinity);
+  }
+  for (const cap of Object.values(WORKSHEET_QUOTA)) {
+    assert.ok(cap === null || Number.isFinite(cap), 'a cap is a finite number or null');
+  }
+});
+
+test('every plan that holds worksheets has declared a quota', () => {
+  // The map is Record<Plan, ...>, so this cannot fail while the types hold. It
+  // is asserted anyway because the PROPERTY that matters is the pairing: a plan
+  // may hold the capability without being capped, but it may never hold the
+  // capability and be missing from the quota map.
+  for (const plan of ['practice-pass', 'full-course', 'teacher-core', 'teacher-pro'] as const) {
+    assert.ok(planGrants(plan, 'worksheets'));
+    assert.ok(plan in WORKSHEET_QUOTA, `${plan} holds worksheets but declares no quota`);
+  }
+});
+
+test('worksheetQuota returns null for absent and unknown plans', () => {
+  // null from this function means "do not count", never "let them in". It is
+  // safe only because nothing calls it before requireTeacher() and
+  // profileGrants() have already run.
+  assert.equal(worksheetQuota(null), null);
+  assert.equal(worksheetQuota(undefined), null);
+  assert.equal(worksheetQuota(''), null);
+  assert.equal(worksheetQuota('founding-teacher'), null);
+  assert.equal(worksheetQuota('teacher-core'), 15);
+  assert.equal(worksheetQuota('teacher-pro'), null);
 });
