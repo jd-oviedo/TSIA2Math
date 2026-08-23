@@ -74,6 +74,20 @@ LETTERS = ("A", "B", "C", "D")
 # exactly one parameter set is precisely the kind a sample of 200 can miss.
 FULL_ENUMERATION_CAP = 200_000
 
+# Longest stem a rolled instance may render, in characters.
+#
+# A worksheet prints a stem as one line block above its four choices. Past a
+# certain width that block wraps into the next question's space and the sheet
+# stops reading as a numbered list, which is a layout failure a teacher notices
+# and an author never does, because nothing in the authoring loop prints.
+#
+# 240 rather than a rounder number: the live pool's longest rendered stem is
+# practice 7 at 200 characters, and the shortest is 34. 240 clears the real
+# maximum with room for a longer rolled value without permitting a runaway. It
+# is a ceiling on the *rendered* stem, not the template, because substituting a
+# two-digit parameter for a one-digit one moves the count.
+STEM_MAX_CHARS = 240
+
 IDENT = re.compile(r"[A-Za-z_]\w*")
 MATH_SPAN = re.compile(r"\$[^$]*\$")
 
@@ -660,8 +674,15 @@ def verify(tpl, src, n_random, seed):
                     f"stored distractor is {house_latex(choices[L], tpl['variables'])}",
                 ))
 
-        text = render(tpl, tpl["stem_template"], vals)
-        text += " " + " ".join(house_latex(choices[L], tpl["variables"]) for L in LETTERS)
+        stem = render(tpl, tpl["stem_template"], vals)
+        if len(stem) > STEM_MAX_CHARS:
+            fails.append((
+                "length", vals,
+                f"stem renders {len(stem)} characters, ceiling is {STEM_MAX_CHARS}: "
+                f"{stem[:60]}...",
+            ))
+
+        text = stem + " " + " ".join(house_latex(choices[L], tpl["variables"]) for L in LETTERS)
         for problem in latex_problems(text):
             fails.append(("latex", vals, problem))
 
