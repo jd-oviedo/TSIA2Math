@@ -62,6 +62,30 @@ export default function AssignmentsPanel({
   const [failed, setFailed] = useState(false);
   const [busyId, setBusyId] = useState<string | null>(null);
 
+  /**
+   * The clock this panel measures "overdue" against, read WHEN THE DATA LOADS
+   * rather than while rendering.
+   *
+   * Date.now() inline in the render body is an impure call during render, which
+   * react-hooks/purity refuses -- and it is right to: a component that reads the
+   * clock while rendering produces a different tree for the same props, so React
+   * is free to render it twice and get two answers. This is a real constraint,
+   * not a lint preference, so it is fixed by moving the read rather than by
+   * silencing the rule.
+   *
+   * LOADED-AT, NOT MOUNTED-AT, and the distinction is the honest one: the
+   * complete / in-progress / not-started counts beside the due date were
+   * computed by the server for that same read. Measuring the deadline against
+   * the moment those counts arrived keeps every number in a row describing the
+   * same instant. A clock captured at mount would drift away from the counts on
+   * every refresh; a clock read at render would disagree with them by however
+   * long the panel had been open.
+   *
+   * Null until the first load resolves. Nothing renders a due-date chip before
+   * then, because the list itself is null until the same moment.
+   */
+  const [loadedAt, setLoadedAt] = useState<number | null>(null);
+
   const load = useCallback(async () => {
     if (!classId) return;
     setFailed(false);
@@ -73,6 +97,9 @@ export default function AssignmentsPanel({
         return;
       }
       const body = await res.json();
+      // Read here, in the loader, which is the whole point: this runs from an
+      // effect, not from the render path.
+      setLoadedAt(Date.now());
       // stored:false is the pre-migration answer. Render nothing at all rather
       // than an empty list that reads as "you have set no work".
       setRows(body.stored === false ? null : (body.assignments ?? []));
@@ -135,14 +162,19 @@ export default function AssignmentsPanel({
       ) : (
         <div style={{ ...cardStyle(), overflow: 'hidden' }}>
           {list.map((a, i) => {
-            // OVERDUE IS DERIVED HERE, AT RENDER, against the clock in the
-            // browser that is showing it. The API sends due_at raw and nothing
-            // stores a boolean: an "overdue" computed on the server is wrong the
-            // moment the response is cached, and wrong all night for a teacher
-            // in a different timezone from the server.
+            // OVERDUE IS DERIVED HERE, never stored. The API sends due_at raw:
+            // an "overdue" computed on the server is wrong the moment the
+            // response is cached, and wrong all night for a teacher in a
+            // different timezone from the server.
+            //
+            // The comparison is against `loadedAt`, captured in the loader --
+            // see the note on that state. Reading the clock on this line instead
+            // would be an impure call during render. Same two conditions as
+            // before, same answer: past its date, and not everyone is done.
             const overdue =
               a.due_at !== null &&
-              Date.parse(a.due_at) < Date.now() &&
+              loadedAt !== null &&
+              Date.parse(a.due_at) < loadedAt &&
               a.complete < a.target_count;
 
             return (
