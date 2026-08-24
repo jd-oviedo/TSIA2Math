@@ -299,3 +299,155 @@ export const officialScoreDeleteSchema = z.object({ id: uuidSchema });
 
 export type OfficialScoreCreate = z.infer<typeof officialScoreCreateSchema>;
 export type OfficialScoreCorrect = z.infer<typeof officialScoreCorrectSchema>;
+
+// ---------------------------------------------------------------------------
+// Assignments
+//
+// POST /api/teacher/assignments. Build 4a: the first teacher WRITE in the
+// curriculum arc, and the first request body that can name other people.
+//
+// A DISCRIMINATED UNION, NOT ONE OBJECT WITH OPTIONAL FIELDS, and that is the
+// whole design of this schema. `student_ids` is not merely optional on a
+// class-target assignment -- it is meaningless on one, and an object schema
+// with an optional array would accept
+//
+//   { target_type: 'class', student_ids: [<somebody else's uuid>] }
+//
+// and hand the route a body it has to remember to ignore. Here that request does
+// not parse at all: the 'class' branch declares no such key, so the shape is
+// refused before any handler logic runs. Same reason gumuBodySchema above is a
+// union rather than one object with three optional halves.
+//
+// WHAT IS DELIBERATELY ABSENT: created_by. It is written on the server from the
+// session profile, exactly as entered_despite_warning is computed there rather
+// than accepted -- see the note on officialScoreCreateSchema. A request that
+// could name its own author could sign an assignment as another teacher.
+// ---------------------------------------------------------------------------
+
+/**
+ * The due date, or none at all.
+ *
+ * NULL IS A REAL AND COMMON STATE, not missing data: "work through this topic,
+ * no deadline" is a thing teachers set. So null is accepted, undefined defaults
+ * to null, and neither is an error.
+ *
+ * THE RANGE IS THE OTHER HALF OF A SPLIT THE DATABASE FORCED. sql/assignments.sql
+ * A1 carries `check (due_at is null or due_at between '2021-01-01' and
+ * '2100-01-01')` and cannot carry anything tighter: check constraints may only
+ * call IMMUTABLE functions, now() is STABLE, and the create table fails with
+ * 42P17. So the database catches a mistyped year and anything time-relative
+ * lives here. Same split as testDateSchema above, stated at
+ * sql/official_scores.sql:110-121.
+ *
+ * A PAST due date is ACCEPTED on purpose. A teacher setting Friday's work on
+ * Saturday morning, or backfilling what was already assigned on paper, is
+ * ordinary; the tracker renders it overdue, which is the honest answer. Refusing
+ * it would be the schema inventing a workflow rule.
+ */
+const dueAtSchema = z
+  .string()
+  .refine((s) => !Number.isNaN(Date.parse(s)), { message: "That is not a real date." })
+  .refine(
+    (s) => {
+      const at = Date.parse(s);
+      return (
+        at >= Date.parse("2021-01-01T00:00:00Z") && at <= Date.parse("2100-01-01T00:00:00Z")
+      );
+    },
+    { message: "That due date is not in a sensible range." }
+  )
+  .nullable()
+  .default(null);
+
+// The pair that identifies a topic, patterned exactly as
+// curriculumPracticeBodySchema above patterns them, and for the same stated
+// reason: this rejects obvious garbage fast with a clean message. The real
+// authority on whether a topic is ASSIGNABLE is isAssignableTopic() in the
+// route, which additionally refuses placeholders -- a well-formed id for a
+// "Coming soon" topic passes this and is refused there.
+const assignmentTopicFields = {
+  class_id: uuidSchema,
+  course_id: z
+    .string()
+    .min(1, "course_id is required")
+    .max(100)
+    .regex(/^[a-z0-9-]+$/, "course_id contains invalid characters"),
+  // HYPHENS ARE ALLOWED HERE AND ARE NOT ALLOWED BY curriculumPracticeBodySchema
+  // ABOVE, and the difference is deliberate rather than drift.
+  //
+  // Real topic ids look like "QR.3.5". PLACEHOLDER ids do not: production
+  // carries AR.COMING-SOON, GR.COMING-SOON and PR.COMING-SOON. If this pattern
+  // refused a hyphen, a request naming a placeholder would be rejected HERE, as
+  // a malformed id, and isAssignableTopic() -- the thing that actually
+  // implements "a teacher cannot assign a topic that is still being written" --
+  // would never run for the only ids that test it.
+  //
+  // That is the difference between a rule and a coincidence. The placeholder
+  // ruling would appear to hold while resting entirely on how somebody happened
+  // to name three rows, and would break silently the first time a placeholder
+  // was named without a hyphen. So the shape check is widened to let those ids
+  // through to the check that is supposed to refuse them, and
+  // scripts/faultproof_assignments.mjs W5 proves the refusal by deleting the
+  // is_placeholder filter and watching a "Coming soon" topic become assignable.
+  topic_id: z
+    .string()
+    .min(1, "topic_id is required")
+    .max(50)
+    .regex(/^[A-Za-z0-9.-]+$/, "topic_id contains invalid characters"),
+  due_at: dueAtSchema,
+};
+
+/**
+ * The whole class.
+ *
+ * NO STUDENT LIST, AND NO WAY TO SEND ONE. The target is resolved live against
+ * active enrolments every time the tracker is read, so a student who joins next
+ * week is included and a removed student drops out without anything stored
+ * changing. That is why this branch carries no ids: there is nothing to store.
+ */
+const assignmentClassTargetSchema = z.object({
+  ...assignmentTopicFields,
+  target_type: z.literal("class"),
+});
+
+/**
+ * A named set of students: one for an individual, N for an ad-hoc subset.
+ *
+ * ONE SHAPE COVERS BOTH, deliberately. There is no group entity in this product
+ * and a "assign to one student" branch would be a second code path that agrees
+ * with this one until it does not.
+ *
+ * THE ARRAY IS BOUNDED AND DEDUPLICATED HERE, and neither is cosmetic. The bound
+ * is a sanity limit far past any real class, matching how sessionsBodySchema
+ * bounds `responses`. The duplicate check exists because assignment_students has
+ * a composite primary key, so a repeated id would make the whole insert fail
+ * with 23505 and be reported to the teacher as a duplicate ASSIGNMENT, which is
+ * a different and confusing error. Same refine, same reason, as the duplicate
+ * item_id check on sessionsBodySchema.
+ *
+ * EVERY ID IS STILL UNVERIFIED AFTER THIS SCHEMA PASSES. A well-formed uuid
+ * belonging to a student in another teacher's class parses perfectly. Membership
+ * is proved in the route against activeStudentIds() before a row is written, and
+ * that check -- not this one -- is the tenant boundary on the write path.
+ */
+const assignmentStudentTargetSchema = z.object({
+  ...assignmentTopicFields,
+  target_type: z.literal("student"),
+  student_ids: z
+    .array(uuidSchema)
+    .min(1, "Select at least one student.")
+    .max(200, "That is more students than a class can hold.")
+    .refine((ids) => new Set(ids).size === ids.length, {
+      message: "student_ids contains the same student twice",
+    }),
+});
+
+export const assignmentCreateSchema = z.discriminatedUnion("target_type", [
+  assignmentClassTargetSchema,
+  assignmentStudentTargetSchema,
+]);
+
+export type AssignmentCreate = z.infer<typeof assignmentCreateSchema>;
+
+/** Removing one. Id only: an assignment is not edited in Build 4a. */
+export const assignmentDeleteSchema = z.object({ id: uuidSchema });

@@ -71,7 +71,28 @@ export type Capability =
   // counts and gate percentages are a separate surface and, when it lands, its
   // own decision. Do not widen this capability to cover it by assuming the name
   // already stretches that far.
-  | "curriculum-progress";
+  | "curriculum-progress"
+  // Setting whole-topic work for a class, a subset of a class, or one student,
+  // and tracking who has done it.
+  //
+  // CORE AND PRO BOTH, the third capability in a row to take that route, and by
+  // now it is the rule rather than a series of individual decisions: a new
+  // teacher feature is Core unless there is a reason it is not. Setting work for
+  // your own class is the thing a teacher dashboard is for; the tier boundary is
+  // bulk export, and this exports nothing.
+  //
+  // SEPARATE FROM curriculum-progress, and the split is not cosmetic. That one
+  // names the cross-student READ. This one names a WRITE -- the first teacher
+  // write in this arc -- and a plan could coherently hold the read without the
+  // write (a read-only observer account, a district viewer). Folding the write
+  // into the read capability would make that impossible to express later without
+  // a migration of every gate that names it.
+  //
+  // COMPLETION IS NOT PART OF THIS. An assignment's status is computed from
+  // getTopicStatuses, which the teacher already reaches through
+  // curriculum-progress. This capability gates setting and tracking work, not
+  // seeing progress, and a route that needs both asks for both.
+  | "assignments";
 
 // ---------------------------------------------------------------------------
 // Exhaustiveness
@@ -111,6 +132,7 @@ const CAPABILITY_PRESENCE: Record<Capability, true> = {
   "class-data-export": true,
   "official-scores": true,
   "curriculum-progress": true,
+  assignments: true,
 };
 
 /**
@@ -138,6 +160,7 @@ export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
     "worksheets",
     "official-scores",
     "curriculum-progress",
+    "assignments",
   ]),
   "teacher-pro": new Set([
     "teacher-dashboard",
@@ -145,6 +168,7 @@ export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
     "class-data-export",
     "official-scores",
     "curriculum-progress",
+    "assignments",
   ]),
 };
 
@@ -167,6 +191,13 @@ export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
 // difference between the tiers, now one capability out of four rather than out
 // of three, and tests/capabilities.test.ts asserts that symmetric difference
 // directly rather than leaving it to be inferred from the two lists.
+//
+// EXTENDED AGAIN 2026-08-24. `assignments` is the third, same route again, both
+// tiers. Three in a row is no longer a run of coincidences: Core by default is
+// the rule, and the thing to check when adding a fourth is whether there is a
+// REASON it is Pro-only, not whether it feels premium. class-data-export remains
+// the sole difference between the tiers -- one capability out of five now -- and
+// it remains the only one anybody had such a reason for.
 
 // ---------------------------------------------------------------------------
 // The worksheet quota

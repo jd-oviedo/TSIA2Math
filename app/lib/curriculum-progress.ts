@@ -240,6 +240,55 @@ export async function getTopicShape(
   };
 }
 
+/**
+ * May a teacher assign this topic?
+ *
+ * ONE QUESTION, TWO WAYS TO ANSWER NO, and the caller is told neither: a topic
+ * id that does not exist and a topic that exists as a placeholder both come back
+ * false. Distinguishing them on a teacher route would confirm which ids are real
+ * to anybody who asks, and the teacher has no action to take that differs
+ * between the two cases.
+ *
+ * `is_placeholder = false` IS THE RULING, AND IT LIVES HERE RATHER THAN IN THE
+ * ROUTE ON PURPOSE. A placeholder has no lesson, no practice and no quiz -- it
+ * is the "Coming soon" row a unit renders to explain a gap in a syllabus -- so
+ * assigning one would set a student work that does not exist and would then
+ * report them as never having started it, forever. getTopics() at the top of
+ * this file filters the same column at the query for the same reason, and
+ * listPickerTopics (app/lib/worksheet-source.ts:132) filters it again for the
+ * worksheet picker. Putting this third copy in a route handler would mean the
+ * next route to need it writes a fourth by hand, without the filter.
+ *
+ * NOT BUILT ON getTopics(). That reader is cached and pulls the full authored
+ * content of all 97 topics to build its shape map -- the exact cost getTopicShape
+ * above exists to avoid. A write path asking one yes/no question should read one
+ * row, and should select a single column rather than the practice_items blob.
+ *
+ * Returns false on a read error, which is the safe direction: an unreadable
+ * curriculum refuses the write rather than admitting a topic nobody could
+ * verify. The teacher sees "that topic can't be assigned yet" and nothing is
+ * stored; the alternative writes an assignment against an unvalidated id.
+ */
+export async function isAssignableTopic(
+  courseId: string,
+  topicId: string
+): Promise<boolean> {
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from('curriculum_topics')
+    .select('topic_id')
+    .eq('course_id', courseId)
+    .eq('topic_id', topicId)
+    .eq('is_placeholder', false)
+    .maybeSingle();
+
+  if (error) {
+    console.error('[curriculum] isAssignableTopic could not read the topic:', error.message);
+    return false;
+  }
+  return Boolean(data);
+}
+
 export function gradableTotal(shape: TopicShape | undefined): number {
   return (shape?.practice.gradable ?? 0) + (shape?.mini_quiz.gradable ?? 0);
 }
