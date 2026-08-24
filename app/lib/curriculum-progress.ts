@@ -1,6 +1,7 @@
 import { cache } from 'react';
 import { createAdminClient } from './supabase-admin';
 import { correctInSection, type AttemptRow } from './attempt-sets';
+import { gradesFor, type TopicGrades } from './grades';
 import { topicKey } from './topic-key';
 // The definition-A arithmetic lives in a module that imports nothing, so it can
 // be unit tested. Re-exported here so callers keep one import site.
@@ -538,13 +539,27 @@ type AttemptRowWithStudent = AttemptRow & { student_id: string };
  * reducer iterates the SHAPES rather than the attempts -- a roster where one
  * student has never signed in must not come back a row short.
  */
-export async function getTopicStatuses(
-  studentIds: string[]
-): Promise<Map<string, Map<string, TopicStatus>>> {
-  const out = new Map<string, Map<string, TopicStatus>>();
-  const ids = [...new Set(studentIds)].filter(Boolean);
-  if (ids.length === 0) return out;
-
+/**
+ * The two batched reads, once, for a whole roster.
+ *
+ * SPLIT OUT OF getTopicStatuses IN BUILD 3 so getGradebook can reuse the reads
+ * rather than repeat them. Two callers, one pair of queries, one grouping --
+ * which is not merely tidier: a grades page that called getTopicStatuses and a
+ * separate grades reader would fetch curriculum_attempts TWICE per request and,
+ * worse, could observe two different snapshots of an append-only table if a
+ * student answered a question between them. The status and the score a teacher
+ * reads on one screen now come from the same rows by construction.
+ *
+ * `caller` only names the log line, so a failure says which surface was asking.
+ */
+async function fetchAttemptsAndCompletions(
+  ids: string[],
+  caller: string
+): Promise<{
+  shapes: Map<string, TopicShape>;
+  attemptsByStudent: Map<string, AttemptRow[]>;
+  completionsByStudent: Map<string, Map<string, CompletionRow>>;
+}> {
   const admin = createAdminClient();
   const [{ shapes }, attemptsResult, completionsResult] = await Promise.all([
     getTopics(),
@@ -561,22 +576,28 @@ export async function getTopicStatuses(
       .in('user_id', ids),
   ]);
 
+  // NOTE THE COLUMN NAMES, WHICH DO NOT MATCH AND MUST NOT BE MADE TO.
+  // curriculum_attempts filters on student_id; curriculum_completion filters on
+  // user_id. They are the same person. Copying one filter onto the other table
+  // returns an empty set with no error.
+  //
+  // quiz_score IS DELIBERATELY NOT SELECTED, even though it sits in this table
+  // beside the columns that are. It is a pre-computed ever-correct percentage
+  // written when the LESSON is read, so it reads 0 for a quiz never opened, and
+  // a grade built on it hands a student an F for work they never started. See
+  // the header of app/lib/grades.ts. Not selecting it is the cheapest possible
+  // guarantee that no downstream reader can reach for it.
+
   // FAILS OPEN TOWARD "NOT COMPLETE", matching getCompletions. An unreadable
   // snapshot table renders every topic from the attempt log alone, which is a
   // student reading less progress than they have -- recoverable, and visibly
   // wrong. The other direction would tell them they had finished topics they
   // had not.
   if (completionsResult.error) {
-    console.error(
-      '[curriculum] getTopicStatuses could not read completions:',
-      completionsResult.error.message
-    );
+    console.error(`[curriculum] ${caller} could not read completions:`, completionsResult.error.message);
   }
   if (attemptsResult.error) {
-    console.error(
-      '[curriculum] getTopicStatuses could not read attempts:',
-      attemptsResult.error.message
-    );
+    console.error(`[curriculum] ${caller} could not read attempts:`, attemptsResult.error.message);
   }
 
   const attemptsByStudent = new Map<string, AttemptRow[]>();
@@ -596,6 +617,21 @@ export async function getTopicStatuses(
     completionsByStudent.get(row.user_id)!.set(topicKey(row.course_id, row.topic_id), row);
   }
 
+  return { shapes, attemptsByStudent, completionsByStudent };
+}
+
+export async function getTopicStatuses(
+  studentIds: string[]
+): Promise<Map<string, Map<string, TopicStatus>>> {
+  const out = new Map<string, Map<string, TopicStatus>>();
+  const ids = [...new Set(studentIds)].filter(Boolean);
+  if (ids.length === 0) return out;
+
+  const { shapes, attemptsByStudent, completionsByStudent } = await fetchAttemptsAndCompletions(
+    ids,
+    'getTopicStatuses'
+  );
+
   for (const id of ids) {
     out.set(
       id,
@@ -605,6 +641,57 @@ export async function getTopicStatuses(
         shapes
       )
     );
+  }
+
+  return out;
+}
+
+/**
+ * Statuses AND grades, for every student named, from ONE pair of reads.
+ *
+ * THE BUILD 3 READER. Same shape, same cost and same guarantees as
+ * getTopicStatuses above -- two batched queries whatever the roster size, keyed
+ * studentId -> topicKey, a full status map for a student with no rows -- and it
+ * adds the score half without adding a query.
+ *
+ * NOTHING HERE COMPUTES A STATUS OR A SCORE. Both come from pure reducers that
+ * already existed: topicStatusesFor is the canonical A1 status computation the
+ * whole product reads, and gradesFor is the extract proved byte-identical to the
+ * student Grades page. This function is a reader and a grouping, nothing more,
+ * which is what keeps "the teacher's number" and "the student's number" the same
+ * number rather than two implementations that agree until they do not.
+ *
+ * SCOPING IS NOT DONE HERE. Nothing filters by class or checks who is asking --
+ * exactly as getTopicStatuses states of itself. The tenancy boundary lives in
+ * the route: requireClassOwnership plus activeStudentIds/isActiveMember.
+ */
+export type StudentGradebook = {
+  /** The canonical progress computation. Drives the completion axis. */
+  statuses: Map<string, TopicStatus>;
+  /** Both grade definitions, per topic, quiz and practice kept apart. */
+  grades: Map<string, TopicGrades>;
+};
+
+export async function getGradebook(
+  studentIds: string[]
+): Promise<Map<string, StudentGradebook>> {
+  const out = new Map<string, StudentGradebook>();
+  const ids = [...new Set(studentIds)].filter(Boolean);
+  if (ids.length === 0) return out;
+
+  const { shapes, attemptsByStudent, completionsByStudent } = await fetchAttemptsAndCompletions(
+    ids,
+    'getGradebook'
+  );
+
+  for (const id of ids) {
+    const attempts = attemptsByStudent.get(id) ?? [];
+    out.set(id, {
+      statuses: topicStatusesFor(attempts, completionsByStudent.get(id) ?? new Map(), shapes),
+      // The SAME attempt rows the statuses were built from. Not a second read,
+      // not a second snapshot.
+      grades: gradesFor(attempts, shapes),
+    });
   }
 
   return out;

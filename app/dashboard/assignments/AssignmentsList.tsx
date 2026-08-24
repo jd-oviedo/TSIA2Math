@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { V, cardStyle } from '@/app/components/dashboard-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
-import { bucketAssignments, isOverdue } from '@/app/lib/assignments';
+import { bucketAssignments, formatDue, isOverdue } from '@/app/lib/assignments';
 import { unitLabel } from '@/app/lib/units';
 import type { StudentAssignment } from '../data';
 
@@ -42,10 +42,6 @@ const STATUS_COLOR: Record<StudentAssignment['status'], string> = {
   not_started: V.statusIdle,
 };
 
-function formatDue(iso: string): string {
-  return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-}
-
 function Row({ a, now, first }: { a: StudentAssignment; now: number | null; first: boolean }) {
   const done = a.status === 'complete';
   // ONE SOURCE FOR OVERDUE, the shared helper, with `notDone` as the n=1 case of
@@ -73,14 +69,14 @@ function Row({ a, now, first }: { a: StudentAssignment; now: number | null; firs
           <span style={{ font: `600 15px ${FONT_HEADING}`, color: V.heading }}>{a.topic_name}</span>
           <span style={{ font: `400 12px ${FONT_BODY}`, color: V.dim }}>{a.topic_id}</span>
           {a.due_at && (
-            // suppressHydrationWarning because toLocaleDateString resolves in the
-            // renderer's timezone: the server is UTC and the student is not, so
-            // the same instant can be two different day strings. The client's
-            // rendering is the correct one and wins on hydration. The bucket
-            // maths is unaffected -- it compares epoch milliseconds, which carry
-            // no timezone at all.
+            // NO suppressHydrationWarning, and none is needed: the list returns
+            // null until `now` is set (below), so this span is never part of the
+            // server's HTML and is never hydrated -- it is mounted fresh, in the
+            // browser, in the student's own timezone. Home now follows the same
+            // rule; see formatDue in app/lib/assignments.ts for what happened
+            // when it did not. The bucket maths is unaffected either way, since
+            // it compares epoch milliseconds, which carry no timezone at all.
             <span
-              suppressHydrationWarning
               style={{
                 font: `600 11.5px ${FONT_BODY}`,
                 padding: '2px 7px',

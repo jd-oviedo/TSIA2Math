@@ -92,9 +92,10 @@ test('class-data-export separates Pro from Core, and nothing else moved', () => 
   // Core, not to hand Pro a second change by accident.
   //
   // UPDATED 2026-08-23 for official-scores, again 2026-08-24 for
-  // curriculum-progress, and again 2026-08-24 for assignments -- all three held
-  // by both tiers. This test caught every one of them when it landed, which is
-  // the whole reason the two sets are pinned in full rather than spot-checked.
+  // curriculum-progress, again 2026-08-24 for assignments, and again 2026-08-24
+  // for student-grades -- all four held by both tiers. This test caught every one
+  // of them when it landed, which is the whole reason the two sets are pinned in
+  // full rather than spot-checked.
   // The property being asserted has not moved across any of them:
   // class-data-export is still the ONLY difference between the tiers, and it is
   // still the one Core does not have.
@@ -104,6 +105,7 @@ test('class-data-export separates Pro from Core, and nothing else moved', () => 
       'assignments',
       'curriculum-progress',
       'official-scores',
+      'student-grades',
       'teacher-dashboard',
       'worksheets',
     ]
@@ -115,6 +117,7 @@ test('class-data-export separates Pro from Core, and nothing else moved', () => 
       'class-data-export',
       'curriculum-progress',
       'official-scores',
+      'student-grades',
       'teacher-dashboard',
       'worksheets',
     ]
@@ -402,6 +405,7 @@ test('the capability list is exhaustive, and stays exhaustive by construction', 
     'curriculum-progress',
     'gumu',
     'official-scores',
+    'student-grades',
     'teacher-dashboard',
     'worksheets',
   ]);
@@ -470,4 +474,64 @@ test('worksheetQuota returns null for absent and unknown plans', () => {
   assert.equal(worksheetQuota('founding-teacher'), null);
   assert.equal(worksheetQuota('teacher-core'), 15);
   assert.equal(worksheetQuota('teacher-pro'), null);
+});
+
+// ---------------------------------------------------------------------------
+// Grades on the teacher surface
+//
+// Core-tier, decided 2026-08-24, split the same four ways the three capabilities
+// above are split, and for the same reason: "Core has it", "Pro has it" and "no
+// student plan has it" are three different failures.
+//
+// THE SPLIT FROM curriculum-progress IS THE ONE WORTH ASSERTING, and it is the
+// only capability boundary in this file that a previous build wrote down in
+// advance. The note over 'curriculum-progress' reads "STATUS ONLY, NOT GRADES.
+// [...] Do not widen this capability to cover it by assuming the name already
+// stretches that far." The test below is that sentence as an assertion: the two
+// are distinct keys, so a plan can hold progress without holding grades.
+//
+// A read-only district viewer counting completion is the case this protects. It
+// is only expressible while these stay separate, and the way that expressibility
+// dies is not by anybody arguing against it -- it is by somebody gating the
+// grades route on 'curriculum-progress' because the teacher already had it.
+// ---------------------------------------------------------------------------
+
+test('a Teacher Core plan may read student grades', () => {
+  // The decision that makes this feature Core rather than Pro, as an assertion.
+  assert.equal(planGrants('teacher-core', 'student-grades'), true);
+});
+
+test('a Teacher Pro plan may read student grades too', () => {
+  // Pro must not lose a Core feature. The tiers diverge on exports only.
+  assert.equal(planGrants('teacher-pro', 'student-grades'), true);
+});
+
+test('no student plan holds the teacher student-grades capability', () => {
+  // Not a statement about a student seeing their own scores: /dashboard/grades
+  // gates on being signed in and reads the identical latestAttemptScores. This
+  // capability names the TEACHER's cross-student read, so granting it to a
+  // student plan would hand a student the teacher route rather than adding a
+  // student feature. Same asymmetry as curriculum-progress above.
+  assert.equal(planGrants('practice-pass', 'student-grades'), false);
+  assert.equal(planGrants('full-course', 'student-grades'), false);
+  assert.equal(planGrants(null, 'student-grades'), false);
+});
+
+test('progress and grades are separate capabilities, as curriculum-progress required', () => {
+  // Both are Core today, so both of these pass for the same plan and the test
+  // looks redundant. It is not: what it pins is that they are two KEYS. If the
+  // grades route is ever gated on 'curriculum-progress' and this capability
+  // deleted as unused, a plan could no longer hold status without scores -- and
+  // nothing else in the suite would notice.
+  assert.notEqual('student-grades', 'curriculum-progress');
+  assert.ok(CAPABILITIES['teacher-core'].has('curriculum-progress'));
+  assert.ok(CAPABILITIES['teacher-core'].has('student-grades'));
+});
+
+test('reading grades and exporting class data are different capabilities', () => {
+  // Scores on screen are Core; a CSV containing them stays Pro. Build 3 ships no
+  // export of any of this, and if one is ever added it gates on
+  // class-data-export, not on this.
+  assert.equal(planGrants('teacher-core', 'student-grades'), true);
+  assert.equal(planGrants('teacher-core', 'class-data-export'), false);
 });

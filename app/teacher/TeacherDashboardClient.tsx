@@ -269,7 +269,20 @@ const NAV_ITEMS: { label: string; href: string; tour?: string; badge?: string }[
   // capability, and every teacher who can see this rail has already cleared the
   // first half.
   { label: 'Worksheets', href: '/teacher/worksheets', badge: '(Beta)' },
-  { label: 'Students', href: '/teacher#roster' },
+  // Build 3: was '/teacher#roster', a same-page anchor into the roster section
+  // below. It now leads to the fuller roster, which carries a grade column and a
+  // way through to the gradebook.
+  //
+  // THE ANCHOR AND THE SECTION IT POINTED AT ARE UNTOUCHED. `id="roster"` and
+  // `data-tour="roster"` both remain (see the Roster component), because
+  // data-tour="roster" is step 6 of TeacherTour and moving the section would
+  // break onboarding for every new teacher. Only this href changed.
+  //
+  // NO class_id, DELIBERATELY. The dashboard's selected class is unpersisted
+  // React state that this rail has no access to, and threading it through for
+  // one link would be worse than the destination resolving its own default --
+  // which is what /teacher/worksheets already does.
+  { label: 'Students', href: '/teacher/students' },
   { label: 'Take a practice test', href: '/adaptive-test', tour: 'nav-practice' },
   { label: 'Student view', href: '/dashboard' },
 ];

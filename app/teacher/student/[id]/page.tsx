@@ -6,6 +6,7 @@ import MathText from "../../../components/MathText";
 import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from "../../../components/fonts";
 import OfficialScorePanel from "./OfficialScorePanel";
 import CurriculumProgressPanel from "./CurriculumProgressPanel";
+import GradeLetterButton from "./GradeLetterButton";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -220,12 +221,43 @@ export default function StudentDetailPage() {
               <span>Via · <span style={{ color: "#5F5E5A", fontWeight: 600 }}>{enrollment.enrolled_via.replace(/_/g, " ")}</span></span>
             </div>
           </div>
-          {latest?.final_score != null && (
-            <div style={{ textAlign: isMobile ? "left" : "right", flexShrink: 0 }}>
-              <div style={{ fontSize: 34, fontWeight: 700, color: "#0F1E35", lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>{latest.final_score}</div>
-              <div style={{ fontSize: 11, color: "#8A8983", marginTop: 4 }}>latest / 990</div>
-            </div>
-          )}
+          {/* The right edge of the banner: the diagnostic score, then the
+              grade.
+
+              TWO DIFFERENT MEASUREMENTS, SIDE BY SIDE AND NOT MERGED. The
+              number on the left is the adaptive practice test out of 990 and
+              the badge beside the name is its placement band. The letter on the
+              right is coursework -- the average of this student's quiz scores.
+              They answer different questions and a teacher needs both; what
+              they must not do is look like one composite.
+
+              The letter sits to the RIGHT OF the score rather than next to the
+              placement badge, deliberately. The badge qualifies the 990 score,
+              so a letter beside it would read as a second placement band.
+
+              The grade block renders unconditionally, which also closes a small
+              existing gap: this row used to end in nothing at all for a student
+              who had never sat a practice test. */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: isMobile ? 14 : 18,
+              flexShrink: 0,
+              flexWrap: "wrap",
+            }}
+          >
+            {latest?.final_score != null && (
+              <div style={{ textAlign: isMobile ? "left" : "right" }}>
+                <div style={{ fontSize: 34, fontWeight: 700, color: "#0F1E35", lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>{latest.final_score}</div>
+                <div style={{ fontSize: 11, color: "#8A8983", marginTop: 4 }}>latest / 990</div>
+              </div>
+            )}
+            {latest?.final_score != null && !isMobile && (
+              <span aria-hidden="true" style={{ width: 1, alignSelf: "stretch", background: "#E7E5DD" }} />
+            )}
+            <GradeLetterButton studentId={studentId} classId={classId} isMobile={isMobile} />
+          </div>
         </div>
 
         {/* Summary cards */}

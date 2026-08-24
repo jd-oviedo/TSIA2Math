@@ -225,3 +225,45 @@ export function nextDue<T extends { due_at: string | null; created_at: string }>
     })
     .slice(0, limit);
 }
+
+// ─── Due-date rendering ──────────────────────────────────────────────────────
+
+/**
+ * The due date as a student reads it: "Aug 28".
+ *
+ * ONE COPY, AND THE REASON IT IS ONE COPY IS A LIVE BUG. This function existed
+ * twice, byte-identical, at AssignmentsHomeCard.tsx:24 and AssignmentsList.tsx:45,
+ * and the two surfaces still printed DIFFERENT DAYS for the same assignment --
+ * Home said "Aug 29" while the Assignments page said "Aug 28".
+ *
+ * The formatter was never the difference. WHICH RENDERER RAN IT was:
+ *
+ *   AssignmentsList returns null until its clock effect has fired, so its date
+ *   string is only ever produced on the CLIENT, in the student's timezone.
+ *
+ *   AssignmentsHomeCard had no such gate, so it also rendered during SSR, where
+ *   the server's timezone is UTC.
+ *
+ * Both carried suppressHydrationWarning, which in React 19 makes a text
+ * mismatch ACCEPTED AS IS -- no warning, and no repatch. The server's "Aug 29"
+ * was adopted into the DOM while the fiber recorded the client's "Aug 28", so
+ * the card's own later re-render diffed equal and never rewrote the node. Home
+ * kept the UTC day permanently.
+ *
+ * The stored instant was correct throughout. NewAssignment.tsx:98 writes
+ * `new Date(\`${date}T23:59:00\`).toISOString()` -- 23:59 in the TEACHER's zone,
+ * deliberately, so work "due Friday" is not overdue on Thursday evening. For a
+ * teacher in US Central that lands at 04:59Z the NEXT calendar day, which is
+ * what UTC rendering then showed.
+ *
+ * So the fix is two halves and needs both: this shared function, and a caller
+ * that only ever calls it after mount. Sharing alone would have made the two
+ * surfaces disagree with one voice.
+ *
+ * DELIBERATELY NO `timeZone` OPTION. Pinning both to UTC would also make them
+ * agree -- on a day that is wrong for every student west of Greenwich. The
+ * renderer's zone is the right zone; the renderer just has to be the browser.
+ */
+export function formatDue(iso: string): string {
+  return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}

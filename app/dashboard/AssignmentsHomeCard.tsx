@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { V } from '@/app/components/dashboard-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import { C } from '@/app/components/curriculum-theme';
-import { isOverdue } from '@/app/lib/assignments';
+import { formatDue, isOverdue } from '@/app/lib/assignments';
 import type { StudentAssignment } from './data';
 
 // The compact assignments surface on Home: the next one or two pieces of work
@@ -21,10 +21,6 @@ import type { StudentAssignment } from './data';
 // assignments card on Home -- an empty card on the busiest page in the product
 // is a permanent reminder of nothing.
 
-function formatDue(iso: string): string {
-  return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-}
-
 export default function AssignmentsHomeCard({
   assignments,
   total,
@@ -37,11 +33,20 @@ export default function AssignmentsHomeCard({
   // Null until after mount, because the clock may not be read during render on
   // either side -- see AssignmentsList's header for the rule and the proof.
   //
-  // THIS CARD DOES NOT WAIT FOR IT, and does not have to. The clock affects only
-  // the overdue STYLING here; which assignments appear and in what order was
-  // decided on the server by nextDue(), which needs no clock. So the card paints
-  // immediately with its due dates and upgrades an overdue one in place a frame
-  // later. The full list cannot do this because its clock decides structure.
+  // THE CARD STILL PAINTS IMMEDIATELY. Which assignments appear and in what
+  // order was decided on the server by nextDue(), which needs no clock, so the
+  // topic and the unit are there on the first frame and only the due chip
+  // arrives a frame later.
+  //
+  // THE DUE CHIP NOW WAITS FOR THIS, and that is a fix rather than a cost. It
+  // used to render during SSR, where toLocaleDateString resolves in the SERVER's
+  // timezone -- UTC -- so Home printed "Aug 29" for an assignment the
+  // Assignments page printed as "Aug 28". See formatDue in app/lib/assignments.ts
+  // for the full mechanism, including why suppressHydrationWarning made it
+  // permanent rather than a one-frame flicker.
+  //
+  // So the rule this card now follows is the one the full list already followed:
+  // a day string is produced by the browser or it is not produced at all.
   const [now, setNow] = useState<number | null>(null);
   useEffect(() => {
     const id = requestAnimationFrame(() => setNow(Date.now()));
@@ -109,19 +114,27 @@ export default function AssignmentsHomeCard({
               <div style={{ font: `600 15px ${FONT_HEADING}`, color: V.heading }}>
                 {a.topic_name}
               </div>
-              {/* suppressHydrationWarning: the day string resolves in the
-                  renderer's timezone and the server is UTC. Same note as the
-                  full list. */}
+              {/* NO suppressHydrationWarning, DELIBERATELY, and this is the
+                  load-bearing half of the fix.
+
+                  The attribute was here, and what it suppressed was the only
+                  signal that this span was rendering a UTC day to a student in
+                  Texas. With the `now` gate below, server and client both render
+                  an empty span and there is nothing left to suppress -- so if
+                  somebody removes the gate, React says so instead of the bug
+                  silently coming back the way it came the first time. */}
               <span
-                suppressHydrationWarning
                 style={{
                   font: `${overdue ? 600 : 400} 12px ${FONT_BODY}`,
                   color: overdue ? V.noticeWarn : V.dim,
                 }}
               >
-                {a.due_at
-                  ? `${overdue ? 'Overdue · ' : 'Due '}${formatDue(a.due_at)}`
-                  : 'No due date'}
+                {a.due_at === null
+                  ? // Timezone-free, so it needs no clock and paints at once.
+                    'No due date'
+                  : now === null
+                    ? null
+                    : `${overdue ? 'Overdue · ' : 'Due '}${formatDue(a.due_at)}`}
               </span>
             </div>
             <div style={{ font: `400 12.5px ${FONT_BODY}`, color: V.muted }}>
