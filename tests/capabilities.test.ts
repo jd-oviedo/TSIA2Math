@@ -91,18 +91,25 @@ test('class-data-export separates Pro from Core, and nothing else moved', () => 
   // The rest of Core is untouched: this was meant to REMOVE something from
   // Core, not to hand Pro a second change by accident.
   //
-  // UPDATED 2026-08-23 for official-scores, which both tiers hold. This test
-  // caught that change when it landed, which is the whole reason the two sets
+  // UPDATED 2026-08-23 for official-scores, which both tiers hold, and again
+  // 2026-08-24 for curriculum-progress, which both tiers also hold. This test
+  // caught both changes when they landed, which is the whole reason the two sets
   // are pinned in full rather than spot-checked. The property being asserted has
-  // not moved: class-data-export is still the ONLY difference between the tiers,
-  // and it is still the one Core does not have.
+  // not moved across either: class-data-export is still the ONLY difference
+  // between the tiers, and it is still the one Core does not have.
   assert.deepEqual(
     [...CAPABILITIES['teacher-core']].sort(),
-    ['official-scores', 'teacher-dashboard', 'worksheets']
+    ['curriculum-progress', 'official-scores', 'teacher-dashboard', 'worksheets']
   );
   assert.deepEqual(
     [...CAPABILITIES['teacher-pro']].sort(),
-    ['class-data-export', 'official-scores', 'teacher-dashboard', 'worksheets']
+    [
+      'class-data-export',
+      'curriculum-progress',
+      'official-scores',
+      'teacher-dashboard',
+      'worksheets',
+    ]
   );
 
   // Said directly rather than left to be inferred from the two lists above: the
@@ -210,6 +217,49 @@ test('recording an official score and exporting one are different capabilities',
 });
 
 // ---------------------------------------------------------------------------
+// Curriculum progress on the teacher surface
+//
+// Core-tier, decided 2026-08-24, and split the same four ways official-scores is
+// split above for the same reason: "Core has it", "Pro has it" and "no student
+// plan has it" fail for different reasons.
+//
+// THE STUDENT HALF IS NOT SYMMETRIC WITH official-scores AND THE DIFFERENCE IS
+// THE POINT. A student not holding 'official-scores' means the feature is
+// unreachable for them. A student not holding 'curriculum-progress' means no
+// such thing: a student sees their own progress on /dashboard/modules, which
+// gates on 'curriculum' and reads the identical getTopicStatuses. This
+// capability names the TEACHER's cross-student read, so granting it to a student
+// plan would not add a student feature -- it would hand a student the teacher
+// route. That is why the assertion below is worth making rather than obvious.
+// ---------------------------------------------------------------------------
+
+test('a Teacher Core plan may read curriculum progress', () => {
+  // The decision that makes this feature Core rather than Pro, as an assertion.
+  assert.equal(planGrants('teacher-core', 'curriculum-progress'), true);
+});
+
+test('a Teacher Pro plan may read curriculum progress too', () => {
+  // Pro must not lose a Core feature. The tiers diverge on exports only.
+  assert.equal(planGrants('teacher-pro', 'curriculum-progress'), true);
+});
+
+test('no student plan holds the teacher curriculum-progress capability', () => {
+  // See the note above: this is not about a student seeing their own progress,
+  // which 'curriculum' already covers. It is about the cross-student read.
+  assert.equal(planGrants('practice-pass', 'curriculum-progress'), false);
+  assert.equal(planGrants('full-course', 'curriculum-progress'), false);
+  assert.equal(planGrants(null, 'curriculum-progress'), false);
+});
+
+test('reading curriculum progress and exporting class data are different capabilities', () => {
+  // Status on screen is Core; a CSV of class data stays Pro. Build 2 ships no
+  // export of any of this, and if one is ever added it gates on
+  // class-data-export, not on this.
+  assert.equal(planGrants('teacher-core', 'curriculum-progress'), true);
+  assert.equal(planGrants('teacher-core', 'class-data-export'), false);
+});
+
+// ---------------------------------------------------------------------------
 // The tier label
 //
 // Both teacher rails named the wrong product. The teacher dashboard rendered the
@@ -285,6 +335,7 @@ test('the capability list is exhaustive, and stays exhaustive by construction', 
   assert.deepEqual([...ALL_CAPABILITIES].sort(), [
     'class-data-export',
     'curriculum',
+    'curriculum-progress',
     'gumu',
     'official-scores',
     'teacher-dashboard',

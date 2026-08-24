@@ -5,6 +5,7 @@ import { useParams, useSearchParams } from "next/navigation";
 import MathText from "../../../components/MathText";
 import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from "../../../components/fonts";
 import OfficialScorePanel from "./OfficialScorePanel";
+import CurriculumProgressPanel from "./CurriculumProgressPanel";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -311,6 +312,16 @@ export default function StudentDetailPage() {
             Its own component, on DASH tokens, rather than more hardcoded hexes
             in this file. */}
         <OfficialScorePanel studentId={studentId} classId={classId} isMobile={isMobile} />
+
+        {/* Curriculum progress.
+            Below the official result and above Misconceptions. The comment above
+            argues that Test history and the official result are a pair -- what
+            the practice was building toward -- and inserting between them would
+            have made that false. So coursework reads after the outcome and
+            before the diagnosis of what went wrong on the test.
+            Its own component, on DASH tokens, for the same reason
+            OfficialScorePanel is. */}
+        <CurriculumProgressPanel studentId={studentId} classId={classId} isMobile={isMobile} />
 
         {/* Misconceptions */}
         <div>

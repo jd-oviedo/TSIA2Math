@@ -56,7 +56,22 @@ export type Capability =
   // being done with them, which is deliberate: the tier boundary is about
   // getting data OUT in bulk, not about which teacher may record a result for
   // the student in front of them.
-  | "official-scores";
+  | "official-scores"
+  // Reading a student's curriculum progress STATUS -- per topic, and rolled up
+  // over a class -- from the teacher surface.
+  //
+  // CORE AND PRO BOTH, following official-scores and the rule stated under
+  // CAPABILITIES below: a new teacher feature is Core by default unless there is
+  // a reason it is not. There is no reason here. Seeing how far your own class
+  // has got through the course is what a teacher bought a dashboard for; the
+  // tier boundary is bulk export, and this exports nothing.
+  //
+  // STATUS ONLY, NOT GRADES. What this unlocks is complete / in_progress /
+  // not_started per topic and the counts derived from them. Scores, correct
+  // counts and gate percentages are a separate surface and, when it lands, its
+  // own decision. Do not widen this capability to cover it by assuming the name
+  // already stretches that far.
+  | "curriculum-progress";
 
 // ---------------------------------------------------------------------------
 // Exhaustiveness
@@ -95,6 +110,7 @@ const CAPABILITY_PRESENCE: Record<Capability, true> = {
   "teacher-dashboard": true,
   "class-data-export": true,
   "official-scores": true,
+  "curriculum-progress": true,
 };
 
 /**
@@ -117,12 +133,18 @@ const PRACTICE_PASS: readonly Capability[] = ["worksheets"];
 export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
   "practice-pass": new Set(PRACTICE_PASS),
   "full-course": new Set([...PRACTICE_PASS, "curriculum", "gumu"]),
-  "teacher-core": new Set(["teacher-dashboard", "worksheets", "official-scores"]),
+  "teacher-core": new Set([
+    "teacher-dashboard",
+    "worksheets",
+    "official-scores",
+    "curriculum-progress",
+  ]),
   "teacher-pro": new Set([
     "teacher-dashboard",
     "worksheets",
     "class-data-export",
     "official-scores",
+    "curriculum-progress",
   ]),
 };
 
@@ -139,6 +161,12 @@ export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
 // either of them holds, and a new teacher feature is Core by default unless
 // there is a reason it is not. Do not read the ordering of this list as a tier
 // ladder; read CAPABILITIES, which is the only thing that decides.
+//
+// EXTENDED 2026-08-24. curriculum-progress is the second, and it takes the same
+// route: Core by default, both tiers. class-data-export is STILL the only
+// difference between the tiers, now one capability out of four rather than out
+// of three, and tests/capabilities.test.ts asserts that symmetric difference
+// directly rather than leaving it to be inferred from the two lists.
 
 // ---------------------------------------------------------------------------
 // The worksheet quota

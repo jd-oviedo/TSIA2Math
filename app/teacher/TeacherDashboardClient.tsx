@@ -559,6 +559,25 @@ const menuItemStyle: React.CSSProperties = {
   transition: 'background 0.12s',
 };
 
+/**
+ * The class rollup, matching ClassRollup in app/lib/curriculum-rollup.ts.
+ *
+ * Every field is a count of students or of topics. There is no score anywhere in
+ * this shape and no completed_at stamp: the route strips both server-side, so
+ * this type is the full extent of what the dashboard could render even if a
+ * future edit tried to.
+ */
+interface CurriculumRollup {
+  enrolled: number;
+  workedThisWeek: number;
+  started: number;
+  notStarted: number;
+  completeTotal: number;
+  completeMedian: number;
+  topicsTotal: number;
+  furthestUnit: { unit: number; students: number }[];
+}
+
 // ─── Summary cards ───────────────────────────────────────────────────────────
 
 function SummaryCards({ enrolled, notTested, crCount, crPct, weakStrand, avgScore, cols }: {
@@ -638,6 +657,113 @@ function StrandPanel({ strandPct, totalAttempts, cols }: { strandPct: Record<Str
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── Curriculum rollup panel ─────────────────────────────────────────────────
+//
+// How far this class is through the 97-topic course, beside StrandPanel's
+// picture of how they perform on the practice test. Two different questions --
+// coursework done, and accuracy when tested -- and a teacher needs both.
+//
+// STATUS ONLY, NO GRADES, and no per-student rows. The roster below already owns
+// per-student rows and the student detail page owns the per-topic list; this
+// panel is the aggregate and stays the aggregate.
+//
+// THE HEADLINE IS ACTIVITY, NOT COMPLETION, and that was decided on the data.
+// Measured in production 2026-08-24: zero completed topics exist anywhere in
+// Sample Class 1, so a completion headline renders 0 and tells a teacher nothing
+// they can act on. "Worked this week" is the number that actually moves between
+// one Monday and the next. Completion is still shown -- honestly, as whatever it
+// is -- in the cells underneath.
+
+function CurriculumRollupPanel({ rollup, cols }: { rollup: CurriculumRollup | null; cols: number }) {
+  const labelStyle = { fontSize: 11, fontWeight: 600, letterSpacing: 0.7, textTransform: 'uppercase' as const, color: DASH.dim };
+
+  if (!rollup) return null;
+
+  const { enrolled, workedThisWeek, started, notStarted, completeTotal, completeMedian, topicsTotal, furthestUnit } = rollup;
+
+  // The tallest cell sets the bar height. An all-zero distribution divides by 1
+  // rather than by 0, so every bar is flat instead of NaN-tall.
+  const peak = Math.max(1, ...furthestUnit.map((u) => u.students));
+
+  return (
+    <div style={{ ...cardStyle(), padding: '20px 22px', marginBottom: 26 }}>
+      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 18, gap: 12, flexWrap: 'wrap' }}>
+        <div>
+          <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: DASH.heading }}>Curriculum progress</h2>
+          <div style={{ marginTop: 3, fontSize: 12, color: DASH.muted }}>Course status across {topicsTotal} topics</div>
+        </div>
+        <div style={{ fontSize: 11, color: DASH.dim, fontWeight: 600 }}>Status only · no scores</div>
+      </div>
+
+      {/* The headline. */}
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 9, flexWrap: 'wrap', marginBottom: 4 }}>
+        <span style={{ fontSize: 32, fontWeight: 700, color: DASH.heading, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{workedThisWeek}</span>
+        <span style={{ fontSize: 15, fontWeight: 600, color: DASH.dim }}>of {enrolled} {enrolled === 1 ? 'student' : 'students'} worked on the course this week</span>
+      </div>
+      <div style={{ fontSize: 12, color: DASH.muted, marginBottom: 18 }}>Any topic opened in the last 7 days</div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols},1fr)`, gap: 16, marginBottom: 20 }}>
+        {/* Not started. The card that names people to chase, and the reason it is
+            a card and not the headline: it is a standing fact about a class,
+            where the headline is the thing that changed.
+            WARN-TONED ONLY WHEN THERE IS SOMETHING TO WARN ABOUT. A zero in an
+            amber alarm card, over the words "every student has opened a topic",
+            is good news wearing a warning's clothes -- and a teacher who learns
+            that this card is amber when nothing is wrong stops reading it when
+            something is. */}
+        <div style={notStarted > 0
+          ? { background: DASH.noticeWarnBg, border: '1px solid rgba(168,99,31,0.28)', borderRadius: 12, padding: '16px 18px' }
+          : { ...cardStyle(), boxShadow: 'none', padding: '16px 18px' }}>
+          <div style={{ ...labelStyle, color: notStarted > 0 ? DASH.noticeWarn : DASH.dim }}>Not started</div>
+          <div style={{ marginTop: 10, fontSize: 26, fontWeight: 700, color: DASH.heading, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{notStarted}</div>
+          <div style={{ marginTop: 9, fontSize: 12, color: notStarted > 0 ? DASH.ink : DASH.muted }}>{notStarted === 0 ? 'Every student has opened a topic' : `${started} of ${enrolled} have opened a topic`}</div>
+        </div>
+
+        <div style={{ ...cardStyle(), boxShadow: 'none', padding: '16px 18px' }}>
+          <div style={labelStyle}>Topics complete</div>
+          <div style={{ marginTop: 10, fontSize: 26, fontWeight: 700, color: DASH.heading, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{completeTotal}</div>
+          <div style={{ marginTop: 9, fontSize: 12, color: DASH.muted }}>Across the whole class</div>
+        </div>
+
+        <div style={{ ...cardStyle(), boxShadow: 'none', padding: '16px 18px' }}>
+          <div style={labelStyle}>Median per student</div>
+          <div style={{ marginTop: 10, display: 'flex', alignItems: 'baseline', gap: 5 }}>
+            <span style={{ fontSize: 26, fontWeight: 700, color: DASH.heading, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{completeMedian}</span>
+            <span style={{ fontSize: 13, fontWeight: 600, color: DASH.dim }}>/ {topicsTotal}</span>
+          </div>
+          {/* Median, not mean, and it says so: one keen student must not be able
+              to speak for the class. */}
+          <div style={{ marginTop: 9, fontSize: 12, color: DASH.muted }}>Middle student, not the average</div>
+        </div>
+      </div>
+
+      {/* Furthest unit reached. */}
+      <div style={{ borderTop: `1px solid ${DASH.hairline}`, paddingTop: 16 }}>
+        <div style={{ ...labelStyle, marginBottom: 12 }}>Furthest unit reached</div>
+        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${furthestUnit.length},1fr)`, gap: 10, alignItems: 'end' }}>
+          {furthestUnit.map((cell) => (
+            <div key={cell.unit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7 }}>
+              <div style={{ fontSize: 15, fontWeight: 700, color: cell.students > 0 ? DASH.heading : DASH.dim, fontVariantNumeric: 'tabular-nums' }}>{cell.students}</div>
+              <div style={{ width: '100%', height: 56, background: DASH.trackBg, borderRadius: 6, display: 'flex', alignItems: 'flex-end', overflow: 'hidden' }}>
+                <div style={{ width: '100%', height: `${(cell.students / peak) * 100}%`, background: DASH.statusProgress, borderRadius: '6px 6px 0 0' }} />
+              </div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: DASH.heading }}>Unit {cell.unit}</div>
+            </div>
+          ))}
+        </div>
+        {/* Students who have started nothing sit in no cell at all. Said out
+            loud, because a strip whose numbers do not add to the roster looks
+            like a bug otherwise. */}
+        <div style={{ marginTop: 11, fontSize: 11.5, color: DASH.dim }}>
+          {notStarted > 0
+            ? `${notStarted} ${notStarted === 1 ? 'student is' : 'students are'} not counted here — they have not opened a topic`
+            : 'Every enrolled student appears in one column'}
+        </div>
       </div>
     </div>
   );
@@ -1176,6 +1302,7 @@ export default function TeacherDashboardClient({ canExport, initialClasses, teac
   const [selectedClassId, setSelectedClassId] = useState<string>(initialClasses[0]?.id ?? '');
   const [roster, setRoster] = useState<RosterRow[] | null>(null);
   const [misconceptions, setMisconceptions] = useState<Misconception[] | null>(null);
+  const [curriculum, setCurriculum] = useState<CurriculumRollup | null>(null);
   const [rosterError, setRosterError] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState('risk');
   const [showInvite, setShowInvite] = useState(false);
@@ -1202,10 +1329,12 @@ export default function TeacherDashboardClient({ canExport, initialClasses, teac
     if (!classId) { setRoster([]); setMisconceptions([]); return; }
     setRoster(null);
     setMisconceptions(null);
+    setCurriculum(null);
     setRosterError(null);
-    const [rosterRes, mcRes] = await Promise.all([
+    const [rosterRes, mcRes, curriculumRes] = await Promise.all([
       fetch(`/api/teacher/roster?class_id=${classId}`),
       fetch(`/api/teacher/misconceptions?class_id=${classId}`),
+      fetch(`/api/teacher/curriculum-progress?class_id=${classId}`),
     ]);
     if (!rosterRes.ok) { setRosterError('Failed to load roster.'); setRoster([]); return; }
     const rosterData = await rosterRes.json();
@@ -1215,6 +1344,16 @@ export default function TeacherDashboardClient({ canExport, initialClasses, teac
       setMisconceptions(mcData.misconceptions ?? []);
     } else {
       setMisconceptions([]);
+    }
+    // A failed rollup costs one panel, not the dashboard. The panel renders
+    // nothing at all on null rather than a zeroed-out version of itself: a class
+    // reported as "0 of 0 students worked this week" because a fetch failed is
+    // worse than a class reported as nothing.
+    if (curriculumRes.ok) {
+      const curriculumData = await curriculumRes.json();
+      setCurriculum(curriculumData.rollup ?? null);
+    } else {
+      setCurriculum(null);
     }
   }, []);
 
@@ -1433,6 +1572,10 @@ export default function TeacherDashboardClient({ canExport, initialClasses, teac
                 <SummaryCards enrolled={rosterRows.length} notTested={notTested} crCount={collegeReady} crPct={crPct} weakStrand={weakStrand} avgScore={avgScore} cols={summaryCols} />
                 <NewAnnouncement classes={classes} selectedClassId={selectedClassId} />
                 <StrandPanel strandPct={strandPct} totalAttempts={totalAttempts} cols={strandCols} />
+                {/* Coursework, between practice mastery and the state's report.
+                    The three panels read as: what they have worked through, how
+                    they perform when tested, what the state said. */}
+                <CurriculumRollupPanel rollup={curriculum} cols={summaryCols} />
                 {/* Beside the practice strand panel, not instead of it. One is
                     what the product measured, the other is what the state
                     reported; a teacher needs to be able to see them disagree. */}
