@@ -33,10 +33,13 @@
 // The builder THROWS when the columns do not fit, rather than shipping a table
 // that overflows or silently shrinks. An author shortens a label; the figure never
 // degrades quietly.
+import { textWidthEm } from './figure_shapes.mjs';
+
 const INK = '#0E0E11';
 const LINE = '#6E9DC8';
 const ACCENT = '#F0A33E';
-const SURFACE = '#F7F3E7';
+// White, matching make_figure.mjs. See the note there.
+const SURFACE = '#FFFFFF';
 const GRID = '#E2DCCA';
 
 const CANVAS_W = 340;
@@ -46,12 +49,20 @@ const FONT = 11;
 const ROW_H = 24;
 const KEY_H = 22;
 const CELL_PAD = 10;
-// Upper bound on average character width at font-size 11 in the SVG font stack.
-// Measured strings: "Did not study" 13 chars / 74px, "Science Fiction" 15 / 82,
-// "Passed" 6 / 38, "Total" 5 / 26. The widest per-character case measured is 6.33,
-// so 6.2 slightly OVER-estimates long strings. That is the safe direction: the
-// builder throws a little early rather than shipping a table that overflows.
-const CHAR_W = 6.2;
+// Column widths come from textWidthEm() in figure_shapes.mjs, per character.
+//
+// This was a single flat 6.2px-per-character constant, and it was wrong in the
+// one direction that matters. It was calibrated on regular-weight strings
+// ("Did not study" at 5.73/char, "Science Fiction" at 5.46), but the header row
+// renders at weight 700 and every row label at weight 600, where the same font
+// runs to 8.08/char. "Wednesday" was budgeted 55.8px, painted 71.0, and pushed
+// its row's value into the next column -- visible on pr-1-4-visits, which is on
+// two live worksheet items.
+//
+// 1.08 rather than the 1.10 the shape labels use: this width feeds a hard throw
+// when a table will not fit, so over-estimating too generously would reject
+// tables that render fine. Checked against every table on disk.
+const TABLE_SAFETY = 1.08;
 const SYM_R = 6.5;                          // drawn glyph radius
 const SYM_STEP = 2 * SYM_R + 3;
 
@@ -77,7 +88,7 @@ export function starPath(cx, cy, r) {
   return `M ${pts.join(' L ')} Z`;
 }
 
-const textWidth = (s) => String(s).length * CHAR_W;
+const textWidth = (s) => textWidthEm(s) * FONT * TABLE_SAFETY;
 
 function layout(spec) {
   const cols = spec.columns ?? [];

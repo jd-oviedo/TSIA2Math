@@ -240,6 +240,12 @@ D) $\sqrt{10}$ - This is irrational. Its decimal form is $3.162277...$, non-repe
 
 **Answer: C**
 
+```json
+"distractor_logic": {
+  "C": "Correct: reads $\frac{7}{2}$ as a ratio of two integers, which is what makes a number rational, while the other three have decimals that never repeat or terminate"
+}
+```
+
 ---
 
 **2. Convert to a decimal: $\frac{4}{5}$**
@@ -368,6 +374,12 @@ Step 3: Identify the smallest distance.
 
 **Answer: B** ($\frac{14}{5} = 2.8$ exactly)
 
+```json
+"distractor_logic": {
+  "B": "Correct: converts each choice to a decimal, and $\frac{14}{5} = 2.8$ exactly, a distance of $0$ where the closest rival is $0.028$ away"
+}
+```
+
 ---
 
 **10. Maria's water bottle holds $1.5$ liters. Juan's holds $\frac{8}{5}$ liters. Whose bottle holds more water?**
@@ -428,6 +440,12 @@ Only B satisfies both conditions.
 
 **Answer: B**
 
+```json
+"distractor_logic": {
+  "B": "Correct: brackets $\sqrt{12}$ between $\sqrt{9} = 3$ and $\sqrt{16} = 4$, and it stays irrational because it simplifies to $2\sqrt{3}$ rather than to a whole number"
+}
+```
+
 ---
 
 ##### Mini Quiz - Answer Key
@@ -444,6 +462,12 @@ D) $\frac{9}{4}$ - This is already a fraction, so it's rational.
 
 **Answer: C**
 
+```json
+"distractor_logic": {
+  "C": "Correct: keeps $\sqrt{20}$, which is not a perfect square, so its decimal $4.472135...$ never repeats and never terminates"
+}
+```
+
 ---
 
 **Item 2: Order from least to greatest: $\frac{3}{5}, 0.65, \frac{5}{8}$**
@@ -458,6 +482,12 @@ Step 2: Order them.
 
 **Answer: B** - $\frac{3}{5}, \frac{5}{8}, 0.65$
 
+```json
+"distractor_logic": {
+  "B": "Correct: converts to decimals $0.6$, $0.625$ and $0.65$, which orders them $\frac{3}{5}, \frac{5}{8}, 0.65$"
+}
+```
+
 ---
 
 **Item 3: Which is larger: $\sqrt{8}$ or $2.9$?**
@@ -471,6 +501,12 @@ Step 2: Compare to 2.9.
 
 **Answer: B** - $2.9$ is larger.
 
+```json
+"distractor_logic": {
+  "B": "Correct: estimates $\sqrt{8}$ as $2.828...$ from $2\sqrt{2}$, which is less than $2.9$"
+}
+```
+
 ---
 
 **Item 4: A student says: "$\sqrt{4}$ is irrational because it has a square root sign." What is wrong with this thinking?**
@@ -480,3 +516,9 @@ The student is confusing the square root *symbol* with irrationality. The square
 $\sqrt{4} = 2 = \frac{2}{1}$, which is rational.
 
 **Answer: A** - $\sqrt{4}$ is rational because $\sqrt{4} = 2$, which can be written as a fraction.
+
+```json
+"distractor_logic": {
+  "A": "Correct: evaluates $\sqrt{4} = 2 = \frac{2}{1}$, so the radical sign alone does not make a number irrational"
+}
+```

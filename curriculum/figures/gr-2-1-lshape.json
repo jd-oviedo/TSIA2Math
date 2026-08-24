@@ -35,14 +35,5 @@
     "4": "4 m",
     "5": "8 m"
   },
-  "alt": "An L-shaped figure with its six sides labelled in order around the boundary: 10 m along the bottom, 4 m up the right side, 6 m left across the step, 4 m up the inner side, 4 m left across the top, and 8 m down the left side. Every side is drawn at its stated length, so the step is genuinely where the numbers put it.",
-  "labelPlacement": "normal",
-  "labelGaps": {
-    "2": 11,
-    "3": 11
-  },
-  "labelPos": {
-    "2": 0.3,
-    "3": 0.72
-  }
+  "alt": "An L-shaped figure with its six sides labelled in order around the boundary: 10 m along the bottom, 4 m up the right side, 6 m left across the step, 4 m up the inner side, 4 m left across the top, and 8 m down the left side. Every side is drawn at its stated length, so the step is genuinely where the numbers put it."
 }

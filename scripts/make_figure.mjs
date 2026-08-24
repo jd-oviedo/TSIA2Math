@@ -38,8 +38,22 @@ import { fileURLToPath } from 'url';
 const INK = '#0E0E11';       // axes, text
 const LINE = '#6E9DC8';      // primary plotted line
 const ACCENT = '#F0A33E';    // points of interest, second line
-const SURFACE = '#F7F3E7';   // figure background
-const GRID = '#E2DCCA';      // gridlines: a tint of SURFACE, the one derived value
+// WHITE, NOT THE CREAM READING SURFACE.
+//
+// A figure is an <img> carrying a base64 SVG, so its background is a <rect>
+// inside the image and no stylesheet on any page can reach it. The worksheet
+// printed cream panels on white paper; there was no worksheet-scoped fix,
+// because there is no worksheet-scoped copy of the figure. The value changes
+// here, which changes it everywhere the same figure renders, including the
+// student lesson pages. Approved on that basis.
+//
+// Every ink measured BETTER on white, not worse: axes and text 17.37 to 19.27,
+// gridlines 1.24 to 1.37, the plotted line 2.59 to 2.87, the accent 1.89 to
+// 2.10. GRID is no longer a tint of SURFACE and is kept at its own value: it
+// has to stay a gridline rather than become a rule, and lightening it toward
+// the new background would have taken it under.
+const SURFACE = '#FFFFFF';   // figure background
+const GRID = '#E2DCCA';      // gridlines
 
 const W = 340, H = 250;
 
@@ -553,8 +567,27 @@ function buildSvg(spec) {
   });
 
   // Axis titles
-  if (spec.xLabel) parts.push(`<text x="${(W + pad.l - pad.r) / 2}" y="${H - 5}" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="${INK}">${esc(spec.xLabel)}</text>`);
-  if (spec.yLabel) parts.push(`<text x="10" y="${(H - pad.b + pad.t) / 2}" text-anchor="middle" transform="rotate(-90 10 ${(H - pad.b + pad.t) / 2})" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="${INK}">${esc(spec.yLabel)}</text>`);
+  // AXIS TITLES, CLEAR OF THE CANVAS EDGE.
+  //
+  // The y title is rotated a quarter turn about its own anchor, so what runs
+  // toward the left edge is the font's ASCENT, not half the text height. At
+  // x = 10 with an 11px face that put the glyphs at exactly x = 0 on seven
+  // figures, three of them on live worksheet items: "Books read", "Visits",
+  // "Students", "Score" twice, "Degrees" and "total cost (dollars)". Measured,
+  // not inferred, by taking the rotated element's own bounding rect.
+  //
+  // AXIS_INSET is the ascent plus the same clearance the label rules use, so
+  // the title starts inside the canvas instead of on its edge. The x title has
+  // the same treatment at the bottom for the descent.
+  // The FONT box, measured in Chromium at this size: ascent 0.909em, descent
+  // 0.273em. Not the ink box. A rotated element's bounding rect is its font
+  // box, so the font ascent is what runs at the left edge, and using the ink
+  // ascent left the title 0.4px from the canvas instead of the intended 2.
+  const AXIS_ASCENT = 11 * 0.909, AXIS_DESCENT = 11 * 0.273, AXIS_CLEAR = 2;
+  const yTitleX = n(AXIS_ASCENT + AXIS_CLEAR);
+  const yTitleY = n((H - pad.b + pad.t) / 2);
+  if (spec.xLabel) parts.push(`<text data-role="identifier" x="${(W + pad.l - pad.r) / 2}" y="${n(H - AXIS_DESCENT - AXIS_CLEAR)}" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="${INK}">${esc(spec.xLabel)}</text>`);
+  if (spec.yLabel) parts.push(`<text data-role="identifier" x="${yTitleX}" y="${yTitleY}" text-anchor="middle" transform="rotate(-90 ${yTitleX} ${yTitleY})" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="${INK}">${esc(spec.yLabel)}</text>`);
 
   if (!spec.alt) throw new Error('spec.alt is required: the figure supplements the text, it never replaces it');
 

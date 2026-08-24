@@ -13,10 +13,11 @@ import type { TopicMeta, Rationale } from './worksheet-data';
 // It also makes the sheets renderable outside Next, which is how the print
 // layout gets checked against real content without a browser session.
 //
-// EVERY PART IS A <SheetPart>. The masthead, the wordmark and the footer are
-// written once here and used by all three, which is the other half of the
-// promise print-styles.ts makes: the three parts cannot drift because they are
-// not three implementations.
+// EVERY PART SHARES ONE MASTHEAD AND ONE FOOTER. <SheetHead> and <SheetFoot> are
+// written once here and used by every part, which is the other half of the
+// promise print-styles.ts makes: the parts cannot drift because they are not
+// separate implementations. That is what keeps the disclaimer identical on all
+// of them.
 
 const WORDMARK = '/unpackmath-wordmark.png';
 
@@ -198,17 +199,28 @@ export function WorksheetSheet({
   );
 }
 
+// TWO PARTS, NOT THREE. The key prints the Answer Key and the Rationales and
+// stops.
+//
+// It used to carry a third part, Teacher Notes: one card per item with the
+// worked solution and a "What the wrong answers mean" panel. On the regression
+// fixture that was fourteen of the key's sixteen pages, for twenty questions.
+// It is removed as a RENDERING, not as data. resolveForKey() still reads
+// worked_solutions and distractor_prose, because the correct option's prose IS
+// the rationale on part two, and nothing about the answer-key data path changes.
+//
+// `topicMeta` is gone from the props with the notes card that used it. The key
+// route no longer needs the lookup at all; the worksheet route still does, so
+// loadTopicMeta() stays where it is.
 export function AnswerKeySheet({
   title,
   items,
   created,
-  topicMeta,
   rationales,
 }: {
   title: string;
   items: KeyItem[];
   created: string;
-  topicMeta: Record<string, TopicMeta>;
   rationales: Rationale[];
 }) {
   return (
@@ -267,93 +279,6 @@ export function AnswerKeySheet({
         <SheetFoot marker="RATIONALES" page="03" />
       </section>
 
-      {/* ── the teacher's notes ──────────────────────────────────────────────
-          NOT part of the approved three-page format, and kept anyway. The line
-          saying what the students who chose C actually did is the thing worth
-          paying for; the mockup simply has no page for it. It keeps the shape
-          it already had, on the stylesheet the other parts share. */}
-      <section className="ws-part ws-part-notes">
-        <SheetHead heading="Teacher Notes" meta={`${title} · ${items.length} QUESTIONS`} />
-
-        {items.map((item, i) => {
-          const n = i + 1;
-          const wrong = item.notes.filter((note) => !note.correct);
-          const right = item.notes.find((note) => note.correct);
-          return (
-            <article className="ws-key-q" key={`${item.topic_id}-${n}`}>
-              <div className="ws-key-head">
-                <div className="ws-n">{n}.</div>
-                <div className="ws-key-body">
-                  <p className="ws-key-topic">
-                    {item.topic_id}
-                    {topicMeta[item.topic_id]?.topic_name
-                      ? ` · ${topicMeta[item.topic_id].topic_name}`
-                      : ''}
-                  </p>
-                  <div
-                    className="ws-key-stem"
-                    dangerouslySetInnerHTML={{ __html: item.stem_html }}
-                  />
-                </div>
-                <div className="ws-correct">{item.correct_answer || '?'}</div>
-              </div>
-
-              {right && (
-                <div className="ws-solution">
-                  <p>
-                    {/* A colon, not a full stop. The authored prose is a verb
-                        phrase with an implied subject -- "subtracts 9 from both
-                        sides" -- so a full stop reads as a sentence starting
-                        lowercase. A colon makes the label a label and the phrase
-                        its complement, without rewriting 1,344 strings. */}
-                    <strong>Why {item.correct_answer} is right:</strong> {right.text}
-                  </p>
-                </div>
-              )}
-
-              {item.solution_html && (
-                <div
-                  className="ws-solution"
-                  dangerouslySetInnerHTML={{ __html: item.solution_html }}
-                />
-              )}
-
-              {wrong.length > 0 && (
-                <div className="ws-notes">
-                  <p className="ws-notes-label">What the wrong answers mean</p>
-                  {wrong.map((note) => (
-                    <p className="ws-note" key={note.letter}>
-                      {/* The letter is its own element so it can hold a column
-                          while the sentence wraps beside it. Same text
-                          distractorLine() produces -- one extractor, in
-                          resolveForKey(). */}
-                      <span className="ws-note-letter">Chose {note.letter}</span>
-                      <span>{note.text}</span>
-                    </p>
-                  ))}
-                </div>
-              )}
-
-              {/* A rolled instance carries no prose: the authored explanation names
-                  the canonical numbers and would be arithmetically wrong for this
-                  variant. Said out loud rather than left as a gap. */}
-              {item.ref.source === 'instance' && item.notes.length === 0 && (
-                <p className="ws-caveat">
-                  Generated variant. The correct answer is exact, but the worked
-                  solution and misconception notes are written for the original
-                  numbers and are not shown.
-                </p>
-              )}
-
-              {item.ref.source === 'static' && item.notes.length === 0 && !item.solution_html && (
-                <p className="ws-caveat">No worked solution stored for this item yet.</p>
-              )}
-            </article>
-          );
-        })}
-
-        <SheetFoot marker="NOTES" page="04" />
-      </section>
     </div>
   );
 }

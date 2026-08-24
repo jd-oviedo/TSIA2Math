@@ -281,13 +281,27 @@ console.log('\n\nDATA TABLE FAULT PROOFS\n');
   const CELLS = /<text data-cell="\d+-\d+"/g;
   const SYMS = /<path data-symbol="\d+-\d+"/g;
 
-  // A cell in the wrong ROW: 9th Grade's "12" dropped into the row below.
+  // The cell's own coordinates, READ OFF THE BUILT SVG rather than written in.
+  //
+  // These were literals -- x="89" y="52" -- and the moment column widths changed
+  // the injections silently became no-ops, which the harness correctly reported
+  // as two failed proofs. A fault proof that hardcodes the output it is mutating
+  // stops proving anything the first time the layout moves, so the anchor is now
+  // derived and the shifted values are derived from it.
+  const cellSvg = buildTable(twoway);
+  const cell01 = cellSvg.match(/<text data-cell="0-1" x="([0-9.]+)" y="([0-9.]+)"/);
+  if (!cell01) { console.log('  [PROOF FAILED] cell 0-1 not found in the built table'); ok = false; }
+  const [cellAnchor, cellX, cellY] = cell01 ?? ['', '0', '0'];
+  const vlines = [...cellSvg.matchAll(/<line data-vline="\d+" x1="([0-9.]+)"/g)].map((m) => Number(m[1]));
+  const rowH = 24, cellPadHalf = 5;
+
+  // A cell in the wrong ROW: the top data cell dropped into the row below.
   fault('a cell drawn in the wrong row', twoway,
-    '<text data-cell="0-1" x="89" y="52"', '<text data-cell="0-1" x="89" y="76"',
+    cellAnchor, `<text data-cell="0-1" x="${cellX}" y="${Number(cellY) + rowH}"`,
     'in row 0', CELLS);
-  // A cell in the wrong COLUMN: same cell shifted into the Sandwich band.
+  // A cell in the wrong COLUMN: same cell shifted one data column right.
   fault('a cell drawn in the wrong column', twoway,
-    '<text data-cell="0-1" x="89" y="52"', '<text data-cell="0-1" x="130" y="52"',
+    cellAnchor, `<text data-cell="0-1" x="${vlines[2] + cellPadHalf}" y="${cellY}"`,
     'in column 1', CELLS);
 
   // A pictograph key that disagrees with its symbols: one symbol removed while the

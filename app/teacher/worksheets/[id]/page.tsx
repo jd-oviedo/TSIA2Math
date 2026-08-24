@@ -30,6 +30,12 @@ export default async function WorksheetPreviewPage({
 
   return (
     <main style={{ background: DASH.pageBg, minHeight: '100vh', padding: '32px 24px 64px' }}>
+      {/* A figure arrives inside stem_html as a 330 to 340px image, wider than
+          this card's stem column at narrow widths, and an inline style prop
+          cannot reach a descendant it does not render. One scoped rule, matching
+          .ws-stem-text img in print-styles.ts and .um-prose img on the lesson
+          pages. */}
+      <style>{`.ws-preview-stem img { display: block; max-width: 100%; height: auto; margin: 6px 0; }`}</style>
       <div style={{ maxWidth: 860, margin: '0 auto' }}>
         <Link href="/teacher/worksheets" style={{ fontSize: 13, color: DASH.muted, textDecoration: 'none' }}>
           ← Worksheets
@@ -95,6 +101,7 @@ export default async function WorksheetPreviewPage({
                     {item.topic_id}
                   </div>
                   <div
+                    className="ws-preview-stem"
                     style={{ color: DASH.ink, marginBottom: 8, lineHeight: 1.5 }}
                     dangerouslySetInnerHTML={{ __html: item.stem_html }}
                   />
