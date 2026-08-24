@@ -50,6 +50,9 @@ const DRAWER_CSS = `
 export const NAV_ITEMS = [
   { label: 'Home', href: '/dashboard' },
   { label: 'Announcements', href: '/dashboard/announcements' },
+  // Between the teacher's voice and the self-directed tree, because that is
+  // what it is: work somebody else set, which Modules onward is not.
+  { label: 'Assignments', href: '/dashboard/assignments' },
   { label: 'Modules', href: '/dashboard/modules' },
   { label: 'Grades', href: '/dashboard/grades' },
   // The only destination here that leaves the /dashboard tree. It is in this
@@ -82,6 +85,22 @@ function navIcon(label: string) {
         <svg {...common}>
           <path d="M3 7 h3 l6 -3.4 v11 L6 11 H3 a1 1 0 0 1 -1 -1 V8 a1 1 0 0 1 1 -1 Z" />
           <path d="M14.4 6.6 a3.4 3.4 0 0 1 0 4.8" />
+        </svg>
+      );
+    // A clipboard: work handed to you. It needs its own case for the reason the
+    // Take-a-Practice-Test comment below records -- without one it would fall
+    // through to `default` and inherit the Modules stack, so the rail would
+    // carry two identical glyphs and this would read as a second Modules link.
+    //
+    // The clip at the top is what distinguishes it at 17px. It is deliberately
+    // NOT a checked sheet: that is Take a Practice Test, three rows down.
+    case 'Assignments':
+      return (
+        <svg {...common}>
+          <path d="M6 3.6 H4.6 a1 1 0 0 0 -1 1 V15 a1 1 0 0 0 1 1 h8.8 a1 1 0 0 0 1 -1 V4.6 a1 1 0 0 0 -1 -1 H12" />
+          <rect x="6" y="2" width="6" height="3.1" rx="1" />
+          <line x1="6.4" y1="9.2" x2="11.6" y2="9.2" />
+          <line x1="6.4" y1="12.2" x2="9.8" y2="12.2" />
         </svg>
       );
     case 'Grades':

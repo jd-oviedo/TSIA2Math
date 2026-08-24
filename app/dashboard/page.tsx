@@ -9,9 +9,12 @@ import {
   gradableTotal,
   getEnrolledClasses,
   getAnnouncements,
+  getStudentAssignments,
   hasCompletedDiagnostic,
   topicHref,
 } from './data';
+import { nextDue } from '@/app/lib/assignments';
+import AssignmentsHomeCard from './AssignmentsHomeCard';
 import { recommendForStudent } from '@/app/lib/recommendation';
 import { STRAND_NAMES } from '@/app/lib/strands';
 import { Card, CardTitle, Eyebrow, Muted, PageHeading, ProgressBar, formatDate } from './ui';
@@ -47,6 +50,7 @@ export default async function DashboardHome({
     testedBefore,
     recommendation,
     access,
+    assignments,
   ] = await Promise.all([
     getTopics(),
     getAttempts(profile.id),
@@ -65,6 +69,10 @@ export default async function DashboardHome({
     // door, and students with derived access from an entitled teacher's class.
     // Both would be told the free sample is all they have.
     resolveCourseAccess(),
+    // In the same Promise.all for the same reason. It shares resolveCourseAccess
+    // with the line above -- that resolver is cache()d per request, so the two
+    // calls are one profile read however they interleave.
+    getStudentAssignments(profile.id),
   ]);
 
   // Same source as the Announcements tab: already scoped to every class the
@@ -79,6 +87,16 @@ export default async function DashboardHome({
       ? announcements.announcements.length - recentAnnouncements.length
       : 0;
   const classNames = new Map(classes.map((c) => [c.id, c.name]));
+
+  // The next one or two pieces of work still to do.
+  //
+  // COMPLETED ASSIGNMENTS ARE EXCLUDED FROM HOME and stay on the full page.
+  // Home answers "what should I do next", and finished work is not an answer to
+  // that; /dashboard/assignments answers "what have I been set", where it is.
+  // The exclusion lives inside nextDue() so the count below and the list cannot
+  // come apart -- both are derived from the same predicate.
+  const stillToDo = assignments.filter((a) => a.status !== 'complete');
+  const nextAssignments = nextDue(assignments, (a) => a.status !== 'complete');
 
   const progress = progressByTopic(attempts, shapes);
   const totalItems = [...shapes.values()].reduce((sum, shape) => sum + gradableTotal(shape), 0);
@@ -261,6 +279,23 @@ export default async function DashboardHome({
                 </article>
               ))}
             </div>
+          </Card>
+        )}
+
+        {/* Directly under the announcements card and above the progress cards,
+            because it belongs to the same half of this page: things somebody
+            else needs from you. Everything below is what you were already
+            doing.
+
+            RENDERS NOTHING AT ALL when there is no incomplete work -- not an
+            empty card, not a "nothing assigned" line. Home is the page every
+            student lands on every session, and the great majority of them have
+            no assignments; a permanent empty card would cost all of them screen
+            space to tell them nothing. The full page is one nav click away and
+            says so properly. */}
+        {nextAssignments.length > 0 && (
+          <Card>
+            <AssignmentsHomeCard assignments={nextAssignments} total={stillToDo.length} />
           </Card>
         )}
 

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { DASH, cardStyle } from '../components/dashboard-theme';
 import { FONT_HEADING } from '../components/fonts';
+import { isOverdue } from '../lib/assignments';
 
 // What has been set, and how far the targeted students have got with it.
 //
@@ -171,11 +172,14 @@ export default function AssignmentsPanel({
             // see the note on that state. Reading the clock on this line instead
             // would be an impure call during render. Same two conditions as
             // before, same answer: past its date, and not everyone is done.
-            const overdue =
-              a.due_at !== null &&
-              loadedAt !== null &&
-              Date.parse(a.due_at) < loadedAt &&
-              a.complete < a.target_count;
+            //
+            // THE RULE MOVED, THE ANSWER DID NOT (Build 4b). This was the same
+            // four-clause expression written inline; it is now the shared
+            // helper, so the student surface cannot come to mean something
+            // different by "overdue". The third argument is where the two
+            // callers differ and all they differ by: this one asks whether
+            // EVERYONE is done, the student one asks whether THEY are.
+            const overdue = isOverdue(a.due_at, loadedAt, a.complete < a.target_count);
 
             return (
               <div
