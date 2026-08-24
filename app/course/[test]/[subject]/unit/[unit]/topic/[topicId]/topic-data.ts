@@ -10,6 +10,7 @@ import {
   getTopics,
   getTopicShape,
   getTopicAttempts,
+  isPastLesson,
   correctItemsInSection,
   hasAttemptedSection,
   revealedItemsInSection,
@@ -402,19 +403,35 @@ async function gatesFromShape(
     // Paired with instrumentation at the write site in
     // app/lib/curriculum-progress.ts, so if this failure is ever real we find out
     // from a log rather than from a student. Revisit with evidence, not before.
-    const observedPastLesson =
-      hasAttemptedSection(attempts, courseId, topicId, 'practice') ||
-      hasAttemptedSection(attempts, courseId, topicId, 'mini_quiz');
+    //
+    // ─── MOVED 2026-08-24. The rule above is now A1, and it lives elsewhere ──
+    //
+    // This block used to be followed by a local `observedPastLesson` const and
+    // its own `Boolean(snapshot?.lesson_completed_at) || observedPastLesson`.
+    // That expression was the WINNER of the reconciliation -- topic-completion.ts
+    // carried a strict form that disagreed with it, and the strict form is the
+    // one that went -- but it does not live here any more. It is isPastLesson in
+    // app/lib/topic-completion.ts, and this file calls it.
+    //
+    // The const was DELETED rather than left in place feeding the shared
+    // predicate, deliberately. A second copy that merely has no callers today is
+    // how two forms drift apart again, with an extra hop in between to make it
+    // harder to see. One form, one home.
+    //
+    // The reasoning above is kept in full because it is the argument FOR A1, and
+    // the rejected alternatives are still the rejected alternatives.
+    const practiceAttempted = hasAttemptedSection(attempts, courseId, topicId, 'practice');
+    const quizAttempted = hasAttemptedSection(attempts, courseId, topicId, 'mini_quiz');
 
     return {
       ...base,
-      lessonDone: Boolean(snapshot?.lesson_completed_at) || observedPastLesson,
+      lessonDone: isPastLesson(snapshot, { practiceAttempted, quizAttempted }),
       practiceCorrect: Math.max(snapshot?.practice_correct ?? 0, practiceSolved.size),
       quizCorrect: Math.max(snapshot?.quiz_correct ?? 0, quizSolved.size),
       practiceSolved,
       quizSolved,
-      practiceAttempted: hasAttemptedSection(attempts, courseId, topicId, 'practice'),
-      quizAttempted: hasAttemptedSection(attempts, courseId, topicId, 'mini_quiz'),
+      practiceAttempted,
+      quizAttempted,
     };
 }
 

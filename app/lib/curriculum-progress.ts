@@ -3,9 +3,17 @@ import { createAdminClient } from './supabase-admin';
 import { correctInSection, type AttemptRow } from './attempt-sets';
 // The definition-A arithmetic lives in a module that imports nothing, so it can
 // be unit tested. Re-exported here so callers keep one import site.
-import { isTopicComplete, requiredCorrect, type CompletionRow } from './topic-completion';
-export { isTopicComplete, requiredCorrect };
-export type { CompletionRow };
+import {
+  isPastLesson,
+  isTopicComplete,
+  requiredCorrect,
+  topicStatusFor,
+  type CompletionRow,
+  type ObservedLike,
+  type TopicStatusKind,
+} from './topic-completion';
+export { isPastLesson, isTopicComplete, requiredCorrect, topicStatusFor };
+export type { CompletionRow, ObservedLike, TopicStatusKind };
 
 // The course sequence and the mastery gate maths, in one place.
 //
@@ -51,6 +59,16 @@ export type TopicProgress = {
   // which section the correct answers landed in. See isTopicComplete.
   practiceCorrect: number;
   quizCorrect: number;
+  // Per section, added 2026-08-24 for A1. Whether the section was touched at
+  // all, right or wrong -- which is what "past the lesson" is inferred from.
+  //
+  // NOT derivable from the two counts above, and that is the whole point: a
+  // student who tried every practice item and missed every one has
+  // practiceCorrect 0 and practiceAttempted true. Nor from `attempted`, which
+  // cannot say WHICH section, and which excludes non-gradable sections. See the
+  // note in progressByTopic about where these are computed.
+  practiceAttempted: boolean;
+  quizAttempted: boolean;
 };
 
 type StoredItem = { format: string };
@@ -256,10 +274,32 @@ export function progressByTopic(
 ): Map<string, TopicProgress> {
   const correct = new Map<string, Set<string>>();
   const seen = new Map<string, Set<string>>();
+  const practiceTouched = new Set<string>();
+  const quizTouched = new Set<string>();
 
   for (const attempt of attempts) {
     const key = topicKey(attempt.course_id, attempt.topic_id);
     const shape = shapes.get(key);
+
+    // ─── A1's attempted flags, recorded BEFORE the gradable filter below ─────
+    //
+    // THE ORDER IS LOAD-BEARING and this is the one place it can go wrong.
+    // QR.1.1's practice section is written work: `interactive` is false, so
+    // sectionShape gives it gradable 0, so the `continue` two lines down
+    // discards every attempt against it. Recording after that filter would make
+    // QR.1.1 permanently un-attempted, and A1 would then never fire on the one
+    // topic whose shape is the reason the fail-open rule exists.
+    //
+    // Exact-equality on the section string, matching hasAttemptedSection in
+    // attempt-sets.ts rather than the normalisation on the next line: this is
+    // the single-pass form of the same predicate topic-data.ts calls, and the
+    // two must agree on what counts as a section. The normalisation below is
+    // for BUCKETING a known-good section into one of two counters; this is a
+    // MEMBERSHIP test, and folding an unknown third section into 'practice'
+    // would be wrong here even though it is harmless there.
+    if (attempt.section === 'practice') practiceTouched.add(key);
+    else if (attempt.section === 'mini_quiz') quizTouched.add(key);
+
     // An attempt against a section that is no longer gradable should not count
     // toward a total that excludes it.
     const sectionKey = attempt.section === 'mini_quiz' ? 'mini_quiz' : 'practice';
@@ -292,6 +332,8 @@ export function progressByTopic(
       attempted: seen.get(key)?.size ?? 0,
       practiceCorrect,
       quizCorrect,
+      practiceAttempted: practiceTouched.has(key),
+      quizAttempted: quizTouched.has(key),
     });
   }
   return out;
@@ -321,6 +363,196 @@ export async function getCompletions(
 
   const out = new Map<string, CompletionRow>();
   for (const row of data) out.set(topicKey(row.course_id, row.topic_id), row);
+  return out;
+}
+
+// ─── The canonical progress source ───────────────────────────────────────────
+//
+// getTopicStatuses is THE authority on "how far is this student through this
+// topic". Before it, the answer was assembled at each call site: the Modules
+// page held its own statusOf(), the topic pages went through loadGates(), and
+// the two disagreed about the lesson (see the A1 block in topic-completion.ts).
+// Anything that needs a status now reads it from here.
+//
+// MULTI-STUDENT BY CONSTRUCTION, single-student as the [id] case, so the
+// student's own view and any future teacher view run the identical code path
+// rather than two implementations that agree until they do not. That is the
+// whole reason the signature takes an array for a caller that has one id.
+//
+// The reads are batched with .in(), so N students cost the same two round trips
+// as one. Nothing here filters by class or checks who is asking: this is the
+// progress calculation, and scoping a teacher to their own students is a
+// separate concern that belongs in the route that calls it.
+
+/** Everything any surface needs to render one topic's progress for one student. */
+export type TopicStatus = {
+  status: TopicStatusKind;
+  /** Distinct gradable items answered correctly, over the topic's gradable total. */
+  correct: number;
+  total: number;
+  completedAt: string | null;
+  /**
+   * The most recent attempt against this topic, or null if never touched.
+   *
+   * Carried here so "where was I" is answered from the same map as everything
+   * else. Before this the Modules page took mostRecentTopic(attempts) off a
+   * SECOND read of curriculum_attempts, which is both a wasted round trip and a
+   * second place the answer could come from.
+   */
+  lastWorkedAt: string | null;
+  /** A1: the stored stamp, or evidence of activity. See isPastLesson. */
+  lessonDone: boolean;
+  practiceCorrect: number;
+  practiceRequired: number;
+  practiceCount: number;
+  practiceGated: boolean;
+  practiceAttempted: boolean;
+  quizCorrect: number;
+  quizRequired: number;
+  quizCount: number;
+  quizGated: boolean;
+  quizAttempted: boolean;
+};
+
+/**
+ * The reducer. PURE -- no I/O, no client, no imports beyond the arithmetic --
+ * so `node --test` can drive it with fixtures and so the batched reader below
+ * is the only thing that ever needs a database.
+ *
+ * Reconciles stored against observed with Math.max on both sections, which is
+ * the same discipline isTopicComplete and gatesFromShape already apply: the
+ * snapshot is a cache of the attempt log and a stale one must never take a gate
+ * away from a student who has cleared it.
+ */
+export function topicStatusesFor(
+  attempts: AttemptRow[],
+  completions: Map<string, CompletionRow>,
+  shapes: Map<string, TopicShape>
+): Map<string, TopicStatus> {
+  const progress = progressByTopic(attempts, shapes);
+
+  // Max rather than attempts[0]. The reader hands these in newest-first, but a
+  // pure reducer that silently depends on its input being sorted is one caller
+  // away from being wrong, and nothing in the type says so.
+  const lastWorked = new Map<string, string>();
+  for (const attempt of attempts) {
+    const key = topicKey(attempt.course_id, attempt.topic_id);
+    const seen = lastWorked.get(key);
+    if (!seen || attempt.created_at > seen) lastWorked.set(key, attempt.created_at);
+  }
+
+  const out = new Map<string, TopicStatus>();
+
+  for (const [key, shape] of shapes) {
+    const observed = progress.get(key);
+    const snapshot = completions.get(key);
+
+    const practiceCount = shape.practice.gradable;
+    const quizCount = shape.mini_quiz.gradable;
+
+    out.set(key, {
+      status: topicStatusFor(snapshot, observed, shape),
+      correct: observed?.correct ?? 0,
+      total: observed?.total ?? gradableTotal(shape),
+      completedAt: snapshot?.completed_at ?? null,
+      lastWorkedAt: lastWorked.get(key) ?? null,
+      lessonDone: isPastLesson(snapshot, observed),
+      practiceCorrect: Math.max(snapshot?.practice_correct ?? 0, observed?.practiceCorrect ?? 0),
+      practiceRequired: requiredCorrect('practice', practiceCount),
+      practiceCount,
+      practiceGated: practiceCount > 0,
+      practiceAttempted: observed?.practiceAttempted ?? false,
+      quizCorrect: Math.max(snapshot?.quiz_correct ?? 0, observed?.quizCorrect ?? 0),
+      quizRequired: requiredCorrect('quiz', quizCount),
+      quizCount,
+      quizGated: quizCount > 0,
+      quizAttempted: observed?.quizAttempted ?? false,
+    });
+  }
+
+  return out;
+}
+
+/** curriculum_attempts carries student_id; AttemptRow deliberately does not. */
+type AttemptRowWithStudent = AttemptRow & { student_id: string };
+
+/**
+ * Every topic's status, for every student named, keyed studentId -> topicKey.
+ *
+ * Two batched reads and one cached course read, whatever the roster size. A
+ * student with no rows still gets a full map of not_started topics, because the
+ * reducer iterates the SHAPES rather than the attempts -- a roster where one
+ * student has never signed in must not come back a row short.
+ */
+export async function getTopicStatuses(
+  studentIds: string[]
+): Promise<Map<string, Map<string, TopicStatus>>> {
+  const out = new Map<string, Map<string, TopicStatus>>();
+  const ids = [...new Set(studentIds)].filter(Boolean);
+  if (ids.length === 0) return out;
+
+  const admin = createAdminClient();
+  const [{ shapes }, attemptsResult, completionsResult] = await Promise.all([
+    getTopics(),
+    admin
+      .from('curriculum_attempts')
+      .select('student_id, course_id, topic_id, section, item_number, is_correct, created_at')
+      .in('student_id', ids)
+      .order('created_at', { ascending: false }),
+    admin
+      .from('curriculum_completion')
+      .select(
+        'user_id, course_id, topic_id, completed_at, lesson_completed_at, practice_correct, practice_total, quiz_correct, quiz_total'
+      )
+      .in('user_id', ids),
+  ]);
+
+  // FAILS OPEN TOWARD "NOT COMPLETE", matching getCompletions. An unreadable
+  // snapshot table renders every topic from the attempt log alone, which is a
+  // student reading less progress than they have -- recoverable, and visibly
+  // wrong. The other direction would tell them they had finished topics they
+  // had not.
+  if (completionsResult.error) {
+    console.error(
+      '[curriculum] getTopicStatuses could not read completions:',
+      completionsResult.error.message
+    );
+  }
+  if (attemptsResult.error) {
+    console.error(
+      '[curriculum] getTopicStatuses could not read attempts:',
+      attemptsResult.error.message
+    );
+  }
+
+  const attemptsByStudent = new Map<string, AttemptRow[]>();
+  for (const row of (attemptsResult.data ?? []) as AttemptRowWithStudent[]) {
+    const { student_id, ...attempt } = row;
+    if (!attemptsByStudent.has(student_id)) attemptsByStudent.set(student_id, []);
+    attemptsByStudent.get(student_id)!.push(attempt);
+  }
+
+  const completionsByStudent = new Map<string, Map<string, CompletionRow>>();
+  for (const row of (completionsResult.data ?? []) as (CompletionRow & {
+    user_id: string;
+    course_id: string;
+    topic_id: string;
+  })[]) {
+    if (!completionsByStudent.has(row.user_id)) completionsByStudent.set(row.user_id, new Map());
+    completionsByStudent.get(row.user_id)!.set(topicKey(row.course_id, row.topic_id), row);
+  }
+
+  for (const id of ids) {
+    out.set(
+      id,
+      topicStatusesFor(
+        attemptsByStudent.get(id) ?? [],
+        completionsByStudent.get(id) ?? new Map(),
+        shapes
+      )
+    );
+  }
+
   return out;
 }
 
