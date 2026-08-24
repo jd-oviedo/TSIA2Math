@@ -3,16 +3,8 @@ import { getProfile } from '../../lib/auth';
 import { resolveCourseAccess } from '../../lib/course-access';
 import { allowsTopic } from '../../lib/capabilities';
 import { getPlaceholderCounts } from '../../lib/curriculum-progress';
-import {
-  getTopics,
-  getAttempts,
-  progressByTopic,
-  gradableTotal,
-  type TopicRow,
-  type TopicProgress,
-  type TopicShape,
-} from '../data';
-import { getCompletions, isTopicComplete, type CompletionRow } from '../../lib/curriculum-progress';
+import { getTopics, type TopicRow } from '../data';
+import { getTopicStatuses, type TopicStatus } from '../../lib/curriculum-progress';
 import { Card, EmptyState, Eyebrow, Muted, PageHeading } from '../ui';
 // Two of the three aliased imports that once sat here -- curriculum-theme, fonts
 // and dashboard-theme -- came back when this file grew markup of its own again:
@@ -27,8 +19,6 @@ import CourseBand from './CourseBand';
 import ResumeCard from './ResumeCard';
 import TopicListRow, { type RowStatus } from './TopicListRow';
 import { unitFromParam, unitFromReferer } from './referer';
-import { mostRecentTopic } from '../../lib/curriculum-progress';
-import { loadTopicGates } from '../../course/[test]/[subject]/unit/[unit]/topic/[topicId]/topic-data';
 import { resumeStep } from '../../lib/topic-parts';
 
 // Modules. The curriculum browse surface: units, the topics inside them, and
@@ -41,29 +31,25 @@ function topicHref(topic: TopicRow) {
   return `/course/${test}/${subject}/unit/${topic.unit_number}/topic/${topic.topic_id}`;
 }
 
-// DEFINITION A. Settled 2026-08-22; the full argument is in
-// curriculum-progress.ts above getCompletions.
+// NO STATUS LOGIC IN THIS FILE. Deleted 2026-08-24, and the deletion is the
+// point of the change rather than a side effect of it.
 //
-// This used to be definition B: complete when correct >= total across every
-// gradable item, with the lesson never consulted. B was the only completion
-// state a student ever saw, and it disagreed with the record the database keeps
-// and with the gates the product enforces. A student who read the notes, cleared
-// the 70% practice gate and scored 3 of 4 on the quiz was told they had
-// completed nothing.
+// A local statusOf() used to live here: isTopicComplete for 'complete', then two
+// separate clauses for 'in_progress'. It is topicStatusFor() in
+// app/lib/topic-completion.ts now, and this page reads a status rather than
+// deciding one.
 //
-// `attempted` still drives in_progress, because "started" is a fact about the
-// attempt log rather than about the snapshot, and a student who has answered one
-// question has started whatever the snapshot says.
-function statusOf(
-  p: TopicProgress | undefined,
-  snapshot: CompletionRow | undefined,
-  shape: TopicShape | undefined
-): RowStatus {
-  if (isTopicComplete(snapshot, p, shape)) return 'complete';
-  if (snapshot?.lesson_completed_at) return 'in_progress';
-  if (p && p.attempted > 0) return 'in_progress';
-  return 'not_started';
-}
+// WHY THAT MATTERED HERE SPECIFICALLY. This page read TWO different definitions
+// of "past the lesson" at once: the rows, the unit bars and the course band came
+// through the strict form in topic-completion.ts, while the Resume card came
+// through the fail-open form in topic-data.ts. A student caught between them was
+// told "Read the notes again" by the card and "In progress" by the row, on the
+// same screen, permanently. Every number on this page now comes from one call to
+// getTopicStatuses, so that disagreement is not fixed here -- it is
+// unrepresentable.
+//
+// 'gated' is still decided here, and correctly: it is an entitlement fact rather
+// than a progress fact. See the note on TopicStatusKind.
 
 // The string that tells a student a unit is not finished being written.
 //
@@ -90,16 +76,19 @@ export default async function ModulesPage({
 
   const { unit: unitParam } = await searchParams;
 
-  const [{ topics, shapes }, attempts, headerList, completions, access, placeholders] =
+  const [{ topics }, statusesByStudent, headerList, access, placeholders] =
     await Promise.all([
     getTopics(),
-    getAttempts(profile.id),
+    // THE ONE STATUS READ. Every number on this page comes out of this map: the
+    // row states, the per-unit bars, the course band, and the Resume card.
+    //
+    // [profile.id] is the single-student case of a multi-student signature,
+    // deliberately. A teacher view passes a roster to the identical function, so
+    // the two surfaces cannot come to disagree about what a student's progress
+    // is. This replaces the getAttempts + getCompletions pair that used to sit
+    // here and costs the same two round trips.
+    getTopicStatuses([profile.id]),
     headers(),
-    // Definition A's one extra read. It joins this existing Promise.all, so it
-    // costs one round trip and no added latency, and it is served by the unique
-    // index on (user_id, course_id, topic_id) that curriculum_completion
-    // already carries.
-    getCompletions(profile.id),
     // THE GATE THIS PAGE SHIPPED WITHOUT.
     //
     // This surface rendered the whole course tree as working links to every
@@ -121,13 +110,21 @@ export default async function ModulesPage({
   ]);
   // Explicit parameter first, referer as the fallback. See referer.ts.
   const openUnit = unitFromParam(unitParam) ?? unitFromReferer(headerList.get('referer'));
-  const progress = progressByTopic(attempts, shapes);
 
-  // Course progress, definition A. One pass over topics already in memory.
-  const courseDone = topics.reduce((sum, t) => {
-    const key = `${t.course_id}:${t.topic_id}`;
-    return sum + (isTopicComplete(completions.get(key), progress.get(key), shapes.get(key)) ? 1 : 0);
-  }, 0);
+  // One student's map out of the multi-student result. Never absent for an id
+  // that was asked for -- getTopicStatuses fills every id it is given, including
+  // one with no rows at all -- but defaulted rather than asserted, because a
+  // syllabus is not worth throwing over a lookup.
+  const statuses = statusesByStudent.get(profile.id) ?? new Map<string, TopicStatus>();
+  const statusFor = (t: TopicRow): TopicStatus | undefined =>
+    statuses.get(`${t.course_id}:${t.topic_id}`);
+
+  // Course progress, definition A with A1. One pass over topics already in
+  // memory; the status was decided once, upstream, for every surface here.
+  const courseDone = topics.reduce(
+    (sum, t) => sum + (statusFor(t)?.status === 'complete' ? 1 : 0),
+    0
+  );
 
   const units = new Map<number, TopicRow[]>();
   for (const topic of topics) {
@@ -135,17 +132,24 @@ export default async function ModulesPage({
     units.get(topic.unit_number)!.push(topic);
   }
 
-  // Where to carry on. The topic comes from the attempt log, and the PART comes
-  // from resumeStep(), the same function the topic overview uses, so the two
-  // surfaces cannot disagree about where "carry on" goes.
+  // Where to carry on. The topic comes from lastWorkedAt on the status map, and
+  // the PART comes from resumeStep(), the same function the topic overview uses,
+  // so the two surfaces cannot disagree about where "carry on" goes.
   //
-  // One extra single-row read, and only when the student has attempted
-  // something: loadTopicGates resolves its shape from getTopicShape rather than
-  // pulling practice_items for all 97 topics.
-  const recent = mostRecentTopic(attempts);
-  const recentCandidate = recent
-    ? topics.find((t) => t.course_id === recent.course_id && t.topic_id === recent.topic_id)
-    : undefined;
+  // NO EXTRA READ. This used to call loadTopicGates() -- a second trip for the
+  // snapshot and the attempts of one topic -- on top of mostRecentTopic() over a
+  // separately fetched attempt log. Both are already in the map above.
+  //
+  // ONE BEHAVIOUR CHANGE, and it is a fix. mostRecentTopic() took attempts[0]
+  // globally and then looked it up among course topics, so an attempt against a
+  // topic that is not in the course -- a placeholder, something unpublished --
+  // resolved to undefined and the card silently vanished. This picks the most
+  // recent topic that IS in the course, so the card survives that.
+  const recentCandidate = topics.reduce<{ topic: TopicRow; at: string } | null>((best, t) => {
+    const at = statusFor(t)?.lastWorkedAt;
+    if (!at) return best;
+    return !best || at > best.at ? { topic: t, at } : best;
+  }, null)?.topic;
 
   // THE SAME GATE THE ROWS GET, and it is not redundant.
   //
@@ -162,21 +166,20 @@ export default async function ModulesPage({
       : undefined;
 
   let resume: { topic: TopicRow; href: string; label: string } | null = null;
-  if (recentTopic) {
-    const gates = await loadTopicGates(profile.id, recentTopic.course_id, recentTopic.topic_id);
-    const shape = shapes.get(`${recentTopic.course_id}:${recentTopic.topic_id}`);
+  const recentStatus = recentTopic ? statusFor(recentTopic) : undefined;
+  if (recentTopic && recentStatus) {
     const step = resumeStep({
-      lessonDone: gates.lessonDone,
-      practiceAttempted: gates.practiceAttempted,
-      quizAttempted: gates.quizAttempted,
-      practiceGated: gates.practiceGated,
-      practiceCount: shape?.practice.gradable ?? 0,
-      practiceCorrect: gates.practiceCorrect,
-      practiceRequired: gates.practiceRequired,
-      quizGated: gates.quizGated,
-      quizCount: shape?.mini_quiz.gradable ?? 0,
-      quizCorrect: gates.quizCorrect,
-      quizRequired: gates.quizRequired,
+      lessonDone: recentStatus.lessonDone,
+      practiceAttempted: recentStatus.practiceAttempted,
+      quizAttempted: recentStatus.quizAttempted,
+      practiceGated: recentStatus.practiceGated,
+      practiceCount: recentStatus.practiceCount,
+      practiceCorrect: recentStatus.practiceCorrect,
+      practiceRequired: recentStatus.practiceRequired,
+      quizGated: recentStatus.quizGated,
+      quizCount: recentStatus.quizCount,
+      quizCorrect: recentStatus.quizCorrect,
+      quizRequired: recentStatus.quizRequired,
     });
     resume = {
       topic: recentTopic,
@@ -234,15 +237,10 @@ export default async function ModulesPage({
               // "5/14" means on the syllabus and what a student is actually
               // walking through. Both numbers are derived; nothing is hardcoded.
               const unitTotal = unitTopics.length;
-              const unitDone = unitTopics.reduce((sum, t) => {
-                const key = `${t.course_id}:${t.topic_id}`;
-                return (
-                  sum +
-                  (isTopicComplete(completions.get(key), progress.get(key), shapes.get(key))
-                    ? 1
-                    : 0)
-                );
-              }, 0);
+              const unitDone = unitTopics.reduce(
+                (sum, t) => sum + (statusFor(t)?.status === 'complete' ? 1 : 0),
+                0
+              );
 
               return (
                 <UnitSection
@@ -255,7 +253,7 @@ export default async function ModulesPage({
                   defaultOpen={unitNumber === openUnit}
                 >
                   {unitTopics.map((topic, i) => {
-                    const p = progress.get(`${topic.course_id}:${topic.topic_id}`);
+                    const s = statusFor(topic);
                     // Per topic, not per page, because the free sample is a
                     // single-topic exemption: AR.1.4 stays open while the rest of
                     // the tree is gated. allowsTopic is the same predicate the
@@ -274,17 +272,13 @@ export default async function ModulesPage({
                         topicName={topic.topic_name}
                         href={topicHref(topic)}
                         status={
-                          reachable
-                            ? statusOf(
-                                p,
-                                completions.get(`${topic.course_id}:${topic.topic_id}`),
-                                shapes.get(`${topic.course_id}:${topic.topic_id}`)
-                              )
-                            : 'gated'
+                          // The only decision left on this page, and it is not a
+                          // progress one: 'gated' is what the viewer's PLAN says.
+                          reachable ? ((s?.status ?? 'not_started') as RowStatus) : 'gated'
                         }
                         estimatedMinutes={topic.estimated_time_minutes}
-                        correct={p?.correct ?? 0}
-                        total={p?.total ?? 0}
+                        correct={s?.correct ?? 0}
+                        total={s?.total ?? 0}
                         first={i === 0}
                       />
                     );
