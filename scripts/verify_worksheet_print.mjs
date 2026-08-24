@@ -127,7 +127,13 @@ const FAULT = `() => {
   });
 
   // Orange as a text colour, which is the one thing it may never be.
-  document.querySelectorAll('.ws-n').forEach((n) =>
+  //
+  // All three number elements, not just .ws-n. The palette scan in section 4
+  // runs on the KEY route, and .ws-n was only ever on that route inside the
+  // Teacher Notes card: with the card gone the fault had nothing to recolour
+  // there, so "Sunset Orange is never a text colour" could no longer be made to
+  // fail. .ws-key-n and .ws-rat-n are the key route's own numerals.
+  document.querySelectorAll('.ws-n, .ws-key-n, .ws-rat-n').forEach((n) =>
     n.style.setProperty('color', '#F0A33E', 'important'));
 
   // Masthead.
@@ -192,7 +198,12 @@ const FAULT = `() => {
   // are gone, so the fault that breaks it is the opposite one: build a notes
   // part and append it. Inverting the checks without inverting the fault would
   // have left four assertions that pass on every page in existence.
-  const sheet2 = document.querySelector('.ws-sheet');
+  //
+  // KEY ROUTE ONLY, keyed on the rationales part. Appending it unconditionally
+  // also added a part to the worksheet route, where "one printed part on the
+  // worksheet route" is a FACT and facts are not inverted by --prove, so the
+  // fault broke an assertion it has no business touching.
+  const sheet2 = document.querySelector('.ws-part-rationales') ? document.querySelector('.ws-sheet') : null;
   if (sheet2) {
     const part = document.createElement('section');
     part.className = 'ws-part ws-part-notes';
@@ -563,10 +574,30 @@ async function main() {
     check('no per-letter note lines remain', notes.lines === 0, `${notes.lines} lines`);
     check('no Teacher Notes part is emitted', notes.parts === 0, `${notes.parts} parts`);
 
+    // THE KEY ROUTE NOW RENDERS NO MATH AT ALL, and that is a consequence of
+    // this change rather than a fault. Every KaTeX span on this route came from
+    // the Teacher Notes cards, which restated each stem; the answer grid is
+    // letters and the stored rationales carry no dollar sign (0 of 1,344,
+    // asserted in section 7). So `all math is black on the key route` was a
+    // check with nothing left to measure, and it failed on an empty set exactly
+    // as it was written to.
+    //
+    // Demoted to a fact rather than weakened to `total === 0 || allBlack`. That
+    // form passes on any page in existence and would go on passing if the
+    // colour override were deleted. The rule it guarded is one declaration,
+    // `.ws-sheet .katex`, and it is still asserted invertibly on the questions
+    // page, which does render math; section 7 drives the same declaration on
+    // this route with synthetic content.
     const katexK = await run(page, READ_KATEX);
-    check('all math is black on the key route',
-      katexK.total > 0 && katexK.colors.every((c) => c === 'rgb(0, 0, 0)'),
-      `${katexK.total} spans: ${katexK.colors.join(' ')}`);
+    fact(`key route KaTeX spans against live content: ${katexK.total}`, true,
+      katexK.total === 0
+        ? 'none since Teacher Notes left; the colour rule is checked on the questions page'
+        : 'content now carries math, restore the colour check here');
+    if (katexK.total > 0) {
+      check('all math is black on the key route',
+        katexK.colors.every((c) => c === 'rgb(0, 0, 0)'),
+        `${katexK.total} spans: ${katexK.colors.join(' ')}`);
+    }
     fact(`rationale KaTeX spans against live content: ${katexK.inRats}`, true,
       katexK.inRats === 0 ? 'expected zero, see the synthetic check below' : 'content now carries math');
 
