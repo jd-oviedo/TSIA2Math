@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { DASH, cardStyle } from '../components/dashboard-theme';
 import { FONT_HEADING } from '../components/fonts';
-import { isOverdue } from '../lib/assignments';
+import { formatDue, isOverdue } from '../lib/assignments';
 
 // What has been set, and how far the targeted students have got with it.
 //
@@ -31,10 +31,6 @@ type Assignment = {
   in_progress: number;
   not_started: number;
 };
-
-function formatDue(iso: string): string {
-  return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-}
 
 /** A filled bar in three parts. The only thing carrying status colour. */
 function StatusBar({ a }: { a: Assignment }) {
