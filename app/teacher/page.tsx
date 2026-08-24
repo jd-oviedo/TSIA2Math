@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "../lib/supabase-server";
 import { createAdminClient } from "../lib/supabase-admin";
 import { profileGrants } from "../lib/auth";
+import { getTopics } from "../lib/curriculum-progress";
 import TeacherDashboardClient from "./TeacherDashboardClient";
 
 // Server-side gate. This is the only trustworthy place to enforce access:
@@ -86,9 +87,32 @@ export default async function TeacherPage() {
   // client that derives entitlement is a client that can be told it has some.
   const canExport = profileGrants(profile, "class-data-export", "TeacherPage.export");
 
+  // The assignable topic list, loaded server-side and handed down as plain data.
+  //
+  // getTopics() RATHER THAN listPickerTopics(), and the difference is what
+  // reaches the browser. Both read the same source with the same
+  // `is_placeholder = false` filter and the same (unit, sequence) ordering, but
+  // the picker one carries practice_items so it can count a worksheet pool --
+  // the full authored body of all 97 topics, shipped to a client component that
+  // needs five fields per row. This reads the cached course list every other
+  // surface already reads and projects it down to what the select renders.
+  //
+  // NOT A GATE. A teacher who edits this list in the browser gains nothing: the
+  // route calls isAssignableTopic() on every write and refuses a placeholder or
+  // a nonexistent id there.
+  const { topics } = await getTopics();
+  const assignTopics = topics.map((t) => ({
+    course_id: t.course_id,
+    topic_id: t.topic_id,
+    topic_name: t.topic_name,
+    unit_number: t.unit_number,
+    sequence_in_unit: t.sequence_in_unit,
+  }));
+
   return (
     <TeacherDashboardClient
       canExport={canExport}
+      assignTopics={assignTopics}
       initialClasses={classes ?? []}
       teacherName={teacherName}
       teacherEmail={teacherEmail}

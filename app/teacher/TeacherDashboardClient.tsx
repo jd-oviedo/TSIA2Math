@@ -8,6 +8,8 @@ import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from '../components/fonts';
 import { DASH, cardStyle } from '../components/dashboard-theme';
 import { HoverLabel, HOVER_LABEL_CSS, useHoverLabel } from '../components/HoverLabel';
 import NewAnnouncement from './NewAnnouncement';
+import NewAssignment, { type AssignTopic } from './NewAssignment';
+import AssignmentsPanel from './AssignmentsPanel';
 import SupportModal from '../components/SupportModal';
 import ModalShell from '../components/ModalShell';
 import ExportModal from './ExportModal';
@@ -1291,9 +1293,11 @@ function Spinner() {
 const SIDEBAR_W = 200;
 const SIDEBAR_W_COLLAPSED = 64;
 
-export default function TeacherDashboardClient({ canExport, initialClasses, teacherName, teacherEmail, isFounder, plan, tourState }: {
+export default function TeacherDashboardClient({ canExport, assignTopics, initialClasses, teacherName, teacherEmail, isFounder, plan, tourState }: {
   /** Teacher Pro only. Cosmetic: the export routes enforce this themselves. */
   canExport: boolean;
+  /** Non-placeholder topics, for the assignment picker. Loaded in page.tsx. */
+  assignTopics: AssignTopic[];
   initialClasses: ClassRow[]; teacherName: string; teacherEmail: string; isFounder: boolean;
   plan: string | null;
   tourState: 'done' | 'pending' | 'unavailable';
@@ -1308,6 +1312,10 @@ export default function TeacherDashboardClient({ canExport, initialClasses, teac
   const [showInvite, setShowInvite] = useState(false);
   const [showExport, setShowExport] = useState(false);
   const [showNewClass, setShowNewClass] = useState(false);
+  // Bumped when an assignment is created, so the tracker below refetches. The
+  // two components do not talk to each other: the panel owns its own read and
+  // this is the only thing that tells it the answer has changed.
+  const [assignmentsKey, setAssignmentsKey] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
@@ -1571,11 +1579,24 @@ export default function TeacherDashboardClient({ canExport, initialClasses, teac
               <>
                 <SummaryCards enrolled={rosterRows.length} notTested={notTested} crCount={collegeReady} crPct={crPct} weakStrand={weakStrand} avgScore={avgScore} cols={summaryCols} />
                 <NewAnnouncement classes={classes} selectedClassId={selectedClassId} />
+                {/* Setting work sits with the other thing a teacher WRITES for
+                    a class. The tracker for it goes further down, beside the
+                    other progress reads. */}
+                <NewAssignment
+                  classId={selectedClassId}
+                  topics={assignTopics}
+                  students={rosterRows.map((r) => ({ student_id: r.student_id, name: r.name }))}
+                  onCreated={() => setAssignmentsKey((k) => k + 1)}
+                />
                 <StrandPanel strandPct={strandPct} totalAttempts={totalAttempts} cols={strandCols} />
                 {/* Coursework, between practice mastery and the state's report.
                     The three panels read as: what they have worked through, how
                     they perform when tested, what the state said. */}
                 <CurriculumRollupPanel rollup={curriculum} cols={summaryCols} />
+                {/* Directly after the rollup: how far the class has got overall,
+                    then what was specifically set and how that is going. Both
+                    read the same live computation, so they cannot disagree. */}
+                <AssignmentsPanel classId={selectedClassId} reloadKey={assignmentsKey} isMobile={isMobile} />
                 {/* Beside the practice strand panel, not instead of it. One is
                     what the product measured, the other is what the state
                     reported; a teacher needs to be able to see them disagree. */}

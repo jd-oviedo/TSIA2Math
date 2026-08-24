@@ -91,19 +91,27 @@ test('class-data-export separates Pro from Core, and nothing else moved', () => 
   // The rest of Core is untouched: this was meant to REMOVE something from
   // Core, not to hand Pro a second change by accident.
   //
-  // UPDATED 2026-08-23 for official-scores, which both tiers hold, and again
-  // 2026-08-24 for curriculum-progress, which both tiers also hold. This test
-  // caught both changes when they landed, which is the whole reason the two sets
-  // are pinned in full rather than spot-checked. The property being asserted has
-  // not moved across either: class-data-export is still the ONLY difference
-  // between the tiers, and it is still the one Core does not have.
+  // UPDATED 2026-08-23 for official-scores, again 2026-08-24 for
+  // curriculum-progress, and again 2026-08-24 for assignments -- all three held
+  // by both tiers. This test caught every one of them when it landed, which is
+  // the whole reason the two sets are pinned in full rather than spot-checked.
+  // The property being asserted has not moved across any of them:
+  // class-data-export is still the ONLY difference between the tiers, and it is
+  // still the one Core does not have.
   assert.deepEqual(
     [...CAPABILITIES['teacher-core']].sort(),
-    ['curriculum-progress', 'official-scores', 'teacher-dashboard', 'worksheets']
+    [
+      'assignments',
+      'curriculum-progress',
+      'official-scores',
+      'teacher-dashboard',
+      'worksheets',
+    ]
   );
   assert.deepEqual(
     [...CAPABILITIES['teacher-pro']].sort(),
     [
+      'assignments',
       'class-data-export',
       'curriculum-progress',
       'official-scores',
@@ -260,6 +268,61 @@ test('reading curriculum progress and exporting class data are different capabil
 });
 
 // ---------------------------------------------------------------------------
+// Assignments on the teacher surface
+//
+// Core-tier, decided 2026-08-24, split the same four ways the two capabilities
+// above are split, and for the same reason: "Core has it", "Pro has it" and "no
+// student plan has it" are three different failures.
+//
+// THE READ/WRITE SPLIT IS THE ONE WORTH ASSERTING. 'curriculum-progress' names a
+// read and 'assignments' names a write, and the tests below pin that they are
+// genuinely separate keys rather than two names for one grant. A future
+// read-only observer plan is the case this protects: it would hold the read and
+// not the write, which is only expressible while these stay distinct.
+//
+// A STUDENT NOT HOLDING THIS IS NOT A STATEMENT ABOUT BUILD 4b. When the student
+// surface lands, a student reads the assignments that target them through their
+// own gate; it is not this capability, which names the teacher's authority to
+// SET work for a class. Granting it to a student plan would hand a student the
+// teacher write route.
+// ---------------------------------------------------------------------------
+
+test('a Teacher Core plan may set and track assignments', () => {
+  // The decision that makes this feature Core rather than Pro, as an assertion.
+  assert.equal(planGrants('teacher-core', 'assignments'), true);
+});
+
+test('a Teacher Pro plan may set and track assignments too', () => {
+  // Pro must not lose a Core feature. The tiers diverge on exports only.
+  assert.equal(planGrants('teacher-pro', 'assignments'), true);
+});
+
+test('no student plan holds the assignments capability', () => {
+  // See the note above: this names the teacher's write, not a student's read of
+  // work set for them.
+  assert.equal(planGrants('practice-pass', 'assignments'), false);
+  assert.equal(planGrants('full-course', 'assignments'), false);
+  assert.equal(planGrants(null, 'assignments'), false);
+});
+
+test('setting assignments and reading progress are different capabilities', () => {
+  // Both are Core and both are held by both tiers today, so this passes for a
+  // reason that has nothing to do with who holds what: it asserts the two keys
+  // exist independently. If one were ever folded into the other, the missing key
+  // would grant nothing and this fails.
+  assert.equal(planGrants('teacher-core', 'assignments'), true);
+  assert.equal(planGrants('teacher-core', 'curriculum-progress'), true);
+  assert.notEqual('assignments', 'curriculum-progress');
+});
+
+test('assignments does not drag the export capability along with it', () => {
+  // The tracking view shows status on screen. Nothing about it is a CSV, and if
+  // an export of it is ever built it gates on class-data-export.
+  assert.equal(planGrants('teacher-core', 'assignments'), true);
+  assert.equal(planGrants('teacher-core', 'class-data-export'), false);
+});
+
+// ---------------------------------------------------------------------------
 // The tier label
 //
 // Both teacher rails named the wrong product. The teacher dashboard rendered the
@@ -333,6 +396,7 @@ test('the capability list is exhaustive, and stays exhaustive by construction', 
   // a bad merge that deletes keys from the presence map.
   assert.ok(ALL_CAPABILITIES.length >= 6, `only ${ALL_CAPABILITIES.length} capabilities`);
   assert.deepEqual([...ALL_CAPABILITIES].sort(), [
+    'assignments',
     'class-data-export',
     'curriculum',
     'curriculum-progress',
