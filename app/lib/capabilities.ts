@@ -92,7 +92,34 @@ export type Capability =
   // getTopicStatuses, which the teacher already reaches through
   // curriculum-progress. This capability gates setting and tracking work, not
   // seeing progress, and a route that needs both asks for both.
-  | "assignments";
+  | "assignments"
+  // Reading a student's SCORES -- per topic, rolled up to a letter -- from the
+  // teacher surface.
+  //
+  // A SEPARATE CAPABILITY FROM curriculum-progress BECAUSE THAT ONE SAYS SO.
+  // Its own note, written when it landed, reads: "STATUS ONLY, NOT GRADES.
+  // [...] Scores, correct counts and gate percentages are a separate surface
+  // and, when it lands, its own decision. Do not widen this capability to cover
+  // it by assuming the name already stretches that far." This is that surface
+  // and this is that decision, so it gets its own name rather than quietly
+  // making the older one mean more than it was granted for.
+  //
+  // The split is also expressible, which is the test of whether it is real: a
+  // plan could coherently hold progress without grades -- a parent portal, a
+  // district viewer counting completion, an observer account -- and could not
+  // say so if the two shared a capability.
+  //
+  // CORE AND PRO BOTH, the fourth in a row, and by now the rule rather than a
+  // series of individual decisions. The question asked was whether there is a
+  // REASON grades are Pro-only, not whether they feel premium. There is not:
+  // seeing how your own students are scoring is what a teacher bought a
+  // dashboard for, the tier boundary is bulk export, and this exports nothing.
+  //
+  // WHAT IT DOES NOT COVER. Nothing here grants a teacher another teacher's
+  // class. Tenancy is requireClassOwnership + activeStudentIds in the handler,
+  // exactly as it is for every other teacher route; a capability answers "may
+  // this plan see grades at all", never "whose".
+  | "student-grades";
 
 // ---------------------------------------------------------------------------
 // Exhaustiveness
@@ -133,6 +160,7 @@ const CAPABILITY_PRESENCE: Record<Capability, true> = {
   "official-scores": true,
   "curriculum-progress": true,
   assignments: true,
+  "student-grades": true,
 };
 
 /**
@@ -161,6 +189,7 @@ export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
     "official-scores",
     "curriculum-progress",
     "assignments",
+    "student-grades",
   ]),
   "teacher-pro": new Set([
     "teacher-dashboard",
@@ -169,6 +198,7 @@ export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
     "official-scores",
     "curriculum-progress",
     "assignments",
+    "student-grades",
   ]),
 };
 
@@ -198,6 +228,14 @@ export const CAPABILITIES: Readonly<Record<Plan, ReadonlySet<Capability>>> = {
 // REASON it is Pro-only, not whether it feels premium. class-data-export remains
 // the sole difference between the tiers -- one capability out of five now -- and
 // it remains the only one anybody had such a reason for.
+//
+// AND A FOURTH, 2026-08-24. `student-grades` is the Build 3 teacher surface, and
+// the question above was asked of it rather than assumed: there is no reason
+// grades are Pro-only, so it is Core too. class-data-export is STILL the whole
+// difference between the tiers -- one capability out of six. The invariant that
+// keeps mattering is not the count, it is that the symmetric difference is
+// exactly {class-data-export}, which tests/capabilities.test.ts asserts as a set
+// rather than leaving to be eyeballed across two lists that now run six deep.
 
 // ---------------------------------------------------------------------------
 // The worksheet quota

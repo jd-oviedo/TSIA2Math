@@ -1,4 +1,5 @@
 import { getProfile } from '../../lib/auth';
+import { latestAttemptScores } from '../../lib/grades';
 import { getTopics, getAttempts, getTestSessions } from '../data';
 import { Card, CardTitle, EmptyState, Muted, PageHeading, formatDate } from '../ui';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
@@ -30,36 +31,41 @@ export default async function GradesPage() {
   const topicNames = new Map(topics.map((t) => [`${t.course_id}:${t.topic_id}`, t.topic_name]));
 
   // Latest attempt per item, so a retry replaces the earlier answer rather than
-  // counting twice. curriculum_attempts is append-only and already sorted
-  // newest first, so the first row seen for an item is the current one.
-  const latest = new Map<string, { is_correct: boolean; created_at: string }>();
-  for (const a of attempts) {
-    const key = `${a.course_id}:${a.topic_id}:${a.section}:${a.item_number}`;
-    if (!latest.has(key)) latest.set(key, { is_correct: a.is_correct, created_at: a.created_at });
-  }
-
-  type Row = { key: string; topic: string; section: string; correct: number; total: number; last: string };
-  const byTopicSection = new Map<string, Row>();
-  for (const [key, value] of latest) {
-    const [courseId, topicId, section] = key.split(':');
-    const rowKey = `${courseId}:${topicId}:${section}`;
-    const existing = byTopicSection.get(rowKey);
-    if (existing) {
-      existing.total += 1;
-      if (value.is_correct) existing.correct += 1;
-      if (value.created_at > existing.last) existing.last = value.created_at;
-    } else {
-      byTopicSection.set(rowKey, {
-        key: rowKey,
+  // counting twice.
+  //
+  // THE REDUCER MOVED TO app/lib/grades.ts AND THIS PAGE NOW CALLS IT. Build 3.
+  // It was twenty-six lines inline here, and it was the ONLY definition of the
+  // number a student reads as their score -- so a teacher surface needing the
+  // same number had exactly two options, and copying it was the one that would
+  // have gone unnoticed until the two drifted.
+  //
+  // NOTHING ABOUT THE ARITHMETIC CHANGED, and that is proved rather than
+  // asserted: scripts/faultproof_grades_extract.mjs holds this loop frozen
+  // verbatim as its oracle and runs eleven fixtures -- including this student's
+  // real GR.4.3 rows -- through both, with five mis-extractions that must each
+  // redden exactly the cases named against them.
+  //
+  // ONE THING IS STRICTER THERE THAN IT WAS HERE. This loop's `!latest.has(key)`
+  // was correct only because getAttempts happens to order created_at descending;
+  // nothing said so, and a caller passing rows any other way got the OLDEST
+  // attempt per item, silently. The extracted form compares timestamps instead.
+  // Same answer on this page's input, and no longer dependent on it.
+  //
+  // The topic NAME is still resolved here. It is display metadata, not part of
+  // the score, and grades.ts deliberately knows nothing about it.
+  const curriculumRows = [...latestAttemptScores(attempts).entries()]
+    .map(([key, score]) => {
+      const [courseId, topicId, section] = key.split(':');
+      return {
+        key,
         topic: topicNames.get(`${courseId}:${topicId}`) ?? topicId,
         section,
-        correct: value.is_correct ? 1 : 0,
-        total: 1,
-        last: value.created_at,
-      });
-    }
-  }
-  const curriculumRows = [...byTopicSection.values()].sort((a, b) => b.last.localeCompare(a.last));
+        correct: score.correct,
+        total: score.total,
+        last: score.lastWorkedAt,
+      };
+    })
+    .sort((a, b) => b.last.localeCompare(a.last));
 
   const completedSessions = sessions.filter((s) => s.final_score !== null);
   const best = completedSessions.reduce<number | null>(
