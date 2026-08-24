@@ -96,9 +96,15 @@ await page.setContent(`<body>
   <style>
     body { margin:0; padding:18px; background:#fff; font:12px ui-sans-serif,system-ui,sans-serif; color:#0E0E11 }
     h1 { font-size:15px; margin:0 0 14px }
-    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px }
+    /* Generous gutters and padding INSIDE each cell. Reviewing the first sheet
+       raised six figures as "too close to the neighbour", and measuring each one
+       individually at its real size showed every one of them clearing its own
+       canvas by 10 to 34px. The crowding was this grid, not the figures. The
+       sheet is a review instrument, so it has to stop manufacturing defects. */
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:34px 30px }
     figure { margin:0 }
-    .f { border:1px solid #d8d8d8; border-radius:6px; overflow:hidden; display:flex; justify-content:center; background:#fff }
+    .f { border:1px solid #d8d8d8; border-radius:6px; overflow:hidden; display:flex;
+         justify-content:center; background:#fff; padding:12px }
     svg { display:block; max-width:100%; height:auto }
     figcaption { padding:4px 0 0; font-size:11px; line-height:1.35 }
     .s { color:#666 }

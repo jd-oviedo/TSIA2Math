@@ -4,6 +4,7 @@
 //   node scripts/verify_figure_labels.mjs --pool       worksheet-eligible only
 //   node scripts/verify_figure_labels.mjs --only gr-2-1-notched
 //   node scripts/verify_figure_labels.mjs --sheet out.png    contact sheet too
+//   node scripts/verify_figure_labels.mjs --prove            faults each rule
 //
 // WHY A BROWSER. Label collision is a question about rendered glyph boxes, and
 // the generator only has an ESTIMATE of those. Measuring the estimate against
@@ -26,6 +27,27 @@
 //      the label carries a leader line back to the segment).
 //   3. No label box crosses the figure outline.
 //   4. No label is clipped by the canvas edge.
+//   5. RULE A: a length label's box clears every drawn stroke of its figure,
+//      internal construction lines included, by CLEARANCE.
+//   6. RULE B: a length label's centre is not inside the figure's filled body.
+//
+// RULES 5 AND 6 KEY ON A DECLARED ROLE, NEVER ON POSITION. figure_shapes.mjs
+// writes data-role on every label (see `role` there). Only role="length" is
+// subject to them: an angle label belongs inside at its vertex, an identifier
+// like "ABC" belongs on the shape it names, and an axis tick belongs on its
+// axis. Deciding which is which by looking at where the label ended up would
+// make the checker agree with whatever the generator did.
+//
+// Rule 5 ignores GRIDLINES, identified by their stroke colour rather than by
+// position. A tick label sits on a gridline by design, and a rule that counted
+// that as a collision reported 365 correct labels as broken. It does NOT ignore
+// dashed construction lines, which is the whole point: a radius label lying
+// across a dashed radius is exactly what rule 5 exists to catch.
+//
+// Rule 6 exempts a label carrying data-internal, which measures a construction
+// line drawn INTO the figure such as a dashed height. That label is a length
+// and it is correctly inside. The exemption is written at the one call site
+// that draws such a line, never inferred.
 //
 // Assertion 4 was added after the first pass of assertions 1 to 3 came back
 // clean on a figure whose left-hand label read "leg 6" because the other half
@@ -88,7 +110,22 @@ const PERP_MAX_LEADER = 70;
 // Labels must clear each other by this much. Matched to CLEARANCE in
 // figure_shapes.mjs: the placer reserves it, this asserts it was reserved.
 const CLEARANCE = 2;
+// Gridlines, by colour. GRID in figure_shapes.mjs and make_figure.mjs.
+const GRID_RGB = 'rgb(226, 220, 202)';
 
+// --prove MOVES A LABEL SOMEWHERE KNOWN-BAD AND REQUIRES THE RULE TO NOTICE.
+//
+// Four probes written during this work reported a confident zero while being
+// blind: one evaluated a function object instead of calling it, one read a
+// property that had been renamed so every comparison was NaN, one filtered on a
+// spec type that did not exist so it skipped its own targets, and the shared
+// Liang-Barsky helper had its branches inverted so it missed a segment cutting
+// straight through a box. Every one of those looked exactly like a clean run.
+//
+// So a clean run is not evidence on its own. For each figure carrying a length
+// label, --prove drops that label onto a drawn stroke and then into the middle
+// of the filled body, and requires rule 5 and rule 6 respectively to fire. A
+// rule that stays silent on a label placed deliberately wrong is not measuring.
 const args = process.argv.slice(2);
 const flag = (name) => args.includes(name);
 const value = (name) => { const i = args.indexOf(name); return i >= 0 ? args[i + 1] : null; };
@@ -131,38 +168,29 @@ function boxesOverlap(a, b) {
 // Does segment (p,q) cut through the axis-aligned box? Liang-Barsky, which
 // answers "intersects" rather than "an endpoint is inside", so an outline that
 // merely touches a corner is not reported.
+// See the note on segHitsBox in figure_shapes.mjs: the earlier version of this
+// had its two branches inverted and reported a segment cutting straight through
+// a box as a miss, so assertion 3 was unreliable from the day it was written.
 function segIntersectsBox(p, q, box) {
-  const [x0, y0] = p, [x1, y1] = q;
-  const dx = x1 - x0, dy = y1 - y0;
-  let t0 = 0, t1 = 1;
-  const clip = (num, den) => {
-    if (den === 0) return num <= 0;
-    const r = num / den;
-    if (den < 0) { if (r > t1) return false; if (r > t0) t0 = r; }
-    else { if (r < t0) return false; if (r < t1) t1 = r; }
-    return true;
-  };
+  const dx = q[0] - p[0], dy = q[1] - p[1];
   const L = box.x, R = box.x + box.width, T = box.y, B = box.y + box.height;
-  if (!clip(L - x0, dx) || !clip(x0 - R, -dx) || !clip(T - y0, dy) || !clip(y0 - B, -dy)) return false;
+  let t0 = 0, t1 = 1;
+  const tests = [[-dx, p[0] - L], [dx, R - p[0]], [-dy, p[1] - T], [dy, B - p[1]]];
+  for (const [pp, qq] of tests) {
+    if (pp === 0) { if (qq < 0) return false; continue; }
+    const r = qq / pp;
+    if (pp < 0) { if (r > t1) return false; if (r > t0) t0 = r; }
+    else { if (r < t0) return false; if (r < t1) t1 = r; }
+  }
   return t0 < t1;
 }
 
-// ─── the run ─────────────────────────────────────────────────────────────────
-
-const browser = await chromium.launch();
-const page = await browser.newPage({ viewport: { width: 900, height: 700 } });
-const shots = [];
-
-for (const name of specs) {
-  const spec = JSON.parse(readFileSync(`${DIR}/${name}.json`, 'utf8'));
-  const { svg } = figureFromSpec(spec);
-
-  await page.setContent(
-    `<body style="margin:0;background:#fff">${svg}</body>`,
-    { waitUntil: 'load' },
-  );
-
-  const measured = await page.evaluate(() => {
+// ─── the measurement, as one reusable probe ──────────────────────────────────
+//
+// A named source string rather than an inline arrow, so --prove can re-run the
+// identical measurement against a faulted page. Two measurements that are meant
+// to agree should be the same code, not two copies of it.
+const PROBE_SRC = `(GRID_COLOUR) => {
     const root = document.querySelector('svg');
     const rootBox = root.getBoundingClientRect();
     const rel = (r) => ({ x: r.x - rootBox.x, y: r.y - rootBox.y, width: r.width, height: r.height });
@@ -189,7 +217,7 @@ for (const name of specs) {
         node = node.parentNode;
       }
       const cs = getComputedStyle(el);
-      ctx.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+      ctx.font = \`\${cs.fontWeight} \${cs.fontSize} \${cs.fontFamily}\`;
       const m = ctx.measureText(el.textContent);
       if (!(m.fontBoundingBoxAscent >= 0) || !(m.actualBoundingBoxAscent >= 0)) return r;
       const baseline = r.y + m.fontBoundingBoxAscent;
@@ -203,23 +231,159 @@ for (const name of specs) {
       dim: el.getAttribute('data-dim'),
       leader: el.getAttribute('data-leader') !== null,
       inside: el.getAttribute('data-inside') !== null,
+      role: el.getAttribute('data-role'),
+      internal: el.getAttribute('data-internal') !== null,
       box: ink(el, rel(el.getBoundingClientRect())),
     }));
+
+    // Every drawn stroke, sampled along its real geometry. line, polyline,
+    // polygon, path, ellipse and circle are all SVGGeometryElement, so one
+    // sampler covers construction lines, hidden edges and ellipse arcs alike.
+    const strokes = [];
+    for (const el of root.querySelectorAll('line, polyline, polygon, path, ellipse, circle')) {
+      const len = el.getTotalLength ? el.getTotalLength() : 0;
+      if (!len) continue;
+      const cs = getComputedStyle(el);
+      if (cs.stroke === 'none' || cs.stroke === GRID_COLOUR) continue;
+      const pts = [];
+      for (let d = 0; d <= len; d += Math.max(len / 2000, 0.4)) {
+        const q = el.getPointAtLength(d);
+        pts.push([q.x - rootBox.x + rootBox.x, q.y]);
+      }
+      strokes.push({ tag: el.tagName, dashed: !!el.getAttribute('stroke-dasharray'), pts });
+    }
+
+    // Is a point inside the figure's painted body? isPointInFill is exact for
+    // every shape type, so this needs no polygon approximation.
+    const filled = [...root.querySelectorAll('polygon, path, ellipse, circle')]
+      .filter((el) => {
+        const f = getComputedStyle(el).fill;
+        return f && f !== 'none' && !f.startsWith('rgba(0, 0, 0, 0)');
+      });
+    const insideBody = (x, y) => {
+      const pt = new DOMPoint(x, y);
+      return filled.some((el) => el.isPointInFill(pt));
+    };
     // Outline segments, for the "no label crosses the figure" assertion. Only
     // the closed shape outlines, not gridlines or axes: a tick label sitting on
     // an axis is correct, a dimension label sitting on the shape is not.
     const outline = [];
     for (const el of root.querySelectorAll('polygon')) {
-      const pts = el.getAttribute('points').trim().split(/\s+/).map((p) => p.split(',').map(Number));
+      const pts = el.getAttribute('points').trim().split(/\\s+/).map((p) => p.split(',').map(Number));
       for (let i = 0; i < pts.length; i++) outline.push([pts[i], pts[(i + 1) % pts.length]]);
     }
+    const bodyHits = texts.map((t) =>
+      insideBody(t.box.x + t.box.width / 2, t.box.y + t.box.height / 2));
+
     return {
-      texts, outline,
+      texts, outline, strokes, bodyHits,
       // The viewBox, not the rendered rect: the figure is drawn in user units
       // and a label outside them is clipped no matter what size it displays at.
-      view: root.getAttribute('viewBox').split(/\s+/).map(Number),
+      view: root.getAttribute('viewBox').split(/\\s+/).map(Number),
     };
+}`;
+
+
+// The two new rules as predicates over a measurement, so the assertions and the
+// fault proofs cannot drift apart.
+function ruleAHits(m) {
+  const out = [];
+  for (const t of m.texts) {
+    if (t.role !== 'length') continue;
+    const g = { x: t.box.x - CLEARANCE, y: t.box.y - CLEARANCE,
+                width: t.box.width + CLEARANCE * 2, height: t.box.height + CLEARANCE * 2 };
+    const hit = m.strokes.find((sk) => sk.pts.some(
+      (q) => q[0] >= g.x && q[0] <= g.x + g.width && q[1] >= g.y && q[1] <= g.y + g.height));
+    if (hit) out.push({ t, hit });
+  }
+  return out;
+}
+function ruleBHits(m) {
+  const out = [];
+  m.texts.forEach((t, i) => {
+    if (t.role !== 'length' || t.internal) return;
+    if (m.bodyHits[i]) out.push({ t });
   });
+  return out;
+}
+
+// ─── the run ─────────────────────────────────────────────────────────────────
+
+// Moves every length label onto a target that must trip one of the two rules.
+// 'stroke' drops it on the midpoint of a real drawn stroke; 'body' drops it at
+// a point inside the figure's filled area.
+const FAULT = `(where) => {
+  const root = document.querySelector('svg');
+  const labels = [...root.querySelectorAll('text[data-role="length"]')];
+  if (!labels.length) return 0;
+
+  let target = null;
+  if (where === 'stroke') {
+    for (const el of root.querySelectorAll('line, polyline, polygon, path, ellipse, circle')) {
+      const len = el.getTotalLength ? el.getTotalLength() : 0;
+      if (!len) continue;
+      const cs = getComputedStyle(el);
+      if (cs.stroke === 'none' || cs.stroke === 'rgb(226, 220, 202)') continue;
+      const q = el.getPointAtLength(len / 2);
+      target = [q.x, q.y];
+      break;
+    }
+  } else {
+    const filled = [...root.querySelectorAll('polygon, path, ellipse, circle')].filter((el) => {
+      const f = getComputedStyle(el).fill;
+      return f && f !== 'none' && !f.startsWith('rgba(0, 0, 0, 0)');
+    });
+    // The DEEPEST interior point, not the first one found. A grid scan that
+    // takes its first hit lands near a boundary, and on a thin corner of a
+    // triangle the label's ink centre then sits a few pixels outside again, so
+    // the fault fails to fault and rule 6 looks blind when it is not.
+    let bestDepth = -1;
+    for (const el of filled) {
+      const b = el.getBBox();
+      for (let gx = 1; gx < 20; gx++) for (let gy = 1; gy < 20; gy++) {
+        const x = b.x + (b.width * gx) / 20, y = b.y + (b.height * gy) / 20;
+        if (!el.isPointInFill(new DOMPoint(x, y))) continue;
+        let depth = 0;
+        while (depth < 40
+          && el.isPointInFill(new DOMPoint(x - depth, y))
+          && el.isPointInFill(new DOMPoint(x + depth, y))
+          && el.isPointInFill(new DOMPoint(x, y - depth))
+          && el.isPointInFill(new DOMPoint(x, y + depth))) depth++;
+        if (depth > bestDepth) { bestDepth = depth; target = [x, y]; }
+      }
+    }
+  }
+  if (!target) return 0;
+  for (const el of labels) {
+    el.removeAttribute('transform');
+    el.setAttribute('x', target[0]);
+    // The rules measure the label's INK CENTRE, and a text element is
+    // positioned by its baseline, so the baseline goes below the target by half
+    // the ink height for the centre to land on it.
+    el.setAttribute('y', where === 'body' ? target[1] + 4.5 : target[1]);
+    el.setAttribute('text-anchor', 'middle');
+  }
+  return labels.length;
+}`;
+
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 900, height: 700 } });
+const shots = [];
+const proof = {
+  stroke: { moved: 0, caught: 0, silent: [], exempt: [] },
+  body: { moved: 0, caught: 0, silent: [], exempt: [] },
+};
+
+for (const name of specs) {
+  const spec = JSON.parse(readFileSync(`${DIR}/${name}.json`, 'utf8'));
+  const { svg } = figureFromSpec(spec);
+
+  await page.setContent(
+    `<body style="margin:0;background:#fff">${svg}</body>`,
+    { waitUntil: 'load' },
+  );
+
+  const measured = await page.evaluate(`(${PROBE_SRC})(${JSON.stringify(GRID_RGB)})`);
 
   const { texts, outline } = measured;
   const dims = texts.filter((t) => t.dim);
@@ -273,7 +437,12 @@ for (const name of specs) {
   // box is bounded by the outline by construction, and the assertion exists to
   // catch a label lying across an edge, which is a different thing.
   for (const t of texts) {
-    if (t.inside) continue;
+    // LENGTH LABELS ONLY, like rules 5 and 6. An identifier such as "ABC" or
+    // "image" names the shape and belongs on it, and a tick label crosses a
+    // shaded region by design. This scoping was invisible until the Liang-Barsky
+    // fix above made the assertion work at all, at which point it reported 13
+    // correct labels as broken.
+    if (t.role !== 'length') continue;
     for (const [p, q] of outline) {
       if (segIntersectsBox(p, q, t.box)) {
         fail(name, 'label box crosses the figure outline', `"${t.text}"`);
@@ -293,7 +462,42 @@ for (const name of specs) {
     }
   }
 
-  console.log(`  ${'ok  '}${name}  (${texts.length} labels, ${dims.length} dimensioned)`);
+  // 5. RULE A: a length label clears every drawn stroke of its own figure
+  for (const { t, hit } of ruleAHits(measured)) {
+    fail(name, 'length label lies on a drawn line',
+      `"${t.text}" touches a ${hit.tag}${hit.dashed ? ' (dashed construction line)' : ''}`);
+  }
+
+  // 6. RULE B: a length label is not inside the figure's filled body
+  for (const { t } of ruleBHits(measured)) {
+    fail(name, 'length label sits inside the figure',
+      `"${t.text}" reads as an interior quantity, not an edge length`);
+  }
+
+  const lengthCount = texts.filter((t) => t.role === 'length').length;
+  console.log(`  ${'ok  '}${name}  (${texts.length} labels, ${dims.length} dimensioned, ${lengthCount} length)`);
+
+  if (flag('--prove') && lengthCount) {
+    // Rule 6 does not apply to a figure whose only length labels measure an
+    // INTERNAL construction line, such as a circle whose one label names its
+    // drawn radius. Those are exempt by design, so counting them as figures the
+    // rule failed to catch would be counting the exemption as a bug. They are
+    // reported separately rather than dropped, so the exemption stays visible.
+    const provable = { stroke: true, body: measured.texts.some((t) => t.role === 'length' && !t.internal) };
+    for (const [where, ruleName] of [['stroke', 'rule 5'], ['body', 'rule 6']]) {
+      if (!provable[where]) { proof[where].exempt.push(name); continue; }
+      await page.setContent(`<body style="margin:0;background:#fff">${svg}</body>`, { waitUntil: 'load' });
+      const moved = await page.evaluate(`(${FAULT})(${JSON.stringify(where)})`);
+      if (!moved) continue;
+      proof[where].moved++;
+      const after = await page.evaluate(`(${PROBE_SRC})(${JSON.stringify(GRID_RGB)})`);
+      const fired = where === 'stroke' ? ruleAHits(after).length > 0 : ruleBHits(after).length > 0;
+      if (fired) proof[where].caught++;
+      else proof[where].silent.push(name);
+      void ruleName;
+    }
+    await page.setContent(`<body style="margin:0;background:#fff">${svg}</body>`, { waitUntil: 'load' });
+  }
 
   if (flag('--sheet')) {
     shots.push({ name, png: await page.locator('svg').screenshot() });
@@ -314,6 +518,24 @@ if (flag('--sheet')) {
 }
 
 await browser.close();
+
+if (flag('--prove')) {
+  console.log('\n--prove: each rule, against a label deliberately placed wrong');
+  for (const [where, rule, what] of [
+    ['stroke', 'rule 5 (length label on a drawn line)', 'dropped onto a real stroke'],
+    ['body', 'rule 6 (length label inside the figure)', 'dropped inside the filled body'],
+  ]) {
+    const r = proof[where];
+    const ok = r.moved > 0 && r.caught === r.moved;
+    if (!ok) failures++;
+    console.log(`  ${ok ? 'pass' : 'FAIL'}  ${rule}`);
+    console.log(`        ${r.caught}/${r.moved} figures caught, labels ${what}`);
+    if (r.exempt.length) {
+      console.log(`        ${r.exempt.length} figure(s) exempt by design: ${r.exempt.join(', ')}`);
+    }
+    if (r.silent.length) console.log(`        SILENT ON: ${r.silent.join(', ')}`);
+  }
+}
 
 console.log(`\n${specs.length} figure(s) checked, ${failures} assertion failure(s)`);
 if (failures) {

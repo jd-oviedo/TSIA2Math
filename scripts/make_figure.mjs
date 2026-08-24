@@ -567,8 +567,27 @@ function buildSvg(spec) {
   });
 
   // Axis titles
-  if (spec.xLabel) parts.push(`<text x="${(W + pad.l - pad.r) / 2}" y="${H - 5}" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="${INK}">${esc(spec.xLabel)}</text>`);
-  if (spec.yLabel) parts.push(`<text x="10" y="${(H - pad.b + pad.t) / 2}" text-anchor="middle" transform="rotate(-90 10 ${(H - pad.b + pad.t) / 2})" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="${INK}">${esc(spec.yLabel)}</text>`);
+  // AXIS TITLES, CLEAR OF THE CANVAS EDGE.
+  //
+  // The y title is rotated a quarter turn about its own anchor, so what runs
+  // toward the left edge is the font's ASCENT, not half the text height. At
+  // x = 10 with an 11px face that put the glyphs at exactly x = 0 on seven
+  // figures, three of them on live worksheet items: "Books read", "Visits",
+  // "Students", "Score" twice, "Degrees" and "total cost (dollars)". Measured,
+  // not inferred, by taking the rotated element's own bounding rect.
+  //
+  // AXIS_INSET is the ascent plus the same clearance the label rules use, so
+  // the title starts inside the canvas instead of on its edge. The x title has
+  // the same treatment at the bottom for the descent.
+  // The FONT box, measured in Chromium at this size: ascent 0.909em, descent
+  // 0.273em. Not the ink box. A rotated element's bounding rect is its font
+  // box, so the font ascent is what runs at the left edge, and using the ink
+  // ascent left the title 0.4px from the canvas instead of the intended 2.
+  const AXIS_ASCENT = 11 * 0.909, AXIS_DESCENT = 11 * 0.273, AXIS_CLEAR = 2;
+  const yTitleX = n(AXIS_ASCENT + AXIS_CLEAR);
+  const yTitleY = n((H - pad.b + pad.t) / 2);
+  if (spec.xLabel) parts.push(`<text data-role="identifier" x="${(W + pad.l - pad.r) / 2}" y="${n(H - AXIS_DESCENT - AXIS_CLEAR)}" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="${INK}">${esc(spec.xLabel)}</text>`);
+  if (spec.yLabel) parts.push(`<text data-role="identifier" x="${yTitleX}" y="${yTitleY}" text-anchor="middle" transform="rotate(-90 ${yTitleX} ${yTitleY})" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" fill="${INK}">${esc(spec.yLabel)}</text>`);
 
   if (!spec.alt) throw new Error('spec.alt is required: the figure supplements the text, it never replaces it');
 
