@@ -1,6 +1,7 @@
 import { cache } from 'react';
 import { createAdminClient } from './supabase-admin';
 import { correctInSection, type AttemptRow } from './attempt-sets';
+import { topicKey } from './topic-key';
 // The definition-A arithmetic lives in a module that imports nothing, so it can
 // be unit tested. Re-exported here so callers keep one import site.
 import {
@@ -104,9 +105,13 @@ export {
   releasableItems,
 } from './attempt-sets';
 
-export function topicKey(courseId: string, topicId: string): string {
-  return `${courseId}:${topicId}`;
-}
+// Moved to its own import-free module 2026-08-24 so the class rollup reducer can
+// key a map without loading the admin client. Re-exported here, so every call
+// site that already imports it from this file is unaffected.
+//
+// Imported as well as re-exported: `export ... from` alone re-exports without
+// binding the name locally, and this module calls topicKey seven times.
+export { topicKey };
 
 // The whole course: every topic in sequence, plus the gradable counts the gates
 // are measured against.
