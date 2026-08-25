@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from '../../components/fonts';
+import { STRAND_TINT } from '../../lib/strands';
 
 export default function InactiveTeacher() {
   const [w, setW] = useState(1280);
@@ -68,15 +69,15 @@ export default function InactiveTeacher() {
             <div style={{ padding: '16px 18px' }}>
               {/* Strand pills */}
               <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
-                {[['QR','#E6F1FB','#185FA5','#B5D4F4'],['AR','#E1F5EE','#0F6E56','#9FE1CB'],['GR','#FAEEDA','#854F0B','#FAC775'],['PR','#EEEDFE','#534AB7','#CECBF6']].map(([code,bg,text,border]) => (
+                {[['QR','#E6F1FB','#185FA5',STRAND_TINT.QR],['AR','#E1F5EE','#0F6E56',STRAND_TINT.AR],['GR','#FAEEDA','#854F0B',STRAND_TINT.GR],['PR','#EEEDFE','#534AB7',STRAND_TINT.PR]].map(([code,bg,text,border]) => (
                   <span key={code} style={{ fontSize: 12, fontWeight: 500, padding: '5px 12px', borderRadius: 999, background: bg, color: text, border: `1px solid ${border}` }}>{code}</span>
                 ))}
               </div>
               {/* Misconception cards */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
                 {[
-                  { rank: 1, strand: 'AR', topic: 'AR.2.3', color: '#9FE1CB', textColor: '#0F6E56', bg: '#E1F5EE', border: '#9FE1CB', bars: [40,60,70,85,75,100], count: '18 selections' },
-                  { rank: 2, strand: 'QR', topic: 'QR.1.4', color: '#B5D4F4', textColor: '#185FA5', bg: '#E6F1FB', border: '#B5D4F4', bars: [50,50,30,60,55,50], count: '11 selections' },
+                  { rank: 1, strand: 'AR', topic: 'AR.2.3', color: STRAND_TINT.AR, textColor: '#0F6E56', bg: '#E1F5EE', border: STRAND_TINT.AR, bars: [40,60,70,85,75,100], count: '18 selections' },
+                  { rank: 2, strand: 'QR', topic: 'QR.1.4', color: STRAND_TINT.QR, textColor: '#185FA5', bg: '#E6F1FB', border: STRAND_TINT.QR, bars: [50,50,30,60,55,50], count: '11 selections' },
                 ].map(m => (
                   <div key={m.rank} style={{ background: 'rgba(255,255,255,0.05)', borderRadius: 10, padding: 12, border: '1px solid rgba(255,255,255,0.08)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
@@ -100,7 +101,7 @@ export default function InactiveTeacher() {
               </div>
               {/* Strand bar */}
               <div style={{ marginTop: 14, display: 'flex', gap: 4 }}>
-                {[['#B5D4F4','30%'],['#9FE1CB','25%'],['#FAC775','26%'],['#CECBF6','19%']].map(([color, width]) => (
+                {[[STRAND_TINT.QR,'30%'],[STRAND_TINT.AR,'25%'],[STRAND_TINT.GR,'26%'],[STRAND_TINT.PR,'19%']].map(([color, width]) => (
                   <div key={color} style={{ height: 8, borderRadius: 999, background: color, width, opacity: 0.7 }} />
                 ))}
               </div>

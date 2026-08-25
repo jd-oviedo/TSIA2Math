@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import MathText from '../components/MathText';
 import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from '../components/fonts';
+import { STRAND_TINT } from '../lib/strands';
 
 // Only Camila has a demo profile page behind the link. Every other roster row
 // renders the same label as an inert span so the stage demo has one live path.
@@ -23,10 +24,10 @@ function ViewProfile({ email, block }: { email: string; block?: boolean }) {
 }
 
 const STR: Record<string, { code: string; name: string; color: string }> = {
-  QR: { code: 'QR', name: 'Quantitative Reasoning', color: '#B5D4F4' },
-  AR: { code: 'AR', name: 'Algebraic Reasoning', color: '#9FE1CB' },
-  GR: { code: 'GR', name: 'Geometric & Spatial', color: '#FAC775' },
-  PR: { code: 'PR', name: 'Probabilistic & Statistical', color: '#CECBF6' },
+  QR: { code: 'QR', name: 'Quantitative Reasoning', color: STRAND_TINT.QR },
+  AR: { code: 'AR', name: 'Algebraic Reasoning', color: STRAND_TINT.AR },
+  GR: { code: 'GR', name: 'Geometric & Spatial', color: STRAND_TINT.GR },
+  PR: { code: 'PR', name: 'Probabilistic & Statistical', color: STRAND_TINT.PR },
 };
 const ORDER = ['QR', 'AR', 'GR', 'PR'] as const;
 
@@ -279,7 +280,7 @@ export default function DemoPage() {
                 <div style={{ fontSize: 11, color: '#8A8983', fontWeight: 600 }}>{totalAttempts} attempts this period</div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: `repeat(${strandCols},1fr)`, gap: 18, alignItems: 'end' }}>
-                {([['QR','Quantitative Reasoning','#B5D4F4'], ['AR','Algebraic Reasoning','#9FE1CB'], ['GR','Geometric and Spatial Reasoning','#FAC775'], ['PR','Probabilistic and Statistical Reasoning','#CECBF6']] as const).map(([code, label, color]) => (
+                {([['QR','Quantitative Reasoning',STRAND_TINT.QR], ['AR','Algebraic Reasoning',STRAND_TINT.AR], ['GR','Geometric and Spatial Reasoning',STRAND_TINT.GR], ['PR','Probabilistic and Statistical Reasoning',STRAND_TINT.PR]] as const).map(([code, label, color]) => (
                   <div key={code} style={{ display: 'flex', alignItems: 'flex-end', gap: 10 }}>
                     <div style={{ position: 'relative', width: 46, height: 118, background: '#F2F1EC', borderRadius: 7, overflow: 'hidden', flex: '0 0 46px' }}>
                       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: color, height: `${strandPct[code]}%`, borderRadius: '7px 7px 0 0' }} />
@@ -328,10 +329,10 @@ export default function DemoPage() {
                       <span style={{ fontSize: 12, color: '#8A8983' }}>{s.tests} tests · {s.active}</span>
                     </div>
                     <div style={{ marginTop: 12, width: '100%', height: 9, borderRadius: 20, overflow: 'hidden', display: 'flex', gap: 1.5, background: '#F0EEE7' }}>
-                      <div style={{ width: `${s.wQR}%`, background: '#B5D4F4' }} />
-                      <div style={{ width: `${s.wAR}%`, background: '#9FE1CB' }} />
-                      <div style={{ width: `${s.wGR}%`, background: '#FAC775' }} />
-                      <div style={{ width: `${s.wPR}%`, background: '#CECBF6' }} />
+                      <div style={{ width: `${s.wQR}%`, background: STRAND_TINT.QR }} />
+                      <div style={{ width: `${s.wAR}%`, background: STRAND_TINT.AR }} />
+                      <div style={{ width: `${s.wGR}%`, background: STRAND_TINT.GR }} />
+                      <div style={{ width: `${s.wPR}%`, background: STRAND_TINT.PR }} />
                     </div>
                     <div style={{ marginTop: 6, fontSize: 11, color: '#8A8983' }}>
                       Weakest · <span style={{ fontWeight: 600, color: '#5F5E5A' }}>{s.weakLabel}</span>
@@ -369,10 +370,10 @@ export default function DemoPage() {
                         </td>
                         <td style={{ padding: '13px 14px' }}>
                           <div style={{ width: 150, height: 9, borderRadius: 20, overflow: 'hidden', display: 'flex', gap: 1.5, background: '#F0EEE7' }}>
-                            <div style={{ width: `${s.wQR}%`, background: '#B5D4F4' }} />
-                            <div style={{ width: `${s.wAR}%`, background: '#9FE1CB' }} />
-                            <div style={{ width: `${s.wGR}%`, background: '#FAC775' }} />
-                            <div style={{ width: `${s.wPR}%`, background: '#CECBF6' }} />
+                            <div style={{ width: `${s.wQR}%`, background: STRAND_TINT.QR }} />
+                            <div style={{ width: `${s.wAR}%`, background: STRAND_TINT.AR }} />
+                            <div style={{ width: `${s.wGR}%`, background: STRAND_TINT.GR }} />
+                            <div style={{ width: `${s.wPR}%`, background: STRAND_TINT.PR }} />
                           </div>
                           <div style={{ marginTop: 6, fontSize: 11, color: '#8A8983' }}>
                             Weakest · <span style={{ fontWeight: 600, color: '#5F5E5A' }}>{s.weakLabel}</span>
