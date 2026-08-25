@@ -2,6 +2,8 @@ import { requireWorksheetTeacher } from '../worksheet-data';
 import { listPickerTopics } from '@/app/lib/worksheet-source';
 import { readWorksheetQuota } from '../../../lib/worksheet-quota';
 import WorksheetBuilder from './WorksheetBuilder';
+import TeacherShell from '../../TeacherShell';
+import { loadTeacherIdentity } from '../../teacher-identity';
 
 export const dynamic = 'force-dynamic';
 
@@ -14,6 +16,8 @@ export const dynamic = 'force-dynamic';
 // payload to leak, by construction rather than by care.
 export default async function NewWorksheetPage() {
   const profile = await requireWorksheetTeacher('/teacher/worksheets/new');
+  // For the rail. After the gate, like every other read on this page.
+  const identity = await loadTeacherIdentity();
   const topics = await listPickerTopics('tsia2-math');
 
   // Read here rather than trusted from the index. This page is directly
@@ -22,10 +26,19 @@ export default async function NewWorksheetPage() {
   const quota = await readWorksheetQuota(profile.id, profile.plan);
 
   return (
-    <WorksheetBuilder
-      topics={topics}
-      quotaUsed={quota.unmetered ? null : quota.used}
-      quotaCap={quota.cap}
-    />
+    <TeacherShell
+      variant="standalone"
+      activeLabel="Worksheets"
+      teacherName={identity.teacherName}
+      teacherEmail={identity.teacherEmail}
+      isFounder={identity.isFounder}
+      plan={profile.plan}
+    >
+      <WorksheetBuilder
+        topics={topics}
+        quotaUsed={quota.unmetered ? null : quota.used}
+        quotaCap={quota.cap}
+      />
+    </TeacherShell>
   );
 }
