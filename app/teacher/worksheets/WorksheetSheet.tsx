@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import type { PrintItem, KeyItem } from '@/app/lib/worksheet-source';
 import type { TopicMeta, Rationale } from './worksheet-data';
+import { STRAND_TINT as STRAND_TINT_SOURCE, STRAND_FALLBACK } from '../../lib/strands';
 
 // The paper itself, as pure presentation.
 //
@@ -41,13 +42,7 @@ const DISCLAIMER =
 //
 // Sky Blue is the fallback rather than a grey: a topic whose strand did not
 // resolve should still look like a labelled topic.
-const STRAND_TINT: Record<string, string> = {
-  QR: '#B5D4F4',
-  AR: '#9FE1CB',
-  GR: '#FAC775',
-  PR: '#CECBF6',
-};
-const STRAND_FALLBACK = '#87CEEB';
+const STRAND_TINT: Record<string, string> = STRAND_TINT_SOURCE;
 
 /**
  * The tint for a topic's chip.

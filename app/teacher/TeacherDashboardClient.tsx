@@ -23,6 +23,7 @@ import {
   type Strand,
   type StrandBreakdown,
 } from "../lib/placement";
+import { STRAND_TINT } from "../lib/strands";
 
 // ─── Types (match the API route response shapes) ─────────────────────────────
 
@@ -110,10 +111,10 @@ interface DisplayStudent {
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const STR: Record<Strand, { code: string; name: string; short: string; color: string }> = {
-  QR: { code: 'QR', name: 'Quantitative Reasoning', short: 'Quantitative Reasoning', color: '#B5D4F4' },
-  AR: { code: 'AR', name: 'Algebraic Reasoning', short: 'Algebraic Reasoning', color: '#9FE1CB' },
-  GR: { code: 'GR', name: 'Geometric & Spatial', short: 'Geometric and Spatial Reasoning', color: '#FAC775' },
-  PR: { code: 'PR', name: 'Probabilistic & Statistical', short: 'Probabilistic and Statistical Reasoning', color: '#CECBF6' },
+  QR: { code: 'QR', name: 'Quantitative Reasoning', short: 'Quantitative Reasoning', color: STRAND_TINT.QR },
+  AR: { code: 'AR', name: 'Algebraic Reasoning', short: 'Algebraic Reasoning', color: STRAND_TINT.AR },
+  GR: { code: 'GR', name: 'Geometric & Spatial', short: 'Geometric and Spatial Reasoning', color: STRAND_TINT.GR },
+  PR: { code: 'PR', name: 'Probabilistic & Statistical', short: 'Probabilistic and Statistical Reasoning', color: STRAND_TINT.PR },
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -419,10 +420,10 @@ function StrandProfileBar({ s }: { s: DisplayStudent }) {
   return (
     <>
       <div style={{ width: '100%', maxWidth: 180, height: 9, borderRadius: 20, overflow: 'hidden', display: 'flex', gap: 1.5, background: '#F0EEE7' }}>
-        <div style={{ width: `${s.wQR}%`, background: '#B5D4F4' }} />
-        <div style={{ width: `${s.wAR}%`, background: '#9FE1CB' }} />
-        <div style={{ width: `${s.wGR}%`, background: '#FAC775' }} />
-        <div style={{ width: `${s.wPR}%`, background: '#CECBF6' }} />
+        <div style={{ width: `${s.wQR}%`, background: STRAND_TINT.QR }} />
+        <div style={{ width: `${s.wAR}%`, background: STRAND_TINT.AR }} />
+        <div style={{ width: `${s.wGR}%`, background: STRAND_TINT.GR }} />
+        <div style={{ width: `${s.wPR}%`, background: STRAND_TINT.PR }} />
       </div>
       <div style={{ marginTop: 6, display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: DASH.dim }}>
         <span style={{ width: 7, height: 7, borderRadius: 2, background: s.weakColor, display: 'inline-block' }} />

@@ -7,6 +7,7 @@ import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from "../../../components/font
 import OfficialScorePanel from "./OfficialScorePanel";
 import CurriculumProgressPanel from "./CurriculumProgressPanel";
 import GradeLetterButton from "./GradeLetterButton";
+import { STRAND_TINT } from "../../../lib/strands";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -54,10 +55,10 @@ type StudentData = {
 const PASSING = 950;
 
 const STR: Record<Strand, { color: string; name: string }> = {
-  QR: { color: "#B5D4F4", name: "Quantitative Reasoning" },
-  AR: { color: "#9FE1CB", name: "Algebraic Reasoning" },
-  GR: { color: "#FAC775", name: "Geometric & Spatial" },
-  PR: { color: "#CECBF6", name: "Probabilistic & Statistical" },
+  QR: { color: STRAND_TINT.QR, name: "Quantitative Reasoning" },
+  AR: { color: STRAND_TINT.AR, name: "Algebraic Reasoning" },
+  GR: { color: STRAND_TINT.GR, name: "Geometric & Spatial" },
+  PR: { color: STRAND_TINT.PR, name: "Probabilistic & Statistical" },
 };
 const ORDER: Strand[] = ["QR", "AR", "GR", "PR"];
 
