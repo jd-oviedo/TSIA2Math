@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { requireWorksheetTeacher } from './worksheet-data';
-import { createAdminClient } from '@/app/lib/supabase-admin';
-import { DASH, cardStyle } from '@/app/components/dashboard-theme';
+import { createAdminClient } from '../../lib/supabase-admin';
+import { WS, WS_CHROME_CSS, microLabel, panelStyle, ctaStyle } from './worksheet-theme';
 import WorksheetList from './WorksheetList';
 import { readWorksheetQuota } from '../../lib/worksheet-quota';
 import { QuotaMeter, QuotaCapNotice } from './QuotaNotice';
@@ -47,41 +47,27 @@ export default async function WorksheetsIndexPage() {
   }));
 
   return (
-    <main style={{ background: DASH.pageBg, minHeight: '100vh', padding: '32px 24px 64px' }}>
-      <div style={{ maxWidth: 900, margin: '0 auto' }}>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-            gap: 16,
-            marginBottom: 22,
-            flexWrap: 'wrap',
-          }}
-        >
-          <div>
-            <Link
-              href="/teacher"
-              style={{ fontSize: 13, color: DASH.muted, textDecoration: 'none' }}
-            >
-              ← Dashboard
+    <main className="ws-page">
+      <style>{WS_CHROME_CSS}</style>
+
+      {/* The band header. One step lighter than the page ground, one hairline
+          under it, no radius and no shadow, per the board. */}
+      <header className="ws-headband" style={{ background: WS.band, borderBottom: `1px solid ${WS.hairline}` }}>
+        <div className="ws-headband-inner">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
+            <Link href="/teacher" style={{ ...microLabel, letterSpacing: '0.14em', textDecoration: 'none' }}>
+              Teacher
             </Link>
-            <h1
-              style={{
-                fontSize: 27,
-                fontWeight: 700,
-                color: DASH.heading,
-                margin: '8px 0 4px',
-                letterSpacing: '-0.01em',
-              }}
-            >
+            <h1 style={{ fontSize: 28, fontWeight: 600, color: WS.ink, margin: 0, letterSpacing: '-0.01em' }}>
               Worksheets
             </h1>
-            <p style={{ color: DASH.muted, fontSize: 14, margin: 0 }}>
-              Printable practice with an answer key that explains every wrong option.
+            <p style={{ fontSize: 13, color: WS.muted, margin: 0, lineHeight: 1.5 }}>
+              Printable TSIA2 practice with an answer key. Print again any time, it never counts twice.
             </p>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 7 }}>
+
+          <div className="ws-headband-actions">
+            {metered && <QuotaMeter used={quota.used} cap={quota.cap as number} />}
             {/* Disabled as a courtesy, never as the enforcement. A teacher can
                 POST to the route directly, so the RPC's return is the authority
                 and this only saves them a wasted click. */}
@@ -89,51 +75,50 @@ export default async function WorksheetsIndexPage() {
               <span
                 aria-disabled="true"
                 style={{
-                  background: DASH.line,
-                  color: DASH.dim,
-                  padding: '10px 18px',
-                  borderRadius: 9,
-                  fontSize: 14,
-                  fontWeight: 600,
+                  ...ctaStyle,
+                  background: WS.quietBox,
+                  color: WS.disabled,
+                  padding: '11px 18px',
+                  fontSize: 13.5,
                   whiteSpace: 'nowrap',
                   cursor: 'not-allowed',
                 }}
               >
-                New worksheet
+                + New worksheet
               </span>
             ) : (
               <Link
                 href="/teacher/worksheets/new"
+                className="ws-cta"
                 style={{
-                  background: DASH.heading,
-                  color: '#FFF',
-                  padding: '10px 18px',
-                  borderRadius: 9,
-                  fontSize: 14,
-                  fontWeight: 600,
+                  ...ctaStyle,
+                  padding: '11px 18px',
+                  fontSize: 13.5,
                   textDecoration: 'none',
                   whiteSpace: 'nowrap',
+                  display: 'inline-block',
                 }}
               >
-                New worksheet
+                + New worksheet
               </Link>
             )}
-            {metered && <QuotaMeter used={quota.used} cap={quota.cap as number} />}
           </div>
         </div>
+      </header>
 
+      <div className="ws-shell">
         {capped && <QuotaCapNotice cap={quota.cap as number} />}
 
         {!migrated && (
           <div
             style={{
-              ...cardStyle(DASH),
+              ...panelStyle,
               padding: '16px 18px',
               marginBottom: 18,
-              borderLeft: '4px solid #B08328',
+              boxShadow: `inset 3px 0 0 ${WS.marker}`,
             }}
           >
-            <p style={{ margin: 0, fontSize: 14, color: DASH.ink }}>
+            <p style={{ margin: 0, fontSize: 14, color: WS.ink, lineHeight: 1.55 }}>
               <strong>Not enabled yet.</strong> The <code>worksheets</code> table has not
               been created. Run <code>sql/worksheets.sql</code> in the Supabase SQL editor.
             </p>
