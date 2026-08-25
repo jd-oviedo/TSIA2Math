@@ -5,36 +5,56 @@ import { useEffect } from 'react';
 // Paints the document body while a themed surface is mounted, and puts it back
 // when that surface unmounts.
 //
-// WHY THIS IS JAVASCRIPT AND NOT A STYLESHEET RULE.
+// ─── WHY THIS IS JAVASCRIPT AND NOT A CSS SELECTOR ──────────────────────────
 //
-// The body behind these shells still carries the global theme's --ec-bg, which
-// is a blue-black in dark mode and would show at the edges on overscroll. The
-// surfaces used to state that in CSS, as `body:has(.um-dash)` and
-// `body:has(.um-topic)`. Neither rule ever painted, on any browser: app/layout.tsx
-// sets the body background from an INLINE style prop, and an inline declaration
-// outranks every stylesheet rule at every specificity unless the rule carries
-// !important. The :has() was real Selectors Level 4 debt and did fail to parse
-// on Safari below 15.4, but it was never the reason those rules did nothing.
+// READ THIS BEFORE "SIMPLIFYING" IT BACK INTO THE STYLESHEET. What looks like
+// an obvious tidy-up -- move the colour into the surface's CSS string, where
+// every other rule lives -- is how the broken selector gets reintroduced.
 //
-// app/teacher/worksheets/worksheet-theme.ts fixed the same shape with a bare
-// `body { background: ... !important }`, which is the right answer THERE because
-// the worksheet chrome is a single colour. It does not transfer here. These two
-// surfaces are theme-aware and the theme marker lives on the descendant
-// container -- .um-dash and .um-topic carry data-theme, while ThemeProvider
-// writes only custom properties to documentElement and stamps no attribute a
-// body rule could switch on. So a bare `body` selector could carry exactly one
-// colour and would paint a light gutter behind a dark page. Selecting an
-// ancestor from a descendant's state is the one thing :has() was doing that no
-// Level 1 selector can replicate.
+// The body behind these shells carries the global theme's --ec-bg, which is a
+// blue-black in dark mode and would show at the edges on overscroll. Three
+// surfaces used to state that in CSS: `body:has(.um-dash)`, `body:has(.um-topic)`
+// and `body:has(.um-login)`.
 //
-// Setting the inline style directly sidesteps the whole question: it is
-// theme-aware because it is recomputed, it beats the layout's own inline value
-// because it replaces it, and it involves no selector at all, so there is
-// nothing left to fail to parse on an older Safari.
+// TWO separate things were wrong with that, and fixing either one alone leaves a
+// rule that still does not work:
 //
-// The colour must be a resolved value, not a var() reference. --umd-* and --umt-*
-// are declared on the container, and custom properties inherit downward only, so
-// body cannot read them.
+//   1. It never painted, on any browser. app/layout.tsx sets the body background
+//      from an INLINE style prop, and an inline declaration outranks every
+//      stylesheet rule at every specificity unless the rule carries !important.
+//      None of the three did.
+//
+//   2. :has() is Selectors Level 4 and does not parse on Safari below 15.4,
+//      where an unparseable selector drops its own rule outright.
+//
+// So why not a flat `body { background: ... !important }`, which is what
+// app/teacher/worksheets/worksheet-theme.ts uses? Because that is only correct
+// for a SINGLE-COLOUR surface, which the worksheet chrome is and these three
+// are not.
+//
+// THE THEME MARKER LIVES ON A DESCENDANT. .um-dash, .um-topic and .um-login each
+// carry data-theme, set by the client wrapper that renders them. ThemeProvider
+// writes only custom properties to documentElement and stamps NO attribute on
+// <html> that a body rule could switch on. A flat body selector therefore cannot
+// read theme state at all: it can carry exactly one colour, and would paint a
+// light gutter behind a dark page. Reaching an ancestor from a descendant's
+// state is precisely what body:has(descendant) was for, and it is the one thing
+// no Level 1 selector can replicate.
+//
+// That is the whole bind: the only selector that could express this is the one
+// that drops on older Safari. Writing the inline style from the wrapper that
+// already knows the theme sidesteps it entirely. It is theme-aware because it is
+// recomputed, it beats the layout's own inline value because it replaces it, and
+// it involves no selector at all, so there is nothing left to fail to parse.
+// Theme-correct on every browser, old Safari included.
+//
+// If a future change does put a theme attribute on <html>, a stylesheet rule
+// becomes possible again -- but it still needs !important to clear the inline
+// prop, and it still must not use :has().
+//
+// The colour must be a RESOLVED value, not a var() reference. --umd-*, --umt-*
+// and --uml-* are declared on the container, and custom properties inherit
+// downward only, so body cannot read them.
 export function useBodyBackground(color: string) {
   useEffect(() => {
     const { body } = document;

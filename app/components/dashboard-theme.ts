@@ -397,10 +397,25 @@ ${declarations(DARK)}
 }
 `;
 
-/* The body behind the shell is painted by StudentShell, not from here.
-   There were two body:has(.um-dash) rules at this spot. They never painted on
-   any browser -- app/layout.tsx sets the body background from an inline style
-   prop, which outranks any stylesheet rule -- and :has() is Selectors Level 4,
-   so they also failed to parse on Safari below 15.4. Both problems are gone:
-   StudentShell calls useBodyBackground with the resolved pageBg for the current
-   theme. See app/components/useBodyBackground.ts for why this is not CSS. */
+/* THE BODY GROUND IS NOT SET HERE, AND MUST NOT BE MOVED BACK.
+   ===========================================================
+   Two rules used to sit at this spot:
+
+     body:has(.um-dash) { background: <pageBg>; }
+     body:has(.um-dash[data-theme="dark"]) { background: <pageBg dark>; }
+
+   They never painted on any browser -- app/layout.tsx sets the body background
+   from an inline style prop, which outranks any stylesheet rule that is not
+   !important -- and :has() is Selectors Level 4, so they also dropped entirely
+   on Safari below 15.4.
+
+   Adding !important would fix the first problem but not the second, and a flat
+   `body` selector cannot fix either properly: the theme marker is data-theme on
+   .um-dash, a DESCENDANT, and ThemeProvider stamps no attribute on <html>, so a
+   body rule cannot read theme state and would paint one colour behind both
+   themes. body:has(descendant) was the only selector that could express this,
+   and it is the one older Safari drops.
+
+   So StudentShell writes it as a theme-aware inline style through
+   useBodyBackground, which is theme-correct on every browser. See
+   app/components/useBodyBackground.ts for the full reasoning. */
