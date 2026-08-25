@@ -223,30 +223,38 @@ body:has(.ws-page) { background: ${WS.page}; }
 .ws-page h1, .ws-page h2, .ws-page h3 { font-family: ${WS.font.heading}; }
 .ws-page button, .ws-page input, .ws-page select, .ws-page textarea { font-family: inherit; }
 
-/* THE SHEET IS EXCLUDED, AND THAT IS THE WHOLE POINT OF THE :not().
-   The real printed sheet now renders inside .ws-page on the config route, so
-   this rule and print-styles.ts's .ws-sheet .katex rule (color #000000 !important) match the
-   SAME spans. Both are 0,2,0 and both carry
-   !important, which leaves the winner to be decided by which <style> tag the
-   browser saw last -- and if this one won, printed maths would come out
-   #0E0E11 instead of black.
+/* SCOPED TO .ws-chrome, WHICH IS NEVER AN ANCESTOR OF A SHEET.
+   The real printed sheet now renders inside .ws-page, so a rule written as
+   .ws-page .katex and print-styles.ts's .ws-sheet .katex rule (color #000000
+   !important) would match the SAME spans. Both are 0,2,0 and both carry
+   !important, so the winner would be whichever <style> the browser saw last,
+   and if the chrome won, printed maths would come out #0E0E11 instead of
+   black.
 
-   Raising specificity would only move the coin toss. The fix is to stop the
-   two selectors overlapping at all: this one now cannot match anything inside
-   a sheet, so document order stops being load-bearing and either ordering
-   produces the same paper. Checked by rendering both orders and requiring the
-   same computed colour, in scripts/verify_worksheet_cascade.mjs. */
-.ws-page .katex:not(.ws-sheet .katex) { color: ${WS.ink} !important; }
+   Raising specificity only moves the coin toss, so the two selectors are made
+   not to overlap. THE EXCLUSION IS A CLASS, NOT A :not(). An earlier version of
+   this fix wrote .ws-page .katex:not(.ws-sheet .katex), which is a Selectors
+   Level 4 complex :not() and does not parse in Safari 16.3 or earlier. An
+   unparseable selector drops its own rule, so there the chrome silently loses
+   the dark-mode defence this rule exists to provide. A plain descendant
+   selector parses everywhere there is CSS at all.
+
+   .ws-chrome goes on chrome containers that cannot contain a sheet: the whole
+   <main> on the index and the builder, neither of which renders one, and the
+   config rail and the tab bar on the worksheet page, which does. That invariant
+   is asserted rather than promised -- verify_worksheet_cascade.mjs fails if any
+   .ws-sheet is found with a .ws-chrome ancestor. */
+.ws-chrome .katex { color: ${WS.ink} !important; }
 
 .ws-preview-stem img { display: block; max-width: 100%; height: auto; margin: 6px 0; }
 
-/* Same collision, same fix. .ws-sheet a (color var(--ws-ink)) in
-   print-styles.ts is 0,1,1 against this rule's 0,1,1, neither !important, so
-   order decides again. The sheet renders no links today, so this one has
-   never fired, and it is closed now rather than left as a trap for whoever
-   first puts an anchor on the paper. */
-.ws-page a:not(.ws-sheet a) { color: ${WS.link}; }
-.ws-page a:not(.ws-sheet a):hover { color: ${WS.linkHover}; }
+/* Same collision, same fix, same reason for using a class rather than :not().
+   .ws-sheet a (color var(--ws-ink)) in print-styles.ts is 0,1,1 against a
+   .ws-page a rule's 0,1,1, neither !important, so order would decide again. The
+   sheet renders no links today, so this one has never fired; it is closed now
+   rather than left as a trap for whoever first puts an anchor on the paper. */
+.ws-chrome a { color: ${WS.link}; }
+.ws-chrome a:hover { color: ${WS.linkHover}; }
 
 .ws-page :focus-visible { outline: 2px solid ${WS.focus}; outline-offset: 2px; }
 

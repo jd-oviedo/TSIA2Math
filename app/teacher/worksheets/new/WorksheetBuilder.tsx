@@ -225,8 +225,11 @@ export default function WorksheetBuilder({
 
   const blocked = busy || atCap || selected.size === 0 || pool === 0;
 
+  // ws-chrome: the builder renders no sheet, so the whole main is chrome. A
+  // plain comment and not a JSX one, because this element is the root of the
+  // return and a {/* */} beside it would be a second child.
   return (
-    <main className="ws-page">
+    <main className="ws-page ws-chrome">
       <style>{WS_CHROME_CSS}</style>
 
       <header style={{ background: WS.band, borderBottom: `1px solid ${WS.hairline}` }}>

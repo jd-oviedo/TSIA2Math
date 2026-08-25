@@ -61,7 +61,8 @@ export default async function WorksheetsIndexPage() {
       isFounder={identity.isFounder}
       plan={profile.plan}
     >
-      <main className="ws-page">
+      {/* ws-chrome: this page renders no sheet, so the whole main is chrome. */}
+      <main className="ws-page ws-chrome">
         <style>{WS_CHROME_CSS}</style>
 
         {/* The band header. One step lighter than the page ground, one hairline

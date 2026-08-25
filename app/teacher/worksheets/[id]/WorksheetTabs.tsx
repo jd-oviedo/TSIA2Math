@@ -77,7 +77,7 @@ export default function WorksheetTabs({
   return (
     <div className="ws-config-main">
       <div
-        className="ws-config-bar no-print"
+        className="ws-config-bar ws-chrome no-print"
         style={{
           display: 'flex',
           alignItems: 'center',

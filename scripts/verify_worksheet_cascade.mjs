@@ -48,9 +48,9 @@ const pass = (m) => console.log(`  ok    ${m}`);
 // The pre-fix rules, exactly as they read before this change. Used only by
 // --prove, to show the checks below can actually go red.
 const BROKEN_CHROME = WS_CHROME_CSS
-  .replace('.ws-page .katex:not(.ws-sheet .katex)', '.ws-page .katex')
-  .replace('.ws-page a:not(.ws-sheet a):hover', '.ws-page a:hover')
-  .replace('.ws-page a:not(.ws-sheet a)', '.ws-page a');
+  .replace('.ws-chrome .katex', '.ws-page .katex')
+  .replace('.ws-chrome a:hover', '.ws-page a:hover')
+  .replace('.ws-chrome a ', '.ws-page a ');
 
 // The nesting the worksheet page actually produces: the shell's content column,
 // the page, the config grid, the preview frame, then the sheet.
@@ -69,7 +69,7 @@ const BODY = `
         </div>
       </div>
     </div>
-    <div class="ws-config-rail">
+    <div class="ws-config-rail ws-chrome">
       <span class="katex" id="chrome-math">x</span>
       <a id="chrome-link" href="#">a link in the chrome</a>
     </div>
@@ -136,6 +136,34 @@ else fail(`chrome KaTeX lost its own rule: ${first.chromeMath} / ${last.chromeMa
 
 if (first.chromeLink === last.chromeLink && first.chromeLink !== SHEET_INK) pass(`chrome anchor still takes the chrome link colour (${first.chromeLink})`);
 else fail(`chrome anchor lost its own rule: ${first.chromeLink} / ${last.chromeLink}`);
+
+// ── 4. the invariant the class-based fix rests on ─────────────────────────
+// .ws-chrome must never be an ancestor of a .ws-sheet. If it ever is, the two
+// rules overlap again and document order is load-bearing again, silently. This
+// is the assertion that turns "I put the class in the right places" into
+// something checked.
+const straddles = await page.evaluate(() =>
+  [...document.querySelectorAll('.ws-sheet')].filter((el) => el.closest('.ws-chrome') !== null).length
+);
+if (straddles === 0) pass('no .ws-sheet has a .ws-chrome ancestor');
+else fail(`${straddles} .ws-sheet element(s) sit inside .ws-chrome, so the rules overlap again`);
+
+// ── 5. nothing here depends on Selectors Level 4 ──────────────────────────
+// A complex :not() or a :has() does not parse in Safari 16.3 and earlier, and an
+// unparseable selector drops its own rule silently. The colour rules that decide
+// what lands on paper must be plain enough to parse everywhere.
+const L4 = /:not\([^)]*[ >+~][^)]*\)|:has\(/;
+// Comments stripped FIRST, and as blocks. Filtering line-by-line on a leading
+// /* misses every continuation line inside a block comment, which is exactly
+// where this file explains the selector it no longer uses -- so the check
+// caught its own documentation and called it a defect.
+const declarations = WS_CHROME_CSS.replace(/\/\*[\s\S]*?\*\//g, '');
+const offenders = declarations
+  .split('\n')
+  .filter((line) => /\.katex|(^|[^-\w])a\s*[,{:]/.test(line))
+  .filter((line) => L4.test(line));
+if (offenders.length === 0) pass('the colour rules use no Selectors Level 4 syntax');
+else fail(`Selectors L4 in a colour rule, which older Safari drops: ${JSON.stringify(offenders)}`);
 
 await browser.close();
 

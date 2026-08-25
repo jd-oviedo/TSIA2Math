@@ -96,7 +96,10 @@ export default async function WorksheetPage({
 
         <div className="ws-config">
           {/* ── the rail ───────────────────────────────────────────────────── */}
-          <div className="ws-config-rail no-print">
+          {/* ws-chrome, and NOT on the <main> above: this page does render a
+              sheet, so the class goes only on containers that cannot hold one.
+              The rail and the tab bar are the two. */}
+          <div className="ws-config-rail ws-chrome no-print">
             <div
               style={{
                 padding: '18px 20px 16px',
