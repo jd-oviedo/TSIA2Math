@@ -181,8 +181,38 @@ export const quietBtnStyle: React.CSSProperties = {
 //   1. body background. app/layout.tsx paints body with var(--ec-bg), which is
 //      a blue-black in dark mode and would show at the edges on overscroll.
 //      Custom properties inherit downward only, so the value is written from
-//      the same constant instead. Same shape as CURRICULUM_VARS_CSS and
-//      dashboard-theme.ts.
+//      the same constant instead.
+//
+//      IT IS AN INLINE STYLE PROP ON <body>, and that is what dictates the
+//      shape of the rule. app/layout.tsx:51 is style={{ background:
+//      "var(--ec-bg)" }}, an inline declaration, which outranks every
+//      stylesheet rule at every specificity unless the rule is !important.
+//      The selector this replaced -- body:has(.ws-page) -- carried no
+//      !important, so it lost to that inline background on EVERY browser and
+//      never once painted. It was filed as Safari-below-15.4 debt on the
+//      grounds that :has() is Selectors Level 4; the :has() was real, but it
+//      was never the reason the rule did nothing.
+//
+//      So the selector is a bare `body` (Selectors Level 1, parses in every
+//      browser that has CSS at all) and the declaration is !important, which
+//      is the only thing that reaches past an inline style. Scope comes from
+//      injection, not from the selector: WS_CHROME_CSS is mounted by the three
+//      worksheet routes and by nothing else, exactly as every other rule in
+//      this string is scoped. No :has(), no order-dependence -- an !important
+//      stylesheet declaration beats a non-important inline one regardless of
+//      which <style> the browser saw first.
+//
+//      SCREEN ONLY. Under print the config route also injects PRINT_CSS, whose
+//      `html, body { background: #FFF !important }` is likewise !important on
+//      the same property, and two important declarations at equal specificity
+//      are settled by document order -- precisely the coin toss the .ws-chrome
+//      class exists to avoid. Wrapping this in @media screen deletes the rule
+//      from print entirely, so PRINT_CSS is unopposed and the chrome ground
+//      cannot reach paper.
+//
+//      dashboard-theme.ts:403 and curriculum-surface.ts:515 still carry the
+//      body:has() shape this replaced, and are inert for the same inline-style
+//      reason. Out of scope here, untouched, reported.
 //   2. .katex. globals.css:19 is `.katex { color: var(--ec-ink) !important }`,
 //      which in dark mode is #E8EEF8: near-white math on a cream panel, in the
 //      preview, invisible. `.ws-page .katex` is 0,2,0 against that rule's
@@ -201,7 +231,9 @@ export const quietBtnStyle: React.CSSProperties = {
 //      routes and must not come onto a config page. So the chrome states its
 //      own, scoped, and WITHOUT an @page rule of any kind.
 export const WS_CHROME_CSS = `
-body:has(.ws-page) { background: ${WS.page}; }
+@media screen {
+  body { background: ${WS.page} !important; }
+}
 
 .ws-page {
   background: ${WS.page};
