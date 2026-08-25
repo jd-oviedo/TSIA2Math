@@ -129,6 +129,11 @@ export default function WorksheetBuilder({
   // deriving a worksheet estimate from it would be wrong by a wide margin. A
   // flat 90 seconds a question is honest about being a rule of thumb.
   const minutes = Math.max(1, Math.round((capped * 1.5) / 5) * 5);
+  // Said as "0 min" rather than "~1 min" when nothing is selected. The rule of
+  // thumb has a floor of one minute, which was invisible in the old summary row
+  // and is 26px display type in the totals band. A prominent number that reads
+  // "about a minute" over an empty sheet is worse than no number.
+  const timeLabel = capped === 0 ? '0 min' : `~${minutes} min`;
 
   // Selection order, so the rail lists topics in the order they were picked.
   // Held alongside the Set rather than replacing it: every existing read is a
@@ -216,8 +221,8 @@ export default function WorksheetBuilder({
       </header>
 
       <div className="ws-builder">
-        {/* ── selection rail ─────────────────────────────────────────────── */}
-        <div className="ws-builder-rail">
+        {/* ── selection rail, upper half ─────────────────────────────────── */}
+        <div className="ws-builder-rail-top">
           <div
             style={{
               padding: '18px 22px 14px',
@@ -320,9 +325,16 @@ export default function WorksheetBuilder({
               </div>
             )}
           </div>
+        </div>
 
-          {/* ── the totals band ──────────────────────────────────────────── */}
+        {/* ── selection rail, lower half ─────────────────────────────────── */}
+        <div className="ws-builder-rail-bot">
+          {/* ── the totals band ──────────────────────────────────────────────
+              Desktop only. At 375 the sticky bar carries the same two numbers,
+              and printing them twice on one screen invites the two to disagree
+              the first time somebody edits one of them. */}
           <div
+            className="ws-only-desk"
             style={{
               padding: '14px 22px',
               background: WS.quietBox,
@@ -358,7 +370,7 @@ export default function WorksheetBuilder({
                   fontVariantNumeric: 'tabular-nums',
                 }}
               >
-                ~{minutes} min
+                {timeLabel}
               </span>
               <span style={{ ...microLabel, fontSize: 9.5, letterSpacing: '0.1em' }}>Estimated time</span>
             </div>
@@ -488,7 +500,7 @@ export default function WorksheetBuilder({
               type="button"
               onClick={create}
               disabled={blocked}
-              className={blocked ? 'ws-tap' : 'ws-cta ws-tap'}
+              className={`ws-only-desk ws-tap${blocked ? '' : ' ws-cta'}`}
               style={{
                 ...ctaStyle,
                 width: '100%',
@@ -597,6 +609,45 @@ export default function WorksheetBuilder({
             ))}
           </div>
         </div>
+      </div>
+
+      {/* The board's sticky bottom sheet, at 375 only. .ws-only-mobile and
+          .ws-only-desk are mutually exclusive at every width, so exactly one
+          Generate button is ever in the accessibility tree. */}
+      <div className="ws-stickybar ws-only-mobile">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
+          <span
+            style={{
+              fontFamily: WS.font.heading,
+              fontSize: 17,
+              fontWeight: 600,
+              color: WS.ink,
+              fontVariantNumeric: 'tabular-nums',
+            }}
+          >
+            {capped} · {timeLabel}
+          </span>
+          <span style={{ ...microLabel, fontSize: 9.5, letterSpacing: '0.1em' }}>
+            {selected.size} topic{selected.size === 1 ? '' : 's'} selected
+          </span>
+        </div>
+        <button
+          type="button"
+          onClick={create}
+          disabled={blocked}
+          className={`ws-tap${blocked ? '' : ' ws-cta'}`}
+          style={{
+            ...ctaStyle,
+            flex: 1,
+            padding: '13px 0',
+            fontSize: 14.5,
+            background: blocked ? WS.panel : WS.cta,
+            color: blocked ? WS.disabled : WS.ctaInk,
+            cursor: blocked ? 'not-allowed' : 'pointer',
+          }}
+        >
+          {busy ? 'Building' : 'Generate'}
+        </button>
       </div>
     </main>
   );

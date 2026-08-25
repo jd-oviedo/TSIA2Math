@@ -208,6 +208,8 @@ body:has(.ws-page) { background: ${WS.page}; }
   color: ${WS.ink};
   font-family: ${WS.font.body};
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 .ws-page h1, .ws-page h2, .ws-page h3 { font-family: ${WS.font.heading}; }
 .ws-page button, .ws-page input, .ws-page select, .ws-page textarea { font-family: inherit; }
@@ -268,20 +270,39 @@ body:has(.ws-page) { background: ${WS.page}; }
 
 /* ── builder ───────────────────────────────────────────────────────────────
    Selection rail left, topic browser right, per the board. Inverted from what
-   shipped, which put the tree left and a sticky control card right. */
-.ws-builder { display: grid; grid-template-columns: 356px minmax(0, 1fr); gap: 0; align-items: stretch; }
-.ws-builder-rail {
+   shipped, which put the tree left and a sticky control card right.
+
+   THE RAIL IS TWO DOM PIECES, not one, and that is what makes the mobile order
+   possible. On desktop they stack in column one and read as a single rail. At
+   375 the board wants the topic browser FIRST, with the controls under it and
+   the totals in a sticky bar, so the two halves sit either side of the browser
+   in the source order the grid areas below hand them. */
+.ws-builder {
+  display: grid;
+  grid-template-columns: 356px minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "railtop main" "railbot main";
+  flex: 1;
+}
+.ws-builder-rail-top { grid-area: railtop; }
+.ws-builder-rail-bot { grid-area: railbot; }
+.ws-builder-main { grid-area: main; min-width: 0; display: flex; flex-direction: column; }
+.ws-builder-rail-top, .ws-builder-rail-bot {
   background: ${WS.rail};
   border-right: 1px solid ${WS.hairline};
   display: flex;
   flex-direction: column;
   min-width: 0;
 }
-.ws-builder-main { min-width: 0; display: flex; flex-direction: column; }
 .ws-topicgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
 
+/* The mobile action bar and its desktop counterpart. Exactly one of the two is
+   ever in the DOM at a given width, so there is never a second "Generate
+   worksheet" button in the accessibility tree. */
+.ws-only-mobile { display: none; }
+
 /* ── config and preview ────────────────────────────────────────────────────*/
-.ws-config { display: grid; grid-template-columns: 302px minmax(0, 1fr); gap: 0; align-items: stretch; }
+.ws-config { display: grid; grid-template-columns: 302px minmax(0, 1fr); gap: 0; align-items: stretch; flex: 1; }
 .ws-config-rail {
   background: ${WS.rail};
   border-right: 1px solid ${WS.hairline};
@@ -297,9 +318,36 @@ body:has(.ws-page) { background: ${WS.page}; }
   .ws-headband-inner { flex-direction: column; gap: 16px; }
   .ws-headband-actions { width: 100%; justify-content: space-between; }
   .ws-row { flex-wrap: wrap; gap: 14px; }
-  .ws-builder, .ws-config { grid-template-columns: minmax(0, 1fr); }
-  .ws-builder-rail, .ws-config-rail { border-right: none; border-bottom: 1px solid ${WS.hairline}; }
+  .ws-config { grid-template-columns: minmax(0, 1fr); }
+  /* Topic browser first, then the controls, per the board's mobile note. */
+  .ws-builder {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "railtop" "main" "railbot";
+    padding-bottom: 84px;
+  }
+  .ws-builder-rail-top, .ws-builder-rail-bot, .ws-config-rail {
+    border-right: none;
+    border-bottom: 1px solid ${WS.hairline};
+  }
   .ws-topicgrid { grid-template-columns: 1fr; }
+  .ws-only-desk { display: none !important; }
+  .ws-only-mobile { display: flex; }
+  /* The sticky bottom bar. The totals and the one action stay reachable while
+     the teacher is scrolling the topic browser, which is the whole point of
+     the board's bottom sheet. */
+  .ws-stickybar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: ${WS.quietBox};
+    border-top: 1px solid ${WS.hairline};
+  }
   .ws-tap {
     min-height: 48px;
     display: inline-flex;
