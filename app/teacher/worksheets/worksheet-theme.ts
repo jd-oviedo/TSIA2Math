@@ -1,4 +1,5 @@
 import { SURFACES } from '../../components/curriculum-surface';
+import { STRAND_TINT as STRAND_TINT_SOURCE, STRAND_FALLBACK } from '../../lib/strands';
 import { FONT_HEADING, FONT_BODY } from '../../components/fonts';
 
 // The worksheet generator's page chrome, and nothing else.
@@ -88,24 +89,25 @@ export const WS = {
   font: { heading: FONT_HEADING, body: FONT_BODY },
 } as const;
 
-// The four strand tints.
+// The four strand tints, now imported rather than restated.
 //
-// RESTATED, NOT IMPORTED, and this is a known duplication rather than an
-// oversight. The same four hexes live in WorksheetSheet.tsx, the teacher
-// dashboard, the demo and /teacher/inactive; none of them exports the map and
-// WorksheetSheet.tsx is on the untouchable side of the boundary, so adding an
-// export there to import from here is exactly the edit that is not allowed.
-// Folding all five into one module is worth doing and is not this task.
+// The comment that used to stand here said the duplication was known, that
+// folding all the copies into one module was worth doing, and that it was not
+// that task. It is this one. app/lib/strands.ts owns the map, and the reason
+// it is there rather than here is that this file is worksheet-scoped: the
+// teacher dashboard and the demo need the same four values and have no
+// business importing from a worksheets theme module.
+//
+// WIDENED DELIBERATELY, AND THE ALIAS IS THE POINT. strandTint below indexes
+// with an arbitrary runtime string, because related_strand is text and
+// nullable, so it needs Record<string, string> rather than the imported
+// Record<Strand, string>. Binding the widened local to the imported object
+// leaves the function body underneath byte-for-byte what it was, which is what
+// keeps this commit a swap of where the value comes from and not a change to
+// how the value is looked up.
 //
 // Fill only. Deep Midnight on top measures 12.38 to 12.95 on all four.
-const STRAND_TINT: Record<string, string> = {
-  QR: '#B5D4F4',
-  AR: '#9FE1CB',
-  GR: '#FAC775',
-  PR: '#CECBF6',
-};
-/** Sky Blue, so an unresolved strand still reads as a labelled strand. */
-const STRAND_FALLBACK = '#87CEEB';
+const STRAND_TINT: Record<string, string> = STRAND_TINT_SOURCE;
 
 export function strandTint(strand: string): string {
   return STRAND_TINT[(strand ?? '').trim().toUpperCase()] ?? STRAND_FALLBACK;
