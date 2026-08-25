@@ -166,7 +166,7 @@ async function main() {
   // Probe the ROUTE, not the origin. A selective build serves 404 at `/`, and a
   // 404 is a live server, so probing the origin returns as soon as the socket is
   // open and before the route can answer.
-  const probe = `${BASE}/teacher/worksheets/${WORKSHEET}/print`;
+  const probe = `${BASE}/teacher/worksheets/${WORKSHEET}`;
   for (let i = 0; i < 90; i++) {
     try {
       const r = await fetch(probe, { redirect: 'manual', signal: AbortSignal.timeout(2000) });
@@ -184,11 +184,18 @@ async function main() {
   // the change. The worksheet's length is a function of how many of its twenty
   // questions carry a figure, so it is measured and printed rather than
   // asserted against a number nobody specified.
-  for (const [route, name, expectedPages] of [
-    ['print', 'worksheet', null],
-    ['key', 'key', 2],
+  // REPOINTED. /print and /key are gone; both sheets live on the worksheet
+  // page under tabs. The worksheet is the default tab and is server-rendered;
+  // the key is fetched by a server action when its tab activates, so reaching
+  // it means arriving with ?tab=key and then WAITING for the action to land.
+  // That is what the .ws-key-grid wait below is for, and why the key's wait
+  // cannot be the same selector as the worksheet's.
+  for (const [tab, name, expectedPages, ready] of [
+    ['questions', 'worksheet', null, '.ws-flow .ws-q'],
+    ['key', 'key', 2, '.ws-key-grid'],
   ]) {
-    console.log(`\n${name} (/teacher/worksheets/${WORKSHEET}/${route})`);
+    const suffix = tab === 'key' ? '?tab=key' : '';
+    console.log(`\n${name} (/teacher/worksheets/${WORKSHEET}${suffix})`);
     // A FRESH TAB PER ROUTE, closed at the end of the loop. A four-page sheet
     // plus its PDF is the largest thing this script holds, and keeping the
     // worksheet's render alive while the key renders crashed the tab on a
@@ -201,12 +208,15 @@ async function main() {
     // mid-response often enough to abort a first navigation, and a flaky
     // transport must not read as a broken page. Three attempts, then give up
     // loudly.
-    const url = `${BASE}/teacher/worksheets/${WORKSHEET}/${route}`;
+    const url = `${BASE}/teacher/worksheets/${WORKSHEET}${suffix}`;
     let lastErr = null;
     for (let attempt = 1; attempt <= 3; attempt++) {
       try {
         await page.goto(url, { waitUntil: 'load', timeout: 60000 });
-        await page.waitForSelector('.ws-part', { timeout: 60000 });
+        // The sheet-specific selector, not the generic .ws-part: on the tabbed
+        // page a .ws-part exists as soon as the QUESTIONS sheet renders, so
+        // waiting on it would let the key's PDF be captured off the worksheet.
+        await page.waitForSelector(ready, { timeout: 60000 });
         lastErr = null;
         break;
       } catch (err) {

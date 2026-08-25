@@ -103,6 +103,48 @@ async function signIn(browser, email, colorScheme = 'light') {
   return ctx;
 }
 
+// ─── Getting to a sheet ─────────────────────────────────────────────────────
+//
+// REPOINTED. /teacher/worksheets/[id]/print and /key are deleted; both sheets
+// now live on the worksheet page under client tabs.
+//
+// The two tabs do NOT arrive the same way, and collapsing that difference is
+// how this helper would lie. The questions sheet is server-rendered and is
+// present in the first response. The answer key is fetched by a server action
+// when its tab activates, so it is NOT in the document at load: the page has to
+// be told which tab to open with, and then waited on until the action lands.
+//
+// The wait is per-sheet for the same reason. A generic .ws-part or .ws-sheet
+// wait would be satisfied by the QUESTIONS sheet while the key was still in
+// flight, and every assertion after it would then run against the wrong paper
+// and pass.
+//
+// networkidle is not used. It was safe on the old chrome-free routes; this page
+// carries the teacher rail and a server action, and waiting on the element that
+// must exist is both faster and the thing actually being asserted.
+const SHEET_READY = {
+  questions: '.ws-flow .ws-q',
+  key: '.ws-key-grid',
+};
+
+async function gotoSheet(page, worksheetId, tab) {
+  const suffix = tab === 'key' ? '?tab=key' : '';
+  await page.goto(`${BASE}/teacher/worksheets/${worksheetId}${suffix}`, { waitUntil: 'load' });
+  await page.waitForSelector(SHEET_READY[tab], { timeout: 30000 });
+  // Exactly one sheet may be mounted. Two would both print, and the
+  // .ws-part + .ws-part rule would page-break between them, so a teacher
+  // printing the worksheet would get the key stapled to the back. This is the
+  // assertion that the inactive tab UNMOUNTS rather than hides, checked on
+  // every navigation rather than once.
+  const sheets = await page.locator('.ws-sheet').count();
+  if (sheets !== 1) {
+    throw new Error(
+      `Expected exactly 1 .ws-sheet mounted on the ${tab} tab, found ${sheets}. ` +
+        `Two sheets in the DOM both print.`
+    );
+  }
+}
+
 // ─── The faults, applied in --prove ─────────────────────────────────────────
 //
 // One fault per check family, applied to the live DOM, so every assertion runs
@@ -472,8 +514,7 @@ async function main() {
 
     // ═══ 1. The questions page ═════════════════════════════════════════════
     console.log('\n1. Questions, page 1');
-    await page.goto(`${BASE}/teacher/worksheets/${titledId}/print`, { waitUntil: 'networkidle' });
-    await page.waitForSelector('.ws-flow .ws-q');
+    await gotoSheet(page, titledId, 'questions');
     await page.emulateMedia({ media: 'print' });
     await applyFault(page);
 
@@ -517,8 +558,7 @@ async function main() {
 
     // ═══ 2. Key and rationales ═════════════════════════════════════════════
     console.log('\n2. Answer key and rationales');
-    await page.goto(`${BASE}/teacher/worksheets/${titledId}/key`, { waitUntil: 'networkidle' });
-    await page.waitForSelector('.ws-key-grid');
+    await gotoSheet(page, titledId, 'key');
     await page.emulateMedia({ media: 'print' });
     await applyFault(page);
 
@@ -688,7 +728,7 @@ async function main() {
     console.log('\n5. Dark mode');
     const darkCtx = await signIn(browser, teacher.email, 'dark');
     const darkPage = await darkCtx.newPage();
-    await darkPage.goto(`${BASE}/teacher/worksheets/${titledId}/print`, { waitUntil: 'networkidle' });
+    await gotoSheet(darkPage, titledId, 'questions');
     await darkPage.waitForSelector('.ws-flow .katex');
     await applyFault(darkPage);
 
@@ -717,7 +757,7 @@ async function main() {
 
     // ═══ 6. The default title ══════════════════════════════════════════════
     console.log('\n6. The builder default title');
-    await page.goto(`${BASE}/teacher/worksheets/${defaultId}/print`, { waitUntil: 'networkidle' });
+    await gotoSheet(page, defaultId, 'questions');
     await page.waitForSelector('.ws-title');
     await page.emulateMedia({ media: 'print' });
     await applyFault(page);
@@ -733,7 +773,7 @@ async function main() {
     // the real rationale slot on the real printed page, under the real
     // stylesheet -- and then removed.
     console.log('\n7. Rationale math, synthetic');
-    await page.goto(`${BASE}/teacher/worksheets/${titledId}/key`, { waitUntil: 'networkidle' });
+    await gotoSheet(page, titledId, 'key');
     await page.waitForSelector('.ws-rat-text');
     await page.emulateMedia({ media: 'print' });
 

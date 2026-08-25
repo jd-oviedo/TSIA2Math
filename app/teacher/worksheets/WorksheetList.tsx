@@ -160,15 +160,26 @@ export default function WorksheetList({ worksheets }: { worksheets: WorksheetSum
               </div>
 
               <div className="ws-row-actions">
+{/* Both rows now land on the worksheet page at the matching tab, where
+                    the page's own Print is the primary action one click away.
+                    NEITHER AUTO-FIRES THE PRINT DIALOG. Preserving one-click-to-
+                    printer would mean calling window.print() on arrival, and the
+                    sheet has to be fully laid out first: webfonts resolved, KaTeX
+                    measured, base64 figures decoded. Fire early and the teacher
+                    prints a half-set page, which is a worse failure than an extra
+                    click and an invisible one until it reaches paper.
+
+                    "Print" is therefore relabelled "Open". A button that says
+                    Print and does not print is the dishonest version of this. */}
                 <Link
-                  href={`/teacher/worksheets/${w.id}/print`}
+                  href={`/teacher/worksheets/${w.id}`}
                   className="ws-tap"
                   style={{ ...darkBtnStyle, ...actionPad, textDecoration: 'none' }}
                 >
-                  Print
+                  Open
                 </Link>
                 <Link
-                  href={`/teacher/worksheets/${w.id}/key`}
+                  href={`/teacher/worksheets/${w.id}?tab=key`}
                   className="ws-tap"
                   style={{ ...quietBtnStyle, ...actionPad, fontWeight: 500, textDecoration: 'none' }}
                 >

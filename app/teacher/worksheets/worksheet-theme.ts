@@ -223,12 +223,30 @@ body:has(.ws-page) { background: ${WS.page}; }
 .ws-page h1, .ws-page h2, .ws-page h3 { font-family: ${WS.font.heading}; }
 .ws-page button, .ws-page input, .ws-page select, .ws-page textarea { font-family: inherit; }
 
-.ws-page .katex { color: ${WS.ink} !important; }
+/* THE SHEET IS EXCLUDED, AND THAT IS THE WHOLE POINT OF THE :not().
+   The real printed sheet now renders inside .ws-page on the config route, so
+   this rule and print-styles.ts's .ws-sheet .katex rule (color #000000 !important) match the
+   SAME spans. Both are 0,2,0 and both carry
+   !important, which leaves the winner to be decided by which <style> tag the
+   browser saw last -- and if this one won, printed maths would come out
+   #0E0E11 instead of black.
+
+   Raising specificity would only move the coin toss. The fix is to stop the
+   two selectors overlapping at all: this one now cannot match anything inside
+   a sheet, so document order stops being load-bearing and either ordering
+   produces the same paper. Checked by rendering both orders and requiring the
+   same computed colour, in scripts/verify_worksheet_cascade.mjs. */
+.ws-page .katex:not(.ws-sheet .katex) { color: ${WS.ink} !important; }
 
 .ws-preview-stem img { display: block; max-width: 100%; height: auto; margin: 6px 0; }
 
-.ws-page a { color: ${WS.link}; }
-.ws-page a:hover { color: ${WS.linkHover}; }
+/* Same collision, same fix. .ws-sheet a (color var(--ws-ink)) in
+   print-styles.ts is 0,1,1 against this rule's 0,1,1, neither !important, so
+   order decides again. The sheet renders no links today, so this one has
+   never fired, and it is closed now rather than left as a trap for whoever
+   first puts an anchor on the paper. */
+.ws-page a:not(.ws-sheet a) { color: ${WS.link}; }
+.ws-page a:not(.ws-sheet a):hover { color: ${WS.linkHover}; }
 
 .ws-page :focus-visible { outline: 2px solid ${WS.focus}; outline-offset: 2px; }
 
@@ -320,6 +338,21 @@ body:has(.ws-page) { background: ${WS.page}; }
   min-width: 0;
 }
 
+/* The main pane and the frame the sheet sits in.
+   CLASSES RATHER THAN INLINE STYLE PROPS, and not for tidiness: the print
+   block at the foot of this file has to turn both into plain blocks, and an
+   inline style prop can only be beaten with !important. Everything else on
+   these screens stays inline, per the house rule; these two are the
+   exceptions the cascade forces. */
+.ws-config-main { min-width: 0; display: flex; flex-direction: column; }
+.ws-preview-frame {
+  padding: 26px 26px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
 /* ── below 900: single column, and 48px tap targets from the token sheet ───
    The 206px rail becoming a hamburger drawer is a dashboard wide pattern and
    is NOT built here. Content goes responsive; nav chrome stays as it is. */
@@ -375,8 +408,40 @@ body:has(.ws-page) { background: ${WS.page}; }
   .ws-row-actions > * { flex: 1; }
 }
 
+/* ── what happens when this page meets a printer ───────────────────────────
+   The real sheet renders on this route now, so a print from here has to put
+   the paper through the SAME box it goes through on a chrome-free route. Every
+   rule below removes an ancestor that did not exist there.
+
+   .no-print is stated here, scoped, and carries no @page of any kind. It is
+   also stated bare inside PRINT_CSS, which this route now injects too; the two
+   declarations are identical, so there is nothing to reconcile.
+
+   THE GRID IS THE ONE THAT WOULD HAVE BITTEN. .ws-config declares two columns
+   and the rail is display:none under print -- but a display:none ITEM does not
+   remove its TRACK, so column one would still reserve 302px and the sheet
+   would print shifted right and 302px narrow. Collapsing the grid to a block
+   is not tidying, it is the fix.
+
+   THE FLEX ANCESTORS MATTER TOO, and less obviously. Fragmentation inside a
+   flex container is not reliably supported, and the answer key depends
+   entirely on the .ws-part + .ws-part break-before:page rule to land its three
+   parts on three sheets. Every flex ancestor between body and .ws-sheet is
+   turned back into a block so the break has an ordinary block flow to break.
+   That includes .um-teacher-content, which TeacherShell sets with an INLINE
+   display:flex, so that one needs !important to reach. */
 @media print {
   .ws-page .no-print { display: none !important; }
+
+  .um-teacher-content { display: block !important; }
+
+  .ws-page { display: block; min-height: 0; background: #FFFFFF; }
+  /* Undoes the flex:1 the shell seam sets, which only makes sense on screen. */
+  .um-teacher-content .ws-page { flex: none; }
+
+  .ws-config { display: block; }
+  .ws-config-main { display: block; min-width: 0; }
+  .ws-preview-frame { display: block; padding: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
