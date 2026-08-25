@@ -285,13 +285,32 @@ export const GRID_SIZE = '62px 62px';
 export const LOGIN_CSS = `
 ${LOGIN_VARS_CSS}
 
-/* The document body still carries the global theme's --ec-bg, a blue-black in
-   dark mode, which would flash at the edges on overscroll behind a light login
-   screen and vice versa. Custom properties inherit downward only, so the value
-   cannot be read back off .um-login here -- it is written from the same
-   constants instead. Same reasoning as dashboard-theme.ts. */
-body:has(.um-login) { background: ${LIGHT.ground}; }
-body:has(.um-login[data-theme="dark"]) { background: ${DARK.ground}; }
+/* THE BODY GROUND IS NOT SET HERE, AND MUST NOT BE MOVED BACK.
+   ===========================================================
+   Two rules used to sit at this spot:
+
+     body:has(.um-login) { background: <ground>; }
+     body:has(.um-login[data-theme="dark"]) { background: <ground dark>; }
+
+   They never painted on any browser -- app/layout.tsx sets the body background
+   from an inline style prop, which outranks any stylesheet rule that is not
+   !important -- and :has() is Selectors Level 4, so they also dropped entirely
+   on Safari below 15.4.
+
+   Adding !important would fix the first problem but not the second, and a flat
+   body type selector cannot fix either properly: the theme marker is data-theme on
+   .um-login, a DESCENDANT set by LoginChrome, and ThemeProvider stamps no
+   attribute on <html>, so a body rule cannot read theme state and would paint one
+   colour behind both themes. body:has(descendant) was the only selector that
+   could express this, and it is the one older Safari drops.
+
+   So LoginChrome writes it as a theme-aware inline style through
+   useBodyBackground, which is theme-correct on every browser. See
+   app/components/useBodyBackground.ts for the full reasoning.
+
+   Note DARK.ground is #0C1120, deliberately reused from --ec-bg dark, so in dark
+   mode this was already the colour the body happened to show. The light ground
+   #FAF8F5 is the one that actually moves, off --ec-bg light #F0EDE8. */
 
 /* Inline styles cannot express :focus-visible or :hover, so the handful of
    rules that need them live here rather than in a mouse-event handler. */

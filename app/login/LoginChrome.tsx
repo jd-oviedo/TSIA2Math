@@ -3,7 +3,8 @@
 import type { ReactNode } from 'react';
 import { useTheme } from '../theme/useTheme';
 import { ThemeSwitch } from '../components/ThemeSwitch';
-import { L, FONT_MONO, GRID_BACKGROUND, GRID_SIZE } from './login-theme';
+import { L, SURFACES, FONT_MONO, GRID_BACKGROUND, GRID_SIZE } from './login-theme';
+import { useBodyBackground } from '../components/useBodyBackground';
 import { t } from './copy';
 import type { Lang } from './use-login-lang';
 
@@ -84,6 +85,10 @@ export function LoginChrome({
   children: ReactNode;
 }) {
   const { theme } = useTheme();
+
+  // The overscroll gutter behind this shell. L.ground is a var() reference and
+  // body cannot resolve it, so the resolved hex for the current theme is passed.
+  useBodyBackground(SURFACES[theme].ground);
 
   return (
     <div
