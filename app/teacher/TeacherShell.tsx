@@ -7,6 +7,7 @@ import { DASH } from '../components/dashboard-theme';
 import { HoverLabel, HOVER_LABEL_CSS, useHoverLabel } from '../components/HoverLabel';
 import SupportModal from '../components/SupportModal';
 import { teacherTierLabel } from '../lib/capabilities';
+import { CHROME_CLASS, SHELL_CLASS, SHELL_CHROME_CSS } from './teacher-shell-css';
 
 // The teacher navigation shell, lifted out of TeacherDashboardClient so a page
 // that is not the dashboard can render the same rail.
@@ -465,12 +466,13 @@ const SIDEBAR_W_COLLAPSED = 64;
 //   switching it under them is a PR #200 regression waiting to happen.
 //
 //   print. See the note at the top of the file.
-const CHROME_CLASS = 'um-teacher-chrome';
-
+// CHROME_CLASS and the rules it carries now live in ./teacher-shell-css, a
+// plain .ts module, so a harness can import the real stylesheet instead of
+// keeping a second copy of the print rule. The hover keyframe is concatenated
+// here rather than moved, because it comes from a .tsx module.
 const STANDALONE_CSS = `
 ${HOVER_LABEL_CSS}
-.${CHROME_CLASS}, .${CHROME_CLASS} *, .${CHROME_CLASS} *::before, .${CHROME_CLASS} *::after { box-sizing: border-box; }
-@media print { .${CHROME_CLASS} { display: none !important; } }
+${SHELL_CHROME_CSS}
 `;
 
 // What the shell hands down to whatever it wraps.
@@ -537,7 +539,9 @@ export default function TeacherShell({
     <TeacherShellContext.Provider value={{ openMenu: () => setMenuOpen(true) }}>
       {standalone && <style>{STANDALONE_CSS}</style>}
 
-      <div style={{ display: 'flex', minHeight: '100vh', fontFamily: FONT_BODY, color: DASH.ink }}>
+      {/* className only on the standalone variant, so the dashboard's outer
+          element is the bare div it has always been. */}
+      <div className={standalone ? SHELL_CLASS : undefined} style={{ display: 'flex', minHeight: '100vh', fontFamily: FONT_BODY, color: DASH.ink }}>
 
         {/* Desktop sidebar. Width animates between the two rail widths; the
             z-index keeps the collapse handle and the hover labels above the

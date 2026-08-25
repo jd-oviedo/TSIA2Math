@@ -84,6 +84,24 @@ export default function WorksheetBuilder({
   const [includeQuiz, setIncludeQuiz] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Which units are EXPANDED. Empty on every load, so the picker opens as a
+  // list of six unit headings rather than 97 cards, and the teacher opens the
+  // one they came for.
+  //
+  // EXPANDED rather than collapsed, deliberately: the default is then the empty
+  // set, which needs no knowledge of what units exist. A collapsed-set default
+  // would have to be seeded from `topics` and would silently re-open a unit
+  // that arrived after the seed.
+  //
+  // NOT PERSISTED, to storage or to the database. It is a view state on one
+  // screen, and a teacher who returns to build a second worksheet should meet
+  // the same tidy list rather than the shape of their last session.
+  //
+  // HELD APART FROM `selected` AND `order` ON PURPOSE. Collapsing a unit is a
+  // question about what is on screen, never about what is chosen: nothing below
+  // reads this set when building the payload, so a collapsed unit's topics stay
+  // selected, stay counted in the totals, and stay listed in the rail.
+  const [openUnits, setOpenUnits] = useState<Set<number>>(new Set());
 
   const byUnit = useMemo(() => {
     // Already sorted by (unit_number, sequence_in_unit) on the server -- schema
@@ -96,6 +114,15 @@ export default function WorksheetBuilder({
     }
     return [...map.entries()].sort((a, b) => a[0] - b[0]);
   }, [topics]);
+
+  function toggleUnit(unit: number) {
+    setOpenUnits((prev) => {
+      const next = new Set(prev);
+      if (next.has(unit)) next.delete(unit);
+      else next.add(unit);
+      return next;
+    });
+  }
 
   const byId = useMemo(() => {
     const map = new Map<string, PickerTopic>();
@@ -198,8 +225,11 @@ export default function WorksheetBuilder({
 
   const blocked = busy || atCap || selected.size === 0 || pool === 0;
 
+  // ws-chrome: the builder renders no sheet, so the whole main is chrome. A
+  // plain comment and not a JSX one, because this element is the root of the
+  // return and a {/* */} beside it would be a second child.
   return (
-    <main className="ws-page">
+    <main className="ws-page ws-chrome">
       <style>{WS_CHROME_CSS}</style>
 
       <header style={{ background: WS.band, borderBottom: `1px solid ${WS.hairline}` }}>
@@ -529,9 +559,59 @@ export default function WorksheetBuilder({
           </div>
 
           <div style={{ padding: '18px 26px 40px', display: 'flex', flexDirection: 'column', gap: 20 }}>
-            {byUnit.map(([unit, list]) => (
+            {byUnit.map(([unit, list]) => {
+              const open = openUnits.has(unit);
+              // Counted from `selected`, never from what is on screen, so the
+              // number is the truth about the worksheet rather than a summary of
+              // the visible cards. It is the reassurance that makes collapsing a
+              // unit with choices in it safe to do.
+              const chosen = list.reduce((n, t) => n + (selected.has(t.topic_id) ? 1 : 0), 0);
+              return (
               <section key={unit} style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                {/* The whole heading row is the control, not a chevron beside
+                    it: the heading is what a teacher aims at, and a 15px target
+                    floating next to a full-width row is the wrong thing to ask
+                    anyone to hit. A real <button>, so Enter and Space work and
+                    aria-expanded says what it does. */}
+                <button
+                  type="button"
+                  onClick={() => toggleUnit(unit)}
+                  aria-expanded={open}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 10,
+                    width: '100%',
+                    padding: 0,
+                    border: 'none',
+                    background: 'transparent',
+                    font: 'inherit',
+                    color: 'inherit',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                  }}
+                >
+                  {/* Points down when open, right when closed. aria-hidden: the
+                      button already announces its own state. */}
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                    style={{
+                      flex: '0 0 11px',
+                      color: WS.muted,
+                      transform: open ? 'rotate(90deg)' : 'none',
+                      transition: 'transform 160ms ease',
+                    }}
+                  >
+                    <polyline points="6 3 13 9 6 15" />
+                  </svg>
                   <h2
                     style={{
                       fontSize: 15,
@@ -544,11 +624,27 @@ export default function WorksheetBuilder({
                     {UNIT_NAMES[unit] ?? `Unit ${unit}`}
                   </h2>
                   <div style={{ flex: 1, height: 1, background: WS.hairline }} />
+                  {chosen > 0 && (
+                    <span
+                      style={{
+                        ...microLabel,
+                        letterSpacing: '0.06em',
+                        color: WS.ink,
+                        fontWeight: 700,
+                      }}
+                    >
+                      {chosen} selected
+                    </span>
+                  )}
                   <span style={{ ...microLabel, letterSpacing: '0.06em' }}>
                     {list.length} topic{list.length === 1 ? '' : 's'}
                   </span>
-                </div>
+                </button>
 
+                {/* UNMOUNTED, not hidden. A display:none grid would keep 97
+                    checkboxes in the accessibility tree and in the tab order,
+                    which is the opposite of what collapsing is for. */}
+                {open && (
                 <div className="ws-topicgrid">
                   {list.map((t) => {
                     const on = selected.has(t.topic_id);
@@ -605,8 +701,10 @@ export default function WorksheetBuilder({
                     );
                   })}
                 </div>
+                )}
               </section>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
