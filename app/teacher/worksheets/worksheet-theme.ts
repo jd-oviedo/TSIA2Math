@@ -98,6 +98,11 @@ export const WS = {
 // Folding all five into one module is worth doing and is not this task.
 //
 // Fill only. Deep Midnight on top measures 12.38 to 12.95 on all four.
+//
+// DEBT, INTENTIONAL: sixth restatement of these four hexes. Verified
+// character-identical to WorksheetSheet.tsx (keys, order and fallback) on
+// 2026-08-25. Pending a shared exported strand-token source; do not "fix" by
+// editing WorksheetSheet.tsx.
 const STRAND_TINT: Record<string, string> = {
   QR: '#B5D4F4',
   AR: '#9FE1CB',
