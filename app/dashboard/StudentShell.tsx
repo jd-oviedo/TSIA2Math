@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import { FONT_BODY } from '@/app/components/fonts';
 import SupportModal from '@/app/components/SupportModal';
-import { V, RAIL_LIGHT, RAIL_DARK } from '@/app/components/dashboard-theme';
+import { V, LIGHT, DARK, RAIL_LIGHT, RAIL_DARK } from '@/app/components/dashboard-theme';
+import { useBodyBackground } from '../components/useBodyBackground';
 import { useTheme } from '@/app/theme/useTheme';
 import {
   StudentNavPanel,
@@ -56,6 +57,10 @@ export default function StudentShell({
   const [showSupport, setShowSupport] = useState(false);
   const { theme } = useTheme();
   const rail = theme === 'dark' ? RAIL_DARK : RAIL_LIGHT;
+
+  // The overscroll gutter behind this shell. V.pageBg is a var() reference and
+  // body cannot resolve it, so the resolved hex for the current theme is passed.
+  useBodyBackground(theme === 'dark' ? DARK.pageBg : LIGHT.pageBg);
 
   useEffect(() => {
     try {

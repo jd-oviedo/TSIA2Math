@@ -395,11 +395,12 @@ ${declarations(LIGHT)}
 .um-dash[data-theme="dark"] {
 ${declarations(DARK)}
 }
-
-/* The body behind the shell still carries the global theme's --ec-bg, which is
-   a blue-black in dark mode and would flash at the edges on overscroll. Custom
-   properties inherit downward only, so the value cannot be read back off
-   .um-dash here -- it is written from the same constants instead. */
-body:has(.um-dash) { background: ${LIGHT.pageBg}; }
-body:has(.um-dash[data-theme="dark"]) { background: ${DARK.pageBg}; }
 `;
+
+/* The body behind the shell is painted by StudentShell, not from here.
+   There were two body:has(.um-dash) rules at this spot. They never painted on
+   any browser -- app/layout.tsx sets the body background from an inline style
+   prop, which outranks any stylesheet rule -- and :has() is Selectors Level 4,
+   so they also failed to parse on Safari below 15.4. Both problems are gone:
+   StudentShell calls useBodyBackground with the resolved pageBg for the current
+   theme. See app/components/useBodyBackground.ts for why this is not CSS. */

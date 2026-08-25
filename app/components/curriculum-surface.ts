@@ -506,12 +506,13 @@ ${declarations(LIGHT)}
 .um-topic[data-theme="dark"] {
 ${declarations(DARK)}
 }
-
-/* The body behind the tree still carries the global theme's --ec-bg, which is a
-   blue-black in dark mode and would flash at the edges on overscroll. Custom
-   properties inherit downward only, so the value cannot be read back off
-   .um-topic here and is written from the same constants instead. Same reasoning,
-   and the same shape, as dashboard-theme.ts and login-theme.ts. */
-body:has(.um-topic) { background: ${LIGHT.page}; }
-body:has(.um-topic[data-theme="dark"]) { background: ${DARK.page}; }
 `;
+
+/* The body behind the tree is painted by TopicSurface, not from here.
+   There were two body:has(.um-topic) rules at this spot. They never painted on
+   any browser -- app/layout.tsx sets the body background from an inline style
+   prop, which outranks any stylesheet rule -- and :has() is Selectors Level 4,
+   so they also failed to parse on Safari below 15.4. Both problems are gone:
+   TopicSurface calls useBodyBackground with the resolved page colour for the
+   current theme. See app/components/useBodyBackground.ts for why this is not CSS.
+   login-theme.ts still carries the original shape and is untouched here. */

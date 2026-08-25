@@ -1,7 +1,8 @@
 'use client';
 
 import { useTheme } from '../theme/useTheme';
-import { T } from './curriculum-surface';
+import { SURFACES, T } from './curriculum-surface';
+import { useBodyBackground } from './useBodyBackground';
 
 // The .um-topic wrapper, as a client component so it can carry data-theme.
 //
@@ -34,6 +35,10 @@ export default function TopicSurface({
   fontFamily: string;
 }) {
   const { theme } = useTheme();
+
+  // The overscroll gutter behind this wrapper. T.page is a var() reference and
+  // body cannot resolve it, so the resolved hex for the current theme is passed.
+  useBodyBackground(SURFACES[theme].page);
 
   return (
     <div
