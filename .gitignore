@@ -37,3 +37,6 @@ scratch-shots/
 # live session for a real account and must never be committed. Ignored BEFORE
 # anything writes into the directory, deliberately.
 .auth/
+
+# Harness output: rendered before/after captures from scripts/verify_teacher_shell.mjs.
+.shell-snapshots/

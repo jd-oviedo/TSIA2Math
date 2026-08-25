@@ -3,10 +3,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import posthog from 'posthog-js';
 import MathText from '../components/MathText';
-import { LogoutButton } from '../components/LogoutButton';
-import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from '../components/fonts';
+import { FONT_HEADING, FONT_BASE_CSS } from '../components/fonts';
 import { DASH, cardStyle } from '../components/dashboard-theme';
-import { HoverLabel, HOVER_LABEL_CSS, useHoverLabel } from '../components/HoverLabel';
+import { HOVER_LABEL_CSS } from '../components/HoverLabel';
+import TeacherShell, { useViewport, useTeacherShell } from './TeacherShell';
 import NewAnnouncement from './NewAnnouncement';
 import NewAssignment, { type AssignTopic } from './NewAssignment';
 import AssignmentsPanel from './AssignmentsPanel';
@@ -14,7 +14,6 @@ import SupportModal from '../components/SupportModal';
 import ModalShell from '../components/ModalShell';
 import ExportModal from './ExportModal';
 import TeacherTour, { TOUR_STORAGE_KEY } from './TeacherTour';
-import { teacherTierLabel } from "../lib/capabilities";
 import { OFFICIAL_LEVELS, type OfficialLevel } from "../lib/official-scores";
 import {
   PASSING,
@@ -200,379 +199,6 @@ function OfficialScoreCell({ s }: { s: DisplayStudent }) {
     </div>
   );
 }
-
-// Viewport hook. Defaults to desktop for SSR / first paint (no hydration
-// mismatch), then corrects on mount. Breakpoints: <640 mobile, <1024 tablet.
-function useViewport() {
-  const [w, setW] = useState(1280);
-  useEffect(() => {
-    const onResize = () => setW(window.innerWidth);
-    onResize();
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
-  return { w, isMobile: w < 640, isCompact: w < 1024 };
-}
-
-// ─── Logo ──────────────────────────────────────────────────────────────────────
-
-// Wordmark is 2000x485, so setting width alone keeps the aspect ratio intact.
-// 152px fits the 200px sidebar minus its 18px side padding.
-//
-// Collapsed, the full wordmark is replaced by the standalone mu mark, which is
-// square and centres in the narrow rail.
-function Brand({ collapsed }: { collapsed: boolean }) {
-  if (collapsed) {
-    // The mu mark only inks about 50% x 61% of its own 1080px canvas; the rest
-    // is transparent padding. Rendered at a nominal icon size the glyph came
-    // out around 15px in a 64px rail, which read as an empty logo slot. Sizing
-    // the box to 44px puts the visible mark at roughly 22x27, matching the
-    // weight of the nav icons below it.
-    return (
-      <img
-        src="/unpackmath-logo.png"
-        alt="UnpackMath"
-        width={1080}
-        height={1080}
-        style={{ width: 44, height: 44, display: 'block', margin: '0 auto' }}
-      />
-    );
-  }
-  return (
-    <img
-      src="/unpackmath-wordmark.png"
-      alt="UnpackMath"
-      width={2000}
-      height={485}
-      style={{ width: 152, maxWidth: '100%', height: 'auto', display: 'block' }}
-    />
-  );
-}
-
-// ─── Sidebar ─────────────────────────────────────────────────────────────────
-
-// `tour` is the data-tour key TeacherTour targets. Only the two items the tour
-// stops at carry one; the rest are undefined and render no attribute.
-// `badge` is a quiet suffix rendered beside the label, currently "(Beta)" on
-// Worksheets. It is a SEPARATE field rather than part of the label string, and
-// that is not tidiness: `label` is also the key navIcon switches on, the key the
-// hover state compares, and the React key. Folding "(Beta)" into it would drop
-// the icon through to the generic eye, which is the exact fallthrough the case
-// below was added to prevent.
-const NAV_ITEMS: { label: string; href: string; tour?: string; badge?: string }[] = [
-  { label: 'Dashboard', href: '/teacher' },
-  { label: 'Misconceptions', href: '/teacher#misconceptions', tour: 'nav-misconceptions' },
-  // The worksheet generator has been live and teacher-facing for weeks with no
-  // way to reach it from the dashboard: /teacher/worksheets was findable only by
-  // typing the URL. Nothing new is exposed by linking it -- the page runs
-  // requireWorksheetTeacher(), which is requireTeacher() plus the worksheets
-  // capability, and every teacher who can see this rail has already cleared the
-  // first half.
-  { label: 'Worksheets', href: '/teacher/worksheets', badge: '(Beta)' },
-  // Build 3: was '/teacher#roster', a same-page anchor into the roster section
-  // below. It now leads to the fuller roster, which carries a grade column and a
-  // way through to the gradebook.
-  //
-  // THE ANCHOR AND THE SECTION IT POINTED AT ARE UNTOUCHED. `id="roster"` and
-  // `data-tour="roster"` both remain (see the Roster component), because
-  // data-tour="roster" is step 6 of TeacherTour and moving the section would
-  // break onboarding for every new teacher. Only this href changed.
-  //
-  // NO class_id, DELIBERATELY. The dashboard's selected class is unpersisted
-  // React state that this rail has no access to, and threading it through for
-  // one link would be worse than the destination resolving its own default --
-  // which is what /teacher/worksheets already does.
-  { label: 'Students', href: '/teacher/students' },
-  { label: 'Take a practice test', href: '/adaptive-test', tour: 'nav-practice' },
-  { label: 'Student view', href: '/dashboard' },
-];
-
-function navIcon(label: string) {
-  switch (label) {
-    case 'Dashboard':
-      return <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="2" y="2" width="5.5" height="5.5" rx="1.2" /><rect x="10.5" y="2" width="5.5" height="5.5" rx="1.2" /><rect x="2" y="10.5" width="5.5" height="5.5" rx="1.2" /><rect x="10.5" y="10.5" width="5.5" height="5.5" rx="1.2" /></svg>;
-    case 'Misconceptions':
-      return <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M9 2.4 L16.2 15 H1.8 Z" /><line x1="9" y1="7" x2="9" y2="10.5" /><circle cx="9" cy="12.8" r="0.5" fill="currentColor" stroke="none" /></svg>;
-    // A sheet with a folded corner and three ruled lines. Its own case rather
-    // than the default: navIcon switches on the LABEL, so an item with no case
-    // silently takes the generic eye below and looks like a mistake nobody
-    // notices, because the eye is a perfectly plausible icon.
-    case 'Worksheets':
-      return <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 1.8 h6.2 L14.4 6 v10.2 H4 Z" /><path d="M10.2 1.8 V6 h4.2" /><line x1="6.4" y1="9.4" x2="12" y2="9.4" /><line x1="6.4" y1="12.2" x2="12" y2="12.2" /></svg>;
-    case 'Students':
-      return <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="6.3" cy="6" r="2.4" /><circle cx="12.4" cy="6.6" r="2" /><path d="M2 15 a4.3 4.3 0 0 1 8.6 0" /><path d="M10.4 14.6 a3.6 3.6 0 0 1 5.6 0" /></svg>;
-    case 'Take a practice test':
-      return <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3.2" y="2" width="11.6" height="14" rx="1.6" /><line x1="6" y1="6" x2="12" y2="6" /><line x1="6" y1="9" x2="12" y2="9" /><line x1="6" y1="12" x2="9.6" y2="12" /></svg>;
-    default:
-      return <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M1.4 9 C4.2 4.2 13.8 4.2 16.6 9 C13.8 13.8 4.2 13.8 1.4 9 Z" /><circle cx="9" cy="9" r="2.3" /></svg>;
-  }
-}
-
-// Founder badge. Gold star plus FOUNDER in a rounded amber outline pill,
-// sitting under the name in the sidebar profile card, per the reference.
-// Driven by profiles.is_founder, so adding a founder is a column update rather
-// than a code change.
-function FounderPill() {
-  return (
-    <span
-      style={{
-        display: 'inline-flex', alignItems: 'center', gap: 5,
-        marginTop: 4, padding: '2px 9px 2px 7px',
-        border: '1px solid #C68A2F', borderRadius: 999,
-        color: '#E7BE7B', fontSize: 9, fontWeight: 700, letterSpacing: 1.1,
-      }}
-    >
-      <svg width="9" height="9" viewBox="0 0 12 12" fill="#E7BE7B" aria-hidden="true">
-        <path d="M6 0.6l1.62 3.34 3.68.52-2.66 2.58.63 3.66L6 8.97 2.73 10.7l.63-3.66L.7 4.46l3.68-.52z" />
-      </svg>
-      FOUNDER
-    </span>
-  );
-}
-
-// The floating hover label the collapsed rail leans on now lives in
-// app/components/HoverLabel, shared with the student rail.
-
-function SidebarInner({
-  teacherName,
-  teacherEmail,
-  isFounder,
-  plan,
-  collapsed = false,
-  onNavigate,
-  onOpenSupport,
-  onStartTour,
-}: {
-  teacherName: string;
-  teacherEmail: string;
-  isFounder: boolean;
-  /** The profiles.plan value. The band below names the tier from it. */
-  plan: string | null;
-  collapsed?: boolean;
-  onNavigate?: () => void;
-  onOpenSupport: () => void;
-  /** Launches the tour. Passed by both rails -- the desktop aside and the
-   *  compact slide-over -- so the entry point does not vanish at 1024px the way
-   *  the rail itself does. */
-  onStartTour: () => void;
-}) {
-  const initials = teacherName.split(/[\s._-]+/).map((x) => x[0]).join('').slice(0, 2).toUpperCase() || 'T';
-  const { tip, hovered, showTip, hideTip } = useHoverLabel();
-  const [accountOpen, setAccountOpen] = useState(false);
-
-  return (
-    <>
-      {/* Collapsed side padding is tighter so the 44px mark clears the 64px
-          rail without being squeezed. */}
-      <div style={{ padding: collapsed ? '18px 8px 12px' : '22px 18px 14px' }}>
-        <Brand collapsed={collapsed} />
-      </div>
-
-      {/* The tier band. A full-bleed band across the sidebar rather than an
-          inset pill. Keeps the amber border/ink treatment, drops the dot, and
-          centres the text; side borders are omitted so it reads as a band that
-          meets both edges instead of a boxed-in chip.
-
-          THE TEXT USED TO BE THE LITERAL 'TEACHER · PRO', for everyone. No
-          Teacher Pro has ever sold, so every teacher who has ever seen this
-          sidebar has been shown the name of a product nobody owns, and the
-          first paying Teacher Core customer saw it too. It is derived from the
-          plan now. Falls back to plain TEACHER rather than to a tier name: the
-          page gate above guarantees a teacher plan, and if that ever stops
-          being true this should go quiet, not guess. */}
-      <div
-        style={{
-          borderTop: '1px solid rgba(198,138,47,0.45)',
-          borderBottom: '1px solid rgba(198,138,47,0.45)',
-          color: '#E7BE7B',
-          fontSize: 9,
-          fontWeight: 700,
-          letterSpacing: 1.4,
-          padding: '6px 4px',
-          textAlign: 'center',
-          whiteSpace: 'nowrap',
-          overflow: 'hidden',
-        }}
-      >
-        {collapsed
-          ? teacherTierLabel(plan) ?? 'TEACHER'
-          : `TEACHER${teacherTierLabel(plan) ? ` · ${teacherTierLabel(plan)}` : ''}`}
-      </div>
-
-      <nav style={{ padding: collapsed ? '10px 8px' : '10px 12px', display: 'flex', flexDirection: 'column', gap: 2, overflowX: 'hidden' }}>
-        {NAV_ITEMS.map((item) => {
-          const isActive = item.label === 'Dashboard';
-          // The badge belongs to the NAME, not just to the sighted layout. It is
-          // what a screen reader announces and what the collapsed rail's hover
-          // label shows, because on that rail the tooltip is the only text there
-          // is -- a teacher on the narrow rail would otherwise never learn the
-          // feature is in beta. The hover comparison uses the same string so the
-          // two cannot drift.
-          const fullLabel = item.badge ? `${item.label} ${item.badge}` : item.label;
-          const isHovered = hovered === fullLabel;
-          return (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={onNavigate}
-              aria-label={fullLabel}
-              data-tour={item.tour}
-              onMouseEnter={showTip(fullLabel)}
-              onMouseLeave={hideTip}
-              style={{
-                display: 'flex', alignItems: 'center', gap: collapsed ? 0 : 11,
-                justifyContent: collapsed ? 'center' : 'flex-start',
-                padding: collapsed ? '9px 0' : '9px 11px', borderRadius: 8, fontSize: 13,
-                fontWeight: isActive ? 600 : 500, textDecoration: 'none',
-                color: isActive ? '#E7BE7B' : 'rgba(255,255,255,0.64)',
-                background: isActive
-                  ? 'rgba(198,138,47,0.14)'
-                  : isHovered ? 'rgba(255,255,255,0.06)' : 'transparent',
-                transition: 'background 0.12s',
-              }}
-            >
-              {/* navIcon still takes item.label, never fullLabel. */}
-              <span style={{ flex: '0 0 17px', display: 'flex', alignItems: 'center' }}>{navIcon(item.label)}</span>
-              {!collapsed && (
-                <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  {item.label}
-                  {/* A real space, not just the margin below. The margin spaces
-                      it on screen but leaves textContent reading
-                      "Worksheets(Beta)", which is what a copy-paste and any
-                      text-level assertion see. */}
-                  {item.badge && ' '}
-                  {item.badge && (
-                    /* Quieter than the label it follows, so it reads as a note
-                       about the item rather than as part of its name. aria-hidden
-                       because aria-label above already carries it; without that
-                       a screen reader says "Beta" twice. */
-                    <span
-                      aria-hidden="true"
-                      style={{
-                        marginLeft: 1,
-                        fontSize: 10.5,
-                        fontWeight: 500,
-                        letterSpacing: 0.2,
-                        color: isActive ? 'rgba(231,190,123,0.72)' : 'rgba(255,255,255,0.42)',
-                      }}
-                    >
-                      {item.badge}
-                    </span>
-                  )}
-                </span>
-              )}
-            </a>
-          );
-        })}
-      </nav>
-
-      <div style={{ marginTop: 'auto', padding: collapsed ? '14px 8px' : 14, borderTop: '1px solid rgba(255,255,255,0.08)', position: 'relative' }}>
-        {/* Account menu. Anchored above the avatar because the avatar sits at
-            the bottom of the rail. */}
-        {accountOpen && (
-          <>
-            <div onClick={() => setAccountOpen(false)} style={{ position: 'fixed', inset: 0, zIndex: 310 }} />
-            <div
-              role="menu"
-              style={{
-                position: 'absolute', bottom: 'calc(100% - 4px)', left: collapsed ? 8 : 14,
-                minWidth: 178, zIndex: 320,
-                background: '#fff', borderRadius: 11, padding: 5,
-                border: '1px solid rgba(15,30,53,0.08)',
-                boxShadow: '0 12px 34px rgba(15,30,53,0.24)',
-              }}
-            >
-              <a
-                role="menuitem"
-                href="/teacher/settings"
-                onClick={() => setAccountOpen(false)}
-                style={menuItemStyle}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F3'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
-              >
-                <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="9" r="2.4" /><path d="M14.6 11.1a1.3 1.3 0 0 0 .26 1.43l.05.05a1.55 1.55 0 1 1-2.2 2.2l-.04-.05a1.3 1.3 0 0 0-1.43-.26 1.3 1.3 0 0 0-.79 1.19v.13a1.55 1.55 0 1 1-3.1 0v-.07a1.3 1.3 0 0 0-.85-1.19 1.3 1.3 0 0 0-1.43.26l-.05.05a1.55 1.55 0 1 1-2.2-2.2l.05-.05a1.3 1.3 0 0 0 .26-1.43 1.3 1.3 0 0 0-1.19-.79h-.13a1.55 1.55 0 1 1 0-3.1h.07a1.3 1.3 0 0 0 1.19-.85 1.3 1.3 0 0 0-.26-1.43l-.05-.05a1.55 1.55 0 1 1 2.2-2.2l.05.05a1.3 1.3 0 0 0 1.43.26h.06a1.3 1.3 0 0 0 .79-1.19v-.13a1.55 1.55 0 1 1 3.1 0v.07a1.3 1.3 0 0 0 .79 1.19 1.3 1.3 0 0 0 1.43-.26l.05-.05a1.55 1.55 0 1 1 2.2 2.2l-.05.05a1.3 1.3 0 0 0-.26 1.43v.06a1.3 1.3 0 0 0 1.19.79h.13a1.55 1.55 0 1 1 0 3.1h-.07a1.3 1.3 0 0 0-1.19.79z" /></svg>
-                Account Settings
-              </a>
-              <button
-                role="menuitem"
-                onClick={() => { setAccountOpen(false); onStartTour(); }}
-                style={{ ...menuItemStyle, width: '100%', border: 'none', background: 'transparent', cursor: 'pointer', textAlign: 'left' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F3'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
-              >
-                <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="9" r="7" /><path d="M11.9 6.1 L7.9 7.9 L6.1 11.9 L10.1 10.1 Z" /></svg>
-                Take a Tour
-              </button>
-              <button
-                role="menuitem"
-                onClick={() => { setAccountOpen(false); onOpenSupport(); }}
-                style={{ ...menuItemStyle, width: '100%', border: 'none', background: 'transparent', cursor: 'pointer', textAlign: 'left' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F3'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
-              >
-                <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="9" r="7" /><path d="M6.9 6.8a2.15 2.15 0 0 1 4.18.72c0 1.43-2.15 2.15-2.15 2.15" /><circle cx="9" cy="13" r="0.55" fill="currentColor" stroke="none" /></svg>
-                Help
-              </button>
-            </div>
-          </>
-        )}
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: collapsed ? 'center' : 'flex-start', flexDirection: collapsed ? 'column' : 'row' }}>
-          <button
-            type="button"
-            aria-label="Profile"
-            aria-haspopup="menu"
-            aria-expanded={accountOpen}
-            data-tour="profile"
-            onClick={() => setAccountOpen((v) => !v)}
-            onMouseEnter={showTip('Profile')}
-            onMouseLeave={hideTip}
-            style={{
-              width: 32, height: 32, borderRadius: '50%', background: '#1C3052', color: '#E7BE7B',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: 12, fontWeight: 700, flex: '0 0 32px',
-              border: hovered === 'Profile' || accountOpen ? '1px solid rgba(231,190,123,0.55)' : '1px solid transparent',
-              cursor: 'pointer', padding: 0, fontFamily: 'inherit',
-            }}
-          >
-            {initials}
-          </button>
-          {!collapsed && (
-            <div style={{ minWidth: 0, flex: 1 }}>
-              <div style={{ fontSize: 12.5, fontWeight: 600, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{teacherName}</div>
-              {isFounder ? (
-                <FounderPill />
-              ) : (
-                <div style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.5)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{teacherEmail}</div>
-              )}
-            </div>
-          )}
-
-          {/* Logout keeps its own hover label, and stays present when
-              collapsed -- stacked under the avatar rather than dropped, so the
-              narrow rail is still a way out of the app. */}
-          <span
-            onMouseEnter={showTip('Logout')}
-            onMouseLeave={hideTip}
-            style={{ display: 'flex', flexShrink: 0 }}
-          >
-            <LogoutButton variant="dark" size={30} title={null} />
-          </span>
-        </div>
-      </div>
-
-      {tip && <HoverLabel tip={tip} />}
-    </>
-  );
-}
-
-const menuItemStyle: React.CSSProperties = {
-  display: 'flex', alignItems: 'center', gap: 9,
-  padding: '9px 11px', borderRadius: 8,
-  fontSize: 13, fontWeight: 600, color: DASH.heading,
-  textDecoration: 'none', fontFamily: 'inherit',
-  transition: 'background 0.12s',
-};
 
 /**
  * The class rollup, matching ClassRollup in app/lib/curriculum-rollup.ts.
@@ -981,12 +607,16 @@ function NewClassModal({ onClose, onCreated }: { onClose: () => void; onCreated:
 
 // ─── Top bar ────────────────────────────────────────────────────────────────
 
-function TopBar({ classes, selectedClassId, onSelectClass, joinCode, onInvite, onNewClass, onMenu, isMobile, isCompact }: {
+function TopBar({ classes, selectedClassId, onSelectClass, joinCode, onInvite, onNewClass, isMobile, isCompact }: {
   classes: ClassRow[]; selectedClassId: string; onSelectClass: (id: string) => void;
-  joinCode: string | null; onInvite: () => void; onNewClass: () => void; onMenu: () => void;
+  joinCode: string | null; onInvite: () => void; onNewClass: () => void;
   isMobile: boolean; isCompact: boolean;
 }) {
   const [copied, setCopied] = useState(false);
+  // The slide-over this opens belongs to TeacherShell now, so the opener comes
+  // up from the shell rather than down from the dashboard. Same button, same
+  // attributes; only where the callback comes from changed.
+  const { openMenu } = useTeacherShell();
   function copyCode() {
     if (!joinCode) return;
     navigator.clipboard.writeText(joinCode).catch(() => {});
@@ -998,7 +628,7 @@ function TopBar({ classes, selectedClassId, onSelectClass, joinCode, onInvite, o
     <header style={{ background: '#fff', borderBottom: '1px solid rgba(15,30,53,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: isMobile ? '10px 16px' : '0 28px', minHeight: 60, flexWrap: isMobile ? 'wrap' : 'nowrap', position: 'sticky', top: 0, zIndex: 20 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
         {isCompact && (
-          <button onClick={onMenu} aria-label="Open menu" data-tour="menu-button" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 38, height: 38, borderRadius: 9, border: '1px solid #D3D1C7', background: '#fff', cursor: 'pointer', flexShrink: 0 }}>
+          <button onClick={openMenu} aria-label="Open menu" data-tour="menu-button" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 38, height: 38, borderRadius: 9, border: '1px solid #D3D1C7', background: '#fff', cursor: 'pointer', flexShrink: 0 }}>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#0F1E35" strokeWidth="1.8" strokeLinecap="round"><line x1="2.5" y1="5" x2="15.5" y2="5" /><line x1="2.5" y1="9" x2="15.5" y2="9" /><line x1="2.5" y1="13" x2="15.5" y2="13" /></svg>
           </button>
         )}
@@ -1301,11 +931,6 @@ function Spinner() {
 
 // ─── Main ───────────────────────────────────────────────────────────────────
 
-// Sidebar rail widths. The gap between them is what the width transition
-// animates across.
-const SIDEBAR_W = 200;
-const SIDEBAR_W_COLLAPSED = 64;
-
 export default function TeacherDashboardClient({ canExport, assignTopics, initialClasses, teacherName, teacherEmail, isFounder, plan, tourState }: {
   /** Teacher Pro only. Cosmetic: the export routes enforce this themselves. */
   canExport: boolean;
@@ -1329,8 +954,7 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
   // two components do not talk to each other: the panel owns its own read and
   // this is the only thing that tells it the answer has changed.
   const [assignmentsKey, setAssignmentsKey] = useState(0);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
+  // menuOpen and collapsed moved to TeacherShell, which owns the rail now.
   const [showSupport, setShowSupport] = useState(false);
   // Starts false so the tour never renders on the server or the first paint,
   // and is decided on mount once localStorage is readable. Set back to false
@@ -1473,87 +1097,19 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
         ${HOVER_LABEL_CSS}
       `}</style>
 
-      <div style={{ display: 'flex', minHeight: '100vh', fontFamily: FONT_BODY, color: DASH.ink }}>
-
-        {/* Desktop sidebar. Width animates between the two rail widths; the
-            z-index keeps the collapse handle and the hover labels above the
-            sticky top bar. */}
-        {!isCompact && (
-          <aside
-            // Marks the rail as a keep-out region for the tour card, which must
-            // not be laid over it. Not a data-tour key: this is geometry the
-            // tour reads, never a step target.
-            data-tour-rail=""
-            style={{
-              width: collapsed ? SIDEBAR_W_COLLAPSED : SIDEBAR_W,
-              flex: `0 0 ${collapsed ? SIDEBAR_W_COLLAPSED : SIDEBAR_W}px`,
-              background: '#0F1E35', color: '#fff',
-              display: 'flex', flexDirection: 'column',
-              position: 'sticky', top: 0, height: '100vh', zIndex: 30,
-              transition: 'width 220ms ease, flex-basis 220ms ease',
-            }}
-          >
-            <SidebarInner
-              teacherName={teacherName}
-              teacherEmail={teacherEmail}
-              isFounder={isFounder}
-              plan={plan}
-              collapsed={collapsed}
-              onOpenSupport={() => setShowSupport(true)}
-              onStartTour={() => setTourManual(true)}
-            />
-
-            {/* Collapse handle, sat on the seam where the navy rail meets the
-                white top bar. */}
-            <button
-              type="button"
-              onClick={() => setCollapsed((v) => !v)}
-              aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-              aria-expanded={!collapsed}
-              title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-              style={{
-                position: 'absolute', top: 46, right: -13, zIndex: 40,
-                width: 26, height: 26, borderRadius: '50%',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                background: '#fff', border: '1px solid rgba(15,30,53,0.12)',
-                boxShadow: '0 2px 8px rgba(15,30,53,0.18)',
-                color: DASH.heading, cursor: 'pointer', padding: 0,
-              }}
-            >
-              {/* Chevron flips to point the way the next click will move it. */}
-              <svg
-                width="13" height="13" viewBox="0 0 18 18" fill="none"
-                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                style={{ transform: collapsed ? 'rotate(180deg)' : 'none', transition: 'transform 220ms ease' }}
-              >
-                <polyline points="11 4 6 9 11 14" />
-              </svg>
-            </button>
-          </aside>
-        )}
-
-        {/* Mobile/tablet slide-over sidebar. Always full width: the collapse
-            handle is a desktop affordance, the slide-over already closes. */}
-        {isCompact && menuOpen && (
-          <div style={{ position: 'fixed', inset: 0, zIndex: 300, display: 'flex' }}>
-            <div onClick={() => setMenuOpen(false)} style={{ position: 'absolute', inset: 0, background: 'rgba(15,30,53,0.5)' }} />
-            <aside style={{ position: 'relative', width: 240, maxWidth: '82vw', background: '#0F1E35', color: '#fff', display: 'flex', flexDirection: 'column', height: '100vh', boxShadow: '4px 0 24px rgba(0,0,0,0.3)' }}>
-              <SidebarInner
-                teacherName={teacherName}
-                teacherEmail={teacherEmail}
-                isFounder={isFounder}
-                plan={plan}
-                onNavigate={() => setMenuOpen(false)}
-                onOpenSupport={() => { setMenuOpen(false); setShowSupport(true); }}
-                // Closing the slide-over first matters: it is a fixed, full
-                // height panel, and leaving it up would cover the very targets
-                // the first steps point at.
-                onStartTour={() => { setMenuOpen(false); setTourManual(true); }}
-              />
-            </aside>
-          </div>
-        )}
-
+      {/* The rail, the slide-over and the flex row they sit in all moved to
+          TeacherShell. What is passed here is what the rail always read; the
+          two callbacks are the two things the dashboard still owns, and
+          SupportModal stays rendered below rather than by the shell so no node
+          in this tree moves. */}
+      <TeacherShell
+        teacherName={teacherName}
+        teacherEmail={teacherEmail}
+        isFounder={isFounder}
+        plan={plan}
+        onOpenSupport={() => setShowSupport(true)}
+        onStartTour={() => setTourManual(true)}
+      >
         <main style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', background: DASH.pageBg }}>
           <TopBar
             classes={classes}
@@ -1562,7 +1118,6 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
             joinCode={selectedClass?.join_code ?? null}
             onInvite={() => setShowInvite(true)}
             onNewClass={() => setShowNewClass(true)}
-            onMenu={() => setMenuOpen(true)}
             isMobile={isMobile}
             isCompact={isCompact}
           />
@@ -1645,7 +1200,7 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
             )}
           </div>
         </main>
-      </div>
+      </TeacherShell>
 
       {showInvite && selectedClass && <InviteModal classId={selectedClass.id} onClose={() => setShowInvite(false)} />}
       {showExport && canExport && <ExportModal classes={classes} selectedClassId={selectedClassId} onClose={() => setShowExport(false)} />}
