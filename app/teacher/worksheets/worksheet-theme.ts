@@ -201,6 +201,7 @@ export const quietBtnStyle: React.CSSProperties = {
 //      routes and must not come onto a config page. So the chrome states its
 //      own, scoped, and WITHOUT an @page rule of any kind.
 export const WS_CHROME_CSS = `
+/* Known pre-existing Selectors-L4 debt from #200: :has() drops on Safari below 15.4, cosmetic only, deferred to a standalone hygiene PR. */
 body:has(.ws-page) { background: ${WS.page}; }
 
 .ws-page {
