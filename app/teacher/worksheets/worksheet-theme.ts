@@ -222,6 +222,22 @@ body:has(.ws-page) { background: ${WS.page}; }
 .ws-page :focus-visible { outline: 2px solid ${WS.focus}; outline-offset: 2px; }
 
 .ws-hover:hover { background: ${WS.insetRow}; }
+
+/* A real checkbox behind the board's card, so keyboard and screen reader
+   behaviour survive the restyle. The card carries the focus ring on its
+   behalf. */
+.ws-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.ws-page label:focus-within { outline: 2px solid ${WS.focus}; outline-offset: 2px; }
 .ws-cta:hover { background: ${WS.ctaHover}; }
 
 /* ── shell and band header ─────────────────────────────────────────────────
