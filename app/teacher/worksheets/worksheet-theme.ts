@@ -211,6 +211,15 @@ body:has(.ws-page) { background: ${WS.page}; }
   display: flex;
   flex-direction: column;
 }
+/* Inside the teacher shell the page is no longer the whole viewport: a rail
+   sits beside it holding the height open, and under 1024px a menu bar sits
+   above it. Keeping min-height:100vh there would stack 100vh under a 58px bar
+   and leave every short page with a phantom scroll. flex:1 fills the column
+   the shell hands over, which is the same result the 100vh was reaching for.
+   Scoped to .um-teacher-content, so the print routes -- which mount no shell
+   -- keep the rule above untouched. */
+.um-teacher-content .ws-page { min-height: 0; flex: 1; }
+
 .ws-page h1, .ws-page h2, .ws-page h3 { font-family: ${WS.font.heading}; }
 .ws-page button, .ws-page input, .ws-page select, .ws-page textarea { font-family: inherit; }
 
