@@ -2,8 +2,9 @@ import { notFound } from 'next/navigation';
 import { TOPIC_PAGE_CSS } from '../../course/[test]/[subject]/unit/[unit]/topic/[topicId]/topic-page-css';
 import TopicSurface from '../../components/TopicSurface';
 import TopicChrome from '../../course/[test]/[subject]/unit/[unit]/topic/[topicId]/TopicChrome';
+import GumuAvatar from '../../course/[test]/[subject]/unit/[unit]/topic/[topicId]/GumuAvatar';
 import { T } from '../../components/curriculum-surface';
-import { MATH_LINE_HEIGHT } from '../../components/curriculum-theme';
+import { C, MATH_LINE_HEIGHT } from '../../components/curriculum-theme';
 import { FONT_BODY } from '../../components/fonts';
 import { verifyLaneEnabled } from '../guard';
 
@@ -98,6 +99,42 @@ export default function VerifyLaneCurriculum() {
             <p style={{ margin: 0 }}>
               Page ground, panel fill and card width are read off .um-topic and this card.
             </p>
+          </div>
+
+          {/* THE MASCOT, AT ALL FOUR CONFIGURATIONS THE LIVE SITES USE.
+              GumuAvatar takes a size and an optional title and reads nothing,
+              so the lane can mount the real component rather than an <img> the
+              probe wrote itself.
+
+              Each ground is the ground the real site paints, because the plate
+              question was a contrast question and a probe on the wrong ground
+              would answer a different one. quiz and practice sit on
+              T.tutorSurface, GumuChat's intro panel on C.gumuBanner (hardcoded
+              there, not themed), and its header row on T.insetRow -- the one
+              site that is light in light theme.
+
+              THE PLATE ASSERTION IS STRUCTURAL, not a colour read. With the
+              plate, GumuAvatar returned a wrapping <div> carrying
+              C.gumuSurface and the <img> was its child. Without it the <img>
+              is the root. So `[data-probe] > *` resolving to IMG is the plate
+              being gone, and it cannot pass by accident the way a
+              background-color read on a transparent element can. */}
+          <div
+            data-probe="mu-grounds"
+            style={{ display: 'flex', flexDirection: 'column', gap: '18px', maxWidth: 788 }}
+          >
+            <div data-probe="mu-quiz" style={{ background: T.tutorSurface, padding: '24px 28px' }}>
+              <GumuAvatar size={64} />
+            </div>
+            <div data-probe="mu-practice" style={{ background: T.tutorSurface, padding: '14px 18px' }}>
+              <GumuAvatar size={40} title="" />
+            </div>
+            <div data-probe="mu-chat-intro" style={{ background: C.gumuBanner, padding: '18px 20px' }}>
+              <GumuAvatar size={44} title="" />
+            </div>
+            <div data-probe="mu-chat-header" style={{ background: T.insetRow, padding: '18px 20px' }}>
+              <GumuAvatar size={48} />
+            </div>
           </div>
         </div>
       </TopicSurface>

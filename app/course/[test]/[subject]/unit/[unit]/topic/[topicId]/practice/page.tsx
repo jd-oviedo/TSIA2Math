@@ -140,7 +140,7 @@ export default async function PracticePage({ params }: { params: Promise<RoutePa
               background: T.tutorSurface,
             }}
           >
-            <GumuAvatar size={40} plate title="" />
+            <GumuAvatar size={40} title="" />
             <div
               style={{
                 flex: 1,
@@ -149,7 +149,7 @@ export default async function PracticePage({ params }: { params: Promise<RoutePa
                 color: T.tutorInk2,
               }}
             >
-              Nothing here is graded. GUMU comes in on the mini quiz, as soon as
+              Nothing here is graded. mu comes in on the mini quiz, as soon as
               there&apos;s a wrong answer worth talking about.
             </div>
           </div>
