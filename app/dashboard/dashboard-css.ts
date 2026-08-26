@@ -23,15 +23,33 @@ body { margin: 0; -webkit-font-smoothing: antialiased; }
 ${DASH_VARS_CSS}
 ${HOVER_LABEL_CSS}
 
-.um-dash a { color: #6E9DC8; text-decoration: none; }
-.um-dash a:hover { color: #F0A33E; }
+/* Links were #6E9DC8, Gemini Blue, hardcoded and so the same in both themes.
+   Measured on the two grounds they actually render on -- the page ground under
+   upgrade/page.tsx:55 and a card under grades/page.tsx:103 -- that is 2.63 and
+   2.87 in light: failing AA since this shell shipped, and passing in dark.
+   --umd-link is Gemini darkened to #2F6091 in light (6.01 / 6.56) and is Gemini
+   itself in dark, where it already cleared. The identical defect and the
+   identical fix as the curriculum tree's; see dashboard-theme.ts.
+
+   The hover was #F0A33E, which is orange carrying text. That is the one
+   absolute in this palette -- orange is a fill, a CTA or a marker, never text
+   -- and it also measured 2.10 at its best. --umd-link-hover is the accent
+   pair, #0F69BA light and #5AAAEE dark, so the link brightens rather than
+   changing family. It is deliberately NOT the curriculum tree's own hover,
+   which is orange; see the token's comment for why the mirror stops here. */
+.um-dash a { color: var(--umd-link); text-decoration: none; }
+.um-dash a:hover { color: var(--umd-link-hover); }
 .um-dash .um-card-link:hover { box-shadow: inset 0 0 0 1.5px #87CEEB; }
 .um-dash .um-btn-primary:not(:disabled):hover { background: #F5B15A !important; }
 .um-dash .um-btn-primary:not(:disabled):active { transform: translateY(2px); box-shadow: none !important; }
+/* The ring marks a control boundary, so the obligation is WCAG 1.4.11 at 3:1.
+   #6E9DC8 measured 2.19 on the cream rail, where every nav link and the logout
+   button focus, and that rail is the binding ground rather than the page.
+   --umd-focus is #0F69BA light (4.27 on the rail) and #5AAAEE dark (6.44). */
 .um-dash button:focus-visible,
 .um-dash a:focus-visible,
 .um-dash input:focus-visible,
-.um-dash textarea:focus-visible { outline: 2px solid #6E9DC8; outline-offset: 2px; }
+.um-dash textarea:focus-visible { outline: 2px solid var(--umd-focus); outline-offset: 2px; }
 
 /* There used to be .um-nav-item hover rules here. They never fired: sidebar
    links set colour and background inline for the active state, and an inline

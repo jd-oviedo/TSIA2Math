@@ -9,8 +9,11 @@
 // style and needs no data, so the lane mounts the real wrappers and the real
 // token stylesheets at app/um-verify/* and fetches nothing.
 //
-// DB-FREE: performs no data fetching and no DB reads/writes. One read-only auth
-// check still runs via existing middleware; it reads and writes nothing.
+// DB-FREE: no DB reads or writes, and no real network call. One read-only auth
+// check still runs via existing middleware; it reads and writes nothing. The
+// single exception is spelled out at app/um-verify/shell/page.tsx: the real
+// FlagsPanel is mounted there and fetches /api/flags when expanded, which only
+// a verifier that has already intercepted that route at the browser ever does.
 //
 // UI VERIFIERS MUST USE THIS LANE RATHER THAN A LIVE TOPIC ROUTE. If a check
 // needs real lesson-section data, that is a different, also-DB-free lane: the
