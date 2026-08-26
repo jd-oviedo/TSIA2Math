@@ -1,7 +1,16 @@
 import { getProfile } from '../../lib/auth';
 import { latestAttemptScores } from '../../lib/grades';
 import { getTopics, getAttempts, getTestSessions } from '../data';
-import { Card, CardTitle, EmptyState, Muted, PageHeading, formatDate } from '../ui';
+import {
+  Card,
+  CardTitle,
+  EmptyState,
+  Muted,
+  PageHeading,
+  SectionGroup,
+  SPACING,
+  formatDate,
+} from '../ui';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import { V } from '@/app/components/dashboard-theme';
 
@@ -77,26 +86,49 @@ export default async function GradesPage() {
     <>
       <PageHeading title="Grades" blurb="Every score on your account, newest first." />
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+      {/* One group. The two tables are the same kind of thing -- scores, newest
+          first -- so they sit at STACK, and this page has no second group to be
+          separated from. The gap was 18 here and 16 on Home for no reason
+          either page could state. */}
+      <SectionGroup>
         <Card>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'baseline',
-                justifyContent: 'space-between',
-                gap: 12,
-                flexWrap: 'wrap',
-              }}
-            >
-              <CardTitle>Practice tests</CardTitle>
-              {best !== null && (
-                <span style={{ font: `400 13px ${FONT_BODY}`, color: V.muted }}>
-                  Best score <strong style={{ color: V.heading }}>{best}</strong>
-                </span>
-              )}
-            </div>
+          {/* Header row as a sibling of the content, so CardTitle's own margin
+              is the header-to-content distance. See ui.tsx CardTitle. */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'baseline',
+              justifyContent: 'space-between',
+              gap: 12,
+              flexWrap: 'wrap',
+            }}
+          >
+            <CardTitle>Practice tests</CardTitle>
+            {best !== null && (
+              // THE ONE NUMBER A STUDENT COMES TO THIS PAGE FOR, and it was set
+              // at 13px/400 -- smaller and lighter than the title above it, and
+              // set as running text. The same class of number on Home, the
+              // course percentage, is 22px/600 heading ink (page.tsx). The two
+              // now agree. This is a WEIGHT change and nothing else: no tile, no
+              // panel, no fill, no colour that was not already here.
+              <span
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'baseline',
+                  gap: 7,
+                  font: `400 13px ${FONT_BODY}`,
+                  color: V.muted,
+                }}
+              >
+                Best score
+                <strong style={{ font: `600 22px ${FONT_HEADING}`, color: V.heading }}>
+                  {best}
+                </strong>
+              </span>
+            )}
+          </div>
 
+          <div style={{ display: 'flex', flexDirection: 'column', gap: SPACING.BLOCK }}>
             {sessions.length === 0 ? (
               <Muted size={13.5}>
                 You have not taken a practice test yet. There is one at{' '}
@@ -177,9 +209,9 @@ export default async function GradesPage() {
         </Card>
 
         <Card>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            <CardTitle>Curriculum work</CardTitle>
+          <CardTitle>Curriculum work</CardTitle>
 
+          <div style={{ display: 'flex', flexDirection: 'column', gap: SPACING.BLOCK }}>
             {curriculumRows.length === 0 ? (
               <Muted size={13.5}>
                 Nothing here yet. Answers you submit on a topic page show up as soon as you check
@@ -273,7 +305,7 @@ export default async function GradesPage() {
             detail="Take a practice test or work through a topic, and your results will collect here."
           />
         )}
-      </div>
+      </SectionGroup>
     </>
   );
 }

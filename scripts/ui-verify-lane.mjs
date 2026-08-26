@@ -129,8 +129,17 @@ async function waitForServer(origin, timeoutMs = 60_000) {
  *
  * `probes` is a map of name -> { selector, prop }. `prop` is any computed style
  * property; width is available as 'width' and resolves to the used pixel value.
+ *
+ * `gaps` is an optional map of name -> { from, to }: the vertical distance in
+ * px between `from`'s bottom edge and `to`'s top edge, measured off the laid-out
+ * boxes. It exists because a spacing claim is not a computed-style claim. A
+ * header that declares `margin-bottom: 10px` while sitting inside a gapped flex
+ * column actually renders 24px below its content, and reading the declaration
+ * would report the number the code says rather than the number the student
+ * sees -- which is exactly the defect the shell spacing pass was fixing. Gaps
+ * are polled for stability alongside the computed values, not sampled after.
  */
-export async function readComputed(browser, origin, { route, theme, probes }) {
+export async function readComputed(browser, origin, { route, theme, probes, gaps = {} }) {
   const ctx = await browser.newContext();
   await ctx.addInitScript(
     ([key, value]) => {
@@ -174,7 +183,7 @@ export async function readComputed(browser, origin, { route, theme, probes }) {
   const CEILING_FRAMES = 600;
 
   const snapshot = await page.evaluate(
-    async ([entries, sel, minFrames, maxFrames]) => {
+    async ([entries, gapEntries, sel, minFrames, maxFrames]) => {
       const frame = () => new Promise((r) => requestAnimationFrame(r));
       const readAll = () => ({
         theme: document.querySelector(sel)?.getAttribute('data-theme') ?? '(none)',
@@ -182,6 +191,18 @@ export async function readComputed(browser, origin, { route, theme, probes }) {
           entries.map(([name, { selector, prop }]) => {
             const el = document.querySelector(selector);
             return [name, el ? getComputedStyle(el)[prop] : '(no such element)'];
+          }),
+        ),
+        gaps: Object.fromEntries(
+          gapEntries.map(([name, { from, to }]) => {
+            const a = document.querySelector(from);
+            const b = document.querySelector(to);
+            if (!a || !b) return [name, '(no such element)'];
+            // Rounded to 2dp: sub-pixel layout noise is not a spacing result,
+            // and an assertion that fails on 15.999999 would be measuring the
+            // renderer rather than the scale.
+            const px = b.getBoundingClientRect().top - a.getBoundingClientRect().bottom;
+            return [name, `${Math.round(px * 100) / 100}px`];
           }),
         ),
       });
@@ -197,11 +218,11 @@ export async function readComputed(browser, origin, { route, theme, probes }) {
       }
       return JSON.parse(last);
     },
-    [Object.entries(probes), wrapperSel, MINIMUM_FRAMES, CEILING_FRAMES],
+    [Object.entries(probes), Object.entries(gaps), wrapperSel, MINIMUM_FRAMES, CEILING_FRAMES],
   );
 
   await ctx.close();
-  return { values: snapshot.values, resolvedTheme: snapshot.theme };
+  return { values: snapshot.values, gaps: snapshot.gaps, resolvedTheme: snapshot.theme };
 }
 
 /**

@@ -1,8 +1,22 @@
 import { notFound } from 'next/navigation';
 import { DASHBOARD_CSS } from '../../dashboard/dashboard-css';
 import StudentShell from '../../dashboard/StudentShell';
-import { Card, Muted } from '../../dashboard/ui';
+import {
+  Card,
+  CardTitle,
+  EmptyState,
+  Muted,
+  PageStack,
+  SectionGroup,
+  SectionLabel,
+  SPACING,
+} from '../../dashboard/ui';
 import FlagsPanel from '../../dashboard/FlagsPanel';
+import AssignmentsHomeCard from '../../dashboard/AssignmentsHomeCard';
+import AssignmentsList from '../../dashboard/assignments/AssignmentsList';
+import JoinClassPanel from '../../dashboard/JoinClassPanel';
+import DiagnosticCta from '../../dashboard/DiagnosticCta';
+import type { StudentAssignment } from '../../dashboard/data';
 import { verifyLaneEnabled } from '../guard';
 
 // THE SHELL HALF OF THE UI VERIFICATION LANE.
@@ -51,8 +65,34 @@ import { verifyLaneEnabled } from '../guard';
 // at all, so their colour can only have come from the stylesheet under test.
 // The only fabrications are the three props the shell needs to render a rail --
 // name, role, plan -- which carry no colour and are what let this route skip
-// the profile read, and the flag rows the verifier feeds to FlagsPanel, which
-// carry no colour either.
+// the profile read, the flag rows the verifier feeds to FlagsPanel, which carry
+// no colour either, and the two assignment rows below, which carry no colour
+// and no spacing.
+//
+// ─── THE SPACING HALF, ADDED 2026-08-26 ──────────────────────────────────────
+//
+// scripts/verify_shell_spacing.mjs reads the shell's spacing scale and header
+// tiers off this route. The same rule applies as above and it is the reason
+// the block below is built from imported components rather than from markup
+// written here: a harness that restates the values under test proves only that
+// this file can type them twice. PageStack, SectionGroup, Card, CardTitle,
+// SectionLabel and EmptyState are the real primitives; JoinClassPanel,
+// DiagnosticCta, AssignmentsHomeCard and AssignmentsList are the real panels,
+// rendered from props exactly as their pages render them.
+//
+// WHAT THIS ROUTE CANNOT REACH, STATED RATHER THAN GLOSSED. Home, Grades and
+// Announcements are async server components that call getProfile() and read
+// Supabase, so they cannot be mounted here and are NOT mounted here. That the
+// three of them consume the scale rather than restating it is proved
+// separately and statically, by tests/shell-spacing.test.ts, which fails if any
+// in-scope page writes a literal gap on a vertical stack. Two proofs, one
+// rendered and one static, and neither pretends to be the other.
+//
+// THE TWO ASSIGNMENT ROWS ARE CHOSEN TO BUCKET DETERMINISTICALLY: one due in
+// the year 2000, which is overdue at any clock this ever runs on, and one with
+// no due date at all. That is exactly two non-empty buckets, so the group gap
+// between them is always there to measure and the two SectionLabel tones --
+// the overdue one and the default one -- are both on the page.
 
 export default function VerifyLaneShell() {
   // Layer one of the guard. Layer two throws at import; see ../guard.ts.
@@ -102,10 +142,106 @@ export default function VerifyLaneShell() {
             <FlagsPanel />
           </Card>
         </div>
+
+        {/* ─── The spacing scale and the header tiers ─────────────────────── */}
+        <div data-probe="spacing-lane" style={{ marginTop: 18 }}>
+          <PageStack>
+            <SectionGroup>
+              <Card>
+                {/* The panel-tier header and its content as siblings, which is
+                    the shape every converted panel now uses: CardTitle's own
+                    margin is the header-to-content distance, and the gap probe
+                    below measures it on the rendered box rather than trusting
+                    the declaration. */}
+                <div
+                  data-probe="head-row"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'baseline',
+                    justifyContent: 'space-between',
+                    gap: 12,
+                    flexWrap: 'wrap',
+                  }}
+                >
+                  <CardTitle>Panel title</CardTitle>
+                  <span data-probe="head-aux">aux</span>
+                </div>
+
+                <div
+                  data-probe="block-stack"
+                  style={{ display: 'flex', flexDirection: 'column', gap: SPACING.BLOCK }}
+                >
+                  <Muted size={13}>First block inside the panel.</Muted>
+                  <Muted size={13}>Second block inside the panel.</Muted>
+                </div>
+              </Card>
+
+              <Card>
+                <JoinClassPanel />
+              </Card>
+            </SectionGroup>
+
+            <SectionGroup>
+              <DiagnosticCta />
+
+              <Card>
+                <AssignmentsHomeCard assignments={LANE_ASSIGNMENTS} total={2} />
+              </Card>
+            </SectionGroup>
+
+            <SectionGroup>
+              <EmptyState title="Empty state" detail="The primitive, at its own padding." />
+            </SectionGroup>
+          </PageStack>
+
+          {/* The real grouped list, which supplies its own PageStack and its own
+              SectionLabels. Scoped under its own probe attribute so the two
+              PageStacks on this route are never confused for one another. */}
+          <div data-probe="assignments-lane" style={{ marginTop: 18 }}>
+            <AssignmentsList assignments={LANE_ASSIGNMENTS} />
+          </div>
+
+          {/* T2 on its own, away from the bucket colours, so the default tone
+              can be read without depending on which bucket sorted first. */}
+          <div data-probe="label-lane" style={{ marginTop: 18 }}>
+            <SectionLabel>Group label</SectionLabel>
+            <Card>
+              <Muted size={13}>Content under a group label.</Muted>
+            </Card>
+          </div>
+        </div>
       </StudentShell>
     </>
   );
 }
+
+// Two rows, and the dates are load-bearing: see the header. They carry no
+// colour and no spacing of their own -- every pixel the spacing verifier reads
+// off the list comes from PageStack, SectionLabel and the row's own styles.
+const LANE_ASSIGNMENTS: StudentAssignment[] = [
+  {
+    id: 'lane-overdue',
+    course_id: 'tsia2-math',
+    topic_id: 'QR.1.1',
+    topic_name: 'An assignment that is always overdue',
+    unit_number: 1,
+    href: '/um-verify/shell',
+    due_at: '2000-01-01T00:00:00.000Z',
+    created_at: '2000-01-01T00:00:00.000Z',
+    status: 'not_started',
+  },
+  {
+    id: 'lane-undated',
+    course_id: 'tsia2-math',
+    topic_id: 'QR.1.2',
+    topic_name: 'An assignment with no due date',
+    unit_number: 1,
+    href: '/um-verify/shell',
+    due_at: null,
+    created_at: '2000-01-02T00:00:00.000Z',
+    status: 'not_started',
+  },
+];
 
 // The guard reads process.env per request rather than at build. Without this
 // the flag would be baked in at build time and a lane built with it unset

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { V, cardStyle } from '@/app/components/dashboard-theme';
+import { PageStack, SectionLabel } from '../ui';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import { bucketAssignments, formatDue, isOverdue } from '@/app/lib/assignments';
 import { unitLabel } from '@/app/lib/units';
@@ -159,22 +160,24 @@ export default function AssignmentsList({ assignments }: { assignments: StudentA
   const nonEmpty = groups.filter((g) => g.items.length > 0);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+    // THE ONE PAGE IN THE SHELL THAT ALREADY HAD THIS PATTERN. Its buckets are
+    // real groups -- a label and the panel under it -- so the outer stack is
+    // PageStack at GROUP rather than the 22 it invented, and the bucket heading
+    // is the shared SectionLabel rather than a treatment only this file knew
+    // about. Nothing about how it reads changes; the values it reads at are now
+    // the shell's, and Home and Grades were brought onto the same two tiers.
+    <PageStack>
       {nonEmpty.map((group) => (
         <section key={group.bucket}>
-          <h2
-            style={{
-              margin: '0 0 9px',
-              font: `600 13px ${FONT_BODY}`,
-              letterSpacing: 0.3,
-              color: group.bucket === 'overdue' ? V.noticeWarn : V.dim,
-            }}
-          >
+          {/* V.noticeWarn on the overdue bucket is the colour this heading has
+              carried since it was written, kept as-is: an existing role on an
+              existing paired token, not a new accent. */}
+          <SectionLabel color={group.bucket === 'overdue' ? V.noticeWarn : undefined}>
             {group.label}
             <span style={{ marginLeft: 7, fontWeight: 400, color: V.dim }}>
               {group.items.length}
             </span>
-          </h2>
+          </SectionLabel>
           <div style={{ ...cardStyle(), background: V.cardBg, border: `1px solid ${V.cardBorder}`, boxShadow: V.cardShadow, overflow: 'hidden' }}>
             {group.items.map((a, i) => (
               <Row key={a.id} a={a} now={now} first={i === 0} />
@@ -182,6 +185,6 @@ export default function AssignmentsList({ assignments }: { assignments: StudentA
           </div>
         </section>
       ))}
-    </div>
+    </PageStack>
   );
 }

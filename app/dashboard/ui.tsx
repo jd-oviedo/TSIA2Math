@@ -12,6 +12,71 @@ import { V, cardStyle } from '@/app/components/dashboard-theme';
 // the two dashboards share; the colours inside it are overridden with the
 // variable forms below.
 
+// ─── The shell's spacing scale ───────────────────────────────────────────────
+//
+// Five values, and only one of them is new. Before this existed, the five shell
+// pages stacked their panels at five DIFFERENT gaps -- 16 on Home, 18 on Grades,
+// 12 on Announcements, 12 on Modules, 22 on Assignments -- with four panel
+// paddings and three within-panel gaps between them. None of that disagreement
+// meant anything; it was five files written at five times.
+//
+// GROUP IS THE ONE NEW VALUE, AND IT IS THE ONLY THING CARRYING THE HIERARCHY.
+// Making every gap equal would have produced parity and no structure: eight
+// identical white cards on Home, evenly spaced, is exactly the flatness this
+// pass exists to fix. So there are two tiers -- panels inside a group sit at
+// STACK, groups sit at GROUP -- and the seam between two groups is whitespace
+// and nothing else. No band, no fill, no rule, no second accent. If a future
+// change wants a group to read as more distinct than 28px of air makes it, the
+// answer is the header tier below, not a background.
+//
+// Scoped to the dashboard shell, like dashboard-theme.ts and for the same
+// reason: the curriculum tree has its own rhythm and must not be dragged onto
+// this one by an import.
+export const SPACING = {
+  /** Gap between panels that belong to the same group. */
+  STACK: 16,
+  /** Gap between groups. STACK + 12, and deliberately the largest step here. */
+  GROUP: 28,
+  /** Card and panel padding. Was also 26/28, 20/22 and 16/24 across the shell. */
+  PANEL_PAD: '22px 24px',
+  /** Gap between blocks inside one panel. Was 14, 13, 12 and 9. */
+  BLOCK: 14,
+  /** A section header to the content directly under it. */
+  HEAD_GAP: 10,
+} as const;
+
+/**
+ * A page's top-level column: groups, separated by GROUP.
+ *
+ * PAINTS NOTHING. It has no background, no border and no padding, and it must
+ * not acquire any -- the whole point is that the grouping is legible from the
+ * spacing alone. scripts/verify_shell_spacing.mjs asserts its computed
+ * background stays transparent in both themes, so a decorative fill added here
+ * reddens rather than shipping.
+ */
+export function PageStack({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      className="um-page-stack"
+      style={{ display: 'flex', flexDirection: 'column', gap: SPACING.GROUP }}
+    >
+      {children}
+    </div>
+  );
+}
+
+/** One group of related panels, separated by STACK. Paints nothing; see PageStack. */
+export function SectionGroup({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      className="um-section-group"
+      style={{ display: 'flex', flexDirection: 'column', gap: SPACING.STACK }}
+    >
+      {children}
+    </div>
+  );
+}
+
 export function PageHeading({ title, blurb }: { title: string; blurb?: string }) {
   return (
     <header style={{ display: 'flex', flexDirection: 'column', gap: 7, marginBottom: 26 }}>
@@ -37,7 +102,7 @@ export function PageHeading({ title, blurb }: { title: string; blurb?: string })
 
 export function Card({
   children,
-  padding = '22px 24px',
+  padding = SPACING.PANEL_PAD,
 }: {
   children: React.ReactNode;
   padding?: string;
@@ -57,9 +122,74 @@ export function Card({
   );
 }
 
+// ─── The three header tiers ──────────────────────────────────────────────────
+//
+// T1 PageHeading, T2 SectionLabel, T3 CardTitle. Every one of them is built
+// from ink this file already had -- V.heading and V.dim -- because a header
+// tier is a TYPE distinction, and reaching for a colour to say "this is a
+// different level" is how a palette grows a fifth blue.
+//
+// WHAT WAS HERE BEFORE. Twelve header treatments across five pages, three of
+// them copy-paste divergences of CardTitle carrying three different margins
+// (16px/600 at mb 4, at mb 4, and at mb 3), plus a 17px one on Announcements, a
+// 15px <div> in two places, and TWO Home panels with no header at all -- the
+// resume card, the largest on the page, opened with an 11px uppercase eyebrow.
+// Groups could not read as distinct because their headings did not agree on
+// what a heading was.
+//
+// T2 IS SMALLER THAN T3 ON PURPOSE. A group label is a dim, letterspaced 13px
+// body label; a panel title is 16px heading ink. The outline reads correctly
+// because the two differ in weight of VOICE rather than in size -- which is how
+// the Assignments buckets have always read, and that treatment is the one
+// promoted here rather than a new one invented alongside it.
+
+/**
+ * T3. One per panel, exactly once.
+ *
+ * The margin IS the header-to-content distance, which is why it is HEAD_GAP and
+ * why callers must not put this inside the panel's BLOCK-gapped column: nested
+ * that way the real distance becomes margin + gap, which is how the shell ended
+ * up with 18px on Grades, 18px on Home's announcements card and 17px on the
+ * resume card while every one of them "said" 4.
+ */
 export function CardTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 style={{ margin: '0 0 4px', font: `600 16px ${FONT_HEADING}`, color: V.heading }}>
+    <h2
+      style={{
+        margin: `0 0 ${SPACING.HEAD_GAP}px`,
+        font: `600 16px ${FONT_HEADING}`,
+        color: V.heading,
+      }}
+    >
+      {children}
+    </h2>
+  );
+}
+
+/**
+ * T2. The label over a group of panels.
+ *
+ * `color` exists for the one caller that needs it -- the overdue assignments
+ * bucket, which has taken V.noticeWarn since it was written. That is an
+ * existing role on an existing token, not a new accent, and it is the same
+ * escape hatch Eyebrow below already offers.
+ */
+export function SectionLabel({
+  children,
+  color,
+}: {
+  children: React.ReactNode;
+  color?: string;
+}) {
+  return (
+    <h2
+      style={{
+        margin: `0 0 ${SPACING.HEAD_GAP}px`,
+        font: `600 13px ${FONT_BODY}`,
+        letterSpacing: 0.3,
+        color: color ?? V.dim,
+      }}
+    >
       {children}
     </h2>
   );

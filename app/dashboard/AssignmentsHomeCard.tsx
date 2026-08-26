@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { V } from '@/app/components/dashboard-theme';
+import { CardTitle, SPACING } from './ui';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import { C } from '@/app/components/curriculum-theme';
 import { formatDue, isOverdue } from '@/app/lib/assignments';
@@ -58,7 +59,10 @@ export default function AssignmentsHomeCard({
   const more = total - assignments.length;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+    <>
+      {/* Was an inline copy of CardTitle -- same font, same margin, its own
+          declaration -- one of three such copies in this shell that had already
+          drifted to three different margins. */}
       <div
         style={{
           display: 'flex',
@@ -68,9 +72,9 @@ export default function AssignmentsHomeCard({
           flexWrap: 'wrap',
         }}
       >
-        <h2 style={{ margin: '0 0 4px', font: `600 16px ${FONT_HEADING}`, color: V.heading }}>
+        <CardTitle>
           {assignments.length === 1 ? 'Your next assignment' : 'Your next assignments'}
-        </h2>
+        </CardTitle>
         <a
           href="/dashboard/assignments"
           style={{ font: `600 13px ${FONT_BODY}`, color: V.heading, textDecoration: 'underline' }}
@@ -79,6 +83,7 @@ export default function AssignmentsHomeCard({
         </a>
       </div>
 
+      <div style={{ display: 'flex', flexDirection: 'column', gap: SPACING.BLOCK }}>
       {assignments.map((a) => {
         // The n=1 case of the same rule the teacher panel uses. Everything on
         // this card is incomplete by construction, so `notDone` is true -- passed
@@ -144,6 +149,7 @@ export default function AssignmentsHomeCard({
           </a>
         );
       })}
-    </div>
+      </div>
+    </>
   );
 }
