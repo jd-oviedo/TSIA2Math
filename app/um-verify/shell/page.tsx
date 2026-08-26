@@ -6,6 +6,8 @@ import {
   CardTitle,
   EmptyState,
   Muted,
+  PageHeadRow,
+  PageHeading,
   PageStack,
   SectionGroup,
   SectionLabel,
@@ -295,6 +297,50 @@ export default function VerifyLaneShell() {
           <div data-probe="teacher-control" style={{ marginTop: 18 }}>
             <TeacherPanelControl />
           </div>
+        </div>
+
+        {/* ─── THE TWO-COLUMN PAGE HEAD, ADDED 2026-08-26 ─────────────────────
+            scripts/verify_home_head_row.mjs reads the head row's GEOMETRY off
+            this block, at three viewports.
+
+            IT IS THE REAL PRIMITIVE, HOLDING THE REAL PageHeading AND THE REAL
+            JoinClassPanel IN THE REAL Card -- exactly the four components
+            app/dashboard/page.tsx composes. That is the whole reason
+            PageHeadRow is an export rather than a div in page.tsx: Home reads
+            Supabase and cannot be mounted here, and a lane that hand-wrote the
+            row's flex declarations would be measuring a replica of the thing
+            under test. What the verifier measures here is what ships.
+
+            THE PageStack UNDER IT IS PART OF THE FIXTURE, NOT DECORATION. The
+            26px the row leaves under itself is not a margin anyone declared on
+            the row -- it falls out of the flex line's cross size being the
+            larger of the two columns' MARGIN boxes -- so it can only be read as
+            the distance from the aside's bottom edge to the next block's top
+            edge. There has to be a next block.
+
+            THE SECOND join-code INPUT ON THIS ROUTE IS KNOWN AND DELIBERATE.
+            JoinClassPanel hard-codes id="join-code", and the spacing lane above
+            already mounts one at its own position, which verify_shell_spacing
+            and verify_flat_panels both select through. Removing that one to
+            keep the id unique would move every position selector in those two
+            files. Both probes are container-scoped, so neither reads the other,
+            and this route never ships: it 404s unless the lane flag is set. */}
+        <div data-probe="page-head-lane" style={{ marginTop: 18 }}>
+          <PageHeadRow
+            heading={<PageHeading title="Home" blurb="Lane head, as Home composes it." />}
+            aside={
+              <Card>
+                <JoinClassPanel />
+              </Card>
+            }
+          />
+          <PageStack>
+            <SectionGroup>
+              <Card>
+                <Muted size={13}>The stack the head row sits 26px above.</Muted>
+              </Card>
+            </SectionGroup>
+          </PageStack>
         </div>
       </StudentShell>
     </>

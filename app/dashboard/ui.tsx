@@ -107,6 +107,88 @@ export function PageHeading({ title, blurb }: { title: string; blurb?: string })
 }
 
 /**
+ * A page head that carries a block beside its title.
+ *
+ * ONE CALLER TODAY -- Home, whose "Join a class" panel moved out of the bottom
+ * of the last group and up to the top right. It is a primitive rather than a
+ * div in page.tsx for a reason that is about proof, not about reuse: Home is an
+ * async server component that calls getProfile() and reads Supabase, so it
+ * cannot be mounted in the DB-free lane (app/um-verify/shell/page.tsx:85-92).
+ * A row composed inline there could only ever be source-checked, and a lane
+ * that hand-copied its markup would measure a replica. Prop-driven and
+ * exported, the row the lane measures is the row that ships.
+ *
+ * PageHeading IS UNTOUCHED AND TAKES NO NEW PROP. It is a closed <header> with
+ * six consumers, five of which want nothing to do with this; giving it an
+ * `aside` slot would have made every one of them a caller of a feature only
+ * Home uses. The composition happens here instead, and PageHeading renders
+ * byte-identically on all six pages.
+ *
+ * ─── THE 26 IS PageHeading's OWN, MOVED RATHER THAN INVENTED ────────────────
+ *
+ * PageHeading carries marginBottom: 26 and that is the distance the whole shell
+ * reads as "title to content". Beside a taller panel it is the WRONG distance
+ * to leave doing the job alone: the row's height is set by the aside, so a
+ * stack placed after it would sit flush against the join panel while the header
+ * kept its 26 to itself, uselessly, in the middle of the row.
+ *
+ * So both columns carry it. The left column is a flex item and therefore its
+ * own BFC, so the header's bottom margin does not collapse out of it and the
+ * column measures header + 26; the right column is given the same 26
+ * explicitly. A flex line's cross size is the largest of its items' MARGIN
+ * boxes, so the row ends exactly 26px below whichever column is taller -- which
+ * is the aside -- and PageStack begins there. Stacked at <=900 the same two
+ * margins do the same two jobs in sequence: the header's separates the title
+ * from the panel, the aside's separates the panel from the stack.
+ *
+ * The horizontal seam is SPACING.GROUP, an existing value. No new spacing
+ * constant enters the scale for this.
+ *
+ * ─── THE REFLOW IS TWO MECHANISMS AND BOTH ARE LOAD-BEARING ─────────────────
+ *
+ * The shell's content width is NOT monotonic in the viewport, because the rail
+ * is 208px wide until it disappears at 900 (border-box, per dashboard-css.ts:21):
+ *
+ *     1280 -> 872 (capped)   1024 -> 748   901 -> 625   900 -> 868   720 -> 688
+ *
+ * The narrowest the column ever gets is 625px at 901 -- JUST ABOVE the
+ * breakpoint, where a max-width:900 rule does not fire. A media query alone
+ * therefore leaves the title squeezed at exactly the width that squeezes it
+ * hardest, and wrapping alone leaves the head a row at 720 (688 content, above
+ * the 320+28+320 wrap threshold) where the contract says it must stack.
+ *
+ * flexWrap here covers 901-944, where the content box is under that 668px
+ * threshold. The media query in dashboard-css.ts covers <=900. The two regimes
+ * are disjoint, which is what lets each be falsified on its own -- see
+ * scripts/verify_home_head_row.mjs, which reads 950 and 920 on either side of
+ * the wrap threshold for exactly that reason.
+ */
+export function PageHeadRow({
+  heading,
+  aside,
+}: {
+  heading: React.ReactNode;
+  aside: React.ReactNode;
+}) {
+  return (
+    <div
+      className="um-head-row"
+      style={{
+        display: 'flex',
+        alignItems: 'flex-start',
+        flexWrap: 'wrap',
+        columnGap: SPACING.GROUP,
+      }}
+    >
+      {/* minWidth 0 so a long blurb wraps inside the column instead of setting
+          a min-content floor that pushes the aside off the line. */}
+      <div style={{ flex: '1 1 320px', minWidth: 0 }}>{heading}</div>
+      <div style={{ flex: '0 1 320px', marginBottom: 26 }}>{aside}</div>
+    </div>
+  );
+}
+
+/**
  * The panel. One fill, one hairline, no radius and no shadow.
  *
  * FLAT AS OF 2026-08-26, matching the worksheet generator's panelStyle
