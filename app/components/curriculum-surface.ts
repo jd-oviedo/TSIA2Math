@@ -330,7 +330,59 @@ const LIGHT: CurriculumSurface = {
   // own entry dividers, the inset shadow under each outline row -- where a gold
   // rule at every level would read as decoration instead of as structure. Four
   // call sites moved; the within-block ones deliberately did not.
-  rule: '#C8A96E',
+  //
+  // ─── MOVED OFF CIPHER GOLD 2026-08-26, WHEN THE GROUND STOPPED BEING CREAM ──
+  //
+  // Everything above is the record of why a structural rule exists and why it
+  // is not `hairline`. That reasoning stands. What changed is the ground under
+  // it: the neutral-light move put this surface on #F5F5F3, and the argument
+  // for the gold was never really about contrast.
+  //
+  // CONTRAST ACTUALLY IMPROVED WHEN THE GROUND LIGHTENED, so this is not a
+  // legibility fix. Gold measured 1.71 / 1.83 / 2.21 on cream and 2.06 / 2.17 /
+  // 2.24 on the neutral field. It got MORE visible, not less.
+  //
+  // WHY IT STILL HAD TO GO, in CIELCh, which is where the real answer is:
+  //
+  //   old cream ground #E8E0CF   L* 89.4   C*  9.3   h  91
+  //   new ground       #F5F5F3   L* 96.5   C*  1.0   h 110
+  //   Cipher Gold      #C8A96E   L* 70.7   C* 34.8   h  84
+  //
+  // On cream the gold sat 7 degrees off the ground's own hue, on a ground
+  // already carrying C* 9.3 of warmth. It read as the saturated member of one
+  // warm family, which is exactly what made it the right pick when it was made.
+  // The new ground is achromatic at C* 1.0 and 26 degrees away, so the same
+  // value now reads as the only chromatic thing on the page holding a
+  // STRUCTURAL job -- and structure is the one role where a line should not
+  // announce itself. Same shape of reasoning as RADIUS = 0 in
+  // curriculum-theme.ts: a property that made sense for the old surface reads
+  // as a leftover on the new one rather than as a choice.
+  //
+  // WHY 0.30 AND NOT A HEX. The alpha idiom is the generator's, from
+  // worksheet-theme.ts:85, and it is the reason this holds its strength on all
+  // three rungs at once instead of being tuned to one of them:
+  //
+  //   on page  #F5F5F3   1.99      on rail #FBFBF9   2.00
+  //   on panel #FFFFFF   2.00
+  //
+  // Picked to hold the gold's page strength (1.99 against 2.06) while landing
+  // flat at 2.00 everywhere -- deciding on the WEAKER side, which is the rule
+  // worksheet-theme.ts:61-79 sets out. It stays a clear tier above `hairline`'s
+  // 1.36 on the same ground, at 2.9x its step above that ground, so the
+  // structural / within-block split this token was minted for survives intact.
+  //
+  // ALL FOUR CALL SITES MOVED, DELIBERATELY. The section divider, the outline
+  // rail's edge, the top bar's rule and the practice/quiz problem frame. Juan's
+  // call: two structural-rule colours in one tree would be worse than either
+  // one alone, so a section-only override was rejected. Three of the four are
+  // asserted by computed value -- scripts/verify_lesson_dark.mjs takes the
+  // section divider and the problem frame, scripts/verify_ui_lane.mjs takes the
+  // top bar -- so a partial revert cannot pass quietly.
+  //
+  // Decorative. Carries no text, marks no control; neither 1.4.3 nor 1.4.11
+  // applies. `hairline` #DCD3BE is still a cream value on a neutral ground and
+  // is the same argument one tier down -- logged, deliberately not touched here.
+  rule: 'rgba(14,14,17,0.30)',
   // #8A8474 survives here, in the one role it is good at.
   //
   // The import borders answer choices with #E2DAC6, which is 1.19 against the
@@ -460,7 +512,43 @@ const DARK: CurriculumSurface = {
   // four call sites that moved to T.rule must render in dark exactly as they did
   // before. Kept as its own entry rather than aliased so that giving dark a real
   // structural rule later is a one-line change here.
-  rule: 'rgba(242,237,223,0.14)',
+  //
+  // ─── THAT ONE-LINE CHANGE, TAKEN 2026-08-26 ─────────────────────────────────
+  //
+  // The note above is kept because it is the record of why this entry existed
+  // separately at all, and it named this edit in advance. It is now out of date
+  // in exactly one respect: rule is NO LONGER identical to hairline.
+  //
+  // WHAT WAS WRONG. With rule == hairline, dark had NO structural tier at all:
+  // the edge BETWEEN sections and the divider INSIDE a block painted the same
+  // colour, so the one line carrying the structure of the reading column was
+  // indistinguishable from decoration. Light had the distinction and dark did
+  // not, which made the two themes disagree about what the page is.
+  //
+  //   on page     #17171A   hairline 1.46   rule 2.03
+  //   on insetRow #232220   hairline 1.49   rule 2.07
+  //   on panel    #262521   hairline 1.50   rule 2.06
+  //   on quietBox #2B2A25   hairline 1.50   rule 2.05
+  //
+  // WHY 0.24. By this file's own mirroring discipline -- see hairline directly
+  // above, "the mirror of the light hairline". 0.24 lands at 2.03 on the page
+  // ground, within 0.03 of what the light rule measures at 1.99. The two themes
+  // now state the same structural step rather than one of them stating none.
+  //
+  // Settled BEFORE the light decision was and independent of it: 0.24 mirrors
+  // 1.99 and 2.06 equally well, so it would have been the value whether light
+  // kept the gold or moved to the neutral.
+  //
+  // NOT SHARED WITH THE GENERATOR, checked directly rather than assumed.
+  // worksheet-theme.ts:52 binds `const S = SURFACES.light`, so nothing in that
+  // file can reach DARK at all; and its complete read list is eighteen tokens --
+  // ink, ink2, muted, disabled, controlBorder, the four cta entries, trackFill,
+  // focus, link, linkHover, missed, missedTint, correctTint, statusComplete,
+  // error -- which does not include `rule`. It declares its own HAIRLINE at :85.
+  // So the token edit is the whole change and no local override is needed.
+  //
+  // Decorative, like its light counterpart. No text, no control.
+  rule: 'rgba(242,237,223,0.24)',
   controlBorder: 'rgba(242,237,223,0.42)', // 3.44 on the choice fill
 
   statusComplete: '#7FB894', // 6.71 on panel. Reused from dashboard-theme DARK.
