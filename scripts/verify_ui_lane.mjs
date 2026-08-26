@@ -19,6 +19,7 @@
 //
 // Run: node scripts/verify_ui_lane.mjs
 
+import { readFile } from 'node:fs/promises';
 import { startLane, readComputed, assertTheme, withBrowser, LANE_ROUTES } from './ui-verify-lane.mjs';
 
 // The tokens under test, from app/components/dashboard-theme.ts:173 and :222.
@@ -27,12 +28,55 @@ import { startLane, readComputed, assertTheme, withBrowser, LANE_ROUTES } from '
 const SHELL_LIGHT = 'rgb(245, 245, 243)'; // #F5F5F3  LIGHT.pageBg
 const SHELL_DARK = 'rgb(23, 23, 26)'; //    #17171A  DARK.pageBg
 
-// The curriculum route's ground, from curriculum-surface.ts:191 and :358. Read
-// as well as the shell's because this route's values resolve through var() --
-// they are the ones that depend on TOPIC_PAGE_CSS being injected correctly, and
-// a silent injection failure computes to transparent rather than erroring.
-const CURRICULUM_LIGHT = 'rgb(232, 224, 207)'; // #E8E0CF
-const CURRICULUM_DARK = 'rgb(23, 23, 26)'; //     #17171A
+// The curriculum route's ground, from curriculum-surface.ts LIGHT.page and
+// DARK.page. Read as well as the shell's because this route's values resolve
+// through var() -- they are the ones that depend on TOPIC_PAGE_CSS being
+// injected correctly, and a silent injection failure computes to transparent
+// rather than erroring.
+//
+// LIGHT MOVED 2026-08-26, from cream #E8E0CF to the dashboard's neutral field.
+// That is the change this baseline exists to catch, and it caught it: this is a
+// deliberate update to a value that genuinely moved, made in the same commit as
+// the move. The restatement is still the point -- an accidental palette edit
+// still has to disagree with this copy before it can ship.
+//
+// LIGHT AND DARK ARE NOW THE SAME PAIR OF HEXES AS THE SHELL'S, and that is a
+// real result rather than a copy-paste: the curriculum tree and the dashboard
+// are on one neutral field in both themes as of this change. The two are still
+// declared separately because they are two independent claims, and collapsing
+// them to one constant would stop this file noticing if only one of them moved.
+const CURRICULUM_LIGHT = 'rgb(245, 245, 243)'; // #F5F5F3  LIGHT.page, was #E8E0CF
+const CURRICULUM_DARK = 'rgb(23, 23, 26)'; //     #17171A  DARK.page, unchanged
+
+// The panel rung, LIGHT.panel and DARK.panel. Asserted by VALUE and not merely
+// as "not transparent", which is what this file checked before: a panel that had
+// silently gone back to cream #FFFDF8 would have passed the old check happily.
+const CURRICULUM_PANEL_LIGHT = 'rgb(255, 255, 255)'; // #FFFFFF, was #FFFDF8
+const CURRICULUM_PANEL_DARK = 'rgb(38, 37, 33)'; //    #262521, unchanged
+
+// The prose card's measure. practice/page.tsx and quiz/page.tsx cap their card
+// at the lesson column's 788, and app/um-verify/curriculum/page.tsx carries a
+// copy of that card. Two numbers because they answer two questions: the
+// DECLARED cap proves the rule is on the element, and the USED width proves the
+// cap actually binds rather than sitting under a narrower container.
+//
+// 788 and not 734: nothing in this app sets box-sizing, so the default
+// content-box applies and max-width constrains the content box directly.
+const CARD_MAX_WIDTH = '788px';
+const CARD_USED_WIDTH = '788px';
+
+// The active Lesson/Practice/Quiz segment, LIGHT.tabActiveBg. It moved off
+// cream #E8E0CF in the same change as the ladder; see the note at
+// curriculum-surface.ts LIGHT.tabActiveBg for why it is chipBg and not the
+// neutral field.
+//
+// THE INACTIVE SEGMENT IS READ TOO, and that is the assertion that carries the
+// weight. Asserting the active fill alone would still pass if the inactive ones
+// had somehow acquired the same fill -- the defect the gate on this change was
+// written to prevent is precisely "the current tab stops being distinguishable",
+// which is a statement about the PAIR, not about either colour on its own.
+const TAB_ACTIVE_LIGHT = 'rgb(237, 235, 228)'; // #EDEBE4, was cream #E8E0CF
+const TAB_INACTIVE_LIGHT = 'rgba(0, 0, 0, 0)'; // `transparent`, showing the bar
 
 const rows = [];
 let failures = 0;
@@ -84,9 +128,9 @@ try {
     // ── 3. The curriculum route resolves its var()-based tokens ────────────
     // This is the half that broke twice in #208. If TOPIC_PAGE_CSS is not on
     // the page, --umt-page is undefined and this reads rgba(0, 0, 0, 0).
-    for (const [theme, expected] of [
-      ['light', CURRICULUM_LIGHT],
-      ['dark', CURRICULUM_DARK],
+    for (const [theme, expectedGround, expectedPanel] of [
+      ['light', CURRICULUM_LIGHT, CURRICULUM_PANEL_LIGHT],
+      ['dark', CURRICULUM_DARK, CURRICULUM_PANEL_DARK],
     ]) {
       const { values, resolvedTheme } = await readComputed(browser, lane.origin, {
         route: LANE_ROUTES.curriculum,
@@ -94,18 +138,105 @@ try {
         probes: {
           ground: { selector: '.um-topic', prop: 'backgroundColor' },
           panel: { selector: '[data-probe="prose-card"]', prop: 'backgroundColor' },
+          cardMaxWidth: { selector: '[data-probe="prose-card"]', prop: 'maxWidth' },
+          cardWidth: { selector: '[data-probe="prose-card"]', prop: 'width' },
+          tabActive: {
+            selector: '.um-bar-parts a[aria-current="page"]',
+            prop: 'backgroundColor',
+          },
+          tabInactive: {
+            selector: '.um-bar-parts a:not([aria-current])',
+            prop: 'backgroundColor',
+          },
         },
       });
       assertTheme(theme, resolvedTheme, `curriculum/${theme}`);
       record(
-        `curriculum ${theme}: .um-topic ground is ${expected}`,
-        values.ground === expected,
+        `curriculum ${theme}: .um-topic ground is ${expectedGround}`,
+        values.ground === expectedGround,
         `got ${values.ground}, data-theme ${resolvedTheme}`,
       );
       record(
         `curriculum ${theme}: the panel resolved a token rather than transparent`,
         values.panel !== 'rgba(0, 0, 0, 0)',
         `panel ${values.panel}`,
+      );
+      record(
+        `curriculum ${theme}: the panel is ${expectedPanel}`,
+        values.panel === expectedPanel,
+        `got ${values.panel}`,
+      );
+
+      // Theme-independent, so recorded once rather than twice: two rows saying
+      // the same thing would both redden for one defect and read as two.
+      if (theme === 'light') {
+        record(
+          `curriculum: the prose card declares max-width ${CARD_MAX_WIDTH}`,
+          values.cardMaxWidth === CARD_MAX_WIDTH,
+          `got ${values.cardMaxWidth}`,
+        );
+        record(
+          `curriculum: the active tab is ${TAB_ACTIVE_LIGHT}, not cream`,
+          values.tabActive === TAB_ACTIVE_LIGHT,
+          `got ${values.tabActive}`,
+        );
+        record(
+          'curriculum: the inactive tab is transparent, so the active fill is ' +
+            'what distinguishes them',
+          values.tabInactive === TAB_INACTIVE_LIGHT &&
+            values.tabActive !== values.tabInactive,
+          `active ${values.tabActive} vs inactive ${values.tabInactive}`,
+        );
+        record(
+          `curriculum: the prose card's used width caps at ${CARD_USED_WIDTH}`,
+          values.cardWidth === CARD_USED_WIDTH,
+          `got ${values.cardWidth} (viewport 1280; uncapped this measures 1158px, ` +
+            `observed -- .um-page pads 34px a side and computed width is the ` +
+            `content box, so the card's own 1px border and 26px padding come off too)`,
+        );
+      }
+    }
+
+    // ── 3b. THE CAP IS ON THE REAL PAGES, NOT JUST ON THE LANE'S COPY ─────
+    //
+    // The read above measures app/um-verify/curriculum/page.tsx, which carries a
+    // COPY of the practice and quiz prose card rather than importing it. So on
+    // its own it proves the lane caps its own card and says nothing about the
+    // two pages a student actually loads. This closes that gap the only way a
+    // DB-free lane can: by reading the source of both.
+    //
+    // A source check and not a render check, deliberately. Rendering the real
+    // routes needs topic data, which needs a database, which is the whole reason
+    // this lane exists. Asserting the declaration is the strongest claim
+    // available without one, and it is the claim that would actually break --
+    // the failure mode here is somebody editing one page and not the other.
+    const REAL_CARDS = [
+      'app/course/[test]/[subject]/unit/[unit]/topic/[topicId]/practice/page.tsx',
+      'app/course/[test]/[subject]/unit/[unit]/topic/[topicId]/quiz/page.tsx',
+      'app/um-verify/curriculum/page.tsx',
+    ];
+    for (const file of REAL_CARDS) {
+      const src = await readFile(new URL(`../${file}`, import.meta.url), 'utf8');
+      const hits = src.match(/maxWidth: 788\b/g) ?? [];
+      record(
+        `${file.split('/').slice(-2).join('/')} caps its prose card at 788`,
+        hits.length === 1,
+        `${hits.length} occurrence(s) of \`maxWidth: 788\``,
+      );
+    }
+
+    // The cap must be flush left, per the decision recorded on both cards: the
+    // lesson column does not centre (LessonBody.tsx:362) and these must not
+    // either. A `margin: auto` slipping in later is the regression this catches.
+    for (const file of REAL_CARDS.slice(0, 2)) {
+      const src = await readFile(new URL(`../${file}`, import.meta.url), 'utf8');
+      const card = src.slice(src.indexOf('maxWidth: 788'));
+      const styleBlockEnd = card.indexOf('}}');
+      const withinCard = card.slice(0, styleBlockEnd === -1 ? 400 : styleBlockEnd);
+      record(
+        `${file.split('/').slice(-2).join('/')} leaves the card flush left`,
+        !/margin(Left|Right|Inline)?:\s*['\`"]?auto/.test(withinCard),
+        withinCard.includes('auto') ? 'found an auto margin on the card' : 'no auto margin',
       );
     }
 

@@ -85,6 +85,7 @@
 // legitimate as text AND as fills, so their light and dark values were chosen to
 // clear text contrast on the reading ladder rather than merely to look right.
 
+import { DASH } from './dashboard-theme';
 import type { ThemeName } from '../theme/themes';
 
 export interface CurriculumSurface {
@@ -186,10 +187,69 @@ const LIGHT: CurriculumSurface = {
   barLine: '#111111',
   barInk: '#111111',
   barInk2: 'rgba(0,0,0,0.55)',
-  tabActiveBg: '#E8E0CF',
+  // THE ACTIVE Lesson/Practice/Quiz SEGMENT. DASH.chipBg, and NOT the neutral
+  // field, which is what this was first asked to be.
+  //
+  // Changed 2026-08-26, in the same change that took the reading ladder off
+  // cream. It had to move: at #E8E0CF it was the last warm fill in the chrome
+  // (R-B of 25 against a field of 2), sitting directly above a neutral page.
+  //
+  // #F5F5F3 WAS PROPOSED AND MEASURED OUT. The reasoning was that the active tab
+  // should connect to the page below it, and neither half of that survives
+  // contact with the geometry:
+  //
+  //   1. IT CANNOT CONNECT. .um-bar carries `padding: 12px 22px` and a 1px
+  //      borderBottom in T.rule, so there is always bar and rule between the
+  //      segment's bottom edge and the page. The tab never touches it.
+  //   2. IT MEASURES AGAINST WHITE, NOT THE PAGE. The bar is painted T.panel,
+  //      which this same change made #FFFFFF, and the inactive segments are
+  //      `transparent` -- so the fill separating current from inactive is
+  //      measured against the BAR. #F5F5F3 on #FFFFFF is 1.092, a step of
+  //      0.092 against the 0.313 the cream had. A 70% cut in the only thing
+  //      marking which segment you are on.
+  //
+  // The per-segment ring does not rescue it: `hairline(T.hairline)` is on EVERY
+  // segment, so it separates the control from the bar and says nothing about
+  // which one is current.
+  //
+  // #EDEBE4 keeps 0.193 of that step -- about two thirds of the cream's -- while
+  // dropping the warm cast to R-B 9. Its role in the dashboard is a small chip
+  // fill, which is the same role it has here, so this is a fill mapped to a
+  // fill: the ROLE trap in the header above is the reason that is stated rather
+  // than assumed. The active label is T.ink at 16.16 on it, and the inactive
+  // label is unchanged at 5.09 on the bar.
+  tabActiveBg: DASH.chipBg, // #EDEBE4
 
-  page: '#E8E0CF',
-  rail: '#EDE8DA',
+  // ─── THE READING LADDER IS NEUTRAL IN LIGHT, NOT CREAM ────────────────────
+  //
+  // Changed 2026-08-26 at Juan's direction. The six warm rungs below used to be
+  // the course design import's cream ladder (#E8E0CF ground up to #FFFDF8
+  // paper). They are the dashboard's neutrals now, and DARK IS UNTOUCHED: the
+  // DARK block was already warm-neutral and stays exactly as it was.
+  //
+  // WHY. A teacher crosses /dashboard -> /teacher/worksheets -> a lesson page in
+  // one session. PR #206 moved the worksheet generator's chrome onto DASH.*
+  // for that reason and left the curriculum tree behind, so the product had two
+  // colour temperatures either side of one navigation. This is the other half of
+  // that change.
+  //
+  // IMPORTED FROM dashboard-theme.ts RATHER THAN RESTATED, for the reason
+  // worksheet-theme.ts:16-19 gives about its own four: copying the hexes across
+  // would look identical today and drift the first time either surface moved.
+  // The three surfaces now share one definition of "the neutral field".
+  //
+  // THE SHARED BAND IS DELIBERATELY NOT HERE. ink, the state colours and the
+  // CTA family are unchanged, and they must stay that way: worksheet-theme.ts
+  // reads eighteen of them out of this block, so a value changed here reaches
+  // four teacher screens that are not in scope. The seven rungs below are the
+  // set worksheet-theme.ts does NOT read -- it takes its own from DASH -- which
+  // is what makes editing them a curriculum-only change.
+  //
+  // Every ink on the ladder IMPROVES, because the grounds got lighter and the
+  // ink did not move: ink 14.68 -> 17.66 on the ground, ink2 7.56 -> 8.36,
+  // muted 4.62 -> 4.95. Measured, not assumed.
+  page: DASH.pageBg, // #F5F5F3
+  rail: DASH.subtleBg, // #FBFBF9
   // The rail is PAINTED now, at the same rung it already names.
   //
   // SUPERSEDES the "a plain column, not a panel" note in LessonBody, which is
@@ -202,11 +262,35 @@ const LIGHT: CurriculumSurface = {
   //
   // Text on it IMPROVES rather than survives: the rail's eyebrows measure 4.62
   // on the ground and 4.74 here.
-  railFill: '#EDE8DA',
-  band: '#F3EFE3',
-  insetRow: '#F6F2E8',
-  panel: '#FFFDF8',
-  quietBox: '#EDE7D6',
+  //
+  // ─── AND THAT DECISION IS PRESERVED BY THE NEUTRAL SWAP, NOT UNDONE ───────
+  //
+  // DASH.subtleBg is the dashboard's own "a hair off the page" rung, which is
+  // the same job. It holds the step AND its direction: #EDE8DA sat 1.07 ABOVE
+  // the cream ground, and #FBFBF9 sits 1.05 above #F5F5F3. The rail stays a
+  // change of rung rather than an object on the page.
+  //
+  // The alternative was collapsing the rail to DASH.pageBg and letting the
+  // border carry it, which is what worksheet-theme.ts:101 did with its own
+  // rail. REJECTED here: that surface never had a rail fill to lose, and this
+  // one had its fill restored on purpose four days ago. A token swap does not
+  // get to silently reverse that.
+  //
+  // Re-measured on the new rung: the eyebrow goes 4.74 -> 4.99 and the gold
+  // rule beside it 1.83 -> 2.17. Both improve.
+  railFill: DASH.subtleBg, // #FBFBF9
+  // Unpainted today -- the band came off with the cards and the reading column
+  // is the page ground now -- so this moves for ladder consistency rather than
+  // for any pixel. Collapsed onto the field, which is what the generator does
+  // with its own band at worksheet-theme.ts:102.
+  band: DASH.pageBg, // #F5F5F3
+  insetRow: DASH.rowHoverBg, // #FAFAF7. muted on it 5.52 -> 5.02, still clears AA
+  panel: DASH.cardBg, // #FFFFFF. ink 18.96 -> 19.27
+  // #F2F1EC, the answer-choice fill. controlBorder #8A8474 is the only thing
+  // marking a choice as a control, so WCAG 1.4.11 applies to it at 3:1: it
+  // measured 3.02 on the old #EDE7D6 and measures 3.30 here. The margin on the
+  // one rung in this block that has a 1.4.11 obligation gets wider, not thinner.
+  quietBox: DASH.trackBg, // #F2F1EC
 
   ink: '#0E0E11', // 14.68 on page, 18.96 on panel
   ink2: 'rgba(14,14,17,0.75)', // 7.56 to 8.73 across the ladder
