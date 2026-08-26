@@ -667,7 +667,24 @@ export function StudentNavTrigger({ onClick }: { onClick: () => void }) {
         flex: 'none',
         borderRadius: 10,
         border: 'none',
-        background: V.subtleBg,
+        // THE FALLBACK IS LOAD-BEARING, AND THIS BUTTON RENDERS IN TWO SCOPES.
+        // --umd-* is declared on .um-dash only (dashboard-theme.ts:469-476), and
+        // this trigger also mounts inside .um-topic, where it is declared
+        // nowhere. background-color does not inherit, so an unresolvable var()
+        // is invalid at computed-value time and falls to `transparent` -- the
+        // chip simply vanished on every curriculum page, in both themes.
+        //
+        // WHY --umt-quiet-box AND NOT --umt-inset-row. The chip sits on the bar,
+        // which is V.cardBg on the dashboard and T.panel here, and it has to
+        // read as the same object on both. quietBox holds the dashboard chip's
+        // DIRECTION in both themes -- darker than its ground in light (1.13 vs
+        // the dashboard's 1.04), lighter in dark (1.07 vs 1.08). insetRow does
+        // not: it is darker than panel in dark too (#232220 under #262521), so
+        // it would read as a hole where the dashboard reads as a raised tile.
+        //
+        // On .um-dash the first var resolves and the fallback is never reached,
+        // so the dashboard chip is byte-identical to what it was.
+        background: 'var(--umd-subtle-bg, var(--umt-quiet-box))',
         color: V.heading,
         cursor: 'pointer',
         display: 'flex',
