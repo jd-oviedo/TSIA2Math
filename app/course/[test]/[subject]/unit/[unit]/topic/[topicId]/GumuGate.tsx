@@ -71,7 +71,7 @@ export function AnswerKey({
           lineHeight: 1.65,
         }}
       >
-        The answer key is paused while you&apos;re working through a question with GUMU. Finish
+        The answer key is paused while you&apos;re working through a question with Mu. Finish
         that conversation, or use &ldquo;I&apos;ll just see the answer&rdquo;, and it will come
         back.
       </div>

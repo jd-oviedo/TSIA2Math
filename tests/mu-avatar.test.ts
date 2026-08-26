@@ -137,9 +137,12 @@ test('all four call sites render GumuAvatar at the approved sizes', () => {
   assert.match(code(CHAT), /<GumuAvatar size=\{48\} \/>/);
 });
 
-test('the default accessible name is mu', () => {
-  assert.match(code(AVATAR), /title = 'mu'/);
+test('the default accessible name is Mu', () => {
+  assert.match(code(AVATAR), /title = 'Mu'/);
   assert.ok(!/title = 'GUMU'/.test(code(AVATAR)), "the default title is back to 'GUMU'");
+  // Mu is a proper name. Lowercase is the state this PR moved off, so it is a
+  // regression here, not merely an alternative spelling.
+  assert.ok(!/title = 'mu'/.test(code(AVATAR)), "the default title is lowercase 'mu' again");
 });
 
 // ─── The three visible strings ───────────────────────────────────────────────
@@ -147,16 +150,19 @@ test('the default accessible name is mu', () => {
 // JSX text, not comments, so code() keeps them. These are the labels a student
 // reads beside the mark; the identifiers below are what must NOT move with them.
 
-test('the three student-visible labels say mu', () => {
+test('the three student-visible labels say Mu', () => {
   const chat = code(CHAT);
-  assert.ok(chat.includes('>mu</div>'), 'the chat header label is not "mu"');
-  assert.ok(chat.includes('mu is thinking'), 'the pending line is not "mu is thinking"');
+  assert.ok(chat.includes('>Mu</div>'), 'the chat header label is not "Mu"');
+  assert.ok(chat.includes('Mu is thinking'), 'the pending line is not "Mu is thinking"');
   assert.ok(!chat.includes('>GUMU</div>'), 'the chat header label says GUMU again');
   assert.ok(!chat.includes('GUMU is thinking'), 'the pending line says GUMU again');
+  assert.ok(!chat.includes('>mu</div>'), 'the chat header label is lowercase again');
+  assert.ok(!chat.includes('mu is thinking'), 'the pending line is lowercase again');
 
   const practice = code(PRACTICE);
-  assert.ok(practice.includes('mu comes in on the mini quiz'), 'the practice line is not "mu"');
+  assert.ok(practice.includes('Mu comes in on the mini quiz'), 'the practice line is not "Mu"');
   assert.ok(!practice.includes('GUMU comes in'), 'the practice line says GUMU again');
+  assert.ok(!practice.includes('mu comes in'), 'the practice line is lowercase again');
 });
 
 // ─── NOTHING WAS RENAMED, which is the hard line this PR was given ───────────

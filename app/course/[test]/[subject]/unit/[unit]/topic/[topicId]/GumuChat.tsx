@@ -124,7 +124,7 @@ export default function GumuChat({
         setTotalTurns(data.turns_remaining);
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Could not reach GUMU.');
+      setError(e instanceof Error ? e.message : 'Could not reach Mu.');
     } finally {
       setPending(false);
     }
@@ -159,7 +159,7 @@ export default function GumuChat({
         onSessionChange(false);
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Could not reach GUMU.');
+      setError(e instanceof Error ? e.message : 'Could not reach Mu.');
     } finally {
       setPending(false);
     }
@@ -176,7 +176,7 @@ export default function GumuChat({
       onSessionChange(false);
       if (data.correct_answer) onRevealAnswer(data.correct_answer);
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Could not reach GUMU.');
+      setError(e instanceof Error ? e.message : 'Could not reach Mu.');
     } finally {
       setPending(false);
     }
@@ -304,7 +304,7 @@ export default function GumuChat({
       <div style={{ display: 'flex', alignItems: 'center', gap: '11px' }}>
         <GumuAvatar size={48} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-          <div style={{ font: `600 15px ${FONT_HEADING}`, color: T.ink }}>mu</div>
+          <div style={{ font: `600 15px ${FONT_HEADING}`, color: T.ink }}>Mu</div>
           <div style={{ font: `400 12px ${FONT_BODY}`, color: T.muted }}>
             {finished ? 'that one is wrapped up' : 'let’s figure out where it slipped'}
           </div>
@@ -328,7 +328,7 @@ export default function GumuChat({
       <div
         role="log"
         aria-live="polite"
-        aria-label="Conversation with GUMU"
+        aria-label="Conversation with Mu"
         style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}
       >
         {messages.map((m, i) => (
@@ -366,7 +366,7 @@ export default function GumuChat({
         ))}
         {pending && (
           <div style={{ font: `400 13.5px ${FONT_BODY}`, color: T.muted }}>
-            mu is thinking…
+            Mu is thinking…
           </div>
         )}
       </div>
@@ -388,7 +388,7 @@ export default function GumuChat({
           }}
         >
           <label htmlFor={`gumu-input-${section}-${itemNumber}`} style={{ display: 'none' }}>
-            Your reply to GUMU
+            Your reply to Mu
           </label>
           <input
             id={`gumu-input-${section}-${itemNumber}`}

@@ -139,6 +139,15 @@ async function waitForServer(origin, timeoutMs = 60_000) {
  * sees -- which is exactly the defect the shell spacing pass was fixing. Gaps
  * are polled for stability alongside the computed values, not sampled after.
  *
+ * `centres` is an optional map of name -> { inner, outer }: how far `inner`'s
+ * horizontal centre sits from `outer`'s, in px, measured off the laid-out
+ * boxes. It is the horizontal sibling of `gaps`, and it exists for the same
+ * reason. `margin: 0 auto` is a declaration, not a result: whether it centres
+ * anything depends on the parent having a width to centre inside and on the
+ * child being narrower than it, so reading the declaration back reports what
+ * the code says rather than where the mark actually sits. A negative number is
+ * left of centre, a positive one right.
+ *
  * `dom` is an optional map of name -> { selector, prop }, read as a plain DOM
  * property off the element rather than through getComputedStyle. It exists for
  * the claims computed style cannot make: an <img>'s naturalWidth is the only
@@ -147,7 +156,7 @@ async function waitForServer(origin, timeoutMs = 60_000) {
  * dimensions zero. Values are stringified so they compare and poll for
  * stability exactly the way every other reading here does.
  */
-export async function readComputed(browser, origin, { route, theme, probes, gaps = {}, tags = {}, dom = {} }) {
+export async function readComputed(browser, origin, { route, theme, probes, gaps = {}, centres = {}, tags = {}, dom = {} }) {
   const ctx = await browser.newContext();
   await ctx.addInitScript(
     ([key, value]) => {
@@ -191,7 +200,7 @@ export async function readComputed(browser, origin, { route, theme, probes, gaps
   const CEILING_FRAMES = 600;
 
   const snapshot = await page.evaluate(
-    async ([entries, gapEntries, tagEntries, domEntries, sel, minFrames, maxFrames]) => {
+    async ([entries, gapEntries, centreEntries, tagEntries, domEntries, sel, minFrames, maxFrames]) => {
       const frame = () => new Promise((r) => requestAnimationFrame(r));
       const readAll = () => ({
         theme: document.querySelector(sel)?.getAttribute('data-theme') ?? '(none)',
@@ -210,6 +219,19 @@ export async function readComputed(browser, origin, { route, theme, probes, gaps
             // and an assertion that fails on 15.999999 would be measuring the
             // renderer rather than the scale.
             const px = b.getBoundingClientRect().top - a.getBoundingClientRect().bottom;
+            return [name, `${Math.round(px * 100) / 100}px`];
+          }),
+        ),
+        centres: Object.fromEntries(
+          centreEntries.map(([name, { inner, outer }]) => {
+            const a = document.querySelector(inner);
+            const b = document.querySelector(outer);
+            if (!a || !b) return [name, '(no such element)'];
+            const ar = a.getBoundingClientRect();
+            const br = b.getBoundingClientRect();
+            // Rounded to 2dp for the reason the gaps above are: sub-pixel
+            // layout noise is not an alignment result.
+            const px = (ar.left + ar.width / 2) - (br.left + br.width / 2);
             return [name, `${Math.round(px * 100) / 100}px`];
           }),
         ),
@@ -246,6 +268,7 @@ export async function readComputed(browser, origin, { route, theme, probes, gaps
     [
       Object.entries(probes),
       Object.entries(gaps),
+      Object.entries(centres),
       Object.entries(tags),
       Object.entries(dom),
       wrapperSel,
@@ -258,6 +281,7 @@ export async function readComputed(browser, origin, { route, theme, probes, gaps
   return {
     values: snapshot.values,
     gaps: snapshot.gaps,
+    centres: snapshot.centres,
     tags: snapshot.tags,
     dom: snapshot.dom,
     resolvedTheme: snapshot.theme,

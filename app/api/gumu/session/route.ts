@@ -162,7 +162,7 @@ async function resolveFlagged(
     : `is stuck on ${session.topic_id} question ${session.item_number}`;
   const summary =
     reason === "turn_cap"
-      ? `A student ${detail} — GUMU could not resolve it.`
+      ? `A student ${detail} — Mu could not resolve it.`
       : `A student ${detail} — they asked to skip to the answer.`;
 
   const { error } = await admin.from("teacher_notifications").insert({
@@ -348,7 +348,7 @@ export async function POST(req: Request) {
 
   // No anonymous path, unlike the practice route which grades for everyone.
   if (!authSession) {
-    return NextResponse.json({ error: "Sign in to use GUMU" }, { status: 401 });
+    return NextResponse.json({ error: "Sign in to use Mu" }, { status: 401 });
   }
 
   const studentId = authSession.user.id;
@@ -518,7 +518,7 @@ export async function POST(req: Request) {
         }
 
         console.error("gumu_sessions insert failed", createError);
-        return NextResponse.json({ error: "Could not start GUMU" }, { status: 500 });
+        return NextResponse.json({ error: "Could not start Mu" }, { status: 500 });
       }
     }
 
@@ -547,7 +547,7 @@ export async function POST(req: Request) {
     } catch (err) {
       console.error("GUMU model call failed", err);
       await admin.from("gumu_sessions").delete().eq("id", created.id);
-      return NextResponse.json({ error: "GUMU is unavailable right now" }, { status: 503 });
+      return NextResponse.json({ error: "Mu is unavailable right now" }, { status: 503 });
     }
 
     if (result.leaked) {
@@ -626,7 +626,7 @@ export async function POST(req: Request) {
 
   if (gumuSession.status !== "active") {
     return NextResponse.json(
-      { error: "This GUMU session has already finished" },
+      { error: "This Mu session has already finished" },
       { status: 409 }
     );
   }
@@ -656,7 +656,7 @@ export async function POST(req: Request) {
     // infrastructure error. Same 503 the model outage path returns, which says
     // nothing about why. The student's turn is not consumed and their message
     // is not stored.
-    return NextResponse.json({ error: "GUMU is unavailable right now" }, { status: 503 });
+    return NextResponse.json({ error: "Mu is unavailable right now" }, { status: 503 });
   }
 
   if (screen.action === "stop") {
@@ -702,7 +702,7 @@ export async function POST(req: Request) {
     result = await askGumu({ history: modelHistory, isFinalTurn, answerContext });
   } catch (err) {
     console.error("GUMU model call failed", err);
-    return NextResponse.json({ error: "GUMU is unavailable right now" }, { status: 503 });
+    return NextResponse.json({ error: "Mu is unavailable right now" }, { status: 503 });
   }
 
   if (result.leaked) {

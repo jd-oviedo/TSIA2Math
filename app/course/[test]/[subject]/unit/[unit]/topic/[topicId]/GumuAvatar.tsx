@@ -37,7 +37,7 @@ type Props = {
 
 const SRC = '/images/Mu-trimmed-transparent.png';
 
-export default function GumuAvatar({ size, title = 'mu' }: Props) {
+export default function GumuAvatar({ size, title = 'Mu' }: Props) {
   // The source is 641x776 and edge-trimmed, so `contain` draws it full height
   // and narrower than the box. The box stays square because every call site
   // lays out against `size`, and the slack either side is transparent.

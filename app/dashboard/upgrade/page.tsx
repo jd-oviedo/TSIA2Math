@@ -27,7 +27,7 @@ export default function UpgradePage() {
 
       <p style={{ margin: 0, font: '400 15.5px system-ui, sans-serif', lineHeight: 1.65 }}>
         The Full Course unlocks every topic: the guided notes, the practice, the mini quizzes,
-        and GUMU to work through anything you miss.
+        and Mu to work through anything you miss.
       </p>
 
       <p style={{ margin: 0, font: '400 15.5px system-ui, sans-serif', lineHeight: 1.65 }}>
