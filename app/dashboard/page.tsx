@@ -17,7 +17,17 @@ import { nextDue } from '@/app/lib/assignments';
 import AssignmentsHomeCard from './AssignmentsHomeCard';
 import { recommendForStudent } from '@/app/lib/recommendation';
 import { STRAND_NAMES } from '@/app/lib/strands';
-import { Card, CardTitle, Eyebrow, Muted, PageHeading, ProgressBar, formatDate } from './ui';
+import {
+  Card,
+  CardTitle,
+  Muted,
+  PageHeading,
+  PageStack,
+  ProgressBar,
+  SectionGroup,
+  SPACING,
+  formatDate,
+} from './ui';
 import DiagnosticCta from './DiagnosticCta';
 import JoinClassPanel from './JoinClassPanel';
 import JoinResultBanner from './JoinResultBanner';
@@ -193,114 +203,152 @@ export default async function DashboardHome({
         }
       />
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-        {/* First thing on the page when a class code came through the sign-in,
-            because it answers the question the student is holding: did it work?
-            Rendered for EVERY outcome including the failures -- landing here
-            silently unenrolled is the state this whole flow exists to prevent. */}
-        {join && <JoinResultBanner outcome={join} className={jc} />}
+      {/* THREE GROUPS, AND THE SEAMS ARE THE ONES THIS FILE ALREADY NAMED.
+          ==================================================================
+          Home was one flat column at a single 16px gap: eight panels, the same
+          white fill, the same border, the same radius, evenly spaced. The split
+          below is not new information architecture -- the comment further down
+          this file has described it since the assignments card landed: the
+          announcements and assignments cards are "things somebody else needs
+          from you", and everything after them is "what you were already doing".
+          That division was written down and never rendered.
 
-        {/* Above the announcements and the progress cards, and only until the
-            student has finished one diagnostic. It adds a card rather than
-            replacing any -- see DiagnosticCta for why nothing below it moves. */}
-        {!testedBefore && <DiagnosticCta />}
+          It is rendered now as WHITESPACE AND NOTHING ELSE. GROUP is 28px
+          against STACK's 16, and no group carries a band, a fill, a rule or a
+          label. Adding one would be the drift this pass exists to avoid, and
+          the group containers are asserted to have no background in both themes
+          by scripts/verify_shell_spacing.mjs.
 
-        {recentAnnouncements.length > 0 && (
-          <Card>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'baseline',
-                  justifyContent: 'space-between',
-                  gap: 12,
-                  flexWrap: 'wrap',
-                }}
-              >
-                <CardTitle>
-                  {recentAnnouncements.length === 1 ? 'Latest announcement' : 'Latest announcements'}
-                </CardTitle>
-                <a
-                  href="/dashboard/announcements"
-                  style={{ font: `600 13px ${FONT_BODY}`, color: V.heading, textDecoration: 'underline' }}
-                >
-                  {moreAnnouncements > 0 ? `See all ${announcements.status === 'ok' ? announcements.announcements.length : ''}` : 'See all'}
-                </a>
-              </div>
+          Each group is wrapped in its own condition rather than holding
+          conditional children, because an empty SectionGroup is still a flex
+          item and would leave a 28px hole where a group used to be. */}
+      <PageStack>
+        {(join || !testedBefore) && (
+          <SectionGroup>
+            {/* First thing on the page when a class code came through the
+                sign-in, because it answers the question the student is holding:
+                did it work? Rendered for EVERY outcome including the failures --
+                landing here silently unenrolled is the state this whole flow
+                exists to prevent. */}
+            {join && <JoinResultBanner outcome={join} className={jc} />}
 
-              {recentAnnouncements.map((item) => (
-                <article
-                  key={item.id}
+            {/* Above the announcements and the progress cards, and only until
+                the student has finished one diagnostic. It adds a card rather
+                than replacing any -- see DiagnosticCta for why nothing below it
+                moves. */}
+            {!testedBefore && <DiagnosticCta />}
+          </SectionGroup>
+        )}
+
+        {(recentAnnouncements.length > 0 || nextAssignments.length > 0) && (
+          <SectionGroup>
+            {recentAnnouncements.length > 0 && (
+              <Card>
+                {/* THE HEADER ROW IS A SIBLING OF THE CONTENT, NOT A FLEX CHILD
+                    ABOVE IT. CardTitle's own margin is the header-to-content
+                    distance; nested inside the BLOCK-gapped column below, the
+                    real distance would be margin + gap, which is how this card
+                    used to say 4 and measure 18. */}
+                <div
                   style={{
                     display: 'flex',
-                    flexDirection: 'column',
-                    gap: 6,
-                    paddingLeft: 13,
-                    borderLeft: `3px solid ${C.sunset}`,
+                    alignItems: 'baseline',
+                    justifyContent: 'space-between',
+                    gap: 12,
+                    flexWrap: 'wrap',
                   }}
                 >
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'baseline',
-                      justifyContent: 'space-between',
-                      gap: 10,
-                      flexWrap: 'wrap',
-                    }}
+                  <CardTitle>
+                    {recentAnnouncements.length === 1
+                      ? 'Latest announcement'
+                      : 'Latest announcements'}
+                  </CardTitle>
+                  <a
+                    href="/dashboard/announcements"
+                    style={{ font: `600 13px ${FONT_BODY}`, color: V.heading, textDecoration: 'underline' }}
                   >
-                    <div style={{ font: `600 15px ${FONT_HEADING}`, color: V.heading }}>
-                      {item.title}
-                    </div>
-                    <span style={{ font: `400 12px ${FONT_BODY}`, color: V.dim }}>
-                      {formatDate(item.created_at)}
-                      {item.class_id && classNames.has(item.class_id)
-                        ? ` · ${classNames.get(item.class_id)}`
-                        : ''}
-                    </span>
-                  </div>
+                    {moreAnnouncements > 0 ? `See all ${announcements.status === 'ok' ? announcements.announcements.length : ''}` : 'See all'}
+                  </a>
+                </div>
 
-                  {/* Plain text, rendered as text, exactly as the Announcements
-                      tab does. Teacher copy never goes through markdown. */}
-                  <p
-                    style={{
-                      margin: 0,
-                      font: `400 13.5px ${FONT_BODY}`,
-                      lineHeight: 1.6,
-                      color: V.ink,
-                      whiteSpace: 'pre-wrap',
-                      display: '-webkit-box',
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden',
-                    }}
-                  >
-                    {item.body}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </Card>
+                <div
+                  style={{ display: 'flex', flexDirection: 'column', gap: SPACING.BLOCK }}
+                >
+                  {recentAnnouncements.map((item) => (
+                    <article
+                      key={item.id}
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 6,
+                        paddingLeft: 13,
+                        borderLeft: `3px solid ${C.sunset}`,
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'baseline',
+                          justifyContent: 'space-between',
+                          gap: 10,
+                          flexWrap: 'wrap',
+                        }}
+                      >
+                        <div style={{ font: `600 15px ${FONT_HEADING}`, color: V.heading }}>
+                          {item.title}
+                        </div>
+                        <span style={{ font: `400 12px ${FONT_BODY}`, color: V.dim }}>
+                          {formatDate(item.created_at)}
+                          {item.class_id && classNames.has(item.class_id)
+                            ? ` · ${classNames.get(item.class_id)}`
+                            : ''}
+                        </span>
+                      </div>
+
+                      {/* Plain text, rendered as text, exactly as the
+                          Announcements tab does. Teacher copy never goes
+                          through markdown. */}
+                      <p
+                        style={{
+                          margin: 0,
+                          font: `400 13.5px ${FONT_BODY}`,
+                          lineHeight: 1.6,
+                          color: V.ink,
+                          whiteSpace: 'pre-wrap',
+                          display: '-webkit-box',
+                          WebkitLineClamp: 3,
+                          WebkitBoxOrient: 'vertical',
+                          overflow: 'hidden',
+                        }}
+                      >
+                        {item.body}
+                      </p>
+                    </article>
+                  ))}
+                </div>
+              </Card>
+            )}
+
+            {/* Grouped with the announcements card above it, because they are
+                the same half of this page: things somebody else needs from you.
+                Everything in the next group is what you were already doing.
+
+                RENDERS NOTHING AT ALL when there is no incomplete work -- not an
+                empty card, not a "nothing assigned" line. Home is the page every
+                student lands on every session, and the great majority of them
+                have no assignments; a permanent empty card would cost all of
+                them screen space to tell them nothing. The full page is one nav
+                click away and says so properly. */}
+            {nextAssignments.length > 0 && (
+              <Card>
+                <AssignmentsHomeCard assignments={nextAssignments} total={stillToDo.length} />
+              </Card>
+            )}
+          </SectionGroup>
         )}
 
-        {/* Directly under the announcements card and above the progress cards,
-            because it belongs to the same half of this page: things somebody
-            else needs from you. Everything below is what you were already
-            doing.
-
-            RENDERS NOTHING AT ALL when there is no incomplete work -- not an
-            empty card, not a "nothing assigned" line. Home is the page every
-            student lands on every session, and the great majority of them have
-            no assignments; a permanent empty card would cost all of them screen
-            space to tell them nothing. The full page is one nav click away and
-            says so properly. */}
-        {nextAssignments.length > 0 && (
+        <SectionGroup>
           <Card>
-            <AssignmentsHomeCard assignments={nextAssignments} total={stillToDo.length} />
-          </Card>
-        )}
-
-        <Card>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             <div
               style={{
                 display: 'flex',
@@ -313,105 +361,111 @@ export default async function DashboardHome({
               <CardTitle>Course progress</CardTitle>
               <span style={{ font: `600 22px ${FONT_HEADING}`, color: V.heading }}>{pct}%</span>
             </div>
-            <ProgressBar value={doneItems} total={totalItems} />
-            <Muted size={13}>
-              {totalItems === 0
-                ? 'No curriculum items are published yet.'
-                : `${doneItems} of ${totalItems} practice and quiz questions answered correctly, across ${topics.length} topics.`}
-            </Muted>
-          </div>
-        </Card>
-
-        <Card>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 13 }}>
-            {/* No color override. C.sunset here was orange-as-text at 2.10:1 on
-                the white card, the worst of the two on this page, and the same
-                label already renders in V.dim on the Modules ResumeCard. The
-                default is now the only eyebrow colour the dashboard uses. */}
-            <Eyebrow>
-              {recentTopic ? 'Pick up where you left off' : 'Start here'}
-            </Eyebrow>
-
-            {recentTopic ? (
-              <>
-                <div>
-                  <div style={{ font: `600 19px ${FONT_HEADING}`, color: V.heading }}>
-                    {recentTopic.topic_name}
-                  </div>
-                  <div style={{ marginTop: 4, font: `400 13px ${FONT_BODY}`, color: V.dim }}>
-                    Unit {recentTopic.unit_number} · {recentTopic.topic_id}
-                    {recentProgress && recentProgress.total > 0
-                      ? ` · ${recentProgress.correct} of ${recentProgress.total} correct so far`
-                      : ''}
-                  </div>
-                </div>
-                <a
-                  className="um-btn-primary"
-                  href={topicHref(recentTopic)}
-                  style={{
-                    alignSelf: 'flex-start',
-                    padding: '12px 26px',
-                    borderRadius: 11,
-                    background: C.sunset,
-                    boxShadow: `0 2px 0 ${C.sunsetShadow}`,
-                    font: `600 15px ${FONT_BODY}`,
-                    color: C.midnight,
-                  }}
-                >
-                  Keep going
-                </a>
-              </>
-            ) : startTopic ? (
-              <>
-                {startTopic.reason && (
-                  <div style={{ font: `400 13px ${FONT_BODY}`, lineHeight: 1.6, color: V.dim }}>
-                    {startTopic.reason}
-                  </div>
-                )}
-                <div>
-                  <div style={{ font: `600 19px ${FONT_HEADING}`, color: V.heading }}>
-                    {startTopic.topic_name}
-                  </div>
-                  <div style={{ marginTop: 4, font: `400 13px ${FONT_BODY}`, color: V.dim }}>
-                    Unit {startTopic.unit_number} · {startTopic.topic_id}
-                  </div>
-                </div>
-                <a
-                  className="um-btn-primary"
-                  href={startTopic.href}
-                  style={{
-                    alignSelf: 'flex-start',
-                    padding: '12px 26px',
-                    borderRadius: 11,
-                    background: C.sunset,
-                    boxShadow: `0 2px 0 ${C.sunsetShadow}`,
-                    font: `600 15px ${FONT_BODY}`,
-                    color: C.midnight,
-                  }}
-                >
-                  {startTopic.isPlaceholder
-                    ? 'See what happens next'
-                    : startTopic.reason
-                      ? 'Start here'
-                      : 'Start the first topic'}
-                </a>
-              </>
-            ) : (
-              <Muted size={13.5}>There is no curriculum published for your course yet.</Muted>
-            )}
-          </div>
-        </Card>
-
-        <Card>
-          <JoinClassPanel />
-        </Card>
-
-        {profile.role === 'teacher' && (
-          <Card padding="16px 24px">
-            <FlagsPanel />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: SPACING.BLOCK }}>
+              <ProgressBar value={doneItems} total={totalItems} />
+              <Muted size={13}>
+                {totalItems === 0
+                  ? 'No curriculum items are published yet.'
+                  : `${doneItems} of ${totalItems} practice and quiz questions answered correctly, across ${topics.length} topics.`}
+              </Muted>
+            </div>
           </Card>
-        )}
-      </div>
+
+          <Card>
+            {/* THIS CARD HAD NO HEADING. It is the largest panel on the page and
+                it opened with an 11px uppercase eyebrow while every neighbour
+                opened with 16px heading ink, so it did not read as a peer of
+                them -- half of what made this column look flat.
+
+                The eyebrow is PROMOTED to the panel tier rather than joined by a
+                heading: the words were already right, only the tier was wrong,
+                and adding a title above the eyebrow would have said the same
+                thing twice. No colour changed -- the eyebrow's V.dim is gone and
+                CardTitle's V.heading is the tier's ink, both already paired. */}
+            <CardTitle>{recentTopic ? 'Pick up where you left off' : 'Start here'}</CardTitle>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: SPACING.BLOCK }}>
+              {recentTopic ? (
+                <>
+                  <div>
+                    <div style={{ font: `600 19px ${FONT_HEADING}`, color: V.heading }}>
+                      {recentTopic.topic_name}
+                    </div>
+                    <div style={{ marginTop: 4, font: `400 13px ${FONT_BODY}`, color: V.dim }}>
+                      Unit {recentTopic.unit_number} · {recentTopic.topic_id}
+                      {recentProgress && recentProgress.total > 0
+                        ? ` · ${recentProgress.correct} of ${recentProgress.total} correct so far`
+                        : ''}
+                    </div>
+                  </div>
+                  <a
+                    className="um-btn-primary"
+                    href={topicHref(recentTopic)}
+                    style={{
+                      alignSelf: 'flex-start',
+                      padding: '12px 26px',
+                      borderRadius: 11,
+                      background: C.sunset,
+                      boxShadow: `0 2px 0 ${C.sunsetShadow}`,
+                      font: `600 15px ${FONT_BODY}`,
+                      color: C.midnight,
+                    }}
+                  >
+                    Keep going
+                  </a>
+                </>
+              ) : startTopic ? (
+                <>
+                  {startTopic.reason && (
+                    <div style={{ font: `400 13px ${FONT_BODY}`, lineHeight: 1.6, color: V.dim }}>
+                      {startTopic.reason}
+                    </div>
+                  )}
+                  <div>
+                    <div style={{ font: `600 19px ${FONT_HEADING}`, color: V.heading }}>
+                      {startTopic.topic_name}
+                    </div>
+                    <div style={{ marginTop: 4, font: `400 13px ${FONT_BODY}`, color: V.dim }}>
+                      Unit {startTopic.unit_number} · {startTopic.topic_id}
+                    </div>
+                  </div>
+                  <a
+                    className="um-btn-primary"
+                    href={startTopic.href}
+                    style={{
+                      alignSelf: 'flex-start',
+                      padding: '12px 26px',
+                      borderRadius: 11,
+                      background: C.sunset,
+                      boxShadow: `0 2px 0 ${C.sunsetShadow}`,
+                      font: `600 15px ${FONT_BODY}`,
+                      color: C.midnight,
+                    }}
+                  >
+                    {startTopic.isPlaceholder
+                      ? 'See what happens next'
+                      : startTopic.reason
+                        ? 'Start here'
+                        : 'Start the first topic'}
+                  </a>
+                </>
+              ) : (
+                <Muted size={13.5}>There is no curriculum published for your course yet.</Muted>
+              )}
+            </div>
+          </Card>
+
+          <Card>
+            <JoinClassPanel />
+          </Card>
+
+          {profile.role === 'teacher' && (
+            <Card>
+              <FlagsPanel />
+            </Card>
+          )}
+        </SectionGroup>
+      </PageStack>
     </>
   );
 }
