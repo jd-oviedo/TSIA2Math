@@ -1,6 +1,6 @@
-import { RADIUS, C, EYEBROW } from '../../components/curriculum-theme';
+import { RADIUS, C } from '../../components/curriculum-theme';
 import { V } from '../../components/dashboard-theme';
-import { FONT_HEADING } from '../../components/fonts';
+import { FONT_HEADING, FONT_BODY } from '../../components/fonts';
 
 // "Pick up where you left off", at the head of Modules.
 //
@@ -39,12 +39,16 @@ export default function ResumeCard({
       }}
     >
       <div style={{ flex: 1, minWidth: 180, display: 'flex', flexDirection: 'column', gap: 3 }}>
-        {/* The shared EYEBROW, not a copy of it. This was 600 11px body font
-            at 0.06em -- the same role as every other eyebrow in the product,
-            drifted in BOTH family and letter-spacing from the constant that
-            defines it (mono, 0.08em). No colour changed; V.dim is still the
-            eyebrow ink and is still supplied here. */}
-        <div style={{ ...EYEBROW, color: V.dim }}>Pick up where you left off</div>
+        <div
+          style={{
+            font: `600 11px ${FONT_BODY}`,
+            letterSpacing: '0.06em',
+            textTransform: 'uppercase',
+            color: V.dim,
+          }}
+        >
+          Pick up where you left off
+        </div>
         <div style={{ font: `600 15px ${FONT_HEADING}`, color: V.heading }}>{topicName}</div>
         <div
           style={{
