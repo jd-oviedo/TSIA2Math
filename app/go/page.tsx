@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Footer } from "../components/Footer";
 import { RoleTapList } from "./RoleTapList";
+import { DASH } from "../components/dashboard-theme";
 
 export const metadata: Metadata = {
   title: "UnpackMath",
   description: "Are you a student, teacher, or parent?",
 };
 
-const OFF_WHITE = "#F5F5F3";
 const NEAR_BLACK = "#1A1A1A";
 const WARM_GRAY = "#5F5E5A";
 
@@ -20,7 +20,7 @@ export default function QrLanding() {
       style={{
         position: "relative",
         minHeight: "100vh",
-        background: OFF_WHITE,
+        background: DASH.pageBg,
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { createClient } from "../../lib/supabase-server";
 import { createAdminClient } from "../../lib/supabase-admin";
 import { profileGrants } from "../../lib/auth";
+import { BodyGround } from "../../components/BodyGround";
+import { DASH } from "../../components/dashboard-theme";
 import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from "../../components/fonts";
 import SignOutRow from "./SignOutRow";
 
@@ -58,11 +60,17 @@ export default async function TeacherSettingsPage() {
     <>
       <style>{`
         * { box-sizing: border-box; }
-        body { margin: 0; background: #F5F5F3; -webkit-font-smoothing: antialiased; }
+        body { margin: 0; -webkit-font-smoothing: antialiased; }
         ${FONT_BASE_CSS}
       `}</style>
 
-      <div style={{ minHeight: "100vh", background: "#F5F5F3", fontFamily: FONT_BODY, color: "#1A1A1A" }}>
+      {/* The ground the removed `body { background }` rule was trying to set and
+          never did -- the root layout paints the body from an inline prop, which
+          no ordinary stylesheet rule can outrank. This page is a server
+          component, so the hook is reached through its client edge. */}
+      <BodyGround color={DASH.pageBg} />
+
+      <div style={{ minHeight: "100vh", background: DASH.pageBg, fontFamily: FONT_BODY, color: "#1A1A1A" }}>
         <header style={{ background: "#fff", borderBottom: "1px solid rgba(15,30,53,0.08)", padding: "0 28px", minHeight: 60, display: "flex", alignItems: "center" }}>
           <Link
             href="/teacher"

@@ -3,6 +3,8 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import MathText from "../../../components/MathText";
+import { useBodyBackground } from "../../../components/useBodyBackground";
+import { DASH } from "../../../components/dashboard-theme";
 import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from "../../../components/fonts";
 import OfficialScorePanel from "./OfficialScorePanel";
 import CurriculumProgressPanel from "./CurriculumProgressPanel";
@@ -117,6 +119,16 @@ export default function StudentDetailPage() {
   const classId = searchParams.get("class_id") ?? "";
   const { isMobile } = useViewport();
 
+  // The page ground, written onto the body itself. `shell` below used to state
+  // this as `body { background: ... }` and it never painted: the root layout
+  // sets the body background from an INLINE prop, which outranks any stylesheet
+  // rule that is not !important. See app/components/useBodyBackground.ts.
+  //
+  // Called here, at the top level, rather than inside `shell` -- that helper is
+  // a plain function called from three different branches, and a hook in it
+  // would run a different number of times per render.
+  useBodyBackground(DASH.pageBg);
+
   const [data, setData] = useState<StudentData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -133,11 +145,11 @@ export default function StudentDetailPage() {
     <>
       <style>{`
         * { box-sizing: border-box; }
-        body { margin: 0; background: #F5F5F3; -webkit-font-smoothing: antialiased; }
+        body { margin: 0; -webkit-font-smoothing: antialiased; }
         ${FONT_BASE_CSS}
         @keyframes umspin { to { transform: rotate(360deg); } }
       `}</style>
-      <div style={{ minHeight: "100vh", background: "#F5F5F3", fontFamily: FONT_BODY, color: "#1A1A1A" }}>{children}</div>
+      <div style={{ minHeight: "100vh", background: DASH.pageBg, fontFamily: FONT_BODY, color: "#1A1A1A" }}>{children}</div>
     </>
   );
 

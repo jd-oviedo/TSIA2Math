@@ -6,6 +6,7 @@ import MathText from '../components/MathText';
 import { FONT_HEADING, FONT_BASE_CSS } from '../components/fonts';
 import { DASH, cardStyle } from '../components/dashboard-theme';
 import { HOVER_LABEL_CSS } from '../components/HoverLabel';
+import { useBodyBackground } from '../components/useBodyBackground';
 import TeacherShell, { useViewport, useTeacherShell } from './TeacherShell';
 import NewAnnouncement from './NewAnnouncement';
 import NewAssignment, { type AssignTopic } from './NewAssignment';
@@ -969,6 +970,12 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
 
   const { isMobile, isCompact } = useViewport();
 
+  // The page ground, written onto the body itself. The <style> block below used
+  // to state this as `body { background: ... }` and it never painted: the root
+  // layout sets the body background from an INLINE prop, which outranks any
+  // stylesheet rule that is not !important. See app/components/useBodyBackground.ts.
+  useBodyBackground(DASH.pageBg);
+
   const selectedClass = classes.find((c) => c.id === selectedClassId) ?? null;
 
   const loadClassData = useCallback(async (classId: string) => {
@@ -1093,7 +1100,7 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
     <>
       <style>{`
         * { box-sizing: border-box; }
-        body { margin: 0; background: ${DASH.pageBg}; -webkit-font-smoothing: antialiased; }
+        body { margin: 0; -webkit-font-smoothing: antialiased; }
         ${FONT_BASE_CSS}
         ${HOVER_LABEL_CSS}
       `}</style>
