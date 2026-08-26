@@ -155,9 +155,19 @@ async function waitForServer(origin, timeoutMs = 60_000) {
  * actually decoded", and a src that 404s leaves the string correct and the
  * dimensions zero. Values are stringified so they compare and poll for
  * stability exactly the way every other reading here does.
+ *
+ * `viewport` is an optional { width, height } for the context. It exists for
+ * the surfaces that only EXIST at one width: .um-topbar carries an inline
+ * display:none and is flipped to flex by the max-width:900px block in
+ * DASHBOARD_CSS, so at the default 1280 the shell's nav trigger is in the DOM
+ * but never laid out. getComputedStyle DOES still resolve colour through var()
+ * inside a display:none subtree -- measured, not assumed -- so a colour read at
+ * the default width is not wrong. It is weaker: it measures a box the layout
+ * never made, and would go on passing if the element stopped rendering at all.
+ * Omit it and nothing changes for the callers that do not pass it.
  */
-export async function readComputed(browser, origin, { route, theme, probes, gaps = {}, centres = {}, tags = {}, dom = {} }) {
-  const ctx = await browser.newContext();
+export async function readComputed(browser, origin, { route, theme, probes, gaps = {}, centres = {}, tags = {}, dom = {}, viewport = null }) {
+  const ctx = await browser.newContext(viewport ? { viewport } : {});
   await ctx.addInitScript(
     ([key, value]) => {
       try {
