@@ -78,6 +78,22 @@ const CARD_USED_WIDTH = '788px';
 const TAB_ACTIVE_LIGHT = 'rgb(237, 235, 228)'; // #EDEBE4, was cream #E8E0CF
 const TAB_INACTIVE_LIGHT = 'rgba(0, 0, 0, 0)'; // `transparent`, showing the bar
 
+// The top bar's bottom edge, TopicChrome.tsx:74, painted with LIGHT.rule.
+//
+// WHY IT IS ASSERTED HERE. The structural rule moved off Cipher Gold on
+// 2026-08-26 at FOUR call sites at once, and moving all four together was the
+// decision rather than a side effect -- two structural-rule colours in one tree
+// would be worse than either alone. So each site needs a check that reddens on
+// a partial revert. This lane owns this one because TopicChrome needs no lesson
+// data and is already mounted here; the section divider, the outline rail edge
+// and the practice problem frame need real sections and items, so they are
+// asserted in scripts/verify_lesson_dark.mjs. See ui-verify-lane.mjs:15-18 for
+// the split.
+//
+// Restated rather than imported, like every other baseline in this file.
+// Border colour serialises as the authored rgba, uncomposited.
+const RULE_LIGHT = 'rgba(14, 14, 17, 0.3)'; // LIGHT.rule, was gold #C8A96E
+
 const rows = [];
 let failures = 0;
 
@@ -148,6 +164,8 @@ try {
             selector: '.um-bar-parts a:not([aria-current])',
             prop: 'backgroundColor',
           },
+          barRule: { selector: '.um-bar', prop: 'borderBottomColor' },
+          barRuleStyle: { selector: '.um-bar', prop: 'borderBottomStyle' },
         },
       });
       assertTheme(theme, resolvedTheme, `curriculum/${theme}`);
@@ -186,6 +204,13 @@ try {
           values.tabInactive === TAB_INACTIVE_LIGHT &&
             values.tabActive !== values.tabInactive,
           `active ${values.tabActive} vs inactive ${values.tabInactive}`,
+        );
+        record(
+          `curriculum: the top bar's rule is the neutral ${RULE_LIGHT}, not the gold`,
+          values.barRuleStyle === 'solid' && values.barRule === RULE_LIGHT,
+          `got ${values.barRule} (${values.barRuleStyle}) -- if this reads ` +
+            `rgb(200, 169, 110) the rule token was partially reverted to ` +
+            `Cipher Gold; the other three call sites are in verify_lesson_dark.mjs`,
         );
         record(
           `curriculum: the prose card's used width caps at ${CARD_USED_WIDTH}`,

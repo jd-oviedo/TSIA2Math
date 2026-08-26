@@ -388,13 +388,40 @@ export default function LessonBody({
               }}
               style={{
                 ...card,
-                padding: i === 0 ? '0 0 30px' : '30px 0',
+                // 38px above the eyebrow, not 30. The rule sits 44px below the
+                // previous section's last line (its own 30px of bottom padding
+                // plus the column's 14px flex gap) and now 38px above the next
+                // section's eyebrow. Keeping the larger number ABOVE the rule is
+                // what groups the line with the section it STARTS rather than
+                // the one it ends, and the extra 8px below it is what lets that
+                // start read as a start. The first section has no rule and no
+                // section above it, so it keeps 0.
+                padding: i === 0 ? '0 0 30px' : '38px 0',
                 // T.rule, not T.hairline: this is the edge BETWEEN sections and
                 // it is the one carrying the structure of the whole column.
                 borderTop: i === 0 ? 'none' : `1px solid ${T.rule}`,
               }}
             >
-              <div style={{ ...EYEBROW, color: T.muted }}>
+              {/* A LOCAL STEP UP, NOT AN EDIT TO THE EYEBROW TOKEN.
+                  EYEBROW has fourteen call sites across the dashboard and this
+                  tree, and only this one is announcing the start of a section,
+                  so the prominence belongs here and not in the token.
+
+                  Two properties move and no others. Weight 600 -> 700, and
+                  colour T.muted -> T.ink2: 4.95 -> 8.36 in light, 5.39 -> 7.97
+                  in dark. Size, letter-spacing, case and family are deliberately
+                  the token's, so this reads as a STRONGER INSTANCE of the same
+                  element rather than a different one.
+
+                  It stops at ink2 rather than ink on purpose. The eyebrow labels
+                  the h3 below it and must not out-shout the thing it labels;
+                  full ink measures 17.66 and would. No hue is introduced, so
+                  nothing here reads as a new accent.
+
+                  fontWeight after the `font` shorthand is the override, and the
+                  order matters: React assigns these in declaration order, so the
+                  shorthand lands first and the longhand wins. */}
+              <div style={{ ...EYEBROW, fontWeight: 700, color: T.ink2 }}>
                 Section {i + 1} of {count}
               </div>
               <h3

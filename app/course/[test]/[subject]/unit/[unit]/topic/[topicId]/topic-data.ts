@@ -87,7 +87,13 @@ export type RouteParams = {
 // rather than in the client component keeps the whole remark/KaTeX pipeline
 // out of the browser bundle, and it is the same pipeline the static markdown
 // already goes through, so the two render identically.
-function toPublicItems(section: StoredSection | undefined): PublicPracticeItem[] {
+// EXPORTED for scripts/verify_lesson_dark.mjs, which mounts the real
+// PracticeQuiz against real fixture items. Pure and Supabase-free -- it takes a
+// section that is already in hand and returns rows -- so exporting it hands the
+// probe the SHIPPED transform instead of letting it hand-roll items, which is
+// the failure mode that script's own header exists to prevent. loadTopic below
+// is the only other caller and is unchanged.
+export function toPublicItems(section: StoredSection | undefined): PublicPracticeItem[] {
   return (section?.items ?? [])
     .filter((item) => item.format === 'multiple_choice')
     .map((item) => ({
