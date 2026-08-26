@@ -166,7 +166,7 @@ async function waitForServer(origin, timeoutMs = 60_000) {
  * never made, and would go on passing if the element stopped rendering at all.
  * Omit it and nothing changes for the callers that do not pass it.
  */
-export async function readComputed(browser, origin, { route, theme, probes, gaps = {}, centres = {}, tags = {}, dom = {}, viewport = null }) {
+export async function readComputed(browser, origin, { route, theme, probes, gaps = {}, centres = {}, tags = {}, dom = {}, rects = {}, viewport = null }) {
   const ctx = await browser.newContext(viewport ? { viewport } : {});
   await ctx.addInitScript(
     ([key, value]) => {
@@ -210,7 +210,7 @@ export async function readComputed(browser, origin, { route, theme, probes, gaps
   const CEILING_FRAMES = 600;
 
   const snapshot = await page.evaluate(
-    async ([entries, gapEntries, centreEntries, tagEntries, domEntries, sel, minFrames, maxFrames]) => {
+    async ([entries, gapEntries, centreEntries, tagEntries, domEntries, rectEntries, sel, minFrames, maxFrames]) => {
       const frame = () => new Promise((r) => requestAnimationFrame(r));
       const readAll = () => ({
         theme: document.querySelector(sel)?.getAttribute('data-theme') ?? '(none)',
@@ -262,6 +262,33 @@ export async function readComputed(browser, origin, { route, theme, probes, gaps
             return [name, el ? String(el[prop]) : '(no such element)'];
           }),
         ),
+        // BORDER-BOX RECTS, for the assertions that are about WHERE two boxes
+        // are relative to each other rather than about the distance between
+        // them. `gaps` answers "how far below", and answers it in one axis;
+        // "is this box beside that one or under it" needs both axes and needs
+        // the edges, not the span. A caller reading these compares them itself.
+        //
+        // Rounded to 2dp for the reason gaps and centres are: sub-pixel layout
+        // noise is not a layout result.
+        rects: Object.fromEntries(
+          rectEntries.map(([name, selector]) => {
+            const el = document.querySelector(selector);
+            if (!el) return [name, null];
+            const r = el.getBoundingClientRect();
+            const round = (n) => Math.round(n * 100) / 100;
+            return [
+              name,
+              {
+                left: round(r.left),
+                right: round(r.right),
+                top: round(r.top),
+                bottom: round(r.bottom),
+                width: round(r.width),
+                height: round(r.height),
+              },
+            ];
+          }),
+        ),
       });
 
       let last = JSON.stringify(readAll());
@@ -281,6 +308,7 @@ export async function readComputed(browser, origin, { route, theme, probes, gaps
       Object.entries(centres),
       Object.entries(tags),
       Object.entries(dom),
+      Object.entries(rects),
       wrapperSel,
       MINIMUM_FRAMES,
       CEILING_FRAMES,
@@ -294,6 +322,7 @@ export async function readComputed(browser, origin, { route, theme, probes, gaps
     centres: snapshot.centres,
     tags: snapshot.tags,
     dom: snapshot.dom,
+    rects: snapshot.rects,
     resolvedTheme: snapshot.theme,
   };
 }

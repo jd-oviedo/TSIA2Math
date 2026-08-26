@@ -21,6 +21,7 @@ import {
   Card,
   CardTitle,
   Muted,
+  PageHeadRow,
   PageHeading,
   PageStack,
   ProgressBar,
@@ -194,12 +195,37 @@ export default async function DashboardHome({
 
   return (
     <>
-      <PageHeading
-        title="Home"
-        blurb={
-          classes.length
-            ? `You're in ${classes.map((c) => c.name).join(', ')}.`
-            : 'Your course progress and where to pick back up.'
+      {/* THE PAGE HEAD CARRIES THE JOIN BOX NOW.
+          ==================================================================
+          "Join a class" spent its whole life as the second-to-last panel on
+          Home, under the progress card and the resume card, which is the one
+          place a student who has just been handed a code will not look. It is
+          not a thing you were already doing -- it is a thing you arrived to
+          do -- so it does not belong in the group that holds the rest.
+
+          Beside the title instead, in a Card, which is what makes it flat: the
+          panel primitive already computes radius 0, no shadow and a panelEdge
+          hairline as of the 2026-08-26 pass. Nothing here restates any of
+          that, and a box hand-rolled at this call site is exactly how the
+          shell grew four panel shapes the last time.
+
+          The row, the 26px it leaves under itself, and why the reflow needs
+          both a wrap and a media query are all in PageHeadRow. */}
+      <PageHeadRow
+        heading={
+          <PageHeading
+            title="Home"
+            blurb={
+              classes.length
+                ? `You're in ${classes.map((c) => c.name).join(', ')}.`
+                : 'Your course progress and where to pick back up.'
+            }
+          />
+        }
+        aside={
+          <Card>
+            <JoinClassPanel />
+          </Card>
         }
       />
 
@@ -219,17 +245,31 @@ export default async function DashboardHome({
           the group containers are asserted to have no background in both themes
           by scripts/verify_shell_spacing.mjs.
 
+          THE LAST GROUP IS TWO PANELS NOW, NOT THREE. "Join a class" used to
+          sit under the resume card and has moved into the page head above --
+          see the comment there. What is left in that group is the progress
+          card and the resume card, which is what the group always meant: what
+          you were already doing.
+
           Each group is wrapped in its own condition rather than holding
           conditional children, because an empty SectionGroup is still a flex
           item and would leave a 28px hole where a group used to be. */}
       <PageStack>
         {(join || !testedBefore) && (
           <SectionGroup>
-            {/* First thing on the page when a class code came through the
-                sign-in, because it answers the question the student is holding:
-                did it work? Rendered for EVERY outcome including the failures --
-                landing here silently unenrolled is the state this whole flow
-                exists to prevent. */}
+            {/* First thing in the COLUMN when a class code came through the
+                sign-in, because it answers the question the student is
+                holding: did it work? Rendered for EVERY outcome including the
+                failures -- landing here silently unenrolled is the state this
+                whole flow exists to prevent.
+
+                It is no longer the first thing on the PAGE, and the wording
+                above is deliberate rather than stale. The join box moved to
+                the top right of the page head, so a code entered by hand and
+                the answer to a code already submitted now read as one band
+                across the top instead of sitting eight panels apart. The
+                banner keeps the column, which is where the eye lands after
+                the head. */}
             {join && <JoinResultBanner outcome={join} className={jc} />}
 
             {/* Above the announcements and the progress cards, and only until
@@ -462,10 +502,6 @@ export default async function DashboardHome({
                 <Muted size={13.5}>There is no curriculum published for your course yet.</Muted>
               )}
             </div>
-          </Card>
-
-          <Card>
-            <JoinClassPanel />
           </Card>
 
           {profile.role === 'teacher' && (

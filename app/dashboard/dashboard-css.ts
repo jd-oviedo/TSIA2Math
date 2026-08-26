@@ -69,5 +69,22 @@ ${HOVER_LABEL_CSS}
   .um-dash .um-sidebar { display: none !important; }
   .um-dash .um-topbar { display: flex !important; }
   .um-dash .um-dash-main { padding: 22px 16px 56px !important; }
+
+  /* THE TWO-COLUMN PAGE HEAD STACKS. PageHeadRow (ui.tsx) puts a panel beside
+     the page title; below the rail's breakpoint there is no room for one and
+     the title would be the column that gave way.
+
+     !important because the row's base layout is inline, and an inline
+     declaration beats a plain stylesheet rule -- the lesson already recorded
+     twenty lines up, about the .um-nav-item hover rules that never fired. The
+     three rules above it in this block carry it for the same reason.
+
+     THE CHILD RULE IS NOT DECORATION. flex: 0 1 320px is a basis along the
+     MAIN axis, so the moment the direction turns to column those 320px become
+     a HEIGHT, and both columns would be laid out 320px tall. align-items:
+     stretch is what widens the join panel to the full column once it is no
+     longer holding a 320px cross-size of its own. */
+  .um-dash .um-head-row { flex-direction: column !important; flex-wrap: nowrap !important; align-items: stretch !important; }
+  .um-dash .um-head-row > * { flex: 0 0 auto !important; }
 }
 `;
