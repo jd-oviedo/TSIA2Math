@@ -58,6 +58,12 @@ export default function VerifyLaneCurriculum() {
               border: `1px solid ${T.hairline}`,
               borderRadius: '16px',
               padding: '24px 26px',
+              // Copied from practice/page.tsx:109 and quiz/page.tsx:192 with
+              // the rest of the card. This is the value the width assertion in
+              // scripts/verify_ui_lane.mjs reads, so if the two real pages ever
+              // change their cap and this does not, the lane stops measuring
+              // them and starts measuring itself.
+              maxWidth: 788,
               boxShadow: '0 1px 3px rgba(14,14,17,.05)',
               color: T.ink2,
               font: `400 16px ${FONT_BODY}`,

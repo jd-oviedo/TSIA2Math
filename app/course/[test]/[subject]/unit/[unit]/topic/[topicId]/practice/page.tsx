@@ -91,6 +91,22 @@ export default async function PracticePage({ params }: { params: Promise<RoutePa
             border: `1px solid ${T.hairline}`,
             borderRadius: '16px',
             padding: '24px 26px',
+            // The measure, capped at the lesson column's width so a line of
+            // prose is the same length in all three parts of a topic.
+            //
+            // FLUSH LEFT, NO margin: auto, AND THAT MATCHES LessonBody:362
+            // RATHER THAN DIVERGING FROM IT. The lesson caps its measure and
+            // lets the ground run on past it (LessonBody.tsx:46), because the
+            // rail already anchors the column to the left edge. This page has no
+            // rail, so centring was the obvious alternative and is not taken:
+            // every sibling in this stack -- the heading, the intro copy, the
+            // tutor line, TopicNav -- is full-bleed, and a centred card would be
+            // the one element in the column not sharing its left edge.
+            //
+            // The cap goes on the CARD and not on .um-page, which is what
+            // layout.tsx:85-89 says to do when this needs revisiting: the page
+            // keeps filling the viewport and only the line length is capped.
+            maxWidth: 788,
             boxShadow: '0 1px 3px rgba(14,14,17,.05)',
             color: T.ink2,
             font: `400 16px ${FONT_BODY}`,

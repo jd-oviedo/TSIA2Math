@@ -120,13 +120,34 @@ const EXPECT = {
   // value below is the composited old hairline, and the dark rail fill is 1:1
   // against its own ground, which is what "invisible" means numerically.
   rules: {
+    // ─── LIGHT MOVED ONTO THE NEUTRAL FIELD 2026-08-26 ──────────────────────
+    //
+    // The cream ladder came off the curriculum tree in the same change that
+    // wrote these numbers: page #E8E0CF -> #F5F5F3, railFill #EDE8DA ->
+    // #FBFBF9, panel #FFFDF8 -> #FFFFFF. The gold rule itself did NOT move, so
+    // every ratio below is the same #C8A96E measured against a lighter ground,
+    // and every one of them improves. Recomputed rather than re-estimated.
+    //
+    // ⚠ RUN-UNVERIFIED. These six values are computed, not observed. This
+    // walker drives a LIVE topic route, which needs real curriculum data, and
+    // there is no local or branch Supabase in this repo -- .env.local points at
+    // the live project and agents do not run against prod. There is no DB-free
+    // path for this file the way there is for the page ground and the panel,
+    // which moved to app/um-verify + scripts/verify_ui_lane.mjs in PR #209 and
+    // ARE observed there.
+    //
+    // So: trust scripts/verify_ui_lane.mjs for page and panel, and treat the
+    // rule ratios below as pending a first run against a real database. They
+    // are arithmetic on values this file does not itself read, which is exactly
+    // the kind of number that can drift silently -- the reason to say so here
+    // rather than let a green-looking table imply otherwise.
     light: {
-      sectionDivider: { hex: '#C8A96E', ratio: 1.71 }, // was #DCD3BE at 1.13
-      railRule: { hex: '#C8A96E', ratio: 1.83 }, // on the new rail fill
-      railFill: { hex: '#EDE8DA' }, // was unpainted
-      barRule: { hex: '#C8A96E', ratio: 2.21 }, // on the bar's own panel
-      problemFrame: { hex: '#C8A96E', ratio: 2.21 }, // was #DCD3BE at 1.46
-      railEyebrow: { ratio: 4.74 }, // the ONE text ratio the change moved
+      sectionDivider: { hex: '#C8A96E', ratio: 2.06 }, // on #F5F5F3; was 1.71 on cream
+      railRule: { hex: '#C8A96E', ratio: 2.17 }, // on the new rail fill; was 1.83
+      railFill: { hex: '#FBFBF9' }, // DASH.subtleBg; was #EDE8DA
+      barRule: { hex: '#C8A96E', ratio: 2.24 }, // on the bar's own panel; was 2.21
+      problemFrame: { hex: '#C8A96E', ratio: 2.24 }, // on #FFFFFF; was 2.21
+      railEyebrow: { ratio: 4.99 }, // the ONE text ratio the change moved; was 4.74
     },
     dark: {
       sectionDivider: { hex: '#363536', ratio: 1.46 },
