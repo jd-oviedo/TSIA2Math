@@ -170,7 +170,10 @@ export default function DemoPage() {
     <>
       <style>{`
         * { box-sizing: border-box; }
-        body { margin: 0; background: #F5F5F3; -webkit-font-smoothing: antialiased; }
+        /* !important, and it is load-bearing: the root layout paints the body
+           from an inline prop, which no ordinary stylesheet rule can outrank.
+           See app/components/useBodyBackground.ts. */
+        body { margin: 0; background: #F5F5F3 !important; -webkit-font-smoothing: antialiased; }
         ${FONT_BASE_CSS}
       `}</style>
 

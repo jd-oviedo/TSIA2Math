@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { BodyGround } from '../../components/BodyGround';
 import { DASH } from '../../components/dashboard-theme';
 import { FONT_BASE_CSS, FONT_BODY, FONT_HEADING } from '../../components/fonts';
 import type { TeacherClass } from './students-data';
@@ -41,7 +42,7 @@ export function StudentsShell({
     <>
       <style>{`
         * { box-sizing: border-box; }
-        body { margin: 0; background: ${DASH.pageBg}; -webkit-font-smoothing: antialiased; }
+        body { margin: 0; -webkit-font-smoothing: antialiased; }
         ${FONT_BASE_CSS}
         @keyframes umspin { to { transform: rotate(360deg); } }
         .um-visually-hidden {
@@ -49,6 +50,12 @@ export function StudentsShell({
           overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
         }
       `}</style>
+
+      {/* The ground the removed `body { background }` rule was trying to set and
+          never did -- the root layout paints the body from an inline prop, which
+          no ordinary stylesheet rule can outrank. This shell is a server
+          component, so the hook is reached through its client edge. */}
+      <BodyGround color={DASH.pageBg} />
 
       <div style={{ minHeight: '100vh', background: DASH.pageBg, fontFamily: FONT_BODY, color: DASH.ink }}>
         <header style={{ background: '#0F1E35', color: '#fff', padding: '14px 24px' }}>

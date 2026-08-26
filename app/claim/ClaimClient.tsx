@@ -62,7 +62,14 @@ export default function ClaimClient({ checkoutSessionId }: { checkoutSessionId: 
     <>
       <style>{`
         * { box-sizing: border-box; }
-        body { margin: 0; background: ${NAVY}; }
+        /* !important, and it is load-bearing: app/layout.tsx paints the body
+           from an INLINE style prop, and an inline declaration outranks every
+           stylesheet rule at every specificity unless the rule carries this.
+           Without it the gutter falls back to --ec-bg, which is #F0EDE8 in
+           light mode -- a cream band bouncing against a navy page. Same fix as
+           app/teacher/worksheets/worksheet-theme.ts:290, and correct here for
+           the same reason: one colour, no theme switch, nothing to recompute. */
+        body { margin: 0; background: ${NAVY} !important; }
         ${FONT_BASE_CSS}
         @keyframes um-rise {
           from { opacity: 0; transform: translateY(10px); }

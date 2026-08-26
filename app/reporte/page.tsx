@@ -829,7 +829,10 @@ export default function ReportePage() {
     <>
       <style>{`
         * { box-sizing: border-box; }
-        body { margin: 0; background: ${PAGE_BG}; -webkit-font-smoothing: antialiased; }
+        /* !important, and it is load-bearing: the root layout paints the body
+           from an inline prop, which no ordinary stylesheet rule can outrank.
+           See app/components/useBodyBackground.ts. */
+        body { margin: 0; background: ${PAGE_BG} !important; -webkit-font-smoothing: antialiased; }
 
         @keyframes umWobble {
           0%   { transform: rotate(0deg); }
