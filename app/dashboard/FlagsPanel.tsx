@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { C } from '@/app/components/curriculum-theme';
 import { FONT_BODY } from '@/app/components/fonts';
 import { V } from '@/app/components/dashboard-theme';
 import { formatDate } from './ui';
@@ -117,7 +116,20 @@ export default function FlagsPanel() {
                   flexWrap: 'wrap',
                 }}
               >
-                <span style={{ font: '700 13px ui-monospace, Menlo, monospace', color: C.gemini }}>
+                {/* V.link, not C.gemini. Same reason the notice copy above is
+                    V.noticeWarn: C.* is the LIGHT-ONLY curriculum palette and
+                    this surface flips. Gemini measured 2.77 on V.subtleBg in
+                    light and 5.25 in dark -- failing one theme, passing the
+                    other, from one hardcoded hex. The pair is 6.33 / 5.25, and
+                    the dark value IS Gemini, unchanged.
+
+                    The token is named for a link and this is an item id, which
+                    is a stretch it is worth naming: the two share a ground, a
+                    tier and now a value, and a second token holding the same
+                    pair would have to justify itself before it diverges. If
+                    this id ever needs its own colour, that is the moment to
+                    split it out, not now. */}
+                <span style={{ font: '700 13px ui-monospace, Menlo, monospace', color: V.link }}>
                   {flag.item_id}
                 </span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>

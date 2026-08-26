@@ -167,6 +167,67 @@ export interface DashSurface {
    * as a quiet one.
    */
   gatedRowBg: string;
+
+  // ─── Links and the focus ring ──────────────────────────────────────────────
+  //
+  // ADDED 2026-08-26. dashboard-css.ts painted all three of these as ONE
+  // hardcoded hex, C.gemini #6E9DC8, which does not move when the theme does.
+  // Measured on the grounds they actually render on:
+  //
+  //                                   light            dark
+  //   link on --umd-page-bg      2.63 FAIL       6.24 ok
+  //   link on --umd-card-bg      2.87 FAIL       5.66 ok
+  //   flag id on --umd-subtle-bg 2.77 FAIL       5.25 ok
+  //   focus ring on the rail     2.19 FAIL       5.60 ok
+  //
+  // Gemini is a light-theme failure in every role and a dark-theme pass in
+  // every role, which is the same shape as statusProgress above: the brand
+  // value survives in dark and is replaced only where it cannot hold. So these
+  // are pairs, and the dark side of each is the value that was already there.
+  //
+  // THE VALUES ARE THE CURRICULUM TREE'S, NOT NEW ONES. The identical defect
+  // was fixed in curriculum-surface.ts:452/589 (link) and :439/583 (focus), and
+  // this mirrors it rather than inventing a third treatment: the shell and the
+  // lesson tree are two surfaces of one product and a student crosses between
+  // them, so a link must not be one blue on /dashboard and another on a topic
+  // page. Same mechanism too -- a token pair published as a custom property and
+  // flipped by data-theme on the wrapper, never a [data-theme] selector written
+  // onto the rule itself.
+  /** Prose link. Light is Gemini darkened until it clears 4.5:1; dark is Gemini. */
+  link: string;
+  /**
+   * Link hover, and THE ONE PLACE THIS DELIBERATELY DOES NOT MIRROR THE
+   * CURRICULUM TREE.
+   *
+   * That tree hovers to orange -- #A8631F light, #F0A33E dark
+   * (curriculum-surface.ts:453/590). Copying it here would reproduce exactly
+   * the rule this pass exists to enforce: orange is a fill, a CTA and a marker,
+   * never text. The rule outranks the mirror.
+   *
+   * So hover takes the accent pair instead, which mints no new colour -- it is
+   * --ec-accent (themes.ts:21/58), login-theme.ts:127/183, and the focus pair
+   * immediately below. The link brightens to a more saturated blue, in the same
+   * direction in both themes. 5.13 on the page and 5.60 on the card in light,
+   * 7.17 and 6.51 in dark.
+   *
+   * THE COST, STATED. Link-to-hover luminance separation is 1.17 light and 1.15
+   * dark, so the shift reads as hue and saturation more than as lightness. The
+   * alternative was minting two new blues for a 1.31/1.52 step; hover is a
+   * transient state the cursor already confirms, and this system does not need
+   * a fifth blue to say so.
+   */
+  linkHover: string;
+  /**
+   * The focus-visible ring. A UI component boundary, so the obligation is WCAG
+   * 1.4.11 at 3:1, not 1.4.3 at 4.5:1.
+   *
+   * A SEPARATE TOKEN FROM link, because the curriculum tree separates them and
+   * because the binding ground is different: the ring is the only one of these
+   * three that lands on the cream rail #E8E0CF, where every nav link and the
+   * logout button focus. #0F69BA measures 4.27 there -- clear of 3:1, and short
+   * of 4.5:1, which is why it must not be borrowed as a text colour.
+   */
+  focus: string;
 }
 
 export const LIGHT: DashSurface = {
@@ -212,6 +273,13 @@ export const LIGHT: DashSurface = {
   noticeWarnBg: '#FBF0E2', // V.ink on it: 15.47
   noticeOkBg: '#EDF3EA', // V.ink on it: 15.42
   gatedRowBg: '#F6F2E8',
+  // Gemini darkened until it clears 4.5:1 on both link grounds: 6.01 on pageBg,
+  // 6.56 on cardBg, 6.33 on subtleBg where FlagsPanel's item id sits. The exact
+  // hex curriculum-surface.ts:452 arrived at for the same colour in the same
+  // role, reused rather than re-derived.
+  link: '#2F6091',
+  linkHover: '#0F69BA', // 5.13 on pageBg, 5.60 on cardBg
+  focus: '#0F69BA', // 4.27 on the rail, its worst ground. 1.4.11 wants 3:1.
 };
 
 // The same surface after dark. Warm greys go to warm-neutral darks rather than
@@ -254,6 +322,12 @@ export const DARK: DashSurface = {
   noticeWarnBg: '#3A2E1E',
   noticeOkBg: '#22322A',
   gatedRowBg: '#26262B',
+  // Gemini Blue itself, unmodified, and this is the value that was already
+  // painted here: only the light side of each pair was failing. 6.24 on pageBg,
+  // 5.66 on cardBg, 5.25 on subtleBg.
+  link: '#6E9DC8',
+  linkHover: '#5AAAEE', // 7.17 on pageBg, 6.51 on cardBg. --ec-accent dark.
+  focus: '#5AAAEE', // 6.44 on the rail, 7.17 on the page.
 };
 
 // The teacher dashboard is light-only, so it imports this rather than branching.
@@ -374,6 +448,9 @@ const VAR_NAMES: Record<keyof DashSurface, string> = {
   noticeWarnBg: '--umd-notice-warn-bg',
   noticeOkBg: '--umd-notice-ok-bg',
   gatedRowBg: '--umd-gated-row-bg',
+  link: '--umd-link',
+  linkHover: '--umd-link-hover',
+  focus: '--umd-focus',
 };
 
 function declarations(s: DashSurface): string {
