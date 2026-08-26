@@ -1,25 +1,47 @@
 import { SURFACES } from '../../components/curriculum-surface';
+import { DASH } from '../../components/dashboard-theme';
 import { strandTint } from '../../lib/strands';
 import { FONT_HEADING, FONT_BODY } from '../../components/fonts';
 
 // The worksheet generator's page chrome, and nothing else.
 //
-// SCOPED ON PURPOSE. Every value below is read out of curriculum-surface.ts
-// LIGHT rather than restated, so this file owns no palette of its own: it is a
-// naming layer that says which curriculum token plays which role on these four
-// screens. Change a colour there and these pages move with the lesson pages,
-// which is the whole point of not hardcoding the design import's hexes.
+// TWO SOURCES, SPLIT BY ROLE, AND THE SPLIT IS THE POINT. Every value here used
+// to be read out of curriculum-surface.ts LIGHT, which put the generator on the
+// lesson pages' warm cream ladder. That was right while the generator was the
+// only teacher surface with a palette of its own. It is wrong now that a
+// teacher crosses from /teacher to /teacher/worksheets in one session and
+// changes colour temperature doing it.
+//
+//   THE NEUTRALS come from dashboard-theme.ts: page, panel, the two quiet fills
+//   and the meter track. IMPORTED rather than restated, so the generator and
+//   the dashboard move together. That guarantee is the entire reason for this
+//   change; copying the four hexes across would have looked identical today and
+//   drifted the first time either surface was touched.
+//
+//   EVERYTHING ELSE still comes from curriculum-surface.ts LIGHT: ink, the
+//   state colours, the CTA family. Those are not ground, they carry meaning,
+//   and the dashboards do not disagree with the lesson pages about what a link
+//   or a missed answer looks like.
+//
+// SURFACES.light IS READ HERE, NEVER WRITTEN. Editing it to move these four
+// screens would move every lesson, practice and quiz page in the product with
+// them: `panel` alone has 22 call sites across 11 files in the curriculum tree,
+// and `page` is the body ground under all of them. Pointing the neutrals
+// somewhere else is what keeps this change worksheet-shaped, and it is why this
+// file now names two theme imports instead of one.
 //
 // LIGHT ONLY, like the rest of the teacher surface. dashboard-theme.ts records
-// why: the teacher pages are not wired to the theme toggle, so reading
-// SURFACES.light directly is the honest thing rather than pretending at a dark
-// mode nothing can reach. WS_CHROME_CSS repaints body and .katex for exactly
-// that reason, because the ROOT layout is theme-aware even though these pages
-// are not.
+// why: the teacher pages are not wired to the theme toggle, so reading LIGHT
+// directly is the honest thing rather than pretending at a dark mode nothing
+// can reach. WS_CHROME_CSS repaints body and .katex for exactly that reason,
+// because the ROOT layout is theme-aware even though these pages are not.
 //
 // WHAT THIS FILE IS NOT. It is not the paper. print-styles.ts owns the printed
-// worksheet and the answer key, and the two files share no values and no
-// imports. A change here cannot reach a printed sheet, by construction.
+// worksheet and the answer key, and the two share no values and no imports --
+// print-styles.ts restates its own #E8E0CF as --ws-cream. A change here cannot
+// reach a printed sheet, by construction, and the sheet stays cream while the
+// chrome around it does not. That is deliberate: the paper is a different
+// object from the app, and a teacher holding one is not looking at the other.
 //
 // ORANGE IS NEVER TEXT. Sunset appears below as `cta` (a fill), `trackFill` (a
 // meter fill) and `marker` (a 3px inset rule). There is deliberately no orange
@@ -29,42 +51,88 @@ import { FONT_HEADING, FONT_BODY } from '../../components/fonts';
 
 const S = SURFACES.light;
 
+// THE HAIRLINE IS NOT THE DASHBOARD'S, AND THAT IS NOT AN OVERSIGHT.
+//
+// The dashboard's card edge is rgba(15,30,53,0.07) PAIRED WITH a 1px shadow,
+// `0 1px 2px rgba(15,30,53,0.04)`. Our system forbids that shadow on these
+// screens -- radius zero, no elevation -- so a panel here separates on the
+// border alone, and 0.07 alone is tuned for a job it is not doing here.
+//
+// Measured, on a flat #FFFFFF panel over the #F5F5F3 page. An edge is only as
+// legible as its weaker side, so the deciding column is the lower of the two:
+//
+//   alpha   on panel   on page   weaker side
+//   0.07      1.148     1.146      1.146      the dashboard value, shadow-fed
+//   0.10      1.221     1.218      1.218
+//   0.12      1.274     1.270      1.270
+//   0.14      1.329     1.324      1.324
+//   0.16      1.388     1.382      1.382      <- taken
+//   0.18      1.450     1.443      1.443
+//
+// The bar is what the cream chrome already achieved: #DCD3BE measured 1.465 on
+// the cream panel and 1.364 on the cream page, weaker side 1.364. And it was
+// helped by a ground step this change removes -- panel-on-page falls from
+// 1.292 to 1.092, because #FFFFFF on #F5F5F3 is a far smaller step than
+// #FFFDF8 on #E8E0CF. So the border has to carry MORE than it used to, not
+// less. 0.16 is the lightest value that clears 1.364, which is the lightest
+// that holds the separation the generator ships today.
+//
+// Checked by eye as well as by ratio: at 0.07 the row divider inside a panel
+// effectively disappears against the fill.
+//
+// Decorative. It carries no text and marks no control, so 1.4.11 does not
+// apply. controlBorder below is the token for the case where it does.
+const HAIRLINE = 'rgba(15,30,53,0.16)';
+
 export const WS = {
-  // ─── the four surfaces, darkest ground to lightest panel ─────────────────
-  page: S.page, // #E8E0CF
-  rail: S.rail, // #EDE8DA
-  band: S.band, // #F3EFE3
-  panel: S.panel, // #FFFDF8
-  insetRow: S.insetRow, // #F6F2E8
-  quietBox: S.quietBox, // #EDE7D6
+  // ─── the neutral field ────────────────────────────────────────────────────
+  // Four rungs where there used to be six steps of cream. page, rail and band
+  // are ONE colour now: the header band and the in-page rail stopped being a
+  // fill a shade off the ground and became a region bounded by a hairline,
+  // which is how the dashboard states the same thing. Every band and rail call
+  // site already carried that border, so nothing needed a new one.
+  //
+  // They stay as three separate tokens rather than collapsing to one, because
+  // "the ground", "the rail" and "the band" are three different questions and
+  // only one of them has to keep this answer.
+  page: DASH.pageBg, // #F5F5F3
+  rail: DASH.pageBg, // the field; the rail is its border, not its fill
+  band: DASH.pageBg, // likewise the header band
+  panel: DASH.cardBg, // #FFFFFF
+  insetRow: DASH.rowHoverBg, // #FAFAF7, the row hover and the locked-row fill
+  quietBox: DASH.trackBg, // #F2F1EC, the quiet box and the mobile sticky bar
 
   // ─── ink ──────────────────────────────────────────────────────────────────
-  ink: S.ink, // #0E0E11, 14.68 on page, 18.96 on panel
-  ink2: S.ink2, // 7.56 to 8.73 across the ladder
-  // The design import's mono micro-labels are #8A8474, which measures 2.84 to
-  // 3.67 across the six surfaces they render on and fails 4.5:1 on every one.
-  // muted is the only candidate that clears the whole ladder: 4.62 on page,
-  // 4.74 rail, 4.84 band, 5.03 panel, 4.88 insetRow, 4.72 quietBox. Measured,
-  // not assumed.
+  // Every ratio below is re-measured on the neutral field. All of them improve,
+  // because the grounds got lighter and the ink did not move.
+  ink: S.ink, // #0E0E11, 17.66 on page (was 14.68), 19.27 on panel
+  ink2: S.ink2, // 8.39 page to 8.80 panel, was 7.56 to 8.73
+  // The design import's mono micro-labels are #8A8474, which measured 2.84 to
+  // 3.67 across the cream ladder and failed 4.5:1 on every rung. muted was the
+  // only candidate that cleared all six, and it clears the neutral field by
+  // more: 4.92 on page, rail and band, 5.06 on panel. Measured, not assumed.
   muted: S.muted,
   // WCAG 1.4.3 exempts inactive controls, and a disabled button at muted ink
-  // reads as enabled.
+  // reads as enabled. It must keep failing: 2.62 on page, 2.66 on panel.
   disabled: S.disabled,
 
   // ─── lines ────────────────────────────────────────────────────────────────
   // Radius zero everywhere on these screens, so a hairline is the only thing
-  // separating a panel from its ground. 1.46 on panel, decorative, exempt.
-  hairline: S.hairline, // #DCD3BE
-  controlBorder: S.controlBorder, // #8A8474, as a BORDER, which is its role
+  // separating a panel from its ground. See the measurement above HAIRLINE.
+  hairline: HAIRLINE, // rgba(15,30,53,0.16), 1.39 on panel / 1.38 on page
+  // #8A8474, as a BORDER, which is its role. It is the one warm value left in
+  // the chrome and it stays: 1.4.11 applies to it at 3:1, and the move to the
+  // neutral field is what finally clears that -- 2.84 on cream, 3.41 here.
+  controlBorder: S.controlBorder,
 
   // ─── the one orange, in its three non-text roles ──────────────────────────
   cta: S.cta, // #F0A33E. Sunset, substituted for the import's retired #E89B3C
-  ctaInk: S.ctaInk, // #111111, 9.00 on the CTA
+  ctaInk: S.ctaInk, // #111111, 9.00 on the CTA, unchanged: it is against the fill
   ctaHover: S.ctaHover,
   ctaShadow: S.ctaShadow,
   /** The board's `box-shadow: inset 3px 0 0` selection rule. A rule, not an ink. */
   marker: S.cta,
-  track: S.track,
+  track: DASH.trackBg, // #F2F1EC, the meter well. Was the cream hairline hex.
   trackFill: S.trackFill,
 
   // ─── the dark secondary, one per screen ───────────────────────────────────
@@ -72,18 +140,19 @@ export const WS = {
   // value ruled in for this system, so the secondary button is ink on panel
   // text rather than a second near-black.
   dark: S.ink,
-  darkInk: S.panel, // 18.96 on ink
+  darkInk: DASH.cardBg, // 19.27 on ink, and the same white as a panel
 
   // ─── state ────────────────────────────────────────────────────────────────
-  link: S.link, // #2F6091, 6.45 panel / 5.70 band / 4.99 page
+  link: S.link, // #2F6091, 6.56 panel / 6.01 on the field, was 6.45 / 4.99
   linkHover: S.linkHover,
-  focus: S.focus, // #0F69BA
-  // #B0452F measures 5.53 on panel and 4.28 on PAGE, so a missed-state label
-  // belongs on a panel or a band and never directly on the page ground.
+  focus: S.focus, // #0F69BA, 5.13 on the field
+  // #B0452F measured 4.28 on the CREAM page, which is why the note here used to
+  // say a missed-state label belonged on a panel and never on the ground. On
+  // the neutral field it is 5.15, and on panel 5.62, so the restriction lifts.
   missed: S.missed,
   missedTint: S.missedTint,
-  error: S.error, // #8A5520, 6.07 on panel
-  statusComplete: S.statusComplete,
+  error: S.error, // #8A5520, 6.17 on panel, 5.66 on the field
+  statusComplete: S.statusComplete, // 5.69 on panel, 5.21 on the field
   correctTint: S.correctTint,
 
   font: { heading: FONT_HEADING, body: FONT_BODY },
@@ -199,12 +268,8 @@ export const quietBtnStyle: React.CSSProperties = {
 //      class exists to avoid. Wrapping this in @media screen deletes the rule
 //      from print entirely, so PRINT_CSS is unopposed and the chrome ground
 //      cannot reach paper.
-//
-//      dashboard-theme.ts:403 and curriculum-surface.ts:515 still carry the
-//      body:has() shape this replaced, and are inert for the same inline-style
-//      reason. Out of scope here, untouched, reported.
 //   2. .katex. globals.css:19 is `.katex { color: var(--ec-ink) !important }`,
-//      which in dark mode is #E8EEF8: near-white math on a cream panel, in the
+//      which in dark mode is #E8EEF8: near-white math on a white panel, in the
 //      preview, invisible. `.ws-page .katex` is 0,2,0 against that rule's
 //      0,1,0 and both carry !important, so the more specific selector wins.
 //      This is the same fix print-styles.ts makes for the printed sheet, and
