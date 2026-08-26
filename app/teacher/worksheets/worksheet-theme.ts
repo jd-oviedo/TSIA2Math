@@ -1,5 +1,5 @@
 import { SURFACES } from '../../components/curriculum-surface';
-import { STRAND_TINT as STRAND_TINT_SOURCE, STRAND_FALLBACK } from '../../lib/strands';
+import { strandTint } from '../../lib/strands';
 import { FONT_HEADING, FONT_BODY } from '../../components/fonts';
 
 // The worksheet generator's page chrome, and nothing else.
@@ -89,29 +89,17 @@ export const WS = {
   font: { heading: FONT_HEADING, body: FONT_BODY },
 } as const;
 
-// The four strand tints, now imported rather than restated.
+// The strand tints and their lookup both live in app/lib/strands.ts now.
 //
-// The comment that used to stand here said the duplication was known, that
-// folding all the copies into one module was worth doing, and that it was not
-// that task. It is this one. app/lib/strands.ts owns the map, and the reason
-// it is there rather than here is that this file is worksheet-scoped: the
-// teacher dashboard and the demo need the same four values and have no
-// business importing from a worksheets theme module.
+// PR #204 moved the four hexes there and left this file holding a widened alias
+// and a local strandTint() beside it. Those two were a re-implementation of
+// strands.ts:strandTint, not an extension of it: same map, same trim, same
+// upper-case, same fallback. The widening the alias existed for is done inside
+// the shared function instead, which is why the alias goes with it.
 //
-// WIDENED DELIBERATELY, AND THE ALIAS IS THE POINT. strandTint below indexes
-// with an arbitrary runtime string, because related_strand is text and
-// nullable, so it needs Record<string, string> rather than the imported
-// Record<Strand, string>. Binding the widened local to the imported object
-// leaves the function body underneath byte-for-byte what it was, which is what
-// keeps this commit a swap of where the value comes from and not a change to
-// how the value is looked up.
-//
-// Fill only. Deep Midnight on top measures 12.38 to 12.95 on all four.
-const STRAND_TINT: Record<string, string> = STRAND_TINT_SOURCE;
-
-export function strandTint(strand: string): string {
-  return STRAND_TINT[(strand ?? '').trim().toUpperCase()] ?? STRAND_FALLBACK;
-}
+// The shared signature is the wider of the two -- string | null | undefined
+// against the local string -- so strandChip below accepts everything it used to
+// and a null related_strand besides. Nothing here reads the map directly.
 
 /** A strand's two-letter chip. Tint fill, Deep Midnight ink, radius zero. */
 export function strandChip(strand: string): React.CSSProperties {
