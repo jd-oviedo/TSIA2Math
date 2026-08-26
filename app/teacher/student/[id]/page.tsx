@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import MathText from "../../../components/MathText";
+import { DASH } from "../../../components/dashboard-theme";
 import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from "../../../components/fonts";
 import OfficialScorePanel from "./OfficialScorePanel";
 import CurriculumProgressPanel from "./CurriculumProgressPanel";
@@ -137,7 +138,7 @@ export default function StudentDetailPage() {
         ${FONT_BASE_CSS}
         @keyframes umspin { to { transform: rotate(360deg); } }
       `}</style>
-      <div style={{ minHeight: "100vh", background: "#F5F5F3", fontFamily: FONT_BODY, color: "#1A1A1A" }}>{children}</div>
+      <div style={{ minHeight: "100vh", background: DASH.pageBg, fontFamily: FONT_BODY, color: "#1A1A1A" }}>{children}</div>
     </>
   );
 

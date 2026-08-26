@@ -4,6 +4,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import { GridFigure } from "./GridFigure";
 import { QuestionGame } from "./QuestionGame";
 import { EXIT_MS, ReporteLoadingScreen } from "../components/ReporteLoadingScreen";
+import { DASH } from "../components/dashboard-theme";
 
 /* ------------------------------------------------------------------ *
  * Parent Digest: weekly progress report, rendered in one language at a time
@@ -28,7 +29,7 @@ const MUTED = "#5F5E5A";
 const FAINT = "#8b8a85";
 const CARD = "#fff";
 const CARD_BORDER = "#E7E6E1";
-const PAGE_BG = "#F5F5F3";
+const PAGE_BG = DASH.pageBg;
 const DOT_OFF = "#C9C7C0";
 
 const FONT = 'var(--font-kodchasan, Kodchasan, sans-serif)';
