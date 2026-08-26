@@ -1,68 +1,53 @@
 import Image from 'next/image';
-import { C } from '@/app/components/curriculum-theme';
 
-// GUMU, as the illustrated headshot. Replaces the flat-vector drawing that
-// shipped with the curriculum redesign.
+// mu, as the brand mark. Replaces the illustrated cat headshot that shipped
+// with the curriculum redesign.
 //
-// Served through next/image rather than a plain <img>: the source is a 1.2 MB
-// 1080px PNG and it renders here at 26 to 64 CSS pixels, so the optimizer is
-// the difference between a few KB and the whole file on every topic page.
+// Served through next/image rather than a plain <img>: the source renders here
+// at 40 to 64 CSS pixels, so the optimizer is the difference between a few KB
+// and the whole file on every topic page.
 //
-// The art is measured, not assumed. Against the cream cards his silhouette
-// holds at roughly 6:1. Against the Deep Midnight cards it drops to 2.9:1,
-// and about a third of his outline -- the ears and the dark face mask -- falls
-// below 1.5:1 and simply disappears. That is what `plate` is for.
+// THE CREAM PLATE IS GONE, AND IT MUST NOT COME BACK.
+//
+// The cat needed one. Its silhouette held at roughly 6:1 on the cream cards but
+// dropped to 2.9:1 on the Deep Midnight tutor cards, where about a third of its
+// outline -- the ears and the dark face mask -- fell below 1.5:1 and simply
+// disappeared. A light rounded plate underneath was what made it survive.
+//
+// mu is high-contrast Sunset Orange on transparent, and the plate does the exact
+// opposite for it. Measured over every pixel at alpha >= 0.5, composited:
+//
+//   bare on tutorSurface #0E0E11   median 8.13   4.4% of art below 1.5:1   8.63:1
+//   bare on gumuBanner   #0F1E35   median 7.04   4.5% of art below 1.5:1   7.48:1
+//   ON THE CREAM PLATE   #F7F1E4   median 2.10  27.1% of art below 1.5:1   1.98:1
+//
+// Orange on cream is the near-miss: the plate put 91% of the art below 3:1. So
+// the plate was not merely unnecessary here, it was the worst available ground,
+// and dropping it is a legibility fix rather than a simplification.
+//
+// C.gumuSurface still exists in curriculum-theme.ts -- tests/curriculum-contrast
+// asserts it -- it just has no consumer now.
 
 type Props = {
   size: number;
-  // A light rounded plate behind the art, for the Deep Midnight surfaces.
-  // Square-ish rather than a circle on purpose: a circle inscribed in this
-  // source clips the ear tips, which sit outside its radius.
-  plate?: boolean;
-  // Empty string marks him decorative, for the places where adjacent text
-  // already says "GUMU".
+  // Empty string marks the mark decorative, for the places where adjacent text
+  // already says "mu".
   title?: string;
 };
 
-const SRC = '/images/GUMU_headshot_transparent.png';
+const SRC = '/images/Mu-trimmed-transparent.png';
 
-export default function GumuAvatar({ size, plate = false, title = 'GUMU' }: Props) {
-  if (!plate) {
-    return (
-      <Image
-        src={SRC}
-        alt={title}
-        width={size}
-        height={size}
-        style={{ flex: 'none', display: 'block', objectFit: 'contain' }}
-      />
-    );
-  }
-
-  // Inset so the ears clear the rounded corners.
-  const inner = Math.round(size * 0.92);
-
+export default function GumuAvatar({ size, title = 'mu' }: Props) {
+  // The source is 641x776 and edge-trimmed, so `contain` draws it full height
+  // and narrower than the box. The box stays square because every call site
+  // lays out against `size`, and the slack either side is transparent.
   return (
-    <div
-      style={{
-        width: `${size}px`,
-        height: `${size}px`,
-        flex: 'none',
-        borderRadius: `${Math.round(size * 0.28)}px`,
-        background: C.gumuSurface,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overflow: 'hidden',
-      }}
-    >
-      <Image
-        src={SRC}
-        alt={title}
-        width={inner}
-        height={inner}
-        style={{ display: 'block', objectFit: 'contain' }}
-      />
-    </div>
+    <Image
+      src={SRC}
+      alt={title}
+      width={size}
+      height={size}
+      style={{ flex: 'none', display: 'block', objectFit: 'contain' }}
+    />
   );
 }

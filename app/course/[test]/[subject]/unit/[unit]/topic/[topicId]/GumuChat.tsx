@@ -219,7 +219,7 @@ export default function GumuChat({
           background: C.gumuBanner,
         }}
       >
-        <GumuAvatar size={44} plate title="" />
+        <GumuAvatar size={44} title="" />
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
           <div style={{ font: `600 15px ${FONT_HEADING}`, color: C.sand }}>
             Let&apos;s figure out where it slipped.
@@ -304,7 +304,7 @@ export default function GumuChat({
       <div style={{ display: 'flex', alignItems: 'center', gap: '11px' }}>
         <GumuAvatar size={48} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-          <div style={{ font: `600 15px ${FONT_HEADING}`, color: T.ink }}>GUMU</div>
+          <div style={{ font: `600 15px ${FONT_HEADING}`, color: T.ink }}>mu</div>
           <div style={{ font: `400 12px ${FONT_BODY}`, color: T.muted }}>
             {finished ? 'that one is wrapped up' : 'let’s figure out where it slipped'}
           </div>
@@ -366,7 +366,7 @@ export default function GumuChat({
         ))}
         {pending && (
           <div style={{ font: `400 13.5px ${FONT_BODY}`, color: T.muted }}>
-            GUMU is thinking…
+            mu is thinking…
           </div>
         )}
       </div>

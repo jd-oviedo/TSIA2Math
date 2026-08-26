@@ -138,8 +138,16 @@ async function waitForServer(origin, timeoutMs = 60_000) {
  * would report the number the code says rather than the number the student
  * sees -- which is exactly the defect the shell spacing pass was fixing. Gaps
  * are polled for stability alongside the computed values, not sampled after.
+ *
+ * `dom` is an optional map of name -> { selector, prop }, read as a plain DOM
+ * property off the element rather than through getComputedStyle. It exists for
+ * the claims computed style cannot make: an <img>'s naturalWidth is the only
+ * thing separating "the src string names the new asset" from "the new asset
+ * actually decoded", and a src that 404s leaves the string correct and the
+ * dimensions zero. Values are stringified so they compare and poll for
+ * stability exactly the way every other reading here does.
  */
-export async function readComputed(browser, origin, { route, theme, probes, gaps = {}, tags = {} }) {
+export async function readComputed(browser, origin, { route, theme, probes, gaps = {}, tags = {}, dom = {} }) {
   const ctx = await browser.newContext();
   await ctx.addInitScript(
     ([key, value]) => {
@@ -183,7 +191,7 @@ export async function readComputed(browser, origin, { route, theme, probes, gaps
   const CEILING_FRAMES = 600;
 
   const snapshot = await page.evaluate(
-    async ([entries, gapEntries, tagEntries, sel, minFrames, maxFrames]) => {
+    async ([entries, gapEntries, tagEntries, domEntries, sel, minFrames, maxFrames]) => {
       const frame = () => new Promise((r) => requestAnimationFrame(r));
       const readAll = () => ({
         theme: document.querySelector(sel)?.getAttribute('data-theme') ?? '(none)',
@@ -216,6 +224,12 @@ export async function readComputed(browser, origin, { route, theme, probes, gaps
             return [name, el ? el.tagName.toLowerCase() : '(no such element)'];
           }),
         ),
+        dom: Object.fromEntries(
+          domEntries.map(([name, { selector, prop }]) => {
+            const el = document.querySelector(selector);
+            return [name, el ? String(el[prop]) : '(no such element)'];
+          }),
+        ),
       });
 
       let last = JSON.stringify(readAll());
@@ -233,6 +247,7 @@ export async function readComputed(browser, origin, { route, theme, probes, gaps
       Object.entries(probes),
       Object.entries(gaps),
       Object.entries(tags),
+      Object.entries(dom),
       wrapperSel,
       MINIMUM_FRAMES,
       CEILING_FRAMES,
@@ -244,6 +259,7 @@ export async function readComputed(browser, origin, { route, theme, probes, gaps
     values: snapshot.values,
     gaps: snapshot.gaps,
     tags: snapshot.tags,
+    dom: snapshot.dom,
     resolvedTheme: snapshot.theme,
   };
 }

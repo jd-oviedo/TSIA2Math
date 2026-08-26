@@ -100,7 +100,7 @@ export default async function QuizPage({ params }: { params: Promise<RouteParams
             background: T.tutorSurface,
           }}
         >
-          <GumuAvatar size={64} plate />
+          <GumuAvatar size={64} />
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
             <div style={{ font: `600 18px ${FONT_HEADING}`, color: T.tutorInk }}>
               Ready when you are.
