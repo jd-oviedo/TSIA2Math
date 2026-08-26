@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { C, EYEBROW } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
-import { V, cardStyle } from '@/app/components/dashboard-theme';
+import { V } from '@/app/components/dashboard-theme';
 import { SPACING } from './ui';
 
 // The "you have not tested yet" card on Home.
@@ -49,18 +49,28 @@ export default function DiagnosticCta() {
   return (
     <section
       style={{
-        ...cardStyle(),
         background: V.cardBg,
-        border: `1px solid ${V.cardBorder}`,
-        // The one piece of colour that marks this out from the cards below it.
+        border: `1px solid ${V.panelEdge}`,
+        borderRadius: 0,
+        boxShadow: 'none',
+        // The one piece of colour that marks this out from the cards below it,
+        // and now the ONLY thing that does. Declared after the border so it
+        // wins the top edge.
         borderTop: `3px solid ${C.sunset}`,
-        // PADDING AND SHADOW ARE DELIBERATELY OFF THE SHELL SCALE HERE, and
-        // both survived the 2026-08-26 spacing pass on that basis. 26/28 against
-        // PANEL_PAD's 22/24, and the raised cardShadowHover against every other
-        // panel's flat cardShadow, are this card's documented "louder than the
-        // cards below it" treatment -- see the header. Flattening them onto the
-        // scale would have removed the one distinction the card exists to make.
-        boxShadow: V.cardShadowHover,
+        // PADDING IS DELIBERATELY OFF THE SHELL SCALE HERE, and it survived the
+        // 2026-08-26 spacing pass on that basis: 26/28 against PANEL_PAD's
+        // 22/24 is half of this card's documented "louder than the cards below
+        // it" treatment -- see the header.
+        //
+        // THE OTHER HALF WAS A SHADOW, AND IT IS GONE. That note used to cover
+        // `boxShadow: V.cardShadowHover` too, on the ground that the raised
+        // shadow read as louder "against every other panel's flat cardShadow".
+        // That comparison no longer exists: the shell went flat on 2026-08-26
+        // and no panel on this page casts a shadow at all. A lone shadowed card
+        // in a shadowless system does not read as emphasis, it reads as the one
+        // card nobody converted. What the note was protecting survives intact
+        // -- the 3px sunset rule above and this padding are both untouched, and
+        // the rule is a stronger mark than the shadow ever was.
         padding: '26px 28px',
         display: 'flex',
         flexDirection: 'column',

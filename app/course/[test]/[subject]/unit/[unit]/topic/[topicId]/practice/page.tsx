@@ -89,7 +89,11 @@ export default async function PracticePage({ params }: { params: Promise<RoutePa
           style={{
             background: T.panel,
             border: `1px solid ${T.hairline}`,
-            borderRadius: '16px',
+            // ALIGNED TO THE FIELDSET, 2026-08-26. This was 16 while the problem
+            // frame a student meets on every other topic (PracticeQuiz.tsx:371)
+            // has been 0 all along, so the one non-interactive topic was the
+            // only round card left in the tree.
+            borderRadius: 0,
             padding: '24px 26px',
             // The measure, capped at the lesson column's width so a line of
             // prose is the same length in all three parts of a topic.
@@ -107,7 +111,9 @@ export default async function PracticePage({ params }: { params: Promise<RoutePa
             // layout.tsx:85-89 says to do when this needs revisiting: the page
             // keeps filling the viewport and only the line length is capped.
             maxWidth: 788,
-            boxShadow: '0 1px 3px rgba(14,14,17,.05)',
+            // NO SHADOW, for the reason recorded on the fieldset: a soft drop
+            // shadow under a radius-0 card is the half-converted state. The
+            // hairline border above is what separates this from the ground.
             color: T.ink2,
             font: `400 16px ${FONT_BODY}`,
             lineHeight: MATH_LINE_HEIGHT,

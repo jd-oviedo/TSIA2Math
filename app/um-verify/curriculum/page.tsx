@@ -3,6 +3,10 @@ import { TOPIC_PAGE_CSS } from '../../course/[test]/[subject]/unit/[unit]/topic/
 import TopicSurface from '../../components/TopicSurface';
 import TopicChrome from '../../course/[test]/[subject]/unit/[unit]/topic/[topicId]/TopicChrome';
 import GumuAvatar from '../../course/[test]/[subject]/unit/[unit]/topic/[topicId]/GumuAvatar';
+import PracticeQuiz, {
+  type PublicPracticeItem,
+} from '../../course/[test]/[subject]/unit/[unit]/topic/[topicId]/PracticeQuiz';
+import { GumuGateProvider } from '../../course/[test]/[subject]/unit/[unit]/topic/[topicId]/GumuGate';
 import { T } from '../../components/curriculum-surface';
 import { C, MATH_LINE_HEIGHT } from '../../components/curriculum-theme';
 import { FONT_BODY } from '../../components/fonts';
@@ -39,6 +43,27 @@ import { verifyLaneEnabled } from '../guard';
 // rather than approximated, because it is the thing under test for width: it
 // carries no max-width on purpose, and that absence is what makes the card fill
 // the viewport.
+
+// THE PROBLEM FRAME'S ONE ITEM.
+//
+// Four plain fields, which is the whole of PublicPracticeItem: the server
+// strips correct_answer and misconception_tag before serialising, so this is
+// the exact shape a student's browser receives and there is nothing to withhold
+// or fake. Written here rather than loaded, because the assertions on it are
+// width, radius and shadow -- none of which reads a single character of the
+// content -- and a fixture loader would put a CURRICULUM_FIXTURE_SOURCE env var
+// between this lane and a layout measurement.
+//
+// ONE ITEM IS ENOUGH AND IS NOT AN ACCIDENT. PracticeQuiz pages practice one
+// problem at a time (:313, `paged ? [items[current]] : items`), so a student on
+// an interactive topic sees exactly one <fieldset> no matter how long the list
+// is. One item renders the one box under test.
+const LANE_ITEM: PublicPracticeItem = {
+  item_number: 1,
+  level: 'Moderate',
+  stem_html: '<p>The frame around this stem is the box the width probe reads.</p>',
+  choices_html: { A: 'First', B: 'Second', C: 'Third', D: 'Fourth' },
+};
 
 export default function VerifyLaneCurriculum() {
   // Layer one of the guard. Layer two throws at import; see ../guard.ts.
@@ -82,7 +107,7 @@ export default function VerifyLaneCurriculum() {
             style={{
               background: T.panel,
               border: `1px solid ${T.hairline}`,
-              borderRadius: '16px',
+              borderRadius: 0,
               padding: '24px 26px',
               // Copied from practice/page.tsx:109 and quiz/page.tsx:192 with
               // the rest of the card. This is the value the width assertion in
@@ -90,7 +115,6 @@ export default function VerifyLaneCurriculum() {
               // change their cap and this does not, the lane stops measuring
               // them and starts measuring itself.
               maxWidth: 788,
-              boxShadow: '0 1px 3px rgba(14,14,17,.05)',
               color: T.ink2,
               font: `400 16px ${FONT_BODY}`,
               lineHeight: MATH_LINE_HEIGHT,
@@ -135,6 +159,48 @@ export default function VerifyLaneCurriculum() {
             <div data-probe="mu-chat-header" style={{ background: T.insetRow, padding: '18px 20px' }}>
               <GumuAvatar size={48} />
             </div>
+          </div>
+
+          {/* THE PROBLEM FRAME, FROM THE REAL COMPONENT.
+              ===========================================
+              THIS MOUNT EXISTS BECAUSE THE PROSE CARD ABOVE IS NOT THE BOX MOST
+              STUDENTS SEE, AND #210 SHIPPED ON THE ASSUMPTION THAT IT WAS.
+              `.um-prose-card` is the NON-INTERACTIVE practice branch --
+              practice/page.tsx:66 renders it only when practiceInteractive is
+              false, which today is QR.1.1 and nothing else. Every other topic
+              renders GatedQuiz -> PracticeQuiz -> a <fieldset>, and #210 capped
+              the card while the fieldset went on tracking the window. A lane
+              that asserts only on the prose card cannot see that, which is
+              precisely how the gap survived a verified PR.
+
+              So the REAL PracticeQuiz is mounted, not a div wearing its style.
+              It is prop-driven and reaches nothing: PublicPracticeItem is four
+              plain fields, useGumuGate() has a context default, and the only
+              fetch in the component is inside submit(), which needs a click.
+              scripts/verify_lesson_dark.mjs:227 mounts it the same way and
+              records the same finding.
+
+              GumuGateProvider wraps it to match the real tree, where
+              layout.tsx:42 wraps every topic sub-page in one. The context
+              default would serve, but the lane is not the place to depend on a
+              fallback the product never uses.
+
+              THE PROBE ATTRIBUTE IS ON THE WRAPPER, NOT THE FIELDSET. Nothing
+              was added to PracticeQuiz for this: the verifier selects
+              `[data-probe="practice-frame"] fieldset`, which is the element the
+              component itself renders. A test hook inside the product component
+              would be a second thing that has to stay correct. */}
+          <div data-probe="practice-frame">
+            <GumuGateProvider>
+              <PracticeQuiz
+                courseId="tsia2-math"
+                topicId="QR.1.1"
+                section="practice"
+                items={[LANE_ITEM]}
+                heading="Practice"
+                blurb="Mounted for the frame measurement only."
+              />
+            </GumuGateProvider>
           </div>
         </div>
       </TopicSurface>

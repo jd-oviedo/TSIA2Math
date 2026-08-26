@@ -19,6 +19,7 @@ import JoinClassPanel from '../../dashboard/JoinClassPanel';
 import DiagnosticCta from '../../dashboard/DiagnosticCta';
 import AnnouncementCard from '../../dashboard/announcements/AnnouncementCard';
 import type { Announcement, StudentAssignment } from '../../dashboard/data';
+import TeacherPanelControl from '../TeacherPanelControl';
 import { verifyLaneEnabled } from '../guard';
 
 // THE SHELL HALF OF THE UI VERIFICATION LANE.
@@ -272,6 +273,27 @@ export default function VerifyLaneShell() {
             <div data-probe="rail-collapsed" style={{ width: 64 }}>
               <StudentNavPanel name="Lane Student" role="student" plan="full-course" collapsed />
             </div>
+          </div>
+
+          {/* THE TEACHER PANEL, AND THE ONLY THING ON THIS ROUTE THAT IS NOT
+              THE STUDENT SHELL.
+              ================================================================
+              It is here to be measured as UNCHANGED. The student panels above
+              went flat on 2026-08-26 and /teacher deliberately did not, so
+              every Card assertion on this page is half a claim: radius 0 on the
+              student panel proves the flatten happened, and only radius 12 on a
+              teacher panel read in the same browser on the same run proves it
+              stopped where it was supposed to.
+
+              Card no longer imports cardStyle() at all, which is the structural
+              half of that guarantee (see app/dashboard/ui.tsx). This is the
+              measured half. Both are wanted: the import graph can be
+              re-crossed by an edit, and this reddens when it is.
+
+              See ../TeacherPanelControl.tsx for why NewAssignment is the panel
+              chosen and why it needs a client wrapper. */}
+          <div data-probe="teacher-control" style={{ marginTop: 18 }}>
+            <TeacherPanelControl />
           </div>
         </div>
       </StudentShell>

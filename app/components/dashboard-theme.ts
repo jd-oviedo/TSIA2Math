@@ -24,6 +24,45 @@ export interface DashSurface {
   cardShadow: string;
   /** Raised card, on hover. */
   cardShadowHover: string;
+  /**
+   * THE FLAT PANEL'S EDGE, AND THE ONLY THING SEPARATING A PANEL FROM ITS
+   * GROUND NOW THAT THERE IS NO RADIUS AND NO SHADOW.
+   *
+   * ADDED 2026-08-26. The student shell's panels moved to the worksheet
+   * generator's treatment -- radius 0, one hairline, no shadow
+   * (worksheet-theme.ts:195-200). Taking the shadow away takes the separation
+   * with it, and cardBorder alone cannot carry what is left: at 0.07 it
+   * measures 1.15 on the white card and 1.05 against the page ground, which is
+   * a line nobody can see doing a job that used to belong to a shadow. That is
+   * the same finding worksheet-theme.ts:80-82 recorded when it chose 0.16 --
+   * "at 0.07 the row divider inside a panel effectively disappears against the
+   * fill" -- reached again here for the same reason.
+   *
+   * NO NEW COLOUR. Light is WS.hairline's exact rgba, which is
+   * LIGHT.cardBorder's own navy base (15,30,53) stepped from 0.07 to 0.16.
+   * Dark is DARK.line's exact rgba, the "heavier line" tier this file already
+   * publishes for control borders. One value borrowed from each side of the
+   * product rather than two new ones minted here.
+   *
+   * MEASURED on both grounds a panel edge actually abuts -- the fill it is
+   * painted over (backgrounds paint under the border area) and the page beside
+   * it:
+   *
+   *                                   on card    on page
+   *   light rgba(15,30,53,0.16)         1.39       1.27
+   *   dark  rgba(255,255,255,0.12)      1.45       1.60
+   *
+   * The two themes mirror at 1.39/1.45, which is the parity cardBorder never
+   * had (1.15 light against 1.31 dark). Decorative: it carries no text and
+   * marks no control, so 1.4.11 does not apply -- `line` remains the token for
+   * the case where it does.
+   *
+   * SEPARATE FROM cardBorder RATHER THAN RAISING IT, because cardBorder is
+   * still what cardStyle() hands the TEACHER dashboard, which keeps its radius
+   * and its shadow and therefore still wants the quieter line. Raising the
+   * shared token would have moved a surface this pass does not cover.
+   */
+  panelEdge: string;
   /** Display and heading ink. */
   heading: string;
   /** Default body ink. */
@@ -236,6 +275,7 @@ export const LIGHT: DashSurface = {
   cardBorder: 'rgba(15,30,53,0.07)',
   cardShadow: '0 1px 2px rgba(15,30,53,0.04)',
   cardShadowHover: '0 4px 16px rgba(15,30,53,0.07)',
+  panelEdge: 'rgba(15,30,53,0.16)', // 1.39 on cardBg, 1.27 on pageBg. WS.hairline.
   heading: '#0F1E35',
   ink: '#1A1A1A',
   muted: '#5F5E5A',
@@ -292,6 +332,7 @@ export const DARK: DashSurface = {
   cardBorder: 'rgba(255,255,255,0.09)',
   cardShadow: '0 1px 2px rgba(0,0,0,0.34)',
   cardShadowHover: '0 4px 16px rgba(0,0,0,0.42)',
+  panelEdge: 'rgba(255,255,255,0.12)', // 1.45 on cardBg, 1.60 on pageBg. DARK.line.
   heading: '#F2F1EC',
   ink: '#EDECE7',
   muted: 'rgba(242,241,236,0.66)',
@@ -430,6 +471,7 @@ const VAR_NAMES: Record<keyof DashSurface, string> = {
   cardBorder: '--umd-card-border',
   cardShadow: '--umd-card-shadow',
   cardShadowHover: '--umd-card-shadow-hover',
+  panelEdge: '--umd-panel-edge',
   heading: '--umd-heading',
   ink: '--umd-ink',
   muted: '--umd-muted',

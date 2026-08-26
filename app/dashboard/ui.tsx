@@ -1,16 +1,22 @@
 import { C, EYEBROW } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
-import { V, cardStyle } from '@/app/components/dashboard-theme';
+import { V } from '@/app/components/dashboard-theme';
 
 // The handful of shapes every dashboard page repeats. Server components, no
 // state: the pages that need interactivity import their own client pieces.
 //
 // Every colour here is a --umd-* variable rather than a literal. That is what
-// makes these shapes both identical to the teacher dashboard's cards and
-// theme-aware at the same time: a server component cannot ask which theme is
-// on, but it can defer the question to CSS. cardStyle() supplies the borderRadius
-// the two dashboards share; the colours inside it are overridden with the
-// variable forms below.
+// makes these shapes theme-aware at all: a server component cannot ask which
+// theme is on, but it can defer the question to CSS.
+//
+// THE TWO DASHBOARDS NO LONGER SHARE A PANEL SHAPE, AND THIS FILE IS WHERE
+// THAT SPLIT IS MADE. Card used to spread cardStyle() and override three of
+// its four properties, leaving the radius as the one thing the student shell
+// still took from the teacher dashboard's constructor. The student shell is
+// flat now and the teacher dashboard is not, so there is nothing left to
+// share -- and Card no longer imports cardStyle() at all. That is deliberate:
+// it makes "flattening the student panel cannot reach /teacher" a fact about
+// the import graph rather than a claim in a comment. See Card below.
 
 // ─── The shell's spacing scale ───────────────────────────────────────────────
 //
@@ -101,7 +107,24 @@ export function PageHeading({ title, blurb }: { title: string; blurb?: string })
 }
 
 /**
- * The panel. One shape, one radius, one theme-aware shadow.
+ * The panel. One fill, one hairline, no radius and no shadow.
+ *
+ * FLAT AS OF 2026-08-26, matching the worksheet generator's panelStyle
+ * (worksheet-theme.ts:195-200), which is the treatment the rest of the product
+ * moved to. Radius 12 -> 0 and V.cardShadow -> none; the border steps from
+ * cardBorder to panelEdge because with the shadow gone the line is the ONLY
+ * thing separating a panel from its ground, and cardBorder at 0.07 measures
+ * 1.15 doing that job. The full measurement is on panelEdge in
+ * dashboard-theme.ts; nothing here changed colour, only shape.
+ *
+ * THE FOUR PROPERTIES ARE DECLARED HERE RATHER THAN SPREAD FROM cardStyle().
+ * This used to open with `...cardStyle()` and then override three of its four
+ * properties, so the radius was the single thing the student shell still took
+ * from the teacher dashboard's constructor. At radius 0 that spread contributes
+ * nothing, and keeping it would leave a live import from a flat surface into a
+ * rounded one for a value neither of them reads. cardStyle() is unchanged and
+ * still carries /teacher's 12 and its shadow -- this file simply no longer
+ * points at it.
  *
  * `as` EXISTS FOR SEMANTICS, NOT FOR STYLE, and it is the only reason a caller
  * ever passes it. A panel is a <section> by default and every caller that does
@@ -127,10 +150,10 @@ export function Card({
   return (
     <Tag
       style={{
-        ...cardStyle(),
         background: V.cardBg,
-        border: `1px solid ${V.cardBorder}`,
-        boxShadow: V.cardShadow,
+        border: `1px solid ${V.panelEdge}`,
+        borderRadius: 0,
+        boxShadow: 'none',
         padding,
       }}
     >

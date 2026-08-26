@@ -88,8 +88,10 @@ test('the announcement panel takes its shape from Card, not from itself', () => 
   for (const bad of ['borderRadius: 12', 'borderRadius: 16']) {
     assert.ok(
       !src.includes(bad),
-      `${CARD} declares ${bad}. The panel radius comes from cardStyle(); ` +
-        'restating it here is how it drifted to 16 in the first place.',
+      `${CARD} declares ${bad}. The panel radius comes from Card, which is ` +
+        'flat -- 0 since 2026-08-26. Restating a radius here is how it drifted ' +
+        'to 16 in the first place, and both old panel radii stay banned so a ' +
+        'revert to either one reddens rather than shipping.',
     );
   }
 });
