@@ -187,7 +187,38 @@ const LIGHT: CurriculumSurface = {
   barLine: '#111111',
   barInk: '#111111',
   barInk2: 'rgba(0,0,0,0.55)',
-  tabActiveBg: '#E8E0CF',
+  // THE ACTIVE Lesson/Practice/Quiz SEGMENT. DASH.chipBg, and NOT the neutral
+  // field, which is what this was first asked to be.
+  //
+  // Changed 2026-08-26, in the same change that took the reading ladder off
+  // cream. It had to move: at #E8E0CF it was the last warm fill in the chrome
+  // (R-B of 25 against a field of 2), sitting directly above a neutral page.
+  //
+  // #F5F5F3 WAS PROPOSED AND MEASURED OUT. The reasoning was that the active tab
+  // should connect to the page below it, and neither half of that survives
+  // contact with the geometry:
+  //
+  //   1. IT CANNOT CONNECT. .um-bar carries `padding: 12px 22px` and a 1px
+  //      borderBottom in T.rule, so there is always bar and rule between the
+  //      segment's bottom edge and the page. The tab never touches it.
+  //   2. IT MEASURES AGAINST WHITE, NOT THE PAGE. The bar is painted T.panel,
+  //      which this same change made #FFFFFF, and the inactive segments are
+  //      `transparent` -- so the fill separating current from inactive is
+  //      measured against the BAR. #F5F5F3 on #FFFFFF is 1.092, a step of
+  //      0.092 against the 0.313 the cream had. A 70% cut in the only thing
+  //      marking which segment you are on.
+  //
+  // The per-segment ring does not rescue it: `hairline(T.hairline)` is on EVERY
+  // segment, so it separates the control from the bar and says nothing about
+  // which one is current.
+  //
+  // #EDEBE4 keeps 0.193 of that step -- about two thirds of the cream's -- while
+  // dropping the warm cast to R-B 9. Its role in the dashboard is a small chip
+  // fill, which is the same role it has here, so this is a fill mapped to a
+  // fill: the ROLE trap in the header above is the reason that is stated rather
+  // than assumed. The active label is T.ink at 16.16 on it, and the inactive
+  // label is unchanged at 5.09 on the bar.
+  tabActiveBg: DASH.chipBg, // #EDEBE4
 
   // ─── THE READING LADDER IS NEUTRAL IN LIGHT, NOT CREAM ────────────────────
   //

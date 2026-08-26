@@ -65,6 +65,19 @@ const CURRICULUM_PANEL_DARK = 'rgb(38, 37, 33)'; //    #262521, unchanged
 const CARD_MAX_WIDTH = '788px';
 const CARD_USED_WIDTH = '788px';
 
+// The active Lesson/Practice/Quiz segment, LIGHT.tabActiveBg. It moved off
+// cream #E8E0CF in the same change as the ladder; see the note at
+// curriculum-surface.ts LIGHT.tabActiveBg for why it is chipBg and not the
+// neutral field.
+//
+// THE INACTIVE SEGMENT IS READ TOO, and that is the assertion that carries the
+// weight. Asserting the active fill alone would still pass if the inactive ones
+// had somehow acquired the same fill -- the defect the gate on this change was
+// written to prevent is precisely "the current tab stops being distinguishable",
+// which is a statement about the PAIR, not about either colour on its own.
+const TAB_ACTIVE_LIGHT = 'rgb(237, 235, 228)'; // #EDEBE4, was cream #E8E0CF
+const TAB_INACTIVE_LIGHT = 'rgba(0, 0, 0, 0)'; // `transparent`, showing the bar
+
 const rows = [];
 let failures = 0;
 
@@ -127,6 +140,14 @@ try {
           panel: { selector: '[data-probe="prose-card"]', prop: 'backgroundColor' },
           cardMaxWidth: { selector: '[data-probe="prose-card"]', prop: 'maxWidth' },
           cardWidth: { selector: '[data-probe="prose-card"]', prop: 'width' },
+          tabActive: {
+            selector: '.um-bar-parts a[aria-current="page"]',
+            prop: 'backgroundColor',
+          },
+          tabInactive: {
+            selector: '.um-bar-parts a:not([aria-current])',
+            prop: 'backgroundColor',
+          },
         },
       });
       assertTheme(theme, resolvedTheme, `curriculum/${theme}`);
@@ -153,6 +174,18 @@ try {
           `curriculum: the prose card declares max-width ${CARD_MAX_WIDTH}`,
           values.cardMaxWidth === CARD_MAX_WIDTH,
           `got ${values.cardMaxWidth}`,
+        );
+        record(
+          `curriculum: the active tab is ${TAB_ACTIVE_LIGHT}, not cream`,
+          values.tabActive === TAB_ACTIVE_LIGHT,
+          `got ${values.tabActive}`,
+        );
+        record(
+          'curriculum: the inactive tab is transparent, so the active fill is ' +
+            'what distinguishes them',
+          values.tabInactive === TAB_INACTIVE_LIGHT &&
+            values.tabActive !== values.tabInactive,
+          `active ${values.tabActive} vs inactive ${values.tabInactive}`,
         );
         record(
           `curriculum: the prose card's used width caps at ${CARD_USED_WIDTH}`,

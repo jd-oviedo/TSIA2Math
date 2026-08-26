@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { TOPIC_PAGE_CSS } from '../../course/[test]/[subject]/unit/[unit]/topic/[topicId]/topic-page-css';
 import TopicSurface from '../../components/TopicSurface';
+import TopicChrome from '../../course/[test]/[subject]/unit/[unit]/topic/[topicId]/TopicChrome';
 import { T } from '../../components/curriculum-surface';
 import { MATH_LINE_HEIGHT } from '../../components/curriculum-theme';
 import { FONT_BODY } from '../../components/fonts';
@@ -46,6 +47,30 @@ export default function VerifyLaneCurriculum() {
     <>
       <style>{TOPIC_PAGE_CSS}</style>
       <TopicSurface fontFamily={FONT_BODY}>
+        {/* THE REAL BAR, NOT A HAND-WRITTEN ONE.
+            TopicChrome takes eight plain string props and reads nothing: the
+            trigger is a pure button, the drawer only mounts once opened, and
+            SupportModal only fetches on submit. So the lane can mount the
+            component a student actually gets rather than a div wearing
+            --umt-tab-active-bg, which would only prove the probe agrees with
+            itself.
+
+            part="lesson" makes the Lesson segment the current one, and the
+            assertions select it by aria-current="page" -- the real
+            accessibility marker the component already sets, not a test hook
+            added for the probe. The inactive segments are `transparent`, so
+            reading one of those measures the bar showing through, which is
+            exactly the comparison the active fill has to win. */}
+        <TopicChrome
+          name="Verify Lane"
+          role="student"
+          test="qr"
+          subject="math"
+          subjectLabel="Math"
+          unit="1"
+          topicId="QR.1.1"
+          part="lesson"
+        />
         <div
           className="um-page"
           style={{ padding: '34px 34px 72px', display: 'flex', flexDirection: 'column', gap: '28px' }}
