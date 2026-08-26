@@ -363,11 +363,20 @@ export default async function DashboardHome({
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: SPACING.BLOCK }}>
               <ProgressBar value={doneItems} total={totalItems} />
-              <Muted size={13}>
-                {totalItems === 0
-                  ? 'No curriculum items are published yet.'
-                  : `${doneItems} of ${totalItems} practice and quiz questions answered correctly, across ${topics.length} topics.`}
-              </Muted>
+              {/* THE RAW COUNT IS GONE, THE ZERO-STATE IS NOT.
+                  This used to read "N of 1348 practice and quiz questions
+                  answered correctly, across M topics" under every bar. The bar
+                  and the percentage beside the title already say how far along
+                  the student is, and they say it in the one unit that means
+                  anything to them; the sentence restated it as two raw counts
+                  whose denominator is the size of the item bank, which is a
+                  fact about the product rather than about their course.
+
+                  The empty branch STAYS. With nothing published the bar is
+                  0% and empty, and that is indistinguishable from a student who
+                  has simply not started -- so the one case that genuinely needs
+                  words keeps them, and only the count goes. */}
+              {totalItems === 0 && <Muted size={13}>No curriculum items are published yet.</Muted>}
             </div>
           </Card>
 

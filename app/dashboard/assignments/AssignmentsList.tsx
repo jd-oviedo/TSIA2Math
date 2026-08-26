@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { V, cardStyle } from '@/app/components/dashboard-theme';
-import { PageStack, SectionLabel } from '../ui';
+import { V } from '@/app/components/dashboard-theme';
+import { Card, PageStack, SectionLabel } from '../ui';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import { bucketAssignments, formatDue, isOverdue } from '@/app/lib/assignments';
 import { unitLabel } from '@/app/lib/units';
@@ -178,11 +178,21 @@ export default function AssignmentsList({ assignments }: { assignments: StudentA
               {group.items.length}
             </span>
           </SectionLabel>
-          <div style={{ ...cardStyle(), background: V.cardBg, border: `1px solid ${V.cardBorder}`, boxShadow: V.cardShadow, overflow: 'hidden' }}>
+          {/* THE REAL Card, NOT A HAND-ROLLED COPY OF IT. This was a <div>
+              spreading cardStyle() and then re-declaring Card's exact fill,
+              border and shadow -- a second copy of the panel that Card already
+              is, which is why the 2026-08-26 flat pass would have left THIS
+              page rounded while the other four went flat. padding="0" because
+              the rows carry their own.
+
+              overflow: 'hidden' came off with the radius. Its only job was
+              clipping the square row corners against the panel's 12px arc, and
+              at radius 0 there is no arc to clip to. */}
+          <Card padding="0">
             {group.items.map((a, i) => (
               <Row key={a.id} a={a} now={now} first={i === 0} />
             ))}
-          </div>
+          </Card>
         </section>
       ))}
     </PageStack>

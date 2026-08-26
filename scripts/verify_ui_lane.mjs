@@ -235,33 +235,74 @@ try {
     // this lane exists. Asserting the declaration is the strongest claim
     // available without one, and it is the claim that would actually break --
     // the failure mode here is somebody editing one page and not the other.
-    const REAL_CARDS = [
-      'app/course/[test]/[subject]/unit/[unit]/topic/[topicId]/practice/page.tsx',
-      'app/course/[test]/[subject]/unit/[unit]/topic/[topicId]/quiz/page.tsx',
-      'app/um-verify/curriculum/page.tsx',
-    ];
-    for (const file of REAL_CARDS) {
+    // COUNTED PER FILE, NOT ASSUMED TO BE ONE.
+    //
+    // This was a blanket `hits.length === 1` across all three files, and it had
+    // been RED on the lane page since the Mu avatar mounts added a second cap
+    // there -- reporting a failure nobody was reading, which is how a source
+    // check quietly stops being one. Each file now states its own number and
+    // says what the boxes are, so adding or losing a capped box reddens with a
+    // count that names which file moved.
+    //
+    // The 2026-08-26 pass is why quiz/page.tsx is 3: its two intro panels sat
+    // directly in .um-page with no cap while the prose card below them stopped
+    // at 788, so on a wide monitor the intro ran full-bleed and the body did
+    // not.
+    const REAL_CARDS = {
+      // The prose card. One box.
+      'app/course/[test]/[subject]/unit/[unit]/topic/[topicId]/practice/page.tsx': 1,
+      // The prose card, plus BOTH intro panels -- tutor-available and
+      // tutor-absent. Both, because the absent branch is the one that ships to
+      // the most restricted plan and is the easier of the two to forget.
+      'app/course/[test]/[subject]/unit/[unit]/topic/[topicId]/quiz/page.tsx': 3,
+      // The lane's own copy of the prose card, plus the Mu grounds column.
+      'app/um-verify/curriculum/page.tsx': 2,
+      // The problem frame. THE BOX #210 MISSED: the prose cards above are the
+      // non-interactive branch, which is QR.1.1 alone, and every other topic
+      // renders this fieldset instead. Capped 2026-08-26.
+      'app/course/[test]/[subject]/unit/[unit]/topic/[topicId]/PracticeQuiz.tsx': 1,
+    };
+    for (const [file, want] of Object.entries(REAL_CARDS)) {
       const src = await readFile(new URL(`../${file}`, import.meta.url), 'utf8');
       const hits = src.match(/maxWidth: 788\b/g) ?? [];
       record(
-        `${file.split('/').slice(-2).join('/')} caps its prose card at 788`,
-        hits.length === 1,
-        `${hits.length} occurrence(s) of \`maxWidth: 788\``,
+        `${file.split('/').slice(-2).join('/')} declares ${want} cap(s) at 788`,
+        hits.length === want,
+        `${hits.length} occurrence(s) of \`maxWidth: 788\`, want ${want}`,
       );
     }
 
     // The cap must be flush left, per the decision recorded on both cards: the
     // lesson column does not centre (LessonBody.tsx:362) and these must not
     // either. A `margin: auto` slipping in later is the regression this catches.
-    for (const file of REAL_CARDS.slice(0, 2)) {
+    //
+    // EVERY CAPPED BLOCK IN EVERY FILE, not the first one in two of them. This
+    // read `src.indexOf('maxWidth: 788')` -- the FIRST occurrence -- which was
+    // the only occurrence when it was written. It is not any more: quiz/page.tsx
+    // now caps three boxes, and the first of them is an intro panel, so the old
+    // form would have checked one panel and stopped, leaving the prose card
+    // below it and the second panel unwatched. Scanning all of them costs
+    // nothing and cannot go stale the same way.
+    for (const file of Object.keys(REAL_CARDS)) {
       const src = await readFile(new URL(`../${file}`, import.meta.url), 'utf8');
-      const card = src.slice(src.indexOf('maxWidth: 788'));
-      const styleBlockEnd = card.indexOf('}}');
-      const withinCard = card.slice(0, styleBlockEnd === -1 ? 400 : styleBlockEnd);
+      const label = file.split('/').slice(-2).join('/');
+      let from = 0;
+      let n = 0;
+      let centred = 0;
+      for (;;) {
+        const at = src.indexOf('maxWidth: 788', from);
+        if (at === -1) break;
+        n += 1;
+        from = at + 1;
+        const rest = src.slice(at);
+        const end = rest.indexOf('}}');
+        const withinCard = rest.slice(0, end === -1 ? 400 : end);
+        if (/margin(Left|Right|Inline)?:\s*['\`"]?auto/.test(withinCard)) centred += 1;
+      }
       record(
-        `${file.split('/').slice(-2).join('/')} leaves the card flush left`,
-        !/margin(Left|Right|Inline)?:\s*['\`"]?auto/.test(withinCard),
-        withinCard.includes('auto') ? 'found an auto margin on the card' : 'no auto margin',
+        `${label} leaves all ${n} capped box(es) flush left`,
+        centred === 0,
+        centred === 0 ? 'no auto margin on any of them' : `${centred} of ${n} carry an auto margin`,
       );
     }
 

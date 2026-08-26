@@ -9,30 +9,41 @@
 // The two properties PR B converged, plus the two things that must not have
 // moved while they did:
 //
-//   RADIUS   16 -> 12, inherited from cardStyle() rather than written here.
-//   SHADOW   a hardcoded literal -> V.cardShadow, which resolves per theme.
+//   RADIUS   16 -> 12 -> 0, inherited from Card rather than written here.
+//   SHADOW   a hardcoded literal -> V.cardShadow -> none.
+//   BORDER   V.cardBorder -> V.panelEdge, the flat panel's hairline.
 //   TAG      still <article>, not the <section> Card renders by default.
 //   FILL     still exactly the theme's card fill, and nothing else.
 //
-// THE SHADOW ASSERTION IS THE BINDING ONE, AND ITS FORM IS DELIBERATE.
-// --------------------------------------------------------------------
-// The obvious check -- "dark has a shadow now" -- CANNOT FAIL, and a check that
-// cannot fail is worse than no check because it reports a pass. The old literal
-// '0 1px 3px rgba(14,14,17,.05)' was theme-independent, so before this change
-// dark already computed a box-shadow: a 5%-alpha near-black on a #202024 panel,
-// present to getComputedStyle and invisible to a student. "Not none" was true
-// of the defect.
+// UPDATED 2026-08-26 FOR THE FLAT PANEL PASS. The radius and shadow oracles
+// below moved because the panel moved: the shell adopted the worksheet
+// generator's treatment -- radius 0, one hairline, no shadow. The shape of the
+// checks did not change, and neither did what they are for. What this file
+// proves is still "the announcement panel takes its shape from Card and from
+// nowhere else", which is exactly the claim a flatten could break by leaving
+// this one panel behind.
 //
-// So this asserts the binding pair, in BOTH themes:
+// THE SHADOW ASSERTION, AND WHY ITS FORM SURVIVED THE FLATTEN.
+// ------------------------------------------------------------
+// This file was written around a hazard worth restating: the obvious check --
+// "dark has a shadow now" -- COULD NOT FAIL, because the old literal
+// '0 1px 3px rgba(14,14,17,.05)' was theme-independent and dark already
+// computed a box-shadow, a 5%-alpha near-black on a #202024 panel, present to
+// getComputedStyle and invisible to a student. So it asserted a binding pair:
+// the computed shadow EQUALS the theme's resolved V.cardShadow, and DIFFERS
+// from the old literal.
 //
-//   1. the computed shadow EQUALS that theme's resolved V.cardShadow, and
-//   2. the computed shadow DIFFERS from the old literal.
+// The oracle is now `none`, and the pair still holds its shape, because `none`
+// is not a value anything drifts to by accident:
 //
-// (2) is stated in light as well as dark, where it is not redundant: a change
-// that reverted the light value only would satisfy every per-theme equality
-// this file could write against a single oracle, and a no-op revert of the
-// whole property would satisfy (1) in neither theme but must also be seen to
-// fail (2) in both. Two assertions, one per direction.
+//   1. the computed shadow EQUALS 'none', in both themes, and
+//   2. the computed shadow DIFFERS from the old literal AND from the
+//      V.cardShadow pair that stood between them.
+//
+// (2) is what stops a partial revert passing. A change that restored
+// V.cardShadow would satisfy no equality in (1), and a change that restored
+// only ONE theme's shadow -- the exact shape of the defect this file was built
+// for -- reddens in that theme alone rather than hiding behind the other.
 //
 // WHY THE LANE AND NOT THE PAGE
 // -----------------------------
@@ -65,18 +76,27 @@ const PROVE = process.argv.includes('--prove');
 // that module currently holds, including a wrong value. These are the approved
 // numbers, in Chromium's computed serialisation.
 //
-// Sources: LIGHT.cardShadow at app/components/dashboard-theme.ts:237,
-// DARK.cardShadow at :293, borderRadius at cardStyle() :342.
-const CARD_SHADOW = {
+// Sources: Card at app/dashboard/ui.tsx, which declares all four of these
+// itself and no longer spreads cardStyle().
+const CARD_SHADOW = { light: 'none', dark: 'none' };
+
+// The two shadows this panel has carried and must not carry again, in
+// Chromium's serialisation. Asserted against in both themes so neither a
+// full revert nor a one-theme revert can pass.
+//
+//   OLD_LITERAL   the hand-rolled light-only value, page.tsx:85 before PR B
+//   OLD_TOKEN     V.cardShadow, the rounded panel's shadow, before this pass
+const OLD_LITERAL = 'rgba(14, 14, 17, 0.05) 0px 1px 3px 0px';
+const OLD_TOKEN = {
   light: 'rgba(15, 30, 53, 0.04) 0px 1px 2px 0px',
   dark: 'rgba(0, 0, 0, 0.34) 0px 1px 2px 0px',
 };
 
-// The literal this PR deleted, in the same serialisation. Asserted against in
-// both themes so a no-op cannot pass. Was app/dashboard/announcements/page.tsx:85.
-const OLD_LITERAL = 'rgba(14, 14, 17, 0.05) 0px 1px 3px 0px';
-
-const CARD_RADIUS = '12px';
+// Flat since 2026-08-26. The two radii this panel has held before -- its own
+// hand-rolled 16 and cardStyle()'s 12 -- are both asserted against below, for
+// the reason the shadow's two predecessors are.
+const CARD_RADIUS = '0px';
+const OLD_RADII = ['16px', '12px'];
 
 // The panel fill, per theme. NO-NEW-FILL compares against exactly these.
 const CARD_BG = { light: 'rgb(255, 255, 255)', dark: 'rgb(32, 32, 36)' };
@@ -153,8 +173,20 @@ function expected(theme) {
   };
 }
 
-// V.cardBorder resolved. dashboard-theme.ts:236 and :292.
+// V.panelEdge resolved -- the flat panel's hairline, and the property that
+// took over carrying separation when the shadow went. LIGHT at
+// dashboard-theme.ts:278, DARK at :335.
+//
+// THE OLD PAIR IS ASSERTED AGAINST TOO. A flatten that dropped the radius and
+// the shadow but left the border at cardBorder's 0.07 is the most likely
+// half-done version of this change, and it is the one that looks finished: the
+// panel is square and shadowless and its edge measures 1.15 on white, which is
+// a line nobody sees.
 const BORDER = {
+  light: 'rgba(15, 30, 53, 0.16)',
+  dark: 'rgba(255, 255, 255, 0.12)',
+};
+const OLD_BORDER = {
   light: 'rgba(15, 30, 53, 0.07)',
   dark: 'rgba(255, 255, 255, 0.09)',
 };
@@ -204,9 +236,23 @@ async function run() {
         console.log('  -- computed --');
         for (const name of Object.keys(want)) check(theme, name, values[name], want[name]);
 
-        console.log('  -- the deleted literal, in both themes --');
+        console.log('  -- the shapes this panel must not go back to --');
         checkNot(theme, 'shadowNotOld', values.shadow, OLD_LITERAL);
         checkNot(theme, 'shadowNoChipNotOld', values.shadowNoChip, OLD_LITERAL);
+        // The rounded panel's own shadow, per theme. Catches the revert that
+        // restores V.cardShadow, which 'none' alone would catch but which the
+        // per-theme form also catches when only ONE theme is reverted.
+        checkNot(theme, 'shadowNotToken', values.shadow, OLD_TOKEN[theme]);
+        checkNot(theme, 'shadowControlNotToken', values.shadowControl, OLD_TOKEN[theme]);
+        // Both radii this panel has held. 12 is the one a revert reaches for.
+        for (const bad of OLD_RADII) {
+          checkNot(theme, `radiusNot${bad}`, values.radius, bad);
+          checkNot(theme, `radiusControlNot${bad}`, values.radiusControl, bad);
+        }
+        // The half-done flatten: square, shadowless, and still wearing the
+        // quiet border that only worked when a shadow was doing the separating.
+        checkNot(theme, 'borderNotCardBorder', values.border, OLD_BORDER[theme]);
+        checkNot(theme, 'borderControlNotCardBorder', values.borderControl, OLD_BORDER[theme]);
 
         console.log('  -- tag names --');
         for (const name of Object.keys(expectedTags)) {
@@ -220,7 +266,10 @@ async function run() {
 
   console.log('\n─────────────────────────────────────────────────────────');
   if (failures.length === 0) {
-    console.log('PASS: radius 12, V.cardShadow per theme, <article> preserved, fill unmoved.');
+    console.log(
+      'PASS: radius 0, no shadow, panelEdge hairline per theme, <article> ' +
+        'preserved, fill unmoved.',
+    );
     if (PROVE) {
       console.error(
         '\nBUT --prove WAS PASSED AND NOTHING FAILED.\n' +

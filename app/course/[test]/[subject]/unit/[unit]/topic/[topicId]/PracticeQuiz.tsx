@@ -374,6 +374,29 @@ export default function PracticeQuiz({
               margin: 0,
               padding: '24px 26px 22px',
               minWidth: 0,
+              // THE MEASURE, AND THE BOX #210 MEANT TO CAP AND MISSED.
+              //
+              // #210 capped `.um-prose-card` at 788 on practice/page.tsx and
+              // quiz/page.tsx. Both of those are the NON-INTERACTIVE branch --
+              // practice/page.tsx:66 renders it only when practiceInteractive
+              // is false, which today is QR.1.1 alone. On every other topic the
+              // student gets THIS fieldset, and it had no cap at all: it is a
+              // stretched flex item of PracticeQuiz's column (:253), inside
+              // GatedQuiz's bare <section>, inside .um-page, which carries no
+              // max-width on purpose (layout.tsx:72-91). Nothing on that path
+              // constrains width, so the problem frame tracked the window and a
+              // line of practice ran as wide as the monitor.
+              //
+              // 788 IS LessonBody's COLUMN_WIDTH (LessonBody.tsx:50), which is
+              // the same number the two prose cards already carry, so a line is
+              // the same length in all three parts of a topic.
+              //
+              // FLUSH LEFT, AND NO margin: auto -- the same call the prose
+              // cards record at practice/page.tsx:97-104. align-items defaults
+              // to stretch on that column, so max-width clamps the used width
+              // and leaves the box at cross-start, which is the left edge every
+              // sibling in this stack already shares.
+              maxWidth: 788,
               // T.rule, 2.21 on the panel fill against hairline's 1.46. The
               // FILL stays T.panel and must: the problem eyebrow is #6E6E6D,
               // which clears AA at 5.02 there and fails on every other rung of
@@ -381,7 +404,13 @@ export default function PracticeQuiz({
               border: `1px solid ${T.rule}`,
               borderRadius: 0,
               background: T.panel,
-              boxShadow: '0 1px 3px rgba(14,14,17,.05)',
+              // NO SHADOW. This carried '0 1px 3px rgba(14,14,17,.05)' next to
+              // a radius of 0, which is the half-converted state: the product
+              // moved to flat panels -- radius 0, one line, no shadow -- and a
+              // soft drop shadow under a square card is the part of the old
+              // treatment that got left behind. T.rule above is what separates
+              // this frame from the ground, and it is a clear tier over the
+              // hairline for exactly that reason.
               display: 'flex',
               flexDirection: 'column',
               gap: '18px',

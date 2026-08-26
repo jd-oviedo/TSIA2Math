@@ -149,6 +149,16 @@ test('no shell page hands Card a literal padding', () => {
   // down in the component rather than assumed here: it is the "louder than the
   // cards below it" card, and it is not a <Card> at all, so a literal padding
   // passed to the primitive is always drift.
+  //
+  // ZERO IS THE ONE EXCEPTION, AND IT IS NOT A LOOPHOLE. A panel whose children
+  // carry their own padding must have none of its own, or the two stack: the
+  // Assignments list is rows at 14/18 inside a panel, and PANEL_PAD there would
+  // inset every row by a second 22/24. That is the absence of a spacing value,
+  // not a competing one, which is the whole distinction this test exists to
+  // police -- and app/dashboard/settings/page.tsx:34 has shipped it since that
+  // page was written. Any other literal still reddens, including "0px" and
+  // "0 0": the exemption is the exact string, so a padding that grows a unit
+  // has to come back through here.
   const offenders: string[] = [];
 
   for (const file of SCOPE) {
@@ -156,6 +166,7 @@ test('no shell page hands Card a literal padding', () => {
     for (const match of src.matchAll(/<Card\s+padding=(\{[^}]*\}|"[^"]*")/g)) {
       const value = match[1];
       if (value.includes('SPACING.PANEL_PAD')) continue;
+      if (value === '"0"') continue;
       offenders.push(`${file}: <Card padding=${value}`);
     }
   }

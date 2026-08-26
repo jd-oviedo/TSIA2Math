@@ -96,8 +96,15 @@ export default async function QuizPage({ params }: { params: Promise<RouteParams
             alignItems: 'center',
             gap: '26px',
             padding: '24px 28px',
-            borderRadius: '16px',
+            borderRadius: 0,
             background: T.tutorSurface,
+            // Capped with the rest of the topic's column. This panel and its
+            // tutor-absent twin below were the last two boxes on the quiz that
+            // still tracked the window: they sit directly in .um-page, which
+            // carries no max-width (layout.tsx:72-91), so on a wide monitor the
+            // intro ran full-bleed while the prose card under it stopped at
+            // 788. Same number, same flush-left rule, no margin: auto.
+            maxWidth: 788,
           }}
         >
           <GumuAvatar size={64} />
@@ -125,9 +132,17 @@ export default async function QuizPage({ params }: { params: Promise<RouteParams
             flexDirection: 'column',
             gap: '6px',
             padding: '20px 24px',
-            borderRadius: '16px',
+            borderRadius: 0,
             background: T.panel,
+            // KEPT AS AN INSET RING, not converted to a border. This is the
+            // panel's hairline already -- it is 1px, hard-edged and exactly
+            // where a border would be -- and it is not the soft drop shadow the
+            // flat pass removed elsewhere. Making it a real border would push
+            // the box 2px wider and taller for no visible gain, since nothing
+            // in this app sets box-sizing.
             boxShadow: `inset 0 0 0 1px ${T.hairline}`,
+            // See the tutor-available panel above.
+            maxWidth: 788,
           }}
         >
           <div style={{ font: `600 18px ${FONT_HEADING}`, color: T.ink }}>
@@ -172,7 +187,11 @@ export default async function QuizPage({ params }: { params: Promise<RouteParams
             style={{
               background: T.panel,
               border: `1px solid ${T.hairline}`,
-              borderRadius: '16px',
+              // ALIGNED TO THE FIELDSET, 2026-08-26. This was 16 while the problem
+              // frame a student meets on every other topic (PracticeQuiz.tsx:371)
+              // has been 0 all along, so the one non-interactive topic was the
+              // only round card left in the tree.
+              borderRadius: 0,
               padding: '24px 26px',
               // The measure, capped at the lesson column's width so a line of
               // prose is the same length in all three parts of a topic.
@@ -190,7 +209,9 @@ export default async function QuizPage({ params }: { params: Promise<RouteParams
               // layout.tsx:85-89 says to do when this needs revisiting: the page
               // keeps filling the viewport and only the line length is capped.
               maxWidth: 788,
-              boxShadow: '0 1px 3px rgba(14,14,17,.05)',
+              // NO SHADOW, for the reason recorded on the fieldset: a soft drop
+              // shadow under a radius-0 card is the half-converted state. The
+              // hairline border above is what separates this from the ground.
               color: T.ink2,
               font: `400 16px ${FONT_BODY}`,
               lineHeight: MATH_LINE_HEIGHT,

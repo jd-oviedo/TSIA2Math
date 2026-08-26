@@ -14,10 +14,15 @@ import type { Announcement } from '../data';
 // literal defect #207 and #212 were clearing, and the last one on a panel
 // surface in app/dashboard.
 //
-// Both are now Card's: radius 12 from cardStyle(), and V.cardShadow, which
-// resolves rgba(15,30,53,0.04) in light and rgba(0,0,0,0.34) in dark. Nothing
-// below sets a background, a border, a radius or a shadow of its own, and that
-// is the point -- this component styles CONTENT and the panel styles the panel.
+// Both are Card's now, and both moved again on 2026-08-26 when the shell went
+// flat: the radius is 0 and there is no shadow at all, with a panelEdge
+// hairline carrying the separation the shadow used to. This file did not have
+// to change for that, which is the point -- it sets no background, no border,
+// no radius and no shadow of its own, so it followed the primitive without
+// being touched. This component styles CONTENT and the panel styles the panel.
+//
+// The paragraph above is kept as written because it is the record of what was
+// wrong, not a description of the current values.
 //
 // IT IS A SEPARATE FILE SO THE VERIFIER CAN MOUNT THE REAL THING. The page is
 // an async server component that calls getProfile() and reads Supabase, so it
