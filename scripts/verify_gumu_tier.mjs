@@ -68,7 +68,7 @@ const gumuOnPage = () =>
     panels: document.querySelectorAll('.um-gumu-panel').length,
     starts: document.querySelectorAll('.um-gumu-start').length,
     dismisses: document.querySelectorAll('.um-gumu-dismiss').length,
-    logs: document.querySelectorAll('[aria-label="Conversation with GUMU"]').length,
+    logs: document.querySelectorAll('[aria-label="Conversation with Mu"]').length,
   }));
 
 // ── THE POSITIVE HALF, FIRST ────────────────────────────────────────────────

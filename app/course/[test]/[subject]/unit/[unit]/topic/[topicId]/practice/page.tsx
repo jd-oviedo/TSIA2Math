@@ -149,7 +149,7 @@ export default async function PracticePage({ params }: { params: Promise<RoutePa
                 color: T.tutorInk2,
               }}
             >
-              Nothing here is graded. mu comes in on the mini quiz, as soon as
+              Nothing here is graded. Mu comes in on the mini quiz, as soon as
               there&apos;s a wrong answer worth talking about.
             </div>
           </div>

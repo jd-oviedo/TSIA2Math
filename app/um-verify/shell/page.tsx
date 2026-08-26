@@ -12,6 +12,7 @@ import {
   SPACING,
 } from '../../dashboard/ui';
 import FlagsPanel from '../../dashboard/FlagsPanel';
+import { StudentNavPanel } from '../../components/StudentNav';
 import AssignmentsHomeCard from '../../dashboard/AssignmentsHomeCard';
 import AssignmentsList from '../../dashboard/assignments/AssignmentsList';
 import JoinClassPanel from '../../dashboard/JoinClassPanel';
@@ -244,6 +245,32 @@ export default function VerifyLaneShell() {
               <Card>
                 <Muted size={13}>The default caller, for the tag comparison.</Muted>
               </Card>
+            </div>
+          </div>
+
+          {/* THE RAIL, BOTH WIDTHS, so the brand mark's centring is a measured
+              fact rather than a style string someone read back.
+
+              `margin: '0 auto'` is not self-proving. Whether it centres depends
+              on the parent having a width to centre inside, and on the image
+              being narrower than it -- and the expanded wordmark is 148px in a
+              rail whose padding differs between the two widths. Reading the
+              declaration back would pass even if the wrapper collapsed to the
+              image's own width, which is the case where it visibly does not
+              move. So the verifier reads the two boxes and compares centres.
+
+              Rendered at both `collapsed` values because the collapsed arm is
+              the one the expanded arm was made to mirror: a check that watched
+              only the expanded arm would go quiet if the collapsed arm drifted.
+
+              Props are the lane's own, and the panel reaches no database: it is
+              handed a name, a role and a plan, and renders links. */}
+          <div data-probe="rail-lane" style={{ marginTop: 18, display: 'flex', gap: 18 }}>
+            <div data-probe="rail-expanded" style={{ width: 232 }}>
+              <StudentNavPanel name="Lane Student" role="student" plan="full-course" />
+            </div>
+            <div data-probe="rail-collapsed" style={{ width: 64 }}>
+              <StudentNavPanel name="Lane Student" role="student" plan="full-course" collapsed />
             </div>
           </div>
         </div>

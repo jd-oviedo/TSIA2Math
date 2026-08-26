@@ -10,7 +10,7 @@
 //           and none of them still names GUMU_headshot_transparent.png.
 //   BYTES   the asset actually DECODED, and the bytes are the new art.
 //   PLATE   no plate element renders behind the mark, at any of the four.
-//   ALT     the default accessible name is "mu"; the decorative sites are "".
+//   ALT     the default accessible name is "Mu"; the decorative sites are "".
 //   GROUND  the four grounds are unmoved, and none of them is the cream plate.
 //
 // THE SRC STRING IS NOT THE CLAIM, AND ASSERTING IT ALONE WOULD BE A BUG.
@@ -58,7 +58,7 @@
 // It is proved by tests/mu-avatar.test.ts, not here. Neither proof is offered
 // as the other.
 //
-// The three visible "GUMU" -> "mu" prose strings are likewise static facts in
+// The three visible "GUMU" -> "Mu" prose strings are likewise static facts in
 // unmountable files and live in that same test.
 
 import { withBrowser, startLane, readComputed, assertTheme, LANE_ROUTES } from './ui-verify-lane.mjs';
@@ -95,10 +95,10 @@ const GROUND = {
 
 // The four mounts, by the configuration each real site uses.
 const SITES = {
-  quiz: { probe: '[data-probe="mu-quiz"]', alt: 'mu' },
+  quiz: { probe: '[data-probe="mu-quiz"]', alt: 'Mu' },
   practice: { probe: '[data-probe="mu-practice"]', alt: '' },
   chatIntro: { probe: '[data-probe="mu-chat-intro"]', alt: '' },
-  chatHeader: { probe: '[data-probe="mu-chat-header"]', alt: 'mu' },
+  chatHeader: { probe: '[data-probe="mu-chat-header"]', alt: 'Mu' },
 };
 
 // TWO SELECTORS PER SITE, AND THE SPLIT IS THE #214 LESSON APPLIED PROPERLY.
@@ -232,7 +232,7 @@ async function run() {
 
   console.log('\n---------------------------------------------------------');
   if (failures.length === 0) {
-    console.log('PASS: new asset decoded at all four sites, no plate, alt "mu"/"", grounds unmoved.');
+    console.log('PASS: new asset decoded at all four sites, no plate, alt "Mu"/"", grounds unmoved.');
     if (PROVE) {
       console.error(
         '\nBUT --prove WAS PASSED AND NOTHING FAILED.\n' +

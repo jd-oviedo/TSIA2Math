@@ -139,7 +139,7 @@ export default async function TopicLayout({
                 Sign in with Google
               </a>
               <span>
-                to save your progress and work through the ones you miss with GUMU.
+                to save your progress and work through the ones you miss with Mu.
               </span>
             </div>
           )}

@@ -103,19 +103,23 @@ function navIcon(label: string) {
           <line x1="6.4" y1="12.2" x2="9.8" y2="12.2" />
         </svg>
       );
+    // A checked circle: a result that has been marked. It shares a check with
+    // Take a Practice Test three rows down, so the two are separated by their
+    // containers -- a circle here, a portrait sheet there -- and by the check
+    // itself, which is drawn larger, lower and further right than the sheet's.
+    // Outline like the other five: `common` sets fill="none", so this is never
+    // a filled disc.
     case 'Grades':
       return (
         <svg {...common}>
-          <line x1="3" y1="15.2" x2="15" y2="15.2" />
-          <rect x="4.2" y="8.4" width="2.8" height="5" rx="0.8" />
-          <rect x="8.6" y="5.2" width="2.8" height="8.2" rx="0.8" />
-          <rect x="13" y="10.4" width="2.8" height="3" rx="0.8" />
+          <circle cx="9" cy="9" r="6.6" />
+          <polyline points="6 9.3 8.2 11.5 12.3 6.8" />
         </svg>
       );
-    // A checked sheet. Distinct from Grades, which is a bar chart of results
-    // already earned, and from the Modules stack -- without its own case this
-    // would silently inherit the stack from `default` and read as a second
-    // Modules link.
+    // A checked sheet. Distinct from Grades, whose check sits in a circle and
+    // is drawn at a different scale and offset, and from the Modules stack --
+    // without its own case this would silently inherit the stack from `default`
+    // and read as a second Modules link.
     case 'Take a Practice Test':
       return (
         <svg {...common}>
@@ -162,7 +166,7 @@ function Brand({ collapsed }: { collapsed: boolean }) {
       alt="UnpackMath"
       width={2000}
       height={485}
-      style={{ width: 148, maxWidth: '100%', height: 'auto', display: 'block' }}
+      style={{ width: 148, maxWidth: '100%', height: 'auto', display: 'block', margin: '0 auto' }}
     />
   );
 }
