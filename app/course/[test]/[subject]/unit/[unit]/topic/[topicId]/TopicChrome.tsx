@@ -185,9 +185,6 @@ export default function TopicChrome({
         role={role}
         onClose={() => setMenuOpen(false)}
         onOpenSupport={() => setShowSupport(true)}
-        /* These pages are light-only by design, so the drawer stays light here
-           even for a student who has dark mode on elsewhere. */
-        mode="light"
       />
 
       {showSupport && <SupportModal onClose={() => setShowSupport(false)} />}
