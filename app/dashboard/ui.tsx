@@ -100,15 +100,32 @@ export function PageHeading({ title, blurb }: { title: string; blurb?: string })
   );
 }
 
+/**
+ * The panel. One shape, one radius, one theme-aware shadow.
+ *
+ * `as` EXISTS FOR SEMANTICS, NOT FOR STYLE, and it is the only reason a caller
+ * ever passes it. A panel is a <section> by default and every caller that does
+ * not ask for otherwise still renders one. Announcements asks for <article>,
+ * because each post is a self-contained item a screen reader should be able to
+ * navigate as a discrete article -- a role a <section> with no accessible name
+ * does not expose at all. The alternative was leaving that page hand-rolling
+ * its own box to keep its element, which is how it ended up with a radius of 16
+ * and a light-only shadow literal in the first place.
+ *
+ * It cannot be used to change how a panel LOOKS: every visual property below is
+ * fixed and none of them is a prop.
+ */
 export function Card({
   children,
   padding = SPACING.PANEL_PAD,
+  as: Tag = 'section',
 }: {
   children: React.ReactNode;
   padding?: string;
+  as?: 'section' | 'article';
 }) {
   return (
-    <section
+    <Tag
       style={{
         ...cardStyle(),
         background: V.cardBg,
@@ -118,7 +135,7 @@ export function Card({
       }}
     >
       {children}
-    </section>
+    </Tag>
   );
 }
 

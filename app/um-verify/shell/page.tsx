@@ -16,7 +16,8 @@ import AssignmentsHomeCard from '../../dashboard/AssignmentsHomeCard';
 import AssignmentsList from '../../dashboard/assignments/AssignmentsList';
 import JoinClassPanel from '../../dashboard/JoinClassPanel';
 import DiagnosticCta from '../../dashboard/DiagnosticCta';
-import type { StudentAssignment } from '../../dashboard/data';
+import AnnouncementCard from '../../dashboard/announcements/AnnouncementCard';
+import type { Announcement, StudentAssignment } from '../../dashboard/data';
 import { verifyLaneEnabled } from '../guard';
 
 // THE SHELL HALF OF THE UI VERIFICATION LANE.
@@ -93,6 +94,19 @@ import { verifyLaneEnabled } from '../guard';
 // no due date at all. That is exactly two non-empty buckets, so the group gap
 // between them is always there to measure and the two SectionLabel tones --
 // the overdue one and the default one -- are both on the page.
+
+// ─── THE ANNOUNCEMENT PANEL, ADDED 2026-08-26 ────────────────────────────────
+//
+// scripts/verify_announcements_card.mjs reads the announcement panel's radius,
+// shadow, fill and TAG NAME off this route. AnnouncementCard is mounted here as
+// the real component for the usual reason -- /dashboard/announcements is an
+// async server component that reads Supabase and cannot be mounted, and a lane
+// that hand-copied its markup would measure a copy rather than the panel that
+// ships. It was split out of that page precisely so this mount is possible.
+//
+// The fixture below carries no colour, no radius, no shadow and no spacing:
+// every property under test comes from Card via AnnouncementCard. It is dated
+// in the year 2000 like the assignment rows, so formatDate's output is stable.
 
 export default function VerifyLaneShell() {
   // Layer one of the guard. Layer two throws at import; see ../guard.ts.
@@ -209,6 +223,29 @@ export default function VerifyLaneShell() {
               <Muted size={13}>Content under a group label.</Muted>
             </Card>
           </div>
+
+          {/* THE ANNOUNCEMENT PANEL. The real component, inside the real
+              SectionGroup its page wraps it in. Two of them so the chip branch
+              and the chipless branch are both on the page.
+
+              THE PLAIN <Card> BELOW IT IS THE CONTROL, and it is the whole
+              point of the tag assertion: these two panels must measure
+              identically on radius, shadow and fill, and differ ONLY in tag
+              name -- section for the default caller, article for this one. A
+              revert of the `as` prop reddens on the tag while every colour
+              assertion still passes, which is exactly the failure that would
+              otherwise ship silently. */}
+          <div data-probe="announcement-lane" style={{ marginTop: 18 }}>
+            <SectionGroup>
+              <AnnouncementCard item={LANE_ANNOUNCEMENT} classLabel="Period 3" />
+              <AnnouncementCard item={LANE_ANNOUNCEMENT_NO_CLASS} classLabel={null} />
+            </SectionGroup>
+            <div data-probe="announcement-control" style={{ marginTop: 18 }}>
+              <Card>
+                <Muted size={13}>The default caller, for the tag comparison.</Muted>
+              </Card>
+            </div>
+          </div>
         </div>
       </StudentShell>
     </>
@@ -242,6 +279,25 @@ const LANE_ASSIGNMENTS: StudentAssignment[] = [
     status: 'not_started',
   },
 ];
+
+// The announcement fixtures. No colour, no radius, no shadow, no spacing -- see
+// the header. The first carries a class so the chip branch renders; the second
+// carries none so the chipless branch does too.
+const LANE_ANNOUNCEMENT: Announcement = {
+  id: 'lane-announcement',
+  title: 'An announcement panel',
+  body: 'The panel around this text is the shape under test.',
+  created_at: '2000-01-01T00:00:00.000Z',
+  class_id: 'lane-class',
+};
+
+const LANE_ANNOUNCEMENT_NO_CLASS: Announcement = {
+  id: 'lane-announcement-no-class',
+  title: 'An announcement with no class',
+  body: 'Posted to everyone, so no class chip renders above this line.',
+  created_at: '2000-01-02T00:00:00.000Z',
+  class_id: null,
+};
 
 // The guard reads process.env per request rather than at build. Without this
 // the flag would be baked in at build time and a lane built with it unset

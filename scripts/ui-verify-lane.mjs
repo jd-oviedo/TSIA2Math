@@ -139,7 +139,7 @@ async function waitForServer(origin, timeoutMs = 60_000) {
  * sees -- which is exactly the defect the shell spacing pass was fixing. Gaps
  * are polled for stability alongside the computed values, not sampled after.
  */
-export async function readComputed(browser, origin, { route, theme, probes, gaps = {} }) {
+export async function readComputed(browser, origin, { route, theme, probes, gaps = {}, tags = {} }) {
   const ctx = await browser.newContext();
   await ctx.addInitScript(
     ([key, value]) => {
@@ -183,7 +183,7 @@ export async function readComputed(browser, origin, { route, theme, probes, gaps
   const CEILING_FRAMES = 600;
 
   const snapshot = await page.evaluate(
-    async ([entries, gapEntries, sel, minFrames, maxFrames]) => {
+    async ([entries, gapEntries, tagEntries, sel, minFrames, maxFrames]) => {
       const frame = () => new Promise((r) => requestAnimationFrame(r));
       const readAll = () => ({
         theme: document.querySelector(sel)?.getAttribute('data-theme') ?? '(none)',
@@ -205,6 +205,17 @@ export async function readComputed(browser, origin, { route, theme, probes, gaps
             return [name, `${Math.round(px * 100) / 100}px`];
           }),
         ),
+        // TAG NAMES, because an element's identity is not a computed style and
+        // a probe that could only read colour would call a silently downgraded
+        // <article> correct. Lowercased: HTML elements serialise tagName upper
+        // case, and an oracle written in the case the markup uses is the one a
+        // reader can check against the source.
+        tags: Object.fromEntries(
+          tagEntries.map(([name, selector]) => {
+            const el = document.querySelector(selector);
+            return [name, el ? el.tagName.toLowerCase() : '(no such element)'];
+          }),
+        ),
       });
 
       let last = JSON.stringify(readAll());
@@ -218,11 +229,23 @@ export async function readComputed(browser, origin, { route, theme, probes, gaps
       }
       return JSON.parse(last);
     },
-    [Object.entries(probes), Object.entries(gaps), wrapperSel, MINIMUM_FRAMES, CEILING_FRAMES],
+    [
+      Object.entries(probes),
+      Object.entries(gaps),
+      Object.entries(tags),
+      wrapperSel,
+      MINIMUM_FRAMES,
+      CEILING_FRAMES,
+    ],
   );
 
   await ctx.close();
-  return { values: snapshot.values, gaps: snapshot.gaps, resolvedTheme: snapshot.theme };
+  return {
+    values: snapshot.values,
+    gaps: snapshot.gaps,
+    tags: snapshot.tags,
+    resolvedTheme: snapshot.theme,
+  };
 }
 
 /**
