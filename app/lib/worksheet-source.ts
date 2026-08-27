@@ -6,12 +6,13 @@ import {
   extractDistractorProse,
 } from '@/lib/curriculum-utils';
 import {
-  countTopicPool,
   isPrintable,
   itemKey,
   mergePools,
+  poolEntries,
   type Candidate,
   type ItemRef,
+  type PoolEntry,
   type Section,
 } from './worksheet-select';
 
@@ -70,8 +71,23 @@ export type PickerTopic = {
   estimated_time_minutes: number | null;
   /** Gradeable questions available. Counted by format, never by array length. */
   available: number;
-  /** Of those, how many carry a difficulty band. */
-  levelled: number;
+  /**
+   * Section and band for each of those questions, in stored order.
+   *
+   * REPLACES `levelled`, which was a single number and could not answer the
+   * question the badge actually asks. `levelled` said how many items carry a
+   * band; the badge needs how many match the bands the teacher ticked, with
+   * include_quiz applied. Those coincided only while every practice item was
+   * banded and no quiz item was, so `levelled` silently equalled the practice
+   * count -- and the moment a quiz item gained a band it read 14 while the draw
+   * still delivered 10.
+   *
+   * Shipping the entries rather than a wider set of totals lets the browser run
+   * countEligible(), the draw's own rule, over the draw's own population. It
+   * carries no answer: section and band only, from the redacted view.
+   * At most 14 entries per topic, 97 topics.
+   */
+  entries: PoolEntry[];
   /** True when this topic's pool is rolled rather than hand-authored. */
   templated: boolean;
 };
@@ -119,6 +135,14 @@ const SECTIONS: Section[] = ['practice', 'mini_quiz'];
  * On a worksheet picker they would render as selectable topics offering zero
  * questions, so they are filtered at the source -- a UI-level filter would have
  * to be repeated by every future caller.
+ *
+ * A TEMPLATED TOPIC IS STILL COUNTED FROM ITS AUTHORED ITEMS, unchanged and on
+ * purpose. `entries` comes from practice_items even where the draw will resolve
+ * to rolled instances, because a templated topic contributes one instance per
+ * template -- the same 14 questions, different numbers -- so the count is right
+ * and only the identities differ. That approximation predates this file's badge
+ * rework; it is named here because `entries` looks more precise than the pair of
+ * totals it replaced, and it is not more precise about that one case.
  */
 export async function listPickerTopics(courseId: string): Promise<PickerTopic[]> {
   const supabase = await createClient();
@@ -137,10 +161,14 @@ export async function listPickerTopics(courseId: string): Promise<PickerTopic[]>
   const templated = await templatedTopicIds(courseId);
 
   const rows: PickerTopic[] = data.map((row) => {
-    // countTopicPool applies isPrintable, the same predicate drawFromStatic
-    // uses. Counting here with isGradeable is what made every badge read 0:
-    // this row came from curriculum_topics_public, which strips correct_answer.
-    const { available, levelled } = countTopicPool(row.practice_items);
+    // poolEntries applies isPrintable, the same predicate drawFromStatic uses.
+    // Counting here with isGradeable is what made every badge read 0: this row
+    // came from curriculum_topics_public, which strips correct_answer.
+    //
+    // The same walk answers both fields, so `available` cannot drift from the
+    // population the badge filters. It is entries.length by construction rather
+    // than by a second count that agrees today.
+    const entries = poolEntries(row.practice_items);
     return {
       topic_id: row.topic_id,
       topic_name: row.topic_name ?? row.topic_id,
@@ -148,8 +176,8 @@ export async function listPickerTopics(courseId: string): Promise<PickerTopic[]>
       sequence_in_unit: row.sequence_in_unit ?? 0,
       related_strand: row.related_strand ?? '',
       estimated_time_minutes: row.estimated_time_minutes ?? null,
-      available,
-      levelled,
+      available: entries.length,
+      entries,
       templated: templated.has(row.topic_id),
     };
   });

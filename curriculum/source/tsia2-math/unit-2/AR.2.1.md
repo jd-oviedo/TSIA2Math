@@ -334,6 +334,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Solve for $x$: $x - 7 = 12$
@@ -360,6 +362,8 @@ Solve for $x$: $2x - 4 = 14$
 - B) $x = 16$
 - C) $x = 9$
 - D) $x = 5$
+
+**Proficient Level**
 
 **Item 4**
 
