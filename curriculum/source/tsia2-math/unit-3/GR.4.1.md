@@ -357,6 +357,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 The point $(-1, -1)$ is translated using the rule $(x, y) \to (x - 2, y + 6)$. What are the coordinates of the image?
@@ -365,6 +367,8 @@ The point $(-1, -1)$ is translated using the rule $(x, y) \to (x - 2, y + 6)$. W
 - B) $(1, -7)$
 - C) $(-3, -7)$
 - D) $(1, 5)$
+
+**Proficient Level**
 
 **Item 2**
 
@@ -375,6 +379,8 @@ The point $(6, -1)$ is rotated $270^{\circ}$ counterclockwise about the origin. 
 - C) $(-6, 1)$
 - D) $(-1, 6)$
 
+**Basic Level**
+
 **Item 3**
 
 The point $(-4, 7)$ is reflected over the y-axis. What are the coordinates of the image?
@@ -383,6 +389,8 @@ The point $(-4, 7)$ is reflected over the y-axis. What are the coordinates of th
 - B) $(4, -7)$
 - C) $(7, -4)$
 - D) $(4, 7)$
+
+**Advanced Level**
 
 **Item 4**
 

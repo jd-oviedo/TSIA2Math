@@ -204,6 +204,8 @@ Use $\pi \approx 3.14$. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A cube has an edge of $5$. What is its surface area?

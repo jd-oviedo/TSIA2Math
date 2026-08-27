@@ -201,6 +201,8 @@ Leave radicals in exact form unless told otherwise.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A $45$-$45$-$90$ triangle has legs of $7$. What is the length of its hypotenuse?
@@ -219,6 +221,8 @@ A $30$-$60$-$90$ triangle has a short leg of $5$. What is the length of its hypo
 - C) $5\sqrt{2}$
 - D) $5$
 
+**Proficient Level**
+
 **Item 3**
 
 A $30$-$60$-$90$ triangle has a hypotenuse of $16$. What is the length of its long leg?
@@ -227,6 +231,8 @@ A $30$-$60$-$90$ triangle has a hypotenuse of $16$. What is the length of its lo
 - B) $16\sqrt{3}$
 - C) $8\sqrt{3}$
 - D) $8\sqrt{2}$
+
+**Basic Level**
 
 **Item 4**
 

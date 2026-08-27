@@ -209,6 +209,8 @@ Leave your answers as simplified expressions.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A rectangle has a length of $x + 4$ and a width of $3$. What is its perimeter?

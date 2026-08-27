@@ -208,6 +208,8 @@ Use $\pi \approx 3.14$. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A triangle has a base of $8$ and a height of $5$. What is its area?
@@ -234,6 +236,8 @@ A circle has a radius of $4$. What is its area?
 - B) $100.48$
 - C) $16$
 - D) $50.24$
+
+**Proficient Level**
 
 **Item 4**
 

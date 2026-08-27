@@ -209,6 +209,8 @@ An answer that shrinks when the figure grew means you divided where you should h
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Two similar rectangles have corresponding sides of $5$ and $15$. What is the scale factor from the smaller to the larger?
@@ -235,6 +237,8 @@ Two similar polygons have a scale factor of $5$ from the smaller to the larger. 
 - B) $1.6$
 - C) $200$
 - D) $0.32$
+
+**Proficient Level**
 
 **Item 4**
 

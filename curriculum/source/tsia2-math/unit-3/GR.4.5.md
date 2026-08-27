@@ -220,6 +220,8 @@ Compare like with like. The substitution produces $r^{2}$, so it must be measure
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 What are the centre and radius of the circle $(x + 1)^{2} + (y - 4)^{2} = 9$?
@@ -246,6 +248,8 @@ A circle has centre $(2, 1)$ and passes through $(5, 5)$. What is its radius?
 - B) $25$
 - C) $5$
 - D) $\sqrt{7}$
+
+**Proficient Level**
 
 **Item 4**
 

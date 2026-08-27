@@ -378,6 +378,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A right triangle has legs of length $9$ and $12$. What is the length of the hypotenuse?
@@ -396,6 +398,8 @@ A right triangle has a hypotenuse of length $20$ and one leg of length $12$. Wha
 - C) $256$
 - D) $16$
 
+**Proficient Level**
+
 **Item 3**
 
 A right triangle has a hypotenuse of length $26$ and one leg of length $24$. What is the perimeter of the triangle?
@@ -404,6 +408,8 @@ A right triangle has a hypotenuse of length $26$ and one leg of length $24$. Wha
 - B) $120$
 - C) $60$
 - D) $36$
+
+**Advanced Level**
 
 **Item 4**
 

@@ -205,6 +205,8 @@ Use $\pi \approx 3.14$. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A square has an area of $64$. What is the length of one side?
@@ -231,6 +233,8 @@ A triangle has an area of $30$ and a base of $12$. What is its height?
 - B) $360$
 - C) $5$
 - D) $1.25$
+
+**Advanced Level**
 
 **Item 4**
 

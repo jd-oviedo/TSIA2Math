@@ -209,6 +209,8 @@ Use $\pi \approx 3.14$. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A rectangular prism measures $5$ by $3$ by $2$. What is its volume?
