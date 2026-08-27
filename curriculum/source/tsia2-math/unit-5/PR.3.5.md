@@ -256,6 +256,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Two sets satisfy $n(A) = 15$, $n(B) = 12$, and $n(A \cap B) = 5$. What is $n(A \cup B)$?
@@ -264,6 +266,8 @@ Two sets satisfy $n(A) = 15$, $n(B) = 12$, and $n(A \cap B) = 5$. What is $n(A \
 - B) $22$
 - C) $17$
 - D) $5$
+
+**Proficient Level**
 
 **Item 2**
 
@@ -282,6 +286,8 @@ Three sets satisfy $n(A) = 25$, $n(B) = 20$, $n(C) = 18$, $n(A \cap B) = 9$, $n(
 - B) $39$
 - C) $63$
 - D) $19$
+
+**Advanced Level**
 
 **Item 4**
 

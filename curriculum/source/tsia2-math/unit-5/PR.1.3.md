@@ -248,6 +248,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 How many visits were recorded on Wednesday?
@@ -259,6 +261,8 @@ How many visits were recorded on Wednesday?
 - B) $50$
 - C) $30$
 - D) $10$
+
+**Advanced Level**
 
 **Item 2**
 
@@ -272,6 +276,8 @@ A sign in the library says there were $160$ visits that week. Is that correct?
 - C) No, the total is $140$
 - D) No, the total is $200$
 
+**Basic Level**
+
 **Item 3**
 
 How many pizzas were sold on Monday?
@@ -283,6 +289,8 @@ How many pizzas were sold on Monday?
 - B) $16$
 - C) $12$
 - D) $20$
+
+**Advanced Level**
 
 **Item 4**
 

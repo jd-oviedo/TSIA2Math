@@ -294,6 +294,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A data set is given as the points $(1, 20)$, $(2, 17)$, $(3, 15)$, $(4, 12)$, and $(5, 9)$. Which best describes the linear association between $x$ and $y$?
@@ -302,6 +304,8 @@ A data set is given as the points $(1, 20)$, $(2, 17)$, $(3, 15)$, $(4, 12)$, an
 - B) The association is negative.
 - C) The association is positive.
 - D) The direction cannot be determined without the correlation coefficient.
+
+**Proficient Level**
 
 **Item 2**
 
@@ -320,6 +324,8 @@ Three scatterplots are shown. Plot 1 shows a loose upward cloud. Plot 2 shows po
 - B) Plot 3, because its points sit nearest the center of the graph.
 - C) Plot 2 is actually the weakest, because a negative slope indicates a weak relationship.
 - D) Plot 2, because its points cluster most tightly along a line.
+
+**Advanced Level**
 
 **Item 4**
 

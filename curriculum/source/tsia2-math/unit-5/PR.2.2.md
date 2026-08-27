@@ -296,6 +296,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A grade is $70\%$ coursework, $20\%$ project, and $10\%$ attendance. A student scores $58$ on coursework, $78$ on the project, and $98$ on attendance. What is the grade?
@@ -322,6 +324,8 @@ A grade is $50\%$ exams, $30\%$ labs, and $20\%$ homework. A student scores $96$
 - B) $84$
 - C) $87$
 - D) $90$
+
+**Advanced Level**
 
 **Item 4**
 

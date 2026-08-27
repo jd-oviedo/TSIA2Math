@@ -346,6 +346,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A jar holds $12$ candies: $5$ lemon, $4$ cherry, and $3$ grape. If one candy is taken at random, what is the probability that it is cherry?
@@ -354,6 +356,8 @@ A jar holds $12$ candies: $5$ lemon, $4$ cherry, and $3$ grape. If one candy is 
 - B) $\frac{1}{2}$
 - C) $\frac{2}{3}$
 - D) $\frac{1}{4}$
+
+**Proficient Level**
 
 **Item 2**
 
@@ -364,6 +368,8 @@ A set of $20$ cards is numbered $1$ through $20$. One card is drawn at random. W
 - C) $\frac{3}{20}$
 - D) $\frac{1}{2}$
 
+**Basic Level**
+
 **Item 3**
 
 A bag contains $9$ tiles: $2$ blue and $7$ yellow. What is the probability of drawing a tile that is NOT yellow?
@@ -372,6 +378,8 @@ A bag contains $9$ tiles: $2$ blue and $7$ yellow. What is the probability of dr
 - B) $\frac{2}{7}$
 - C) $\frac{1}{2}$
 - D) $\frac{2}{9}$
+
+**Advanced Level**
 
 **Item 4**
 
