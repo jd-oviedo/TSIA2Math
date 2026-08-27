@@ -209,6 +209,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Pencils cost \$0.50 each and erasers cost \$0.75 each. Which expression represents the cost of $p$ pencils and $e$ erasers?
@@ -235,6 +237,8 @@ A hall has $4$ times as many chairs as tables. If $t$ represents tables and $c$ 
 - B) $c = t + 4$
 - C) $c = 4t$
 - D) $c + t = 4$
+
+**Proficient Level**
 
 **Item 4**
 

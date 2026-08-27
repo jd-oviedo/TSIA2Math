@@ -193,6 +193,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 If $f(x) = 5x + 6$, what is $f(4)$?
@@ -219,6 +221,8 @@ If $C(m) = 18m + 25$, what is $C(5)$?
 - B) $25$
 - C) $115$
 - D) $140$
+
+**Advanced Level**
 
 **Item 4**
 

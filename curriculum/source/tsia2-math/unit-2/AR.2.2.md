@@ -200,6 +200,8 @@ Solve each inequality. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Solve $4x - 3 < 13$.
@@ -217,6 +219,8 @@ Solve $-5x \le 20$.
 - B) $x \ge -4$
 - C) $x \ge 4$
 - D) $x > -4$
+
+**Proficient Level**
 
 **Item 3**
 

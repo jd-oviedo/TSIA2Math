@@ -181,6 +181,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A taxi charges \$4 plus \$1.75 per mile. What does a $12$-mile ride cost?
@@ -198,6 +200,8 @@ A bill of \$148 is made up of a \$28 fee plus \$20 per month. How many months do
 - B) $6$ months
 - C) $120$ months
 - D) $3.08$ months
+
+**Proficient Level**
 
 **Item 3**
 

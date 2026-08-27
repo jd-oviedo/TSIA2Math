@@ -213,6 +213,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 What is the slope of the line through $(1, 2)$ and $(5, 14)$?
@@ -231,6 +233,8 @@ What are the slope and y-intercept of $y = 6x - 2$?
 - C) Slope $6$, intercept $0$
 - D) Slope $6$, intercept $-2$
 
+**Proficient Level**
+
 **Item 3**
 
 What is the equation of the line through $(3, 8)$ with slope $2$?
@@ -239,6 +243,8 @@ What is the equation of the line through $(3, 8)$ with slope $2$?
 - B) $y = 2x + 2$
 - C) $y = 3x + 2$
 - D) $y = 2x$
+
+**Advanced Level**
 
 **Item 4**
 

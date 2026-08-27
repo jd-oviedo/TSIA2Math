@@ -220,6 +220,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A relationship contains the points $(2, 5)$ and $(8, 29)$. What is the average rate of change?
@@ -237,6 +239,8 @@ A pool falls from $200$ liters to $80$ liters over $6$ minutes. What is the aver
 - B) $20$ liters per minute
 - C) $-120$ liters per minute
 - D) $6$ liters per minute
+
+**Proficient Level**
 
 **Item 3**
 

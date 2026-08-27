@@ -207,6 +207,8 @@ Solve each system. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Solve the system $y = x + 4$ and $y = 2x + 1$.
@@ -225,6 +227,8 @@ Solve the system $x + y = 12$ and $x - y = 2$.
 - C) $(7, 5)$
 - D) $(14, 2)$
 
+**Advanced Level**
+
 **Item 3**
 
 Solve the system $y = 2x + 3$ and $y = 2x - 1$.
@@ -233,6 +237,8 @@ Solve the system $y = 2x + 3$ and $y = 2x - 1$.
 - B) $(0, 3)$
 - C) $(0, 2)$
 - D) No solution
+
+**Proficient Level**
 
 **Item 4**
 
