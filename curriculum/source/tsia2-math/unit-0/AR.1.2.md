@@ -233,6 +233,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Which statement correctly describes the relation $\{(2,4),(3,6),(2,8)\}$?
@@ -251,6 +253,8 @@ A table records that input $1$ gives output $5$, input $2$ gives output $5$, and
 - C) No, because different inputs must give different outputs.
 - D) No, because the second and third pairs repeat an output already produced.
 
+**Proficient Level**
+
 **Item 3**
 
 Every vertical line drawn through a certain graph meets it at exactly one point, except one vertical line that meets it at three points. Is the relation a function?
@@ -259,6 +263,8 @@ Every vertical line drawn through a certain graph meets it at exactly one point,
 - B) Yes, because every other vertical line meets the graph once.
 - C) Yes, because the test fails only if every vertical line meets the graph more than once.
 - D) No, because that one input is paired with three outputs.
+
+**Basic Level**
 
 **Item 4**
 

@@ -245,6 +245,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Two angles are supplementary. One angle measures $125$ degrees. What is the measure of the other angle?
@@ -262,6 +264,8 @@ Two lines intersect. One of the angles formed measures $76$ degrees. What is the
 - B) $76$ degrees
 - C) $14$ degrees
 - D) $284$ degrees
+
+**Proficient Level**
 
 **Item 3**
 

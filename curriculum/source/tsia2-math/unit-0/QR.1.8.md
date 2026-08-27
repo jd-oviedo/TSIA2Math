@@ -249,6 +249,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 What is the value of $|-12|$?
@@ -267,6 +269,8 @@ What is the value of $|4 - 11|$?
 - C) $44$
 - D) $15$
 
+**Proficient Level**
+
 **Item 3**
 
 What are all the solutions to $|x + 2| = 7$?
@@ -275,6 +279,8 @@ What are all the solutions to $|x + 2| = 7$?
 - B) $x = 5$
 - C) $x = 9$ or $x = -5$
 - D) $x = 7$ or $x = -7$
+
+**Advanced Level**
 
 **Item 4**
 

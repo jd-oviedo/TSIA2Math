@@ -252,6 +252,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A nurse needs to record a patient's body temperature. Which unit is most appropriate?
@@ -270,6 +272,8 @@ Which unit is most appropriate for expressing the distance of a long road race, 
 - C) centimeters
 - D) yards
 
+**Proficient Level**
+
 **Item 3**
 
 A bag of flour has a mass of $3$ kilograms. How many grams is that?
@@ -278,6 +282,8 @@ A bag of flour has a mass of $3$ kilograms. How many grams is that?
 - B) $300$ grams
 - C) $0.003$ grams
 - D) $30$ grams
+
+**Advanced Level**
 
 **Item 4**
 

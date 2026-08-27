@@ -321,6 +321,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A coach recorded the number of goals scored in $7$ games: $2, 0, 3, 2, 1, 2, 0$. How many games had exactly $2$ goals?
@@ -329,6 +331,8 @@ A coach recorded the number of goals scored in $7$ games: $2, 0, 3, 2, 1, 2, 0$.
 - B) $5$
 - C) $3$
 - D) $1$
+
+**Proficient Level**
 
 **Item 2**
 
@@ -347,6 +351,8 @@ A survey of $10$ households recorded the number of cars owned: $1, 2, 0, 3, 1, 1
 - B) $4$
 - C) $2$
 - D) $5$
+
+**Advanced Level**
 
 **Item 4**
 

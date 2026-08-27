@@ -270,6 +270,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 What is the value of $7 + 2 \times 5$?
@@ -288,6 +290,8 @@ What is the value of $(9 - 4)^2$?
 - C) $-7$
 - D) $5$
 
+**Proficient Level**
+
 **Item 3**
 
 What is the value of $18 \div 3 + 2 \times 4$?
@@ -296,6 +300,8 @@ What is the value of $18 \div 3 + 2 \times 4$?
 - B) $32$
 - C) $6$
 - D) $14$
+
+**Advanced Level**
 
 **Item 4**
 

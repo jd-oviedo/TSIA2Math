@@ -271,6 +271,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Which of the following is an exponential function?
@@ -297,6 +299,8 @@ A table shows $x$ values $0, 1, 2, 3$ with $y$ values $3, 12, 48, 192$. Which fa
 - B) Exponential, because consecutive $y$ values have a constant ratio of $4$.
 - C) Linear, because each value comes from the one before it by a single fixed operation.
 - D) Linear, because the first differences $9$, $36$ and $144$ are themselves related by a constant.
+
+**Proficient Level**
 
 **Item 4**
 

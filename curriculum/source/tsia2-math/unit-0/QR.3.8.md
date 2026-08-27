@@ -261,6 +261,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Which expression is equivalent to $5(x + 3)$?
@@ -287,6 +289,8 @@ Which expression is $20x + 30$ factored completely?
 - B) $10(2x + 3)$
 - C) $10(2x + 30)$
 - D) $10(20x + 30)$
+
+**Proficient Level**
 
 **Item 4**
 
