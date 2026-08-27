@@ -210,6 +210,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Is $(1, 5)$ a solution of $y > 3x + 1$?
@@ -236,6 +238,8 @@ For the inequality $y \ge -x + 4$, which region is shaded?
 - B) Only the part above the line where $y > 0$
 - C) Only the line itself
 - D) The region above the line
+
+**Advanced Level**
 
 **Item 4**
 

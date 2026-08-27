@@ -199,6 +199,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 What is the slope of a line parallel to $y = -7x + 2$?
@@ -216,6 +218,8 @@ What is the slope of a line perpendicular to $y = -4x + 1$?
 - B) $4$
 - C) $-\frac{1}{4}$
 - D) $1$
+
+**Proficient Level**
 
 **Item 3**
 

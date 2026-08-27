@@ -215,6 +215,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Plan A costs $C = 30 + 10m$ and Plan B costs $C = 60 + 5m$, where $m$ is months. Which plan has the greater rate of change?
@@ -223,6 +225,8 @@ Plan A costs $C = 30 + 10m$ and Plan B costs $C = 60 + 5m$, where $m$ is months.
 - B) Plan A, at \$10 per month
 - C) Plan B, at \$5 per month
 - D) They are equal, because both are linear.
+
+**Proficient Level**
 
 **Item 2**
 
@@ -233,6 +237,8 @@ Plan A costs $C = 30 + 10m$ and Plan B costs $C = 60 + 5m$, where $m$ is months.
 - C) Month $6$, at \$90
 - D) They never cost the same.
 
+**Basic Level**
+
 **Item 3**
 
 Plan A costs $C = 30 + 10m$ and Plan B costs $C = 60 + 5m$, where $m$ is months. How much faster does Plan A's cost rise than Plan B's?
@@ -241,6 +247,8 @@ Plan A costs $C = 30 + 10m$ and Plan B costs $C = 60 + 5m$, where $m$ is months.
 - B) \$30 per month
 - C) \$5 per month
 - D) \$2 per month
+
+**Advanced Level**
 
 **Item 4**
 

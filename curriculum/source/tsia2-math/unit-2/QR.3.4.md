@@ -178,6 +178,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A repair bill is $C = 20h + 75$ dollars, where $h$ is hours. What does the $20$ represent?
@@ -204,6 +206,8 @@ Pages remaining in a book are modelled by $P = 500 - 25w$, where $w$ is weeks. W
 - B) The book takes $25$ weeks to finish.
 - C) The book started with $25$ pages.
 - D) $25$ pages are read each week.
+
+**Proficient Level**
 
 **Item 4**
 

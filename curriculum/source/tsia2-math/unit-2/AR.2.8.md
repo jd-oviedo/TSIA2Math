@@ -205,6 +205,8 @@ Solve each formula for the requested variable. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Solve $V = lwh$ for $h$.
@@ -222,6 +224,8 @@ Solve $y = mx + b$ for $b$.
 - B) $b = y - mx$
 - C) $b = \frac{y - m}{x}$
 - D) $b = ymx$
+
+**Proficient Level**
 
 **Item 3**
 

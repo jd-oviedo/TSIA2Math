@@ -205,6 +205,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A pool holds $400$ liters and drains $25$ liters per minute. Which equation gives the volume $V$ after $t$ minutes?
@@ -231,6 +233,8 @@ A phone is worth \$400 and falls to \$160 over $4$ years, linearly. Which equati
 - B) $V = 160 - 60t$
 - C) $V = 400 + 60t$
 - D) $V = 400 - 60t$
+
+**Proficient Level**
 
 **Item 4**
 

@@ -208,6 +208,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 For the relationship $y = 9x + 4$, what is the rate of change?
@@ -225,6 +227,8 @@ A pool drains so that $V = 500 - 12t$, where $t$ is minutes. What is the rate of
 - B) $12$ gallons per minute
 - C) $488$ gallons per minute
 - D) $-12$ gallons per minute
+
+**Proficient Level**
 
 **Item 3**
 
