@@ -213,6 +213,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A line passes through $(3, 8)$ and $(7, 20)$. What is the slope?
@@ -239,6 +241,8 @@ Use the model $y = 3x - 1$ to predict $y$ when $x = 6$.
 - B) $-1$
 - C) $17$
 - D) $12$
+
+**Proficient Level**
 
 **Item 4**
 

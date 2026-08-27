@@ -234,6 +234,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Set F is $5, 8, 11, 14, 22$. What is the range?
@@ -242,6 +244,8 @@ Set F is $5, 8, 11, 14, 22$. What is the range?
 - B) $22$
 - C) $12$
 - D) $11$
+
+**Advanced Level**
 
 **Item 2**
 
@@ -260,6 +264,8 @@ Set H and Set J both have a median of $50$. Set H has a mean of $50$ and Set J h
 - B) The two sets are equally consistent, because their middles match
 - C) Set J has values stretching above its middle, pulling its mean up
 - D) Set J is skewed left, because its mean is higher than its median
+
+**Proficient Level**
 
 **Item 4**
 

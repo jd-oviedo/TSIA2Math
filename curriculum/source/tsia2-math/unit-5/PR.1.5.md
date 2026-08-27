@@ -226,6 +226,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A café records the number of cups of coffee sold each day. Which type of variable is "cups sold"?
@@ -234,6 +236,8 @@ A café records the number of cups of coffee sold each day. Which type of variab
 - B) Categorical, because each day is its own group
 - C) Numerical and discrete, because cups are counted in whole units
 - D) Numerical, and the kind depends on how busy the café is
+
+**Proficient Level**
 
 **Item 2**
 
@@ -244,6 +248,8 @@ A class records each student's favourite sport and wants to show how many chose 
 - C) A scatterplot, because it compares sport with the number of students
 - D) A line graph, because it shows the trend across sports
 
+**Basic Level**
+
 **Item 3**
 
 A nurse records each patient's exact temperature in degrees. Which type of variable is "temperature"?
@@ -252,6 +258,8 @@ A nurse records each patient's exact temperature in degrees. Which type of varia
 - B) Numerical and continuous, because temperature can take any value on a scale
 - C) Categorical, because patients are sorted by whether they have a fever
 - D) Numerical, and the kind depends on how precise the thermometer is
+
+**Proficient Level**
 
 **Item 4**
 

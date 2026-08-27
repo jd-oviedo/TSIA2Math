@@ -261,6 +261,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 What is the probability that a day had rain, given that it was a weekend day?
@@ -272,6 +274,8 @@ Of the $20$ weekend days, $9$ had rain and $11$ were dry. Of the $80$ weekdays, 
 - C) $\frac{9}{25}$
 - D) $\frac{9}{20}$
 
+**Proficient Level**
+
 **Item 2**
 
 What is the probability that a day was a weekday, given that it had rain?
@@ -282,6 +286,8 @@ Of the $20$ weekend days, $9$ had rain and $11$ were dry. Of the $80$ weekdays, 
 - B) $\frac{27}{100}$
 - C) $\frac{3}{4}$
 - D) $\frac{4}{5}$
+
+**Basic Level**
 
 **Item 3**
 

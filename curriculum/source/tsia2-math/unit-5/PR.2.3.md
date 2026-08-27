@@ -278,6 +278,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Four numbers have a mean of $21$. Three of them are $16$, $20$, and $24$. What is the fourth number?
@@ -286,6 +288,8 @@ Four numbers have a mean of $21$. Three of them are $16$, $20$, and $24$. What i
 - B) $3$
 - C) $39$
 - D) $21$
+
+**Proficient Level**
 
 **Item 2**
 
@@ -296,6 +300,8 @@ A data set contains $55$, $68$, $61$, and one more value, which is the largest i
 - C) $43$
 - D) $80$
 
+**Basic Level**
+
 **Item 3**
 
 Five numbers have a mean of $36$. Four of them are $33$, $41$, $29$, and $37$. What is the fifth number?
@@ -304,6 +310,8 @@ Five numbers have a mean of $36$. Four of them are $33$, $41$, $29$, and $37$. W
 - B) $36$
 - C) $40$
 - D) $76$
+
+**Advanced Level**
 
 **Item 4**
 

@@ -260,6 +260,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 How many Poetry books were checked out?
@@ -271,6 +273,8 @@ How many Poetry books were checked out?
 - B) $18$
 - C) $34$
 - D) $27$
+
+**Proficient Level**
 
 **Item 2**
 
@@ -295,6 +299,8 @@ How many more candidates passed in the morning session than in the evening sessi
 - B) $-15$
 - C) $15$
 - D) $20$
+
+**Basic Level**
 
 **Item 4**
 

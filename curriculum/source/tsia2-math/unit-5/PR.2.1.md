@@ -319,6 +319,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A dataset contains the values $4$, $9$, $6$, $12$, and $9$. What is the mean?
@@ -327,6 +329,8 @@ A dataset contains the values $4$, $9$, $6$, $12$, and $9$. What is the mean?
 - B) $8$
 - C) $9$
 - D) $12$
+
+**Proficient Level**
 
 **Item 2**
 
@@ -337,6 +341,8 @@ Six game scores were $15$, $8$, $22$, $8$, $19$, and $11$. What is the median sc
 - C) $15$
 - D) $8$
 
+**Basic Level**
+
 **Item 3**
 
 The low temperatures one week, in degrees Celsius, were $-4$, $9$, $-1$, $12$, $5$, and $-7$. What is the range of these temperatures?
@@ -345,6 +351,8 @@ The low temperatures one week, in degrees Celsius, were $-4$, $9$, $-1$, $12$, $
 - B) $5$
 - C) $16$
 - D) $19$
+
+**Advanced Level**
 
 **Item 4**
 

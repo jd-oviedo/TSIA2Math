@@ -247,6 +247,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Two fair six-sided dice are rolled. What is the probability that both show a $6$?
@@ -255,6 +257,8 @@ Two fair six-sided dice are rolled. What is the probability that both show a $6$
 - B) $\frac{1}{6}$
 - C) $\frac{1}{36}$
 - D) $\frac{1}{18}$
+
+**Proficient Level**
 
 **Item 2**
 
@@ -273,6 +277,8 @@ Three independent events have probabilities $\frac{3}{4}$, $\frac{3}{5}$, and $\
 - B) $\frac{9}{20}$
 - C) $\frac{3}{4}$
 - D) $\frac{9}{40}$
+
+**Advanced Level**
 
 **Item 4**
 

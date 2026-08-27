@@ -270,6 +270,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 The probability that a randomly selected student forgot their homework is $\frac{1}{6}$. What is the probability that a randomly selected student did not forget their homework?
@@ -278,6 +280,8 @@ The probability that a randomly selected student forgot their homework is $\frac
 - B) $\frac{1}{6}$
 - C) $\frac{1}{2}$
 - D) $\frac{2}{3}$
+
+**Proficient Level**
 
 **Item 2**
 
@@ -296,6 +300,8 @@ The probability that a flight departs on time is $45\%$. What is the probability
 - B) $55\%$
 - C) $10\%$
 - D) $50\%$
+
+**Advanced Level**
 
 **Item 4**
 

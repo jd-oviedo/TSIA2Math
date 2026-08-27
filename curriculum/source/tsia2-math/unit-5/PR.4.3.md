@@ -212,6 +212,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A price rises from \$60 to \$75. What is the percent increase?
@@ -230,6 +232,8 @@ A count falls from $120$ to $96$. What is the percent decrease?
 - C) $25\%$
 - D) $80\%$
 
+**Proficient Level**
+
 **Item 3**
 
 A value rises $10\%$ one year and $10\%$ the next. What is the total percent increase?
@@ -238,6 +242,8 @@ A value rises $10\%$ one year and $10\%$ the next. What is the total percent inc
 - B) $20\%$
 - C) $21\%$
 - D) $10\%$
+
+**Basic Level**
 
 **Item 4**
 

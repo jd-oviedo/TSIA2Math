@@ -185,6 +185,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A survey of $40$ shoppers at one store found that $70\%$ prefer self-checkout. Which conclusion is directly supported?
@@ -193,6 +195,8 @@ A survey of $40$ shoppers at one store found that $70\%$ prefer self-checkout. W
 - B) $70\%$ of all shoppers prefer self-checkout
 - C) Self-checkout causes shoppers to be satisfied
 - D) Nothing can be concluded, because $40$ is too small a sample
+
+**Proficient Level**
 
 **Item 2**
 
