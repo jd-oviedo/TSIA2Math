@@ -226,6 +226,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 After a $15\%$ discount, a lamp costs \$68. What was the original price?
@@ -243,6 +245,8 @@ $40\%$ of a number is $26$. What is the number?
 - B) $65$
 - C) $650$
 - D) $0.65$
+
+**Proficient Level**
 
 **Item 3**
 

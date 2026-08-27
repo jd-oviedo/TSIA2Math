@@ -200,6 +200,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A recipe that serves $6$ people uses $4$ cups of flour. How much flour is needed to serve $15$ people?
@@ -217,6 +219,8 @@ A plumber charges a \$60 call-out fee plus \$40 per hour. What is the cost of a 
 - B) \$180
 - C) \$300
 - D) \$60
+
+**Proficient Level**
 
 **Item 3**
 

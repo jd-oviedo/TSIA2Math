@@ -209,6 +209,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 How many inches are in $5$ yards?
@@ -235,6 +237,8 @@ Posts are placed every $5$ feet along a straight $60$-foot rail, with a post at 
 - B) $14$ posts
 - C) $300$ posts
 - D) $13$ posts
+
+**Proficient Level**
 
 **Item 4**
 

@@ -207,6 +207,8 @@ Write the expression each phrase describes.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Which expression represents "$7$ less than three times a number $n$"?
@@ -224,6 +226,8 @@ A tutor charges a \$20 booking fee plus \$35 per hour. Which expression represen
 - B) $20h + 35$
 - C) $35h + 20$
 - D) $35h - 20$
+
+**Proficient Level**
 
 **Item 3**
 

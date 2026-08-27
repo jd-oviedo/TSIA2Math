@@ -208,6 +208,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A car uses $9$ gallons of gas to travel $216$ miles. What is its fuel economy in miles per gallon?
@@ -225,6 +227,8 @@ A $15$-ounce jar of sauce costs \$5.40. What is the price per ounce?
 - B) \$81
 - C) \$3.60
 - D) \$0.36
+
+**Proficient Level**
 
 **Item 3**
 

@@ -223,6 +223,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A pump moves $9$ gallons every $2$ minutes. At this rate, how many gallons does it move in $30$ minutes?
@@ -241,6 +243,8 @@ Three kilograms of rice cost \$7.50. At the same rate, what do $8$ kilograms cos
 - C) \$20
 - D) \$12.50
 
+**Proficient Level**
+
 **Item 3**
 
 Two runners leave the same point at the same time, running in the same direction, one at $6$ miles per hour and one at $10$ miles per hour. How far apart are they after $45$ minutes?
@@ -249,6 +253,8 @@ Two runners leave the same point at the same time, running in the same direction
 - B) $12$ miles
 - C) $180$ miles
 - D) $3$ miles
+
+**Advanced Level**
 
 **Item 4**
 
