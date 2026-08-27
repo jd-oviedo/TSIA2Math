@@ -350,6 +350,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A rectangle has a length of $12$ m and a width of $7$ m. What is the perimeter?
@@ -367,6 +369,8 @@ A regular hexagon has a side length of $5$ yd. What is the perimeter of the hexa
 - B) $20$ yd
 - C) $30$ yd
 - D) $35$ yd
+
+**Proficient Level**
 
 **Item 3**
 

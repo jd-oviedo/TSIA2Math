@@ -208,6 +208,8 @@ Round to one decimal place where the answer is not exact.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A $26$ ft ladder leans against a wall with its foot $10$ ft from the base. How high up the wall does it reach?
@@ -225,6 +227,8 @@ From a point $75$ ft from the base of a building, the angle of elevation to the 
 - B) $89.4$
 - C) $116.6$
 - D) $75$
+
+**Proficient Level**
 
 **Item 3**
 

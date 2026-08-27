@@ -219,6 +219,8 @@ The definition is the whole test: **one figure can be mapped onto the other by a
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A figure is reflected across the $x$-axis. Which statement about the image is true?

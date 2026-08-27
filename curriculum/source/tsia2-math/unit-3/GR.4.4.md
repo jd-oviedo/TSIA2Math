@@ -201,6 +201,8 @@ The rectangle's two axes run through the midpoints of opposite sides. Its diagon
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 How many lines of symmetry does a square have?
@@ -219,6 +221,8 @@ What is the order of rotational symmetry of an equilateral triangle?
 - C) $6$
 - D) $2$
 
+**Proficient Level**
+
 **Item 3**
 
 Which of these regular polygons has point symmetry?
@@ -227,6 +231,8 @@ Which of these regular polygons has point symmetry?
 - B) A regular pentagon
 - C) A regular octagon
 - D) A regular nonagon
+
+**Advanced Level**
 
 **Item 4**
 

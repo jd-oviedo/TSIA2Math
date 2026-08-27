@@ -188,6 +188,8 @@ Use $\pi \approx 3.14$ unless told otherwise. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A circle has a radius of $8$. What is its circumference?
@@ -214,6 +216,8 @@ A circle has a circumference of $43.96$. What is its diameter?
 - B) $138.03$
 - C) $14$
 - D) $21.98$
+
+**Proficient Level**
 
 **Item 4**
 

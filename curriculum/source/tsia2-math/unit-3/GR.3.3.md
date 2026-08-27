@@ -214,6 +214,8 @@ Round decimals to one place where the answer is not exact.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A right triangle has the side opposite $\theta$ equal to $6$, the side adjacent to $\theta$ equal to $8$, and a hypotenuse of $10$. What is $\sin\theta$?
@@ -232,6 +234,8 @@ A right triangle has the side opposite $\theta$ equal to $6$, the side adjacent 
 - C) $\frac{4}{3}$
 - D) $6$
 
+**Proficient Level**
+
 **Item 3**
 
 A right triangle has a hypotenuse of $30$, and $\cos\theta = 0.8$. What is the length of the side adjacent to $\theta$?
@@ -240,6 +244,8 @@ A right triangle has a hypotenuse of $30$, and $\cos\theta = 0.8$. What is the l
 - B) $18$
 - C) $24$
 - D) $0.8$
+
+**Advanced Level**
 
 **Item 4**
 
