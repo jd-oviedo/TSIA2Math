@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
@@ -11,6 +11,7 @@ import {
   ctaStyle,
   strandChip,
 } from '../worksheet-theme';
+import { countEligible } from '../../../lib/worksheet-select';
 import type { PickerTopic } from '../../../lib/worksheet-source';
 import { QuotaMeter, QuotaCapNotice } from '../QuotaNotice';
 
@@ -132,21 +133,43 @@ export default function WorksheetBuilder({
 
   const filtering = levels.size > 0;
 
-  // What the current selection can actually deliver.
+  // The teacher's settings in the shape countEligible() takes, so the badge and
+  // the server are handed the identical arguments. Memoised on the Set rather
+  // than rebuilt per topic: `levels` is replaced on every toggle, so identity is
+  // a correct dependency and 97 topics do not each allocate their own array.
+  const draw = useMemo(
+    () => ({ levels: [...levels], includeQuiz }),
+    [levels, includeQuiz],
+  );
+
+  // How many questions a topic can contribute right now.
   //
-  // SCHEMA FACT 3 made visible. `levelled` counts only items carrying a
-  // difficulty band, and every mini_quiz item has level = null across all 97
-  // topics -- so with a filter on, the pool is the 10 practice items, not the
-  // 14 gradeable ones. Showing `available` while filtering would promise
-  // questions the draw cannot produce.
+  // THE DRAW'S OWN RULE, not a restatement of it. This used to read
+  // `filtering ? t.levelled : includeQuiz ? t.available : t.levelled`, three
+  // branches of arithmetic standing in for selectItems, and they agreed only
+  // because of a content coincidence: no mini-quiz item carried a band, so
+  // `levelled` happened to equal the practice count. Band one topic's quiz and
+  // the coincidence breaks -- `levelled` reads 14 while the draw still delivers
+  // 10, and the middle branch was already wrong for "no filter, quiz off" for
+  // the same reason.
+  //
+  // countEligible() is the function selectItems() filters with, over the entries
+  // listPickerTopics() built with the predicate drawFromStatic() draws with. The
+  // badge cannot overstate the pool without the draw overstating it too.
+  const eligibleIn = useCallback(
+    (t: PickerTopic) => countEligible(t.entries, draw),
+    [draw],
+  );
+
+  // What the current selection can actually deliver.
   const pool = useMemo(() => {
     let total = 0;
     for (const t of topics) {
       if (!selected.has(t.topic_id)) continue;
-      total += filtering ? t.levelled : includeQuiz ? t.available : t.levelled;
+      total += eligibleIn(t);
     }
     return total;
-  }, [topics, selected, filtering, includeQuiz]);
+  }, [topics, selected, eligibleIn]);
 
   const capped = Math.min(count, pool);
   const short = selected.size > 0 && pool < count;
@@ -481,35 +504,46 @@ export default function WorksheetBuilder({
               </span>
             </div>
 
-            {/* Schema fact 3, said out loud at the moment it starts to matter. */}
+            {/* Said out loud at the moment it starts to matter, and it now says
+                something different. The old copy read "mini-quiz questions are
+                not tagged with a difficulty, so they are left out while a filter
+                is on", which was a statement about the SECTION. Bands are being
+                added to mini quizzes topic by topic, so it is a statement about
+                each topic's content instead, and the counts above already show
+                which way each one falls. */}
             {filtering && (
-              <p style={{ fontSize: 11.5, color: WS.error, margin: 0, lineHeight: 1.45 }}>
-                Mini-quiz questions are not tagged with a difficulty, so they are
-                left out while a filter is on. That is why the counts drop.
+              <p style={{ fontSize: 11.5, color: WS.muted, margin: 0, lineHeight: 1.45 }}>
+                Only questions carrying one of the ticked bands are drawn.
+                Mini-quiz questions are included where they carry a band and left
+                out where they do not, which is why some counts drop.
               </p>
             )}
 
-            {!filtering && (
-              <label
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 9,
-                  fontSize: 13,
-                  color: WS.ink,
-                  cursor: 'pointer',
-                }}
-              >
-                <input
-                  className="ws-sr"
-                  type="checkbox"
-                  checked={includeQuiz}
-                  onChange={(e) => setIncludeQuiz(e.target.checked)}
-                />
-                <Marker on={includeQuiz} />
-                Include mini-quiz questions
-              </label>
-            )}
+            {/* RENDERED IN BOTH MODES NOW. It used to be hidden while a filter
+                was on, on the grounds that the filter excluded the mini quiz
+                anyway. The state persisted through the hide, so a teacher who
+                unticked it and then picked a band sent include_quiz:false from a
+                control they could no longer see -- harmless only for as long as
+                the server ignored it, which it no longer does. */}
+            <label
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 9,
+                fontSize: 13,
+                color: WS.ink,
+                cursor: 'pointer',
+              }}
+            >
+              <input
+                className="ws-sr"
+                type="checkbox"
+                checked={includeQuiz}
+                onChange={(e) => setIncludeQuiz(e.target.checked)}
+              />
+              <Marker on={includeQuiz} />
+              Include mini-quiz questions
+            </label>
 
             {short && (
               <p style={{ fontSize: 11.5, color: WS.error, margin: 0, lineHeight: 1.45 }}>
@@ -648,7 +682,9 @@ export default function WorksheetBuilder({
                 <div className="ws-topicgrid">
                   {list.map((t) => {
                     const on = selected.has(t.topic_id);
-                    const shown = filtering ? t.levelled : t.available;
+                    // The same call the running total uses, so a topic's badge
+                    // and the sum of the badges cannot disagree.
+                    const shown = eligibleIn(t);
                     const locked = shown === 0;
                     return (
                       <label
