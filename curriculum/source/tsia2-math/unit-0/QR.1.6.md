@@ -243,6 +243,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 What is $6{,}249$ rounded to the nearest hundred?
@@ -261,6 +263,8 @@ What is $0.0857$ rounded to the nearest hundredth?
 - C) $0.09$
 - D) $0.0858$
 
+**Proficient Level**
+
 **Item 3**
 
 What is $7{,}981$ rounded to the nearest hundred?
@@ -269,6 +273,8 @@ What is $7{,}981$ rounded to the nearest hundred?
 - B) $7{,}980$
 - C) $7{,}000$
 - D) $7{,}900$
+
+**Advanced Level**
 
 **Item 4**
 

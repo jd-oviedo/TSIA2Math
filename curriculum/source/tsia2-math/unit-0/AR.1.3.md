@@ -249,6 +249,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 What is the domain of the relation $\{(4,1),(5,3),(6,3)\}$?
@@ -266,6 +268,8 @@ What is the range of the relation $\{(1,2),(2,5),(3,2),(4,7)\}$?
 - B) $\{1, 2, 3, 4\}$
 - C) $\{2, 5, 7\}$
 - D) $\{2, 7\}$
+
+**Proficient Level**
 
 **Item 3**
 

@@ -244,6 +244,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A ruler is labelled at $2$ cm and $3$ cm, with $10$ equal spaces between the two labels. What does each space represent?
@@ -262,6 +264,8 @@ A thermometer is labelled at $60$ degrees and $70$ degrees, with $5$ equal space
 - C) $70$ degrees
 - D) $64$ degrees
 
+**Proficient Level**
+
 **Item 3**
 
 A gauge is labelled at $0$ and $12$. There are $3$ marks between the two labels, dividing the interval into equal spaces. What does each space represent?
@@ -270,6 +274,8 @@ A gauge is labelled at $0$ and $12$. There are $3$ marks between the two labels,
 - B) $4$
 - C) $12$
 - D) $36$
+
+**Advanced Level**
 
 **Item 4**
 

@@ -234,6 +234,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Nine students answered a yes or no question with these responses: yes, no, yes, yes, no, yes, no, yes, yes. In a frequency table, what frequency should be recorded for yes?
@@ -251,6 +253,8 @@ A frequency table records A $6$, B $4$, and C $3$, and states a total of $14$. W
 - B) $14$
 - C) $12$
 - D) $13$
+
+**Proficient Level**
 
 **Item 3**
 

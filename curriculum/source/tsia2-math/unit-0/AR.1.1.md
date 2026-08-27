@@ -281,6 +281,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 If $f(x) = 5x - 2$, what is $f(3)$?
@@ -298,6 +300,8 @@ A function $f$ is defined so that $f(6) = 1$. Which statement correctly interpre
 - B) When the input is $1$, the output is $6$.
 - C) The function multiplies $6$ by $1$.
 - D) $f$ is equal to $6$ divided by $1$.
+
+**Proficient Level**
 
 **Item 3**
 

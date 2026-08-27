@@ -257,6 +257,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 What is the value of $-9 - (-4)$?
@@ -265,6 +267,8 @@ What is the value of $-9 - (-4)$?
 - B) $-5$
 - C) $5$
 - D) $13$
+
+**Proficient Level**
 
 **Item 2**
 
@@ -275,6 +279,8 @@ What is the value of $\frac{7}{10} - \frac{1}{5}$, written in simplest form?
 - C) $\frac{9}{10}$
 - D) $\frac{5}{10}$
 
+**Basic Level**
+
 **Item 3**
 
 What is the value of $0.6 \times 0.05$?
@@ -283,6 +289,8 @@ What is the value of $0.6 \times 0.05$?
 - B) $12$
 - C) $0.03$
 - D) $0.65$
+
+**Advanced Level**
 
 **Item 4**
 
