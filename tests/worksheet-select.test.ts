@@ -8,8 +8,10 @@ import {
   selectItems,
   itemKey,
   mergePools,
+  countEligible,
   type Candidate,
   type Level,
+  type PoolEntry,
 } from '../app/lib/worksheet-select.ts';
 
 // The worksheet draw.
@@ -56,10 +58,16 @@ const practice = (n: number, level: Level | null): Candidate => ({
   level,
   section: 'practice',
 });
-const quiz = (n: number): Candidate => ({
+// An UNBANDED quiz item, which is still what most of the course looks like.
+//
+// It used to be the only kind, and the helper said so. Band headings now work in
+// Part 3 as well as Part 2 (build_practice_items runs one level scan over both
+// sections), so the course is being banded topic by topic and both kinds exist.
+// The default stays null because that is the majority case and because it is the
+// case the filter has to keep refusing.
+const quiz = (n: number, level: Level | null = null): Candidate => ({
   ref: { source: 'static', topic_id: 'AR.2.1', section: 'mini_quiz', item_number: n },
-  // Schema fact 3: null on every mini_quiz item in the course.
-  level: null,
+  level,
   section: 'mini_quiz',
 });
 
@@ -74,8 +82,11 @@ test('a difficulty filter can never admit an unlevelled item', () => {
   assert.equal(passesLevel(practice(1, 'Advanced'), ['Basic']), false);
 });
 
-test('filtering drops the quiz section and SAYS SO', () => {
-  // The real per-topic shape: 10 levelled practice items, 4 unlevelled quiz.
+test('filtering drops UNBANDED quiz items and SAYS SO', () => {
+  // An unbanded topic, which is what 96 of 97 still are: 10 banded practice
+  // items, 4 quiz items with no band. Behaviour here is deliberately unchanged
+  // by the banding work -- this is the test that proves the change is a safe
+  // incremental slice rather than a course-wide switch.
   const candidates = [
     ...Array.from({ length: 10 }, (_, i) => practice(i + 1, 'Basic')),
     ...Array.from({ length: 4 }, (_, i) => quiz(i + 1)),
@@ -92,8 +103,8 @@ test('filtering drops the quiz section and SAYS SO', () => {
 
   // The failure this guards is a SILENT short worksheet.
   assert.ok(
-    filtered.notes.some((n) => /difficulty filter/i.test(n)),
-    'the teacher must be told the filter removed the quiz items',
+    filtered.notes.some((n) => /no difficulty band/i.test(n)),
+    'the teacher must be told which items the filter could not draw, and why',
   );
   assert.ok(filtered.notes.some((n) => /Asked for 14, found 10/.test(n)));
 });
@@ -107,6 +118,109 @@ test('without a filter the same pool delivers all 14', () => {
   assert.equal(all.refs.length, 14);
   assert.equal(all.shortfall, 0);
   assert.deepEqual(all.notes, []);
+});
+
+// ─── banded mini-quiz items ─────────────────────────────────────────────────
+//
+// Part 3 can carry band headings, so a mini-quiz item can have a real band. The
+// two tests below are the pair that had to be true before any content was
+// banded: the filter must admit a banded quiz item ONLY into its own band, and
+// the picker badge must never promise more than the draw delivers.
+
+test('a banded quiz item is drawn by its own band and refused by another', () => {
+  // AR.2.1 as authored: quiz items 1-3 Basic, item 4 Proficient. Nothing is
+  // Advanced, because that topic's mini quiz genuinely has no Advanced item.
+  const candidates = [
+    ...Array.from({ length: 4 }, (_, i) => practice(i + 1, 'Basic')),
+    ...Array.from({ length: 3 }, (_, i) => practice(i + 5, 'Proficient')),
+    ...Array.from({ length: 3 }, (_, i) => practice(i + 8, 'Advanced')),
+    quiz(1, 'Basic'),
+    quiz(2, 'Basic'),
+    quiz(3, 'Basic'),
+    quiz(4, 'Proficient'),
+  ];
+  const draw = (levels: Level[]) =>
+    selectItems([{ topic_id: 'AR.2.1', candidates }], { count: 20, levels, seed: 5 });
+
+  const quizNumbers = (r: ReturnType<typeof selectItems>) =>
+    r.refs
+      .filter((ref) => ref.source === 'static' && ref.section === 'mini_quiz')
+      .map((ref) => (ref.source === 'static' ? ref.item_number : -1))
+      .sort((a, b) => a - b);
+
+  // INCLUDED by a matching band, and only the items authored into it.
+  assert.deepEqual(quizNumbers(draw(['Basic'])), [1, 2, 3]);
+  assert.deepEqual(quizNumbers(draw(['Proficient'])), [4]);
+
+  // EXCLUDED by a non-matching band. This is the assertion that a band means
+  // something: item 4 is Proficient, so an Advanced worksheet must not get it,
+  // and nothing may leak in merely for being in the mini quiz.
+  assert.deepEqual(quizNumbers(draw(['Advanced'])), []);
+
+  // The counts a teacher sees, per band. 4+3 Basic, 3+1 Proficient, 3+0 Advanced.
+  assert.equal(draw(['Basic']).refs.length, 7);
+  assert.equal(draw(['Proficient']).refs.length, 4);
+  assert.equal(draw(['Advanced']).refs.length, 3);
+  assert.equal(draw(['Basic', 'Proficient', 'Advanced']).refs.length, 14);
+
+  // A band selection that admits every item must not report anything set aside.
+  // Checked for the set-aside notes specifically, not for an empty array: asking
+  // for 20 against a 14-item pool legitimately reports a shortfall as well.
+  assert.deepEqual(
+    draw(['Basic', 'Proficient', 'Advanced']).notes.filter((n) => /set aside/i.test(n)),
+    [],
+  );
+});
+
+test('the picker badge equals what the draw can deliver, in every state', () => {
+  // ONE POOL, TWO CONSUMERS. countEligible is what the browser badge calls and
+  // selectItems is what the server draws with; this asserts they agree over the
+  // same entries rather than trusting that two call sites stayed in step. The
+  // badge overstating is the specific failure: a teacher who is promised 14 and
+  // prints 10 finds out by counting.
+  const entries: PoolEntry[] = [
+    ...Array.from({ length: 4 }, () => ({ section: 'practice' as const, level: 'Basic' as const })),
+    ...Array.from({ length: 3 }, () => ({ section: 'practice' as const, level: 'Proficient' as const })),
+    ...Array.from({ length: 3 }, () => ({ section: 'practice' as const, level: 'Advanced' as const })),
+    { section: 'mini_quiz', level: 'Basic' },
+    { section: 'mini_quiz', level: 'Basic' },
+    { section: 'mini_quiz', level: 'Basic' },
+    { section: 'mini_quiz', level: 'Proficient' },
+  ];
+  // The same pool as Candidates, so the draw sees exactly what the badge counted.
+  const candidates: Candidate[] = entries.map((entry, i) => ({
+    ...entry,
+    ref:
+      entry.section === 'practice'
+        ? { source: 'static', topic_id: 'AR.2.1', section: 'practice', item_number: i + 1 }
+        : { source: 'static', topic_id: 'AR.2.1', section: 'mini_quiz', item_number: i - 9 },
+  }));
+
+  const states: { name: string; levels: Level[]; includeQuiz: boolean; expect: number }[] = [
+    { name: 'no filter, quiz on', levels: [], includeQuiz: true, expect: 14 },
+    { name: 'no filter, quiz off', levels: [], includeQuiz: false, expect: 10 },
+    { name: 'all three bands, quiz on', levels: ['Basic', 'Proficient', 'Advanced'], includeQuiz: true, expect: 14 },
+    { name: 'Basic only, quiz on', levels: ['Basic'], includeQuiz: true, expect: 7 },
+    // The state the old code could not express: the switch was ignored while a
+    // filter was on, and its control was not even rendered.
+    { name: 'Basic only, quiz off', levels: ['Basic'], includeQuiz: false, expect: 4 },
+    { name: 'Advanced only, quiz on', levels: ['Advanced'], includeQuiz: true, expect: 3 },
+  ];
+
+  for (const state of states) {
+    const badge = countEligible(entries, { levels: state.levels, includeQuiz: state.includeQuiz });
+    const drawn = selectItems([{ topic_id: 'AR.2.1', candidates }], {
+      // Ask for more than the pool holds, so the draw returns everything it can
+      // and the comparison is against capacity rather than against the request.
+      count: 50,
+      levels: state.levels,
+      includeQuiz: state.includeQuiz,
+      seed: 3,
+    }).refs.length;
+
+    assert.equal(badge, drawn, `${state.name}: badge ${badge} but the draw delivers ${drawn}`);
+    assert.equal(badge, state.expect, `${state.name}: expected ${state.expect}, got ${badge}`);
+  }
 });
 
 // ─── allocation and duplicates ──────────────────────────────────────────────
@@ -264,10 +378,17 @@ test('the two backends are indistinguishable to the difficulty filter', () => {
   assert.deepEqual(fromRolled.notes, fromAuthored.notes);
 });
 
-test('a mini_quiz instance still has no band, and the note still says so', () => {
-  // D2 does not invent a level where the content has none. The band headings
-  // live in Part 2, so all 388 quiz items in the course are null and so is
-  // every instance rolled from one.
+test('an UNBANDED mini_quiz instance has no band, and the note still says so', () => {
+  // D2 does not invent a level where the content has none, and that is still the
+  // point: a topic whose Part 3 carries no band heading parses to null, rolled or
+  // authored alike, and a band filter must keep refusing it.
+  //
+  // WHAT CHANGED. This used to assert the stronger fact that ALL 388 quiz items
+  // in the course are null, because band headings existed only in Part 2. They
+  // work in Part 3 too -- the uploader always ran one level scan over both
+  // sections -- so the course is being banded a topic at a time and that count is
+  // no longer a fixed property of the section. The behaviour under test is
+  // unchanged and is now about the ITEM rather than about the mini quiz.
   const quizInstances: Candidate[] = Array.from({ length: 4 }, (_, i) => ({
     ref: { source: 'instance' as const, topic_id: 'QR.3.5', instance_id: `quiz-${i}` },
     level: null,
