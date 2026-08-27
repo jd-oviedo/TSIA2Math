@@ -215,6 +215,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 If $y$ varies directly with $x$, and $y = 21$ when $x = 7$, what is the constant of variation?
@@ -241,6 +243,8 @@ Which equation represents a direct variation?
 - B) $y = \frac{7}{x}$
 - C) $y = 7x$
 - D) $y = 7$
+
+**Proficient Level**
 
 **Item 4**
 

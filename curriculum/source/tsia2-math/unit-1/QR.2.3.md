@@ -223,6 +223,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 What is $40\%$ of $85$?
@@ -249,6 +251,8 @@ A value rises from $80$ to $92$. What is the percent increase?
 - B) $115\%$
 - C) $15\%$
 - D) $13\%$
+
+**Advanced Level**
 
 **Item 4**
 

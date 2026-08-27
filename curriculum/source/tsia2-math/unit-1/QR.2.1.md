@@ -207,6 +207,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 A recipe uses $2$ cups of rice for every $3$ cups of water. If you use $6$ cups of rice, how much water do you need?
@@ -215,6 +217,8 @@ A recipe uses $2$ cups of rice for every $3$ cups of water. If you use $6$ cups 
 - B) $7$ cups
 - C) $4$ cups
 - D) $3$ cups
+
+**Proficient Level**
 
 **Item 2**
 
@@ -225,6 +229,8 @@ The ratio of boys to girls in a club is $3:5$. If the club has $40$ members, how
 - C) $8$
 - D) $24$
 
+**Advanced Level**
+
 **Item 3**
 
 A car travels $150$ miles on $5$ gallons of gas. At the same rate, how far can it travel on $8$ gallons?
@@ -233,6 +239,8 @@ A car travels $150$ miles on $5$ gallons of gas. At the same rate, how far can i
 - B) $153$ miles
 - C) $30$ miles
 - D) $93.75$ miles
+
+**Basic Level**
 
 **Item 4**
 

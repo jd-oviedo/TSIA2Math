@@ -253,6 +253,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Convert $\frac{1}{5}$ to a decimal.
@@ -271,6 +273,8 @@ Convert $0.8$ to a fraction in lowest terms.
 - C) $\frac{8}{10}$
 - D) $\frac{1}{8}$
 
+**Advanced Level**
+
 **Item 3**
 
 Which fraction has a repeating decimal form?
@@ -279,6 +283,8 @@ Which fraction has a repeating decimal form?
 - B) $\frac{1}{4}$
 - C) $\frac{1}{8}$
 - D) $\frac{1}{2}$
+
+**Proficient Level**
 
 **Item 4**
 

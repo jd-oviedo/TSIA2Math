@@ -211,6 +211,8 @@ Solve each problem. Show your thinking. Use the conversion factors exactly as gi
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Convert $6$ inches to centimeters, given that $1$ inch $= 2.54$ centimeters.
@@ -229,6 +231,8 @@ Convert $40$ degrees Celsius to Fahrenheit, using $F = \frac{9}{5}C + 32$.
 - C) $129.6$ degrees Fahrenheit
 - D) $4.44$ degrees Fahrenheit
 
+**Proficient Level**
+
 **Item 3**
 
 A tabletop has an area of $5$ square meters. What is its area in square feet, given that $1$ meter $\approx 3.28$ feet?
@@ -237,6 +241,8 @@ A tabletop has an area of $5$ square meters. What is its area in square feet, gi
 - B) $54.45$ square feet
 - C) $0.46$ square feet
 - D) $53.8$ square feet
+
+**Basic Level**
 
 **Item 4**
 

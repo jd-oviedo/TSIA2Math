@@ -270,6 +270,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Which of the following equals $\frac{3}{8}$?
@@ -296,6 +298,8 @@ Which is larger, $\frac{7}{10}$ or $68\%$?
 - B) $68\%$
 - C) They are equal
 - D) Cannot be determined
+
+**Advanced Level**
 
 **Item 4**
 

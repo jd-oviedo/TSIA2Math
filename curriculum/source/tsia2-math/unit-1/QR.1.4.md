@@ -215,6 +215,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Between which two consecutive integers does $\sqrt{35}$ fall?
@@ -233,6 +235,8 @@ Which is the best estimate of $\sqrt{90}$?
 - C) $9.1$
 - D) $8100$
 
+**Proficient Level**
+
 **Item 3**
 
 Which is larger, $\sqrt{26}$ or $5.1$?
@@ -241,6 +245,8 @@ Which is larger, $\sqrt{26}$ or $5.1$?
 - B) $5.1$
 - C) They are equal
 - D) Cannot be determined without a calculator
+
+**Basic Level**
 
 **Item 4**
 
