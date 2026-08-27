@@ -286,6 +286,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Which expression is the factored form of $x^{2} + 6x + 8$?
@@ -304,6 +306,8 @@ Which expression is the factored form of $x^{2} + 10x + 21$?
 - C) $(x - 3)(x - 7)$
 - D) $(x + 3)(x - 7)$
 
+**Proficient Level**
+
 **Item 3**
 
 Which binomial is a factor of $x^{2} - 2x - 8$?
@@ -312,6 +316,8 @@ Which binomial is a factor of $x^{2} - 2x - 8$?
 - B) $(x - 8)$
 - C) $(x - 2)$
 - D) $(x - 4)$
+
+**Advanced Level**
 
 **Item 4**
 

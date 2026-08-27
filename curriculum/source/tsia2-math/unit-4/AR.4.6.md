@@ -213,6 +213,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Simplify $\dfrac{4}{y} + \dfrac{9}{y}$.
@@ -221,6 +223,8 @@ Simplify $\dfrac{4}{y} + \dfrac{9}{y}$.
 - B) $\dfrac{13}{y}$
 - C) $\dfrac{13}{y^{2}}$
 - D) $\dfrac{36}{y}$
+
+**Proficient Level**
 
 **Item 2**
 
@@ -231,6 +235,8 @@ Simplify $\dfrac{7}{x - 2} - \dfrac{3}{x - 2}$.
 - C) $\dfrac{4}{2x - 4}$
 - D) $\dfrac{10}{x - 2}$
 
+**Advanced Level**
+
 **Item 3**
 
 Simplify $\dfrac{3x}{8} + \dfrac{x}{8}$ and reduce completely.
@@ -239,6 +245,8 @@ Simplify $\dfrac{3x}{8} + \dfrac{x}{8}$ and reduce completely.
 - B) $\dfrac{3x^{2}}{8}$
 - C) $\dfrac{x}{2}$
 - D) $-\dfrac{2x}{8}$
+
+**Proficient Level**
 
 **Item 4**
 

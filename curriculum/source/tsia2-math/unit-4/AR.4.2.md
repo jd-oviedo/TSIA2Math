@@ -220,6 +220,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 What is $(5x^{4})(3x^{6})$?
@@ -246,6 +248,8 @@ What is $(x - 5)^{2}$?
 - B) $x^{2} - 5x + 25$
 - C) $x^{2} - 10x + 25$
 - D) $x^{2} - 25$
+
+**Proficient Level**
 
 **Item 4**
 

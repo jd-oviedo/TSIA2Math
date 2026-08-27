@@ -290,6 +290,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Which value must be excluded from the domain of $\frac{8}{x - 12}$?
@@ -316,6 +318,8 @@ Which value is **not** in the domain of $\frac{x - 6}{x + 2}$?
 - B) $x = 2$
 - C) Every value is in the domain
 - D) $x = -2$
+
+**Proficient Level**
 
 **Item 4**
 

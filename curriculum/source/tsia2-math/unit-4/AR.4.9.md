@@ -200,6 +200,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Solve $\sqrt{x + 2} = 5$.
@@ -218,6 +220,8 @@ Solve $\sqrt{x - 4} = 6$.
 - C) $x = 10$
 - D) $x = 2$
 
+**Proficient Level**
+
 **Item 3**
 
 Solve $\sqrt{x + 6} = x$.
@@ -226,6 +230,8 @@ Solve $\sqrt{x + 6} = x$.
 - B) $x = -2$
 - C) $x = 3$
 - D) There is no solution
+
+**Advanced Level**
 
 **Item 4**
 

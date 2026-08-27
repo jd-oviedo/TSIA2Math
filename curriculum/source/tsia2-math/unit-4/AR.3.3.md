@@ -268,6 +268,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 What are the solutions of $(x + 2)(x - 9) = 0$?
@@ -276,6 +278,8 @@ What are the solutions of $(x + 2)(x - 9) = 0$?
 - B) $x = -2$ and $x = 9$
 - C) $x = -2$ and $x = -9$
 - D) $x = 2$ and $x = 9$
+
+**Proficient Level**
 
 **Item 2**
 
@@ -286,6 +290,8 @@ What is the solution of $x^{2} - 10x + 25 = 0$?
 - C) $x = -5$
 - D) $x = 5$ and $x = -5$
 
+**Basic Level**
+
 **Item 3**
 
 What are the solutions of $x^{2} + 3x = 10$?
@@ -294,6 +300,8 @@ What are the solutions of $x^{2} + 3x = 10$?
 - B) $x = 5$ and $x = -2$
 - C) $x = -5$ and $x = 2$
 - D) $x = -5$ and $x = -2$
+
+**Proficient Level**
 
 **Item 4**
 

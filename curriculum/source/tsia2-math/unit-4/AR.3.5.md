@@ -250,6 +250,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Does $f(x) = -4x^{2} + 3x + 1$ have a maximum or a minimum?
@@ -268,6 +270,8 @@ What is the vertex of $f(x) = (x + 6)^{2} - 2$?
 - C) $(-2, -6)$
 - D) $(-6, 2)$
 
+**Proficient Level**
+
 **Item 3**
 
 What is the minimum value of $f(x) = x^{2} - 10x + 21$?
@@ -276,6 +280,8 @@ What is the minimum value of $f(x) = x^{2} - 10x + 21$?
 - B) $21$
 - C) $-4$
 - D) $4$
+
+**Advanced Level**
 
 **Item 4**
 

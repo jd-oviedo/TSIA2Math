@@ -315,6 +315,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Simplify the expression $6m + 9 - 4m$.
@@ -333,6 +335,8 @@ Simplify the expression $4p^{2} + 2p^{2} + 5p$.
 - C) $6p^{2}$
 - D) $6p^{2} + 5p$
 
+**Proficient Level**
+
 **Item 3**
 
 Simplify the expression $7x^{2} + 3x - (2x^{2} - 5x)$.
@@ -341,6 +345,8 @@ Simplify the expression $7x^{2} + 3x - (2x^{2} - 5x)$.
 - B) $5x^{2} - 2x$
 - C) $9x^{2} - 2x$
 - D) $5x^{2} + 3x$
+
+**Advanced Level**
 
 **Item 4**
 

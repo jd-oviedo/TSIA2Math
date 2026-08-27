@@ -249,6 +249,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 For the parabola $y = -4(x + 1)^{2} + 9$, what is the vertex and the axis of symmetry?
@@ -257,6 +259,8 @@ For the parabola $y = -4(x + 1)^{2} + 9$, what is the vertex and the axis of sym
 - B) Vertex $(9, -1)$, axis of symmetry $x = 9$
 - C) Vertex $(-1, 9)$, axis of symmetry $x = -1$
 - D) Vertex $(-1, -9)$, axis of symmetry $x = -1$
+
+**Proficient Level**
 
 **Item 2**
 
@@ -275,6 +279,8 @@ Which equation is $y = x^{2} + 10x + 7$ written in vertex form?
 - B) $y = (x + 10)^{2} - 93$
 - C) $y = (x - 5)^{2} - 18$
 - D) $y = (x + 5)^{2} - 18$
+
+**Advanced Level**
 
 **Item 4**
 
