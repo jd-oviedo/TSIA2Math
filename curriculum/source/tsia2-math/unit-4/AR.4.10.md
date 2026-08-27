@@ -193,6 +193,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 What is the value of $\dfrac{7^{5}}{7^{3}}$?
@@ -219,6 +221,8 @@ What is the value of $(5^{2})^{2}$?
 - B) $50$
 - C) $625$
 - D) $125$
+
+**Proficient Level**
 
 **Item 4**
 

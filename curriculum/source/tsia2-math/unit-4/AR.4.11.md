@@ -194,6 +194,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 If $f(x) = 2 \cdot 3^{x}$, what is $f(4)$?
@@ -220,6 +222,8 @@ If $f(x) = 3 \cdot 5^{x}$, what is $f(2)$?
 - B) $25$
 - C) $75$
 - D) $30$
+
+**Proficient Level**
 
 **Item 4**
 

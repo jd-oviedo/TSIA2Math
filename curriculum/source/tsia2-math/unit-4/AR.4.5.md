@@ -213,6 +213,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Simplify $\dfrac{10x^{4}}{5x^{2}}$.
@@ -231,6 +233,8 @@ Simplify $\dfrac{x^{2} - 16}{x - 4}$.
 - C) $x^{2} - 4$
 - D) $x - 16$
 
+**Advanced Level**
+
 **Item 3**
 
 Simplify $\dfrac{x^{2} + 3x}{x^{2} - 9}$.
@@ -239,6 +243,8 @@ Simplify $\dfrac{x^{2} + 3x}{x^{2} - 9}$.
 - B) $\dfrac{1}{x - 3}$
 - C) $\dfrac{x}{x - 3}$
 - D) $\dfrac{x}{x + 3}$
+
+**Proficient Level**
 
 **Item 4**
 

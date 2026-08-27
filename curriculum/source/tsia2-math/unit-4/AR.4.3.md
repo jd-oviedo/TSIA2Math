@@ -211,6 +211,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 What is $(2x + 7) + (5x - 3)$?
@@ -228,6 +230,8 @@ What is $(8x^{2} - 3x) - (2x^{2} - 9x)$?
 - B) $6x^{2} - 12x$
 - C) $10x^{2} - 12x$
 - D) $6x^{2}$
+
+**Proficient Level**
 
 **Item 3**
 

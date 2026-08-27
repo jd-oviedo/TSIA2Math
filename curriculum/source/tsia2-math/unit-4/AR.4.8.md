@@ -195,6 +195,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Which expression is $\sqrt{27}$ in simplest radical form?
@@ -213,6 +215,8 @@ Simplify $4\sqrt{7} + 3\sqrt{7}$.
 - C) $12\sqrt{7}$
 - D) $7\sqrt{49}$
 
+**Proficient Level**
+
 **Item 3**
 
 Simplify $\sqrt{3} \times \sqrt{12}$ and write the result in simplest radical form.
@@ -221,6 +225,8 @@ Simplify $\sqrt{3} \times \sqrt{12}$ and write the result in simplest radical fo
 - B) $2$
 - C) $6$
 - D) $36$
+
+**Advanced Level**
 
 **Item 4**
 

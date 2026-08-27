@@ -275,6 +275,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 What are the solutions of $x^{2} - 3x - 10 = 0$?
@@ -293,6 +295,8 @@ What are the solutions of $x^{2} + 4x + 3 = 0$?
 - C) $x = -1$ and $x = -3$
 - D) $x = -2$ and $x = -6$
 
+**Proficient Level**
+
 **Item 3**
 
 Which statement about $x^{2} + x + 4 = 0$ is true?
@@ -301,6 +305,8 @@ Which statement about $x^{2} + x + 4 = 0$ is true?
 - B) It has no real solutions, because the discriminant is $-15$
 - C) It has two real solutions, because the discriminant is $17$
 - D) It has exactly one real solution, $x = -\frac{1}{2}$
+
+**Advanced Level**
 
 **Item 4**
 

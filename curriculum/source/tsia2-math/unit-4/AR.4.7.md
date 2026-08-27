@@ -203,6 +203,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 If $f(x) = \dfrac{x + 9}{x + 2}$, what is $f(4)$?
@@ -229,6 +231,8 @@ If $f(x) = \dfrac{4x}{x - 1}$, what is $f(2)$?
 - B) $-8$
 - C) $8$
 - D) $2$
+
+**Proficient Level**
 
 **Item 4**
 

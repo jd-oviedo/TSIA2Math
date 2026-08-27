@@ -211,6 +211,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Simplify $x^{6} \cdot x^{7}$.
@@ -237,6 +239,8 @@ Simplify $(2x^{3})^{5}$.
 - B) $10x^{15}$
 - C) $32x^{15}$
 - D) $32x^{8}$
+
+**Proficient Level**
 
 **Item 4**
 

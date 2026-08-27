@@ -267,6 +267,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Which equation represents the parabola shown?
@@ -279,6 +281,8 @@ Which equation represents the parabola shown?
 - C) $y = -(x + 2)(x - 1)$
 - D) $y = (x + 2)(x + 1)$
 
+**Proficient Level**
+
 **Item 2**
 
 The graph of $y = x^{2}$ is shifted 5 units right and 3 units up. Which equation represents the new graph?
@@ -287,6 +291,8 @@ The graph of $y = x^{2}$ is shifted 5 units right and 3 units up. Which equation
 - B) $y = (x + 5)^{2} + 3$
 - C) $y = (x - 5)^{2} - 3$
 - D) $y = (x + 5)^{2} - 3$
+
+**Basic Level**
 
 **Item 3**
 
@@ -299,6 +305,8 @@ Which equation represents the parabola shown?
 - B) $y = -(x + 1)(x + 5)$
 - C) $y = -(x - 1)(x - 5)$
 - D) $y = -(x - 1)(x + 5)$
+
+**Proficient Level**
 
 **Item 4**
 

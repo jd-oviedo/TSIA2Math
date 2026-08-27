@@ -305,6 +305,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Basic Level**
+
 **Item 1**
 
 Which expression is the factored form of $x^{2} - 81$?
@@ -331,6 +333,8 @@ Which expression is the factored form of $2x^{2} + 11x + 5$?
 - B) $(x + 1)(x + 5)$
 - C) $(2x - 1)(x - 5)$
 - D) $(2x + 1)(x + 5)$
+
+**Proficient Level**
 
 **Item 4**
 

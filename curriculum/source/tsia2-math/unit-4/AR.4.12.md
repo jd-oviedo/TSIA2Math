@@ -209,6 +209,8 @@ Solve each problem. Show your thinking.
 
 #### **Part 3: Mini Quiz** (Complete in under 10 minutes)
 
+**Proficient Level**
+
 **Item 1**
 
 A quantity increases by $9\%$ each period. What is the growth factor?
@@ -217,6 +219,8 @@ A quantity increases by $9\%$ each period. What is the growth factor?
 - B) $1.09$
 - C) $0.91$
 - D) $9$
+
+**Advanced Level**
 
 **Item 2**
 
@@ -227,6 +231,8 @@ An item worth \$400 loses $25\%$ of its value each year. What is it worth after 
 - C) \$300
 - D) \$625
 
+**Basic Level**
+
 **Item 3**
 
 A quantity of $A$ grows by $6\%$ each year. Which equation models it after $t$ years?
@@ -235,6 +241,8 @@ A quantity of $A$ grows by $6\%$ each year. Which equation models it after $t$ y
 - B) $y = A(0.94)^{t}$
 - C) $y = A(1.06)^{t}$
 - D) $y = A(1.06)(t)$
+
+**Proficient Level**
 
 **Item 4**
 
