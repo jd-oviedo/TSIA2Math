@@ -3,6 +3,7 @@ import Link from "next/link";
 import { createClient } from "../../lib/supabase-server";
 import { createAdminClient } from "../../lib/supabase-admin";
 import { profileGrants } from "../../lib/auth";
+import { teacherTierLabel } from "../../lib/capabilities";
 import { BodyGround } from "../../components/BodyGround";
 import { DASH } from "../../components/dashboard-theme";
 import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from "../../components/fonts";
@@ -100,12 +101,39 @@ export default async function TeacherSettingsPage() {
             </div>
           </section>
 
+          {/* Subscription. The self-serve entry point to the cancel screen and
+              the card-update portal — a teacher must never need an email link
+              to find either. Rendered only when the plan names a tier: a
+              comped or migrated row with no tier has nothing to manage. */}
+          {teacherTierLabel(profile.plan) && (
+            <section style={{ marginTop: 16, background: "#fff", border: "1px solid rgba(15,30,53,0.07)", borderRadius: 12, boxShadow: "0 1px 2px rgba(15,30,53,0.04)", overflow: "hidden" }}>
+              <Row
+                label="Plan"
+                value={teacherTierLabel(profile.plan) === "PRO" ? "Teacher Pro" : "Teacher Core"}
+              />
+              <LinkRow href="/teacher/billing" label="Update payment method" />
+              <LinkRow href="/teacher/cancel" label="Change or cancel plan" />
+            </section>
+          )}
+
           <section style={{ marginTop: 16, background: "#fff", border: "1px solid rgba(15,30,53,0.07)", borderRadius: 12, boxShadow: "0 1px 2px rgba(15,30,53,0.04)", padding: "16px 20px" }}>
             <SignOutRow />
           </section>
         </div>
       </div>
     </>
+  );
+}
+
+function LinkRow({ href, label }: { href: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, padding: "14px 20px", borderBottom: "1px solid #F0EEE7", textDecoration: "none" }}
+    >
+      <span style={{ fontSize: 13.5, fontWeight: 600, color: "#0F1E35" }}>{label}</span>
+      <svg width="14" height="14" viewBox="0 0 18 18" fill="none" stroke="#8A8983" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="7 4 12 9 7 14" /></svg>
+    </Link>
   );
 }
 

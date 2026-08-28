@@ -510,10 +510,13 @@ export async function sendUnmatchedCheckoutAlert({
 // Buyer lifecycle emails — the $1 trial flow
 // ---------------------------------------------------------------------------
 
-// Where the "cancel" and "update your card" links land: the portal redirect at
-// app/teacher/billing/route.ts. A6 replaces this with the in-app cancel screen
-// so the Core save-offer is not bypassed on email-initiated cancels.
+// Where "update your card" and "manage" links land: the portal redirect at
+// app/teacher/billing/route.ts. Card collection is Stripe's job.
 const BILLING_URL = `${APP_ORIGIN}/teacher/billing`;
+// Where a CANCEL link lands: the in-app cancel screen with the Core
+// save-offer. Deliberately not the portal — portal cancellation is disabled in
+// the Stripe dashboard so an email-initiated cancel cannot bypass the offer.
+const CANCEL_URL = `${APP_ORIGIN}/teacher/cancel`;
 const DASHBOARD_URL = `${APP_ORIGIN}/teacher`;
 
 // Shared scaffold for the four senders below, and ONLY those four. The older
@@ -665,7 +668,7 @@ export async function sendTrialEndingReminder({
         `<strong>${escapeHtml(emailDate(trialEndsAt))}</strong>.`,
       `Do nothing and we'll charge $30/month, and everything keeps running — ` +
         `your classes, your misconception grid, all of it.`,
-      `Want to stop instead? <a href="${BILLING_URL}" style="color:#C68A2F; font-weight:600;">Cancel in two clicks here</a>, no hard feelings.`,
+      `Want to stop instead? <a href="${CANCEL_URL}" style="color:#C68A2F; font-weight:600;">Cancel in two clicks here</a>, no hard feelings.`,
     ],
     cta: { label: "Open your dashboard", url: DASHBOARD_URL },
   });
