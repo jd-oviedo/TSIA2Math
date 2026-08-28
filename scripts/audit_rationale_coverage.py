@@ -57,12 +57,21 @@ def walk():
     for md in sorted(SOURCE.rglob("*.md")):
         parsed = uc.parse_markdown_curriculum(md)
         sections = uc.build_practice_items(
-            parsed["practice_problems"], parsed["mini_quiz"], parsed["answer_key"]
+            parsed["practice_problems"], parsed["mini_quiz"], parsed["answer_key"],
+            parsed["extra_practice"]
         )
         prose = uc.extract_distractor_prose(parsed["answer_key"])
         solutions = uc.extract_worked_solutions(parsed["answer_key"])
 
-        for section in ("practice", "mini_quiz"):
+        # All three sections, and extra_practice is not optional here even
+        # though it is optional in the source. A worksheet prints extra-practice
+        # items and its answer key renders their worked solutions, so an
+        # unrationalised item in Part 5 costs a teacher exactly what one in Part
+        # 2 does. Auditing two of three sections would report full coverage over
+        # a population that excludes the gap.
+        for section in uc.SECTION_NAMES:
+            if section not in sections:
+                continue
             for item in sections[section]["items"]:
                 if not is_printable(item):
                     continue

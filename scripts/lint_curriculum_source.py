@@ -17,6 +17,11 @@ bugs before:
   * the 10 (4 Basic / 3 Proficient / 3 Advanced) + 4 quiz shape
   * correct-answer letters bunched on one option -- PracticeQuiz.tsx does not
     shuffle, so a topic that is all A is a real defect
+  * Part 5 (extra practice), where a topic has one: every item banded and
+    drawable, no duplicate item numbers, its own answer-letter spread
+
+The two gated sections keep the fixed shape and Part 5 does not have one, which
+is the whole point of the split. See SECTION_NAMES in upload_curriculum.py.
 
 Exits non-zero if any ERROR fires. WARN is advisory and does not fail the run.
 
@@ -88,6 +93,42 @@ UNICODE_MATH = {
 
 EXPECTED_LEVELS = {'Basic': 4, 'Proficient': 3, 'Advanced': 3}
 
+# What a non-interactive section actually costs, per section.
+#
+# The message used to be one string ending "it loses its mastery gate", which is
+# true of the two gated sections and false of extra_practice -- that one is
+# never gated and never rendered to a student. Its cost is different and worse:
+# isPrintable() in app/lib/worksheet-select.ts requires multiple_choice with a
+# populated choice map, so a free-response item in Part 5 is silently not a
+# candidate. It is authored, it is stored, and no worksheet can ever draw it.
+NOT_INTERACTIVE_COST = {
+    'practice': 'it loses its mastery gate',
+    'mini_quiz': 'it loses its mastery gate',
+    'extra_practice': 'so at least one item is not multiple choice or has no '
+                      'parsed answer; isPrintable() drops those, and an item a '
+                      'worksheet can never draw is authoring nobody can use',
+}
+
+# The smallest Part 5 worth having.
+#
+# Not a house shape the way 10+4 is -- Part 5 has no fixed size, that is the
+# point of it. This is a floor with one job: a pool of one or two items makes
+# the spread and band checks below vacuous, so a Part 5 that small is more
+# likely a half-finished edit than a decision.
+EXTRA_PRACTICE_MIN = 4
+
+# Ceiling on any one correct letter's share of a pool.
+#
+# Applied to the two gated sections together and to extra_practice separately,
+# never to all three pooled. They are read by different code in different
+# orders: PracticeQuiz.tsx renders the gated items A-D with no shuffling, and
+# renderChoices() in worksheet-source.ts does the same on a printed sheet. A
+# single pooled number would let a well-spread Part 2 mask a Part 5 that is all
+# C, which is exactly the sheet a teacher notices.
+ANSWER_SHARE_MAX = 0.45
+
+GATED_SECTIONS = ('practice', 'mini_quiz')
+
 
 def load_slugs():
     data = json.loads(TAXONOMY.read_text())
@@ -146,6 +187,78 @@ def check_unicode(text, add):
             add('ERROR', f'raw Unicode {ch!r} x{n}, use {latex} in math')
 
 
+def check_answer_spread(sections, add):
+    """
+    Correct answers must not bunch on one letter, per pool.
+
+    THE GATED POOL IS SCORED EXACTLY AS IT WAS. Its numbers are the ones
+    scripts/curriculum_lint_baseline.json records, and folding a new section
+    into the same count would move the recorded warning totals on any topic that
+    grew a Part 5 -- which reads as attribution drift rather than as content.
+    Extra practice is scored as its own pool, on its own line.
+    """
+    pools = [('gated', [i for name in GATED_SECTIONS
+                        for i in sections[name]['items']])]
+    extra = sections.get('extra_practice')
+    if extra:
+        pools.append(('extra practice', extra['items']))
+
+    for label, items in pools:
+        letters = Counter(i['correct_answer'] for i in items if i['correct_answer'])
+        total = sum(letters.values())
+        if not total:
+            continue
+        where = '' if label == 'gated' else f'{label}: '
+        top, count = letters.most_common(1)[0]
+        if count > total * ANSWER_SHARE_MAX:
+            add('WARN', f'{where}correct answers skewed: {count}/{total} are {top} '
+                        f'({dict(sorted(letters.items()))})')
+        missing = {'A', 'B', 'C', 'D'} - set(letters)
+        if missing:
+            add('WARN', f'{where}no item has correct answer {sorted(missing)}')
+
+
+def check_extra_practice(sections, add):
+    """
+    Part 5's own rules. Nothing here runs on a topic without one.
+
+    Deliberately NOT a fixed count. The whole reason this section exists is that
+    the pool should grow as far as anyone will author, so pinning it to a number
+    would rebuild the ceiling one section over. What it is pinned to is the two
+    properties an item needs in order to be reachable at all.
+    """
+    section = sections.get('extra_practice')
+    if not section:
+        return
+
+    items = section['items']
+    if len(items) < EXTRA_PRACTICE_MIN:
+        add('ERROR', f'extra practice has {len(items)} item(s); a pool this small '
+                     f'is more likely an unfinished edit than a decision, so the '
+                     f'floor is {EXTRA_PRACTICE_MIN}')
+
+    # A BAND ON EVERY ITEM, and this is the check with real history behind it.
+    #
+    # passesLevel() in app/lib/worksheet-select.ts refuses a null level under any
+    # active filter. That is what kept all 388 mini_quiz items out of every
+    # band-filtered draw until the course was banded topic by topic: the items
+    # existed, the badge counted them, and a teacher who ticked Basic could not
+    # draw one. An unbanded Part 5 item repeats that exactly -- present in the
+    # pool, invisible the moment anyone filters.
+    unbanded = [i['item_number'] for i in items if not i['level']]
+    if unbanded:
+        add('ERROR', f'extra practice item(s) {unbanded} carry no difficulty band; '
+                     f'passesLevel() refuses a null level, so a filtered draw can '
+                     f'never reach them. Add a `**Basic Level**` style heading '
+                     f'above them in Part 5')
+
+    banded = Counter(i['level'] for i in items if i['level'])
+    unknown = sorted(set(banded) - set(EXPECTED_LEVELS))
+    if unknown:
+        add('ERROR', f'extra practice uses unknown difficulty band(s) {unknown}; '
+                     f'the bands are {sorted(EXPECTED_LEVELS)}')
+
+
 def lint_file(path, approved, unapproved):
     findings = []
 
@@ -177,7 +290,8 @@ def lint_file(path, approved, unapproved):
             add('ERROR', f'frontmatter missing `{key}`')
 
     sections = build_practice_items(
-        parsed['practice_problems'], parsed['mini_quiz'], parsed['answer_key'])
+        parsed['practice_problems'], parsed['mini_quiz'], parsed['answer_key'],
+        parsed['extra_practice'])
 
     for warning in validate_practice_items(sections):
         add('ERROR', warning)
@@ -195,28 +309,38 @@ def lint_file(path, approved, unapproved):
 
     for name, section in sections.items():
         if not section['interactive']:
-            add('ERROR', f'{name} section is not interactive, it loses its mastery gate')
+            add('ERROR', f'{name} section is not interactive, '
+                         f'{NOT_INTERACTIVE_COST[name]}')
+
+    # An item_number appearing twice in one section, in ANY section.
+    #
+    # Every reference to an item is (section, item_number) -- the worksheet ref,
+    # curriculum_attempts, gumu_sessions -- and loadStaticItems in
+    # worksheet-source.ts builds its lookup as a Map on exactly that key. A
+    # repeated number does not fail anywhere: the second item overwrites the
+    # first in that map, so both candidates resolve to the same question and the
+    # worksheet prints it twice, which selectItems' no-duplicates rule cannot
+    # see because it is deduplicating refs and the refs really are distinct.
+    for name, section in sections.items():
+        numbers = Counter(i['item_number'] for i in section['items'])
+        for number, seen in sorted(numbers.items()):
+            if seen > 1:
+                add('ERROR', f'{name} item {number} is authored {seen} times; '
+                             f'item numbers address a question and must be unique '
+                             f'within a section')
 
     # Slugs must come from the approved vocabulary. Never invent one.
     for slug in extract_misconceptions(parsed['practice_problems'],
-                                       parsed['mini_quiz'], parsed['answer_key']):
+                                       parsed['mini_quiz'],
+                                       parsed['extra_practice'],
+                                       parsed['answer_key']):
         if slug not in approved:
             add('ERROR', f'misconception slug `{slug}` is not in the taxonomy')
         elif slug in unapproved:
             add('ERROR', f'misconception slug `{slug}` is in the taxonomy but not approved')
 
-    # PracticeQuiz.tsx renders A-D in fixed order with no shuffling.
-    letters = Counter(i['correct_answer'] for section in sections.values()
-                      for i in section['items'] if i['correct_answer'])
-    total = sum(letters.values())
-    if total:
-        top, count = letters.most_common(1)[0]
-        if count > total * 0.45:
-            add('WARN', f'correct answers skewed: {count}/{total} are {top} '
-                        f'({dict(sorted(letters.items()))})')
-        missing = {'A', 'B', 'C', 'D'} - set(letters)
-        if missing:
-            add('WARN', f'no item has correct answer {sorted(missing)}')
+    check_answer_spread(sections, add)
+    check_extra_practice(sections, add)
 
     return findings
 

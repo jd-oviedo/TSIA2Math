@@ -759,6 +759,18 @@ def load_curriculum(topic, unit):
     parts = _split_parts(md)
     if len(parts) < 5:
         raise SystemExit(f"{path.name}: expected 4 numbered parts, found {len(parts) - 1}")
+    # PART 5 IS DELIBERATELY NOT PASSED, so extra-practice items are invisible
+    # to this verifier and cannot be listed as MISSING.
+    #
+    # Templating is scoped to the two gated sections. A rolled instance exists to
+    # serve GUMU's retry loop, and gumu_sessions' section column is
+    # `check (section in ('practice', 'mini_quiz'))` -- an extra-practice item
+    # cannot be named in that key space at all, exactly as a CAT-bank item
+    # cannot. See data/templates/README.md.
+    #
+    # The consequence to know about: a `"template"` block authored on a Part 5
+    # item would be silently ignored rather than verified. If Part 5 ever does
+    # get templated, this call and the two section loops below are what change.
     sections = uc.build_practice_items(parts[2], parts[3], parts[4])
 
     key_split = re.split(r"^#####\s*Mini Quiz", parts[4], maxsplit=1, flags=re.M)

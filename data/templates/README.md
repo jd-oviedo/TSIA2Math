@@ -54,23 +54,71 @@ The pilot exists to serve one thing: GUMU's retry and remediation loop, where a
 wrong answer is followed by a *similar* problem instead of the answer. That loop
 is structurally out of reach for a bank item.
 
-- `record_misconception` is called from exactly one place,
+- ~~`record_misconception` is called from exactly one place,
   `app/api/curriculum/practice/route.ts`. The CAT flow, `app/api/sessions/route.ts`,
-  never calls it -- it only increments exposure counters.
+  never calls it -- it only increments exposure counters.~~
+  **STALE. Measured false 2026-08-28.** `app/api/sessions/route.ts:314` calls
+  `record_misconception` on every wrong answer in a scored CAT session, passing
+  the slug it reads from the item's own `misconception_tag` map. Whether it was
+  true when written or was overtaken by a later change, it is not true now.
 - `gumu_sessions` is keyed on `(course_id, topic_id, section, item_number)` plus
   `original_selected_answer` and `misconception_tag` (`sql/gumu_tables.sql`).
   There is no `item_id` column. A CAT-bank item cannot be named in that key
   space at all, so the Socratic loop cannot address one.
-- Attributing a wrong answer to a misconception needs a stable slug. Curriculum
+  **Still true, re-measured 2026-08-28**, and now the only load-bearing bullet
+  of the three. The column list is unchanged and `section` carries a
+  `check (section in ('practice', 'mini_quiz'))` on top of it.
+- ~~Attributing a wrong answer to a misconception needs a stable slug. Curriculum
   practice items carry `misconception_tag` keyed by option letter. Bank items do
   not: every item under `data/items/` carries `distractor_logic` prose and no
-  slug field at any level.
+  slug field at any level.~~
+  **STALE. Measured false 2026-08-28.** Bank items carry both. All **1,116**
+  items across all **97** files under `data/items/` carry a per-option
+  `misconception_tag` map *and* `distractor_logic` prose -- 3,348 letter-to-slug
+  entries, exactly three tagged options per item, no exceptions. They name
+  **475 distinct slugs, every one of them already in the 480-slug approved
+  taxonomy**, so nothing here would need a slug invented either.
+
+**THE DECISION IS UNCHANGED, AND THAT IS A CONCLUSION RATHER THAN AN ASSUMPTION.**
+Two of the three bullets above are false, but the second one alone is sufficient:
+a bank item cannot be named in `gumu_sessions`' key space, so the Socratic loop
+cannot address one however well tagged it is. Phase B still targets curriculum
+practice items and these 15 templates stay parked. What changed is the *cost* of
+the road not taken, which was quoted as "author new slugs for the bank" and is
+actually zero -- so if this is ever revisited, the reason to say no is the key
+space, not the vocabulary.
 
 Authoring new slugs for the bank items would have closed that gap fastest, and
 was rejected -- it invents misconception vocabulary, and the QR_A_074 resolution
 below is built on that rule holding. The unblocking step named at the time was
 authoring QR.3.5 curriculum practice content. That shipped in PR #45, and Phase B
 follows it rather than these templates.
+
+> **Not re-litigated here.** The QR_A_074 note below argues from "in the bank,
+> the `distractor_logic` sentence *is* the misconception's identity", which the
+> measurement above weakens: the bank has slugs too. That resolution was a
+> content judgment made with Juan and is left exactly as written rather than
+> quietly rewritten underneath him. Flagged, not changed.
+
+Regenerate these numbers with:
+
+```
+python3 - <<'PY'
+import json, glob
+from collections import Counter
+tax = {s['slug'] for s in json.load(open('data/docs/misconception_taxonomy.json'))['slugs']}
+items = tags = 0
+slugs = set()
+for f in glob.glob('data/items/*/*.json'):
+    for i in json.load(open(f)):
+        items += 1
+        mt = i.get('misconception_tag') or {}
+        tags += len(mt)
+        slugs |= set(mt.values())
+print(items, 'items,', tags, 'tag entries,', len(slugs), 'slugs,',
+      len(slugs - tax), 'outside the taxonomy of', len(tax))
+PY
+```
 
 ### What that changes for QR_A_074
 
