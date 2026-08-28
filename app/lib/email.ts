@@ -707,7 +707,7 @@ export async function sendConversionReceipt({
     paragraphsHtml: [
       `Thanks ${name}. Your <strong>${escapeHtml(usd(amountCents))}/month ${escapeHtml(planLabel)}</strong> is active.` +
         (nextChargeAt ? ` Next charge is ${escapeHtml(emailDate(nextChargeAt))}.` : ""),
-      `You can <a href="${BILLING_URL}" style="color:#C68A2F; font-weight:600;">manage or cancel anytime here</a>.`,
+      `You can <a href="${CANCEL_URL}" style="color:#C68A2F; font-weight:600;">manage or cancel anytime here</a>.`,
     ],
     cta: { label: "Jump back in", url: DASHBOARD_URL },
   });
