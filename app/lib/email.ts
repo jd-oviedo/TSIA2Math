@@ -583,7 +583,7 @@ function buyerEmailHtml({
                 <tr>
                   <td style="background:#f5f5f3; border-top:1px solid #e0dfd8; padding:16px 28px; text-align:center;">
                     <p style="margin:0; font-size:11px; color:#aaa;">
-                      Sent by UnpackMath &middot; JDOM LLC &middot;
+                      Sent by UnpackMath &middot;
                       <a href="https://www.unpackmath.com" style="color:#aaa;">unpackmath.com</a>
                     </p>
                   </td>
