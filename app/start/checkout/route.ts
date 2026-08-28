@@ -68,7 +68,14 @@ export async function GET(req: Request) {
       { price: proPrice, quantity: 1 }, // $30/mo recurring, trialing
       { price: feePrice, quantity: 1 }, // $1 one-time, charged today
     ],
-    subscription_data: { trial_period_days: TRIAL_DAYS },
+    subscription_data: {
+      trial_period_days: TRIAL_DAYS,
+      // The session metadata above is what entitlementFromCheckout reads; this
+      // copy rides the SUBSCRIPTION, so trial_will_end and every invoice carry
+      // the trial marker for the webhook's email branches. Stamped at birth or
+      // never — subscription metadata is not writable from a checkout later.
+      metadata: { source: "trial", plan: "teacher-pro" },
+    },
     payment_method_collection: "always", // card required — the locked decision
     client_reference_id: user.id,
     ...(user.email ? { customer_email: user.email } : {}),
