@@ -56,8 +56,14 @@ export default function InactiveTeacher() {
               ))}
             </ul>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <a href="https://unpackmath.com/pricing" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: '#C68A2F', color: '#fff', textDecoration: 'none', fontWeight: 700, fontSize: 15, padding: '13px 24px', borderRadius: 10 }}>
-                Reserve your founding spot →
+              {/* /upgrade rather than the marketing pricing page: everyone who
+                  sees this page is SIGNED IN (it renders behind the /teacher
+                  gate), so this path stamps client_reference_id and the
+                  webhook matches the purchase on the auth id instead of the
+                  checkout email. Deliberately full-price Pro, not the $1
+                  trial: a churned teacher does not loop through dollar trials. */}
+              <a href="/upgrade?plan=teacher-pro-monthly" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: '#C68A2F', color: '#fff', textDecoration: 'none', fontWeight: 700, fontSize: 15, padding: '13px 24px', borderRadius: 10 }}>
+                Get Teacher Pro →
               </a>
               <a href="/demo" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.75)', textDecoration: 'none', fontWeight: 600, fontSize: 14, padding: '12px 24px', borderRadius: 10, border: '1px solid rgba(255,255,255,0.12)' }}>
                 Preview the dashboard first
