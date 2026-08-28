@@ -13,7 +13,33 @@
 /** Authored difficulty band. Practice items carry one; quiz items do not. */
 export type Level = 'Basic' | 'Proficient' | 'Advanced';
 
-export type Section = 'practice' | 'mini_quiz';
+/**
+ * Which authored block an item came from.
+ *
+ * `extra_practice` is Part 5: a worksheet-only pool of any size, added so the
+ * candidate pool can grow without moving the student's mastery bar. The two
+ * gated sections are 10 and 4 items by house rule, and requiredCorrect() in
+ * topic-completion.ts is a RATIO of the section's live length -- so deepening
+ * `practice` for teachers would have re-locked every student mid-topic. This
+ * section is drawn by worksheets and read by nothing on the student path.
+ *
+ * Nothing else in this file distinguishes the three. The draw, the allocator,
+ * the shuffle and the no-duplicates rule were all written per candidate rather
+ * than per section, which is why adding one costs a union member and a loop
+ * bound rather than a branch.
+ */
+export type Section = 'practice' | 'mini_quiz' | 'extra_practice';
+
+/**
+ * Every section a worksheet may draw from, in stored order.
+ *
+ * ONE LIST, exported, because three separate walks of practice_items now need
+ * it -- poolEntries here, and loadStaticItems in worksheet-source.ts, which
+ * resolves both the printed sheet and the answer key. A section missing from
+ * one of those walks is a question that can be selected and then cannot be
+ * printed, or printed and then missing from the key.
+ */
+export const POOL_SECTIONS: readonly Section[] = ['practice', 'mini_quiz', 'extra_practice'];
 
 /**
  * One item on a worksheet, as stored.
@@ -168,7 +194,10 @@ export function poolEntries(practiceItems: unknown): PoolEntry[] {
     { items?: { format?: string | null; correct_answer?: string | null; choices?: Record<string, string> | null; level?: string | null }[] } | null
   >;
   const out: PoolEntry[] = [];
-  for (const section of ['practice', 'mini_quiz'] as Section[]) {
+  for (const section of POOL_SECTIONS) {
+    // Absent on the 96 topics with no Part 5, and `?? []` is what makes that a
+    // non-event rather than a branch. build_practice_items omits an optional
+    // section that parsed to nothing rather than storing it empty.
     for (const item of sections[section]?.items ?? []) {
       if (!isPrintable(item)) continue;
       out.push({ section, level: (item.level as Level | null) ?? null });

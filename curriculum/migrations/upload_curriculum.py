@@ -56,10 +56,62 @@ def connect():
     return create_client(url, key)
 
 
+# ─── The question sections, in one place ─────────────────────────────────────
+#
+# Three sections of gradable items now, not two, and the third is optional.
+#
+#   practice        Part 2. Ten items, gated at 7 of 10 on the student page.
+#   mini_quiz       Part 3. Four items, gated at 3 of 4.
+#   extra_practice  Part 5. A worksheet-only pool of any size, NOT gated.
+#
+# The split matters more than the addition. `practice_items.practice` was doing
+# two jobs at once -- it is what a student works through AND the pool a
+# worksheet draws from -- and those two have opposite pressures. The house 10+4
+# shape is a pedagogical decision about how much a student is asked to do; the
+# worksheet pool wants to be as deep as anyone will author. While they were the
+# same array, deepening the pool for teachers raised the mastery bar for
+# students: requiredCorrect() is a RATIO of the section's live item count
+# (app/lib/topic-completion.ts:133), so a topic grown to 20 practice items
+# demands 14 correct where it used to demand 7, and every student sitting at 7
+# is silently re-locked mid-topic.
+#
+# extra_practice exists so that pressure has somewhere to go. Nothing on the
+# student path reads it: sectionShape() in app/lib/curriculum-progress.ts is
+# called by name on `.practice` and `.mini_quiz`, and the two student-facing API
+# schemas (curriculumPracticeBodySchema, gumuStartSchema) keep their
+# `z.enum(["practice", "mini_quiz"])` deliberately, so an answer cannot even be
+# submitted against an extra-practice item. The gates are blind to this section
+# by construction rather than by remembering to exclude it.
+SECTION_NAMES = ('practice', 'mini_quiz', 'extra_practice')
+
+# Sections omitted from practice_items entirely when they parse to nothing.
+#
+# NOT emitted-but-empty, and the difference is the whole reason this is a
+# constant. An empty `extra_practice` key on all 97 topics would rewrite every
+# stored practice_items object for zero content change, which
+# scripts/diff_live_curriculum.py would then report as 97 topics drifting from
+# production. A topic with no Part 5 uploads byte-identically to what it does
+# today.
+OPTIONAL_SECTIONS = ('extra_practice',)
+
+# The line prefixes parse_markdown_curriculum switches section on.
+#
+# A table rather than a chain of elifs because scripts/check_topic.py carries
+# the same list (UPLOADER_PARTS) in order to reproduce this split exactly, and a
+# fifth branch bolted onto a chain is how the two come apart.
+PART_PREFIXES = (
+    ('#### **Part 1:', 'guided_notes'),
+    ('#### **Part 2:', 'practice_problems'),
+    ('#### **Part 3:', 'mini_quiz'),
+    ('#### **Part 4:', 'answer_key'),
+    ('#### **Part 5:', 'extra_practice'),
+)
+
+
 def parse_markdown_curriculum(filepath):
     """
     Parse curriculum markdown file into structured components.
-    Expects format: frontmatter + Part 1/2/3/4 sections.
+    Expects format: frontmatter + Part 1/2/3/4 sections, and optionally Part 5.
     """
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -101,41 +153,35 @@ def parse_markdown_curriculum(filepath):
     sections = {}
     current_section = None
     current_content = []
-    
+
     for line in body.split('\n'):
-        if line.startswith('#### **Part 1:'):
+        opened = None
+        for prefix, name in PART_PREFIXES:
+            if line.startswith(prefix):
+                opened = name
+                break
+        if opened:
             if current_section:
                 sections[current_section] = '\n'.join(current_content).strip()
-            current_section = 'guided_notes'
+            current_section = opened
             current_content = []
-        elif line.startswith('#### **Part 2:'):
-            if current_section:
-                sections[current_section] = '\n'.join(current_content).strip()
-            current_section = 'practice_problems'
-            current_content = []
-        elif line.startswith('#### **Part 3:'):
-            if current_section:
-                sections[current_section] = '\n'.join(current_content).strip()
-            current_section = 'mini_quiz'
-            current_content = []
-        elif line.startswith('#### **Part 4:'):
-            if current_section:
-                sections[current_section] = '\n'.join(current_content).strip()
-            current_section = 'answer_key'
-            current_content = []
-        else:
-            if current_section:
-                current_content.append(line)
-    
+        elif current_section:
+            current_content.append(line)
+
     if current_section:
         sections[current_section] = '\n'.join(current_content).strip()
-    
+
+    # Part 5 defaults to '' like every other section, which is what makes it
+    # optional: 96 of 97 topics have no Part 5, and an empty string parses to an
+    # empty item list that build_practice_items then omits entirely. See the
+    # note on OPTIONAL_SECTIONS.
     return {
         'metadata': metadata,
         'guided_notes': sections.get('guided_notes', ''),
         'practice_problems': sections.get('practice_problems', ''),
         'mini_quiz': sections.get('mini_quiz', ''),
-        'answer_key': sections.get('answer_key', '')
+        'answer_key': sections.get('answer_key', ''),
+        'extra_practice': sections.get('extra_practice', ''),
     }
 
 def extract_misconceptions(*texts):
@@ -175,6 +221,71 @@ QUIZ_KEY_RE = re.compile(r'^\*\*Item (\d+):', re.M)         # Part 4: "**Item 1:
 LEVEL_RE = re.compile(r'^\*\*(\w+) Level\*\*', re.M)
 ANSWER_RE = re.compile(r'^\*\*Answer:\s*([A-D])\*\*', re.M)
 JSON_BLOCK_RE = re.compile(r'```json\n.*?\n```', re.S)
+
+# ─── Part 4's internal boundaries ────────────────────────────────────────────
+#
+# Part 4 holds one answer-key block per question section, back to back, each
+# under its own `#####` heading. Only the FIRST block has no heading of its own:
+# practice is identified by position, everything after it by heading.
+#
+# THIS REPLACES A `maxsplit=1` SPLIT, and the reason is a measured failure. The
+# old form was
+#
+#     split = re.split(r'^#####\s*Mini Quiz', answer_key, maxsplit=1, flags=re.M)
+#
+# which is correct for exactly two sections and quietly wrong for three: a
+# practice-style key (`**11. ...**`) landing after the Mini Quiz heading was
+# handed to QUIZ_KEY_RE, which matches `**Item 11:` and so matched nothing, and
+# those items came back with `correct: None`. Ten items lost their answers with
+# the split reporting success. validate_practice_items() catches the
+# consequence; nothing caught the cause.
+#
+# Keyed on the heading each section actually opens with, and ordered by where
+# those headings appear in the file rather than by the order of this tuple, so
+# authoring order is not a second thing to keep in step.
+ANSWER_KEY_BOUNDARIES = (
+    (re.compile(r'^#####\s*Mini Quiz', re.M), 'mini_quiz'),
+    (re.compile(r'^#####\s*Extra Practice', re.M), 'extra_practice'),
+)
+
+# Which header regex reads the item numbers inside each block.
+#
+# extra_practice reuses PRACTICE_KEY_RE because an extra-practice key is
+# authored exactly like a practice key (`**1. A cube ...**`) -- it is the same
+# kind of item and only the section it belongs to differs.
+KEY_HEADER_RES = {
+    'practice': PRACTICE_KEY_RE,
+    'mini_quiz': QUIZ_KEY_RE,
+    'extra_practice': PRACTICE_KEY_RE,
+}
+
+
+def split_answer_key_sections(answer_key, boundaries, header_res):
+    """
+    [(section_name, text, header_re)] for Part 4, in document order.
+
+    Shared by parse_answer_key() and extract_worked_solutions() so the two walks
+    cannot disagree about where a section starts. They still pass their own
+    `boundaries` and `header_res`, because extract_worked_solutions mirrors the
+    TypeScript splitAnswerKey() and that one matches 3-6 hashes and whole header
+    lines -- see the PORTS note above TS_MINI_QUIZ_HEADING.
+
+    A section whose heading is absent contributes nothing rather than an empty
+    block. That is what makes Part 5 optional for the 96 topics without one.
+    """
+    text = answer_key or ''
+    found = sorted(
+        (m.start(), name)
+        for heading_re, name in boundaries
+        if (m := heading_re.search(text))
+    )
+
+    first = found[0][0] if found else len(text)
+    out = [('practice', text[:first], header_res['practice'])]
+    for i, (start, name) in enumerate(found):
+        end = found[i + 1][0] if i + 1 < len(found) else len(text)
+        out.append((name, text[start:end], header_res[name]))
+    return out
 
 
 def _split_items(text, header_re):
@@ -229,7 +340,7 @@ def parse_answer_key(answer_key):
                                      'tags':  {letter: slug},
                                      'prose': {letter: raw string}}}}.
     """
-    result = {'practice': {}, 'mini_quiz': {}}
+    result = {name: {} for name in SECTION_NAMES}
     if not answer_key:
         return result
 
@@ -249,11 +360,9 @@ def parse_answer_key(answer_key):
     prose_block = re.compile(r'"distractor_logic":\s*\{(.*?)\n\s*\}', re.S)
     prose_pair = re.compile(r'"([A-D])":\s*"((?:[^"\\]|\\.)*)"', re.S)
 
-    # Part 4 holds both sections back to back under their own headings.
-    split = re.split(r'^#####\s*Mini Quiz', answer_key, maxsplit=1, flags=re.M)
-    sections = [('practice', split[0], PRACTICE_KEY_RE)]
-    if len(split) > 1:
-        sections.append(('mini_quiz', split[1], QUIZ_KEY_RE))
+    # Part 4 holds its sections back to back under their own headings.
+    sections = split_answer_key_sections(
+        answer_key, ANSWER_KEY_BOUNDARIES, KEY_HEADER_RES)
 
     for name, text, header_re in sections:
         for number, body in _split_items(text, header_re):
@@ -311,6 +420,24 @@ def _unescape_json_string(raw):
     )
 
 
+def drop_empty_optional(by_section):
+    """Strip optional sections that came back empty, from any section->... map.
+
+    The same rule build_practice_items applies, applied to the three other
+    columns derived from Part 4, and for the same reason: a topic with no Part 5
+    must upload byte-identically to what it uploads today. Emitting
+    `"extra_practice": {}` on all 97 topics would rewrite worked_solutions,
+    distractor_prose and misconception_tags for zero content change, and
+    scripts/diff_live_curriculum.py would report the whole course as drifting.
+
+    Every consumer already reads these with optional chaining -- see
+    resolveForKey in app/lib/worksheet-source.ts -- so absent and empty are the
+    same thing to a caller, and only absent is free.
+    """
+    return {name: value for name, value in by_section.items()
+            if value or name not in OPTIONAL_SECTIONS}
+
+
 def extract_misconception_tags(answer_key):
     """
     Per-option misconception slugs, keyed section -> item -> option -> slug.
@@ -326,10 +453,10 @@ def extract_misconception_tags(answer_key):
     and must never be sent to the browser.
     """
     parsed = parse_answer_key(answer_key)
-    return {
+    return drop_empty_optional({
         section: {num: entry['tags'] for num, entry in items.items() if entry['tags']}
         for section, items in parsed.items()
-    }
+    })
 
 
 def extract_distractor_prose(answer_key):
@@ -358,10 +485,10 @@ def extract_distractor_prose(answer_key):
     the presentation layer keeps the presentation.
     """
     parsed = parse_answer_key(answer_key)
-    return {
+    return drop_empty_optional({
         section: {num: entry['prose'] for num, entry in items.items() if entry['prose']}
         for section, items in parsed.items()
-    }
+    })
 
 
 # ─── Worked solutions ────────────────────────────────────────────────────────
@@ -387,13 +514,26 @@ def extract_distractor_prose(answer_key):
 # interior whitespace.
 AUTHORING_BLOCK_RE = re.compile(r'```json\n.*?\n```\n?', re.S)
 
-# Mirrors MINI_QUIZ_HEADING. 3-6 hashes, not the exactly-5 that
-# parse_answer_key() splits on above -- matching the TypeScript is the point.
+# Mirrors MINI_QUIZ_HEADING / EXTRA_PRACTICE_HEADING. 3-6 hashes, not the
+# exactly-5 that parse_answer_key() splits on above -- matching the TypeScript
+# is the point.
 TS_MINI_QUIZ_HEADING = re.compile(r'^#{3,6}\s*Mini Quiz', re.M)
+TS_EXTRA_PRACTICE_HEADING = re.compile(r'^#{3,6}\s*Extra Practice', re.M)
+
+TS_ANSWER_KEY_BOUNDARIES = (
+    (TS_MINI_QUIZ_HEADING, 'mini_quiz'),
+    (TS_EXTRA_PRACTICE_HEADING, 'extra_practice'),
+)
 
 # Mirror PRACTICE_KEY_RE / QUIZ_KEY_RE. Whole line, so the body starts after it.
 TS_PRACTICE_KEY_RE = re.compile(r'^\*\*(\d+)\.[ \t]*(.*)$', re.M)
 TS_QUIZ_KEY_RE = re.compile(r'^\*\*Item (\d+):[ \t]*(.*)$', re.M)
+
+TS_KEY_HEADER_RES = {
+    'practice': TS_PRACTICE_KEY_RE,
+    'mini_quiz': TS_QUIZ_KEY_RE,
+    'extra_practice': TS_PRACTICE_KEY_RE,
+}
 
 # Mirrors STRAY_HEADING_RE. Level banners and sub-headings sit between items, so
 # they fall at the tail of the previous item's body and read as part of its
@@ -420,22 +560,22 @@ def extract_worked_solutions(answer_key):
     in Python would have to agree with that one, which is exactly the trap
     sql/curriculum_item_instances.sql describes.
     """
-    result = {'practice': {}, 'mini_quiz': {}}
+    result = {name: {} for name in SECTION_NAMES}
     if not answer_key:
-        return result
+        return drop_empty_optional(result)
 
     text = AUTHORING_BLOCK_RE.sub('', answer_key or '')
     if not text.strip():
-        return result
+        return drop_empty_optional(result)
 
-    found = TS_MINI_QUIZ_HEADING.search(text)
-    practice_text = text[:found.start()] if found else text
-    quiz_text = text[found.start():] if found else ''
-
-    for name, section_text, header_re in (
-        ('practice', practice_text, TS_PRACTICE_KEY_RE),
-        ('mini_quiz', quiz_text, TS_QUIZ_KEY_RE),
-    ):
+    # The same boundary walk parse_answer_key() uses, with the TypeScript's own
+    # regexes. Before Part 5 existed the two-way split could be written inline;
+    # with three sections the arithmetic of "where does this block end" is worth
+    # having in exactly one place, because splitAnswerKey() in
+    # lib/curriculum-utils.ts has to agree with it line for line and
+    # scripts/verify_answer_key_parity.mjs fails the build when it does not.
+    for name, section_text, header_re in split_answer_key_sections(
+            text, TS_ANSWER_KEY_BOUNDARIES, TS_KEY_HEADER_RES):
         matches = list(header_re.finditer(section_text))
         for i, m in enumerate(matches):
             start = m.end()
@@ -444,12 +584,13 @@ def extract_worked_solutions(answer_key):
             if body:
                 result[name][m.group(1)] = body
 
-    return result
+    return drop_empty_optional(result)
 
 
-def build_practice_items(practice_problems, mini_quiz, answer_key):
+def build_practice_items(practice_problems, mini_quiz, answer_key,
+                         extra_practice=''):
     """
-    Parse both question sections into structured, gradeable items.
+    Parse the question sections into structured, gradeable items.
 
     Parsing happens here, at migration time, rather than in the page component:
     a render-time parser fails silently in front of a student on content it did
@@ -463,9 +604,14 @@ def build_practice_items(practice_problems, mini_quiz, answer_key):
     markdown, so a mixed section degrades on its own rather than by hardcoding
     a topic id.
 
+    `extra_practice` is Part 5 and is optional. When a topic has none, the key
+    is absent from the result rather than present and empty -- see
+    OPTIONAL_SECTIONS for why that distinction is load-bearing.
+
     Returns:
         {"practice":  {"interactive": bool, "items": [...]},
-         "mini_quiz": {"interactive": bool, "items": [...]}}
+         "mini_quiz": {"interactive": bool, "items": [...]},
+         "extra_practice": {...}}   # only when Part 5 is authored
     """
     key = parse_answer_key(answer_key)
     sections = {}
@@ -473,6 +619,11 @@ def build_practice_items(practice_problems, mini_quiz, answer_key):
     for name, source, header_re in (
         ('practice', practice_problems, PRACTICE_STEM_RE),
         ('mini_quiz', mini_quiz, QUIZ_STEM_RE),
+        # Part 5 numbers its items 1..N in its own namespace, exactly as Part 2
+        # does, so it takes the same stem regex. The namespaces do not collide:
+        # every reference to an item is (section, item_number), on the worksheet
+        # ref, in curriculum_attempts and in gumu_sessions alike.
+        ('extra_practice', extra_practice, PRACTICE_STEM_RE),
     ):
         # Choice lines start with "- A)" and would never match the stem regex,
         # but fenced json in a question section would confuse the split, so
@@ -502,6 +653,11 @@ def build_practice_items(practice_problems, mini_quiz, answer_key):
                 'misconception_tag': entry.get('tags', {}),
                 'level': level,
             })
+
+        # An optional section that parsed to nothing is absent, not empty. The
+        # 96 topics with no Part 5 keep the practice_items object they have.
+        if not items and name in OPTIONAL_SECTIONS:
+            continue
 
         interactive = bool(items) and all(
             i['format'] == 'multiple_choice' and i['correct_answer'] for i in items
@@ -644,6 +800,19 @@ def upload_course_curriculum(course_id, dry_run=False):
                 'practice_problems': {'raw': parsed['practice_problems']},
                 'mini_quiz': {'raw': parsed['mini_quiz']},
                 'answer_key': {'raw': parsed['answer_key']},
+                # Part 5's RAW MARKDOWN IS DELIBERATELY NOT STORED, and there is
+                # no `extra_practice` column. The three raw columns above exist
+                # because a student page renders them: practice_problems and
+                # mini_quiz are the fallback for a topic whose section is not
+                # interactive, and answer_key is the teacher's worked solutions.
+                # Nothing renders Part 5 -- it reaches a worksheet only as parsed
+                # items through practice_items, and its answer key already
+                # travels inside answer_key's blob with the rest of Part 4.
+                #
+                # This is what makes the whole change require ZERO DDL: a third
+                # key inside the existing practice_items jsonb, and nothing else.
+                # A new column would need a migration run against production,
+                # which is a hand-off rather than a merge.
                 'estimated_time_minutes': require_estimated_time(topic_id, parsed['metadata']),
                 'difficulty_band': parsed['metadata'].get('difficulty_band', 'Basic'),
                 'related_strand': parsed['metadata'].get('related_strand', ''),
@@ -653,6 +822,7 @@ def upload_course_curriculum(course_id, dry_run=False):
             record['misconceptions_used'] = extract_misconceptions(
                 parsed['practice_problems'],
                 parsed['mini_quiz'],
+                parsed['extra_practice'],
                 parsed['answer_key'],
             )
             record['misconception_tags'] = extract_misconception_tags(
@@ -672,6 +842,7 @@ def upload_course_curriculum(course_id, dry_run=False):
                 parsed['practice_problems'],
                 parsed['mini_quiz'],
                 parsed['answer_key'],
+                parsed['extra_practice'],
             )
 
             for warning in validate_practice_items(record['practice_items']):

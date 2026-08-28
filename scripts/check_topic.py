@@ -191,7 +191,7 @@ def signature(choice):
 
 def sections(text):
     out = {}
-    for n in ('Part 1', 'Part 2', 'Part 3', 'Part 4'):
+    for n in ('Part 1', 'Part 2', 'Part 3', 'Part 4', 'Part 5'):
         m = re.search(r'^#### \*\*' + n + r'.*?$(.*?)(?=^#### |\Z)', text, re.S | re.M)
         out[n] = m.group(1) if m else ''
     return out
@@ -205,15 +205,42 @@ def sections(text):
 # gate that parses the file more leniently than the uploader does cannot see the
 # case where the uploader's split is the thing that broke, which is precisely
 # the case here.
+#
+# The fourth field is whether the part is REQUIRED. Part 5 is optional: it is
+# the extra-practice pool and 96 of 97 topics have none, so "missing" is the
+# normal case for it and only a repeat is a fault. Every other part missing is
+# still a hard failure, because the uploader silently folds its content into the
+# previous section.
 UPLOADER_PARTS = (
-    ('Part 1', '#### **Part 1:', 'guided_notes'),
-    ('Part 2', '#### **Part 2:', 'practice_problems'),
-    ('Part 3', '#### **Part 3:', 'mini_quiz'),
-    ('Part 4', '#### **Part 4:', 'answer_key'),
+    ('Part 1', '#### **Part 1:', 'guided_notes', True),
+    ('Part 2', '#### **Part 2:', 'practice_problems', True),
+    ('Part 3', '#### **Part 3:', 'mini_quiz', True),
+    ('Part 4', '#### **Part 4:', 'answer_key', True),
+    ('Part 5', '#### **Part 5:', 'practice_items.extra_practice', False),
 )
 
 # Columns curriculum_topics_public serves to anon without redaction.
 ANON_RAW_PARTS = ('Part 2', 'Part 3')
+
+# Part 5 reaches anon differently, and it still reaches them.
+#
+# Parts 2 and 3 are served raw because practice_problems and mini_quiz are
+# whole-blob columns on the public view. Part 5 has no column at all -- it exists
+# only as parsed items inside practice_items, which the view redacts with
+# jsonb_strip_keys. But redaction removes correct_answer and misconception_tag,
+# not the stem and not the choices, so an answer written into a Part 5 STEM is
+# just as public as one written into a Part 2 stem. Same scan, different reason,
+# and scanned only when the part is present.
+ANON_PARSED_PARTS = ('Part 5',)
+
+# Ceiling on any one correct letter's share of the extra-practice pool. Matches
+# ANSWER_SHARE_MAX in scripts/lint_curriculum_source.py deliberately: that gate
+# reports the same property as a warning, this one fails the commit, which is
+# the same division of labour the 3/4/4/3 tally already has.
+EXTRA_SHARE_MAX = 0.45
+
+# Where an extra-practice answer key starts inside Part 4.
+EXTRA_KEY_HEADING = re.compile(r'^#{3,6}\s*Extra Practice', re.M)
 
 
 def uploader_sections(text):
@@ -223,12 +250,12 @@ def uploader_sections(text):
     present twice, is reported as the structural fault it is rather than
     showing up only as a downstream content hit.
     """
-    counts = {name: 0 for name, _, _ in UPLOADER_PARTS}
-    out = {name: [] for name, _, _ in UPLOADER_PARTS}
+    counts = {name: 0 for name, *_ in UPLOADER_PARTS}
+    out = {name: [] for name, *_ in UPLOADER_PARTS}
     current = None
     for line in text.split('\n'):
         switched = False
-        for name, prefix, _ in UPLOADER_PARTS:
+        for name, prefix, _, _required in UPLOADER_PARTS:
             if line.startswith(prefix):
                 counts[name] += 1
                 current = name
@@ -237,6 +264,20 @@ def uploader_sections(text):
         if not switched and current:
             out[current].append(line)
     return {k: '\n'.join(v).strip() for k, v in out.items()}, counts
+
+
+def split_answer_key(part4):
+    """(gated_key, extra_key) -- Part 4 cut at the Extra Practice heading.
+
+    Mirrors split_answer_key_sections() in upload_curriculum.py at the only
+    boundary this file cares about. The uploader needs all three sections apart;
+    a commit gate only needs to know which answer lines belong to the fourteen
+    and which do not.
+    """
+    found = EXTRA_KEY_HEADING.search(part4 or '')
+    if not found:
+        return part4 or '', ''
+    return part4[:found.start()], part4[found.start():]
 
 
 def items_with_choices(block, header_re):
@@ -326,6 +367,11 @@ def main(path):
     all_items = (
         [(f'P{n}', c) for n, c in items_with_choices(sec['Part 2'], r'^(\d+)\.\s')]
         + [(f'Q{n}', c) for n, c in items_with_choices(sec['Part 3'], r'^\*\*Item (\d+)\*\*')]
+        # Part 5 numbers its items the way Part 2 does, so it takes the same
+        # header pattern. Labelled X rather than P because the two namespaces are
+        # independent -- P3 and X3 are different questions, and an allowlist key
+        # naming one must never match the other.
+        + [(f'X{n}', c) for n, c in items_with_choices(sec['Part 5'], r'^(\d+)\.\s')]
     )
     unparsed = 0
     for label, choices in all_items:
@@ -354,12 +400,45 @@ def main(path):
                  f"({unparsed} choices not machine-comparable, review by eye)")
 
     # ── 2. tally ──
-    tally = Counter(re.findall(r'^\*\*Answer:\s*([A-D])\*\*', text, re.M))
+    #
+    # SCOPED TO THE FOURTEEN GATED ITEMS. It used to scan the whole file, which
+    # was the same thing while Part 2 plus Part 3 were the only sections that
+    # could carry an `**Answer: X**` line. Part 5 can, and an exact tally cannot
+    # say anything about it: the extra-practice pool deliberately has no fixed
+    # size, so 3/4/4/3 is not a shape it could ever satisfy. Scanning both
+    # together would have failed every topic that grew a Part 5, and "fix" would
+    # have meant deleting the rule that protects the fourteen.
+    #
+    # Cut at the Extra Practice heading rather than at Part 5's own `#### **Part
+    # 5:` line: these are ANSWER lines, and every one of them lives in Part 4
+    # whichever question section it belongs to.
+    gated_key, extra_key = split_answer_key(sec['Part 4'])
+
+    tally = Counter(re.findall(r'^\*\*Answer:\s*([A-D])\*\*', gated_key, re.M))
     want = {'A': 3, 'B': 4, 'C': 4, 'D': 3}
     if dict(tally) != want:
         failures.append(f"TALLY  {topic_id}: {dict(sorted(tally.items()))}, expected {want}")
     else:
         notes.append(f"tally {dict(sorted(tally.items()))}")
+
+    # ── 2b. extra-practice answer spread ──
+    #
+    # A share rather than a tally, for the reason above. What it protects is the
+    # same thing: renderChoices() in app/lib/worksheet-source.ts prints A-D in
+    # order and never shuffles, so a pool that is mostly one letter puts a
+    # visibly patterned answer column on a teacher's worksheet.
+    extra_tally = Counter(re.findall(r'^\*\*Answer:\s*([A-D])\*\*', extra_key, re.M))
+    extra_total = sum(extra_tally.values())
+    if extra_total:
+        top, count = extra_tally.most_common(1)[0]
+        if count > extra_total * EXTRA_SHARE_MAX:
+            failures.append(
+                f"EXTRA SPREAD  {topic_id}: {count} of {extra_total} extra-practice "
+                f"answers are {top} ({dict(sorted(extra_tally.items()))}); no letter "
+                f"may carry more than {EXTRA_SHARE_MAX:.0%} of the pool")
+        else:
+            notes.append(f"extra practice tally {dict(sorted(extra_tally.items()))} "
+                         f"over {extra_total} item(s)")
 
     # ── 3. slugs against the pre-assigned set ──
     #
@@ -467,8 +546,10 @@ def main(path):
     # Structural first. A broken heading is the cause; the content hit below is
     # only the symptom, and reporting the symptom alone sends the next reader
     # hunting for an answer they did not write.
-    for name, prefix, column in UPLOADER_PARTS:
+    for name, prefix, column, required in UPLOADER_PARTS:
         if counts[name] == 0:
+            if not required:
+                continue
             failures.append(
                 f"PART HEADING  {topic_id}: no line starts with '{prefix}', so "
                 f"upload_curriculum.py never opens {column}. Content that belongs "
@@ -498,6 +579,20 @@ def main(path):
             f"this check did not run on it.")
     else:
         notes.append(f"{scanned} anon-visible section(s) scanned for answer shapes")
+
+    # The same scan on Part 5, which is optional, so absence is a pass and not a
+    # silently skipped check. See ANON_PARSED_PARTS for why it is scanned at all
+    # when it has no raw column of its own.
+    for part in ANON_PARSED_PARTS:
+        body = up_sec.get(part, '')
+        if not body:
+            continue
+        for kind, excerpt in answer_shapes.scan_text(body):
+            failures.append(
+                f"ANSWER IN {part.upper()}  {topic_id}: {kind} found in a section "
+                f"whose stems and choices reach signed-out students through "
+                f"practice_items: {excerpt[:100]}")
+        notes.append(f"{part} scanned for answer shapes")
 
     print(f"── {topic_id} ──")
     for n in notes:

@@ -94,16 +94,38 @@ export type AnswerKeyEntry = {
 export type AnswerKeyEntries = {
   practice: AnswerKeyEntry[];
   mini_quiz: AnswerKeyEntry[];
+  /** Part 5. Empty on the 96 topics that have no extra-practice pool. */
+  extra_practice: AnswerKeyEntry[];
 };
 
-// Part 4 holds both sections back to back under their own headings, each with
+// Part 4 holds its sections back to back under their own headings, each with
 // its own item header shape. These mirror the regexes the upload parser uses
 // to read correct answers out of the same text (see
 // curriculum/migrations/upload_curriculum.py), so the item numbers here line
 // up with the item_number on every parsed practice item.
 const MINI_QUIZ_HEADING = /^#{3,6}\s*Mini Quiz/m;
+const EXTRA_PRACTICE_HEADING = /^#{3,6}\s*Extra Practice/m;
 const PRACTICE_KEY_RE = /^\*\*(\d+)\.[ \t]*(.*)$/gm;
 const QUIZ_KEY_RE = /^\*\*Item (\d+):[ \t]*(.*)$/gm;
+
+// The boundaries, and the header shape each block is read with. Extra practice
+// takes PRACTICE_KEY_RE because an extra-practice key is authored exactly like
+// a practice key; only the section it belongs to differs.
+//
+// PAIRED WITH split_answer_key_sections() IN upload_curriculum.py, which does
+// the identical walk in Python. scripts/verify_answer_key_parity.mjs runs both
+// over real topics and fails when they stop agreeing, so a change here needs
+// the same change there.
+const KEY_SECTIONS: { heading: RegExp; name: keyof AnswerKeyEntries }[] = [
+  { heading: MINI_QUIZ_HEADING, name: 'mini_quiz' },
+  { heading: EXTRA_PRACTICE_HEADING, name: 'extra_practice' },
+];
+
+const KEY_HEADER_RES: Record<keyof AnswerKeyEntries, RegExp> = {
+  practice: PRACTICE_KEY_RE,
+  mini_quiz: QUIZ_KEY_RE,
+  extra_practice: PRACTICE_KEY_RE,
+};
 
 // Level banners and sub-headings sit between items, so they land at the tail of
 // the previous item's body. The practice cards already carry their own level,
@@ -134,17 +156,38 @@ function splitSection(text: string, headerRe: RegExp): AnswerKeyEntry[] {
 // cannot parse -- a topic uploaded under an older content shape, say -- and the
 // caller falls back to rendering the whole blob.
 export function splitAnswerKey(raw: string): AnswerKeyEntries {
+  const out: AnswerKeyEntries = { practice: [], mini_quiz: [], extra_practice: [] };
   const text = stripAuthoringBlocks(raw || '');
-  if (!text.trim()) return { practice: [], mini_quiz: [] };
+  if (!text.trim()) return out;
 
-  const at = text.search(MINI_QUIZ_HEADING);
-  const practiceText = at === -1 ? text : text.slice(0, at);
-  const quizText = at === -1 ? '' : text.slice(at);
+  // Only the first block has no heading of its own, so practice is identified
+  // by position and everything after it by heading. Sorted by where the
+  // headings actually appear rather than by the order of KEY_SECTIONS, so
+  // authoring order is not a second thing to keep in step.
+  //
+  // THE `maxsplit=1` SHAPE THIS REPLACES WAS SILENTLY WRONG FOR THREE SECTIONS.
+  // It sliced once at the Mini Quiz heading and handed everything after it to
+  // QUIZ_KEY_RE. With a Part 5 present, that regex matches nothing in the extra
+  // practice block, so the whole block fell through to the LAST quiz item's
+  // body -- item 4's worked solution would have swallowed the entire extra
+  // practice answer key, rendered, in front of a teacher.
+  const found = KEY_SECTIONS.map(({ heading, name }) => ({ at: text.search(heading), name }))
+    .filter((s) => s.at !== -1)
+    .sort((a, b) => a.at - b.at);
 
-  return {
-    practice: splitSection(practiceText, PRACTICE_KEY_RE),
-    mini_quiz: splitSection(quizText, QUIZ_KEY_RE),
-  };
+  const bounds: { name: keyof AnswerKeyEntries; from: number; to: number }[] = [
+    { name: 'practice', from: 0, to: found.length ? found[0].at : text.length },
+    ...found.map((s, i) => ({
+      name: s.name,
+      from: s.at,
+      to: i + 1 < found.length ? found[i + 1].at : text.length,
+    })),
+  ];
+
+  for (const { name, from, to } of bounds) {
+    out[name] = splitSection(text.slice(from, to), KEY_HEADER_RES[name]);
+  }
+  return out;
 }
 
 // One section of the guided notes, ready to render.
