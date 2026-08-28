@@ -347,6 +347,17 @@ export async function entitlementFromCheckout(
       ? session.payment_link
       : session.payment_link?.id ?? null;
 
+  // THE TRIAL CHECKOUT HAS NO PAYMENT LINK. It is a server-created Checkout
+  // Session from /start/checkout, stamped metadata { source: "trial",
+  // plan: "teacher-pro" } at creation. Recognised here, BEFORE the plink
+  // lookup, because that lookup cannot see it: payment_link is null on a
+  // server-created session, so without this branch a paid $1 trial fell into
+  // legacyActivateOnly — subscription_status only, no plan, no role — and
+  // requireTeacher denied a paying buyer.
+  if (session.metadata?.source === "trial") {
+    return entitlementFromTrialCheckout(stripe, session, eventCreatedMs, source);
+  }
+
   const product = productForPaymentLink(paymentLinkId);
   if (!product) return null;
 
@@ -420,5 +431,85 @@ export async function entitlementFromCheckout(
     ...base,
     planStatus: "active",
     accessUntil: addMonths(new Date(eventCreatedMs), product.term === "annual" ? 12 : 1),
+  };
+}
+
+/** The 7-day $1 trial. Sold only by /start/checkout, only as teacher-pro monthly. */
+const TRIAL_DAYS = 7;
+const TRIAL_FEE_CENTS = 100;
+
+/**
+ * Resolve a trial checkout session into an entitlement.
+ *
+ * Reached only through entitlementFromCheckout's metadata branch, so both of
+ * that function's callers — the webhook and /teacher/welcome — recognise a
+ * trial the same way, and the plink path above stays untouched.
+ */
+async function entitlementFromTrialCheckout(
+  stripe: Stripe,
+  session: Stripe.Checkout.Session,
+  eventCreatedMs: number,
+  source: string
+): Promise<EntitlementWrite | null> {
+  // The stamp names the plan so a second trial product later cannot silently
+  // ride this branch. Anything but teacher-pro is refused: the caller falls
+  // back to legacyActivateOnly, loudly, exactly like an unknown Payment Link.
+  if (session.metadata?.plan !== "teacher-pro") {
+    console.error(
+      `[${source}] trial session ${session.id} names unknown plan ` +
+        `${session.metadata?.plan ?? "(none)"}. Refusing to guess.`
+    );
+    return null;
+  }
+
+  // Cross-checks, never the key — same posture as the plink path.
+  if (session.mode !== "subscription") {
+    console.error(
+      `[${source}] trial session ${session.id} is mode ${session.mode}, not subscription.`
+    );
+  }
+  if (session.amount_total != null && session.amount_total !== TRIAL_FEE_CENTS) {
+    console.error(
+      `[${source}] trial session ${session.id} charged ${session.amount_total}, ` +
+        `expected ${TRIAL_FEE_CENTS}.`
+    );
+  }
+
+  const base: Omit<EntitlementWrite, "accessUntil" | "planStatus"> = {
+    plan: "teacher-pro",
+    planTerm: "monthly",
+    planSource: "stripe",
+    paymentLinkId: null,
+  };
+
+  // access_until comes from the subscription: during a trial the item's
+  // current_period_end IS the trial end, which is what the write spec wants
+  // and what profiles_access_until_check requires to be non-null.
+  const subscriptionId =
+    typeof session.subscription === "string"
+      ? session.subscription
+      : session.subscription?.id ?? null;
+
+  if (subscriptionId) {
+    try {
+      const sub = await stripe.subscriptions.retrieve(subscriptionId);
+      const periodEnd = subscriptionPeriodEnd(sub);
+      if (periodEnd) {
+        return { ...base, planStatus: sub.status as PlanStatus, accessUntil: periodEnd };
+      }
+      console.error(`[${source}] trial subscription ${subscriptionId} carries no period end.`);
+    } catch (err) {
+      console.error(`[${source}] could not retrieve trial subscription ${subscriptionId}:`, err);
+    }
+  }
+
+  // Provisional, and trial-shaped rather than the plink path's month: the trial
+  // length is a fact of this flow, so the fallback grants exactly the 7 days
+  // that were sold. Corrected by the next customer.subscription.updated.
+  console.warn(`[${source}] using a provisional ${TRIAL_DAYS}-day access_until for the trial.`);
+  return {
+    ...base,
+    planStatus: "trialing",
+    accessUntil: new Date(eventCreatedMs + TRIAL_DAYS * 24 * 60 * 60 * 1000),
   };
 }
