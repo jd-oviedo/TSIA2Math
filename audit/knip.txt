@@ -1,0 +1,108 @@
+Unused files (2)
+app/course/[test]/[subject]/unit/[unit]/topic/[topicId]/CheckYourself.tsx
+app/theme/ThemeToggleHome.tsx                                            
+Unused devDependencies (5)
+@types/katex  package.json:72:6
+autoprefixer  package.json:76:6
+depcheck      package.json:77:6
+postcss       package.json:82:6
+tailwindcss   package.json:83:6
+Unlisted dependencies (1)
+hast  lib/curriculum-utils.ts:8:57
+Unlisted binaries (1)
+ss  scripts/faultproof_assignments.mjs
+Unresolved imports (1)
+./scripts/ts-alias-hook.mjs  scripts/faultproof_official_scores.mjs
+Unused exports (48)
+TSIA2_MIN                              app/adaptive-test/engine.ts:3:14                                            
+TSIA2_MAX                              app/adaptive-test/engine.ts:4:14                                            
+STRAND_QUOTAS                          app/adaptive-test/engine.ts:36:14                                           
+difficultyIndex              function  app/adaptive-test/engine.ts:53:17                                           
+probabilityCorrect           function  app/adaptive-test/engine.ts:131:17                                          
+RADIUS_PILL                            app/components/curriculum-theme.ts:120:14                                   
+SHADOW_PRESSABLE                       app/components/curriculum-theme.ts:135:14                                   
+Footer                       function  app/components/Header.tsx:221:17                                            
+NAV_ITEMS                              app/components/StudentNav.tsx:50:14                                         
+toPublicItems                function  app/course/[test]/[subject]/unit/[unit]/topic/[topicId]/topic-data.ts:100:17
+topicKey                               app/dashboard/data.ts:26:3                                                  
+BUCKET_ORDER                           app/lib/assignments.ts:130:14                                               
+BUCKET_LABELS                          app/lib/assignments.ts:133:14                                               
+allowsTopic                            app/lib/course-access.ts:11:10                                              
+SCREEN_MODEL                           app/lib/crisis-screen.ts:22:14                                              
+isTopicComplete                        app/lib/curriculum-progress.ts:17:24                                        
+topicStatusFor                         app/lib/curriculum-progress.ts:17:58                                        
+correctInSection                       app/lib/curriculum-progress.ts:104:3                                        
+getCompletions               function  app/lib/curriculum-progress.ts:403:23                                       
+topicStatusesFor             function  app/lib/curriculum-progress.ts:482:17                                       
+STEP_ORDER                             app/lib/curriculum-progress.ts:707:14                                       
+SUPPORT_INBOX                          app/lib/email.ts:5:14                                                       
+OPS_INBOX                              app/lib/email.ts:17:14                                                      
+APP_ORIGIN                             app/lib/email.ts:23:14                                                      
+sectionKey                   function  app/lib/grades.ts:106:17                                                    
+LETTER_BANDS                           app/lib/grades.ts:331:14                                                    
+GUMU_MODEL                             app/lib/gumu.ts:14:14                                                       
+SAFE_FALLBACK_MESSAGE                  app/lib/gumu.ts:46:14                                                       
+stripEmDashes                function  app/lib/gumu.ts:59:17                                                       
+detectLeak                   function  app/lib/gumu.ts:160:17                                                      
+JOIN_COOKIE_MAX_AGE                    app/lib/join-code.ts:93:14                                                  
+wordCount                    function  app/lib/lesson-sections.ts:187:17                                           
+OFFICIAL_STRANDS                       app/lib/official-scores.ts:12:14                                            
+weakestStrand                function  app/lib/recommendation.ts:198:17                                            
+strongestStrand              function  app/lib/recommendation.ts:209:17                                            
+firstTopicInStrand           function  app/lib/recommendation.ts:264:23                                            
+firstDiagnosticSession       function  app/lib/recommendation.ts:345:23                                            
+itemIdSchema                           app/lib/schemas.ts:10:14                                                    
+answerLetterSchema                     app/lib/schemas.ts:16:14                                                    
+ROSTER_COLUMNS_BASE                    app/lib/teacher-export.ts:269:14                                            
+ROSTER_OFFICIAL_COLUMNS                app/lib/teacher-export.ts:309:14                                            
+SCORES_COLUMNS_BASE                    app/lib/teacher-export.ts:409:14                                            
+MISCONCEPTION_EXPORT_SCOPE             app/lib/teacher-export.ts:649:14                                            
+MISCONCEPTIONS_COLUMNS_BASE            app/lib/teacher-export.ts:658:14                                            
+isEligible                   function  app/lib/worksheet-select.ts:346:17                                          
+COPY                                   app/login/copy.ts:155:14                                                    
+focusRing                    function  app/login/login-theme.ts:266:17                                             
+LOGIN_VARS_CSS                         app/login/login-theme.ts:271:14                                             
+Unused exported types (34)
+StrategyHint            interface  app/adaptive-test/type.ts:4:18                                             
+PublicViewItem          type       app/adaptive-test/type.ts:79:13                                            
+StoredPracticeItem      type       app/course/[test]/[subject]/unit/[unit]/topic/[topicId]/topic-data.ts:39:13
+TopicProgress           type       app/dashboard/data.ts:32:3                                                 
+TopicShape              type       app/dashboard/data.ts:33:3                                                 
+AttemptRow              type       app/dashboard/data.ts:34:3                                                 
+CrisisAction            type       app/lib/crisis.ts:126:13                                                   
+CompletionRow           type       app/lib/curriculum-progress.ts:18:15                                       
+ObservedLike            type       app/lib/curriculum-progress.ts:18:30                                       
+TopicStatusKind         type       app/lib/curriculum-progress.ts:18:44                                       
+SessionRow              type       app/lib/curriculum-progress.ts:100:27                                      
+Section                 type       app/lib/grades.ts:65:13                                                    
+TopicGrade              type       app/lib/grades.ts:93:13                                                    
+Letter                  type       app/lib/grades.ts:323:13                                                   
+GumuReply               type       app/lib/gumu.ts:74:13                                                      
+LeakCheckInput          type       app/lib/gumu.ts:148:13                                                     
+CodeReason              type       app/lib/join-code.ts:31:13                                                 
+OfficialStrand          type       app/lib/official-scores.ts:13:13                                           
+StrandStats             type       app/lib/recommendation.ts:39:13                                            
+StrandStanding          type       app/lib/recommendation.ts:47:13                                            
+WeakestStrand           type       app/lib/recommendation.ts:58:13                                            
+RecommendedTopic        type       app/lib/recommendation.ts:72:13                                            
+RevealBody              type       app/lib/schemas.ts:26:13                                                   
+SessionsBody            type       app/lib/schemas.ts:57:13                                                   
+InviteBody              type       app/lib/schemas.ts:81:13                                                   
+CurriculumPracticeBody  type       app/lib/schemas.ts:105:13                                                  
+GumuBody                type       app/lib/schemas.ts:141:13                                                  
+TeacherExportQuery      type       app/lib/schemas.ts:191:13                                                  
+OfficialScoreCreate     type       app/lib/schemas.ts:300:13                                                  
+OfficialScoreCorrect    type       app/lib/schemas.ts:301:13                                                  
+AssignmentCreate        type       app/lib/schemas.ts:450:13                                                  
+SectionShapeLike        type       app/lib/topic-completion.ts:13:13                                          
+PartStatus              type       app/lib/topic-parts.ts:42:13                                               
+Part                    type       app/lib/topic-parts.ts:62:13                                               
+Duplicate exports (1)
+LIGHT|DASH  app/components/dashboard-theme.ts
+Configuration hints (6)
+middleware.ts                knip.json  Remove redundant entry pattern                               
+instrumentation.ts           knip.json  Remove redundant entry pattern                               
+instrumentation-client.ts    knip.json  Remove redundant entry pattern                               
+sentry.edge.config.ts        knip.json  Remove redundant entry pattern                               
+sentry.server.config.ts      knip.json  Remove redundant entry pattern                               
+.css                         knip.json  Compiled extension excluded by project (imports not followed)
