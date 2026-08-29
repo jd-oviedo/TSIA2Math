@@ -11,6 +11,7 @@ import {
   GRID_BACKGROUND,
   GRID_SIZE,
 } from '../login/login-theme';
+import { START_DARK_CSS, startGround } from './start-dark';
 
 // The shell the onboarding flow sits in: header bar, graph-paper ground, footer
 // bar. A direct mirror of app/login/LoginChrome.tsx, which is the reference
@@ -56,7 +57,12 @@ export function StartChrome({ children }: { children: ReactNode }) {
   // The overscroll gutter behind this shell. L.ground is a var() reference and
   // body cannot resolve one declared on a descendant, so the RESOLVED hex for
   // the current theme is passed. Same call and same reasoning as LoginChrome.
-  useBodyBackground(SURFACES[theme].ground);
+  //
+  // Routed through startGround so dark returns the dashboard's page ground
+  // rather than login's navy. Without this the page repaints neutral and the
+  // overscroll gutter behind it stays #0C1120, which only shows when someone
+  // rubber-bands the scroll and is exactly the kind of miss nobody catches.
+  useBodyBackground(startGround(theme, SURFACES.light.ground));
 
   return (
     <div
@@ -71,6 +77,12 @@ export function StartChrome({ children }: { children: ReactNode }) {
         boxSizing: 'border-box',
       }}
     >
+      {/* Emitted here rather than in each of the three surfaces, so a new page
+          added to this flow gets the dashboard-matched dark automatically. Its
+          selector is specificity (0,3,0) against login-theme's (0,2,0), so it
+          wins wherever it lands relative to LOGIN_CSS. */}
+      <style>{START_DARK_CSS}</style>
+
       {/* ─── Header ────────────────────────────────────────────────────────
           Light bar on the light ground, not the dark banner this flow used to
           carry. L.bar is #FFFFFF in light and #161E30 in dark, both of them
