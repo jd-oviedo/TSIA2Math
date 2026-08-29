@@ -141,14 +141,19 @@ export default function WelcomeIn() {
               >
                 Full Teacher Pro access
               </span>
-              {/* The chip. A hard rule on the cream strip rather than a second
-                  fill, so it reads as a marker and not a button. */}
+              {/* The chip. A hard rule on the strip rather than a second fill,
+                  so it reads as a marker and not a button.
+
+                  L.border rather than L.creamLine. Identical in light, where both
+                  are #111111, but the two diverge in dark: creamLine stays
+                  #111111 so the orange CTA keeps a dark outline, and #111111 on
+                  the dark strip would be an invisible chip. */}
               <span
                 style={{
                   font: `400 10.5px/1 ${FONT_MONO}`,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  border: `1px solid ${L.creamLine}`,
+                  border: `1px solid ${L.border}`,
                   padding: '4px 7px',
                   whiteSpace: 'nowrap',
                 }}

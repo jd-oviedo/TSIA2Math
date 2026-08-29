@@ -16,21 +16,24 @@
  * admin pastes into Security > API controls > App access control to trust
  * UnpackMath.
  *
- * TODO(juan): fill this in before launch. Google Cloud console >
- * APIs & Services > Credentials > the OAuth 2.0 Client ID used by Supabase Auth
- * for the Google provider. It looks like:
- *
- *     000000000000-abcdefghijklmnopqrstuvwxyz012345.apps.googleusercontent.com
+ * SUPPLIED, so /start/access now renders the real value with its copy control
+ * enabled. It appears twice on that page by design: once in the message a
+ * teacher sends their admin, and once in the dedicated field, because an admin
+ * reading the message needs it inline and a teacher pasting it into a ticket
+ * needs it on its own.
  *
  * PUBLIC BY DESIGN. This is the client ID, never the client SECRET. The ID is
  * already visible in the OAuth consent URL every user hits, so shipping it in
  * the bundle discloses nothing. Do not put the secret here or anywhere in this
  * repo.
  *
- * While empty, /start/access renders the field as "not published yet" with the
- * copy control disabled, rather than showing an empty box that looks copyable.
+ * If it is ever emptied, the field falls back to "Not published yet" with the
+ * copy control disabled rather than showing an empty box that looks copyable.
+ * That fallback is kept deliberately: a placeholder pasted into App access
+ * control would match no app and approve nothing.
  */
-export const GOOGLE_OAUTH_CLIENT_ID = "";
+export const GOOGLE_OAUTH_CLIENT_ID =
+  "486519212269-u1r9kd404jur9sessegdf74kc01r97nl.apps.googleusercontent.com";
 
 /**
  * Scheduling link for the "We'll help, book 15 min" button.
@@ -47,16 +50,14 @@ export const BOOKING_URL = "";
 /**
  * Where district-access mail goes when there is no booking link.
  *
- * schools@unpackmath.com is the alias app/login/SignIn.tsx already points
- * "Talk to us" at, so this is the address the product already promises rather
- * than a new one. Confirmed live at the time SignIn.tsx was written; it is
- * absent from the rest of the repo, which is why it is named here instead of
- * grepped for.
- *
- * TODO(juan): confirm this is still the right inbox for district approval
- * requests, or point it somewhere better.
+ * support@unpackmath.com, set by Juan. Note this is DIFFERENT from the
+ * schools@unpackmath.com alias that app/login/SignIn.tsx still points "Talk to
+ * us" at. The two are deliberately separate for now: that link is a sales
+ * enquiry from someone with no account, this one is a support request from a
+ * teacher who is blocked. If they should be the same inbox, SignIn.tsx is the
+ * other place to change and this file is not the only one.
  */
-export const SUPPORT_EMAIL = "schools@unpackmath.com";
+export const SUPPORT_EMAIL = "support@unpackmath.com";
 
 /**
  * True when a real client ID has been supplied. Consumers branch on this rather

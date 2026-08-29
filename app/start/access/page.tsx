@@ -12,6 +12,14 @@ import {
   BOOKING_URL,
   SUPPORT_EMAIL,
 } from '../../lib/onboarding-config';
+import {
+  ADMIN_MESSAGE_INTRO,
+  ADMIN_MESSAGE_STEPS,
+  ADMIN_MESSAGE_DETAILS_LABEL,
+  ADMIN_MESSAGE_DETAILS,
+  ADMIN_MESSAGE_TEXT,
+  ADMIN_MAIL_SUBJECT,
+} from './admin-message';
 
 // Step 2 of teacher onboarding: the district access branch, linked from /start.
 //
@@ -42,14 +50,9 @@ import {
 // A teacher who cannot get through Google sign in is by definition signed out,
 // so anything requiring a session would be a page they could never reach.
 
-// The message a teacher sends their admin. One definition, because it is used by
-// the copy button, the mailto body and the visible block, and three copies would
-// drift the first time the wording is tuned.
-const ADMIN_MESSAGE =
-  `Hi, I'd like to add UnpackMath for our math team. It's a TSIA2 prep tool and ` +
-  `needs to be approved in Google Workspace before teachers can sign in.`;
-
-const MAIL_SUBJECT = 'Approving UnpackMath in Google Workspace';
+// The message and its plain-text form both live in ./admin-message, so the block
+// rendered on screen and the text the Copy and Email controls send are composed
+// from the same constants and cannot drift.
 
 /** The booking control's target. A real scheduling link when one is configured,
  *  otherwise mail to the support alias asking for the same thing, so the button
@@ -59,7 +62,8 @@ const BOOKING_HREF = BOOKING_URL
   : `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent('Help with district access for UnpackMath')}`;
 
 const ADMIN_MAILTO =
-  `mailto:?subject=${encodeURIComponent(MAIL_SUBJECT)}&body=${encodeURIComponent(ADMIN_MESSAGE)}`;
+  `mailto:?subject=${encodeURIComponent(ADMIN_MAIL_SUBJECT)}` +
+  `&body=${encodeURIComponent(ADMIN_MESSAGE_TEXT)}`;
 
 /** A small tracked section label, matching the mono labels on /login's bar. */
 const SECTION_LABEL: React.CSSProperties = {
@@ -205,8 +209,14 @@ function StateA({ onFirstTeacher }: { onFirstTeacher: () => void }) {
   return (
     <CardShell>
       <H1>Is your district new to UnpackMath?</H1>
+      {/* POINTS AT STUDENTS, NOT AT THE TEACHER READING IT. Google Workspace
+          blocks third-party apps for STUDENT accounts by default in most
+          districts, while staff accounts usually sit in a group that already
+          allows them. So the teacher signs in fine, assumes it works, and their
+          class cannot get in. Saying "you can't sign in" here described a
+          symptom most teachers will never see. */}
       <Sub>
-        {`If you're the first teacher here, your district's Google admin may need to approve the app before you can sign in.`}
+        {`If your students can't sign in, your district's Google admin may need to trust the app for student accounts.`}
       </Sub>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -217,7 +227,7 @@ function StateA({ onFirstTeacher }: { onFirstTeacher: () => void }) {
         />
         <ChoiceCard
           title="Someone else already uses it"
-          detail={`You're good, sign in works normally`}
+          detail={`You're good, your students can sign in`}
           href="/start"
         />
       </div>
@@ -249,33 +259,72 @@ function StateB({ onBack }: { onBack: () => void }) {
   return (
     <CardShell>
       <H1>{`Send this to your district's Google admin`}</H1>
-      <Sub>One approval unlocks UnpackMath for every teacher in your district.</Sub>
+      {/* Students, matching the framing on state A and in the message itself. */}
+      <Sub>One approval unlocks UnpackMath for every student in your district.</Sub>
 
       {/* ─── The message ────────────────────────────────────────────────────
-          Rendered as selectable text inside a bordered block rather than a
-          textarea, so it reads as a quotation to send rather than a field to
-          fill in. It stays selectable by hand when the clipboard API is
-          unavailable. */}
+          Selectable text in a bordered block rather than a textarea, so it reads
+          as something to send rather than a field to fill in, and stays
+          selectable by hand when the clipboard API is unavailable.
+
+          Laid out from the same constants that compose ADMIN_MESSAGE_TEXT: the
+          steps as a real ordered list and the details as labelled rows, rather
+          than one wall of text with newlines in it. What a teacher copies is the
+          plain-text form of exactly this. */}
       <div
         style={{
           border: `1px solid ${L.border}`,
           borderRadius: 0,
-          padding: '15px 16px',
+          padding: '16px 17px',
           background: L.ground,
           font: `400 14px/1.65 ${FONT_BODY}`,
           color: L.ink,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 14,
         }}
       >
-        {ADMIN_MESSAGE}
+        <p style={{ margin: 0 }}>{ADMIN_MESSAGE_INTRO}</p>
+
+        <ol style={{ margin: 0, paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {ADMIN_MESSAGE_STEPS.map((step) => (
+            <li key={step} style={{ paddingLeft: 2 }}>
+              {step}
+            </li>
+          ))}
+        </ol>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+          <span style={{ fontWeight: 700 }}>{ADMIN_MESSAGE_DETAILS_LABEL}</span>
+          {ADMIN_MESSAGE_DETAILS.map(([label, value]) => (
+            <div key={label} style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+              <span style={{ color: L.ink2, flexShrink: 0 }}>{`${label}:`}</span>
+              {/* The client ID is the one value an admin retypes, so it is set
+                  in mono and allowed to break rather than overflow the block. */}
+              <span
+                style={
+                  label === 'OAuth client ID'
+                    ? { font: `400 12.5px/1.5 ${FONT_MONO}`, wordBreak: 'break-all', minWidth: 0 }
+                    : undefined
+                }
+              >
+                {value}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* ─── Admin console steps ───────────────────────────────────────── */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <span style={SECTION_LABEL}>In the Google Admin console</span>
-        <p style={{ margin: 0, font: `400 14px/1.65 ${FONT_BODY}`, color: L.ink2 }}>
-          Go to Security, then API controls, then App access control. Add UnpackMath as Trusted.
-        </p>
-      </div>
+      {/* THE STANDALONE "IN THE GOOGLE ADMIN CONSOLE" SECTION WAS REMOVED HERE.
+          It read "Go to Security, then API controls, then App access control.
+          Add UnpackMath as Trusted", which was written when the message above
+          was two sentences and carried no instructions of its own.
+
+          The message now contains all four console steps, in more detail and in
+          the right order. Keeping the old section would have put two different
+          sets of instructions for the same admin on one screen, and the shorter
+          one was also the wrong one: it skipped "Manage third-party app access"
+          and "Configure new app" entirely. */}
 
       {/* ─── OAuth client ID ────────────────────────────────────────────────
           Display only. When no ID is configured the field says so plainly and
@@ -337,7 +386,7 @@ function StateB({ onBack }: { onBack: () => void }) {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
         <button
           type="button"
-          onClick={() => copyMessage(ADMIN_MESSAGE)}
+          onClick={() => copyMessage(ADMIN_MESSAGE_TEXT)}
           className="um-start-cta"
           style={{ ...actionStyle, width: '100%', background: L.cta, color: L.ctaInk }}
         >
