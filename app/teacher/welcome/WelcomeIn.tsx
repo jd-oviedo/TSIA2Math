@@ -2,6 +2,7 @@ import GumuAvatar from '../../course/[test]/[subject]/unit/[unit]/topic/[topicId
 import { FONT_HEADING, FONT_BODY } from '../../components/fonts';
 import { C } from '../../components/curriculum-theme';
 import { L, LOGIN_CSS, FONT_MONO } from '../../login/login-theme';
+import { MOTION_CSS } from '../../motion';
 import { StartChrome } from '../../start/StartChrome';
 import { TRIAL_PRICE, TRIAL_DAYS } from '../../start/trial-price';
 
@@ -68,6 +69,7 @@ export default function WelcomeIn() {
     <>
       <style>{`
         ${LOGIN_CSS}
+        ${MOTION_CSS}
         .um-start, .um-start * { box-sizing: border-box; }
         .um-start h1, .um-start h2 { font-family: ${FONT_HEADING}; }
         .um-start { font-family: ${FONT_BODY}; }
@@ -78,137 +80,188 @@ export default function WelcomeIn() {
       `}</style>
 
       <StartChrome>
-        <div
-          style={{
-            maxWidth: 440,
-            margin: '0 auto',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 22,
-          }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
-            <GumuAvatar size={76} title="" />
-            <h1
-              style={{
-                margin: 0,
-                font: `600 clamp(30px, 7vw, 38px)/1.12 ${FONT_HEADING}`,
-                letterSpacing: '-0.02em',
-                color: L.ink,
-                textAlign: 'center',
-              }}
-            >
-              {`You're in.`}
-            </h1>
-            <p
-              style={{
-                margin: 0,
-                font: `400 15px/1.6 ${FONT_BODY}`,
-                color: L.ink2,
-                textAlign: 'center',
-              }}
-            >
-              {`Mu's got your class for the next ${TRIAL_DAYS} days.`}
-            </p>
-          </div>
+        {/* ─── THE OPT-IN, AND IT IS THE ONLY ONE IN THE PRODUCT ─────────────
+            .um-motion is lock 1 of the shared motion system: every rule in
+            MOTION_CSS is written as a strict descendant of this class, so no
+            surface that omits it can animate. This wrapper carries it rather
+            than the column below because the column is also the .um-stagger
+            container, and a strict-descendant selector cannot match its own
+            element. The div is layout neutral -- StartChrome's <main> lays out
+            a full-width block either way, and the column keeps its own
+            maxWidth and auto margins.
 
-          {/* The float: flat fill, hard 1px rule, grid behind. No shadow. */}
+            StartChrome is deliberately NOT the host. Putting .um-motion there
+            would opt /start, /start/access and every future onboarding surface
+            in at once, which is Wave 2's decision to make, not this file's. */}
+        <div className="um-motion">
           <div
+            className="um-stagger"
             style={{
-              background: L.card,
-              border: `1px solid ${L.border}`,
-              borderRadius: 0,
+              maxWidth: 440,
+              margin: '0 auto',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 22,
             }}
           >
+            {/* Beat 1: the mark, the headline and the line under it, as ONE
+                unit. They are a single statement and staggering inside the
+                group would make the page read as assembling itself rather
+                than arriving. */}
             <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: 12,
-                padding: '11px 18px',
-                background: L.cream,
-                borderBottom: `1px solid ${L.border}`,
-                color: L.creamInk,
-              }}
+              className="um-fade-up"
+              style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}
             >
-              <span
+              <GumuAvatar size={76} title="" />
+              <h1
                 style={{
-                  font: `400 11px/1 ${FONT_MONO}`,
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
+                  margin: 0,
+                  font: `600 clamp(30px, 7vw, 38px)/1.12 ${FONT_HEADING}`,
+                  letterSpacing: '-0.02em',
+                  color: L.ink,
+                  textAlign: 'center',
                 }}
               >
-                Full Teacher Pro access
-              </span>
-              {/* The chip. A hard rule on the strip rather than a second fill,
-                  so it reads as a marker and not a button.
-
-                  L.border rather than L.creamLine. Identical in light, where both
-                  are #111111, but the two diverge in dark: creamLine stays
-                  #111111 so the orange CTA keeps a dark outline, and #111111 on
-                  the dark strip would be an invisible chip. */}
-              <span
+                {`You're in.`}
+              </h1>
+              <p
                 style={{
-                  font: `400 10.5px/1 ${FONT_MONO}`,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  border: `1px solid ${L.border}`,
-                  padding: '4px 7px',
-                  whiteSpace: 'nowrap',
+                  margin: 0,
+                  font: `400 15px/1.6 ${FONT_BODY}`,
+                  color: L.ink2,
+                  textAlign: 'center',
                 }}
               >
-                {`Day 1 of ${TRIAL_DAYS}`}
-              </span>
+                {`Mu's got your class for the next ${TRIAL_DAYS} days.`}
+              </p>
             </div>
 
-            <ul style={{ margin: 0, padding: '20px 18px', listStyle: 'none' }}>
-              {CHECKS.map((item, i) => (
-                <li
-                  key={item}
+            {/* The float: flat fill, hard 1px rule, grid behind. No shadow. */}
+            {/* Beat 2. The whole card arrives as one object -- the strip, the
+                chip and the three rows do not stagger against each other. */}
+            <div
+              className="um-fade-up"
+              style={{
+                background: L.card,
+                border: `1px solid ${L.border}`,
+                borderRadius: 0,
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: 12,
+                  padding: '11px 18px',
+                  background: L.cream,
+                  borderBottom: `1px solid ${L.border}`,
+                  color: L.creamInk,
+                }}
+              >
+                <span
                   style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: 10,
-                    marginBottom: i === CHECKS.length - 1 ? 0 : 11,
-                    font: `400 14px/1.6 ${FONT_BODY}`,
-                    color: L.ink,
+                    font: `400 11px/1 ${FONT_MONO}`,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
                   }}
                 >
-                  <Check />
-                  {item}
-                </li>
-              ))}
-            </ul>
+                  Full Teacher Pro access
+                </span>
+                {/* The chip. A hard rule on the strip rather than a second fill,
+                    so it reads as a marker and not a button.
+
+                    L.border rather than L.creamLine. Identical in light, where both
+                    are #111111, but the two diverge in dark: creamLine stays
+                    #111111 so the orange CTA keeps a dark outline, and #111111 on
+                    the dark strip would be an invisible chip. */}
+                <span
+                  style={{
+                    font: `400 10.5px/1 ${FONT_MONO}`,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    border: `1px solid ${L.border}`,
+                    padding: '4px 7px',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {`Day 1 of ${TRIAL_DAYS}`}
+                </span>
+              </div>
+
+              <ul style={{ margin: 0, padding: '20px 18px', listStyle: 'none' }}>
+                {CHECKS.map((item, i) => (
+                  <li
+                    key={item}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: 10,
+                      marginBottom: i === CHECKS.length - 1 ? 0 : 11,
+                      font: `400 14px/1.6 ${FONT_BODY}`,
+                      color: L.ink,
+                    }}
+                  >
+                    <Check />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Beat 3, AND THE ENTRANCE IS ON THE WRAPPER RATHER THAN ON THE
+                ANCHOR. That is the standing rule for this system, not a detail
+                of this page: an entrance and a hover must never animate
+                `transform` on the same node, because a running animation's
+                transform wins over a transition's and the hover would simply
+                stop working for the length of the entrance.
+
+                The rule costs nothing to honour here -- .um-start-cta's hover
+                is background-only, so there is no conflict to avoid yet. It is
+                held anyway because Wave 2 puts this system next to .uml-lift,
+                whose hover DOES translate (login-theme.ts:331), and a pattern
+                that is only applied once it is needed is a pattern that gets
+                missed on the surface that needed it. */}
+            <div className="um-fade-up">
+              <a
+                href="/teacher"
+                className="um-start-cta"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '100%',
+                  padding: '15px 20px',
+                  border: `1px solid ${L.creamLine}`,
+                  borderRadius: 0,
+                  background: L.cta,
+                  color: L.ctaInk,
+                  font: `700 16px/1 ${FONT_BODY}`,
+                  textDecoration: 'none',
+                  boxSizing: 'border-box',
+                }}
+              >
+                Set up my class
+              </a>
+            </div>
+
+            {/* Bound to the live charged amount, never a literal. TRIAL_PRICE
+                mirrors TRIAL_FEE_CENTS in app/lib/stripe-activation.ts:439, which
+                is cross checked against session.amount_total on every purchase. */}
+            {/* Beat 4, AND IT IS ANIMATED FOR A REASON RATHER THAN FOR SYMMETRY.
+                The brief named three beats. Leaving this one out would not
+                leave it still -- it would leave it painted at full opacity from
+                the first frame while the three elements ABOVE it glided in over
+                780ms, so the smallest print on the page would arrive first and
+                alone. Everything in the column settles, or the settle reads as
+                a fault. */}
+            <p
+              className="um-fade-up"
+              style={{ margin: 0, font: `400 13px/1.6 ${FONT_BODY}`, color: L.ink2 }}
+            >
+              {`You paid ${TRIAL_PRICE} to start. Nothing else charges until your trial converts, and we'll remind you first.`}
+            </p>
           </div>
-
-          <a
-            href="/teacher"
-            className="um-start-cta"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '100%',
-              padding: '15px 20px',
-              border: `1px solid ${L.creamLine}`,
-              borderRadius: 0,
-              background: L.cta,
-              color: L.ctaInk,
-              font: `700 16px/1 ${FONT_BODY}`,
-              textDecoration: 'none',
-              boxSizing: 'border-box',
-            }}
-          >
-            Set up my class
-          </a>
-
-          {/* Bound to the live charged amount, never a literal. TRIAL_PRICE
-              mirrors TRIAL_FEE_CENTS in app/lib/stripe-activation.ts:439, which
-              is cross checked against session.amount_total on every purchase. */}
-          <p style={{ margin: 0, font: `400 13px/1.6 ${FONT_BODY}`, color: L.ink2 }}>
-            {`You paid ${TRIAL_PRICE} to start. Nothing else charges until your trial converts, and we'll remind you first.`}
-          </p>
         </div>
       </StartChrome>
     </>

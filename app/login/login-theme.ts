@@ -64,6 +64,40 @@
 // later audit reads them as decisions rather than misses.
 
 import type { ThemeName } from '../theme/themes';
+import { DARK as DASH_DARK } from '../components/dashboard-theme';
+
+/**
+ * The design's one hard rule, in dark.
+ *
+ * Three tokens are this exact value and none of them may drift from the others:
+ * --uml-border draws it as a card edge, --uml-cta-shadow throws it behind a
+ * lifted control, and --uml-toggle-off-line draws it around the resting theme
+ * switch. They were three identical literals before the dashboard retune; they
+ * are one constant now, so a future adjustment cannot move two of the three.
+ *
+ * Kept cool rather than repointed at the dashboard, deliberately -- see the
+ * notes on --uml-border and --uml-cta-shadow below.
+ */
+const LIFT_RULE = 'rgba(232,238,248,0.42)';
+
+/**
+ * A #RRGGBB constant at a given alpha.
+ *
+ * Exists so a token and its wash are composed from ONE source: tintBlue is
+ * blue at 12%, and the three disabled tokens are the dashboard's ink at their
+ * original alphas. Writing either as a fresh rgba() would put the same colour
+ * in the file twice and let a later edit move one copy.
+ *
+ * Deliberately narrow: #RRGGBB only, which is every value it is asked for. It
+ * throws rather than guessing, because a silently wrong colour is the failure
+ * mode a helper like this exists to prevent.
+ */
+function withAlpha(hex: string, alpha: number): string {
+  const m = /^#([0-9a-f]{6})$/i.exec(hex);
+  if (!m) throw new Error(`withAlpha expects #RRGGBB, received "${hex}"`);
+  const n = parseInt(m[1], 16);
+  return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${alpha})`;
+}
 
 export interface LoginSurface {
   ground: string;
@@ -133,20 +167,51 @@ const LIGHT: LoginSurface = {
 };
 
 const DARK: LoginSurface = {
-  ground: '#0C1120', // [reuse] --ec-bg dark
-  grid: 'rgba(255,255,255,0.05)',
-  bar: '#161E30', // [reuse] --ec-surface dark
+  // ─── RETUNED ONTO THE DASHBOARD'S DARK SCHEME, 2026-08-29 ──────────────────
+  //
+  // Ten values below now come from DASH_DARK by reference. The old set was the
+  // --ec system's blue-blacks (#0C1120 ground, #161E30 surface, #E8EEF8 cool
+  // ink), which is a different colour FAMILY from the warm neutral both
+  // dashboards run on. A teacher signing in and landing on /teacher saw the
+  // ground change temperature mid-flow.
+  //
+  // /start already made exactly this move on 2026-08-28, but it made it as a
+  // scoped CSS override in app/start/start-dark.ts, because it could not change
+  // this file without moving /login too. This IS that move, made at the source.
+  //
+  // CONSEQUENCE WORTH KNOWING BEFORE EDITING EITHER FILE: start-dark.ts's
+  // twelve declarations now set the values this block already carries, so that
+  // override is redundant rather than wrong. It is deliberately left in place
+  // this pass -- collapsing it is a change to /start, which this pass does not
+  // cover -- but it should be retired rather than maintained in parallel.
+  //
+  // BY REFERENCE, NEVER RE-TYPED. Change a token in dashboard-theme.ts and this
+  // follows it. Nothing below is a hex sampled from a screenshot.
+  ground: DASH_DARK.pageBg,
+  grid: DASH_DARK.hairline,
+  bar: DASH_DARK.cardBg,
+  // Already rgba(255,255,255,0.12), which is DASH_DARK.line to the byte. Left
+  // as a literal so this retune's diff shows only what actually moved.
   barLine: 'rgba(255,255,255,0.12)',
-  card: '#161E30', // [reuse] --ec-surface dark
+  card: DASH_DARK.cardBg,
   // The one value with no counterpart anywhere in the app. --ec-line dark is
   // rgba(255,255,255,0.07), which is 1.15:1 and would erase the design's
   // signature element; a literal inversion to #E8EEF8 glares. .42 is what
   // clears 3:1 on both dark surfaces (3.67 on ground, 3.61 on card) while
   // still reading as a rule.
-  border: 'rgba(232,238,248,0.42)',
-  ink: '#E8EEF8', // [reuse] --ec-ink dark
-  ink2: 'rgba(232,238,248,0.58)', // [reuse] --ec-ink-muted dark
-  inkMono: 'rgba(232,238,248,0.58)',
+  //
+  // KEPT THROUGH THE RETUNE, and start-dark.ts:37-51 is the record of why. The
+  // dashboard's own edge tokens are far fainter -- cardBorder .09 measures 1.31
+  // on the card, panelEdge .12 measures 1.45 -- and they work there only
+  // because DashSurface also carries cardShadow doing most of the separating.
+  // THIS SURFACE IS SHADOW FREE BY DECISION: its cards float on a border and a
+  // ground alone, so taking panelEdge would leave the card at 1.10 of
+  // background contrast plus a 1.45 hairline and it would effectively vanish.
+  // Re-measured on the NEW grounds: 3.60 on the card, 3.68 on the page.
+  border: LIFT_RULE,
+  ink: DASH_DARK.ink,
+  ink2: DASH_DARK.muted,
+  inkMono: DASH_DARK.muted,
   amber: '#F2A541', // [reuse] --ec-orange dark
   amberRule: '#F2A541',
   // The CTA does not invert. Its label contrast is against the fill, not the
@@ -161,11 +226,30 @@ const DARK: LoginSurface = {
   // palette later has to explain why there are two.
   cta: '#F0A33E',
   ctaInk: '#111111',
-  ctaShadow: 'rgba(232,238,248,0.42)',
-  // Cream does not invert either, for the same reason the orange did not: the
-  // label's contrast is against the fill, so 14.38:1 holds in both themes.
-  cream: '#E8E0CF',
-  creamInk: '#111111',
+  // UNDECIDED TOKEN 1 OF 4, RESOLVED: PINNED TO THE BORDER, NOT TO THE
+  // DASHBOARD.
+  //
+  // This is the solid block behind .uml-lift:hover -- `4px 4px 0` with no blur
+  // (LOGIN_CSS below). /start never had to decide it because /start never uses
+  // .uml-lift; /login uses it at three sites (SignIn:139, RoleSelect:105,
+  // JoinClass:226), so the retune cannot skip it.
+  //
+  // THE DASHBOARD HAS NO EQUIVALENT TO BORROW. Its cardShadow is
+  // `0 1px 2px rgba(0,0,0,0.34)`, a soft black blur -- the opposite treatment.
+  // Adopting it would not retune the hard offset, it would delete it, and that
+  // offset is the design's signature.
+  //
+  // So it stays the cool-white rule, and is now pinned to the SAME constant as
+  // --uml-border rather than repeating its digits: the two are one line in the
+  // design, one drawn as an edge and one thrown behind a control, and they must
+  // not drift. Measured on the new grounds by that shared value: 3.60 on the
+  // card, 3.68 on the page.
+  ctaShadow: LIFT_RULE,
+  // Cream stops being cream in dark. It was #E8E0CF, a bright Mercury Cream
+  // strip that read as a highlight against a near-black card; it now takes the
+  // dashboard's own inset fill, and the ink on it follows to match.
+  cream: DASH_DARK.subtleBg,
+  creamInk: DASH_DARK.ink,
   // THE BORDER DOES NOT FOLLOW THE THEME HERE, and this is the one thing that
   // needed deciding rather than copying. --uml-border is
   // rgba(232,238,248,0.42) in dark, which measures 1.05:1 against a cream fill
@@ -174,16 +258,57 @@ const DARK: LoginSurface = {
   // its outline. It is a dark rule on a light fill either way, which is what
   // the light theme already does.
   creamLine: '#111111',
-  blue: '#6BADDA',
-  tintAmber: 'rgba(232,163,61,0.12)',
-  tintBlue: 'rgba(107,173,218,0.12)',
-  toggleOn: '#E8EEF8',
-  toggleOnInk: '#0C1120',
-  toggleOffLine: 'rgba(232,238,248,0.42)',
-  focus: '#5AAAEE', // [reuse] --ec-accent dark
-  disabled: 'rgba(232,238,248,0.08)',
-  disabledInk: 'rgba(232,238,248,0.38)',
-  disabledLine: 'rgba(232,238,248,0.24)',
+  // UNDECIDED TOKEN 2 OF 4, RESOLVED: GEMINI BLUE, THE DASHBOARD'S OWN.
+  //
+  // .uml-lift-blue is the teacher option on the role selector -- a `4px 4px 0`
+  // block plus a 12% wash (RoleSelect.tsx:105). /login-only, so /start never
+  // met it and start-dark.ts records no decision either way.
+  //
+  // #6BADDA Sky Blue becomes DASH_DARK.link #6E9DC8 Gemini Blue: the same
+  // family, one step along, and a value this product already publishes for dark
+  // surfaces rather than a fifth blue minted here. dashboard-theme.ts:369
+  // measures it 6.24 on pageBg and 5.66 on cardBg -- comfortably legible as a
+  // solid block on the new ground, which is the job it has here.
+  //
+  // The wash is composed FROM that same constant rather than typed out, so the
+  // block and its tint cannot drift to two different blues.
+  blue: DASH_DARK.link,
+  tintAmber: DASH_DARK.rowHoverBg,
+  tintBlue: withAlpha(DASH_DARK.link, 0.12),
+  // UNDECIDED TOKEN 3 OF 4, RESOLVED: THE PILL INVERTS AGAINST THE NEW GROUND.
+  //
+  // This is the ES/EN toggle's selected state (LoginChrome.tsx:49-51): fill in
+  // the ink colour, label in the ground colour. toggleOnInk was #0C1120 -- the
+  // OLD login navy -- so after the ground moved it would have been the one
+  // orphaned reference to a colour no longer anywhere on the page: a cool-white
+  // pill carrying navy text on a warm neutral bar.
+  //
+  // The relationship is preserved and re-pointed at the new pair, so the pill
+  // still reads as ink-and-ground inverted. #17171A on #EDECE7 measures 15.12:1.
+  toggleOn: DASH_DARK.ink,
+  toggleOnInk: DASH_DARK.pageBg,
+  // Sized to .42 for WCAG 1.4.11: this is the resting edge of a real control,
+  // and the dashboard has no equivalent token to repoint it at -- panelEdge
+  // would drop it to 1.45. Kept, for the reason start-dark.ts:53-56 gives.
+  toggleOffLine: LIFT_RULE,
+  // Already #5AAAEE, which is DASH_DARK.focus to the byte. Left as a literal so
+  // this retune's diff shows only what actually moved.
+  focus: '#5AAAEE', // [reuse] --ec-accent dark, === DASH_DARK.focus
+  // UNDECIDED TOKEN 4 OF 4, RESOLVED: HUE FOLLOWS, INTENT DOES NOT MOVE.
+  //
+  // The header of this file records these three as deliberately below their
+  // nominal targets (~3.0) because WCAG 1.4.3 exempts disabled controls
+  // outright. That decision is carried, not revisited: THE ALPHAS ARE
+  // UNCHANGED at .08 / .38 / .24, so these sit exactly as far from their
+  // ground as they did before.
+  //
+  // Only the base colour moves, off the cool #E8EEF8 and onto the dashboard's
+  // warm ink, because a cool-white disabled control on a warm neutral card is
+  // the same family mismatch this whole retune exists to remove. Changing the
+  // alphas would have been changing the intent, and that is a separate call.
+  disabled: withAlpha(DASH_DARK.ink, 0.08),
+  disabledInk: withAlpha(DASH_DARK.ink, 0.38),
+  disabledLine: withAlpha(DASH_DARK.ink, 0.24),
   error: '#E07B72', // [reuse] --ec-red dark
   success: '#5BC48A', // [reuse] --ec-green dark
 };

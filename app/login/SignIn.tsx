@@ -140,9 +140,27 @@ export function SignIn({ role }: { role: 'student' | 'teacher' }) {
           style={{
             width: '100%',
             padding: '16px 20px',
-            // Cream rather than the import's orange, and its own border token:
-            // --uml-border is near-invisible on a cream fill in dark mode.
-            border: `1px solid ${L.creamLine}`,
+            // Cream rather than the import's orange.
+            //
+            // --uml-border, NOT --uml-cream-line, and the comment that used to
+            // sit here said the opposite for a good reason that expired on
+            // 2026-08-29. While --uml-cream was #E8E0CF, a bright strip in both
+            // themes, the two tokens were the right way round: #111111 gave the
+            // button a 14.38:1 outline and --uml-border would have been
+            // near-invisible on that light fill.
+            //
+            // The dashboard retune moved --uml-cream to the dashboard's inset
+            // fill #26262B, which inverts the arithmetic on this one element:
+            // measured after the swap, #111111 on #26262B is 1.25:1 -- the
+            // design's signature hard rule, gone, on the primary control of the
+            // sign-in screen. --uml-border is 3.40:1 on the same fill.
+            //
+            // --uml-cream-line is NOT wrong and must not be "fixed" to follow:
+            // its other consumers paint it on the orange CTA, where a dark
+            // outline is still correct in both themes. One token cannot be both
+            // a dark rule on orange and a light rule on near-black, which is
+            // exactly the split WelcomeIn.tsx:147-148 already records.
+            border: `1px solid ${L.border}`,
             background: L.cream,
             color: L.creamInk,
             font: `700 16px/1 ${FONT_DISPLAY}`,
