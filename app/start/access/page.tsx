@@ -1,31 +1,411 @@
 'use client';
 
+import { useState } from 'react';
 import { FONT_HEADING, FONT_BODY } from '../../components/fonts';
-import { L, LOGIN_CSS } from '../../login/login-theme';
-import { Eyebrow } from '../../login/LoginChrome';
+import { C } from '../../components/curriculum-theme';
+import { L, LOGIN_CSS, FONT_MONO } from '../../login/login-theme';
 import { StartChrome } from '../StartChrome';
+import { StepIndicator } from '../StepIndicator';
+import {
+  GOOGLE_OAUTH_CLIENT_ID,
+  HAS_OAUTH_CLIENT_ID,
+  BOOKING_URL,
+  SUPPORT_EMAIL,
+} from '../../lib/onboarding-config';
 
-// The district access branch, linked from /start.
+// Step 2 of teacher onboarding: the district access branch, linked from /start.
 //
-// Same skin as the rest of the onboarding flow: StartChrome, which is
-// LoginChrome's structure, and every colour a var(--uml-*) reference resolved by
-// login-theme.ts. No hexes in this file.
+// Replaces the placeholder that shipped with the /start redesign. Two states on
+// one route, because they are one question and its answer rather than two
+// destinations, and a teacher who picks the wrong one should be able to go back
+// without a navigation.
 //
-// A PLACEHOLDER, DELIBERATELY. It exists so the link on step 1 has somewhere to
-// land and so the route is real before the helper is built. What goes here later
-// is the actual admin approval path: the OAuth client id a Workspace admin needs
-// to allow-list, a copyable request to send them, and the automatic routing from
-// a failed sign in.
+//   A  "is your district new to UnpackMath?"   the triage
+//   B  "send this to your district's admin"    the actual helper
 //
-// THAT ROUTING DOES NOT EXIST YET, which is why /start no longer promises it. A
-// blocked sign in lands on /login with an error parameter the role selector never
-// reads. Closing that is its own task against app/auth/callback/route.ts, which
-// this branch does not touch.
+// ─── WHAT THIS PAGE DELIBERATELY DOES NOT DO ────────────────────────────────
 //
-// No gate on purpose. A teacher who cannot get through Google sign in is by
-// definition signed out, so anything that required a session would be a page
-// they could never reach.
+// It does not tell the teacher we have "flagged your district internally", and
+// that line was cut rather than reworded. There is no such backend: no table, no
+// queue, no alert, nothing that would make the sentence true. Printing it would
+// be a promise the product cannot keep, and the teacher would reasonably stop
+// chasing their admin on the strength of it. Everything on this page is
+// something the teacher can act on themselves right now.
+//
+// It also does not promise that a failed sign in routes here automatically.
+// Nothing does that yet; a blocked sign in lands on /login with an error
+// parameter the role selector never reads. That is its own task against
+// app/auth/callback/route.ts, which this branch does not touch.
+//
+// ─── NO GATE, ON PURPOSE ─────────────────────────────────────────────────────
+//
+// A teacher who cannot get through Google sign in is by definition signed out,
+// so anything requiring a session would be a page they could never reach.
+
+// The message a teacher sends their admin. One definition, because it is used by
+// the copy button, the mailto body and the visible block, and three copies would
+// drift the first time the wording is tuned.
+const ADMIN_MESSAGE =
+  `Hi, I'd like to add UnpackMath for our math team. It's a TSIA2 prep tool and ` +
+  `needs to be approved in Google Workspace before teachers can sign in.`;
+
+const MAIL_SUBJECT = 'Approving UnpackMath in Google Workspace';
+
+/** The booking control's target. A real scheduling link when one is configured,
+ *  otherwise mail to the support alias asking for the same thing, so the button
+ *  is never a dead control. See app/lib/onboarding-config.ts. */
+const BOOKING_HREF = BOOKING_URL
+  ? BOOKING_URL
+  : `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent('Help with district access for UnpackMath')}`;
+
+const ADMIN_MAILTO =
+  `mailto:?subject=${encodeURIComponent(MAIL_SUBJECT)}&body=${encodeURIComponent(ADMIN_MESSAGE)}`;
+
+/** A small tracked section label, matching the mono labels on /login's bar. */
+const SECTION_LABEL: React.CSSProperties = {
+  font: `400 11px/1 ${FONT_MONO}`,
+  letterSpacing: '0.12em',
+  textTransform: 'uppercase',
+  color: L.inkMono,
+};
+
+/** Copy to clipboard with a two second acknowledgement. Returns false on the
+ *  browsers and contexts where the API is missing or refused, so the caller can
+ *  leave the text on screen to be selected by hand rather than claiming a copy
+ *  that did not happen. */
+function useCopy(): [boolean, (text: string) => void] {
+  const [copied, setCopied] = useState(false);
+  const copy = (text: string) => {
+    navigator.clipboard
+      ?.writeText(text)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      })
+      .catch(() => {
+        // Clipboard blocked, which happens over plain http and in some embedded
+        // browsers. The text is visible and selectable either way, so this
+        // degrades to "select it yourself" rather than to a broken button.
+      });
+  };
+  return [copied, copy];
+}
+
+// ─── Shared bits ─────────────────────────────────────────────────────────────
+
+function CardShell({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      style={{
+        background: L.card,
+        // The float: a flat fill and a hard 1px rule with the grid behind it.
+        // No shadow, no radius, exactly as on /login and /start.
+        border: `1px solid ${L.border}`,
+        borderRadius: 0,
+        padding: '28px 24px 26px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 20,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function H1({ children }: { children: React.ReactNode }) {
+  return (
+    <h1
+      style={{
+        margin: 0,
+        font: `600 clamp(24px, 5.6vw, 29px)/1.2 ${FONT_HEADING}`,
+        letterSpacing: '-0.02em',
+        color: L.ink,
+        textWrap: 'pretty',
+      }}
+    >
+      {children}
+    </h1>
+  );
+}
+
+function Sub({ children }: { children: React.ReactNode }) {
+  return (
+    <p style={{ margin: 0, font: `400 15px/1.65 ${FONT_BODY}`, color: L.ink2 }}>{children}</p>
+  );
+}
+
+function QuietLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a
+      href={href}
+      className="um-start-quiet"
+      style={{
+        font: `400 13px/1.5 ${FONT_BODY}`,
+        color: L.ink2,
+        textDecoration: 'none',
+      }}
+    >
+      {children}
+    </a>
+  );
+}
+
+// ─── State A: the triage ─────────────────────────────────────────────────────
+
+/** One of the two answers. A flat card that is entirely clickable, which is why
+ *  it is a button or an anchor rather than a div with an onClick. */
+function ChoiceCard({
+  title,
+  detail,
+  onClick,
+  href,
+}: {
+  title: string;
+  detail: string;
+  onClick?: () => void;
+  href?: string;
+}) {
+  const inner = (
+    <>
+      <span style={{ font: `700 15px/1.35 ${FONT_BODY}`, color: L.ink }}>{title}</span>
+      <span style={{ font: `400 13.5px/1.5 ${FONT_BODY}`, color: L.ink2 }}>{detail}</span>
+    </>
+  );
+  const style: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 5,
+    width: '100%',
+    textAlign: 'left',
+    padding: '16px 17px',
+    background: 'transparent',
+    border: `1px solid ${L.border}`,
+    borderRadius: 0,
+    cursor: 'pointer',
+    textDecoration: 'none',
+    boxSizing: 'border-box',
+  };
+
+  if (href) {
+    return (
+      <a href={href} className="um-choice" style={style}>
+        {inner}
+      </a>
+    );
+  }
+  return (
+    <button type="button" onClick={onClick} className="um-choice" style={style}>
+      {inner}
+    </button>
+  );
+}
+
+function StateA({ onFirstTeacher }: { onFirstTeacher: () => void }) {
+  return (
+    <CardShell>
+      <H1>Is your district new to UnpackMath?</H1>
+      <Sub>
+        {`If you're the first teacher here, your district's Google admin may need to approve the app before you can sign in.`}
+      </Sub>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <ChoiceCard
+          title={`I'm the first teacher here`}
+          detail="Get the message to send your admin"
+          onClick={onFirstTeacher}
+        />
+        <ChoiceCard
+          title="Someone else already uses it"
+          detail={`You're good, sign in works normally`}
+          href="/start"
+        />
+      </div>
+
+      <QuietLink href="/start">Back to sign in</QuietLink>
+    </CardShell>
+  );
+}
+
+// ─── State B: the helper ─────────────────────────────────────────────────────
+
+function StateB({ onBack }: { onBack: () => void }) {
+  const [copiedMessage, copyMessage] = useCopy();
+  const [copiedId, copyId] = useCopy();
+
+  const actionStyle: React.CSSProperties = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '12px 16px',
+    border: `1px solid ${L.creamLine}`,
+    borderRadius: 0,
+    font: `700 14px/1 ${FONT_BODY}`,
+    textDecoration: 'none',
+    cursor: 'pointer',
+    boxSizing: 'border-box',
+  };
+
+  return (
+    <CardShell>
+      <H1>{`Send this to your district's Google admin`}</H1>
+      <Sub>One approval unlocks UnpackMath for every teacher in your district.</Sub>
+
+      {/* ─── The message ────────────────────────────────────────────────────
+          Rendered as selectable text inside a bordered block rather than a
+          textarea, so it reads as a quotation to send rather than a field to
+          fill in. It stays selectable by hand when the clipboard API is
+          unavailable. */}
+      <div
+        style={{
+          border: `1px solid ${L.border}`,
+          borderRadius: 0,
+          padding: '15px 16px',
+          background: L.ground,
+          font: `400 14px/1.65 ${FONT_BODY}`,
+          color: L.ink,
+        }}
+      >
+        {ADMIN_MESSAGE}
+      </div>
+
+      {/* ─── Admin console steps ───────────────────────────────────────── */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <span style={SECTION_LABEL}>In the Google Admin console</span>
+        <p style={{ margin: 0, font: `400 14px/1.65 ${FONT_BODY}`, color: L.ink2 }}>
+          Go to Security, then API controls, then App access control. Add UnpackMath as Trusted.
+        </p>
+      </div>
+
+      {/* ─── OAuth client ID ────────────────────────────────────────────────
+          Display only. When no ID is configured the field says so plainly and
+          the copy control is disabled, rather than presenting an empty box that
+          looks copyable. A placeholder here would be worse than nothing: an
+          admin would paste it into App access control, it would match no app,
+          and the approval would silently cover nothing. */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <span style={SECTION_LABEL}>OAuth client ID</span>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'stretch',
+            gap: 8,
+            flexWrap: 'wrap',
+          }}
+        >
+          <code
+            style={{
+              flex: '1 1 240px',
+              minWidth: 0,
+              border: `1px solid ${HAS_OAUTH_CLIENT_ID ? L.border : L.barLine}`,
+              borderRadius: 0,
+              padding: '11px 12px',
+              background: L.ground,
+              font: `400 12.5px/1.5 ${FONT_MONO}`,
+              color: HAS_OAUTH_CLIENT_ID ? L.ink : L.inkMono,
+              wordBreak: 'break-all',
+            }}
+          >
+            {HAS_OAUTH_CLIENT_ID ? GOOGLE_OAUTH_CLIENT_ID : 'Not published yet'}
+          </code>
+          <button
+            type="button"
+            disabled={!HAS_OAUTH_CLIENT_ID}
+            onClick={() => copyId(GOOGLE_OAUTH_CLIENT_ID)}
+            className="um-secondary"
+            style={{
+              ...actionStyle,
+              flex: '0 0 auto',
+              background: 'transparent',
+              color: HAS_OAUTH_CLIENT_ID ? L.ink : L.disabledInk,
+              borderColor: HAS_OAUTH_CLIENT_ID ? L.border : L.disabledLine,
+              cursor: HAS_OAUTH_CLIENT_ID ? 'pointer' : 'default',
+            }}
+          >
+            {copiedId ? 'Copied' : 'Copy'}
+          </button>
+        </div>
+        <span style={{ font: `400 12.5px/1.5 ${FONT_BODY}`, color: L.ink2 }}>
+          (client ID only, no secret needed)
+        </span>
+      </div>
+
+      {/* ─── Actions ────────────────────────────────────────────────────────
+          One primary and two secondaries. The primary is the orange fill the
+          rest of the flow uses; the other two carry the same hard rule with no
+          fill, so the hierarchy is a fill rather than a colour of type. */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <button
+          type="button"
+          onClick={() => copyMessage(ADMIN_MESSAGE)}
+          className="um-start-cta"
+          style={{ ...actionStyle, width: '100%', background: L.cta, color: L.ctaInk }}
+        >
+          {copiedMessage ? 'Copied' : 'Copy message'}
+        </button>
+
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+          <a
+            href={ADMIN_MAILTO}
+            className="um-secondary"
+            style={{
+              ...actionStyle,
+              flex: '1 1 150px',
+              background: 'transparent',
+              color: L.ink,
+              borderColor: L.border,
+            }}
+          >
+            Email my admin
+          </a>
+          <a
+            href={BOOKING_HREF}
+            className="um-secondary"
+            // A configured booking link is an external destination; the mailto
+            // fallback is not, and must not open a tab.
+            {...(BOOKING_URL ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            style={{
+              ...actionStyle,
+              flex: '1 1 150px',
+              background: 'transparent',
+              color: L.ink,
+              borderColor: L.border,
+            }}
+          >
+            {`We'll help, book 15 min`}
+          </a>
+        </div>
+      </div>
+
+      {/* Both escapes on one row. Stacked, two quiet links at the foot of a long
+          card read as clutter and neither gets noticed. */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+        <button
+          type="button"
+          onClick={onBack}
+          className="um-start-quiet"
+          style={{
+            padding: 0,
+            border: 'none',
+            background: 'transparent',
+            font: `400 13px/1.5 ${FONT_BODY}`,
+            color: L.ink2,
+            cursor: 'pointer',
+          }}
+        >
+          {`← That's not my situation`}
+        </button>
+        <QuietLink href="/start">Back to sign in</QuietLink>
+      </div>
+    </CardShell>
+  );
+}
+
+// ─── Route ───────────────────────────────────────────────────────────────────
+
 export default function DistrictAccessPage() {
+  const [stage, setStage] = useState<'triage' | 'helper'>('triage');
+
   return (
     <>
       <style>{`
@@ -33,62 +413,35 @@ export default function DistrictAccessPage() {
         .um-start, .um-start * { box-sizing: border-box; }
         .um-start h1, .um-start h2 { font-family: ${FONT_HEADING}; }
         .um-start { font-family: ${FONT_BODY}; }
+        /* !important throughout, and it is load bearing: every control below
+           sets these properties as INLINE style props, and an inline
+           declaration outranks any stylesheet rule at any specificity without
+           it. Same trap and same fix as app/dashboard/dashboard-css.ts:43.
+
+           Backgrounds only. No transform and no box-shadow anywhere in this
+           flow. */
+        .um-start .um-choice:hover { background: ${L.tintAmber} !important; }
+        .um-start .um-secondary:hover { background: ${L.tintAmber} !important; }
+        .um-start .um-start-cta:not(:disabled):hover { background: ${C.sunsetHover} !important; }
         .um-start .um-start-quiet:hover { color: ${L.ink} !important; }
       `}</style>
 
       <StartChrome>
-        <div style={{ maxWidth: 440, margin: '0 auto' }}>
-          {/* The card floats on the grid the same way /login's do: a flat fill,
-              a hard 1px rule, no shadow, no radius. */}
-          <div
-            style={{
-              background: L.card,
-              border: `1px solid ${L.border}`,
-              borderRadius: 0,
-              padding: '30px 24px 26px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 18,
-            }}
-          >
-            <Eyebrow>District access</Eyebrow>
-
-            <h1
-              style={{
-                margin: 0,
-                font: `600 clamp(25px, 6vw, 30px)/1.18 ${FONT_HEADING}`,
-                letterSpacing: '-0.02em',
-                color: L.ink,
-                textWrap: 'pretty',
-              }}
-            >
-              Check your district access
-            </h1>
-
-            <p style={{ margin: 0, font: `400 15px/1.7 ${FONT_BODY}`, color: L.ink2 }}>
-              Some districts block new apps in Google Workspace by default. If that is how your
-              district is set up, signing in with your school Google account will fail until a
-              Workspace administrator approves UnpackMath.
-            </p>
-
-            <p style={{ margin: 0, font: `400 15px/1.7 ${FONT_BODY}`, color: L.ink2 }}>
-              This is usually a small change on their side, and it only has to happen once for your
-              whole campus. Full instructions to send your administrator are coming here shortly.
-            </p>
-
-            <hr style={{ margin: '4px 0 0', border: 'none', borderTop: `1px solid ${L.barLine}` }} />
-
-            <a
-              href="/start"
-              style={{
-                font: `700 14px/1.5 ${FONT_BODY}`,
-                color: L.amber,
-                textDecoration: 'none',
-              }}
-            >
-              {`← Back to your trial`}
-            </a>
-          </div>
+        <div
+          style={{
+            maxWidth: 440,
+            margin: '0 auto',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 22,
+          }}
+        >
+          <StepIndicator step={2} label="District access" />
+          {stage === 'triage' ? (
+            <StateA onFirstTeacher={() => setStage('helper')} />
+          ) : (
+            <StateB onBack={() => setStage('triage')} />
+          )}
         </div>
       </StartChrome>
     </>

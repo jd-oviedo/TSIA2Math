@@ -9,7 +9,7 @@ import { FONT_HEADING, FONT_BODY } from '../components/fonts';
 // a fresh hex.
 import { C } from '../components/curriculum-theme';
 import { L, LOGIN_CSS } from '../login/login-theme';
-import { Eyebrow } from '../login/LoginChrome';
+import { StepIndicator } from './StepIndicator';
 import { StartChrome, BAR_LABEL } from './StartChrome';
 import {
   TRIAL_PRICE,
@@ -182,7 +182,10 @@ function SignedOutView() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
       {/* /login's own eyebrow, rule and all, rather than a second small-label
           treatment invented for this screen. */}
-      <Eyebrow>Step 1 of 5</Eyebrow>
+      {/* Was /login's <Eyebrow>. Swapped for the shared slim indicator so step 1
+          and step 2 show progress the same way; an eyebrow on one screen and a
+          progress track on the next reads as two different flows. */}
+      <StepIndicator step={1} label="Start your trial" />
 
       <h1
         style={{

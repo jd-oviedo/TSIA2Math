@@ -9,6 +9,7 @@ import {
   writeEntitlement,
 } from "../../lib/stripe-activation";
 import WelcomeClient from "./WelcomeClient";
+import WelcomeIn from "./WelcomeIn";
 
 // The Stripe SDK needs Node crypto, and the whole page turns on a query
 // parameter, so there is nothing here to prerender.
@@ -139,5 +140,21 @@ export default async function WelcomePage({
 
   await writeEntitlement(admin, user.id, write, session.created * 1000, "teacher/welcome");
 
-  redirect("/teacher");
+  // ACTIVATION IS COMPLETE AT THIS LINE. Everything above ran in the order it
+  // always did: linkCustomerId, entitlementFromCheckout, the guarded role write,
+  // and writeEntitlement. Nothing about the sequence, its arguments, or its
+  // ordering changed.
+  //
+  // What changed is only what happens AFTER it. This used to be
+  // redirect("/teacher"), which dropped a buyer who had just paid onto a
+  // dashboard with no acknowledgement that anything had happened. It is now the
+  // "You're in" interstitial, whose own CTA goes to /teacher.
+  //
+  // THIS IS THE ONLY REDIRECT ON THIS PAGE THAT BECAME A RENDER. The five others
+  // above are failure and mismatch paths -- no session id, an unretrievable
+  // session, an unpaid session, someone else's receipt, and an unrecognised
+  // payment link -- and every one of them stays a redirect. None of those
+  // visitors bought anything on this path, so none of them may be shown a screen
+  // that congratulates them on a purchase.
+  return <WelcomeIn />;
 }
