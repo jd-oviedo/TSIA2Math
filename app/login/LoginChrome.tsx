@@ -146,7 +146,25 @@ export function LoginChrome({
         </div>
       </header>
 
+      {/* ─── THE OPT-IN, AND IT IS ON THE SHELL HERE ON PURPOSE ───────────
+          /start puts .um-motion on a wrapper inside its shell so that a new
+          onboarding page does not inherit motion silently. This shell makes
+          the opposite call, for a reason that only applies here: LoginChrome
+          has exactly two consumers, SignIn and RoleSelect, and BOTH are in
+          this wave. There is no third surface to opt in by accident.
+
+          What putting it on a wrapper inside each screen would have cost is
+          the CHANGE ROLE link below. It is rendered by this shell, inside
+          <main>, above whatever the screen passes as children -- so a wrapper
+          in SignIn could not reach it, and at narrow widths it would sit at
+          full opacity while the column beneath it glided in. That is the exact
+          fault WelcomeIn.tsx records for its fine print: one element arriving
+          first and alone reads as a fault rather than as restraint.
+
+          The header bar and the footer are OUTSIDE this element and stay
+          still, which is correct. Chrome does not animate; content does. */}
       <main
+        className="um-motion"
         style={{
           flex: 1,
           padding: '48px 16px 64px',
@@ -158,7 +176,13 @@ export function LoginChrome({
         {showChangeRole && (
           // The narrow-width home for the back affordance. Both copies are
           // always rendered and CSS shows exactly one; see login-theme.ts.
-          <div style={{ maxWidth: 520, margin: '0 auto 20px' }}>
+          //
+          // The entrance is on this wrapper and not on the anchor, which is the
+          // standing rule paying off in an unobvious place: .uml-role-incol is
+          // `display: none` above 430px, and an animation on a display:none
+          // element is inert. Animating the wrapper means the beat is the same
+          // whether or not the link inside it is the copy CSS chose to show.
+          <div className="um-fade-up" style={{ maxWidth: 520, margin: '0 auto 20px' }}>
             <ChangeRole lang={lang} className="uml-role-incol" />
           </div>
         )}
@@ -194,10 +218,17 @@ export function LoginChrome({
   );
 }
 
-/** The mono eyebrow with its 22x1px rule, from both 1a and 1d. */
-export function Eyebrow({ children }: { children: ReactNode }) {
+/** The mono eyebrow with its 22x1px rule, from both 1a and 1d.
+ *
+ *  `className` is a pass-through for the motion system's .um-fade-up. A class
+ *  rather than a wrapper because the eyebrow is a direct child of a .um-stagger
+ *  container on both screens, and the delay rules select direct children only.
+ *  Nothing in here transforms or hovers, so there is no collision to route
+ *  around. */
+export function Eyebrow({ className, children }: { className?: string; children: ReactNode }) {
   return (
     <div
+      className={className}
       style={{
         display: 'flex',
         alignItems: 'center',

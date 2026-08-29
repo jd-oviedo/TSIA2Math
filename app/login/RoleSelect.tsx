@@ -35,7 +35,9 @@ export function RoleSelect() {
 
   return (
     <LoginChrome lang={lang} setLang={setLang}>
+      {/* Three beats: eyebrow, headline, the pair of role rows. */}
       <div
+        className="um-stagger"
         style={{
           maxWidth: 520,
           margin: '0 auto',
@@ -44,9 +46,10 @@ export function RoleSelect() {
           gap: 26,
         }}
       >
-        <Eyebrow>{t(lang, 'signIn')}</Eyebrow>
+        <Eyebrow className="um-fade-up">{t(lang, 'signIn')}</Eyebrow>
 
         <h1
+          className="um-fade-up"
           style={{
             margin: 0,
             font: `${DISPLAY_WEIGHT} clamp(30px, 8vw, 40px)/1.12 ${FONT_DISPLAY}`,
@@ -58,7 +61,19 @@ export function RoleSelect() {
           {t(lang, 'roleHeadline')}
         </h1>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        {/* ─── THE WRAPPER FOR RoleSelect:105, AND IT ALREADY EXISTED ────────
+            Both rows carry .uml-lift / .uml-lift-blue, whose hover translates, so
+            the entrance must not land on the <Link> itself. It does not need a
+            NEW node to avoid that: this container is already the direct child of
+            the stagger and already wraps both rows, so putting .um-fade-up here
+            puts the entrance one level above the lifts rather than on top of
+            them. No extra div, and the DOM is unchanged from before this wave.
+
+            It also gives the right beat. The two rows are one choice, so they
+            arrive together as a pair; sequencing them 60ms apart would suggest an
+            order between two options that have none, and the second row would be
+            the last thing on the screen to settle. */}
+        <div className="um-fade-up" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <RoleRow
             href={loginHref(next, 'student', sessionId)}
             label={t(lang, 'student')}
@@ -71,7 +86,7 @@ export function RoleSelect() {
           />
         </div>
 
-        <p style={{ margin: 0, font: `400 13px/1.6 ${FONT_DISPLAY}`, color: L.ink2 }}>
+        <p className="um-fade-up" style={{ margin: 0, font: `400 13px/1.6 ${FONT_DISPLAY}`, color: L.ink2 }}>
           {t(lang, 'newHere')}{' '}
           {/* The anonymous CAT, confirmed ungated: /adaptive-test sits outside
               the /dashboard tree, has no server redirect, and reads the session
