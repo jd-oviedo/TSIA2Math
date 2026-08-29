@@ -14,6 +14,7 @@ import {
 } from '../../lib/onboarding-config';
 import {
   ADMIN_MESSAGE_INTRO,
+  ADMIN_MESSAGE_LEAD,
   ADMIN_MESSAGE_STEPS,
   ADMIN_MESSAGE_DETAILS_LABEL,
   ADMIN_MESSAGE_DETAILS,
@@ -285,6 +286,7 @@ function StateB({ onBack }: { onBack: () => void }) {
         }}
       >
         <p style={{ margin: 0 }}>{ADMIN_MESSAGE_INTRO}</p>
+        <p style={{ margin: 0 }}>{ADMIN_MESSAGE_LEAD}</p>
 
         <ol style={{ margin: 0, paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 8 }}>
           {ADMIN_MESSAGE_STEPS.map((step) => (
