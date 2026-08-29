@@ -9,6 +9,7 @@ import { FONT_HEADING, FONT_BODY } from '../components/fonts';
 // a fresh hex.
 import { C } from '../components/curriculum-theme';
 import { L, LOGIN_CSS } from '../login/login-theme';
+import { MOTION_CSS } from '../motion';
 import { StepIndicator } from './StepIndicator';
 import { StartChrome, BAR_LABEL } from './StartChrome';
 import {
@@ -139,7 +140,17 @@ const TRACKED: React.CSSProperties = {
 // buyer to an unchanged page with no acknowledgement that nothing was charged.
 function CanceledNotice() {
   return (
+    // Beat 0. It sits ABOVE the stagger container rather than inside it, so it
+    // takes .um-fade-up's 0ms fallback delay and lands with the first beat of
+    // the view below it. Deliberate: the notice and the eyebrow under it are
+    // both "top of the page", and giving the notice a slot of its own would
+    // push every beat of the actual screen back by one.
+    //
+    // NOT left unanimated. A notice painted at full opacity while the column
+    // beneath it glides in reads as the page failing to finish loading, which
+    // is the same trap WelcomeIn.tsx records for its fine print.
     <p
+      className="um-fade-up"
       style={{
         margin: '0 0 22px',
         padding: '11px 13px',
@@ -179,15 +190,22 @@ function SignedOutView() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+    // The stagger container, and the longest sequence in the wave: EIGHT direct
+    // children, so this is the one surface where the tail clamp actually fires.
+    // Measured off the built page, the delays run
+    // 0 / 60 / 120 / 180 / 240 / 300 / 300 / 300ms -- children six, seven and
+    // eight all land together on the clamp instead of running on to 420ms.
+    // Total settle is 900ms rather than the 1.02s an unclamped ramp would give.
+    <div className="um-stagger" style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
       {/* /login's own eyebrow, rule and all, rather than a second small-label
           treatment invented for this screen. */}
       {/* Was /login's <Eyebrow>. Swapped for the shared slim indicator so step 1
           and step 2 show progress the same way; an eyebrow on one screen and a
           progress track on the next reads as two different flows. */}
-      <StepIndicator step={1} label="Start your trial" />
+      <StepIndicator className="um-fade-up" step={1} label="Start your trial" />
 
       <h1
+        className="um-fade-up"
         style={{
           margin: 0,
           font: `600 clamp(28px, 7vw, 34px)/1.15 ${FONT_HEADING}`,
@@ -199,7 +217,7 @@ function SignedOutView() {
         {`Start your ${TRIAL_DAYS}-day trial for ${TRIAL_PRICE}`}
       </h1>
 
-      <p style={{ margin: 0, font: `400 15px/1.65 ${FONT_BODY}`, color: L.ink2 }}>
+      <p className="um-fade-up" style={{ margin: 0, font: `400 15px/1.65 ${FONT_BODY}`, color: L.ink2 }}>
         {/* A template literal rather than JSX text, and that is not style.
             Written as JSX text across two source lines, the space after the
             interpolated price is stripped by the JSX whitespace rules and the
@@ -208,11 +226,21 @@ function SignedOutView() {
         {`Full teacher access. Just ${TRIAL_PRICE} to start, and we'll remind you before it renews.`}
       </p>
 
+      {/* THE ENTRANCE IS ON THE BUTTON ITSELF, AND THAT IS CHECKED RATHER
+          THAN ASSUMED. The wrapper rule this system carries applies where an
+          entrance and a TRANSFORM hover would land on one node. This flow
+          carries no .uml-lift by decision -- StartClient's <style> block below
+          says so explicitly -- and .um-start-cta:hover paints `background`
+          only. Nothing here transforms on hover, so there is no second
+          transform to collide with and a wrapper would be an empty box.
+
+          If a lift is ever added to this control, the entrance moves to a
+          wrapper the same day. */}
       <button
         type="button"
         onClick={handleGoogleLogin}
         disabled={loading}
-        className="um-start-cta"
+        className="um-start-cta um-fade-up"
         style={ctaStyle(loading)}
       >
         {/* The white chip. Square, like everything else on this surface. */}
@@ -236,14 +264,18 @@ function SignedOutView() {
       {/* THE RENEWAL DISCLOSURE FOR THIS VIEW, and the only copy of it here. A
           trial that converts has to say so before the buyer pays. The signed in
           view states the same terms in its card bullets instead. */}
-      <p style={{ margin: 0, font: `400 13px/1.6 ${FONT_BODY}`, color: L.ink2 }}>
+      <p className="um-fade-up" style={{ margin: 0, font: `400 13px/1.6 ${FONT_BODY}`, color: L.ink2 }}>
         {`You'll be charged ${TRIAL_PRICE} today, then ${RENEWAL_PRICE}/month unless you cancel. Cancel any time from your dashboard.`}
       </p>
 
-      <hr style={{ margin: '8px 0 0', border: 'none', borderTop: `1px solid ${L.barLine}` }} />
+      {/* The rule is a stagger child like everything else, so it is given a
+          class rather than left to paint instantly under beats that are still
+          arriving. */}
+      <hr className="um-fade-up" style={{ margin: '8px 0 0', border: 'none', borderTop: `1px solid ${L.barLine}` }} />
 
       <a
         href="/start/access"
+        className="um-fade-up"
         style={{
           font: `700 14px/1.5 ${FONT_BODY}`,
           color: L.amber,
@@ -261,7 +293,7 @@ function SignedOutView() {
           parameter the role selector never reads. The promise comes back when
           the routing ships in app/auth/callback, which this branch does not
           touch. */}
-      <p style={{ margin: '-10px 0 0', font: `400 13px/1.6 ${FONT_BODY}`, color: L.ink2 }}>
+      <p className="um-fade-up" style={{ margin: '-10px 0 0', font: `400 13px/1.6 ${FONT_BODY}`, color: L.ink2 }}>
         Some districts block new apps in Google Workspace.
       </p>
     </div>
@@ -278,7 +310,13 @@ function SignedInView() {
   ];
 
   return (
+    // ONE BEAT FOR THE WHOLE CARD, and the internals deliberately do not
+    // stagger against each other. Same call WelcomeIn.tsx makes for its access
+    // card: a strip, a headline, three bullets and a price row sequencing
+    // individually would read as the card assembling itself rather than
+    // arriving, and this is the screen where someone is about to be charged.
     <div
+      className="um-fade-up"
       style={{
         background: L.card,
         // THE FLOAT. A hard 1px rule between a flat fill and the graph paper
@@ -422,6 +460,7 @@ export default function StartClient({
           flow is shadow free by decision. */}
       <style>{`
         ${LOGIN_CSS}
+        ${MOTION_CSS}
         .um-start, .um-start * { box-sizing: border-box; }
         .um-start h1, .um-start h2 { font-family: ${FONT_HEADING}; }
         .um-start { font-family: ${FONT_BODY}; }
@@ -439,9 +478,24 @@ export default function StartClient({
       `}</style>
 
       <StartChrome>
-        <div style={{ maxWidth: COLUMN, margin: '0 auto' }}>
-          {canceled && <CanceledNotice />}
-          {signedIn ? <SignedInView /> : <SignedOutView />}
+        {/* ─── THE OPT-IN ───────────────────────────────────────────────────
+            Lock 1 of the two-lock system. Every rule in MOTION_CSS is written
+            as a strict descendant of .um-motion, so this one class is what
+            makes the classes below paint anything at all.
+
+            It is on a wrapper INSIDE StartChrome rather than on StartChrome
+            itself, which is the same call WelcomeIn.tsx made and the reason it
+            gave: StartChrome is shared by /start, /start/access and anything
+            added to this flow later, and a surface should opt itself in rather
+            than inherit motion from the shell it happens to render in.
+
+            Layout neutral: <main> lays out a full-width block either way, and
+            the column below keeps its own maxWidth and auto margins. */}
+        <div className="um-motion">
+          <div style={{ maxWidth: COLUMN, margin: '0 auto' }}>
+            {canceled && <CanceledNotice />}
+            {signedIn ? <SignedInView /> : <SignedOutView />}
+          </div>
         </div>
       </StartChrome>
     </>

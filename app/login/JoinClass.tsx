@@ -40,10 +40,19 @@ const REASON_COPY: Record<string, CopyKey> = {
 export function JoinClass({
   lang,
   onConfirmedChange,
+  className,
 }: {
   lang: Lang;
   /** Told when a class is confirmed, so the sign-in button can flag the intent. */
   onConfirmedChange: (confirmed: boolean) => void;
+  /** Pass-through for the motion system's .um-fade-up, and nothing else.
+   *
+   *  It lands on the <section> below, which is DELIBERATELY not the Check
+   *  button: that button carries .uml-lift, whose hover translates, and an
+   *  entrance animating `transform` on the same node would suppress the lift
+   *  for the length of the entrance. Section and button are two nodes, so both
+   *  transforms are free to run. Do not move this onto the button. */
+  className?: string;
 }) {
   const [code, setCode] = useState('');
   const [phase, setPhase] = useState<Phase>('idle');
@@ -150,6 +159,7 @@ export function JoinClass({
 
   return (
     <section
+      className={className}
       style={{
         border: `1px solid ${L.border}`,
         background: L.card,

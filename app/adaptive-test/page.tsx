@@ -14,6 +14,7 @@ import { supabase } from "../lib/supabase";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import posthog from "posthog-js";
+import { SPIN_CSS } from '../motion';
 
 const MAX_ITEMS = 20;
 
@@ -218,9 +219,13 @@ useEffect(() => {
     return (
       <Shell>
         <div style={{ textAlign: "center", padding: "80px 0" }}>
-          <div style={{ width: "40px", height: "40px", border: "3px solid var(--ec-line)", borderTopColor: "var(--ec-accent)", borderRadius: "50%", margin: "0 auto 16px", animation: "spin 0.8s linear infinite" }} />
+          <div style={{ width: "40px", height: "40px", border: "3px solid var(--ec-line)", borderTopColor: "var(--ec-accent)", borderRadius: "50%", margin: "0 auto 16px", animation: "um-spin 0.8s linear infinite" }} />
           <p style={{ color: "var(--ec-ink-muted)", fontSize: "14px" }}>Loading question bank…</p>
-          <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+          {/* Was a local `@keyframes spin`. Retired for the shared name as
+              much as for the duplication: `spin` is generic enough that
+              anything else defining it would silently take over this loader,
+              because @keyframes resolve globally by name. */}
+          <style>{SPIN_CSS}</style>
         </div>
       </Shell>
     );

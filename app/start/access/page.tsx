@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { FONT_HEADING, FONT_BODY } from '../../components/fonts';
 import { C } from '../../components/curriculum-theme';
 import { L, LOGIN_CSS, FONT_MONO } from '../../login/login-theme';
+import { MOTION_CSS } from '../../motion';
 import { StartChrome } from '../StartChrome';
 import { StepIndicator } from '../StepIndicator';
 import {
@@ -98,9 +99,25 @@ function useCopy(): [boolean, (text: string) => void] {
 
 // ─── Shared bits ─────────────────────────────────────────────────────────────
 
-function CardShell({ children }: { children: React.ReactNode }) {
+// `className` is a pass-through for the motion system's .um-fade-up and
+// nothing else. Both states render through this shell, so putting the entrance
+// here is what makes State A and State B animate identically rather than each
+// growing its own copy.
+//
+// THE CARD IS ONE BEAT AND ITS CONTENTS DO NOT STAGGER. State B is a long card
+// -- a message block, a client ID row, three controls -- and sequencing those
+// against each other would read as the card assembling itself. Same call
+// WelcomeIn.tsx records for its own card.
+function CardShell({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) {
   return (
     <div
+      className={className}
       style={{
         background: L.card,
         // The float: a flat fill and a hard 1px rule with the grid behind it.
@@ -208,7 +225,7 @@ function ChoiceCard({
 
 function StateA({ onFirstTeacher }: { onFirstTeacher: () => void }) {
   return (
-    <CardShell>
+    <CardShell className="um-fade-up">
       <H1>Is your district new to UnpackMath?</H1>
       {/* POINTS AT STUDENTS, NOT AT THE TEACHER READING IT. Google Workspace
           blocks third-party apps for STUDENT accounts by default in most
@@ -258,7 +275,7 @@ function StateB({ onBack }: { onBack: () => void }) {
   };
 
   return (
-    <CardShell>
+    <CardShell className="um-fade-up">
       <H1>{`Send this to your district's Google admin`}</H1>
       {/* Students, matching the framing on state A and in the message itself. */}
       <Sub>One approval unlocks UnpackMath for every student in your district.</Sub>
@@ -461,6 +478,7 @@ export default function DistrictAccessPage() {
     <>
       <style>{`
         ${LOGIN_CSS}
+        ${MOTION_CSS}
         .um-start, .um-start * { box-sizing: border-box; }
         .um-start h1, .um-start h2 { font-family: ${FONT_HEADING}; }
         .um-start { font-family: ${FONT_BODY}; }
@@ -478,21 +496,36 @@ export default function DistrictAccessPage() {
       `}</style>
 
       <StartChrome>
-        <div
-          style={{
-            maxWidth: 440,
-            margin: '0 auto',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 22,
-          }}
-        >
-          <StepIndicator step={2} label="District access" />
-          {stage === 'triage' ? (
-            <StateA onFirstTeacher={() => setStage('helper')} />
-          ) : (
-            <StateB onBack={() => setStage('triage')} />
-          )}
+        {/* Lock 1, on a wrapper inside the shell rather than on StartChrome
+            itself, exactly as /start and the welcome screen do it. */}
+        <div className="um-motion">
+          <div
+            className="um-stagger"
+            style={{
+              maxWidth: 440,
+              margin: '0 auto',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 22,
+            }}
+          >
+            {/* Two beats: the indicator, then the card 60ms later.
+                THE STAGGER ALSO CARRIES THE STATE FLIP, which is a real
+                benefit rather than a side effect. StateA and StateB are
+                different component types at the same position, so React
+                unmounts one and mounts the other -- a fresh node, so
+                .um-fade-up runs again and the switch to the helper reads as
+                the new card arriving rather than the old one being swapped
+                under the cursor. The indicator does not remount and stays
+                still through the flip, which is correct: progress did not
+                change, the panel under it did. */}
+            <StepIndicator className="um-fade-up" step={2} label="District access" />
+            {stage === 'triage' ? (
+              <StateA onFirstTeacher={() => setStage('helper')} />
+            ) : (
+              <StateB onBack={() => setStage('triage')} />
+            )}
+          </div>
         </div>
       </StartChrome>
     </>

@@ -24,9 +24,30 @@ import { FONT_MONO } from '../login/login-theme';
  *  screen cannot claim to be step 2 of 4. */
 export const ONBOARDING_STEPS = 5;
 
-export function StepIndicator({ step, label }: { step: number; label?: string }) {
+// `className` exists for exactly one caller: the shared motion system's
+// .um-fade-up. It is a pass-through and not a styling hook -- the indicator's
+// own look stays entirely in the inline styles below, so a caller cannot
+// restyle it by handing it a class.
+//
+// A className rather than a wrapper <div> because this component is a direct
+// child of a .um-stagger container on both /start and /start/access, and the
+// stagger's delay rules select DIRECT children only. A wrapper would still
+// work, but it would put a layout-neutral box between the container and the
+// element that actually animates for no reason. There is no uml-lift here and
+// nothing inside this component transforms, so entrance and hover cannot land
+// on the same node.
+export function StepIndicator({
+  step,
+  label,
+  className,
+}: {
+  step: number;
+  label?: string;
+  className?: string;
+}) {
   return (
     <div
+      className={className}
       style={{ display: 'flex', flexDirection: 'column', gap: 9 }}
       role="group"
       aria-label={`Step ${step} of ${ONBOARDING_STEPS}${label ? `: ${label}` : ''}`}

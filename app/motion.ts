@@ -68,6 +68,58 @@
 // with no motion, which is the correct outcome and the one that is verified.
 
 /**
+ * The one shared spinner keyframe, and it is a SEPARATE EXPORT ON PURPOSE.
+ *
+ * ─── WHY IT IS NOT INSIDE MOTION_CSS ────────────────────────────────────────
+ *
+ * Its only consumers are loading spinners on the teacher dashboard, the student
+ * detail page and the adaptive test. Folding it into MOTION_CSS would mean
+ * those surfaces importing MOTION_CSS to get it, and that would put the whole
+ * two-lock entrance system -- the :root tokens, um-fade-in, um-fade-up, the
+ * stagger rules and the reduced-motion guard -- into the dashboard tree.
+ *
+ * Every one of those rules would be INERT there, because /teacher renders no
+ * .um-motion. But "inert because no element opted in" is a much weaker promise
+ * than "absent", and it is exactly the promise this file's header refuses to
+ * make: the dashboard is untouched as a fact about which files import what, not
+ * as a fact about which selectors currently fail to match. A separate export
+ * keeps that true. A surface that needs a spinning border gets a spinning
+ * border and nothing else.
+ *
+ * ─── WHY IT IS IN THIS FILE AT ALL ──────────────────────────────────────────
+ *
+ * Because @keyframes are global by name, so the thing that actually goes wrong
+ * with duplicated animation is a name collision, and the fix is one place that
+ * owns the names. That is what this module is. Splitting the spinner into its
+ * own file would give the codebase two keyframe registries and no reason to
+ * check the second one.
+ *
+ * ─── WHAT IT REPLACED ───────────────────────────────────────────────────────
+ *
+ * Four definitions of the same rotation, under two different names:
+ *
+ *   umspin   TeacherDashboardClient.tsx, students/shell.tsx, student/[id]/page.tsx
+ *   spin     adaptive-test/page.tsx
+ *
+ * All four bodies were `to { transform: rotate(360deg); }` and every consumer
+ * ran it at `0.8s linear infinite`, so the collapse is a rename. `spin` in
+ * particular was worth retiring on its own: it is a name generic enough that a
+ * third-party stylesheet or a future component could define it and silently
+ * change how the adaptive test's loader turns.
+ *
+ * NOTE ON `to`-ONLY: the implicit `from` is the element's own computed
+ * transform, which is what lets a spinner start from wherever it is rather than
+ * snapping to 0deg. Preserved exactly.
+ *
+ * NO REDUCED-MOTION GUARD HERE, DELIBERATELY. A spinner is not decoration; it
+ * is the only thing on screen saying the page is still working. Stopping it
+ * under prefers-reduced-motion would leave a frozen ring that reads as a hang.
+ * If these ever need a reduced-motion treatment it is a static "Loading" state,
+ * which is a design decision and not a find-and-replace.
+ */
+export const SPIN_CSS = `@keyframes um-spin { to { transform: rotate(360deg); } }`;
+
+/**
  * The tokens, the keyframe library, the two-lock opt-in rules, and the guard.
  *
  * Dropped into a surface's own <style> alongside whatever else it emits. Safe to

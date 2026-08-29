@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
 import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from "../components/fonts";
+import { MOTION_CSS } from '../motion';
 
 // The signed-out half of /claim: get them into a Google account so the server
 // component can hand the purchase to it.
@@ -71,10 +72,33 @@ export default function ClaimClient({ checkoutSessionId }: { checkoutSessionId: 
            the same reason: one colour, no theme switch, nothing to recompute. */
         body { margin: 0; background: ${NAVY} !important; }
         ${FONT_BASE_CSS}
-        @keyframes um-rise {
-          from { opacity: 0; transform: translateY(10px); }
-          to   { opacity: 1; transform: none; }
-        }
+        /* ─── THE LOCAL @keyframes um-rise IS GONE ────────────────────────
+           It was one of three byte-identical copies (ClaimClient, ClaimResult
+           and WelcomeClient). @keyframes are global BY NAME regardless of which
+           <style> defines them, so those three were never three scoped
+           animations -- they were one name defined three times, and it only
+           stayed harmless because the bodies happened to agree.
+
+           MOTION_CSS's um-fade-up has the same body, so this is a rename and
+           not a retune:
+
+             um-rise      from { opacity: 0; transform: translateY(10px); }
+             um-fade-up   from { opacity: 0; transform: translateY(var(--um-rise)); }
+
+           AND THAT var() IS WHY THE WHOLE OF MOTION_CSS IS EMITTED HERE rather
+           than just the keyframe. --um-rise is declared in MOTION_CSS's :root
+           block and it is 10px. Without that block the var would not resolve,
+           the 'transform' in the 'from' frame would compute to none, and the
+           element would fade in with no rise at all -- a silent half-migration
+           that looks almost right.
+
+           The rest of MOTION_CSS is inert on this page: every other rule in it
+           is a strict descendant of .um-motion, which this tree does not carry.
+           The entrance below stays an inline 'animation' shorthand with the
+           literal 'ease-out', NOT var(--um-ease-out) -- those are two different
+           curves (0,0,.58,1 against .4,0,.2,1) and swapping them would be a
+           retune. */
+        ${MOTION_CSS}
         @media (prefers-reduced-motion: reduce) {
           .um-phase { animation: none !important; }
         }
@@ -106,7 +130,7 @@ export default function ClaimClient({ checkoutSessionId }: { checkoutSessionId: 
             borderTop: `3px solid ${GOLD}`,
             borderRadius: 20,
             padding: "40px 36px 44px",
-            animation: "um-rise 600ms ease-out both",
+            animation: "um-fade-up 600ms ease-out both",
           }}
         >
           <div
