@@ -2,22 +2,54 @@ import { redirect } from "next/navigation";
 import { createClient } from "../lib/supabase-server";
 import { createAdminClient } from "../lib/supabase-admin";
 import { profileGrants } from "../lib/auth";
-import { loginHref } from "../lib/next-param";
-import { FONT_HEADING, FONT_BODY, FONT_BASE_CSS } from "../components/fonts";
+import StartClient from "./StartClient";
 
 export const dynamic = "force-dynamic";
 
-// The $1-trial start page: the app-side entry the marketing CTA links to.
+// The $1-trial start page: the app-side entry the marketing CTA links to, and
+// step 1 of the teacher onboarding flow.
 //
-// Account first, then money — a district OAuth block surfaces here, before
-// payment, not after. Signed out goes to the teacher sign-in with a return to
-// this page; signed in renders one button and the terms stated plainly. The
-// button links to /start/checkout, which is where the Stripe session is
-// actually created; see the note there for why the two are separate routes.
+// Account first, then money. A district OAuth block surfaces here, before
+// payment, not after. That principle is unchanged; what changed is that the page
+// now hosts the sign-in itself instead of delegating it.
+//
+// ─── THE GATE THAT WAS REMOVED, AND WHY IT WAS SAFE ──────────────────────────
+//
+// This page used to open with:
+//
+//     if (!user) {
+//       redirect(loginHref("/start", "teacher"));
+//     }
+//
+// so a signed out visitor never saw it. That is now gone, and the page renders
+// for everyone. Three things make that safe, and they are worth stating because
+// "a logged out visitor can now reach the page that sells something" is the
+// obvious worry:
+//
+//   1. IT GRANTED NOTHING. The redirect sent people to /login, and /login does
+//      not assign the teacher role either. It branches on ?role only to choose
+//      which screen to render (app/login/page.tsx:19-20). /auth/callback receives
+//      the same parameter and deliberately ignores it, under a comment block that
+//      records the day it stopped being a profile write.
+//
+//   2. ROLE IS WRITTEN IN EXACTLY TWO PLACES, both gated on a paid teacher plan:
+//      app/lib/stripe-activation.ts:279, inside the guarded entitlement UPDATE,
+//      and app/teacher/welcome/page.tsx:137, after a verified checkout. Neither
+//      is reachable from this page. Signing in here produces an ordinary account
+//      with no entitlement, which is exactly what signing in at /login produced.
+//
+//   3. THE GATE THAT ACTUALLY MATTERS IS STILL HERE. profileGrants below still
+//      runs server side against the service-role client, and /start/checkout
+//      repeats it independently before creating a Stripe session. An unentitled
+//      visitor reaching this page can do precisely one thing they could always
+//      do: start a checkout.
+//
+// Nothing about checkout, Stripe wiring, success_url or the charged amount is
+// touched by this file.
 //
 // ?canceled=1 is the Checkout Session's cancel_url. Same page, one extra line
-// saying no charge was made, so backing out of Stripe never loops into a
-// fresh checkout.
+// saying no charge was made, so backing out of Stripe never loops into a fresh
+// checkout.
 export default async function StartPage({
   searchParams,
 }: {
@@ -29,159 +61,21 @@ export default async function StartPage({
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) {
-    redirect(loginHref("/start", "teacher"));
+
+  // An already-entitled teacher has nothing to buy here. Only meaningful for a
+  // signed in visitor, so the admin round trip is skipped entirely when there is
+  // no session to check.
+  if (user) {
+    const admin = createAdminClient();
+    const { data: profile } = await admin
+      .from("profiles")
+      .select("plan, plan_status, access_until, subscription_status")
+      .eq("id", user.id)
+      .maybeSingle();
+    if (profile && profileGrants(profile, "teacher-dashboard", "start")) {
+      redirect("/teacher");
+    }
   }
 
-  // An already-entitled teacher has nothing to buy here.
-  const admin = createAdminClient();
-  const { data: profile } = await admin
-    .from("profiles")
-    .select("plan, plan_status, access_until, subscription_status")
-    .eq("id", user.id)
-    .maybeSingle();
-  if (profile && profileGrants(profile, "teacher-dashboard", "start")) {
-    redirect("/teacher");
-  }
-
-  return (
-    <>
-      <style>{`
-        * { box-sizing: border-box; }
-        /* !important for the same reason as /teacher/inactive: app/layout.tsx
-           paints the body from an INLINE style prop, and only !important
-           outranks an inline declaration. One colour, no theme switch. */
-        body { margin: 0; background: #0F1E35 !important; }
-        ${FONT_BASE_CSS}
-      `}</style>
-      <div
-        style={{
-          minHeight: "100vh",
-          background: "#0F1E35",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "40px 24px",
-          fontFamily: FONT_BODY,
-        }}
-      >
-        <div style={{ maxWidth: 480, width: "100%" }}>
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 6,
-              border: "1px solid rgba(198,138,47,0.45)",
-              color: "#E7BE7B",
-              fontSize: 9,
-              fontWeight: 700,
-              letterSpacing: 1.4,
-              padding: "3px 8px",
-              borderRadius: 5,
-              marginBottom: 24,
-            }}
-          >
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#C68A2F" }} />
-            TEACHER · PRO TRIAL
-          </div>
-
-          <h1
-            style={{
-              margin: "0 0 16px",
-              fontFamily: FONT_HEADING,
-              fontWeight: 600,
-              fontSize: 34,
-              letterSpacing: -0.5,
-              color: "#fff",
-              lineHeight: 1.15,
-            }}
-          >
-            Try Teacher Pro for $1.
-          </h1>
-
-          {canceled === "1" && (
-            <p
-              style={{
-                margin: "0 0 20px",
-                fontSize: 13,
-                color: "rgba(255,255,255,0.55)",
-                border: "1px solid rgba(255,255,255,0.15)",
-                borderRadius: 8,
-                padding: "10px 14px",
-                lineHeight: 1.6,
-              }}
-            >
-              Your checkout was canceled — no charge was made. Whenever you&apos;re ready, the
-              trial is right here.
-            </p>
-          )}
-
-          {/* The terms, stated plainly before any money moves. */}
-          <ul
-            style={{
-              margin: "0 0 28px",
-              padding: 0,
-              listStyle: "none",
-              display: "flex",
-              flexDirection: "column",
-              gap: 12,
-            }}
-          >
-            {[
-              "$1 today",
-              "7 days of full Teacher Pro — dashboard, worksheets, exports, all of it",
-              "Then $30/month unless you cancel. Cancel anytime from your dashboard.",
-            ].map((item) => (
-              <li
-                key={item}
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: 10,
-                  fontSize: 14,
-                  color: "rgba(255,255,255,0.75)",
-                  lineHeight: 1.6,
-                }}
-              >
-                <span style={{ color: "#C68A2F", marginTop: 2, flexShrink: 0 }}>—</span>
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-            {/* A plain link, not a form: /start/checkout owns session creation. */}
-            <a
-              href="/start/checkout"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                background: "#C68A2F",
-                color: "#fff",
-                textDecoration: "none",
-                fontWeight: 700,
-                fontSize: 15,
-                padding: "13px 24px",
-                borderRadius: 10,
-              }}
-            >
-              Start your 7-day trial →
-            </a>
-            <a
-              href="/dashboard"
-              style={{
-                textAlign: "center",
-                fontSize: 13,
-                color: "rgba(255,255,255,0.4)",
-                textDecoration: "none",
-              }}
-            >
-              Not now — go to the student dashboard instead
-            </a>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+  return <StartClient signedIn={user !== null} canceled={canceled === "1"} />;
 }
