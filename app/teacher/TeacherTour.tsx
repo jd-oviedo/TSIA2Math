@@ -247,6 +247,30 @@ function place(box: Box | null, cw: number, ch: number, vw: number, vh: number, 
 
 export const TOUR_STORAGE_KEY = 'um_teacher_tour_done';
 
+/** prefers-reduced-motion, as a React value.
+ *
+ *  A local copy of the hook at app/reporte/page.tsx:254 rather than an import:
+ *  that one is not exported, and hoisting it into a shared module would mean
+ *  editing reporte/page.tsx, which is outside this wave. Same shape, so the two
+ *  can be collapsed the day a third caller appears.
+ *
+ *  Starts false and corrects in an effect, which is the SSR-safe direction:
+ *  matchMedia does not exist on the server, and the first client paint of this
+ *  component is the tour opening, at which point the effect has already run.
+ *  The 'change' listener matters because the setting can be flipped while the
+ *  tour is open. */
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const on = () => setReduced(mq.matches);
+    on();
+    mq.addEventListener('change', on);
+    return () => mq.removeEventListener('change', on);
+  }, []);
+  return reduced;
+}
+
 export default function TeacherTour({
   compact,
   onStarted,
@@ -260,6 +284,7 @@ export default function TeacherTour({
   onStarted: () => void;
   onClose: () => void;
 }) {
+  const reduced = usePrefersReducedMotion();
   const [i, setI] = useState(0);
   const [box, setBox] = useState<Box | null>(null);
   const [vp, setVp] = useState({ w: 0, h: 0 });
@@ -460,9 +485,36 @@ export default function TeacherTour({
 
   const move = 'cubic-bezier(0.4, 0, 0.2, 1)';
   const fade = 'border-color 200ms linear, box-shadow 200ms linear';
-  const ringTransition = animate
-    ? `top 280ms ${move}, left 280ms ${move}, width 280ms ${move}, height 280ms ${move}, ${fade}`
-    : fade;
+
+  // ─── THE REDUCED-MOTION GUARD ─────────────────────────────────────────────
+  //
+  // WHY IT IS HERE AND NOT IN A STYLESHEET. Both of this component's moving
+  // parts set `transition` as an INLINE style prop, and no media query can
+  // reach an inline declaration. app/motion.ts's guard is also no help and is
+  // not meant to be: it is scoped to .um-motion, which the dashboard does not
+  // carry, and its header records the deliberate refusal to ship a blanket
+  // '* { animation: none }' that would reach across the product. So the read
+  // has to happen in JS, and this is the one dashboard-adjacent change in the
+  // wave that does it.
+  //
+  // IT SHORT-CIRCUITS BOTH TIERS, WHICH IS THE POINT. Routing `reduced` into
+  // the existing `animate` flag alone would only drop the 280ms move and leave
+  // `fade` -- itself a 200ms border-colour and box-shadow transition -- still
+  // running. `animate` is about scroll tracking, a different question, so it
+  // is left to answer only that and `reduced` is checked outside it.
+  //
+  // 'none' rather than a short duration: nothing here is hidden behind a
+  // transition, so removing them outright leaves every step landing instantly
+  // and fully painted. The spotlight still moves between steps, the card still
+  // repositions, the dim still appears -- they just arrive rather than glide.
+  const ringTransition = reduced
+    ? 'none'
+    : animate
+      ? `top 280ms ${move}, left 280ms ${move}, width 280ms ${move}, height 280ms ${move}, ${fade}`
+      : fade;
+  const cardTransition = reduced
+    ? 'none'
+    : `top 280ms ${move}, left 280ms ${move}, opacity 200ms linear`;
 
   return (
     <>
@@ -525,7 +577,7 @@ export default function TeacherTour({
           color: DASH.ink,
           outline: 'none',
           opacity: cardPos && phase === 'idle' ? 1 : 0,
-          transition: `top 280ms ${move}, left 280ms ${move}, opacity 200ms linear`,
+          transition: cardTransition,
         }}
       >
         <div
