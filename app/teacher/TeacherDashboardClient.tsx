@@ -25,6 +25,7 @@ import {
   type StrandBreakdown,
 } from "../lib/placement";
 import { STRAND_TINT } from "../lib/strands";
+import { SPIN_CSS } from '../motion';
 
 // ─── Types (match the API route response shapes) ─────────────────────────────
 
@@ -925,8 +926,11 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
 function Spinner() {
   return (
     <div style={{ textAlign: 'center', padding: '48px 0' }}>
-      <div style={{ width: 30, height: 30, border: '3px solid #E7E5DD', borderTopColor: '#C68A2F', borderRadius: '50%', margin: '0 auto', animation: 'umspin 0.8s linear infinite' }} />
-      <style>{`@keyframes umspin { to { transform: rotate(360deg); } }`}</style>
+      <div style={{ width: 30, height: 30, border: '3px solid #E7E5DD', borderTopColor: '#C68A2F', borderRadius: '50%', margin: '0 auto', animation: 'um-spin 0.8s linear infinite' }} />
+      {/* SPIN_CSS, not MOTION_CSS. The bare keyframe and nothing else: this file
+          is the teacher dashboard and the entrance system does not reach it.
+          See app/motion.ts for why the two are separate exports. */}
+      <style>{SPIN_CSS}</style>
     </div>
   );
 }

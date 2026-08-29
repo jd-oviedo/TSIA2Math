@@ -85,7 +85,7 @@ export default function GradebookClient({ studentId, classId }: { studentId: str
             borderTopColor: '#C68A2F',
             borderRadius: '50%',
             margin: '0 auto',
-            animation: 'umspin 0.8s linear infinite',
+            animation: 'um-spin 0.8s linear infinite',
           }}
         />
       </div>

@@ -3,6 +3,7 @@ import { BodyGround } from '../../components/BodyGround';
 import { DASH } from '../../components/dashboard-theme';
 import { FONT_BASE_CSS, FONT_BODY, FONT_HEADING } from '../../components/fonts';
 import type { TeacherClass } from './students-data';
+import { SPIN_CSS } from '../../motion';
 
 // The frame all three Build 3 pages sit in.
 //
@@ -44,7 +45,7 @@ export function StudentsShell({
         * { box-sizing: border-box; }
         body { margin: 0; -webkit-font-smoothing: antialiased; }
         ${FONT_BASE_CSS}
-        @keyframes umspin { to { transform: rotate(360deg); } }
+        ${SPIN_CSS}
         .um-visually-hidden {
           position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
           overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
