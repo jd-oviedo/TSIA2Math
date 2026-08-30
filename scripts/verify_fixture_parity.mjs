@@ -42,7 +42,7 @@ const sb = createClient(
 
 const { data: live, error } = await sb
   .from('curriculum_topics_public')
-  .select('topic_id, topic_name, related_strand, estimated_time_minutes, guided_notes, practice_items, practice_problems, mini_quiz')
+  .select('topic_id, topic_name, related_strand, estimated_time_minutes, objectives, guided_notes, practice_items, practice_problems, mini_quiz')
   .eq('course_id', COURSE)
   .eq('topic_id', TOPIC)
   .single();
@@ -94,6 +94,7 @@ check('estimated_time_minutes', live.estimated_time_minutes, fixture.estimated_t
 check('practice_problems.raw', live.practice_problems?.raw, fixture.practice_problems.raw);
 check('mini_quiz.raw', live.mini_quiz?.raw, fixture.mini_quiz.raw);
 check('practice_items (whole structure)', j(live.practice_items), j(fixture.practice_items));
+check('objectives', j(live.objectives), j(fixture.objectives));
 
 console.log('='.repeat(78));
 console.log(`fixture parity: ${TOPIC}`);
