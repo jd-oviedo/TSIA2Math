@@ -50,6 +50,7 @@ const RAIL_WIDTH = 264;
 const COLUMN_WIDTH = 788;
 
 export default function LessonBody({
+  objectives,
   sections,
   html,
   initialDone,
@@ -62,6 +63,17 @@ export default function LessonBody({
   practiceCount,
   practiceInteractive,
 }: {
+  // ALREADY RENDERED HTML, one entry per authored objective, not markdown.
+  // lesson/page.tsx runs each authored line through renderMarkdownWithMath on
+  // the server and unwraps the paragraph, so the KaTeX for any $...$ span is
+  // typeset before it gets here and this component stays free of remark.
+  // OPTIONAL, and not merely for defence. scripts/verify_lesson_dark.mjs
+  // generates a probe page that mounts this component and passes the props it
+  // knew about; a required prop here would break that harness's build, and the
+  // breakage would surface as a failed probe rather than as a type error,
+  // because the probe is a template string the type checker never sees.
+  // Undefined and empty are the same case anyway: render nothing.
+  objectives?: string[];
   // One entry per authored h5. Empty when the notes could not be split, and the
   // page renders `html` as a single card exactly as it did before sections
   // existed. No topic in the course reaches that today.
@@ -369,6 +381,116 @@ export default function LessonBody({
             gap: 14,
           }}
         >
+        {/* THE OBJECTIVES CARD.
+            First thing in the reading column, and deliberately ABOVE the
+            sentinel rather than beside or below it. The sentinel is what opens
+            the Next gate, and it fires on being scrolled into view; anything
+            rendered after it would let a student satisfy the gate without
+            reaching the end of the notes. Putting this above every section card
+            adds height BEFORE the sentinel, so the gate gets strictly harder to
+            trip, never easier. That is the one property this card must not
+            break, and it is the reason it is placed here and not next to the
+            handoff.
+
+            The only card on this column that is an actual PANEL. The section
+            cards are plain columns on the page ground (see the note on `card`),
+            so a bordered panel is what separates "what you are about to read"
+            from the reading itself. Flat by the house rule for this shell:
+            radius 0, hairline border, no shadow and no gradient. */}
+        {(objectives ?? []).length > 0 && (
+          <section
+            aria-labelledby="um-objectives-heading"
+            style={{
+              background: T.panel,
+              border: `1px solid ${T.hairline}`,
+              borderRadius: 0,
+              boxShadow: 'none',
+            }}
+          >
+            <div
+              style={{
+                padding: '16px 22px 13px',
+                borderBottom: `1px solid ${T.hairline}`,
+              }}
+            >
+              <h3
+                id="um-objectives-heading"
+                style={{
+                  margin: 0,
+                  font: `600 16px ${FONT_HEADING}`,
+                  lineHeight: 1.3,
+                  color: T.ink,
+                }}
+              >
+                In this lesson
+              </h3>
+              <p
+                style={{
+                  margin: '5px 0 0',
+                  font: `400 13.5px ${FONT_BODY}`,
+                  lineHeight: 1.5,
+                  color: T.muted,
+                }}
+              >
+                By the end, you will be able to
+              </p>
+            </div>
+
+            <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+              {(objectives ?? []).map((objective, i) => (
+                <li
+                  key={i}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: 12,
+                    padding: '12px 22px',
+                    // Between rows only. The header above already carries the
+                    // rule that closes it, so a border here on the first row
+                    // would double it, and one after the last would draw a rule
+                    // against the panel's own bottom edge.
+                    borderTop: i === 0 ? 'none' : `1px solid ${T.hairline}`,
+                  }}
+                >
+                  {/* A FILL, NOT A LABEL. Orange is a fill, a rule and the CTA
+                      on this surface and never text -- see the role-splitting
+                      note in curriculum-surface.ts, whose review step greps for
+                      `color: T.cta` and expects no hits. So the marker is a
+                      painted box carrying no glyph and no text, and the
+                      objective itself stays in T.ink where it clears contrast.
+                      aria-hidden because it is decoration: the <li> is what
+                      carries the item semantics. */}
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      flex: 'none',
+                      width: 6,
+                      height: 6,
+                      // Centres the marker on the first line of the objective:
+                      // 15px text at 1.6 is a 24px line box, so its middle is
+                      // 12px down, less half the marker.
+                      marginTop: 9,
+                      background: T.cta,
+                    }}
+                  />
+                  <div
+                    // minWidth 0 so a long typeset span shrinks inside the flex
+                    // row instead of setting its floor width.
+                    style={{
+                      minWidth: 0,
+                      font: `400 15px ${FONT_BODY}`,
+                      lineHeight: 1.6,
+                      color: T.ink,
+                      textWrap: 'pretty',
+                    }}
+                    dangerouslySetInnerHTML={{ __html: objective }}
+                  />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         {/* What is left of the design's mobile strip once everything needing an
             observer is taken out of it. Hidden above 760px, where the rail says
             the same thing. */}
