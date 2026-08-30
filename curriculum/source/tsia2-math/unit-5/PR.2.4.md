@@ -19,6 +19,14 @@ keywords: ["comparing distributions", "center and spread", "range", "interquarti
 
 ---
 
+#### **Learning Objectives**
+
+- Compare two data sets using both a measure of center and a measure of spread, recognizing that equal means or medians do not make sets alike.
+- Distinguish the interquartile range from the range when comparing box plots.
+- Identify when an extreme value pulls the mean away from the median, and describe a distribution's skew from the direction of that gap.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Questions, Asked in Order

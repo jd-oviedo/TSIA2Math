@@ -19,6 +19,14 @@ keywords: ["conditional probability", "given that", "two-way table", "row total"
 
 ---
 
+#### **Learning Objectives**
+
+- Calculate a conditional probability by restricting the total to the group named by the condition, not the grand total.
+- Distinguish P(A given B) from P(B given A), recognizing they use different denominators and are not interchangeable.
+- Build a row or column total from raw counts when a two-way table's margins are not printed.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Questions, Asked in Order

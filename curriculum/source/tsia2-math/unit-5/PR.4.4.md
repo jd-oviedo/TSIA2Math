@@ -19,6 +19,14 @@ keywords: ["conclusion", "association", "causation", "confounding", "extrapolati
 
 ---
 
+#### **Learning Objectives**
+
+- Distinguish a supported conclusion from an unsupported one that claims causation, direction, or certainty the data doesn't show.
+- Recognize confounding variables and distinguish an observational study from a randomized one when judging causal claims.
+- Identify when a prediction extrapolates beyond the observed range of x-values or generalizes beyond the population that was sampled.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Questions, Asked in Order

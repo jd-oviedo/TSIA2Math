@@ -21,6 +21,14 @@ keywords: ["box plot", "box and whisker", "quartile", "interquartile range", "me
 
 ---
 
+#### **Learning Objectives**
+
+- Identify all five marks of a box plot, distinguishing the median inside the box from the quartiles at its edges.
+- Calculate the range and interquartile range from the correct pair of marks.
+- Recognize that matching endpoints or whisker length do not indicate matching distributions, since each region of a box plot holds one quarter of the data.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Questions, Asked in Order

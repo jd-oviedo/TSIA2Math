@@ -19,6 +19,14 @@ keywords: ["categorical", "numerical", "discrete", "continuous", "bar graph", "h
 
 ---
 
+#### **Learning Objectives**
+
+- Classify a variable as categorical or numerical by testing whether arithmetic on its values means anything, not by whether it is written with digits.
+- Distinguish discrete numerical variables, which are counted, from continuous ones, which are measured.
+- Choose the display that matches the variable type and recognize that a mean cannot display variation.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Questions, Asked in Order

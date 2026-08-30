@@ -19,6 +19,14 @@ keywords: ["complement", "probability", "not", "at least one", "sample space", "
 
 ---
 
+#### **Learning Objectives**
+
+- Calculate the complement of an event as 1 minus the event's probability, and verify the pair sums to 1.
+- Identify whether a question asks for the event or its complement, since the wrong one is always among the answer choices.
+- Remove all parts of a multi-part event before subtracting when computing a complement.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Questions, Asked in Order

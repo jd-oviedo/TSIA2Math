@@ -19,6 +19,14 @@ keywords: ["scatterplot", "linear association", "positive association", "negativ
 
 ---
 
+#### **Learning Objectives**
+
+- Identify the direction of association, positive, negative, or none, from a scatterplot or table of points.
+- Judge the strength of an association by how tightly points cluster around a line, independent of the line's steepness or direction.
+- Recognize when a pattern is curved rather than linear, or when a trend is driven by a small number of outlier points.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Questions, Asked in Order

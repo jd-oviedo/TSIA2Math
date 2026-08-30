@@ -19,6 +19,14 @@ keywords: ["probability", "favorable outcomes", "total outcomes", "complement", 
 
 ---
 
+#### **Learning Objectives**
+
+- Calculate the probability of an event as favorable outcomes over total outcomes, verifying the total rather than dividing by the unfavorable count.
+- Combine outcomes correctly for "or" events, remove double-counted overlaps, and compute the complement for "not" events.
+- Solve backward from a given probability to find a missing count, and update both the numerator and denominator when items are added to or removed from a set.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Counting, Then One Division
