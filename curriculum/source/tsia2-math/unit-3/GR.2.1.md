@@ -19,6 +19,14 @@ keywords: ["perimeter", "polygon", "rectangle", "regular polygon", "irregular fi
 
 ---
 
+#### **Learning Objectives**
+
+- Calculate perimeter by summing all sides of regular, irregular, and multi-sided figures, tracking repeated values so none get lost.
+- Distinguish perimeter from area using the units and the verb in the question.
+- Work backward from a given perimeter to find a missing side, correctly halving before subtracting for rectangles and dividing by side count for regular polygons.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Walking the Fence

@@ -19,6 +19,14 @@ keywords: ["circumference", "circle", "radius", "diameter", "pi", "arc length", 
 
 ---
 
+#### **Learning Objectives**
+
+- Calculate circumference using C = 2πr or C = πd, choosing the formula that matches whether a radius or diameter was given.
+- Distinguish circumference from area by checking for square units.
+- Calculate arc length and sector/semicircle perimeter by applying the correct angle fraction and including straight edges when asked.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### The Distance Around

@@ -19,6 +19,14 @@ keywords: ["angle of elevation", "angle of depression", "ladder problem", "word 
 
 ---
 
+#### **Learning Objectives**
+
+- Translate a word problem into a labeled right triangle before applying the Pythagorean theorem or a trig ratio.
+- Solve two-step application problems by adding or subtracting a given offset after the trigonometry, distinguishing a height/position from a rise or change.
+- Solve two-observer/two-sighting problems as two separate triangles sharing one side, checking that the answer's direction makes sense.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Nothing New, Except the Sentence

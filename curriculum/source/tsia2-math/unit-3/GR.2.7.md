@@ -19,6 +19,14 @@ keywords: ["algebraic expression", "perimeter", "area", "volume", "distribute", 
 
 ---
 
+#### **Learning Objectives**
+
+- Write and simplify perimeter, area, and volume expressions with a variable dimension, distributing a multiplied factor to every term in a binomial.
+- Expand a squared binomial fully, including the middle term, rather than squaring each term separately.
+- Verify an algebraic expression by substituting a specific number and checking it against the geometric quantity it should represent.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### The Formula Does Not Change

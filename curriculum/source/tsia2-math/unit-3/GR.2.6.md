@@ -19,6 +19,14 @@ keywords: ["volume", "prism", "cylinder", "cone", "pyramid", "sphere", "cubic un
 
 ---
 
+#### **Learning Objectives**
+
+- Calculate volume as base area times height for prisms and cylinders, correctly squaring the radius for circular bases.
+- Apply the one-third factor for cones and pyramids and the four-thirds πr³ formula for spheres, without dropping, doubling, or misapplying the fraction.
+- Calculate the volume of composite solids and partially filled uniform containers, and solve backward for a missing height or radius from a given volume.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Filling, Not Wrapping

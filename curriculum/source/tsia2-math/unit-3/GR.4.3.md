@@ -19,6 +19,14 @@ keywords: ["similar polygons", "scale factor", "proportional sides", "ratio of a
 
 ---
 
+#### **Learning Objectives**
+
+- Calculate the scale factor between similar polygons from a pair of corresponding sides, and apply it to find a missing side or perimeter by k, or area by k².
+- Work backward from an area ratio to a length ratio by taking a square root, and from a perimeter ratio to a length ratio directly.
+- Check the direction of a scale-factor calculation by confirming a larger figure produces larger lengths and areas.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### What Similar Buys You

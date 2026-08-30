@@ -19,6 +19,14 @@ keywords: ["inverse measurement", "missing dimension", "area", "perimeter", "squ
 
 ---
 
+#### **Learning Objectives**
+
+- Solve for a missing dimension by writing the area or perimeter formula, substituting known values, and undoing each operation in reverse order.
+- Undo a squared term with a square root when solving for a side, radius, or diagonal from an area.
+- Distinguish a final answer from an intermediate value and carry a two-step problem through to the actual quantity asked for.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Running the Formula Backward
