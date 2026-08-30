@@ -21,7 +21,7 @@ keywords: ["exponential growth", "exponential decay", "compound interest", "depr
 
 #### **Learning Objectives**
 
-- Build the correct growth or decay factor, 1 + r for growth or 1 − r for decay, from a stated percent rate, and apply it as a multiplier rather than the raw rate.
+- Build the correct growth or decay factor, $1 + r$ for growth or $1 - r$ for decay, from a stated percent rate, and apply it as a multiplier rather than the raw rate.
 - Model repeated percent change using an exponent for the number of periods, recognizing that percent changes compound multiplicatively rather than adding.
 - Recover the percent rate from a given growth or decay factor by comparing it to 1, not treating the factor itself as the percent.
 

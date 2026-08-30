@@ -21,9 +21,9 @@ keywords: ["special right triangle", "45-45-90", "30-60-90", "isosceles right tr
 
 #### **Learning Objectives**
 
-- Apply the 1:1:√2 ratio to convert between a leg and hypotenuse in a 45-45-90 triangle.
-- Apply the 1:√3:2 ratio to convert between the short leg, long leg, and hypotenuse in a 30-60-90 triangle, always working from the short leg.
-- Apply these ratios to related figures without mixing the √2 and √3 factors between the two triangle families.
+- Apply the $1 : 1 : \sqrt{2}$ ratio to convert between a leg and hypotenuse in a 45-45-90 triangle.
+- Apply the $1 : \sqrt{3} : 2$ ratio to convert between the short leg, long leg, and hypotenuse in a 30-60-90 triangle, always working from the short leg.
+- Apply these ratios to related figures without mixing the $\sqrt{2}$ and $\sqrt{3}$ factors between the two triangle families.
 
 ---
 

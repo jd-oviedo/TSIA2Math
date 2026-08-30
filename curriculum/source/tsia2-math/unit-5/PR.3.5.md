@@ -21,8 +21,8 @@ keywords: ["set notation", "union", "intersection", "complement", "universal set
 
 #### **Learning Objectives**
 
-- Distinguish union, ∪, from intersection, ∩, and apply the correct symbol to a counting problem.
-- Calculate the size of a union using n(A) + n(B) − n(A∩B), subtracting the overlap exactly once.
+- Distinguish union, $\cup$, from intersection, $\cap$, and apply the correct symbol to a counting problem.
+- Calculate the size of a union using $n(A) + n(B) - n(A \cap B)$, subtracting the overlap exactly once.
 - Calculate "neither" as the complement of a union, and extend the union formula to three overlapping sets.
 
 ---

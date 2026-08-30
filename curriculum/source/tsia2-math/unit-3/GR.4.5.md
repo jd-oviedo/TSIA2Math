@@ -21,7 +21,7 @@ keywords: ["equation of a circle", "centre", "radius", "standard form", "general
 
 #### **Learning Objectives**
 
-- Read the center and radius from a circle's equation (x-h)² + (y-k)² = r², correctly flipping the sign inside each bracket and taking the square root of the right-hand side.
+- Read the center and radius from a circle's equation $(x - h)^{2} + (y - k)^{2} = r^{2}$, correctly flipping the sign inside each bracket and taking the square root of the right-hand side.
 - Write the equation of a circle given its center and radius, or its center and a point on the circle.
 - Find a circle's center and radius from general form by completing the square, halving and squaring each linear coefficient before adding it to both sides.
 

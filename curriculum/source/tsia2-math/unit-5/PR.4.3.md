@@ -21,7 +21,7 @@ keywords: ["percent change", "percent increase", "percent decrease", "original v
 
 #### **Learning Objectives**
 
-- Calculate percent change as (new − original) divided by the original value, always dividing by the starting value.
+- Calculate percent change as (new - original) divided by the original value, always dividing by the starting value.
 - Use the sign of the change to correctly label a result as an increase or a decrease.
 - Compound successive percent changes by multiplying ratios rather than adding the percentages.
 

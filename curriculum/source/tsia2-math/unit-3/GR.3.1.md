@@ -21,7 +21,7 @@ keywords: ["Pythagorean theorem", "right triangle", "hypotenuse", "leg", "diagon
 
 #### **Learning Objectives**
 
-- Apply a² + b² = c² to find a missing hypotenuse or leg, adding squares and subtracting when solving for a leg.
+- Apply $a^{2} + b^{2} = c^{2}$ to find a missing hypotenuse or leg, adding squares and subtracting when solving for a leg.
 - Verify whether a set of three side lengths forms a right triangle by testing rather than assuming a memorized triple.
 - Apply the theorem to real-world and multi-step contexts and carry the result to the actual quantity asked for.
 

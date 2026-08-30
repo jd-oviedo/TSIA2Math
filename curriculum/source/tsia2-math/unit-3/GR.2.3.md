@@ -23,7 +23,7 @@ keywords: ["area", "triangle", "rectangle", "parallelogram", "trapezoid", "circl
 
 - Calculate the area of rectangles, triangles, parallelograms, trapezoids, and circles, always using the perpendicular height rather than a slanted side.
 - Apply the one-half factor correctly for triangles and trapezoids, avoiding dropping it, doubling it, or borrowing it into a rectangle.
-- Calculate composite areas by adding added pieces and subtracting cutouts, and solve backward from a circle's area to its radius by undoing both π and the square.
+- Calculate composite areas by adding added pieces and subtracting cutouts, and solve backward from a circle's area to its radius by undoing both $\pi$ and the square.
 
 ---
 

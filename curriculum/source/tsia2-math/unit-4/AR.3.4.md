@@ -22,7 +22,7 @@ keywords: ["quadratic formula", "discriminant", "roots", "solving", "standard fo
 #### **Learning Objectives**
 
 - Apply the quadratic formula to any quadratic equation by correctly identifying a, b, and c and negating b in the numerator.
-- Divide the entire numerator, including both the ±√ term and −b, by 2a when computing the two solutions.
+- Divide the entire numerator, including both the $\pm\sqrt{b^{2} - 4ac}$ term and $-b$, by $2a$ when computing the two solutions.
 - Use the discriminant to determine whether an equation has two, one, or no real solutions before finishing the computation.
 
 ---
