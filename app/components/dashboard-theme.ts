@@ -385,6 +385,68 @@ export function cardStyle(s: DashSurface = LIGHT): React.CSSProperties {
   };
 }
 
+// ─── The teacher dashboard's flat panel ──────────────────────────────────────
+//
+// ADDED 2026-08-30, for the /teacher restyle. The dashboard tree moves to the
+// flat treatment the student shell and the worksheet generator already carry:
+// radius 0, one hairline, no shadow.
+//
+// A SEPARATE PAIR RATHER THAN A CHANGE TO cardStyle(), and that is deliberate.
+// cardStyle() is still spread by app/teacher/student/[id]/ (OfficialScorePanel,
+// CurriculumProgressPanel) and by ExportModal, none of which this pass covers.
+// Editing it at source would silently restyle three surfaces nobody reviewed.
+// The dashboard tree calls flatPanelStyle() instead and cardStyle() is
+// untouched, so the two shapes coexist until somebody decides otherwise.
+//
+// panelHairline is NOT panelEdge, and the difference is temperature. panelEdge
+// is rgba(15,30,53,0.16), the navy base stepped up; this is a warm grey with no
+// navy in it at all, which is what the marketing and worksheet surfaces read
+// as. Measured on the two grounds a dashboard panel edge abuts:
+//
+//                          on cardBg #FFFFFF   on pageBg #F5F5F3
+//   panelHairline #E8E4DA        1.23                1.13
+//   panelEdge (for scale)        1.39                1.27
+//
+// So it is a LIGHTER line than the student shell's, by about a tenth of a
+// ratio point. Decorative in the 1.4.11 sense -- it carries no text and marks
+// no control -- so there is no floor it has to clear, and `line` remains the
+// token for the case where there is one. Recorded rather than smoothed over:
+// on the page ground at 1.13 this edge is close to the limit of what separates
+// a panel from its field, and anyone tempted to lighten it further should know
+// they are starting from here.
+//
+// focusFill is the weakest-strand card, and ONE element on the screen. It is
+// Warm Sand, the same hex the printed worksheet calls --ws-sand and the
+// curriculum palette calls C.sand -- restated here rather than imported,
+// because /teacher does not import curriculum-theme and this pass does not
+// change that. Ink #0E0E11 on it measures 16.48 and muted #5A5A52 measures
+// 5.95, both of which clear AA with room.
+export const DASH_FLAT = Object.freeze({
+  /** The 1px edge that is the only thing separating a flat panel from its ground. */
+  panelHairline: '#E8E4DA',
+  /** Warm Sand. The weakest-strand FOCUS card, and nothing else on the screen. */
+  focusFill: '#F2EDDF',
+});
+
+/**
+ * One flat panel shape for the teacher dashboard tree, so "same treatment"
+ * is a fact rather than a convention. Callers spread it and add their own
+ * padding, exactly as they did with cardStyle().
+ *
+ * No shadow and no radius are stated EXPLICITLY rather than omitted, because
+ * most call sites reached this by spreading cardStyle() and overriding one
+ * property at a time, and a spread that forgets one leaves a rounded corner
+ * or a shadow behind on a panel that looks finished.
+ */
+export function flatPanelStyle(): React.CSSProperties {
+  return {
+    background: LIGHT.cardBg,
+    border: `1px solid ${DASH_FLAT.panelHairline}`,
+    borderRadius: 0,
+    boxShadow: 'none',
+  };
+}
+
 // ─── The student rail ────────────────────────────────────────────────────────
 //
 // The one surface the two dashboards deliberately do NOT share: the teacher

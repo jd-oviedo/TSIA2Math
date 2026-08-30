@@ -1,7 +1,8 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { DASH, cardStyle } from '../components/dashboard-theme';
+import { DASH, flatPanelStyle } from '../components/dashboard-theme';
+import { NAVY, INK_2 } from './dashboard-chrome';
 import { FONT_HEADING } from '../components/fonts';
 import { formatDue, isOverdue } from '../lib/assignments';
 
@@ -39,7 +40,7 @@ function StatusBar({ a }: { a: Assignment }) {
   const seg = (n: number, color: string) =>
     n > 0 ? <span style={{ width: `${(n / total) * 100}%`, background: color, display: 'block' }} /> : null;
   return (
-    <div style={{ display: 'flex', height: 6, borderRadius: 3, overflow: 'hidden', background: DASH.trackBg, marginTop: 9 }}>
+    <div style={{ display: 'flex', height: 6, overflow: 'hidden', background: DASH.trackBg, marginTop: 9 }}>
       {seg(a.complete, DASH.statusComplete)}
       {seg(a.in_progress, DASH.statusProgress)}
     </div>
@@ -137,13 +138,13 @@ export default function AssignmentsPanel({
           <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: DASH.heading }}>
             Assigned work
           </h2>
-          <span style={{ fontSize: 13, color: DASH.muted }}>Live status, computed from student progress</span>
+          <span style={{ fontSize: 13, color: INK_2 }}>Live status, computed from student progress</span>
         </div>
         {list.length > 0 && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 11, color: DASH.dim }}>
             {[['Complete', DASH.statusComplete], ['In progress', DASH.statusProgress], ['Not started', DASH.statusIdle]].map(([t, c]) => (
               <span key={t} style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
-                <span style={{ width: 9, height: 9, borderRadius: 2, background: c, display: 'inline-block' }} />{t}
+                <span style={{ width: 9, height: 9, background: c, display: 'inline-block' }} />{t}
               </span>
             ))}
           </div>
@@ -151,13 +152,13 @@ export default function AssignmentsPanel({
       </div>
 
       {list.length === 0 ? (
-        <div style={{ ...cardStyle(), boxShadow: 'none', padding: '28px 24px', textAlign: 'center' }}>
-          <p style={{ fontSize: 14, color: DASH.muted, margin: 0 }}>
+        <div style={{ ...flatPanelStyle(), padding: '28px 24px', textAlign: 'center' }}>
+          <p style={{ fontSize: 14, color: INK_2, margin: 0 }}>
             Nothing assigned yet. Set a topic above and it will show up here with live progress.
           </p>
         </div>
       ) : (
-        <div style={{ ...cardStyle(), overflow: 'hidden' }}>
+        <div style={{ ...flatPanelStyle(), overflow: 'hidden' }}>
           {list.map((a, i) => {
             // OVERDUE IS DERIVED HERE, never stored. The API sends due_at raw:
             // an "overdue" computed on the server is wrong the moment the
@@ -200,9 +201,9 @@ export default function AssignmentsPanel({
                           fontSize: 11.5,
                           fontWeight: 600,
                           padding: '2px 7px',
-                          borderRadius: 5,
+                          borderRadius: 0,
                           background: overdue ? DASH.noticeWarnBg : DASH.chipBg,
-                          color: overdue ? DASH.noticeWarn : DASH.muted,
+                          color: overdue ? DASH.noticeWarn : INK_2,
                         }}
                       >
                         {overdue ? 'Overdue ' : 'Due '}{formatDue(a.due_at)}
@@ -210,7 +211,7 @@ export default function AssignmentsPanel({
                     )}
                   </div>
 
-                  <div style={{ marginTop: 4, fontSize: 12.5, color: DASH.muted }}>
+                  <div style={{ marginTop: 4, fontSize: 12.5, color: INK_2 }}>
                     {a.target_type === 'class' ? 'Whole class' : 'Selected students'}
                     {' · '}
                     {/* THE ZERO CASE IS NAMED, not rendered as "0 of 0 done".
@@ -230,15 +231,14 @@ export default function AssignmentsPanel({
                   type="button"
                   onClick={() => remove(a.id)}
                   disabled={busyId === a.id}
+                  className="um-tdash-ghost"
                   style={{
-                    background: 'transparent',
-                    border: `1px solid ${DASH.line}`,
-                    borderRadius: 7,
+                    border: `1px solid ${NAVY}`,
+                    borderRadius: 0,
                     padding: '6px 11px',
                     cursor: busyId === a.id ? 'wait' : 'pointer',
                     fontFamily: 'inherit',
                     fontSize: 12.5,
-                    color: DASH.muted,
                     flex: '0 0 auto',
                   }}
                 >

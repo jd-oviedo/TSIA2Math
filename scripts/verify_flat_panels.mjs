@@ -90,8 +90,11 @@ const OLD_EDGE = {
   dark: 'rgba(255, 255, 255, 0.09)',
 };
 
-// V.cardShadow, which the student panels no longer carry and /teacher still
-// does. One constant, two opposite roles below.
+// V.cardShadow. Asserted against, never for: it is what the student panels
+// dropped on 2026-08-26, and as of 2026-08-30 what the teacher dashboard
+// dropped too. cardStyle() still hands it to app/teacher/student/[id]/ and to
+// ExportModal, so the constant is not dead -- it just no longer has a panel on
+// this lane that is supposed to be wearing it.
 const CARD_SHADOW = {
   light: 'rgba(15, 30, 53, 0.04) 0px 1px 2px 0px',
   dark: 'rgba(0, 0, 0, 0.34) 0px 1px 2px 0px',
@@ -103,7 +106,33 @@ const CARD_SHADOW = {
 const SUNSET = 'rgb(240, 163, 62)';
 
 const FLAT_RADIUS = '0px';
-const TEACHER_RADIUS = '12px';
+
+// ─── THE TEACHER PANEL'S OWN ORACLE ──────────────────────────────────────────
+//
+// RETARGETED 2026-08-30, and the claim underneath it changed with it.
+//
+// This used to read `const TEACHER_RADIUS = '12px'` and assert, beside every
+// student panel on the lane, that the 2026-08-26 flatten had NOT reached
+// /teacher. That was a real claim for four days and it is now retired on
+// purpose: the teacher dashboard restyle flattens the dashboard tree
+// deliberately, so the panel this lane mounts is square, shadowless and wearing
+// the warm hairline.
+//
+// WHAT THE THREE ASSERTIONS BELOW ARE WORTH NOW. They no longer prove a
+// boundary held. They prove the dashboard tree actually ARRIVED at the shape it
+// claims, measured in a browser rather than read off a diff, and they still do
+// it on the one teacher panel that mounts with no database. The half-done
+// version of this change -- square and shadowless but still wearing the old
+// 0.07 border -- is exactly what teacherEdge catches, which is the same job
+// cardEdgeNotOld does for the student side.
+//
+// NOT panelEdge. The teacher tree took a WARMER hairline than the student
+// shell: #E8E4DA has no navy in it, against panelEdge's rgba(15,30,53,0.16).
+// Asserting PANEL_EDGE here would pass for the wrong colour, so it gets its own
+// constant. dashboard-theme.ts DASH_FLAT.panelHairline, in Chromium's
+// serialisation.
+const TEACHER_RADIUS = FLAT_RADIUS;
+const TEACHER_EDGE = 'rgb(232, 228, 218)';
 const MEASURE = '788px';
 
 // How far left of .um-page's centre a flush-left 788 box sits, PER VIEWPORT.
@@ -173,8 +202,10 @@ const shellProbes = {
   listShadow: { selector: LIST, prop: 'boxShadow' },
   listEdge: { selector: LIST, prop: 'borderColor' },
 
-  // THE NON-LEAK. Read in the same browser, on the same run, next to the
-  // student panels above.
+  // THE TEACHER PANEL. Read in the same browser, on the same run, next to the
+  // student panels above -- which is what makes it worth reading at all. See
+  // the note over TEACHER_RADIUS for what these three prove now that /teacher
+  // has flattened too.
   teacherRadius: { selector: TEACHER, prop: 'borderRadius' },
   teacherShadow: { selector: TEACHER, prop: 'boxShadow' },
   teacherEdge: { selector: TEACHER, prop: 'borderColor' },
@@ -257,17 +288,19 @@ async function run() {
         check(theme, 'listShadow', values.listShadow, 'none');
         check(theme, 'listEdge', values.listEdge, PANEL_EDGE[theme]);
 
-        // ── THE NON-LEAK ─────────────────────────────────────────────────
-        // Every assertion above is half a claim on its own. Radius 0 on a
-        // student panel says the flatten happened; only radius 12 on a
-        // teacher panel, read here, says it stopped where it was meant to.
-        // /teacher is light-only and paints from resolved hexes, so the
-        // oracle does not move with the theme -- which is itself the thing
-        // being asserted, twice.
-        console.log('  -- /teacher, which must NOT have moved --');
+        // ── THE TEACHER PANEL ────────────────────────────────────────────
+        // Was "the non-leak", asserting /teacher had NOT flattened. It has
+        // now, deliberately -- see the note over TEACHER_RADIUS.
+        //
+        // The oracle stays theme-INDEPENDENT and that is still an assertion
+        // rather than a shortcut: /teacher is light-only and paints from
+        // resolved hexes, so mounting it inside the student shell's .um-dash
+        // must not tint it. Reading the same three values under both themes
+        // is what proves that, and it survives the retarget untouched.
+        console.log('  -- /teacher, now flat like the rest --');
         check(theme, 'teacherRadius', values.teacherRadius, TEACHER_RADIUS);
-        check(theme, 'teacherShadow', values.teacherShadow, CARD_SHADOW.light);
-        check(theme, 'teacherEdge', values.teacherEdge, OLD_EDGE.light);
+        check(theme, 'teacherShadow', values.teacherShadow, 'none');
+        check(theme, 'teacherEdge', values.teacherEdge, TEACHER_EDGE);
       }
 
       // ── 2. THE FIELDSET, TWO VIEWPORTS, BOTH THEMES ────────────────────
@@ -399,7 +432,7 @@ async function run() {
   if (failures.length === 0) {
     console.log(
       'PASS: panels flat in both themes, the fieldset caps at 788 at 1280 and\n' +
-        '1600 and sits flush left, /teacher unmoved at 12 with its shadow.',
+        '1600 and sits flush left, /teacher flat at 0 on the warm hairline.',
     );
     if (PROVE) {
       console.error(

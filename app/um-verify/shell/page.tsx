@@ -280,17 +280,24 @@ export default function VerifyLaneShell() {
           {/* THE TEACHER PANEL, AND THE ONLY THING ON THIS ROUTE THAT IS NOT
               THE STUDENT SHELL.
               ================================================================
-              It is here to be measured as UNCHANGED. The student panels above
+              It used to be here to be measured as UNCHANGED: the student panels
               went flat on 2026-08-26 and /teacher deliberately did not, so
-              every Card assertion on this page is half a claim: radius 0 on the
-              student panel proves the flatten happened, and only radius 12 on a
-              teacher panel read in the same browser on the same run proves it
-              stopped where it was supposed to.
+              radius 12 read on this panel proved the flatten stopped where it
+              was supposed to.
 
-              Card no longer imports cardStyle() at all, which is the structural
-              half of that guarantee (see app/dashboard/ui.tsx). This is the
-              measured half. Both are wanted: the import graph can be
-              re-crossed by an edit, and this reddens when it is.
+              THAT BOUNDARY WAS RETIRED ON 2026-08-30, when the teacher
+              dashboard restyle flattened the dashboard tree on purpose. The
+              panel is still here and still measured; the oracle in
+              scripts/verify_flat_panels.mjs was retargeted in the same change,
+              and what it now proves is that the teacher tree ARRIVED at the
+              shape it claims -- square, shadowless, and on the warm #E8E4DA
+              hairline rather than the old 0.07 border it would still be wearing
+              if the change were half done.
+
+              Card still does not import cardStyle(), and that is still worth
+              having: the two surfaces agree on a shape today without sharing
+              the function that states it, so either can move without dragging
+              the other. This page measures whether they actually agree.
 
               See ../TeacherPanelControl.tsx for why NewAssignment is the panel
               chosen and why it needs a client wrapper. */}

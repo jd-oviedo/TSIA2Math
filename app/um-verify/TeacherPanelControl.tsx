@@ -2,14 +2,23 @@
 
 import NewAssignment from '../teacher/NewAssignment';
 
-// THE TEACHER CONTROL. The panel that must NOT have moved.
+// THE TEACHER PANEL, MEASURED RATHER THAN ASSERTED.
 //
-// WHY THIS EXISTS. The student shell's panels went flat on 2026-08-26 -- radius
-// 0, one hairline, no shadow -- and /teacher deliberately did not. The two used
-// to share a shape through cardStyle(), so "the flatten did not reach teacher"
-// is a claim that needs measuring rather than asserting, and the only honest way
-// to measure it is to mount a panel /teacher actually ships and read it in the
-// same browser, on the same run, as the student panels next to it.
+// WHY THIS EXISTS, AND WHAT IT PROVES NOW.
+//
+// Originally: the student shell's panels went flat on 2026-08-26 and /teacher
+// deliberately did not, so this mounted a real teacher panel beside the student
+// ones to show the flatten had stopped where it was meant to.
+//
+// As of 2026-08-30 that boundary is gone, on purpose -- the teacher dashboard
+// restyle flattens the dashboard tree as well, and scripts/verify_flat_panels.mjs
+// was retargeted in the same change rather than left asserting a shape the
+// product no longer has.
+//
+// What survives the retarget is the REASON this file is a good idea: the claim
+// "the dashboard tree is flat" is worth measuring in a browser rather than
+// reading off a diff, and this is the only teacher panel that can be measured
+// without a database. The oracle moved; the method did not.
 //
 // NewAssignment IS THE ONE TEACHER PANEL THAT MOUNTS WITH NO DATABASE. It takes
 // three plain props and a callback, holds all its state locally, and its only
@@ -27,8 +36,14 @@ import NewAssignment from '../teacher/NewAssignment';
 //
 // IT PAINTS FROM RESOLVED HEXES, NOT VARIABLES, so mounting it inside the
 // student shell's .um-dash does not contaminate it. /teacher is light-only and
-// reads DASH directly (dashboard-theme.ts:334); there is no --umd-* lookup in
-// its style to be answered by the wrapper it happens to be sitting in.
+// reads DASH directly; there is no --umd-* lookup in its style to be answered
+// by the wrapper it happens to be sitting in. The verifier reads the same three
+// values under both themes, which is what turns that sentence into a check.
+//
+// ITS ONE --umt-* DEPENDENCY IS SELF-SUPPLIED. NewAssignment's buttons hover
+// through custom properties declared in app/teacher/dashboard-chrome.ts, and
+// this route loads no dashboard CSS -- so the component emits that sheet itself
+// rather than relying on a parent to have done it. Nothing here needs to.
 export default function TeacherPanelControl() {
   return (
     <NewAssignment
