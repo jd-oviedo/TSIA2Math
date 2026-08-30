@@ -19,6 +19,14 @@ keywords: ["table", "two-way table", "row total", "column total", "reading a tab
 
 ---
 
+#### **Learning Objectives**
+
+- Locate the single cell where a named row and column intersect, rather than a neighboring cell.
+- Distinguish a row total from a column total and match each to the phrase that asks for it.
+- Compare two cells that differ in exactly one label, and identify the second-highest value when a position is named.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Questions, Asked in Order

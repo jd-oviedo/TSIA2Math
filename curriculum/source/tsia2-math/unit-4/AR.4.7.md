@@ -19,6 +19,14 @@ keywords: ["rational function", "evaluating", "substitution", "function notation
 
 ---
 
+#### **Learning Objectives**
+
+- Evaluate a rational function at a given input by substituting into both the numerator and denominator before dividing.
+- Simplify the numerator and denominator completely as separate steps prior to performing the final division.
+- Reduce the resulting fraction to lowest terms as the final step of evaluation.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Substitute Into Both Halves

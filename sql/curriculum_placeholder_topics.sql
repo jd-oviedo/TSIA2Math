@@ -122,7 +122,8 @@ select
   mini_quiz,
   created_at,
   updated_at,
-  is_placeholder
+  is_placeholder,
+  objectives
 from public.curriculum_topics;
 
 
@@ -172,18 +173,19 @@ insert into public.curriculum_topics (
   misconception_tags,
   practice_items,
   keywords,
-  estimated_time_minutes
+  estimated_time_minutes,
+  objectives
 )
 values
   ('tsia2-math', 'AR.COMING-SOON', 'Algebraic Reasoning, coming soon',
    1, 1, 'AR', true, '', '{}'::jsonb, '{}'::jsonb, '{}'::jsonb, '{}'::jsonb,
-   '{}'::jsonb, '{}'::text[], null),
+   '{}'::jsonb, '{}'::text[], null, '[]'::jsonb),
   ('tsia2-math', 'GR.COMING-SOON', 'Geometric & Spatial Reasoning, coming soon',
    1, 1, 'GR', true, '', '{}'::jsonb, '{}'::jsonb, '{}'::jsonb, '{}'::jsonb,
-   '{}'::jsonb, '{}'::text[], null),
+   '{}'::jsonb, '{}'::text[], null, '[]'::jsonb),
   ('tsia2-math', 'PR.COMING-SOON', 'Probabilistic & Statistical Reasoning, coming soon',
    1, 1, 'PR', true, '', '{}'::jsonb, '{}'::jsonb, '{}'::jsonb, '{}'::jsonb,
-   '{}'::jsonb, '{}'::text[], null)
+   '{}'::jsonb, '{}'::text[], null, '[]'::jsonb)
 on conflict (course_id, topic_id) do update set
   topic_name       = excluded.topic_name,
   unit_number      = excluded.unit_number,

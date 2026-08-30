@@ -19,6 +19,14 @@ keywords: ["units", "measurement", "length", "area", "volume", "time", "temperat
 
 ---
 
+#### **Learning Objectives**
+
+- Identify the correct measurement category for a given quantity.
+- Select a unit whose size gives a sensible, sayable number for the object being measured, not just any unit in the right category.
+- Convert between units correctly, applying the conversion factor directly for length, squared for area, and cubed for volume.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Nobody Buys Milk by the Foot

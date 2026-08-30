@@ -19,6 +19,14 @@ keywords: ["fractions", "decimals", "equivalents", "conversion", "repeating deci
 
 ---
 
+#### **Learning Objectives**
+
+- Recall decimal equivalents of common halves, fourths, eighths, fifths, thirds, and sixths without long division.
+- Determine whether a fraction's decimal terminates or repeats by checking whether its denominator factors into only 2s and 5s.
+- Convert between decimals and fractions in lowest terms without truncating a repeating decimal.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Why Bother Memorizing?

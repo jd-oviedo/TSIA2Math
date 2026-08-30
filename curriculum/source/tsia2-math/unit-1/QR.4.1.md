@@ -19,6 +19,14 @@ keywords: ["proportional reasoning", "tiered rates", "flat fee", "scale drawing"
 
 ---
 
+#### **Learning Objectives**
+
+- Identify whether a word problem is proportional, flat-fee, or tiered before choosing a calculation method.
+- Solve tiered-rate problems by splitting the quantity at the stated boundary and calculating each band separately.
+- Chain multiple proportional steps, such as scale, rate, and conversion, through to the final requested unit without stopping early.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Where the Unit Lands

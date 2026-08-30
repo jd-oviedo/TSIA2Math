@@ -19,6 +19,14 @@ keywords: ["compound probability", "independent events", "dependent events", "wi
 
 ---
 
+#### **Learning Objectives**
+
+- Multiply stage probabilities to find the probability that multiple events all occur, checking that the answer is smaller than every individual stage.
+- Distinguish independent events, with replacement, from dependent events, without replacement.
+- Compute "at least one" probabilities by subtracting the probability of none from 1.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Questions, Asked in Order

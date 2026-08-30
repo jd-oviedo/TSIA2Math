@@ -19,6 +19,14 @@ keywords: ["factoring", "quadratic", "trinomial", "binomial factors", "greatest 
 
 ---
 
+#### **Learning Objectives**
+
+- Factor a trinomial of the form $x^{2} + bx + c$ by finding two numbers that both multiply to c and add to b.
+- Determine the correct signs inside each binomial factor from the signs of the constant and middle term.
+- Extract and retain a common factor before factoring the remaining trinomial, verifying the result by expanding it back out.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Multiplication, Run Backward

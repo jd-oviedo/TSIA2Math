@@ -19,6 +19,14 @@ keywords: ["exponent", "numeric base", "product rule", "quotient rule", "zero ex
 
 ---
 
+#### **Learning Objectives**
+
+- Evaluate a numeric power by expanding it as repeated multiplication, not by multiplying the base by the exponent.
+- Apply the product and quotient rules by adding or subtracting exponents of a common base, keeping the base unchanged.
+- Evaluate a zero or negative exponent correctly, recognizing a zero exponent gives 1 and a negative exponent gives a positive reciprocal.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### A Power Is Repeated Multiplication, Not Multiplication

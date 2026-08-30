@@ -19,6 +19,14 @@ keywords: ["average rate of change", "slope", "interval", "table", "rise over ru
 
 ---
 
+#### **Learning Objectives**
+
+- Calculate an average rate of change from a table or two points as output change over input change.
+- Identify the correct denominator as the change in input values themselves, not a count of rows or gaps.
+- Recognize a relationship is not linear by testing each interval separately, while still finding the average over a named stretch.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### The Same Division, Over a Chosen Stretch

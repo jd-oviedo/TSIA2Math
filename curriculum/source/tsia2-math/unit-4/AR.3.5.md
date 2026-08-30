@@ -19,6 +19,14 @@ keywords: ["vertex", "maximum", "minimum", "parabola", "axis of symmetry", "vert
 
 ---
 
+#### **Learning Objectives**
+
+- Determine whether a quadratic has a maximum or minimum based solely on the sign of the leading coefficient a.
+- Find the vertex of a quadratic in vertex form or standard form, correctly distinguishing the x-coordinate from the y-coordinate.
+- Report the minimum or maximum value as the y-coordinate of the vertex, not the axis of symmetry or the constant term.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Every Parabola Turns Around Exactly Once

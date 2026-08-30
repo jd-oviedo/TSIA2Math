@@ -19,6 +19,14 @@ keywords: ["linear equation", "solving equations", "inverse operations", "isolat
 
 ---
 
+#### **Learning Objectives**
+
+- Solve a one-variable linear equation by undoing operations with their correct inverse, in reverse order.
+- Distribute correctly across every term inside parentheses before combining like terms.
+- Distinguish equations with no solution from those with infinitely many solutions when the variable cancels.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### A Balance Scale With a Covered Box

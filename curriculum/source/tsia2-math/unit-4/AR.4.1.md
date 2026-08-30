@@ -19,6 +19,14 @@ keywords: ["polynomial", "like terms", "degree", "distributive property", "simpl
 
 ---
 
+#### **Learning Objectives**
+
+- Combine like terms by adding coefficients while leaving the variable and its exponent unchanged.
+- Distribute a subtracted quantity across every term inside the parentheses, correctly flipping each sign.
+- Distribute a coefficient into every term of its parentheses before combining like terms across multiple groups.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Sorting Before Counting

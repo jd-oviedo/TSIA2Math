@@ -19,6 +19,14 @@ keywords: ["rational expression", "common denominator", "adding fractions", "sub
 
 ---
 
+#### **Learning Objectives**
+
+- Add or subtract rational expressions with a common denominator by combining only the numerators and keeping the denominator unchanged.
+- Rescale a numerator and denominator by the same factor when converting to a common denominator before combining.
+- Distribute a subtraction across an entire second numerator by bracketing it first, then flipping every sign inside.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### The Denominator Is a Unit, Not a Number to Combine

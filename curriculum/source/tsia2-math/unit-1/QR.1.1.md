@@ -19,6 +19,14 @@ keywords: ["rational", "irrational", "magnitude", "comparison"]
 
 ---
 
+#### **Learning Objectives**
+
+- Distinguish rational numbers from irrational numbers based on whether they can be written as a fraction.
+- Bracket an irrational square root between consecutive perfect squares to estimate its value.
+- Compare and order mixed rational and irrational numbers by converting each to a decimal estimate.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### What Are Rational and Irrational Numbers?

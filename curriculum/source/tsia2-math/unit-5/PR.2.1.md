@@ -19,6 +19,14 @@ keywords: ["mean", "median", "mode", "range", "average", "measures of center", "
 
 ---
 
+#### **Learning Objectives**
+
+- Compute the mean, median, mode, and range of a data set, correctly identifying which measure a question is asking for before calculating.
+- Sort a data set before finding the median, and average the two middle values when the count is even.
+- Rebuild a total from a mean to solve reverse problems, and handle negative values correctly when finding a range.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Four Questions, Four Different Answers

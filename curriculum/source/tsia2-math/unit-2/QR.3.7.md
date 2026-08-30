@@ -19,6 +19,14 @@ keywords: ["comparing rates", "break-even", "crossover point", "slope comparison
 
 ---
 
+#### **Learning Objectives**
+
+- Distinguish "which is bigger now" from "which grows faster" when comparing two linear models.
+- Find the crossover point of two models by setting their expressions equal and subtracting starting values, not adding them.
+- Explain why a faster rate eventually overtakes a cheaper starting value, and that two differing-slope lines cross exactly once.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Questions That Are Not the Same Question

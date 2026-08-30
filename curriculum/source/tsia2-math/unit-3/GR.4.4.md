@@ -19,6 +19,14 @@ keywords: ["line symmetry", "axis of symmetry", "rotational symmetry", "order of
 
 ---
 
+#### **Learning Objectives**
+
+- Count a regular polygon's lines of symmetry without double-counting each axis or missing half of them.
+- Distinguish the order of rotational symmetry from the smallest rotation angle, and convert between them.
+- Determine whether a figure has point symmetry, applying the rule that a regular polygon has it only when its number of sides is even.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Symmetry Is a Transformation That Changes Nothing

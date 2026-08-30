@@ -19,6 +19,14 @@ keywords: ["polynomial multiplication", "FOIL", "distributive property", "binomi
 
 ---
 
+#### **Learning Objectives**
+
+- Multiply two polynomials by ensuring every term in the first meets every term in the second, counting the expected number of products first.
+- Expand a squared binomial as the product of the binomial with itself, producing three terms including a doubled middle term.
+- Apply exponent rules correctly when multiplying monomials, adding exponents of matching bases rather than multiplying them.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Every Piece Times Every Piece

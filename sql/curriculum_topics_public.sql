@@ -197,7 +197,16 @@ select
   -- Backported here 2026-08-16 (issue #84) so this file stops describing a view
   -- that production had already moved past. LAST, because CREATE OR REPLACE can
   -- only append; see the append-only note in the header.
-  is_placeholder
+  is_placeholder,
+  -- Appended 2026-08-30 by sql/curriculum_objectives.sql, which added the
+  -- column to curriculum_topics and put it on this view in the same run.
+  -- Backported here in the same commit rather than later, so this file never
+  -- describes a view production has already moved past. That lag is what
+  -- issue #84 was. LAST, because CREATE OR REPLACE can only append.
+  --
+  -- Unredacted, unlike practice_items above: objectives is not
+  -- answer-bearing. See the header of sql/curriculum_objectives.sql.
+  objectives
 from public.curriculum_topics;
 
 comment on view public.curriculum_topics_public is

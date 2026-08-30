@@ -19,6 +19,14 @@ keywords: ["reverse percent", "percent equation", "mixture", "markup", "break ev
 
 ---
 
+#### **Learning Objectives**
+
+- Set up and solve an equation to find an original value given a resulting percent increase or decrease.
+- Compute a base amount plus a percent-based part by keeping both pieces separate before combining.
+- Solve mixture problems by letting the total, not just the part, change with the added quantity.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Running the Percent Backward

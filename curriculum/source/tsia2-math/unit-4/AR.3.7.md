@@ -19,6 +19,14 @@ keywords: ["vertex form", "completing the square", "axis of symmetry", "parabola
 
 ---
 
+#### **Learning Objectives**
+
+- Read the vertex (h, k) and axis of symmetry x = h directly from a quadratic written in vertex form, accounting for the sign reversal inside the bracket.
+- Convert a quadratic from standard form to vertex form by completing the square, correctly scaling and subtracting back the balance term.
+- Expand a squared binomial to three terms, not two, when converting vertex form back to standard form.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### A Form That Hands You the Answer

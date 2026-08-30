@@ -19,6 +19,14 @@ keywords: ["surface area", "prism", "cylinder", "cone", "pyramid", "sphere", "la
 
 ---
 
+#### **Learning Objectives**
+
+- Calculate surface area by identifying every face of a solid, doubling matched pairs on prisms, and correctly including one base for cones/pyramids, two for cylinders, and none for spheres.
+- Distinguish surface area from volume.
+- Calculate the surface area of open or joined solids by removing missing faces or both copies of a shared interior face.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Wrapping Paper, Not Filling

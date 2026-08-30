@@ -19,6 +19,14 @@ keywords: ["weighted mean", "weighted average", "weights", "percentage weights",
 
 ---
 
+#### **Learning Objectives**
+
+- Calculate a weighted mean by pairing each weight with its own score, summing the weighted products, and dividing by the total weight.
+- Find a missing weight when weights must sum to 100% before computing a weighted average.
+- Solve backward from a target weighted mean to find an unknown score, dividing by the weight of that unknown.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Questions, Asked in Order

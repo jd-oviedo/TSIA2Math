@@ -19,6 +19,14 @@ keywords: ["congruence", "similarity", "rigid motion", "dilation", "scale factor
 
 ---
 
+#### **Learning Objectives**
+
+- Determine whether a transformation or composition produces a congruent or similar image based on whether it includes a dilation with $k \neq 1$.
+- Calculate how a dilation's scale factor $k$ affects length and perimeter by $k$, versus area by $k^{2}$, including whether it enlarges or shrinks the figure.
+- Identify which single transformation maps a preimage to an image by testing the coordinate rule against every given vertex.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### One Question, Asked of Every Transformation

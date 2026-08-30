@@ -19,6 +19,14 @@ keywords: ["proportion", "multi-step", "unit rate", "scale factor", "alligation"
 
 ---
 
+#### **Learning Objectives**
+
+- Finish a multi-step proportion problem by applying the requested operation after scaling, rather than stopping at the scale factor.
+- Solve problems where two quantities change at once by reducing to a single unit before scaling back up.
+- Decide whether to add or subtract two rates based on direction of travel or flow.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### One More Step Than You Expect

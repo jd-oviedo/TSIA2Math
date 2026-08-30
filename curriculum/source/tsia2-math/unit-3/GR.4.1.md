@@ -19,6 +19,14 @@ keywords: ["transformation", "translation", "reflection", "rotation", "dilation"
 
 ---
 
+#### **Learning Objectives**
+
+- Apply the coordinate rule for a translation, reflection, rotation, or dilation to find the image of a point or figure.
+- Distinguish which coordinate changes sign or swaps for each transformation, using a quadrant check to catch errors.
+- Apply a composition of two transformations in the correct order, writing down the intermediate point before applying the second rule.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Four Ways to Move a Shape

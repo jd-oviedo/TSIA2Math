@@ -19,6 +19,14 @@ keywords: ["translating", "algebraic expression", "less than", "grouping", "flat
 
 ---
 
+#### **Learning Objectives**
+
+- Translate "less than" and "subtracted from" phrases into expressions with the reversed subtraction order they require.
+- Group phrases like "sum of," "difference of," or "quantity" in parentheses before applying an outside operation.
+- Write an expression for a flat fee plus a per-unit rate, attaching the variable to the quantity that repeats.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### English Into Symbols

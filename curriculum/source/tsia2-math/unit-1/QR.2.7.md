@@ -19,6 +19,14 @@ keywords: ["unit conversion", "metric to customary", "conversion factor", "squar
 
 ---
 
+#### **Learning Objectives**
+
+- Convert between metric and customary units using the exact given conversion factor without rounding mid-calculation.
+- Square or cube a linear conversion factor when converting area or volume instead of applying it directly.
+- Convert temperature using the correct order of operations and convert both parts of a rate.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### The Factor Is Given to You

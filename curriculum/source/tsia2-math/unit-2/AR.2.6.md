@@ -19,6 +19,14 @@ keywords: ["slope", "slope-intercept form", "y-intercept", "writing equations", 
 
 ---
 
+#### **Learning Objectives**
+
+- Calculate slope from two points as rise over run, and write a line's equation by solving for b rather than copying a point's y-value.
+- Write equations of horizontal and vertical lines by identifying which coordinate stays constant.
+- Rearrange a standard-form equation into slope-intercept form by dividing every term by the same coefficient.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Numbers Describe Any Line

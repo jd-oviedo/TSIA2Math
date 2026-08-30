@@ -19,6 +19,14 @@ keywords: ["ratio", "proportion", "scaling", "part to part", "part to whole", "u
 
 ---
 
+#### **Learning Objectives**
+
+- Scale a ratio using a multiplicative scale factor rather than adding the difference between quantities.
+- Distinguish part-to-part ratios from part-to-whole by adding the parts to find the total.
+- Compute chained or rate-based ratios and report the specific quantity the question asks for.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### A Ratio Is a Recipe

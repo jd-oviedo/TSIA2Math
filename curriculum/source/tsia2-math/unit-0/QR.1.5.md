@@ -19,6 +19,14 @@ keywords: ["signed numbers", "negative numbers", "fractions", "decimals", "opera
 
 ---
 
+#### **Learning Objectives**
+
+- Apply the correct sign rule to add, subtract, multiply, and divide signed numbers, including recognizing that "minus a negative" becomes "plus."
+- Add and subtract fractions using a common denominator without ever combining the denominators themselves, while multiplying/dividing fractions straight across or by the reciprocal.
+- Multiply and add decimals correctly by aligning decimal points or counting decimal places, and sanity-check that multiplying by a number under 1 always shrinks the result.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### The Bank Account Test

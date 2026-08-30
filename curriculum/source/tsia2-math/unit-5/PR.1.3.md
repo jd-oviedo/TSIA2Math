@@ -19,6 +19,14 @@ keywords: ["bar graph", "line graph", "pictograph", "key", "reading a display", 
 
 ---
 
+#### **Learning Objectives**
+
+- Locate the exact bar, point, or row a question names before reading any value off a graph.
+- Determine the value of one gridline or key symbol before reading a scale, since it is almost never equal to 1.
+- Verify a stated total or pictograph count by recomputing it from the display rather than accepting it as given.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Questions, Asked in Order

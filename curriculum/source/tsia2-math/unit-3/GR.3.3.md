@@ -19,6 +19,14 @@ keywords: ["sine", "cosine", "tangent", "SOH CAH TOA", "opposite", "adjacent", "
 
 ---
 
+#### **Learning Objectives**
+
+- Set up sin, cos, and tan correctly by labeling a triangle's opposite, adjacent, and hypotenuse relative to the angle in question.
+- Solve for a missing side using the correct ratio and direction.
+- Find a missing angle using the inverse trig function that matches the ratio built from the two known sides.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### What Trigonometry Adds

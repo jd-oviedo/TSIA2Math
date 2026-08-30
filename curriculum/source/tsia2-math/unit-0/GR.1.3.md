@@ -19,6 +19,14 @@ keywords: ["measurement scale", "ruler", "gauge", "graduated cylinder", "tick ma
 
 ---
 
+#### **Learning Objectives**
+
+- Calculate the value of one space on a scale by dividing the interval between two labels by the number of spaces between them, not the number of marks.
+- Read a pointer's value by adding its distance past the lower label to that label, rather than rounding to the nearest printed label.
+- Correctly distinguish marks from spaces when computing scale values, including on scales with two levels of subdivision.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### The Marks Are Not Always Worth One

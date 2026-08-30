@@ -19,6 +19,14 @@ keywords: ["sorting", "counting", "frequency", "data set", "ascending order", "t
 
 ---
 
+#### **Learning Objectives**
+
+- Count occurrences of a value or category by walking a data set systematically, one entry at a time, rather than tallying from memory.
+- Correctly distinguish "how many entries" from "how many distinct values," especially when a question uses the word "distinct."
+- Apply threshold wording precisely to decide which values are included in a count.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### The Easiest Points on the Test, Lost Anyway

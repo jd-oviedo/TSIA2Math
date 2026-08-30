@@ -69,6 +69,12 @@ type TopicRecord = {
   // curriculum_topics and was appended to curriculum_topics_public by
   // sql/curriculum_placeholder_topics.sql.
   is_placeholder: boolean;
+  // Ordered list of short authored strings, each of which may carry $...$ math.
+  // NOT NULL DEFAULT '[]' on the base table (sql/curriculum_objectives.sql), so
+  // an unpopulated topic arrives as an empty array rather than null. Still read
+  // defensively at the call site: the fixture path builds this object in
+  // TypeScript rather than reading the column.
+  objectives: string[];
   related_strand: string | null;
   estimated_time_minutes: number | null;
   guided_notes: string;
@@ -128,7 +134,7 @@ export const loadTopic = cache(async (params: RouteParams) => {
   // was pulling roughly 32KB per page load on a route that is force-dynamic and
   // so has no cache in front of it.
   const TOPIC_COLUMNS =
-    'topic_id, topic_name, is_placeholder, related_strand, estimated_time_minutes, guided_notes, practice_items, practice_problems, mini_quiz';
+    'topic_id, topic_name, is_placeholder, objectives, related_strand, estimated_time_minutes, guided_notes, practice_items, practice_problems, mini_quiz';
 
   // Two reads of the topic, never both, and they do not read the same thing.
   //

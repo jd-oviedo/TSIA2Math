@@ -19,6 +19,14 @@ keywords: ["inequality", "solving inequalities", "flipping the sign", "negative 
 
 ---
 
+#### **Learning Objectives**
+
+- Solve a linear inequality like an equation, flipping the sign only when multiplying or dividing by a negative.
+- Preserve strict versus non-strict inequality signs through every step of the solution.
+- Round a real-world inequality answer to the value that is actually achievable, not the raw decimal.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Almost Exactly Like an Equation

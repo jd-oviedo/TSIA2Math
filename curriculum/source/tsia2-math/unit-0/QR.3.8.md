@@ -19,6 +19,14 @@ keywords: ["distributive property", "distributing", "factoring", "greatest commo
 
 ---
 
+#### **Learning Objectives**
+
+- Distribute a factor across every term inside parentheses, including negative factors and bare minus signs, without stopping after the first term.
+- Simplify an expression by distributing first and then combining only true like terms.
+- Factor an expression completely by pulling out the greatest common factor and verify by distributing back.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Three People, Three Combo Meals

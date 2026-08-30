@@ -19,6 +19,14 @@ keywords: ["factoring", "quadratic", "difference of squares", "perfect square tr
 
 ---
 
+#### **Learning Objectives**
+
+- Distinguish a difference-of-squares expression from a perfect-square trinomial before choosing a factoring pattern.
+- Factor a quadratic with a leading coefficient other than 1 by testing arrangements of the constant and coefficient splits and expanding to check the middle term.
+- Verify any factored form by expanding it back to confirm it reproduces the original expression, including the leading coefficient.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Where the Last Topic Stopped

@@ -19,6 +19,14 @@ keywords: ["order of operations", "PEMDAS", "parentheses", "exponents", "groupin
 
 ---
 
+#### **Learning Objectives**
+
+- Apply the order of operations correctly, treating multiplication/division and addition/subtraction as tied tiers resolved left to right rather than "M before D."
+- Treat the fraction bar, brackets, and radical sign as grouping symbols, evaluating nested expressions from the innermost group outward.
+- Distinguish an exponent from multiplication and identify exactly which term an exponent applies to.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Why Anyone Bothered to Write a Rule

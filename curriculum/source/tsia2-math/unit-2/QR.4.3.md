@@ -19,6 +19,14 @@ keywords: ["linear equation", "modeling", "starting value", "rate", "decreasing 
 
 ---
 
+#### **Learning Objectives**
+
+- Write a linear equation by finding the value at zero and the signed change per one unit.
+- Back a mid-stream given value out to the true zero-point intercept rather than using it directly.
+- Set two models equal to find when they match, subtracting starting values and keeping each entity's own rate and start separate.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Building the Equation, Not Just the Answer

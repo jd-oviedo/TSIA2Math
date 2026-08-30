@@ -19,6 +19,14 @@ keywords: ["absolute value", "distance from zero", "magnitude", "absolute value 
 
 ---
 
+#### **Learning Objectives**
+
+- Evaluate absolute value expressions as "distance from zero," distinguishing the operation from squaring or negating a number.
+- Solve absolute value equations by splitting into two cases and checking both resulting solutions.
+- Translate absolute value inequalities into the correct solution shape: a bounded interval for "less than," two separate tails for "greater than."
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### How Far, Not Which Way

@@ -19,6 +19,14 @@ keywords: ["inverse problem", "missing value", "mean", "range", "working backwar
 
 ---
 
+#### **Learning Objectives**
+
+- Find a missing value from a mean by converting the mean to a total and subtracting the known values.
+- Find a missing value from a range by adding or subtracting the range from the correct known extreme, depending on whether the missing value is the new largest or smallest.
+- Solve for a minimum required value or for two unknowns given both a mean and a range simultaneously.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Questions, Asked in Order

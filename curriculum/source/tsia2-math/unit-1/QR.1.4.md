@@ -19,6 +19,14 @@ keywords: ["square roots", "perfect squares", "estimation", "irrational", "brack
 
 ---
 
+#### **Learning Objectives**
+
+- Bracket a square root between two consecutive perfect squares to identify the integers it falls between.
+- Estimate a square root to the nearest tenth by judging which perfect square it lies closer to.
+- Compare a square root to a decimal by estimating or by squaring the decimal to check.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### You Cannot Compute It, So Estimate It

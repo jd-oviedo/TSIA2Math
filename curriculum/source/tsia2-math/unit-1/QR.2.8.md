@@ -19,6 +19,14 @@ keywords: ["direct variation", "constant of variation", "proportional", "inverse
 
 ---
 
+#### **Learning Objectives**
+
+- Determine whether a relationship is a direct variation by testing for a constant ratio, not a constant difference.
+- Find the constant of variation k and use it to solve for an unknown y or x.
+- Distinguish direct variation from inverse variation based on whether the two quantities move in the same or opposite direction.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### A Name for Something You Already Do

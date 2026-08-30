@@ -19,6 +19,14 @@ keywords: ["linear", "quadratic", "exponential", "function family", "first diffe
 
 ---
 
+#### **Learning Objectives**
+
+- Classify a function as linear, quadratic, or exponential based on where the variable sits in its equation.
+- Determine a function's family from a table by testing first differences, then second differences, then common ratios, in that order.
+- Avoid classifying a function by how fast it appears to grow, and correctly read the base of an exponential expression as a multiplier rather than an added amount.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Three Ways to Get Richer

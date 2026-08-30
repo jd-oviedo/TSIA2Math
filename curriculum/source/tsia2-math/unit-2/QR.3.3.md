@@ -19,6 +19,14 @@ keywords: ["two-variable expression", "modeling", "per unit rate", "flat fee", "
 
 ---
 
+#### **Learning Objectives**
+
+- Write a two-variable cost expression with one rate term per quantity, each attached to its own variable.
+- Distinguish "per" quantities, which need a variable, from "once" flat charges, which don't.
+- Translate comparative relationships like "3 times as many X as Y" into a correct equation, checking with a number.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Things Being Counted at Once

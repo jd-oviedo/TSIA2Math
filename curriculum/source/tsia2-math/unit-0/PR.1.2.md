@@ -19,6 +19,14 @@ keywords: ["frequency table", "grouped frequency", "intervals", "bar graph", "li
 
 ---
 
+#### **Learning Objectives**
+
+- Build a frequency table from raw data and verify it by summing the frequencies against the known total.
+- Find a missing frequency by subtracting the known frequencies from the stated total, not by reporting the running subtotal.
+- Construct grouped frequency intervals that are equal width and non-overlapping, and correctly determine whether a data value or the stated total is the source of any mismatch.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### A Table Makes a Promise

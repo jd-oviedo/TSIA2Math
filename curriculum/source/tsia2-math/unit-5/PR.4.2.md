@@ -19,6 +19,14 @@ keywords: ["linear model", "line of best fit", "slope", "y-intercept", "predicti
 
 ---
 
+#### **Learning Objectives**
+
+- Calculate the slope of a line from two points using rise over run.
+- Find the y-intercept by substituting the slope and one known point into y = mx + b, without swapping the slope and intercept.
+- Use a fitted linear model to predict a y-value, and judge how well a model fits by checking it against all the data points, not just one.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Questions, Asked in Order

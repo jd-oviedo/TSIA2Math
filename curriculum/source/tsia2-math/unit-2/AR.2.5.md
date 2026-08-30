@@ -19,6 +19,14 @@ keywords: ["linear inequality", "two variables", "solution region", "boundary li
 
 ---
 
+#### **Learning Objectives**
+
+- Determine whether a point solves a two-variable inequality by substituting and checking the resulting statement.
+- Determine which half-plane to shade using a test point, and whether the boundary is solid or dashed.
+- Rewrite an inequality in y-form, flipping the sign when dividing by a negative, and check a point against every constraint in a system.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### A Region, Not a Line

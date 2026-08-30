@@ -114,11 +114,32 @@ const JSON_BLOCK_RE = /```json\n[\s\S]*?\n```/g;
 
 type Parsed = {
   metadata: Record<string, unknown>;
+  objectives: string[];
   guided_notes: string;
   practice_problems: string;
   mini_quiz: string;
   answer_key: string;
 };
+
+// parse_objectives() in upload_curriculum.py, line for line.
+//
+// The '- ' prefix -- hyphen AND space -- is the whole filter, and it is the
+// same one on both sides: it drops the block's trailing '---' rule (a bare
+// '-' test would admit it as an objective reading '--') and drops the blank
+// padding lines, without either side carrying an exclusion list the other
+// could fall out of step with.
+//
+// Math spans pass through raw. `$\sqrt{2}$` stays `$\sqrt{2}$`, because the
+// value this returns has to equal the string the uploader stores, and the
+// uploader stores markdown.
+function parseObjectives(block: string): string[] {
+  const out: string[] = [];
+  for (const line of block.split('\n')) {
+    const t = line.trim();
+    if (t.startsWith('- ')) out.push(t.slice(2).trim());
+  }
+  return out;
+}
 
 function parseSource(content: string): Parsed {
   let frontmatter = '';
@@ -163,7 +184,8 @@ function parseSource(content: string): Parsed {
     if (current) sections[current] = buf.join('\n').trim();
   };
   for (const line of body.split('\n')) {
-    if (line.startsWith('#### **Part 1:')) { flush(); current = 'guided_notes'; buf = []; }
+    if (line.startsWith('#### **Learning Objectives**')) { flush(); current = 'objectives'; buf = []; }
+    else if (line.startsWith('#### **Part 1:')) { flush(); current = 'guided_notes'; buf = []; }
     else if (line.startsWith('#### **Part 2:')) { flush(); current = 'practice_problems'; buf = []; }
     else if (line.startsWith('#### **Part 3:')) { flush(); current = 'mini_quiz'; buf = []; }
     else if (line.startsWith('#### **Part 4:')) { flush(); current = 'answer_key'; buf = []; }
@@ -173,6 +195,7 @@ function parseSource(content: string): Parsed {
 
   return {
     metadata,
+    objectives: parseObjectives(sections.objectives ?? ''),
     guided_notes: sections.guided_notes ?? '',
     practice_problems: sections.practice_problems ?? '',
     mini_quiz: sections.mini_quiz ?? '',
@@ -277,6 +300,7 @@ export type FixtureTopic = {
   is_placeholder: boolean;
   related_strand: string;
   estimated_time_minutes: number;
+  objectives: string[];
   guided_notes: string;
   practice_items: ReturnType<typeof buildPracticeItems>;
   practice_problems: { raw: string };
@@ -322,6 +346,7 @@ export function loadTopicFixture(courseId: string, topicId: string): FixtureTopi
     is_placeholder: false,
     related_strand: (meta.related_strand as string) ?? '',
     estimated_time_minutes: (meta.estimated_time_minutes as number) ?? 45,
+    objectives: parsed.objectives,
     guided_notes: parsed.guided_notes,
     practice_items: buildPracticeItems(parsed),
     practice_problems: { raw: parsed.practice_problems },

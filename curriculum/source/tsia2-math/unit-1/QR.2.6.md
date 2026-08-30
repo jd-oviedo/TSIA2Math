@@ -19,6 +19,14 @@ keywords: ["unit conversion", "metric", "customary", "conversion factor", "fence
 
 ---
 
+#### **Learning Objectives**
+
+- Convert between units in the same system using the correct direction: a smaller unit produces a bigger number.
+- Carry a multi-step unit conversion through to completion, matching the final unit to the one the question asks for.
+- Apply the correct fence-post count for a straight run versus a closed loop, and net opposing rates by subtracting.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Bigger Unit, Smaller Number

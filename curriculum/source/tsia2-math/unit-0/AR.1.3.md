@@ -19,6 +19,14 @@ keywords: ["domain", "range", "input", "output", "set notation", "interval", "en
 
 ---
 
+#### **Learning Objectives**
+
+- Identify the domain and range of a relation from ordered pairs, a graph, or a rule, listing each value only once.
+- Compute a function's range by applying its rule to each domain value, rather than reading the range directly off the domain.
+- Express the domain or range of a graphed interval correctly, including proper endpoint inclusion or exclusion, rather than reporting just the extreme points.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Buttons and Products
