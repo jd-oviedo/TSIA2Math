@@ -212,6 +212,13 @@ def sections(text):
 # still a hard failure, because the uploader silently folds its content into the
 # previous section.
 UPLOADER_PARTS = (
+    # Not a "Part", and required=False is deliberately TEMPORARY. All 97 source
+    # files carry the heading today, so the gate would pass if it were True --
+    # but no upload has run since the heading was added, so no production row
+    # has objectives yet. This flips to True in the step after the upload
+    # populates them, at which point a missing heading becomes a hard failure
+    # like every other required part.
+    ('Objectives', '#### **Learning Objectives**', 'objectives', False),
     ('Part 1', '#### **Part 1:', 'guided_notes', True),
     ('Part 2', '#### **Part 2:', 'practice_problems', True),
     ('Part 3', '#### **Part 3:', 'mini_quiz', True),

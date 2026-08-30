@@ -100,12 +100,45 @@ OPTIONAL_SECTIONS = ('extra_practice',)
 # the same list (UPLOADER_PARTS) in order to reproduce this split exactly, and a
 # fifth branch bolted onto a chain is how the two come apart.
 PART_PREFIXES = (
+    # Not a "Part". It is the block above Part 1, and it is in this table for
+    # the same reason the Parts are: the uploader's split is line-prefix based,
+    # so anything that is not listed here is swallowed into whichever section
+    # is currently open -- or, for a block that precedes Part 1, dropped on the
+    # floor because no section is open yet. That is exactly where the three
+    # objective bullets were going until this entry existed.
+    ('#### **Learning Objectives**', 'objectives'),
     ('#### **Part 1:', 'guided_notes'),
     ('#### **Part 2:', 'practice_problems'),
     ('#### **Part 3:', 'mini_quiz'),
     ('#### **Part 4:', 'answer_key'),
     ('#### **Part 5:', 'extra_practice'),
 )
+
+
+def parse_objectives(block):
+    """The Learning Objectives block as a list of bullet strings.
+
+    Mirrored byte for byte by parseObjectives() in lib/curriculum-fixture.ts;
+    scripts/verify_fixture_parity.mjs is what keeps the pair honest.
+
+    Requiring the '- ' prefix -- hyphen AND space -- is what does the filtering
+    here, and it is deliberate that there is no separate exclusion list. The
+    block ends with a '---' horizontal rule and is padded with blank lines; a
+    bare `startswith('-')` would take the rule in as an objective reading '--',
+    and a blank line contributes nothing either way. Both fall out of the same
+    condition, so there is no second rule to keep in sync with the TS side.
+
+    Math spans are passed through RAW. `$\\sqrt{2}$` stays `$\\sqrt{2}$`: the
+    stored value is markdown, exactly as guided_notes is, and rendering is the
+    reader's job downstream. Rendering here would bake one renderer's output
+    into the database and put this parser out of step with every other section.
+    """
+    out = []
+    for line in block.split('\n'):
+        t = line.strip()
+        if t.startswith('- '):
+            out.append(t[2:].strip())
+    return out
 
 
 def parse_markdown_curriculum(filepath):
@@ -177,6 +210,13 @@ def parse_markdown_curriculum(filepath):
     # note on OPTIONAL_SECTIONS.
     return {
         'metadata': metadata,
+        # Serialized here rather than left raw like the sections below it: every
+        # other key is a markdown blob whose consumers each parse it their own
+        # way, whereas this one has a single settled shape (a list of strings)
+        # and the TS fixture has to produce the identical list from the identical
+        # block. Parsing at the one place both sides can be compared is what
+        # makes that provable.
+        'objectives': parse_objectives(sections.get('objectives', '')),
         'guided_notes': sections.get('guided_notes', ''),
         'practice_problems': sections.get('practice_problems', ''),
         'mini_quiz': sections.get('mini_quiz', ''),
@@ -796,6 +836,7 @@ def upload_course_curriculum(course_id, dry_run=False):
                 'unit_number': unit_number,
                 'sequence_in_unit': parsed['metadata'].get('sequence_in_unit', 0),
                 'assessment_layer': parsed['metadata'].get('assessment_layer', 'CRC'),
+                'objectives': parsed['objectives'],
                 'guided_notes': parsed['guided_notes'],
                 'practice_problems': {'raw': parsed['practice_problems']},
                 'mini_quiz': {'raw': parsed['mini_quiz']},
