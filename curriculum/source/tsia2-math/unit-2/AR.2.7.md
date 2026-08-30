@@ -19,6 +19,14 @@ keywords: ["parallel", "perpendicular", "negative reciprocal", "slope comparison
 
 ---
 
+#### **Learning Objectives**
+
+- Identify the equal slope of a parallel line and the negative reciprocal slope of a perpendicular line.
+- Convert equations to slope-intercept form before comparing slopes, rather than comparing printed coefficients.
+- Distinguish parallel lines, which share a slope but not an intercept, from identical lines, which share both.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Rules, Both About Slope

@@ -19,6 +19,14 @@ keywords: ["multi-step", "flat fee", "proportional reasoning", "linear model", "
 
 ---
 
+#### **Learning Objectives**
+
+- Calculate a total by computing the proportional part first, then adding the fixed charge once.
+- Solve backward for an unknown amount by subtracting the fixed charge before dividing.
+- Convert units or periods to match the rate before multiplying, checking that the multiplied quantities' units actually cancel.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### A Proportional Part and a Fixed Part

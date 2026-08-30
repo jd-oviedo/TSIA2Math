@@ -19,6 +19,14 @@ keywords: ["rate of change", "slope", "coefficient", "constant term", "per unit"
 
 ---
 
+#### **Learning Objectives**
+
+- Identify the coefficient of the variable as the rate of change, not the constant term.
+- Avoid merging a flat fee into the rate; test at two input values to check.
+- Calculate a rate from two points using rise over run, keeping subtraction order consistent.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### The Number That Rides the Variable

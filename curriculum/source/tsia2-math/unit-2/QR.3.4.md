@@ -19,6 +19,14 @@ keywords: ["slope", "intercept", "interpretation", "in context", "rate of change
 
 ---
 
+#### **Learning Objectives**
+
+- State what the slope and intercept mean in context using "per" and "before any," not vague phrasing.
+- Verify the intercept's meaning by substituting zero, rather than tying it to a non-zero input.
+- Interpret a negative slope as the modeled quantity decreasing.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Saying What the Numbers Mean

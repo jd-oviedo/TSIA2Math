@@ -19,6 +19,14 @@ keywords: ["system of equations", "substitution", "elimination", "intersection",
 
 ---
 
+#### **Learning Objectives**
+
+- Solve a system of two linear equations using substitution or elimination to find the pair satisfying both.
+- Verify a candidate solution by checking it in both equations, not just one.
+- Identify a system as having no solution, one solution, or infinitely many by comparing full converted equations.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### One Pair That Works in Both

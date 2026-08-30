@@ -19,6 +19,14 @@ keywords: ["function notation", "evaluating", "substitution", "order of operatio
 
 ---
 
+#### **Learning Objectives**
+
+- Evaluate a function at a given input by substituting in brackets and multiplying before adding the constant.
+- Solve backward for an input given an output by undoing operations in reverse order.
+- Evaluate a composite function call from the inside out, and match the input's units to what the function expects.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Substitute, Then Follow the Order of Operations

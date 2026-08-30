@@ -19,6 +19,14 @@ keywords: ["literal equation", "solving for a variable", "rearranging formulas",
 
 ---
 
+#### **Learning Objectives**
+
+- Solve a literal equation for a specified variable by applying the correct inverse operation in reverse order.
+- Divide an entire side by a shared factor rather than dividing only one term.
+- Factor out a variable that appears in two terms before isolating it.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Same Moves, No Numbers to Hide Behind
