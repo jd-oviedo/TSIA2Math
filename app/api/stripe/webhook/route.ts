@@ -13,6 +13,7 @@ import {
 import {
   entitlementFromSubscription,
   productForPaymentLink,
+  subscriptionPeriodEnd,
   type Plan,
   type PlanTerm,
 } from "../../../lib/products";
@@ -20,7 +21,15 @@ import {
   recordPendingEntitlement,
   type RecordOutcome,
 } from "../../../lib/pending-entitlements";
-import { sendUnmatchedCheckoutAlert, type UnmatchedCheckoutCapture } from "../../../lib/email";
+import {
+  sendConversionReceipt,
+  sendPaymentFailedNotice,
+  sendTrialEndingReminder,
+  sendTrialSignupReceipt,
+  sendUnmatchedCheckoutAlert,
+  type UnmatchedCheckoutCapture,
+} from "../../../lib/email";
+import { displayName } from "../../../lib/auth";
 import * as Sentry from "@sentry/nextjs";
 
 // Stripe signs webhooks with a shared secret and delivers a raw JSON body.
@@ -100,6 +109,43 @@ async function resolveProfileId(
   }
   if (!email) return null;
   return findUserIdByEmail(admin, email);
+}
+
+// The recipient of a buyer lifecycle email: the ACCOUNT email, not whatever
+// was typed at checkout — the account is where the access lives, and the
+// checkout email is exactly the thing that goes wrong on the unmatched paths.
+// First name from the same Google metadata every account chip renders.
+//
+// Never throws: an email we cannot address is an email we skip, loudly, and
+// no retry will conjure an address.
+async function buyerFor(
+  admin: Admin,
+  profileId: string
+): Promise<{ email: string | null; firstName: string }> {
+  try {
+    const { data, error } = await admin.auth.admin.getUserById(profileId);
+    if (error || !data?.user) {
+      console.error(`[${SOURCE}] buyerFor: no auth user for ${profileId}`, error);
+      return { email: null, firstName: "there" };
+    }
+    const name = displayName(data.user.user_metadata, data.user.email);
+    return {
+      email: data.user.email ?? null,
+      firstName: name.split(/\s+/)[0] || "there",
+    };
+  } catch (err) {
+    console.error(`[${SOURCE}] buyerFor failed for ${profileId}:`, err);
+    return { email: null, firstName: "there" };
+  }
+}
+
+// What a buyer email calls the plan. Falls back to the product name rather
+// than guessing a tier, for the same reason teacherTierLabel returns null: a
+// wrong tier name in a receipt is worse than a generic one.
+function planLabelFor(plan: string | null | undefined): string {
+  if (plan === "teacher-pro") return "Teacher Pro";
+  if (plan === "teacher-core") return "Teacher Core";
+  return "UnpackMath";
 }
 
 // The plan already recorded against a profile, so a subscription event does not
@@ -334,6 +380,29 @@ export async function POST(req: Request) {
             source: SOURCE,
           });
         }
+
+        // Trial signup receipt. Gated on "written": a Stripe redelivery of the
+        // same event carries the same created timestamp, fails the ordering
+        // predicate, returns "stale", and sends nothing — idempotency for
+        // free. /teacher/welcome deliberately does NOT send this email, so the
+        // race between it and the webhook cannot double-send: whichever writes
+        // second, the webhook is the only sender and fires exactly once.
+        if (session.metadata?.source === "trial" && written === "written" && write.accessUntil) {
+          try {
+            const buyer = await buyerFor(admin, profileId);
+            if (buyer.email) {
+              await sendTrialSignupReceipt({
+                toEmail: buyer.email,
+                firstName: buyer.firstName,
+                trialEndsAt: write.accessUntil,
+              });
+            }
+          } catch (err) {
+            // Never a 500: the entitlement is written, and a retry would only
+            // re-run the write path for the sake of an email.
+            console.error(`[${SOURCE}] trial signup receipt failed to send`, err);
+          }
+        }
         break;
       }
 
@@ -398,6 +467,120 @@ export async function POST(req: Request) {
         break;
       }
 
+      case "customer.subscription.trial_will_end": {
+        // Stripe fires this once, ~3 days before a trial ends. Ride it rather
+        // than build a scheduler: no cron, no clock of our own.
+        const sub = event.data.object as Stripe.Subscription;
+
+        // Trial-flow subscriptions only, by the metadata /start/checkout
+        // stamped at creation. Nothing else in the product has trials, but the
+        // guard keeps that a fact about this branch rather than an assumption.
+        if (sub.metadata?.source !== "trial") break;
+
+        // Already cancelled: "do nothing and we'll charge $30" would be false,
+        // and the person who cancelled does not need a countdown to a charge
+        // that is not coming.
+        if (sub.cancel_at_period_end) break;
+
+        const customerId = toId(sub.customer);
+        const profileId = await resolveProfileId(admin, stripe, { customerId });
+        if (!profileId) {
+          console.error(`[${SOURCE}] no profile match for ${event.type}`, { customerId });
+          Sentry.captureMessage("stripe: subscription event matched no account", {
+            level: "error",
+            tags: { source: SOURCE, stripe_event: event.type },
+            extra: { customerId, subscriptionId: sub.id, status: sub.status },
+          });
+          break;
+        }
+
+        const buyer = await buyerFor(admin, profileId);
+        if (!buyer.email || !sub.trial_end) {
+          console.error(
+            `[${SOURCE}] cannot send trial-ending reminder for ${profileId}: ` +
+              `${buyer.email ? "no trial_end on subscription" : "no account email"}`
+          );
+          break;
+        }
+
+        // NOT wrapped in try/catch, deliberately and unlike every other email
+        // in this handler: the reminder IS this branch's entire action, so a
+        // Resend failure throws, the handler returns 500, and Stripe retries.
+        // This is the compliance email; delivery beats a rare duplicate.
+        await sendTrialEndingReminder({
+          toEmail: buyer.email,
+          firstName: buyer.firstName,
+          trialEndsAt: new Date(sub.trial_end * 1000),
+        });
+        break;
+      }
+
+      case "invoice.payment_succeeded": {
+        // The conversion receipt: the FIRST post-trial charge, exactly once.
+        const invoice = event.data.object as Stripe.Invoice;
+        const subDetails = invoice.parent?.subscription_details;
+
+        // subscription_cycle is a renewal charge; the $1 signup fee arrives as
+        // subscription_create and every manual invoice as something else. The
+        // metadata snapshot on the invoice's parent is the subscription stamp
+        // from /start/checkout, so non-trial subscribers never enter here.
+        if (invoice.billing_reason !== "subscription_cycle") break;
+        if (subDetails?.metadata?.source !== "trial") break;
+
+        const subscriptionId = toId(subDetails.subscription ?? null);
+        if (!subscriptionId) break;
+
+        // "First post-trial" is detected structurally rather than by reading
+        // profile state, which would race the subscription.updated event that
+        // flips trialing to active: the conversion invoice's line period
+        // STARTS at trial_end, and renewal n+1 starts a month later. Immune to
+        // event ordering and to a card that only clears on a dunning retry.
+        let sub: Stripe.Subscription;
+        try {
+          sub = await stripe.subscriptions.retrieve(subscriptionId);
+        } catch (err) {
+          console.error(`[${SOURCE}] could not retrieve subscription ${subscriptionId}:`, err);
+          break;
+        }
+        if (!sub.trial_end) break;
+        const isConversion = (invoice.lines?.data ?? []).some(
+          (line) => line.period?.start === sub.trial_end
+        );
+        if (!isConversion) break;
+
+        const profileId = await resolveProfileId(admin, stripe, {
+          customerId: toId(invoice.customer),
+        });
+        if (!profileId) {
+          console.error(`[${SOURCE}] no profile match for ${event.type}`, {
+            customerId: toId(invoice.customer),
+          });
+          break;
+        }
+
+        const known = await knownPlanFor(admin, profileId);
+        const buyer = await buyerFor(admin, profileId);
+        if (!buyer.email) break;
+
+        try {
+          // amount and plan from the invoice and profile, not hardcoded $30 /
+          // Pro: a teacher who took the Core save-offer mid-trial converts at
+          // $20 and the receipt must say so.
+          await sendConversionReceipt({
+            toEmail: buyer.email,
+            firstName: buyer.firstName,
+            amountCents: invoice.amount_paid,
+            planLabel: planLabelFor(known?.plan),
+            nextChargeAt: subscriptionPeriodEnd(sub),
+          });
+        } catch (err) {
+          // Logged, never a 500: a post-charge receipt is not worth a retry
+          // storm. Asymmetric with the reminder above, and intended.
+          console.error(`[${SOURCE}] conversion receipt failed to send`, err);
+        }
+        break;
+      }
+
       case "invoice.payment_failed": {
         // OBSERVATIONAL ONLY, and this is a deliberate behaviour change.
         //
@@ -416,6 +599,40 @@ export async function POST(req: Request) {
           customer: toId(invoice.customer),
           invoice: invoice.id,
         });
+
+        // The buyer notice is the ONE thing this branch now does beyond
+        // logging, and it changes nothing about access: past_due still grants
+        // until access_until, exactly as the paragraph above says.
+        //
+        // Trial-flow subscriptions only, and only on the FIRST attempt of a
+        // dunning cycle: Stripe retries the card ~4 times over days, each
+        // retry fires this event again with attempt_count incremented, and
+        // four copies of "update your card" is nagging, not information.
+        const failedSubDetails = invoice.parent?.subscription_details;
+        if (failedSubDetails?.metadata?.source !== "trial") break;
+        if (invoice.attempt_count !== 1) break;
+
+        const failedProfileId = await resolveProfileId(admin, stripe, {
+          customerId: toId(invoice.customer),
+        });
+        if (!failedProfileId) break;
+
+        const failedPlan = await knownPlanFor(admin, failedProfileId);
+        const failedBuyer = await buyerFor(admin, failedProfileId);
+        if (!failedBuyer.email) break;
+
+        try {
+          await sendPaymentFailedNotice({
+            toEmail: failedBuyer.email,
+            firstName: failedBuyer.firstName,
+            amountCents: invoice.amount_due,
+            planLabel: planLabelFor(failedPlan?.plan),
+          });
+        } catch (err) {
+          // Logged, never a 500. Observational stays observational: this
+          // branch must not be able to start a retry storm.
+          console.error(`[${SOURCE}] payment-failed notice failed to send`, err);
+        }
         break;
       }
 

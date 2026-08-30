@@ -68,6 +68,10 @@ const TOPICS = [
   ['unit-5', 'PR.4.4'],  // PR, last topic in the course sequence
   ['unit-1', 'QR.2.1'],  // QR
   ['unit-1', 'QR.3.5'],  // QR, the one templated topic
+  // The one topic with a Part 5, and the only one that exercises the three-way
+  // Part 4 split at all. Without it both implementations could have kept a
+  // two-way split and this verifier would still have reported ten green topics.
+  ['unit-3', 'GR.2.6'],
 ];
 
 const SRC = 'curriculum/source/tsia2-math';
@@ -108,7 +112,12 @@ function compare(topic, part4ForTs, pySolutions) {
   const ts = splitAnswerKey(part4ForTs);
   const problems = [];
 
-  for (const section of ['practice', 'mini_quiz']) {
+  // All three sections, extra_practice included. It is optional, so both sides
+  // report nothing for the 96 topics without a Part 5 and the comparison is a
+  // no-op there -- but on GR.2.6 this is the check that the two three-way
+  // splits agree, which is the whole reason split_answer_key_sections() and
+  // splitAnswerKey() were rewritten together rather than one at a time.
+  for (const section of ['practice', 'mini_quiz', 'extra_practice']) {
     const tsEntries = ts[section];
     const pySection = pySolutions[section] ?? {};
 

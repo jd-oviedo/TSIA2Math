@@ -4,7 +4,11 @@ import { createClient } from '@/lib/supabase/server';
 import { createClient as createSessionClient } from '@/app/lib/supabase-server';
 import { createAdminClient } from '@/app/lib/supabase-admin';
 import { requireTeacher } from '@/app/lib/auth';
-import { renderInlineWithMath, splitAnswerKey } from '@/lib/curriculum-utils';
+import {
+  renderInlineWithMath,
+  splitAnswerKey,
+  type AnswerKeyEntries,
+} from '@/lib/curriculum-utils';
 import { loadTopicFixture } from '@/lib/curriculum-fixture';
 import {
   getTopics,
@@ -189,7 +193,12 @@ export const loadTopic = cache(async (params: RouteParams) => {
   const signInHref = `/login?next=${encodeURIComponent(basePath)}`;
 
   const answerKeyRaw = teacher ? topic.answer_key?.raw || '' : '';
-  const answerKey = teacher ? splitAnswerKey(answerKeyRaw) : { practice: [], mini_quiz: [] };
+  // The non-teacher branch is an empty AnswerKeyEntries, not a partial one:
+  // splitAnswerKey now returns a third section (Part 5) and a literal missing a
+  // key would only be caught wherever it happened to be indexed.
+  const answerKey: AnswerKeyEntries = teacher
+    ? splitAnswerKey(answerKeyRaw)
+    : { practice: [], mini_quiz: [], extra_practice: [] };
 
   const practiceSection: StoredSection | undefined = topic.practice_items?.practice;
   const quizSection: StoredSection | undefined = topic.practice_items?.mini_quiz;

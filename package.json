@@ -7,12 +7,14 @@
     "build": "npm run lint && next build",
     "start": "next start",
     "test": "node --import ./scripts/ts-alias-hook.mjs --test \"tests/*.test.ts\"",
-    "test:offline": "npm test && npm run test:solutions && npm run test:gumu-resolution && npm run test:gumu-panel && npm run test:crisis && npm run test:role-promotion && npm run test:claim && npm run test:upgrade-slugs && npm run test:answer-key-parity && npm run test:due-dates && npm run test:grades-extract",
+    "test:offline": "npm test && npm run test:solutions && npm run test:gumu-resolution && npm run test:gumu-panel && npm run test:crisis && npm run test:role-promotion && npm run test:claim && npm run test:upgrade-slugs && npm run test:answer-key-parity && npm run test:extra-practice-gate && npm run test:due-dates && npm run test:grades-extract",
     "test:due-dates": "node --import ./scripts/ts-alias-hook.mjs scripts/verify_due_date_agreement.mjs",
     "test:teacher-grades": "node --import ./scripts/ts-alias-hook.mjs scripts/verify_teacher_grades.mjs",
     "test:grades-extract": "node --import ./scripts/ts-alias-hook.mjs scripts/faultproof_grades_extract.mjs",
     "test:auth-gate": "node scripts/verify_auth_gate.mjs",
     "test:answer-key-parity": "node --import ./scripts/ts-alias-hook.mjs scripts/verify_answer_key_parity.mjs",
+    "test:extra-practice-gate": "node --import ./scripts/ts-alias-hook.mjs scripts/faultproof_extra_practice_gate.mjs",
+    "test:extra-practice-lint": "python3 scripts/faultproof_extra_practice_lint.py",
     "test:solutions": "node --import ./scripts/ts-alias-hook.mjs scripts/faultproof_earned_solutions.mjs",
     "test:gumu-resolution": "node scripts/faultproof_gumu_resolution.mjs",
     "test:gumu-panel": "node scripts/faultproof_gumu_panel.mjs",
@@ -67,16 +69,13 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@types/katex": "^0.16.8",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "autoprefixer": "^10",
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.9",
+    "knip": "^6.32.3",
     "playwright": "^1.62.1",
-    "postcss": "^8",
-    "tailwindcss": "^3",
     "typescript": "^5"
   }
 }

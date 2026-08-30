@@ -25,6 +25,7 @@ import {
   type StrandBreakdown,
 } from "../lib/placement";
 import { STRAND_TINT } from "../lib/strands";
+import { SPIN_CSS } from '../motion';
 
 // ─── Types (match the API route response shapes) ─────────────────────────────
 
@@ -925,8 +926,11 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
 function Spinner() {
   return (
     <div style={{ textAlign: 'center', padding: '48px 0' }}>
-      <div style={{ width: 30, height: 30, border: '3px solid #E7E5DD', borderTopColor: '#C68A2F', borderRadius: '50%', margin: '0 auto', animation: 'umspin 0.8s linear infinite' }} />
-      <style>{`@keyframes umspin { to { transform: rotate(360deg); } }`}</style>
+      <div style={{ width: 30, height: 30, border: '3px solid #E7E5DD', borderTopColor: '#C68A2F', borderRadius: '50%', margin: '0 auto', animation: 'um-spin 0.8s linear infinite' }} />
+      {/* SPIN_CSS, not MOTION_CSS. The bare keyframe and nothing else: this file
+          is the teacher dashboard and the entrance system does not reach it.
+          See app/motion.ts for why the two are separate exports. */}
+      <style>{SPIN_CSS}</style>
     </div>
   );
 }
@@ -1142,10 +1146,50 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
             </div>
 
             {classes.length === 0 ? (
-              <div style={{ ...cardStyle(), padding: '48px 28px', textAlign: 'center' }}>
-                <p style={{ fontSize: 16, fontWeight: 600, color: DASH.heading, margin: '0 0 8px' }}>Create your first class</p>
-                <p style={{ fontSize: 13.5, color: DASH.muted, margin: '0 0 20px', lineHeight: 1.6 }}>Set up a class to get a join code, invite students, and start seeing<br />class-wide misconception patterns.</p>
-                <button onClick={() => setShowNewClass(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: '#C68A2F', border: 'none', borderRadius: 9, padding: '11px 20px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 14, fontWeight: 600, color: '#fff' }}>+ New class</button>
+              /* FIRST RUN. The last step of onboarding, and the only thing on
+                 screen when a teacher has no classes yet.
+
+                 It reads as one instruction with its consequence rather than a
+                 description of the product, because a teacher who has just paid
+                 does not need to be sold to again. The three lines below the copy
+                 are a STATIC PREVIEW of what happens next, not a checklist:
+                 nothing is persisted, nothing ticks, and there is no state to go
+                 stale. A real checklist needs somewhere to store progress and is
+                 its own piece of work.
+
+                 STAYS IN THE DASHBOARD'S OWN SYSTEM. cardStyle() and the DASH
+                 tokens, so this is a rounded card like every other card here.
+                 The onboarding flow's flat panels stop at /teacher's door, and
+                 the import graph is what keeps them apart. */
+              <div style={{ ...cardStyle(), padding: '40px 28px', textAlign: 'center' }}>
+                <p style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: 1.2, textTransform: 'uppercase', color: DASH.dim, margin: '0 0 10px' }}>Last step</p>
+                <p style={{ fontFamily: FONT_HEADING, fontSize: 21, fontWeight: 600, color: DASH.heading, margin: '0 0 10px', letterSpacing: -0.3 }}>Create your first class</p>
+                <p style={{ fontSize: 13.5, color: DASH.muted, margin: '0 auto 22px', lineHeight: 1.65, maxWidth: 380 }}>Name it, and we generate a join code on the spot. Once your students are in, their diagnostic results fill this dashboard automatically.</p>
+
+                {/* Static preview of the next three moments. Not persisted, not
+                    interactive, and deliberately not numbered as tasks to tick
+                    off. */}
+                <div style={{ display: 'inline-flex', flexDirection: 'column', gap: 9, textAlign: 'left', margin: '0 0 24px' }}>
+                  {['Name your class', 'Share the join code with students', 'Watch the roster and misconceptions fill in'].map((line, i) => (
+                    <div key={line} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: DASH.muted }}>
+                      <span aria-hidden style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 20, height: 20, flexShrink: 0, borderRadius: '50%', border: `1px solid ${DASH.line}`, fontSize: 11, fontWeight: 700, color: DASH.dim }}>{i + 1}</span>
+                      {line}
+                    </div>
+                  ))}
+                </div>
+
+                <div>
+                  {/* The onboarding flow's CTA treatment: Sunset Orange fill with
+                      near-black type at 9.00:1. White on this orange is 2.10 and
+                      would fail, so the label is dark rather than inverted.
+                      Literal hexes because --uml-* only resolves inside
+                      .um-login, and the teacher tree deliberately does not import
+                      the curriculum palette. This is the ONLY button in this file
+                      that moves off the teacher gold. */}
+                  <button onClick={() => setShowNewClass(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: '#F0A33E', border: 'none', borderRadius: 9, padding: '12px 22px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 14, fontWeight: 700, color: '#111111' }}>+ New class</button>
+                </div>
+
+                <p style={{ fontSize: 12, color: DASH.dim, margin: '14px 0 0' }}>Takes about a minute.</p>
               </div>
             ) : loading ? (
               <Spinner />

@@ -10,6 +10,7 @@ import OfficialScorePanel from "./OfficialScorePanel";
 import CurriculumProgressPanel from "./CurriculumProgressPanel";
 import GradeLetterButton from "./GradeLetterButton";
 import { STRAND_TINT } from "../../../lib/strands";
+import { SPIN_CSS } from '../../../motion';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -147,7 +148,7 @@ export default function StudentDetailPage() {
         * { box-sizing: border-box; }
         body { margin: 0; -webkit-font-smoothing: antialiased; }
         ${FONT_BASE_CSS}
-        @keyframes umspin { to { transform: rotate(360deg); } }
+        ${SPIN_CSS}
       `}</style>
       <div style={{ minHeight: "100vh", background: DASH.pageBg, fontFamily: FONT_BODY, color: "#1A1A1A" }}>{children}</div>
     </>
@@ -167,7 +168,7 @@ export default function StudentDetailPage() {
   if (!data) {
     return shell(
       <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ width: 32, height: 32, border: "3px solid #E7E5DD", borderTopColor: "#C68A2F", borderRadius: "50%", animation: "umspin 0.8s linear infinite" }} />
+        <div style={{ width: 32, height: 32, border: "3px solid #E7E5DD", borderTopColor: "#C68A2F", borderRadius: "50%", animation: "um-spin 0.8s linear infinite" }} />
       </div>
     );
   }

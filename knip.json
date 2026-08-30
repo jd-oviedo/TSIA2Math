@@ -1,0 +1,14 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "next": true,
+  "entry": [
+    "middleware.ts",
+    "instrumentation.ts",
+    "instrumentation-client.ts",
+    "sentry.edge.config.ts",
+    "sentry.server.config.ts",
+    "scripts/**/*.{mjs,ts}",
+    "tests/**/*.test.ts"
+  ],
+  "project": ["app/**/*.{ts,tsx}", "lib/**/*.{ts,tsx}", "scripts/**/*.{mjs,ts}", "tests/**/*.ts"]
+}

@@ -504,3 +504,260 @@ export async function sendUnmatchedCheckoutAlert({
     throw new Error(error.message);
   }
 }
+
+
+// ---------------------------------------------------------------------------
+// Buyer lifecycle emails — the $1 trial flow
+// ---------------------------------------------------------------------------
+
+// Where "update your card" and "manage" links land: the portal redirect at
+// app/teacher/billing/route.ts. Card collection is Stripe's job.
+const BILLING_URL = `${APP_ORIGIN}/teacher/billing`;
+// Where a CANCEL link lands: the in-app cancel screen with the Core
+// save-offer. Deliberately not the portal — portal cancellation is disabled in
+// the Stripe dashboard so an email-initiated cancel cannot bypass the offer.
+const CANCEL_URL = `${APP_ORIGIN}/teacher/cancel`;
+const DASHBOARD_URL = `${APP_ORIGIN}/teacher`;
+
+// Shared scaffold for the four senders below, and ONLY those four. The older
+// senders each carry their own copy of this table layout; refactoring working
+// emails onto a new helper is deliberately not part of the trial build.
+function buyerEmailHtml({
+  heading,
+  paragraphsHtml,
+  cta,
+  footNote,
+}: {
+  heading: string;
+  /** Already-safe HTML. Callers escape any user-derived value they interpolate. */
+  paragraphsHtml: string[];
+  cta?: { label: string; url: string };
+  footNote?: string;
+}): string {
+  const body = paragraphsHtml
+    .map(
+      (p) =>
+        `<p style="margin:0 0 16px; font-size:14px; color:#3a3a3a; line-height:1.65;">${p}</p>`
+    )
+    .join("\n");
+
+  const ctaBlock = cta
+    ? `
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin:8px 0 20px;">
+      <tr>
+        <td align="center">
+          <a href="${cta.url}" style="display:inline-block; background:#0f1e35; color:#ffffff; font-size:15px; font-weight:700; text-decoration:none; padding:13px 30px; border-radius:10px;">
+            ${escapeHtml(cta.label)}
+          </a>
+        </td>
+      </tr>
+    </table>`
+    : "";
+
+  const foot = footNote
+    ? `<p style="margin:0; font-size:13px; color:#8a8983; line-height:1.6;">${footNote}</p>`
+    : "";
+
+  return `
+    <!DOCTYPE html>
+    <html>
+      <head><meta charset="utf-8" /></head>
+      <body style="margin:0; padding:0; background:#f5f5f3;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f3; padding:32px 16px;">
+          <tr>
+            <td align="center">
+              <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px; background:#ffffff; border-radius:14px; overflow:hidden; border:1px solid #e0dfd8;">
+                <tr>
+                  <td style="background:#0f1e35; padding:20px 28px;">
+                    <p style="margin:0; font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#C68A2F;">UnpackMath</p>
+                    <h1 style="margin:6px 0 0; font-size:18px; font-weight:700; color:#ffffff;">${escapeHtml(heading)}</h1>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:24px 28px;">
+                    ${body}
+                    ${ctaBlock}
+                    ${foot}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="background:#f5f5f3; border-top:1px solid #e0dfd8; padding:16px 28px; text-align:center;">
+                    <p style="margin:0; font-size:11px; color:#aaa;">
+                      Sent by UnpackMath &middot;
+                      <a href="https://www.unpackmath.com" style="color:#aaa;">unpackmath.com</a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </body>
+    </html>
+  `;
+}
+
+// Dates in buyer emails are Central, like the crisis alert: the audience is
+// Texas teachers and a UTC date can be off by a day at the boundary that
+// matters most here, which is "when will I be charged".
+function emailDate(d: Date): string {
+  return d.toLocaleDateString("en-US", { timeZone: "America/Chicago", dateStyle: "long" });
+}
+
+function usd(cents: number): string {
+  const dollars = cents / 100;
+  return Number.isInteger(dollars) ? `$${dollars}` : `$${dollars.toFixed(2)}`;
+}
+
+// All four senders throw on a Resend error, like every sender in this file.
+// Whether a throw is allowed to change the webhook's response differs PER
+// EVENT and is decided at the call site in app/api/stripe/webhook/route.ts:
+// the trial-ending reminder propagates (a 500 makes Stripe retry, and delivery
+// beats a rare duplicate for the compliance email); the other three are
+// caught and logged there, deliberately.
+
+export async function sendTrialSignupReceipt({
+  toEmail,
+  firstName,
+  trialEndsAt,
+}: {
+  toEmail: string;
+  firstName: string;
+  trialEndsAt: Date;
+}) {
+  const name = escapeHtml(firstName);
+  const html = buyerEmailHtml({
+    heading: "Your 7-day Teacher Pro trial is live",
+    paragraphsHtml: [
+      `Hey ${name}, your 7-day Teacher Pro trial is live. You paid <strong>$1</strong> today.`,
+      `On <strong>${escapeHtml(emailDate(trialEndsAt))}</strong> we'll charge $30/month to keep it going, ` +
+        `and you can cancel anytime before then, right from your dashboard.`,
+    ],
+    cta: { label: "Set up your first class", url: DASHBOARD_URL },
+    footNote: "If anything looks off, just reply to this email.",
+  });
+
+  const { error } = await resend.emails.send({
+    from: "UnpackMath <no-reply@unpackmath.com>",
+    to: toEmail,
+    replyTo: SUPPORT_INBOX,
+    subject: "You're in. Your UnpackMath trial started.",
+    html,
+  });
+
+  if (error) {
+    console.error("[email] failed to send trial signup receipt:", error);
+    throw new Error(error.message);
+  }
+}
+
+export async function sendTrialEndingReminder({
+  toEmail,
+  firstName,
+  trialEndsAt,
+}: {
+  toEmail: string;
+  firstName: string;
+  trialEndsAt: Date;
+}) {
+  const name = escapeHtml(firstName);
+  const html = buyerEmailHtml({
+    heading: "3 days left on your trial",
+    paragraphsHtml: [
+      `Hey ${name}, quick heads up: your Teacher Pro trial ends ` +
+        `<strong>${escapeHtml(emailDate(trialEndsAt))}</strong>.`,
+      `Do nothing and we'll charge $30/month, and everything keeps running — ` +
+        `your classes, your misconception grid, all of it.`,
+      `Want to stop instead? <a href="${CANCEL_URL}" style="color:#C68A2F; font-weight:600;">Cancel in two clicks here</a>, no hard feelings.`,
+    ],
+    cta: { label: "Open your dashboard", url: DASHBOARD_URL },
+  });
+
+  const { error } = await resend.emails.send({
+    from: "UnpackMath <no-reply@unpackmath.com>",
+    to: toEmail,
+    replyTo: SUPPORT_INBOX,
+    subject: "3 days left on your UnpackMath trial",
+    html,
+  });
+
+  if (error) {
+    console.error("[email] failed to send trial-ending reminder:", error);
+    throw new Error(error.message);
+  }
+}
+
+export async function sendConversionReceipt({
+  toEmail,
+  firstName,
+  amountCents,
+  planLabel,
+  nextChargeAt,
+}: {
+  toEmail: string;
+  firstName: string;
+  amountCents: number;
+  /** "Teacher Pro", or "Teacher Core" for a trial that took the save-offer. */
+  planLabel: string;
+  nextChargeAt: Date | null;
+}) {
+  const name = escapeHtml(firstName);
+  const html = buyerEmailHtml({
+    heading: `You're officially on ${planLabel}`,
+    paragraphsHtml: [
+      `Thanks ${name}. Your <strong>${escapeHtml(usd(amountCents))}/month ${escapeHtml(planLabel)}</strong> is active.` +
+        (nextChargeAt ? ` Next charge is ${escapeHtml(emailDate(nextChargeAt))}.` : ""),
+      `You can <a href="${CANCEL_URL}" style="color:#C68A2F; font-weight:600;">manage or cancel anytime here</a>.`,
+    ],
+    cta: { label: "Jump back in", url: DASHBOARD_URL },
+  });
+
+  const { error } = await resend.emails.send({
+    from: "UnpackMath <no-reply@unpackmath.com>",
+    to: toEmail,
+    replyTo: SUPPORT_INBOX,
+    subject: `You're officially on ${planLabel}`,
+    html,
+  });
+
+  if (error) {
+    console.error("[email] failed to send conversion receipt:", error);
+    throw new Error(error.message);
+  }
+}
+
+export async function sendPaymentFailedNotice({
+  toEmail,
+  firstName,
+  amountCents,
+  planLabel,
+}: {
+  toEmail: string;
+  firstName: string;
+  amountCents: number;
+  planLabel: string;
+}) {
+  const name = escapeHtml(firstName);
+  const html = buyerEmailHtml({
+    heading: "We couldn't process your payment",
+    paragraphsHtml: [
+      `Hey ${name}, your <strong>${escapeHtml(usd(amountCents))} ${escapeHtml(planLabel)}</strong> charge ` +
+        `didn't go through — usually just a card expiry thing.`,
+      `<a href="${BILLING_URL}" style="color:#C68A2F; font-weight:600;">Update your card here</a> to keep your classes running. We'll try again in a couple of days.`,
+    ],
+    cta: { label: "Update payment method", url: BILLING_URL },
+  });
+
+  const { error } = await resend.emails.send({
+    from: "UnpackMath <no-reply@unpackmath.com>",
+    to: toEmail,
+    replyTo: SUPPORT_INBOX,
+    subject: "We couldn't process your UnpackMath payment",
+    html,
+  });
+
+  if (error) {
+    console.error("[email] failed to send payment-failed notice:", error);
+    throw new Error(error.message);
+  }
+}

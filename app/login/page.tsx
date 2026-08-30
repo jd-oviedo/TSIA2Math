@@ -3,6 +3,7 @@
 import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { LOGIN_CSS } from './login-theme';
+import { MOTION_CSS } from '../motion';
 import { RoleSelect } from './RoleSelect';
 import { SignIn } from './SignIn';
 
@@ -25,7 +26,15 @@ export default function LoginPage() {
     <>
       {/* The --uml-* variables and the handful of rules inline styles cannot
           express: :focus-visible, :hover, and the narrow-width header. */}
-      <style>{LOGIN_CSS}</style>
+      {/* MOTION_CSS AFTER LOGIN_CSS, and the order is checked rather than
+          incidental. Both files carry a `prefers-reduced-motion` block and they
+          guard different things -- login-theme kills the .uml-lift hover
+          transition, motion.ts kills the entrance animation -- so they do not
+          overlap and neither needs to win. What the order does buy is that
+          motion.ts's `animation: none !important` guard is parsed last, which
+          is the property its own header says it needs against a surface's
+          later <style>. */}
+      <style>{LOGIN_CSS + MOTION_CSS}</style>
       <Suspense fallback={null}>
         <LoginBody />
       </Suspense>

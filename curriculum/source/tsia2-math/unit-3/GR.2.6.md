@@ -634,3 +634,221 @@ Step 2: Apply four-thirds pi.
   "D": "wrong_fractional_divisor_used"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+<!-- Note for authors: there is no `---` rule between the mini quiz's last
+answer and this heading, deliberately. A section's last worked solution runs to
+the next heading, so a rule left between the two lands inside that solution's
+stored body -- practice item 10 already carries a trailing `---` for exactly
+that reason. Omitting it keeps the mini quiz's stored worked_solutions
+byte-identical. This note sits BELOW the heading because text before a
+section's first item header is discarded by the splitter. -->
+
+
+**1. A rectangular prism measures $7$ by $3$ by $2$. What is its volume?**
+
+Step 1: Multiply the three dimensions.
+- $7 \times 3 \times 2 = 42$
+
+**Answer: A** ($42$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: multiplies the three dimensions for a volume of 42 cubic units",
+  "B": "Student makes misconception: dimensions_added_not_multiplied (adds 7, 3 and 2 instead of multiplying them)",
+  "C": "Student makes misconception: omits_second_component (multiplies only the first two dimensions, producing an area of 21)",
+  "D": "Student makes misconception: volume_surface_area_confusion (computes the surface area of 82 square units, a covering rather than a filling)"
+},
+"misconception_tag": {
+  "B": "dimensions_added_not_multiplied",
+  "C": "omits_second_component",
+  "D": "volume_surface_area_confusion"
+}
+```
+
+---
+
+**2. A cylinder has a radius of $4$ and a height of $6$. What is its volume?**
+
+Step 1: The base is a circle, so square the radius.
+- $\pi r^{2} = 3.14 \times 16 = 50.24$
+
+Step 2: Multiply by the height.
+- $50.24 \times 6 = 301.44$
+
+**Answer: B** ($301.44$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: radius_not_squared (uses 3.14 times 4 times 6, leaving the radius un-squared and producing 75.36)",
+  "B": "Correct: squares the radius for a base area of 50.24 and multiplies by the height of 6, giving 301.44 cubic units",
+  "C": "Student makes misconception: cone_cylinder_ratio_wrong (divides by 3 as though the solid tapered to a point, producing 100.48)",
+  "D": "Student makes misconception: volume_surface_area_confusion (computes the total surface area of 251.2 square units rather than the volume)"
+},
+"misconception_tag": {
+  "A": "radius_not_squared",
+  "C": "cone_cylinder_ratio_wrong",
+  "D": "volume_surface_area_confusion"
+}
+```
+
+---
+
+**3. A cone has a radius of $6$ and a height of $10$. What is its volume?**
+
+Step 1: Find the volume of the cylinder that encloses it.
+- $3.14 \times 36 \times 10 = 1130.4$
+
+Step 2: A cone is one third of that cylinder.
+- $1130.4 \div 3 = 376.8$
+
+**Answer: C** ($376.8$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: omits_fractional_factor (finds the enclosing cylinder's 1130.4 and never applies the one-third)",
+  "B": "Student makes misconception: wrong_fractional_divisor_used (halves the cylinder instead of taking a third, producing 565.2)",
+  "C": "Correct: takes one third of the enclosing cylinder's 1130.4 for a volume of 376.8 cubic units",
+  "D": "Student makes misconception: radius_not_squared (leaves the radius un-squared, computing a third of 3.14 times 6 times 10 as 62.8)"
+},
+"misconception_tag": {
+  "A": "omits_fractional_factor",
+  "B": "wrong_fractional_divisor_used",
+  "D": "radius_not_squared"
+}
+```
+
+---
+
+**4. A square pyramid has a base edge of $6$ and a height of $12$. What is its volume?**
+
+Step 1: The base is a square, so find its area.
+- $6 \times 6 = 36$
+
+Step 2: A pyramid is one third of the prism on the same base.
+- $36 \times 12 = 432$, and $432 \div 3 = 144$
+
+**Answer: D** ($144$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: omits_fractional_factor (finds the enclosing prism's 432 and never applies the one-third)",
+  "B": "Student makes misconception: wrong_fractional_divisor_used (halves the prism instead of taking a third, producing 216)",
+  "C": "Student makes misconception: applies_fractional_factor_twice (divides by 3 a second time, taking 144 down to 48)",
+  "D": "Correct: takes one third of the enclosing prism's 432 for a volume of 144 cubic units"
+},
+"misconception_tag": {
+  "A": "omits_fractional_factor",
+  "B": "wrong_fractional_divisor_used",
+  "C": "applies_fractional_factor_twice"
+}
+```
+
+---
+
+**5. A cylindrical tank has a radius of $5$ and a height of $8$. It is filled to one quarter of its height. What volume of water does it hold?**
+
+Step 1: Find the volume of the full tank.
+- $3.14 \times 25 \times 8 = 628$
+
+Step 2: Take one quarter of it.
+- $628 \div 4 = 157$
+
+**Answer: A** ($157$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: finds the full tank's 628 and takes one quarter for 157 cubic units of water",
+  "B": "Student makes misconception: omits_fractional_factor (reports the full tank's 628 and never applies the one quarter)",
+  "C": "Student makes misconception: wrong_fractional_divisor_used (halves the tank instead of quartering it, producing 314)",
+  "D": "Student makes misconception: applies_fractional_factor_twice (quarters the tank a second time, taking 157 down to 39.25)"
+},
+"misconception_tag": {
+  "B": "omits_fractional_factor",
+  "C": "wrong_fractional_divisor_used",
+  "D": "applies_fractional_factor_twice"
+}
+```
+
+---
+
+**6. A solid is a cube of edge $4$ with a square pyramid of base edge $4$ and height $3$ on top. What is its total volume?**
+
+Step 1: The cube.
+- $4 \times 4 \times 4 = 64$
+
+Step 2: The pyramid, one third of the prism on the same base.
+- $16 \times 3 = 48$, and $48 \div 3 = 16$
+
+Step 3: Add the two pieces.
+- $64 + 16 = 80$
+
+**Answer: B** ($80$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: omits_second_component (reports the cube's 64 and never adds the pyramid on top)",
+  "B": "Correct: adds the cube's 64 to the pyramid's 16 for a total volume of 80 cubic units",
+  "C": "Student makes misconception: omits_fractional_factor (treats the pyramid as the full prism of 48, giving 112)",
+  "D": "Student makes misconception: wrong_fractional_divisor_used (halves the pyramid's prism instead of taking a third, adding 24 to give 88)"
+},
+"misconception_tag": {
+  "A": "omits_second_component",
+  "C": "omits_fractional_factor",
+  "D": "wrong_fractional_divisor_used"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These
+items are drawn by the worksheet generator and are not part of the 7-of-10
+practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end
+of Part 4.
+
+Use $\pi \approx 3.14$.
+
+**Basic Level**
+
+1. A rectangular prism measures $7$ by $3$ by $2$. What is its volume?
+   - A) $42$
+   - B) $12$
+   - C) $21$
+   - D) $82$
+
+2. A cylinder has a radius of $4$ and a height of $6$. What is its volume?
+   - A) $75.36$
+   - B) $301.44$
+   - C) $100.48$
+   - D) $251.2$
+
+**Proficient Level**
+
+3. A cone has a radius of $6$ and a height of $10$. What is its volume?
+   - A) $1130.4$
+   - B) $565.2$
+   - C) $376.8$
+   - D) $62.8$
+
+4. A square pyramid has a base edge of $6$ and a height of $12$. What is its volume?
+   - A) $432$
+   - B) $216$
+   - C) $48$
+   - D) $144$
+
+**Advanced Level**
+
+5. A cylindrical tank has a radius of $5$ and a height of $8$. It is filled to one quarter of its height. What volume of water does it hold?
+   - A) $157$
+   - B) $628$
+   - C) $314$
+   - D) $39.25$
+
+6. A solid is a cube of edge $4$ with a square pyramid of base edge $4$ and height $3$ on top. What is its total volume?
+   - A) $64$
+   - B) $80$
+   - C) $112$
+   - D) $88$

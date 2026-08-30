@@ -1,0 +1,9 @@
+Unused devDependencies
+* @types/react-dom
+* autoprefixer
+* depcheck
+* knip
+* postcss
+* tailwindcss
+Missing dependencies
+* hast: ./lib/curriculum-utils.ts

@@ -10,6 +10,7 @@ import {
   itemKey,
   mergePools,
   poolEntries,
+  POOL_SECTIONS,
   type Candidate,
   type ItemRef,
   type PoolEntry,
@@ -85,7 +86,8 @@ export type PickerTopic = {
    * Shipping the entries rather than a wider set of totals lets the browser run
    * countEligible(), the draw's own rule, over the draw's own population. It
    * carries no answer: section and band only, from the redacted view.
-   * At most 14 entries per topic, 97 topics.
+   * 14 entries per topic on a topic with no Part 5, plus one per extra-practice
+   * item where there is one. Two fields per entry, no answer, 97 topics.
    */
   entries: PoolEntry[];
   /** True when this topic's pool is rolled rather than hand-authored. */
@@ -101,10 +103,10 @@ type StoredItem = {
   level?: string | null;
 };
 
-type PracticeItems = {
-  practice?: { items?: StoredItem[] } | null;
-  mini_quiz?: { items?: StoredItem[] } | null;
-};
+// Optional on every key, extra_practice included: build_practice_items omits an
+// optional section that parsed to nothing, so 96 of 97 topics carry no
+// extra_practice key at all rather than an empty one.
+type PracticeItems = Partial<Record<Section, { items?: StoredItem[] } | null>>;
 
 type PickerRow = {
   topic_id: string;
@@ -117,7 +119,12 @@ type PickerRow = {
   is_placeholder: boolean | null;
 };
 
-const SECTIONS: Section[] = ['practice', 'mini_quiz'];
+// Re-exported from worksheet-select rather than declared again here. It was a
+// second literal list of the same sections, and the two would have had to be
+// extended together for Part 5 to be both selectable and printable -- a
+// section present in poolEntries but missing here is a question a teacher can
+// pick and then cannot print, with nothing reporting a shortfall.
+const SECTIONS = POOL_SECTIONS;
 
 // ─── The picker ─────────────────────────────────────────────────────────────
 
@@ -283,9 +290,15 @@ export async function getItemsForTopic(
  * curriculum_topics_public, which strips correct_answer, so the stricter
  * predicate matches nothing here. See schema fact 1 and QR.1.1.
  */
-// No count parameter: the static pool is at most 14 items, so it is returned
+// No count parameter: the static pool is one row's jsonb, so it is returned
 // whole and worksheet-select.ts does the drawing. The instance path takes a
 // count because its pool is unbounded and has to be sampled at the query.
+//
+// It used to say "at most 14 items", which was true while every topic was 10
+// practice plus 4 quiz. A topic with a Part 5 offers 14 plus however many extra
+// practice items are authored, and selectItems already shuffles and slices to
+// the allocation, so nothing here has to change with the ceiling -- only this
+// sentence did.
 async function drawFromStatic(
   courseId: string,
   topicId: string,

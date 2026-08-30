@@ -88,7 +88,14 @@ export function SignIn({ role }: { role: 'student' | 'teacher' }) {
 
   return (
     <LoginChrome lang={lang} setLang={setLang} showChangeRole>
+      {/* The stagger container. Its child count VARIES -- the auth-failed
+          alert, the join-class panel and the teacher-only "no account" line are
+          each conditional -- and that is exactly the case the tail clamp in
+          motion.ts exists for. The sequence simply runs over whatever is
+          present, and from the sixth child on everything lands with the fifth
+          rather than falling back to 0ms and firing first. */}
       <div
+        className="um-stagger"
         style={{
           maxWidth: 440,
           margin: '0 auto',
@@ -97,9 +104,12 @@ export function SignIn({ role }: { role: 'student' | 'teacher' }) {
           gap: 22,
         }}
       >
-        <Eyebrow>{t(lang, isTeacher ? 'teacherEyebrow' : 'studentEyebrow')}</Eyebrow>
+        <Eyebrow className="um-fade-up">
+          {t(lang, isTeacher ? 'teacherEyebrow' : 'studentEyebrow')}
+        </Eyebrow>
 
         <h1
+          className="um-fade-up"
           style={{
             margin: 0,
             font: `${DISPLAY_WEIGHT} clamp(26px, 7vw, 32px)/1.15 ${FONT_DISPLAY}`,
@@ -111,13 +121,14 @@ export function SignIn({ role }: { role: 'student' | 'teacher' }) {
           {t(lang, isTeacher ? 'welcomeBack' : 'studentHeadline')}
         </h1>
 
-        <p style={{ margin: 0, font: `400 14px/1.6 ${FONT_DISPLAY}`, color: L.ink2 }}>
+        <p className="um-fade-up" style={{ margin: 0, font: `400 14px/1.6 ${FONT_DISPLAY}`, color: L.ink2 }}>
           {t(lang, isTeacher ? 'teacherBlurb' : 'studentBlurb')}
         </p>
 
         {authFailed && (
           <p
             role="alert"
+            className="um-fade-up"
             style={{
               margin: 0,
               font: `400 13px/1.5 ${FONT_DISPLAY}`,
@@ -131,35 +142,84 @@ export function SignIn({ role }: { role: 'student' | 'teacher' }) {
         )}
 
         {/* Students only, and optional: a blank field signs in normally. */}
-        {!isTeacher && <JoinClass lang={lang} onConfirmedChange={setJoinConfirmed} />}
+        {/* THE ENTRANCE LANDS ON THE <section>, NOT ON THE CHECK BUTTON INSIDE
+            IT. JoinClass:226 is one of the three .uml-lift sites in this tree,
+            so it is worth stating that the collision is already avoided here
+            rather than leaving it to be rediscovered: the panel is the stagger
+            child, the lift stays on the button two levels down, and the two
+            transforms are on different nodes. Nothing extra is needed -- but
+            .um-fade-up must never be moved onto that button. */}
+        {!isTeacher && (
+          <JoinClass className="um-fade-up" lang={lang} onConfirmedChange={setJoinConfirmed} />
+        )}
 
-        <button
-          onClick={handleGoogleLogin}
-          disabled={loading}
-          className={loading ? undefined : 'uml-lift'}
-          style={{
-            width: '100%',
-            padding: '16px 20px',
-            // Cream rather than the import's orange, and its own border token:
-            // --uml-border is near-invisible on a cream fill in dark mode.
-            border: `1px solid ${L.creamLine}`,
-            background: L.cream,
-            color: L.creamInk,
-            font: `700 16px/1 ${FONT_DISPLAY}`,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 12,
-            cursor: loading ? 'default' : 'pointer',
-            opacity: loading ? 0.6 : 1,
-          }}
-        >
-          <GoogleIcon />
-          {loading ? t(lang, 'redirecting') : t(lang, 'continueGoogle')}
-        </button>
+        {/* ─── WRAPPER, AND IT IS REQUIRED RATHER THAN TIDY ─────────────────
+            This is the collision the rule exists for. .uml-lift declares
+            `transition: transform 120ms` and `:hover { transform: translate(-2px,
+            -2px) }` (login-theme.ts:452-457), and .um-fade-up animates
+            `transform` from translateY(10px) to none. A RUNNING ANIMATION'S
+            transform beats a transition's for the whole of its 600ms, so with
+            both on this one node the lift would simply not respond for the
+            first 600ms after load -- and it would fail silently, on the primary
+            control of the sign-in screen, in exactly the window where someone
+            is most likely to be moving the mouse toward it.
+
+            So the entrance owns the wrapper and .uml-lift owns the button.
+            Layout is unchanged: the wrapper is the flex item and stretches to
+            the column's full width, and the button's own width: 100% then
+            fills it exactly as before.
+
+            The wrapper is also what keeps the stagger honest -- the delay rules
+            select DIRECT children of .um-stagger, so the wrapper takes the slot
+            the button used to hold. */}
+        <div className="um-fade-up">
+          <button
+            onClick={handleGoogleLogin}
+            disabled={loading}
+            className={loading ? undefined : 'uml-lift'}
+            style={{
+              width: '100%',
+              padding: '16px 20px',
+              // Cream rather than the import's orange.
+              //
+              // --uml-border, NOT --uml-cream-line, and the comment that used to
+              // sit here said the opposite for a good reason that expired on
+              // 2026-08-29. While --uml-cream was #E8E0CF, a bright strip in both
+              // themes, the two tokens were the right way round: #111111 gave the
+              // button a 14.38:1 outline and --uml-border would have been
+              // near-invisible on that light fill.
+              //
+              // The dashboard retune moved --uml-cream to the dashboard's inset
+              // fill #26262B, which inverts the arithmetic on this one element:
+              // measured after the swap, #111111 on #26262B is 1.25:1 -- the
+              // design's signature hard rule, gone, on the primary control of the
+              // sign-in screen. --uml-border is 3.40:1 on the same fill.
+              //
+              // --uml-cream-line is NOT wrong and must not be "fixed" to follow:
+              // its other consumers paint it on the orange CTA, where a dark
+              // outline is still correct in both themes. One token cannot be both
+              // a dark rule on orange and a light rule on near-black, which is
+              // exactly the split WelcomeIn.tsx:147-148 already records.
+              border: `1px solid ${L.border}`,
+              background: L.cream,
+              color: L.creamInk,
+              font: `700 16px/1 ${FONT_DISPLAY}`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 12,
+              cursor: loading ? 'default' : 'pointer',
+              opacity: loading ? 0.6 : 1,
+            }}
+          >
+            <GoogleIcon />
+            {loading ? t(lang, 'redirecting') : t(lang, 'continueGoogle')}
+          </button>
+        </div>
 
         {isTeacher && (
           <p
+            className="um-fade-up"
             style={{
               margin: 0,
               font: `400 13px/1.6 ${FONT_DISPLAY}`,
@@ -182,6 +242,7 @@ export function SignIn({ role }: { role: 'student' | 'teacher' }) {
         )}
 
         <p
+          className="um-fade-up"
           style={{
             margin: 0,
             font: `400 11px/1.6 ${FONT_MONO}`,

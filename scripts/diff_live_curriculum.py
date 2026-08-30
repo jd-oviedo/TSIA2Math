@@ -64,11 +64,18 @@ def build_record(md_file, course_id):
         'related_strand': parsed['metadata'].get('related_strand', ''),
         'keywords': parsed['metadata'].get('keywords', []),
     }
+    # Part 5 is passed through here for the same reason every other field is:
+    # this function has to rebuild what the uploader would send, exactly. Omit
+    # it and the comparison inverts -- once a topic with a Part 5 is uploaded,
+    # production carries an extra_practice section that this rebuild does not,
+    # and the topic reports as drifted forever with nothing to fix.
     record['misconceptions_used'] = extract_misconceptions(
-        parsed['practice_problems'], parsed['mini_quiz'], parsed['answer_key'])
+        parsed['practice_problems'], parsed['mini_quiz'],
+        parsed['extra_practice'], parsed['answer_key'])
     record['misconception_tags'] = extract_misconception_tags(parsed['answer_key'])
     record['practice_items'] = build_practice_items(
-        parsed['practice_problems'], parsed['mini_quiz'], parsed['answer_key'])
+        parsed['practice_problems'], parsed['mini_quiz'], parsed['answer_key'],
+        parsed['extra_practice'])
     return record
 
 
