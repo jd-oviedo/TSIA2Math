@@ -19,6 +19,14 @@ keywords: ["function", "function notation", "input", "output", "evaluating funct
 
 ---
 
+#### **Learning Objectives**
+
+- Evaluate a function for a given input, including negative inputs, by substituting carefully and following order of operations.
+- Interpret function notation correctly, recognizing that f(5) means "run the rule on 5," not multiplication or division.
+- Solve for an unknown input by setting the function's rule equal to a given output and solving the resulting equation.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### A Vending Machine Never Argues

@@ -19,6 +19,14 @@ keywords: ["function", "relation", "ordered pairs", "vertical line test", "input
 
 ---
 
+#### **Learning Objectives**
+
+- Determine whether a relation is a function by checking that every input has exactly one output.
+- Apply the vertical line test to a graph, confirming that every vertical line, not just one, crosses the graph at most once.
+- Distinguish the function requirement from the stricter one-to-one condition, recognizing that repeated outputs are allowed.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### The Vending Machine Rule

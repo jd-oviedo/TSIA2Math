@@ -19,6 +19,14 @@ keywords: ["rounding", "place value", "nearest ten", "nearest hundred", "decimal
 
 ---
 
+#### **Learning Objectives**
+
+- Round a number to a stated place value by locating the correct reference digit immediately to its right.
+- Correctly carry when rounding causes a rollover instead of zeroing the digit without carrying.
+- Round only once, directly from the original number, rather than rounding in stages or before completing a calculation.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### You Round Every Day and Get It Right

@@ -19,6 +19,14 @@ keywords: ["angles", "complementary", "supplementary", "vertical angles", "adjac
 
 ---
 
+#### **Learning Objectives**
+
+- Distinguish complementary angles from supplementary angles and solve for the missing angle.
+- Identify vertical angles as equal versus adjacent angles on a line as supplementary.
+- Solve chained or algebraic angle relationships, correctly identifying which angle the question is actually asking for.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Numbers Run This Entire Topic
