@@ -19,6 +19,14 @@ keywords: ["rational expression", "simplifying", "common factor", "cancelling", 
 
 ---
 
+#### **Learning Objectives**
+
+- Simplify a rational expression by fully factoring numerator and denominator first, then cancelling only shared factors, never terms.
+- Identify domain restrictions from the original expression, since cancelling a factor hides but does not remove an exclusion.
+- Recognize that only a zero denominator makes a rational expression undefined, not a zero numerator.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### You Can Only Cancel Factors

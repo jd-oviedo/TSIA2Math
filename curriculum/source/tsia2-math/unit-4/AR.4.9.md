@@ -19,6 +19,14 @@ keywords: ["radical equation", "squaring both sides", "extraneous solution", "is
 
 ---
 
+#### **Learning Objectives**
+
+- Solve a radical equation by isolating the radical before squaring both sides, expanding any binomial square fully.
+- Check every candidate solution in the original equation to identify extraneous roots introduced by squaring.
+- Distinguish a genuinely extraneous solution from a valid one that merely looks suspicious.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Squaring Undoes a Square Root

@@ -19,6 +19,14 @@ keywords: ["exponent rules", "product rule", "quotient rule", "power of a power"
 
 ---
 
+#### **Learning Objectives**
+
+- Apply the product, quotient, and power-of-a-power rules correctly, adding or subtracting exponents rather than multiplying them.
+- Raise every factor inside a parenthesized monomial, including the coefficient, to the outer exponent.
+- Rewrite an expression with a negative exponent as its reciprocal with a positive exponent, without changing its sign.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Four Rules, One Reason

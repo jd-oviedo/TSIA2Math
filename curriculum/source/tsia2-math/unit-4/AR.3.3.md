@@ -19,6 +19,14 @@ keywords: ["quadratic equation", "solving", "factoring", "zero product property"
 
 ---
 
+#### **Learning Objectives**
+
+- Rearrange a quadratic equation to standard form with zero on one side before factoring and applying the zero product property.
+- Solve for each root by setting every factor equal to zero and solving the resulting linear equation, rather than reading the solution off the factor's visible constant.
+- Recognize that a perfect-square trinomial yields one repeated solution, not two, and verify all solutions by substituting back into the original equation.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Factoring Was the Setup. This Is the Payoff.

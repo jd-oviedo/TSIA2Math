@@ -19,6 +19,14 @@ keywords: ["radical", "square root", "simplest radical form", "perfect square", 
 
 ---
 
+#### **Learning Objectives**
+
+- Simplify a square root by extracting the largest perfect-square factor from the radicand.
+- Combine radical terms by adding coefficients of like radicals only, never combining unlike radicands or splitting a root across a sum.
+- Rationalize a denominator by multiplying both the numerator and denominator by the same radical.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### A Square Root Comes Out Only If It Is a Perfect Square

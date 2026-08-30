@@ -19,6 +19,14 @@ keywords: ["polynomial", "like terms", "combining terms", "distributing a negati
 
 ---
 
+#### **Learning Objectives**
+
+- Add polynomials by grouping and combining only like-degree terms, carrying every term through to the result.
+- Subtract polynomials by distributing the negative sign across every term of the second polynomial before combining.
+- Recognize when subtracting a negative term increases a coefficient, rather than treating it as still negative.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Only Matching Terms Combine

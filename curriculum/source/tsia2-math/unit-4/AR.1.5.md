@@ -19,6 +19,14 @@ keywords: ["domain", "excluded value", "rational function", "radical function", 
 
 ---
 
+#### **Learning Objectives**
+
+- Identify excluded values of a rational expression by setting the denominator equal to zero and solving, not by reading the constant's sign directly.
+- Determine the domain of a radical expression by setting the radicand greater than or equal to zero, including the boundary where the radicand equals zero.
+- Combine denominator and radicand restrictions into a single domain statement for expressions containing both a fraction and a square root.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### The Question Behind the Question

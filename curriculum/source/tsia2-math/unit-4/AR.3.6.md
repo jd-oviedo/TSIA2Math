@@ -19,6 +19,14 @@ keywords: ["parabola", "x-intercepts", "factored form", "vertex form", "leading 
 
 ---
 
+#### **Learning Objectives**
+
+- Write the factored equation of a parabola from its x-intercepts, using the opposite sign of each intercept inside its binomial factor.
+- Determine the correct sign in front of the equation from the parabola's opening direction, and use a repeated factor when the graph only touches the x-axis once.
+- Solve for the leading coefficient by substituting a given point into the equation when the intercepts alone don't fix the parabola's width.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### The Graph Is Already Telling You the Answer

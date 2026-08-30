@@ -19,6 +19,14 @@ keywords: ["exponential function", "evaluating", "coefficient", "base", "order o
 
 ---
 
+#### **Learning Objectives**
+
+- Evaluate an exponential function by computing the power first, then multiplying by the coefficient, without raising the coefficient itself.
+- Identify that evaluating at x = 0 returns the coefficient, representing the starting amount.
+- Evaluate a negative input as a small positive reciprocal value, not as a negative output.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Two Numbers, Two Different Jobs
