@@ -19,6 +19,14 @@ keywords: ["like terms", "coefficient", "combining like terms", "distributive pr
 
 ---
 
+#### **Learning Objectives**
+
+- Combine like terms by adding or subtracting their coefficients while leaving the variable unchanged.
+- Distribute a number, including a negative one, across every term inside parentheses before combining terms.
+- Recognize the invisible coefficient of 1 on a lone variable when combining terms.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Counting Things That Match

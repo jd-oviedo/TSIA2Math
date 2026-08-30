@@ -19,6 +19,14 @@ keywords: ["fractions", "decimals", "percents", "ordering", "conversion", "equiv
 
 ---
 
+#### **Learning Objectives**
+
+- Convert fractions, decimals, and percents into a common decimal form.
+- Order mixed-form values by comparing decimals place by place, padding with zeros as needed.
+- Avoid percent-decimal conversion errors, such as dropping the percent sign or shifting the decimal the wrong number of places.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Three Costumes, One Number

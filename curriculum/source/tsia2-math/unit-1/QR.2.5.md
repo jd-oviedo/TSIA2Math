@@ -19,6 +19,14 @@ keywords: ["rate", "unit rate", "unit price", "average speed", "combined work", 
 
 ---
 
+#### **Learning Objectives**
+
+- Compute a unit rate by dividing in the order indicated by the "per" phrase.
+- Calculate average speed as total distance over total time, not as the average of two speeds.
+- Combine work rates or closing speeds by adding rates for objects working together or moving toward each other.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### A Rate Is a Ratio With Units Attached

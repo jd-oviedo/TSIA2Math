@@ -19,6 +19,14 @@ keywords: ["percent", "percent change", "percent increase", "percent decrease", 
 
 ---
 
+#### **Learning Objectives**
+
+- Convert a percent to a decimal by shifting the decimal point exactly two places.
+- Calculate percent change using the original value as the base, never the new value.
+- Compute successive percent changes by multiplying the factors rather than adding the percentages.
+
+---
+
 #### **Part 1: Guided Notes**
 
 ##### Percent Means "Out of 100"
