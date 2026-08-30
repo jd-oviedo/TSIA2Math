@@ -128,7 +128,12 @@ const NAV_ITEMS: { label: string; href: string; tour?: string; badge?: string }[
   // requireWorksheetTeacher(), which is requireTeacher() plus the worksheets
   // capability, and every teacher who can see this rail has already cleared the
   // first half.
-  { label: 'Worksheets', href: '/teacher/worksheets', badge: '(Beta)' },
+  // The badge FIELD stays, and so does everything that renders it: the render
+  // branch below, the fullLabel plumbing, the aria-label and the collapsed
+  // rail's hover text. Only the VALUE is gone. The generator has been live and
+  // teacher-facing long enough that the qualifier stopped being informative,
+  // and the next item that needs one should not have to rebuild the mechanism.
+  { label: 'Worksheets', href: '/teacher/worksheets' },
   // Build 3: was '/teacher#roster', a same-page anchor into the roster section
   // below. It now leads to the fuller roster, which carries a grade column and a
   // way through to the gradebook.
@@ -168,6 +173,12 @@ function navIcon(label: string) {
   }
 }
 
+// Cipher Gold. The one earned-value accent on the teacher chrome, and the only
+// place gold survives the 2026-08-30 restyle: the active nav item took orange,
+// and the dashboard's weakest-strand card was measured and refused it (see
+// TeacherDashboardClient's FOCUS card note, 1.92:1 on Warm Sand).
+const GOLD = '#C8A96E';
+
 // Founder badge. Gold star plus FOUNDER in a rounded amber outline pill,
 // sitting under the name in the sidebar profile card, per the reference.
 // Driven by profiles.is_founder, so adding a founder is a column update rather
@@ -178,11 +189,17 @@ function FounderPill() {
       style={{
         display: 'inline-flex', alignItems: 'center', gap: 5,
         marginTop: 4, padding: '2px 9px 2px 7px',
-        border: '1px solid #C68A2F', borderRadius: 999,
-        color: '#E7BE7B', fontSize: 9, fontWeight: 700, letterSpacing: 1.1,
+        // Cipher Gold #C8A96E, one value for the ring, the star and the word,
+        // replacing a #C68A2F ring around #E7BE7B ink. Gold's one remaining
+        // job on the teacher surface is the earned badge, and an earned badge
+        // reads as one thing rather than as two near-golds. 7.44 on the navy
+        // rail, where the old ink measured 9.58: quieter, and still clear of
+        // AA at this size by a wide margin.
+        border: `1px solid ${GOLD}`, borderRadius: 999,
+        color: GOLD, fontSize: 9, fontWeight: 700, letterSpacing: 1.1,
       }}
     >
-      <svg width="9" height="9" viewBox="0 0 12 12" fill="#E7BE7B" aria-hidden="true">
+      <svg width="9" height="9" viewBox="0 0 12 12" fill={GOLD} aria-hidden="true">
         <path d="M6 0.6l1.62 3.34 3.68.52-2.66 2.58.63 3.66L6 8.97 2.73 10.7l.63-3.66L.7 4.46l3.68-.52z" />
       </svg>
       FOUNDER
@@ -293,9 +310,18 @@ function SidebarInner({
                 justifyContent: collapsed ? 'center' : 'flex-start',
                 padding: collapsed ? '9px 0' : '9px 11px', borderRadius: 8, fontSize: 13,
                 fontWeight: isActive ? 600 : 500, textDecoration: 'none',
-                color: isActive ? '#E7BE7B' : 'rgba(255,255,255,0.64)',
+                // Sunset Orange as a FILL with white on top, replacing the gold
+                // ink on a 14% gold wash. The active item is now the loudest
+                // thing on the rail, which is what the restyle asks of it.
+                //
+                // MEASURED, AND IT DOES NOT CLEAR AA: white on #F0A33E is
+                // 2.10:1. That is the same figure recorded at
+                // TeacherDashboardClient.tsx:1183, where the first-run CTA
+                // chose #111111 over the identical fill for exactly this
+                // reason. Shipped as specified; see the PR body.
+                color: isActive ? '#FFFFFF' : 'rgba(255,255,255,0.64)',
                 background: isActive
-                  ? 'rgba(198,138,47,0.14)'
+                  ? '#F0A33E'
                   : isHovered ? 'rgba(255,255,255,0.06)' : 'transparent',
                 transition: 'background 0.12s',
               }}
@@ -322,7 +348,11 @@ function SidebarInner({
                         fontSize: 10.5,
                         fontWeight: 500,
                         letterSpacing: 0.2,
-                        color: isActive ? 'rgba(231,190,123,0.72)' : 'rgba(255,255,255,0.42)',
+                        // Follows the label it qualifies. The active value was
+                        // gold at 72%, which paired with the gold ink this item
+                        // used to carry; on the orange fill that reads as a
+                        // smudge, so it tracks the new white instead.
+                        color: isActive ? 'rgba(255,255,255,0.78)' : 'rgba(255,255,255,0.42)',
                       }}
                     >
                       {item.badge}

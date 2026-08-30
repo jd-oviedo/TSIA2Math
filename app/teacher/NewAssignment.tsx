@@ -1,7 +1,8 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { DASH, cardStyle } from '../components/dashboard-theme';
+import { DASH, flatPanelStyle, DASH_FLAT } from '../components/dashboard-theme';
+import { CTA_INK, NAVY, INK_2, DASH_HOVER_CSS } from './dashboard-chrome';
 import { FONT_HEADING } from '../components/fonts';
 import { UNIT_TITLES } from '../lib/units';
 
@@ -149,8 +150,8 @@ export default function NewAssignment({
   const field = {
     width: '100%',
     padding: '9px 12px',
-    borderRadius: 8,
-    border: `1px solid ${DASH.line}`,
+    borderRadius: 0,
+    border: `1px solid ${DASH_FLAT.panelHairline}`,
     fontFamily: 'inherit',
     fontSize: 13.5,
     color: DASH.ink,
@@ -168,13 +169,24 @@ export default function NewAssignment({
   };
 
   return (
-    <div style={{ ...cardStyle(), padding: '18px 18px 16px', marginBottom: 22 }}>
+    // height 100% and NO marginBottom: this panel is one half of the two-up
+    // row in TeacherDashboardClient, which owns the gap between the two and
+    // stretches both to the taller one. A margin here would double the space
+    // under the shorter card and pull the row out of alignment.
+    <div style={{ ...flatPanelStyle(), padding: '18px 18px 16px', height: '100%' }}>
+      {/* THIS COMPONENT CARRIES ITS OWN COPY OF THE HOVER SHEET, and that is
+          not belt-and-braces. /um-verify/shell mounts it on its own, through
+          ../um-verify/TeacherPanelControl.tsx, on a route that loads no
+          dashboard CSS at all -- so a `.um-tdash-cta` button whose fill lived
+          only in TeacherDashboardClient would paint transparent there. The
+          dashboard emits the identical sheet; the rules are idempotent. */}
+      <style>{DASH_HOVER_CSS}</style>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
         <div>
           <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: DASH.heading }}>
             Assignments
           </h2>
-          <p style={{ margin: '4px 0 0', fontSize: 13, color: DASH.muted }}>
+          <p style={{ margin: '4px 0 0', fontSize: 13, color: INK_2 }}>
             Set a topic for the whole class or for specific students.
           </p>
         </div>
@@ -182,20 +194,25 @@ export default function NewAssignment({
           type="button"
           onClick={() => setOpen((o) => !o)}
           disabled={!classId}
+          // Orange fill with #111111 on it at 9.00 when closed; the navy
+          // secondary outline once open, because Cancel is not the action
+          // anybody came here for. The label shortens to "+ New": the heading
+          // two lines up already says Assignments, and at half width
+          // "+ New assignment" wrapped.
+          className={open ? 'um-tdash-ghost' : 'um-tdash-cta'}
           style={{
-            background: open ? 'transparent' : '#C68A2F',
-            border: open ? `1px solid ${DASH.line}` : 'none',
-            borderRadius: 9,
+            border: open ? `1px solid ${NAVY}` : 'none',
+            borderRadius: 0,
             padding: '9px 16px',
             cursor: classId ? 'pointer' : 'not-allowed',
             opacity: classId ? 1 : 0.5,
             fontFamily: 'inherit',
             fontSize: 13.5,
-            fontWeight: 600,
-            color: open ? DASH.muted : '#fff',
+            fontWeight: open ? 600 : 700,
+            color: open ? undefined : CTA_INK,
           }}
         >
-          {open ? 'Cancel' : '+ New assignment'}
+          {open ? 'Cancel' : '+ New'}
         </button>
       </div>
 
@@ -267,8 +284,8 @@ export default function NewAssignment({
           {target === 'student' && (
             <div
               style={{
-                border: `1px solid ${DASH.line}`,
-                borderRadius: 8,
+                border: `1px solid ${DASH_FLAT.panelHairline}`,
+                borderRadius: 0,
                 maxHeight: 190,
                 overflowY: 'auto',
                 background: DASH.subtleBg,
@@ -313,16 +330,20 @@ export default function NewAssignment({
               type="button"
               onClick={submit}
               disabled={!ready || saving}
+              // The class supplies the fill through --umt-cta-bg. The disabled
+              // branch sets background inline, which beats the rule, so a
+              // dead button keeps its grey however it is hovered.
+              className="um-tdash-cta"
               style={{
-                background: ready && !saving ? '#C68A2F' : DASH.chipBg,
+                background: ready && !saving ? undefined : DASH.chipBg,
                 border: 'none',
-                borderRadius: 9,
+                borderRadius: 0,
                 padding: '10px 18px',
                 cursor: ready && !saving ? 'pointer' : 'not-allowed',
                 fontFamily: 'inherit',
                 fontSize: 13.5,
-                fontWeight: 600,
-                color: ready && !saving ? '#fff' : DASH.dim,
+                fontWeight: 700,
+                color: ready && !saving ? CTA_INK : DASH.dim,
               }}
             >
               {saving ? 'Assigning…' : 'Assign'}

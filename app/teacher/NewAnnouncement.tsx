@@ -70,8 +70,8 @@ export default function NewAnnouncement({
   const input = {
     width: '100%',
     padding: '9px 12px',
-    borderRadius: 8,
-    border: '1px solid rgba(15,30,53,0.14)',
+    borderRadius: 0,
+    border: '1px solid #E8E4DA',
     fontFamily: 'inherit',
     fontSize: 13.5,
     color: '#1A1A1A',
@@ -82,12 +82,20 @@ export default function NewAnnouncement({
     <div
       data-tour="announcements"
       style={{
-        background: '#fff',
-        border: '1px solid rgba(15,30,53,0.07)',
-        borderRadius: 12,
+        // Flat, radius 0, one warm hairline, no shadow. The four values are
+        // restated here rather than spread from flatPanelStyle() for the same
+        // reason the rest of this file states its hexes literally (see the note
+        // at the top): this component is a wall of literals by choice. What
+        // matters is that the numbers agree with DASH_FLAT, and they do.
+        background: '#FFFFFF',
+        border: '1px solid #E8E4DA',
+        borderRadius: 0,
         padding: '18px 18px 16px',
-        boxShadow: '0 1px 2px rgba(15,30,53,0.04)',
-        marginBottom: 22,
+        boxShadow: 'none',
+        // No marginBottom: the two-up grid in TeacherDashboardClient owns the
+        // gap now. Keeping it here would double the space under the shorter of
+        // the two cards and pull the row out of alignment.
+        height: '100%',
       }}
     >
       <div
@@ -111,26 +119,31 @@ export default function NewAnnouncement({
           >
             Announcements
           </h2>
-          <p style={{ margin: '4px 0 0', fontSize: 13, color: '#5F5E5A' }}>
+          <p style={{ margin: '4px 0 0', fontSize: 13, color: '#5A5A52' }}>
             Post a notice to your students&apos; dashboards.
           </p>
         </div>
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
+          // Sunset Orange fill with #111111 on it at 9.00 when closed; the
+          // navy secondary outline once it is open, because Cancel is not the
+          // action anybody came here for. The label shortens to "+ New": the
+          // heading two lines up already says Announcements, and at half width
+          // "+ New announcement" wrapped.
+          className={open ? 'um-tdash-ghost' : 'um-tdash-cta'}
           style={{
-            background: open ? 'transparent' : '#C68A2F',
-            border: open ? '1px solid rgba(15,30,53,0.14)' : 'none',
-            borderRadius: 9,
+            border: open ? '1px solid #0F1E35' : 'none',
+            borderRadius: 0,
             padding: '9px 16px',
             cursor: 'pointer',
             fontFamily: 'inherit',
             fontSize: 13.5,
-            fontWeight: 600,
-            color: open ? '#5F5E5A' : '#fff',
+            fontWeight: open ? 600 : 700,
+            color: open ? undefined : '#111111',
           }}
         >
-          {open ? 'Cancel' : '+ New announcement'}
+          {open ? 'Cancel' : '+ New'}
         </button>
       </div>
 
@@ -217,17 +230,24 @@ export default function NewAnnouncement({
               type="button"
               onClick={submit}
               disabled={!ready || saving}
+              // The class supplies the fill through --umt-cta-bg. The disabled
+              // branch sets background inline, which beats the rule, so a dead
+              // button keeps its grey however it is hovered.
+              className="um-tdash-cta"
               style={{
-                background: ready ? '#C68A2F' : 'rgba(15,30,53,0.10)',
+                background: ready ? undefined : 'rgba(15,30,53,0.10)',
                 border: 'none',
-                borderRadius: 9,
+                borderRadius: 0,
                 padding: '10px 20px',
                 marginBottom: 1,
                 cursor: ready && !saving ? 'pointer' : 'not-allowed',
                 fontFamily: 'inherit',
                 fontSize: 13.5,
-                fontWeight: 600,
-                color: ready ? '#fff' : '#8A8983',
+                fontWeight: 700,
+                // Disabled ink stays failing on purpose: WCAG 1.4.3 exempts
+                // inactive controls, and a disabled button at readable ink
+                // reads as enabled.
+                color: ready ? '#111111' : '#8A8983',
               }}
             >
               {saving ? 'Posting…' : 'Post'}

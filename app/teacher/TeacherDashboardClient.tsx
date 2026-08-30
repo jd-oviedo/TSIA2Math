@@ -4,7 +4,8 @@ import { useState, useEffect, useCallback } from 'react';
 import posthog from 'posthog-js';
 import MathText from '../components/MathText';
 import { FONT_HEADING, FONT_BASE_CSS } from '../components/fonts';
-import { DASH, cardStyle } from '../components/dashboard-theme';
+import { DASH, flatPanelStyle, DASH_FLAT } from '../components/dashboard-theme';
+import { CTA, CTA_INK, NAVY, INK_2, DASH_HOVER_CSS } from './dashboard-chrome';
 import { HOVER_LABEL_CSS } from '../components/HoverLabel';
 import { useBodyBackground } from '../components/useBodyBackground';
 import TeacherShell, { useViewport, useTeacherShell } from './TeacherShell';
@@ -229,14 +230,14 @@ function SummaryCards({ enrolled, notTested, crCount, crPct, weakStrand, avgScor
   weakStrand: { code: string; name: string; color: string; pct: number } | null;
   avgScore: number | null; cols: number;
 }) {
-  const card = { ...cardStyle(), padding: '18px 18px 16px' };
+  const card = { ...flatPanelStyle(), padding: '18px 18px 16px' };
   const labelStyle = { fontSize: 11, fontWeight: 600, letterSpacing: 0.7, textTransform: 'uppercase' as const, color: DASH.dim };
   return (
     <div data-tour="summary" style={{ display: 'grid', gridTemplateColumns: `repeat(${cols},1fr)`, gap: 16, marginBottom: 16 }}>
       <div style={card}>
         <div style={labelStyle}>Students enrolled</div>
         <div style={{ marginTop: 10, fontSize: 32, fontWeight: 700, color: DASH.heading, fontVariantNumeric: 'tabular-nums', lineHeight: 1 }}>{enrolled}</div>
-        <div style={{ marginTop: 9, fontSize: 12, color: DASH.muted }}>{notTested > 0 ? `${notTested} not yet tested` : 'All students tested'}</div>
+        <div style={{ marginTop: 9, fontSize: 12, color: INK_2 }}>{notTested > 0 ? `${notTested} not yet tested` : 'All students tested'}</div>
       </div>
       <div style={card}>
         <div style={labelStyle}>College ready</div>
@@ -244,33 +245,58 @@ function SummaryCards({ enrolled, notTested, crCount, crPct, weakStrand, avgScor
           <span style={{ fontSize: 32, fontWeight: 700, color: DASH.heading, fontVariantNumeric: 'tabular-nums', lineHeight: 1 }}>{crCount}</span>
           {crPct !== null && <span style={{ fontSize: 15, fontWeight: 600, color: '#4F9A2E' }}>{crPct}%</span>}
         </div>
-        <div style={{ marginTop: 9, fontSize: 12, color: DASH.muted }}>Scored ≥ 950 on TSIA2</div>
+        <div style={{ marginTop: 9, fontSize: 12, color: INK_2 }}>Scored ≥ 950 on TSIA2</div>
       </div>
-      {/* Weakest strand — amber highlight */}
-      <div style={{ background: '#FBF4E6', border: '1px solid rgba(198,138,47,0.35)', borderRadius: 12, padding: '16px 18px', boxShadow: '0 1px 2px rgba(198,138,47,0.08)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-          <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: 0.7, textTransform: 'uppercase', color: '#9A6A1F' }}>Weakest strand</span>
-          {weakStrand && <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: 0.6, color: '#fff', background: '#C68A2F', padding: '2px 6px', borderRadius: 4 }}>FOCUS</span>}
+
+      {/* THE FOCUS CARD, AND THE ONLY WARM SAND ON THE SCREEN.
+          ================================================================
+          #F2EDDF appears exactly once in the dashboard tree, here. That is
+          the whole reason it works: on a page of white panels a single sand
+          fill is a place to look, and a second one anywhere would spend it.
+          If a later card wants to feel important, it does not get this fill.
+
+          The old version was a THREE-COLOUR amber card -- #FBF4E6 fill, a
+          gold-tinted border, an amber shadow, an amber eyebrow at #9A6A1F,
+          amber body text at #7A5B2A, and a gold FOCUS chip. Five values
+          doing one job. It is now the flat panel's own hairline, ordinary
+          ink, and one orange badge.
+
+          THE STRAND NAME IS DARK INK, NOT GOLD. It is the answer the card
+          exists to give, so it reads at 16.48 like any other headline.
+
+          AND NO CIPHER GOLD ANYWHERE ON THIS CARD, on the measurement.
+          #C8A96E on #F2EDDF is 1.92:1 -- gold and sand are the same hue at
+          two lightnesses, so gold ink on a sand fill is close to invisible
+          whatever it is labelling. Gold keeps its one job on this surface,
+          the FOUNDER pill on the navy rail, where it measures 7.44. */}
+      <div style={{ ...flatPanelStyle(), background: DASH_FLAT.focusFill, padding: '18px 18px 16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ ...labelStyle, color: INK_2 }}>Weakest strand</span>
+          {/* Orange as a BADGE FILL with dark ink on it at 9.00. */}
+          {weakStrand && (
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: 0.7, color: CTA_INK, background: CTA, padding: '2px 6px' }}>FOCUS</span>
+          )}
         </div>
         <div style={{ marginTop: 10 }}>
-          <span style={{ fontSize: 22, fontWeight: 700, color: DASH.heading, lineHeight: 1.05 }}>{weakStrand ? weakStrand.name : '—'}</span>
+          <span style={{ fontSize: 22, fontWeight: 700, color: DASH.heading, lineHeight: 1.05 }}>{weakStrand ? weakStrand.name : 'No focus yet'}</span>
         </div>
-        <div style={{ marginTop: 9, display: 'flex', alignItems: 'center', gap: 7, fontSize: 12, color: '#7A5B2A' }}>
+        <div style={{ marginTop: 9, display: 'flex', alignItems: 'center', gap: 7, fontSize: 12, color: INK_2 }}>
           {weakStrand ? (
             <>
-              <span style={{ width: 9, height: 9, borderRadius: 2, background: weakStrand.color, display: 'inline-block' }} />
-              <span>{weakStrand.code} · {weakStrand.pct}% class accuracy</span>
+              <span style={{ width: 9, height: 9, background: weakStrand.color, display: 'inline-block' }} />
+              <span>{weakStrand.code} · <span style={{ fontWeight: 700, color: DASH.heading }}>{weakStrand.pct}%</span> class accuracy</span>
             </>
           ) : <span>No test data yet</span>}
         </div>
       </div>
+
       <div style={card}>
         <div style={labelStyle}>Average score</div>
         <div style={{ marginTop: 10, display: 'flex', alignItems: 'baseline', gap: 4 }}>
           <span style={{ fontSize: 32, fontWeight: 700, color: DASH.heading, fontVariantNumeric: 'tabular-nums', lineHeight: 1 }}>{avgScore ?? '—'}</span>
           {avgScore !== null && <span style={{ fontSize: 14, fontWeight: 600, color: DASH.dim }}>/ 990</span>}
         </div>
-        <div style={{ marginTop: 9, fontSize: 12, color: DASH.muted }}>Passing 950 · scale 910–990</div>
+        <div style={{ marginTop: 9, fontSize: 12, color: INK_2 }}>Passing 950 · scale 910 to 990</div>
       </div>
     </div>
   );
@@ -278,27 +304,46 @@ function SummaryCards({ enrolled, notTested, crCount, crPct, weakStrand, avgScor
 
 // ─── Strand mastery panel ─────────────────────────────────────────────────────
 
+// COMPACT HORIZONTAL ROW, replacing four 118px columns.
+//
+// The old panel spent 118px of height per strand on a vertical bar whose only
+// job was to encode one percentage that was already printed beside it at 24px.
+// The bar is now a 4px horizontal rule under the label, which encodes the same
+// number in a tenth of the space, and the whole panel drops from roughly 200px
+// to roughly 120px. That height is what buys the Announcements and Assignments
+// row above it.
+//
+// LABELS IN THE STRAND COLOUR, per the restyle -- but the CODE only, and never
+// the percentage. STRAND_TINT is a FILL SET: all four are pale enough to carry
+// Deep Midnight at 12+ and none of them is legible as ink on white (QR #B5D4F4
+// measures 1.72). So the code sits on a filled chip and takes the dark ink the
+// tint was designed for, which is the same move the printed sheet and the
+// worksheet chrome make with the identical four hexes.
 function StrandPanel({ strandPct, totalAttempts, cols }: { strandPct: Record<Strand, number>; totalAttempts: number; cols: number }) {
   return (
-    <div data-tour="strand" style={{ ...cardStyle(), padding: '20px 22px', marginBottom: 26 }}>
-      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 18, gap: 12, flexWrap: 'wrap' }}>
+    <div data-tour="strand" style={{ ...flatPanelStyle(), padding: '18px 22px 20px', marginBottom: 26 }}>
+      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 16, gap: 12, flexWrap: 'wrap' }}>
         <div>
           <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: DASH.heading }}>Class strand mastery</h2>
-          <div style={{ marginTop: 3, fontSize: 12, color: DASH.muted }}>Average accuracy by TSIA2 reasoning strand</div>
+          <div style={{ marginTop: 3, fontSize: 12, color: INK_2 }}>Average accuracy by TSIA2 reasoning strand</div>
         </div>
         <div style={{ fontSize: 11, color: DASH.dim, fontWeight: 600 }}>{totalAttempts} attempts this class</div>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols},1fr)`, gap: 18, alignItems: 'end' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols},1fr)`, gap: 20 }}>
         {ORDER.map((code) => (
-          <div key={code} style={{ display: 'flex', alignItems: 'flex-end', gap: 10 }}>
-            <div style={{ position: 'relative', width: 46, height: 118, background: DASH.trackBg, borderRadius: 7, overflow: 'hidden', flex: '0 0 46px' }}>
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: STR[code].color, height: `${strandPct[code]}%`, borderRadius: '7px 7px 0 0' }} />
+          <div key={code}>
+            <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 8 }}>
+              <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: 0.6, color: CTA_INK, background: STR[code].color, padding: '2px 7px' }}>{code}</span>
+              <span style={{ fontSize: 19, fontWeight: 700, color: DASH.heading, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
+                {strandPct[code]}<span style={{ fontSize: 11, color: DASH.dim, fontWeight: 600 }}>%</span>
+              </span>
             </div>
-            <div style={{ paddingBottom: 4 }}>
-              <div style={{ fontSize: 24, fontWeight: 700, color: DASH.heading, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{strandPct[code]}<span style={{ fontSize: 13, color: DASH.dim }}>%</span></div>
-              <div style={{ marginTop: 6, fontSize: 11, fontWeight: 700, color: DASH.heading }}>{code}</div>
-              <div style={{ fontSize: 11, color: DASH.muted, lineHeight: 1.3 }}>{STR[code].short}</div>
+            {/* The indicator. A 4px well with a tinted fill, and no radius, so
+                a strand at 3% still reads as a sliver rather than as a dot. */}
+            <div style={{ marginTop: 9, height: 4, background: DASH.trackBg, overflow: 'hidden' }}>
+              <div style={{ width: `${strandPct[code]}%`, height: '100%', background: STR[code].color }} />
             </div>
+            <div style={{ marginTop: 7, fontSize: 11, color: INK_2, lineHeight: 1.35 }}>{STR[code].short}</div>
           </div>
         ))}
       </div>
@@ -324,7 +369,23 @@ function StrandPanel({ strandPct, totalAttempts, cols }: { strandPct: Record<Str
 // is -- in the cells underneath.
 
 function CurriculumRollupPanel({ rollup, cols }: { rollup: CurriculumRollup | null; cols: number }) {
+  // THE ONE NEW CONTROL IN THIS RESTYLE. Everything else on the screen is an
+  // existing element wearing new values; this is a piece of behaviour that did
+  // not exist before.
+  //
+  // OPEN BY DEFAULT, AND UNPERSISTED, deliberately. This is the tallest panel
+  // on the page and the collapse exists so a teacher who has read it can get
+  // the roster above the fold, not so the product can decide it is unimportant.
+  // Storing the choice would mean a teacher who collapsed it once in September
+  // never seeing curriculum progress again, which is a worse failure than
+  // re-collapsing it on each visit. If it should persist, it belongs with the
+  // other per-teacher flags in profiles, not in localStorage.
+  //
+  // The headline stays visible when collapsed: the whole point of collapsing is
+  // to keep the number and drop the detail.
+  const [collapsed, setCollapsed] = useState(false);
   const labelStyle = { fontSize: 11, fontWeight: 600, letterSpacing: 0.7, textTransform: 'uppercase' as const, color: DASH.dim };
+  const subCard = { ...flatPanelStyle(), background: DASH.subtleBg, padding: '16px 18px' };
 
   if (!rollup) return null;
 
@@ -335,78 +396,121 @@ function CurriculumRollupPanel({ rollup, cols }: { rollup: CurriculumRollup | nu
   const peak = Math.max(1, ...furthestUnit.map((u) => u.students));
 
   return (
-    <div style={{ ...cardStyle(), padding: '20px 22px', marginBottom: 26 }}>
-      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 18, gap: 12, flexWrap: 'wrap' }}>
+    <div style={{ ...flatPanelStyle(), padding: '18px 22px 20px', marginBottom: 26 }}>
+      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 16, gap: 12, flexWrap: 'wrap' }}>
         <div>
           <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: DASH.heading }}>Curriculum progress</h2>
-          <div style={{ marginTop: 3, fontSize: 12, color: DASH.muted }}>Course status across {topicsTotal} topics</div>
+          <div style={{ marginTop: 3, fontSize: 12, color: INK_2 }}>Course status across {topicsTotal} topics</div>
         </div>
-        <div style={{ fontSize: 11, color: DASH.dim, fontWeight: 600 }}>Status only · no scores</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <span style={{ fontSize: 11, color: DASH.dim, fontWeight: 600 }}>Status only · no scores</span>
+          {/* Dashboard Navy outline, the secondary treatment. Not orange: the
+              page already spends its one primary on New class in the top bar,
+              and a collapse is the least consequential control here. */}
+          <button
+            type="button"
+            className="um-tdash-ghost"
+            onClick={() => setCollapsed((c) => !c)}
+            aria-expanded={!collapsed}
+            aria-controls="curriculum-rollup-detail"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+              border: `1px solid ${NAVY}`, borderRadius: 0, padding: '5px 10px',
+              cursor: 'pointer', fontFamily: 'inherit', fontSize: 12, fontWeight: 600,
+            }}
+          >
+            <svg
+              className="um-tdash-chev"
+              width="11" height="11" viewBox="0 0 12 12" fill="none"
+              stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"
+              aria-hidden="true"
+              style={{ transform: collapsed ? 'rotate(-90deg)' : 'none' }}
+            >
+              <polyline points="2.5 4.5 6 8 9.5 4.5" />
+            </svg>
+            {collapsed ? 'Expand' : 'Collapse'}
+          </button>
+        </div>
       </div>
 
-      {/* The headline. */}
+      {/* The headline. Survives the collapse. */}
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 9, flexWrap: 'wrap', marginBottom: 4 }}>
         <span style={{ fontSize: 32, fontWeight: 700, color: DASH.heading, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{workedThisWeek}</span>
-        <span style={{ fontSize: 15, fontWeight: 600, color: DASH.dim }}>of {enrolled} {enrolled === 1 ? 'student' : 'students'} worked on the course this week</span>
+        <span style={{ fontSize: 15, fontWeight: 600, color: INK_2 }}>of {enrolled} {enrolled === 1 ? 'student' : 'students'} worked on the course this week</span>
       </div>
-      <div style={{ fontSize: 12, color: DASH.muted, marginBottom: 18 }}>Any topic opened in the last 7 days</div>
+      <div style={{ fontSize: 12, color: INK_2, marginBottom: collapsed ? 0 : 18 }}>Any topic opened in the last 7 days</div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols},1fr)`, gap: 16, marginBottom: 20 }}>
-        {/* Not started. The card that names people to chase, and the reason it is
-            a card and not the headline: it is a standing fact about a class,
-            where the headline is the thing that changed.
-            WARN-TONED ONLY WHEN THERE IS SOMETHING TO WARN ABOUT. A zero in an
-            amber alarm card, over the words "every student has opened a topic",
-            is good news wearing a warning's clothes -- and a teacher who learns
-            that this card is amber when nothing is wrong stops reading it when
-            something is. */}
-        <div style={notStarted > 0
-          ? { background: DASH.noticeWarnBg, border: '1px solid rgba(168,99,31,0.28)', borderRadius: 12, padding: '16px 18px' }
-          : { ...cardStyle(), boxShadow: 'none', padding: '16px 18px' }}>
-          <div style={{ ...labelStyle, color: notStarted > 0 ? DASH.noticeWarn : DASH.dim }}>Not started</div>
-          <div style={{ marginTop: 10, fontSize: 26, fontWeight: 700, color: DASH.heading, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{notStarted}</div>
-          <div style={{ marginTop: 9, fontSize: 12, color: notStarted > 0 ? DASH.ink : DASH.muted }}>{notStarted === 0 ? 'Every student has opened a topic' : `${started} of ${enrolled} have opened a topic`}</div>
-        </div>
-
-        <div style={{ ...cardStyle(), boxShadow: 'none', padding: '16px 18px' }}>
-          <div style={labelStyle}>Topics complete</div>
-          <div style={{ marginTop: 10, fontSize: 26, fontWeight: 700, color: DASH.heading, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{completeTotal}</div>
-          <div style={{ marginTop: 9, fontSize: 12, color: DASH.muted }}>Across the whole class</div>
-        </div>
-
-        <div style={{ ...cardStyle(), boxShadow: 'none', padding: '16px 18px' }}>
-          <div style={labelStyle}>Median per student</div>
-          <div style={{ marginTop: 10, display: 'flex', alignItems: 'baseline', gap: 5 }}>
-            <span style={{ fontSize: 26, fontWeight: 700, color: DASH.heading, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{completeMedian}</span>
-            <span style={{ fontSize: 13, fontWeight: 600, color: DASH.dim }}>/ {topicsTotal}</span>
+      {/* `hidden` rather than an unmount, so aria-controls above always points
+          at an element that exists and the three cards do not re-mount on every
+          toggle. */}
+      <div id="curriculum-rollup-detail" hidden={collapsed}>
+        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols},1fr)`, gap: 16, marginBottom: 20 }}>
+          {/* Not started. The card that names people to chase, and the reason it is
+              a card and not the headline: it is a standing fact about a class,
+              where the headline is the thing that changed.
+              WARN-TONED ONLY WHEN THERE IS SOMETHING TO WARN ABOUT. A zero in an
+              amber alarm card, over the words "every student has opened a topic",
+              is good news wearing a warning's clothes -- and a teacher who learns
+              that this card is amber when nothing is wrong stops reading it when
+              something is. */}
+          <div style={notStarted > 0
+            ? { ...flatPanelStyle(), background: DASH.noticeWarnBg, borderColor: 'rgba(168,99,31,0.28)', padding: '16px 18px' }
+            : subCard}>
+            <div style={{ ...labelStyle, color: notStarted > 0 ? DASH.noticeWarn : DASH.dim }}>Not started</div>
+            <div style={{ marginTop: 10, fontSize: 26, fontWeight: 700, color: DASH.heading, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{notStarted}</div>
+            <div style={{ marginTop: 9, fontSize: 12, color: notStarted > 0 ? DASH.ink : INK_2 }}>{notStarted === 0 ? 'Every student has opened a topic' : `${started} of ${enrolled} have opened a topic`}</div>
           </div>
-          {/* Median, not mean, and it says so: one keen student must not be able
-              to speak for the class. */}
-          <div style={{ marginTop: 9, fontSize: 12, color: DASH.muted }}>Middle student, not the average</div>
-        </div>
-      </div>
 
-      {/* Furthest unit reached. */}
-      <div style={{ borderTop: `1px solid ${DASH.hairline}`, paddingTop: 16 }}>
-        <div style={{ ...labelStyle, marginBottom: 12 }}>Furthest unit reached</div>
-        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${furthestUnit.length},1fr)`, gap: 10, alignItems: 'end' }}>
-          {furthestUnit.map((cell) => (
-            <div key={cell.unit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7 }}>
-              <div style={{ fontSize: 15, fontWeight: 700, color: cell.students > 0 ? DASH.heading : DASH.dim, fontVariantNumeric: 'tabular-nums' }}>{cell.students}</div>
-              <div style={{ width: '100%', height: 56, background: DASH.trackBg, borderRadius: 6, display: 'flex', alignItems: 'flex-end', overflow: 'hidden' }}>
-                <div style={{ width: '100%', height: `${(cell.students / peak) * 100}%`, background: DASH.statusProgress, borderRadius: '6px 6px 0 0' }} />
-              </div>
-              <div style={{ fontSize: 11, fontWeight: 700, color: DASH.heading }}>Unit {cell.unit}</div>
+          <div style={subCard}>
+            <div style={labelStyle}>Topics complete</div>
+            <div style={{ marginTop: 10, fontSize: 26, fontWeight: 700, color: DASH.heading, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{completeTotal}</div>
+            <div style={{ marginTop: 9, fontSize: 12, color: INK_2 }}>Across the whole class</div>
+          </div>
+
+          <div style={subCard}>
+            <div style={labelStyle}>Median per student</div>
+            <div style={{ marginTop: 10, display: 'flex', alignItems: 'baseline', gap: 5 }}>
+              <span style={{ fontSize: 26, fontWeight: 700, color: DASH.heading, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{completeMedian}</span>
+              <span style={{ fontSize: 13, fontWeight: 600, color: DASH.dim }}>/ {topicsTotal}</span>
             </div>
-          ))}
+            {/* Median, not mean, and it says so: one keen student must not be able
+                to speak for the class. */}
+            <div style={{ marginTop: 9, fontSize: 12, color: INK_2 }}>Middle student, not the average</div>
+          </div>
         </div>
-        {/* Students who have started nothing sit in no cell at all. Said out
-            loud, because a strip whose numbers do not add to the roster looks
-            like a bug otherwise. */}
-        <div style={{ marginTop: 11, fontSize: 11.5, color: DASH.dim }}>
-          {notStarted > 0
-            ? `${notStarted} ${notStarted === 1 ? 'student is' : 'students are'} not counted here — they have not opened a topic`
-            : 'Every enrolled student appears in one column'}
+
+        {/* Furthest unit reached.
+
+            COLUMN COUNT COMES OFF furthestUnit.length, NOT A LITERAL SIX. The
+            rollup builds one cell per unit present in curriculum_topics
+            (app/lib/curriculum-rollup.ts:199), so a seventh unit appears here
+            the day it is authored. It renders six today because there are six.
+
+            ORANGE FILL, replacing DASH.statusProgress #A8631F. The bar is a
+            FILL and carries no text, which is the role the palette keeps
+            Sunset Orange for. Its height is still proportional to the tallest
+            cell and nothing about the computation moved. */}
+        <div style={{ borderTop: `1px solid ${DASH_FLAT.panelHairline}`, paddingTop: 16 }}>
+          <div style={{ ...labelStyle, marginBottom: 12 }}>Furthest unit reached</div>
+          <div style={{ display: 'grid', gridTemplateColumns: `repeat(${furthestUnit.length},1fr)`, gap: 10, alignItems: 'end' }}>
+            {furthestUnit.map((cell) => (
+              <div key={cell.unit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 7 }}>
+                <div style={{ fontSize: 15, fontWeight: 700, color: cell.students > 0 ? DASH.heading : DASH.dim, fontVariantNumeric: 'tabular-nums' }}>{cell.students}</div>
+                <div style={{ width: '100%', height: 56, background: DASH.trackBg, display: 'flex', alignItems: 'flex-end', overflow: 'hidden' }}>
+                  <div style={{ width: '100%', height: `${(cell.students / peak) * 100}%`, background: CTA }} />
+                </div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: DASH.heading }}>Unit {cell.unit}</div>
+              </div>
+            ))}
+          </div>
+          {/* Students who have started nothing sit in no cell at all. Said out
+              loud, because a strip whose numbers do not add to the roster looks
+              like a bug otherwise. */}
+          <div style={{ marginTop: 11, fontSize: 11.5, color: DASH.dim }}>
+            {notStarted > 0
+              ? `${notStarted} ${notStarted === 1 ? 'student is' : 'students are'} not counted here, because they have not opened a topic`
+              : 'Every enrolled student appears in one column'}
+          </div>
         </div>
       </div>
     </div>
@@ -438,24 +542,27 @@ function StrandProfileBar({ s }: { s: DisplayStudent }) {
 // ─── Misconception card ───────────────────────────────────────────────────────
 
 function MiscCard({ m, testedCount }: { m: Misconception; testedCount: number }) {
-  const [hovered, setHovered] = useState(false);
   const strandColor = STR[(m.primary_strand as Strand)]?.color ?? '#D3D1C7';
   const reach = testedCount > 0 ? Math.min(100, Math.round((m.affected_students / testedCount) * 100)) : 0;
   return (
+    // The hover was a shadow swap (cardShadow to cardShadowHover) held in React
+    // state. Flat has no shadow to swap, so the edge darkens instead, through
+    // .um-tdash-panel's --umt-panel-edge. That also retires the useState: the
+    // old pair of handlers re-rendered the whole card twice per pointer pass to
+    // change one property CSS can change on its own.
     <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{ ...cardStyle(), padding: 18, boxShadow: hovered ? DASH.cardShadowHover : DASH.cardShadow, display: 'flex', flexDirection: 'column', minHeight: 182, transition: 'box-shadow 0.15s' }}
+      className="um-tdash-panel"
+      style={{ ...flatPanelStyle(), padding: 18, display: 'flex', flexDirection: 'column', minHeight: 182 }}
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 13, gap: 8 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 11, minWidth: 0 }}>
-          <div style={{ width: 28, height: 28, borderRadius: 8, background: '#0F1E35', color: '#E7BE7B', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 700, flex: '0 0 28px' }}>{m.rank}</div>
+          <div style={{ width: 28, height: 28, background: NAVY, color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 700, flex: '0 0 28px' }}>{m.rank}</div>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, color: DASH.heading }}>
-            <span style={{ width: 9, height: 9, borderRadius: 2, background: strandColor, display: 'inline-block' }} />
+            <span style={{ width: 9, height: 9, background: strandColor, display: 'inline-block' }} />
             {m.primary_strand}
           </span>
         </div>
-        <span style={{ fontFamily: "'Courier New', monospace", fontSize: 11, color: DASH.muted, background: '#F4F3EE', padding: '3px 7px', borderRadius: 5, whiteSpace: 'nowrap' }}>
+        <span style={{ fontFamily: "'Courier New', monospace", fontSize: 11, color: INK_2, background: DASH.trackBg, padding: '3px 7px', whiteSpace: 'nowrap' }}>
           {m.topic_id}{m.topic_count > 1 ? ` +${m.topic_count - 1}` : ''}
         </span>
       </div>
@@ -465,23 +572,23 @@ function MiscCard({ m, testedCount }: { m: Misconception; testedCount: number })
       {/* One representative example, labelled as such once the same
           misconception shows up on more than one item. Without this the card
           reads as if the prose were the definition of the misconception. */}
-      <div style={{ fontSize: 11, color: DASH.muted, marginTop: 8 }}>
+      <div style={{ fontSize: 11, color: INK_2, marginTop: 8 }}>
         {m.item_count > 1
           ? `Example of ${m.item_count} items where this appeared`
           : 'Seen on 1 item'}
       </div>
-      <div style={{ marginTop: 14, paddingTop: 13, borderTop: `1px solid ${DASH.hairline}`, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 12 }}>
-        <div style={{ fontSize: 12, color: DASH.muted }}>
+      <div style={{ marginTop: 14, paddingTop: 13, borderTop: `1px solid ${DASH_FLAT.panelHairline}`, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 12 }}>
+        <div style={{ fontSize: 12, color: INK_2 }}>
           <span style={{ fontWeight: 700, color: DASH.ink }}>Selected {m.frequency}×</span>
           <span style={{ color: '#C9C7BE', margin: '0 6px' }}>·</span>
           <span>{m.affected_students} {m.affected_students === 1 ? 'student' : 'students'}</span>
         </div>
         {/* Honest reach indicator: share of tested students who hit this misconception. */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4, flexShrink: 0 }}>
-          <div style={{ width: 84, height: 7, borderRadius: 20, background: '#F0EEE7', overflow: 'hidden' }}>
+          <div style={{ width: 84, height: 6, background: DASH.trackBg, overflow: 'hidden' }}>
             <div style={{ width: `${reach}%`, height: '100%', background: strandColor }} />
           </div>
-          <span style={{ fontSize: 9.5, letterSpacing: 0.4, color: '#A8A69D', textTransform: 'uppercase' }}>{reach}% of class</span>
+          <span style={{ fontSize: 9.5, letterSpacing: 0.4, color: DASH.dim, textTransform: 'uppercase' }}>{reach}% of class</span>
         </div>
       </div>
     </div>
@@ -524,11 +631,11 @@ function InviteModal({ classId, onClose }: { classId: string; onClose: () => voi
         <div style={{ textAlign: 'center', padding: '12px 0 4px' }}>
           <div style={{ fontSize: 32, marginBottom: 10, color: '#4F9A2E' }}>✓</div>
           <p style={{ margin: '0 0 20px', fontSize: 14, color: '#356B1B', fontWeight: 600 }}>{message}</p>
-          <button onClick={onClose} style={{ padding: '10px 24px', border: 'none', borderRadius: 9, background: '#C68A2F', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: '#fff' }}>Done</button>
+          <button onClick={onClose} className="um-tdash-cta" style={{ padding: '10px 24px', border: 'none', borderRadius: 0, cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 700, color: CTA_INK }}>Done</button>
         </div>
       ) : (
         <>
-          <p style={{ margin: '0 0 16px', fontSize: 13, color: DASH.muted, lineHeight: 1.5 }}>
+          <p style={{ margin: '0 0 16px', fontSize: 13, color: INK_2, lineHeight: 1.5 }}>
             Enter a student email. If they already have an account they&apos;ll be enrolled immediately. Otherwise they&apos;ll receive an invite link.
           </p>
           <input
@@ -537,13 +644,14 @@ function InviteModal({ classId, onClose }: { classId: string; onClose: () => voi
             onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(); }}
             placeholder="student@school.edu"
             type="email"
-            style={{ width: '100%', border: `1px solid ${status === 'error' ? '#C2402F' : '#D3D1C7'}`, borderRadius: 9, padding: '10px 14px', fontSize: 14, fontFamily: 'inherit', color: DASH.ink, outline: 'none', boxSizing: 'border-box', marginBottom: 6 }}
+            style={{ width: '100%', border: `1px solid ${status === 'error' ? '#C2402F' : DASH_FLAT.panelHairline}`, borderRadius: 0, padding: '10px 14px', fontSize: 14, fontFamily: 'inherit', color: DASH.ink, outline: 'none', boxSizing: 'border-box', marginBottom: 6 }}
           />
           {status === 'error' && <p style={{ margin: '0 0 10px', fontSize: 12, color: '#C2402F' }}>{message}</p>}
           <div style={{ display: 'flex', gap: 10, marginTop: 8 }}>
-            <button onClick={onClose} style={{ flex: 1, padding: '10px 0', border: '1px solid #D3D1C7', borderRadius: 9, background: '#fff', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: DASH.muted }}>Cancel</button>
+            <button onClick={onClose} className="um-tdash-ghost" style={{ flex: 1, padding: '10px 0', border: `1px solid ${NAVY}`, borderRadius: 0, cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600 }}>Cancel</button>
             <button onClick={handleSubmit} disabled={status === 'loading' || !email}
-              style={{ flex: 2, padding: '10px 0', border: 'none', borderRadius: 9, background: status === 'loading' ? '#D4A55A' : '#C68A2F', cursor: status === 'loading' ? 'default' : 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: '#fff' }}>
+              className="um-tdash-cta"
+              style={{ flex: 2, padding: '10px 0', border: 'none', borderRadius: 0, background: status === 'loading' ? '#F6D3A0' : undefined, cursor: status === 'loading' ? 'default' : 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 700, color: CTA_INK }}>
               {status === 'loading' ? 'Sending…' : 'Send invite'}
             </button>
           </div>
@@ -585,22 +693,23 @@ function NewClassModal({ onClose, onCreated }: { onClose: () => void; onCreated:
 
   return (
     <ModalShell title="Create a class" onClose={onClose}>
-      <p style={{ margin: '0 0 16px', fontSize: 13, color: DASH.muted, lineHeight: 1.5 }}>
+      <p style={{ margin: '0 0 16px', fontSize: 13, color: INK_2, lineHeight: 1.5 }}>
         Give your class a name. A join code is generated automatically so students can enroll.
       </p>
       <input
         value={name}
         onChange={(e) => { setName(e.target.value); setStatus('idle'); setMessage(''); }}
         onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(); }}
-        placeholder="e.g. TSIA2 Prep — Period 2"
+        placeholder="e.g. TSIA2 Prep, Period 2"
         autoFocus
-        style={{ width: '100%', border: `1px solid ${status === 'error' ? '#C2402F' : '#D3D1C7'}`, borderRadius: 9, padding: '10px 14px', fontSize: 14, fontFamily: 'inherit', color: DASH.ink, outline: 'none', boxSizing: 'border-box', marginBottom: 6 }}
+        style={{ width: '100%', border: `1px solid ${status === 'error' ? '#C2402F' : DASH_FLAT.panelHairline}`, borderRadius: 0, padding: '10px 14px', fontSize: 14, fontFamily: 'inherit', color: DASH.ink, outline: 'none', boxSizing: 'border-box', marginBottom: 6 }}
       />
       {status === 'error' && <p style={{ margin: '0 0 10px', fontSize: 12, color: '#C2402F' }}>{message}</p>}
       <div style={{ display: 'flex', gap: 10, marginTop: 8 }}>
-        <button onClick={onClose} style={{ flex: 1, padding: '10px 0', border: '1px solid #D3D1C7', borderRadius: 9, background: '#fff', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: DASH.muted }}>Cancel</button>
+        <button onClick={onClose} className="um-tdash-ghost" style={{ flex: 1, padding: '10px 0', border: `1px solid ${NAVY}`, borderRadius: 0, cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600 }}>Cancel</button>
         <button onClick={handleSubmit} disabled={status === 'loading' || !name.trim()}
-          style={{ flex: 2, padding: '10px 0', border: 'none', borderRadius: 9, background: status === 'loading' ? '#D4A55A' : '#C68A2F', cursor: status === 'loading' ? 'default' : 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: '#fff' }}>
+          className="um-tdash-cta"
+          style={{ flex: 2, padding: '10px 0', border: 'none', borderRadius: 0, background: status === 'loading' ? '#F6D3A0' : undefined, cursor: status === 'loading' ? 'default' : 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 700, color: CTA_INK }}>
           {status === 'loading' ? 'Creating…' : 'Create class'}
         </button>
       </div>
@@ -628,15 +737,15 @@ function TopBar({ classes, selectedClassId, onSelectClass, joinCode, onInvite, o
   }
 
   return (
-    <header style={{ background: '#fff', borderBottom: '1px solid rgba(15,30,53,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: isMobile ? '10px 16px' : '0 28px', minHeight: 60, flexWrap: isMobile ? 'wrap' : 'nowrap', position: 'sticky', top: 0, zIndex: 20 }}>
+    <header style={{ background: DASH.cardBg, borderBottom: `1px solid ${DASH_FLAT.panelHairline}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: isMobile ? '10px 16px' : '0 28px', minHeight: 60, flexWrap: isMobile ? 'wrap' : 'nowrap', position: 'sticky', top: 0, zIndex: 20 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
         {isCompact && (
-          <button onClick={openMenu} aria-label="Open menu" data-tour="menu-button" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 38, height: 38, borderRadius: 9, border: '1px solid #D3D1C7', background: '#fff', cursor: 'pointer', flexShrink: 0 }}>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#0F1E35" strokeWidth="1.8" strokeLinecap="round"><line x1="2.5" y1="5" x2="15.5" y2="5" /><line x1="2.5" y1="9" x2="15.5" y2="9" /><line x1="2.5" y1="13" x2="15.5" y2="13" /></svg>
+          <button onClick={openMenu} aria-label="Open menu" data-tour="menu-button" className="um-tdash-ghost" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 38, height: 38, borderRadius: 0, border: `1px solid ${NAVY}`, cursor: 'pointer', flexShrink: 0 }}>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke={NAVY} strokeWidth="1.8" strokeLinecap="round"><line x1="2.5" y1="5" x2="15.5" y2="5" /><line x1="2.5" y1="9" x2="15.5" y2="9" /><line x1="2.5" y1="13" x2="15.5" y2="13" /></svg>
           </button>
         )}
         {classes.length > 0 ? (
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: '#fff', border: '1px solid #D3D1C7', borderRadius: 9, padding: '4px 8px 4px 12px', minWidth: 0 }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: DASH.cardBg, border: `1px solid ${DASH_FLAT.panelHairline}`, borderRadius: 0, padding: '4px 8px 4px 12px', minWidth: 0 }}>
             <select
               value={selectedClassId}
               onChange={(e) => onSelectClass(e.target.value)}
@@ -652,11 +761,11 @@ function TopBar({ classes, selectedClassId, onSelectClass, joinCode, onInvite, o
 
       <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 8 : 12, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
         {joinCode && (
-          <div data-tour="join-code" style={{ display: 'inline-flex', alignItems: 'center', gap: 9, background: '#F5F5F3', border: '1px solid #E2E0D8', borderRadius: 9, padding: '6px 10px 6px 12px' }}>
+          <div data-tour="join-code" style={{ display: 'inline-flex', alignItems: 'center', gap: 9, background: DASH.pageBg, border: `1px solid ${DASH_FLAT.panelHairline}`, borderRadius: 0, padding: '6px 10px 6px 12px' }}>
             <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: 0.8, textTransform: 'uppercase', color: DASH.dim }}>Join code</span>
             <span style={{ fontFamily: "'Courier New', monospace", fontSize: 13.5, fontWeight: 700, color: DASH.heading, letterSpacing: 0.5 }}>{joinCode}</span>
-            <span style={{ width: 1, height: 16, background: '#D3D1C7' }} />
-            <button onClick={copyCode} title="Copy join code" style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', color: copied ? '#4F9A2E' : '#5F5E5A' }}>
+            <span style={{ width: 1, height: 16, background: DASH_FLAT.panelHairline }} />
+            <button onClick={copyCode} title="Copy join code" style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', color: copied ? '#4F9A2E' : INK_2 }}>
               {copied ? (
                 <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 9 7 13 15 5" /></svg>
               ) : (
@@ -665,17 +774,17 @@ function TopBar({ classes, selectedClassId, onSelectClass, joinCode, onInvite, o
             </button>
           </div>
         )}
+        {/* Secondary: Dashboard Navy outline. Hover moves --umt-ghost-bg,
+            not the background property, so the two states cannot fight. */}
         {classes.length > 0 && (
-          <button onClick={onInvite} data-tour="invite" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: '#fff', border: '1px solid #D3D1C7', borderRadius: 9, padding: '8px 13px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: DASH.heading }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#F5F5F3'; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#fff'; }}>
+          <button onClick={onInvite} data-tour="invite" className="um-tdash-ghost" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, border: `1px solid ${NAVY}`, borderRadius: 0, padding: '8px 13px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600 }}>
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"><line x1="8" y1="3.5" x2="8" y2="12.5" /><line x1="3.5" y1="8" x2="12.5" y2="8" /></svg>
             Invite
           </button>
         )}
-        <button onClick={onNewClass} data-tour="new-class" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: '#C68A2F', border: 'none', borderRadius: 9, padding: '9px 14px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, color: '#fff' }}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#B27C29'; }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#C68A2F'; }}>
+        {/* THE PRIMARY, and the only Sunset Orange BUTTON in the page chrome.
+            Dark ink on the fill at 9.00, never white: see the CTA note above. */}
+        <button onClick={onNewClass} data-tour="new-class" className="um-tdash-cta" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, border: 'none', borderRadius: 0, padding: '9px 14px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 700, color: CTA_INK }}>
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><line x1="8" y1="3.5" x2="8" y2="12.5" /><line x1="3.5" y1="8" x2="12.5" y2="8" /></svg>
           New class
         </button>
@@ -721,14 +830,14 @@ function OfficialStrandGrid({ rows, cols }: { rows: RosterRow[]; cols: number })
 
   if (withOfficial.length === 0) {
     return (
-      <div data-tour="official-strand" style={{ ...cardStyle(), padding: '20px 22px', marginBottom: 26 }}>
+      <div data-tour="official-strand" style={{ ...flatPanelStyle(), padding: '18px 22px 20px', marginBottom: 26 }}>
         <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: DASH.heading }}>
           Official strand diagnostics
         </h2>
-        <div style={{ marginTop: 3, fontSize: 12, color: DASH.muted }}>
+        <div style={{ marginTop: 3, fontSize: 12, color: INK_2 }}>
           From College Board score reports, recorded on each student profile
         </div>
-        <p style={{ margin: '14px 0 0', fontSize: 13.5, color: DASH.muted }}>
+        <p style={{ margin: '14px 0 0', fontSize: 13.5, color: INK_2 }}>
           No official results recorded for this class yet.
         </p>
       </div>
@@ -736,13 +845,13 @@ function OfficialStrandGrid({ rows, cols }: { rows: RosterRow[]; cols: number })
   }
 
   return (
-    <div data-tour="official-strand" style={{ ...cardStyle(), padding: '20px 22px', marginBottom: 26 }}>
+    <div data-tour="official-strand" style={{ ...flatPanelStyle(), padding: '18px 22px 20px', marginBottom: 26 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12, flexWrap: 'wrap' }}>
         <div>
           <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: DASH.heading }}>
             Official strand diagnostics
           </h2>
-          <div style={{ marginTop: 3, fontSize: 12, color: DASH.muted }}>
+          <div style={{ marginTop: 3, fontSize: 12, color: INK_2 }}>
             Students at each level, from their most recent official result
           </div>
         </div>
@@ -753,7 +862,7 @@ function OfficialStrandGrid({ rows, cols }: { rows: RosterRow[]; cols: number })
 
       <div style={{ marginTop: 16, display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 12 }}>
         {strands.map((st) => (
-          <div key={st.code} style={{ background: DASH.subtleBg, border: `1px solid ${DASH.hairline}`, borderRadius: 2, padding: '12px 13px' }}>
+          <div key={st.code} style={{ ...flatPanelStyle(), background: DASH.subtleBg, padding: '12px 13px' }}>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 0.6, color: DASH.dim, textTransform: 'uppercase' }}>
               {st.code}
             </div>
@@ -764,7 +873,7 @@ function OfficialStrandGrid({ rows, cols }: { rows: RosterRow[]; cols: number })
                 ).length;
                 return (
                   <div key={level} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 8 }}>
-                    <span style={{ fontSize: 12.5, color: DASH.muted }}>{level}</span>
+                    <span style={{ fontSize: 12.5, color: INK_2 }}>{level}</span>
                     <span style={{ fontSize: 14, fontWeight: 700, color: n === 0 ? DASH.dim : DASH.heading, fontVariantNumeric: 'tabular-nums' }}>
                       {n}
                     </span>
@@ -776,7 +885,7 @@ function OfficialStrandGrid({ rows, cols }: { rows: RosterRow[]; cols: number })
         ))}
       </div>
 
-      <p style={{ margin: '14px 0 0', fontSize: 12.5, color: DASH.muted, lineHeight: 1.5 }}>
+      <p style={{ margin: '14px 0 0', fontSize: 12.5, color: INK_2, lineHeight: 1.5 }}>
         {metStandard === 0
           ? 'No student in this class met the standard on their most recent sitting.'
           : `${metStandard} ${metStandard === 1 ? 'student' : 'students'} met the standard, so their ${metStandard === 1 ? 'report carries' : 'reports carry'} no strand detail. They are not counted above.`}
@@ -789,10 +898,10 @@ function OfficialStrandGrid({ rows, cols }: { rows: RosterRow[]; cols: number })
 
 function RosterCard({ s, classId }: { s: DisplayStudent; classId: string }) {
   return (
-    <div style={{ ...cardStyle(), padding: 16 }}>
+    <div style={{ ...flatPanelStyle(), padding: 16 }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 11, minWidth: 0 }}>
-          <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#0F1E35', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700, flex: '0 0 34px' }}>{s.initials}</div>
+          <div style={{ width: 34, height: 34, borderRadius: '50%', background: CTA, color: CTA_INK, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700, flex: '0 0 34px' }}>{s.initials}</div>
           <div style={{ minWidth: 0 }}>
             <div style={{ fontSize: 13.5, fontWeight: 600, color: DASH.ink, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{s.name}</div>
             <div style={{ fontSize: 11.5, color: DASH.dim, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{s.email}</div>
@@ -813,7 +922,7 @@ function RosterCard({ s, classId }: { s: DisplayStudent; classId: string }) {
       <div style={{ marginTop: 12 }}>
         <StrandProfileBar s={s} />
       </div>
-      <a href={`/teacher/student/${s.student_id}?class_id=${classId}`} style={{ display: 'inline-block', marginTop: 12, fontSize: 13, fontWeight: 700, color: '#C68A2F', textDecoration: 'none' }}>View profile →</a>
+      <a href={`/teacher/student/${s.student_id}?class_id=${classId}`} className="um-tdash-view" style={{ display: 'inline-block', marginTop: 12, fontSize: 13, fontWeight: 700, textDecoration: 'none' }}>View profile <span aria-hidden="true">&rarr;</span></a>
     </div>
   );
 }
@@ -829,20 +938,23 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 13, gap: 12, flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
           <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: DASH.heading }}>Class roster</h2>
-          <span style={{ fontSize: 12, fontWeight: 600, color: DASH.dim, background: DASH.chipBg, padding: '2px 8px', borderRadius: 20 }}>{enrolled}</span>
+          <span style={{ fontSize: 12, fontWeight: 600, color: INK_2, background: DASH.trackBg, padding: '2px 8px' }}>{enrolled}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <span style={{ fontSize: 12, color: DASH.dim }}>Sort by</span>
           {['risk', 'score', 'name'].map((opt) => (
             <button key={opt} onClick={() => onSortChange(opt)}
-              style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 6, cursor: 'pointer', border: '1px solid', borderColor: sortBy === opt ? '#C68A2F' : '#D3D1C7', background: sortBy === opt ? '#FBF4E6' : '#fff', color: sortBy === opt ? '#9A6A1F' : '#5F5E5A', textTransform: 'capitalize' }}>
+              className={sortBy === opt ? undefined : 'um-tdash-ghost'}
+              aria-pressed={sortBy === opt}
+              style={{ fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 0, cursor: 'pointer', border: '1px solid', fontFamily: 'inherit', borderColor: NAVY, background: sortBy === opt ? NAVY : undefined, color: sortBy === opt ? '#FFFFFF' : undefined, textTransform: 'capitalize' }}>
               {opt === 'risk' ? 'Need help' : opt}
             </button>
           ))}
           {canExport && <button
             onClick={onExport}
             data-tour="export"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 6, cursor: 'pointer', border: '1px solid #D3D1C7', background: '#fff', color: '#5F5E5A', fontFamily: 'inherit' }}
+            className="um-tdash-ghost"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 0, cursor: 'pointer', border: `1px solid ${NAVY}`, fontFamily: 'inherit' }}
           >
             <svg width="13" height="13" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M9 2v9" /><path d="M5 8l4 4 4-4" /><path d="M3 14v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-1" />
@@ -853,8 +965,8 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
       </div>
 
       {students.length === 0 ? (
-        <div style={{ ...cardStyle(), boxShadow: 'none', padding: '40px 24px', textAlign: 'center', marginBottom: 34 }}>
-          <p style={{ fontSize: 14, color: DASH.muted, margin: '0 0 6px' }}>No students enrolled yet.</p>
+        <div style={{ ...flatPanelStyle(), padding: '40px 24px', textAlign: 'center', marginBottom: 34 }}>
+          <p style={{ fontSize: 14, color: INK_2, margin: '0 0 6px' }}>No students enrolled yet.</p>
           <p style={{ fontSize: 13, color: DASH.dim, margin: 0 }}>Share the join code above or invite students by email.</p>
         </div>
       ) : isMobile ? (
@@ -862,10 +974,10 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
           {students.map((s) => <RosterCard key={s.student_id} s={s} classId={classId} />)}
         </div>
       ) : (
-        <div style={{ ...cardStyle(), overflowX: 'auto', marginBottom: 34 }}>
+        <div style={{ ...flatPanelStyle(), overflowX: 'auto', marginBottom: 34 }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 720 }}>
             <thead>
-              <tr style={{ background: DASH.subtleBg, borderBottom: `1px solid ${DASH.line}` }}>
+              <tr style={{ background: DASH.subtleBg, borderBottom: `1px solid ${DASH_FLAT.panelHairline}` }}>
                 {['Student', 'Score', 'Placement', 'Official', 'Strand profile', 'Tests', 'Last active', ''].map((h) => (
                   <th key={h} style={{ textAlign: h === 'Tests' ? 'center' : 'left', padding: h === '' || h === 'Student' ? '11px 20px' : '11px 14px', fontSize: 11, fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase', color: DASH.dim, whiteSpace: 'nowrap' }}>{h}</th>
                 ))}
@@ -873,12 +985,10 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
             </thead>
             <tbody>
               {students.map((s, i) => (
-                <tr key={s.student_id} style={{ borderBottom: i < students.length - 1 ? `1px solid ${DASH.hairline}` : 'none', transition: 'background 0.1s' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = DASH.rowHoverBg; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}>
+                <tr key={s.student_id} className="um-tdash-row" style={{ borderBottom: i < students.length - 1 ? `1px solid ${DASH_FLAT.panelHairline}` : 'none' }}>
                   <td style={{ padding: '13px 20px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 11 }}>
-                      <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#0F1E35', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700, flex: '0 0 34px' }}>{s.initials}</div>
+                      <div style={{ width: 34, height: 34, borderRadius: '50%', background: CTA, color: CTA_INK, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700, flex: '0 0 34px' }}>{s.initials}</div>
                       <div>
                         <div style={{ fontSize: 13.5, fontWeight: 600, color: DASH.ink }}>{s.name}</div>
                         <div style={{ fontSize: 11.5, color: DASH.dim }}>{s.email}</div>
@@ -907,8 +1017,9 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
                   </td>
                   <td style={{ padding: '13px 20px', textAlign: 'right' }}>
                     <a href={`/teacher/student/${s.student_id}?class_id=${classId}`}
-                      style={{ fontSize: 13, fontWeight: 700, color: '#C68A2F', textDecoration: 'none', whiteSpace: 'nowrap' }}>
-                      View →
+                      className="um-tdash-view"
+                      style={{ fontSize: 13, fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>
+                      View <span aria-hidden="true">&rarr;</span>
                     </a>
                   </td>
                 </tr>
@@ -926,7 +1037,7 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
 function Spinner() {
   return (
     <div style={{ textAlign: 'center', padding: '48px 0' }}>
-      <div style={{ width: 30, height: 30, border: '3px solid #E7E5DD', borderTopColor: '#C68A2F', borderRadius: '50%', margin: '0 auto', animation: 'um-spin 0.8s linear infinite' }} />
+      <div style={{ width: 30, height: 30, border: `3px solid ${DASH_FLAT.panelHairline}`, borderTopColor: CTA, borderRadius: '50%', margin: '0 auto', animation: 'um-spin 0.8s linear infinite' }} />
       {/* SPIN_CSS, not MOTION_CSS. The bare keyframe and nothing else: this file
           is the teacher dashboard and the entrance system does not reach it.
           See app/motion.ts for why the two are separate exports. */}
@@ -1107,6 +1218,7 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
         body { margin: 0; -webkit-font-smoothing: antialiased; }
         ${FONT_BASE_CSS}
         ${HOVER_LABEL_CSS}
+        ${DASH_HOVER_CSS}
       `}</style>
 
       {/* The rail, the slide-over and the flex row they sit in all moved to
@@ -1138,7 +1250,7 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
             {/* Page header */}
             <div style={{ marginBottom: 22 }}>
               <h1 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: isMobile ? 22 : 27, letterSpacing: -0.4, color: DASH.heading }}>{selectedClass?.name ?? 'Your classes'}</h1>
-              <div style={{ marginTop: 6, fontSize: 13, color: DASH.muted }}>
+              <div style={{ marginTop: 6, fontSize: 13, color: INK_2 }}>
                 {classes.length === 0
                   ? 'Create your first class to get started.'
                   : `${rosterRows.length} ${rosterRows.length === 1 ? 'student' : 'students'} · ${totalAttempts} ${totalAttempts === 1 ? 'attempt' : 'attempts'}`}
@@ -1157,36 +1269,45 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
                  stale. A real checklist needs somewhere to store progress and is
                  its own piece of work.
 
-                 STAYS IN THE DASHBOARD'S OWN SYSTEM. cardStyle() and the DASH
-                 tokens, so this is a rounded card like every other card here.
-                 The onboarding flow's flat panels stop at /teacher's door, and
-                 the import graph is what keeps them apart. */
-              <div style={{ ...cardStyle(), padding: '40px 28px', textAlign: 'center' }}>
+                 STAYS IN THE DASHBOARD'S OWN SYSTEM, which as of 2026-08-30
+                 is the FLAT one. The note this replaces said the opposite --
+                 "a rounded card like every other card here", the onboarding
+                 flow's flat panels stopping at /teacher's door -- and that was
+                 true right up until the dashboard tree went flat too. The door
+                 is still there; it is the student shell's Card primitive and
+                 its --umd-* variables that do not cross it. What crossed is
+                 the shape, deliberately, in one pass. */
+              <div style={{ ...flatPanelStyle(), padding: '40px 28px', textAlign: 'center' }}>
                 <p style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: 1.2, textTransform: 'uppercase', color: DASH.dim, margin: '0 0 10px' }}>Last step</p>
                 <p style={{ fontFamily: FONT_HEADING, fontSize: 21, fontWeight: 600, color: DASH.heading, margin: '0 0 10px', letterSpacing: -0.3 }}>Create your first class</p>
-                <p style={{ fontSize: 13.5, color: DASH.muted, margin: '0 auto 22px', lineHeight: 1.65, maxWidth: 380 }}>Name it, and we generate a join code on the spot. Once your students are in, their diagnostic results fill this dashboard automatically.</p>
+                <p style={{ fontSize: 13.5, color: INK_2, margin: '0 auto 22px', lineHeight: 1.65, maxWidth: 380 }}>Name it, and we generate a join code on the spot. Once your students are in, their diagnostic results fill this dashboard automatically.</p>
 
                 {/* Static preview of the next three moments. Not persisted, not
                     interactive, and deliberately not numbered as tasks to tick
                     off. */}
                 <div style={{ display: 'inline-flex', flexDirection: 'column', gap: 9, textAlign: 'left', margin: '0 0 24px' }}>
                   {['Name your class', 'Share the join code with students', 'Watch the roster and misconceptions fill in'].map((line, i) => (
-                    <div key={line} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: DASH.muted }}>
-                      <span aria-hidden style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 20, height: 20, flexShrink: 0, borderRadius: '50%', border: `1px solid ${DASH.line}`, fontSize: 11, fontWeight: 700, color: DASH.dim }}>{i + 1}</span>
+                    <div key={line} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: INK_2 }}>
+                      <span aria-hidden style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 20, height: 20, flexShrink: 0, borderRadius: '50%', border: `1px solid ${DASH_FLAT.panelHairline}`, fontSize: 11, fontWeight: 700, color: DASH.dim }}>{i + 1}</span>
                       {line}
                     </div>
                   ))}
                 </div>
 
                 <div>
-                  {/* The onboarding flow's CTA treatment: Sunset Orange fill with
-                      near-black type at 9.00:1. White on this orange is 2.10 and
-                      would fail, so the label is dark rather than inverted.
-                      Literal hexes because --uml-* only resolves inside
-                      .um-login, and the teacher tree deliberately does not import
-                      the curriculum palette. This is the ONLY button in this file
-                      that moves off the teacher gold. */}
-                  <button onClick={() => setShowNewClass(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: '#F0A33E', border: 'none', borderRadius: 9, padding: '12px 22px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 14, fontWeight: 700, color: '#111111' }}>+ New class</button>
+                  {/* Sunset Orange fill with near-black type at 9.00:1. White
+                      on this orange is 2.10 and would fail, so the label is
+                      dark rather than inverted.
+
+                      THIS BUTTON USED TO BE THE ONLY ONE IN THE FILE ON THIS
+                      TREATMENT, and the note here said so. It is now the
+                      house CTA: the same fill, the same ink and the same
+                      hover variable as New class in the top bar, reached
+                      through .um-tdash-cta rather than restated. The two are
+                      never on screen together -- this one renders only when
+                      the teacher has no classes -- so the one-primary rule
+                      holds in both states. */}
+                  <button onClick={() => setShowNewClass(true)} className="um-tdash-cta" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, border: 'none', borderRadius: 0, padding: '12px 22px', cursor: 'pointer', fontFamily: 'inherit', fontSize: 14, fontWeight: 700, color: CTA_INK }}>+ New class</button>
                 </div>
 
                 <p style={{ fontSize: 12, color: DASH.dim, margin: '14px 0 0' }}>Takes about a minute.</p>
@@ -1198,16 +1319,38 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
             ) : (
               <>
                 <SummaryCards enrolled={rosterRows.length} notTested={notTested} crCount={collegeReady} crPct={crPct} weakStrand={weakStrand} avgScore={avgScore} cols={summaryCols} />
-                <NewAnnouncement classes={classes} selectedClassId={selectedClassId} />
-                {/* Setting work sits with the other thing a teacher WRITES for
-                    a class. The tracker for it goes further down, beside the
-                    other progress reads. */}
-                <NewAssignment
-                  classId={selectedClassId}
-                  topics={assignTopics}
-                  students={rosterRows.map((r) => ({ student_id: r.student_id, name: r.name }))}
-                  onCreated={() => setAssignmentsKey((k) => k + 1)}
-                />
+
+                {/* THE TWO THINGS A TEACHER WRITES, SIDE BY SIDE.
+                    ========================================================
+                    These were two full-width cards stacked, which gave a
+                    compose form the same width as the roster table and pushed
+                    everything a teacher READS below the fold. They are the
+                    same two components with the same props; only the box they
+                    sit in is new.
+
+                    THE GRID LIVES HERE, NOT IN EITHER CHILD. Each of them
+                    still owns its own padding and its own button, so neither
+                    knows it has a neighbour -- which is what lets the mobile
+                    branch drop to one column by changing this line alone.
+
+                    ONE COLUMN UNDER isCompact, not just isMobile. Both cards
+                    hold a form with labelled fields; at two-up on a 900px
+                    viewport the fields are narrower than the text people type
+                    into them. The stat cards above go two-up at that width and
+                    these do not, deliberately.
+
+                    The tracker for assignments is NOT here. It stays further
+                    down beside the other progress reads, because setting work
+                    and checking work are different visits. */}
+                <div style={{ display: 'grid', gridTemplateColumns: isCompact ? '1fr' : '1fr 1fr', gap: 16, alignItems: 'start', marginBottom: 22 }}>
+                  <NewAnnouncement classes={classes} selectedClassId={selectedClassId} />
+                  <NewAssignment
+                    classId={selectedClassId}
+                    topics={assignTopics}
+                    students={rosterRows.map((r) => ({ student_id: r.student_id, name: r.name }))}
+                    onCreated={() => setAssignmentsKey((k) => k + 1)}
+                  />
+                </div>
                 <StrandPanel strandPct={strandPct} totalAttempts={totalAttempts} cols={strandCols} />
                 {/* Coursework, between practice mastery and the state's report.
                     The three panels read as: what they have worked through, how
@@ -1227,12 +1370,12 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
                 <div id="misconceptions" style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 13, gap: 12, flexWrap: 'wrap' }}>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 11 }}>
                     <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: DASH.heading }}>Top misconceptions</h2>
-                    <span style={{ fontSize: 13, color: DASH.muted }}>Class-wide, most recent test per student</span>
+                    <span style={{ fontSize: 13, color: INK_2 }}>Class-wide, most recent test per student</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 11, color: DASH.dim }}>
                     {ORDER.map((k) => (
                       <span key={k} style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
-                        <span style={{ width: 9, height: 9, borderRadius: 2, background: STR[k].color, display: 'inline-block' }} />{k}
+                        <span style={{ width: 9, height: 9, background: STR[k].color, display: 'inline-block' }} />{k}
                       </span>
                     ))}
                   </div>
@@ -1240,8 +1383,8 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
                 {misconceptions === null ? (
                   <Spinner />
                 ) : misconceptions.length === 0 ? (
-                  <div style={{ ...cardStyle(), boxShadow: 'none', padding: '32px 24px', textAlign: 'center' }}>
-                    <p style={{ fontSize: 14, color: DASH.muted, margin: 0 }}>No misconception data yet. Students need to complete at least one test.</p>
+                  <div style={{ ...flatPanelStyle(), padding: '32px 24px', textAlign: 'center' }}>
+                    <p style={{ fontSize: 14, color: INK_2, margin: 0 }}>No misconception data yet. Students need to complete at least one test.</p>
                   </div>
                 ) : (
                   <div style={{ display: 'grid', gridTemplateColumns: `repeat(${miscCols},1fr)`, gap: 16 }}>
