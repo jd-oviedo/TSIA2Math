@@ -3,6 +3,8 @@ import { FONT_BODY } from '../../../../components/fonts';
 import { requireGradesTeacher, resolveClass } from '../../students-data';
 import { NoClass, StudentsShell } from '../../shell';
 import GradebookClient from './GradebookClient';
+import TeacherShell from '../../../TeacherShell';
+import { loadTeacherIdentity } from '../../../teacher-identity';
 
 // /teacher/students/grades/[studentId] -- one student's gradebook.
 //
@@ -34,11 +36,22 @@ export default async function StudentGradebookPage({
   searchParams: Promise<{ class_id?: string }>;
 }) {
   const profile = await requireGradesTeacher('/teacher/students');
+  // See the note in ../../page.tsx: the rail needs a name, an email and the
+  // founder flag, and a Profile carries none of the three.
+  const identity = await loadTeacherIdentity();
   const { studentId } = await params;
   const { class_id } = await searchParams;
   const { classes, selected } = await resolveClass(profile.id, class_id);
 
   return (
+    <TeacherShell
+      variant="standalone"
+      activeLabel="Students"
+      teacherName={identity.teacherName}
+      teacherEmail={identity.teacherEmail}
+      isFounder={identity.isFounder}
+      plan={profile.plan}
+    >
     <StudentsShell
       classes={classes}
       selected={selected}
@@ -46,32 +59,25 @@ export default async function StudentGradebookPage({
       // are not in, which the route correctly 404s. So the chips point back at
       // the roster for the chosen class instead of at this page.
       basePath="/teacher/students"
-      crumbs={[
-        { label: 'Dashboard', href: '/teacher' },
-        {
-          label: 'Students',
-          href: selected ? `/teacher/students?class_id=${selected.id}` : '/teacher/students',
-        },
-        {
-          label: 'Grades',
-          href: selected ? `/teacher/students/grades?class_id=${selected.id}` : '/teacher/students/grades',
-        },
-        { label: 'Gradebook' },
-      ]}
       title="Gradebook"
       blurb="Every topic this student has been set or has worked on, with both readings of their quiz score."
       actions={
         selected && (
+          // The dashboard's roster link treatment, reached through
+          // --umt-view-ink: DASH.link #2F6091, hovering to DASH.linkHover
+          // #0F69BA, arrow nudging 2px. Retires #C68A2F as an ink.
           <Link
             href={`/teacher/student/${studentId}?class_id=${selected.id}`}
-            style={{ font: `700 13px ${FONT_BODY}`, color: '#C68A2F', textDecoration: 'none' }}
+            className="um-tdash-view"
+            style={{ font: `700 13px ${FONT_BODY}`, textDecoration: 'none' }}
           >
-            Full profile →
+            Full profile <span aria-hidden="true">&rarr;</span>
           </Link>
         )
       }
     >
       {selected ? <GradebookClient studentId={studentId} classId={selected.id} /> : <NoClass />}
     </StudentsShell>
+    </TeacherShell>
   );
 }

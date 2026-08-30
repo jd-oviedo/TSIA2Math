@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { DASH } from '../../../components/dashboard-theme';
+import { DASH, DASH_FLAT, flatPanelStyle } from '../../../components/dashboard-theme';
+import { CTA, INK_2 } from '../../dashboard-chrome';
 import { FONT_BODY, FONT_HEADING } from '../../../components/fonts';
 import { CompletionPill, LetterChip, ScorePair, type Score, type SerializedLetter } from '../grade-ui';
 
@@ -85,8 +86,10 @@ export default function GradesGridClient({ classId }: { classId: string }) {
           style={{
             width: 30,
             height: 30,
-            border: `3px solid ${DASH.line}`,
-            borderTopColor: '#C68A2F',
+            // The dashboard's spinner: #E8E4DA ring, Sunset Orange leading
+            // edge. Retires #C68A2F.
+            border: `3px solid ${DASH_FLAT.panelHairline}`,
+            borderTopColor: CTA,
             borderRadius: '50%',
             margin: '0 auto',
             animation: 'um-spin 0.8s linear infinite',
@@ -99,7 +102,7 @@ export default function GradesGridClient({ classId }: { classId: string }) {
   if (body.students.length === 0) {
     return (
       <div style={{ ...card(), textAlign: 'center', padding: '40px 24px' }}>
-        <p style={{ margin: 0, font: `400 14px ${FONT_BODY}`, color: DASH.muted }}>No students enrolled yet.</p>
+        <p style={{ margin: 0, font: `400 14px ${FONT_BODY}`, color: INK_2 }}>No students enrolled yet.</p>
       </div>
     );
   }
@@ -110,7 +113,7 @@ export default function GradesGridClient({ classId }: { classId: string }) {
     // a failure to load.
     return (
       <div style={{ ...card(), textAlign: 'center', padding: '40px 24px' }}>
-        <p style={{ margin: '0 0 6px', font: `400 14px ${FONT_BODY}`, color: DASH.muted }}>
+        <p style={{ margin: '0 0 6px', font: `400 14px ${FONT_BODY}`, color: INK_2 }}>
           No topics to grade yet.
         </p>
         <p style={{ margin: 0, font: `400 13px ${FONT_BODY}`, color: DASH.dim }}>
@@ -131,7 +134,7 @@ export default function GradesGridClient({ classId }: { classId: string }) {
           the questions answered).
         </caption>
         <thead>
-          <tr style={{ background: DASH.subtleBg, borderBottom: `1px solid ${DASH.line}` }}>
+          <tr style={{ background: DASH.subtleBg, borderBottom: `1px solid ${DASH_FLAT.panelHairline}` }}>
             <th
               scope="col"
               style={{
@@ -171,7 +174,7 @@ export default function GradesGridClient({ classId }: { classId: string }) {
         </thead>
         <tbody>
           {body.students.map((s, i) => (
-            <tr key={s.student_id} style={{ borderBottom: i < body.students.length - 1 ? `1px solid ${DASH.hairline}` : 'none' }}>
+            <tr key={s.student_id} style={{ borderBottom: i < body.students.length - 1 ? `1px solid ${DASH_FLAT.panelHairline}` : 'none' }}>
               <th
                 scope="row"
                 style={{
@@ -181,7 +184,7 @@ export default function GradesGridClient({ classId }: { classId: string }) {
                   left: 0,
                   zIndex: 1,
                   background: DASH.cardBg,
-                  borderRight: `1px solid ${DASH.hairline}`,
+                  borderRight: `1px solid ${DASH_FLAT.panelHairline}`,
                   fontWeight: 400,
                 }}
               >
@@ -205,7 +208,7 @@ export default function GradesGridClient({ classId }: { classId: string }) {
               {s.cells.map((c) => (
                 <td
                   key={`${c.course_id}:${c.topic_id}`}
-                  style={{ padding: '12px 14px', verticalAlign: 'top', borderLeft: `1px solid ${DASH.hairline}` }}
+                  style={{ padding: '12px 14px', verticalAlign: 'top', borderLeft: `1px solid ${DASH_FLAT.panelHairline}` }}
                 >
                   <ScorePair latest={c.quiz_latest} mastery={c.quiz_mastery} compact />
                   <div style={{ marginTop: 7 }}>
@@ -221,7 +224,7 @@ export default function GradesGridClient({ classId }: { classId: string }) {
         </tbody>
       </table>
 
-      <div style={{ padding: '12px 16px', borderTop: `1px solid ${DASH.hairline}`, background: DASH.subtleBg }}>
+      <div style={{ padding: '12px 16px', borderTop: `1px solid ${DASH_FLAT.panelHairline}`, background: DASH.subtleBg }}>
         <p style={{ margin: 0, font: `400 11.5px ${FONT_BODY}`, color: DASH.dim, maxWidth: 780 }}>
           <strong style={{ color: DASH.muted, font: `700 11.5px ${FONT_HEADING}` }}>Mastery</strong> counts every question
           a student has ever answered correctly, over the whole quiz — the same rule the completion gates use, so it never
@@ -253,12 +256,9 @@ function headCell(): React.CSSProperties {
   };
 }
 
+// The dashboard's panel, through the same function. See the fuller note on the
+// copy in ../StudentsClient.tsx: this was one of three hand-rolled duplicates
+// that agreed by luck.
 function card(): React.CSSProperties {
-  return {
-    background: DASH.cardBg,
-    border: `1px solid ${DASH.cardBorder}`,
-    borderRadius: 12,
-    padding: '16px 18px',
-    boxShadow: DASH.cardShadow,
-  };
+  return { ...flatPanelStyle(), padding: '16px 18px' };
 }
