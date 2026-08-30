@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { DASH } from '../../../../components/dashboard-theme';
+import { DASH, DASH_FLAT, flatPanelStyle } from '../../../../components/dashboard-theme';
+import { CTA, INK_2 } from '../../../dashboard-chrome';
 import { FONT_BODY, FONT_HEADING } from '../../../../components/fonts';
 import { unitLabel } from '../../../../lib/units';
 import { CompletionPill, LetterChip, PracticeContext, ScorePair, type Score, type SerializedLetter } from '../../grade-ui';
@@ -67,8 +68,8 @@ export default function GradebookClient({ studentId, classId }: { studentId: str
     return (
       <div style={card()}>
         <p style={{ margin: '0 0 10px', font: `400 14px ${FONT_BODY}`, color: '#9A2A2A' }}>{error}</p>
-        <Link href={`/teacher/students?class_id=${classId}`} style={{ font: `700 13px ${FONT_BODY}`, color: '#C68A2F', textDecoration: 'none' }}>
-          ← Back to students
+        <Link href={`/teacher/students?class_id=${classId}`} className="um-tdash-view" style={{ font: `700 13px ${FONT_BODY}`, textDecoration: 'none' }}>
+          Back to students
         </Link>
       </div>
     );
@@ -81,8 +82,10 @@ export default function GradebookClient({ studentId, classId }: { studentId: str
           style={{
             width: 30,
             height: 30,
-            border: `3px solid ${DASH.line}`,
-            borderTopColor: '#C68A2F',
+            // The dashboard's spinner: #E8E4DA ring, Sunset Orange leading
+            // edge. Retires #C68A2F.
+            border: `3px solid ${DASH_FLAT.panelHairline}`,
+            borderTopColor: CTA,
             borderRadius: '50%',
             margin: '0 auto',
             animation: 'um-spin 0.8s linear infinite',
@@ -97,6 +100,39 @@ export default function GradebookClient({ studentId, classId }: { studentId: str
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+      {/* THE ONE CRUMB THAT SURVIVED THE RAIL, AND IT IS RENDERED HERE RATHER
+          THAN IN THE SHELL FOR A REASON THAT IS NOT LAYOUT.
+          ================================================================
+          The rail can say "Students". It cannot say WHICH student, and on this
+          page that is the only thing worth saying -- so this trail stays where
+          every other one was deleted.
+
+          It cannot be a server crumb. The student's name is deliberately NOT in
+          the page params and is NOT looked up in page.tsx: resolving a name
+          server-side before /api/teacher/grades has checked that this teacher
+          owns the class AND that the student is an active member of it would
+          turn this URL into a directory lookup, where any student id plus a
+          class the caller happens to own confirms a real person's name in the
+          page chrome. That reasoning is recorded in page.tsx and this change
+          does not weaken it by a step.
+
+          So the name arrives the only way it is allowed to: in `body`, after the
+          route authorised it. Until then the page has already rendered its
+          "Gradebook" heading and this line simply is not there yet. */}
+      <nav aria-label="Breadcrumb" style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginTop: -4 }}>
+        <Link
+          href={`/teacher/students?class_id=${classId}`}
+          className="um-tdash-view"
+          style={{ font: `600 12.5px ${FONT_BODY}`, textDecoration: 'none' }}
+        >
+          Students
+        </Link>
+        <span aria-hidden="true" style={{ font: `400 12.5px ${FONT_BODY}`, color: DASH.dim }}>/</span>
+        <span aria-current="page" style={{ font: `600 12.5px ${FONT_BODY}`, color: INK_2, minWidth: 0 }}>
+          {body.name}
+        </span>
+      </nav>
+
       {/* The headline. Same letter, same computation, as the roster column. */}
       <div style={{ ...card(), display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
         <LetterChip letter={body.letter} size="lg" showSubtitle={false} />
@@ -146,7 +182,7 @@ export default function GradebookClient({ studentId, classId }: { studentId: str
                     Quiz grade, completion and practice for each topic in {unitLabel(unit)}
                   </caption>
                   <thead>
-                    <tr style={{ background: DASH.subtleBg, borderBottom: `1px solid ${DASH.line}` }}>
+                    <tr style={{ background: DASH.subtleBg, borderBottom: `1px solid ${DASH_FLAT.panelHairline}` }}>
                       {['Topic', 'Quiz grade', 'Completion', 'Practice'].map((h) => (
                         <th
                           key={h}
@@ -170,7 +206,7 @@ export default function GradebookClient({ studentId, classId }: { studentId: str
                     {rows.map((t, i) => (
                       <tr
                         key={`${t.course_id}:${t.topic_id}`}
-                        style={{ borderBottom: i < rows.length - 1 ? `1px solid ${DASH.hairline}` : 'none' }}
+                        style={{ borderBottom: i < rows.length - 1 ? `1px solid ${DASH_FLAT.panelHairline}` : 'none' }}
                       >
                         <td style={{ padding: '12px 16px' }}>
                           <div style={{ font: `600 13.5px ${FONT_BODY}`, color: DASH.ink }}>{t.topic_name}</div>
@@ -212,12 +248,8 @@ export default function GradebookClient({ studentId, classId }: { studentId: str
   );
 }
 
+// The dashboard's panel, through the same function. See the fuller note on the
+// copy in ../../StudentsClient.tsx.
 function card(): React.CSSProperties {
-  return {
-    background: DASH.cardBg,
-    border: `1px solid ${DASH.cardBorder}`,
-    borderRadius: 12,
-    padding: '16px 18px',
-    boxShadow: DASH.cardShadow,
-  };
+  return { ...flatPanelStyle(), padding: '16px 18px' };
 }

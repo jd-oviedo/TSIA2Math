@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { DASH } from '../../components/dashboard-theme';
+import { DASH, DASH_FLAT, flatPanelStyle } from '../../components/dashboard-theme';
+import { CTA, CTA_INK, INK_2 } from '../dashboard-chrome';
 import { FONT_BODY, FONT_HEADING } from '../../components/fonts';
 import { LetterChip, type SerializedLetter } from './grade-ui';
 
@@ -95,8 +96,11 @@ export default function StudentsClient({ classId }: { classId: string }) {
           style={{
             width: 30,
             height: 30,
-            border: `3px solid ${DASH.line}`,
-            borderTopColor: '#C68A2F',
+            // The dashboard's own spinner, exactly: a DASH_FLAT.panelHairline
+            // #E8E4DA ring with a Sunset Orange #F0A33E leading edge.
+            // TeacherDashboardClient's Spinner. Retires #C68A2F.
+            border: `3px solid ${DASH_FLAT.panelHairline}`,
+            borderTopColor: CTA,
             borderRadius: '50%',
             margin: '0 auto',
             animation: 'um-spin 0.8s linear infinite',
@@ -117,7 +121,7 @@ export default function StudentsClient({ classId }: { classId: string }) {
   if (roster.length === 0) {
     return (
       <div style={{ ...card(), textAlign: 'center', padding: '40px 24px' }}>
-        <p style={{ margin: '0 0 6px', font: `400 14px ${FONT_BODY}`, color: DASH.muted }}>No students enrolled yet.</p>
+        <p style={{ margin: '0 0 6px', font: `400 14px ${FONT_BODY}`, color: INK_2 }}>No students enrolled yet.</p>
         <p style={{ margin: 0, font: `400 13px ${FONT_BODY}`, color: DASH.dim }}>
           Share the join code from the dashboard, or invite students by email.
         </p>
@@ -147,8 +151,8 @@ export default function StudentsClient({ classId }: { classId: string }) {
             </div>
             {/* THE ROSTER ENTRY POINT. Same route, same page, as the grid cell
                 and the student-detail banner button. */}
-            <Link href={gradebookHref(s.student_id)} style={linkStyle({ marginTop: 12, display: 'inline-block' })}>
-              View gradebook →
+            <Link href={gradebookHref(s.student_id)} className="um-tdash-view" style={linkStyle({ marginTop: 12, display: 'inline-block' })}>
+              View gradebook <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
         ))}
@@ -163,7 +167,7 @@ export default function StudentsClient({ classId }: { classId: string }) {
           Every student in this class, with their overall grade
         </caption>
         <thead>
-          <tr style={{ background: DASH.subtleBg, borderBottom: `1px solid ${DASH.line}` }}>
+          <tr style={{ background: DASH.subtleBg, borderBottom: `1px solid ${DASH_FLAT.panelHairline}` }}>
             {['Student', 'Grade', 'Practice test', 'Tests', 'Last active', ''].map((h) => (
               <th
                 key={h}
@@ -185,7 +189,7 @@ export default function StudentsClient({ classId }: { classId: string }) {
         </thead>
         <tbody>
           {roster.map((s, i) => (
-            <tr key={s.student_id} style={{ borderBottom: i < roster.length - 1 ? `1px solid ${DASH.hairline}` : 'none' }}>
+            <tr key={s.student_id} className="um-tdash-row" style={{ borderBottom: i < roster.length - 1 ? `1px solid ${DASH_FLAT.panelHairline}` : 'none' }}>
               <td style={{ padding: '13px 20px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 11 }}>
                   <Avatar initials={s.initials} />
@@ -204,7 +208,7 @@ export default function StudentsClient({ classId }: { classId: string }) {
                 </span>
               </td>
               <td style={{ padding: '13px 14px', textAlign: 'center' }}>
-                <span style={{ font: `600 13.5px ${FONT_BODY}`, color: DASH.muted, fontVariantNumeric: 'tabular-nums' }}>
+                <span style={{ font: `600 13.5px ${FONT_BODY}`, color: INK_2, fontVariantNumeric: 'tabular-nums' }}>
                   {s.attempt_count}
                 </span>
               </td>
@@ -214,8 +218,8 @@ export default function StudentsClient({ classId }: { classId: string }) {
                 </span>
               </td>
               <td style={{ padding: '13px 20px', textAlign: 'right' }}>
-                <Link href={gradebookHref(s.student_id)} style={linkStyle({ whiteSpace: 'nowrap' })}>
-                  Gradebook →
+                <Link href={gradebookHref(s.student_id)} className="um-tdash-view" style={linkStyle({ whiteSpace: 'nowrap' })}>
+                  Gradebook <span aria-hidden="true">&rarr;</span>
                 </Link>
               </td>
             </tr>
@@ -252,11 +256,14 @@ function Avatar({ initials }: { initials: string }) {
     <div
       aria-hidden="true"
       style={{
+        // The dashboard roster avatar, mirrored exactly: 34px, round, Sunset
+        // Orange fill with #111111 on it at 9.00. It was Deep Navy with white,
+        // which is now the rail's ground rather than an avatar's.
         width: 34,
         height: 34,
         borderRadius: '50%',
-        background: '#0F1E35',
-        color: '#fff',
+        background: CTA,
+        color: CTA_INK,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -269,16 +276,22 @@ function Avatar({ initials }: { initials: string }) {
   );
 }
 
+// BYTE-IDENTICAL TO THE DASHBOARD'S PANEL, through the same function.
+//
+// This was one of three private copies of the same rounded-with-shadow object
+// (here, GradesGridClient, GradebookClient), which is how the three of them
+// stayed in step by luck rather than by construction. They now all spread
+// flatPanelStyle() and the luck is no longer load-bearing. The padding is the
+// one thing that stays local, because it is the only value the three copies
+// were ever going to want to differ on.
 function card(): React.CSSProperties {
-  return {
-    background: DASH.cardBg,
-    border: `1px solid ${DASH.cardBorder}`,
-    borderRadius: 12,
-    padding: '16px 18px',
-    boxShadow: DASH.cardShadow,
-  };
+  return { ...flatPanelStyle(), padding: '16px 18px' };
 }
 
+// The dashboard's roster link, and the class that carries it does the colour:
+// --umt-view-ink resolves to DASH.link #2F6091 and hovers to DASH.linkHover
+// #0F69BA, with the arrow nudging 2px. No `color` here at all, so the variable
+// is not overridden by an inline prop. Retires #C68A2F as an ink.
 function linkStyle(extra: React.CSSProperties = {}): React.CSSProperties {
-  return { font: `700 13px ${FONT_BODY}`, color: '#C68A2F', textDecoration: 'none', ...extra };
+  return { font: `700 13px ${FONT_BODY}`, textDecoration: 'none', ...extra };
 }
