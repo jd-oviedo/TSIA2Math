@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
@@ -12,11 +12,58 @@ import {
   strandChip,
 } from '../worksheet-theme';
 import { countEligible, MAX_QUESTIONS } from '../../../lib/worksheet-select';
+import { MOTION_CSS } from '../../../motion';
 import type { PickerTopic } from '../../../lib/worksheet-source';
 import { QuotaMeter, QuotaCapNotice } from '../QuotaNotice';
 
 const LEVELS = ['Basic', 'Proficient', 'Advanced'] as const;
 type Level = (typeof LEVELS)[number];
+
+// THE ONE PLACE JAVASCRIPT HAS TO KNOW A DURATION, and it is a duplicate of
+// --um-dur-3 in app/motion.ts. It cannot read that token: the accordion drops
+// its cards on a timer rather than on transitionend (see toggleUnit for why),
+// and a timer needs a number before the element exists. If --um-dur-3 moves,
+// this moves with it -- being too LONG is the safe direction, since the cards
+// are already invisible inside a closed row by then.
+const CLOSE_MS = 280;
+
+// The same duplication, for the chip exit, against --um-dur-2. See CLOSE_MS.
+// A little long rather than a little short: the timer is the fallback, and
+// firing it early would cut the animation off mid-frame.
+const CHIP_MS = 260;
+
+/**
+ * Run um-tick-pop on an element whenever a value changes.
+ *
+ * NO REFLOW HACK. The usual way to restart a CSS animation is to remove the
+ * class, read offsetWidth to force a synchronous layout, and add it back. That
+ * flushes layout on every keystroke of the count field, on a page holding 97
+ * topic cards, to restart a 220ms fade.
+ *
+ * Removing the class and adding it on the NEXT FRAME does the same job: the
+ * browser has already committed a frame without the class, so re-adding it
+ * starts the animation from the beginning. The rAF is cancelled on cleanup, so
+ * a value that changes twice inside one frame schedules one animation.
+ *
+ * The first render is skipped on purpose -- a counter that pops on arrival is
+ * an entrance, and this hook is for changes.
+ */
+function useTickPop(value: unknown) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const seen = useRef(false);
+  useEffect(() => {
+    if (!seen.current) {
+      seen.current = true;
+      return;
+    }
+    const el = ref.current;
+    if (!el) return;
+    el.classList.remove('um-tick-pop');
+    const id = requestAnimationFrame(() => el.classList.add('um-tick-pop'));
+    return () => cancelAnimationFrame(id);
+  }, [value]);
+  return ref;
+}
 
 // The app's unit map, not the design import's. The board names Unit 3
 // "Geometric and Spatial Reasoning", Unit 4 "Probabilistic and Statistical
@@ -123,6 +170,24 @@ export default function WorksheetBuilder({
   // selected, stay counted in the totals, and stay listed in the rail.
   const [openUnits, setOpenUnits] = useState<Set<number>>(new Set());
 
+  // MOUNTED BUT CLOSING. The grid row has to travel from 1fr to 0fr before its
+  // cards can leave, and a card that has already unmounted cannot be seen
+  // sliding shut, so a closing unit keeps its children for the length of the
+  // transition and only then drops them.
+  //
+  // THE A11Y PROPERTY THE OLD `{open && ...}` PROTECTED IS UNCHANGED. A closed
+  // unit still renders no cards at all -- no checkboxes in the tab order, none
+  // in the accessibility tree. The wrapper stays, empty and zero-height, which
+  // is what gives the open transition something to animate FROM.
+  const [closingUnits, setClosingUnits] = useState<Set<number>>(new Set());
+
+  // Bumped every time a unit opens, and used as the card grid's key so the
+  // stagger restarts on each open rather than only on first mount. A key change
+  // remounts the children, which is what re-runs their animation; the
+  // alternative is reading offsetWidth to force a reflow, which is a layout
+  // flush disguised as a no-op.
+  const [openToken, setOpenToken] = useState<Record<number, number>>({});
+
   const byUnit = useMemo(() => {
     // Already sorted by (unit_number, sequence_in_unit) on the server -- schema
     // fact 2. Grouping preserves that order; it does not re-sort.
@@ -136,12 +201,40 @@ export default function WorksheetBuilder({
   }, [topics]);
 
   function toggleUnit(unit: number) {
+    const isOpen = openUnits.has(unit);
     setOpenUnits((prev) => {
       const next = new Set(prev);
-      if (next.has(unit)) next.delete(unit);
+      if (isOpen) next.delete(unit);
       else next.add(unit);
       return next;
     });
+
+    if (isOpen) {
+      // Hold the cards for the length of the close, then drop them. A TIMER
+      // rather than transitionend, deliberately: under prefers-reduced-motion
+      // this surface's own stylesheet sets `transition: none`, the event never
+      // fires, and a listener would leave the cards mounted for good -- the
+      // accessibility regression this whole dance exists to avoid, arriving
+      // only for the users who asked for less motion.
+      setClosingUnits((prev) => new Set(prev).add(unit));
+      window.setTimeout(() => {
+        setClosingUnits((prev) => {
+          const next = new Set(prev);
+          next.delete(unit);
+          return next;
+        });
+      }, CLOSE_MS);
+    } else {
+      // Re-opening during a close cancels it, so the cards are never dropped
+      // out from under a unit that is on its way back open.
+      setClosingUnits((prev) => {
+        if (!prev.has(unit)) return prev;
+        const next = new Set(prev);
+        next.delete(unit);
+        return next;
+      });
+      setOpenToken((prev) => ({ ...prev, [unit]: (prev[unit] ?? 0) + 1 }));
+    }
   }
 
   const byId = useMemo(() => {
@@ -212,19 +305,85 @@ export default function WorksheetBuilder({
   // "about a minute" over an empty sheet is worse than no number.
   const timeLabel = capped === 0 ? '0 min' : `~${minutes} min`;
 
+  // The two readouts in the totals band. Both are RESULT counts -- what the
+  // sheet will hold, not what the bank holds -- and they move whenever the
+  // count field or the selection does, which is exactly when a small
+  // acknowledgement helps and a large one would be noise.
+  const sheetCountRef = useTickPop(capped);
+  const timeRef = useTickPop(timeLabel);
+
   // Selection order, so the rail lists topics in the order they were picked.
   // Held alongside the Set rather than replacing it: every existing read is a
   // membership test, and a Set is the right shape for that.
   const [order, setOrder] = useState<string[]>([]);
 
+  // Chips on their way out. `selected` and every total move on the CLICK, as
+  // they always did -- only the chip's removal from `order` waits for its
+  // animation. Deferring the selection itself would make the counts lag the
+  // pointer by 220ms, which is the one thing this screen must never do.
+  const [leaving, setLeaving] = useState<Set<string>>(new Set());
+
+  // MIRRORED IN A REF BECAUSE A TIMER HAS TO READ IT, and the timer was
+  // scheduled before the state it needs to consult existed. Without this,
+  // pick -> unpick -> re-pick inside 260ms loses the chip: the first removal's
+  // fallback timer fires against a topic that is selected again and takes its
+  // rail row away, leaving a selected topic with nothing in the rail. The ref
+  // is what lets dropChip ask "is this STILL leaving" at the moment it runs
+  // rather than at the moment it was scheduled.
+  const leavingRef = useRef<Set<string>>(new Set());
+
+  function markLeaving(id: string) {
+    const next = new Set(leavingRef.current).add(id);
+    leavingRef.current = next;
+    setLeaving(next);
+  }
+
+  /** Clears the flag, and reports whether it was actually set. */
+  function clearLeaving(id: string): boolean {
+    if (!leavingRef.current.has(id)) return false;
+    const next = new Set(leavingRef.current);
+    next.delete(id);
+    leavingRef.current = next;
+    setLeaving(next);
+    return true;
+  }
+
   function toggle(id: string) {
+    const isSelected = selected.has(id);
     setSelected((prev) => {
       const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
+      if (isSelected) next.delete(id);
       else next.add(id);
       return next;
     });
-    setOrder((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
+
+    if (isSelected) {
+      markLeaving(id);
+      // The belt to animationend's braces. Under reduced motion no animation
+      // runs and no animationend arrives, so without this the chip would never
+      // leave the rail. dropChip is idempotent, so whichever fires first wins
+      // and the second is a no-op.
+      window.setTimeout(() => dropChip(id), CHIP_MS);
+    } else {
+      // Re-picking a topic mid-exit reclaims the chip that is still on screen
+      // rather than queueing a second one behind it -- and, through the ref
+      // above, defuses the fallback timer that was going to remove it.
+      clearLeaving(id);
+      setOrder((prev) => (prev.includes(id) ? prev : [...prev, id]));
+    }
+  }
+
+  /**
+   * The chip has finished leaving. Now it can go.
+   *
+   * IDEMPOTENT AND CONDITIONAL, which is what makes it safe to call from both
+   * animationend and a timer, and safe to call late. If the topic was re-picked
+   * while the chip was on its way out it is no longer leaving, and this returns
+   * without touching the rail.
+   */
+  function dropChip(id: string) {
+    if (!clearLeaving(id)) return;
+    setOrder((prev) => prev.filter((x) => x !== id));
   }
 
   function toggleLevel(l: Level) {
@@ -280,7 +439,11 @@ export default function WorksheetBuilder({
   // return and a {/* */} beside it would be a second child.
   return (
     <main className="ws-page ws-chrome">
-      <style>{WS_CHROME_CSS}</style>
+      {/* MOTION_CSS after WS_CHROME_CSS. Nothing in either overlaps the other
+          -- one owns grounds and chrome, the other owns durations, keyframes
+          and the reduced-motion guard -- but the order is fixed rather than
+          incidental so a future collision is settled the same way twice. */}
+      <style>{WS_CHROME_CSS + MOTION_CSS}</style>
 
       <header style={{ background: WS.band, borderBottom: `1px solid ${WS.hairline}` }}>
         <div className="ws-headband-inner">
@@ -300,7 +463,19 @@ export default function WorksheetBuilder({
         </div>
       </header>
 
-      <div className="ws-builder">
+      {/* LOCK 1 of the shared motion system, and it is HERE rather than on the
+          <main> above for one concrete reason: .ws-stickybar is position:fixed
+          inside that main below 375px (worksheet-theme.ts), and a transformed
+          ancestor becomes the containing block for a fixed descendant. The
+          mobile bar would stop being pinned to the viewport and start being
+          pinned to the page. .um-motion itself carries no transform, but the
+          class that opts a subtree in is the wrong place to be relying on
+          that: everything this file animates lives inside .ws-builder, and the
+          sticky bar is deliberately outside it.
+
+          The consequence is stated rather than hidden: the mobile bar's own
+          count does not tick, because it is outside the opted-in subtree. */}
+      <div className="ws-builder um-motion">
         {/* ── selection rail, upper half ─────────────────────────────────── */}
         <div className="ws-builder-rail-top">
           <div
@@ -360,9 +535,27 @@ export default function WorksheetBuilder({
                 {order.map((id) => {
                   const t = byId.get(id);
                   if (!t) return null;
+                  const going = leaving.has(id);
                   return (
                     <div
                       key={id}
+                      // in on mount, out on removal. The chip is still in
+                      // `order` while it leaves -- `selected` and every total
+                      // updated on the click -- so what is animating here is a
+                      // list row, not a decision.
+                      className={going ? 'um-chip-out' : 'um-chip-in'}
+                      // THE EXIT'S ONLY EXIT. Under prefers-reduced-motion the
+                      // guard removes the animation, animationend never fires,
+                      // and a chip that waited for it would sit in the rail
+                      // forever after its topic was deselected. onTransitionEnd
+                      // would not help; there is no transition. So the removal
+                      // is ALSO scheduled on a timer at the click, and this
+                      // handler is the fast path rather than the only path --
+                      // see dropChip, which is idempotent for exactly that
+                      // reason.
+                      onAnimationEnd={() => {
+                        if (going) dropChip(id);
+                      }}
                       style={{
                         ...panelStyle,
                         padding: '10px 11px',
@@ -427,6 +620,7 @@ export default function WorksheetBuilder({
           >
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               <span
+                ref={sheetCountRef}
                 style={{
                   fontFamily: WS.font.heading,
                   fontSize: 26,
@@ -442,6 +636,7 @@ export default function WorksheetBuilder({
             <div style={{ width: 1, height: 34, background: WS.hairline }} />
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'flex-end' }}>
               <span
+                ref={timeRef}
                 style={{
                   fontFamily: WS.font.heading,
                   fontSize: 26,
@@ -509,7 +704,7 @@ export default function WorksheetBuilder({
                       role="switch"
                       aria-checked={on}
                       onClick={() => toggleLevel(l)}
-                      className="ws-tap"
+                      className="ws-tap ws-swap"
                       style={{
                         flex: 1,
                         minWidth: 92,
@@ -525,6 +720,8 @@ export default function WorksheetBuilder({
                         fontSize: 12.5,
                         padding: '8px 6px',
                         cursor: 'pointer',
+                        // The left rule that says "on". ws-swap below is what
+                        // makes it arrive over 150ms instead of appearing.
                         boxShadow: on ? `inset 3px 0 0 ${WS.marker}` : 'none',
                       }}
                     >
@@ -599,7 +796,7 @@ export default function WorksheetBuilder({
               type="button"
               onClick={create}
               disabled={blocked}
-              className={`ws-only-desk ws-tap${blocked ? '' : ' ws-cta'}`}
+              className={`ws-only-desk ws-tap ws-swap${blocked ? '' : ' ws-cta'}`}
               style={{
                 ...ctaStyle,
                 width: '100%',
@@ -630,6 +827,9 @@ export default function WorksheetBuilder({
           <div style={{ padding: '18px 26px 40px', display: 'flex', flexDirection: 'column', gap: 20 }}>
             {byUnit.map(([unit, list]) => {
               const open = openUnits.has(unit);
+              // Open OR shutting: the cards outlive the click by the length of
+              // the row's transition so the close can be seen.
+              const closing = closingUnits.has(unit);
               // Counted from `selected`, never from what is on screen, so the
               // number is the truth about the worksheet rather than a summary of
               // the visible cards. It is the reassurance that makes collapsing a
@@ -672,11 +872,11 @@ export default function WorksheetBuilder({
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     aria-hidden="true"
+                    className="ws-chev"
                     style={{
                       flex: '0 0 11px',
                       color: WS.muted,
                       transform: open ? 'rotate(90deg)' : 'none',
-                      transition: 'transform 160ms ease',
                     }}
                   >
                     <polyline points="6 3 13 9 6 15" />
@@ -710,11 +910,21 @@ export default function WorksheetBuilder({
                   </span>
                 </button>
 
-                {/* UNMOUNTED, not hidden. A display:none grid would keep 97
-                    checkboxes in the accessibility tree and in the tab order,
-                    which is the opposite of what collapsing is for. */}
-                {open && (
-                <div className="ws-topicgrid">
+                {/* STILL UNMOUNTED WHEN CLOSED, and that is the property to
+                    preserve rather than the markup. A display:none grid would
+                    keep 97 checkboxes in the accessibility tree and in the tab
+                    order, which is the opposite of what collapsing is for.
+
+                    The wrapper is now always present so the row has something
+                    to travel FROM -- an element that mounts at its open height
+                    has no transition to run -- but it is empty and 0fr high
+                    while the unit is closed, so a closed unit still contributes
+                    no focusable anything. The cards mount on open and are
+                    dropped a beat after close, once the row has shut. */}
+                <div className={`ws-unitbody${open ? ' ws-unitbody-open' : ''}`}>
+                  <div>
+                    {(open || closing) && (
+                    <div className="ws-topicgrid um-stagger-panel" key={openToken[unit] ?? 0}>
                   {list.map((t) => {
                     const on = selected.has(t.topic_id);
                     // The same call the running total uses, so a topic's badge
@@ -724,13 +934,19 @@ export default function WorksheetBuilder({
                     return (
                       <label
                         key={t.topic_id}
+                        // GROUND AND EDGE MOVED OUT OF THE INLINE STYLE, and
+                        // they had to: an inline background beats a stylesheet
+                        // rule, so a card that painted its own ground could
+                        // never be hovered by one. .ws-card owns both through
+                        // --card-bg / --card-border and :hover reassigns the
+                        // variables. What stays inline is state React already
+                        // owns -- the selected rule, the locked dimming.
+                        className={`um-body-in ${locked ? 'ws-card-locked' : 'ws-card'}`}
                         style={{
                           display: 'flex',
                           alignItems: 'flex-start',
                           gap: 12,
                           padding: '14px 15px',
-                          background: locked ? WS.insetRow : WS.panel,
-                          border: locked ? `1px dashed ${WS.hairline}` : `1px solid ${WS.hairline}`,
                           boxShadow: on ? `inset 3px 0 0 ${WS.marker}` : 'none',
                           opacity: locked ? 0.55 : 1,
                           cursor: locked ? 'not-allowed' : 'pointer',
@@ -773,8 +989,10 @@ export default function WorksheetBuilder({
                       </label>
                     );
                   })}
+                    </div>
+                    )}
+                  </div>
                 </div>
-                )}
               </section>
               );
             })}
@@ -806,7 +1024,7 @@ export default function WorksheetBuilder({
           type="button"
           onClick={create}
           disabled={blocked}
-          className={`ws-tap${blocked ? '' : ' ws-cta'}`}
+          className={`ws-tap ws-swap${blocked ? '' : ' ws-cta'}`}
           style={{
             ...ctaStyle,
             flex: 1,
@@ -835,7 +1053,9 @@ function Marker({ on, plus }: { on: boolean; plus?: boolean }) {
   return (
     <span
       aria-hidden="true"
+      className="ws-swap"
       style={{
+        position: 'relative',
         width: 16,
         height: 16,
         flex: 'none',
@@ -849,13 +1069,16 @@ function Marker({ on, plus }: { on: boolean; plus?: boolean }) {
         lineHeight: 1,
       }}
     >
-      {on ? (
+      {/* ALWAYS RENDERED, faded rather than mounted. A checkmark that appears
+          cannot cross-fade with the '+' it replaces, and mounting one on tick
+          is a layout change inside a 16px box. Absolutely placed by .ws-tick so
+          neither glyph moves the other. */}
+      <span className="ws-tick" style={{ opacity: on ? 1 : 0 }}>
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke={WS.ink} strokeWidth="2">
           <path d="M2 6.4 4.6 9 10 3.2" />
         </svg>
-      ) : plus ? (
-        '+'
-      ) : null}
+      </span>
+      {!on && plus ? '+' : null}
     </span>
   );
 }
