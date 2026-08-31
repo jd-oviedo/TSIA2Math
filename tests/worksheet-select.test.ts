@@ -291,6 +291,90 @@ test('shuffling is a permutation, not a filter', () => {
   assert.deepEqual(input, [1, 2, 3, 4, 5, 6, 7, 8]);
 });
 
+// ─── reachability: the shuffle can reach every item ─────────────────────────
+//
+// THE PROPERTY A TEACHER FEELS OVER A TERM, not on one sheet. A draw that only
+// ever reached the first five authored items would look correct every single
+// time -- five distinct questions, the right count, no repeats, no note -- and
+// would print the same five on every worksheet built from that topic all year.
+// Nothing in the response says which items were unreachable, so the only place
+// this can be caught is here.
+//
+// DRIVEN THROUGH selectItems(), never through seededShuffle() alone, because the
+// reachable set is a property of the shuffle AND the slice together: a perfect
+// permutation sliced from a fixed end is still a fixed sheet. The permutation
+// test above proves the first half; this proves what the draw does with it.
+//
+// 14 and 5 rather than round numbers: 14 is the pool an ordinary topic offers
+// (10 practice, 4 quiz) and 5 is a plausible per-topic share once allocate() has
+// spread a request across three of them.
+
+const REACH_POOL_SIZE = 14;
+const REACH_WANT = 5;
+const REACH_SEEDS = 500;
+
+const reachPool = Array.from({ length: REACH_POOL_SIZE }, (_, i) => practice(i + 1, 'Basic'));
+
+/** Item numbers one draw selected, in drawn order. */
+function drawnNumbers(seed: number, count = REACH_WANT): number[] {
+  const { refs } = selectItems([{ topic_id: 'AR.2.1', candidates: reachPool }], { count, seed });
+  return refs.map((r) => (r.source === 'static' ? r.item_number : -1));
+}
+
+test('every item in a pool is reachable across seeds', () => {
+  const seen = new Set<number>();
+  for (let seed = 1; seed <= REACH_SEEDS; seed++) {
+    for (const n of drawnNumbers(seed)) seen.add(n);
+  }
+
+  // Named, not counted. `seen.size === 14` fails identically whichever items are
+  // missing, and which ones they are is the whole diagnosis: a contiguous tail
+  // means the slice never moved, a scattered pair means a weak generator.
+  const missing = reachPool.map((_, i) => i + 1).filter((n) => !seen.has(n));
+  assert.deepEqual(
+    missing,
+    [],
+    `item${missing.length === 1 ? '' : 's'} ${missing.join(', ')} were never drawn in ` +
+      `${REACH_SEEDS} seeds: these questions can be authored and never printed`,
+  );
+});
+
+test('different seeds draw different slices, not the same five', () => {
+  // Pairwise over many seeds rather than the single pair asserted by 'the same
+  // seed reproduces the same sheet' above. One pair can differ by luck even from
+  // a draw that is nearly fixed, so one pair is not evidence of variation; the
+  // tolerance below is there so a genuine collision cannot redden the suite, not
+  // because collisions are expected -- there are 240,240 ordered 5-of-14 slices.
+  const PAIRS = 40;
+  let differ = 0;
+  for (let i = 0; i < PAIRS; i++) {
+    const a = drawnNumbers(1000 + i * 2);
+    const b = drawnNumbers(1001 + i * 2);
+    if (JSON.stringify(a) !== JSON.stringify(b)) differ++;
+  }
+  assert.ok(
+    differ >= PAIRS - 2,
+    `${PAIRS - differ} of ${PAIRS} seed pairs drew an identical slice`,
+  );
+});
+
+test('a draw is the count asked for with no repeats, at every seed', () => {
+  // Held over all 500 seeds rather than one. 'no question is ever drawn twice'
+  // above proves the exhausted case at seed 99; a shuffle that could repeat or
+  // drop an item would do it at some seeds and not others, which is exactly the
+  // failure a single-seed assertion misses.
+  for (let seed = 1; seed <= REACH_SEEDS; seed++) {
+    const under = drawnNumbers(seed);
+    assert.equal(under.length, REACH_WANT, `seed ${seed} drew ${under.length} of ${REACH_WANT}`);
+    assert.equal(new Set(under).size, under.length, `seed ${seed} repeated an item`);
+
+    // More asked for than the pool holds: the pool entire, still without repeats.
+    const over = drawnNumbers(seed, REACH_POOL_SIZE + 6);
+    assert.equal(over.length, REACH_POOL_SIZE, `seed ${seed} did not exhaust the pool`);
+    assert.equal(new Set(over).size, over.length, `seed ${seed} repeated an item`);
+  }
+});
+
 // ─── the mixed-backend case ─────────────────────────────────────────────────
 
 test('static and rolled candidates are drawn identically', () => {
