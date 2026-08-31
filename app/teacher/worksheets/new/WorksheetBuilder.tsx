@@ -33,11 +33,30 @@ const UNIT_NAMES: Record<number, string> = {
 
 // The builder.
 //
-// Every number shown here is real. The count badge is the topic's gradeable item
-// count, computed by format on the server; the running total is the sum of what
-// the selected topics can actually deliver. Nothing is padded to look deeper
-// than it is, because the moment a badge overstates a pool the teacher finds out
-// by printing a short worksheet.
+// AVAILABILITY COUNTS ARE HIDDEN, DELIBERATELY AND TEMPORARILY. Three numbers
+// used to be drawn from the item bank: a per-topic "N available" badge, an
+// "N available from this selection" clause under the QUESTIONS field, and the
+// count inside the shortfall warning. All three are gone while the bank is
+// small. They were never wrong -- that was the point of the old note here, and
+// the honesty rule it stated still governs anything this screen does print.
+//
+// NOTHING BEHIND THEM CHANGED, which is what makes this a clean revert. Every
+// number is still computed on every render -- eligibleIn() per topic, `pool` as
+// their sum -- and still drives behaviour: a zero-eligible topic is still
+// locked and unpickable, `short` still fires on exactly `pool < count`, and
+// Generate is still refused on an empty pool. Only the printing is removed.
+// To restore: put the three strings back and re-add
+// `const available = Math.min(pool, MAX_QUESTIONS)` beside `capped`. No logic
+// comes back with them.
+//
+// A LOCKED TOPIC STILL SAYS WHY. The dashed, dimmed, unpickable card kept its
+// styling, so removing its badge outright would have left a teacher who ticks
+// Advanced looking at greyed cards with no words. It carries the cause instead
+// of a count.
+//
+// STILL NUMBERS ON THIS SCREEN, and none of them is a bank count: "On the
+// sheet" and the time estimate describe the worksheet about to be built, and
+// "N of 97" / "N topics" / "N topics selected" count topics, not questions.
 //
 // RESTYLED 2026-08-25, LOGIC UNTOUCHED. The panes swap sides to match the board
 // (selection rail left, topic browser right) and every control is redrawn in the
@@ -174,15 +193,13 @@ export default function WorksheetBuilder({
   const capped = Math.min(count, pool);
   const short = selected.size > 0 && pool < count;
 
-  // WHAT THE HELPER LINE SAYS, and it is not `pool`. Twenty topics hold roughly
-  // 280 eligible questions, and "280 available from this selection" advertises a
-  // sheet that cannot be built -- one worksheet draws at most MAX_QUESTIONS.
+  // NO `available` HERE ANY MORE. It was Math.min(pool, MAX_QUESTIONS), read by
+  // the one clause under QUESTIONS that printed a bank number, and it is
+  // orphaned now that clause is gone -- see the header note on hidden
+  // availability. Restoring the counts restores this line with them.
   //
-  // The DISPLAY is bounded, never `pool` itself. `short` below and the "Only N
-  // available" warning both have to keep reading the true pool: their whole job
-  // is to say the selection is too shallow for the count, and a pool capped at
-  // 25 could not report being short of 20.
-  const available = Math.min(pool, MAX_QUESTIONS);
+  // `pool` itself is untouched and still does its two jobs: `short` above, and
+  // `blocked` below, which refuses a Generate on an empty selection.
 
   // Rough, and labelled as rough. There is no per-item timing anywhere in the
   // schema; estimated_time_minutes is per TOPIC and covers the whole lesson, so
@@ -475,7 +492,7 @@ export default function WorksheetBuilder({
                 style={{ ...fieldStyle, fontVariantNumeric: 'tabular-nums' }}
               />
               <span style={{ fontSize: 11, color: WS.muted, lineHeight: 1.45 }}>
-                Spread across the topics you pick. {available} available from this selection.
+                Spread across the topics you pick.
               </span>
             </div>
 
@@ -565,8 +582,8 @@ export default function WorksheetBuilder({
 
             {short && (
               <p style={{ fontSize: 11.5, color: WS.error, margin: 0, lineHeight: 1.45 }}>
-                Only {pool} question{pool === 1 ? '' : 's'} available. Add a topic
-                or lower the count, questions are never repeated.
+                Not enough questions in this selection to fill that count. Add a
+                topic or lower the number. Questions are never repeated.
               </p>
             )}
 
@@ -733,9 +750,11 @@ export default function WorksheetBuilder({
                             <span style={{ ...microLabel, letterSpacing: '0.04em', textTransform: 'none' }}>
                               {t.topic_id}
                             </span>
-                            <span style={{ ...microLabel, letterSpacing: '0.04em' }}>
-                              {locked ? 'None available' : `${shown} available`}
-                            </span>
+                            {locked && (
+                              <span style={{ ...microLabel, letterSpacing: '0.04em' }}>
+                                No match at this difficulty
+                              </span>
+                            )}
                             {t.templated && (
                               <span
                                 title="This topic generates fresh numbers each time"
