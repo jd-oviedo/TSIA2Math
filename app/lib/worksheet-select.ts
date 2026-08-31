@@ -69,8 +69,30 @@ export type Candidate = PoolEntry & {
   ref: ItemRef;
 };
 
+/**
+ * The most questions one worksheet may carry.
+ *
+ * THE PRODUCT RULE, in one place, because it is enforced at two edges that
+ * cannot see each other: the count input in WorksheetBuilder.tsx clamps to it,
+ * and the POST handler in app/api/teacher/worksheets/route.ts refuses anything
+ * above it. Those used to be two unrelated literals -- 50 in the browser and
+ * 200 on the server -- so the ceiling a teacher could actually reach depended
+ * on which of them you asked, and a direct POST got four times what the UI
+ * offered. A cap only the client applies is not a cap.
+ *
+ * Declared here rather than in either edge because this is the file both sides
+ * already import. It is runtime-pure, so a client component and a route handler
+ * can each take it without pulling Supabase into the browser.
+ *
+ * NOT ENFORCED BY selectItems(). The draw honours the count it is handed and
+ * reports a shortfall against it. Bounding the REQUEST is a product decision
+ * that belongs where a teacher can be told about it, not inside a pure function
+ * whose own tests deliberately drive it past any real ceiling.
+ */
+export const MAX_QUESTIONS = 25;
+
 export type SelectOptions = {
-  /** How many questions the teacher asked for. */
+  /** How many questions the teacher asked for. Bounded at the edges, not here. */
   count: number;
   /** Empty or absent means no difficulty filter. */
   levels?: readonly Level[];

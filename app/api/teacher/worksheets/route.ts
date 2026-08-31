@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { requireTeacher, profileGrants } from "../../../lib/auth";
 import { createAdminClient } from "../../../lib/supabase-admin";
 import { getItemsForTopic } from "../../../lib/worksheet-source";
-import { selectItems, type Level } from "../../../lib/worksheet-select";
+import { selectItems, MAX_QUESTIONS, type Level } from "../../../lib/worksheet-select";
 import { consumeWorksheetQuota } from "../../../lib/worksheet-quota";
 
 // Create and list worksheets.
@@ -30,7 +30,11 @@ import { consumeWorksheetQuota } from "../../../lib/worksheet-quota";
 // teacher before the body is parsed, so the counter never stands between an
 // unentitled user and a create. It only counts entitled ones.
 
-const MAX_ITEMS = 200;
+// The question ceiling is MAX_QUESTIONS, imported rather than declared: the
+// count input clamps to the same constant, and the two were free to drift while
+// each edge held its own number. The topic ceiling is local because nothing in
+// the browser enforces it -- the picker has no upper bound on selection, so this
+// is the only place it is checked.
 const MAX_TOPICS = 20;
 
 type CreateBody = {
@@ -114,8 +118,12 @@ export async function POST(request: Request) {
   if (topics.length === 0 || topics.length > MAX_TOPICS) {
     return NextResponse.json({ error: `Choose between 1 and ${MAX_TOPICS} topics.` }, { status: 400 });
   }
-  if (count < 1 || count > MAX_ITEMS) {
-    return NextResponse.json({ error: `Choose between 1 and ${MAX_ITEMS} questions.` }, { status: 400 });
+  // Refused, never clamped. A request for 40 is a request the teacher did not
+  // get, and silently building 25 of it would print a worksheet she has to count
+  // to notice. The message reads the constant, so it says "1 and 25" without a
+  // second copy of the number.
+  if (count < 1 || count > MAX_QUESTIONS) {
+    return NextResponse.json({ error: `Choose between 1 and ${MAX_QUESTIONS} questions.` }, { status: 400 });
   }
 
   const courseId = "tsia2-math";
