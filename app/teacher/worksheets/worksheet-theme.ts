@@ -364,6 +364,89 @@ export const WS_CHROME_CSS = `
 .ws-page label:focus-within { outline: 2px solid ${WS.focus}; outline-offset: 2px; }
 .ws-cta:hover { background: ${WS.ctaHover}; }
 
+/* ── Interaction, through a custom property ────────────────────────────────
+
+   THE PATTERN IS dashboard-chrome.ts's, AND IT IS HERE RATHER THAN IN
+   motion.ts ON PURPOSE. app/motion.ts owns what every surface shares -- the
+   durations, the curve, the keyframes, the reduced-motion guard. --card-bg
+   is a fact about a worksheet topic card and about nothing else, and pushing
+   it into the shared file would put a surface's vocabulary in a system whose
+   whole design is that it has none.
+
+   EVERY HOVER BELOW REASSIGNS A VARIABLE, never a property, for the reason
+   DASH_HOVER_CSS gives at length: a hover state cannot silently take a
+   property the base rule was relying on, because it never names one.
+
+   THE DURATIONS ARE READ FROM motion.ts WITH A FALLBACK, and the fallback is
+   load-bearing rather than defensive. This stylesheet is injected by the two
+   PRINT routes as well as the config route, and those do not emit MOTION_CSS,
+   so --um-dur-1 does not resolve there. A var() that fails inside a shorthand
+   invalidates the whole declaration -- which would be harmless here, since a
+   dropped transition on paper is the correct outcome anyway -- but the
+   fallback makes that a decision rather than an accident. */
+.ws-card {
+  --card-bg: ${WS.panel};
+  --card-border: ${WS.hairline};
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  transition:
+    background var(--um-dur-1, 150ms) var(--um-ease-out, ease),
+    border-color var(--um-dur-1, 150ms) var(--um-ease-out, ease),
+    box-shadow var(--um-dur-1, 150ms) var(--um-ease-out, ease);
+}
+.ws-card:hover { --card-bg: #FBFAF7; --card-border: rgba(15,30,53,0.18); }
+
+/* NO HOVER ON THE LOCKED CARD, and that is the point rather than an omission.
+   It is not pickable -- the checkbox is disabled and the cursor says so -- and
+   a ground that answers the pointer is an invitation to click something that
+   will not respond. It keeps the dashed edge and the dimming it already had. */
+.ws-card-locked {
+  background: ${WS.insetRow};
+  border: 1px dashed ${WS.hairline};
+}
+
+/* State swaps that are not hovers: a marker filling, a CTA going live, a card
+   gaining its selected rule. React changes the value inline; this only says how
+   long the change takes. An inline background beats these rules on VALUE and is
+   supposed to -- transition is a different property and is not contested. */
+.ws-swap {
+  transition:
+    background var(--um-dur-1, 150ms) var(--um-ease-out, ease),
+    border-color var(--um-dur-1, 150ms) var(--um-ease-out, ease),
+    color var(--um-dur-1, 150ms) var(--um-ease-out, ease),
+    box-shadow var(--um-dur-1, 150ms) var(--um-ease-out, ease);
+}
+
+/* The checkmark inside a marker. Absolutely placed so it can cross-fade over
+   the '+' without either one moving the 16px box. */
+.ws-tick {
+  position: absolute;
+  display: flex;
+  transition: opacity var(--um-dur-1, 150ms) var(--um-ease-out, ease);
+}
+
+/* ── The unit accordion ────────────────────────────────────────────────────
+
+   0fr to 1fr on a one-row grid, which is the only way to transition to a
+   content height without measuring it in JavaScript. The inner element carries
+   the overflow:hidden and min-height:0 -- without the second, a grid item
+   refuses to shrink below its content and the row never closes.
+
+   DEGRADES TO A SNAP, NEVER TO A BROKEN PANEL. A browser that does not
+   interpolate fr values applies the end state immediately: open is open,
+   closed is closed, with no animation in between. */
+.ws-unitbody {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--um-dur-3, 280ms) var(--um-ease-out, ease);
+}
+.ws-unitbody-open { grid-template-rows: 1fr; }
+.ws-unitbody > * { overflow: hidden; min-height: 0; }
+
+/* Rotation only, no box change -- the same treatment the dashboard's collapse
+   chevron gets, at the accordion's duration so the two read as one movement. */
+.ws-chev { transition: transform var(--um-dur-3, 280ms) var(--um-ease-out, ease); }
+
 /* ── shell and band header ─────────────────────────────────────────────────
    The board frames every screen at 1280 with a 206px sidebar, leaving about
    1074px of content. These routes carry no sidebar (that is a deferred

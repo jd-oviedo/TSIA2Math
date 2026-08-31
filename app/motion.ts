@@ -1,4 +1,4 @@
-// The shared motion system: four tokens, three keyframes, one guard.
+// The shared motion system: eight tokens, six keyframes, one guard.
 //
 // ─── WHY THIS IS A TS MODULE AND NOT globals.css ─────────────────────────────
 //
@@ -29,11 +29,19 @@
 // .um-motion on its <main> and .um-fade-up on its content block, and
 // app/teacher/students/shell.tsx does the same for the three pages it frames.
 //
+// AND AS OF 2026-08-31 THE WORKSHEET GENERATOR OPTS IN TOO, which is what
+// brought the interaction tokens and the four interaction keyframes below into
+// the file. /teacher/worksheets/new puts .um-motion on its builder body -- NOT
+// on its <main>, because .ws-stickybar is position: fixed inside that main at
+// 375 and an animated ancestor would become its containing block.
+//
 // What the two locks still guarantee is unchanged and is the reason the claim
 // was worth making: a surface receives nothing by default, opting in is visible
 // at the call site, and the surfaces that have NOT opted in (the CAT engine, the
-// worksheet generator, the student detail page) are untouched as a fact about
-// selectors rather than a promise about future edits.
+// student detail page, and every worksheet PRINT route) are untouched as a fact
+// about selectors rather than a promise about future edits. The print routes
+// matter most of that list: they render the sheet a teacher hands out, they do
+// not import this file, and nothing here can reach paper.
 //
 // The :root token block is the one thing that lands globally, and it is inert by
 // design -- a custom property paints nothing until a rule reads it, and the only
@@ -55,11 +63,18 @@
 // product staggers today. reporte/page.tsx does, at 100ms across 8 items, which
 // is a reveal on a shareable card rather than a page settling in.
 //
-// ONLY THE FOUR TOKENS WAVE 1 ACTUALLY READS ARE DECLARED. The Phase 0 proposal
-// also listed --um-dur-1/2/3, --um-ease-standard, --um-ease-linear and
-// --um-lift. They are held back until a surface consumes them: a token nothing
-// reads is a value nobody has checked, and it would be adopted later by someone
-// assuming it had been.
+// WAVE 1 DECLARED ONLY THE FOUR TOKENS IT ACTUALLY READ, holding back the
+// --um-dur-1/2/3, --um-ease-standard, --um-ease-linear and --um-lift the Phase 0
+// proposal had listed: a token nothing reads is a value nobody has checked, and
+// it would be adopted later by someone assuming it had been.
+//
+// --um-dur-1/2/3 are now declared because the worksheet generator reads all
+// three, at 150/220/280ms. That rule has not been relaxed -- the three tokens
+// arrived WITH their consumer, in the same commit. --um-ease-standard,
+// --um-ease-linear and --um-lift are still held back, and still for that reason.
+//
+// --um-stagger-panel 40ms is the other new value. See the token block for why it
+// is a second number rather than a retune of --um-stagger.
 //
 // ─── WHY THE ENTRANCE IS AN ANIMATION AND NEVER A BASE opacity: 0 ────────────
 //
@@ -158,10 +173,34 @@ export const MOTION_CSS = `
 /* ─── Tokens ────────────────────────────────────────────────────────────────
    Inert. Nothing paints from these until a .um-motion rule below reads them. */
 :root {
+  /* Entrance scale. One surface settling in. */
   --um-dur-4: 600ms;
-  --um-ease-out: cubic-bezier(0.4, 0, 0.2, 1);
   --um-rise: 10px;
   --um-stagger: 60ms;
+
+  /* Interaction scale, added when the worksheet generator adopted the system.
+     These are --um-dur-1/2/3 by NAME because the header above reserved exactly
+     those names and held them back until a surface read one; this is that
+     surface, so they land with the values it consumes rather than as a
+     speculative ladder nobody had checked.
+
+       1  150ms  a state swap: hover ground, a checkbox filling, a CTA
+       2  220ms  a thing arriving or leaving: a rail chip, a counter ticking
+       3  280ms  a panel changing height, which is the largest move here
+
+     One curve for all of them, and it is the entrance curve. A second easing
+     would be a second opinion about how this product moves. */
+  --um-dur-1: 150ms;
+  --um-dur-2: 220ms;
+  --um-dur-3: 280ms;
+  --um-ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* IN-PANEL STAGGER, AND IT IS NOT --um-stagger. 60ms paces a page settling
+     in, where the eye has just arrived and a slow sequence reads as care. This
+     one paces cards appearing inside a panel the teacher just opened, where the
+     eye is already on the target and the same 60ms reads as lag. Two numbers
+     because they answer two questions, one curve because it is one system. */
+  --um-stagger-panel: 40ms;
 }
 
 /* ─── Keyframe library ──────────────────────────────────────────────────────
@@ -188,6 +227,47 @@ export const MOTION_CSS = `
   to   { opacity: 1; transform: none; }
 }
 
+/* ─── The interaction keyframes ─────────────────────────────────────────────
+
+   OPACITY AND A SMALL TRANSLATE, AND NOTHING ELSE. No scale, no shadow, no
+   gradient, in a product whose surfaces are flat by decision -- a box that
+   grows or casts on interaction contradicts the thing the flat system is
+   saying. The distances are 6px and 4px against --um-rise's 10px, because
+   these fire while the eye is already on the element rather than as a page
+   arrives.
+
+   THE DISTANCES ARE LITERALS HERE, unlike --um-rise. --um-rise is a token
+   because two classes and three other surfaces read it; these four numbers are
+   read by exactly one keyframe each and by nothing else, and a token nothing
+   shares is a value with a second name.
+
+   um-chip-out IS THE ONLY ONE THAT ENDS HIDDEN, which makes it the one
+   exception to the file's "never a hidden base state" rule -- and it is not an
+   exception at all, because the hidden state is still only in a keyframe. The
+   element it runs on is unmounted by its own animationend handler, so nothing
+   is left at opacity 0 waiting for a class to be removed. Under reduced motion
+   the guard removes the animation, animationend never fires, and the component
+   unmounts the chip on a timer instead. See WorksheetBuilder.tsx. */
+@keyframes um-chip-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes um-chip-out {
+  from { opacity: 1; transform: none; }
+  to   { opacity: 0; transform: translateY(6px); }
+}
+
+@keyframes um-tick-pop {
+  from { opacity: 0.35; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes um-body-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
 /* ─── The opt-in classes ────────────────────────────────────────────────────
 
    Longhand rather than the 'animation:' shorthand on purpose: a var() that
@@ -206,6 +286,27 @@ export const MOTION_CSS = `
 
 .um-motion .um-fade-in { animation-name: um-fade-in; }
 .um-motion .um-fade-up { animation-name: um-fade-up; }
+
+/* The interaction classes. Same longhand discipline and the same reason: a
+   var() that fails to resolve inside the 'animation:' shorthand would take the
+   fill-mode down with it.
+
+   THREE DURATIONS RATHER THAN ONE because these are three different events. A
+   chip arriving and a counter ticking are both 220ms; a panel changing height
+   is 280ms and is the only thing here allowed to be that slow. */
+.um-motion .um-chip-in,
+.um-motion .um-chip-out,
+.um-motion .um-tick-pop,
+.um-motion .um-body-in {
+  animation-timing-function: var(--um-ease-out);
+  animation-delay: var(--um-delay, 0ms);
+  animation-fill-mode: both;
+}
+
+.um-motion .um-chip-in  { animation-name: um-chip-in;  animation-duration: var(--um-dur-2); }
+.um-motion .um-chip-out { animation-name: um-chip-out; animation-duration: var(--um-dur-2); }
+.um-motion .um-tick-pop { animation-name: um-tick-pop; animation-duration: var(--um-dur-2); }
+.um-motion .um-body-in  { animation-name: um-body-in;  animation-duration: var(--um-dur-3); }
 
 /* ─── The stagger ───────────────────────────────────────────────────────────
 
@@ -231,6 +332,21 @@ export const MOTION_CSS = `
 .um-motion .um-stagger > *:nth-child(5)   { --um-delay: calc(var(--um-stagger) * 4); }
 .um-motion .um-stagger > *:nth-child(n+6) { --um-delay: calc(var(--um-stagger) * 5); }
 
+/* The in-panel stagger. Identical shape to the block above -- a base rule so
+   the first child has no unset case, and a clamp on the tail so the sixth card
+   cannot fall back to 0ms and fire first -- reading the 40ms token instead of
+   the 60ms one.
+
+   THE CLAMP EARNS ITS KEEP HERE MORE THAN ABOVE. A unit in the topic browser
+   holds up to about thirty cards; without the clamp the last would begin more
+   than a second after the first, which is not a stagger, it is a queue. */
+.um-motion .um-stagger-panel > *                { --um-delay: 0ms; }
+.um-motion .um-stagger-panel > *:nth-child(2)   { --um-delay: calc(var(--um-stagger-panel) * 1); }
+.um-motion .um-stagger-panel > *:nth-child(3)   { --um-delay: calc(var(--um-stagger-panel) * 2); }
+.um-motion .um-stagger-panel > *:nth-child(4)   { --um-delay: calc(var(--um-stagger-panel) * 3); }
+.um-motion .um-stagger-panel > *:nth-child(5)   { --um-delay: calc(var(--um-stagger-panel) * 4); }
+.um-motion .um-stagger-panel > *:nth-child(n+6) { --um-delay: calc(var(--um-stagger-panel) * 5); }
+
 /* ─── The guard ─────────────────────────────────────────────────────────────
 
    ONE block, and it is SCOPED to this system's own classes. It is deliberately
@@ -251,6 +367,35 @@ export const MOTION_CSS = `
   .um-motion .um-fade-up,
   .um-motion .um-stagger > * {
     animation: none !important;
+  }
+
+  /* TIER 2, AND THE SECOND PROPERTY IS THE POINT. The entrance classes above
+     need 'animation: none' alone: they carry no transform of their own, so
+     removing the animation returns them to a natural, untransformed, fully
+     painted state.
+
+     The interaction classes are staggered, and a staggered animation with
+     fill-mode: both holds its 'from' frame for the whole delay. Flattening the
+     duration instead of removing the animation would leave a card sitting at
+     translateY(6px) for its 200ms of delay and then snapping -- motion, for the
+     users who asked for none. Removing the animation is what this file already
+     does; 'transform: none' is belt and braces for the case where a future call
+     site puts its own transform on one of these elements and the removed
+     animation is no longer the only thing holding it off its resting position.
+
+     WHAT IS DELIBERATELY NOT RESET IS transition. A hover ground changing in
+     150ms is a colour crossfade with no movement in it, which is what a reduced
+     motion request leaves alone. The worksheet generator's own stylesheet does
+     blanket transitions on that surface (worksheet-theme.ts) -- that is its
+     call to make for its own controls, and this file does not need it to be
+     true. */
+  .um-motion .um-chip-in,
+  .um-motion .um-chip-out,
+  .um-motion .um-tick-pop,
+  .um-motion .um-body-in,
+  .um-motion .um-stagger-panel > * {
+    animation: none !important;
+    transform: none !important;
   }
 }
 `;
