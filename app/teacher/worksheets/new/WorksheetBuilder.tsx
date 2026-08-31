@@ -11,7 +11,7 @@ import {
   ctaStyle,
   strandChip,
 } from '../worksheet-theme';
-import { countEligible } from '../../../lib/worksheet-select';
+import { countEligible, MAX_QUESTIONS } from '../../../lib/worksheet-select';
 import type { PickerTopic } from '../../../lib/worksheet-source';
 import { QuotaMeter, QuotaCapNotice } from '../QuotaNotice';
 
@@ -173,6 +173,16 @@ export default function WorksheetBuilder({
 
   const capped = Math.min(count, pool);
   const short = selected.size > 0 && pool < count;
+
+  // WHAT THE HELPER LINE SAYS, and it is not `pool`. Twenty topics hold roughly
+  // 280 eligible questions, and "280 available from this selection" advertises a
+  // sheet that cannot be built -- one worksheet draws at most MAX_QUESTIONS.
+  //
+  // The DISPLAY is bounded, never `pool` itself. `short` below and the "Only N
+  // available" warning both have to keep reading the true pool: their whole job
+  // is to say the selection is too shallow for the count, and a pool capped at
+  // 25 could not report being short of 20.
+  const available = Math.min(pool, MAX_QUESTIONS);
 
   // Rough, and labelled as rough. There is no per-item timing anywhere in the
   // schema; estimated_time_minutes is per TOPIC and covers the whole lesson, so
@@ -447,17 +457,25 @@ export default function WorksheetBuilder({
               {/* The board has no field here, because it counts per topic. That
                   is not built, so the one global count the API accepts keeps
                   its input. */}
+              {/* BOTH BOUNDS OFF THE ONE CONSTANT, and both are needed. `max` is
+                  what the stepper and the browser's own validation read; the
+                  clamp is what actually holds, because a number input accepts a
+                  typed value well past its max and fires change with it. The
+                  server refuses the same number either way -- this is so a
+                  teacher never reaches a request the server will reject. */}
               <input
                 id="ws-count"
                 type="number"
                 min={1}
-                max={50}
+                max={MAX_QUESTIONS}
                 value={count}
-                onChange={(e) => setCount(Math.max(1, Math.min(50, Number(e.target.value) || 1)))}
+                onChange={(e) =>
+                  setCount(Math.max(1, Math.min(MAX_QUESTIONS, Number(e.target.value) || 1)))
+                }
                 style={{ ...fieldStyle, fontVariantNumeric: 'tabular-nums' }}
               />
               <span style={{ fontSize: 11, color: WS.muted, lineHeight: 1.45 }}>
-                Spread across the topics you pick. {pool} available from this selection.
+                Spread across the topics you pick. {available} available from this selection.
               </span>
             </div>
 
