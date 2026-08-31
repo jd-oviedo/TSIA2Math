@@ -127,4 +127,112 @@ export const DASH_HOVER_CSS = `
   .um-tdash-view > span,
   .um-tdash-chev { transition: none; }
 }
+
+/* ─── The collapsible body ───────────────────────────────────────────────────
+
+   GRID ROWS, NOT display OR height. The four collapsible sections used the
+   hidden ATTRIBUTE, which is display:none, and display is not animatable at
+   all -- so the panel vanished between one frame and the next.
+
+   (No backticks anywhere in this block: it is a template literal, and one in a
+   CSS comment ends the string and stops the file parsing as TypeScript.)
+
+   height is animatable but needs a NUMBER, and none of these bodies has one: a
+   roster is as tall as its rows and a rollup is as tall as its unit strip.
+   Animating to height:auto does nothing in every engine that matters.
+
+   grid-template-rows: 1fr -> 0fr is the technique that does work. The parent is
+   a one-row grid, the row is sized as a fraction, and a fraction interpolates.
+   The child carries overflow:hidden so the content is clipped rather than
+   spilling as the row closes, and min-height:0 because a grid item's default
+   min-height:auto refuses to shrink below its content and would freeze the
+   whole animation at full height.
+
+   VISIBILITY IS SWITCHED, NOT JUST CLIPPED, and the delay is the entire reason
+   it is a separate declaration. A clipped-but-visible subtree still holds
+   focusable children, so a collapsed section would swallow tab stops into a
+   zero-height box. visibility:hidden fixes that, but applied immediately it
+   would blank the content on frame one and animate an empty box. So: collapsing
+   waits the full duration (transition-delay 0.24s on a 0s property, which is
+   how you schedule a discrete change), expanding applies visible at once. */
+.um-tdash-collapse {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.24s ease;
+}
+.um-tdash-collapse > * {
+  overflow: hidden;
+  min-height: 0;
+  visibility: visible;
+}
+.um-tdash-collapse[data-collapsed="true"] { grid-template-rows: 0fr; }
+.um-tdash-collapse[data-collapsed="true"] > * {
+  visibility: hidden;
+  transition: visibility 0s linear 0.24s;
+}
+
+/* ITS OWN GUARD, CO-LOCATED, NOT FOLDED INTO THE ONE ABOVE.
+   The block above covers this module's hover transitions; this covers its one
+   layout transition. They are kept apart because they answer to different
+   things: a hover is decoration and a collapse is a state change that must
+   still END in the right place. Under reduce the collapse is instant, which is
+   correct -- the section still opens and closes, it just does not travel.
+   visibility keeps its delay:0 so a reduced-motion collapse hides its content
+   on the same frame rather than 240ms later. */
+@media (prefers-reduced-motion: reduce) {
+  .um-tdash-collapse { transition: none; }
+  .um-tdash-collapse[data-collapsed="true"] > * { transition: none; }
+}
+
+/* ─── The misconception carousel ─────────────────────────────────────────────
+
+   Native overflow-x plus scroll-snap, which is the whole mechanism. Dragging,
+   wheel, touch, and the keyboard all come from the browser rather than from a
+   listener, so there is no drag maths here to get wrong and nothing to undo on
+   unmount. Autoplay is the only scripted part, and it is one scrollBy.
+
+   The static variant is a GUARD, not a style choice: with two cards or fewer a
+   carousel has nothing to carousel and would scroll a single item back and
+   forth forever. See the note at the call site.
+
+   ─── NO NEGATIVE-MARGIN FULL BLEED, AND THAT IS MEASURED ──────────────────
+
+   The strip lives inside a section panel that carries 22px of horizontal
+   padding, so the obvious worry is that the padding boxes the scroll in and
+   the rail needs pulling out to the panel's border with negative margins.
+
+   It does not. Measured in a browser at 1280 with six cards inside the real
+   panel and the real collapse wrapper: scrollWidth 3068 against clientWidth
+   1170, the rail reaches its own end exactly, snap stays "x mandatory", and
+   the inset from the panel border is a symmetric 23px (22 padding + 1 border).
+   Nothing is clipped and nothing is short.
+
+   Negative margins would also be WRONG here rather than merely unnecessary.
+   The rail sits inside .um-tdash-collapse, whose child carries overflow:hidden
+   so the collapse can clip as it closes. A rail pulled out past the content
+   box would be cut off at exactly that boundary, so the trick would buy a
+   clipped strip instead of a full-bleed one.
+
+   scroll-padding is gone with it. It was 1px, which offset every snap position
+   by a pixel for no reason; cards snap to the scrollport start, and the
+   scrollport start is the panel's inner edge. */
+.um-tdash-carousel {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+}
+.um-tdash-carousel > * {
+  scroll-snap-align: start;
+  flex: 0 0 clamp(280px, 46%, 460px);
+  min-width: 0;
+}
+.um-tdash-carousel--static {
+  overflow-x: visible;
+  scroll-snap-type: none;
+  padding-bottom: 0;
+}
+.um-tdash-carousel--static > * { flex: 1 1 0; }
 `;

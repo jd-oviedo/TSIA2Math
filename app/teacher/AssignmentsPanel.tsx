@@ -2,7 +2,9 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { DASH, flatPanelStyle } from '../components/dashboard-theme';
-import { NAVY, INK_2 } from './dashboard-chrome';
+import { NAVY, INK_2, CTA_INK } from './dashboard-chrome';
+import { CollapseButton, CollapseBody } from './collapse';
+import NewAssignment, { type AssignTopic } from './NewAssignment';
 import { FONT_HEADING } from '../components/fonts';
 import { formatDue, isOverdue } from '../lib/assignments';
 
@@ -47,18 +49,33 @@ function StatusBar({ a }: { a: Assignment }) {
   );
 }
 
+// SETTING WORK AND READING IT ARE ONE PANEL NOW.
+//
+// This used to be the second half of a pair: NewAssignment rendered its own card
+// with its own "Assignments" heading further up the page, and this rendered
+// "Assigned work" below it. Two panels, two headings a teacher had to tell
+// apart, and the compose form nowhere near the list it changed.
+//
+// The trigger moved into this header and the form renders underneath it. The
+// component is the SAME NewAssignment, mounted with chrome={false} so it brings
+// the form and none of its old furniture. Nothing about the form was copied.
 export default function AssignmentsPanel({
   classId,
-  reloadKey,
+  topics,
+  students,
   isMobile,
 }: {
   classId: string;
-  reloadKey: number;
+  /** For the compose form this header now owns. */
+  topics: AssignTopic[];
+  students: { student_id: string; name: string }[];
   isMobile: boolean;
 }) {
   const [rows, setRows] = useState<Assignment[] | null>(null);
   const [failed, setFailed] = useState(false);
   const [busyId, setBusyId] = useState<string | null>(null);
+  const [composeOpen, setComposeOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
 
   /**
    * The clock this panel measures "overdue" against, read WHEN THE DATA LOADS
@@ -107,7 +124,17 @@ export default function AssignmentsPanel({
     }
   }, [classId]);
 
-  useEffect(() => { setRows(null); load(); }, [load, reloadKey]);
+  useEffect(() => { setRows(null); load(); }, [load]);
+
+  // THE ROUND TRIP IS GONE. A new assignment used to travel up to
+  // TeacherDashboardClient, bump an `assignmentsKey` integer, and come back down
+  // as a changed prop purely to make this panel refetch -- state in a parent
+  // that existed only because the two components could not talk. They are one
+  // panel now, so the form calls this directly.
+  function reloadAfterCreate() {
+    setComposeOpen(false);
+    load();
+  }
 
   async function remove(id: string) {
     if (busyId) return;
@@ -132,33 +159,96 @@ export default function AssignmentsPanel({
   const list = rows ?? [];
 
   return (
-    <div style={{ marginBottom: 22 }}>
+    // THE PANEL, AND THE HEADER LIVES INSIDE IT.
+    //
+    // padding and marginBottom are CurriculumRollupPanel's, read off it rather
+    // than picked, so all six sections down the page share one rhythm.
+    //
+    // ONLY THE BODY COLLAPSES, NEVER THE PANEL. The panel is the outer div and
+    // it has no collapse wrapper on it; CollapseBody sits inside, below the
+    // header. So a collapsed section is a normal panel showing its header at
+    // full padding, exactly as CurriculumRollupPanel has always behaved, rather
+    // than a card that shrinks to a hairline and disappears.
+    <div style={{ ...flatPanelStyle(), padding: '18px 22px 20px', marginBottom: 26 }}>
+      {/* THE HEADER ROW STAYS VISIBLE WHEN COLLAPSED, at all four collapsible
+          sections. A collapsed section that shows nothing but a chevron is a
+          mystery box; one that keeps its title and its count is a summary. */}
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 13, gap: 12, flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 11 }}>
           <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: DASH.heading }}>
             Assigned work
           </h2>
-          <span style={{ fontSize: 13, color: INK_2 }}>Live status, computed from student progress</span>
+          <span style={{ fontSize: 13, color: INK_2 }}>
+            {list.length === 0
+              ? 'Live status, computed from student progress'
+              : `${list.length} set · live status, computed from student progress`}
+          </span>
         </div>
-        {list.length > 0 && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 11, color: DASH.dim }}>
-            {[['Complete', DASH.statusComplete], ['In progress', DASH.statusProgress], ['Not started', DASH.statusIdle]].map(([t, c]) => (
-              <span key={t} style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
-                <span style={{ width: 9, height: 9, background: c, display: 'inline-block' }} />{t}
-              </span>
-            ))}
-          </div>
-        )}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+          {/* THE TRIGGER THAT MOVED. Orange fill when closed, navy outline once
+              open, the same pair it carried in its old card. */}
+          <button
+            type="button"
+            onClick={() => setComposeOpen((o) => !o)}
+            disabled={!classId}
+            className={composeOpen ? 'um-tdash-ghost' : 'um-tdash-cta'}
+            style={{
+              border: composeOpen ? `1px solid ${NAVY}` : 'none',
+              borderRadius: 0,
+              padding: '7px 14px',
+              cursor: classId ? 'pointer' : 'not-allowed',
+              opacity: classId ? 1 : 0.5,
+              fontFamily: 'inherit',
+              fontSize: 13,
+              fontWeight: composeOpen ? 600 : 700,
+              color: composeOpen ? undefined : CTA_INK,
+            }}
+          >
+            {composeOpen ? 'Cancel' : '+ New'}
+          </button>
+          <CollapseButton
+            collapsed={collapsed}
+            onToggle={() => setCollapsed((c) => !c)}
+            controls="assigned-work-body"
+            section="assigned work"
+          />
+        </div>
       </div>
 
+      <CollapseBody id="assigned-work-body" collapsed={collapsed}>
+      {/* The compose form, inside the collapse: opening a section to set work
+          and then collapsing it should take the form with it. */}
+      <NewAssignment
+        classId={classId}
+        topics={topics}
+        students={students}
+        onCreated={reloadAfterCreate}
+        chrome={false}
+        open={composeOpen}
+        onOpenChange={setComposeOpen}
+      />
+
+      {list.length > 0 && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 11, color: DASH.dim, marginBottom: 11, marginTop: composeOpen ? 16 : 0 }}>
+          {[['Complete', DASH.statusComplete], ['In progress', DASH.statusProgress], ['Not started', DASH.statusIdle]].map(([t, c]) => (
+            <span key={t} style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+              <span style={{ width: 9, height: 9, background: c, display: 'inline-block' }} />{t}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {/* No border of its own any more: it sits inside the section panel, and a
+          bordered box inside a bordered box is two hairlines saying the same
+          thing. Same for the list container below. */}
       {list.length === 0 ? (
-        <div style={{ ...flatPanelStyle(), padding: '28px 24px', textAlign: 'center' }}>
+        <div style={{ padding: '20px 0 4px', textAlign: 'center' }}>
           <p style={{ fontSize: 14, color: INK_2, margin: 0 }}>
             Nothing assigned yet. Set a topic above and it will show up here with live progress.
           </p>
         </div>
       ) : (
-        <div style={{ ...flatPanelStyle(), overflow: 'hidden' }}>
+        <div style={{ overflow: 'hidden' }}>
           {list.map((a, i) => {
             // OVERDUE IS DERIVED HERE, never stored. The API sends due_at raw:
             // an "overdue" computed on the server is wrong the moment the
@@ -249,6 +339,7 @@ export default function AssignmentsPanel({
           })}
         </div>
       )}
+      </CollapseBody>
     </div>
   );
 }

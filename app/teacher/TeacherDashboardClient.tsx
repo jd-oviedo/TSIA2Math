@@ -1,22 +1,23 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import posthog from 'posthog-js';
 import MathText from '../components/MathText';
 import { FONT_HEADING, FONT_BASE_CSS } from '../components/fonts';
 import { DASH, flatPanelStyle, DASH_FLAT } from '../components/dashboard-theme';
 import { CTA, CTA_INK, NAVY, INK_2, DASH_HOVER_CSS } from './dashboard-chrome';
+import { CollapseButton, CollapseBody } from './collapse';
 import { HOVER_LABEL_CSS } from '../components/HoverLabel';
 import { useBodyBackground } from '../components/useBodyBackground';
 import TeacherShell, { useViewport, useTeacherShell } from './TeacherShell';
 import NewAnnouncement from './NewAnnouncement';
-import NewAssignment, { type AssignTopic } from './NewAssignment';
+import { type AssignTopic } from './NewAssignment';
 import AssignmentsPanel from './AssignmentsPanel';
 import SupportModal from '../components/SupportModal';
 import ModalShell from '../components/ModalShell';
 import ExportModal from './ExportModal';
 import TeacherTour, { TOUR_STORAGE_KEY } from './TeacherTour';
-import { OFFICIAL_LEVELS, type OfficialLevel } from "../lib/official-scores";
+import { type OfficialLevel } from "../lib/official-scores";
 import {
   PASSING,
   STRAND_ORDER as ORDER,
@@ -26,7 +27,7 @@ import {
   type StrandBreakdown,
 } from "../lib/placement";
 import { STRAND_TINT } from "../lib/strands";
-import { SPIN_CSS } from '../motion';
+import { SPIN_CSS, MOTION_CSS } from '../motion';
 
 // ─── Types (match the API route response shapes) ─────────────────────────────
 
@@ -404,32 +405,15 @@ function CurriculumRollupPanel({ rollup, cols }: { rollup: CurriculumRollup | nu
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <span style={{ fontSize: 11, color: DASH.dim, fontWeight: 600 }}>Status only · no scores</span>
-          {/* Dashboard Navy outline, the secondary treatment. Not orange: the
-              page already spends its one primary on New class in the top bar,
-              and a collapse is the least consequential control here. */}
-          <button
-            type="button"
-            className="um-tdash-ghost"
-            onClick={() => setCollapsed((c) => !c)}
-            aria-expanded={!collapsed}
-            aria-controls="curriculum-rollup-detail"
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: 6,
-              border: `1px solid ${NAVY}`, borderRadius: 0, padding: '5px 10px',
-              cursor: 'pointer', fontFamily: 'inherit', fontSize: 12, fontWeight: 600,
-            }}
-          >
-            <svg
-              className="um-tdash-chev"
-              width="11" height="11" viewBox="0 0 12 12" fill="none"
-              stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"
-              aria-hidden="true"
-              style={{ transform: collapsed ? 'rotate(-90deg)' : 'none' }}
-            >
-              <polyline points="2.5 4.5 6 8 9.5 4.5" />
-            </svg>
-            {collapsed ? 'Expand' : 'Collapse'}
-          </button>
+          {/* The shared control now. This section shipped the first collapse
+              on the dashboard as inline JSX; three more followed, so the button
+              and the animatable body moved to ./collapse. */}
+          <CollapseButton
+            collapsed={collapsed}
+            onToggle={() => setCollapsed((c) => !c)}
+            controls="curriculum-rollup-detail"
+            section="curriculum progress"
+          />
         </div>
       </div>
 
@@ -440,10 +424,14 @@ function CurriculumRollupPanel({ rollup, cols }: { rollup: CurriculumRollup | nu
       </div>
       <div style={{ fontSize: 12, color: INK_2, marginBottom: collapsed ? 0 : 18 }}>Any topic opened in the last 7 days</div>
 
-      {/* `hidden` rather than an unmount, so aria-controls above always points
-          at an element that exists and the three cards do not re-mount on every
-          toggle. */}
-      <div id="curriculum-rollup-detail" hidden={collapsed}>
+      {/* NOT AN UNMOUNT, so aria-controls above always points at an element
+          that exists and the three cards do not re-mount on every toggle.
+
+          AND NOT THE `hidden` ATTRIBUTE ANY MORE, which is what this was: hidden
+          is display:none and display cannot be animated, so the panel used to
+          vanish between one frame and the next. See dashboard-chrome.ts for why
+          the replacement animates grid rows rather than height. */}
+      <CollapseBody id="curriculum-rollup-detail" collapsed={collapsed}>
         <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols},1fr)`, gap: 16, marginBottom: 20 }}>
           {/* Not started. The card that names people to chase, and the reason it is
               a card and not the headline: it is a standing fact about a class,
@@ -512,7 +500,7 @@ function CurriculumRollupPanel({ rollup, cols }: { rollup: CurriculumRollup | nu
               : 'Every enrolled student appears in one column'}
           </div>
         </div>
-      </div>
+      </CollapseBody>
     </div>
   );
 }
@@ -536,6 +524,136 @@ function StrandProfileBar({ s }: { s: DisplayStudent }) {
         <span>Weakest · <span style={{ fontWeight: 600, color: DASH.muted }}>{s.weakLabel}</span></span>
       </div>
     </>
+  );
+}
+
+// ─── Misconceptions: the section, the carousel and its autoplay ──────────────
+//
+// SIX CARDS, SLICED AT RENDER. The API already caps its own aggregation at 10
+// (app/api/teacher/misconceptions/route.ts passes the limit to
+// aggregateMisconceptions, which sorts, slices, and only then assigns
+// rank: i + 1). So `rank` is decided before anything here sees the list, and
+// taking six off the front is a display decision that cannot disturb the
+// ranking, the query, or the aggregation. Nothing server-side changed.
+//
+// A CAROUSEL RATHER THAN A SIX-CARD GRID because six of these at two columns is
+// three rows of dense prose sitting under the roster, which is where a teacher
+// stops scrolling. One row that moves is read; three rows that do not are not.
+//
+// THE MECHANISM IS THE BROWSER'S. overflow-x plus scroll-snap gives dragging,
+// wheel, trackpad, touch, and keyboard arrows for free, all of it with the
+// platform's own momentum and accessibility. The only scripted part is the
+// autoplay, which is one scrollBy on an interval. There is no drag handler here
+// and no transform to unwind.
+
+const CAROUSEL_MIN = 3;
+const AUTOPLAY_MS = 5200;
+
+function Misconceptions({ misconceptions, testedCount }: { misconceptions: Misconception[] | null; testedCount: number }) {
+  const [collapsed, setCollapsed] = useState(false);
+  const [paused, setPaused] = useState(false);
+  // Read from the media query rather than assumed, and RE-READ on change: the
+  // setting can be flipped mid-session from the OS, and a value captured once
+  // on mount would leave autoplay running for someone who just asked it to
+  // stop. CSS cannot help here because the motion is a scroll position, not a
+  // property, which is why this is the one JS guard in the change.
+  const [reduced, setReduced] = useState(false);
+  const railRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const apply = () => setReduced(mq.matches);
+    apply();
+    mq.addEventListener('change', apply);
+    return () => mq.removeEventListener('change', apply);
+  }, []);
+
+  // SIX, and then the guard reads the length that actually rendered.
+  const shown = (misconceptions ?? []).slice(0, 6);
+  // WITH TWO CARDS OR FEWER THERE IS NOTHING TO CAROUSEL. Autoplay on a rail
+  // that does not overflow scrolls to the same pixel forever, which reads as a
+  // broken animation rather than as a still one; and a single card sliding
+  // under its own heading is worse than a single card sitting there. So the
+  // rail renders as a plain row with no snapping, no scrolling and no timer.
+  const isCarousel = shown.length >= CAROUSEL_MIN;
+  const autoplay = isCarousel && !paused && !reduced && !collapsed;
+
+  useEffect(() => {
+    if (!autoplay) return;
+    const id = window.setInterval(() => {
+      const el = railRef.current;
+      if (!el) return;
+      // One card-width step, then back to the start once the last card is
+      // flush right. The 4px slack absorbs sub-pixel widths, which otherwise
+      // leave the rail one pixel short of the end and stall there.
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
+      el.scrollTo({ left: atEnd ? 0 : el.scrollLeft + el.clientWidth * 0.5, behavior: 'smooth' });
+    }, AUTOPLAY_MS);
+    return () => window.clearInterval(id);
+  }, [autoplay]);
+
+  return (
+    // CurriculumRollupPanel's padding and marginBottom. The header sits inside
+    // and survives the collapse; only the body below it animates.
+    <div style={{ ...flatPanelStyle(), padding: '18px 22px 20px', marginBottom: 26 }}>
+      <div id="misconceptions" style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 13, gap: 12, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 11 }}>
+          <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: DASH.heading }}>Top misconceptions</h2>
+          <span style={{ fontSize: 13, color: INK_2 }}>
+            {shown.length > 0 ? `Top ${shown.length} class-wide, most recent test per student` : 'Class-wide, most recent test per student'}
+          </span>
+        </div>
+        {/* The strand legend collapses with the body: it is a key to the chips
+            on the cards, and a key to nothing is clutter. */}
+        <CollapseButton
+          collapsed={collapsed}
+          onToggle={() => setCollapsed((c) => !c)}
+          controls="misconceptions-body"
+          section="top misconceptions"
+        />
+      </div>
+
+      <CollapseBody id="misconceptions-body" collapsed={collapsed}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 14, fontSize: 11, color: DASH.dim, marginBottom: 11 }}>
+          {ORDER.map((k) => (
+            <span key={k} style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+              <span style={{ width: 9, height: 9, background: STR[k].color, display: 'inline-block' }} />{k}
+            </span>
+          ))}
+        </div>
+
+        {misconceptions === null ? (
+          <Spinner />
+        ) : misconceptions.length === 0 ? (
+          <div style={{ padding: '24px 0 6px', textAlign: 'center' }}>
+            <p style={{ fontSize: 14, color: INK_2, margin: 0 }}>No misconception data yet. Students need to complete at least one test.</p>
+          </div>
+        ) : (
+          <div
+            ref={railRef}
+            className={isCarousel ? 'um-tdash-carousel' : 'um-tdash-carousel um-tdash-carousel--static'}
+            // PAUSE ON HOVER AND ON FOCUS. focus-within is the half people
+            // forget: a keyboard user tabbing into a card cannot chase a rail
+            // that keeps moving under them, and they never generate a
+            // mouseenter. Both are handlers rather than CSS because what they
+            // gate is a JS timer.
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            onFocusCapture={() => setPaused(true)}
+            onBlurCapture={() => setPaused(false)}
+            // A scrollable region needs to be reachable and announced. Only
+            // when it actually scrolls: a static row is not a region.
+            {...(isCarousel
+              ? { tabIndex: 0, role: 'region' as const, 'aria-label': 'Top misconceptions, scrollable' }
+              : {})}
+          >
+            {shown.map((m) => (
+              <MiscCard key={m.misconception_tag} m={m} testedCount={testedCount} />
+            ))}
+          </div>
+        )}
+      </CollapseBody>
+    </div>
   );
 }
 
@@ -793,107 +911,6 @@ function TopBar({ classes, selectedClassId, onSelectClass, joinCode, onInvite, o
   );
 }
 
-// ─── Official strand grid ─────────────────────────────────────────────────────
-
-/**
- * Where the class stands on the official strand diagnostics.
- *
- * READ ONLY IN v1 (decision 3). Nothing here is clickable, sortable or
- * filterable, and it writes nothing. Counts come from the most recent official
- * row per student, which is the same row the roster cell renders.
- *
- * FOUR STRANDS, THREE LEVELS, AND A COUNT. Deliberately minimal: no percentages,
- * no bars scaled against a total, no "weakest strand" verdict. The practice-side
- * StrandPanel above already does the interpretive work on data the product
- * generated. This is transcribed from an external document and a small cohort,
- * so a percentage would put two significant figures on four students.
- *
- * STUDENTS WHO MET THE STANDARD ARE COUNTED SEPARATELY, not as zeroes and not as
- * a fourth level. Their report carries no strand detail at all, so folding them
- * into the grid would read as "no strand data" when the truth is "no strand data
- * because they passed".
- */
-function OfficialStrandGrid({ rows, cols }: { rows: RosterRow[]; cols: number }) {
-  const withOfficial = rows.filter((r) => r.official_score !== null);
-  const strands = [
-    { code: 'QR', key: 'level_qr' },
-    { code: 'AR', key: 'level_ar' },
-    { code: 'GR', key: 'level_gr' },
-    { code: 'PR', key: 'level_pr' },
-  ] as const;
-
-  // A student whose row carries no level on ANY strand met the standard. Counted
-  // once, not once per strand.
-  const metStandard = withOfficial.filter(
-    (r) => strands.every((st) => r.official_score![st.key] === null)
-  ).length;
-
-  if (withOfficial.length === 0) {
-    return (
-      <div data-tour="official-strand" style={{ ...flatPanelStyle(), padding: '18px 22px 20px', marginBottom: 26 }}>
-        <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: DASH.heading }}>
-          Official strand diagnostics
-        </h2>
-        <div style={{ marginTop: 3, fontSize: 12, color: INK_2 }}>
-          From College Board score reports, recorded on each student profile
-        </div>
-        <p style={{ margin: '14px 0 0', fontSize: 13.5, color: INK_2 }}>
-          No official results recorded for this class yet.
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <div data-tour="official-strand" style={{ ...flatPanelStyle(), padding: '18px 22px 20px', marginBottom: 26 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12, flexWrap: 'wrap' }}>
-        <div>
-          <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: DASH.heading }}>
-            Official strand diagnostics
-          </h2>
-          <div style={{ marginTop: 3, fontSize: 12, color: INK_2 }}>
-            Students at each level, from their most recent official result
-          </div>
-        </div>
-        <span style={{ fontSize: 12, color: DASH.dim }}>
-          {withOfficial.length} of {rows.length} recorded
-        </span>
-      </div>
-
-      <div style={{ marginTop: 16, display: 'grid', gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: 12 }}>
-        {strands.map((st) => (
-          <div key={st.code} style={{ ...flatPanelStyle(), background: DASH.subtleBg, padding: '12px 13px' }}>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 0.6, color: DASH.dim, textTransform: 'uppercase' }}>
-              {st.code}
-            </div>
-            <div style={{ marginTop: 9, display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {OFFICIAL_LEVELS.map((level) => {
-                const n = withOfficial.filter(
-                  (r) => r.official_score![st.key] === (level as OfficialLevel)
-                ).length;
-                return (
-                  <div key={level} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 8 }}>
-                    <span style={{ fontSize: 12.5, color: INK_2 }}>{level}</span>
-                    <span style={{ fontSize: 14, fontWeight: 700, color: n === 0 ? DASH.dim : DASH.heading, fontVariantNumeric: 'tabular-nums' }}>
-                      {n}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <p style={{ margin: '14px 0 0', fontSize: 12.5, color: INK_2, lineHeight: 1.5 }}>
-        {metStandard === 0
-          ? 'No student in this class met the standard on their most recent sitting.'
-          : `${metStandard} ${metStandard === 1 ? 'student' : 'students'} met the standard, so their ${metStandard === 1 ? 'report carries' : 'reports carry'} no strand detail. They are not counted above.`}
-      </p>
-    </div>
-  );
-}
-
 // ─── Roster ───────────────────────────────────────────────────────────────────
 
 function RosterCard({ s, classId }: { s: DisplayStudent; classId: string }) {
@@ -933,14 +950,30 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
   /** Teacher Pro only. Hiding this is presentation; the routes do the refusing. */
   canExport: boolean;
 }) {
+  const [collapsed, setCollapsed] = useState(false);
   return (
-    <div id="roster" data-tour="roster">
+    // CurriculumRollupPanel's padding and marginBottom, read off it rather than
+    // picked. Only the body inside collapses; this panel never does, so a
+    // collapsed roster is a normal card showing its header.
+    <div id="roster" data-tour="roster" style={{ ...flatPanelStyle(), padding: '18px 22px 20px', marginBottom: 26 }}>
+      {/* Title, count and chevron stay up; the sort controls and the Export
+          button go down with the body, because they act on a table nobody can
+          see while it is closed. */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 13, gap: 12, flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
           <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: DASH.heading }}>Class roster</h2>
           <span style={{ fontSize: 12, fontWeight: 600, color: INK_2, background: DASH.trackBg, padding: '2px 8px' }}>{enrolled}</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <CollapseButton
+          collapsed={collapsed}
+          onToggle={() => setCollapsed((c) => !c)}
+          controls="roster-body"
+          section="the class roster"
+        />
+      </div>
+
+      <CollapseBody id="roster-body" collapsed={collapsed}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginBottom: 13, gap: 10, flexWrap: 'wrap' }}>
           <span style={{ fontSize: 12, color: DASH.dim }}>Sort by</span>
           {['risk', 'score', 'name'].map((opt) => (
             <button key={opt} onClick={() => onSortChange(opt)}
@@ -962,19 +995,21 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
             Export
           </button>}
         </div>
-      </div>
 
       {students.length === 0 ? (
-        <div style={{ ...flatPanelStyle(), padding: '40px 24px', textAlign: 'center', marginBottom: 34 }}>
+        <div style={{ padding: '28px 0 8px', textAlign: 'center' }}>
           <p style={{ fontSize: 14, color: INK_2, margin: '0 0 6px' }}>No students enrolled yet.</p>
           <p style={{ fontSize: 13, color: DASH.dim, margin: 0 }}>Share the join code above or invite students by email.</p>
         </div>
       ) : isMobile ? (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 34 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {students.map((s) => <RosterCard key={s.student_id} s={s} classId={classId} />)}
         </div>
       ) : (
-        <div style={{ ...flatPanelStyle(), overflowX: 'auto', marginBottom: 34 }}>
+        // No border and no bottom margin of its own: the section panel supplies
+        // both now. overflowX stays, because the table is wider than the column
+        // on a narrow window and always was.
+        <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 720 }}>
             <thead>
               <tr style={{ background: DASH.subtleBg, borderBottom: `1px solid ${DASH_FLAT.panelHairline}` }}>
@@ -1028,6 +1063,7 @@ function Roster({ students, enrolled, sortBy, onSortChange, classId, isMobile, o
           </table>
         </div>
       )}
+      </CollapseBody>
     </div>
   );
 }
@@ -1067,10 +1103,12 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
   const [showInvite, setShowInvite] = useState(false);
   const [showExport, setShowExport] = useState(false);
   const [showNewClass, setShowNewClass] = useState(false);
-  // Bumped when an assignment is created, so the tracker below refetches. The
-  // two components do not talk to each other: the panel owns its own read and
-  // this is the only thing that tells it the answer has changed.
-  const [assignmentsKey, setAssignmentsKey] = useState(0);
+  // assignmentsKey WAS HERE and is gone. It was an integer bumped on every
+  // create, purely so the tracker further down would refetch: the compose form
+  // and the list were two components that could not talk, so the message went
+  // up to this scope and back down as a changed prop. They are one panel now
+  // (AssignmentsPanel renders the form itself) and it reloads directly.
+
   // menuOpen and collapsed moved to TeacherShell, which owns the rail now.
   const [showSupport, setShowSupport] = useState(false);
   // Starts false so the tour never renders on the server or the first paint,
@@ -1176,7 +1214,6 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
 
   const summaryCols = isMobile ? 1 : isCompact ? 2 : 4;
   const strandCols = isMobile ? 2 : 4;
-  const miscCols = isCompact ? 1 : 2;
 
   function handleClassCreated(c: ClassRow) {
     setClasses((prev) => [...prev, c]);
@@ -1219,6 +1256,7 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
         ${FONT_BASE_CSS}
         ${HOVER_LABEL_CSS}
         ${DASH_HOVER_CSS}
+        ${MOTION_CSS}
       `}</style>
 
       {/* The rail, the slide-over and the flex row they sit in all moved to
@@ -1234,7 +1272,21 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
         onOpenSupport={() => setShowSupport(true)}
         onStartTour={() => setTourManual(true)}
       >
-        <main style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', background: DASH.pageBg }}>
+        {/* LOCK 1 of the shared motion system. Every rule in MOTION_CSS is
+            written as a strict descendant of .um-motion, so this class is what
+            opts the dashboard in. It goes on <main> rather than on the shell:
+            the rail is chrome that is identical on every teacher route and has
+            no business fading in when the content under it changes.
+
+            NO template.tsx TO GO WITH IT, deliberately. The rail's nav items are
+            plain <a href> (TeacherShell), so every move between teacher routes
+            is a full document load and the entrance runs on mount for free. A
+            template would buy nothing here and would cost something real on
+            /teacher/students, whose breadcrumbs and class chips ARE next/link:
+            it would remount StudentsClient and GradesGridClient on every
+            class switch, refetching and flashing a spinner where today there is
+            neither. */}
+        <main className="um-motion" style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', background: DASH.pageBg }}>
           <TopBar
             classes={classes}
             selectedClassId={selectedClassId}
@@ -1246,7 +1298,17 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
             isCompact={isCompact}
           />
 
-          <div style={{ padding: isMobile ? '18px 16px 48px' : '26px 32px 52px' }}>
+          {/* LOCK 2. The content block rises once, as one piece. NOT a stagger
+              over the sections: the dashboard's own bar growth and the
+              carousel are already in motion, and a sequenced page arrival on
+              top of them reads as the page struggling rather than settling.
+
+              NO BASE opacity:0 ANYWHERE, which is the load-bearing safety
+              property of motion.ts: the hidden state lives only in the
+              keyframe's `from` with fill-mode both, so the reduced-motion guard
+              (which works by REMOVING the animation) leaves a fully painted
+              page rather than an invisible one. */}
+          <div className="um-fade-up" style={{ padding: isMobile ? '18px 16px 48px' : '26px 32px 52px' }}>
             {/* Page header */}
             <div style={{ marginBottom: 22 }}>
               <h1 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: isMobile ? 22 : 27, letterSpacing: -0.4, color: DASH.heading }}>{selectedClass?.name ?? 'Your classes'}</h1>
@@ -1320,37 +1382,19 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
               <>
                 <SummaryCards enrolled={rosterRows.length} notTested={notTested} crCount={collegeReady} crPct={crPct} weakStrand={weakStrand} avgScore={avgScore} cols={summaryCols} />
 
-                {/* THE TWO THINGS A TEACHER WRITES, SIDE BY SIDE.
+                {/* ANNOUNCEMENTS, FULL WIDTH AND ALONE.
                     ========================================================
-                    These were two full-width cards stacked, which gave a
-                    compose form the same width as the roster table and pushed
-                    everything a teacher READS below the fold. They are the
-                    same two components with the same props; only the box they
-                    sit in is new.
+                    It had a neighbour for one release: NewAssignment sat beside
+                    it in a two-up row. That row is gone, because the assignment
+                    form belonged with the list of assignments rather than with
+                    the announcement box -- a teacher who sets work wants to see
+                    the work they just set, not scroll past a strand panel and a
+                    curriculum rollup to find it.
 
-                    THE GRID LIVES HERE, NOT IN EITHER CHILD. Each of them
-                    still owns its own padding and its own button, so neither
-                    knows it has a neighbour -- which is what lets the mobile
-                    branch drop to one column by changing this line alone.
-
-                    ONE COLUMN UNDER isCompact, not just isMobile. Both cards
-                    hold a form with labelled fields; at two-up on a 900px
-                    viewport the fields are narrower than the text people type
-                    into them. The stat cards above go two-up at that width and
-                    these do not, deliberately.
-
-                    The tracker for assignments is NOT here. It stays further
-                    down beside the other progress reads, because setting work
-                    and checking work are different visits. */}
-                <div style={{ display: 'grid', gridTemplateColumns: isCompact ? '1fr' : '1fr 1fr', gap: 16, alignItems: 'start', marginBottom: 22 }}>
-                  <NewAnnouncement classes={classes} selectedClassId={selectedClassId} />
-                  <NewAssignment
-                    classId={selectedClassId}
-                    topics={assignTopics}
-                    students={rosterRows.map((r) => ({ student_id: r.student_id, name: r.name }))}
-                    onCreated={() => setAssignmentsKey((k) => k + 1)}
-                  />
-                </div>
+                    The trigger and the form now live in the Assigned work
+                    header further down. Nothing about the form moved house; the
+                    same component renders there with chrome={false}. */}
+                <NewAnnouncement classes={classes} selectedClassId={selectedClassId} />
                 <StrandPanel strandPct={strandPct} totalAttempts={totalAttempts} cols={strandCols} />
                 {/* Coursework, between practice mastery and the state's report.
                     The three panels read as: what they have worked through, how
@@ -1359,38 +1403,24 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
                 {/* Directly after the rollup: how far the class has got overall,
                     then what was specifically set and how that is going. Both
                     read the same live computation, so they cannot disagree. */}
-                <AssignmentsPanel classId={selectedClassId} reloadKey={assignmentsKey} isMobile={isMobile} />
-                {/* Beside the practice strand panel, not instead of it. One is
-                    what the product measured, the other is what the state
-                    reported; a teacher needs to be able to see them disagree. */}
-                <OfficialStrandGrid rows={rosterRows} cols={strandCols} />
+                <AssignmentsPanel
+                  classId={selectedClassId}
+                  topics={assignTopics}
+                  students={rosterRows.map((r) => ({ student_id: r.student_id, name: r.name }))}
+                  isMobile={isMobile}
+                />
+                {/* OFFICIAL STRAND DIAGNOSTICS WAS HERE AND IS GONE.
+                    The per-strand level grid is removed; the official SCORE is
+                    not. OfficialScoreCell still renders the Official column in
+                    the roster below, and the student detail page still owns the
+                    full sitting history and the entry form. What went is one
+                    aggregate panel, not the feature. */}
                 <Roster students={sortedStudents} enrolled={rosterRows.length} sortBy={sortBy} onSortChange={setSortBy} classId={selectedClassId} isMobile={isMobile} onExport={() => setShowExport(true)} canExport={canExport} />
 
-                {/* Misconceptions */}
-                <div id="misconceptions" style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 13, gap: 12, flexWrap: 'wrap' }}>
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 11 }}>
-                    <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: DASH.heading }}>Top misconceptions</h2>
-                    <span style={{ fontSize: 13, color: INK_2 }}>Class-wide, most recent test per student</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 11, color: DASH.dim }}>
-                    {ORDER.map((k) => (
-                      <span key={k} style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
-                        <span style={{ width: 9, height: 9, background: STR[k].color, display: 'inline-block' }} />{k}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                {misconceptions === null ? (
-                  <Spinner />
-                ) : misconceptions.length === 0 ? (
-                  <div style={{ ...flatPanelStyle(), padding: '32px 24px', textAlign: 'center' }}>
-                    <p style={{ fontSize: 14, color: INK_2, margin: 0 }}>No misconception data yet. Students need to complete at least one test.</p>
-                  </div>
-                ) : (
-                  <div style={{ display: 'grid', gridTemplateColumns: `repeat(${miscCols},1fr)`, gap: 16 }}>
-                    {misconceptions.map((m) => <MiscCard key={m.misconception_tag} m={m} testedCount={tested.length} />)}
-                  </div>
-                )}
+                {/* Misconceptions. The anchor id stays on this header: the rail's
+                    "Misconceptions" nav item is href="/teacher#misconceptions"
+                    and TeacherTour step 8 points at that nav item. */}
+                <Misconceptions misconceptions={misconceptions} testedCount={tested.length} />
               </>
             )}
           </div>

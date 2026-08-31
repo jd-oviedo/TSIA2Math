@@ -3,7 +3,7 @@ import { DASH, DASH_FLAT, flatPanelStyle } from '../../components/dashboard-them
 import { NAVY, INK_2, DASH_HOVER_CSS } from '../dashboard-chrome';
 import { FONT_BASE_CSS, FONT_BODY, FONT_HEADING } from '../../components/fonts';
 import type { TeacherClass } from './students-data';
-import { SPIN_CSS } from '../../motion';
+import { SPIN_CSS, MOTION_CSS } from '../../motion';
 import Link from 'next/link';
 
 // The frame all three Build 3 pages sit in.
@@ -121,6 +121,7 @@ export function StudentsShell({
         ${FONT_BASE_CSS}
         ${SPIN_CSS}
         ${DASH_HOVER_CSS}
+        ${MOTION_CSS}
         ${STUDENTS_CHROME_CSS}
       `}</style>
 
@@ -130,7 +131,12 @@ export function StudentsShell({
           component, so the hook is reached through its client edge. */}
       <BodyGround color={DASH.pageBg} />
 
-      <main className="um-students-page">
+      {/* LOCK 1 of the shared motion system, on the page rather than the rail,
+          for the reason TeacherDashboardClient records: the rail is identical on
+          every teacher route and should not fade when the content changes.
+          All three students pages render through this shell, so all three opt
+          in at once. */}
+      <main className="um-students-page um-motion">
         <header className="um-students-band">
           <div className="um-students-band-top">
             <div style={{ minWidth: 0 }}>
@@ -186,7 +192,10 @@ export function StudentsShell({
           )}
         </header>
 
-        <div className="um-students-main">{children}</div>
+        {/* LOCK 2. The column rises once, as one piece. The header band above
+            it deliberately does not: a title that arrives after its own page
+            reads as a load, not as a settle. */}
+        <div className="um-students-main um-fade-up">{children}</div>
       </main>
     </>
   );

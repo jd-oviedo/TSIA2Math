@@ -20,10 +20,20 @@
 //   1. an ANCESTOR carries .um-motion  -- the surface opted in
 //   2. the ELEMENT carries a shared class (.um-fade-up, .um-fade-in)
 //
-// Every rule is written as a strict descendant of .um-motion. That is what makes
-// "the dashboard is untouched" a fact about the selectors rather than a promise
-// about future edits: /teacher renders no .um-motion anywhere, so every rule
-// here fails to match on that tree no matter what classes get added to it later.
+// Every rule is written as a strict descendant of .um-motion, so a surface gets
+// nothing from this file until it says so twice.
+//
+// THIS BLOCK USED TO SAY "/teacher renders no .um-motion anywhere" AND THAT IS
+// NO LONGER TRUE. It was true through Wave 2. As of 2026-08-30 the teacher
+// dashboard and all three students pages opt in: TeacherDashboardClient puts
+// .um-motion on its <main> and .um-fade-up on its content block, and
+// app/teacher/students/shell.tsx does the same for the three pages it frames.
+//
+// What the two locks still guarantee is unchanged and is the reason the claim
+// was worth making: a surface receives nothing by default, opting in is visible
+// at the call site, and the surfaces that have NOT opted in (the CAT engine, the
+// worksheet generator, the student detail page) are untouched as a fact about
+// selectors rather than a promise about future edits.
 //
 // The :root token block is the one thing that lands globally, and it is inert by
 // design -- a custom property paints nothing until a rule reads it, and the only
@@ -78,13 +88,14 @@
  * two-lock entrance system -- the :root tokens, um-fade-in, um-fade-up, the
  * stagger rules and the reduced-motion guard -- into the dashboard tree.
  *
- * Every one of those rules would be INERT there, because /teacher renders no
- * .um-motion. But "inert because no element opted in" is a much weaker promise
- * than "absent", and it is exactly the promise this file's header refuses to
- * make: the dashboard is untouched as a fact about which files import what, not
- * as a fact about which selectors currently fail to match. A separate export
- * keeps that true. A surface that needs a spinning border gets a spinning
- * border and nothing else.
+ * "Inert because no element opted in" is a much weaker promise than "absent",
+ * and the split keeps the stronger one available: a surface that needs a
+ * spinning border can take SPIN_CSS and receive nothing else at all.
+ *
+ * The dashboard now imports BOTH, having opted into the entrance system (see
+ * the header). That does not retire the split: the adaptive test and the
+ * student detail page still take SPIN_CSS alone, and they are the surfaces the
+ * separation was protecting.
  *
  * ─── WHY IT IS IN THIS FILE AT ALL ──────────────────────────────────────────
  *
@@ -124,6 +135,24 @@ export const SPIN_CSS = `@keyframes um-spin { to { transform: rotate(360deg); } 
  *
  * Dropped into a surface's own <style> alongside whatever else it emits. Safe to
  * include more than once on a page: every declaration is idempotent.
+ *
+ * ─── NEVER WRITE AN OPENING STYLE TAG INSIDE THE TEMPLATE BELOW ─────────────
+ *
+ * Not even in a CSS comment, which is exactly where it was until 2026-08-31,
+ * twice. (This paragraph is OUTSIDE the template literal, so it can say the
+ * thing it is warning about; the rules below cannot.)
+ *
+ * React renders that template as the text content of a <style> element. On the
+ * SERVER it escapes an embedded style tag into a CSS identifier escape, so the
+ * markup carries a backslash-7-3 form; on the CLIENT it hydrates the raw text.
+ * The two strings differ, so every page emitting MOTION_CSS logged a hydration
+ * mismatch that named the <style> tag as the culprit. That reads as "the
+ * stylesheet is broken" and is really "a comment contains six characters React
+ * has to escape".
+ *
+ * It stayed latent while the only consumers were /login, /start, /claim and
+ * /teacher/welcome, and surfaced the day the teacher dashboard adopted the
+ * system. Write "stylesheet" instead. The same trap applies to a closing tag.
  */
 export const MOTION_CSS = `
 /* ─── Tokens ────────────────────────────────────────────────────────────────
@@ -139,7 +168,7 @@ export const MOTION_CSS = `
 
    NEW NAMES, AND THAT IS THE POINT RATHER THAN A PREFERENCE.
 
-   @keyframes are global by NAME regardless of which <style> tag defines them,
+   @keyframes are global by NAME regardless of which stylesheet defines them,
    so two blocks called um-rise are not two scoped animations -- they are one
    name, last parsed wins. There are three identical um-rise definitions live
    today (ClaimClient, ClaimResult, WelcomeClient), which is harmless only
@@ -216,7 +245,7 @@ export const MOTION_CSS = `
    'animation: none' and not a shorter duration: there is no hidden base state
    to unwind (see the header), so removing the animation outright is what leaves
    the page fully painted and completely still. !important because a surface's
-   own <style> may emit blocks after this one. */
+   own stylesheet may emit blocks after this one. */
 @media (prefers-reduced-motion: reduce) {
   .um-motion .um-fade-in,
   .um-motion .um-fade-up,

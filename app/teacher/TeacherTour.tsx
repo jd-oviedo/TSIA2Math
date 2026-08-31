@@ -490,12 +490,19 @@ export default function TeacherTour({
   //
   // WHY IT IS HERE AND NOT IN A STYLESHEET. Both of this component's moving
   // parts set `transition` as an INLINE style prop, and no media query can
-  // reach an inline declaration. app/motion.ts's guard is also no help and is
-  // not meant to be: it is scoped to .um-motion, which the dashboard does not
-  // carry, and its header records the deliberate refusal to ship a blanket
-  // '* { animation: none }' that would reach across the product. So the read
-  // has to happen in JS, and this is the one dashboard-adjacent change in the
-  // wave that does it.
+  // reach an inline declaration.
+  //
+  // app/motion.ts's guard is no help either, and the reason changed on
+  // 2026-08-30. It used to be "the dashboard does not carry .um-motion"; the
+  // dashboard now does (TeacherDashboardClient puts it on <main>). The reason
+  // it is still no help is the durable one: that guard is scoped to
+  // .um-fade-in, .um-fade-up and .um-stagger, and this component uses none of
+  // them. motion.ts's header records the deliberate refusal to ship a blanket
+  // '* { animation: none }' that would reach across the product, so a surface
+  // with its own moving parts guards them itself. This does. So does the
+  // collapse transition in dashboard-chrome.ts, and the carousel autoplay in
+  // TeacherDashboardClient, which reads matchMedia because its motion is a
+  // scroll position rather than a property.
   //
   // IT SHORT-CIRCUITS BOTH TIERS, WHICH IS THE POINT. Routing `reduced` into
   // the existing `animate` flag alone would only drop the 280ms move and leave

@@ -35,18 +35,50 @@ export type AssignStudent = {
 
 type Target = 'class' | 'student';
 
+// TWO WAYS TO MOUNT THIS, AND THE DEFAULT IS THE OLD ONE UNCHANGED.
+//
+//   chrome (default)  its own flat panel, its own "Assignments" heading, its
+//                     own "+ New" trigger and its own open state. This is what
+//                     /um-verify/shell mounts as its teacher control, so the
+//                     default path is load-bearing beyond the dashboard and is
+//                     deliberately what it always was.
+//
+//   embedded          the FORM ONLY, with open supplied from outside. The
+//                     dashboard now renders the trigger in the Assigned work
+//                     header, because setting work and reading the work you set
+//                     were two panels one above the other saying the same word.
+//
+// ONE FORM, A FLAG, AND NOT A SECOND COMPONENT. The topic picker, the student
+// picker and the submit path are identical in both modes because they are the
+// same JSX; only the wrapper around them branches. A copy would have been two
+// forms to keep in step, which is the failure this avoids.
 export default function NewAssignment({
   classId,
   topics,
   students,
   onCreated,
+  chrome = true,
+  open: openProp,
+  onOpenChange,
 }: {
   classId: string;
   topics: AssignTopic[];
   students: AssignStudent[];
   onCreated: () => void;
+  /** False renders the form alone: no panel, no heading, no trigger. */
+  chrome?: boolean;
+  /** Controlled open state. Ignored unless supplied. */
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }) {
-  const [open, setOpen] = useState(false);
+  // The uncontrolled half is declared either way, because hooks cannot be
+  // conditional. It is simply never read once a parent supplies `open`.
+  const [openSelf, setOpenSelf] = useState(false);
+  const open = openProp ?? openSelf;
+  const setOpen = (next: boolean) => {
+    if (onOpenChange) onOpenChange(next);
+    else setOpenSelf(next);
+  };
   const [topicKeyValue, setTopicKeyValue] = useState('');
   const [target, setTarget] = useState<Target>('class');
   const [picked, setPicked] = useState<Set<string>>(new Set());
@@ -168,12 +200,26 @@ export default function NewAssignment({
     marginBottom: 6,
   };
 
-  return (
-    // height 100% and NO marginBottom: this panel is one half of the two-up
-    // row in TeacherDashboardClient, which owns the gap between the two and
-    // stretches both to the taller one. A margin here would double the space
-    // under the shorter card and pull the row out of alignment.
-    <div style={{ ...flatPanelStyle(), padding: '18px 18px 16px', height: '100%' }}>
+  // THE WRAPPER IS THE ONLY THING THAT BRANCHES.
+  //
+  // Chrome mode is a flat panel with a header above the form. Embedded mode is
+  // a fragment holding the same form, because the Assigned work header already
+  // supplies a heading and a trigger and a panel here would be a box inside a
+  // box under a second title saying almost the same word.
+  //
+  // NO height AND NO marginBottom on the panel any more. height:'100%' was
+  // there to stretch this card to its neighbour in the two-up row, and that row
+  // is gone. The chrome path is now reached only by /um-verify/shell, which
+  // mounts it alone, where stretching to a lane cell was never right.
+  //
+  // A VARIABLE, NOT AN INLINE COMPONENT. The obvious way to write this is a
+  // little `Wrapper` component chosen by the flag, and it is a trap: a function
+  // defined during render has a new identity every render, React sees a new
+  // component TYPE, and it unmounts and remounts the whole subtree. That would
+  // discard the half-typed form on every parent re-render. A plain element tree
+  // reconciles by position and keeps its state.
+  const content = (
+    <>
       {/* THIS COMPONENT CARRIES ITS OWN COPY OF THE HOVER SHEET, and that is
           not belt-and-braces. /um-verify/shell mounts it on its own, through
           ../um-verify/TeacherPanelControl.tsx, on a route that loads no
@@ -181,6 +227,7 @@ export default function NewAssignment({
           only in TeacherDashboardClient would paint transparent there. The
           dashboard emits the identical sheet; the rules are idempotent. */}
       <style>{DASH_HOVER_CSS}</style>
+      {chrome && (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
         <div>
           <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 16, color: DASH.heading }}>
@@ -192,7 +239,7 @@ export default function NewAssignment({
         </div>
         <button
           type="button"
-          onClick={() => setOpen((o) => !o)}
+          onClick={() => setOpen(!open)}
           disabled={!classId}
           // Orange fill with #111111 on it at 9.00 when closed; the navy
           // secondary outline once open, because Cancel is not the action
@@ -215,6 +262,7 @@ export default function NewAssignment({
           {open ? 'Cancel' : '+ New'}
         </button>
       </div>
+      )}
 
       {open && (
         <div style={{ marginTop: 16, display: 'grid', gap: 14 }}>
@@ -356,6 +404,12 @@ export default function NewAssignment({
       {!open && done && (
         <p style={{ margin: '10px 0 0', fontSize: 13, color: DASH.noticeOk }}>{done}</p>
       )}
-    </div>
+    </>
+  );
+
+  return chrome ? (
+    <div style={{ ...flatPanelStyle(), padding: '18px 18px 16px' }}>{content}</div>
+  ) : (
+    content
   );
 }

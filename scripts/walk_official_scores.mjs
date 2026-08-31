@@ -267,25 +267,23 @@ async function main() {
     });
     await measure(page, 'roster: the sitting date', '#roster div', officialDate);
 
-    // ─── 2. The class strand grid ──────────────────────────────────────────────
-    console.log('\n2. /teacher -- the read-only class strand grid');
-    const grid = await page.$('[data-tour="official-strand"]');
-    check('the strand grid rendered', Boolean(grid), '');
-    if (grid) {
-      await grid.screenshot({ path: `${OUT}/2-strand-grid.png` });
-      const gridText = await grid.evaluate((n) => n.innerText);
-      for (const level of ['Basic', 'Proficient', 'Advanced']) {
-        check(`the grid names the ${level} level`, gridText.includes(level), '');
-      }
-      // The passing student is counted SEPARATELY, in a sentence, not as a zero
-      // and not as a fourth level. That is a product decision the walk can check.
-      check(
-        'students who met the standard are counted in words, not as a level',
-        /met the standard|met the college/i.test(gridText),
-        gridText.split('\n').slice(-2).join(' | ')
-      );
-      await measure(page, 'strand grid: a level label', '[data-tour="official-strand"] *', 'Basic');
-    }
+    // ─── 2. THE CLASS STRAND GRID, REMOVED 2026-08-30 ─────────────────────────
+    //
+    // This section probed [data-tour="official-strand"] on /teacher: the
+    // read-only per-strand level grid, its three level names, and the sentence
+    // counting students who met the standard separately. That panel was deleted
+    // from the dashboard, so the probes went with it rather than being left to
+    // fail on an element that is not coming back.
+    //
+    // THE SCRIPT IS NOT RETIRED WITH IT, because the grid was one of its four
+    // jobs and the other three are untouched: the roster's official score column
+    // (section 1), the student detail entry panel (section 3), and the
+    // light-only proof (section 4). Only the OFFICIAL SCORE AGGREGATE went; the
+    // official score itself is still rendered, still entered, and still walked.
+    //
+    // Sections below keep their original numbers. Renumbering would silently
+    // invalidate every screenshot filename and every line of this walk's
+    // recorded output.
 
     // ─── 3. The panel, the form and the warning ────────────────────────────────
     console.log('\n3. /teacher/student/[id] -- the entry panel');

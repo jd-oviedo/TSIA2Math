@@ -90,12 +90,30 @@ export default function NewAnnouncement({
         background: '#FFFFFF',
         border: '1px solid #E8E4DA',
         borderRadius: 0,
-        padding: '18px 18px 16px',
         boxShadow: 'none',
-        // No marginBottom: the two-up grid in TeacherDashboardClient owns the
-        // gap now. Keeping it here would double the space under the shorter of
-        // the two cards and pull the row out of alignment.
-        height: '100%',
+        // NO height, AND THAT IS THE WHOLE BUG THIS LINE USED TO BE.
+        //
+        // PR #238 put a height:100% here so this card would stretch to its
+        // neighbour in the two-up row. The change that deleted that row
+        // reverted only half of it: the height stayed and the marginBottom
+        // never came back. The prop was INERT inside the grid, which is why it
+        // read as harmless; standing alone it is not. <main> is a flex column with
+        // flex:1 inside the shell's min-height:100vh row, so the percentage
+        // resolves and the card fills every pixel left in the column.
+        //
+        // Measured in a browser on the real ancestor chain: 235px with the
+        // prop, 59px without. The 176px difference was the empty white box.
+        //
+        // The card sizes to its content -- a title, a blurb and one button when
+        // closed, plus the form when open -- and nothing here should ever give
+        // it a height again, fixed or otherwise.
+
+        // The rhythm of the two full-width flat panels it now sits between.
+        // Identical to StrandPanel and CurriculumRollupPanel, which is what
+        // makes three stacked panels read as one column rather than three
+        // boxes: SummaryCards closes at 16, then these three at 26 each.
+        padding: '18px 22px 20px',
+        marginBottom: 26,
       }}
     >
       <div
