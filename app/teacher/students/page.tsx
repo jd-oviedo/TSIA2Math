@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { DASH, flatPanelStyle } from '../../components/dashboard-theme';
+import { flatPanelStyle } from '../../components/dashboard-theme';
 import { NAVY, INK_2 } from '../dashboard-chrome';
 import { FONT_BODY } from '../../components/fonts';
 import { requireGradesTeacher, resolveClass } from './students-data';
