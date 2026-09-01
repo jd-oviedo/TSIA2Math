@@ -62,6 +62,7 @@ const W = {
   rpcs: [],
   snapshots: [],
   askGumuCalls: 0,
+  emails: [],
   redis: new Map(),
   redisThrow: false,
   screen: { action: 'continue' },
@@ -123,6 +124,7 @@ function reset(overrides = {}) {
   W.rpcs = [];
   W.snapshots = [];
   W.askGumuCalls = 0;
+  W.emails = [];
   W.redis = new Map();
   W.redisThrow = false;
   W.screen = { action: 'continue' };
@@ -240,6 +242,40 @@ export async function syncCompletionSnapshot(studentId, courseId, topicId, optio
 
 STUBS.set('app/lib/crisis-screen.ts', `
 export async function screenStudentMessage() { return globalThis.__SV.screen; }
+`);
+
+// STUBBED FOR ITS IMPORT, NOT FOR ITS BEHAVIOUR, and that distinction is why it
+// is stubbed here rather than fixed in the app.
+//
+// app/lib/email.ts:3 constructs `new Resend(process.env.RESEND_API_KEY)` at
+// MODULE SCOPE, and the Resend SDK throws outright when the key is absent:
+//
+//   Error: Missing API key. Pass it to the constructor `new Resend("re_123")`
+//
+// The gumu route imports sendCrisisAlert and CRISIS_INBOX from it (route.ts:18),
+// so merely LOADING the route threw before a single check could run. That is a
+// hard dependency on a live secret, and it is exactly the dependency this file
+// exists to have none of: nothing here may need a credential, because the whole
+// lane has to run on a CI checkout that has none.
+//
+// The app is not the thing to change. A module-scope client is a reasonable
+// shape for a server module, and rewriting it lazily to satisfy a harness would
+// be letting the test drive production code. The harness owns its own isolation,
+// so the boundary is drawn here.
+//
+// Recorded rather than silent, because a stub that swallows a send could hide a
+// real regression: nothing under test sends mail. sendCrisisAlert is reached only
+// from the crisis path, which the crisis-screen stub above never triggers, so a
+// call landing in this array means a scenario started exercising the crisis path
+// and should be asserted on deliberately rather than discovered.
+STUBS.set('app/lib/email.ts', `
+export const CRISIS_INBOX = 'crisis@example.invalid';
+export const OPS_INBOX = 'ops@example.invalid';
+export const SUPPORT_INBOX = 'support@example.invalid';
+export async function sendCrisisAlert(args) {
+  globalThis.__SV.emails.push({ kind: 'crisis', args });
+  return { ok: true };
+}
 `);
 
 // Everything real except the paid call. TEACHER_DEMO_TURNS, MAX_STUDENT_TURNS and
