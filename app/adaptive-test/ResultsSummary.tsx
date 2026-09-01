@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Response } from "./type";
 // Type-only: app/lib/recommendation.ts imports the service-role Supabase
 // client, and `import type` is erased before it can follow anything into this
 // client bundle.
 import type { Recommendation } from "../lib/recommendation";
 import { TSIA2_PASSING, thetaToScore, buildCategoryBreakdown } from "./engine";
-import { FONT_BODY } from "../components/fonts";
+import { C, FONT_BODY, FONT_HEADING, MOTION } from "./cat-theme";
+import { prefersReducedMotion } from "../motion";
 
 const SHOW_SIGNIN_PROMPT = true;
 
@@ -56,25 +57,24 @@ function StartHereCard({ recommendation }: { recommendation: Recommendation }) {
 
   return (
     <div style={{
-      background: "var(--ec-surface)",
-      border: "1px solid var(--ec-line)",
-      borderRadius: "16px",
+      background: C.card,
+      border: `1px solid ${C.border}`,
+      borderRadius: "8px",
       padding: "24px",
-      boxShadow: "var(--ec-shadow)",
       display: "flex",
       flexDirection: "column",
       gap: "12px",
     }}>
-      <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--ec-ink-faint)", margin: 0 }}>
+      <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: C.goldInk, margin: 0 }}>
         Start here
       </p>
 
-      <p style={{ fontSize: "14px", lineHeight: 1.6, color: "var(--ec-ink-muted)", margin: 0 }}>
+      <p style={{ fontSize: "14px", lineHeight: 1.6, color: C.muted, margin: 0 }}>
         {strandLabel} was your {standing} strand, {pct}% across {attempted}{" "}
         {attempted === 1 ? "question" : "questions"}.
       </p>
 
-      <p style={{ fontSize: "17px", fontWeight: 600, color: "var(--ec-ink)", margin: 0 }}>
+      <p style={{ fontSize: "17px", fontWeight: 600, color: C.ink, margin: 0 }}>
         {topic.is_placeholder
           ? `We are still writing the ${strandLabel} lessons`
           : topic.topic_name}
@@ -86,9 +86,9 @@ function StartHereCard({ recommendation }: { recommendation: Recommendation }) {
           alignSelf: "flex-start",
           marginTop: "4px",
           padding: "11px 22px",
-          background: "var(--ec-btn-bg)",
-          color: "var(--ec-btn-text)",
-          borderRadius: "10px",
+          background: C.cta,
+          color: C.ctaInk,
+          borderRadius: "8px",
           fontSize: "13px",
           fontWeight: 700,
           textDecoration: "none",
@@ -110,26 +110,68 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
   const avgTime = total > 0 ? Math.round(responses.reduce((s, r) => s + r.elapsedMs, 0) / total / 1000) : 0;
   const breakdown = buildCategoryBreakdown(responses);
 
+  // ─── THE SCORE COUNTS UP ────────────────────────────────────────────────────
+  //
+  // requestAnimationFrame rather than a CSS transition, because the thing being
+  // animated is the TEXT CONTENT of an element and no CSS property interpolates
+  // that. Rounded on every frame, so the student never sees a fraction of a
+  // scale point.
+  //
+  // FROM ZERO, not from the 910 scale floor. Counting 910 to 947 moves the last
+  // two digits and reads as a glitch; counting from zero reads as a total being
+  // tallied, which is what it is. The intermediate values are not offered as
+  // scores and are on screen for under a second.
+  //
+  // Cubic ease-out, matching the shape of MOTION.ease. Reduced motion lands on
+  // the final value immediately, with no frames in between.
+  const [shownScore, setShownScore] = useState(() => (prefersReducedMotion() ? finalScore : 0));
+  useEffect(() => {
+    // Scheduled, not synchronous: a plain setState in an effect body is a
+    // cascading render (react-hooks/set-state-in-effect). The initial state
+    // above already holds finalScore under reduced motion, so this only has to
+    // catch a finalScore that changes after mount.
+    if (prefersReducedMotion()) {
+      const t = setTimeout(() => setShownScore(finalScore), 0);
+      return () => clearTimeout(t);
+    }
+    let raf = 0;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - start) / MOTION.scoreCountDur);
+      setShownScore(Math.round(finalScore * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [finalScore]);
+
+  // The category bars grow from zero once, on a light stagger. Scheduled rather
+  // than set synchronously so the width has a frame at 0 to transition from.
+  const [barsIn, setBarsIn] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setBarsIn(true), 0);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <div style={{ width: "100%", maxWidth: "620px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "16px", paddingBottom: "40px" }}>
 
       {/* Score hero */}
       <div style={{
-        background: "var(--ec-surface)",
-        border: "1px solid var(--ec-line)",
-        borderRadius: "20px",
+        background: C.card,
+        border: `1px solid ${C.border}`,
+        borderRadius: "8px",
         // Option A. Was 44px 28px 36px around an 88px score with a 16px gap
         // under the label, which left the number floating in the middle of a
         // tall card rather than owning it. Tighter frame, bigger number: the
         // card gets shorter while the score reads larger.
         padding: "32px 28px 28px",
         textAlign: "center",
-        boxShadow: "var(--ec-shadow)",
       }}>
         {/* 4px, not 16px. The label and the number are one unit -- the label
             names the number directly beneath it -- and a 16px gap read as two
             separate things stacked up. */}
-        <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--ec-ink-faint)", marginBottom: "4px" }}>
+        <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: C.goldInk, marginBottom: "4px" }}>
           Estimated TSIA2 Score
         </p>
         <p style={{
@@ -138,17 +180,20 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
           // Below 1 so the extra size does not buy back the height just saved.
           // Digits have no descenders, so this crops empty space, not glyphs.
           lineHeight: 0.95,
-          color: "var(--ec-ink)",
+          color: C.ink,
           marginBottom: "10px",
           letterSpacing: "-0.04em",
           fontFamily: FONT_BODY,
         }}>
-          {finalScore}
+          {shownScore}
         </p>
-        <p style={{ fontSize: "15px", fontWeight: 600, color: passed ? "var(--ec-green)" : "var(--ec-orange)", marginBottom: "10px" }}>
+        {/* The fail branch was --ec-orange, which is orange carrying text. Pass
+            keeps a state colour because "College Ready" IS a verdict; the fail
+            branch takes plain ink so it reads as a status, not an alarm. */}
+        <p style={{ fontSize: "15px", fontWeight: 600, color: passed ? C.correctInk : C.ink, marginBottom: "10px" }}>
           {passed ? "College Ready" : "Keep Practicing"}
         </p>
-        <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)" }}>
+        <p style={{ fontSize: "11px", color: C.muted }}>
           Passing threshold: {TSIA2_PASSING} · Scale: 910–990
         </p>
       </div>
@@ -162,18 +207,17 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
       {/* Sign-in prompt */}
       {SHOW_SIGNIN_PROMPT && (
         <div style={{
-          background: "var(--ec-surface)",
-          border: "1px solid var(--ec-line)",
-          borderRadius: "16px",
+          background: C.card,
+          border: `1px solid ${C.border}`,
+          borderRadius: "8px",
           padding: "20px 24px",
-          boxShadow: "var(--ec-shadow)",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           gap: "16px",
           flexWrap: "wrap",
         }}>
-          <p style={{ fontSize: "13px", color: "var(--ec-ink-muted)", margin: 0 }}>
+          <p style={{ fontSize: "13px", color: C.muted, margin: 0 }}>
             {sessionId
               ? "Sign in to save this result and track your progress over time."
               : saveFailed
@@ -187,9 +231,10 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
               style={{
                 flexShrink: 0,
                 padding: "10px 20px",
-                background: "var(--ec-btn-bg)",
-                color: "var(--ec-btn-text)",
-                borderRadius: "10px",
+                background: C.signinBg,
+                color: C.signinInk,
+                border: `1px solid ${C.signinLine}`,
+                borderRadius: "8px",
                 fontSize: "13px",
                 fontWeight: 700,
                 textDecoration: "none",
@@ -204,9 +249,10 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
               style={{
                 flexShrink: 0,
                 padding: "10px 20px",
-                background: "var(--ec-btn-bg)",
-                color: "var(--ec-btn-text)",
-                borderRadius: "10px",
+                background: C.signinBg,
+                color: C.signinInk,
+                border: `1px solid ${C.signinLine}`,
+                borderRadius: "8px",
                 fontSize: "13px",
                 fontWeight: 700,
                 textDecoration: "none",
@@ -220,9 +266,9 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
               style={{
                 flexShrink: 0,
                 padding: "10px 20px",
-                background: "var(--ec-line)",
-                color: "var(--ec-ink-faint)",
-                borderRadius: "10px",
+                background: C.disabled,
+                color: C.disabledInk,
+                borderRadius: "8px",
                 fontSize: "13px",
                 fontWeight: 700,
                 whiteSpace: "nowrap",
@@ -243,15 +289,14 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
           { label: "Avg. Time", value: `${avgTime}s` },
         ].map(({ label, value }) => (
           <div key={label} style={{
-            background: "var(--ec-surface)",
-            border: "1px solid var(--ec-line)",
-            borderRadius: "16px",
+            background: C.card,
+            border: `1px solid ${C.border}`,
+            borderRadius: "8px",
             padding: "20px 14px",
             textAlign: "center",
-            boxShadow: "var(--ec-shadow)",
           }}>
-            <p style={{ fontSize: "26px", fontWeight: 800, color: "var(--ec-accent)", marginBottom: "4px", letterSpacing: "-0.02em" }}>{value}</p>
-            <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)", letterSpacing: "0.04em" }}>{label}</p>
+            <p style={{ fontSize: "26px", fontWeight: 800, color: C.blueInk, marginBottom: "4px", letterSpacing: "-0.02em" }}>{value}</p>
+            <p style={{ fontSize: "11px", color: C.muted, letterSpacing: "0.04em" }}>{label}</p>
           </div>
         ))}
       </div>
@@ -259,33 +304,39 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
       {/* Strand breakdown */}
       {breakdown.length > 0 && (
         <div style={{
-          background: "var(--ec-surface)",
-          border: "1px solid var(--ec-line)",
-          borderRadius: "20px",
+          background: C.card,
+          border: `1px solid ${C.border}`,
+          borderRadius: "8px",
           padding: "26px 24px",
-          boxShadow: "var(--ec-shadow)",
         }}>
-          <h2 style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-ink-faint)", marginBottom: "22px" }}>
+          <h2 style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.goldInk, marginBottom: "22px", fontFamily: FONT_HEADING }}>
             Category Breakdown
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-            {breakdown.map(({ strand, correct, total, pct }) => (
+            {breakdown.map(({ strand, correct, total, pct }, i) => (
               <div key={strand}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "8px" }}>
-                  <span style={{ fontSize: "14px", fontWeight: 500, color: "var(--ec-ink)" }}>
+                  <span style={{ fontSize: "14px", fontWeight: 500, color: C.ink }}>
                     {STRAND_LABEL[strand] ?? strand}
                   </span>
-                  <span style={{ fontSize: "12px", color: "var(--ec-ink-muted)" }}>
+                  <span style={{ fontSize: "12px", color: C.blueInk, fontVariantNumeric: "tabular-nums" }}>
                     {correct}/{total} · {pct}%
                   </span>
                 </div>
-                <div style={{ width: "100%", height: "4px", background: "var(--ec-line)", borderRadius: "999px", overflow: "hidden" }}>
+                <div style={{ width: "100%", height: "4px", background: C.track, borderRadius: "999px", overflow: "hidden" }}>
                   <div style={{
                     height: "100%",
-                    width: `${pct}%`,
-                    background: pct >= 70 ? "var(--ec-green)" : pct >= 50 ? "var(--ec-accent)" : "var(--ec-orange)",
+                    width: barsIn ? `${pct}%` : "0%",
+                    // Orange stays here: this is a FILL, which is the role
+                    // the brand orange is for. Only the text uses ran out.
+                    background: pct >= 70 ? C.correctFill : pct >= 50 ? C.blue : C.cta,
                     borderRadius: "999px",
-                    transition: "width 0.7s ease",
+                    // Width only. A bar that grows is the one animation on this
+                    // card that carries information: the length IS the value.
+                    transition: prefersReducedMotion()
+                      ? "none"
+                      : `width ${MOTION.durSlow}ms ${MOTION.ease}`,
+                    transitionDelay: prefersReducedMotion() ? "0ms" : `${i * 70}ms`,
                   }} />
                 </div>
               </div>
@@ -302,11 +353,10 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
           aria-controls rather than a styled div, so the collapsed table is
           announced as collapsed rather than simply being absent. */}
       <div style={{
-        background: "var(--ec-surface)",
-        border: "1px solid var(--ec-line)",
-        borderRadius: "20px",
+        background: C.card,
+        border: `1px solid ${C.border}`,
+        borderRadius: "8px",
         padding: "26px 24px",
-        boxShadow: "var(--ec-shadow)",
       }}>
         <button
           type="button"
@@ -326,10 +376,10 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
             textAlign: "left",
           }}
         >
-          <h2 style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-ink-faint)", margin: 0 }}>
+          <h2 style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.goldInk, margin: 0, fontFamily: FONT_HEADING }}>
             Response History
           </h2>
-          <span style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "12px", fontWeight: 600, color: "var(--ec-ink-muted)" }}>
+          <span style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "12px", fontWeight: 600, color: C.ctlInk }}>
             {historyOpen ? "Hide" : `Show all ${total}`}
             <span
               aria-hidden="true"
@@ -347,7 +397,7 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
         <div id="response-history" hidden={!historyOpen} style={{ overflowX: "auto", marginTop: "16px" }}>
           <table style={{ width: "100%", fontSize: "13px", borderCollapse: "collapse" }}>
             <thead>
-              <tr style={{ borderBottom: "1px solid var(--ec-line)" }}>
+              <tr style={{ borderBottom: `1px solid ${C.border}` }}>
                 {["#", "Level", "Answer", "Result", "Score"].map((h, i) => (
                   <th key={h} style={{
                     paddingBottom: "10px",
@@ -356,7 +406,7 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
                     fontWeight: 700,
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: "var(--ec-ink-faint)",
+                    color: C.muted,
                   }}>
                     {h}
                   </th>
@@ -365,25 +415,29 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
             </thead>
             <tbody>
               {responses.map((r, i) => (
-                <tr key={r.item.item_id} style={{ borderBottom: "1px solid var(--ec-line)" }}>
-                  <td style={{ padding: "11px 0", color: "var(--ec-ink-muted)", fontSize: "13px", width: "32px" }}>{i + 1}</td>
+                <tr key={r.item.item_id} style={{ borderBottom: `1px solid ${C.border}` }}>
+                  <td style={{ padding: "11px 0", color: C.muted, fontSize: "13px", width: "32px" }}>{i + 1}</td>
                   <td style={{ padding: "11px 12px 11px 0" }}>
                     <span style={{
                       fontSize: "10px", fontWeight: 700, padding: "2px 8px", borderRadius: "99px",
-                      background: "var(--ec-accent-soft)", color: "var(--ec-accent)",
-                      border: "1px solid rgba(15,105,186,0.15)",
+                      background: C.blueTint, color: C.blueInk,
+                      // WAS A HARDCODED rgba(15,105,186,0.15), which is the
+                      // LIGHT --ec-accent baked in at 15%. It did not follow
+                      // the theme, so this chip kept a pale blue edge on a dark
+                      // page. Themed now, like everything else here.
+                      border: `1px solid ${C.blueLine}`,
                     }}>
                       {r.item.proficiency_level[0]}
                     </span>
                   </td>
-                  <td style={{ padding: "11px 12px 11px 0", fontWeight: 600, color: "var(--ec-ink)", fontSize: "13px" }}>{r.selectedAnswer}</td>
+                  <td style={{ padding: "11px 12px 11px 0", fontWeight: 600, color: C.ink, fontSize: "13px" }}>{r.selectedAnswer}</td>
                   <td style={{ padding: "11px 12px 11px 0", fontSize: "14px" }}>
                     {r.isCorrect
-                      ? <span style={{ color: "var(--ec-green)", fontWeight: 700 }}>✓</span>
-                      : <span style={{ color: "var(--ec-red)", fontWeight: 700 }}>✗</span>
+                      ? <span style={{ color: C.correctInk, fontWeight: 700 }}>✓</span>
+                      : <span style={{ color: C.incorrectInk, fontWeight: 700 }}>✗</span>
                     }
                   </td>
-                  <td style={{ padding: "11px 0", textAlign: "right", fontSize: "13px", fontWeight: 600, color: "var(--ec-accent)", fontVariantNumeric: "tabular-nums" }}>
+                  <td style={{ padding: "11px 0", textAlign: "right", fontSize: "13px", fontWeight: 600, color: C.blueInk, fontVariantNumeric: "tabular-nums" }}>
                     {r.scoreAfter}
                   </td>
                 </tr>
@@ -399,16 +453,15 @@ export default function ResultsSummary({ responses, theta, onRestart, sessionId,
         style={{
           width: "100%",
           padding: "16px",
-          background: "var(--ec-btn-bg)",
-          color: "var(--ec-btn-text)",
+          background: C.cta,
+          color: C.ctaInk,
           border: "none",
-          borderRadius: "14px",
+          borderRadius: "8px",
           fontFamily: "inherit",
           fontSize: "15px",
           fontWeight: 700,
           cursor: "pointer",
           letterSpacing: "-0.01em",
-          boxShadow: "var(--ec-shadow-btn)",
         }}
       >
         Take Another Test

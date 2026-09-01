@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useSession } from "./useSession";
-import { validateItems } from "./engine";
+import { DEFAULT_MAX_ITEMS, validateItems } from "./engine";
 import ItemCard from "./ItemCard";
 import ResultsSummary from "./ResultsSummary";
 import { CAT_ITEM_COLUMNS } from "./type";
@@ -11,12 +11,19 @@ import type { ItemValidationError, Response } from "./type";
 // the browser bundle -- `import type` is erased before webpack sees it.
 import type { Recommendation } from "../lib/recommendation";
 import { supabase } from "../lib/supabase";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
+import { CatChrome } from "./CatChrome";
+import { C, FONT_HEADING } from "./cat-theme";
 import posthog from "posthog-js";
 import { SPIN_CSS } from '../motion';
 
-const MAX_ITEMS = 20;
+// THE TEST LENGTH IS engine.ts's, NOT A SECOND 20.
+//
+// This was `const MAX_ITEMS = 20`, a literal that shadowed DEFAULT_MAX_ITEMS
+// and was the value actually handed to useSession -- so the engine's own
+// default was dead code on the one path that matters, and the two could have
+// disagreed without anything noticing. tests/cat-session-length.test.ts now
+// holds engine.ts's two definitions of length in step; this import removes the
+// third.
 
 // PostgREST caps every response at 1000 rows, and the cap is enforced
 // server-side: asking for .limit(2000) still comes back with 1000. Paging with
@@ -97,45 +104,25 @@ async function saveSession(
   }
 }
 
-function Blobs() {
-  return (
-    <div style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 0, overflow: "hidden" }}>
-    </div>
-  );
-}
-
-// showCalculator is threaded rather than inferred inside Header, because the
-// only thing that knows whether a test is in progress is the reducer phase, and
-// that lives here. Every Shell call site below passes it explicitly, so the
-// answer for each phase is visible at the phase rather than hidden in a default.
-function Shell({
-  children,
-  showCalculator = false,
-}: {
-  children: React.ReactNode;
-  showCalculator?: boolean;
-}) {
-  return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--ec-bg)", position: "relative" }}>
-      <Blobs />
-      <div style={{ position: "relative" }}>
-        <Header showCalculator={showCalculator} />
-      </div>
-      <main style={{ flex: 1, maxWidth: "800px", margin: "0 auto", width: "100%", padding: "110px 24px 80px" }}>
-        {children}
-      </main>
-      <Footer />
-    </div>
-  );
-}
+// The local `Shell` that used to sit here is now app/adaptive-test/CatChrome.tsx,
+// which is where data-theme and the body ground are set. showCalculator is still
+// threaded rather than inferred inside Header, because the only thing that knows
+// whether a test is in progress is the reducer phase, and that lives here. Every
+// CatChrome call site below passes it explicitly, so the answer for each phase is
+// visible at the phase rather than hidden in a default.
+//
+// The `Blobs` component that used to sit above Shell has been deleted. It
+// rendered an empty div: a fixed, pointer-events-none, zero-child overlay that
+// painted nothing on any phase. The live blobs are on the home hero
+// (app/page.tsx), which is a separate surface and is untouched.
 
 function ValidationErrorList({ errors }: { errors: ItemValidationError[] }) {
   return (
-    <div style={{ marginTop: "24px", background: "var(--ec-red-bg)", border: "1px solid var(--ec-red-border)", borderRadius: "12px", padding: "16px", fontSize: "13px", color: "var(--ec-ink)", maxHeight: "192px", overflowY: "auto" }}>
-      <p style={{ fontWeight: 600, marginBottom: "8px", color: "var(--ec-red)" }}>{errors.length} malformed item(s) skipped</p>
+    <div style={{ marginTop: "24px", background: C.incorrectCard, border: `1px solid ${C.incorrectLine}`, borderRadius: "8px", padding: "16px", fontSize: "13px", color: C.ink, maxHeight: "192px", overflowY: "auto" }}>
+      <p style={{ fontWeight: 600, marginBottom: "8px", color: C.incorrectInk }}>{errors.length} malformed item(s) skipped</p>
       <ul style={{ listStyle: "disc", paddingLeft: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
         {errors.map((e) => (
-          <li key={e.item_id} style={{ color: "var(--ec-ink-muted)" }}>
+          <li key={e.item_id} style={{ color: C.muted }}>
             <span style={{ fontFamily: "monospace" }}>{e.item_id}</span>, missing: {e.missing.join(", ")}
           </li>
         ))}
@@ -145,7 +132,7 @@ function ValidationErrorList({ errors }: { errors: ItemValidationError[] }) {
 }
 
 export default function AdaptiveTestPage() {
-  const { state, loadItems, loadError, start, answer, restart } = useSession(MAX_ITEMS);
+  const { state, loadItems, loadError, start, answer, restart } = useSession(DEFAULT_MAX_ITEMS);
   const savedRef = useRef(false);
   const prevResponseCountRef = useRef(0);
   const [savedSessionId, setSavedSessionId] = useState<string | null>(null);
@@ -217,32 +204,36 @@ useEffect(() => {
 
   if (state.phase === "loading") {
     return (
-      <Shell>
+      <CatChrome>
         <div style={{ textAlign: "center", padding: "80px 0" }}>
-          <div style={{ width: "40px", height: "40px", border: "3px solid var(--ec-line)", borderTopColor: "var(--ec-accent)", borderRadius: "50%", margin: "0 auto 16px", animation: "um-spin 0.8s linear infinite" }} />
-          <p style={{ color: "var(--ec-ink-muted)", fontSize: "14px" }}>Loading question bank…</p>
+          <div style={{ width: "40px", height: "40px", border: `3px solid ${C.border}`, borderTopColor: C.blue, borderRadius: "50%", margin: "0 auto 16px", animation: "um-spin 0.8s linear infinite" }} />
+          <p style={{ color: C.muted, fontSize: "14px" }}>Loading question bank…</p>
           {/* Was a local `@keyframes spin`. Retired for the shared name as
               much as for the duplication: `spin` is generic enough that
               anything else defining it would silently take over this loader,
               because @keyframes resolve globally by name. */}
           <style>{SPIN_CSS}</style>
         </div>
-      </Shell>
+      </CatChrome>
     );
   }
 
   if (state.phase === "error") {
     return (
-      <Shell>
+      <CatChrome>
         <div style={{ maxWidth: "480px", margin: "0 auto", textAlign: "center", padding: "64px 0" }}>
           <p style={{ fontSize: "48px", marginBottom: "16px" }}>⚠️</p>
-          <h2 style={{ fontSize: "20px", fontWeight: 700, color: "var(--ec-orange)", marginBottom: "8px" }}>Failed to load question bank</h2>
-          <p style={{ color: "var(--ec-ink-muted)", fontSize: "14px" }}>{state.loadError}</p>
-          <button onClick={restart} style={{ marginTop: "24px", padding: "12px 28px", background: "var(--ec-btn-bg)", color: "var(--ec-btn-text)", border: "none", borderRadius: "12px", fontFamily: "inherit", fontSize: "14px", fontWeight: 600, cursor: "pointer" }}>
+          {/* Ink, not orange. This heading was --ec-orange, which resolves to
+              #F2A541 in dark -- brand orange carrying text, the one role the
+              palette does not allow it. The warning sign above already colours
+              the message. */}
+          <h2 style={{ fontSize: "20px", fontWeight: 700, color: C.ink, marginBottom: "8px", fontFamily: FONT_HEADING }}>Failed to load question bank</h2>
+          <p style={{ color: C.muted, fontSize: "14px" }}>{state.loadError}</p>
+          <button onClick={restart} style={{ marginTop: "24px", padding: "12px 28px", background: C.cta, color: C.ctaInk, border: "none", borderRadius: "8px", fontFamily: "inherit", fontSize: "14px", fontWeight: 600, cursor: "pointer" }}>
             Retry
           </button>
         </div>
-      </Shell>
+      </CatChrome>
     );
   }
 
@@ -252,7 +243,7 @@ useEffect(() => {
       : undefined;
 
     return (
-      <Shell>
+      <CatChrome>
         <div style={{
           maxWidth: "520px",
           margin: "0 auto",
@@ -262,28 +253,85 @@ useEffect(() => {
           flexDirection: "column",
           alignItems: "center",
           gap: "24px",
-          background: "var(--ec-glass-bg)",
-          border: "1px solid var(--ec-glass-border)",
-          borderRadius: "20px",
-          boxShadow: "var(--ec-shadow)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
+          // Was --ec-glass-bg over a 16px backdrop blur. Flat card and a
+          // hairline instead: the glass had nothing behind it to refract once
+          // the (already empty) blob layer was removed.
+          background: C.card,
+          border: `1px solid ${C.border}`,
+          borderRadius: "8px",
         }}>
           <div>
-            <p style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-ink-faint)", marginBottom: "4px" }}>
+            {/* Two stacked eyebrows. The kicker is muted and the brand line is
+                gold, so they read as a hierarchy rather than as one label
+                broken across two rows. */}
+            <p style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.muted, marginBottom: "4px" }}>
               Before you begin
             </p>
-            <p style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ec-accent)", marginBottom: "8px" }}>
+            <p style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.goldInk, marginBottom: "8px" }}>
               TSIA2 Adaptive Practice
             </p>
-            <h1 style={{ fontSize: "34px", fontWeight: 800, color: "var(--ec-ink)", letterSpacing: "-0.025em", lineHeight: 1.1, fontFamily: "var(--font-kodchasan, Kodchasan, sans-serif)" }}>
+            <h1 style={{ fontSize: "34px", fontWeight: 800, color: C.ink, letterSpacing: "-0.025em", lineHeight: 1.1, fontFamily: FONT_HEADING }}>
               Let&rsquo;s find exactly<br />where you are.
             </h1>
           </div>
-          <p style={{ fontSize: "15px", color: "var(--ec-ink-muted)", lineHeight: 1.65, margin: 0 }}>
-            1,100+ items loaded · {MAX_ITEMS} questions · adapts as you go
+          <p style={{ fontSize: "15px", color: C.muted, lineHeight: 1.65, margin: 0 }}>
+            {/* Both numbers come from the live session. The bank count was
+                the frozen string "1,100+" while state.allItems held the real
+                figure, and the question count was the module literal. */}
+            {state.allItems.length.toLocaleString()} items loaded · {state.maxItems} questions · adapts as you go
           </p>
-          <div style={{ background: "var(--ec-surface)", border: "1px solid var(--ec-line)", borderRadius: "18px", padding: "22px 26px", width: "100%", textAlign: "left", display: "flex", flexDirection: "column", gap: "12px", boxShadow: "var(--ec-shadow)" }}>
+          {/* DIRECTIONS.
+
+              Additive: it sits above the spec panel inside the SAME card, so
+              the screen is still one card, one scroll, one action.
+
+              LEFT ALIGNED inside a centred card. The card sets textAlign center
+              and alignItems center for the headline block; a numbered list read
+              centred is unreadable, so this block opts out for itself rather
+              than the card changing for everyone.
+
+              WHAT IS DELIBERATELY NOT HERE: no highlighter, no confirm step, no
+              refresh or proctor warning. The engine has none of those, and a
+              directions screen that describes controls the test does not have
+              is worse than no directions screen. */}
+          <div style={{ width: "100%", textAlign: "left", display: "flex", flexDirection: "column", gap: "10px" }}>
+            <p style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.goldInk, margin: 0 }}>
+              Directions
+            </p>
+            <p style={{ fontSize: "15px", color: C.muted, lineHeight: 1.65, margin: 0 }}>
+              Read these before you start. The practice test works like the real TSIA2.
+            </p>
+            {/* listStyle and paddingLeft are STATED, not inherited. globals.css
+                pulls in Tailwind preflight, which resets ol/ul to list-style:
+                none with no padding, so a bare <ol> here renders as five
+                unnumbered lines. app/adaptive-test/page.tsx's own
+                ValidationErrorList counters the same reset the same way. */}
+            <ol style={{
+              listStyle: "decimal",
+              paddingLeft: "20px",
+              margin: 0,
+              display: "flex",
+              flexDirection: "column",
+              gap: "8px",
+              fontSize: "15px",
+              color: C.ink,
+              lineHeight: 1.6,
+            }}>
+              <li>Read each question carefully.</li>
+              <li>Scroll if you need to see all the answer choices.</li>
+              <li>Select your answer, then click Submit at the bottom.</li>
+              <li>The test adapts as you go, so you cannot return to a previous question.</li>
+              <li>Your progress is not saved unless you sign in.</li>
+            </ol>
+            <p style={{ fontSize: "13px", color: C.muted, lineHeight: 1.6, margin: 0 }}>
+              A calculator is available in the top bar.
+            </p>
+          </div>
+          {/* The spec list is an inset panel, so it takes the PAGE ground
+              rather than the card's. Card-on-card was legible while the outer
+              surface was translucent glass; against a flat white card a
+              hairline alone is not enough separation. */}
+          <div style={{ background: C.page, border: `1px solid ${C.border}`, borderRadius: "8px", padding: "22px 26px", width: "100%", textAlign: "left", display: "flex", flexDirection: "column", gap: "12px" }}>
             {[
               ["Starting level", "Proficient difficulty"],
               ["Adjusts", "after every answer"],
@@ -291,9 +339,9 @@ useEffect(() => {
               ["College-ready", "950 or above"],
             ].map(([label, value]) => (
               <div key={label} style={{ display: "flex", alignItems: "baseline", fontSize: "14px", gap: "8px" }}>
-                <span style={{ color: "var(--ec-ink-muted)", whiteSpace: "nowrap" }}>{label}</span>
-                <span style={{ flex: 1, borderBottom: "2px dotted var(--ec-line)", marginBottom: "3px" }} />
-                <span style={{ color: "var(--ec-ink)", fontWeight: 500, whiteSpace: "nowrap" }}>{value}</span>
+                <span style={{ color: C.muted, whiteSpace: "nowrap" }}>{label}</span>
+                <span style={{ flex: 1, borderBottom: `2px dotted ${C.border}`, marginBottom: "3px" }} />
+                <span style={{ color: C.ink, fontWeight: 500, whiteSpace: "nowrap" }}>{value}</span>
               </div>
             ))}
           </div>
@@ -303,16 +351,16 @@ useEffect(() => {
               posthog.capture("test_started", { item_count: state.allItems.length });
               start();
             }}
-            style={{ width: "100%", padding: "16px", background: "var(--ec-btn-bg)", color: "var(--ec-btn-text)", border: "none", borderRadius: "14px", fontFamily: "inherit", fontSize: "15px", fontWeight: 700, cursor: "pointer", letterSpacing: "-0.01em", boxShadow: "var(--ec-shadow-btn)" }}
+            style={{ width: "100%", padding: "16px", background: C.cta, color: C.ctaInk, border: "none", borderRadius: "8px", fontFamily: "inherit", fontSize: "15px", fontWeight: 700, cursor: "pointer", letterSpacing: "-0.01em" }}
           >
-            Begin Test
+            Start Test Session
           </button>
           {/* Signed in, this is the line that tells a student their work is
               being kept; signed out, it is the reassurance that they can take
               the test without an account. Neither is true while the auth check
               is still in flight, so that state renders a blank line of the same
               height rather than flashing the wrong promise. */}
-          <p style={{ fontSize: "11px", color: "var(--ec-ink-faint)", margin: 0 }}>
+          <p style={{ fontSize: "11px", color: C.muted, margin: 0 }}>
             {isAuthenticated === null
               ? " "
               : isAuthenticated
@@ -320,23 +368,23 @@ useEffect(() => {
                 : "no account needed · results shown at the end"}
           </p>
         </div>
-      </Shell>
+      </CatChrome>
     );
   }
 
   if (state.phase === "active" && state.currentItem) {
     return (
-      <Shell showCalculator>
+      <CatChrome showCalculator>
         <ItemCard item={state.currentItem} itemNumber={state.responses.length + 1} totalItems={state.maxItems} onAnswer={answer} isAuthenticated={isAuthenticated} />
-      </Shell>
+      </CatChrome>
     );
   }
 
   if (state.phase === "complete") {
     return (
-      <Shell>
+      <CatChrome>
         <ResultsSummary responses={state.responses} theta={state.theta} onRestart={restart} sessionId={savedSessionId} saveFailed={saveFailed} recommendation={recommendation} />
-      </Shell>
+      </CatChrome>
     );
   }
 
