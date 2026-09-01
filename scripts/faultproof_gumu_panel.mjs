@@ -81,16 +81,36 @@ const ASSERTIONS = {
   'start() is reached only from the panel button': (s) =>
     (s.match(/onClick=\{start\}/g) ?? []).length === 1,
 
-  // The lifecycle. Four call sites now: the crisis screen added a third
-  // onSessionChange(false), because a session stopped for support must release
-  // the answer-key gate exactly like the other two terminal paths do. Still an
-  // exact count rather than a floor, so an accidental extra or a dropped call
-  // is still caught.
+  // The lifecycle. FIVE call sites now, one true and four false, and the false
+  // ones are the complete list of ways a session can END. Every terminal path
+  // has to release the answer-key gate, because the gate is held open for as
+  // long as the provider counts the session as live -- a path that ends the
+  // conversation without releasing leaves solutionsPaused stuck true for the
+  // rest of the page load, which is the bug #140 fixed for page turns.
+  //
+  // The four, with the branch each one sits in (GumuChat.tsx):
+  //
+  //   crisis stop     data.stopped === 'support'         :172
+  //   preview limit   data.stopped === 'preview_limit'   :181
+  //   turn cap        data.status !== 'active'           :189
+  //   reveal          the escape hatch                   :206
+  //
+  // WENT FROM THREE TO FOUR IN #245, and the fourth is legitimate rather than an
+  // accident this check should have refused. A teacher previewing the course
+  // through the second door gets a bounded Mu demo, and exhausting it ends the
+  // session exactly as the turn cap does. It is a terminal state, so it releases
+  // the gate like every other terminal state.
+  //
+  // STILL AN EXACT COUNT RATHER THAN A FLOOR, which is the whole point and is
+  // why bumping the number is the correct fix rather than relaxing the operator.
+  // A fifth release path added by accident, or any one of these four dropped,
+  // still fails here. Raising this number is a decision to be made deliberately,
+  // by naming the new path above; it is not a step to take to get green.
   'onSessionChange(true) fires once, on a started session': (s) =>
     (s.match(/onSessionChange\(true\)/g) ?? []).length === 1,
 
-  'onSessionChange(false) fires three times, on the turn cap, on reveal, and on a crisis stop': (s) =>
-    (s.match(/onSessionChange\(false\)/g) ?? []).length === 3,
+  'onSessionChange(false) fires four times, on the turn cap, on reveal, on a crisis stop, and on a preview limit': (s) =>
+    (s.match(/onSessionChange\(false\)/g) ?? []).length === 4,
 
   'the panel adds no new session write': (s) =>
     (s.match(/action:\s*['"]start['"]/g) ?? []).length === 1,
@@ -114,7 +134,7 @@ const CHAT_KEYS = new Set([
   'nothing starts a session on mount',
   'start() is reached only from the panel button',
   'onSessionChange(true) fires once, on a started session',
-  'onSessionChange(false) fires three times, on the turn cap, on reveal, and on a crisis stop',
+  'onSessionChange(false) fires four times, on the turn cap, on reveal, on a crisis stop, and on a preview limit',
   'the panel adds no new session write',
 ]);
 
@@ -159,7 +179,7 @@ const FAULTS = [
     name: 'a second onSessionChange(false) is added',
     file: 'chat',
     apply: (s) => s.replace('    if (dismissed) return null;', '    if (dismissed) { onSessionChange(false); return null; }'),
-    breaks: 'onSessionChange(false) fires three times, on the turn cap, on reveal, and on a crisis stop',
+    breaks: 'onSessionChange(false) fires four times, on the turn cap, on reveal, on a crisis stop, and on a preview limit',
   },
   {
     name: 'solutionsPaused is rewired',
