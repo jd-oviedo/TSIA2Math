@@ -362,8 +362,27 @@ test('a plan that names no teacher tier returns null rather than a product name'
 test('neither teacher rail hardcodes a tier name', () => {
   // The wiring check. Both files must derive the band from teacherTierLabel and
   // neither may contain the literal string that was there before.
+  //
+  // REPOINTED 2026-09-01, AND THE ASSERTIONS ARE UNCHANGED. The first entry was
+  // app/teacher/TeacherDashboardClient.tsx, which is where the teacher band used
+  // to be drawn. The rail was extracted to TeacherShell (PR #201) and the
+  // dashboard now only MOUNTS it and passes `plan` through -- its own comments
+  // say so at :1112 and :1262-1266 -- so there has been no teacherTierLabel call
+  // in that file for some time and this test asserted against a file that could
+  // not satisfy it. That is a stale pointer, not a regression: the band itself
+  // has been correct throughout, at TeacherShell.tsx:284-285.
+  //
+  // The fix is the target, not the check. Both assertions below keep their exact
+  // form, because the question they ask -- does the teacher rail derive its tier
+  // from the plan -- is still the right question and TeacherShell IS the teacher
+  // rail now. Weakening either one to get green would have thrown away the only
+  // thing standing between this and the defect described at the top of this
+  // block, which shipped a product name to every Teacher Core customer.
+  //
+  // WHY IT WENT RED ON MAIN AND STAYED THERE: this repo runs no tests in CI. See
+  // the PR that made this change.
   const rails = [
-    'app/teacher/TeacherDashboardClient.tsx',
+    'app/teacher/TeacherShell.tsx',
     'app/components/StudentNav.tsx',
   ];
   for (const file of rails) {
