@@ -66,9 +66,28 @@ function check(label, fn) {
 // Shelling out to Python rather than reimplementing the parse. A second parser
 // written in JS would agree with upload_curriculum.py right up until it didn't,
 // and this file's whole claim is about what the uploader actually stores.
+//
+// `python3` FROM PATH, NOT path.join(ROOT, '.venv/bin/python3'), WHICH IS WHAT
+// THIS USED TO SAY.
+//
+// .venv is gitignored, so it exists on a developer's machine and on no fresh
+// checkout anywhere. This script therefore passed locally and died on the first
+// CI runner that ever executed it:
+//
+//   Error: spawnSync /home/runner/work/TSIA2Math/TSIA2Math/.venv/bin/python3 ENOENT
+//
+// The venv bought nothing here. upload_curriculum.py imports os, json, re,
+// argparse, pathlib and datetime and nothing else, so this needs a stdlib
+// interpreter and no packages at all -- there is no requirements.txt in the repo
+// to install even if one wanted to. scripts/verify_answer_key_parity.mjs:102
+// already shells to bare `python3` for the same kind of parse and has always
+// worked on a runner; this line was the odd one out.
+//
+// A missing `python3` on PATH now fails the same way any other missing tool
+// would, which is the correct failure: loud, and identical everywhere.
 const practiceItems = JSON.parse(
   execFileSync(
-    path.join(ROOT, '.venv/bin/python3'),
+    'python3',
     [
       '-c',
       [
