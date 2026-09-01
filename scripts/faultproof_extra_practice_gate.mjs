@@ -254,42 +254,142 @@ check('GumuGate reads entries.practice and entries.mini_quiz by name', () =>
 check('GumuGate does not iterate the answer key object', () =>
   !/Object\.(keys|entries|values)\(entries\)/.test(gumuGate));
 
-// The rendered answer key for the two gated sections, before this branch and
-// after it, byte for byte. This is what the practice and quiz pages put on a
-// teacher's screen, so it is the closest thing to "the page did not change"
-// that can be measured without a session -- and a session would mean minting
-// one against production, which this repo does not do unprompted.
-const previous = execFileSync('git', ['show', `HEAD:${path.relative(ROOT, TOPIC)}`], {
-  cwd: ROOT,
-  encoding: 'utf8',
-  maxBuffer: 32 * 1024 * 1024,
-});
+// ─── The rendered answer key ─────────────────────────────────────────────────
+//
+// THE BASIS OF THESE THREE CHECKS CHANGED, AND THE OLD ONE MUST NOT COME BACK.
+//
+// They used to compare the WORKING TREE against HEAD. `previous` was
+// `git show HEAD:<topic>`, `keyAfter` was the file on disk, and the assertions
+// read "practice and mini_quiz are byte-identical to HEAD, and extra_practice
+// went from 0 entries to 6".
+//
+// That is a diff guard, and a diff guard against HEAD is alive for exactly one
+// branch. It self-invalidates the moment its own PR merges, because HEAD then
+// BECOMES the after-state:
+//
+//   before e42ccb8 merged   HEAD = b8db578, no Part 5    keyBefore.extra = 0  ok
+//   after  e42ccb8 merged   HEAD = e42ccb8, has Part 5   keyBefore.extra = 6  dead
+//
+// So `keyBefore.extra_practice.length === 0` was unsatisfiable from the merge
+// onward, and the check sat red on main for every commit after it. Measured
+// rather than reasoned: on current main the working tree and HEAD are
+// byte-identical, and both sides parse to practice=10, mini_quiz=4,
+// extra_practice=6.
+//
+// THE TWO SIBLINGS WERE WORSE, because they were GREEN. Comparing HEAD to
+// itself, "byte-identical to HEAD" is true of any content whatsoever: they
+// reported ok while asserting nothing at all. A check that cannot fail is the
+// failure this whole file exists to refuse, and it was sitting two lines above
+// the one that could not pass.
+//
+// The replacement states the invariant absolutely, against current content, so
+// it means the same thing on every commit forever. What is being protected is
+// unchanged: Part 5 exists, it is six entries, and it did not leak into either
+// gated section. The counts below are the shape GR.2.6 has had since e42ccb8,
+// and the control block after them proves each one can still fail.
+//
+// DO NOT REINTRODUCE A HEAD DIFF HERE. If a future change needs to prove "this
+// commit did not alter X", that belongs in review or in a fixture committed
+// alongside, not in an assertion that decays into a lie the day it lands.
+const EXPECTED_KEY = { practice: 10, mini_quiz: 4, extra_practice: 6 };
+
 const part4 = (text) => {
   const from = text.indexOf('#### **Part 4:');
   const to = text.indexOf('#### **Part 5:');
   return text.slice(from, to === -1 ? text.length : to);
 };
 const { splitAnswerKey } = await import('../lib/curriculum-utils.ts');
-const keyBefore = splitAnswerKey(part4(previous));
-const keyAfter = splitAnswerKey(part4(await import('node:fs').then((fs) => fs.readFileSync(TOPIC, 'utf8'))));
+const { readFileSync } = await import('node:fs');
+const answerKey = splitAnswerKey(part4(readFileSync(TOPIC, 'utf8')));
 
-for (const section of ['practice', 'mini_quiz']) {
-  check(`rendered answerKey.${section} is byte-identical to HEAD`, () => {
-    const b = keyBefore[section];
-    const a = keyAfter[section];
-    return (
-      b.length === a.length &&
-      b.every(
-        (e, i) =>
-          e.item_number === a[i].item_number &&
-          e.label_html === a[i].label_html &&
-          e.solution_html === a[i].solution_html,
-      )
-    );
-  });
+/**
+ * One section of the key, asserted by count AND by contents.
+ *
+ * THE COUNT ALONE IS NOT ENOUGH, which is the lesson of the checks this
+ * replaces. `length === 6` is satisfied by six empty objects, so a parser change
+ * that produced the right number of blanks would pass. Every entry therefore has
+ * to carry the two fields the teacher-facing page renders.
+ *
+ * Returns a string rather than false on failure, so the report names the number
+ * it actually found instead of only that it disagreed.
+ */
+function keySection(key, section, expected) {
+  const entries = key[section];
+  if (!Array.isArray(entries)) return `section is absent from the parsed key`;
+  if (entries.length !== expected) return `${entries.length} entries, expected ${expected}`;
+  const blank = entries.findIndex((e) => !e.item_number || !e.solution_html);
+  if (blank !== -1) return `entry ${blank + 1} carries no item_number or no solution`;
+  return true;
 }
-check('answerKey.extra_practice is the only section that gained entries', () =>
-  keyBefore.extra_practice.length === 0 && keyAfter.extra_practice.length === 6);
+
+for (const [section, expected] of Object.entries(EXPECTED_KEY)) {
+  check(`answerKey.${section} holds exactly ${expected} rendered entries`, () =>
+    keySection(answerKey, section, expected));
+}
+
+// ─── and the three can still fail ────────────────────────────────────────────
+//
+// The same control the gate checks get above, for the same reason: three
+// assertions that were just rewritten are three assertions nobody has watched
+// fail. Each fault below is a way this could actually go wrong -- a lost entry,
+// an emptied section, Part 5 folded back into the gated pool (the naive
+// implementation this feature exists to prevent), and a blank that keeps the
+// count right -- and the section it targets must report failure.
+const keyFaults = [
+  {
+    label: 'extra_practice loses one entry',
+    section: 'extra_practice',
+    apply: (k) => ({ ...k, extra_practice: k.extra_practice.slice(0, -1) }),
+  },
+  {
+    label: 'extra_practice is emptied',
+    section: 'extra_practice',
+    apply: (k) => ({ ...k, extra_practice: [] }),
+  },
+  {
+    label: 'Part 5 is folded back into practice',
+    section: 'practice',
+    apply: (k) => ({ ...k, practice: [...k.practice, ...k.extra_practice], extra_practice: [] }),
+  },
+  {
+    label: 'mini_quiz loses one entry',
+    section: 'mini_quiz',
+    apply: (k) => ({ ...k, mini_quiz: k.mini_quiz.slice(0, -1) }),
+  },
+  {
+    label: 'an extra_practice solution is blanked, count intact',
+    section: 'extra_practice',
+    apply: (k) => ({
+      ...k,
+      extra_practice: k.extra_practice.map((e, i) =>
+        i === 0 ? { ...e, solution_html: '' } : e),
+    }),
+  },
+];
+
+let keyFaultsCaught = 0;
+for (const fault of keyFaults) {
+  const result = keySection(fault.apply(answerKey), fault.section, EXPECTED_KEY[fault.section]);
+  const caught = result !== true;
+  if (caught) keyFaultsCaught++;
+  console.log(
+    `  ${caught ? 'failed as required' : 'PASSED (check is inert!)'}  ` +
+      `${fault.label}  -- answerKey.${fault.section}${caught ? `: ${result}` : ''}`,
+  );
+}
+checks++;
+if (keyFaultsCaught !== keyFaults.length) {
+  failures++;
+  console.log(
+    `  FAIL  only ${keyFaultsCaught} of ${keyFaults.length} answer-key faults were caught; ` +
+      `the rest would pass whatever the content did`,
+  );
+} else {
+  console.log(
+    `  ok    all ${keyFaults.length} answer-key faults are caught, so the three counts above ` +
+      `are measuring the content and not the parser`,
+  );
+}
 
 console.log(
   `\n${checks} check(s), ${failures} failure(s)` +
