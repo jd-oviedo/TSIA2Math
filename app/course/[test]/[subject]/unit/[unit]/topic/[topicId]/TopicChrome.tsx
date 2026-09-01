@@ -37,6 +37,7 @@ const PARTS: readonly { kind: TopicPart; label: string }[] = [
 export default function TopicChrome({
   name,
   role,
+  preview,
   test,
   subject,
   subjectLabel,
@@ -46,6 +47,11 @@ export default function TopicChrome({
 }: {
   name: string;
   role: 'student' | 'teacher';
+  /** Student View, resolved by the layout from course-access. Passed to the
+      slide-over rail, which reads it as "say PREVIEW rather than naming a tier".
+      NOT the same question as `role`: a teacher is here as a teacher either way,
+      and this says whether they are here as a LEARNER. */
+  preview?: boolean;
   test: string;
   subject: string;
   subjectLabel: string;
@@ -179,10 +185,17 @@ export default function TopicChrome({
         )}
       </div>
 
+      {/* `preview` is threaded, `entitledTeacher` and `plan` deliberately are not.
+          This drawer has never passed them, so the rail's tier lookup has always
+          fallen through to PREVIEW here by omission rather than by decision, and
+          the first person to thread the other two for an unrelated reason would
+          have silently turned the label into TEACHER · CORE. Passing the flag
+          that actually decides makes the band say what it means on purpose. */}
       <StudentNavDrawer
         open={menuOpen}
         name={name}
         role={role}
+        preview={preview}
         onClose={() => setMenuOpen(false)}
         onOpenSupport={() => setShowSupport(true)}
       />

@@ -124,33 +124,68 @@ export async function POST(req: Request) {
   if (session) {
     const studentId = session.user.id;
 
+    // PREVIEW MODE, AND THE ONLY THING IT TURNS OFF IS THE LEARNER RECORD.
+    //
+    // A teacher who reached this topic through the second door
+    // (course-access.ts:162) is previewing what they assign, not studying. Their
+    // answers were landing in curriculum_attempts, rolling a real quiz_score
+    // into curriculum_completion, and accumulating student_misconceptions rows
+    // under their own auth id, indistinguishable from a student's, because every
+    // write below was guarded by `if (session)` alone and nothing in this file
+    // had ever asked WHY the caller was allowed in.
+    //
+    // `viaTeacher` is the answer to that question and it has been carried on
+    // CourseAccess since the second door was written (capabilities.ts:393). It
+    // was read by nothing until now.
+    //
+    // DELIBERATELY NOT `if (session && !access.viaTeacher)` ON THE BLOCK ABOVE,
+    // which is the obvious spelling and is wrong twice over. This block also
+    // resolves gumuAvailable (below) and closes an open GUMU session on a correct
+    // retry, and neither is a learner write:
+    //
+    //   gumuAvailable false would withhold the tutor from the very teacher the
+    //   bounded demo exists for, and would print the correct answer inline
+    //   instead, since the response withholds it exactly when the tutor is up.
+    //
+    //   skipping the resolve would strand a teacher's session at status='active'
+    //   forever, and gumu_sessions_one_active_per_item (sql/gumu_tables.sql:48)
+    //   would then refuse them a second session on that item for good.
+    //
+    // So the flag gates the four writes that make up the learner record, one by
+    // one, and nothing else.
+    const recordsProgress = !access.viaTeacher;
+
     // Append-only: a retry of the same item inserts another row on purpose,
     // so progress tracking can see the sequence of attempts.
-    const { error: attemptError } = await admin.from("curriculum_attempts").insert({
-      student_id: studentId,
-      course_id,
-      topic_id,
-      section,
-      item_number,
-      selected_answer,
-      is_correct: isCorrect,
-      misconception,
-    });
+    if (recordsProgress) {
+      const { error: attemptError } = await admin.from("curriculum_attempts").insert({
+        student_id: studentId,
+        course_id,
+        topic_id,
+        section,
+        item_number,
+        selected_answer,
+        is_correct: isCorrect,
+        misconception,
+      });
 
-    if (attemptError) {
-      // The student is waiting on a grade that is already computed and
-      // correct. Losing the analytics row is worse than silent, so it is
-      // logged, but it is not worth failing the answer they just submitted.
-      console.error("curriculum_attempts insert failed", attemptError);
+      if (attemptError) {
+        // The student is waiting on a grade that is already computed and
+        // correct. Losing the analytics row is worse than silent, so it is
+        // logged, but it is not worth failing the answer they just submitted.
+        console.error("curriculum_attempts insert failed", attemptError);
+      }
     }
 
     // Roll the mastery snapshot forward for this topic. Done here rather than
     // from the browser for the same reason grading is: the client must never be
     // the thing that says how many it got right. Failures are swallowed inside
     // the helper.
-    await syncCompletionSnapshot(studentId, course_id, topic_id);
+    if (recordsProgress) {
+      await syncCompletionSnapshot(studentId, course_id, topic_id);
+    }
 
-    if (misconception) {
+    if (misconception && recordsProgress) {
       const { error: rpcError } = await admin.rpc("record_misconception", {
         p_student_id: studentId,
         p_misconception: misconception,
@@ -194,7 +229,7 @@ export async function POST(req: Request) {
 
         // Skipped when the item carries no tag -- QR.1.1's mini quiz grades
         // and resolves normally, it simply has no misconception to record.
-        if (openSession.misconception_tag) {
+        if (openSession.misconception_tag && recordsProgress) {
           const { error: socraticError } = await admin.rpc("record_misconception", {
             p_student_id: studentId,
             p_misconception: openSession.misconception_tag,

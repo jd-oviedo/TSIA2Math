@@ -43,6 +43,7 @@ export default function StudentShell({
   role,
   entitledTeacher,
   plan,
+  preview,
   children,
 }: {
   name: string;
@@ -50,6 +51,11 @@ export default function StudentShell({
   entitledTeacher?: boolean;
   /** Passed straight through to the rail, which names the tier from it. */
   plan?: string | null;
+  /** Student View. Passed straight through to both rails, which read it as
+      "suppress the tier name and say PREVIEW". Threaded rather than derived here
+      because the layout resolves it from the same resolver the write gates use,
+      and a second derivation is a second thing that can disagree. */
+  preview?: boolean;
   children: React.ReactNode;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -116,6 +122,7 @@ export default function StudentShell({
           role={role}
           entitledTeacher={entitledTeacher}
           plan={plan}
+          preview={preview}
           collapsed={collapsed}
           onOpenSupport={() => setShowSupport(true)}
         />
@@ -169,6 +176,7 @@ export default function StudentShell({
         role={role}
         entitledTeacher={entitledTeacher}
         plan={plan}
+        preview={preview}
         onClose={() => setMenuOpen(false)}
         onOpenSupport={() => setShowSupport(true)}
       />

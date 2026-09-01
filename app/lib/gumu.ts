@@ -17,6 +17,29 @@ export const GUMU_MODEL = "claude-sonnet-5";
 // has GUMU compose a nudge toward the answer instead.
 export const MAX_STUDENT_TURNS = 3;
 
+// The bounded demo a teacher gets in Student View, counted for the LIFETIME of
+// the account rather than per session.
+//
+// WHY A SECOND CONSTANT RATHER THAN REUSING THE ONE ABOVE. MAX_STUDENT_TURNS is
+// a conversation shape: it decides when Mu stops asking questions and nudges
+// instead, and it resets on every new session because every new session is a
+// new question. That is exactly the wrong shape for a spend cap. A teacher
+// reaching the tree through the second door (course-access.ts:162) can open a
+// fresh session on every one of 1,358 items, so a per-session number bounds
+// nothing at all.
+//
+// WHAT THE NUMBER COUNTS: one unit per MODEL CALL, not per student message. The
+// route calls askGumu twice per conversation shape -- once to open the session
+// (route.ts:546) and once per student turn (route.ts:702) -- so 9 is roughly two
+// full conversations plus a third opening. Counting only student turns would
+// leave the opening call free and let a teacher drive unlimited paid openings by
+// starting and abandoning sessions, bounded by nothing but gumuRateLimit.
+//
+// `reveal` costs nothing and is deliberately not counted: it makes no model call
+// (it returns a stored correct_answer), and charging for it would end a demo on
+// the one action that spends nothing.
+export const TEACHER_DEMO_TURNS = 9;
+
 const SYSTEM_PROMPT = `You are Mu, a warm, curious math tutor for a high school student preparing for the TSIA2 college placement test. A student just answered a question incorrectly. Your job is to ask short, guiding questions that help them find their OWN mistake. Never state the correct answer or directly correct them. Ask about their reasoning step by step.
 
 If they express frustration, be encouraging and lighten the tone, but keep guiding rather than solving it for them.
@@ -45,6 +68,27 @@ const RETRY_REMINDER = `Your previous response revealed the answer, which is not
 // is likely to leak again). Deliberately says nothing that could be a leak.
 export const SAFE_FALLBACK_MESSAGE =
   "Let's slow down. Walk me through your first step again?";
+
+// What a teacher sees once TEACHER_DEMO_TURNS is spent.
+//
+// A 200 CARRYING THIS, NOT AN ERROR. GumuChat.tsx throws on any non-ok response
+// and renders the result as a red line under the input, which would tell a
+// teacher their tutor is broken when it is working exactly as designed. The
+// crisis screen already established the shape this borrows: a 200 whose `stopped`
+// field is the discriminator the client branches on.
+//
+// It names what the STUDENT gets, because the reason a teacher is in Student View
+// is to judge what they are buying, and "you have run out" without "they do not"
+// reads as a product limit rather than a preview one.
+export const PREVIEW_LIMIT_COPY = {
+  opening: "That is the end of the Mu preview.",
+  explanation:
+    "Student View gives you a bounded demo of the tutor, enough to see how Mu talks to a student who is stuck. Your students are not capped: they get Mu on every question they miss.",
+  closing:
+    "Nothing else in Student View has changed. Open any topic to keep previewing what you assign.",
+} as const;
+
+export type PreviewLimitCopy = typeof PREVIEW_LIMIT_COPY;
 
 // The prompt tells GUMU not to use em dashes, but a prompt instruction is a
 // preference, not a guarantee -- the same reason the leak check exists. This

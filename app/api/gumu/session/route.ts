@@ -1,14 +1,18 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "../../../lib/supabase-admin";
 import { createClient as createServerClient } from "../../../lib/supabase-server";
-import { safeLimit, gumuRateLimit } from "../../../lib/rate-limit";
+import { safeLimit, gumuRateLimit, consumeLifetimeQuota } from "../../../lib/rate-limit";
 import { gumuBodySchema, formatZodError } from "../../../lib/schemas";
 import {
   askGumu,
   MAX_STUDENT_TURNS,
+  TEACHER_DEMO_TURNS,
+  PREVIEW_LIMIT_COPY,
   type AnswerContext,
   type GumuTurn,
 } from "../../../lib/gumu";
+import { allowsTopic, type CourseAccess } from "../../../lib/capabilities";
+import { resolveCourseAccess } from "../../../lib/course-access";
 import { screenStudentMessage } from "../../../lib/crisis-screen";
 import { CRISIS_STOP_COPY } from "../../../lib/crisis";
 import { sendCrisisAlert, CRISIS_INBOX } from "../../../lib/email";
@@ -326,6 +330,78 @@ async function notifyForSupport(admin: SupabaseAdmin, session: GumuSession) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// The two gates this route did not have
+// ---------------------------------------------------------------------------
+
+/**
+ * Refuse a caller whose plan does not include Mu.
+ *
+ * THIS ROUTE HAD NO CAPABILITY CHECK OF ANY KIND, in 744 lines, and that is a
+ * hole rather than an omission. `gumu` was enforced only on the surfaces that
+ * OFFER the tutor: the grader decides gumu_available
+ * (api/curriculum/practice/route.ts:251) and the two pages decide whether to
+ * promise it (quiz/page.tsx:60, practice/page.tsx:48). Nothing enforced it on the
+ * endpoint that actually spends money.
+ *
+ * So a signed-in free-tier user on the AR.1.4 sample, who holds `curriculum` and
+ * explicitly not `gumu` (capabilities.ts:370), was correctly refused the panel by
+ * every surface and could still POST here and drive a full paid conversation. A
+ * Practice Pass holder, whose documented boundary is that they never reach a
+ * /course URL at all, could do the same.
+ *
+ * The SAME pair the grader uses, from the same module, deliberately: if these two
+ * ever disagreed, the page would refuse a tutor the API still served.
+ */
+function planDenial(
+  access: CourseAccess,
+  courseId: string,
+  topicId: string
+): NextResponse | null {
+  if (allowsTopic(access, "gumu", courseId, topicId)) return null;
+  return NextResponse.json(
+    { error: "Mu is not included in your plan" },
+    { status: 403 }
+  );
+}
+
+/**
+ * Spend one unit of a teacher's lifetime demo, or hand back the preview-limit
+ * state.
+ *
+ * NULL MEANS PROCEED, and it is what every non-teacher gets on the first line:
+ * a student's Mu is not metered by this at all, and the only thing bounding it
+ * stays MAX_STUDENT_TURNS per session plus gumuRateLimit.
+ *
+ * Keyed on the account for its LIFETIME, which is the whole point. A cap that
+ * reset per session would bound nothing, because a teacher can open a fresh
+ * session on any of 1,358 items. See TEACHER_DEMO_TURNS for what a unit is.
+ *
+ * A 200, NOT AN ERROR. Exhausting a preview is the feature working, and
+ * GumuChat.tsx:99 turns any non-ok response into a red failure line under the
+ * input. `stopped` is the discriminator, borrowed from the crisis screen at :674
+ * so the client has one branch shape to learn rather than two.
+ */
+async function spendDemoTurn(
+  access: CourseAccess,
+  studentId: string
+): Promise<NextResponse | null> {
+  if (!access.viaTeacher) return null;
+
+  const { allowed } = await consumeLifetimeQuota(
+    `mu:demo:${studentId}`,
+    TEACHER_DEMO_TURNS
+  );
+  if (allowed) return null;
+
+  return NextResponse.json({
+    status: "preview_limit",
+    stopped: "preview_limit",
+    copy: PREVIEW_LIMIT_COPY,
+    turns_remaining: 0,
+  });
+}
+
 export async function POST(req: Request) {
   // AUTH FIRST, THEN THE RATE LIMIT. The order is load-bearing and it used to be
   // the other way round.
@@ -383,9 +459,21 @@ export async function POST(req: Request) {
   const admin = createAdminClient();
   const action = parsed.data;
 
+  // Resolved once for all three actions. cache()d per request in course-access,
+  // so the two gate sites below cost one profile read between them however they
+  // interleave, and the branch it lands on is the same one the page tree already
+  // paid for on this request.
+  const access = await resolveCourseAccess();
+
   // --- start ---------------------------------------------------------------
 
   if (action.action === "start") {
+    // Before loadItem, so an unentitled caller cannot tell a real item id from a
+    // made-up one by the shape of the refusal. Same ordering the course gate
+    // gives for putting itself ahead of loadTopic.
+    const planDenied = planDenial(access, action.course_id, action.topic_id);
+    if (planDenied) return planDenied;
+
     const loaded = await loadItem(
       admin,
       action.course_id,
@@ -408,6 +496,14 @@ export async function POST(req: Request) {
     // Null when the item carries no tag (QR.1.1's mini quiz). GUMU still runs;
     // there is simply no misconception to record if the retry succeeds.
     const misconceptionTag = item.misconception_tag?.[action.selected_answer] ?? null;
+
+    // AFTER the two refusals above and BEFORE the session row, which is the only
+    // window that is correct. Spending earlier would charge a teacher for a
+    // mistyped item id or for an answer that turned out to be right; spending
+    // later would leave an orphan gumu_sessions row behind every refusal, and
+    // gumu_sessions_one_active_per_item would then lock that item for good.
+    const demoDenied = await spendDemoTurn(access, studentId);
+    if (demoDenied) return demoDenied;
 
     // Built once and called twice: the optimistic insert, and the retry after a
     // stale session has been closed out of the way. The lookup that sits between
@@ -591,6 +687,14 @@ export async function POST(req: Request) {
 
   const gumuSession = sessionRow as GumuSession;
 
+  // The same gate the start branch applies, on the ids the SESSION carries rather
+  // than ids from the body, which this action does not send. Not redundant with
+  // the check at start: entitlement is resolved per request, so a plan that
+  // lapses (or a class that is archived, which withdraws the derived grant) has
+  // to stop a conversation that is already open, not only refuse a new one.
+  const planDenied = planDenial(access, gumuSession.course_id, gumuSession.topic_id);
+  if (planDenied) return planDenied;
+
   const loaded = await loadItem(
     admin,
     gumuSession.course_id,
@@ -682,6 +786,17 @@ export async function POST(req: Request) {
     .select("role, content")
     .eq("session_id", gumuSession.id)
     .order("created_at");
+
+  // AFTER the crisis screen and BEFORE the transcript write, and both halves
+  // matter. A screened message never reaches here, so a disclosure is not charged
+  // to a demo; and refusing here leaves no student message sitting in
+  // gumu_messages with nothing that ever answered it.
+  //
+  // `reveal` above is deliberately not metered: it makes no model call, and
+  // ending a demo on the one action that spends nothing would be a strange place
+  // to stop.
+  const demoDenied = await spendDemoTurn(access, studentId);
+  if (demoDenied) return demoDenied;
 
   await admin.from("gumu_messages").insert({
     session_id: gumuSession.id,
