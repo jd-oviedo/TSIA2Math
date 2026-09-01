@@ -146,6 +146,45 @@
 export const SPIN_CSS = `@keyframes um-spin { to { transform: rotate(360deg); } }`;
 
 /**
+ * Does this visitor want less motion?
+ *
+ * ─── WHY A FUNCTION HERE RATHER THAN A HOOK IN A SURFACE ────────────────────
+ *
+ * The guard at the bottom of MOTION_CSS is the reduced-motion policy for
+ * everything this file drives, and it is CSS, so it can only reach declarative
+ * animation. Two kinds of motion are outside its reach by construction:
+ *
+ *   1. Element.animate(), which is script-created and unaffected by a
+ *      stylesheet rule.
+ *   2. A setTimeout that paces a state change, where the "animation" is the
+ *      component waiting before it swaps content.
+ *
+ * The adaptive test has one of each: the "Adjusting to your level" dot pulses
+ * via Element.animate, and the next-question cross-fade holds the outgoing
+ * question for a beat before mounting the incoming one. Both must collapse to
+ * nothing for a visitor who asked for less motion, and no CSS rule can do it.
+ *
+ * It lives HERE, beside the guard, rather than as a hook in the surface that
+ * needed it first, because reduced motion is one policy and this file already
+ * owns it. A second home would be a second opinion, and the next surface with a
+ * scripted animation would have to guess which one to read.
+ *
+ * NOT A HOOK, DELIBERATELY. It reads the media query at call time and returns a
+ * boolean. A hook would add a subscription and a re-render path for a
+ * preference that does not change mid-question, and every caller here reads it
+ * inside an event handler or an effect where a plain read is what is wanted.
+ *
+ * FALSE ON THE SERVER, which is the safe direction: it means the markup renders
+ * identically for everyone and the preference is applied on the client, where
+ * matchMedia exists. Returning true during SSR would ship a no-motion first
+ * paint to every visitor and then start animating after hydration.
+ */
+export function prefersReducedMotion(): boolean {
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return false;
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+/**
  * The tokens, the keyframe library, the two-lock opt-in rules, and the guard.
  *
  * Dropped into a surface's own <style> alongside whatever else it emits. Safe to

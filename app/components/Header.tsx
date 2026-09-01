@@ -51,15 +51,14 @@ type NavRole = "teacher" | "student" | "anon";
 // to ask for the calculator rather than inherit it. Adding a surface should
 // not silently hand a student a calculator on a page that has no test on it.
 export function Header({ showCalculator = false }: { showCalculator?: boolean } = {}) {
-  const [scrolled, setScrolled] = useState(false);
   const [navRole, setNavRole] = useState<NavRole>("anon");
 
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 16);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
-
+  // THE SCROLL LISTENER THAT USED TO SIT HERE IS GONE, and it is worth saying
+  // why rather than letting it look like an oversight. It set a `scrolled`
+  // boolean whose ONLY consumer was the pill's box-shadow, deepening it once
+  // the page moved. The bar is flat now, so the state had no reader left and
+  // the listener was running on every scroll frame of both surfaces that mount
+  // this header for nothing.
   useEffect(() => {
     async function checkRole() {
       const { data: { session } } = await supabase.auth.getSession();
@@ -103,6 +102,36 @@ export function Header({ showCalculator = false }: { showCalculator?: boolean } 
     checkRole();
   }, []);
 
+  // A FLAT FULL-WIDTH BAR, NOT A FLOATING PILL.
+  //
+  // What went: the outer 12px inset, the nav's maxWidth 800px, the 999px
+  // radius, the 20px backdrop blur, the two-layer box-shadow and its scroll
+  // transition. What arrived: one hairline along the bottom edge.
+  //
+  // ─── WHY THE FILL IS A VAR WITH A FALLBACK ─────────────────────────────────
+  //
+  // This component is shared, and it is rendered by exactly two surfaces: the
+  // home hero (.um-home) and the adaptive test (.um-cat). Both declare the
+  // --umc-* scale, so var(--umc-card) resolves inside either one, in both
+  // themes, with no prop threaded through.
+  //
+  // THE BAR IS A CARD SURFACE, NOT THE PAGE GROUND. It was --umc-page, which
+  // is the same value the page under it uses -- so once the grid arrived the
+  // bar had nothing separating it from the texture and read as a strip of
+  // gridded page with a line under it. --umc-card lifts it off: #FFFFFF over
+  // #F5F5F3 in light, #17171B over #0E0E11 in dark. The hairline still does
+  // the edge; the fill now does the separation.
+  //
+  // The fallback is the load-bearing half. Custom properties do not inherit
+  // from nowhere: rendered OUTSIDE both scopes, var(--umc-card) would resolve
+  // to nothing, and an unresolved var() in `background` is guaranteed-invalid,
+  // so the bar would silently paint TRANSPARENT over the scrolling content
+  // beneath it. --ec-surface is the global card token, so a third surface
+  // adopting this header gets a card-coloured bar rather than a bug nobody
+  // would see in review.
+  //
+  // --ec-header-bg and --ec-header-border are no longer referenced anywhere.
+  // They are left declared in themes.ts, which is locked this pass.
   return (
     <div
       style={{
@@ -111,32 +140,20 @@ export function Header({ showCalculator = false }: { showCalculator?: boolean } 
         left: 0,
         right: 0,
         zIndex: 100,
-        display: "flex",
-        justifyContent: "center",
-        padding: "12px 16px",
-        pointerEvents: "none",
       }}
     >
       <nav
         className="um-nav"
         style={{
-          pointerEvents: "all",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           gap: "16px",
-          padding: "8px 12px 8px 8px",
-          borderRadius: "999px",
-          maxWidth: "800px",
+          padding: "10px 24px",
           width: "100%",
-          background: "var(--ec-header-bg)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          border: "1px solid var(--ec-header-border)",
-          boxShadow: scrolled
-            ? "0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.10)"
-            : "0 4px 20px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06)",
-          transition: "box-shadow 0.25s ease",
+          boxSizing: "border-box",
+          background: "var(--umc-card, var(--ec-surface))",
+          borderBottom: "1px solid var(--umc-border, var(--ec-line))",
         }}
       >
         {/* Small-screen guard: the "…Dashboard" pill truncates (ellipsis) so the
@@ -181,7 +198,7 @@ export function Header({ showCalculator = false }: { showCalculator?: boolean } 
                 color: "#C68A2F",
                 textDecoration: "none",
                 padding: "6px 14px",
-                borderRadius: "999px",
+                borderRadius: "8px",
                 border: "1px solid rgba(198,138,47,0.35)",
                 background: "rgba(198,138,47,0.08)",
                 whiteSpace: "nowrap",
@@ -201,7 +218,7 @@ export function Header({ showCalculator = false }: { showCalculator?: boolean } 
                 color: "var(--ec-ink-muted)",
                 textDecoration: "none",
                 padding: "6px 14px",
-                borderRadius: "999px",
+                borderRadius: "8px",
                 border: "1px solid var(--ec-line)",
                 whiteSpace: "nowrap",
               }}

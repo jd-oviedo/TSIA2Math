@@ -404,7 +404,30 @@ ${declarations(DARK)}
 
 // The graph-paper ground. Two 1px linear gradients on a 62px grid, straight
 // from the import.
-export const GRID_BACKGROUND = `linear-gradient(${L.grid} 1px, transparent 1px), linear-gradient(90deg, ${L.grid} 1px, transparent 1px)`;
+//
+// ─── THE COLOUR IS A PARAMETER BECAUSE THE PATTERN TRAVELS AND THE TOKEN ────
+//     DOES NOT
+//
+// GRID_BACKGROUND below bakes in L.grid, which is `var(--uml-grid)`. That is
+// declared ONLY on .um-login, so the constant works on /login and on /start --
+// which reuses it by carrying className="um-login um-start" (StartChrome.tsx:69)
+// and inheriting the whole --uml-* scope with it.
+//
+// It does NOT work anywhere else, and it fails in the worst way: an unresolved
+// var() makes `background-image` guaranteed-invalid, which computes to `none`.
+// No error, no warning, just no grid. A surface with its own token scale --
+// the adaptive test's --umc-*, say -- cannot adopt the constant, and must not
+// adopt .um-login to get it, because that would drag twenty-six --uml-*
+// declarations onto a surface that has its own and let the two collide.
+//
+// So the shape is the export and the colour is the argument. GRID_BACKGROUND is
+// now derived from this function rather than restated, so /login and /start
+// cannot drift from the pattern every other surface draws.
+export function gridBackground(color: string): string {
+  return `linear-gradient(${color} 1px, transparent 1px), linear-gradient(90deg, ${color} 1px, transparent 1px)`;
+}
+
+export const GRID_BACKGROUND = gridBackground(L.grid);
 export const GRID_SIZE = '62px 62px';
 
 export const LOGIN_CSS = `
