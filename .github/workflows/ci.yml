@@ -1,0 +1,72 @@
+name: CI
+
+# THE REPO'S FIRST TEST GATE.
+#
+# Before this, nothing ran the suite on a pull request. The checks that showed
+# green were deploy status and nothing else: Vercel, Supabase Preview, and the
+# GitHub Pages build. A deploy succeeding says nothing about whether the tests
+# pass, which is how a red assertion reached main in #244 and stayed there
+# through two more merges before anyone looked.
+#
+# WHAT THIS COVERS, AND WHAT IT DELIBERATELY DOES NOT.
+#
+# It runs the two things Vercel does not: the offline test lane and a typecheck.
+# It does NOT run `next build`. Vercel already builds every pull request, so a
+# build here would be a slower second copy of a check that already exists, and it
+# would need the runtime environment variables this job is deliberately kept
+# clear of.
+#
+# NO SECRETS, AND THAT IS A PROPERTY OF THE LANE RATHER THAN A HOPE. Every script
+# in test:offline runs with no database, no network and no credential. That was
+# not true until #247: the student-view harness reached app/lib/email.ts, which
+# constructs a Resend client at module scope and throws without RESEND_API_KEY.
+# It is stubbed at the harness boundary now. If a future change makes this job
+# ask for a secret, the change is wrong, not the job.
+#
+# Verified before this landed by running the lane with all six local secrets
+# stripped from the environment: 13 of 13 green.
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+# Least privilege. This job reads the code and reports a status; it has no reason
+# to be able to write to the repository.
+permissions:
+  contents: read
+
+jobs:
+  # THE JOB ID IS THE CHECK NAME. `test` is what appears in the pull request
+  # checks list and what has to be named in branch protection under "Require
+  # status checks to pass before merging". Renaming this id renames the required
+  # check, which silently un-enforces the gate until somebody notices.
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # NODE 24, PINNED, AND NOT A ROUND-DOWN TO AN OLDER LTS. The suite runs
+      # .ts files directly under `node --test` with no transpiler in
+      # devDependencies, so it depends on Node's native type stripping, and
+      # scripts/ts-alias-hook.mjs uses registerHooks from node:module. Node 20
+      # has neither and fails outright. .nvmrc carries the same number so a
+      # developer's local version and this job cannot drift apart.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      # Before the tests, deliberately. tsconfig excludes only tests/, so this
+      # covers the whole application, and a type error is cheaper to read here
+      # than as a confusing runtime failure inside a harness.
+      - run: npx tsc --noEmit
+
+      # The aggregate, not `npm test`. `npm test` runs tests/*.test.ts alone and
+      # would have missed both regressions #247 had to repair. test:offline adds
+      # every faultproof and verify script that runs without a database.
+      - run: npm run test:offline
