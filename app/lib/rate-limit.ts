@@ -215,6 +215,54 @@ export async function safeLimit(
     return { success: true, reset: Date.now() };
   }
 }
+// A LIFETIME counter, which is a different thing from every Ratelimit above and
+// is why it does not use one.
+//
+// Ratelimit.slidingWindow answers "how fast", and every window it opens closes
+// again. This answers "how many, ever", for the teacher Mu demo: the count must
+// survive the window, must not refresh per session or per item, and has no
+// reset. Upstash has no primitive for that, so it is a plain INCR against a key
+// that is never given a TTL.
+//
+// KEYED ON THE ACCOUNT, and the caller owns the key shape (mu:demo:{userId}) so
+// a second lifetime quota later cannot silently share this one's counter.
+//
+// READ THEN INCREMENT, rather than incrementing and comparing the result. The
+// obvious spelling costs one round trip instead of two, and it also grows the
+// stored number without bound every time an already-exhausted teacher clicks
+// again, which turns a cap into a tally of denied attempts. Two concurrent
+// requests can both pass the read and spend one over the cap; at a cap of 9 on a
+// demo that is not worth a Lua script.
+//
+// THIS FAILS CLOSED, AND safeLimit ABOVE FAILS OPEN. Both are deliberate and the
+// difference is the point. safeLimit protects against abuse of an endpoint that
+// must keep working, so an Upstash outage there degrades to no rate limiting.
+// This is a SPEND cap on paid model calls whose whole purpose is that the demo
+// is bounded; failing open would restore exactly the unlimited teacher tutor
+// this exists to remove. The degraded state is also gentle, because the caller
+// renders exhaustion as a preview-limit message rather than an error.
+export async function consumeLifetimeQuota(
+  key: string,
+  cap: number
+): Promise<{ allowed: boolean; used: number }> {
+  try {
+    const raw = await redis.get<number | string | null>(key);
+    const parsed = typeof raw === "number" ? raw : Number(raw ?? 0);
+    const used = Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
+
+    if (used >= cap) return { allowed: false, used };
+
+    const next = await redis.incr(key);
+    return { allowed: true, used: next };
+  } catch (err) {
+    console.error(
+      "[rate-limit] lifetime quota check failed, failing closed:",
+      err instanceof Error ? err.message : err
+    );
+    return { allowed: false, used: cap };
+  }
+}
+
 export function rateLimitHeaders(reset: number): HeadersInit {
   const retryAfterSeconds = Math.max(1, Math.ceil((reset - Date.now()) / 1000));
   return { "Retry-After": String(retryAfterSeconds) };

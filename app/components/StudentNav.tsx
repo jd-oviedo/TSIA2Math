@@ -177,6 +177,7 @@ export function StudentNavPanel({
   role,
   entitledTeacher,
   plan,
+  preview = false,
   collapsed = false,
   mode,
   onNavigate,
@@ -187,6 +188,10 @@ export function StudentNavPanel({
   entitledTeacher?: boolean;
   /** The profiles.plan value. The tier NAME comes from here and only here. */
   plan?: string | null;
+  /** True when this viewer reached the student surface through the teacher
+      second door (course-access.ts:162), i.e. Student View. Suppresses the tier
+      name so the band reads PREVIEW. See the note on `tier` below. */
+  preview?: boolean;
   collapsed?: boolean;
   /** Pin the rail to one palette. /course pages pass 'light'; the dashboard
       omits it and follows the app theme. */
@@ -213,7 +218,16 @@ export function StudentNavPanel({
   // Those were one boolean until 2026-08-20, and it read
   // `role === 'teacher' && entitledTeacher`, which means entitled, not Pro. Every
   // Teacher Core teacher was shown TEACHER · PRO.
-  const tier = role === 'teacher' && entitledTeacher ? teacherTierLabel(plan) : null;
+  //
+  // AND A THIRD INPUT AS OF THIS CHANGE. `preview` answers "is this viewer here
+  // as a teacher rather than as a learner", which neither of the other two can:
+  // an entitled Teacher Core in Student View satisfies both of them and was shown
+  // TEACHER · CORE, the name of the thing they bought, on a surface where they
+  // own nothing and nothing they do is saved. Suppressing the tier is all that is
+  // needed, because the badge below already falls back to PREVIEW when no tier is
+  // named, which is the case this band was written for in the first place.
+  const tier =
+    role === 'teacher' && entitledTeacher && !preview ? teacherTierLabel(plan) : null;
   const initials =
     name
       .split(/[\s._@-]+/)
@@ -504,6 +518,7 @@ export function StudentNavDrawer({
   role,
   entitledTeacher,
   plan,
+  preview,
   mode,
   onClose,
   onOpenSupport,
@@ -513,11 +528,15 @@ export function StudentNavDrawer({
   role: 'student' | 'teacher';
   entitledTeacher?: boolean;
   plan?: string | null;
+  /** True when this viewer reached the student surface through the teacher
+      second door (course-access.ts:162), i.e. Student View. Suppresses the tier
+      name so the band reads PREVIEW. See the note on `tier` below. */
+  preview?: boolean;
   mode?: 'light' | 'dark';
   onClose: () => void;
   onOpenSupport?: () => void;
 }) {
-  return <DrawerBody open={open} name={name} role={role} entitledTeacher={entitledTeacher} plan={plan} mode={mode} onClose={onClose} onOpenSupport={onOpenSupport} />;
+  return <DrawerBody open={open} name={name} role={role} entitledTeacher={entitledTeacher} plan={plan} preview={preview} mode={mode} onClose={onClose} onOpenSupport={onOpenSupport} />;
 }
 
 // Split out so the hook below is never called conditionally.
@@ -527,6 +546,7 @@ function DrawerBody({
   role,
   entitledTeacher,
   plan,
+  preview,
   mode,
   onClose,
   onOpenSupport,
@@ -536,6 +556,10 @@ function DrawerBody({
   role: 'student' | 'teacher';
   entitledTeacher?: boolean;
   plan?: string | null;
+  /** True when this viewer reached the student surface through the teacher
+      second door (course-access.ts:162), i.e. Student View. Suppresses the tier
+      name so the band reads PREVIEW. See the note on `tier` below. */
+  preview?: boolean;
   mode?: 'light' | 'dark';
   onClose: () => void;
   onOpenSupport?: () => void;
@@ -643,6 +667,7 @@ function DrawerBody({
           role={role}
           entitledTeacher={entitledTeacher}
           plan={plan}
+          preview={preview}
           mode={mode}
           onNavigate={onClose}
           onOpenSupport={onOpenSupport}

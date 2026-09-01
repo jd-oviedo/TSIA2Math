@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import { headers } from 'next/headers';
 import { displayName, getProfile, profileGrants } from '../lib/auth';
+import { resolveCourseAccess } from '../lib/course-access';
 import { loginHref, DEFAULT_NEXT, safeNext } from '../lib/next-param';
 import StudentShell from './StudentShell';
 import { DASHBOARD_CSS } from './dashboard-css';
@@ -48,6 +49,21 @@ export default async function DashboardLayout({ children }: { children: React.Re
   // /teacher have all been using it; these two chips were the stragglers.
   const name = displayName(profile.user_metadata, profile.email);
 
+  // WHY THE RESOLVER AND NOT `role === 'teacher' && entitledTeacher`, which is
+  // already computed on the next line and is the same predicate today.
+  //
+  // It is the same predicate by coincidence, not by construction. viaTeacher is
+  // set in exactly one place (course-access.ts:163) and it is the flag the write
+  // gates in the practice and progress routes now read: if it ever stops meaning
+  // "reached the student surface as a teacher", the band and the writes have to
+  // move together. Deriving it a second time here is how they come apart, and the
+  // failure mode is the bad one -- a surface labelled PREVIEW that is still
+  // saving, or the reverse.
+  //
+  // Costs nothing on the page that matters. resolveCourseAccess is cache()d per
+  // request and /dashboard already calls it, so layout and page share one read.
+  const access = await resolveCourseAccess();
+
   return (
     <>
       <style>{DASHBOARD_CSS}</style>
@@ -59,6 +75,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
         role={profile.role}
         entitledTeacher={profileGrants(profile, 'teacher-dashboard', 'DashboardLayout')}
         plan={profile.plan}
+        preview={access.viaTeacher}
       >
         {children}
       </StudentShell>

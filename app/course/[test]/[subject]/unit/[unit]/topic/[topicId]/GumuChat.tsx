@@ -22,6 +22,13 @@ import type { CrisisResource } from '@/app/lib/crisis';
 
 type Message = { role: 'student' | 'gumu'; content: string };
 
+// Mirrors PREVIEW_LIMIT_COPY in app/lib/gumu.ts, declared here rather than
+// imported for exactly the reason CrisisCopy below is: gumu.ts imports the
+// Anthropic SDK, so even a type-only import points this client file at a module
+// it has no business knowing. The words arrive from the server in the response,
+// so the only thing the two can disagree about is the shape.
+type PreviewLimitCopy = { opening: string; explanation: string; closing: string };
+
 type CrisisCopy = {
   opening: string;
   explanation: string;
@@ -75,6 +82,10 @@ export default function GumuChat({
   // Set when the crisis screen stopped this session. Terminal: the panel below
   // returns early and the tutor UI is not rendered at all.
   const [support, setSupport] = useState<CrisisCopy | null>(null);
+  // Set when a teacher previewing the course has spent their Mu demo. Terminal
+  // in the same way `support` is: the panel returns early and no tutor furniture
+  // is rendered, because there is nothing left to say to.
+  const [previewLimit, setPreviewLimit] = useState<PreviewLimitCopy | null>(null);
 
   // The escape hatch steps up from a quiet text link to a real button once the
   // student is on their last turn, or once the session has ended and it is the
@@ -112,6 +123,16 @@ export default function GumuChat({
         item_number: itemNumber,
         selected_answer: selectedAnswer,
       });
+      // Branched before any of the session state below, because a preview limit is
+      // not a started session: there is no session_id to talk to, and mounting the
+      // panel would put an input on screen whose only outcome is a failure.
+      if (data.stopped === 'preview_limit') {
+        setPreviewLimit(data.copy as PreviewLimitCopy);
+        setStarted(true);
+        setFinished(true);
+        return;
+      }
+
       setStarted(true);
       setSessionId(data.session_id);
       onSessionChange(true);
@@ -152,6 +173,15 @@ export default function GumuChat({
         return;
       }
 
+      // Same shape, same reason: branched before the unconditional append below,
+      // so the preview notice never renders as another turn in Mu's voice.
+      if (data.stopped === 'preview_limit') {
+        setPreviewLimit(data.copy as PreviewLimitCopy);
+        setFinished(true);
+        onSessionChange(false);
+        return;
+      }
+
       setMessages((m) => [...m, { role: 'gumu', content: data.message }]);
       setTurnsRemaining(data.turns_remaining ?? null);
       if (data.status !== 'active') {
@@ -180,6 +210,15 @@ export default function GumuChat({
     } finally {
       setPending(false);
     }
+  }
+
+  // AHEAD OF THE PRE-SESSION BRANCH BELOW, not beside the crisis one further
+  // down. A demo can be exhausted by the very first press of "Talk it through",
+  // which returns without a session and so never sets `started`; a check placed
+  // after that branch would never be reached, and the button would look like it
+  // did nothing.
+  if (previewLimit) {
+    return <PreviewLimitCard copy={previewLimit} />;
   }
 
   // THE REMEDIATION PANEL, and it is presentational.
@@ -610,6 +649,50 @@ function SupportCard({ copy }: { copy: CrisisCopy }) {
 
       <p style={{ margin: 0, font: `400 15px ${FONT_BODY}`, lineHeight: 1.65, color: T.ink2 }}>
         {copy.trusted}
+      </p>
+
+      <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, lineHeight: 1.6, color: T.muted }}>
+        {copy.closing}
+      </p>
+    </div>
+  );
+}
+
+// The end of a teacher's Mu demo, and it replaces the panel wholesale for the
+// same reason SupportCard does: leaving the avatar, the turn dots or the composer
+// on screen would offer a conversation that cannot happen.
+//
+// Quieter than SupportCard on purpose. Nothing has gone wrong, a teacher is not
+// stuck, and this is not a place to sell: the copy's job is to say what the
+// STUDENT gets, so the boundary reads as a property of the preview rather than of
+// the product. No action, because there is nothing to press that would help.
+function PreviewLimitCard({ copy }: { copy: PreviewLimitCopy }) {
+  return (
+    <div
+      role="region"
+      aria-label="Mu preview limit"
+      // The transcript this replaces was role="log" aria-live="polite". Without a
+      // live region the swap is silent to a screen reader: the conversation would
+      // simply stop with nothing announcing what took its place. Same reasoning,
+      // and the same politeness, as SupportCard above.
+      aria-live="polite"
+      style={{
+        marginTop: '18px',
+        background: T.insetRow,
+        borderRadius: 0,
+        padding: '20px 22px 22px',
+        boxShadow: `inset 0 0 0 1.5px ${T.hairline}`,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '11px',
+      }}
+    >
+      <p style={{ margin: 0, font: `600 16px ${FONT_HEADING}`, lineHeight: 1.45, color: T.ink }}>
+        {copy.opening}
+      </p>
+
+      <p style={{ margin: 0, font: `400 14.5px ${FONT_BODY}`, lineHeight: 1.65, color: T.ink2 }}>
+        {copy.explanation}
       </p>
 
       <p style={{ margin: 0, font: `400 13.5px ${FONT_BODY}`, lineHeight: 1.6, color: T.muted }}>

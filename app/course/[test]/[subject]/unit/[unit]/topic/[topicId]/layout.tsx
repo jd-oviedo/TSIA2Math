@@ -9,6 +9,7 @@ import { strandName } from '@/app/lib/strands';
 import { displayName } from '@/app/lib/auth';
 import { EYEBROW } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
+import { resolveCourseAccess } from '../../../../../../../lib/course-access';
 import TopicSurface from '../../../../../../../components/TopicSurface';
 import { T } from '../../../../../../../components/curriculum-surface';
 
@@ -28,6 +29,12 @@ export default async function TopicLayout({
 }) {
   const resolved = await params;
   const { topic, authSession, signInHref, teacher } = await loadTopic(resolved);
+
+  // Free on this request: app/course/layout.tsx has already called it to decide
+  // whether this tree opens at all, and resolveCourseAccess is cache()d per
+  // request. The same value the write gates read, so the label and the behaviour
+  // cannot disagree.
+  const access = await resolveCourseAccess();
   const subjectLabel = resolved.subject.replace(/-/g, ' ');
 
   // Which of the three parts the chrome should mark as current.
@@ -61,6 +68,7 @@ export default async function TopicLayout({
           // the three settings pages. See app/dashboard/layout.tsx for the note.
           name={displayName(authSession?.user?.user_metadata, authSession?.user?.email)}
           role={teacher ? 'teacher' : 'student'}
+          preview={access.viaTeacher}
           test={resolved.test}
           subject={resolved.subject}
           subjectLabel={subjectLabel}
