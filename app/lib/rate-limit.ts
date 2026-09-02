@@ -117,15 +117,48 @@ export const exportRateLimit = new Ratelimit({
 // it once an hour and caps a compromised teacher account at 40 accounts an hour
 // rather than an unbounded loop.
 //
-// BULK IMPORT WILL BRING ITS OWN LIMITER, sized for a whole class pasted at
-// once, rather than leaning on this one or inflating it to fit both. The two
-// have genuinely different honest shapes -- forty single requests over an hour
+// BULK IMPORT BROUGHT ITS OWN LIMITER, sized for a whole class pasted at once,
+// rather than leaning on this one or inflating it to fit both. The two have
+// genuinely different honest shapes -- forty single requests over an hour
 // against one request carrying thirty students -- and a single threshold wide
-// enough for the paste would stop bounding the typing.
+// enough for the paste would stop bounding the typing. It is
+// bulkProvisionRateLimit, immediately below.
 export const provisionRateLimit = new Ratelimit({
   redis,
   limiter: Ratelimit.slidingWindow(40, "1 h"),
   prefix: "ratelimit:student-provision",
+  analytics: true,
+});
+
+// /api/teacher/provision/bulk -- "Add roster". The sibling promised above.
+// Keyed on the teacher id for the same reason as every other authenticated
+// limiter here (see :56-67): a school NAT is one address.
+//
+// CHARGED PER STUDENT, NOT PER REQUEST, and that is the whole design. One paste
+// spends one token per row through safeLimit's `cost` argument. A per-request
+// count cannot bound what this endpoint actually produces: at "12 pastes an
+// hour" with a 40 row cap the real ceiling is 480 accounts, and the number in
+// the code says 12. Charging per row makes the threshold and the thing being
+// bounded the same quantity, so 300 below means 300 accounts.
+//
+// 300 PER HOUR. The honest worst case is day one of a semester, a secondary
+// teacher provisioning every section in one sitting: seven periods at 35 is 245,
+// which fits inside one window with room for a re-paste after a network failure.
+// A single 35 row class spends 35 and cannot come close to tripping. Below about
+// 245 a full teaching load starts failing partway through the day, which is the
+// number to move if this is ever retuned.
+//
+// A REFUSAL SPENDS NOTHING. The sliding window script checks the incremented
+// total against the limit and returns before it writes, so a paste that would
+// cross the line is rejected whole rather than half-charged. That is the
+// behaviour this endpoint needs: minting twenty of thirty students and refusing
+// the rest would leave the teacher with a partial class and ten students who
+// cannot be re-minted, because the accounts that DID land come back without a
+// code on the second run.
+export const bulkProvisionRateLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(300, "1 h"),
+  prefix: "ratelimit:student-provision-bulk",
   analytics: true,
 });
 
@@ -228,12 +261,25 @@ export function getClientIp(request: Request): string {
 // Rate limiting is an auxiliary protection; a 500 on every test-taking
 // request because Redis hiccuped would be a worse outcome than briefly
 // having no rate limiting at all. The failure is logged so it's visible.
+//
+// `cost` IS ADDITIVE AND DEFAULTS TO THE OLD BEHAVIOUR. Every caller that does
+// not pass it reaches limiter.limit(identifier) with exactly one argument, the
+// same call this function has always made. That is spelled as a branch rather
+// than as limit(identifier, { rate: cost }) with cost defaulting to 1, even
+// though @upstash/ratelimit resolves `rate ?? 1` internally and the two are
+// equivalent today. The branch makes "the thirteen existing call sites are
+// untouched" a property of THIS file that a test can assert, instead of a
+// property of a dependency's default that a minor version could restate.
+//
+// Only the bulk provisioning route passes a cost, one token per student.
 export async function safeLimit(
   limiter: Ratelimit,
-  identifier: string
+  identifier: string,
+  cost = 1
 ): Promise<{ success: boolean; reset: number }> {
   try {
-    const result = await limiter.limit(identifier);
+    const result =
+      cost === 1 ? await limiter.limit(identifier) : await limiter.limit(identifier, { rate: cost });
     return { success: result.success, reset: result.reset };
   } catch (err) {
     console.error(
