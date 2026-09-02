@@ -60,6 +60,32 @@ const en = {
   joinChange: 'Use a different code',
   joinThenSignIn: 'Sign in to finish joining.',
 
+  // ─── District code sign in ────────────────────────────────────────────────
+  //
+  // The second door, for students whose Workspace admin blocks the Google OAuth
+  // app. Their teacher mints the account and hands them the code; this is the
+  // only way those students can get in at all.
+  //
+  // ONE ERROR STRING FOR EVERY FAILURE, deliberately. Telling a wrong code apart
+  // from an unknown email would turn this form into an account-enumeration
+  // oracle, and the student can do nothing different with the finer answer.
+  codeLinkLabel: 'District student? Sign in with a code.',
+  codeHeading: 'Sign in with your code',
+  codeBlurb: 'Use the email and code your teacher gave you.',
+  codeEmailLabel: 'School email',
+  codeEmailPlaceholder: 'you@school.edu',
+  codeCodeLabel: 'Sign-in code',
+  codeCodePlaceholder: 'ABCD2345EFGH',
+  codeSubmit: 'Sign in',
+  codeSigningIn: 'Signing in…',
+  codeError: "That email and code don't match. Check with your teacher.",
+  // THE ONE FAILURE THAT IS TOLD APART, and it costs nothing to tell apart: a
+  // request that never reached the auth server is equally true for an email that
+  // has an account and one that does not, so it leaks nothing. It used to share
+  // the string above, which told a student with bad wifi that their code was
+  // wrong and sent them to their teacher for a replacement they did not need.
+  codeErrorNetwork: "Couldn't reach the server. Check your connection and try again.",
+
   // ─── Failure states. Every one of these is reachable. ─────────────────────
   // Pre-auth, from /api/enroll/lookup.
   errNotFound: "That code doesn't match any class. Check it with your teacher.",
@@ -130,6 +156,27 @@ const es: Record<CopyKey, string> = {
   joinTaughtBy: 'Maestro(a)',
   joinChange: 'Usar otro código',
   joinThenSignIn: 'Inicia sesión para terminar de unirte.',
+
+  // MACHINE-DRAFTED, PENDING HUMAN BILINGUAL REVIEW. Every string below was
+  // drafted by machine and has not been read by a bilingual human yet.
+  //
+  // "profesor/a" rather than "maestro", which reads elementary to a Texas
+  // secondary audience. The rest of this dictionary still says "maestro"; that
+  // is a pre-existing inconsistency and was left alone rather than swept in here.
+  codeLinkLabel: '¿Estudiante del distrito? Inicia sesión con un código.',
+  codeHeading: 'Inicia sesión con tu código',
+  codeBlurb: 'Usa el correo y el código que te dio tu profesor/a.',
+  codeEmailLabel: 'Correo escolar',
+  codeEmailPlaceholder: 'tucorreo@escuela.edu',
+  codeCodeLabel: 'Código de acceso',
+  codeCodePlaceholder: 'ABCD2345EFGH',
+  codeSubmit: 'Iniciar sesión',
+  codeSigningIn: 'Iniciando sesión…',
+  codeError: 'Ese correo y código no coinciden. Verifícalo con tu profesor/a.',
+  // No teacher noun appears in this one, in either language, so the
+  // profesor/maestro choice does not arise here. Matches the EN string's scope
+  // rather than adding advice English does not give.
+  codeErrorNetwork: 'No se pudo conectar con el servidor. Revisa tu conexión e inténtalo de nuevo.',
 
   errNotFound: 'Ese código no coincide con ninguna clase. Verifícalo con tu maestro.',
   errInvalid: 'El código es de 6 caracteres, letras y números.',
