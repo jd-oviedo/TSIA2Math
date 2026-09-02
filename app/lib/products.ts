@@ -119,7 +119,7 @@ export type Product = {
  *
  *   Deploy first. Create the link second. Paste the id third.
  */
-export const TRIPWIRE_PAYMENT_LINK_ID = "plink_TRIPWIRE_NOT_YET_CREATED";
+export const TRIPWIRE_PAYMENT_LINK_ID = "plink_1UBFUZF8f8aZDGVAZjdPM2Kd";
 
 export const PRODUCTS_BY_PAYMENT_LINK: Readonly<Record<string, Product>> = {
   // Founding teacher tier. Closed to new sales, retained for existing
