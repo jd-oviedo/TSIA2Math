@@ -8,6 +8,7 @@ import { safeNext, DEFAULT_NEXT } from '../lib/next-param';
 import { L, FONT_DISPLAY, FONT_MONO, DISPLAY_WEIGHT } from './login-theme';
 import { LoginChrome, Eyebrow } from './LoginChrome';
 import { JoinClass } from './JoinClass';
+import { CodeSignIn } from './CodeSignIn';
 import { t } from './copy';
 import { useLoginLang } from './use-login-lang';
 
@@ -51,8 +52,19 @@ export function SignIn({ role }: { role: 'student' | 'teacher' }) {
   const [lang, setLang] = useLoginLang();
   const [loading, setLoading] = useState(false);
   const [joinConfirmed, setJoinConfirmed] = useState(false);
+  // The district-code form is hidden until asked for. Google is the path for the
+  // self-serve majority and stays the only thing on screen for them; the second
+  // door is one line of text until a student who needs it opens it.
+  const [showCode, setShowCode] = useState(false);
   const searchParams = useSearchParams();
   const isTeacher = role === 'teacher';
+
+  // HOISTED SO BOTH DOORS READ ONE VALUE. The Google button hands this to
+  // Supabase as redirectTo and the callback route performs the redirect; the
+  // code form navigates to it directly, because password sign-in never reaches
+  // the callback. Same safeNext() call either way, so the two cannot disagree
+  // about where a student lands.
+  const next = safeNext(searchParams.get('next'), isTeacher ? '/teacher' : DEFAULT_NEXT);
 
   // The callback writes error=auth_failed and, until now, nothing read it: a
   // cancelled sign-in landed silently on the role selector. join=pending means
@@ -64,10 +76,9 @@ export function SignIn({ role }: { role: 'student' | 'teacher' }) {
     posthog.capture('sign_in_clicked', { session_id: searchParams.get('session_id') });
     setLoading(true);
     const callbackUrl = new URL(`${window.location.origin}/auth/callback`);
-    // Guarded here as well as in the callback, so a refused value never reaches
-    // Supabase's redirectTo and the callback is not the only thing between the
-    // param and a redirect. Same helper, so the two cannot disagree.
-    const next = safeNext(searchParams.get('next'), isTeacher ? '/teacher' : DEFAULT_NEXT);
+    // `next` is guarded at the top of the component as well as in the callback,
+    // so a refused value never reaches Supabase's redirectTo and the callback is
+    // not the only thing between the param and a redirect.
     const sessionId = searchParams.get('session_id');
     callbackUrl.searchParams.set('next', next);
     if (sessionId) callbackUrl.searchParams.set('session_id', sessionId);
@@ -216,6 +227,47 @@ export function SignIn({ role }: { role: 'student' | 'teacher' }) {
             {loading ? t(lang, 'redirecting') : t(lang, 'continueGoogle')}
           </button>
         </div>
+
+        {/* ─── The second door ─────────────────────────────────────────────
+            Students only, and closed by default. A district student whose
+            Workspace admin blocks the Google OAuth app cannot use the button
+            above at all, so this is not a convenience for them, it is the only
+            way in. It stays one line of text until they open it, so the screen
+            does not grow a credential form for the majority who never need one.
+
+            The link is the text-button treatment JoinClass already uses for
+            "Use a different code": mono, amber, underlined, .uml-oncard for the
+            focus ring. Not a second CTA, so it cannot compete with Google. */}
+        {!isTeacher && !showCode && (
+          <button
+            type="button"
+            onClick={() => setShowCode(true)}
+            className="uml-oncard um-fade-up"
+            aria-expanded={false}
+            aria-controls="uml-code-signin"
+            style={{
+              alignSelf: 'center',
+              padding: 0,
+              border: 'none',
+              background: 'none',
+              cursor: 'pointer',
+              font: `400 12px/1.5 ${FONT_MONO}`,
+              letterSpacing: '0.06em',
+              color: L.amber,
+              textDecoration: 'underline',
+            }}
+          >
+            {t(lang, 'codeLinkLabel')}
+          </button>
+        )}
+
+        {/* The entrance lands on this wrapper rather than on the <section>'s own
+            submit button, for the .uml-lift collision reason spelled out above. */}
+        {!isTeacher && showCode && (
+          <div id="uml-code-signin" className="um-fade-up">
+            <CodeSignIn lang={lang} next={next} />
+          </div>
+        )}
 
         {isTeacher && (
           <p
