@@ -14,11 +14,17 @@ import AssignmentsList from './AssignmentsList';
 // Teachers set these from /teacher, which posts to /api/teacher/assignments.
 // Nothing on this page writes.
 //
-// THIS ROUTE STAYS OPEN TO A SOLO STUDENT, whose rail no longer offers it --
+// THIS ROUTE STAYS OPEN TO A SOLO STUDENT, whose nav no longer offers it --
 // same choice as /dashboard/announcements and for the same reasons, set out at
-// the top of that file. Deep links, bookmarks and the curriculum tree's
-// slide-over (which does not yet thread the flag) all still land on a page that
-// works and says why it is empty, instead of a redirect.
+// the top of that file. Deep links, bookmarks, an anonymous visitor who signs
+// in mid-session and anything else that reaches this URL still land on a page
+// that works and says why it is empty, instead of a redirect.
+//
+// The nav is hidden in BOTH mounts now -- the dashboard rail and the curriculum
+// tree's slide-over -- so nothing in the product links here for a solo student.
+// That makes this page's own empty state the only thing standing between them
+// and a blank screen, which is the argument for it rather than against it: the
+// fewer routes in that make it MORE important that this one explains itself.
 //
 // Unlike announcements this page IS always empty for a solo student:
 // getStudentAssignments returns [] as soon as the active-class set is empty. So

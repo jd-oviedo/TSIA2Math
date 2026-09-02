@@ -38,6 +38,7 @@ export default function TopicChrome({
   name,
   role,
   preview,
+  hasClass,
   test,
   subject,
   subjectLabel,
@@ -47,6 +48,12 @@ export default function TopicChrome({
 }: {
   name: string;
   role: 'student' | 'teacher';
+  /** Whether this viewer is linked to a class, resolved by the layout from
+      showsClassChrome -- the same predicate and the same value the dashboard
+      rail gets. Threaded so a solo student's nav is the SAME nav in a lesson as
+      it is on their dashboard; without it this drawer took the `true` default
+      and offered two destinations the rail had just hidden. */
+  hasClass?: boolean;
   /** Student View, resolved by the layout from course-access. Passed to the
       slide-over rail, which reads it as "say PREVIEW rather than naming a tier".
       NOT the same question as `role`: a teacher is here as a teacher either way,
@@ -190,12 +197,21 @@ export default function TopicChrome({
           fallen through to PREVIEW here by omission rather than by decision, and
           the first person to thread the other two for an unrelated reason would
           have silently turned the label into TEACHER · CORE. Passing the flag
-          that actually decides makes the band say what it means on purpose. */}
+          that actually decides makes the band say what it means on purpose.
+
+          `hasClass` IS THREADED FOR THE OPPOSITE REASON TO THOSE TWO. It also
+          has a default -- true, the full list -- but here the default was
+          WRONG rather than merely unstated: a solo student's dashboard rail
+          hides Announcements and Assignments, and this drawer is the same nav
+          at a different width, so taking the default put the two destinations
+          back the moment they opened a lesson. Same predicate, same value,
+          resolved once by the layout. */}
       <StudentNavDrawer
         open={menuOpen}
         name={name}
         role={role}
         preview={preview}
+        hasClass={hasClass}
         onClose={() => setMenuOpen(false)}
         onOpenSupport={() => setShowSupport(true)}
       />

@@ -55,12 +55,15 @@ export const NAV_ITEMS: readonly NavItem[] = [
 /**
  * The destinations this viewer is offered.
  *
- * `hasClass` DEFAULTS TO TRUE, AND THE DEFAULT IS THE SAFE DIRECTION. Three
- * places mount this nav and only one of them knows the answer: the dashboard
- * shell, which resolves it from showsClassChrome. The curriculum tree's
- * slide-over and the DB-free verification lane pass nothing, and both keep the
- * full list they have always rendered. So a caller that has not been taught the
- * question shows MORE rather than hiding a destination it had no opinion about.
+ * `hasClass` DEFAULTS TO TRUE, AND THE DEFAULT IS THE SAFE DIRECTION. Both
+ * shipping mounts resolve it from showsClassChrome and pass it: the dashboard
+ * shell, and the curriculum tree's slide-over through TopicChrome -- the same
+ * predicate and the same value, so a solo student's nav does not change shape
+ * when they open a lesson. What still passes nothing is the DB-free
+ * verification lane and an anonymous visitor in the curriculum tree, and both
+ * keep the full list they have always rendered. A caller that has not been
+ * taught the question shows MORE rather than hiding a destination it had no
+ * opinion about.
  *
  * Hiding is presentation and nothing else. Every route in this list still
  * exists, still authorises the same way, and still renders for a solo student
