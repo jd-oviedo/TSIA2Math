@@ -311,12 +311,22 @@ export default function VerifyLaneShell() {
             this block, at three viewports.
 
             IT IS THE REAL PRIMITIVE, HOLDING THE REAL PageHeading AND THE REAL
-            JoinClassPanel IN THE REAL Card -- exactly the four components
-            app/dashboard/page.tsx composes. That is the whole reason
+            JoinClassPanel IN THE REAL Card. That is the whole reason
             PageHeadRow is an export rather than a div in page.tsx: Home reads
             Supabase and cannot be mounted here, and a lane that hand-wrote the
             row's flex declarations would be measuring a replica of the thing
-            under test. What the verifier measures here is what ships.
+            under test. What the verifier measures here is the row that ships.
+
+            CORRECTED WHEN THE CHROME WAS MODED BY ENROLMENT. This used to say
+            the fixture is "exactly the four components app/dashboard/page.tsx
+            composes", and Home no longer composes them for everybody. A
+            class-linked student gets a bare PageHeading and no row at all; a
+            SOLO student gets this row, with the Card one click behind a
+            JoinClassDisclosure rather than open. So the row, the aside's 320px
+            column and the 26px beneath it are all still exactly what ships --
+            the disclosure's open state is this fixture. What the lane does not
+            reproduce is the collapsed state, which is a single underlined line
+            and has no geometry worth four viewports.
 
             THE PageStack UNDER IT IS PART OF THE FIXTURE, NOT DECORATION. The
             26px the row leaves under itself is not a margin anyone declared on

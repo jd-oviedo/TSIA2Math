@@ -10,6 +10,7 @@ import { displayName } from '@/app/lib/auth';
 import { EYEBROW } from '@/app/components/curriculum-theme';
 import { FONT_HEADING, FONT_BODY } from '@/app/components/fonts';
 import { resolveCourseAccess } from '../../../../../../../lib/course-access';
+import { showsClassChrome } from '../../../../../../../lib/enrollment';
 import TopicSurface from '../../../../../../../components/TopicSurface';
 import { T } from '../../../../../../../components/curriculum-surface';
 
@@ -45,6 +46,33 @@ export default async function TopicLayout({
   // missing, and both render no indicator rather than a wrong one.
   const part = activeTopicPart((await headers()).get('x-pathname'));
 
+  // THE SAME CHROME DECISION THE DASHBOARD RAIL MAKES, resolved here so the
+  // slide-over below cannot disagree with it. A solo student -- no teacher, free
+  // or paid -- is not offered Announcements or Assignments on their dashboard,
+  // and opening a lesson must not quietly hand both back.
+  //
+  // ANONYMOUS FALLS BACK TO THE FULL LIST, which is the existing behaviour and
+  // the right direction. There is no id to resolve an enrolment for, and this
+  // tree is reachable signed out (the free sample, and the doorway); showing a
+  // nav item to someone who is about to be asked to sign in costs nothing,
+  // where hiding one from a rostered student who is merely mid-session would
+  // not. Same fail-open posture as the predicate itself.
+  //
+  // ONE QUERY, ON THE LESSON PATH, AND IT IS WORTH NAMING. getEnrolledClasses is
+  // cache()d per request but nothing else in this tree calls it, so unlike the
+  // dashboard this is a genuine extra read on every lesson, practice and quiz
+  // page. It is a single indexed lookup on class_enrollments by student_id, on a
+  // route that already performs several; a nav that changes shape when you open
+  // a topic is the cost of not paying it.
+  const hasClass = authSession?.user?.id
+    ? await showsClassChrome({
+        id: authSession.user.id,
+        // The same derivation TopicChrome's own `role` uses on the next block,
+        // rather than a second reading of what a teacher is.
+        role: teacher ? 'teacher' : 'student',
+      })
+    : true;
+
   return (
     <GumuGateProvider>
       <style>{TOPIC_PAGE_CSS}</style>
@@ -69,6 +97,7 @@ export default async function TopicLayout({
           name={displayName(authSession?.user?.user_metadata, authSession?.user?.email)}
           role={teacher ? 'teacher' : 'student'}
           preview={access.viaTeacher}
+          hasClass={hasClass}
           test={resolved.test}
           subject={resolved.subject}
           subjectLabel={subjectLabel}

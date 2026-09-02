@@ -1,4 +1,5 @@
 import { createAdminClient } from '../lib/supabase-admin';
+import { getEnrolledClasses } from '../lib/enrollment';
 import { resolveCourseAccess } from '../lib/course-access';
 import { allowsTopic } from '../lib/capabilities';
 import { getTopicStatuses, getTopics, topicHref, topicKey } from '../lib/curriculum-progress';
@@ -34,26 +35,10 @@ export type {
   AttemptRow,
 } from '../lib/curriculum-progress';
 
-export type ClassRow = { id: string; name: string };
-
-export async function getEnrolledClasses(studentId: string): Promise<ClassRow[]> {
-  const admin = createAdminClient();
-  const { data } = await admin
-    .from('class_enrollments')
-    .select('class_id, status, classes(id, name, archived_at)')
-    .eq('student_id', studentId);
-
-  return (data ?? [])
-    .filter((row) => row.status !== 'removed')
-    .map((row) => {
-      // PostgREST returns an embedded to-one relation as an array.
-      const cls = Array.isArray(row.classes) ? row.classes[0] : row.classes;
-      return cls as { id: string; name: string; archived_at: string | null } | null;
-    })
-    .filter((cls): cls is { id: string; name: string; archived_at: string | null } => Boolean(cls))
-    .filter((cls) => !cls.archived_at)
-    .map((cls) => ({ id: cls.id, name: cls.name }));
-}
+// The enrolment reads moved to app/lib/enrollment.ts when the curriculum tree
+// started needing the same answer; see that file's header. Re-exported here
+// because this is where the dashboard has always imported them from.
+export { getEnrolledClasses, showsClassChrome, type ClassRow } from '../lib/enrollment';
 
 export type Announcement = {
   id: string;
