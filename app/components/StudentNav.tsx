@@ -10,6 +10,7 @@ import { RAIL_LIGHT, RAIL_DARK, V, type RailSurface } from './dashboard-theme';
 import { useTheme } from '../theme/useTheme';
 import { ThemeModeButton } from './ThemeModeButton';
 import { teacherTierLabel } from '../lib/capabilities';
+import { navItemsFor } from './student-nav-items';
 
 // Drawer motion. Enter decelerates so the panel settles; exit accelerates and is
 // shorter, which is the conventional asymmetry and reads as more responsive.
@@ -47,19 +48,10 @@ const DRAWER_CSS = `
 // because this component also renders inside the /course tree where the
 // dashboard stylesheet is never loaded.
 
-export const NAV_ITEMS = [
-  { label: 'Home', href: '/dashboard' },
-  { label: 'Announcements', href: '/dashboard/announcements' },
-  // Between the teacher's voice and the self-directed tree, because that is
-  // what it is: work somebody else set, which Modules onward is not.
-  { label: 'Assignments', href: '/dashboard/assignments' },
-  { label: 'Modules', href: '/dashboard/modules' },
-  { label: 'Grades', href: '/dashboard/grades' },
-  // The only destination here that leaves the /dashboard tree. It is in this
-  // list rather than beside it because from a student's side of the screen it
-  // is simply another place to go, and splitting it out would say otherwise.
-  { label: 'Take a Practice Test', href: '/adaptive-test' },
-];
+// The destinations and the class-scoping rule live in their own module so they
+// can be loaded and faulted without a bundler; see its header. Re-exported here
+// because this is where every consumer has always imported them from.
+export { NAV_ITEMS, navItemsFor, type NavItem } from './student-nav-items';
 
 function navIcon(label: string) {
   const common = {
@@ -179,6 +171,7 @@ export function StudentNavPanel({
   plan,
   preview = false,
   collapsed = false,
+  hasClass = true,
   mode,
   onNavigate,
   onOpenSupport,
@@ -188,6 +181,11 @@ export function StudentNavPanel({
   entitledTeacher?: boolean;
   /** The profiles.plan value. The tier NAME comes from here and only here. */
   plan?: string | null;
+  /** Whether this viewer is linked to a class, which decides whether the two
+      teacher-fed destinations are offered. Resolved by showsClassChrome and
+      threaded from the shell; see navItemsFor for why it defaults to true and
+      why it is presentation rather than permission. */
+  hasClass?: boolean;
   /** True when this viewer reached the student surface through the teacher
       second door (course-access.ts:162), i.e. Student View. Suppresses the tier
       name so the band reads PREVIEW. See the note on `tier` below. */
@@ -283,7 +281,7 @@ export function StudentNavPanel({
           overflowX: 'hidden',
         }}
       >
-        {NAV_ITEMS.map((item) => {
+        {navItemsFor(hasClass).map((item) => {
           const active = isActive(pathname, item.href);
           const isHovered = hovered === item.label;
           return (
@@ -519,6 +517,7 @@ export function StudentNavDrawer({
   entitledTeacher,
   plan,
   preview,
+  hasClass = true,
   mode,
   onClose,
   onOpenSupport,
@@ -528,6 +527,10 @@ export function StudentNavDrawer({
   role: 'student' | 'teacher';
   entitledTeacher?: boolean;
   plan?: string | null;
+  /** See StudentNavPanel. Threaded so the rail and the slide-over offer the
+      same destinations at every width -- a nav that differs by viewport is the
+      drift this one prop prevents. */
+  hasClass?: boolean;
   /** True when this viewer reached the student surface through the teacher
       second door (course-access.ts:162), i.e. Student View. Suppresses the tier
       name so the band reads PREVIEW. See the note on `tier` below. */
@@ -536,7 +539,7 @@ export function StudentNavDrawer({
   onClose: () => void;
   onOpenSupport?: () => void;
 }) {
-  return <DrawerBody open={open} name={name} role={role} entitledTeacher={entitledTeacher} plan={plan} preview={preview} mode={mode} onClose={onClose} onOpenSupport={onOpenSupport} />;
+  return <DrawerBody open={open} name={name} role={role} entitledTeacher={entitledTeacher} plan={plan} preview={preview} hasClass={hasClass} mode={mode} onClose={onClose} onOpenSupport={onOpenSupport} />;
 }
 
 // Split out so the hook below is never called conditionally.
@@ -547,6 +550,7 @@ function DrawerBody({
   entitledTeacher,
   plan,
   preview,
+  hasClass,
   mode,
   onClose,
   onOpenSupport,
@@ -560,6 +564,10 @@ function DrawerBody({
       second door (course-access.ts:162), i.e. Student View. Suppresses the tier
       name so the band reads PREVIEW. See the note on `tier` below. */
   preview?: boolean;
+  /** Passed straight through to the panel below. NOT defaulted here: the
+      default belongs to the exported components, and a second one on this
+      internal splitter is a second answer to the same question. */
+  hasClass?: boolean;
   mode?: 'light' | 'dark';
   onClose: () => void;
   onOpenSupport?: () => void;
@@ -668,6 +676,7 @@ function DrawerBody({
           entitledTeacher={entitledTeacher}
           plan={plan}
           preview={preview}
+          hasClass={hasClass}
           mode={mode}
           onNavigate={onClose}
           onOpenSupport={onOpenSupport}

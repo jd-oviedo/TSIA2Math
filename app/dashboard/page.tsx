@@ -11,6 +11,7 @@ import {
   getAnnouncements,
   getStudentAssignments,
   hasCompletedDiagnostic,
+  showsClassChrome,
   topicHref,
 } from './data';
 import { nextDue } from '@/app/lib/assignments';
@@ -31,6 +32,7 @@ import {
 } from './ui';
 import DiagnosticCta from './DiagnosticCta';
 import JoinClassPanel from './JoinClassPanel';
+import JoinClassDisclosure from './JoinClassDisclosure';
 import JoinResultBanner from './JoinResultBanner';
 import FlagsPanel from './FlagsPanel';
 import { C } from '@/app/components/curriculum-theme';
@@ -85,6 +87,16 @@ export default async function DashboardHome({
     // calls are one profile read however they interleave.
     getStudentAssignments(profile.id),
   ]);
+
+  // THE SAME ANSWER THE RAIL GOT, from the same function, rather than
+  // `classes.length > 0` on the line above. The two agree today and would come
+  // apart the first time the rule gains a clause -- the teacher exception is
+  // already one, and a teacher previewing this page would see the join link the
+  // rail says they do not need. One question, one answer, one place.
+  //
+  // Free: showsClassChrome reads getEnrolledClasses, which is cache()d and has
+  // already run twice on this request.
+  const hasClass = await showsClassChrome(profile);
 
   // Same source as the Announcements tab: already scoped to every class the
   // student is enrolled in, plus school-wide notices, newest first. Home shows
@@ -195,39 +207,60 @@ export default async function DashboardHome({
 
   return (
     <>
-      {/* THE PAGE HEAD CARRIES THE JOIN BOX NOW.
+      {/* THE HEAD HAS TWO SHAPES NOW, AND WHICH ONE YOU GET IS THE ENROLMENT
+          AXIS.
           ==================================================================
           "Join a class" spent its whole life as the second-to-last panel on
           Home, under the progress card and the resume card, which is the one
-          place a student who has just been handed a code will not look. It is
-          not a thing you were already doing -- it is a thing you arrived to
-          do -- so it does not belong in the group that holds the rest.
+          place a student who has just been handed a code will not look. The
+          2026-08-26 pass moved it up here, beside the title, in a Card -- the
+          right fix for the student it was written for, and the wrong shape for
+          everyone else, because it was shown to EVERYONE.
 
-          Beside the title instead, in a Card, which is what makes it flat: the
-          panel primitive already computes radius 0, no shadow and a panelEdge
-          hairline as of the 2026-08-26 pass. Nothing here restates any of
-          that, and a box hand-rolled at this call site is exactly how the
-          shell grew four panel shapes the last time.
+          A student already in a class does not get it at all. They have a
+          teacher; a box asking for a code is answered. That head is a plain
+          PageHeading at the FULL content width, which is also where their
+          longer blurb -- "You're in 10A, 10B." -- wants to be, rather than
+          wrapping early inside a 320px column beside a box they cannot use.
 
-          The row, the 26px it leaves under itself, and why the reflow needs
-          both a wrap and a media query are all in PageHeadRow. */}
-      <PageHeadRow
-        heading={
-          <PageHeading
-            title="Home"
-            blurb={
-              classes.length
-                ? `You're in ${classes.map((c) => c.name).join(', ')}.`
-                : 'Your course progress and where to pick back up.'
-            }
-          />
-        }
-        aside={
-          <Card>
-            <JoinClassPanel />
-          </Card>
-        }
-      />
+          A solo student gets the row, with the panel DEMOTED TO A DISCLOSURE:
+          one quiet underlined line, and the same Card holding the same
+          JoinClassPanel behind it. The path stays alive for the student who is
+          handed a code next week; it just stops being the loudest thing on the
+          page for the many who never will be. See JoinClassDisclosure.
+
+          PageHeadRow AND THE Card SURVIVE UNCHANGED, which matters: the row's
+          reflow is verified off the DB-free lane at four viewports
+          (scripts/verify_home_head_row.mjs), and it is still the row Home
+          composes -- now for the solo case, and with the panel one click away
+          rather than open. Nothing here hand-rolls a box; the flat panel
+          treatment is still the primitive's. */}
+      {hasClass ? (
+        <PageHeading
+          title="Home"
+          blurb={
+            classes.length
+              ? `You're in ${classes.map((c) => c.name).join(', ')}.`
+              : 'Your course progress and where to pick back up.'
+          }
+        />
+      ) : (
+        <PageHeadRow
+          heading={
+            <PageHeading
+              title="Home"
+              blurb="Your course progress and where to pick back up."
+            />
+          }
+          aside={
+            <JoinClassDisclosure>
+              <Card>
+                <JoinClassPanel />
+              </Card>
+            </JoinClassDisclosure>
+          }
+        />
+      )}
 
       {/* THREE GROUPS, AND THE SEAMS ARE THE ONES THIS FILE ALREADY NAMED.
           ==================================================================

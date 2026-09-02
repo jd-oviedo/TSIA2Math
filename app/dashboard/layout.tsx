@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation';
 import { headers } from 'next/headers';
 import { displayName, getProfile, profileGrants } from '../lib/auth';
 import { resolveCourseAccess } from '../lib/course-access';
+import { showsClassChrome } from './data';
 import { loginHref, DEFAULT_NEXT, safeNext } from '../lib/next-param';
 import StudentShell from './StudentShell';
 import { DASHBOARD_CSS } from './dashboard-css';
@@ -64,6 +65,25 @@ export default async function DashboardLayout({ children }: { children: React.Re
   // request and /dashboard already calls it, so layout and page share one read.
   const access = await resolveCourseAccess();
 
+  // WHICH CHROME THIS VIEWER GETS, AND IT IS THE ENROLMENT AXIS, NOT PAYMENT.
+  //
+  // Announcements and Assignments are both filled by a teacher. A student with
+  // no teacher has nothing behind either one and never will, so the rail stops
+  // offering them two doors into rooms that are structurally empty. A student
+  // WITH a teacher keeps both, free or paid -- see showsClassChrome, which is
+  // the only place this question is answered and says why the loose enrolment
+  // predicate is the right one.
+  //
+  // RESOLVED HERE RATHER THAN IN THE RAIL for the reason the note above gives
+  // about viaTeacher: the rail is a client component, this is the one server
+  // boundary both the rail and the slide-over pass through, and deriving it
+  // twice is how the two come apart.
+  //
+  // Costs one query per request at most. getEnrolledClasses is cache()d, and
+  // Home and /dashboard/announcements already call it, so on those routes this
+  // is free.
+  const hasClass = await showsClassChrome(profile);
+
   return (
     <>
       <style>{DASHBOARD_CSS}</style>
@@ -76,6 +96,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
         entitledTeacher={profileGrants(profile, 'teacher-dashboard', 'DashboardLayout')}
         plan={profile.plan}
         preview={access.viaTeacher}
+        hasClass={hasClass}
       >
         {children}
       </StudentShell>

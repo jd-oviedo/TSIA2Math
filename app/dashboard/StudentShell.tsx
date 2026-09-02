@@ -44,6 +44,7 @@ export default function StudentShell({
   entitledTeacher,
   plan,
   preview,
+  hasClass,
   children,
 }: {
   name: string;
@@ -51,6 +52,11 @@ export default function StudentShell({
   entitledTeacher?: boolean;
   /** Passed straight through to the rail, which names the tier from it. */
   plan?: string | null;
+  /** Whether this viewer is linked to a class. Decides whether the rail offers
+      Announcements and Assignments -- the two destinations a teacher fills.
+      Resolved once by the layout from showsClassChrome and handed to BOTH the
+      rail and the slide-over below, so the nav cannot differ by viewport. */
+  hasClass?: boolean;
   /** Student View. Passed straight through to both rails, which read it as
       "suppress the tier name and say PREVIEW". Threaded rather than derived here
       because the layout resolves it from the same resolver the write gates use,
@@ -123,6 +129,7 @@ export default function StudentShell({
           entitledTeacher={entitledTeacher}
           plan={plan}
           preview={preview}
+          hasClass={hasClass}
           collapsed={collapsed}
           onOpenSupport={() => setShowSupport(true)}
         />
@@ -177,6 +184,7 @@ export default function StudentShell({
         entitledTeacher={entitledTeacher}
         plan={plan}
         preview={preview}
+        hasClass={hasClass}
         onClose={() => setMenuOpen(false)}
         onOpenSupport={() => setShowSupport(true)}
       />
