@@ -37,7 +37,7 @@ function stubDeps(
   return { deps, calls, navigations };
 }
 
-const GOOD = { email: 'ana.reyes@district.edu', code: 'K7R2P9WX3MTQ', next: '/dashboard' };
+const GOOD = { email: 'sarah.johnson@district.edu', code: 'K7R2P9WX3MTQ', next: '/dashboard' };
 
 // ─── The success leg, so the refusal below means something ───────────────────
 
@@ -139,9 +139,9 @@ test('a thrown request is unreachable rather than reported as signed in', async 
 
 test('the email handed to signInWithPassword is trimmed and lowercased', async () => {
   const { deps, calls } = stubDeps();
-  await submitCodeSignIn(deps, { ...GOOD, email: '  Ana.REYES@District.edu \n' });
+  await submitCodeSignIn(deps, { ...GOOD, email: '  Sarah.JOHNSON@District.edu \n' });
 
-  assert.equal(calls[0].email, 'ana.reyes@district.edu');
+  assert.equal(calls[0].email, 'sarah.johnson@district.edu');
 });
 
 // The code is a PASSWORD and is case-sensitive. Normalising it the way the email
@@ -156,9 +156,9 @@ test('the code is passed through untouched', async () => {
 });
 
 test('normaliseEmail handles the shapes a roster paste produces', () => {
-  assert.equal(normaliseEmail('  ANA@X.EDU '), 'ana@x.edu');
-  assert.equal(normaliseEmail('ana@x.edu'), 'ana@x.edu');
-  assert.equal(normaliseEmail('\tAna@X.Edu\n'), 'ana@x.edu');
+  assert.equal(normaliseEmail('  SARAH@X.EDU '), 'sarah@x.edu');
+  assert.equal(normaliseEmail('sarah@x.edu'), 'sarah@x.edu');
+  assert.equal(normaliseEmail('\tSarah@X.Edu\n'), 'sarah@x.edu');
 });
 
 // `next` is resolved by the caller with safeNext(), the same call the Google

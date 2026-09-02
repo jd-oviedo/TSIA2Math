@@ -104,7 +104,7 @@ export interface RosterParse {
  * Pragmatic rather than RFC 5322: one @ with something on each side, no
  * whitespace anywhere, and at least one dot in the domain with a non-empty
  * label on both sides of it. That last clause is the one doing real work here.
- * A district roster's most common typo is a truncated domain ("ana@district"),
+ * A district roster's most common typo is a truncated domain ("sarah@district"),
  * and an address with no dot is exactly the kind of thing that passes a lax
  * check, mints an account, and leaves a student holding a code for a mailbox
  * that cannot exist.
@@ -129,10 +129,10 @@ const FIELD_SEPARATOR = /[\t,]/;
  *
  * FIRST WHITESPACE TOKEN, THEN THE ENTIRE REMAINDER. Not "the last token is the
  * surname", and on this district's rosters that is the difference between a
- * correct record and a wrong one. "Mary Jo Garcia" is Mary Garcia only if you
+ * correct record and a wrong one. "Maria de la Cruz" is Maria Cruz only if you
  * assume surnames are one word; compound surnames are common enough here that
  * the assumption breaks on real students, and it breaks silently, because
- * "Garcia" looks like a perfectly good answer.
+ * "Cruz" looks like a perfectly good answer.
  *
  * A SINGLE TOKEN IS A FIRST NAME WITH NO SURNAME, NOT AN ERROR. A mononym and a
  * half-filled roster column are both legitimate, and provisionStudent joins the
@@ -177,10 +177,10 @@ function classify(parts: string[]): { status: RosterRowStatus; message: string }
   }
 
   // MORE THAN THREE FIELDS IS A PROBLEM, NOT A TRUNCATION, and accepting a
-  // combined name column has not made this safe. "Reyes, Ana Maria,
-  // ana@district.edu" still splits into four, and there is now no reading of it
-  // that is obviously right: dropping a field could mint an account for a
-  // student named "Ana Maria" whose email column holds their surname. Refusing
+  // combined name column has not made this safe. "Johnson, Sarah Marie,
+  // sarah@district.edu" still splits into four, and there is now no reading of
+  // it that is obviously right: dropping a field could mint an account for a
+  // student named "Sarah Marie" whose email column holds their surname. Refusing
   // the line puts it in front of the teacher, who is the only one who knows
   // which comma was the separator.
   if (parts.length > 3) {
@@ -202,8 +202,8 @@ function classify(parts: string[]): { status: RosterRowStatus; message: string }
  * the pair rather than being told a line they are looking at is a duplicate of
  * something unnamed. Compared case-insensitively, because provisionStudent
  * lowercases the address before it looks anything up
- * (app/lib/student-provision.ts:101) and "Ana@district.edu" and
- * "ana@district.edu" are one account there.
+ * (app/lib/student-provision.ts:101) and "Sarah@district.edu" and
+ * "sarah@district.edu" are one account there.
  */
 export function parseRosterPaste(text: string): RosterParse {
   const rows: RosterRow[] = [];

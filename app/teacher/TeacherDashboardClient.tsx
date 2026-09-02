@@ -1278,7 +1278,7 @@ function AddRosterPanel({
       <textarea
         value={paste}
         onChange={(e) => { onPaste(e.target.value); setStatus('idle'); setMessage(''); }}
-        placeholder={'Amber White\tamber.white@district.edu\nMary Jo Garcia, mary.garcia@district.edu'}
+        placeholder={'James Smith\tjames.smith@district.edu\nMaria Garcia, maria.garcia@district.edu'}
         rows={7}
         disabled={status === 'loading'}
         style={{
