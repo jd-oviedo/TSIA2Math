@@ -79,7 +79,9 @@ export default async function CancelPage({
   const admin = createAdminClient();
   const { data: profile } = await admin
     .from("profiles")
-    .select("plan, plan_status, access_until, subscription_status, role, stripe_customer_id")
+    .select(
+      "plan, plan_status, access_until, stripe_payment_link_id, subscription_status, role, stripe_customer_id"
+    )
     .eq("id", session.user.id)
     .single();
 

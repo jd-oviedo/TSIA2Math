@@ -69,7 +69,7 @@ export default async function StartPage({
     const admin = createAdminClient();
     const { data: profile } = await admin
       .from("profiles")
-      .select("plan, plan_status, access_until, subscription_status")
+      .select("plan, plan_status, access_until, stripe_payment_link_id, subscription_status")
       .eq("id", user.id)
       .maybeSingle();
     if (profile && profileGrants(profile, "teacher-dashboard", "start")) {

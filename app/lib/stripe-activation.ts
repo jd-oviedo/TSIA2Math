@@ -5,6 +5,7 @@ import {
   addMonths,
   productForPaymentLink,
   subscriptionPeriodEnd,
+  TRIPWIRE_PAYMENT_LINK_ID,
   type EntitlementWrite,
   type Plan,
   type PlanTerm,
@@ -180,7 +181,134 @@ export async function alertUnlinkedCustomer(args: {
   }
 }
 
-export type WriteOutcome = "written" | "stale" | "refused";
+/**
+ * Would writing this tripwire entitlement take live access AWAY from someone?
+ *
+ * THE PROBLEM. writeEntitlement replaces access_until wholesale. That is right
+ * for every product sold today, because every one of them is bought by someone
+ * who is buying UP: a lapsed student renewing, a teacher switching tier, a
+ * subscription renewing. The $5 / 7-day tripwire is the first product that can
+ * be bought by someone who already holds MORE than it grants, and for them the
+ * ordinary behaviour is destructive:
+ *
+ *   a live Full Course holder ($89, ~12 months left)   -> cut to 7 days
+ *   a live Practice Pass holder ($49, ~6 months left)  -> cut to 7 days
+ *   a comped or migrated row (access_until null)       -> cut to 7 days
+ *
+ * WHY IT CANNOT BE GUARDED AT THE ENTRY POINTS. /start/checkout refuses to sell
+ * to an already-entitled buyer, but that is one flow. /upgrade redirects to a
+ * Payment Link with no such check, and the tripwire is meant to be sent as a
+ * RAW buy.stripe.com URL -- in an email, in a DM -- which touches no route of
+ * ours at all. The webhook is the only thing every purchase passes through, and
+ * writeEntitlement is the only thing every webhook branch passes through.
+ *
+ * THE RULE. Refuse when the row ALREADY GRANTS access that runs past what this
+ * tripwire would give. Both halves matter:
+ *
+ *   grantsAccess(plan_status)   THE SHARED PREDICATE, not a copy of it. Without
+ *                               this half, a CANCELLED teacher sitting on a
+ *                               future period end -- which is exactly what
+ *                               teacher/cancel writes -- would be refused, and
+ *                               would have paid $5 for nothing while holding an
+ *                               entitlement that grants nothing.
+ *   later-or-unbounded          null access_until with a granting status is
+ *                               permanent access (comped, migrated). It is the
+ *                               LONGEST thing on the table, not the shortest,
+ *                               so it must refuse rather than be overwritten.
+ *
+ * WHAT THE RULE DELIBERATELY DOES NOT DO. It does not ask whether the existing
+ * plan is a superset of full-course. A live Practice Pass holder is refused even
+ * though the tripwire would give them curriculum they do not have, and a live
+ * teacher is refused even though they reach the curriculum by a different door.
+ * Both are judged on DURATION alone, because the only thing this writer can do
+ * is replace, and replacing months of paid access with a week is the worse of
+ * the two mistakes in every version of the story. The buyer keeps what they
+ * paid for; the $5 is logged, loudly, with the profile and the session, so it
+ * can be refunded or comped by hand. A visible $5 problem instead of a silent
+ * one measured in months.
+ *
+ * NOT A READ ON THE HOT PATH. This runs only for a write whose payment link IS
+ * the tripwire. Every other entitlement write in the product -- every renewal,
+ * every teacher purchase, every $49 and $89 pass -- never reaches this
+ * function.
+ */
+async function tripwireShorteningGuard(
+  admin: Admin,
+  profileId: string,
+  write: EntitlementWrite,
+  source: string
+): Promise<{ refuse: boolean; observedAccessUntil: string | null }> {
+  const { data, error } = await admin
+    .from("profiles")
+    .select("plan, plan_status, access_until")
+    .eq("id", profileId)
+    .maybeSingle();
+
+  // FAIL OPEN, ON PURPOSE, AND ONLY HERE. A read that errors tells us nothing
+  // about what the profile holds, and refusing on no information would deny a
+  // buyer who paid. The UPDATE below still carries the ordering guard, and a
+  // missing profile is the ordinary "nothing to shorten" case. The compare-and-
+  // set is skipped too: pinning a value we did not observe would refuse every
+  // write.
+  if (error) {
+    console.error(
+      `[${source}] could not read ${profileId} before a tripwire write, so the ` +
+        `shortening guard is not applied:`,
+      error.message
+    );
+    return { refuse: false, observedAccessUntil: null };
+  }
+  if (!data) return { refuse: false, observedAccessUntil: null };
+
+  const row = data as {
+    plan: string | null;
+    plan_status: string | null;
+    access_until: string | null;
+  };
+  const incoming = write.accessUntil;
+
+  const holdsLiveAccess = grantsAccess(row.plan_status);
+  const runsLonger =
+    row.access_until === null ||
+    incoming === null ||
+    new Date(row.access_until).getTime() > incoming.getTime();
+
+  if (holdsLiveAccess && runsLonger) {
+    console.error(
+      `[${source}] TRIPWIRE WRITE REFUSED for ${profileId}: the profile already holds ` +
+        `${row.plan ?? "(no plan)"}/${row.plan_status} until ` +
+        `${row.access_until ?? "no expiry"}, which outlasts the ${
+          incoming ? incoming.toISOString() : "(none)"
+        } this $5 pass would grant. Access left untouched. ` +
+        `THE $5 WAS TAKEN AND GRANTED NOTHING NEW -- refund or comp by hand.`
+    );
+    return { refuse: true, observedAccessUntil: row.access_until };
+  }
+
+  return { refuse: false, observedAccessUntil: row.access_until };
+}
+
+export type WriteOutcome =
+  /** The UPDATE matched and the entitlement is on the profile. */
+  | "written"
+  /** The profile already carries an entitlement from a NEWER event. */
+  | "stale"
+  /** The write was malformed and was declined. Nothing happened. */
+  | "refused"
+  /**
+   * A TRIPWIRE WRITE THAT WOULD HAVE SHORTENED LIVE ACCESS, declined.
+   *
+   * Distinct from "stale" because the two are not the same event and telling
+   * them apart is the only way the log can be true: "stale" means an OLDER
+   * purchase lost to a newer one, this means a SHORTER purchase lost to a
+   * longer one that may well be older. Distinct from "refused" because
+   * "refused" leaves a debt standing and this one does not -- the buyer already
+   * holds everything the tripwire would have granted, so there is nothing left
+   * owed.
+   *
+   * See the shortening guard in writeEntitlement.
+   */
+  | "superseded";
 
 /**
  * The only writer of the entitlement columns.
@@ -201,6 +329,14 @@ export type WriteOutcome = "written" | "stale" | "refused";
  *    constraint, but letting the database enforce it means a 500 and an infinite
  *    retry loop. Caught here instead, logged, and refused, so a malformed write
  *    fails loudly and exactly once.
+ *
+ * 3. THE SHORTENING GUARD, WHICH APPLIES TO THE $5 TRIPWIRE AND ONLY TO IT.
+ *    This function overwrites access_until WHOLESALE, so a 7-day pass bought by
+ *    someone who already holds longer live access replaces months with a week.
+ *    /start/checkout guards its own flow by refusing to sell to an entitled
+ *    buyer at all; /upgrade does not, and a raw buy.stripe.com link -- which is
+ *    exactly what a tripwire is -- cannot. The guard therefore lives at the
+ *    writer, where every path arrives. See tripwireShorteningGuard.
  */
 export async function writeEntitlement(
   admin: Admin,
@@ -225,7 +361,15 @@ export async function writeEntitlement(
   const eventAt = new Date(eventCreatedMs).toISOString();
   const accessUntilIso = write.accessUntil ? write.accessUntil.toISOString() : null;
 
-  const { data, error } = await admin
+  // THE SHORTENING GUARD. Tripwire writes only; every other write reaches the
+  // UPDATE below with `guard` still null and behaves exactly as it always has.
+  const guard =
+    write.paymentLinkId === TRIPWIRE_PAYMENT_LINK_ID
+      ? await tripwireShorteningGuard(admin, profileId, write, source)
+      : null;
+  if (guard?.refuse) return "superseded";
+
+  const query = admin
     .from("profiles")
     .update({
       plan: write.plan,
@@ -241,7 +385,16 @@ export async function writeEntitlement(
       plan_updated_at: eventAt,
       // Written in lockstep, derived rather than set by hand, so the legacy flag
       // and the new columns cannot disagree while both exist.
-      subscription_status: legacySubscriptionStatus(write.planStatus, write.accessUntil),
+      // The link id rides along so the legacy flag is computed under the SAME
+      // grace window the readers use. Without it a tripwire row written in its
+      // final hours could be stamped 'active' on a three-day grace this row does
+      // not get, and the legacy column would disagree with isEntitled -- which
+      // is precisely the drift deriving it here exists to prevent.
+      subscription_status: legacySubscriptionStatus(
+        write.planStatus,
+        write.accessUntil,
+        write.paymentLinkId
+      ),
       // ROLE, ON A TEACHER PURCHASE ONLY, AND IN THIS STATEMENT ON PURPOSE.
       //
       // Until now the only live writer of role='teacher' was auth/callback, which
@@ -280,8 +433,31 @@ export async function writeEntitlement(
         : {}),
     })
     .eq("id", profileId)
-    .or(`plan_updated_at.is.null,plan_updated_at.lt.${eventAt}`)
-    .select("id");
+    .or(`plan_updated_at.is.null,plan_updated_at.lt.${eventAt}`);
+
+  // THE SECOND HALF OF THE SHORTENING GUARD, and it is in the WHERE clause for
+  // the same reason the ordering guard is: the decision above was made from a
+  // row that was read a moment ago, and a read-then-write has a window in it.
+  // Pinning access_until to the value that decision was made on closes it --
+  // if anything changed the column in between, this UPDATE matches zero rows
+  // and the tripwire is reported rather than silently overwriting a purchase
+  // that landed while we were deciding.
+  //
+  // .is / .eq ONLY, DELIBERATELY. The alternative was to express the whole rule
+  // as a PostgREST predicate -- a `not.in` over the granting statuses, or'd with
+  // a timestamp comparison -- which would restate GRANTING (entitlement.ts's
+  // policy) in query-string syntax, in a second place, in a grammar that cannot
+  // be exercised offline. A malformed predicate there is a 400, which this
+  // function turns into a throw, which is a 500, which is Stripe retrying a $5
+  // purchase forever. The status half of the rule stays in JS on grantsAccess,
+  // the shared predicate; only a compare-and-set on one column crosses the wire.
+  const guarded = guard
+    ? guard.observedAccessUntil === null
+      ? query.is("access_until", null)
+      : query.eq("access_until", guard.observedAccessUntil)
+    : query;
+
+  const { data, error } = await guarded.select("id");
 
   if (error) {
     // Surfaced to the caller as a throw so the webhook returns 500 and Stripe
@@ -291,9 +467,19 @@ export async function writeEntitlement(
   }
 
   if (!data || data.length === 0) {
+    // TWO PREDICATES CAN PRODUCE ZERO ROWS NOW, and the message must not claim
+    // the wrong one. The ordering guard means an event arrived out of order; the
+    // compare-and-set means access_until moved between the guard's read and this
+    // UPDATE, which is the concurrent-purchase race the pin exists to lose
+    // safely. `guard` is already in hand, so telling them apart costs no read.
     console.warn(
-      `[${source}] ignoring stale event for ${profileId}: profile has an entitlement ` +
-        `newer than this event (${eventAt})`
+      guard
+        ? `[${source}] tripwire write for ${profileId} matched no row: either the profile ` +
+            `carries something newer than ${eventAt}, or access_until moved from ` +
+            `${guard.observedAccessUntil ?? "null"} while this write was being decided. ` +
+            `Nothing was overwritten.`
+        : `[${source}] ignoring stale event for ${profileId}: profile has an entitlement ` +
+            `newer than this event (${eventAt})`
     );
     return "stale";
   }
@@ -388,8 +574,41 @@ export async function entitlementFromCheckout(
   // here is the only thing that ever ends this access. Derived from the EVENT
   // timestamp rather than Date.now() so a redelivery recomputes the same end
   // date instead of quietly extending it.
+  //
+  // TWO UNITS, AND THE ORDER OF THESE CHECKS IS THE WHOLE POINT. The guard used
+  // to be `months <= 0 -> refuse`, which was correct while every one-time pass
+  // was measured in months and became a trap the moment one was not: a product
+  // carrying `days: 7` and no `months` reads months as 0 and gets refused, so a
+  // paid $5 tripwire would fall through to legacyActivateOnly and be granted
+  // PERMANENT full-course access. So days is resolved FIRST and the months
+  // guard only ever sees a product that declared no day term.
   if (product.mode === "payment") {
+    const days = product.days ?? 0;
     const months = product.months ?? 0;
+
+    // Declaring both is a configuration error, not a preference. Refused rather
+    // than resolved, because either answer would be a silent guess about which
+    // term the buyer paid for.
+    if (days > 0 && months > 0) {
+      console.error(
+        `[${source}] ${product.label} declares both days (${days}) and months (${months}). ` +
+          `A one-time pass has one term. Refusing.`
+      );
+      return null;
+    }
+
+    if (days > 0) {
+      // Plain milliseconds from the event, exactly as the trial branch below
+      // computes its 7 days. No calendar arithmetic: a day term is short enough
+      // that no month-length or DST question can arise, and access_until is a
+      // timestamptz compared in UTC by isEntitled.
+      return {
+        ...base,
+        planStatus: "active",
+        accessUntil: new Date(eventCreatedMs + days * 24 * 60 * 60 * 1000),
+      };
+    }
+
     if (months <= 0) {
       console.error(`[${source}] ${product.label} is one-time but has no term. Refusing.`);
       return null;

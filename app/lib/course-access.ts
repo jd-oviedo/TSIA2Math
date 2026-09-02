@@ -37,6 +37,12 @@ type Profile = {
   plan: string | null;
   plan_status: string | null;
   access_until: string | null;
+  // WHICH PRICE WAS PAID, AND THIS IS THE ONE READER WHERE IT CHANGES AN
+  // ANSWER. A $5 tripwire row and an $89 Full Course row are both
+  // plan='full-course' / plan_term='one-time', so this column is the only thing
+  // that separates them, and the tripwire's grace window is zero where every
+  // other pass gets three days. See accessGraceMs in entitlement.ts.
+  stripe_payment_link_id: string | null;
   subscription_status: string | null;
   role: string | null;
 };
@@ -87,7 +93,9 @@ async function entitledTeacherGrants(studentId: string): Promise<boolean> {
 
   const { data: teachers, error: teacherError } = await admin
     .from("profiles")
-    .select("id, plan, plan_status, access_until, subscription_status, role")
+    .select(
+      "id, plan, plan_status, access_until, stripe_payment_link_id, subscription_status, role"
+    )
     .in("id", [...teacherIds]);
 
   if (teacherError) {
@@ -102,6 +110,13 @@ async function entitledTeacherGrants(studentId: string): Promise<boolean> {
       isEntitledWithLegacyFallback(
         (t as Profile).plan_status,
         (t as Profile).access_until,
+        // Threaded for symmetry with the own-plan read below rather than
+        // because it can matter here: this row has already cleared
+        // planGrants(..., 'teacher-dashboard'), and no teacher plan is sold on
+        // the tripwire link, so accessGraceMs always answers three days. Left
+        // explicit so the two calls in this file cannot be read as following
+        // different rules.
+        (t as Profile).stripe_payment_link_id,
         (t as Profile).subscription_status,
         "derived teacher"
       )
@@ -130,7 +145,7 @@ export const resolveCourseAccess = cache(async (): Promise<CourseAccess> => {
   const admin = createAdminClient();
   const { data, error } = await admin
     .from("profiles")
-    .select("plan, plan_status, access_until, subscription_status, role")
+    .select("plan, plan_status, access_until, stripe_payment_link_id, subscription_status, role")
     .eq("id", session.user.id)
     .single();
 
@@ -140,9 +155,14 @@ export const resolveCourseAccess = cache(async (): Promise<CourseAccess> => {
   }
   const profile = data as Profile;
 
+  // THE LIVE READER FOR A TRIPWIRE ROW. A $5 buyer holds plan='full-course', so
+  // they land on the branch below and this call is what decides, on day 7,
+  // whether they still get in. Passing the link id is what makes that day 7
+  // rather than day 10.
   const entitled = isEntitledWithLegacyFallback(
     profile.plan_status,
     profile.access_until,
+    profile.stripe_payment_link_id,
     profile.subscription_status,
     "own plan"
   );

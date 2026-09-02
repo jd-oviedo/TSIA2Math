@@ -20,11 +20,16 @@ export type Profile = {
   plan: string | null
   plan_status: string | null
   access_until: string | null
+  /** Which PRICE was paid, when a Payment Link named one. The only per-row way
+   *  to tell a $5 tripwire from an $89 Full Course, since both carry
+   *  plan='full-course'; entitlement.ts reads it for the grace window. */
+  stripe_payment_link_id: string | null
 }
 
 // The columns every profile read needs, spelled out once so the two helpers
 // below cannot drift apart.
-const PROFILE_COLUMNS = 'id, role, subscription_status, plan, plan_status, access_until'
+const PROFILE_COLUMNS =
+  'id, role, subscription_status, plan, plan_status, access_until, stripe_payment_link_id'
 
 /**
  * Does this profile hold a live entitlement for the given capability?
@@ -48,7 +53,10 @@ const PROFILE_COLUMNS = 'id, role, subscription_status, plan, plan_status, acces
  * planGrants from the same module, and capabilities.ts stays runtime-pure.
  */
 export function profileGrants(
-  profile: Pick<Profile, 'plan' | 'plan_status' | 'access_until' | 'subscription_status'>,
+  profile: Pick<
+    Profile,
+    'plan' | 'plan_status' | 'access_until' | 'subscription_status' | 'stripe_payment_link_id'
+  >,
   capability: Capability,
   source: string
 ): boolean {
@@ -56,6 +64,20 @@ export function profileGrants(
   return isEntitledWithLegacyFallback(
     profile.plan_status,
     profile.access_until,
+    // THE GRACE WINDOW IS A PROPERTY OF THE PRICE, so the row has to carry the
+    // link id this far. Required in the Pick rather than optional: every caller
+    // that hand-picks its columns now fails to COMPILE until it selects this
+    // one, which is the only way a reader cannot quietly fall back to the
+    // three-day default on a seven-day pass.
+    //
+    // INERT FOR EVERY CALLER TODAY, and that is worth saying out loud rather
+    // than leaving to be discovered. A tripwire row carries plan='full-course',
+    // and every live call site of this function asks about a capability
+    // full-course does not hold, or sits behind requireTeacher(). planGrants
+    // above therefore returns false before this line is reached. The threading
+    // is here so the NEXT student-facing gate is correct by construction, not
+    // because one is wrong today.
+    profile.stripe_payment_link_id,
     profile.subscription_status,
     source
   )
