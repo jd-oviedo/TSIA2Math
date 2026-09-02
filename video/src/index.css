@@ -1,0 +1,3 @@
+/* Global reset for the composition. Everything else is inline, flat, radius 0. */
+* { box-sizing: border-box; }
+body { margin: 0; }

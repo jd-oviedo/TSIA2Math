@@ -16,6 +16,8 @@ const eslintConfig = [
       "out/**",
       "build/**",
       "next-env.d.ts",
+      // Standalone Remotion workspace with its own eslint and tsconfig.
+      "video/**",
     ],
   },
 ];
