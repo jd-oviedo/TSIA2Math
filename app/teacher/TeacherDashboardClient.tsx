@@ -20,6 +20,7 @@ import {
   rowPresentation,
   buildRosterCsv,
   rosterCsvFilename,
+  displayName,
   type BulkRowResult,
   type BulkSummary,
 } from '../lib/roster-results';
@@ -1215,7 +1216,7 @@ function AddRosterPanel({
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
               <tr>
-                <th style={TH_STYLE}>Student</th>
+                <th style={TH_STYLE}>Name</th>
                 <th style={TH_STYLE}>Email</th>
                 {/* TWO COLUMNS, NOT ONE STATUS WORD. An account being made and a
                     student being in the class are separate facts that disagree
@@ -1233,7 +1234,7 @@ function AddRosterPanel({
                   <Fragment key={`${r.email}-${i}`}>
                     <tr style={{ background: bg }}>
                       <td style={{ ...TD_STYLE, borderBottom: p.note ? 'none' : TD_STYLE.borderBottom, borderLeft: p.warn ? '3px solid #C2402F' : '3px solid transparent', fontWeight: 600 }}>
-                        {r.first_name} {r.last_name}
+                        {displayName(r)}
                       </td>
                       <td style={{ ...TD_STYLE, borderBottom: p.note ? 'none' : TD_STYLE.borderBottom, fontFamily: "'Courier New', monospace", fontSize: 11.5, wordBreak: 'break-all' }}>{r.email}</td>
                       <td style={{ ...TD_STYLE, borderBottom: p.note ? 'none' : TD_STYLE.borderBottom, color: ROW_TONE[p.tone], fontWeight: 600, whiteSpace: 'nowrap' }}>{p.account}</td>
@@ -1272,12 +1273,12 @@ function AddRosterPanel({
   return (
     <>
       <p style={{ margin: '0 0 12px', fontSize: 13, color: INK_2, lineHeight: 1.5 }}>
-        One student per line: first name, last name, email. Paste straight from a spreadsheet or type the list with commas. Every account is created at once and you get the sign-in codes back as a table and a CSV.
+        One student per line: name, then email. Paste straight from a spreadsheet or type the list with commas. A spreadsheet with separate first and last name columns works too. Every account is created at once and you get the sign-in codes back as a table and a CSV.
       </p>
       <textarea
         value={paste}
         onChange={(e) => { onPaste(e.target.value); setStatus('idle'); setMessage(''); }}
-        placeholder={'Ana\tReyes\tana.reyes@district.edu\nLuis, Ortega, luis.ortega@district.edu'}
+        placeholder={'Amber White\tamber.white@district.edu\nMary Jo Garcia, mary.garcia@district.edu'}
         rows={7}
         disabled={status === 'loading'}
         style={{
@@ -1307,8 +1308,7 @@ function AddRosterPanel({
               <thead>
                 <tr>
                   <th style={{ ...TH_STYLE, width: 30 }}>#</th>
-                  <th style={TH_STYLE}>First</th>
-                  <th style={TH_STYLE}>Last</th>
+                  <th style={TH_STYLE}>Name</th>
                   <th style={TH_STYLE}>Email</th>
                   <th style={TH_STYLE}>Status</th>
                 </tr>
@@ -1319,8 +1319,7 @@ function AddRosterPanel({
                   return (
                     <tr key={row.line} style={{ background: ok ? undefined : '#FDF1E9' }}>
                       <td style={{ ...TD_STYLE, color: DASH.dim, fontSize: 11 }}>{row.line}</td>
-                      <td style={TD_STYLE}>{row.firstName}</td>
-                      <td style={TD_STYLE}>{row.lastName}</td>
+                      <td style={TD_STYLE}>{row.fullName}</td>
                       <td style={{ ...TD_STYLE, fontFamily: "'Courier New', monospace", fontSize: 11.5, wordBreak: 'break-all' }}>{row.email}</td>
                       <td style={{ ...TD_STYLE, color: ok ? '#356B1B' : '#C2402F', fontWeight: 600 }}>
                         {ok ? 'Ready' : row.message}
