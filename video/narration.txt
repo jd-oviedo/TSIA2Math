@@ -1,0 +1,36 @@
+Add a roster. Voice-over script.
+Runtime about 68 seconds. Warm, plain, teacher to teacher. Read at an easy pace; each line lands with its on-screen caption.
+
+[0:00] Hook
+Some of your students can't sign in with Google? Here's the fix.
+
+[0:02] Title
+A new way to add students. Follow these steps.
+
+[0:05] Step 1. Teacher dashboard
+Log in to your teacher dashboard, like always.
+
+[0:11] Step 2. Invite
+Up top, click Invite.
+
+[0:16] Step 3. Add roster
+You'll see three ways to add students. Choose Add roster.
+
+[0:23] Step 4. Paste the class
+Now paste your whole class. One student per line: name, then email.
+Copying straight from a spreadsheet works too. Check the preview, then click Add.
+
+[0:36] Step 5. The codes
+And that's it. Every student has an account, and every student has a sign-in code.
+That code is their password. It's shown once, so download the CSV now and hand the codes out.
+
+[0:47] Step 6. Now the student
+Here's what your student sees. They pick "I'm a student," then "District student? Sign in with a code."
+They type their school email and the code you gave them, and click Sign in.
+No Google needed. They're in.
+
+[1:02] Close
+A whole class, added in one paste.
+Remember: the code is each student's password. Shown once, so save the CSV.
+
+All names, emails, and codes shown in the video are fabricated demo data.
