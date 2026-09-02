@@ -134,21 +134,19 @@ test('the tripwire sells the EXISTING full-course plan, for 7 days, one-time', (
   assert.equal(p!.months, undefined, 'a day term and a month term are exclusive');
 });
 
-test('the tripwire id is a placeholder, so nothing is live until Juan pastes the real one', () => {
-  // THE DEPLOY-BEFORE-THE-LINK PROPERTY, asserted rather than trusted. While
-  // this holds, no real checkout can key into the entry above, no row can be
-  // identified as a tripwire, and the grace rule matches nothing -- which is
-  // what makes shipping this ahead of the Stripe link safe.
-  //
-  // WHEN JUAN PASTES THE REAL plink_ ID THIS TEST FAILS, ON PURPOSE. It is the
-  // reminder that the ordering constraint has been discharged, and it should be
-  // deleted in the same commit as the paste.
-  assert.equal(TRIPWIRE_PAYMENT_LINK_ID, 'plink_TRIPWIRE_NOT_YET_CREATED');
-  assert.ok(
-    !/^plink_1[A-Za-z0-9]{20,}$/.test(TRIPWIRE_PAYMENT_LINK_ID),
-    'the placeholder must not be shaped like a real Stripe id'
-  );
-});
+// THE PLACEHOLDER ASSERTION LIVED HERE AND IS GONE, WHICH IS THE POINT.
+//
+// It read `assert.equal(TRIPWIRE_PAYMENT_LINK_ID, 'plink_TRIPWIRE_NOT_YET_CREATED')`
+// and existed to hold the deploy-before-the-link ordering: while it passed, no
+// real checkout could key into the entry above, so shipping the mechanic ahead
+// of the Stripe link was provably inert. It was written to fail on the day the
+// real id was pasted, and it did.
+//
+// Deleted rather than inverted. An assertion that the id is NOT the placeholder
+// would test nothing -- the entry above already reads the constant, so a wrong
+// value there fails the assertions in the test above it and in
+// faultproof_tripwire.mjs, both of which check behaviour rather than spelling.
+// The ordering constraint it guarded has been discharged and cannot recur.
 
 test('the tripwire is distinguishable from a real Full Course purchase after the fact', () => {
   // PHASE 2'S DAY-6 EMAIL DEPENDS ON EXACTLY THIS. Both rows carry

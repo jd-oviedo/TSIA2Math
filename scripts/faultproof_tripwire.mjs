@@ -42,11 +42,31 @@
 import { readFileSync, writeFileSync, unlinkSync, readdirSync } from 'fs';
 import { pathToFileURL } from 'url';
 
+// THE REAL CONSTANT, NOT A COPY OF ITS VALUE. This used to be a hardcoded
+// 'plink_TRIPWIRE_NOT_YET_CREATED' string, which was wrong in the way that only
+// shows up once: the moment the real Payment Link id was pasted into
+// products.ts, every scenario below started building sessions and writes for an
+// id the product map no longer contained. Twelve checks went red at once,
+// including every one that proves the shortening guard works -- so the harness
+// that exists to keep the tripwire safe was, briefly, testing nothing.
+//
+// The whole design of this feature is that ONE constant names the tripwire.
+// A harness that copies its value instead of reading it is the one place that
+// exemption is guaranteed to bite, because it is the one place nobody looks
+// until it fails.
+//
+// THE `@/` FORM IS REQUIRED. Node's ESM resolver cannot resolve a bare
+// '../app/lib/products' from a .mjs harness, and a relative path with the .ts
+// extension resolves against the FILE rather than the repo, which breaks the
+// moment this script is copied anywhere. scripts/ts-alias-hook.mjs maps `@/`
+// to the repo root, which is precisely what it exists for.
+import { TRIPWIRE_PAYMENT_LINK_ID } from '@/app/lib/products';
+
 const ACTIVATION = 'app/lib/stripe-activation.ts';
 const activationSrc = readFileSync(ACTIVATION, 'utf8');
 
 const DAY = 24 * 60 * 60 * 1000;
-const TRIPWIRE = 'plink_TRIPWIRE_NOT_YET_CREATED';
+const TRIPWIRE = TRIPWIRE_PAYMENT_LINK_ID;
 const FULL_COURSE_LINK = 'plink_1U5tgXF8f8aZDGVANGvtkoMF';
 const PRACTICE_PASS_LINK = 'plink_1U5tejF8f8aZDGVAKbnefl6Z';
 
