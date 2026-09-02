@@ -101,6 +101,34 @@ export const exportRateLimit = new Ratelimit({
   analytics: true,
 });
 
+// /api/teacher/provision -- "Add with code", which MINTS AN AUTH ACCOUNT. Keyed
+// on the signed-in teacher id, and the route enforces that by calling
+// requireTeacher() before this runs, for the reason recorded at :56-67: a school
+// NAT is one address, so an IP-keyed limit gives a whole building one budget.
+//
+// The only endpoint in the app that creates users. It sends NO mail (createUser
+// with email_confirm:true notifies nobody), so this is not a spam vector; what
+// it bounds is junk rows in auth.users and the billing that follows them.
+//
+// 40 PER HOUR, SIZED FOR ONE CLASS ROSTER TYPED BY HAND. This build adds one
+// student per request, so the honest worst case is a teacher entering a full
+// period one at a time -- 25 to 32 rows plus corrections. 30 would reject the
+// tail of a large class and the teacher would have no way to know why. 40 covers
+// it once an hour and caps a compromised teacher account at 40 accounts an hour
+// rather than an unbounded loop.
+//
+// BULK IMPORT WILL BRING ITS OWN LIMITER, sized for a whole class pasted at
+// once, rather than leaning on this one or inflating it to fit both. The two
+// have genuinely different honest shapes -- forty single requests over an hour
+// against one request carrying thirty students -- and a single threshold wide
+// enough for the paste would stop bounding the typing.
+export const provisionRateLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(40, "1 h"),
+  prefix: "ratelimit:student-provision",
+  analytics: true,
+});
+
 // /claim — handing a captured Stripe purchase to whoever presents its checkout
 // session id. Keyed on the SIGNED-IN USER ID, and the page enforces that by
 // requiring a session before it calls this.

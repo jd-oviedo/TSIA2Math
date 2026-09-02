@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { checkJoinCode } from "./join-code";
+import { enrolInClass } from "./class-enrol";
 
 // Post-authentication enrolment from the join-code cookie.
 //
@@ -18,23 +19,18 @@ import { checkJoinCode } from "./join-code";
 // so a class archived or deleted in the seconds between the confirmation screen
 // and the callback is caught here instead of enrolled into.
 //
-// ─── The duplicate guard is the database's, not ours ─────────────────────────
+// THE WRITE ITSELF MOVED to app/lib/class-enrol.ts, unchanged, when the teacher
+// dashboard gained a second door into class_enrollments. The duplicate guard,
+// why it is the database's and not ours, and why reactivation writes status
+// alone are all documented there. What stays here is what is specific to a join
+// code: validating it, re-resolving the class, and refusing a teacher's own
+// class.
 //
-// /api/enroll:41-58 checks for an existing row and then writes, which is a
-// read-then-write with no transaction: two concurrent submits can both pass the
-// check. That guard is deliberately NOT ported forward. class_enrollments
-// carries a unique constraint on (class_id, student_id)
-// -- class_enrollments_class_id_student_id_key, confirmed live -- so the insert
-// is attempted first and the conflict is the signal. The status inspection
-// happens only in the conflict branch, where it cannot race.
-//
-// The OUTCOMES match /api/enroll's semantics exactly, because two doors into the
-// same table telling a student two different stories is worse than either story:
+// The OUTCOMES are unchanged -- EnrolOutcome's four values are members of
+// JoinOutcome by construction -- because two doors into the same table telling a
+// student two different stories is worse than either story:
 //   status 'active'  -> a real "you are already in this class", with its own copy
 //   status 'removed' -> flipped back to active and treated as success
-// The reactivation writes { status: 'active' } and nothing else, matching
-// /api/enroll:53-56 rather than the teacher-invite route, which also rewrites
-// enrolled_via.
 
 export type JoinOutcome =
   | "enrolled"
@@ -97,51 +93,6 @@ export async function enrolFromJoinCode(
     return { outcome: "own-class", className: cls.name };
   }
 
-  const { error: insertError } = await admin.from("class_enrollments").insert({
-    class_id: cls.id,
-    student_id: userId,
-    enrolled_via: "join_code",
-  });
-
-  if (!insertError) return { outcome: "enrolled", className: cls.name };
-
-  // 23505 is unique_violation: the row already exists. Anything else is a real
-  // failure and must not be reported as success.
-  if (insertError.code !== "23505") {
-    console.error("[join-enroll] enrolment insert failed:", insertError.message);
-    return { outcome: "failed", className: cls.name };
-  }
-
-  const { data: existing, error: existingError } = await admin
-    .from("class_enrollments")
-    .select("id, status")
-    .eq("class_id", cls.id)
-    .eq("student_id", userId)
-    .maybeSingle();
-
-  if (existingError || !existing) {
-    // The constraint fired but the row cannot be read back. Nothing sensible
-    // left to say, and claiming success would be a lie.
-    console.error(
-      "[join-enroll] conflict on insert but no row found:",
-      existingError?.message ?? "no row"
-    );
-    return { outcome: "failed", className: cls.name };
-  }
-
-  if (existing.status === "active") {
-    return { outcome: "already-enrolled", className: cls.name };
-  }
-
-  const { error: reactivateError } = await admin
-    .from("class_enrollments")
-    .update({ status: "active" })
-    .eq("id", existing.id);
-
-  if (reactivateError) {
-    console.error("[join-enroll] reactivation failed:", reactivateError.message);
-    return { outcome: "failed", className: cls.name };
-  }
-
-  return { outcome: "reactivated", className: cls.name };
+  const outcome = await enrolInClass(admin, cls.id, userId, "join_code");
+  return { outcome, className: cls.name };
 }
