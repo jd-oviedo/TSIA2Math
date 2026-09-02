@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { DEFAULT_MAX_ITEMS } from "../adaptive-test/engine";
+import { isRosterEmail, BULK_PROVISION_MAX_ROWS } from "./roster-paste";
 
 // Item IDs follow a STRAND_TIER_NUMBER pattern (e.g. "PR_B_022"), but this
 // is kept loose rather than locked to that exact shape. The real authority
@@ -92,6 +93,40 @@ export const provisionStudentSchema = z.object({
   email: z.string().trim().email("Must be a valid email address"),
   class_id: z.string().uuid("Must be a valid class ID"),
 });
+
+// POST /api/teacher/provision/bulk -- "Add roster", the same provisioning run
+// over a pasted class. The row cap is declared in roster-paste.ts and re-exported
+// here, so the preview that enforces it and the schema that rejects it read the
+// same number.
+export { BULK_PROVISION_MAX_ROWS } from "./roster-paste";
+
+// THE ROW IS provisionStudentSchema WITHOUT THE CLASS, because one paste goes
+// into one class and repeating the id on every row would let a malformed body
+// ask for two.
+//
+// The email rule is overridden to the predicate the paste preview uses
+// (roster-paste.ts), and that is not a style choice. zod validates the whole
+// body at once, so a single address the preview called ready and .email()
+// refused would 400 the entire paste, after the teacher had already been told
+// every line was fine. Sharing the predicate makes that disagreement
+// impossible rather than unlikely.
+const rosterRowSchema = provisionStudentSchema.omit({ class_id: true }).extend({
+  email: z
+    .string()
+    .trim()
+    .max(254, "Email address is too long")
+    .refine(isRosterEmail, "Must be a valid email address"),
+});
+
+export const bulkProvisionSchema = z.object({
+  class_id: z.string().uuid("Must be a valid class ID"),
+  students: z
+    .array(rosterRowSchema)
+    .min(1, "Add at least one student")
+    .max(BULK_PROVISION_MAX_ROWS, `A roster cannot exceed ${BULK_PROVISION_MAX_ROWS} students`),
+});
+
+export type BulkProvisionBody = z.infer<typeof bulkProvisionSchema>;
 
 // POST /api/curriculum/practice
 // Identifies one item within a topic. As with itemIdSchema above, the real

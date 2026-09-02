@@ -9,22 +9,35 @@ import { DASH } from './dashboard-theme';
 //
 // Verbatim apart from `maxWidth`, which the invite and new-class modals leave at
 // the 420 they have always used, and the export dialog widens for a class list.
+//
+// `lockDismiss` DISABLES THE CASUAL EXITS, and it exists for exactly one kind of
+// content: a sign-in code. A provisioned student's code is shown once and is
+// unrecoverable afterwards -- Supabase stores only its hash and there is no
+// endpoint that reads one back -- so while one is on screen a click on the
+// backdrop is not a dismissal, it is a deletion. The X goes with it, because a
+// close control an inch from a copy button is the same accident.
+//
+// Escape is not bound here and never was, so there is nothing to suppress.
+// `onClose` still runs from the panel's own Done button, which is the deliberate
+// act this leaves as the only way out.
 
 export default function ModalShell({
   title,
   onClose,
   children,
   maxWidth = 420,
+  lockDismiss = false,
 }: {
   title: string;
   onClose: () => void;
   children: React.ReactNode;
   maxWidth?: number;
+  lockDismiss?: boolean;
 }) {
   return (
     <div
       style={{ position: 'fixed', inset: 0, background: 'rgba(15,30,53,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 200, padding: 16 }}
-      onClick={onClose}
+      onClick={lockDismiss ? undefined : onClose}
     >
       <div
         style={{ background: '#fff', borderRadius: 16, padding: 28, width: '100%', maxWidth, maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 20px 60px rgba(15,30,53,0.18)' }}
@@ -32,9 +45,11 @@ export default function ModalShell({
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
           <h2 style={{ margin: 0, fontFamily: FONT_HEADING, fontWeight: 600, fontSize: 18, color: DASH.heading }}>{title}</h2>
-          <button onClick={onClose} aria-label="Close" style={{ background: 'none', border: 'none', cursor: 'pointer', color: DASH.dim, padding: 4 }}>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><line x1="4" y1="4" x2="14" y2="14" /><line x1="14" y1="4" x2="4" y2="14" /></svg>
-          </button>
+          {!lockDismiss && (
+            <button onClick={onClose} aria-label="Close" style={{ background: 'none', border: 'none', cursor: 'pointer', color: DASH.dim, padding: 4 }}>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><line x1="4" y1="4" x2="14" y2="14" /><line x1="14" y1="4" x2="4" y2="14" /></svg>
+            </button>
+          )}
         </div>
         {children}
       </div>

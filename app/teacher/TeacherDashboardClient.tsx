@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { Fragment, useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import posthog from 'posthog-js';
 import MathText from '../components/MathText';
 import { FONT_HEADING, FONT_BASE_CSS } from '../components/fonts';
@@ -15,6 +15,14 @@ import { type AssignTopic } from './NewAssignment';
 import AssignmentsPanel from './AssignmentsPanel';
 import SupportModal from '../components/SupportModal';
 import ModalShell from '../components/ModalShell';
+import { parseRosterPaste, summarisePaste, BULK_PROVISION_MAX_ROWS } from '../lib/roster-paste';
+import {
+  rowPresentation,
+  buildRosterCsv,
+  rosterCsvFilename,
+  type BulkRowResult,
+  type BulkSummary,
+} from '../lib/roster-results';
 import ExportModal from './ExportModal';
 import TeacherTour, { TOUR_STORAGE_KEY } from './TeacherTour';
 import { type OfficialLevel } from "../lib/official-scores";
@@ -753,14 +761,30 @@ const MODAL_CTA_STYLE = {
 };
 
 function InviteModal({ classId, onClose, onAdded }: { classId: string; onClose: () => void; onAdded: () => void }) {
-  const [mode, setMode] = useState<'invite' | 'code'>('invite');
+  const [mode, setMode] = useState<'invite' | 'code' | 'roster'>('invite');
   const [locked, setLocked] = useState(false);
+  // A sign-in code is on screen, or is about to be. While this is true the
+  // dialog stops closing on a backdrop click and drops its X, because at that
+  // moment a stray click is not a dismissal, it is a deletion: the code is the
+  // student's password, Supabase keeps only its hash, and nothing can read it
+  // back. Both provisioning doors raise it -- one code is as unrecoverable as
+  // thirty, and the single-add panel has carried the same hazard since #254.
+  const [holdOpen, setHoldOpen] = useState(false);
+  // THE PASTE LIVES HERE, NOT IN THE PANEL. Switching tabs unmounts the panel
+  // that is not showing, which costs an email address on the two original doors
+  // and would cost a whole typed-out class on this one.
+  const [paste, setPaste] = useState('');
 
   return (
-    <ModalShell title="Add a student" onClose={onClose}>
+    <ModalShell
+      title={mode === 'roster' ? 'Add a roster' : 'Add a student'}
+      onClose={onClose}
+      maxWidth={mode === 'roster' ? 660 : 420}
+      lockDismiss={holdOpen}
+    >
       {!locked && (
         <div style={{ display: 'flex', marginBottom: 18, borderBottom: `1px solid ${DASH_FLAT.panelHairline}` }}>
-          {([['invite', 'Send invite'], ['code', 'Add with code']] as const).map(([key, label]) => (
+          {([['invite', 'Send invite'], ['code', 'Add with code'], ['roster', 'Add roster']] as const).map(([key, label]) => (
             <button
               key={key}
               onClick={() => setMode(key)}
@@ -778,9 +802,19 @@ function InviteModal({ classId, onClose, onAdded }: { classId: string; onClose: 
           ))}
         </div>
       )}
-      {mode === 'invite'
-        ? <InvitePanel classId={classId} onClose={onClose} onLock={setLocked} onAdded={onAdded} />
-        : <AddWithCodePanel classId={classId} onClose={onClose} onLock={setLocked} onAdded={onAdded} />}
+      {mode === 'invite' && <InvitePanel classId={classId} onClose={onClose} onLock={setLocked} onAdded={onAdded} />}
+      {mode === 'code' && <AddWithCodePanel classId={classId} onClose={onClose} onLock={setLocked} onHoldOpen={setHoldOpen} onAdded={onAdded} />}
+      {mode === 'roster' && (
+        <AddRosterPanel
+          classId={classId}
+          paste={paste}
+          onPaste={setPaste}
+          onClose={onClose}
+          onLock={setLocked}
+          onHoldOpen={setHoldOpen}
+          onAdded={onAdded}
+        />
+      )}
     </ModalShell>
   );
 }
@@ -857,7 +891,7 @@ function InvitePanel({ classId, onClose, onLock, onAdded }: { classId: string; o
 }
 
 // The provisioning door. Mints the account and shows the code once.
-function AddWithCodePanel({ classId, onClose, onLock, onAdded }: { classId: string; onClose: () => void; onLock: (v: boolean) => void; onAdded: () => void }) {
+function AddWithCodePanel({ classId, onClose, onLock, onHoldOpen, onAdded }: { classId: string; onClose: () => void; onLock: (v: boolean) => void; onHoldOpen: (v: boolean) => void; onAdded: () => void }) {
   const [first, setFirst] = useState('');
   const [last, setLast] = useState('');
   const [email, setEmail] = useState('');
@@ -888,6 +922,10 @@ function AddWithCodePanel({ classId, onClose, onLock, onAdded }: { classId: stri
       setResult(data);
       setStatus('idle');
       onLock(true);
+      // Only when an account was actually minted. The "already had an account"
+      // branch below shows no code, so there is nothing a stray click can lose
+      // and no reason to take the X away.
+      if (data.code) onHoldOpen(true);
       // Not gated on the enrolment outcome: 'already-enrolled' means the row was
       // already there and a refresh still shows the right thing, and even a
       // failed enrolment is worth re-reading rather than leaving a stale list.
@@ -982,6 +1020,347 @@ function AddWithCodePanel({ classId, onClose, onLock, onAdded }: { classId: stri
           {status === 'loading' ? 'Creating…' : 'Create account'}
         </button>
       </div>
+    </>
+  );
+}
+
+// ─── Add roster: the bulk door ────────────────────────────────────────────────
+//
+// A LOOP OVER THE DOOR NEXT TO IT, and nothing more. Every hard part already
+// exists: provisionStudent owns the mint and its idempotency, /provision/bulk
+// owns the gates and the per-row reporting. This panel parses a paste, shows it
+// back before anything is created, and then renders thirty verdicts.
+//
+// PREVIEW IS THE GATE. The Add button does not unlock while a single line is
+// unparseable, and that is not a nicety. A roster is pasted, not typed, so the
+// teacher has not read every line; the preview is the first time anyone looks at
+// row 27. Minting from a paste with bad lines would create the good ones, refuse
+// the rest, and hand back a table the teacher now has to reconcile against a
+// spreadsheet, holding codes that cannot be regenerated.
+//
+// THE RESULTS TABLE IS THE ARTIFACT, and the CSV under it is the reason showing
+// thirty unrecoverable codes at once is a safe thing to do at all. Both are
+// built from what the server said, never from what was pasted: the email column
+// shows the address provisionStudent normalised, because that is the one the
+// account actually has.
+
+const ROW_TONE: Record<string, string> = {
+  good: '#356B1B',
+  warn: '#8A4B12',
+  bad: '#C2402F',
+  muted: INK_2,
+};
+
+const TH_STYLE = {
+  textAlign: 'left' as const,
+  fontSize: 9.5,
+  fontWeight: 700,
+  letterSpacing: 0.6,
+  textTransform: 'uppercase' as const,
+  color: DASH.dim,
+  padding: '6px 8px',
+  borderBottom: `1px solid ${DASH_FLAT.panelHairline}`,
+  whiteSpace: 'nowrap' as const,
+};
+
+const TD_STYLE = {
+  fontSize: 12,
+  color: DASH.ink,
+  padding: '7px 8px',
+  borderBottom: `1px solid ${DASH_FLAT.panelHairline}`,
+  verticalAlign: 'top' as const,
+};
+
+function AddRosterPanel({
+  classId, paste, onPaste, onClose, onLock, onHoldOpen, onAdded,
+}: {
+  classId: string;
+  paste: string;
+  onPaste: (v: string) => void;
+  onClose: () => void;
+  onLock: (v: boolean) => void;
+  onHoldOpen: (v: boolean) => void;
+  onAdded: () => void;
+}) {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+  const [results, setResults] = useState<BulkRowResult[] | null>(null);
+  const [summary, setSummary] = useState<BulkSummary | null>(null);
+  const [downloaded, setDownloaded] = useState(false);
+
+  const parse = useMemo(() => parseRosterPaste(paste), [paste]);
+  const overCap = parse.readyCount > BULK_PROVISION_MAX_ROWS;
+  const canAdd = parse.readyCount > 0 && parse.problemCount === 0 && !overCap;
+
+  // IN FLIGHT ONLY. This is the window where accounts are being minted and their
+  // codes exist nowhere but in a response that has not arrived yet; closing the
+  // tab here destroys them. It deliberately does NOT stay armed once the results
+  // are on screen: at that point the codes are visible, the CSV button is inches
+  // away, and closing is a deliberate act. A prompt that fires on a
+  // finished-but-not-downloaded state is one teachers learn to click through,
+  // which would spend the warning exactly where it still matters.
+  useEffect(() => {
+    if (status !== 'loading') return;
+    const warn = (e: BeforeUnloadEvent) => { e.preventDefault(); e.returnValue = ''; };
+    window.addEventListener('beforeunload', warn);
+    return () => window.removeEventListener('beforeunload', warn);
+  }, [status]);
+
+  async function handleSubmit() {
+    if (!canAdd || status === 'loading') return;
+    setStatus('loading');
+    setMessage('');
+    onHoldOpen(true);
+    try {
+      const res = await fetch('/api/teacher/provision/bulk', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          class_id: classId,
+          students: parse.ready.map((r) => ({ first_name: r.firstName, last_name: r.lastName, email: r.email })),
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setStatus('error');
+        setMessage(data.error ?? 'Something went wrong.');
+        // A refused request minted nothing, so there is nothing to protect and
+        // the teacher gets their exits back.
+        onHoldOpen(false);
+        return;
+      }
+      setResults(data.results);
+      setSummary(data.summary);
+      setStatus('idle');
+      onLock(true);
+      onHoldOpen((data.summary?.created ?? 0) > 0);
+      onAdded();
+    } catch {
+      setStatus('error');
+      // NOT "try again", and the difference is the whole message. The request
+      // left; what failed was reading the answer. Accounts may well have been
+      // created, and if they were, their codes died with the response. Re-adding
+      // the same paste is safe and will report those students as already having
+      // an account, which is also the point at which the teacher learns they
+      // need new accounts rather than new codes.
+      setMessage('The connection dropped before the results came back. Some accounts may have been created. Check your roster below before pasting again, and re-add anyone who is missing.');
+      onHoldOpen(false);
+      onAdded();
+    }
+  }
+
+  function downloadCsv() {
+    if (!results) return;
+    const blob = new Blob([buildRosterCsv(results)], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = rosterCsvFilename();
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    setDownloaded(true);
+  }
+
+  // ── Results. The codes exist here and in no other place. ──
+  if (results && summary) {
+    const stranded = summary.created_not_enrolled;
+    return (
+      <div>
+        <div style={{ fontSize: 13, fontWeight: 700, color: DASH.heading, marginBottom: 4 }}>
+          {summary.created === 0
+            ? 'No new accounts were created'
+            : `${summary.created} ${summary.created === 1 ? 'account' : 'accounts'} created`}
+        </div>
+        <div style={{ fontSize: 12, color: INK_2, marginBottom: 14 }}>
+          {summary.total} {summary.total === 1 ? 'line' : 'lines'} submitted
+          {summary.existing > 0 && `, ${summary.existing} already had an account`}
+          {summary.failed > 0 && `, ${summary.failed} failed`}
+          {summary.own_account > 0 && `, ${summary.own_account} was your own address`}
+          {summary.duplicate > 0 && `, ${summary.duplicate} skipped as duplicates`}
+        </div>
+
+        {/* THE ONE FAILURE THIS TABLE COULD OTHERWISE HIDE, said before the
+            table rather than only inside it. These students have a working
+            account and a code, and are not in the class. */}
+        {stranded > 0 && (
+          <div style={{ border: `1px solid #C2402F`, borderLeft: `3px solid #C2402F`, background: '#FDF1E9', padding: '11px 13px', marginBottom: 14 }}>
+            <div style={{ fontSize: 12.5, fontWeight: 700, color: '#C2402F', marginBottom: 3 }}>
+              {stranded} {stranded === 1 ? 'student is' : 'students are'} not in this class
+            </div>
+            <div style={{ fontSize: 12, color: DASH.ink, lineHeight: 1.5 }}>
+              Their accounts were created and their codes are below, but adding them to the class did not go through. Save the codes, then add those students again.
+            </div>
+          </div>
+        )}
+
+        {summary.created > 0 && (
+          <p style={{ margin: '0 0 12px', fontSize: 12.5, fontWeight: 700, color: '#8A4B12', lineHeight: 1.5 }}>
+            Save these codes now. They are the students&apos; passwords, they are not shown again, and nobody can look them up later.
+          </p>
+        )}
+
+        <button
+          onClick={downloadCsv}
+          className={summary.created > 0 && !downloaded ? 'um-tdash-cta' : 'um-tdash-ghost'}
+          style={summary.created > 0 && !downloaded
+            ? { ...MODAL_CTA_STYLE, width: '100%', marginBottom: 14 }
+            : { width: '100%', padding: '10px 0', border: `1px solid ${NAVY}`, borderRadius: 0, cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600, marginBottom: 14 }}
+        >
+          {downloaded ? 'Download again' : 'Download CSV'}
+        </button>
+
+        <div style={{ maxHeight: 330, overflowY: 'auto', border: `1px solid ${DASH_FLAT.panelHairline}`, marginBottom: 16 }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr>
+                <th style={TH_STYLE}>Student</th>
+                <th style={TH_STYLE}>Email</th>
+                {/* TWO COLUMNS, NOT ONE STATUS WORD. An account being made and a
+                    student being in the class are separate facts that disagree
+                    on exactly the row nobody would look twice at. */}
+                <th style={TH_STYLE}>Account</th>
+                <th style={TH_STYLE}>In class</th>
+                <th style={TH_STYLE}>Code</th>
+              </tr>
+            </thead>
+            <tbody>
+              {results.map((r, i) => {
+                const p = rowPresentation(r);
+                const bg = p.warn ? '#FDF1E9' : undefined;
+                return (
+                  <Fragment key={`${r.email}-${i}`}>
+                    <tr style={{ background: bg }}>
+                      <td style={{ ...TD_STYLE, borderBottom: p.note ? 'none' : TD_STYLE.borderBottom, borderLeft: p.warn ? '3px solid #C2402F' : '3px solid transparent', fontWeight: 600 }}>
+                        {r.first_name} {r.last_name}
+                      </td>
+                      <td style={{ ...TD_STYLE, borderBottom: p.note ? 'none' : TD_STYLE.borderBottom, fontFamily: "'Courier New', monospace", fontSize: 11.5, wordBreak: 'break-all' }}>{r.email}</td>
+                      <td style={{ ...TD_STYLE, borderBottom: p.note ? 'none' : TD_STYLE.borderBottom, color: ROW_TONE[p.tone], fontWeight: 600, whiteSpace: 'nowrap' }}>{p.account}</td>
+                      <td style={{ ...TD_STYLE, borderBottom: p.note ? 'none' : TD_STYLE.borderBottom, fontWeight: p.inClass === 'no' ? 700 : 600, color: p.inClass === 'no' ? '#C2402F' : p.inClass === 'yes' ? '#356B1B' : DASH.dim }}>
+                        {p.inClassLabel}
+                      </td>
+                      <td style={{ ...TD_STYLE, borderBottom: p.note ? 'none' : TD_STYLE.borderBottom, fontFamily: "'Courier New', monospace", fontSize: 12.5, fontWeight: 700, letterSpacing: 0.8, color: DASH.heading, whiteSpace: 'nowrap' }}>
+                        {p.code ?? ''}
+                      </td>
+                    </tr>
+                    {p.note && (
+                      <tr style={{ background: bg }}>
+                        <td colSpan={5} style={{ ...TD_STYLE, paddingTop: 0, fontSize: 11.5, lineHeight: 1.45, color: ROW_TONE[p.tone], borderLeft: p.warn ? '3px solid #C2402F' : '3px solid transparent' }}>
+                          {p.note}
+                        </td>
+                      </tr>
+                    )}
+                  </Fragment>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        <button onClick={onClose} className={summary.created > 0 && !downloaded ? 'um-tdash-ghost' : 'um-tdash-cta'}
+          style={summary.created > 0 && !downloaded
+            ? { width: '100%', padding: '10px 0', border: `1px solid ${NAVY}`, borderRadius: 0, cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600 }
+            : { ...MODAL_CTA_STYLE, width: '100%' }}>
+          Done
+        </button>
+      </div>
+    );
+  }
+
+  // ── The paste, and the preview that gates it. ──
+  return (
+    <>
+      <p style={{ margin: '0 0 12px', fontSize: 13, color: INK_2, lineHeight: 1.5 }}>
+        One student per line: first name, last name, email. Paste straight from a spreadsheet or type the list with commas. Every account is created at once and you get the sign-in codes back as a table and a CSV.
+      </p>
+      <textarea
+        value={paste}
+        onChange={(e) => { onPaste(e.target.value); setStatus('idle'); setMessage(''); }}
+        placeholder={'Ana\tReyes\tana.reyes@district.edu\nLuis, Ortega, luis.ortega@district.edu'}
+        rows={7}
+        disabled={status === 'loading'}
+        style={{
+          ...FIELD_STYLE,
+          fontFamily: "'Courier New', monospace",
+          fontSize: 12.5,
+          lineHeight: 1.6,
+          resize: 'vertical',
+          minHeight: 130,
+          marginBottom: 10,
+        }}
+      />
+
+      {parse.rows.length > 0 && (
+        <>
+          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 7 }}>
+            <span style={{ fontSize: 12, fontWeight: 700, color: parse.problemCount > 0 ? '#C2402F' : '#356B1B' }}>
+              {summarisePaste(parse)}
+            </span>
+            <span style={{ fontSize: 11, color: DASH.dim }}>
+              Up to {BULK_PROVISION_MAX_ROWS} per paste
+            </span>
+          </div>
+
+          <div style={{ maxHeight: 240, overflowY: 'auto', border: `1px solid ${DASH_FLAT.panelHairline}`, marginBottom: 10 }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+              <thead>
+                <tr>
+                  <th style={{ ...TH_STYLE, width: 30 }}>#</th>
+                  <th style={TH_STYLE}>First</th>
+                  <th style={TH_STYLE}>Last</th>
+                  <th style={TH_STYLE}>Email</th>
+                  <th style={TH_STYLE}>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {parse.rows.map((row) => {
+                  const ok = row.status === 'ready';
+                  return (
+                    <tr key={row.line} style={{ background: ok ? undefined : '#FDF1E9' }}>
+                      <td style={{ ...TD_STYLE, color: DASH.dim, fontSize: 11 }}>{row.line}</td>
+                      <td style={TD_STYLE}>{row.firstName}</td>
+                      <td style={TD_STYLE}>{row.lastName}</td>
+                      <td style={{ ...TD_STYLE, fontFamily: "'Courier New', monospace", fontSize: 11.5, wordBreak: 'break-all' }}>{row.email}</td>
+                      <td style={{ ...TD_STYLE, color: ok ? '#356B1B' : '#C2402F', fontWeight: 600 }}>
+                        {ok ? 'Ready' : row.message}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+
+      {overCap && (
+        <p style={{ margin: '0 0 10px', fontSize: 12, color: '#C2402F', lineHeight: 1.5 }}>
+          That is {parse.readyCount} students. Add up to {BULK_PROVISION_MAX_ROWS} at a time, then paste the rest.
+        </p>
+      )}
+      {status === 'error' && <p style={{ margin: '0 0 10px', fontSize: 12, color: '#C2402F', lineHeight: 1.5 }}>{message}</p>}
+
+      <div style={{ display: 'flex', gap: 10, marginTop: 8 }}>
+        <button onClick={onClose} disabled={status === 'loading'} className="um-tdash-ghost"
+          style={{ flex: 1, padding: '10px 0', border: `1px solid ${NAVY}`, borderRadius: 0, cursor: status === 'loading' ? 'default' : 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600 }}>
+          Cancel
+        </button>
+        <button onClick={handleSubmit} disabled={!canAdd || status === 'loading'}
+          className="um-tdash-cta"
+          style={{ ...MODAL_CTA_STYLE, flex: 2, background: status === 'loading' ? '#F6D3A0' : undefined, cursor: status === 'loading' || !canAdd ? 'default' : 'pointer' }}>
+          {status === 'loading'
+            ? `Creating ${parse.readyCount} accounts…`
+            : parse.readyCount === 0
+              ? 'Add students'
+              : `Add ${parse.readyCount} ${parse.readyCount === 1 ? 'student' : 'students'}`}
+        </button>
+      </div>
+      {status === 'loading' && (
+        <p style={{ margin: '10px 0 0', fontSize: 11.5, color: INK_2, lineHeight: 1.5, textAlign: 'center' }}>
+          This can take up to a minute for a full class. Do not close this window.
+        </p>
+      )}
     </>
   );
 }
