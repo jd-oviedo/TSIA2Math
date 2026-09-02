@@ -713,9 +713,82 @@ function MiscCard({ m, testedCount }: { m: Misconception; testedCount: number })
   );
 }
 
-// ─── Invite modal ─────────────────────────────────────────────────────────────
+// ─── Add-a-student modal ──────────────────────────────────────────────────────
+//
+// Two doors, one dialog. "Send invite" is the original flow, unchanged. "Add
+// with code" mints the account itself, and exists because the district's
+// Workspace admin blocks students from Google OAuth -- an invite link to a
+// sign-in they cannot complete is not a path.
+//
+// THE TABS DISAPPEAR ONCE EITHER SIDE HAS FINISHED. The code is shown exactly
+// once and cannot be looked up again, so a stray click on the other tab must not
+// be able to unmount the panel holding it.
+//
+// onAdded FIRES WHENEVER A STUDENT ACTUALLY LANDED IN THE CLASS, on both doors.
+// The dashboard reloads the roster with it: a teacher who adds a student and
+// sees the list unchanged reads that as broken, and reloading the page by hand
+// is not a thing anyone should have to work out.
 
-function InviteModal({ classId, onClose }: { classId: string; onClose: () => void }) {
+const FIELD_STYLE = {
+  width: '100%',
+  border: `1px solid ${DASH_FLAT.panelHairline}`,
+  borderRadius: 0,
+  padding: '10px 14px',
+  fontSize: 14,
+  fontFamily: 'inherit',
+  color: DASH.ink,
+  outline: 'none',
+  boxSizing: 'border-box' as const,
+};
+
+const MODAL_CTA_STYLE = {
+  padding: '10px 0',
+  border: 'none',
+  borderRadius: 0,
+  cursor: 'pointer',
+  fontFamily: 'inherit',
+  fontSize: 13,
+  fontWeight: 700,
+  color: CTA_INK,
+};
+
+function InviteModal({ classId, onClose, onAdded }: { classId: string; onClose: () => void; onAdded: () => void }) {
+  const [mode, setMode] = useState<'invite' | 'code'>('invite');
+  const [locked, setLocked] = useState(false);
+
+  return (
+    <ModalShell title="Add a student" onClose={onClose}>
+      {!locked && (
+        <div style={{ display: 'flex', marginBottom: 18, borderBottom: `1px solid ${DASH_FLAT.panelHairline}` }}>
+          {([['invite', 'Send invite'], ['code', 'Add with code']] as const).map(([key, label]) => (
+            <button
+              key={key}
+              onClick={() => setMode(key)}
+              aria-pressed={mode === key}
+              style={{
+                flex: 1, padding: '9px 0', background: 'none', border: 'none', borderRadius: 0,
+                borderBottom: `2px solid ${mode === key ? NAVY : 'transparent'}`, marginBottom: -1,
+                cursor: 'pointer', fontFamily: 'inherit', fontSize: 13,
+                fontWeight: mode === key ? 700 : 600,
+                color: mode === key ? DASH.heading : INK_2,
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      )}
+      {mode === 'invite'
+        ? <InvitePanel classId={classId} onClose={onClose} onLock={setLocked} onAdded={onAdded} />
+        : <AddWithCodePanel classId={classId} onClose={onClose} onLock={setLocked} onAdded={onAdded} />}
+    </ModalShell>
+  );
+}
+
+// The original invite flow, lifted out of InviteModal unchanged apart from
+// reporting its terminal state up so the tabs can retract, and calling onAdded
+// when the student was enrolled outright rather than emailed a link.
+function InvitePanel({ classId, onClose, onLock, onAdded }: { classId: string; onClose: () => void; onLock: (v: boolean) => void; onAdded: () => void }) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
@@ -736,6 +809,10 @@ function InviteModal({ classId, onClose }: { classId: string; onClose: () => voi
       } else {
         setStatus('success');
         setMessage(data.status === 'enrolled' ? `${email} was already a user — enrolled directly.` : `Invite sent to ${email}.`);
+        onLock(true);
+        // Only the enrolled branch changed the roster. An invite that is still
+        // pending has nothing to show yet.
+        if (data.status === 'enrolled') onAdded();
       }
     } catch {
       setStatus('error');
@@ -743,39 +820,169 @@ function InviteModal({ classId, onClose }: { classId: string; onClose: () => voi
     }
   }
 
+  if (status === 'success') {
+    return (
+      <div style={{ textAlign: 'center', padding: '12px 0 4px' }}>
+        <div style={{ fontSize: 32, marginBottom: 10, color: '#4F9A2E' }}>✓</div>
+        <p style={{ margin: '0 0 20px', fontSize: 14, color: '#356B1B', fontWeight: 600 }}>{message}</p>
+        <button onClick={onClose} className="um-tdash-cta" style={{ ...MODAL_CTA_STYLE, padding: '10px 24px' }}>Done</button>
+      </div>
+    );
+  }
+
   return (
-    <ModalShell title="Invite by email" onClose={onClose}>
-      {status === 'success' ? (
-        <div style={{ textAlign: 'center', padding: '12px 0 4px' }}>
-          <div style={{ fontSize: 32, marginBottom: 10, color: '#4F9A2E' }}>✓</div>
-          <p style={{ margin: '0 0 20px', fontSize: 14, color: '#356B1B', fontWeight: 600 }}>{message}</p>
-          <button onClick={onClose} className="um-tdash-cta" style={{ padding: '10px 24px', border: 'none', borderRadius: 0, cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 700, color: CTA_INK }}>Done</button>
-        </div>
-      ) : (
-        <>
-          <p style={{ margin: '0 0 16px', fontSize: 13, color: INK_2, lineHeight: 1.5 }}>
-            Enter a student email. If they already have an account they&apos;ll be enrolled immediately. Otherwise they&apos;ll receive an invite link.
-          </p>
-          <input
-            value={email}
-            onChange={(e) => { setEmail(e.target.value); setStatus('idle'); setMessage(''); }}
-            onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(); }}
-            placeholder="student@school.edu"
-            type="email"
-            style={{ width: '100%', border: `1px solid ${status === 'error' ? '#C2402F' : DASH_FLAT.panelHairline}`, borderRadius: 0, padding: '10px 14px', fontSize: 14, fontFamily: 'inherit', color: DASH.ink, outline: 'none', boxSizing: 'border-box', marginBottom: 6 }}
-          />
-          {status === 'error' && <p style={{ margin: '0 0 10px', fontSize: 12, color: '#C2402F' }}>{message}</p>}
-          <div style={{ display: 'flex', gap: 10, marginTop: 8 }}>
-            <button onClick={onClose} className="um-tdash-ghost" style={{ flex: 1, padding: '10px 0', border: `1px solid ${NAVY}`, borderRadius: 0, cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600 }}>Cancel</button>
-            <button onClick={handleSubmit} disabled={status === 'loading' || !email}
-              className="um-tdash-cta"
-              style={{ flex: 2, padding: '10px 0', border: 'none', borderRadius: 0, background: status === 'loading' ? '#F6D3A0' : undefined, cursor: status === 'loading' ? 'default' : 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 700, color: CTA_INK }}>
-              {status === 'loading' ? 'Sending…' : 'Send invite'}
+    <>
+      <p style={{ margin: '0 0 16px', fontSize: 13, color: INK_2, lineHeight: 1.5 }}>
+        Enter a student email. If they already have an account they&apos;ll be enrolled immediately. Otherwise they&apos;ll receive an invite link.
+      </p>
+      <input
+        value={email}
+        onChange={(e) => { setEmail(e.target.value); setStatus('idle'); setMessage(''); }}
+        onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(); }}
+        placeholder="student@school.edu"
+        type="email"
+        style={{ ...FIELD_STYLE, borderColor: status === 'error' ? '#C2402F' : DASH_FLAT.panelHairline, marginBottom: 6 }}
+      />
+      {status === 'error' && <p style={{ margin: '0 0 10px', fontSize: 12, color: '#C2402F' }}>{message}</p>}
+      <div style={{ display: 'flex', gap: 10, marginTop: 8 }}>
+        <button onClick={onClose} className="um-tdash-ghost" style={{ flex: 1, padding: '10px 0', border: `1px solid ${NAVY}`, borderRadius: 0, cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600 }}>Cancel</button>
+        <button onClick={handleSubmit} disabled={status === 'loading' || !email}
+          className="um-tdash-cta"
+          style={{ ...MODAL_CTA_STYLE, flex: 2, background: status === 'loading' ? '#F6D3A0' : undefined, cursor: status === 'loading' ? 'default' : 'pointer' }}>
+          {status === 'loading' ? 'Sending…' : 'Send invite'}
+        </button>
+      </div>
+    </>
+  );
+}
+
+// The provisioning door. Mints the account and shows the code once.
+function AddWithCodePanel({ classId, onClose, onLock, onAdded }: { classId: string; onClose: () => void; onLock: (v: boolean) => void; onAdded: () => void }) {
+  const [first, setFirst] = useState('');
+  const [last, setLast] = useState('');
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+  const [result, setResult] = useState<{ status: string; email: string; code: string | null; enrolment: string } | null>(null);
+  const [copied, setCopied] = useState(false);
+
+  const ready = Boolean(first.trim() && last.trim() && email.trim());
+
+  function clearError() { setStatus('idle'); setMessage(''); }
+
+  async function handleSubmit() {
+    if (!ready || status === 'loading') return;
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/teacher/provision', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ first_name: first, last_name: last, email, class_id: classId }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setStatus('error');
+        setMessage(data.error ?? 'Something went wrong.');
+        return;
+      }
+      setResult(data);
+      setStatus('idle');
+      onLock(true);
+      // Not gated on the enrolment outcome: 'already-enrolled' means the row was
+      // already there and a refresh still shows the right thing, and even a
+      // failed enrolment is worth re-reading rather than leaving a stale list.
+      onAdded();
+    } catch {
+      setStatus('error');
+      setMessage('Network error. Try again.');
+    }
+  }
+
+  function copyCode() {
+    if (!result?.code) return;
+    navigator.clipboard.writeText(result.code).catch(() => {});
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  }
+
+  // ── An account was just minted. The one and only sight of the code. ──
+  if (result?.code) {
+    return (
+      <div>
+        <div style={{ fontSize: 13, fontWeight: 700, color: '#356B1B', marginBottom: 14 }}>✓ Account created</div>
+        <div style={{ border: `1px solid ${DASH_FLAT.panelHairline}`, background: DASH.pageBg, padding: '14px 16px', marginBottom: 14 }}>
+          <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: 0.8, textTransform: 'uppercase', color: DASH.dim, marginBottom: 4 }}>Email</div>
+          <div style={{ fontFamily: "'Courier New', monospace", fontSize: 13.5, color: DASH.heading, wordBreak: 'break-all', marginBottom: 14 }}>{result.email}</div>
+          <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: 0.8, textTransform: 'uppercase', color: DASH.dim, marginBottom: 4 }}>Sign-in code</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span style={{ fontFamily: "'Courier New', monospace", fontSize: 19, fontWeight: 700, letterSpacing: 2, color: DASH.heading }}>{result.code}</span>
+            <button onClick={copyCode} title="Copy code" style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', color: copied ? '#4F9A2E' : INK_2 }}>
+              {copied ? (
+                <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 9 7 13 15 5" /></svg>
+              ) : (
+                <svg width="15" height="15" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="5" width="9" height="9" rx="1.6" /><path d="M11 5 V3.5 a1.5 1.5 0 0 0 -1.5 -1.5 H4 a1.5 1.5 0 0 0 -1.5 1.5 V11 a1.5 1.5 0 0 0 1.5 1.5 H5.5" /></svg>
+              )}
             </button>
           </div>
-        </>
-      )}
-    </ModalShell>
+        </div>
+        <p style={{ margin: '0 0 8px', fontSize: 12.5, fontWeight: 700, color: '#8A4B12', lineHeight: 1.5 }}>
+          Save this now. The code is the student&apos;s password and it is not shown again — nobody can look it up later.
+        </p>
+        <p style={{ margin: '0 0 18px', fontSize: 12, color: INK_2, lineHeight: 1.5 }}>
+          They sign in with this email and code.{' '}
+          {result.enrolment === 'failed'
+            ? <strong style={{ color: '#C2402F' }}>The account was created but adding them to this class didn&apos;t go through — try adding them again.</strong>
+            : 'They are in this class.'}
+        </p>
+        <button onClick={onClose} className="um-tdash-cta" style={{ ...MODAL_CTA_STYLE, width: '100%' }}>Done</button>
+      </div>
+    );
+  }
+
+  // ── The account already existed. Nothing minted, no code invented. ──
+  if (result) {
+    return (
+      <div>
+        <div style={{ fontSize: 13, fontWeight: 700, color: DASH.heading, marginBottom: 10 }}>That email already has an account</div>
+        <p style={{ margin: '0 0 18px', fontSize: 13, color: INK_2, lineHeight: 1.5 }}>
+          {result.enrolment === 'already-enrolled'
+            ? `${result.email} was already in this class.`
+            : `${result.email} has been added to this class.`}
+          {' '}No new code was created — they sign in with the password they already have.
+        </p>
+        <button onClick={onClose} className="um-tdash-cta" style={{ ...MODAL_CTA_STYLE, width: '100%' }}>Done</button>
+      </div>
+    );
+  }
+
+  // ── The form ──
+  return (
+    <>
+      <p style={{ margin: '0 0 16px', fontSize: 13, color: INK_2, lineHeight: 1.5 }}>
+        Creates the account now and shows you a sign-in code to hand the student. Use this when they can&apos;t sign in with Google.
+      </p>
+      <div style={{ display: 'flex', gap: 10, marginBottom: 10 }}>
+        <input value={first} onChange={(e) => { setFirst(e.target.value); clearError(); }} placeholder="First name" autoFocus style={FIELD_STYLE} />
+        <input value={last} onChange={(e) => { setLast(e.target.value); clearError(); }} placeholder="Last name" style={FIELD_STYLE} />
+      </div>
+      <input
+        value={email}
+        onChange={(e) => { setEmail(e.target.value); clearError(); }}
+        onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(); }}
+        placeholder="student@school.edu"
+        type="email"
+        style={{ ...FIELD_STYLE, borderColor: status === 'error' ? '#C2402F' : DASH_FLAT.panelHairline, marginBottom: 6 }}
+      />
+      {status === 'error' && <p style={{ margin: '0 0 10px', fontSize: 12, color: '#C2402F' }}>{message}</p>}
+      <div style={{ display: 'flex', gap: 10, marginTop: 8 }}>
+        <button onClick={onClose} className="um-tdash-ghost" style={{ flex: 1, padding: '10px 0', border: `1px solid ${NAVY}`, borderRadius: 0, cursor: 'pointer', fontFamily: 'inherit', fontSize: 13, fontWeight: 600 }}>Cancel</button>
+        <button onClick={handleSubmit} disabled={status === 'loading' || !ready}
+          className="um-tdash-cta"
+          style={{ ...MODAL_CTA_STYLE, flex: 2, background: status === 'loading' ? '#F6D3A0' : undefined, cursor: status === 'loading' ? 'default' : 'pointer' }}>
+          {status === 'loading' ? 'Creating…' : 'Create account'}
+        </button>
+      </div>
+    </>
   );
 }
 
@@ -1427,7 +1634,9 @@ export default function TeacherDashboardClient({ canExport, assignTopics, initia
         </main>
       </TeacherShell>
 
-      {showInvite && selectedClass && <InviteModal classId={selectedClass.id} onClose={() => setShowInvite(false)} />}
+      {/* onAdded reloads the class the modal just wrote into -- not
+          selectedClassId, which could in principle have moved on under it. */}
+      {showInvite && selectedClass && <InviteModal classId={selectedClass.id} onClose={() => setShowInvite(false)} onAdded={() => loadClassData(selectedClass.id)} />}
       {showExport && canExport && <ExportModal classes={classes} selectedClassId={selectedClassId} onClose={() => setShowExport(false)} />}
       {showNewClass && <NewClassModal onClose={() => setShowNewClass(false)} onCreated={handleClassCreated} />}
       {showSupport && <SupportModal onClose={() => setShowSupport(false)} />}

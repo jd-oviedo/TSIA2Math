@@ -80,6 +80,19 @@ export const inviteSchema = z.object({
 
 export type InviteBody = z.infer<typeof inviteSchema>;
 
+// POST /api/teacher/provision -- "Add with code".
+//
+// First and last name are separate fields because the modal asks for them
+// separately; they are joined into user_metadata.full_name by the provisioning
+// module, since profiles has no name column. .trim() before .min(1) so a field
+// of spaces is refused here rather than becoming an account named " ".
+export const provisionStudentSchema = z.object({
+  first_name: z.string().trim().min(1, "First name is required").max(80, "First name is too long"),
+  last_name: z.string().trim().min(1, "Last name is required").max(80, "Last name is too long"),
+  email: z.string().trim().email("Must be a valid email address"),
+  class_id: z.string().uuid("Must be a valid class ID"),
+});
+
 // POST /api/curriculum/practice
 // Identifies one item within a topic. As with itemIdSchema above, the real
 // authority is the practice_items lookup in the route; this only rejects

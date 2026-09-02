@@ -1,5 +1,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { displayName } from "./auth";
+// From the leaf module, NOT from ./auth, and that is load-bearing: auth.ts
+// imports next/headers, which would make this file -- and everything that
+// imports it -- impossible to load outside a request or a test.
+import { displayName } from "./display-name";
 
 // The auth.users lookup shared by the roster route and the CSV exports.
 //
@@ -48,4 +51,50 @@ export async function usersById(
   }
 
   return map;
+}
+
+/**
+ * The user holding this email, or null.
+ *
+ * SAME PAGINATION AS usersById, for the same reason. An unpaginated listUsers()
+ * sees one default page of 50, so past the fiftieth account in the project it
+ * reports "no such user" about people who plainly exist.
+ * app/api/teacher/invite/route.ts:49 still does exactly that; the cost there is
+ * an invite email to someone who already has an account. The cost on the
+ * provisioning route is worse -- it would try to MINT an account that exists --
+ * so that route uses this.
+ *
+ * THROWS RATHER THAN RETURNING NULL ON A READ ERROR, and that is the whole
+ * difference from findUserIdByEmail in stripe-activation.ts:35, which returns
+ * null for both. "Not found" and "could not look" are the same value to a caller
+ * that only gets null, and this caller turns "not found" into createUser. A page
+ * that failed to read must never become an account. (The stripe-activation copy
+ * is left alone: its callers only read, and changing billing under this task
+ * would be scope it did not ask for.)
+ *
+ * Early-exits on the first match, so it is cheaper than usersById for the one
+ * question it answers, and unlike usersById it never holds the project in memory.
+ */
+export async function findUserByEmail(
+  admin: SupabaseClient,
+  email: string
+): Promise<{ id: string; email: string } | null> {
+  const target = email.trim().toLowerCase();
+  if (!target) return null;
+
+  for (let page = 1; ; page++) {
+    const { data, error } = await admin.auth.admin.listUsers({
+      page,
+      perPage: USERS_PAGE_SIZE,
+    });
+
+    if (error) throw error;
+
+    const users = data?.users ?? [];
+    const match = users.find((u) => (u.email ?? "").toLowerCase() === target);
+    if (match) return { id: match.id, email: match.email ?? target };
+
+    // A short page is the last page.
+    if (users.length < USERS_PAGE_SIZE) return null;
+  }
 }
