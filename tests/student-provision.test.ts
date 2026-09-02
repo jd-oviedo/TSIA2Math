@@ -144,9 +144,9 @@ function stubAdmin(opts: StubOpts) {
 const INPUT = {
   classId: CLASS,
   teacherId: TEACHER,
-  email: 'Ana.Reyes@district.edu',
-  firstName: 'Ana',
-  lastName: 'Reyes',
+  email: 'Sarah.Johnson@district.edu',
+  firstName: 'Sarah',
+  lastName: 'Johnson',
 };
 
 // ─── 1. The clean mint ───────────────────────────────────────────────────────
@@ -164,13 +164,13 @@ test('a new student gets an account, a code, and an enrolment', async () => {
 
   // The email is normalised once, and the SAME normalised value is what the
   // account is keyed on and what comes back to the teacher.
-  assert.equal(r.email, 'ana.reyes@district.edu');
-  assert.equal(created[0].email, 'ana.reyes@district.edu');
+  assert.equal(r.email, 'sarah.johnson@district.edu');
+  assert.equal(created[0].email, 'sarah.johnson@district.edu');
   assert.equal(created[0].password, r.code);
   // No confirmation mail, and the name lands in metadata because profiles has
   // no name column.
   assert.equal(created[0].email_confirm, true);
-  assert.deepEqual(created[0].user_metadata, { full_name: 'Ana Reyes' });
+  assert.deepEqual(created[0].user_metadata, { full_name: 'Sarah Johnson' });
 
   assert.deepEqual(writes, [
     { class_id: CLASS, student_id: 'stu-1', enrolled_via: 'teacher_invite' },
@@ -221,7 +221,7 @@ test('a previously removed student is flipped back to active', async () => {
 
 test('an existing account is enrolled, and NO code is invented', async () => {
   const { client, writes, created } = stubAdmin({
-    users: [{ id: 'stu-9', email: 'ana.reyes@district.edu' }],
+    users: [{ id: 'stu-9', email: 'sarah.johnson@district.edu' }],
   });
   const r = await provisionStudent(client as never, INPUT);
 
@@ -242,7 +242,7 @@ test('an existing account is enrolled, and NO code is invented', async () => {
 // is the failure this whole module exists to avoid.
 test('a differently-cased address resolves to the same account', async () => {
   const { client, created } = stubAdmin({
-    users: [{ id: 'stu-9', email: 'ANA.REYES@District.edu' }],
+    users: [{ id: 'stu-9', email: 'SARAH.JOHNSON@District.edu' }],
   });
   const r = await provisionStudent(client as never, INPUT);
   assert.equal(r.outcome, 'existing');
@@ -262,7 +262,7 @@ test('running the same add twice never 500s and never doubles anything', async (
   // Second run: the account from the first run now exists, and so does its
   // enrolment, so the insert conflicts.
   const second = stubAdmin({
-    users: [{ id: 'stu-1', email: 'ana.reyes@district.edu' }],
+    users: [{ id: 'stu-1', email: 'sarah.johnson@district.edu' }],
     insertError: CONFLICT,
     existing: { id: 'enr-1', status: 'active' },
   });
@@ -281,7 +281,7 @@ test('running the same add twice never 500s and never doubles anything', async (
 
 test('a teacher cannot add themselves as a student', async () => {
   const { client, writes, created } = stubAdmin({
-    users: [{ id: TEACHER, email: 'ana.reyes@district.edu' }],
+    users: [{ id: TEACHER, email: 'sarah.johnson@district.edu' }],
   });
   const r = await provisionStudent(client as never, INPUT);
 
@@ -315,7 +315,7 @@ test('a createUser refused as already-registered resolves to the existing accoun
     users: [],
     createError: { code: 'email_exists', message: 'A user with this email address has already been registered' },
     // ...and the re-resolution finds the account the other writer made.
-    usersAfterCreate: [{ id: 'stu-7', email: 'ana.reyes@district.edu' }],
+    usersAfterCreate: [{ id: 'stu-7', email: 'sarah.johnson@district.edu' }],
   });
   const r = await provisionStudent(client as never, INPUT);
 

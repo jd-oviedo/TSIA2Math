@@ -44,88 +44,88 @@ const PARSE_CASES: {
     // Google Sheets and Excel both put tabs between the cells of a dragged
     // selection. This is the paste the feature was built for.
     name: 'tab separated, straight out of a spreadsheet',
-    paste: 'Ana\tReyes\tana.reyes@district.edu\nLuis\tOrtega\tluis.ortega@district.edu',
+    paste: 'Sarah\tJohnson\tsarah.johnson@district.edu\nLuis\tOrtega\tluis.ortega@district.edu',
     expect: [
-      { line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana.reyes@district.edu', status: READY },
+      { line: 1, full: 'Sarah Johnson', first: 'Sarah', last: 'Johnson', email: 'sarah.johnson@district.edu', status: READY },
       { line: 2, full: 'Luis Ortega', first: 'Luis', last: 'Ortega', email: 'luis.ortega@district.edu', status: READY },
     ],
   },
   {
     name: 'comma separated, typed by hand',
-    paste: 'Ana,Reyes,ana.reyes@district.edu',
-    expect: [{ line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana.reyes@district.edu', status: READY }],
+    paste: 'Sarah,Johnson,sarah.johnson@district.edu',
+    expect: [{ line: 1, full: 'Sarah Johnson', first: 'Sarah', last: 'Johnson', email: 'sarah.johnson@district.edu', status: READY }],
   },
   {
     // A typed list almost always has spaces after the commas.
     name: 'comma separated with spaces, and both separators in one paste',
-    paste: 'Ana, Reyes, ana.reyes@district.edu\nLuis\tOrtega\tluis.ortega@district.edu',
+    paste: 'Sarah, Johnson, sarah.johnson@district.edu\nLuis\tOrtega\tluis.ortega@district.edu',
     expect: [
-      { line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana.reyes@district.edu', status: READY },
+      { line: 1, full: 'Sarah Johnson', first: 'Sarah', last: 'Johnson', email: 'sarah.johnson@district.edu', status: READY },
       { line: 2, full: 'Luis Ortega', first: 'Luis', last: 'Ortega', email: 'luis.ortega@district.edu', status: READY },
     ],
   },
   {
     // THE RAGGED LINE, and the reason it is refused rather than truncated. A
-    // student with two surnames typed "Reyes, Ana Maria, ana@..." splits into
-    // four. Keeping the first three would mint an account for "Ana Maria"
+    // student with two surnames typed "Johnson, Sarah Marie, sarah@..." splits
+    // into four. Keeping the first three would mint an account for "Sarah Marie"
     // whose email column holds a surname.
     name: 'more than three fields is refused, never truncated',
-    paste: 'Ana\tMaria\tReyes\tana.reyes@district.edu',
-    expect: [{ line: 1, full: 'Ana Maria', first: 'Ana', last: 'Maria', email: 'Reyes', status: 'missing-field' }],
+    paste: 'Sarah\tMarie\tJohnson\tsarah.johnson@district.edu',
+    expect: [{ line: 1, full: 'Sarah Marie', first: 'Sarah', last: 'Marie', email: 'Johnson', status: 'missing-field' }],
   },
   {
     // THIS CASE CHANGED MEANING WITH THE TWO-COLUMN FORMAT, and it is worth
-    // reading twice. Under the old three-column rule 'Ana\tReyes' was a line
+    // reading twice. Under the old three-column rule 'Sarah\tJohnson' was a line
     // with a field missing. Under the new rule it is a COMPLETE two-field line
-    // whose email slot holds "Reyes", so it is refused as a bad address
+    // whose email slot holds "Johnson", so it is refused as a bad address
     // instead. Still refused, still explained, different reason.
     name: 'two fields whose second field is not an email is bad-email, not missing-field',
-    paste: 'Ana\tReyes',
-    expect: [{ line: 1, full: 'Ana', first: 'Ana', last: '', email: 'Reyes', status: 'bad-email' }],
+    paste: 'Sarah\tJohnson',
+    expect: [{ line: 1, full: 'Sarah', first: 'Sarah', last: '', email: 'Johnson', status: 'bad-email' }],
   },
   {
     // The genuinely incomplete two-field line: a name and nothing after it.
     name: 'a two field line with an empty email is a missing field',
-    paste: 'Amber White\t',
-    expect: [{ line: 1, full: 'Amber White', first: 'Amber', last: 'White', email: '', status: 'missing-field' }],
+    paste: 'James Smith\t',
+    expect: [{ line: 1, full: 'James Smith', first: 'James', last: 'Smith', email: '', status: 'missing-field' }],
   },
   {
     name: 'an empty field in the middle is a missing field',
-    paste: 'Ana,,ana.reyes@district.edu',
-    expect: [{ line: 1, full: 'Ana', first: 'Ana', last: '', email: 'ana.reyes@district.edu', status: 'missing-field' }],
+    paste: 'Sarah,,sarah.johnson@district.edu',
+    expect: [{ line: 1, full: 'Sarah', first: 'Sarah', last: '', email: 'sarah.johnson@district.edu', status: 'missing-field' }],
   },
   {
     name: 'a malformed address is bad-email, and the row still shows what was typed',
-    paste: 'Ana\tReyes\tana.reyes@district',
-    expect: [{ line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana.reyes@district', status: 'bad-email' }],
+    paste: 'Sarah\tJohnson\tsarah.johnson@district',
+    expect: [{ line: 1, full: 'Sarah Johnson', first: 'Sarah', last: 'Johnson', email: 'sarah.johnson@district', status: 'bad-email' }],
   },
   {
     // Blank lines are dropped rather than reported: a spreadsheet paste carries
     // a trailing newline every time, and a row saying "line 3 is empty" is noise
     // the teacher has to clear before the Add button unlocks.
     name: 'blank lines are skipped and do not consume a number',
-    paste: 'Ana\tReyes\tana.reyes@district.edu\n\n   \nLuis\tOrtega\tluis.ortega@district.edu\n',
+    paste: 'Sarah\tJohnson\tsarah.johnson@district.edu\n\n   \nLuis\tOrtega\tluis.ortega@district.edu\n',
     expect: [
-      { line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana.reyes@district.edu', status: READY },
+      { line: 1, full: 'Sarah Johnson', first: 'Sarah', last: 'Johnson', email: 'sarah.johnson@district.edu', status: READY },
       { line: 2, full: 'Luis Ortega', first: 'Luis', last: 'Ortega', email: 'luis.ortega@district.edu', status: READY },
     ],
   },
   {
     name: 'the second copy of an email is the duplicate, and it names the first',
-    paste: 'Ana\tReyes\tana@district.edu\nAna\tR\tana@district.edu',
+    paste: 'Sarah\tJohnson\tsarah@district.edu\nSarah\tJ\tsarah@district.edu',
     expect: [
-      { line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana@district.edu', status: READY },
-      { line: 2, full: 'Ana R', first: 'Ana', last: 'R', email: 'ana@district.edu', status: 'duplicate' },
+      { line: 1, full: 'Sarah Johnson', first: 'Sarah', last: 'Johnson', email: 'sarah@district.edu', status: READY },
+      { line: 2, full: 'Sarah J', first: 'Sarah', last: 'J', email: 'sarah@district.edu', status: 'duplicate' },
     ],
   },
   {
     // provisionStudent lowercases before it looks anything up
     // (student-provision.ts:101), so these are one account, not two.
     name: 'duplicates are case insensitive',
-    paste: 'Ana\tReyes\tAna@District.edu\nAna\tReyes\tana@district.edu',
+    paste: 'Sarah\tJohnson\tSarah@District.edu\nSarah\tJohnson\tsarah@district.edu',
     expect: [
-      { line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'Ana@District.edu', status: READY },
-      { line: 2, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana@district.edu', status: 'duplicate' },
+      { line: 1, full: 'Sarah Johnson', first: 'Sarah', last: 'Johnson', email: 'Sarah@District.edu', status: READY },
+      { line: 2, full: 'Sarah Johnson', first: 'Sarah', last: 'Johnson', email: 'sarah@district.edu', status: 'duplicate' },
     ],
   },
   {
@@ -140,9 +140,9 @@ const PARSE_CASES: {
   },
   {
     name: 'carriage returns from a Windows clipboard are not fields',
-    paste: 'Ana\tReyes\tana@district.edu\r\nLuis\tOrtega\tluis@district.edu\r\n',
+    paste: 'Sarah\tJohnson\tsarah@district.edu\r\nLuis\tOrtega\tluis@district.edu\r\n',
     expect: [
-      { line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana@district.edu', status: READY },
+      { line: 1, full: 'Sarah Johnson', first: 'Sarah', last: 'Johnson', email: 'sarah@district.edu', status: READY },
       { line: 2, full: 'Luis Ortega', first: 'Luis', last: 'Ortega', email: 'luis@district.edu', status: READY },
     ],
   },
@@ -155,30 +155,30 @@ const PARSE_CASES: {
   {
     // The plain case, and the one the teacher actually has in front of them.
     name: 'two fields, name and email, straight out of the district export',
-    paste: 'Amber White\tamber.white@district.edu\nBrian Chen\tbrian.chen@district.edu',
+    paste: 'James Smith\tjames.smith@district.edu\nBrian Chen\tbrian.chen@district.edu',
     expect: [
-      { line: 1, full: 'Amber White', first: 'Amber', last: 'White', email: 'amber.white@district.edu', status: READY },
+      { line: 1, full: 'James Smith', first: 'James', last: 'Smith', email: 'james.smith@district.edu', status: READY },
       { line: 2, full: 'Brian Chen', first: 'Brian', last: 'Chen', email: 'brian.chen@district.edu', status: READY },
     ],
   },
   {
     name: 'two fields typed by hand, comma separated with a space',
-    paste: 'Amber White, amber.white@district.edu',
+    paste: 'James Smith, james.smith@district.edu',
     expect: [
-      { line: 1, full: 'Amber White', first: 'Amber', last: 'White', email: 'amber.white@district.edu', status: READY },
+      { line: 1, full: 'James Smith', first: 'James', last: 'Smith', email: 'james.smith@district.edu', status: READY },
     ],
   },
   {
     // THE CASE THIS WHOLE CHANGE IS FOR. A compound surname must survive the
-    // split whole. "Mary Jo Garcia" is Mary GARCIA only if you assume surnames
+    // split whole. "Maria de la Cruz" is Maria CRUZ only if you assume surnames
     // are one word; the assumption is wrong on this district's rosters and it
-    // fails silently, because "Garcia" looks like a fine answer on the screen.
+    // fails silently, because "Cruz" looks like a fine answer on the screen.
     // First token is the first name, EVERYTHING after it is the surname.
     name: 'a compound surname stays intact, first token first, entire remainder last',
-    paste: 'Mary Jo Garcia\tmary.garcia@district.edu\nAna de la Cruz\tana.cruz@district.edu',
+    paste: 'Maria de la Cruz\tmaria.cruz@district.edu\nEmily Ann Brooks\temily.brooks@district.edu',
     expect: [
-      { line: 1, full: 'Mary Jo Garcia', first: 'Mary', last: 'Jo Garcia', email: 'mary.garcia@district.edu', status: READY },
-      { line: 2, full: 'Ana de la Cruz', first: 'Ana', last: 'de la Cruz', email: 'ana.cruz@district.edu', status: READY },
+      { line: 1, full: 'Maria de la Cruz', first: 'Maria', last: 'de la Cruz', email: 'maria.cruz@district.edu', status: READY },
+      { line: 2, full: 'Emily Ann Brooks', first: 'Emily', last: 'Ann Brooks', email: 'emily.brooks@district.edu', status: READY },
     ],
   },
   {
@@ -193,36 +193,36 @@ const PARSE_CASES: {
     // An empty NAME is a different thing from a one-word name, and this is the
     // line that separates them. Nothing to make an account from.
     name: 'an entirely empty name field is a missing field',
-    paste: '\tamber.white@district.edu',
-    expect: [{ line: 1, full: '', first: '', last: '', email: 'amber.white@district.edu', status: 'missing-field' }],
+    paste: '\tjames.smith@district.edu',
+    expect: [{ line: 1, full: '', first: '', last: '', email: 'james.smith@district.edu', status: 'missing-field' }],
   },
   {
     // Whitespace only is the same thing as empty. A spreadsheet cell holding a
     // space is not a name.
     name: 'a whitespace only name field is a missing field',
-    paste: '   ,amber.white@district.edu',
-    expect: [{ line: 1, full: '', first: '', last: '', email: 'amber.white@district.edu', status: 'missing-field' }],
+    paste: '   ,james.smith@district.edu',
+    expect: [{ line: 1, full: '', first: '', last: '', email: 'james.smith@district.edu', status: 'missing-field' }],
   },
   {
     // MIXED IN ONE PASTE, because a teacher pasting a new export under an old
     // list is exactly how the two formats meet. Both shapes are read on their
     // own terms, line by line.
     name: 'two field and three field lines in the same paste',
-    paste: 'Amber White\tamber.white@district.edu\nAna\tReyes\tana.reyes@district.edu\nMary Jo Garcia, mary.garcia@district.edu',
+    paste: 'James Smith\tjames.smith@district.edu\nSarah\tJohnson\tsarah.johnson@district.edu\nMaria de la Cruz, maria.cruz@district.edu',
     expect: [
-      { line: 1, full: 'Amber White', first: 'Amber', last: 'White', email: 'amber.white@district.edu', status: READY },
-      { line: 2, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana.reyes@district.edu', status: READY },
-      { line: 3, full: 'Mary Jo Garcia', first: 'Mary', last: 'Jo Garcia', email: 'mary.garcia@district.edu', status: READY },
+      { line: 1, full: 'James Smith', first: 'James', last: 'Smith', email: 'james.smith@district.edu', status: READY },
+      { line: 2, full: 'Sarah Johnson', first: 'Sarah', last: 'Johnson', email: 'sarah.johnson@district.edu', status: READY },
+      { line: 3, full: 'Maria de la Cruz', first: 'Maria', last: 'de la Cruz', email: 'maria.cruz@district.edu', status: READY },
     ],
   },
   {
     // The duplicate rule is about the address, so it has to see across the two
     // shapes: the same student in both formats is still one account.
     name: 'a duplicate is caught across a two field and a three field line',
-    paste: 'Amber White\tamber.white@district.edu\nAmber\tWhite\tAmber.White@district.edu',
+    paste: 'James Smith\tjames.smith@district.edu\nJames\tSmith\tJames.Smith@district.edu',
     expect: [
-      { line: 1, full: 'Amber White', first: 'Amber', last: 'White', email: 'amber.white@district.edu', status: READY },
-      { line: 2, full: 'Amber White', first: 'Amber', last: 'White', email: 'Amber.White@district.edu', status: 'duplicate' },
+      { line: 1, full: 'James Smith', first: 'James', last: 'Smith', email: 'james.smith@district.edu', status: READY },
+      { line: 2, full: 'James Smith', first: 'James', last: 'Smith', email: 'James.Smith@district.edu', status: 'duplicate' },
     ],
   },
   {
@@ -230,16 +230,16 @@ const PARSE_CASES: {
     // the preview against their spreadsheet; a name that quietly changed shape
     // in transit is the one thing this column must not do.
     name: 'the preview shows the name as it was typed, inner spacing and all',
-    paste: 'Mary  Jo   Garcia\tmary.garcia@district.edu',
+    paste: 'Maria  de   la Cruz\tmaria.cruz@district.edu',
     expect: [
-      { line: 1, full: 'Mary  Jo   Garcia', first: 'Mary', last: 'Jo   Garcia', email: 'mary.garcia@district.edu', status: READY },
+      { line: 1, full: 'Maria  de   la Cruz', first: 'Maria', last: 'de   la Cruz', email: 'maria.cruz@district.edu', status: READY },
     ],
   },
   {
     name: 'a two field line with a malformed address is bad-email, name already split',
-    paste: 'Mary Jo Garcia\tmary.garcia@district',
+    paste: 'Maria de la Cruz\tmaria.cruz@district',
     expect: [
-      { line: 1, full: 'Mary Jo Garcia', first: 'Mary', last: 'Jo Garcia', email: 'mary.garcia@district', status: 'bad-email' },
+      { line: 1, full: 'Maria de la Cruz', first: 'Maria', last: 'de la Cruz', email: 'maria.cruz@district', status: 'bad-email' },
     ],
   },
 ];
@@ -262,7 +262,7 @@ for (const c of PARSE_CASES) {
 
 test('every non-ready row carries a message the teacher can act on', () => {
   const parsed = parseRosterPaste(
-    'Ana\tReyes\nLuis\tOrtega\tnope@nowhere\nAna\tReyes\tana@district.edu\nAna\tR\tana@district.edu'
+    'Sarah\tJohnson\nLuis\tOrtega\tnope@nowhere\nSarah\tJohnson\tsarah@district.edu\nSarah\tJ\tsarah@district.edu'
   );
   for (const row of parsed.rows) {
     if (row.status === 'ready') {
@@ -276,7 +276,7 @@ test('every non-ready row carries a message the teacher can act on', () => {
 });
 
 test('ready and problem counts partition the rows', () => {
-  const parsed = parseRosterPaste('Ana\tReyes\tana@district.edu\nbroken line\nLuis\tOrtega\tluis@district.edu');
+  const parsed = parseRosterPaste('Sarah\tJohnson\tsarah@district.edu\nbroken line\nLuis\tOrtega\tluis@district.edu');
   assert.equal(parsed.rows.length, 3);
   assert.equal(parsed.readyCount, 2);
   assert.equal(parsed.problemCount, 1);
@@ -294,7 +294,7 @@ test('ready and problem counts partition the rows', () => {
 
 test('the email rule accepts what a district roster actually contains', () => {
   for (const ok of [
-    'ana.reyes@district.edu',
+    'sarah.johnson@district.edu',
     'a@b.co',
     'first.last+tag@sub.district.k12.tx.us',
     'student_1234@my.district.edu',
@@ -308,14 +308,14 @@ test('the email rule refuses the shapes that would mint a dead account', () => {
   for (const bad of [
     '',
     '   ',
-    'ana.reyes',
-    'ana.reyes@district', // the truncated domain, the most common roster typo
+    'sarah.johnson',
+    'sarah.johnson@district', // the truncated domain, the most common roster typo
     '@district.edu',
-    'ana@',
-    'ana reyes@district.edu',
-    'ana@district .edu',
-    'ana@@district.edu',
-    'ana@district..edu',
+    'sarah@',
+    'sarah johnson@district.edu',
+    'sarah@district .edu',
+    'sarah@@district.edu',
+    'sarah@district..edu',
     `${'a'.repeat(250)}@district.edu`,
   ]) {
     assert.equal(isRosterEmail(bad), false, `${JSON.stringify(bad)} should be refused`);
@@ -323,11 +323,11 @@ test('the email rule refuses the shapes that would mint a dead account', () => {
 });
 
 test('the schema refines against the same predicate the preview uses', () => {
-  const row = { first_name: 'Ana', last_name: 'Reyes', email: 'ana@district' };
+  const row = { first_name: 'Sarah', last_name: 'Johnson', email: 'sarah@district' };
   const body = { class_id: '00000000-0000-4000-8000-000000000000', students: [row] };
   assert.equal(bulkProvisionSchema.safeParse(body).success, false, 'preview refuses it, so must the schema');
 
-  const good = { ...body, students: [{ ...row, email: 'ana@district.edu' }] };
+  const good = { ...body, students: [{ ...row, email: 'sarah@district.edu' }] };
   assert.equal(bulkProvisionSchema.safeParse(good).success, true);
 });
 
@@ -344,10 +344,10 @@ test('every row the preview calls ready is a row the schema accepts', () => {
   // teacher never had and cannot see, after being told every line was fine.
   const parsed = parseRosterPaste(
     [
-      'Amber White\tamber.white@district.edu',
-      'Mary Jo Garcia\tmary.garcia@district.edu',
+      'James Smith\tjames.smith@district.edu',
+      'Maria de la Cruz\tmaria.cruz@district.edu',
       'Cher\tcher@district.edu',
-      'Ana\tReyes\tana.reyes@district.edu',
+      'Sarah\tJohnson\tsarah.johnson@district.edu',
     ].join('\n')
   );
   assert.equal(parsed.readyCount, 4, 'all four are ready in the preview');
@@ -367,7 +367,7 @@ test('every row the preview calls ready is a row the schema accepts', () => {
   // it, NOT as a name the schema quietly filled in.
   assert.deepEqual(
     body.students.map((st) => [st.first_name, st.last_name]),
-    [['Amber', 'White'], ['Mary', 'Jo Garcia'], ['Cher', ''], ['Ana', 'Reyes']]
+    [['James', 'Smith'], ['Maria', 'de la Cruz'], ['Cher', ''], ['Sarah', 'Johnson']]
   );
 });
 
@@ -376,7 +376,7 @@ test('the two names modal still requires both halves', () => {
   // first and last in two separate boxes, so a blank one there is a slip, not a
   // mononym, and it is still refused.
   const ok = provisionStudentSchema.safeParse({
-    first_name: 'Ana', last_name: 'Reyes', email: 'ana@district.edu',
+    first_name: 'Sarah', last_name: 'Johnson', email: 'sarah@district.edu',
     class_id: '00000000-0000-4000-8000-000000000000',
   });
   assert.equal(ok.success, true);
@@ -401,10 +401,10 @@ test('the schema is bounded at the number the preview enforces', () => {
 
 test('the count summary reads as a sentence in both directions', () => {
   assert.equal(summarisePaste(parseRosterPaste('')), 'Nothing pasted yet.');
-  assert.equal(summarisePaste(parseRosterPaste('Ana\tReyes\tana@district.edu')), '1 ready');
-  assert.equal(summarisePaste(parseRosterPaste('Ana\tReyes\tana@district.edu\nbroken')), '1 ready, 1 needs a fix');
+  assert.equal(summarisePaste(parseRosterPaste('Sarah\tJohnson\tsarah@district.edu')), '1 ready');
+  assert.equal(summarisePaste(parseRosterPaste('Sarah\tJohnson\tsarah@district.edu\nbroken')), '1 ready, 1 needs a fix');
   assert.equal(
-    summarisePaste(parseRosterPaste('Ana\tReyes\tana@district.edu\nbroken\nalso broken')),
+    summarisePaste(parseRosterPaste('Sarah\tJohnson\tsarah@district.edu\nbroken\nalso broken')),
     '1 ready, 2 need a fix'
   );
 });
@@ -499,7 +499,7 @@ async function runBatch(
 }
 
 const BATCH_ROWS = [
-  { first_name: 'Ana', last_name: 'Reyes', email: 'ana@district.edu' },
+  { first_name: 'Sarah', last_name: 'Johnson', email: 'sarah@district.edu' },
   { first_name: 'Beto', last_name: 'Cruz', email: 'beto@district.edu' },
   { first_name: 'The', last_name: 'Teacher', email: 'teacher@district.edu' },
   { first_name: 'Carmen', last_name: 'Diaz', email: 'carmen@district.edu' },
@@ -537,13 +537,13 @@ test('one batch carries created, existing, own-account and failed at once', asyn
   // Order is preserved, so the results table lines up with the paste.
   assert.deepEqual(
     results.map((r) => r.first_name),
-    ['Ana', 'Beto', 'The', 'Carmen', 'Diego']
+    ['Sarah', 'Beto', 'The', 'Carmen', 'Diego']
   );
 
-  const [ana, beto, teacher, carmen, diego] = results;
+  const [sarah, beto, teacher, carmen, diego] = results;
 
-  assert.ok(ana.code, 'a new account comes back with its code');
-  assert.equal(ana.enrolment, 'enrolled');
+  assert.ok(sarah.code, 'a new account comes back with its code');
+  assert.equal(sarah.enrolment, 'enrolled');
 
   assert.equal(beto.code, null, 'no code is invented for an account that existed');
   assert.equal(beto.enrolment, 'enrolled');
@@ -565,9 +565,9 @@ test('one batch carries created, existing, own-account and failed at once', asyn
 
 test('the results table cannot render code-but-not-enrolled as a success', async () => {
   const results = await runBatch(batchFixture(), BATCH_ROWS);
-  const [ana, , , carmen] = results;
+  const [sarah, , , carmen] = results;
 
-  const good = rowPresentation(ana);
+  const good = rowPresentation(sarah);
   const stranded = rowPresentation(carmen);
 
   // Both minted an account, so the account column agrees. Everything that says
@@ -596,7 +596,7 @@ test('an enrolment the trigger already made is not a warning', () => {
   // every row, and flagging it would cry wolf across a whole class.
   for (const enrolment of ['enrolled', 'reactivated', 'already-enrolled']) {
     const p = rowPresentation({
-      first_name: 'Ana', last_name: 'Reyes', email: 'ana@district.edu',
+      first_name: 'Sarah', last_name: 'Johnson', email: 'sarah@district.edu',
       outcome: 'created', code: 'ABC123DEF456', enrolment, error: null,
     });
     assert.equal(p.inClass, 'yes', `${enrolment} means the student is in the class`);
@@ -628,8 +628,8 @@ test('the CSV carries the code and the status of every row, in order', async () 
   assert.equal(lines[0], '﻿name,email,code,status', 'header, BOM included');
   assert.equal(lines.length, results.length + 2, 'one line per row, plus header and trailing CRLF');
 
-  const [ana, , , carmen] = results;
-  assert.ok(csv.includes(`Ana Reyes,ana@district.edu,${ana.code},created`));
+  const [sarah, , , carmen] = results;
+  assert.ok(csv.includes(`Sarah Johnson,sarah@district.edu,${sarah.code},created`));
 
   // THE STATUS WORD CARRIES THE WARNING INTO THE FILE. The CSV outlives the
   // modal: it is what gets kept and printed. A row exported as plain "created"
@@ -637,7 +637,7 @@ test('the CSV carries the code and the status of every row, in order', async () 
   // artifact that is still being read next week.
   assert.ok(csv.includes(`Carmen Diaz,carmen@district.edu,${carmen.code},created_not_in_class`));
   assert.equal(csvStatus(carmen), 'created_not_in_class');
-  assert.equal(csvStatus(ana), 'created');
+  assert.equal(csvStatus(sarah), 'created');
   assert.ok(csv.includes('Beto Cruz,beto@district.edu,,existing'), 'no code, and the field is empty');
   assert.ok(csv.includes('Diego Mora,diego@district.edu,,failed'));
   assert.ok(csv.includes('teacher@district.edu,,own_account'));
@@ -656,13 +656,13 @@ test('a pasted name cannot become a spreadsheet formula', () => {
       outcome: 'created', code: 'ABC123DEF456', enrolment: 'enrolled', error: null,
     },
     {
-      first_name: '+SUM(1)', last_name: 'White', email: 'y@district.edu',
+      first_name: '+SUM(1)', last_name: 'Smith', email: 'y@district.edu',
       outcome: 'created', code: 'GHI789JKL012', enrolment: 'enrolled', error: null,
     },
   ]);
   assert.ok(!/\n=cmd/.test(csv) && !csv.includes('﻿=cmd'), 'no cell may start with =');
   assert.ok(csv.includes("'=cmd"), 'the formula lead is neutralised with an apostrophe');
-  assert.ok(csv.includes("'+SUM(1) White"), 'the lead is neutralised on the JOINED name');
+  assert.ok(csv.includes("'+SUM(1) Smith"), 'the lead is neutralised on the JOINED name');
 });
 
 test('the CSV name column is the two halves rejoined, with no trailing space', () => {
@@ -675,18 +675,18 @@ test('the CSV name column is the two halves rejoined, with no trailing space', (
       outcome: 'created', code: 'ABC123DEF456', enrolment: 'enrolled', error: null,
     },
     {
-      first_name: 'Mary', last_name: 'Jo Garcia', email: 'mary@district.edu',
+      first_name: 'Maria', last_name: 'de la Cruz', email: 'maria@district.edu',
       outcome: 'created', code: 'GHI789JKL012', enrolment: 'enrolled', error: null,
     },
   ]);
   assert.ok(csv.includes('Cher,cher@district.edu,'), 'no trailing space on a name with no surname');
   assert.ok(!csv.includes('Cher ,'), 'and definitely not a trailing space before the comma');
   // The compound surname survives the round trip into the file the teacher keeps.
-  assert.ok(csv.includes('Mary Jo Garcia,mary@district.edu,'));
+  assert.ok(csv.includes('Maria de la Cruz,maria@district.edu,'));
   assert.equal(displayName({
-    first_name: 'Mary', last_name: 'Jo Garcia', email: 'x@y.edu',
+    first_name: 'Maria', last_name: 'de la Cruz', email: 'x@y.edu',
     outcome: 'created', code: null, enrolment: 'enrolled', error: null,
-  }), 'Mary Jo Garcia');
+  }), 'Maria de la Cruz');
 });
 
 test('the filename is dated so two downloads do not collide silently', () => {
