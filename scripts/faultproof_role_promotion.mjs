@@ -52,11 +52,25 @@ const check = (name, pass, detail = '') => {
 // in the second half of the file", and two assertions silently stopped noticing
 // the fault they exist for. Caught by the fault matrix below, which is the whole
 // argument for having one.
+//
+// RE-ANCHORED WHEN THE TRIPWIRE SHORTENING GUARD LANDED. The statement used to
+// be one expression -- `const { data, error } = await admin.from(...)...` -- and
+// this matched from that opening through the ordering predicate. It is now built
+// in two steps (`const query = admin...`, then a conditional compare-and-set on
+// access_until, then `await guarded.select("id")`), so that a tripwire write can
+// pin the column to the value its guard read. The slice therefore runs from the
+// builder to the awaited terminator, which is the same span it always meant:
+// everything that is part of ONE guarded UPDATE, and nothing after it.
+//
+// Deliberately anchored at BOTH ends rather than loosened to "the rest of the
+// function". A slice that ran to the end would swallow a second, ungated
+// statement injected after the write -- which is exactly the last fault in the
+// matrix below, and exactly what this scoping exists to notice.
 const updateBlock = (s) => {
   const fnStart = s.indexOf('export async function writeEntitlement');
   if (fnStart === -1) return '';
   const m = s.slice(fnStart).match(
-    /const \{ data, error \} = await admin[\s\S]*?\.or\(`plan_updated_at\.is\.null,plan_updated_at\.lt\.\$\{eventAt\}`\)/
+    /const query = admin[\s\S]*?const \{ data, error \} = await guarded\.select\("id"\);/
   );
   return m ? m[0] : '';
 };

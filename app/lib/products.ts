@@ -1,5 +1,10 @@
-// The eight live Payment Links, what each one sells, and how to read a product
+// The live Payment Links, what each one sells, and how to read a product
 // out of a Stripe object.
+//
+// EIGHT LIVE, PLUS ONE THAT DOES NOT EXIST YET. The ninth entry is the $5 / 7-day
+// tripwire, keyed on TRIPWIRE_PAYMENT_LINK_ID, which is still a placeholder: the
+// code that recognises the link ships BEFORE the link is created, deliberately.
+// See the constant for why that order is not optional.
 //
 // RUNTIME-PURE ON PURPOSE. Every import here is `import type`, which the
 // type-stripping loader erases, so `node --test` can load this directly the same
@@ -50,12 +55,71 @@ export type Product = {
   mode: "payment" | "subscription";
   /** Expected session.amount_total in cents. Cross-check only, never the key. */
   amountTotal: number;
-  /** Access length for one-time passes. Undefined for subscriptions, whose
-   *  expiry comes from the subscription period instead. */
+  /** Access length for one-time passes, in whole months. Undefined for
+   *  subscriptions, whose expiry comes from the subscription period instead,
+   *  and undefined for a pass whose term is measured in `days`. */
   months?: number;
+  /**
+   * Access length for one-time passes, in days.
+   *
+   * A SECOND UNIT RATHER THAN A FRACTIONAL `months`, because 7 days is not a
+   * fraction of a month -- addMonths is deliberately calendar-aware and clamps
+   * to the end of the target month, so there is no number of "months" that
+   * means seven days. Anything shorter than a month has to be counted in days
+   * or not counted correctly.
+   *
+   * EXCLUSIVE WITH `months`. A product declares one or the other; declaring
+   * both is a configuration error and entitlementFromCheckout refuses it rather
+   * than picking a winner. Nothing here enforces that at the type level, so the
+   * refusal is the enforcement -- see stripe-activation.ts's one-time branch.
+   *
+   * No addDays() to go with addMonths(). Month arithmetic needs a helper
+   * because the naive version silently overruns a short month; day arithmetic
+   * is plain milliseconds, and the trial branch of stripe-activation.ts already
+   * spells it out inline. One spelling, in the two places that need it.
+   */
+  days?: number;
   /** For logs. Never shown to a buyer. */
   label: string;
 };
+
+/**
+ * THE $5 / 7-DAY TRIPWIRE PAYMENT LINK. ONE CONSTANT, AND THIS IS IT.
+ *
+ * JUAN PASTES THE REAL plink_ ID HERE, ON THIS LINE, AND NOWHERE ELSE. Three
+ * separate rules key off it and they must never be able to disagree about which
+ * price is the tripwire:
+ *
+ *   1. the product entry below            what a purchase on this link grants
+ *   2. entitlement.ts's accessGraceMs     the tripwire gets ZERO grace
+ *   3. Phase 2's day-6 email              which rows to send to
+ *
+ * WHY A PAYMENT LINK ID IS THE MARKER AND NOT A NEW PLAN. The tripwire sells
+ * the EXISTING full-course plan -- identical capabilities, identical capability
+ * map, identical constraints -- for 7 days instead of 12 months. So `plan`
+ * cannot tell a $5 tripwire row from an $89 Full Course row, and
+ * stripe_payment_link_id is the only per-row record of which PRICE was paid.
+ * That is the same reasoning that already records the founding teacher rate
+ * (see the header): the rate is a price, not a tier.
+ *
+ * THE PLACEHOLDER IS LOAD-BEARING UNTIL IT IS REPLACED. It cannot equal any
+ * real Stripe id, so until the paste happens every rule above matches nothing
+ * and this whole feature is inert: no product entry can be hit, no row can be
+ * identified as a tripwire, and no grace changes. Deploying this before the
+ * link exists is therefore safe, which is the point -- see the launch order
+ * below.
+ *
+ * LAUNCH ORDER, AND IT IS NOT NEGOTIABLE. This code must be live in production
+ * BEFORE the Stripe Payment Link is created. If the link exists first, a
+ * purchase arrives on a plink this build does not know, entitlementFromCheckout
+ * returns null, and the webhook falls back to legacyActivateOnly() -- which
+ * writes subscription_status 'active' with NO plan and NO access_until, i.e.
+ * PERMANENT, NO-EXPIRY Full Course access for $5, granted through
+ * isEntitledWithLegacyFallback and not revocable by any expiry.
+ *
+ *   Deploy first. Create the link second. Paste the id third.
+ */
+export const TRIPWIRE_PAYMENT_LINK_ID = "plink_TRIPWIRE_NOT_YET_CREATED";
 
 export const PRODUCTS_BY_PAYMENT_LINK: Readonly<Record<string, Product>> = {
   // Founding teacher tier. Closed to new sales, retained for existing
@@ -78,6 +142,23 @@ export const PRODUCTS_BY_PAYMENT_LINK: Readonly<Record<string, Product>> = {
   plink_1U5tgXF8f8aZDGVANGvtkoMF: {
     plan: "full-course", term: "one-time", mode: "payment",
     amountTotal: 8900, months: 12, label: "Full Course $89",
+  },
+
+  // THE $5 TRIPWIRE. THE SAME PLAN AS THE $89 LINE ABOVE, ON PURPOSE.
+  //
+  // plan 'full-course' is not a shorthand and not a placeholder: the tripwire
+  // sells exactly the Full Course product -- curriculum, worksheets, mu -- for
+  // 7 days rather than 12 months. Giving it a plan of its own would mean a new
+  // value in profiles_plan_check and pending_entitlements_plan_check, a new row
+  // in CAPABILITIES, WORKSHEET_QUOTA and PLAN_LABELS, and a second definition
+  // of a product that is already defined. It is a PRICE, not a plan, and it is
+  // recorded the way the founding teacher rate is recorded: by
+  // stripe_payment_link_id.
+  //
+  // Computed key, so the constant above is the only place the id is written.
+  [TRIPWIRE_PAYMENT_LINK_ID]: {
+    plan: "full-course", term: "one-time", mode: "payment",
+    amountTotal: 500, days: 7, label: "Tripwire Pass $5 / 7 days",
   },
 
   // Teacher subscriptions, public rates.

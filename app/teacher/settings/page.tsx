@@ -30,7 +30,7 @@ export default async function TeacherSettingsPage() {
   const admin = createAdminClient();
   const { data: profile } = await admin
     .from("profiles")
-    .select("role, subscription_status, plan, plan_status, access_until")
+    .select("role, subscription_status, plan, plan_status, access_until, stripe_payment_link_id")
     .eq("id", session.user.id)
     .single();
 

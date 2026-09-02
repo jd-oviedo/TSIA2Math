@@ -69,14 +69,20 @@ export function Header({ showCalculator = false }: { showCalculator?: boolean } 
       // readable by the person they describe.
       const { data: profile } = await supabase
         .from("profiles")
-        .select("role, subscription_status, plan, plan_status, access_until")
+        .select("role, subscription_status, plan, plan_status, access_until, stripe_payment_link_id")
         .eq("id", session.user.id)
         .single();
 
       // Cosmetic, and the last of the six subscription_status readers to move.
-      // The predicate is the shared one rather than a second copy of the rule:
-      // both entitlement.ts and capabilities.ts import nothing at runtime, so
-      // using them here costs the browser bundle nothing.
+      // The predicate is the shared one rather than a second copy of the rule.
+      //
+      // CORRECTED: this used to say "both entitlement.ts and capabilities.ts
+      // import nothing at runtime, so using them here costs the browser bundle
+      // nothing". entitlement.ts now imports TRIPWIRE_PAYMENT_LINK_ID from
+      // products.ts, which is itself import-type-only and side-effect-free, so
+      // the cost is one string constant after tree-shaking and the ids in that
+      // map are already public in every buy.stripe.com URL. Still cheap, no
+      // longer literally nothing.
       //
       // STILL A CLIENT-SIDE READ, which is worth naming rather than leaving
       // implicit. Nothing is gated on this. It picks which nav shape to draw,
@@ -89,6 +95,11 @@ export function Header({ showCalculator = false }: { showCalculator?: boolean } 
         isEntitledWithLegacyFallback(
           profile?.plan_status,
           profile?.access_until,
+          // Inert here -- this branch has already required a teacher plan, and
+          // the tripwire sells full-course -- but passed rather than nulled so
+          // no reader in the codebase is spelled as though the grace window
+          // were a constant.
+          profile?.stripe_payment_link_id,
           profile?.subscription_status,
           "Header"
         );

@@ -339,7 +339,17 @@ async function claimOne(
     return { outcome: "refused", ...named };
   }
 
-  if (written === "stale") {
+  // "superseded" IS TREATED EXACTLY LIKE "stale" FROM HERE DOWN, and the reason
+  // is the same one the stale branch gives: the purchase IS reflected in the
+  // profile's current state, so leaving the row unclaimed would replay it on
+  // every future sign-in, forever, alerting every time.
+  //
+  // It arrives here only on one shape: a $5 tripwire captured with no account,
+  // claimed later by a profile that has since bought something longer. The
+  // buyer holds MORE than the tripwire would have granted, so the debt is
+  // settled in substance even though nothing was written for it. The alert
+  // below is what makes the $5 visible.
+  if (written === "stale" || written === "superseded") {
     // TWO VERY DIFFERENT THINGS LOOK IDENTICAL HERE, and telling them apart is
     // the whole reason this branch exists.
     //
@@ -375,7 +385,7 @@ async function claimOne(
     // this purchase. The settled rule is that the newer event wins, so this does
     // not overwrite anything -- but a person hears about it, because the shape
     // of it is someone paying twice or two products landing on one account.
-    await alertStaleClaim(profileId, row, source);
+    await alertStaleClaim(profileId, row, source, written);
     // Falls through to the mark. The purchase IS reflected in the profile's
     // current state, so leaving the row unclaimed would replay it on every
     // future sign-in, forever, alerting every time.
@@ -426,39 +436,65 @@ async function claimOne(
     `[${source}] claimed session ${row.checkout_session_id} -> ${profileId}: ` +
       `${row.plan}/${row.plan_status}, access_until ${row.access_until ?? "none"}`
   );
-  return { outcome: written === "stale" ? "stale" : "claimed", ...named };
+  return {
+    outcome: written === "stale" || written === "superseded" ? "stale" : "claimed",
+    ...named,
+  };
 }
 
 /**
  * The loud half of the plan-conflict rule.
+ *
+ * TWO REASONS REACH IT AND THEY ARE NOT THE SAME EVENT, so `reason` decides the
+ * wording rather than one message being written to cover both. "stale" is an
+ * OLDER purchase losing to a newer one, which reads as "did this person pay
+ * twice". "superseded" is the tripwire guard: a $5 pass losing to LONGER access
+ * that may well be older, which reads as "this person was charged $5 and got
+ * nothing new". Saying the first when the second happened would send whoever
+ * reads the alert looking for a duplicate charge that is not there.
  *
  * Sentry is imported lazily and every failure is swallowed: an alert must never
  * be able to change the outcome of a claim, and this module is also loaded
  * outside Next by scripts/faultproof_claim.mjs, where the SDK's server entry is
  * not what resolves.
  */
-async function alertStaleClaim(profileId: string, row: PendingRow, source: string): Promise<void> {
+async function alertStaleClaim(
+  profileId: string,
+  row: PendingRow,
+  source: string,
+  reason: "stale" | "superseded"
+): Promise<void> {
   console.error(
-    `[${source}] STALE CLAIM: profile ${profileId} already carries an entitlement newer than ` +
-      `session ${row.checkout_session_id} (${row.plan}/${row.plan_term}, event ` +
-      `${row.event_created_at}). The newer entitlement wins and the row is marked claimed. ` +
-      `Check whether this person paid twice.`
+    reason === "superseded"
+      ? `[${source}] SUPERSEDED CLAIM: profile ${profileId} already holds access that outlasts ` +
+          `the tripwire in session ${row.checkout_session_id} (${row.plan}/${row.plan_term}, ` +
+          `event ${row.event_created_at}). The longer access is left untouched and the row is ` +
+          `marked claimed. THE $5 GRANTED NOTHING NEW -- refund or comp by hand.`
+      : `[${source}] STALE CLAIM: profile ${profileId} already carries an entitlement newer than ` +
+          `session ${row.checkout_session_id} (${row.plan}/${row.plan_term}, event ` +
+          `${row.event_created_at}). The newer entitlement wins and the row is marked claimed. ` +
+          `Check whether this person paid twice.`
   );
 
   try {
     const Sentry = await import("@sentry/nextjs");
-    Sentry.captureMessage?.("stripe: pending entitlement claimed onto a newer entitlement", {
-      level: "error",
-      tags: { source, plan: row.plan },
-      extra: {
-        profileId,
-        checkoutSessionId: row.checkout_session_id,
-        plan: row.plan,
-        planTerm: row.plan_term,
-        eventCreatedAt: row.event_created_at,
-        email: row.email,
-      },
-    });
+    Sentry.captureMessage?.(
+      reason === "superseded"
+        ? "stripe: tripwire claim superseded by longer existing access"
+        : "stripe: pending entitlement claimed onto a newer entitlement",
+      {
+        level: "error",
+        tags: { source, plan: row.plan, reason },
+        extra: {
+          profileId,
+          checkoutSessionId: row.checkout_session_id,
+          plan: row.plan,
+          planTerm: row.plan_term,
+          eventCreatedAt: row.event_created_at,
+          email: row.email,
+        },
+      }
+    );
   } catch (err) {
     console.error(`[${source}] could not raise a Sentry issue for the stale claim:`, err);
   }
