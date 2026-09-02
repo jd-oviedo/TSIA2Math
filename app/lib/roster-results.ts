@@ -167,11 +167,33 @@ export function csvStatus(r: BulkRowResult): string {
   return r.outcome;
 }
 
-export const ROSTER_CSV_COLUMNS = ["first_name", "last_name", "email", "code", "status"];
+export const ROSTER_CSV_COLUMNS = ["name", "email", "code", "status"];
+
+/**
+ * The two halves rejoined for display and for the file.
+ *
+ * EXPORTED so the results table and the CSV read one function. They show the
+ * same teacher the same student seconds apart, and a name that differed between
+ * the table and the file would be read as two different people.
+ *
+ * filter(Boolean) rather than a plain join, so the student with no surname
+ * exports as "Cher" and not "Cher " with a trailing space. A trailing space is
+ * invisible in the CSV a teacher opens and is not invisible to whatever they
+ * paste it into next.
+ */
+export function displayName(r: BulkRowResult): string {
+  return [r.first_name, r.last_name].filter(Boolean).join(" ");
+}
 
 /**
  * The file the teacher distributes, and the thing that makes showing thirty
  * unrecoverable codes at once a safe act rather than a reckless one.
+ *
+ * ONE NAME COLUMN, matching what the teacher pasted and what the preview showed
+ * them. The account underneath is still made with a first and last name; that
+ * split is an implementation detail of provisioning and putting it back in the
+ * file would hand the teacher a spreadsheet shaped unlike the one they started
+ * from.
  *
  * Built with buildCsv so it inherits the export pipeline's escaping wholesale,
  * and the formula guard in escapeCsvCell is not decoration here. Every name in
@@ -184,7 +206,7 @@ export const ROSTER_CSV_COLUMNS = ["first_name", "last_name", "email", "code", "
 export function buildRosterCsv(results: BulkRowResult[]): string {
   return buildCsv(
     ROSTER_CSV_COLUMNS,
-    results.map((r) => [r.first_name, r.last_name, r.email, r.code ?? "", csvStatus(r)])
+    results.map((r) => [displayName(r), r.email, r.code ?? "", csvStatus(r)])
   );
 }
 

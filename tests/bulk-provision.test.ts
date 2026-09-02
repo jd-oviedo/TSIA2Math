@@ -13,11 +13,12 @@ import {
   csvStatus,
   buildRosterCsv,
   rosterCsvFilename,
+  displayName,
   type BulkRowResult,
 } from '../app/lib/roster-results.ts';
 import { provisionStudent } from '../app/lib/student-provision.ts';
 import { safeLimit } from '../app/lib/rate-limit.ts';
-import { bulkProvisionSchema } from '../app/lib/schemas.ts';
+import { bulkProvisionSchema, provisionStudentSchema, formatZodError } from '../app/lib/schemas.ts';
 
 // "Add roster": one pasted class, one request, one account per line.
 //
@@ -37,7 +38,7 @@ const READY = 'ready';
 const PARSE_CASES: {
   name: string;
   paste: string;
-  expect: { line: number; first: string; last: string; email: string; status: string }[];
+  expect: { line: number; full: string; first: string; last: string; email: string; status: string }[];
 }[] = [
   {
     // Google Sheets and Excel both put tabs between the cells of a dragged
@@ -45,22 +46,22 @@ const PARSE_CASES: {
     name: 'tab separated, straight out of a spreadsheet',
     paste: 'Ana\tReyes\tana.reyes@district.edu\nLuis\tOrtega\tluis.ortega@district.edu',
     expect: [
-      { line: 1, first: 'Ana', last: 'Reyes', email: 'ana.reyes@district.edu', status: READY },
-      { line: 2, first: 'Luis', last: 'Ortega', email: 'luis.ortega@district.edu', status: READY },
+      { line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana.reyes@district.edu', status: READY },
+      { line: 2, full: 'Luis Ortega', first: 'Luis', last: 'Ortega', email: 'luis.ortega@district.edu', status: READY },
     ],
   },
   {
     name: 'comma separated, typed by hand',
     paste: 'Ana,Reyes,ana.reyes@district.edu',
-    expect: [{ line: 1, first: 'Ana', last: 'Reyes', email: 'ana.reyes@district.edu', status: READY }],
+    expect: [{ line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana.reyes@district.edu', status: READY }],
   },
   {
     // A typed list almost always has spaces after the commas.
     name: 'comma separated with spaces, and both separators in one paste',
     paste: 'Ana, Reyes, ana.reyes@district.edu\nLuis\tOrtega\tluis.ortega@district.edu',
     expect: [
-      { line: 1, first: 'Ana', last: 'Reyes', email: 'ana.reyes@district.edu', status: READY },
-      { line: 2, first: 'Luis', last: 'Ortega', email: 'luis.ortega@district.edu', status: READY },
+      { line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana.reyes@district.edu', status: READY },
+      { line: 2, full: 'Luis Ortega', first: 'Luis', last: 'Ortega', email: 'luis.ortega@district.edu', status: READY },
     ],
   },
   {
@@ -70,22 +71,33 @@ const PARSE_CASES: {
     // whose email column holds a surname.
     name: 'more than three fields is refused, never truncated',
     paste: 'Ana\tMaria\tReyes\tana.reyes@district.edu',
-    expect: [{ line: 1, first: 'Ana', last: 'Maria', email: 'Reyes', status: 'missing-field' }],
+    expect: [{ line: 1, full: 'Ana Maria', first: 'Ana', last: 'Maria', email: 'Reyes', status: 'missing-field' }],
   },
   {
-    name: 'two fields is a missing field, not a blank email',
+    // THIS CASE CHANGED MEANING WITH THE TWO-COLUMN FORMAT, and it is worth
+    // reading twice. Under the old three-column rule 'Ana\tReyes' was a line
+    // with a field missing. Under the new rule it is a COMPLETE two-field line
+    // whose email slot holds "Reyes", so it is refused as a bad address
+    // instead. Still refused, still explained, different reason.
+    name: 'two fields whose second field is not an email is bad-email, not missing-field',
     paste: 'Ana\tReyes',
-    expect: [{ line: 1, first: 'Ana', last: 'Reyes', email: '', status: 'missing-field' }],
+    expect: [{ line: 1, full: 'Ana', first: 'Ana', last: '', email: 'Reyes', status: 'bad-email' }],
+  },
+  {
+    // The genuinely incomplete two-field line: a name and nothing after it.
+    name: 'a two field line with an empty email is a missing field',
+    paste: 'Amber White\t',
+    expect: [{ line: 1, full: 'Amber White', first: 'Amber', last: 'White', email: '', status: 'missing-field' }],
   },
   {
     name: 'an empty field in the middle is a missing field',
     paste: 'Ana,,ana.reyes@district.edu',
-    expect: [{ line: 1, first: 'Ana', last: '', email: 'ana.reyes@district.edu', status: 'missing-field' }],
+    expect: [{ line: 1, full: 'Ana', first: 'Ana', last: '', email: 'ana.reyes@district.edu', status: 'missing-field' }],
   },
   {
     name: 'a malformed address is bad-email, and the row still shows what was typed',
     paste: 'Ana\tReyes\tana.reyes@district',
-    expect: [{ line: 1, first: 'Ana', last: 'Reyes', email: 'ana.reyes@district', status: 'bad-email' }],
+    expect: [{ line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana.reyes@district', status: 'bad-email' }],
   },
   {
     // Blank lines are dropped rather than reported: a spreadsheet paste carries
@@ -94,16 +106,16 @@ const PARSE_CASES: {
     name: 'blank lines are skipped and do not consume a number',
     paste: 'Ana\tReyes\tana.reyes@district.edu\n\n   \nLuis\tOrtega\tluis.ortega@district.edu\n',
     expect: [
-      { line: 1, first: 'Ana', last: 'Reyes', email: 'ana.reyes@district.edu', status: READY },
-      { line: 2, first: 'Luis', last: 'Ortega', email: 'luis.ortega@district.edu', status: READY },
+      { line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana.reyes@district.edu', status: READY },
+      { line: 2, full: 'Luis Ortega', first: 'Luis', last: 'Ortega', email: 'luis.ortega@district.edu', status: READY },
     ],
   },
   {
     name: 'the second copy of an email is the duplicate, and it names the first',
     paste: 'Ana\tReyes\tana@district.edu\nAna\tR\tana@district.edu',
     expect: [
-      { line: 1, first: 'Ana', last: 'Reyes', email: 'ana@district.edu', status: READY },
-      { line: 2, first: 'Ana', last: 'R', email: 'ana@district.edu', status: 'duplicate' },
+      { line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana@district.edu', status: READY },
+      { line: 2, full: 'Ana R', first: 'Ana', last: 'R', email: 'ana@district.edu', status: 'duplicate' },
     ],
   },
   {
@@ -112,8 +124,8 @@ const PARSE_CASES: {
     name: 'duplicates are case insensitive',
     paste: 'Ana\tReyes\tAna@District.edu\nAna\tReyes\tana@district.edu',
     expect: [
-      { line: 1, first: 'Ana', last: 'Reyes', email: 'Ana@District.edu', status: READY },
-      { line: 2, first: 'Ana', last: 'Reyes', email: 'ana@district.edu', status: 'duplicate' },
+      { line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'Ana@District.edu', status: READY },
+      { line: 2, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana@district.edu', status: 'duplicate' },
     ],
   },
   {
@@ -122,16 +134,112 @@ const PARSE_CASES: {
     name: 'unicode names survive intact',
     paste: 'José\tPeña-Núñez\tjose.pena@district.edu\nZoë\tO’Brien\tzoe.obrien@district.edu',
     expect: [
-      { line: 1, first: 'José', last: 'Peña-Núñez', email: 'jose.pena@district.edu', status: READY },
-      { line: 2, first: 'Zoë', last: 'O’Brien', email: 'zoe.obrien@district.edu', status: READY },
+      { line: 1, full: 'José Peña-Núñez', first: 'José', last: 'Peña-Núñez', email: 'jose.pena@district.edu', status: READY },
+      { line: 2, full: 'Zoë O’Brien', first: 'Zoë', last: 'O’Brien', email: 'zoe.obrien@district.edu', status: READY },
     ],
   },
   {
     name: 'carriage returns from a Windows clipboard are not fields',
     paste: 'Ana\tReyes\tana@district.edu\r\nLuis\tOrtega\tluis@district.edu\r\n',
     expect: [
-      { line: 1, first: 'Ana', last: 'Reyes', email: 'ana@district.edu', status: READY },
-      { line: 2, first: 'Luis', last: 'Ortega', email: 'luis@district.edu', status: READY },
+      { line: 1, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana@district.edu', status: READY },
+      { line: 2, full: 'Luis Ortega', first: 'Luis', last: 'Ortega', email: 'luis@district.edu', status: READY },
+    ],
+  },
+
+  // ── The two-column format ──────────────────────────────────────────────
+  //
+  // The district's exported spreadsheet has one Name column, not two. These are
+  // the cases that shape produces.
+
+  {
+    // The plain case, and the one the teacher actually has in front of them.
+    name: 'two fields, name and email, straight out of the district export',
+    paste: 'Amber White\tamber.white@district.edu\nBrian Chen\tbrian.chen@district.edu',
+    expect: [
+      { line: 1, full: 'Amber White', first: 'Amber', last: 'White', email: 'amber.white@district.edu', status: READY },
+      { line: 2, full: 'Brian Chen', first: 'Brian', last: 'Chen', email: 'brian.chen@district.edu', status: READY },
+    ],
+  },
+  {
+    name: 'two fields typed by hand, comma separated with a space',
+    paste: 'Amber White, amber.white@district.edu',
+    expect: [
+      { line: 1, full: 'Amber White', first: 'Amber', last: 'White', email: 'amber.white@district.edu', status: READY },
+    ],
+  },
+  {
+    // THE CASE THIS WHOLE CHANGE IS FOR. A compound surname must survive the
+    // split whole. "Mary Jo Garcia" is Mary GARCIA only if you assume surnames
+    // are one word; the assumption is wrong on this district's rosters and it
+    // fails silently, because "Garcia" looks like a fine answer on the screen.
+    // First token is the first name, EVERYTHING after it is the surname.
+    name: 'a compound surname stays intact, first token first, entire remainder last',
+    paste: 'Mary Jo Garcia\tmary.garcia@district.edu\nAna de la Cruz\tana.cruz@district.edu',
+    expect: [
+      { line: 1, full: 'Mary Jo Garcia', first: 'Mary', last: 'Jo Garcia', email: 'mary.garcia@district.edu', status: READY },
+      { line: 2, full: 'Ana de la Cruz', first: 'Ana', last: 'de la Cruz', email: 'ana.cruz@district.edu', status: READY },
+    ],
+  },
+  {
+    // A SINGLE TOKEN IS NOT AN ERROR. Mononyms are real and a half-filled Name
+    // column is common; flagging these would make the teacher edit a
+    // spreadsheet that was correct. Ready, with an empty last name.
+    name: 'a single token name is ready with an empty last name, not a problem row',
+    paste: 'Cher\tcher@district.edu',
+    expect: [{ line: 1, full: 'Cher', first: 'Cher', last: '', email: 'cher@district.edu', status: READY }],
+  },
+  {
+    // An empty NAME is a different thing from a one-word name, and this is the
+    // line that separates them. Nothing to make an account from.
+    name: 'an entirely empty name field is a missing field',
+    paste: '\tamber.white@district.edu',
+    expect: [{ line: 1, full: '', first: '', last: '', email: 'amber.white@district.edu', status: 'missing-field' }],
+  },
+  {
+    // Whitespace only is the same thing as empty. A spreadsheet cell holding a
+    // space is not a name.
+    name: 'a whitespace only name field is a missing field',
+    paste: '   ,amber.white@district.edu',
+    expect: [{ line: 1, full: '', first: '', last: '', email: 'amber.white@district.edu', status: 'missing-field' }],
+  },
+  {
+    // MIXED IN ONE PASTE, because a teacher pasting a new export under an old
+    // list is exactly how the two formats meet. Both shapes are read on their
+    // own terms, line by line.
+    name: 'two field and three field lines in the same paste',
+    paste: 'Amber White\tamber.white@district.edu\nAna\tReyes\tana.reyes@district.edu\nMary Jo Garcia, mary.garcia@district.edu',
+    expect: [
+      { line: 1, full: 'Amber White', first: 'Amber', last: 'White', email: 'amber.white@district.edu', status: READY },
+      { line: 2, full: 'Ana Reyes', first: 'Ana', last: 'Reyes', email: 'ana.reyes@district.edu', status: READY },
+      { line: 3, full: 'Mary Jo Garcia', first: 'Mary', last: 'Jo Garcia', email: 'mary.garcia@district.edu', status: READY },
+    ],
+  },
+  {
+    // The duplicate rule is about the address, so it has to see across the two
+    // shapes: the same student in both formats is still one account.
+    name: 'a duplicate is caught across a two field and a three field line',
+    paste: 'Amber White\tamber.white@district.edu\nAmber\tWhite\tAmber.White@district.edu',
+    expect: [
+      { line: 1, full: 'Amber White', first: 'Amber', last: 'White', email: 'amber.white@district.edu', status: READY },
+      { line: 2, full: 'Amber White', first: 'Amber', last: 'White', email: 'Amber.White@district.edu', status: 'duplicate' },
+    ],
+  },
+  {
+    // The name is shown back verbatim, not normalised. The teacher is checking
+    // the preview against their spreadsheet; a name that quietly changed shape
+    // in transit is the one thing this column must not do.
+    name: 'the preview shows the name as it was typed, inner spacing and all',
+    paste: 'Mary  Jo   Garcia\tmary.garcia@district.edu',
+    expect: [
+      { line: 1, full: 'Mary  Jo   Garcia', first: 'Mary', last: 'Jo   Garcia', email: 'mary.garcia@district.edu', status: READY },
+    ],
+  },
+  {
+    name: 'a two field line with a malformed address is bad-email, name already split',
+    paste: 'Mary Jo Garcia\tmary.garcia@district',
+    expect: [
+      { line: 1, full: 'Mary Jo Garcia', first: 'Mary', last: 'Jo Garcia', email: 'mary.garcia@district', status: 'bad-email' },
     ],
   },
 ];
@@ -143,6 +251,7 @@ for (const c of PARSE_CASES) {
     c.expect.forEach((want, i) => {
       const got = parsed.rows[i];
       assert.equal(got.line, want.line, `row ${i} line number`);
+      assert.equal(got.fullName, want.full, `row ${i} full name (what the preview shows)`);
       assert.equal(got.firstName, want.first, `row ${i} first name`);
       assert.equal(got.lastName, want.last, `row ${i} last name`);
       assert.equal(got.email, want.email, `row ${i} email`);
@@ -220,6 +329,63 @@ test('the schema refines against the same predicate the preview uses', () => {
 
   const good = { ...body, students: [{ ...row, email: 'ana@district.edu' }] };
   assert.equal(bulkProvisionSchema.safeParse(good).success, true);
+});
+
+test('every row the preview calls ready is a row the schema accepts', () => {
+  // THE PREVIEW IS THE GATE, so the two must agree about the whole row, not
+  // just the email. The paste below is fed through the real parser and its
+  // ready rows are handed to the real schema, rather than either side being
+  // restated by hand here.
+  //
+  // "Cher" is the row that matters. A single token name splits to a first name
+  // and an EMPTY last name, and the preview calls that ready on purpose. Left
+  // at the .min(1) inherited from provisionStudentSchema, that one row would
+  // 400 the entire paste with "Last name is required", naming a field the
+  // teacher never had and cannot see, after being told every line was fine.
+  const parsed = parseRosterPaste(
+    [
+      'Amber White\tamber.white@district.edu',
+      'Mary Jo Garcia\tmary.garcia@district.edu',
+      'Cher\tcher@district.edu',
+      'Ana\tReyes\tana.reyes@district.edu',
+    ].join('\n')
+  );
+  assert.equal(parsed.readyCount, 4, 'all four are ready in the preview');
+
+  const body = {
+    class_id: '00000000-0000-4000-8000-000000000000',
+    students: parsed.ready.map((r) => ({
+      first_name: r.firstName,
+      last_name: r.lastName,
+      email: r.email,
+    })),
+  };
+  const result = bulkProvisionSchema.safeParse(body);
+  assert.equal(result.success, true, result.success ? '' : formatZodError(result.error));
+
+  // The mononym still reaches provisioning as a first name with nothing after
+  // it, NOT as a name the schema quietly filled in.
+  assert.deepEqual(
+    body.students.map((st) => [st.first_name, st.last_name]),
+    [['Amber', 'White'], ['Mary', 'Jo Garcia'], ['Cher', ''], ['Ana', 'Reyes']]
+  );
+});
+
+test('the two names modal still requires both halves', () => {
+  // The relaxation above is scoped to the PASTED row. "Add with code" asks for
+  // first and last in two separate boxes, so a blank one there is a slip, not a
+  // mononym, and it is still refused.
+  const ok = provisionStudentSchema.safeParse({
+    first_name: 'Ana', last_name: 'Reyes', email: 'ana@district.edu',
+    class_id: '00000000-0000-4000-8000-000000000000',
+  });
+  assert.equal(ok.success, true);
+
+  const blank = provisionStudentSchema.safeParse({
+    first_name: 'Cher', last_name: '', email: 'cher@district.edu',
+    class_id: '00000000-0000-4000-8000-000000000000',
+  });
+  assert.equal(blank.success, false, 'a blank box in the two field modal is still a slip');
 });
 
 test('the schema is bounded at the number the preview enforces', () => {
@@ -459,21 +625,21 @@ test('the CSV carries the code and the status of every row, in order', async () 
   const csv = buildRosterCsv(results);
   const lines = csv.split('\r\n');
 
-  assert.equal(lines[0], '﻿first_name,last_name,email,code,status', 'header, BOM included');
+  assert.equal(lines[0], '﻿name,email,code,status', 'header, BOM included');
   assert.equal(lines.length, results.length + 2, 'one line per row, plus header and trailing CRLF');
 
   const [ana, , , carmen] = results;
-  assert.ok(csv.includes(`Ana,Reyes,ana@district.edu,${ana.code},created`));
+  assert.ok(csv.includes(`Ana Reyes,ana@district.edu,${ana.code},created`));
 
   // THE STATUS WORD CARRIES THE WARNING INTO THE FILE. The CSV outlives the
   // modal: it is what gets kept and printed. A row exported as plain "created"
   // when the student is not in the class moves the silent failure into the
   // artifact that is still being read next week.
-  assert.ok(csv.includes(`Carmen,Diaz,carmen@district.edu,${carmen.code},created_not_in_class`));
+  assert.ok(csv.includes(`Carmen Diaz,carmen@district.edu,${carmen.code},created_not_in_class`));
   assert.equal(csvStatus(carmen), 'created_not_in_class');
   assert.equal(csvStatus(ana), 'created');
-  assert.ok(csv.includes('Beto,Cruz,beto@district.edu,,existing'), 'no code, and the field is empty');
-  assert.ok(csv.includes('Diego,Mora,diego@district.edu,,failed'));
+  assert.ok(csv.includes('Beto Cruz,beto@district.edu,,existing'), 'no code, and the field is empty');
+  assert.ok(csv.includes('Diego Mora,diego@district.edu,,failed'));
   assert.ok(csv.includes('teacher@district.edu,,own_account'));
 });
 
@@ -481,15 +647,46 @@ test('a pasted name cannot become a spreadsheet formula', () => {
   // The existing exports read names out of the database. This one reads them
   // out of a textarea, which is a much shorter path from somebody else's typing
   // to a cell that executes when the file is opened in Excel.
+  // ONE NAME COLUMN NOW, so both formula leads are carried on two rows rather
+  // than two columns of one row. The guard is per CELL, and collapsing the
+  // columns must not quietly drop a payload that used to be covered.
   const csv = buildRosterCsv([
     {
-      first_name: '=cmd|\' /c calc\'!A0', last_name: '+SUM(1)', email: 'x@district.edu',
+      first_name: '=cmd|\' /c calc\'!A0', last_name: '', email: 'x@district.edu',
       outcome: 'created', code: 'ABC123DEF456', enrolment: 'enrolled', error: null,
+    },
+    {
+      first_name: '+SUM(1)', last_name: 'White', email: 'y@district.edu',
+      outcome: 'created', code: 'GHI789JKL012', enrolment: 'enrolled', error: null,
     },
   ]);
   assert.ok(!/\n=cmd/.test(csv) && !csv.includes('﻿=cmd'), 'no cell may start with =');
   assert.ok(csv.includes("'=cmd"), 'the formula lead is neutralised with an apostrophe');
-  assert.ok(csv.includes("'+SUM(1)"));
+  assert.ok(csv.includes("'+SUM(1) White"), 'the lead is neutralised on the JOINED name');
+});
+
+test('the CSV name column is the two halves rejoined, with no trailing space', () => {
+  // The single-token student. "Cher " with an invisible trailing space is not
+  // what the teacher pasted, and it is not invisible to whatever they paste the
+  // file into next.
+  const csv = buildRosterCsv([
+    {
+      first_name: 'Cher', last_name: '', email: 'cher@district.edu',
+      outcome: 'created', code: 'ABC123DEF456', enrolment: 'enrolled', error: null,
+    },
+    {
+      first_name: 'Mary', last_name: 'Jo Garcia', email: 'mary@district.edu',
+      outcome: 'created', code: 'GHI789JKL012', enrolment: 'enrolled', error: null,
+    },
+  ]);
+  assert.ok(csv.includes('Cher,cher@district.edu,'), 'no trailing space on a name with no surname');
+  assert.ok(!csv.includes('Cher ,'), 'and definitely not a trailing space before the comma');
+  // The compound surname survives the round trip into the file the teacher keeps.
+  assert.ok(csv.includes('Mary Jo Garcia,mary@district.edu,'));
+  assert.equal(displayName({
+    first_name: 'Mary', last_name: 'Jo Garcia', email: 'x@y.edu',
+    outcome: 'created', code: null, enrolment: 'enrolled', error: null,
+  }), 'Mary Jo Garcia');
 });
 
 test('the filename is dated so two downloads do not collide silently', () => {

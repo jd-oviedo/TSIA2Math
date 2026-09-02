@@ -116,6 +116,22 @@ const rosterRowSchema = provisionStudentSchema.omit({ class_id: true }).extend({
     .trim()
     .max(254, "Email address is too long")
     .refine(isRosterEmail, "Must be a valid email address"),
+  // LAST NAME MAY BE EMPTY ON A PASTED ROW, and only on a pasted row.
+  //
+  // The paste carries ONE name column, which the preview splits at the first
+  // space (roster-paste.ts splitFullName). A student with a single-token name
+  // is a legitimate row that splits to a first name and nothing else, and the
+  // preview shows it as ready. Leaving the inherited .min(1) here would let
+  // that row 400 the WHOLE paste -- zod validates the body at once -- with
+  // "Last name is required" pointing at a field the teacher never filled in and
+  // cannot see, which is the exact disagreement the email predicate above
+  // exists to prevent.
+  //
+  // provisionStudentSchema keeps its .min(1) untouched: "Add with code" asks
+  // for the two names in two boxes, so a blank one there is a slip, not a
+  // mononym. provisionStudent joins and trims (student-provision.ts:104), so an
+  // empty half makes an account named "Cher", not "Cher ".
+  last_name: z.string().trim().max(80, "Last name is too long"),
 });
 
 export const bulkProvisionSchema = z.object({

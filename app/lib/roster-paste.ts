@@ -21,10 +21,22 @@
 // on tab-or-comma covers both without asking the teacher which one they have,
 // and without a format toggle nobody would read.
 //
-// FIXED COLUMN ORDER: first name, last name, email. Not detected, not guessed
-// from a header row. Detection fails silently on the roster whose first student
-// is named "Email", and the cost of guessing wrong is an account minted under
-// the wrong address with a password nobody can recover.
+// TWO ACCEPTED SHAPES, CHOSEN BY FIELD COUNT:
+//
+//   2 fields -> name, email          the district's exported spreadsheet
+//   3 fields -> first, last, email   the original format, still accepted
+//
+// Anything else is refused. FIELD COUNT IS THE ONLY SIGNAL. Sniffing a header
+// row fails silently on the roster whose first student is named "Email", and
+// reading the content of a cell to decide what it is fails on every name that
+// looks like something else. The count is the one thing about a line that
+// cannot be misread.
+//
+// COLUMN ORDER WITHIN A SHAPE IS STILL FIXED. A 2-field line always reads as
+// (name, email) and a 3-field line always as (first, last, email); neither is
+// reordered to match what the cells appear to contain, because the cost of
+// guessing wrong is an account minted under the wrong address with a password
+// nobody can recover.
 
 /**
  * The most students one paste may carry.
@@ -58,6 +70,17 @@ export interface RosterRow {
    * in the right neighbourhood.
    */
   line: number;
+  /**
+   * The name as the teacher typed it, and what the preview shows.
+   *
+   * Kept ALONGSIDE the split halves rather than derived from them at render
+   * time. On a 2-field paste this is the field verbatim, so a name the teacher
+   * can see in their spreadsheet is the name they see in the preview; rebuilding
+   * it from firstName + lastName would quietly normalise the whitespace of the
+   * one string they are checking the import against.
+   */
+  fullName: string;
+  /** Split from fullName on a 2-field line. The account is still made with these. */
   firstName: string;
   lastName: string;
   email: string;
@@ -100,29 +123,75 @@ export function isRosterEmail(value: string): boolean {
 /** Tab or comma. A line is split on whichever it happens to use, or both. */
 const FIELD_SEPARATOR = /[\t,]/;
 
+/**
+ * Split one name field into the first_name / last_name the account is still
+ * created with.
+ *
+ * FIRST WHITESPACE TOKEN, THEN THE ENTIRE REMAINDER. Not "the last token is the
+ * surname", and on this district's rosters that is the difference between a
+ * correct record and a wrong one. "Mary Jo Garcia" is Mary Garcia only if you
+ * assume surnames are one word; compound surnames are common enough here that
+ * the assumption breaks on real students, and it breaks silently, because
+ * "Garcia" looks like a perfectly good answer.
+ *
+ * A SINGLE TOKEN IS A FIRST NAME WITH NO SURNAME, NOT AN ERROR. A mononym and a
+ * half-filled roster column are both legitimate, and provisionStudent joins the
+ * two halves and trims (student-provision.ts:104), so an empty last name makes
+ * an account named "Cher" rather than one named "Cher ".
+ */
+function splitFullName(value: string): { firstName: string; lastName: string } {
+  const trimmed = value.trim();
+  const cut = trimmed.search(/\s/);
+  if (cut === -1) return { firstName: trimmed, lastName: "" };
+  // slice(cut).trim() collapses the separator run only. Whitespace INSIDE the
+  // remainder is left alone, because it is part of the surname.
+  return { firstName: trimmed.slice(0, cut), lastName: trimmed.slice(cut).trim() };
+}
+
 function classify(parts: string[]): { status: RosterRowStatus; message: string } {
-  // MORE THAN THREE FIELDS IS A PROBLEM, NOT A TRUNCATION, and this is the
-  // decision most worth stating. "Reyes, Ana Maria, ana@district.edu" splits
-  // into four; keeping the first three would mint an account for a student
-  // named "Ana Maria" whose email column now holds their surname. Refusing the
-  // line puts it in front of the teacher, who is the only one who knows which
-  // comma was the separator.
+  // TWO FIELDS: name, email. The shape the district's export produces, and the
+  // common case now. The name is NOT required to contain a space.
+  if (parts.length === 2) {
+    if (!parts[0] || !parts[1]) {
+      return { status: "missing-field", message: "Needs both: name and email." };
+    }
+    if (!isRosterEmail(parts[1])) {
+      return { status: "bad-email", message: "Not a valid email address." };
+    }
+    return { status: "ready", message: "" };
+  }
+
+  // THREE FIELDS: first, last, email. The original format, rule for rule
+  // unchanged, so a teacher with an older spreadsheet notices nothing.
+  if (parts.length === 3) {
+    if (parts.some((p) => !p)) {
+      return {
+        status: "missing-field",
+        message: "Needs all three: first name, last name, email.",
+      };
+    }
+    if (!isRosterEmail(parts[2])) {
+      return { status: "bad-email", message: "Not a valid email address." };
+    }
+    return { status: "ready", message: "" };
+  }
+
+  // MORE THAN THREE FIELDS IS A PROBLEM, NOT A TRUNCATION, and accepting a
+  // combined name column has not made this safe. "Reyes, Ana Maria,
+  // ana@district.edu" still splits into four, and there is now no reading of it
+  // that is obviously right: dropping a field could mint an account for a
+  // student named "Ana Maria" whose email column holds their surname. Refusing
+  // the line puts it in front of the teacher, who is the only one who knows
+  // which comma was the separator.
   if (parts.length > 3) {
     return {
       status: "missing-field",
-      message: "Too many fields. One student per line: first, last, email.",
+      message: "Too many fields. One student per line: name, email.",
     };
   }
-  if (parts.length < 3 || parts.some((p) => !p)) {
-    return {
-      status: "missing-field",
-      message: "Needs all three: first name, last name, email.",
-    };
-  }
-  if (!isRosterEmail(parts[2])) {
-    return { status: "bad-email", message: "Not a valid email address." };
-  }
-  return { status: "ready", message: "" };
+
+  // One field, or none. Nothing here to make an account from.
+  return { status: "missing-field", message: "Needs a name and an email." };
 }
 
 /**
@@ -147,8 +216,25 @@ export function parseRosterPaste(text: string): RosterParse {
     line += 1;
 
     const parts = rawLine.split(FIELD_SEPARATOR).map((p) => p.trim());
-    const [firstName = "", lastName = "", email = ""] = parts;
     let { status, message } = classify(parts);
+
+    // The 2-field line is the only one that splits a name. Every other count,
+    // including the refused ones, is read positionally so the flagged row still
+    // shows the teacher what they actually pasted.
+    let fullName: string;
+    let firstName: string;
+    let lastName: string;
+    let email: string;
+    if (parts.length === 2) {
+      fullName = parts[0];
+      ({ firstName, lastName } = splitFullName(parts[0]));
+      email = parts[1];
+    } else {
+      firstName = parts[0] ?? "";
+      lastName = parts[1] ?? "";
+      email = parts[2] ?? "";
+      fullName = [firstName, lastName].filter(Boolean).join(" ");
+    }
 
     if (status === "ready") {
       const key = email.toLowerCase();
@@ -161,7 +247,7 @@ export function parseRosterPaste(text: string): RosterParse {
       }
     }
 
-    rows.push({ line, firstName, lastName, email, status, message });
+    rows.push({ line, fullName, firstName, lastName, email, status, message });
   }
 
   const ready = rows.filter((r) => r.status === "ready");
