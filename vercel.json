@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/tripwire-day6",
+      "schedule": "0 14 * * *"
+    }
+  ]
+}

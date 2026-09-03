@@ -519,27 +519,36 @@ const BILLING_URL = `${APP_ORIGIN}/teacher/billing`;
 const CANCEL_URL = `${APP_ORIGIN}/teacher/cancel`;
 const DASHBOARD_URL = `${APP_ORIGIN}/teacher`;
 
-// Shared scaffold for the four senders below, and ONLY those four. The older
-// senders each carry their own copy of this table layout; refactoring working
-// emails onto a new helper is deliberately not part of the trial build.
+// Shared scaffold for the four trial senders below and the tripwire reminder at
+// the bottom of this file, and ONLY those. The older senders each carry their
+// own copy of this table layout; refactoring working emails onto a new helper
+// is deliberately not part of the trial build.
 function buyerEmailHtml({
   heading,
+  preheader,
   paragraphsHtml,
   cta,
+  afterCtaHtml = [],
   footNote,
 }: {
   heading: string;
+  /** Inbox preview text. Rendered invisibly ahead of the body. */
+  preheader?: string;
   /** Already-safe HTML. Callers escape any user-derived value they interpolate. */
   paragraphsHtml: string[];
-  cta?: { label: string; url: string };
+  cta?: { label: string; url: string; secondary?: { label: string; url: string } };
+  /** Already-safe HTML paragraphs rendered AFTER the button. */
+  afterCtaHtml?: string[];
   footNote?: string;
 }): string {
-  const body = paragraphsHtml
-    .map(
-      (p) =>
-        `<p style="margin:0 0 16px; font-size:14px; color:#3a3a3a; line-height:1.65;">${p}</p>`
-    )
-    .join("\n");
+  const paragraph = (p: string) =>
+    `<p style="margin:0 0 16px; font-size:14px; color:#3a3a3a; line-height:1.65;">${p}</p>`;
+  const body = paragraphsHtml.map(paragraph).join("\n");
+  const after = afterCtaHtml.map(paragraph).join("\n");
+
+  const preheaderBlock = preheader
+    ? `<div style="display:none; max-height:0; overflow:hidden; font-size:1px; line-height:1px; color:#f5f5f3; opacity:0;">${escapeHtml(preheader)}</div>`
+    : "";
 
   const ctaBlock = cta
     ? `
@@ -549,6 +558,11 @@ function buyerEmailHtml({
           <a href="${cta.url}" style="display:inline-block; background:#0f1e35; color:#ffffff; font-size:15px; font-weight:700; text-decoration:none; padding:13px 30px; border-radius:10px;">
             ${escapeHtml(cta.label)}
           </a>
+          ${
+            cta.secondary
+              ? `<span style="display:inline-block; margin-left:14px; font-size:14px;"><a href="${cta.secondary.url}" style="color:#C68A2F; font-weight:600;">${escapeHtml(cta.secondary.label)}</a></span>`
+              : ""
+          }
         </td>
       </tr>
     </table>`
@@ -563,6 +577,7 @@ function buyerEmailHtml({
     <html>
       <head><meta charset="utf-8" /></head>
       <body style="margin:0; padding:0; background:#f5f5f3;">
+        ${preheaderBlock}
         <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f3; padding:32px 16px;">
           <tr>
             <td align="center">
@@ -577,6 +592,7 @@ function buyerEmailHtml({
                   <td style="padding:24px 28px;">
                     ${body}
                     ${ctaBlock}
+                    ${after}
                     ${foot}
                   </td>
                 </tr>
@@ -758,6 +774,219 @@ export async function sendPaymentFailedNotice({
 
   if (error) {
     console.error("[email] failed to send payment-failed notice:", error);
+    throw new Error(error.message);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// The $5 / 7-day tripwire reminder
+// ---------------------------------------------------------------------------
+//
+// Sent by the daily cron in app/api/cron/tripwire-day6/route.ts, on the day
+// before a pass ends. See app/lib/tripwire-reminder.ts for who gets which one.
+//
+// THE COPY IS VERBATIM AND LIVES IN ONE PLACE. Each template below is the exact
+// text Juan approved, with {{merge_fields}} left in. Both the plain-text body
+// and the HTML body are derived from the same string, so the two cannot drift,
+// and the harness reads the same string to prove the right state got the right
+// words. Do not "tidy" the wording here: the spelling of Mu, the sign-off and
+// the line breaks are all deliberate.
+//
+// REPLY-TO IS A PERSON. The trial senders above reply to the support inbox;
+// this one says "just reply to this email and I'll get you in myself", so it
+// has to land with Mr. O rather than in a queue.
+
+export const TRIPWIRE_REPLY_TO = "mr.o@unpackmath.com";
+
+export type TripwireReminderState = "engaged" | "idle" | "never-claimed";
+
+export const TRIPWIRE_REMINDER_COPY: Readonly<
+  Record<TripwireReminderState, { subject: string; preheader: string; body: string }>
+> = {
+  engaged: {
+    subject: "Tomorrow, the rest of your course locks",
+    preheader: "Your progress stays saved. The lessons and Mu don't.",
+    body: `Howdy {{first_name}},
+
+Your 7-day pass ends {{expiry_date}}. Wanted to give you a heads up before it does, not after.
+
+Everything you've already done stays on your account, your scores and your progress, all of it. But tomorrow the other 96 topics, the worked solutions, and Mu go back behind the lock.
+
+In the last week you worked through {{topics_worked}} topics. That's real ground. The test doesn't care what you paid, it cares whether you've closed the gaps, and you were closing them.
+
+If you want to keep going, Full Course keeps everything you have right now, Mu included, for a full year. If you just need to finish prepping and practicing, Practice Pass is the lighter option.
+
+{{full_course_button}} {{practice_pass_link}}
+
+Either way, log in before your pass ends so you don't lose your footing.
+
+Mr. O`,
+  },
+  idle: {
+    subject: "Tomorrow, the rest of your course locks",
+    preheader: "Your progress stays saved. The lessons and Mu don't.",
+    body: `Howdy {{first_name}},
+
+Your 7-day pass ends {{expiry_date}}. Wanted to give you a heads up before it does, not after.
+
+You set up your account but haven't started yet, and there's still time to. Right now you've got all 97 topics, the worked solutions, and Mu unlocked. Tomorrow the other 96 topics go back behind the lock.
+
+Even one session before then tells you where you stand for the test. That's the whole point of the pass.
+
+If you want to keep everything, Mu included, for a full year, that's Full Course. If you just need to prep and practice, Practice Pass is the lighter option.
+
+{{full_course_button}} {{practice_pass_link}}
+
+Log in before your pass ends so you don't lose the access you already paid for.
+
+Mr. O`,
+  },
+  "never-claimed": {
+    subject: "Your 7-day pass is unused, here is how to start it",
+    preheader: "Log in with your checkout email to unlock everything.",
+    body: `Howdy,
+
+You bought a 7-day pass, but it looks like you haven't logged in yet, so the clock is running on access you haven't used.
+
+Here's the fix: log in with the same email you used at checkout, and everything unlocks, all 97 topics, the worked solutions, and Mu. Your 7 days run through {{expiry_date}}.
+
+{{claim_button}}
+
+If the login gives you any trouble, just reply to this email and I'll get you in myself.
+
+Mr. O`,
+  },
+};
+
+// The two upgrade CTAs go through /upgrade rather than to the raw
+// buy.stripe.com URLs on purpose: /upgrade signs the buyer in and attaches
+// client_reference_id, which is what lets the webhook land the purchase on
+// the right profile. A raw link from an email touches no route and can arrive
+// with an email that matches nothing (see pending-entitlements.ts).
+export const FULL_COURSE_UPGRADE_URL = `${APP_ORIGIN}/upgrade?plan=full-course`;
+export const PRACTICE_PASS_UPGRADE_URL = `${APP_ORIGIN}/upgrade?plan=practice-pass`;
+
+export function claimUrlFor(checkoutSessionId: string): string {
+  return `${APP_ORIGIN}/claim?checkout_session_id=${encodeURIComponent(checkoutSessionId)}`;
+}
+
+// "September 9". Central, like every other buyer-facing date in this file.
+export function tripwireExpiryDate(accessUntil: Date): string {
+  return accessUntil.toLocaleDateString("en-US", {
+    timeZone: "America/Chicago",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+export type TripwireReminderFields = {
+  firstName?: string;
+  expiryDate: string;
+  topicsWorked?: number;
+  /** Required for never-claimed; ignored otherwise. */
+  claimUrl?: string;
+};
+
+export type TripwireReminderMessage = {
+  state: TripwireReminderState;
+  to: string;
+  subject: string;
+  text: string;
+  html: string;
+};
+
+const FULL_COURSE_LABEL = "Keep going with Full Course";
+const PRACTICE_PASS_LABEL = "Or get Practice Pass";
+const CLAIM_LABEL = "Log in and unlock your pass";
+
+/**
+ * Pure. Renders one state's copy into a ready-to-send message.
+ *
+ * The text body is the verbatim template with plain substitutions, buttons
+ * becoming "label: url". The HTML body splits the same template on blank
+ * lines: a paragraph that is only button tokens becomes the CTA row, every
+ * other paragraph is escaped and then has its tokens filled with escaped
+ * values. Merge values are substituted AFTER escaping so a first name with
+ * markup in it cannot render as markup.
+ */
+export function renderTripwireReminder(
+  state: TripwireReminderState,
+  to: string,
+  fields: TripwireReminderFields
+): TripwireReminderMessage {
+  const copy = TRIPWIRE_REMINDER_COPY[state];
+  const firstName = (fields.firstName ?? "").trim() || "there";
+  const topicsWorked = String(fields.topicsWorked ?? 0);
+  if (state === "never-claimed" && !fields.claimUrl) {
+    throw new Error("renderTripwireReminder: never-claimed needs a claimUrl");
+  }
+  const claimUrl = fields.claimUrl ?? "";
+
+  const textValues: Record<string, string> = {
+    first_name: firstName,
+    expiry_date: fields.expiryDate,
+    topics_worked: topicsWorked,
+    full_course_button: `${FULL_COURSE_LABEL}: ${FULL_COURSE_UPGRADE_URL}`,
+    practice_pass_link: `${PRACTICE_PASS_LABEL}: ${PRACTICE_PASS_UPGRADE_URL}`,
+    claim_button: `${CLAIM_LABEL}: ${claimUrl}`,
+  };
+  const fill = (s: string, values: Record<string, string>) =>
+    s.replace(/\{\{(\w+)\}\}/g, (m, key: string) => (key in values ? values[key] : m));
+
+  const text = fill(copy.body, textValues);
+
+  const htmlValues: Record<string, string> = {
+    first_name: escapeHtml(firstName),
+    expiry_date: `<strong>${escapeHtml(fields.expiryDate)}</strong>`,
+    topics_worked: `<strong>${escapeHtml(topicsWorked)}</strong>`,
+  };
+
+  const paragraphs = copy.body.split(/\n\s*\n/);
+  const before: string[] = [];
+  const after: string[] = [];
+  let cta: { label: string; url: string; secondary?: { label: string; url: string } } | undefined;
+  for (const p of paragraphs) {
+    const trimmed = p.trim();
+    if (trimmed === "{{full_course_button}} {{practice_pass_link}}") {
+      cta = {
+        label: FULL_COURSE_LABEL,
+        url: FULL_COURSE_UPGRADE_URL,
+        secondary: { label: PRACTICE_PASS_LABEL, url: PRACTICE_PASS_UPGRADE_URL },
+      };
+      continue;
+    }
+    if (trimmed === "{{claim_button}}") {
+      cta = { label: CLAIM_LABEL, url: claimUrl };
+      continue;
+    }
+    (cta ? after : before).push(fill(escapeHtml(trimmed), htmlValues));
+  }
+  if (!cta) throw new Error(`renderTripwireReminder: ${state} template has no CTA paragraph`);
+
+  const html = buyerEmailHtml({
+    heading: copy.subject,
+    preheader: copy.preheader,
+    paragraphsHtml: before,
+    cta,
+    afterCtaHtml: after,
+  });
+
+  return { state, to, subject: copy.subject, text, html };
+}
+
+/** The only thing here that touches Resend. The cron injects it; the harness never does. */
+export async function sendTripwireReminder(message: TripwireReminderMessage): Promise<void> {
+  const { error } = await resend.emails.send({
+    from: "UnpackMath <no-reply@unpackmath.com>",
+    to: message.to,
+    replyTo: TRIPWIRE_REPLY_TO,
+    subject: message.subject,
+    text: message.text,
+    html: message.html,
+  });
+
+  if (error) {
+    console.error(`[email] failed to send tripwire ${message.state} reminder:`, error);
     throw new Error(error.message);
   }
 }
