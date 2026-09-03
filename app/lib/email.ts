@@ -818,7 +818,7 @@ If you want to keep going, Full Course keeps everything you have right now, Mu i
 
 {{full_course_button}} {{practice_pass_link}}
 
-Either way, log in before {{expiry_date}} so you don't lose your footing.
+Either way, log in before your pass ends so you don't lose your footing.
 
 Mr. O`,
   },
@@ -837,7 +837,7 @@ If you want to keep everything, Mu included, for a full year, that's Full Course
 
 {{full_course_button}} {{practice_pass_link}}
 
-Log in before {{expiry_date}} so you don't lose the access you already paid for.
+Log in before your pass ends so you don't lose the access you already paid for.
 
 Mr. O`,
   },
