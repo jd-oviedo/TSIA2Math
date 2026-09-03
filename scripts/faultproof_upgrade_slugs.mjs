@@ -48,11 +48,10 @@ const EXPECTED = {
   'teacher-annual': ['https://buy.stripe.com/00w5kD5J6bXSa657nh7AI07', 'teacher-core'],
   'teacher-pro-monthly': ['https://buy.stripe.com/eVq9ATgnK0fa2DDbDx7AI08', 'teacher-pro'],
   'teacher-pro-annual': ['https://buy.stripe.com/fZudR96Nafa4fqpbDx7AI09', 'teacher-pro'],
-  // The $5 tripwire. Its URL is a PLACEHOLDER until Juan pastes the real one,
-  // and the route refuses the slug while it is (see isSellable). When the paste
-  // happens this row goes stale and the URL check below goes red, which is the
-  // reminder to confirm the pasted URL against the Stripe dashboard here too.
-  'tripwire': ['https://buy.stripe.com/PASTE_THE_TRIPWIRE_URL_HERE', 'full-course'],
+  // The $5 tripwire, pasted by Juan on 2026-09-03. The route refuses any row
+  // still carrying the PASTE_THE_ placeholder (see isSellable), and the check
+  // below asserts this one is a real link.
+  'tripwire': ['https://buy.stripe.com/bJeaEXgnK8LG1zzcHB7AI0a', 'full-course'],
 };
 
 const SLUG_COUNT = Object.keys(EXPECTED).length;
@@ -97,6 +96,9 @@ const ASSERTIONS = {
     const t = parse(s);
     return Object.entries(EXPECTED).every(([slug, [, plan]]) => t[slug]?.plan === plan);
   },
+
+  'the tripwire URL is a real link, not the placeholder': (s) =>
+    !parse(s).tripwire?.url.includes(PLACEHOLDER_MARKER),
 
   'no two slugs share a URL': (s) => {
     const urls = Object.values(parse(s)).map((p) => p.url);
@@ -196,8 +198,8 @@ const FAULTS = [
     name: 'the tripwire is mislabelled as practice-pass, so a $5 buyer is recorded on the wrong plan',
     edit: (s) =>
       s.replace(
-        'url: "https://buy.stripe.com/PASTE_THE_TRIPWIRE_URL_HERE",\n    plan: "full-course",',
-        'url: "https://buy.stripe.com/PASTE_THE_TRIPWIRE_URL_HERE",\n    plan: "practice-pass",'
+        'url: "https://buy.stripe.com/bJeaEXgnK8LG1zzcHB7AI0a",\n    plan: "full-course",',
+        'url: "https://buy.stripe.com/bJeaEXgnK8LG1zzcHB7AI0a",\n    plan: "practice-pass",'
       ),
     expect: ['each slug names the product it actually sells'],
   },

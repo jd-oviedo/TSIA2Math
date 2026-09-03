@@ -49,13 +49,12 @@ import { loginHref } from "../lib/next-param";
 // where the same buyer is turned away BEFORE paying, so the refund path is the
 // backstop rather than the ordinary outcome. See tripwireHolderGuard.
 //
-// The URL below is a placeholder until Juan pastes the real one, and the slug
-// is refused while it is. A buy.stripe.com URL cannot be derived from a plink
-// id -- the two are independent identifiers for one object -- so the id in
-// products.ts cannot supply it. While the placeholder stands, ?plan=tripwire
-// falls through to /pricing exactly like an unrecognised slug, so this can
-// deploy ahead of the paste with nothing sellable. faultproof_upgrade_slugs.mjs
-// asserts that the gate exists and that the placeholder is not a real link.
+// The URL below shipped as a PASTE_THE_ placeholder and the slug was refused
+// while it stood; Juan pasted the real link on 2026-09-03. A buy.stripe.com URL
+// cannot be derived from a plink id -- the two are independent identifiers for
+// one object -- so the id in products.ts cannot supply it. The gate stays: any
+// row still carrying the marker falls through to /pricing like an unrecognised
+// slug, so a future row can deploy ahead of its paste with nothing sellable.
 
 type Product = {
   /** The live Payment Link, confirmed against the Stripe dashboard. */
@@ -92,9 +91,9 @@ const PRODUCTS = {
   },
   // Tripwire Pass, $5 for 7 days of full-course. Same plan as full-course above
   // on purpose: it is a PRICE, not a tier (products.ts explains at length).
-  // JUAN PASTES THE REAL buy.stripe.com URL HERE, ON THIS LINE, AND NOWHERE ELSE.
+  // The real buy.stripe.com URL, confirmed by Juan. Recorded here and nowhere else.
   "tripwire": {
-    url: "https://buy.stripe.com/PASTE_THE_TRIPWIRE_URL_HERE",
+    url: "https://buy.stripe.com/bJeaEXgnK8LG1zzcHB7AI0a",
     plan: "full-course",
   },
 } as const satisfies Record<string, Product>;

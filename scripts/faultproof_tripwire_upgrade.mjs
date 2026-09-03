@@ -15,12 +15,13 @@
 // by design (faultproof_upgrade_slugs.mjs asserts that separately). Zero prod
 // reads and zero Stripe calls are properties of the setup, not a claim.
 //
-// THE PASTED STATE IS WHAT IS TESTED. The tripwire row ships with a placeholder
-// URL and the route refuses the slug while it stands, so the clean module is
-// asserted to bounce to /pricing, and every routing property below runs on a
-// copy of the source with the placeholder replaced by a fake sellable link.
-// That is the state the route will be in the day the real URL is pasted, and
-// the guard has to be proven for that day, not for today.
+// THE SELLABLE STATE IS WHAT IS TESTED. The tripwire URL is read out of the
+// route's own table. While it was the PASTE_THE_ placeholder the route refused
+// the slug, so the clean module was asserted to bounce to /pricing and every
+// routing property ran on a copy with a fake sellable link swapped in. Now the
+// real link is pasted, the clean module IS the sellable state and is tested
+// as-is; the placeholder branch stays so the harness keeps working if a row
+// ever ships unpasted again.
 //
 // RED THEN GREEN. Each property is asserted on the pasted module and then on a
 // MUTANT of it carrying one deliberate fault. The check must FAIL on the
@@ -150,12 +151,17 @@ registerHooks({
 const ROUTE_PATH = 'app/upgrade/route.ts';
 const CLEAN = readFileSync(ROUTE_PATH, 'utf8');
 
-const PLACEHOLDER = 'https://buy.stripe.com/PASTE_THE_TRIPWIRE_URL_HERE';
-const FAKE_TRIPWIRE_URL = 'https://buy.stripe.com/test_FAULTPROOF_TRIPWIRE_NOT_A_LINK';
-if (CLEAN.split(PLACEHOLDER).length - 1 !== 1) {
-  throw new Error('expected the tripwire placeholder URL exactly once in the route');
+const tripwireRow = /"tripwire":\s*\{\s*url:\s*"([^"]+)"/.exec(CLEAN);
+if (!tripwireRow) throw new Error('could not find the tripwire row in the route');
+const SHIPPED_URL = tripwireRow[1];
+const UNPASTED = SHIPPED_URL.includes('PASTE_THE_');
+const FAKE_TRIPWIRE_URL = UNPASTED
+  ? 'https://buy.stripe.com/test_FAULTPROOF_TRIPWIRE_NOT_A_LINK'
+  : SHIPPED_URL;
+if (CLEAN.split(SHIPPED_URL).length - 1 !== 1) {
+  throw new Error('expected the tripwire URL exactly once in the route');
 }
-const PASTED = CLEAN.replace(PLACEHOLDER, FAKE_TRIPWIRE_URL);
+const PASTED = UNPASTED ? CLEAN.replace(SHIPPED_URL, FAKE_TRIPWIRE_URL) : CLEAN;
 
 let loadCounter = 0;
 function purgeTempModules() {
@@ -448,15 +454,20 @@ function report(ok, text) {
 
 purgeTempModules();
 try {
-  // The shipped state: placeholder URL, slug refused, nothing sellable.
+  // The shipped state. Unpasted: slug refused, nothing sellable. Pasted: the
+  // slug is sellable and no visitor is bounced to /pricing.
   const clean = await loadSource(CLEAN);
   for (const scenario of ['anonymous', 'free student', 'active full course']) {
     const r = await hit(clean, scenario);
+    const bounced = r.location === 'https://unpackmath.com/pricing';
     report(
-      r.location === 'https://unpackmath.com/pricing',
-      `shipped placeholder: ${scenario} on ?plan=tripwire bounces to /pricing (${r.location})`
+      UNPASTED ? bounced : !bounced,
+      UNPASTED
+        ? `shipped placeholder: ${scenario} on ?plan=tripwire bounces to /pricing (${r.location})`
+        : `shipped real link: ${scenario} on ?plan=tripwire is not bounced to /pricing (${r.location})`
     );
   }
+  report(!UNPASTED, `the shipped tripwire URL is a real link, not a placeholder (${SHIPPED_URL})`);
 
   const pasted = await loadSource(PASTED);
   for (const prop of PROPERTIES) {
