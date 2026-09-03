@@ -1,0 +1,35 @@
+{
+  "type": "data_table",
+  "columns": [
+    "Day",
+    "Books read"
+  ],
+  "key": {
+    "symbol": "star",
+    "value": 5,
+    "label": "each star stands for 5 books"
+  },
+  "rows": [
+    {
+      "label": "Monday",
+      "symbols": 3,
+      "total": 15
+    },
+    {
+      "label": "Tuesday",
+      "symbols": 4,
+      "total": 20
+    },
+    {
+      "label": "Wednesday",
+      "symbols": 2,
+      "total": 10
+    },
+    {
+      "label": "Thursday",
+      "symbols": 5,
+      "total": 25
+    }
+  ],
+  "alt": "A pictograph of books read by day. Each star stands for 5 books. Monday shows 3 stars, which is 15 books. Tuesday shows 4 stars, which is 20 books. Wednesday shows 2 stars, which is 10 books. Thursday shows 5 stars, which is 25 books."
+}

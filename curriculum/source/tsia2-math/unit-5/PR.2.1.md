@@ -782,3 +782,335 @@ Step 2: The median did not move at all, because it depends on the position of th
   "D": "outlier_resistance_misjudged"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. What is the mean of this data set: $2, 6, 8, 10, 14$?**
+
+Step 1: Add all five values.
+- $2 + 6 + 8 + 10 + 14 = 40$
+
+Step 2: Divide by the number of values.
+- $40 \div 5 = 8$
+
+**Answer: C** ($8$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: answers_intermediate_value (reports the sum, 40, instead of dividing by the count)",
+  "B": "Student makes misconception: mean_divisor_miscounted (divides the sum, 40, by 4 instead of 5)",
+  "C": "Correct: adds the five values to 40, then divides by 5 for a mean of 8",
+  "D": "Student makes misconception: off_by_one_count (miscounts the sum as 45 while adding, giving a mean of 9)"
+},
+"misconception_tag": {
+  "A": "answers_intermediate_value",
+  "B": "mean_divisor_miscounted",
+  "D": "off_by_one_count"
+}
+```
+
+---
+
+**2. What is the median of this data set: $3, 3, 8, 15, 21$?**
+
+Step 1: The values are already in order.
+
+Step 2: With five values, the median is the third value.
+- $8$
+
+**Answer: A** ($8$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: with five ordered values, the middle, third value is 8",
+  "B": "Student makes misconception: reports_wrong_center_measure (reports the mean, 50 divided by 5 equals 10, instead of the median)",
+  "C": "Student makes misconception: reports_wrong_center_measure (reports the mode, 3, instead of the median)",
+  "D": "Student makes misconception: answers_intermediate_value (reports the sum of all five values, 50, instead of the median)"
+},
+"misconception_tag": {
+  "B": "reports_wrong_center_measure",
+  "C": "reports_wrong_center_measure",
+  "D": "answers_intermediate_value"
+}
+```
+
+---
+
+**3. What is the mode of this data set: $5, 5, 5, 8, 12, 15, 20$?**
+
+Step 1: Find the value that repeats most often.
+- $5$ appears three times, every other value appears once.
+
+**Answer: D** ($5$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: reports_wrong_center_measure (reports the median, the fourth of seven ordered values, 8, instead of the mode)",
+  "B": "Student makes misconception: reports_wrong_center_measure (reports the mean, 70 divided by 7 equals 10, instead of the mode)",
+  "C": "Student makes misconception: answers_intermediate_value (reports the sum of all seven values, 70, instead of the mode)",
+  "D": "Correct: 5 appears three times, more than any other value, so it is the mode"
+},
+"misconception_tag": {
+  "A": "reports_wrong_center_measure",
+  "B": "reports_wrong_center_measure",
+  "C": "answers_intermediate_value"
+}
+```
+
+---
+
+**4. What is the range of this data set: $12, 45, 8, 30, 19$?**
+
+Step 1: Find the maximum and minimum. Maximum $45$, minimum $8$.
+
+Step 2: Subtract.
+- $45 - 8 = 37$
+
+**Answer: B** ($37$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: range_from_single_extreme (reports the maximum, 45, as the range)",
+  "B": "Correct: subtracts the minimum, 8, from the maximum, 45, for a range of 37",
+  "C": "Student makes misconception: range_from_single_extreme (reports the minimum, 8, as the range)",
+  "D": "Student makes misconception: adds_instead_of_subtracts (adds the maximum and minimum, 45 plus 8, instead of subtracting)"
+},
+"misconception_tag": {
+  "A": "range_from_single_extreme",
+  "C": "range_from_single_extreme",
+  "D": "adds_instead_of_subtracts"
+}
+```
+
+---
+
+**5. What is the median of this data set: $4, 9, 15, 22$?**
+
+Step 1: The values are already in order, and there are four of them, an even count.
+
+Step 2: Average the two middle values.
+- $(9 + 15) \div 2 = 12$
+
+**Answer: B** ($12$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: two_middles_not_averaged (takes only the lower middle value, 9, instead of averaging both)",
+  "B": "Correct: averages the two middle values, 9 and 15, for a median of 12",
+  "C": "Student makes misconception: two_middles_not_averaged (takes only the upper middle value, 15, instead of averaging both)",
+  "D": "Student makes misconception: answers_intermediate_value (reports the sum of the two middle values, 24, without dividing by 2)"
+},
+"misconception_tag": {
+  "A": "two_middles_not_averaged",
+  "C": "two_middles_not_averaged",
+  "D": "answers_intermediate_value"
+}
+```
+
+---
+
+**6. What is the mean of this data set: $2, 4, 6, 8, 10, 30$?**
+
+Step 1: Add all six values.
+- $2 + 4 + 6 + 8 + 10 + 30 = 60$
+
+Step 2: Divide by the number of values.
+- $60 \div 6 = 10$
+
+**Answer: D** ($10$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: answers_intermediate_value (reports the sum, 60, instead of dividing by the count)",
+  "B": "Student makes misconception: mean_divisor_miscounted (divides the sum, 60, by 5 instead of 6)",
+  "C": "Student makes misconception: reports_wrong_center_measure (reports the median, the average of the two middle values 6 and 8, equal to 7, instead of the mean)",
+  "D": "Correct: adds the six values to 60, then divides by 6 for a mean of 10"
+},
+"misconception_tag": {
+  "A": "answers_intermediate_value",
+  "B": "mean_divisor_miscounted",
+  "C": "reports_wrong_center_measure"
+}
+```
+
+---
+
+**7. A data set has values $4, 5, 6, 7, 50$. If the value $50$ is removed, which measure changes the most: the mean or the median?**
+
+Step 1: Find both measures before removal. Mean: $(4+5+6+7+50) \div 5 = 72 \div 5 = 14.4$. Median: the middle of the five ordered values is $6$.
+
+Step 2: Find both measures after removing $50$. Remaining values: $4, 5, 6, 7$. Mean: $(4+5+6+7) \div 4 = 22 \div 4 = 5.5$. Median: the average of $5$ and $6$ is $5.5$.
+
+Step 3: Compare the changes. The mean drops from $14.4$ to $5.5$, a change of $8.9$. The median drops from $6$ to $5.5$, a change of only $0.5$.
+
+**Answer: A** (the mean changes far more)
+
+```json
+"distractor_logic": {
+  "A": "Correct: the mean drops by 8.9 while the median drops by only 0.5, because the median does not depend directly on the size of the extreme value",
+  "B": "Student makes misconception: outlier_resistance_misjudged (claims the median is the one pulled by the extreme value, when it is actually the mean)",
+  "C": "Student makes misconception: outlier_resistance_misjudged (assumes both measures respond identically to an outlier, when the median is designed to resist it)",
+  "D": "Student makes misconception: outlier_resistance_misjudged (assumes removing a value never affects either measure)"
+},
+"misconception_tag": {
+  "B": "outlier_resistance_misjudged",
+  "C": "outlier_resistance_misjudged",
+  "D": "outlier_resistance_misjudged"
+}
+```
+
+---
+
+**8. Five numbers have a mean of $16$. Four of them are $10, 14, 18, 22$. What is the fifth number?**
+
+Step 1: Find the total all five numbers must sum to.
+- $16 \times 5 = 80$
+
+Step 2: Add the four known numbers.
+- $10 + 14 + 18 + 22 = 64$
+
+Step 3: Subtract to find the fifth number.
+- $80 - 64 = 16$
+
+**Answer: C** ($16$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: answers_intermediate_value (reports the sum of the four known numbers, 64, instead of solving for the fifth)",
+  "B": "Student makes misconception: answers_intermediate_value (reports the required total, 80, instead of subtracting to find the fifth number)",
+  "C": "Correct: finds the required total, 80, subtracts the known sum, 64, and gets a fifth number of 16",
+  "D": "Student makes misconception: mean_divisor_miscounted (multiplies 16 by 4 instead of 5 to find the required total, concluding the fifth number is 0)"
+},
+"misconception_tag": {
+  "A": "answers_intermediate_value",
+  "B": "answers_intermediate_value",
+  "D": "mean_divisor_miscounted"
+}
+```
+
+---
+
+**9. A data set has a range of $28$. The smallest value is $12$. What is the largest value?**
+
+Step 1: The range is the largest value minus the smallest.
+- $\text{range} = \text{largest} - \text{smallest}$
+
+Step 2: Solve for the largest value.
+- $\text{largest} = 28 + 12 = 40$
+
+**Answer: B** ($40$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: subtracts_in_wrong_order (computes the range minus the smallest value, 28 minus 12, instead of adding them)",
+  "B": "Correct: adds the range, 28, to the smallest value, 12, for a largest value of 40",
+  "C": "Student makes misconception: answers_intermediate_value (reports the given range, 28, as though it were the largest value)",
+  "D": "Student makes misconception: range_from_single_extreme (reports the given smallest value, 12, as though the range alone determined it)"
+},
+"misconception_tag": {
+  "A": "subtracts_in_wrong_order",
+  "C": "answers_intermediate_value",
+  "D": "range_from_single_extreme"
+}
+```
+
+---
+
+**10. A set of six numbers has a mean of $14$. Five of the numbers are $8, 10, 14, 20, 28$. The sixth number is later found to be a data-entry error and is removed. What is the mean of the remaining five numbers?**
+
+Step 1: Find the total of all six numbers.
+- $14 \times 6 = 84$
+
+Step 2: Add the five known numbers to find the sixth.
+- $8 + 10 + 14 + 20 + 28 = 80$, so the sixth number is $84 - 80 = 4$
+
+Step 3: Removing that sixth number leaves the original five, whose mean is found directly.
+- $80 \div 5 = 16$
+
+**Answer: D** ($16$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: outlier_resistance_misjudged (assumes removing one value never changes the mean)",
+  "B": "Student makes misconception: answers_intermediate_value (reports the six-number total, 84, instead of the five-number mean)",
+  "C": "Student makes misconception: mean_divisor_miscounted (divides the remaining sum, 80, by 6 instead of 5)",
+  "D": "Correct: the remaining five numbers sum to 80, and $80 \\div 5 = 16$"
+},
+"misconception_tag": {
+  "A": "outlier_resistance_misjudged",
+  "B": "answers_intermediate_value",
+  "C": "mean_divisor_miscounted"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. What is the mean of this data set: $2, 6, 8, 10, 14$?
+   - A) $40$
+   - B) $10$
+   - C) $8$
+   - D) $9$
+
+2. What is the median of this data set: $3, 3, 8, 15, 21$?
+   - A) $8$
+   - B) $10$
+   - C) $3$
+   - D) $50$
+
+3. What is the mode of this data set: $5, 5, 5, 8, 12, 15, 20$?
+   - A) $8$
+   - B) $10$
+   - C) $70$
+   - D) $5$
+
+4. What is the range of this data set: $12, 45, 8, 30, 19$?
+   - A) $45$
+   - B) $37$
+   - C) $8$
+   - D) $53$
+
+**Proficient Level** (these require an extra step)
+
+5. What is the median of this data set: $4, 9, 15, 22$?
+   - A) $9$
+   - B) $12$
+   - C) $15$
+   - D) $24$
+
+6. What is the mean of this data set: $2, 4, 6, 8, 10, 30$?
+   - A) $60$
+   - B) $12$
+   - C) $7$
+   - D) $10$
+
+7. A data set has values $4, 5, 6, 7, 50$. If the value $50$ is removed, which measure changes the most: the mean or the median?
+   - A) The mean changes far more than the median, because the median is resistant to outliers.
+   - B) The median changes far more, because it directly uses the largest value.
+   - C) Both change by the same amount, since removing any one value affects mean and median equally.
+   - D) Neither changes, since removing one value from five doesn't affect either measure.
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. Five numbers have a mean of $16$. Four of them are $10, 14, 18, 22$. What is the fifth number?
+   - A) $64$
+   - B) $80$
+   - C) $16$
+   - D) $0$
+
+9. A data set has a range of $28$. The smallest value is $12$. What is the largest value?
+   - A) $16$
+   - B) $40$
+   - C) $28$
+   - D) $12$
+
+10. A set of six numbers has a mean of $14$. Five of the numbers are $8, 10, 14, 20, 28$. The sixth number is later found to be a data-entry error and is removed. What is the mean of the remaining five numbers?
+    - A) $14$
+    - B) $84$
+    - C) $13.33$
+    - D) $16$

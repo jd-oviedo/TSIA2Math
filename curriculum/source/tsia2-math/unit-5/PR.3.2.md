@@ -714,3 +714,318 @@ Check: $\frac{20}{50} + \frac{30}{50} = 1$. Correct.
   "D": "complement_assumed_half"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. The probability of an event occurring is $\frac{3}{8}$. What is the probability of the event NOT occurring?**
+
+Step 1: Subtract from $1$, or equivalently from $\frac{8}{8}$.
+- $\frac{8}{8} - \frac{3}{8} = \frac{5}{8}$
+
+**Answer: D** ($\frac{5}{8}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: complement_assumed_half (assumes the complement of any event is 1/2 regardless of the given probability)",
+  "B": "Student makes misconception: reports_event_not_complement (reports the original event's probability instead of its complement)",
+  "C": "Student makes misconception: off_by_one_count (miscounts $8 - 3$ as 4 instead of 5)",
+  "D": "Correct: subtracts 3/8 from 8/8 for a complement of 5/8"
+},
+"misconception_tag": {
+  "A": "complement_assumed_half",
+  "B": "reports_event_not_complement",
+  "C": "off_by_one_count"
+}
+```
+
+---
+
+**2. A weather forecast gives a $65\%$ chance of rain. What is the probability it does NOT rain?**
+
+Step 1: Subtract from $100\%$.
+- $100\% - 65\% = 35\%$
+
+**Answer: C** ($35\%$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: complement_assumed_half (assumes the complement is 50 percent regardless of the given 65 percent)",
+  "B": "Student makes misconception: reports_event_not_complement (reports the probability of rain instead of the probability it does not rain)",
+  "C": "Correct: subtracts 65 percent from 100 percent for a complement of 35 percent",
+  "D": "Student makes misconception: off_by_one_count (miscounts the subtraction, treating $100 - 65$ as 45)"
+},
+"misconception_tag": {
+  "A": "complement_assumed_half",
+  "B": "reports_event_not_complement",
+  "D": "off_by_one_count"
+}
+```
+
+---
+
+**3. A bag has $9$ red marbles and $11$ blue marbles. What is the probability of NOT drawing a red marble?**
+
+Step 1: Not drawing red means drawing blue. Count the total marbles.
+- $9 + 11 = 20$
+
+Step 2: Divide the blue marbles by the total.
+- $\frac{11}{20}$
+
+**Answer: A** ($\frac{11}{20}$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: not drawing red means drawing one of the 11 blue marbles out of 20 total",
+  "B": "Student makes misconception: reports_event_not_complement (reports the probability of drawing red, 9/20, instead of its complement)",
+  "C": "Student makes misconception: complement_assumed_half (assumes the complement is 1/2 regardless of the actual marble counts)",
+  "D": "Student makes misconception: favourable_over_unfavourable (divides the 11 blue marbles by the 9 red marbles instead of the total of 20)"
+},
+"misconception_tag": {
+  "B": "reports_event_not_complement",
+  "C": "complement_assumed_half",
+  "D": "favourable_over_unfavourable"
+}
+```
+
+---
+
+**4. The probability of drawing an ace from a standard deck is $\frac{1}{13}$. What is the probability of NOT drawing an ace?**
+
+Step 1: Subtract from $\frac{13}{13}$.
+- $\frac{13}{13} - \frac{1}{13} = \frac{12}{13}$
+
+**Answer: B** ($\frac{12}{13}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: complement_assumed_half (assumes the complement is 1/2 regardless of the given probability)",
+  "B": "Correct: subtracts 1/13 from 13/13 for a complement of 12/13",
+  "C": "Student makes misconception: reports_event_not_complement (reports the probability of drawing an ace instead of its complement)",
+  "D": "Student makes misconception: off_by_one_count (miscounts $13 - 1$ as 11 instead of 12)"
+},
+"misconception_tag": {
+  "A": "complement_assumed_half",
+  "C": "reports_event_not_complement",
+  "D": "off_by_one_count"
+}
+```
+
+---
+
+**5. The probability that a machine produces a defective part is $0.08$. Out of $500$ parts, how many are expected to NOT be defective?**
+
+Step 1: Find the probability of not defective.
+- $1 - 0.08 = 0.92$
+
+Step 2: Multiply by the number of parts.
+- $500 \times 0.92 = 460$
+
+**Answer: C** ($460$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: complement_assumed_half (uses 0.5 instead of 0.92, giving $500 \\times 0.5 = 250$)",
+  "B": "Student makes misconception: reports_event_not_complement (computes the number of defective parts, $500 \\times 0.08 = 40$, instead of the non-defective count)",
+  "C": "Correct: finds the complement, 0.92, and multiplies by 500 for 460",
+  "D": "Student makes misconception: off_by_one_count (miscomputes the complement as 0.82 instead of 0.92, giving $500 \\times 0.82 = 410$)"
+},
+"misconception_tag": {
+  "A": "complement_assumed_half",
+  "B": "reports_event_not_complement",
+  "D": "off_by_one_count"
+}
+```
+
+---
+
+**6. Two events are complements. If the probability of the first event is $\frac{7}{20}$, what is the probability of the second?**
+
+Step 1: Subtract from $\frac{20}{20}$.
+- $\frac{20}{20} - \frac{7}{20} = \frac{13}{20}$
+
+**Answer: D** ($\frac{13}{20}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: complement_assumed_half (assumes the complement is 1/2 regardless of the given probability)",
+  "B": "Student makes misconception: reports_event_not_complement (reports the first event's probability instead of its complement)",
+  "C": "Student makes misconception: favourable_over_unfavourable (writes the complement as 7 over the complement's own numerator, 13, instead of over the total, 20)",
+  "D": "Correct: subtracts 7/20 from 20/20 for a complement of 13/20"
+},
+"misconception_tag": {
+  "A": "complement_assumed_half",
+  "B": "reports_event_not_complement",
+  "C": "favourable_over_unfavourable"
+}
+```
+
+---
+
+**7. A survey finds that $42\%$ of respondents prefer tea over coffee. If $250$ people were surveyed, how many prefer something other than tea?**
+
+Step 1: Find the complement percentage.
+- $100\% - 42\% = 58\%$
+
+Step 2: Multiply by the number surveyed.
+- $250 \times 0.58 = 145$
+
+**Answer: A** ($145$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: finds the complement, 58 percent, and multiplies by 250 for 145",
+  "B": "Student makes misconception: complement_assumed_half (uses 50 percent instead of 58 percent, giving $250 \\times 0.5 = 125$)",
+  "C": "Student makes misconception: reports_event_not_complement (computes the number who prefer tea, $250 \\times 0.42 = 105$, instead of those who do not)",
+  "D": "Student makes misconception: off_by_one_count (miscomputes the complement as 48 percent instead of 58 percent, giving $250 \\times 0.48 = 120$)"
+},
+"misconception_tag": {
+  "B": "complement_assumed_half",
+  "C": "reports_event_not_complement",
+  "D": "off_by_one_count"
+}
+```
+
+---
+
+**8. The probability that a randomly selected student passes a test is $p$. If the probability of failing is $\frac{3}{10}$, what is $p$, and is passing or failing more likely?**
+
+Step 1: Passing and failing are complements, so $p = 1 - \frac{3}{10} = \frac{7}{10}$.
+
+Step 2: Compare. $\frac{7}{10}$ is greater than $\frac{3}{10}$, so passing is more likely.
+
+**Answer: B** ($p = \frac{7}{10}$; passing is more likely)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: reports_event_not_complement (reports the given failing probability, 3/10, as $p$, and swaps which outcome is more likely)",
+  "B": "Correct: $p = 1 - 3/10 = 7/10$, and since 7/10 exceeds 3/10, passing is more likely",
+  "C": "Student makes misconception: complement_assumed_half (assumes $p$ must be 1/2 regardless of the given failing probability)",
+  "D": "Student makes misconception: favourable_over_unfavourable (writes $p$ as 7 over the failing probability's own numerator, 3, instead of over 10, an impossible value greater than 1)"
+},
+"misconception_tag": {
+  "A": "reports_event_not_complement",
+  "C": "complement_assumed_half",
+  "D": "favourable_over_unfavourable"
+}
+```
+
+---
+
+**9. In a game, the probability of winning on a single spin is $\frac{2}{9}$. What is the probability of NOT winning, expressed as a percentage rounded to the nearest whole percent?**
+
+Step 1: Find the complement.
+- $1 - \frac{2}{9} = \frac{7}{9}$
+
+Step 2: Convert to a percentage and round.
+- $\frac{7}{9} \approx 0.7778 \to 77.78\% \to 78\%$
+
+**Answer: D** ($78\%$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: complement_assumed_half (assumes the complement is 50 percent regardless of the given 2/9)",
+  "B": "Student makes misconception: reports_event_not_complement (converts the winning probability, 2/9, to about 22 percent, instead of finding its complement)",
+  "C": "Student makes misconception: threshold_boundary_error (rounds 77.78 percent down to 77 instead of up to 78)",
+  "D": "Correct: finds the complement, 7/9, converts to about 77.78 percent, and rounds to 78 percent"
+},
+"misconception_tag": {
+  "A": "complement_assumed_half",
+  "B": "reports_event_not_complement",
+  "C": "threshold_boundary_error"
+}
+```
+
+---
+
+**10. The probability of an event NOT occurring is $\frac{5}{12}$. What is the probability of the event occurring?**
+
+Step 1: Subtract from $\frac{12}{12}$.
+- $\frac{12}{12} - \frac{5}{12} = \frac{7}{12}$
+
+**Answer: C** ($\frac{7}{12}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: complement_assumed_half (assumes the complement is 1/2 regardless of the given 5/12)",
+  "B": "Student makes misconception: reports_event_not_complement (reports the given complement, 5/12, instead of solving for the event's own probability)",
+  "C": "Correct: subtracts 5/12 from 12/12 for an event probability of 7/12",
+  "D": "Student makes misconception: favourable_over_unfavourable (writes the event's probability as 5 over the event's own numerator, 7, instead of over the total, 12)"
+},
+"misconception_tag": {
+  "A": "complement_assumed_half",
+  "B": "reports_event_not_complement",
+  "D": "favourable_over_unfavourable"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. The probability of an event occurring is $\frac{3}{8}$. What is the probability of the event NOT occurring?
+   - A) $\frac{1}{2}$
+   - B) $\frac{3}{8}$
+   - C) $\frac{4}{8}$
+   - D) $\frac{5}{8}$
+
+2. A weather forecast gives a $65\%$ chance of rain. What is the probability it does NOT rain?
+   - A) $50\%$
+   - B) $65\%$
+   - C) $35\%$
+   - D) $45\%$
+
+3. A bag has $9$ red marbles and $11$ blue marbles. What is the probability of NOT drawing a red marble?
+   - A) $\frac{11}{20}$
+   - B) $\frac{9}{20}$
+   - C) $\frac{1}{2}$
+   - D) $\frac{11}{9}$
+
+4. The probability of drawing an ace from a standard deck is $\frac{1}{13}$. What is the probability of NOT drawing an ace?
+   - A) $\frac{1}{2}$
+   - B) $\frac{12}{13}$
+   - C) $\frac{1}{13}$
+   - D) $\frac{11}{13}$
+
+**Proficient Level** (these require an extra step)
+
+5. The probability that a machine produces a defective part is $0.08$. Out of $500$ parts, how many are expected to NOT be defective?
+   - A) $250$
+   - B) $40$
+   - C) $460$
+   - D) $410$
+
+6. Two events are complements. If the probability of the first event is $\frac{7}{20}$, what is the probability of the second?
+   - A) $\frac{1}{2}$
+   - B) $\frac{7}{20}$
+   - C) $\frac{7}{13}$
+   - D) $\frac{13}{20}$
+
+7. A survey finds that $42\%$ of respondents prefer tea over coffee. If $250$ people were surveyed, how many prefer something other than tea?
+   - A) $145$
+   - B) $125$
+   - C) $105$
+   - D) $120$
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. The probability that a randomly selected student passes a test is $p$. If the probability of failing is $\frac{3}{10}$, what is $p$, and is passing or failing more likely?
+   - A) $p = \frac{3}{10}$; failing is more likely.
+   - B) $p = \frac{7}{10}$; passing is more likely.
+   - C) $p = \frac{1}{2}$; they are equally likely.
+   - D) $p = \frac{7}{3}$; passing is more likely.
+
+9. In a game, the probability of winning on a single spin is $\frac{2}{9}$. What is the probability of NOT winning, expressed as a percentage rounded to the nearest whole percent?
+   - A) $50\%$
+   - B) $22\%$
+   - C) $77\%$
+   - D) $78\%$
+
+10. The probability of an event NOT occurring is $\frac{5}{12}$. What is the probability of the event occurring?
+    - A) $\frac{1}{2}$
+    - B) $\frac{5}{12}$
+    - C) $\frac{7}{12}$
+    - D) $\frac{5}{7}$

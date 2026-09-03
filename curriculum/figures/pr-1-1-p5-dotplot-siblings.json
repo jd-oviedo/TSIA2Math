@@ -1,0 +1,19 @@
+{
+  "type": "dot_plot",
+  "xValues": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "counts": [
+    3,
+    5,
+    4,
+    2,
+    1
+  ],
+  "xLabel": "Number of siblings",
+  "alt": "A dot plot of number of siblings per student. Above 0 siblings there are 3 dots, above 1 sibling there are 5 dots, above 2 siblings there are 4 dots, above 3 siblings there are 2 dots, and above 4 siblings there is 1 dot."
+}

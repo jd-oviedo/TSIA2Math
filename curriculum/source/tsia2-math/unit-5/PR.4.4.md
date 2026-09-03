@@ -588,3 +588,315 @@ Step 2: The supported statement matches that strength.
   "C": "causation_from_association"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. A study finds that ice cream sales and drowning incidents both rise in the summer months. A student concludes that ice cream sales cause drowning. What is wrong with this conclusion?**
+
+Step 1: Both variables rise in summer, but that doesn't mean one causes the other.
+
+Step 2: A third factor, warm weather, drives people to both buy more ice cream and swim more, which explains the association without either causing the other.
+
+**Answer: D** (a third factor, warm weather, explains both)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: causation_from_association (treats the strong association as proof of causation)",
+  "B": "Student makes misconception: causation_from_association (still claims one variable causes the other, just reverses the direction)",
+  "C": "Student makes misconception: over_rejects_valid_model (overcorrects by denying any relationship exists at all, when a real association, just not causal, does exist)",
+  "D": "Correct: warm weather is a third factor that explains both trends, so the association is not causal"
+},
+"misconception_tag": {
+  "A": "causation_from_association",
+  "B": "causation_from_association",
+  "C": "over_rejects_valid_model"
+}
+```
+
+---
+
+**2. A line of best fit is built from data on cars with $4$ to $8$ cylinders. A student uses the line to predict fuel economy for a car with $16$ cylinders. What is the problem?**
+
+Step 1: The line was built from data spanning $4$ to $8$ cylinders only.
+
+Step 2: $16$ cylinders lies far outside that range, so the line's pattern is not guaranteed to hold there.
+
+**Answer: C** (the prediction extrapolates beyond the data's range)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: extrapolates_beyond_data (assumes the line holds for any number of cylinders, including far outside the studied range)",
+  "B": "Student makes misconception: over_rejects_valid_model (dismisses the line entirely, even within the range the data actually support)",
+  "C": "Correct: 16 cylinders is far outside the 4 to 8 cylinder range the data covered, so the prediction is unreliable",
+  "D": "Student makes misconception: extrapolates_beyond_data (justifies the same out-of-range prediction with an irrelevant reason, that 16 is a whole number)"
+},
+"misconception_tag": {
+  "A": "extrapolates_beyond_data",
+  "B": "over_rejects_valid_model",
+  "D": "extrapolates_beyond_data"
+}
+```
+
+---
+
+**3. A survey of $30$ students at one school finds that $80\%$ prefer online classes. A student concludes that $80\%$ of all students everywhere prefer online classes. What is wrong with this conclusion?**
+
+Step 1: The survey only sampled $30$ students at one school.
+
+Step 2: Extending that result to all students everywhere goes beyond what this sample can support.
+
+**Answer: A** (the result only describes the students actually surveyed)
+
+```json
+"distractor_logic": {
+  "A": "Correct: the 80 percent figure describes only the 30 students surveyed at that one school",
+  "B": "Student makes misconception: overgeneralizes_from_sample (treats a single school's sample result as though it applied to every student everywhere)",
+  "C": "Student makes misconception: overgeneralizes_from_sample (still generalizes the sample to a universal population claim, just using the complementary percentage)",
+  "D": "Student makes misconception: over_rejects_valid_model (dismisses the survey result entirely rather than simply limiting its scope to what it actually measured)"
+},
+"misconception_tag": {
+  "B": "overgeneralizes_from_sample",
+  "C": "overgeneralizes_from_sample",
+  "D": "over_rejects_valid_model"
+}
+```
+
+---
+
+**4. A report states that the average household in a city has $2.3$ children. A student concludes that every household in the city has either $2$ or $3$ children exactly split according to that average. What is wrong?**
+
+Step 1: An average is a single summary number computed across many households.
+
+Step 2: It does not mean each individual household is constrained to match that summary in any particular way.
+
+**Answer: B** (an average summarizes the city, not each household)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: tendency_stated_as_absolute (assumes the average describes every individual household exactly)",
+  "B": "Correct: 2.3 is a summary across the whole city, and no individual household is required to fit that pattern",
+  "C": "Student makes misconception: over_rejects_valid_model (rejects a valid statistical summary because of a literal misreading of what an average represents)",
+  "D": "Student makes misconception: extrapolates_beyond_data (misapplies an unrelated concept, extrapolation, to a question about interpreting an average)"
+},
+"misconception_tag": {
+  "A": "tendency_stated_as_absolute",
+  "C": "over_rejects_valid_model",
+  "D": "extrapolates_beyond_data"
+}
+```
+
+---
+
+**5. A study of $8$ towns with populations between $5{,}000$ and $50{,}000$ finds a strong linear relationship between population and number of traffic lights. A student uses this line to predict the number of traffic lights in a city of $2$ million people. Is this prediction reliable?**
+
+Step 1: The data only cover populations from $5{,}000$ to $50{,}000$.
+
+Step 2: $2$ million is far outside that range, so the linear pattern is not guaranteed to continue there.
+
+**Answer: C** (no, it extrapolates far outside the data's range)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: extrapolates_beyond_data (trusts the line for a population far outside the studied range because it fit well within that range)",
+  "B": "Student makes misconception: over_rejects_valid_model (dismisses linear relationships as unreliable in general, rather than naming the specific range problem)",
+  "C": "Correct: 2 million lies far outside the 5,000 to 50,000 range the data covered",
+  "D": "Student makes misconception: extrapolates_beyond_data (justifies the same out-of-range prediction with an irrelevant reason, that a city is just a larger town)"
+},
+"misconception_tag": {
+  "A": "extrapolates_beyond_data",
+  "B": "over_rejects_valid_model",
+  "D": "extrapolates_beyond_data"
+}
+```
+
+---
+
+**6. A researcher observes that students who take more practice tests tend to score higher on the final exam. A newspaper headline claims "Practice Tests Cause Higher Scores." What is the most careful conclusion?**
+
+Step 1: The data show that the two variables move together, an association.
+
+Step 2: Other factors, like overall study time or motivation, could explain both the practice testing and the higher scores, so causation is not established by this observation alone.
+
+**Answer: D** (association only, causation not established)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: causation_from_association (accepts the headline's causal claim based only on the observed association)",
+  "B": "Student makes misconception: causation_from_association (still claims one variable causes the other, just reverses the direction)",
+  "C": "Student makes misconception: over_rejects_valid_model (dismisses the observed pattern as useless, when it is a real, informative association, just not proof of causation)",
+  "D": "Correct: the pattern is a real association, but other factors could explain it, so causation is not established by this data alone"
+},
+"misconception_tag": {
+  "A": "causation_from_association",
+  "B": "causation_from_association",
+  "C": "over_rejects_valid_model"
+}
+```
+
+---
+
+**7. A survey of $500$ randomly selected adults across an entire state finds that $62\%$ support a new law. Is it reasonable to conclude that about $62\%$ of adults in the state support the law?**
+
+Step 1: The sample is large and was randomly selected from the actual population being studied, adults in that state.
+
+Step 2: This is exactly the situation where a sample result reasonably generalizes to the population, unlike a small or non-random sample.
+
+**Answer: A** (yes, this is a reasonable generalization)
+
+```json
+"distractor_logic": {
+  "A": "Correct: a large, randomly selected sample of the actual population supports this generalization",
+  "B": "Student makes misconception: over_rejects_valid_model (claims any sample short of the full population tells us nothing, dismissing the entire logic of sampling)",
+  "C": "Student makes misconception: false_structural_rule_invented (invents an arbitrary minimum sample size, 1,000, that has no basis in what makes this sample valid)",
+  "D": "Student makes misconception: over_rejects_valid_model (demands a full census before accepting any conclusion, again dismissing the validity of sampling itself)"
+},
+"misconception_tag": {
+  "B": "over_rejects_valid_model",
+  "C": "false_structural_rule_invented",
+  "D": "over_rejects_valid_model"
+}
+```
+
+---
+
+**8. A company's data shows that employees who work overtime tend to report higher job satisfaction. Based only on this, which conclusion is best supported?**
+
+Step 1: The data show an association between overtime and reported satisfaction.
+
+Step 2: This alone does not establish that overtime causes the higher satisfaction, since other factors, such as pay, role, or personality, could explain the pattern.
+
+**Answer: B** (association only, causation not established)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: causation_from_association (treats the observed association as proof that overtime causes higher satisfaction)",
+  "B": "Correct: the data show only an association; this alone cannot establish that overtime causes the higher satisfaction",
+  "C": "Student makes misconception: causation_from_association (still claims one variable causes the other, just reverses the direction)",
+  "D": "Student makes misconception: over_rejects_valid_model (dismisses the association as providing no information at all, when it is real and worth investigating further)"
+},
+"misconception_tag": {
+  "A": "causation_from_association",
+  "C": "causation_from_association",
+  "D": "over_rejects_valid_model"
+}
+```
+
+---
+
+**9. A biologist collects growth data on a plant over its first $10$ days, during which height increases steadily by about $2$ cm per day. A student uses this rate to predict the plant's height after $2$ years. What is the flaw in this prediction, beyond just being far outside the data range?**
+
+Step 1: The prediction extends a short-term rate over a much longer timeframe.
+
+Step 2: Growth rates for living things typically slow, level off, or change entirely as an organism matures, so assuming the same daily rate continues indefinitely is not just a range problem, it is often factually wrong for biological growth.
+
+**Answer: D** (growth rates don't stay constant indefinitely)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: extrapolates_beyond_data (assumes a steady rate observed briefly should hold for any length of time)",
+  "B": "Student makes misconception: over_rejects_valid_model (dismisses the entire 10-day study as too short to trust at all, rather than naming the specific extrapolation flaw)",
+  "C": "Student makes misconception: extrapolates_beyond_data (justifies the same flawed extension with an irrelevant reasoning, that 2 years is just repeated 10-day periods)",
+  "D": "Correct: biological growth rates typically don't stay constant forever, so extending a 10-day rate to 2 years is likely wrong, not just outside the data's range"
+},
+"misconception_tag": {
+  "A": "extrapolates_beyond_data",
+  "B": "over_rejects_valid_model",
+  "C": "extrapolates_beyond_data"
+}
+```
+
+---
+
+**10. A national survey randomly samples $2{,}000$ adults and finds that $55\%$ own a smartphone, with a stated margin of error of $\pm 2\%$. Which statement correctly interprets this result?**
+
+Step 1: A margin of error means the true population value likely falls within a range around the sample result, not that the sample result is itself the exact population value.
+
+Step 2: $55\% \pm 2\%$ gives a plausible range of about $53\%$ to $57\%$.
+
+**Answer: C** (the true value is plausibly between $53\%$ and $57\%$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: overgeneralizes_from_sample (treats the sample's exact 55 percent as though it were the exact population value, ignoring the margin of error entirely)",
+  "B": "Student makes misconception: over_rejects_valid_model (treats the presence of a margin of error as a reason to discard the survey, when a margin of error is a normal, expected part of any sample estimate)",
+  "C": "Correct: the margin of error gives a plausible range of about 53 percent to 57 percent for the true population value",
+  "D": "Student makes misconception: tendency_stated_as_absolute (converts an overall population estimate into a claim that must hold for every subgroup individually)"
+},
+"misconception_tag": {
+  "A": "overgeneralizes_from_sample",
+  "B": "over_rejects_valid_model",
+  "D": "tendency_stated_as_absolute"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. A study finds that ice cream sales and drowning incidents both rise in the summer months. A student concludes that ice cream sales cause drowning. What is wrong with this conclusion?
+   - A) Nothing is wrong; a strong association always proves causation.
+   - B) The conclusion should be reversed: drowning causes ice cream sales.
+   - C) The two variables must be completely unrelated, since ice cream can't cause drowning.
+   - D) The two are associated because both are driven by a third factor, warm weather, not because one causes the other.
+
+2. A line of best fit is built from data on cars with $4$ to $8$ cylinders. A student uses the line to predict fuel economy for a car with $16$ cylinders. What is the problem?
+   - A) There is no problem; a line of best fit works for any number of cylinders.
+   - B) The line should not be trusted at all, even for cars with $4$ to $8$ cylinders.
+   - C) The prediction uses the line far outside the $4$ to $8$ cylinder range the data actually covered.
+   - D) The prediction is fine because $16$ is a whole number, like the data points.
+
+3. A survey of $30$ students at one school finds that $80\%$ prefer online classes. A student concludes that $80\%$ of all students everywhere prefer online classes. What is wrong with this conclusion?
+   - A) The result describes only the $30$ students surveyed at that one school, not students everywhere.
+   - B) Nothing is wrong; a sample result always applies to everyone.
+   - C) The conclusion should instead be that $20\%$ of all students prefer online classes.
+   - D) The survey result should be thrown out entirely, since $30$ students is too small a sample to mean anything.
+
+4. A report states that the average household in a city has $2.3$ children. A student concludes that every household in the city has either $2$ or $3$ children exactly split according to that average. What is wrong?
+   - A) Nothing is wrong; an average always describes every individual exactly.
+   - B) The average is a summary of the whole city; it doesn't mean every individual household matches it in this way.
+   - C) The average must be wrong, since no household can have $2.3$ children.
+   - D) The data must be extrapolated beyond what was collected.
+
+**Proficient Level** (these require an extra step)
+
+5. A study of $8$ towns with populations between $5{,}000$ and $50{,}000$ finds a strong linear relationship between population and number of traffic lights. A student uses this line to predict the number of traffic lights in a city of $2$ million people. Is this prediction reliable?
+   - A) Yes, since the relationship was strong for the towns studied.
+   - B) No, because a strong linear relationship is never reliable for making predictions.
+   - C) No, because $2$ million falls far outside the $5{,}000$ to $50{,}000$ range the data covered.
+   - D) Yes, since a city is just a larger version of a town.
+
+6. A researcher observes that students who take more practice tests tend to score higher on the final exam. A newspaper headline claims "Practice Tests Cause Higher Scores." What is the most careful conclusion?
+   - A) The headline is correct, since the pattern was observed directly.
+   - B) The relationship must run the other way: higher scores cause students to take more practice tests.
+   - C) The observed pattern should be dismissed entirely, since correlation is never useful information.
+   - D) The data show an association, but other factors, like overall study time or motivation, could also explain it; causation isn't established by this alone.
+
+7. A survey of $500$ randomly selected adults across an entire state finds that $62\%$ support a new law. Is it reasonable to conclude that about $62\%$ of adults in the state support the law?
+   - A) Yes, since this is a large, randomly selected sample of the actual population being studied.
+   - B) No, since any sample smaller than the full population tells us nothing.
+   - C) No, but only because the sample should have been $1{,}000$ people instead of $500$.
+   - D) Yes, but only if every single adult in the state was personally asked.
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. A company's data shows that employees who work overtime tend to report higher job satisfaction. Based only on this, which conclusion is best supported?
+   - A) Overtime causes higher job satisfaction, so the company should require more overtime.
+   - B) There is an association between overtime and reported satisfaction, but this data alone cannot establish that overtime causes it.
+   - C) Higher job satisfaction causes employees to work overtime, so satisfaction should be measured first.
+   - D) Since correlation doesn't prove causation, this data provides no useful information at all.
+
+9. A biologist collects growth data on a plant over its first $10$ days, during which height increases steadily by about $2$ cm per day. A student uses this rate to predict the plant's height after $2$ years. What is the flaw in this prediction, beyond just being far outside the data range?
+   - A) There is no flaw beyond the data range issue; a steady daily rate should hold for any length of time.
+   - B) The data from the first $10$ days should be discarded, since $10$ days is too short a study to trust at all.
+   - C) The prediction is fine because $2$ years is simply $10$ days repeated many times.
+   - D) Growth rates for living things typically don't stay constant forever, so the model assumes a pattern will continue indefinitely, which is often factually wrong for biological growth.
+
+10. A national survey randomly samples $2{,}000$ adults and finds that $55\%$ own a smartphone, with a stated margin of error of $\pm 2\%$. Which statement correctly interprets this result?
+    - A) Exactly $55\%$ of all adults in the country own a smartphone, since the sample was random.
+    - B) The margin of error means the survey is unreliable and should be ignored.
+    - C) The true population percentage is most plausibly between about $53\%$ and $57\%$, not necessarily exactly $55\%$.
+    - D) $55\%$ of every subgroup within the population, such as every age group individually, owns a smartphone.

@@ -714,3 +714,335 @@ Step 3: Both facts belong in the answer: positive, and not linear.
   "D": "misreads_direction_of_change"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. Based on the scatterplot, what type of association exists between hours studied and test score?**
+
+Step 1: As hours studied increases (moving right), test score also tends to increase (moving up).
+
+Step 2: A rising trend is a positive association.
+
+**Answer: D** (positive)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: misreads_direction_of_change (reverses the rising trend and calls it negative)",
+  "B": "Student makes misconception: false_precondition_for_association (believes an association requires every point to sit exactly on the line, when a clear overall trend is enough)",
+  "C": "Student makes misconception: strength_confused_with_direction (treats strength as knowable while claiming direction is not, when the rising trend makes the direction clear)",
+  "D": "Correct: the trend rises from left to right, a positive association"
+},
+"misconception_tag": {
+  "A": "misreads_direction_of_change",
+  "B": "false_precondition_for_association",
+  "C": "strength_confused_with_direction"
+}
+```
+
+---
+
+**2. Based on the scatterplot, what type of association is shown between a car's age and its value?**
+
+Step 1: As a car's age increases (moving right), its value tends to decrease (moving down).
+
+Step 2: A falling trend is a negative association.
+
+**Answer: B** (negative)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: misreads_direction_of_change (reverses the falling trend and calls it positive)",
+  "B": "Correct: the trend falls from left to right, a negative association",
+  "C": "Student makes misconception: false_precondition_for_association (believes an association requires every point to sit exactly on the line, when a clear overall trend is enough)",
+  "D": "Student makes misconception: strength_confused_with_direction (claims strength cannot be judged without direction, when the two are separate, independently assessable properties)"
+},
+"misconception_tag": {
+  "A": "misreads_direction_of_change",
+  "C": "false_precondition_for_association",
+  "D": "strength_confused_with_direction"
+}
+```
+
+---
+
+**3. Based on the scatterplot, what type of association is shown between shoe size and test score?**
+
+Step 1: The trend line is flat: the test score stays about the same, $75$, no matter what the shoe size is.
+
+Step 2: A flat trend means test score does not tend to rise or fall with shoe size, so there is no association.
+
+**Answer: A** (no association)
+
+```json
+"distractor_logic": {
+  "A": "Correct: the flat trend line means test score does not change with shoe size, so there is no association",
+  "B": "Student makes misconception: misreads_direction_of_change (reads a slight upward wobble in the scatter as a real positive trend)",
+  "C": "Student makes misconception: misreads_direction_of_change (reads a slight downward wobble in the scatter as a real negative trend)",
+  "D": "Student makes misconception: steepness_confused_with_strength (confuses the wide spread of shoe sizes along the x-axis with the strength of the relationship, which is actually about how tightly points cluster around a trend)"
+},
+"misconception_tag": {
+  "B": "misreads_direction_of_change",
+  "C": "misreads_direction_of_change",
+  "D": "steepness_confused_with_strength"
+}
+```
+
+---
+
+**4. Based on the scatterplot, is the association between hours studied and test score strong or weak?**
+
+Step 1: Strength is judged by how tightly the points cluster around the trend line, not by how steep the line is.
+
+Step 2: The points here cluster tightly around the rising trend line.
+
+**Answer: C** (strong)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: steepness_confused_with_strength (judges strength by the slope's steepness rather than by how tightly the points cluster)",
+  "B": "Student makes misconception: strength_confused_with_direction (treats the positive direction itself as the reason for strength, rather than the tight clustering)",
+  "C": "Correct: the points cluster tightly around the trend line, which is what makes an association strong",
+  "D": "Student makes misconception: false_precondition_for_association (invents a requirement that strength can only be judged for a curved pattern, which is not a real restriction)"
+},
+"misconception_tag": {
+  "A": "steepness_confused_with_strength",
+  "B": "strength_confused_with_direction",
+  "D": "false_precondition_for_association"
+}
+```
+
+---
+
+**5. Based on the scatterplot, does the data support the claim that older cars are worth more money?**
+
+Step 1: The trend line falls as age increases, meaning value decreases as age increases.
+
+Step 2: This is the opposite of the claim, so the data do not support it.
+
+**Answer: B** (no, the data show the opposite)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: misreads_direction_of_change (accepts that an association exists but doesn't check which direction it actually runs before agreeing with the claim)",
+  "B": "Correct: the negative association means value decreases as age increases, the opposite of the claim",
+  "C": "Student makes misconception: false_precondition_for_association (attributes the 'no' answer to the scatter not being tightly clustered, rather than to the actual direction of the trend)",
+  "D": "Student makes misconception: false_precondition_for_association (claims a scatterplot cannot address a directional claim at all, when reading the trend's direction is exactly what a scatterplot is for)"
+},
+"misconception_tag": {
+  "A": "misreads_direction_of_change",
+  "C": "false_precondition_for_association",
+  "D": "false_precondition_for_association"
+}
+```
+
+---
+
+**6. A scatterplot of hours studied vs. test score shows a strong positive association, except for one student who studied $7$ hours but scored only $30$. What effect does this single point have on the overall association?**
+
+Step 1: One unusual point among many does not overturn an already strong pattern.
+
+Step 2: It can pull the trend line slightly and add a bit of visible scatter, but the strong positive association remains the dominant pattern.
+
+**Answer: D** (weakens the appearance slightly, but the trend holds)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: outlier_influence_misjudged (overstates the effect of a single point, claiming it erases an already strong pattern)",
+  "B": "Student makes misconception: outlier_influence_misjudged (denies any effect at all, when an outlier does add some visible scatter)",
+  "C": "Student makes misconception: outlier_influence_misjudged (drastically overstates the effect, claiming a single point can flip the direction of a strong trend)",
+  "D": "Correct: a single unusual point adds some scatter but does not overturn an otherwise strong positive trend"
+},
+"misconception_tag": {
+  "A": "outlier_influence_misjudged",
+  "B": "outlier_influence_misjudged",
+  "C": "outlier_influence_misjudged"
+}
+```
+
+---
+
+**7. A scatterplot's points form a clear upward trend, but no single point sits exactly on the best-fit line. Does a positive association exist?**
+
+Step 1: An association describes the overall trend the points follow, not whether each individual point lands exactly on a line.
+
+Step 2: A clear upward trend, even with scatter around it, is a positive association.
+
+**Answer: A** (yes, an association exists)
+
+```json
+"distractor_logic": {
+  "A": "Correct: the overall upward trend is what defines the association; individual points scattering around the line is normal and expected",
+  "B": "Student makes misconception: false_precondition_for_association (believes an association requires every point to fall exactly on the line, a condition real data essentially never meet)",
+  "C": "Student makes misconception: false_precondition_for_association (invents a false limitation, that scatterplots can only show correlation and never a real pattern)",
+  "D": "Student makes misconception: curved_pattern_forced_linear (wrongly insists a curved model is required, when the described trend is already linear)"
+},
+"misconception_tag": {
+  "B": "false_precondition_for_association",
+  "C": "false_precondition_for_association",
+  "D": "curved_pattern_forced_linear"
+}
+```
+
+---
+
+**8. A scatterplot shows points that rise steeply at first, level off in the middle, and then rise steeply again, forming a clear S-shaped curve. A student describes this as "a positive association." What is the more precise description?**
+
+Step 1: The overall direction is upward, so calling it positive isn't entirely wrong.
+
+Step 2: But the shape is curved, not a straight line, and "positive association" on its own implies a linear trend, so it loses important information about the pattern's actual shape.
+
+**Answer: C** (upward but curved, not linear)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: curved_pattern_forced_linear (accepts the linear-sounding label 'positive association' as fully precise for a pattern that is actually curved)",
+  "B": "Student makes misconception: misreads_direction_of_change (calls the pattern negative because part of it levels off, ignoring the overall upward direction)",
+  "C": "Correct: the pattern trends upward overall but is curved, so a simple linear label like 'positive' loses the shape information",
+  "D": "Student makes misconception: false_precondition_for_association (claims no association exists just because the pattern isn't a straight line, when a real, describable pattern is present)"
+},
+"misconception_tag": {
+  "A": "curved_pattern_forced_linear",
+  "B": "misreads_direction_of_change",
+  "D": "false_precondition_for_association"
+}
+```
+
+---
+
+**9. In a scatterplot of $20$ points showing a strong negative association, one point is removed because it was a data-entry error unrelated to the trend. What is the most reasonable expectation after removing it?**
+
+Step 1: The point removed was an error, not a point that was driving or fighting the trend.
+
+Step 2: Removing one unrelated point from a set of $20$, where the pattern is already strong, should leave that strong pattern essentially intact.
+
+**Answer: D** (remains essentially unchanged)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: outlier_influence_misjudged (overstates the effect of removing one point, claiming it erases an already strong pattern)",
+  "B": "Student makes misconception: outlier_influence_misjudged (drastically overstates the effect, claiming removing one point can flip the direction of a strong trend)",
+  "C": "Student makes misconception: outlier_influence_misjudged (claims the association becomes impossible to evaluate, when 19 of the original 20 points, following a strong pattern, remain)",
+  "D": "Correct: removing one unrelated error point from 20, where the pattern is already strong, leaves the pattern essentially unchanged"
+},
+"misconception_tag": {
+  "A": "outlier_influence_misjudged",
+  "B": "outlier_influence_misjudged",
+  "C": "outlier_influence_misjudged"
+}
+```
+
+---
+
+**10. Scatterplot A has a gentle upward slope with points clustered very tightly around the trend line. Scatterplot B has a steep upward slope with points scattered widely around the trend line. Which scatterplot shows the STRONGER association?**
+
+Step 1: Strength is judged by how tightly points cluster around the trend line, not by how steep the line is.
+
+Step 2: Scatterplot A's points cluster tightly; Scatterplot B's points scatter widely.
+
+**Answer: B** (Scatterplot A)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: steepness_confused_with_strength (judges strength by the steeper slope of Scatterplot B rather than by its wider scatter)",
+  "B": "Correct: Scatterplot A's tighter clustering around its trend line makes it the stronger association, regardless of its gentler slope",
+  "C": "Student makes misconception: strength_confused_with_direction (treats the shared positive direction as making the two associations equally strong)",
+  "D": "Student makes misconception: steepness_confused_with_strength (denies that slope steepness and clustering are different properties, when strength depends only on clustering)"
+},
+"misconception_tag": {
+  "A": "steepness_confused_with_strength",
+  "C": "strength_confused_with_direction",
+  "D": "steepness_confused_with_strength"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. Based on the scatterplot, what type of association exists between hours studied and test score?
+
+<!-- figure: pr-4-1-p5-scatter-study -->
+![A scatterplot with Hours studied along the bottom, from 0 to 10, and Test score up the side, from 0 to 100. Fourteen points cluster tightly around a rising trend line running from about (1, 60) to (8, 95), showing a strong positive association: as hours studied increases, test score tends to increase, with little scatter around the trend.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHNjYXR0ZXJwbG90IHdpdGggSG91cnMgc3R1ZGllZCBhbG9uZyB0aGUgYm90dG9tLCBmcm9tIDAgdG8gMTAsIGFuZCBUZXN0IHNjb3JlIHVwIHRoZSBzaWRlLCBmcm9tIDAgdG8gMTAwLiBGb3VydGVlbiBwb2ludHMgY2x1c3RlciB0aWdodGx5IGFyb3VuZCBhIHJpc2luZyB0cmVuZCBsaW5lIHJ1bm5pbmcgZnJvbSBhYm91dCAoMSwgNjApIHRvICg4LCA5NSksIHNob3dpbmcgYSBzdHJvbmcgcG9zaXRpdmUgYXNzb2NpYXRpb246IGFzIGhvdXJzIHN0dWRpZWQgaW5jcmVhc2VzLCB0ZXN0IHNjb3JlIHRlbmRzIHRvIGluY3JlYXNlLCB3aXRoIGxpdHRsZSBzY2F0dGVyIGFyb3VuZCB0aGUgdHJlbmQuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PGcgc3Ryb2tlPSIjRTJEQ0NBIiBzdHJva2Utd2lkdGg9IjEiPjxsaW5lIHgxPSI1MCIgeTE9IjE2IiB4Mj0iNTAiIHkyPSIyMTIiLz48bGluZSB4MT0iNzcuMiIgeTE9IjE2IiB4Mj0iNzcuMiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxMDQuNCIgeTE9IjE2IiB4Mj0iMTA0LjQiIHkyPSIyMTIiLz48bGluZSB4MT0iMTMxLjYiIHkxPSIxNiIgeDI9IjEzMS42IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjE1OC44IiB5MT0iMTYiIHgyPSIxNTguOCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxODYiIHkxPSIxNiIgeDI9IjE4NiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyMTMuMiIgeTE9IjE2IiB4Mj0iMjEzLjIiIHkyPSIyMTIiLz48bGluZSB4MT0iMjQwLjQiIHkxPSIxNiIgeDI9IjI0MC40IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI2Ny42IiB5MT0iMTYiIHgyPSIyNjcuNiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyOTQuOCIgeTE9IjE2IiB4Mj0iMjk0LjgiIHkyPSIyMTIiLz48bGluZSB4MT0iMzIyIiB5MT0iMTYiIHgyPSIzMjIiIHkyPSIyMTIiLz48bGluZSB4MT0iNTAiIHkxPSIyMTIiIHgyPSIzMjIiIHkyPSIyMTIiLz48bGluZSB4MT0iNTAiIHkxPSIxOTIuNCIgeDI9IjMyMiIgeTI9IjE5Mi40Ii8+PGxpbmUgeDE9IjUwIiB5MT0iMTcyLjgiIHgyPSIzMjIiIHkyPSIxNzIuOCIvPjxsaW5lIHgxPSI1MCIgeTE9IjE1My4yIiB4Mj0iMzIyIiB5Mj0iMTUzLjIiLz48bGluZSB4MT0iNTAiIHkxPSIxMzMuNiIgeDI9IjMyMiIgeTI9IjEzMy42Ii8+PGxpbmUgeDE9IjUwIiB5MT0iMTE0IiB4Mj0iMzIyIiB5Mj0iMTE0Ii8+PGxpbmUgeDE9IjUwIiB5MT0iOTQuNCIgeDI9IjMyMiIgeTI9Ijk0LjQiLz48bGluZSB4MT0iNTAiIHkxPSI3NC44IiB4Mj0iMzIyIiB5Mj0iNzQuOCIvPjxsaW5lIHgxPSI1MCIgeTE9IjU1LjIiIHgyPSIzMjIiIHkyPSI1NS4yIi8+PGxpbmUgeDE9IjUwIiB5MT0iMzUuNiIgeDI9IjMyMiIgeTI9IjM1LjYiLz48bGluZSB4MT0iNTAiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjE2Ii8+PC9nPjxsaW5lIHgxPSI1MCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI1MCIgeTE9IjIxMiIgeDI9IjUwIiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNzcuMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xPC90ZXh0Pjx0ZXh0IHg9IjEwNC40IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI8L3RleHQ+PHRleHQgeD0iMTMxLjYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MzwvdGV4dD48dGV4dCB4PSIxNTguOCIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj40PC90ZXh0Pjx0ZXh0IHg9IjE4NiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41PC90ZXh0Pjx0ZXh0IHg9IjIxMy4yIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjY8L3RleHQ+PHRleHQgeD0iMjQwLjQiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzwvdGV4dD48dGV4dCB4PSIyNjcuNiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj44PC90ZXh0Pjx0ZXh0IHg9IjI5NC44IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjk8L3RleHQ+PHRleHQgeD0iMzIyIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEwPC90ZXh0Pjx0ZXh0IHg9IjQ0IiB5PSIxOTUuOSIgdGV4dC1hbmNob3I9ImVuZCI+MTA8L3RleHQ+PHRleHQgeD0iNDQiIHk9IjE3Ni4zIiB0ZXh0LWFuY2hvcj0iZW5kIj4yMDwvdGV4dD48dGV4dCB4PSI0NCIgeT0iMTU2LjciIHRleHQtYW5jaG9yPSJlbmQiPjMwPC90ZXh0Pjx0ZXh0IHg9IjQ0IiB5PSIxMzcuMSIgdGV4dC1hbmNob3I9ImVuZCI+NDA8L3RleHQ+PHRleHQgeD0iNDQiIHk9IjExNy41IiB0ZXh0LWFuY2hvcj0iZW5kIj41MDwvdGV4dD48dGV4dCB4PSI0NCIgeT0iOTcuOSIgdGV4dC1hbmNob3I9ImVuZCI+NjA8L3RleHQ+PHRleHQgeD0iNDQiIHk9Ijc4LjMiIHRleHQtYW5jaG9yPSJlbmQiPjcwPC90ZXh0Pjx0ZXh0IHg9IjQ0IiB5PSI1OC43IiB0ZXh0LWFuY2hvcj0iZW5kIj44MDwvdGV4dD48dGV4dCB4PSI0NCIgeT0iMzkuMSIgdGV4dC1hbmNob3I9ImVuZCI+OTA8L3RleHQ+PHRleHQgeD0iNDQiIHk9IjE5LjUiIHRleHQtYW5jaG9yPSJlbmQiPjEwMDwvdGV4dD48L2c+PGNpcmNsZSBkYXRhLXNjYXR0ZXI9IjAtMCIgY3g9IjczLjM3IiBjeT0iMTAwLjIzIiByPSIzIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLXNjYXR0ZXI9IjAtMSIgY3g9Ijg2LjU3IiBjeT0iODYuMjUiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0yIiBjeD0iMTA3Ljg5IiBjeT0iNzkuNDEiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0zIiBjeD0iMTE5Ljc3IiBjeT0iNzEuNjEiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC00IiBjeD0iMTM2LjMyIiBjeT0iNzUuNDMiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC01IiBjeD0iMTQ2Ljg4IiBjeT0iNjkuMTgiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC02IiBjeD0iMTY2LjU4IiBjeT0iNTguNzYiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC03IiBjeD0iMTc2Ljg0IiBjeT0iNTkuOTIiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC04IiBjeD0iMTg5LjIiIGN5PSI1NS40OCIgcj0iMyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1zY2F0dGVyPSIwLTkiIGN4PSIyMTMuNDMiIGN5PSI0MC41NyIgcj0iMyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1zY2F0dGVyPSIwLTEwIiBjeD0iMjI4LjYyIiBjeT0iMzUuNjMiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0xMSIgY3g9IjI0MS4yIiBjeT0iMzMuMDQiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0xMiIgY3g9IjI1NC4wOSIgY3k9IjMzLjI0IiByPSIzIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLXNjYXR0ZXI9IjAtMTMiIGN4PSIyNzEuMzUiIGN5PSIyMC45IiByPSIzIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgZGF0YS1yb2xlPSJpZGVudGlmaWVyIiB4PSIxODYiIHk9IjI0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwRTBFMTEiPkhvdXJzIHN0dWRpZWQ8L3RleHQ+PHRleHQgZGF0YS1yb2xlPSJpZGVudGlmaWVyIiB4PSIxMiIgeT0iMTE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSgtOTAgMTIgMTE0KSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwRTBFMTEiPlRlc3Qgc2NvcmU8L3RleHQ+PC9zdmc+)
+
+   - A) Negative association.
+   - B) No association, because not every point sits exactly on the trend line.
+   - C) A strong association, but the direction cannot be determined.
+   - D) Positive association.
+
+2. Based on the scatterplot, what type of association is shown between a car's age and its value?
+
+<!-- figure: pr-4-1-p5-scatter-car -->
+![A scatterplot with Car age in years along the bottom, from 0 to 12, and Value in thousands of dollars up the side, from 0 to 30. Fourteen points scatter moderately around a falling trend line running from about (1, 28) to (10, 4), showing a negative association: as car age increases, value tends to decrease, with a moderate amount of scatter around the trend.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHNjYXR0ZXJwbG90IHdpdGggQ2FyIGFnZSBpbiB5ZWFycyBhbG9uZyB0aGUgYm90dG9tLCBmcm9tIDAgdG8gMTIsIGFuZCBWYWx1ZSBpbiB0aG91c2FuZHMgb2YgZG9sbGFycyB1cCB0aGUgc2lkZSwgZnJvbSAwIHRvIDMwLiBGb3VydGVlbiBwb2ludHMgc2NhdHRlciBtb2RlcmF0ZWx5IGFyb3VuZCBhIGZhbGxpbmcgdHJlbmQgbGluZSBydW5uaW5nIGZyb20gYWJvdXQgKDEsIDI4KSB0byAoMTAsIDQpLCBzaG93aW5nIGEgbmVnYXRpdmUgYXNzb2NpYXRpb246IGFzIGNhciBhZ2UgaW5jcmVhc2VzLCB2YWx1ZSB0ZW5kcyB0byBkZWNyZWFzZSwgd2l0aCBhIG1vZGVyYXRlIGFtb3VudCBvZiBzY2F0dGVyIGFyb3VuZCB0aGUgdHJlbmQuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PGcgc3Ryb2tlPSIjRTJEQ0NBIiBzdHJva2Utd2lkdGg9IjEiPjxsaW5lIHgxPSI0NCIgeTE9IjE2IiB4Mj0iNDQiIHkyPSIyMTIiLz48bGluZSB4MT0iOTAuMzMiIHkxPSIxNiIgeDI9IjkwLjMzIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjEzNi42NyIgeTE9IjE2IiB4Mj0iMTM2LjY3IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjE4MyIgeTE9IjE2IiB4Mj0iMTgzIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjIyOS4zMyIgeTE9IjE2IiB4Mj0iMjI5LjMzIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI3NS42NyIgeTE9IjE2IiB4Mj0iMjc1LjY3IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjMyMiIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjQ0IiB5MT0iMjEyIiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjQ0IiB5MT0iMTc5LjMzIiB4Mj0iMzIyIiB5Mj0iMTc5LjMzIi8+PGxpbmUgeDE9IjQ0IiB5MT0iMTQ2LjY3IiB4Mj0iMzIyIiB5Mj0iMTQ2LjY3Ii8+PGxpbmUgeDE9IjQ0IiB5MT0iMTE0IiB4Mj0iMzIyIiB5Mj0iMTE0Ii8+PGxpbmUgeDE9IjQ0IiB5MT0iODEuMzMiIHgyPSIzMjIiIHkyPSI4MS4zMyIvPjxsaW5lIHgxPSI0NCIgeTE9IjQ4LjY3IiB4Mj0iMzIyIiB5Mj0iNDguNjciLz48bGluZSB4MT0iNDQiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjE2Ii8+PC9nPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjQ0IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iOTAuMzMiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjwvdGV4dD48dGV4dCB4PSIxMzYuNjciIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NDwvdGV4dD48dGV4dCB4PSIxODMiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NjwvdGV4dD48dGV4dCB4PSIyMjkuMzMiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ODwvdGV4dD48dGV4dCB4PSIyNzUuNjciIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTA8L3RleHQ+PHRleHQgeD0iMzIyIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEyPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxODIuODMiIHRleHQtYW5jaG9yPSJlbmQiPjU8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjE1MC4xNyIgdGV4dC1hbmNob3I9ImVuZCI+MTA8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjExNy41IiB0ZXh0LWFuY2hvcj0iZW5kIj4xNTwvdGV4dD48dGV4dCB4PSIzOCIgeT0iODQuODMiIHRleHQtYW5jaG9yPSJlbmQiPjIwPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSI1Mi4xNyIgdGV4dC1hbmNob3I9ImVuZCI+MjU8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjE5LjUiIHRleHQtYW5jaG9yPSJlbmQiPjMwPC90ZXh0PjwvZz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0wIiBjeD0iNjMuMjUiIGN5PSI0My4zMiIgcj0iMyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1zY2F0dGVyPSIwLTEiIGN4PSI3Ny44MSIgY3k9IjM0LjEiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0yIiBjeD0iMTAwLjY3IiBjeT0iNDIuMzYiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0zIiBjeD0iMTEzLjg5IiBjeT0iNDguMjMiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC00IiBjeD0iMTMxLjg2IiBjeT0iODIuNTUiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC01IiBjeD0iMTQzLjczIiBjeT0iOTIuMjMiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC02IiBjeD0iMTY0LjkzIiBjeT0iOTEuNzIiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC03IiBjeD0iMTc2LjQ5IiBjeT0iMTE5LjUyIiByPSIzIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLXNjYXR0ZXI9IjAtOCIgY3g9IjE5MC4xOSIgY3k9IjEzMy42MiIgcj0iMyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1zY2F0dGVyPSIwLTkiIGN4PSIyMTYuMDMiIGN5PSIxMjIuMTQiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0xMCIgY3g9IjIzMi42MiIgY3k9IjEzNS4wMiIgcj0iMyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1zY2F0dGVyPSIwLTExIiBjeD0iMjQ2LjU0IiBjeT0iMTUzLjY1IiByPSIzIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLXNjYXR0ZXI9IjAtMTIiIGN4PSIyNjAuNzkiIGN5PSIxNzkuMDkiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0xMyIgY3g9IjI3OS41IiBjeT0iMTY1LjExIiByPSIzIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgZGF0YS1yb2xlPSJpZGVudGlmaWVyIiB4PSIxODMiIHk9IjI0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwRTBFMTEiPkNhciBhZ2UgKHllYXJzKTwvdGV4dD48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjEyIiB5PSIxMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHRyYW5zZm9ybT0icm90YXRlKC05MCAxMiAxMTQpIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+VmFsdWUgKCQxMDAwcyk8L3RleHQ+PC9zdmc+)
+
+   - A) Positive association.
+   - B) Negative association.
+   - C) No association, since the points don't form a perfect line.
+   - D) The strength cannot be judged unless the direction is known first.
+
+3. Based on the scatterplot, what type of association is shown between shoe size and test score?
+
+<!-- figure: pr-4-1-p5-scatter-shoe -->
+![A scatterplot with Shoe size along the bottom, from 4 to 14, and Test score up the side, from 0 to 100. Fourteen points scatter widely around a flat trend line held at a test score of 75 across all shoe sizes, showing no association: test score does not tend to rise or fall as shoe size changes.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHNjYXR0ZXJwbG90IHdpdGggU2hvZSBzaXplIGFsb25nIHRoZSBib3R0b20sIGZyb20gNCB0byAxNCwgYW5kIFRlc3Qgc2NvcmUgdXAgdGhlIHNpZGUsIGZyb20gMCB0byAxMDAuIEZvdXJ0ZWVuIHBvaW50cyBzY2F0dGVyIHdpZGVseSBhcm91bmQgYSBmbGF0IHRyZW5kIGxpbmUgaGVsZCBhdCBhIHRlc3Qgc2NvcmUgb2YgNzUgYWNyb3NzIGFsbCBzaG9lIHNpemVzLCBzaG93aW5nIG5vIGFzc29jaWF0aW9uOiB0ZXN0IHNjb3JlIGRvZXMgbm90IHRlbmQgdG8gcmlzZSBvciBmYWxsIGFzIHNob2Ugc2l6ZSBjaGFuZ2VzLiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNTAiIHkxPSIxNiIgeDI9IjUwIiB5Mj0iMjEyIi8+PGxpbmUgeDE9Ijc3LjIiIHkxPSIxNiIgeDI9Ijc3LjIiIHkyPSIyMTIiLz48bGluZSB4MT0iMTA0LjQiIHkxPSIxNiIgeDI9IjEwNC40IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjEzMS42IiB5MT0iMTYiIHgyPSIxMzEuNiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNTguOCIgeTE9IjE2IiB4Mj0iMTU4LjgiIHkyPSIyMTIiLz48bGluZSB4MT0iMTg2IiB5MT0iMTYiIHgyPSIxODYiIHkyPSIyMTIiLz48bGluZSB4MT0iMjEzLjIiIHkxPSIxNiIgeDI9IjIxMy4yIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI0MC40IiB5MT0iMTYiIHgyPSIyNDAuNCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNjcuNiIgeTE9IjE2IiB4Mj0iMjY3LjYiIHkyPSIyMTIiLz48bGluZSB4MT0iMjk0LjgiIHkxPSIxNiIgeDI9IjI5NC44IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjMyMiIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjUwIiB5MT0iMjEyIiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjUwIiB5MT0iMTkyLjQiIHgyPSIzMjIiIHkyPSIxOTIuNCIvPjxsaW5lIHgxPSI1MCIgeTE9IjE3Mi44IiB4Mj0iMzIyIiB5Mj0iMTcyLjgiLz48bGluZSB4MT0iNTAiIHkxPSIxNTMuMiIgeDI9IjMyMiIgeTI9IjE1My4yIi8+PGxpbmUgeDE9IjUwIiB5MT0iMTMzLjYiIHgyPSIzMjIiIHkyPSIxMzMuNiIvPjxsaW5lIHgxPSI1MCIgeTE9IjExNCIgeDI9IjMyMiIgeTI9IjExNCIvPjxsaW5lIHgxPSI1MCIgeTE9Ijk0LjQiIHgyPSIzMjIiIHkyPSI5NC40Ii8+PGxpbmUgeDE9IjUwIiB5MT0iNzQuOCIgeDI9IjMyMiIgeTI9Ijc0LjgiLz48bGluZSB4MT0iNTAiIHkxPSI1NS4yIiB4Mj0iMzIyIiB5Mj0iNTUuMiIvPjxsaW5lIHgxPSI1MCIgeTE9IjM1LjYiIHgyPSIzMjIiIHkyPSIzNS42Ii8+PGxpbmUgeDE9IjUwIiB5MT0iMTYiIHgyPSIzMjIiIHkyPSIxNiIvPjwvZz48bGluZSB4MT0iNTAiIHkxPSIyMTIiIHgyPSIzMjIiIHkyPSIyMTIiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48bGluZSB4MT0iNTAiIHkxPSIyMTIiIHgyPSI1MCIgeTI9IjE2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGcgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiMwRTBFMTEiPjx0ZXh0IHg9IjUwIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjQ8L3RleHQ+PHRleHQgeD0iNzcuMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41PC90ZXh0Pjx0ZXh0IHg9IjEwNC40IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjY8L3RleHQ+PHRleHQgeD0iMTMxLjYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzwvdGV4dD48dGV4dCB4PSIxNTguOCIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj44PC90ZXh0Pjx0ZXh0IHg9IjE4NiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj45PC90ZXh0Pjx0ZXh0IHg9IjIxMy4yIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEwPC90ZXh0Pjx0ZXh0IHg9IjI0MC40IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjExPC90ZXh0Pjx0ZXh0IHg9IjI2Ny42IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEyPC90ZXh0Pjx0ZXh0IHg9IjI5NC44IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEzPC90ZXh0Pjx0ZXh0IHg9IjMyMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xNDwvdGV4dD48dGV4dCB4PSI0NCIgeT0iMjE1LjUiIHRleHQtYW5jaG9yPSJlbmQiPjA8L3RleHQ+PHRleHQgeD0iNDQiIHk9IjE5NS45IiB0ZXh0LWFuY2hvcj0iZW5kIj4xMDwvdGV4dD48dGV4dCB4PSI0NCIgeT0iMTc2LjMiIHRleHQtYW5jaG9yPSJlbmQiPjIwPC90ZXh0Pjx0ZXh0IHg9IjQ0IiB5PSIxNTYuNyIgdGV4dC1hbmNob3I9ImVuZCI+MzA8L3RleHQ+PHRleHQgeD0iNDQiIHk9IjEzNy4xIiB0ZXh0LWFuY2hvcj0iZW5kIj40MDwvdGV4dD48dGV4dCB4PSI0NCIgeT0iMTE3LjUiIHRleHQtYW5jaG9yPSJlbmQiPjUwPC90ZXh0Pjx0ZXh0IHg9IjQ0IiB5PSI5Ny45IiB0ZXh0LWFuY2hvcj0iZW5kIj42MDwvdGV4dD48dGV4dCB4PSI0NCIgeT0iNzguMyIgdGV4dC1hbmNob3I9ImVuZCI+NzA8L3RleHQ+PHRleHQgeD0iNDQiIHk9IjU4LjciIHRleHQtYW5jaG9yPSJlbmQiPjgwPC90ZXh0Pjx0ZXh0IHg9IjQ0IiB5PSIzOS4xIiB0ZXh0LWFuY2hvcj0iZW5kIj45MDwvdGV4dD48dGV4dCB4PSI0NCIgeT0iMTkuNSIgdGV4dC1hbmNob3I9ImVuZCI+MTAwPC90ZXh0PjwvZz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0wIiBjeD0iMTAwLjU3IiBjeT0iOTYuMDkiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0xIiBjeD0iMTExLjY4IiBjeT0iNDkuNjgiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0yIiBjeD0iMTMwLjkxIiBjeT0iNDEuMzYiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0zIiBjeD0iMTQwLjY5IiBjeT0iMjcuODYiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC00IiBjeD0iMTU1LjE1IiBjeT0iNzYuNDIiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC01IiBjeD0iMTYzLjYxIiBjeT0iNzEuMjIiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC02IiBjeD0iMTgxLjIyIiBjeT0iNDMuNzkiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC03IiBjeD0iMTg5LjM5IiBjeT0iNzguMTMiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC04IiBjeD0iMTk5LjY2IiBjeT0iODIuNTkiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC05IiBjeD0iMjIxLjgiIGN5PSIzMS4yMyIgcj0iMyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1zY2F0dGVyPSIwLTEwIiBjeD0iMjM0Ljg5IiBjeT0iMzMuMDIiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0xMSIgY3g9IjI0NS4zOCIgY3k9IjQ3LjM1IiByPSIzIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLXNjYXR0ZXI9IjAtMTIiIGN4PSIyNTYuMTgiIGN5PSI3Ni41NCIgcj0iMyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1zY2F0dGVyPSIwLTEzIiBjeD0iMjcxLjM1IiBjeT0iMjAuOSIgcj0iMyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTg2IiB5PSIyNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5TaG9lIHNpemU8L3RleHQ+PHRleHQgZGF0YS1yb2xlPSJpZGVudGlmaWVyIiB4PSIxMiIgeT0iMTE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSgtOTAgMTIgMTE0KSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwRTBFMTEiPlRlc3Qgc2NvcmU8L3RleHQ+PC9zdmc+)
+
+   - A) No association.
+   - B) Positive association.
+   - C) Negative association.
+   - D) A strong association, because the points are spread across a wide range of shoe sizes.
+
+4. Based on the scatterplot, is the association between hours studied and test score strong or weak?
+
+<!-- figure: pr-4-1-p5-scatter-study -->
+![A scatterplot with Hours studied along the bottom, from 0 to 10, and Test score up the side, from 0 to 100. Fourteen points cluster tightly around a rising trend line running from about (1, 60) to (8, 95), showing a strong positive association: as hours studied increases, test score tends to increase, with little scatter around the trend.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHNjYXR0ZXJwbG90IHdpdGggSG91cnMgc3R1ZGllZCBhbG9uZyB0aGUgYm90dG9tLCBmcm9tIDAgdG8gMTAsIGFuZCBUZXN0IHNjb3JlIHVwIHRoZSBzaWRlLCBmcm9tIDAgdG8gMTAwLiBGb3VydGVlbiBwb2ludHMgY2x1c3RlciB0aWdodGx5IGFyb3VuZCBhIHJpc2luZyB0cmVuZCBsaW5lIHJ1bm5pbmcgZnJvbSBhYm91dCAoMSwgNjApIHRvICg4LCA5NSksIHNob3dpbmcgYSBzdHJvbmcgcG9zaXRpdmUgYXNzb2NpYXRpb246IGFzIGhvdXJzIHN0dWRpZWQgaW5jcmVhc2VzLCB0ZXN0IHNjb3JlIHRlbmRzIHRvIGluY3JlYXNlLCB3aXRoIGxpdHRsZSBzY2F0dGVyIGFyb3VuZCB0aGUgdHJlbmQuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PGcgc3Ryb2tlPSIjRTJEQ0NBIiBzdHJva2Utd2lkdGg9IjEiPjxsaW5lIHgxPSI1MCIgeTE9IjE2IiB4Mj0iNTAiIHkyPSIyMTIiLz48bGluZSB4MT0iNzcuMiIgeTE9IjE2IiB4Mj0iNzcuMiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxMDQuNCIgeTE9IjE2IiB4Mj0iMTA0LjQiIHkyPSIyMTIiLz48bGluZSB4MT0iMTMxLjYiIHkxPSIxNiIgeDI9IjEzMS42IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjE1OC44IiB5MT0iMTYiIHgyPSIxNTguOCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxODYiIHkxPSIxNiIgeDI9IjE4NiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyMTMuMiIgeTE9IjE2IiB4Mj0iMjEzLjIiIHkyPSIyMTIiLz48bGluZSB4MT0iMjQwLjQiIHkxPSIxNiIgeDI9IjI0MC40IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI2Ny42IiB5MT0iMTYiIHgyPSIyNjcuNiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyOTQuOCIgeTE9IjE2IiB4Mj0iMjk0LjgiIHkyPSIyMTIiLz48bGluZSB4MT0iMzIyIiB5MT0iMTYiIHgyPSIzMjIiIHkyPSIyMTIiLz48bGluZSB4MT0iNTAiIHkxPSIyMTIiIHgyPSIzMjIiIHkyPSIyMTIiLz48bGluZSB4MT0iNTAiIHkxPSIxOTIuNCIgeDI9IjMyMiIgeTI9IjE5Mi40Ii8+PGxpbmUgeDE9IjUwIiB5MT0iMTcyLjgiIHgyPSIzMjIiIHkyPSIxNzIuOCIvPjxsaW5lIHgxPSI1MCIgeTE9IjE1My4yIiB4Mj0iMzIyIiB5Mj0iMTUzLjIiLz48bGluZSB4MT0iNTAiIHkxPSIxMzMuNiIgeDI9IjMyMiIgeTI9IjEzMy42Ii8+PGxpbmUgeDE9IjUwIiB5MT0iMTE0IiB4Mj0iMzIyIiB5Mj0iMTE0Ii8+PGxpbmUgeDE9IjUwIiB5MT0iOTQuNCIgeDI9IjMyMiIgeTI9Ijk0LjQiLz48bGluZSB4MT0iNTAiIHkxPSI3NC44IiB4Mj0iMzIyIiB5Mj0iNzQuOCIvPjxsaW5lIHgxPSI1MCIgeTE9IjU1LjIiIHgyPSIzMjIiIHkyPSI1NS4yIi8+PGxpbmUgeDE9IjUwIiB5MT0iMzUuNiIgeDI9IjMyMiIgeTI9IjM1LjYiLz48bGluZSB4MT0iNTAiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjE2Ii8+PC9nPjxsaW5lIHgxPSI1MCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI1MCIgeTE9IjIxMiIgeDI9IjUwIiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNzcuMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xPC90ZXh0Pjx0ZXh0IHg9IjEwNC40IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI8L3RleHQ+PHRleHQgeD0iMTMxLjYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MzwvdGV4dD48dGV4dCB4PSIxNTguOCIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj40PC90ZXh0Pjx0ZXh0IHg9IjE4NiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41PC90ZXh0Pjx0ZXh0IHg9IjIxMy4yIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjY8L3RleHQ+PHRleHQgeD0iMjQwLjQiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzwvdGV4dD48dGV4dCB4PSIyNjcuNiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj44PC90ZXh0Pjx0ZXh0IHg9IjI5NC44IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjk8L3RleHQ+PHRleHQgeD0iMzIyIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEwPC90ZXh0Pjx0ZXh0IHg9IjQ0IiB5PSIxOTUuOSIgdGV4dC1hbmNob3I9ImVuZCI+MTA8L3RleHQ+PHRleHQgeD0iNDQiIHk9IjE3Ni4zIiB0ZXh0LWFuY2hvcj0iZW5kIj4yMDwvdGV4dD48dGV4dCB4PSI0NCIgeT0iMTU2LjciIHRleHQtYW5jaG9yPSJlbmQiPjMwPC90ZXh0Pjx0ZXh0IHg9IjQ0IiB5PSIxMzcuMSIgdGV4dC1hbmNob3I9ImVuZCI+NDA8L3RleHQ+PHRleHQgeD0iNDQiIHk9IjExNy41IiB0ZXh0LWFuY2hvcj0iZW5kIj41MDwvdGV4dD48dGV4dCB4PSI0NCIgeT0iOTcuOSIgdGV4dC1hbmNob3I9ImVuZCI+NjA8L3RleHQ+PHRleHQgeD0iNDQiIHk9Ijc4LjMiIHRleHQtYW5jaG9yPSJlbmQiPjcwPC90ZXh0Pjx0ZXh0IHg9IjQ0IiB5PSI1OC43IiB0ZXh0LWFuY2hvcj0iZW5kIj44MDwvdGV4dD48dGV4dCB4PSI0NCIgeT0iMzkuMSIgdGV4dC1hbmNob3I9ImVuZCI+OTA8L3RleHQ+PHRleHQgeD0iNDQiIHk9IjE5LjUiIHRleHQtYW5jaG9yPSJlbmQiPjEwMDwvdGV4dD48L2c+PGNpcmNsZSBkYXRhLXNjYXR0ZXI9IjAtMCIgY3g9IjczLjM3IiBjeT0iMTAwLjIzIiByPSIzIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLXNjYXR0ZXI9IjAtMSIgY3g9Ijg2LjU3IiBjeT0iODYuMjUiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0yIiBjeD0iMTA3Ljg5IiBjeT0iNzkuNDEiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0zIiBjeD0iMTE5Ljc3IiBjeT0iNzEuNjEiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC00IiBjeD0iMTM2LjMyIiBjeT0iNzUuNDMiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC01IiBjeD0iMTQ2Ljg4IiBjeT0iNjkuMTgiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC02IiBjeD0iMTY2LjU4IiBjeT0iNTguNzYiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC03IiBjeD0iMTc2Ljg0IiBjeT0iNTkuOTIiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC04IiBjeD0iMTg5LjIiIGN5PSI1NS40OCIgcj0iMyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1zY2F0dGVyPSIwLTkiIGN4PSIyMTMuNDMiIGN5PSI0MC41NyIgcj0iMyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1zY2F0dGVyPSIwLTEwIiBjeD0iMjI4LjYyIiBjeT0iMzUuNjMiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0xMSIgY3g9IjI0MS4yIiBjeT0iMzMuMDQiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0xMiIgY3g9IjI1NC4wOSIgY3k9IjMzLjI0IiByPSIzIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLXNjYXR0ZXI9IjAtMTMiIGN4PSIyNzEuMzUiIGN5PSIyMC45IiByPSIzIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgZGF0YS1yb2xlPSJpZGVudGlmaWVyIiB4PSIxODYiIHk9IjI0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwRTBFMTEiPkhvdXJzIHN0dWRpZWQ8L3RleHQ+PHRleHQgZGF0YS1yb2xlPSJpZGVudGlmaWVyIiB4PSIxMiIgeT0iMTE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB0cmFuc2Zvcm09InJvdGF0ZSgtOTAgMTIgMTE0KSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwRTBFMTEiPlRlc3Qgc2NvcmU8L3RleHQ+PC9zdmc+)
+
+   - A) Weak, because the trend line has a steep slope.
+   - B) Strong, but only because the association is positive.
+   - C) Strong.
+   - D) Cannot be determined, since strength requires a curved pattern.
+
+**Proficient Level** (these require an extra step)
+
+5. Based on the scatterplot, does the data support the claim that older cars are worth more money?
+
+<!-- figure: pr-4-1-p5-scatter-car -->
+![A scatterplot with Car age in years along the bottom, from 0 to 12, and Value in thousands of dollars up the side, from 0 to 30. Fourteen points scatter moderately around a falling trend line running from about (1, 28) to (10, 4), showing a negative association: as car age increases, value tends to decrease, with a moderate amount of scatter around the trend.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHNjYXR0ZXJwbG90IHdpdGggQ2FyIGFnZSBpbiB5ZWFycyBhbG9uZyB0aGUgYm90dG9tLCBmcm9tIDAgdG8gMTIsIGFuZCBWYWx1ZSBpbiB0aG91c2FuZHMgb2YgZG9sbGFycyB1cCB0aGUgc2lkZSwgZnJvbSAwIHRvIDMwLiBGb3VydGVlbiBwb2ludHMgc2NhdHRlciBtb2RlcmF0ZWx5IGFyb3VuZCBhIGZhbGxpbmcgdHJlbmQgbGluZSBydW5uaW5nIGZyb20gYWJvdXQgKDEsIDI4KSB0byAoMTAsIDQpLCBzaG93aW5nIGEgbmVnYXRpdmUgYXNzb2NpYXRpb246IGFzIGNhciBhZ2UgaW5jcmVhc2VzLCB2YWx1ZSB0ZW5kcyB0byBkZWNyZWFzZSwgd2l0aCBhIG1vZGVyYXRlIGFtb3VudCBvZiBzY2F0dGVyIGFyb3VuZCB0aGUgdHJlbmQuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PGcgc3Ryb2tlPSIjRTJEQ0NBIiBzdHJva2Utd2lkdGg9IjEiPjxsaW5lIHgxPSI0NCIgeTE9IjE2IiB4Mj0iNDQiIHkyPSIyMTIiLz48bGluZSB4MT0iOTAuMzMiIHkxPSIxNiIgeDI9IjkwLjMzIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjEzNi42NyIgeTE9IjE2IiB4Mj0iMTM2LjY3IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjE4MyIgeTE9IjE2IiB4Mj0iMTgzIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjIyOS4zMyIgeTE9IjE2IiB4Mj0iMjI5LjMzIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI3NS42NyIgeTE9IjE2IiB4Mj0iMjc1LjY3IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjMyMiIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjQ0IiB5MT0iMjEyIiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjQ0IiB5MT0iMTc5LjMzIiB4Mj0iMzIyIiB5Mj0iMTc5LjMzIi8+PGxpbmUgeDE9IjQ0IiB5MT0iMTQ2LjY3IiB4Mj0iMzIyIiB5Mj0iMTQ2LjY3Ii8+PGxpbmUgeDE9IjQ0IiB5MT0iMTE0IiB4Mj0iMzIyIiB5Mj0iMTE0Ii8+PGxpbmUgeDE9IjQ0IiB5MT0iODEuMzMiIHgyPSIzMjIiIHkyPSI4MS4zMyIvPjxsaW5lIHgxPSI0NCIgeTE9IjQ4LjY3IiB4Mj0iMzIyIiB5Mj0iNDguNjciLz48bGluZSB4MT0iNDQiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjE2Ii8+PC9nPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjQ0IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iOTAuMzMiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjwvdGV4dD48dGV4dCB4PSIxMzYuNjciIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NDwvdGV4dD48dGV4dCB4PSIxODMiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NjwvdGV4dD48dGV4dCB4PSIyMjkuMzMiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ODwvdGV4dD48dGV4dCB4PSIyNzUuNjciIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTA8L3RleHQ+PHRleHQgeD0iMzIyIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEyPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxODIuODMiIHRleHQtYW5jaG9yPSJlbmQiPjU8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjE1MC4xNyIgdGV4dC1hbmNob3I9ImVuZCI+MTA8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjExNy41IiB0ZXh0LWFuY2hvcj0iZW5kIj4xNTwvdGV4dD48dGV4dCB4PSIzOCIgeT0iODQuODMiIHRleHQtYW5jaG9yPSJlbmQiPjIwPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSI1Mi4xNyIgdGV4dC1hbmNob3I9ImVuZCI+MjU8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjE5LjUiIHRleHQtYW5jaG9yPSJlbmQiPjMwPC90ZXh0PjwvZz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0wIiBjeD0iNjMuMjUiIGN5PSI0My4zMiIgcj0iMyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1zY2F0dGVyPSIwLTEiIGN4PSI3Ny44MSIgY3k9IjM0LjEiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0yIiBjeD0iMTAwLjY3IiBjeT0iNDIuMzYiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0zIiBjeD0iMTEzLjg5IiBjeT0iNDguMjMiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC00IiBjeD0iMTMxLjg2IiBjeT0iODIuNTUiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC01IiBjeD0iMTQzLjczIiBjeT0iOTIuMjMiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC02IiBjeD0iMTY0LjkzIiBjeT0iOTEuNzIiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC03IiBjeD0iMTc2LjQ5IiBjeT0iMTE5LjUyIiByPSIzIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLXNjYXR0ZXI9IjAtOCIgY3g9IjE5MC4xOSIgY3k9IjEzMy42MiIgcj0iMyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1zY2F0dGVyPSIwLTkiIGN4PSIyMTYuMDMiIGN5PSIxMjIuMTQiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0xMCIgY3g9IjIzMi42MiIgY3k9IjEzNS4wMiIgcj0iMyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1zY2F0dGVyPSIwLTExIiBjeD0iMjQ2LjU0IiBjeT0iMTUzLjY1IiByPSIzIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLXNjYXR0ZXI9IjAtMTIiIGN4PSIyNjAuNzkiIGN5PSIxNzkuMDkiIHI9IjMiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtc2NhdHRlcj0iMC0xMyIgY3g9IjI3OS41IiBjeT0iMTY1LjExIiByPSIzIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgZGF0YS1yb2xlPSJpZGVudGlmaWVyIiB4PSIxODMiIHk9IjI0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwRTBFMTEiPkNhciBhZ2UgKHllYXJzKTwvdGV4dD48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjEyIiB5PSIxMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHRyYW5zZm9ybT0icm90YXRlKC05MCAxMiAxMTQpIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+VmFsdWUgKCQxMDAwcyk8L3RleHQ+PC9zdmc+)
+
+   - A) Yes, since there is a clear association in the data.
+   - B) No, the data show the opposite: as age increases, value tends to decrease.
+   - C) No, but only because the points aren't tightly clustered around the trend line.
+   - D) It cannot be determined from a scatterplot alone.
+
+6. A scatterplot of hours studied vs. test score shows a strong positive association, except for one student who studied $7$ hours but scored only $30$. What effect does this single point have on the overall association?
+   - A) It completely destroys any association; the data now show no pattern at all.
+   - B) It has no effect whatsoever on the association.
+   - C) It reverses the direction of the association to negative.
+   - D) It weakens the appearance of the association slightly, but the overall strong positive trend still holds, since it's just one point among many.
+
+7. A scatterplot's points form a clear upward trend, but no single point sits exactly on the best-fit line. Does a positive association exist?
+   - A) Yes, an association exists based on the overall trend; individual points don't need to sit exactly on the line.
+   - B) No, since a real association requires every point to fall exactly on the line.
+   - C) No, since scatterplots can only show correlation, never a real pattern.
+   - D) Cannot be determined without switching to a curved model instead of a straight line.
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. A scatterplot shows points that rise steeply at first, level off in the middle, and then rise steeply again, forming a clear S-shaped curve. A student describes this as "a positive association." What is the more precise description?
+   - A) The description is already fully correct and precise as stated.
+   - B) The pattern should be called negative, since it levels off in the middle.
+   - C) The pattern shows an overall upward trend, but it is curved, not a straight-line positive association, so calling it simply "positive" loses the shape information.
+   - D) The pattern shows no association at all, since it isn't a straight line.
+
+9. In a scatterplot of $20$ points showing a strong negative association, one point is removed because it was a data-entry error unrelated to the trend. What is the most reasonable expectation after removing it?
+   - A) The association will likely disappear entirely, since removing any point changes the whole pattern.
+   - B) The association will likely reverse to positive.
+   - C) The association cannot be evaluated at all once any point is removed.
+   - D) The strong negative association should remain essentially unchanged, since removing one unrelated error from $20$ points has little effect on an already strong pattern.
+
+10. Scatterplot A has a gentle upward slope with points clustered very tightly around the trend line. Scatterplot B has a steep upward slope with points scattered widely around the trend line. Which scatterplot shows the STRONGER association?
+    - A) Scatterplot B, because its slope is steeper.
+    - B) Scatterplot A, because its points cluster more tightly around the trend line.
+    - C) They are equally strong, since both slopes are positive.
+    - D) Neither is stronger; slope steepness and how tightly points cluster measure the same thing.

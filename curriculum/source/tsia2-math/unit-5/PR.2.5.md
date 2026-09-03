@@ -664,3 +664,359 @@ Step 2: Read the line inside the box.
   "C": "quartile_read_as_median"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. What is the median of this box plot?**
+
+Step 1: Find the line drawn inside the box.
+- $35$
+
+**Answer: B** ($35$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: quartile_read_as_median (reads the lower quartile edge, 25, as the median)",
+  "B": "Correct: the line inside the box, 35, is the median",
+  "C": "Student makes misconception: quartile_read_as_median (reads the upper quartile edge, 50, as the median)",
+  "D": "Student makes misconception: range_from_single_extreme (reads the minimum, 15, instead of the median line)"
+},
+"misconception_tag": {
+  "A": "quartile_read_as_median",
+  "C": "quartile_read_as_median",
+  "D": "range_from_single_extreme"
+}
+```
+
+---
+
+**2. What is the interquartile range of this box plot?**
+
+Step 1: Read the lower and upper quartiles. $Q1 = 25$, $Q3 = 50$.
+
+Step 2: Subtract.
+- $50 - 25 = 25$
+
+**Answer: D** ($25$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: iqr_computed_using_median (uses the median in place of the upper quartile, computing $35 - 25 = 10$)",
+  "B": "Student makes misconception: iqr_computed_using_median (uses the median in place of the lower quartile, computing $50 - 35 = 15$)",
+  "C": "Student makes misconception: center_spread_confusion (reports the full range, 65 minus 15 equals 50, confusing it with the interquartile range)",
+  "D": "Correct: subtracts the lower quartile, 25, from the upper quartile, 50, for an interquartile range of 25"
+},
+"misconception_tag": {
+  "A": "iqr_computed_using_median",
+  "B": "iqr_computed_using_median",
+  "C": "center_spread_confusion"
+}
+```
+
+---
+
+**3. What is the range of this box plot?**
+
+Step 1: Read the minimum and maximum. Minimum $15$, maximum $65$.
+
+Step 2: Subtract.
+- $65 - 15 = 50$
+
+**Answer: A** ($50$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: subtracts the minimum, 15, from the maximum, 65, for a range of 50",
+  "B": "Student makes misconception: center_spread_confusion (reports the interquartile range, 25, instead of the full range)",
+  "C": "Student makes misconception: range_from_single_extreme (reports the maximum, 65, alone as the range)",
+  "D": "Student makes misconception: range_from_single_extreme (reports the minimum, 15, alone as the range)"
+},
+"misconception_tag": {
+  "B": "center_spread_confusion",
+  "C": "range_from_single_extreme",
+  "D": "range_from_single_extreme"
+}
+```
+
+---
+
+**4. What is the value of the upper quartile, $Q3$, on this box plot?**
+
+Step 1: Find the right edge of the box.
+- $50$
+
+**Answer: C** ($50$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: quartile_read_as_median (reads the median line, 35, instead of the box's right edge)",
+  "B": "Student makes misconception: range_from_single_extreme (reads the maximum, 65, instead of the upper quartile)",
+  "C": "Correct: the right edge of the box, 50, is the upper quartile",
+  "D": "Student makes misconception: quartile_read_as_median (reports the lower quartile, 25, instead of the upper quartile that was asked for)"
+},
+"misconception_tag": {
+  "A": "quartile_read_as_median",
+  "B": "range_from_single_extreme",
+  "D": "quartile_read_as_median"
+}
+```
+
+---
+
+**5. Which single value should be used to describe the "typical" minutes to finish?**
+
+Step 1: The typical value in a data set is described by a measure of centre, not by spread.
+
+Step 2: The median, $35$, is the measure of centre shown on this box plot.
+
+**Answer: D** (the median, $35$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: whisker_length_as_typical_value (judges the typical value by the right whisker's length instead of the median)",
+  "B": "Student makes misconception: whisker_length_as_typical_value (treats the maximum, an extreme value, as though it described a typical finisher)",
+  "C": "Student makes misconception: center_spread_confusion (uses the interquartile range, a spread measure, to answer a question about a typical value)",
+  "D": "Correct: the median, 35, is the measure of centre and the appropriate way to describe a typical value"
+},
+"misconception_tag": {
+  "A": "whisker_length_as_typical_value",
+  "B": "whisker_length_as_typical_value",
+  "C": "center_spread_confusion"
+}
+```
+
+---
+
+**6. A student says this box plot's median is $50$ because that's where the box ends on the right. What is the actual median, and what did the student misread?**
+
+Step 1: The median is the line drawn inside the box, not either edge.
+
+Step 2: The line inside the box sits at $35$. The value $50$ is the upper quartile, the box's right edge.
+
+**Answer: B** ($35$, the student read the upper quartile edge)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: quartile_read_as_median (endorses the student's edge-reading as though it were correct)",
+  "B": "Correct: the actual median is 35, the line inside the box; the student mistook the upper quartile edge, 50, for it",
+  "C": "Student makes misconception: range_from_single_extreme (redirects to the whisker's end, the maximum, instead of the median line)",
+  "D": "Student makes misconception: quartile_read_as_median (swaps to the other box edge, the lower quartile, still not the median line)"
+},
+"misconception_tag": {
+  "A": "quartile_read_as_median",
+  "C": "range_from_single_extreme",
+  "D": "quartile_read_as_median"
+}
+```
+
+---
+
+**7. What percentage of the data lies between the lower quartile and the upper quartile of any box plot?**
+
+Step 1: By definition, the lower quartile marks the 25th percentile and the upper quartile marks the 75th percentile.
+
+Step 2: The data between them is $75\% - 25\% = 50\%$ of the whole set, regardless of how many data points there are.
+
+**Answer: C** ($50\%$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: false_structural_rule_invented (assumes each quartile boundary marks off only a quarter of the box's own span, rather than a quarter of the whole data set)",
+  "B": "Student makes misconception: false_structural_rule_invented (claims the count of data points changes the percentage, when quartiles always divide the data into fixed proportions)",
+  "C": "Correct: the box always contains the middle 50 percent of the data, from the 25th to the 75th percentile",
+  "D": "Student makes misconception: false_structural_rule_invented (invents a rule that the box excludes only the minimum, rather than the bottom and top quarters both)"
+},
+"misconception_tag": {
+  "A": "false_structural_rule_invented",
+  "B": "false_structural_rule_invented",
+  "D": "false_structural_rule_invented"
+}
+```
+
+---
+
+**8. Using the five-number summary shown, what is the interquartile range, and how does it compare to half the total range?**
+
+Step 1: Find the interquartile range. $Q3 - Q1 = 80 - 55 = 25$.
+
+Step 2: Find half the total range. Range $= 95 - 40 = 55$, and half of that is $27.5$.
+
+Step 3: Compare. $25$ is smaller than $27.5$.
+
+**Answer: A** (the interquartile range is $25$, smaller than half the range)
+
+```json
+"distractor_logic": {
+  "A": "Correct: the interquartile range, 25, is smaller than half the total range, 27.5",
+  "B": "Student makes misconception: iqr_computed_using_median (uses the median in place of the upper quartile, computing $68 - 55 = 13$)",
+  "C": "Student makes misconception: iqr_computed_using_median (uses the median in place of the lower quartile, computing $80 - 68 = 12$)",
+  "D": "Student makes misconception: center_spread_confusion (reports the full range, 55, as though it were the interquartile range)"
+},
+"misconception_tag": {
+  "B": "iqr_computed_using_median",
+  "C": "iqr_computed_using_median",
+  "D": "center_spread_confusion"
+}
+```
+
+---
+
+**9. A second box plot for a different class has the same median of $68$ but a much longer left whisker than this one. A student claims this means the second class's "typical" score is much lower. Is the student correct?**
+
+Step 1: The median already tells us the typical score, and it is stated to be the same, $68$, for both classes.
+
+Step 2: A longer whisker describes how far the lowest scores stretch, a spread feature, not a change in the typical score.
+
+**Answer: D** (no, whisker length reflects spread, not typical value)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: whisker_length_as_typical_value (treats a longer whisker as evidence the class scored lower overall, ignoring that the median is unchanged)",
+  "B": "Student makes misconception: center_spread_confusion (claims a spread feature, whisker length, changes the reported median, when the median is stated to be the same)",
+  "C": "Student makes misconception: false_structural_rule_invented (claims the mean must be recalculated to know this, when the question is answered directly by the given median)",
+  "D": "Correct: the median is unchanged at 68, so the typical score has not changed; the longer whisker only describes greater spread among the lowest scores"
+},
+"misconception_tag": {
+  "A": "whisker_length_as_typical_value",
+  "B": "center_spread_confusion",
+  "C": "false_structural_rule_invented"
+}
+```
+
+---
+
+**10. This box plot's interquartile range is $25$ and its lower quartile is $55$. A second data set has the same interquartile range but a lower quartile of $70$. What is the second data set's upper quartile?**
+
+Step 1: The interquartile range is the upper quartile minus the lower quartile.
+- $\text{IQR} = Q3 - Q1$
+
+Step 2: Solve for the second data set's upper quartile.
+- $Q3 = 25 + 70 = 95$
+
+**Answer: B** ($95$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: subtracts_in_wrong_order (computes $70 - 25 = 45$ instead of adding the interquartile range to the lower quartile)",
+  "B": "Correct: adds the interquartile range, 25, to the new lower quartile, 70, for an upper quartile of 95",
+  "C": "Student makes misconception: answers_intermediate_value (reports the given interquartile range, 25, as though it were the answer)",
+  "D": "Student makes misconception: range_from_single_extreme (repeats the given lower quartile, 70, as though it were also the upper quartile)"
+},
+"misconception_tag": {
+  "A": "subtracts_in_wrong_order",
+  "C": "answers_intermediate_value",
+  "D": "range_from_single_extreme"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. What is the median of this box plot?
+
+<!-- figure: pr-2-5-p5-box-times -->
+![A box plot on a number line running from 0 to 70 minutes, marked every 10. The left whisker starts at the minimum of 15 and runs to the box at 25. The box runs from the lower quartile 25 to the upper quartile 50, with the median drawn inside it at 35. The right whisker runs from 50 out to the maximum of 65.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGJveCBwbG90IG9uIGEgbnVtYmVyIGxpbmUgcnVubmluZyBmcm9tIDAgdG8gNzAgbWludXRlcywgbWFya2VkIGV2ZXJ5IDEwLiBUaGUgbGVmdCB3aGlza2VyIHN0YXJ0cyBhdCB0aGUgbWluaW11bSBvZiAxNSBhbmQgcnVucyB0byB0aGUgYm94IGF0IDI1LiBUaGUgYm94IHJ1bnMgZnJvbSB0aGUgbG93ZXIgcXVhcnRpbGUgMjUgdG8gdGhlIHVwcGVyIHF1YXJ0aWxlIDUwLCB3aXRoIHRoZSBtZWRpYW4gZHJhd24gaW5zaWRlIGl0IGF0IDM1LiBUaGUgcmlnaHQgd2hpc2tlciBydW5zIGZyb20gNTAgb3V0IHRvIHRoZSBtYXhpbXVtIG9mIDY1LiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNDYiIHkxPSIxNiIgeDI9IjQ2IiB5Mj0iMjEyIi8+PGxpbmUgeDE9Ijg1LjQzIiB5MT0iMTYiIHgyPSI4NS40MyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxMjQuODYiIHkxPSIxNiIgeDI9IjEyNC44NiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNjQuMjkiIHkxPSIxNiIgeDI9IjE2NC4yOSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyMDMuNzEiIHkxPSIxNiIgeDI9IjIwMy43MSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNDMuMTQiIHkxPSIxNiIgeDI9IjI0My4xNCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyODIuNTciIHkxPSIxNiIgeDI9IjI4Mi41NyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIxMiIvPjwvZz48bGluZSBkYXRhLXdoaXNrZXI9IjBsbyIgeDE9IjEwNS4xNCIgeTE9IjExNCIgeDI9IjE0NC41NyIgeTI9IjExNCIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIGRhdGEtd2hpc2tlcj0iMGhpIiB4MT0iMjQzLjE0IiB5MT0iMTE0IiB4Mj0iMzAyLjI5IiB5Mj0iMTE0IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBsbyIgeDE9IjEwNS4xNCIgeTE9Ijg5Ljc1IiB4Mj0iMTA1LjE0IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBoaSIgeDE9IjMwMi4yOSIgeTE9Ijg5Ljc1IiB4Mj0iMzAyLjI5IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PHJlY3QgZGF0YS1ib3g9IjAiIHg9IjE0NC41NyIgeT0iNjkuOSIgd2lkdGg9Ijk4LjU3IiBoZWlnaHQ9Ijg4LjIiIGZpbGw9IiM2RTlEQzgiIGZpbGwtb3BhY2l0eT0iMC4zNSIgc3Ryb2tlPSIjNkU5REM4IiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIGRhdGEtbWVkaWFuPSIwIiB4MT0iMTg0IiB5MT0iNjkuOSIgeDI9IjE4NCIgeTI9IjE1OC4xIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI0NiIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI0NiIgeTE9IjIxMiIgeDI9IjQ2IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNDYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDwvdGV4dD48dGV4dCB4PSI4NS40MyIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xMDwvdGV4dD48dGV4dCB4PSIxMjQuODYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjA8L3RleHQ+PHRleHQgeD0iMTY0LjI5IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjMwPC90ZXh0Pjx0ZXh0IHg9IjIwMy43MSIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj40MDwvdGV4dD48dGV4dCB4PSIyNDMuMTQiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NTA8L3RleHQ+PHRleHQgeD0iMjgyLjU3IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjYwPC90ZXh0Pjx0ZXh0IHg9IjMyMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj43MDwvdGV4dD48dGV4dCBkYXRhLWxhbmU9IjAiIHg9IjQwIiB5PSIxMTcuNSIgdGV4dC1hbmNob3I9ImVuZCI+VGltZXM8L3RleHQ+PC9nPjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTg0IiB5PSIyNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5NaW51dGVzIHRvIGZpbmlzaDwvdGV4dD48L3N2Zz4=)
+
+   - A) $25$
+   - B) $35$
+   - C) $50$
+   - D) $15$
+
+2. What is the interquartile range of this box plot?
+
+<!-- figure: pr-2-5-p5-box-times -->
+![A box plot on a number line running from 0 to 70 minutes, marked every 10. The left whisker starts at the minimum of 15 and runs to the box at 25. The box runs from the lower quartile 25 to the upper quartile 50, with the median drawn inside it at 35. The right whisker runs from 50 out to the maximum of 65.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGJveCBwbG90IG9uIGEgbnVtYmVyIGxpbmUgcnVubmluZyBmcm9tIDAgdG8gNzAgbWludXRlcywgbWFya2VkIGV2ZXJ5IDEwLiBUaGUgbGVmdCB3aGlza2VyIHN0YXJ0cyBhdCB0aGUgbWluaW11bSBvZiAxNSBhbmQgcnVucyB0byB0aGUgYm94IGF0IDI1LiBUaGUgYm94IHJ1bnMgZnJvbSB0aGUgbG93ZXIgcXVhcnRpbGUgMjUgdG8gdGhlIHVwcGVyIHF1YXJ0aWxlIDUwLCB3aXRoIHRoZSBtZWRpYW4gZHJhd24gaW5zaWRlIGl0IGF0IDM1LiBUaGUgcmlnaHQgd2hpc2tlciBydW5zIGZyb20gNTAgb3V0IHRvIHRoZSBtYXhpbXVtIG9mIDY1LiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNDYiIHkxPSIxNiIgeDI9IjQ2IiB5Mj0iMjEyIi8+PGxpbmUgeDE9Ijg1LjQzIiB5MT0iMTYiIHgyPSI4NS40MyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxMjQuODYiIHkxPSIxNiIgeDI9IjEyNC44NiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNjQuMjkiIHkxPSIxNiIgeDI9IjE2NC4yOSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyMDMuNzEiIHkxPSIxNiIgeDI9IjIwMy43MSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNDMuMTQiIHkxPSIxNiIgeDI9IjI0My4xNCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyODIuNTciIHkxPSIxNiIgeDI9IjI4Mi41NyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIxMiIvPjwvZz48bGluZSBkYXRhLXdoaXNrZXI9IjBsbyIgeDE9IjEwNS4xNCIgeTE9IjExNCIgeDI9IjE0NC41NyIgeTI9IjExNCIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIGRhdGEtd2hpc2tlcj0iMGhpIiB4MT0iMjQzLjE0IiB5MT0iMTE0IiB4Mj0iMzAyLjI5IiB5Mj0iMTE0IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBsbyIgeDE9IjEwNS4xNCIgeTE9Ijg5Ljc1IiB4Mj0iMTA1LjE0IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBoaSIgeDE9IjMwMi4yOSIgeTE9Ijg5Ljc1IiB4Mj0iMzAyLjI5IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PHJlY3QgZGF0YS1ib3g9IjAiIHg9IjE0NC41NyIgeT0iNjkuOSIgd2lkdGg9Ijk4LjU3IiBoZWlnaHQ9Ijg4LjIiIGZpbGw9IiM2RTlEQzgiIGZpbGwtb3BhY2l0eT0iMC4zNSIgc3Ryb2tlPSIjNkU5REM4IiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIGRhdGEtbWVkaWFuPSIwIiB4MT0iMTg0IiB5MT0iNjkuOSIgeDI9IjE4NCIgeTI9IjE1OC4xIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI0NiIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI0NiIgeTE9IjIxMiIgeDI9IjQ2IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNDYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDwvdGV4dD48dGV4dCB4PSI4NS40MyIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xMDwvdGV4dD48dGV4dCB4PSIxMjQuODYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjA8L3RleHQ+PHRleHQgeD0iMTY0LjI5IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjMwPC90ZXh0Pjx0ZXh0IHg9IjIwMy43MSIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj40MDwvdGV4dD48dGV4dCB4PSIyNDMuMTQiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NTA8L3RleHQ+PHRleHQgeD0iMjgyLjU3IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjYwPC90ZXh0Pjx0ZXh0IHg9IjMyMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj43MDwvdGV4dD48dGV4dCBkYXRhLWxhbmU9IjAiIHg9IjQwIiB5PSIxMTcuNSIgdGV4dC1hbmNob3I9ImVuZCI+VGltZXM8L3RleHQ+PC9nPjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTg0IiB5PSIyNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5NaW51dGVzIHRvIGZpbmlzaDwvdGV4dD48L3N2Zz4=)
+
+   - A) $10$
+   - B) $15$
+   - C) $50$
+   - D) $25$
+
+3. What is the range of this box plot?
+
+<!-- figure: pr-2-5-p5-box-times -->
+![A box plot on a number line running from 0 to 70 minutes, marked every 10. The left whisker starts at the minimum of 15 and runs to the box at 25. The box runs from the lower quartile 25 to the upper quartile 50, with the median drawn inside it at 35. The right whisker runs from 50 out to the maximum of 65.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGJveCBwbG90IG9uIGEgbnVtYmVyIGxpbmUgcnVubmluZyBmcm9tIDAgdG8gNzAgbWludXRlcywgbWFya2VkIGV2ZXJ5IDEwLiBUaGUgbGVmdCB3aGlza2VyIHN0YXJ0cyBhdCB0aGUgbWluaW11bSBvZiAxNSBhbmQgcnVucyB0byB0aGUgYm94IGF0IDI1LiBUaGUgYm94IHJ1bnMgZnJvbSB0aGUgbG93ZXIgcXVhcnRpbGUgMjUgdG8gdGhlIHVwcGVyIHF1YXJ0aWxlIDUwLCB3aXRoIHRoZSBtZWRpYW4gZHJhd24gaW5zaWRlIGl0IGF0IDM1LiBUaGUgcmlnaHQgd2hpc2tlciBydW5zIGZyb20gNTAgb3V0IHRvIHRoZSBtYXhpbXVtIG9mIDY1LiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNDYiIHkxPSIxNiIgeDI9IjQ2IiB5Mj0iMjEyIi8+PGxpbmUgeDE9Ijg1LjQzIiB5MT0iMTYiIHgyPSI4NS40MyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxMjQuODYiIHkxPSIxNiIgeDI9IjEyNC44NiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNjQuMjkiIHkxPSIxNiIgeDI9IjE2NC4yOSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyMDMuNzEiIHkxPSIxNiIgeDI9IjIwMy43MSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNDMuMTQiIHkxPSIxNiIgeDI9IjI0My4xNCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyODIuNTciIHkxPSIxNiIgeDI9IjI4Mi41NyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIxMiIvPjwvZz48bGluZSBkYXRhLXdoaXNrZXI9IjBsbyIgeDE9IjEwNS4xNCIgeTE9IjExNCIgeDI9IjE0NC41NyIgeTI9IjExNCIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIGRhdGEtd2hpc2tlcj0iMGhpIiB4MT0iMjQzLjE0IiB5MT0iMTE0IiB4Mj0iMzAyLjI5IiB5Mj0iMTE0IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBsbyIgeDE9IjEwNS4xNCIgeTE9Ijg5Ljc1IiB4Mj0iMTA1LjE0IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBoaSIgeDE9IjMwMi4yOSIgeTE9Ijg5Ljc1IiB4Mj0iMzAyLjI5IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PHJlY3QgZGF0YS1ib3g9IjAiIHg9IjE0NC41NyIgeT0iNjkuOSIgd2lkdGg9Ijk4LjU3IiBoZWlnaHQ9Ijg4LjIiIGZpbGw9IiM2RTlEQzgiIGZpbGwtb3BhY2l0eT0iMC4zNSIgc3Ryb2tlPSIjNkU5REM4IiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIGRhdGEtbWVkaWFuPSIwIiB4MT0iMTg0IiB5MT0iNjkuOSIgeDI9IjE4NCIgeTI9IjE1OC4xIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI0NiIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI0NiIgeTE9IjIxMiIgeDI9IjQ2IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNDYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDwvdGV4dD48dGV4dCB4PSI4NS40MyIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xMDwvdGV4dD48dGV4dCB4PSIxMjQuODYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjA8L3RleHQ+PHRleHQgeD0iMTY0LjI5IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjMwPC90ZXh0Pjx0ZXh0IHg9IjIwMy43MSIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj40MDwvdGV4dD48dGV4dCB4PSIyNDMuMTQiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NTA8L3RleHQ+PHRleHQgeD0iMjgyLjU3IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjYwPC90ZXh0Pjx0ZXh0IHg9IjMyMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj43MDwvdGV4dD48dGV4dCBkYXRhLWxhbmU9IjAiIHg9IjQwIiB5PSIxMTcuNSIgdGV4dC1hbmNob3I9ImVuZCI+VGltZXM8L3RleHQ+PC9nPjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTg0IiB5PSIyNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5NaW51dGVzIHRvIGZpbmlzaDwvdGV4dD48L3N2Zz4=)
+
+   - A) $50$
+   - B) $25$
+   - C) $65$
+   - D) $15$
+
+4. What is the value of the upper quartile, $Q3$, on this box plot?
+
+<!-- figure: pr-2-5-p5-box-times -->
+![A box plot on a number line running from 0 to 70 minutes, marked every 10. The left whisker starts at the minimum of 15 and runs to the box at 25. The box runs from the lower quartile 25 to the upper quartile 50, with the median drawn inside it at 35. The right whisker runs from 50 out to the maximum of 65.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGJveCBwbG90IG9uIGEgbnVtYmVyIGxpbmUgcnVubmluZyBmcm9tIDAgdG8gNzAgbWludXRlcywgbWFya2VkIGV2ZXJ5IDEwLiBUaGUgbGVmdCB3aGlza2VyIHN0YXJ0cyBhdCB0aGUgbWluaW11bSBvZiAxNSBhbmQgcnVucyB0byB0aGUgYm94IGF0IDI1LiBUaGUgYm94IHJ1bnMgZnJvbSB0aGUgbG93ZXIgcXVhcnRpbGUgMjUgdG8gdGhlIHVwcGVyIHF1YXJ0aWxlIDUwLCB3aXRoIHRoZSBtZWRpYW4gZHJhd24gaW5zaWRlIGl0IGF0IDM1LiBUaGUgcmlnaHQgd2hpc2tlciBydW5zIGZyb20gNTAgb3V0IHRvIHRoZSBtYXhpbXVtIG9mIDY1LiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNDYiIHkxPSIxNiIgeDI9IjQ2IiB5Mj0iMjEyIi8+PGxpbmUgeDE9Ijg1LjQzIiB5MT0iMTYiIHgyPSI4NS40MyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxMjQuODYiIHkxPSIxNiIgeDI9IjEyNC44NiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNjQuMjkiIHkxPSIxNiIgeDI9IjE2NC4yOSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyMDMuNzEiIHkxPSIxNiIgeDI9IjIwMy43MSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNDMuMTQiIHkxPSIxNiIgeDI9IjI0My4xNCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyODIuNTciIHkxPSIxNiIgeDI9IjI4Mi41NyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIxMiIvPjwvZz48bGluZSBkYXRhLXdoaXNrZXI9IjBsbyIgeDE9IjEwNS4xNCIgeTE9IjExNCIgeDI9IjE0NC41NyIgeTI9IjExNCIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIGRhdGEtd2hpc2tlcj0iMGhpIiB4MT0iMjQzLjE0IiB5MT0iMTE0IiB4Mj0iMzAyLjI5IiB5Mj0iMTE0IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBsbyIgeDE9IjEwNS4xNCIgeTE9Ijg5Ljc1IiB4Mj0iMTA1LjE0IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBoaSIgeDE9IjMwMi4yOSIgeTE9Ijg5Ljc1IiB4Mj0iMzAyLjI5IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PHJlY3QgZGF0YS1ib3g9IjAiIHg9IjE0NC41NyIgeT0iNjkuOSIgd2lkdGg9Ijk4LjU3IiBoZWlnaHQ9Ijg4LjIiIGZpbGw9IiM2RTlEQzgiIGZpbGwtb3BhY2l0eT0iMC4zNSIgc3Ryb2tlPSIjNkU5REM4IiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIGRhdGEtbWVkaWFuPSIwIiB4MT0iMTg0IiB5MT0iNjkuOSIgeDI9IjE4NCIgeTI9IjE1OC4xIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI0NiIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI0NiIgeTE9IjIxMiIgeDI9IjQ2IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNDYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDwvdGV4dD48dGV4dCB4PSI4NS40MyIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xMDwvdGV4dD48dGV4dCB4PSIxMjQuODYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjA8L3RleHQ+PHRleHQgeD0iMTY0LjI5IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjMwPC90ZXh0Pjx0ZXh0IHg9IjIwMy43MSIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj40MDwvdGV4dD48dGV4dCB4PSIyNDMuMTQiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NTA8L3RleHQ+PHRleHQgeD0iMjgyLjU3IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjYwPC90ZXh0Pjx0ZXh0IHg9IjMyMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj43MDwvdGV4dD48dGV4dCBkYXRhLWxhbmU9IjAiIHg9IjQwIiB5PSIxMTcuNSIgdGV4dC1hbmNob3I9ImVuZCI+VGltZXM8L3RleHQ+PC9nPjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTg0IiB5PSIyNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5NaW51dGVzIHRvIGZpbmlzaDwvdGV4dD48L3N2Zz4=)
+
+   - A) $35$
+   - B) $65$
+   - C) $50$
+   - D) $25$
+
+**Proficient Level** (these require an extra step)
+
+5. Which single value should be used to describe the "typical" minutes to finish?
+
+<!-- figure: pr-2-5-p5-box-times -->
+![A box plot on a number line running from 0 to 70 minutes, marked every 10. The left whisker starts at the minimum of 15 and runs to the box at 25. The box runs from the lower quartile 25 to the upper quartile 50, with the median drawn inside it at 35. The right whisker runs from 50 out to the maximum of 65.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGJveCBwbG90IG9uIGEgbnVtYmVyIGxpbmUgcnVubmluZyBmcm9tIDAgdG8gNzAgbWludXRlcywgbWFya2VkIGV2ZXJ5IDEwLiBUaGUgbGVmdCB3aGlza2VyIHN0YXJ0cyBhdCB0aGUgbWluaW11bSBvZiAxNSBhbmQgcnVucyB0byB0aGUgYm94IGF0IDI1LiBUaGUgYm94IHJ1bnMgZnJvbSB0aGUgbG93ZXIgcXVhcnRpbGUgMjUgdG8gdGhlIHVwcGVyIHF1YXJ0aWxlIDUwLCB3aXRoIHRoZSBtZWRpYW4gZHJhd24gaW5zaWRlIGl0IGF0IDM1LiBUaGUgcmlnaHQgd2hpc2tlciBydW5zIGZyb20gNTAgb3V0IHRvIHRoZSBtYXhpbXVtIG9mIDY1LiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNDYiIHkxPSIxNiIgeDI9IjQ2IiB5Mj0iMjEyIi8+PGxpbmUgeDE9Ijg1LjQzIiB5MT0iMTYiIHgyPSI4NS40MyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxMjQuODYiIHkxPSIxNiIgeDI9IjEyNC44NiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNjQuMjkiIHkxPSIxNiIgeDI9IjE2NC4yOSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyMDMuNzEiIHkxPSIxNiIgeDI9IjIwMy43MSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNDMuMTQiIHkxPSIxNiIgeDI9IjI0My4xNCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyODIuNTciIHkxPSIxNiIgeDI9IjI4Mi41NyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIxMiIvPjwvZz48bGluZSBkYXRhLXdoaXNrZXI9IjBsbyIgeDE9IjEwNS4xNCIgeTE9IjExNCIgeDI9IjE0NC41NyIgeTI9IjExNCIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIGRhdGEtd2hpc2tlcj0iMGhpIiB4MT0iMjQzLjE0IiB5MT0iMTE0IiB4Mj0iMzAyLjI5IiB5Mj0iMTE0IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBsbyIgeDE9IjEwNS4xNCIgeTE9Ijg5Ljc1IiB4Mj0iMTA1LjE0IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBoaSIgeDE9IjMwMi4yOSIgeTE9Ijg5Ljc1IiB4Mj0iMzAyLjI5IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PHJlY3QgZGF0YS1ib3g9IjAiIHg9IjE0NC41NyIgeT0iNjkuOSIgd2lkdGg9Ijk4LjU3IiBoZWlnaHQ9Ijg4LjIiIGZpbGw9IiM2RTlEQzgiIGZpbGwtb3BhY2l0eT0iMC4zNSIgc3Ryb2tlPSIjNkU5REM4IiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIGRhdGEtbWVkaWFuPSIwIiB4MT0iMTg0IiB5MT0iNjkuOSIgeDI9IjE4NCIgeTI9IjE1OC4xIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI0NiIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI0NiIgeTE9IjIxMiIgeDI9IjQ2IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNDYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDwvdGV4dD48dGV4dCB4PSI4NS40MyIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xMDwvdGV4dD48dGV4dCB4PSIxMjQuODYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjA8L3RleHQ+PHRleHQgeD0iMTY0LjI5IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjMwPC90ZXh0Pjx0ZXh0IHg9IjIwMy43MSIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj40MDwvdGV4dD48dGV4dCB4PSIyNDMuMTQiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NTA8L3RleHQ+PHRleHQgeD0iMjgyLjU3IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjYwPC90ZXh0Pjx0ZXh0IHg9IjMyMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj43MDwvdGV4dD48dGV4dCBkYXRhLWxhbmU9IjAiIHg9IjQwIiB5PSIxMTcuNSIgdGV4dC1hbmNob3I9ImVuZCI+VGltZXM8L3RleHQ+PC9nPjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTg0IiB5PSIyNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5NaW51dGVzIHRvIGZpbmlzaDwvdGV4dD48L3N2Zz4=)
+
+   - A) The right whisker's length, $15$, since it shows how long the slowest finishers took.
+   - B) The maximum, $65$, since it represents the highest recorded value.
+   - C) The interquartile range, $25$, since it covers the middle half of the data.
+   - D) The median, $35$.
+
+6. A student says this box plot's median is $50$ because that's where the box ends on the right. What is the actual median, and what did the student misread?
+
+<!-- figure: pr-2-5-p5-box-times -->
+![A box plot on a number line running from 0 to 70 minutes, marked every 10. The left whisker starts at the minimum of 15 and runs to the box at 25. The box runs from the lower quartile 25 to the upper quartile 50, with the median drawn inside it at 35. The right whisker runs from 50 out to the maximum of 65.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGJveCBwbG90IG9uIGEgbnVtYmVyIGxpbmUgcnVubmluZyBmcm9tIDAgdG8gNzAgbWludXRlcywgbWFya2VkIGV2ZXJ5IDEwLiBUaGUgbGVmdCB3aGlza2VyIHN0YXJ0cyBhdCB0aGUgbWluaW11bSBvZiAxNSBhbmQgcnVucyB0byB0aGUgYm94IGF0IDI1LiBUaGUgYm94IHJ1bnMgZnJvbSB0aGUgbG93ZXIgcXVhcnRpbGUgMjUgdG8gdGhlIHVwcGVyIHF1YXJ0aWxlIDUwLCB3aXRoIHRoZSBtZWRpYW4gZHJhd24gaW5zaWRlIGl0IGF0IDM1LiBUaGUgcmlnaHQgd2hpc2tlciBydW5zIGZyb20gNTAgb3V0IHRvIHRoZSBtYXhpbXVtIG9mIDY1LiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNDYiIHkxPSIxNiIgeDI9IjQ2IiB5Mj0iMjEyIi8+PGxpbmUgeDE9Ijg1LjQzIiB5MT0iMTYiIHgyPSI4NS40MyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxMjQuODYiIHkxPSIxNiIgeDI9IjEyNC44NiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNjQuMjkiIHkxPSIxNiIgeDI9IjE2NC4yOSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyMDMuNzEiIHkxPSIxNiIgeDI9IjIwMy43MSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNDMuMTQiIHkxPSIxNiIgeDI9IjI0My4xNCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyODIuNTciIHkxPSIxNiIgeDI9IjI4Mi41NyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIxMiIvPjwvZz48bGluZSBkYXRhLXdoaXNrZXI9IjBsbyIgeDE9IjEwNS4xNCIgeTE9IjExNCIgeDI9IjE0NC41NyIgeTI9IjExNCIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIGRhdGEtd2hpc2tlcj0iMGhpIiB4MT0iMjQzLjE0IiB5MT0iMTE0IiB4Mj0iMzAyLjI5IiB5Mj0iMTE0IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBsbyIgeDE9IjEwNS4xNCIgeTE9Ijg5Ljc1IiB4Mj0iMTA1LjE0IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBoaSIgeDE9IjMwMi4yOSIgeTE9Ijg5Ljc1IiB4Mj0iMzAyLjI5IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PHJlY3QgZGF0YS1ib3g9IjAiIHg9IjE0NC41NyIgeT0iNjkuOSIgd2lkdGg9Ijk4LjU3IiBoZWlnaHQ9Ijg4LjIiIGZpbGw9IiM2RTlEQzgiIGZpbGwtb3BhY2l0eT0iMC4zNSIgc3Ryb2tlPSIjNkU5REM4IiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIGRhdGEtbWVkaWFuPSIwIiB4MT0iMTg0IiB5MT0iNjkuOSIgeDI9IjE4NCIgeTI9IjE1OC4xIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI0NiIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI0NiIgeTE9IjIxMiIgeDI9IjQ2IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNDYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDwvdGV4dD48dGV4dCB4PSI4NS40MyIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xMDwvdGV4dD48dGV4dCB4PSIxMjQuODYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjA8L3RleHQ+PHRleHQgeD0iMTY0LjI5IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjMwPC90ZXh0Pjx0ZXh0IHg9IjIwMy43MSIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj40MDwvdGV4dD48dGV4dCB4PSIyNDMuMTQiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NTA8L3RleHQ+PHRleHQgeD0iMjgyLjU3IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjYwPC90ZXh0Pjx0ZXh0IHg9IjMyMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj43MDwvdGV4dD48dGV4dCBkYXRhLWxhbmU9IjAiIHg9IjQwIiB5PSIxMTcuNSIgdGV4dC1hbmNob3I9ImVuZCI+VGltZXM8L3RleHQ+PC9nPjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTg0IiB5PSIyNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5NaW51dGVzIHRvIGZpbmlzaDwvdGV4dD48L3N2Zz4=)
+
+   - A) The actual median is $50$; the student read it correctly.
+   - B) The actual median is $35$; the student read the upper quartile edge instead of the median line inside the box.
+   - C) The actual median is $65$; the student should have looked at the whisker's end.
+   - D) The actual median is $25$; the student should have looked at the left edge of the box instead.
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+7. What percentage of the data lies between the lower quartile and the upper quartile of any box plot?
+
+<!-- figure: pr-2-5-p5-box-scores -->
+![A box plot on a number line of test scores running from 30 to 100, marked every 10. The left whisker starts at the minimum of 40 and runs to the box at 55. The box runs from the lower quartile 55 to the upper quartile 80, with the median drawn inside it at 68. The right whisker runs from 80 out to the maximum of 95.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGJveCBwbG90IG9uIGEgbnVtYmVyIGxpbmUgb2YgdGVzdCBzY29yZXMgcnVubmluZyBmcm9tIDMwIHRvIDEwMCwgbWFya2VkIGV2ZXJ5IDEwLiBUaGUgbGVmdCB3aGlza2VyIHN0YXJ0cyBhdCB0aGUgbWluaW11bSBvZiA0MCBhbmQgcnVucyB0byB0aGUgYm94IGF0IDU1LiBUaGUgYm94IHJ1bnMgZnJvbSB0aGUgbG93ZXIgcXVhcnRpbGUgNTUgdG8gdGhlIHVwcGVyIHF1YXJ0aWxlIDgwLCB3aXRoIHRoZSBtZWRpYW4gZHJhd24gaW5zaWRlIGl0IGF0IDY4LiBUaGUgcmlnaHQgd2hpc2tlciBydW5zIGZyb20gODAgb3V0IHRvIHRoZSBtYXhpbXVtIG9mIDk1LiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNTIiIHkxPSIxNiIgeDI9IjUyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjkwLjU3IiB5MT0iMTYiIHgyPSI5MC41NyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxMjkuMTQiIHkxPSIxNiIgeDI9IjEyOS4xNCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNjcuNzEiIHkxPSIxNiIgeDI9IjE2Ny43MSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyMDYuMjkiIHkxPSIxNiIgeDI9IjIwNi4yOSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNDQuODYiIHkxPSIxNiIgeDI9IjI0NC44NiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyODMuNDMiIHkxPSIxNiIgeDI9IjI4My40MyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIxMiIvPjwvZz48bGluZSBkYXRhLXdoaXNrZXI9IjBsbyIgeDE9IjkwLjU3IiB5MT0iMTE0IiB4Mj0iMTQ4LjQzIiB5Mj0iMTE0IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS13aGlza2VyPSIwaGkiIHgxPSIyNDQuODYiIHkxPSIxMTQiIHgyPSIzMDIuNzEiIHkyPSIxMTQiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMGxvIiB4MT0iOTAuNTciIHkxPSI4OS43NSIgeDI9IjkwLjU3IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBoaSIgeDE9IjMwMi43MSIgeTE9Ijg5Ljc1IiB4Mj0iMzAyLjcxIiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PHJlY3QgZGF0YS1ib3g9IjAiIHg9IjE0OC40MyIgeT0iNjkuOSIgd2lkdGg9Ijk2LjQzIiBoZWlnaHQ9Ijg4LjIiIGZpbGw9IiM2RTlEQzgiIGZpbGwtb3BhY2l0eT0iMC4zNSIgc3Ryb2tlPSIjNkU5REM4IiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIGRhdGEtbWVkaWFuPSIwIiB4MT0iMTk4LjU3IiB5MT0iNjkuOSIgeDI9IjE5OC41NyIgeTI9IjE1OC4xIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI1MiIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI1MiIgeTE9IjIxMiIgeDI9IjUyIiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNTIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MzA8L3RleHQ+PHRleHQgeD0iOTAuNTciIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NDA8L3RleHQ+PHRleHQgeD0iMTI5LjE0IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjUwPC90ZXh0Pjx0ZXh0IHg9IjE2Ny43MSIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj42MDwvdGV4dD48dGV4dCB4PSIyMDYuMjkiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzA8L3RleHQ+PHRleHQgeD0iMjQ0Ljg2IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjgwPC90ZXh0Pjx0ZXh0IHg9IjI4My40MyIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj45MDwvdGV4dD48dGV4dCB4PSIzMjIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTAwPC90ZXh0Pjx0ZXh0IGRhdGEtbGFuZT0iMCIgeD0iNDYiIHk9IjExNy41IiB0ZXh0LWFuY2hvcj0iZW5kIj5TY29yZXM8L3RleHQ+PC9nPjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTg3IiB5PSIyNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5UZXN0IHNjb3JlPC90ZXh0Pjwvc3ZnPg==)
+
+   - A) $25\%$, since each quartile marks off a quarter of the data.
+   - B) It cannot be determined without knowing the exact number of data points.
+   - C) $50\%$.
+   - D) $75\%$, since the box excludes only the minimum.
+
+8. Using the five-number summary shown, what is the interquartile range, and how does it compare to half the total range?
+
+<!-- figure: pr-2-5-p5-box-scores -->
+![A box plot on a number line of test scores running from 30 to 100, marked every 10. The left whisker starts at the minimum of 40 and runs to the box at 55. The box runs from the lower quartile 55 to the upper quartile 80, with the median drawn inside it at 68. The right whisker runs from 80 out to the maximum of 95.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGJveCBwbG90IG9uIGEgbnVtYmVyIGxpbmUgb2YgdGVzdCBzY29yZXMgcnVubmluZyBmcm9tIDMwIHRvIDEwMCwgbWFya2VkIGV2ZXJ5IDEwLiBUaGUgbGVmdCB3aGlza2VyIHN0YXJ0cyBhdCB0aGUgbWluaW11bSBvZiA0MCBhbmQgcnVucyB0byB0aGUgYm94IGF0IDU1LiBUaGUgYm94IHJ1bnMgZnJvbSB0aGUgbG93ZXIgcXVhcnRpbGUgNTUgdG8gdGhlIHVwcGVyIHF1YXJ0aWxlIDgwLCB3aXRoIHRoZSBtZWRpYW4gZHJhd24gaW5zaWRlIGl0IGF0IDY4LiBUaGUgcmlnaHQgd2hpc2tlciBydW5zIGZyb20gODAgb3V0IHRvIHRoZSBtYXhpbXVtIG9mIDk1LiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNTIiIHkxPSIxNiIgeDI9IjUyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjkwLjU3IiB5MT0iMTYiIHgyPSI5MC41NyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxMjkuMTQiIHkxPSIxNiIgeDI9IjEyOS4xNCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNjcuNzEiIHkxPSIxNiIgeDI9IjE2Ny43MSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyMDYuMjkiIHkxPSIxNiIgeDI9IjIwNi4yOSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNDQuODYiIHkxPSIxNiIgeDI9IjI0NC44NiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyODMuNDMiIHkxPSIxNiIgeDI9IjI4My40MyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIxMiIvPjwvZz48bGluZSBkYXRhLXdoaXNrZXI9IjBsbyIgeDE9IjkwLjU3IiB5MT0iMTE0IiB4Mj0iMTQ4LjQzIiB5Mj0iMTE0IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS13aGlza2VyPSIwaGkiIHgxPSIyNDQuODYiIHkxPSIxMTQiIHgyPSIzMDIuNzEiIHkyPSIxMTQiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMGxvIiB4MT0iOTAuNTciIHkxPSI4OS43NSIgeDI9IjkwLjU3IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBoaSIgeDE9IjMwMi43MSIgeTE9Ijg5Ljc1IiB4Mj0iMzAyLjcxIiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PHJlY3QgZGF0YS1ib3g9IjAiIHg9IjE0OC40MyIgeT0iNjkuOSIgd2lkdGg9Ijk2LjQzIiBoZWlnaHQ9Ijg4LjIiIGZpbGw9IiM2RTlEQzgiIGZpbGwtb3BhY2l0eT0iMC4zNSIgc3Ryb2tlPSIjNkU5REM4IiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIGRhdGEtbWVkaWFuPSIwIiB4MT0iMTk4LjU3IiB5MT0iNjkuOSIgeDI9IjE5OC41NyIgeTI9IjE1OC4xIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI1MiIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI1MiIgeTE9IjIxMiIgeDI9IjUyIiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNTIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MzA8L3RleHQ+PHRleHQgeD0iOTAuNTciIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NDA8L3RleHQ+PHRleHQgeD0iMTI5LjE0IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjUwPC90ZXh0Pjx0ZXh0IHg9IjE2Ny43MSIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj42MDwvdGV4dD48dGV4dCB4PSIyMDYuMjkiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzA8L3RleHQ+PHRleHQgeD0iMjQ0Ljg2IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjgwPC90ZXh0Pjx0ZXh0IHg9IjI4My40MyIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj45MDwvdGV4dD48dGV4dCB4PSIzMjIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTAwPC90ZXh0Pjx0ZXh0IGRhdGEtbGFuZT0iMCIgeD0iNDYiIHk9IjExNy41IiB0ZXh0LWFuY2hvcj0iZW5kIj5TY29yZXM8L3RleHQ+PC9nPjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTg3IiB5PSIyNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5UZXN0IHNjb3JlPC90ZXh0Pjwvc3ZnPg==)
+
+   - A) The interquartile range is $25$, which is smaller than half the total range of $55$.
+   - B) The interquartile range is $13$, using the median in place of the upper quartile.
+   - C) The interquartile range is $12$, using the median in place of the lower quartile.
+   - D) The interquartile range is $55$, the same as the total range.
+
+9. A second box plot for a different class has the same median of $68$ but a much longer left whisker than this one. A student claims this means the second class's "typical" score is much lower. Is the student correct?
+
+<!-- figure: pr-2-5-p5-box-scores -->
+![A box plot on a number line of test scores running from 30 to 100, marked every 10. The left whisker starts at the minimum of 40 and runs to the box at 55. The box runs from the lower quartile 55 to the upper quartile 80, with the median drawn inside it at 68. The right whisker runs from 80 out to the maximum of 95.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGJveCBwbG90IG9uIGEgbnVtYmVyIGxpbmUgb2YgdGVzdCBzY29yZXMgcnVubmluZyBmcm9tIDMwIHRvIDEwMCwgbWFya2VkIGV2ZXJ5IDEwLiBUaGUgbGVmdCB3aGlza2VyIHN0YXJ0cyBhdCB0aGUgbWluaW11bSBvZiA0MCBhbmQgcnVucyB0byB0aGUgYm94IGF0IDU1LiBUaGUgYm94IHJ1bnMgZnJvbSB0aGUgbG93ZXIgcXVhcnRpbGUgNTUgdG8gdGhlIHVwcGVyIHF1YXJ0aWxlIDgwLCB3aXRoIHRoZSBtZWRpYW4gZHJhd24gaW5zaWRlIGl0IGF0IDY4LiBUaGUgcmlnaHQgd2hpc2tlciBydW5zIGZyb20gODAgb3V0IHRvIHRoZSBtYXhpbXVtIG9mIDk1LiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNTIiIHkxPSIxNiIgeDI9IjUyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjkwLjU3IiB5MT0iMTYiIHgyPSI5MC41NyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxMjkuMTQiIHkxPSIxNiIgeDI9IjEyOS4xNCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNjcuNzEiIHkxPSIxNiIgeDI9IjE2Ny43MSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyMDYuMjkiIHkxPSIxNiIgeDI9IjIwNi4yOSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNDQuODYiIHkxPSIxNiIgeDI9IjI0NC44NiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyODMuNDMiIHkxPSIxNiIgeDI9IjI4My40MyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIxMiIvPjwvZz48bGluZSBkYXRhLXdoaXNrZXI9IjBsbyIgeDE9IjkwLjU3IiB5MT0iMTE0IiB4Mj0iMTQ4LjQzIiB5Mj0iMTE0IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS13aGlza2VyPSIwaGkiIHgxPSIyNDQuODYiIHkxPSIxMTQiIHgyPSIzMDIuNzEiIHkyPSIxMTQiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMGxvIiB4MT0iOTAuNTciIHkxPSI4OS43NSIgeDI9IjkwLjU3IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBoaSIgeDE9IjMwMi43MSIgeTE9Ijg5Ljc1IiB4Mj0iMzAyLjcxIiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PHJlY3QgZGF0YS1ib3g9IjAiIHg9IjE0OC40MyIgeT0iNjkuOSIgd2lkdGg9Ijk2LjQzIiBoZWlnaHQ9Ijg4LjIiIGZpbGw9IiM2RTlEQzgiIGZpbGwtb3BhY2l0eT0iMC4zNSIgc3Ryb2tlPSIjNkU5REM4IiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIGRhdGEtbWVkaWFuPSIwIiB4MT0iMTk4LjU3IiB5MT0iNjkuOSIgeDI9IjE5OC41NyIgeTI9IjE1OC4xIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI1MiIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI1MiIgeTE9IjIxMiIgeDI9IjUyIiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNTIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MzA8L3RleHQ+PHRleHQgeD0iOTAuNTciIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NDA8L3RleHQ+PHRleHQgeD0iMTI5LjE0IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjUwPC90ZXh0Pjx0ZXh0IHg9IjE2Ny43MSIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj42MDwvdGV4dD48dGV4dCB4PSIyMDYuMjkiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzA8L3RleHQ+PHRleHQgeD0iMjQ0Ljg2IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjgwPC90ZXh0Pjx0ZXh0IHg9IjI4My40MyIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj45MDwvdGV4dD48dGV4dCB4PSIzMjIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTAwPC90ZXh0Pjx0ZXh0IGRhdGEtbGFuZT0iMCIgeD0iNDYiIHk9IjExNy41IiB0ZXh0LWFuY2hvcj0iZW5kIj5TY29yZXM8L3RleHQ+PC9nPjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTg3IiB5PSIyNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5UZXN0IHNjb3JlPC90ZXh0Pjwvc3ZnPg==)
+
+   - A) Yes, a longer whisker means the class generally scored lower.
+   - B) Yes, since the whisker is part of the box, it changes the reported median.
+   - C) It cannot be known without recalculating the mean.
+   - D) No, whisker length reflects the spread of the extreme scores, not the typical score.
+
+10. This box plot's interquartile range is $25$ and its lower quartile is $55$. A second data set has the same interquartile range but a lower quartile of $70$. What is the second data set's upper quartile?
+
+<!-- figure: pr-2-5-p5-box-scores -->
+![A box plot on a number line of test scores running from 30 to 100, marked every 10. The left whisker starts at the minimum of 40 and runs to the box at 55. The box runs from the lower quartile 55 to the upper quartile 80, with the median drawn inside it at 68. The right whisker runs from 80 out to the maximum of 95.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGJveCBwbG90IG9uIGEgbnVtYmVyIGxpbmUgb2YgdGVzdCBzY29yZXMgcnVubmluZyBmcm9tIDMwIHRvIDEwMCwgbWFya2VkIGV2ZXJ5IDEwLiBUaGUgbGVmdCB3aGlza2VyIHN0YXJ0cyBhdCB0aGUgbWluaW11bSBvZiA0MCBhbmQgcnVucyB0byB0aGUgYm94IGF0IDU1LiBUaGUgYm94IHJ1bnMgZnJvbSB0aGUgbG93ZXIgcXVhcnRpbGUgNTUgdG8gdGhlIHVwcGVyIHF1YXJ0aWxlIDgwLCB3aXRoIHRoZSBtZWRpYW4gZHJhd24gaW5zaWRlIGl0IGF0IDY4LiBUaGUgcmlnaHQgd2hpc2tlciBydW5zIGZyb20gODAgb3V0IHRvIHRoZSBtYXhpbXVtIG9mIDk1LiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNTIiIHkxPSIxNiIgeDI9IjUyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjkwLjU3IiB5MT0iMTYiIHgyPSI5MC41NyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxMjkuMTQiIHkxPSIxNiIgeDI9IjEyOS4xNCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNjcuNzEiIHkxPSIxNiIgeDI9IjE2Ny43MSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyMDYuMjkiIHkxPSIxNiIgeDI9IjIwNi4yOSIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNDQuODYiIHkxPSIxNiIgeDI9IjI0NC44NiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyODMuNDMiIHkxPSIxNiIgeDI9IjI4My40MyIgeTI9IjIxMiIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIxMiIvPjwvZz48bGluZSBkYXRhLXdoaXNrZXI9IjBsbyIgeDE9IjkwLjU3IiB5MT0iMTE0IiB4Mj0iMTQ4LjQzIiB5Mj0iMTE0IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS13aGlza2VyPSIwaGkiIHgxPSIyNDQuODYiIHkxPSIxMTQiIHgyPSIzMDIuNzEiIHkyPSIxMTQiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMGxvIiB4MT0iOTAuNTciIHkxPSI4OS43NSIgeDI9IjkwLjU3IiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBoaSIgeDE9IjMwMi43MSIgeTE9Ijg5Ljc1IiB4Mj0iMzAyLjcxIiB5Mj0iMTM4LjI2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PHJlY3QgZGF0YS1ib3g9IjAiIHg9IjE0OC40MyIgeT0iNjkuOSIgd2lkdGg9Ijk2LjQzIiBoZWlnaHQ9Ijg4LjIiIGZpbGw9IiM2RTlEQzgiIGZpbGwtb3BhY2l0eT0iMC4zNSIgc3Ryb2tlPSIjNkU5REM4IiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIGRhdGEtbWVkaWFuPSIwIiB4MT0iMTk4LjU3IiB5MT0iNjkuOSIgeDI9IjE5OC41NyIgeTI9IjE1OC4xIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI1MiIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI1MiIgeTE9IjIxMiIgeDI9IjUyIiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNTIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MzA8L3RleHQ+PHRleHQgeD0iOTAuNTciIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NDA8L3RleHQ+PHRleHQgeD0iMTI5LjE0IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjUwPC90ZXh0Pjx0ZXh0IHg9IjE2Ny43MSIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj42MDwvdGV4dD48dGV4dCB4PSIyMDYuMjkiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzA8L3RleHQ+PHRleHQgeD0iMjQ0Ljg2IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjgwPC90ZXh0Pjx0ZXh0IHg9IjI4My40MyIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj45MDwvdGV4dD48dGV4dCB4PSIzMjIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTAwPC90ZXh0Pjx0ZXh0IGRhdGEtbGFuZT0iMCIgeD0iNDYiIHk9IjExNy41IiB0ZXh0LWFuY2hvcj0iZW5kIj5TY29yZXM8L3RleHQ+PC9nPjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTg3IiB5PSIyNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5UZXN0IHNjb3JlPC90ZXh0Pjwvc3ZnPg==)
+
+    - A) $45$
+    - B) $95$
+    - C) $25$
+    - D) $70$

@@ -679,3 +679,344 @@ Step 4: Rewrite as $0$ to $9$, $10$ to $19$, $20$ to $29$.
   "D": "total_accepted_without_verifying"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. Fifteen students named a favorite color. What frequency should be recorded for red?**
+
+Step 1: Walk the list once, marking each red.
+Step 2: Red appears at positions one, three, six, eight, ten, thirteen and fifteen.
+- $7$
+
+Step 3: Verify. Blue $4$, green $4$, red $7$, and $4 + 4 + 7 = 15$, matching the fifteen responses.
+
+**Answer: B** ($7$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: off_by_one_count (loses one red while scanning the list)",
+  "B": "Correct: counts the seven red entries on a single pass, and the full table sums to the 15 responses",
+  "C": "Student makes misconception: total_accepted_without_verifying (reports the number of responses collected as though it were a single category's frequency)",
+  "D": "Student makes misconception: reads_wrong_category (reports the frequency of blue or green, the right kind of value read off the wrong category)"
+},
+"misconception_tag": {
+  "A": "off_by_one_count",
+  "C": "total_accepted_without_verifying",
+  "D": "reads_wrong_category"
+}
+```
+
+---
+
+**2. A frequency table records Yes $9$, No $6$, and Maybe $3$, and states a total of $19$. What is the actual sum of the recorded frequencies?**
+
+Step 1: Add the three recorded frequencies.
+- $9 + 6 + 3 = 18$
+
+Step 2: Compare to the stated total. The table says $19$ but its own rows sum to $18$, so the table is inconsistent.
+
+**Answer: D** ($18$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: total_accepted_without_verifying (repeats the stated total instead of adding the rows, which is exactly the check the question asks for)",
+  "B": "Student makes misconception: off_by_one_count (loses one while adding the three frequencies)",
+  "C": "Student makes misconception: frequency_value_misread (reads No as 3 rather than 6 and totals from the wrong value)",
+  "D": "Correct: adds the three recorded frequencies for 18, which exposes the stated total of 19 as inconsistent"
+},
+"misconception_tag": {
+  "A": "total_accepted_without_verifying",
+  "B": "off_by_one_count",
+  "C": "frequency_value_misread"
+}
+```
+
+---
+
+**3. A dataset contains the values $4, 9, 13, 16, 19, 24, 27, 31$. How many values fall in the $10$ to $19$ interval?**
+
+Step 1: Read the interval boundaries. It holds values from $10$ through $19$ inclusive.
+
+Step 2: Walk the data and select those values.
+- $13$, $16$, $19$
+
+Step 3: Count them.
+- $3$
+
+Step 4: Verify the whole table. $2 + 3 + 2 + 1 = 8$, and there are $8$ values.
+
+**Answer: A** ($3$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: selects 13, 16 and 19 as the values between 10 and 19 inclusive",
+  "B": "Student makes misconception: off_by_one_count (loses one value while scanning the list)",
+  "C": "Student makes misconception: reads_adjacent_value (pulls 24 in from the neighbouring 20 to 29 interval)",
+  "D": "Student makes misconception: total_accepted_without_verifying (reports the size of the whole dataset instead of the count in the interval asked for)"
+},
+"misconception_tag": {
+  "B": "off_by_one_count",
+  "C": "reads_adjacent_value",
+  "D": "total_accepted_without_verifying"
+}
+```
+
+---
+
+**4. Twelve cars were counted by color passing an intersection. What frequency should be recorded for white?**
+
+Step 1: Walk the list once, marking each white.
+Step 2: White appears at positions one, three, six, eight, ten and twelve.
+- $6$
+
+Step 3: Verify. Black $3$, silver $3$, white $6$, and $3 + 3 + 6 = 12$, matching the twelve cars.
+
+**Answer: C** ($6$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: off_by_one_count (loses one white entry while scanning the list)",
+  "B": "Student makes misconception: total_accepted_without_verifying (reports the number of cars counted as a single category's frequency)",
+  "C": "Correct: counts the six white entries on a single pass, and the full table sums to the 12 cars",
+  "D": "Student makes misconception: reads_wrong_category (reports the frequency of black or silver, the right kind of value read off the wrong category)"
+},
+"misconception_tag": {
+  "A": "off_by_one_count",
+  "B": "total_accepted_without_verifying",
+  "D": "reads_wrong_category"
+}
+```
+
+---
+
+**5. Twenty-four students were asked their favorite subject. A frequency table shows Math $7$, Science $6$, English $5$, and leaves the History row blank. What frequency belongs in the History row?**
+
+Step 1: Add the three known frequencies.
+- $7 + 6 + 5 = 18$
+
+Step 2: Subtract from the total. The missing row holds what is left over.
+- $24 - 18 = 6$
+
+Step 3: Verify. $7 + 6 + 5 + 6 = 24$. Correct.
+
+**Answer: D** ($6$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: answers_intermediate_value (reports the running subtotal of the three known categories instead of the amount left over)",
+  "B": "Student makes misconception: total_accepted_without_verifying (writes the overall total into the blank row without subtracting the categories already recorded)",
+  "C": "Student makes misconception: off_by_one_count (miscounts while adding the three known frequencies, subtracting 19 from 24)",
+  "D": "Correct: subtracts the 18 already accounted for from the 24 students, leaving 6 for the blank row"
+},
+"misconception_tag": {
+  "A": "answers_intermediate_value",
+  "B": "total_accepted_without_verifying",
+  "C": "off_by_one_count"
+}
+```
+
+---
+
+**6. A student builds a grouped frequency table using the intervals $0$ to $9$, $10$ to $29$, and $30$ to $34$. What is the structural problem with these intervals?**
+
+Step 1: Check overlap. $9$ and $10$ are distinct, $29$ and $30$ are distinct, so no value falls in two intervals.
+
+Step 2: Check coverage. Values from $0$ to $34$ all have a home.
+
+Step 3: Check width. The first interval spans $10$, the second spans $20$, the third spans $5$. The widths are not equal, so frequencies from different intervals cannot be fairly compared.
+
+**Answer: B** (the intervals are unequal in width)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: error_traced_to_wrong_source (senses correctly that the intervals are malformed but blames shared endpoints, when 9 to 10 and 29 to 30 do not in fact overlap)",
+  "B": "Correct: identifies the unequal widths, 10, 20 and 5, as the defect that breaks fair comparison between intervals",
+  "C": "Student makes misconception: false_structural_rule_invented (asserts a grouped frequency table must always split its range into exactly three equal parts, which is not a real restriction)",
+  "D": "Student makes misconception: total_accepted_without_verifying (accepts the intervals as given without checking width, overlap or coverage)"
+},
+"misconception_tag": {
+  "A": "error_traced_to_wrong_source",
+  "C": "false_structural_rule_invented",
+  "D": "total_accepted_without_verifying"
+}
+```
+
+---
+
+**7. A frequency table lists Cats $9$, Dogs $6$, Birds $3$, and Fish $4$, and states a total of $21$. The survey was given to $22$ students. Which single change makes the table correct?**
+
+Step 1: Add the frequencies.
+- $9 + 6 + 3 + 4 = 22$
+
+Step 2: Compare against both claims. The frequencies sum to $22$, which matches the number of students surveyed. The stated total of $21$ matches neither.
+
+Step 3: So the data are right and the total row is the one element that disagrees. Correct it to $22$.
+
+**Answer: C** (change the total to $22$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: fix_applied_to_wrong_element (edits a category frequency when the frequencies were the part that agreed with the raw data)",
+  "B": "Student makes misconception: total_accepted_without_verifying (treats the stated total as authoritative without ever adding the rows to test it)",
+  "C": "Correct: finds that the frequencies already sum to the 22 students surveyed, leaving the stated total as the only element that disagrees",
+  "D": "Student makes misconception: false_structural_rule_invented (asserts a fixed number of categories a frequency table must have, which is not a real restriction)"
+},
+"misconception_tag": {
+  "A": "fix_applied_to_wrong_element",
+  "B": "total_accepted_without_verifying",
+  "D": "false_structural_rule_invented"
+}
+```
+
+---
+
+**8. A class of $28$ students was surveyed about siblings. A table records $0$ siblings $9$, $1$ sibling $11$, $2$ siblings $6$, $3$ or more siblings $3$, and states a total of $28$. By how much do the recorded frequencies exceed the number of students surveyed?**
+
+Step 1: Add the recorded frequencies.
+- $9 + 11 + 6 + 3 = 29$
+
+Step 2: Compare against the number of students.
+- $29 - 28 = 1$
+
+**Answer: A** ($1$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: sums the rows to 29 and subtracts the 28 students, giving an excess of 1",
+  "B": "Student makes misconception: total_accepted_without_verifying (accepts the stated total of 28 as the sum of the rows and so finds no discrepancy at all)",
+  "C": "Student makes misconception: answers_intermediate_value (computes the sum of the frequencies correctly and reports it instead of the excess the question asks for)",
+  "D": "Student makes misconception: off_by_one_count (miscounts while adding the four frequencies, reaching 30 and an excess of 2)"
+},
+"misconception_tag": {
+  "B": "total_accepted_without_verifying",
+  "C": "answers_intermediate_value",
+  "D": "off_by_one_count"
+}
+```
+
+---
+
+**9. A grouped frequency table of $40$ commute times shows $0$ to $9$ minutes: $6$, $10$ to $19$ minutes: $14$, $20$ to $29$ minutes: $12$, and $30$ to $39$ minutes: $8$. The same data are rebuilt using the wider intervals $0$ to $19$ and $20$ to $39$. What frequencies should the new table show?**
+
+Step 1: Each wide interval swallows two of the narrow ones, so add their frequencies.
+- $0$ to $19$: $6 + 14 = 20$
+- $20$ to $39$: $12 + 8 = 20$
+
+Step 2: Verify. $20 + 20 = 40$, and the original four frequencies also sum to $40$.
+
+**Answer: D** ($20$ and $20$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: frequency_value_misread (takes only the first narrow frequency in each wide interval, 6 and 12, losing the rest)",
+  "B": "Student makes misconception: reads_adjacent_value (takes the second narrow frequency in each pair, 14 and 8, rather than combining both)",
+  "C": "Student makes misconception: total_accepted_without_verifying (writes the overall total into both rows without checking that the rows must themselves sum to it)",
+  "D": "Correct: adds the two narrow frequencies inside each wide interval, and the totals still sum to 40"
+},
+"misconception_tag": {
+  "A": "frequency_value_misread",
+  "B": "reads_adjacent_value",
+  "C": "total_accepted_without_verifying"
+}
+```
+
+---
+
+**10. A survey had $15$ respondents. A frequency table lists Tea $9$ and Coffee $5$. Checking the raw responses confirms that $9$ people chose Tea and $5$ chose Coffee, and that one respondent chose Water. What is the correct repair to the table?**
+
+Step 1: Add the recorded frequencies.
+- $9 + 5 = 14$, one short of the $15$ respondents
+
+Step 2: Check each recorded frequency against the raw responses. Both Tea and Coffee are confirmed correct, so neither is the source of the shortfall.
+
+Step 3: The raw data name a response the table has no row for.
+
+Step 4: Add a Water row with frequency $1$. Verify: $9 + 5 + 1 = 15$. Correct.
+
+**Answer: B** (add a Water row with frequency $1$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: fix_applied_to_wrong_element (edits the total to match the incomplete rows, which hides a respondent rather than recording them)",
+  "B": "Correct: confirms both recorded frequencies against the raw data and adds the missing category, bringing the table to 15",
+  "C": "Student makes misconception: total_accepted_without_verifying (declines to reconcile the rows against the respondent count at all)",
+  "D": "Student makes misconception: error_traced_to_wrong_source (spots the shortfall of one correctly but attributes it to the Coffee count, which the raw responses confirm is right)"
+},
+"misconception_tag": {
+  "A": "fix_applied_to_wrong_element",
+  "C": "total_accepted_without_verifying",
+  "D": "error_traced_to_wrong_source"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. Fifteen students named a favorite color: red, blue, red, green, blue, red, green, red, blue, red, green, blue, red, green, red. In a frequency table of these responses, what frequency should be recorded for red?
+   - A) $6$
+   - B) $7$
+   - C) $15$
+   - D) $4$
+
+2. A frequency table records Yes $9$, No $6$, and Maybe $3$, and states a total of $19$. What is the actual sum of the recorded frequencies?
+   - A) $19$
+   - B) $17$
+   - C) $15$
+   - D) $18$
+
+3. A dataset contains the values $4, 9, 13, 16, 19, 24, 27, 31$. A grouped frequency table uses the intervals $0$ to $9$, $10$ to $19$, $20$ to $29$, and $30$ to $39$. How many values fall in the $10$ to $19$ interval?
+   - A) $3$
+   - B) $2$
+   - C) $4$
+   - D) $8$
+
+4. Twelve cars were counted by color passing an intersection: white, black, white, silver, black, white, silver, white, black, white, silver, white. In a frequency table of these colors, what frequency should be recorded for white?
+   - A) $5$
+   - B) $12$
+   - C) $6$
+   - D) $3$
+
+**Proficient Level**
+
+5. Twenty-four students were asked their favorite subject. A frequency table shows Math $7$, Science $6$, English $5$, and leaves the History row blank. What frequency belongs in the History row?
+   - A) $18$
+   - B) $24$
+   - C) $5$
+   - D) $6$
+
+6. A student builds a grouped frequency table using the intervals $0$ to $9$, $10$ to $29$, and $30$ to $34$. What is the structural problem with these intervals?
+   - A) The intervals share endpoints, so a value could be counted in two intervals.
+   - B) The intervals are unequal in width, so their frequencies cannot be fairly compared.
+   - C) A grouped frequency table must always split the range into exactly three equal parts.
+   - D) There is no problem with these intervals.
+
+7. A frequency table lists Cats $9$, Dogs $6$, Birds $3$, and Fish $4$, and states a total of $21$. The survey was given to $22$ students. Which single change makes the table correct?
+   - A) Change Cats from $9$ to $8$, so that the frequencies sum to a smaller number.
+   - B) Make no change, because the table already states a total.
+   - C) Change the total to $22$, because the four frequencies already sum to $22$.
+   - D) Nothing can be done, because a frequency table must have exactly four categories.
+
+**Advanced Level**
+
+8. A class of $28$ students was surveyed about siblings. A table records $0$ siblings $9$, $1$ sibling $11$, $2$ siblings $6$, $3$ or more siblings $3$, and states a total of $28$. By how much do the recorded frequencies exceed the number of students surveyed?
+   - A) $1$
+   - B) $0$
+   - C) $29$
+   - D) $2$
+
+9. A grouped frequency table of $40$ commute times shows $0$ to $9$ minutes: $6$, $10$ to $19$ minutes: $14$, $20$ to $29$ minutes: $12$, and $30$ to $39$ minutes: $8$. The same data are rebuilt using the wider intervals $0$ to $19$ and $20$ to $39$. What frequencies should the new table show?
+   - A) $6$ and $12$
+   - B) $14$ and $8$
+   - C) $40$ and $40$
+   - D) $20$ and $20$
+
+10. A survey had $15$ respondents. A frequency table lists Tea $9$ and Coffee $5$. Checking the raw responses confirms that $9$ people chose Tea and $5$ chose Coffee, and that one respondent chose Water. What is the correct repair to the table?
+    - A) Change the stated total from $15$ to $14$, to match the two rows shown.
+    - B) Add a Water row with frequency $1$.
+    - C) Make no change, because $14$ and $15$ are close enough.
+    - D) Change Coffee from $5$ to $6$.

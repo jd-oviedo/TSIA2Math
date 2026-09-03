@@ -648,3 +648,337 @@ Step 2: $10 / 40 = 0.25$
   "C": "percent_change_wrong_base"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. A stock price rose from \$40 to \$50. What is the percent change?**
+
+Step 1: Find the change.
+- $50 - 40 = 10$
+
+Step 2: Divide by the original value, and convert to a percent.
+- $\dfrac{10}{40} = 0.25 = 25\%$
+
+**Answer: C** ($25\%$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: absolute_change_as_percent (reports the raw difference, 10 dollars, as though it were the percent change)",
+  "B": "Student makes misconception: new_over_original_as_change (reports $\\frac{50}{40} = 125\\%$, the new value as a percent of the original, instead of the percent change)",
+  "C": "Correct: divides the change, 10, by the original, 40, for 25 percent",
+  "D": "Student makes misconception: percent_change_wrong_base (divides the change, 10, by the new value, 50, instead of the original, 40)"
+},
+"misconception_tag": {
+  "A": "absolute_change_as_percent",
+  "B": "new_over_original_as_change",
+  "D": "percent_change_wrong_base"
+}
+```
+
+---
+
+**2. A population decreased from $800$ to $680$. What is the percent change?**
+
+Step 1: Find the change.
+- $680 - 800 = -120$
+
+Step 2: Divide by the original value, and convert to a percent.
+- $\dfrac{-120}{800} = -0.15 = 15\%$ decrease
+
+**Answer: D** ($15\%$ decrease)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: absolute_change_as_percent (reports the raw difference, 120, as though it were the percent change)",
+  "B": "Student makes misconception: misreads_direction_of_change (computes the correct magnitude, 15 percent, but labels it an increase instead of a decrease)",
+  "C": "Student makes misconception: percent_change_wrong_base (divides the change, 120, by the new value, 680, instead of the original, 800)",
+  "D": "Correct: divides the change, -120, by the original, 800, for a 15 percent decrease"
+},
+"misconception_tag": {
+  "A": "absolute_change_as_percent",
+  "B": "misreads_direction_of_change",
+  "C": "percent_change_wrong_base"
+}
+```
+
+---
+
+**3. A shirt's price increased from \$25 to \$30. What is the percent change?**
+
+Step 1: Find the change.
+- $30 - 25 = 5$
+
+Step 2: Divide by the original value, and convert to a percent.
+- $\dfrac{5}{25} = 0.20 = 20\%$
+
+**Answer: B** ($20\%$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: absolute_change_as_percent (reports the raw difference, 5 dollars, as though it were the percent change)",
+  "B": "Correct: divides the change, 5, by the original, 25, for 20 percent",
+  "C": "Student makes misconception: new_over_original_as_change (reports $\\frac{30}{25} = 120\\%$, the new value as a percent of the original, instead of the percent change)",
+  "D": "Student makes misconception: percent_change_wrong_base (divides the change, 5, by the new value, 30, instead of the original, 25)"
+},
+"misconception_tag": {
+  "A": "absolute_change_as_percent",
+  "C": "new_over_original_as_change",
+  "D": "percent_change_wrong_base"
+}
+```
+
+---
+
+**4. Convert a percent change of $0.045$ (as a decimal) to a percent.**
+
+Step 1: Multiply by $100$, which moves the decimal point two places to the right.
+- $0.045 \times 100 = 4.5$
+
+**Answer: A** ($4.5\%$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: moves the decimal two places right, 0.045 becomes 4.5 percent",
+  "B": "Student makes misconception: percent_decimal_overshift (moves the decimal three places instead of two, turning 0.045 into 45 percent)",
+  "C": "Student makes misconception: percent_decimal_overshift (multiplies by 100 twice, turning 0.045 into 450 percent)",
+  "D": "Student makes misconception: percent_decimal_overshift (moves the decimal only one place instead of two, turning 0.045 into 0.45 percent)"
+},
+"misconception_tag": {
+  "B": "percent_decimal_overshift",
+  "C": "percent_decimal_overshift",
+  "D": "percent_decimal_overshift"
+}
+```
+
+---
+
+**5. A price increased by $20\%$ to become \$60. What was the original price?**
+
+Step 1: The new price is $120\%$ of the original.
+- $\text{original} \times 1.20 = 60$
+
+Step 2: Solve.
+- $\text{original} = 60 \div 1.20 = 50$
+
+**Answer: D** (\$50)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: percent_change_wrong_base (applies the 20 percent to the new value, 60, instead of solving for the original, computing $60 - 0.20 \\times 60 = 48$)",
+  "B": "Student makes misconception: new_over_original_as_change (applies the 20 percent forward again instead of solving backward, computing $60 \\times 1.20 = 72$)",
+  "C": "Student makes misconception: absolute_change_as_percent (treats 20 percent as a flat 20 dollars and subtracts it directly, $60 - 20 = 40$)",
+  "D": "Correct: divides the new price, 60, by 1.20 for an original price of 50"
+},
+"misconception_tag": {
+  "A": "percent_change_wrong_base",
+  "B": "new_over_original_as_change",
+  "C": "absolute_change_as_percent"
+}
+```
+
+---
+
+**6. A value increases by $10\%$ one year, then decreases by $10\%$ the next year. What is the overall percent change from the original value?**
+
+Step 1: Start with a convenient value, $100$. After a $10\%$ increase: $110$.
+
+Step 2: Apply the $10\%$ decrease to the new value, $110$, not the original.
+- $110 \times 0.90 = 99$
+
+Step 3: Compare to the original.
+- $99 - 100 = -1$, a $1\%$ decrease
+
+**Answer: C** ($1\%$ decrease)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: percent_changes_added (assumes the +10 percent and -10 percent cancel out exactly, concluding no change)",
+  "B": "Student makes misconception: misreads_direction_of_change (computes the correct magnitude, 1 percent, but labels it an increase instead of a decrease)",
+  "C": "Correct: the second 10 percent applies to 110, not 100, so the value ends at 99, a 1 percent decrease overall",
+  "D": "Student makes misconception: percent_change_wrong_base (divides the net change, -1, by the intermediate value, 110, instead of the original, 100)"
+},
+"misconception_tag": {
+  "A": "percent_changes_added",
+  "B": "misreads_direction_of_change",
+  "D": "percent_change_wrong_base"
+}
+```
+
+---
+
+**7. A car's value depreciates $15\%$ each year. After $2$ years, what is the total percent decrease from the original value?**
+
+Step 1: Start with a convenient value, $100$. After year one: $85$.
+
+Step 2: Apply the $15\%$ decrease to $85$, not $100$, for year two.
+- $85 \times 0.85 = 72.25$
+
+Step 3: Compare to the original.
+- $100 - 72.25 = 27.75$, a $27.75\%$ decrease
+
+**Answer: B** ($27.75\%$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: percent_changes_added (adds the two years' rates directly, 15 plus 15, for a total of 30 percent)",
+  "B": "Correct: the second 15 percent applies to 85, not 100, giving a final value of 72.25, a 27.75 percent decrease overall",
+  "C": "Student makes misconception: sequence_stopped_early (reports only the first year's rate, 15 percent, as the total two-year decrease)",
+  "D": "Student makes misconception: misreads_direction_of_change (computes the correct magnitude, 27.75 percent, but labels a depreciation as an increase)"
+},
+"misconception_tag": {
+  "A": "percent_changes_added",
+  "C": "sequence_stopped_early",
+  "D": "misreads_direction_of_change"
+}
+```
+
+---
+
+**8. A city's population was $50{,}000$ in 2020. It grew by $8\%$ in 2021, then declined by $8\%$ in 2022. What is the population at the end of 2022, and is it back to $50{,}000$?**
+
+Step 1: Apply the 2021 growth.
+- $50{,}000 \times 1.08 = 54{,}000$
+
+Step 2: Apply the 2022 decline to the grown value, $54{,}000$, not the original.
+- $54{,}000 \times 0.92 = 49{,}680$
+
+Step 3: Compare. $49{,}680$ is less than $50{,}000$, so the population has not returned to its 2020 level.
+
+**Answer: A** ($49{,}680$; no)
+
+```json
+"distractor_logic": {
+  "A": "Correct: the 8 percent decline applies to the grown 54,000, giving 49,680, which is not back to 50,000",
+  "B": "Student makes misconception: percent_changes_added (assumes the equal and opposite 8 percent changes cancel out exactly, concluding the population returns to 50,000)",
+  "C": "Student makes misconception: percent_change_wrong_base (applies the 8 percent decline to the original 50,000 instead of the grown 54,000, computing $54{,}000 - 4{,}000 = 50{,}000$)",
+  "D": "Student makes misconception: sequence_stopped_early (reports only the 2021 value, 54,000, forgetting to apply the 2022 decline at all)"
+},
+"misconception_tag": {
+  "B": "percent_changes_added",
+  "C": "percent_change_wrong_base",
+  "D": "sequence_stopped_early"
+}
+```
+
+---
+
+**9. A company's revenue increased by $25\%$ in Year 1 and then increased by a further $x\%$ in Year 2, ending at $150\%$ of the original revenue. What is $x$?**
+
+Step 1: Start with a convenient value, $100$. After Year 1's $25\%$ increase: $125$.
+
+Step 2: Year 2 must bring the value from $125$ to $150$.
+- $\dfrac{150}{125} = 1.20$, so a $20\%$ increase
+
+**Answer: D** ($20\%$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: percent_changes_added (solves $25 + x = 50$, treating the total 50 percent increase as the sum of the two stage percents, ignoring compounding)",
+  "B": "Student makes misconception: percent_change_wrong_base (divides the Year 2 change, 25, by the final value, 150, instead of the intermediate value, 125)",
+  "C": "Student makes misconception: new_over_original_as_change (reports $\\frac{150}{125} = 120\\%$ as the answer, the ratio itself rather than the percent change above 100 percent)",
+  "D": "Correct: Year 2 must raise 125 to 150, a ratio of 1.20, which is a 20 percent increase"
+},
+"misconception_tag": {
+  "A": "percent_changes_added",
+  "B": "percent_change_wrong_base",
+  "C": "new_over_original_as_change"
+}
+```
+
+---
+
+**10. A retailer marks up a \$40 item by a rate of $0.35$ (as a decimal). What is the new price?**
+
+Step 1: Convert the rate to a percent and find the markup amount.
+- $0.35 \times 40 = 14$
+
+Step 2: Add the markup to the original price.
+- $40 + 14 = 54$
+
+**Answer: C** (\$54)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: percent_decimal_overshift (misreads 0.35 as 350 percent, computing $40 \\times 4.5 = 180$)",
+  "B": "Student makes misconception: absolute_change_as_percent (treats the decimal rate, 0.35, as a raw dollar amount and adds it directly, $40 + 0.35 = 40.35$)",
+  "C": "Correct: the markup is $0.35 \\times 40 = 14$, added to the original 40 for a new price of 54",
+  "D": "Student makes misconception: answers_intermediate_value (reports the markup amount, 14, instead of adding it to the original price)"
+},
+"misconception_tag": {
+  "A": "percent_decimal_overshift",
+  "B": "absolute_change_as_percent",
+  "D": "answers_intermediate_value"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. A stock price rose from \$40 to \$50. What is the percent change?
+   - A) $10\%$
+   - B) $125\%$
+   - C) $25\%$
+   - D) $20\%$
+
+2. A population decreased from $800$ to $680$. What is the percent change?
+   - A) $120\%$
+   - B) $15\%$ increase
+   - C) $17.65\%$
+   - D) $15\%$ decrease
+
+3. A shirt's price increased from \$25 to \$30. What is the percent change?
+   - A) $5\%$
+   - B) $20\%$
+   - C) $120\%$
+   - D) $16.67\%$
+
+4. Convert a percent change of $0.045$ (as a decimal) to a percent.
+   - A) $4.5\%$
+   - B) $45\%$
+   - C) $450\%$
+   - D) $0.45\%$
+
+**Proficient Level** (these require an extra step)
+
+5. A price increased by $20\%$ to become \$60. What was the original price?
+   - A) \$48
+   - B) \$72
+   - C) \$40
+   - D) \$50
+
+6. A value increases by $10\%$ one year, then decreases by $10\%$ the next year. What is the overall percent change from the original value?
+   - A) $0\%$ (no change)
+   - B) $1\%$ increase
+   - C) $1\%$ decrease
+   - D) $0.91\%$ decrease
+
+7. A car's value depreciates $15\%$ each year. After $2$ years, what is the total percent decrease from the original value?
+   - A) $30\%$
+   - B) $27.75\%$
+   - C) $15\%$
+   - D) $27.75\%$ increase
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. A city's population was $50{,}000$ in 2020. It grew by $8\%$ in 2021, then declined by $8\%$ in 2022. What is the population at the end of 2022, and is it back to $50{,}000$?
+   - A) $49{,}680$; no, it is not back to $50{,}000$.
+   - B) $50{,}000$; yes, the equal and opposite percents cancel out.
+   - C) $50{,}000$; yes, since applying $8\%$ to the original $50{,}000$ both times gives back $50{,}000$.
+   - D) $54{,}000$; the population is higher than in 2020.
+
+9. A company's revenue increased by $25\%$ in Year 1 and then increased by a further $x\%$ in Year 2, ending at $150\%$ of the original revenue. What is $x$?
+   - A) $25\%$
+   - B) $16.67\%$
+   - C) $120\%$
+   - D) $20\%$
+
+10. A retailer marks up a \$40 item by a rate of $0.35$ (as a decimal). What is the new price?
+    - A) \$180
+    - B) \$40.35
+    - C) \$54
+    - D) \$14

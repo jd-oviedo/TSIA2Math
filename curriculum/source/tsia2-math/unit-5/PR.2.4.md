@@ -669,3 +669,339 @@ Step 2: The smaller spread is the more consistent team.
   "C": "center_spread_confusion"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. Based on the box plots, which class's test scores are more spread out?**
+
+Step 1: Read each class's minimum and maximum. Class 1: $50$ to $88$, a range of $38$. Class 2: $55$ to $80$, a range of $25$.
+
+Step 2: Class 1's box and whiskers span a wider distance on the number line.
+
+**Answer: C** (Class 1)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: center_spread_confusion (uses a single quartile position rather than the full span from minimum to maximum to judge spread)",
+  "B": "Student makes misconception: range_from_single_extreme (compares one class's maximum to the other's minimum instead of computing each class's own range)",
+  "C": "Correct: Class 1 spans 50 to 88, a range of 38, wider than Class 2's 55 to 80, a range of 25",
+  "D": "Student makes misconception: center_spread_confusion (uses the shared median, a measure of centre, to conclude the spread must also be equal)"
+},
+"misconception_tag": {
+  "A": "center_spread_confusion",
+  "B": "range_from_single_extreme",
+  "D": "center_spread_confusion"
+}
+```
+
+---
+
+**2. Which class has the higher median test score, or are they the same?**
+
+Step 1: Read the median line inside each box. Class 1: $68$. Class 2: $68$.
+
+Step 2: The two medians are identical.
+
+**Answer: D** (they are the same, $68$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: center_spread_confusion (uses the higher maximum, a spread feature, to judge the median instead of reading the median line directly)",
+  "B": "Student makes misconception: center_spread_confusion (uses the narrower box, a spread feature, to judge which median is higher)",
+  "C": "Student makes misconception: larger_range_read_as_better (treats a wider range as evidence of a higher median)",
+  "D": "Correct: both box plots show a median line at 68"
+},
+"misconception_tag": {
+  "A": "center_spread_confusion",
+  "B": "center_spread_confusion",
+  "C": "larger_range_read_as_better"
+}
+```
+
+---
+
+**3. Which route has the longer median commute time?**
+
+Step 1: Read the median line inside each box. Route A: $22$. Route B: $30$.
+
+Step 2: $30$ is greater than $22$.
+
+**Answer: B** (Route B)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: center_spread_confusion (uses Route A's smaller range, a spread feature, to judge the median instead of reading it directly)",
+  "B": "Correct: Route B's median line sits at 30, higher than Route A's 22",
+  "C": "Student makes misconception: range_from_single_extreme (compares only the maximums to judge the median instead of reading each median line)",
+  "D": "Student makes misconception: range_from_single_extreme (compares only the minimums to judge the median instead of reading each median line)"
+},
+"misconception_tag": {
+  "A": "center_spread_confusion",
+  "C": "range_from_single_extreme",
+  "D": "range_from_single_extreme"
+}
+```
+
+---
+
+**4. Which route has the greater range of commute times?**
+
+Step 1: Read each route's minimum and maximum. Route A: $12$ to $40$, a range of $28$. Route B: $8$ to $46$, a range of $38$.
+
+Step 2: $38$ is greater than $28$.
+
+**Answer: A** (Route B)
+
+```json
+"distractor_logic": {
+  "A": "Correct: Route B spans 8 to 46, a range of 38, wider than Route A's 12 to 40, a range of 28",
+  "B": "Student makes misconception: center_spread_confusion (uses Route A's lower median, a centre feature, to judge which route has the greater range)",
+  "C": "Student makes misconception: center_spread_confusion (confuses the width of the box, the interquartile range, with the full range from minimum to maximum)",
+  "D": "Student makes misconception: range_from_single_extreme (judges the two ranges by their visual overlap on the number line rather than computing maximum minus minimum for each)"
+},
+"misconception_tag": {
+  "B": "center_spread_confusion",
+  "C": "center_spread_confusion",
+  "D": "range_from_single_extreme"
+}
+```
+
+---
+
+**5. A data set's mean is $72$ and its median is $80$. What does this indicate about the shape of the distribution?**
+
+Step 1: Compare the mean to the median. The mean, $72$, is lower than the median, $80$.
+
+Step 2: A mean pulled below the median indicates a left skew, a longer tail toward lower values dragging the mean down.
+
+**Answer: D** (skewed left)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: skew_direction_misread (reverses the direction, concluding right skew when the mean sits below, not above, the median)",
+  "B": "Student makes misconception: center_spread_confusion (treats two different measures of centre as automatically equal, which would only be true for a perfectly symmetric distribution)",
+  "C": "Student makes misconception: false_structural_rule_invented (claims range is required to determine skew direction, when the mean-median relationship alone is sufficient)",
+  "D": "Correct: the mean, 72, sits below the median, 80, which indicates a left-skewed distribution"
+},
+"misconception_tag": {
+  "A": "skew_direction_misread",
+  "B": "center_spread_confusion",
+  "C": "false_structural_rule_invented"
+}
+```
+
+---
+
+**6. Two classes have the same mean test score of $78$. Class X has a range of $10$, and Class Y has a range of $40$. Which class's scores are more consistent?**
+
+Step 1: Consistency is about spread, not center, and both classes already share the same mean.
+
+Step 2: Class X's much smaller range, $10$ versus $40$, means its scores cluster more tightly together.
+
+**Answer: C** (Class X)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: larger_range_read_as_better (treats Class Y's larger range as evidence of stronger scores rather than greater variability)",
+  "B": "Student makes misconception: equal_means_assumed_equal_consistency (assumes the shared mean guarantees equal consistency, ignoring the very different ranges)",
+  "C": "Correct: Class X's range of 10 is far smaller than Class Y's range of 40, so Class X's scores are more consistent",
+  "D": "Student makes misconception: center_spread_confusion (seeks another measure of centre, the median, to judge consistency, when the range already given answers the question)"
+},
+"misconception_tag": {
+  "A": "larger_range_read_as_better",
+  "B": "equal_means_assumed_equal_consistency",
+  "D": "center_spread_confusion"
+}
+```
+
+---
+
+**7. Two data sets both have a median of $50$. Does this mean their means are also equal?**
+
+Step 1: The median and the mean are computed differently, one from position, one from every value's size.
+
+Step 2: Two data sets can share a median while having very different means, depending on how their other values are distributed.
+
+**Answer: B** (not necessarily)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: equal_medians_assumed_equal_means (assumes equal medians always produce equal means)",
+  "B": "Correct: equal medians do not guarantee equal means, since the two are computed differently",
+  "C": "Student makes misconception: false_structural_rule_invented (overcorrects into claiming median and mean have no relationship at all, when both are legitimate measures of centre that often move together)",
+  "D": "Student makes misconception: equal_medians_assumed_equal_means (incorrectly claims the median is calculated directly from the mean)"
+},
+"misconception_tag": {
+  "A": "equal_medians_assumed_equal_means",
+  "C": "false_structural_rule_invented",
+  "D": "equal_medians_assumed_equal_means"
+}
+```
+
+---
+
+**8. A data set of nine typical values plus one extreme outlier has a mean of $65$ and a median of $40$. Which measure better represents the typical value in this set?**
+
+Step 1: The mean uses every value, including the extreme outlier, so a single unusual value can pull it far from where most of the data actually sits.
+
+Step 2: The median, $40$, is based on position and is not dragged by the outlier, so it better represents a typical value here.
+
+**Answer: A** (the median, $40$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: the median, 40, is unaffected by the extreme outlier and better represents a typical value than the mean, which the outlier pulls up to 65",
+  "B": "Student makes misconception: outlier_effect_on_mean_dismissed (defends the mean's use of every value without acknowledging that this is exactly why the outlier distorts it)",
+  "C": "Student makes misconception: outlier_effect_on_mean_dismissed (treats both measures as equally representative, dismissing the outlier's clear effect on the mean)",
+  "D": "Student makes misconception: outlier_effect_on_mean_dismissed (defends the mean as always more precise, when an outlier is exactly the case where it is not)"
+},
+"misconception_tag": {
+  "B": "outlier_effect_on_mean_dismissed",
+  "C": "outlier_effect_on_mean_dismissed",
+  "D": "outlier_effect_on_mean_dismissed"
+}
+```
+
+---
+
+**9. Based on the box plots, which class's scores show a wider middle $50$ percent, its interquartile range?**
+
+Step 1: The interquartile range is the box's own width, upper quartile minus lower quartile. Class 1: $76 - 60 = 16$. Class 2: $71 - 65 = 6$.
+
+Step 2: $16$ is wider than $6$.
+
+**Answer: D** (Class 1)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: center_spread_confusion (points to whisker length, which reflects the range, rather than the box's own width, which is the interquartile range)",
+  "B": "Student makes misconception: center_spread_confusion (uses the shared median, a measure of centre, to conclude the interquartile ranges must also match)",
+  "C": "Student makes misconception: center_spread_confusion (assumes a smaller overall range must mean a smaller interquartile range, confusing one spread measure for another)",
+  "D": "Correct: Class 1's box spans 60 to 76, an interquartile range of 16, wider than Class 2's 65 to 71, an interquartile range of 6"
+},
+"misconception_tag": {
+  "A": "center_spread_confusion",
+  "B": "center_spread_confusion",
+  "C": "center_spread_confusion"
+}
+```
+
+---
+
+**10. For Route A's box plot, the median sits closer to the lower quartile than to the upper quartile. What does this suggest about the mean compared to the median?**
+
+Step 1: Route A's median, $22$, sits only $2$ units above its lower quartile, $20$, but $6$ units below its upper quartile, $28$. Most of the box's width lies above the median.
+
+Step 2: A longer stretch of the data on the upper side pulls the mean above the median, indicating a right-skewed distribution.
+
+**Answer: C** (the mean is likely greater than the median)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: skew_direction_misread (reverses the direction, concluding a left skew when the box's longer upper side indicates a right skew)",
+  "B": "Student makes misconception: equal_medians_assumed_equal_means (assumes the two measures of centre must be equal regardless of the box's asymmetry)",
+  "C": "Correct: the median sits closer to the lower quartile, so more of the distribution's width lies above it, which pulls the mean higher, a right skew",
+  "D": "Student makes misconception: false_structural_rule_invented (denies that quartile position within the box relates to skew direction, when it is exactly the evidence used to infer it)"
+},
+"misconception_tag": {
+  "A": "skew_direction_misread",
+  "B": "equal_medians_assumed_equal_means",
+  "D": "false_structural_rule_invented"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. Based on the box plots, which class's test scores are more spread out?
+
+<!-- figure: pr-2-4-p5-box-scores -->
+![Two box plots stacked on a shared number line of test scores running from 40 to 90, marked every 10. Class 1 is the upper plot: minimum 50, lower quartile 60, median 68, upper quartile 76, maximum 88. Class 2 is the lower plot: minimum 55, lower quartile 65, median 68, upper quartile 71, maximum 80. Both classes share the same median of 68, but Class 1's box and whiskers span a wider range.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJUd28gYm94IHBsb3RzIHN0YWNrZWQgb24gYSBzaGFyZWQgbnVtYmVyIGxpbmUgb2YgdGVzdCBzY29yZXMgcnVubmluZyBmcm9tIDQwIHRvIDkwLCBtYXJrZWQgZXZlcnkgMTAuIENsYXNzIDEgaXMgdGhlIHVwcGVyIHBsb3Q6IG1pbmltdW0gNTAsIGxvd2VyIHF1YXJ0aWxlIDYwLCBtZWRpYW4gNjgsIHVwcGVyIHF1YXJ0aWxlIDc2LCBtYXhpbXVtIDg4LiBDbGFzcyAyIGlzIHRoZSBsb3dlciBwbG90OiBtaW5pbXVtIDU1LCBsb3dlciBxdWFydGlsZSA2NSwgbWVkaWFuIDY4LCB1cHBlciBxdWFydGlsZSA3MSwgbWF4aW11bSA4MC4gQm90aCBjbGFzc2VzIHNoYXJlIHRoZSBzYW1lIG1lZGlhbiBvZiA2OCwgYnV0IENsYXNzIDEncyBib3ggYW5kIHdoaXNrZXJzIHNwYW4gYSB3aWRlciByYW5nZS4iPjxyZWN0IHdpZHRoPSIzNDAiIGhlaWdodD0iMjUwIiBmaWxsPSIjRkZGRkZGIiByeD0iMTAiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgeDE9IjU4IiB5MT0iMTYiIHgyPSI1OCIgeTI9IjIxMiIvPjxsaW5lIHgxPSI4NC40IiB5MT0iMTYiIHgyPSI4NC40IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjExMC44IiB5MT0iMTYiIHgyPSIxMTAuOCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxMzcuMiIgeTE9IjE2IiB4Mj0iMTM3LjIiIHkyPSIyMTIiLz48bGluZSB4MT0iMTYzLjYiIHkxPSIxNiIgeDI9IjE2My42IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjE5MCIgeTE9IjE2IiB4Mj0iMTkwIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjIxNi40IiB5MT0iMTYiIHgyPSIyMTYuNCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNDIuOCIgeTE9IjE2IiB4Mj0iMjQyLjgiIHkyPSIyMTIiLz48bGluZSB4MT0iMjY5LjIiIHkxPSIxNiIgeDI9IjI2OS4yIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI5NS42IiB5MT0iMTYiIHgyPSIyOTUuNiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIxMiIvPjwvZz48bGluZSBkYXRhLXdoaXNrZXI9IjBsbyIgeDE9IjExMC44IiB5MT0iNjUiIHgyPSIxNjMuNiIgeTI9IjY1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS13aGlza2VyPSIwaGkiIHgxPSIyNDguMDgiIHkxPSI2NSIgeDI9IjMxMS40NCIgeTI9IjY1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBsbyIgeDE9IjExMC44IiB5MT0iNTIuODciIHgyPSIxMTAuOCIgeTI9Ijc3LjEzIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBoaSIgeDE9IjMxMS40NCIgeTE9IjUyLjg3IiB4Mj0iMzExLjQ0IiB5Mj0iNzcuMTMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48cmVjdCBkYXRhLWJveD0iMCIgeD0iMTYzLjYiIHk9IjQyLjk1IiB3aWR0aD0iODQuNDgiIGhlaWdodD0iNDQuMSIgZmlsbD0iIzZFOURDOCIgZmlsbC1vcGFjaXR5PSIwLjM1IiBzdHJva2U9IiM2RTlEQzgiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGxpbmUgZGF0YS1tZWRpYW49IjAiIHgxPSIyMDUuODQiIHkxPSI0Mi45NSIgeDI9IjIwNS44NCIgeTI9Ijg3LjA1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIGRhdGEtd2hpc2tlcj0iMWxvIiB4MT0iMTM3LjIiIHkxPSIxNjMiIHgyPSIxOTAiIHkyPSIxNjMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLXdoaXNrZXI9IjFoaSIgeDE9IjIyMS42OCIgeTE9IjE2MyIgeDI9IjI2OS4yIiB5Mj0iMTYzIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjFsbyIgeDE9IjEzNy4yIiB5MT0iMTUwLjg3IiB4Mj0iMTM3LjIiIHkyPSIxNzUuMTMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMWhpIiB4MT0iMjY5LjIiIHkxPSIxNTAuODciIHgyPSIyNjkuMiIgeTI9IjE3NS4xMyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxyZWN0IGRhdGEtYm94PSIxIiB4PSIxOTAiIHk9IjE0MC45NSIgd2lkdGg9IjMxLjY4IiBoZWlnaHQ9IjQ0LjEiIGZpbGw9IiNGMEEzM0UiIGZpbGwtb3BhY2l0eT0iMC4zNSIgc3Ryb2tlPSIjRjBBMzNFIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIGRhdGEtbWVkaWFuPSIxIiB4MT0iMjA1Ljg0IiB5MT0iMTQwLjk1IiB4Mj0iMjA1Ljg0IiB5Mj0iMTg1LjA1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjU4IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNTgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NDA8L3RleHQ+PHRleHQgeD0iODQuNCIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj40NTwvdGV4dD48dGV4dCB4PSIxMTAuOCIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41MDwvdGV4dD48dGV4dCB4PSIxMzcuMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41NTwvdGV4dD48dGV4dCB4PSIxNjMuNiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj42MDwvdGV4dD48dGV4dCB4PSIxOTAiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NjU8L3RleHQ+PHRleHQgeD0iMjE2LjQiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzA8L3RleHQ+PHRleHQgeD0iMjQyLjgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzU8L3RleHQ+PHRleHQgeD0iMjY5LjIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ODA8L3RleHQ+PHRleHQgeD0iMjk1LjYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ODU8L3RleHQ+PHRleHQgeD0iMzIyIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjkwPC90ZXh0Pjx0ZXh0IGRhdGEtbGFuZT0iMCIgeD0iNTIiIHk9IjY4LjUiIHRleHQtYW5jaG9yPSJlbmQiPkNsYXNzIDE8L3RleHQ+PHRleHQgZGF0YS1sYW5lPSIxIiB4PSI1MiIgeT0iMTY2LjUiIHRleHQtYW5jaG9yPSJlbmQiPkNsYXNzIDI8L3RleHQ+PC9nPjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTkwIiB5PSIyNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5UZXN0IHNjb3JlPC90ZXh0Pjwvc3ZnPg==)
+
+   - A) Class 2, because it has the higher upper quartile.
+   - B) Class 2, because its maximum score is higher than Class 1's minimum.
+   - C) Class 1.
+   - D) They are equally spread, since both have the same median of $68$.
+
+2. Which class has the higher median test score, or are they the same?
+
+<!-- figure: pr-2-4-p5-box-scores -->
+![Two box plots stacked on a shared number line of test scores running from 40 to 90, marked every 10. Class 1 is the upper plot: minimum 50, lower quartile 60, median 68, upper quartile 76, maximum 88. Class 2 is the lower plot: minimum 55, lower quartile 65, median 68, upper quartile 71, maximum 80. Both classes share the same median of 68, but Class 1's box and whiskers span a wider range.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJUd28gYm94IHBsb3RzIHN0YWNrZWQgb24gYSBzaGFyZWQgbnVtYmVyIGxpbmUgb2YgdGVzdCBzY29yZXMgcnVubmluZyBmcm9tIDQwIHRvIDkwLCBtYXJrZWQgZXZlcnkgMTAuIENsYXNzIDEgaXMgdGhlIHVwcGVyIHBsb3Q6IG1pbmltdW0gNTAsIGxvd2VyIHF1YXJ0aWxlIDYwLCBtZWRpYW4gNjgsIHVwcGVyIHF1YXJ0aWxlIDc2LCBtYXhpbXVtIDg4LiBDbGFzcyAyIGlzIHRoZSBsb3dlciBwbG90OiBtaW5pbXVtIDU1LCBsb3dlciBxdWFydGlsZSA2NSwgbWVkaWFuIDY4LCB1cHBlciBxdWFydGlsZSA3MSwgbWF4aW11bSA4MC4gQm90aCBjbGFzc2VzIHNoYXJlIHRoZSBzYW1lIG1lZGlhbiBvZiA2OCwgYnV0IENsYXNzIDEncyBib3ggYW5kIHdoaXNrZXJzIHNwYW4gYSB3aWRlciByYW5nZS4iPjxyZWN0IHdpZHRoPSIzNDAiIGhlaWdodD0iMjUwIiBmaWxsPSIjRkZGRkZGIiByeD0iMTAiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgeDE9IjU4IiB5MT0iMTYiIHgyPSI1OCIgeTI9IjIxMiIvPjxsaW5lIHgxPSI4NC40IiB5MT0iMTYiIHgyPSI4NC40IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjExMC44IiB5MT0iMTYiIHgyPSIxMTAuOCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxMzcuMiIgeTE9IjE2IiB4Mj0iMTM3LjIiIHkyPSIyMTIiLz48bGluZSB4MT0iMTYzLjYiIHkxPSIxNiIgeDI9IjE2My42IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjE5MCIgeTE9IjE2IiB4Mj0iMTkwIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjIxNi40IiB5MT0iMTYiIHgyPSIyMTYuNCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNDIuOCIgeTE9IjE2IiB4Mj0iMjQyLjgiIHkyPSIyMTIiLz48bGluZSB4MT0iMjY5LjIiIHkxPSIxNiIgeDI9IjI2OS4yIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI5NS42IiB5MT0iMTYiIHgyPSIyOTUuNiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIxMiIvPjwvZz48bGluZSBkYXRhLXdoaXNrZXI9IjBsbyIgeDE9IjExMC44IiB5MT0iNjUiIHgyPSIxNjMuNiIgeTI9IjY1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS13aGlza2VyPSIwaGkiIHgxPSIyNDguMDgiIHkxPSI2NSIgeDI9IjMxMS40NCIgeTI9IjY1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBsbyIgeDE9IjExMC44IiB5MT0iNTIuODciIHgyPSIxMTAuOCIgeTI9Ijc3LjEzIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBoaSIgeDE9IjMxMS40NCIgeTE9IjUyLjg3IiB4Mj0iMzExLjQ0IiB5Mj0iNzcuMTMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48cmVjdCBkYXRhLWJveD0iMCIgeD0iMTYzLjYiIHk9IjQyLjk1IiB3aWR0aD0iODQuNDgiIGhlaWdodD0iNDQuMSIgZmlsbD0iIzZFOURDOCIgZmlsbC1vcGFjaXR5PSIwLjM1IiBzdHJva2U9IiM2RTlEQzgiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGxpbmUgZGF0YS1tZWRpYW49IjAiIHgxPSIyMDUuODQiIHkxPSI0Mi45NSIgeDI9IjIwNS44NCIgeTI9Ijg3LjA1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIGRhdGEtd2hpc2tlcj0iMWxvIiB4MT0iMTM3LjIiIHkxPSIxNjMiIHgyPSIxOTAiIHkyPSIxNjMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLXdoaXNrZXI9IjFoaSIgeDE9IjIyMS42OCIgeTE9IjE2MyIgeDI9IjI2OS4yIiB5Mj0iMTYzIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjFsbyIgeDE9IjEzNy4yIiB5MT0iMTUwLjg3IiB4Mj0iMTM3LjIiIHkyPSIxNzUuMTMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMWhpIiB4MT0iMjY5LjIiIHkxPSIxNTAuODciIHgyPSIyNjkuMiIgeTI9IjE3NS4xMyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxyZWN0IGRhdGEtYm94PSIxIiB4PSIxOTAiIHk9IjE0MC45NSIgd2lkdGg9IjMxLjY4IiBoZWlnaHQ9IjQ0LjEiIGZpbGw9IiNGMEEzM0UiIGZpbGwtb3BhY2l0eT0iMC4zNSIgc3Ryb2tlPSIjRjBBMzNFIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIGRhdGEtbWVkaWFuPSIxIiB4MT0iMjA1Ljg0IiB5MT0iMTQwLjk1IiB4Mj0iMjA1Ljg0IiB5Mj0iMTg1LjA1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjU4IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNTgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NDA8L3RleHQ+PHRleHQgeD0iODQuNCIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj40NTwvdGV4dD48dGV4dCB4PSIxMTAuOCIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41MDwvdGV4dD48dGV4dCB4PSIxMzcuMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41NTwvdGV4dD48dGV4dCB4PSIxNjMuNiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj42MDwvdGV4dD48dGV4dCB4PSIxOTAiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NjU8L3RleHQ+PHRleHQgeD0iMjE2LjQiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzA8L3RleHQ+PHRleHQgeD0iMjQyLjgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzU8L3RleHQ+PHRleHQgeD0iMjY5LjIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ODA8L3RleHQ+PHRleHQgeD0iMjk1LjYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ODU8L3RleHQ+PHRleHQgeD0iMzIyIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjkwPC90ZXh0Pjx0ZXh0IGRhdGEtbGFuZT0iMCIgeD0iNTIiIHk9IjY4LjUiIHRleHQtYW5jaG9yPSJlbmQiPkNsYXNzIDE8L3RleHQ+PHRleHQgZGF0YS1sYW5lPSIxIiB4PSI1MiIgeT0iMTY2LjUiIHRleHQtYW5jaG9yPSJlbmQiPkNsYXNzIDI8L3RleHQ+PC9nPjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTkwIiB5PSIyNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5UZXN0IHNjb3JlPC90ZXh0Pjwvc3ZnPg==)
+
+   - A) Class 1, because its scores extend higher, up to $88$.
+   - B) Class 2, because its box is narrower and looks more concentrated.
+   - C) Class 1, because it has a wider range.
+   - D) They are the same, both classes have a median of $68$.
+
+3. Which route has the longer median commute time?
+
+<!-- figure: pr-2-4-p5-box-commute -->
+![Two box plots stacked on a shared number line of commute times in minutes running from 0 to 50, marked every 10. Route A is the upper plot: minimum 12, lower quartile 20, median 22, upper quartile 28, maximum 40. Route B is the lower plot: minimum 8, lower quartile 18, median 30, upper quartile 36, maximum 46. Route B's median is higher and its box and whiskers span a wider range.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJUd28gYm94IHBsb3RzIHN0YWNrZWQgb24gYSBzaGFyZWQgbnVtYmVyIGxpbmUgb2YgY29tbXV0ZSB0aW1lcyBpbiBtaW51dGVzIHJ1bm5pbmcgZnJvbSAwIHRvIDUwLCBtYXJrZWQgZXZlcnkgMTAuIFJvdXRlIEEgaXMgdGhlIHVwcGVyIHBsb3Q6IG1pbmltdW0gMTIsIGxvd2VyIHF1YXJ0aWxlIDIwLCBtZWRpYW4gMjIsIHVwcGVyIHF1YXJ0aWxlIDI4LCBtYXhpbXVtIDQwLiBSb3V0ZSBCIGlzIHRoZSBsb3dlciBwbG90OiBtaW5pbXVtIDgsIGxvd2VyIHF1YXJ0aWxlIDE4LCBtZWRpYW4gMzAsIHVwcGVyIHF1YXJ0aWxlIDM2LCBtYXhpbXVtIDQ2LiBSb3V0ZSBCJ3MgbWVkaWFuIGlzIGhpZ2hlciBhbmQgaXRzIGJveCBhbmQgd2hpc2tlcnMgc3BhbiBhIHdpZGVyIHJhbmdlLiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNTgiIHkxPSIxNiIgeDI9IjU4IiB5Mj0iMjEyIi8+PGxpbmUgeDE9Ijg0LjQiIHkxPSIxNiIgeDI9Ijg0LjQiIHkyPSIyMTIiLz48bGluZSB4MT0iMTEwLjgiIHkxPSIxNiIgeDI9IjExMC44IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjEzNy4yIiB5MT0iMTYiIHgyPSIxMzcuMiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNjMuNiIgeTE9IjE2IiB4Mj0iMTYzLjYiIHkyPSIyMTIiLz48bGluZSB4MT0iMTkwIiB5MT0iMTYiIHgyPSIxOTAiIHkyPSIyMTIiLz48bGluZSB4MT0iMjE2LjQiIHkxPSIxNiIgeDI9IjIxNi40IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI0Mi44IiB5MT0iMTYiIHgyPSIyNDIuOCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNjkuMiIgeTE9IjE2IiB4Mj0iMjY5LjIiIHkyPSIyMTIiLz48bGluZSB4MT0iMjk1LjYiIHkxPSIxNiIgeDI9IjI5NS42IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjMyMiIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PC9nPjxsaW5lIGRhdGEtd2hpc2tlcj0iMGxvIiB4MT0iMTIxLjM2IiB5MT0iNjUiIHgyPSIxNjMuNiIgeTI9IjY1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS13aGlza2VyPSIwaGkiIHgxPSIyMDUuODQiIHkxPSI2NSIgeDI9IjI2OS4yIiB5Mj0iNjUiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMGxvIiB4MT0iMTIxLjM2IiB5MT0iNTIuODciIHgyPSIxMjEuMzYiIHkyPSI3Ny4xMyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIGRhdGEtY2FwPSIwaGkiIHgxPSIyNjkuMiIgeTE9IjUyLjg3IiB4Mj0iMjY5LjIiIHkyPSI3Ny4xMyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxyZWN0IGRhdGEtYm94PSIwIiB4PSIxNjMuNiIgeT0iNDIuOTUiIHdpZHRoPSI0Mi4yNCIgaGVpZ2h0PSI0NC4xIiBmaWxsPSIjNkU5REM4IiBmaWxsLW9wYWNpdHk9IjAuMzUiIHN0cm9rZT0iIzZFOURDOCIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48bGluZSBkYXRhLW1lZGlhbj0iMCIgeDE9IjE3NC4xNiIgeTE9IjQyLjk1IiB4Mj0iMTc0LjE2IiB5Mj0iODcuMDUiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIyIi8+PGxpbmUgZGF0YS13aGlza2VyPSIxbG8iIHgxPSIxMDAuMjQiIHkxPSIxNjMiIHgyPSIxNTMuMDQiIHkyPSIxNjMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLXdoaXNrZXI9IjFoaSIgeDE9IjI0OC4wOCIgeTE9IjE2MyIgeDI9IjMwMC44OCIgeTI9IjE2MyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIGRhdGEtY2FwPSIxbG8iIHgxPSIxMDAuMjQiIHkxPSIxNTAuODciIHgyPSIxMDAuMjQiIHkyPSIxNzUuMTMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMWhpIiB4MT0iMzAwLjg4IiB5MT0iMTUwLjg3IiB4Mj0iMzAwLjg4IiB5Mj0iMTc1LjEzIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PHJlY3QgZGF0YS1ib3g9IjEiIHg9IjE1My4wNCIgeT0iMTQwLjk1IiB3aWR0aD0iOTUuMDQiIGhlaWdodD0iNDQuMSIgZmlsbD0iI0YwQTMzRSIgZmlsbC1vcGFjaXR5PSIwLjM1IiBzdHJva2U9IiNGMEEzM0UiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGxpbmUgZGF0YS1tZWRpYW49IjEiIHgxPSIyMTYuNCIgeTE9IjE0MC45NSIgeDI9IjIxNi40IiB5Mj0iMTg1LjA1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjU4IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNTgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDwvdGV4dD48dGV4dCB4PSI4NC40IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjU8L3RleHQ+PHRleHQgeD0iMTEwLjgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTA8L3RleHQ+PHRleHQgeD0iMTM3LjIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTU8L3RleHQ+PHRleHQgeD0iMTYzLjYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjA8L3RleHQ+PHRleHQgeD0iMTkwIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI1PC90ZXh0Pjx0ZXh0IHg9IjIxNi40IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjMwPC90ZXh0Pjx0ZXh0IHg9IjI0Mi44IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjM1PC90ZXh0Pjx0ZXh0IHg9IjI2OS4yIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjQwPC90ZXh0Pjx0ZXh0IHg9IjI5NS42IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjQ1PC90ZXh0Pjx0ZXh0IHg9IjMyMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41MDwvdGV4dD48dGV4dCBkYXRhLWxhbmU9IjAiIHg9IjUyIiB5PSI2OC41IiB0ZXh0LWFuY2hvcj0iZW5kIj5Sb3V0ZSBBPC90ZXh0Pjx0ZXh0IGRhdGEtbGFuZT0iMSIgeD0iNTIiIHk9IjE2Ni41IiB0ZXh0LWFuY2hvcj0iZW5kIj5Sb3V0ZSBCPC90ZXh0PjwvZz48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjE5MCIgeT0iMjQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+Q29tbXV0ZSB0aW1lIChtaW51dGVzKTwvdGV4dD48L3N2Zz4=)
+
+   - A) Route A, because its range is smaller.
+   - B) Route B.
+   - C) Route A, because its maximum is lower.
+   - D) They are the same, since both have a similar minimum time.
+
+4. Which route has the greater range of commute times?
+
+<!-- figure: pr-2-4-p5-box-commute -->
+![Two box plots stacked on a shared number line of commute times in minutes running from 0 to 50, marked every 10. Route A is the upper plot: minimum 12, lower quartile 20, median 22, upper quartile 28, maximum 40. Route B is the lower plot: minimum 8, lower quartile 18, median 30, upper quartile 36, maximum 46. Route B's median is higher and its box and whiskers span a wider range.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJUd28gYm94IHBsb3RzIHN0YWNrZWQgb24gYSBzaGFyZWQgbnVtYmVyIGxpbmUgb2YgY29tbXV0ZSB0aW1lcyBpbiBtaW51dGVzIHJ1bm5pbmcgZnJvbSAwIHRvIDUwLCBtYXJrZWQgZXZlcnkgMTAuIFJvdXRlIEEgaXMgdGhlIHVwcGVyIHBsb3Q6IG1pbmltdW0gMTIsIGxvd2VyIHF1YXJ0aWxlIDIwLCBtZWRpYW4gMjIsIHVwcGVyIHF1YXJ0aWxlIDI4LCBtYXhpbXVtIDQwLiBSb3V0ZSBCIGlzIHRoZSBsb3dlciBwbG90OiBtaW5pbXVtIDgsIGxvd2VyIHF1YXJ0aWxlIDE4LCBtZWRpYW4gMzAsIHVwcGVyIHF1YXJ0aWxlIDM2LCBtYXhpbXVtIDQ2LiBSb3V0ZSBCJ3MgbWVkaWFuIGlzIGhpZ2hlciBhbmQgaXRzIGJveCBhbmQgd2hpc2tlcnMgc3BhbiBhIHdpZGVyIHJhbmdlLiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNTgiIHkxPSIxNiIgeDI9IjU4IiB5Mj0iMjEyIi8+PGxpbmUgeDE9Ijg0LjQiIHkxPSIxNiIgeDI9Ijg0LjQiIHkyPSIyMTIiLz48bGluZSB4MT0iMTEwLjgiIHkxPSIxNiIgeDI9IjExMC44IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjEzNy4yIiB5MT0iMTYiIHgyPSIxMzcuMiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNjMuNiIgeTE9IjE2IiB4Mj0iMTYzLjYiIHkyPSIyMTIiLz48bGluZSB4MT0iMTkwIiB5MT0iMTYiIHgyPSIxOTAiIHkyPSIyMTIiLz48bGluZSB4MT0iMjE2LjQiIHkxPSIxNiIgeDI9IjIxNi40IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI0Mi44IiB5MT0iMTYiIHgyPSIyNDIuOCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNjkuMiIgeTE9IjE2IiB4Mj0iMjY5LjIiIHkyPSIyMTIiLz48bGluZSB4MT0iMjk1LjYiIHkxPSIxNiIgeDI9IjI5NS42IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjMyMiIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PC9nPjxsaW5lIGRhdGEtd2hpc2tlcj0iMGxvIiB4MT0iMTIxLjM2IiB5MT0iNjUiIHgyPSIxNjMuNiIgeTI9IjY1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS13aGlza2VyPSIwaGkiIHgxPSIyMDUuODQiIHkxPSI2NSIgeDI9IjI2OS4yIiB5Mj0iNjUiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMGxvIiB4MT0iMTIxLjM2IiB5MT0iNTIuODciIHgyPSIxMjEuMzYiIHkyPSI3Ny4xMyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIGRhdGEtY2FwPSIwaGkiIHgxPSIyNjkuMiIgeTE9IjUyLjg3IiB4Mj0iMjY5LjIiIHkyPSI3Ny4xMyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxyZWN0IGRhdGEtYm94PSIwIiB4PSIxNjMuNiIgeT0iNDIuOTUiIHdpZHRoPSI0Mi4yNCIgaGVpZ2h0PSI0NC4xIiBmaWxsPSIjNkU5REM4IiBmaWxsLW9wYWNpdHk9IjAuMzUiIHN0cm9rZT0iIzZFOURDOCIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48bGluZSBkYXRhLW1lZGlhbj0iMCIgeDE9IjE3NC4xNiIgeTE9IjQyLjk1IiB4Mj0iMTc0LjE2IiB5Mj0iODcuMDUiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIyIi8+PGxpbmUgZGF0YS13aGlza2VyPSIxbG8iIHgxPSIxMDAuMjQiIHkxPSIxNjMiIHgyPSIxNTMuMDQiIHkyPSIxNjMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLXdoaXNrZXI9IjFoaSIgeDE9IjI0OC4wOCIgeTE9IjE2MyIgeDI9IjMwMC44OCIgeTI9IjE2MyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIGRhdGEtY2FwPSIxbG8iIHgxPSIxMDAuMjQiIHkxPSIxNTAuODciIHgyPSIxMDAuMjQiIHkyPSIxNzUuMTMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMWhpIiB4MT0iMzAwLjg4IiB5MT0iMTUwLjg3IiB4Mj0iMzAwLjg4IiB5Mj0iMTc1LjEzIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PHJlY3QgZGF0YS1ib3g9IjEiIHg9IjE1My4wNCIgeT0iMTQwLjk1IiB3aWR0aD0iOTUuMDQiIGhlaWdodD0iNDQuMSIgZmlsbD0iI0YwQTMzRSIgZmlsbC1vcGFjaXR5PSIwLjM1IiBzdHJva2U9IiNGMEEzM0UiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGxpbmUgZGF0YS1tZWRpYW49IjEiIHgxPSIyMTYuNCIgeTE9IjE0MC45NSIgeDI9IjIxNi40IiB5Mj0iMTg1LjA1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjU4IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNTgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDwvdGV4dD48dGV4dCB4PSI4NC40IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjU8L3RleHQ+PHRleHQgeD0iMTEwLjgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTA8L3RleHQ+PHRleHQgeD0iMTM3LjIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTU8L3RleHQ+PHRleHQgeD0iMTYzLjYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjA8L3RleHQ+PHRleHQgeD0iMTkwIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI1PC90ZXh0Pjx0ZXh0IHg9IjIxNi40IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjMwPC90ZXh0Pjx0ZXh0IHg9IjI0Mi44IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjM1PC90ZXh0Pjx0ZXh0IHg9IjI2OS4yIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjQwPC90ZXh0Pjx0ZXh0IHg9IjI5NS42IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjQ1PC90ZXh0Pjx0ZXh0IHg9IjMyMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41MDwvdGV4dD48dGV4dCBkYXRhLWxhbmU9IjAiIHg9IjUyIiB5PSI2OC41IiB0ZXh0LWFuY2hvcj0iZW5kIj5Sb3V0ZSBBPC90ZXh0Pjx0ZXh0IGRhdGEtbGFuZT0iMSIgeD0iNTIiIHk9IjE2Ni41IiB0ZXh0LWFuY2hvcj0iZW5kIj5Sb3V0ZSBCPC90ZXh0PjwvZz48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjE5MCIgeT0iMjQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+Q29tbXV0ZSB0aW1lIChtaW51dGVzKTwvdGV4dD48L3N2Zz4=)
+
+   - A) Route B.
+   - B) Route A, because its median is lower.
+   - C) Route A, because its box looks wider.
+   - D) They have the same range, since both cover a similar span on the number line.
+
+**Proficient Level** (these require an extra step)
+
+5. A data set's mean is $72$ and its median is $80$. What does this indicate about the shape of the distribution?
+   - A) The distribution is skewed right, since the mean is pulled above the median.
+   - B) The distribution is symmetric, since mean and median are both measures of center.
+   - C) There is not enough information, since the range is also needed to determine skew.
+   - D) The distribution is skewed left, since the mean is pulled below the median.
+
+6. Two classes have the same mean test score of $78$. Class X has a range of $10$, and Class Y has a range of $40$. Which class's scores are more consistent?
+   - A) Class Y, because a larger range shows a wider variety of strong scores.
+   - B) Both classes are equally consistent, since they share the same mean.
+   - C) Class X.
+   - D) There is no way to tell without knowing the median.
+
+7. Two data sets both have a median of $50$. Does this mean their means are also equal?
+   - A) Yes, equal medians always produce equal means.
+   - B) Not necessarily; equal medians do not guarantee equal means.
+   - C) No one can say, since medians and means have no relationship to each other.
+   - D) Yes, because the median is calculated directly from the mean.
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. A data set of nine typical values plus one extreme outlier has a mean of $65$ and a median of $40$. Which measure better represents the typical value in this set?
+   - A) The median, $40$, because the mean is pulled upward by the outlier.
+   - B) The mean, $65$, because the mean always uses every value in the data set.
+   - C) Both measures are equally representative, since they are both valid measures of center.
+   - D) The mean, $65$, because it is always the more precise measure of center.
+
+9. Based on the box plots, which class's scores show a wider middle $50$ percent, its interquartile range?
+
+<!-- figure: pr-2-4-p5-box-scores -->
+![Two box plots stacked on a shared number line of test scores running from 40 to 90, marked every 10. Class 1 is the upper plot: minimum 50, lower quartile 60, median 68, upper quartile 76, maximum 88. Class 2 is the lower plot: minimum 55, lower quartile 65, median 68, upper quartile 71, maximum 80. Both classes share the same median of 68, but Class 1's box and whiskers span a wider range.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJUd28gYm94IHBsb3RzIHN0YWNrZWQgb24gYSBzaGFyZWQgbnVtYmVyIGxpbmUgb2YgdGVzdCBzY29yZXMgcnVubmluZyBmcm9tIDQwIHRvIDkwLCBtYXJrZWQgZXZlcnkgMTAuIENsYXNzIDEgaXMgdGhlIHVwcGVyIHBsb3Q6IG1pbmltdW0gNTAsIGxvd2VyIHF1YXJ0aWxlIDYwLCBtZWRpYW4gNjgsIHVwcGVyIHF1YXJ0aWxlIDc2LCBtYXhpbXVtIDg4LiBDbGFzcyAyIGlzIHRoZSBsb3dlciBwbG90OiBtaW5pbXVtIDU1LCBsb3dlciBxdWFydGlsZSA2NSwgbWVkaWFuIDY4LCB1cHBlciBxdWFydGlsZSA3MSwgbWF4aW11bSA4MC4gQm90aCBjbGFzc2VzIHNoYXJlIHRoZSBzYW1lIG1lZGlhbiBvZiA2OCwgYnV0IENsYXNzIDEncyBib3ggYW5kIHdoaXNrZXJzIHNwYW4gYSB3aWRlciByYW5nZS4iPjxyZWN0IHdpZHRoPSIzNDAiIGhlaWdodD0iMjUwIiBmaWxsPSIjRkZGRkZGIiByeD0iMTAiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgeDE9IjU4IiB5MT0iMTYiIHgyPSI1OCIgeTI9IjIxMiIvPjxsaW5lIHgxPSI4NC40IiB5MT0iMTYiIHgyPSI4NC40IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjExMC44IiB5MT0iMTYiIHgyPSIxMTAuOCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxMzcuMiIgeTE9IjE2IiB4Mj0iMTM3LjIiIHkyPSIyMTIiLz48bGluZSB4MT0iMTYzLjYiIHkxPSIxNiIgeDI9IjE2My42IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjE5MCIgeTE9IjE2IiB4Mj0iMTkwIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjIxNi40IiB5MT0iMTYiIHgyPSIyMTYuNCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNDIuOCIgeTE9IjE2IiB4Mj0iMjQyLjgiIHkyPSIyMTIiLz48bGluZSB4MT0iMjY5LjIiIHkxPSIxNiIgeDI9IjI2OS4yIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI5NS42IiB5MT0iMTYiIHgyPSIyOTUuNiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIzMjIiIHkxPSIxNiIgeDI9IjMyMiIgeTI9IjIxMiIvPjwvZz48bGluZSBkYXRhLXdoaXNrZXI9IjBsbyIgeDE9IjExMC44IiB5MT0iNjUiIHgyPSIxNjMuNiIgeTI9IjY1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS13aGlza2VyPSIwaGkiIHgxPSIyNDguMDgiIHkxPSI2NSIgeDI9IjMxMS40NCIgeTI9IjY1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBsbyIgeDE9IjExMC44IiB5MT0iNTIuODciIHgyPSIxMTAuOCIgeTI9Ijc3LjEzIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjBoaSIgeDE9IjMxMS40NCIgeTE9IjUyLjg3IiB4Mj0iMzExLjQ0IiB5Mj0iNzcuMTMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48cmVjdCBkYXRhLWJveD0iMCIgeD0iMTYzLjYiIHk9IjQyLjk1IiB3aWR0aD0iODQuNDgiIGhlaWdodD0iNDQuMSIgZmlsbD0iIzZFOURDOCIgZmlsbC1vcGFjaXR5PSIwLjM1IiBzdHJva2U9IiM2RTlEQzgiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGxpbmUgZGF0YS1tZWRpYW49IjAiIHgxPSIyMDUuODQiIHkxPSI0Mi45NSIgeDI9IjIwNS44NCIgeTI9Ijg3LjA1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIGRhdGEtd2hpc2tlcj0iMWxvIiB4MT0iMTM3LjIiIHkxPSIxNjMiIHgyPSIxOTAiIHkyPSIxNjMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLXdoaXNrZXI9IjFoaSIgeDE9IjIyMS42OCIgeTE9IjE2MyIgeDI9IjI2OS4yIiB5Mj0iMTYzIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS1jYXA9IjFsbyIgeDE9IjEzNy4yIiB5MT0iMTUwLjg3IiB4Mj0iMTM3LjIiIHkyPSIxNzUuMTMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMWhpIiB4MT0iMjY5LjIiIHkxPSIxNTAuODciIHgyPSIyNjkuMiIgeTI9IjE3NS4xMyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxyZWN0IGRhdGEtYm94PSIxIiB4PSIxOTAiIHk9IjE0MC45NSIgd2lkdGg9IjMxLjY4IiBoZWlnaHQ9IjQ0LjEiIGZpbGw9IiNGMEEzM0UiIGZpbGwtb3BhY2l0eT0iMC4zNSIgc3Ryb2tlPSIjRjBBMzNFIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIGRhdGEtbWVkaWFuPSIxIiB4MT0iMjA1Ljg0IiB5MT0iMTQwLjk1IiB4Mj0iMjA1Ljg0IiB5Mj0iMTg1LjA1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjU4IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNTgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NDA8L3RleHQ+PHRleHQgeD0iODQuNCIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj40NTwvdGV4dD48dGV4dCB4PSIxMTAuOCIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41MDwvdGV4dD48dGV4dCB4PSIxMzcuMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41NTwvdGV4dD48dGV4dCB4PSIxNjMuNiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj42MDwvdGV4dD48dGV4dCB4PSIxOTAiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NjU8L3RleHQ+PHRleHQgeD0iMjE2LjQiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzA8L3RleHQ+PHRleHQgeD0iMjQyLjgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NzU8L3RleHQ+PHRleHQgeD0iMjY5LjIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ODA8L3RleHQ+PHRleHQgeD0iMjk1LjYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ODU8L3RleHQ+PHRleHQgeD0iMzIyIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjkwPC90ZXh0Pjx0ZXh0IGRhdGEtbGFuZT0iMCIgeD0iNTIiIHk9IjY4LjUiIHRleHQtYW5jaG9yPSJlbmQiPkNsYXNzIDE8L3RleHQ+PHRleHQgZGF0YS1sYW5lPSIxIiB4PSI1MiIgeT0iMTY2LjUiIHRleHQtYW5jaG9yPSJlbmQiPkNsYXNzIDI8L3RleHQ+PC9nPjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTkwIiB5PSIyNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5UZXN0IHNjb3JlPC90ZXh0Pjwvc3ZnPg==)
+
+   - A) Class 2, because its whiskers extend further in one direction.
+   - B) They have the same interquartile range, since both share the same median.
+   - C) Class 2, because its overall range is smaller, so its middle $50$ percent must also be smaller.
+   - D) Class 1.
+
+10. For Route A's box plot, the median sits closer to the lower quartile than to the upper quartile. What does this suggest about the mean compared to the median?
+
+<!-- figure: pr-2-4-p5-box-commute -->
+![Two box plots stacked on a shared number line of commute times in minutes running from 0 to 50, marked every 10. Route A is the upper plot: minimum 12, lower quartile 20, median 22, upper quartile 28, maximum 40. Route B is the lower plot: minimum 8, lower quartile 18, median 30, upper quartile 36, maximum 46. Route B's median is higher and its box and whiskers span a wider range.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJUd28gYm94IHBsb3RzIHN0YWNrZWQgb24gYSBzaGFyZWQgbnVtYmVyIGxpbmUgb2YgY29tbXV0ZSB0aW1lcyBpbiBtaW51dGVzIHJ1bm5pbmcgZnJvbSAwIHRvIDUwLCBtYXJrZWQgZXZlcnkgMTAuIFJvdXRlIEEgaXMgdGhlIHVwcGVyIHBsb3Q6IG1pbmltdW0gMTIsIGxvd2VyIHF1YXJ0aWxlIDIwLCBtZWRpYW4gMjIsIHVwcGVyIHF1YXJ0aWxlIDI4LCBtYXhpbXVtIDQwLiBSb3V0ZSBCIGlzIHRoZSBsb3dlciBwbG90OiBtaW5pbXVtIDgsIGxvd2VyIHF1YXJ0aWxlIDE4LCBtZWRpYW4gMzAsIHVwcGVyIHF1YXJ0aWxlIDM2LCBtYXhpbXVtIDQ2LiBSb3V0ZSBCJ3MgbWVkaWFuIGlzIGhpZ2hlciBhbmQgaXRzIGJveCBhbmQgd2hpc2tlcnMgc3BhbiBhIHdpZGVyIHJhbmdlLiI+PHJlY3Qgd2lkdGg9IjM0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSB4MT0iNTgiIHkxPSIxNiIgeDI9IjU4IiB5Mj0iMjEyIi8+PGxpbmUgeDE9Ijg0LjQiIHkxPSIxNiIgeDI9Ijg0LjQiIHkyPSIyMTIiLz48bGluZSB4MT0iMTEwLjgiIHkxPSIxNiIgeDI9IjExMC44IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjEzNy4yIiB5MT0iMTYiIHgyPSIxMzcuMiIgeTI9IjIxMiIvPjxsaW5lIHgxPSIxNjMuNiIgeTE9IjE2IiB4Mj0iMTYzLjYiIHkyPSIyMTIiLz48bGluZSB4MT0iMTkwIiB5MT0iMTYiIHgyPSIxOTAiIHkyPSIyMTIiLz48bGluZSB4MT0iMjE2LjQiIHkxPSIxNiIgeDI9IjIxNi40IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI0Mi44IiB5MT0iMTYiIHgyPSIyNDIuOCIgeTI9IjIxMiIvPjxsaW5lIHgxPSIyNjkuMiIgeTE9IjE2IiB4Mj0iMjY5LjIiIHkyPSIyMTIiLz48bGluZSB4MT0iMjk1LjYiIHkxPSIxNiIgeDI9IjI5NS42IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjMyMiIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PC9nPjxsaW5lIGRhdGEtd2hpc2tlcj0iMGxvIiB4MT0iMTIxLjM2IiB5MT0iNjUiIHgyPSIxNjMuNiIgeTI9IjY1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgZGF0YS13aGlza2VyPSIwaGkiIHgxPSIyMDUuODQiIHkxPSI2NSIgeDI9IjI2OS4yIiB5Mj0iNjUiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMGxvIiB4MT0iMTIxLjM2IiB5MT0iNTIuODciIHgyPSIxMjEuMzYiIHkyPSI3Ny4xMyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIGRhdGEtY2FwPSIwaGkiIHgxPSIyNjkuMiIgeTE9IjUyLjg3IiB4Mj0iMjY5LjIiIHkyPSI3Ny4xMyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxyZWN0IGRhdGEtYm94PSIwIiB4PSIxNjMuNiIgeT0iNDIuOTUiIHdpZHRoPSI0Mi4yNCIgaGVpZ2h0PSI0NC4xIiBmaWxsPSIjNkU5REM4IiBmaWxsLW9wYWNpdHk9IjAuMzUiIHN0cm9rZT0iIzZFOURDOCIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48bGluZSBkYXRhLW1lZGlhbj0iMCIgeDE9IjE3NC4xNiIgeTE9IjQyLjk1IiB4Mj0iMTc0LjE2IiB5Mj0iODcuMDUiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIyIi8+PGxpbmUgZGF0YS13aGlza2VyPSIxbG8iIHgxPSIxMDAuMjQiIHkxPSIxNjMiIHgyPSIxNTMuMDQiIHkyPSIxNjMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLXdoaXNrZXI9IjFoaSIgeDE9IjI0OC4wOCIgeTE9IjE2MyIgeDI9IjMwMC44OCIgeTI9IjE2MyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIGRhdGEtY2FwPSIxbG8iIHgxPSIxMDAuMjQiIHkxPSIxNTAuODciIHgyPSIxMDAuMjQiIHkyPSIxNzUuMTMiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz48bGluZSBkYXRhLWNhcD0iMWhpIiB4MT0iMzAwLjg4IiB5MT0iMTUwLjg3IiB4Mj0iMzAwLjg4IiB5Mj0iMTc1LjEzIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PHJlY3QgZGF0YS1ib3g9IjEiIHg9IjE1My4wNCIgeT0iMTQwLjk1IiB3aWR0aD0iOTUuMDQiIGhlaWdodD0iNDQuMSIgZmlsbD0iI0YwQTMzRSIgZmlsbC1vcGFjaXR5PSIwLjM1IiBzdHJva2U9IiNGMEEzM0UiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGxpbmUgZGF0YS1tZWRpYW49IjEiIHgxPSIyMTYuNCIgeTE9IjE0MC45NSIgeDI9IjIxNi40IiB5Mj0iMTg1LjA1IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI1OCIgeTE9IjIxMiIgeDI9IjU4IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iNTgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDwvdGV4dD48dGV4dCB4PSI4NC40IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjU8L3RleHQ+PHRleHQgeD0iMTEwLjgiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTA8L3RleHQ+PHRleHQgeD0iMTM3LjIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTU8L3RleHQ+PHRleHQgeD0iMTYzLjYiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjA8L3RleHQ+PHRleHQgeD0iMTkwIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI1PC90ZXh0Pjx0ZXh0IHg9IjIxNi40IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjMwPC90ZXh0Pjx0ZXh0IHg9IjI0Mi44IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjM1PC90ZXh0Pjx0ZXh0IHg9IjI2OS4yIiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjQwPC90ZXh0Pjx0ZXh0IHg9IjI5NS42IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjQ1PC90ZXh0Pjx0ZXh0IHg9IjMyMiIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41MDwvdGV4dD48dGV4dCBkYXRhLWxhbmU9IjAiIHg9IjUyIiB5PSI2OC41IiB0ZXh0LWFuY2hvcj0iZW5kIj5Sb3V0ZSBBPC90ZXh0Pjx0ZXh0IGRhdGEtbGFuZT0iMSIgeD0iNTIiIHk9IjE2Ni41IiB0ZXh0LWFuY2hvcj0iZW5kIj5Sb3V0ZSBCPC90ZXh0PjwvZz48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjE5MCIgeT0iMjQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+Q29tbXV0ZSB0aW1lIChtaW51dGVzKTwvdGV4dD48L3N2Zz4=)
+
+    - A) The mean is likely less than the median, since the distribution is skewed left.
+    - B) The mean must equal the median, since both are measures of center.
+    - C) The mean is likely greater than the median, since the distribution is skewed right.
+    - D) There is no relationship between quartile position and the mean.

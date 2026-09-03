@@ -1,0 +1,28 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [
+    0,
+    50
+  ],
+  "xLabel": "Commute time (minutes)",
+  "boxes": [
+    {
+      "label": "Route A",
+      "min": 12,
+      "q1": 20,
+      "median": 22,
+      "q3": 28,
+      "max": 40
+    },
+    {
+      "label": "Route B",
+      "min": 8,
+      "q1": 18,
+      "median": 30,
+      "q3": 36,
+      "max": 46,
+      "color": "accent"
+    }
+  ],
+  "alt": "Two box plots stacked on a shared number line of commute times in minutes running from 0 to 50, marked every 10. Route A is the upper plot: minimum 12, lower quartile 20, median 22, upper quartile 28, maximum 40. Route B is the lower plot: minimum 8, lower quartile 18, median 30, upper quartile 36, maximum 46. Route B's median is higher and its box and whiskers span a wider range."
+}

@@ -780,3 +780,353 @@ Step 4: Check. $\frac{45 + 19}{4} = \frac{64}{4} = 16$, which satisfies "at leas
   "D": "missing_value_assumed_equal_to_mean"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. Four numbers have a mean of $15$. Three of them are $10, 14, 20$. What is the fourth number?**
+
+Step 1: Find the total all four numbers must sum to.
+- $15 \times 4 = 60$
+
+Step 2: Add the three known numbers.
+- $10 + 14 + 20 = 44$
+
+Step 3: Subtract to find the fourth number.
+- $60 - 44 = 16$
+
+**Answer: D** ($16$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: total_from_wrong_count (multiplies the mean by 3 instead of 4, getting a required total of 45, and reports $45 - 44 = 1$)",
+  "B": "Student makes misconception: answers_intermediate_value (reports the required total, 60, instead of subtracting the known sum)",
+  "C": "Student makes misconception: answers_intermediate_value (reports the known sum, 44, instead of finishing the subtraction)",
+  "D": "Correct: finds the required total, 60, subtracts the known sum, 44, and gets a fourth number of 16"
+},
+"misconception_tag": {
+  "A": "total_from_wrong_count",
+  "B": "answers_intermediate_value",
+  "C": "answers_intermediate_value"
+}
+```
+
+---
+
+**2. A data set has a range of $15$. The maximum value is $42$. What is the minimum value?**
+
+Step 1: The range is the maximum minus the minimum.
+- $\text{range} = \text{maximum} - \text{minimum}$
+
+Step 2: Solve for the minimum.
+- $\text{minimum} = 42 - 15 = 27$
+
+**Answer: B** ($27$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: range_added_to_wrong_extreme (adds the range to the maximum instead of subtracting, giving 57)",
+  "B": "Correct: subtracts the range, 15, from the maximum, 42, for a minimum of 27",
+  "C": "Student makes misconception: answers_intermediate_value (reports the given range, 15, as though it were the minimum)",
+  "D": "Student makes misconception: range_from_known_values_only (reports the given maximum, 42, as though it were also the minimum)"
+},
+"misconception_tag": {
+  "A": "range_added_to_wrong_extreme",
+  "C": "answers_intermediate_value",
+  "D": "range_from_known_values_only"
+}
+```
+
+---
+
+**3. Five numbers have a mean of $12$. Four of them are $6, 9, 13, 17$. What is the fifth number?**
+
+Step 1: Find the total all five numbers must sum to.
+- $12 \times 5 = 60$
+
+Step 2: Add the four known numbers.
+- $6 + 9 + 13 + 17 = 45$
+
+Step 3: Subtract to find the fifth number.
+- $60 - 45 = 15$
+
+**Answer: C** ($15$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: total_from_wrong_count (multiplies the mean by 4 instead of 5, getting a required total of 48, and reports $48 - 45 = 3$)",
+  "B": "Student makes misconception: answers_intermediate_value (reports the required total, 60, instead of subtracting the known sum)",
+  "C": "Correct: finds the required total, 60, subtracts the known sum, 45, and gets a fifth number of 15",
+  "D": "Student makes misconception: answers_intermediate_value (reports the known sum, 45, instead of finishing the subtraction)"
+},
+"misconception_tag": {
+  "A": "total_from_wrong_count",
+  "B": "answers_intermediate_value",
+  "D": "answers_intermediate_value"
+}
+```
+
+---
+
+**4. A data set has a range of $19$. The minimum value is $11$. What is the maximum value?**
+
+Step 1: The range is the maximum minus the minimum.
+- $\text{range} = \text{maximum} - \text{minimum}$
+
+Step 2: Solve for the maximum.
+- $\text{maximum} = 19 + 11 = 30$
+
+**Answer: A** ($30$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: adds the range, 19, to the minimum, 11, for a maximum of 30",
+  "B": "Student makes misconception: range_added_to_wrong_extreme (subtracts the minimum from the range, 19 minus 11, instead of adding)",
+  "C": "Student makes misconception: answers_intermediate_value (reports the given range, 19, as though it were the maximum)",
+  "D": "Student makes misconception: range_from_known_values_only (reports the given minimum, 11, as though it were also the maximum)"
+},
+"misconception_tag": {
+  "B": "range_added_to_wrong_extreme",
+  "C": "answers_intermediate_value",
+  "D": "range_from_known_values_only"
+}
+```
+
+---
+
+**5. Six numbers have a mean of $20$. Five of them are $14, 18, 22, 24, 26$. What is the sixth number?**
+
+Step 1: Find the total all six numbers must sum to.
+- $20 \times 6 = 120$
+
+Step 2: Add the five known numbers.
+- $14 + 18 + 22 + 24 + 26 = 104$
+
+Step 3: Subtract to find the sixth number.
+- $120 - 104 = 16$
+
+**Answer: D** ($16$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: total_from_wrong_count (multiplies the mean by 5 instead of 6, getting a required total of 100, and reports $100 - 104 = -4$)",
+  "B": "Student makes misconception: answers_intermediate_value (reports the required total, 120, instead of subtracting the known sum)",
+  "C": "Student makes misconception: answers_intermediate_value (reports the known sum, 104, instead of finishing the subtraction)",
+  "D": "Correct: finds the required total, 120, subtracts the known sum, 104, and gets a sixth number of 16"
+},
+"misconception_tag": {
+  "A": "total_from_wrong_count",
+  "B": "answers_intermediate_value",
+  "C": "answers_intermediate_value"
+}
+```
+
+---
+
+**6. A data set has values $12, 18, 25$, plus one unknown value. The range of all four values is $30$. If the unknown value is greater than all three known values, what is it?**
+
+Step 1: Since the unknown value is the greatest, it becomes the new maximum, and the known minimum, $12$, stays the minimum.
+
+Step 2: The range is the maximum minus the minimum.
+- $\text{unknown} - 12 = 30$
+
+Step 3: Solve.
+- $\text{unknown} = 30 + 12 = 42$
+
+**Answer: B** ($42$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: range_from_known_values_only (computes the range from the three known values alone, 25 minus 12, and reports the known maximum, 25, instead of solving for the unknown)",
+  "B": "Correct: since the unknown value is the new maximum, adds the range, 30, to the known minimum, 12, for 42",
+  "C": "Student makes misconception: range_added_to_wrong_extreme (adds the range to the known maximum, 25, instead of the minimum, giving 55)",
+  "D": "Student makes misconception: answers_intermediate_value (reports the given range, 30, as though it were the unknown value)"
+},
+"misconception_tag": {
+  "A": "range_from_known_values_only",
+  "C": "range_added_to_wrong_extreme",
+  "D": "answers_intermediate_value"
+}
+```
+
+---
+
+**7. The mean of seven numbers is $18$. Six of them are $10, 14, 16, 20, 22, 24$. What is the seventh number?**
+
+Step 1: Find the total all seven numbers must sum to.
+- $18 \times 7 = 126$
+
+Step 2: Add the six known numbers.
+- $10 + 14 + 16 + 20 + 22 + 24 = 106$
+
+Step 3: Subtract to find the seventh number.
+- $126 - 106 = 20$
+
+**Answer: C** ($20$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: total_from_wrong_count (multiplies the mean by 6 instead of 7, getting a required total of 108, and reports $108 - 106 = 2$)",
+  "B": "Student makes misconception: answers_intermediate_value (reports the required total, 126, instead of subtracting the known sum)",
+  "C": "Correct: finds the required total, 126, subtracts the known sum, 106, and gets a seventh number of 20",
+  "D": "Student makes misconception: answers_intermediate_value (reports the known sum, 106, instead of finishing the subtraction)"
+},
+"misconception_tag": {
+  "A": "total_from_wrong_count",
+  "B": "answers_intermediate_value",
+  "D": "answers_intermediate_value"
+}
+```
+
+---
+
+**8. A data set has six values with a range of $34$ and a minimum of $8$. Five of the six values are $8, 15, 20, 27, 33$. What is the sixth value?**
+
+Step 1: The known maximum among the five given values is $33$, but the range requires a maximum of $8 + 34 = 42$, which none of the five known values reach.
+
+Step 2: So the sixth value must be the new maximum.
+- $42$
+
+**Answer: A** ($42$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: the range requires a maximum of $8 + 34 = 42$, which no known value reaches, so the sixth value is 42",
+  "B": "Student makes misconception: range_from_known_values_only (computes the range from the five known values alone, 33 minus 8, instead of recognizing the sixth value must be a new extreme)",
+  "C": "Student makes misconception: range_added_to_wrong_extreme (adds the range to the known maximum, 33, instead of the minimum, giving 67)",
+  "D": "Student makes misconception: answers_intermediate_value (reports the given range, 34, as though it were the sixth value)"
+},
+"misconception_tag": {
+  "B": "range_from_known_values_only",
+  "C": "range_added_to_wrong_extreme",
+  "D": "answers_intermediate_value"
+}
+```
+
+---
+
+**9. Eight numbers have a mean of $25$. Seven of them are $18, 20, 22, 24, 28, 30, 32$. What is the eighth number?**
+
+Step 1: Find the total all eight numbers must sum to.
+- $25 \times 8 = 200$
+
+Step 2: Add the seven known numbers.
+- $18 + 20 + 22 + 24 + 28 + 30 + 32 = 174$
+
+Step 3: Subtract to find the eighth number.
+- $200 - 174 = 26$
+
+**Answer: D** ($26$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: total_from_wrong_count (multiplies the mean by 7 instead of 8, getting a required total of 175, and reports $175 - 174 = 1$)",
+  "B": "Student makes misconception: answers_intermediate_value (reports the required total, 200, instead of subtracting the known sum)",
+  "C": "Student makes misconception: answers_intermediate_value (reports the known sum, 174, instead of finishing the subtraction)",
+  "D": "Correct: finds the required total, 200, subtracts the known sum, 174, and gets an eighth number of 26"
+},
+"misconception_tag": {
+  "A": "total_from_wrong_count",
+  "B": "answers_intermediate_value",
+  "C": "answers_intermediate_value"
+}
+```
+
+---
+
+**10. A data set's range is $27$. The maximum value is $50$. After a new value of $19$ is added to the set, does the range change, and if so, to what?**
+
+Step 1: Find the current minimum.
+- $50 - 27 = 23$
+
+Step 2: Compare the new value, $19$, to the current minimum, $23$. Since $19 < 23$, the new value becomes the new minimum.
+
+Step 3: Recompute the range with the new minimum.
+- $50 - 19 = 31$
+
+**Answer: B** (yes, the range increases to $31$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: range_from_known_values_only (assumes adding one value never changes the range, without checking whether it is a new extreme)",
+  "B": "Correct: the new value, 19, is below the current minimum of 23, so it becomes the new minimum, and the range grows to $50 - 19 = 31$",
+  "C": "Student makes misconception: range_added_to_wrong_extreme (adds the new value to the maximum, 50 plus 19, instead of subtracting it as the new minimum)",
+  "D": "Student makes misconception: answers_intermediate_value (reports the newly found minimum, 23, itself as though it were the new range)"
+},
+"misconception_tag": {
+  "A": "range_from_known_values_only",
+  "C": "range_added_to_wrong_extreme",
+  "D": "answers_intermediate_value"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. Four numbers have a mean of $15$. Three of them are $10, 14, 20$. What is the fourth number?
+   - A) $1$
+   - B) $60$
+   - C) $44$
+   - D) $16$
+
+2. A data set has a range of $15$. The maximum value is $42$. What is the minimum value?
+   - A) $57$
+   - B) $27$
+   - C) $15$
+   - D) $42$
+
+3. Five numbers have a mean of $12$. Four of them are $6, 9, 13, 17$. What is the fifth number?
+   - A) $3$
+   - B) $60$
+   - C) $15$
+   - D) $45$
+
+4. A data set has a range of $19$. The minimum value is $11$. What is the maximum value?
+   - A) $30$
+   - B) $8$
+   - C) $19$
+   - D) $11$
+
+**Proficient Level** (these require an extra step)
+
+5. Six numbers have a mean of $20$. Five of them are $14, 18, 22, 24, 26$. What is the sixth number?
+   - A) $-4$
+   - B) $120$
+   - C) $104$
+   - D) $16$
+
+6. A data set has values $12, 18, 25$, plus one unknown value. The range of all four values is $30$. If the unknown value is greater than all three known values, what is it?
+   - A) $25$
+   - B) $42$
+   - C) $55$
+   - D) $30$
+
+7. The mean of seven numbers is $18$. Six of them are $10, 14, 16, 20, 22, 24$. What is the seventh number?
+   - A) $2$
+   - B) $126$
+   - C) $20$
+   - D) $106$
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. A data set has six values with a range of $34$ and a minimum of $8$. Five of the six values are $8, 15, 20, 27, 33$. What is the sixth value?
+   - A) $42$
+   - B) $25$
+   - C) $67$
+   - D) $34$
+
+9. Eight numbers have a mean of $25$. Seven of them are $18, 20, 22, 24, 28, 30, 32$. What is the eighth number?
+   - A) $1$
+   - B) $200$
+   - C) $174$
+   - D) $26$
+
+10. A data set's range is $27$. The maximum value is $50$. After a new value of $19$ is added to the set, does the range change, and if so, to what?
+    - A) No, the range stays $27$, since only one value was added.
+    - B) Yes, the range increases to $31$.
+    - C) Yes, the range increases to $69$.
+    - D) Yes, the range decreases to $23$.

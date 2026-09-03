@@ -685,3 +685,336 @@ Step 3: Subtract from $1$.
   "D": "total_not_reduced_between_draws"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. A coin is flipped and a six-sided die is rolled. What is the probability of getting heads AND rolling a $4$?**
+
+Step 1: Find each stage's probability. Heads: $\frac{1}{2}$. Rolling a $4$: $\frac{1}{6}$.
+
+Step 2: Multiply, since the two events are independent.
+- $\frac{1}{2} \times \frac{1}{6} = \frac{1}{12}$
+
+**Answer: B** ($\frac{1}{12}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: adds_probabilities_instead_of_multiplying (adds 1/2 and 1/6 instead of multiplying, getting 2/3)",
+  "B": "Correct: multiplies the two independent probabilities, 1/2 and 1/6, for 1/12",
+  "C": "Student makes misconception: numerators_added_over_product (adds the numerators, 1 plus 1, over the product of the denominators, 2 times 6, getting 2/12)",
+  "D": "Student makes misconception: outcome_total_miscounted (miscounts the die as having 4 faces instead of 6)"
+},
+"misconception_tag": {
+  "A": "adds_probabilities_instead_of_multiplying",
+  "C": "numerators_added_over_product",
+  "D": "outcome_total_miscounted"
+}
+```
+
+---
+
+**2. A bag has $4$ red and $6$ blue marbles. A marble is drawn, replaced, and a second marble is drawn. What is the probability both are red?**
+
+Step 1: Since the marble is replaced, each draw has the same probability, $\frac{4}{10}$.
+
+Step 2: Multiply the two draws.
+- $\frac{4}{10} \times \frac{4}{10} = \frac{16}{100} = \frac{4}{25}$
+
+**Answer: D** ($\frac{4}{25}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: replacement_status_wrong (reduces the count on the second draw to 3/9, treating it as without replacement, even though the marble was replaced)",
+  "B": "Student makes misconception: adds_probabilities_instead_of_multiplying (adds 4/10 and 4/10 instead of multiplying, getting 4/5)",
+  "C": "Student makes misconception: numerators_added_over_product (adds the numerators, 4 plus 4, over the product of the denominators, 10 times 10, getting 8/100)",
+  "D": "Correct: multiplies the two independent draws, 4/10 each, for 16/100 which reduces to 4/25"
+},
+"misconception_tag": {
+  "A": "replacement_status_wrong",
+  "B": "adds_probabilities_instead_of_multiplying",
+  "C": "numerators_added_over_product"
+}
+```
+
+---
+
+**3. A spinner divided into $5$ equal sections is spun twice. What is the probability of landing on section $3$ both times?**
+
+Step 1: Each spin has probability $\frac{1}{5}$ of landing on section $3$, and the spins are independent.
+
+Step 2: Multiply.
+- $\frac{1}{5} \times \frac{1}{5} = \frac{1}{25}$
+
+**Answer: C** ($\frac{1}{25}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: adds_probabilities_instead_of_multiplying (adds 1/5 and 1/5 instead of multiplying, getting 2/5)",
+  "B": "Student makes misconception: numerators_added_over_product (adds the numerators, 1 plus 1, over the product of the denominators, 5 times 5, getting 2/25)",
+  "C": "Correct: multiplies the two independent spins, 1/5 each, for 1/25",
+  "D": "Student makes misconception: outcome_total_miscounted (miscounts the spinner as having 4 sections instead of 5)"
+},
+"misconception_tag": {
+  "A": "adds_probabilities_instead_of_multiplying",
+  "B": "numerators_added_over_product",
+  "D": "outcome_total_miscounted"
+}
+```
+
+---
+
+**4. A jar has $3$ yellow and $7$ green candies. One candy is drawn, eaten, and a second candy is drawn from the jar. What is the probability both are yellow?**
+
+Step 1: The first draw removes a candy, so the second draw comes from a smaller jar without replacement. First draw: $\frac{3}{10}$.
+
+Step 2: Second draw, one yellow and one candy gone: $\frac{2}{9}$.
+
+Step 3: Multiply.
+- $\frac{3}{10} \times \frac{2}{9} = \frac{6}{90} = \frac{1}{15}$
+
+**Answer: A** ($\frac{1}{15}$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: multiplies 3/10 by 2/9, since the candy is eaten and not replaced, for 6/90 which reduces to 1/15",
+  "B": "Student makes misconception: replacement_status_wrong (uses 3/10 for both draws, treating the eaten candy as though it were replaced)",
+  "C": "Student makes misconception: total_not_reduced_between_draws (reduces the yellow count to 2 on the second draw but keeps the total at 10 instead of 9)",
+  "D": "Student makes misconception: adds_probabilities_instead_of_multiplying (adds 3/10 and 2/9 over a common denominator instead of multiplying)"
+},
+"misconception_tag": {
+  "B": "replacement_status_wrong",
+  "C": "total_not_reduced_between_draws",
+  "D": "adds_probabilities_instead_of_multiplying"
+}
+```
+
+---
+
+**5. A box has $2$ black and $8$ white balls. Three balls are drawn one at a time, without replacement. What is the probability all three are white?**
+
+Step 1: Multiply the three stages, reducing both the white count and the total each time.
+- $\frac{8}{10} \times \frac{7}{9} \times \frac{6}{8}$
+
+Step 2: Compute.
+- $\frac{336}{720} = \frac{7}{15}$
+
+**Answer: D** ($\frac{7}{15}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: sequence_stopped_early (multiplies only the first two stages, 8/10 times 7/9, and stops before the third)",
+  "B": "Student makes misconception: replacement_status_wrong (uses 8/10 for all three draws, treating them as with replacement)",
+  "C": "Student makes misconception: total_not_reduced_between_draws (reduces the white count to 8, 7 and 6 but keeps the total at 10 for all three stages)",
+  "D": "Correct: multiplies 8/10, 7/9 and 6/8, reducing both counts each draw, for 336/720 which reduces to 7/15"
+},
+"misconception_tag": {
+  "A": "sequence_stopped_early",
+  "B": "replacement_status_wrong",
+  "C": "total_not_reduced_between_draws"
+}
+```
+
+---
+
+**6. A committee draws $2$ names without replacement from a hat containing $5$ men's names and $5$ women's names. What is the probability both names drawn are women's?**
+
+Step 1: First draw: $\frac{5}{10}$.
+
+Step 2: Second draw, one woman's name gone: $\frac{4}{9}$.
+
+Step 3: Multiply.
+- $\frac{5}{10} \times \frac{4}{9} = \frac{20}{90} = \frac{2}{9}$
+
+**Answer: B** ($\frac{2}{9}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: replacement_status_wrong (uses 5/10 for both draws, treating the name as though it were put back in the hat)",
+  "B": "Correct: multiplies 5/10 by 4/9 for 20/90, which reduces to 2/9",
+  "C": "Student makes misconception: total_not_reduced_between_draws (reduces the women's-name count to 4 on the second draw but keeps the total at 10 instead of 9)",
+  "D": "Student makes misconception: adds_probabilities_instead_of_multiplying (adds 5/10 and 4/9 over a common denominator instead of multiplying)"
+},
+"misconception_tag": {
+  "A": "replacement_status_wrong",
+  "C": "total_not_reduced_between_draws",
+  "D": "adds_probabilities_instead_of_multiplying"
+}
+```
+
+---
+
+**7. In a deck of $52$ cards, two cards are drawn without replacement. What is the probability both are kings?**
+
+Step 1: There are $4$ kings. First draw: $\frac{4}{52}$.
+
+Step 2: Second draw, one king gone: $\frac{3}{51}$.
+
+Step 3: Multiply.
+- $\frac{4}{52} \times \frac{3}{51} = \frac{12}{2652} = \frac{1}{221}$
+
+**Answer: C** ($\frac{1}{221}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: replacement_status_wrong (uses 4/52 for both draws, treating the card as though it were put back in the deck)",
+  "B": "Student makes misconception: total_not_reduced_between_draws (reduces the king count to 3 on the second draw but keeps the total at 52 instead of 51)",
+  "C": "Correct: multiplies 4/52 by 3/51 for 12/2652, which reduces to 1/221",
+  "D": "Student makes misconception: numerators_added_over_product (adds the numerators, 4 plus 3, over the product of the denominators, 52 times 51, getting 7/2652)"
+},
+"misconception_tag": {
+  "A": "replacement_status_wrong",
+  "B": "total_not_reduced_between_draws",
+  "D": "numerators_added_over_product"
+}
+```
+
+---
+
+**8. A fair coin is flipped $3$ times. What is the probability of getting AT LEAST one heads?**
+
+Step 1: It's easier to find the complement, no heads at all, then subtract from 1.
+- $P(\text{no heads}) = \left(\frac{1}{2}\right)^3 = \frac{1}{8}$
+
+Step 2: Subtract from 1.
+- $1 - \frac{1}{8} = \frac{7}{8}$
+
+**Answer: A** ($\frac{7}{8}$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: finds the complement, no heads in three flips, 1/8, then subtracts from 1 for 7/8",
+  "B": "Student makes misconception: reports_event_not_complement (reports the probability of the complement, no heads, instead of at least one heads)",
+  "C": "Student makes misconception: adds_probabilities_instead_of_multiplying (adds 1/2 three times instead of computing the complement correctly, getting an impossible value over 1)",
+  "D": "Student makes misconception: sequence_stopped_early (computes the complement using only 2 flips instead of 3, giving $1 - (1/2)^2 = 3/4$)"
+},
+"misconception_tag": {
+  "B": "reports_event_not_complement",
+  "C": "adds_probabilities_instead_of_multiplying",
+  "D": "sequence_stopped_early"
+}
+```
+
+---
+
+**9. A hat contains $4$ red, $3$ blue, and $3$ green tickets, $10$ total. Two tickets are drawn without replacement. What is the probability that NEITHER ticket is red?**
+
+Step 1: Not red means blue or green, $6$ of the $10$ tickets. First draw: $\frac{6}{10}$.
+
+Step 2: Second draw, one non-red ticket gone: $\frac{5}{9}$.
+
+Step 3: Multiply.
+- $\frac{6}{10} \times \frac{5}{9} = \frac{30}{90} = \frac{1}{3}$
+
+**Answer: B** ($\frac{1}{3}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: replacement_status_wrong (uses 6/10 for both draws, treating the first ticket as though it were replaced)",
+  "B": "Correct: multiplies 6/10 by 5/9 for 30/90, which reduces to 1/3",
+  "C": "Student makes misconception: total_not_reduced_between_draws (reduces the non-red count to 5 on the second draw but keeps the total at 10 instead of 9)",
+  "D": "Student makes misconception: reports_event_not_complement (reports the probability that at least one ticket is red, $1 - 1/3 = 2/3$, instead of neither being red)"
+},
+"misconception_tag": {
+  "A": "replacement_status_wrong",
+  "C": "total_not_reduced_between_draws",
+  "D": "reports_event_not_complement"
+}
+```
+
+---
+
+**10. A quality inspector checks three items from an assembly line. The probability each item independently passes inspection is $0.9$. What is the probability that all three items pass?**
+
+Step 1: Multiply the three independent probabilities.
+- $0.9 \times 0.9 \times 0.9$
+
+Step 2: Compute.
+- $0.729$
+
+**Answer: D** ($0.729$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: sequence_stopped_early (multiplies only the first two items, 0.9 times 0.9, and stops before the third)",
+  "B": "Student makes misconception: adds_probabilities_instead_of_multiplying (adds 0.9 three times instead of multiplying, getting an impossible value over 1)",
+  "C": "Student makes misconception: reports_event_not_complement (reports the probability that at least one item fails, $1 - 0.729 = 0.271$, instead of all three passing)",
+  "D": "Correct: multiplies 0.9 by itself three times for 0.729"
+},
+"misconception_tag": {
+  "A": "sequence_stopped_early",
+  "B": "adds_probabilities_instead_of_multiplying",
+  "C": "reports_event_not_complement"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. A coin is flipped and a six-sided die is rolled. What is the probability of getting heads AND rolling a $4$?
+   - A) $\frac{2}{3}$
+   - B) $\frac{1}{12}$
+   - C) $\frac{1}{6}$
+   - D) $\frac{1}{8}$
+
+2. A bag has $4$ red and $6$ blue marbles. A marble is drawn, replaced, and a second marble is drawn. What is the probability both are red?
+   - A) $\frac{2}{15}$
+   - B) $\frac{4}{5}$
+   - C) $\frac{2}{25}$
+   - D) $\frac{4}{25}$
+
+3. A spinner divided into $5$ equal sections is spun twice. What is the probability of landing on section $3$ both times?
+   - A) $\frac{2}{5}$
+   - B) $\frac{2}{25}$
+   - C) $\frac{1}{25}$
+   - D) $\frac{1}{16}$
+
+4. A jar has $3$ yellow and $7$ green candies. One candy is drawn, eaten, and a second candy is drawn from the jar. What is the probability both are yellow?
+   - A) $\frac{1}{15}$
+   - B) $\frac{9}{100}$
+   - C) $\frac{3}{50}$
+   - D) $\frac{47}{90}$
+
+**Proficient Level** (these require an extra step)
+
+5. A box has $2$ black and $8$ white balls. Three balls are drawn one at a time, without replacement. What is the probability all three are white?
+   - A) $\frac{28}{45}$
+   - B) $\frac{64}{125}$
+   - C) $\frac{42}{125}$
+   - D) $\frac{7}{15}$
+
+6. A committee draws $2$ names without replacement from a hat containing $5$ men's names and $5$ women's names. What is the probability both names drawn are women's?
+   - A) $\frac{1}{4}$
+   - B) $\frac{2}{9}$
+   - C) $\frac{1}{5}$
+   - D) $\frac{17}{18}$
+
+7. In a deck of $52$ cards, two cards are drawn without replacement. What is the probability both are kings?
+   - A) $\frac{1}{169}$
+   - B) $\frac{3}{676}$
+   - C) $\frac{1}{221}$
+   - D) $\frac{7}{2652}$
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. A fair coin is flipped $3$ times. What is the probability of getting AT LEAST one heads?
+   - A) $\frac{7}{8}$
+   - B) $\frac{1}{8}$
+   - C) $\frac{3}{2}$
+   - D) $\frac{3}{4}$
+
+9. A hat contains $4$ red, $3$ blue, and $3$ green tickets, $10$ total. Two tickets are drawn without replacement. What is the probability that NEITHER ticket is red?
+   - A) $\frac{9}{25}$
+   - B) $\frac{1}{3}$
+   - C) $\frac{3}{10}$
+   - D) $\frac{2}{3}$
+
+10. A quality inspector checks three items from an assembly line. The probability each item independently passes inspection is $0.9$. What is the probability that all three items pass?
+    - A) $0.81$
+    - B) $2.7$
+    - C) $0.271$
+    - D) $0.729$

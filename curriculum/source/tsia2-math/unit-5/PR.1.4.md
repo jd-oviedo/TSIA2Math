@@ -696,3 +696,366 @@ Step 2: Count to second place from the bottom.
   "C": "reads_wrong_category"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. How many Veggie sandwiches were sold?**
+
+Step 1: Find the Veggie row.
+- $9$
+
+**Answer: B** ($9$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: reads_wrong_category (reads the Turkey row, two rows away, instead of Veggie)",
+  "B": "Correct: reads the Veggie row directly, 9",
+  "C": "Student makes misconception: reads_adjacent_value (reads the Ham row, immediately above Veggie)",
+  "D": "Student makes misconception: reads_adjacent_value (reads the Club row, immediately below Veggie)"
+},
+"misconception_tag": {
+  "A": "reads_wrong_category",
+  "C": "reads_adjacent_value",
+  "D": "reads_adjacent_value"
+}
+```
+
+---
+
+**2. Which sandwich type was second-highest in sales, and how many was that?**
+
+Step 1: Order the four values from greatest to least.
+- Turkey $22$, Ham $16$, Club $13$, Veggie $9$
+
+Step 2: The second position in that order is Ham, $16$.
+
+**Answer: D** (Ham, $16$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: rank_position_error (selects the first, highest position instead of the second)",
+  "B": "Student makes misconception: rank_position_error (selects the third position instead of the second)",
+  "C": "Student makes misconception: rank_position_error (selects the fourth, lowest position instead of the second)",
+  "D": "Correct: ranks the four values and identifies Ham, 16, as second-highest"
+},
+"misconception_tag": {
+  "A": "rank_position_error",
+  "B": "rank_position_error",
+  "C": "rank_position_error"
+}
+```
+
+---
+
+**3. How many Grade 8 students own a cat?**
+
+Step 1: Find the row for Grade 8 and the column for Cat.
+
+Step 2: Read the cell where they meet.
+- $16$
+
+**Answer: A** ($16$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: reads the Grade 8 row, Cat column cell, 16",
+  "B": "Student makes misconception: reads_adjacent_value (reads the Dog cell in the same Grade 8 row instead of the Cat cell)",
+  "C": "Student makes misconception: reads_wrong_category (reads the Cat cell from the Grade 7 row instead of Grade 8)",
+  "D": "Student makes misconception: reads_adjacent_value (reads the Total cell in the same row instead of the Cat cell)"
+},
+"misconception_tag": {
+  "B": "reads_adjacent_value",
+  "C": "reads_wrong_category",
+  "D": "reads_adjacent_value"
+}
+```
+
+---
+
+**4. How many Turkey and Club sandwiches were sold combined?**
+
+Step 1: Read both cells. Turkey $22$, Club $13$.
+
+Step 2: Add them.
+- $22 + 13 = 35$
+
+**Answer: C** ($35$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: single_cell_read_where_sum_needed (reports only the Turkey value, 22, without adding Club)",
+  "B": "Student makes misconception: reads_wrong_category (adds Turkey and Ham, 22 plus 16, instead of Turkey and Club)",
+  "C": "Correct: adds Turkey, 22, and Club, 13, for a combined total of 35",
+  "D": "Student makes misconception: single_cell_read_where_sum_needed (reports only the Club value, 13, without adding Turkey)"
+},
+"misconception_tag": {
+  "A": "single_cell_read_where_sum_needed",
+  "B": "reads_wrong_category",
+  "D": "single_cell_read_where_sum_needed"
+}
+```
+
+---
+
+**5. How many more students are in Grade 8 than in Grade 7?**
+
+Step 1: Read both row totals. Grade 8 $27$, Grade 7 $23$.
+
+Step 2: Subtract.
+- $27 - 23 = 4$
+
+**Answer: D** ($4$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: row_total_used_for_column_total (reports the Dog column total, 25, in place of a grade row total)",
+  "B": "Student makes misconception: single_cell_read_where_sum_needed (reports the grand total, 50, instead of the difference between the two row totals)",
+  "C": "Student makes misconception: subtracts_in_wrong_order (computes Grade 7 minus Grade 8, 23 minus 27, giving -4)",
+  "D": "Correct: subtracts Grade 7's total, 23, from Grade 8's total, 27, for a difference of 4"
+},
+"misconception_tag": {
+  "A": "row_total_used_for_column_total",
+  "B": "single_cell_read_where_sum_needed",
+  "C": "subtracts_in_wrong_order"
+}
+```
+
+---
+
+**6. Which sandwich type was third-highest in sales, and how many was that?**
+
+Step 1: Order the four values from greatest to least.
+- Turkey $22$, Ham $16$, Club $13$, Veggie $9$
+
+Step 2: The third position in that order is Club, $13$.
+
+**Answer: B** (Club, $13$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: rank_position_error (selects the first, highest position instead of the third)",
+  "B": "Correct: ranks the four values and identifies Club, 13, as third-highest",
+  "C": "Student makes misconception: rank_position_error (selects the fourth, lowest position instead of the third)",
+  "D": "Student makes misconception: rank_position_error (selects the second position instead of the third)"
+},
+"misconception_tag": {
+  "A": "rank_position_error",
+  "C": "rank_position_error",
+  "D": "rank_position_error"
+}
+```
+
+---
+
+**7. How many students in total are represented in the table?**
+
+Step 1: Read the grand total cell, where the Total row meets the Total column.
+- $50$
+
+Step 2: Verify. Grade 7's row total, 23, plus Grade 8's row total, 27, is $23 + 27 = 50$. Matches.
+
+**Answer: C** ($50$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: single_cell_read_where_sum_needed (reports only the Dog column total, 25, instead of the grand total)",
+  "B": "Student makes misconception: single_cell_read_where_sum_needed (reports only Grade 8's row total, 27, instead of the grand total)",
+  "C": "Correct: reads the grand total cell, 50, and confirms it against the two row totals",
+  "D": "Student makes misconception: single_cell_read_where_sum_needed (reports only Grade 7's row total, 23, instead of the grand total)"
+},
+"misconception_tag": {
+  "A": "single_cell_read_where_sum_needed",
+  "B": "single_cell_read_where_sum_needed",
+  "D": "single_cell_read_where_sum_needed"
+}
+```
+
+---
+
+**8. If Grade 7's dog count increases by $6$ and everything else stays the same, what will the new Dog column total be?**
+
+Step 1: Add the increase to Grade 7's Dog cell.
+- $14 + 6 = 20$
+
+Step 2: Add Grade 8's Dog cell, which is unchanged.
+- $20 + 11 = 31$
+
+**Answer: A** ($31$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: raises Grade 7's dog count to 20, then adds Grade 8's unchanged 11 for a new Dog total of 31",
+  "B": "Student makes misconception: row_total_used_for_column_total (adds the increase of 6 to the grand total, 50, instead of just the Dog column)",
+  "C": "Student makes misconception: total_accepted_without_verifying (reports the original Dog total, 25, without applying the stated increase)",
+  "D": "Student makes misconception: single_cell_read_where_sum_needed (reports only Grade 7's new dog count, 20, without adding Grade 8's 11)"
+},
+"misconception_tag": {
+  "B": "row_total_used_for_column_total",
+  "C": "total_accepted_without_verifying",
+  "D": "single_cell_read_where_sum_needed"
+}
+```
+
+---
+
+**9. A new Grade 9 row is added: $10$ dogs and $15$ cats. What is the new grand total of all students in the table?**
+
+Step 1: Add the new row's two values.
+- $10 + 15 = 25$
+
+Step 2: Add that to the old grand total.
+- $50 + 25 = 75$
+
+**Answer: D** ($75$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: total_accepted_without_verifying (reports the old grand total, 50, without adding the new row)",
+  "B": "Student makes misconception: single_cell_read_where_sum_needed (reports only the new row's own total, 25, instead of adding it to the old grand total)",
+  "C": "Student makes misconception: single_cell_read_where_sum_needed (adds only the new dogs, 10, to the old total, forgetting the 15 new cats)",
+  "D": "Correct: combines the new row's 10 dogs and 15 cats into 25, then adds that to the old grand total of 50 for 75"
+},
+"misconception_tag": {
+  "A": "total_accepted_without_verifying",
+  "B": "single_cell_read_where_sum_needed",
+  "C": "single_cell_read_where_sum_needed"
+}
+```
+
+---
+
+**10. The Cat column total must equal $40$ once a new Grade 9 row is added. Grade 7 and Grade 8 currently show $9$ and $16$ cats. How many cats does Grade 9 need?**
+
+Step 1: Add the two existing Cat cells.
+- $9 + 16 = 25$
+
+Step 2: Subtract from the target total.
+- $40 - 25 = 15$
+
+**Answer: B** ($15$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: total_accepted_without_verifying (reports the current Cat total, 25, instead of solving for the new row's value)",
+  "B": "Correct: adds the two existing Cat cells to 25, then subtracts from the target of 40 for 15",
+  "C": "Student makes misconception: single_cell_read_where_sum_needed (subtracts only Grade 7's cell, 9, from 40, instead of the combined 25)",
+  "D": "Student makes misconception: single_cell_read_where_sum_needed (subtracts only Grade 8's cell, 16, from 40, instead of the combined 25)"
+},
+"misconception_tag": {
+  "A": "total_accepted_without_verifying",
+  "C": "single_cell_read_where_sum_needed",
+  "D": "single_cell_read_where_sum_needed"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. How many Veggie sandwiches were sold?
+
+<!-- figure: pr-1-4-p5-sandwiches -->
+![A table of sandwiches sold by type. Turkey 22, Ham 16, Veggie 9, Club 13.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMTQ0IiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjE0NCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHRhYmxlIG9mIHNhbmR3aWNoZXMgc29sZCBieSB0eXBlLiBUdXJrZXkgMjIsIEhhbSAxNiwgVmVnZ2llIDksIENsdWIgMTMuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjE0NCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PHJlY3QgeD0iMTIiIHk9IjEyIiB3aWR0aD0iMTE4LjI1IiBoZWlnaHQ9IjI0IiBmaWxsPSIjNkU5REM4IiBmaWxsLW9wYWNpdHk9IjAuMTgiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgZGF0YS12bGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxMiIgeTI9IjEzMiIvPjxsaW5lIGRhdGEtdmxpbmU9IjEiIHgxPSI4OS40OCIgeTE9IjEyIiB4Mj0iODkuNDgiIHkyPSIxMzIiLz48bGluZSBkYXRhLXZsaW5lPSIyIiB4MT0iMTMwLjI1IiB5MT0iMTIiIHgyPSIxMzAuMjUiIHkyPSIxMzIiLz48bGluZSBkYXRhLWhsaW5lPSIwIiB4MT0iMTIiIHkxPSIxMiIgeDI9IjEzMC4yNSIgeTI9IjEyIi8+PGxpbmUgZGF0YS1obGluZT0iMSIgeDE9IjEyIiB5MT0iMzYiIHgyPSIxMzAuMjUiIHkyPSIzNiIvPjxsaW5lIGRhdGEtaGxpbmU9IjIiIHgxPSIxMiIgeTE9IjYwIiB4Mj0iMTMwLjI1IiB5Mj0iNjAiLz48bGluZSBkYXRhLWhsaW5lPSIzIiB4MT0iMTIiIHkxPSI4NCIgeDI9IjEzMC4yNSIgeTI9Ijg0Ii8+PGxpbmUgZGF0YS1obGluZT0iNCIgeDE9IjEyIiB5MT0iMTA4IiB4Mj0iMTMwLjI1IiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS1obGluZT0iNSIgeDE9IjEyIiB5MT0iMTMyIiB4Mj0iMTMwLjI1IiB5Mj0iMTMyIi8+PC9nPjxnIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj48dGV4dCBkYXRhLWhlYWQ9IjAiIHg9IjE3IiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+U2FuZHdpY2g8L3RleHQ+PHRleHQgZGF0YS1oZWFkPSIxIiB4PSI5NC40OCIgeT0iMjgiIGZvbnQtd2VpZ2h0PSI3MDAiPlNvbGQ8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIwLTAiIHg9IjE3IiB5PSI1MiIgZm9udC13ZWlnaHQ9IjYwMCI+VHVya2V5PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0xIiB4PSI5NC40OCIgeT0iNTIiPjIyPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0wIiB4PSIxNyIgeT0iNzYiIGZvbnQtd2VpZ2h0PSI2MDAiPkhhbTwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjEtMSIgeD0iOTQuNDgiIHk9Ijc2Ij4xNjwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMCIgeD0iMTciIHk9IjEwMCIgZm9udC13ZWlnaHQ9IjYwMCI+VmVnZ2llPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMi0xIiB4PSI5NC40OCIgeT0iMTAwIj45PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMy0wIiB4PSIxNyIgeT0iMTI0IiBmb250LXdlaWdodD0iNjAwIj5DbHViPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMy0xIiB4PSI5NC40OCIgeT0iMTI0Ij4xMzwvdGV4dD48L2c+PC9zdmc+)
+
+   - A) $22$
+   - B) $9$
+   - C) $16$
+   - D) $13$
+
+2. Which sandwich type was second-highest in sales, and how many was that?
+
+<!-- figure: pr-1-4-p5-sandwiches -->
+![A table of sandwiches sold by type. Turkey 22, Ham 16, Veggie 9, Club 13.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMTQ0IiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjE0NCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHRhYmxlIG9mIHNhbmR3aWNoZXMgc29sZCBieSB0eXBlLiBUdXJrZXkgMjIsIEhhbSAxNiwgVmVnZ2llIDksIENsdWIgMTMuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjE0NCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PHJlY3QgeD0iMTIiIHk9IjEyIiB3aWR0aD0iMTE4LjI1IiBoZWlnaHQ9IjI0IiBmaWxsPSIjNkU5REM4IiBmaWxsLW9wYWNpdHk9IjAuMTgiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgZGF0YS12bGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxMiIgeTI9IjEzMiIvPjxsaW5lIGRhdGEtdmxpbmU9IjEiIHgxPSI4OS40OCIgeTE9IjEyIiB4Mj0iODkuNDgiIHkyPSIxMzIiLz48bGluZSBkYXRhLXZsaW5lPSIyIiB4MT0iMTMwLjI1IiB5MT0iMTIiIHgyPSIxMzAuMjUiIHkyPSIxMzIiLz48bGluZSBkYXRhLWhsaW5lPSIwIiB4MT0iMTIiIHkxPSIxMiIgeDI9IjEzMC4yNSIgeTI9IjEyIi8+PGxpbmUgZGF0YS1obGluZT0iMSIgeDE9IjEyIiB5MT0iMzYiIHgyPSIxMzAuMjUiIHkyPSIzNiIvPjxsaW5lIGRhdGEtaGxpbmU9IjIiIHgxPSIxMiIgeTE9IjYwIiB4Mj0iMTMwLjI1IiB5Mj0iNjAiLz48bGluZSBkYXRhLWhsaW5lPSIzIiB4MT0iMTIiIHkxPSI4NCIgeDI9IjEzMC4yNSIgeTI9Ijg0Ii8+PGxpbmUgZGF0YS1obGluZT0iNCIgeDE9IjEyIiB5MT0iMTA4IiB4Mj0iMTMwLjI1IiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS1obGluZT0iNSIgeDE9IjEyIiB5MT0iMTMyIiB4Mj0iMTMwLjI1IiB5Mj0iMTMyIi8+PC9nPjxnIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj48dGV4dCBkYXRhLWhlYWQ9IjAiIHg9IjE3IiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+U2FuZHdpY2g8L3RleHQ+PHRleHQgZGF0YS1oZWFkPSIxIiB4PSI5NC40OCIgeT0iMjgiIGZvbnQtd2VpZ2h0PSI3MDAiPlNvbGQ8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIwLTAiIHg9IjE3IiB5PSI1MiIgZm9udC13ZWlnaHQ9IjYwMCI+VHVya2V5PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0xIiB4PSI5NC40OCIgeT0iNTIiPjIyPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0wIiB4PSIxNyIgeT0iNzYiIGZvbnQtd2VpZ2h0PSI2MDAiPkhhbTwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjEtMSIgeD0iOTQuNDgiIHk9Ijc2Ij4xNjwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMCIgeD0iMTciIHk9IjEwMCIgZm9udC13ZWlnaHQ9IjYwMCI+VmVnZ2llPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMi0xIiB4PSI5NC40OCIgeT0iMTAwIj45PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMy0wIiB4PSIxNyIgeT0iMTI0IiBmb250LXdlaWdodD0iNjAwIj5DbHViPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMy0xIiB4PSI5NC40OCIgeT0iMTI0Ij4xMzwvdGV4dD48L2c+PC9zdmc+)
+
+   - A) Turkey, $22$
+   - B) Club, $13$
+   - C) Veggie, $9$
+   - D) Ham, $16$
+
+3. How many Grade 8 students own a cat?
+
+<!-- figure: pr-1-4-p5-twoway-pets -->
+![A two-way table of pets owned, by grade. Grade 7: 14 dogs, 9 cats, 23 in total. Grade 8: 11 dogs, 16 cats, 27 in total. The column totals are 25 dogs, 25 cats, and 50 students altogether.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMTIwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHR3by13YXkgdGFibGUgb2YgcGV0cyBvd25lZCwgYnkgZ3JhZGUuIEdyYWRlIDc6IDE0IGRvZ3MsIDkgY2F0cywgMjMgaW4gdG90YWwuIEdyYWRlIDg6IDExIGRvZ3MsIDE2IGNhdHMsIDI3IGluIHRvdGFsLiBUaGUgY29sdW1uIHRvdGFscyBhcmUgMjUgZG9ncywgMjUgY2F0cywgYW5kIDUwIHN0dWRlbnRzIGFsdG9nZXRoZXIuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PHJlY3QgeD0iMTIiIHk9IjEyIiB3aWR0aD0iMTc1LjQzIiBoZWlnaHQ9IjI0IiBmaWxsPSIjNkU5REM4IiBmaWxsLW9wYWNpdHk9IjAuMTgiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgZGF0YS12bGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxMiIgeTI9IjEwOCIvPjxsaW5lIGRhdGEtdmxpbmU9IjEiIHgxPSI3My4yIiB5MT0iMTIiIHgyPSI3My4yIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iMiIgeDE9IjEwOC42MiIgeTE9IjEyIiB4Mj0iMTA4LjYyIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iMyIgeDE9IjE0MS4zMSIgeTE9IjEyIiB4Mj0iMTQxLjMxIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iNCIgeDE9IjE4Ny40MyIgeTE9IjEyIiB4Mj0iMTg3LjQzIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS1obGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxODcuNDMiIHkyPSIxMiIvPjxsaW5lIGRhdGEtaGxpbmU9IjEiIHgxPSIxMiIgeTE9IjM2IiB4Mj0iMTg3LjQzIiB5Mj0iMzYiLz48bGluZSBkYXRhLWhsaW5lPSIyIiB4MT0iMTIiIHkxPSI2MCIgeDI9IjE4Ny40MyIgeTI9IjYwIi8+PGxpbmUgZGF0YS1obGluZT0iMyIgeDE9IjEyIiB5MT0iODQiIHgyPSIxODcuNDMiIHkyPSI4NCIvPjxsaW5lIGRhdGEtaGxpbmU9IjQiIHgxPSIxMiIgeTE9IjEwOCIgeDI9IjE4Ny40MyIgeTI9IjEwOCIvPjwvZz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+PHRleHQgZGF0YS1oZWFkPSIxIiB4PSI3OC4yIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+RG9nPC90ZXh0Pjx0ZXh0IGRhdGEtaGVhZD0iMiIgeD0iMTEzLjYyIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+Q2F0PC90ZXh0Pjx0ZXh0IGRhdGEtaGVhZD0iMyIgeD0iMTQ2LjMxIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+VG90YWw8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIwLTAiIHg9IjE3IiB5PSI1MiIgZm9udC13ZWlnaHQ9IjYwMCI+R3JhZGUgNzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjAtMSIgeD0iNzguMiIgeT0iNTIiPjE0PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0yIiB4PSIxMTMuNjIiIHk9IjUyIj45PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0zIiB4PSIxNDYuMzEiIHk9IjUyIj4yMzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjEtMCIgeD0iMTciIHk9Ijc2IiBmb250LXdlaWdodD0iNjAwIj5HcmFkZSA4PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0xIiB4PSI3OC4yIiB5PSI3NiI+MTE8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIxLTIiIHg9IjExMy42MiIgeT0iNzYiPjE2PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0zIiB4PSIxNDYuMzEiIHk9Ijc2Ij4yNzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMCIgeD0iMTciIHk9IjEwMCIgZm9udC13ZWlnaHQ9IjYwMCI+VG90YWw8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIyLTEiIHg9Ijc4LjIiIHk9IjEwMCI+MjU8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIyLTIiIHg9IjExMy42MiIgeT0iMTAwIj4yNTwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMyIgeD0iMTQ2LjMxIiB5PSIxMDAiPjUwPC90ZXh0PjwvZz48L3N2Zz4=)
+
+   - A) $16$
+   - B) $11$
+   - C) $9$
+   - D) $27$
+
+4. How many Turkey and Club sandwiches were sold combined?
+
+<!-- figure: pr-1-4-p5-sandwiches -->
+![A table of sandwiches sold by type. Turkey 22, Ham 16, Veggie 9, Club 13.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMTQ0IiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjE0NCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHRhYmxlIG9mIHNhbmR3aWNoZXMgc29sZCBieSB0eXBlLiBUdXJrZXkgMjIsIEhhbSAxNiwgVmVnZ2llIDksIENsdWIgMTMuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjE0NCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PHJlY3QgeD0iMTIiIHk9IjEyIiB3aWR0aD0iMTE4LjI1IiBoZWlnaHQ9IjI0IiBmaWxsPSIjNkU5REM4IiBmaWxsLW9wYWNpdHk9IjAuMTgiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgZGF0YS12bGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxMiIgeTI9IjEzMiIvPjxsaW5lIGRhdGEtdmxpbmU9IjEiIHgxPSI4OS40OCIgeTE9IjEyIiB4Mj0iODkuNDgiIHkyPSIxMzIiLz48bGluZSBkYXRhLXZsaW5lPSIyIiB4MT0iMTMwLjI1IiB5MT0iMTIiIHgyPSIxMzAuMjUiIHkyPSIxMzIiLz48bGluZSBkYXRhLWhsaW5lPSIwIiB4MT0iMTIiIHkxPSIxMiIgeDI9IjEzMC4yNSIgeTI9IjEyIi8+PGxpbmUgZGF0YS1obGluZT0iMSIgeDE9IjEyIiB5MT0iMzYiIHgyPSIxMzAuMjUiIHkyPSIzNiIvPjxsaW5lIGRhdGEtaGxpbmU9IjIiIHgxPSIxMiIgeTE9IjYwIiB4Mj0iMTMwLjI1IiB5Mj0iNjAiLz48bGluZSBkYXRhLWhsaW5lPSIzIiB4MT0iMTIiIHkxPSI4NCIgeDI9IjEzMC4yNSIgeTI9Ijg0Ii8+PGxpbmUgZGF0YS1obGluZT0iNCIgeDE9IjEyIiB5MT0iMTA4IiB4Mj0iMTMwLjI1IiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS1obGluZT0iNSIgeDE9IjEyIiB5MT0iMTMyIiB4Mj0iMTMwLjI1IiB5Mj0iMTMyIi8+PC9nPjxnIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj48dGV4dCBkYXRhLWhlYWQ9IjAiIHg9IjE3IiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+U2FuZHdpY2g8L3RleHQ+PHRleHQgZGF0YS1oZWFkPSIxIiB4PSI5NC40OCIgeT0iMjgiIGZvbnQtd2VpZ2h0PSI3MDAiPlNvbGQ8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIwLTAiIHg9IjE3IiB5PSI1MiIgZm9udC13ZWlnaHQ9IjYwMCI+VHVya2V5PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0xIiB4PSI5NC40OCIgeT0iNTIiPjIyPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0wIiB4PSIxNyIgeT0iNzYiIGZvbnQtd2VpZ2h0PSI2MDAiPkhhbTwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjEtMSIgeD0iOTQuNDgiIHk9Ijc2Ij4xNjwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMCIgeD0iMTciIHk9IjEwMCIgZm9udC13ZWlnaHQ9IjYwMCI+VmVnZ2llPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMi0xIiB4PSI5NC40OCIgeT0iMTAwIj45PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMy0wIiB4PSIxNyIgeT0iMTI0IiBmb250LXdlaWdodD0iNjAwIj5DbHViPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMy0xIiB4PSI5NC40OCIgeT0iMTI0Ij4xMzwvdGV4dD48L2c+PC9zdmc+)
+
+   - A) $22$
+   - B) $38$
+   - C) $35$
+   - D) $13$
+
+**Proficient Level** (these require an extra step)
+
+5. How many more students are in Grade 8 than in Grade 7?
+
+<!-- figure: pr-1-4-p5-twoway-pets -->
+![A two-way table of pets owned, by grade. Grade 7: 14 dogs, 9 cats, 23 in total. Grade 8: 11 dogs, 16 cats, 27 in total. The column totals are 25 dogs, 25 cats, and 50 students altogether.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMTIwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHR3by13YXkgdGFibGUgb2YgcGV0cyBvd25lZCwgYnkgZ3JhZGUuIEdyYWRlIDc6IDE0IGRvZ3MsIDkgY2F0cywgMjMgaW4gdG90YWwuIEdyYWRlIDg6IDExIGRvZ3MsIDE2IGNhdHMsIDI3IGluIHRvdGFsLiBUaGUgY29sdW1uIHRvdGFscyBhcmUgMjUgZG9ncywgMjUgY2F0cywgYW5kIDUwIHN0dWRlbnRzIGFsdG9nZXRoZXIuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PHJlY3QgeD0iMTIiIHk9IjEyIiB3aWR0aD0iMTc1LjQzIiBoZWlnaHQ9IjI0IiBmaWxsPSIjNkU5REM4IiBmaWxsLW9wYWNpdHk9IjAuMTgiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgZGF0YS12bGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxMiIgeTI9IjEwOCIvPjxsaW5lIGRhdGEtdmxpbmU9IjEiIHgxPSI3My4yIiB5MT0iMTIiIHgyPSI3My4yIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iMiIgeDE9IjEwOC42MiIgeTE9IjEyIiB4Mj0iMTA4LjYyIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iMyIgeDE9IjE0MS4zMSIgeTE9IjEyIiB4Mj0iMTQxLjMxIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iNCIgeDE9IjE4Ny40MyIgeTE9IjEyIiB4Mj0iMTg3LjQzIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS1obGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxODcuNDMiIHkyPSIxMiIvPjxsaW5lIGRhdGEtaGxpbmU9IjEiIHgxPSIxMiIgeTE9IjM2IiB4Mj0iMTg3LjQzIiB5Mj0iMzYiLz48bGluZSBkYXRhLWhsaW5lPSIyIiB4MT0iMTIiIHkxPSI2MCIgeDI9IjE4Ny40MyIgeTI9IjYwIi8+PGxpbmUgZGF0YS1obGluZT0iMyIgeDE9IjEyIiB5MT0iODQiIHgyPSIxODcuNDMiIHkyPSI4NCIvPjxsaW5lIGRhdGEtaGxpbmU9IjQiIHgxPSIxMiIgeTE9IjEwOCIgeDI9IjE4Ny40MyIgeTI9IjEwOCIvPjwvZz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+PHRleHQgZGF0YS1oZWFkPSIxIiB4PSI3OC4yIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+RG9nPC90ZXh0Pjx0ZXh0IGRhdGEtaGVhZD0iMiIgeD0iMTEzLjYyIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+Q2F0PC90ZXh0Pjx0ZXh0IGRhdGEtaGVhZD0iMyIgeD0iMTQ2LjMxIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+VG90YWw8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIwLTAiIHg9IjE3IiB5PSI1MiIgZm9udC13ZWlnaHQ9IjYwMCI+R3JhZGUgNzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjAtMSIgeD0iNzguMiIgeT0iNTIiPjE0PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0yIiB4PSIxMTMuNjIiIHk9IjUyIj45PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0zIiB4PSIxNDYuMzEiIHk9IjUyIj4yMzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjEtMCIgeD0iMTciIHk9Ijc2IiBmb250LXdlaWdodD0iNjAwIj5HcmFkZSA4PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0xIiB4PSI3OC4yIiB5PSI3NiI+MTE8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIxLTIiIHg9IjExMy42MiIgeT0iNzYiPjE2PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0zIiB4PSIxNDYuMzEiIHk9Ijc2Ij4yNzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMCIgeD0iMTciIHk9IjEwMCIgZm9udC13ZWlnaHQ9IjYwMCI+VG90YWw8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIyLTEiIHg9Ijc4LjIiIHk9IjEwMCI+MjU8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIyLTIiIHg9IjExMy42MiIgeT0iMTAwIj4yNTwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMyIgeD0iMTQ2LjMxIiB5PSIxMDAiPjUwPC90ZXh0PjwvZz48L3N2Zz4=)
+
+   - A) $25$
+   - B) $50$
+   - C) $-4$
+   - D) $4$
+
+6. Which sandwich type was third-highest in sales, and how many was that?
+
+<!-- figure: pr-1-4-p5-sandwiches -->
+![A table of sandwiches sold by type. Turkey 22, Ham 16, Veggie 9, Club 13.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMTQ0IiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjE0NCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHRhYmxlIG9mIHNhbmR3aWNoZXMgc29sZCBieSB0eXBlLiBUdXJrZXkgMjIsIEhhbSAxNiwgVmVnZ2llIDksIENsdWIgMTMuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjE0NCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PHJlY3QgeD0iMTIiIHk9IjEyIiB3aWR0aD0iMTE4LjI1IiBoZWlnaHQ9IjI0IiBmaWxsPSIjNkU5REM4IiBmaWxsLW9wYWNpdHk9IjAuMTgiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgZGF0YS12bGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxMiIgeTI9IjEzMiIvPjxsaW5lIGRhdGEtdmxpbmU9IjEiIHgxPSI4OS40OCIgeTE9IjEyIiB4Mj0iODkuNDgiIHkyPSIxMzIiLz48bGluZSBkYXRhLXZsaW5lPSIyIiB4MT0iMTMwLjI1IiB5MT0iMTIiIHgyPSIxMzAuMjUiIHkyPSIxMzIiLz48bGluZSBkYXRhLWhsaW5lPSIwIiB4MT0iMTIiIHkxPSIxMiIgeDI9IjEzMC4yNSIgeTI9IjEyIi8+PGxpbmUgZGF0YS1obGluZT0iMSIgeDE9IjEyIiB5MT0iMzYiIHgyPSIxMzAuMjUiIHkyPSIzNiIvPjxsaW5lIGRhdGEtaGxpbmU9IjIiIHgxPSIxMiIgeTE9IjYwIiB4Mj0iMTMwLjI1IiB5Mj0iNjAiLz48bGluZSBkYXRhLWhsaW5lPSIzIiB4MT0iMTIiIHkxPSI4NCIgeDI9IjEzMC4yNSIgeTI9Ijg0Ii8+PGxpbmUgZGF0YS1obGluZT0iNCIgeDE9IjEyIiB5MT0iMTA4IiB4Mj0iMTMwLjI1IiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS1obGluZT0iNSIgeDE9IjEyIiB5MT0iMTMyIiB4Mj0iMTMwLjI1IiB5Mj0iMTMyIi8+PC9nPjxnIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj48dGV4dCBkYXRhLWhlYWQ9IjAiIHg9IjE3IiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+U2FuZHdpY2g8L3RleHQ+PHRleHQgZGF0YS1oZWFkPSIxIiB4PSI5NC40OCIgeT0iMjgiIGZvbnQtd2VpZ2h0PSI3MDAiPlNvbGQ8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIwLTAiIHg9IjE3IiB5PSI1MiIgZm9udC13ZWlnaHQ9IjYwMCI+VHVya2V5PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0xIiB4PSI5NC40OCIgeT0iNTIiPjIyPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0wIiB4PSIxNyIgeT0iNzYiIGZvbnQtd2VpZ2h0PSI2MDAiPkhhbTwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjEtMSIgeD0iOTQuNDgiIHk9Ijc2Ij4xNjwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMCIgeD0iMTciIHk9IjEwMCIgZm9udC13ZWlnaHQ9IjYwMCI+VmVnZ2llPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMi0xIiB4PSI5NC40OCIgeT0iMTAwIj45PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMy0wIiB4PSIxNyIgeT0iMTI0IiBmb250LXdlaWdodD0iNjAwIj5DbHViPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMy0xIiB4PSI5NC40OCIgeT0iMTI0Ij4xMzwvdGV4dD48L2c+PC9zdmc+)
+
+   - A) Turkey, $22$
+   - B) Club, $13$
+   - C) Veggie, $9$
+   - D) Ham, $16$
+
+7. How many students in total are represented in the table?
+
+<!-- figure: pr-1-4-p5-twoway-pets -->
+![A two-way table of pets owned, by grade. Grade 7: 14 dogs, 9 cats, 23 in total. Grade 8: 11 dogs, 16 cats, 27 in total. The column totals are 25 dogs, 25 cats, and 50 students altogether.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMTIwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHR3by13YXkgdGFibGUgb2YgcGV0cyBvd25lZCwgYnkgZ3JhZGUuIEdyYWRlIDc6IDE0IGRvZ3MsIDkgY2F0cywgMjMgaW4gdG90YWwuIEdyYWRlIDg6IDExIGRvZ3MsIDE2IGNhdHMsIDI3IGluIHRvdGFsLiBUaGUgY29sdW1uIHRvdGFscyBhcmUgMjUgZG9ncywgMjUgY2F0cywgYW5kIDUwIHN0dWRlbnRzIGFsdG9nZXRoZXIuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PHJlY3QgeD0iMTIiIHk9IjEyIiB3aWR0aD0iMTc1LjQzIiBoZWlnaHQ9IjI0IiBmaWxsPSIjNkU5REM4IiBmaWxsLW9wYWNpdHk9IjAuMTgiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgZGF0YS12bGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxMiIgeTI9IjEwOCIvPjxsaW5lIGRhdGEtdmxpbmU9IjEiIHgxPSI3My4yIiB5MT0iMTIiIHgyPSI3My4yIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iMiIgeDE9IjEwOC42MiIgeTE9IjEyIiB4Mj0iMTA4LjYyIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iMyIgeDE9IjE0MS4zMSIgeTE9IjEyIiB4Mj0iMTQxLjMxIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iNCIgeDE9IjE4Ny40MyIgeTE9IjEyIiB4Mj0iMTg3LjQzIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS1obGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxODcuNDMiIHkyPSIxMiIvPjxsaW5lIGRhdGEtaGxpbmU9IjEiIHgxPSIxMiIgeTE9IjM2IiB4Mj0iMTg3LjQzIiB5Mj0iMzYiLz48bGluZSBkYXRhLWhsaW5lPSIyIiB4MT0iMTIiIHkxPSI2MCIgeDI9IjE4Ny40MyIgeTI9IjYwIi8+PGxpbmUgZGF0YS1obGluZT0iMyIgeDE9IjEyIiB5MT0iODQiIHgyPSIxODcuNDMiIHkyPSI4NCIvPjxsaW5lIGRhdGEtaGxpbmU9IjQiIHgxPSIxMiIgeTE9IjEwOCIgeDI9IjE4Ny40MyIgeTI9IjEwOCIvPjwvZz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+PHRleHQgZGF0YS1oZWFkPSIxIiB4PSI3OC4yIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+RG9nPC90ZXh0Pjx0ZXh0IGRhdGEtaGVhZD0iMiIgeD0iMTEzLjYyIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+Q2F0PC90ZXh0Pjx0ZXh0IGRhdGEtaGVhZD0iMyIgeD0iMTQ2LjMxIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+VG90YWw8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIwLTAiIHg9IjE3IiB5PSI1MiIgZm9udC13ZWlnaHQ9IjYwMCI+R3JhZGUgNzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjAtMSIgeD0iNzguMiIgeT0iNTIiPjE0PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0yIiB4PSIxMTMuNjIiIHk9IjUyIj45PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0zIiB4PSIxNDYuMzEiIHk9IjUyIj4yMzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjEtMCIgeD0iMTciIHk9Ijc2IiBmb250LXdlaWdodD0iNjAwIj5HcmFkZSA4PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0xIiB4PSI3OC4yIiB5PSI3NiI+MTE8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIxLTIiIHg9IjExMy42MiIgeT0iNzYiPjE2PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0zIiB4PSIxNDYuMzEiIHk9Ijc2Ij4yNzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMCIgeD0iMTciIHk9IjEwMCIgZm9udC13ZWlnaHQ9IjYwMCI+VG90YWw8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIyLTEiIHg9Ijc4LjIiIHk9IjEwMCI+MjU8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIyLTIiIHg9IjExMy42MiIgeT0iMTAwIj4yNTwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMyIgeD0iMTQ2LjMxIiB5PSIxMDAiPjUwPC90ZXh0PjwvZz48L3N2Zz4=)
+
+   - A) $25$
+   - B) $27$
+   - C) $50$
+   - D) $23$
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. If Grade 7's dog count increases by $6$ and everything else stays the same, what will the new Dog column total be?
+
+<!-- figure: pr-1-4-p5-twoway-pets -->
+![A two-way table of pets owned, by grade. Grade 7: 14 dogs, 9 cats, 23 in total. Grade 8: 11 dogs, 16 cats, 27 in total. The column totals are 25 dogs, 25 cats, and 50 students altogether.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMTIwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHR3by13YXkgdGFibGUgb2YgcGV0cyBvd25lZCwgYnkgZ3JhZGUuIEdyYWRlIDc6IDE0IGRvZ3MsIDkgY2F0cywgMjMgaW4gdG90YWwuIEdyYWRlIDg6IDExIGRvZ3MsIDE2IGNhdHMsIDI3IGluIHRvdGFsLiBUaGUgY29sdW1uIHRvdGFscyBhcmUgMjUgZG9ncywgMjUgY2F0cywgYW5kIDUwIHN0dWRlbnRzIGFsdG9nZXRoZXIuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PHJlY3QgeD0iMTIiIHk9IjEyIiB3aWR0aD0iMTc1LjQzIiBoZWlnaHQ9IjI0IiBmaWxsPSIjNkU5REM4IiBmaWxsLW9wYWNpdHk9IjAuMTgiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgZGF0YS12bGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxMiIgeTI9IjEwOCIvPjxsaW5lIGRhdGEtdmxpbmU9IjEiIHgxPSI3My4yIiB5MT0iMTIiIHgyPSI3My4yIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iMiIgeDE9IjEwOC42MiIgeTE9IjEyIiB4Mj0iMTA4LjYyIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iMyIgeDE9IjE0MS4zMSIgeTE9IjEyIiB4Mj0iMTQxLjMxIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iNCIgeDE9IjE4Ny40MyIgeTE9IjEyIiB4Mj0iMTg3LjQzIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS1obGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxODcuNDMiIHkyPSIxMiIvPjxsaW5lIGRhdGEtaGxpbmU9IjEiIHgxPSIxMiIgeTE9IjM2IiB4Mj0iMTg3LjQzIiB5Mj0iMzYiLz48bGluZSBkYXRhLWhsaW5lPSIyIiB4MT0iMTIiIHkxPSI2MCIgeDI9IjE4Ny40MyIgeTI9IjYwIi8+PGxpbmUgZGF0YS1obGluZT0iMyIgeDE9IjEyIiB5MT0iODQiIHgyPSIxODcuNDMiIHkyPSI4NCIvPjxsaW5lIGRhdGEtaGxpbmU9IjQiIHgxPSIxMiIgeTE9IjEwOCIgeDI9IjE4Ny40MyIgeTI9IjEwOCIvPjwvZz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+PHRleHQgZGF0YS1oZWFkPSIxIiB4PSI3OC4yIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+RG9nPC90ZXh0Pjx0ZXh0IGRhdGEtaGVhZD0iMiIgeD0iMTEzLjYyIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+Q2F0PC90ZXh0Pjx0ZXh0IGRhdGEtaGVhZD0iMyIgeD0iMTQ2LjMxIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+VG90YWw8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIwLTAiIHg9IjE3IiB5PSI1MiIgZm9udC13ZWlnaHQ9IjYwMCI+R3JhZGUgNzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjAtMSIgeD0iNzguMiIgeT0iNTIiPjE0PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0yIiB4PSIxMTMuNjIiIHk9IjUyIj45PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0zIiB4PSIxNDYuMzEiIHk9IjUyIj4yMzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjEtMCIgeD0iMTciIHk9Ijc2IiBmb250LXdlaWdodD0iNjAwIj5HcmFkZSA4PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0xIiB4PSI3OC4yIiB5PSI3NiI+MTE8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIxLTIiIHg9IjExMy42MiIgeT0iNzYiPjE2PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0zIiB4PSIxNDYuMzEiIHk9Ijc2Ij4yNzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMCIgeD0iMTciIHk9IjEwMCIgZm9udC13ZWlnaHQ9IjYwMCI+VG90YWw8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIyLTEiIHg9Ijc4LjIiIHk9IjEwMCI+MjU8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIyLTIiIHg9IjExMy42MiIgeT0iMTAwIj4yNTwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMyIgeD0iMTQ2LjMxIiB5PSIxMDAiPjUwPC90ZXh0PjwvZz48L3N2Zz4=)
+
+   - A) $31$
+   - B) $56$
+   - C) $25$
+   - D) $20$
+
+9. A new Grade 9 row is added: $10$ dogs and $15$ cats. What is the new grand total of all students in the table?
+
+<!-- figure: pr-1-4-p5-twoway-pets -->
+![A two-way table of pets owned, by grade. Grade 7: 14 dogs, 9 cats, 23 in total. Grade 8: 11 dogs, 16 cats, 27 in total. The column totals are 25 dogs, 25 cats, and 50 students altogether.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMTIwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHR3by13YXkgdGFibGUgb2YgcGV0cyBvd25lZCwgYnkgZ3JhZGUuIEdyYWRlIDc6IDE0IGRvZ3MsIDkgY2F0cywgMjMgaW4gdG90YWwuIEdyYWRlIDg6IDExIGRvZ3MsIDE2IGNhdHMsIDI3IGluIHRvdGFsLiBUaGUgY29sdW1uIHRvdGFscyBhcmUgMjUgZG9ncywgMjUgY2F0cywgYW5kIDUwIHN0dWRlbnRzIGFsdG9nZXRoZXIuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PHJlY3QgeD0iMTIiIHk9IjEyIiB3aWR0aD0iMTc1LjQzIiBoZWlnaHQ9IjI0IiBmaWxsPSIjNkU5REM4IiBmaWxsLW9wYWNpdHk9IjAuMTgiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgZGF0YS12bGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxMiIgeTI9IjEwOCIvPjxsaW5lIGRhdGEtdmxpbmU9IjEiIHgxPSI3My4yIiB5MT0iMTIiIHgyPSI3My4yIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iMiIgeDE9IjEwOC42MiIgeTE9IjEyIiB4Mj0iMTA4LjYyIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iMyIgeDE9IjE0MS4zMSIgeTE9IjEyIiB4Mj0iMTQxLjMxIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iNCIgeDE9IjE4Ny40MyIgeTE9IjEyIiB4Mj0iMTg3LjQzIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS1obGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxODcuNDMiIHkyPSIxMiIvPjxsaW5lIGRhdGEtaGxpbmU9IjEiIHgxPSIxMiIgeTE9IjM2IiB4Mj0iMTg3LjQzIiB5Mj0iMzYiLz48bGluZSBkYXRhLWhsaW5lPSIyIiB4MT0iMTIiIHkxPSI2MCIgeDI9IjE4Ny40MyIgeTI9IjYwIi8+PGxpbmUgZGF0YS1obGluZT0iMyIgeDE9IjEyIiB5MT0iODQiIHgyPSIxODcuNDMiIHkyPSI4NCIvPjxsaW5lIGRhdGEtaGxpbmU9IjQiIHgxPSIxMiIgeTE9IjEwOCIgeDI9IjE4Ny40MyIgeTI9IjEwOCIvPjwvZz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+PHRleHQgZGF0YS1oZWFkPSIxIiB4PSI3OC4yIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+RG9nPC90ZXh0Pjx0ZXh0IGRhdGEtaGVhZD0iMiIgeD0iMTEzLjYyIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+Q2F0PC90ZXh0Pjx0ZXh0IGRhdGEtaGVhZD0iMyIgeD0iMTQ2LjMxIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+VG90YWw8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIwLTAiIHg9IjE3IiB5PSI1MiIgZm9udC13ZWlnaHQ9IjYwMCI+R3JhZGUgNzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjAtMSIgeD0iNzguMiIgeT0iNTIiPjE0PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0yIiB4PSIxMTMuNjIiIHk9IjUyIj45PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0zIiB4PSIxNDYuMzEiIHk9IjUyIj4yMzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjEtMCIgeD0iMTciIHk9Ijc2IiBmb250LXdlaWdodD0iNjAwIj5HcmFkZSA4PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0xIiB4PSI3OC4yIiB5PSI3NiI+MTE8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIxLTIiIHg9IjExMy42MiIgeT0iNzYiPjE2PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0zIiB4PSIxNDYuMzEiIHk9Ijc2Ij4yNzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMCIgeD0iMTciIHk9IjEwMCIgZm9udC13ZWlnaHQ9IjYwMCI+VG90YWw8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIyLTEiIHg9Ijc4LjIiIHk9IjEwMCI+MjU8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIyLTIiIHg9IjExMy42MiIgeT0iMTAwIj4yNTwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMyIgeD0iMTQ2LjMxIiB5PSIxMDAiPjUwPC90ZXh0PjwvZz48L3N2Zz4=)
+
+   - A) $50$
+   - B) $25$
+   - C) $60$
+   - D) $75$
+
+10. The Cat column total must equal $40$ once a new Grade 9 row is added. Grade 7 and Grade 8 currently show $9$ and $16$ cats. How many cats does Grade 9 need?
+
+<!-- figure: pr-1-4-p5-twoway-pets -->
+![A two-way table of pets owned, by grade. Grade 7: 14 dogs, 9 cats, 23 in total. Grade 8: 11 dogs, 16 cats, 27 in total. The column totals are 25 dogs, 25 cats, and 50 students altogether.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMTIwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHR3by13YXkgdGFibGUgb2YgcGV0cyBvd25lZCwgYnkgZ3JhZGUuIEdyYWRlIDc6IDE0IGRvZ3MsIDkgY2F0cywgMjMgaW4gdG90YWwuIEdyYWRlIDg6IDExIGRvZ3MsIDE2IGNhdHMsIDI3IGluIHRvdGFsLiBUaGUgY29sdW1uIHRvdGFscyBhcmUgMjUgZG9ncywgMjUgY2F0cywgYW5kIDUwIHN0dWRlbnRzIGFsdG9nZXRoZXIuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PHJlY3QgeD0iMTIiIHk9IjEyIiB3aWR0aD0iMTc1LjQzIiBoZWlnaHQ9IjI0IiBmaWxsPSIjNkU5REM4IiBmaWxsLW9wYWNpdHk9IjAuMTgiLz48ZyBzdHJva2U9IiNFMkRDQ0EiIHN0cm9rZS13aWR0aD0iMSI+PGxpbmUgZGF0YS12bGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxMiIgeTI9IjEwOCIvPjxsaW5lIGRhdGEtdmxpbmU9IjEiIHgxPSI3My4yIiB5MT0iMTIiIHgyPSI3My4yIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iMiIgeDE9IjEwOC42MiIgeTE9IjEyIiB4Mj0iMTA4LjYyIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iMyIgeDE9IjE0MS4zMSIgeTE9IjEyIiB4Mj0iMTQxLjMxIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS12bGluZT0iNCIgeDE9IjE4Ny40MyIgeTE9IjEyIiB4Mj0iMTg3LjQzIiB5Mj0iMTA4Ii8+PGxpbmUgZGF0YS1obGluZT0iMCIgeDE9IjEyIiB5MT0iMTIiIHgyPSIxODcuNDMiIHkyPSIxMiIvPjxsaW5lIGRhdGEtaGxpbmU9IjEiIHgxPSIxMiIgeTE9IjM2IiB4Mj0iMTg3LjQzIiB5Mj0iMzYiLz48bGluZSBkYXRhLWhsaW5lPSIyIiB4MT0iMTIiIHkxPSI2MCIgeDI9IjE4Ny40MyIgeTI9IjYwIi8+PGxpbmUgZGF0YS1obGluZT0iMyIgeDE9IjEyIiB5MT0iODQiIHgyPSIxODcuNDMiIHkyPSI4NCIvPjxsaW5lIGRhdGEtaGxpbmU9IjQiIHgxPSIxMiIgeTE9IjEwOCIgeDI9IjE4Ny40MyIgeTI9IjEwOCIvPjwvZz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+PHRleHQgZGF0YS1oZWFkPSIxIiB4PSI3OC4yIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+RG9nPC90ZXh0Pjx0ZXh0IGRhdGEtaGVhZD0iMiIgeD0iMTEzLjYyIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+Q2F0PC90ZXh0Pjx0ZXh0IGRhdGEtaGVhZD0iMyIgeD0iMTQ2LjMxIiB5PSIyOCIgZm9udC13ZWlnaHQ9IjcwMCI+VG90YWw8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIwLTAiIHg9IjE3IiB5PSI1MiIgZm9udC13ZWlnaHQ9IjYwMCI+R3JhZGUgNzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjAtMSIgeD0iNzguMiIgeT0iNTIiPjE0PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0yIiB4PSIxMTMuNjIiIHk9IjUyIj45PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0zIiB4PSIxNDYuMzEiIHk9IjUyIj4yMzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjEtMCIgeD0iMTciIHk9Ijc2IiBmb250LXdlaWdodD0iNjAwIj5HcmFkZSA4PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0xIiB4PSI3OC4yIiB5PSI3NiI+MTE8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIxLTIiIHg9IjExMy42MiIgeT0iNzYiPjE2PC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMS0zIiB4PSIxNDYuMzEiIHk9Ijc2Ij4yNzwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMCIgeD0iMTciIHk9IjEwMCIgZm9udC13ZWlnaHQ9IjYwMCI+VG90YWw8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIyLTEiIHg9Ijc4LjIiIHk9IjEwMCI+MjU8L3RleHQ+PHRleHQgZGF0YS1jZWxsPSIyLTIiIHg9IjExMy42MiIgeT0iMTAwIj4yNTwvdGV4dD48dGV4dCBkYXRhLWNlbGw9IjItMyIgeD0iMTQ2LjMxIiB5PSIxMDAiPjUwPC90ZXh0PjwvZz48L3N2Zz4=)
+
+    - A) $25$
+    - B) $15$
+    - C) $31$
+    - D) $24$
