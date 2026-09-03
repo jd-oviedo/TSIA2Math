@@ -948,6 +948,79 @@ function buildCirclePlane(spec) {
   return frame(W, H, spec.alt, out);
 }
 
+// ─── dot_plot ────────────────────────────────────────────────────────────────
+//
+// Ported from app/components/FigureRenderer.tsx's `case "dot_plot":` (pipeline
+// 2, the CAT item bank). Landed here as a standalone builder rather than as a
+// fourth `coordinate_plane` content array (the precedent bars/boxes/curves/
+// series set in make_figure.mjs) because a dot plot shares none of that
+// module's reusable machinery: no numeric y-axis, no gridlines, no y ticks to
+// invert, and no FIXED canvas -- the canvas HEIGHT is a function of the
+// tallest stack, which is the one thing every coordinate_plane content array
+// assumes constant. Forking coordinate_plane's grid/tick plumbing to serve an
+// axis it does not have would cost more than it saves; figure_table.mjs's
+// banner makes the identical call for the same reason ("no shared machinery
+// to fork"), and circle_plane below is the precedent for a standalone builder
+// that draws its own axis rather than borrowing one that half-fits.
+//
+// `xValues` is the ordered ladder of distinct numeric values on the axis;
+// `counts[i]` is how many dots stack above `xValues[i]`. Both are required
+// and must be the same length -- a value with no count is an axis position
+// nothing is under, and a count with no value is a stack with nowhere to
+// stand -- and xValues must be strictly increasing, because a ladder that
+// isn't ordered isn't a ladder a reader can read left to right.
+function buildDotPlot(spec) {
+  const xValues = spec.xValues;
+  const counts = spec.counts;
+  if (!Array.isArray(xValues) || xValues.length === 0)
+    throw new Error('dot_plot: xValues must be a non-empty array of numbers');
+  if (xValues.some(v => typeof v !== 'number' || !Number.isFinite(v)))
+    throw new Error('dot_plot: every xValues entry must be a finite number');
+  for (let i = 1; i < xValues.length; i++)
+    if (xValues[i] <= xValues[i - 1])
+      throw new Error(`dot_plot: xValues must be strictly increasing (index ${i}: ${xValues[i]} follows ${xValues[i - 1]})`);
+  if (!Array.isArray(counts) || counts.length !== xValues.length)
+    throw new Error('dot_plot: counts must be an array the same length as xValues');
+  counts.forEach((c, i) => {
+    if (!Number.isInteger(c) || c < 0)
+      throw new Error(`dot_plot: counts[${i}] (${c}) must be a non-negative integer`);
+  });
+  if (counts.every(c => c === 0))
+    throw new Error('dot_plot: every count is zero, which draws an axis and nothing else');
+
+  const W = spec.width ?? 360;
+  const padL = 30, padR = 30, padB = 46;
+  const dotR = 7, dotGap = 3;
+  const maxCount = Math.max(1, ...counts);
+  const axisY = 40 + maxCount * (dotR * 2 + dotGap);
+  const H = axisY + padB;
+  const plotW = W - padL - padR;
+  const band = plotW / xValues.length;
+  const xToPx = i => n(padL + band * i + band / 2);
+
+  let out = `<line x1="${n(padL - 6)}" y1="${axisY}" x2="${n(W - padR + 6)}" y2="${axisY}" stroke="${INK}" stroke-width="1.4"/>`;
+  xValues.forEach((xv, i) => {
+    const cx = xToPx(i);
+    out += `<line x1="${cx}" y1="${axisY}" x2="${cx}" y2="${n(axisY + 5)}" stroke="${INK}" stroke-width="1.2"/>`;
+    // Dots stack bottom-up from the axis, closest first (k = 0), so the tally
+    // reads the way a hand-drawn dot plot does: one mark added on top of the
+    // last for every occurrence of that value.
+    for (let k = 0; k < counts[i]; k++) {
+      const cy = n(axisY - dotR - k * (dotR * 2 + dotGap));
+      out += `<circle data-dot="${i}-${k}" cx="${cx}" cy="${cy}" r="${dotR}" fill="${ACCENT}" stroke="${INK}" stroke-width="0.8"/>`;
+    }
+    // A plain (non-bold) tick label, matching the axis-tick convention in
+    // make_figure.mjs and figure_shapes.mjs's own gridPlane -- txt() forces
+    // font-weight 600, which is right for a dimension label and wrong for a
+    // tick. data-role="tick" is what verifyShape reads to find these without
+    // guessing from font weight or position.
+    out += `<text data-role="tick" x="${cx}" y="${n(axisY + 20)}" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="${INK}">${esc(String(xv))}</text>`;
+  });
+  if (spec.xLabel) out += txt([n(W / 2), n(H - 8)], spec.xLabel, 'middle', INK, 12, role('identifier'));
+
+  return frame(W, H, spec.alt, out);
+}
+
 const BUILDERS = {
   polygon: buildPolygon,
   circle: buildCircle,
@@ -957,6 +1030,7 @@ const BUILDERS = {
   similar_pair: buildSimilarPair,
   symmetry: buildSymmetry,
   circle_plane: buildCirclePlane,
+  dot_plot: buildDotPlot,
 };
 
 export const SHAPE_TYPES = Object.keys(BUILDERS);
@@ -1081,6 +1155,52 @@ export function verifyShape(spec, svg) {
     const [P1, P2] = parsePolys(svg);
     const s1 = sideLens(P1), s2 = sideLens(P2);
     s1.forEach((L, i) => add(`side ${i} scale factor`, s2[i] / L, spec.k, 0.03));
+  }
+
+  // Dot plots, measured back out of the emitted circles and tick labels.
+  //
+  // Everything else in this file compares RATIOS, because a shape's spec is a
+  // set of dimensions and the drawing can be at any scale. A dot plot has no
+  // such freedom: `counts[i]` is a literal number of marks, so the check here
+  // is an exact count, not a ratio, the same way verifyBars counts declared
+  // bars against drawn rects rather than comparing a scale factor.
+  if (spec.type === 'dot_plot') {
+    const xValues = spec.xValues ?? [];
+    const counts = spec.counts ?? [];
+    const dots = [...svg.matchAll(/<circle data-dot="(\d+)-(\d+)" cx="([-\d.]+)" cy="([-\d.]+)"/g)];
+    const ticks = [...svg.matchAll(/<text data-role="tick" x="([-\d.]+)" y="[-\d.]+" text-anchor="middle"[^>]*>([^<]*)<\/text>/g)];
+
+    add('every value ticked', ticks.length, xValues.length, 0);
+    add('total dots drawn', dots.length, counts.reduce((s, c) => s + c, 0), 0);
+
+    xValues.forEach((xv, i) => {
+      const own = dots.filter(d => Number(d[1]) === i);
+      add(`stack ${i} dot count`, own.length, counts[i] ?? 0, 0);
+      const T = ticks[i];
+      if (!T) return add(`stack ${i} labelled`, 0, 1, 0);
+      add(`stack ${i} label is "${xv}"`, T[2] === esc(String(xv)) ? 1 : 0, 1, 0);
+      // Every dot in the stack sits directly above its own tick, and the
+      // stack is gapless: dot k sits exactly one dot-plus-gap above dot k-1,
+      // which is what "stacked" means as opposed to scattered near the value.
+      // Measured as a DIFFERENCE against 0, not as cx against tick-x directly:
+      // close() scales its tolerance by the expected value (see its definition
+      // above), which is right for the ratio checks elsewhere in this file but
+      // would turn 0.5 into "half the tick's pixel position" here. A tick at
+      // x = 217 would then tolerate a dot drifting 108px off it.
+      own.forEach(d => add(`stack ${i} dot aligned to its tick`, +d[3] - +T[1], 0, 0.5));
+      if (own.length > 1) {
+        const gaps = own.slice(1).map((d, k) => +own[k][4] - +d[4]);
+        add(`stack ${i} dots evenly stacked`, Math.max(...gaps) - Math.min(...gaps), 0, 0.5);
+      }
+    });
+
+    // The structural fact a value ladder owes the reader: evenly spaced ticks,
+    // the same guarantee verifyBars makes for category bands.
+    const tickX = ticks.map(t => +t[1]);
+    if (tickX.length > 2) {
+      const gaps = tickX.slice(1).map((v, i) => v - tickX[i]);
+      add('value ticks evenly spaced', Math.max(...gaps) - Math.min(...gaps), 0, 0.5);
+    }
   }
 
   return checks;

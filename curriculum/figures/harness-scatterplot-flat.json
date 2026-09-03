@@ -1,0 +1,11 @@
+{
+  "type": "coordinate_plane",
+  "xLabel": "Shoe size",
+  "yLabel": "Test score",
+  "xRange": [4, 14],
+  "yRange": [0, 100],
+  "plots": [
+    { "path": [[4, 75], [14, 75]], "scatter": "wide", "n": 18 }
+  ],
+  "alt": "A scatterplot of shoe size, from 4 to 14, against test score, from 0 to 100. 18 points scatter widely with no trend, spread around a flat line at a score of 75, showing shoe size has no relationship to test score."
+}

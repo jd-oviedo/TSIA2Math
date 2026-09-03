@@ -227,6 +227,92 @@ function curveRuns(c, xRange, yRange) {
   return runs.filter(r => r.length > 1);
 }
 
+// ─── scatterplots ────────────────────────────────────────────────────────────
+//
+// Ported from app/components/FigureRenderer.tsx's `case "scatterplot":`
+// (pipeline 2, the CAT item bank; see PR_P_065 in data/items/PR/PR.4.1.json
+// for the real spec this is ported from). Landed as a `plots` array on
+// `coordinate_plane`, not a new top-level type, for the same reason bars,
+// boxes, curves and series were: a scatter cloud is points on a numeric x-y
+// plane, and the grid, ticks, axes and padding above are exactly the shared
+// plumbing a Cartesian mark needs. What pipeline 2 calls `figure_props.plots`
+// (an array of PANELS, each a separate little coordinate system side by side)
+// is narrowed here to an array of CLOUDS sharing this file's one plane,
+// because make_figure.mjs draws one image per spec -- a side-by-side
+// comparison here is authored as two separate figures, not one figure with
+// two embedded axes. The field name `plots` and the per-cloud field names
+// (`path`, `scatter`, `n`, `points`) are kept identical to pipeline 2's on
+// purpose, so an author who already knows one spec shape recognises the
+// other; only the per-panel `xLabel`/`xRange`/etc. are dropped, because here
+// those live once, at the top level, the way they already do for bars/boxes.
+//
+// A cloud is declared, never authored point by point: `path` is the trend the
+// points follow (in data coordinates, one vertex for a straight association,
+// three or more for a curve), `scatter` is how tight the cloud hugs that
+// trend, and `n` is how many points are in it. `points` adds exact-coordinate
+// outliers on top, for the stated case a stem names explicitly. See
+// scatterCloud() for the generator itself and the doc comment above
+// verifyScatter for what re-measuring a generated cloud can and cannot prove.
+function mulberry32(seed) {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+// Point on a polyline at fraction t of its length. Two vertices give a
+// straight trend; three or more give a curve (an arc, a U, a plateau), which
+// is how a non-linear association is expressed without a second figure type.
+function alongPath(path, t) {
+  if (path.length === 1) return path[0];
+  const segs = path.length - 1;
+  const scaled = Math.min(t, 0.999999) * segs;
+  const i = Math.floor(scaled);
+  const f = scaled - i;
+  const [x1, y1] = path[i];
+  const [x2, y2] = path[i + 1];
+  return [x1 + (x2 - x1) * f, y1 + (y2 - y1) * f];
+}
+
+// Vertical spread as a fraction of the y-range. "none" puts every point
+// exactly on the trend line, which real data never does, so even the
+// tightest declared association still gets a sliver of scatter. Values kept
+// identical to FigureRenderer.tsx's SCATTER_SPREAD.
+const SCATTER_SPREAD = { none: 0, tight: 0.045, moderate: 0.11, wide: 0.24 };
+
+const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
+// The random cloud a plot declares, in DATA coordinates. Called identically
+// by the builder (to draw it) and by verifyScatter (to recompute what should
+// have been drawn), so the seed, path, spread and count are the ONLY inputs:
+// same plot, same index, same cloud, every time. That determinism is what
+// lets verifyScatter hold the builder to this function's output without the
+// two of them sharing a scale -- see the doc comment above verifyScatter.
+function scatterCloud(P, xRange, yRange, i) {
+  const spread = SCATTER_SPREAD[P.scatter ?? 'moderate'] ?? 0.11;
+  const count = P.n;
+  const rand = mulberry32(i * 7919 + count * 31 + P.path.length);
+  const xSpan = xRange[1] - xRange[0] || 1, ySpan = yRange[1] - yRange[0] || 1;
+  const cloud = [];
+  for (let k = 0; k < count; k++) {
+    const t = count === 1 ? 0.5 : k / (count - 1);
+    const [px, py] = alongPath(P.path, t);
+    const jitterX = (rand() - 0.5) * (xSpan / count) * 0.6;
+    const jitterY = (rand() - 0.5) * 2 * spread * ySpan;
+    // Keep the generated cloud just inside the axes; a point sitting on the
+    // axis line reads as part of the frame rather than as data.
+    const inset = 0.025;
+    cloud.push([
+      clamp(px + jitterX, xRange[0] + xSpan * inset, xRange[1] - xSpan * inset),
+      clamp(py + jitterY, yRange[0] + ySpan * inset, yRange[1] - ySpan * inset),
+    ]);
+  }
+  return cloud;
+}
+
 // A bar chart is `coordinate_plane` with a `bars` array, not a new top-level
 // type, for the same reason curves were: the grid, the y ticks, the padding, the
 // axis titles and the alt-text contract are all reusable as they stand, and
@@ -278,7 +364,7 @@ function buildSvg(spec) {
     throw new Error('bars and boxes both declare a categorical axis and cannot share one plane');
 
   if (categoricalY) {
-    for (const k of ['lines', 'curves', 'points', 'bars'])
+    for (const k of ['lines', 'curves', 'points', 'bars', 'plots'])
       if (spec[k]?.length)
         throw new Error(`boxes put a categorical y-axis on the plane, so "${k}" cannot share it`);
     if (!spec.xRange)
@@ -304,7 +390,7 @@ function buildSvg(spec) {
   // numeric-x marks, or that omits the axis top, would otherwise produce a
   // well-formed and meaningless picture -- the silent-default shape.
   if (categorical) {
-    for (const k of ['lines', 'curves', 'points'])
+    for (const k of ['lines', 'curves', 'points', 'plots'])
       if (spec[k]?.length)
         throw new Error(`bars put a categorical x-axis on the plane, so "${k}" cannot share it: those marks are placed by numeric x`);
     if (!spec.yRange)
@@ -316,6 +402,42 @@ function buildSvg(spec) {
       if (B.value > spec.yRange[1]) throw new Error(`bar ${i} ("${B.label}") value ${B.value} runs past the top of yRange`);
       if (B.value < spec.yRange[0]) throw new Error(`bar ${i} ("${B.label}") value ${B.value} sits below the baseline yRange[0]`);
     }
+  }
+
+  // Scatterplots. Neither categorical axis makes sense under a numeric cloud
+  // of points, spec.xRange/yRange are required for the same reason bars and
+  // boxes require their value axis explicitly (where a scatter's axes start
+  // and stop decides how tight the cloud reads), and `n` is a content claim
+  // (how much data the figure shows) rather than a style knob, so it has no
+  // default the way `scatter` (the spread band) does.
+  const plots = spec.plots ?? [];
+  if (plots.length) {
+    if (categorical || categoricalY)
+      throw new Error('plots put a scatter cloud on numeric x and y axes, which cannot share a plane with bars or boxes');
+    if (!spec.xRange || !spec.yRange)
+      throw new Error('a scatterplot must declare xRange and yRange: where the axes start and stop decides how the trend and spread read, never a default');
+    plots.forEach((P, i) => {
+      if (!Array.isArray(P.path) || P.path.length < 1)
+        throw new Error(`plot ${i} needs a path array of at least one [x, y] vertex: the trend the cloud follows`);
+      for (const pt of P.path) {
+        if (!Array.isArray(pt) || pt.length !== 2 || pt.some(v => !Number.isFinite(v)))
+          throw new Error(`plot ${i} has a path vertex that is not a finite [x, y] pair`);
+        const [px, py] = pt;
+        if (px < spec.xRange[0] || px > spec.xRange[1] || py < spec.yRange[0] || py > spec.yRange[1])
+          throw new Error(`plot ${i} has a path vertex (${px}, ${py}) outside the plot window`);
+      }
+      if (P.scatter !== undefined && !(P.scatter in SCATTER_SPREAD))
+        throw new Error(`plot ${i} has an unknown scatter band "${P.scatter}" (known: ${Object.keys(SCATTER_SPREAD).join(', ')})`);
+      if (!Number.isInteger(P.n) || P.n < 1)
+        throw new Error(`plot ${i} needs n, the size of the cloud, as a positive integer: how much data a scatterplot shows is a content claim, never a default`);
+      for (const pt of P.points ?? []) {
+        if (!Array.isArray(pt) || pt.length !== 2 || pt.some(v => !Number.isFinite(v)))
+          throw new Error(`plot ${i} has a stated point that is not a finite [x, y] pair`);
+        const [px, py] = pt;
+        if (px < spec.xRange[0] || px > spec.xRange[1] || py < spec.yRange[0] || py > spec.yRange[1])
+          throw new Error(`plot ${i} has a stated point (${px}, ${py}) outside the plot window`);
+      }
+    });
   }
 
   const xRange = spec.xRange ?? [-1, 9];
@@ -559,6 +681,24 @@ function buildSvg(spec) {
     }
   });
 
+  // Scatterplots. Drawn after series and before marked points, and with a
+  // smaller radius (3 vs. the marked-point 4.5), so the two mark kinds stay
+  // visually and texturally distinct on a plane that carries both.
+  //
+  // data-scatter carries "{plot index}-{point index in the cloud}" and
+  // data-scatter-stated carries "{plot index}-{point index in P.points}",
+  // exactly the way data-vertex disambiguates a series marker from a marked
+  // point: both are inert in the rendered image and exist so verifyScatter can
+  // recompute the SAME cloud (see scatterCloud() above) and match it back to
+  // the circle it names, rather than guessing correspondence from draw order.
+  plots.forEach((P, i) => {
+    const fill = P.color === 'line' ? LINE : ACCENT;
+    scatterCloud(P, xRange, yRange, i).forEach(([px, py], k) =>
+      parts.push(`<circle data-scatter="${i}-${k}" cx="${X(px)}" cy="${Y(py)}" r="3" fill="${fill}" stroke="${INK}" stroke-width="0.8"/>`));
+    (P.points ?? []).forEach(([px, py], k) =>
+      parts.push(`<circle data-scatter-stated="${i}-${k}" cx="${X(px)}" cy="${Y(py)}" r="3" fill="${fill}" stroke="${INK}" stroke-width="0.8"/>`));
+  });
+
   // Marked points
   (spec.points ?? []).forEach(P => {
     parts.push(`<circle cx="${X(P.x)}" cy="${Y(P.y)}" r="4.5" fill="${P.color === 'line' ? LINE : ACCENT}" stroke="${SURFACE}" stroke-width="1.5"/>`);
@@ -754,6 +894,7 @@ export function verifyPlane(spec, svg) {
 
   verifySeries(spec, svg, ix, iy, add);
   verifyCurves(spec, svg, ix, iy, add);
+  verifyScatter(spec, svg, ix, iy, add);
 
   // Marked points must sit where the spec puts them, not merely near the line.
   (spec.points ?? []).forEach((P, i) => {
@@ -857,6 +998,105 @@ export function verifySeries(spec, svg, ix, iy, add) {
       add(`series ${i} vertex ${k} x`, ix(v[0]), dx, xTol);
       add(`series ${i} vertex ${k} y`, iy(v[1]), dy, yTol);
     });
+  });
+}
+
+// Scatterplots, measured back out of the emitted circles.
+//
+// ─── WHAT verifyScatter PROVES, AND WHAT IT DOES NOT ─────────────────────────
+//
+// A scatter cloud is GENERATED, not authored: scatterCloud() is a declared,
+// seeded algorithm, not a dataset, and the builder's only job is to draw
+// EXACTLY what that function returns, at the pixel position its own data
+// coordinates map to. That is the one thing this function can hold the
+// builder to, and it does so by calling scatterCloud() a second time -- same
+// function, same seed, same path, same n -- and pushing the emitted circles
+// back through the TICK-LABEL inversion (ix, iy; never through makeScales(),
+// for the reason given above verifyPlane) to see whether the two clouds agree
+// point for point.
+//
+// What that combination catches: a mis-scaled axis (the inverted circles land
+// on the wrong data coordinates even though the pixels look right on the
+// builder's own scale), a cloud drawn with the wrong seed, count, spread or
+// path, a dropped or duplicated point, and a stated outlier (`points`) drawn
+// at the wrong coordinate or missing.
+//
+// What it CANNOT catch, and must not be read as catching, is anything about
+// whether the declared `path` and `scatter` band describe REAL data. A path
+// declared as a rising trend against a relationship that is, in the real
+// world, flat or falling passes every assertion here, the identical failure
+// mode already on record above verifyPlane for a declared line against a
+// hand-plotted point: two declarations that agree with each other pass no
+// matter what they claim. The one thing added here beyond "the builder was
+// honest" is a coarse SIGN check -- the generated cloud's own least-squares
+// trend must lean the direction the declared path leans, or be flat when the
+// path is flat -- which catches an inverted axis or a path typo (rising
+// declared, falling drawn) but proves nothing about whether the declared
+// trend is the TRUE one. "Moderate" scatter around a rising line looks
+// exactly like "moderate" scatter around a slightly different rising line,
+// and both pass identically. Whether hours practiced actually predicts free
+// throws made is a content claim: it belongs to the three-pass distractor
+// ledger and to review, exactly like a bar chart's value or a box plot's
+// five-number summary, and it is not this file's job to have checked it.
+export function verifyScatter(spec, svg, ix, iy, add) {
+  const plots = spec.plots ?? [];
+  const drawnGroups = new Set([...svg.matchAll(/<circle data-scatter="(\d+)-\d+"/g)].map(m => m[1]));
+  if (!plots.length && !drawnGroups.size) return;
+
+  add('every declared plot drawn', drawnGroups.size, plots.length, 0);
+  const xTol = 0.01 * Math.abs(spec.xRange[1] - spec.xRange[0]);
+  const yTol = 0.01 * Math.abs(spec.yRange[1] - spec.yRange[0]);
+  const ySpan = Math.abs(spec.yRange[1] - spec.yRange[0]);
+  const xSpan = Math.abs(spec.xRange[1] - spec.xRange[0]);
+
+  plots.forEach((P, i) => {
+    const cloud = [...svg.matchAll(new RegExp(`<circle data-scatter="${i}-(\\d+)" cx="([-\\d.]+)" cy="([-\\d.]+)"`, 'g'))]
+      .sort((a, b) => Number(a[1]) - Number(b[1]));
+    const stated = [...svg.matchAll(new RegExp(`<circle data-scatter-stated="${i}-(\\d+)" cx="([-\\d.]+)" cy="([-\\d.]+)"`, 'g'))]
+      .sort((a, b) => Number(a[1]) - Number(b[1]));
+
+    add(`plot ${i} cloud count`, cloud.length, P.n, 0);
+    add(`plot ${i} stated points drawn`, stated.length, (P.points ?? []).length, 0);
+
+    // The SAME generator the builder called, so the only thing left to
+    // disagree about is whether the drawing honours it.
+    const expected = scatterCloud(P, spec.xRange, spec.yRange, i);
+    expected.forEach(([ex, ey], k) => {
+      const c = cloud[k];
+      if (!c) return add(`plot ${i} point ${k} drawn`, 0, 1, 0);
+      add(`plot ${i} point ${k} x`, ix(+c[2]), ex, xTol);
+      add(`plot ${i} point ${k} y`, iy(+c[3]), ey, yTol);
+    });
+
+    (P.points ?? []).forEach(([ex, ey], k) => {
+      const c = stated[k];
+      if (!c) return add(`plot ${i} stated point ${k} drawn`, 0, 1, 0);
+      add(`plot ${i} stated point ${k} x`, ix(+c[2]), ex, xTol);
+      add(`plot ${i} stated point ${k} y`, iy(+c[3]), ey, yTol);
+    });
+
+    // The coarse trend-direction check described in the doc comment above:
+    // a least-squares slope through the MEASURED cloud (tick-label space),
+    // compared only for sign against the declared path's own rise.
+    if (P.path.length > 1 && cloud.length > 1) {
+      const pts = cloud.map(c => [ix(+c[2]), iy(+c[3])]);
+      const mx = pts.reduce((s, p) => s + p[0], 0) / pts.length;
+      const my = pts.reduce((s, p) => s + p[1], 0) / pts.length;
+      const num = pts.reduce((s, [x, y]) => s + (x - mx) * (y - my), 0);
+      const den = pts.reduce((s, [x, y]) => s + (x - mx) * (x - mx), 0);
+      const measuredSlope = den > 1e-9 ? num / den : 0;
+
+      const [, fy] = P.path[0], [, ly] = P.path[P.path.length - 1];
+      const flat = Math.abs(ly - fy) < 0.02 * ySpan;
+      if (flat) {
+        // No direction to agree with, so the bar is just that the cloud not
+        // read as a strong trend in either direction.
+        add(`plot ${i} cloud trend is flat`, Math.abs(measuredSlope) * xSpan, 0, 0.5 * ySpan);
+      } else {
+        const expectedSign = ly > fy ? 1 : -1;
+        add(`plot ${i} cloud trend direction`, Math.sign(measuredSlope) || expectedSign, expectedSign, 0);
+      }
+    }
   });
 }
 

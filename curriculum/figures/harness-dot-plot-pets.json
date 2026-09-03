@@ -1,0 +1,7 @@
+{
+  "type": "dot_plot",
+  "xValues": [0, 1, 2, 3],
+  "counts": [2, 3, 1, 2],
+  "xLabel": "Pets owned",
+  "alt": "A dot plot of pets owned per student. 0 pets: 2 students. 1 pet: 3 students. 2 pets: 1 student. 3 pets: 2 students."
+}
