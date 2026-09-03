@@ -1,0 +1,19 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [
+    30,
+    100
+  ],
+  "xLabel": "Test score",
+  "boxes": [
+    {
+      "label": "Scores",
+      "min": 40,
+      "q1": 55,
+      "median": 68,
+      "q3": 80,
+      "max": 95
+    }
+  ],
+  "alt": "A box plot on a number line of test scores running from 30 to 100, marked every 10. The left whisker starts at the minimum of 40 and runs to the box at 55. The box runs from the lower quartile 55 to the upper quartile 80, with the median drawn inside it at 68. The right whisker runs from 80 out to the maximum of 95."
+}

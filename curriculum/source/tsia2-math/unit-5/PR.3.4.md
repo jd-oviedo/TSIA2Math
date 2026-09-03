@@ -710,3 +710,333 @@ Step 3: Divide.
   "D": "prior_reported_ignoring_condition"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. In a class of $30$ students, $18$ are girls. Of the girls, $12$ play a sport. What is the probability that a randomly chosen student plays a sport, GIVEN that the student is a girl?**
+
+Step 1: The condition "given a girl" restricts the group to the $18$ girls, not all $30$ students.
+
+Step 2: Divide the girls who play a sport by the total girls.
+- $\frac{12}{18} = \frac{2}{3}$
+
+**Answer: C** ($\frac{2}{3}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: whole_population_as_denominator (divides the 12 girls who play a sport by all 30 students instead of by the 18 girls)",
+  "B": "Student makes misconception: conditional_reversed (divides the total girls, 18, by the girls who play a sport, 12, exchanging the two events)",
+  "C": "Correct: divides the 12 girls who play a sport by the 18 girls, the conditioning group, for 2/3",
+  "D": "Student makes misconception: prior_reported_ignoring_condition (reports the proportion of girls in the class, 18/30, ignoring the actual condition being asked about)"
+},
+"misconception_tag": {
+  "A": "whole_population_as_denominator",
+  "B": "conditional_reversed",
+  "D": "prior_reported_ignoring_condition"
+}
+```
+
+---
+
+**2. A survey of $50$ people finds $20$ own a dog. Of the dog owners, $15$ also own a cat. What is the probability a person owns a cat, GIVEN they own a dog?**
+
+Step 1: The condition restricts the group to the $20$ dog owners.
+
+Step 2: Divide the dog owners who also own a cat by the total dog owners.
+- $\frac{15}{20} = \frac{3}{4}$
+
+**Answer: D** ($\frac{3}{4}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: whole_population_as_denominator (divides the 15 cat-and-dog owners by all 50 people instead of by the 20 dog owners)",
+  "B": "Student makes misconception: conditional_reversed (divides the total dog owners, 20, by the dog owners who also own a cat, 15, exchanging the two events)",
+  "C": "Student makes misconception: prior_reported_ignoring_condition (reports the proportion of dog owners in the survey, 20/50, ignoring the actual condition being asked about)",
+  "D": "Correct: divides the 15 dog owners who also own a cat by the 20 dog owners, the conditioning group, for 3/4"
+},
+"misconception_tag": {
+  "A": "whole_population_as_denominator",
+  "B": "conditional_reversed",
+  "C": "prior_reported_ignoring_condition"
+}
+```
+
+---
+
+**3. Among $40$ job applicants, $24$ have a college degree. Of those with a degree, $18$ were called for an interview. What is the probability an applicant was called for an interview, GIVEN they have a degree?**
+
+Step 1: The condition restricts the group to the $24$ applicants with a degree.
+
+Step 2: Divide the degree holders who were interviewed by the total degree holders.
+- $\frac{18}{24} = \frac{3}{4}$
+
+**Answer: B** ($\frac{3}{4}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: whole_population_as_denominator (divides the 18 interviewed degree holders by all 40 applicants instead of by the 24 with a degree)",
+  "B": "Correct: divides the 18 interviewed degree holders by the 24 with a degree, the conditioning group, for 3/4",
+  "C": "Student makes misconception: conditional_reversed (divides the total degree holders, 24, by those interviewed, 18, exchanging the two events)",
+  "D": "Student makes misconception: prior_reported_ignoring_condition (reports the proportion of applicants with a degree, 24/40, ignoring the actual condition being asked about)"
+},
+"misconception_tag": {
+  "A": "whole_population_as_denominator",
+  "C": "conditional_reversed",
+  "D": "prior_reported_ignoring_condition"
+}
+```
+
+---
+
+**4. In a bag, $10$ marbles are red, and $6$ of those red marbles are also striped, out of $30$ marbles total. What is the probability a marble is striped, GIVEN that it is red?**
+
+Step 1: The condition restricts the group to the $10$ red marbles.
+
+Step 2: Divide the striped red marbles by the total red marbles.
+- $\frac{6}{10} = \frac{3}{5}$
+
+**Answer: A** ($\frac{3}{5}$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: divides the 6 striped red marbles by the 10 red marbles, the conditioning group, for 3/5",
+  "B": "Student makes misconception: whole_population_as_denominator (divides the 6 striped red marbles by all 30 marbles instead of by the 10 red marbles)",
+  "C": "Student makes misconception: conditional_reversed (divides the total red marbles, 10, by the striped red marbles, 6, exchanging the two events)",
+  "D": "Student makes misconception: prior_reported_ignoring_condition (reports the proportion of marbles that are red, 10/30, ignoring the actual condition being asked about)"
+},
+"misconception_tag": {
+  "B": "whole_population_as_denominator",
+  "C": "conditional_reversed",
+  "D": "prior_reported_ignoring_condition"
+}
+```
+
+---
+
+**5. In a group, $P(A \text{ and } B) = 0.24$ and $P(B) = 0.4$. What is $P(A \mid B)$?**
+
+Step 1: Apply the conditional probability formula.
+- $P(A \mid B) = \dfrac{P(A \text{ and } B)}{P(B)}$
+
+Step 2: Divide.
+- $\dfrac{0.24}{0.4} = 0.6$
+
+**Answer: D** ($0.6$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: joint_reported_as_conditional (reports the joint probability, 0.24, without dividing by 0.4)",
+  "B": "Student makes misconception: conditional_reversed (divides 0.4 by 0.24 instead of 0.24 by 0.4)",
+  "C": "Student makes misconception: prior_reported_ignoring_condition (reports the given P(B), 0.4, instead of completing the conditional calculation)",
+  "D": "Correct: divides the joint probability, 0.24, by P(B), 0.4, for 0.6"
+},
+"misconception_tag": {
+  "A": "joint_reported_as_conditional",
+  "B": "conditional_reversed",
+  "C": "prior_reported_ignoring_condition"
+}
+```
+
+---
+
+**6. $P(X \text{ and } Y) = 0.15$ and $P(X) = 0.3$. What is $P(Y \mid X)$?**
+
+Step 1: Apply the conditional probability formula.
+- $P(Y \mid X) = \dfrac{P(X \text{ and } Y)}{P(X)}$
+
+Step 2: Divide.
+- $\dfrac{0.15}{0.3} = 0.5$
+
+**Answer: C** ($0.5$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: joint_reported_as_conditional (reports the joint probability, 0.15, without dividing by 0.3)",
+  "B": "Student makes misconception: conditional_reversed (divides 0.3 by 0.15 instead of 0.15 by 0.3)",
+  "C": "Correct: divides the joint probability, 0.15, by P(X), 0.3, for 0.5",
+  "D": "Student makes misconception: prior_reported_ignoring_condition (reports the given P(X), 0.3, instead of completing the conditional calculation)"
+},
+"misconception_tag": {
+  "A": "joint_reported_as_conditional",
+  "B": "conditional_reversed",
+  "D": "prior_reported_ignoring_condition"
+}
+```
+
+---
+
+**7. In a survey, $65\%$ of respondents exercise regularly, and $45\%$ of respondents both exercise regularly AND eat a balanced diet. What is the probability a respondent eats a balanced diet, GIVEN that they exercise regularly?**
+
+Step 1: Apply the conditional probability formula.
+- $P(\text{diet} \mid \text{exercise}) = \dfrac{P(\text{exercise} \text{ and } \text{diet})}{P(\text{exercise})}$
+
+Step 2: Divide.
+- $\dfrac{0.45}{0.65} = \frac{9}{13}$
+
+**Answer: B** ($\frac{9}{13}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: joint_reported_as_conditional (reports the joint probability, 0.45, without dividing by 0.65)",
+  "B": "Correct: divides the joint probability, 0.45, by the probability of exercising, 0.65, for 9/13",
+  "C": "Student makes misconception: conditional_reversed (divides 0.65 by 0.45 instead of 0.45 by 0.65)",
+  "D": "Student makes misconception: prior_reported_ignoring_condition (reports the given exercise rate, 0.65, instead of completing the conditional calculation)"
+},
+"misconception_tag": {
+  "A": "joint_reported_as_conditional",
+  "C": "conditional_reversed",
+  "D": "prior_reported_ignoring_condition"
+}
+```
+
+---
+
+**8. A school has $200$ students. $120$ are in band, and of those, $80$ also play a varsity sport. Of the $80$ students not in band, $50$ play a varsity sport. What is the probability a student plays a varsity sport, GIVEN that they are NOT in band?**
+
+Step 1: The condition restricts the group to the $80$ students not in band.
+
+Step 2: Divide the non-band students who play a sport by the total non-band students.
+- $\frac{50}{80} = \frac{5}{8}$
+
+**Answer: A** ($\frac{5}{8}$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: divides the 50 non-band sport players by the 80 non-band students, the conditioning group, for 5/8",
+  "B": "Student makes misconception: whole_population_as_denominator (divides the 50 non-band sport players by all 200 students instead of by the 80 not in band)",
+  "C": "Student makes misconception: conditional_reversed (divides the 80 non-band students by the 50 who play a sport, exchanging the two events)",
+  "D": "Student makes misconception: prior_reported_ignoring_condition (combines both groups' sport players, 80 plus 50 over 200, ignoring the actual not-in-band condition)"
+},
+"misconception_tag": {
+  "B": "whole_population_as_denominator",
+  "C": "conditional_reversed",
+  "D": "prior_reported_ignoring_condition"
+}
+```
+
+---
+
+**9. In a population, $P(A \mid B) = 0.4$ and $P(B) = 0.5$. What is $P(A \text{ and } B)$?**
+
+Step 1: Rearrange the conditional probability formula.
+- $P(A \text{ and } B) = P(A \mid B) \times P(B)$
+
+Step 2: Multiply.
+- $0.4 \times 0.5 = 0.2$
+
+**Answer: D** ($0.2$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: conditional_reversed (divides 0.4 by 0.5 instead of multiplying)",
+  "B": "Student makes misconception: joint_reported_as_conditional (reports the given conditional probability, 0.4, directly as though it were already the joint probability)",
+  "C": "Student makes misconception: prior_reported_ignoring_condition (reports the given P(B), 0.5, instead of completing the multiplication)",
+  "D": "Correct: multiplies P(A given B), 0.4, by P(B), 0.5, for a joint probability of 0.2"
+},
+"misconception_tag": {
+  "A": "conditional_reversed",
+  "B": "joint_reported_as_conditional",
+  "C": "prior_reported_ignoring_condition"
+}
+```
+
+---
+
+**10. A factory has two machines. Machine A produces $60\%$ of all items and has a $5\%$ defect rate. Machine B produces the remaining $40\%$ and has a $10\%$ defect rate. What is the probability that a randomly selected item was made by Machine A, GIVEN that it is defective?**
+
+Step 1: Find the probability an item is both from Machine A and defective.
+- $0.6 \times 0.05 = 0.03$
+
+Step 2: Find the total probability an item is defective, from either machine.
+- $0.6 \times 0.05 + 0.4 \times 0.10 = 0.03 + 0.04 = 0.07$
+
+Step 3: Divide the joint probability by the total probability of being defective, the conditioning group.
+- $\dfrac{0.03}{0.07} = \frac{3}{7}$
+
+**Answer: C** ($\frac{3}{7}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: whole_population_as_denominator (divides the joint probability, 0.03, by 1, the whole population, instead of by the total defective probability, 0.07)",
+  "B": "Student makes misconception: conditional_reversed (divides the total defective probability, 0.07, by the joint probability, 0.03, exchanging the two)",
+  "C": "Correct: divides the joint probability, 0.03, by the total defective probability, 0.07, for 3/7",
+  "D": "Student makes misconception: prior_reported_ignoring_condition (reports Machine A's overall production share, 0.6, ignoring the defective condition entirely)"
+},
+"misconception_tag": {
+  "A": "whole_population_as_denominator",
+  "B": "conditional_reversed",
+  "D": "prior_reported_ignoring_condition"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. In a class of $30$ students, $18$ are girls. Of the girls, $12$ play a sport. What is the probability that a randomly chosen student plays a sport, GIVEN that the student is a girl?
+   - A) $\frac{2}{5}$
+   - B) $\frac{3}{2}$
+   - C) $\frac{2}{3}$
+   - D) $\frac{3}{5}$
+
+2. A survey of $50$ people finds $20$ own a dog. Of the dog owners, $15$ also own a cat. What is the probability a person owns a cat, GIVEN they own a dog?
+   - A) $\frac{3}{10}$
+   - B) $\frac{4}{3}$
+   - C) $\frac{2}{5}$
+   - D) $\frac{3}{4}$
+
+3. Among $40$ job applicants, $24$ have a college degree. Of those with a degree, $18$ were called for an interview. What is the probability an applicant was called for an interview, GIVEN they have a degree?
+   - A) $\frac{9}{20}$
+   - B) $\frac{3}{4}$
+   - C) $\frac{4}{3}$
+   - D) $\frac{3}{5}$
+
+4. In a bag, $10$ marbles are red, and $6$ of those red marbles are also striped, out of $30$ marbles total. What is the probability a marble is striped, GIVEN that it is red?
+   - A) $\frac{3}{5}$
+   - B) $\frac{1}{5}$
+   - C) $\frac{5}{3}$
+   - D) $\frac{1}{3}$
+
+**Proficient Level** (these require an extra step)
+
+5. In a group, $P(A \text{ and } B) = 0.24$ and $P(B) = 0.4$. What is $P(A \mid B)$?
+   - A) $0.24$
+   - B) $1.67$
+   - C) $0.4$
+   - D) $0.6$
+
+6. $P(X \text{ and } Y) = 0.15$ and $P(X) = 0.3$. What is $P(Y \mid X)$?
+   - A) $0.15$
+   - B) $2$
+   - C) $0.5$
+   - D) $0.3$
+
+7. In a survey, $65\%$ of respondents exercise regularly, and $45\%$ of respondents both exercise regularly AND eat a balanced diet. What is the probability a respondent eats a balanced diet, GIVEN that they exercise regularly?
+   - A) $0.45$
+   - B) $\frac{9}{13}$
+   - C) $\frac{13}{9}$
+   - D) $0.65$
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. A school has $200$ students. $120$ are in band, and of those, $80$ also play a varsity sport. Of the $80$ students not in band, $50$ play a varsity sport. What is the probability a student plays a varsity sport, GIVEN that they are NOT in band?
+   - A) $\frac{5}{8}$
+   - B) $\frac{1}{4}$
+   - C) $\frac{8}{5}$
+   - D) $\frac{13}{20}$
+
+9. In a population, $P(A \mid B) = 0.4$ and $P(B) = 0.5$. What is $P(A \text{ and } B)$?
+   - A) $0.8$
+   - B) $0.4$
+   - C) $0.5$
+   - D) $0.2$
+
+10. A factory has two machines. Machine A produces $60\%$ of all items and has a $5\%$ defect rate. Machine B produces the remaining $40\%$ and has a $10\%$ defect rate. What is the probability that a randomly selected item was made by Machine A, GIVEN that it is defective?
+    - A) $0.03$
+    - B) $\frac{7}{3}$
+    - C) $\frac{3}{7}$
+    - D) $0.6$

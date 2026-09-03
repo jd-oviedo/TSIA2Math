@@ -1,0 +1,36 @@
+{
+  "type": "data_table",
+  "columns": [
+    "",
+    "Dog",
+    "Cat",
+    "Total"
+  ],
+  "rows": [
+    {
+      "label": "Grade 7",
+      "cells": [
+        "14",
+        "9",
+        "23"
+      ]
+    },
+    {
+      "label": "Grade 8",
+      "cells": [
+        "11",
+        "16",
+        "27"
+      ]
+    },
+    {
+      "label": "Total",
+      "cells": [
+        "25",
+        "25",
+        "50"
+      ]
+    }
+  ],
+  "alt": "A two-way table of pets owned, by grade. Grade 7: 14 dogs, 9 cats, 23 in total. Grade 8: 11 dogs, 16 cats, 27 in total. The column totals are 25 dogs, 25 cats, and 50 students altogether."
+}

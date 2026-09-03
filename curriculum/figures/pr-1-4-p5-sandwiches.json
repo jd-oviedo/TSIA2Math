@@ -1,0 +1,34 @@
+{
+  "type": "data_table",
+  "columns": [
+    "Sandwich",
+    "Sold"
+  ],
+  "rows": [
+    {
+      "label": "Turkey",
+      "cells": [
+        "22"
+      ]
+    },
+    {
+      "label": "Ham",
+      "cells": [
+        "16"
+      ]
+    },
+    {
+      "label": "Veggie",
+      "cells": [
+        "9"
+      ]
+    },
+    {
+      "label": "Club",
+      "cells": [
+        "13"
+      ]
+    }
+  ],
+  "alt": "A table of sandwiches sold by type. Turkey 22, Ham 16, Veggie 9, Club 13."
+}

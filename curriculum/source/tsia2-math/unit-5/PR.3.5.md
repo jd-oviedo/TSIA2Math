@@ -705,3 +705,341 @@ Step 2: Solve the formula for the overlap.
   "D": "neither_reported_as_both"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. Set A has $12$ elements, Set B has $9$ elements, and their intersection has $4$ elements. What is $|A \cup B|$?**
+
+Step 1: Add the two set sizes.
+- $12 + 9 = 21$
+
+Step 2: Subtract the intersection, since its elements were counted in both sets.
+- $21 - 4 = 17$
+
+**Answer: B** ($17$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: overlap_not_subtracted (adds the two set sizes, 12 and 9, without subtracting the shared 4 elements)",
+  "B": "Correct: adds 12 and 9, then subtracts the intersection of 4, for a union of 17",
+  "C": "Student makes misconception: union_intersection_swapped (reports the intersection, 4, instead of the union that was asked for)",
+  "D": "Student makes misconception: off_by_one_count (miscounts the subtraction, computing $21 - 4$ as 13)"
+},
+"misconception_tag": {
+  "A": "overlap_not_subtracted",
+  "C": "union_intersection_swapped",
+  "D": "off_by_one_count"
+}
+```
+
+---
+
+**2. Set X has $15$ elements, Set Y has $8$ elements, and $|X \cup Y| = 19$. What is $|X \cap Y|$?**
+
+Step 1: Rearrange the union formula.
+- $|X \cap Y| = |X| + |Y| - |X \cup Y|$
+
+Step 2: Substitute and solve.
+- $15 + 8 - 19 = 4$
+
+**Answer: D** ($4$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: union_intersection_swapped (reports the given union, 19, instead of solving for the intersection)",
+  "B": "Student makes misconception: off_by_one_count (miscounts $15 + 8$ as 24 instead of 23, giving $24 - 19 = 5$)",
+  "C": "Student makes misconception: overlap_not_subtracted (adds all three numbers, 15 plus 8 plus 19, instead of subtracting the union)",
+  "D": "Correct: $15 + 8 - 19 = 4$"
+},
+"misconception_tag": {
+  "A": "union_intersection_swapped",
+  "B": "off_by_one_count",
+  "C": "overlap_not_subtracted"
+}
+```
+
+---
+
+**3. Out of $50$ people, $30$ like tea and $22$ like coffee, with $12$ liking both. How many people like NEITHER tea nor coffee?**
+
+Step 1: Find how many like at least one drink.
+- $30 + 22 - 12 = 40$
+
+Step 2: Subtract from the total.
+- $50 - 40 = 10$
+
+**Answer: A** ($10$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: 40 people like at least one drink, so 10 like neither",
+  "B": "Student makes misconception: overlap_not_subtracted (subtracts both set sizes from the total without adding back the shared 12, computing $50 - 30 - 22 = -2$)",
+  "C": "Student makes misconception: union_intersection_swapped (reports the number who like both, 12, as though that were the number who like neither)",
+  "D": "Student makes misconception: reports_event_not_complement (reports the number who like at least one drink, 40, instead of the number who like neither)"
+},
+"misconception_tag": {
+  "B": "overlap_not_subtracted",
+  "C": "union_intersection_swapped",
+  "D": "reports_event_not_complement"
+}
+```
+
+---
+
+**4. Set $P = \{2, 4, 6, 8, 10\}$ and Set $Q = \{4, 8, 12, 16\}$. What is $P \cap Q$?**
+
+Step 1: Find the elements that appear in both sets.
+- $4$ and $8$ appear in both.
+
+**Answer: C** ($\{4, 8\}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: union_intersection_swapped (reports the union, every element from either set, instead of the intersection)",
+  "B": "Student makes misconception: union_intersection_swapped (reports the elements found only in P, confusing set difference with intersection)",
+  "C": "Correct: 4 and 8 are the only elements appearing in both P and Q",
+  "D": "Student makes misconception: union_intersection_swapped (reports the elements found only in Q, confusing set difference with intersection)"
+},
+"misconception_tag": {
+  "A": "union_intersection_swapped",
+  "B": "union_intersection_swapped",
+  "D": "union_intersection_swapped"
+}
+```
+
+---
+
+**5. In a survey of $80$ students, $50$ take Math, $35$ take Science, and $15$ take both. How many students take Math OR Science?**
+
+Step 1: Add the two groups.
+- $50 + 35 = 85$
+
+Step 2: Subtract the overlap, counted twice.
+- $85 - 15 = 70$
+
+**Answer: D** ($70$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: overlap_not_subtracted (adds 50 and 35 without subtracting the 15 counted in both)",
+  "B": "Student makes misconception: union_intersection_swapped (reports the intersection, 15, instead of the union that was asked for)",
+  "C": "Student makes misconception: reports_event_not_complement (reports the number who take neither subject, 80 minus 70 equals 10, instead of the union)",
+  "D": "Correct: adds 50 and 35, then subtracts the overlap of 15, for a union of 70"
+},
+"misconception_tag": {
+  "A": "overlap_not_subtracted",
+  "B": "union_intersection_swapped",
+  "C": "reports_event_not_complement"
+}
+```
+
+---
+
+**6. A universal set has $60$ elements. Set A has $25$ elements and Set B has $20$ elements, with $8$ elements in both. How many elements are in NEITHER A nor B?**
+
+Step 1: Find how many elements are in A or B.
+- $25 + 20 - 8 = 37$
+
+Step 2: Subtract from the universal set.
+- $60 - 37 = 23$
+
+**Answer: B** ($23$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: overlap_not_subtracted (subtracts both set sizes from the total without adding back the shared 8, computing $60 - 25 - 20 = 15$)",
+  "B": "Correct: 37 elements are in A or B, so 23 are in neither",
+  "C": "Student makes misconception: neither_reported_as_both (reports the 8 elements in both sets as though that were the count in neither)",
+  "D": "Student makes misconception: reports_event_not_complement (reports the number in A or B, 37, instead of the number in neither)"
+},
+"misconception_tag": {
+  "A": "overlap_not_subtracted",
+  "C": "neither_reported_as_both",
+  "D": "reports_event_not_complement"
+}
+```
+
+---
+
+**7. Of $120$ shoppers, $70$ bought fruit, $55$ bought vegetables, and $x$ bought both. If $95$ shoppers bought fruit or vegetables (or both), what is $x$?**
+
+Step 1: Set up the union formula.
+- $70 + 55 - x = 95$
+
+Step 2: Solve for $x$.
+- $125 - x = 95$, so $x = 30$
+
+**Answer: C** ($30$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: union_intersection_swapped (reports the given union, 95, instead of solving for the overlap)",
+  "B": "Student makes misconception: overlap_not_subtracted (uses the total number of shoppers, 120, instead of the given union of 95, computing $70 + 55 - 120 = 5$)",
+  "C": "Correct: solves $70 + 55 - x = 95$ for $x = 30$",
+  "D": "Student makes misconception: off_by_one_count (miscounts $70 + 55$ as 124 instead of 125, giving $124 - 95 = 29$)"
+},
+"misconception_tag": {
+  "A": "union_intersection_swapped",
+  "B": "overlap_not_subtracted",
+  "D": "off_by_one_count"
+}
+```
+
+---
+
+**8. In a class, $18$ students play soccer, $15$ play basketball, and $12$ play tennis. $6$ play soccer and basketball, $5$ play soccer and tennis, $4$ play basketball and tennis, and $2$ play all three. How many students play at least one of the three sports?**
+
+Step 1: Add the three individual counts.
+- $18 + 15 + 12 = 45$
+
+Step 2: Subtract each pairwise overlap.
+- $45 - 6 - 5 - 4 = 30$
+
+Step 3: Add back the triple overlap, since it was subtracted three times in step 2 but only belongs once.
+- $30 + 2 = 32$
+
+**Answer: A** ($32$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: 45 minus the three pairwise overlaps, 30, plus the triple overlap added back once, gives 32",
+  "B": "Student makes misconception: triple_overlap_not_added_back (subtracts the three pairwise overlaps but never adds the triple overlap of 2 back in, stopping at 30)",
+  "C": "Student makes misconception: overlap_not_subtracted (adds the three sport counts without subtracting any of the overlaps at all)",
+  "D": "Student makes misconception: overlap_not_subtracted (subtracts only two of the three pairwise overlaps before adding back the triple overlap, reaching 36)"
+},
+"misconception_tag": {
+  "B": "triple_overlap_not_added_back",
+  "C": "overlap_not_subtracted",
+  "D": "overlap_not_subtracted"
+}
+```
+
+---
+
+**9. Of $200$ survey respondents, $110$ like pizza, $90$ like pasta, and $40$ like both. How many respondents like NEITHER, and what percentage is that?**
+
+Step 1: Find how many like at least one food.
+- $110 + 90 - 40 = 160$
+
+Step 2: Subtract from the total.
+- $200 - 160 = 40$
+
+Step 3: Convert to a percentage of the full 200 respondents.
+- $\frac{40}{200} = 20\%$
+
+**Answer: B** ($40$ respondents, $20\%$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: reports_event_not_complement (reports the number who like at least one food, 160, and its percentage, 80 percent, instead of neither)",
+  "B": "Correct: 40 respondents like neither food, which is 40 out of 200, or 20 percent",
+  "C": "Student makes misconception: outcome_total_miscounted (finds the correct count of 40 but divides by 100 instead of the actual 200 respondents surveyed)",
+  "D": "Student makes misconception: overlap_not_subtracted (subtracts both food counts from the total without adding back the overlap, computing $200 - 110 - 90 = 0$)"
+},
+"misconception_tag": {
+  "A": "reports_event_not_complement",
+  "C": "outcome_total_miscounted",
+  "D": "overlap_not_subtracted"
+}
+```
+
+---
+
+**10. In a survey, $|A| = 25$, $|B| = 20$, $|C| = 18$. $|A \cap B| = 8$, $|A \cap C| = 6$, $|B \cap C| = 5$, and the number in all three is unknown. If $|A \cup B \cup C| = 47$, how many elements are in all three sets?**
+
+Step 1: Set up the inclusion-exclusion formula, letting $x$ be the triple overlap.
+- $25 + 20 + 18 - 8 - 6 - 5 + x = 47$
+
+Step 2: Simplify the known part.
+- $44 + x = 47$
+
+Step 3: Solve for $x$.
+- $x = 3$
+
+**Answer: D** ($3$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: triple_overlap_not_added_back (stops at the known total, 44, without solving for and adding the triple overlap)",
+  "B": "Student makes misconception: overlap_not_subtracted (ignores the three pairwise overlaps entirely, computing $47 - (25+20+18) = -16$ and reporting its absolute value)",
+  "C": "Student makes misconception: off_by_one_count (miscounts the known total as 45 instead of 44, giving $47 - 45 = 2$)",
+  "D": "Correct: solves $44 + x = 47$ for $x = 3$"
+},
+"misconception_tag": {
+  "A": "triple_overlap_not_added_back",
+  "B": "overlap_not_subtracted",
+  "C": "off_by_one_count"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. Set A has $12$ elements, Set B has $9$ elements, and their intersection has $4$ elements. What is $|A \cup B|$?
+   - A) $21$
+   - B) $17$
+   - C) $4$
+   - D) $13$
+
+2. Set X has $15$ elements, Set Y has $8$ elements, and $|X \cup Y| = 19$. What is $|X \cap Y|$?
+   - A) $19$
+   - B) $5$
+   - C) $23$
+   - D) $4$
+
+3. Out of $50$ people, $30$ like tea and $22$ like coffee, with $12$ liking both. How many people like NEITHER tea nor coffee?
+   - A) $10$
+   - B) $-2$
+   - C) $12$
+   - D) $40$
+
+4. Set $P = \{2, 4, 6, 8, 10\}$ and Set $Q = \{4, 8, 12, 16\}$. What is $P \cap Q$?
+   - A) $\{2, 4, 6, 8, 10, 12, 16\}$
+   - B) $\{2, 6, 10\}$
+   - C) $\{4, 8\}$
+   - D) $\{12, 16\}$
+
+**Proficient Level** (these require an extra step)
+
+5. In a survey of $80$ students, $50$ take Math, $35$ take Science, and $15$ take both. How many students take Math OR Science?
+   - A) $85$
+   - B) $15$
+   - C) $10$
+   - D) $70$
+
+6. A universal set has $60$ elements. Set A has $25$ elements and Set B has $20$ elements, with $8$ elements in both. How many elements are in NEITHER A nor B?
+   - A) $15$
+   - B) $23$
+   - C) $8$
+   - D) $37$
+
+7. Of $120$ shoppers, $70$ bought fruit, $55$ bought vegetables, and $x$ bought both. If $95$ shoppers bought fruit or vegetables (or both), what is $x$?
+   - A) $95$
+   - B) $5$
+   - C) $30$
+   - D) $29$
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. In a class, $18$ students play soccer, $15$ play basketball, and $12$ play tennis. $6$ play soccer and basketball, $5$ play soccer and tennis, $4$ play basketball and tennis, and $2$ play all three. How many students play at least one of the three sports?
+   - A) $32$
+   - B) $30$
+   - C) $45$
+   - D) $36$
+
+9. Of $200$ survey respondents, $110$ like pizza, $90$ like pasta, and $40$ like both. How many respondents like NEITHER, and what percentage is that?
+   - A) $160$ respondents, or $80\%$.
+   - B) $40$ respondents, or $20\%$.
+   - C) $40$ respondents, or $40\%$.
+   - D) $0$ respondents, or $0\%$.
+
+10. In a survey, $|A| = 25$, $|B| = 20$, $|C| = 18$. $|A \cap B| = 8$, $|A \cap C| = 6$, $|B \cap C| = 5$, and the number in all three is unknown. If $|A \cup B \cup C| = 47$, how many elements are in all three sets?
+    - A) $44$
+    - B) $16$
+    - C) $2$
+    - D) $3$

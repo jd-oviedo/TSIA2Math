@@ -802,3 +802,342 @@ Step 3: Divide.
   "D": "added_items_not_reflected_in_total"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. A bag has $5$ red marbles, $3$ blue marbles, and $2$ green marbles. What is the probability of randomly drawing a blue marble?**
+
+Step 1: Count the total marbles.
+- $5 + 3 + 2 = 10$
+
+Step 2: Divide the favourable outcomes, $3$ blue, by the total.
+- $\frac{3}{10}$
+
+**Answer: C** ($\frac{3}{10}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: favourable_over_unfavourable (divides the 3 blue marbles by the 7 non-blue marbles instead of the total of 10)",
+  "B": "Student makes misconception: outcome_total_miscounted (miscounts the total as 8, forgetting one category)",
+  "C": "Correct: divides the 3 blue marbles by the total of 10",
+  "D": "Student makes misconception: off_by_one_count (miscounts the blue marbles as 2 instead of 3)"
+},
+"misconception_tag": {
+  "A": "favourable_over_unfavourable",
+  "B": "outcome_total_miscounted",
+  "D": "off_by_one_count"
+}
+```
+
+---
+
+**2. A standard six-sided die is rolled once. What is the probability of rolling a number greater than $4$?**
+
+Step 1: List the outcomes greater than $4$. $5$ and $6$, so $2$ outcomes.
+
+Step 2: Divide by the total outcomes, $6$.
+- $\frac{2}{6} = \frac{1}{3}$
+
+**Answer: B** ($\frac{1}{3}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: threshold_boundary_error (includes 4 itself as greater than 4, counting 3 outcomes instead of 2)",
+  "B": "Correct: 2 outcomes, 5 and 6, out of 6 total, reduces to 1/3",
+  "C": "Student makes misconception: outcome_total_miscounted (uses a total of 5 instead of 6)",
+  "D": "Student makes misconception: favourable_over_unfavourable (divides the 2 favourable outcomes by the 4 unfavourable ones instead of the total of 6)"
+},
+"misconception_tag": {
+  "A": "threshold_boundary_error",
+  "C": "outcome_total_miscounted",
+  "D": "favourable_over_unfavourable"
+}
+```
+
+---
+
+**3. A spinner has $8$ equal sections numbered $1$ through $8$. What is the probability of landing on an even number?**
+
+Step 1: List the even numbers from $1$ to $8$. $2, 4, 6, 8$, so $4$ outcomes.
+
+Step 2: Divide by the total outcomes, $8$.
+- $\frac{4}{8} = \frac{1}{2}$
+
+**Answer: D** ($\frac{1}{2}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: off_by_one_count (miscounts the even numbers as 3 instead of 4)",
+  "B": "Student makes misconception: outcome_total_miscounted (uses a total of 9 instead of 8)",
+  "C": "Student makes misconception: favourable_over_unfavourable (divides the 4 even outcomes by the 4 odd outcomes instead of the total of 8, giving 1)",
+  "D": "Correct: 4 even numbers out of 8 total sections reduces to 1/2"
+},
+"misconception_tag": {
+  "A": "off_by_one_count",
+  "B": "outcome_total_miscounted",
+  "C": "favourable_over_unfavourable"
+}
+```
+
+---
+
+**4. A class has $12$ boys and $18$ girls. If a student is chosen at random, what is the probability the student is a girl?**
+
+Step 1: Find the total number of students.
+- $12 + 18 = 30$
+
+Step 2: Divide the favourable outcomes, $18$ girls, by the total.
+- $\frac{18}{30} = \frac{3}{5}$
+
+**Answer: A** ($\frac{3}{5}$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: divides the 18 girls by the total of 30, reducing to 3/5",
+  "B": "Student makes misconception: favourable_over_unfavourable (divides the 18 girls by the 12 boys instead of the total of 30)",
+  "C": "Student makes misconception: outcome_total_miscounted (uses a total of 25 instead of 30)",
+  "D": "Student makes misconception: off_by_one_count (miscounts the girls as 17 instead of 18)"
+},
+"misconception_tag": {
+  "B": "favourable_over_unfavourable",
+  "C": "outcome_total_miscounted",
+  "D": "off_by_one_count"
+}
+```
+
+---
+
+**5. A jar starts with $6$ red and $4$ yellow candies. $5$ more red candies are added. What is the new probability of picking red?**
+
+Step 1: Update the red count.
+- $6 + 5 = 11$
+
+Step 2: Update the total.
+- $11 + 4 = 15$
+
+Step 3: Divide.
+- $\frac{11}{15}$
+
+**Answer: B** ($\frac{11}{15}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: added_items_not_reflected_in_total (updates the red count to 11 but keeps the old total of 10, giving an impossible probability over 1)",
+  "B": "Correct: the red count becomes 11 and the total becomes 15, giving 11/15",
+  "C": "Student makes misconception: added_items_not_reflected_in_total (updates the total to 15 but forgets to add the new candies to the red count, leaving it at 6)",
+  "D": "Student makes misconception: added_items_not_reflected_in_total (ignores the addition entirely, using the original 6 red out of 10 total)"
+},
+"misconception_tag": {
+  "A": "added_items_not_reflected_in_total",
+  "C": "added_items_not_reflected_in_total",
+  "D": "added_items_not_reflected_in_total"
+}
+```
+
+---
+
+**6. In a class of $30$ students, $14$ play soccer, $10$ play basketball, and $4$ play both sports. What is the probability that a randomly chosen student plays soccer or basketball?**
+
+Step 1: Add the two groups, then subtract the overlap counted twice.
+- $14 + 10 - 4 = 20$
+
+Step 2: Divide by the total students.
+- $\frac{20}{30} = \frac{2}{3}$
+
+**Answer: C** ($\frac{2}{3}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: compound_outcomes_double_counted (adds 14 and 10 without removing the 4 students counted in both groups, giving 24)",
+  "B": "Student makes misconception: outcome_total_miscounted (subtracts the overlap from the total instead of from the combined count, using 30 minus 4 equals 26 as the denominator)",
+  "C": "Correct: adds the two groups and subtracts the overlap counted twice, 14 plus 10 minus 4 equals 20, over the total of 30",
+  "D": "Student makes misconception: omits_second_component (considers only the basketball players, ignoring the soccer players entirely)"
+},
+"misconception_tag": {
+  "A": "compound_outcomes_double_counted",
+  "B": "outcome_total_miscounted",
+  "D": "omits_second_component"
+}
+```
+
+---
+
+**7. In a bag of marbles, the probability of drawing a green marble is $\frac{3}{8}$. If there are $12$ green marbles, how many marbles are in the bag total?**
+
+Step 1: Set up the proportion, letting $x$ be the total number of marbles.
+- $\frac{3}{8} = \frac{12}{x}$
+
+Step 2: Cross-multiply and solve.
+- $3x = 96$, so $x = 32$
+
+**Answer: D** ($32$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: proportion_solved_for_wrong_unknown (treats the given 12 as the total instead of the green count, solving for the green count as $\\frac{3}{8} \\times 12 = 4.5$)",
+  "B": "Student makes misconception: favourable_over_unfavourable (sets up the proportion using the unfavourable share, $\\frac{3}{5} = \\frac{12}{x}$, instead of the total share, giving $x = 20$)",
+  "C": "Student makes misconception: answers_intermediate_value (reports the given denominator, 8, instead of solving the proportion for the total)",
+  "D": "Correct: cross-multiplies $\\frac{3}{8} = \\frac{12}{x}$ to get $3x = 96$, so $x = 32$"
+},
+"misconception_tag": {
+  "A": "proportion_solved_for_wrong_unknown",
+  "B": "favourable_over_unfavourable",
+  "C": "answers_intermediate_value"
+}
+```
+
+---
+
+**8. A survey of $50$ people finds $28$ like coffee, $22$ like tea, and $10$ like both. What is the probability that a randomly chosen person likes neither coffee nor tea?**
+
+Step 1: Find how many like at least one drink, adding the two groups and subtracting the overlap.
+- $28 + 22 - 10 = 40$
+
+Step 2: Subtract from the total to find those who like neither.
+- $50 - 40 = 10$
+
+Step 3: Divide by the total.
+- $\frac{10}{50} = \frac{1}{5}$
+
+**Answer: A** ($\frac{1}{5}$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: 40 people like at least one drink, so 10 like neither, giving 10/50 which reduces to 1/5",
+  "B": "Student makes misconception: compound_outcomes_double_counted (adds 28 and 22 without removing the overlap, getting 50, then finds nobody left for neither)",
+  "C": "Student makes misconception: reports_event_not_complement (reports the probability of liking at least one drink, 40/50, instead of the probability of liking neither)",
+  "D": "Student makes misconception: omits_second_component (subtracts only the tea drinkers from the total, ignoring the coffee drinkers entirely, getting 28/50 reduced to 14/25)"
+},
+"misconception_tag": {
+  "B": "compound_outcomes_double_counted",
+  "C": "reports_event_not_complement",
+  "D": "omits_second_component"
+}
+```
+
+---
+
+**9. A box has red and blue balls only, with the probability of drawing red equal to $\frac{2}{7}$. After $6$ more blue balls are added, the probability of drawing red becomes $\frac{1}{5}$. How many red balls were in the box originally?**
+
+Step 1: Let $r$ be the number of red balls, and let $T$ be the original total. From the first probability, $T = \frac{7r}{2}$.
+
+Step 2: After adding $6$ blue balls, the red count $r$ stays the same, and the new probability gives $5r = T + 6$.
+
+Step 3: Substitute and solve.
+- $5r = \frac{7r}{2} + 6$, so $10r = 7r + 12$, so $3r = 12$, so $r = 4$
+
+**Answer: C** ($4$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: added_items_not_reflected_in_total (applies the new probability, 1/5, to the original total, giving $\\frac{1}{5} \\times 14 = 2.8$, instead of accounting for the 6 added balls)",
+  "B": "Student makes misconception: outcome_total_miscounted (reaches $3r = 12$ correctly but reports 12 directly instead of dividing by 3)",
+  "C": "Correct: solves $3r = 12$ for $r = 4$ red balls",
+  "D": "Student makes misconception: proportion_solved_for_wrong_unknown (reports the original total, 14, instead of the number of red balls that was actually asked for)"
+},
+"misconception_tag": {
+  "A": "added_items_not_reflected_in_total",
+  "B": "outcome_total_miscounted",
+  "D": "proportion_solved_for_wrong_unknown"
+}
+```
+
+---
+
+**10. A number cube with faces $1$ through $6$ is rolled twice. What is the probability that the sum of the two rolls is at least $10$?**
+
+Step 1: List the outcomes summing to $10$ or more. Sum $10$: $(4,6), (5,5), (6,4)$. Sum $11$: $(5,6), (6,5)$. Sum $12$: $(6,6)$.
+
+Step 2: Count the favourable outcomes.
+- $3 + 2 + 1 = 6$
+
+Step 3: Divide by the total possible outcomes, $6 \times 6 = 36$.
+- $\frac{6}{36} = \frac{1}{6}$
+
+**Answer: B** ($\frac{1}{6}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: threshold_boundary_error (excludes sum 10, treating 'at least 10' as 'more than 10', losing 3 of the 6 favourable outcomes)",
+  "B": "Correct: 6 favourable outcomes out of 36 total, reducing to 1/6",
+  "C": "Student makes misconception: outcome_total_miscounted (treats the total as 6, as though only one die were rolled, instead of 36)",
+  "D": "Student makes misconception: off_by_one_count (miscounts the favourable outcomes as 5 instead of 6)"
+},
+"misconception_tag": {
+  "A": "threshold_boundary_error",
+  "C": "outcome_total_miscounted",
+  "D": "off_by_one_count"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. A bag has $5$ red marbles, $3$ blue marbles, and $2$ green marbles. What is the probability of randomly drawing a blue marble?
+   - A) $\frac{3}{7}$
+   - B) $\frac{3}{8}$
+   - C) $\frac{3}{10}$
+   - D) $\frac{2}{10}$
+
+2. A standard six-sided die is rolled once. What is the probability of rolling a number greater than $4$?
+   - A) $\frac{1}{2}$
+   - B) $\frac{1}{3}$
+   - C) $\frac{2}{5}$
+   - D) $\frac{2}{4}$
+
+3. A spinner has $8$ equal sections numbered $1$ through $8$. What is the probability of landing on an even number?
+   - A) $\frac{3}{8}$
+   - B) $\frac{4}{9}$
+   - C) $1$
+   - D) $\frac{1}{2}$
+
+4. A class has $12$ boys and $18$ girls. If a student is chosen at random, what is the probability the student is a girl?
+   - A) $\frac{3}{5}$
+   - B) $\frac{18}{12}$
+   - C) $\frac{18}{25}$
+   - D) $\frac{17}{30}$
+
+**Proficient Level** (these require an extra step)
+
+5. A jar starts with $6$ red and $4$ yellow candies. $5$ more red candies are added. What is the new probability of picking red?
+   - A) $\frac{11}{10}$
+   - B) $\frac{11}{15}$
+   - C) $\frac{6}{15}$
+   - D) $\frac{6}{10}$
+
+6. In a class of $30$ students, $14$ play soccer, $10$ play basketball, and $4$ play both sports. What is the probability that a randomly chosen student plays soccer or basketball?
+   - A) $\frac{4}{5}$
+   - B) $\frac{20}{26}$
+   - C) $\frac{2}{3}$
+   - D) $\frac{10}{30}$
+
+7. In a bag of marbles, the probability of drawing a green marble is $\frac{3}{8}$. If there are $12$ green marbles, how many marbles are in the bag total?
+   - A) $4.5$
+   - B) $20$
+   - C) $8$
+   - D) $32$
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. A survey of $50$ people finds $28$ like coffee, $22$ like tea, and $10$ like both. What is the probability that a randomly chosen person likes neither coffee nor tea?
+   - A) $\frac{1}{5}$
+   - B) $0$
+   - C) $\frac{4}{5}$
+   - D) $\frac{14}{25}$
+
+9. A box has red and blue balls only, with the probability of drawing red equal to $\frac{2}{7}$. After $6$ more blue balls are added, the probability of drawing red becomes $\frac{1}{5}$. How many red balls were in the box originally?
+   - A) $2.8$
+   - B) $12$
+   - C) $4$
+   - D) $14$
+
+10. A number cube with faces $1$ through $6$ is rolled twice. What is the probability that the sum of the two rolls is at least $10$?
+    - A) $\frac{1}{12}$
+    - B) $\frac{1}{6}$
+    - C) $1$
+    - D) $\frac{5}{36}$

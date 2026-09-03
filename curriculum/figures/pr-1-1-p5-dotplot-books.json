@@ -1,0 +1,19 @@
+{
+  "type": "dot_plot",
+  "xValues": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "counts": [
+    2,
+    6,
+    4,
+    3,
+    1
+  ],
+  "xLabel": "Books read in a week",
+  "alt": "A dot plot of books read in a week per student. Above 1 book there are 2 dots, above 2 books there are 6 dots, above 3 books there are 4 dots, above 4 books there are 3 dots, and above 5 books there is 1 dot."
+}

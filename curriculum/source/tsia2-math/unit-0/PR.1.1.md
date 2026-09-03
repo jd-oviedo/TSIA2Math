@@ -785,3 +785,354 @@ Step 2: The only failing pair is $21$ and $17$, and $17$ is the smaller, so it b
   "D": "ordering_violation_located_wrongly"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. How many students have exactly $2$ siblings?**
+
+Step 1: Find $2$ on the axis and count the dots stacked above it.
+- $4$
+
+**Answer: C** ($4$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: reads_wrong_category (reads the stack above 1 sibling, 5 dots, instead of 2 siblings)",
+  "B": "Student makes misconception: off_by_one_count (loses one dot while counting the stack above 2 siblings)",
+  "C": "Correct: 4 dots are stacked above 2 siblings",
+  "D": "Student makes misconception: reads_wrong_category (reads the stack above 3 siblings, 2 dots, instead of 2 siblings)"
+},
+"misconception_tag": {
+  "A": "reads_wrong_category",
+  "B": "off_by_one_count",
+  "D": "reads_wrong_category"
+}
+```
+
+---
+
+**2. How many distinct numbers of siblings are represented in the dot plot?**
+
+Step 1: Count the distinct values marked on the axis: $0, 1, 2, 3, 4$.
+- $5$
+
+**Answer: D** ($5$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: distinct_values_counted_not_occurrences (reports the total number of students, 15, instead of the number of distinct sibling values)",
+  "B": "Student makes misconception: off_by_one_count (loses one value while counting the axis, reporting 4 instead of 5)",
+  "C": "Student makes misconception: off_by_one_count (overcounts the axis by one, reporting 6 instead of 5)",
+  "D": "Correct: the axis shows 5 distinct values, 0 through 4"
+},
+"misconception_tag": {
+  "A": "distinct_values_counted_not_occurrences",
+  "B": "off_by_one_count",
+  "C": "off_by_one_count"
+}
+```
+
+---
+
+**3. How many students have FEWER than $2$ siblings?**
+
+Step 1: "Fewer than 2" means 0 or 1, not 2 itself.
+
+Step 2: Add the stacks above 0 and 1.
+- $3 + 5 = 8$
+
+**Answer: B** ($8$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: threshold_boundary_error (includes the stack above 2, treating 'fewer than 2' as '2 or fewer', giving $3+5+4=12$)",
+  "B": "Correct: adds the stacks above 0 and 1, $3+5=8$",
+  "C": "Student makes misconception: off_by_one_count (loses one dot while adding the two stacks)",
+  "D": "Student makes misconception: reads_wrong_category (counts only the stack above 1, ignoring the stack above 0 entirely)"
+},
+"misconception_tag": {
+  "A": "threshold_boundary_error",
+  "C": "off_by_one_count",
+  "D": "reads_wrong_category"
+}
+```
+
+---
+
+**4. How many students have MORE than $3$ siblings?**
+
+Step 1: "More than 3" means 4 only, since the axis stops at 4.
+
+Step 2: Read the stack above 4.
+- $1$
+
+**Answer: A** ($1$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: only the stack above 4 siblings qualifies, which is 1",
+  "B": "Student makes misconception: threshold_boundary_error (includes the stack above 3, treating 'more than 3' as '3 or more', giving $2+1=3$)",
+  "C": "Student makes misconception: reads_wrong_category (reports the stack above 3 siblings, 2, instead of above 3)",
+  "D": "Student makes misconception: off_by_one_count (miscounts the single dot above 4 as zero)"
+},
+"misconception_tag": {
+  "B": "threshold_boundary_error",
+  "C": "reads_wrong_category",
+  "D": "off_by_one_count"
+}
+```
+
+---
+
+**5. How many MORE students have $1$ sibling than have $3$ siblings?**
+
+Step 1: Read both stacks. $1$ sibling: $5$. $3$ siblings: $2$.
+
+Step 2: Subtract in the order the question asks, 1-sibling count minus 3-sibling count.
+- $5 - 2 = 3$
+
+**Answer: D** ($3$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: subtracts_in_wrong_order (computes 2 minus 5 instead of 5 minus 2, the exact 'subtracting backward' trap this topic warns about, and reports the negative result)",
+  "B": "Student makes misconception: off_by_one_count (miscounts the subtraction by one)",
+  "C": "Student makes misconception: adds_instead_of_subtracts (adds the two stacks, 5 plus 2, instead of subtracting)",
+  "D": "Correct: subtracts the 3-sibling count, 2, from the 1-sibling count, 5, for 3"
+},
+"misconception_tag": {
+  "A": "subtracts_in_wrong_order",
+  "B": "off_by_one_count",
+  "C": "adds_instead_of_subtracts"
+}
+```
+
+---
+
+**6. How many students read $3$ or more books in the week?**
+
+Step 1: "3 or more" includes 3, 4, and 5.
+
+Step 2: Add those three stacks.
+- $4 + 3 + 1 = 8$
+
+**Answer: C** ($8$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: threshold_boundary_error (excludes the stack above 3, treating '3 or more' as 'more than 3', giving $3+1=4$)",
+  "B": "Student makes misconception: off_by_one_count (loses one dot while adding the three stacks)",
+  "C": "Correct: adds the stacks above 3, 4 and 5 books, $4+3+1=8$",
+  "D": "Student makes misconception: off_by_one_count (overcounts the sum by one while adding the three stacks)"
+},
+"misconception_tag": {
+  "A": "threshold_boundary_error",
+  "B": "off_by_one_count",
+  "D": "off_by_one_count"
+}
+```
+
+---
+
+**7. How many distinct numbers of books read are shown, and how many students does that account for in total?**
+
+Step 1: Count the distinct values on the axis: $1, 2, 3, 4, 5$, which is $5$.
+
+Step 2: Add all the stacks for the total number of students.
+- $2 + 6 + 4 + 3 + 1 = 16$
+
+**Answer: B** ($5$ distinct, $16$ total)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: distinct_values_counted_not_occurrences (reports the distinct-value count, 5, a second time in place of the actual student total)",
+  "B": "Correct: 5 distinct values on the axis, accounting for 16 students total",
+  "C": "Student makes misconception: distinct_values_counted_not_occurrences (reports the student total, 16, in place of the number of distinct values)",
+  "D": "Student makes misconception: off_by_one_count (loses one value while counting the axis, reporting 4 distinct values instead of 5)"
+},
+"misconception_tag": {
+  "A": "distinct_values_counted_not_occurrences",
+  "C": "distinct_values_counted_not_occurrences",
+  "D": "off_by_one_count"
+}
+```
+
+---
+
+**8. A list of exam scores is supposed to be sorted from least to greatest: $62, 68, 75, 71, 84, 90$. At which position does the sorted order break?**
+
+Step 1: Walk the list checking that each value is at least as large as the one before it. $62 \to 68$: fine. $68 \to 75$: fine. $75 \to 71$: $71$ is smaller, a break.
+
+Step 2: The break is at the fourth entry, $71$, since it violates the order relative to the entry before it.
+
+**Answer: A** (position $4$, the value $71$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: the fourth entry, 71, is smaller than the entry before it, 75, which breaks the ascending order",
+  "B": "Student makes misconception: ordering_violation_located_wrongly (blames the earlier entry, 75, which is itself correctly placed relative to what came before it)",
+  "C": "Student makes misconception: ordering_violation_located_wrongly (points to a later entry, 84, which is correctly larger than the entry before it, 71)",
+  "D": "Student makes misconception: ordering_violation_located_wrongly (reflexively picks the first entry, which cannot violate an order with nothing before it)"
+},
+"misconception_tag": {
+  "B": "ordering_violation_located_wrongly",
+  "C": "ordering_violation_located_wrongly",
+  "D": "ordering_violation_located_wrongly"
+}
+```
+
+---
+
+**9. A tally shows Apples $8$, Bananas $5$, Cherries $3$, for a total of $16$. Then $4$ more Apples are added. What is the correct fraction of the fruit that is Apples now?**
+
+Step 1: Update the Apple count.
+- $8 + 4 = 12$
+
+Step 2: Update the total to include the new apples.
+- $16 + 4 = 20$
+
+Step 3: Form the fraction.
+- $\frac{12}{20} = \frac{3}{5}$
+
+**Answer: D** ($\frac{3}{5}$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: added_items_not_reflected_in_total (updates the Apple count to 12 but keeps the old total of 16, giving $\\frac{12}{16} = \\frac{3}{4}$)",
+  "B": "Student makes misconception: added_items_not_reflected_in_total (updates the total to 20 but forgets to add the new apples to the Apple count, giving $\\frac{8}{20} = \\frac{2}{5}$)",
+  "C": "Student makes misconception: added_items_not_reflected_in_total (ignores the addition entirely, using the original $\\frac{8}{16} = \\frac{1}{2}$)",
+  "D": "Correct: updates both the Apple count, 12, and the total, 20, for $\\frac{12}{20} = \\frac{3}{5}$"
+},
+"misconception_tag": {
+  "A": "added_items_not_reflected_in_total",
+  "B": "added_items_not_reflected_in_total",
+  "C": "added_items_not_reflected_in_total"
+}
+```
+
+---
+
+**10. A list is sorted from greatest to least: $95, 88, 90, 79, 65$. At which position does the order break, and what is the difference between that value and the one before it?**
+
+Step 1: Walk the list checking that each value is no larger than the one before it. $95 \to 88$: fine. $88 \to 90$: $90$ is larger, a break.
+
+Step 2: The break is at the third entry, $90$, since it violates the descending order relative to the entry before it, $88$.
+
+Step 3: Find the difference.
+- $90 - 88 = 2$
+
+**Answer: C** (position $3$, a difference of $2$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: ordering_violation_located_wrongly (blames the earlier entry, 88, and computes its difference from 95 instead)",
+  "B": "Student makes misconception: ordering_violation_located_wrongly (points to a later entry, 79, which is correctly smaller than the entry before it, 90)",
+  "C": "Correct: the third entry, 90, breaks the descending order, a difference of 2 from the entry before it, 88",
+  "D": "Student makes misconception: subtracts_in_wrong_order (locates the correct position, 90, but computes 88 minus 90 instead of 90 minus 88)"
+},
+"misconception_tag": {
+  "A": "ordering_violation_located_wrongly",
+  "B": "ordering_violation_located_wrongly",
+  "D": "subtracts_in_wrong_order"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. How many students have exactly $2$ siblings?
+
+<!-- figure: pr-1-1-p5-dotplot-siblings -->
+![A dot plot of number of siblings per student. Above 0 siblings there are 3 dots, above 1 sibling there are 5 dots, above 2 siblings there are 4 dots, above 3 siblings there are 2 dots, and above 4 siblings there is 1 dot.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNjAgMTcxIiB3aWR0aD0iMzYwIiBoZWlnaHQ9IjE3MSIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGRvdCBwbG90IG9mIG51bWJlciBvZiBzaWJsaW5ncyBwZXIgc3R1ZGVudC4gQWJvdmUgMCBzaWJsaW5ncyB0aGVyZSBhcmUgMyBkb3RzLCBhYm92ZSAxIHNpYmxpbmcgdGhlcmUgYXJlIDUgZG90cywgYWJvdmUgMiBzaWJsaW5ncyB0aGVyZSBhcmUgNCBkb3RzLCBhYm92ZSAzIHNpYmxpbmdzIHRoZXJlIGFyZSAyIGRvdHMsIGFuZCBhYm92ZSA0IHNpYmxpbmdzIHRoZXJlIGlzIDEgZG90LiI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIxNzEiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxsaW5lIHgxPSIyNCIgeTE9IjEyNSIgeDI9IjMzNiIgeTI9IjEyNSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIHgxPSI2MCIgeTE9IjEyNSIgeDI9IjYwIiB5Mj0iMTMwIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iMC0wIiBjeD0iNjAiIGN5PSIxMTgiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIwLTEiIGN4PSI2MCIgY3k9IjEwMSIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjAtMiIgY3g9IjYwIiBjeT0iODQiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjYwIiB5PSIxNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMEUwRTExIj4wPC90ZXh0PjxsaW5lIHgxPSIxMjAiIHkxPSIxMjUiIHgyPSIxMjAiIHkyPSIxMzAiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTAiIGN4PSIxMjAiIGN5PSIxMTgiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTEiIGN4PSIxMjAiIGN5PSIxMDEiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTIiIGN4PSIxMjAiIGN5PSI4NCIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjEtMyIgY3g9IjEyMCIgY3k9IjY3IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMS00IiBjeD0iMTIwIiBjeT0iNTAiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjEyMCIgeT0iMTQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzBFMEUxMSI+MTwvdGV4dD48bGluZSB4MT0iMTgwIiB5MT0iMTI1IiB4Mj0iMTgwIiB5Mj0iMTMwIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iMi0wIiBjeD0iMTgwIiBjeT0iMTE4IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMi0xIiBjeD0iMTgwIiBjeT0iMTAxIiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMi0yIiBjeD0iMTgwIiBjeT0iODQiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIyLTMiIGN4PSIxODAiIGN5PSI2NyIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjx0ZXh0IGRhdGEtcm9sZT0idGljayIgeD0iMTgwIiB5PSIxNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMEUwRTExIj4yPC90ZXh0PjxsaW5lIHgxPSIyNDAiIHkxPSIxMjUiIHgyPSIyNDAiIHkyPSIxMzAiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz48Y2lyY2xlIGRhdGEtZG90PSIzLTAiIGN4PSIyNDAiIGN5PSIxMTgiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIzLTEiIGN4PSIyNDAiIGN5PSIxMDEiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjI0MCIgeT0iMTQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzBFMEUxMSI+MzwvdGV4dD48bGluZSB4MT0iMzAwIiB5MT0iMTI1IiB4Mj0iMzAwIiB5Mj0iMTMwIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iNC0wIiBjeD0iMzAwIiBjeT0iMTE4IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgZGF0YS1yb2xlPSJ0aWNrIiB4PSIzMDAiIHk9IjE0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMwRTBFMTEiPjQ8L3RleHQ+PHRleHQgZGF0YS1yb2xlPSJpZGVudGlmaWVyIiB4PSIxODAiIHk9IjE2MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMwRTBFMTEiPk51bWJlciBvZiBzaWJsaW5nczwvdGV4dD48L3N2Zz4=)
+
+   - A) $5$
+   - B) $3$
+   - C) $4$
+   - D) $2$
+
+2. How many distinct numbers of siblings are represented in the dot plot?
+
+<!-- figure: pr-1-1-p5-dotplot-siblings -->
+![A dot plot of number of siblings per student. Above 0 siblings there are 3 dots, above 1 sibling there are 5 dots, above 2 siblings there are 4 dots, above 3 siblings there are 2 dots, and above 4 siblings there is 1 dot.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNjAgMTcxIiB3aWR0aD0iMzYwIiBoZWlnaHQ9IjE3MSIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGRvdCBwbG90IG9mIG51bWJlciBvZiBzaWJsaW5ncyBwZXIgc3R1ZGVudC4gQWJvdmUgMCBzaWJsaW5ncyB0aGVyZSBhcmUgMyBkb3RzLCBhYm92ZSAxIHNpYmxpbmcgdGhlcmUgYXJlIDUgZG90cywgYWJvdmUgMiBzaWJsaW5ncyB0aGVyZSBhcmUgNCBkb3RzLCBhYm92ZSAzIHNpYmxpbmdzIHRoZXJlIGFyZSAyIGRvdHMsIGFuZCBhYm92ZSA0IHNpYmxpbmdzIHRoZXJlIGlzIDEgZG90LiI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIxNzEiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxsaW5lIHgxPSIyNCIgeTE9IjEyNSIgeDI9IjMzNiIgeTI9IjEyNSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIHgxPSI2MCIgeTE9IjEyNSIgeDI9IjYwIiB5Mj0iMTMwIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iMC0wIiBjeD0iNjAiIGN5PSIxMTgiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIwLTEiIGN4PSI2MCIgY3k9IjEwMSIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjAtMiIgY3g9IjYwIiBjeT0iODQiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjYwIiB5PSIxNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMEUwRTExIj4wPC90ZXh0PjxsaW5lIHgxPSIxMjAiIHkxPSIxMjUiIHgyPSIxMjAiIHkyPSIxMzAiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTAiIGN4PSIxMjAiIGN5PSIxMTgiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTEiIGN4PSIxMjAiIGN5PSIxMDEiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTIiIGN4PSIxMjAiIGN5PSI4NCIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjEtMyIgY3g9IjEyMCIgY3k9IjY3IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMS00IiBjeD0iMTIwIiBjeT0iNTAiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjEyMCIgeT0iMTQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzBFMEUxMSI+MTwvdGV4dD48bGluZSB4MT0iMTgwIiB5MT0iMTI1IiB4Mj0iMTgwIiB5Mj0iMTMwIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iMi0wIiBjeD0iMTgwIiBjeT0iMTE4IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMi0xIiBjeD0iMTgwIiBjeT0iMTAxIiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMi0yIiBjeD0iMTgwIiBjeT0iODQiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIyLTMiIGN4PSIxODAiIGN5PSI2NyIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjx0ZXh0IGRhdGEtcm9sZT0idGljayIgeD0iMTgwIiB5PSIxNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMEUwRTExIj4yPC90ZXh0PjxsaW5lIHgxPSIyNDAiIHkxPSIxMjUiIHgyPSIyNDAiIHkyPSIxMzAiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz48Y2lyY2xlIGRhdGEtZG90PSIzLTAiIGN4PSIyNDAiIGN5PSIxMTgiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIzLTEiIGN4PSIyNDAiIGN5PSIxMDEiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjI0MCIgeT0iMTQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzBFMEUxMSI+MzwvdGV4dD48bGluZSB4MT0iMzAwIiB5MT0iMTI1IiB4Mj0iMzAwIiB5Mj0iMTMwIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iNC0wIiBjeD0iMzAwIiBjeT0iMTE4IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgZGF0YS1yb2xlPSJ0aWNrIiB4PSIzMDAiIHk9IjE0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMwRTBFMTEiPjQ8L3RleHQ+PHRleHQgZGF0YS1yb2xlPSJpZGVudGlmaWVyIiB4PSIxODAiIHk9IjE2MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMwRTBFMTEiPk51bWJlciBvZiBzaWJsaW5nczwvdGV4dD48L3N2Zz4=)
+
+   - A) $15$
+   - B) $4$
+   - C) $6$
+   - D) $5$
+
+3. How many students have FEWER than $2$ siblings?
+
+<!-- figure: pr-1-1-p5-dotplot-siblings -->
+![A dot plot of number of siblings per student. Above 0 siblings there are 3 dots, above 1 sibling there are 5 dots, above 2 siblings there are 4 dots, above 3 siblings there are 2 dots, and above 4 siblings there is 1 dot.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNjAgMTcxIiB3aWR0aD0iMzYwIiBoZWlnaHQ9IjE3MSIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGRvdCBwbG90IG9mIG51bWJlciBvZiBzaWJsaW5ncyBwZXIgc3R1ZGVudC4gQWJvdmUgMCBzaWJsaW5ncyB0aGVyZSBhcmUgMyBkb3RzLCBhYm92ZSAxIHNpYmxpbmcgdGhlcmUgYXJlIDUgZG90cywgYWJvdmUgMiBzaWJsaW5ncyB0aGVyZSBhcmUgNCBkb3RzLCBhYm92ZSAzIHNpYmxpbmdzIHRoZXJlIGFyZSAyIGRvdHMsIGFuZCBhYm92ZSA0IHNpYmxpbmdzIHRoZXJlIGlzIDEgZG90LiI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIxNzEiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxsaW5lIHgxPSIyNCIgeTE9IjEyNSIgeDI9IjMzNiIgeTI9IjEyNSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIHgxPSI2MCIgeTE9IjEyNSIgeDI9IjYwIiB5Mj0iMTMwIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iMC0wIiBjeD0iNjAiIGN5PSIxMTgiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIwLTEiIGN4PSI2MCIgY3k9IjEwMSIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjAtMiIgY3g9IjYwIiBjeT0iODQiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjYwIiB5PSIxNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMEUwRTExIj4wPC90ZXh0PjxsaW5lIHgxPSIxMjAiIHkxPSIxMjUiIHgyPSIxMjAiIHkyPSIxMzAiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTAiIGN4PSIxMjAiIGN5PSIxMTgiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTEiIGN4PSIxMjAiIGN5PSIxMDEiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTIiIGN4PSIxMjAiIGN5PSI4NCIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjEtMyIgY3g9IjEyMCIgY3k9IjY3IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMS00IiBjeD0iMTIwIiBjeT0iNTAiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjEyMCIgeT0iMTQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzBFMEUxMSI+MTwvdGV4dD48bGluZSB4MT0iMTgwIiB5MT0iMTI1IiB4Mj0iMTgwIiB5Mj0iMTMwIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iMi0wIiBjeD0iMTgwIiBjeT0iMTE4IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMi0xIiBjeD0iMTgwIiBjeT0iMTAxIiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMi0yIiBjeD0iMTgwIiBjeT0iODQiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIyLTMiIGN4PSIxODAiIGN5PSI2NyIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjx0ZXh0IGRhdGEtcm9sZT0idGljayIgeD0iMTgwIiB5PSIxNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMEUwRTExIj4yPC90ZXh0PjxsaW5lIHgxPSIyNDAiIHkxPSIxMjUiIHgyPSIyNDAiIHkyPSIxMzAiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz48Y2lyY2xlIGRhdGEtZG90PSIzLTAiIGN4PSIyNDAiIGN5PSIxMTgiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIzLTEiIGN4PSIyNDAiIGN5PSIxMDEiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjI0MCIgeT0iMTQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzBFMEUxMSI+MzwvdGV4dD48bGluZSB4MT0iMzAwIiB5MT0iMTI1IiB4Mj0iMzAwIiB5Mj0iMTMwIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iNC0wIiBjeD0iMzAwIiBjeT0iMTE4IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgZGF0YS1yb2xlPSJ0aWNrIiB4PSIzMDAiIHk9IjE0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMwRTBFMTEiPjQ8L3RleHQ+PHRleHQgZGF0YS1yb2xlPSJpZGVudGlmaWVyIiB4PSIxODAiIHk9IjE2MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMwRTBFMTEiPk51bWJlciBvZiBzaWJsaW5nczwvdGV4dD48L3N2Zz4=)
+
+   - A) $12$
+   - B) $8$
+   - C) $7$
+   - D) $5$
+
+4. How many students have MORE than $3$ siblings?
+
+<!-- figure: pr-1-1-p5-dotplot-siblings -->
+![A dot plot of number of siblings per student. Above 0 siblings there are 3 dots, above 1 sibling there are 5 dots, above 2 siblings there are 4 dots, above 3 siblings there are 2 dots, and above 4 siblings there is 1 dot.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNjAgMTcxIiB3aWR0aD0iMzYwIiBoZWlnaHQ9IjE3MSIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGRvdCBwbG90IG9mIG51bWJlciBvZiBzaWJsaW5ncyBwZXIgc3R1ZGVudC4gQWJvdmUgMCBzaWJsaW5ncyB0aGVyZSBhcmUgMyBkb3RzLCBhYm92ZSAxIHNpYmxpbmcgdGhlcmUgYXJlIDUgZG90cywgYWJvdmUgMiBzaWJsaW5ncyB0aGVyZSBhcmUgNCBkb3RzLCBhYm92ZSAzIHNpYmxpbmdzIHRoZXJlIGFyZSAyIGRvdHMsIGFuZCBhYm92ZSA0IHNpYmxpbmdzIHRoZXJlIGlzIDEgZG90LiI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIxNzEiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxsaW5lIHgxPSIyNCIgeTE9IjEyNSIgeDI9IjMzNiIgeTI9IjEyNSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIHgxPSI2MCIgeTE9IjEyNSIgeDI9IjYwIiB5Mj0iMTMwIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iMC0wIiBjeD0iNjAiIGN5PSIxMTgiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIwLTEiIGN4PSI2MCIgY3k9IjEwMSIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjAtMiIgY3g9IjYwIiBjeT0iODQiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjYwIiB5PSIxNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMEUwRTExIj4wPC90ZXh0PjxsaW5lIHgxPSIxMjAiIHkxPSIxMjUiIHgyPSIxMjAiIHkyPSIxMzAiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTAiIGN4PSIxMjAiIGN5PSIxMTgiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTEiIGN4PSIxMjAiIGN5PSIxMDEiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTIiIGN4PSIxMjAiIGN5PSI4NCIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjEtMyIgY3g9IjEyMCIgY3k9IjY3IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMS00IiBjeD0iMTIwIiBjeT0iNTAiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjEyMCIgeT0iMTQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzBFMEUxMSI+MTwvdGV4dD48bGluZSB4MT0iMTgwIiB5MT0iMTI1IiB4Mj0iMTgwIiB5Mj0iMTMwIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iMi0wIiBjeD0iMTgwIiBjeT0iMTE4IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMi0xIiBjeD0iMTgwIiBjeT0iMTAxIiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMi0yIiBjeD0iMTgwIiBjeT0iODQiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIyLTMiIGN4PSIxODAiIGN5PSI2NyIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjx0ZXh0IGRhdGEtcm9sZT0idGljayIgeD0iMTgwIiB5PSIxNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMEUwRTExIj4yPC90ZXh0PjxsaW5lIHgxPSIyNDAiIHkxPSIxMjUiIHgyPSIyNDAiIHkyPSIxMzAiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz48Y2lyY2xlIGRhdGEtZG90PSIzLTAiIGN4PSIyNDAiIGN5PSIxMTgiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIzLTEiIGN4PSIyNDAiIGN5PSIxMDEiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjI0MCIgeT0iMTQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzBFMEUxMSI+MzwvdGV4dD48bGluZSB4MT0iMzAwIiB5MT0iMTI1IiB4Mj0iMzAwIiB5Mj0iMTMwIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iNC0wIiBjeD0iMzAwIiBjeT0iMTE4IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgZGF0YS1yb2xlPSJ0aWNrIiB4PSIzMDAiIHk9IjE0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMwRTBFMTEiPjQ8L3RleHQ+PHRleHQgZGF0YS1yb2xlPSJpZGVudGlmaWVyIiB4PSIxODAiIHk9IjE2MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMwRTBFMTEiPk51bWJlciBvZiBzaWJsaW5nczwvdGV4dD48L3N2Zz4=)
+
+   - A) $1$
+   - B) $3$
+   - C) $2$
+   - D) $0$
+
+**Proficient Level** (these require an extra step)
+
+5. How many MORE students have $1$ sibling than have $3$ siblings?
+
+<!-- figure: pr-1-1-p5-dotplot-siblings -->
+![A dot plot of number of siblings per student. Above 0 siblings there are 3 dots, above 1 sibling there are 5 dots, above 2 siblings there are 4 dots, above 3 siblings there are 2 dots, and above 4 siblings there is 1 dot.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNjAgMTcxIiB3aWR0aD0iMzYwIiBoZWlnaHQ9IjE3MSIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGRvdCBwbG90IG9mIG51bWJlciBvZiBzaWJsaW5ncyBwZXIgc3R1ZGVudC4gQWJvdmUgMCBzaWJsaW5ncyB0aGVyZSBhcmUgMyBkb3RzLCBhYm92ZSAxIHNpYmxpbmcgdGhlcmUgYXJlIDUgZG90cywgYWJvdmUgMiBzaWJsaW5ncyB0aGVyZSBhcmUgNCBkb3RzLCBhYm92ZSAzIHNpYmxpbmdzIHRoZXJlIGFyZSAyIGRvdHMsIGFuZCBhYm92ZSA0IHNpYmxpbmdzIHRoZXJlIGlzIDEgZG90LiI+PHJlY3Qgd2lkdGg9IjM2MCIgaGVpZ2h0PSIxNzEiIGZpbGw9IiNGRkZGRkYiIHJ4PSIxMCIvPjxsaW5lIHgxPSIyNCIgeTE9IjEyNSIgeDI9IjMzNiIgeTI9IjEyNSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNCIvPjxsaW5lIHgxPSI2MCIgeTE9IjEyNSIgeDI9IjYwIiB5Mj0iMTMwIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iMC0wIiBjeD0iNjAiIGN5PSIxMTgiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIwLTEiIGN4PSI2MCIgY3k9IjEwMSIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjAtMiIgY3g9IjYwIiBjeT0iODQiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjYwIiB5PSIxNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMEUwRTExIj4wPC90ZXh0PjxsaW5lIHgxPSIxMjAiIHkxPSIxMjUiIHgyPSIxMjAiIHkyPSIxMzAiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTAiIGN4PSIxMjAiIGN5PSIxMTgiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTEiIGN4PSIxMjAiIGN5PSIxMDEiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTIiIGN4PSIxMjAiIGN5PSI4NCIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjEtMyIgY3g9IjEyMCIgY3k9IjY3IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMS00IiBjeD0iMTIwIiBjeT0iNTAiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjEyMCIgeT0iMTQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzBFMEUxMSI+MTwvdGV4dD48bGluZSB4MT0iMTgwIiB5MT0iMTI1IiB4Mj0iMTgwIiB5Mj0iMTMwIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iMi0wIiBjeD0iMTgwIiBjeT0iMTE4IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMi0xIiBjeD0iMTgwIiBjeT0iMTAxIiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMi0yIiBjeD0iMTgwIiBjeT0iODQiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIyLTMiIGN4PSIxODAiIGN5PSI2NyIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjx0ZXh0IGRhdGEtcm9sZT0idGljayIgeD0iMTgwIiB5PSIxNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMEUwRTExIj4yPC90ZXh0PjxsaW5lIHgxPSIyNDAiIHkxPSIxMjUiIHgyPSIyNDAiIHkyPSIxMzAiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz48Y2lyY2xlIGRhdGEtZG90PSIzLTAiIGN4PSIyNDAiIGN5PSIxMTgiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIzLTEiIGN4PSIyNDAiIGN5PSIxMDEiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjI0MCIgeT0iMTQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzBFMEUxMSI+MzwvdGV4dD48bGluZSB4MT0iMzAwIiB5MT0iMTI1IiB4Mj0iMzAwIiB5Mj0iMTMwIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iNC0wIiBjeD0iMzAwIiBjeT0iMTE4IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgZGF0YS1yb2xlPSJ0aWNrIiB4PSIzMDAiIHk9IjE0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMwRTBFMTEiPjQ8L3RleHQ+PHRleHQgZGF0YS1yb2xlPSJpZGVudGlmaWVyIiB4PSIxODAiIHk9IjE2MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiMwRTBFMTEiPk51bWJlciBvZiBzaWJsaW5nczwvdGV4dD48L3N2Zz4=)
+
+   - A) $-3$
+   - B) $2$
+   - C) $7$
+   - D) $3$
+
+6. How many students read $3$ or more books in the week?
+
+<!-- figure: pr-1-1-p5-dotplot-books -->
+![A dot plot of books read in a week per student. Above 1 book there are 2 dots, above 2 books there are 6 dots, above 3 books there are 4 dots, above 4 books there are 3 dots, and above 5 books there is 1 dot.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNjAgMTg4IiB3aWR0aD0iMzYwIiBoZWlnaHQ9IjE4OCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGRvdCBwbG90IG9mIGJvb2tzIHJlYWQgaW4gYSB3ZWVrIHBlciBzdHVkZW50LiBBYm92ZSAxIGJvb2sgdGhlcmUgYXJlIDIgZG90cywgYWJvdmUgMiBib29rcyB0aGVyZSBhcmUgNiBkb3RzLCBhYm92ZSAzIGJvb2tzIHRoZXJlIGFyZSA0IGRvdHMsIGFib3ZlIDQgYm9va3MgdGhlcmUgYXJlIDMgZG90cywgYW5kIGFib3ZlIDUgYm9va3MgdGhlcmUgaXMgMSBkb3QuIj48cmVjdCB3aWR0aD0iMzYwIiBoZWlnaHQ9IjE4OCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PGxpbmUgeDE9IjI0IiB5MT0iMTQyIiB4Mj0iMzM2IiB5Mj0iMTQyIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgeDE9IjYwIiB5MT0iMTQyIiB4Mj0iNjAiIHkyPSIxNDciIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz48Y2lyY2xlIGRhdGEtZG90PSIwLTAiIGN4PSI2MCIgY3k9IjEzNSIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjAtMSIgY3g9IjYwIiBjeT0iMTE4IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgZGF0YS1yb2xlPSJ0aWNrIiB4PSI2MCIgeT0iMTYyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzBFMEUxMSI+MTwvdGV4dD48bGluZSB4MT0iMTIwIiB5MT0iMTQyIiB4Mj0iMTIwIiB5Mj0iMTQ3IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iMS0wIiBjeD0iMTIwIiBjeT0iMTM1IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMS0xIiBjeD0iMTIwIiBjeT0iMTE4IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMS0yIiBjeD0iMTIwIiBjeT0iMTAxIiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMS0zIiBjeD0iMTIwIiBjeT0iODQiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTQiIGN4PSIxMjAiIGN5PSI2NyIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjEtNSIgY3g9IjEyMCIgY3k9IjUwIiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgZGF0YS1yb2xlPSJ0aWNrIiB4PSIxMjAiIHk9IjE2MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMwRTBFMTEiPjI8L3RleHQ+PGxpbmUgeDE9IjE4MCIgeTE9IjE0MiIgeDI9IjE4MCIgeTI9IjE0NyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuMiIvPjxjaXJjbGUgZGF0YS1kb3Q9IjItMCIgY3g9IjE4MCIgY3k9IjEzNSIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjItMSIgY3g9IjE4MCIgY3k9IjExOCIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjItMiIgY3g9IjE4MCIgY3k9IjEwMSIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjItMyIgY3g9IjE4MCIgY3k9Ijg0IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgZGF0YS1yb2xlPSJ0aWNrIiB4PSIxODAiIHk9IjE2MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMwRTBFMTEiPjM8L3RleHQ+PGxpbmUgeDE9IjI0MCIgeTE9IjE0MiIgeDI9IjI0MCIgeTI9IjE0NyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuMiIvPjxjaXJjbGUgZGF0YS1kb3Q9IjMtMCIgY3g9IjI0MCIgY3k9IjEzNSIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjMtMSIgY3g9IjI0MCIgY3k9IjExOCIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjMtMiIgY3g9IjI0MCIgY3k9IjEwMSIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjx0ZXh0IGRhdGEtcm9sZT0idGljayIgeD0iMjQwIiB5PSIxNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMEUwRTExIj40PC90ZXh0PjxsaW5lIHgxPSIzMDAiIHkxPSIxNDIiIHgyPSIzMDAiIHkyPSIxNDciIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz48Y2lyY2xlIGRhdGEtZG90PSI0LTAiIGN4PSIzMDAiIGN5PSIxMzUiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjMwMCIgeT0iMTYyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzBFMEUxMSI+NTwvdGV4dD48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjE4MCIgeT0iMTgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzBFMEUxMSI+Qm9va3MgcmVhZCBpbiBhIHdlZWs8L3RleHQ+PC9zdmc+)
+
+   - A) $4$
+   - B) $7$
+   - C) $8$
+   - D) $9$
+
+7. How many distinct numbers of books read are shown, and how many students does that account for in total?
+
+<!-- figure: pr-1-1-p5-dotplot-books -->
+![A dot plot of books read in a week per student. Above 1 book there are 2 dots, above 2 books there are 6 dots, above 3 books there are 4 dots, above 4 books there are 3 dots, and above 5 books there is 1 dot.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNjAgMTg4IiB3aWR0aD0iMzYwIiBoZWlnaHQ9IjE4OCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGRvdCBwbG90IG9mIGJvb2tzIHJlYWQgaW4gYSB3ZWVrIHBlciBzdHVkZW50LiBBYm92ZSAxIGJvb2sgdGhlcmUgYXJlIDIgZG90cywgYWJvdmUgMiBib29rcyB0aGVyZSBhcmUgNiBkb3RzLCBhYm92ZSAzIGJvb2tzIHRoZXJlIGFyZSA0IGRvdHMsIGFib3ZlIDQgYm9va3MgdGhlcmUgYXJlIDMgZG90cywgYW5kIGFib3ZlIDUgYm9va3MgdGhlcmUgaXMgMSBkb3QuIj48cmVjdCB3aWR0aD0iMzYwIiBoZWlnaHQ9IjE4OCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PGxpbmUgeDE9IjI0IiB5MT0iMTQyIiB4Mj0iMzM2IiB5Mj0iMTQyIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS40Ii8+PGxpbmUgeDE9IjYwIiB5MT0iMTQyIiB4Mj0iNjAiIHkyPSIxNDciIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz48Y2lyY2xlIGRhdGEtZG90PSIwLTAiIGN4PSI2MCIgY3k9IjEzNSIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjAtMSIgY3g9IjYwIiBjeT0iMTE4IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgZGF0YS1yb2xlPSJ0aWNrIiB4PSI2MCIgeT0iMTYyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzBFMEUxMSI+MTwvdGV4dD48bGluZSB4MT0iMTIwIiB5MT0iMTQyIiB4Mj0iMTIwIiB5Mj0iMTQ3IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS4yIi8+PGNpcmNsZSBkYXRhLWRvdD0iMS0wIiBjeD0iMTIwIiBjeT0iMTM1IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMS0xIiBjeD0iMTIwIiBjeT0iMTE4IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMS0yIiBjeD0iMTIwIiBjeT0iMTAxIiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PGNpcmNsZSBkYXRhLWRvdD0iMS0zIiBjeD0iMTIwIiBjeT0iODQiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48Y2lyY2xlIGRhdGEtZG90PSIxLTQiIGN4PSIxMjAiIGN5PSI2NyIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjEtNSIgY3g9IjEyMCIgY3k9IjUwIiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgZGF0YS1yb2xlPSJ0aWNrIiB4PSIxMjAiIHk9IjE2MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMwRTBFMTEiPjI8L3RleHQ+PGxpbmUgeDE9IjE4MCIgeTE9IjE0MiIgeDI9IjE4MCIgeTI9IjE0NyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuMiIvPjxjaXJjbGUgZGF0YS1kb3Q9IjItMCIgY3g9IjE4MCIgY3k9IjEzNSIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjItMSIgY3g9IjE4MCIgY3k9IjExOCIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjItMiIgY3g9IjE4MCIgY3k9IjEwMSIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjItMyIgY3g9IjE4MCIgY3k9Ijg0IiByPSI3IiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgZGF0YS1yb2xlPSJ0aWNrIiB4PSIxODAiIHk9IjE2MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMwRTBFMTEiPjM8L3RleHQ+PGxpbmUgeDE9IjI0MCIgeTE9IjE0MiIgeDI9IjI0MCIgeTI9IjE0NyIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuMiIvPjxjaXJjbGUgZGF0YS1kb3Q9IjMtMCIgY3g9IjI0MCIgY3k9IjEzNSIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjMtMSIgY3g9IjI0MCIgY3k9IjExOCIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjxjaXJjbGUgZGF0YS1kb3Q9IjMtMiIgY3g9IjI0MCIgY3k9IjEwMSIgcj0iNyIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuOCIvPjx0ZXh0IGRhdGEtcm9sZT0idGljayIgeD0iMjQwIiB5PSIxNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMEUwRTExIj40PC90ZXh0PjxsaW5lIHgxPSIzMDAiIHkxPSIxNDIiIHgyPSIzMDAiIHkyPSIxNDciIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz48Y2lyY2xlIGRhdGEtZG90PSI0LTAiIGN4PSIzMDAiIGN5PSIxMzUiIHI9IjciIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCBkYXRhLXJvbGU9InRpY2siIHg9IjMwMCIgeT0iMTYyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzBFMEUxMSI+NTwvdGV4dD48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjE4MCIgeT0iMTgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzBFMEUxMSI+Qm9va3MgcmVhZCBpbiBhIHdlZWs8L3RleHQ+PC9zdmc+)
+
+   - A) $5$ distinct values, accounting for $5$ students total.
+   - B) $5$ distinct values, accounting for $16$ students total.
+   - C) $16$ distinct values, accounting for $16$ students total.
+   - D) $4$ distinct values, accounting for $16$ students total.
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. A list of exam scores is supposed to be sorted from least to greatest: $62, 68, 75, 71, 84, 90$. At which position does the sorted order break?
+   - A) Position $4$ (the value $71$), because it is less than the value before it, $75$.
+   - B) Position $3$ (the value $75$).
+   - C) Position $5$ (the value $84$).
+   - D) Position $1$ (the value $62$).
+
+9. A tally shows Apples $8$, Bananas $5$, Cherries $3$, for a total of $16$. Then $4$ more Apples are added. What is the correct fraction of the fruit that is Apples now?
+   - A) $\frac{3}{4}$
+   - B) $\frac{2}{5}$
+   - C) $\frac{1}{2}$
+   - D) $\frac{3}{5}$
+
+10. A list is sorted from greatest to least: $95, 88, 90, 79, 65$. At which position does the order break, and what is the difference between that value and the one before it?
+    - A) Position $2$ (the value $88$), a difference of $7$ from $95$.
+    - B) Position $4$ (the value $79$), a difference of $11$ from $90$.
+    - C) Position $3$ (the value $90$), a difference of $2$ from the value before it, $88$.
+    - D) Position $3$ (the value $90$), a difference of $-2$.

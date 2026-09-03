@@ -1,0 +1,19 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [
+    0,
+    70
+  ],
+  "xLabel": "Minutes to finish",
+  "boxes": [
+    {
+      "label": "Times",
+      "min": 15,
+      "q1": 25,
+      "median": 35,
+      "q3": 50,
+      "max": 65
+    }
+  ],
+  "alt": "A box plot on a number line running from 0 to 70 minutes, marked every 10. The left whisker starts at the minimum of 15 and runs to the box at 25. The box runs from the lower quartile 25 to the upper quartile 50, with the median drawn inside it at 35. The right whisker runs from 50 out to the maximum of 65."
+}

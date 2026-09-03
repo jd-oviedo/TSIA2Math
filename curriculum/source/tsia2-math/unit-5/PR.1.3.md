@@ -698,3 +698,372 @@ Step 3: Count them.
   "C": "reads_wrong_category"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. How many students chose Fish as their favorite pet?**
+
+Step 1: Read the Fish bar.
+- $15$
+
+Step 2: Verify against the other bars. Dogs $25$, Cats $40$, Fish $15$, Birds $10$.
+
+**Answer: C** ($15$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: reads_wrong_category (reads the Cats bar instead of Fish)",
+  "B": "Student makes misconception: reads_wrong_category (reads the Dogs bar instead of Fish)",
+  "C": "Correct: reads the Fish bar directly, 15",
+  "D": "Student makes misconception: reads_adjacent_value (reads the Birds bar, the one drawn immediately after Fish)"
+},
+"misconception_tag": {
+  "A": "reads_wrong_category",
+  "B": "reads_wrong_category",
+  "D": "reads_adjacent_value"
+}
+```
+
+---
+
+**2. How many more students chose Cats than Dogs as their favorite pet?**
+
+Step 1: Read both bars. Cats $40$, Dogs $25$.
+
+Step 2: Subtract.
+- $40 - 25 = 15$
+
+**Answer: A** ($15$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: subtracts Dogs, 25, from Cats, 40, for a difference of 15",
+  "B": "Student makes misconception: adds_instead_of_subtracts (adds the two bars, 40 plus 25, instead of subtracting)",
+  "C": "Student makes misconception: reads_wrong_category (computes Fish minus Birds, 15 minus 10, instead of Cats minus Dogs)",
+  "D": "Student makes misconception: reads_adjacent_value (reports the raw Cats value alone instead of the difference between the two named bars)"
+},
+"misconception_tag": {
+  "B": "adds_instead_of_subtracts",
+  "C": "reads_wrong_category",
+  "D": "reads_adjacent_value"
+}
+```
+
+---
+
+**3. What was the high temperature on Wednesday?**
+
+Step 1: Find Wednesday, day $3$, on the horizontal axis.
+
+Step 2: Read the point plotted above it.
+- $74$
+
+**Answer: D** ($74$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: wrong_time_point_read (reads Tuesday's point instead of Wednesday's)",
+  "B": "Student makes misconception: wrong_time_point_read (reads Thursday's point instead of Wednesday's)",
+  "C": "Student makes misconception: wrong_time_point_read (reads Friday's point instead of Wednesday's)",
+  "D": "Correct: reads the point plotted at day 3, Wednesday, which is 74"
+},
+"misconception_tag": {
+  "A": "wrong_time_point_read",
+  "B": "wrong_time_point_read",
+  "C": "wrong_time_point_read"
+}
+```
+
+---
+
+**4. How many books were read on Thursday?**
+
+Step 1: Find Thursday's row. It shows $5$ stars.
+
+Step 2: Apply the key. Each star is $5$ books.
+- $5 \times 5 = 25$
+
+**Answer: B** ($25$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: pictograph_key_not_applied (reports the raw star count, 5, instead of multiplying by the key value)",
+  "B": "Correct: multiplies Thursday's 5 stars by the key value of 5 books each, for 25",
+  "C": "Student makes misconception: reads_wrong_category (reads Tuesday's total, 20, instead of Thursday's)",
+  "D": "Student makes misconception: reads_wrong_category (reads Wednesday's total, 10, instead of Thursday's)"
+},
+"misconception_tag": {
+  "A": "pictograph_key_not_applied",
+  "C": "reads_wrong_category",
+  "D": "reads_wrong_category"
+}
+```
+
+---
+
+**5. Which two pets, added together, equal the number of students who chose Cats?**
+
+Step 1: Read Cats. $40$.
+
+Step 2: Test pairs of the remaining three bars against it.
+- Dogs $25$ + Fish $15$ = $40$. Match.
+
+Step 3: Verify no other pair matches. Fish $15$ + Birds $10$ = $25$, and Dogs $25$ + Birds $10$ = $35$, neither equals $40$.
+
+**Answer: A** (Dogs and Fish)
+
+```json
+"distractor_logic": {
+  "A": "Correct: Dogs, 25, plus Fish, 15, sums to 40, matching Cats",
+  "B": "Student makes misconception: reads_wrong_category (sums Fish and Birds, 15 plus 10, a pair that actually matches Dogs, not Cats)",
+  "C": "Student makes misconception: reads_wrong_category (sums Dogs and Birds, 25 plus 10, which matches no single bar)",
+  "D": "Student makes misconception: total_accepted_without_verifying (sums Cats with another bar without checking that Cats itself should not be part of the pair being tested against it)"
+},
+"misconception_tag": {
+  "B": "reads_wrong_category",
+  "C": "reads_wrong_category",
+  "D": "total_accepted_without_verifying"
+}
+```
+
+---
+
+**6. Between which two consecutive days did the temperature drop the most?**
+
+Step 1: Read every day-to-day change. Monday to Tuesday: $58$ to $66$, up $8$. Tuesday to Wednesday: $66$ to $74$, up $8$. Wednesday to Thursday: $74$ to $62$, down $12$. Thursday to Friday: $62$ to $70$, up $8$.
+
+Step 2: The only drop is Wednesday to Thursday, and it is the largest change of any segment.
+
+**Answer: C** (Wednesday to Thursday)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: wrong_time_point_read (names a segment that actually rises, Tuesday to Wednesday, as the drop)",
+  "B": "Student makes misconception: reads_adjacent_value (names the segment right after the real drop instead of the drop itself)",
+  "C": "Correct: identifies Wednesday to Thursday, a fall from 74 to 62, as the only and largest drop",
+  "D": "Student makes misconception: wrong_time_point_read (names the first segment on the graph, which actually rises, as the drop)"
+},
+"misconception_tag": {
+  "A": "wrong_time_point_read",
+  "B": "reads_adjacent_value",
+  "D": "wrong_time_point_read"
+}
+```
+
+---
+
+**7. How many more books were read on Thursday than on Wednesday?**
+
+Step 1: Convert both rows using the key. Thursday: $5$ stars $\times 5 = 25$ books. Wednesday: $2$ stars $\times 5 = 10$ books.
+
+Step 2: Subtract.
+- $25 - 10 = 15$
+
+**Answer: B** ($15$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: pictograph_key_not_applied (subtracts the raw star counts, 5 minus 2, instead of converting to books first)",
+  "B": "Correct: converts both rows to books, 25 and 10, and subtracts for a difference of 15",
+  "C": "Student makes misconception: adds_instead_of_subtracts (adds the two book totals, 25 plus 10, instead of subtracting)",
+  "D": "Student makes misconception: reads_wrong_category (computes Thursday minus Tuesday, 25 minus 20, instead of Thursday minus Wednesday)"
+},
+"misconception_tag": {
+  "A": "pictograph_key_not_applied",
+  "C": "adds_instead_of_subtracts",
+  "D": "reads_wrong_category"
+}
+```
+
+---
+
+**8. If $8$ more students are surveyed and all choose Cats, what will be the new total number of students represented across all four pets?**
+
+Step 1: Add the current four bars.
+- $25 + 40 + 15 + 10 = 90$
+
+Step 2: Add the $8$ new students.
+- $90 + 8 = 98$
+
+**Answer: D** ($98$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: total_accepted_without_verifying (reports only the new Cats value, 40 plus 8, as though it were the new grand total)",
+  "B": "Student makes misconception: total_accepted_without_verifying (reports the original total, 90, forgetting to add the 8 new students)",
+  "C": "Student makes misconception: total_accepted_without_verifying (drops the Birds bar while summing, reaching 80 instead of 90, then adds the 8 new students)",
+  "D": "Correct: adds the four bars for 90, then adds the 8 new students for 98"
+},
+"misconception_tag": {
+  "A": "total_accepted_without_verifying",
+  "B": "total_accepted_without_verifying",
+  "C": "total_accepted_without_verifying"
+}
+```
+
+---
+
+**9. What is the average high temperature over the five days shown?**
+
+Step 1: Add all five readings.
+- $58 + 66 + 74 + 62 + 70 = 330$
+
+Step 2: Divide by the number of days.
+- $330 \div 5 = 66$
+
+**Answer: C** ($66$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: wrong_time_point_read (reports Wednesday's single reading, 74, instead of computing the average across all five days)",
+  "B": "Student makes misconception: total_accepted_without_verifying (drops one day while adding, reaching a sum of 300, then divides by 5)",
+  "C": "Correct: sums the five readings to 330 and divides by 5 for an average of 66",
+  "D": "Student makes misconception: total_accepted_without_verifying (stops at the sum, 330, without dividing by the number of days)"
+},
+"misconception_tag": {
+  "A": "wrong_time_point_read",
+  "B": "total_accepted_without_verifying",
+  "D": "total_accepted_without_verifying"
+}
+```
+
+---
+
+**10. The library wants Friday's total to bring the week's combined count to $90$ books. Based on Monday through Thursday's totals shown, how many stars should Friday's row show, using the same key?**
+
+Step 1: Add Monday through Thursday's book totals.
+- $15 + 20 + 10 + 25 = 70$
+
+Step 2: Subtract from the target.
+- $90 - 70 = 20$ books needed on Friday
+
+Step 3: Convert books to stars using the key.
+- $20 \div 5 = 4$ stars
+
+**Answer: B** ($4$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: pictograph_key_not_applied (reports the 20 books needed as though that were the star count, skipping the key conversion)",
+  "B": "Correct: finds 20 books are needed to reach 90, then converts to 4 stars using the key",
+  "C": "Student makes misconception: total_accepted_without_verifying (treats the current total star count, 3 plus 4 plus 2 plus 5, as 90 books already reached, then reports that raw star count)",
+  "D": "Student makes misconception: total_accepted_without_verifying (miscounts Monday through Thursday's total as 60 books instead of 70, then converts the resulting 30 needed books to 6 stars)"
+},
+"misconception_tag": {
+  "A": "pictograph_key_not_applied",
+  "C": "total_accepted_without_verifying",
+  "D": "total_accepted_without_verifying"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. How many students chose Fish as their favorite pet?
+
+<!-- figure: pr-1-3-p5-bar-pets -->
+![A bar graph with Pet along the bottom and Students up the side. The value axis runs from 0 to 50 and is marked every 5. There are four bars: Dogs 25, Cats 40, Fish 15, and Birds 10.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGJhciBncmFwaCB3aXRoIFBldCBhbG9uZyB0aGUgYm90dG9tIGFuZCBTdHVkZW50cyB1cCB0aGUgc2lkZS4gVGhlIHZhbHVlIGF4aXMgcnVucyBmcm9tIDAgdG8gNTAgYW5kIGlzIG1hcmtlZCBldmVyeSA1LiBUaGVyZSBhcmUgZm91ciBiYXJzOiBEb2dzIDI1LCBDYXRzIDQwLCBGaXNoIDE1LCBhbmQgQmlyZHMgMTAuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PGcgc3Ryb2tlPSIjRTJEQ0NBIiBzdHJva2Utd2lkdGg9IjEiPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIvPjxsaW5lIHgxPSI0NCIgeTE9IjE5Mi40IiB4Mj0iMzIyIiB5Mj0iMTkyLjQiLz48bGluZSB4MT0iNDQiIHkxPSIxNzIuOCIgeDI9IjMyMiIgeTI9IjE3Mi44Ii8+PGxpbmUgeDE9IjQ0IiB5MT0iMTUzLjIiIHgyPSIzMjIiIHkyPSIxNTMuMiIvPjxsaW5lIHgxPSI0NCIgeTE9IjEzMy42IiB4Mj0iMzIyIiB5Mj0iMTMzLjYiLz48bGluZSB4MT0iNDQiIHkxPSIxMTQiIHgyPSIzMjIiIHkyPSIxMTQiLz48bGluZSB4MT0iNDQiIHkxPSI5NC40IiB4Mj0iMzIyIiB5Mj0iOTQuNCIvPjxsaW5lIHgxPSI0NCIgeTE9Ijc0LjgiIHgyPSIzMjIiIHkyPSI3NC44Ii8+PGxpbmUgeDE9IjQ0IiB5MT0iNTUuMiIgeDI9IjMyMiIgeTI9IjU1LjIiLz48bGluZSB4MT0iNDQiIHkxPSIzNS42IiB4Mj0iMzIyIiB5Mj0iMzUuNiIvPjxsaW5lIHgxPSI0NCIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMTYiLz48L2c+PHJlY3QgZGF0YS1iYXI9IjAiIHg9IjU3LjIxIiB5PSIxMTQiIHdpZHRoPSI0My4wOSIgaGVpZ2h0PSI5OCIgZmlsbD0iIzZFOURDOCIvPjxyZWN0IGRhdGEtYmFyPSIxIiB4PSIxMjYuNzEiIHk9IjU1LjIiIHdpZHRoPSI0My4wOSIgaGVpZ2h0PSIxNTYuOCIgZmlsbD0iIzZFOURDOCIvPjxyZWN0IGRhdGEtYmFyPSIyIiB4PSIxOTYuMjEiIHk9IjE1My4yIiB3aWR0aD0iNDMuMDkiIGhlaWdodD0iNTguOCIgZmlsbD0iIzZFOURDOCIvPjxyZWN0IGRhdGEtYmFyPSIzIiB4PSIyNjUuNzEiIHk9IjE3Mi44IiB3aWR0aD0iNDMuMDkiIGhlaWdodD0iMzkuMiIgZmlsbD0iIzZFOURDOCIvPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjQ0IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iMzgiIHk9IjIxNS41IiB0ZXh0LWFuY2hvcj0iZW5kIj4wPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxOTUuOSIgdGV4dC1hbmNob3I9ImVuZCI+NTwvdGV4dD48dGV4dCB4PSIzOCIgeT0iMTc2LjMiIHRleHQtYW5jaG9yPSJlbmQiPjEwPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxNTYuNyIgdGV4dC1hbmNob3I9ImVuZCI+MTU8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjEzNy4xIiB0ZXh0LWFuY2hvcj0iZW5kIj4yMDwvdGV4dD48dGV4dCB4PSIzOCIgeT0iMTE3LjUiIHRleHQtYW5jaG9yPSJlbmQiPjI1PC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSI5Ny45IiB0ZXh0LWFuY2hvcj0iZW5kIj4zMDwvdGV4dD48dGV4dCB4PSIzOCIgeT0iNzguMyIgdGV4dC1hbmNob3I9ImVuZCI+MzU8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjU4LjciIHRleHQtYW5jaG9yPSJlbmQiPjQwPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIzOS4xIiB0ZXh0LWFuY2hvcj0iZW5kIj40NTwvdGV4dD48dGV4dCB4PSIzOCIgeT0iMTkuNSIgdGV4dC1hbmNob3I9ImVuZCI+NTA8L3RleHQ+PHRleHQgZGF0YS1jYXQ9IjAiIHg9Ijc4Ljc1IiB5PSIyMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRvZ3M8L3RleHQ+PHRleHQgZGF0YS1jYXQ9IjEiIHg9IjE0OC4yNSIgeT0iMjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DYXRzPC90ZXh0Pjx0ZXh0IGRhdGEtY2F0PSIyIiB4PSIyMTcuNzUiIHk9IjIyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RmlzaDwvdGV4dD48dGV4dCBkYXRhLWNhdD0iMyIgeD0iMjg3LjI1IiB5PSIyMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkJpcmRzPC90ZXh0PjwvZz48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjE4MyIgeT0iMjQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+UGV0PC90ZXh0Pjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTIiIHk9IjExNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDEyIDExNCkiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5TdHVkZW50czwvdGV4dD48L3N2Zz4=)
+
+   - A) $40$
+   - B) $25$
+   - C) $15$
+   - D) $10$
+
+2. How many more students chose Cats than Dogs as their favorite pet?
+
+<!-- figure: pr-1-3-p5-bar-pets -->
+![A bar graph with Pet along the bottom and Students up the side. The value axis runs from 0 to 50 and is marked every 5. There are four bars: Dogs 25, Cats 40, Fish 15, and Birds 10.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGJhciBncmFwaCB3aXRoIFBldCBhbG9uZyB0aGUgYm90dG9tIGFuZCBTdHVkZW50cyB1cCB0aGUgc2lkZS4gVGhlIHZhbHVlIGF4aXMgcnVucyBmcm9tIDAgdG8gNTAgYW5kIGlzIG1hcmtlZCBldmVyeSA1LiBUaGVyZSBhcmUgZm91ciBiYXJzOiBEb2dzIDI1LCBDYXRzIDQwLCBGaXNoIDE1LCBhbmQgQmlyZHMgMTAuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PGcgc3Ryb2tlPSIjRTJEQ0NBIiBzdHJva2Utd2lkdGg9IjEiPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIvPjxsaW5lIHgxPSI0NCIgeTE9IjE5Mi40IiB4Mj0iMzIyIiB5Mj0iMTkyLjQiLz48bGluZSB4MT0iNDQiIHkxPSIxNzIuOCIgeDI9IjMyMiIgeTI9IjE3Mi44Ii8+PGxpbmUgeDE9IjQ0IiB5MT0iMTUzLjIiIHgyPSIzMjIiIHkyPSIxNTMuMiIvPjxsaW5lIHgxPSI0NCIgeTE9IjEzMy42IiB4Mj0iMzIyIiB5Mj0iMTMzLjYiLz48bGluZSB4MT0iNDQiIHkxPSIxMTQiIHgyPSIzMjIiIHkyPSIxMTQiLz48bGluZSB4MT0iNDQiIHkxPSI5NC40IiB4Mj0iMzIyIiB5Mj0iOTQuNCIvPjxsaW5lIHgxPSI0NCIgeTE9Ijc0LjgiIHgyPSIzMjIiIHkyPSI3NC44Ii8+PGxpbmUgeDE9IjQ0IiB5MT0iNTUuMiIgeDI9IjMyMiIgeTI9IjU1LjIiLz48bGluZSB4MT0iNDQiIHkxPSIzNS42IiB4Mj0iMzIyIiB5Mj0iMzUuNiIvPjxsaW5lIHgxPSI0NCIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMTYiLz48L2c+PHJlY3QgZGF0YS1iYXI9IjAiIHg9IjU3LjIxIiB5PSIxMTQiIHdpZHRoPSI0My4wOSIgaGVpZ2h0PSI5OCIgZmlsbD0iIzZFOURDOCIvPjxyZWN0IGRhdGEtYmFyPSIxIiB4PSIxMjYuNzEiIHk9IjU1LjIiIHdpZHRoPSI0My4wOSIgaGVpZ2h0PSIxNTYuOCIgZmlsbD0iIzZFOURDOCIvPjxyZWN0IGRhdGEtYmFyPSIyIiB4PSIxOTYuMjEiIHk9IjE1My4yIiB3aWR0aD0iNDMuMDkiIGhlaWdodD0iNTguOCIgZmlsbD0iIzZFOURDOCIvPjxyZWN0IGRhdGEtYmFyPSIzIiB4PSIyNjUuNzEiIHk9IjE3Mi44IiB3aWR0aD0iNDMuMDkiIGhlaWdodD0iMzkuMiIgZmlsbD0iIzZFOURDOCIvPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjQ0IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iMzgiIHk9IjIxNS41IiB0ZXh0LWFuY2hvcj0iZW5kIj4wPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxOTUuOSIgdGV4dC1hbmNob3I9ImVuZCI+NTwvdGV4dD48dGV4dCB4PSIzOCIgeT0iMTc2LjMiIHRleHQtYW5jaG9yPSJlbmQiPjEwPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxNTYuNyIgdGV4dC1hbmNob3I9ImVuZCI+MTU8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjEzNy4xIiB0ZXh0LWFuY2hvcj0iZW5kIj4yMDwvdGV4dD48dGV4dCB4PSIzOCIgeT0iMTE3LjUiIHRleHQtYW5jaG9yPSJlbmQiPjI1PC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSI5Ny45IiB0ZXh0LWFuY2hvcj0iZW5kIj4zMDwvdGV4dD48dGV4dCB4PSIzOCIgeT0iNzguMyIgdGV4dC1hbmNob3I9ImVuZCI+MzU8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjU4LjciIHRleHQtYW5jaG9yPSJlbmQiPjQwPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIzOS4xIiB0ZXh0LWFuY2hvcj0iZW5kIj40NTwvdGV4dD48dGV4dCB4PSIzOCIgeT0iMTkuNSIgdGV4dC1hbmNob3I9ImVuZCI+NTA8L3RleHQ+PHRleHQgZGF0YS1jYXQ9IjAiIHg9Ijc4Ljc1IiB5PSIyMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRvZ3M8L3RleHQ+PHRleHQgZGF0YS1jYXQ9IjEiIHg9IjE0OC4yNSIgeT0iMjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DYXRzPC90ZXh0Pjx0ZXh0IGRhdGEtY2F0PSIyIiB4PSIyMTcuNzUiIHk9IjIyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RmlzaDwvdGV4dD48dGV4dCBkYXRhLWNhdD0iMyIgeD0iMjg3LjI1IiB5PSIyMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkJpcmRzPC90ZXh0PjwvZz48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjE4MyIgeT0iMjQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+UGV0PC90ZXh0Pjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTIiIHk9IjExNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDEyIDExNCkiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5TdHVkZW50czwvdGV4dD48L3N2Zz4=)
+
+   - A) $15$
+   - B) $65$
+   - C) $5$
+   - D) $40$
+
+3. What was the high temperature on Wednesday?
+
+<!-- figure: pr-1-3-p5-line-temps -->
+![A line graph of daily high temperatures. The horizontal axis is Day, numbered 1 for Monday through 5 for Friday, and the vertical axis is Degrees, running from 55 to 80 and marked every 5. Five points are plotted and joined in order: Monday 58, Tuesday 66, Wednesday 74, Thursday 62, and Friday 70. The line rises for two days to its highest point on Wednesday, drops sharply to its lowest point on Thursday, then rises again on Friday.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGxpbmUgZ3JhcGggb2YgZGFpbHkgaGlnaCB0ZW1wZXJhdHVyZXMuIFRoZSBob3Jpem9udGFsIGF4aXMgaXMgRGF5LCBudW1iZXJlZCAxIGZvciBNb25kYXkgdGhyb3VnaCA1IGZvciBGcmlkYXksIGFuZCB0aGUgdmVydGljYWwgYXhpcyBpcyBEZWdyZWVzLCBydW5uaW5nIGZyb20gNTUgdG8gODAgYW5kIG1hcmtlZCBldmVyeSA1LiBGaXZlIHBvaW50cyBhcmUgcGxvdHRlZCBhbmQgam9pbmVkIGluIG9yZGVyOiBNb25kYXkgNTgsIFR1ZXNkYXkgNjYsIFdlZG5lc2RheSA3NCwgVGh1cnNkYXkgNjIsIGFuZCBGcmlkYXkgNzAuIFRoZSBsaW5lIHJpc2VzIGZvciB0d28gZGF5cyB0byBpdHMgaGlnaGVzdCBwb2ludCBvbiBXZWRuZXNkYXksIGRyb3BzIHNoYXJwbHkgdG8gaXRzIGxvd2VzdCBwb2ludCBvbiBUaHVyc2RheSwgdGhlbiByaXNlcyBhZ2FpbiBvbiBGcmlkYXkuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PGcgc3Ryb2tlPSIjRTJEQ0NBIiBzdHJva2Utd2lkdGg9IjEiPjxsaW5lIHgxPSI0NCIgeTE9IjE2IiB4Mj0iNDQiIHkyPSIyMTIiLz48bGluZSB4MT0iOTAuMzMiIHkxPSIxNiIgeDI9IjkwLjMzIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjEzNi42NyIgeTE9IjE2IiB4Mj0iMTM2LjY3IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjE4MyIgeTE9IjE2IiB4Mj0iMTgzIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjIyOS4zMyIgeTE9IjE2IiB4Mj0iMjI5LjMzIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI3NS42NyIgeTE9IjE2IiB4Mj0iMjc1LjY3IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjMyMiIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjQ0IiB5MT0iMjEyIiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjQ0IiB5MT0iMTcyLjgiIHgyPSIzMjIiIHkyPSIxNzIuOCIvPjxsaW5lIHgxPSI0NCIgeTE9IjEzMy42IiB4Mj0iMzIyIiB5Mj0iMTMzLjYiLz48bGluZSB4MT0iNDQiIHkxPSI5NC40IiB4Mj0iMzIyIiB5Mj0iOTQuNCIvPjxsaW5lIHgxPSI0NCIgeTE9IjU1LjIiIHgyPSIzMjIiIHkyPSI1NS4yIi8+PGxpbmUgeDE9IjQ0IiB5MT0iMTYiIHgyPSIzMjIiIHkyPSIxNiIvPjwvZz48bGluZSB4MT0iNDQiIHkxPSIyMTIiIHgyPSIzMjIiIHkyPSIyMTIiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48bGluZSB4MT0iNDQiIHkxPSIyMTIiIHgyPSI0NCIgeTI9IjE2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGcgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiMwRTBFMTEiPjx0ZXh0IHg9IjQ0IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjA8L3RleHQ+PHRleHQgeD0iOTAuMzMiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTwvdGV4dD48dGV4dCB4PSIxMzYuNjciIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjwvdGV4dD48dGV4dCB4PSIxODMiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MzwvdGV4dD48dGV4dCB4PSIyMjkuMzMiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NDwvdGV4dD48dGV4dCB4PSIyNzUuNjciIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NTwvdGV4dD48dGV4dCB4PSIzMjIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NjwvdGV4dD48dGV4dCB4PSIzOCIgeT0iMjE1LjUiIHRleHQtYW5jaG9yPSJlbmQiPjU1PC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxNzYuMyIgdGV4dC1hbmNob3I9ImVuZCI+NjA8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjEzNy4xIiB0ZXh0LWFuY2hvcj0iZW5kIj42NTwvdGV4dD48dGV4dCB4PSIzOCIgeT0iOTcuOSIgdGV4dC1hbmNob3I9ImVuZCI+NzA8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjU4LjciIHRleHQtYW5jaG9yPSJlbmQiPjc1PC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxOS41IiB0ZXh0LWFuY2hvcj0iZW5kIj44MDwvdGV4dD48L2c+PHBvbHlsaW5lIGRhdGEtc2VyaWVzPSIwIiBwb2ludHM9IjkwLjMzLDE4OC40OCAxMzYuNjcsMTI1Ljc2IDE4Myw2My4wNCAyMjkuMzMsMTU3LjEyIDI3NS42Nyw5NC40IiBmaWxsPSJub25lIiBzdHJva2U9IiM2RTlEQzgiIHN0cm9rZS13aWR0aD0iMi42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48Y2lyY2xlIGRhdGEtdmVydGV4PSIwLTAiIGN4PSI5MC4zMyIgY3k9IjE4OC40OCIgcj0iMy41IiBmaWxsPSIjNkU5REM4IiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGNpcmNsZSBkYXRhLXZlcnRleD0iMC0xIiBjeD0iMTM2LjY3IiBjeT0iMTI1Ljc2IiByPSIzLjUiIGZpbGw9IiM2RTlEQzgiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGRhdGEtdmVydGV4PSIwLTIiIGN4PSIxODMiIGN5PSI2My4wNCIgcj0iMy41IiBmaWxsPSIjNkU5REM4IiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGNpcmNsZSBkYXRhLXZlcnRleD0iMC0zIiBjeD0iMjI5LjMzIiBjeT0iMTU3LjEyIiByPSIzLjUiIGZpbGw9IiM2RTlEQzgiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGRhdGEtdmVydGV4PSIwLTQiIGN4PSIyNzUuNjciIGN5PSI5NC40IiByPSIzLjUiIGZpbGw9IiM2RTlEQzgiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjE4MyIgeT0iMjQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+RGF5ICgxID0gTW9uZGF5KTwvdGV4dD48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjEyIiB5PSIxMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHRyYW5zZm9ybT0icm90YXRlKC05MCAxMiAxMTQpIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+RGVncmVlczwvdGV4dD48L3N2Zz4=)
+
+   - A) $66$
+   - B) $62$
+   - C) $70$
+   - D) $74$
+
+4. How many books were read on Thursday?
+
+<!-- figure: pr-1-3-p5-pictograph-books -->
+![A pictograph of books read by day. Each star stands for 5 books. Monday shows 3 stars, which is 15 books. Tuesday shows 4 stars, which is 20 books. Wednesday shows 2 stars, which is 10 books. Thursday shows 5 stars, which is 25 books.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMTY2IiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjE2NiIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHBpY3RvZ3JhcGggb2YgYm9va3MgcmVhZCBieSBkYXkuIEVhY2ggc3RhciBzdGFuZHMgZm9yIDUgYm9va3MuIE1vbmRheSBzaG93cyAzIHN0YXJzLCB3aGljaCBpcyAxNSBib29rcy4gVHVlc2RheSBzaG93cyA0IHN0YXJzLCB3aGljaCBpcyAyMCBib29rcy4gV2VkbmVzZGF5IHNob3dzIDIgc3RhcnMsIHdoaWNoIGlzIDEwIGJvb2tzLiBUaHVyc2RheSBzaG93cyA1IHN0YXJzLCB3aGljaCBpcyAyNSBib29rcy4iPjxyZWN0IHdpZHRoPSIzNDAiIGhlaWdodD0iMTY2IiBmaWxsPSIjRkZGRkZGIiByeD0iMTAiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNzMuODkiIGhlaWdodD0iMjQiIGZpbGw9IiM2RTlEQzgiIGZpbGwtb3BhY2l0eT0iMC4xOCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSBkYXRhLXZsaW5lPSIwIiB4MT0iMTIiIHkxPSIxMiIgeDI9IjEyIiB5Mj0iMTMyIi8+PGxpbmUgZGF0YS12bGluZT0iMSIgeDE9Ijk1Ljg5IiB5MT0iMTIiIHgyPSI5NS44OSIgeTI9IjEzMiIvPjxsaW5lIGRhdGEtdmxpbmU9IjIiIHgxPSIxODUuODkiIHkxPSIxMiIgeDI9IjE4NS44OSIgeTI9IjEzMiIvPjxsaW5lIGRhdGEtaGxpbmU9IjAiIHgxPSIxMiIgeTE9IjEyIiB4Mj0iMTg1Ljg5IiB5Mj0iMTIiLz48bGluZSBkYXRhLWhsaW5lPSIxIiB4MT0iMTIiIHkxPSIzNiIgeDI9IjE4NS44OSIgeTI9IjM2Ii8+PGxpbmUgZGF0YS1obGluZT0iMiIgeDE9IjEyIiB5MT0iNjAiIHgyPSIxODUuODkiIHkyPSI2MCIvPjxsaW5lIGRhdGEtaGxpbmU9IjMiIHgxPSIxMiIgeTE9Ijg0IiB4Mj0iMTg1Ljg5IiB5Mj0iODQiLz48bGluZSBkYXRhLWhsaW5lPSI0IiB4MT0iMTIiIHkxPSIxMDgiIHgyPSIxODUuODkiIHkyPSIxMDgiLz48bGluZSBkYXRhLWhsaW5lPSI1IiB4MT0iMTIiIHkxPSIxMzIiIHgyPSIxODUuODkiIHkyPSIxMzIiLz48L2c+PGcgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwRTBFMTEiPjx0ZXh0IGRhdGEtaGVhZD0iMCIgeD0iMTciIHk9IjI4IiBmb250LXdlaWdodD0iNzAwIj5EYXk8L3RleHQ+PHRleHQgZGF0YS1oZWFkPSIxIiB4PSIxMDAuODkiIHk9IjI4IiBmb250LXdlaWdodD0iNzAwIj5Cb29rcyByZWFkPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0wIiB4PSIxNyIgeT0iNTIiIGZvbnQtd2VpZ2h0PSI2MDAiPk1vbmRheTwvdGV4dD48cGF0aCBkYXRhLXN5bWJvbD0iMC0wIiBkPSJNIDEwNy4zOSA0MS41IEwgMTA4Ljk5IDQ1Ljc5IEwgMTEzLjU3IDQ1Ljk5IEwgMTA5Ljk5IDQ4Ljg0IEwgMTExLjIxIDUzLjI2IEwgMTA3LjM5IDUwLjczIEwgMTAzLjU3IDUzLjI2IEwgMTA0Ljc5IDQ4Ljg0IEwgMTAxLjIxIDQ1Ljk5IEwgMTA1Ljc5IDQ1Ljc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48cGF0aCBkYXRhLXN5bWJvbD0iMC0xIiBkPSJNIDEyMy4zOSA0MS41IEwgMTI0Ljk5IDQ1Ljc5IEwgMTI5LjU3IDQ1Ljk5IEwgMTI1Ljk5IDQ4Ljg0IEwgMTI3LjIxIDUzLjI2IEwgMTIzLjM5IDUwLjczIEwgMTE5LjU3IDUzLjI2IEwgMTIwLjc5IDQ4Ljg0IEwgMTE3LjIxIDQ1Ljk5IEwgMTIxLjc5IDQ1Ljc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48cGF0aCBkYXRhLXN5bWJvbD0iMC0yIiBkPSJNIDEzOS4zOSA0MS41IEwgMTQwLjk5IDQ1Ljc5IEwgMTQ1LjU3IDQ1Ljk5IEwgMTQxLjk5IDQ4Ljg0IEwgMTQzLjIxIDUzLjI2IEwgMTM5LjM5IDUwLjczIEwgMTM1LjU3IDUzLjI2IEwgMTM2Ljc5IDQ4Ljg0IEwgMTMzLjIxIDQ1Ljk5IEwgMTM3Ljc5IDQ1Ljc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48dGV4dCBkYXRhLWNlbGw9IjEtMCIgeD0iMTciIHk9Ijc2IiBmb250LXdlaWdodD0iNjAwIj5UdWVzZGF5PC90ZXh0PjxwYXRoIGRhdGEtc3ltYm9sPSIxLTAiIGQ9Ik0gMTA3LjM5IDY1LjUgTCAxMDguOTkgNjkuNzkgTCAxMTMuNTcgNjkuOTkgTCAxMDkuOTkgNzIuODQgTCAxMTEuMjEgNzcuMjYgTCAxMDcuMzkgNzQuNzMgTCAxMDMuNTcgNzcuMjYgTCAxMDQuNzkgNzIuODQgTCAxMDEuMjEgNjkuOTkgTCAxMDUuNzkgNjkuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjxwYXRoIGRhdGEtc3ltYm9sPSIxLTEiIGQ9Ik0gMTIzLjM5IDY1LjUgTCAxMjQuOTkgNjkuNzkgTCAxMjkuNTcgNjkuOTkgTCAxMjUuOTkgNzIuODQgTCAxMjcuMjEgNzcuMjYgTCAxMjMuMzkgNzQuNzMgTCAxMTkuNTcgNzcuMjYgTCAxMjAuNzkgNzIuODQgTCAxMTcuMjEgNjkuOTkgTCAxMjEuNzkgNjkuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjxwYXRoIGRhdGEtc3ltYm9sPSIxLTIiIGQ9Ik0gMTM5LjM5IDY1LjUgTCAxNDAuOTkgNjkuNzkgTCAxNDUuNTcgNjkuOTkgTCAxNDEuOTkgNzIuODQgTCAxNDMuMjEgNzcuMjYgTCAxMzkuMzkgNzQuNzMgTCAxMzUuNTcgNzcuMjYgTCAxMzYuNzkgNzIuODQgTCAxMzMuMjEgNjkuOTkgTCAxMzcuNzkgNjkuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjxwYXRoIGRhdGEtc3ltYm9sPSIxLTMiIGQ9Ik0gMTU1LjM5IDY1LjUgTCAxNTYuOTkgNjkuNzkgTCAxNjEuNTcgNjkuOTkgTCAxNTcuOTkgNzIuODQgTCAxNTkuMjEgNzcuMjYgTCAxNTUuMzkgNzQuNzMgTCAxNTEuNTcgNzcuMjYgTCAxNTIuNzkgNzIuODQgTCAxNDkuMjEgNjkuOTkgTCAxNTMuNzkgNjkuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjx0ZXh0IGRhdGEtY2VsbD0iMi0wIiB4PSIxNyIgeT0iMTAwIiBmb250LXdlaWdodD0iNjAwIj5XZWRuZXNkYXk8L3RleHQ+PHBhdGggZGF0YS1zeW1ib2w9IjItMCIgZD0iTSAxMDcuMzkgODkuNSBMIDEwOC45OSA5My43OSBMIDExMy41NyA5My45OSBMIDEwOS45OSA5Ni44NCBMIDExMS4yMSAxMDEuMjYgTCAxMDcuMzkgOTguNzMgTCAxMDMuNTcgMTAxLjI2IEwgMTA0Ljc5IDk2Ljg0IEwgMTAxLjIxIDkzLjk5IEwgMTA1Ljc5IDkzLjc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48cGF0aCBkYXRhLXN5bWJvbD0iMi0xIiBkPSJNIDEyMy4zOSA4OS41IEwgMTI0Ljk5IDkzLjc5IEwgMTI5LjU3IDkzLjk5IEwgMTI1Ljk5IDk2Ljg0IEwgMTI3LjIxIDEwMS4yNiBMIDEyMy4zOSA5OC43MyBMIDExOS41NyAxMDEuMjYgTCAxMjAuNzkgOTYuODQgTCAxMTcuMjEgOTMuOTkgTCAxMjEuNzkgOTMuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjx0ZXh0IGRhdGEtY2VsbD0iMy0wIiB4PSIxNyIgeT0iMTI0IiBmb250LXdlaWdodD0iNjAwIj5UaHVyc2RheTwvdGV4dD48cGF0aCBkYXRhLXN5bWJvbD0iMy0wIiBkPSJNIDEwNy4zOSAxMTMuNSBMIDEwOC45OSAxMTcuNzkgTCAxMTMuNTcgMTE3Ljk5IEwgMTA5Ljk5IDEyMC44NCBMIDExMS4yMSAxMjUuMjYgTCAxMDcuMzkgMTIyLjczIEwgMTAzLjU3IDEyNS4yNiBMIDEwNC43OSAxMjAuODQgTCAxMDEuMjEgMTE3Ljk5IEwgMTA1Ljc5IDExNy43OSBaIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC42Ii8+PHBhdGggZGF0YS1zeW1ib2w9IjMtMSIgZD0iTSAxMjMuMzkgMTEzLjUgTCAxMjQuOTkgMTE3Ljc5IEwgMTI5LjU3IDExNy45OSBMIDEyNS45OSAxMjAuODQgTCAxMjcuMjEgMTI1LjI2IEwgMTIzLjM5IDEyMi43MyBMIDExOS41NyAxMjUuMjYgTCAxMjAuNzkgMTIwLjg0IEwgMTE3LjIxIDExNy45OSBMIDEyMS43OSAxMTcuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjxwYXRoIGRhdGEtc3ltYm9sPSIzLTIiIGQ9Ik0gMTM5LjM5IDExMy41IEwgMTQwLjk5IDExNy43OSBMIDE0NS41NyAxMTcuOTkgTCAxNDEuOTkgMTIwLjg0IEwgMTQzLjIxIDEyNS4yNiBMIDEzOS4zOSAxMjIuNzMgTCAxMzUuNTcgMTI1LjI2IEwgMTM2Ljc5IDEyMC44NCBMIDEzMy4yMSAxMTcuOTkgTCAxMzcuNzkgMTE3Ljc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48cGF0aCBkYXRhLXN5bWJvbD0iMy0zIiBkPSJNIDE1NS4zOSAxMTMuNSBMIDE1Ni45OSAxMTcuNzkgTCAxNjEuNTcgMTE3Ljk5IEwgMTU3Ljk5IDEyMC44NCBMIDE1OS4yMSAxMjUuMjYgTCAxNTUuMzkgMTIyLjczIEwgMTUxLjU3IDEyNS4yNiBMIDE1Mi43OSAxMjAuODQgTCAxNDkuMjEgMTE3Ljk5IEwgMTUzLjc5IDExNy43OSBaIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC42Ii8+PHBhdGggZGF0YS1zeW1ib2w9IjMtNCIgZD0iTSAxNzEuMzkgMTEzLjUgTCAxNzIuOTkgMTE3Ljc5IEwgMTc3LjU3IDExNy45OSBMIDE3My45OSAxMjAuODQgTCAxNzUuMjEgMTI1LjI2IEwgMTcxLjM5IDEyMi43MyBMIDE2Ny41NyAxMjUuMjYgTCAxNjguNzkgMTIwLjg0IEwgMTY1LjIxIDExNy45OSBMIDE2OS43OSAxMTcuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjxwYXRoIGRhdGEta2V5c3ltYm9sPSIwIiBkPSJNIDIwLjUgMTM3LjUgTCAyMi4xIDE0MS43OSBMIDI2LjY4IDE0MS45OSBMIDIzLjEgMTQ0Ljg0IEwgMjQuMzIgMTQ5LjI2IEwgMjAuNSAxNDYuNzMgTCAxNi42OCAxNDkuMjYgTCAxNy45IDE0NC44NCBMIDE0LjMyIDE0MS45OSBMIDE4LjkgMTQxLjc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48dGV4dCBkYXRhLWtleT0iMSIgeD0iMzIiIHk9IjE0OCIgZm9udC13ZWlnaHQ9IjYwMCI+ZWFjaCBzdGFyIHN0YW5kcyBmb3IgNSBib29rczwvdGV4dD48L2c+PC9zdmc+)
+
+   - A) $5$
+   - B) $25$
+   - C) $20$
+   - D) $10$
+
+**Proficient Level** (these require an extra step)
+
+5. Which two pets, added together, equal the number of students who chose Cats?
+
+<!-- figure: pr-1-3-p5-bar-pets -->
+![A bar graph with Pet along the bottom and Students up the side. The value axis runs from 0 to 50 and is marked every 5. There are four bars: Dogs 25, Cats 40, Fish 15, and Birds 10.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGJhciBncmFwaCB3aXRoIFBldCBhbG9uZyB0aGUgYm90dG9tIGFuZCBTdHVkZW50cyB1cCB0aGUgc2lkZS4gVGhlIHZhbHVlIGF4aXMgcnVucyBmcm9tIDAgdG8gNTAgYW5kIGlzIG1hcmtlZCBldmVyeSA1LiBUaGVyZSBhcmUgZm91ciBiYXJzOiBEb2dzIDI1LCBDYXRzIDQwLCBGaXNoIDE1LCBhbmQgQmlyZHMgMTAuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PGcgc3Ryb2tlPSIjRTJEQ0NBIiBzdHJva2Utd2lkdGg9IjEiPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIvPjxsaW5lIHgxPSI0NCIgeTE9IjE5Mi40IiB4Mj0iMzIyIiB5Mj0iMTkyLjQiLz48bGluZSB4MT0iNDQiIHkxPSIxNzIuOCIgeDI9IjMyMiIgeTI9IjE3Mi44Ii8+PGxpbmUgeDE9IjQ0IiB5MT0iMTUzLjIiIHgyPSIzMjIiIHkyPSIxNTMuMiIvPjxsaW5lIHgxPSI0NCIgeTE9IjEzMy42IiB4Mj0iMzIyIiB5Mj0iMTMzLjYiLz48bGluZSB4MT0iNDQiIHkxPSIxMTQiIHgyPSIzMjIiIHkyPSIxMTQiLz48bGluZSB4MT0iNDQiIHkxPSI5NC40IiB4Mj0iMzIyIiB5Mj0iOTQuNCIvPjxsaW5lIHgxPSI0NCIgeTE9Ijc0LjgiIHgyPSIzMjIiIHkyPSI3NC44Ii8+PGxpbmUgeDE9IjQ0IiB5MT0iNTUuMiIgeDI9IjMyMiIgeTI9IjU1LjIiLz48bGluZSB4MT0iNDQiIHkxPSIzNS42IiB4Mj0iMzIyIiB5Mj0iMzUuNiIvPjxsaW5lIHgxPSI0NCIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMTYiLz48L2c+PHJlY3QgZGF0YS1iYXI9IjAiIHg9IjU3LjIxIiB5PSIxMTQiIHdpZHRoPSI0My4wOSIgaGVpZ2h0PSI5OCIgZmlsbD0iIzZFOURDOCIvPjxyZWN0IGRhdGEtYmFyPSIxIiB4PSIxMjYuNzEiIHk9IjU1LjIiIHdpZHRoPSI0My4wOSIgaGVpZ2h0PSIxNTYuOCIgZmlsbD0iIzZFOURDOCIvPjxyZWN0IGRhdGEtYmFyPSIyIiB4PSIxOTYuMjEiIHk9IjE1My4yIiB3aWR0aD0iNDMuMDkiIGhlaWdodD0iNTguOCIgZmlsbD0iIzZFOURDOCIvPjxyZWN0IGRhdGEtYmFyPSIzIiB4PSIyNjUuNzEiIHk9IjE3Mi44IiB3aWR0aD0iNDMuMDkiIGhlaWdodD0iMzkuMiIgZmlsbD0iIzZFOURDOCIvPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjQ0IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iMzgiIHk9IjIxNS41IiB0ZXh0LWFuY2hvcj0iZW5kIj4wPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxOTUuOSIgdGV4dC1hbmNob3I9ImVuZCI+NTwvdGV4dD48dGV4dCB4PSIzOCIgeT0iMTc2LjMiIHRleHQtYW5jaG9yPSJlbmQiPjEwPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxNTYuNyIgdGV4dC1hbmNob3I9ImVuZCI+MTU8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjEzNy4xIiB0ZXh0LWFuY2hvcj0iZW5kIj4yMDwvdGV4dD48dGV4dCB4PSIzOCIgeT0iMTE3LjUiIHRleHQtYW5jaG9yPSJlbmQiPjI1PC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSI5Ny45IiB0ZXh0LWFuY2hvcj0iZW5kIj4zMDwvdGV4dD48dGV4dCB4PSIzOCIgeT0iNzguMyIgdGV4dC1hbmNob3I9ImVuZCI+MzU8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjU4LjciIHRleHQtYW5jaG9yPSJlbmQiPjQwPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIzOS4xIiB0ZXh0LWFuY2hvcj0iZW5kIj40NTwvdGV4dD48dGV4dCB4PSIzOCIgeT0iMTkuNSIgdGV4dC1hbmNob3I9ImVuZCI+NTA8L3RleHQ+PHRleHQgZGF0YS1jYXQ9IjAiIHg9Ijc4Ljc1IiB5PSIyMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRvZ3M8L3RleHQ+PHRleHQgZGF0YS1jYXQ9IjEiIHg9IjE0OC4yNSIgeT0iMjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DYXRzPC90ZXh0Pjx0ZXh0IGRhdGEtY2F0PSIyIiB4PSIyMTcuNzUiIHk9IjIyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RmlzaDwvdGV4dD48dGV4dCBkYXRhLWNhdD0iMyIgeD0iMjg3LjI1IiB5PSIyMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkJpcmRzPC90ZXh0PjwvZz48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjE4MyIgeT0iMjQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+UGV0PC90ZXh0Pjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTIiIHk9IjExNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDEyIDExNCkiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5TdHVkZW50czwvdGV4dD48L3N2Zz4=)
+
+   - A) Dogs and Fish
+   - B) Fish and Birds
+   - C) Dogs and Birds
+   - D) Cats and Birds
+
+6. Between which two consecutive days did the temperature drop the most?
+
+<!-- figure: pr-1-3-p5-line-temps -->
+![A line graph of daily high temperatures. The horizontal axis is Day, numbered 1 for Monday through 5 for Friday, and the vertical axis is Degrees, running from 55 to 80 and marked every 5. Five points are plotted and joined in order: Monday 58, Tuesday 66, Wednesday 74, Thursday 62, and Friday 70. The line rises for two days to its highest point on Wednesday, drops sharply to its lowest point on Thursday, then rises again on Friday.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGxpbmUgZ3JhcGggb2YgZGFpbHkgaGlnaCB0ZW1wZXJhdHVyZXMuIFRoZSBob3Jpem9udGFsIGF4aXMgaXMgRGF5LCBudW1iZXJlZCAxIGZvciBNb25kYXkgdGhyb3VnaCA1IGZvciBGcmlkYXksIGFuZCB0aGUgdmVydGljYWwgYXhpcyBpcyBEZWdyZWVzLCBydW5uaW5nIGZyb20gNTUgdG8gODAgYW5kIG1hcmtlZCBldmVyeSA1LiBGaXZlIHBvaW50cyBhcmUgcGxvdHRlZCBhbmQgam9pbmVkIGluIG9yZGVyOiBNb25kYXkgNTgsIFR1ZXNkYXkgNjYsIFdlZG5lc2RheSA3NCwgVGh1cnNkYXkgNjIsIGFuZCBGcmlkYXkgNzAuIFRoZSBsaW5lIHJpc2VzIGZvciB0d28gZGF5cyB0byBpdHMgaGlnaGVzdCBwb2ludCBvbiBXZWRuZXNkYXksIGRyb3BzIHNoYXJwbHkgdG8gaXRzIGxvd2VzdCBwb2ludCBvbiBUaHVyc2RheSwgdGhlbiByaXNlcyBhZ2FpbiBvbiBGcmlkYXkuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PGcgc3Ryb2tlPSIjRTJEQ0NBIiBzdHJva2Utd2lkdGg9IjEiPjxsaW5lIHgxPSI0NCIgeTE9IjE2IiB4Mj0iNDQiIHkyPSIyMTIiLz48bGluZSB4MT0iOTAuMzMiIHkxPSIxNiIgeDI9IjkwLjMzIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjEzNi42NyIgeTE9IjE2IiB4Mj0iMTM2LjY3IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjE4MyIgeTE9IjE2IiB4Mj0iMTgzIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjIyOS4zMyIgeTE9IjE2IiB4Mj0iMjI5LjMzIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI3NS42NyIgeTE9IjE2IiB4Mj0iMjc1LjY3IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjMyMiIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjQ0IiB5MT0iMjEyIiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjQ0IiB5MT0iMTcyLjgiIHgyPSIzMjIiIHkyPSIxNzIuOCIvPjxsaW5lIHgxPSI0NCIgeTE9IjEzMy42IiB4Mj0iMzIyIiB5Mj0iMTMzLjYiLz48bGluZSB4MT0iNDQiIHkxPSI5NC40IiB4Mj0iMzIyIiB5Mj0iOTQuNCIvPjxsaW5lIHgxPSI0NCIgeTE9IjU1LjIiIHgyPSIzMjIiIHkyPSI1NS4yIi8+PGxpbmUgeDE9IjQ0IiB5MT0iMTYiIHgyPSIzMjIiIHkyPSIxNiIvPjwvZz48bGluZSB4MT0iNDQiIHkxPSIyMTIiIHgyPSIzMjIiIHkyPSIyMTIiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48bGluZSB4MT0iNDQiIHkxPSIyMTIiIHgyPSI0NCIgeTI9IjE2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGcgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiMwRTBFMTEiPjx0ZXh0IHg9IjQ0IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjA8L3RleHQ+PHRleHQgeD0iOTAuMzMiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTwvdGV4dD48dGV4dCB4PSIxMzYuNjciIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjwvdGV4dD48dGV4dCB4PSIxODMiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MzwvdGV4dD48dGV4dCB4PSIyMjkuMzMiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NDwvdGV4dD48dGV4dCB4PSIyNzUuNjciIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NTwvdGV4dD48dGV4dCB4PSIzMjIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NjwvdGV4dD48dGV4dCB4PSIzOCIgeT0iMjE1LjUiIHRleHQtYW5jaG9yPSJlbmQiPjU1PC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxNzYuMyIgdGV4dC1hbmNob3I9ImVuZCI+NjA8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjEzNy4xIiB0ZXh0LWFuY2hvcj0iZW5kIj42NTwvdGV4dD48dGV4dCB4PSIzOCIgeT0iOTcuOSIgdGV4dC1hbmNob3I9ImVuZCI+NzA8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjU4LjciIHRleHQtYW5jaG9yPSJlbmQiPjc1PC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxOS41IiB0ZXh0LWFuY2hvcj0iZW5kIj44MDwvdGV4dD48L2c+PHBvbHlsaW5lIGRhdGEtc2VyaWVzPSIwIiBwb2ludHM9IjkwLjMzLDE4OC40OCAxMzYuNjcsMTI1Ljc2IDE4Myw2My4wNCAyMjkuMzMsMTU3LjEyIDI3NS42Nyw5NC40IiBmaWxsPSJub25lIiBzdHJva2U9IiM2RTlEQzgiIHN0cm9rZS13aWR0aD0iMi42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48Y2lyY2xlIGRhdGEtdmVydGV4PSIwLTAiIGN4PSI5MC4zMyIgY3k9IjE4OC40OCIgcj0iMy41IiBmaWxsPSIjNkU5REM4IiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGNpcmNsZSBkYXRhLXZlcnRleD0iMC0xIiBjeD0iMTM2LjY3IiBjeT0iMTI1Ljc2IiByPSIzLjUiIGZpbGw9IiM2RTlEQzgiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGRhdGEtdmVydGV4PSIwLTIiIGN4PSIxODMiIGN5PSI2My4wNCIgcj0iMy41IiBmaWxsPSIjNkU5REM4IiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGNpcmNsZSBkYXRhLXZlcnRleD0iMC0zIiBjeD0iMjI5LjMzIiBjeT0iMTU3LjEyIiByPSIzLjUiIGZpbGw9IiM2RTlEQzgiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGRhdGEtdmVydGV4PSIwLTQiIGN4PSIyNzUuNjciIGN5PSI5NC40IiByPSIzLjUiIGZpbGw9IiM2RTlEQzgiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjE4MyIgeT0iMjQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+RGF5ICgxID0gTW9uZGF5KTwvdGV4dD48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjEyIiB5PSIxMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHRyYW5zZm9ybT0icm90YXRlKC05MCAxMiAxMTQpIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+RGVncmVlczwvdGV4dD48L3N2Zz4=)
+
+   - A) Tuesday to Wednesday
+   - B) Thursday to Friday
+   - C) Wednesday to Thursday
+   - D) Monday to Tuesday
+
+7. How many more books were read on Thursday than on Wednesday?
+
+<!-- figure: pr-1-3-p5-pictograph-books -->
+![A pictograph of books read by day. Each star stands for 5 books. Monday shows 3 stars, which is 15 books. Tuesday shows 4 stars, which is 20 books. Wednesday shows 2 stars, which is 10 books. Thursday shows 5 stars, which is 25 books.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMTY2IiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjE2NiIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHBpY3RvZ3JhcGggb2YgYm9va3MgcmVhZCBieSBkYXkuIEVhY2ggc3RhciBzdGFuZHMgZm9yIDUgYm9va3MuIE1vbmRheSBzaG93cyAzIHN0YXJzLCB3aGljaCBpcyAxNSBib29rcy4gVHVlc2RheSBzaG93cyA0IHN0YXJzLCB3aGljaCBpcyAyMCBib29rcy4gV2VkbmVzZGF5IHNob3dzIDIgc3RhcnMsIHdoaWNoIGlzIDEwIGJvb2tzLiBUaHVyc2RheSBzaG93cyA1IHN0YXJzLCB3aGljaCBpcyAyNSBib29rcy4iPjxyZWN0IHdpZHRoPSIzNDAiIGhlaWdodD0iMTY2IiBmaWxsPSIjRkZGRkZGIiByeD0iMTAiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNzMuODkiIGhlaWdodD0iMjQiIGZpbGw9IiM2RTlEQzgiIGZpbGwtb3BhY2l0eT0iMC4xOCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSBkYXRhLXZsaW5lPSIwIiB4MT0iMTIiIHkxPSIxMiIgeDI9IjEyIiB5Mj0iMTMyIi8+PGxpbmUgZGF0YS12bGluZT0iMSIgeDE9Ijk1Ljg5IiB5MT0iMTIiIHgyPSI5NS44OSIgeTI9IjEzMiIvPjxsaW5lIGRhdGEtdmxpbmU9IjIiIHgxPSIxODUuODkiIHkxPSIxMiIgeDI9IjE4NS44OSIgeTI9IjEzMiIvPjxsaW5lIGRhdGEtaGxpbmU9IjAiIHgxPSIxMiIgeTE9IjEyIiB4Mj0iMTg1Ljg5IiB5Mj0iMTIiLz48bGluZSBkYXRhLWhsaW5lPSIxIiB4MT0iMTIiIHkxPSIzNiIgeDI9IjE4NS44OSIgeTI9IjM2Ii8+PGxpbmUgZGF0YS1obGluZT0iMiIgeDE9IjEyIiB5MT0iNjAiIHgyPSIxODUuODkiIHkyPSI2MCIvPjxsaW5lIGRhdGEtaGxpbmU9IjMiIHgxPSIxMiIgeTE9Ijg0IiB4Mj0iMTg1Ljg5IiB5Mj0iODQiLz48bGluZSBkYXRhLWhsaW5lPSI0IiB4MT0iMTIiIHkxPSIxMDgiIHgyPSIxODUuODkiIHkyPSIxMDgiLz48bGluZSBkYXRhLWhsaW5lPSI1IiB4MT0iMTIiIHkxPSIxMzIiIHgyPSIxODUuODkiIHkyPSIxMzIiLz48L2c+PGcgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwRTBFMTEiPjx0ZXh0IGRhdGEtaGVhZD0iMCIgeD0iMTciIHk9IjI4IiBmb250LXdlaWdodD0iNzAwIj5EYXk8L3RleHQ+PHRleHQgZGF0YS1oZWFkPSIxIiB4PSIxMDAuODkiIHk9IjI4IiBmb250LXdlaWdodD0iNzAwIj5Cb29rcyByZWFkPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0wIiB4PSIxNyIgeT0iNTIiIGZvbnQtd2VpZ2h0PSI2MDAiPk1vbmRheTwvdGV4dD48cGF0aCBkYXRhLXN5bWJvbD0iMC0wIiBkPSJNIDEwNy4zOSA0MS41IEwgMTA4Ljk5IDQ1Ljc5IEwgMTEzLjU3IDQ1Ljk5IEwgMTA5Ljk5IDQ4Ljg0IEwgMTExLjIxIDUzLjI2IEwgMTA3LjM5IDUwLjczIEwgMTAzLjU3IDUzLjI2IEwgMTA0Ljc5IDQ4Ljg0IEwgMTAxLjIxIDQ1Ljk5IEwgMTA1Ljc5IDQ1Ljc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48cGF0aCBkYXRhLXN5bWJvbD0iMC0xIiBkPSJNIDEyMy4zOSA0MS41IEwgMTI0Ljk5IDQ1Ljc5IEwgMTI5LjU3IDQ1Ljk5IEwgMTI1Ljk5IDQ4Ljg0IEwgMTI3LjIxIDUzLjI2IEwgMTIzLjM5IDUwLjczIEwgMTE5LjU3IDUzLjI2IEwgMTIwLjc5IDQ4Ljg0IEwgMTE3LjIxIDQ1Ljk5IEwgMTIxLjc5IDQ1Ljc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48cGF0aCBkYXRhLXN5bWJvbD0iMC0yIiBkPSJNIDEzOS4zOSA0MS41IEwgMTQwLjk5IDQ1Ljc5IEwgMTQ1LjU3IDQ1Ljk5IEwgMTQxLjk5IDQ4Ljg0IEwgMTQzLjIxIDUzLjI2IEwgMTM5LjM5IDUwLjczIEwgMTM1LjU3IDUzLjI2IEwgMTM2Ljc5IDQ4Ljg0IEwgMTMzLjIxIDQ1Ljk5IEwgMTM3Ljc5IDQ1Ljc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48dGV4dCBkYXRhLWNlbGw9IjEtMCIgeD0iMTciIHk9Ijc2IiBmb250LXdlaWdodD0iNjAwIj5UdWVzZGF5PC90ZXh0PjxwYXRoIGRhdGEtc3ltYm9sPSIxLTAiIGQ9Ik0gMTA3LjM5IDY1LjUgTCAxMDguOTkgNjkuNzkgTCAxMTMuNTcgNjkuOTkgTCAxMDkuOTkgNzIuODQgTCAxMTEuMjEgNzcuMjYgTCAxMDcuMzkgNzQuNzMgTCAxMDMuNTcgNzcuMjYgTCAxMDQuNzkgNzIuODQgTCAxMDEuMjEgNjkuOTkgTCAxMDUuNzkgNjkuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjxwYXRoIGRhdGEtc3ltYm9sPSIxLTEiIGQ9Ik0gMTIzLjM5IDY1LjUgTCAxMjQuOTkgNjkuNzkgTCAxMjkuNTcgNjkuOTkgTCAxMjUuOTkgNzIuODQgTCAxMjcuMjEgNzcuMjYgTCAxMjMuMzkgNzQuNzMgTCAxMTkuNTcgNzcuMjYgTCAxMjAuNzkgNzIuODQgTCAxMTcuMjEgNjkuOTkgTCAxMjEuNzkgNjkuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjxwYXRoIGRhdGEtc3ltYm9sPSIxLTIiIGQ9Ik0gMTM5LjM5IDY1LjUgTCAxNDAuOTkgNjkuNzkgTCAxNDUuNTcgNjkuOTkgTCAxNDEuOTkgNzIuODQgTCAxNDMuMjEgNzcuMjYgTCAxMzkuMzkgNzQuNzMgTCAxMzUuNTcgNzcuMjYgTCAxMzYuNzkgNzIuODQgTCAxMzMuMjEgNjkuOTkgTCAxMzcuNzkgNjkuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjxwYXRoIGRhdGEtc3ltYm9sPSIxLTMiIGQ9Ik0gMTU1LjM5IDY1LjUgTCAxNTYuOTkgNjkuNzkgTCAxNjEuNTcgNjkuOTkgTCAxNTcuOTkgNzIuODQgTCAxNTkuMjEgNzcuMjYgTCAxNTUuMzkgNzQuNzMgTCAxNTEuNTcgNzcuMjYgTCAxNTIuNzkgNzIuODQgTCAxNDkuMjEgNjkuOTkgTCAxNTMuNzkgNjkuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjx0ZXh0IGRhdGEtY2VsbD0iMi0wIiB4PSIxNyIgeT0iMTAwIiBmb250LXdlaWdodD0iNjAwIj5XZWRuZXNkYXk8L3RleHQ+PHBhdGggZGF0YS1zeW1ib2w9IjItMCIgZD0iTSAxMDcuMzkgODkuNSBMIDEwOC45OSA5My43OSBMIDExMy41NyA5My45OSBMIDEwOS45OSA5Ni44NCBMIDExMS4yMSAxMDEuMjYgTCAxMDcuMzkgOTguNzMgTCAxMDMuNTcgMTAxLjI2IEwgMTA0Ljc5IDk2Ljg0IEwgMTAxLjIxIDkzLjk5IEwgMTA1Ljc5IDkzLjc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48cGF0aCBkYXRhLXN5bWJvbD0iMi0xIiBkPSJNIDEyMy4zOSA4OS41IEwgMTI0Ljk5IDkzLjc5IEwgMTI5LjU3IDkzLjk5IEwgMTI1Ljk5IDk2Ljg0IEwgMTI3LjIxIDEwMS4yNiBMIDEyMy4zOSA5OC43MyBMIDExOS41NyAxMDEuMjYgTCAxMjAuNzkgOTYuODQgTCAxMTcuMjEgOTMuOTkgTCAxMjEuNzkgOTMuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjx0ZXh0IGRhdGEtY2VsbD0iMy0wIiB4PSIxNyIgeT0iMTI0IiBmb250LXdlaWdodD0iNjAwIj5UaHVyc2RheTwvdGV4dD48cGF0aCBkYXRhLXN5bWJvbD0iMy0wIiBkPSJNIDEwNy4zOSAxMTMuNSBMIDEwOC45OSAxMTcuNzkgTCAxMTMuNTcgMTE3Ljk5IEwgMTA5Ljk5IDEyMC44NCBMIDExMS4yMSAxMjUuMjYgTCAxMDcuMzkgMTIyLjczIEwgMTAzLjU3IDEyNS4yNiBMIDEwNC43OSAxMjAuODQgTCAxMDEuMjEgMTE3Ljk5IEwgMTA1Ljc5IDExNy43OSBaIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC42Ii8+PHBhdGggZGF0YS1zeW1ib2w9IjMtMSIgZD0iTSAxMjMuMzkgMTEzLjUgTCAxMjQuOTkgMTE3Ljc5IEwgMTI5LjU3IDExNy45OSBMIDEyNS45OSAxMjAuODQgTCAxMjcuMjEgMTI1LjI2IEwgMTIzLjM5IDEyMi43MyBMIDExOS41NyAxMjUuMjYgTCAxMjAuNzkgMTIwLjg0IEwgMTE3LjIxIDExNy45OSBMIDEyMS43OSAxMTcuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjxwYXRoIGRhdGEtc3ltYm9sPSIzLTIiIGQ9Ik0gMTM5LjM5IDExMy41IEwgMTQwLjk5IDExNy43OSBMIDE0NS41NyAxMTcuOTkgTCAxNDEuOTkgMTIwLjg0IEwgMTQzLjIxIDEyNS4yNiBMIDEzOS4zOSAxMjIuNzMgTCAxMzUuNTcgMTI1LjI2IEwgMTM2Ljc5IDEyMC44NCBMIDEzMy4yMSAxMTcuOTkgTCAxMzcuNzkgMTE3Ljc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48cGF0aCBkYXRhLXN5bWJvbD0iMy0zIiBkPSJNIDE1NS4zOSAxMTMuNSBMIDE1Ni45OSAxMTcuNzkgTCAxNjEuNTcgMTE3Ljk5IEwgMTU3Ljk5IDEyMC44NCBMIDE1OS4yMSAxMjUuMjYgTCAxNTUuMzkgMTIyLjczIEwgMTUxLjU3IDEyNS4yNiBMIDE1Mi43OSAxMjAuODQgTCAxNDkuMjEgMTE3Ljk5IEwgMTUzLjc5IDExNy43OSBaIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC42Ii8+PHBhdGggZGF0YS1zeW1ib2w9IjMtNCIgZD0iTSAxNzEuMzkgMTEzLjUgTCAxNzIuOTkgMTE3Ljc5IEwgMTc3LjU3IDExNy45OSBMIDE3My45OSAxMjAuODQgTCAxNzUuMjEgMTI1LjI2IEwgMTcxLjM5IDEyMi43MyBMIDE2Ny41NyAxMjUuMjYgTCAxNjguNzkgMTIwLjg0IEwgMTY1LjIxIDExNy45OSBMIDE2OS43OSAxMTcuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjxwYXRoIGRhdGEta2V5c3ltYm9sPSIwIiBkPSJNIDIwLjUgMTM3LjUgTCAyMi4xIDE0MS43OSBMIDI2LjY4IDE0MS45OSBMIDIzLjEgMTQ0Ljg0IEwgMjQuMzIgMTQ5LjI2IEwgMjAuNSAxNDYuNzMgTCAxNi42OCAxNDkuMjYgTCAxNy45IDE0NC44NCBMIDE0LjMyIDE0MS45OSBMIDE4LjkgMTQxLjc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48dGV4dCBkYXRhLWtleT0iMSIgeD0iMzIiIHk9IjE0OCIgZm9udC13ZWlnaHQ9IjYwMCI+ZWFjaCBzdGFyIHN0YW5kcyBmb3IgNSBib29rczwvdGV4dD48L2c+PC9zdmc+)
+
+   - A) $3$
+   - B) $15$
+   - C) $35$
+   - D) $5$
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. If $8$ more students are surveyed and all choose Cats, what will be the new total number of students represented across all four pets?
+
+<!-- figure: pr-1-3-p5-bar-pets -->
+![A bar graph with Pet along the bottom and Students up the side. The value axis runs from 0 to 50 and is marked every 5. There are four bars: Dogs 25, Cats 40, Fish 15, and Birds 10.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGJhciBncmFwaCB3aXRoIFBldCBhbG9uZyB0aGUgYm90dG9tIGFuZCBTdHVkZW50cyB1cCB0aGUgc2lkZS4gVGhlIHZhbHVlIGF4aXMgcnVucyBmcm9tIDAgdG8gNTAgYW5kIGlzIG1hcmtlZCBldmVyeSA1LiBUaGVyZSBhcmUgZm91ciBiYXJzOiBEb2dzIDI1LCBDYXRzIDQwLCBGaXNoIDE1LCBhbmQgQmlyZHMgMTAuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PGcgc3Ryb2tlPSIjRTJEQ0NBIiBzdHJva2Utd2lkdGg9IjEiPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIvPjxsaW5lIHgxPSI0NCIgeTE9IjE5Mi40IiB4Mj0iMzIyIiB5Mj0iMTkyLjQiLz48bGluZSB4MT0iNDQiIHkxPSIxNzIuOCIgeDI9IjMyMiIgeTI9IjE3Mi44Ii8+PGxpbmUgeDE9IjQ0IiB5MT0iMTUzLjIiIHgyPSIzMjIiIHkyPSIxNTMuMiIvPjxsaW5lIHgxPSI0NCIgeTE9IjEzMy42IiB4Mj0iMzIyIiB5Mj0iMTMzLjYiLz48bGluZSB4MT0iNDQiIHkxPSIxMTQiIHgyPSIzMjIiIHkyPSIxMTQiLz48bGluZSB4MT0iNDQiIHkxPSI5NC40IiB4Mj0iMzIyIiB5Mj0iOTQuNCIvPjxsaW5lIHgxPSI0NCIgeTE9Ijc0LjgiIHgyPSIzMjIiIHkyPSI3NC44Ii8+PGxpbmUgeDE9IjQ0IiB5MT0iNTUuMiIgeDI9IjMyMiIgeTI9IjU1LjIiLz48bGluZSB4MT0iNDQiIHkxPSIzNS42IiB4Mj0iMzIyIiB5Mj0iMzUuNiIvPjxsaW5lIHgxPSI0NCIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMTYiLz48L2c+PHJlY3QgZGF0YS1iYXI9IjAiIHg9IjU3LjIxIiB5PSIxMTQiIHdpZHRoPSI0My4wOSIgaGVpZ2h0PSI5OCIgZmlsbD0iIzZFOURDOCIvPjxyZWN0IGRhdGEtYmFyPSIxIiB4PSIxMjYuNzEiIHk9IjU1LjIiIHdpZHRoPSI0My4wOSIgaGVpZ2h0PSIxNTYuOCIgZmlsbD0iIzZFOURDOCIvPjxyZWN0IGRhdGEtYmFyPSIyIiB4PSIxOTYuMjEiIHk9IjE1My4yIiB3aWR0aD0iNDMuMDkiIGhlaWdodD0iNTguOCIgZmlsbD0iIzZFOURDOCIvPjxyZWN0IGRhdGEtYmFyPSIzIiB4PSIyNjUuNzEiIHk9IjE3Mi44IiB3aWR0aD0iNDMuMDkiIGhlaWdodD0iMzkuMiIgZmlsbD0iIzZFOURDOCIvPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjMyMiIgeTI9IjIxMiIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjEuNiIvPjxsaW5lIHgxPSI0NCIgeTE9IjIxMiIgeDI9IjQ0IiB5Mj0iMTYiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48ZyBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzBFMEUxMSI+PHRleHQgeD0iMzgiIHk9IjIxNS41IiB0ZXh0LWFuY2hvcj0iZW5kIj4wPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxOTUuOSIgdGV4dC1hbmNob3I9ImVuZCI+NTwvdGV4dD48dGV4dCB4PSIzOCIgeT0iMTc2LjMiIHRleHQtYW5jaG9yPSJlbmQiPjEwPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxNTYuNyIgdGV4dC1hbmNob3I9ImVuZCI+MTU8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjEzNy4xIiB0ZXh0LWFuY2hvcj0iZW5kIj4yMDwvdGV4dD48dGV4dCB4PSIzOCIgeT0iMTE3LjUiIHRleHQtYW5jaG9yPSJlbmQiPjI1PC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSI5Ny45IiB0ZXh0LWFuY2hvcj0iZW5kIj4zMDwvdGV4dD48dGV4dCB4PSIzOCIgeT0iNzguMyIgdGV4dC1hbmNob3I9ImVuZCI+MzU8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjU4LjciIHRleHQtYW5jaG9yPSJlbmQiPjQwPC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIzOS4xIiB0ZXh0LWFuY2hvcj0iZW5kIj40NTwvdGV4dD48dGV4dCB4PSIzOCIgeT0iMTkuNSIgdGV4dC1hbmNob3I9ImVuZCI+NTA8L3RleHQ+PHRleHQgZGF0YS1jYXQ9IjAiIHg9Ijc4Ljc1IiB5PSIyMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRvZ3M8L3RleHQ+PHRleHQgZGF0YS1jYXQ9IjEiIHg9IjE0OC4yNSIgeT0iMjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DYXRzPC90ZXh0Pjx0ZXh0IGRhdGEtY2F0PSIyIiB4PSIyMTcuNzUiIHk9IjIyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RmlzaDwvdGV4dD48dGV4dCBkYXRhLWNhdD0iMyIgeD0iMjg3LjI1IiB5PSIyMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkJpcmRzPC90ZXh0PjwvZz48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjE4MyIgeT0iMjQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+UGV0PC90ZXh0Pjx0ZXh0IGRhdGEtcm9sZT0iaWRlbnRpZmllciIgeD0iMTIiIHk9IjExNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDEyIDExNCkiIGZvbnQtZmFtaWx5PSJ1aS1zYW5zLXNlcmlmLHN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMEUwRTExIj5TdHVkZW50czwvdGV4dD48L3N2Zz4=)
+
+   - A) $48$
+   - B) $90$
+   - C) $88$
+   - D) $98$
+
+9. What is the average high temperature over the five days shown?
+
+<!-- figure: pr-1-3-p5-line-temps -->
+![A line graph of daily high temperatures. The horizontal axis is Day, numbered 1 for Monday through 5 for Friday, and the vertical axis is Degrees, running from 55 to 80 and marked every 5. Five points are plotted and joined in order: Monday 58, Tuesday 66, Wednesday 74, Thursday 62, and Friday 70. The line rises for two days to its highest point on Wednesday, drops sharply to its lowest point on Thursday, then rises again on Friday.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIGxpbmUgZ3JhcGggb2YgZGFpbHkgaGlnaCB0ZW1wZXJhdHVyZXMuIFRoZSBob3Jpem9udGFsIGF4aXMgaXMgRGF5LCBudW1iZXJlZCAxIGZvciBNb25kYXkgdGhyb3VnaCA1IGZvciBGcmlkYXksIGFuZCB0aGUgdmVydGljYWwgYXhpcyBpcyBEZWdyZWVzLCBydW5uaW5nIGZyb20gNTUgdG8gODAgYW5kIG1hcmtlZCBldmVyeSA1LiBGaXZlIHBvaW50cyBhcmUgcGxvdHRlZCBhbmQgam9pbmVkIGluIG9yZGVyOiBNb25kYXkgNTgsIFR1ZXNkYXkgNjYsIFdlZG5lc2RheSA3NCwgVGh1cnNkYXkgNjIsIGFuZCBGcmlkYXkgNzAuIFRoZSBsaW5lIHJpc2VzIGZvciB0d28gZGF5cyB0byBpdHMgaGlnaGVzdCBwb2ludCBvbiBXZWRuZXNkYXksIGRyb3BzIHNoYXJwbHkgdG8gaXRzIGxvd2VzdCBwb2ludCBvbiBUaHVyc2RheSwgdGhlbiByaXNlcyBhZ2FpbiBvbiBGcmlkYXkuIj48cmVjdCB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI1MCIgZmlsbD0iI0ZGRkZGRiIgcng9IjEwIi8+PGcgc3Ryb2tlPSIjRTJEQ0NBIiBzdHJva2Utd2lkdGg9IjEiPjxsaW5lIHgxPSI0NCIgeTE9IjE2IiB4Mj0iNDQiIHkyPSIyMTIiLz48bGluZSB4MT0iOTAuMzMiIHkxPSIxNiIgeDI9IjkwLjMzIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjEzNi42NyIgeTE9IjE2IiB4Mj0iMTM2LjY3IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjE4MyIgeTE9IjE2IiB4Mj0iMTgzIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjIyOS4zMyIgeTE9IjE2IiB4Mj0iMjI5LjMzIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjI3NS42NyIgeTE9IjE2IiB4Mj0iMjc1LjY3IiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjMyMiIgeTE9IjE2IiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjQ0IiB5MT0iMjEyIiB4Mj0iMzIyIiB5Mj0iMjEyIi8+PGxpbmUgeDE9IjQ0IiB5MT0iMTcyLjgiIHgyPSIzMjIiIHkyPSIxNzIuOCIvPjxsaW5lIHgxPSI0NCIgeTE9IjEzMy42IiB4Mj0iMzIyIiB5Mj0iMTMzLjYiLz48bGluZSB4MT0iNDQiIHkxPSI5NC40IiB4Mj0iMzIyIiB5Mj0iOTQuNCIvPjxsaW5lIHgxPSI0NCIgeTE9IjU1LjIiIHgyPSIzMjIiIHkyPSI1NS4yIi8+PGxpbmUgeDE9IjQ0IiB5MT0iMTYiIHgyPSIzMjIiIHkyPSIxNiIvPjwvZz48bGluZSB4MT0iNDQiIHkxPSIyMTIiIHgyPSIzMjIiIHkyPSIyMTIiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz48bGluZSB4MT0iNDQiIHkxPSIyMTIiIHgyPSI0NCIgeTI9IjE2IiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMS42Ii8+PGcgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiMwRTBFMTEiPjx0ZXh0IHg9IjQ0IiB5PSIyMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjA8L3RleHQ+PHRleHQgeD0iOTAuMzMiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTwvdGV4dD48dGV4dCB4PSIxMzYuNjciIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjwvdGV4dD48dGV4dCB4PSIxODMiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MzwvdGV4dD48dGV4dCB4PSIyMjkuMzMiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NDwvdGV4dD48dGV4dCB4PSIyNzUuNjciIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NTwvdGV4dD48dGV4dCB4PSIzMjIiIHk9IjIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+NjwvdGV4dD48dGV4dCB4PSIzOCIgeT0iMjE1LjUiIHRleHQtYW5jaG9yPSJlbmQiPjU1PC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxNzYuMyIgdGV4dC1hbmNob3I9ImVuZCI+NjA8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjEzNy4xIiB0ZXh0LWFuY2hvcj0iZW5kIj42NTwvdGV4dD48dGV4dCB4PSIzOCIgeT0iOTcuOSIgdGV4dC1hbmNob3I9ImVuZCI+NzA8L3RleHQ+PHRleHQgeD0iMzgiIHk9IjU4LjciIHRleHQtYW5jaG9yPSJlbmQiPjc1PC90ZXh0Pjx0ZXh0IHg9IjM4IiB5PSIxOS41IiB0ZXh0LWFuY2hvcj0iZW5kIj44MDwvdGV4dD48L2c+PHBvbHlsaW5lIGRhdGEtc2VyaWVzPSIwIiBwb2ludHM9IjkwLjMzLDE4OC40OCAxMzYuNjcsMTI1Ljc2IDE4Myw2My4wNCAyMjkuMzMsMTU3LjEyIDI3NS42Nyw5NC40IiBmaWxsPSJub25lIiBzdHJva2U9IiM2RTlEQzgiIHN0cm9rZS13aWR0aD0iMi42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48Y2lyY2xlIGRhdGEtdmVydGV4PSIwLTAiIGN4PSI5MC4zMyIgY3k9IjE4OC40OCIgcj0iMy41IiBmaWxsPSIjNkU5REM4IiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGNpcmNsZSBkYXRhLXZlcnRleD0iMC0xIiBjeD0iMTM2LjY3IiBjeT0iMTI1Ljc2IiByPSIzLjUiIGZpbGw9IiM2RTlEQzgiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGRhdGEtdmVydGV4PSIwLTIiIGN4PSIxODMiIGN5PSI2My4wNCIgcj0iMy41IiBmaWxsPSIjNkU5REM4IiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGNpcmNsZSBkYXRhLXZlcnRleD0iMC0zIiBjeD0iMjI5LjMzIiBjeT0iMTU3LjEyIiByPSIzLjUiIGZpbGw9IiM2RTlEQzgiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGRhdGEtdmVydGV4PSIwLTQiIGN4PSIyNzUuNjciIGN5PSI5NC40IiByPSIzLjUiIGZpbGw9IiM2RTlEQzgiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjE4MyIgeT0iMjQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+RGF5ICgxID0gTW9uZGF5KTwvdGV4dD48dGV4dCBkYXRhLXJvbGU9ImlkZW50aWZpZXIiIHg9IjEyIiB5PSIxMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHRyYW5zZm9ybT0icm90YXRlKC05MCAxMiAxMTQpIiBmb250LWZhbWlseT0idWktc2Fucy1zZXJpZixzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzBFMEUxMSI+RGVncmVlczwvdGV4dD48L3N2Zz4=)
+
+   - A) $74$
+   - B) $60$
+   - C) $66$
+   - D) $330$
+
+10. The library wants Friday's total to bring the week's combined count to $90$ books. Based on Monday through Thursday's totals shown, how many stars should Friday's row show, using the same key?
+
+<!-- figure: pr-1-3-p5-pictograph-books -->
+![A pictograph of books read by day. Each star stands for 5 books. Monday shows 3 stars, which is 15 books. Tuesday shows 4 stars, which is 20 books. Wednesday shows 2 stars, which is 10 books. Thursday shows 5 stars, which is 25 books.](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgMTY2IiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjE2NiIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJBIHBpY3RvZ3JhcGggb2YgYm9va3MgcmVhZCBieSBkYXkuIEVhY2ggc3RhciBzdGFuZHMgZm9yIDUgYm9va3MuIE1vbmRheSBzaG93cyAzIHN0YXJzLCB3aGljaCBpcyAxNSBib29rcy4gVHVlc2RheSBzaG93cyA0IHN0YXJzLCB3aGljaCBpcyAyMCBib29rcy4gV2VkbmVzZGF5IHNob3dzIDIgc3RhcnMsIHdoaWNoIGlzIDEwIGJvb2tzLiBUaHVyc2RheSBzaG93cyA1IHN0YXJzLCB3aGljaCBpcyAyNSBib29rcy4iPjxyZWN0IHdpZHRoPSIzNDAiIGhlaWdodD0iMTY2IiBmaWxsPSIjRkZGRkZGIiByeD0iMTAiLz48cmVjdCB4PSIxMiIgeT0iMTIiIHdpZHRoPSIxNzMuODkiIGhlaWdodD0iMjQiIGZpbGw9IiM2RTlEQzgiIGZpbGwtb3BhY2l0eT0iMC4xOCIvPjxnIHN0cm9rZT0iI0UyRENDQSIgc3Ryb2tlLXdpZHRoPSIxIj48bGluZSBkYXRhLXZsaW5lPSIwIiB4MT0iMTIiIHkxPSIxMiIgeDI9IjEyIiB5Mj0iMTMyIi8+PGxpbmUgZGF0YS12bGluZT0iMSIgeDE9Ijk1Ljg5IiB5MT0iMTIiIHgyPSI5NS44OSIgeTI9IjEzMiIvPjxsaW5lIGRhdGEtdmxpbmU9IjIiIHgxPSIxODUuODkiIHkxPSIxMiIgeDI9IjE4NS44OSIgeTI9IjEzMiIvPjxsaW5lIGRhdGEtaGxpbmU9IjAiIHgxPSIxMiIgeTE9IjEyIiB4Mj0iMTg1Ljg5IiB5Mj0iMTIiLz48bGluZSBkYXRhLWhsaW5lPSIxIiB4MT0iMTIiIHkxPSIzNiIgeDI9IjE4NS44OSIgeTI9IjM2Ii8+PGxpbmUgZGF0YS1obGluZT0iMiIgeDE9IjEyIiB5MT0iNjAiIHgyPSIxODUuODkiIHkyPSI2MCIvPjxsaW5lIGRhdGEtaGxpbmU9IjMiIHgxPSIxMiIgeTE9Ijg0IiB4Mj0iMTg1Ljg5IiB5Mj0iODQiLz48bGluZSBkYXRhLWhsaW5lPSI0IiB4MT0iMTIiIHkxPSIxMDgiIHgyPSIxODUuODkiIHkyPSIxMDgiLz48bGluZSBkYXRhLWhsaW5lPSI1IiB4MT0iMTIiIHkxPSIxMzIiIHgyPSIxODUuODkiIHkyPSIxMzIiLz48L2c+PGcgZm9udC1mYW1pbHk9InVpLXNhbnMtc2VyaWYsc3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMwRTBFMTEiPjx0ZXh0IGRhdGEtaGVhZD0iMCIgeD0iMTciIHk9IjI4IiBmb250LXdlaWdodD0iNzAwIj5EYXk8L3RleHQ+PHRleHQgZGF0YS1oZWFkPSIxIiB4PSIxMDAuODkiIHk9IjI4IiBmb250LXdlaWdodD0iNzAwIj5Cb29rcyByZWFkPC90ZXh0Pjx0ZXh0IGRhdGEtY2VsbD0iMC0wIiB4PSIxNyIgeT0iNTIiIGZvbnQtd2VpZ2h0PSI2MDAiPk1vbmRheTwvdGV4dD48cGF0aCBkYXRhLXN5bWJvbD0iMC0wIiBkPSJNIDEwNy4zOSA0MS41IEwgMTA4Ljk5IDQ1Ljc5IEwgMTEzLjU3IDQ1Ljk5IEwgMTA5Ljk5IDQ4Ljg0IEwgMTExLjIxIDUzLjI2IEwgMTA3LjM5IDUwLjczIEwgMTAzLjU3IDUzLjI2IEwgMTA0Ljc5IDQ4Ljg0IEwgMTAxLjIxIDQ1Ljk5IEwgMTA1Ljc5IDQ1Ljc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48cGF0aCBkYXRhLXN5bWJvbD0iMC0xIiBkPSJNIDEyMy4zOSA0MS41IEwgMTI0Ljk5IDQ1Ljc5IEwgMTI5LjU3IDQ1Ljk5IEwgMTI1Ljk5IDQ4Ljg0IEwgMTI3LjIxIDUzLjI2IEwgMTIzLjM5IDUwLjczIEwgMTE5LjU3IDUzLjI2IEwgMTIwLjc5IDQ4Ljg0IEwgMTE3LjIxIDQ1Ljk5IEwgMTIxLjc5IDQ1Ljc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48cGF0aCBkYXRhLXN5bWJvbD0iMC0yIiBkPSJNIDEzOS4zOSA0MS41IEwgMTQwLjk5IDQ1Ljc5IEwgMTQ1LjU3IDQ1Ljk5IEwgMTQxLjk5IDQ4Ljg0IEwgMTQzLjIxIDUzLjI2IEwgMTM5LjM5IDUwLjczIEwgMTM1LjU3IDUzLjI2IEwgMTM2Ljc5IDQ4Ljg0IEwgMTMzLjIxIDQ1Ljk5IEwgMTM3Ljc5IDQ1Ljc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48dGV4dCBkYXRhLWNlbGw9IjEtMCIgeD0iMTciIHk9Ijc2IiBmb250LXdlaWdodD0iNjAwIj5UdWVzZGF5PC90ZXh0PjxwYXRoIGRhdGEtc3ltYm9sPSIxLTAiIGQ9Ik0gMTA3LjM5IDY1LjUgTCAxMDguOTkgNjkuNzkgTCAxMTMuNTcgNjkuOTkgTCAxMDkuOTkgNzIuODQgTCAxMTEuMjEgNzcuMjYgTCAxMDcuMzkgNzQuNzMgTCAxMDMuNTcgNzcuMjYgTCAxMDQuNzkgNzIuODQgTCAxMDEuMjEgNjkuOTkgTCAxMDUuNzkgNjkuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjxwYXRoIGRhdGEtc3ltYm9sPSIxLTEiIGQ9Ik0gMTIzLjM5IDY1LjUgTCAxMjQuOTkgNjkuNzkgTCAxMjkuNTcgNjkuOTkgTCAxMjUuOTkgNzIuODQgTCAxMjcuMjEgNzcuMjYgTCAxMjMuMzkgNzQuNzMgTCAxMTkuNTcgNzcuMjYgTCAxMjAuNzkgNzIuODQgTCAxMTcuMjEgNjkuOTkgTCAxMjEuNzkgNjkuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjxwYXRoIGRhdGEtc3ltYm9sPSIxLTIiIGQ9Ik0gMTM5LjM5IDY1LjUgTCAxNDAuOTkgNjkuNzkgTCAxNDUuNTcgNjkuOTkgTCAxNDEuOTkgNzIuODQgTCAxNDMuMjEgNzcuMjYgTCAxMzkuMzkgNzQuNzMgTCAxMzUuNTcgNzcuMjYgTCAxMzYuNzkgNzIuODQgTCAxMzMuMjEgNjkuOTkgTCAxMzcuNzkgNjkuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjxwYXRoIGRhdGEtc3ltYm9sPSIxLTMiIGQ9Ik0gMTU1LjM5IDY1LjUgTCAxNTYuOTkgNjkuNzkgTCAxNjEuNTcgNjkuOTkgTCAxNTcuOTkgNzIuODQgTCAxNTkuMjEgNzcuMjYgTCAxNTUuMzkgNzQuNzMgTCAxNTEuNTcgNzcuMjYgTCAxNTIuNzkgNzIuODQgTCAxNDkuMjEgNjkuOTkgTCAxNTMuNzkgNjkuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjx0ZXh0IGRhdGEtY2VsbD0iMi0wIiB4PSIxNyIgeT0iMTAwIiBmb250LXdlaWdodD0iNjAwIj5XZWRuZXNkYXk8L3RleHQ+PHBhdGggZGF0YS1zeW1ib2w9IjItMCIgZD0iTSAxMDcuMzkgODkuNSBMIDEwOC45OSA5My43OSBMIDExMy41NyA5My45OSBMIDEwOS45OSA5Ni44NCBMIDExMS4yMSAxMDEuMjYgTCAxMDcuMzkgOTguNzMgTCAxMDMuNTcgMTAxLjI2IEwgMTA0Ljc5IDk2Ljg0IEwgMTAxLjIxIDkzLjk5IEwgMTA1Ljc5IDkzLjc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48cGF0aCBkYXRhLXN5bWJvbD0iMi0xIiBkPSJNIDEyMy4zOSA4OS41IEwgMTI0Ljk5IDkzLjc5IEwgMTI5LjU3IDkzLjk5IEwgMTI1Ljk5IDk2Ljg0IEwgMTI3LjIxIDEwMS4yNiBMIDEyMy4zOSA5OC43MyBMIDExOS41NyAxMDEuMjYgTCAxMjAuNzkgOTYuODQgTCAxMTcuMjEgOTMuOTkgTCAxMjEuNzkgOTMuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjx0ZXh0IGRhdGEtY2VsbD0iMy0wIiB4PSIxNyIgeT0iMTI0IiBmb250LXdlaWdodD0iNjAwIj5UaHVyc2RheTwvdGV4dD48cGF0aCBkYXRhLXN5bWJvbD0iMy0wIiBkPSJNIDEwNy4zOSAxMTMuNSBMIDEwOC45OSAxMTcuNzkgTCAxMTMuNTcgMTE3Ljk5IEwgMTA5Ljk5IDEyMC44NCBMIDExMS4yMSAxMjUuMjYgTCAxMDcuMzkgMTIyLjczIEwgMTAzLjU3IDEyNS4yNiBMIDEwNC43OSAxMjAuODQgTCAxMDEuMjEgMTE3Ljk5IEwgMTA1Ljc5IDExNy43OSBaIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC42Ii8+PHBhdGggZGF0YS1zeW1ib2w9IjMtMSIgZD0iTSAxMjMuMzkgMTEzLjUgTCAxMjQuOTkgMTE3Ljc5IEwgMTI5LjU3IDExNy45OSBMIDEyNS45OSAxMjAuODQgTCAxMjcuMjEgMTI1LjI2IEwgMTIzLjM5IDEyMi43MyBMIDExOS41NyAxMjUuMjYgTCAxMjAuNzkgMTIwLjg0IEwgMTE3LjIxIDExNy45OSBMIDEyMS43OSAxMTcuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjxwYXRoIGRhdGEtc3ltYm9sPSIzLTIiIGQ9Ik0gMTM5LjM5IDExMy41IEwgMTQwLjk5IDExNy43OSBMIDE0NS41NyAxMTcuOTkgTCAxNDEuOTkgMTIwLjg0IEwgMTQzLjIxIDEyNS4yNiBMIDEzOS4zOSAxMjIuNzMgTCAxMzUuNTcgMTI1LjI2IEwgMTM2Ljc5IDEyMC44NCBMIDEzMy4yMSAxMTcuOTkgTCAxMzcuNzkgMTE3Ljc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48cGF0aCBkYXRhLXN5bWJvbD0iMy0zIiBkPSJNIDE1NS4zOSAxMTMuNSBMIDE1Ni45OSAxMTcuNzkgTCAxNjEuNTcgMTE3Ljk5IEwgMTU3Ljk5IDEyMC44NCBMIDE1OS4yMSAxMjUuMjYgTCAxNTUuMzkgMTIyLjczIEwgMTUxLjU3IDEyNS4yNiBMIDE1Mi43OSAxMjAuODQgTCAxNDkuMjEgMTE3Ljk5IEwgMTUzLjc5IDExNy43OSBaIiBmaWxsPSIjRjBBMzNFIiBzdHJva2U9IiMwRTBFMTEiIHN0cm9rZS13aWR0aD0iMC42Ii8+PHBhdGggZGF0YS1zeW1ib2w9IjMtNCIgZD0iTSAxNzEuMzkgMTEzLjUgTCAxNzIuOTkgMTE3Ljc5IEwgMTc3LjU3IDExNy45OSBMIDE3My45OSAxMjAuODQgTCAxNzUuMjEgMTI1LjI2IEwgMTcxLjM5IDEyMi43MyBMIDE2Ny41NyAxMjUuMjYgTCAxNjguNzkgMTIwLjg0IEwgMTY1LjIxIDExNy45OSBMIDE2OS43OSAxMTcuNzkgWiIgZmlsbD0iI0YwQTMzRSIgc3Ryb2tlPSIjMEUwRTExIiBzdHJva2Utd2lkdGg9IjAuNiIvPjxwYXRoIGRhdGEta2V5c3ltYm9sPSIwIiBkPSJNIDIwLjUgMTM3LjUgTCAyMi4xIDE0MS43OSBMIDI2LjY4IDE0MS45OSBMIDIzLjEgMTQ0Ljg0IEwgMjQuMzIgMTQ5LjI2IEwgMjAuNSAxNDYuNzMgTCAxNi42OCAxNDkuMjYgTCAxNy45IDE0NC44NCBMIDE0LjMyIDE0MS45OSBMIDE4LjkgMTQxLjc5IFoiIGZpbGw9IiNGMEEzM0UiIHN0cm9rZT0iIzBFMEUxMSIgc3Ryb2tlLXdpZHRoPSIwLjYiLz48dGV4dCBkYXRhLWtleT0iMSIgeD0iMzIiIHk9IjE0OCIgZm9udC13ZWlnaHQ9IjYwMCI+ZWFjaCBzdGFyIHN0YW5kcyBmb3IgNSBib29rczwvdGV4dD48L2c+PC9zdmc+)
+
+    - A) $20$
+    - B) $4$
+    - C) $14$
+    - D) $6$

@@ -663,3 +663,331 @@ Step 2: Test $y = 4x$.
   "C": "slope_numerator_summed"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. A line of best fit passes through the points $(2, 10)$ and $(6, 26)$. What is the slope of this line?**
+
+Step 1: Find the change in $y$ and the change in $x$.
+- $\Delta y = 26 - 10 = 16$, $\Delta x = 6 - 2 = 4$
+
+Step 2: Divide the change in $y$ by the change in $x$.
+- $\frac{16}{4} = 4$
+
+**Answer: D** ($4$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: slope_run_over_rise (computes the change in x over the change in y, $\\frac{4}{16}$, instead of y over x)",
+  "B": "Student makes misconception: subtracts_in_wrong_order (subtracts the x-values in reverse order in the denominator only, computing $\\frac{16}{-4} = -4$)",
+  "C": "Student makes misconception: answers_intermediate_value (reports the change in y, 16, without dividing by the change in x)",
+  "D": "Correct: divides the change in y, 16, by the change in x, 4, for a slope of 4"
+},
+"misconception_tag": {
+  "A": "slope_run_over_rise",
+  "B": "subtracts_in_wrong_order",
+  "C": "answers_intermediate_value"
+}
+```
+
+---
+
+**2. A line has a slope of $3$ and passes through $(0, 5)$. What is the equation of the line in slope-intercept form?**
+
+Step 1: Since the point has $x = 0$, its $y$-value, $5$, is the $y$-intercept directly.
+
+Step 2: Write the equation with slope $3$ and intercept $5$.
+- $y = 3x + 5$
+
+**Answer: B** ($y = 3x + 5$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: slope_intercept_swap (assigns the slope's value, 3, to the intercept's position and the intercept's value, 5, to the slope's position)",
+  "B": "Correct: slope 3 and y-intercept 5 give $y = 3x + 5$",
+  "C": "Student makes misconception: omits_constant_term (writes the slope term correctly but drops the $+5$ intercept entirely)",
+  "D": "Student makes misconception: sign_error_on_constant (flips the sign of the constant, writing $-5$ instead of $+5$)"
+},
+"misconception_tag": {
+  "A": "slope_intercept_swap",
+  "C": "omits_constant_term",
+  "D": "sign_error_on_constant"
+}
+```
+
+---
+
+**3. A scatterplot's best-fit line is given by $y = 4x + 7$. What is the $y$-intercept?**
+
+Step 1: In slope-intercept form $y = mx + b$, the intercept is $b$, the constant term.
+- $7$
+
+**Answer: A** ($7$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: the constant term, 7, is the y-intercept",
+  "B": "Student makes misconception: slope_intercept_swap (reports the slope, 4, instead of the intercept that was asked for)",
+  "C": "Student makes misconception: sign_error_on_constant (flips the sign of the constant, reporting $-7$ instead of $7$)",
+  "D": "Student makes misconception: off_by_one_count (miscounts the constant term as 8 instead of 7)"
+},
+"misconception_tag": {
+  "B": "slope_intercept_swap",
+  "C": "sign_error_on_constant",
+  "D": "off_by_one_count"
+}
+```
+
+---
+
+**4. A best-fit line is $y = -2x + 12$. Using this model, predict $y$ when $x = 3$.**
+
+Step 1: Substitute $x = 3$ into the model.
+- $y = -2(3) + 12$
+
+Step 2: Compute.
+- $y = -6 + 12 = 6$
+
+**Answer: C** ($6$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: omits_constant_term (computes $-2(3) = -6$ correctly but never adds the $+12$ constant)",
+  "B": "Student makes misconception: sign_error_on_constant (flips the sign of the constant, computing $-2(3) - 12 = -18$)",
+  "C": "Correct: substitutes $x=3$ into $-2x+12$ for $-6+12=6$",
+  "D": "Student makes misconception: slope_intercept_swap (swaps the roles of slope and intercept, computing $12(3) + (-2) = 34$)"
+},
+"misconception_tag": {
+  "A": "omits_constant_term",
+  "B": "sign_error_on_constant",
+  "D": "slope_intercept_swap"
+}
+```
+
+---
+
+**5. Data points $(2, 11)$ and $(6, 27)$ lie on a line. Write the equation of the line in slope-intercept form.**
+
+Step 1: Find the slope.
+- $\frac{27 - 11}{6 - 2} = \frac{16}{4} = 4$
+
+Step 2: Use one point to solve for the intercept.
+- $11 = 4(2) + b$, so $b = 3$
+
+Step 3: Write the equation.
+- $y = 4x + 3$
+
+**Answer: B** ($y = 4x + 3$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: slope_run_over_rise (computes the slope as $\\frac{4}{16} = 0.25$, then solves for an intercept of 10.5 from that wrong slope)",
+  "B": "Correct: slope of 4, and solving $11 = 4(2) + b$ gives an intercept of 3",
+  "C": "Student makes misconception: omits_constant_term (finds the correct slope, 4, but never solves for or includes the intercept)",
+  "D": "Student makes misconception: slope_intercept_swap (assigns the correctly found slope, 4, and intercept, 3, to each other's positions)"
+},
+"misconception_tag": {
+  "A": "slope_run_over_rise",
+  "C": "omits_constant_term",
+  "D": "slope_intercept_swap"
+}
+```
+
+---
+
+**6. In the model $\text{Cost} = 15x + 40$, where $x$ is the number of hours a repair takes, what does the $40$ represent?**
+
+Step 1: In $y = mx + b$ form, $40$ is the constant term, $b$.
+
+Step 2: The constant term is the value of Cost when $x = 0$, a flat amount charged regardless of hours.
+
+**Answer: D** (a flat base fee)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: slope_intercept_swap (assigns the intercept's meaning, a flat fee, to the slope's role instead)",
+  "B": "Student makes misconception: slope_intercept_swap (misreads the constant term as a value to substitute for x rather than as the intercept itself)",
+  "C": "Student makes misconception: slope_intercept_swap (confuses the fixed constant term with the variable, x, that the model is written in terms of)",
+  "D": "Correct: 40 is the y-intercept, a flat fee charged even when x, the hours, is 0"
+},
+"misconception_tag": {
+  "A": "slope_intercept_swap",
+  "B": "slope_intercept_swap",
+  "C": "slope_intercept_swap"
+}
+```
+
+---
+
+**7. In the model $\text{Cost} = 15x + 40$, what does the $15$ represent?**
+
+Step 1: In $y = mx + b$ form, $15$ is the coefficient of $x$, the slope.
+
+Step 2: The slope is the rate of change, here the cost per hour.
+
+**Answer: A** (the cost per hour, the rate)
+
+```json
+"distractor_logic": {
+  "A": "Correct: 15 is the slope, the cost per hour",
+  "B": "Student makes misconception: slope_intercept_swap (assigns the slope's meaning, a rate, to the constant term's role instead)",
+  "C": "Student makes misconception: slope_intercept_swap (confuses the rate coefficient with the total cost the model produces)",
+  "D": "Student makes misconception: slope_intercept_swap (confuses the fixed coefficient, 15, with the variable, x, it multiplies)"
+},
+"misconception_tag": {
+  "B": "slope_intercept_swap",
+  "C": "slope_intercept_swap",
+  "D": "slope_intercept_swap"
+}
+```
+
+---
+
+**8. Two models are proposed for the same scatterplot data: Model A is $y = 2x + 1$, and Model B is $y = 2x + 15$. At $x = 10$, the actual data value is $y = 20$. Which model fits this point better, and why?**
+
+Step 1: Compute each model's prediction at $x = 10$. Model A: $2(10) + 1 = 21$. Model B: $2(10) + 15 = 35$.
+
+Step 2: Compare each prediction to the actual value, $20$. Model A's error: $|21 - 20| = 1$. Model B's error: $|35 - 20| = 15$.
+
+Step 3: The smaller error wins. Model A fits far better.
+
+**Answer: C** (Model A, its prediction is closer to the actual value)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: fit_judged_by_intercept (judges fit by which model has the larger intercept rather than by comparing predictions to the actual value)",
+  "B": "Student makes misconception: fit_judged_by_intercept (dismisses both models based on their shared slope, a structural feature, rather than comparing their actual predictions)",
+  "C": "Correct: compares each model's prediction to the actual value and finds Model A far closer",
+  "D": "Student makes misconception: fit_judged_by_intercept (names the correct model but for the wrong reason, judging by the smaller intercept rather than by comparing predictions)"
+},
+"misconception_tag": {
+  "A": "fit_judged_by_intercept",
+  "B": "fit_judged_by_intercept",
+  "D": "fit_judged_by_intercept"
+}
+```
+
+---
+
+**9. A line passes through $(3, 19)$ and has a slope of $5$. Another point on this line has $x = 8$. What is the $y$-value at that point?**
+
+Step 1: Find the intercept using the known point.
+- $19 = 5(3) + b$, so $b = 4$
+
+Step 2: Write the equation and substitute $x = 8$.
+- $y = 5(8) + 4 = 44$
+
+**Answer: D** ($44$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: sign_error_on_constant (finds the intercept correctly as 4 but flips its sign, computing $5(8) - 4 = 36$)",
+  "B": "Student makes misconception: omits_constant_term (computes $5(8) = 40$ and never solves for or adds the intercept)",
+  "C": "Student makes misconception: slope_run_over_rise (inverts the slope to $\\frac{1}{5}$ when building the equation, giving a very different intercept and prediction)",
+  "D": "Correct: solves for the intercept, 4, then substitutes $x=8$ into $y=5x+4$ for 44"
+},
+"misconception_tag": {
+  "A": "sign_error_on_constant",
+  "B": "omits_constant_term",
+  "C": "slope_run_over_rise"
+}
+```
+
+---
+
+**10. A scatterplot's best-fit line passes through $(0, 20)$ and $(10, 70)$. Using this model, predict the value at $x = 15$, and state whether this prediction is a reliable interpolation or a risky extrapolation, given the data only spans $x = 0$ to $x = 10$.**
+
+Step 1: Find the slope and intercept. Slope: $\frac{70-20}{10-0} = 5$. Since $x=0$ gives $y=20$, the intercept is $20$.
+
+Step 2: Write the model and substitute $x = 15$.
+- $y = 5(15) + 20 = 95$
+
+Step 3: Since $x=15$ falls outside the data's $0$ to $10$ range, this prediction extrapolates beyond the data and is riskier than a prediction within that range.
+
+**Answer: B** ($y=95$, risky extrapolation)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: slope_run_over_rise (computes the slope as $\\frac{10}{50}=0.2$ instead of 5, giving a wrong prediction of 23, though it still correctly identifies the extrapolation risk)",
+  "B": "Correct: predicts $y=95$ using the correctly fitted model, and correctly identifies $x=15$ as outside the data's range, a risky extrapolation",
+  "C": "Student makes misconception: omits_constant_term (computes $5(15) = 75$ and never adds the intercept, 20, though it still correctly identifies the extrapolation risk)",
+  "D": "Student makes misconception: extrapolates_beyond_data (computes the correct prediction, 95, but misjudges $x=15$ as within a safe range when it actually falls outside the data's 0 to 10 span)"
+},
+"misconception_tag": {
+  "A": "slope_run_over_rise",
+  "C": "omits_constant_term",
+  "D": "extrapolates_beyond_data"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. A line of best fit passes through the points $(2, 10)$ and $(6, 26)$. What is the slope of this line?
+   - A) $\frac{1}{4}$
+   - B) $-4$
+   - C) $16$
+   - D) $4$
+
+2. A line has a slope of $3$ and passes through $(0, 5)$. What is the equation of the line in slope-intercept form?
+   - A) $y = 5x + 3$
+   - B) $y = 3x + 5$
+   - C) $y = 3x$
+   - D) $y = 3x - 5$
+
+3. A scatterplot's best-fit line is given by $y = 4x + 7$. What is the $y$-intercept?
+   - A) $7$
+   - B) $4$
+   - C) $-7$
+   - D) $8$
+
+4. A best-fit line is $y = -2x + 12$. Using this model, predict $y$ when $x = 3$.
+   - A) $-6$
+   - B) $-18$
+   - C) $6$
+   - D) $34$
+
+**Proficient Level** (these require an extra step)
+
+5. Data points $(2, 11)$ and $(6, 27)$ lie on a line. Write the equation of the line in slope-intercept form.
+   - A) $y = 0.25x + 10.5$
+   - B) $y = 4x + 3$
+   - C) $y = 4x$
+   - D) $y = 3x + 4$
+
+6. In the model $\text{Cost} = 15x + 40$, where $x$ is the number of hours a repair takes, what does the $40$ represent?
+   - A) The cost per hour of labor.
+   - B) The total cost when $x = 40$.
+   - C) The number of hours the repair took.
+   - D) A flat base fee charged regardless of the number of hours.
+
+7. In the model $\text{Cost} = 15x + 40$, what does the $15$ represent?
+   - A) The cost per hour of labor, the rate of change.
+   - B) The flat base fee.
+   - C) The total cost.
+   - D) The number of hours.
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. Two models are proposed for the same scatterplot data: Model A is $y = 2x + 1$, and Model B is $y = 2x + 15$. At $x = 10$, the actual data value is $y = 20$. Which model fits this point better, and why?
+   - A) Model B, because it has the larger intercept, $15$.
+   - B) Neither model fits well, since both have the same slope.
+   - C) Model A, because its prediction, $21$, is much closer to the actual value, $20$, than Model B's prediction, $35$.
+   - D) Model A, because it has the smaller intercept, $1$.
+
+9. A line passes through $(3, 19)$ and has a slope of $5$. Another point on this line has $x = 8$. What is the $y$-value at that point?
+   - A) $36$
+   - B) $40$
+   - C) $20$
+   - D) $44$
+
+10. A scatterplot's best-fit line passes through $(0, 20)$ and $(10, 70)$. Using this model, predict the value at $x = 15$, and state whether this prediction is a reliable interpolation or a risky extrapolation, given the data only spans $x = 0$ to $x = 10$.
+    - A) $y = 23$; this is a risky extrapolation.
+    - B) $y = 95$; this is a risky extrapolation, since $x = 15$ falls outside the data's $0$ to $10$ range.
+    - C) $y = 75$; this is a risky extrapolation.
+    - D) $y = 95$; this is a safe interpolation, since the line already fits the data well.

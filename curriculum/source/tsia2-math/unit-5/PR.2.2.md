@@ -809,3 +809,353 @@ Check forward: $\frac{6300 + 25 \times 96}{100} = \frac{8700}{100} = 87$. Correc
   "D": "weights_swapped"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. A grade combines a Test score of $90$ (weight $3$) and a Quiz score of $80$ (weight $1$). What is the weighted mean?**
+
+Step 1: Multiply each score by its weight.
+- $90 \times 3 = 270$
+- $80 \times 1 = 80$
+
+Step 2: Add the products and divide by the total weight.
+- $(270 + 80) \div (3 + 1) = 350 \div 4 = 87.5$
+
+**Answer: B** ($87.5$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: weights_ignored (takes the simple average of 90 and 80, giving 85, instead of weighting them)",
+  "B": "Correct: multiplies each score by its weight, adds, and divides by the total weight for 87.5",
+  "C": "Student makes misconception: weights_swapped (applies weight 1 to the Test and weight 3 to the Quiz)",
+  "D": "Student makes misconception: answers_intermediate_value (reports the sum of the weighted products, 350, without dividing by the total weight)"
+},
+"misconception_tag": {
+  "A": "weights_ignored",
+  "C": "weights_swapped",
+  "D": "answers_intermediate_value"
+}
+```
+
+---
+
+**2. A GPA combines Course A, a grade of $88$ (weight $4$ credits), and Course B, a grade of $92$ (weight $2$ credits). What is the weighted mean?**
+
+Step 1: Multiply each grade by its credit weight.
+- $88 \times 4 = 352$
+- $92 \times 2 = 184$
+
+Step 2: Add and divide by the total credits.
+- $(352 + 184) \div (4 + 2) = 536 \div 6 \approx 89.33$
+
+**Answer: C** ($89.33$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: weights_ignored (takes the simple average of 88 and 92, giving 90, instead of weighting by credits)",
+  "B": "Student makes misconception: answers_intermediate_value (reports the sum of the weighted products, 536, without dividing by the total credits)",
+  "C": "Correct: weights each grade by its credits, adds, and divides by the total credits for about 89.33",
+  "D": "Student makes misconception: weights_swapped (applies weight 2 to Course A and weight 4 to Course B)"
+},
+"misconception_tag": {
+  "A": "weights_ignored",
+  "B": "answers_intermediate_value",
+  "D": "weights_swapped"
+}
+```
+
+---
+
+**3. A survey combines Group A, a score of $70$ from $20$ respondents, and Group B, a score of $90$ from $5$ respondents. What is the weighted mean score?**
+
+Step 1: Multiply each score by its number of respondents.
+- $70 \times 20 = 1400$
+- $90 \times 5 = 450$
+
+Step 2: Add and divide by the total respondents.
+- $(1400 + 450) \div (20 + 5) = 1850 \div 25 = 74$
+
+**Answer: D** ($74$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: weights_ignored (takes the simple average of 70 and 90, giving 80, instead of weighting by respondents)",
+  "B": "Student makes misconception: answers_intermediate_value (reports the sum of the weighted products, 1850, without dividing by the total respondents)",
+  "C": "Student makes misconception: weights_swapped (applies 5 respondents to Group A and 20 to Group B)",
+  "D": "Correct: weights each score by its respondents, adds, and divides by the total respondents for 74"
+},
+"misconception_tag": {
+  "A": "weights_ignored",
+  "B": "answers_intermediate_value",
+  "C": "weights_swapped"
+}
+```
+
+---
+
+**4. A school average combines Section 1, an average of $75$ with $10$ students, and Section 2, an average of $85$ with $30$ students. What is the weighted mean?**
+
+Step 1: Multiply each average by its number of students.
+- $75 \times 10 = 750$
+- $85 \times 30 = 2550$
+
+Step 2: Add and divide by the total students.
+- $(750 + 2550) \div (10 + 30) = 3300 \div 40 = 82.5$
+
+**Answer: A** ($82.5$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: weights each average by its student count, adds, and divides by the total students for 82.5",
+  "B": "Student makes misconception: weights_ignored (takes the simple average of 75 and 85, giving 80, instead of weighting by student count)",
+  "C": "Student makes misconception: answers_intermediate_value (reports the sum of the weighted products, 3300, without dividing by the total students)",
+  "D": "Student makes misconception: weights_swapped (applies 30 students to Section 1 and 10 to Section 2)"
+},
+"misconception_tag": {
+  "B": "weights_ignored",
+  "C": "answers_intermediate_value",
+  "D": "weights_swapped"
+}
+```
+
+---
+
+**5. A course grade combines Exam $85$ (weight $5$), Homework $95$ (weight $2$), and Project $75$ (weight $3$). What is the weighted mean?**
+
+Step 1: Multiply each score by its weight.
+- $85 \times 5 = 425$
+- $95 \times 2 = 190$
+- $75 \times 3 = 225$
+
+Step 2: Add and divide by the total weight.
+- $(425 + 190 + 225) \div (5 + 2 + 3) = 840 \div 10 = 84$
+
+**Answer: C** ($84$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: weights_ignored (takes the simple average of 85, 95 and 75, giving 85, instead of weighting the three scores)",
+  "B": "Student makes misconception: answers_intermediate_value (reports the sum of the weighted products, 840, without dividing by the total weight)",
+  "C": "Correct: weights each score, adds the products, and divides by the total weight for 84",
+  "D": "Student makes misconception: weights_swapped (exchanges the weights between Exam and Project, using weight 3 for Exam and weight 5 for Project)"
+},
+"misconception_tag": {
+  "A": "weights_ignored",
+  "B": "answers_intermediate_value",
+  "D": "weights_swapped"
+}
+```
+
+---
+
+**6. A student's course grade is a weighted mean of Tests (weight $4$) and Homework (weight $2$). Tests average $90$, and the overall weighted mean is $84$. What is the homework average?**
+
+Step 1: Set up the weighted mean equation.
+- $(90 \times 4 + h \times 2) \div (4 + 2) = 84$
+
+Step 2: Multiply both sides by $6$.
+- $360 + 2h = 504$
+
+Step 3: Solve for $h$.
+- $2h = 144$, so $h = 72$
+
+**Answer: B** ($72$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: target_weight_not_divided_out (subtracts the known contribution, 360, from the required total, 504, but never divides the result, 144, by homework's weight of 2)",
+  "B": "Correct: solves $360 + 2h = 504$ for $h$, giving a homework average of 72",
+  "C": "Student makes misconception: weights_ignored (assumes equal weighting and solves $h = 2(84) - 90 = 78$, the unweighted reverse-mean formula)",
+  "D": "Student makes misconception: weights_swapped (applies weight 2 to Tests and weight 4 to Homework in the equation, solving $180 + 4h = 504$ for $h = 81$)"
+},
+"misconception_tag": {
+  "A": "target_weight_not_divided_out",
+  "C": "weights_ignored",
+  "D": "weights_swapped"
+}
+```
+
+---
+
+**7. A restaurant's average rating combines Food, a score of $84$ (weight $5$), Service, a score of $76$ (weight $3$), and Ambiance, a score of $92$ (weight $2$). What is the weighted mean rating?**
+
+Step 1: Multiply each score by its weight.
+- $84 \times 5 = 420$
+- $76 \times 3 = 228$
+- $92 \times 2 = 184$
+
+Step 2: Add and divide by the total weight.
+- $(420 + 228 + 184) \div (5 + 3 + 2) = 832 \div 10 = 83.2$
+
+**Answer: D** ($83.2$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: weights_ignored (takes the simple average of 84, 76 and 92, giving 84, instead of weighting the three scores)",
+  "B": "Student makes misconception: answers_intermediate_value (reports the sum of the weighted products, 832, without dividing by the total weight)",
+  "C": "Student makes misconception: weights_swapped (exchanges the weights between Food and Ambiance, using weight 2 for Food and weight 5 for Ambiance)",
+  "D": "Correct: weights each score, adds the products, and divides by the total weight for 83.2"
+},
+"misconception_tag": {
+  "A": "weights_ignored",
+  "B": "answers_intermediate_value",
+  "C": "weights_swapped"
+}
+```
+
+---
+
+**8. A student needs a weighted mean of $90$ across Tests (weight $3$, average $84$) and a Final Exam (weight $2$). What average does the student need on the Final Exam?**
+
+Step 1: Set up the weighted mean equation.
+- $(84 \times 3 + f \times 2) \div (3 + 2) = 90$
+
+Step 2: Multiply both sides by $5$.
+- $252 + 2f = 450$
+
+Step 3: Solve for $f$.
+- $2f = 198$, so $f = 99$
+
+**Answer: A** ($99$)
+
+```json
+"distractor_logic": {
+  "A": "Correct: solves $252 + 2f = 450$ for $f$, giving a needed Final Exam average of 99",
+  "B": "Student makes misconception: target_weight_not_divided_out (subtracts the known contribution, 252, from the required total, 450, but never divides the result, 198, by the Final Exam's weight of 2)",
+  "C": "Student makes misconception: weights_ignored (assumes equal weighting and solves $f = 2(90) - 84 = 96$, the unweighted reverse-mean formula)",
+  "D": "Student makes misconception: weights_swapped (applies weight 2 to Tests and weight 3 to the Final Exam in the equation, solving $168 + 3f = 450$ for $f = 94$)"
+},
+"misconception_tag": {
+  "B": "target_weight_not_divided_out",
+  "C": "weights_ignored",
+  "D": "weights_swapped"
+}
+```
+
+---
+
+**9. Class A has $20$ students with an average score of $78$, and Class B has $30$ students with an average score of $88$. What is the combined weighted mean score of both classes?**
+
+Step 1: Multiply each average by its class size.
+- $78 \times 20 = 1560$
+- $88 \times 30 = 2640$
+
+Step 2: Add and divide by the total students.
+- $(1560 + 2640) \div (20 + 30) = 4200 \div 50 = 84$
+
+**Answer: C** ($84$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: weights_ignored (takes the simple average of 78 and 88, giving 83, instead of weighting by class size)",
+  "B": "Student makes misconception: answers_intermediate_value (reports the sum of the weighted products, 4200, without dividing by the total students)",
+  "C": "Correct: weights each class average by its size, adds, and divides by the total students for 84",
+  "D": "Student makes misconception: weights_swapped (applies 30 students to Class A and 20 to Class B)"
+},
+"misconception_tag": {
+  "A": "weights_ignored",
+  "B": "answers_intermediate_value",
+  "D": "weights_swapped"
+}
+```
+
+---
+
+**10. A student's final grade is a weighted mean of Tests, average $85$, and Projects, average $95$, and the overall weighted mean comes out to $89$. If Tests carry a weight of $3$, what weight do Projects carry?**
+
+Step 1: Set up the weighted mean equation, letting $w$ be the Projects weight.
+- $(85 \times 3 + 95 \times w) \div (3 + w) = 89$
+
+Step 2: Multiply both sides by $(3 + w)$.
+- $255 + 95w = 267 + 89w$
+
+Step 3: Solve for $w$.
+- $6w = 12$, so $w = 2$
+
+**Answer: B** ($2$)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: weights_ignored (guesses the weights must match since the result is close to a simple average, reporting a Projects weight equal to Tests' weight of 3)",
+  "B": "Correct: solves $255 + 95w = 267 + 89w$ for $w$, giving a Projects weight of 2",
+  "C": "Student makes misconception: target_weight_not_divided_out (finds $6w = 12$ but reports 12 directly instead of dividing by the coefficient 6)",
+  "D": "Student makes misconception: weights_swapped (sets up the equation with Projects fixed at weight 3 and Tests as the unknown, solving $285 + 85w = 267 + 89w$ for $w = 4.5$)"
+},
+"misconception_tag": {
+  "A": "weights_ignored",
+  "C": "target_weight_not_divided_out",
+  "D": "weights_swapped"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. A grade combines a Test score of $90$ (weight $3$) and a Quiz score of $80$ (weight $1$). What is the weighted mean?
+   - A) $85$
+   - B) $87.5$
+   - C) $82.5$
+   - D) $350$
+
+2. A GPA combines Course A, a grade of $88$ (weight $4$ credits), and Course B, a grade of $92$ (weight $2$ credits). What is the weighted mean?
+   - A) $90$
+   - B) $536$
+   - C) $89.33$
+   - D) $90.67$
+
+3. A survey combines Group A, a score of $70$ from $20$ respondents, and Group B, a score of $90$ from $5$ respondents. What is the weighted mean score?
+   - A) $80$
+   - B) $1850$
+   - C) $86$
+   - D) $74$
+
+4. A school average combines Section 1, an average of $75$ with $10$ students, and Section 2, an average of $85$ with $30$ students. What is the weighted mean?
+   - A) $82.5$
+   - B) $80$
+   - C) $3300$
+   - D) $77.5$
+
+**Proficient Level** (these require an extra step)
+
+5. A course grade combines Exam $85$ (weight $5$), Homework $95$ (weight $2$), and Project $75$ (weight $3$). What is the weighted mean?
+   - A) $85$
+   - B) $840$
+   - C) $84$
+   - D) $82$
+
+6. A student's course grade is a weighted mean of Tests (weight $4$) and Homework (weight $2$). Tests average $90$, and the overall weighted mean is $84$. What is the homework average?
+   - A) $144$
+   - B) $72$
+   - C) $78$
+   - D) $81$
+
+7. A restaurant's average rating combines Food, a score of $84$ (weight $5$), Service, a score of $76$ (weight $3$), and Ambiance, a score of $92$ (weight $2$). What is the weighted mean rating?
+   - A) $84$
+   - B) $832$
+   - C) $85.6$
+   - D) $83.2$
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. A student needs a weighted mean of $90$ across Tests (weight $3$, average $84$) and a Final Exam (weight $2$). What average does the student need on the Final Exam?
+   - A) $99$
+   - B) $198$
+   - C) $96$
+   - D) $94$
+
+9. Class A has $20$ students with an average score of $78$, and Class B has $30$ students with an average score of $88$. What is the combined weighted mean score of both classes?
+   - A) $83$
+   - B) $4200$
+   - C) $84$
+   - D) $82$
+
+10. A student's final grade is a weighted mean of Tests, average $85$, and Projects, average $95$, and the overall weighted mean comes out to $89$. If Tests carry a weight of $3$, what weight do Projects carry?
+    - A) $3$
+    - B) $2$
+    - C) $12$
+    - D) $4.5$

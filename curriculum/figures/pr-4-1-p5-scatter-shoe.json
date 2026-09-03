@@ -1,0 +1,30 @@
+{
+  "type": "coordinate_plane",
+  "xRange": [
+    4,
+    14
+  ],
+  "yRange": [
+    0,
+    100
+  ],
+  "xLabel": "Shoe size",
+  "yLabel": "Test score",
+  "plots": [
+    {
+      "path": [
+        [
+          6,
+          75
+        ],
+        [
+          12,
+          75
+        ]
+      ],
+      "scatter": "wide",
+      "n": 14
+    }
+  ],
+  "alt": "A scatterplot with Shoe size along the bottom, from 4 to 14, and Test score up the side, from 0 to 100. Fourteen points scatter widely around a flat trend line held at a test score of 75 across all shoe sizes, showing no association: test score does not tend to rise or fall as shoe size changes."
+}

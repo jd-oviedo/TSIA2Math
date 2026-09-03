@@ -653,3 +653,317 @@ Step 3: Keep the values. A histogram of the $30$ daily highs shows their spread.
   "C": "averaging_removes_the_variation_studied"
 }
 ```
+
+##### Extra Practice - Answer Key
+
+**1. A researcher records each student's eye color. Is this variable categorical or numerical?**
+
+Step 1: Test whether arithmetic on the values means anything. Eye colors cannot be added or averaged.
+
+Step 2: Eye color sorts students into groups by name, so it is categorical.
+
+**Answer: D** (Categorical)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: categorical_numerical_misclassified (treats a name-based grouping as numerical)",
+  "B": "Student makes misconception: categorical_numerical_misclassified (goes further, assigning a numerical subtype to a variable that is not numerical at all)",
+  "C": "Student makes misconception: categorical_numerical_misclassified (assigns a numerical subtype to a variable that is not numerical at all)",
+  "D": "Correct: eye color groups students by name, with no meaningful arithmetic on the values, so it is categorical"
+},
+"misconception_tag": {
+  "A": "categorical_numerical_misclassified",
+  "B": "categorical_numerical_misclassified",
+  "C": "categorical_numerical_misclassified"
+}
+```
+
+---
+
+**2. A farmer counts the number of eggs laid by each hen in a week. Is this variable discrete or continuous?**
+
+Step 1: Ask whether the variable is counted or measured. Eggs are counted, whole units with nothing in between.
+
+Step 2: Counted numerical variables are discrete.
+
+**Answer: B** (Discrete)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: discrete_continuous_confused (treats a counted whole-number variable as though it could take any value on a scale)",
+  "B": "Correct: egg counts are whole numbers arrived at by counting, which makes the variable discrete",
+  "C": "Student makes misconception: categorical_numerical_misclassified (treats a clearly numerical count as though it were a named category)",
+  "D": "Student makes misconception: nominal_applied_to_measurement (applies an unordered-category term to a variable that counts a quantity)"
+},
+"misconception_tag": {
+  "A": "discrete_continuous_confused",
+  "C": "categorical_numerical_misclassified",
+  "D": "nominal_applied_to_measurement"
+}
+```
+
+---
+
+**3. A nurse measures each patient's body temperature in degrees. Is this variable discrete or continuous?**
+
+Step 1: Ask whether the variable is counted or measured. Temperature is measured with an instrument and can fall anywhere on a scale.
+
+Step 2: Measured numerical variables are continuous.
+
+**Answer: C** (Continuous)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: discrete_continuous_confused (treats a measured variable as though it could only take whole counted values)",
+  "B": "Student makes misconception: nominal_applied_to_measurement (applies an unordered-category term to a variable that is measured on a scale)",
+  "C": "Correct: temperature is measured and can take any value on a scale, which makes it continuous",
+  "D": "Student makes misconception: categorical_numerical_misclassified (treats a clearly numerical measurement as though it were a named category)"
+},
+"misconception_tag": {
+  "A": "discrete_continuous_confused",
+  "B": "nominal_applied_to_measurement",
+  "D": "categorical_numerical_misclassified"
+}
+```
+
+---
+
+**4. A teacher wants to display the favorite subject chosen by each student in her class. Which display best matches this variable type?**
+
+Step 1: Classify the variable. Favorite subject is categorical, a name-based grouping with no order or scale.
+
+Step 2: A bar graph compares category counts side by side, which matches a categorical variable.
+
+**Answer: A** (Bar graph)
+
+```json
+"distractor_logic": {
+  "A": "Correct: a bar graph compares counts across named categories, matching a categorical variable",
+  "B": "Student makes misconception: graph_type_mismatched_to_variable (a histogram groups continuous numerical data into intervals, which favorite subject has none of)",
+  "C": "Student makes misconception: graph_type_mismatched_to_variable (a line graph implies an order or a time sequence, which unordered categories do not have)",
+  "D": "Student makes misconception: graph_type_mismatched_to_variable (a box plot displays the spread of numerical data using quartiles, which a categorical variable cannot produce)"
+},
+"misconception_tag": {
+  "B": "graph_type_mismatched_to_variable",
+  "C": "graph_type_mismatched_to_variable",
+  "D": "graph_type_mismatched_to_variable"
+}
+```
+
+---
+
+**5. A teacher wants to show how much test scores varied among her $30$ students. Which is the better choice?**
+
+Step 1: The question asks about variation, so the display must preserve it.
+
+Step 2: A single average collapses all $30$ scores into one number, discarding the very variation asked about.
+
+Step 3: A box plot of all $30$ scores shows the spread directly.
+
+**Answer: B** (A box plot of all $30$ scores)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: averaging_removes_the_variation_studied (reports a single average, which discards the variation the question asks about)",
+  "B": "Correct: a box plot displays the spread of all 30 scores, which is exactly what the question asks to see",
+  "C": "Student makes misconception: graph_type_mismatched_to_variable (a pie chart shows each part's share of a whole, not the spread of numerical scores)",
+  "D": "Student makes misconception: graph_type_mismatched_to_variable (a bar graph of 30 individual scores has no categories to group by, and does not show spread the way a box plot does)"
+},
+"misconception_tag": {
+  "A": "averaging_removes_the_variation_studied",
+  "C": "graph_type_mismatched_to_variable",
+  "D": "graph_type_mismatched_to_variable"
+}
+```
+
+---
+
+**6. A company reports only the mean delivery time for each of two warehouses to compare their consistency. What is the problem with this comparison?**
+
+Step 1: Consistency is about how spread out the delivery times are, not about their center.
+
+Step 2: A mean by itself says nothing about spread. Two warehouses could share the same mean while one is far more erratic than the other.
+
+**Answer: D** (the means alone hide the variation)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: averaging_removes_the_variation_studied (accepts the means as sufficient, missing that they discard the variation the comparison actually needs)",
+  "B": "Student makes misconception: false_structural_rule_invented (asserts that means cannot be compared across groups at all, which is not a real restriction)",
+  "C": "Student makes misconception: categorical_numerical_misclassified (calls a measured quantity, delivery time, categorical)",
+  "D": "Correct: identifies that the means say nothing about spread, so they cannot show which warehouse is more consistent"
+},
+"misconception_tag": {
+  "A": "averaging_removes_the_variation_studied",
+  "B": "false_structural_rule_invented",
+  "C": "categorical_numerical_misclassified"
+}
+```
+
+---
+
+**7. A researcher records the height in centimeters of $200$ adult participants and wants to display the distribution. Which display is most appropriate?**
+
+Step 1: Classify the variable. Height is measured, so it is continuous numerical.
+
+Step 2: A histogram groups continuous data into intervals and shows the shape of its distribution, which matches this variable type.
+
+**Answer: C** (Histogram)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: graph_type_mismatched_to_variable (a bar graph is built for named categories, not continuous measurements)",
+  "B": "Student makes misconception: averaging_removes_the_variation_studied (reports a single mean height, which discards the shape of the distribution the question asks to display)",
+  "C": "Correct: a histogram groups continuous height data into intervals and shows the distribution's shape",
+  "D": "Student makes misconception: graph_type_mismatched_to_variable (a pie chart shows shares of a whole, not the distribution of a measured variable)"
+},
+"misconception_tag": {
+  "A": "graph_type_mismatched_to_variable",
+  "B": "averaging_removes_the_variation_studied",
+  "D": "graph_type_mismatched_to_variable"
+}
+```
+
+---
+
+**8. A pollster surveys $40$ randomly chosen students at one high school and finds that $70\%$ prefer online classes. Which conclusion is best supported by this result?**
+
+Step 1: The result describes only the $40$ students who were actually surveyed, at that one school.
+
+Step 2: Extending it to a wider population, or treating it as certain for every student at the school, goes beyond what the sample supports.
+
+**Answer: B** ($70\%$ of the surveyed students at that school prefer online classes)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: overgeneralizes_from_sample (extends a single school's sample result to all students nationwide)",
+  "B": "Correct: states the result exactly as the sample supports, limited to the students who were surveyed",
+  "C": "Student makes misconception: overgeneralizes_from_sample (treats a 70 percent sample result as though it applied to every student at the school)",
+  "D": "Student makes misconception: overgeneralizes_from_sample (treats random sampling as a guarantee of an exact population-wide percentage, which it is not)"
+},
+"misconception_tag": {
+  "A": "overgeneralizes_from_sample",
+  "C": "overgeneralizes_from_sample",
+  "D": "overgeneralizes_from_sample"
+}
+```
+
+---
+
+**9. A city tracks the type of vehicle involved in each accident over a year, and separately tracks the exact speed in mph at the moment of each accident. Which statement correctly classifies both variables?**
+
+Step 1: Vehicle type sorts accidents by name, car, truck, motorcycle or bus, with no meaningful arithmetic, so it is categorical.
+
+Step 2: Speed is measured and can take any value on a scale, so it is continuous numerical.
+
+**Answer: A** (Vehicle type is categorical; speed is continuous numerical)
+
+```json
+"distractor_logic": {
+  "A": "Correct: vehicle type groups accidents by name, and speed is a measured value on a scale",
+  "B": "Student makes misconception: categorical_numerical_misclassified (treats the named vehicle-type groups as a numerical variable)",
+  "C": "Student makes misconception: discrete_continuous_confused (treats a measured speed value as though it were counted in whole units)",
+  "D": "Student makes misconception: categorical_numerical_misclassified (treats the measured speed variable as though it were a named category)"
+},
+"misconception_tag": {
+  "B": "categorical_numerical_misclassified",
+  "C": "discrete_continuous_confused",
+  "D": "categorical_numerical_misclassified"
+}
+```
+
+---
+
+**10. A teacher wants to compare how consistent two classes' quiz scores are, not just which class scored higher on average. She is given only each class's mean score. What is the best next step?**
+
+Step 1: A mean says nothing about spread, so it cannot answer a question about consistency.
+
+Step 2: The next step is to get the actual scores, or a measure of spread computed from them, such as the range.
+
+**Answer: D** (request the full set of scores, or a spread measure)
+
+```json
+"distractor_logic": {
+  "A": "Student makes misconception: averaging_removes_the_variation_studied (assumes the higher mean settles the question of consistency, which the mean cannot show)",
+  "B": "Student makes misconception: false_structural_rule_invented (invents a requirement, class enrollment, that has nothing to do with measuring consistency)",
+  "C": "Student makes misconception: false_structural_rule_invented (invents a conversion, mean to percentage, that does not reveal spread)",
+  "D": "Correct: recognizes that only the actual scores or a spread measure, not the mean, can answer a question about consistency"
+},
+"misconception_tag": {
+  "A": "averaging_removes_the_variation_studied",
+  "B": "false_structural_rule_invented",
+  "C": "false_structural_rule_invented"
+}
+```
+
+---
+
+#### **Part 5: Extra Practice**
+
+More of the same skill, for a worksheet rather than for the mastery gate. These items are drawn by the worksheet generator and are not part of the 9-of-12 practice gate or the 3-of-4 quiz gate. Worked solutions for them sit at the end of Part 4.
+
+**Basic Level**
+
+1. A researcher records each student's eye color. Is this variable categorical or numerical?
+   - A) Numerical
+   - B) Discrete numerical
+   - C) Continuous numerical
+   - D) Categorical
+
+2. A farmer counts the number of eggs laid by each hen in a week. Is this variable discrete or continuous?
+   - A) Continuous
+   - B) Discrete
+   - C) Categorical
+   - D) Nominal
+
+3. A nurse measures each patient's body temperature in degrees. Is this variable discrete or continuous?
+   - A) Discrete
+   - B) Nominal
+   - C) Continuous
+   - D) Categorical
+
+4. A teacher wants to display the favorite subject, Math, Science, English or History, chosen by each student in her class. Which display best matches this variable type?
+   - A) Bar graph
+   - B) Histogram
+   - C) Line graph
+   - D) Box plot
+
+**Proficient Level** (these require an extra step)
+
+5. A teacher wants to show how much test scores varied among her $30$ students. Which is the better choice?
+   - A) The class average
+   - B) A box plot of all $30$ scores
+   - C) A pie chart of the scores
+   - D) A bar graph of the $30$ individual scores
+
+6. A company reports only the mean delivery time for each of two warehouses to compare their consistency. What is the problem with this comparison?
+   - A) There is no problem, the means are enough to compare consistency.
+   - B) The problem is that means cannot be compared between two different warehouses.
+   - C) The problem is that mean delivery time is categorical, not numerical.
+   - D) The means alone hide how much variation exists within each warehouse's times.
+
+7. A researcher records the height in centimeters of $200$ adult participants and wants to display the distribution. Which display is most appropriate?
+   - A) Bar graph
+   - B) The mean height alone
+   - C) Histogram
+   - D) Pie chart
+
+**Advanced Level** (these need multiple steps or reverse thinking)
+
+8. A pollster surveys $40$ randomly chosen students at one high school and finds that $70\%$ prefer online classes. Which conclusion is best supported by this result?
+   - A) $70\%$ of all students nationwide prefer online classes.
+   - B) $70\%$ of the surveyed students at that school prefer online classes.
+   - C) All students at the school prefer online classes.
+   - D) Exactly $70\%$ of all students in the district prefer online classes, since the sample was random.
+
+9. A city tracks the type of vehicle, car, truck, motorcycle or bus, involved in each accident over a year, and separately tracks the exact speed in mph at the moment of each accident. Which statement correctly classifies both variables?
+   - A) Vehicle type is categorical; speed is continuous numerical.
+   - B) Vehicle type is discrete numerical; speed is continuous numerical.
+   - C) Vehicle type is categorical; speed is discrete numerical.
+   - D) Both variables are categorical.
+
+10. A teacher wants to compare how consistent two classes' quiz scores are, not just which class scored higher on average. She is given only each class's mean score. What is the best next step?
+    - A) Nothing further is needed, since the class with the higher mean is automatically more consistent.
+    - B) Request each class's total enrollment instead, since consistency depends on class size.
+    - C) Convert each mean into a percentage, since percentages reveal how tightly scores cluster.
+    - D) Request the full set of individual scores, or a measure of spread such as range, since the means alone cannot show consistency.
